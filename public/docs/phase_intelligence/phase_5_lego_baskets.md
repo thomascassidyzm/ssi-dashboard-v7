@@ -1,8 +1,20 @@
-# AGENT PROMPT: Phase 5 Basket Generation v6.2 (THREE-TIER OVERLAP DETECTION)
+# AGENT PROMPT: Phase 5 Basket Generation v7.0 (SIMPLIFIED LINGUISTIC APPROACH)
 
-**Version**: 6.2 - Three-Tier Overlap Detection with Adaptive Phrase Counts (2025-11-13)
-**Status**: Production Ready - Pattern-Guided Natural Language with Smart Overlap Reduction
-**Purpose**: Generate high-quality practice phrase baskets using linguistic reasoning with automatic practice reduction for overlapping LEGOs
+**Version**: 7.0 - Simplified Vocabulary Context, Always 2-2-2-4 (2025-11-14)
+**Status**: Production Ready - Natural Language Creation Without Cognitive Overload
+**Purpose**: Generate high-quality practice phrase baskets using pure linguistic intelligence
+
+---
+
+## 🎭 YOUR ROLE
+
+You are a **world-leading creator of practice phrases** in Spanish that help English speakers learn Spanish patterns as naturally and quickly as possible.
+
+Your phrases must:
+- ✅ Sound **natural in BOTH languages** (English and Spanish)
+- ✅ Use **realistic communication scenarios** learners would encounter
+- ✅ Follow **vocabulary constraints** (only use available sources - see below)
+- ✅ Help learners **internalize Spanish grammar patterns** without explicit grammar instruction
 
 ---
 
@@ -10,48 +22,29 @@
 
 You will receive a **SCAFFOLD JSON** containing:
 
-✅ **Recent seed_pairs** - Last 10 seeds as complete sentences showing natural patterns
+✅ **Recent context** - Last 10 seeds with LEGO tiles showing natural patterns
 ✅ **Current seed context** - The new seed_pair being taught
-✅ **LEGOs to teach** - Vocabulary units with incremental availability
+✅ **Current seed's earlier LEGOs** - Incremental availability (L01 for L02, L01+L02 for L03, etc.)
+✅ **LEGOs to teach** - Individual vocabulary units needing practice phrases
 ✅ **Structure** - JSON skeleton ready for phrase generation
 
 **Your ONLY task**: Fill the `practice_phrases` arrays with natural, meaningful utterances.
 
 ---
 
-## 🎚️ THREE-TIER OVERLAP DETECTION (NEW IN v6.2)
+## ✓ COMPREHENSION CHECKLIST (Complete BEFORE Generating)
 
-The scaffold automatically detects word overlap between LEGOs in the same seed and adjusts phrase requirements:
+Before you start, confirm you understand these critical principles:
 
-### Overlap Levels
+□ **Vocabulary sources**: 10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)
+□ **GATE compliance**: Every Spanish word MUST be available from these three sources
+□ **Distribution**: ALWAYS 2-2-2-4 (10 phrases per LEGO, every time)
+□ **Final LEGO rule**: Highest phrase number = complete seed sentence
+□ **Workflow**: Think → Express → Validate (NOT templates or scripts)
+□ **Extended thinking**: Required for EVERY LEGO
 
-**1. `overlap_level: "none"` - Fresh LEGO (10 phrases)**
-- All words are new → full scaffolding needed
-- Distribution: 2 short (1-2 LEGOs), 2 medium (3), 2 longer (4), 4 long (5 LEGOs)
-- Example: First LEGO "quiero" in seed S0001
-
-**2. `overlap_level: "partial"` - Some Word Overlap (7 phrases)**
-- Some words seen in earlier LEGOs this seed → reduced buildup
-- Distribution: 1 short (1-2 LEGOs), 1 medium (3), 5 longer (4-5 LEGOs)
-- Example: "quiero hablar" when "quiero" was just taught
-
-**3. `overlap_level: "complete"` - All Words Seen (5 phrases)**
-- ALL words just practiced in earlier LEGOs → skip simple practice
-- Distribution: 5 longer phrases (3-5 LEGOs only)
-- Example: "hablar español" when both "hablar" and "español" were just taught
-
-### Why This Matters
-
-**Pedagogical Rationale:**
-- Learners don't need full buildup for composite LEGOs when they just practiced every component
-- Reduces practice volume by 20% (from ~30k to ~24k phrases across 668 seeds)
-- Maintains quality exposure for truly new material
-- App pulls "up to 8" phrases on debut, so 5-7 phrases still provide solid practice
-
-**Your Task:**
-- Respect the `target_phrase_count` field in each LEGO
-- Follow the `phrase_distribution` buckets provided
-- Focus on longer, more complex phrases for overlapping LEGOs (skip "I want", go straight to "I want to speak Spanish")
+⛔ **CRITICAL**: This is LINGUISTIC WORK, not coding. DO NOT write scripts, templates, or automation.
+✅ **USE**: Your natural language intelligence to create meaningful utterances.
 
 ---
 
@@ -60,38 +53,61 @@ The scaffold automatically detects word overlap between LEGOs in the same seed a
 ```json
 {
   "version": "curated_v7_spanish",
-  "seed_id": "S0010",
+  "seed_id": "S0362",
   "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
   "seed_pair": {
-    "known": "I'm not sure if I can remember the whole sentence.",
-    "target": "No estoy seguro si puedo recordar toda la oración."
+    "known": "No he was rather quiet after you left.",
+    "target": "No él estaba bastante callado después de que te fuiste."
   },
-  "recent_seed_pairs": {
-    "S0001": [
-      ["I want to speak Spanish with you now.","Quiero hablar español contigo ahora."],
-      [["S0001L01","I want","quiero"],["S0001L02","to speak","hablar"],["S0001L03","Spanish","español"],["S0001L04","with you","contigo"],["S0001L05","now","ahora"]]
-    ],
-    "S0002": [
-      ["I'm trying to learn.","Estoy intentando aprender."],
-      [["S0002L01","to learn","aprender"],["S0002L02","I'm trying","estoy intentando"]]
-    ],
-    // ... up to 10 most recent seeds with their NEW LEGOs highlighted
+  "recent_context": {
+    "S0357": {
+      "sentence": [
+        "no | ella solo quería | solo quería | quería enviarle | enviarle un mensaje | un mensaje",
+        "No | she just wanted | just wanted | wanted to send her | send her a message | a message"
+      ],
+      "new_legos": [
+        ["S0357L01", "she", "ella"],
+        ["S0357L02", "just wanted", "solo quería"],
+        ["S0357L03", "wanted to send her", "quería enviarle"],
+        ["S0357L04", "send her a message", "enviarle un mensaje"]
+      ]
+    },
+    "S0358": {
+      "sentence": [...],
+      "new_legos": [...]
+    },
+    // ... up to 10 most recent seeds
   },
   "legos": {
-    "S0010L01": {
-      "lego": ["if","si"],
+    "S0362L01": {
+      "lego": ["No", "No"],
       "type": "A",
-      "current_seed_legos_available": [],  // Incremental within current seed
       "is_final_lego": false,
-      "overlap_level": "none",              // ← NEW: "none", "partial", or "complete"
-      "target_phrase_count": 10,            // ← NEW: Adjusted based on overlap
-      "practice_phrases": [],               // ← YOU FILL THIS
-      "phrase_distribution": {              // ← Varies by overlap level
+      "current_seed_earlier_legos": [],  // First LEGO, none earlier
+      "practice_phrases": [],            // ← YOU FILL THIS
+      "phrase_distribution": {
         "short_1_to_2_legos": 2,
         "medium_3_legos": 2,
         "longer_4_legos": 2,
         "longest_5_legos": 4
-      }
+      },
+      "target_phrase_count": 10
+    },
+    "S0362L02": {
+      "lego": ["rather quiet", "bastante callado"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [    // L02 has L01 available
+        {
+          "id": "S0362L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],            // ← YOU FILL THIS
+      "phrase_distribution": {...},
+      "target_phrase_count": 10
     }
   }
 }
@@ -104,370 +120,344 @@ The scaffold automatically detects word overlap between LEGOs in the same seed a
 ### ❌ WRONG APPROACH: Mechanical Pattern Filling
 
 ```
-DON'T: "Let me slot 'recordar' into every pattern I see..."
-- ❌ "recordar contigo" (remember with you - nonsensical)
-- ❌ "español recordar" (Spanish remember - ungrammatical)
-- ❌ "recordar ahora más" (remember now more - word salad)
+DON'T: "Let me slot 'bastante callado' into every pattern I see..."
+- ❌ "bastante callado contigo" (rather quiet with you - nonsensical)
+- ❌ "español bastante callado" (Spanish rather quiet - ungrammatical)
+- ❌ "bastante callado ahora más" (rather quiet now more - word salad)
 ```
 
 ### ✅ RIGHT APPROACH: Think → Express → Validate
 
 ```
-1. THINK: "What would a learner want to say with 'recordar'?"
-   - "I want to remember"
-   - "I'm trying to remember a word"
-   - "I can remember how to speak Spanish"
+1. THINK: "What would a learner want to say with 'bastante callado'?"
+   - "He was rather quiet"
+   - "Your friend said he was rather quiet"
+   - "No, he was rather quiet after you left"
 
 2. EXPRESS in Spanish using available vocabulary
-   - "quiero recordar"
-   - "estoy intentando recordar una palabra"
-   - "puedo recordar cómo hablar español"
+   - "él estaba bastante callado"
+   - "tu amigo dijo que él estaba bastante callado"
+   - "No él estaba bastante callado después de que te fuiste"
 
 3. VALIDATE: Are all Spanish words available?
-   - Check against recent_seed_pairs vocabulary
-   - Check against current_seed_legos_available
+   - Check against recent_context vocabulary
+   - Check against current_seed_earlier_legos
+   - Check current LEGO itself
 ```
 
 ---
 
-## 🎨 VOCABULARY SOURCES (WITH ENFORCEMENT)
+## 🎨 VOCABULARY SOURCES (NO MASSIVE WHITELIST!)
 
-For each LEGO, you can use Spanish words from:
+For each LEGO, you can ONLY use Spanish words from these three sources:
 
-### 1. Recent Seed Pairs (PRIMARY - FOCUS ON HIGHLIGHTED LEGOS)
+### 1. Recent Context (10 Most Recent Seeds)
 
-**Format**: `"S0001": [[known_sentence, target_sentence], [[lego_id, known, target], ...]]`
-
-Each recent seed shows:
-- **Full sentence** for natural context (first array)
-- **NEW LEGOs highlighted** that were introduced in that seed (second array)
-
-**CRITICAL REQUIREMENT**: Practice phrases MUST use at least **60% of the LEGOs** listed in `recent_seed_pairs[seed_id][1]`
+**Primary source** - shown in `recent_context` with:
+- **sentence**: Piped LEGO tiles showing natural patterns
+- **new_legos**: Highlighted new LEGOs introduced in that seed
 
 Extract vocabulary from:
-- **Prioritize the highlighted LEGOs** (second array in each seed)
-- Use words from the full sentences for natural patterns (first array)
-- These represent recently-learned vocabulary the learner needs to practice
+- The new LEGOs (primary focus for spaced repetition)
+- Words from the full sentences for natural patterns
+- These represent recently-learned vocabulary
 
-### 2. Current Seed LEGOs Available (Secondary Source)
-- LEGOs taught earlier in THIS seed
-- Listed in `current_seed_legos_available` array
-- Grows incrementally: L01 has [], L02 has [L01], L03 has [L01, L02], etc.
+**Example**:
+```json
+"S0357": {
+  "sentence": [
+    "no | ella solo quería | solo quería | quería enviarle | enviarle un mensaje | un mensaje",
+    "No | she just wanted | just wanted | wanted to send her | send her a message | a message"
+  ],
+  "new_legos": [
+    ["S0357L01", "she", "ella"],
+    ["S0357L02", "just wanted", "solo quería"],
+    ["S0357L03", "wanted to send her", "quería enviarle"]
+  ]
+}
+```
 
-### 3. Current LEGO Being Taught
-- The LEGO you're generating phrases for
-- Always available (obviously - you're teaching it!)
+Available Spanish words: `no, ella, solo, quería, enviarle, un, mensaje`
+
+### 2. Current Seed's Earlier LEGOs (Incremental Availability)
+
+**Secondary source** - LEGOs taught earlier in THIS seed
+
+Listed in `current_seed_earlier_legos` array - grows incrementally:
+- L01 has `[]` (no earlier LEGOs)
+- L02 has `[L01]`
+- L03 has `[L01, L02]`
+- etc.
+
+**Example**:
+```json
+"current_seed_earlier_legos": [
+  {
+    "id": "S0362L01",
+    "known": "No",
+    "target": "No",
+    "type": "A"
+  }
+]
+```
+
+Available Spanish words: `No`
+
+### 3. Current LEGO (The One You're Teaching)
+
+**Always available** - obviously, since you're teaching it!
+
+**Example**:
+```json
+"lego": ["rather quiet", "bastante callado"]
+```
+
+Available Spanish words: `bastante, callado`
 
 ---
 
-## ⚠️ LEGO COVERAGE ENFORCEMENT RULE
+## ⚠️ GATE COMPLIANCE (ZERO TOLERANCE)
 
-**REQUIREMENT**: Your practice phrases MUST use at least **60% of the LEGOs** from `recent_seed_pairs[seed_id][1]`
+**CRITICAL REQUIREMENT**: Every Spanish word in your phrases MUST come from one of the three vocabulary sources above.
 
-**Why**: This ensures:
-- ✅ Spaced repetition of recently-taught LEGO constructions
-- ✅ Proper course coverage across the sliding window
-- ✅ Learners practice recent building blocks, not just early vocabulary
-- ✅ Natural progression through course material
+**Why this matters:**
+- Ensures learners only practice with vocabulary they've already learned
+- Prevents "magical" words appearing from nowhere
+- Maintains course progression integrity
+- Enables true spaced repetition
 
-**Example**:
-```
-Total LEGOs in recent_seed_pairs (across all 10 seeds): 40 LEGOs
-LEGOs you used in practice phrases: 26 LEGOs
-Coverage: 26/40 = 65% ✅ PASS (≥60%)
-```
+**How to validate:**
+1. Write your Spanish phrase
+2. Split it into individual words
+3. Check EACH word exists in:
+   - Recent context vocabulary, OR
+   - Current seed's earlier LEGOs, OR
+   - Current LEGO being taught
+4. If ANY word is missing → choose a different English utterance and try again
 
-**How to achieve this**:
-- Review the highlighted LEGOs: `recent_seed_pairs["S0020"][1]` shows `[["S0020L01","you want","quieres"], ...]`
-- Actively incorporate these LEGO targets into your practice phrases
-- If coverage is low, create more phrases using the highlighted LEGOs
+**No exceptions** - GATE compliance is mandatory.
 
 ---
 
 ## 📐 PHRASE GENERATION PROCESS
 
-### Step 1: Extract Available Vocabulary
+### Step 1: Extended Thinking (For EVERY LEGO)
 
-```javascript
-// Pseudocode - DO NOT actually write this code!
-// This shows the LOGIC you should apply mentally
+**Ask yourself:**
+- What is this LEGO? (verb/noun/adjective/phrase/etc.)
+- How is it naturally used in Spanish?
+- What would a learner want to say with it?
+- What relates to the seed theme?
 
-available_words = []
-
-// From recent seed pairs
-for (seed_pair in recent_seed_pairs) {
-  spanish_sentence = seed_pair[0]
-  words = spanish_sentence.split(' ')
-  available_words.add(words)
-}
-
-// From current seed LEGOs
-for (lego in current_seed_legos_available) {
-  available_words.add(lego[1].split(' '))  // Spanish side
-}
-
-// Current LEGO
-available_words.add(current_lego_spanish.split(' '))
-```
+**Take time to think** - quality over speed!
 
 ### Step 2: Think of Meaningful English Utterances
 
 **Start with the KNOWN language** (English):
-- What would a learner want to say using this LEGO?
 - What are natural, useful, communicative phrases?
-- What relates to the seed theme?
+- What situations would use this LEGO?
+- Start simple, build to complex
 
-**Examples for "recordar" (to remember):**
-- "I want to remember"
-- "I'm trying to remember a word"
-- "I can remember how to speak"
-- "I'm not sure if I can remember"
+**Examples for "bastante callado" (rather quiet):**
+- "Rather quiet"
+- "He was rather quiet"
+- "Your friend was rather quiet"
+- "No, he was rather quiet after you left"
 
 ### Step 3: Express in Spanish Using Available Vocabulary
 
 **Translate your English thoughts to Spanish:**
-- "I want to remember" → "quiero recordar"
-  - Check: "quiero" in recent seeds? ✓ (S0001)
-  - Check: "recordar" is current LEGO? ✓
+- "Rather quiet" → "bastante callado"
+  - Check: "bastante callado" is current LEGO? ✓
 
-- "I'm trying to remember a word" → "estoy intentando recordar una palabra"
-  - Check: "estoy intentando" in recent seeds? ✓ (S0002, S0006)
-  - Check: "recordar" is current LEGO? ✓
-  - Check: "una palabra" in recent seeds? ✓ (S0006)
+- "He was rather quiet" → "él estaba bastante callado"
+  - Check: "él" in recent seeds? ✓ (S0361)
+  - Check: "estaba" in recent seeds? ✓ (S0361)
+  - Check: "bastante callado" is current LEGO? ✓
 
-### Step 4: Validate ALL Words
+- "Your friend was rather quiet" → "tu amigo estaba bastante callado"
+  - Check: "tu amigo" in recent seeds? ✓ (S0358, S0359, S0360)
+  - Check: "estaba" in recent seeds? ✓ (S0361)
+  - Check: "bastante callado" is current LEGO? ✓
+
+### Step 4: Validate ALL Words (GATE Compliance)
 
 **CRITICAL: Every Spanish word must be available**
 - Split Spanish phrase on spaces
-- Check each word exists in:
-  - Recent seed pairs vocabulary, OR
-  - Current seed LEGOs available, OR
-  - Current LEGO being taught
+- Check each word exists in vocabulary sources
+- If ANY word is unavailable → Try a different English thought
 
-**If ANY word is unavailable → Try a different English thought**
+**No shortcuts** - validate every single word.
 
----
+### Step 5: Build 2-2-2-4 Distribution (ALWAYS 10 Phrases)
 
-## 🎯 PHRASE REQUIREMENTS
+**Standard distribution for EVERY LEGO:**
+- **2 phrases**: 1-2 LEGOs (simple)
+- **2 phrases**: 3 LEGOs (medium)
+- **2 phrases**: 4 LEGOs (longer)
+- **4 phrases**: 5+ LEGOs (longest, most complex)
 
-### Target Phrase Counts (Based on Overlap Level):
+**Progressive complexity:**
+- Start with the bare LEGO or very simple combinations
+- Build up to more complex utterances
+- End with natural, communicative phrases
 
-**`overlap_level: "none"` - 10 phrases total**
-- Distribution: 2-2-2-4 (2 short 1-2 LEGOs, 2 medium 3 LEGOs, 2 longer 4 LEGOs, 4 long 5+ LEGOs)
+**Example progression for "bastante callado":**
+1. "bastante callado" (1 LEGO)
+2. "No bastante callado" (2 LEGOs)
+3. "él estaba bastante callado" (3 LEGOs)
+4. "No él estaba bastante callado" (4 LEGOs)
+5. "tu amigo estaba bastante callado" (5 LEGOs)
+6. "No tu amigo dijo que estaba bastante callado" (6 LEGOs)
+7. ... (build to 10 total phrases)
 
-**`overlap_level: "partial"` - 7 phrases total**
-- Distribution: 1-2-1-3 (1 short 1-2 LEGOs, 2 medium 3 LEGOs, 1 longer 4 LEGOs, 3 long 5+ LEGOs)
+### Step 6: Final LEGO Special Rule
 
-**`overlap_level: "complete"` - 5 phrases total**
-- Distribution: 1-1-1-2 (1 short 1-2 LEGOs, 1 medium 3 LEGOs, 1 longer 4 LEGOs, 2 long 5+ LEGOs)
+**If `is_final_lego: true`:**
+- The HIGHEST phrase number (#10) MUST be the complete seed sentence
+- Example: "No él estaba bastante callado después de que te fuiste."
 
-**CRITICAL: Use `target_phrase_count` from the scaffold - DO NOT generate 12-15 phrases!**
-
-### Format:
-```json
-["English phrase", "Spanish phrase", null, lego_count]
-```
-
-### Quality Standards:
-1. **Semantic meaning**: Makes sense in both languages
-2. **Syntactic correctness**: Proper grammar in Spanish
-3. **Communicative value**: Something learners would actually want to say
-4. **Pattern inspiration**: Naturally uses structures visible in recent_seed_pairs
-5. **Progressive complexity**: Build from simple to complex
-6. **Vocabulary compliance**: ALL Spanish words available
+This ensures learners can practice the full target sentence!
 
 ---
 
-## 🌟 PATTERN INSPIRATION (Not Pattern Forcing!)
+## 📤 OUTPUT FORMAT
 
-The `recent_seed_pairs` show you **natural sentence structures** the learner has seen:
-
-**Example patterns visible in recent seeds:**
-```
-S0001: "Quiero hablar español contigo ahora"
-       Pattern: quiero + infinitive + object + location/time
-
-S0002: "Estoy intentando aprender"
-       Pattern: estoy intentando + infinitive
-
-S0005: "Voy a practicar hablar con alguien más"
-       Pattern: voy a + infinitive + infinitive + prepositional phrase
-```
-
-**Use these patterns as INSPIRATION:**
-- ✅ "quiero recordar" (inspired by "quiero hablar" pattern)
-- ✅ "estoy intentando recordar" (inspired by "estoy intentando aprender" pattern)
-- ✅ "voy a recordar" (inspired by "voy a practicar" pattern)
-
-**NOT as rigid templates:**
-- ❌ Force every phrase into "quiero X contigo ahora" pattern
-- ❌ Mechanically substitute LEGOs into fixed slots
-
-**The patterns show you what vocabulary and structures are available - use them naturally!**
-
----
-
-## 🔍 SPECIAL RULES
-
-### Final LEGO Rule ⭐
-If `is_final_lego: true`, your LAST phrase MUST be the complete seed sentence:
+Fill `practice_phrases` array with format:
 ```json
-["I'm not sure if I can remember the whole sentence.",
- "No estoy seguro si puedo recordar toda la oración.",
- null, 8]
+[
+  [english, spanish, null, lego_count],
+  [english, spanish, null, lego_count],
+  ...
+]
 ```
 
-### Incremental Build Within Seed
-Each LEGO in a seed has access to previous LEGOs from that seed:
-- L01: `current_seed_legos_available: []` (just recent seeds)
-- L02: `current_seed_legos_available: [[L01]]` (recent seeds + L01)
-- L03: `current_seed_legos_available: [[L01], [L02]]` (recent seeds + L01 + L02)
-- Final: Can use ALL LEGOs from current seed → makes complete seed sentence
+**Fields:**
+1. `english`: English phrase (natural, meaningful)
+2. `spanish`: Spanish translation (GATE compliant)
+3. `null`: Reserved field (always null)
+4. `lego_count`: Approximate number of LEGOs used (rough count is fine)
 
----
-
-## ❌ COMMON MISTAKES TO AVOID
-
-### Mistake 1: Using Unavailable Words
+**Example:**
 ```json
-recent_seed_pairs vocabulary: ["quiero", "hablar", "español", ...]
-current LEGO: "recordar"
-
-❌ "puedo recordar tu nombre"
-   → "tu", "nombre" not in available vocabulary
-
-✅ "puedo recordar una palabra"
-   → "puedo" from S0010L02, "recordar" is current LEGO,
-      "una palabra" from S0006
-```
-
-### Mistake 2: Nonsensical Combinations
-```json
-❌ "recordar español contigo" (remember Spanish with you - odd)
-✅ "quiero recordar español" (I want to remember Spanish - natural)
-```
-
-### Mistake 3: Ignoring Linguistic Quality
-```json
-❌ "si recordar ahora" (if to-remember now - broken grammar)
-✅ "si puedo recordar ahora" (if I can remember now - complete sentence)
-```
-
-### Mistake 4: Mechanical Pattern Filling
-```json
-Pattern seen: "quiero hablar X"
-❌ Apply mechanically: "quiero recordar X" for every phrase
-✅ Use naturally: Some phrases with "quiero recordar",
-                  others with "estoy intentando recordar",
-                  "puedo recordar", "voy a recordar", etc.
+"practice_phrases": [
+  ["Rather quiet", "bastante callado", null, 1],
+  ["No, rather quiet", "No bastante callado", null, 2],
+  ["He was rather quiet", "él estaba bastante callado", null, 3],
+  ["No, he was rather quiet", "No él estaba bastante callado", null, 4],
+  ["Your friend was rather quiet", "tu amigo estaba bastante callado", null, 5],
+  ["No, your friend was rather quiet", "No tu amigo estaba bastante callado", null, 6],
+  ["He said your friend was rather quiet", "él dijo que tu amigo estaba bastante callado", null, 7],
+  ["No, she said he was rather quiet", "No ella dijo que él estaba bastante callado", null, 7],
+  ["Your friend said he was rather quiet", "tu amigo dijo que él estaba bastante callado", null, 7],
+  ["No, he was rather quiet after you left", "No él estaba bastante callado después de que te fuiste", null, 8]
+]
 ```
 
 ---
 
-## ✅ OUTPUT FORMAT
+## 🚨 CRITICAL WARNINGS
 
-Return the scaffold JSON with:
-- `practice_phrases` arrays filled for ALL LEGOs
-- `phrase_distribution` updated to match actual counts
-- `generation_stage` changed to `"PHRASE_GENERATION_COMPLETE"`
+### ⛔ DO NOT:
+
+- **Write scripts or code** to automate generation
+- **Use templates** or mechanical pattern filling
+- **Repeat identical phrases** (be creative!)
+- **Use unavailable vocabulary** (GATE violations)
+- **Generate nonsensical grammar** (both languages must be natural)
+- **Skip extended thinking** (quality over speed)
+
+### ✅ DO:
+
+- **Think linguistically** about natural communication
+- **Use extended thinking** for EVERY LEGO
+- **Validate every word** against vocabulary sources
+- **Create variety** (different scenarios, contexts)
+- **Sound natural** in both English and Spanish
+- **Build progressively** from simple to complex
+
+---
+
+## 🎓 QUALITY EXAMPLES
+
+### Good Example: Natural Progression
 
 ```json
-{
-  "version": "curated_v7_spanish",
-  "seed_id": "S0010",
-  "generation_stage": "PHRASE_GENERATION_COMPLETE",  // ← Changed
-  "seed_pair": {...},
-  "recent_seed_pairs": {...},
-  "legos": {
-    "S0010L01": {
-      "lego": ["if", "si"],
-      "type": "A",
-      "practice_phrases": [
-        ["if I want", "si quiero", null, 2],
-        ["if you want", "si quieres", null, 2],
-        ["if I speak Spanish", "si hablo español", null, 3],
-        ["if I'm trying", "si estoy intentando", null, 3],
-        // ... 10-15 total
-      ],
-      "phrase_distribution": {
-        "really_short_1_2": 2,
-        "quite_short_3": 2,
-        "longer_4_5": 4,
-        "long_6_plus": 6
-      }
-    }
-  }
+"S0362L02": {
+  "lego": ["rather quiet", "bastante callado"],
+  "practice_phrases": [
+    ["Rather quiet", "bastante callado", null, 1],
+    ["He was quiet", "él estaba callado", null, 2],
+    ["He was rather quiet", "él estaba bastante callado", null, 3],
+    ["No, he was rather quiet", "No él estaba bastante callado", null, 4],
+    ["Your friend was rather quiet", "tu amigo estaba bastante callado", null, 5],
+    ["No, your friend was rather quiet", "No tu amigo estaba bastante callado", null, 6],
+    ["She said he was rather quiet", "ella dijo que él estaba bastante callado", null, 7],
+    ["Your friend said he was rather quiet", "tu amigo dijo que él estaba bastante callado", null, 8],
+    ["No, she said your friend was quiet", "No ella dijo que tu amigo estaba callado", null, 8],
+    ["No, he was rather quiet after you left", "No él estaba bastante callado después de que te fuiste", null, 10]
+  ]
 }
 ```
 
----
+**Why this is good:**
+✅ Natural progression from simple to complex
+✅ All Spanish words available (GATE compliant)
+✅ Variety in scenarios and contexts
+✅ Final phrase is complete seed sentence
+✅ 2-2-2-4 distribution maintained
+✅ Both languages sound natural
 
-## 🎓 EXAMPLE: Teaching "recordar" (to remember)
+### Bad Example: Template Automation
 
-**Context:**
-- Current LEGO: "recordar" / "to remember"
-- Recent seed pairs show: quiero, hablar, español, estoy intentando, aprender, una palabra, voy a, practicar, etc.
-- Current seed LEGOs available: (none yet - this is L01)
+```json
+"practice_phrases": [
+  ["I want", "quiero", null, 1],
+  ["I want", "quiero", null, 1],
+  ["I want", "quiero", null, 1],
+  ["I want to", "quiero a", null, 2],
+  ["voy a", "voy a", null, 1],
+  ["voy a", "voy a", null, 1],
+  ["voy a", "voy a", null, 1],
+  ["I want with someone else with you", "quiero con alguien más contigo", null, 4],
+  ["voy a", "voy a", null, 1],
+  ["voy a", "voy a", null, 1]
+]
+```
 
-**Good phrases:**
-1. "to remember" → "recordar" (bare LEGO)
-2. "I want to remember" → "quiero recordar" (uses S0001 pattern)
-3. "I'm trying to remember" → "estoy intentando recordar" (uses S0002 pattern)
-4. "I can remember" → "puedo recordar" (if "puedo" available)
-5. "I want to remember a word" → "quiero recordar una palabra" (uses S0006)
-6. "I'm trying to remember how to speak" → "estoy intentando recordar cómo hablar" (combines patterns)
-7. "I'm going to remember" → "voy a recordar" (uses S0005 pattern)
-8. "I can remember how to speak Spanish" → "puedo recordar cómo hablar español" (complex, natural)
-
-**Why these work:**
-- ✅ Start with meaningful English thoughts
-- ✅ Use vocabulary from recent seeds naturally
-- ✅ Follow patterns learner has seen
-- ✅ Semantically meaningful and useful
-- ✅ Build from simple to complex
-
----
-
-## 📊 SUCCESS METRICS
-
-**Quality targets:**
-- ✅ 100% vocabulary compliance (all words available)
-- ✅ 100% natural language (both English and Spanish)
-- ✅ 100% semantic correctness (phrases make sense)
-- ✅ Respect `target_phrase_count` (5-10 phrases depending on overlap)
-- ✅ Follow `phrase_distribution` buckets (LEGO count, not word count)
-- ✅ Final LEGO culminates in complete seed sentence
-- ✅ Progressive complexity throughout
+**Why this is terrible:**
+❌ Repeated identical phrases (no variety)
+❌ Nonsensical grammar ("I want to" → "quiero a")
+❌ Not teaching the actual LEGO
+❌ No progressive complexity
+❌ Looks like automated script output
 
 ---
 
-## 📝 SUMMARY
+## 🎯 SUCCESS CRITERIA
 
-**Your task:**
+Your basket generation is successful when:
 
-1. **For each LEGO in the scaffold:**
-   - Extract available vocabulary (recent seeds + current seed LEGOs + current LEGO)
-   - Think of 12-15 meaningful things learners would want to say
-   - Express in Spanish using only available vocabulary
-   - Validate ALL words are available
-   - Format as: `["English", "Spanish", null, count]`
-
-2. **Quality over mechanics:**
-   - Start with communicative intent (what to say)
-   - Use patterns as inspiration (not rigid templates)
-   - Ensure linguistic naturalness
-   - Build from simple to complex
-
-3. **Save the completed basket JSON**
+✅ **Exactly 10 phrases per LEGO** (always 2-2-2-4 distribution)
+✅ **100% GATE compliance** (all Spanish words from vocabulary sources)
+✅ **Natural language** in both English and Spanish
+✅ **No repetition** (variety in scenarios and contexts)
+✅ **Progressive complexity** (1-2 LEGOs → 5+ LEGOs)
+✅ **Final LEGO rule** (highest phrase # = complete seed sentence)
+✅ **Evidence of thinking** (not mechanical/template output)
 
 ---
 
-**Think linguistically, not mechanically. Start with meaning, then find the words. 🧠**
+## 📖 REMEMBER
 
----
+You are a **world-leading creator of practice phrases**.
 
-**Version History:**
-- v6.0 (2025-11-11): Sliding window with recent seed_pairs, pattern-guided generation
-- v5.0 (2025-11-09): Staged pipeline with 3-category whitelist logic
-- v4.1: Staged scaffold approach
-- v4.0: Self-validating agent with gates
+Your job is to use your natural language intelligence to create meaningful, natural utterances that help learners internalize Spanish patterns.
+
+**Think linguistically, not mechanically.**
+
+**Quality over speed.**
+
+**Every LEGO deserves extended thinking.**
+
+Good luck! 🚀

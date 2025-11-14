@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 
 /**
- * Phase 5 Scaffold Preparation - Mechanical Prep for Basket Generation
+ * Phase 5 Scaffold Preparation - Mechanical Prep for Basket Generation v7.0
  *
  * This script does ALL the mechanical work so AI only does linguistic intelligence:
  * 1. Reads lego_pairs.json
- * 2. Builds whitelist using 3-category rule (A-types, M-types, M-components)
- * 3. Splits into 34 agent batches (20 seeds each)
+ * 2. Builds recent context (10 most recent seeds with LEGO tiles)
+ * 3. Tracks current seed's earlier LEGOs (incremental availability)
  * 4. Generates scaffold files with empty practice_phrases arrays
  * 5. Marks final LEGOs in each seed
+ * 6. ALWAYS uses 2-2-2-4 distribution (10 phrases per LEGO)
  *
  * Usage: node scripts/phase5_prep_scaffolds.cjs <courseDir>
  *
  * Reads: <courseDir>/lego_pairs.json
- * Writes: <courseDir>/phase5_scaffolds/agent_XX.json (34 files)
+ * Writes: <courseDir>/phase5_scaffolds/seed_sXXXX.json (one per seed)
  */
 
 const fs = require('fs-extra');
@@ -32,81 +33,63 @@ function extractSpanishWords(text) {
 }
 
 /**
- * Build whitelist using 3-category rule up to a specific LEGO count
- *
- * Returns pairs of [target, known] for:
- * Category 1: Atomic LEGOs (A-type) - complete LEGO pair
- * Category 2: Molecular LEGOs (M-type) - complete LEGO pair
- * Category 3: Component pairs from M-type LEGOs (literal translations)
+ * Build recent context showing 10 most recent seeds with LEGO tiles
+ * This provides vocabulary context without massive whitelist
  */
-function buildWhitelistUpToLegoCount(legoPairsData, availableLegos) {
-  const whitelistPairs = new Map(); // target -> known
-  let legoCount = 0;
+function buildRecentContext(legoPairsData, currentSeedIndex, maxRecent = 10) {
+  const recentSeeds = {};
+  const allSeedsArray = legoPairsData.seeds;
 
-  for (const seed of legoPairsData.seeds) {
-    for (const lego of seed.legos) {
-      // Only include new LEGOs in the count
-      if (lego.new) {
-        if (legoCount >= availableLegos) {
-          // Convert Map to array of pairs and sort by target
-          return Array.from(whitelistPairs.entries())
-            .sort((a, b) => a[0].localeCompare(b[0]));
-        }
-        legoCount++;
-      }
+  if (currentSeedIndex > 0) {
+    const startIndex = Math.max(0, currentSeedIndex - maxRecent);
+    for (let i = startIndex; i < currentSeedIndex; i++) {
+      const recentSeed = allSeedsArray[i];
 
-      // Add all LEGOs (new and references) to whitelist if within count
-      if (legoCount <= availableLegos) {
-        // Category 1 & 2: Add the complete LEGO pair (works for both A and M types)
-        whitelistPairs.set(lego.target, lego.known);
+      // Build tiled sentence with pipes separating LEGOs
+      const knownTiled = recentSeed.legos.map(l => l.known).join(' | ');
+      const targetTiled = recentSeed.legos.map(l => l.target).join(' | ');
 
-        // Category 3: If M-type, ALSO add component pairs (literal translations)
-        if (lego.type === 'M' && lego.components) {
-          for (const [targetComponent, knownComponent] of lego.components) {
-            whitelistPairs.set(targetComponent, knownComponent);
-          }
-        }
-      }
+      // Extract new LEGOs for this seed
+      const newLegos = recentSeed.legos
+        .filter(l => l.new)
+        .map(l => [l.id, l.known, l.target]);
+
+      recentSeeds[recentSeed.seed_id] = {
+        sentence: [knownTiled, targetTiled],
+        new_legos: newLegos
+      };
     }
   }
 
-  // Convert Map to array of pairs and sort by target
-  return Array.from(whitelistPairs.entries())
-    .sort((a, b) => a[0].localeCompare(b[0]));
+  return recentSeeds;
 }
 
 /**
- * Check overlap level of LEGO with earlier LEGOs in the same seed
- *
- * Returns:
- * - 'complete': ALL words in current LEGO have appeared in earlier LEGOs
- * - 'partial': SOME words overlap, but not all
- * - 'none': No overlap
+ * Build list of earlier LEGOs from current seed (incremental availability)
+ * L01 has [], L02 has [L01], L03 has [L01, L02], etc.
  */
-function checkOverlapLevel(currentLegoTarget, earlierLegosInSeed) {
-  const currentWords = currentLegoTarget.toLowerCase().split(/\s+/).filter(Boolean);
+function buildCurrentSeedEarlierLegos(seed, currentLegoIndex) {
+  const earlierLegos = [];
 
-  if (currentWords.length === 0) return 'none';
-
-  // Collect all words from earlier LEGOs
-  const earlierWords = new Set();
-  for (const earlierLego of earlierLegosInSeed) {
-    earlierLego.target.toLowerCase().split(/\s+/).filter(Boolean)
-      .forEach(word => earlierWords.add(word));
+  for (let i = 0; i < currentLegoIndex; i++) {
+    const lego = seed.legos[i];
+    if (lego.new) {
+      earlierLegos.push({
+        id: lego.id,
+        known: lego.known,
+        target: lego.target,
+        type: lego.type
+      });
+    }
   }
 
-  // Count how many current words appeared earlier
-  const overlapCount = currentWords.filter(word => earlierWords.has(word)).length;
-
-  if (overlapCount === 0) return 'none';
-  if (overlapCount === currentWords.length) return 'complete';
-  return 'partial';
+  return earlierLegos;
 }
 
 /**
  * Generate scaffold for a single seed
  */
-function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
+function generateSeedScaffold(seed, legoPairsData, currentSeedIndex) {
   const legos = {};
 
   // Find index of the LAST NEW LEGO (not just last lego in array)
@@ -118,8 +101,16 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
     }
   }
 
-  let legoCount = cumulativeBeforeSeed;
-  const newLegosInSeed = []; // Track NEW LEGOs for overlap detection
+  // Build recent context (10 most recent seeds with LEGO tiles and new LEGOs highlighted)
+  const recentContext = buildRecentContext(legoPairsData, currentSeedIndex, 10);
+
+  // Standard 2-2-2-4 distribution (ALWAYS 10 phrases per LEGO)
+  const standardDistribution = {
+    short_1_to_2_legos: 2,
+    medium_3_legos: 2,
+    longer_4_legos: 2,
+    longest_5_legos: 4
+  };
 
   for (let i = 0; i < seed.legos.length; i++) {
     const lego = seed.legos[i];
@@ -128,62 +119,24 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
     if (!lego.new) continue;
 
     const isFinalLego = (i === finalNewLegoIndex);
-    const availableLegos = legoCount; // LEGOs available BEFORE this one
 
-    // Build whitelist up to this LEGO (not including current LEGO)
-    const whitelistPairs = buildWhitelistUpToLegoCount(legoPairsData, availableLegos);
-
-    // Detect overlap with earlier NEW LEGOs in this seed
-    const overlapLevel = checkOverlapLevel(lego.target, newLegosInSeed);
-
-    // Determine phrase distribution based on overlap level
-    // Note: Bucket names refer to LEGO count, not word count
-    let phraseDistribution, targetPhraseCount;
-    if (overlapLevel === 'complete') {
-      // Minimal set for fully overlapping LEGOs: just 5 longer phrases (3-5 LEGOs)
-      phraseDistribution = {
-        longer_3_to_5_legos: 5
-      };
-      targetPhraseCount = 5;
-    } else if (overlapLevel === 'partial') {
-      // Reduced set for partially overlapping LEGOs
-      phraseDistribution = {
-        short_1_to_2_legos: 1,
-        medium_3_legos: 1,
-        longer_4_to_5_legos: 5
-      };
-      targetPhraseCount = 7;
-    } else {
-      // Full set for fresh LEGOs: progressive buildup from 1-5 LEGOs
-      phraseDistribution = {
-        short_1_to_2_legos: 2,
-        medium_3_legos: 2,
-        longer_4_legos: 2,
-        longest_5_legos: 4
-      };
-      targetPhraseCount = 10;
-    }
-
-    legoCount++; // Increment for next LEGO
-    newLegosInSeed.push({ id: lego.id, target: lego.target }); // Track for overlap detection
+    // Build list of earlier LEGOs from THIS seed (incremental)
+    const currentSeedEarlierLegos = buildCurrentSeedEarlierLegos(seed, i);
 
     const legoData = {
       lego: [lego.known, lego.target],
       type: lego.type,
-      available_legos: availableLegos,
       is_final_lego: isFinalLego,
-      overlap_level: overlapLevel,
-      target_phrase_count: targetPhraseCount,
+      current_seed_earlier_legos: currentSeedEarlierLegos,
       practice_phrases: [], // AI fills this
-      phrase_distribution: phraseDistribution,
+      phrase_distribution: standardDistribution,
+      target_phrase_count: 10, // ALWAYS 10 phrases
       _metadata: {
         lego_id: lego.id,
         seed_context: {
-          target: seed.seed_pair[0],
-          known: seed.seed_pair[1]
-        },
-        whitelist_pairs: whitelistPairs,
-        available_whitelist_size: whitelistPairs.length
+          known: seed.seed_pair[1],
+          target: seed.seed_pair[0]
+        }
       }
     };
 
@@ -195,31 +148,13 @@ function generateSeedScaffold(seed, legoPairsData, cumulativeBeforeSeed) {
     legos[lego.id] = legoData;
   }
 
-  // Build recent context (last 5 seeds before this one) with LEGO tiling
-  const recentSeeds = {};
-  const allSeedsArray = legoPairsData.seeds;
-  const currentIndex = allSeedsArray.findIndex(s => s.seed_id === seed.seed_id);
-
-  if (currentIndex > 0) {
-    const startIndex = Math.max(0, currentIndex - 5);
-    for (let i = startIndex; i < currentIndex; i++) {
-      const recentSeed = allSeedsArray[i];
-
-      // Build tiled sentence with pipes separating LEGOs
-      const targetTiled = recentSeed.legos.map(l => l.target).join(' | ');
-      const knownTiled = recentSeed.legos.map(l => l.known).join(' | ');
-
-      recentSeeds[recentSeed.seed_id] = [targetTiled, knownTiled];
-    }
-  }
-
   return {
-    seed: seed.seed_id,
+    seed_id: seed.seed_id,
     seed_pair: {
-      target: seed.seed_pair[0],
-      known: seed.seed_pair[1]
+      known: seed.seed_pair[1],
+      target: seed.seed_pair[0]
     },
-    recent_context: recentSeeds,
+    recent_context: recentContext,
     legos: legos
   };
 }
@@ -270,24 +205,21 @@ async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
   await fs.ensureDir(scaffoldsDir);
 
   // Generate scaffold for each seed individually
-  let cumulativeCount = 0;
   let totalNewLegos = 0;
 
-  for (const seed of seeds) {
-    const seedScaffold = generateSeedScaffold(seed, { seeds }, cumulativeCount);
+  for (let seedIndex = 0; seedIndex < seeds.length; seedIndex++) {
+    const seed = seeds[seedIndex];
+    const seedScaffold = generateSeedScaffold(seed, { seeds }, seedIndex);
 
     // Only create scaffold if seed has new LEGOs
     if (Object.keys(seedScaffold.legos).length === 0) {
-      // Update cumulative count even for seeds with no new LEGOs
-      cumulativeCount += seed.legos.filter(l => l.new).length;
       continue;
     }
 
-    const seedNum = parseInt(seed.seed_id.substring(1));
     const newLegosCount = Object.keys(seedScaffold.legos).length;
     totalNewLegos += newLegosCount;
 
-    console.log(`[Phase 5 Prep] ${seed.seed_id}: ${newLegosCount} LEGOs → ${newLegosCount * 10} phrases`);
+    console.log(`[Phase 5 Prep] ${seed.seed_id}: ${newLegosCount} LEGOs → ${newLegosCount * 10} phrases (10 recent seeds context)`);
 
     // Create scaffold
     const scaffold = {
@@ -298,24 +230,22 @@ async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
       recent_context: seedScaffold.recent_context,
       legos: seedScaffold.legos,
       _instructions: {
-        task: "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
-        methodology: "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
-        output: `Write to: ${courseDir}/phase5_outputs/seed_${seed.seed_id.toLowerCase()}.json`,
-        whitelist_note: "3-category rule applied: A-types, M-types, M-components with literal translations"
+        task: "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+        methodology: "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+        vocabulary_sources: "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+        distribution: "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+        output: `${courseDir}/phase5_outputs/seed_${seed.seed_id.toLowerCase()}.json`
       },
       _stats: {
         new_legos_in_seed: newLegosCount,
         phrases_to_generate: newLegosCount * 10,
-        cumulative_legos_before: cumulativeCount
+        recent_seeds_count: Object.keys(seedScaffold.recent_context).length
       }
     };
 
-    // Write scaffold with whitelist (agent needs it for GATE validation)
+    // Write scaffold
     const scaffoldPath = path.join(scaffoldsDir, `seed_${seed.seed_id.toLowerCase()}.json`);
-    await fs.writeJson(scaffoldPath, scaffold);
-
-    // Update cumulative count for next seed
-    cumulativeCount += seed.legos.filter(l => l.new).length;
+    await fs.writeJson(scaffoldPath, scaffold, { spaces: 2 });
   }
 
   console.log(`[Phase 5 Prep] ✅ Generated ${seeds.length} scaffold files`);
@@ -326,32 +256,6 @@ async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
   const outputsDir = path.join(courseDir, 'phase5_outputs');
   await fs.ensureDir(outputsDir);
   console.log(`[Phase 5 Prep] Created outputs directory: ${outputsDir}`);
-
-  // Generate whitelist validation file (for debugging)
-  const exampleSeed = seeds[10]; // Use seed 11 as example
-  if (exampleSeed) {
-    // Calculate cumulative before seed 11
-    let cumulative = 0;
-    for (let i = 0; i < 10; i++) {
-      cumulative += seeds[i].legos.filter(l => l.new).length;
-    }
-
-    const whitelistPairs = buildWhitelistUpToLegoCount({ seeds }, cumulative);
-    const whitelistDebug = {
-      example_seed: exampleSeed.seed_id,
-      cumulative_before_seed: cumulative,
-      whitelist_size: whitelistPairs.length,
-      sample_pairs: whitelistPairs.slice(0, 20),
-      note: "This shows how whitelist is built using 3-category rule (LEGO pairs + component pairs)"
-    };
-
-    await fs.writeJson(
-      path.join(scaffoldsDir, '_whitelist_example.json'),
-      whitelistDebug,
-      { spaces: 2 }
-    );
-    console.log(`[Phase 5 Prep] Generated whitelist example: _whitelist_example.json`);
-  }
 
   return {
     success: true,
