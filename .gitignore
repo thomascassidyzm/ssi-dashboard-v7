@@ -70,8 +70,11 @@ public/vfs/courses/*/phase5_outputs/
 # =====================================
 # DO commit:    lego_baskets.json (final merged output)
 # DON'T commit: phase5_outputs/* (working files - too large)
-# 
+#
 # Workflow:
 # 1. Generate phase5_outputs/seed_*.json (stays local)
 # 2. Run: node scripts/merge_phase5_to_lego_baskets.cjs
 # 3. Commit only lego_baskets.json to git
+
+# Course archives (don't commit)
+public/vfs/courses/archive/
