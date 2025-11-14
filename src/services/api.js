@@ -79,23 +79,11 @@ export default {
     },
 
     async list() {
-      // On Vercel, always use static manifest (same data for everyone)
-      // On local dev, try API server first (for real-time updates)
-      const isVercel = window.location.hostname.includes('vercel.app')
-
-      if (!isVercel) {
-        try {
-          // Local dev: Try API server first (reads local machine's VFS)
-          const response = await api.get('/api/courses')
-          return response.data
-        } catch (err) {
-          console.log('[API] Server unavailable, falling back to static manifest')
-        }
-      }
-
-      // Vercel or API unavailable: Use static manifest (same for everyone)
+      // ALWAYS use static manifest (GitHub is single source of truth)
+      // This ensures everyone (Tom, Kai, anyone) sees the same courses
+      // Differences only appear temporarily until changes are pushed to GitHub
       try {
-        console.log('[API] Loading courses from static manifest (GitHub/Vercel)')
+        console.log('[API] Loading courses from static manifest (GitHub SSoT)')
 
         try {
           // Use pre-generated manifest (created at build time by generate-course-manifest.js)
@@ -227,34 +215,10 @@ export default {
         }
       }
 
+      // ALWAYS use static files (GitHub SSoT)
+      // Don't try API server - ensures everyone sees same data
       try {
-        // Try API server first
-        const response = await api.get(`/api/courses/${courseCode}`)
-        const data = response.data
-
-        // Cache the API response
-        if (data.course && data.course.version) {
-          // Convert translations array back to v7.7 format for caching
-          const translationsObj = {}
-          if (data.translations) {
-            for (const trans of data.translations) {
-              translationsObj[trans.seed_id] = [trans.target_phrase, trans.known_phrase]
-            }
-          }
-
-          await setCachedCourse(courseCode, data.course.version, {
-            seedPairs: { translations: translationsObj },
-            legoPairs: { seeds: data.lego_breakdowns || [] },
-            legoBaskets: data.baskets || []
-          }).catch(err => {
-            console.warn('[API] Failed to cache course data:', err)
-          })
-        }
-
-        return data
-      } catch (err) {
-        // Fallback to static files if API unavailable
-        console.log(`[API] Server unavailable, using static files for ${courseCode}`)
+        console.log(`[API] Loading ${courseCode} from static files (GitHub SSoT)`)
 
         // Use the courseCode as-is for static file paths
         // (segment ranges have their own directories, not a base course)
@@ -515,6 +479,11 @@ export default {
 
     async saveBasket(courseCode, seedId, basketData) {
       const response = await api.put(`/api/courses/${courseCode}/baskets/${seedId}`, basketData)
+      return response.data
+    },
+
+    async updateIntroduction(courseCode, legoId, introData) {
+      const response = await api.put(`/api/courses/${courseCode}/introductions/${legoId}`, introData)
       return response.data
     }
   },
