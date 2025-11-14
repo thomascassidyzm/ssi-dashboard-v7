@@ -10,7 +10,7 @@
 | **4** | Batch Preparation | `lego_pairs.json` | `batches/*.json` | Script (automatic) | None (preprocessing) |
 | **5** | Practice Baskets | `lego_pairs.json` | `lego_baskets.json` | Orchestrator → Agents | 7 segments × 10 agents = 70 agents |
 | **5.5** | Deduplication | `lego_baskets.json` | Cleaned baskets | Script (automatic) | None (deduplication) |
-| **6** | Introductions | `lego_pairs.json` | `introductions.json` | Single agent | 1 agent |
+| **6** | Introductions | `lego_pairs.json` | `introductions.json` | Script (automatic) | None (template-based) |
 | **7** | Compilation | All phase outputs | `compilation.json` | Script (automatic) | None (manifest building) |
 | **8** | Audio Generation | All text | Audio files | Background queue | None (TTS service) |
 
@@ -387,25 +387,22 @@ Generate LEGO introductions - natural language explanations of how to use each L
 ```
 
 ### Automation Method
-**Single Agent** (Browser-based)
+**Automatic Script** (Template-based generation)
 
+```javascript
+const { generateIntroductions } = require('./scripts/phase6-generate-introductions.cjs');
+await generateIntroductions(courseDir);
 ```
-Phase 6 Orchestrator
-    ↓
-    Spawns 1 Claude agent
-    ↓
-    Agent processes all LEGOs
-    ↓
-    Commits to: claude/phase6-introductions
-    ↓
-    Creates introductions.json
-```
+
+The script uses template-based rules to generate natural language introductions:
+- **BASE LEGOs (type: B)**: "Now, the Spanish for 'I want' as in '{seed}' is 'quiero', quiero."
+- **COMPOSITE LEGOs (type: C)**: Detailed breakdown with component explanations
 
 ### Configuration
+- **Script**: `scripts/phase6-generate-introductions.cjs`
 - **Intelligence**: `public/docs/phase_intelligence/phase_6_introductions.md`
-- **Agent count**: 1 (not parallelized)
-- **Git branch**: `claude/phase6-introductions`
-- **Auto-merge**: Yes
+- **No agents**: Template-based text generation
+- **Auto-run**: Yes (after Phase 5 in full automation flow)
 
 ### Trigger
 ```bash
