@@ -518,15 +518,15 @@
 
             <!-- Introductions Tab -->
             <div v-if="activeTab === 'introductions'">
-              <h3 class="text-lg font-semibold text-emerald-400 mb-4">LEGO Introductions (Phase 6)</h3>
+              <h3 class="text-lg font-semibold text-emerald-400 mb-4">LEGO Presentations (Phase 6)</h3>
 
-              <div v-if="!introductionsData || !introductionsData.introductions" class="text-center py-8 text-slate-400">
-                No introductions found. Phase 6 may not be complete yet.
+              <div v-if="!introductionsData || !introductionsData.presentations" class="text-center py-8 text-slate-400">
+                No presentations found. Phase 6 may not be complete yet.
               </div>
 
               <div v-else class="space-y-3">
                 <div
-                  v-for="(intro, legoId) in introductionsData.introductions"
+                  v-for="(presentation, legoId) in introductionsData.presentations"
                   :key="legoId"
                   class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
                 >
@@ -535,7 +535,7 @@
                       {{ legoId }}
                     </div>
                     <div class="flex-1">
-                      <p class="text-slate-300 text-sm leading-relaxed">{{ intro }}</p>
+                      <p class="text-slate-300 text-sm leading-relaxed">{{ presentation }}</p>
                     </div>
                   </div>
                 </div>
