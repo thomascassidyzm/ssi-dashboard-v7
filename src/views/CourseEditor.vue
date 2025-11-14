@@ -896,14 +896,16 @@ async function loadCourse() {
     legoBreakdowns.value = []
 
     // Load lego_baskets.json from VFS (v7.7+ format)
+    // ALWAYS use static files (GitHub SSoT)
     try {
-      const basketsResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/vfs/lego_baskets.json`, {
-        headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
-      })
+      const url = `/vfs/courses/${courseCode}/lego_baskets.json`
+      console.log('🔍 Fetching lego_baskets.json from static files (GitHub SSoT):', url)
+
+      const basketsResponse = await fetch(url)
+
       if (basketsResponse.ok) {
         basketsData.value = await basketsResponse.json()
+        console.log('📦 Loaded lego_baskets.json - baskets count:', Object.keys(basketsData.value?.baskets || {}).length)
       } else {
         console.log('lego_baskets.json not found (Phase 5 may not be complete)')
         basketsData.value = null
@@ -914,14 +916,16 @@ async function loadCourse() {
     }
 
     // Load introductions.json from VFS (Phase 6)
+    // ALWAYS use static files (GitHub SSoT)
     try {
-      const introsResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/vfs/introductions.json`, {
-        headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
-      })
+      const url = `/vfs/courses/${courseCode}/introductions.json`
+      console.log('🔍 Fetching introductions.json from static files (GitHub SSoT):', url)
+
+      const introsResponse = await fetch(url)
+
       if (introsResponse.ok) {
         introductionsData.value = await introsResponse.json()
+        console.log('📦 Loaded introductions.json - count:', Object.keys(introductionsData.value?.presentations || {}).length)
       } else {
         console.log('introductions.json not found (Phase 6 may not be complete)')
         introductionsData.value = null
