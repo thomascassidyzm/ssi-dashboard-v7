@@ -1,0 +1,45 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0647",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "target": "You speak it madam",
+    "known": "Lo habla señora"
+  },
+  "legos": {
+    "S0647L01": {
+      "lego": ["madam", "señora"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Madam", "señora", null, 1],
+        ["I can madam", "puedo señora", null, 2],
+        ["Something madam", "algo señora", null, 2],
+        ["How do you feel madam", "cómo se siente señora", null, 3],
+        ["Could you madam", "podría señora", null, 2],
+        ["Could you say that madam", "podría decir eso señora", null, 4],
+        ["I can help you madam", "puedo ayudarle señora", null, 3],
+        ["You're doing something madam", "está haciendo algo señora", null, 3],
+        ["Do you want madam", "quiere usted señora", null, 3],
+        ["I can help you that madam", "puedo ayudarle eso señora", null, 4]
+      ]
+    },
+    "S0647L02": {
+      "lego": ["you speak it", "lo habla"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["You speak it", "lo habla", null, 1],
+        ["You speak it sir", "lo habla señor", null, 2],
+        ["You speak it that", "lo habla eso", null, 2],
+        ["I can you speak it", "puedo lo habla", null, 2],
+        ["You speak it something", "lo habla algo", null, 2],
+        ["Could you you speak it", "podría lo habla", null, 2],
+        ["You speak it how do you feel", "lo habla cómo se siente", null, 4],
+        ["I can help you you speak it", "puedo ayudarle lo habla", null, 3],
+        ["You're doing you speak it", "está haciendo lo habla", null, 3],
+        ["You speak it madam", "lo habla señora", null, 2]
+      ]
+    }
+  }
+}
