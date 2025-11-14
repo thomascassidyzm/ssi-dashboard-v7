@@ -1,0 +1,387 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0056",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "target": "So I can remember how to say a few words.",
+    "known": "Para poder recordar cómo decir unas pocas palabras."
+  },
+  "recent_context": {
+    "S0051": [
+      "disfruto hacer | cosas interesantes | con mis amigos",
+      "I enjoy doing | interesting things | with my friends"
+    ],
+    "S0052": [
+      "quería escribir | escribir una carta | una carta | a su amigo | la semana pasada",
+      "wanted to write | write a letter | a letter | to his friend | last week"
+    ],
+    "S0053": [
+      "quería poner | poner su carta | su carta | en su bolsa",
+      "wanted to put | put his letter | his letter | in her bag"
+    ],
+    "S0054": [
+      "queríamos darte | darte un poco más | un poco más de tiempo | tiempo",
+      "we wanted to give you | give you a little more | a little more time | time"
+    ],
+    "S0055": [
+      "no disfruto | despertarme | no disfruto despertarme | cuando | no dormí | muy bien",
+      "I don't enjoy | waking up | I don't enjoy waking up | when | I didn't sleep | very well"
+    ]
+  },
+  "legos": {
+    "S0056L01": {
+      "lego": [
+        "so I can",
+        "para poder"
+      ],
+      "type": "M",
+      "available_legos": 286,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "So I can learn",
+          "Para poder aprender",
+          null,
+          null
+        ],
+        [
+          "So I can speak",
+          "Para poder hablar",
+          null,
+          null
+        ],
+        [
+          "So I can learn Spanish",
+          "Para poder aprender español",
+          null,
+          null
+        ],
+        [
+          "So I can speak here",
+          "Para poder hablar aquí",
+          null,
+          null
+        ],
+        [
+          "So I can speak with you",
+          "Para poder hablar contigo",
+          null,
+          null
+        ],
+        [
+          "So I can remember it",
+          "Para poder recordar eso",
+          null,
+          null
+        ],
+        [
+          "So I can speak Spanish with my friends",
+          "Para poder hablar español con mis amigos",
+          null,
+          null
+        ],
+        [
+          "So I can learn as often as possible",
+          "Para poder aprender lo más frecuentemente posible",
+          null,
+          null
+        ],
+        [
+          "So I can remember how to say something",
+          "Para poder recordar cómo decir algo",
+          null,
+          null
+        ],
+        [
+          "So I can speak Spanish very well",
+          "Para poder hablar español muy bien",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0056L02": {
+      "lego": [
+        "can remember",
+        "poder recordar"
+      ],
+      "type": "M",
+      "available_legos": 287,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 7,
+      "practice_phrases": [
+        [
+          "I can remember",
+          "Puedo recordar",
+          null,
+          null
+        ],
+        [
+          "I can remember something",
+          "Puedo recordar algo",
+          null,
+          null
+        ],
+        [
+          "I can remember a few words",
+          "Puedo recordar unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I can remember how to say it",
+          "Puedo recordar cómo decir eso",
+          null,
+          null
+        ],
+        [
+          "So I can remember a few words",
+          "Para poder recordar unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I can remember how to say something",
+          "Puedo recordar cómo decir algo",
+          null,
+          null
+        ],
+        [
+          "I can remember how to say it in Spanish",
+          "Puedo recordar cómo decir eso en español",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      }
+    },
+    "S0056L03": {
+      "lego": [
+        "remember",
+        "recordar"
+      ],
+      "type": "A",
+      "available_legos": 288,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "I can remember",
+          "Puedo recordar",
+          null,
+          null
+        ],
+        [
+          "I want to remember",
+          "Quiero recordar",
+          null,
+          null
+        ],
+        [
+          "I need to remember something",
+          "Necesito recordar algo",
+          null,
+          null
+        ],
+        [
+          "I can remember a few words",
+          "Puedo recordar unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "So I can remember how to say it",
+          "Para poder recordar cómo decir eso",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    },
+    "S0056L04": {
+      "lego": [
+        "how to say",
+        "cómo decir"
+      ],
+      "type": "M",
+      "available_legos": 289,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "How to say that",
+          "Cómo decir eso",
+          null,
+          null
+        ],
+        [
+          "I know how to say it",
+          "Sé cómo decir eso",
+          null,
+          null
+        ],
+        [
+          "How to say something here",
+          "Cómo decir algo aquí",
+          null,
+          null
+        ],
+        [
+          "I know how to say that",
+          "Sé cómo decir eso",
+          null,
+          null
+        ],
+        [
+          "I want to know how to say it",
+          "Quiero saber cómo decir eso",
+          null,
+          null
+        ],
+        [
+          "I can't remember how to say it",
+          "No puedo recordar cómo decir eso",
+          null,
+          null
+        ],
+        [
+          "I know how to say a few words",
+          "Sé cómo decir unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I want to learn how to say something",
+          "Quiero aprender cómo decir algo",
+          null,
+          null
+        ],
+        [
+          "I need to remember how to say it in Spanish",
+          "Necesito recordar cómo decir eso en español",
+          null,
+          null
+        ],
+        [
+          "So I can remember how to say a few words",
+          "Para poder recordar cómo decir unas pocas palabras",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0056L05": {
+      "lego": [
+        "a few words",
+        "unas pocas palabras"
+      ],
+      "type": "M",
+      "available_legos": 290,
+      "is_final_lego": true,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "A few words here",
+          "Unas pocas palabras aquí",
+          null,
+          null
+        ],
+        [
+          "I know a few words",
+          "Sé unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I can say a few words",
+          "Puedo decir unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I want to learn a few words",
+          "Quiero aprender unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I can remember a few words",
+          "Puedo recordar unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I know how to say a few words",
+          "Sé cómo decir unas pocas palabras",
+          null,
+          null
+        ],
+        [
+          "I want to learn a few words in Spanish",
+          "Quiero aprender unas pocas palabras en español",
+          null,
+          null
+        ],
+        [
+          "I can remember a few words when I need to",
+          "Puedo recordar unas pocas palabras cuando necesito",
+          null,
+          null
+        ],
+        [
+          "I want to say a few words to my friends",
+          "Quiero decir unas pocas palabras a mis amigos",
+          null,
+          null
+        ],
+        [
+          "So I can remember how to say a few words.",
+          "Para poder recordar cómo decir unas pocas palabras.",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0056.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "cumulative_legos_before": 286
+  }
+}

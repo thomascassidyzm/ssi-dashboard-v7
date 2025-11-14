@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0072",
+  "generation_stage": "PRACTICE_PHRASES_GENERATED",
+  "seed_pair": {
+    "target": "I think that you're doing very well.",
+    "known": "Pienso que estás haciendo muy bien"
+  },
+  "recent_context": {
+    "S0067": ["por qué | quieres parar | quieres | parar", "why | you want to stop | you want | to stop"],
+    "S0068": ["qué | estás buscando | buscando", "what | are you looking for | looking for"],
+    "S0069": ["no quería | cuidar | el perro joven | toda la tarde", "he didn't want | to look after | the young dog | all afternoon"],
+    "S0070": ["ella no quería | no quería | decirme | dónde estaba", "she didn't want | didn't want | to tell me | where it was"],
+    "S0071": ["no queríamos | queríamos permitir | permitir que nadie oyera | que nadie oyera | la verdad", "we didn't want | wanted to let | let anyone hear | anyone hear | the truth"]
+  },
+  "legos": {
+    "S0072L01": {
+      "lego": ["I think that", "pienso que"],
+      "type": "M",
+      "available_legos": 356,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        ["I think that it's important.", "Pienso que es importante."],
+        ["I think that it's useful.", "Pienso que es útil."],
+        ["I think that you understand.", "Pienso que comprendes."],
+        ["I think that it's very interesting.", "Pienso que es muy interesante."],
+        ["I think that you speak Spanish well.", "Pienso que hablas español bien."],
+        ["I think that it's a good thing.", "Pienso que es una cosa buena."],
+        ["I think that you're learning Spanish very well.", "Pienso que estás aprendiendo español muy bien."],
+        ["I think that you want to speak with my friends.", "Pienso que quieres hablar con mis amigos."],
+        ["I think that it's important to practise speaking.", "Pienso que es importante practicar hablar."],
+        ["I think that you know what I mean.", "Pienso que sabes lo que quiero decir."]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0072L02": {
+      "lego": ["you're doing", "estás haciendo"],
+      "type": "M",
+      "available_legos": 357,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        ["You're doing well.", "Estás haciendo bien."],
+        ["You're doing that.", "Estás haciendo eso."],
+        ["You're doing something interesting.", "Estás haciendo algo interesante."],
+        ["You're doing it now.", "Estás haciendo eso ahora."],
+        ["You're doing very well today.", "Estás haciendo muy bien hoy."],
+        ["You're doing it very well.", "Estás haciendo eso muy bien."],
+        ["I think that you're doing very well.", "Pienso que estás haciendo muy bien."],
+        ["You're doing something interesting in Spanish.", "Estás haciendo algo interesante en español."],
+        ["You're doing very well with everyone else.", "Estás haciendo muy bien con todos los demás."],
+        ["You're doing it as well as you can.", "Estás haciendo eso tan bien como puedas."]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0072L03": {
+      "lego": ["very well", "muy bien"],
+      "type": "M",
+      "available_legos": 358,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        ["Very well.", "Muy bien."],
+        ["I speak very well.", "Hablo muy bien."],
+        ["You speak very well.", "Hablas muy bien."],
+        ["I feel very well.", "Me siento muy bien."],
+        ["You speak Spanish very well.", "Hablas español muy bien."],
+        ["I think you speak well.", "Pienso que hablas bien."],
+        ["I think that you speak Spanish very well.", "Pienso que hablas español muy bien."],
+        ["You're doing very well with my friends.", "Estás haciendo muy bien con mis amigos."],
+        ["I think that you understand everything very well.", "Pienso que comprendes todo muy bien."],
+        ["You're learning to speak Spanish very well now.", "Estás aprendiendo hablar español muy bien ahora."]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0072L04": {
+      "lego": ["you're doing very well", "estás haciendo muy bien"],
+      "type": "M",
+      "available_legos": 359,
+      "is_final_lego": true,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        ["You're doing very well now.", "Estás haciendo muy bien ahora."],
+        ["You're doing very well with that.", "Estás haciendo muy bien con eso."],
+        ["I think you're doing very well.", "Pienso que estás haciendo muy bien."],
+        ["You're doing very well learning Spanish.", "Estás haciendo muy bien aprendiendo español."],
+        ["I think that you're doing very well.", "Pienso que estás haciendo muy bien."]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0072.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "cumulative_legos_before": 356
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0079",
+  "generation_stage": "PRACTICE_PHRASES_COMPLETE",
+  "seed_pair": {
+    "target": "When did you start to learn?",
+    "known": "¿Cuándo comenzaste a aprender?"
+  },
+  "recent_context": {
+    "S0074": [
+      "muchas gracias | por ayudarme | ayudarme a comprender | por ayudarme a comprender",
+      "thank you very much | for helping me | helping me to understand | for helping me to understand"
+    ],
+    "S0075": [
+      "tienes | más que aprender | tienes más que aprender",
+      "have you got / do you have | more to learn | have you got more to learn"
+    ],
+    "S0076": [
+      "estoy muy feliz | muy feliz | feliz con | cuánto he aprendido | he aprendido | ya",
+      "I'm very happy | very happy | happy with | how much I've learnt | I've learnt | already"
+    ],
+    "S0077": [
+      "estoy sorprendido de | lo rápidamente que | estoy comenzando a | comenzando a comprender | comprender",
+      "I'm surprised at | how quickly | I'm starting to | starting to understand | understand"
+    ],
+    "S0078": [
+      "no comprendo | lo que dijiste | no comprendo lo que dijiste",
+      "I don't understand | what you said | I don't understand what you said"
+    ]
+  },
+  "legos": {
+    "S0079L01": {
+      "lego": [
+        "when did you start",
+        "cuándo comenzaste"
+      ],
+      "type": "M",
+      "available_legos": 404,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0079L01",
+        "seed_context": {
+          "target": "When did you start to learn?",
+          "known": "¿Cuándo comenzaste a aprender?"
+        },
+        "available_whitelist_size": 494,
+        "components": [
+          [
+            "cuándo",
+            "when"
+          ],
+          [
+            "comenzaste",
+            "did you start/you started"
+          ]
+        ]
+      }
+    },
+    "S0079L02": {
+      "lego": [
+        "started to learn",
+        "comenzaste a aprender"
+      ],
+      "type": "M",
+      "available_legos": 405,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 7,
+      "practice_phrases": [
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0079L02",
+        "seed_context": {
+          "target": "When did you start to learn?",
+          "known": "¿Cuándo comenzaste a aprender?"
+        },
+        "available_whitelist_size": 497,
+        "components": [
+          [
+            "comenzaste",
+            "you started"
+          ],
+          [
+            "a",
+            "to"
+          ],
+          [
+            "aprender",
+            "learn"
+          ]
+        ]
+      }
+    },
+    "S0079L03": {
+      "lego": [
+        "when did you start to learn",
+        "cuándo comenzaste a aprender"
+      ],
+      "type": "M",
+      "available_legos": 406,
+      "is_final_lego": true,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0079L03",
+        "seed_context": {
+          "target": "When did you start to learn?",
+          "known": "¿Cuándo comenzaste a aprender?"
+        },
+        "available_whitelist_size": 498,
+        "components": [
+          [
+            "cuándo",
+            "when"
+          ],
+          [
+            "comenzaste",
+            "did you start"
+          ],
+          [
+            "a",
+            "to"
+          ],
+          [
+            "aprender",
+            "learn"
+          ]
+        ]
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0079.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "phrases_to_generate": 22,
+    "cumulative_legos_before": 404
+  }
+}
