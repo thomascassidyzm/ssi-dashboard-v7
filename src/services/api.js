@@ -79,13 +79,23 @@ export default {
     },
 
     async list() {
+      // On Vercel, always use static manifest (same data for everyone)
+      // On local dev, try API server first (for real-time updates)
+      const isVercel = window.location.hostname.includes('vercel.app')
+
+      if (!isVercel) {
+        try {
+          // Local dev: Try API server first (reads local machine's VFS)
+          const response = await api.get('/api/courses')
+          return response.data
+        } catch (err) {
+          console.log('[API] Server unavailable, falling back to static manifest')
+        }
+      }
+
+      // Vercel or API unavailable: Use static manifest (same for everyone)
       try {
-        // Try API server first (for real-time updates)
-        const response = await api.get('/api/courses')
-        return response.data
-      } catch (err) {
-        // Fallback to static files if API unavailable
-        console.log('[API] Server unavailable, using static course manifest')
+        console.log('[API] Loading courses from static manifest (GitHub/Vercel)')
 
         try {
           // Use pre-generated manifest (created at build time by generate-course-manifest.js)
