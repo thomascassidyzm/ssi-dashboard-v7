@@ -345,7 +345,7 @@ export default {
           await setCachedCourse(courseCode, course.version, {
             seedPairs: seedPairsData,
             legoPairs: legoPairsData,
-            legoBaskets: []
+            legoBaskets: legoBasketsData?.baskets || []
           }).catch(err => {
             console.warn('[API] Failed to cache course data:', err)
           })
