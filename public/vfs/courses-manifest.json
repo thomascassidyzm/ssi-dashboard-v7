@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-14T03:13:33.435Z",
+  "generated_at": "2025-11-14T14:00:02.884Z",
   "courses": [
     {
       "course_code": "archive",
@@ -69,6 +69,26 @@
       "files": {
         "seed_pairs": false,
         "lego_pairs": false,
+        "baskets": false
+      }
+    },
+    {
+      "course_code": "cmn_for_eng_s0454-0463",
+      "source_language": "ENG",
+      "target_language": "CMN",
+      "total_seeds": 10,
+      "actual_seed_count": 10,
+      "lego_count": 50,
+      "format": "7.0",
+      "phase": "phase_3",
+      "phases_completed": [
+        "1",
+        "3"
+      ],
+      "has_baskets": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
         "baskets": false
       }
     }
