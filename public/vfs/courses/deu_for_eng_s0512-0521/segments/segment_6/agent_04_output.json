@@ -1,0 +1,216 @@
+{
+  "agent_id": "agent_04",
+  "seed_range": "S0518-S0519",
+  "extracted_at": "2025-11-14T15:45:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0518",
+      "seed_pair": [
+        "Ich konnte mir nicht vorstellen, genau dasselbe Problem zu haben.",
+        "I couldn't imagine myself having exactly the same problem."
+      ],
+      "legos": [
+        {
+          "id": "S0518L01",
+          "type": "M",
+          "target": "Ich konnte mir nicht vorstellen",
+          "known": "I couldn't imagine",
+          "new": true,
+          "components": [
+            ["Ich", "I"],
+            ["konnte", "couldn't/could"],
+            ["mir", "myself"],
+            ["nicht", "not"],
+            ["vorstellen", "imagine"]
+          ]
+        },
+        {
+          "id": "S0518L02",
+          "type": "M",
+          "target": "genau dasselbe",
+          "known": "exactly the same",
+          "new": true,
+          "components": [
+            ["genau", "exactly"],
+            ["dasselbe", "the same"]
+          ]
+        },
+        {
+          "id": "S0518L03",
+          "type": "M",
+          "target": "dasselbe Problem",
+          "known": "the same problem",
+          "new": true,
+          "components": [
+            ["dasselbe", "the same"],
+            ["Problem", "problem"]
+          ]
+        },
+        {
+          "id": "S0518L04",
+          "type": "M",
+          "target": "genau dasselbe Problem",
+          "known": "exactly the same problem",
+          "new": true,
+          "components": [
+            ["genau", "exactly"],
+            ["dasselbe", "the same"],
+            ["Problem", "problem"]
+          ]
+        },
+        {
+          "id": "S0518L05",
+          "type": "A",
+          "target": "Problem",
+          "known": "problem",
+          "new": true
+        },
+        {
+          "id": "S0518L06",
+          "type": "M",
+          "target": "zu haben",
+          "known": "to have",
+          "new": true,
+          "components": [
+            ["zu", "to"],
+            ["haben", "have"]
+          ]
+        },
+        {
+          "id": "S0518L07",
+          "type": "M",
+          "target": "dasselbe Problem zu haben",
+          "known": "having the same problem",
+          "new": true,
+          "components": [
+            ["dasselbe", "the same"],
+            ["Problem", "problem"],
+            ["zu", "to"],
+            ["haben", "have"]
+          ]
+        },
+        {
+          "id": "S0518L08",
+          "type": "M",
+          "target": "genau dasselbe Problem zu haben",
+          "known": "having exactly the same problem",
+          "new": true,
+          "components": [
+            ["genau", "exactly"],
+            ["dasselbe", "the same"],
+            ["Problem", "problem"],
+            ["zu", "to"],
+            ["haben", "have"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0519",
+      "seed_pair": [
+        "Ich habe ihr neues Baby noch nicht gesehen.",
+        "I haven't seen their new baby yet."
+      ],
+      "legos": [
+        {
+          "id": "S0519L01",
+          "type": "M",
+          "target": "Ich habe gesehen",
+          "known": "I have seen",
+          "new": true,
+          "components": [
+            ["Ich", "I"],
+            ["habe", "have"],
+            ["gesehen", "seen"]
+          ]
+        },
+        {
+          "id": "S0519L02",
+          "type": "M",
+          "target": "Ich habe noch nicht gesehen",
+          "known": "I haven't seen yet",
+          "new": true,
+          "components": [
+            ["Ich", "I"],
+            ["habe", "have"],
+            ["noch", "yet"],
+            ["nicht", "not"],
+            ["gesehen", "seen"]
+          ]
+        },
+        {
+          "id": "S0519L03",
+          "type": "M",
+          "target": "noch nicht gesehen",
+          "known": "not yet seen",
+          "new": true,
+          "components": [
+            ["noch", "yet"],
+            ["nicht", "not"],
+            ["gesehen", "seen"]
+          ]
+        },
+        {
+          "id": "S0519L04",
+          "type": "M",
+          "target": "noch nicht",
+          "known": "not yet",
+          "new": true,
+          "components": [
+            ["noch", "yet"],
+            ["nicht", "not"]
+          ]
+        },
+        {
+          "id": "S0519L05",
+          "type": "M",
+          "target": "nicht gesehen",
+          "known": "not seen",
+          "new": true,
+          "components": [
+            ["nicht", "not"],
+            ["gesehen", "seen"]
+          ]
+        },
+        {
+          "id": "S0519L06",
+          "type": "M",
+          "target": "ihr neues Baby",
+          "known": "their new baby",
+          "new": true,
+          "components": [
+            ["ihr", "their"],
+            ["neues", "new"],
+            ["Baby", "baby"]
+          ]
+        },
+        {
+          "id": "S0519L07",
+          "type": "M",
+          "target": "neues Baby",
+          "known": "new baby",
+          "new": true,
+          "components": [
+            ["neues", "new"],
+            ["Baby", "baby"]
+          ]
+        },
+        {
+          "id": "S0519L08",
+          "type": "A",
+          "target": "Baby",
+          "known": "baby",
+          "new": true
+        },
+        {
+          "id": "S0519L09",
+          "type": "A",
+          "target": "gesehen",
+          "known": "seen",
+          "new": true
+        }
+      ]
+    }
+  ]
+}
