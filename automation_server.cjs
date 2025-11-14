@@ -602,185 +602,104 @@ All agents will commit to their session branches. The master orchestrator will m
 /**
  * Generate Phase 5 Master Prompt - Self-Managing Practice Basket Generation
  */
-function generatePhase5MasterPrompt(courseCode, params, courseDir) {
+function generatePhase5OrchestratorPrompt(courseCode, params, courseDir) {
   const { target, known, startSeed, endSeed } = params;
   const totalSeeds = endSeed - startSeed + 1;
 
-  // For small batches (≤10 seeds), use 1 agent per 2 seeds for parallelization
-  // For larger batches, use traditional 20 seeds per agent
-  let seedsPerAgent, agentCount;
-  if (totalSeeds <= 10) {
-    seedsPerAgent = 2;
-    agentCount = Math.ceil(totalSeeds / seedsPerAgent);
-  } else {
-    seedsPerAgent = 20;
-    agentCount = Math.ceil(totalSeeds / seedsPerAgent);
-  }
+  // Always use 10 seeds per agent for optimal parallelization
+  const seedsPerAgent = 10;
+  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
 
   const relativeDir = getRelativeCourseDir(courseDir);
 
-  return `# Phase 5 Master Prompt: Practice Basket Generation with Self-Managing Parallelization
+  return `# Phase 5 Orchestrator: Spawn ${agentCount} Parallel Agents
 
 **Course**: ${courseCode}
 **Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
-**Target Agents**: ${agentCount} parallel agents
-**Seeds per agent**: ~${seedsPerAgent}
+**Required Agents**: ${agentCount} parallel agents
+**Seeds per agent**: ${seedsPerAgent}
 
 ---
 
-## 🎯 YOUR MISSION
+## 🎯 YOUR ONLY JOB: Spawn Agents
 
-You are the **Practice Basket Orchestrator**. Your job is to:
+You are the orchestrator. **DO NOT** read files or generate content yourself.
 
-1. **Spawn ${agentCount} parallel agents** to generate practice baskets for all ${totalSeeds} seeds
-2. **Monitor rate limits and adjust pacing** if needed
-3. **Handle errors gracefully** and retry failed agents
-4. **Report progress** as agents complete
+**Your task:**
+1. Spawn ${agentCount} agents in parallel
+2. Pass each agent its seed range (10 seeds each)
+3. Monitor progress and report when complete
 
-You have full autonomy to manage the parallelization strategy based on your rate limit observations.
-
----
-
-## 📚 PHASE 5 INTELLIGENCE (Single Source of Truth)
-
-**READ THIS DOCUMENT FIRST - IT'S ESSENTIAL**: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
-
-Or if local files are available: \`public/docs/phase_intelligence/phase_5_lego_baskets.md\` (v7.0)
-
-This is the **ONLY authoritative source** for Phase 5 basket generation methodology.
-
-## 🎭 YOUR ROLE: World-Leading Creator of Practice Phrases
-
-You are a **world-leading creator of practice phrases** in Spanish that help English speakers learn Spanish patterns as naturally and quickly as possible.
-
-Your phrases must:
-- ✅ Sound natural in BOTH English and Spanish
-- ✅ Use realistic communication scenarios
-- ✅ Follow vocabulary constraints (available sources only)
-- ✅ Help learners internalize Spanish grammar patterns without explicit grammar instruction
-
-## ✓ COMPREHENSION CHECKLIST (Complete BEFORE Generating)
-
-Read the intelligence doc and confirm you understand:
-
-□ **Vocabulary sources**: 10 recent seeds + current seed's earlier LEGOs + current LEGO
-□ **GATE compliance**: Every Spanish word MUST be available from these sources
-□ **Distribution**: ALWAYS 2-2-2-4 (10 phrases per LEGO, every time)
-□ **Final LEGO rule**: Highest phrase number = complete seed sentence
-□ **Workflow**: Think → Express → Validate (NOT templates or scripts)
-□ **Extended thinking**: Required for EVERY LEGO
-
-⛔ **CRITICAL**: This is LINGUISTIC WORK, not coding. DO NOT write scripts, templates, or automation.
-✅ **USE**: Your natural language intelligence to create meaningful utterances.
+**Each agent prompt should include:**
+- Specific seed range (e.g., "S0001-S0010")
+- Path to scaffolds: \`${relativeDir}/phase5_scaffolds/\`
+- Path to outputs: \`${relativeDir}/phase5_outputs/\`
+- Reference to Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
 
 ---
 
-## 📂 PREPARED SCAFFOLDS
+## 🚀 SPAWN ALL ${agentCount} AGENTS NOW
 
-Mechanical prep has been done! Individual seed scaffolds ready:
+Use the Task tool ${agentCount} times in a single message to spawn all agents in parallel.
 
-\`${relativeDir}/phase5_scaffolds/seed_sXXXX.json\` (one per seed)
-
-Each scaffold contains:
-- **recent_context**: 10 most recent seeds with LEGO tiles and new LEGOs highlighted
-- **current_seed_earlier_legos**: LEGOs from THIS seed available incrementally (L01 for L02, etc.)
-- **legos**: Empty practice_phrases arrays (YOU fill these)
-- **is_final_lego**: Flag marking final LEGO in each seed
-- **target_phrase_count**: ALWAYS 10 (v7.0 - no more adaptive counts)
-- **phrase_distribution**: ALWAYS 2-2-2-4 (v7.0 - no more overlap detection)
-
-**Vocabulary sources (NO massive whitelist!):**
-1. **10 recent seeds** - shown in recent_context with piped LEGO tiles
-2. **Current seed's earlier LEGOs** - incremental (grows as you progress through seed)
-3. **Current LEGO** - the one you're teaching
-
-This focused context prevents cognitive overload and encourages linguistic thinking!
-
----
-
-## 🚀 EXECUTION STRATEGY
-
-${agentCount <= 10 ? `
-### Strategy: FULL PARALLELIZATION (${totalSeeds} seeds, ${agentCount} agents)
-
-Spawn all ${agentCount} agents in parallel - maximize speed!
-
-**After EACH agent completes → PUSH IMMEDIATELY:**
+When all agents complete, tell the user to run validation:
 
 \`\`\`bash
-git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
-git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
-git push origin main
+node scripts/phase5_merge_baskets.cjs ${courseDir}
 \`\`\`
+`;
+}
 
-**Critical**: Push each file immediately so automation tracks progress and can detect stuck jobs!
-` : `
-### Strategy: 2-WAVE EXECUTION (${totalSeeds} seeds, ${agentCount} agents)
+function generatePhase5AgentPrompt(courseCode, params, courseDir, agentNum, agentStartSeed, agentEndSeed) {
+  const { target, known } = params;
+  const relativeDir = getRelativeCourseDir(courseDir);
 
-Minimize waves, maximize speed. Use **2 waves** to balance speed vs timeout risk:
+  return `# Phase 5 Agent ${agentNum}: Generate Practice Baskets
 
-- **Wave 1**: Agents 1-${Math.ceil(agentCount / 2)} (${Math.ceil(agentCount / 2)} agents)
-- **Wave 2**: Agents ${Math.ceil(agentCount / 2) + 1}-${agentCount} (${agentCount - Math.ceil(agentCount / 2)} agents)
-
-**After EACH agent completes → PUSH IMMEDIATELY:**
-
-\`\`\`bash
-git add public/vfs/courses/${courseCode}/phase3_outputs/agent_XX_provisional.json
-git commit -m "Phase 3: Agent XX complete (seeds S0XXX-S0YYY)"
-git push origin main
-\`\`\`
-
-**Why immediate push:**
-- Automation sees files appearing in real-time
-- Easy to detect stuck jobs (no new file in 10+ min = problem)
-- Smart resume: Only redo missing agents if connection drops
-`}
+**Seeds**: S${String(agentStartSeed).padStart(4, '0')}-S${String(agentEndSeed).padStart(4, '0')} (${agentEndSeed - agentStartSeed + 1} seeds)
+**Scaffolds**: \`${relativeDir}/phase5_scaffolds/seed_sXXXX.json\`
+**Outputs**: \`${relativeDir}/phase5_outputs/seed_sXXXX.json\`
 
 ---
 
-## 📋 INDIVIDUAL SEED TASK (What Each Scaffold Requires)
+## ✓ BEFORE YOU START: Read Phase 5 Intelligence
 
-For each seed scaffold, your task is:
+**READ THIS FIRST**: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
 
-\`\`\`markdown
-## 🎯 Task: Fill Practice Phrases for Seed SXXXX
+Or local: \`public/docs/phase_intelligence/phase_5_lego_baskets.md\`
 
-**Scaffold**: Read \`${relativeDir}/phase5_scaffolds/seed_sXXXX.json\`
+**Confirm you understand:**
+□ Vocabulary sources: 10 recent seeds + current seed's earlier LEGOs + current LEGO
+□ GATE compliance: Every ${target} word MUST be available
+□ Distribution: ALWAYS 2-2-2-4 (10 phrases per LEGO)
+□ Final LEGO rule: Highest phrase # = complete seed sentence
+□ Workflow: Think → Express → Validate (NOT scripts/templates)
 
-## ✓ BEFORE YOU START: Complete Comprehension Checklist
+⛔ DO NOT write scripts or templates
+✅ USE your natural language intelligence
 
-Read https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 and confirm:
+---
 
-□ I understand vocabulary sources: 10 recent seeds + current seed's earlier LEGOs + current LEGO
-□ I understand GATE compliance: Every Spanish word MUST be available
-□ I understand distribution: ALWAYS 2-2-2-4 (10 phrases per LEGO)
-□ I understand final LEGO rule: Highest phrase # = complete seed sentence
-□ I understand workflow: Think → Express → Validate (NOT scripts/templates)
-□ I will use extended thinking for EVERY LEGO
+## 🎨 YOUR PROCESS (Per LEGO)
 
-⛔ I will NOT write scripts, templates, or automation code
-✅ I will use my natural language intelligence
-
-## 🎨 Your Process (Per LEGO)
-
-**STEP 1: Extended Thinking** (For EVERY LEGO)
+**STEP 1: Extended Thinking**
 - What is this LEGO? (verb/noun/phrase/etc.)
-- How is it naturally used in Spanish?
+- How is it naturally used in ${target}?
 - What would a learner want to say with it?
 
-**STEP 2: Think in English First**
-- Create meaningful English utterances
+**STEP 2: Think in ${known} First**
+- Create meaningful ${known} utterances
 - Think about natural communication scenarios
 - Start simple, build to complex (1-2 LEGOs → 5+ LEGOs)
 
-**STEP 3: Express in Spanish**
-- Translate your English thoughts to Spanish
+**STEP 3: Express in ${target}**
+- Translate your ${known} thoughts to ${target}
 - Use vocabulary from: recent_context + current_seed_earlier_legos + current LEGO
 - Build naturally, don't force patterns
 
 **STEP 4: Validate EVERY Word**
-- Check EVERY Spanish word is available
-- If not available → think of different English utterance
+- Check EVERY ${target} word is available
+- If not available → think of different ${known} utterance
 - No exceptions (GATE compliance is mandatory)
 
 **STEP 5: Generate 2-2-2-4 Distribution**
@@ -792,53 +711,27 @@ Read https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 and confirm:
 **STEP 6: Final LEGO Rule**
 - If is_final_lego = true, highest phrase # MUST be complete seed sentence
 
-## 📤 Output
-Write to: \`${relativeDir}/phase5_outputs/seed_sXXXX.json\`
+---
 
-Format: Same structure with practice_phrases filled
+## 📤 OUTPUT
+
+For each seed, write to: \`${relativeDir}/phase5_outputs/seed_sXXXX.json\`
+
+**CRITICAL OUTPUT RULES:**
+- Keep EXACT same structure as scaffold
+- ONLY fill practice_phrases arrays
+- DO NOT add whitelist_pairs to _metadata
+- DO NOT add available_whitelist_size
+- DO NOT add available_legos
+- DO NOT modify any existing fields
 
 **Quality over speed!** Think linguistically about what learners need.
-\`\`\`
-
----
-
-## 🎬 EXECUTE NOW
-
-Spawn your agents using whichever strategy you choose (full parallel, waves, or adaptive).
-
-**Monitor and adjust** based on what you observe.
-
-**Report progress** as agents complete.
-
-When all ${agentCount} agents finish, instruct the user to run the validation/merge script:
-
-\`\`\`bash
-node scripts/phase5_merge_baskets.cjs ${courseDir}
-\`\`\`
-
----
-
-## ✅ SUCCESS CRITERIA (v7.0)
-
-**Per Seed:**
-- ALL LEGOs have exactly 10 phrases (2-2-2-4 distribution)
-- 100% GATE compliance (all Spanish words from vocabulary sources)
-- Natural, meaningful language in BOTH English and Spanish
-- Final LEGO's highest phrase # = complete seed sentence
-- No template patterns, no repeated phrases, no nonsensical grammar
-- Evidence of extended thinking (variety, natural progression)
-
-**Overall:**
-- All ${totalSeeds} seeds processed
-- All baskets validated and formatted
-- Zero GATE violations
-- Overlap detection correctly applied
-- "Top dollar content" quality achieved
-
-**Target time**: 20-30 minutes with adaptive parallelization
-
-**You've got this!** Manage it however you think best given rate limits and system load.
 `;
+}
+
+function generatePhase5MasterPrompt(courseCode, params, courseDir) {
+  // For backward compatibility, return orchestrator prompt
+  return generatePhase5OrchestratorPrompt(courseCode, params, courseDir);
 }
 
 /**
