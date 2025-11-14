@@ -34,16 +34,16 @@ function getLanguageName(code) {
 }
 
 function generateBasePresentation(targetLang, knownLego, targetLego, knownSeed) {
-  return `Now, the ${targetLang} for "${knownLego}" as in "${knownSeed}" is "${targetLego}", ${targetLego}.`;
+  return `The ${targetLang} for '${knownLego}', is: ... '${targetLego}' ... '${targetLego}'`;
 }
 
 function generateCompositePresentation(targetLang, knownLego, targetLego, knownSeed, components) {
-  // Build component explanation
+  // Build component explanation with {target} tags
   // Component format: [[targetPart, knownPart], ...]
-  const componentParts = components.map(comp => {
+  const componentParts = components.map((comp, index) => {
     const targetPart = comp[0];
     const knownPart = comp[1];
-    return `"${targetPart}" means "${knownPart}"`;
+    return `{target${index + 1}}'${targetPart}' means ${knownPart}`;
   });
 
   // Join with proper grammar
@@ -51,13 +51,12 @@ function generateCompositePresentation(targetLang, knownLego, targetLego, knownS
   if (componentParts.length === 1) {
     explanation = componentParts[0];
   } else if (componentParts.length === 2) {
-    explanation = componentParts.join(' and ');
+    explanation = componentParts.join(', ');
   } else {
-    const last = componentParts.pop();
-    explanation = componentParts.join(', ') + ', and ' + last;
+    explanation = componentParts.join(', ');
   }
 
-  return `The ${targetLang} for "${knownLego}" as in "${knownSeed}" is "${targetLego}" - where ${explanation}.`;
+  return `The ${targetLang} for '${knownLego}', is: ... '${targetLego}' ... '${targetLego}' - ${explanation}`;
 }
 
 async function generateIntroductions(courseDir) {
@@ -99,7 +98,7 @@ async function generateIntroductions(courseDir) {
   console.log(`[Phase 6] Known: ${knownLang} (${knownCode})`);
   console.log(`[Phase 6] Seeds: ${seeds.length}\n`);
 
-  const introductions = {};
+  const presentations = {};
   let totalLegos = 0;
   let baseLegos = 0;
   let compositeLegos = 0;
@@ -146,7 +145,7 @@ async function generateIntroductions(courseDir) {
         continue;
       }
 
-      introductions[legoId] = presentation;
+      presentations[legoId] = presentation;
       totalLegos++;
     }
   }
@@ -158,7 +157,7 @@ async function generateIntroductions(courseDir) {
     target: targetCode,
     known: knownCode,
     generated: new Date().toISOString(),
-    introductions: introductions
+    presentations: presentations
   };
 
   // Write to file

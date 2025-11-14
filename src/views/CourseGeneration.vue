@@ -169,7 +169,7 @@
         <div class="mb-8">
           <h3 class="text-lg font-medium text-slate-300 mb-4">Select Phases to Run</h3>
 
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             <!-- All Phases -->
             <button
               @click="phaseSelection = 'all'"
@@ -229,6 +229,36 @@
               <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 5 Only</h4>
               <p class="text-xs text-slate-400">Practice baskets (lego_baskets.json)</p>
             </button>
+
+            <!-- Phase 6 Only -->
+            <button
+              @click="phaseSelection = 'phase6'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                phaseSelection === 'phase6'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">🎤</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 6 Only</h4>
+              <p class="text-xs text-slate-400">Presentations (introductions.json)</p>
+            </button>
+
+            <!-- Phase 7 Only -->
+            <button
+              @click="phaseSelection = 'phase7'"
+              :class="[
+                'p-4 rounded-lg border-2 transition text-left',
+                phaseSelection === 'phase7'
+                  ? 'border-emerald-500 bg-emerald-500/10'
+                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
+              ]"
+            >
+              <div class="text-2xl mb-2">📦</div>
+              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 7 Only</h4>
+              <p class="text-xs text-slate-400">Compilation (course.json)</p>
+            </button>
           </div>
 
           <!-- Phase Requirements Info -->
@@ -236,10 +266,12 @@
             <div class="flex items-start gap-2 text-xs text-amber-300">
               <span>⚠️</span>
               <div>
-                <strong>Phase {{ phaseSelection === 'phase1' ? '1' : phaseSelection === 'phase3' ? '3' : '5' }} requirements:</strong>
+                <strong>Phase {{ phaseSelection === 'phase1' ? '1' : phaseSelection === 'phase3' ? '3' : phaseSelection === 'phase5' ? '5' : phaseSelection === 'phase6' ? '6' : '7' }} requirements:</strong>
                 <span v-if="phaseSelection === 'phase1'"> No prerequisites</span>
                 <span v-else-if="phaseSelection === 'phase3'"> Requires seed_pairs.json (Phase 1 complete)</span>
                 <span v-else-if="phaseSelection === 'phase5'"> Requires lego_pairs.json (Phase 3 complete)</span>
+                <span v-else-if="phaseSelection === 'phase6'"> Requires lego_pairs.json (Phase 3 complete)</span>
+                <span v-else-if="phaseSelection === 'phase7'"> Requires all previous phases complete</span>
               </div>
             </div>
           </div>
