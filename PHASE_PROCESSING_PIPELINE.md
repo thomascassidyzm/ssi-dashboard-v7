@@ -144,7 +144,7 @@ node scripts/phase3_build_lego_registry.cjs spa_for_eng
 ```
 1. preparePhase3Scaffolds()           [Pre-processing]
     ↓
-2. Spawn 70 AI agents                 [Orchestration]
+2. Spawn 67 AI agents                 [Orchestration]
     ↓
 3. Agents extract LEGOs → git commits [Agent work]
     ↓
@@ -320,7 +320,7 @@ node scripts/phase5_merge_baskets.cjs spa_for_eng
 1. preparePhase5Scaffolds()           [Pre-processing]
     ↓ Creates batches with generate:true flags
     ↓
-2. Spawn 70 AI agents                 [Orchestration]
+2. Spawn 67 AI agents                 [Orchestration]
     ↓
 3. Agents generate baskets → commits  [Agent work]
     ↓
@@ -356,7 +356,7 @@ Phase 5.5 scripts (`phase5.5-deduplicate-baskets.cjs`, `phase5.5_grammar_review.
 ### Phase 3 Complete Pipeline
 ```
 Pre:  phase3_prep_scaffolds.cjs
-Run:  70 AI agents (LEGO extraction)
+Run:  67 AI agents (LEGO extraction)
 Post: mergePhase3Branches()
       → phase3_merge_legos.cjs
       → phase3_deduplicate_legos.cjs
@@ -368,7 +368,7 @@ Out:  lego_pairs.json (deduplicated, reordered, indexed)
 ### Phase 5 Complete Pipeline
 ```
 Pre:  phase5_prep_scaffolds.cjs (creates batches)
-Run:  70 AI agents (basket generation)
+Run:  67 AI agents (basket generation)
 Post: mergePhase5Branches()
       → phase5_merge_outputs.cjs
       → phase5_gate_validator.cjs

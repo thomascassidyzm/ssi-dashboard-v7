@@ -45,17 +45,20 @@ for (const entry of entries) {
   const seedPairsAlt = path.join(coursePath, 'translations.json')
   const legoPairsPath = path.join(coursePath, 'lego_pairs.json')
   const legoPairsAlt = path.join(coursePath, 'LEGO_BREAKDOWNS_COMPLETE.json')
-  const basketsPath = path.join(coursePath, 'baskets_deduplicated.json')
-  const basketsAlt = path.join(coursePath, 'baskets.json')
+  const basketsPath = path.join(coursePath, 'lego_baskets.json')
+  const basketsAlt = path.join(coursePath, 'baskets_deduplicated.json')
+  const basketsAlt2 = path.join(coursePath, 'baskets.json')
+  const introductionsPath = path.join(coursePath, 'introductions.json')
 
   const hasSeedPairs = fs.existsSync(seedPairsPath) || fs.existsSync(seedPairsAlt)
   const hasLegoPairs = fs.existsSync(legoPairsPath) || fs.existsSync(legoPairsAlt)
-  const hasBaskets = fs.existsSync(basketsPath) || fs.existsSync(basketsAlt)
+  const hasBaskets = fs.existsSync(basketsPath) || fs.existsSync(basketsAlt) || fs.existsSync(basketsAlt2)
+  const hasIntroductions = fs.existsSync(introductionsPath)
 
   // Get the actual path that exists
   const actualSeedPairsPath = fs.existsSync(seedPairsPath) ? seedPairsPath : seedPairsAlt
   const actualLegoPairsPath = fs.existsSync(legoPairsPath) ? legoPairsPath : legoPairsAlt
-  const actualBasketsPath = fs.existsSync(basketsPath) ? basketsPath : basketsAlt
+  const actualBasketsPath = fs.existsSync(basketsPath) ? basketsPath : (fs.existsSync(basketsAlt) ? basketsAlt : basketsAlt2)
 
   // Determine completion phase (always create an entry even if empty)
   let phase = 'empty'
@@ -78,6 +81,8 @@ for (const entry of entries) {
   // Default metadata for empty/incomplete courses
   let seedPairsData = null
   let legoPairsData = null
+  let basketsData = null
+  let introductionsData = null
 
   // Read files if they exist
   if (hasSeedPairs && fs.existsSync(actualSeedPairsPath)) {
@@ -85,6 +90,12 @@ for (const entry of entries) {
   }
   if (hasLegoPairs && fs.existsSync(actualLegoPairsPath)) {
     legoPairsData = JSON.parse(fs.readFileSync(actualLegoPairsPath, 'utf8'))
+  }
+  if (hasBaskets && fs.existsSync(actualBasketsPath)) {
+    basketsData = JSON.parse(fs.readFileSync(actualBasketsPath, 'utf8'))
+  }
+  if (hasIntroductions && fs.existsSync(introductionsPath)) {
+    introductionsData = JSON.parse(fs.readFileSync(introductionsPath, 'utf8'))
   }
 
   // Parse course code for language info
@@ -124,6 +135,12 @@ for (const entry of entries) {
   // Count seeds (only if seed_pairs.json exists)
   const seedCount = seedPairsData ? Object.keys(seedPairsData.translations || {}).length : 0
 
+  // Count baskets (from lego_baskets.json)
+  const basketCount = basketsData ? Object.keys(basketsData.baskets || {}).length : 0
+
+  // Count introductions (from introductions.json)
+  const introductionsCount = introductionsData ? Object.keys(introductionsData.presentations || {}).length : 0
+
   const courseInfo = {
     course_code: courseCode,
     source_language: match ? match[2].toUpperCase() : 'UNK',
@@ -131,14 +148,18 @@ for (const entry of entries) {
     total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : seedCount,
     actual_seed_count: seedCount,
     lego_count: legoCount,
+    basket_count: basketCount,
+    introductions_count: introductionsCount,
     format: format,
     phase: phase,
     phases_completed: phasesCompleted,
     has_baskets: hasBaskets,
+    has_introductions: hasIntroductions,
     files: {
       seed_pairs: hasSeedPairs,
       lego_pairs: hasLegoPairs,
-      baskets: hasBaskets
+      baskets: hasBaskets,
+      introductions: hasIntroductions
     }
   }
 

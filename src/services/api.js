@@ -105,7 +105,10 @@ export default {
               status: course.lego_count > 0 ? 'phase_3_complete' : 'phase_1_complete',
               seed_pairs: course.actual_seed_count,
               lego_pairs: course.lego_count,
-              lego_baskets: course.has_baskets ? 1 : 0,
+              lego_baskets: course.basket_count || 0,
+              amino_acids: {
+                introductions: course.introductions_count || 0
+              },
               phases_completed: course.lego_count > 0 ? ['1', '3'] : ['1']
             }))
 

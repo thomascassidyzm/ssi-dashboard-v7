@@ -6,9 +6,9 @@
 |-------|------|-------|--------|-------------------|--------|
 | **1** | Pedagogical Translation | Source text | `seed_pairs.json` | Orchestrator → Agents | 1 orchestrator → N agents (1 agent per 20 seeds) |
 | **2** | Collision Check | `seed_pairs.json` | Validation report | Script (manual) | None (validation script) |
-| **3** | LEGO Extraction | `seed_pairs.json` | `lego_pairs.json` | Orchestrator → Agents | 7 segments × 10 agents = 70 agents |
+| **3** | LEGO Extraction | `seed_pairs.json` | `lego_pairs.json` | Orchestrator → Agents | 7 segments (10+10+10+10+10+10+7) = 67 agents |
 | **4** | Batch Preparation | `lego_pairs.json` | `batches/*.json` | Script (automatic) | None (preprocessing) |
-| **5** | Practice Baskets | `lego_pairs.json` | `lego_baskets.json` | Orchestrator → Agents | 7 segments × 10 agents = 70 agents |
+| **5** | Practice Baskets | `lego_pairs.json` | `lego_baskets.json` | Orchestrator → Agents | 7 segments (10+10+10+10+10+10+7) = 67 agents |
 | **5.5** | Deduplication | `lego_baskets.json` | Cleaned baskets | Script (automatic) | None (deduplication) |
 | **6** | Introductions | `lego_pairs.json` | `introductions.json` | Script (automatic) | None (template-based) |
 | **7** | Compilation | All phase outputs | `compilation.json` | Script (automatic) | None (manifest building) |
@@ -149,7 +149,7 @@ Phase 3 Orchestrator
     ↓
     Each segment orchestrator spawns 10 agents (10 seeds/agent)
     ↓
-    Total: 7 × 10 = 70 concurrent agents
+    Total: 67 agents (segments: 10+10+10+10+10+10+7)
     ↓
     Each agent commits to: claude/phase3-segment-X-agent-Y
     ↓
@@ -287,7 +287,7 @@ Phase 5 Orchestrator
     ↓
     Each segment orchestrator spawns 10 agents (10 seeds/agent)
     ↓
-    Total: 7 × 10 = 70 concurrent agents
+    Total: 67 agents (segments: 10+10+10+10+10+10+7)
     ↓
     Each agent commits to: claude/phase5-segment-X-agent-Y
     ↓
