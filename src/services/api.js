@@ -314,7 +314,7 @@ export default {
           const match = matchStandard || matchBasic
 
           // Count baskets and introductions
-          const basketCount = legoBasketsData?.baskets?.length || 0
+          const basketCount = legoBasketsData?.baskets ? Object.keys(legoBasketsData.baskets).length : 0
           const introductionsCount = introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0
 
           const course = {
