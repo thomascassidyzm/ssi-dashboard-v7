@@ -3,6 +3,13 @@
 // Load environment variables from .env file
 require('dotenv').config();
 
+// Load local automation config if it exists (gitignored, per-developer settings)
+const path = require('path');
+if (require('fs').existsSync(path.join(__dirname, '.env.automation'))) {
+  require('dotenv').config({ path: path.join(__dirname, '.env.automation') });
+  console.log('✅ Loaded .env.automation (local configuration)');
+}
+
 /**
  * SSi Course Production - Automation Server v7.0
  *
@@ -39,14 +46,26 @@ const s3AudioService = require('./services/s3-audio-service.cjs');
 // =============================================================================
 // CONFIGURATION
 // =============================================================================
+// Configuration is loaded from:
+// 1. .env.automation (local, gitignored) - per-developer settings
+// 2. .env (shared) - fallback defaults
+// 3. Hardcoded defaults below
+// =============================================================================
 
 const CONFIG = {
+  // Server
   PORT: process.env.PORT || 3456,
-  VFS_ROOT: path.join(__dirname, 'public', 'vfs', 'courses'),
-  TRAINING_URL: 'https://ssi-dashboard-v7.vercel.app',
+
+  // VFS Root - CONFIGURABLE per developer
+  // Default: ./public/vfs/courses (relative to dashboard repo)
+  // Override in .env.automation with your SSi_Course_Production path
+  VFS_ROOT: process.env.VFS_ROOT || path.join(__dirname, 'public', 'vfs', 'courses'),
+
+  // Dashboard URL
+  TRAINING_URL: process.env.TRAINING_URL || 'https://ssi-dashboard-v7.vercel.app',
 
   // Background worker intervals
-  VFS_MONITOR_INTERVAL: 2000,  // 2 seconds
+  VFS_MONITOR_INTERVAL: parseInt(process.env.VFS_MONITOR_INTERVAL || '2000'),
 
   // Allowed CORS origins
   CORS_ORIGINS: [
@@ -62,13 +81,27 @@ const CONFIG = {
   // 'full': Full automation, no stops (for production after validation)
   CHECKPOINT_MODE: process.env.CHECKPOINT_MODE || 'manual',
 
+  // Orchestrator settings
+  USE_ORCHESTRATOR_V2: process.env.USE_ORCHESTRATOR_V2 === 'true',
+  AGENT_SPAWN_DELAY: parseInt(process.env.AGENT_SPAWN_DELAY || '5000'),
+  GIT_AUTO_MERGE: process.env.GIT_AUTO_MERGE !== 'false', // Default true
+
   // Validation thresholds for 'gated' mode
   VALIDATION_THRESHOLDS: {
-    phase3_error_rate: 0.05,  // Max 5% LEGO errors
-    phase5_gate_violations: 0.02,  // Max 2% GATE violations
-    phase5_quality_score: 0.95  // Min 95% quality
+    phase3_error_rate: parseFloat(process.env.VALIDATION_THRESHOLD_PHASE3_ERROR_RATE || '0.05'),
+    phase5_gate_violations: parseFloat(process.env.VALIDATION_THRESHOLD_PHASE5_GATE_VIOLATIONS || '0.02'),
+    phase5_quality_score: parseFloat(process.env.VALIDATION_THRESHOLD_PHASE5_QUALITY_SCORE || '0.95')
   }
 };
+
+// Log configuration on startup
+console.log('\n=== Automation Server Configuration ===');
+console.log(`VFS_ROOT: ${CONFIG.VFS_ROOT}`);
+console.log(`TRAINING_URL: ${CONFIG.TRAINING_URL}`);
+console.log(`CHECKPOINT_MODE: ${CONFIG.CHECKPOINT_MODE}`);
+console.log(`USE_ORCHESTRATOR_V2: ${CONFIG.USE_ORCHESTRATOR_V2}`);
+console.log(`GIT_AUTO_MERGE: ${CONFIG.GIT_AUTO_MERGE}`);
+console.log('======================================\n');
 
 // =============================================================================
 // PHASE PROMPTS (loaded from docs/phase_intelligence/)
