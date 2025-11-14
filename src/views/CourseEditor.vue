@@ -932,16 +932,13 @@ async function loadCourse() {
     }
 
     // Load lego_pairs.json from VFS (v2 format with nested structure)
+    // ALWAYS use static files (GitHub SSoT)
     console.log('🔍 Starting to load lego_pairs.json for course:', courseCode)
     try {
-      const url = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/vfs/lego_pairs.json`
-      console.log('🔍 Fetching from URL:', url)
+      const url = `/vfs/courses/${courseCode}/lego_pairs.json`
+      console.log('🔍 Fetching from static files (GitHub SSoT):', url)
 
-      const legoPairsResponse = await fetch(url, {
-        headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
-      })
+      const legoPairsResponse = await fetch(url)
 
       console.log('🔍 Response status:', legoPairsResponse.status, legoPairsResponse.ok)
 
