@@ -93,6 +93,11 @@ const CONFIG = {
   }
 };
 
+// Dynamic segmentation overrides (optional)
+CONFIG.SEGMENT_SIZE = parseInt(process.env.SEGMENT_SIZE) || null;
+CONFIG.AGENTS_PER_SEGMENT = parseInt(process.env.AGENTS_PER_SEGMENT) || null;
+CONFIG.SEEDS_PER_AGENT = parseInt(process.env.SEEDS_PER_AGENT) || null;
+
 // Log configuration on startup
 console.log('\n=== Automation Server Configuration ===');
 console.log(`VFS_ROOT: ${CONFIG.VFS_ROOT}`);
@@ -100,6 +105,10 @@ console.log(`TRAINING_URL: ${CONFIG.TRAINING_URL}`);
 console.log(`CHECKPOINT_MODE: ${CONFIG.CHECKPOINT_MODE}`);
 console.log(`USE_ORCHESTRATOR_V2: ${CONFIG.USE_ORCHESTRATOR_V2}`);
 console.log(`GIT_AUTO_MERGE: ${CONFIG.GIT_AUTO_MERGE}`);
+console.log(`AGENT_SPAWN_DELAY: ${CONFIG.AGENT_SPAWN_DELAY}ms`);
+if (CONFIG.SEGMENT_SIZE) console.log(`SEGMENT_SIZE (override): ${CONFIG.SEGMENT_SIZE}`);
+if (CONFIG.AGENTS_PER_SEGMENT) console.log(`AGENTS_PER_SEGMENT (override): ${CONFIG.AGENTS_PER_SEGMENT}`);
+if (CONFIG.SEEDS_PER_AGENT) console.log(`SEEDS_PER_AGENT (override): ${CONFIG.SEEDS_PER_AGENT}`);
 console.log('======================================\n');
 
 // =============================================================================
@@ -137,6 +146,75 @@ console.log(`✅ Loaded ${Object.keys(PHASE_PROMPTS).length} phase prompts from 
 // Note: Phase intelligence now loaded directly from markdown files
 // To update: Edit the .md files in docs/phase_intelligence/ and restart automation server
 
+// =============================================================================
+// SMART SEGMENTATION CALCULATOR
+// =============================================================================
+
+/**
+ * Calculate optimal segmentation strategy based on course size
+ * Adapts to small test courses (10 seeds) and large production courses (668 seeds)
+ *
+ * @param {number} totalSeeds - Total number of seeds in course
+ * @returns {object} Segmentation plan with segments array
+ */
+function calculateSegmentation(totalSeeds) {
+  // Check for manual overrides first
+  const segmentSizeOverride = CONFIG.SEGMENT_SIZE;
+  const agentsPerSegmentOverride = CONFIG.AGENTS_PER_SEGMENT;
+  const seedsPerAgentOverride = CONFIG.SEEDS_PER_AGENT;
+
+  let segmentSize, seedsPerAgent;
+
+  // Determine segment size and seeds per agent based on course size
+  if (totalSeeds <= 20) {
+    // SMALL TEST COURSES (≤20 seeds)
+    // Example: 10 seeds → 2 segments of 5 seeds, 2 agents each, ~3 seeds/agent
+    segmentSize = segmentSizeOverride || Math.ceil(totalSeeds / 2); // 2 segments
+    seedsPerAgent = seedsPerAgentOverride || Math.ceil(segmentSize / 2); // ~2-3 seeds/agent
+  } else if (totalSeeds <= 100) {
+    // MEDIUM COURSES (21-100 seeds)
+    // Single segment, 5-10 agents
+    segmentSize = segmentSizeOverride || totalSeeds; // No segmentation
+    seedsPerAgent = seedsPerAgentOverride || 10; // 10 seeds per agent
+  } else {
+    // LARGE COURSES (>100 seeds)
+    // Standard: 100 seeds/segment, 10 seeds/agent
+    segmentSize = segmentSizeOverride || 100;
+    seedsPerAgent = seedsPerAgentOverride || 10;
+  }
+
+  // Calculate segments
+  const segments = [];
+  for (let i = 0; i < totalSeeds; i += segmentSize) {
+    const segmentStart = i + 1;
+    const segmentEnd = Math.min(i + segmentSize, totalSeeds);
+    const segmentSeeds = segmentEnd - segmentStart + 1;
+    const agentsNeeded = agentsPerSegmentOverride || Math.ceil(segmentSeeds / seedsPerAgent);
+
+    segments.push({
+      segmentNumber: segments.length + 1,
+      startSeed: segmentStart,
+      endSeed: segmentEnd,
+      seedCount: segmentSeeds,
+      agentCount: agentsNeeded,
+      seedsPerAgent: Math.ceil(segmentSeeds / agentsNeeded)
+    });
+  }
+
+  const totalAgents = segments.reduce((sum, seg) => sum + seg.agentCount, 0);
+
+  return {
+    totalSeeds,
+    segmentSize,
+    seedsPerAgent,
+    segmentCount: segments.length,
+    totalAgents,
+    segments,
+    strategy: totalSeeds <= 20 ? 'SMALL_TEST' :
+              totalSeeds <= 100 ? 'MEDIUM_SINGLE' :
+              'LARGE_MULTI'
+  };
+}
 
 // =============================================================================
 // EXPRESS APP SETUP
@@ -2052,41 +2130,41 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       // Check if we should use staged segments (multiple orchestrators)
       if (segmentMode === 'staged') {
         const totalSeeds = endSeed - startSeed + 1;
-        const segmentSize = 100;
-        const segmentCount = Math.ceil(totalSeeds / segmentSize);
 
-        console.log(`[Web Orchestrator] Staged Segments Mode: Spawning ${segmentCount} orchestrators`);
+        // Use dynamic segmentation
+        const segmentation = calculateSegmentation(totalSeeds);
+        console.log(`[Web Orchestrator] Dynamic Segmentation Strategy: ${segmentation.strategy}`);
+        console.log(`[Web Orchestrator] Total Seeds: ${totalSeeds}, Segments: ${segmentation.segmentCount}, Total Agents: ${segmentation.totalAgents}`);
 
-        for (let i = 0; i < segmentCount; i++) {
-          const segmentStart = startSeed + (i * segmentSize);
-          const segmentEnd = Math.min(segmentStart + segmentSize - 1, endSeed);
-          const segmentSeeds = segmentEnd - segmentStart + 1;
-          const segmentNumber = Math.floor((segmentStart - 1) / 100) + 1;
+        for (let i = 0; i < segmentation.segments.length; i++) {
+          const segment = segmentation.segments[i];
+          const segmentStart = startSeed + segment.startSeed - 1;
+          const segmentEnd = startSeed + segment.endSeed - 1;
 
           // Create segment-specific course code
           const segmentCourseCode = `${target}_for_${known}_s${String(segmentStart).padStart(4, '0')}-${String(segmentEnd).padStart(4, '0')}`;
 
-          console.log(`[Web Orchestrator] Segment ${segmentNumber}: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')} (${segmentSeeds} seeds)`);
+          console.log(`[Web Orchestrator] Segment ${segment.segmentNumber}/${segmentation.segmentCount}: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')} (${segment.seedCount} seeds, ${segment.agentCount} agents)`);
 
           const phase3MasterPrompt = generatePhase3MasterPrompt(segmentCourseCode, { target, known, startSeed: segmentStart, endSeed: segmentEnd }, courseDir);
 
-          console.log(`[Web Orchestrator] Opening Segment ${segmentNumber} tab...`);
+          console.log(`[Web Orchestrator] Opening Segment ${segment.segmentNumber} tab...`);
           await spawnClaudeWebAgent(phase3MasterPrompt, 3, 'safari');
-          console.log(`[Web Orchestrator] ✅ Segment ${segmentNumber} prompt pasted!`);
+          console.log(`[Web Orchestrator] ✅ Segment ${segment.segmentNumber} prompt pasted!`);
 
           // Delay between spawns to allow browser to process each tab
-          if (i < segmentCount - 1) {
-            console.log(`[Web Orchestrator] Waiting 5 seconds before next segment...`);
-            await new Promise(resolve => setTimeout(resolve, 5000));
+          if (i < segmentation.segments.length - 1) {
+            console.log(`[Web Orchestrator] Waiting ${CONFIG.AGENT_SPAWN_DELAY}ms before next segment...`);
+            await new Promise(resolve => setTimeout(resolve, CONFIG.AGENT_SPAWN_DELAY));
           }
         }
 
         job.phase = 'phase_3_web_staged';
-        job.message = `Phase 3 staged: ${segmentCount} orchestrators running`;
+        job.message = `Phase 3 staged: ${segmentation.segmentCount} orchestrators running (${segmentation.totalAgents} total agents)`;
         job.status = 'phase_3_staged_running';
         job.progress = 35;
 
-        console.log(`[Web Orchestrator] ✅ All ${segmentCount} segments spawned!`);
+        console.log(`[Web Orchestrator] ✅ All ${segmentation.segmentCount} segments spawned!`);
         console.log(`[Web Orchestrator] Monitor browser tabs for progress`);
         return;
 
@@ -2179,42 +2257,43 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
         const totalSeeds = endSeed - startSeed + 1;
 
-        // Check if we should use staged segments (>100 seeds)
-        if (totalSeeds > 100) {
-          const segmentSize = 100;
-          const segmentCount = Math.ceil(totalSeeds / segmentSize);
+        // Use dynamic segmentation
+        const segmentation = calculateSegmentation(totalSeeds);
 
-          console.log(`[Web Orchestrator] Staged Segments Mode: Spawning ${segmentCount} orchestrators (100 seeds each)`);
+        // Check if we should use staged segments (multi-segment courses)
+        if (segmentation.segmentCount > 1) {
+          console.log(`[Web Orchestrator] Dynamic Segmentation Strategy: ${segmentation.strategy}`);
+          console.log(`[Web Orchestrator] Total Seeds: ${totalSeeds}, Segments: ${segmentation.segmentCount}, Total Agents: ${segmentation.totalAgents}`);
 
-          for (let i = 0; i < segmentCount; i++) {
-            const segmentStart = startSeed + (i * segmentSize);
-            const segmentEnd = Math.min(segmentStart + segmentSize - 1, endSeed);
-            const segmentSeeds = segmentEnd - segmentStart + 1;
+          for (let i = 0; i < segmentation.segments.length; i++) {
+            const segment = segmentation.segments[i];
+            const segmentStart = startSeed + segment.startSeed - 1;
+            const segmentEnd = startSeed + segment.endSeed - 1;
 
             // Create segment-specific course code
             const segmentCourseCode = `${target}_for_${known}_s${String(segmentStart).padStart(4, '0')}-${String(segmentEnd).padStart(4, '0')}`;
 
-            console.log(`[Web Orchestrator] Segment ${i + 1}/${segmentCount}: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')} (${segmentSeeds} seeds)`);
+            console.log(`[Web Orchestrator] Segment ${segment.segmentNumber}/${segmentation.segmentCount}: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')} (${segment.seedCount} seeds, ${segment.agentCount} agents)`);
 
             const phase5MasterPrompt = generatePhase5OrchestratorPrompt(segmentCourseCode, { target, known, startSeed: segmentStart, endSeed: segmentEnd }, baseCourseDir);
 
-            console.log(`[Web Orchestrator] Opening Segment ${i + 1} tab...`);
+            console.log(`[Web Orchestrator] Opening Segment ${segment.segmentNumber} tab...`);
             await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
-            console.log(`[Web Orchestrator] ✅ Segment ${i + 1} prompt pasted!`);
+            console.log(`[Web Orchestrator] ✅ Segment ${segment.segmentNumber} prompt pasted!`);
 
             // Delay between spawns to allow browser to process each tab
-            if (i < segmentCount - 1) {
-              console.log(`[Web Orchestrator] Waiting 5 seconds before next segment...`);
-              await new Promise(resolve => setTimeout(resolve, 5000));
+            if (i < segmentation.segments.length - 1) {
+              console.log(`[Web Orchestrator] Waiting ${CONFIG.AGENT_SPAWN_DELAY}ms before next segment...`);
+              await new Promise(resolve => setTimeout(resolve, CONFIG.AGENT_SPAWN_DELAY));
             }
           }
 
           job.phase = 'phase_5_web_staged';
-          job.message = `Phase 5 staged: ${segmentCount} orchestrators running`;
+          job.message = `Phase 5 staged: ${segmentation.segmentCount} orchestrators running (${segmentation.totalAgents} total agents)`;
           job.status = 'phase_5_staged_running';
           job.progress = 70;
 
-          console.log(`[Web Orchestrator] ✅ All ${segmentCount} segments spawned!`);
+          console.log(`[Web Orchestrator] ✅ All ${segmentation.segmentCount} segments spawned!`);
           console.log(`[Web Orchestrator] Monitor browser tabs for progress`);
           console.log(`[Web Orchestrator] Note: Staged mode - manual merge required when all tabs complete`);
 
@@ -2222,18 +2301,16 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
           return;
 
         } else {
-          // Single pass mode for ≤100 seeds
-          console.log(`[Web Orchestrator] Single Pass Mode: One orchestrator for ${totalSeeds} seeds`);
+          // Single segment mode
+          console.log(`[Web Orchestrator] Single Segment Mode: ${segmentation.strategy}`);
+          console.log(`[Web Orchestrator] Total Seeds: ${totalSeeds}, Agents: ${segmentation.totalAgents}`);
 
           const phase5MasterPrompt = generatePhase5OrchestratorPrompt(baseCourseCode, { target, known, startSeed, endSeed }, baseCourseDir);
           await fs.ensureDir(path.join(baseCourseDir, 'prompts'));
           await fs.writeFile(path.join(baseCourseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
 
-          // Calculate expected agents
-          const expectedAgents = Math.ceil(totalSeeds / 10); // 10 seeds per agent
-
           console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
-          console.log(`[Web Orchestrator] Master prompt will spawn ${expectedAgents} parallel agents`);
+          console.log(`[Web Orchestrator] Master prompt will spawn ${segmentation.totalAgents} parallel agents (~${segmentation.seedsPerAgent} seeds/agent)`);
           await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
           console.log(`[Web Orchestrator] ✅ Phase 5 master prompt pasted - HIT ENTER to spawn agents!`);
 
