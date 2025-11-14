@@ -99,10 +99,23 @@ async function generateIntroductions(courseDir) {
   console.log(`[Phase 6] Known: ${knownLang} (${knownCode})`);
   console.log(`[Phase 6] Seeds: ${seeds.length}\n`);
 
+  // Load existing introductions to preserve edits
+  let existingPresentations = {};
+  if (await fs.pathExists(outputPath)) {
+    try {
+      const existingData = await fs.readJson(outputPath);
+      existingPresentations = existingData.presentations || {};
+      console.log(`[Phase 6] Found existing introductions, will preserve edited ones\n`);
+    } catch (err) {
+      console.warn(`[Phase 6] Could not read existing introductions: ${err.message}`);
+    }
+  }
+
   const presentations = {};
   let totalLegos = 0;
   let baseLegos = 0;
   let compositeLegos = 0;
+  let preservedEdits = 0;
 
   // Process each seed
   for (const seed of seeds) {
@@ -146,7 +159,17 @@ async function generateIntroductions(courseDir) {
         continue;
       }
 
-      presentations[legoId] = presentation;
+      // Check if this introduction was manually edited
+      const existing = existingPresentations[legoId];
+      if (existing && typeof existing === 'object' && existing.edited === true) {
+        // Preserve the edited version
+        presentations[legoId] = existing;
+        preservedEdits++;
+      } else {
+        // Use new generated version
+        presentations[legoId] = presentation;
+      }
+
       totalLegos++;
     }
   }
@@ -167,6 +190,9 @@ async function generateIntroductions(courseDir) {
   console.log(`[Phase 6] ✅ Generated ${totalLegos} introduction presentations:`);
   console.log(`[Phase 6]    - BASE LEGOs: ${baseLegos}`);
   console.log(`[Phase 6]    - COMPOSITE LEGOs: ${compositeLegos}`);
+  if (preservedEdits > 0) {
+    console.log(`[Phase 6]    - PRESERVED EDITS: ${preservedEdits}`);
+  }
   console.log(`[Phase 6] Output: ${outputPath}\n`);
 
   return {

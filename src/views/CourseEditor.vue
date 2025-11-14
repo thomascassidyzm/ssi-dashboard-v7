@@ -535,7 +535,53 @@
                       {{ legoId }}
                     </div>
                     <div class="flex-1">
-                      <p class="text-slate-300 text-sm leading-relaxed">{{ presentation }}</p>
+                      <!-- View mode -->
+                      <div v-if="editingIntro !== legoId">
+                        <p class="text-slate-300 text-sm leading-relaxed">{{ typeof presentation === 'string' ? presentation : presentation.text }}</p>
+                        <span v-if="typeof presentation === 'object' && presentation.edited" class="inline-block mt-2 text-xs text-amber-400 bg-amber-900/30 px-2 py-1 rounded">
+                          ✏️ Custom edited
+                        </span>
+                      </div>
+
+                      <!-- Edit mode -->
+                      <div v-else>
+                        <textarea
+                          v-model="editedIntroText"
+                          class="w-full bg-slate-800 border border-slate-600 rounded px-3 py-2 text-slate-300 text-sm leading-relaxed font-mono resize-none"
+                          rows="3"
+                          placeholder="Edit introduction text..."
+                        ></textarea>
+                        <div class="mt-2 text-xs text-slate-500">
+                          Use <code class="bg-slate-800 px-1 rounded">{target1}</code> for target language audio
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="flex gap-2">
+                      <button
+                        v-if="editingIntro !== legoId"
+                        @click="startEditIntro(legoId, presentation)"
+                        class="text-emerald-400 hover:text-emerald-300 text-sm px-3 py-1 border border-emerald-500/30 hover:border-emerald-500/50 rounded transition-colors"
+                      >
+                        Edit
+                      </button>
+                      <template v-else>
+                        <button
+                          @click="saveIntro(legoId)"
+                          :disabled="savingIntro"
+                          class="text-emerald-400 hover:text-emerald-300 text-sm px-3 py-1 border border-emerald-500/30 hover:border-emerald-500/50 rounded transition-colors disabled:opacity-50"
+                        >
+                          {{ savingIntro ? 'Saving...' : 'Save' }}
+                        </button>
+                        <button
+                          @click="cancelEditIntro"
+                          :disabled="savingIntro"
+                          class="text-slate-400 hover:text-slate-300 text-sm px-3 py-1 border border-slate-600 hover:border-slate-500 rounded transition-colors disabled:opacity-50"
+                        >
+                          Cancel
+                        </button>
+                      </template>
                     </div>
                   </div>
                 </div>
@@ -756,6 +802,11 @@ const searchQuery = ref('')
 const legoSearchQuery = ref('') // Search for LEGO breakdowns
 const selectedSeed = ref('')
 const introductionsData = ref(null) // Introductions data from introductions.json
+
+// Introduction edit state
+const editingIntro = ref(null) // LEGO ID being edited
+const editedIntroText = ref('') // Edited text
+const savingIntro = ref(false) // Saving state
 
 // Edit modal state
 const editModal = ref({
@@ -1383,6 +1434,54 @@ function closeEditModal() {
   editModal.value.editedSource = ''
   editModal.value.editedTarget = ''
   editModal.value.impact = null
+}
+
+// Introduction edit handlers
+function startEditIntro(legoId, presentation) {
+  editingIntro.value = legoId
+  editedIntroText.value = typeof presentation === 'string' ? presentation : presentation.text
+}
+
+function cancelEditIntro() {
+  editingIntro.value = null
+  editedIntroText.value = ''
+}
+
+async function saveIntro(legoId) {
+  if (!editedIntroText.value.trim()) {
+    alert('Introduction text cannot be empty')
+    return
+  }
+
+  savingIntro.value = true
+  try {
+    await api.course.updateIntroduction(courseCode, legoId, {
+      text: editedIntroText.value.trim(),
+      edited: true
+    })
+
+    // Update local state
+    if (typeof introductionsData.value.presentations[legoId] === 'string') {
+      introductionsData.value.presentations[legoId] = {
+        text: editedIntroText.value.trim(),
+        edited: true
+      }
+    } else {
+      introductionsData.value.presentations[legoId].text = editedIntroText.value.trim()
+      introductionsData.value.presentations[legoId].edited = true
+    }
+
+    // Exit edit mode
+    editingIntro.value = null
+    editedIntroText.value = ''
+
+    console.log(`✅ Updated introduction for ${legoId}`)
+  } catch (error) {
+    console.error('Failed to save introduction:', error)
+    alert('Failed to save introduction. Please try again.')
+  } finally {
+    savingIntro.value = false
+  }
 }
 
 async function saveTranslation() {

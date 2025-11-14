@@ -5448,6 +5448,74 @@ app.put('/api/courses/:courseCode/baskets/:seedId', async (req, res) => {
 });
 
 /**
+ * PUT /api/courses/:courseCode/introductions/:legoId
+ * Update a LEGO introduction (Phase 6)
+ */
+app.put('/api/courses/:courseCode/introductions/:legoId', async (req, res) => {
+  try {
+    const { courseCode, legoId } = req.params;
+    const { text, edited } = req.body;
+
+    const introsPath = path.join(CONFIG.VFS_ROOT, courseCode, 'introductions.json');
+
+    console.log(`[API] Updating introduction ${legoId} in ${courseCode}`);
+
+    // Check if introductions.json exists
+    if (!await fs.pathExists(introsPath)) {
+      return res.status(404).json({
+        error: `Introductions file not found for course ${courseCode}`
+      });
+    }
+
+    // Read current introductions
+    const introsData = await fs.readJson(introsPath);
+
+    if (!introsData.presentations) {
+      return res.status(400).json({
+        error: 'Invalid introductions.json format - missing presentations'
+      });
+    }
+
+    // Check if LEGO exists
+    if (!introsData.presentations[legoId]) {
+      return res.status(404).json({
+        error: `Introduction not found for LEGO ${legoId}`
+      });
+    }
+
+    // Update the presentation - convert to object format if currently string
+    if (typeof introsData.presentations[legoId] === 'string') {
+      introsData.presentations[legoId] = {
+        text: text,
+        edited: edited || false
+      };
+    } else {
+      introsData.presentations[legoId].text = text;
+      introsData.presentations[legoId].edited = edited || false;
+    }
+
+    // Write updated introductions back
+    await fs.writeJson(introsPath, introsData, { spaces: 2 });
+
+    console.log(`[API] Successfully updated introduction ${legoId}`);
+
+    res.json({
+      success: true,
+      message: 'Introduction updated successfully',
+      courseCode,
+      legoId,
+      presentation: introsData.presentations[legoId]
+    });
+  } catch (err) {
+    console.error('[API] Error updating introduction:', err);
+    res.status(500).json({
+      error: 'Failed to update introduction',
+      details: err.message
+    });
+  }
+});
+
+/**
  * POST /api/courses/:courseCode/baskets/:seedId/flag
  * Flag basket for review
  */
