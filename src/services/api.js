@@ -82,40 +82,39 @@ export default {
       // ALWAYS use static manifest (GitHub is single source of truth)
       // This ensures everyone (Tom, Kai, anyone) sees the same courses
       // Differences only appear temporarily until changes are pushed to GitHub
+      console.log('[API] Loading courses from static manifest (GitHub SSoT)')
+
       try {
-        console.log('[API] Loading courses from static manifest (GitHub SSoT)')
+        // Use pre-generated manifest (created at build time by generate-course-manifest.js)
+        const manifestRes = await fetch('/vfs/courses-manifest.json')
+        if (manifestRes.ok) {
+          const manifest = await manifestRes.json()
+          console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
 
-        try {
-          // Use pre-generated manifest (created at build time by generate-course-manifest.js)
-          const manifestRes = await fetch('/vfs/courses-manifest.json')
-          if (manifestRes.ok) {
-            const manifest = await manifestRes.json()
-            console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
+          // Transform manifest format to API format
+          const courses = manifest.courses
+            .filter(course => course.actual_seed_count > 0 && course.lego_count > 0)
+            .map(course => ({
+              course_code: course.course_code,
+              source_language: course.source_language,
+              target_language: course.target_language,
+              total_seeds: course.total_seeds,
+              version: course.format,
+              created_at: new Date().toISOString(),
+              status: 'phase_3_complete',
+              seed_pairs: course.actual_seed_count,
+              lego_pairs: course.lego_count,
+              lego_baskets: course.has_baskets ? 1 : 0,
+              phases_completed: ['1', '3']
+            }))
 
-            // Transform manifest format to API format
-            const courses = manifest.courses
-              .filter(course => course.actual_seed_count > 0 && course.lego_count > 0)
-              .map(course => ({
-                course_code: course.course_code,
-                source_language: course.source_language,
-                target_language: course.target_language,
-                total_seeds: course.total_seeds,
-                version: course.format,
-                created_at: new Date().toISOString(),
-                status: 'phase_3_complete',
-                seed_pairs: course.actual_seed_count,
-                lego_pairs: course.lego_count,
-                lego_baskets: course.has_baskets ? 1 : 0,
-                phases_completed: ['1', '3']
-              }))
-
-            return { courses }
-          }
-        } catch (manifestErr) {
-          console.error('[API] Failed to load course manifest:', manifestErr)
+          return { courses }
         }
 
-        // If both fail, throw the original API error
+        // Manifest fetch failed
+        throw new Error('Failed to fetch courses manifest')
+      } catch (err) {
+        console.error('[API] Failed to load course manifest:', err)
         throw err
       }
     },
@@ -217,9 +216,9 @@ export default {
 
       // ALWAYS use static files (GitHub SSoT)
       // Don't try API server - ensures everyone sees same data
-      try {
-        console.log(`[API] Loading ${courseCode} from static files (GitHub SSoT)`)
+      console.log(`[API] Loading ${courseCode} from static files (GitHub SSoT)`)
 
+      try {
         // Use the courseCode as-is for static file paths
         // (segment ranges have their own directories, not a base course)
         const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
@@ -353,6 +352,10 @@ export default {
           return result
         }
 
+        // Files not found
+        throw new Error(`Course files not found for ${courseCode}`)
+      } catch (err) {
+        console.error(`[API] Failed to load course ${courseCode}:`, err)
         throw err
       }
     },
