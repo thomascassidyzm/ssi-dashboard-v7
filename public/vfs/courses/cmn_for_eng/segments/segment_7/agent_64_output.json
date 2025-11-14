@@ -1,0 +1,442 @@
+{
+  "agent_id": "agent_64",
+  "seed_range": "S0631-S0640",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0631",
+      "seed_pair": ["您想要什么？", "What would you like?"],
+      "legos": [
+        {
+          "id": "S0631L01",
+          "type": "A",
+          "target": "您",
+          "known": "you",
+          "new": true
+        },
+        {
+          "id": "S0631L02",
+          "type": "M",
+          "target": "想要",
+          "known": "would like",
+          "new": true,
+          "components": [["想", "would/want"], ["要", "want/need"]]
+        },
+        {
+          "id": "S0631L03",
+          "type": "A",
+          "target": "什么",
+          "known": "what",
+          "new": true
+        },
+        {
+          "id": "S0631L04",
+          "type": "M",
+          "target": "想要什么",
+          "known": "would like what",
+          "new": true,
+          "components": [["想", "would"], ["要", "like/want"], ["什么", "what"]]
+        },
+        {
+          "id": "S0631L05",
+          "type": "M",
+          "target": "您想要什么",
+          "known": "what would you like",
+          "new": true,
+          "components": [["您", "you"], ["想", "would"], ["要", "like"], ["什么", "what"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0632",
+      "seed_pair": ["一杯水。", "A glass of water."],
+      "legos": [
+        {
+          "id": "S0632L01",
+          "type": "M",
+          "target": "一杯",
+          "known": "a glass",
+          "new": true,
+          "components": [["一", "a/one"], ["杯", "glass/cup"]]
+        },
+        {
+          "id": "S0632L02",
+          "type": "A",
+          "target": "水",
+          "known": "water",
+          "new": true
+        },
+        {
+          "id": "S0632L03",
+          "type": "M",
+          "target": "杯水",
+          "known": "glass of water",
+          "new": true,
+          "components": [["杯", "glass"], ["水", "water"]]
+        },
+        {
+          "id": "S0632L04",
+          "type": "M",
+          "target": "一杯水",
+          "known": "a glass of water",
+          "new": true,
+          "components": [["一", "a"], ["杯", "glass"], ["水", "water"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0633",
+      "seed_pair": ["一大杯水就好。", "A large glass of water would be fine."],
+      "legos": [
+        {
+          "id": "S0633L01",
+          "type": "M",
+          "target": "一大杯",
+          "known": "a large glass",
+          "new": true,
+          "components": [["一", "a"], ["大", "large/big"], ["杯", "glass"]]
+        },
+        {
+          "id": "S0633L02",
+          "type": "M",
+          "target": "大杯水",
+          "known": "large glass of water",
+          "new": true,
+          "components": [["大", "large"], ["杯", "glass"], ["水", "water"]]
+        },
+        {
+          "id": "S0633L03",
+          "type": "M",
+          "target": "一大杯水",
+          "known": "a large glass of water",
+          "new": true,
+          "components": [["一", "a"], ["大", "large"], ["杯", "glass"], ["水", "water"]]
+        },
+        {
+          "id": "S0633L04",
+          "type": "A",
+          "target": "好",
+          "known": "fine/good",
+          "new": true
+        },
+        {
+          "id": "S0633L05",
+          "type": "M",
+          "target": "就好",
+          "known": "would be fine",
+          "new": true,
+          "components": [["就", "just/then"], ["好", "fine/good"]]
+        },
+        {
+          "id": "S0633L06",
+          "type": "M",
+          "target": "水就好",
+          "known": "water would be fine",
+          "new": true,
+          "components": [["水", "water"], ["就", "would"], ["好", "be fine"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0634",
+      "seed_pair": ["我想要其中一个。", "I'd like one of those."],
+      "legos": [
+        {
+          "id": "S0634L01",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "new": true
+        },
+        {
+          "id": "S0634L02",
+          "type": "M",
+          "target": "我想要",
+          "known": "I'd like",
+          "new": true,
+          "components": [["我", "I"], ["想", "would"], ["要", "like"]]
+        },
+        {
+          "id": "S0634L03",
+          "type": "M",
+          "target": "一个",
+          "known": "one",
+          "new": true,
+          "components": [["一", "one"], ["个", "(measure word)"]]
+        },
+        {
+          "id": "S0634L04",
+          "type": "M",
+          "target": "其中一个",
+          "known": "one of those",
+          "new": true,
+          "components": [["其中", "among/of those"], ["一", "one"], ["个", "(measure word)"]]
+        },
+        {
+          "id": "S0634L05",
+          "type": "M",
+          "target": "想要其中一个",
+          "known": "would like one of those",
+          "new": true,
+          "components": [["想", "would"], ["要", "like"], ["其中", "of those"], ["一", "one"], ["个", "(measure word)"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0635",
+      "seed_pair": ["那是简的包。", "That is Jane's bag."],
+      "legos": [
+        {
+          "id": "S0635L01",
+          "type": "A",
+          "target": "那",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0635L02",
+          "type": "A",
+          "target": "是",
+          "known": "is/are",
+          "new": true
+        },
+        {
+          "id": "S0635L03",
+          "type": "M",
+          "target": "那是",
+          "known": "that is",
+          "new": true,
+          "components": [["那", "that"], ["是", "is"]]
+        },
+        {
+          "id": "S0635L04",
+          "type": "A",
+          "target": "包",
+          "known": "bag",
+          "new": true
+        },
+        {
+          "id": "S0635L05",
+          "type": "M",
+          "target": "简的包",
+          "known": "Jane's bag",
+          "new": true,
+          "components": [["简", "Jane"], ["的", "'s/possessive"], ["包", "bag"]]
+        },
+        {
+          "id": "S0635L06",
+          "type": "M",
+          "target": "是简的包",
+          "known": "is Jane's bag",
+          "new": true,
+          "components": [["是", "is"], ["简", "Jane"], ["的", "'s"], ["包", "bag"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0636",
+      "seed_pair": ["我认为那是简的包。", "I think that that is Jane's bag."],
+      "legos": [
+        {
+          "id": "S0636L01",
+          "type": "M",
+          "target": "认为",
+          "known": "think",
+          "new": true,
+          "components": [["认", "recognize/consider"], ["为", "as/to be"]]
+        },
+        {
+          "id": "S0636L02",
+          "type": "M",
+          "target": "我认为",
+          "known": "I think",
+          "new": true,
+          "components": [["我", "I"], ["认", "think"], ["为", "(verbal complement)"]]
+        },
+        {
+          "id": "S0636L03",
+          "type": "M",
+          "target": "认为那是",
+          "known": "think that is",
+          "new": true,
+          "components": [["认", "think"], ["为", "(complement)"], ["那", "that"], ["是", "is"]]
+        },
+        {
+          "id": "S0636L04",
+          "type": "M",
+          "target": "我认为那是简的包",
+          "known": "I think that that is Jane's bag",
+          "new": true,
+          "components": [["我", "I"], ["认为", "think that"], ["那", "that"], ["是", "is"], ["简的包", "Jane's bag"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0637",
+      "seed_pair": ["她的包在哪里？", "Where is her bag?"],
+      "legos": [
+        {
+          "id": "S0637L01",
+          "type": "M",
+          "target": "哪里",
+          "known": "where",
+          "new": true,
+          "components": [["哪", "which"], ["里", "place/inside"]]
+        },
+        {
+          "id": "S0637L02",
+          "type": "A",
+          "target": "在",
+          "known": "at/in/is (location)",
+          "new": true
+        },
+        {
+          "id": "S0637L03",
+          "type": "M",
+          "target": "在哪里",
+          "known": "where is",
+          "new": true,
+          "components": [["在", "is at"], ["哪里", "where"]]
+        },
+        {
+          "id": "S0637L04",
+          "type": "M",
+          "target": "她的包",
+          "known": "her bag",
+          "new": true,
+          "components": [["她", "her/she"], ["的", "'s/possessive"], ["包", "bag"]]
+        },
+        {
+          "id": "S0637L05",
+          "type": "M",
+          "target": "包在哪里",
+          "known": "where is the bag",
+          "new": true,
+          "components": [["包", "bag"], ["在", "is at"], ["哪里", "where"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0638",
+      "seed_pair": ["我在试着想。", "I'm trying to think."],
+      "legos": [
+        {
+          "id": "S0638L01",
+          "type": "A",
+          "target": "想",
+          "known": "think",
+          "new": true
+        },
+        {
+          "id": "S0638L02",
+          "type": "M",
+          "target": "试着想",
+          "known": "trying to think",
+          "new": true,
+          "components": [["试", "try"], ["着", "(progressive aspect)"], ["想", "think"]]
+        },
+        {
+          "id": "S0638L03",
+          "type": "M",
+          "target": "我在试着",
+          "known": "I'm trying to",
+          "new": true,
+          "components": [["我", "I"], ["在", "am (progressive)"], ["试", "trying"], ["着", "to"]]
+        },
+        {
+          "id": "S0638L04",
+          "type": "M",
+          "target": "在试着想",
+          "known": "am trying to think",
+          "new": true,
+          "components": [["在", "am"], ["试", "trying"], ["着", "to"], ["想", "think"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0639",
+      "seed_pair": ["和您先生", "with you sir"],
+      "legos": [
+        {
+          "id": "S0639L01",
+          "type": "M",
+          "target": "先生",
+          "known": "sir/mister",
+          "new": true,
+          "components": [["先", "first/elder"], ["生", "born/person"]]
+        },
+        {
+          "id": "S0639L02",
+          "type": "M",
+          "target": "您先生",
+          "known": "you sir",
+          "new": true,
+          "components": [["您", "you (polite)"], ["先生", "sir"]]
+        },
+        {
+          "id": "S0639L03",
+          "type": "M",
+          "target": "和您先生",
+          "known": "with you sir",
+          "new": true,
+          "components": [["和", "with/and"], ["您", "you"], ["先生", "sir"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0640",
+      "seed_pair": ["是红色的那个。", "It's the red one."],
+      "legos": [
+        {
+          "id": "S0640L01",
+          "type": "M",
+          "target": "红色",
+          "known": "red",
+          "new": true,
+          "components": [["红", "red"], ["色", "color"]]
+        },
+        {
+          "id": "S0640L02",
+          "type": "M",
+          "target": "红色的",
+          "known": "red (adjective)",
+          "new": true,
+          "components": [["红", "red"], ["色", "color"], ["的", "(adjectival)"]]
+        },
+        {
+          "id": "S0640L03",
+          "type": "M",
+          "target": "那个",
+          "known": "that one",
+          "new": true,
+          "components": [["那", "that"], ["个", "one/measure word"]]
+        },
+        {
+          "id": "S0640L04",
+          "type": "M",
+          "target": "的那个",
+          "known": "the one",
+          "new": true,
+          "components": [["的", "the"], ["那", "that"], ["个", "one"]]
+        },
+        {
+          "id": "S0640L05",
+          "type": "M",
+          "target": "红色的那个",
+          "known": "the red one",
+          "new": true,
+          "components": [["红色", "red"], ["的", "the"], ["那", "that"], ["个", "one"]]
+        },
+        {
+          "id": "S0640L06",
+          "type": "M",
+          "target": "是红色的那个",
+          "known": "it's the red one",
+          "new": true,
+          "components": [["是", "is/it's"], ["红色", "red"], ["的", "the"], ["那个", "one"]]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,646 @@
+{
+  "agent_id": "agent_55",
+  "seed_range": "S0541-S0550",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0541",
+      "seed_pair": [
+        "It's a good idea to try and breathe slowly.",
+        "试着慢慢呼吸是个好主意。"
+      ],
+      "legos": [
+        {
+          "id": "S0541L01",
+          "type": "A",
+          "target": "慢慢",
+          "known": "slowly",
+          "new": true
+        },
+        {
+          "id": "S0541L02",
+          "type": "A",
+          "target": "呼吸",
+          "known": "breathe",
+          "new": true
+        },
+        {
+          "id": "S0541L03",
+          "type": "M",
+          "target": "慢慢呼吸",
+          "known": "breathe slowly",
+          "new": true,
+          "components": [
+            ["慢慢", "slowly"],
+            ["呼吸", "breathe"]
+          ]
+        },
+        {
+          "id": "S0541L04",
+          "type": "M",
+          "target": "试着慢慢呼吸",
+          "known": "try and breathe slowly",
+          "new": true,
+          "components": [
+            ["试着", "try"],
+            ["慢慢", "slowly"],
+            ["呼吸", "breathe"]
+          ]
+        },
+        {
+          "id": "S0541L05",
+          "type": "M",
+          "target": "是个好主意",
+          "known": "is a good idea",
+          "new": true,
+          "components": [
+            ["是", "is"],
+            ["个", "[classifier]"],
+            ["好", "good"],
+            ["主意", "idea"]
+          ]
+        },
+        {
+          "id": "S0541L06",
+          "type": "M",
+          "target": "试着慢慢呼吸是个好主意",
+          "known": "it's a good idea to try and breathe slowly",
+          "new": true,
+          "components": [
+            ["试着", "try"],
+            ["慢慢", "slowly"],
+            ["呼吸", "breathe"],
+            ["是", "is"],
+            ["个", "[classifier]"],
+            ["好主意", "good idea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0542",
+      "seed_pair": [
+        "Whenever you feel angry.",
+        "每当你感到生气的时候。"
+      ],
+      "legos": [
+        {
+          "id": "S0542L01",
+          "type": "A",
+          "target": "生气",
+          "known": "angry",
+          "new": true
+        },
+        {
+          "id": "S0542L02",
+          "type": "M",
+          "target": "感到生气",
+          "known": "feel angry",
+          "new": true,
+          "components": [
+            ["感到", "feel"],
+            ["生气", "angry"]
+          ]
+        },
+        {
+          "id": "S0542L03",
+          "type": "M",
+          "target": "你感到生气",
+          "known": "you feel angry",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["感到", "feel"],
+            ["生气", "angry"]
+          ]
+        },
+        {
+          "id": "S0542L04",
+          "type": "M",
+          "target": "你感到生气的时候",
+          "known": "when you feel angry",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["感到", "feel"],
+            ["生气", "angry"],
+            ["的时候", "when"]
+          ]
+        },
+        {
+          "id": "S0542L05",
+          "type": "M",
+          "target": "每当你感到生气的时候",
+          "known": "whenever you feel angry",
+          "new": true,
+          "components": [
+            ["每当", "whenever"],
+            ["你", "you"],
+            ["感到", "feel"],
+            ["生气", "angry"],
+            ["的时候", "when"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0543",
+      "seed_pair": [
+        "She was right.",
+        "她是对的。"
+      ],
+      "legos": [
+        {
+          "id": "S0543L01",
+          "type": "A",
+          "target": "对",
+          "known": "right",
+          "new": true
+        },
+        {
+          "id": "S0543L02",
+          "type": "M",
+          "target": "是对的",
+          "known": "is right",
+          "new": true,
+          "components": [
+            ["是", "is"],
+            ["对", "right"],
+            ["的", "[particle]"]
+          ]
+        },
+        {
+          "id": "S0543L03",
+          "type": "M",
+          "target": "她是对的",
+          "known": "she was right",
+          "new": true,
+          "components": [
+            ["她", "she"],
+            ["是", "was"],
+            ["对的", "right"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0544",
+      "seed_pair": [
+        "Whoever said it would be difficult was absolutely right.",
+        "无论谁说这会很难，都是完全正确的。"
+      ],
+      "legos": [
+        {
+          "id": "S0544L01",
+          "type": "M",
+          "target": "很难",
+          "known": "very difficult",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["难", "difficult"]
+          ]
+        },
+        {
+          "id": "S0544L02",
+          "type": "M",
+          "target": "这会很难",
+          "known": "it would be difficult",
+          "new": true,
+          "components": [
+            ["这", "it/this"],
+            ["会", "would"],
+            ["很", "very"],
+            ["难", "difficult"]
+          ]
+        },
+        {
+          "id": "S0544L03",
+          "type": "M",
+          "target": "无论谁",
+          "known": "whoever",
+          "new": true,
+          "components": [
+            ["无论", "no matter"],
+            ["谁", "who"]
+          ]
+        },
+        {
+          "id": "S0544L04",
+          "type": "M",
+          "target": "无论谁说这会很难",
+          "known": "whoever said it would be difficult",
+          "new": true,
+          "components": [
+            ["无论谁", "whoever"],
+            ["说", "said"],
+            ["这", "it"],
+            ["会", "would"],
+            ["很难", "be difficult"]
+          ]
+        },
+        {
+          "id": "S0544L05",
+          "type": "M",
+          "target": "完全正确",
+          "known": "absolutely right",
+          "new": true,
+          "components": [
+            ["完全", "absolutely"],
+            ["正确", "right/correct"]
+          ]
+        },
+        {
+          "id": "S0544L06",
+          "type": "M",
+          "target": "都是完全正确的",
+          "known": "was absolutely right",
+          "new": true,
+          "components": [
+            ["都", "[emphasis]"],
+            ["是", "was"],
+            ["完全", "absolutely"],
+            ["正确的", "right"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0545",
+      "seed_pair": [
+        "It's your turn to take the clean clothes upstairs.",
+        "轮到你把干净的衣服拿上楼了。"
+      ],
+      "legos": [
+        {
+          "id": "S0545L01",
+          "type": "M",
+          "target": "轮到你",
+          "known": "it's your turn",
+          "new": true,
+          "components": [
+            ["轮到", "turn to"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0545L02",
+          "type": "A",
+          "target": "干净",
+          "known": "clean",
+          "new": true
+        },
+        {
+          "id": "S0545L03",
+          "type": "A",
+          "target": "衣服",
+          "known": "clothes",
+          "new": true
+        },
+        {
+          "id": "S0545L04",
+          "type": "M",
+          "target": "干净的衣服",
+          "known": "clean clothes",
+          "new": true,
+          "components": [
+            ["干净", "clean"],
+            ["的", "[particle]"],
+            ["衣服", "clothes"]
+          ]
+        },
+        {
+          "id": "S0545L05",
+          "type": "M",
+          "target": "上楼",
+          "known": "upstairs",
+          "new": true,
+          "components": [
+            ["上", "up"],
+            ["楼", "building/stairs"]
+          ]
+        },
+        {
+          "id": "S0545L06",
+          "type": "M",
+          "target": "拿上楼",
+          "known": "take upstairs",
+          "new": true,
+          "components": [
+            ["拿", "take"],
+            ["上楼", "upstairs"]
+          ]
+        },
+        {
+          "id": "S0545L07",
+          "type": "M",
+          "target": "把干净的衣服拿上楼",
+          "known": "take the clean clothes upstairs",
+          "new": true,
+          "components": [
+            ["把", "[ba construction]"],
+            ["干净的衣服", "clean clothes"],
+            ["拿", "take"],
+            ["上楼", "upstairs"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0546",
+      "seed_pair": [
+        "The dog is dirty and wet.",
+        "狗又脏又湿。"
+      ],
+      "legos": [
+        {
+          "id": "S0546L01",
+          "type": "A",
+          "target": "狗",
+          "known": "dog",
+          "new": true
+        },
+        {
+          "id": "S0546L02",
+          "type": "A",
+          "target": "脏",
+          "known": "dirty",
+          "new": true
+        },
+        {
+          "id": "S0546L03",
+          "type": "A",
+          "target": "湿",
+          "known": "wet",
+          "new": true
+        },
+        {
+          "id": "S0546L04",
+          "type": "M",
+          "target": "又脏又湿",
+          "known": "dirty and wet",
+          "new": true,
+          "components": [
+            ["又", "both"],
+            ["脏", "dirty"],
+            ["又", "and"],
+            ["湿", "wet"]
+          ]
+        },
+        {
+          "id": "S0546L05",
+          "type": "M",
+          "target": "狗又脏又湿",
+          "known": "the dog is dirty and wet",
+          "new": true,
+          "components": [
+            ["狗", "dog"],
+            ["又", "both"],
+            ["脏", "dirty"],
+            ["又", "and"],
+            ["湿", "wet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0547",
+      "seed_pair": [
+        "Because he has been playing in the mud.",
+        "因为他一直在泥里玩。"
+      ],
+      "legos": [
+        {
+          "id": "S0547L01",
+          "type": "A",
+          "target": "因为",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0547L02",
+          "type": "A",
+          "target": "泥",
+          "known": "mud",
+          "new": true
+        },
+        {
+          "id": "S0547L03",
+          "type": "A",
+          "target": "玩",
+          "known": "play",
+          "new": true
+        },
+        {
+          "id": "S0547L04",
+          "type": "M",
+          "target": "在泥里",
+          "known": "in the mud",
+          "new": true,
+          "components": [
+            ["在", "in"],
+            ["泥", "mud"],
+            ["里", "inside"]
+          ]
+        },
+        {
+          "id": "S0547L05",
+          "type": "M",
+          "target": "在泥里玩",
+          "known": "play in the mud",
+          "new": true,
+          "components": [
+            ["在", "in"],
+            ["泥里", "the mud"],
+            ["玩", "play"]
+          ]
+        },
+        {
+          "id": "S0547L06",
+          "type": "M",
+          "target": "一直在泥里玩",
+          "known": "has been playing in the mud",
+          "new": true,
+          "components": [
+            ["一直", "continuously"],
+            ["在", "in"],
+            ["泥里", "the mud"],
+            ["玩", "playing"]
+          ]
+        },
+        {
+          "id": "S0547L07",
+          "type": "M",
+          "target": "因为他一直在泥里玩",
+          "known": "because he has been playing in the mud",
+          "new": true,
+          "components": [
+            ["因为", "because"],
+            ["他", "he"],
+            ["一直", "has been"],
+            ["在泥里", "in the mud"],
+            ["玩", "playing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0548",
+      "seed_pair": [
+        "I am feeling sad at the moment.",
+        "我此刻感到悲伤。"
+      ],
+      "legos": [
+        {
+          "id": "S0548L01",
+          "type": "M",
+          "target": "此刻",
+          "known": "at the moment",
+          "new": true,
+          "components": [
+            ["此", "this"],
+            ["刻", "moment"]
+          ]
+        },
+        {
+          "id": "S0548L02",
+          "type": "A",
+          "target": "悲伤",
+          "known": "sad",
+          "new": true
+        },
+        {
+          "id": "S0548L03",
+          "type": "M",
+          "target": "感到悲伤",
+          "known": "feel sad",
+          "new": true,
+          "components": [
+            ["感到", "feel"],
+            ["悲伤", "sad"]
+          ]
+        },
+        {
+          "id": "S0548L04",
+          "type": "M",
+          "target": "我感到悲伤",
+          "known": "I feel sad",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["感到", "feel"],
+            ["悲伤", "sad"]
+          ]
+        },
+        {
+          "id": "S0548L05",
+          "type": "M",
+          "target": "我此刻感到悲伤",
+          "known": "I am feeling sad at the moment",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["此刻", "at the moment"],
+            ["感到", "feel"],
+            ["悲伤", "sad"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0549",
+      "seed_pair": [
+        "Because I have got to be quiet.",
+        "因为我必须安静。"
+      ],
+      "legos": [
+        {
+          "id": "S0549L01",
+          "type": "A",
+          "target": "必须",
+          "known": "have got to",
+          "new": true
+        },
+        {
+          "id": "S0549L02",
+          "type": "A",
+          "target": "安静",
+          "known": "quiet",
+          "new": true
+        },
+        {
+          "id": "S0549L03",
+          "type": "M",
+          "target": "必须安静",
+          "known": "have got to be quiet",
+          "new": true,
+          "components": [
+            ["必须", "have got to"],
+            ["安静", "be quiet"]
+          ]
+        },
+        {
+          "id": "S0549L04",
+          "type": "M",
+          "target": "我必须安静",
+          "known": "I have got to be quiet",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["必须", "have got to"],
+            ["安静", "be quiet"]
+          ]
+        },
+        {
+          "id": "S0549L05",
+          "type": "M",
+          "target": "因为我必须安静",
+          "known": "because I have got to be quiet",
+          "new": true,
+          "components": [
+            ["因为", "because"],
+            ["我", "I"],
+            ["必须", "have got to"],
+            ["安静", "be quiet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0550",
+      "seed_pair": [
+        "The end of the village.",
+        "村子的尽头。"
+      ],
+      "legos": [
+        {
+          "id": "S0550L01",
+          "type": "A",
+          "target": "村子",
+          "known": "village",
+          "new": true
+        },
+        {
+          "id": "S0550L02",
+          "type": "A",
+          "target": "尽头",
+          "known": "end",
+          "new": true
+        },
+        {
+          "id": "S0550L03",
+          "type": "M",
+          "target": "村子的尽头",
+          "known": "the end of the village",
+          "new": true,
+          "components": [
+            ["村子", "village"],
+            ["的", "of"],
+            ["尽头", "end"]
+          ]
+        }
+      ]
+    }
+  ]
+}

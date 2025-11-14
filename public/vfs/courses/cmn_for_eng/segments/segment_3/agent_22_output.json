@@ -1,0 +1,557 @@
+{
+  "agent_id": "agent_22",
+  "seed_range": "S0211-S0220",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0211",
+      "seed_pair": [
+        "他们告诉我们他们不想解释。",
+        "They told us that they didn't want to explain."
+      ],
+      "legos": [
+        {
+          "id": "S0211L01",
+          "type": "M",
+          "target": "他们告诉我们",
+          "known": "They told us",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["告诉", "told"],
+            ["我们", "us"]
+          ]
+        },
+        {
+          "id": "S0211L02",
+          "type": "M",
+          "target": "他们不想解释",
+          "known": "they didn't want to explain",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["不想", "didn't want"],
+            ["解释", "to explain"]
+          ]
+        },
+        {
+          "id": "S0211L03",
+          "type": "M",
+          "target": "不想",
+          "known": "didn't want",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0211L04",
+          "type": "A",
+          "target": "解释",
+          "known": "to explain",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0212",
+      "seed_pair": [
+        "他们想寻求帮助。",
+        "They wanted to ask for help."
+      ],
+      "legos": [
+        {
+          "id": "S0212L01",
+          "type": "M",
+          "target": "他们想",
+          "known": "They wanted",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["想", "wanted"]
+          ]
+        },
+        {
+          "id": "S0212L02",
+          "type": "M",
+          "target": "想寻求帮助",
+          "known": "wanted to ask for help",
+          "new": true,
+          "components": [
+            ["想", "wanted"],
+            ["寻求", "to ask for/seek"],
+            ["帮助", "help"]
+          ]
+        },
+        {
+          "id": "S0212L03",
+          "type": "M",
+          "target": "寻求帮助",
+          "known": "to ask for help",
+          "new": true,
+          "components": [
+            ["寻求", "to ask for/seek"],
+            ["帮助", "help"]
+          ]
+        },
+        {
+          "id": "S0212L04",
+          "type": "A",
+          "target": "帮助",
+          "known": "help",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0213",
+      "seed_pair": [
+        "我们不知道他们想达到什么。",
+        "We don't know what they're trying to achieve."
+      ],
+      "legos": [
+        {
+          "id": "S0213L01",
+          "type": "M",
+          "target": "我们不知道",
+          "known": "We don't know",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["不", "don't"],
+            ["知道", "know"]
+          ]
+        },
+        {
+          "id": "S0213L02",
+          "type": "M",
+          "target": "他们想达到什么",
+          "known": "what they're trying to achieve",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["想", "trying to"],
+            ["达到", "achieve"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0213L03",
+          "type": "M",
+          "target": "想达到什么",
+          "known": "trying to achieve what",
+          "new": true,
+          "components": [
+            ["想", "trying to"],
+            ["达到", "achieve"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0213L04",
+          "type": "M",
+          "target": "达到什么",
+          "known": "achieve what",
+          "new": true,
+          "components": [
+            ["达到", "achieve"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0213L05",
+          "type": "A",
+          "target": "达到",
+          "known": "to achieve",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0214",
+      "seed_pair": [
+        "你周末过得好吗？",
+        "Did you have a good time at the weekend?"
+      ],
+      "legos": [
+        {
+          "id": "S0214L01",
+          "type": "A",
+          "target": "周末",
+          "known": "weekend",
+          "new": true
+        },
+        {
+          "id": "S0214L02",
+          "type": "M",
+          "target": "你周末过得好吗",
+          "known": "Did you have a good time at the weekend",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["周末", "at the weekend"],
+            ["过得", "have/spend"],
+            ["好", "good"],
+            ["吗", "question particle"]
+          ]
+        },
+        {
+          "id": "S0214L03",
+          "type": "M",
+          "target": "过得好",
+          "known": "have a good time",
+          "new": true,
+          "components": [
+            ["过得", "pass/spend"],
+            ["好", "good/well"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0215",
+      "seed_pair": [
+        "我星期六晚上出去了。",
+        "I went out on Saturday night."
+      ],
+      "legos": [
+        {
+          "id": "S0215L01",
+          "type": "M",
+          "target": "我出去了",
+          "known": "I went out",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["出去", "go out"],
+            ["了", "aspect particle"]
+          ]
+        },
+        {
+          "id": "S0215L02",
+          "type": "M",
+          "target": "星期六晚上",
+          "known": "Saturday night",
+          "new": true,
+          "components": [
+            ["星期六", "Saturday"],
+            ["晚上", "night/evening"]
+          ]
+        },
+        {
+          "id": "S0215L03",
+          "type": "A",
+          "target": "星期六",
+          "known": "Saturday",
+          "new": true
+        },
+        {
+          "id": "S0215L04",
+          "type": "A",
+          "target": "晚上",
+          "known": "night",
+          "new": true
+        },
+        {
+          "id": "S0215L05",
+          "type": "A",
+          "target": "出去",
+          "known": "to go out",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0216",
+      "seed_pair": [
+        "我见了几个朋友。",
+        "I saw a few friends."
+      ],
+      "legos": [
+        {
+          "id": "S0216L01",
+          "type": "M",
+          "target": "我见了",
+          "known": "I saw",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["见", "saw/see"],
+            ["了", "aspect particle"]
+          ]
+        },
+        {
+          "id": "S0216L02",
+          "type": "M",
+          "target": "几个朋友",
+          "known": "a few friends",
+          "new": true,
+          "components": [
+            ["几", "few/several"],
+            ["个", "measure word"],
+            ["朋友", "friends"]
+          ]
+        },
+        {
+          "id": "S0216L03",
+          "type": "A",
+          "target": "朋友",
+          "known": "friend",
+          "new": true
+        },
+        {
+          "id": "S0216L04",
+          "type": "A",
+          "target": "见",
+          "known": "to see",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0217",
+      "seed_pair": [
+        "我喝了一两杯水。",
+        "I had a glass or two of water."
+      ],
+      "legos": [
+        {
+          "id": "S0217L01",
+          "type": "M",
+          "target": "我喝了",
+          "known": "I had",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["喝", "drink"],
+            ["了", "aspect particle"]
+          ]
+        },
+        {
+          "id": "S0217L02",
+          "type": "M",
+          "target": "一两杯水",
+          "known": "a glass or two of water",
+          "new": true,
+          "components": [
+            ["一两", "one or two"],
+            ["杯", "glass/cup"],
+            ["水", "water"]
+          ]
+        },
+        {
+          "id": "S0217L03",
+          "type": "M",
+          "target": "一两杯",
+          "known": "a glass or two",
+          "new": true,
+          "components": [
+            ["一两", "one or two"],
+            ["杯", "glass/cup"]
+          ]
+        },
+        {
+          "id": "S0217L04",
+          "type": "A",
+          "target": "水",
+          "known": "water",
+          "new": true
+        },
+        {
+          "id": "S0217L05",
+          "type": "A",
+          "target": "喝",
+          "known": "to drink",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0218",
+      "seed_pair": [
+        "我星期天没做什么。",
+        "I didn't do much on Sunday."
+      ],
+      "legos": [
+        {
+          "id": "S0218L01",
+          "type": "M",
+          "target": "我星期天没做什么",
+          "known": "I didn't do much on Sunday",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["星期天", "on Sunday"],
+            ["没", "didn't"],
+            ["做", "do"],
+            ["什么", "much/anything"]
+          ]
+        },
+        {
+          "id": "S0218L02",
+          "type": "A",
+          "target": "星期天",
+          "known": "Sunday",
+          "new": true
+        },
+        {
+          "id": "S0218L03",
+          "type": "M",
+          "target": "没做什么",
+          "known": "didn't do much",
+          "new": true,
+          "components": [
+            ["没", "didn't"],
+            ["做", "do"],
+            ["什么", "much/anything"]
+          ]
+        },
+        {
+          "id": "S0218L04",
+          "type": "M",
+          "target": "做什么",
+          "known": "do what",
+          "new": true,
+          "components": [
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0218L05",
+          "type": "A",
+          "target": "做",
+          "known": "to do",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0219",
+      "seed_pair": [
+        "放松一会儿很好。",
+        "It was nice to relax for a while."
+      ],
+      "legos": [
+        {
+          "id": "S0219L01",
+          "type": "M",
+          "target": "放松一会儿很好",
+          "known": "It was nice to relax for a while",
+          "new": true,
+          "components": [
+            ["放松", "to relax"],
+            ["一会儿", "for a while"],
+            ["很", "very"],
+            ["好", "good/nice"]
+          ]
+        },
+        {
+          "id": "S0219L02",
+          "type": "M",
+          "target": "放松一会儿",
+          "known": "to relax for a while",
+          "new": true,
+          "components": [
+            ["放松", "relax"],
+            ["一会儿", "for a while"]
+          ]
+        },
+        {
+          "id": "S0219L03",
+          "type": "A",
+          "target": "放松",
+          "known": "to relax",
+          "new": true
+        },
+        {
+          "id": "S0219L04",
+          "type": "A",
+          "target": "一会儿",
+          "known": "for a while",
+          "new": true
+        },
+        {
+          "id": "S0219L05",
+          "type": "M",
+          "target": "很好",
+          "known": "very good",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["好", "good"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0220",
+      "seed_pair": [
+        "你看了一点电视吗？",
+        "Did you watch a bit of television?"
+      ],
+      "legos": [
+        {
+          "id": "S0220L01",
+          "type": "M",
+          "target": "你看了一点电视吗",
+          "known": "Did you watch a bit of television",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["看", "watch"],
+            ["了", "aspect particle"],
+            ["一点", "a bit"],
+            ["电视", "television"],
+            ["吗", "question particle"]
+          ]
+        },
+        {
+          "id": "S0220L02",
+          "type": "M",
+          "target": "看电视",
+          "known": "watch television",
+          "new": true,
+          "components": [
+            ["看", "watch"],
+            ["电视", "television"]
+          ]
+        },
+        {
+          "id": "S0220L03",
+          "type": "M",
+          "target": "看了",
+          "known": "watched",
+          "new": true,
+          "components": [
+            ["看", "watch"],
+            ["了", "aspect particle"]
+          ]
+        },
+        {
+          "id": "S0220L04",
+          "type": "A",
+          "target": "一点",
+          "known": "a bit",
+          "new": true
+        },
+        {
+          "id": "S0220L05",
+          "type": "A",
+          "target": "电视",
+          "known": "television",
+          "new": true
+        },
+        {
+          "id": "S0220L06",
+          "type": "A",
+          "target": "看",
+          "known": "to watch",
+          "new": true
+        }
+      ]
+    }
+  ]
+}

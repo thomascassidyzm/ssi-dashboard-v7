@@ -1,0 +1,753 @@
+{
+  "agent_id": "agent_10",
+  "seed_range": "S0091-S0100",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0091",
+      "seed_pair": [
+        "很难想得足够快来及时回答。",
+        "It's difficult to think quickly enough to answer in time."
+      ],
+      "legos": [
+        {
+          "id": "S0091L01",
+          "type": "A",
+          "target": "很难",
+          "known": "It's difficult",
+          "new": true
+        },
+        {
+          "id": "S0091L02",
+          "type": "M",
+          "target": "想得足够快",
+          "known": "think quickly enough",
+          "new": true,
+          "components": [
+            ["想", "think"],
+            ["得", "[result complement]"],
+            ["足够", "enough"],
+            ["快", "quick/fast"]
+          ]
+        },
+        {
+          "id": "S0091L03",
+          "type": "M",
+          "target": "足够快",
+          "known": "quickly enough",
+          "new": true,
+          "components": [
+            ["足够", "enough"],
+            ["快", "quickly/fast"]
+          ]
+        },
+        {
+          "id": "S0091L04",
+          "type": "M",
+          "target": "来及时回答",
+          "known": "to answer in time",
+          "new": true,
+          "components": [
+            ["来", "to/in order to"],
+            ["及时", "in time"],
+            ["回答", "answer"]
+          ]
+        },
+        {
+          "id": "S0091L05",
+          "type": "M",
+          "target": "及时回答",
+          "known": "answer in time",
+          "new": true,
+          "components": [
+            ["及时", "in time"],
+            ["回答", "answer"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0092",
+      "seed_pair": [
+        "我想继续做这个一段时间。",
+        "I'd like to keep on doing this for a while."
+      ],
+      "legos": [
+        {
+          "id": "S0092L01",
+          "type": "M",
+          "target": "我想",
+          "known": "I'd like",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["想", "would like/want"]
+          ]
+        },
+        {
+          "id": "S0092L02",
+          "type": "M",
+          "target": "继续做",
+          "known": "keep on doing",
+          "new": true,
+          "components": [
+            ["继续", "continue/keep on"],
+            ["做", "do/doing"]
+          ]
+        },
+        {
+          "id": "S0092L03",
+          "type": "M",
+          "target": "做这个",
+          "known": "do this",
+          "new": true,
+          "components": [
+            ["做", "do"],
+            ["这个", "this"]
+          ]
+        },
+        {
+          "id": "S0092L04",
+          "type": "A",
+          "target": "这个",
+          "known": "this",
+          "new": true
+        },
+        {
+          "id": "S0092L05",
+          "type": "M",
+          "target": "一段时间",
+          "known": "a while",
+          "new": true,
+          "components": [
+            ["一段", "one period"],
+            ["时间", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0093",
+      "seed_pair": [
+        "现在该走了。",
+        "It's time to go now."
+      ],
+      "legos": [
+        {
+          "id": "S0093L01",
+          "type": "A",
+          "target": "现在",
+          "known": "now",
+          "new": true
+        },
+        {
+          "id": "S0093L02",
+          "type": "M",
+          "target": "该走了",
+          "known": "it's time to go",
+          "new": true,
+          "components": [
+            ["该", "should/it's time to"],
+            ["走", "go"],
+            ["了", "[aspect particle]"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0094",
+      "seed_pair": [
+        "这是唯一的方法让它起作用。",
+        "This is the only way it will work."
+      ],
+      "legos": [
+        {
+          "id": "S0094L01",
+          "type": "M",
+          "target": "这是",
+          "known": "this is",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["是", "is"]
+          ]
+        },
+        {
+          "id": "S0094L02",
+          "type": "M",
+          "target": "唯一的方法",
+          "known": "the only way",
+          "new": true,
+          "components": [
+            ["唯一", "only"],
+            ["的", "[particle]"],
+            ["方法", "way/method"]
+          ]
+        },
+        {
+          "id": "S0094L03",
+          "type": "M",
+          "target": "让它起作用",
+          "known": "make it work",
+          "new": true,
+          "components": [
+            ["让", "let/make"],
+            ["它", "it"],
+            ["起作用", "work"]
+          ]
+        },
+        {
+          "id": "S0094L04",
+          "type": "M",
+          "target": "它起作用",
+          "known": "it works",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["起作用", "work"]
+          ]
+        },
+        {
+          "id": "S0094L05",
+          "type": "M",
+          "target": "起作用",
+          "known": "work",
+          "new": true,
+          "components": [
+            ["起", "start/arise"],
+            ["作用", "effect/function"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0095",
+      "seed_pair": [
+        "你准备好坐下一班公共汽车回家吗？",
+        "Are you ready to go home on the next bus?"
+      ],
+      "legos": [
+        {
+          "id": "S0095L01",
+          "type": "M",
+          "target": "你准备好",
+          "known": "you are ready",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["准备好", "ready"]
+          ]
+        },
+        {
+          "id": "S0095L02",
+          "type": "M",
+          "target": "准备好",
+          "known": "ready",
+          "new": true,
+          "components": [
+            ["准备", "prepare"],
+            ["好", "good/complete"]
+          ]
+        },
+        {
+          "id": "S0095L03",
+          "type": "M",
+          "target": "坐下一班公共汽车",
+          "known": "take the next bus",
+          "new": true,
+          "components": [
+            ["坐", "take/ride"],
+            ["下一班", "next one"],
+            ["公共汽车", "bus"]
+          ]
+        },
+        {
+          "id": "S0095L04",
+          "type": "M",
+          "target": "下一班公共汽车",
+          "known": "the next bus",
+          "new": true,
+          "components": [
+            ["下一班", "next one"],
+            ["公共汽车", "bus"]
+          ]
+        },
+        {
+          "id": "S0095L05",
+          "type": "M",
+          "target": "公共汽车",
+          "known": "bus",
+          "new": true,
+          "components": [
+            ["公共", "public"],
+            ["汽车", "vehicle"]
+          ]
+        },
+        {
+          "id": "S0095L06",
+          "type": "M",
+          "target": "回家",
+          "known": "go home",
+          "new": true,
+          "components": [
+            ["回", "return"],
+            ["家", "home"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0096",
+      "seed_pair": [
+        "不，我还没准备好，我需要多一点时间。",
+        "No I'm not ready yet, I need a little more time."
+      ],
+      "legos": [
+        {
+          "id": "S0096L01",
+          "type": "A",
+          "target": "不",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0096L02",
+          "type": "M",
+          "target": "我还没准备好",
+          "known": "I'm not ready yet",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["还没", "not yet"],
+            ["准备好", "ready"]
+          ]
+        },
+        {
+          "id": "S0096L03",
+          "type": "M",
+          "target": "还没准备好",
+          "known": "not ready yet",
+          "new": true,
+          "components": [
+            ["还没", "not yet"],
+            ["准备好", "ready"]
+          ]
+        },
+        {
+          "id": "S0096L04",
+          "type": "M",
+          "target": "准备好",
+          "known": "ready",
+          "new": true,
+          "components": [
+            ["准备", "prepare"],
+            ["好", "complete"]
+          ]
+        },
+        {
+          "id": "S0096L05",
+          "type": "M",
+          "target": "我需要",
+          "known": "I need",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["需要", "need"]
+          ]
+        },
+        {
+          "id": "S0096L06",
+          "type": "M",
+          "target": "需要多一点时间",
+          "known": "need a little more time",
+          "new": true,
+          "components": [
+            ["需要", "need"],
+            ["多一点", "a little more"],
+            ["时间", "time"]
+          ]
+        },
+        {
+          "id": "S0096L07",
+          "type": "M",
+          "target": "多一点时间",
+          "known": "a little more time",
+          "new": true,
+          "components": [
+            ["多一点", "a little more"],
+            ["时间", "time"]
+          ]
+        },
+        {
+          "id": "S0096L08",
+          "type": "M",
+          "target": "一点时间",
+          "known": "a little time",
+          "new": true,
+          "components": [
+            ["一点", "a little"],
+            ["时间", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0097",
+      "seed_pair": [
+        "是的，我准备好了，只要你想我就可以走。",
+        "Yes I'm ready to go as soon as you want."
+      ],
+      "legos": [
+        {
+          "id": "S0097L01",
+          "type": "M",
+          "target": "是的",
+          "known": "yes",
+          "new": true,
+          "components": [
+            ["是", "yes"],
+            ["的", "[particle]"]
+          ]
+        },
+        {
+          "id": "S0097L02",
+          "type": "M",
+          "target": "我准备好了",
+          "known": "I'm ready",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["准备好", "ready"],
+            ["了", "[aspect particle]"]
+          ]
+        },
+        {
+          "id": "S0097L03",
+          "type": "M",
+          "target": "准备好了",
+          "known": "ready",
+          "new": true,
+          "components": [
+            ["准备好", "ready"],
+            ["了", "[particle]"]
+          ]
+        },
+        {
+          "id": "S0097L04",
+          "type": "M",
+          "target": "只要你想",
+          "known": "as soon as you want",
+          "new": true,
+          "components": [
+            ["只要", "as soon as/as long as"],
+            ["你", "you"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0097L05",
+          "type": "M",
+          "target": "你想",
+          "known": "you want",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0097L06",
+          "type": "M",
+          "target": "我就可以走",
+          "known": "I can go",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["就", "then"],
+            ["可以", "can"],
+            ["走", "go"]
+          ]
+        },
+        {
+          "id": "S0097L07",
+          "type": "M",
+          "target": "可以走",
+          "known": "can go",
+          "new": true,
+          "components": [
+            ["可以", "can"],
+            ["走", "go"]
+          ]
+        },
+        {
+          "id": "S0097L08",
+          "type": "A",
+          "target": "走",
+          "known": "go",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0098",
+      "seed_pair": [
+        "我应该考虑玩别的东西。",
+        "I should consider playing something else."
+      ],
+      "legos": [
+        {
+          "id": "S0098L01",
+          "type": "M",
+          "target": "我应该",
+          "known": "I should",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["应该", "should"]
+          ]
+        },
+        {
+          "id": "S0098L02",
+          "type": "M",
+          "target": "应该考虑",
+          "known": "should consider",
+          "new": true,
+          "components": [
+            ["应该", "should"],
+            ["考虑", "consider"]
+          ]
+        },
+        {
+          "id": "S0098L03",
+          "type": "M",
+          "target": "考虑玩",
+          "known": "consider playing",
+          "new": true,
+          "components": [
+            ["考虑", "consider"],
+            ["玩", "play/playing"]
+          ]
+        },
+        {
+          "id": "S0098L04",
+          "type": "M",
+          "target": "玩别的东西",
+          "known": "play something else",
+          "new": true,
+          "components": [
+            ["玩", "play"],
+            ["别的东西", "something else"]
+          ]
+        },
+        {
+          "id": "S0098L05",
+          "type": "M",
+          "target": "别的东西",
+          "known": "something else",
+          "new": true,
+          "components": [
+            ["别的", "else/other"],
+            ["东西", "thing"]
+          ]
+        },
+        {
+          "id": "S0098L06",
+          "type": "A",
+          "target": "东西",
+          "known": "thing",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0099",
+      "seed_pair": [
+        "你应该问问你自己为什么它不起作用。",
+        "You should ask yourself why it's not working."
+      ],
+      "legos": [
+        {
+          "id": "S0099L01",
+          "type": "M",
+          "target": "你应该",
+          "known": "you should",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["应该", "should"]
+          ]
+        },
+        {
+          "id": "S0099L02",
+          "type": "M",
+          "target": "问问你自己",
+          "known": "ask yourself",
+          "new": true,
+          "components": [
+            ["问问", "ask"],
+            ["你自己", "yourself"]
+          ]
+        },
+        {
+          "id": "S0099L03",
+          "type": "M",
+          "target": "你自己",
+          "known": "yourself",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["自己", "self"]
+          ]
+        },
+        {
+          "id": "S0099L04",
+          "type": "M",
+          "target": "为什么",
+          "known": "why",
+          "new": true,
+          "components": [
+            ["为", "for"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0099L05",
+          "type": "M",
+          "target": "为什么它不起作用",
+          "known": "why it's not working",
+          "new": true,
+          "components": [
+            ["为什么", "why"],
+            ["它", "it"],
+            ["不起作用", "not working"]
+          ]
+        },
+        {
+          "id": "S0099L06",
+          "type": "M",
+          "target": "它不起作用",
+          "known": "it's not working",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["不起作用", "not working"]
+          ]
+        },
+        {
+          "id": "S0099L07",
+          "type": "M",
+          "target": "不起作用",
+          "known": "not working",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["起作用", "work"]
+          ]
+        },
+        {
+          "id": "S0099L08",
+          "type": "M",
+          "target": "起作用",
+          "known": "work",
+          "new": true,
+          "components": [
+            ["起", "start/arise"],
+            ["作用", "effect"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0100",
+      "seed_pair": [
+        "你不应该担心做类似的事情。",
+        "You shouldn't worry about doing something similar."
+      ],
+      "legos": [
+        {
+          "id": "S0100L01",
+          "type": "M",
+          "target": "你不应该",
+          "known": "you shouldn't",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["不应该", "shouldn't"]
+          ]
+        },
+        {
+          "id": "S0100L02",
+          "type": "M",
+          "target": "不应该",
+          "known": "shouldn't",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["应该", "should"]
+          ]
+        },
+        {
+          "id": "S0100L03",
+          "type": "M",
+          "target": "不应该担心",
+          "known": "shouldn't worry",
+          "new": true,
+          "components": [
+            ["不应该", "shouldn't"],
+            ["担心", "worry"]
+          ]
+        },
+        {
+          "id": "S0100L04",
+          "type": "A",
+          "target": "担心",
+          "known": "worry",
+          "new": true
+        },
+        {
+          "id": "S0100L05",
+          "type": "M",
+          "target": "担心做类似的事情",
+          "known": "worry about doing something similar",
+          "new": true,
+          "components": [
+            ["担心", "worry"],
+            ["做", "doing"],
+            ["类似的事情", "something similar"]
+          ]
+        },
+        {
+          "id": "S0100L06",
+          "type": "M",
+          "target": "做类似的事情",
+          "known": "doing something similar",
+          "new": true,
+          "components": [
+            ["做", "do/doing"],
+            ["类似的事情", "something similar"]
+          ]
+        },
+        {
+          "id": "S0100L07",
+          "type": "M",
+          "target": "类似的事情",
+          "known": "something similar",
+          "new": true,
+          "components": [
+            ["类似", "similar"],
+            ["的", "[particle]"],
+            ["事情", "thing/matter"]
+          ]
+        },
+        {
+          "id": "S0100L08",
+          "type": "A",
+          "target": "事情",
+          "known": "thing",
+          "new": true
+        }
+      ]
+    }
+  ]
+}

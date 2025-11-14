@@ -1,0 +1,759 @@
+{
+  "agent_id": "agent_02",
+  "seed_range": "S0011-S0020",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0011",
+      "seed_pair": [
+        "I'd like to be able to speak after you finish.",
+        "我想能够在你说完之后说话。"
+      ],
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "M",
+          "target": "我想",
+          "known": "I'd like",
+          "new": true,
+          "components": [["我", "I"], ["想", "'d like/want"]]
+        },
+        {
+          "id": "S0011L02",
+          "type": "M",
+          "target": "我想能够",
+          "known": "I'd like to be able to",
+          "new": true,
+          "components": [["我", "I"], ["想", "'d like/want"], ["能够", "to be able to"]]
+        },
+        {
+          "id": "S0011L03",
+          "type": "M",
+          "target": "能够说话",
+          "known": "be able to speak",
+          "new": true,
+          "components": [["能够", "be able to"], ["说话", "speak"]]
+        },
+        {
+          "id": "S0011L04",
+          "type": "M",
+          "target": "说话",
+          "known": "speak",
+          "new": true,
+          "components": [["说", "speak"], ["话", "words/talk"]]
+        },
+        {
+          "id": "S0011L05",
+          "type": "M",
+          "target": "说完",
+          "known": "finish speaking",
+          "new": true,
+          "components": [["说", "speak"], ["完", "finish"]]
+        },
+        {
+          "id": "S0011L06",
+          "type": "M",
+          "target": "你说完",
+          "known": "you finish",
+          "new": true,
+          "components": [["你", "you"], ["说", "speak"], ["完", "finish"]]
+        },
+        {
+          "id": "S0011L07",
+          "type": "M",
+          "target": "说完之后",
+          "known": "after finishing",
+          "new": true,
+          "components": [["说", "speak"], ["完", "finish"], ["之后", "after"]]
+        },
+        {
+          "id": "S0011L08",
+          "type": "M",
+          "target": "在你说完之后",
+          "known": "after you finish",
+          "new": true,
+          "components": [["在", "at/in"], ["你", "you"], ["说", "speak"], ["完", "finish"], ["之后", "after"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": [
+        "I wouldn't like to guess what's going to happen tomorrow.",
+        "我不想猜明天会发生什么。"
+      ],
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "target": "我不想",
+          "known": "I wouldn't like",
+          "new": true,
+          "components": [["我", "I"], ["不", "not"], ["想", "like/want"]]
+        },
+        {
+          "id": "S0012L02",
+          "type": "M",
+          "target": "不想猜",
+          "known": "wouldn't like to guess",
+          "new": true,
+          "components": [["不", "not"], ["想", "like/want"], ["猜", "guess"]]
+        },
+        {
+          "id": "S0012L03",
+          "type": "A",
+          "target": "猜",
+          "known": "guess",
+          "new": true
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "target": "明天",
+          "known": "tomorrow",
+          "new": true
+        },
+        {
+          "id": "S0012L05",
+          "type": "M",
+          "target": "会发生",
+          "known": "going to happen",
+          "new": true,
+          "components": [["会", "will/going to"], ["发生", "happen"]]
+        },
+        {
+          "id": "S0012L06",
+          "type": "A",
+          "target": "发生",
+          "known": "happen",
+          "new": true
+        },
+        {
+          "id": "S0012L07",
+          "type": "M",
+          "target": "会发生什么",
+          "known": "what's going to happen",
+          "new": true,
+          "components": [["会", "will/going to"], ["发生", "happen"], ["什么", "what"]]
+        },
+        {
+          "id": "S0012L08",
+          "type": "M",
+          "target": "明天会发生什么",
+          "known": "what's going to happen tomorrow",
+          "new": true,
+          "components": [["明天", "tomorrow"], ["会", "will/going to"], ["发生", "happen"], ["什么", "what"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0013",
+      "seed_pair": [
+        "You speak Mandarin Chinese very well.",
+        "你中文说得很好。"
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "target": "中文",
+          "known": "Mandarin Chinese",
+          "new": true
+        },
+        {
+          "id": "S0013L02",
+          "type": "M",
+          "target": "很好",
+          "known": "very well",
+          "new": true,
+          "components": [["很", "very"], ["好", "well/good"]]
+        },
+        {
+          "id": "S0013L03",
+          "type": "M",
+          "target": "得很好",
+          "known": "very well",
+          "new": true,
+          "components": [["得", "(complement marker)"], ["很", "very"], ["好", "well/good"]]
+        },
+        {
+          "id": "S0013L04",
+          "type": "M",
+          "target": "说得很好",
+          "known": "speak very well",
+          "new": true,
+          "components": [["说", "speak"], ["得", "(complement marker)"], ["很", "very"], ["好", "well"]]
+        },
+        {
+          "id": "S0013L05",
+          "type": "M",
+          "target": "中文说得很好",
+          "known": "speak Chinese very well",
+          "new": true,
+          "components": [["中文", "Chinese"], ["说", "speak"], ["得", "(complement marker)"], ["很", "very"], ["好", "well"]]
+        },
+        {
+          "id": "S0013L06",
+          "type": "M",
+          "target": "你中文说得很好",
+          "known": "you speak Chinese very well",
+          "new": true,
+          "components": [["你", "you"], ["中文", "Chinese"], ["说", "speak"], ["得", "(complement marker)"], ["很", "very"], ["好", "well"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": [
+        "Do you speak Mandarin Chinese all day?",
+        "你整天都说中文吗？"
+      ],
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "target": "中文",
+          "known": "Chinese",
+          "new": true
+        },
+        {
+          "id": "S0014L02",
+          "type": "M",
+          "target": "说中文",
+          "known": "speak Chinese",
+          "new": true,
+          "components": [["说", "speak"], ["中文", "Chinese"]]
+        },
+        {
+          "id": "S0014L03",
+          "type": "A",
+          "target": "整天",
+          "known": "all day",
+          "new": true
+        },
+        {
+          "id": "S0014L04",
+          "type": "M",
+          "target": "整天都",
+          "known": "all day",
+          "new": true,
+          "components": [["整天", "all day"], ["都", "all/even"]]
+        },
+        {
+          "id": "S0014L05",
+          "type": "M",
+          "target": "说中文吗",
+          "known": "speak Chinese?",
+          "new": true,
+          "components": [["说", "speak"], ["中文", "Chinese"], ["吗", "(question particle)"]]
+        },
+        {
+          "id": "S0014L06",
+          "type": "M",
+          "target": "整天都说中文",
+          "known": "speak Chinese all day",
+          "new": true,
+          "components": [["整天", "all day"], ["都", "all/even"], ["说", "speak"], ["中文", "Chinese"]]
+        },
+        {
+          "id": "S0014L07",
+          "type": "M",
+          "target": "你整天都说中文吗",
+          "known": "do you speak Chinese all day?",
+          "new": true,
+          "components": [["你", "you"], ["整天", "all day"], ["都", "all/even"], ["说", "speak"], ["中文", "Chinese"], ["吗", "(question)"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": [
+        "And I want you to speak Mandarin Chinese with me tomorrow.",
+        "而且我想要你明天和我说中文。"
+      ],
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "target": "而且",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0015L02",
+          "type": "M",
+          "target": "我想要",
+          "known": "I want",
+          "new": true,
+          "components": [["我", "I"], ["想要", "want"]]
+        },
+        {
+          "id": "S0015L03",
+          "type": "M",
+          "target": "想要你",
+          "known": "want you to",
+          "new": true,
+          "components": [["想要", "want"], ["你", "you"]]
+        },
+        {
+          "id": "S0015L04",
+          "type": "A",
+          "target": "明天",
+          "known": "tomorrow",
+          "new": true
+        },
+        {
+          "id": "S0015L05",
+          "type": "M",
+          "target": "和我",
+          "known": "with me",
+          "new": true,
+          "components": [["和", "with"], ["我", "me"]]
+        },
+        {
+          "id": "S0015L06",
+          "type": "M",
+          "target": "说中文",
+          "known": "speak Chinese",
+          "new": true,
+          "components": [["说", "speak"], ["中文", "Chinese"]]
+        },
+        {
+          "id": "S0015L07",
+          "type": "M",
+          "target": "和我说中文",
+          "known": "speak Chinese with me",
+          "new": true,
+          "components": [["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+        },
+        {
+          "id": "S0015L08",
+          "type": "M",
+          "target": "明天和我说中文",
+          "known": "speak Chinese with me tomorrow",
+          "new": true,
+          "components": [["明天", "tomorrow"], ["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+        },
+        {
+          "id": "S0015L09",
+          "type": "M",
+          "target": "你明天和我说中文",
+          "known": "you speak Chinese with me tomorrow",
+          "new": true,
+          "components": [["你", "you"], ["明天", "tomorrow"], ["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+        },
+        {
+          "id": "S0015L10",
+          "type": "M",
+          "target": "我想要你明天和我说中文",
+          "known": "I want you to speak Chinese with me tomorrow",
+          "new": true,
+          "components": [["我", "I"], ["想要", "want"], ["你", "you"], ["明天", "tomorrow"], ["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0016",
+      "seed_pair": [
+        "He wants to come back with everyone else later on.",
+        "他想晚点和其他人一起回来。"
+      ],
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "M",
+          "target": "他想",
+          "known": "he wants",
+          "new": true,
+          "components": [["他", "he"], ["想", "want"]]
+        },
+        {
+          "id": "S0016L02",
+          "type": "M",
+          "target": "想回来",
+          "known": "want to come back",
+          "new": true,
+          "components": [["想", "want"], ["回来", "come back"]]
+        },
+        {
+          "id": "S0016L03",
+          "type": "M",
+          "target": "想晚点回来",
+          "known": "want to come back later",
+          "new": true,
+          "components": [["想", "want"], ["晚点", "later"], ["回来", "come back"]]
+        },
+        {
+          "id": "S0016L04",
+          "type": "M",
+          "target": "回来",
+          "known": "come back",
+          "new": true,
+          "components": [["回", "return"], ["来", "come"]]
+        },
+        {
+          "id": "S0016L05",
+          "type": "A",
+          "target": "晚点",
+          "known": "later",
+          "new": true
+        },
+        {
+          "id": "S0016L06",
+          "type": "A",
+          "target": "其他人",
+          "known": "other people",
+          "new": true
+        },
+        {
+          "id": "S0016L07",
+          "type": "A",
+          "target": "一起",
+          "known": "together",
+          "new": true
+        },
+        {
+          "id": "S0016L08",
+          "type": "M",
+          "target": "和其他人一起",
+          "known": "with everyone else",
+          "new": true,
+          "components": [["和", "with"], ["其他人", "other people"], ["一起", "together"]]
+        },
+        {
+          "id": "S0016L09",
+          "type": "M",
+          "target": "一起回来",
+          "known": "come back together",
+          "new": true,
+          "components": [["一起", "together"], ["回来", "come back"]]
+        },
+        {
+          "id": "S0016L10",
+          "type": "M",
+          "target": "和其他人一起回来",
+          "known": "come back with everyone else",
+          "new": true,
+          "components": [["和", "with"], ["其他人", "other people"], ["一起", "together"], ["回来", "come back"]]
+        },
+        {
+          "id": "S0016L11",
+          "type": "M",
+          "target": "晚点和其他人一起回来",
+          "known": "come back with everyone else later",
+          "new": true,
+          "components": [["晚点", "later"], ["和", "with"], ["其他人", "other people"], ["一起", "together"], ["回来", "come back"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": [
+        "She wants to find out what the answer is.",
+        "她想找出答案是什么。"
+      ],
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "M",
+          "target": "她想",
+          "known": "she wants",
+          "new": true,
+          "components": [["她", "she"], ["想", "want"]]
+        },
+        {
+          "id": "S0017L02",
+          "type": "M",
+          "target": "想找出",
+          "known": "want to find out",
+          "new": true,
+          "components": [["想", "want"], ["找出", "find out"]]
+        },
+        {
+          "id": "S0017L03",
+          "type": "M",
+          "target": "找出",
+          "known": "find out",
+          "new": true,
+          "components": [["找", "find/look for"], ["出", "out"]]
+        },
+        {
+          "id": "S0017L04",
+          "type": "A",
+          "target": "答案",
+          "known": "answer",
+          "new": true
+        },
+        {
+          "id": "S0017L05",
+          "type": "M",
+          "target": "是什么",
+          "known": "what is",
+          "new": true,
+          "components": [["是", "is"], ["什么", "what"]]
+        },
+        {
+          "id": "S0017L06",
+          "type": "M",
+          "target": "答案是什么",
+          "known": "what the answer is",
+          "new": true,
+          "components": [["答案", "answer"], ["是", "is"], ["什么", "what"]]
+        },
+        {
+          "id": "S0017L07",
+          "type": "M",
+          "target": "找出答案是什么",
+          "known": "find out what the answer is",
+          "new": true,
+          "components": [["找出", "find out"], ["答案", "answer"], ["是", "is"], ["什么", "what"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": [
+        "We want to meet at six o'clock this evening.",
+        "我们想今天晚上六点见面。"
+      ],
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "M",
+          "target": "我们想",
+          "known": "we want",
+          "new": true,
+          "components": [["我们", "we"], ["想", "want"]]
+        },
+        {
+          "id": "S0018L02",
+          "type": "M",
+          "target": "想见面",
+          "known": "want to meet",
+          "new": true,
+          "components": [["想", "want"], ["见面", "meet"]]
+        },
+        {
+          "id": "S0018L03",
+          "type": "M",
+          "target": "见面",
+          "known": "meet",
+          "new": true,
+          "components": [["见", "see"], ["面", "face"]]
+        },
+        {
+          "id": "S0018L04",
+          "type": "A",
+          "target": "今天",
+          "known": "today",
+          "new": true
+        },
+        {
+          "id": "S0018L05",
+          "type": "A",
+          "target": "晚上",
+          "known": "evening",
+          "new": true
+        },
+        {
+          "id": "S0018L06",
+          "type": "M",
+          "target": "今天晚上",
+          "known": "this evening",
+          "new": true,
+          "components": [["今天", "today"], ["晚上", "evening"]]
+        },
+        {
+          "id": "S0018L07",
+          "type": "A",
+          "target": "六点",
+          "known": "six o'clock",
+          "new": true
+        },
+        {
+          "id": "S0018L08",
+          "type": "M",
+          "target": "晚上六点",
+          "known": "six o'clock in the evening",
+          "new": true,
+          "components": [["晚上", "evening"], ["六点", "six o'clock"]]
+        },
+        {
+          "id": "S0018L09",
+          "type": "M",
+          "target": "今天晚上六点",
+          "known": "six o'clock this evening",
+          "new": true,
+          "components": [["今天", "today"], ["晚上", "evening"], ["六点", "six o'clock"]]
+        },
+        {
+          "id": "S0018L10",
+          "type": "M",
+          "target": "六点见面",
+          "known": "meet at six o'clock",
+          "new": true,
+          "components": [["六点", "six o'clock"], ["见面", "meet"]]
+        },
+        {
+          "id": "S0018L11",
+          "type": "M",
+          "target": "今天晚上六点见面",
+          "known": "meet at six o'clock this evening",
+          "new": true,
+          "components": [["今天", "today"], ["晚上", "evening"], ["六点", "six o'clock"], ["见面", "meet"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "seed_pair": [
+        "But I don't want to stop talking.",
+        "但我不想停止说话。"
+      ],
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "target": "我不想",
+          "known": "I don't want",
+          "new": true,
+          "components": [["我", "I"], ["不", "not"], ["想", "want"]]
+        },
+        {
+          "id": "S0019L03",
+          "type": "M",
+          "target": "不想停止",
+          "known": "don't want to stop",
+          "new": true,
+          "components": [["不", "not"], ["想", "want"], ["停止", "stop"]]
+        },
+        {
+          "id": "S0019L04",
+          "type": "A",
+          "target": "停止",
+          "known": "stop",
+          "new": true
+        },
+        {
+          "id": "S0019L05",
+          "type": "M",
+          "target": "说话",
+          "known": "talking",
+          "new": true,
+          "components": [["说", "speak"], ["话", "words"]]
+        },
+        {
+          "id": "S0019L06",
+          "type": "M",
+          "target": "停止说话",
+          "known": "stop talking",
+          "new": true,
+          "components": [["停止", "stop"], ["说话", "talking"]]
+        },
+        {
+          "id": "S0019L07",
+          "type": "M",
+          "target": "不想停止说话",
+          "known": "don't want to stop talking",
+          "new": true,
+          "components": [["不", "not"], ["想", "want"], ["停止", "stop"], ["说话", "talking"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": [
+        "You want to learn his name quickly.",
+        "你想快点学会他的名字。"
+      ],
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "M",
+          "target": "你想",
+          "known": "you want",
+          "new": true,
+          "components": [["你", "you"], ["想", "want"]]
+        },
+        {
+          "id": "S0020L02",
+          "type": "M",
+          "target": "想学会",
+          "known": "want to learn",
+          "new": true,
+          "components": [["想", "want"], ["学会", "learn"]]
+        },
+        {
+          "id": "S0020L03",
+          "type": "M",
+          "target": "学会",
+          "known": "learn",
+          "new": true,
+          "components": [["学", "study/learn"], ["会", "can/know"]]
+        },
+        {
+          "id": "S0020L04",
+          "type": "A",
+          "target": "快点",
+          "known": "quickly",
+          "new": true
+        },
+        {
+          "id": "S0020L05",
+          "type": "M",
+          "target": "他的",
+          "known": "his",
+          "new": true,
+          "components": [["他", "he"], ["的", "(possessive)"]]
+        },
+        {
+          "id": "S0020L06",
+          "type": "A",
+          "target": "名字",
+          "known": "name",
+          "new": true
+        },
+        {
+          "id": "S0020L07",
+          "type": "M",
+          "target": "他的名字",
+          "known": "his name",
+          "new": true,
+          "components": [["他", "he"], ["的", "(possessive)"], ["名字", "name"]]
+        },
+        {
+          "id": "S0020L08",
+          "type": "M",
+          "target": "学会他的名字",
+          "known": "learn his name",
+          "new": true,
+          "components": [["学会", "learn"], ["他", "he"], ["的", "(possessive)"], ["名字", "name"]]
+        },
+        {
+          "id": "S0020L09",
+          "type": "M",
+          "target": "快点学会他的名字",
+          "known": "learn his name quickly",
+          "new": true,
+          "components": [["快点", "quickly"], ["学会", "learn"], ["他", "he"], ["的", "(possessive)"], ["名字", "name"]]
+        },
+        {
+          "id": "S0020L10",
+          "type": "M",
+          "target": "想快点学会他的名字",
+          "known": "want to learn his name quickly",
+          "new": true,
+          "components": [["想", "want"], ["快点", "quickly"], ["学会", "learn"], ["他", "he"], ["的", "(possessive)"], ["名字", "name"]]
+        }
+      ]
+    }
+  ]
+}
