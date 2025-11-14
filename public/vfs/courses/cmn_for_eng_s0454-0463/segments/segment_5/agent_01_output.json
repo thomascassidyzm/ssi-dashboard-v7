@@ -1,0 +1,159 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0454-S0455",
+  "extracted_at": "2025-11-14T02:30:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0454",
+      "seed_pair": [
+        "Nuestros amigos vinieron como a las seis.",
+        "Our friends came round at about six o'clock."
+      ],
+      "legos": [
+        {
+          "id": "S0454L01",
+          "type": "M",
+          "target": "nuestros amigos",
+          "known": "our friends",
+          "new": true,
+          "components": [
+            ["nuestros", "our"],
+            ["amigos", "friends"]
+          ]
+        },
+        {
+          "id": "S0454L02",
+          "type": "M",
+          "target": "nuestros amigos vinieron",
+          "known": "our friends came round",
+          "new": true,
+          "components": [
+            ["nuestros", "our"],
+            ["amigos", "friends"],
+            ["vinieron", "came"]
+          ]
+        },
+        {
+          "id": "S0454L03",
+          "type": "M",
+          "target": "vinieron como a las seis",
+          "known": "came round at about six o'clock",
+          "new": true,
+          "components": [
+            ["vinieron", "came"],
+            ["como", "about"],
+            ["a", "at"],
+            ["las", "the"],
+            ["seis", "six"]
+          ]
+        },
+        {
+          "id": "S0454L04",
+          "type": "M",
+          "target": "como a las seis",
+          "known": "at about six o'clock",
+          "new": true,
+          "components": [
+            ["como", "about"],
+            ["a", "at"],
+            ["las", "the"],
+            ["seis", "six"]
+          ]
+        },
+        {
+          "id": "S0454L05",
+          "type": "M",
+          "target": "las seis",
+          "known": "six o'clock",
+          "new": true,
+          "components": [
+            ["las", "the"],
+            ["seis", "six"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0455",
+      "seed_pair": [
+        "Tuvimos que irnos porque los niños estaban cansados.",
+        "We had to leave because the children were tired."
+      ],
+      "legos": [
+        {
+          "id": "S0455L01",
+          "type": "M",
+          "target": "tuvimos que",
+          "known": "we had to",
+          "new": true,
+          "components": [
+            ["tuvimos", "we had"],
+            ["que", "to"]
+          ]
+        },
+        {
+          "id": "S0455L02",
+          "type": "M",
+          "target": "tuvimos que irnos",
+          "known": "we had to leave",
+          "new": true,
+          "components": [
+            ["tuvimos", "we had"],
+            ["que", "to"],
+            ["irnos", "leave/go"]
+          ]
+        },
+        {
+          "id": "S0455L03",
+          "type": "M",
+          "target": "los niños",
+          "known": "the children",
+          "new": true,
+          "components": [
+            ["los", "the"],
+            ["niños", "children"]
+          ]
+        },
+        {
+          "id": "S0455L04",
+          "type": "M",
+          "target": "estaban cansados",
+          "known": "were tired",
+          "new": true,
+          "components": [
+            ["estaban", "were"],
+            ["cansados", "tired"]
+          ]
+        },
+        {
+          "id": "S0455L05",
+          "type": "M",
+          "target": "los niños estaban cansados",
+          "known": "the children were tired",
+          "new": true,
+          "components": [
+            ["los", "the"],
+            ["niños", "children"],
+            ["estaban", "were"],
+            ["cansados", "tired"]
+          ]
+        },
+        {
+          "id": "S0455L06",
+          "type": "M",
+          "target": "porque los niños estaban cansados",
+          "known": "because the children were tired",
+          "new": true,
+          "components": [
+            ["porque", "because"],
+            ["los", "the"],
+            ["niños", "children"],
+            ["estaban", "were"],
+            ["cansados", "tired"]
+          ]
+        }
+      ]
+    }
+  ]
+}
