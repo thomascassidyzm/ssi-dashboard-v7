@@ -2405,6 +2405,16 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       }
       job.phase = 'phase_1_complete';
       job.progress = 30;
+      job.status = 'completed';
+      job.message = 'Phase 1 completed successfully';
+
+      // Exit if Phase 1 Only was selected
+      if (phaseSelection === 'phase1') {
+        console.log(`\n[Web Orchestrator] ====================================`);
+        console.log(`[Web Orchestrator] ✅ PHASE 1 COMPLETE`);
+        console.log(`[Web Orchestrator] ====================================`);
+        return; // Exit after Phase 1 only
+      }
     }
 
     // PHASE 3: LEGO Extraction (with intelligent resume)
@@ -2540,6 +2550,16 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       console.log(`[Web Orchestrator] ✅ Phase 3 complete! Created lego_pairs.json with deduplication and reordering`);
       job.phase = 'phase_3_complete';
       job.progress = 60;
+      job.status = 'completed';
+      job.message = 'Phase 3 completed successfully';
+
+      // Exit if Phase 3 Only was selected
+      if (phaseSelection === 'phase3') {
+        console.log(`\n[Web Orchestrator] ====================================`);
+        console.log(`[Web Orchestrator] ✅ PHASE 3 COMPLETE`);
+        console.log(`[Web Orchestrator] ====================================`);
+        return; // Exit after Phase 3 only
+      }
 
       // CHECKPOINT: Phase 3 → Phase 5
       if (CONFIG.CHECKPOINT_MODE === 'manual') {
