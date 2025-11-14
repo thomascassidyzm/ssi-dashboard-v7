@@ -152,7 +152,7 @@ app.use((req, res, next) => {
 // =============================================================================
 
 const STATE = {
-  jobs: new Map(), // courseCode -> { status, phase, progress, startTime }
+  jobs: new Map(), // courseCode -> { status, phase, progress, startTime, events, windows }
   regenerationJobs: new Map(), // jobId -> { status, courseCode, seedIds, startTime, results }
   promptVersions: new Map(), // courseCode -> version history
   audioJobs: new Map(), // jobId -> { status, courseCode, completed, total, successful, failed, skipped, errors, currentFile, startTime }
@@ -184,6 +184,25 @@ function getLanguageName(code) {
     'fin': 'Finnish'
   };
   return names[code.toLowerCase()] || code.toUpperCase();
+}
+
+/**
+ * Add an event to the job's event timeline
+ * @param {Object} job - The job object
+ * @param {Object} event - Event data (type, window, branch, etc.)
+ */
+function addEvent(job, event) {
+  if (!job.events) job.events = [];
+
+  job.events.push({
+    ...event,
+    timestamp: new Date().toISOString()
+  });
+
+  // Keep last 100 events to prevent memory bloat
+  if (job.events.length > 100) {
+    job.events = job.events.slice(-100);
+  }
 }
 
 /**
@@ -1757,7 +1776,7 @@ async function spawnCourseOrchestrator(courseCode, params) {
  * Merge all Phase 3 agent branches to main
  * Fetches all remote branches matching phase3-* pattern and merges them
  */
-async function mergePhase3Branches(courseDir) {
+async function mergePhase3Branches(courseDir, job = null) {
   try {
     console.log(`[Phase 3 Merge] Fetching all remote branches...`);
     await execAsync('git fetch --all', { cwd: courseDir });
@@ -1799,8 +1818,25 @@ async function mergePhase3Branches(courseDir) {
       console.log(`[Phase 3 Merge] Merging ${branchName}...`);
 
       try {
+        // Emit branch_merging event
+        if (job) {
+          addEvent(job, {
+            type: 'branch_merging',
+            branch: branchName
+          });
+        }
+
         await execAsync(`git merge ${branch} --no-edit -m "Merge Phase 3 segment: ${branchName}"`, { cwd: courseDir });
         console.log(`[Phase 3 Merge] ✅ Merged ${branchName}`);
+
+        // Emit branch_merged event
+        if (job) {
+          addEvent(job, {
+            type: 'branch_merged',
+            branch: branchName,
+            target: 'main'
+          });
+        }
       } catch (err) {
         console.error(`[Phase 3 Merge] ⚠️  Error merging ${branchName}: ${err.message}`);
         // Continue with other branches even if one fails
@@ -1811,6 +1847,15 @@ async function mergePhase3Branches(courseDir) {
     console.log(`[Phase 3 Merge] Pushing merged main branch...`);
     await execAsync('git push origin main', { cwd: courseDir });
     console.log(`[Phase 3 Merge] ✅ All branches merged and pushed to main`);
+
+    // Emit push_complete event
+    if (job) {
+      addEvent(job, {
+        type: 'push_complete',
+        branch: 'main',
+        remote: 'origin'
+      });
+    }
 
   } catch (err) {
     console.error(`[Phase 3 Merge] Error during branch merge: ${err.message}`);
@@ -1825,9 +1870,10 @@ async function mergePhase3Branches(courseDir) {
  * @param {string} baseCourseDir - Path to course directory
  * @param {Date} jobStartTime - Job start time to compare against
  * @param {string} phasePattern - Branch pattern to match (e.g., 'claude/phase5')
+ * @param {Object} job - Optional job object for event tracking
  * @returns {Array} Array of { branch, remoteBranch, commitTime, isNew }
  */
-async function pollGitBranches(baseCourseDir, jobStartTime, phasePattern = 'claude/phase') {
+async function pollGitBranches(baseCourseDir, jobStartTime, phasePattern = 'claude/phase', job = null) {
   try {
     // Fetch latest branches
     await execAsync('git fetch --all', { cwd: baseCourseDir });
@@ -1856,6 +1902,15 @@ async function pollGitBranches(baseCourseDir, jobStartTime, phasePattern = 'clau
 
         const commitTime = new Date(parseInt(commitTimeResult.stdout.trim()) * 1000);
         const isNew = commitTime > jobStartTime;
+
+        // Emit branch_detected event for new branches
+        if (isNew && job) {
+          addEvent(job, {
+            type: 'branch_detected',
+            branch: branchName,
+            commitTime: commitTime.toISOString()
+          });
+        }
 
         branchInfo.push({
           branch: branchName,
@@ -2208,8 +2263,21 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
               console.log(`[Git Merge] Merging ${branchName}...`);
 
               try {
+                // Emit branch_merging event
+                addEvent(job, {
+                  type: 'branch_merging',
+                  branch: branchName
+                });
+
                 await execAsync(`git merge ${branch} --no-edit -m "Auto-merge Phase 5 agent: ${branchName}"`, { cwd: baseCourseDir });
                 console.log(`[Git Merge] ✅ Merged ${branchName}`);
+
+                // Emit branch_merged event
+                addEvent(job, {
+                  type: 'branch_merged',
+                  branch: branchName,
+                  target: 'main'
+                });
               } catch (mergeErr) {
                 console.error(`[Git Merge] ⚠️  Error merging ${branchName}: ${mergeErr.message}`);
                 // Continue with other branches even if one fails
@@ -2220,6 +2288,13 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
             console.log(`[Git Merge] Pushing merged main branch...`);
             await execAsync('git push origin main', { cwd: baseCourseDir });
             console.log(`[Git Merge] ✅ All Phase 5 branches merged and pushed to main`);
+
+            // Emit push_complete event
+            addEvent(job, {
+              type: 'push_complete',
+              branch: 'main',
+              remote: 'origin'
+            });
           } else {
             console.log(`[Git Merge] No Claude Phase 5 branches found (agents may have pushed directly to main)`);
           }
@@ -2338,7 +2413,18 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 70)} parallel agents`);
 
       try {
-        await spawnClaudeWebAgent(phase1MasterPrompt, 1, 'safari');
+        // Emit phase_started event
+        addEvent(job, {
+          type: 'phase_started',
+          phase: 'phase_1'
+        });
+
+        await spawnClaudeWebAgent(phase1MasterPrompt, 1, 'safari', {
+          job,
+          addEvent,
+          phase: 'phase_1',
+          task: `Generate seed translations S${String(actualStartSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`
+        });
         console.log(`[Web Orchestrator] ✅ Phase 1 master prompt pasted and auto-submitted!`);
       } catch (spawnError) {
         console.error(`[Web Orchestrator] ❌ Failed to spawn Phase 1 agent:`, spawnError);
@@ -2368,7 +2454,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
         }
 
         // Detection Method 2: Git branches (remote commits)
-        const newBranches = await pollGitBranches(courseDir, jobStartTime, 'claude/phase1');
+        const newBranches = await pollGitBranches(courseDir, jobStartTime, 'claude/phase1', job);
         if (newBranches.length > 0) {
           const newBranchCount = newBranches.filter(b => b.isNew).length;
 
@@ -2386,14 +2472,35 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
             console.log(`[Web Orchestrator] Merging Phase 1 branches...`);
             for (const b of newBranches.filter(br => br.isNew)) {
               try {
+                // Emit branch_merging event
+                addEvent(job, {
+                  type: 'branch_merging',
+                  branch: b.branch
+                });
+
                 await execAsync(`git merge ${b.remoteBranch} --no-edit -m "Auto-merge Phase 1: ${b.branch}"`, { cwd: courseDir });
                 console.log(`  ✓ Merged ${b.branch}`);
+
+                // Emit branch_merged event
+                addEvent(job, {
+                  type: 'branch_merged',
+                  branch: b.branch,
+                  target: 'main'
+                });
               } catch (err) {
                 console.error(`  ⚠️  Error merging ${b.branch}: ${err.message}`);
               }
             }
+
             await execAsync('git push origin main', { cwd: courseDir });
             console.log(`[Web Orchestrator] ✅ Phase 1 branches merged and pushed!`);
+
+            // Emit push_complete event
+            addEvent(job, {
+              type: 'push_complete',
+              branch: 'main',
+              remote: 'origin'
+            });
           }
         }
       }
@@ -5101,7 +5208,9 @@ app.post('/api/courses/generate', async (req, res) => {
     phaseSelection,
     segmentMode,
     params: { target, known, seeds, startSeed, endSeed },
-    windowIds: [] // Track iTerm2 windows for cleanup
+    windowIds: [], // Track iTerm2 windows for cleanup
+    events: [], // Progress monitoring: event timeline
+    windows: [] // Progress monitoring: active Claude Code windows
   };
 
   STATE.jobs.set(courseCode, job);

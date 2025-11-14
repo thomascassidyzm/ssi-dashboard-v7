@@ -32,47 +32,6 @@
         }
       }
     },
-    "S0001L02": {
-      "lego": [
-        "I want to speak",
-        "quiero hablar"
-      ],
-      "type": "M",
-      "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0001L01",
-          "known": "I want",
-          "target": "quiero",
-          "type": "A"
-        }
-      ],
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10,
-      "_metadata": {
-        "lego_id": "S0001L02",
-        "seed_context": {
-          "known": "Quiero hablar español contigo ahora.",
-          "target": "I want to speak Spanish with you now."
-        }
-      },
-      "components": [
-        [
-          "quiero",
-          "I want"
-        ],
-        [
-          "hablar",
-          "to speak"
-        ]
-      ]
-    },
     "S0001L03": {
       "lego": [
         "to speak",
@@ -86,12 +45,6 @@
           "known": "I want",
           "target": "quiero",
           "type": "A"
-        },
-        {
-          "id": "S0001L02",
-          "known": "I want to speak",
-          "target": "quiero hablar",
-          "type": "M"
         }
       ],
       "practice_phrases": [],
@@ -110,59 +63,6 @@
         }
       }
     },
-    "S0001L04": {
-      "lego": [
-        "to speak Spanish",
-        "hablar español"
-      ],
-      "type": "M",
-      "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0001L01",
-          "known": "I want",
-          "target": "quiero",
-          "type": "A"
-        },
-        {
-          "id": "S0001L02",
-          "known": "I want to speak",
-          "target": "quiero hablar",
-          "type": "M"
-        },
-        {
-          "id": "S0001L03",
-          "known": "to speak",
-          "target": "hablar",
-          "type": "A"
-        }
-      ],
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10,
-      "_metadata": {
-        "lego_id": "S0001L04",
-        "seed_context": {
-          "known": "Quiero hablar español contigo ahora.",
-          "target": "I want to speak Spanish with you now."
-        }
-      },
-      "components": [
-        [
-          "hablar",
-          "speak"
-        ],
-        [
-          "español",
-          "Spanish"
-        ]
-      ]
-    },
     "S0001L05": {
       "lego": [
         "Spanish",
@@ -178,22 +78,10 @@
           "type": "A"
         },
         {
-          "id": "S0001L02",
-          "known": "I want to speak",
-          "target": "quiero hablar",
-          "type": "M"
-        },
-        {
           "id": "S0001L03",
           "known": "to speak",
           "target": "hablar",
           "type": "A"
-        },
-        {
-          "id": "S0001L04",
-          "known": "to speak Spanish",
-          "target": "hablar español",
-          "type": "M"
         }
       ],
       "practice_phrases": [],
@@ -227,22 +115,10 @@
           "type": "A"
         },
         {
-          "id": "S0001L02",
-          "known": "I want to speak",
-          "target": "quiero hablar",
-          "type": "M"
-        },
-        {
           "id": "S0001L03",
           "known": "to speak",
           "target": "hablar",
           "type": "A"
-        },
-        {
-          "id": "S0001L04",
-          "known": "to speak Spanish",
-          "target": "hablar español",
-          "type": "M"
         },
         {
           "id": "S0001L05",
@@ -282,22 +158,10 @@
           "type": "A"
         },
         {
-          "id": "S0001L02",
-          "known": "I want to speak",
-          "target": "quiero hablar",
-          "type": "M"
-        },
-        {
           "id": "S0001L03",
           "known": "to speak",
           "target": "hablar",
           "type": "A"
-        },
-        {
-          "id": "S0001L04",
-          "known": "to speak Spanish",
-          "target": "hablar español",
-          "type": "M"
         },
         {
           "id": "S0001L05",
@@ -337,8 +201,8 @@
     "output": "/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0001.json"
   },
   "_stats": {
-    "new_legos_in_seed": 7,
-    "phrases_to_generate": 70,
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
     "recent_seeds_count": 0
   }
 }

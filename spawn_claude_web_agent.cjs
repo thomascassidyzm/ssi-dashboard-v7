@@ -24,10 +24,22 @@ const { spawn } = require('child_process');
  * @param {string} prompt - The prompt to send to Claude
  * @param {number} agentId - Agent number (for window positioning)
  * @param {string} browser - Browser to use (safari, chrome, brave)
+ * @param {Object} options - Optional configuration { job, task, phase }
  * @returns {Promise<{success: boolean, tabId: string}>}
  */
-async function spawnClaudeWebAgent(prompt, agentId = 1, browser = 'chrome') {
+async function spawnClaudeWebAgent(prompt, agentId = 1, browser = 'chrome', options = {}) {
   console.log(`[Web Agent ${agentId}] Opening Claude Code on the Web in ${browser}...`);
+
+  // Emit window_opening event
+  if (options.job && options.addEvent) {
+    options.addEvent(options.job, {
+      type: 'window_opening',
+      window: agentId,
+      browser,
+      phase: options.phase,
+      task: options.task
+    });
+  }
 
   // Strategy: Write prompt to temp file, copy to clipboard via pbcopy, open claude.ai/code, then paste
   // (More reliable than embedding in AppleScript which has escaping issues)
@@ -92,6 +104,16 @@ return "success"
     child.on('close', (code) => {
       if (code === 0) {
         console.log(`[Web Agent ${agentId}] ✅ Browser tab opened successfully`);
+
+        // Emit window_ready event
+        if (options.job && options.addEvent) {
+          options.addEvent(options.job, {
+            type: 'window_ready',
+            window: agentId,
+            message: 'Prompt pasted and auto-submitted'
+          });
+        }
+
         resolve({
           success: true,
           tabId: `web-agent-${agentId}-${Date.now()}`

@@ -1,8 +1,8 @@
-# Phase 5 Orchestrator: Spawn 57 Parallel Agents
+# Phase 5 Orchestrator: Spawn 67 Parallel Agents
 
 **Course**: spa_for_eng
-**Total Seeds**: 568 (S0101-S0668)
-**Required Agents**: 57 parallel agents
+**Total Seeds**: 668 (S0001-S0668)
+**Required Agents**: 67 parallel agents
 **Seeds per agent**: 10
 
 ---
@@ -12,7 +12,7 @@
 You are the orchestrator. **DO NOT** read files or generate content yourself.
 
 **Your task:**
-1. Spawn 57 agents in parallel
+1. Spawn 67 agents in parallel
 2. Pass each agent its seed range (10 seeds each)
 3. Monitor progress and report when complete
 
@@ -24,9 +24,9 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 
 ---
 
-## 🚀 SPAWN ALL 57 AGENTS NOW
+## 🚀 SPAWN ALL 67 AGENTS NOW
 
-Use the Task tool 57 times in a single message to spawn all agents in parallel.
+Use the Task tool 67 times in a single message to spawn all agents in parallel.
 
 When all agents complete, tell the user to run validation:
 

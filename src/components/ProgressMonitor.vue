@@ -117,6 +117,48 @@
       </div>
     </div>
 
+    <!-- Event Timeline -->
+    <div v-if="events.length > 0" class="mt-6 bg-slate-800/50 rounded-lg p-4">
+      <h4 class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+        📋 Activity Timeline
+        <span class="text-xs text-slate-500">({{ events.length }} events)</span>
+      </h4>
+
+      <div class="space-y-2 max-h-64 overflow-y-auto">
+        <div
+          v-for="(event, i) in reversedEvents"
+          :key="i"
+          class="flex items-start gap-3 text-xs bg-slate-900/50 rounded p-2"
+        >
+          <span class="text-slate-500">{{ formatTime(event.timestamp) }}</span>
+          <span :class="eventIconClass(event.type)">{{ getEventIcon(event.type) }}</span>
+          <span class="text-slate-300 flex-1">{{ formatEvent(event) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Git Activity -->
+    <div v-if="gitStats.branchesDetected > 0" class="mt-4 bg-slate-800/50 rounded-lg p-4">
+      <h4 class="text-sm font-semibold text-slate-300 mb-3">
+        🌿 Git Activity
+      </h4>
+
+      <div class="space-y-2 text-xs">
+        <div v-if="gitStats.branchesDetected > 0" class="flex items-center gap-2">
+          <span class="text-blue-400">📤</span>
+          <span class="text-slate-300">{{ gitStats.branchesDetected }} branch(es) detected</span>
+        </div>
+        <div v-if="gitStats.branchesMerged > 0" class="flex items-center gap-2">
+          <span class="text-green-400">✓</span>
+          <span class="text-slate-300">{{ gitStats.branchesMerged }} branch(es) merged</span>
+        </div>
+        <div v-if="gitStats.pushesToMain > 0" class="flex items-center gap-2">
+          <span class="text-emerald-400">🚀</span>
+          <span class="text-slate-300">{{ gitStats.pushesToMain }} push(es) to main</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Web Mode Instructions -->
     <div v-if="executionMode === 'web' && status === 'web_mode_waiting'" class="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
       <div class="flex items-start gap-3">
@@ -173,6 +215,8 @@ const phase3FileExists = ref(false)
 const phase5FileExists = ref(false)
 const phase6FileExists = ref(false)
 const phase7FileExists = ref(false)
+const events = ref([])
+const windows = ref([])
 
 let pollTimer = null
 
@@ -224,6 +268,76 @@ const phase7Complete = computed(() => {
   return phase7FileExists.value || status.value === 'completed'
 })
 
+const reversedEvents = computed(() => {
+  return [...events.value].reverse()
+})
+
+const gitStats = computed(() => {
+  return {
+    branchesDetected: events.value.filter(e => e.type === 'branch_detected').length,
+    branchesMerged: events.value.filter(e => e.type === 'branch_merged').length,
+    pushesToMain: events.value.filter(e => e.type === 'push_complete').length
+  }
+})
+
+// Methods
+const formatTime = (timestamp) => {
+  if (!timestamp) return ''
+  const date = new Date(timestamp)
+  return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+}
+
+const getEventIcon = (type) => {
+  const icons = {
+    window_opening: '🪟',
+    window_ready: '✓',
+    branch_detected: '📤',
+    branch_merging: '⚙️',
+    branch_merged: '✓',
+    push_complete: '🚀',
+    phase_started: '▶️',
+    phase_complete: '✅'
+  }
+  return icons[type] || '•'
+}
+
+const eventIconClass = (type) => {
+  const classes = {
+    window_opening: 'text-blue-400',
+    window_ready: 'text-green-400',
+    branch_detected: 'text-cyan-400',
+    branch_merging: 'text-yellow-400',
+    branch_merged: 'text-green-400',
+    push_complete: 'text-emerald-400',
+    phase_started: 'text-purple-400',
+    phase_complete: 'text-green-500'
+  }
+  return classes[type] || 'text-slate-400'
+}
+
+const formatEvent = (event) => {
+  switch (event.type) {
+    case 'window_opening':
+      return `Opening window ${event.window} in ${event.browser}`
+    case 'window_ready':
+      return `Window ${event.window} ready - ${event.message}`
+    case 'branch_detected':
+      return `Detected new branch: ${event.branch}`
+    case 'branch_merging':
+      return `Merging ${event.branch}...`
+    case 'branch_merged':
+      return `Merged ${event.branch} → ${event.target}`
+    case 'push_complete':
+      return `Pushed ${event.branch} to ${event.remote}`
+    case 'phase_started':
+      return `Phase ${event.phase} started`
+    case 'phase_complete':
+      return `Phase ${event.phase} complete`
+    default:
+      return event.type
+  }
+}
+
 // Methods
 const checkProgress = async () => {
   try {
@@ -234,6 +348,8 @@ const checkProgress = async () => {
       currentPhase.value = jobResponse.data.phase || ''
       currentMessage.value = jobResponse.data.message || ''
       subProgress.value = jobResponse.data.subProgress || null
+      events.value = jobResponse.data.events || []
+      windows.value = jobResponse.data.windows || []
     }
 
     // Check for output files (VFS-based detection)
