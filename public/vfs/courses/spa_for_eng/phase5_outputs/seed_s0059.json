@@ -1,1 +1,308 @@
-{"version":"curated_v7_spanish","seed_id":"S0059","generation_stage":"PHRASES_GENERATED","seed_pair":{"target":"I know how to do what I need to do next week.","known":"Sé hacer lo que necesito hacer la próxima semana."},"recent_context":{"S0054":["queríamos darte | darte un poco más | un poco más de tiempo | tiempo","we wanted to give you | give you a little more | a little more time | time"],"S0055":["no disfruto | despertarme | no disfruto despertarme | cuando | no dormí | muy bien","I don't enjoy | waking up | I don't enjoy waking up | when | I didn't sleep | very well"],"S0056":["para poder | poder recordar | recordar | cómo decir | unas pocas palabras","so I can | can remember | remember | how to say | a few words"],"S0057":["no puedo recordar | cómo decir | recordar cómo decir | lo que quería decir | quería decir","I can't remember | how to say | remember how to say | what I wanted to say | wanted to say"],"S0058":["es interesante | cuando | cuando comprendes | suficientes palabras","it's interesting | when | when you understand | enough words"]},"legos":{"S0059L01":{"lego":["I know how to do","sé hacer"],"type":"M","available_legos":300,"is_final_lego":false,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[{"target":"I know how to do that","known":"Sé hacer eso"},{"target":"I know how to do it","known":"Sé hacer eso"},{"target":"I know how to do something","known":"Sé hacer algo"},{"target":"I know how to do it here","known":"Sé hacer eso aquí"},{"target":"I know how to do interesting things","known":"Sé hacer cosas interesantes"},{"target":"I know how to do it in Spanish","known":"Sé hacer eso en español"},{"target":"I know how to do what you wanted","known":"Sé hacer lo que querías"},{"target":"I know how to do something very well","known":"Sé hacer algo muy bien"},{"target":"I know how to do it when I need to","known":"Sé hacer eso cuando necesito"},{"target":"I know how to do what I need to do","known":"Sé hacer lo que necesito hacer"}],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4}},"S0059L02":{"lego":["what I need to do","lo que necesito hacer"],"type":"M","available_legos":301,"is_final_lego":false,"overlap_level":"partial","target_phrase_count":7,"practice_phrases":[{"target":"What I need to do","known":"Lo que necesito hacer"},{"target":"I know what I need to do","known":"Sé lo que necesito hacer"},{"target":"What I need to do here","known":"Lo que necesito hacer aquí"},{"target":"I know how to do what I need to do","known":"Sé hacer lo que necesito hacer"},{"target":"I understand what I need to do now","known":"Comprendo lo que necesito hacer ahora"},{"target":"I can't remember what I need to do","known":"No puedo recordar lo que necesito hacer"},{"target":"I know what I need to do next week","known":"Sé lo que necesito hacer la próxima semana"}],"phrase_distribution":{"short_1_to_2_legos":1,"medium_3_legos":1,"longer_4_to_5_legos":5}},"S0059L03":{"lego":["need to do","necesito hacer"],"type":"M","available_legos":302,"is_final_lego":false,"overlap_level":"complete","target_phrase_count":5,"practice_phrases":[{"target":"I need to do something","known":"Necesito hacer algo"},{"target":"I need to do that here","known":"Necesito hacer eso aquí"},{"target":"I know what I need to do","known":"Sé lo que necesito hacer"},{"target":"I need to do it as soon as I can","known":"Necesito hacer eso tan pronto como pueda"},{"target":"I know how to do what I need to do","known":"Sé hacer lo que necesito hacer"}],"phrase_distribution":{"longer_3_to_5_legos":5}},"S0059L04":{"lego":["next week","la próxima semana"],"type":"M","available_legos":303,"is_final_lego":true,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[{"target":"Next week here","known":"La próxima semana aquí"},{"target":"I'm going next week","known":"Voy la próxima semana"},{"target":"I want to learn next week","known":"Quiero aprender la próxima semana"},{"target":"I'm going to start next week","known":"Voy a comenzar la próxima semana"},{"target":"I need to do something next week","known":"Necesito hacer algo la próxima semana"},{"target":"I want to speak Spanish next week","known":"Quiero hablar español la próxima semana"},{"target":"I'm going to start learning next week","known":"Voy a comenzar aprendiendo la próxima semana"},{"target":"I know what I need to do next week","known":"Sé lo que necesito hacer la próxima semana"},{"target":"I want to meet my friends next week here","known":"Quiero encontrar mis amigos la próxima semana aquí"},{"target":"I know how to do what I need to do next week.","known":"Sé hacer lo que necesito hacer la próxima semana."}],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4}}},"_instructions":{"task":"Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0","methodology":"Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)","output":"Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0059.json","whitelist_note":"3-category rule applied: A-types, M-types, M-components with literal translations"},"_stats":{"new_legos_in_seed":4,"phrases_to_generate":40,"cumulative_legos_before":300}}
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0059",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "target": "I know how to do what I need to do next week.",
+    "known": "Sé hacer lo que necesito hacer la próxima semana."
+  },
+  "recent_context": {
+    "S0054": [
+      "queríamos darte | darte un poco más | un poco más de tiempo | tiempo",
+      "we wanted to give you | give you a little more | a little more time | time"
+    ],
+    "S0055": [
+      "no disfruto | despertarme | no disfruto despertarme | cuando | no dormí | muy bien",
+      "I don't enjoy | waking up | I don't enjoy waking up | when | I didn't sleep | very well"
+    ],
+    "S0056": [
+      "para poder | poder recordar | recordar | cómo decir | unas pocas palabras",
+      "so I can | can remember | remember | how to say | a few words"
+    ],
+    "S0057": [
+      "no puedo recordar | cómo decir | recordar cómo decir | lo que quería decir | quería decir",
+      "I can't remember | how to say | remember how to say | what I wanted to say | wanted to say"
+    ],
+    "S0058": [
+      "es interesante | cuando | cuando comprendes | suficientes palabras",
+      "it's interesting | when | when you understand | enough words"
+    ]
+  },
+  "legos": {
+    "S0059L01": {
+      "lego": [
+        "I know how to do",
+        "sé hacer"
+      ],
+      "type": "M",
+      "available_legos": 300,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "I know how to do that",
+          "Sé hacer eso",
+          null,
+          null
+        ],
+        [
+          "I know how to do it",
+          "Sé hacer eso",
+          null,
+          null
+        ],
+        [
+          "I know how to do something",
+          "Sé hacer algo",
+          null,
+          null
+        ],
+        [
+          "I know how to do it here",
+          "Sé hacer eso aquí",
+          null,
+          null
+        ],
+        [
+          "I know how to do interesting things",
+          "Sé hacer cosas interesantes",
+          null,
+          null
+        ],
+        [
+          "I know how to do it in Spanish",
+          "Sé hacer eso en español",
+          null,
+          null
+        ],
+        [
+          "I know how to do what you wanted",
+          "Sé hacer lo que querías",
+          null,
+          null
+        ],
+        [
+          "I know how to do something very well",
+          "Sé hacer algo muy bien",
+          null,
+          null
+        ],
+        [
+          "I know how to do it when I need to",
+          "Sé hacer eso cuando necesito",
+          null,
+          null
+        ],
+        [
+          "I know how to do what I need to do",
+          "Sé hacer lo que necesito hacer",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0059L02": {
+      "lego": [
+        "what I need to do",
+        "lo que necesito hacer"
+      ],
+      "type": "M",
+      "available_legos": 301,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 7,
+      "practice_phrases": [
+        [
+          "What I need to do",
+          "Lo que necesito hacer",
+          null,
+          null
+        ],
+        [
+          "I know what I need to do",
+          "Sé lo que necesito hacer",
+          null,
+          null
+        ],
+        [
+          "What I need to do here",
+          "Lo que necesito hacer aquí",
+          null,
+          null
+        ],
+        [
+          "I know how to do what I need to do",
+          "Sé hacer lo que necesito hacer",
+          null,
+          null
+        ],
+        [
+          "I understand what I need to do now",
+          "Comprendo lo que necesito hacer ahora",
+          null,
+          null
+        ],
+        [
+          "I can't remember what I need to do",
+          "No puedo recordar lo que necesito hacer",
+          null,
+          null
+        ],
+        [
+          "I know what I need to do next week",
+          "Sé lo que necesito hacer la próxima semana",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      }
+    },
+    "S0059L03": {
+      "lego": [
+        "need to do",
+        "necesito hacer"
+      ],
+      "type": "M",
+      "available_legos": 302,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "I need to do something",
+          "Necesito hacer algo",
+          null,
+          null
+        ],
+        [
+          "I need to do that here",
+          "Necesito hacer eso aquí",
+          null,
+          null
+        ],
+        [
+          "I know what I need to do",
+          "Sé lo que necesito hacer",
+          null,
+          null
+        ],
+        [
+          "I need to do it as soon as I can",
+          "Necesito hacer eso tan pronto como pueda",
+          null,
+          null
+        ],
+        [
+          "I know how to do what I need to do",
+          "Sé hacer lo que necesito hacer",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    },
+    "S0059L04": {
+      "lego": [
+        "next week",
+        "la próxima semana"
+      ],
+      "type": "M",
+      "available_legos": 303,
+      "is_final_lego": true,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "Next week here",
+          "La próxima semana aquí",
+          null,
+          null
+        ],
+        [
+          "I'm going next week",
+          "Voy la próxima semana",
+          null,
+          null
+        ],
+        [
+          "I want to learn next week",
+          "Quiero aprender la próxima semana",
+          null,
+          null
+        ],
+        [
+          "I'm going to start next week",
+          "Voy a comenzar la próxima semana",
+          null,
+          null
+        ],
+        [
+          "I need to do something next week",
+          "Necesito hacer algo la próxima semana",
+          null,
+          null
+        ],
+        [
+          "I want to speak Spanish next week",
+          "Quiero hablar español la próxima semana",
+          null,
+          null
+        ],
+        [
+          "I'm going to start learning next week",
+          "Voy a comenzar aprendiendo la próxima semana",
+          null,
+          null
+        ],
+        [
+          "I know what I need to do next week",
+          "Sé lo que necesito hacer la próxima semana",
+          null,
+          null
+        ],
+        [
+          "I want to meet my friends next week here",
+          "Quiero encontrar mis amigos la próxima semana aquí",
+          null,
+          null
+        ],
+        [
+          "I know how to do what I need to do next week.",
+          "Sé hacer lo que necesito hacer la próxima semana.",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0059.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "cumulative_legos_before": 300
+  }
+}

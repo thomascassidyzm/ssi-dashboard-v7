@@ -1,1 +1,354 @@
-{"version":"curated_v7_spanish","seed_id":"S0060","generation_stage":"PHRASES_GENERATED","seed_pair":{"target":"I'm looking forward to doing what I'm going to do tomorrow.","known":"Estoy deseando hacer lo que voy a hacer mañana."},"recent_context":{"S0055":["no disfruto | despertarme | no disfruto despertarme | cuando | no dormí | muy bien","I don't enjoy | waking up | I don't enjoy waking up | when | I didn't sleep | very well"],"S0056":["para poder | poder recordar | recordar | cómo decir | unas pocas palabras","so I can | can remember | remember | how to say | a few words"],"S0057":["no puedo recordar | cómo decir | recordar cómo decir | lo que quería decir | quería decir","I can't remember | how to say | remember how to say | what I wanted to say | wanted to say"],"S0058":["es interesante | cuando | cuando comprendes | suficientes palabras","it's interesting | when | when you understand | enough words"],"S0059":["sé hacer | lo que necesito hacer | necesito hacer | la próxima semana","I know how to do | what I need to do | need to do | next week"]},"legos":{"S0060L01":{"lego":["I'm looking forward to","estoy deseando"],"type":"M","available_legos":304,"is_final_lego":false,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[{"target":"I'm looking forward to that","known":"Estoy deseando eso"},{"target":"I'm looking forward to it","known":"Estoy deseando eso"},{"target":"I'm looking forward to learning Spanish","known":"Estoy deseando aprender español"},{"target":"I'm looking forward to speaking here","known":"Estoy deseando hablar aquí"},{"target":"I'm looking forward to doing something","known":"Estoy deseando hacer algo"},{"target":"I'm looking forward to speaking better","known":"Estoy deseando hablar mejor"},{"target":"I'm looking forward to doing it tomorrow","known":"Estoy deseando hacer eso mañana"},{"target":"I'm looking forward to speaking with my friends","known":"Estoy deseando hablar con mis amigos"},{"target":"I'm looking forward to learning enough words","known":"Estoy deseando aprender suficientes palabras"},{"target":"I'm looking forward to doing what I want to do","known":"Estoy deseando hacer lo que quiero hacer"}],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4}},"S0060L02":{"lego":["looking forward to doing","deseando hacer"],"type":"M","available_legos":305,"is_final_lego":false,"overlap_level":"complete","target_phrase_count":5,"practice_phrases":[{"target":"I'm looking forward to doing it","known":"Estoy deseando hacer eso"},{"target":"I'm looking forward to doing something","known":"Estoy deseando hacer algo"},{"target":"I'm looking forward to doing that here","known":"Estoy deseando hacer eso aquí"},{"target":"I'm looking forward to doing interesting things","known":"Estoy deseando hacer cosas interesantes"},{"target":"I'm looking forward to doing what I want","known":"Estoy deseando hacer lo que quiero"}],"phrase_distribution":{"longer_3_to_5_legos":5}},"S0060L03":{"lego":["what I'm going to do","lo que voy a hacer"],"type":"M","available_legos":306,"is_final_lego":false,"overlap_level":"partial","target_phrase_count":7,"practice_phrases":[{"target":"What I'm going to do","known":"Lo que voy a hacer"},{"target":"I know what I'm going to do","known":"Sé lo que voy a hacer"},{"target":"What I'm going to do here","known":"Lo que voy a hacer aquí"},{"target":"I know what I'm going to do tomorrow","known":"Sé lo que voy a hacer mañana"},{"target":"I'm looking forward to what I'm going to do","known":"Estoy deseando lo que voy a hacer"},{"target":"I can't remember what I'm going to do","known":"No puedo recordar lo que voy a hacer"},{"target":"I know what I'm going to do next week","known":"Sé lo que voy a hacer la próxima semana"}],"phrase_distribution":{"short_1_to_2_legos":1,"medium_3_legos":1,"longer_4_to_5_legos":5}},"S0060L04":{"lego":["going to do","voy a hacer"],"type":"M","available_legos":307,"is_final_lego":false,"overlap_level":"complete","target_phrase_count":5,"practice_phrases":[{"target":"I'm going to do something","known":"Voy a hacer algo"},{"target":"I'm going to do that here","known":"Voy a hacer eso aquí"},{"target":"I know what I'm going to do","known":"Sé lo que voy a hacer"},{"target":"I'm going to do interesting things","known":"Voy a hacer cosas interesantes"},{"target":"I'm going to do it as soon as I can","known":"Voy a hacer eso tan pronto como pueda"}],"phrase_distribution":{"longer_3_to_5_legos":5}},"S0060L05":{"lego":["tomorrow","mañana"],"type":"A","available_legos":308,"is_final_lego":true,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[{"target":"Tomorrow here","known":"Mañana aquí"},{"target":"I'm going tomorrow","known":"Voy mañana"},{"target":"I want to learn tomorrow","known":"Quiero aprender mañana"},{"target":"I'm going to start tomorrow","known":"Voy a comenzar mañana"},{"target":"I'm going to do something tomorrow","known":"Voy a hacer algo mañana"},{"target":"I'm going to speak Spanish tomorrow","known":"Voy a hablar español mañana"},{"target":"I know what I'm going to do tomorrow","known":"Sé lo que voy a hacer mañana"},{"target":"I'm looking forward to doing it tomorrow","known":"Estoy deseando hacer eso mañana"},{"target":"I'm going to meet my friends tomorrow here","known":"Voy a encontrar mis amigos mañana aquí"},{"target":"I'm looking forward to doing what I'm going to do tomorrow.","known":"Estoy deseando hacer lo que voy a hacer mañana."}],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4}}},"_instructions":{"task":"Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0","methodology":"Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)","output":"Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0060.json","whitelist_note":"3-category rule applied: A-types, M-types, M-components with literal translations"},"_stats":{"new_legos_in_seed":5,"phrases_to_generate":50,"cumulative_legos_before":304}}
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0060",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "target": "I'm looking forward to doing what I'm going to do tomorrow.",
+    "known": "Estoy deseando hacer lo que voy a hacer mañana."
+  },
+  "recent_context": {
+    "S0055": [
+      "no disfruto | despertarme | no disfruto despertarme | cuando | no dormí | muy bien",
+      "I don't enjoy | waking up | I don't enjoy waking up | when | I didn't sleep | very well"
+    ],
+    "S0056": [
+      "para poder | poder recordar | recordar | cómo decir | unas pocas palabras",
+      "so I can | can remember | remember | how to say | a few words"
+    ],
+    "S0057": [
+      "no puedo recordar | cómo decir | recordar cómo decir | lo que quería decir | quería decir",
+      "I can't remember | how to say | remember how to say | what I wanted to say | wanted to say"
+    ],
+    "S0058": [
+      "es interesante | cuando | cuando comprendes | suficientes palabras",
+      "it's interesting | when | when you understand | enough words"
+    ],
+    "S0059": [
+      "sé hacer | lo que necesito hacer | necesito hacer | la próxima semana",
+      "I know how to do | what I need to do | need to do | next week"
+    ]
+  },
+  "legos": {
+    "S0060L01": {
+      "lego": [
+        "I'm looking forward to",
+        "estoy deseando"
+      ],
+      "type": "M",
+      "available_legos": 304,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "I'm looking forward to that",
+          "Estoy deseando eso",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to it",
+          "Estoy deseando eso",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to learning Spanish",
+          "Estoy deseando aprender español",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to speaking here",
+          "Estoy deseando hablar aquí",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing something",
+          "Estoy deseando hacer algo",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to speaking better",
+          "Estoy deseando hablar mejor",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing it tomorrow",
+          "Estoy deseando hacer eso mañana",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to speaking with my friends",
+          "Estoy deseando hablar con mis amigos",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to learning enough words",
+          "Estoy deseando aprender suficientes palabras",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing what I want to do",
+          "Estoy deseando hacer lo que quiero hacer",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0060L02": {
+      "lego": [
+        "looking forward to doing",
+        "deseando hacer"
+      ],
+      "type": "M",
+      "available_legos": 305,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "I'm looking forward to doing it",
+          "Estoy deseando hacer eso",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing something",
+          "Estoy deseando hacer algo",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing that here",
+          "Estoy deseando hacer eso aquí",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing interesting things",
+          "Estoy deseando hacer cosas interesantes",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing what I want",
+          "Estoy deseando hacer lo que quiero",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    },
+    "S0060L03": {
+      "lego": [
+        "what I'm going to do",
+        "lo que voy a hacer"
+      ],
+      "type": "M",
+      "available_legos": 306,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 7,
+      "practice_phrases": [
+        [
+          "What I'm going to do",
+          "Lo que voy a hacer",
+          null,
+          null
+        ],
+        [
+          "I know what I'm going to do",
+          "Sé lo que voy a hacer",
+          null,
+          null
+        ],
+        [
+          "What I'm going to do here",
+          "Lo que voy a hacer aquí",
+          null,
+          null
+        ],
+        [
+          "I know what I'm going to do tomorrow",
+          "Sé lo que voy a hacer mañana",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to what I'm going to do",
+          "Estoy deseando lo que voy a hacer",
+          null,
+          null
+        ],
+        [
+          "I can't remember what I'm going to do",
+          "No puedo recordar lo que voy a hacer",
+          null,
+          null
+        ],
+        [
+          "I know what I'm going to do next week",
+          "Sé lo que voy a hacer la próxima semana",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      }
+    },
+    "S0060L04": {
+      "lego": [
+        "going to do",
+        "voy a hacer"
+      ],
+      "type": "M",
+      "available_legos": 307,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "I'm going to do something",
+          "Voy a hacer algo",
+          null,
+          null
+        ],
+        [
+          "I'm going to do that here",
+          "Voy a hacer eso aquí",
+          null,
+          null
+        ],
+        [
+          "I know what I'm going to do",
+          "Sé lo que voy a hacer",
+          null,
+          null
+        ],
+        [
+          "I'm going to do interesting things",
+          "Voy a hacer cosas interesantes",
+          null,
+          null
+        ],
+        [
+          "I'm going to do it as soon as I can",
+          "Voy a hacer eso tan pronto como pueda",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    },
+    "S0060L05": {
+      "lego": [
+        "tomorrow",
+        "mañana"
+      ],
+      "type": "A",
+      "available_legos": 308,
+      "is_final_lego": true,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "Tomorrow here",
+          "Mañana aquí",
+          null,
+          null
+        ],
+        [
+          "I'm going tomorrow",
+          "Voy mañana",
+          null,
+          null
+        ],
+        [
+          "I want to learn tomorrow",
+          "Quiero aprender mañana",
+          null,
+          null
+        ],
+        [
+          "I'm going to start tomorrow",
+          "Voy a comenzar mañana",
+          null,
+          null
+        ],
+        [
+          "I'm going to do something tomorrow",
+          "Voy a hacer algo mañana",
+          null,
+          null
+        ],
+        [
+          "I'm going to speak Spanish tomorrow",
+          "Voy a hablar español mañana",
+          null,
+          null
+        ],
+        [
+          "I know what I'm going to do tomorrow",
+          "Sé lo que voy a hacer mañana",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing it tomorrow",
+          "Estoy deseando hacer eso mañana",
+          null,
+          null
+        ],
+        [
+          "I'm going to meet my friends tomorrow here",
+          "Voy a encontrar mis amigos mañana aquí",
+          null,
+          null
+        ],
+        [
+          "I'm looking forward to doing what I'm going to do tomorrow.",
+          "Estoy deseando hacer lo que voy a hacer mañana.",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0060.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "cumulative_legos_before": 304
+  }
+}

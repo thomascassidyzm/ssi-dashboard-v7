@@ -1,1 +1,314 @@
-{"version":"curated_v7_spanish","seed_id":"S0075","generation_stage":"PRACTICE_PHRASES_COMPLETE","seed_pair":{"target":"Have you got more to learn?","known":"¿Tienes más que aprender?"},"recent_context":{"S0070":["estaba pensando en | estaba pensando en cómo responder | pensando en cómo responder","I was thinking about | I was thinking about how to answer | thinking about how to answer"],"S0071":["lo que quiero decir es | si sabes lo que quiero decir | sabes lo que quiero decir","what I mean is | if you know what I mean | you know what I mean"],"S0072":["no estaba pensando en | no estaba pensando en cómo responder","I wasn't thinking about | I wasn't thinking about how to answer"],"S0073":["muchas gracias | pero | tengo | más que aprender | tengo más que aprender","thank you very much | but | I've got | more to learn | I've got more to learn"],"S0074":["muchas gracias | por ayudarme | ayudarme a comprender | por ayudarme a comprender","thank you very much | for helping me | helping me to understand | for helping me to understand"]},"legos":{"S0075L01":{"lego":["have you got","tienes"],"type":"M","available_legos":387,"is_final_lego":false,"overlap_level":"none","target_phrase_count":10,"practice_phrases":[{"english":"Have you got time?","spanish":"¿Tienes tiempo?"},{"english":"Have you got more to learn?","spanish":"¿Tienes más que aprender?"},{"english":"Have you got something to say?","spanish":"¿Tienes algo que decir?"},{"english":"Have you got a question for me?","spanish":"¿Tienes una pregunta para mí?"},{"english":"Have you got a friend who speaks Spanish?","spanish":"¿Tienes un amigo que habla español?"},{"english":"Have you got enough time to finish this?","spanish":"¿Tienes suficiente tiempo para terminar esto?"},{"english":"Have you got more to learn before you can speak well?","spanish":"¿Tienes más que aprender antes de que puedas hablar bien?"},{"english":"Have you got time to help me understand how to say that?","spanish":"¿Tienes tiempo para ayudarme a comprender cómo decir eso?"},{"english":"Have you got enough words to practise speaking Spanish with your friends?","spanish":"¿Tienes suficientes palabras para practicar hablar español con tus amigos?"},{"english":"Have you got more to learn or are you ready to speak with someone else?","spanish":"¿Tienes más que aprender o estás preparado para hablar con alguien más?"}],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4},"_metadata":{"lego_id":"S0075L01","seed_context":{"target":"Have you got more to learn?","known":"¿Tienes más que aprender?"},"available_whitelist_size":486,"components":[["tienes","have you got/do you have"]]}},"S0075L02":{"lego":["you've got more to learn","tienes más que aprender"],"type":"M","available_legos":388,"is_final_lego":false,"overlap_level":"partial","target_phrase_count":10,"practice_phrases":[{"english":"You've got more to learn","spanish":"Tienes más que aprender"},{"english":"I know you've got more to learn","spanish":"Sé que tienes más que aprender"},{"english":"You've got more to learn in Spanish","spanish":"Tienes más que aprender en español"},{"english":"You've got more to learn, but you're doing well","spanish":"Tienes más que aprender, pero estás haciendo bien"},{"english":"I think you've got more to learn today","spanish":"Pienso que tienes más que aprender hoy"},{"english":"You've got more to learn before you can speak Spanish well","spanish":"Tienes más que aprender antes de que puedas hablar español bien"},{"english":"I know you've got more to learn, but I'm very happy with what you said","spanish":"Sé que tienes más que aprender, pero estoy muy feliz con lo que dijiste"},{"english":"You've got more to learn, but you don't need to worry about making mistakes","spanish":"Tienes más que aprender, pero no necesitas preocuparte por hacer errores"},{"english":"Thank you for helping me, but I think you've got more to learn too","spanish":"Gracias por ayudarme, pero pienso que tienes más que aprender también"},{"english":"You've got more to learn in Spanish, but you're starting to understand how to speak better","spanish":"Tienes más que aprender en español, pero estás comenzando a comprender cómo hablar mejor"}],"phrase_distribution":{"short_1_to_2_legos":2,"medium_3_legos":2,"longer_4_legos":2,"longest_5_legos":4},"_metadata":{"lego_id":"S0075L02","seed_context":{"target":"Have you got more to learn?","known":"¿Tienes más que aprender?"},"available_whitelist_size":488,"components":[["tienes","you've got"],["más","more"],["que","to"],["aprender","learn"]]}},"S0075L03":{"lego":["have you got more to learn","tienes más que aprender"],"type":"M","available_legos":389,"is_final_lego":true,"overlap_level":"complete","target_phrase_count":5,"practice_phrases":[{"english":"Have you got more to learn?","spanish":"¿Tienes más que aprender?"},{"english":"Have you got more to learn in Spanish?","spanish":"¿Tienes más que aprender en español?"},{"english":"Do you think you've got more to learn?","spanish":"¿Piensas que tienes más que aprender?"},{"english":"Have you got more to learn before you're ready to speak with other people?","spanish":"¿Tienes más que aprender antes de que estés preparado para hablar con otras personas?"},{"english":"Have you got more to learn?","spanish":"¿Tienes más que aprender?"}],"phrase_distribution":{"longer_3_to_5_legos":5},"_metadata":{"lego_id":"S0075L03","seed_context":{"target":"Have you got more to learn?","known":"¿Tienes más que aprender?"},"available_whitelist_size":490,"components":[["tienes","have you got"],["más","more"],["que","to"],["aprender","learn"]]}}},"_instructions":{"task":"Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0","methodology":"Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)","output":"Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0075.json","whitelist_note":"3-category rule applied: A-types, M-types, M-components with literal translations"},"_stats":{"new_legos_in_seed":3,"phrases_to_generate":25,"cumulative_legos_before":387}}
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0075",
+  "generation_stage": "PRACTICE_PHRASES_COMPLETE",
+  "seed_pair": {
+    "target": "Have you got more to learn?",
+    "known": "¿Tienes más que aprender?"
+  },
+  "recent_context": {
+    "S0070": [
+      "estaba pensando en | estaba pensando en cómo responder | pensando en cómo responder",
+      "I was thinking about | I was thinking about how to answer | thinking about how to answer"
+    ],
+    "S0071": [
+      "lo que quiero decir es | si sabes lo que quiero decir | sabes lo que quiero decir",
+      "what I mean is | if you know what I mean | you know what I mean"
+    ],
+    "S0072": [
+      "no estaba pensando en | no estaba pensando en cómo responder",
+      "I wasn't thinking about | I wasn't thinking about how to answer"
+    ],
+    "S0073": [
+      "muchas gracias | pero | tengo | más que aprender | tengo más que aprender",
+      "thank you very much | but | I've got | more to learn | I've got more to learn"
+    ],
+    "S0074": [
+      "muchas gracias | por ayudarme | ayudarme a comprender | por ayudarme a comprender",
+      "thank you very much | for helping me | helping me to understand | for helping me to understand"
+    ]
+  },
+  "legos": {
+    "S0075L01": {
+      "lego": [
+        "have you got",
+        "tienes"
+      ],
+      "type": "M",
+      "available_legos": 387,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0075L01",
+        "seed_context": {
+          "target": "Have you got more to learn?",
+          "known": "¿Tienes más que aprender?"
+        },
+        "available_whitelist_size": 486,
+        "components": [
+          [
+            "tienes",
+            "have you got/do you have"
+          ]
+        ]
+      }
+    },
+    "S0075L02": {
+      "lego": [
+        "you've got more to learn",
+        "tienes más que aprender"
+      ],
+      "type": "M",
+      "available_legos": 388,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0075L02",
+        "seed_context": {
+          "target": "Have you got more to learn?",
+          "known": "¿Tienes más que aprender?"
+        },
+        "available_whitelist_size": 488,
+        "components": [
+          [
+            "tienes",
+            "you've got"
+          ],
+          [
+            "más",
+            "more"
+          ],
+          [
+            "que",
+            "to"
+          ],
+          [
+            "aprender",
+            "learn"
+          ]
+        ]
+      }
+    },
+    "S0075L03": {
+      "lego": [
+        "have you got more to learn",
+        "tienes más que aprender"
+      ],
+      "type": "M",
+      "available_legos": 389,
+      "is_final_lego": true,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ],
+        [
+          "",
+          "",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0075L03",
+        "seed_context": {
+          "target": "Have you got more to learn?",
+          "known": "¿Tienes más que aprender?"
+        },
+        "available_whitelist_size": 490,
+        "components": [
+          [
+            "tienes",
+            "have you got"
+          ],
+          [
+            "más",
+            "more"
+          ],
+          [
+            "que",
+            "to"
+          ],
+          [
+            "aprender",
+            "learn"
+          ]
+        ]
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0075.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "phrases_to_generate": 25,
+    "cumulative_legos_before": 387
+  }
+}
