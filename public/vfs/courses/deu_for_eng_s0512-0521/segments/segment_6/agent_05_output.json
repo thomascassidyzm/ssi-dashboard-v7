@@ -1,0 +1,147 @@
+{
+  "agent_id": "agent_05",
+  "seed_range": "S0520-S0521",
+  "extracted_at": "2025-11-14T15:45:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0520",
+      "seed_pair": [
+        "Es könnte der ganzen Familie passiert sein.",
+        "It might have happened to the whole family."
+      ],
+      "legos": [
+        {
+          "id": "S0520L01",
+          "type": "M",
+          "target": "Es könnte passiert sein",
+          "known": "It might have happened",
+          "new": true,
+          "components": [
+            ["Es", "It"],
+            ["könnte", "might"],
+            ["passiert", "happened"],
+            ["sein", "have"]
+          ]
+        },
+        {
+          "id": "S0520L02",
+          "type": "M",
+          "target": "könnte passiert sein",
+          "known": "might have happened",
+          "new": true,
+          "components": [
+            ["könnte", "might"],
+            ["passiert", "happened"],
+            ["sein", "have"]
+          ]
+        },
+        {
+          "id": "S0520L03",
+          "type": "M",
+          "target": "passiert sein",
+          "known": "have happened",
+          "new": true,
+          "components": [
+            ["passiert", "happened"],
+            ["sein", "have"]
+          ]
+        },
+        {
+          "id": "S0520L04",
+          "type": "M",
+          "target": "der ganzen Familie",
+          "known": "to the whole family",
+          "new": true,
+          "components": [
+            ["der", "to the"],
+            ["ganzen", "whole"],
+            ["Familie", "family"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0521",
+      "seed_pair": [
+        "Ich habe Angst, dass du vergessen wirst, warum wir hier bleiben mussten.",
+        "I'm afraid that you'll forget why we needed to stay here."
+      ],
+      "legos": [
+        {
+          "id": "S0521L01",
+          "type": "M",
+          "target": "Ich habe Angst",
+          "known": "I'm afraid",
+          "new": true,
+          "components": [
+            ["Ich", "I"],
+            ["habe", "have"],
+            ["Angst", "fear/afraid"]
+          ]
+        },
+        {
+          "id": "S0521L02",
+          "type": "M",
+          "target": "dass du vergessen wirst",
+          "known": "that you'll forget",
+          "new": true,
+          "components": [
+            ["dass", "that"],
+            ["du", "you"],
+            ["vergessen", "forget"],
+            ["wirst", "will"]
+          ]
+        },
+        {
+          "id": "S0521L03",
+          "type": "M",
+          "target": "vergessen wirst",
+          "known": "will forget",
+          "new": true,
+          "components": [
+            ["vergessen", "forget"],
+            ["wirst", "will"]
+          ]
+        },
+        {
+          "id": "S0521L04",
+          "type": "M",
+          "target": "warum wir hier bleiben mussten",
+          "known": "why we needed to stay here",
+          "new": true,
+          "components": [
+            ["warum", "why"],
+            ["wir", "we"],
+            ["hier", "here"],
+            ["bleiben", "stay"],
+            ["mussten", "needed"]
+          ]
+        },
+        {
+          "id": "S0521L05",
+          "type": "M",
+          "target": "hier bleiben mussten",
+          "known": "needed to stay here",
+          "new": true,
+          "components": [
+            ["hier", "here"],
+            ["bleiben", "stay"],
+            ["mussten", "needed"]
+          ]
+        },
+        {
+          "id": "S0521L06",
+          "type": "M",
+          "target": "bleiben mussten",
+          "known": "needed to stay",
+          "new": true,
+          "components": [
+            ["bleiben", "stay"],
+            ["mussten", "needed"]
+          ]
+        }
+      ]
+    }
+  ]
+}
