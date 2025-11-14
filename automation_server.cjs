@@ -1512,7 +1512,7 @@ After completion, report:
 
 Phase 1: ✅ ${seeds} seed pairs → seed_pairs.json
 Phase 3: ✅ [X] LEGOs → lego_pairs.json
-Phase 5: ✅ [X] baskets (${Math.ceil(seeds / 20)} batches, batch-aware) → lego_baskets.json
+Phase 5: ✅ [X] baskets → lego_baskets.json
 
 Pattern Coverage Evolution:
 - Batch 1: [X]% pattern density
@@ -1826,14 +1826,18 @@ async function spawnCourseOrchestrator(courseCode, params) {
   const { target, known, seeds, startSeed, endSeed } = params;
 
   try {
-    // Calculate batch counts
+    // Calculate segmentation using dynamic algorithm
+    const segmentation = calculateSegmentation(seeds);
+    console.log(`[Orchestrator] Dynamic Segmentation: ${segmentation.strategy}`);
+    console.log(`[Orchestrator] Total Seeds: ${seeds}, Segments: ${segmentation.segmentCount}, Agents: ${segmentation.totalAgents}`);
+
     const phase1Batches = 1; // Single batch for all seeds (maintains vocabulary registry)
-    const phase3Batches = Math.ceil(seeds / 70); // 70 seeds = ~10 windows (manageable for iTerm2)
-    const phase5Batches = Math.ceil(seeds / 20);
+    const phase3Batches = segmentation.segmentCount;
+    const phase5Batches = segmentation.segmentCount;
 
     console.log(`[Orchestrator] Phase 1: Single batch (all ${seeds} seeds - vocabulary registry consistency)`);
-    console.log(`[Orchestrator] Phase 3: ${phase3Batches} batches (70 seeds each, parallel)`);
-    console.log(`[Orchestrator] Phase 5: ${phase5Batches} batches (20 seeds each, sequential)`);
+    console.log(`[Orchestrator] Phase 3: ${phase3Batches} segments (${segmentation.totalAgents} agents, ~${segmentation.seedsPerAgent} seeds/agent)`);
+    console.log(`[Orchestrator] Phase 5: ${phase5Batches} segments (${segmentation.totalAgents} agents, ~${segmentation.seedsPerAgent} seeds/agent)`);
 
     // PHASE 1: Translation (can spawn in parallel)
     // CHECK FOR INTELLIGENT RESUME
@@ -2697,11 +2701,16 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       await preparePhase3Scaffolds(courseDir);
       console.log(`[Web Orchestrator] ✅ Phase 3 scaffolds ready`);
 
+      // Use dynamic segmentation
+      const totalSeeds = endSeed - startSeed + 1;
+      const phase3Segmentation = calculateSegmentation(totalSeeds);
+      console.log(`[Web Orchestrator] Phase 3 Dynamic Segmentation: ${phase3Segmentation.strategy} (${phase3Segmentation.totalAgents} agents, ~${phase3Segmentation.seedsPerAgent} seeds/agent)`);
+
       const phase3MasterPrompt = generatePhase3MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
       await fs.writeFile(path.join(courseDir, 'prompts', 'phase_3_master_prompt.md'), phase3MasterPrompt, 'utf8');
 
       console.log(`[Web Orchestrator] Opening Phase 3 tab and pasting master prompt...`);
-      console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
+      console.log(`[Web Orchestrator] Master prompt will spawn ${phase3Segmentation.totalAgents} parallel agents (~${phase3Segmentation.seedsPerAgent} seeds/agent)`);
       await spawnClaudeWebAgent(phase3MasterPrompt, 2, 'safari');
       console.log(`[Web Orchestrator] ✅ Phase 3 master prompt pasted - HIT ENTER to spawn agents!`);
 
@@ -2870,11 +2879,16 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
       await preparePhase5Scaffolds(courseDir, baseCourseDir);
       console.log(`[Web Orchestrator] ✅ Phase 5 scaffolds ready`);
 
+      // Use dynamic segmentation
+      const totalSeeds = endSeed - startSeed + 1;
+      const segmentation = calculateSegmentation(totalSeeds);
+      console.log(`[Web Orchestrator] Dynamic Segmentation: ${segmentation.strategy} (${segmentation.totalAgents} agents, ~${segmentation.seedsPerAgent} seeds/agent)`);
+
       const phase5MasterPrompt = generatePhase5MasterPrompt(courseCode, { target, known, startSeed, endSeed }, courseDir);
       await fs.writeFile(path.join(courseDir, 'prompts', 'phase_5_master_prompt.md'), phase5MasterPrompt, 'utf8');
 
       console.log(`[Web Orchestrator] Opening Phase 5 tab and pasting master prompt...`);
-      console.log(`[Web Orchestrator] Master prompt will spawn ${Math.ceil((endSeed - startSeed + 1) / 20)} parallel agents`);
+      console.log(`[Web Orchestrator] Master prompt will spawn ${segmentation.totalAgents} parallel agents (~${segmentation.seedsPerAgent} seeds/agent)`);
       await spawnClaudeWebAgent(phase5MasterPrompt, 3, 'safari');
       console.log(`[Web Orchestrator] ✅ Phase 5 master prompt pasted - HIT ENTER to spawn agents!`);
 
@@ -2883,7 +2897,7 @@ async function spawnCourseOrchestratorWeb(courseCode, params) {
 
       // Poll for all agent provisional outputs
       console.log(`[Web Orchestrator] Waiting for all Phase 5 agent outputs...`);
-      const expectedAgents = Math.ceil((endSeed - startSeed + 1) / 20);
+      const expectedAgents = segmentation.totalAgents;
       const phase5OutputsDir = path.join(courseDir, 'phase5_outputs');
 
       // Wait for all provisional files
