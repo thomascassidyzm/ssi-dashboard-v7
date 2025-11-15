@@ -1,0 +1,232 @@
+{
+    "version": "curated_v7_spanish",
+    "seed_id": "S0460",
+    "generation_stage": "PHRASE_GENERATION_COMPLETE",
+    "seed_pair": {
+        "known": "\u6211\u60f3\u627e\u9152\u5e97\u9644\u8fd1\u7684\u4e00\u5bb6\u5546\u5e97\u3002",
+        "target": "I want to find a shop near the hotel."
+    },
+    "legos": {
+        "S0460L01": {
+            "lego": [
+                "I want to find",
+                "\u6211\u60f3\u627e"
+            ],
+            "type": "M",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [],
+            "practice_phrases": [
+                [
+                    "I want to find",
+                    "\u6211\u60f3\u627e",
+                    null,
+                    1
+                ],
+                [
+                    "want to find",
+                    "\u60f3\u627e",
+                    null,
+                    1
+                ],
+                [
+                    "they want to find",
+                    "\u4ed6\u4eec\u60f3\u627e",
+                    null,
+                    2
+                ],
+                [
+                    "we want to find",
+                    "\u6211\u4eec\u60f3\u627e",
+                    null,
+                    2
+                ],
+                [
+                    "I will find",
+                    "\u6211\u4f1a\u627e",
+                    null,
+                    2
+                ],
+                [
+                    "he wants to find something",
+                    "\u4ed6\u60f3\u627e\u4ec0\u4e48\u4e1c\u897f",
+                    null,
+                    3
+                ],
+                [
+                    "I want to find the place they said",
+                    "\u6211\u60f3\u627e\u4ed6\u4eec\u8bf4\u7684\u5730\u65b9",
+                    null,
+                    4
+                ],
+                [
+                    "we want to find a new way that is more efficient",
+                    "\u6211\u4eec\u60f3\u627e\u66f4\u6709\u6548\u7684\u65b0\u65b9\u6cd5",
+                    null,
+                    5
+                ],
+                [
+                    "I want to find a shop or hotel near the blue sign",
+                    "\u6211\u60f3\u627e\u84dd\u8272\u6807\u5fd7\u9644\u8fd1\u7684\u5546\u5e97\u6216\u9152\u5e97",
+                    null,
+                    5
+                ],
+                [
+                    "I want to find a shop near the hotel.",
+                    "\u6211\u60f3\u627e\u9152\u5e97\u9644\u8fd1\u7684\u4e00\u5bb6\u5546\u5e97\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0460L01",
+                "seed_context": {
+                    "known": "\u6211\u60f3\u627e\u9152\u5e97\u9644\u8fd1\u7684\u4e00\u5bb6\u5546\u5e97\u3002",
+                    "target": "I want to find a shop near the hotel."
+                }
+            },
+            "components": [
+                [
+                    "\u6211",
+                    "I"
+                ],
+                [
+                    "\u60f3",
+                    "want to"
+                ],
+                [
+                    "\u627e",
+                    "find"
+                ]
+            ]
+        },
+        "S0460L02": {
+            "lego": [
+                "a shop near the hotel",
+                "\u9152\u5e97\u9644\u8fd1\u7684\u4e00\u5bb6\u5546\u5e97"
+            ],
+            "type": "M",
+            "is_final_lego": true,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0460L01",
+                    "known": "I want to find",
+                    "target": "\u6211\u60f3\u627e",
+                    "type": "M"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "a shop",
+                    "\u4e00\u5bb6\u5546\u5e97",
+                    null,
+                    1
+                ],
+                [
+                    "near the hotel",
+                    "\u9152\u5e97\u9644\u8fd1",
+                    null,
+                    1
+                ],
+                [
+                    "near here",
+                    "\u9644\u8fd1",
+                    null,
+                    1
+                ],
+                [
+                    "the hotel near",
+                    "\u9152\u5e97\u9644\u8fd1",
+                    null,
+                    2
+                ],
+                [
+                    "a shop is near",
+                    "\u4e00\u5bb6\u5546\u5e97\u9644\u8fd1",
+                    null,
+                    2
+                ],
+                [
+                    "a big shop near the hotel",
+                    "\u9152\u5e97\u9644\u8fd1\u4e00\u5bb6\u5927\u5546\u5e97",
+                    null,
+                    3
+                ],
+                [
+                    "a shop with good things near the hotel",
+                    "\u9152\u5e97\u9644\u8fd1\u6709\u597d\u4e1c\u897f\u7684\u5546\u5e97",
+                    null,
+                    5
+                ],
+                [
+                    "we want to find a new shop and the hotel will be happy to help",
+                    "\u6211\u4eec\u60f3\u627e\u65b0\u5546\u5e97\u9152\u5e97\u4f1a\u5f88\u9ad8\u5174\u5e2e\u5fd9",
+                    null,
+                    5
+                ],
+                [
+                    "I want to find a good shop near the hotel where they said",
+                    "\u6211\u60f3\u627e\u4ed6\u4eec\u8bf4\u7684\u9152\u5e97\u9644\u8fd1\u7684\u597d\u5546\u5e97",
+                    null,
+                    6
+                ],
+                [
+                    "I want to find a shop near the hotel.",
+                    "\u6211\u60f3\u627e\u9152\u5e97\u9644\u8fd1\u7684\u4e00\u5bb6\u5546\u5e97\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0460L02",
+                "seed_context": {
+                    "known": "\u6211\u60f3\u627e\u9152\u5e97\u9644\u8fd1\u7684\u4e00\u5bb6\u5546\u5e97\u3002",
+                    "target": "I want to find a shop near the hotel."
+                }
+            },
+            "components": [
+                [
+                    "\u4e00\u5bb6",
+                    "a"
+                ],
+                [
+                    "\u5546\u5e97",
+                    "shop"
+                ],
+                [
+                    "\u9644\u8fd1",
+                    "near"
+                ],
+                [
+                    "\u9152\u5e97",
+                    "hotel"
+                ]
+            ]
+        }
+    },
+    "_instructions": {
+        "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+        "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+        "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+        "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+        "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0460.json"
+    },
+    "_stats": {
+        "new_legos_in_seed": 2,
+        "phrases_to_generate": 20,
+        "recent_seeds_count": 10
+    }
+}

@@ -1,0 +1,232 @@
+{
+    "version": "curated_v7_spanish",
+    "seed_id": "S0457",
+    "generation_stage": "PHRASE_GENERATION_COMPLETE",
+    "seed_pair": {
+        "known": "\u95ee\u9898\u7684\u4e00\u90e8\u5206\u662f\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u3002",
+        "target": "Part of the problem is the number of different areas."
+    },
+    "legos": {
+        "S0457L01": {
+            "lego": [
+                "part of the problem",
+                "\u95ee\u9898\u7684\u4e00\u90e8\u5206"
+            ],
+            "type": "M",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [],
+            "practice_phrases": [
+                [
+                    "part of the problem",
+                    "\u95ee\u9898\u7684\u4e00\u90e8\u5206",
+                    null,
+                    1
+                ],
+                [
+                    "problem",
+                    "\u95ee\u9898",
+                    null,
+                    1
+                ],
+                [
+                    "the problem",
+                    "\u95ee\u9898",
+                    null,
+                    2
+                ],
+                [
+                    "a problem is",
+                    "\u95ee\u9898\u662f",
+                    null,
+                    2
+                ],
+                [
+                    "part is the problem",
+                    "\u4e00\u90e8\u5206\u662f\u95ee\u9898",
+                    null,
+                    2
+                ],
+                [
+                    "one part of this problem",
+                    "\u8fd9\u4e2a\u95ee\u9898\u7684\u4e00\u90e8\u5206",
+                    null,
+                    3
+                ],
+                [
+                    "part of the problem is not very efficient",
+                    "\u95ee\u9898\u7684\u4e00\u90e8\u5206\u4e0d\u592a\u6709\u6548",
+                    null,
+                    4
+                ],
+                [
+                    "the part of the problem they said what they want",
+                    "\u4ed6\u4eec\u8bf4\u7684\u95ee\u9898\u7684\u4e00\u90e8\u5206\u4ed6\u4eec\u60f3\u4ec0\u4e48",
+                    null,
+                    5
+                ],
+                [
+                    "the main part of the problem about different areas is difficult",
+                    "\u5173\u4e8e\u4e0d\u540c\u5730\u533a\u95ee\u9898\u7684\u4e3b\u8981\u90e8\u5206\u662f\u56f0\u96be\u7684",
+                    null,
+                    6
+                ],
+                [
+                    "Part of the problem is the number of different areas.",
+                    "\u95ee\u9898\u7684\u4e00\u90e8\u5206\u662f\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0457L01",
+                "seed_context": {
+                    "known": "\u95ee\u9898\u7684\u4e00\u90e8\u5206\u662f\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u3002",
+                    "target": "Part of the problem is the number of different areas."
+                }
+            },
+            "components": [
+                [
+                    "\u95ee\u9898",
+                    "problem"
+                ],
+                [
+                    "\u7684",
+                    "(possessive)"
+                ],
+                [
+                    "\u4e00\u90e8\u5206",
+                    "part"
+                ]
+            ]
+        },
+        "S0457L02": {
+            "lego": [
+                "the number of different areas",
+                "\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf"
+            ],
+            "type": "M",
+            "is_final_lego": true,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0457L01",
+                    "known": "part of the problem",
+                    "target": "\u95ee\u9898\u7684\u4e00\u90e8\u5206",
+                    "type": "M"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "different areas",
+                    "\u4e0d\u540c\u5730\u533a",
+                    null,
+                    1
+                ],
+                [
+                    "the areas",
+                    "\u5730\u533a",
+                    null,
+                    1
+                ],
+                [
+                    "number of areas",
+                    "\u5730\u533a\u7684\u6570\u91cf",
+                    null,
+                    2
+                ],
+                [
+                    "many different areas",
+                    "\u5f88\u591a\u4e0d\u540c\u5730\u533a",
+                    null,
+                    2
+                ],
+                [
+                    "different areas is number",
+                    "\u4e0d\u540c\u5730\u533a\u662f\u6570\u91cf",
+                    null,
+                    2
+                ],
+                [
+                    "the number of areas is large",
+                    "\u5730\u533a\u7684\u6570\u91cf\u5f88\u5927",
+                    null,
+                    3
+                ],
+                [
+                    "the number of different areas is a big problem",
+                    "\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u662f\u4e00\u4e2a\u5927\u95ee\u9898",
+                    null,
+                    5
+                ],
+                [
+                    "the number of different areas they wanted to develop new methods",
+                    "\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u4ed6\u4eec\u60f3\u5f00\u53d1\u65b0\u65b9\u6cd5",
+                    null,
+                    5
+                ],
+                [
+                    "part of the problem is the number of different areas makes it harder to do things",
+                    "\u95ee\u9898\u7684\u4e00\u90e8\u5206\u662f\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u4f7f\u505a\u4e8b\u60c5\u66f4\u96be",
+                    null,
+                    6
+                ],
+                [
+                    "Part of the problem is the number of different areas.",
+                    "\u95ee\u9898\u7684\u4e00\u90e8\u5206\u662f\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0457L02",
+                "seed_context": {
+                    "known": "\u95ee\u9898\u7684\u4e00\u90e8\u5206\u662f\u4e0d\u540c\u5730\u533a\u7684\u6570\u91cf\u3002",
+                    "target": "Part of the problem is the number of different areas."
+                }
+            },
+            "components": [
+                [
+                    "\u4e0d\u540c",
+                    "different"
+                ],
+                [
+                    "\u5730\u533a",
+                    "areas"
+                ],
+                [
+                    "\u7684",
+                    "(possessive)"
+                ],
+                [
+                    "\u6570\u91cf",
+                    "number"
+                ]
+            ]
+        }
+    },
+    "_instructions": {
+        "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+        "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+        "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+        "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+        "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0457.json"
+    },
+    "_stats": {
+        "new_legos_in_seed": 2,
+        "phrases_to_generate": 20,
+        "recent_seeds_count": 10
+    }
+}

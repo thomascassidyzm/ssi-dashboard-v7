@@ -1,0 +1,556 @@
+{
+    "version": "curated_v7_spanish",
+    "seed_id": "S0454",
+    "generation_stage": "PHRASE_GENERATION_COMPLETE",
+    "seed_pair": {
+        "known": "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+        "target": "Our friends came round at about six o'clock."
+    },
+    "legos": {
+        "S0454L01": {
+            "lego": [
+                "our friends",
+                "\u6211\u4eec\u7684\u670b\u53cb"
+            ],
+            "type": "M",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [],
+            "practice_phrases": [
+                [
+                    "our friends",
+                    "\u6211\u4eec\u7684\u670b\u53cb",
+                    null,
+                    1
+                ],
+                [
+                    "friends",
+                    "\u670b\u53cb",
+                    null,
+                    1
+                ],
+                [
+                    "our people",
+                    "\u6211\u4eec\u7684\u4eba",
+                    null,
+                    2
+                ],
+                [
+                    "they are our friends",
+                    "\u4ed6\u4eec\u662f\u6211\u4eec\u7684\u670b\u53cb",
+                    null,
+                    3
+                ],
+                [
+                    "our good friends",
+                    "\u6211\u4eec\u597d\u670b\u53cb",
+                    null,
+                    2
+                ],
+                [
+                    "our friends said what",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u8bf4\u4e86\u4ec0\u4e48",
+                    null,
+                    3
+                ],
+                [
+                    "our friends will come and will be very happy",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u4f1a\u6765\u4f1a\u5f88\u9ad8\u5174",
+                    null,
+                    5
+                ],
+                [
+                    "our friends came to do what they want",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u6765\u4e86\u60f3\u505a\u4ec0\u4e48",
+                    null,
+                    5
+                ],
+                [
+                    "our friends can develop new approaches or will do the same way",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u80fd\u5f00\u53d1\u65b0\u65b9\u6cd5\u6216\u4f1a\u7528\u540c\u6837\u7684\u65b9\u6cd5\u505a",
+                    null,
+                    6
+                ],
+                [
+                    "Our friends came round at about six o'clock.",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0454L01",
+                "seed_context": {
+                    "known": "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    "target": "Our friends came round at about six o'clock."
+                }
+            },
+            "components": [
+                [
+                    "\u6211\u4eec",
+                    "our"
+                ],
+                [
+                    "\u7684",
+                    "(possessive)"
+                ],
+                [
+                    "\u670b\u53cb",
+                    "friends"
+                ]
+            ]
+        },
+        "S0454L02": {
+            "lego": [
+                "at about six o'clock",
+                "\u5927\u7ea6\u516d\u70b9\u949f"
+            ],
+            "type": "M",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0454L01",
+                    "known": "our friends",
+                    "target": "\u6211\u4eec\u7684\u670b\u53cb",
+                    "type": "M"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "at six o'clock",
+                    "\u516d\u70b9\u949f",
+                    null,
+                    1
+                ],
+                [
+                    "about six",
+                    "\u5927\u7ea6\u516d",
+                    null,
+                    2
+                ],
+                [
+                    "six o'clock",
+                    "\u516d\u70b9\u949f",
+                    null,
+                    1
+                ],
+                [
+                    "at about six",
+                    "\u5927\u7ea6\u516d",
+                    null,
+                    2
+                ],
+                [
+                    "come at six o'clock",
+                    "\u516d\u70b9\u949f\u6765",
+                    null,
+                    2
+                ],
+                [
+                    "at about six we can meet",
+                    "\u5927\u7ea6\u516d\u70b9\u949f\u6211\u4eec\u80fd\u89c1\u9762",
+                    null,
+                    4
+                ],
+                [
+                    "they will come at about six but didn't say what",
+                    "\u4ed6\u4eec\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4f46\u6ca1\u6709\u8bf4\u4ec0\u4e48",
+                    null,
+                    5
+                ],
+                [
+                    "at about six our friends said what they want",
+                    "\u5927\u7ea6\u516d\u70b9\u949f\u6211\u4eec\u7684\u670b\u53cb\u8bf4\u4e86\u4ed6\u4eec\u60f3\u4ec0\u4e48",
+                    null,
+                    6
+                ],
+                [
+                    "our friends can come at about six and drive us home after the meal",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u80fd\u5927\u7ea6\u516d\u70b9\u949f\u6765\u548c\u996d\u540e\u5f00\u8f66\u9001\u6211\u4eec\u56de\u5bb6",
+                    null,
+                    7
+                ],
+                [
+                    "Our friends came round at about six o'clock.",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0454L02",
+                "seed_context": {
+                    "known": "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    "target": "Our friends came round at about six o'clock."
+                }
+            },
+            "components": [
+                [
+                    "\u5927\u7ea6",
+                    "about"
+                ],
+                [
+                    "\u516d\u70b9\u949f",
+                    "six o'clock"
+                ]
+            ]
+        },
+        "S0454L03": {
+            "lego": [
+                "six o'clock",
+                "\u516d\u70b9\u949f"
+            ],
+            "type": "M",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0454L01",
+                    "known": "our friends",
+                    "target": "\u6211\u4eec\u7684\u670b\u53cb",
+                    "type": "M"
+                },
+                {
+                    "id": "S0454L02",
+                    "known": "at about six o'clock",
+                    "target": "\u5927\u7ea6\u516d\u70b9\u949f",
+                    "type": "M"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "six o'clock",
+                    "\u516d\u70b9\u949f",
+                    null,
+                    1
+                ],
+                [
+                    "it is six",
+                    "\u516d\u70b9\u949f",
+                    null,
+                    2
+                ],
+                [
+                    "at six",
+                    "\u516d\u70b9\u949f",
+                    null,
+                    1
+                ],
+                [
+                    "six o'clock is time",
+                    "\u516d\u70b9\u949f\u662f\u65f6\u95f4",
+                    null,
+                    2
+                ],
+                [
+                    "come at six o'clock",
+                    "\u516d\u70b9\u949f\u6765",
+                    null,
+                    2
+                ],
+                [
+                    "at six o'clock is good",
+                    "\u516d\u70b9\u949f\u662f\u597d\u7684",
+                    null,
+                    3
+                ],
+                [
+                    "six o'clock they will do what",
+                    "\u516d\u70b9\u949f\u4ed6\u4eec\u4f1a\u505a\u4ec0\u4e48",
+                    null,
+                    4
+                ],
+                [
+                    "at about six o'clock our friends will prepare the meal",
+                    "\u5927\u7ea6\u516d\u70b9\u949f\u6211\u4eec\u7684\u670b\u53cb\u4f1a\u51c6\u5907\u996d",
+                    null,
+                    5
+                ],
+                [
+                    "six o'clock is when they said they want to catch the train",
+                    "\u516d\u70b9\u949f\u662f\u4ed6\u4eec\u8bf4\u60f3\u8d76\u706b\u8f66\u7684\u65f6\u5019",
+                    null,
+                    6
+                ],
+                [
+                    "Our friends came round at about six o'clock.",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0454L03",
+                "seed_context": {
+                    "known": "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    "target": "Our friends came round at about six o'clock."
+                }
+            },
+            "components": [
+                [
+                    "\u516d",
+                    "six"
+                ],
+                [
+                    "\u70b9\u949f",
+                    "o'clock"
+                ]
+            ]
+        },
+        "S0454L04": {
+            "lego": [
+                "came",
+                "\u6765\u4e86"
+            ],
+            "type": "A",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0454L01",
+                    "known": "our friends",
+                    "target": "\u6211\u4eec\u7684\u670b\u53cb",
+                    "type": "M"
+                },
+                {
+                    "id": "S0454L02",
+                    "known": "at about six o'clock",
+                    "target": "\u5927\u7ea6\u516d\u70b9\u949f",
+                    "type": "M"
+                },
+                {
+                    "id": "S0454L03",
+                    "known": "six o'clock",
+                    "target": "\u516d\u70b9\u949f",
+                    "type": "M"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "came",
+                    "\u6765\u4e86",
+                    null,
+                    1
+                ],
+                [
+                    "they came",
+                    "\u4ed6\u4eec\u6765\u4e86",
+                    null,
+                    2
+                ],
+                [
+                    "I came",
+                    "\u6211\u6765\u4e86",
+                    null,
+                    1
+                ],
+                [
+                    "someone came",
+                    "\u67d0\u4eba\u6765\u4e86",
+                    null,
+                    2
+                ],
+                [
+                    "came to see us",
+                    "\u6765\u770b\u6211\u4eec",
+                    null,
+                    2
+                ],
+                [
+                    "they came and said",
+                    "\u4ed6\u4eec\u6765\u4e86\u8bf4",
+                    null,
+                    3
+                ],
+                [
+                    "friends came to meet us",
+                    "\u670b\u53cb\u6765\u4e86\u89c1\u6211\u4eec",
+                    null,
+                    4
+                ],
+                [
+                    "our friends came to help and will be very happy",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u6765\u4e86\u5e2e\u52a9\u4f1a\u5f88\u9ad8\u5174",
+                    null,
+                    5
+                ],
+                [
+                    "they came at six o'clock to take us home after the meal",
+                    "\u4ed6\u4eec\u516d\u70b9\u949f\u6765\u4e86\u996d\u540e\u9001\u6211\u4eec\u56de\u5bb6",
+                    null,
+                    6
+                ],
+                [
+                    "Our friends came round at about six o'clock.",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0454L04",
+                "seed_context": {
+                    "known": "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    "target": "Our friends came round at about six o'clock."
+                }
+            }
+        },
+        "S0454L05": {
+            "lego": [
+                "friends came",
+                "\u670b\u53cb\u6765\u4e86"
+            ],
+            "type": "M",
+            "is_final_lego": true,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0454L01",
+                    "known": "our friends",
+                    "target": "\u6211\u4eec\u7684\u670b\u53cb",
+                    "type": "M"
+                },
+                {
+                    "id": "S0454L02",
+                    "known": "at about six o'clock",
+                    "target": "\u5927\u7ea6\u516d\u70b9\u949f",
+                    "type": "M"
+                },
+                {
+                    "id": "S0454L03",
+                    "known": "six o'clock",
+                    "target": "\u516d\u70b9\u949f",
+                    "type": "M"
+                },
+                {
+                    "id": "S0454L04",
+                    "known": "came",
+                    "target": "\u6765\u4e86",
+                    "type": "A"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "friends came",
+                    "\u670b\u53cb\u6765\u4e86",
+                    null,
+                    1
+                ],
+                [
+                    "our friends came",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u6765\u4e86",
+                    null,
+                    2
+                ],
+                [
+                    "the friends came",
+                    "\u670b\u53cb\u6765\u4e86",
+                    null,
+                    2
+                ],
+                [
+                    "good friends came",
+                    "\u597d\u670b\u53cb\u6765\u4e86",
+                    null,
+                    2
+                ],
+                [
+                    "friends came at six",
+                    "\u670b\u53cb\u516d\u70b9\u949f\u6765\u4e86",
+                    null,
+                    3
+                ],
+                [
+                    "many friends came to help",
+                    "\u5f88\u591a\u670b\u53cb\u6765\u4e86\u5e2e\u5fd9",
+                    null,
+                    4
+                ],
+                [
+                    "our friends came to say what they want to do",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u6765\u4e86\u8bf4\u4ed6\u4eec\u60f3\u505a\u4ec0\u4e48",
+                    null,
+                    5
+                ],
+                [
+                    "our friends came at six and said they will be very happy",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u516d\u70b9\u949f\u6765\u4e86\u8bf4\u4ed6\u4eec\u4f1a\u5f88\u9ad8\u5174",
+                    null,
+                    6
+                ],
+                [
+                    "our friends came round at about six and said they want to continue the same way",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u8bf4\u4ed6\u4eec\u60f3\u7ee7\u7eed\u540c\u6837\u7684\u65b9\u6cd5",
+                    null,
+                    7
+                ],
+                [
+                    "Our friends came round at about six o'clock.",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0454L05",
+                "seed_context": {
+                    "known": "\u6211\u4eec\u7684\u670b\u53cb\u5927\u7ea6\u516d\u70b9\u949f\u6765\u4e86\u3002",
+                    "target": "Our friends came round at about six o'clock."
+                }
+            },
+            "components": [
+                [
+                    "\u670b\u53cb",
+                    "friends"
+                ],
+                [
+                    "\u6765\u4e86",
+                    "came"
+                ]
+            ]
+        }
+    },
+    "_instructions": {
+        "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+        "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+        "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+        "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+        "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0454.json"
+    },
+    "_stats": {
+        "new_legos_in_seed": 5,
+        "phrases_to_generate": 50,
+        "recent_seeds_count": 10
+    }
+}

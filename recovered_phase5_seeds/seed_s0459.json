@@ -1,0 +1,228 @@
+{
+    "version": "curated_v7_spanish",
+    "seed_id": "S0459",
+    "generation_stage": "PHRASE_GENERATION_COMPLETE",
+    "seed_pair": {
+        "known": "\u5b83\u4e0d\u5728\u84dd\u8272\u6807\u5fd7\u7684\u524d\u9762\u3002",
+        "target": "It wasn't in front of the blue sign."
+    },
+    "legos": {
+        "S0459L01": {
+            "lego": [
+                "it wasn't in front of",
+                "\u5b83\u4e0d\u5728...\u7684\u524d\u9762"
+            ],
+            "type": "M",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [],
+            "practice_phrases": [
+                [
+                    "in front of",
+                    "...\u7684\u524d\u9762",
+                    null,
+                    1
+                ],
+                [
+                    "wasn't there",
+                    "\u4e0d\u5728\u90a3\u91cc",
+                    null,
+                    1
+                ],
+                [
+                    "it wasn't in front",
+                    "\u5b83\u4e0d\u5728\u524d\u9762",
+                    null,
+                    2
+                ],
+                [
+                    "wasn't in the front",
+                    "\u4e0d\u5728\u524d\u9762",
+                    null,
+                    2
+                ],
+                [
+                    "wasn't in front of the window",
+                    "\u4e0d\u5728\u7a97\u6237\u7684\u524d\u9762",
+                    null,
+                    3
+                ],
+                [
+                    "it was not in front",
+                    "\u5b83\u4e0d\u5728\u524d\u9762",
+                    null,
+                    3
+                ],
+                [
+                    "it wasn't in front of what we said",
+                    "\u5b83\u4e0d\u5728\u6211\u4eec\u8bf4\u7684\u524d\u9762",
+                    null,
+                    4
+                ],
+                [
+                    "it wasn't in front of the different areas like we thought",
+                    "\u5b83\u4e0d\u5728\u6211\u4eec\u60f3\u7684\u4e0d\u540c\u5730\u533a\u7684\u524d\u9762",
+                    null,
+                    5
+                ],
+                [
+                    "it wasn't in front of the blue sign where they said we should wait",
+                    "\u5b83\u4e0d\u5728\u4ed6\u4eec\u8bf4\u6211\u4eec\u5e94\u8be5\u7b49\u7684\u84dd\u8272\u6807\u5fd7\u7684\u524d\u9762",
+                    null,
+                    6
+                ],
+                [
+                    "It wasn't in front of the blue sign.",
+                    "\u5b83\u4e0d\u5728\u84dd\u8272\u6807\u5fd7\u7684\u524d\u9762\u3002",
+                    null,
+                    7
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0459L01",
+                "seed_context": {
+                    "known": "\u5b83\u4e0d\u5728\u84dd\u8272\u6807\u5fd7\u7684\u524d\u9762\u3002",
+                    "target": "It wasn't in front of the blue sign."
+                }
+            },
+            "components": [
+                [
+                    "\u5b83",
+                    "it"
+                ],
+                [
+                    "\u4e0d",
+                    "wasn't"
+                ],
+                [
+                    "\u5728",
+                    "in"
+                ],
+                [
+                    "\u7684\u524d\u9762",
+                    "in front of"
+                ]
+            ]
+        },
+        "S0459L02": {
+            "lego": [
+                "the blue sign",
+                "\u84dd\u8272\u6807\u5fd7"
+            ],
+            "type": "M",
+            "is_final_lego": true,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0459L01",
+                    "known": "it wasn't in front of",
+                    "target": "\u5b83\u4e0d\u5728...\u7684\u524d\u9762",
+                    "type": "M"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "the blue sign",
+                    "\u84dd\u8272\u6807\u5fd7",
+                    null,
+                    1
+                ],
+                [
+                    "blue sign",
+                    "\u84dd\u8272\u6807\u5fd7",
+                    null,
+                    1
+                ],
+                [
+                    "the sign",
+                    "\u6807\u5fd7",
+                    null,
+                    1
+                ],
+                [
+                    "sign blue",
+                    "\u84dd\u8272\u6807\u5fd7",
+                    null,
+                    1
+                ],
+                [
+                    "the blue color sign",
+                    "\u84dd\u8272\u7684\u6807\u5fd7",
+                    null,
+                    2
+                ],
+                [
+                    "it is the blue sign",
+                    "\u8fd9\u662f\u84dd\u8272\u6807\u5fd7",
+                    null,
+                    3
+                ],
+                [
+                    "the blue sign is in front",
+                    "\u84dd\u8272\u6807\u5fd7\u5728\u524d\u9762",
+                    null,
+                    3
+                ],
+                [
+                    "they said the blue sign is the place",
+                    "\u4ed6\u4eec\u8bf4\u84dd\u8272\u6807\u5fd7\u662f\u5730\u65b9",
+                    null,
+                    4
+                ],
+                [
+                    "in front of the blue sign is where they want to meet",
+                    "\u84dd\u8272\u6807\u5fd7\u524d\u9762\u662f\u4ed6\u4eec\u60f3\u89c1\u9762\u7684\u5730\u65b9",
+                    null,
+                    6
+                ],
+                [
+                    "It wasn't in front of the blue sign.",
+                    "\u5b83\u4e0d\u5728\u84dd\u8272\u6807\u5fd7\u7684\u524d\u9762\u3002",
+                    null,
+                    7
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0459L02",
+                "seed_context": {
+                    "known": "\u5b83\u4e0d\u5728\u84dd\u8272\u6807\u5fd7\u7684\u524d\u9762\u3002",
+                    "target": "It wasn't in front of the blue sign."
+                }
+            },
+            "components": [
+                [
+                    "\u84dd\u8272",
+                    "blue"
+                ],
+                [
+                    "\u6807\u5fd7",
+                    "sign"
+                ]
+            ]
+        }
+    },
+    "_instructions": {
+        "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+        "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+        "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+        "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+        "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0459.json"
+    },
+    "_stats": {
+        "new_legos_in_seed": 2,
+        "phrases_to_generate": 20,
+        "recent_seeds_count": 10
+    }
+}

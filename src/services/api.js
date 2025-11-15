@@ -447,47 +447,58 @@ export default {
       return response.data
     },
 
+    // Cache for lego_baskets.json to avoid re-fetching 5MB file for every seed
+    _basketsCache: {},
+
     async getBasket(courseCode, seedId) {
       // ALWAYS use static files (GitHub SSoT)
       console.log(`[API] Loading basket ${seedId} from static files (GitHub SSoT)`)
 
       try {
         // Load from merged lego_baskets.json (Phase 5+ format)
-        const basketsRes = await fetch(`/vfs/courses/${courseCode}/lego_baskets.json`)
-        if (basketsRes.ok) {
-          const allBaskets = await basketsRes.json()
+        // Cache it to avoid re-fetching the 5MB file for every seed
+        if (!this._basketsCache[courseCode]) {
+          console.log(`[API] Fetching lego_baskets.json for ${courseCode} (not cached)`)
+          const basketsRes = await fetch(`/vfs/courses/${courseCode}/lego_baskets.json`)
+          if (basketsRes.ok) {
+            this._basketsCache[courseCode] = await basketsRes.json()
+          } else {
+            throw new Error('lego_baskets.json not found')
+          }
+        }
 
-          // Find basket by seedId in baskets object
-          // Baskets are keyed like "S0001L01", "S0001L02" etc - find all for this seed
-          const seedBaskets = {}
-          for (const [key, basketData] of Object.entries(allBaskets.baskets || {})) {
-            if (key.startsWith(seedId)) {
-              seedBaskets[key] = basketData
+        const allBaskets = this._basketsCache[courseCode]
+
+        // Find basket by seedId in baskets object
+        // Baskets are keyed like "S0001L01", "S0001L02" etc - find all for this seed
+        const seedBaskets = {}
+        for (const [key, basketData] of Object.entries(allBaskets.baskets || {})) {
+          if (key.startsWith(seedId)) {
+            seedBaskets[key] = basketData
+          }
+        }
+
+        if (Object.keys(seedBaskets).length > 0) {
+          // Get seed_pair from seed_pairs.json
+          const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+          let seedPair = null
+          if (seedPairsRes.ok) {
+            const seedPairsData = await seedPairsRes.json()
+            const translation = seedPairsData.translations?.[seedId]
+            if (translation) {
+              seedPair = {
+                target: translation[0],
+                known: translation[1]
+              }
             }
           }
 
-          if (Object.keys(seedBaskets).length > 0) {
-            // Get seed_pair from seed_pairs.json
-            const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-            let seedPair = null
-            if (seedPairsRes.ok) {
-              const seedPairsData = await seedPairsRes.json()
-              const translation = seedPairsData.translations?.[seedId]
-              if (translation) {
-                seedPair = {
-                  target: translation[0],
-                  known: translation[1]
-                }
-              }
-            }
-
-            // Return basket in expected format
-            return {
-              basket: {
-                seed_pair: seedPair,
-                legos: seedBaskets,  // v6.2+ format with LEGOs nested
-                generation_stage: 'COMPLETE'
-              }
+          // Return basket in expected format
+          return {
+            basket: {
+              seed_pair: seedPair,
+              legos: seedBaskets,  // v6.2+ format with LEGOs nested
+              generation_stage: 'COMPLETE'
             }
           }
         }

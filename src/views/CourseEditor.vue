@@ -898,7 +898,9 @@ async function loadCourse() {
     // Load lego_baskets.json from VFS (v7.7+ format)
     // ALWAYS use static files (GitHub SSoT)
     try {
-      const url = `/vfs/courses/${courseCode}/lego_baskets.json`
+      // Add cache-busting timestamp to force fresh data from Vercel CDN
+      const timestamp = Date.now()
+      const url = `/vfs/courses/${courseCode}/lego_baskets.json?_t=${timestamp}`
       console.log('🔍 Fetching lego_baskets.json from static files (GitHub SSoT):', url)
 
       const basketsResponse = await fetch(url)
@@ -918,7 +920,9 @@ async function loadCourse() {
     // Load introductions.json from VFS (Phase 6)
     // ALWAYS use static files (GitHub SSoT)
     try {
-      const url = `/vfs/courses/${courseCode}/introductions.json`
+      // Add cache-busting timestamp to force fresh data from Vercel CDN
+      const timestamp = Date.now()
+      const url = `/vfs/courses/${courseCode}/introductions.json?_t=${timestamp}`
       console.log('🔍 Fetching introductions.json from static files (GitHub SSoT):', url)
 
       const introsResponse = await fetch(url)
@@ -939,7 +943,9 @@ async function loadCourse() {
     // ALWAYS use static files (GitHub SSoT)
     console.log('🔍 Starting to load lego_pairs.json for course:', courseCode)
     try {
-      const url = `/vfs/courses/${courseCode}/lego_pairs.json`
+      // Add cache-busting timestamp to force fresh data from Vercel CDN
+      const timestamp = Date.now()
+      const url = `/vfs/courses/${courseCode}/lego_pairs.json?_t=${timestamp}`
       console.log('🔍 Fetching from static files (GitHub SSoT):', url)
 
       const legoPairsResponse = await fetch(url)

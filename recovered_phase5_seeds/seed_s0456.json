@@ -1,0 +1,232 @@
+{
+    "version": "curated_v7_spanish",
+    "seed_id": "S0456",
+    "generation_stage": "PHRASE_GENERATION_COMPLETE",
+    "seed_pair": {
+        "known": "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\uff0c\u4f46\u4e0d\u592a\u53ef\u80fd\u3002",
+        "target": "He might be there but it's not very likely."
+    },
+    "legos": {
+        "S0456L01": {
+            "lego": [
+                "he might be there",
+                "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc"
+            ],
+            "type": "M",
+            "is_final_lego": false,
+            "current_seed_earlier_legos": [],
+            "practice_phrases": [
+                [
+                    "he might be there",
+                    "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc",
+                    null,
+                    1
+                ],
+                [
+                    "might be there",
+                    "\u53ef\u80fd\u5728\u90a3\u91cc",
+                    null,
+                    2
+                ],
+                [
+                    "he is there",
+                    "\u4ed6\u5728\u90a3\u91cc",
+                    null,
+                    2
+                ],
+                [
+                    "they might be there",
+                    "\u4ed6\u4eec\u53ef\u80fd\u5728\u90a3\u91cc",
+                    null,
+                    2
+                ],
+                [
+                    "he could be there",
+                    "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc",
+                    null,
+                    3
+                ],
+                [
+                    "he will be there",
+                    "\u4ed6\u4f1a\u5728\u90a3\u91cc",
+                    null,
+                    3
+                ],
+                [
+                    "he might be there to help and will be very happy",
+                    "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\u5e2e\u5fd9\u4f1a\u5f88\u9ad8\u5174",
+                    null,
+                    5
+                ],
+                [
+                    "he might be there at about six o'clock but I didn't say",
+                    "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\u5927\u7ea6\u516d\u70b9\u949f\u4f46\u6211\u6ca1\u6709\u8bf4",
+                    null,
+                    5
+                ],
+                [
+                    "he might be there but he didn't say what he want to do",
+                    "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\u4f46\u4ed6\u6ca1\u6709\u8bf4\u4ed6\u60f3\u505a\u4ec0\u4e48",
+                    null,
+                    6
+                ],
+                [
+                    "He might be there but it's not very likely.",
+                    "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\uff0c\u4f46\u4e0d\u592a\u53ef\u80fd\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0456L01",
+                "seed_context": {
+                    "known": "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\uff0c\u4f46\u4e0d\u592a\u53ef\u80fd\u3002",
+                    "target": "He might be there but it's not very likely."
+                }
+            },
+            "components": [
+                [
+                    "\u4ed6",
+                    "he"
+                ],
+                [
+                    "\u53ef\u80fd",
+                    "might"
+                ],
+                [
+                    "\u5728",
+                    "be"
+                ],
+                [
+                    "\u90a3\u91cc",
+                    "there"
+                ]
+            ]
+        },
+        "S0456L02": {
+            "lego": [
+                "it's not very likely",
+                "\u4e0d\u592a\u53ef\u80fd"
+            ],
+            "type": "M",
+            "is_final_lego": true,
+            "current_seed_earlier_legos": [
+                {
+                    "id": "S0456L01",
+                    "known": "he might be there",
+                    "target": "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc",
+                    "type": "M"
+                }
+            ],
+            "practice_phrases": [
+                [
+                    "not likely",
+                    "\u4e0d\u592a\u53ef\u80fd",
+                    null,
+                    1
+                ],
+                [
+                    "very likely",
+                    "\u5f88\u53ef\u80fd",
+                    null,
+                    1
+                ],
+                [
+                    "is not likely",
+                    "\u4e0d\u592a\u53ef\u80fd",
+                    null,
+                    2
+                ],
+                [
+                    "it is likely",
+                    "\u8fd9\u662f\u53ef\u80fd\u7684",
+                    null,
+                    2
+                ],
+                [
+                    "not very likely to happen",
+                    "\u4e0d\u592a\u53ef\u80fd\u53d1\u751f",
+                    null,
+                    3
+                ],
+                [
+                    "it is not very likely",
+                    "\u8fd9\u4e0d\u592a\u53ef\u80fd",
+                    null,
+                    3
+                ],
+                [
+                    "it's not very likely but we can do it more efficiently",
+                    "\u4e0d\u592a\u53ef\u80fd\u4f46\u6211\u4eec\u80fd\u66f4\u6709\u6548\u5730\u505a",
+                    null,
+                    5
+                ],
+                [
+                    "it's not very likely they will say what they want",
+                    "\u4ed6\u4eec\u8bf4\u4ed6\u4eec\u60f3\u4ec0\u4e48\u4e0d\u592a\u53ef\u80fd",
+                    null,
+                    5
+                ],
+                [
+                    "it's not very likely our friends will come at six but they said yes",
+                    "\u6211\u4eec\u7684\u670b\u53cb\u516d\u70b9\u949f\u6765\u4e0d\u592a\u53ef\u80fd\u4f46\u4ed6\u4eec\u8bf4\u662f\u7684",
+                    null,
+                    6
+                ],
+                [
+                    "He might be there but it's not very likely.",
+                    "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\uff0c\u4f46\u4e0d\u592a\u53ef\u80fd\u3002",
+                    null,
+                    8
+                ]
+            ],
+            "phrase_distribution": {
+                "short_1_to_2_legos": 2,
+                "medium_3_legos": 2,
+                "longer_4_legos": 2,
+                "longest_5_legos": 4
+            },
+            "target_phrase_count": 10,
+            "_metadata": {
+                "lego_id": "S0456L02",
+                "seed_context": {
+                    "known": "\u4ed6\u53ef\u80fd\u5728\u90a3\u91cc\uff0c\u4f46\u4e0d\u592a\u53ef\u80fd\u3002",
+                    "target": "He might be there but it's not very likely."
+                }
+            },
+            "components": [
+                [
+                    "\u4e0d",
+                    "not"
+                ],
+                [
+                    "\u592a",
+                    "very"
+                ],
+                [
+                    "\u53ef\u80fd",
+                    "likely"
+                ]
+            ]
+        }
+    },
+    "_instructions": {
+        "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+        "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+        "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+        "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+        "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0456.json"
+    },
+    "_stats": {
+        "new_legos_in_seed": 2,
+        "phrases_to_generate": 20,
+        "recent_seeds_count": 10
+    }
+}
