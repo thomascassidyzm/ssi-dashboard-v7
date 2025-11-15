@@ -57,6 +57,7 @@ const CHECKPOINT_MODE = process.env.CHECKPOINT_MODE || 'gated';
 const LEGACY_MODE = process.env.LEGACY_MODE === 'true' || !fs.existsSync('services/orchestration/orchestrator.cjs');
 
 if (LEGACY_MODE) {
+  // Legacy mode - run old monolith
   console.log('');
   console.log('⚠️  Running in LEGACY MODE');
   console.log('   (New layered services not yet available)');
@@ -89,10 +90,14 @@ if (LEGACY_MODE) {
     process.exit(0);
   });
 
-  return;
+  // Keep process alive
+  process.stdin.resume();
+} else {
+  // New layered services mode
+  startLayeredServices();
 }
 
-// New layered services mode
+function startLayeredServices() {
 const SERVICES = {
   orchestrator: {
     script: 'services/orchestration/orchestrator.cjs',
@@ -236,3 +241,4 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
   process.emit('SIGINT');
 });
+}
