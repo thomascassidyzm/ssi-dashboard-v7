@@ -57,6 +57,9 @@ export default {
 
   // Course generation
   course: {
+    // Initialize cache for baskets to avoid re-fetching 5MB files
+    _basketsCache: {},
+
     async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false }) {
       const response = await api.post('/api/courses/generate', {
         target,
@@ -507,6 +510,12 @@ export default {
           if (key.startsWith(seedId)) {
             seedBaskets[key] = basketData
           }
+        }
+
+        if (Object.keys(seedBaskets).length > 0) {
+          console.log(`[API] ✓ Found ${Object.keys(seedBaskets).length} basket(s) for ${seedId} in ${courseCode}`)
+        } else {
+          console.warn(`[API] ⚠️  MISSING BASKET: ${seedId} not found in ${courseCode}/lego_baskets.json`)
         }
 
         if (Object.keys(seedBaskets).length > 0) {
