@@ -96,9 +96,13 @@ export default {
           console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
 
           // Transform manifest format to API format
-          // Show courses with Phase 1 (translations) OR Phase 3 (LEGOs)
+          // Show courses with any pipeline output files (baskets, seed_pairs, or lego_pairs)
           const courses = manifest.courses
-            .filter(course => course.actual_seed_count > 0) // Must have at least Phase 1
+            .filter(course =>
+              course.has_baskets ||
+              course.files?.seed_pairs ||
+              course.files?.lego_pairs
+            )
             .map(course => ({
               course_code: course.course_code,
               source_language: course.source_language,
