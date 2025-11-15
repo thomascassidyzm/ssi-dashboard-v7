@@ -81,4 +81,5 @@ public/vfs/courses/*/phase5_outputs/
 
 # Course archives (don't commit)
 public/vfs/courses/archive/
-/public/vfs/courses-manifest.json
+# NOTE: courses-manifest.json IS committed - it's the build-time index of available courses
+# /public/vfs/courses-manifest.json
