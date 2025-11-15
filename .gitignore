@@ -79,29 +79,29 @@ public/vfs/courses/*/phase5_outputs/
 # 2. Run: node scripts/merge_phase5_to_lego_baskets.cjs
 # 3. Commit only lego_baskets.json to git
 
-# Course Data - Keep only essential files
-# =========================================
-# lego_baskets.json contains ALL course data needed for display:
-# - All LEGO chunks (target + known)
-# - All practice phrases
-# - LEGO components and breakdowns
-# - Seed/LEGO metadata
+# Course Data - Pipeline State Preservation
+# ==========================================
+# KEEP phase outputs (pipeline state):
+# - Phase 1: seed_pairs.json (~500KB stripped of metadata)
+# - Phase 3: lego_pairs.json (~2MB stripped of metadata)
+# - Phase 5: lego_baskets.json (~5MB, final merged output with all LEGO baskets)
+# - Phase 6: introductions.json (~500KB, presentation content)
 #
-# Ignore working files and intermediate outputs
-public/vfs/courses/*/phase5_outputs/
-public/vfs/courses/*/phase5_scaffolds/
-public/vfs/courses/*/seed_pairs.json
-public/vfs/courses/*/lego_pairs.json
-public/vfs/courses/*/*.cjs
-public/vfs/courses/*/gate_*.json
-public/vfs/courses/*/grammar_*.json
-public/vfs/courses/*/infinitive_*.json
-public/vfs/courses/*/*_report.json
-public/vfs/courses/*/*_changelog.json
-public/vfs/courses/*/*_errors.json
-public/vfs/courses/archive/
+# IGNORE intermediate/working files:
+public/vfs/courses/*/phase5_outputs/         # Individual seed baskets (merged into lego_baskets.json)
+public/vfs/courses/*/phase5_scaffolds/        # Phase 5 input scaffolds (derivable)
+public/vfs/courses/*/*.cjs                    # Scripts
+public/vfs/courses/*/gate_*.json              # Reports
+public/vfs/courses/*/grammar_*.json           # Reports
+public/vfs/courses/*/infinitive_*.json        # Reports
+public/vfs/courses/*/*_report.json            # Reports
+public/vfs/courses/*/*_changelog.json         # Reports
+public/vfs/courses/*/*_errors.json            # Error logs
+public/vfs/courses/archive/                   # Old versions
 
-# Keep these essential files:
-# - courses-manifest.json (course index)
-# - lego_baskets.json (complete course data)
-# - introductions.json (Phase 6 presentations)
+# Essential files committed to git:
+# - courses-manifest.json (course index, 3KB)
+# - seed_pairs.json (Phase 1 output, ~500KB)
+# - lego_pairs.json (Phase 3 output, ~2MB)
+# - lego_baskets.json (Phase 5 output, ~5MB - contains ALL course data)
+# - introductions.json (Phase 6 output, ~500KB)
