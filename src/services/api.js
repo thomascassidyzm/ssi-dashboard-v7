@@ -231,86 +231,100 @@ export default {
       console.log(`[API] Loading ${courseCode} from static files (GitHub SSoT)`)
 
       try {
-        // Use the courseCode as-is for static file paths
-        // (segment ranges have their own directories, not a base course)
-        const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
-        const legoPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
-
-        // Try to load optional files (may not exist for all courses)
+        // Try to load all possible phase output files
+        // seed_pairs.json, lego_pairs.json, lego_baskets.json are all optional now
+        let seedPairsData = null
+        let legoPairsData = null
         let legoBasketsData = null
         let introductionsData = null
 
+        // Try seed_pairs.json (Phase 1)
         try {
-          const basketsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json'))
-          if (basketsRes.ok) {
-            legoBasketsData = await basketsRes.json()
-          }
+          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+          if (res.ok) seedPairsData = await res.json()
         } catch (e) {
-          // File doesn't exist, that's ok
+          console.log(`[API] No seed_pairs.json for ${courseCode}`)
         }
 
+        // Try lego_pairs.json (Phase 3)
         try {
-          const introsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'introductions.json'))
-          if (introsRes.ok) {
-            introductionsData = await introsRes.json()
-          }
+          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
+          if (res.ok) legoPairsData = await res.json()
         } catch (e) {
-          // File doesn't exist, that's ok
+          console.log(`[API] No lego_pairs.json for ${courseCode}`)
         }
 
-        if (seedPairsRes.ok && legoPairsRes.ok) {
-          const seedPairsData = await seedPairsRes.json()
-          const legoPairsData = await legoPairsRes.json()
+        // Try lego_baskets.json (Phase 5)
+        try {
+          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json'))
+          if (res.ok) legoBasketsData = await res.json()
+        } catch (e) {
+          console.log(`[API] No lego_baskets.json for ${courseCode}`)
+        }
 
-          // Convert v7.7 format translations object to array
-          // Input: { translations: { "S0001": ["target", "known"], ... } }
-          // Output: [{ seed_id: "S0001", target_phrase: "...", known_phrase: "..." }, ...]
-          const translationsObj = seedPairsData.translations || {}
-          const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
-            seed_id,
-            target_phrase,
-            known_phrase,
-            canonical_seed: null
-          }))
+        // Try introductions.json (Phase 6)
+        try {
+          const res = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'introductions.json'))
+          if (res.ok) introductionsData = await res.json()
+        } catch (e) {
+          console.log(`[API] No introductions.json for ${courseCode}`)
+        }
 
-          translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
+        // Process data if we have at least one phase output file
+        if (seedPairsData || legoPairsData || legoBasketsData) {
 
-          // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
-          const seedsArray = legoPairsData.seeds || []
+          // Parse seed_pairs.json if available
+          const translations = []
+          if (seedPairsData) {
+            const translationsObj = seedPairsData.translations || {}
+            translations.push(...Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
+              seed_id,
+              target_phrase,
+              known_phrase,
+              canonical_seed: null
+            })))
+            translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
+          }
+
+          // Parse lego_pairs.json if available
           const legos = []
+          let seedsArray = [] // For lego_breakdowns visualization
+          if (legoPairsData) {
+            seedsArray = legoPairsData.seeds || []
 
-          // Detect format by checking first seed structure
-          if (seedsArray.length > 0) {
-            const firstSeed = seedsArray[0]
+            // Detect format by checking first seed structure
+            if (seedsArray.length > 0) {
+              const firstSeed = seedsArray[0]
 
-            if (Array.isArray(firstSeed)) {
-              // v7.7 format: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
-              for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
-                for (const legoEntry of legoArray) {
-                  const [lego_id, type, target_chunk, known_chunk] = legoEntry
-                  legos.push({
-                    seed_id,
-                    lego_id,
-                    lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
-                    target_chunk,
-                    known_chunk
-                  })
+              if (Array.isArray(firstSeed)) {
+                // v7.7 format: [[seed_id, [target, known], [[lego_id, type, t, k], ...]]]
+                for (const [seed_id, [seed_target, seed_known], legoArray] of seedsArray) {
+                  for (const legoEntry of legoArray) {
+                    const [lego_id, type, target_chunk, known_chunk] = legoEntry
+                    legos.push({
+                      seed_id,
+                      lego_id,
+                      lego_type: type === 'B' ? 'BASE' : type === 'C' ? 'COMPOSITE' : type === 'F' ? 'FEEDER' : type,
+                      target_chunk,
+                      known_chunk
+                    })
+                  }
                 }
-              }
-            } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
-              // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, new/ref, components?}]}
-              for (const seed of seedsArray) {
-                // Only include NEW LEGOs in the flat list (not referenced ones)
-                const newLegos = seed.legos.filter(l => l.new === true)
-                for (const lego of newLegos) {
-                  legos.push({
-                    seed_id: seed.seed_id,
-                    lego_id: lego.id,
-                    lego_type: lego.type === 'A' ? 'A' : lego.type === 'M' ? 'M' : lego.type,
-                    target_chunk: lego.target,
-                    known_chunk: lego.known,
-                    components: lego.components // Include componentization for molecular LEGOs
-                  })
+              } else if (firstSeed && typeof firstSeed === 'object' && firstSeed.seed_id) {
+                // v5.0.1 format: {seed_id, seed_pair, legos: [{id, type, target, known, new/ref, components?}]}
+                for (const seed of seedsArray) {
+                  // Only include NEW LEGOs in the flat list (not referenced ones)
+                  const newLegos = seed.legos.filter(l => l.new === true)
+                  for (const lego of newLegos) {
+                    legos.push({
+                      seed_id: seed.seed_id,
+                      lego_id: lego.id,
+                      lego_type: lego.type === 'A' ? 'A' : lego.type === 'M' ? 'M' : lego.type,
+                      target_chunk: lego.target,
+                      known_chunk: lego.known,
+                      components: lego.components // Include componentization for molecular LEGOs
+                    })
+                  }
                 }
               }
             }

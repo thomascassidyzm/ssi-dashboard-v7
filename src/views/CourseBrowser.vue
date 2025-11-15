@@ -71,7 +71,7 @@
               <div class="text-emerald-400 font-semibold">{{ course.lego_baskets || 0 }}</div>
             </div>
             <div class="bg-slate-900/50 rounded p-3">
-              <div class="text-slate-400 text-xs mb-1">Introductions</div>
+              <div class="text-slate-400 text-xs mb-1">INTRODUCTIONS</div>
               <div class="text-emerald-400 font-semibold">{{ course.amino_acids?.introductions || 0 }}</div>
             </div>
           </div>

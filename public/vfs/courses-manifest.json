@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-15T15:23:31.847Z",
+  "generated_at": "2025-11-15T15:50:26.534Z",
   "courses": [
     {
       "course_code": "archive",
@@ -89,21 +89,23 @@
       "course_code": "spa_for_eng",
       "source_language": "ENG",
       "target_language": "SPA",
-      "total_seeds": 0,
-      "actual_seed_count": 0,
-      "lego_count": 0,
+      "total_seeds": 668,
+      "actual_seed_count": 668,
+      "lego_count": 2487,
       "basket_count": 2716,
       "introductions_count": 2949,
-      "format": "unknown",
+      "format": "8.1.1",
       "phase": "phase_4",
       "phases_completed": [
+        "1",
+        "3",
         "4"
       ],
       "has_baskets": true,
       "has_introductions": true,
       "files": {
-        "seed_pairs": false,
-        "lego_pairs": false,
+        "seed_pairs": true,
+        "lego_pairs": true,
         "baskets": true,
         "introductions": true
       }

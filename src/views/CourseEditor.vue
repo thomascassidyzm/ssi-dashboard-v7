@@ -64,7 +64,7 @@
             <div class="text-xs text-slate-500 mt-1">Phase 5 lesson groupings</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <div class="text-sm text-slate-400 mb-1">Introductions</div>
+            <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
             <div class="text-3xl font-bold text-emerald-400">{{ course.amino_acids?.introductions || 0 }}</div>
             <div class="text-xs text-slate-500 mt-1">Known-only priming</div>
           </div>
@@ -839,7 +839,7 @@ const tabs = [
   { id: 'translations', label: 'SEED_PAIRS' },
   { id: 'legos', label: 'LEGO_PAIRS' },
   { id: 'baskets', label: 'LEGO_BASKETS' },
-  { id: 'introductions', label: 'Introductions' }
+  { id: 'introductions', label: 'INTRODUCTIONS' }
 ]
 
 const filteredTranslations = computed(() => {
