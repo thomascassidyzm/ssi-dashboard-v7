@@ -280,6 +280,82 @@ app.post('/phase-complete', async (req, res) => {
 });
 
 /**
+ * POST /api/courses/generate
+ * Dashboard compatibility endpoint - triggers course generation
+ * Routes to appropriate phase based on phaseSelection parameter
+ */
+app.post('/api/courses/generate', async (req, res) => {
+  const {
+    target,
+    known,
+    startSeed,
+    endSeed,
+    phaseSelection = 'all',
+    executionMode,
+    strategy = 'balanced'
+  } = req.body;
+
+  // Generate course code
+  const courseCode = `${target.toLowerCase()}_for_${known.toLowerCase()}`;
+  const totalSeeds = endSeed - startSeed + 1;
+
+  console.log(`\n📋 Course generation request from dashboard:`);
+  console.log(`   Course: ${courseCode}`);
+  console.log(`   Seeds: ${startSeed}-${endSeed} (${totalSeeds} seeds)`);
+  console.log(`   Phase: ${phaseSelection}`);
+  console.log(`   Strategy: ${strategy}`);
+
+  try {
+    // Determine which phase to trigger
+    let phase;
+    if (phaseSelection === 'phase1') {
+      phase = 1;
+    } else if (phaseSelection === 'phase3') {
+      phase = 3;
+    } else if (phaseSelection === 'phase5') {
+      phase = 5;
+    } else if (phaseSelection === 'phase6') {
+      phase = 6;
+    } else if (phaseSelection === 'all') {
+      // Start from Phase 1
+      phase = 1;
+    } else {
+      throw new Error(`Unknown phase selection: ${phaseSelection}`);
+    }
+
+    // Delegate to phase server
+    const phaseServer = PHASE_SERVERS[phase];
+    if (!phaseServer) {
+      throw new Error(`Phase ${phase} server not available`);
+    }
+
+    console.log(`   → Delegating to Phase ${phase} server: ${phaseServer}`);
+
+    const response = await axios.post(`${phaseServer}/start`, {
+      courseCode,
+      totalSeeds,
+      strategy,
+      startSeed,
+      endSeed
+    });
+
+    res.json({
+      success: true,
+      courseCode,
+      phase,
+      message: `${phaseSelection === 'all' ? 'Full course generation' : `Phase ${phase}`} started for ${courseCode}`,
+      details: response.data
+    });
+  } catch (error) {
+    console.error(`Failed to start generation:`, error.message);
+    res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
  * GET /api/vfs/courses/:code/:file(*)
  * Serve VFS files for dashboard
  */
