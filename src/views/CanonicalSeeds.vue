@@ -166,6 +166,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { GITHUB_CONFIG } from '../config/github'
 
 const seeds = ref([])
 const loading = ref(true)
@@ -203,7 +204,11 @@ async function loadSeeds() {
     loading.value = true
     error.value = null
 
-    const response = await fetch('/vfs/seeds/canonical_seeds.json')
+    // Fetch canonical seeds from GitHub (single source of truth)
+    const url = `${GITHUB_CONFIG.rawBaseUrl}/public/vfs/seeds/canonical_seeds.json`
+    console.log('🔍 Fetching canonical seeds from GitHub:', url)
+
+    const response = await fetch(url)
     if (!response.ok) {
       throw new Error(`Failed to load seeds: ${response.statusText}`)
     }
@@ -212,7 +217,7 @@ async function loadSeeds() {
     seeds.value = data
     originalSeeds.value = JSON.parse(JSON.stringify(data)) // Deep copy
 
-    console.log(`✅ Loaded ${data.length} canonical seeds`)
+    console.log(`✅ Loaded ${data.length} canonical seeds from GitHub`)
   } catch (err) {
     error.value = `Error loading canonical seeds: ${err.message}`
     console.error(err)
