@@ -185,6 +185,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { apiClient } from '../services/api'
+import { GITHUB_CONFIG } from '../config/github'
 
 const props = defineProps({
   courseCode: {
@@ -358,35 +359,35 @@ const checkProgress = async () => {
     const baseCourseCode = segmentMatch ? segmentMatch[1] : props.courseCode
 
     try {
-      const seedPairsCheck = await fetch(`/vfs/courses/${baseCourseCode}/seed_pairs.json`, { method: 'HEAD' })
+      const seedPairsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'seed_pairs.json'), { method: 'HEAD' })
       phase1FileExists.value = seedPairsCheck.ok
     } catch (err) {
       phase1FileExists.value = false
     }
 
     try {
-      const legoPairsCheck = await fetch(`/vfs/courses/${baseCourseCode}/lego_pairs.json`, { method: 'HEAD' })
+      const legoPairsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'lego_pairs.json'), { method: 'HEAD' })
       phase3FileExists.value = legoPairsCheck.ok
     } catch (err) {
       phase3FileExists.value = false
     }
 
     try {
-      const basketsCheck = await fetch(`/vfs/courses/${baseCourseCode}/baskets/`, { method: 'HEAD' })
+      const basketsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'lego_baskets.json'), { method: 'HEAD' })
       phase5FileExists.value = basketsCheck.ok
     } catch (err) {
       phase5FileExists.value = false
     }
 
     try {
-      const introductionsCheck = await fetch(`/vfs/courses/${baseCourseCode}/introductions.json`, { method: 'HEAD' })
+      const introductionsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'introductions.json'), { method: 'HEAD' })
       phase6FileExists.value = introductionsCheck.ok
     } catch (err) {
       phase6FileExists.value = false
     }
 
     try {
-      const manifestCheck = await fetch(`/vfs/courses/${baseCourseCode}/course_manifest.json`, { method: 'HEAD' })
+      const manifestCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'course_manifest.json'), { method: 'HEAD' })
       phase7FileExists.value = manifestCheck.ok
     } catch (err) {
       phase7FileExists.value = false

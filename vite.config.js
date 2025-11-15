@@ -2,13 +2,37 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { execSync } from 'child_process'
 import path from 'path'
+import fs from 'fs-extra'
 
 // Get git commit hash at build time
 const gitCommit = execSync('git rev-parse --short HEAD').toString().trim()
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    // Custom plugin to exclude VFS course data from build
+    // Dashboard will fetch course data from GitHub instead
+    {
+      name: 'exclude-vfs-courses',
+      closeBundle() {
+        // After build, remove course data but keep manifest
+        const vfsPath = path.resolve(__dirname, 'dist/vfs/courses')
+        if (fs.existsSync(vfsPath)) {
+          const items = fs.readdirSync(vfsPath)
+          for (const item of items) {
+            const itemPath = path.join(vfsPath, item)
+            const stat = fs.statSync(itemPath)
+            if (stat.isDirectory()) {
+              // Remove course directories (spa_for_eng, cmn_for_eng, etc.)
+              fs.removeSync(itemPath)
+              console.log(`✓ Excluded from build: vfs/courses/${item}`)
+            }
+          }
+        }
+      }
+    }
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -30,5 +54,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true
-  }
+  },
+  publicDir: 'public'
 })

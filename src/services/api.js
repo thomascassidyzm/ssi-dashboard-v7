@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { getCachedCourse, setCachedCourse, clearCourseCache, isCacheValid, clearAllCache, getCacheStats, cleanupExpiredCache } from './courseCache.js'
+import { GITHUB_CONFIG } from '../config/github.js'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
 function getApiBaseUrl() {
@@ -14,6 +15,9 @@ function getApiBaseUrl() {
 }
 
 const API_BASE_URL = getApiBaseUrl()
+
+// GitHub raw content base URL for course data
+const GITHUB_VFS_BASE = GITHUB_CONFIG.coursesPath
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -86,7 +90,7 @@ export default {
 
       try {
         // Use pre-generated manifest (created at build time by generate-course-manifest.js)
-        const manifestRes = await fetch('/vfs/courses-manifest.json')
+        const manifestRes = await fetch(GITHUB_CONFIG.manifestUrl)
         if (manifestRes.ok) {
           const manifest = await manifestRes.json()
           console.log(`[API] Loaded ${manifest.courses.length} courses from manifest (generated ${manifest.generated_at})`)
@@ -225,15 +229,15 @@ export default {
       try {
         // Use the courseCode as-is for static file paths
         // (segment ranges have their own directories, not a base course)
-        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
+        const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+        const legoPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
 
         // Try to load optional files (may not exist for all courses)
         let legoBasketsData = null
         let introductionsData = null
 
         try {
-          const basketsRes = await fetch(`/vfs/courses/${courseCode}/lego_baskets.json`)
+          const basketsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json'))
           if (basketsRes.ok) {
             legoBasketsData = await basketsRes.json()
           }
@@ -242,7 +246,7 @@ export default {
         }
 
         try {
-          const introsRes = await fetch(`/vfs/courses/${courseCode}/introductions.json`)
+          const introsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'introductions.json'))
           if (introsRes.ok) {
             introductionsData = await introsRes.json()
           }
@@ -374,8 +378,8 @@ export default {
         console.log(`[API] Server unavailable, using static files for provenance ${courseCode}/${seedId}`)
 
         // Use the courseCode as-is for static file paths
-        const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
-        const legoPairsRes = await fetch(`/vfs/courses/${courseCode}/lego_pairs.json`)
+        const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+        const legoPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
 
         if (seedPairsRes.ok && legoPairsRes.ok) {
           const seedPairsData = await seedPairsRes.json()
@@ -459,7 +463,7 @@ export default {
         // Cache it to avoid re-fetching the 5MB file for every seed
         if (!this._basketsCache[courseCode]) {
           console.log(`[API] Fetching lego_baskets.json for ${courseCode} (not cached)`)
-          const basketsRes = await fetch(`/vfs/courses/${courseCode}/lego_baskets.json`)
+          const basketsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json'))
           if (basketsRes.ok) {
             this._basketsCache[courseCode] = await basketsRes.json()
           } else {
@@ -480,7 +484,7 @@ export default {
 
         if (Object.keys(seedBaskets).length > 0) {
           // Get seed_pair from seed_pairs.json
-          const seedPairsRes = await fetch(`/vfs/courses/${courseCode}/seed_pairs.json`)
+          const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
           let seedPair = null
           if (seedPairsRes.ok) {
             const seedPairsData = await seedPairsRes.json()

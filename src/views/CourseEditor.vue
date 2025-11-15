@@ -777,6 +777,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import api from '../services/api'
+import { GITHUB_CONFIG } from '../config/github'
 import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 
@@ -900,8 +901,8 @@ async function loadCourse() {
     try {
       // Add cache-busting timestamp to force fresh data from Vercel CDN
       const timestamp = Date.now()
-      const url = `/vfs/courses/${courseCode}/lego_baskets.json?_t=${timestamp}`
-      console.log('🔍 Fetching lego_baskets.json from static files (GitHub SSoT):', url)
+      const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json')}?_t=${timestamp}`
+      console.log('🔍 Fetching lego_baskets.json from GitHub:', url)
 
       const basketsResponse = await fetch(url)
 
@@ -922,8 +923,8 @@ async function loadCourse() {
     try {
       // Add cache-busting timestamp to force fresh data from Vercel CDN
       const timestamp = Date.now()
-      const url = `/vfs/courses/${courseCode}/introductions.json?_t=${timestamp}`
-      console.log('🔍 Fetching introductions.json from static files (GitHub SSoT):', url)
+      const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'introductions.json')}?_t=${timestamp}`
+      console.log('🔍 Fetching introductions.json from GitHub:', url)
 
       const introsResponse = await fetch(url)
 
@@ -945,8 +946,8 @@ async function loadCourse() {
     try {
       // Add cache-busting timestamp to force fresh data from Vercel CDN
       const timestamp = Date.now()
-      const url = `/vfs/courses/${courseCode}/lego_pairs.json?_t=${timestamp}`
-      console.log('🔍 Fetching from static files (GitHub SSoT):', url)
+      const url = `${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json')}?_t=${timestamp}`
+      console.log('🔍 Fetching from GitHub:', url)
 
       const legoPairsResponse = await fetch(url)
 
