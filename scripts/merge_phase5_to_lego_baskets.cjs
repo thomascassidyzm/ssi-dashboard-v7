@@ -13,7 +13,7 @@ const OUTPUT_PATH = path.join(__dirname, '../public/vfs/courses/spa_for_eng/lego
 console.log('📦 Merging phase5_outputs into lego_baskets.json...\n');
 
 const files = fs.readdirSync(PHASE5_DIR)
-  .filter(f => f.match(/^seed_s\d{4}\.json$/))
+  .filter(f => f.match(/^seed_s\d{4}\.json$/) || f.match(/^S\d{4}_basket\.json$/))
   .sort();
 
 const legoBaskets = {
