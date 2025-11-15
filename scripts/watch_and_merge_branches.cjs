@@ -248,6 +248,20 @@ function mergeSegments(tempDir, outputFile) {
   fs.writeFileSync(outputFile, JSON.stringify(merged, null, 2));
   console.log(`\n✅ Merged ${merged.segments.length} segments into ${outputFile}`);
 
+  // Strip metadata from merged file to reduce size
+  console.log('\n🧹 Stripping metadata from merged file...');
+  try {
+    const stripScript = path.join(__dirname, 'strip_phase5_metadata.cjs');
+    if (fs.existsSync(stripScript)) {
+      exec(`node "${stripScript}" --in-place "${outputFile}"`);
+      console.log('   ✅ Metadata stripped');
+    } else {
+      console.log('   ⚠️  Metadata stripping script not found, skipping...');
+    }
+  } catch (error) {
+    console.log(`   ⚠️  Failed to strip metadata: ${error.message}`);
+  }
+
   return merged;
 }
 

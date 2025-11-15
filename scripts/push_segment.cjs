@@ -42,15 +42,32 @@ if (!segmentFile.endsWith('.json')) {
   process.exit(1);
 }
 
-// Validate JSON is valid
+// Validate JSON is valid and strip metadata
+let data;
 try {
   const content = fs.readFileSync(segmentFile, 'utf-8');
-  JSON.parse(content);
+  data = JSON.parse(content);
   console.log(`✅ Valid JSON file: ${segmentFile}`);
 } catch (error) {
   console.error(`❌ Error: Invalid JSON in ${segmentFile}`);
   console.error(error.message);
   process.exit(1);
+}
+
+// Strip metadata to reduce file size before pushing
+console.log('\n🧹 Stripping metadata...');
+try {
+  const { execSync } = require('child_process');
+  const stripScript = path.join(__dirname, 'strip_phase5_metadata.cjs');
+
+  if (fs.existsSync(stripScript)) {
+    // Run the strip script in-place
+    execSync(`node "${stripScript}" --in-place "${segmentFile}"`, { stdio: 'inherit' });
+  } else {
+    console.log('   ⚠️  Metadata stripping script not found, skipping...');
+  }
+} catch (error) {
+  console.error('   ⚠️  Failed to strip metadata (continuing anyway):', error.message);
 }
 
 // Get current branch name
