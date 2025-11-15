@@ -34,6 +34,7 @@ node scripts/push_segment.cjs path/to/segment.json
 
 The script automatically:
 - Validates the JSON
+- **Strips metadata** (99.5% file size reduction for Phase 5 files!)
 - Commits to the current claude/* branch
 - Pushes to GitHub with retry logic
 - Handles network errors gracefully
@@ -279,6 +280,78 @@ Then modify `watch_and_merge_branches.cjs` to use your custom merger at line ~18
    - Pushes to main
    - Vercel deploys
    - Deletes claude/* branches
+
+## Metadata Stripping (Phase 5)
+
+Phase 5 files contain massive whitelist vocabulary data that helps agents during generation but is redundant in final GitHub files. The system automatically strips this metadata before committing.
+
+### What Gets Stripped
+
+**From each LEGO:**
+- `_metadata.whitelist_pairs` - ~3,000+ translation pairs (bulk of the data)
+- `_metadata.available_whitelist_size` - count of whitelist items
+- `current_seed_legos_available` - list of available LEGOs
+
+**From top level:**
+- `_instructions` - agent task instructions
+- `_stats` - generation statistics
+- `recent_seed_pairs` / `recent_context` - context data
+
+### What Stays
+
+**Essential data only:**
+- `_metadata.lego_id` - LEGO identifier
+- `_metadata.seed_context` - seed translation pair
+- All practice phrases and distributions
+- LEGO structure and type information
+
+### Impact
+
+```
+Before:  418.5 KB (with whitelist)
+After:     2.1 KB (stripped)
+Savings: 416.4 KB per file (99.5% reduction!)
+```
+
+**Benefits:**
+- Faster git operations (clone, pull, push)
+- Reduced GitHub repository size
+- Faster Vercel deploys
+- No loss of functionality - app only needs the essential data
+
+### Usage
+
+**Automatic** (recommended):
+```bash
+# push_segment.cjs strips automatically before commit
+node scripts/push_segment.cjs your-file.json
+```
+
+**Manual** (if needed):
+```bash
+# Strip single file in-place
+node scripts/strip_phase5_metadata.cjs --in-place file.json
+
+# Strip single file to new output
+node scripts/strip_phase5_metadata.cjs input.json output.json
+
+# Strip all files in directory
+node scripts/strip_phase5_metadata.cjs --directory phase5_outputs/
+```
+
+### Verification
+
+Check if metadata was stripped:
+```bash
+# Should NOT contain whitelist_pairs
+cat file.json | jq '.legos | to_entries | .[0].value._metadata | keys'
+
+# Expected output (stripped):
+# ["lego_id", "seed_context"]
+
+# Unstripped would show:
+# ["available_whitelist_size", "lego_id", "seed_context", "whitelist_pairs"]
+```
 
 ## Troubleshooting
 
