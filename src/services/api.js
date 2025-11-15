@@ -339,6 +339,15 @@ export default {
           const basketCount = legoBasketsData?.baskets ? Object.keys(legoBasketsData.baskets).length : 0
           const introductionsCount = introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0
 
+          console.log(`[API] Course ${courseCode} counts:`, {
+            translations: translations.length,
+            legos: legos.length,
+            baskets: basketCount,
+            introductions: introductionsCount,
+            hasBasketData: !!legoBasketsData,
+            hasIntroData: !!introductionsData
+          })
+
           const course = {
             course_code: courseCode,
             source_language: match ? match[2].toUpperCase() : 'UNK',

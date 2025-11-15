@@ -1,0 +1,531 @@
+{
+  "agent_id": "agent_07",
+  "seed_range": "S0061-S0070",
+  "extracted_at": "2025-11-13T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0061",
+      "seed_pair": [
+        "Could you say that again a little more slowly?",
+        "¿Podrías decir eso otra vez un poco más lentamente?"
+      ],
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "M",
+          "target": "podrías decir",
+          "known": "could you say",
+          "new": true,
+          "components": [
+            ["podrías", "could you"],
+            ["decir", "say/to say"]
+          ]
+        },
+        {
+          "id": "S0061L02",
+          "type": "M",
+          "target": "decir eso",
+          "known": "say that",
+          "new": true,
+          "components": [
+            ["decir", "say/to say"],
+            ["eso", "that"]
+          ]
+        },
+        {
+          "id": "S0061L03",
+          "type": "M",
+          "target": "otra vez",
+          "known": "again",
+          "new": true,
+          "components": [
+            ["otra", "another"],
+            ["vez", "time"]
+          ]
+        },
+        {
+          "id": "S0061L04",
+          "type": "M",
+          "target": "un poco más",
+          "known": "a little more",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"],
+            ["más", "more"]
+          ]
+        },
+        {
+          "id": "S0061L05",
+          "type": "M",
+          "target": "más lentamente",
+          "known": "more slowly",
+          "new": true,
+          "components": [
+            ["más", "more"],
+            ["lentamente", "slowly"]
+          ]
+        },
+        {
+          "id": "S0061L06",
+          "type": "M",
+          "target": "un poco más lentamente",
+          "known": "a little more slowly",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "little"],
+            ["más", "more"],
+            ["lentamente", "slowly"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": [
+        "I'm not sure if I can help you at the same time.",
+        "No estoy seguro si puedo ayudarte al mismo tiempo."
+      ],
+      "legos": [
+        {
+          "id": "S0062L01",
+          "type": "M",
+          "target": "no estoy seguro",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["estoy", "I am"],
+            ["seguro", "sure"]
+          ]
+        },
+        {
+          "id": "S0062L02",
+          "type": "M",
+          "target": "si puedo ayudarte",
+          "known": "if I can help you",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["puedo", "I can"],
+            ["ayudarte", "help you"]
+          ]
+        },
+        {
+          "id": "S0062L03",
+          "type": "M",
+          "target": "puedo ayudarte",
+          "known": "I can help you",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["ayudarte", "help you"]
+          ]
+        },
+        {
+          "id": "S0062L04",
+          "type": "A",
+          "target": "ayudarte",
+          "known": "help you",
+          "new": true
+        },
+        {
+          "id": "S0062L05",
+          "type": "M",
+          "target": "al mismo tiempo",
+          "known": "at the same time",
+          "new": true,
+          "components": [
+            ["al", "at the"],
+            ["mismo", "same"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": [
+        "Are you sure you don't mind helping me?",
+        "¿Estás seguro de que no te importa ayudarme?"
+      ],
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "M",
+          "target": "estás seguro",
+          "known": "are you sure",
+          "new": true,
+          "components": [
+            ["estás", "are you"],
+            ["seguro", "sure"]
+          ]
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "target": "estás seguro de que",
+          "known": "are you sure that",
+          "new": true,
+          "components": [
+            ["estás", "are you"],
+            ["seguro", "sure"],
+            ["de", "of"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0063L03",
+          "type": "M",
+          "target": "no te importa",
+          "known": "you don't mind",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["te", "you"],
+            ["importa", "mind/matter"]
+          ]
+        },
+        {
+          "id": "S0063L04",
+          "type": "M",
+          "target": "te importa ayudarme",
+          "known": "mind helping me",
+          "new": true,
+          "components": [
+            ["te", "you"],
+            ["importa", "mind/matter"],
+            ["ayudarme", "helping me"]
+          ]
+        },
+        {
+          "id": "S0063L05",
+          "type": "A",
+          "target": "ayudarme",
+          "known": "help me",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0064",
+      "seed_pair": [
+        "Learning Spanish isn't easy but it is fun.",
+        "Aprender español no es fácil pero es divertido."
+      ],
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "M",
+          "target": "aprender español",
+          "known": "learning Spanish",
+          "new": true,
+          "components": [
+            ["aprender", "learning/to learn"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "id": "S0064L02",
+          "type": "M",
+          "target": "no es fácil",
+          "known": "isn't easy",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"],
+            ["fácil", "easy"]
+          ]
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "target": "pero",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0064L04",
+          "type": "M",
+          "target": "es divertido",
+          "known": "it is fun",
+          "new": true,
+          "components": [
+            ["es", "is"],
+            ["divertido", "fun"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": [
+        "It's important to take time to test yourself.",
+        "Es importante tomar tiempo para evaluarte."
+      ],
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "M",
+          "target": "es importante",
+          "known": "it's important",
+          "new": true,
+          "components": [
+            ["es", "is"],
+            ["importante", "important"]
+          ]
+        },
+        {
+          "id": "S0065L02",
+          "type": "M",
+          "target": "tomar tiempo",
+          "known": "to take time",
+          "new": true,
+          "components": [
+            ["tomar", "to take"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0065L03",
+          "type": "M",
+          "target": "para evaluarte",
+          "known": "to test yourself",
+          "new": true,
+          "components": [
+            ["para", "to/for"],
+            ["evaluarte", "test yourself"]
+          ]
+        },
+        {
+          "id": "S0065L04",
+          "type": "A",
+          "target": "evaluarte",
+          "known": "test yourself",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": [
+        "It's not difficult to find the answer.",
+        "No es difícil encontrar la respuesta."
+      ],
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "M",
+          "target": "no es difícil",
+          "known": "it's not difficult",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["es", "is"],
+            ["difícil", "difficult"]
+          ]
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "target": "encontrar",
+          "known": "to find",
+          "new": true
+        },
+        {
+          "id": "S0066L03",
+          "type": "M",
+          "target": "la respuesta",
+          "known": "the answer",
+          "new": true,
+          "components": [
+            ["la", "the"],
+            ["respuesta", "answer"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0067",
+      "seed_pair": [
+        "Why do you want to stop?",
+        "¿Por qué quieres parar?"
+      ],
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "M",
+          "target": "por qué",
+          "known": "why",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["qué", "what"]
+          ]
+        },
+        {
+          "id": "S0067L02",
+          "type": "M",
+          "target": "quieres parar",
+          "known": "you want to stop",
+          "new": true,
+          "components": [
+            ["quieres", "you want"],
+            ["parar", "to stop"]
+          ]
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "target": "quieres",
+          "known": "you want",
+          "new": true
+        },
+        {
+          "id": "S0067L04",
+          "type": "A",
+          "target": "parar",
+          "known": "to stop",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": [
+        "What are you looking for?",
+        "¿Qué estás buscando?"
+      ],
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "target": "qué",
+          "known": "what",
+          "new": true
+        },
+        {
+          "id": "S0068L02",
+          "type": "M",
+          "target": "estás buscando",
+          "known": "are you looking for",
+          "new": true,
+          "components": [
+            ["estás", "are you"],
+            ["buscando", "looking for"]
+          ]
+        },
+        {
+          "id": "S0068L03",
+          "type": "A",
+          "target": "buscando",
+          "known": "looking for",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": [
+        "He didn't want to look after the young dog all afternoon.",
+        "No quería cuidar el perro joven toda la tarde."
+      ],
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "M",
+          "target": "no quería",
+          "known": "he didn't want",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quería", "wanted"]
+          ]
+        },
+        {
+          "id": "S0069L02",
+          "type": "A",
+          "target": "cuidar",
+          "known": "to look after",
+          "new": true
+        },
+        {
+          "id": "S0069L03",
+          "type": "M",
+          "target": "el perro joven",
+          "known": "the young dog",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["perro", "dog"],
+            ["joven", "young"]
+          ]
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "target": "toda la tarde",
+          "known": "all afternoon",
+          "new": true,
+          "components": [
+            ["toda", "all"],
+            ["la", "the"],
+            ["tarde", "afternoon"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0070",
+      "seed_pair": [
+        "She didn't want to tell me where it was.",
+        "Ella no quería decirme dónde estaba."
+      ],
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "M",
+          "target": "ella no quería",
+          "known": "she didn't want",
+          "new": true,
+          "components": [
+            ["ella", "she"],
+            ["no", "not"],
+            ["quería", "wanted"]
+          ]
+        },
+        {
+          "id": "S0070L02",
+          "type": "M",
+          "target": "no quería",
+          "known": "didn't want",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["quería", "wanted"]
+          ]
+        },
+        {
+          "id": "S0070L03",
+          "type": "A",
+          "target": "decirme",
+          "known": "to tell me",
+          "new": true
+        },
+        {
+          "id": "S0070L04",
+          "type": "M",
+          "target": "dónde estaba",
+          "known": "where it was",
+          "new": true,
+          "components": [
+            ["dónde", "where"],
+            ["estaba", "it was"]
+          ]
+        }
+      ]
+    }
+  ]
+}

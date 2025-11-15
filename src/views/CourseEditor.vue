@@ -60,12 +60,12 @@
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">LEGO_BASKETS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_baskets || 0 }}</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ basketsData?.baskets ? Object.keys(basketsData.baskets).length : 0 }}</div>
             <div class="text-xs text-slate-500 mt-1">Phase 5 lesson groupings</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.amino_acids?.introductions || 0 }}</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0 }}</div>
             <div class="text-xs text-slate-500 mt-1">Known-only priming</div>
           </div>
         </div>
@@ -1049,10 +1049,9 @@ async function generateBaskets() {
 }
 
 function formatCourseCode(code) {
-  const parts = code.split('_')
-  const target = parts[0]?.toUpperCase() || ''
-  const seeds = code.match(/(\d+)seeds/)?.[1] || ''
-  return `${target} Course${seeds ? ` (${seeds} seeds)` : ''}`
+  // Just return the course code as-is (e.g., "spa_for_eng")
+  // This is a builder's tool, so showing the actual code is clearest
+  return code
 }
 
 function formatStatus(status) {

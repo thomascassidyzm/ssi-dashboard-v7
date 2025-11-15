@@ -1,0 +1,415 @@
+{
+  "agent_id": "agent_06",
+  "seed_range": "S0651-S0660",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0651",
+      "seed_pair": [
+        "What do you think madam?",
+        "¿Qué piensa señora?"
+      ],
+      "legos": [
+        {
+          "id": "S0651L01",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0651L02",
+          "type": "M",
+          "target": "qué piensa",
+          "known": "what do you think",
+          "new": true,
+          "components": [
+            ["qué", "what"],
+            ["piensa", "do you think"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0652",
+      "seed_pair": [
+        "What do you need sir?",
+        "¿Qué necesita señor?"
+      ],
+      "legos": [
+        {
+          "id": "S0652L01",
+          "type": "A",
+          "target": "señor",
+          "known": "sir",
+          "new": true
+        },
+        {
+          "id": "S0652L02",
+          "type": "M",
+          "target": "qué necesita",
+          "known": "what do you need",
+          "new": true,
+          "components": [
+            ["qué", "what"],
+            ["necesita", "do you need"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0653",
+      "seed_pair": [
+        "Do you mind madam?",
+        "¿Le importa señora?"
+      ],
+      "legos": [
+        {
+          "id": "S0653L01",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0653L02",
+          "type": "M",
+          "target": "le importa",
+          "known": "do you mind",
+          "new": true,
+          "components": [
+            ["le", "you"],
+            ["importa", "mind"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0654",
+      "seed_pair": [
+        "I'm not sure if I can help you, sir.",
+        "No estoy seguro de si puedo ayudarte, señor."
+      ],
+      "legos": [
+        {
+          "id": "S0654L01",
+          "type": "A",
+          "target": "señor",
+          "known": "sir",
+          "new": true
+        },
+        {
+          "id": "S0654L02",
+          "type": "M",
+          "target": "no estoy seguro de",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [
+            ["no", "not"],
+            ["estoy", "I am"],
+            ["seguro", "sure"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0654L03",
+          "type": "M",
+          "target": "si puedo ayudarte",
+          "known": "if I can help you",
+          "new": true,
+          "components": [
+            ["si", "if"],
+            ["puedo", "I can"],
+            ["ayudarte", "help you"]
+          ]
+        },
+        {
+          "id": "S0654L04",
+          "type": "M",
+          "target": "puedo ayudarte",
+          "known": "I can help you",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["ayudarte", "help you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0655",
+      "seed_pair": [
+        "I think that you're doing very well, madam.",
+        "Creo que estás haciéndolo muy bien, señora."
+      ],
+      "legos": [
+        {
+          "id": "S0655L01",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0655L02",
+          "type": "M",
+          "target": "creo que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["creo", "I think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0655L03",
+          "type": "M",
+          "target": "estás haciéndolo muy bien",
+          "known": "you're doing very well",
+          "new": true,
+          "components": [
+            ["estás", "you are"],
+            ["haciéndolo", "doing it"],
+            ["muy", "very"],
+            ["bien", "well"]
+          ]
+        },
+        {
+          "id": "S0655L04",
+          "type": "M",
+          "target": "muy bien",
+          "known": "very well",
+          "new": true,
+          "components": [
+            ["muy", "very"],
+            ["bien", "well"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0656",
+      "seed_pair": [
+        "with you all",
+        "con todos ustedes"
+      ],
+      "legos": [
+        {
+          "id": "S0656L01",
+          "type": "M",
+          "target": "con todos ustedes",
+          "known": "with you all",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        },
+        {
+          "id": "S0656L02",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0657",
+      "seed_pair": [
+        "how do you all feel?",
+        "¿cómo se sienten todos ustedes?"
+      ],
+      "legos": [
+        {
+          "id": "S0657L01",
+          "type": "M",
+          "target": "cómo se sienten todos ustedes",
+          "known": "how do you all feel",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["se", "yourself"],
+            ["sienten", "feel"],
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        },
+        {
+          "id": "S0657L02",
+          "type": "M",
+          "target": "cómo se sienten",
+          "known": "how do you feel",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["se", "yourself"],
+            ["sienten", "feel"]
+          ]
+        },
+        {
+          "id": "S0657L03",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0658",
+      "seed_pair": [
+        "Do you all want?",
+        "¿Quieren todos ustedes?"
+      ],
+      "legos": [
+        {
+          "id": "S0658L01",
+          "type": "M",
+          "target": "quieren todos ustedes",
+          "known": "do you all want",
+          "new": true,
+          "components": [
+            ["quieren", "do you want"],
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        },
+        {
+          "id": "S0658L02",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0659",
+      "seed_pair": [
+        "Could you all say that",
+        "¿Podrían todos ustedes decir eso?"
+      ],
+      "legos": [
+        {
+          "id": "S0659L01",
+          "type": "M",
+          "target": "podrían todos ustedes decir",
+          "known": "could you all say",
+          "new": true,
+          "components": [
+            ["podrían", "could"],
+            ["todos", "all"],
+            ["ustedes", "you"],
+            ["decir", "say"]
+          ]
+        },
+        {
+          "id": "S0659L02",
+          "type": "M",
+          "target": "podrían todos ustedes",
+          "known": "could you all",
+          "new": true,
+          "components": [
+            ["podrían", "could"],
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        },
+        {
+          "id": "S0659L03",
+          "type": "M",
+          "target": "decir eso",
+          "known": "say that",
+          "new": true,
+          "components": [
+            ["decir", "say"],
+            ["eso", "that"]
+          ]
+        },
+        {
+          "id": "S0659L04",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0660",
+      "seed_pair": [
+        "I can help you all",
+        "Puedo ayudar a todos ustedes"
+      ],
+      "legos": [
+        {
+          "id": "S0660L01",
+          "type": "M",
+          "target": "puedo ayudar a todos ustedes",
+          "known": "I can help you all",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["ayudar", "help"],
+            ["a", "to"],
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        },
+        {
+          "id": "S0660L02",
+          "type": "M",
+          "target": "puedo ayudar",
+          "known": "I can help",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["ayudar", "help"]
+          ]
+        },
+        {
+          "id": "S0660L03",
+          "type": "M",
+          "target": "a todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [
+            ["a", "to"],
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        },
+        {
+          "id": "S0660L04",
+          "type": "M",
+          "target": "todos ustedes",
+          "known": "you all",
+          "new": true,
+          "components": [
+            ["todos", "all"],
+            ["ustedes", "you"]
+          ]
+        }
+      ]
+    }
+  ]
+}

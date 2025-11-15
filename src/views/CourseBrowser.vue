@@ -146,12 +146,9 @@ async function loadCourses() {
 }
 
 function formatCourseCode(code) {
-  // mkd_for_eng_668seeds -> Macedonian for English (668 seeds)
-  const parts = code.split('_')
-  const target = parts[0]?.toUpperCase() || ''
-  const seeds = code.match(/(\d+)seeds/)?.[1] || ''
-
-  return `${target} Course${seeds ? ` (${seeds} seeds)` : ''}`
+  // Just return the course code as-is (e.g., "spa_for_eng")
+  // This is a builder's tool, so showing the actual code is clearest
+  return code
 }
 
 function formatStatus(status) {

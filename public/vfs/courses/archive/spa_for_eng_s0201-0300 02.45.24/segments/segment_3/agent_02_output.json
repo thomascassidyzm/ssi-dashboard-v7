@@ -1,0 +1,585 @@
+{
+  "agent_id": "agent_02",
+  "seed_range": "S0211-S0220",
+  "extracted_at": "2025-11-13T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0211",
+      "seed_pair": [
+        "They told us that they didn't want to explain.",
+        "Nos dijeron que no querían explicar."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'they told us' → 'nos dijeron' needs context (indirect object). 'that' is particle, wrapped in 'nos dijeron que'. 'didn't want to explain' creates overlaps with 'wanted to explain' for Heuristic 2. BACKWARD SWEEP: Confirms all chunks. HEURISTIC 1: No standalone particles. HEURISTIC 2: 'querían' and 'explicar' appear in overlapping chunks for pattern practice.",
+      "legos": [
+        {
+          "id": "S0211L01",
+          "type": "M",
+          "target": "nos dijeron que",
+          "known": "they told us that",
+          "new": true,
+          "components": [
+            ["nos", "us"],
+            ["dijeron", "they told/told"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0211L02",
+          "type": "M",
+          "target": "no querían explicar",
+          "known": "didn't want to explain",
+          "new": true,
+          "components": [
+            ["no", "didn't/not"],
+            ["querían", "wanted/they wanted"],
+            ["explicar", "to explain/explain"]
+          ]
+        },
+        {
+          "id": "S0211L03",
+          "type": "M",
+          "target": "querían explicar",
+          "known": "wanted to explain",
+          "new": true,
+          "components": [
+            ["querían", "wanted/they wanted"],
+            ["explicar", "to explain/explain"]
+          ]
+        },
+        {
+          "id": "S0211L04",
+          "type": "A",
+          "target": "explicar",
+          "known": "to explain",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0212",
+      "seed_pair": [
+        "They wanted to ask for help.",
+        "Querían pedir ayuda."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'querían' = 'wanted' (conjugation clear). 'pedir ayuda' = 'ask for help' (idiomatic, 'for' absorbed into 'pedir'). Create overlaps: 'querían pedir' and 'pedir ayuda'. HEURISTIC 1: All clear mappings. HEURISTIC 2: Overlapping chunks allow recombination.",
+      "legos": [
+        {
+          "id": "S0212L01",
+          "type": "A",
+          "target": "querían",
+          "known": "they wanted",
+          "new": true
+        },
+        {
+          "id": "S0212L02",
+          "type": "M",
+          "target": "pedir ayuda",
+          "known": "to ask for help",
+          "new": true,
+          "components": [
+            ["pedir", "to ask/ask"],
+            ["ayuda", "help"]
+          ]
+        },
+        {
+          "id": "S0212L03",
+          "type": "M",
+          "target": "querían pedir",
+          "known": "wanted to ask",
+          "new": true,
+          "components": [
+            ["querían", "wanted/they wanted"],
+            ["pedir", "to ask/ask"]
+          ]
+        },
+        {
+          "id": "S0212L04",
+          "type": "A",
+          "target": "ayuda",
+          "known": "help",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0213",
+      "seed_pair": [
+        "We don't know what they're trying to achieve.",
+        "No sabemos qué están intentando lograr."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'no sabemos' clear. 'qué' is particle, extended to 'no sabemos qué'. 'están intentando' = progressive. 'intentando lograr' = trying + infinitive pattern. BACKWARD SWEEP: Confirms gerund + infinitive pattern. HEURISTIC 1: 'qué' wrapped. HEURISTIC 2: Multiple overlapping verb phrases.",
+      "legos": [
+        {
+          "id": "S0213L01",
+          "type": "M",
+          "target": "no sabemos",
+          "known": "we don't know",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["sabemos", "we know/know"]
+          ]
+        },
+        {
+          "id": "S0213L02",
+          "type": "M",
+          "target": "no sabemos qué",
+          "known": "we don't know what",
+          "new": true,
+          "components": [
+            ["no", "don't/not"],
+            ["sabemos", "we know/know"],
+            ["qué", "what"]
+          ]
+        },
+        {
+          "id": "S0213L03",
+          "type": "M",
+          "target": "están intentando",
+          "known": "they're trying",
+          "new": true,
+          "components": [
+            ["están", "they are/are"],
+            ["intentando", "trying"]
+          ]
+        },
+        {
+          "id": "S0213L04",
+          "type": "M",
+          "target": "intentando lograr",
+          "known": "trying to achieve",
+          "new": true,
+          "components": [
+            ["intentando", "trying"],
+            ["lograr", "to achieve/achieve"]
+          ]
+        },
+        {
+          "id": "S0213L05",
+          "type": "A",
+          "target": "lograr",
+          "known": "to achieve",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0214",
+      "seed_pair": [
+        "Did you have a good time at the weekend?",
+        "¿Pasaste un buen tiempo el fin de semana?"
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'pasaste' = past tense 'did you have'. 'un buen tiempo' = 'a good time' (adjective before noun in Spanish). 'el fin de semana' = 'the weekend' as unit. HEURISTIC 2: Create overlaps with 'buen tiempo' and full phrase.",
+      "legos": [
+        {
+          "id": "S0214L01",
+          "type": "A",
+          "target": "pasaste",
+          "known": "did you have",
+          "new": true
+        },
+        {
+          "id": "S0214L02",
+          "type": "M",
+          "target": "un buen tiempo",
+          "known": "a good time",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["buen", "good"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0214L03",
+          "type": "M",
+          "target": "buen tiempo",
+          "known": "good time",
+          "new": true,
+          "components": [
+            ["buen", "good"],
+            ["tiempo", "time"]
+          ]
+        },
+        {
+          "id": "S0214L04",
+          "type": "M",
+          "target": "el fin de semana",
+          "known": "the weekend",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["fin", "end"],
+            ["de", "of"],
+            ["semana", "week"]
+          ]
+        },
+        {
+          "id": "S0214L05",
+          "type": "M",
+          "target": "pasaste un buen tiempo",
+          "known": "you had a good time",
+          "new": true,
+          "components": [
+            ["pasaste", "you had/had"],
+            ["un", "a"],
+            ["buen", "good"],
+            ["tiempo", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0215",
+      "seed_pair": [
+        "I went out on Saturday night.",
+        "Salí el sábado por la noche."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'salí' = 'I went out' (reflexive verb). 'el sábado' includes article. 'por la noche' = 'at night' (time expression). BACKWARD SWEEP: Confirms 'el sábado por la noche' as complete time phrase. HEURISTIC 2: Create overlaps for time expressions.",
+      "legos": [
+        {
+          "id": "S0215L01",
+          "type": "A",
+          "target": "salí",
+          "known": "I went out",
+          "new": true
+        },
+        {
+          "id": "S0215L02",
+          "type": "M",
+          "target": "el sábado",
+          "known": "on Saturday",
+          "new": true,
+          "components": [
+            ["el", "on/the"],
+            ["sábado", "Saturday"]
+          ]
+        },
+        {
+          "id": "S0215L03",
+          "type": "M",
+          "target": "por la noche",
+          "known": "at night",
+          "new": true,
+          "components": [
+            ["por", "at/by"],
+            ["la", "the"],
+            ["noche", "night"]
+          ]
+        },
+        {
+          "id": "S0215L04",
+          "type": "M",
+          "target": "el sábado por la noche",
+          "known": "on Saturday night",
+          "new": true,
+          "components": [
+            ["el", "on/the"],
+            ["sábado", "Saturday"],
+            ["por", "at"],
+            ["la", "the"],
+            ["noche", "night"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0216",
+      "seed_pair": [
+        "I saw a few friends.",
+        "Vi a algunos amigos."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'vi a' includes personal 'a' (required before person objects). 'algunos amigos' = 'a few friends'. HEURISTIC 1: Personal 'a' must stay with verb. HEURISTIC 2: Create overlap with full phrase.",
+      "legos": [
+        {
+          "id": "S0216L01",
+          "type": "M",
+          "target": "vi a",
+          "known": "I saw",
+          "new": true,
+          "components": [
+            ["vi", "I saw/saw"],
+            ["a", "(personal a)"]
+          ]
+        },
+        {
+          "id": "S0216L02",
+          "type": "M",
+          "target": "algunos amigos",
+          "known": "a few friends",
+          "new": true,
+          "components": [
+            ["algunos", "a few/some"],
+            ["amigos", "friends"]
+          ]
+        },
+        {
+          "id": "S0216L03",
+          "type": "A",
+          "target": "amigos",
+          "known": "friends",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0217",
+      "seed_pair": [
+        "I had a glass or two of water.",
+        "Tuve un vaso o dos de agua."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'tuve' = 'I had'. 'un vaso' = 'a glass'. 'o dos' wraps standalone 'o'. 'de agua' = 'of water'. HEURISTIC 2: Create overlapping chunks 'un vaso o dos' for pattern practice.",
+      "legos": [
+        {
+          "id": "S0217L01",
+          "type": "A",
+          "target": "tuve",
+          "known": "I had",
+          "new": true
+        },
+        {
+          "id": "S0217L02",
+          "type": "M",
+          "target": "un vaso",
+          "known": "a glass",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["vaso", "glass"]
+          ]
+        },
+        {
+          "id": "S0217L03",
+          "type": "M",
+          "target": "o dos",
+          "known": "or two",
+          "new": true,
+          "components": [
+            ["o", "or"],
+            ["dos", "two"]
+          ]
+        },
+        {
+          "id": "S0217L04",
+          "type": "M",
+          "target": "un vaso o dos",
+          "known": "a glass or two",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["vaso", "glass"],
+            ["o", "or"],
+            ["dos", "two"]
+          ]
+        },
+        {
+          "id": "S0217L05",
+          "type": "M",
+          "target": "de agua",
+          "known": "of water",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["agua", "water"]
+          ]
+        },
+        {
+          "id": "S0217L06",
+          "type": "A",
+          "target": "agua",
+          "known": "water",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0218",
+      "seed_pair": [
+        "I didn't do much on Sunday.",
+        "No hice mucho el domingo."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'no hice' = 'I didn't do' (past negative). 'mucho' = 'much' (clear). 'el domingo' = 'on Sunday' (article required). HEURISTIC 2: Create 'no hice mucho' overlap for negative pattern.",
+      "legos": [
+        {
+          "id": "S0218L01",
+          "type": "M",
+          "target": "no hice",
+          "known": "I didn't do",
+          "new": true,
+          "components": [
+            ["no", "didn't/not"],
+            ["hice", "I did/do"]
+          ]
+        },
+        {
+          "id": "S0218L02",
+          "type": "A",
+          "target": "mucho",
+          "known": "much",
+          "new": true
+        },
+        {
+          "id": "S0218L03",
+          "type": "M",
+          "target": "el domingo",
+          "known": "on Sunday",
+          "new": true,
+          "components": [
+            ["el", "on/the"],
+            ["domingo", "Sunday"]
+          ]
+        },
+        {
+          "id": "S0218L04",
+          "type": "M",
+          "target": "no hice mucho",
+          "known": "I didn't do much",
+          "new": true,
+          "components": [
+            ["no", "didn't/not"],
+            ["hice", "I did/do"],
+            ["mucho", "much"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0219",
+      "seed_pair": [
+        "It was nice to relax for a while.",
+        "Fue agradable relajarse por un rato."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'fue' = 'it was/was'. 'agradable' = 'nice/pleasant'. 'fue agradable' as unit. 'relajarse' = reflexive 'to relax'. 'por un rato' = 'for a while' (time duration). HEURISTIC 2: Create overlaps with 'fue agradable' and infinitive construction.",
+      "legos": [
+        {
+          "id": "S0219L01",
+          "type": "A",
+          "target": "fue",
+          "known": "it was",
+          "new": true
+        },
+        {
+          "id": "S0219L02",
+          "type": "A",
+          "target": "agradable",
+          "known": "nice",
+          "new": true
+        },
+        {
+          "id": "S0219L03",
+          "type": "M",
+          "target": "fue agradable",
+          "known": "it was nice",
+          "new": true,
+          "components": [
+            ["fue", "it was/was"],
+            ["agradable", "nice/pleasant"]
+          ]
+        },
+        {
+          "id": "S0219L04",
+          "type": "A",
+          "target": "relajarse",
+          "known": "to relax",
+          "new": true
+        },
+        {
+          "id": "S0219L05",
+          "type": "M",
+          "target": "por un rato",
+          "known": "for a while",
+          "new": true,
+          "components": [
+            ["por", "for"],
+            ["un", "a"],
+            ["rato", "while/moment"]
+          ]
+        },
+        {
+          "id": "S0219L06",
+          "type": "M",
+          "target": "fue agradable relajarse",
+          "known": "it was nice to relax",
+          "new": true,
+          "components": [
+            ["fue", "it was/was"],
+            ["agradable", "nice/pleasant"],
+            ["relajarse", "to relax"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0220",
+      "seed_pair": [
+        "Did you watch a bit of television?",
+        "¿Viste un poco de televisión?"
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'viste' = 'did you watch/you saw'. 'un poco' = 'a bit/a little'. 'de' is particle, wrapped in 'un poco de'. 'de televisión' = 'of television'. HEURISTIC 1: 'de' never standalone. HEURISTIC 2: Overlapping 'un poco de' chunks.",
+      "legos": [
+        {
+          "id": "S0220L01",
+          "type": "A",
+          "target": "viste",
+          "known": "did you watch",
+          "new": true
+        },
+        {
+          "id": "S0220L02",
+          "type": "M",
+          "target": "un poco",
+          "known": "a bit",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "bit/little"]
+          ]
+        },
+        {
+          "id": "S0220L03",
+          "type": "M",
+          "target": "un poco de",
+          "known": "a bit of",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "bit/little"],
+            ["de", "of"]
+          ]
+        },
+        {
+          "id": "S0220L04",
+          "type": "M",
+          "target": "de televisión",
+          "known": "of television",
+          "new": true,
+          "components": [
+            ["de", "of"],
+            ["televisión", "television"]
+          ]
+        },
+        {
+          "id": "S0220L05",
+          "type": "M",
+          "target": "un poco de televisión",
+          "known": "a bit of television",
+          "new": true,
+          "components": [
+            ["un", "a"],
+            ["poco", "bit/little"],
+            ["de", "of"],
+            ["televisión", "television"]
+          ]
+        },
+        {
+          "id": "S0220L06",
+          "type": "A",
+          "target": "televisión",
+          "known": "television",
+          "new": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+{
+  "agent_id": "agent_05",
+  "seed_range": "S0641-S0650",
+  "extracted_at": "2025-11-13T02:48:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0641",
+      "seed_pair": [
+        "I think that it's the red one on that chair.",
+        "Pienso que es el rojo en esa silla."
+      ],
+      "legos": [
+        {
+          "id": "S0641L01",
+          "type": "M",
+          "target": "pienso que",
+          "known": "I think that",
+          "new": true,
+          "components": [
+            ["pienso", "I think"],
+            ["que", "that"]
+          ]
+        },
+        {
+          "id": "S0641L02",
+          "type": "M",
+          "target": "es el rojo",
+          "known": "it's the red one",
+          "new": true,
+          "components": [
+            ["es", "it's/is"],
+            ["el", "the"],
+            ["rojo", "red one"]
+          ]
+        },
+        {
+          "id": "S0641L03",
+          "type": "M",
+          "target": "el rojo",
+          "known": "the red one",
+          "new": true,
+          "components": [
+            ["el", "the"],
+            ["rojo", "red one"]
+          ]
+        },
+        {
+          "id": "S0641L04",
+          "type": "M",
+          "target": "en esa silla",
+          "known": "on that chair",
+          "new": true,
+          "components": [
+            ["en", "on"],
+            ["esa", "that"],
+            ["silla", "chair"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0642",
+      "seed_pair": [
+        "how do you feel madam?",
+        "¿Cómo se siente señora?"
+      ],
+      "legos": [
+        {
+          "id": "S0642L01",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0642L02",
+          "type": "M",
+          "target": "cómo se siente",
+          "known": "how do you feel",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["se", "yourself"],
+            ["siente", "do you feel/feel"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0643",
+      "seed_pair": [
+        "Do you want sir",
+        "¿Quiere usted señor?"
+      ],
+      "legos": [
+        {
+          "id": "S0643L01",
+          "type": "A",
+          "target": "señor",
+          "known": "sir",
+          "new": true
+        },
+        {
+          "id": "S0643L02",
+          "type": "M",
+          "target": "quiere usted",
+          "known": "do you want",
+          "new": true,
+          "components": [
+            ["quiere", "want/do you want"],
+            ["usted", "you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0644",
+      "seed_pair": [
+        "Could you say that sir?",
+        "¿Podría decir eso señor?"
+      ],
+      "legos": [
+        {
+          "id": "S0644L01",
+          "type": "A",
+          "target": "podría",
+          "known": "could you",
+          "new": true
+        },
+        {
+          "id": "S0644L02",
+          "type": "A",
+          "target": "eso",
+          "known": "that",
+          "new": true
+        },
+        {
+          "id": "S0644L03",
+          "type": "A",
+          "target": "señor",
+          "known": "sir",
+          "new": true
+        },
+        {
+          "id": "S0644L04",
+          "type": "M",
+          "target": "podría decir",
+          "known": "could you say",
+          "new": true,
+          "components": [
+            ["podría", "could you"],
+            ["decir", "say"]
+          ]
+        },
+        {
+          "id": "S0644L05",
+          "type": "M",
+          "target": "decir eso",
+          "known": "say that",
+          "new": true,
+          "components": [
+            ["decir", "say"],
+            ["eso", "that"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0645",
+      "seed_pair": [
+        "I can help you madam",
+        "Puedo ayudarle señora"
+      ],
+      "legos": [
+        {
+          "id": "S0645L01",
+          "type": "A",
+          "target": "puedo",
+          "known": "I can",
+          "new": true
+        },
+        {
+          "id": "S0645L02",
+          "type": "A",
+          "target": "ayudarle",
+          "known": "help you",
+          "new": true
+        },
+        {
+          "id": "S0645L03",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0645L04",
+          "type": "M",
+          "target": "puedo ayudarle",
+          "known": "I can help you",
+          "new": true,
+          "components": [
+            ["puedo", "I can"],
+            ["ayudarle", "help you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0646",
+      "seed_pair": [
+        "You're doing something sir.",
+        "Está haciendo algo señor."
+      ],
+      "legos": [
+        {
+          "id": "S0646L01",
+          "type": "A",
+          "target": "algo",
+          "known": "something",
+          "new": true
+        },
+        {
+          "id": "S0646L02",
+          "type": "A",
+          "target": "señor",
+          "known": "sir",
+          "new": true
+        },
+        {
+          "id": "S0646L03",
+          "type": "M",
+          "target": "está haciendo",
+          "known": "you're doing",
+          "new": true,
+          "components": [
+            ["está", "you're/are"],
+            ["haciendo", "doing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0647",
+      "seed_pair": [
+        "You speak it madam",
+        "Lo habla señora"
+      ],
+      "legos": [
+        {
+          "id": "S0647L01",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0647L02",
+          "type": "M",
+          "target": "lo habla",
+          "known": "you speak it",
+          "new": true,
+          "components": [
+            ["lo", "it"],
+            ["habla", "you speak/speak"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0648",
+      "seed_pair": [
+        "what you said madam",
+        "lo que dijo señora"
+      ],
+      "legos": [
+        {
+          "id": "S0648L01",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0648L02",
+          "type": "M",
+          "target": "lo que dijo",
+          "known": "what you said",
+          "new": true,
+          "components": [
+            ["lo", "that which"],
+            ["que", "that"],
+            ["dijo", "you said/said"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0649",
+      "seed_pair": [
+        "Are you ready sir?",
+        "¿Está preparado señor?"
+      ],
+      "legos": [
+        {
+          "id": "S0649L01",
+          "type": "A",
+          "target": "señor",
+          "known": "sir",
+          "new": true
+        },
+        {
+          "id": "S0649L02",
+          "type": "M",
+          "target": "está preparado",
+          "known": "are you ready",
+          "new": true,
+          "components": [
+            ["está", "are"],
+            ["preparado", "ready"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0650",
+      "seed_pair": [
+        "Do you want to go madam?",
+        "¿Quiere ir señora?"
+      ],
+      "legos": [
+        {
+          "id": "S0650L01",
+          "type": "A",
+          "target": "señora",
+          "known": "madam",
+          "new": true
+        },
+        {
+          "id": "S0650L02",
+          "type": "M",
+          "target": "quiere ir",
+          "known": "do you want to go",
+          "new": true,
+          "components": [
+            ["quiere", "do you want/want"],
+            ["ir", "to go"]
+          ]
+        }
+      ]
+    }
+  ]
+}
