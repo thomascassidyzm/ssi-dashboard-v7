@@ -55,7 +55,7 @@
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">LEGO_PAIRS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ course.lego_pairs || 0 }}</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ actualLegoCount }}</div>
             <div class="text-xs text-slate-500 mt-1">Phase 3 teaching units</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
@@ -790,6 +790,7 @@ const legos = ref([])
 const legoBreakdowns = ref([]) // Raw breakdown data for visualizer
 const baskets = ref([])
 const basketsData = ref(null) // LEGO_BASKETS data structure from baskets.json
+const legoPairsData = ref(null) // LEGO_PAIRS data structure from lego_pairs.json
 const expandedBaskets = ref({}) // Track which baskets are expanded
 const loading = ref(true)
 const error = ref(null)
@@ -841,6 +842,20 @@ const tabs = [
   { id: 'baskets', label: 'LEGO_BASKETS' },
   { id: 'introductions', label: 'INTRODUCTIONS' }
 ]
+
+// Count actual LEGOs from lego_pairs.json structure
+const actualLegoCount = computed(() => {
+  if (!legoPairsData.value?.seeds) return 0
+
+  // Count all LEGOs across all seeds
+  let count = 0
+  for (const seed of legoPairsData.value.seeds) {
+    if (seed.legos) {
+      count += seed.legos.length
+    }
+  }
+  return count
+})
 
 const filteredTranslations = computed(() => {
   if (!searchQuery.value) return translations.value
@@ -954,15 +969,16 @@ async function loadCourse() {
       console.log('🔍 Response status:', legoPairsResponse.status, legoPairsResponse.ok)
 
       if (legoPairsResponse.ok) {
-        const legoPairsData = await legoPairsResponse.json()
-        console.log('📦 Loaded lego_pairs.json - seeds count:', legoPairsData.seeds?.length)
+        const loadedLegoPairsData = await legoPairsResponse.json()
+        legoPairsData.value = loadedLegoPairsData
+        console.log('📦 Loaded lego_pairs.json - seeds count:', loadedLegoPairsData.seeds?.length)
 
         // Parse v2 format: { seeds: [{ seed_id, seed_pair, legos: [...] }] }
-        if (legoPairsData.seeds && Array.isArray(legoPairsData.seeds)) {
+        if (loadedLegoPairsData.seeds && Array.isArray(loadedLegoPairsData.seeds)) {
           console.log('🔍 Transforming seeds data...')
 
           // Transform to legoBreakdowns format for display
-          legoBreakdowns.value = legoPairsData.seeds.map(seed => ({
+          legoBreakdowns.value = loadedLegoPairsData.seeds.map(seed => ({
             seed_id: seed.seed_id,
             original_target: seed.seed_pair[0],
             original_known: seed.seed_pair[1],
@@ -978,7 +994,7 @@ async function loadCourse() {
           }))
 
           // Also extract flat list of all LEGOs for the count
-          legos.value = legoPairsData.seeds.flatMap(seed =>
+          legos.value = loadedLegoPairsData.seeds.flatMap(seed =>
             seed.legos.map(lego => ({
               id: lego.id,
               target: lego.target,
