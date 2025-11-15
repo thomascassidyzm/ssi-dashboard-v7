@@ -9,7 +9,7 @@ export const GITHUB_CONFIG = {
   // GitHub repository info
   owner: 'thomascassidyzm',
   repo: 'ssi-dashboard-v7',
-  branch: 'main',
+  branch: 'feature/layered-automation', // TODO: Change to 'main' after merge
 
   // Base URL for raw content
   get rawBaseUrl() {
