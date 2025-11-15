@@ -1,4 +1,6 @@
 # Exclude course data from Vercel uploads
 # Dashboard fetches this data from GitHub at runtime
-public/vfs/courses/
+#
+# Exclude all course directories but keep the manifest
+public/vfs/courses/*
 !public/vfs/courses-manifest.json
