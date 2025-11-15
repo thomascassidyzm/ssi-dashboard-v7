@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-manifest && vite build",
+    "build": "vite build",
+    "build:local": "npm run generate-manifest && vite build",
     "generate-manifest": "node generate-course-manifest.js",
     "preview": "vite preview",
     "server": "node automation_server.cjs",
