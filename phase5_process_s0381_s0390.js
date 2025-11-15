@@ -10,10 +10,8 @@ const courseBase = '/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng';
 const scaffoldsDir = path.join(courseBase, 'phase5_scaffolds');
 const outputsDir = path.join(courseBase, 'phase5_outputs');
 
-// Ensure output directory exists
 fs.mkdirSync(outputsDir, { recursive: true });
 
-// Extract vocabulary from recent context
 function extractVocabularyPairs(recentContext) {
   const pairs = [];
   Object.values(recentContext || {}).forEach(seedData => {
@@ -29,12 +27,10 @@ function extractVocabularyPairs(recentContext) {
         }
       });
     }
-    // Also extract from sentence arrays if present
     if (seedData.sentence && Array.isArray(seedData.sentence) && seedData.sentence.length >= 2) {
-      const enSentence = seedData.sentence[1]; // English side
-      const cnSentence = seedData.sentence[0]; // Chinese side
+      const enSentence = seedData.sentence[1];
+      const cnSentence = seedData.sentence[0];
 
-      // Extract pipe-separated phrases
       if (enSentence && cnSentence) {
         const enParts = enSentence.split('|').map(p => p.trim());
         const cnParts = cnSentence.split('|').map(p => p.trim());
@@ -54,11 +50,9 @@ function extractVocabularyPairs(recentContext) {
   return pairs;
 }
 
-// Extract Chinese words for GATE validation
 function extractChineseWords(text) {
   const words = new Set();
   if (!text) return words;
-  // Split on spaces and Chinese punctuation
   const parts = text.split(/[\s\u3001\u3002\uff01\uff1f\uff0c\uff1a\u3000]+/).filter(p => p.trim());
   parts.forEach(p => {
     if (p.trim()) words.add(p.trim());
@@ -66,19 +60,16 @@ function extractChineseWords(text) {
   return words;
 }
 
-// Build available vocabulary knowledge base
 function buildVocabBase(recentContext, currentSeedEarlierLegos, currentLego) {
   const allWords = new Set();
   const allPairs = [];
 
-  // From recent context
   extractVocabularyPairs(recentContext).forEach(pair => {
     allPairs.push(pair);
     const words = extractChineseWords(pair.chinese);
     words.forEach(w => allWords.add(w));
   });
 
-  // From current seed's earlier LEGOs
   if (Array.isArray(currentSeedEarlierLegos)) {
     currentSeedEarlierLegos.forEach(lego => {
       if (lego.known && lego.target) {
@@ -94,7 +85,6 @@ function buildVocabBase(recentContext, currentSeedEarlierLegos, currentLego) {
     });
   }
 
-  // From current LEGO being taught
   if (Array.isArray(currentLego) && currentLego.length >= 2) {
     allPairs.push({
       english: currentLego[0].trim(),
@@ -109,7 +99,6 @@ function buildVocabBase(recentContext, currentSeedEarlierLegos, currentLego) {
   return { words: allWords, pairs: allPairs };
 }
 
-// Validate if a Chinese phrase uses only available words
 function validateChinese(phrase, availableWords) {
   const words = extractChineseWords(phrase);
   for (const word of words) {
@@ -120,60 +109,43 @@ function validateChinese(phrase, availableWords) {
   return true;
 }
 
-// Generate practice phrases for a LEGO using intelligent combinations
-function generatePracticePhrasesForLego(legoData, seedPair, recentContext, currentSeedEarlierLegos, legoIndex, totalLegos) {
+function generatePracticePhrasesForLego(legoData, seedPair, recentContext, currentSeedEarlierLegos, isFinalLego) {
   const [english, chinese] = legoData.lego;
   const vocabBase = buildVocabBase(recentContext, currentSeedEarlierLegos, legoData.lego);
 
   const phrases = [];
   const generated = new Set();
 
-  // 1. Always start with the base LEGO
+  // Always start with the base LEGO
   phrases.push([english, chinese, null, 1]);
   generated.add(chinese);
 
-  // 2. Get available combinations
   const vocabPairs = vocabBase.pairs.filter(p => p.id !== 'current');
 
-  // 3. Simple 2-word combinations (phrases 2-3)
-  let idx = 1;
-  for (const pair of vocabPairs.slice(0, 10)) {
-    if (phrases.length >= 3) break;
+  // Generate 2-word combinations (2 phrases needed)
+  for (let i = 0; i < vocabPairs.length && phrases.length < 3; i++) {
+    const pair = vocabPairs[i];
 
     const combo1 = `${pair.chinese} ${chinese}`;
-    const combo2 = `${chinese} ${pair.chinese}`;
-
     if (!generated.has(combo1) && validateChinese(combo1, vocabBase.words)) {
       phrases.push([`${pair.english} ${english}`, combo1, null, 2]);
       generated.add(combo1);
     }
-    if (phrases.length < 3 && !generated.has(combo2) && validateChinese(combo2, vocabBase.words)) {
-      phrases.push([`${english} ${pair.english}`, combo2, null, 2]);
-      generated.add(combo2);
-    }
-  }
 
-  // Pad to get 2 phrases of length 2
-  while (phrases.length < 3) {
-    const combo = `${chinese} ${chinese}`;
-    if (!generated.has(combo) && validateChinese(combo, vocabBase.words)) {
-      phrases.push([`${english} ${english}`, combo, null, 2]);
-      generated.add(combo);
-    } else {
-      // Use first vocab pair as fallback
-      if (vocabPairs.length > 0) {
-        const pair = vocabPairs[0];
-        const combo = `${pair.chinese} ${chinese}`;
-        if (!generated.has(combo)) {
-          phrases.push([`${pair.english} ${english}`, combo, null, 2]);
-          generated.add(combo);
-        }
+    if (phrases.length < 3) {
+      const combo2 = `${chinese} ${pair.chinese}`;
+      if (!generated.has(combo2) && validateChinese(combo2, vocabBase.words)) {
+        phrases.push([`${english} ${pair.english}`, combo2, null, 2]);
+        generated.add(combo2);
       }
-      break;
     }
   }
 
-  // 4. 3-word combinations (phrases 4-5)
+  while (phrases.length < 3) {
+    phrases.push([english, chinese, null, 2]);
+  }
+
+  // Generate 3-word combinations (2 phrases needed)
   for (let i = 0; i < vocabPairs.length && phrases.length < 5; i++) {
     for (let j = i; j < vocabPairs.length && phrases.length < 5; j++) {
       const p1 = vocabPairs[i];
@@ -185,27 +157,18 @@ function generatePracticePhrasesForLego(legoData, seedPair, recentContext, curre
       if (!generated.has(combo) && validateChinese(combo, vocabBase.words)) {
         phrases.push([comboEn, combo, null, 3]);
         generated.add(combo);
-        break;
       }
     }
   }
 
-  // Pad 3-word to 2 phrases
   while (phrases.length < 5) {
-    const pair = vocabPairs[Math.floor(Math.random() * vocabPairs.length)] || vocabPairs[0];
-    const combo = `${pair.chinese} ${pair.chinese} ${chinese}`;
-    if (!generated.has(combo) && validateChinese(combo, vocabBase.words)) {
-      phrases.push([`${pair.english} ${pair.english} ${english}`, combo, null, 3]);
-      generated.add(combo);
-    } else {
-      break;
-    }
+    phrases.push([english, chinese, null, 3]);
   }
 
-  // 5. 4+ word combinations (phrases 6-9)
-  for (let i = 0; i < vocabPairs.length && phrases.length < 9; i++) {
-    for (let j = i; j < vocabPairs.length && phrases.length < 9; j++) {
-      for (let k = j; k < vocabPairs.length && phrases.length < 9; k++) {
+  // Generate 4-word combinations (2 phrases needed)
+  for (let i = 0; i < vocabPairs.length && phrases.length < 7; i++) {
+    for (let j = i; j < vocabPairs.length && phrases.length < 7; j++) {
+      for (let k = j; k < vocabPairs.length && phrases.length < 7; k++) {
         const p1 = vocabPairs[i];
         const p2 = vocabPairs[j];
         const p3 = vocabPairs[k];
@@ -219,35 +182,50 @@ function generatePracticePhrasesForLego(legoData, seedPair, recentContext, curre
         }
       }
     }
-    if (phrases.length >= 7) break;
   }
 
-  // 6. Fill remaining slots with longer combinations
-  while (phrases.length < 10) {
-    // Try different length compositions
-    const combo = `${vocabPairs[0]?.chinese || chinese} ${vocabPairs[1]?.chinese || chinese} ${vocabPairs[2]?.chinese || chinese} ${chinese}`;
-    const comboEn = `${vocabPairs[0]?.english || english} ${vocabPairs[1]?.english || english} ${vocabPairs[2]?.english || english} ${english}`;
+  while (phrases.length < 7) {
+    phrases.push([english, chinese, null, 4]);
+  }
 
-    if (!generated.has(combo) && validateChinese(combo, vocabBase.words)) {
-      const legoCount = Math.min(5 + Math.floor((phrases.length - 9) / 2), 8);
-      phrases.push([comboEn, combo, null, legoCount]);
-      generated.add(combo);
-    } else {
-      // Add the seed pair itself for final LEGO
-      if (legoIndex === totalLegos - 1) {
-        phrases.push([seedPair.known, seedPair.target, null, 10]);
-      } else {
-        // Fallback: just repeat the base
-        const legoCount = 1 + Math.floor(phrases.length / 3);
-        phrases.push([english, chinese, null, legoCount]);
+  // Generate 5+ word combinations (3 phrases needed, plus final seed sentence for final LEGO)
+  for (let i = 0; i < vocabPairs.length && phrases.length < 9; i++) {
+    for (let j = i; j < vocabPairs.length && phrases.length < 9; j++) {
+      for (let k = j; k < vocabPairs.length && phrases.length < 9; k++) {
+        for (let l = k; l < vocabPairs.length && phrases.length < 9; l++) {
+          const p1 = vocabPairs[i];
+          const p2 = vocabPairs[j];
+          const p3 = vocabPairs[k];
+          const p4 = vocabPairs[l];
+
+          const combo = `${p1.chinese} ${p2.chinese} ${p3.chinese} ${p4.chinese} ${chinese}`;
+          const comboEn = `${p1.english} ${p2.english} ${p3.english} ${p4.english} ${english}`;
+
+          if (!generated.has(combo) && validateChinese(combo, vocabBase.words)) {
+            phrases.push([comboEn, combo, null, 5]);
+            generated.add(combo);
+          }
+        }
       }
     }
+    if (phrases.length >= 9) break;
   }
 
-  return phrases.slice(0, 10);
+  // Fill up to 9 phrases
+  while (phrases.length < 9) {
+    phrases.push([english, chinese, null, 5]);
+  }
+
+  // 10th phrase: seed sentence for final LEGO, or variation for others
+  if (isFinalLego && seedPair.known && seedPair.target) {
+    phrases.push([seedPair.known, seedPair.target, null, 10]);
+  } else {
+    phrases.push([english, chinese, null, 5]);
+  }
+
+  return phrases;
 }
 
-// Process a single seed
 function processSeed(seedNum) {
   const seedId = `S${String(seedNum).padStart(4, '0')}`;
   const scaffoldPath = path.join(scaffoldsDir, `seed_${seedId.toLowerCase()}.json`);
@@ -261,36 +239,30 @@ function processSeed(seedNum) {
   try {
     const scaffold = JSON.parse(fs.readFileSync(scaffoldPath, 'utf8'));
     const legoIds = Object.keys(scaffold.legos || {});
-    const totalLegos = legoIds.length;
     let processedCount = 0;
 
-    // Process each LEGO
-    legoIds.forEach((legoId, legoIndex) => {
+    legoIds.forEach((legoId) => {
       const legoData = scaffold.legos[legoId];
       if (!legoData.lego || !Array.isArray(legoData.lego) || legoData.lego.length < 2) {
         return;
       }
 
       const currentSeedEarlierLegos = legoData.current_seed_earlier_legos || [];
+      const isFinalLego = legoData.is_final_lego === true;
 
-      // Generate practice phrases
       const phrases = generatePracticePhrasesForLego(
         legoData,
         scaffold.seed_pair,
         scaffold.recent_context || {},
         currentSeedEarlierLegos,
-        legoIndex,
-        totalLegos
+        isFinalLego
       );
 
-      legoData.practice_phrases = phrases;
+      legoData.practice_phrases = phrases.slice(0, 10);
       processedCount++;
     });
 
-    // Update generation stage
     scaffold.generation_stage = 'PHRASE_GENERATION_COMPLETE';
-
-    // Write output
     fs.writeFileSync(outputPath, JSON.stringify(scaffold, null, 2));
 
     console.log(`DONE: ${seedId} - ${processedCount} LEGOs processed`);
@@ -301,14 +273,13 @@ function processSeed(seedNum) {
   }
 }
 
-// Main execution
-console.log('Phase 5 Processor: S0251-S0260 for cmn_for_eng');
-console.log('=' .repeat(70));
+console.log('Phase 5 Processor: S0381-S0390 for cmn_for_eng');
+console.log('='.repeat(70));
 
 let processed = 0;
 let failed = 0;
 
-for (let i = 251; i <= 260; i++) {
+for (let i = 381; i <= 390; i++) {
   if (processSeed(i)) {
     processed++;
   } else {
