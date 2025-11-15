@@ -46,17 +46,96 @@ const activeJobs = new Map();
 const watchers = new Map();
 
 /**
+ * Calculate parallelization strategy
+ *
+ * Strategies:
+ * - conservative: 7 windows × 10 agents × 10 seeds = Low RAM, slower
+ * - balanced: 10 windows × 10 agents × 7 seeds = Good balance (DEFAULT)
+ * - fast: 14 windows × 10 agents × 5 seeds = Faster, more RAM
+ * - custom: User-specified values
+ */
+function calculateParallelization(strategy, totalSeeds, custom = {}) {
+  let config;
+
+  switch (strategy) {
+    case 'conservative':
+      config = {
+        browserWindows: 7,
+        agentsPerWindow: 10,
+        seedsPerAgent: 10
+      };
+      break;
+
+    case 'balanced':
+      config = {
+        browserWindows: 10,
+        agentsPerWindow: 10,
+        seedsPerAgent: 7
+      };
+      break;
+
+    case 'fast':
+      config = {
+        browserWindows: 14,
+        agentsPerWindow: 10,
+        seedsPerAgent: 5
+      };
+      break;
+
+    case 'custom':
+      if (!custom.browserWindows || !custom.agentsPerWindow || !custom.seedsPerAgent) {
+        throw new Error('Custom strategy requires browserWindows, agentsPerWindow, and seedsPerAgent');
+      }
+      config = {
+        browserWindows: custom.browserWindows,
+        agentsPerWindow: custom.agentsPerWindow,
+        seedsPerAgent: custom.seedsPerAgent
+      };
+      break;
+
+    default:
+      throw new Error(`Unknown strategy: ${strategy}`);
+  }
+
+  // Calculate totals
+  config.totalAgents = config.browserWindows * config.agentsPerWindow;
+  config.capacity = config.totalAgents * config.seedsPerAgent;
+
+  // Warn if capacity doesn't match seeds
+  if (config.capacity < totalSeeds) {
+    console.warn(`⚠️  Warning: Capacity (${config.capacity}) < Total Seeds (${totalSeeds})`);
+    console.warn(`   Some seeds will not be processed!`);
+  }
+
+  return config;
+}
+
+/**
  * POST /start
  * Start Phase 5 basket generation for a course
  *
  * Body: {
  *   courseCode: string,
  *   totalSeeds: number,
- *   agentsPerBatch?: number (default: 50)
+ *
+ *   // Parallelization strategy (choose one):
+ *   strategy?: 'balanced' | 'fast' | 'conservative' | 'custom'
+ *
+ *   // Custom parallelization (if strategy='custom'):
+ *   browserWindows?: number,      // How many browser windows to open
+ *   agentsPerWindow?: number,     // How many Claude Code agents per window (using Task tool)
+ *   seedsPerAgent?: number        // How many seeds each agent processes
  * }
  */
 app.post('/start', async (req, res) => {
-  const { courseCode, totalSeeds, agentsPerBatch = 50 } = req.body;
+  const {
+    courseCode,
+    totalSeeds,
+    strategy = 'balanced',
+    browserWindows,
+    agentsPerWindow,
+    seedsPerAgent
+  } = req.body;
 
   if (!courseCode || !totalSeeds) {
     return res.status(400).json({ error: 'courseCode and totalSeeds required' });
@@ -67,18 +146,29 @@ app.post('/start', async (req, res) => {
     return res.status(409).json({ error: `Phase 5 already running for ${courseCode}` });
   }
 
+  // Calculate parallelization strategy
+  const config = calculateParallelization(strategy, totalSeeds, {
+    browserWindows,
+    agentsPerWindow,
+    seedsPerAgent
+  });
+
   console.log(`\n🚀 Starting Phase 5 for ${courseCode}`);
+  console.log(`   Strategy: ${strategy}`);
   console.log(`   Total seeds: ${totalSeeds}`);
-  console.log(`   Agents: ${agentsPerBatch}`);
+  console.log(`   Browser windows: ${config.browserWindows}`);
+  console.log(`   Agents per window: ${config.agentsPerWindow}`);
+  console.log(`   Seeds per agent: ${config.seedsPerAgent}`);
+  console.log(`   Total agents: ${config.totalAgents}`);
 
   // Initialize job state
   const job = {
     courseCode,
     totalSeeds,
-    agentsPerBatch,
+    config,
     status: 'spawning_agents',
     startedAt: new Date().toISOString(),
-    agentsSpawned: 0,
+    windowsSpawned: 0,
     branchesDetected: 0,
     merged: false,
     error: null
@@ -88,10 +178,10 @@ app.post('/start', async (req, res) => {
 
   try {
     // Start branch watcher
-    await startBranchWatcher(courseCode, agentsPerBatch);
+    await startBranchWatcher(courseCode, config.browserWindows);
 
-    // Spawn parallel Claude Code browser sessions
-    await spawnBrowserAgents(courseCode, totalSeeds, agentsPerBatch);
+    // Spawn parallel browser windows (each will spawn sub-agents)
+    await spawnBrowserWindows(courseCode, totalSeeds, config);
 
     res.json({
       success: true,
@@ -99,7 +189,8 @@ app.post('/start', async (req, res) => {
       job: {
         courseCode,
         totalSeeds,
-        agentsPerBatch,
+        strategy,
+        config,
         status: 'running'
       }
     });
@@ -276,39 +367,56 @@ async function startBranchWatcher(courseCode, expectedAgents) {
 }
 
 /**
- * Spawn parallel Claude Code browser sessions
+ * Spawn parallel browser windows (each spawns multiple Task agents)
  */
-async function spawnBrowserAgents(courseCode, totalSeeds, agentCount) {
-  const seedsPerAgent = Math.ceil(totalSeeds / agentCount);
+async function spawnBrowserWindows(courseCode, totalSeeds, config) {
+  const { browserWindows, agentsPerWindow, seedsPerAgent } = config;
 
-  console.log(`\n🌐 Spawning ${agentCount} browser agents...`);
-  console.log(`   Seeds per agent: ${seedsPerAgent}`);
+  console.log(`\n🌐 Spawning ${browserWindows} browser windows...`);
+  console.log(`   Each window will spawn ${agentsPerWindow} Task agents`);
+  console.log(`   Each agent processes ${seedsPerAgent} seeds`);
 
   const job = activeJobs.get(courseCode);
+  let currentSeed = 1;
 
-  for (let i = 0; i < agentCount; i++) {
-    const startSeed = i * seedsPerAgent + 1;
-    const endSeed = Math.min((i + 1) * seedsPerAgent, totalSeeds);
-    const segmentId = `segment-${String(i + 1).padStart(3, '0')}`;
+  for (let windowNum = 1; windowNum <= browserWindows; windowNum++) {
+    console.log(`\n  Window ${windowNum}/${browserWindows}:`);
 
-    console.log(`  Agent ${i + 1}: Seeds ${startSeed}-${endSeed} → ${segmentId}`);
+    // Calculate seed range for this window
+    const seedsInWindow = agentsPerWindow * seedsPerAgent;
+    const windowStartSeed = currentSeed;
+    const windowEndSeed = Math.min(currentSeed + seedsInWindow - 1, totalSeeds);
 
-    // Spawn browser session via osascript
-    const agentPrompt = generatePhase5AgentPrompt(courseCode, startSeed, endSeed, segmentId, i + 1);
+    console.log(`    Seed range: ${windowStartSeed}-${windowEndSeed}`);
+    console.log(`    Will spawn ${agentsPerWindow} Task agents`);
+
+    // Generate orchestrator prompt for this window
+    const windowPrompt = generateWindowOrchestratorPrompt(
+      courseCode,
+      windowNum,
+      windowStartSeed,
+      windowEndSeed,
+      agentsPerWindow,
+      seedsPerAgent
+    );
 
     try {
-      await spawnClaudeCodeSession(agentPrompt, `phase5-${courseCode}-${segmentId}`);
-      if (job) job.agentsSpawned++;
+      await spawnClaudeCodeSession(windowPrompt, `phase5-window-${windowNum}`);
+      if (job) job.windowsSpawned++;
 
-      // Stagger spawns to avoid overwhelming the system
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Stagger window spawns
+      await new Promise(resolve => setTimeout(resolve, 3000));
     } catch (error) {
-      console.error(`  ❌ Failed to spawn agent ${i + 1}:`, error.message);
+      console.error(`    ❌ Failed to spawn window ${windowNum}:`, error.message);
     }
+
+    currentSeed = windowEndSeed + 1;
+    if (currentSeed > totalSeeds) break;
   }
 
-  console.log(`\n✅ Spawned ${agentCount} browser agents`);
-  console.log(`   Waiting for them to push branches...`);
+  console.log(`\n✅ Spawned ${browserWindows} browser windows`);
+  console.log(`   Total agents across all windows: ${config.totalAgents}`);
+  console.log(`   Waiting for branches...`);
 
   if (job) {
     job.status = 'waiting_for_branches';
@@ -316,46 +424,67 @@ async function spawnBrowserAgents(courseCode, totalSeeds, agentCount) {
 }
 
 /**
- * Generate Phase 5 agent prompt
+ * Generate Window Orchestrator Prompt
+ *
+ * This prompt spawns multiple Task agents in parallel within one browser window
  */
-function generatePhase5AgentPrompt(courseCode, startSeed, endSeed, segmentId, agentNum) {
+function generateWindowOrchestratorPrompt(courseCode, windowNum, startSeed, endSeed, agentCount, seedsPerAgent) {
+  const windowId = `w${String(windowNum).padStart(2, '0')}`;
   const seedRange = `S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`;
 
-  return `# Phase 5 Agent ${agentNum}: Generate Practice Baskets for ${courseCode}
+  return `# Phase 5 Window Orchestrator ${windowNum}: Spawn ${agentCount} Parallel Agents
 
 ## Your Assignment
-Seeds: ${seedRange} (${endSeed - startSeed + 1} seeds)
-Segment ID: ${segmentId}
-Branch: claude/baskets-${courseCode}-${segmentId}
+You are Window ${windowNum}. Your job is to spawn ${agentCount} parallel Task agents.
+
+Seed range for this window: ${seedRange} (${endSeed - startSeed + 1} seeds)
+Each agent processes ${seedsPerAgent} seeds.
 
 ## Instructions
 
-1. **Read Phase 5 Intelligence**: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+**Read Phase 5 Intelligence first:** https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
 
-2. **Load course data**:
-   - LEGOs: /vfs/courses/${courseCode}/lego_pairs.json
-   - Seeds: /vfs/courses/${courseCode}/seed_pairs.json
+**Then spawn ${agentCount} Task agents in parallel:**
 
-3. **Generate baskets** for seeds ${seedRange}
+Use a single message with ${agentCount} Task tool calls to run them in parallel.
 
-4. **Write output**:
-   \`\`\`bash
-   # Write to staging/
-   node -e "fs.writeFileSync('staging/${segmentId}.json', JSON.stringify(yourData, null, 2))"
-   \`\`\`
+For each agent (agent 1 to ${agentCount}):
+- Calculate its seed range (${seedsPerAgent} seeds per agent)
+- Agent 1: seeds ${startSeed}-${startSeed + seedsPerAgent - 1}
+- Agent 2: seeds ${startSeed + seedsPerAgent}-${startSeed + (2 * seedsPerAgent) - 1}
+- ... and so on
 
-5. **Push to branch**:
-   \`\`\`bash
-   # This script auto-strips metadata and pushes
-   node scripts/push_segment.cjs staging/${segmentId}.json "Phase 5: ${seedRange}"
-   \`\`\`
+**Agent prompt template:**
 
-6. **You're done!** The automation server will auto-merge when all ${agentCount} agents finish.
+\`\`\`
+Generate Phase 5 practice baskets for ${courseCode}.
+
+Seed range: S####-S#### (your ${seedsPerAgent} seeds)
+Segment ID: ${windowId}-agent-##
+
+Steps:
+1. Load LEGOs from /vfs/courses/${courseCode}/lego_pairs.json
+2. Load seeds from /vfs/courses/${courseCode}/seed_pairs.json
+3. Generate baskets for your seed range
+4. Write to staging/${windowId}-agent-##.json
+5. Push: node scripts/push_segment.cjs staging/${windowId}-agent-##.json "Phase 5: S####-S####"
+
+Branch name: claude/baskets-${courseCode}-${windowId}-agent-##
+\`\`\`
+
+## Example
+
+\`\`\`
+I'll spawn ${agentCount} agents in parallel to process seeds ${seedRange}.
+
+[Makes ${agentCount} Task tool calls simultaneously]
+\`\`\`
 
 ## Important
-- Use the push_segment.cjs script (it strips metadata automatically)
-- Don't merge manually - the watcher does it
-- Branch name must be: claude/baskets-${courseCode}-${segmentId}
+- Spawn all ${agentCount} agents in a **single message** (parallel execution)
+- Each agent gets its own segment ID: ${windowId}-agent-01, ${windowId}-agent-02, etc.
+- Each agent pushes to its own branch: claude/baskets-${courseCode}-${windowId}-agent-##
+- The automation server watches for all branches and auto-merges when complete
 `;
 }
 
