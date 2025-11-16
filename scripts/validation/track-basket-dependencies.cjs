@@ -45,7 +45,12 @@ if (!fs.existsSync(reextractionManifestPath)) {
   reextractionManifestPath = path.join(coursePath, 'lego_pairs_reextraction_manifest.json');
 }
 
-const basketsPath = path.join(coursePath, 'phase_5', 'baskets.json');
+// Check for baskets in standard location (lego_baskets.json in course root)
+let basketsPath = path.join(coursePath, 'lego_baskets.json');
+if (!fs.existsSync(basketsPath)) {
+  // Try alternate location
+  basketsPath = path.join(coursePath, 'phase_5', 'baskets.json');
+}
 
 // Validate inputs
 if (!fs.existsSync(reextractionManifestPath)) {
@@ -55,7 +60,7 @@ if (!fs.existsSync(reextractionManifestPath)) {
 }
 
 if (!fs.existsSync(basketsPath)) {
-  console.log('⚠️  Warning: baskets.json not found. Phase 5 not yet run.');
+  console.log('⚠️  Warning: lego_baskets.json not found. Phase 5 not yet run.');
   console.log('   Cascade impact analysis will be limited to LEGO-level only.\n');
 
   // Generate minimal manifest

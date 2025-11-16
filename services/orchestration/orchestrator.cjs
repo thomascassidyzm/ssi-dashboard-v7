@@ -143,6 +143,222 @@ app.get('/api/courses/:courseCode', async (req, res) => {
 // =======================================
 
 /**
+ * Run basket gap analysis for a course
+ * @param {string} courseCode - Course identifier
+ * @returns {object} - Analysis results
+ */
+async function runBasketGapAnalysis(courseCode) {
+  console.log(`   Running basket gap analysis...`);
+
+  try {
+    // Fetch lego_pairs.json from local (current/updated registry)
+    const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      throw new Error('lego_pairs.json not found');
+    }
+
+    const legoPairsData = await fs.readJson(legoPairsPath);
+
+    // Extract all LEGO_IDs from current lego_pairs.json
+    const allLegoIds = new Set();
+    if (legoPairsData.seeds && Array.isArray(legoPairsData.seeds)) {
+      legoPairsData.seeds.forEach(seed => {
+        if (seed.legos && Array.isArray(seed.legos)) {
+          seed.legos.forEach(lego => {
+            if (lego.id) {
+              allLegoIds.add(lego.id);
+            }
+          });
+        }
+      });
+    }
+
+    // Load existing baskets from local file (GitHub fetch would be in endpoint)
+    let existingBaskets = new Set();
+    const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+
+    if (await fs.pathExists(basketsPath)) {
+      const basketsData = await fs.readJson(basketsPath);
+      if (basketsData.baskets && typeof basketsData.baskets === 'object') {
+        existingBaskets = new Set(Object.keys(basketsData.baskets));
+      }
+    }
+
+    // Load collision report (if exists) to identify deprecated LEGOs
+    let deprecatedLegoIds = new Set();
+    const collisionReportPath = path.join(VFS_ROOT, courseCode, 'lego_pairs_fd_report.json');
+
+    if (await fs.pathExists(collisionReportPath)) {
+      const collisionReport = await fs.readJson(collisionReportPath);
+
+      if (collisionReport.status === 'FAIL' && collisionReport.violations) {
+        collisionReport.violations.forEach(violation => {
+          violation.mappings.forEach((mapping, idx) => {
+            if (idx > 0) {
+              mapping.legos.forEach(lego => {
+                deprecatedLegoIds.add(lego.lego_id);
+              });
+            }
+          });
+        });
+      }
+    }
+
+    // Analysis
+    const missingBaskets = [];
+    const basketsToDelete = [];
+    const basketsToKeep = [];
+
+    allLegoIds.forEach(legoId => {
+      if (!existingBaskets.has(legoId)) {
+        missingBaskets.push(legoId);
+      }
+    });
+
+    existingBaskets.forEach(legoId => {
+      if (deprecatedLegoIds.has(legoId)) {
+        basketsToDelete.push(legoId);
+      } else if (allLegoIds.has(legoId)) {
+        basketsToKeep.push(legoId);
+      } else {
+        basketsToDelete.push(legoId);
+      }
+    });
+
+    // Save report
+    const report = {
+      course_code: courseCode,
+      timestamp: new Date().toISOString(),
+      total_legos: allLegoIds.size,
+      existing_baskets: existingBaskets.size,
+      analysis: {
+        baskets_to_keep: basketsToKeep.length,
+        baskets_to_delete: basketsToDelete.length,
+        baskets_missing: missingBaskets.length
+      },
+      baskets_to_keep: basketsToKeep.sort(),
+      baskets_to_delete: basketsToDelete.sort(),
+      baskets_missing: missingBaskets.sort(),
+      deprecated_legos: Array.from(deprecatedLegoIds).sort()
+    };
+
+    const reportPath = path.join(VFS_ROOT, courseCode, 'basket_gaps_report.json');
+    await fs.writeJson(reportPath, report, { spaces: 2 });
+
+    return {
+      success: true,
+      basketsToKeep: basketsToKeep.length,
+      basketsToDelete: basketsToDelete.length,
+      basketsMissing: missingBaskets.length,
+      reportPath
+    };
+  } catch (error) {
+    throw new Error(`Basket gap analysis failed: ${error.message}`);
+  }
+}
+
+/**
+ * Generate consolidated re-extraction task list
+ * @param {string} courseCode - Course identifier
+ * @returns {object} - Task list summary
+ */
+async function generateReextractionTaskList(courseCode) {
+  console.log(`   Generating re-extraction task list...`);
+
+  try {
+    // Load FD report
+    const fdReportPath = path.join(VFS_ROOT, courseCode, 'lego_pairs_fd_report.json');
+    const gapReportPath = path.join(VFS_ROOT, courseCode, 'basket_gaps_report.json');
+
+    if (!await fs.pathExists(fdReportPath)) {
+      throw new Error('FD report not found');
+    }
+
+    const fdReport = await fs.readJson(fdReportPath);
+    let gapReport = null;
+
+    if (await fs.pathExists(gapReportPath)) {
+      gapReport = await fs.readJson(gapReportPath);
+    }
+
+    // Extract affected seeds from FD report
+    const affectedSeeds = new Set();
+    if (fdReport.reextraction_manifest && fdReport.reextraction_manifest.affected_seeds) {
+      fdReport.reextraction_manifest.affected_seeds.forEach(seedId => {
+        affectedSeeds.add(seedId);
+      });
+    }
+
+    // Create consolidated task list
+    const taskList = {
+      course_code: courseCode,
+      timestamp: new Date().toISOString(),
+      workflow_status: 'REEXTRACTION_REQUIRED',
+      phase_3_reextraction: {
+        affected_seeds: Array.from(affectedSeeds).sort(),
+        seed_count: affectedSeeds.size,
+        reextraction_manifest: fdReport.reextraction_manifest
+      },
+      phase_5_basket_cleanup: gapReport ? {
+        baskets_to_delete: gapReport.baskets_to_delete,
+        baskets_to_generate: gapReport.baskets_missing,
+        baskets_to_keep: gapReport.baskets_to_keep
+      } : null,
+      action_items: [
+        {
+          step: 1,
+          action: 'Re-run Phase 3 LEGO extraction',
+          description: `Re-extract ${affectedSeeds.size} seeds with chunking-up instructions`,
+          seeds: Array.from(affectedSeeds).sort(),
+          automated: false,
+          status: 'pending'
+        },
+        {
+          step: 2,
+          action: 'Verify LUT check passes',
+          description: 'Run POST /api/courses/:courseCode/phase/3/validate',
+          automated: true,
+          status: 'pending'
+        },
+        {
+          step: 3,
+          action: 'Clean up deprecated baskets',
+          description: gapReport
+            ? `Delete ${gapReport.baskets_to_delete.length} deprecated baskets`
+            : 'No basket cleanup needed',
+          automated: true,
+          status: 'pending',
+          endpoint: 'POST /api/courses/:courseCode/baskets/cleanup'
+        },
+        {
+          step: 4,
+          action: 'Generate new baskets',
+          description: gapReport
+            ? `Generate ${gapReport.baskets_missing.length} new baskets for Phase 5`
+            : 'No new baskets needed',
+          automated: false,
+          status: 'pending'
+        }
+      ]
+    };
+
+    const taskListPath = path.join(VFS_ROOT, courseCode, 'reextraction_task_list.json');
+    await fs.writeJson(taskListPath, taskList, { spaces: 2 });
+
+    return {
+      success: true,
+      affectedSeeds: affectedSeeds.size,
+      basketsToDelete: gapReport ? gapReport.baskets_to_delete.length : 0,
+      basketsToGenerate: gapReport ? gapReport.baskets_missing.length : 0,
+      taskListPath
+    };
+  } catch (error) {
+    throw new Error(`Task list generation failed: ${error.message}`);
+  }
+}
+
+/**
  * Run phase-specific validation after completion
  * @param {string} courseCode - Course identifier
  * @param {number} phase - Phase number that just completed
@@ -187,7 +403,7 @@ async function runPhaseValidation(courseCode, phase) {
         return false;
       }
 
-      // Validator 1: LEGO-level FD check (learner uncertainty test)
+      // Validator 1: LEGO-level FD check (learner uncertainty test / LUT check)
       const fdValidatorPath = path.join(__dirname, '../../scripts/validation/check-lego-fd-violations.cjs');
 
       try {
@@ -199,6 +415,33 @@ async function runPhaseValidation(courseCode, phase) {
       } catch (error) {
         console.log(`   ❌ LEGO FD validation FAILED - learner uncertainty detected`);
         console.log(`   📄 Review report: ${legoPairsFile.replace('.json', '_fd_report.json')}`);
+
+        // Automatically trigger basket gap analysis workflow
+        console.log(`\n   🔄 Triggering automated basket gap analysis workflow...`);
+
+        try {
+          // Run basket gap analysis
+          const gapAnalysisResult = await runBasketGapAnalysis(courseCode);
+
+          if (gapAnalysisResult.success) {
+            console.log(`\n   📊 Basket Gap Analysis Results:`);
+            console.log(`      Baskets to keep: ${gapAnalysisResult.basketsToKeep}`);
+            console.log(`      Baskets to delete: ${gapAnalysisResult.basketsToDelete}`);
+            console.log(`      Baskets missing: ${gapAnalysisResult.basketsMissing}`);
+            console.log(`      Report: ${gapAnalysisResult.reportPath}`);
+
+            // Create consolidated re-extraction task list
+            const taskList = await generateReextractionTaskList(courseCode);
+            console.log(`\n   📋 Re-extraction Task List:`);
+            console.log(`      ${taskList.affectedSeeds} seeds need re-extraction`);
+            console.log(`      ${taskList.basketsToDelete} baskets need cleanup`);
+            console.log(`      ${taskList.basketsToGenerate} new baskets needed`);
+            console.log(`      Task list saved: ${taskList.taskListPath}`);
+          }
+        } catch (workflowError) {
+          console.log(`   ⚠️  Automated workflow error (non-fatal): ${workflowError.message}`);
+        }
+
         return false;
       }
 
@@ -840,6 +1083,447 @@ app.get('/api/courses/:courseCode/validate', async (req, res) => {
     }
   } catch (error) {
     console.error('Validation error:', error);
+    res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/phase/3/validate
+ * Run LUT check on Phase 3 LEGO extraction
+ * Returns collision report and re-extraction manifest if violations found
+ */
+app.post('/api/courses/:courseCode/phase/3/validate', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`\n🔍 Running LUT check for ${courseCode}...`);
+
+  try {
+    const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(404).json({
+        error: 'lego_pairs.json not found - run Phase 3 first',
+        courseCode
+      });
+    }
+
+    // Run LUT collision checker
+    const validatorScript = path.join(__dirname, '../../scripts/validation/check-lego-fd-violations.cjs');
+
+    try {
+      execSync(`node "${validatorScript}" "${legoPairsPath}"`, {
+        cwd: VFS_ROOT,
+        stdio: 'inherit'
+      });
+
+      // No violations found
+      console.log(`   ✅ LUT check PASSED - no collisions detected`);
+
+      res.json({
+        courseCode,
+        status: 'pass',
+        collisions: 0,
+        message: 'No LUT violations detected',
+        reextractionNeeded: false
+      });
+    } catch (error) {
+      // Violations found - check for reports
+      const reportPath = legoPairsPath.replace('.json', '_fd_report.json');
+      const manifestPath = legoPairsPath.replace('.json', '_reextraction_manifest.json');
+
+      if (!await fs.pathExists(reportPath)) {
+        throw new Error('Validation failed but no report generated');
+      }
+
+      const report = await fs.readJson(reportPath);
+      let manifest = null;
+
+      if (await fs.pathExists(manifestPath)) {
+        manifest = await fs.readJson(manifestPath);
+      }
+
+      console.log(`   ❌ LUT check FAILED - ${report.violation_count} collisions found`);
+      console.log(`   📋 Re-extraction needed for ${manifest?.affected_seeds?.length || 0} seeds`);
+
+      res.json({
+        courseCode,
+        status: 'fail',
+        collisions: report.violation_count || report.violations?.length || 0,
+        message: `Found ${report.violation_count || report.violations?.length || 0} LUT violations`,
+        reextractionNeeded: true,
+        report,
+        manifest
+      });
+    }
+  } catch (error) {
+    console.error('   ❌ LUT check error:', error.message);
+    res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/baskets/gaps
+ * Analyze basket gaps after LEGO re-extraction
+ * Fetches data from GitHub main branch, not local files
+ */
+app.get('/api/courses/:courseCode/baskets/gaps', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`\n📊 Analyzing basket gaps for ${courseCode}...`);
+
+  try {
+    // Fetch lego_pairs.json from local (current/updated registry)
+    const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(404).json({
+        error: 'lego_pairs.json not found - run Phase 3 first',
+        courseCode
+      });
+    }
+
+    const legoPairsData = await fs.readJson(legoPairsPath);
+
+    // Extract all LEGO_IDs from current lego_pairs.json
+    const allLegoIds = new Set();
+    if (legoPairsData.seeds && Array.isArray(legoPairsData.seeds)) {
+      legoPairsData.seeds.forEach(seed => {
+        if (seed.legos && Array.isArray(seed.legos)) {
+          seed.legos.forEach(lego => {
+            if (lego.id) {
+              allLegoIds.add(lego.id);
+            }
+          });
+        }
+      });
+    }
+
+    console.log(`   Total LEGOs in current registry: ${allLegoIds.size}`);
+
+    // Fetch lego_baskets.json from GitHub main (existing baskets)
+    let existingBaskets = new Set();
+    let basketsData = null;
+
+    // Try to fetch from GitHub using gh CLI
+    const githubPath = `public/vfs/courses/${courseCode}/lego_baskets.json`;
+    console.log(`   Fetching baskets from GitHub main...`);
+
+    try {
+      const ghOutput = execSync(
+        `gh api repos/:owner/:repo/contents/${githubPath} --jq '.content' | base64 -d`,
+        { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] }
+      );
+
+      basketsData = JSON.parse(ghOutput);
+
+      if (basketsData.baskets && typeof basketsData.baskets === 'object') {
+        existingBaskets = new Set(Object.keys(basketsData.baskets));
+      }
+
+      console.log(`   ✅ Fetched ${existingBaskets.size} baskets from GitHub`);
+    } catch (ghError) {
+      // If gh CLI fails, try using node-fetch with GitHub API
+      console.log(`   ⚠️  gh CLI failed, trying GitHub API...`);
+
+      try {
+        // Try to infer repo from git remote
+        let repo = null;
+        try {
+          const remote = execSync('git config --get remote.origin.url', {
+            encoding: 'utf8',
+            cwd: __dirname
+          }).trim();
+
+          const match = remote.match(/github\.com[:/](.+?)(?:\.git)?$/);
+          if (match) {
+            repo = match[1];
+          }
+        } catch (e) {
+          // Ignore
+        }
+
+        if (!repo) {
+          throw new Error('Could not determine GitHub repository');
+        }
+
+        const fetch = require('node-fetch');
+        const apiUrl = `https://api.github.com/repos/${repo}/contents/${githubPath}?ref=main`;
+
+        const response = await fetch(apiUrl, {
+          headers: {
+            'Accept': 'application/vnd.github.v3+json',
+            'User-Agent': 'SSi-Orchestrator'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`GitHub API returned ${response.status}`);
+        }
+
+        const data = await response.json();
+        const content = Buffer.from(data.content, 'base64').toString('utf8');
+        basketsData = JSON.parse(content);
+
+        if (basketsData.baskets && typeof basketsData.baskets === 'object') {
+          existingBaskets = new Set(Object.keys(basketsData.baskets));
+        }
+
+        console.log(`   ✅ Fetched ${existingBaskets.size} baskets from GitHub API`);
+      } catch (apiError) {
+        // Fall back to local file if GitHub fetch fails
+        console.log(`   ⚠️  GitHub fetch failed, using local baskets file...`);
+
+        const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+        if (await fs.pathExists(basketsPath)) {
+          basketsData = await fs.readJson(basketsPath);
+
+          if (basketsData.baskets && typeof basketsData.baskets === 'object') {
+            existingBaskets = new Set(Object.keys(basketsData.baskets));
+          }
+
+          console.log(`   📁 Using local baskets: ${existingBaskets.size}`);
+        } else {
+          console.log(`   ℹ️  No existing baskets found - all LEGOs need baskets`);
+        }
+      }
+    }
+
+    // Load collision report (if exists) to identify deprecated LEGOs
+    let deprecatedLegoIds = new Set();
+    const collisionReportPath = path.join(VFS_ROOT, courseCode, 'lego_pairs_fd_report.json');
+
+    if (await fs.pathExists(collisionReportPath)) {
+      const collisionReport = await fs.readJson(collisionReportPath);
+
+      if (collisionReport.status === 'FAIL' && collisionReport.violations) {
+        // Extract all LEGO_IDs from collisions (except first instance - the "debut")
+        collisionReport.violations.forEach(violation => {
+          violation.mappings.forEach((mapping, idx) => {
+            if (idx > 0) {
+              // Skip first mapping (debut), mark rest as deprecated
+              mapping.legos.forEach(lego => {
+                deprecatedLegoIds.add(lego.lego_id);
+              });
+            }
+          });
+        });
+      }
+
+      console.log(`   Deprecated LEGOs (from collisions): ${deprecatedLegoIds.size}`);
+    }
+
+    // Analysis
+    const missingBaskets = [];
+    const basketsToDelete = [];
+    const basketsToKeep = [];
+
+    // 1. Find LEGOs that need baskets (missing)
+    allLegoIds.forEach(legoId => {
+      if (!existingBaskets.has(legoId)) {
+        missingBaskets.push(legoId);
+      }
+    });
+
+    // 2. Find baskets that reference deprecated LEGOs (need deletion)
+    // 3. Find baskets for current LEGOs (keep)
+    existingBaskets.forEach(legoId => {
+      if (deprecatedLegoIds.has(legoId)) {
+        basketsToDelete.push(legoId);
+      } else if (allLegoIds.has(legoId)) {
+        basketsToKeep.push(legoId);
+      } else {
+        // Basket exists but LEGO doesn't - orphaned basket
+        basketsToDelete.push(legoId);
+      }
+    });
+
+    // Sort for readability
+    missingBaskets.sort();
+    basketsToDelete.sort();
+    basketsToKeep.sort();
+
+    // Calculate stats
+    const totalLegoCount = allLegoIds.size;
+    const coveragePercentage = totalLegoCount > 0
+      ? Math.round((basketsToKeep.length / totalLegoCount) * 100)
+      : 0;
+
+    console.log(`   ✅ Analysis complete:`);
+    console.log(`      Baskets to keep: ${basketsToKeep.length} (${coveragePercentage}% coverage)`);
+    console.log(`      Baskets to delete: ${basketsToDelete.length}`);
+    console.log(`      Baskets missing: ${missingBaskets.length}`);
+
+    // Generate report
+    const report = {
+      course_code: courseCode,
+      timestamp: new Date().toISOString(),
+      total_legos: totalLegoCount,
+      existing_baskets: existingBaskets.size,
+      coverage_percentage: coveragePercentage,
+      analysis: {
+        baskets_to_keep: basketsToKeep.length,
+        baskets_to_delete: basketsToDelete.length,
+        baskets_missing: missingBaskets.length
+      },
+      baskets_to_keep: basketsToKeep,
+      baskets_to_delete: basketsToDelete,
+      baskets_missing: missingBaskets,
+      deprecated_legos: Array.from(deprecatedLegoIds).sort(),
+      next_steps: [
+        `1. Delete ${basketsToDelete.length} deprecated/orphaned baskets`,
+        `2. Generate ${missingBaskets.length} new baskets`,
+        `3. Verify ${basketsToKeep.length} existing baskets remain valid`
+      ]
+    };
+
+    // Save report to local file
+    const reportPath = path.join(VFS_ROOT, courseCode, 'basket_gaps_report.json');
+    await fs.writeJson(reportPath, report, { spaces: 2 });
+
+    console.log(`   📄 Report saved: ${reportPath}`);
+
+    res.json(report);
+  } catch (error) {
+    console.error('   ❌ Basket gap analysis error:', error.message);
+    res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/baskets/cleanup
+ * Clean up baskets after gap analysis
+ * Backs up deleted baskets and removes them from lego_baskets.json
+ */
+app.post('/api/courses/:courseCode/baskets/cleanup', async (req, res) => {
+  const { courseCode } = req.params;
+  const { basketIdsToDelete } = req.body;
+
+  console.log(`\n🗑️  Cleaning up baskets for ${courseCode}...`);
+
+  if (!basketIdsToDelete || !Array.isArray(basketIdsToDelete)) {
+    return res.status(400).json({
+      error: 'basketIdsToDelete array required in request body'
+    });
+  }
+
+  if (basketIdsToDelete.length === 0) {
+    return res.json({
+      courseCode,
+      message: 'No baskets to delete',
+      deleted: 0
+    });
+  }
+
+  try {
+    const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+
+    if (!await fs.pathExists(basketsPath)) {
+      return res.status(404).json({
+        error: 'lego_baskets.json not found',
+        courseCode
+      });
+    }
+
+    // Load current baskets
+    const basketsData = await fs.readJson(basketsPath);
+
+    if (!basketsData.baskets || typeof basketsData.baskets !== 'object') {
+      return res.status(400).json({
+        error: 'Invalid lego_baskets.json structure',
+        courseCode
+      });
+    }
+
+    // Backup deleted baskets
+    const deletedBaskets = {};
+    const notFound = [];
+    let deletedCount = 0;
+
+    basketIdsToDelete.forEach(basketId => {
+      if (basketsData.baskets[basketId]) {
+        deletedBaskets[basketId] = basketsData.baskets[basketId];
+        delete basketsData.baskets[basketId];
+        deletedCount++;
+      } else {
+        notFound.push(basketId);
+      }
+    });
+
+    console.log(`   Deleted ${deletedCount} baskets`);
+    if (notFound.length > 0) {
+      console.log(`   ⚠️  ${notFound.length} basket IDs not found`);
+    }
+
+    // Save backup
+    const backupPath = path.join(VFS_ROOT, courseCode, 'deleted_baskets_backup.json');
+    let existingBackup = {};
+
+    if (await fs.pathExists(backupPath)) {
+      existingBackup = await fs.readJson(backupPath);
+    }
+
+    const backup = {
+      ...existingBackup,
+      [new Date().toISOString()]: {
+        deleted_count: deletedCount,
+        basket_ids: basketIdsToDelete.filter(id => !notFound.includes(id)),
+        baskets: deletedBaskets
+      }
+    };
+
+    await fs.writeJson(backupPath, backup, { spaces: 2 });
+    console.log(`   💾 Backup saved: ${backupPath}`);
+
+    // Save updated baskets
+    await fs.writeJson(basketsPath, basketsData, { spaces: 2 });
+    console.log(`   ✅ Updated baskets file: ${basketsPath}`);
+
+    // Commit changes to git
+    try {
+      console.log(`   📦 Committing changes to git...`);
+
+      execSync('git add lego_baskets.json deleted_baskets_backup.json', {
+        cwd: path.join(VFS_ROOT, courseCode),
+        stdio: 'inherit'
+      });
+
+      const commitMessage = `chore(${courseCode}): cleanup ${deletedCount} deprecated/orphaned baskets
+
+Automated basket cleanup after LEGO re-extraction.
+
+- Deleted: ${deletedCount} baskets
+- Backup: deleted_baskets_backup.json
+- Basket IDs: ${basketIdsToDelete.slice(0, 5).join(', ')}${basketIdsToDelete.length > 5 ? ` ... and ${basketIdsToDelete.length - 5} more` : ''}`;
+
+      execSync(`git commit -m "${commitMessage.replace(/"/g, '\\"')}"`, {
+        cwd: path.join(VFS_ROOT, courseCode),
+        stdio: 'inherit'
+      });
+
+      console.log(`   ✅ Changes committed to git`);
+    } catch (gitError) {
+      console.log(`   ⚠️  Git commit failed (non-fatal): ${gitError.message}`);
+    }
+
+    res.json({
+      courseCode,
+      success: true,
+      deleted: deletedCount,
+      notFound: notFound.length,
+      backupPath,
+      message: `Deleted ${deletedCount} baskets and saved backup`
+    });
+  } catch (error) {
+    console.error('   ❌ Basket cleanup error:', error.message);
     res.status(500).json({
       error: error.message,
       courseCode

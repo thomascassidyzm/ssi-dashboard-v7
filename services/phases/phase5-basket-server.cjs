@@ -292,20 +292,25 @@ app.post('/abort/:courseCode', (req, res) => {
  * Start branch watcher for a course
  * Migrated from automation_server.cjs + watch_and_merge_branches.cjs
  */
-async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir) {
+async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, customPattern = null) {
   return new Promise((resolve, reject) => {
     const outputPath = path.join(baseCourseDir, 'lego_baskets.json');
     const scriptPath = path.join(__dirname, '../../scripts/watch_and_merge_branches.cjs');
 
+    // Use custom pattern if provided (for regeneration), otherwise default
+    const branchPattern = customPattern
+      ? `claude/${customPattern}-*`
+      : `claude/baskets-${courseCode}-*`;
+
     console.log(`\n[Phase 5] 👀 Starting branch watcher for ${courseCode}...`);
-    console.log(`[Phase 5]    Pattern: claude/baskets-${courseCode}-*`);
+    console.log(`[Phase 5]    Pattern: ${branchPattern}`);
     console.log(`[Phase 5]    Waiting for ${expectedWindows} branches`);
     console.log(`[Phase 5]    Output: ${outputPath}`);
 
     const watcher = spawn('node', [
       scriptPath,
       '--watch',
-      '--pattern', `claude/baskets-${courseCode}-*`,
+      '--pattern', branchPattern,
       '--output', outputPath,
       '--min-branches', expectedWindows.toString(),
       '--auto-delete'
@@ -549,6 +554,292 @@ app.get('/health', (req, res) => {
     watchers: watchers.size
   });
 });
+
+/**
+ * POST /regenerate
+ * Regenerate specific baskets for given LEGO_IDs
+ *
+ * Body: {
+ *   courseCode: string,
+ *   legoIds: string[],        // e.g., ["S0003L02", "S0068L01", ...]
+ *   target: string,
+ *   known: string
+ * }
+ *
+ * Segmentation Strategy for Regeneration:
+ * - 5 baskets per agent (faster, less context)
+ * - 10 agents per browser (max parallel)
+ * - 50 baskets per browser = 1 work unit
+ * - Spawn browsers as needed: Math.ceil(totalBaskets / 50)
+ */
+app.post('/regenerate', async (req, res) => {
+  const { courseCode, legoIds, target, known } = req.body;
+
+  if (!courseCode || !legoIds || !Array.isArray(legoIds) || legoIds.length === 0) {
+    return res.status(400).json({ error: 'courseCode and legoIds (array) required' });
+  }
+
+  if (!target || !known) {
+    return res.status(400).json({ error: 'target and known language names required' });
+  }
+
+  // Check if already running
+  const jobKey = `${courseCode}_regen`;
+  if (activeJobs.has(jobKey)) {
+    return res.status(409).json({ error: `Basket regeneration already running for ${courseCode}` });
+  }
+
+  const totalBaskets = legoIds.length;
+  const BASKETS_PER_AGENT = 5;
+  const AGENTS_PER_BROWSER = 10;
+  const BASKETS_PER_BROWSER = 50; // 10 agents × 5 baskets
+
+  console.log(`\n[Phase 5] ====================================`);
+  console.log(`[Phase 5] BASKET REGENERATION`);
+  console.log(`[Phase 5] ====================================`);
+  console.log(`[Phase 5] Course: ${courseCode}`);
+  console.log(`[Phase 5] Baskets to regenerate: ${totalBaskets}`);
+  console.log(`[Phase 5] Target: ${target}, Known: ${known}`);
+
+  const baseCourseDir = path.join(VFS_ROOT, courseCode);
+
+  // Check prerequisites
+  const seedPairsPath = path.join(baseCourseDir, 'seed_pairs.json');
+  const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+
+  if (!await fs.pathExists(seedPairsPath) || !await fs.pathExists(legoPairsPath)) {
+    return res.status(400).json({ error: 'Prerequisites missing - need seed_pairs.json and lego_pairs.json' });
+  }
+
+  // Calculate segmentation
+  const browsersNeeded = Math.ceil(totalBaskets / BASKETS_PER_BROWSER);
+  const browsers = [];
+
+  for (let i = 0; i < browsersNeeded; i++) {
+    const startIdx = i * BASKETS_PER_BROWSER;
+    const endIdx = Math.min((i + 1) * BASKETS_PER_BROWSER, totalBaskets);
+    const browserBaskets = legoIds.slice(startIdx, endIdx);
+    const agentsNeeded = Math.ceil(browserBaskets.length / BASKETS_PER_AGENT);
+
+    browsers.push({
+      browserNumber: i + 1,
+      totalBaskets: browserBaskets.length,
+      agentsNeeded: agentsNeeded,
+      basketsPerAgent: BASKETS_PER_AGENT,
+      legoIds: browserBaskets
+    });
+  }
+
+  console.log(`[Phase 5] Segmentation:`);
+  console.log(`[Phase 5]   Browsers: ${browsersNeeded}`);
+  console.log(`[Phase 5]   Agents per browser: ${AGENTS_PER_BROWSER} (max)`);
+  console.log(`[Phase 5]   Baskets per agent: ${BASKETS_PER_AGENT}`);
+  console.log(`[Phase 5]   Estimated time: ~10-15 minutes per browser`);
+
+  // Initialize job state
+  const job = {
+    courseCode,
+    jobType: 'regeneration',
+    totalBaskets,
+    browsersNeeded,
+    browsers,
+    baseCourseDir,
+    target,
+    known,
+    status: 'spawning_browsers',
+    startedAt: new Date().toISOString(),
+    windowsSpawned: 0,
+    branchesDetected: 0,
+    merged: false,
+    error: null
+  };
+
+  activeJobs.set(jobKey, job);
+
+  try {
+    // STEP 1: Start branch watcher for regeneration
+    const timestamp = Date.now();
+    const branchPattern = `baskets-regen-${courseCode}-${timestamp}`;
+    await startBranchWatcher(`${courseCode}_regen`, browsersNeeded, baseCourseDir, branchPattern);
+
+    // STEP 2: Spawn browser windows for regeneration
+    await spawnRegenerationBrowsers(courseCode, {
+      target,
+      known,
+      browsers,
+      timestamp
+    }, baseCourseDir);
+
+    console.log(`\n[Phase 5] ✅ All browsers spawned for regeneration`);
+    console.log(`[Phase 5]    Waiting for branches with pattern: claude/${branchPattern}-*`);
+
+    if (job) {
+      job.status = 'waiting_for_branches';
+      job.branchPattern = branchPattern;
+    }
+
+    // Send success response
+    res.json({
+      success: true,
+      message: `Basket regeneration started for ${courseCode}`,
+      segmentation: {
+        totalBaskets,
+        browsersNeeded,
+        estimatedTime: `~${browsersNeeded * 12} minutes`,
+        browsers: browsers.map(b => ({
+          browserNumber: b.browserNumber,
+          basketCount: b.totalBaskets,
+          agentCount: b.agentsNeeded
+        })),
+        branchPattern: `claude/${branchPattern}-*`
+      },
+      jobKey,
+      status: 'running'
+    });
+  } catch (error) {
+    job.status = 'failed';
+    job.error = error.message;
+    activeJobs.delete(jobKey);
+    console.error(`[Phase 5] ❌ Failed to spawn browsers:`, error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * Spawn browsers for basket regeneration
+ * Similar to spawnBrowserWindows but handles LEGO_ID lists instead of seed ranges
+ */
+async function spawnRegenerationBrowsers(courseCode, params, baseCourseDir) {
+  const { target, known, browsers, timestamp } = params;
+
+  console.log(`\n[Phase 5] 🌐 Spawning ${browsers.length} browser windows for regeneration...`);
+
+  const config = loadConfig();
+  const spawnDelay = config.phase5_basket_generation.browser_spawn_delay_ms || 5000;
+
+  const jobKey = `${courseCode}_regen`;
+  const job = activeJobs.get(jobKey);
+
+  for (let i = 0; i < browsers.length; i++) {
+    const browserConfig = browsers[i];
+    const windowNum = browserConfig.browserNumber;
+
+    console.log(`\n[Phase 5]   Browser ${windowNum}/${browsers.length}:`);
+    console.log(`[Phase 5]     Baskets: ${browserConfig.totalBaskets}`);
+    console.log(`[Phase 5]     Agents: ${browserConfig.agentsNeeded}`);
+    console.log(`[Phase 5]     LEGO_IDs: ${browserConfig.legoIds.slice(0, 3).join(', ')}...`);
+
+    // Generate orchestrator prompt for this browser
+    const browserPrompt = generatePhase5RegenerationPrompt(
+      courseCode,
+      {
+        target,
+        known,
+        legoIds: browserConfig.legoIds,
+        agentsNeeded: browserConfig.agentsNeeded,
+        basketsPerAgent: browserConfig.basketsPerAgent,
+        timestamp,
+        browserNumber: windowNum
+      },
+      baseCourseDir
+    );
+
+    try {
+      await spawnClaudeCodeSession(browserPrompt, `phase5-regen-${windowNum}`);
+      if (job) job.windowsSpawned++;
+
+      // Stagger window spawns
+      if (i < browsers.length - 1) {
+        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next browser...`);
+        await new Promise(resolve => setTimeout(resolve, spawnDelay));
+      }
+    } catch (error) {
+      console.error(`[Phase 5]     ❌ Failed to spawn browser ${windowNum}:`, error.message);
+    }
+  }
+
+  console.log(`\n[Phase 5] ✅ Spawned ${browsers.length} browsers for regeneration`);
+
+  if (job) {
+    job.status = 'waiting_for_branches';
+  }
+}
+
+/**
+ * Generate Phase 5 Regeneration Prompt
+ * Adapted from generatePhase5OrchestratorPrompt but for specific LEGO_IDs
+ */
+function generatePhase5RegenerationPrompt(courseCode, params, courseDir) {
+  const { target, known, legoIds, agentsNeeded, basketsPerAgent, timestamp, browserNumber } = params;
+
+  const relativeDir = getRelativeCourseDir(courseDir);
+
+  // Split LEGO_IDs into chunks for each agent
+  const agentAssignments = [];
+  for (let i = 0; i < agentsNeeded; i++) {
+    const startIdx = i * basketsPerAgent;
+    const endIdx = Math.min((i + 1) * basketsPerAgent, legoIds.length);
+    const agentLegoIds = legoIds.slice(startIdx, endIdx);
+    agentAssignments.push({
+      agentNumber: i + 1,
+      legoIds: agentLegoIds
+    });
+  }
+
+  return `# Phase 5 Regeneration Orchestrator: Spawn ${agentsNeeded} Parallel Agents
+
+**Course**: ${courseCode}
+**Mode**: BASKET REGENERATION (Targeted)
+**Total Baskets**: ${legoIds.length}
+**Required Agents**: ${agentsNeeded} parallel agents
+**Baskets per agent**: ~${basketsPerAgent}
+
+---
+
+## 🎯 YOUR ONLY JOB: Spawn Agents for Regeneration
+
+You are the orchestrator. **DO NOT** read files or generate content yourself.
+
+**Your task:**
+1. Spawn ${agentsNeeded} agents in parallel
+2. Pass each agent its specific LEGO_IDs to regenerate
+3. Monitor progress and report when complete
+
+**Each agent prompt should include:**
+- Specific LEGO_IDs to regenerate (e.g., "S0003L02, S0068L01, S0142L03")
+- Path to scaffolds: \`${relativeDir}/phase5_scaffolds/\`
+- Path to outputs: \`${relativeDir}/phase5_outputs/\`
+- Reference to Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+
+**CRITICAL OUTPUT WORKFLOW** (each agent must follow):
+1. For each LEGO_ID, load existing scaffold from \`phase5_scaffolds/seed_SXXXX_LYYYY.json\`
+2. Regenerate the basket using the same structure
+3. Save FULL output to \`seed_SXXXX_FULL.json\` (with _metadata, _instructions, _stats)
+4. Strip metadata → extract ONLY the \`legos\` object
+5. Save stripped to \`seed_SXXXX_baskets.json\`
+6. **Git workflow**: Create branch \`claude/baskets-regen-${courseCode}-${timestamp}-w${browserNumber}\`
+7. Push ONLY stripped files to GitHub
+
+**IMPORTANT**: This is REGENERATION mode - agents should replace existing baskets for these LEGO_IDs, not create new ones.
+
+---
+
+## 🚀 SPAWN ALL ${agentsNeeded} AGENTS NOW
+
+Use the Task tool ${agentsNeeded} times in a single message to spawn all agents in parallel.
+
+${agentAssignments.map((agent, idx) => `
+### Agent ${agent.agentNumber} Assignment:
+LEGO_IDs: ${agent.legoIds.join(', ')}
+(${agent.legoIds.length} baskets)
+`).join('\n')}
+
+When all agents complete, they should push their changes to branch:
+\`claude/baskets-regen-${courseCode}-${timestamp}-w${browserNumber}\`
+
+Branch naming is CRITICAL - use exactly this pattern for auto-merge to work.
+`;
+}
 
 /**
  * Start server
