@@ -76,19 +76,6 @@
           </div>
         </div>
 
-        <!-- Smart Resume Options -->
-        <div v-if="!analyzing && !analysis" class="mb-8">
-          <button
-            @click="analyzeCourse"
-            :disabled="!targetLanguage || !knownLanguage"
-            class="bg-blue-500 hover:bg-blue-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
-          >
-            🔍 Analyze Course Progress
-          </button>
-          <p class="mt-2 text-sm text-slate-400">
-            See what's already done and get smart suggestions
-          </p>
-        </div>
 
         <!-- Analysis Loading -->
         <div v-if="analyzing" class="mb-8 text-center py-8">
