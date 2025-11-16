@@ -691,6 +691,68 @@ app.get('/api/languages', (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/validate
+ * Run Phase 3 FD collision detection and return results
+ */
+app.get('/api/courses/:courseCode/validate', async (req, res) => {
+  const { courseCode } = req.params;
+
+  try {
+    const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(404).json({
+        error: 'lego_pairs.json not found - run Phase 3 first',
+        courseCode
+      });
+    }
+
+    // Run FD collision detection script
+    const validatorScript = path.join(__dirname, '../../scripts/validation/check-lego-fd-violations.cjs');
+    const { execSync } = require('child_process');
+
+    try {
+      execSync(`node "${validatorScript}" "${legoPairsPath}"`, {
+        cwd: VFS_ROOT,
+        stdio: 'inherit'
+      });
+
+      // If script exits 0, no violations found
+      res.json({
+        courseCode,
+        status: 'valid',
+        collisions: 0,
+        message: 'No FD violations detected'
+      });
+    } catch (error) {
+      // Script exits with non-zero if violations found
+      // Check for the FD report file
+      const reportPath = legoPairsPath.replace('.json', '_fd_report.json');
+
+      if (await fs.pathExists(reportPath)) {
+        const report = await fs.readJson(reportPath);
+
+        res.json({
+          courseCode,
+          status: 'violations_detected',
+          collisions: report.total_violations || 0,
+          report,
+          message: `Found ${report.total_violations} FD violations`
+        });
+      } else {
+        throw new Error('Validation failed but no report generated');
+      }
+    }
+  } catch (error) {
+    console.error('Validation error:', error);
+    res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
  * Helper: Determine course status from manifest data
  */
 function determineStatus(course) {
