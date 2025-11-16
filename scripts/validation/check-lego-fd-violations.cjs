@@ -1,15 +1,27 @@
 #!/usr/bin/env node
 
 /**
- * Phase 3 LEGO FD Violation Checker
+ * Phase 3 LEGO Registry Collision Checker
  *
- * Validates Functional Determinism at LEGO level:
- * "When learner hears KNOWN LEGO phrase X, do they know without ambiguity
- *  what to produce for TARGET LEGO phrase X?"
+ * Validates LEGO registry integrity where KNOWN acts as unique lookup key.
  *
- * Same principle as Phase 2 (seed-level FD check), but applied to LEGOs.
+ * THE REGISTRY CONSTRAINT:
+ * - KNOWN field acts as lookup key in LEGO registry
+ * - One key → one value (one-to-one mapping)
+ * - Duplicate keys → collision → breaks the system
  *
- * VIOLATION: Same KNOWN LEGO → Multiple different TARGET LEGOs
+ * EXAMPLE COLLISION:
+ * ❌ S0042L05: { target: "你是对的", known: "you are correct" }
+ * ❌ S0087L12: { target: "你们是对的", known: "you are correct" } ← COLLISION!
+ *
+ * When learner hears "you are correct", which target? Ambiguous!
+ *
+ * EXAMPLE FIX:
+ * ✅ S0042L05: { target: "你是对的", known: "you are correct" }
+ * ✅ S0087L12: { target: "你们是对的", known: "you are all correct" } ← Distinct!
+ *
+ * REMEDIATION: Re-extract affected seeds with instruction to disambiguate
+ * KNOWN phrases (e.g., "you are correct" vs "you are all correct")
  *
  * Usage: node check-lego-fd-violations.cjs <lego_pairs_path>
  * Example: node check-lego-fd-violations.cjs public/vfs/courses/spa_for_eng/phase_3/lego_pairs.json
@@ -33,7 +45,8 @@ if (!fs.existsSync(legoPairsPath)) {
   process.exit(1);
 }
 
-console.log('🔍 Phase 3: LEGO FD Violation Check (Learner Uncertainty Test)\n');
+console.log('🔍 Phase 3: LEGO Registry Collision Check\n');
+console.log(`   Validating: KNOWN field uniqueness (one key → one value)\n`);
 console.log(`Reading: ${legoPairsPath}\n`);
 
 // Load lego_pairs
@@ -96,12 +109,12 @@ collisionMap.forEach((targets, known) => {
 
 // Report results
 if (violations.length === 0) {
-  console.log('✅ PASS: No LEGO FD violations detected\n');
-  console.log(`   Total unique KNOWN LEGOs: ${collisionMap.size}`);
+  console.log('✅ PASS: No registry collisions detected\n');
+  console.log(`   Total unique KNOWN keys: ${collisionMap.size}`);
   console.log(`   Total LEGOs: ${totalLegos}`);
-  console.log(`   All KNOWN LEGOs map to exactly one TARGET\n`);
-  console.log('   🎓 Learners have ZERO UNCERTAINTY - when they hear a KNOWN LEGO,');
-  console.log('      they always know exactly what TARGET LEGO to produce!\n');
+  console.log(`   All KNOWN keys map to exactly one TARGET value\n`);
+  console.log('   🗂️  LEGO registry integrity maintained!');
+  console.log('      One key → One value (one-to-one mapping)\n');
 
   // Write report
   const report = {
@@ -119,12 +132,12 @@ if (violations.length === 0) {
 
   process.exit(0);
 } else {
-  console.log(`❌ FAIL: ${violations.length} LEGO FD violation(s) detected\n`);
-  console.log(`   🚨 LEARNER UNCERTAINTY DETECTED!\n`);
+  console.log(`❌ FAIL: ${violations.length} registry collision(s) detected\n`);
+  console.log(`   🚨 REGISTRY INTEGRITY VIOLATED!\n`);
 
   violations.forEach((v, idx) => {
-    console.log(`${idx + 1}. KNOWN LEGO: "${v.known}"`);
-    console.log(`   Maps to ${v.mappings.length} different TARGETs:\n`);
+    console.log(`${idx + 1}. COLLISION KEY: "${v.known}"`);
+    console.log(`   ❌ One key → Multiple values (registry collision)\n`);
 
     v.mappings.forEach(m => {
       console.log(`   → TARGET: "${m.target}"`);
@@ -134,8 +147,8 @@ if (violations.length === 0) {
       console.log();
     });
 
-    console.log(`   ⚠️  When learner hears "${v.known}", which TARGET should they produce?`);
-    console.log(`       This creates AMBIGUITY and violates zero-variation pedagogy!\n`);
+    console.log(`   ⚠️  Registry lookup ambiguity: "${v.known}" → Which TARGET?`);
+    console.log(`       Violates one-to-one mapping constraint!\n`);
   });
 
   // Generate re-extraction manifest for affected seeds
@@ -161,9 +174,9 @@ if (violations.length === 0) {
     );
 
     reExtractionManifest.violations_by_seed[seedId] = seedViolations.map(v => ({
-      known: v.known,
+      collision_key: v.known,
       conflicting_targets: v.mappings.map(m => m.target),
-      instruction: `The KNOWN phrase "${v.known}" maps to multiple TARGETs. When re-extracting this seed, chunk this phrase WITH adjacent LEGOs to create a larger MOLECULAR_LEGO that disambiguates meaning.`
+      instruction: `Registry collision: KNOWN key "${v.known}" maps to multiple TARGET values. When re-extracting, disambiguate the KNOWN phrase to create distinct keys (e.g., "you are correct" vs "you are all correct").`
     }));
   });
 
@@ -175,9 +188,10 @@ if (violations.length === 0) {
   console.log(`   📋 Re-extraction manifest: ${manifestPath}\n`);
   console.log('   REMEDIATION STRATEGY:');
   console.log('   1. Re-run Phase 3 for affected seeds only');
-  console.log('   2. Include violation details in the master prompt');
-  console.log('   3. Instruct Claude to chunk violating LEGOs UP into MOLECULAR_LEGOs');
-  console.log('   4. Let Claude make linguistic chunking decisions with context\n');
+  console.log('   2. Include collision details in the master prompt');
+  console.log('   3. Instruct Claude to disambiguate KNOWN phrases');
+  console.log('      (e.g., "you are correct" → "you are all correct")');
+  console.log('   4. Ensure each KNOWN key maps to exactly one TARGET value\n');
 
   // Write detailed report
   const report = {
