@@ -26,7 +26,7 @@
       <!-- User Workflow -->
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">User Workflow</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Generate New Course -->
           <router-link to="/generate" class="block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-lg border border-emerald-400/20 p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-emerald-500/20">
             <div class="flex items-center justify-between">
@@ -56,6 +56,23 @@
               <div class="text-emerald-400">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
+          <!-- Validate Courses -->
+          <router-link to="/validate" class="block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 border border-purple-400/20 rounded-lg p-8 transition hover:-translate-y-1 shadow-lg hover:shadow-purple-500/20">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">🔍 Validate & Fix Courses</h3>
+                <p class="text-purple-100 text-sm">
+                  Check for missing components and trigger reruns for incomplete phases
+                </p>
+              </div>
+              <div class="text-white">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
             </div>

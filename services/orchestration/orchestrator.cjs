@@ -351,36 +351,39 @@ app.post('/phase-complete', async (req, res) => {
       state.phasesCompleted.push(phase);
     }
 
-    // Check checkpoint mode
+    // ALWAYS run phase-specific validators (regardless of checkpoint mode)
+    // Validation is a data integrity check, not a user approval gate
+    const validationPassed = await runPhaseValidation(courseCode, phase);
+
+    if (!validationPassed) {
+      // Validation FAILED - block all progression
+      state.status = 'validation_failed';
+      state.currentPhase = null;
+      console.log(`   ❌ Validation failed - manual intervention required`);
+      return;
+    }
+
+    // Validation PASSED - now check checkpoint mode for progression
     if (CHECKPOINT_MODE === 'manual') {
       state.status = 'waiting_for_approval';
       state.waitingForApproval = true;
       console.log(`   ⏸️  Waiting for manual approval (checkpoint mode: manual)`);
     } else if (CHECKPOINT_MODE === 'gated') {
-      // Run phase-specific validators before auto-proceeding
-      const validationPassed = await runPhaseValidation(courseCode, phase);
-
-      if (validationPassed) {
-        // Auto-trigger next phase
-        const nextPhase = getNextPhase(phase);
-        if (nextPhase) {
-          console.log(`   ✓ Validation passed, auto-triggering Phase ${nextPhase}`);
-          setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
-        } else {
-          state.status = 'complete';
-          console.log(`   🎉 All phases complete!`);
-        }
+      // Auto-trigger next phase
+      const nextPhase = getNextPhase(phase);
+      if (nextPhase) {
+        console.log(`   ✓ Validation passed, auto-triggering Phase ${nextPhase}`);
+        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
       } else {
-        state.status = 'validation_failed';
-        state.currentPhase = null;
-        console.log(`   ❌ Validation failed - manual intervention required`);
+        state.status = 'complete';
+        console.log(`   🎉 All phases complete!`);
       }
     } else {
       // Full automation - trigger next phase
       const nextPhase = getNextPhase(phase);
       if (nextPhase) {
         console.log(`   → Auto-triggering Phase ${nextPhase} (checkpoint mode: full)`);
-        // TODO: Trigger next phase
+        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
       } else {
         state.status = 'complete';
         console.log(`   🎉 All phases complete!`);
