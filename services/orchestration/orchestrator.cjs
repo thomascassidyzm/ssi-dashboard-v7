@@ -528,6 +528,8 @@ app.post('/api/courses/generate', async (req, res) => {
     const response = await axios.post(`${phaseServer}/start`, {
       courseCode,
       totalSeeds,
+      target,
+      known,
       strategy,
       startSeed,
       endSeed
