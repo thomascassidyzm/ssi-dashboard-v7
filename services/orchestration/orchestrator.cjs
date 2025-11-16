@@ -560,8 +560,9 @@ async function triggerPhase(courseCode, phase, totalSeeds = 668) {
 /**
  * GET /api/courses/:courseCode/status
  * Get current phase status for a course
+ * Enhanced to include detailed tracking from active phase server
  */
-app.get('/api/courses/:courseCode/status', (req, res) => {
+app.get('/api/courses/:courseCode/status', async (req, res) => {
   const { courseCode } = req.params;
   const state = courseStates.get(courseCode);
 
@@ -574,7 +575,8 @@ app.get('/api/courses/:courseCode/status', (req, res) => {
     });
   }
 
-  res.json({
+  // Base response with orchestrator-level state
+  const response = {
     courseCode,
     currentPhase: state.currentPhase,
     status: state.status,
@@ -583,7 +585,23 @@ app.get('/api/courses/:courseCode/status', (req, res) => {
     phasesCompleted: state.phasesCompleted,
     checkpointMode: CHECKPOINT_MODE,
     waitingForApproval: state.waitingForApproval
-  });
+  };
+
+  // If there's an active phase, fetch detailed status from phase server
+  if (state.currentPhase && state.status === 'running') {
+    const phaseDetails = await fetchPhaseServerStatus(courseCode, state.currentPhase);
+    if (phaseDetails) {
+      // Merge detailed phase tracking into response
+      response.phaseDetails = phaseDetails;
+
+      // Calculate overall progress based on phases completed + current phase progress
+      if (phaseDetails.timing && phaseDetails.timing.velocity) {
+        response.estimatedCompletion = phaseDetails.timing.velocity.estimatedCompletionAt;
+      }
+    }
+  }
+
+  res.json(response);
 });
 
 /**
@@ -1550,6 +1568,45 @@ function getNextPhase(currentPhase) {
   return currentIndex >= 0 && currentIndex < sequence.length - 1
     ? sequence[currentIndex + 1]
     : null;
+}
+
+/**
+ * Helper: Fetch detailed status from phase server
+ * @param {string} courseCode - Course identifier
+ * @param {number} phase - Phase number (1, 3, 5, 6, 8)
+ * @returns {object|null} - Phase server status details or null if unavailable
+ */
+async function fetchPhaseServerStatus(courseCode, phase) {
+  const phaseServerUrl = PHASE_SERVERS[phase];
+
+  if (!phaseServerUrl) {
+    console.log(`[Orchestrator] No server URL configured for Phase ${phase}`);
+    return null;
+  }
+
+  try {
+    // Fetch status from phase server
+    const response = await axios.get(`${phaseServerUrl}/status/${courseCode}`, {
+      timeout: 2000 // 2 second timeout
+    });
+
+    if (response.data) {
+      console.log(`[Orchestrator] Fetched Phase ${phase} details for ${courseCode}`);
+      return response.data;
+    }
+
+    return null;
+  } catch (error) {
+    // Phase server might not be running or course not found - this is OK
+    if (error.response?.status === 404) {
+      console.log(`[Orchestrator] Phase ${phase} has no active job for ${courseCode}`);
+    } else if (error.code === 'ECONNREFUSED') {
+      console.log(`[Orchestrator] Phase ${phase} server not running at ${phaseServerUrl}`);
+    } else {
+      console.log(`[Orchestrator] Failed to fetch Phase ${phase} status: ${error.message}`);
+    }
+    return null;
+  }
 }
 
 /**

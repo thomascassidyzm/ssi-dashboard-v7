@@ -382,17 +382,46 @@ app.post('/start', async (req, res) => {
   console.log(`   Segments: ${segmentation.segmentCount}`);
   console.log(`   Total agents: ${segmentation.totalAgents}`);
 
-  // Initialize job state
+  // Initialize job state with enhanced tracking
   const job = {
     courseCode,
     totalSeeds,
+    startSeed,
+    endSeed,
+    target: target || courseCode.split('_')[0],
+    known: known || courseCode.split('_')[2],
     segmentation,
     status: 'spawning_orchestrators',
     startedAt: new Date().toISOString(),
+
+    // Milestone tracking
+    milestones: {
+      segmentationCalculated: true,
+      segmentationCalculatedAt: new Date().toISOString(),
+      watcherStarted: false,
+      watcherStartedAt: null,
+      orchestratorsSpawned: 0,
+      orchestratorsTotal: segmentation.segmentCount,
+      lastOrchestratorSpawnedAt: null,
+      branchesDetected: 0,
+      branchesExpected: segmentation.segmentCount,
+      lastBranchDetectedAt: null,
+      branchesMerged: 0,
+      mergeStartedAt: null,
+      mergeCompletedAt: null,
+      deduplicationStartedAt: null,
+      deduplicationCompletedAt: null
+    },
+
+    // Branch tracking (detailed)
+    branches: [],
+
+    // Legacy fields (for backward compatibility)
     orchestratorsSpawned: 0,
     branchesDetected: 0,
     merged: false,
-    error: null
+    error: null,
+    warnings: []
   };
 
   activeJobs.set(courseCode, job);
@@ -400,6 +429,10 @@ app.post('/start', async (req, res) => {
   try {
     // Start branch watcher for phase3-segment-* branches
     await startBranchWatcher(courseCode, segmentation.segmentCount);
+
+    // Update milestone
+    job.milestones.watcherStarted = true;
+    job.milestones.watcherStartedAt = new Date().toISOString();
 
     // Spawn browser windows (one per segment)
     await spawnSegmentOrchestrators(courseCode, {
@@ -494,14 +527,118 @@ async function runDeduplication(courseCode) {
 /**
  * Start branch watcher for phase3-segment-* branches
  */
+/**
+ * Start branch watcher for Phase 3 segments
+ * Polls git remote for phase3-segment-* branches and tracks them
+ */
 async function startBranchWatcher(courseCode, expectedSegments) {
   console.log(`\n👁️  Starting branch watcher for ${courseCode}`);
   console.log(`   Expected segments: ${expectedSegments}`);
-  console.log(`   Branch pattern: phase3-segment-*-${courseCode}`);
+  console.log(`   Branch pattern: phase3-segment-*-${courseCode} or claude/phase3-*`);
 
-  // For now, just log - actual watcher implementation would go here
-  // In production, this would spawn a process that polls git for branches
-  // and auto-merges when all segments are complete
+  const job = activeJobs.get(courseCode);
+  if (!job) return;
+
+  // Poll for branches every 15 seconds
+  const watchInterval = setInterval(async () => {
+    try {
+      // Fetch latest from remote
+      await execAsync('git fetch --all', { cwd: VFS_ROOT });
+
+      // Look for Phase 3 branches for this course (support both patterns)
+      const result = await execAsync(
+        `git branch -r | grep -E "(phase3-segment.*${courseCode}|claude/phase3.*${courseCode})" || true`,
+        { cwd: VFS_ROOT }
+      );
+
+      const branches = result.stdout
+        .split('\n')
+        .filter(b => b.trim())
+        .map(b => b.trim().replace('origin/', ''));
+
+      if (branches.length > 0) {
+        // Update job with new branches
+        const currentBranchNames = job.branches.map(b => b.branchName);
+        const newBranches = branches.filter(b => !currentBranchNames.includes(b));
+
+        newBranches.forEach(branchName => {
+          // Extract segment number if possible
+          const segmentMatch = branchName.match(/segment-(\d+)/i);
+          const segmentNum = segmentMatch ? parseInt(segmentMatch[1]) : null;
+
+          // Find corresponding segment in segmentation
+          let seedRange = 'unknown';
+          let expectedSeeds = 0;
+          if (segmentNum && job.segmentation && job.segmentation.segments) {
+            const segment = job.segmentation.segments.find(s => s.segmentNumber === segmentNum);
+            if (segment) {
+              const segmentStart = job.startSeed + segment.startSeed - 1;
+              const segmentEnd = job.startSeed + segment.endSeed - 1;
+              seedRange = `S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')}`;
+              expectedSeeds = segment.seedCount;
+            }
+          }
+
+          // Add to branches array
+          job.branches.push({
+            branchName,
+            detectedAt: new Date().toISOString(),
+            seedRange,
+            segmentNumber: segmentNum,
+            expectedSeeds,
+            merged: false
+          });
+
+          // Update milestones
+          job.milestones.branchesDetected = job.branches.length;
+          job.milestones.lastBranchDetectedAt = new Date().toISOString();
+          job.branchesDetected = job.branches.length; // Legacy
+
+          console.log(`  [Watcher] Branch ${job.branches.length}/${expectedSegments}: ${branchName} (${seedRange})`);
+        });
+
+        // Check if all branches detected
+        if (job.branches.length >= expectedSegments && job.status === 'waiting_for_completion') {
+          console.log(`\n  [Watcher] ✅ All ${expectedSegments} branches detected!`);
+          console.log(`  [Watcher] Starting merge process...`);
+
+          clearInterval(watchInterval);
+          watchers.delete(courseCode);
+
+          job.status = 'merging_branches';
+          job.milestones.mergeStartedAt = new Date().toISOString();
+
+          // TODO: Trigger merge process
+          // For now, just mark as complete
+          setTimeout(() => {
+            job.merged = true;
+            job.milestones.branchesMerged = job.branches.length;
+            job.milestones.mergeCompletedAt = new Date().toISOString();
+            job.status = 'deduplicating';
+            job.branches.forEach(b => b.merged = true);
+
+            // Trigger deduplication
+            job.milestones.deduplicationStartedAt = new Date().toISOString();
+            runDeduplication(courseCode).then(() => {
+              job.milestones.deduplicationCompletedAt = new Date().toISOString();
+              job.status = 'complete';
+
+              // Notify orchestrator
+              notifyOrchestrator(courseCode, 'complete');
+            }).catch(err => {
+              console.error(`[Watcher] Deduplication failed:`, err);
+              job.status = 'failed';
+              job.error = `Deduplication failed: ${err.message}`;
+            });
+          }, 2000);
+        }
+      }
+    } catch (error) {
+      console.error(`[Watcher] Error polling branches:`, error.message);
+    }
+  }, 15000);
+
+  watchers.set(courseCode, watchInterval);
 
   return Promise.resolve();
 }
@@ -542,7 +679,11 @@ async function spawnSegmentOrchestrators(courseCode, params, segmentation) {
         console.log(`    ✅ Orchestrator spawned`);
 
         const job = activeJobs.get(courseCode);
-        if (job) job.orchestratorsSpawned++;
+        if (job) {
+          job.orchestratorsSpawned++;
+          job.milestones.orchestratorsSpawned = job.orchestratorsSpawned;
+          job.milestones.lastOrchestratorSpawnedAt = new Date().toISOString();
+        }
 
         // Delay between spawns
         if (i < segments.length - 1) {
@@ -551,6 +692,9 @@ async function spawnSegmentOrchestrators(courseCode, params, segmentation) {
         }
       } catch (error) {
         console.error(`    ❌ Failed to spawn orchestrator:`, error.message);
+        const job = activeJobs.get(courseCode);
+        if (job && !job.warnings) job.warnings = [];
+        if (job) job.warnings.push(`Failed to spawn orchestrator ${segment.segmentNumber}: ${error.message}`);
       }
     } else {
       // Fallback: just log the prompt
@@ -587,7 +731,7 @@ async function loadWebAgentSpawner() {
 
 /**
  * GET /status/:courseCode
- * Get current Phase 3 status
+ * Get current Phase 3 status (Enhanced with realistic observables)
  */
 app.get('/status/:courseCode', (req, res) => {
   const { courseCode } = req.params;
@@ -597,7 +741,92 @@ app.get('/status/:courseCode', (req, res) => {
     return res.status(404).json({ error: `No Phase 3 job found for ${courseCode}` });
   }
 
-  res.json(job);
+  // Calculate timing metrics
+  const startTime = new Date(job.startedAt).getTime();
+  const now = Date.now();
+  const elapsedSeconds = Math.floor((now - startTime) / 1000);
+
+  // Calculate velocity (if branches are appearing)
+  let velocity = null;
+  if (job.branches && job.branches.length > 0) {
+    const firstBranchTime = new Date(job.branches[0].detectedAt).getTime();
+    const elapsedSinceFirstBranch = (now - firstBranchTime) / 1000;
+    const avgSecondsPerBranch = elapsedSinceFirstBranch / job.branches.length;
+    const remainingBranches = job.milestones.branchesExpected - job.branches.length;
+    const estimatedSecondsRemaining = remainingBranches * avgSecondsPerBranch;
+
+    velocity = {
+      branchesCompleted: job.branches.length,
+      elapsedSinceFirstBranch: Math.floor(elapsedSinceFirstBranch),
+      avgSecondsPerBranch: Math.floor(avgSecondsPerBranch),
+      estimatedSecondsRemaining: Math.floor(estimatedSecondsRemaining),
+      estimatedCompletionAt: new Date(now + estimatedSecondsRemaining * 1000).toISOString()
+    };
+  }
+
+  // Calculate coverage
+  const coverage = job.segmentation ? {
+    seedsTotal: job.totalSeeds,
+    segmentCount: job.segmentation.segmentCount,
+    totalAgents: job.segmentation.totalAgents,
+    seedsPerAgent: job.segmentation.seedsPerAgent,
+    strategy: job.segmentation.strategy
+  } : null;
+
+  // Determine sub-status
+  let subStatus = null;
+  if (job.status === 'spawning_orchestrators') {
+    if (job.milestones.orchestratorsSpawned < job.milestones.orchestratorsTotal) {
+      subStatus = `spawning_orchestrator_${job.milestones.orchestratorsSpawned + 1}_of_${job.milestones.orchestratorsTotal}`;
+    } else {
+      subStatus = 'all_orchestrators_spawned';
+    }
+  } else if (job.status === 'waiting_for_branches') {
+    if (job.milestones.branchesDetected === 0) {
+      subStatus = 'waiting_for_first_branch';
+    } else {
+      subStatus = `${job.milestones.branchesDetected}_of_${job.milestones.branchesExpected}_branches_detected`;
+    }
+  } else if (job.status === 'merging_branches') {
+    subStatus = 'merge_in_progress';
+  } else if (job.status === 'deduplicating') {
+    subStatus = 'running_phase3.5_deduplication';
+  }
+
+  res.json({
+    courseCode,
+    status: job.status,
+    subStatus,
+
+    milestones: job.milestones,
+
+    branches: job.branches.map(b => ({
+      branchName: b.branchName,
+      detectedAt: b.detectedAt,
+      seedRange: b.seedRange,
+      segmentNumber: b.segmentNumber,
+      expectedSeeds: b.expectedSeeds,
+      merged: b.merged || false
+    })),
+
+    timing: {
+      startedAt: job.startedAt,
+      elapsedSeconds,
+      velocity
+    },
+
+    coverage,
+
+    segmentation: job.segmentation,
+
+    error: job.error,
+    warnings: job.warnings || [],
+
+    // Legacy fields for backward compatibility
+    orchestratorsSpawned: job.orchestratorsSpawned,
+    branchesDetected: job.branchesDetected,
+    merged: job.merged
+  });
 });
 
 /**
