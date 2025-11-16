@@ -133,9 +133,11 @@ if (CHECKPOINT_MODE === 'gated') {
 ```
 Phase 1 (Translation)
     ↓
-[Phase 2 Validation Gate] ← Automatic FD check
+[Phase 2 Validation Gate] ← Automatic FD check (unconditional)
     ↓ (if PASS)
-Phase 3 (LEGO Extraction)
+Phase 3 (LEGO Extraction - parallel agents)
+    ↓
+[Phase 3.5 Deduplication] ← Mark debuts (new: true) vs repeats (new: false)
     ↓
 Phase 5 (Baskets)
     ↓
@@ -144,7 +146,7 @@ Phase 6 (Introductions)
 Phase 8 (Audio)
 ```
 
-**Note:** Phase 2 is NOT a separate server - it's a validation script that runs between phases.
+**Note:** Phase 2 and Phase 3.5 are NOT separate servers - they're validation/processing scripts that run automatically between phases.
 
 ## Example Workflow
 

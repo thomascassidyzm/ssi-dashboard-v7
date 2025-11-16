@@ -430,6 +430,66 @@ app.post('/start', async (req, res) => {
 });
 
 /**
+ * Run deduplication (Phase 3.5) after all segments merged
+ * Marks duplicate LEGOs with new: false and ref: firstSeedId
+ */
+async function runDeduplication(courseCode) {
+  console.log(`\n🔍 Running deduplication (Phase 3.5) for ${courseCode}...`);
+
+  const legoPairsPath = path.join(VFS_ROOT, courseCode, 'phase_3', 'lego_pairs.json');
+
+  if (!fs.existsSync(legoPairsPath)) {
+    console.log(`   ⚠️  lego_pairs.json not found, skipping deduplication`);
+    return;
+  }
+
+  try {
+    // Read lego_pairs.json
+    const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
+
+    // Track seen LEGOs: key = "target|known", value = first seed_id
+    const seenLegos = new Map();
+    let duplicateCount = 0;
+    let totalLegos = 0;
+
+    // Process each seed in order
+    legoPairs.seeds.forEach((seed) => {
+      const seedId = seed.seed_id;
+
+      seed.legos.forEach((lego) => {
+        totalLegos++;
+        const key = `${lego.target}|${lego.known}`;
+
+        if (seenLegos.has(key)) {
+          // Duplicate found - mark as repeat
+          const firstSeedId = seenLegos.get(key);
+          lego.new = false;
+          lego.ref = firstSeedId;
+          duplicateCount++;
+        } else {
+          // First occurrence - mark as debut
+          seenLegos.set(key, seedId);
+          lego.new = true;
+          delete lego.ref; // Remove ref if exists from previous runs
+        }
+      });
+    });
+
+    // Write updated file
+    fs.writeFileSync(legoPairsPath, JSON.stringify(legoPairs, null, 2));
+
+    console.log(`   ✅ Deduplication complete!`);
+    console.log(`      Total LEGOs: ${totalLegos}`);
+    console.log(`      Unique (new: true): ${seenLegos.size}`);
+    console.log(`      Duplicates (new: false): ${duplicateCount}`);
+
+  } catch (error) {
+    console.error(`   ❌ Deduplication failed:`, error.message);
+    throw error;
+  }
+}
+
+/**
  * Start branch watcher for phase3-segment-* branches
  */
 async function startBranchWatcher(courseCode, expectedSegments) {
@@ -586,6 +646,10 @@ app.post('/phase-complete', async (req, res) => {
   // Check if all segments complete
   if (job.branchesDetected >= job.segmentation.segmentCount) {
     console.log(`\n🎉 All segments complete for ${courseCode}!`);
+
+    // Run deduplication (Phase 3.5)
+    await runDeduplication(courseCode);
+
     job.status = 'complete';
     job.merged = true;
 
