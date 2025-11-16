@@ -178,6 +178,48 @@ async function runPhaseValidation(courseCode, phase) {
       }
     }
 
+    if (phase === 3) {
+      // Phase 3 validators (run AFTER deduplication in Phase 3 server)
+      const legoPairsFile = path.join(VFS_ROOT, courseCode, 'phase_3', 'lego_pairs.json');
+
+      if (!fs.existsSync(legoPairsFile)) {
+        console.log(`   ❌ lego_pairs.json not found`);
+        return false;
+      }
+
+      // Validator 1: LEGO-level FD check (learner uncertainty test)
+      const fdValidatorPath = path.join(__dirname, '../../scripts/validation/check-lego-fd-violations.cjs');
+
+      try {
+        execSync(`node "${fdValidatorPath}" "${legoPairsFile}"`, {
+          cwd: VFS_ROOT,
+          stdio: 'inherit'
+        });
+        console.log(`   ✅ LEGO FD validation PASSED - no learner uncertainty`);
+      } catch (error) {
+        console.log(`   ❌ LEGO FD validation FAILED - learner uncertainty detected`);
+        console.log(`   📄 Review report: ${legoPairsFile.replace('.json', '_fd_report.json')}`);
+        return false;
+      }
+
+      // Validator 2: Infinitive form check (English linguistic rules)
+      const infinitiveValidatorPath = path.join(__dirname, '../../scripts/validation/check-infinitive-forms.js');
+
+      try {
+        execSync(`node "${infinitiveValidatorPath}" "${legoPairsFile}"`, {
+          cwd: VFS_ROOT,
+          stdio: 'inherit'
+        });
+        console.log(`   ✅ Infinitive form validation PASSED`);
+      } catch (error) {
+        console.log(`   ❌ Infinitive form validation FAILED - linguistic violations found`);
+        return false;
+      }
+
+      console.log(`   ✅ All Phase 3 validations PASSED`);
+      return true;
+    }
+
     // No validators for other phases yet
     console.log(`   ℹ️  No validators configured for Phase ${phase}`);
     return true;
