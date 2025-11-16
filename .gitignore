@@ -108,6 +108,16 @@ public/vfs/courses/*/*_changelog.json         # Reports
 public/vfs/courses/*/*_errors.json            # Error logs
 public/vfs/courses/archive/                   # Old versions
 
+# Additional intermediate/working files to ignore
+public/vfs/courses/*/*_provisional.json           # Agent working files
+public/vfs/courses/*/*_backup.json                # Backup files
+public/vfs/courses/*/*_deletion_report.json       # Deletion reports
+public/vfs/courses/*/*_gaps_report.json           # Gap analysis reports
+public/vfs/courses/*/*_reextraction_manifest.json # Re-extraction manifests
+public/vfs/courses/*/*_fd_report.json             # FD/LUT collision reports
+public/vfs/courses/*/*_collision*.json            # Collision files
+public/vfs/courses/*/*_collision*.txt             # Collision text files
+
 # Essential files committed to git:
 # - courses-manifest.json (course index, 3KB)
 # - seed_pairs.json (Phase 1 output, ~500KB)
