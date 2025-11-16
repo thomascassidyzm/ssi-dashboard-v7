@@ -19,6 +19,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
+const { execSync } = require('child_process');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3456;
@@ -137,6 +138,149 @@ app.get('/api/courses/:courseCode', async (req, res) => {
   }
 });
 
+// =======================================
+// PHASE VALIDATION FUNCTIONS
+// =======================================
+
+/**
+ * Run phase-specific validation after completion
+ * @param {string} courseCode - Course identifier
+ * @param {number} phase - Phase number that just completed
+ * @returns {boolean} - true if validation passed, false otherwise
+ */
+async function runPhaseValidation(courseCode, phase) {
+  console.log(`\n🔬 Running Phase ${phase} validation for ${courseCode}...`);
+
+  try {
+    if (phase === 1) {
+      // Phase 2: FD Collision Check
+      const seedPairsFile = path.join(VFS_ROOT, courseCode, 'phase_1', 'seed_pairs.json');
+
+      if (!fs.existsSync(seedPairsFile)) {
+        console.log(`   ❌ seed_pairs.json not found`);
+        return false;
+      }
+
+      const validatorPath = path.join(__dirname, '../../scripts/phase2_collision_check.cjs');
+
+      try {
+        // Run Phase 2 collision check - it exits with 0 on success, 1 on failure
+        execSync(`node "${validatorPath}" "${seedPairsFile}"`, {
+          cwd: VFS_ROOT,
+          stdio: 'inherit'
+        });
+        console.log(`   ✅ Phase 2 validation PASSED - no FD violations`);
+        return true;
+      } catch (error) {
+        console.log(`   ❌ Phase 2 validation FAILED - FD violations detected`);
+        console.log(`   📄 Review report: ${seedPairsFile.replace('.json', '_phase2_report.json')}`);
+        return false;
+      }
+    }
+
+    if (phase === 3) {
+      // Phase 3 validators (run AFTER deduplication in Phase 3 server)
+      const legoPairsFile = path.join(VFS_ROOT, courseCode, 'phase_3', 'lego_pairs.json');
+
+      if (!fs.existsSync(legoPairsFile)) {
+        console.log(`   ❌ lego_pairs.json not found`);
+        return false;
+      }
+
+      // Validator 1: LEGO-level FD check (learner uncertainty test)
+      const fdValidatorPath = path.join(__dirname, '../../scripts/validation/check-lego-fd-violations.cjs');
+
+      try {
+        execSync(`node "${fdValidatorPath}" "${legoPairsFile}"`, {
+          cwd: VFS_ROOT,
+          stdio: 'inherit'
+        });
+        console.log(`   ✅ LEGO FD validation PASSED - no learner uncertainty`);
+      } catch (error) {
+        console.log(`   ❌ LEGO FD validation FAILED - learner uncertainty detected`);
+        console.log(`   📄 Review report: ${legoPairsFile.replace('.json', '_fd_report.json')}`);
+        return false;
+      }
+
+      // Validator 2: Infinitive form check (English linguistic rules)
+      const infinitiveValidatorPath = path.join(__dirname, '../../scripts/validation/check-infinitive-forms.js');
+
+      try {
+        execSync(`node "${infinitiveValidatorPath}" "${legoPairsFile}"`, {
+          cwd: VFS_ROOT,
+          stdio: 'inherit'
+        });
+        console.log(`   ✅ Infinitive form validation PASSED`);
+      } catch (error) {
+        console.log(`   ❌ Infinitive form validation FAILED - linguistic violations found`);
+        return false;
+      }
+
+      console.log(`   ✅ All Phase 3 validations PASSED`);
+      return true;
+    }
+
+    // No validators for other phases yet
+    console.log(`   ℹ️  No validators configured for Phase ${phase}`);
+    return true;
+
+  } catch (error) {
+    console.error(`   ❌ Validation error:`, error.message);
+    return false;
+  }
+}
+
+/**
+ * Programmatically trigger a phase (used by auto-progression)
+ * @param {string} courseCode - Course identifier
+ * @param {number} phase - Phase number to trigger
+ * @param {number} totalSeeds - Number of seeds (defaults to 668)
+ */
+async function triggerPhase(courseCode, phase, totalSeeds = 668) {
+  try {
+    console.log(`\n🚀 Auto-triggering Phase ${phase} for ${courseCode}`);
+
+    // Initialize or update course state
+    let state = courseStates.get(courseCode) || {
+      courseCode,
+      currentPhase: null,
+      status: 'idle',
+      phasesCompleted: [],
+      startedAt: new Date().toISOString(),
+      lastUpdated: new Date().toISOString(),
+      waitingForApproval: false
+    };
+
+    state.currentPhase = phase;
+    state.status = 'running';
+    state.lastUpdated = new Date().toISOString();
+    courseStates.set(courseCode, state);
+
+    // Delegate to appropriate phase server
+    const phaseServer = PHASE_SERVERS[phase];
+    if (!phaseServer) {
+      throw new Error(`No server configured for Phase ${phase}`);
+    }
+
+    console.log(`   Delegating to: ${phaseServer}`);
+
+    await axios.post(`${phaseServer}/start`, {
+      courseCode,
+      totalSeeds
+    });
+
+    console.log(`   ✓ Phase ${phase} started successfully`);
+  } catch (error) {
+    console.error(`   ❌ Failed to trigger Phase ${phase}:`, error.message);
+
+    const state = courseStates.get(courseCode);
+    if (state) {
+      state.status = 'error';
+      state.error = error.message;
+    }
+  }
+}
+
 /**
  * GET /api/courses/:courseCode/status
  * Get current phase status for a course
@@ -249,22 +393,39 @@ app.post('/phase-complete', async (req, res) => {
       state.phasesCompleted.push(phase);
     }
 
-    // Check checkpoint mode
+    // ALWAYS run phase-specific validators (regardless of checkpoint mode)
+    // Validation is a data integrity check, not a user approval gate
+    const validationPassed = await runPhaseValidation(courseCode, phase);
+
+    if (!validationPassed) {
+      // Validation FAILED - block all progression
+      state.status = 'validation_failed';
+      state.currentPhase = null;
+      console.log(`   ❌ Validation failed - manual intervention required`);
+      return;
+    }
+
+    // Validation PASSED - now check checkpoint mode for progression
     if (CHECKPOINT_MODE === 'manual') {
       state.status = 'waiting_for_approval';
       state.waitingForApproval = true;
       console.log(`   ⏸️  Waiting for manual approval (checkpoint mode: manual)`);
     } else if (CHECKPOINT_MODE === 'gated') {
-      // TODO: Run validators, auto-proceed if passed
-      state.status = 'idle';
-      state.currentPhase = null;
-      console.log(`   ✓ Phase complete, ready for next phase`);
+      // Auto-trigger next phase
+      const nextPhase = getNextPhase(phase);
+      if (nextPhase) {
+        console.log(`   ✓ Validation passed, auto-triggering Phase ${nextPhase}`);
+        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
+      } else {
+        state.status = 'complete';
+        console.log(`   🎉 All phases complete!`);
+      }
     } else {
       // Full automation - trigger next phase
       const nextPhase = getNextPhase(phase);
       if (nextPhase) {
         console.log(`   → Auto-triggering Phase ${nextPhase} (checkpoint mode: full)`);
-        // TODO: Trigger next phase
+        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
       } else {
         state.status = 'complete';
         console.log(`   🎉 All phases complete!`);

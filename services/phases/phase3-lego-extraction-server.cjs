@@ -5,8 +5,8 @@
  *
  * Responsibilities:
  * - Spawn parallel Claude Code browser sessions for LEGO extraction
- * - Watch for phase3-segment-* branches (using watch_and_merge_branches.cjs)
- * - Auto-merge segments when all agents complete
+ * - Manage segmentation strategy (small/medium/large courses)
+ * - Watch for phase3-segment-* branches
  * - Validate LEGO quality (FD compliance, complete tiling)
  * - Write lego_pairs.json to VFS
  * - Report completion to orchestrator
@@ -17,15 +17,18 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { spawn } = require('child_process');
+const { spawn, execSync } = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
+const { promisify } = require('util');
+const execAsync = promisify(require('child_process').exec);
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3458;
 const VFS_ROOT = process.env.VFS_ROOT;
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (LEGO Extraction)';
+const AGENT_SPAWN_DELAY = process.env.AGENT_SPAWN_DELAY || 3000;
 
 // Validate config
 if (!VFS_ROOT) {
@@ -45,257 +48,83 @@ const activeJobs = new Map();
 const watchers = new Map();
 
 /**
- * Calculate parallelization strategy
+ * Calculate segmentation strategy based on course size
  *
  * Strategies:
- * - quick_test: 5 windows × 2 agents × 1 seed = 10 seeds (testing)
- * - balanced: 10 windows × 7 agents × 10 seeds = 700 seeds (DEFAULT)
- * - fast: 20 windows × 10 agents × 5 seeds = 1000 seeds (faster, more RAM)
- * - custom: User-specified values
+ * - SMALL_TEST: ≤20 seeds → 2 segments, 2 agents/segment, ~3 seeds/agent
+ * - MEDIUM_SINGLE: 21-100 seeds → 1 segment, 5-10 agents, 10 seeds/agent
+ * - LARGE_MULTI: >100 seeds → 100 seeds/segment, 10 agents/segment, 10 seeds/agent
  */
-function calculateParallelization(strategy, totalSeeds, custom = {}) {
-  let config;
+function calculateSegmentation(totalSeeds) {
+  let segmentSize, seedsPerAgent;
 
-  switch (strategy) {
-    case 'quick_test':
-      config = {
-        browserWindows: 5,
-        agentsPerWindow: 2,
-        seedsPerAgent: 1
-      };
-      break;
-
-    case 'balanced':
-      config = {
-        browserWindows: 10,
-        agentsPerWindow: 7,
-        seedsPerAgent: 10
-      };
-      break;
-
-    case 'fast':
-      config = {
-        browserWindows: 20,
-        agentsPerWindow: 10,
-        seedsPerAgent: 5
-      };
-      break;
-
-    case 'custom':
-      if (!custom.browserWindows || !custom.agentsPerWindow || !custom.seedsPerAgent) {
-        throw new Error('Custom strategy requires browserWindows, agentsPerWindow, and seedsPerAgent');
-      }
-      config = {
-        browserWindows: custom.browserWindows,
-        agentsPerWindow: custom.agentsPerWindow,
-        seedsPerAgent: custom.seedsPerAgent
-      };
-      break;
-
-    default:
-      throw new Error(`Unknown strategy: ${strategy}`);
+  // Determine segment size and seeds per agent based on course size
+  if (totalSeeds <= 20) {
+    // SMALL TEST COURSES (≤20 seeds)
+    segmentSize = Math.ceil(totalSeeds / 2); // 2 segments
+    seedsPerAgent = Math.ceil(segmentSize / 2); // ~2-3 seeds/agent
+  } else if (totalSeeds <= 100) {
+    // MEDIUM COURSES (21-100 seeds)
+    segmentSize = totalSeeds; // No segmentation
+    seedsPerAgent = 10; // 10 seeds per agent
+  } else {
+    // LARGE COURSES (>100 seeds)
+    segmentSize = 100;
+    seedsPerAgent = 10;
   }
 
-  // Calculate totals
-  config.totalAgents = config.browserWindows * config.agentsPerWindow;
-  config.capacity = config.totalAgents * config.seedsPerAgent;
+  // Calculate segments
+  const segments = [];
+  for (let i = 0; i < totalSeeds; i += segmentSize) {
+    const segmentStart = i + 1;
+    const segmentEnd = Math.min(i + segmentSize, totalSeeds);
+    const segmentSeeds = segmentEnd - segmentStart + 1;
+    const agentsNeeded = Math.ceil(segmentSeeds / seedsPerAgent);
 
-  // Warn if capacity doesn't match seeds
-  if (config.capacity < totalSeeds) {
-    console.warn(`⚠️  Warning: Capacity (${config.capacity}) < Total Seeds (${totalSeeds})`);
-    console.warn(`   Some seeds will not be processed!`);
+    segments.push({
+      segmentNumber: segments.length + 1,
+      startSeed: segmentStart,
+      endSeed: segmentEnd,
+      seedCount: segmentSeeds,
+      agentCount: agentsNeeded,
+      seedsPerAgent: Math.ceil(segmentSeeds / agentsNeeded)
+    });
   }
 
-  return config;
-}
+  const totalAgents = segments.reduce((sum, seg) => sum + seg.agentCount, 0);
 
-/**
- * POST /start
- * Start Phase 3 LEGO extraction for a course
- *
- * Body: {
- *   courseCode: string,
- *   totalSeeds: number,
- *
- *   // Parallelization strategy (choose one):
- *   strategy?: 'balanced' | 'fast' | 'quick_test' | 'custom'
- *
- *   // Custom parallelization (if strategy='custom'):
- *   browserWindows?: number,      // How many browser windows to open
- *   agentsPerWindow?: number,     // How many Claude Code agents per window (using Task tool)
- *   seedsPerAgent?: number        // How many seeds each agent processes
- * }
- */
-app.post('/start', async (req, res) => {
-  const {
-    courseCode,
+  return {
     totalSeeds,
-    strategy = 'balanced',
-    browserWindows,
-    agentsPerWindow,
-    seedsPerAgent
-  } = req.body;
-
-  if (!courseCode || !totalSeeds) {
-    return res.status(400).json({ error: 'courseCode and totalSeeds required' });
-  }
-
-  // Check if already running
-  if (activeJobs.has(courseCode)) {
-    return res.status(409).json({ error: `Phase 3 already running for ${courseCode}` });
-  }
-
-  // Calculate parallelization strategy
-  const config = calculateParallelization(strategy, totalSeeds, {
-    browserWindows,
-    agentsPerWindow,
-    seedsPerAgent
-  });
-
-  console.log(`\n🚀 Starting Phase 3 for ${courseCode}`);
-  console.log(`   Strategy: ${strategy}`);
-  console.log(`   Total seeds: ${totalSeeds}`);
-  console.log(`   Browser windows: ${config.browserWindows}`);
-  console.log(`   Agents per window: ${config.agentsPerWindow}`);
-  console.log(`   Seeds per agent: ${config.seedsPerAgent}`);
-  console.log(`   Total agents: ${config.totalAgents}`);
-
-  // Initialize job state
-  const job = {
-    courseCode,
-    totalSeeds,
-    config,
-    status: 'spawning_agents',
-    startedAt: new Date().toISOString(),
-    windowsSpawned: 0,
-    segmentsDetected: 0,
-    merged: false,
-    error: null
+    segmentSize,
+    seedsPerAgent,
+    segmentCount: segments.length,
+    totalAgents,
+    segments,
+    strategy: totalSeeds <= 20 ? 'SMALL_TEST' :
+              totalSeeds <= 100 ? 'MEDIUM_SINGLE' :
+              'LARGE_MULTI'
   };
-
-  activeJobs.set(courseCode, job);
-
-  try {
-    // Start branch watcher for phase3-segment-* branches
-    await startBranchWatcher(courseCode, config.browserWindows);
-
-    // Spawn parallel browser windows (each will spawn sub-agents)
-    await spawnBrowserWindows(courseCode, totalSeeds, config);
-
-    res.json({
-      success: true,
-      message: `Phase 3 started for ${courseCode}`,
-      job: {
-        courseCode,
-        totalSeeds,
-        strategy,
-        config,
-        status: 'running'
-      }
-    });
-  } catch (error) {
-    job.status = 'failed';
-    job.error = error.message;
-    activeJobs.delete(courseCode);
-
-    res.status(500).json({
-      error: 'Failed to start Phase 3',
-      details: error.message
-    });
-  }
-});
-
-/**
- * Start branch watcher for phase3-segment-* branches
- */
-async function startBranchWatcher(courseCode, expectedSegments) {
-  const watcherScript = path.join(__dirname, '../orchestration/watch_and_merge_branches.cjs');
-
-  if (!await fs.pathExists(watcherScript)) {
-    throw new Error('Branch watcher script not found: watch_and_merge_branches.cjs');
-  }
-
-  console.log(`\n👁️  Starting branch watcher for ${courseCode}`);
-  console.log(`   Expected segments: ${expectedSegments}`);
-  console.log(`   Branch pattern: phase3-segment-*-${courseCode}`);
-
-  const watcher = spawn('node', [
-    watcherScript,
-    courseCode,
-    'phase3',
-    expectedSegments.toString()
-  ], {
-    stdio: 'inherit',
-    env: {
-      ...process.env,
-      VFS_ROOT,
-      ORCHESTRATOR_URL
-    }
-  });
-
-  watcher.on('error', (err) => {
-    console.error(`❌ Branch watcher error:`, err);
-  });
-
-  watcher.on('exit', (code) => {
-    console.log(`✅ Branch watcher exited with code ${code}`);
-    watchers.delete(courseCode);
-  });
-
-  watchers.set(courseCode, watcher);
 }
 
 /**
- * Spawn browser windows for parallel LEGO extraction
- */
-async function spawnBrowserWindows(courseCode, totalSeeds, config) {
-  const { browserWindows, agentsPerWindow, seedsPerAgent } = config;
-
-  console.log(`\n🌐 Spawning ${browserWindows} browser windows...`);
-
-  const seedsPerWindow = agentsPerWindow * seedsPerAgent;
-
-  for (let i = 0; i < browserWindows; i++) {
-    const startSeed = (i * seedsPerWindow) + 1;
-    const endSeed = Math.min(startSeed + seedsPerWindow - 1, totalSeeds);
-
-    console.log(`   Window ${i + 1}/${browserWindows}: Seeds ${startSeed}-${endSeed}`);
-
-    // Generate master prompt for this window
-    const prompt = generatePhase3MasterPrompt(courseCode, {
-      startSeed,
-      endSeed,
-      agentCount: agentsPerWindow,
-      seedsPerAgent
-    });
-
-    // Spawn browser window (opens claude.ai)
-    // In production, this would use Playwright/Puppeteer
-    // For now, just log the prompt
-    console.log(`\n📝 Prompt for Window ${i + 1}:`);
-    console.log(prompt);
-    console.log('\n' + '='.repeat(80) + '\n');
-  }
-
-  const job = activeJobs.get(courseCode);
-  if (job) {
-    job.windowsSpawned = browserWindows;
-    job.status = 'running';
-  }
-}
-
-/**
- * Generate Phase 3 master prompt for a browser window
+ * Generate Phase 3 Master Prompt
  */
 function generatePhase3MasterPrompt(courseCode, params) {
-  const { startSeed, endSeed, agentCount, seedsPerAgent } = params;
+  const { target, known, startSeed, endSeed } = params;
   const totalSeeds = endSeed - startSeed + 1;
+
+  // Quick Test mode: 10 seeds = 5 agents × 2 seeds each
+  // Normal mode: 10 seeds per agent
+  const seedsPerAgent = totalSeeds === 10 ? 2 : 10;
+  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+
+  // Calculate segment number from startSeed
   const segmentNum = Math.floor((startSeed - 1) / 100) + 1;
 
-  return `# Phase 3 Master Orchestrator: LEGO Extraction (Window ${segmentNum})
+  return `# Phase 3 Master Orchestrator: LEGO Extraction (Segment-Based)
 
 **Course**: ${courseCode}
-**Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
+**Segment Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
 **Sub-Agents**: ${agentCount} parallel agents
 **Seeds per agent**: ${seedsPerAgent}
 
@@ -305,37 +134,53 @@ function generatePhase3MasterPrompt(courseCode, params) {
 
 You are the **Master Orchestrator** for this segment. Your job is to:
 
-1. **Read Phase 3 intelligence** from \`public/docs/phase_intelligence/phase_3.md\` (v7.0)
+1. **Read Phase 3 intelligence** (v7.0 - Two Heuristics Edition)
 2. **Spawn ${agentCount} sub-agents in parallel** (ONE message with ${agentCount} Task tool calls)
 3. **Each sub-agent extracts ${seedsPerAgent} seeds** with IDENTICAL prompt (only seed range differs)
 4. **Wait for all ${agentCount} to complete**
-5. **Verify all sub-agents committed to branch**: \`phase3-segment-${segmentNum}-${courseCode}\`
-6. **Done** - Branch watcher auto-merges when all segments complete
+5. **Verify all sub-agents successfully POSTed** to API
+6. **Done** - Vercel auto-deploys results
 
 **CRITICAL**: Use ONE message with multiple Task tool calls to spawn all agents simultaneously.
 
-**OUTPUT METHOD**: All agents commit to segment-specific branch:
+**OUTPUT METHOD**: Each sub-agent commits to segment-specific branch:
+- Calculate segment: Math.floor((startSeed - 1) / 100) + 1
 - Branch name: \`phase3-segment-${segmentNum}-${courseCode}\`
-- All ${agentCount} agents push to SAME branch (git handles concurrent commits)
+- All agents push to SAME branch (git handles concurrent commits)
 
 ---
 
-## 📚 PHASE 3 INTELLIGENCE (v7.0 - Examples-First Edition)
+## 📚 PHASE 3 INTELLIGENCE (Single Source of Truth)
 
-**YOU AND YOUR SUB-AGENTS MUST READ**: \`public/docs/phase_intelligence/phase_3.md\`
+**YOU AND YOUR SUB-AGENTS MUST READ**: https://ssi-dashboard-v7.vercel.app/api/intelligence/3
 
-This file contains the complete Phase 3 methodology through three examples:
-- **Two Core Heuristics**: Remove learner uncertainty, Maximize patterns with minimum vocab
-- **Example 1**: Word order differences (English→Spanish)
-- **Example 2**: Complex construction (English→Mandarin)
-- **Example 3**: Multi-language demonstration
-- **Quality checklist**: FD compliance, complete tiling, componentization
+(Raw markdown for Phase 3 v7.0 - Two Heuristics Edition)
+
+Or if local files are available: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
+
+This is the **ONLY authoritative source** for Phase 3 extraction methodology.
+
+**This file contains the complete v7.0 methodology including**:
+- **Two Core Heuristics**: (1) Remove learner uncertainty, (2) Maximize patterns with minimum vocab
+- Three comprehensive examples (Spanish, Chinese, multilingual)
+- Forward/Backward Sweep Algorithm
+- Overlapping chains for recombination power
+- Complete worked examples with reasoning
+
+**Your sub-agents MUST read this file** before starting extraction. The highlights below are NOT a replacement for reading the full methodology.
+
+**Key principles** (highlights only - see full file for details):
+- **Heuristic 1**: Remove learner uncertainty (no standalone pronouns/articles/particles)
+- **Heuristic 2**: Maximize patterns with minimum vocab (overlapping chains)
+- **Forward + Backward sweeps**: Both required
+- **Componentize ALL M-types**: Show word-by-word literal mappings
+- **Mark all new: true**: Phase 3 introduces LEGOs
 
 ---
 
 ## 🚀 SUB-AGENT SPAWNING
 
-Spawn ${agentCount} sub-agents, each handling ${seedsPerAgent} seeds.
+You will spawn ${agentCount} sub-agents, each handling ${seedsPerAgent} seeds.
 
 **Seed distribution**:
 ${Array.from({length: agentCount}, (_, i) => {
@@ -344,7 +189,7 @@ ${Array.from({length: agentCount}, (_, i) => {
   return `- Agent ${i + 1}: S${String(agentStart).padStart(4, '0')}-S${String(agentEnd).padStart(4, '0')}`;
 }).join('\n')}
 
-**Input file**: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
+**Input file**: Read from \`seed_pairs.json\` (or segment file if using segmentation)
 
 ---
 
@@ -357,22 +202,27 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 ## 📚 STEP 1: READ PHASE INTELLIGENCE
 
-**Read this file NOW** (v7.0 - Examples-First Edition):
-- \`public/docs/phase_intelligence/phase_3.md\`
-
-This is the **ONLY authoritative source** for Phase 3 extraction.
+**Read this document NOW** (430 lines - v7.0):
+- https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs_v7.md
+- Or local: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
 
 ---
 
 ## 🚨 STEP 2: TWO CORE HEURISTICS (From Intelligence Doc)
 
+**Apply these heuristics to EVERY seed**:
+
 **Heuristic 1: Remove Learner Uncertainty**
-When learner hears KNOWN phrase → ZERO uncertainty about TARGET phrase
+- When learner hears KNOWN → ZERO uncertainty about TARGET
+- No standalone pronouns/articles/particles (él, she, una, the, de, of, 的)
+- If uncertain → chunk UP with context
 
 **Heuristic 2: Maximize Patterns with Minimum Vocab**
-Create overlapping chunks → each LEGO generates multiple sentence patterns
+- Create overlapping chunks when pedagogically valuable
+- Each LEGO should generate multiple practice sentences
+- Example: "tardaron" in both "las noticias tardaron" AND "tardaron varias horas"
 
-**All extraction strategies serve these two goals.**
+**All strategies serve these two goals** (forward/backward sweeps, M-types, components)
 
 ---
 
@@ -380,7 +230,7 @@ Create overlapping chunks → each LEGO generates multiple sentence patterns
 
 **Extract LEGOs from**: Seeds S00XX through S00YY (${seedsPerAgent} seeds)
 
-**Get seed_pairs.json from**: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
+**Get seed_pairs.json from**: https://ssi-dashboard-v7.vercel.app/vfs/courses/${target}_for_${known}/seed_pairs.json
 
 ---
 
@@ -388,45 +238,45 @@ Create overlapping chunks → each LEGO generates multiple sentence patterns
 
 For EACH of your ${seedsPerAgent} seeds:
 
-1. **Chunk KNOWN first** - Bidirectional sweep (forward + backward)
-2. **Map to TARGET** - Find corresponding TARGET chunks
-3. **Apply FD test** - Known → exactly ONE Target? (zero uncertainty)
-4. **If FD fails** - Chunk UP (make it bigger with context)
-5. **Check registry** - Any FCFS collisions? (use larger chunk if collision)
-6. **Extract BOTH A+M** - Overlapping coverage (same words in both types)
-7. **Componentize M-types** - ALL words in components array
-8. **Verify tiling** - Perfect reconstruction from LEGOs
+1. **Use <thinking> tags** - reason through extraction step-by-step
+2. **Apply Heuristic 1**: Does KNOWN → TARGET have zero uncertainty? If NO → chunk UP
+3. **Apply Heuristic 2**: Can overlaps add recombination power? Create if valuable
+4. **Both sweeps**: Forward (KNOWN left-to-right) + Backward (TARGET right-to-left)
+5. **Components**: Add to every M-type (word-by-word literal mapping)
+6. **Final check**: Any standalone pronouns/articles/particles? If yes → pair with context
 
 ---
 
 ## 📤 STEP 5: OUTPUT
-
-**Branch**: \`phase3-segment-${segmentNum}-${courseCode}\`
 
 **File**: \`public/vfs/courses/${courseCode}/segments/segment_${segmentNum}/agent_XX_output.json\`
 
 **Format**:
 \`\`\`json
 {
-  "agent_id": "agent_0X",
+  "agent_id": "agent_0Y",
   "seed_range": "S00XX-S00YY",
-  "extracted_at": "2025-11-15T...",
-  "methodology": "Phase 3 v5.0 - Functional Determinism",
+  "extracted_at": "<ISO timestamp>",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "seeds": [
     {
       "seed_id": "S00XX",
-      "seed_pair": {
-        "target": "...",
-        "known": "..."
-      },
+      "seed_pair": ["target sentence", "known sentence"],
       "legos": [
         {
-          "provisional_id": "PROV_S00XX_01",
-          "type": "A" | "M",
-          "target": "...",
-          "known": "...",
+          "id": "S00XXL01",
+          "type": "A",
+          "target": "word",
+          "known": "word",
+          "new": true
+        },
+        {
+          "id": "S00XXL02",
+          "type": "M",
+          "target": "multi word",
+          "known": "multi word",
           "new": true,
-          "components": [["target_word", "known_word"]]  // M-types only
+          "components": [["multi", "multi"], ["word", "word"]]
         }
       ]
     }
@@ -434,32 +284,303 @@ For EACH of your ${seedsPerAgent} seeds:
 }
 \`\`\`
 
-**Commit and push**:
-\`\`\`bash
-git checkout -b phase3-segment-${segmentNum}-${courseCode}
-git add public/vfs/courses/${courseCode}/segments/segment_${segmentNum}/agent_XX_output.json
-git commit -m "Phase 3: Agent XX extracts S00XX-S00YY"
-git push origin phase3-segment-${segmentNum}-${courseCode}
+**IMPORTANT**: Save the file using the Write tool, then commit and push to your session branch (Claude Code on Web handles git automatically).
 \`\`\`
 
 ---
 
-## ✅ STEP 6: VERIFY
+## 🎬 EXECUTE NOW
 
-After committing, verify:
-1. File exists in branch: \`phase3-segment-${segmentNum}-${courseCode}\`
-2. All ${seedsPerAgent} seeds extracted
-3. All LEGOs have correct format (A/M type, components for M)
-4. Complete tiling verified (seeds reconstruct from LEGOs)
+### Step 1: Spawn All ${agentCount} Sub-Agents in Parallel
 
-Done! Branch watcher will auto-merge when all segments complete.
+**CRITICAL**: Use ONE message with ${agentCount} Task tool calls.
+
+For each agent, use this exact prompt structure (changing only the seed range):
+
 \`\`\`
+[Copy the entire "Phase 3 Sub-Agent" prompt template above]
+[Change only: "Extract S00XX through S00YY" to match agent's range]
+\`\`\`
+
+### Step 2: Monitor Completion
+
+Watch for all ${agentCount} sub-agents to report successful API POST.
+
+Each will show:
+\`\`\`
+✅ Successfully POSTed 10 seeds to API
+   Total seeds in lego_pairs.json: XX
+\`\`\`
+
+### Step 3: Verify
+
+Once all complete, verify results at:
+https://ssi-dashboard-v7.vercel.app/courses/${courseCode}
+
+### Step 4: Done!
+
+All agents will commit to their session branches. The master orchestrator will merge them automatically.
 
 ---
 
-## 🎬 ACTION
+## ✅ SUCCESS CRITERIA
 
-**Spawn all ${agentCount} agents NOW** using ONE message with ${agentCount} Task tool calls!`;
+- All ${totalSeeds} seeds extracted
+- Zero Pragmatic FD violations (no standalone pronouns/articles/particles)
+- Overlapping chains used where pedagogically valuable
+- Components on all M-types
+- All marked \`new: true\`
+
+**Target time**: ~15-20 minutes for ${totalSeeds} seeds
+
+**You are building world-class language learning materials!**
+`;
+}
+
+/**
+ * POST /start
+ * Start Phase 3 LEGO extraction for a course
+ *
+ * Body: {
+ *   courseCode: string,
+ *   totalSeeds: number,
+ *   strategy?: 'balanced' | 'fast' | 'quick_test' | 'auto',
+ *   target?: string,    // e.g., 'spa', 'cmn'
+ *   known?: string      // e.g., 'eng'
+ * }
+ */
+app.post('/start', async (req, res) => {
+  const {
+    courseCode,
+    totalSeeds,
+    strategy = 'auto',
+    target,
+    known,
+    startSeed = 1,
+    endSeed = totalSeeds
+  } = req.body;
+
+  if (!courseCode || !totalSeeds) {
+    return res.status(400).json({ error: 'courseCode and totalSeeds required' });
+  }
+
+  // Check if already running
+  if (activeJobs.has(courseCode)) {
+    return res.status(409).json({ error: `Phase 3 already running for ${courseCode}` });
+  }
+
+  console.log(`\n🚀 Starting Phase 3 for ${courseCode}`);
+  console.log(`   Total seeds: ${totalSeeds}`);
+  console.log(`   Strategy: ${strategy}`);
+
+  // Calculate segmentation
+  const segmentation = calculateSegmentation(totalSeeds);
+
+  console.log(`   Segmentation: ${segmentation.strategy}`);
+  console.log(`   Segments: ${segmentation.segmentCount}`);
+  console.log(`   Total agents: ${segmentation.totalAgents}`);
+
+  // Initialize job state
+  const job = {
+    courseCode,
+    totalSeeds,
+    segmentation,
+    status: 'spawning_orchestrators',
+    startedAt: new Date().toISOString(),
+    orchestratorsSpawned: 0,
+    branchesDetected: 0,
+    merged: false,
+    error: null
+  };
+
+  activeJobs.set(courseCode, job);
+
+  try {
+    // Start branch watcher for phase3-segment-* branches
+    await startBranchWatcher(courseCode, segmentation.segmentCount);
+
+    // Spawn browser windows (one per segment)
+    await spawnSegmentOrchestrators(courseCode, {
+      target: target || courseCode.split('_')[0],
+      known: known || courseCode.split('_')[2],
+      startSeed,
+      endSeed
+    }, segmentation);
+
+    res.json({
+      success: true,
+      message: `Phase 3 started for ${courseCode}`,
+      job: {
+        courseCode,
+        totalSeeds,
+        strategy: segmentation.strategy,
+        segmentCount: segmentation.segmentCount,
+        totalAgents: segmentation.totalAgents,
+        status: 'running'
+      }
+    });
+  } catch (error) {
+    job.status = 'failed';
+    job.error = error.message;
+    activeJobs.delete(courseCode);
+
+    console.error(`❌ Failed to start Phase 3 for ${courseCode}:`, error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * Run deduplication (Phase 3.5) after all segments merged
+ * Marks duplicate LEGOs with new: false and ref: firstSeedId
+ */
+async function runDeduplication(courseCode) {
+  console.log(`\n🔍 Running deduplication (Phase 3.5) for ${courseCode}...`);
+
+  const legoPairsPath = path.join(VFS_ROOT, courseCode, 'phase_3', 'lego_pairs.json');
+
+  if (!fs.existsSync(legoPairsPath)) {
+    console.log(`   ⚠️  lego_pairs.json not found, skipping deduplication`);
+    return;
+  }
+
+  try {
+    // Read lego_pairs.json
+    const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
+
+    // Track seen LEGOs: key = "target|known", value = first seed_id
+    const seenLegos = new Map();
+    let duplicateCount = 0;
+    let totalLegos = 0;
+
+    // Process each seed in order
+    legoPairs.seeds.forEach((seed) => {
+      const seedId = seed.seed_id;
+
+      seed.legos.forEach((lego) => {
+        totalLegos++;
+        const key = `${lego.target}|${lego.known}`;
+
+        if (seenLegos.has(key)) {
+          // Duplicate found - mark as repeat
+          const firstSeedId = seenLegos.get(key);
+          lego.new = false;
+          lego.ref = firstSeedId;
+          duplicateCount++;
+        } else {
+          // First occurrence - mark as debut
+          seenLegos.set(key, seedId);
+          lego.new = true;
+          delete lego.ref; // Remove ref if exists from previous runs
+        }
+      });
+    });
+
+    // Write updated file
+    fs.writeFileSync(legoPairsPath, JSON.stringify(legoPairs, null, 2));
+
+    console.log(`   ✅ Deduplication complete!`);
+    console.log(`      Total LEGOs: ${totalLegos}`);
+    console.log(`      Unique (new: true): ${seenLegos.size}`);
+    console.log(`      Duplicates (new: false): ${duplicateCount}`);
+
+  } catch (error) {
+    console.error(`   ❌ Deduplication failed:`, error.message);
+    throw error;
+  }
+}
+
+/**
+ * Start branch watcher for phase3-segment-* branches
+ */
+async function startBranchWatcher(courseCode, expectedSegments) {
+  console.log(`\n👁️  Starting branch watcher for ${courseCode}`);
+  console.log(`   Expected segments: ${expectedSegments}`);
+  console.log(`   Branch pattern: phase3-segment-*-${courseCode}`);
+
+  // For now, just log - actual watcher implementation would go here
+  // In production, this would spawn a process that polls git for branches
+  // and auto-merges when all segments are complete
+
+  return Promise.resolve();
+}
+
+/**
+ * Spawn browser windows for parallel LEGO extraction
+ */
+async function spawnSegmentOrchestrators(courseCode, params, segmentation) {
+  const { target, known, startSeed, endSeed } = params;
+  const { segments } = segmentation;
+
+  console.log(`\n🌐 Spawning ${segments.length} segment orchestrator(s)...`);
+
+  // Import browser spawning utility
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+
+  for (let i = 0; i < segments.length; i++) {
+    const segment = segments[i];
+    const segmentStart = startSeed + segment.startSeed - 1;
+    const segmentEnd = startSeed + segment.endSeed - 1;
+
+    console.log(`\n  Segment ${segment.segmentNumber}/${segments.length}:`);
+    console.log(`    Seed range: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')}`);
+    console.log(`    Agents: ${segment.agentCount}`);
+
+    // Generate master prompt for this segment
+    const prompt = generatePhase3MasterPrompt(courseCode, {
+      target,
+      known,
+      startSeed: segmentStart,
+      endSeed: segmentEnd
+    });
+
+    // Spawn browser window
+    if (spawnClaudeWebAgent) {
+      try {
+        await spawnClaudeWebAgent(prompt, 3, 'safari');
+        console.log(`    ✅ Orchestrator spawned`);
+
+        const job = activeJobs.get(courseCode);
+        if (job) job.orchestratorsSpawned++;
+
+        // Delay between spawns
+        if (i < segments.length - 1) {
+          console.log(`    Waiting ${AGENT_SPAWN_DELAY}ms before next segment...`);
+          await new Promise(resolve => setTimeout(resolve, AGENT_SPAWN_DELAY));
+        }
+      } catch (error) {
+        console.error(`    ❌ Failed to spawn orchestrator:`, error.message);
+      }
+    } else {
+      // Fallback: just log the prompt
+      console.log(`\n📝 Prompt for Segment ${segment.segmentNumber}:`);
+      console.log(prompt);
+      console.log('\n' + '='.repeat(80) + '\n');
+    }
+  }
+
+  const job = activeJobs.get(courseCode);
+  if (job) {
+    job.status = 'waiting_for_completion';
+  }
+
+  console.log(`\n✅ All ${segments.length} orchestrator(s) spawned`);
+  console.log(`   Monitor browser tabs for progress`);
+}
+
+/**
+ * Load web agent spawner (if available)
+ */
+async function loadWebAgentSpawner() {
+  try {
+    const spawnerPath = path.join(__dirname, '../../spawn_claude_web_agent.cjs');
+    if (await fs.pathExists(spawnerPath)) {
+      const { spawnClaudeWebAgent } = require(spawnerPath);
+      return spawnClaudeWebAgent;
+    }
+  } catch (error) {
+    console.warn(`⚠️  Web agent spawner not available: ${error.message}`);
+  }
+  return null;
 }
 
 /**
@@ -468,11 +589,10 @@ Done! Branch watcher will auto-merge when all segments complete.
  */
 app.get('/status/:courseCode', (req, res) => {
   const { courseCode } = req.params;
-
   const job = activeJobs.get(courseCode);
 
   if (!job) {
-    return res.status(404).json({ error: 'No Phase 3 job found for this course' });
+    return res.status(404).json({ error: `No Phase 3 job found for ${courseCode}` });
   }
 
   res.json(job);
@@ -484,11 +604,13 @@ app.get('/status/:courseCode', (req, res) => {
  */
 app.post('/stop/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
-
   const job = activeJobs.get(courseCode);
+
   if (!job) {
-    return res.status(404).json({ error: 'No Phase 3 job found for this course' });
+    return res.status(404).json({ error: `No Phase 3 job found for ${courseCode}` });
   }
+
+  console.log(`\n🛑 Stopping Phase 3 for ${courseCode}...`);
 
   // Kill branch watcher
   const watcher = watchers.get(courseCode);
@@ -506,19 +628,93 @@ app.post('/stop/:courseCode', async (req, res) => {
 });
 
 /**
+ * POST /phase-complete
+ * Webhook for segments reporting completion
+ */
+app.post('/phase-complete', async (req, res) => {
+  const { courseCode, segmentNumber, status } = req.body;
+
+  console.log(`\n✅ Segment ${segmentNumber} ${status} for ${courseCode}`);
+
+  const job = activeJobs.get(courseCode);
+  if (!job) {
+    return res.json({ acknowledged: true });
+  }
+
+  job.branchesDetected = (job.branchesDetected || 0) + 1;
+
+  // Check if all segments complete
+  if (job.branchesDetected >= job.segmentation.segmentCount) {
+    console.log(`\n🎉 All segments complete for ${courseCode}!`);
+
+    // Run deduplication (Phase 3.5)
+    await runDeduplication(courseCode);
+
+    job.status = 'complete';
+    job.merged = true;
+
+    // Notify orchestrator
+    await notifyOrchestrator(courseCode, 'complete');
+  }
+
+  res.json({ acknowledged: true });
+});
+
+/**
+ * Notify orchestrator of phase completion
+ */
+async function notifyOrchestrator(courseCode, status) {
+  try {
+    const axios = require('axios');
+    await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
+      phase: 3,
+      courseCode,
+      status,
+      timestamp: new Date().toISOString()
+    });
+    console.log(`✅ Notified orchestrator: Phase 3 ${status} for ${courseCode}`);
+  } catch (error) {
+    console.error(`⚠️  Failed to notify orchestrator:`, error.message);
+  }
+}
+
+/**
  * GET /health
  * Health check
  */
 app.get('/health', (req, res) => {
   res.json({
     service: SERVICE_NAME,
-    status: 'running',
+    status: 'healthy',
     port: PORT,
-    activeJobs: activeJobs.size
+    vfsRoot: VFS_ROOT,
+    activeJobs: activeJobs.size,
+    watchers: watchers.size
   });
 });
 
-// Start server
+/**
+ * Start server
+ */
 app.listen(PORT, () => {
+  console.log('');
   console.log(`✅ ${SERVICE_NAME} listening on port ${PORT}`);
+  console.log(`   VFS Root: ${VFS_ROOT}`);
+  console.log(`   Orchestrator: ${ORCHESTRATOR_URL}`);
+  console.log('');
+});
+
+/**
+ * Graceful shutdown
+ */
+process.on('SIGTERM', () => {
+  console.log('\n🛑 Shutting down Phase 3 server...');
+
+  // Stop all watchers
+  for (const [courseCode, watcher] of watchers.entries()) {
+    console.log(`  Stopping watcher for ${courseCode}...`);
+    watcher.kill('SIGTERM');
+  }
+
+  process.exit(0);
 });

@@ -6220,6 +6220,193 @@ app.get('/api/courses/list', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/validate/all
+ * Validate all courses in the VFS
+ */
+app.get('/api/courses/validate/all', async (req, res) => {
+  try {
+    const { validateAllCourses } = require('./course-validator.cjs');
+    const results = validateAllCourses(CONFIG.VFS_ROOT);
+    res.json(results);
+  } catch (err) {
+    console.error('[Validation] Error validating all courses:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/validate
+ * Validate a specific course and get recommendations
+ */
+app.get('/api/courses/:courseCode/validate', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const { generateReport } = require('./course-validator.cjs');
+    const report = generateReport(courseCode, CONFIG.VFS_ROOT);
+    res.json(report);
+  } catch (err) {
+    console.error(`[Validation] Error validating ${req.params.courseCode}:`, err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/validate/deep
+ * Deep validation of course data - checks content quality within each phase
+ */
+app.get('/api/courses/:courseCode/validate/deep', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const { deepValidateCourse, getIssuesSummary } = require('./phase-deep-validator.cjs');
+    const result = deepValidateCourse(courseCode, CONFIG.VFS_ROOT);
+    const summary = getIssuesSummary(result);
+    res.json({ ...result, summary });
+  } catch (err) {
+    console.error(`[Validation] Error deep validating ${req.params.courseCode}:`, err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/validate/deep/:phase
+ * Deep validation of a specific phase
+ */
+app.get('/api/courses/:courseCode/validate/deep/:phase', async (req, res) => {
+  try {
+    const { courseCode, phase } = req.params;
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+
+    const validators = require('./phase-deep-validator.cjs');
+    let result;
+
+    switch (phase) {
+      case 'phase_1':
+        result = validators.validatePhase1Seeds(coursePath);
+        break;
+      case 'phase_3':
+        result = validators.validatePhase3Legos(coursePath);
+        break;
+      case 'phase_5':
+        result = validators.validatePhase5Baskets(coursePath);
+        break;
+      case 'phase_6':
+        result = validators.validatePhase6Introductions(coursePath);
+        break;
+      case 'phase_7':
+        result = validators.validatePhase7Scaffolds(coursePath);
+        break;
+      default:
+        return res.status(400).json({ error: `Unknown phase: ${phase}` });
+    }
+
+    res.json(result);
+  } catch (err) {
+    console.error(`[Validation] Error deep validating ${phase} for ${req.params.courseCode}:`, err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/rerun/:phase
+ * Trigger a rerun of a specific phase for a course
+ *
+ * Phases supported (per APML v8.1.0):
+ * - phase_1: Seeds generation
+ * - phase_3: LEGO extraction
+ * - phase_5: Baskets generation
+ * - phase_6: Introductions generation
+ * - phase_7: Scaffolds generation
+ */
+app.post('/api/courses/:courseCode/rerun/:phase', async (req, res) => {
+  try {
+    const { courseCode, phase } = req.params;
+
+    console.log(`[Validation] Triggering ${phase} rerun for ${courseCode}`);
+
+    // Validate course exists
+    const coursePath = path.join(CONFIG.VFS_ROOT, courseCode);
+    if (!await fs.pathExists(coursePath)) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    // Validate prerequisites
+    const { validateCourse } = require('./course-validator.cjs');
+    const validation = validateCourse(courseCode, CONFIG.VFS_ROOT);
+
+    const phaseInfo = validation.phases[phase];
+    if (!phaseInfo) {
+      return res.status(400).json({ error: `Invalid phase: ${phase}` });
+    }
+
+    if (phaseInfo.blockedBy && phaseInfo.blockedBy.length > 0) {
+      return res.status(400).json({
+        error: `Cannot run ${phase}: blocked by ${phaseInfo.blockedBy.join(', ')}`,
+        blockedBy: phaseInfo.blockedBy
+      });
+    }
+
+    // Map phase to appropriate endpoint/action
+    let redirectUrl;
+    let jobInfo = {
+      courseCode,
+      phase,
+      status: 'initiated',
+      timestamp: new Date().toISOString()
+    };
+
+    switch (phase) {
+      case 'phase_1':
+        // Phase 1 requires prepare -> orchestrate -> validate workflow
+        redirectUrl = `/api/courses/${courseCode}/phase/1/prepare`;
+        jobInfo.workflow = ['prepare', 'orchestrate', 'validate'];
+        jobInfo.nextStep = 'Call /api/courses/:courseCode/phase/1/orchestrate after preparation';
+        break;
+
+      case 'phase_3':
+        // Phase 3: LEGO extraction - would need to be implemented
+        return res.status(501).json({
+          error: 'Phase 3 rerun not yet implemented',
+          message: 'Manual LEGO extraction required for now'
+        });
+
+      case 'phase_5':
+        // Phase 5: Baskets generation
+        redirectUrl = `/api/courses/${courseCode}/baskets/generate`;
+        jobInfo.action = 'baskets_generation';
+        break;
+
+      case 'phase_6':
+        // Phase 6: Introductions generation
+        return res.status(501).json({
+          error: 'Phase 6 rerun not yet implemented',
+          message: 'Introduction generation endpoint not yet available'
+        });
+
+      case 'phase_7':
+        // Phase 7: Scaffolds
+        redirectUrl = `/api/courses/${courseCode}/phase/5`;
+        jobInfo.action = 'scaffolds_generation';
+        break;
+
+      default:
+        return res.status(400).json({ error: `Phase ${phase} rerun not supported` });
+    }
+
+    // Return job info instead of auto-triggering (safer for now)
+    res.json({
+      message: `Ready to trigger ${phase} for ${courseCode}`,
+      redirectUrl,
+      jobInfo,
+      instructions: `POST to ${redirectUrl} to start the job`
+    });
+
+  } catch (err) {
+    console.error(`[Validation] Error triggering rerun:`, err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode
  * Get detailed course information including translations and LEGOs
  *

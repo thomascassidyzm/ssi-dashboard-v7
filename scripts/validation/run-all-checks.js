@@ -20,6 +20,7 @@ import { execSync } from 'child_process';
 import { checkGateViolations } from './check-gate-violations.js';
 import { checkSpeakability } from './check-speakability.js';
 import { checkConjunctions } from './check-conjunctions.js';
+import { checkInfinitiveForms } from './check-infinitive-forms.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -70,6 +71,7 @@ function runAllChecks(coursePath) {
   log(`Date: ${new Date().toISOString()}`, 'blue');
 
   const results = {
+    infinitiveForms: null,
     gateViolations: null,
     speakability: null,
     conjunctions: null,
@@ -80,9 +82,28 @@ function runAllChecks(coursePath) {
   // Track timing
   const startTime = Date.now();
 
+  // 0. Infinitive Forms Check (Phase 3 - lego_pairs.json)
+  log('\n');
+  banner('CHECK 0/5: INFINITIVE FORMS (Phase 3)', 'yellow');
+  try {
+    const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
+    if (fs.existsSync(legoPairsPath)) {
+      results.infinitiveForms = checkInfinitiveForms(legoPairsPath);
+      if (!results.infinitiveForms.success) {
+        results.overallSuccess = false;
+      }
+    } else {
+      log(`⚠️  Skipping: lego_pairs.json not found`, 'yellow');
+      results.infinitiveForms = { success: true, skipped: true };
+    }
+  } catch (error) {
+    log(`Error running infinitive forms check: ${error.message}`, 'red');
+    results.overallSuccess = false;
+  }
+
   // 1. Gate Violations Check
   log('\n');
-  banner('CHECK 1/4: GATE VIOLATIONS', 'yellow');
+  banner('CHECK 1/5: GATE VIOLATIONS (Phase 5)', 'yellow');
   try {
     results.gateViolations = checkGateViolations(basketsPath);
     if (!results.gateViolations.success) {
@@ -95,7 +116,7 @@ function runAllChecks(coursePath) {
 
   // 2. Speakability Check
   log('\n');
-  banner('CHECK 2/4: SPEAKABILITY (4+ LEGOs)', 'yellow');
+  banner('CHECK 2/5: SPEAKABILITY (4+ LEGOs)', 'yellow');
   try {
     results.speakability = checkSpeakability(basketsPath);
     if (!results.speakability.success) {
@@ -108,7 +129,7 @@ function runAllChecks(coursePath) {
 
   // 3. Conjunction Usage Check
   log('\n');
-  banner('CHECK 3/4: CONJUNCTION USAGE', 'yellow');
+  banner('CHECK 3/5: CONJUNCTION USAGE', 'yellow');
   try {
     results.conjunctions = checkConjunctions(basketsPath);
     if (!results.conjunctions.success) {
@@ -121,7 +142,7 @@ function runAllChecks(coursePath) {
 
   // 4. Pattern Analysis Check
   log('\n');
-  banner('CHECK 4/4: PATTERN ANALYSIS', 'yellow');
+  banner('CHECK 4/5: PATTERN ANALYSIS', 'yellow');
   try {
     // Run the phase5_pattern_analysis.cjs script
     const scriptPath = path.join(__dirname, '..', 'phase5_pattern_analysis.cjs');
@@ -163,6 +184,15 @@ function runAllChecks(coursePath) {
 
   log('Validation Results:', 'bold');
   log('─'.repeat(80), 'cyan');
+
+  if (results.infinitiveForms && !results.infinitiveForms.skipped) {
+    const status = results.infinitiveForms.success ? '✓ PASS' : '✗ FAIL';
+    const color = results.infinitiveForms.success ? 'green' : 'red';
+    const critical = results.infinitiveForms.bySeverity?.CRITICAL || 0;
+    const high = results.infinitiveForms.bySeverity?.HIGH || 0;
+    const total = results.infinitiveForms.violations?.length || 0;
+    log(`  Infinitive Forms:    ${status} (Crit:${critical} High:${high} Total:${total})`, color);
+  }
 
   if (results.gateViolations) {
     const status = results.gateViolations.success ? '✓ PASS' : '✗ FAIL';

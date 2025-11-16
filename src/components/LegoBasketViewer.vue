@@ -823,9 +823,13 @@ export default {
 
         // Apply all edits to basket
         const updatedBasket = JSON.parse(JSON.stringify(seedData.basket))
+        const legoBaskets = this.getLegoBaskets(updatedBasket)
 
-        for (const legoKey in this.getLegoBaskets(updatedBasket)) {
-          const phrases = updatedBasket[legoKey].practice_phrases
+        for (const legoKey in legoBaskets) {
+          const legoData = legoBaskets[legoKey]
+          if (!legoData.practice_phrases) continue
+
+          const phrases = legoData.practice_phrases
           const newPhrases = []
 
           for (let idx = 0; idx < phrases.length; idx++) {
@@ -843,7 +847,8 @@ export default {
             newPhrases.push(phrases[idx])
           }
 
-          updatedBasket[legoKey].practice_phrases = newPhrases
+          // Update the practice_phrases in the correct location
+          legoData.practice_phrases = newPhrases
         }
 
         // Save to API
