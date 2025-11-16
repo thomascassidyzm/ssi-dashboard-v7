@@ -662,19 +662,25 @@ async function triggerPhase(phase) {
 
 // LUT Check & Basket Management Functions
 async function runLUTCheck() {
-  if (!selectedCourse.value) return
+  if (!selectedCourse.value) {
+    alert('Please select a course first')
+    return
+  }
 
   lutCheckLoading.value = true
   lutCheckResult.value = null
 
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    console.log(`[LUT Check] Calling: ${apiBase}/api/courses/${selectedCourse.value}/phase/3/validate`)
+
     const response = await fetch(
       `${apiBase}/api/courses/${selectedCourse.value}/phase/3/validate`,
       { method: 'POST' }
     )
 
     const result = await response.json()
+    console.log('[LUT Check] Result:', result)
     lutCheckResult.value = result
 
     if (result.status === 'fail') {
@@ -683,20 +689,25 @@ async function runLUTCheck() {
     }
   } catch (err) {
     console.error('Error running LUT check:', err)
-    alert(`Error: ${err.message}`)
+    alert(`Error running LUT check:\n\n${err.message}\n\nMake sure the orchestrator is running on port 3456`)
   } finally {
     lutCheckLoading.value = false
   }
 }
 
 async function runBasketGapAnalysis() {
-  if (!selectedCourse.value) return
+  if (!selectedCourse.value) {
+    alert('Please select a course first')
+    return
+  }
 
   gapAnalysisLoading.value = true
   gapAnalysisResult.value = null
 
   try {
     const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    console.log(`[Gap Analysis] Calling: ${apiBase}/api/courses/${selectedCourse.value}/baskets/gaps`)
+
     const response = await fetch(
       `${apiBase}/api/courses/${selectedCourse.value}/baskets/gaps`
     )
@@ -706,10 +717,12 @@ async function runBasketGapAnalysis() {
       throw new Error(error.error || `HTTP ${response.status}`)
     }
 
-    gapAnalysisResult.value = await response.json()
+    const result = await response.json()
+    console.log('[Gap Analysis] Result:', result)
+    gapAnalysisResult.value = result
   } catch (err) {
     console.error('Error running gap analysis:', err)
-    alert(`Error: ${err.message}`)
+    alert(`Error running gap analysis:\n\n${err.message}\n\nMake sure the orchestrator is running on port 3456`)
   } finally {
     gapAnalysisLoading.value = false
   }
