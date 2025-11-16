@@ -14,14 +14,18 @@
  * ❌ S0042L05: { target: "你是对的", known: "you are correct" }
  * ❌ S0087L12: { target: "你们是对的", known: "you are correct" } ← COLLISION!
  *
- * When learner hears "you are correct", which target? Ambiguous!
+ * THE CHUNKING-UP SOLUTION:
+ * If "you are correct" alone creates a collision, don't extract it as a standalone LEGO.
+ * Instead, chunk it WITH adjacent LEGOs in the same seed to create a MOLECULAR_LEGO:
  *
- * EXAMPLE FIX:
- * ✅ S0042L05: { target: "你是对的", known: "you are correct" }
- * ✅ S0087L12: { target: "你们是对的", known: "you are all correct" } ← Distinct!
+ * ✅ S0087L12: { target: "我觉得你们是对的", known: "I think you are correct" }
+ *    (Chunked up with preceding context to disambiguate)
  *
- * REMEDIATION: Re-extract affected seeds with instruction to disambiguate
- * KNOWN phrases (e.g., "you are correct" vs "you are all correct")
+ * YOU CANNOT ADD WORDS - only use what's in the seed sentence.
+ * Chunking up = combining adjacent LEGOs into larger units.
+ *
+ * REMEDIATION: Re-extract affected seeds with instruction to avoid colliding
+ * LEGO pairs by chunking them up with adjacent context within the seed.
  *
  * Usage: node check-lego-fd-violations.cjs <lego_pairs_path>
  * Example: node check-lego-fd-violations.cjs public/vfs/courses/spa_for_eng/phase_3/lego_pairs.json
@@ -176,7 +180,7 @@ if (violations.length === 0) {
     reExtractionManifest.violations_by_seed[seedId] = seedViolations.map(v => ({
       collision_key: v.known,
       conflicting_targets: v.mappings.map(m => m.target),
-      instruction: `Registry collision: KNOWN key "${v.known}" maps to multiple TARGET values. When re-extracting, disambiguate the KNOWN phrase to create distinct keys (e.g., "you are correct" vs "you are all correct").`
+      instruction: `Registry collision: KNOWN key "${v.known}" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words.`
     }));
   });
 
@@ -189,9 +193,9 @@ if (violations.length === 0) {
   console.log('   REMEDIATION STRATEGY:');
   console.log('   1. Re-run Phase 3 for affected seeds only');
   console.log('   2. Include collision details in the master prompt');
-  console.log('   3. Instruct Claude to disambiguate KNOWN phrases');
-  console.log('      (e.g., "you are correct" → "you are all correct")');
-  console.log('   4. Ensure each KNOWN key maps to exactly one TARGET value\n');
+  console.log('   3. Instruct Claude: DO NOT extract colliding phrase as standalone LEGO');
+  console.log('   4. Instead: CHUNK UP with adjacent LEGOs to create MOLECULAR_LEGO');
+  console.log('   5. Constraint: Use ONLY words from seed sentence (no additions)\n');
 
   // Write detailed report
   const report = {
