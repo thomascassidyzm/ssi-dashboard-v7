@@ -531,6 +531,81 @@
           </div>
         </div>
 
+        <!-- Enhanced Progress Details (NEW!) -->
+        <div v-if="phaseDetails" class="mb-6 p-4 bg-slate-700/50 rounded-lg border border-slate-600">
+          <div class="space-y-3">
+            <!-- Status & Sub-status -->
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm font-medium text-emerald-400">{{ phaseDetails.status }}</div>
+                <div v-if="phaseDetails.subStatus" class="text-xs text-slate-400">{{ phaseDetails.subStatus }}</div>
+              </div>
+
+              <!-- Estimated Completion -->
+              <div v-if="estimatedCompletion" class="text-right">
+                <div class="text-xs text-slate-400">ETA</div>
+                <div class="text-sm font-medium text-emerald-400">{{ formatETA(estimatedCompletion) }}</div>
+              </div>
+            </div>
+
+            <!-- Branch Progress (for Phase 3 & 5) -->
+            <div v-if="phaseDetails.milestones && phaseDetails.milestones.branchesExpected" class="space-y-2">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-slate-300">Branches Detected</span>
+                <span class="font-medium text-white">
+                  {{ phaseDetails.milestones.branchesDetected }} / {{ phaseDetails.milestones.branchesExpected }}
+                </span>
+              </div>
+
+              <!-- Progress bar for branches -->
+              <div class="w-full bg-slate-800 rounded-full h-2">
+                <div
+                  class="bg-emerald-500 h-2 rounded-full transition-all duration-300"
+                  :style="{ width: `${(phaseDetails.milestones.branchesDetected / phaseDetails.milestones.branchesExpected) * 100}%` }"
+                ></div>
+              </div>
+
+              <!-- Velocity Info -->
+              <div v-if="phaseDetails.timing && phaseDetails.timing.velocity" class="flex items-center justify-between text-xs text-slate-400">
+                <span>Avg: {{ Math.floor(phaseDetails.timing.velocity.avgSecondsPerBranch / 60) }}m per branch</span>
+                <span>Remaining: {{ formatSeconds(phaseDetails.timing.velocity.estimatedSecondsRemaining) }}</span>
+              </div>
+            </div>
+
+            <!-- Coverage Info (Phase 3 & 5) -->
+            <div v-if="phaseDetails.coverage" class="text-xs text-slate-400">
+              <span v-if="phaseDetails.coverage.strategy">Strategy: {{ phaseDetails.coverage.strategy }}</span>
+              <span v-if="phaseDetails.coverage.totalAgents"> • {{ phaseDetails.coverage.totalAgents }} agents</span>
+              <span v-if="phaseDetails.coverage.coveragePercent"> • {{ phaseDetails.coverage.coveragePercent }}% coverage</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Branch Timeline (NEW!) -->
+        <div v-if="phaseDetails && phaseDetails.branches && phaseDetails.branches.length > 0" class="mb-6 p-4 bg-slate-700/30 rounded-lg border border-slate-600">
+          <div class="text-sm font-medium text-slate-300 mb-3">Branch Timeline</div>
+          <div class="space-y-2 max-h-60 overflow-y-auto">
+            <div
+              v-for="(branch, idx) in phaseDetails.branches"
+              :key="branch.branchName"
+              class="flex items-center gap-3 text-sm"
+            >
+              <div class="flex-shrink-0">
+                <span v-if="branch.merged" class="text-green-400">✅</span>
+                <span v-else class="text-yellow-400">⏳</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-slate-300 truncate">
+                  {{ branch.seedRange || `Branch ${idx + 1}` }}
+                </div>
+                <div class="text-xs text-slate-500">
+                  {{ formatTimestamp(branch.detectedAt) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Phase List -->
         <div class="space-y-3">
           <div v-for="phase in phaseNames" :key="phase.id" class="flex items-center gap-3">
@@ -640,6 +715,10 @@ const courseCode = ref(null)
 const currentPhase = ref('initializing')
 const progress = ref(0)
 const errorMessage = ref('')
+
+// Enhanced tracking from phase servers
+const phaseDetails = ref(null)
+const estimatedCompletion = ref(null)
 
 // Smart Resume
 const analyzing = ref(false)
@@ -872,12 +951,22 @@ const startGeneration = async (force = false) => {
 }
 
 const startPolling = (code) => {
-  // Poll every 30 seconds (phases take minutes, not seconds)
+  // Poll every 5 seconds for real-time updates
   pollInterval = setInterval(async () => {
     try {
       const status = await api.course.getStatus(code)
-      currentPhase.value = status.phase || 'initializing'
+      currentPhase.value = status.currentPhase ? `Phase ${status.currentPhase}` : 'initializing'
       progress.value = status.progress || 0
+
+      // Capture enhanced tracking
+      if (status.phaseDetails) {
+        phaseDetails.value = status.phaseDetails
+      }
+
+      // Capture estimated completion
+      if (status.estimatedCompletion) {
+        estimatedCompletion.value = status.estimatedCompletion
+      }
 
       // Check if completed or error
       if (status.status === 'completed') {
@@ -892,7 +981,7 @@ const startPolling = (code) => {
     } catch (error) {
       console.error('Failed to fetch course status:', error)
     }
-  }, 30000)
+  }, 5000) // Poll every 5 seconds
 }
 
 const stopPolling = () => {
@@ -900,6 +989,52 @@ const stopPolling = () => {
     clearInterval(pollInterval)
     pollInterval = null
   }
+}
+
+// Helper functions for formatting enhanced tracking data
+const formatETA = (isoTimestamp) => {
+  const eta = new Date(isoTimestamp)
+  const now = new Date()
+  const diffMs = eta - now
+  const diffMins = Math.floor(diffMs / 60000)
+
+  if (diffMins < 1) return 'Less than 1m'
+  if (diffMins < 60) return `${diffMins}m`
+
+  const hours = Math.floor(diffMins / 60)
+  const mins = diffMins % 60
+  return `${hours}h ${mins}m`
+}
+
+const formatSeconds = (seconds) => {
+  if (seconds < 60) return `${seconds}s`
+
+  const mins = Math.floor(seconds / 60)
+  const secs = seconds % 60
+
+  if (mins < 60) return `${mins}m ${secs}s`
+
+  const hours = Math.floor(mins / 60)
+  const remainingMins = mins % 60
+  return `${hours}h ${remainingMins}m`
+}
+
+const formatTimestamp = (isoTimestamp) => {
+  const time = new Date(isoTimestamp)
+  const now = new Date()
+  const diffMs = now - time
+  const diffMins = Math.floor(diffMs / 60000)
+
+  if (diffMins < 1) return 'Just now'
+  if (diffMins === 1) return '1 minute ago'
+  if (diffMins < 60) return `${diffMins} minutes ago`
+
+  const hours = Math.floor(diffMins / 60)
+  if (hours === 1) return '1 hour ago'
+  if (hours < 24) return `${hours} hours ago`
+
+  const days = Math.floor(hours / 24)
+  return days === 1 ? '1 day ago' : `${days} days ago`
 }
 
 const startNew = () => {
