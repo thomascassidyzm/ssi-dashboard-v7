@@ -13,7 +13,8 @@ import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
-import CourseValidator from '../views/CourseValidator.vue'
+// DEPRECATED: CourseValidator.vue - incomplete, removed temporarily
+// import CourseValidator from '../views/CourseValidator.vue'
 // DEPRECATED: Skills.vue - unused feature
 // import Skills from '../views/Skills.vue'
 
@@ -40,19 +41,20 @@ const routes = [
     name: 'CourseBrowser',
     component: CourseBrowser
   },
-  {
-    path: '/validate',
-    name: 'CourseValidator',
-    component: CourseValidator,
-    meta: { title: 'Course Validator' }
-  },
-  {
-    path: '/validate/:courseCode',
-    name: 'CourseValidatorDetail',
-    component: CourseValidator,
-    props: true,
-    meta: { title: 'Course Validator' }
-  },
+  // DEPRECATED: CourseValidator routes - incomplete, removed temporarily
+  // {
+  //   path: '/validate',
+  //   name: 'CourseValidator',
+  //   component: CourseValidator,
+  //   meta: { title: 'Course Validator' }
+  // },
+  // {
+  //   path: '/validate/:courseCode',
+  //   name: 'CourseValidatorDetail',
+  //   component: CourseValidator,
+  //   props: true,
+  //   meta: { title: 'Course Validator' }
+  // },
   {
     path: '/courses/:courseCode',
     name: 'CourseEditor',
