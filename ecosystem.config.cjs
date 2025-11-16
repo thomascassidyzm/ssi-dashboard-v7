@@ -18,8 +18,8 @@ require('dotenv').config();
 module.exports = {
   apps: [
     {
-      name: 'automation-server',
-      script: 'automation_server.cjs',
+      name: 'ssi-automation',
+      script: 'start-automation.cjs',
       cwd: __dirname,
       instances: 1,
       autorestart: true,

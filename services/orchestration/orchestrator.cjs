@@ -611,6 +611,84 @@ app.get('/health/all', async (req, res) => {
 });
 
 /**
+ * GET /api/health
+ * Dashboard-compatible health check
+ */
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    version: '7.0.0',
+    timestamp: new Date().toISOString(),
+    vfs_root: VFS_ROOT,
+    jobs_active: courseStates.size
+  });
+});
+
+/**
+ * GET /api/languages
+ * Return ISO 639-3 language codes for dashboard
+ */
+app.get('/api/languages', (req, res) => {
+  const languages = [
+    { code: 'afr', name: 'Afrikaans', native: 'Afrikaans' },
+    { code: 'ara', name: 'Arabic', native: 'العربية' },
+    { code: 'ben', name: 'Bengali', native: 'বাংলা' },
+    { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
+    { code: 'bul', name: 'Bulgarian', native: 'Български' },
+    { code: 'cat', name: 'Catalan', native: 'Català' },
+    { code: 'cmn', name: 'Mandarin Chinese', native: '中文' },
+    { code: 'cor', name: 'Cornish', native: 'Kernewek' },
+    { code: 'ces', name: 'Czech', native: 'Čeština' },
+    { code: 'cym', name: 'Welsh', native: 'Cymraeg' },
+    { code: 'dan', name: 'Danish', native: 'Dansk' },
+    { code: 'deu', name: 'German', native: 'Deutsch' },
+    { code: 'ell', name: 'Greek', native: 'Ελληνικά' },
+    { code: 'eng', name: 'English', native: 'English' },
+    { code: 'eus', name: 'Basque', native: 'Euskara' },
+    { code: 'fas', name: 'Persian', native: 'فارسی' },
+    { code: 'fra', name: 'French', native: 'Français' },
+    { code: 'gla', name: 'Scottish Gaelic', native: 'Gàidhlig' },
+    { code: 'gle', name: 'Irish', native: 'Gaeilge' },
+    { code: 'glv', name: 'Manx', native: 'Gaelg' },
+    { code: 'heb', name: 'Hebrew', native: 'עברית' },
+    { code: 'hin', name: 'Hindi', native: 'हिन्दी' },
+    { code: 'hrv', name: 'Croatian', native: 'Hrvatski' },
+    { code: 'hun', name: 'Hungarian', native: 'Magyar' },
+    { code: 'ind', name: 'Indonesian', native: 'Bahasa Indonesia' },
+    { code: 'isl', name: 'Icelandic', native: 'Íslenska' },
+    { code: 'ita', name: 'Italian', native: 'Italiano' },
+    { code: 'jpn', name: 'Japanese', native: '日本語' },
+    { code: 'kor', name: 'Korean', native: '한국어' },
+    { code: 'mkd', name: 'Macedonian', native: 'Македонски' },
+    { code: 'msa', name: 'Malay', native: 'Bahasa Melayu' },
+    { code: 'nld', name: 'Dutch', native: 'Nederlands' },
+    { code: 'nor', name: 'Norwegian', native: 'Norsk' },
+    { code: 'pol', name: 'Polish', native: 'Polski' },
+    { code: 'por', name: 'Portuguese', native: 'Português' },
+    { code: 'ron', name: 'Romanian', native: 'Română' },
+    { code: 'rus', name: 'Russian', native: 'Русский' },
+    { code: 'slk', name: 'Slovak', native: 'Slovenčina' },
+    { code: 'slv', name: 'Slovenian', native: 'Slovenščina' },
+    { code: 'spa', name: 'Spanish', native: 'Español' },
+    { code: 'srp', name: 'Serbian', native: 'Српски' },
+    { code: 'swa', name: 'Swahili', native: 'Kiswahili' },
+    { code: 'swe', name: 'Swedish', native: 'Svenska' },
+    { code: 'tgl', name: 'Tagalog', native: 'Tagalog' },
+    { code: 'tha', name: 'Thai', native: 'ไทย' },
+    { code: 'tur', name: 'Turkish', native: 'Türkçe' },
+    { code: 'ukr', name: 'Ukrainian', native: 'Українська' },
+    { code: 'urd', name: 'Urdu', native: 'اردو' },
+    { code: 'vie', name: 'Vietnamese', native: 'Tiếng Việt' },
+    { code: 'yue', name: 'Cantonese', native: '粵語' }
+  ];
+
+  // Sort by English name
+  languages.sort((a, b) => a.name.localeCompare(b.name));
+
+  res.json(languages);
+});
+
+/**
  * Helper: Determine course status from manifest data
  */
 function determineStatus(course) {
