@@ -33,35 +33,59 @@ function extractSpanishWords(text) {
 }
 
 /**
- * Build recent context showing 10 most recent seeds with LEGO tiles
- * This provides vocabulary context without massive whitelist
+ * Build recent seed pairs (just the sentences, no LEGOs)
+ * Provides 10 most recent complete sentences for context
  */
-function buildRecentContext(legoPairsData, currentSeedIndex, maxRecent = 10) {
-  const recentSeeds = {};
+function buildRecentSeedPairs(legoPairsData, currentSeedIndex, maxRecent = 10) {
+  const recentSeeds = [];
   const allSeedsArray = legoPairsData.seeds;
 
   if (currentSeedIndex > 0) {
     const startIndex = Math.max(0, currentSeedIndex - maxRecent);
     for (let i = startIndex; i < currentSeedIndex; i++) {
       const recentSeed = allSeedsArray[i];
-
-      // Build tiled sentence with pipes separating LEGOs
-      const knownTiled = recentSeed.legos.map(l => l.known).join(' | ');
-      const targetTiled = recentSeed.legos.map(l => l.target).join(' | ');
-
-      // Extract new LEGOs for this seed
-      const newLegos = recentSeed.legos
-        .filter(l => l.new)
-        .map(l => [l.id, l.known, l.target]);
-
-      recentSeeds[recentSeed.seed_id] = {
-        sentence: [knownTiled, targetTiled],
-        new_legos: newLegos
-      };
+      recentSeeds.push({
+        seed_id: recentSeed.seed_id,
+        known: recentSeed.seed_pair[1],  // Spanish
+        target: recentSeed.seed_pair[0]  // English
+      });
     }
   }
 
   return recentSeeds;
+}
+
+/**
+ * Build list of 30 most recent NEW LEGOs (sliding window)
+ * This ensures agents focus on recently introduced vocabulary
+ */
+function buildRecentNewLegos(legoPairsData, currentSeedIndex, maxLegos = 30) {
+  const recentNewLegos = [];
+  const allSeedsArray = legoPairsData.seeds;
+
+  // Walk backwards through seeds, collecting NEW LEGOs
+  for (let i = currentSeedIndex - 1; i >= 0 && recentNewLegos.length < maxLegos; i--) {
+    const seed = allSeedsArray[i];
+
+    // Extract NEW LEGOs from this seed (in reverse order to get most recent first)
+    const newLegosInSeed = seed.legos
+      .filter(l => l.new)
+      .reverse();
+
+    for (const lego of newLegosInSeed) {
+      if (recentNewLegos.length >= maxLegos) break;
+
+      recentNewLegos.push({
+        id: lego.id,
+        known: lego.known,
+        target: lego.target,
+        type: lego.type
+      });
+    }
+  }
+
+  // Reverse to get chronological order (oldest to newest)
+  return recentNewLegos.reverse();
 }
 
 /**
@@ -101,8 +125,9 @@ function generateSeedScaffold(seed, legoPairsData, currentSeedIndex) {
     }
   }
 
-  // Build recent context (10 most recent seeds with LEGO tiles and new LEGOs highlighted)
-  const recentContext = buildRecentContext(legoPairsData, currentSeedIndex, 10);
+  // Build recent context: 10 seed pairs + 30 most recent NEW LEGOs
+  const recentSeedPairs = buildRecentSeedPairs(legoPairsData, currentSeedIndex, 10);
+  const recentNewLegos = buildRecentNewLegos(legoPairsData, currentSeedIndex, 30);
 
   // Standard 2-2-2-4 distribution (ALWAYS 10 phrases per LEGO)
   const standardDistribution = {
@@ -154,7 +179,8 @@ function generateSeedScaffold(seed, legoPairsData, currentSeedIndex) {
       known: seed.seed_pair[1],
       target: seed.seed_pair[0]
     },
-    recent_context: recentContext,
+    recent_seed_pairs: recentSeedPairs,
+    recent_new_legos: recentNewLegos,
     legos: legos
   };
 }
@@ -227,19 +253,21 @@ async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
       seed_id: seed.seed_id,
       generation_stage: "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
       seed_pair: seedScaffold.seed_pair,
-      recent_context: seedScaffold.recent_context,
+      recent_seed_pairs: seedScaffold.recent_seed_pairs,
+      recent_new_legos: seedScaffold.recent_new_legos,
       legos: seedScaffold.legos,
       _instructions: {
         task: "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
         methodology: "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
-        vocabulary_sources: "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+        vocabulary_sources: "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
         distribution: "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
         output: `${courseDir}/phase5_outputs/seed_${seed.seed_id.toLowerCase()}.json`
       },
       _stats: {
         new_legos_in_seed: newLegosCount,
         phrases_to_generate: newLegosCount * 10,
-        recent_seeds_count: Object.keys(seedScaffold.recent_context).length
+        recent_seed_pairs_count: seedScaffold.recent_seed_pairs.length,
+        recent_new_legos_count: seedScaffold.recent_new_legos.length
       }
     };
 

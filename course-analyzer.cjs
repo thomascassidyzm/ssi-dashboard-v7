@@ -1,37 +1,84 @@
 #!/usr/bin/env node
 
 /**
- * Course Analyzer - Smart Completeness Checking
+ * Course Analyzer - GitHub API Based Completeness Checking
  *
- * Validates course completeness with intelligent cross-referencing:
+ * Validates course completeness by fetching files from GitHub:
  * - Phase 1: Must have exactly 668 seed pairs
  * - Phase 3: Just validates existence (de-duplication makes count unreliable)
  * - Phase 5: Every LEGO from lego_pairs must have a basket
  * - Phase 6: Every LEGO from lego_pairs must have an introduction
  *
  * Usage:
- *   node course-analyzer.cjs <courseCode> [vfsRoot]
+ *   node course-analyzer.cjs <courseCode> [owner] [repo] [branch]
  *   node course-analyzer.cjs spa_for_eng
  */
 
-const fs = require('fs-extra');
-const path = require('path');
+const https = require('https');
+
+// GitHub configuration
+const DEFAULT_OWNER = 'thomascassidyzm';
+const DEFAULT_REPO = 'ssi-dashboard-v7';
+const DEFAULT_BRANCH = 'main';
+
+/**
+ * Fetch file from GitHub using raw.githubusercontent.com
+ * (GitHub Contents API has 1MB limit, course files are larger)
+ */
+async function fetchGitHubFile(owner, repo, branch, filePath) {
+  return new Promise((resolve, reject) => {
+    const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${filePath}`;
+    const options = {
+      hostname: 'raw.githubusercontent.com',
+      path: `/${owner}/${repo}/${branch}/${filePath}`,
+      method: 'GET',
+      headers: {
+        'User-Agent': 'SSi-Course-Analyzer'
+      }
+    };
+
+    const req = https.request(options, (res) => {
+      let data = '';
+
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      res.on('end', () => {
+        if (res.statusCode === 404) {
+          resolve(null); // File doesn't exist
+        } else if (res.statusCode === 200) {
+          try {
+            resolve(JSON.parse(data));
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON from ${url}: ${error.message}`));
+          }
+        } else {
+          reject(new Error(`GitHub error ${res.statusCode}: ${data}`));
+        }
+      });
+    });
+
+    req.on('error', (error) => {
+      reject(error);
+    });
+
+    req.end();
+  });
+}
 
 /**
  * Analyze a course for completeness
  */
-async function analyzeCourse(courseCode, vfsRoot) {
-  const coursePath = path.join(vfsRoot, courseCode);
-
-  if (!await fs.pathExists(coursePath)) {
-    throw new Error(`Course not found: ${courseCode}`);
-  }
-
+async function analyzeCourse(courseCode, owner = DEFAULT_OWNER, repo = DEFAULT_REPO, branch = DEFAULT_BRANCH) {
   console.log(`\n🔍 Analyzing course: ${courseCode}`);
-  console.log(`📁 Path: ${coursePath}\n`);
+  console.log(`📦 Repository: ${owner}/${repo}@${branch}`);
+  console.log(`📁 Path: ${courseCode}/\n`);
 
   const analysis = {
     courseCode,
+    repository: `${owner}/${repo}`,
+    branch,
     timestamp: new Date().toISOString(),
     phases: {},
     summary: {
@@ -44,11 +91,10 @@ async function analyzeCourse(courseCode, vfsRoot) {
   // PHASE 1: Seed Pairs (Absolute requirement: 668 seeds)
   // ============================================================================
 
-  const seedPairsPath = path.join(coursePath, 'seed_pairs.json');
   const phase1 = {
     name: 'Phase 1: Seed Pairs',
     file: 'seed_pairs.json',
-    exists: await fs.pathExists(seedPairsPath),
+    exists: false,
     complete: false,
     required: 668,
     found: 0,
@@ -56,45 +102,40 @@ async function analyzeCourse(courseCode, vfsRoot) {
     issues: []
   };
 
-  if (phase1.exists) {
-    try {
-      const seedPairsData = await fs.readJson(seedPairsPath);
-      const translations = seedPairsData.translations || {};
-      const seedIds = Object.keys(translations);
+  console.log(`Fetching public/vfs/courses/${courseCode}/seed_pairs.json...`);
+  const seedPairsData = await fetchGitHubFile(owner, repo, branch, `public/vfs/courses/${courseCode}/seed_pairs.json`);
 
-      phase1.found = seedIds.length;
+  if (seedPairsData) {
+    phase1.exists = true;
+    const translations = seedPairsData.translations || {};
+    const seedIds = Object.keys(translations);
 
-      // Check for all 668 seeds
-      const missingSeedIds = [];
-      for (let i = 1; i <= 668; i++) {
-        const seedId = `S${String(i).padStart(4, '0')}`;
-        if (!translations[seedId]) {
-          missingSeedIds.push(seedId);
-        }
+    phase1.found = seedIds.length;
+
+    // Check for all 668 seeds
+    const missingSeedIds = [];
+    for (let i = 1; i <= 668; i++) {
+      const seedId = `S${String(i).padStart(4, '0')}`;
+      if (!translations[seedId]) {
+        missingSeedIds.push(seedId);
       }
+    }
 
-      phase1.missing = missingSeedIds;
-      phase1.complete = missingSeedIds.length === 0;
+    phase1.missing = missingSeedIds;
+    phase1.complete = missingSeedIds.length === 0;
 
-      if (!phase1.complete) {
-        phase1.issues.push({
-          severity: 'error',
-          message: `Missing ${missingSeedIds.length} seed pairs`,
-          count: missingSeedIds.length,
-          samples: missingSeedIds.slice(0, 10)
-        });
-      }
-
-    } catch (error) {
+    if (!phase1.complete) {
       phase1.issues.push({
         severity: 'error',
-        message: `Invalid JSON: ${error.message}`
+        message: `Missing ${missingSeedIds.length} seed pairs`,
+        count: missingSeedIds.length,
+        samples: missingSeedIds.slice(0, 10)
       });
     }
   } else {
     phase1.issues.push({
       severity: 'error',
-      message: 'File does not exist'
+      message: 'File does not exist in repository'
     });
   }
 
@@ -108,11 +149,10 @@ async function analyzeCourse(courseCode, vfsRoot) {
   // PHASE 3: LEGO Pairs (Just validate existence - de-duplication makes count unreliable)
   // ============================================================================
 
-  const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
   const phase3 = {
     name: 'Phase 3: LEGO Pairs',
     file: 'lego_pairs.json',
-    exists: await fs.pathExists(legoPairsPath),
+    exists: false,
     complete: false,
     totalLegos: 0,
     legoIds: [],
@@ -121,48 +161,45 @@ async function analyzeCourse(courseCode, vfsRoot) {
 
   let legoIds = [];
 
-  if (phase3.exists) {
-    try {
-      const legoPairsData = await fs.readJson(legoPairsPath);
+  console.log(`Fetching public/vfs/courses/${courseCode}/lego_pairs.json...`);
+  const legoPairsData = await fetchGitHubFile(owner, repo, branch, `public/vfs/courses/${courseCode}/lego_pairs.json`);
 
-      // Support both v8.1.1 (seeds array) and legacy (lego_pairs object) formats
-      if (legoPairsData.seeds && Array.isArray(legoPairsData.seeds)) {
-        // New format: seeds array
-        for (const seed of legoPairsData.seeds) {
-          if (seed.legos && Array.isArray(seed.legos)) {
-            for (const lego of seed.legos) {
-              if (lego.lego_id) {
-                legoIds.push(lego.lego_id);
-              }
+  if (legoPairsData) {
+    phase3.exists = true;
+
+    // Support both v8.1.1 (seeds array) and legacy (lego_pairs object) formats
+    if (legoPairsData.seeds && Array.isArray(legoPairsData.seeds)) {
+      // New format: seeds array
+      for (const seed of legoPairsData.seeds) {
+        if (seed.legos && Array.isArray(seed.legos)) {
+          for (const lego of seed.legos) {
+            // Support both "id" and "lego_id" field names
+            const legoId = lego.id || lego.lego_id;
+            if (legoId) {
+              legoIds.push(legoId);
             }
           }
         }
-      } else if (legoPairsData.lego_pairs) {
-        // Old format: lego_pairs object
-        legoIds = Object.keys(legoPairsData.lego_pairs);
       }
+    } else if (legoPairsData.lego_pairs) {
+      // Old format: lego_pairs object
+      legoIds = Object.keys(legoPairsData.lego_pairs);
+    }
 
-      phase3.totalLegos = legoIds.length;
-      phase3.legoIds = legoIds;
-      phase3.complete = legoIds.length > 0;
+    phase3.totalLegos = legoIds.length;
+    phase3.legoIds = legoIds;
+    phase3.complete = legoIds.length > 0;
 
-      if (legoIds.length === 0) {
-        phase3.issues.push({
-          severity: 'error',
-          message: 'No LEGOs found in file'
-        });
-      }
-
-    } catch (error) {
+    if (legoIds.length === 0) {
       phase3.issues.push({
         severity: 'error',
-        message: `Invalid JSON: ${error.message}`
+        message: 'No LEGOs found in file'
       });
     }
   } else {
     phase3.issues.push({
       severity: 'error',
-      message: 'File does not exist'
+      message: 'File does not exist in repository'
     });
   }
 
@@ -176,11 +213,10 @@ async function analyzeCourse(courseCode, vfsRoot) {
   // PHASE 5: LEGO Baskets (Cross-reference with Phase 3 LEGOs)
   // ============================================================================
 
-  const legoBasketsPath = path.join(coursePath, 'lego_baskets.json');
   const phase5 = {
     name: 'Phase 5: LEGO Baskets',
     file: 'lego_baskets.json',
-    exists: await fs.pathExists(legoBasketsPath),
+    exists: false,
     complete: false,
     required: phase3.totalLegos,
     found: 0,
@@ -188,44 +224,39 @@ async function analyzeCourse(courseCode, vfsRoot) {
     issues: []
   };
 
-  if (phase5.exists && legoIds.length > 0) {
-    try {
-      const legoBasketsData = await fs.readJson(legoBasketsPath);
-      const baskets = legoBasketsData.baskets || {};
-      const basketLegoIds = Object.keys(baskets);
+  console.log(`Fetching public/vfs/courses/${courseCode}/lego_baskets.json...`);
+  const legoBasketsData = await fetchGitHubFile(owner, repo, branch, `public/vfs/courses/${courseCode}/lego_baskets.json`);
 
-      phase5.found = basketLegoIds.length;
+  if (legoBasketsData && legoIds.length > 0) {
+    phase5.exists = true;
+    const baskets = legoBasketsData.baskets || {};
+    const basketLegoIds = Object.keys(baskets);
 
-      // Cross-reference: Find LEGOs from phase3 that don't have baskets
-      const missingBasketIds = [];
-      for (const legoId of legoIds) {
-        if (!baskets[legoId]) {
-          missingBasketIds.push(legoId);
-        }
+    phase5.found = basketLegoIds.length;
+
+    // Cross-reference: Find LEGOs from phase3 that don't have baskets
+    const missingBasketIds = [];
+    for (const legoId of legoIds) {
+      if (!baskets[legoId]) {
+        missingBasketIds.push(legoId);
       }
+    }
 
-      phase5.missing = missingBasketIds;
-      phase5.complete = missingBasketIds.length === 0;
+    phase5.missing = missingBasketIds;
+    phase5.complete = missingBasketIds.length === 0;
 
-      if (!phase5.complete) {
-        phase5.issues.push({
-          severity: 'error',
-          message: `Missing ${missingBasketIds.length} baskets`,
-          count: missingBasketIds.length,
-          samples: missingBasketIds.slice(0, 10)
-        });
-      }
-
-    } catch (error) {
+    if (!phase5.complete) {
       phase5.issues.push({
         severity: 'error',
-        message: `Invalid JSON: ${error.message}`
+        message: `Missing ${missingBasketIds.length} baskets`,
+        count: missingBasketIds.length,
+        samples: missingBasketIds.slice(0, 10)
       });
     }
-  } else if (!phase5.exists) {
+  } else if (!legoBasketsData) {
     phase5.issues.push({
       severity: 'error',
-      message: 'File does not exist'
+      message: 'File does not exist in repository'
     });
   } else if (legoIds.length === 0) {
     phase5.issues.push({
@@ -235,7 +266,7 @@ async function analyzeCourse(courseCode, vfsRoot) {
   }
 
   analysis.phases.phase_5 = phase5;
-  if (!phase5.complete && phase5.exists) {
+  if (!phase5.complete && legoBasketsData) {
     analysis.summary.complete = false;
     analysis.summary.totalIssues += phase5.issues.length;
   }
@@ -244,11 +275,10 @@ async function analyzeCourse(courseCode, vfsRoot) {
   // PHASE 6: Introductions (Cross-reference with Phase 3 LEGOs)
   // ============================================================================
 
-  const introductionsPath = path.join(coursePath, 'introductions.json');
   const phase6 = {
     name: 'Phase 6: Introductions',
     file: 'introductions.json',
-    exists: await fs.pathExists(introductionsPath),
+    exists: false,
     complete: false,
     required: phase3.totalLegos,
     found: 0,
@@ -256,44 +286,40 @@ async function analyzeCourse(courseCode, vfsRoot) {
     issues: []
   };
 
-  if (phase6.exists && legoIds.length > 0) {
-    try {
-      const introductionsData = await fs.readJson(introductionsPath);
-      const introductions = introductionsData.introductions || {};
-      const introLegoIds = Object.keys(introductions);
+  console.log(`Fetching public/vfs/courses/${courseCode}/introductions.json...`);
+  const introductionsData = await fetchGitHubFile(owner, repo, branch, `public/vfs/courses/${courseCode}/introductions.json`);
 
-      phase6.found = introLegoIds.length;
+  if (introductionsData && legoIds.length > 0) {
+    phase6.exists = true;
+    // Support both "introductions" and "presentations" field names
+    const introductions = introductionsData.introductions || introductionsData.presentations || {};
+    const introLegoIds = Object.keys(introductions);
 
-      // Cross-reference: Find LEGOs from phase3 that don't have introductions
-      const missingIntroIds = [];
-      for (const legoId of legoIds) {
-        if (!introductions[legoId]) {
-          missingIntroIds.push(legoId);
-        }
+    phase6.found = introLegoIds.length;
+
+    // Cross-reference: Find LEGOs from phase3 that don't have introductions
+    const missingIntroIds = [];
+    for (const legoId of legoIds) {
+      if (!introductions[legoId]) {
+        missingIntroIds.push(legoId);
       }
+    }
 
-      phase6.missing = missingIntroIds;
-      phase6.complete = missingIntroIds.length === 0;
+    phase6.missing = missingIntroIds;
+    phase6.complete = missingIntroIds.length === 0;
 
-      if (!phase6.complete) {
-        phase6.issues.push({
-          severity: 'error',
-          message: `Missing ${missingIntroIds.length} introductions`,
-          count: missingIntroIds.length,
-          samples: missingIntroIds.slice(0, 10)
-        });
-      }
-
-    } catch (error) {
+    if (!phase6.complete) {
       phase6.issues.push({
         severity: 'error',
-        message: `Invalid JSON: ${error.message}`
+        message: `Missing ${missingIntroIds.length} introductions`,
+        count: missingIntroIds.length,
+        samples: missingIntroIds.slice(0, 10)
       });
     }
-  } else if (!phase6.exists) {
+  } else if (!introductionsData) {
     phase6.issues.push({
       severity: 'warning',
-      message: 'File does not exist (optional phase)'
+      message: 'File does not exist in repository (optional phase)'
     });
   } else if (legoIds.length === 0) {
     phase6.issues.push({
@@ -312,15 +338,17 @@ async function analyzeCourse(courseCode, vfsRoot) {
  * Print analysis results to console
  */
 function printAnalysis(analysis) {
+  console.log('');
   console.log('='.repeat(80));
   console.log(`COURSE ANALYSIS: ${analysis.courseCode}`);
+  console.log(`Repository: ${analysis.repository}@${analysis.branch}`);
   console.log('='.repeat(80));
   console.log('');
 
   for (const [phaseKey, phase] of Object.entries(analysis.phases)) {
     const statusIcon = phase.complete ? '✅' : '❌';
     console.log(`${statusIcon} ${phase.name}`);
-    console.log(`   File: ${phase.file} ${phase.exists ? '(exists)' : '(MISSING)'}`);
+    console.log(`   File: ${phase.file} ${phase.exists ? '(exists in repo)' : '(NOT IN REPO)'}`);
 
     if (phase.required !== undefined) {
       console.log(`   Required: ${phase.required}`);
@@ -367,15 +395,18 @@ module.exports = {
  */
 if (require.main === module) {
   const courseCode = process.argv[2];
-  const vfsRoot = process.argv[3] || path.join(__dirname, 'public/vfs/courses');
+  const owner = process.argv[3] || DEFAULT_OWNER;
+  const repo = process.argv[4] || DEFAULT_REPO;
+  const branch = process.argv[5] || DEFAULT_BRANCH;
 
   if (!courseCode) {
-    console.error('Usage: node course-analyzer.cjs <courseCode> [vfsRoot]');
+    console.error('Usage: node course-analyzer.cjs <courseCode> [owner] [repo] [branch]');
     console.error('Example: node course-analyzer.cjs spa_for_eng');
+    console.error(`Default repository: ${DEFAULT_OWNER}/${DEFAULT_REPO}@${DEFAULT_BRANCH}`);
     process.exit(1);
   }
 
-  analyzeCourse(courseCode, vfsRoot)
+  analyzeCourse(courseCode, owner, repo, branch)
     .then(analysis => {
       printAnalysis(analysis);
 

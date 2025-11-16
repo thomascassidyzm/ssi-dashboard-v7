@@ -168,6 +168,12 @@ if (violations.length === 0) {
   const reExtractionManifest = {
     reason: 'FD_VIOLATIONS',
     affected_seeds: Array.from(affectedSeeds).sort(),
+    cascade_impact: {
+      phase_5_baskets: 'REGENERATION_REQUIRED',
+      phase_6_instructions: 'CONDITIONAL_REGENERATION',
+      phase_8_audio: 'CONDITIONAL_REGENERATION',
+      note: 'LEGOs changed through chunking-up will affect baskets containing them. Baskets may need thematic regrouping or title updates. See PHASE5_CASCADE_IMPACT.md for details.'
+    },
     violations_by_seed: {}
   };
 
