@@ -883,6 +883,104 @@
         </div>
       </div>
     </div>
+
+    <!-- Regeneration Confirmation Modal -->
+    <div v-if="regenerationResult?.confirming" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div class="bg-slate-800 border border-purple-500/50 rounded-lg max-w-lg w-full p-6">
+        <h3 class="text-2xl font-bold text-purple-400 mb-4">🔄 Regenerate Baskets?</h3>
+
+        <div class="space-y-4 mb-6">
+          <p class="text-slate-300">
+            This will regenerate <span class="font-bold text-emerald-400">{{ regenerationResult.missing }}</span> missing baskets.
+          </p>
+
+          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-2 text-sm">
+            <div class="flex items-center gap-2">
+              <span class="text-slate-400">1.</span>
+              <span class="text-slate-300">Delete <span class="font-semibold text-red-400">{{ regenerationResult.toDelete }}</span> deprecated baskets</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-slate-400">2.</span>
+              <span class="text-slate-300">Generate <span class="font-semibold text-emerald-400">{{ regenerationResult.missing }}</span> new baskets</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-slate-400">3.</span>
+              <span class="text-slate-300">Auto-merge when complete</span>
+            </div>
+          </div>
+
+          <div class="bg-blue-900/20 border border-blue-500/50 rounded-lg p-3 text-sm">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span class="text-slate-300">Estimated time: <span class="font-semibold text-blue-400">~{{ regenerationResult.estimatedMinutes }} minutes</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            @click="cancelRegeneration"
+            class="flex-1 px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition font-semibold"
+          >
+            Cancel
+          </button>
+          <button
+            @click="confirmRegeneration"
+            :disabled="regenerationLoading"
+            class="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg transition font-semibold flex items-center justify-center gap-2"
+          >
+            <span v-if="regenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+            {{ regenerationLoading ? 'Starting...' : 'OK' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Regeneration Success/Error Modal -->
+    <div v-if="regenerationResult && !regenerationResult.confirming && (regenerationResult.success || regenerationResult.error)" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div class="bg-slate-800 border rounded-lg max-w-lg w-full p-6" :class="regenerationResult.error ? 'border-red-500/50' : 'border-emerald-500/50'">
+        <h3 class="text-2xl font-bold mb-4" :class="regenerationResult.error ? 'text-red-400' : 'text-emerald-400'">
+          {{ regenerationResult.error ? '❌ Error' : '✅ Started!' }}
+        </h3>
+
+        <div v-if="regenerationResult.error" class="mb-6">
+          <p class="text-slate-300 mb-2">Failed to start basket regeneration:</p>
+          <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-3 text-sm text-red-300">
+            {{ regenerationResult.error }}
+          </div>
+        </div>
+
+        <div v-else class="space-y-4 mb-6">
+          <p class="text-slate-300">Basket regeneration has started!</p>
+
+          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-slate-400">Browsers:</span>
+              <span class="text-emerald-400 font-semibold">{{ regenerationResult.segmentation?.browsersNeeded || 0 }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Baskets:</span>
+              <span class="text-emerald-400 font-semibold">{{ regenerationResult.segmentation?.totalBaskets || 0 }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-400">Estimated time:</span>
+              <span class="text-blue-400 font-semibold">{{ regenerationResult.segmentation?.estimatedTime || 'Unknown' }}</span>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-400">The process will run in the background. Baskets will auto-merge when complete.</p>
+        </div>
+
+        <button
+          @click="regenerationResult = null"
+          class="w-full px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition font-semibold"
+        >
+          Close
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -1807,23 +1905,22 @@ async function regenerateBaskets() {
     return
   }
 
-  const confirmed = confirm(
-    `Regenerate ${missing} missing baskets?\n\n` +
-    `This will:\n` +
-    `1. Delete ${gapAnalysisResult.value.baskets_to_delete?.length || 0} deprecated baskets\n` +
-    `2. Generate ${missing} new baskets\n` +
-    `3. Auto-merge when complete\n\n` +
-    `Estimated time: ~${Math.ceil(missing / 50) * 12} minutes`
-  )
+  // Show confirmation in regenerationResult state (will trigger modal)
+  regenerationResult.value = {
+    confirming: true,
+    missing,
+    toDelete: gapAnalysisResult.value.baskets_to_delete?.length || 0,
+    estimatedMinutes: Math.ceil(missing / 50) * 12
+  }
+}
 
-  if (!confirmed) return
-
+async function confirmRegeneration() {
   regenerationLoading.value = true
-  regenerationResult.value = null
+  const missing = regenerationResult.value.missing
 
   try {
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    const response = await fetch(`${apiBase}/api/courses/${courseCode}/phase/5/regenerate`, {
+    // Call Phase 5 server directly
+    const response = await fetch(`http://localhost:3459/regenerate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1835,25 +1932,29 @@ async function regenerateBaskets() {
     })
 
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      const text = await response.text()
+      throw new Error(`HTTP ${response.status}: ${text}`)
     }
 
     const result = await response.json()
-    regenerationResult.value = result
-
-    alert(
-      `Basket regeneration started!\n\n` +
-      `Browsers: ${result.segmentation?.browsersNeeded || 0}\n` +
-      `Baskets: ${result.segmentation?.totalBaskets || 0}\n` +
-      `Estimated time: ${result.segmentation?.estimatedTime || 'Unknown'}\n\n` +
-      `The process will run in the background.`
-    )
+    regenerationResult.value = {
+      ...result,
+      success: true,
+      confirming: false
+    }
   } catch (err) {
     console.error('Regeneration error:', err)
-    alert(`Regeneration failed: ${err.message}`)
+    regenerationResult.value = {
+      error: err.message,
+      confirming: false
+    }
   } finally {
     regenerationLoading.value = false
   }
+}
+
+function cancelRegeneration() {
+  regenerationResult.value = null
 }
 
 // Cleanup on component unmount
