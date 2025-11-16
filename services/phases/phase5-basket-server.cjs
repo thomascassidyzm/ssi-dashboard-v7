@@ -155,7 +155,7 @@ app.post('/start', async (req, res) => {
     }
   }
 
-  // Initialize job state
+  // Initialize job state with enhanced tracking
   const job = {
     courseCode,
     totalSeeds,
@@ -167,10 +167,36 @@ app.post('/start', async (req, res) => {
     known,
     status: 'preparing_scaffolds',
     startedAt: new Date().toISOString(),
+
+    // Milestone tracking
+    milestones: {
+      scaffoldsReady: false,
+      scaffoldsReadyAt: null,
+      watcherStarted: false,
+      watcherStartedAt: null,
+      windowsSpawned: 0,
+      windowsTotal: 0,
+      lastWindowSpawnedAt: null,
+      branchesDetected: 0,
+      branchesExpected: 0,
+      lastBranchDetectedAt: null,
+      branchesMerged: 0,
+      mergeStartedAt: null,
+      mergeCompletedAt: null
+    },
+
+    // Branch tracking (detailed)
+    branches: [],
+
+    // Configuration (set after prep)
+    config: null,
+
+    // Legacy fields (for backward compatibility)
     windowsSpawned: 0,
     branchesDetected: 0,
     merged: false,
-    error: null
+    error: null,
+    warnings: []
   };
 
   activeJobs.set(courseCode, job);
@@ -180,6 +206,11 @@ app.post('/start', async (req, res) => {
     console.log(`\n[Phase 5] Running scaffold prep script...`);
     const { preparePhase5Scaffolds } = require('../../scripts/phase5_prep_scaffolds.cjs');
     const scaffoldResult = await preparePhase5Scaffolds(baseCourseDir);
+
+    // Update milestone
+    job.milestones.scaffoldsReady = true;
+    job.milestones.scaffoldsReadyAt = new Date().toISOString();
+
     console.log(`[Phase 5] ✅ Phase 5 scaffolds ready`);
     console.log(`[Phase 5]    Total seeds: ${scaffoldResult.totalSeeds}`);
     console.log(`[Phase 5]    Total LEGOs: ${scaffoldResult.totalNewLegos}`);
@@ -208,10 +239,16 @@ app.post('/start', async (req, res) => {
     }
 
     job.config = { browsers, agents, seedsPerAgent: seedsPerAgentConfig, totalAgents, capacity };
+    job.milestones.windowsTotal = browsers;
+    job.milestones.branchesExpected = browsers;
     job.status = 'spawning_windows';
 
     // STEP 3: Start branch watcher
     await startBranchWatcher(courseCode, browsers, baseCourseDir);
+
+    // Update milestone
+    job.milestones.watcherStarted = true;
+    job.milestones.watcherStartedAt = new Date().toISOString();
 
     // STEP 4: Spawn browser windows
     await spawnBrowserWindows(courseCode, {
@@ -244,7 +281,7 @@ app.post('/start', async (req, res) => {
 
 /**
  * GET /status/:courseCode
- * Get Phase 5 progress for a course
+ * Get Phase 5 progress for a course (Enhanced with realistic observables)
  */
 app.get('/status/:courseCode', (req, res) => {
   const { courseCode } = req.params;
@@ -254,15 +291,88 @@ app.get('/status/:courseCode', (req, res) => {
     return res.status(404).json({ error: `No Phase 5 job found for ${courseCode}` });
   }
 
+  // Calculate timing metrics
+  const startTime = new Date(job.startedAt).getTime();
+  const now = Date.now();
+  const elapsedSeconds = Math.floor((now - startTime) / 1000);
+
+  // Calculate velocity (if branches are appearing)
+  let velocity = null;
+  if (job.branches && job.branches.length > 0) {
+    const firstBranchTime = new Date(job.branches[0].detectedAt).getTime();
+    const elapsedSinceFirstBranch = (now - firstBranchTime) / 1000;
+    const avgSecondsPerBranch = elapsedSinceFirstBranch / job.branches.length;
+    const remainingBranches = job.milestones.branchesExpected - job.branches.length;
+    const estimatedSecondsRemaining = remainingBranches * avgSecondsPerBranch;
+
+    velocity = {
+      branchesCompleted: job.branches.length,
+      elapsedSinceFirstBranch: Math.floor(elapsedSinceFirstBranch),
+      avgSecondsPerBranch: Math.floor(avgSecondsPerBranch),
+      estimatedSecondsRemaining: Math.floor(estimatedSecondsRemaining),
+      estimatedCompletionAt: new Date(now + estimatedSecondsRemaining * 1000).toISOString()
+    };
+  }
+
+  // Calculate coverage
+  const coverage = job.config ? {
+    seedsAssigned: job.config.capacity || 0,
+    seedsActual: job.totalSeeds,
+    seedsUnassigned: Math.max(0, job.totalSeeds - (job.config.capacity || 0)),
+    coveragePercent: job.config.capacity ?
+      Math.round((Math.min(job.totalSeeds, job.config.capacity) / job.totalSeeds) * 1000) / 10 : 0
+  } : null;
+
+  // Determine sub-status
+  let subStatus = null;
+  if (job.status === 'spawning_windows') {
+    if (job.milestones.windowsSpawned < job.milestones.windowsTotal) {
+      subStatus = `spawning_window_${job.milestones.windowsSpawned + 1}_of_${job.milestones.windowsTotal}`;
+    } else {
+      subStatus = 'all_windows_spawned';
+    }
+  } else if (job.status === 'waiting_for_branches') {
+    if (job.milestones.branchesDetected === 0) {
+      subStatus = 'waiting_for_first_branch';
+    } else {
+      subStatus = `${job.milestones.branchesDetected}_of_${job.milestones.branchesExpected}_branches_detected`;
+    }
+  } else if (job.status === 'merging_branches') {
+    subStatus = 'merge_in_progress';
+  }
+
   res.json({
     courseCode,
     status: job.status,
-    startedAt: job.startedAt,
+    subStatus,
+
+    milestones: job.milestones,
+
+    branches: job.branches.map(b => ({
+      branchName: b.branchName,
+      detectedAt: b.detectedAt,
+      seedRange: b.seedRange,
+      expectedSeeds: b.expectedSeeds,
+      merged: b.merged || false
+    })),
+
+    timing: {
+      startedAt: job.startedAt,
+      elapsedSeconds,
+      velocity
+    },
+
+    coverage,
+
+    config: job.config,
+
+    error: job.error,
+    warnings: job.warnings || [],
+
+    // Legacy fields for backward compatibility
     windowsSpawned: job.windowsSpawned,
     branchesDetected: job.branchesDetected,
-    merged: job.merged,
-    config: job.config,
-    error: job.error
+    merged: job.merged
   });
 });
 
@@ -323,23 +433,71 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
       lines.forEach(line => {
         console.log(`  [Watcher] ${line}`);
 
-        // Detect merge completion
-        if (line.includes('Merged') || line.includes('✅')) {
-          const job = activeJobs.get(courseCode);
-          if (job) {
-            job.merged = true;
-            job.status = 'complete';
-            notifyOrchestrator(courseCode, 'complete');
+        const job = activeJobs.get(courseCode);
+        if (!job) return;
+
+        // Detect new branch
+        const newBranchMatch = line.match(/New branch detected: (claude\/[\w-]+)/);
+        if (newBranchMatch) {
+          const branchName = newBranchMatch[1];
+
+          // Extract window number if possible
+          const windowMatch = branchName.match(/window-(\d+)/i);
+          const windowNum = windowMatch ? parseInt(windowMatch[1]) : null;
+
+          // Calculate seed range based on window number and config
+          let seedRange = 'unknown';
+          let expectedSeeds = 0;
+          if (windowNum && job.config) {
+            const seedsPerWindow = job.config.agents * job.config.seedsPerAgent;
+            const windowStartSeed = job.startSeed + ((windowNum - 1) * seedsPerWindow);
+            const windowEndSeed = Math.min(windowStartSeed + seedsPerWindow - 1, job.endSeed);
+            seedRange = `S${String(windowStartSeed).padStart(4, '0')}-S${String(windowEndSeed).padStart(4, '0')}`;
+            expectedSeeds = windowEndSeed - windowStartSeed + 1;
           }
+
+          // Add to branches array
+          job.branches.push({
+            branchName,
+            detectedAt: new Date().toISOString(),
+            seedRange,
+            expectedSeeds,
+            merged: false
+          });
+
+          // Update milestones
+          job.milestones.branchesDetected = job.branches.length;
+          job.milestones.lastBranchDetectedAt = new Date().toISOString();
+          job.branchesDetected = job.branches.length; // Legacy
+
+          console.log(`  [Watcher] Branch ${job.branches.length}/${job.milestones.branchesExpected}: ${branchName} (${seedRange})`);
         }
 
-        // Detect branch count
+        // Detect merge start
+        if (line.includes('Starting merge') || line.includes('Merging')) {
+          job.milestones.mergeStartedAt = new Date().toISOString();
+          job.status = 'merging_branches';
+        }
+
+        // Detect merge completion
+        if (line.includes('Merged') || line.includes('✅ All branches merged')) {
+          job.merged = true;
+          job.milestones.branchesMerged = job.branches.length;
+          job.milestones.mergeCompletedAt = new Date().toISOString();
+          job.status = 'complete';
+
+          // Mark all branches as merged
+          job.branches.forEach(b => b.merged = true);
+
+          notifyOrchestrator(courseCode, 'complete');
+        }
+
+        // Detect branch count (fallback if new branch detection fails)
         const branchMatch = line.match(/(\d+) branches ready/);
         if (branchMatch) {
-          const job = activeJobs.get(courseCode);
-          if (job) {
-            job.branchesDetected = parseInt(branchMatch[1]);
-          }
+          const count = parseInt(branchMatch[1]);
+          job.milestones.branchesDetected = count;
+          job.branchesDetected = count; // Legacy
         }
       });
     });
@@ -411,7 +569,13 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
 
     try {
       await spawnClaudeCodeSession(windowPrompt, `phase5-window-${windowNum}`);
-      if (job) job.windowsSpawned++;
+
+      // Update milestones
+      if (job) {
+        job.windowsSpawned++;
+        job.milestones.windowsSpawned = job.windowsSpawned;
+        job.milestones.lastWindowSpawnedAt = new Date().toISOString();
+      }
 
       // Stagger window spawns (from config, default 5000ms)
       if (windowNum < browserCount) {
@@ -420,6 +584,8 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
       }
     } catch (error) {
       console.error(`[Phase 5]     ❌ Failed to spawn window ${windowNum}:`, error.message);
+      if (job && !job.warnings) job.warnings = [];
+      if (job) job.warnings.push(`Failed to spawn window ${windowNum}: ${error.message}`);
     }
 
     currentSeed = windowEndSeed + 1;
@@ -611,6 +777,72 @@ app.post('/regenerate', async (req, res) => {
     return res.status(400).json({ error: 'Prerequisites missing - need seed_pairs.json and lego_pairs.json' });
   }
 
+  // STEP 1: Clean up old baskets for these LEGO_IDs (if lego_baskets.json exists)
+  const basketsPath = path.join(baseCourseDir, 'lego_baskets.json');
+  let cleanupResult = null;
+
+  if (await fs.pathExists(basketsPath)) {
+    console.log(`\n[Phase 5] Step 1: Cleaning up ${totalBaskets} old baskets...`);
+
+    try {
+      const basketsData = await fs.readJson(basketsPath);
+
+      if (basketsData.baskets && typeof basketsData.baskets === 'object') {
+        // Backup deleted baskets
+        const deletedBaskets = {};
+        let deletedCount = 0;
+
+        legoIds.forEach(legoId => {
+          if (basketsData.baskets[legoId]) {
+            deletedBaskets[legoId] = basketsData.baskets[legoId];
+            delete basketsData.baskets[legoId];
+            deletedCount++;
+          }
+        });
+
+        if (deletedCount > 0) {
+          // Save backup
+          const backupPath = path.join(baseCourseDir, 'deleted_baskets_backup.json');
+          let existingBackup = {};
+
+          if (await fs.pathExists(backupPath)) {
+            existingBackup = await fs.readJson(backupPath);
+          }
+
+          const backup = {
+            ...existingBackup,
+            [new Date().toISOString()]: {
+              reason: 'regeneration',
+              deleted_count: deletedCount,
+              basket_ids: legoIds.filter(id => deletedBaskets[id]),
+              baskets: deletedBaskets
+            }
+          };
+
+          await fs.writeJson(backupPath, backup, { spaces: 2 });
+
+          // Save updated baskets file
+          await fs.writeJson(basketsPath, basketsData, { spaces: 2 });
+
+          console.log(`[Phase 5]   ✅ Deleted ${deletedCount} old baskets`);
+          console.log(`[Phase 5]   💾 Backup saved: deleted_baskets_backup.json`);
+
+          cleanupResult = {
+            deletedCount,
+            backupPath
+          };
+        } else {
+          console.log(`[Phase 5]   ℹ️  No existing baskets found for these LEGO_IDs (first-time generation)`);
+        }
+      }
+    } catch (error) {
+      console.error(`[Phase 5]   ⚠️  Cleanup failed:`, error.message);
+      console.error(`[Phase 5]   Continuing with regeneration anyway...`);
+    }
+  } else {
+    console.log(`\n[Phase 5] ℹ️  No existing lego_baskets.json - first-time generation`);
+  }
+
   // Calculate segmentation
   const browsersNeeded = Math.ceil(totalBaskets / BASKETS_PER_BROWSER);
   const browsers = [];
@@ -682,6 +914,13 @@ app.post('/regenerate', async (req, res) => {
     res.json({
       success: true,
       message: `Basket regeneration started for ${courseCode}`,
+      cleanup: cleanupResult ? {
+        deletedOldBaskets: cleanupResult.deletedCount,
+        backupSaved: true
+      } : {
+        deletedOldBaskets: 0,
+        note: 'No existing baskets to clean up'
+      },
       segmentation: {
         totalBaskets,
         browsersNeeded,
