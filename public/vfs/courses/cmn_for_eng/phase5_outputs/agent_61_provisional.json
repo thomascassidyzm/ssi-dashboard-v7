@@ -1,0 +1,488 @@
+{
+  "agent_id": "agent_61",
+  "seed_range": "S0601-S0610",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0601",
+      "seed_pair": [
+        "We were talking about how it all started.",
+        "我们在谈论这一切是如何开始的。"
+      ],
+      "legos": [
+        {
+          "id": "S0601L01",
+          "type": "M",
+          "target": "我们在谈论",
+          "known": "we were talking about",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["在", "were (progressive)"],
+            ["谈论", "talking about"]
+          ]
+        },
+        {
+          "id": "S0601L02",
+          "type": "M",
+          "target": "这一切是如何开始的",
+          "known": "how it all started",
+          "new": true,
+          "components": [
+            ["这一切", "it all"],
+            ["是", "was"],
+            ["如何", "how"],
+            ["开始", "started"],
+            ["的", "(nominalizer)"]
+          ]
+        },
+        {
+          "id": "S0601L03",
+          "type": "M",
+          "target": "是如何开始的",
+          "known": "how it started",
+          "new": true,
+          "components": [
+            ["是", "was"],
+            ["如何", "how"],
+            ["开始", "started"],
+            ["的", "(nominalizer)"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0602",
+      "seed_pair": [
+        "How it started in the first place.",
+        "它最初是如何开始的。"
+      ],
+      "legos": [
+        {
+          "id": "S0602L01",
+          "type": "A",
+          "target": "最初",
+          "known": "in the first place",
+          "new": true
+        },
+        {
+          "id": "S0602L02",
+          "type": "M",
+          "target": "它是如何开始的",
+          "known": "how it started",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["是", "was"],
+            ["如何", "how"],
+            ["开始", "started"],
+            ["的", "(nominalizer)"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0603",
+      "seed_pair": [
+        "We didn't have anywhere to live at the time.",
+        "我们那时没有地方住。"
+      ],
+      "legos": [
+        {
+          "id": "S0603L01",
+          "type": "M",
+          "target": "我们没有",
+          "known": "we didn't have",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["没有", "didn't have"]
+          ]
+        },
+        {
+          "id": "S0603L02",
+          "type": "M",
+          "target": "没有地方住",
+          "known": "didn't have anywhere to live",
+          "new": true,
+          "components": [
+            ["没有", "didn't have"],
+            ["地方", "anywhere/place"],
+            ["住", "to live"]
+          ]
+        },
+        {
+          "id": "S0603L03",
+          "type": "M",
+          "target": "地方住",
+          "known": "anywhere to live",
+          "new": true,
+          "components": [
+            ["地方", "anywhere/place"],
+            ["住", "to live"]
+          ]
+        },
+        {
+          "id": "S0603L04",
+          "type": "A",
+          "target": "那时",
+          "known": "at the time",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0604",
+      "seed_pair": [
+        "She offered to let us stay with her.",
+        "她提出让我们和她住在一起。"
+      ],
+      "legos": [
+        {
+          "id": "S0604L01",
+          "type": "M",
+          "target": "她提出",
+          "known": "she offered",
+          "new": true,
+          "components": [
+            ["她", "she"],
+            ["提出", "offered"]
+          ]
+        },
+        {
+          "id": "S0604L02",
+          "type": "M",
+          "target": "让我们",
+          "known": "let us",
+          "new": true,
+          "components": [
+            ["让", "let"],
+            ["我们", "us"]
+          ]
+        },
+        {
+          "id": "S0604L03",
+          "type": "M",
+          "target": "和她住在一起",
+          "known": "stay with her",
+          "new": true,
+          "components": [
+            ["和", "with"],
+            ["她", "her"],
+            ["住在一起", "stay together"]
+          ]
+        },
+        {
+          "id": "S0604L04",
+          "type": "M",
+          "target": "住在一起",
+          "known": "stay together",
+          "new": true,
+          "components": [
+            ["住", "stay/live"],
+            ["在一起", "together"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0605",
+      "seed_pair": [
+        "Because we needed help.",
+        "因为我们需要帮助。"
+      ],
+      "legos": [
+        {
+          "id": "S0605L01",
+          "type": "A",
+          "target": "因为",
+          "known": "because",
+          "new": true
+        },
+        {
+          "id": "S0605L02",
+          "type": "M",
+          "target": "我们需要帮助",
+          "known": "we needed help",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["需要", "needed"],
+            ["帮助", "help"]
+          ]
+        },
+        {
+          "id": "S0605L03",
+          "type": "M",
+          "target": "需要帮助",
+          "known": "need help",
+          "new": true,
+          "components": [
+            ["需要", "need"],
+            ["帮助", "help"]
+          ]
+        },
+        {
+          "id": "S0605L04",
+          "type": "A",
+          "target": "帮助",
+          "known": "help",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0606",
+      "seed_pair": [
+        "If I'd known then what I know now I'd have waited.",
+        "如果我当时知道我现在知道的，我会等待。"
+      ],
+      "legos": [
+        {
+          "id": "S0606L01",
+          "type": "A",
+          "target": "如果",
+          "known": "if",
+          "new": true
+        },
+        {
+          "id": "S0606L02",
+          "type": "A",
+          "target": "当时",
+          "known": "then",
+          "new": true
+        },
+        {
+          "id": "S0606L03",
+          "type": "M",
+          "target": "我当时知道",
+          "known": "I'd known then",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["当时", "then"],
+            ["知道", "knew/known"]
+          ]
+        },
+        {
+          "id": "S0606L04",
+          "type": "A",
+          "target": "现在",
+          "known": "now",
+          "new": true
+        },
+        {
+          "id": "S0606L05",
+          "type": "M",
+          "target": "我现在知道的",
+          "known": "what I know now",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["现在", "now"],
+            ["知道", "know"],
+            ["的", "(nominalizer)"]
+          ]
+        },
+        {
+          "id": "S0606L06",
+          "type": "A",
+          "target": "等待",
+          "known": "wait",
+          "new": true
+        },
+        {
+          "id": "S0606L07",
+          "type": "M",
+          "target": "我会等待",
+          "known": "I'd have waited",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "would"],
+            ["等待", "have waited"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0607",
+      "seed_pair": [
+        "If I'd known I'd have done things differently.",
+        "如果我知道，我会做不同的事。"
+      ],
+      "legos": [
+        {
+          "id": "S0607L01",
+          "type": "M",
+          "target": "我知道",
+          "known": "I'd known",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["知道", "knew/known"]
+          ]
+        },
+        {
+          "id": "S0607L02",
+          "type": "M",
+          "target": "我会做",
+          "known": "I'd have done",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "would"],
+            ["做", "have done"]
+          ]
+        },
+        {
+          "id": "S0607L03",
+          "type": "M",
+          "target": "做不同的事",
+          "known": "done things differently",
+          "new": true,
+          "components": [
+            ["做", "done"],
+            ["不同的", "different/differently"],
+            ["事", "things"]
+          ]
+        },
+        {
+          "id": "S0607L04",
+          "type": "M",
+          "target": "不同的事",
+          "known": "different things",
+          "new": true,
+          "components": [
+            ["不同", "different"],
+            ["的", "(particle)"],
+            ["事", "things"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0608",
+      "seed_pair": [
+        "It would have been the sensible thing to do.",
+        "那会是明智的事。"
+      ],
+      "legos": [
+        {
+          "id": "S0608L01",
+          "type": "M",
+          "target": "那会是",
+          "known": "it would have been",
+          "new": true,
+          "components": [
+            ["那", "it/that"],
+            ["会", "would"],
+            ["是", "have been"]
+          ]
+        },
+        {
+          "id": "S0608L02",
+          "type": "M",
+          "target": "会是",
+          "known": "would have been",
+          "new": true,
+          "components": [
+            ["会", "would"],
+            ["是", "have been"]
+          ]
+        },
+        {
+          "id": "S0608L03",
+          "type": "M",
+          "target": "明智的事",
+          "known": "the sensible thing",
+          "new": true,
+          "components": [
+            ["明智", "sensible"],
+            ["的", "(particle)"],
+            ["事", "thing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0609",
+      "seed_pair": [
+        "The sensible thing to do would have been to ask.",
+        "明智的事会是问。"
+      ],
+      "legos": [
+        {
+          "id": "S0609L01",
+          "type": "M",
+          "target": "明智的事会是",
+          "known": "the sensible thing would have been",
+          "new": true,
+          "components": [
+            ["明智的事", "the sensible thing"],
+            ["会", "would"],
+            ["是", "have been"]
+          ]
+        },
+        {
+          "id": "S0609L02",
+          "type": "A",
+          "target": "问",
+          "known": "ask",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0610",
+      "seed_pair": [
+        "He needs to look for work.",
+        "他需要找工作。"
+      ],
+      "legos": [
+        {
+          "id": "S0610L01",
+          "type": "M",
+          "target": "他需要",
+          "known": "he needs",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["需要", "needs"]
+          ]
+        },
+        {
+          "id": "S0610L02",
+          "type": "M",
+          "target": "需要找工作",
+          "known": "need to look for work",
+          "new": true,
+          "components": [
+            ["需要", "need"],
+            ["找", "to look for"],
+            ["工作", "work"]
+          ]
+        },
+        {
+          "id": "S0610L03",
+          "type": "M",
+          "target": "找工作",
+          "known": "look for work",
+          "new": true,
+          "components": [
+            ["找", "look for"],
+            ["工作", "work"]
+          ]
+        },
+        {
+          "id": "S0610L04",
+          "type": "A",
+          "target": "工作",
+          "known": "work",
+          "new": true
+        }
+      ]
+    }
+  ]
+}

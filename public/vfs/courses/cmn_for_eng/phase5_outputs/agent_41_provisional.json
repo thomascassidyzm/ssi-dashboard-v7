@@ -1,0 +1,548 @@
+{
+  "agent_id": "agent_41",
+  "seed_range": "S0401-S0410",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0401",
+      "seed_pair": [
+        "不，最好直接回家。",
+        "No it would be better to go straight home."
+      ],
+      "legos": [
+        {
+          "id": "S0401L01",
+          "type": "A",
+          "target": "不",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0401L02",
+          "type": "M",
+          "target": "最好",
+          "known": "it would be better",
+          "new": true,
+          "components": [["最", "most"], ["好", "good"]]
+        },
+        {
+          "id": "S0401L03",
+          "type": "M",
+          "target": "回家",
+          "known": "go home",
+          "new": true,
+          "components": [["回", "go/return"], ["家", "home"]]
+        },
+        {
+          "id": "S0401L04",
+          "type": "M",
+          "target": "直接回家",
+          "known": "go straight home",
+          "new": true,
+          "components": [["直接", "straight/directly"], ["回", "go/return"], ["家", "home"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0402",
+      "seed_pair": [
+        "是的，在某个地方停下来吃东西会很好。",
+        "Yes it would be nice to stop somewhere for food."
+      ],
+      "legos": [
+        {
+          "id": "S0402L01",
+          "type": "M",
+          "target": "是的",
+          "known": "Yes",
+          "new": true,
+          "components": [["是", "yes/is"], ["的", "particle"]]
+        },
+        {
+          "id": "S0402L02",
+          "type": "M",
+          "target": "会很好",
+          "known": "would be nice",
+          "new": true,
+          "components": [["会", "will"], ["很", "very"], ["好", "good/nice"]]
+        },
+        {
+          "id": "S0402L03",
+          "type": "M",
+          "target": "停下来",
+          "known": "to stop",
+          "new": true,
+          "components": [["停", "stop"], ["下来", "down-come/RVC"]]
+        },
+        {
+          "id": "S0402L04",
+          "type": "M",
+          "target": "在某个地方停下来",
+          "known": "to stop somewhere",
+          "new": true,
+          "components": [["在", "at"], ["某个", "some/certain"], ["地方", "place"], ["停下来", "stop"]]
+        },
+        {
+          "id": "S0402L05",
+          "type": "M",
+          "target": "吃东西",
+          "known": "for food",
+          "new": true,
+          "components": [["吃", "eat"], ["东西", "things"]]
+        },
+        {
+          "id": "S0402L06",
+          "type": "M",
+          "target": "停下来吃东西",
+          "known": "to stop for food",
+          "new": true,
+          "components": [["停下来", "stop"], ["吃", "eat"], ["东西", "things"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0403",
+      "seed_pair": [
+        "我们应该尽可能长时间保持安静。",
+        "We should remain quiet for as long as possible."
+      ],
+      "legos": [
+        {
+          "id": "S0403L01",
+          "type": "M",
+          "target": "我们应该",
+          "known": "we should",
+          "new": true,
+          "components": [["我们", "we"], ["应该", "should"]]
+        },
+        {
+          "id": "S0403L02",
+          "type": "M",
+          "target": "尽可能",
+          "known": "as ... as possible",
+          "new": true,
+          "components": [["尽", "exhaust/utmost"], ["可能", "possible"]]
+        },
+        {
+          "id": "S0403L03",
+          "type": "M",
+          "target": "长时间",
+          "known": "a long time",
+          "new": true,
+          "components": [["长", "long"], ["时间", "time"]]
+        },
+        {
+          "id": "S0403L04",
+          "type": "M",
+          "target": "尽可能长时间",
+          "known": "for as long as possible",
+          "new": true,
+          "components": [["尽可能", "as...as possible"], ["长", "long"], ["时间", "time"]]
+        },
+        {
+          "id": "S0403L05",
+          "type": "M",
+          "target": "保持安静",
+          "known": "remain quiet",
+          "new": true,
+          "components": [["保持", "maintain/keep"], ["安静", "quiet"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0404",
+      "seed_pair": [
+        "我们不应该期望在星期四之前完成。",
+        "We shouldn't expect to finish before Thursday."
+      ],
+      "legos": [
+        {
+          "id": "S0404L01",
+          "type": "M",
+          "target": "我们不应该",
+          "known": "we shouldn't",
+          "new": true,
+          "components": [["我们", "we"], ["不", "not"], ["应该", "should"]]
+        },
+        {
+          "id": "S0404L02",
+          "type": "A",
+          "target": "期望",
+          "known": "expect",
+          "new": true
+        },
+        {
+          "id": "S0404L03",
+          "type": "A",
+          "target": "完成",
+          "known": "to finish",
+          "new": true
+        },
+        {
+          "id": "S0404L04",
+          "type": "M",
+          "target": "星期四",
+          "known": "Thursday",
+          "new": true,
+          "components": [["星期", "week"], ["四", "four"]]
+        },
+        {
+          "id": "S0404L05",
+          "type": "M",
+          "target": "在星期四之前",
+          "known": "before Thursday",
+          "new": true,
+          "components": [["在", "at"], ["星期四", "Thursday"], ["之前", "before"]]
+        },
+        {
+          "id": "S0404L06",
+          "type": "M",
+          "target": "期望完成",
+          "known": "expect to finish",
+          "new": true,
+          "components": [["期望", "expect/hope"], ["完成", "finish"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0405",
+      "seed_pair": [
+        "我们应该问一下是否需要预订吗？",
+        "Should we ask if we have to book?"
+      ],
+      "legos": [
+        {
+          "id": "S0405L01",
+          "type": "M",
+          "target": "我们应该",
+          "known": "should we",
+          "new": true,
+          "components": [["我们", "we"], ["应该", "should"]]
+        },
+        {
+          "id": "S0405L02",
+          "type": "M",
+          "target": "问一下",
+          "known": "ask",
+          "new": true,
+          "components": [["问", "ask"], ["一下", "a bit/briefly"]]
+        },
+        {
+          "id": "S0405L03",
+          "type": "M",
+          "target": "是否",
+          "known": "if/whether",
+          "new": true,
+          "components": [["是", "is"], ["否", "not"]]
+        },
+        {
+          "id": "S0405L04",
+          "type": "A",
+          "target": "需要",
+          "known": "have to",
+          "new": true
+        },
+        {
+          "id": "S0405L05",
+          "type": "M",
+          "target": "预订",
+          "known": "book",
+          "new": true,
+          "components": [["预", "in advance"], ["订", "book/order"]]
+        },
+        {
+          "id": "S0405L06",
+          "type": "M",
+          "target": "需要预订",
+          "known": "have to book",
+          "new": true,
+          "components": [["需要", "need"], ["预订", "book"]]
+        },
+        {
+          "id": "S0405L07",
+          "type": "M",
+          "target": "是否需要预订",
+          "known": "if we have to book",
+          "new": true,
+          "components": [["是否", "whether"], ["需要", "need"], ["预订", "book"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0406",
+      "seed_pair": [
+        "不，我确信会没问题的。",
+        "No I'm sure it will be okay."
+      ],
+      "legos": [
+        {
+          "id": "S0406L01",
+          "type": "A",
+          "target": "不",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0406L02",
+          "type": "M",
+          "target": "我确信",
+          "known": "I'm sure",
+          "new": true,
+          "components": [["我", "I"], ["确信", "sure/certain"]]
+        },
+        {
+          "id": "S0406L03",
+          "type": "M",
+          "target": "没问题",
+          "known": "no problem/okay",
+          "new": true,
+          "components": [["没", "not have"], ["问题", "problem"]]
+        },
+        {
+          "id": "S0406L04",
+          "type": "M",
+          "target": "会没问题的",
+          "known": "will be okay",
+          "new": true,
+          "components": [["会", "will"], ["没", "not have"], ["问题", "problem"], ["的", "particle"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0407",
+      "seed_pair": [
+        "我们不应该试着树立一个好榜样吗？",
+        "Shouldn't we try to set a good example?"
+      ],
+      "legos": [
+        {
+          "id": "S0407L01",
+          "type": "M",
+          "target": "我们不应该",
+          "known": "shouldn't we",
+          "new": true,
+          "components": [["我们", "we"], ["不", "not"], ["应该", "should"]]
+        },
+        {
+          "id": "S0407L02",
+          "type": "M",
+          "target": "试着",
+          "known": "try",
+          "new": true,
+          "components": [["试", "try"], ["着", "aspect particle"]]
+        },
+        {
+          "id": "S0407L03",
+          "type": "M",
+          "target": "树立",
+          "known": "to set",
+          "new": true,
+          "components": [["树", "tree/establish"], ["立", "stand"]]
+        },
+        {
+          "id": "S0407L04",
+          "type": "M",
+          "target": "试着树立",
+          "known": "try to set",
+          "new": true,
+          "components": [["试着", "try"], ["树立", "set/establish"]]
+        },
+        {
+          "id": "S0407L05",
+          "type": "M",
+          "target": "好榜样",
+          "known": "good example",
+          "new": true,
+          "components": [["好", "good"], ["榜样", "example"]]
+        },
+        {
+          "id": "S0407L06",
+          "type": "M",
+          "target": "一个好榜样",
+          "known": "a good example",
+          "new": true,
+          "components": [["一", "one"], ["个", "classifier"], ["好", "good"], ["榜样", "example"]]
+        },
+        {
+          "id": "S0407L07",
+          "type": "M",
+          "target": "树立一个好榜样",
+          "known": "set a good example",
+          "new": true,
+          "components": [["树立", "set"], ["一个", "a"], ["好", "good"], ["榜样", "example"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0408",
+      "seed_pair": [
+        "是的，那是建立幸福家庭的最好方式。",
+        "Yes that's the best way to make a happy family."
+      ],
+      "legos": [
+        {
+          "id": "S0408L01",
+          "type": "M",
+          "target": "是的",
+          "known": "Yes",
+          "new": true,
+          "components": [["是", "yes/is"], ["的", "particle"]]
+        },
+        {
+          "id": "S0408L02",
+          "type": "M",
+          "target": "那是",
+          "known": "that's",
+          "new": true,
+          "components": [["那", "that"], ["是", "is"]]
+        },
+        {
+          "id": "S0408L03",
+          "type": "M",
+          "target": "建立",
+          "known": "to make/establish",
+          "new": true,
+          "components": [["建", "build"], ["立", "establish"]]
+        },
+        {
+          "id": "S0408L04",
+          "type": "M",
+          "target": "幸福家庭",
+          "known": "happy family",
+          "new": true,
+          "components": [["幸福", "happy"], ["家庭", "family"]]
+        },
+        {
+          "id": "S0408L05",
+          "type": "M",
+          "target": "建立幸福家庭",
+          "known": "make a happy family",
+          "new": true,
+          "components": [["建立", "make/establish"], ["幸福", "happy"], ["家庭", "family"]]
+        },
+        {
+          "id": "S0408L06",
+          "type": "M",
+          "target": "最好方式",
+          "known": "best way",
+          "new": true,
+          "components": [["最好", "best"], ["方式", "way"]]
+        },
+        {
+          "id": "S0408L07",
+          "type": "M",
+          "target": "建立幸福家庭的最好方式",
+          "known": "the best way to make a happy family",
+          "new": true,
+          "components": [["建立", "make"], ["幸福家庭", "happy family"], ["的", "DE"], ["最好", "best"], ["方式", "way"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0409",
+      "seed_pair": [
+        "不，我们做什么都不重要。",
+        "No it doesn't matter what we do."
+      ],
+      "legos": [
+        {
+          "id": "S0409L01",
+          "type": "A",
+          "target": "不",
+          "known": "No",
+          "new": true
+        },
+        {
+          "id": "S0409L02",
+          "type": "M",
+          "target": "做什么",
+          "known": "do what",
+          "new": true,
+          "components": [["做", "do"], ["什么", "what"]]
+        },
+        {
+          "id": "S0409L03",
+          "type": "M",
+          "target": "我们做什么",
+          "known": "what we do",
+          "new": true,
+          "components": [["我们", "we"], ["做", "do"], ["什么", "what"]]
+        },
+        {
+          "id": "S0409L04",
+          "type": "M",
+          "target": "不重要",
+          "known": "not important",
+          "new": true,
+          "components": [["不", "not"], ["重要", "important"]]
+        },
+        {
+          "id": "S0409L05",
+          "type": "M",
+          "target": "都不重要",
+          "known": "doesn't matter",
+          "new": true,
+          "components": [["都", "all"], ["不", "not"], ["重要", "important"]]
+        },
+        {
+          "id": "S0409L06",
+          "type": "M",
+          "target": "我们做什么都不重要",
+          "known": "it doesn't matter what we do",
+          "new": true,
+          "components": [["我们", "we"], ["做", "do"], ["什么", "what"], ["都", "all"], ["不重要", "not important"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0410",
+      "seed_pair": [
+        "他们仍然互相打架。",
+        "They still fight with each other."
+      ],
+      "legos": [
+        {
+          "id": "S0410L01",
+          "type": "M",
+          "target": "他们仍然",
+          "known": "they still",
+          "new": true,
+          "components": [["他们", "they"], ["仍然", "still"]]
+        },
+        {
+          "id": "S0410L02",
+          "type": "M",
+          "target": "仍然",
+          "known": "still",
+          "new": true,
+          "components": [["仍", "still/yet"], ["然", "so/thus"]]
+        },
+        {
+          "id": "S0410L03",
+          "type": "M",
+          "target": "互相",
+          "known": "each other",
+          "new": true,
+          "components": [["互", "mutual"], ["相", "each other"]]
+        },
+        {
+          "id": "S0410L04",
+          "type": "M",
+          "target": "打架",
+          "known": "fight",
+          "new": true,
+          "components": [["打", "hit"], ["架", "fight"]]
+        },
+        {
+          "id": "S0410L05",
+          "type": "M",
+          "target": "互相打架",
+          "known": "fight with each other",
+          "new": true,
+          "components": [["互相", "each other"], ["打架", "fight"]]
+        }
+      ]
+    }
+  ]
+}

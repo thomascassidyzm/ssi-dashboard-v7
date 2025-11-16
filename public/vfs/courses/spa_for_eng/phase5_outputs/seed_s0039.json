@@ -1,0 +1,256 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0039",
+  "generation_stage": "GATE_VIOLATIONS_REMOVED",
+  "seed_pair": {
+    "target": "Pero estoy un poco cansado esta mañana.",
+    "known": "But I'm a little tired this morning."
+  },
+  "recent_seed_pairs": {
+    "S0029": [
+      "I'm looking forward to speaking better as soon as I can.",
+      "Estoy deseando hablar mejor tan pronto como pueda."
+    ],
+    "S0030": [
+      "I wanted to ask you something yesterday.",
+      "Quería preguntarte algo ayer."
+    ],
+    "S0031": [
+      "You wanted to speak with me tonight.",
+      "Querías hablar conmigo esta noche."
+    ],
+    "S0032": [
+      "Did you want to show me something?",
+      "¿Querías mostrarme algo?"
+    ],
+    "S0033": [
+      "How long have you been learning Spanish?",
+      "¿Cuánto tiempo llevas aprendiendo español?"
+    ],
+    "S0034": [
+      "He doesn't want to be quiet when other people are here.",
+      "Él no quiere estar silencioso cuando otras personas están aquí."
+    ],
+    "S0035": [
+      "She doesn't want to read anything this afternoon.",
+      "Ella no quiere leer nada esta tarde."
+    ],
+    "S0036": [
+      "We don't want to interrupt the story.",
+      "No queremos interrumpir la historia."
+    ],
+    "S0037": [
+      "I started to think about it carefully last month.",
+      "Comencé a pensar sobre eso cuidadosamente el mes pasado."
+    ],
+    "S0038": [
+      "I've been learning for about a week.",
+      "Llevo aprendiendo aproximadamente una semana."
+    ]
+  },
+  "legos": {
+    "S0039L01": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "but",
+          "pero",
+          null,
+          1
+        ],
+        [
+          "but she doesn't want",
+          "pero ella no quiere",
+          null,
+          2
+        ],
+        [
+          "but I'm learning",
+          "pero estoy aprendiendo",
+          null,
+          2
+        ],
+        [
+          "but I started to think",
+          "pero comencé a pensar",
+          null,
+          3
+        ],
+        [
+          "but I wanted to speak",
+          "pero quería hablar",
+          null,
+          3
+        ],
+        [
+          "but I've been learning",
+          "pero llevo aprendiendo",
+          null,
+          3
+        ],
+        [
+          "but she doesn't want to read",
+          "pero ella no quiere leer",
+          null,
+          4
+        ],
+        [
+          "but we don't want to interrupt",
+          "pero no queremos interrumpir",
+          null,
+          4
+        ],
+        [
+          "but I started to think about it carefully",
+          "pero comencé a pensar sobre eso cuidadosamente",
+          null,
+          6
+        ],
+        [
+          "but I've been learning Spanish for about a week",
+          "pero llevo aprendiendo español aproximadamente una semana",
+          null,
+          7
+        ],
+        [
+          "but I'm looking forward to speaking better as soon as I can",
+          "pero estoy deseando hablar mejor tan pronto como pueda",
+          null,
+          10
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 2,
+        "long_6_plus": 3
+      }
+    },
+    "S0039L02": {
+      "lego": [
+        "I'm a little tired",
+        "estoy un poco cansado"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "un poco",
+          "a little"
+        ],
+        [
+          "cansado",
+          "tired"
+        ]
+      ],
+      "current_seed_legos_available": [
+        [
+          "pero",
+          "but"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I'm a little tired",
+          "estoy un poco cansado",
+          null,
+          2
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0039L03": {
+      "lego": [
+        "this morning",
+        "esta mañana"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "mañana",
+          "morning"
+        ]
+      ],
+      "current_seed_legos_available": [
+        [
+          "pero",
+          "but"
+        ],
+        [
+          "estoy un poco cansado",
+          "I'm a little tired"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "this morning",
+          "esta mañana",
+          null,
+          1
+        ],
+        [
+          "I wanted to speak this morning",
+          "quería hablar esta mañana",
+          null,
+          2
+        ],
+        [
+          "I'm learning Spanish this morning",
+          "estoy aprendiendo español esta mañana",
+          null,
+          3
+        ],
+        [
+          "I started to read this morning",
+          "comencé a leer esta mañana",
+          null,
+          3
+        ],
+        [
+          "she doesn't want to read this morning",
+          "ella no quiere leer esta mañana",
+          null,
+          3
+        ],
+        [
+          "I wanted to ask you something this morning",
+          "quería preguntarte algo esta mañana",
+          null,
+          4
+        ],
+        [
+          "I started to think about it carefully this morning",
+          "comencé a pensar sobre eso cuidadosamente esta mañana",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 3,
+        "longer_4_5": 1,
+        "long_6_plus": 1
+      }
+    }
+  }
+}

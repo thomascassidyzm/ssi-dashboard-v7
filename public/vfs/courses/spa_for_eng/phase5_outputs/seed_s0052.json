@@ -1,0 +1,387 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0052",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "target": "He wanted to to write a letter to his friend last week.",
+    "known": "Quería escribir una carta a su amigo la semana pasada."
+  },
+  "recent_context": {
+    "S0047": [
+      "porque | pienso que | es una cosa buena | una cosa buena | hacer errores",
+      "because | I think that | it's a good thing | a good thing | to to make mistakes"
+    ],
+    "S0048": [
+      "no me importa | me importa | hacer errores",
+      "I don't care | I care | making mistakes"
+    ],
+    "S0049": [
+      "es así | si sabes lo que quiero decir | sabes lo que quiero decir | lo que quiero decir | quiero decir",
+      "it's like this | if you to know what I to mean | you to know what I to mean | what I to mean | I to mean"
+    ],
+    "S0050": [
+      "no estoy intentando terminar | estoy intentando terminar | intentando terminar | lo más rápidamente posible | terminar",
+      "I'm not trying to finish | I'm trying to finish | trying to finish | as quickly as possible | to finish"
+    ],
+    "S0051": [
+      "disfruto hacer | cosas interesantes | con mis amigos",
+      "I enjoy doing | interesting things | with my friends"
+    ]
+  },
+  "legos": {
+    "S0052L01": {
+      "lego": [
+        "wanted to to write",
+        "quería escribir"
+      ],
+      "type": "M",
+      "available_legos": 267,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "I wanted to to write something",
+          "Quería escribir algo",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write here",
+          "Quería escribir aquí",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write something here",
+          "Quería escribir algo aquí",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write in Spanish",
+          "Quería escribir en español",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write something in Spanish",
+          "Quería escribir algo en español",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write that with you",
+          "Quería escribir eso contigo",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write something here with you",
+          "Quería escribir algo aquí contigo",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write because I want to to learn",
+          "Quería escribir porque quiero aprender",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write something as carefully as I to can",
+          "Quería escribir algo tan cuidadosamente como pueda",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write it in Spanish with my friends",
+          "Quería escribir eso en español con mis amigos",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0052L02": {
+      "lego": [
+        "to write a letter",
+        "escribir una carta"
+      ],
+      "type": "M",
+      "available_legos": 268,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 7,
+      "practice_phrases": [
+        [
+          "I want to to write a letter",
+          "Quiero escribir una carta",
+          null,
+          null
+        ],
+        [
+          "I want to to write a letter here",
+          "Quiero escribir una carta aquí",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write a letter to yesterday",
+          "Quería escribir una carta ayer",
+          null,
+          null
+        ],
+        [
+          "I want to to write a letter in Spanish",
+          "Quiero escribir una carta en español",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write a letter in Spanish",
+          "Quería escribir una carta en español",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write a letter with my friends",
+          "Quería escribir una carta con mis amigos",
+          null,
+          null
+        ],
+        [
+          "I'm going to to write a letter to someone here",
+          "Voy a escribir una carta a alguien aquí",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      }
+    },
+    "S0052L03": {
+      "lego": [
+        "a letter",
+        "una carta"
+      ],
+      "type": "M",
+      "available_legos": 269,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "I need a letter",
+          "Necesito una carta",
+          null,
+          null
+        ],
+        [
+          "I need to to read a letter",
+          "Necesito leer una carta",
+          null,
+          null
+        ],
+        [
+          "He wants to to read a letter",
+          "Él quiere leer una carta",
+          null,
+          null
+        ],
+        [
+          "She wanted to to write a letter to yesterday",
+          "Ella quería escribir una carta ayer",
+          null,
+          null
+        ],
+        [
+          "I'm going to to write a letter to my friends",
+          "Voy a escribir una carta a mis amigos",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    },
+    "S0052L04": {
+      "lego": [
+        "to his friend",
+        "a su amigo"
+      ],
+      "type": "M",
+      "available_legos": 270,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "To his friend here",
+          "A su amigo aquí",
+          null,
+          null
+        ],
+        [
+          "He speaks to his friend",
+          "Él habla a su amigo",
+          null,
+          null
+        ],
+        [
+          "I'm going to to speak to his friend",
+          "Voy a hablar a su amigo",
+          null,
+          null
+        ],
+        [
+          "I want to to help his friend",
+          "Quiero ayudar a su amigo",
+          null,
+          null
+        ],
+        [
+          "I want to to write something to his friend",
+          "Quiero escribir algo a su amigo",
+          null,
+          null
+        ],
+        [
+          "I'm going to to speak to his friend here",
+          "Voy a hablar a su amigo aquí",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write a letter to his friend",
+          "Quería escribir una carta a su amigo",
+          null,
+          null
+        ],
+        [
+          "I want to show something to his friend here",
+          "Quiero mostrar algo a su amigo aquí",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write something to his friend to yesterday",
+          "Quería escribir algo a su amigo ayer",
+          null,
+          null
+        ],
+        [
+          "I'm going to to write a letter to his friend in Spanish",
+          "Voy a escribir una carta a su amigo en español",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0052L05": {
+      "lego": [
+        "last week",
+        "la semana pasada"
+      ],
+      "type": "M",
+      "available_legos": 271,
+      "is_final_lego": true,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "I was here last week",
+          "Estaba aquí la semana pasada",
+          null,
+          null
+        ],
+        [
+          "That was last week",
+          "Eso era la semana pasada",
+          null,
+          null
+        ],
+        [
+          "I wanted something last week",
+          "Quería algo la semana pasada",
+          null,
+          null
+        ],
+        [
+          "I started to to learn last week",
+          "Comencé a aprender la semana pasada",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write something last week",
+          "Quería escribir algo la semana pasada",
+          null,
+          null
+        ],
+        [
+          "I started to to speak Spanish last week",
+          "Comencé a hablar español la semana pasada",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write a letter last week",
+          "Quería escribir una carta la semana pasada",
+          null,
+          null
+        ],
+        [
+          "I started learning Spanish with my friends last week",
+          "Comencé aprendiendo español con mis amigos la semana pasada",
+          null,
+          null
+        ],
+        [
+          "I wanted to to write a letter to someone last week",
+          "Quería escribir una carta a alguien la semana pasada",
+          null,
+          null
+        ],
+        [
+          "He wanted to to write a letter to his friend last week.",
+          "Quería escribir una carta a su amigo la semana pasada.",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0052.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "cumulative_legos_before": 267
+  }
+}

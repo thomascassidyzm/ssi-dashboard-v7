@@ -1,0 +1,725 @@
+{
+  "agent_id": "agent_53",
+  "seed_range": "S0521-S0530",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0521",
+      "seed_pair": [
+        "I'm afraid that you'll forget why we needed to stay here.",
+        "我担心你会忘记我们为什么需要留在这里。"
+      ],
+      "thinking": "Forward sweep: 'I'm afraid'→我担心 (✓), 'you'll forget'→你会忘记 (✓), 'why'→为什么 (✓), 'we needed'→我们需要 (✓), 'stay here'→留在这里 (✓). Backward sweep: Catches embedded question pattern '我们为什么需要留在这里' (why-we-needed word order). Overlaps: '我担心' in L01+L03, '需要' in L05+L07, '留在这里' in L06+L07. Heuristic 1: No standalone pronouns (我,你,我们 all in context). Heuristic 2: Overlaps maximize patterns.",
+      "legos": [
+        {
+          "id": "S0521L01",
+          "type": "M",
+          "target": "我担心",
+          "known": "I'm afraid",
+          "new": true,
+          "components": [["我", "I"], ["担心", "afraid/worry"]]
+        },
+        {
+          "id": "S0521L02",
+          "type": "M",
+          "target": "你会忘记",
+          "known": "you'll forget",
+          "new": true,
+          "components": [["你", "you"], ["会", "will"], ["忘记", "forget"]]
+        },
+        {
+          "id": "S0521L03",
+          "type": "M",
+          "target": "我担心你会忘记",
+          "known": "I'm afraid that you'll forget",
+          "new": true,
+          "components": [["我担心", "I'm afraid"], ["你会忘记", "you'll forget"]]
+        },
+        {
+          "id": "S0521L04",
+          "type": "A",
+          "target": "为什么",
+          "known": "why",
+          "new": true
+        },
+        {
+          "id": "S0521L05",
+          "type": "M",
+          "target": "我们需要",
+          "known": "we need",
+          "new": true,
+          "components": [["我们", "we"], ["需要", "need"]]
+        },
+        {
+          "id": "S0521L06",
+          "type": "M",
+          "target": "留在这里",
+          "known": "stay here",
+          "new": true,
+          "components": [["留在", "stay at"], ["这里", "here"]]
+        },
+        {
+          "id": "S0521L07",
+          "type": "M",
+          "target": "需要留在这里",
+          "known": "need to stay here",
+          "new": true,
+          "components": [["需要", "need"], ["留在", "stay at"], ["这里", "here"]]
+        },
+        {
+          "id": "S0521L08",
+          "type": "M",
+          "target": "我们为什么需要留在这里",
+          "known": "why we needed to stay here",
+          "new": true,
+          "components": [["我们", "we"], ["为什么", "why"], ["需要", "need"], ["留在", "stay at"], ["这里", "here"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0522",
+      "seed_pair": [
+        "Let's agree that it was stupid to tell the truth.",
+        "我们同意说实话是愚蠢的吧。"
+      ],
+      "thinking": "Forward sweep: 'Let's agree'→我们同意 (✓), 'tell the truth'→说实话 (✓), 'was stupid'→是愚蠢的 (✓). Structure: [我们同意] + [说实话是愚蠢的] + [吧]. Overlaps: '说实话' in L02+L04. Heuristic 1: Particle 吧 wrapped in full sentence. Heuristic 2: Overlaps on '说实话' and '是愚蠢的' create recombination power.",
+      "legos": [
+        {
+          "id": "S0522L01",
+          "type": "M",
+          "target": "我们同意",
+          "known": "let's agree",
+          "new": true,
+          "components": [["我们", "we/let's"], ["同意", "agree"]]
+        },
+        {
+          "id": "S0522L02",
+          "type": "M",
+          "target": "说实话",
+          "known": "tell the truth",
+          "new": true,
+          "components": [["说", "say/tell"], ["实话", "truth"]]
+        },
+        {
+          "id": "S0522L03",
+          "type": "M",
+          "target": "是愚蠢的",
+          "known": "is stupid",
+          "new": true,
+          "components": [["是", "is"], ["愚蠢", "stupid"], ["的", "(nominalizer)"]]
+        },
+        {
+          "id": "S0522L04",
+          "type": "M",
+          "target": "说实话是愚蠢的",
+          "known": "telling the truth is stupid",
+          "new": true,
+          "components": [["说实话", "tell the truth"], ["是", "is"], ["愚蠢的", "stupid"]]
+        },
+        {
+          "id": "S0522L05",
+          "type": "M",
+          "target": "我们同意说实话是愚蠢的吧",
+          "known": "let's agree that it was stupid to tell the truth",
+          "new": true,
+          "components": [["我们同意", "let's agree"], ["说实话是愚蠢的", "telling the truth is stupid"], ["吧", "(suggestion particle)"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0523",
+      "seed_pair": [
+        "Instead of giving an excuse.",
+        "而不是找借口。"
+      ],
+      "thinking": "Forward sweep: 'Instead of'→而不是 (✓), 'giving an excuse'→找借口 (✓). Backward sweep confirms. Heuristic 1: Particles 而,不,是 wrapped in '而不是'. Heuristic 2: Overlap on complete phrase shows pattern. Simple sentence with perfect tiling.",
+      "legos": [
+        {
+          "id": "S0523L01",
+          "type": "M",
+          "target": "而不是",
+          "known": "instead of",
+          "new": true,
+          "components": [["而", "and/but"], ["不是", "not is"]]
+        },
+        {
+          "id": "S0523L02",
+          "type": "M",
+          "target": "找借口",
+          "known": "give an excuse",
+          "new": true,
+          "components": [["找", "look for/give"], ["借口", "excuse"]]
+        },
+        {
+          "id": "S0523L03",
+          "type": "M",
+          "target": "而不是找借口",
+          "known": "instead of giving an excuse",
+          "new": true,
+          "components": [["而不是", "instead of"], ["找借口", "give an excuse"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0524",
+      "seed_pair": [
+        "I'll call you back in three or four minutes.",
+        "我三四分钟后给你回电话。"
+      ],
+      "thinking": "Forward sweep: 'three or four minutes'→三四分钟 (✓), 'call you back'→给你回电话 (✓), 'call back'→回电话 (✓). Backward sweep: Catches '分钟后' pattern (minutes later). Word order: Chinese puts time before verb. Overlaps: '三四分钟' in L01+L03, '回电话' in L05+L06, '分钟后' in L02+L03. Heuristic 1: No standalone particles (后,的 in context). Heuristic 2: Multiple overlaps maximize patterns.",
+      "legos": [
+        {
+          "id": "S0524L01",
+          "type": "M",
+          "target": "三四分钟",
+          "known": "three or four minutes",
+          "new": true,
+          "components": [["三四", "three-four"], ["分钟", "minutes"]]
+        },
+        {
+          "id": "S0524L02",
+          "type": "M",
+          "target": "分钟后",
+          "known": "minutes later",
+          "new": true,
+          "components": [["分钟", "minutes"], ["后", "after/later"]]
+        },
+        {
+          "id": "S0524L03",
+          "type": "M",
+          "target": "三四分钟后",
+          "known": "in three or four minutes",
+          "new": true,
+          "components": [["三四分钟", "three or four minutes"], ["后", "later"]]
+        },
+        {
+          "id": "S0524L04",
+          "type": "A",
+          "target": "电话",
+          "known": "phone",
+          "new": true
+        },
+        {
+          "id": "S0524L05",
+          "type": "M",
+          "target": "回电话",
+          "known": "call back",
+          "new": true,
+          "components": [["回", "return"], ["电话", "phone"]]
+        },
+        {
+          "id": "S0524L06",
+          "type": "M",
+          "target": "给你回电话",
+          "known": "call you back",
+          "new": true,
+          "components": [["给你", "to you"], ["回电话", "call back"]]
+        },
+        {
+          "id": "S0524L07",
+          "type": "M",
+          "target": "我三四分钟后给你回电话",
+          "known": "I'll call you back in three or four minutes",
+          "new": true,
+          "components": [["我", "I"], ["三四分钟后", "in three or four minutes"], ["给你回电话", "call you back"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0525",
+      "seed_pair": [
+        "To check if you've been able to finish.",
+        "看看你是否能够完成。"
+      ],
+      "thinking": "Forward sweep: 'to check'→看看 (✓ verb reduplication), 'if/whether'→是否 (✓), 'able to finish'→能够完成 (✓), 'finish'→完成 (✓). Backward sweep: Catches '是否能够完成' pattern (whether able to). Overlaps: '能够' in L04+L05, '完成' in L03+L05+L06. Heuristic 1: 看看 shows reduplication (看+看), 是否 shows 是+否 components. Heuristic 2: Overlaps on '能够完成' and '是否能够' maximize patterns.",
+      "legos": [
+        {
+          "id": "S0525L01",
+          "type": "M",
+          "target": "看看",
+          "known": "to check",
+          "new": true,
+          "components": [["看", "to look"], ["看", "to look"]]
+        },
+        {
+          "id": "S0525L02",
+          "type": "M",
+          "target": "是否",
+          "known": "whether",
+          "new": true,
+          "components": [["是", "is/yes"], ["否", "not/no"]]
+        },
+        {
+          "id": "S0525L03",
+          "type": "A",
+          "target": "完成",
+          "known": "finish",
+          "new": true
+        },
+        {
+          "id": "S0525L04",
+          "type": "M",
+          "target": "能够",
+          "known": "be able to",
+          "new": true,
+          "components": [["能", "can"], ["够", "enough/reach"]]
+        },
+        {
+          "id": "S0525L05",
+          "type": "M",
+          "target": "能够完成",
+          "known": "able to finish",
+          "new": true,
+          "components": [["能够", "be able to"], ["完成", "finish"]]
+        },
+        {
+          "id": "S0525L06",
+          "type": "M",
+          "target": "是否能够完成",
+          "known": "whether able to finish",
+          "new": true,
+          "components": [["是否", "whether"], ["能够", "be able to"], ["完成", "finish"]]
+        },
+        {
+          "id": "S0525L07",
+          "type": "M",
+          "target": "你是否能够完成",
+          "known": "if you've been able to finish",
+          "new": true,
+          "components": [["你", "you"], ["是否", "whether"], ["能够", "be able to"], ["完成", "finish"]]
+        },
+        {
+          "id": "S0525L08",
+          "type": "M",
+          "target": "看看你是否能够完成",
+          "known": "to check if you've been able to finish",
+          "new": true,
+          "components": [["看看", "to check"], ["你是否能够完成", "if you've been able to finish"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0526",
+      "seed_pair": [
+        "I'm finding it hard to believe that you can't guess.",
+        "我很难相信你猜不到。"
+      ],
+      "thinking": "Forward sweep: 'very hard'→很难 (✓), 'believe'→相信 (✓), 'hard to believe'→很难相信 (✓), 'guess'→猜 (✓), 'can't guess'→猜不到 (✓ resultative complement). Backward sweep: Catches '相信你猜不到' pattern. Overlaps: '相信' in L02+L03+L04+L08, '猜' in L05+L06+L07. Heuristic 1: 猜不到 shows resultative complement (猜+不到), particles wrapped. Heuristic 2: Overlaps on '相信' and '猜不到' maximize patterns.",
+      "legos": [
+        {
+          "id": "S0526L01",
+          "type": "M",
+          "target": "很难",
+          "known": "very hard",
+          "new": true,
+          "components": [["很", "very"], ["难", "hard/difficult"]]
+        },
+        {
+          "id": "S0526L02",
+          "type": "A",
+          "target": "相信",
+          "known": "believe",
+          "new": true
+        },
+        {
+          "id": "S0526L03",
+          "type": "M",
+          "target": "很难相信",
+          "known": "hard to believe",
+          "new": true,
+          "components": [["很难", "very hard"], ["相信", "believe"]]
+        },
+        {
+          "id": "S0526L04",
+          "type": "M",
+          "target": "我很难相信",
+          "known": "I'm finding it hard to believe",
+          "new": true,
+          "components": [["我", "I"], ["很难", "very hard"], ["相信", "believe"]]
+        },
+        {
+          "id": "S0526L05",
+          "type": "A",
+          "target": "猜",
+          "known": "guess",
+          "new": true
+        },
+        {
+          "id": "S0526L06",
+          "type": "M",
+          "target": "猜不到",
+          "known": "can't guess",
+          "new": true,
+          "components": [["猜", "guess"], ["不到", "can't reach"]]
+        },
+        {
+          "id": "S0526L07",
+          "type": "M",
+          "target": "你猜不到",
+          "known": "you can't guess",
+          "new": true,
+          "components": [["你", "you"], ["猜不到", "can't guess"]]
+        },
+        {
+          "id": "S0526L08",
+          "type": "M",
+          "target": "相信你猜不到",
+          "known": "believe that you can't guess",
+          "new": true,
+          "components": [["相信", "believe"], ["你猜不到", "you can't guess"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0527",
+      "seed_pair": [
+        "Guess who told me that funny story.",
+        "猜猜是谁告诉我那个有趣的故事。"
+      ],
+      "thinking": "Forward sweep: 'guess'→猜猜 (✓ reduplication), 'who'→是谁 (✓ Chinese question structure), 'tell'→告诉 (✓), 'told me'→告诉我 (✓), 'story'→故事 (✓), 'funny'→有趣的 (✓), 'that funny story'→那个有趣的故事 (✓). Backward sweep: Catches '是谁告诉我...' embedded question pattern. Overlaps: '猜' in L01, '告诉' in L03+L04+L10, '故事' in L05+L07+L09+L10. Heuristic 1: 猜猜 shows reduplication, 那个 wraps classifier 个. Heuristic 2: Multiple overlaps on '故事', '告诉', '有趣的' maximize patterns.",
+      "legos": [
+        {
+          "id": "S0527L01",
+          "type": "M",
+          "target": "猜猜",
+          "known": "guess",
+          "new": true,
+          "components": [["猜", "guess"], ["猜", "guess"]]
+        },
+        {
+          "id": "S0527L02",
+          "type": "M",
+          "target": "是谁",
+          "known": "who",
+          "new": true,
+          "components": [["是", "is"], ["谁", "who"]]
+        },
+        {
+          "id": "S0527L03",
+          "type": "A",
+          "target": "告诉",
+          "known": "tell",
+          "new": true
+        },
+        {
+          "id": "S0527L04",
+          "type": "M",
+          "target": "告诉我",
+          "known": "tell me",
+          "new": true,
+          "components": [["告诉", "tell"], ["我", "me"]]
+        },
+        {
+          "id": "S0527L05",
+          "type": "A",
+          "target": "故事",
+          "known": "story",
+          "new": true
+        },
+        {
+          "id": "S0527L06",
+          "type": "M",
+          "target": "有趣的",
+          "known": "funny",
+          "new": true,
+          "components": [["有趣", "interesting"], ["的", "(modifier)"]]
+        },
+        {
+          "id": "S0527L07",
+          "type": "M",
+          "target": "有趣的故事",
+          "known": "funny story",
+          "new": true,
+          "components": [["有趣的", "funny"], ["故事", "story"]]
+        },
+        {
+          "id": "S0527L08",
+          "type": "M",
+          "target": "那个",
+          "known": "that",
+          "new": true,
+          "components": [["那", "that"], ["个", "(classifier)"]]
+        },
+        {
+          "id": "S0527L09",
+          "type": "M",
+          "target": "那个有趣的故事",
+          "known": "that funny story",
+          "new": true,
+          "components": [["那个", "that"], ["有趣的", "funny"], ["故事", "story"]]
+        },
+        {
+          "id": "S0527L10",
+          "type": "M",
+          "target": "告诉我那个有趣的故事",
+          "known": "told me that funny story",
+          "new": true,
+          "components": [["告诉我", "told me"], ["那个有趣的故事", "that funny story"]]
+        },
+        {
+          "id": "S0527L11",
+          "type": "M",
+          "target": "是谁告诉我那个有趣的故事",
+          "known": "who told me that funny story",
+          "new": true,
+          "components": [["是谁", "who"], ["告诉我", "told me"], ["那个有趣的故事", "that funny story"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0528",
+      "seed_pair": [
+        "I'm probably supposed to keep those things in another room.",
+        "我可能应该把那些东西放在另一个房间。"
+      ],
+      "thinking": "Forward sweep: 'probably'→可能 (✓), 'should'→应该 (✓), 'probably should'→可能应该 (✓), 'those'→那些 (✓), 'things'→东西 (✓), 'those things'→那些东西 (✓), 'room'→房间 (✓), 'another'→另一个 (✓), 'in another room'→在另一个房间 (✓). Backward sweep: Catches BA construction 把那些东西放在另一个房间. This sentence uses the 把 (BA) construction! Overlaps: '应该' in L02+L03, '东西' in L05+L06, '房间' in L07+L08+L09, '另一个' in L08+L09. Heuristic 1: 把 particle wrapped in BA construction, classifier 个 in context. Heuristic 2: BA construction shown, multiple overlaps maximize patterns.",
+      "legos": [
+        {
+          "id": "S0528L01",
+          "type": "A",
+          "target": "可能",
+          "known": "probably",
+          "new": true
+        },
+        {
+          "id": "S0528L02",
+          "type": "A",
+          "target": "应该",
+          "known": "should",
+          "new": true
+        },
+        {
+          "id": "S0528L03",
+          "type": "M",
+          "target": "可能应该",
+          "known": "probably should",
+          "new": true,
+          "components": [["可能", "probably"], ["应该", "should"]]
+        },
+        {
+          "id": "S0528L04",
+          "type": "M",
+          "target": "那些",
+          "known": "those",
+          "new": true,
+          "components": [["那", "that"], ["些", "(plural)"]]
+        },
+        {
+          "id": "S0528L05",
+          "type": "A",
+          "target": "东西",
+          "known": "things",
+          "new": true
+        },
+        {
+          "id": "S0528L06",
+          "type": "M",
+          "target": "那些东西",
+          "known": "those things",
+          "new": true,
+          "components": [["那些", "those"], ["东西", "things"]]
+        },
+        {
+          "id": "S0528L07",
+          "type": "A",
+          "target": "房间",
+          "known": "room",
+          "new": true
+        },
+        {
+          "id": "S0528L08",
+          "type": "M",
+          "target": "另一个",
+          "known": "another",
+          "new": true,
+          "components": [["另", "another"], ["一", "one"], ["个", "(classifier)"]]
+        },
+        {
+          "id": "S0528L09",
+          "type": "M",
+          "target": "另一个房间",
+          "known": "another room",
+          "new": true,
+          "components": [["另一个", "another"], ["房间", "room"]]
+        },
+        {
+          "id": "S0528L10",
+          "type": "M",
+          "target": "在另一个房间",
+          "known": "in another room",
+          "new": true,
+          "components": [["在", "in/at"], ["另一个房间", "another room"]]
+        },
+        {
+          "id": "S0528L11",
+          "type": "M",
+          "target": "放在",
+          "known": "put in",
+          "new": true,
+          "components": [["放", "put"], ["在", "in/at"]]
+        },
+        {
+          "id": "S0528L12",
+          "type": "M",
+          "target": "放在另一个房间",
+          "known": "keep in another room",
+          "new": true,
+          "components": [["放在", "put in"], ["另一个房间", "another room"]]
+        },
+        {
+          "id": "S0528L13",
+          "type": "M",
+          "target": "把那些东西放在另一个房间",
+          "known": "keep those things in another room",
+          "new": true,
+          "components": [["把", "(BA marker)"], ["那些东西", "those things"], ["放在", "put in"], ["另一个房间", "another room"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0529",
+      "seed_pair": [
+        "Can you all put your hands up?",
+        "你们都能举手吗？"
+      ],
+      "thinking": "Forward sweep: 'you (plural)'→你们 (✓), 'you all'→你们都 (✓), 'can'→能 (✓), 'hands'→手 (✓), 'raise hands'→举手 (✓). Backward sweep: Catches question pattern '能举手吗'. Overlaps: '你们' in L01+L02, '手' in L04+L05, '举手' in L05+L06+L07. Heuristic 1: 都 particle wrapped in '你们都', 吗 question particle in context. Heuristic 2: Overlaps on '举手' and question patterns maximize practice.",
+      "legos": [
+        {
+          "id": "S0529L01",
+          "type": "M",
+          "target": "你们",
+          "known": "you all",
+          "new": true,
+          "components": [["你", "you"], ["们", "(plural)"]]
+        },
+        {
+          "id": "S0529L02",
+          "type": "M",
+          "target": "你们都",
+          "known": "you all",
+          "new": true,
+          "components": [["你们", "you (plural)"], ["都", "all"]]
+        },
+        {
+          "id": "S0529L03",
+          "type": "A",
+          "target": "能",
+          "known": "can",
+          "new": true
+        },
+        {
+          "id": "S0529L04",
+          "type": "A",
+          "target": "手",
+          "known": "hand",
+          "new": true
+        },
+        {
+          "id": "S0529L05",
+          "type": "M",
+          "target": "举手",
+          "known": "raise hand",
+          "new": true,
+          "components": [["举", "raise"], ["手", "hand"]]
+        },
+        {
+          "id": "S0529L06",
+          "type": "M",
+          "target": "能举手",
+          "known": "can raise hands",
+          "new": true,
+          "components": [["能", "can"], ["举手", "raise hand"]]
+        },
+        {
+          "id": "S0529L07",
+          "type": "M",
+          "target": "能举手吗",
+          "known": "can raise hands?",
+          "new": true,
+          "components": [["能举手", "can raise hands"], ["吗", "(question)"]]
+        },
+        {
+          "id": "S0529L08",
+          "type": "M",
+          "target": "你们都能举手吗",
+          "known": "can you all put your hands up?",
+          "new": true,
+          "components": [["你们都", "you all"], ["能举手", "can raise hands"], ["吗", "(question)"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0530",
+      "seed_pair": [
+        "So I can count them",
+        "这样我就能数它们了。"
+      ],
+      "thinking": "Forward sweep: 'so/this way'→这样 (✓), 'can'→能 (✓), 'then can'→就能 (✓), 'count'→数 (✓), 'count them'→数它们 (✓). Backward sweep: Catches '这样...就...' pattern (so...then...), and completion particle 了. Overlaps: '能' in L02+L03+L06, '数' in L04+L05+L06+L07. Heuristic 1: Particles 就,了 wrapped in context, 它们 pronoun not standalone. Heuristic 2: Shows important '这样...就...' consequence pattern, overlaps maximize practice.",
+      "legos": [
+        {
+          "id": "S0530L01",
+          "type": "M",
+          "target": "这样",
+          "known": "so",
+          "new": true,
+          "components": [["这", "this"], ["样", "way/manner"]]
+        },
+        {
+          "id": "S0530L02",
+          "type": "A",
+          "target": "能",
+          "known": "can",
+          "new": true
+        },
+        {
+          "id": "S0530L03",
+          "type": "M",
+          "target": "就能",
+          "known": "then can",
+          "new": true,
+          "components": [["就", "then/just"], ["能", "can"]]
+        },
+        {
+          "id": "S0530L04",
+          "type": "A",
+          "target": "数",
+          "known": "count",
+          "new": true
+        },
+        {
+          "id": "S0530L05",
+          "type": "M",
+          "target": "数它们",
+          "known": "count them",
+          "new": true,
+          "components": [["数", "count"], ["它们", "them"]]
+        },
+        {
+          "id": "S0530L06",
+          "type": "M",
+          "target": "能数它们",
+          "known": "can count them",
+          "new": true,
+          "components": [["能", "can"], ["数它们", "count them"]]
+        },
+        {
+          "id": "S0530L07",
+          "type": "M",
+          "target": "就能数它们了",
+          "known": "then can count them",
+          "new": true,
+          "components": [["就能", "then can"], ["数它们", "count them"], ["了", "(completion)"]]
+        },
+        {
+          "id": "S0530L08",
+          "type": "M",
+          "target": "这样我就能数它们了",
+          "known": "so I can count them",
+          "new": true,
+          "components": [["这样", "so/this way"], ["我", "I"], ["就能", "then can"], ["数它们", "count them"], ["了", "(completion)"]]
+        }
+      ]
+    }
+  ]
+}

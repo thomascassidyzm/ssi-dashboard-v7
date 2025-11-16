@@ -1,0 +1,95 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0659",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "target": "Could you all to say that",
+    "known": "¿Podrían todos ustedes decir eso?"
+  },
+  "legos": {
+    "S0659L01": {
+      "lego": ["could you all to say", "podrían todos ustedes decir"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Could you all to say", "podrían todos ustedes decir", null, 1],
+        ["Could you all to say that?", "¿podrían todos ustedes decir eso?", null, 2],
+        ["Could you all to say it?", "¿podrían todos ustedes decirlo?", null, 3],
+        ["Could you all to say that now?", "¿podrían todos ustedes decir eso ahora?", null, 3],
+        ["Could you all to say it again?", "¿podrían todos ustedes decirlo otra vez?", null, 4],
+        ["Could you all to say that please?", "¿podrían todos ustedes decir eso por favor?", null, 4],
+        ["Could you all to say that to me?", "¿podrían todos ustedes decir eso a mí?", null, 5],
+        ["Could you all to say it now please?", "¿podrían todos ustedes decirlo ahora por favor?", null, 5],
+        ["Could you all to say that again?", "¿podrían todos ustedes decir eso otra vez?", null, 6],
+        ["Could you all to say that right now?", "¿podrían todos ustedes decir eso ahora mismo?", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0659L02": {
+      "lego": ["could you all", "podrían todos ustedes"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Could you all", "podrían todos ustedes", null, 1],
+        ["Could you all to help?", "¿podrían todos ustedes ayudar?", null, 2],
+        ["Could you all to come here?", "¿podrían todos ustedes venir aquí?", null, 3],
+        ["Could you all to say that?", "¿podrían todos ustedes decir eso?", null, 3],
+        ["Could you all to do that?", "¿podrían todos ustedes hacer eso?", null, 4],
+        ["Could you all to help me?", "¿podrían todos ustedes ayudarme?", null, 4],
+        ["Could you all to come here now?", "¿podrían todos ustedes venir aquí ahora?", null, 5],
+        ["Could you all to do that please?", "¿podrían todos ustedes hacer eso por favor?", null, 5],
+        ["Could you all to help me with that?", "¿podrían todos ustedes ayudarme con eso?", null, 6],
+        ["Could you all to say that right now?", "¿podrían todos ustedes decir eso ahora mismo?", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0659L03": {
+      "lego": ["to say that", "decir eso"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Say that", "decir eso", null, 1],
+        ["Say that again", "decir eso otra vez", null, 2],
+        ["Could you to say that?", "¿podrías decir eso?", null, 3],
+        ["Don't to say that", "no digas eso", null, 3],
+        ["Could you all to say that?", "¿podrían todos ustedes decir eso?", null, 4],
+        ["Please to say that again", "por favor decir eso otra vez", null, 4],
+        ["Could you to say that to me?", "¿podrías decir eso a mí?", null, 5],
+        ["Could you all to say that now?", "¿podrían todos ustedes decir eso ahora?", null, 5],
+        ["Could you to say that again please?", "¿podrías decir eso otra vez por favor?", null, 6],
+        ["Could you all to say that right now?", "¿podrían todos ustedes decir eso ahora mismo?", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0659L04": {
+      "lego": ["you all", "todos ustedes"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["You all", "todos ustedes", null, 1],
+        ["All of you", "todos ustedes", null, 1],
+        ["Could you all to say that?", "¿podrían todos ustedes decir eso?", null, 3],
+        ["You all to can to help", "todos ustedes pueden ayudar", null, 3],
+        ["Could you all to say that", "podrían todos ustedes decir eso", null, 3]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      }
+    }
+  }
+}

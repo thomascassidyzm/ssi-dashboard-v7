@@ -1,0 +1,632 @@
+{
+  "agent_id": "agent_06",
+  "seed_range": "S0051-S0060",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0051",
+      "seed_pair": [
+        "I enjoy doing interesting things with my friends.",
+        "我喜欢和朋友做有趣的事情。"
+      ],
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "A",
+          "target": "我喜欢",
+          "known": "I enjoy",
+          "new": true
+        },
+        {
+          "id": "S0051L02",
+          "type": "M",
+          "target": "和朋友",
+          "known": "with my friends",
+          "new": true,
+          "components": [
+            ["和", "with"],
+            ["朋友", "friends"]
+          ]
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "target": "和朋友做",
+          "known": "doing with my friends",
+          "new": true,
+          "components": [
+            ["和", "with"],
+            ["朋友", "friends"],
+            ["做", "do/doing"]
+          ]
+        },
+        {
+          "id": "S0051L04",
+          "type": "M",
+          "target": "做有趣的事情",
+          "known": "do interesting things",
+          "new": true,
+          "components": [
+            ["做", "do/doing"],
+            ["有趣的", "interesting"],
+            ["事情", "things"]
+          ]
+        },
+        {
+          "id": "S0051L05",
+          "type": "M",
+          "target": "有趣的事情",
+          "known": "interesting things",
+          "new": true,
+          "components": [
+            ["有趣的", "interesting"],
+            ["事情", "things"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0052",
+      "seed_pair": [
+        "He wanted to write a letter to his friend last week.",
+        "他上周想给他的朋友写封信。"
+      ],
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "target": "上周",
+          "known": "last week",
+          "new": true
+        },
+        {
+          "id": "S0052L02",
+          "type": "M",
+          "target": "给他的朋友",
+          "known": "to his friend",
+          "new": true,
+          "components": [
+            ["给", "to"],
+            ["他的", "his"],
+            ["朋友", "friend"]
+          ]
+        },
+        {
+          "id": "S0052L03",
+          "type": "M",
+          "target": "他的朋友",
+          "known": "his friend",
+          "new": true,
+          "components": [
+            ["他的", "his"],
+            ["朋友", "friend"]
+          ]
+        },
+        {
+          "id": "S0052L04",
+          "type": "M",
+          "target": "写封信",
+          "known": "write a letter",
+          "new": true,
+          "components": [
+            ["写", "write"],
+            ["封", "(classifier)"],
+            ["信", "letter"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": [
+        "She wanted to put his letter in her bag.",
+        "她想把他的信放进她的包里。"
+      ],
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "M",
+          "target": "把他的信放进她的包里",
+          "known": "put his letter in her bag",
+          "new": true,
+          "components": [
+            ["把", "(ba construction)"],
+            ["他的", "his"],
+            ["信", "letter"],
+            ["放进", "put in"],
+            ["她的", "her"],
+            ["包", "bag"],
+            ["里", "in/inside"]
+          ]
+        },
+        {
+          "id": "S0053L02",
+          "type": "M",
+          "target": "他的信",
+          "known": "his letter",
+          "new": true,
+          "components": [
+            ["他的", "his"],
+            ["信", "letter"]
+          ]
+        },
+        {
+          "id": "S0053L03",
+          "type": "M",
+          "target": "她的包里",
+          "known": "in her bag",
+          "new": true,
+          "components": [
+            ["她的", "her"],
+            ["包", "bag"],
+            ["里", "in/inside"]
+          ]
+        },
+        {
+          "id": "S0053L04",
+          "type": "M",
+          "target": "她的包",
+          "known": "her bag",
+          "new": true,
+          "components": [
+            ["她的", "her"],
+            ["包", "bag"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": [
+        "We wanted to give you a little more time.",
+        "我们想多给你一点时间。"
+      ],
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "M",
+          "target": "我们想",
+          "known": "we wanted",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["想", "wanted/want"]
+          ]
+        },
+        {
+          "id": "S0054L02",
+          "type": "M",
+          "target": "多给你一点时间",
+          "known": "give you a little more time",
+          "new": true,
+          "components": [
+            ["多", "more"],
+            ["给", "give"],
+            ["你", "you"],
+            ["一点", "a little"],
+            ["时间", "time"]
+          ]
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "target": "给你一点时间",
+          "known": "give you a little time",
+          "new": true,
+          "components": [
+            ["给", "give"],
+            ["你", "you"],
+            ["一点", "a little"],
+            ["时间", "time"]
+          ]
+        },
+        {
+          "id": "S0054L04",
+          "type": "M",
+          "target": "一点时间",
+          "known": "a little time",
+          "new": true,
+          "components": [
+            ["一点", "a little"],
+            ["时间", "time"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0055",
+      "seed_pair": [
+        "I don't enjoy waking up when I didn't sleep very well.",
+        "当我没睡好的时候我不喜欢醒来。"
+      ],
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "M",
+          "target": "当我没睡好的时候",
+          "known": "when I didn't sleep very well",
+          "new": true,
+          "components": [
+            ["当", "when"],
+            ["我", "I"],
+            ["没", "didn't"],
+            ["睡好", "sleep well"],
+            ["的时候", "(time marker)"]
+          ]
+        },
+        {
+          "id": "S0055L02",
+          "type": "M",
+          "target": "没睡好",
+          "known": "didn't sleep well",
+          "new": true,
+          "components": [
+            ["没", "didn't"],
+            ["睡好", "sleep well"]
+          ]
+        },
+        {
+          "id": "S0055L03",
+          "type": "M",
+          "target": "睡好",
+          "known": "sleep well",
+          "new": true,
+          "components": [
+            ["睡", "sleep"],
+            ["好", "well/good"]
+          ]
+        },
+        {
+          "id": "S0055L04",
+          "type": "M",
+          "target": "不喜欢",
+          "known": "don't enjoy",
+          "new": true,
+          "components": [
+            ["不", "don't"],
+            ["喜欢", "enjoy/like"]
+          ]
+        },
+        {
+          "id": "S0055L05",
+          "type": "A",
+          "target": "醒来",
+          "known": "wake up",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0056",
+      "seed_pair": [
+        "So I can remember how to say a few words.",
+        "这样我就能记住怎么说几个词。"
+      ],
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "M",
+          "target": "这样我就能",
+          "known": "so I can",
+          "new": true,
+          "components": [
+            ["这样", "so/this way"],
+            ["我", "I"],
+            ["就", "then"],
+            ["能", "can"]
+          ]
+        },
+        {
+          "id": "S0056L02",
+          "type": "M",
+          "target": "能记住",
+          "known": "can remember",
+          "new": true,
+          "components": [
+            ["能", "can"],
+            ["记住", "remember"]
+          ]
+        },
+        {
+          "id": "S0056L03",
+          "type": "M",
+          "target": "记住怎么说",
+          "known": "remember how to say",
+          "new": true,
+          "components": [
+            ["记住", "remember"],
+            ["怎么", "how to"],
+            ["说", "say"]
+          ]
+        },
+        {
+          "id": "S0056L04",
+          "type": "M",
+          "target": "怎么说",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["怎么", "how to"],
+            ["说", "say"]
+          ]
+        },
+        {
+          "id": "S0056L05",
+          "type": "M",
+          "target": "几个词",
+          "known": "a few words",
+          "new": true,
+          "components": [
+            ["几个", "a few"],
+            ["词", "words"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0057",
+      "seed_pair": [
+        "I can't remember how to say what I wanted to say.",
+        "我记不住怎么说我想说的话。"
+      ],
+      "legos": [
+        {
+          "id": "S0057L01",
+          "type": "M",
+          "target": "记不住",
+          "known": "can't remember",
+          "new": true,
+          "components": [
+            ["记", "remember"],
+            ["不住", "(negative potential)"]
+          ]
+        },
+        {
+          "id": "S0057L02",
+          "type": "M",
+          "target": "怎么说",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["怎么", "how to"],
+            ["说", "say"]
+          ]
+        },
+        {
+          "id": "S0057L03",
+          "type": "M",
+          "target": "我想说的话",
+          "known": "what I wanted to say",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["想", "wanted/want"],
+            ["说", "say"],
+            ["的话", "(nominalizer)"]
+          ]
+        },
+        {
+          "id": "S0057L04",
+          "type": "M",
+          "target": "想说的话",
+          "known": "what to say / wanted to say",
+          "new": true,
+          "components": [
+            ["想", "wanted/want"],
+            ["说", "say"],
+            ["的话", "(nominalizer)"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0058",
+      "seed_pair": [
+        "It's interesting when you understand enough words.",
+        "当你理解足够多的词的时候很有趣。"
+      ],
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "M",
+          "target": "当你理解足够多的词的时候",
+          "known": "when you understand enough words",
+          "new": true,
+          "components": [
+            ["当", "when"],
+            ["你", "you"],
+            ["理解", "understand"],
+            ["足够多的", "enough"],
+            ["词", "words"],
+            ["的时候", "(time marker)"]
+          ]
+        },
+        {
+          "id": "S0058L02",
+          "type": "M",
+          "target": "理解足够多的词",
+          "known": "understand enough words",
+          "new": true,
+          "components": [
+            ["理解", "understand"],
+            ["足够多的", "enough"],
+            ["词", "words"]
+          ]
+        },
+        {
+          "id": "S0058L03",
+          "type": "M",
+          "target": "足够多的词",
+          "known": "enough words",
+          "new": true,
+          "components": [
+            ["足够多的", "enough"],
+            ["词", "words"]
+          ]
+        },
+        {
+          "id": "S0058L04",
+          "type": "M",
+          "target": "很有趣",
+          "known": "interesting / very interesting",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["有趣", "interesting"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": [
+        "I know how to do what I need to do next week.",
+        "我知道下周我需要做什么。"
+      ],
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "M",
+          "target": "我知道",
+          "known": "I know",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["知道", "know"]
+          ]
+        },
+        {
+          "id": "S0059L02",
+          "type": "A",
+          "target": "知道",
+          "known": "know",
+          "new": true
+        },
+        {
+          "id": "S0059L03",
+          "type": "A",
+          "target": "下周",
+          "known": "next week",
+          "new": true
+        },
+        {
+          "id": "S0059L04",
+          "type": "M",
+          "target": "下周我需要做什么",
+          "known": "what I need to do next week",
+          "new": true,
+          "components": [
+            ["下周", "next week"],
+            ["我", "I"],
+            ["需要", "need"],
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0059L05",
+          "type": "M",
+          "target": "需要做什么",
+          "known": "need to do what / what...need to do",
+          "new": true,
+          "components": [
+            ["需要", "need"],
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0059L06",
+          "type": "M",
+          "target": "做什么",
+          "known": "do what",
+          "new": true,
+          "components": [
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": [
+        "I don't know how to say enough different words yet.",
+        "我还不知道怎么说足够多不同的词。"
+      ],
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "M",
+          "target": "我还不知道",
+          "known": "I don't know yet",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["还", "yet/still"],
+            ["不", "not/don't"],
+            ["知道", "know"]
+          ]
+        },
+        {
+          "id": "S0060L02",
+          "type": "M",
+          "target": "还不知道",
+          "known": "don't know yet / still don't know",
+          "new": true,
+          "components": [
+            ["还", "yet/still"],
+            ["不", "not/don't"],
+            ["知道", "know"]
+          ]
+        },
+        {
+          "id": "S0060L03",
+          "type": "M",
+          "target": "不知道",
+          "known": "don't know",
+          "new": true,
+          "components": [
+            ["不", "not/don't"],
+            ["知道", "know"]
+          ]
+        },
+        {
+          "id": "S0060L04",
+          "type": "M",
+          "target": "怎么说",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["怎么", "how to"],
+            ["说", "say"]
+          ]
+        },
+        {
+          "id": "S0060L05",
+          "type": "M",
+          "target": "足够多不同的词",
+          "known": "enough different words",
+          "new": true,
+          "components": [
+            ["足够多", "enough"],
+            ["不同的", "different"],
+            ["词", "words"]
+          ]
+        },
+        {
+          "id": "S0060L06",
+          "type": "M",
+          "target": "不同的词",
+          "known": "different words",
+          "new": true,
+          "components": [
+            ["不同的", "different"],
+            ["词", "words"]
+          ]
+        }
+      ]
+    }
+  ]
+}

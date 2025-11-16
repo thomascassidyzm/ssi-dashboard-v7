@@ -1,0 +1,604 @@
+{
+  "agent_id": "agent_52",
+  "seed_range": "S0511-S0520",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0511",
+      "seed_pair": [
+        "这个消息花了几个小时才传到办公室的每个人。",
+        "The news took several hours to reach everyone in the office."
+      ],
+      "legos": [
+        {
+          "id": "S0511L01",
+          "type": "M",
+          "target": "这个消息",
+          "known": "the news",
+          "new": true,
+          "components": [["这个", "the/this"], ["消息", "news"]]
+        },
+        {
+          "id": "S0511L02",
+          "type": "M",
+          "target": "花了几个小时",
+          "known": "took several hours",
+          "new": true,
+          "components": [["花了", "took/spent"], ["几个", "several"], ["小时", "hours"]]
+        },
+        {
+          "id": "S0511L03",
+          "type": "M",
+          "target": "几个小时",
+          "known": "several hours",
+          "new": true,
+          "components": [["几个", "several"], ["小时", "hours"]]
+        },
+        {
+          "id": "S0511L04",
+          "type": "M",
+          "target": "才传到",
+          "known": "to reach",
+          "new": true,
+          "components": [["才", "only after/finally"], ["传到", "reach/transmit to"]]
+        },
+        {
+          "id": "S0511L05",
+          "type": "M",
+          "target": "办公室的每个人",
+          "known": "everyone in the office",
+          "new": true,
+          "components": [["办公室", "office"], ["的", "possessive marker"], ["每个人", "everyone"]]
+        },
+        {
+          "id": "S0511L06",
+          "type": "M",
+          "target": "每个人",
+          "known": "everyone",
+          "new": true,
+          "components": [["每", "every"], ["个", "classifier"], ["人", "person"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0512",
+      "seed_pair": [
+        "我去拿钥匙的时候你能把门开着吗？",
+        "Can you hold the door open while I fetch the keys?"
+      ],
+      "legos": [
+        {
+          "id": "S0512L01",
+          "type": "M",
+          "target": "我去拿钥匙",
+          "known": "I fetch the keys",
+          "new": true,
+          "components": [["我", "I"], ["去", "go"], ["拿", "fetch/get"], ["钥匙", "keys"]]
+        },
+        {
+          "id": "S0512L02",
+          "type": "M",
+          "target": "去拿",
+          "known": "go fetch",
+          "new": true,
+          "components": [["去", "go"], ["拿", "fetch/get"]]
+        },
+        {
+          "id": "S0512L03",
+          "type": "A",
+          "target": "钥匙",
+          "known": "keys",
+          "new": true
+        },
+        {
+          "id": "S0512L04",
+          "type": "M",
+          "target": "的时候",
+          "known": "while/when",
+          "new": true,
+          "components": [["的", "possessive/attributive marker"], ["时候", "time/moment"]]
+        },
+        {
+          "id": "S0512L05",
+          "type": "M",
+          "target": "我去拿钥匙的时候",
+          "known": "while I fetch the keys",
+          "new": true,
+          "components": [["我", "I"], ["去", "go"], ["拿", "fetch"], ["钥匙", "keys"], ["的时候", "when/while"]]
+        },
+        {
+          "id": "S0512L06",
+          "type": "M",
+          "target": "你能",
+          "known": "can you",
+          "new": true,
+          "components": [["你", "you"], ["能", "can/able to"]]
+        },
+        {
+          "id": "S0512L07",
+          "type": "M",
+          "target": "把门开着",
+          "known": "hold the door open",
+          "new": true,
+          "components": [["把", "ba-construction marker"], ["门", "door"], ["开", "open"], ["着", "durative aspect marker"]]
+        },
+        {
+          "id": "S0512L08",
+          "type": "M",
+          "target": "你能把门开着吗",
+          "known": "can you hold the door open",
+          "new": true,
+          "components": [["你", "you"], ["能", "can"], ["把门开着", "hold the door open"], ["吗", "question particle"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0513",
+      "seed_pair": [
+        "当我上下移动头部时最疼。",
+        "It hurts most when I move my head up and down."
+      ],
+      "legos": [
+        {
+          "id": "S0513L01",
+          "type": "M",
+          "target": "当...时",
+          "known": "when",
+          "new": true,
+          "components": [["当", "when (start)"], ["时", "when (end)"]]
+        },
+        {
+          "id": "S0513L02",
+          "type": "M",
+          "target": "上下",
+          "known": "up and down",
+          "new": true,
+          "components": [["上", "up"], ["下", "down"]]
+        },
+        {
+          "id": "S0513L03",
+          "type": "M",
+          "target": "移动头部",
+          "known": "move my head",
+          "new": true,
+          "components": [["移动", "move"], ["头部", "head"]]
+        },
+        {
+          "id": "S0513L04",
+          "type": "M",
+          "target": "上下移动头部",
+          "known": "move my head up and down",
+          "new": true,
+          "components": [["上下", "up and down"], ["移动", "move"], ["头部", "head"]]
+        },
+        {
+          "id": "S0513L05",
+          "type": "A",
+          "target": "头部",
+          "known": "head",
+          "new": true
+        },
+        {
+          "id": "S0513L06",
+          "type": "M",
+          "target": "最疼",
+          "known": "hurts most",
+          "new": true,
+          "components": [["最", "most"], ["疼", "hurt/painful"]]
+        },
+        {
+          "id": "S0513L07",
+          "type": "M",
+          "target": "当我上下移动头部时",
+          "known": "when I move my head up and down",
+          "new": true,
+          "components": [["当", "when"], ["我", "I"], ["上下移动头部", "move my head up and down"], ["时", "when marker"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0514",
+      "seed_pair": [
+        "我第一天就找到了完美的房子。",
+        "I found the perfect house on the first day."
+      ],
+      "legos": [
+        {
+          "id": "S0514L01",
+          "type": "M",
+          "target": "第一天",
+          "known": "the first day",
+          "new": true,
+          "components": [["第一", "first"], ["天", "day"]]
+        },
+        {
+          "id": "S0514L02",
+          "type": "M",
+          "target": "第一天就",
+          "known": "on the first day already",
+          "new": true,
+          "components": [["第一天", "the first day"], ["就", "already/right away"]]
+        },
+        {
+          "id": "S0514L03",
+          "type": "M",
+          "target": "找到了",
+          "known": "found",
+          "new": true,
+          "components": [["找到", "find/found"], ["了", "completion marker"]]
+        },
+        {
+          "id": "S0514L04",
+          "type": "M",
+          "target": "完美的房子",
+          "known": "the perfect house",
+          "new": true,
+          "components": [["完美", "perfect"], ["的", "attributive marker"], ["房子", "house"]]
+        },
+        {
+          "id": "S0514L05",
+          "type": "M",
+          "target": "完美的",
+          "known": "perfect",
+          "new": true,
+          "components": [["完美", "perfect"], ["的", "attributive marker"]]
+        },
+        {
+          "id": "S0514L06",
+          "type": "A",
+          "target": "房子",
+          "known": "house",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0515",
+      "seed_pair": [
+        "在新年的第一天。",
+        "On the first day of the new year."
+      ],
+      "legos": [
+        {
+          "id": "S0515L01",
+          "type": "M",
+          "target": "在新年的第一天",
+          "known": "on the first day of the new year",
+          "new": true,
+          "components": [["在", "on/at"], ["新年", "new year"], ["的", "possessive marker"], ["第一天", "first day"]]
+        },
+        {
+          "id": "S0515L02",
+          "type": "M",
+          "target": "新年的第一天",
+          "known": "the first day of the new year",
+          "new": true,
+          "components": [["新年", "new year"], ["的", "possessive marker"], ["第一天", "first day"]]
+        },
+        {
+          "id": "S0515L03",
+          "type": "M",
+          "target": "第一天",
+          "known": "the first day",
+          "new": true,
+          "components": [["第一", "first"], ["天", "day"]]
+        },
+        {
+          "id": "S0515L04",
+          "type": "M",
+          "target": "新年",
+          "known": "the new year",
+          "new": true,
+          "components": [["新", "new"], ["年", "year"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0516",
+      "seed_pair": [
+        "他们两个都是自己来的。",
+        "They both came on their own."
+      ],
+      "legos": [
+        {
+          "id": "S0516L01",
+          "type": "M",
+          "target": "他们两个都",
+          "known": "they both",
+          "new": true,
+          "components": [["他们", "they"], ["两个", "two/both"], ["都", "all/both"]]
+        },
+        {
+          "id": "S0516L02",
+          "type": "M",
+          "target": "两个都",
+          "known": "both",
+          "new": true,
+          "components": [["两个", "two"], ["都", "all/both"]]
+        },
+        {
+          "id": "S0516L03",
+          "type": "M",
+          "target": "是...的",
+          "known": "(emphasis construction)",
+          "new": true,
+          "components": [["是", "is/emphasis marker"], ["的", "emphasis marker"]]
+        },
+        {
+          "id": "S0516L04",
+          "type": "M",
+          "target": "自己来的",
+          "known": "came on their own",
+          "new": true,
+          "components": [["自己", "self/own"], ["来", "came"], ["的", "emphasis marker"]]
+        },
+        {
+          "id": "S0516L05",
+          "type": "M",
+          "target": "自己来",
+          "known": "come on one's own",
+          "new": true,
+          "components": [["自己", "self/own"], ["来", "come"]]
+        },
+        {
+          "id": "S0516L06",
+          "type": "A",
+          "target": "自己",
+          "known": "own/self",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0517",
+      "seed_pair": [
+        "但他们一起离开了。",
+        "But they left with each other."
+      ],
+      "legos": [
+        {
+          "id": "S0517L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0517L02",
+          "type": "A",
+          "target": "他们",
+          "known": "they",
+          "new": true
+        },
+        {
+          "id": "S0517L03",
+          "type": "A",
+          "target": "一起",
+          "known": "together",
+          "new": true
+        },
+        {
+          "id": "S0517L04",
+          "type": "M",
+          "target": "离开了",
+          "known": "left",
+          "new": true,
+          "components": [["离开", "leave/depart"], ["了", "completion marker"]]
+        },
+        {
+          "id": "S0517L05",
+          "type": "M",
+          "target": "一起离开了",
+          "known": "left together",
+          "new": true,
+          "components": [["一起", "together"], ["离开", "leave"], ["了", "completion marker"]]
+        },
+        {
+          "id": "S0517L06",
+          "type": "M",
+          "target": "他们一起离开了",
+          "known": "they left together",
+          "new": true,
+          "components": [["他们", "they"], ["一起", "together"], ["离开了", "left"]]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0518",
+      "seed_pair": [
+        "我无法想象自己有完全相同的问题。",
+        "I couldn't imagine myself having exactly the same problem."
+      ],
+      "legos": [
+        {
+          "id": "S0518L01",
+          "type": "M",
+          "target": "我无法想象",
+          "known": "I couldn't imagine",
+          "new": true,
+          "components": [["我", "I"], ["无法", "unable to/cannot"], ["想象", "imagine"]]
+        },
+        {
+          "id": "S0518L02",
+          "type": "M",
+          "target": "无法想象",
+          "known": "couldn't imagine",
+          "new": true,
+          "components": [["无法", "unable to/cannot"], ["想象", "imagine"]]
+        },
+        {
+          "id": "S0518L03",
+          "type": "A",
+          "target": "想象",
+          "known": "imagine",
+          "new": true
+        },
+        {
+          "id": "S0518L04",
+          "type": "A",
+          "target": "自己",
+          "known": "myself",
+          "new": true
+        },
+        {
+          "id": "S0518L05",
+          "type": "M",
+          "target": "完全相同的",
+          "known": "exactly the same",
+          "new": true,
+          "components": [["完全", "completely/exactly"], ["相同", "same"], ["的", "attributive marker"]]
+        },
+        {
+          "id": "S0518L06",
+          "type": "M",
+          "target": "相同的问题",
+          "known": "the same problem",
+          "new": true,
+          "components": [["相同", "same"], ["的", "attributive marker"], ["问题", "problem"]]
+        },
+        {
+          "id": "S0518L07",
+          "type": "M",
+          "target": "完全相同的问题",
+          "known": "exactly the same problem",
+          "new": true,
+          "components": [["完全", "completely/exactly"], ["相同", "same"], ["的", "attributive marker"], ["问题", "problem"]]
+        },
+        {
+          "id": "S0518L08",
+          "type": "A",
+          "target": "问题",
+          "known": "problem",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0519",
+      "seed_pair": [
+        "我还没见过他们的新宝宝。",
+        "I haven't seen their new baby yet."
+      ],
+      "legos": [
+        {
+          "id": "S0519L01",
+          "type": "M",
+          "target": "我还没见过",
+          "known": "I haven't seen yet",
+          "new": true,
+          "components": [["我", "I"], ["还", "yet/still"], ["没", "not"], ["见过", "seen"]]
+        },
+        {
+          "id": "S0519L02",
+          "type": "M",
+          "target": "还没见过",
+          "known": "haven't seen yet",
+          "new": true,
+          "components": [["还", "yet/still"], ["没", "not"], ["见过", "seen"]]
+        },
+        {
+          "id": "S0519L03",
+          "type": "M",
+          "target": "见过",
+          "known": "seen",
+          "new": true,
+          "components": [["见", "see/meet"], ["过", "experience marker"]]
+        },
+        {
+          "id": "S0519L04",
+          "type": "M",
+          "target": "他们的",
+          "known": "their",
+          "new": true,
+          "components": [["他们", "they"], ["的", "possessive marker"]]
+        },
+        {
+          "id": "S0519L05",
+          "type": "M",
+          "target": "新宝宝",
+          "known": "new baby",
+          "new": true,
+          "components": [["新", "new"], ["宝宝", "baby"]]
+        },
+        {
+          "id": "S0519L06",
+          "type": "M",
+          "target": "他们的新宝宝",
+          "known": "their new baby",
+          "new": true,
+          "components": [["他们的", "their"], ["新", "new"], ["宝宝", "baby"]]
+        },
+        {
+          "id": "S0519L07",
+          "type": "A",
+          "target": "宝宝",
+          "known": "baby",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0520",
+      "seed_pair": [
+        "这可能发生在整个家庭身上。",
+        "It might have happened to the whole family."
+      ],
+      "legos": [
+        {
+          "id": "S0520L01",
+          "type": "M",
+          "target": "这可能发生",
+          "known": "it might have happened",
+          "new": true,
+          "components": [["这", "this/it"], ["可能", "might/possibly"], ["发生", "happen"]]
+        },
+        {
+          "id": "S0520L02",
+          "type": "A",
+          "target": "可能",
+          "known": "might",
+          "new": true
+        },
+        {
+          "id": "S0520L03",
+          "type": "A",
+          "target": "发生",
+          "known": "happen",
+          "new": true
+        },
+        {
+          "id": "S0520L04",
+          "type": "M",
+          "target": "整个家庭",
+          "known": "the whole family",
+          "new": true,
+          "components": [["整个", "whole/entire"], ["家庭", "family"]]
+        },
+        {
+          "id": "S0520L05",
+          "type": "M",
+          "target": "在整个家庭身上",
+          "known": "to the whole family",
+          "new": true,
+          "components": [["在", "at/on"], ["整个家庭", "the whole family"], ["身上", "on (person/body)"]]
+        },
+        {
+          "id": "S0520L06",
+          "type": "M",
+          "target": "发生在...身上",
+          "known": "happen to (someone)",
+          "new": true,
+          "components": [["发生", "happen"], ["在", "at/on"], ["身上", "on (person)"]]
+        },
+        {
+          "id": "S0520L07",
+          "type": "A",
+          "target": "家庭",
+          "known": "family",
+          "new": true
+        }
+      ]
+    }
+  ]
+}

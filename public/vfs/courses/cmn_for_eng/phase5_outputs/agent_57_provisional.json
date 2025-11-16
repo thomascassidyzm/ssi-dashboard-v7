@@ -1,0 +1,761 @@
+{
+  "agent_id": "agent_57",
+  "seed_range": "S0561-S0570",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0561",
+      "seed_pair": [
+        "I don't care if it's a fast car.",
+        "我不在乎它是不是快车。"
+      ],
+      "legos": [
+        {
+          "id": "S0561L01",
+          "type": "M",
+          "target": "我不在乎",
+          "known": "I don't care",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["不在乎", "don't care"]
+          ]
+        },
+        {
+          "id": "S0561L02",
+          "type": "M",
+          "target": "它是不是快车",
+          "known": "if it's a fast car",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["是不是", "whether...is"],
+            ["快", "fast"],
+            ["车", "car"]
+          ]
+        },
+        {
+          "id": "S0561L03",
+          "type": "M",
+          "target": "它是不是",
+          "known": "if it's",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["是不是", "whether...is"]
+          ]
+        },
+        {
+          "id": "S0561L04",
+          "type": "A",
+          "target": "快车",
+          "known": "fast car",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0562",
+      "seed_pair": [
+        "I just want to get there safely.",
+        "我只想安全到达那里。"
+      ],
+      "legos": [
+        {
+          "id": "S0562L01",
+          "type": "M",
+          "target": "我只想",
+          "known": "I just want",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["只", "just"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0562L02",
+          "type": "M",
+          "target": "安全到达那里",
+          "known": "safely get there",
+          "new": true,
+          "components": [
+            ["安全", "safely"],
+            ["到达", "get to/arrive"],
+            ["那里", "there"]
+          ]
+        },
+        {
+          "id": "S0562L03",
+          "type": "M",
+          "target": "安全到达",
+          "known": "safely get",
+          "new": true,
+          "components": [
+            ["安全", "safely"],
+            ["到达", "get to/arrive"]
+          ]
+        },
+        {
+          "id": "S0562L04",
+          "type": "M",
+          "target": "到达那里",
+          "known": "get there",
+          "new": true,
+          "components": [
+            ["到达", "get to/arrive"],
+            ["那里", "there"]
+          ]
+        },
+        {
+          "id": "S0562L05",
+          "type": "A",
+          "target": "那里",
+          "known": "there",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0563",
+      "seed_pair": [
+        "I wouldn't have been able to keep going any longer.",
+        "我不会能够继续下去了。"
+      ],
+      "legos": [
+        {
+          "id": "S0563L01",
+          "type": "M",
+          "target": "我不会能够",
+          "known": "I wouldn't have been able to",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["不会", "wouldn't"],
+            ["能够", "be able to"]
+          ]
+        },
+        {
+          "id": "S0563L02",
+          "type": "M",
+          "target": "能够继续下去",
+          "known": "be able to keep going",
+          "new": true,
+          "components": [
+            ["能够", "be able to"],
+            ["继续下去", "keep going"]
+          ]
+        },
+        {
+          "id": "S0563L03",
+          "type": "M",
+          "target": "继续下去",
+          "known": "keep going",
+          "new": true,
+          "components": [
+            ["继续", "continue"],
+            ["下去", "go on"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0564",
+      "seed_pair": [
+        "I wouldn't have been able to without your help.",
+        "没有你的帮助我不会能够做到。"
+      ],
+      "legos": [
+        {
+          "id": "S0564L01",
+          "type": "M",
+          "target": "没有你的帮助",
+          "known": "without your help",
+          "new": true,
+          "components": [
+            ["没有", "without"],
+            ["你的", "your"],
+            ["帮助", "help"]
+          ]
+        },
+        {
+          "id": "S0564L02",
+          "type": "M",
+          "target": "你的帮助",
+          "known": "your help",
+          "new": true,
+          "components": [
+            ["你的", "your"],
+            ["帮助", "help"]
+          ]
+        },
+        {
+          "id": "S0564L03",
+          "type": "A",
+          "target": "帮助",
+          "known": "help",
+          "new": true
+        },
+        {
+          "id": "S0564L04",
+          "type": "M",
+          "target": "我不会能够做到",
+          "known": "I wouldn't have been able to",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["不会", "wouldn't"],
+            ["能够", "be able to"],
+            ["做到", "do it/achieve"]
+          ]
+        },
+        {
+          "id": "S0564L05",
+          "type": "M",
+          "target": "能够做到",
+          "known": "be able to do it",
+          "new": true,
+          "components": [
+            ["能够", "be able to"],
+            ["做到", "do it/achieve"]
+          ]
+        },
+        {
+          "id": "S0564L06",
+          "type": "A",
+          "target": "做到",
+          "known": "do it",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0565",
+      "seed_pair": [
+        "I'd have thought about it more carefully.",
+        "我会更仔细地思考它。"
+      ],
+      "legos": [
+        {
+          "id": "S0565L01",
+          "type": "M",
+          "target": "我会",
+          "known": "I would",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "would"]
+          ]
+        },
+        {
+          "id": "S0565L02",
+          "type": "M",
+          "target": "更仔细地思考它",
+          "known": "think about it more carefully",
+          "new": true,
+          "components": [
+            ["更", "more"],
+            ["仔细地", "carefully"],
+            ["思考", "think"],
+            ["它", "it"]
+          ]
+        },
+        {
+          "id": "S0565L03",
+          "type": "M",
+          "target": "更仔细地",
+          "known": "more carefully",
+          "new": true,
+          "components": [
+            ["更", "more"],
+            ["仔细地", "carefully"]
+          ]
+        },
+        {
+          "id": "S0565L04",
+          "type": "M",
+          "target": "思考它",
+          "known": "think about it",
+          "new": true,
+          "components": [
+            ["思考", "think"],
+            ["它", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0566",
+      "seed_pair": [
+        "I'd have thought more if it had been my choice.",
+        "如果是我的选择，我会想得更多。"
+      ],
+      "legos": [
+        {
+          "id": "S0566L01",
+          "type": "M",
+          "target": "如果是我的选择",
+          "known": "if it had been my choice",
+          "new": true,
+          "components": [
+            ["如果", "if"],
+            ["是", "had been"],
+            ["我的", "my"],
+            ["选择", "choice"]
+          ]
+        },
+        {
+          "id": "S0566L02",
+          "type": "M",
+          "target": "是我的选择",
+          "known": "was my choice",
+          "new": true,
+          "components": [
+            ["是", "was/had been"],
+            ["我的", "my"],
+            ["选择", "choice"]
+          ]
+        },
+        {
+          "id": "S0566L03",
+          "type": "M",
+          "target": "我的选择",
+          "known": "my choice",
+          "new": true,
+          "components": [
+            ["我的", "my"],
+            ["选择", "choice"]
+          ]
+        },
+        {
+          "id": "S0566L04",
+          "type": "A",
+          "target": "选择",
+          "known": "choice",
+          "new": true
+        },
+        {
+          "id": "S0566L05",
+          "type": "M",
+          "target": "我会想得更多",
+          "known": "I'd have thought more",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "would"],
+            ["想得", "thought"],
+            ["更多", "more"]
+          ]
+        },
+        {
+          "id": "S0566L06",
+          "type": "M",
+          "target": "我会",
+          "known": "I would",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "would"]
+          ]
+        },
+        {
+          "id": "S0566L07",
+          "type": "M",
+          "target": "想得更多",
+          "known": "thought more",
+          "new": true,
+          "components": [
+            ["想得", "thought"],
+            ["更多", "more"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0567",
+      "seed_pair": [
+        "It's been lovely spending time outdoors watching the children play.",
+        "在户外看孩子们玩耍度过时间很美好。"
+      ],
+      "legos": [
+        {
+          "id": "S0567L01",
+          "type": "M",
+          "target": "在户外看孩子们玩耍",
+          "known": "watching the children play outdoors",
+          "new": true,
+          "components": [
+            ["在", "at/in"],
+            ["户外", "outdoors"],
+            ["看", "watching"],
+            ["孩子们", "the children"],
+            ["玩耍", "play"]
+          ]
+        },
+        {
+          "id": "S0567L02",
+          "type": "M",
+          "target": "看孩子们玩耍",
+          "known": "watching the children play",
+          "new": true,
+          "components": [
+            ["看", "watching"],
+            ["孩子们", "the children"],
+            ["玩耍", "play"]
+          ]
+        },
+        {
+          "id": "S0567L03",
+          "type": "M",
+          "target": "孩子们玩耍",
+          "known": "the children play",
+          "new": true,
+          "components": [
+            ["孩子们", "the children"],
+            ["玩耍", "play"]
+          ]
+        },
+        {
+          "id": "S0567L04",
+          "type": "A",
+          "target": "孩子们",
+          "known": "the children",
+          "new": true
+        },
+        {
+          "id": "S0567L05",
+          "type": "A",
+          "target": "玩耍",
+          "known": "play",
+          "new": true
+        },
+        {
+          "id": "S0567L06",
+          "type": "M",
+          "target": "在户外",
+          "known": "outdoors",
+          "new": true,
+          "components": [
+            ["在", "at/in"],
+            ["户外", "outdoors"]
+          ]
+        },
+        {
+          "id": "S0567L07",
+          "type": "M",
+          "target": "度过时间",
+          "known": "spending time",
+          "new": true,
+          "components": [
+            ["度过", "spend/pass"],
+            ["时间", "time"]
+          ]
+        },
+        {
+          "id": "S0567L08",
+          "type": "M",
+          "target": "很美好",
+          "known": "lovely",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["美好", "lovely/wonderful"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0568",
+      "seed_pair": [
+        "I'm expecting to see an improvement next time we meet.",
+        "我期待下次我们见面时看到进步。"
+      ],
+      "legos": [
+        {
+          "id": "S0568L01",
+          "type": "M",
+          "target": "我期待",
+          "known": "I'm expecting",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["期待", "expecting"]
+          ]
+        },
+        {
+          "id": "S0568L02",
+          "type": "M",
+          "target": "下次我们见面时",
+          "known": "next time we meet",
+          "new": true,
+          "components": [
+            ["下次", "next time"],
+            ["我们", "we"],
+            ["见面", "meet"],
+            ["时", "when"]
+          ]
+        },
+        {
+          "id": "S0568L03",
+          "type": "M",
+          "target": "我们见面时",
+          "known": "when we meet",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["见面", "meet"],
+            ["时", "when"]
+          ]
+        },
+        {
+          "id": "S0568L04",
+          "type": "M",
+          "target": "我们见面",
+          "known": "we meet",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["见面", "meet"]
+          ]
+        },
+        {
+          "id": "S0568L05",
+          "type": "A",
+          "target": "下次",
+          "known": "next time",
+          "new": true
+        },
+        {
+          "id": "S0568L06",
+          "type": "M",
+          "target": "看到进步",
+          "known": "see an improvement",
+          "new": true,
+          "components": [
+            ["看到", "see"],
+            ["进步", "improvement"]
+          ]
+        },
+        {
+          "id": "S0568L07",
+          "type": "A",
+          "target": "进步",
+          "known": "improvement",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0569",
+      "seed_pair": [
+        "Have you decided how much you are willing to pay?",
+        "你决定了你愿意付多少钱吗？"
+      ],
+      "legos": [
+        {
+          "id": "S0569L01",
+          "type": "M",
+          "target": "你决定了",
+          "known": "you decided",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["决定了", "decided"]
+          ]
+        },
+        {
+          "id": "S0569L02",
+          "type": "M",
+          "target": "你愿意付多少钱",
+          "known": "how much you are willing to pay",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["愿意", "willing to"],
+            ["付", "pay"],
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        },
+        {
+          "id": "S0569L03",
+          "type": "M",
+          "target": "愿意付多少钱",
+          "known": "willing to pay how much",
+          "new": true,
+          "components": [
+            ["愿意", "willing to"],
+            ["付", "pay"],
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        },
+        {
+          "id": "S0569L04",
+          "type": "M",
+          "target": "愿意付",
+          "known": "willing to pay",
+          "new": true,
+          "components": [
+            ["愿意", "willing to"],
+            ["付", "pay"]
+          ]
+        },
+        {
+          "id": "S0569L05",
+          "type": "M",
+          "target": "付多少钱",
+          "known": "pay how much",
+          "new": true,
+          "components": [
+            ["付", "pay"],
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        },
+        {
+          "id": "S0569L06",
+          "type": "M",
+          "target": "多少钱",
+          "known": "how much money",
+          "new": true,
+          "components": [
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0570",
+      "seed_pair": [
+        "How much are you willing to pay for your ticket?",
+        "你愿意为你的票付多少钱？"
+      ],
+      "legos": [
+        {
+          "id": "S0570L01",
+          "type": "M",
+          "target": "你愿意为你的票付多少钱",
+          "known": "how much are you willing to pay for your ticket",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["愿意", "willing to"],
+            ["为", "for"],
+            ["你的", "your"],
+            ["票", "ticket"],
+            ["付", "pay"],
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        },
+        {
+          "id": "S0570L02",
+          "type": "M",
+          "target": "你愿意",
+          "known": "you are willing",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["愿意", "willing to"]
+          ]
+        },
+        {
+          "id": "S0570L03",
+          "type": "M",
+          "target": "愿意为你的票付",
+          "known": "willing to pay for your ticket",
+          "new": true,
+          "components": [
+            ["愿意", "willing to"],
+            ["为", "for"],
+            ["你的", "your"],
+            ["票", "ticket"],
+            ["付", "pay"]
+          ]
+        },
+        {
+          "id": "S0570L04",
+          "type": "M",
+          "target": "为你的票付多少钱",
+          "known": "pay how much for your ticket",
+          "new": true,
+          "components": [
+            ["为", "for"],
+            ["你的", "your"],
+            ["票", "ticket"],
+            ["付", "pay"],
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        },
+        {
+          "id": "S0570L05",
+          "type": "M",
+          "target": "为你的票",
+          "known": "for your ticket",
+          "new": true,
+          "components": [
+            ["为", "for"],
+            ["你的", "your"],
+            ["票", "ticket"]
+          ]
+        },
+        {
+          "id": "S0570L06",
+          "type": "M",
+          "target": "你的票",
+          "known": "your ticket",
+          "new": true,
+          "components": [
+            ["你的", "your"],
+            ["票", "ticket"]
+          ]
+        },
+        {
+          "id": "S0570L07",
+          "type": "A",
+          "target": "票",
+          "known": "ticket",
+          "new": true
+        },
+        {
+          "id": "S0570L08",
+          "type": "M",
+          "target": "愿意付",
+          "known": "willing to pay",
+          "new": true,
+          "components": [
+            ["愿意", "willing to"],
+            ["付", "pay"]
+          ]
+        },
+        {
+          "id": "S0570L09",
+          "type": "M",
+          "target": "付多少钱",
+          "known": "pay how much",
+          "new": true,
+          "components": [
+            ["付", "pay"],
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        },
+        {
+          "id": "S0570L10",
+          "type": "M",
+          "target": "多少钱",
+          "known": "how much money",
+          "new": true,
+          "components": [
+            ["多少", "how much"],
+            ["钱", "money"]
+          ]
+        }
+      ]
+    }
+  ]
+}

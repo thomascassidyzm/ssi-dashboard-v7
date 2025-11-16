@@ -1,0 +1,518 @@
+{
+  "agent_id": "agent_35",
+  "seed_range": "S0341-S0350",
+  "extracted_at": "2025-11-14T16:12:46+00:00",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0341",
+      "seed_pair": [
+        "我几天前见过一个人。",
+        "I met someone a few days ago."
+      ],
+      "legos": [
+        {
+          "id": "S0341L01",
+          "type": "A",
+          "target": "几天前",
+          "known": "a few days ago",
+          "new": true
+        },
+        {
+          "id": "S0341L02",
+          "type": "M",
+          "target": "几天前见过",
+          "known": "met a few days ago",
+          "new": true,
+          "components": [
+            ["几天前", "a few days ago"],
+            ["见过", "met"]
+          ]
+        },
+        {
+          "id": "S0341L03",
+          "type": "M",
+          "target": "见过一个人",
+          "known": "met someone",
+          "new": true,
+          "components": [
+            ["见过", "met"],
+            ["一个人", "someone"]
+          ]
+        },
+        {
+          "id": "S0341L04",
+          "type": "A",
+          "target": "一个人",
+          "known": "someone",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0342",
+      "seed_pair": [
+        "我遇到了一个说了些话的人。",
+        "I met someone who said something."
+      ],
+      "legos": [
+        {
+          "id": "S0342L01",
+          "type": "M",
+          "target": "说了些话",
+          "known": "said something",
+          "new": true,
+          "components": [
+            ["说了", "said"],
+            ["些话", "something"]
+          ]
+        },
+        {
+          "id": "S0342L02",
+          "type": "M",
+          "target": "说了些话的人",
+          "known": "someone who said something",
+          "new": true,
+          "components": [
+            ["说了些话", "said something"],
+            ["的", "[relative clause marker]"],
+            ["人", "person/someone"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0343",
+      "seed_pair": [
+        "说她担心经济的人。",
+        "Who said that she's worried about the economy."
+      ],
+      "legos": [
+        {
+          "id": "S0343L01",
+          "type": "A",
+          "target": "经济",
+          "known": "economy",
+          "new": true
+        },
+        {
+          "id": "S0343L02",
+          "type": "M",
+          "target": "担心经济",
+          "known": "worried about the economy",
+          "new": true,
+          "components": [
+            ["担心", "worried about"],
+            ["经济", "economy"]
+          ]
+        },
+        {
+          "id": "S0343L03",
+          "type": "M",
+          "target": "她担心经济",
+          "known": "she's worried about the economy",
+          "new": true,
+          "components": [
+            ["她", "she"],
+            ["担心", "worried about"],
+            ["经济", "economy"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0344",
+      "seed_pair": [
+        "说他很乐意帮你的人。",
+        "Who said that he's happy to help you."
+      ],
+      "legos": [
+        {
+          "id": "S0344L01",
+          "type": "M",
+          "target": "帮你",
+          "known": "help you",
+          "new": true,
+          "components": [
+            ["帮", "help"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0344L02",
+          "type": "M",
+          "target": "很乐意帮你",
+          "known": "happy to help you",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["乐意", "willing/happy to"],
+            ["帮你", "help you"]
+          ]
+        },
+        {
+          "id": "S0344L03",
+          "type": "M",
+          "target": "他很乐意帮你",
+          "known": "he's happy to help you",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["很乐意", "happy to"],
+            ["帮你", "help you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0345",
+      "seed_pair": [
+        "说他还没准备好离开的人。",
+        "Who said that he's not ready to leave yet."
+      ],
+      "legos": [
+        {
+          "id": "S0345L01",
+          "type": "A",
+          "target": "离开",
+          "known": "to leave",
+          "new": true
+        },
+        {
+          "id": "S0345L02",
+          "type": "M",
+          "target": "准备好离开",
+          "known": "ready to leave",
+          "new": true,
+          "components": [
+            ["准备好", "ready"],
+            ["离开", "to leave"]
+          ]
+        },
+        {
+          "id": "S0345L03",
+          "type": "M",
+          "target": "还没准备好离开",
+          "known": "not ready to leave yet",
+          "new": true,
+          "components": [
+            ["还", "yet/still"],
+            ["没", "not"],
+            ["准备好", "ready"],
+            ["离开", "to leave"]
+          ]
+        },
+        {
+          "id": "S0345L04",
+          "type": "M",
+          "target": "他还没准备好离开",
+          "known": "he's not ready to leave yet",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["还没", "not yet"],
+            ["准备好", "ready"],
+            ["离开", "to leave"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0346",
+      "seed_pair": [
+        "我想让她知道我喜欢她的书。",
+        "I wanted her to know that I liked her book."
+      ],
+      "legos": [
+        {
+          "id": "S0346L01",
+          "type": "M",
+          "target": "她的书",
+          "known": "her book",
+          "new": true,
+          "components": [
+            ["她的", "her"],
+            ["书", "book"]
+          ]
+        },
+        {
+          "id": "S0346L02",
+          "type": "M",
+          "target": "喜欢她的书",
+          "known": "liked her book",
+          "new": true,
+          "components": [
+            ["喜欢", "liked"],
+            ["她的书", "her book"]
+          ]
+        },
+        {
+          "id": "S0346L03",
+          "type": "M",
+          "target": "我喜欢她的书",
+          "known": "I liked her book",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["喜欢", "liked"],
+            ["她的书", "her book"]
+          ]
+        },
+        {
+          "id": "S0346L04",
+          "type": "M",
+          "target": "让她知道",
+          "known": "her to know",
+          "new": true,
+          "components": [
+            ["让", "to let/make"],
+            ["她", "her"],
+            ["知道", "know"]
+          ]
+        },
+        {
+          "id": "S0346L05",
+          "type": "M",
+          "target": "想让她知道",
+          "known": "wanted her to know",
+          "new": true,
+          "components": [
+            ["想", "wanted"],
+            ["让", "to let"],
+            ["她", "her"],
+            ["知道", "know"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0347",
+      "seed_pair": [
+        "他想知道一周前发生了什么。",
+        "He wanted to know what was happening a week ago."
+      ],
+      "legos": [
+        {
+          "id": "S0347L01",
+          "type": "A",
+          "target": "一周前",
+          "known": "a week ago",
+          "new": true
+        },
+        {
+          "id": "S0347L02",
+          "type": "M",
+          "target": "发生了什么",
+          "known": "what was happening",
+          "new": true,
+          "components": [
+            ["发生了", "was happening"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0347L03",
+          "type": "M",
+          "target": "一周前发生了什么",
+          "known": "what was happening a week ago",
+          "new": true,
+          "components": [
+            ["一周前", "a week ago"],
+            ["发生了", "was happening"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0347L04",
+          "type": "M",
+          "target": "想知道",
+          "known": "wanted to know",
+          "new": true,
+          "components": [
+            ["想", "wanted"],
+            ["知道", "to know"]
+          ]
+        },
+        {
+          "id": "S0347L05",
+          "type": "M",
+          "target": "他想知道",
+          "known": "he wanted to know",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["想", "wanted"],
+            ["知道", "to know"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0348",
+      "seed_pair": [
+        "她不想知道会发生什么。",
+        "She didn't want to know what was going to happen."
+      ],
+      "legos": [
+        {
+          "id": "S0348L01",
+          "type": "M",
+          "target": "会发生什么",
+          "known": "what was going to happen",
+          "new": true,
+          "components": [
+            ["会", "was going to"],
+            ["发生", "happen"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0348L02",
+          "type": "M",
+          "target": "不想知道",
+          "known": "didn't want to know",
+          "new": true,
+          "components": [
+            ["不", "didn't"],
+            ["想", "want"],
+            ["知道", "to know"]
+          ]
+        },
+        {
+          "id": "S0348L03",
+          "type": "M",
+          "target": "她不想知道",
+          "known": "she didn't want to know",
+          "new": true,
+          "components": [
+            ["她", "she"],
+            ["不想", "didn't want"],
+            ["知道", "to know"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0349",
+      "seed_pair": [
+        "他星期五晚上想出去吗？",
+        "Did he want to go out on Friday night?"
+      ],
+      "legos": [
+        {
+          "id": "S0349L01",
+          "type": "M",
+          "target": "星期五晚上",
+          "known": "Friday night",
+          "new": true,
+          "components": [
+            ["星期五", "Friday"],
+            ["晚上", "night"]
+          ]
+        },
+        {
+          "id": "S0349L02",
+          "type": "A",
+          "target": "出去",
+          "known": "go out",
+          "new": true
+        },
+        {
+          "id": "S0349L03",
+          "type": "M",
+          "target": "想出去",
+          "known": "want to go out",
+          "new": true,
+          "components": [
+            ["想", "want"],
+            ["出去", "to go out"]
+          ]
+        },
+        {
+          "id": "S0349L04",
+          "type": "M",
+          "target": "星期五晚上想出去",
+          "known": "want to go out on Friday night",
+          "new": true,
+          "components": [
+            ["星期五晚上", "Friday night"],
+            ["想", "want"],
+            ["出去", "to go out"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0350",
+      "seed_pair": [
+        "是的，他想见一些老朋友。",
+        "Yes he wanted to see some old friends."
+      ],
+      "legos": [
+        {
+          "id": "S0350L01",
+          "type": "A",
+          "target": "是的",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0350L02",
+          "type": "M",
+          "target": "老朋友",
+          "known": "old friends",
+          "new": true,
+          "components": [
+            ["老", "old"],
+            ["朋友", "friends"]
+          ]
+        },
+        {
+          "id": "S0350L03",
+          "type": "M",
+          "target": "一些老朋友",
+          "known": "some old friends",
+          "new": true,
+          "components": [
+            ["一些", "some"],
+            ["老朋友", "old friends"]
+          ]
+        },
+        {
+          "id": "S0350L04",
+          "type": "M",
+          "target": "见一些老朋友",
+          "known": "see some old friends",
+          "new": true,
+          "components": [
+            ["见", "see"],
+            ["一些老朋友", "some old friends"]
+          ]
+        },
+        {
+          "id": "S0350L05",
+          "type": "M",
+          "target": "想见",
+          "known": "wanted to see",
+          "new": true,
+          "components": [
+            ["想", "wanted"],
+            ["见", "to see"]
+          ]
+        },
+        {
+          "id": "S0350L06",
+          "type": "M",
+          "target": "他想见",
+          "known": "he wanted to see",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["想", "wanted"],
+            ["见", "to see"]
+          ]
+        }
+      ]
+    }
+  ]
+}

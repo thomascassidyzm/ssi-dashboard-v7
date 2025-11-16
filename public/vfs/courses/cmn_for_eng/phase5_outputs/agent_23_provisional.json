@@ -1,0 +1,544 @@
+{
+  "agent_id": "agent_23",
+  "seed_range": "S0221-S0230",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0221",
+      "seed_pair": [
+        "我看了足球，然后看了一部电影。",
+        "I watched the football and then I watched a film."
+      ],
+      "legos": [
+        {
+          "id": "S0221L01",
+          "type": "M",
+          "target": "我看了足球",
+          "known": "I watched the football",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["看了", "watched"],
+            ["足球", "the football"]
+          ]
+        },
+        {
+          "id": "S0221L02",
+          "type": "A",
+          "target": "然后",
+          "known": "and then",
+          "new": true
+        },
+        {
+          "id": "S0221L03",
+          "type": "M",
+          "target": "看了一部电影",
+          "known": "watched a film",
+          "new": true,
+          "components": [
+            ["看了", "watched"],
+            ["一部", "a"],
+            ["电影", "film"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0222",
+      "seed_pair": [
+        "他想告诉我他想要什么。",
+        "He's trying to tell me what he wants"
+      ],
+      "legos": [
+        {
+          "id": "S0222L01",
+          "type": "M",
+          "target": "他想告诉我",
+          "known": "he's trying to tell me",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["想", "trying to/wants to"],
+            ["告诉", "tell"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0222L02",
+          "type": "M",
+          "target": "想告诉我",
+          "known": "trying to tell me",
+          "new": true,
+          "components": [
+            ["想", "trying to"],
+            ["告诉", "tell"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0222L03",
+          "type": "M",
+          "target": "他想要什么",
+          "known": "what he wants",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["想要", "wants"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0222L04",
+          "type": "M",
+          "target": "想要什么",
+          "known": "wants what",
+          "new": true,
+          "components": [
+            ["想要", "wants"],
+            ["什么", "what"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0223",
+      "seed_pair": [
+        "他明天会问你。",
+        "He's going to ask you tomorrow."
+      ],
+      "legos": [
+        {
+          "id": "S0223L01",
+          "type": "M",
+          "target": "他明天会问你",
+          "known": "he's going to ask you tomorrow",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["明天", "tomorrow"],
+            ["会", "going to"],
+            ["问", "ask"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0223L02",
+          "type": "M",
+          "target": "明天会问你",
+          "known": "going to ask you tomorrow",
+          "new": true,
+          "components": [
+            ["明天", "tomorrow"],
+            ["会", "going to"],
+            ["问", "ask"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0223L03",
+          "type": "M",
+          "target": "会问你",
+          "known": "going to ask you",
+          "new": true,
+          "components": [
+            ["会", "going to/will"],
+            ["问", "ask"],
+            ["你", "you"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0224",
+      "seed_pair": [
+        "他刚开始学习。",
+        "He's just started to learn."
+      ],
+      "legos": [
+        {
+          "id": "S0224L01",
+          "type": "M",
+          "target": "他刚开始学习",
+          "known": "he's just started to learn",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["刚", "just"],
+            ["开始", "started"],
+            ["学习", "to learn"]
+          ]
+        },
+        {
+          "id": "S0224L02",
+          "type": "M",
+          "target": "刚开始学习",
+          "known": "just started to learn",
+          "new": true,
+          "components": [
+            ["刚", "just"],
+            ["开始", "started"],
+            ["学习", "to learn"]
+          ]
+        },
+        {
+          "id": "S0224L03",
+          "type": "M",
+          "target": "开始学习",
+          "known": "started to learn",
+          "new": true,
+          "components": [
+            ["开始", "started/to start"],
+            ["学习", "to learn"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0225",
+      "seed_pair": [
+        "如果他能，他会给你一个答案。",
+        "He would give you an answer if he could."
+      ],
+      "legos": [
+        {
+          "id": "S0225L01",
+          "type": "M",
+          "target": "他会给你一个答案",
+          "known": "he would give you an answer",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["会", "would"],
+            ["给", "give"],
+            ["你", "you"],
+            ["一个", "an/a"],
+            ["答案", "answer"]
+          ]
+        },
+        {
+          "id": "S0225L02",
+          "type": "M",
+          "target": "会给你一个答案",
+          "known": "would give you an answer",
+          "new": true,
+          "components": [
+            ["会", "would"],
+            ["给", "give"],
+            ["你", "you"],
+            ["一个", "an"],
+            ["答案", "answer"]
+          ]
+        },
+        {
+          "id": "S0225L03",
+          "type": "M",
+          "target": "给你一个答案",
+          "known": "give you an answer",
+          "new": true,
+          "components": [
+            ["给", "give"],
+            ["你", "you"],
+            ["一个", "an"],
+            ["答案", "answer"]
+          ]
+        },
+        {
+          "id": "S0225L04",
+          "type": "M",
+          "target": "如果他能",
+          "known": "if he could",
+          "new": true,
+          "components": [
+            ["如果", "if"],
+            ["他", "he"],
+            ["能", "could/can"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0226",
+      "seed_pair": [
+        "那个男人想帮助我。",
+        "The man is trying to help me."
+      ],
+      "legos": [
+        {
+          "id": "S0226L01",
+          "type": "M",
+          "target": "那个男人",
+          "known": "the man",
+          "new": true,
+          "components": [
+            ["那个", "that/the"],
+            ["男人", "man"]
+          ]
+        },
+        {
+          "id": "S0226L02",
+          "type": "M",
+          "target": "那个男人想帮助我",
+          "known": "the man is trying to help me",
+          "new": true,
+          "components": [
+            ["那个", "the"],
+            ["男人", "man"],
+            ["想", "is trying to"],
+            ["帮助", "help"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0226L03",
+          "type": "M",
+          "target": "想帮助我",
+          "known": "trying to help me",
+          "new": true,
+          "components": [
+            ["想", "trying to"],
+            ["帮助", "help"],
+            ["我", "me"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0227",
+      "seed_pair": [
+        "那个男人会告诉我一些新的东西。",
+        "That man is going to tell me something new."
+      ],
+      "legos": [
+        {
+          "id": "S0227L01",
+          "type": "M",
+          "target": "那个男人会告诉我",
+          "known": "that man is going to tell me",
+          "new": true,
+          "components": [
+            ["那个", "that"],
+            ["男人", "man"],
+            ["会", "is going to"],
+            ["告诉", "tell"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0227L02",
+          "type": "M",
+          "target": "会告诉我",
+          "known": "is going to tell me",
+          "new": true,
+          "components": [
+            ["会", "is going to"],
+            ["告诉", "tell"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0227L03",
+          "type": "M",
+          "target": "一些新的东西",
+          "known": "something new",
+          "new": true,
+          "components": [
+            ["一些", "some"],
+            ["新的", "new"],
+            ["东西", "thing/something"]
+          ]
+        },
+        {
+          "id": "S0227L04",
+          "type": "M",
+          "target": "新的东西",
+          "known": "new thing",
+          "new": true,
+          "components": [
+            ["新的", "new"],
+            ["东西", "thing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0228",
+      "seed_pair": [
+        "那个男人刚开始练习说话。",
+        "That man has just started to practise speaking."
+      ],
+      "legos": [
+        {
+          "id": "S0228L01",
+          "type": "M",
+          "target": "那个男人刚开始",
+          "known": "that man has just started",
+          "new": true,
+          "components": [
+            ["那个", "that"],
+            ["男人", "man"],
+            ["刚", "just"],
+            ["开始", "started"]
+          ]
+        },
+        {
+          "id": "S0228L02",
+          "type": "M",
+          "target": "刚开始练习说话",
+          "known": "just started to practise speaking",
+          "new": true,
+          "components": [
+            ["刚", "just"],
+            ["开始", "started"],
+            ["练习", "to practise"],
+            ["说话", "speaking"]
+          ]
+        },
+        {
+          "id": "S0228L03",
+          "type": "M",
+          "target": "练习说话",
+          "known": "practise speaking",
+          "new": true,
+          "components": [
+            ["练习", "practise"],
+            ["说话", "speaking"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0229",
+      "seed_pair": [
+        "如果那个女人能，她会帮助你。",
+        "That woman would help you if she could."
+      ],
+      "legos": [
+        {
+          "id": "S0229L01",
+          "type": "M",
+          "target": "那个女人",
+          "known": "that woman",
+          "new": true,
+          "components": [
+            ["那个", "that"],
+            ["女人", "woman"]
+          ]
+        },
+        {
+          "id": "S0229L02",
+          "type": "M",
+          "target": "那个女人会帮助你",
+          "known": "that woman would help you",
+          "new": true,
+          "components": [
+            ["那个", "that"],
+            ["女人", "woman"],
+            ["会", "would"],
+            ["帮助", "help"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0229L03",
+          "type": "M",
+          "target": "会帮助你",
+          "known": "would help you",
+          "new": true,
+          "components": [
+            ["会", "would"],
+            ["帮助", "help"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0229L04",
+          "type": "M",
+          "target": "如果那个女人能",
+          "known": "if that woman could",
+          "new": true,
+          "components": [
+            ["如果", "if"],
+            ["那个", "that"],
+            ["女人", "woman"],
+            ["能", "could"]
+          ]
+        },
+        {
+          "id": "S0229L05",
+          "type": "M",
+          "target": "如果她能",
+          "known": "if she could",
+          "new": true,
+          "components": [
+            ["如果", "if"],
+            ["她", "she"],
+            ["能", "could"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0230",
+      "seed_pair": [
+        "我认识一个想和你一起工作的年轻男人。",
+        "I know a young man who wants to work with you."
+      ],
+      "legos": [
+        {
+          "id": "S0230L01",
+          "type": "M",
+          "target": "我认识一个年轻男人",
+          "known": "I know a young man",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["认识", "know"],
+            ["一个", "a"],
+            ["年轻", "young"],
+            ["男人", "man"]
+          ]
+        },
+        {
+          "id": "S0230L02",
+          "type": "M",
+          "target": "一个年轻男人",
+          "known": "a young man",
+          "new": true,
+          "components": [
+            ["一个", "a"],
+            ["年轻", "young"],
+            ["男人", "man"]
+          ]
+        },
+        {
+          "id": "S0230L03",
+          "type": "M",
+          "target": "想和你一起工作",
+          "known": "wants to work with you",
+          "new": true,
+          "components": [
+            ["想", "wants to"],
+            ["和", "with"],
+            ["你", "you"],
+            ["一起", "together"],
+            ["工作", "work"]
+          ]
+        },
+        {
+          "id": "S0230L04",
+          "type": "M",
+          "target": "和你一起工作",
+          "known": "work with you",
+          "new": true,
+          "components": [
+            ["和", "with"],
+            ["你", "you"],
+            ["一起", "together"],
+            ["工作", "work"]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+{
+  "agent_id": "agent_49",
+  "seed_range": "S0481-S0490",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0481",
+      "seed_pair": [
+        "It's the only real hope we have left.",
+        "这是我们剩下的唯一真正的希望。"
+      ],
+      "legos": [
+        {
+          "id": "S0481L01",
+          "type": "M",
+          "target": "这是",
+          "known": "it's",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["是", "is"]
+          ]
+        },
+        {
+          "id": "S0481L02",
+          "type": "A",
+          "target": "希望",
+          "known": "hope",
+          "new": true
+        },
+        {
+          "id": "S0481L03",
+          "type": "M",
+          "target": "我们剩下的",
+          "known": "we have left",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["剩下", "have left/remaining"],
+            ["的", "(relative clause marker)"]
+          ]
+        },
+        {
+          "id": "S0481L04",
+          "type": "M",
+          "target": "唯一真正的希望",
+          "known": "the only real hope",
+          "new": true,
+          "components": [
+            ["唯一", "only"],
+            ["真正", "real/true"],
+            ["的", "(modifier marker)"],
+            ["希望", "hope"]
+          ]
+        },
+        {
+          "id": "S0481L05",
+          "type": "M",
+          "target": "我们剩下的唯一真正的希望",
+          "known": "the only real hope we have left",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["剩下", "have left"],
+            ["的", "(modifier)"],
+            ["唯一", "only"],
+            ["真正", "real"],
+            ["的", "(modifier)"],
+            ["希望", "hope"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0482",
+      "seed_pair": [
+        "The only real hope is that they're not serious.",
+        "唯一真正的希望是他们不是认真的。"
+      ],
+      "legos": [
+        {
+          "id": "S0482L01",
+          "type": "M",
+          "target": "唯一真正的希望",
+          "known": "the only real hope",
+          "new": true,
+          "components": [
+            ["唯一", "only"],
+            ["真正", "real"],
+            ["的", "(modifier)"],
+            ["希望", "hope"]
+          ]
+        },
+        {
+          "id": "S0482L02",
+          "type": "A",
+          "target": "是",
+          "known": "is",
+          "new": true
+        },
+        {
+          "id": "S0482L03",
+          "type": "A",
+          "target": "他们",
+          "known": "they",
+          "new": true
+        },
+        {
+          "id": "S0482L04",
+          "type": "M",
+          "target": "不是",
+          "known": "are not",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["是", "are"]
+          ]
+        },
+        {
+          "id": "S0482L05",
+          "type": "M",
+          "target": "认真的",
+          "known": "serious",
+          "new": true,
+          "components": [
+            ["认真", "serious/earnest"],
+            ["的", "(adjective marker)"]
+          ]
+        },
+        {
+          "id": "S0482L06",
+          "type": "M",
+          "target": "他们不是认真的",
+          "known": "they're not serious",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["不是", "are not"],
+            ["认真", "serious"],
+            ["的", "(marker)"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0483",
+      "seed_pair": [
+        "Life isn't easy but it's not meant to be easy.",
+        "生活不容易，但它本来就不应该容易。"
+      ],
+      "legos": [
+        {
+          "id": "S0483L01",
+          "type": "A",
+          "target": "生活",
+          "known": "life",
+          "new": true
+        },
+        {
+          "id": "S0483L02",
+          "type": "M",
+          "target": "不容易",
+          "known": "not easy",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["容易", "easy"]
+          ]
+        },
+        {
+          "id": "S0483L03",
+          "type": "M",
+          "target": "生活不容易",
+          "known": "life isn't easy",
+          "new": true,
+          "components": [
+            ["生活", "life"],
+            ["不", "not"],
+            ["容易", "easy"]
+          ]
+        },
+        {
+          "id": "S0483L04",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0483L05",
+          "type": "M",
+          "target": "它本来就不应该",
+          "known": "it's not meant to be",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["本来", "originally/inherently"],
+            ["就", "(emphasis)"],
+            ["不", "not"],
+            ["应该", "should"]
+          ]
+        },
+        {
+          "id": "S0483L06",
+          "type": "M",
+          "target": "本来就不应该",
+          "known": "not meant to be",
+          "new": true,
+          "components": [
+            ["本来", "originally/meant to"],
+            ["就", "(emphasis)"],
+            ["不", "not"],
+            ["应该", "should"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0484",
+      "seed_pair": [
+        "It's meant to be a challenge.",
+        "它本来就是一个挑战。"
+      ],
+      "legos": [
+        {
+          "id": "S0484L01",
+          "type": "M",
+          "target": "它本来就是",
+          "known": "it's meant to be",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["本来", "originally/meant to"],
+            ["就", "(emphasis)"],
+            ["是", "is"]
+          ]
+        },
+        {
+          "id": "S0484L02",
+          "type": "M",
+          "target": "本来就是",
+          "known": "meant to be",
+          "new": true,
+          "components": [
+            ["本来", "originally"],
+            ["就", "(emphasis)"],
+            ["是", "is"]
+          ]
+        },
+        {
+          "id": "S0484L03",
+          "type": "M",
+          "target": "一个挑战",
+          "known": "a challenge",
+          "new": true,
+          "components": [
+            ["一个", "a/one"],
+            ["挑战", "challenge"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0485",
+      "seed_pair": [
+        "Nothing would make me happier than to get away.",
+        "没有什么比逃离更让我开心的了。"
+      ],
+      "legos": [
+        {
+          "id": "S0485L01",
+          "type": "M",
+          "target": "没有什么",
+          "known": "nothing",
+          "new": true,
+          "components": [
+            ["没有", "don't have"],
+            ["什么", "what/anything"]
+          ]
+        },
+        {
+          "id": "S0485L02",
+          "type": "M",
+          "target": "比...更",
+          "known": "more...than",
+          "new": true,
+          "components": [
+            ["比", "compared to"],
+            ["更", "more"]
+          ]
+        },
+        {
+          "id": "S0485L03",
+          "type": "A",
+          "target": "逃离",
+          "known": "to get away",
+          "new": true
+        },
+        {
+          "id": "S0485L04",
+          "type": "M",
+          "target": "让我开心",
+          "known": "make me happy",
+          "new": true,
+          "components": [
+            ["让", "make/let"],
+            ["我", "me"],
+            ["开心", "happy"]
+          ]
+        },
+        {
+          "id": "S0485L05",
+          "type": "M",
+          "target": "更让我开心",
+          "known": "make me happier",
+          "new": true,
+          "components": [
+            ["更", "more"],
+            ["让", "make"],
+            ["我", "me"],
+            ["开心", "happy"]
+          ]
+        },
+        {
+          "id": "S0485L06",
+          "type": "M",
+          "target": "没有什么比逃离更让我开心的了",
+          "known": "nothing would make me happier than to get away",
+          "new": true,
+          "components": [
+            ["没有", "there isn't"],
+            ["什么", "anything"],
+            ["比", "than"],
+            ["逃离", "getting away"],
+            ["更", "more"],
+            ["让", "make"],
+            ["我", "me"],
+            ["开心", "happy"],
+            ["的", "(nominalizer)"],
+            ["了", "(completed change)"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0486",
+      "seed_pair": [
+        "I think your eyes are beautiful.",
+        "我觉得你的眼睛很美。"
+      ],
+      "legos": [
+        {
+          "id": "S0486L01",
+          "type": "M",
+          "target": "我觉得",
+          "known": "I think",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["觉得", "think/feel"]
+          ]
+        },
+        {
+          "id": "S0486L02",
+          "type": "M",
+          "target": "你的眼睛",
+          "known": "your eyes",
+          "new": true,
+          "components": [
+            ["你", "your"],
+            ["的", "(possessive)"],
+            ["眼睛", "eyes"]
+          ]
+        },
+        {
+          "id": "S0486L03",
+          "type": "M",
+          "target": "很美",
+          "known": "very beautiful",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["美", "beautiful"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0487",
+      "seed_pair": [
+        "It's under the bridge.",
+        "它在桥下。"
+      ],
+      "legos": [
+        {
+          "id": "S0487L01",
+          "type": "A",
+          "target": "它",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0487L02",
+          "type": "M",
+          "target": "在桥下",
+          "known": "under the bridge",
+          "new": true,
+          "components": [
+            ["在", "at/located at"],
+            ["桥", "bridge"],
+            ["下", "under/below"]
+          ]
+        },
+        {
+          "id": "S0487L03",
+          "type": "A",
+          "target": "桥",
+          "known": "bridge",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0488",
+      "seed_pair": [
+        "It's on the other side of that yellow line.",
+        "它在那条黄线的另一边。"
+      ],
+      "legos": [
+        {
+          "id": "S0488L01",
+          "type": "M",
+          "target": "在...的另一边",
+          "known": "on the other side of",
+          "new": true,
+          "components": [
+            ["在", "at/on"],
+            ["的", "(possessive)"],
+            ["另一边", "other side"]
+          ]
+        },
+        {
+          "id": "S0488L02",
+          "type": "M",
+          "target": "那条黄线",
+          "known": "that yellow line",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["条", "(measure word for long things)"],
+            ["黄", "yellow"],
+            ["线", "line"]
+          ]
+        },
+        {
+          "id": "S0488L03",
+          "type": "M",
+          "target": "另一边",
+          "known": "the other side",
+          "new": true,
+          "components": [
+            ["另", "other"],
+            ["一", "one"],
+            ["边", "side"]
+          ]
+        },
+        {
+          "id": "S0488L04",
+          "type": "M",
+          "target": "那条黄线的另一边",
+          "known": "the other side of that yellow line",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["条", "(measure word)"],
+            ["黄", "yellow"],
+            ["线", "line"],
+            ["的", "(possessive)"],
+            ["另一边", "other side"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0489",
+      "seed_pair": [
+        "If you don't make me a strong cup of coffee right now.",
+        "如果你现在不给我泡一杯浓咖啡。"
+      ],
+      "legos": [
+        {
+          "id": "S0489L01",
+          "type": "M",
+          "target": "如果你",
+          "known": "if you",
+          "new": true,
+          "components": [
+            ["如果", "if"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0489L02",
+          "type": "A",
+          "target": "现在",
+          "known": "right now",
+          "new": true
+        },
+        {
+          "id": "S0489L03",
+          "type": "M",
+          "target": "不给我",
+          "known": "don't give me",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["给", "give"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0489L04",
+          "type": "M",
+          "target": "泡一杯浓咖啡",
+          "known": "make a strong cup of coffee",
+          "new": true,
+          "components": [
+            ["泡", "brew/make"],
+            ["一杯", "one cup/a cup"],
+            ["浓", "strong"],
+            ["咖啡", "coffee"]
+          ]
+        },
+        {
+          "id": "S0489L05",
+          "type": "M",
+          "target": "一杯浓咖啡",
+          "known": "a strong cup of coffee",
+          "new": true,
+          "components": [
+            ["一", "one"],
+            ["杯", "cup/glass"],
+            ["浓", "strong"],
+            ["咖啡", "coffee"]
+          ]
+        },
+        {
+          "id": "S0489L06",
+          "type": "M",
+          "target": "给我泡一杯浓咖啡",
+          "known": "make me a strong cup of coffee",
+          "new": true,
+          "components": [
+            ["给", "for/to"],
+            ["我", "me"],
+            ["泡", "make/brew"],
+            ["一杯", "a cup"],
+            ["浓", "strong"],
+            ["咖啡", "coffee"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0490",
+      "seed_pair": [
+        "Then I will never trust anyone ever again.",
+        "那么我再也不会相信任何人了。"
+      ],
+      "legos": [
+        {
+          "id": "S0490L01",
+          "type": "A",
+          "target": "那么",
+          "known": "then",
+          "new": true
+        },
+        {
+          "id": "S0490L02",
+          "type": "A",
+          "target": "我",
+          "known": "I",
+          "new": true
+        },
+        {
+          "id": "S0490L03",
+          "type": "M",
+          "target": "再也不会",
+          "known": "will never...again",
+          "new": true,
+          "components": [
+            ["再也", "ever again"],
+            ["不会", "will not"]
+          ]
+        },
+        {
+          "id": "S0490L04",
+          "type": "M",
+          "target": "相信任何人",
+          "known": "trust anyone",
+          "new": true,
+          "components": [
+            ["相信", "trust/believe"],
+            ["任何", "any"],
+            ["人", "person"]
+          ]
+        },
+        {
+          "id": "S0490L05",
+          "type": "M",
+          "target": "再也不会相信任何人",
+          "known": "will never trust anyone again",
+          "new": true,
+          "components": [
+            ["再也", "ever again"],
+            ["不会", "will not"],
+            ["相信", "trust"],
+            ["任何", "any"],
+            ["人", "person"]
+          ]
+        }
+      ]
+    }
+  ]
+}

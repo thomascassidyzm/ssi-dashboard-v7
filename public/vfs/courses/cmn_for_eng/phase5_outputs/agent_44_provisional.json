@@ -1,0 +1,597 @@
+{
+  "agent_id": "agent_44",
+  "seed_range": "S0431-S0440",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0431",
+      "seed_pair": [
+        "They're not ready yet but they'll be ready soon.",
+        "他们还没有准备好，但他们很快就准备好。"
+      ],
+      "legos": [
+        {
+          "id": "S0431L01",
+          "type": "M",
+          "target": "他们还没有准备好",
+          "known": "they're not ready yet",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["还", "yet/still"],
+            ["没有", "not have"],
+            ["准备好", "ready"]
+          ]
+        },
+        {
+          "id": "S0431L02",
+          "type": "M",
+          "target": "还没有",
+          "known": "not yet",
+          "new": true,
+          "components": [
+            ["还", "yet/still"],
+            ["没有", "not have"]
+          ]
+        },
+        {
+          "id": "S0431L03",
+          "type": "A",
+          "target": "准备好",
+          "known": "ready",
+          "new": true
+        },
+        {
+          "id": "S0431L04",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0431L05",
+          "type": "M",
+          "target": "他们很快就准备好",
+          "known": "they'll be ready soon",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["很快", "very soon"],
+            ["就", "then/will"],
+            ["准备好", "ready"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0432",
+      "seed_pair": [
+        "They could mean that they want you to ask.",
+        "他们可能是说他们想让你问。"
+      ],
+      "legos": [
+        {
+          "id": "S0432L01",
+          "type": "M",
+          "target": "他们可能是说",
+          "known": "they could mean",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["可能", "could/possibly"],
+            ["是", "are/is"],
+            ["说", "saying/mean"]
+          ]
+        },
+        {
+          "id": "S0432L02",
+          "type": "A",
+          "target": "可能",
+          "known": "could/possibly",
+          "new": true
+        },
+        {
+          "id": "S0432L03",
+          "type": "M",
+          "target": "他们想让你问",
+          "known": "they want you to ask",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["想", "want"],
+            ["让", "to have/make"],
+            ["你", "you"],
+            ["问", "ask"]
+          ]
+        },
+        {
+          "id": "S0432L04",
+          "type": "M",
+          "target": "让你问",
+          "known": "you to ask",
+          "new": true,
+          "components": [
+            ["让", "to have/make"],
+            ["你", "you"],
+            ["问", "ask"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0433",
+      "seed_pair": [
+        "They couldn't find out when the film started.",
+        "他们找不到电影什么时候开始。"
+      ],
+      "legos": [
+        {
+          "id": "S0433L01",
+          "type": "M",
+          "target": "他们找不到",
+          "known": "they couldn't find out",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["找", "look for/find"],
+            ["不", "not"],
+            ["到", "reach/achieve"]
+          ]
+        },
+        {
+          "id": "S0433L02",
+          "type": "M",
+          "target": "找不到",
+          "known": "couldn't find",
+          "new": true,
+          "components": [
+            ["找", "look for/find"],
+            ["不", "not"],
+            ["到", "reach/achieve"]
+          ]
+        },
+        {
+          "id": "S0433L03",
+          "type": "M",
+          "target": "电影什么时候开始",
+          "known": "when the film started",
+          "new": true,
+          "components": [
+            ["电影", "the film"],
+            ["什么时候", "when"],
+            ["开始", "started"]
+          ]
+        },
+        {
+          "id": "S0433L04",
+          "type": "A",
+          "target": "什么时候",
+          "known": "when",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0434",
+      "seed_pair": [
+        "Could they cut the number of students they take?",
+        "他们能减少他们招的学生数量吗？"
+      ],
+      "legos": [
+        {
+          "id": "S0434L01",
+          "type": "M",
+          "target": "他们能减少",
+          "known": "could they cut",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["能", "could"],
+            ["减少", "cut/reduce"]
+          ]
+        },
+        {
+          "id": "S0434L02",
+          "type": "A",
+          "target": "减少",
+          "known": "cut/reduce",
+          "new": true
+        },
+        {
+          "id": "S0434L03",
+          "type": "M",
+          "target": "他们招的学生数量",
+          "known": "the number of students they take",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["招", "take/recruit"],
+            ["的", "(relative marker)"],
+            ["学生", "students"],
+            ["数量", "number"]
+          ]
+        },
+        {
+          "id": "S0434L04",
+          "type": "M",
+          "target": "他们招的",
+          "known": "they take",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["招", "take/recruit"],
+            ["的", "(relative marker)"]
+          ]
+        },
+        {
+          "id": "S0434L05",
+          "type": "M",
+          "target": "学生数量",
+          "known": "number of students",
+          "new": true,
+          "components": [
+            ["学生", "students"],
+            ["数量", "number"]
+          ]
+        },
+        {
+          "id": "S0434L06",
+          "type": "A",
+          "target": "吗",
+          "known": "?",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0435",
+      "seed_pair": [
+        "Yes they could if they wanted to.",
+        "是的，如果他们想的话，他们能。"
+      ],
+      "legos": [
+        {
+          "id": "S0435L01",
+          "type": "A",
+          "target": "是的",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0435L02",
+          "type": "M",
+          "target": "如果他们想的话",
+          "known": "if they wanted to",
+          "new": true,
+          "components": [
+            ["如果", "if"],
+            ["他们", "they"],
+            ["想", "wanted"],
+            ["的话", "(conditional)"]
+          ]
+        },
+        {
+          "id": "S0435L03",
+          "type": "A",
+          "target": "的话",
+          "known": "(if/conditional marker)",
+          "new": true
+        },
+        {
+          "id": "S0435L04",
+          "type": "M",
+          "target": "他们能",
+          "known": "they could",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["能", "could"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0436",
+      "seed_pair": [
+        "No there's a minimum number they need.",
+        "不，有一个他们需要的最少数量。"
+      ],
+      "legos": [
+        {
+          "id": "S0436L01",
+          "type": "A",
+          "target": "不",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0436L02",
+          "type": "M",
+          "target": "有一个他们需要的最少数量",
+          "known": "there's a minimum number they need",
+          "new": true,
+          "components": [
+            ["有", "there's"],
+            ["一个", "a"],
+            ["他们", "they"],
+            ["需要", "need"],
+            ["的", "(relative marker)"],
+            ["最少", "minimum"],
+            ["数量", "number"]
+          ]
+        },
+        {
+          "id": "S0436L03",
+          "type": "M",
+          "target": "他们需要的",
+          "known": "they need",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["需要", "need"],
+            ["的", "(relative marker)"]
+          ]
+        },
+        {
+          "id": "S0436L04",
+          "type": "M",
+          "target": "最少数量",
+          "known": "minimum number",
+          "new": true,
+          "components": [
+            ["最少", "minimum"],
+            ["数量", "number"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0437",
+      "seed_pair": [
+        "They wanted to raise as much as possible for charity.",
+        "他们想为慈善筹集尽可能多的钱。"
+      ],
+      "legos": [
+        {
+          "id": "S0437L01",
+          "type": "M",
+          "target": "他们想",
+          "known": "they wanted",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["想", "wanted"]
+          ]
+        },
+        {
+          "id": "S0437L02",
+          "type": "M",
+          "target": "为慈善筹集",
+          "known": "raise for charity",
+          "new": true,
+          "components": [
+            ["为", "for"],
+            ["慈善", "charity"],
+            ["筹集", "raise"]
+          ]
+        },
+        {
+          "id": "S0437L03",
+          "type": "M",
+          "target": "为慈善",
+          "known": "for charity",
+          "new": true,
+          "components": [
+            ["为", "for"],
+            ["慈善", "charity"]
+          ]
+        },
+        {
+          "id": "S0437L04",
+          "type": "A",
+          "target": "筹集",
+          "known": "raise/collect",
+          "new": true
+        },
+        {
+          "id": "S0437L05",
+          "type": "M",
+          "target": "尽可能多的钱",
+          "known": "as much as possible",
+          "new": true,
+          "components": [
+            ["尽可能", "as...as possible"],
+            ["多", "much/many"],
+            ["的", "(modifier)"],
+            ["钱", "money"]
+          ]
+        },
+        {
+          "id": "S0437L06",
+          "type": "M",
+          "target": "尽可能",
+          "known": "as...as possible",
+          "new": true,
+          "components": [
+            ["尽", "to the utmost"],
+            ["可能", "possible"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0438",
+      "seed_pair": [
+        "They didn't want to decide what he should do.",
+        "他们不想决定他应该做什么。"
+      ],
+      "legos": [
+        {
+          "id": "S0438L01",
+          "type": "M",
+          "target": "他们不想决定",
+          "known": "they didn't want to decide",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["不", "didn't"],
+            ["想", "want"],
+            ["决定", "decide"]
+          ]
+        },
+        {
+          "id": "S0438L02",
+          "type": "M",
+          "target": "不想",
+          "known": "didn't want",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0438L03",
+          "type": "M",
+          "target": "他应该做什么",
+          "known": "what he should do",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["应该", "should"],
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0438L04",
+          "type": "M",
+          "target": "做什么",
+          "known": "do what",
+          "new": true,
+          "components": [
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0439",
+      "seed_pair": [
+        "They don't want to die.",
+        "他们不想死。"
+      ],
+      "legos": [
+        {
+          "id": "S0439L01",
+          "type": "M",
+          "target": "他们不想死",
+          "known": "they don't want to die",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["不", "don't"],
+            ["想", "want"],
+            ["死", "to die"]
+          ]
+        },
+        {
+          "id": "S0439L02",
+          "type": "M",
+          "target": "他们不想",
+          "known": "they don't want",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["不", "don't"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0439L03",
+          "type": "M",
+          "target": "不想",
+          "known": "don't want",
+          "new": true,
+          "components": [
+            ["不", "don't"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0439L04",
+          "type": "A",
+          "target": "死",
+          "known": "die",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0440",
+      "seed_pair": [
+        "They want to travel while they're still young.",
+        "他们想在他们还年轻的时候旅行。"
+      ],
+      "legos": [
+        {
+          "id": "S0440L01",
+          "type": "M",
+          "target": "他们想",
+          "known": "they want",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0440L02",
+          "type": "M",
+          "target": "在他们还年轻的时候",
+          "known": "while they're still young",
+          "new": true,
+          "components": [
+            ["在", "while"],
+            ["他们", "they"],
+            ["还", "still"],
+            ["年轻", "young"],
+            ["的时候", "when"]
+          ]
+        },
+        {
+          "id": "S0440L03",
+          "type": "M",
+          "target": "他们还年轻",
+          "known": "they're still young",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["还", "still"],
+            ["年轻", "young"]
+          ]
+        },
+        {
+          "id": "S0440L04",
+          "type": "M",
+          "target": "的时候",
+          "known": "when/while",
+          "new": true,
+          "components": [
+            ["的", "(modifier)"],
+            ["时候", "time/moment"]
+          ]
+        },
+        {
+          "id": "S0440L05",
+          "type": "A",
+          "target": "旅行",
+          "known": "travel",
+          "new": true
+        }
+      ]
+    }
+  ]
+}

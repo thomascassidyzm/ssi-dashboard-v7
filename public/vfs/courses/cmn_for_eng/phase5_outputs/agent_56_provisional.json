@@ -1,0 +1,425 @@
+{
+  "agent_id": "agent_56",
+  "seed_range": "S0551-S0560",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0551",
+      "seed_pair": [
+        "The church is ugly.",
+        "教堂很丑。"
+      ],
+      "extraction_notes": "Simple sentence. Forward sweep: 'the church' → '教堂' (FD passes - church context clear). 'is ugly' → '很丑' (FD passes - adjectival phrase). Backward sweep confirms no grammatical triggers missed.",
+      "legos": [
+        {
+          "id": "S0551L01",
+          "type": "A",
+          "target": "教堂",
+          "known": "the church",
+          "new": true
+        },
+        {
+          "id": "S0551L02",
+          "type": "A",
+          "target": "很丑",
+          "known": "is ugly",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0552",
+      "seed_pair": [
+        "The church at the other end of the village is ugly.",
+        "村子另一头的教堂很丑。"
+      ],
+      "extraction_notes": "Forward sweep: 'at the other end' → '另一头' (FD fails - needs context). 'the village' → '村子' context. 'at the other end of the village' → '村子另一头' (FD passes with village context). Chinese possessive structure '的' needs context. Overlaps created: '村子另一头' + '另一头的教堂' to maximize pattern recognition.",
+      "legos": [
+        {
+          "id": "S0552L01",
+          "type": "M",
+          "target": "村子另一头",
+          "known": "the other end of the village",
+          "new": true,
+          "components": [
+            ["村子", "village"],
+            ["另", "other/another"],
+            ["一头", "one end"]
+          ]
+        },
+        {
+          "id": "S0552L02",
+          "type": "M",
+          "target": "另一头的教堂",
+          "known": "the church at the other end",
+          "new": true,
+          "components": [
+            ["另", "other"],
+            ["一头", "one end"],
+            ["的", "at/of"],
+            ["教堂", "church"]
+          ]
+        },
+        {
+          "id": "S0552L03",
+          "type": "A",
+          "target": "很丑",
+          "known": "is ugly",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0553",
+      "seed_pair": [
+        "I think the small church is very ugly.",
+        "我觉得小教堂非常丑。"
+      ],
+      "extraction_notes": "Forward sweep: 'I think' → '我觉得' (FD passes). 'the small church' → '小教堂' (FD passes with context). 'is very ugly' → '非常丑' (FD passes). Created overlap with full clause to show complement structure.",
+      "legos": [
+        {
+          "id": "S0553L01",
+          "type": "A",
+          "target": "我觉得",
+          "known": "I think",
+          "new": true
+        },
+        {
+          "id": "S0553L02",
+          "type": "A",
+          "target": "小教堂",
+          "known": "the small church",
+          "new": true
+        },
+        {
+          "id": "S0553L03",
+          "type": "A",
+          "target": "非常丑",
+          "known": "very ugly",
+          "new": true
+        },
+        {
+          "id": "S0553L04",
+          "type": "M",
+          "target": "我觉得小教堂非常丑",
+          "known": "I think the small church is very ugly",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["觉得", "think"],
+            ["小", "small"],
+            ["教堂", "church"],
+            ["非常", "very"],
+            ["丑", "ugly"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0554",
+      "seed_pair": [
+        "This towel isn't dry.",
+        "这条毛巾不干。"
+      ],
+      "extraction_notes": "Forward sweep: 'this towel' → '这条毛巾' (FD passes - measure word '条' needed with context). 'isn't dry' → '不干' (FD passes). M-type used for 'this towel' to show measure word structure.",
+      "legos": [
+        {
+          "id": "S0554L01",
+          "type": "M",
+          "target": "这条毛巾",
+          "known": "this towel",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["条", "[measure word]"],
+            ["毛巾", "towel"]
+          ]
+        },
+        {
+          "id": "S0554L02",
+          "type": "A",
+          "target": "不干",
+          "known": "isn't dry",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0555",
+      "seed_pair": [
+        "And I'm too tired to fetch a new one.",
+        "而且我太累了，拿不了新的。"
+      ],
+      "extraction_notes": "Forward sweep: 'and' → '而且' (FD passes). 'I'm too tired' → '我太累了' (FD passes - complete state). 'to fetch' → '拿' alone fails (needs potential complement). 'too tired to fetch' → '太累了，拿不了' (FD passes - shows inability structure). 'a new one' → '新的' (FD passes with nominalizer). Created overlap to show 太...了 pattern and potential complement structure 拿不了.",
+      "legos": [
+        {
+          "id": "S0555L01",
+          "type": "A",
+          "target": "而且",
+          "known": "and",
+          "new": true
+        },
+        {
+          "id": "S0555L02",
+          "type": "M",
+          "target": "我太累了",
+          "known": "I'm too tired",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["太", "too"],
+            ["累", "tired"],
+            ["了", "[state particle]"]
+          ]
+        },
+        {
+          "id": "S0555L03",
+          "type": "M",
+          "target": "太累了，拿不了",
+          "known": "too tired to fetch",
+          "new": true,
+          "components": [
+            ["太", "too"],
+            ["累", "tired"],
+            ["了", "[particle]"],
+            ["拿不了", "can't fetch"]
+          ]
+        },
+        {
+          "id": "S0555L04",
+          "type": "A",
+          "target": "拿不了",
+          "known": "can't fetch",
+          "new": true
+        },
+        {
+          "id": "S0555L05",
+          "type": "A",
+          "target": "新的",
+          "known": "a new one",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0556",
+      "seed_pair": [
+        "They play music late at night.",
+        "他们深夜放音乐。"
+      ],
+      "extraction_notes": "Forward sweep: 'they' → '他们' (FD passes with subject context). 'late at night' → '深夜' (FD passes as temporal compound). 'play music' → '放音乐' (FD passes). Backward sweep: '放音乐' is pedagogically valuable standalone. Created overlaps: '深夜放音乐' shows time+action pattern.",
+      "legos": [
+        {
+          "id": "S0556L01",
+          "type": "A",
+          "target": "他们",
+          "known": "they",
+          "new": true
+        },
+        {
+          "id": "S0556L02",
+          "type": "A",
+          "target": "深夜",
+          "known": "late at night",
+          "new": true
+        },
+        {
+          "id": "S0556L03",
+          "type": "A",
+          "target": "放音乐",
+          "known": "play music",
+          "new": true
+        },
+        {
+          "id": "S0556L04",
+          "type": "M",
+          "target": "深夜放音乐",
+          "known": "play music late at night",
+          "new": true,
+          "components": [
+            ["深夜", "late at night"],
+            ["放", "play"],
+            ["音乐", "music"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0557",
+      "seed_pair": [
+        "I wish they wouldn't play such loud music.",
+        "我希望他们不要放这么大声的音乐。"
+      ],
+      "extraction_notes": "Forward sweep: 'I wish' → '我希望' (FD passes). 'they wouldn't' → '他们不要' needs context. 'they wouldn't play' → '他们不要放' (FD passes - shows negative imperative in complement). 'such loud music' → '这么大声的音乐' (FD passes). Created overlaps to show 'such...music' pattern and negation in wish clause. '不要放' shows negative request structure.",
+      "legos": [
+        {
+          "id": "S0557L01",
+          "type": "A",
+          "target": "我希望",
+          "known": "I wish",
+          "new": true
+        },
+        {
+          "id": "S0557L02",
+          "type": "M",
+          "target": "他们不要放",
+          "known": "they wouldn't play",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["不要", "wouldn't/don't"],
+            ["放", "play"]
+          ]
+        },
+        {
+          "id": "S0557L03",
+          "type": "M",
+          "target": "这么大声的音乐",
+          "known": "such loud music",
+          "new": true,
+          "components": [
+            ["这么", "such/so"],
+            ["大声", "loud"],
+            ["的", "[modifier marker]"],
+            ["音乐", "music"]
+          ]
+        },
+        {
+          "id": "S0557L04",
+          "type": "M",
+          "target": "不要放这么大声的音乐",
+          "known": "wouldn't play such loud music",
+          "new": true,
+          "components": [
+            ["不要", "wouldn't"],
+            ["放", "play"],
+            ["这么", "such"],
+            ["大声", "loud"],
+            ["的", "[marker]"],
+            ["音乐", "music"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0558",
+      "seed_pair": [
+        "It's so late at night.",
+        "夜这么深了。"
+      ],
+      "extraction_notes": "Forward sweep: 'It's so late at night' → '夜这么深了' uses poetic structure. 'night' → '夜' (FD passes). 'so late' → '这么深' metaphorical usage (FD passes with '了' completion). The whole phrase is idiomatic showing degree with temporal metaphor.",
+      "legos": [
+        {
+          "id": "S0558L01",
+          "type": "M",
+          "target": "夜这么深了",
+          "known": "it's so late at night",
+          "new": true,
+          "components": [
+            ["夜", "night"],
+            ["这么", "so"],
+            ["深", "deep/late"],
+            ["了", "[completion particle]"]
+          ]
+        },
+        {
+          "id": "S0558L02",
+          "type": "A",
+          "target": "这么深了",
+          "known": "so late",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0559",
+      "seed_pair": [
+        "Have you found the path through the wood?",
+        "你找到穿过树林的小路了吗？"
+      ],
+      "extraction_notes": "Forward sweep: 'have you found' → '你找到...了吗' (FD needs completion). 'the path' → '小路' (FD passes). 'through the wood' → '穿过树林' (FD passes). Chinese uses 的 to connect modifier. Backward sweep: '穿过树林的小路' shows relative clause structure (modifier + 的 + noun). Created overlaps to show resultative complement '找到' and relative clause pattern.",
+      "legos": [
+        {
+          "id": "S0559L01",
+          "type": "A",
+          "target": "找到",
+          "known": "found",
+          "new": true
+        },
+        {
+          "id": "S0559L02",
+          "type": "M",
+          "target": "穿过树林",
+          "known": "through the wood",
+          "new": true,
+          "components": [
+            ["穿过", "pass through"],
+            ["树林", "wood/forest"]
+          ]
+        },
+        {
+          "id": "S0559L03",
+          "type": "M",
+          "target": "穿过树林的小路",
+          "known": "the path through the wood",
+          "new": true,
+          "components": [
+            ["穿过", "through"],
+            ["树林", "wood"],
+            ["的", "[relative clause marker]"],
+            ["小路", "path"]
+          ]
+        },
+        {
+          "id": "S0559L04",
+          "type": "M",
+          "target": "你找到穿过树林的小路了吗",
+          "known": "have you found the path through the wood",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["找到", "found"],
+            ["穿过", "through"],
+            ["树林", "wood"],
+            ["的", "[marker]"],
+            ["小路", "path"],
+            ["了", "[completion]"],
+            ["吗", "[question]"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0560",
+      "seed_pair": [
+        "It goes down to the beach",
+        "它通向海滩。"
+      ],
+      "extraction_notes": "Forward sweep: 'it' → '它' (FD passes - pronoun with clear referent from S0559). 'goes down to' → '通向' (FD passes - directional verb compound). 'the beach' → '海滩' (FD passes). '通向' is complete directional meaning.",
+      "legos": [
+        {
+          "id": "S0560L01",
+          "type": "A",
+          "target": "它",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0560L02",
+          "type": "A",
+          "target": "通向",
+          "known": "goes down to",
+          "new": true
+        },
+        {
+          "id": "S0560L03",
+          "type": "A",
+          "target": "海滩",
+          "known": "the beach",
+          "new": true
+        }
+      ]
+    }
+  ]
+}

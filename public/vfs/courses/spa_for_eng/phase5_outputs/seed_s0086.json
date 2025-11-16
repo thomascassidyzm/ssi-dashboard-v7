@@ -1,0 +1,121 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0086",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "target": "It wasn't possible, unfortunately.",
+    "known": "No fue posible, desafortunadamente."
+  },
+  "recent_context": {
+    "S0081": [
+      "cuándo | quieres comenzar",
+      "when | to do you want to to start"
+    ],
+    "S0082": [
+      "no voy a | esperarte | voy a esperarte | por qué no",
+      "I'm not going to | wait for you | going to wait for you | why not"
+    ],
+    "S0083": [
+      "estoy de acuerdo | estoy de acuerdo con | lo que dijiste | sobre tu amigo | tu amigo",
+      "I agree | I agree with | what you said | about your friend | your friend"
+    ],
+    "S0084": [
+      "no estoy de acuerdo | no estoy de acuerdo con | lo que dijo | sobre mi amigo | mi amigo",
+      "I don't agree | I don't agree with | what he said | about my friend | my friend"
+    ],
+    "S0085": [
+      "no conozco a | esas personas | conozco a esas personas",
+      "I don't to know | those people | to know those people"
+    ]
+  },
+  "legos": {
+    "S0086L01": {
+      "lego": [
+        "it wasn't possible",
+        "no fue posible"
+      ],
+      "type": "M",
+      "available_legos": 412,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        ["It wasn't possible", "No fue posible", null, 1],
+        ["It was possible", "Fue posible", null, 1],
+        ["It wasn't possible to to start", "No fue posible comenzar", null, 2],
+        ["It wasn't possible to wait for you", "No fue posible esperarte", null, 2],
+        ["I agree it wasn't possible", "Estoy de acuerdo que no fue posible", null, 3],
+        ["I don't agree it was possible", "No estoy de acuerdo que fue posible", null, 3],
+        ["It wasn't possible to to start when you wanted", "No fue posible comenzar cuándo quieres", null, 4],
+        ["It wasn't possible to wait for your friend", "No fue posible esperarte a tu amigo", null, 4],
+        ["I agree with what you said about why it wasn't possible", "Estoy de acuerdo con lo que dijiste sobre por qué no fue posible", null, 5],
+        ["I don't agree with what he said about those people it wasn't possible", "No estoy de acuerdo con lo que dijo sobre esas personas no fue posible", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0086L01",
+        "seed_context": {
+          "target": "It wasn't possible, unfortunately.",
+          "known": "No fue posible, desafortunadamente."
+        },
+        "components": [
+          ["no", "not"],
+          ["fue", "it was"],
+          ["posible", "possible"]
+        ]
+      }
+    },
+    "S0086L02": {
+      "lego": [
+        "unfortunately",
+        "desafortunadamente"
+      ],
+      "type": "A",
+      "available_legos": 413,
+      "is_final_lego": true,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        ["Unfortunately", "Desafortunadamente", null, 1],
+        ["Unfortunately, it wasn't possible", "Desafortunadamente, no fue posible", null, 2],
+        ["Unfortunately, I'm not going to wait for you", "Desafortunadamente, no voy a esperarte", null, 3],
+        ["Unfortunately, I don't to know those people", "Desafortunadamente, no conozco a esas personas", null, 3],
+        ["Unfortunately, it wasn't possible to to start when you wanted", "Desafortunadamente, no fue posible comenzar cuándo quieres", null, 4],
+        ["Unfortunately, I don't agree with what he said", "Desafortunadamente, no estoy de acuerdo con lo que dijo", null, 4],
+        ["Unfortunately, I agree with what you said about your friend", "Desafortunadamente, estoy de acuerdo con lo que dijiste sobre tu amigo", null, 5],
+        ["Unfortunately, it wasn't possible to wait for those people", "Desafortunadamente, no fue posible esperarte a esas personas", null, 5],
+        ["Unfortunately, I don't agree with what he said about my friend", "Desafortunadamente, no estoy de acuerdo con lo que dijo sobre mi amigo", null, 6],
+        ["It wasn't possible, unfortunately", "No fue posible, desafortunadamente", null, 2]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0086L02",
+        "seed_context": {
+          "target": "It wasn't possible, unfortunately.",
+          "known": "No fue posible, desafortunadamente."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0086.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_generated": 20,
+    "cumulative_legos_before": 412
+  }
+}

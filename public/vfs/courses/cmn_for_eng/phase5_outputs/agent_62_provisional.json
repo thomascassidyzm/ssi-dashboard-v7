@@ -1,0 +1,595 @@
+{
+  "agent_id": "agent_62",
+  "seed_range": "S0611-S0620",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0611",
+      "seed_pair": [
+        "我会准备好去别的地方看看。",
+        "I would have been ready to look somewhere else."
+      ],
+      "reasoning": "Forward sweep: 'I would have been ready' → '我会准备好' (conditional + ready state, FD passes). 'to look somewhere else' → '去别的地方看看' (directional verb + location + reduplication for 'look around', FD passes). Backward sweep: '看看' alone uncertain (看 vs 看看), needs '去别的地方看看' for certainty. Created overlaps: '别的地方' appears in isolation and within larger chunk for pattern practice (Heuristic 2). '准备好' useful standalone for recombination.",
+      "legos": [
+        {
+          "id": "S0611L01",
+          "type": "M",
+          "target": "我会准备好",
+          "known": "I would have been ready",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "would have"],
+            ["准备好", "been ready"]
+          ]
+        },
+        {
+          "id": "S0611L02",
+          "type": "A",
+          "target": "准备好",
+          "known": "ready",
+          "new": true
+        },
+        {
+          "id": "S0611L03",
+          "type": "M",
+          "target": "去别的地方看看",
+          "known": "to look somewhere else",
+          "new": true,
+          "components": [
+            ["去", "to go"],
+            ["别的地方", "somewhere else"],
+            ["看看", "look/have a look"]
+          ]
+        },
+        {
+          "id": "S0611L04",
+          "type": "M",
+          "target": "别的地方",
+          "known": "somewhere else",
+          "new": true,
+          "components": [
+            ["别的", "other/another"],
+            ["地方", "place"]
+          ]
+        },
+        {
+          "id": "S0611L05",
+          "type": "A",
+          "target": "看看",
+          "known": "to have a look",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0612",
+      "seed_pair": [
+        "我们会买一些东西。",
+        "We would have bought something."
+      ],
+      "reasoning": "Forward sweep: 'We would have bought' → '我们会买' (conditional marker 会 removes uncertainty, FD passes). 'something' → '一些东西' not just '东西' because '一些' specifies quantity/indefiniteness, FD passes. Backward sweep: '东西' could work standalone but '一些东西' is more pedagogically valuable. Created overlap: '买一些东西' for verb+object pattern (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0612L01",
+          "type": "M",
+          "target": "我们会买",
+          "known": "we would have bought",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["会", "would have"],
+            ["买", "bought"]
+          ]
+        },
+        {
+          "id": "S0612L02",
+          "type": "M",
+          "target": "一些东西",
+          "known": "something",
+          "new": true,
+          "components": [
+            ["一些", "some"],
+            ["东西", "things"]
+          ]
+        },
+        {
+          "id": "S0612L03",
+          "type": "M",
+          "target": "买一些东西",
+          "known": "buy something",
+          "new": true,
+          "components": [
+            ["买", "buy"],
+            ["一些", "some"],
+            ["东西", "things"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0613",
+      "seed_pair": [
+        "我们可能会在那里买房子。",
+        "We probably would have bought a house there."
+      ],
+      "reasoning": "Forward sweep: 'We probably would have' → '我们可能会' (probability + conditional, FD passes). Chinese word order places location before verb: '在那里买房子' = 'at-that-place buy house'. 'a house' → '房子' (classifier implied in context). Backward sweep: '买房子' = 'buy a house' is common collocation, FD passes. Created overlap: '在那里买房子' shows location+verb pattern (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0613L01",
+          "type": "M",
+          "target": "我们可能会",
+          "known": "we probably would have",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["可能", "probably"],
+            ["会", "would have"]
+          ]
+        },
+        {
+          "id": "S0613L02",
+          "type": "M",
+          "target": "在那里",
+          "known": "there",
+          "new": true,
+          "components": [
+            ["在", "at/in"],
+            ["那里", "that place"]
+          ]
+        },
+        {
+          "id": "S0613L03",
+          "type": "M",
+          "target": "买房子",
+          "known": "buy a house",
+          "new": true,
+          "components": [
+            ["买", "buy"],
+            ["房子", "house"]
+          ]
+        },
+        {
+          "id": "S0613L04",
+          "type": "M",
+          "target": "在那里买房子",
+          "known": "buy a house there",
+          "new": true,
+          "components": [
+            ["在", "at"],
+            ["那里", "there"],
+            ["买", "buy"],
+            ["房子", "house"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0614",
+      "seed_pair": [
+        "它靠近你家人住的地方。",
+        "It's near where your family live."
+      ],
+      "reasoning": "Forward sweep: 'It's near' → '它靠近' (subject + proximity verb, FD passes). 'where your family live' → '你家人住的地方' (relative clause structure, FD passes). Backward sweep: '住的地方' = 'where...lives' is important pattern (verb + 的 + place), FD passes without subject. '的地方' alone too abstract. Created overlap: '你家人住的地方' and '住的地方' for relative clause pattern practice (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0614L01",
+          "type": "M",
+          "target": "它靠近",
+          "known": "it's near",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["靠近", "is near"]
+          ]
+        },
+        {
+          "id": "S0614L02",
+          "type": "M",
+          "target": "你家人",
+          "known": "your family",
+          "new": true,
+          "components": [
+            ["你", "your"],
+            ["家人", "family"]
+          ]
+        },
+        {
+          "id": "S0614L03",
+          "type": "M",
+          "target": "住的地方",
+          "known": "where...live",
+          "new": true,
+          "components": [
+            ["住", "live"],
+            ["的", "(marker)"],
+            ["地方", "place"]
+          ]
+        },
+        {
+          "id": "S0614L04",
+          "type": "M",
+          "target": "你家人住的地方",
+          "known": "where your family live",
+          "new": true,
+          "components": [
+            ["你", "your"],
+            ["家人", "family"],
+            ["住", "live"],
+            ["的", "(marker)"],
+            ["地方", "place"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0615",
+      "seed_pair": [
+        "我认为你说那个很勇敢。",
+        "I thought you were very brave to say that."
+      ],
+      "reasoning": "Forward sweep: 'I thought' → '我认为' (FD passes). Chinese word order: subject-verb-object-adjective '你说那个很勇敢' = 'you say-that very-brave'. 'to say that' → '说那个'. Backward sweep: '很勇敢' = 'very brave' (intensifier + adjective, FD passes). Created overlaps: '你说那个' and '说那个' for verb+object pattern; '你说那个很勇敢' shows comment structure (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0615L01",
+          "type": "M",
+          "target": "我认为",
+          "known": "I thought",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["认为", "think/thought"]
+          ]
+        },
+        {
+          "id": "S0615L02",
+          "type": "M",
+          "target": "你说那个",
+          "known": "you said that",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["说", "said"],
+            ["那个", "that"]
+          ]
+        },
+        {
+          "id": "S0615L03",
+          "type": "M",
+          "target": "说那个",
+          "known": "say that",
+          "new": true,
+          "components": [
+            ["说", "say"],
+            ["那个", "that"]
+          ]
+        },
+        {
+          "id": "S0615L04",
+          "type": "M",
+          "target": "很勇敢",
+          "known": "very brave",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["勇敢", "brave"]
+          ]
+        },
+        {
+          "id": "S0615L05",
+          "type": "M",
+          "target": "你说那个很勇敢",
+          "known": "you were very brave to say that",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["说", "say"],
+            ["那个", "that"],
+            ["很", "very"],
+            ["勇敢", "brave"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0616",
+      "seed_pair": [
+        "你说你认为那个很勇敢。",
+        "You were very brave to say you thought that."
+      ],
+      "reasoning": "Forward sweep: Chinese structure is '你说你认为那个很勇敢' = 'you say you-think-that very-brave'. 'you said you thought that' → '你说你认为那个' (nested verbs, FD passes). Backward sweep: '认为那个' = 'think/thought that' (verb + demonstrative). Created overlaps: '你认为那个' and '认为那个' for embedded clause patterns; '你说你认为那个' shows complex sentence structure (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0616L01",
+          "type": "M",
+          "target": "你说",
+          "known": "you said",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["说", "said"]
+          ]
+        },
+        {
+          "id": "S0616L02",
+          "type": "M",
+          "target": "你认为那个",
+          "known": "you thought that",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["认为", "thought"],
+            ["那个", "that"]
+          ]
+        },
+        {
+          "id": "S0616L03",
+          "type": "M",
+          "target": "认为那个",
+          "known": "thought that",
+          "new": true,
+          "components": [
+            ["认为", "thought"],
+            ["那个", "that"]
+          ]
+        },
+        {
+          "id": "S0616L04",
+          "type": "M",
+          "target": "你说你认为那个",
+          "known": "you said you thought that",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["说", "said"],
+            ["你", "you"],
+            ["认为", "thought"],
+            ["那个", "that"]
+          ]
+        },
+        {
+          "id": "S0616L05",
+          "type": "M",
+          "target": "很勇敢",
+          "known": "very brave",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["勇敢", "brave"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0617",
+      "seed_pair": [
+        "你认为那是个错误。",
+        "You thought that it was a mistake."
+      ],
+      "reasoning": "Forward sweep: 'You thought' → '你认为' (FD passes). 'that it was a mistake' → '那是个错误' where '是' = copula, '个' = classifier. 'that was a mistake' → '那是个错误' (demonstrative + copula + classifier + noun). Backward sweep: '是个错误' = 'is/was a mistake' (copula + classifier + noun, FD passes). '个错误' alone violates Heuristic 1 (classifier needs context). Created overlap for copula+noun pattern (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0617L01",
+          "type": "M",
+          "target": "你认为",
+          "known": "you thought",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["认为", "thought"]
+          ]
+        },
+        {
+          "id": "S0617L02",
+          "type": "M",
+          "target": "那是个错误",
+          "known": "that was a mistake",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["是", "was"],
+            ["个", "(classifier)"],
+            ["错误", "mistake"]
+          ]
+        },
+        {
+          "id": "S0617L03",
+          "type": "M",
+          "target": "是个错误",
+          "known": "was a mistake",
+          "new": true,
+          "components": [
+            ["是", "was"],
+            ["个", "(classifier)"],
+            ["错误", "mistake"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0618",
+      "seed_pair": [
+        "感觉不像很长时间。",
+        "It doesn't feel like a long time."
+      ],
+      "reasoning": "Forward sweep: 'It doesn't feel like' → '感觉不像' (perception verb + negation + comparison, FD passes). 'a long time' → '很长时间' not '长时间' because '很' (very) is needed for 'a long time' semantic, FD passes with intensifier. Backward sweep: '长时间' alone uncertain (short vs long? how long?), '很长时间' removes uncertainty. Created component LEGOs: '感觉' and '不像' could be separate but work better together for 'doesn't feel like' idiomatic meaning (Heuristic 1).",
+      "legos": [
+        {
+          "id": "S0618L01",
+          "type": "M",
+          "target": "感觉不像",
+          "known": "doesn't feel like",
+          "new": true,
+          "components": [
+            ["感觉", "feel"],
+            ["不", "not"],
+            ["像", "like"]
+          ]
+        },
+        {
+          "id": "S0618L02",
+          "type": "M",
+          "target": "很长时间",
+          "known": "a long time",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["长", "long"],
+            ["时间", "time"]
+          ]
+        },
+        {
+          "id": "S0618L03",
+          "type": "A",
+          "target": "感觉",
+          "known": "to feel",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0619",
+      "seed_pair": [
+        "自从我们见面已经很长时间了。",
+        "It's a long time since we saw each other."
+      ],
+      "reasoning": "Forward sweep: 'since we saw each other' → '自从我们见面' (temporal marker + subject + verb, FD passes). 'It's been a long time' → '已经很长时间了' (perfective aspect + time + particle 了, FD passes). Backward sweep: '很长时间' alone uncertain about completion, needs '已经...了' structure. '我们见面' = 'we meet/met' (FD passes). Created overlaps: '自从我们见面' and '我们见面' for temporal clause patterns (Heuristic 2).",
+      "legos": [
+        {
+          "id": "S0619L01",
+          "type": "M",
+          "target": "自从我们见面",
+          "known": "since we saw each other",
+          "new": true,
+          "components": [
+            ["自从", "since"],
+            ["我们", "we"],
+            ["见面", "saw each other/met"]
+          ]
+        },
+        {
+          "id": "S0619L02",
+          "type": "M",
+          "target": "已经很长时间了",
+          "known": "it's been a long time",
+          "new": true,
+          "components": [
+            ["已经", "already"],
+            ["很", "very"],
+            ["长时间", "long time"],
+            ["了", "(completion particle)"]
+          ]
+        },
+        {
+          "id": "S0619L03",
+          "type": "M",
+          "target": "我们见面",
+          "known": "we saw each other",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["见面", "saw each other/met"]
+          ]
+        },
+        {
+          "id": "S0619L04",
+          "type": "M",
+          "target": "很长时间",
+          "known": "a long time",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["长", "long"],
+            ["时间", "time"]
+          ]
+        },
+        {
+          "id": "S0619L05",
+          "type": "A",
+          "target": "自从",
+          "known": "since",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0620",
+      "seed_pair": [
+        "自从我们上次见面已经很长时间了。",
+        "It's a very long time since we last saw each other."
+      ],
+      "reasoning": "Forward sweep: Similar to S0619 but adds '上次' (last time). 'since we last saw each other' → '自从我们上次见面' (temporal + subject + temporal modifier + verb, FD passes). 'we last saw each other' → '我们上次见面'. Backward sweep: '上次见面' = 'last time we met' is useful collocation. Created overlaps: '我们上次见面', '上次见面', and '我们见面' for temporal modification patterns (Heuristic 2). '已经很长时间了' reused from S0619.",
+      "legos": [
+        {
+          "id": "S0620L01",
+          "type": "M",
+          "target": "自从我们上次见面",
+          "known": "since we last saw each other",
+          "new": true,
+          "components": [
+            ["自从", "since"],
+            ["我们", "we"],
+            ["上次", "last time"],
+            ["见面", "saw each other/met"]
+          ]
+        },
+        {
+          "id": "S0620L02",
+          "type": "M",
+          "target": "我们上次见面",
+          "known": "we last saw each other",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["上次", "last time"],
+            ["见面", "saw each other/met"]
+          ]
+        },
+        {
+          "id": "S0620L03",
+          "type": "M",
+          "target": "上次见面",
+          "known": "last time we met",
+          "new": true,
+          "components": [
+            ["上次", "last time"],
+            ["见面", "saw each other/met"]
+          ]
+        },
+        {
+          "id": "S0620L04",
+          "type": "A",
+          "target": "上次",
+          "known": "last time",
+          "new": true
+        },
+        {
+          "id": "S0620L05",
+          "type": "M",
+          "target": "已经很长时间了",
+          "known": "it's been a very long time",
+          "new": true,
+          "components": [
+            ["已经", "already"],
+            ["很", "very"],
+            ["长时间", "long time"],
+            ["了", "(completion particle)"]
+          ]
+        },
+        {
+          "id": "S0620L06",
+          "type": "M",
+          "target": "很长时间",
+          "known": "a long time",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["长", "long"],
+            ["时间", "time"]
+          ]
+        }
+      ]
+    }
+  ]
+}

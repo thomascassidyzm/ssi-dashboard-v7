@@ -1,0 +1,406 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0090",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "target": "If you to can to speak more slowly that would to be great.",
+    "known": "Si puedes hablar más lentamente, eso sería excelente."
+  },
+  "recent_context": {
+    "S0085": [
+      "no conozco a | esas personas | conozco a esas personas",
+      "I don't to know | those people | to know those people"
+    ],
+    "S0086": [
+      "no fue posible | desafortunadamente",
+      "it wasn't possible | unfortunately"
+    ],
+    "S0087": [
+      "son personas | que no conozco | personas que no conozco",
+      "they are people | that I don't to know | people I don't to know"
+    ],
+    "S0088": [
+      "no estoy preparado | no estoy preparado para | para hablar con | personas que no conozco | todavía",
+      "I'm not ready | I'm not ready to | to to talk to | people I don't to know | yet"
+    ],
+    "S0089": [
+      "pienso que | he hecho | he hecho mucho | en un breve tiempo | un breve tiempo",
+      "I think that | I've done | I've done a lot | in a short time | a short time"
+    ]
+  },
+  "legos": {
+    "S0090L01": {
+      "lego": [
+        "if you to can",
+        "si puedes"
+      ],
+      "type": "M",
+      "available_legos": 427,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "If you to can",
+          "Si puedes",
+          null,
+          null
+        ],
+        [
+          "If you to can to help me",
+          "Si puedes ayudarme",
+          null,
+          null
+        ],
+        [
+          "If you to can to speak Spanish",
+          "Si puedes hablar español",
+          null,
+          null
+        ],
+        [
+          "If you to can to start now",
+          "Si puedes comenzar ahora",
+          null,
+          null
+        ],
+        [
+          "If you to can to speak more slowly",
+          "Si puedes hablar más lentamente",
+          null,
+          null
+        ],
+        [
+          "If you to can wait for me a little",
+          "Si puedes esperarme un poco",
+          null,
+          null
+        ],
+        [
+          "If you to can to help me to understand that",
+          "Si puedes ayudarme a comprender eso",
+          null,
+          null
+        ],
+        [
+          "I'm not sure if you to can to do that",
+          "No estoy seguro de si puedes hacer eso",
+          null,
+          null
+        ],
+        [
+          "If you to can to come tomorrow, that would to be good",
+          "Si puedes venir mañana, eso sería bueno",
+          null,
+          null
+        ],
+        [
+          "If you to can to talk to your friend about that",
+          "Si puedes hablar con tu amigo sobre eso",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0090L01",
+        "seed_context": {
+          "target": "If you to can to speak more slowly that would to be great.",
+          "known": "Si puedes hablar más lentamente, eso sería excelente."
+        },
+        "components": [
+          [
+            "si",
+            "if"
+          ],
+          [
+            "puedes",
+            "you to can"
+          ]
+        ]
+      }
+    },
+    "S0090L02": {
+      "lego": [
+        "to speak more slowly",
+        "hablar más lentamente"
+      ],
+      "type": "M",
+      "available_legos": 428,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "Speak more slowly",
+          "Hablar más lentamente",
+          null,
+          null
+        ],
+        [
+          "Speak more slowly",
+          "Habla más lentamente",
+          null,
+          null
+        ],
+        [
+          "You to can to speak more slowly",
+          "Puedes hablar más lentamente",
+          null,
+          null
+        ],
+        [
+          "I want to to speak more slowly",
+          "Quiero hablar más lentamente",
+          null,
+          null
+        ],
+        [
+          "I need to to speak more slowly in Spanish",
+          "Necesito hablar más lentamente en español",
+          null,
+          null
+        ],
+        [
+          "I'm going to to try to to speak more slowly",
+          "Voy a intentar hablar más lentamente",
+          null,
+          null
+        ],
+        [
+          "I think that I need to to speak more slowly with those people",
+          "Pienso que necesito hablar más lentamente con esas personas",
+          null,
+          null
+        ],
+        [
+          "It's important to to speak more slowly when you're learning",
+          "Es importante hablar más lentamente cuando estás aprendiendo",
+          null,
+          null
+        ],
+        [
+          "I don't like speaking more slowly, but it's necessary",
+          "No me gusta hablar más lentamente, pero es necesario",
+          null,
+          null
+        ],
+        [
+          "If you to can to speak more slowly, I to can to understand better",
+          "Si puedes hablar más lentamente, puedo comprender mejor",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0090L02",
+        "seed_context": {
+          "target": "If you to can to speak more slowly that would to be great.",
+          "known": "Si puedes hablar más lentamente, eso sería excelente."
+        },
+        "components": [
+          [
+            "hablar",
+            "to to speak"
+          ],
+          [
+            "más",
+            "more"
+          ],
+          [
+            "lentamente",
+            "slowly"
+          ]
+        ]
+      }
+    },
+    "S0090L03": {
+      "lego": [
+        "if you to can to speak",
+        "si puedes hablar"
+      ],
+      "type": "M",
+      "available_legos": 429,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "If you to can to speak Spanish",
+          "Si puedes hablar español",
+          null,
+          null
+        ],
+        [
+          "If you to can to speak more slowly",
+          "Si puedes hablar más lentamente",
+          null,
+          null
+        ],
+        [
+          "If you to can to speak with me tomorrow",
+          "Si puedes hablar conmigo mañana",
+          null,
+          null
+        ],
+        [
+          "I want to to know if you to can to speak Spanish",
+          "Quiero saber si puedes hablar español",
+          null,
+          null
+        ],
+        [
+          "If you to can to speak with your friend about that",
+          "Si puedes hablar con tu amigo sobre eso",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0090L03",
+        "seed_context": {
+          "target": "If you to can to speak more slowly that would to be great.",
+          "known": "Si puedes hablar más lentamente, eso sería excelente."
+        },
+        "components": [
+          [
+            "si",
+            "if"
+          ],
+          [
+            "puedes",
+            "you to can"
+          ],
+          [
+            "hablar",
+            "to to speak"
+          ]
+        ]
+      }
+    },
+    "S0090L04": {
+      "lego": [
+        "that would to be great",
+        "eso sería excelente"
+      ],
+      "type": "M",
+      "available_legos": 430,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "That would to be great",
+          "Eso sería excelente",
+          null,
+          null
+        ],
+        [
+          "That would to be good",
+          "Eso sería bueno",
+          null,
+          null
+        ],
+        [
+          "That would to be very good",
+          "Eso sería muy bueno",
+          null,
+          null
+        ],
+        [
+          "I think that would to be great",
+          "Pienso que eso sería excelente",
+          null,
+          null
+        ],
+        [
+          "If you to can to do that, it would to be great",
+          "Si puedes hacer eso, sería excelente",
+          null,
+          null
+        ],
+        [
+          "That would to be great for me",
+          "Eso sería excelente para mí",
+          null,
+          null
+        ],
+        [
+          "If you to can to help me tomorrow, that would to be great",
+          "Si puedes ayudarme mañana, eso sería excelente",
+          null,
+          null
+        ],
+        [
+          "That would to be great if you to can to speak more slowly",
+          "Eso sería excelente si puedes hablar más lentamente",
+          null,
+          null
+        ],
+        [
+          "I think that would to be great for learning Spanish",
+          "Pienso que eso sería excelente para aprender español",
+          null,
+          null
+        ],
+        [
+          "If you to can to come at six, that would to be great",
+          "Si puedes venir a las seis, eso sería excelente",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0090L04",
+        "seed_context": {
+          "target": "If you to can to speak more slowly that would to be great.",
+          "known": "Si puedes hablar más lentamente, eso sería excelente."
+        },
+        "components": [
+          [
+            "eso",
+            "that"
+          ],
+          [
+            "sería",
+            "would to be"
+          ],
+          [
+            "excelente",
+            "excellent/great"
+          ]
+        ]
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0090.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_generated": 40,
+    "cumulative_legos_before": 427
+  }
+}

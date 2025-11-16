@@ -1,0 +1,3151 @@
+{
+  "status": "FAIL",
+  "timestamp": "2025-11-16T06:07:12.748Z",
+  "input_file": "/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/spa_for_eng/lego_pairs.json",
+  "total_legos": 2949,
+  "unique_known_legos": 2453,
+  "violation_count": 61,
+  "affected_seeds_count": 120,
+  "violations": [
+    {
+      "known": "what",
+      "mappings": [
+        {
+          "target": "lo que",
+          "legos": [
+            {
+              "seed_id": "S0012",
+              "lego_id": "S0012L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "qué",
+          "legos": [
+            {
+              "seed_id": "S0068",
+              "lego_id": "S0068L01",
+              "type": "A"
+            },
+            {
+              "seed_id": "S0666",
+              "lego_id": "S0666L01",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to stop talking",
+      "mappings": [
+        {
+          "target": "parar de hablar",
+          "legos": [
+            {
+              "seed_id": "S0019",
+              "lego_id": "S0019L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "dejar de hablar",
+          "legos": [
+            {
+              "seed_id": "S0240",
+              "lego_id": "S0240L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to talk more",
+      "mappings": [
+        {
+          "target": "a hablar más",
+          "legos": [
+            {
+              "seed_id": "S0023",
+              "lego_id": "S0023L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "hablar más",
+          "legos": [
+            {
+              "seed_id": "S0023",
+              "lego_id": "S0023L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to go",
+      "mappings": [
+        {
+          "target": "para ir",
+          "legos": [
+            {
+              "seed_id": "S0026",
+              "lego_id": "S0026L07",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "ir",
+          "legos": [
+            {
+              "seed_id": "S0665",
+              "lego_id": "S0665L03",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to answer",
+      "mappings": [
+        {
+          "target": "para responder",
+          "legos": [
+            {
+              "seed_id": "S0027",
+              "lego_id": "S0027L06",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "responder",
+          "legos": [
+            {
+              "seed_id": "S0043",
+              "lego_id": "S0043L05",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to be quiet",
+      "mappings": [
+        {
+          "target": "estar silencioso",
+          "legos": [
+            {
+              "seed_id": "S0034",
+              "lego_id": "S0034L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "estar callado",
+          "legos": [
+            {
+              "seed_id": "S0549",
+              "lego_id": "S0549L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "when",
+      "mappings": [
+        {
+          "target": "cuando",
+          "legos": [
+            {
+              "seed_id": "S0034",
+              "lego_id": "S0034L05",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "cuándo",
+          "legos": [
+            {
+              "seed_id": "S0081",
+              "lego_id": "S0081L01",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "about it",
+      "mappings": [
+        {
+          "target": "sobre eso",
+          "legos": [
+            {
+              "seed_id": "S0037",
+              "lego_id": "S0037L05",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "sobre ello",
+          "legos": [
+            {
+              "seed_id": "S0597",
+              "lego_id": "S0597L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "how do you feel",
+      "mappings": [
+        {
+          "target": "cómo te sientes",
+          "legos": [
+            {
+              "seed_id": "S0040",
+              "lego_id": "S0040L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "cómo se siente",
+          "legos": [
+            {
+              "seed_id": "S0642",
+              "lego_id": "S0642L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "cómo se sienten",
+          "legos": [
+            {
+              "seed_id": "S0657",
+              "lego_id": "S0657L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "i think that",
+      "mappings": [
+        {
+          "target": "pienso que",
+          "legos": [
+            {
+              "seed_id": "S0047",
+              "lego_id": "S0047L02",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0123",
+              "lego_id": "S0123L01",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0314",
+              "lego_id": "S0314L01",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0315",
+              "lego_id": "S0315L01",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0328",
+              "lego_id": "S0328L02",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0339",
+              "lego_id": "S0339L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "creo que",
+          "legos": [
+            {
+              "seed_id": "S0303",
+              "lego_id": "S0303L01",
+              "type": "A"
+            },
+            {
+              "seed_id": "S0304",
+              "lego_id": "S0304L01",
+              "type": "A"
+            },
+            {
+              "seed_id": "S0335",
+              "lego_id": "S0335L01",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "could you say",
+      "mappings": [
+        {
+          "target": "podrías decir",
+          "legos": [
+            {
+              "seed_id": "S0061",
+              "lego_id": "S0061L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "podría decir",
+          "legos": [
+            {
+              "seed_id": "S0644",
+              "lego_id": "S0644L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to say that",
+      "mappings": [
+        {
+          "target": "decir eso",
+          "legos": [
+            {
+              "seed_id": "S0061",
+              "lego_id": "S0061L02",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0644",
+              "lego_id": "S0644L05",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0659",
+              "lego_id": "S0659L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "al decir eso",
+          "legos": [
+            {
+              "seed_id": "S0615",
+              "lego_id": "S0615L06",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "al decir que",
+          "legos": [
+            {
+              "seed_id": "S0616",
+              "lego_id": "S0616L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "i'm not sure if",
+      "mappings": [
+        {
+          "target": "no estoy seguro si",
+          "legos": [
+            {
+              "seed_id": "S0062",
+              "lego_id": "S0062L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "no estoy seguro de si",
+          "legos": [
+            {
+              "seed_id": "S0654",
+              "lego_id": "S0654L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "i think that you're",
+      "mappings": [
+        {
+          "target": "pienso que estás",
+          "legos": [
+            {
+              "seed_id": "S0072",
+              "lego_id": "S0072L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "creo que estás",
+          "legos": [
+            {
+              "seed_id": "S0655",
+              "lego_id": "S0655L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "you're doing very well",
+      "mappings": [
+        {
+          "target": "estás haciendo muy bien",
+          "legos": [
+            {
+              "seed_id": "S0072",
+              "lego_id": "S0072L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "estás haciéndolo muy bien",
+          "legos": [
+            {
+              "seed_id": "S0655",
+              "lego_id": "S0655L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "in a short time",
+      "mappings": [
+        {
+          "target": "en un breve tiempo",
+          "legos": [
+            {
+              "seed_id": "S0089",
+              "lego_id": "S0089L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "en poco tiempo",
+          "legos": [
+            {
+              "seed_id": "S0245",
+              "lego_id": "S0245L07",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "for a while",
+      "mappings": [
+        {
+          "target": "por un tiempo",
+          "legos": [
+            {
+              "seed_id": "S0092",
+              "lego_id": "S0092L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "por un rato",
+          "legos": [
+            {
+              "seed_id": "S0180",
+              "lego_id": "S0180L05",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0219",
+              "lego_id": "S0219L05",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0596",
+              "lego_id": "S0596L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "are you ready",
+      "mappings": [
+        {
+          "target": "estás preparado",
+          "legos": [
+            {
+              "seed_id": "S0095",
+              "lego_id": "S0095L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "está preparado",
+          "legos": [
+            {
+              "seed_id": "S0649",
+              "lego_id": "S0649L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "something else",
+      "mappings": [
+        {
+          "target": "otra cosa",
+          "legos": [
+            {
+              "seed_id": "S0098",
+              "lego_id": "S0098L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "algo más",
+          "legos": [
+            {
+              "seed_id": "S0158",
+              "lego_id": "S0158L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to learn a lot of new words",
+      "mappings": [
+        {
+          "target": "para aprender muchas palabras nuevas",
+          "legos": [
+            {
+              "seed_id": "S0109",
+              "lego_id": "S0109L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "aprender muchas palabras nuevas",
+          "legos": [
+            {
+              "seed_id": "S0109",
+              "lego_id": "S0109L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "i thought that",
+      "mappings": [
+        {
+          "target": "creí que",
+          "legos": [
+            {
+              "seed_id": "S0124",
+              "lego_id": "S0124L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "pensé que",
+          "legos": [
+            {
+              "seed_id": "S0248",
+              "lego_id": "S0248L02",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0615",
+              "lego_id": "S0615L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "i don't know why",
+      "mappings": [
+        {
+          "target": "no sé por",
+          "legos": [
+            {
+              "seed_id": "S0135",
+              "lego_id": "S0135L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "no sé por qué",
+          "legos": [
+            {
+              "seed_id": "S0135",
+              "lego_id": "S0135L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "where",
+      "mappings": [
+        {
+          "target": "donde",
+          "legos": [
+            {
+              "seed_id": "S0138",
+              "lego_id": "S0138L03",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "dónde",
+          "legos": [
+            {
+              "seed_id": "S0154",
+              "lego_id": "S0154L01",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to leave",
+      "mappings": [
+        {
+          "target": "irme",
+          "legos": [
+            {
+              "seed_id": "S0139",
+              "lego_id": "S0139L08",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "para salir",
+          "legos": [
+            {
+              "seed_id": "S0255",
+              "lego_id": "S0255L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "can you tell me",
+      "mappings": [
+        {
+          "target": "¿puedes decirme",
+          "legos": [
+            {
+              "seed_id": "S0150",
+              "lego_id": "S0150L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "puedes decirme",
+          "legos": [
+            {
+              "seed_id": "S0250",
+              "lego_id": "S0250L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "differently",
+      "mappings": [
+        {
+          "target": "diferentemente",
+          "legos": [
+            {
+              "seed_id": "S0152",
+              "lego_id": "S0152L02",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "de manera diferente",
+          "legos": [
+            {
+              "seed_id": "S0607",
+              "lego_id": "S0607L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "a few minutes",
+      "mappings": [
+        {
+          "target": "unos minutos",
+          "legos": [
+            {
+              "seed_id": "S0155",
+              "lego_id": "S0155L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "unos pocos minutos",
+          "legos": [
+            {
+              "seed_id": "S0253",
+              "lego_id": "S0253L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "there",
+      "mappings": [
+        {
+          "target": "ahí",
+          "legos": [
+            {
+              "seed_id": "S0157",
+              "lego_id": "S0157L04",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "allí",
+          "legos": [
+            {
+              "seed_id": "S0613",
+              "lego_id": "S0613L02",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to say",
+      "mappings": [
+        {
+          "target": "decir",
+          "legos": [
+            {
+              "seed_id": "S0159",
+              "lego_id": "S0159L05",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "que decir",
+          "legos": [
+            {
+              "seed_id": "S0298",
+              "lego_id": "S0298L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "what do you think",
+      "mappings": [
+        {
+          "target": "qué piensas",
+          "legos": [
+            {
+              "seed_id": "S0162",
+              "lego_id": "S0162L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "qué piensa",
+          "legos": [
+            {
+              "seed_id": "S0651",
+              "lego_id": "S0651L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "qué piensan",
+          "legos": [
+            {
+              "seed_id": "S0666",
+              "lego_id": "S0666L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "what do you need",
+      "mappings": [
+        {
+          "target": "qué necesitas",
+          "legos": [
+            {
+              "seed_id": "S0167",
+              "lego_id": "S0167L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "qué necesita",
+          "legos": [
+            {
+              "seed_id": "S0652",
+              "lego_id": "S0652L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to do",
+      "mappings": [
+        {
+          "target": "hacer",
+          "legos": [
+            {
+              "seed_id": "S0167",
+              "lego_id": "S0167L03",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "que hacer",
+          "legos": [
+            {
+              "seed_id": "S0608",
+              "lego_id": "S0608L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "next year",
+      "mappings": [
+        {
+          "target": "el año próximo",
+          "legos": [
+            {
+              "seed_id": "S0176",
+              "lego_id": "S0176L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "el próximo año",
+          "legos": [
+            {
+              "seed_id": "S0416",
+              "lego_id": "S0416L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "do you want",
+      "mappings": [
+        {
+          "target": "quieres",
+          "legos": [
+            {
+              "seed_id": "S0186",
+              "lego_id": "S0186L01",
+              "type": "A"
+            },
+            {
+              "seed_id": "S0623",
+              "lego_id": "S0623L01",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "quiere usted",
+          "legos": [
+            {
+              "seed_id": "S0643",
+              "lego_id": "S0643L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "so i",
+      "mappings": [
+        {
+          "target": "así que no",
+          "legos": [
+            {
+              "seed_id": "S0188",
+              "lego_id": "S0188L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "así que quería",
+          "legos": [
+            {
+              "seed_id": "S0588",
+              "lego_id": "S0588L01",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "yes that's",
+      "mappings": [
+        {
+          "target": "sí, esa es",
+          "legos": [
+            {
+              "seed_id": "S0189",
+              "lego_id": "S0189L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "sí esa es",
+          "legos": [
+            {
+              "seed_id": "S0408",
+              "lego_id": "S0408L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "at night",
+      "mappings": [
+        {
+          "target": "por la noche",
+          "legos": [
+            {
+              "seed_id": "S0192",
+              "lego_id": "S0192L04",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0215",
+              "lego_id": "S0215L03",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0349",
+              "lego_id": "S0349L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "en la noche",
+          "legos": [
+            {
+              "seed_id": "S0556",
+              "lego_id": "S0556L03",
+              "type": "M"
+            },
+            {
+              "seed_id": "S0558",
+              "lego_id": "S0558L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "too busy",
+      "mappings": [
+        {
+          "target": "demasiado ocupado",
+          "legos": [
+            {
+              "seed_id": "S0193",
+              "lego_id": "S0193L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "demasiado ocupada",
+          "legos": [
+            {
+              "seed_id": "S0246",
+              "lego_id": "S0246L06",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "chance to practise speaking",
+      "mappings": [
+        {
+          "target": "oportunidad de practicar hablar",
+          "legos": [
+            {
+              "seed_id": "S0206",
+              "lego_id": "S0206L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "de practicar hablar",
+          "legos": [
+            {
+              "seed_id": "S0206",
+              "lego_id": "S0206L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to discuss",
+      "mappings": [
+        {
+          "target": "discutir",
+          "legos": [
+            {
+              "seed_id": "S0210",
+              "lego_id": "S0210L04",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "que discutir",
+          "legos": [
+            {
+              "seed_id": "S0356",
+              "lego_id": "S0356L06",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "television",
+      "mappings": [
+        {
+          "target": "televisión",
+          "legos": [
+            {
+              "seed_id": "S0220",
+              "lego_id": "S0220L06",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "la televisión",
+          "legos": [
+            {
+              "seed_id": "S0287",
+              "lego_id": "S0287L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "woman who",
+      "mappings": [
+        {
+          "target": "vieja que",
+          "legos": [
+            {
+              "seed_id": "S0232",
+              "lego_id": "S0232L02",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "joven que",
+          "legos": [
+            {
+              "seed_id": "S0233",
+              "lego_id": "S0233L02",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "before",
+      "mappings": [
+        {
+          "target": "antes de que",
+          "legos": [
+            {
+              "seed_id": "S0249",
+              "lego_id": "S0249L06",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "antes",
+          "legos": [
+            {
+              "seed_id": "S0309",
+              "lego_id": "S0309L05",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "be ready",
+      "mappings": [
+        {
+          "target": "estar preparado",
+          "legos": [
+            {
+              "seed_id": "S0253",
+              "lego_id": "S0253L03",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "estarás preparado",
+          "legos": [
+            {
+              "seed_id": "S0255",
+              "lego_id": "S0255L04",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "estaré listo",
+          "legos": [
+            {
+              "seed_id": "S0256",
+              "lego_id": "S0256L04",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "over there",
+      "mappings": [
+        {
+          "target": "de allí",
+          "legos": [
+            {
+              "seed_id": "S0258",
+              "lego_id": "S0258L05",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "allí",
+          "legos": [
+            {
+              "seed_id": "S0307",
+              "lego_id": "S0307L06",
+              "type": "A"
+            },
+            {
+              "seed_id": "S0389",
+              "lego_id": "S0389L02",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "do you mind",
+      "mappings": [
+        {
+          "target": "te importa",
+          "legos": [
+            {
+              "seed_id": "S0281",
+              "lego_id": "S0281L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "le importa",
+          "legos": [
+            {
+              "seed_id": "S0653",
+              "lego_id": "S0653L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "les importa",
+          "legos": [
+            {
+              "seed_id": "S0667",
+              "lego_id": "S0667L01",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "people i know",
+      "mappings": [
+        {
+          "target": "la gente que conozco",
+          "legos": [
+            {
+              "seed_id": "S0288",
+              "lego_id": "S0288L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "gente que conozco",
+          "legos": [
+            {
+              "seed_id": "S0288",
+              "lego_id": "S0288L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "be there",
+      "mappings": [
+        {
+          "target": "estar allí",
+          "legos": [
+            {
+              "seed_id": "S0289",
+              "lego_id": "S0289L05",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "esté allí",
+          "legos": [
+            {
+              "seed_id": "S0456",
+              "lego_id": "S0456L02",
+              "type": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "i think that he",
+      "mappings": [
+        {
+          "target": "creo que él",
+          "legos": [
+            {
+              "seed_id": "S0303",
+              "lego_id": "S0303L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "creo que necesita",
+          "legos": [
+            {
+              "seed_id": "S0325",
+              "lego_id": "S0325L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "creo que puede",
+          "legos": [
+            {
+              "seed_id": "S0335",
+              "lego_id": "S0335L02",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "i know that",
+      "mappings": [
+        {
+          "target": "conozco a esa",
+          "legos": [
+            {
+              "seed_id": "S0306",
+              "lego_id": "S0306L01",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "conozco a ese",
+          "legos": [
+            {
+              "seed_id": "S0307",
+              "lego_id": "S0307L01",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "she's a friend",
+      "mappings": [
+        {
+          "target": "es una amiga",
+          "legos": [
+            {
+              "seed_id": "S0308",
+              "lego_id": "S0308L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "ella es una amiga",
+          "legos": [
+            {
+              "seed_id": "S0308",
+              "lego_id": "S0308L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "go anywhere",
+      "mappings": [
+        {
+          "target": "fui a ninguna parte",
+          "legos": [
+            {
+              "seed_id": "S0376",
+              "lego_id": "S0376L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "¿fuiste a alguna parte",
+          "legos": [
+            {
+              "seed_id": "S0377",
+              "lego_id": "S0377L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to travel to africa",
+      "mappings": [
+        {
+          "target": "para viajar a áfrica",
+          "legos": [
+            {
+              "seed_id": "S0379",
+              "lego_id": "S0379L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "viajar a áfrica",
+          "legos": [
+            {
+              "seed_id": "S0379",
+              "lego_id": "S0379L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "they need",
+      "mappings": [
+        {
+          "target": "necesitan",
+          "legos": [
+            {
+              "seed_id": "S0423",
+              "lego_id": "S0423L01",
+              "type": "A"
+            }
+          ]
+        },
+        {
+          "target": "que necesitan",
+          "legos": [
+            {
+              "seed_id": "S0436",
+              "lego_id": "S0436L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "to consider waiting",
+      "mappings": [
+        {
+          "target": "para considerar esperar",
+          "legos": [
+            {
+              "seed_id": "S0475",
+              "lego_id": "S0475L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "considerar esperar",
+          "legos": [
+            {
+              "seed_id": "S0475",
+              "lego_id": "S0475L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "seen their new baby",
+      "mappings": [
+        {
+          "target": "visto a su nuevo bebé",
+          "legos": [
+            {
+              "seed_id": "S0519",
+              "lego_id": "S0519L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "a su nuevo bebé",
+          "legos": [
+            {
+              "seed_id": "S0519",
+              "lego_id": "S0519L05",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "if you'd told me",
+      "mappings": [
+        {
+          "target": "si me lo hubieras dicho",
+          "legos": [
+            {
+              "seed_id": "S0599",
+              "lego_id": "S0599L04",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "si me hubieras dicho",
+          "legos": [
+            {
+              "seed_id": "S0600",
+              "lego_id": "S0600L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "anywhere to live",
+      "mappings": [
+        {
+          "target": "ningún lugar donde vivir",
+          "legos": [
+            {
+              "seed_id": "S0603",
+              "lego_id": "S0603L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "lugar donde vivir",
+          "legos": [
+            {
+              "seed_id": "S0603",
+              "lego_id": "S0603L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "something to drink",
+      "mappings": [
+        {
+          "target": "algo de beber",
+          "legos": [
+            {
+              "seed_id": "S0625",
+              "lego_id": "S0625L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "algo para beber",
+          "legos": [
+            {
+              "seed_id": "S0630",
+              "lego_id": "S0630L03",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "could you all",
+      "mappings": [
+        {
+          "target": "podrían todos ustedes",
+          "legos": [
+            {
+              "seed_id": "S0659",
+              "lego_id": "S0659L02",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "¿podrían todos ustedes",
+          "legos": [
+            {
+              "seed_id": "S0659",
+              "lego_id": "S0659L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "known": "help you all",
+      "mappings": [
+        {
+          "target": "ayudar a todos ustedes",
+          "legos": [
+            {
+              "seed_id": "S0660",
+              "lego_id": "S0660L03",
+              "type": "M"
+            }
+          ]
+        },
+        {
+          "target": "a todos ustedes",
+          "legos": [
+            {
+              "seed_id": "S0660",
+              "lego_id": "S0660L04",
+              "type": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reextraction_manifest": {
+    "reason": "FD_VIOLATIONS",
+    "affected_seeds": [
+      "S0012",
+      "S0019",
+      "S0023",
+      "S0026",
+      "S0027",
+      "S0034",
+      "S0037",
+      "S0040",
+      "S0043",
+      "S0047",
+      "S0061",
+      "S0062",
+      "S0068",
+      "S0072",
+      "S0081",
+      "S0089",
+      "S0092",
+      "S0095",
+      "S0098",
+      "S0109",
+      "S0123",
+      "S0124",
+      "S0135",
+      "S0138",
+      "S0139",
+      "S0150",
+      "S0152",
+      "S0154",
+      "S0155",
+      "S0157",
+      "S0158",
+      "S0159",
+      "S0162",
+      "S0167",
+      "S0176",
+      "S0180",
+      "S0186",
+      "S0188",
+      "S0189",
+      "S0192",
+      "S0193",
+      "S0206",
+      "S0210",
+      "S0215",
+      "S0219",
+      "S0220",
+      "S0232",
+      "S0233",
+      "S0240",
+      "S0245",
+      "S0246",
+      "S0248",
+      "S0249",
+      "S0250",
+      "S0253",
+      "S0255",
+      "S0256",
+      "S0258",
+      "S0281",
+      "S0287",
+      "S0288",
+      "S0289",
+      "S0298",
+      "S0303",
+      "S0304",
+      "S0306",
+      "S0307",
+      "S0308",
+      "S0309",
+      "S0314",
+      "S0315",
+      "S0325",
+      "S0328",
+      "S0335",
+      "S0339",
+      "S0349",
+      "S0356",
+      "S0376",
+      "S0377",
+      "S0379",
+      "S0389",
+      "S0408",
+      "S0416",
+      "S0423",
+      "S0436",
+      "S0456",
+      "S0475",
+      "S0519",
+      "S0549",
+      "S0556",
+      "S0558",
+      "S0588",
+      "S0596",
+      "S0597",
+      "S0599",
+      "S0600",
+      "S0603",
+      "S0607",
+      "S0608",
+      "S0613",
+      "S0615",
+      "S0616",
+      "S0623",
+      "S0625",
+      "S0630",
+      "S0642",
+      "S0643",
+      "S0644",
+      "S0649",
+      "S0651",
+      "S0652",
+      "S0653",
+      "S0654",
+      "S0655",
+      "S0657",
+      "S0659",
+      "S0660",
+      "S0665",
+      "S0666",
+      "S0667"
+    ],
+    "cascade_impact": {
+      "phase_5_baskets": "REGENERATION_REQUIRED",
+      "phase_6_instructions": "CONDITIONAL_REGENERATION",
+      "phase_8_audio": "CONDITIONAL_REGENERATION",
+      "note": "LEGOs changed through chunking-up will affect baskets containing them. Baskets may need thematic regrouping or title updates. See PHASE5_CASCADE_IMPACT.md for details."
+    },
+    "violations_by_seed": {
+      "S0012": [
+        {
+          "collision_key": "what",
+          "conflicting_targets": [
+            "lo que",
+            "qué"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0068": [
+        {
+          "collision_key": "what",
+          "conflicting_targets": [
+            "lo que",
+            "qué"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0666": [
+        {
+          "collision_key": "what",
+          "conflicting_targets": [
+            "lo que",
+            "qué"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "what do you think",
+          "conflicting_targets": [
+            "qué piensas",
+            "qué piensa",
+            "qué piensan"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what do you think\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0019": [
+        {
+          "collision_key": "to stop talking",
+          "conflicting_targets": [
+            "parar de hablar",
+            "dejar de hablar"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to stop talking\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0240": [
+        {
+          "collision_key": "to stop talking",
+          "conflicting_targets": [
+            "parar de hablar",
+            "dejar de hablar"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to stop talking\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0023": [
+        {
+          "collision_key": "to talk more",
+          "conflicting_targets": [
+            "a hablar más",
+            "hablar más"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to talk more\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0026": [
+        {
+          "collision_key": "to go",
+          "conflicting_targets": [
+            "para ir",
+            "ir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to go\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0665": [
+        {
+          "collision_key": "to go",
+          "conflicting_targets": [
+            "para ir",
+            "ir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to go\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0027": [
+        {
+          "collision_key": "to answer",
+          "conflicting_targets": [
+            "para responder",
+            "responder"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to answer\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0043": [
+        {
+          "collision_key": "to answer",
+          "conflicting_targets": [
+            "para responder",
+            "responder"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to answer\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0034": [
+        {
+          "collision_key": "to be quiet",
+          "conflicting_targets": [
+            "estar silencioso",
+            "estar callado"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to be quiet\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "when",
+          "conflicting_targets": [
+            "cuando",
+            "cuándo"
+          ],
+          "instruction": "Registry collision: KNOWN key \"when\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0549": [
+        {
+          "collision_key": "to be quiet",
+          "conflicting_targets": [
+            "estar silencioso",
+            "estar callado"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to be quiet\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0081": [
+        {
+          "collision_key": "when",
+          "conflicting_targets": [
+            "cuando",
+            "cuándo"
+          ],
+          "instruction": "Registry collision: KNOWN key \"when\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0037": [
+        {
+          "collision_key": "about it",
+          "conflicting_targets": [
+            "sobre eso",
+            "sobre ello"
+          ],
+          "instruction": "Registry collision: KNOWN key \"about it\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0597": [
+        {
+          "collision_key": "about it",
+          "conflicting_targets": [
+            "sobre eso",
+            "sobre ello"
+          ],
+          "instruction": "Registry collision: KNOWN key \"about it\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0040": [
+        {
+          "collision_key": "how do you feel",
+          "conflicting_targets": [
+            "cómo te sientes",
+            "cómo se siente",
+            "cómo se sienten"
+          ],
+          "instruction": "Registry collision: KNOWN key \"how do you feel\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0642": [
+        {
+          "collision_key": "how do you feel",
+          "conflicting_targets": [
+            "cómo te sientes",
+            "cómo se siente",
+            "cómo se sienten"
+          ],
+          "instruction": "Registry collision: KNOWN key \"how do you feel\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0657": [
+        {
+          "collision_key": "how do you feel",
+          "conflicting_targets": [
+            "cómo te sientes",
+            "cómo se siente",
+            "cómo se sienten"
+          ],
+          "instruction": "Registry collision: KNOWN key \"how do you feel\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0047": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0123": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0314": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0315": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0328": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0339": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0303": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "i think that he",
+          "conflicting_targets": [
+            "creo que él",
+            "creo que necesita",
+            "creo que puede"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that he\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0304": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0335": [
+        {
+          "collision_key": "i think that",
+          "conflicting_targets": [
+            "pienso que",
+            "creo que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "i think that he",
+          "conflicting_targets": [
+            "creo que él",
+            "creo que necesita",
+            "creo que puede"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that he\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0061": [
+        {
+          "collision_key": "could you say",
+          "conflicting_targets": [
+            "podrías decir",
+            "podría decir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"could you say\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "to say that",
+          "conflicting_targets": [
+            "decir eso",
+            "al decir eso",
+            "al decir que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to say that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0644": [
+        {
+          "collision_key": "could you say",
+          "conflicting_targets": [
+            "podrías decir",
+            "podría decir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"could you say\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "to say that",
+          "conflicting_targets": [
+            "decir eso",
+            "al decir eso",
+            "al decir que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to say that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0659": [
+        {
+          "collision_key": "to say that",
+          "conflicting_targets": [
+            "decir eso",
+            "al decir eso",
+            "al decir que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to say that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "could you all",
+          "conflicting_targets": [
+            "podrían todos ustedes",
+            "¿podrían todos ustedes"
+          ],
+          "instruction": "Registry collision: KNOWN key \"could you all\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0615": [
+        {
+          "collision_key": "to say that",
+          "conflicting_targets": [
+            "decir eso",
+            "al decir eso",
+            "al decir que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to say that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "i thought that",
+          "conflicting_targets": [
+            "creí que",
+            "pensé que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i thought that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0616": [
+        {
+          "collision_key": "to say that",
+          "conflicting_targets": [
+            "decir eso",
+            "al decir eso",
+            "al decir que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to say that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0062": [
+        {
+          "collision_key": "i'm not sure if",
+          "conflicting_targets": [
+            "no estoy seguro si",
+            "no estoy seguro de si"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i'm not sure if\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0654": [
+        {
+          "collision_key": "i'm not sure if",
+          "conflicting_targets": [
+            "no estoy seguro si",
+            "no estoy seguro de si"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i'm not sure if\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0072": [
+        {
+          "collision_key": "i think that you're",
+          "conflicting_targets": [
+            "pienso que estás",
+            "creo que estás"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that you're\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "you're doing very well",
+          "conflicting_targets": [
+            "estás haciendo muy bien",
+            "estás haciéndolo muy bien"
+          ],
+          "instruction": "Registry collision: KNOWN key \"you're doing very well\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0655": [
+        {
+          "collision_key": "i think that you're",
+          "conflicting_targets": [
+            "pienso que estás",
+            "creo que estás"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that you're\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "you're doing very well",
+          "conflicting_targets": [
+            "estás haciendo muy bien",
+            "estás haciéndolo muy bien"
+          ],
+          "instruction": "Registry collision: KNOWN key \"you're doing very well\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0089": [
+        {
+          "collision_key": "in a short time",
+          "conflicting_targets": [
+            "en un breve tiempo",
+            "en poco tiempo"
+          ],
+          "instruction": "Registry collision: KNOWN key \"in a short time\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0245": [
+        {
+          "collision_key": "in a short time",
+          "conflicting_targets": [
+            "en un breve tiempo",
+            "en poco tiempo"
+          ],
+          "instruction": "Registry collision: KNOWN key \"in a short time\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0092": [
+        {
+          "collision_key": "for a while",
+          "conflicting_targets": [
+            "por un tiempo",
+            "por un rato"
+          ],
+          "instruction": "Registry collision: KNOWN key \"for a while\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0180": [
+        {
+          "collision_key": "for a while",
+          "conflicting_targets": [
+            "por un tiempo",
+            "por un rato"
+          ],
+          "instruction": "Registry collision: KNOWN key \"for a while\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0219": [
+        {
+          "collision_key": "for a while",
+          "conflicting_targets": [
+            "por un tiempo",
+            "por un rato"
+          ],
+          "instruction": "Registry collision: KNOWN key \"for a while\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0596": [
+        {
+          "collision_key": "for a while",
+          "conflicting_targets": [
+            "por un tiempo",
+            "por un rato"
+          ],
+          "instruction": "Registry collision: KNOWN key \"for a while\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0095": [
+        {
+          "collision_key": "are you ready",
+          "conflicting_targets": [
+            "estás preparado",
+            "está preparado"
+          ],
+          "instruction": "Registry collision: KNOWN key \"are you ready\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0649": [
+        {
+          "collision_key": "are you ready",
+          "conflicting_targets": [
+            "estás preparado",
+            "está preparado"
+          ],
+          "instruction": "Registry collision: KNOWN key \"are you ready\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0098": [
+        {
+          "collision_key": "something else",
+          "conflicting_targets": [
+            "otra cosa",
+            "algo más"
+          ],
+          "instruction": "Registry collision: KNOWN key \"something else\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0158": [
+        {
+          "collision_key": "something else",
+          "conflicting_targets": [
+            "otra cosa",
+            "algo más"
+          ],
+          "instruction": "Registry collision: KNOWN key \"something else\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0109": [
+        {
+          "collision_key": "to learn a lot of new words",
+          "conflicting_targets": [
+            "para aprender muchas palabras nuevas",
+            "aprender muchas palabras nuevas"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to learn a lot of new words\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0124": [
+        {
+          "collision_key": "i thought that",
+          "conflicting_targets": [
+            "creí que",
+            "pensé que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i thought that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0248": [
+        {
+          "collision_key": "i thought that",
+          "conflicting_targets": [
+            "creí que",
+            "pensé que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i thought that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0135": [
+        {
+          "collision_key": "i don't know why",
+          "conflicting_targets": [
+            "no sé por",
+            "no sé por qué"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i don't know why\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0138": [
+        {
+          "collision_key": "where",
+          "conflicting_targets": [
+            "donde",
+            "dónde"
+          ],
+          "instruction": "Registry collision: KNOWN key \"where\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0154": [
+        {
+          "collision_key": "where",
+          "conflicting_targets": [
+            "donde",
+            "dónde"
+          ],
+          "instruction": "Registry collision: KNOWN key \"where\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0139": [
+        {
+          "collision_key": "to leave",
+          "conflicting_targets": [
+            "irme",
+            "para salir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to leave\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0255": [
+        {
+          "collision_key": "to leave",
+          "conflicting_targets": [
+            "irme",
+            "para salir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to leave\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "be ready",
+          "conflicting_targets": [
+            "estar preparado",
+            "estarás preparado",
+            "estaré listo"
+          ],
+          "instruction": "Registry collision: KNOWN key \"be ready\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0150": [
+        {
+          "collision_key": "can you tell me",
+          "conflicting_targets": [
+            "¿puedes decirme",
+            "puedes decirme"
+          ],
+          "instruction": "Registry collision: KNOWN key \"can you tell me\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0250": [
+        {
+          "collision_key": "can you tell me",
+          "conflicting_targets": [
+            "¿puedes decirme",
+            "puedes decirme"
+          ],
+          "instruction": "Registry collision: KNOWN key \"can you tell me\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0152": [
+        {
+          "collision_key": "differently",
+          "conflicting_targets": [
+            "diferentemente",
+            "de manera diferente"
+          ],
+          "instruction": "Registry collision: KNOWN key \"differently\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0607": [
+        {
+          "collision_key": "differently",
+          "conflicting_targets": [
+            "diferentemente",
+            "de manera diferente"
+          ],
+          "instruction": "Registry collision: KNOWN key \"differently\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0155": [
+        {
+          "collision_key": "a few minutes",
+          "conflicting_targets": [
+            "unos minutos",
+            "unos pocos minutos"
+          ],
+          "instruction": "Registry collision: KNOWN key \"a few minutes\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0253": [
+        {
+          "collision_key": "a few minutes",
+          "conflicting_targets": [
+            "unos minutos",
+            "unos pocos minutos"
+          ],
+          "instruction": "Registry collision: KNOWN key \"a few minutes\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "be ready",
+          "conflicting_targets": [
+            "estar preparado",
+            "estarás preparado",
+            "estaré listo"
+          ],
+          "instruction": "Registry collision: KNOWN key \"be ready\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0157": [
+        {
+          "collision_key": "there",
+          "conflicting_targets": [
+            "ahí",
+            "allí"
+          ],
+          "instruction": "Registry collision: KNOWN key \"there\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0613": [
+        {
+          "collision_key": "there",
+          "conflicting_targets": [
+            "ahí",
+            "allí"
+          ],
+          "instruction": "Registry collision: KNOWN key \"there\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0159": [
+        {
+          "collision_key": "to say",
+          "conflicting_targets": [
+            "decir",
+            "que decir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to say\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0298": [
+        {
+          "collision_key": "to say",
+          "conflicting_targets": [
+            "decir",
+            "que decir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to say\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0162": [
+        {
+          "collision_key": "what do you think",
+          "conflicting_targets": [
+            "qué piensas",
+            "qué piensa",
+            "qué piensan"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what do you think\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0651": [
+        {
+          "collision_key": "what do you think",
+          "conflicting_targets": [
+            "qué piensas",
+            "qué piensa",
+            "qué piensan"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what do you think\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0167": [
+        {
+          "collision_key": "what do you need",
+          "conflicting_targets": [
+            "qué necesitas",
+            "qué necesita"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what do you need\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "to do",
+          "conflicting_targets": [
+            "hacer",
+            "que hacer"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to do\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0652": [
+        {
+          "collision_key": "what do you need",
+          "conflicting_targets": [
+            "qué necesitas",
+            "qué necesita"
+          ],
+          "instruction": "Registry collision: KNOWN key \"what do you need\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0608": [
+        {
+          "collision_key": "to do",
+          "conflicting_targets": [
+            "hacer",
+            "que hacer"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to do\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0176": [
+        {
+          "collision_key": "next year",
+          "conflicting_targets": [
+            "el año próximo",
+            "el próximo año"
+          ],
+          "instruction": "Registry collision: KNOWN key \"next year\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0416": [
+        {
+          "collision_key": "next year",
+          "conflicting_targets": [
+            "el año próximo",
+            "el próximo año"
+          ],
+          "instruction": "Registry collision: KNOWN key \"next year\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0186": [
+        {
+          "collision_key": "do you want",
+          "conflicting_targets": [
+            "quieres",
+            "quiere usted"
+          ],
+          "instruction": "Registry collision: KNOWN key \"do you want\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0623": [
+        {
+          "collision_key": "do you want",
+          "conflicting_targets": [
+            "quieres",
+            "quiere usted"
+          ],
+          "instruction": "Registry collision: KNOWN key \"do you want\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0643": [
+        {
+          "collision_key": "do you want",
+          "conflicting_targets": [
+            "quieres",
+            "quiere usted"
+          ],
+          "instruction": "Registry collision: KNOWN key \"do you want\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0188": [
+        {
+          "collision_key": "so i",
+          "conflicting_targets": [
+            "así que no",
+            "así que quería"
+          ],
+          "instruction": "Registry collision: KNOWN key \"so i\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0588": [
+        {
+          "collision_key": "so i",
+          "conflicting_targets": [
+            "así que no",
+            "así que quería"
+          ],
+          "instruction": "Registry collision: KNOWN key \"so i\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0189": [
+        {
+          "collision_key": "yes that's",
+          "conflicting_targets": [
+            "sí, esa es",
+            "sí esa es"
+          ],
+          "instruction": "Registry collision: KNOWN key \"yes that's\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0408": [
+        {
+          "collision_key": "yes that's",
+          "conflicting_targets": [
+            "sí, esa es",
+            "sí esa es"
+          ],
+          "instruction": "Registry collision: KNOWN key \"yes that's\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0192": [
+        {
+          "collision_key": "at night",
+          "conflicting_targets": [
+            "por la noche",
+            "en la noche"
+          ],
+          "instruction": "Registry collision: KNOWN key \"at night\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0215": [
+        {
+          "collision_key": "at night",
+          "conflicting_targets": [
+            "por la noche",
+            "en la noche"
+          ],
+          "instruction": "Registry collision: KNOWN key \"at night\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0349": [
+        {
+          "collision_key": "at night",
+          "conflicting_targets": [
+            "por la noche",
+            "en la noche"
+          ],
+          "instruction": "Registry collision: KNOWN key \"at night\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0556": [
+        {
+          "collision_key": "at night",
+          "conflicting_targets": [
+            "por la noche",
+            "en la noche"
+          ],
+          "instruction": "Registry collision: KNOWN key \"at night\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0558": [
+        {
+          "collision_key": "at night",
+          "conflicting_targets": [
+            "por la noche",
+            "en la noche"
+          ],
+          "instruction": "Registry collision: KNOWN key \"at night\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0193": [
+        {
+          "collision_key": "too busy",
+          "conflicting_targets": [
+            "demasiado ocupado",
+            "demasiado ocupada"
+          ],
+          "instruction": "Registry collision: KNOWN key \"too busy\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0246": [
+        {
+          "collision_key": "too busy",
+          "conflicting_targets": [
+            "demasiado ocupado",
+            "demasiado ocupada"
+          ],
+          "instruction": "Registry collision: KNOWN key \"too busy\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0206": [
+        {
+          "collision_key": "chance to practise speaking",
+          "conflicting_targets": [
+            "oportunidad de practicar hablar",
+            "de practicar hablar"
+          ],
+          "instruction": "Registry collision: KNOWN key \"chance to practise speaking\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0210": [
+        {
+          "collision_key": "to discuss",
+          "conflicting_targets": [
+            "discutir",
+            "que discutir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to discuss\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0356": [
+        {
+          "collision_key": "to discuss",
+          "conflicting_targets": [
+            "discutir",
+            "que discutir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to discuss\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0220": [
+        {
+          "collision_key": "television",
+          "conflicting_targets": [
+            "televisión",
+            "la televisión"
+          ],
+          "instruction": "Registry collision: KNOWN key \"television\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0287": [
+        {
+          "collision_key": "television",
+          "conflicting_targets": [
+            "televisión",
+            "la televisión"
+          ],
+          "instruction": "Registry collision: KNOWN key \"television\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0232": [
+        {
+          "collision_key": "woman who",
+          "conflicting_targets": [
+            "vieja que",
+            "joven que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"woman who\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0233": [
+        {
+          "collision_key": "woman who",
+          "conflicting_targets": [
+            "vieja que",
+            "joven que"
+          ],
+          "instruction": "Registry collision: KNOWN key \"woman who\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0249": [
+        {
+          "collision_key": "before",
+          "conflicting_targets": [
+            "antes de que",
+            "antes"
+          ],
+          "instruction": "Registry collision: KNOWN key \"before\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0309": [
+        {
+          "collision_key": "before",
+          "conflicting_targets": [
+            "antes de que",
+            "antes"
+          ],
+          "instruction": "Registry collision: KNOWN key \"before\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0256": [
+        {
+          "collision_key": "be ready",
+          "conflicting_targets": [
+            "estar preparado",
+            "estarás preparado",
+            "estaré listo"
+          ],
+          "instruction": "Registry collision: KNOWN key \"be ready\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0258": [
+        {
+          "collision_key": "over there",
+          "conflicting_targets": [
+            "de allí",
+            "allí"
+          ],
+          "instruction": "Registry collision: KNOWN key \"over there\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0307": [
+        {
+          "collision_key": "over there",
+          "conflicting_targets": [
+            "de allí",
+            "allí"
+          ],
+          "instruction": "Registry collision: KNOWN key \"over there\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        },
+        {
+          "collision_key": "i know that",
+          "conflicting_targets": [
+            "conozco a esa",
+            "conozco a ese"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i know that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0389": [
+        {
+          "collision_key": "over there",
+          "conflicting_targets": [
+            "de allí",
+            "allí"
+          ],
+          "instruction": "Registry collision: KNOWN key \"over there\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0281": [
+        {
+          "collision_key": "do you mind",
+          "conflicting_targets": [
+            "te importa",
+            "le importa",
+            "les importa"
+          ],
+          "instruction": "Registry collision: KNOWN key \"do you mind\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0653": [
+        {
+          "collision_key": "do you mind",
+          "conflicting_targets": [
+            "te importa",
+            "le importa",
+            "les importa"
+          ],
+          "instruction": "Registry collision: KNOWN key \"do you mind\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0667": [
+        {
+          "collision_key": "do you mind",
+          "conflicting_targets": [
+            "te importa",
+            "le importa",
+            "les importa"
+          ],
+          "instruction": "Registry collision: KNOWN key \"do you mind\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0288": [
+        {
+          "collision_key": "people i know",
+          "conflicting_targets": [
+            "la gente que conozco",
+            "gente que conozco"
+          ],
+          "instruction": "Registry collision: KNOWN key \"people i know\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0289": [
+        {
+          "collision_key": "be there",
+          "conflicting_targets": [
+            "estar allí",
+            "esté allí"
+          ],
+          "instruction": "Registry collision: KNOWN key \"be there\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0456": [
+        {
+          "collision_key": "be there",
+          "conflicting_targets": [
+            "estar allí",
+            "esté allí"
+          ],
+          "instruction": "Registry collision: KNOWN key \"be there\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0325": [
+        {
+          "collision_key": "i think that he",
+          "conflicting_targets": [
+            "creo que él",
+            "creo que necesita",
+            "creo que puede"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i think that he\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0306": [
+        {
+          "collision_key": "i know that",
+          "conflicting_targets": [
+            "conozco a esa",
+            "conozco a ese"
+          ],
+          "instruction": "Registry collision: KNOWN key \"i know that\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0308": [
+        {
+          "collision_key": "she's a friend",
+          "conflicting_targets": [
+            "es una amiga",
+            "ella es una amiga"
+          ],
+          "instruction": "Registry collision: KNOWN key \"she's a friend\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0376": [
+        {
+          "collision_key": "go anywhere",
+          "conflicting_targets": [
+            "fui a ninguna parte",
+            "¿fuiste a alguna parte"
+          ],
+          "instruction": "Registry collision: KNOWN key \"go anywhere\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0377": [
+        {
+          "collision_key": "go anywhere",
+          "conflicting_targets": [
+            "fui a ninguna parte",
+            "¿fuiste a alguna parte"
+          ],
+          "instruction": "Registry collision: KNOWN key \"go anywhere\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0379": [
+        {
+          "collision_key": "to travel to africa",
+          "conflicting_targets": [
+            "para viajar a áfrica",
+            "viajar a áfrica"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to travel to africa\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0423": [
+        {
+          "collision_key": "they need",
+          "conflicting_targets": [
+            "necesitan",
+            "que necesitan"
+          ],
+          "instruction": "Registry collision: KNOWN key \"they need\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0436": [
+        {
+          "collision_key": "they need",
+          "conflicting_targets": [
+            "necesitan",
+            "que necesitan"
+          ],
+          "instruction": "Registry collision: KNOWN key \"they need\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0475": [
+        {
+          "collision_key": "to consider waiting",
+          "conflicting_targets": [
+            "para considerar esperar",
+            "considerar esperar"
+          ],
+          "instruction": "Registry collision: KNOWN key \"to consider waiting\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0519": [
+        {
+          "collision_key": "seen their new baby",
+          "conflicting_targets": [
+            "visto a su nuevo bebé",
+            "a su nuevo bebé"
+          ],
+          "instruction": "Registry collision: KNOWN key \"seen their new baby\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0599": [
+        {
+          "collision_key": "if you'd told me",
+          "conflicting_targets": [
+            "si me lo hubieras dicho",
+            "si me hubieras dicho"
+          ],
+          "instruction": "Registry collision: KNOWN key \"if you'd told me\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0600": [
+        {
+          "collision_key": "if you'd told me",
+          "conflicting_targets": [
+            "si me lo hubieras dicho",
+            "si me hubieras dicho"
+          ],
+          "instruction": "Registry collision: KNOWN key \"if you'd told me\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0603": [
+        {
+          "collision_key": "anywhere to live",
+          "conflicting_targets": [
+            "ningún lugar donde vivir",
+            "lugar donde vivir"
+          ],
+          "instruction": "Registry collision: KNOWN key \"anywhere to live\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0625": [
+        {
+          "collision_key": "something to drink",
+          "conflicting_targets": [
+            "algo de beber",
+            "algo para beber"
+          ],
+          "instruction": "Registry collision: KNOWN key \"something to drink\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0630": [
+        {
+          "collision_key": "something to drink",
+          "conflicting_targets": [
+            "algo de beber",
+            "algo para beber"
+          ],
+          "instruction": "Registry collision: KNOWN key \"something to drink\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ],
+      "S0660": [
+        {
+          "collision_key": "help you all",
+          "conflicting_targets": [
+            "ayudar a todos ustedes",
+            "a todos ustedes"
+          ],
+          "instruction": "Registry collision: KNOWN key \"help you all\" already exists with different TARGET. DO NOT extract this as standalone LEGO. Instead, chunk UP with adjacent LEGOs in this seed to create a larger MOLECULAR_LEGO that avoids collision. Use only words from the seed sentence - DO NOT add new words."
+        }
+      ]
+    }
+  }
+}

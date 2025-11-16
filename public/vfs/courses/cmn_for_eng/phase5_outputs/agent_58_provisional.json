@@ -1,0 +1,721 @@
+{
+  "agent_id": "agent_58",
+  "seed_range": "S0571-S0580",
+  "extracted_at": "2025-11-14T16:22:10Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0571",
+      "seed_pair": [
+        "I'm not convinced that would be a very good idea.",
+        "我不相信那会是个好主意。"
+      ],
+      "legos": [
+        {
+          "id": "S0571L01",
+          "type": "M",
+          "target": "我不相信",
+          "known": "I'm not convinced",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["不", "not"],
+            ["相信", "convinced/believe"]
+          ]
+        },
+        {
+          "id": "S0571L02",
+          "type": "M",
+          "target": "那会是",
+          "known": "that would be",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["会", "would"],
+            ["是", "be"]
+          ]
+        },
+        {
+          "id": "S0571L03",
+          "type": "M",
+          "target": "好主意",
+          "known": "good idea",
+          "new": true,
+          "components": [
+            ["好", "good"],
+            ["主意", "idea"]
+          ]
+        },
+        {
+          "id": "S0571L04",
+          "type": "M",
+          "target": "个好主意",
+          "known": "a good idea",
+          "new": true,
+          "components": [
+            ["个", "a/classifier"],
+            ["好", "good"],
+            ["主意", "idea"]
+          ]
+        },
+        {
+          "id": "S0571L05",
+          "type": "M",
+          "target": "那会是个好主意",
+          "known": "that would be a good idea",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["会", "would"],
+            ["是", "be"],
+            ["个", "a"],
+            ["好", "good"],
+            ["主意", "idea"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0572",
+      "seed_pair": [
+        "Have you forgotten what happened the last time they visited us?",
+        "你忘记上次他们来看我们时发生了什么吗？"
+      ],
+      "legos": [
+        {
+          "id": "S0572L01",
+          "type": "M",
+          "target": "你忘记",
+          "known": "have you forgotten",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["忘记", "forget/forgotten"]
+          ]
+        },
+        {
+          "id": "S0572L02",
+          "type": "A",
+          "target": "上次",
+          "known": "last time",
+          "new": true
+        },
+        {
+          "id": "S0572L03",
+          "type": "M",
+          "target": "来看我们",
+          "known": "visited us",
+          "new": true,
+          "components": [
+            ["来", "came"],
+            ["看", "to see"],
+            ["我们", "us"]
+          ]
+        },
+        {
+          "id": "S0572L04",
+          "type": "M",
+          "target": "他们来看我们",
+          "known": "they visited us",
+          "new": true,
+          "components": [
+            ["他们", "they"],
+            ["来", "came"],
+            ["看", "to see"],
+            ["我们", "us"]
+          ]
+        },
+        {
+          "id": "S0572L05",
+          "type": "M",
+          "target": "上次他们来看我们时",
+          "known": "the last time they visited us",
+          "new": true,
+          "components": [
+            ["上次", "last time"],
+            ["他们", "they"],
+            ["来看", "visited"],
+            ["我们", "us"],
+            ["时", "when/at the time"]
+          ]
+        },
+        {
+          "id": "S0572L06",
+          "type": "M",
+          "target": "发生了什么",
+          "known": "what happened",
+          "new": true,
+          "components": [
+            ["发生", "happen"],
+            ["了", "past marker"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0572L07",
+          "type": "M",
+          "target": "发生了什么吗",
+          "known": "what happened?",
+          "new": true,
+          "components": [
+            ["发生", "happen"],
+            ["了", "past marker"],
+            ["什么", "what"],
+            ["吗", "question particle"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0573",
+      "seed_pair": [
+        "It's the kind of thing that makes the holidays very special.",
+        "这是让假期很特别的那种事。"
+      ],
+      "legos": [
+        {
+          "id": "S0573L01",
+          "type": "M",
+          "target": "这是",
+          "known": "it's",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["是", "is"]
+          ]
+        },
+        {
+          "id": "S0573L02",
+          "type": "A",
+          "target": "假期",
+          "known": "the holidays",
+          "new": true
+        },
+        {
+          "id": "S0573L03",
+          "type": "M",
+          "target": "很特别",
+          "known": "very special",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["特别", "special"]
+          ]
+        },
+        {
+          "id": "S0573L04",
+          "type": "M",
+          "target": "让假期很特别",
+          "known": "makes the holidays very special",
+          "new": true,
+          "components": [
+            ["让", "make/cause"],
+            ["假期", "holidays"],
+            ["很", "very"],
+            ["特别", "special"]
+          ]
+        },
+        {
+          "id": "S0573L05",
+          "type": "M",
+          "target": "那种事",
+          "known": "that kind of thing",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["种", "kind/type"],
+            ["事", "thing"]
+          ]
+        },
+        {
+          "id": "S0573L06",
+          "type": "M",
+          "target": "让假期很特别的那种事",
+          "known": "the kind of thing that makes the holidays very special",
+          "new": true,
+          "components": [
+            ["让", "make"],
+            ["假期", "holidays"],
+            ["很", "very"],
+            ["特别", "special"],
+            ["的", "that/relative clause marker"],
+            ["那", "that"],
+            ["种", "kind"],
+            ["事", "thing"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0574",
+      "seed_pair": [
+        "The holidays are very special for everyone.",
+        "假期对每个人都很特别。"
+      ],
+      "legos": [
+        {
+          "id": "S0574L01",
+          "type": "A",
+          "target": "假期",
+          "known": "the holidays",
+          "new": true
+        },
+        {
+          "id": "S0574L02",
+          "type": "M",
+          "target": "很特别",
+          "known": "very special",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["特别", "special"]
+          ]
+        },
+        {
+          "id": "S0574L03",
+          "type": "M",
+          "target": "每个人",
+          "known": "everyone",
+          "new": true,
+          "components": [
+            ["每", "every"],
+            ["个", "classifier"],
+            ["人", "person"]
+          ]
+        },
+        {
+          "id": "S0574L04",
+          "type": "M",
+          "target": "对每个人",
+          "known": "for everyone",
+          "new": true,
+          "components": [
+            ["对", "for/to"],
+            ["每个人", "everyone"]
+          ]
+        },
+        {
+          "id": "S0574L05",
+          "type": "M",
+          "target": "对每个人都很特别",
+          "known": "very special for everyone",
+          "new": true,
+          "components": [
+            ["对", "for"],
+            ["每个人", "everyone"],
+            ["都", "all/emphasis"],
+            ["很", "very"],
+            ["特别", "special"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0575",
+      "seed_pair": [
+        "It's been upsetting.",
+        "它一直很令人难过。"
+      ],
+      "legos": [
+        {
+          "id": "S0575L01",
+          "type": "M",
+          "target": "它一直",
+          "known": "it's been",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["一直", "has been/continuously"]
+          ]
+        },
+        {
+          "id": "S0575L02",
+          "type": "A",
+          "target": "一直",
+          "known": "has been",
+          "new": true
+        },
+        {
+          "id": "S0575L03",
+          "type": "M",
+          "target": "令人难过",
+          "known": "upsetting",
+          "new": true,
+          "components": [
+            ["令", "cause/make"],
+            ["人", "people"],
+            ["难过", "sad/upset"]
+          ]
+        },
+        {
+          "id": "S0575L04",
+          "type": "M",
+          "target": "很令人难过",
+          "known": "very upsetting",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["令人", "makes one"],
+            ["难过", "sad"]
+          ]
+        },
+        {
+          "id": "S0575L05",
+          "type": "M",
+          "target": "一直很令人难过",
+          "known": "has been very upsetting",
+          "new": true,
+          "components": [
+            ["一直", "has been"],
+            ["很", "very"],
+            ["令人", "makes one"],
+            ["难过", "sad"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0576",
+      "seed_pair": [
+        "It has been very upsetting waiting.",
+        "等待一直很令人难过。"
+      ],
+      "legos": [
+        {
+          "id": "S0576L01",
+          "type": "A",
+          "target": "等待",
+          "known": "waiting",
+          "new": true
+        },
+        {
+          "id": "S0576L02",
+          "type": "A",
+          "target": "一直",
+          "known": "has been",
+          "new": true
+        },
+        {
+          "id": "S0576L03",
+          "type": "M",
+          "target": "令人难过",
+          "known": "upsetting",
+          "new": true,
+          "components": [
+            ["令", "cause/make"],
+            ["人", "people"],
+            ["难过", "sad/upset"]
+          ]
+        },
+        {
+          "id": "S0576L04",
+          "type": "M",
+          "target": "很令人难过",
+          "known": "very upsetting",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["令人", "makes one"],
+            ["难过", "sad"]
+          ]
+        },
+        {
+          "id": "S0576L05",
+          "type": "M",
+          "target": "一直很令人难过",
+          "known": "has been very upsetting",
+          "new": true,
+          "components": [
+            ["一直", "has been"],
+            ["很", "very"],
+            ["令人", "makes one"],
+            ["难过", "sad"]
+          ]
+        },
+        {
+          "id": "S0576L06",
+          "type": "M",
+          "target": "等待一直很令人难过",
+          "known": "waiting has been very upsetting",
+          "new": true,
+          "components": [
+            ["等待", "waiting"],
+            ["一直", "has been"],
+            ["很", "very"],
+            ["令人", "makes one"],
+            ["难过", "sad"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0577",
+      "seed_pair": [
+        "We've been waiting for the news from the hospital.",
+        "我们一直在等医院的消息。"
+      ],
+      "legos": [
+        {
+          "id": "S0577L01",
+          "type": "M",
+          "target": "一直在等",
+          "known": "have been waiting",
+          "new": true,
+          "components": [
+            ["一直", "have been/continuously"],
+            ["在", "progressive marker"],
+            ["等", "wait"]
+          ]
+        },
+        {
+          "id": "S0577L02",
+          "type": "M",
+          "target": "我们一直在等",
+          "known": "we've been waiting",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["一直", "have been"],
+            ["在", "progressive marker"],
+            ["等", "wait"]
+          ]
+        },
+        {
+          "id": "S0577L03",
+          "type": "A",
+          "target": "医院",
+          "known": "the hospital",
+          "new": true
+        },
+        {
+          "id": "S0577L04",
+          "type": "A",
+          "target": "消息",
+          "known": "the news",
+          "new": true
+        },
+        {
+          "id": "S0577L05",
+          "type": "M",
+          "target": "医院的消息",
+          "known": "the news from the hospital",
+          "new": true,
+          "components": [
+            ["医院", "hospital"],
+            ["的", "from/of/possessive"],
+            ["消息", "news"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0578",
+      "seed_pair": [
+        "Somewhere warmer.",
+        "更暖和的地方。"
+      ],
+      "legos": [
+        {
+          "id": "S0578L01",
+          "type": "A",
+          "target": "暖和",
+          "known": "warm",
+          "new": true
+        },
+        {
+          "id": "S0578L02",
+          "type": "M",
+          "target": "更暖和",
+          "known": "warmer",
+          "new": true,
+          "components": [
+            ["更", "more"],
+            ["暖和", "warm"]
+          ]
+        },
+        {
+          "id": "S0578L03",
+          "type": "A",
+          "target": "地方",
+          "known": "place",
+          "new": true
+        },
+        {
+          "id": "S0578L04",
+          "type": "M",
+          "target": "更暖和的地方",
+          "known": "somewhere warmer",
+          "new": true,
+          "components": [
+            ["更", "more"],
+            ["暖和", "warm"],
+            ["的", "attributive marker"],
+            ["地方", "place"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0579",
+      "seed_pair": [
+        "We've often tried.",
+        "我们经常尝试过。"
+      ],
+      "legos": [
+        {
+          "id": "S0579L01",
+          "type": "A",
+          "target": "经常",
+          "known": "often",
+          "new": true
+        },
+        {
+          "id": "S0579L02",
+          "type": "M",
+          "target": "尝试过",
+          "known": "have tried",
+          "new": true,
+          "components": [
+            ["尝试", "try"],
+            ["过", "past experience marker"]
+          ]
+        },
+        {
+          "id": "S0579L03",
+          "type": "M",
+          "target": "经常尝试过",
+          "known": "have often tried",
+          "new": true,
+          "components": [
+            ["经常", "often"],
+            ["尝试", "try"],
+            ["过", "past marker"]
+          ]
+        },
+        {
+          "id": "S0579L04",
+          "type": "M",
+          "target": "我们经常尝试过",
+          "known": "we've often tried",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["经常", "often"],
+            ["尝试", "try"],
+            ["过", "past marker"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0580",
+      "seed_pair": [
+        "We've often wanted to take the children somewhere a little warmer.",
+        "我们经常想带孩子们去稍微暖和一点的地方。"
+      ],
+      "legos": [
+        {
+          "id": "S0580L01",
+          "type": "M",
+          "target": "我们经常",
+          "known": "we often",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["经常", "often"]
+          ]
+        },
+        {
+          "id": "S0580L02",
+          "type": "M",
+          "target": "经常想",
+          "known": "often want",
+          "new": true,
+          "components": [
+            ["经常", "often"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0580L03",
+          "type": "M",
+          "target": "我们经常想",
+          "known": "we've often wanted",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["经常", "often"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0580L04",
+          "type": "M",
+          "target": "孩子们",
+          "known": "the children",
+          "new": true,
+          "components": [
+            ["孩子", "child"],
+            ["们", "plural marker"]
+          ]
+        },
+        {
+          "id": "S0580L05",
+          "type": "M",
+          "target": "带孩子们",
+          "known": "take the children",
+          "new": true,
+          "components": [
+            ["带", "take/bring"],
+            ["孩子们", "children"]
+          ]
+        },
+        {
+          "id": "S0580L06",
+          "type": "M",
+          "target": "带孩子们去",
+          "known": "take the children to",
+          "new": true,
+          "components": [
+            ["带", "take"],
+            ["孩子们", "children"],
+            ["去", "to/go"]
+          ]
+        },
+        {
+          "id": "S0580L07",
+          "type": "A",
+          "target": "暖和",
+          "known": "warm",
+          "new": true
+        },
+        {
+          "id": "S0580L08",
+          "type": "M",
+          "target": "稍微暖和一点",
+          "known": "a little warmer",
+          "new": true,
+          "components": [
+            ["稍微", "a little/slightly"],
+            ["暖和", "warm"],
+            ["一点", "a bit"]
+          ]
+        },
+        {
+          "id": "S0580L09",
+          "type": "M",
+          "target": "稍微暖和一点的地方",
+          "known": "somewhere a little warmer",
+          "new": true,
+          "components": [
+            ["稍微", "a little"],
+            ["暖和", "warm"],
+            ["一点", "a bit"],
+            ["的", "marker"],
+            ["地方", "place"]
+          ]
+        }
+      ]
+    }
+  ]
+}

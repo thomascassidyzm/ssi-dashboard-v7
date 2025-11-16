@@ -1,0 +1,472 @@
+{
+  "agent_id": "agent_37",
+  "seed_range": "S0361-S0370",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0361",
+      "seed_pair": [
+        "他很安静。",
+        "He was quiet."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'He was' → '他' needs verb context (was=quiet state). 'quiet' → '安静' ✅ passes but too granular. 'He was quiet' → '他很安静' ✅ FD passes (complete thought). BACKWARD SWEEP: '安静' alone = uncertain (adjective needs context), '很安静' = still needs subject, '他很安静' = complete ✅. HEURISTIC 1: Single complete statement removes all uncertainty. HEURISTIC 2: No overlaps needed - simple sentence.",
+      "legos": [
+        {
+          "id": "S0361L01",
+          "type": "M",
+          "target": "他很安静",
+          "known": "he was quiet",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["很", "was/very"],
+            ["安静", "quiet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0362",
+      "seed_pair": [
+        "不，你离开后他相当安静。",
+        "No he was rather quiet after you left."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'No' → '不' ✅ simple. 'he was rather quiet' → '他相当安静' (similar to S0361 but 'rather'='相当'). 'after you left' → '你离开后' ✅ FD passes (temporal clause). BACKWARD SWEEP: '后' needs context, '离开后' needs subject, '你离开后' ✅ complete. HEURISTIC 1: '后' alone = uncertain particle, needs verb. HEURISTIC 2: Create overlap with '离开后' to show particle pattern.",
+      "legos": [
+        {
+          "id": "S0362L01",
+          "type": "A",
+          "target": "不",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0362L02",
+          "type": "M",
+          "target": "你离开后",
+          "known": "after you left",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["离开", "left/to leave"],
+            ["后", "after"]
+          ]
+        },
+        {
+          "id": "S0362L03",
+          "type": "M",
+          "target": "他相当安静",
+          "known": "he was rather quiet",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["相当", "rather/quite"],
+            ["安静", "quiet"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0363",
+      "seed_pair": [
+        "是的，他想说很多话。",
+        "Yes he felt like talking a lot."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'Yes' → '是的' ✅. 'he felt like talking' → '他想说' - 'felt like' is rendered as '想' (want to). 'a lot' → '很多话' (many words). BACKWARD SWEEP: '话' alone = word/speech but needs quantifier, '很多话' ✅ complete, '说很多话' ✅ verb phrase. HEURISTIC 1: '话' needs context, wrap in '很多话'. HEURISTIC 2: Create '想说' AND '说很多话' overlap to maximize verb patterns.",
+      "legos": [
+        {
+          "id": "S0363L01",
+          "type": "A",
+          "target": "是的",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0363L02",
+          "type": "M",
+          "target": "他想说",
+          "known": "he felt like talking",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["想", "wanted/felt like"],
+            ["说", "to talk/say"]
+          ]
+        },
+        {
+          "id": "S0363L03",
+          "type": "M",
+          "target": "说很多话",
+          "known": "talking a lot",
+          "new": true,
+          "components": [
+            ["说", "talking/to say"],
+            ["很多", "a lot of/many"],
+            ["话", "words/speech"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0364",
+      "seed_pair": [
+        "我听说他不喜欢那个地方。",
+        "I heard that he didn't like that place."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I heard that' → '我听说' ✅ complete clause introducer. 'he didn't like' → '他不喜欢' ✅. 'that place' → '那个地方' ✅. BACKWARD SWEEP: '地方' = place but needs determiner, '个地方' needs '那', '那个地方' ✅ complete. HEURISTIC 1: Measure word '个' needs context. HEURISTIC 2: Create overlap '不喜欢那个地方' to show verb-object pattern.",
+      "legos": [
+        {
+          "id": "S0364L01",
+          "type": "M",
+          "target": "我听说",
+          "known": "I heard that",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["听说", "heard that"]
+          ]
+        },
+        {
+          "id": "S0364L02",
+          "type": "M",
+          "target": "他不喜欢",
+          "known": "he didn't like",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["不", "didn't/not"],
+            ["喜欢", "like"]
+          ]
+        },
+        {
+          "id": "S0364L03",
+          "type": "M",
+          "target": "那个地方",
+          "known": "that place",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["个", "[measure word]"],
+            ["地方", "place"]
+          ]
+        },
+        {
+          "id": "S0364L04",
+          "type": "M",
+          "target": "不喜欢那个地方",
+          "known": "didn't like that place",
+          "new": true,
+          "components": [
+            ["不", "didn't/not"],
+            ["喜欢", "like"],
+            ["那", "that"],
+            ["个", "[measure word]"],
+            ["地方", "place"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0365",
+      "seed_pair": [
+        "我没听到她对他说了什么。",
+        "I didn't hear what she said to him."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I didn't hear' → '我没听到' ✅. 'what she said' → '她说了什么' ✅. 'to him' → '对他' ✅ but note word order. BACKWARD SWEEP: '什么' alone = what but needs verb context, works in '说了什么'. '对他说' shows Chinese pattern (to-him-say vs say-to-him). HEURISTIC 1: '对' alone = uncertain preposition. HEURISTIC 2: Create '对他说' to show dative pattern, AND '说了什么' for question pattern.",
+      "legos": [
+        {
+          "id": "S0365L01",
+          "type": "M",
+          "target": "我没听到",
+          "known": "I didn't hear",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["没", "didn't/not"],
+            ["听到", "hear"]
+          ]
+        },
+        {
+          "id": "S0365L02",
+          "type": "M",
+          "target": "她对他说了",
+          "known": "she said to him",
+          "new": true,
+          "components": [
+            ["她", "she"],
+            ["对", "to"],
+            ["他", "him"],
+            ["说了", "said"]
+          ]
+        },
+        {
+          "id": "S0365L03",
+          "type": "M",
+          "target": "对他说",
+          "known": "said to him",
+          "new": true,
+          "components": [
+            ["对", "to"],
+            ["他", "him"],
+            ["说", "say/said"]
+          ]
+        },
+        {
+          "id": "S0365L04",
+          "type": "M",
+          "target": "说了什么",
+          "known": "said what",
+          "new": true,
+          "components": [
+            ["说了", "said"],
+            ["什么", "what"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0366",
+      "seed_pair": [
+        "你听到他想种什么了吗？",
+        "Did you hear what he wanted to grow?"
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'Did you hear' → '你听到...了吗' (split question frame). 'what he wanted to grow' → '他想种什么' ✅. BACKWARD SWEEP: '吗' = question particle, needs full question. '了吗' = question frame. HEURISTIC 1: '吗' alone = uncertain particle. HEURISTIC 2: Create '想种' verb pattern AND '种什么' to show grow-what pattern, overlapping on '种'.",
+      "legos": [
+        {
+          "id": "S0366L01",
+          "type": "M",
+          "target": "你听到",
+          "known": "did you hear",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["听到", "hear"]
+          ]
+        },
+        {
+          "id": "S0366L02",
+          "type": "M",
+          "target": "他想种",
+          "known": "he wanted to grow",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["想", "wanted"],
+            ["种", "to grow"]
+          ]
+        },
+        {
+          "id": "S0366L03",
+          "type": "M",
+          "target": "种什么",
+          "known": "grow what",
+          "new": true,
+          "components": [
+            ["种", "grow"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0366L04",
+          "type": "M",
+          "target": "了吗",
+          "known": "[question marker]",
+          "new": true,
+          "components": [
+            ["了", "[aspect marker]"],
+            ["吗", "[question particle]"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0367",
+      "seed_pair": [
+        "不，没人告诉我。",
+        "No nobody told me."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'No' → '不' ✅. 'nobody told me' → '没人告诉我' ✅ complete clause. BACKWARD SWEEP: '我' alone = I/me but needs verb, '告诉我' ✅ told me. HEURISTIC 1: '我' needs verb context. HEURISTIC 2: Create '没人' (nobody) AND '告诉我' to show negative subject pattern and verb-object.",
+      "legos": [
+        {
+          "id": "S0367L01",
+          "type": "A",
+          "target": "不",
+          "known": "no",
+          "new": true
+        },
+        {
+          "id": "S0367L02",
+          "type": "A",
+          "target": "没人",
+          "known": "nobody",
+          "new": true
+        },
+        {
+          "id": "S0367L03",
+          "type": "M",
+          "target": "告诉我",
+          "known": "told me",
+          "new": true,
+          "components": [
+            ["告诉", "told/to tell"],
+            ["我", "me"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0368",
+      "seed_pair": [
+        "是的，我听说他想种西红柿。",
+        "Yes I heard that he wanted to grow tomatoes."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'Yes' → '是的' ✅. 'I heard that' → '我听说' ✅ (from S0364). 'he wanted to grow' → '他想种' (from S0366). 'tomatoes' → '西红柿' ✅. BACKWARD SWEEP: '柿' alone = persimmon but needs full compound, '红柿' incomplete, '西红柿' ✅ complete word. HEURISTIC 1: Compound words stay together. HEURISTIC 2: Leverage overlap from S0366 '他想种'.",
+      "legos": [
+        {
+          "id": "S0368L01",
+          "type": "A",
+          "target": "是的",
+          "known": "yes",
+          "new": true
+        },
+        {
+          "id": "S0368L02",
+          "type": "M",
+          "target": "我听说",
+          "known": "I heard that",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["听说", "heard that"]
+          ]
+        },
+        {
+          "id": "S0368L03",
+          "type": "M",
+          "target": "他想种",
+          "known": "he wanted to grow",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["想", "wanted"],
+            ["种", "to grow"]
+          ]
+        },
+        {
+          "id": "S0368L04",
+          "type": "A",
+          "target": "西红柿",
+          "known": "tomatoes",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0369",
+      "seed_pair": [
+        "我在路上看到了几匹马。",
+        "I saw several horses on the road."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I saw' → '我...看到了' (saw with aspect). 'several horses' → '几匹马' (measure word required). 'on the road' → '在路上' ✅. BACKWARD SWEEP: '马' alone = horse but needs measure word, '匹马' needs number, '几匹马' ✅ complete. '上' alone = on/up uncertain, '路上' ✅. HEURISTIC 1: Measure word '匹' needs context, '上' needs noun. HEURISTIC 2: Create '在路上' location pattern AND '看到了几匹马' to show object pattern.",
+      "legos": [
+        {
+          "id": "S0369L01",
+          "type": "M",
+          "target": "我在路上",
+          "known": "I on the road",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["在", "on/at"],
+            ["路上", "the road"]
+          ]
+        },
+        {
+          "id": "S0369L02",
+          "type": "M",
+          "target": "在路上",
+          "known": "on the road",
+          "new": true,
+          "components": [
+            ["在", "on/at"],
+            ["路", "road"],
+            ["上", "on"]
+          ]
+        },
+        {
+          "id": "S0369L03",
+          "type": "M",
+          "target": "看到了",
+          "known": "saw",
+          "new": true,
+          "components": [
+            ["看到", "saw/see"],
+            ["了", "[aspect marker]"]
+          ]
+        },
+        {
+          "id": "S0369L04",
+          "type": "M",
+          "target": "几匹马",
+          "known": "several horses",
+          "new": true,
+          "components": [
+            ["几", "several"],
+            ["匹", "[measure word for horses]"],
+            ["马", "horses"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0370",
+      "seed_pair": [
+        "我没看到任何我认识的人。",
+        "I didn't see anyone that I knew."
+      ],
+      "extraction_notes": "FORWARD SWEEP: 'I didn't see' → '我没看到' ✅. 'anyone that I knew' → '任何我认识的人' - complex relative clause. BACKWARD SWEEP: '人' alone = person but needs modifier, '的人' needs description, '认识的人' ✅ people I know, '我认识的人' ✅ complete. HEURISTIC 1: '的' alone = particle, needs both modifier and noun. HEURISTIC 2: Create '我认识的人' relative clause pattern AND '任何...的人' to show 'any...that' construction.",
+      "legos": [
+        {
+          "id": "S0370L01",
+          "type": "M",
+          "target": "我没看到",
+          "known": "I didn't see",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["没", "didn't/not"],
+            ["看到", "see"]
+          ]
+        },
+        {
+          "id": "S0370L02",
+          "type": "M",
+          "target": "我认识的人",
+          "known": "people that I knew",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["认识", "knew/know"],
+            ["的", "[relative clause marker]"],
+            ["人", "people"]
+          ]
+        },
+        {
+          "id": "S0370L03",
+          "type": "M",
+          "target": "任何我认识的人",
+          "known": "anyone that I knew",
+          "new": true,
+          "components": [
+            ["任何", "any"],
+            ["我", "I"],
+            ["认识", "knew/know"],
+            ["的", "[relative clause marker]"],
+            ["人", "people"]
+          ]
+        }
+      ]
+    }
+  ]
+}

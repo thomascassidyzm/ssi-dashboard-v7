@@ -1,0 +1,518 @@
+{
+  "agent_id": "agent_17",
+  "seed_range": "S0161-S0170",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0161",
+      "seed_pair": [
+        "你能在星期天早上给我那本书吗？",
+        "Can you give me that book on Sunday morning?"
+      ],
+      "legos": [
+        {
+          "id": "S0161L01",
+          "type": "M",
+          "target": "你能给我",
+          "known": "can you give me",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["能", "can"],
+            ["给", "give"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0161L02",
+          "type": "M",
+          "target": "那本书",
+          "known": "that book",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["本", "[measure word for books]"],
+            ["书", "book"]
+          ]
+        },
+        {
+          "id": "S0161L03",
+          "type": "M",
+          "target": "星期天早上",
+          "known": "Sunday morning",
+          "new": true,
+          "components": [
+            ["星期天", "Sunday"],
+            ["早上", "morning"]
+          ]
+        },
+        {
+          "id": "S0161L04",
+          "type": "M",
+          "target": "在星期天早上",
+          "known": "on Sunday morning",
+          "new": true,
+          "components": [
+            ["在", "on/at"],
+            ["星期天", "Sunday"],
+            ["早上", "morning"]
+          ]
+        },
+        {
+          "id": "S0161L05",
+          "type": "A",
+          "target": "吗",
+          "known": "[question particle]",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0162",
+      "seed_pair": [
+        "你对那个怎么想？",
+        "What do you think about that?"
+      ],
+      "legos": [
+        {
+          "id": "S0162L01",
+          "type": "M",
+          "target": "你对那个怎么想",
+          "known": "what do you think about that",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["对", "about"],
+            ["那个", "that"],
+            ["怎么", "how"],
+            ["想", "think"]
+          ]
+        },
+        {
+          "id": "S0162L02",
+          "type": "M",
+          "target": "对那个怎么想",
+          "known": "think about that",
+          "new": true,
+          "components": [
+            ["对", "about"],
+            ["那个", "that"],
+            ["怎么", "how"],
+            ["想", "think"]
+          ]
+        },
+        {
+          "id": "S0162L03",
+          "type": "A",
+          "target": "那个",
+          "known": "that",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0163",
+      "seed_pair": [
+        "我认为它很有趣。",
+        "I think that it's interesting."
+      ],
+      "legos": [
+        {
+          "id": "S0163L01",
+          "type": "M",
+          "target": "我认为",
+          "known": "I think (that)",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["认为", "think/believe"]
+          ]
+        },
+        {
+          "id": "S0163L02",
+          "type": "A",
+          "target": "它",
+          "known": "it",
+          "new": true
+        },
+        {
+          "id": "S0163L03",
+          "type": "M",
+          "target": "很有趣",
+          "known": "very interesting",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["有趣", "interesting"]
+          ]
+        },
+        {
+          "id": "S0163L04",
+          "type": "M",
+          "target": "它很有趣",
+          "known": "it's very interesting",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["很", "very"],
+            ["有趣", "interesting"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0164",
+      "seed_pair": [
+        "一本有趣的书",
+        "An interesting book"
+      ],
+      "legos": [
+        {
+          "id": "S0164L01",
+          "type": "M",
+          "target": "一本书",
+          "known": "a book",
+          "new": true,
+          "components": [
+            ["一", "a/one"],
+            ["本", "[measure word for books]"],
+            ["书", "book"]
+          ]
+        },
+        {
+          "id": "S0164L02",
+          "type": "M",
+          "target": "有趣的书",
+          "known": "interesting book",
+          "new": true,
+          "components": [
+            ["有趣", "interesting"],
+            ["的", "[particle]"],
+            ["书", "book"]
+          ]
+        },
+        {
+          "id": "S0164L03",
+          "type": "M",
+          "target": "一本有趣的书",
+          "known": "an interesting book",
+          "new": true,
+          "components": [
+            ["一", "a/one"],
+            ["本", "[measure word]"],
+            ["有趣", "interesting"],
+            ["的", "[particle]"],
+            ["书", "book"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0165",
+      "seed_pair": [
+        "但是我不确定它是不是真的。",
+        "But I'm not sure if it's true."
+      ],
+      "legos": [
+        {
+          "id": "S0165L01",
+          "type": "A",
+          "target": "但是",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0165L02",
+          "type": "M",
+          "target": "我不确定",
+          "known": "I'm not sure",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["不", "not"],
+            ["确定", "sure/certain"]
+          ]
+        },
+        {
+          "id": "S0165L03",
+          "type": "M",
+          "target": "是不是真的",
+          "known": "if it's true",
+          "new": true,
+          "components": [
+            ["是不是", "is or isn't/whether"],
+            ["真的", "true/real"]
+          ]
+        },
+        {
+          "id": "S0165L04",
+          "type": "M",
+          "target": "它是不是真的",
+          "known": "if it's true",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["是不是", "is or isn't"],
+            ["真的", "true"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0166",
+      "seed_pair": [
+        "我的名字不是很不寻常。",
+        "My name is not very unusual."
+      ],
+      "legos": [
+        {
+          "id": "S0166L01",
+          "type": "M",
+          "target": "我的名字",
+          "known": "my name",
+          "new": true,
+          "components": [
+            ["我", "my/I"],
+            ["的", "[possessive particle]"],
+            ["名字", "name"]
+          ]
+        },
+        {
+          "id": "S0166L02",
+          "type": "M",
+          "target": "不是很",
+          "known": "not very",
+          "new": true,
+          "components": [
+            ["不是", "is not"],
+            ["很", "very"]
+          ]
+        },
+        {
+          "id": "S0166L03",
+          "type": "A",
+          "target": "不寻常",
+          "known": "unusual",
+          "new": true
+        },
+        {
+          "id": "S0166L04",
+          "type": "M",
+          "target": "很不寻常",
+          "known": "very unusual",
+          "new": true,
+          "components": [
+            ["很", "very"],
+            ["不寻常", "unusual"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0167",
+      "seed_pair": [
+        "你明天下午需要做什么？",
+        "What do you need to do tomorrow afternoon?"
+      ],
+      "legos": [
+        {
+          "id": "S0167L01",
+          "type": "M",
+          "target": "你需要做什么",
+          "known": "what do you need to do",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["需要", "need"],
+            ["做", "to do"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0167L02",
+          "type": "M",
+          "target": "需要做什么",
+          "known": "what (someone) needs to do",
+          "new": true,
+          "components": [
+            ["需要", "need"],
+            ["做", "to do"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0167L03",
+          "type": "M",
+          "target": "明天下午",
+          "known": "tomorrow afternoon",
+          "new": true,
+          "components": [
+            ["明天", "tomorrow"],
+            ["下午", "afternoon"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0168",
+      "seed_pair": [
+        "然后我就能来帮忙了。",
+        "And then I'll be able to come and help later on."
+      ],
+      "legos": [
+        {
+          "id": "S0168L01",
+          "type": "A",
+          "target": "然后",
+          "known": "and then",
+          "new": true
+        },
+        {
+          "id": "S0168L02",
+          "type": "M",
+          "target": "我就能",
+          "known": "I'll be able to",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["就", "then/just"],
+            ["能", "can/be able to"]
+          ]
+        },
+        {
+          "id": "S0168L03",
+          "type": "M",
+          "target": "能来帮忙",
+          "known": "be able to come and help",
+          "new": true,
+          "components": [
+            ["能", "be able to"],
+            ["来", "come"],
+            ["帮忙", "help"]
+          ]
+        },
+        {
+          "id": "S0168L04",
+          "type": "A",
+          "target": "帮忙",
+          "known": "help",
+          "new": true
+        },
+        {
+          "id": "S0168L05",
+          "type": "A",
+          "target": "了",
+          "known": "[completion particle]",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0169",
+      "seed_pair": [
+        "你想让我做什么？",
+        "What do you want me to do?"
+      ],
+      "legos": [
+        {
+          "id": "S0169L01",
+          "type": "M",
+          "target": "你想让我",
+          "known": "you want me to",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["想", "want"],
+            ["让", "let/make"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0169L02",
+          "type": "M",
+          "target": "想让我做什么",
+          "known": "want me to do what",
+          "new": true,
+          "components": [
+            ["想", "want"],
+            ["让", "let/make"],
+            ["我", "me"],
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0169L03",
+          "type": "M",
+          "target": "做什么",
+          "known": "do what",
+          "new": true,
+          "components": [
+            ["做", "do"],
+            ["什么", "what"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0170",
+      "seed_pair": [
+        "我想让你告诉我你需要什么。",
+        "I'd like you to tell me what you need."
+      ],
+      "legos": [
+        {
+          "id": "S0170L01",
+          "type": "M",
+          "target": "我想让你",
+          "known": "I'd like you to",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["想", "want/would like"],
+            ["让", "let/make"],
+            ["你", "you"]
+          ]
+        },
+        {
+          "id": "S0170L02",
+          "type": "M",
+          "target": "想让你告诉我",
+          "known": "want you to tell me",
+          "new": true,
+          "components": [
+            ["想", "want"],
+            ["让", "let/make"],
+            ["你", "you"],
+            ["告诉", "tell"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0170L03",
+          "type": "M",
+          "target": "告诉我",
+          "known": "tell me",
+          "new": true,
+          "components": [
+            ["告诉", "tell"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0170L04",
+          "type": "M",
+          "target": "你需要什么",
+          "known": "what you need",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["需要", "need"],
+            ["什么", "what"]
+          ]
+        }
+      ]
+    }
+  ]
+}

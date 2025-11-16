@@ -1,0 +1,384 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0037",
+  "generation_stage": "GATE_VIOLATIONS_REMOVED",
+  "seed_pair": {
+    "target": "Comencé a pensar sobre eso cuidadosamente el mes pasado.",
+    "known": "I started to think about it carefully last month."
+  },
+  "recent_seed_pairs": {
+    "S0027": [
+      "I don't like taking too much time to answer.",
+      "No me gusta tomar demasiado tiempo para responder."
+    ],
+    "S0028": [
+      "It's useful to start talking as soon as you can.",
+      "Es útil comenzar a hablar tan pronto como puedas."
+    ],
+    "S0029": [
+      "I'm looking forward to speaking better as soon as I can.",
+      "Estoy deseando hablar mejor tan pronto como pueda."
+    ],
+    "S0030": [
+      "I wanted to ask you something yesterday.",
+      "Quería preguntarte algo ayer."
+    ],
+    "S0031": [
+      "You wanted to speak with me tonight.",
+      "Querías hablar conmigo esta noche."
+    ],
+    "S0032": [
+      "Did you want to show me something?",
+      "¿Querías mostrarme algo?"
+    ],
+    "S0033": [
+      "How long have you been learning Spanish?",
+      "¿Cuánto tiempo llevas aprendiendo español?"
+    ],
+    "S0034": [
+      "He doesn't want to be quiet when other people are here.",
+      "Él no quiere estar silencioso cuando otras personas están aquí."
+    ],
+    "S0035": [
+      "She doesn't want to read anything this afternoon.",
+      "Ella no quiere leer nada esta tarde."
+    ],
+    "S0036": [
+      "We don't want to interrupt the story.",
+      "No queremos interrumpir la historia."
+    ]
+  },
+  "legos": {
+    "S0037L01": {
+      "lego": [
+        "I started to",
+        "comencé a"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "comencé",
+          "I started"
+        ],
+        [
+          "a",
+          "to"
+        ]
+      ],
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I started to",
+          "comencé a",
+          null,
+          1
+        ],
+        [
+          "I started to speak",
+          "comencé a hablar",
+          null,
+          2
+        ],
+        [
+          "I started to read",
+          "comencé a leer",
+          null,
+          2
+        ],
+        [
+          "I started to answer",
+          "comencé a responder",
+          null,
+          3
+        ],
+        [
+          "I started to interrupt",
+          "comencé a interrumpir",
+          null,
+          3
+        ],
+        [
+          "I started to read the story",
+          "comencé a leer la historia",
+          null,
+          3
+        ],
+        [
+          "I started to read the story this afternoon",
+          "comencé a leer la historia esta tarde",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 1,
+        "long_6_plus": 0
+      }
+    },
+    "S0037L02": {
+      "lego": [
+        "to think",
+        "pensar"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "comencé a",
+          "I started to"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "to think",
+          "pensar",
+          null,
+          1
+        ],
+        [
+          "I wanted to think",
+          "quería pensar",
+          null,
+          2
+        ],
+        [
+          "I like to think",
+          "me gusta pensar",
+          null,
+          3
+        ],
+        [
+          "she doesn't want to think",
+          "ella no quiere pensar",
+          null,
+          3
+        ],
+        [
+          "I'm looking forward to thinking better",
+          "estoy deseando pensar mejor",
+          null,
+          5
+        ],
+        [
+          "it's useful to think as soon as you can",
+          "es útil pensar tan pronto como puedas",
+          null,
+          8
+        ],
+        [
+          "I don't like taking too much time to think",
+          "no me gusta tomar demasiado tiempo para pensar",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 1,
+        "long_6_plus": 2
+      }
+    },
+    "S0037L03": {
+      "lego": [
+        "about it",
+        "sobre eso"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "sobre",
+          "about"
+        ],
+        [
+          "eso",
+          "that/it"
+        ]
+      ],
+      "current_seed_legos_available": [
+        [
+          "comencé a",
+          "I started to"
+        ],
+        [
+          "pensar",
+          "to think"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "about it",
+          "sobre eso",
+          null,
+          1
+        ],
+        [
+          "I wanted to speak about it",
+          "quería hablar sobre eso",
+          null,
+          3
+        ],
+        [
+          "she wanted to read about it",
+          "ella quería leer sobre eso",
+          null,
+          3
+        ],
+        [
+          "I wanted to ask you about it yesterday",
+          "quería preguntarte sobre eso ayer",
+          null,
+          5
+        ],
+        [
+          "she doesn't want to read about it this afternoon",
+          "ella no quiere leer sobre eso esta tarde",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 2,
+        "longer_4_5": 1,
+        "long_6_plus": 1
+      }
+    },
+    "S0037L04": {
+      "lego": [
+        "carefully",
+        "cuidadosamente"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "comencé a",
+          "I started to"
+        ],
+        [
+          "pensar",
+          "to think"
+        ],
+        [
+          "sobre eso",
+          "about it"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "carefully",
+          "cuidadosamente",
+          null,
+          1
+        ],
+        [
+          "to read carefully",
+          "leer cuidadosamente",
+          null,
+          2
+        ],
+        [
+          "to answer carefully",
+          "responder cuidadosamente",
+          null,
+          2
+        ],
+        [
+          "she wants to read carefully",
+          "ella quiere leer cuidadosamente",
+          null,
+          3
+        ],
+        [
+          "I wanted to read the story carefully yesterday",
+          "quería leer la historia cuidadosamente ayer",
+          null,
+          6
+        ],
+        [
+          "I'm looking forward to reading carefully as soon as I can",
+          "estoy deseando leer cuidadosamente tan pronto como pueda",
+          null,
+          9
+        ],
+        [
+          "she doesn't want to read the story carefully this afternoon",
+          "ella no quiere leer la historia cuidadosamente esta tarde",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 0,
+        "long_6_plus": 3
+      }
+    },
+    "S0037L05": {
+      "lego": [
+        "last month",
+        "el mes pasado"
+      ],
+      "type": "M",
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "mes",
+          "month"
+        ],
+        [
+          "pasado",
+          "past/last"
+        ]
+      ],
+      "current_seed_legos_available": [
+        [
+          "comencé a",
+          "I started to"
+        ],
+        [
+          "pensar",
+          "to think"
+        ],
+        [
+          "sobre eso",
+          "about it"
+        ],
+        [
+          "cuidadosamente",
+          "carefully"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "last month",
+          "el mes pasado",
+          null,
+          1
+        ],
+        [
+          "I wanted to ask you something last month",
+          "quería preguntarte algo el mes pasado",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 1,
+        "long_6_plus": 0
+      }
+    }
+  }
+}

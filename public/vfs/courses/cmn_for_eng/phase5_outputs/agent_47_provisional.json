@@ -1,0 +1,859 @@
+{
+  "agent_id": "agent_47",
+  "seed_range": "S0461-S0470",
+  "extracted_at": "2025-11-14T00:00:00Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0461",
+      "seed_pair": [
+        "A shop where I can buy some postcards.",
+        "一家我可以买一些明信片的商店。"
+      ],
+      "legos": [
+        {
+          "id": "S0461L01",
+          "type": "A",
+          "target": "买",
+          "known": "buy",
+          "new": true
+        },
+        {
+          "id": "S0461L02",
+          "type": "A",
+          "target": "明信片",
+          "known": "postcard/postcards",
+          "new": true
+        },
+        {
+          "id": "S0461L03",
+          "type": "A",
+          "target": "商店",
+          "known": "shop",
+          "new": true
+        },
+        {
+          "id": "S0461L04",
+          "type": "M",
+          "target": "我可以买",
+          "known": "I can buy",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["可以", "can"],
+            ["买", "buy"]
+          ]
+        },
+        {
+          "id": "S0461L05",
+          "type": "M",
+          "target": "一些明信片",
+          "known": "some postcards",
+          "new": true,
+          "components": [
+            ["一些", "some"],
+            ["明信片", "postcards"]
+          ]
+        },
+        {
+          "id": "S0461L06",
+          "type": "M",
+          "target": "买一些明信片",
+          "known": "buy some postcards",
+          "new": true,
+          "components": [
+            ["买", "buy"],
+            ["一些", "some"],
+            ["明信片", "postcards"]
+          ]
+        },
+        {
+          "id": "S0461L07",
+          "type": "M",
+          "target": "一家商店",
+          "known": "a shop",
+          "new": true,
+          "components": [
+            ["一家", "a/one"],
+            ["商店", "shop"]
+          ]
+        },
+        {
+          "id": "S0461L08",
+          "type": "M",
+          "target": "我可以买一些明信片的商店",
+          "known": "shop where I can buy some postcards",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["可以", "can"],
+            ["买", "buy"],
+            ["一些", "some"],
+            ["明信片", "postcards"],
+            ["的", "that/which"],
+            ["商店", "shop"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0462",
+      "seed_pair": [
+        "My grandfather fought in Italy during the war.",
+        "我的祖父在战争期间在意大利战斗。"
+      ],
+      "legos": [
+        {
+          "id": "S0462L01",
+          "type": "A",
+          "target": "祖父",
+          "known": "grandfather",
+          "new": true
+        },
+        {
+          "id": "S0462L02",
+          "type": "M",
+          "target": "我的祖父",
+          "known": "my grandfather",
+          "new": true,
+          "components": [
+            ["我的", "my"],
+            ["祖父", "grandfather"]
+          ]
+        },
+        {
+          "id": "S0462L03",
+          "type": "A",
+          "target": "战争",
+          "known": "war",
+          "new": true
+        },
+        {
+          "id": "S0462L04",
+          "type": "M",
+          "target": "在战争期间",
+          "known": "during the war",
+          "new": true,
+          "components": [
+            ["在", "in/during"],
+            ["战争", "war"],
+            ["期间", "period/during"]
+          ]
+        },
+        {
+          "id": "S0462L05",
+          "type": "A",
+          "target": "意大利",
+          "known": "Italy",
+          "new": true
+        },
+        {
+          "id": "S0462L06",
+          "type": "M",
+          "target": "在意大利",
+          "known": "in Italy",
+          "new": true,
+          "components": [
+            ["在", "in"],
+            ["意大利", "Italy"]
+          ]
+        },
+        {
+          "id": "S0462L07",
+          "type": "A",
+          "target": "战斗",
+          "known": "fight/fought",
+          "new": true
+        },
+        {
+          "id": "S0462L08",
+          "type": "M",
+          "target": "在意大利战斗",
+          "known": "fought in Italy",
+          "new": true,
+          "components": [
+            ["在", "in"],
+            ["意大利", "Italy"],
+            ["战斗", "fought"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0463",
+      "seed_pair": [
+        "My room number.",
+        "我的房间号。"
+      ],
+      "legos": [
+        {
+          "id": "S0463L01",
+          "type": "A",
+          "target": "房间",
+          "known": "room",
+          "new": true
+        },
+        {
+          "id": "S0463L02",
+          "type": "M",
+          "target": "我的房间",
+          "known": "my room",
+          "new": true,
+          "components": [
+            ["我的", "my"],
+            ["房间", "room"]
+          ]
+        },
+        {
+          "id": "S0463L03",
+          "type": "M",
+          "target": "房间号",
+          "known": "room number",
+          "new": true,
+          "components": [
+            ["房间", "room"],
+            ["号", "number"]
+          ]
+        },
+        {
+          "id": "S0463L04",
+          "type": "M",
+          "target": "我的房间号",
+          "known": "my room number",
+          "new": true,
+          "components": [
+            ["我的", "my"],
+            ["房间", "room"],
+            ["号", "number"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0464",
+      "seed_pair": [
+        "I told her my room number once but she forgot it.",
+        "我告诉过她一次我的房间号，但她忘了。"
+      ],
+      "legos": [
+        {
+          "id": "S0464L01",
+          "type": "M",
+          "target": "告诉过",
+          "known": "told",
+          "new": true,
+          "components": [
+            ["告诉", "tell"],
+            ["过", "past experience marker"]
+          ]
+        },
+        {
+          "id": "S0464L02",
+          "type": "M",
+          "target": "我告诉过她",
+          "known": "I told her",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["告诉过", "told"],
+            ["她", "her"]
+          ]
+        },
+        {
+          "id": "S0464L03",
+          "type": "A",
+          "target": "一次",
+          "known": "once",
+          "new": true
+        },
+        {
+          "id": "S0464L04",
+          "type": "M",
+          "target": "我告诉过她一次",
+          "known": "I told her once",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["告诉过", "told"],
+            ["她", "her"],
+            ["一次", "once"]
+          ]
+        },
+        {
+          "id": "S0464L05",
+          "type": "M",
+          "target": "我的房间号",
+          "known": "my room number",
+          "new": true,
+          "components": [
+            ["我的", "my"],
+            ["房间", "room"],
+            ["号", "number"]
+          ]
+        },
+        {
+          "id": "S0464L06",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0464L07",
+          "type": "M",
+          "target": "忘了",
+          "known": "forgot",
+          "new": true,
+          "components": [
+            ["忘", "forget"],
+            ["了", "completion marker"]
+          ]
+        },
+        {
+          "id": "S0464L08",
+          "type": "M",
+          "target": "她忘了",
+          "known": "she forgot",
+          "new": true,
+          "components": [
+            ["她", "she"],
+            ["忘了", "forgot"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0465",
+      "seed_pair": [
+        "Next time I will ask her what her name is.",
+        "下次我会问她叫什么名字。"
+      ],
+      "legos": [
+        {
+          "id": "S0465L01",
+          "type": "A",
+          "target": "下次",
+          "known": "next time",
+          "new": true
+        },
+        {
+          "id": "S0465L02",
+          "type": "A",
+          "target": "问",
+          "known": "ask",
+          "new": true
+        },
+        {
+          "id": "S0465L03",
+          "type": "M",
+          "target": "我会问",
+          "known": "I will ask",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "will"],
+            ["问", "ask"]
+          ]
+        },
+        {
+          "id": "S0465L04",
+          "type": "M",
+          "target": "我会问她",
+          "known": "I will ask her",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "will"],
+            ["问", "ask"],
+            ["她", "her"]
+          ]
+        },
+        {
+          "id": "S0465L05",
+          "type": "A",
+          "target": "名字",
+          "known": "name",
+          "new": true
+        },
+        {
+          "id": "S0465L06",
+          "type": "M",
+          "target": "什么名字",
+          "known": "what name",
+          "new": true,
+          "components": [
+            ["什么", "what"],
+            ["名字", "name"]
+          ]
+        },
+        {
+          "id": "S0465L07",
+          "type": "M",
+          "target": "叫什么名字",
+          "known": "what (someone's) name is",
+          "new": true,
+          "components": [
+            ["叫", "be called"],
+            ["什么", "what"],
+            ["名字", "name"]
+          ]
+        },
+        {
+          "id": "S0465L08",
+          "type": "M",
+          "target": "我会问她叫什么名字",
+          "known": "I will ask her what her name is",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["会", "will"],
+            ["问", "ask"],
+            ["她", "her"],
+            ["叫", "be called"],
+            ["什么", "what"],
+            ["名字", "name"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0466",
+      "seed_pair": [
+        "Let me throw it over the wall.",
+        "让我把它扔过墙。"
+      ],
+      "legos": [
+        {
+          "id": "S0466L01",
+          "type": "M",
+          "target": "让我",
+          "known": "let me",
+          "new": true,
+          "components": [
+            ["让", "let"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0466L02",
+          "type": "A",
+          "target": "扔",
+          "known": "throw",
+          "new": true
+        },
+        {
+          "id": "S0466L03",
+          "type": "A",
+          "target": "墙",
+          "known": "wall",
+          "new": true
+        },
+        {
+          "id": "S0466L04",
+          "type": "M",
+          "target": "过墙",
+          "known": "over the wall",
+          "new": true,
+          "components": [
+            ["过", "over"],
+            ["墙", "wall"]
+          ]
+        },
+        {
+          "id": "S0466L05",
+          "type": "M",
+          "target": "扔过墙",
+          "known": "throw over the wall",
+          "new": true,
+          "components": [
+            ["扔", "throw"],
+            ["过", "over"],
+            ["墙", "wall"]
+          ]
+        },
+        {
+          "id": "S0466L06",
+          "type": "M",
+          "target": "把它扔过墙",
+          "known": "throw it over the wall",
+          "new": true,
+          "components": [
+            ["把", "object marker"],
+            ["它", "it"],
+            ["扔", "throw"],
+            ["过", "over"],
+            ["墙", "wall"]
+          ]
+        },
+        {
+          "id": "S0466L07",
+          "type": "M",
+          "target": "让我把它扔过墙",
+          "known": "let me throw it over the wall",
+          "new": true,
+          "components": [
+            ["让", "let"],
+            ["我", "me"],
+            ["把", "object marker"],
+            ["它", "it"],
+            ["扔", "throw"],
+            ["过", "over"],
+            ["墙", "wall"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0467",
+      "seed_pair": [
+        "It's next to the car park.",
+        "它在停车场旁边。"
+      ],
+      "legos": [
+        {
+          "id": "S0467L01",
+          "type": "M",
+          "target": "停车",
+          "known": "park (a car)",
+          "new": true,
+          "components": [
+            ["停", "stop/park"],
+            ["车", "car"]
+          ]
+        },
+        {
+          "id": "S0467L02",
+          "type": "M",
+          "target": "停车场",
+          "known": "car park",
+          "new": true,
+          "components": [
+            ["停车", "parking"],
+            ["场", "place/lot"]
+          ]
+        },
+        {
+          "id": "S0467L03",
+          "type": "M",
+          "target": "停车场旁边",
+          "known": "next to the car park",
+          "new": true,
+          "components": [
+            ["停车场", "car park"],
+            ["旁边", "next to/beside"]
+          ]
+        },
+        {
+          "id": "S0467L04",
+          "type": "M",
+          "target": "在停车场旁边",
+          "known": "next to the car park",
+          "new": true,
+          "components": [
+            ["在", "at/in"],
+            ["停车场", "car park"],
+            ["旁边", "next to"]
+          ]
+        },
+        {
+          "id": "S0467L05",
+          "type": "M",
+          "target": "它在停车场旁边",
+          "known": "it's next to the car park",
+          "new": true,
+          "components": [
+            ["它", "it"],
+            ["在", "is/at"],
+            ["停车场", "car park"],
+            ["旁边", "next to"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0468",
+      "seed_pair": [
+        "It's a big world.",
+        "这是一个大世界。"
+      ],
+      "legos": [
+        {
+          "id": "S0468L01",
+          "type": "M",
+          "target": "这是",
+          "known": "this is/it is",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["是", "is"]
+          ]
+        },
+        {
+          "id": "S0468L02",
+          "type": "A",
+          "target": "大",
+          "known": "big",
+          "new": true
+        },
+        {
+          "id": "S0468L03",
+          "type": "A",
+          "target": "世界",
+          "known": "world",
+          "new": true
+        },
+        {
+          "id": "S0468L04",
+          "type": "M",
+          "target": "大世界",
+          "known": "big world",
+          "new": true,
+          "components": [
+            ["大", "big"],
+            ["世界", "world"]
+          ]
+        },
+        {
+          "id": "S0468L05",
+          "type": "M",
+          "target": "一个大世界",
+          "known": "a big world",
+          "new": true,
+          "components": [
+            ["一个", "a/one"],
+            ["大", "big"],
+            ["世界", "world"]
+          ]
+        },
+        {
+          "id": "S0468L06",
+          "type": "M",
+          "target": "这是一个大世界",
+          "known": "it's a big world",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["是", "is"],
+            ["一个", "a"],
+            ["大", "big"],
+            ["世界", "world"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0469",
+      "seed_pair": [
+        "But that doesn't mean we can't change it.",
+        "但那不意味着我们不能改变它。"
+      ],
+      "legos": [
+        {
+          "id": "S0469L01",
+          "type": "A",
+          "target": "但",
+          "known": "but",
+          "new": true
+        },
+        {
+          "id": "S0469L02",
+          "type": "M",
+          "target": "意味着",
+          "known": "mean/means",
+          "new": true,
+          "components": [
+            ["意味", "meaning"],
+            ["着", "continuous aspect marker"]
+          ]
+        },
+        {
+          "id": "S0469L03",
+          "type": "M",
+          "target": "不意味着",
+          "known": "doesn't mean",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["意味着", "mean"]
+          ]
+        },
+        {
+          "id": "S0469L04",
+          "type": "M",
+          "target": "那不意味着",
+          "known": "that doesn't mean",
+          "new": true,
+          "components": [
+            ["那", "that"],
+            ["不", "not"],
+            ["意味着", "mean"]
+          ]
+        },
+        {
+          "id": "S0469L05",
+          "type": "M",
+          "target": "不能",
+          "known": "can't",
+          "new": true,
+          "components": [
+            ["不", "not"],
+            ["能", "can"]
+          ]
+        },
+        {
+          "id": "S0469L06",
+          "type": "M",
+          "target": "我们不能",
+          "known": "we can't",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["不能", "can't"]
+          ]
+        },
+        {
+          "id": "S0469L07",
+          "type": "A",
+          "target": "改变",
+          "known": "change",
+          "new": true
+        },
+        {
+          "id": "S0469L08",
+          "type": "M",
+          "target": "改变它",
+          "known": "change it",
+          "new": true,
+          "components": [
+            ["改变", "change"],
+            ["它", "it"]
+          ]
+        },
+        {
+          "id": "S0469L09",
+          "type": "M",
+          "target": "我们不能改变它",
+          "known": "we can't change it",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["不能", "can't"],
+            ["改变", "change"],
+            ["它", "it"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0470",
+      "seed_pair": [
+        "How high do you want to climb before we stop?",
+        "你想在我们停下来之前爬多高？"
+      ],
+      "legos": [
+        {
+          "id": "S0470L01",
+          "type": "A",
+          "target": "想",
+          "known": "want",
+          "new": true
+        },
+        {
+          "id": "S0470L02",
+          "type": "M",
+          "target": "你想",
+          "known": "you want",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["想", "want"]
+          ]
+        },
+        {
+          "id": "S0470L03",
+          "type": "A",
+          "target": "爬",
+          "known": "climb",
+          "new": true
+        },
+        {
+          "id": "S0470L04",
+          "type": "A",
+          "target": "高",
+          "known": "high",
+          "new": true
+        },
+        {
+          "id": "S0470L05",
+          "type": "M",
+          "target": "多高",
+          "known": "how high",
+          "new": true,
+          "components": [
+            ["多", "how"],
+            ["高", "high"]
+          ]
+        },
+        {
+          "id": "S0470L06",
+          "type": "M",
+          "target": "爬多高",
+          "known": "climb how high",
+          "new": true,
+          "components": [
+            ["爬", "climb"],
+            ["多高", "how high"]
+          ]
+        },
+        {
+          "id": "S0470L07",
+          "type": "M",
+          "target": "停下来",
+          "known": "stop",
+          "new": true,
+          "components": [
+            ["停", "stop"],
+            ["下来", "down/resultative complement"]
+          ]
+        },
+        {
+          "id": "S0470L08",
+          "type": "M",
+          "target": "我们停下来",
+          "known": "we stop",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["停下来", "stop"]
+          ]
+        },
+        {
+          "id": "S0470L09",
+          "type": "M",
+          "target": "在我们停下来之前",
+          "known": "before we stop",
+          "new": true,
+          "components": [
+            ["在", "at/in"],
+            ["我们", "we"],
+            ["停下来", "stop"],
+            ["之前", "before"]
+          ]
+        },
+        {
+          "id": "S0470L10",
+          "type": "M",
+          "target": "你想爬多高",
+          "known": "how high do you want to climb",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["想", "want"],
+            ["爬", "climb"],
+            ["多高", "how high"]
+          ]
+        }
+      ]
+    }
+  ]
+}

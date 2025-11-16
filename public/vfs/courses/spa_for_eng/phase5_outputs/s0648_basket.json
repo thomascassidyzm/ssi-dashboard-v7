@@ -1,0 +1,45 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0648",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "target": "what you said madam",
+    "known": "lo que dijo señora"
+  },
+  "legos": {
+    "S0648L01": {
+      "lego": ["madam", "señora"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Madam", "señora", null, 1],
+        ["I to can madam", "puedo señora", null, 2],
+        ["Something madam", "algo señora", null, 2],
+        ["Do you want madam", "quiere usted señora", null, 3],
+        ["Could you madam", "podría señora", null, 2],
+        ["Could you to say that madam", "podría decir eso señora", null, 4],
+        ["I to can to help you madam", "puedo ayudarle señora", null, 3],
+        ["You're doing something madam", "está haciendo algo señora", null, 3],
+        ["You to speak it madam", "lo habla señora", null, 2],
+        ["I to can to help you that madam", "puedo ayudarle eso señora", null, 4]
+      ]
+    },
+    "S0648L02": {
+      "lego": ["what you said", "lo que dijo"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["What you said", "lo que dijo", null, 1],
+        ["What you said sir", "lo que dijo señor", null, 2],
+        ["What you said that", "lo que dijo eso", null, 2],
+        ["I to can what you said", "puedo lo que dijo", null, 2],
+        ["What you said something", "lo que dijo algo", null, 2],
+        ["Could you to say what you said", "podría decir lo que dijo", null, 4],
+        ["I to can to help you what you said", "puedo ayudarle lo que dijo", null, 4],
+        ["You're doing what you said", "está haciendo lo que dijo", null, 3],
+        ["You to speak it what you said", "lo habla lo que dijo", null, 3],
+        ["What you said madam", "lo que dijo señora", null, 2]
+      ]
+    }
+  }
+}

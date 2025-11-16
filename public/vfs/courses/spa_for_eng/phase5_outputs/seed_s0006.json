@@ -1,0 +1,952 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0006",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "target": "I'm trying to to remember a word.",
+    "known": "Estoy intentando recordar una palabra."
+  },
+  "recent_context": {
+    "S0001": [
+      "quiero | quiero hablar | hablar | hablar español | español | contigo | ahora",
+      "I want | I want to to speak | to to speak | to speak Spanish | Spanish | with you | now"
+    ],
+    "S0002": [
+      "estoy intentando | intentando aprender | aprender",
+      "I'm trying | trying to to learn | to to learn"
+    ],
+    "S0003": [
+      "cómo hablar | hablar | lo más frecuentemente posible",
+      "how to to speak | to to speak | as often as possible"
+    ],
+    "S0004": [
+      "algo | decir algo | cómo decir algo | algo en español | en español | español | cómo decir",
+      "something | to say something | how to to say something | something in Spanish | in Spanish | Spanish | how to to say"
+    ],
+    "S0005": [
+      "voy a | voy a practicar | practicar hablar | hablar | con alguien más | alguien más",
+      "I'm going to | I'm going to to practise | to practise speaking | to to speak | with someone else | someone else"
+    ]
+  },
+  "legos": {
+    "S0006L02": {
+      "lego": [
+        "trying to to remember",
+        "intentando recordar"
+      ],
+      "type": "M",
+      "available_legos": 27,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 7,
+      "practice_phrases": [
+        [
+          "trying to to remember",
+          "intentando recordar",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember",
+          "Estoy intentando recordar",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember now",
+          "Estoy intentando recordar ahora",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember something",
+          "Estoy intentando recordar algo",
+          null,
+          null
+        ],
+        [
+          "I want to to remember",
+          "Quiero recordar",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember how to to speak",
+          "Estoy intentando recordar cómo hablar",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember something in Spanish",
+          "Estoy intentando recordar algo en español",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0006L02",
+        "seed_context": {
+          "target": "I'm trying to to remember a word.",
+          "known": "Estoy intentando recordar una palabra."
+        },
+        "whitelist_pairs": [
+          [
+            "a",
+            "to"
+          ],
+          [
+            "ahora",
+            "now"
+          ],
+          [
+            "algo",
+            "something"
+          ],
+          [
+            "algo en español",
+            "something in Spanish"
+          ],
+          [
+            "alguien",
+            "someone"
+          ],
+          [
+            "alguien más",
+            "someone else"
+          ],
+          [
+            "aprender",
+            "to to learn"
+          ],
+          [
+            "cómo",
+            "how"
+          ],
+          [
+            "cómo decir",
+            "how to to say"
+          ],
+          [
+            "cómo decir algo",
+            "how to to say something"
+          ],
+          [
+            "cómo hablar",
+            "how to to speak"
+          ],
+          [
+            "con",
+            "with"
+          ],
+          [
+            "con alguien más",
+            "with someone else"
+          ],
+          [
+            "contigo",
+            "with you"
+          ],
+          [
+            "decir",
+            "to to say"
+          ],
+          [
+            "decir algo",
+            "to say something"
+          ],
+          [
+            "en",
+            "in"
+          ],
+          [
+            "en español",
+            "in Spanish"
+          ],
+          [
+            "español",
+            "Spanish"
+          ],
+          [
+            "estoy",
+            "I'm"
+          ],
+          [
+            "estoy intentando",
+            "I'm trying"
+          ],
+          [
+            "frecuentemente",
+            "often/frequently"
+          ],
+          [
+            "hablar",
+            "to to speak"
+          ],
+          [
+            "hablar español",
+            "to speak Spanish"
+          ],
+          [
+            "intentando",
+            "trying"
+          ],
+          [
+            "intentando aprender",
+            "trying to to learn"
+          ],
+          [
+            "lo",
+            "the"
+          ],
+          [
+            "lo más frecuentemente posible",
+            "as often as possible"
+          ],
+          [
+            "más",
+            "else/more"
+          ],
+          [
+            "posible",
+            "possible"
+          ],
+          [
+            "practicar",
+            "to practise"
+          ],
+          [
+            "practicar hablar",
+            "to practise speaking"
+          ],
+          [
+            "quiero",
+            "I want"
+          ],
+          [
+            "quiero hablar",
+            "I want to to speak"
+          ],
+          [
+            "voy",
+            "I go"
+          ],
+          [
+            "voy a",
+            "I'm going to"
+          ],
+          [
+            "voy a practicar",
+            "I'm going to to practise"
+          ]
+        ],
+        "available_whitelist_size": 37
+      },
+      "components": [
+        [
+          "intentando",
+          "trying"
+        ],
+        [
+          "recordar",
+          "to to remember"
+        ]
+      ]
+    },
+    "S0006L03": {
+      "lego": [
+        "to to remember",
+        "recordar"
+      ],
+      "type": "A",
+      "available_legos": 28,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "I want to to remember",
+          "Quiero recordar",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember",
+          "Estoy intentando recordar",
+          null,
+          null
+        ],
+        [
+          "I'm going to to remember",
+          "Voy a recordar",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember something",
+          "Estoy intentando recordar algo",
+          null,
+          null
+        ],
+        [
+          "I want to to remember how to to speak Spanish",
+          "Quiero recordar cómo hablar español",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0006L03",
+        "seed_context": {
+          "target": "I'm trying to to remember a word.",
+          "known": "Estoy intentando recordar una palabra."
+        },
+        "whitelist_pairs": [
+          [
+            "a",
+            "to"
+          ],
+          [
+            "ahora",
+            "now"
+          ],
+          [
+            "algo",
+            "something"
+          ],
+          [
+            "algo en español",
+            "something in Spanish"
+          ],
+          [
+            "alguien",
+            "someone"
+          ],
+          [
+            "alguien más",
+            "someone else"
+          ],
+          [
+            "aprender",
+            "to to learn"
+          ],
+          [
+            "cómo",
+            "how"
+          ],
+          [
+            "cómo decir",
+            "how to to say"
+          ],
+          [
+            "cómo decir algo",
+            "how to to say something"
+          ],
+          [
+            "cómo hablar",
+            "how to to speak"
+          ],
+          [
+            "con",
+            "with"
+          ],
+          [
+            "con alguien más",
+            "with someone else"
+          ],
+          [
+            "contigo",
+            "with you"
+          ],
+          [
+            "decir",
+            "to to say"
+          ],
+          [
+            "decir algo",
+            "to say something"
+          ],
+          [
+            "en",
+            "in"
+          ],
+          [
+            "en español",
+            "in Spanish"
+          ],
+          [
+            "español",
+            "Spanish"
+          ],
+          [
+            "estoy",
+            "I'm"
+          ],
+          [
+            "estoy intentando",
+            "I'm trying"
+          ],
+          [
+            "frecuentemente",
+            "often/frequently"
+          ],
+          [
+            "hablar",
+            "to to speak"
+          ],
+          [
+            "hablar español",
+            "to speak Spanish"
+          ],
+          [
+            "intentando",
+            "trying"
+          ],
+          [
+            "intentando aprender",
+            "trying to to learn"
+          ],
+          [
+            "intentando recordar",
+            "trying to to remember"
+          ],
+          [
+            "lo",
+            "the"
+          ],
+          [
+            "lo más frecuentemente posible",
+            "as often as possible"
+          ],
+          [
+            "más",
+            "else/more"
+          ],
+          [
+            "posible",
+            "possible"
+          ],
+          [
+            "practicar",
+            "to practise"
+          ],
+          [
+            "practicar hablar",
+            "to practise speaking"
+          ],
+          [
+            "quiero",
+            "I want"
+          ],
+          [
+            "quiero hablar",
+            "I want to to speak"
+          ],
+          [
+            "recordar",
+            "to to remember"
+          ],
+          [
+            "voy",
+            "I go"
+          ],
+          [
+            "voy a",
+            "I'm going to"
+          ],
+          [
+            "voy a practicar",
+            "I'm going to to practise"
+          ]
+        ],
+        "available_whitelist_size": 39
+      }
+    },
+    "S0006L04": {
+      "lego": [
+        "to remember a word",
+        "recordar una palabra"
+      ],
+      "type": "M",
+      "available_legos": 29,
+      "is_final_lego": false,
+      "overlap_level": "partial",
+      "target_phrase_count": 7,
+      "practice_phrases": [
+        [
+          "to remember a word",
+          "recordar una palabra",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember a word",
+          "Estoy intentando recordar una palabra",
+          null,
+          null
+        ],
+        [
+          "I want to to remember a word",
+          "Quiero recordar una palabra",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember a word now",
+          "Estoy intentando recordar una palabra ahora",
+          null,
+          null
+        ],
+        [
+          "I want to to remember a word in Spanish",
+          "Quiero recordar una palabra en español",
+          null,
+          null
+        ],
+        [
+          "I'm going to to remember a word",
+          "Voy a recordar una palabra",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember a word with you",
+          "Estoy intentando recordar una palabra contigo",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0006L04",
+        "seed_context": {
+          "target": "I'm trying to to remember a word.",
+          "known": "Estoy intentando recordar una palabra."
+        },
+        "whitelist_pairs": [
+          [
+            "a",
+            "to"
+          ],
+          [
+            "ahora",
+            "now"
+          ],
+          [
+            "algo",
+            "something"
+          ],
+          [
+            "algo en español",
+            "something in Spanish"
+          ],
+          [
+            "alguien",
+            "someone"
+          ],
+          [
+            "alguien más",
+            "someone else"
+          ],
+          [
+            "aprender",
+            "to to learn"
+          ],
+          [
+            "cómo",
+            "how"
+          ],
+          [
+            "cómo decir",
+            "how to to say"
+          ],
+          [
+            "cómo decir algo",
+            "how to to say something"
+          ],
+          [
+            "cómo hablar",
+            "how to to speak"
+          ],
+          [
+            "con",
+            "with"
+          ],
+          [
+            "con alguien más",
+            "with someone else"
+          ],
+          [
+            "contigo",
+            "with you"
+          ],
+          [
+            "decir",
+            "to to say"
+          ],
+          [
+            "decir algo",
+            "to say something"
+          ],
+          [
+            "en",
+            "in"
+          ],
+          [
+            "en español",
+            "in Spanish"
+          ],
+          [
+            "español",
+            "Spanish"
+          ],
+          [
+            "estoy",
+            "I'm"
+          ],
+          [
+            "estoy intentando",
+            "I'm trying"
+          ],
+          [
+            "frecuentemente",
+            "often/frequently"
+          ],
+          [
+            "hablar",
+            "to to speak"
+          ],
+          [
+            "hablar español",
+            "to speak Spanish"
+          ],
+          [
+            "intentando",
+            "trying"
+          ],
+          [
+            "intentando aprender",
+            "trying to to learn"
+          ],
+          [
+            "intentando recordar",
+            "trying to to remember"
+          ],
+          [
+            "lo",
+            "the"
+          ],
+          [
+            "lo más frecuentemente posible",
+            "as often as possible"
+          ],
+          [
+            "más",
+            "else/more"
+          ],
+          [
+            "posible",
+            "possible"
+          ],
+          [
+            "practicar",
+            "to practise"
+          ],
+          [
+            "practicar hablar",
+            "to practise speaking"
+          ],
+          [
+            "quiero",
+            "I want"
+          ],
+          [
+            "quiero hablar",
+            "I want to to speak"
+          ],
+          [
+            "recordar",
+            "to to remember"
+          ],
+          [
+            "voy",
+            "I go"
+          ],
+          [
+            "voy a",
+            "I'm going to"
+          ],
+          [
+            "voy a practicar",
+            "I'm going to to practise"
+          ]
+        ],
+        "available_whitelist_size": 39
+      },
+      "components": [
+        [
+          "recordar",
+          "to remember"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "palabra",
+          "word"
+        ]
+      ]
+    },
+    "S0006L05": {
+      "lego": [
+        "a word",
+        "una palabra"
+      ],
+      "type": "M",
+      "available_legos": 30,
+      "is_final_lego": true,
+      "overlap_level": "complete",
+      "target_phrase_count": 4,
+      "practice_phrases": [
+        [
+          "I want to to learn a word",
+          "Quiero aprender una palabra",
+          null,
+          null
+        ],
+        [
+          "I'm trying to to remember a word",
+          "Estoy intentando recordar una palabra",
+          null,
+          null
+        ],
+        [
+          "I'm going to to learn a word in Spanish",
+          "Voy a aprender una palabra en español",
+          null,
+          null
+        ],
+        [
+          "I want to to say a word now",
+          "Quiero decir una palabra ahora",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0006L05",
+        "seed_context": {
+          "target": "I'm trying to to remember a word.",
+          "known": "Estoy intentando recordar una palabra."
+        },
+        "whitelist_pairs": [
+          [
+            "a",
+            "to"
+          ],
+          [
+            "ahora",
+            "now"
+          ],
+          [
+            "algo",
+            "something"
+          ],
+          [
+            "algo en español",
+            "something in Spanish"
+          ],
+          [
+            "alguien",
+            "someone"
+          ],
+          [
+            "alguien más",
+            "someone else"
+          ],
+          [
+            "aprender",
+            "to to learn"
+          ],
+          [
+            "cómo",
+            "how"
+          ],
+          [
+            "cómo decir",
+            "how to to say"
+          ],
+          [
+            "cómo decir algo",
+            "how to to say something"
+          ],
+          [
+            "cómo hablar",
+            "how to to speak"
+          ],
+          [
+            "con",
+            "with"
+          ],
+          [
+            "con alguien más",
+            "with someone else"
+          ],
+          [
+            "contigo",
+            "with you"
+          ],
+          [
+            "decir",
+            "to to say"
+          ],
+          [
+            "decir algo",
+            "to say something"
+          ],
+          [
+            "en",
+            "in"
+          ],
+          [
+            "en español",
+            "in Spanish"
+          ],
+          [
+            "español",
+            "Spanish"
+          ],
+          [
+            "estoy",
+            "I'm"
+          ],
+          [
+            "estoy intentando",
+            "I'm trying"
+          ],
+          [
+            "frecuentemente",
+            "often/frequently"
+          ],
+          [
+            "hablar",
+            "to to speak"
+          ],
+          [
+            "hablar español",
+            "to speak Spanish"
+          ],
+          [
+            "intentando",
+            "trying"
+          ],
+          [
+            "intentando aprender",
+            "trying to to learn"
+          ],
+          [
+            "intentando recordar",
+            "trying to to remember"
+          ],
+          [
+            "lo",
+            "the"
+          ],
+          [
+            "lo más frecuentemente posible",
+            "as often as possible"
+          ],
+          [
+            "más",
+            "else/more"
+          ],
+          [
+            "palabra",
+            "word"
+          ],
+          [
+            "posible",
+            "possible"
+          ],
+          [
+            "practicar",
+            "to practise"
+          ],
+          [
+            "practicar hablar",
+            "to practise speaking"
+          ],
+          [
+            "quiero",
+            "I want"
+          ],
+          [
+            "quiero hablar",
+            "I want to to speak"
+          ],
+          [
+            "recordar",
+            "to remember"
+          ],
+          [
+            "recordar una palabra",
+            "to remember a word"
+          ],
+          [
+            "una",
+            "a"
+          ],
+          [
+            "voy",
+            "I go"
+          ],
+          [
+            "voy a",
+            "I'm going to"
+          ],
+          [
+            "voy a practicar",
+            "I'm going to to practise"
+          ]
+        ],
+        "available_whitelist_size": 42
+      },
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "palabra",
+          "word"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0006.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "cumulative_legos_before": 26
+  }
+}

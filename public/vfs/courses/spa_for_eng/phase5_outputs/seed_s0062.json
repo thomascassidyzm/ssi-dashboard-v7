@@ -1,0 +1,358 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0062",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "target": "I'm not sure if I to can to help you at the same time.",
+    "known": "No estoy seguro si puedo ayudarte al mismo tiempo."
+  },
+  "recent_context": {
+    "S0057": [
+      "no puedo recordar | cómo decir | recordar cómo decir | lo que quería decir | quería decir",
+      "I to can't to remember | how to to say | to remember how to to say | what I wanted to to say | wanted to to say"
+    ],
+    "S0058": [
+      "es interesante | cuando | cuando comprendes | suficientes palabras",
+      "it's interesting | when | when you to understand | enough words"
+    ],
+    "S0059": [
+      "sé hacer | lo que necesito hacer | necesito hacer | la próxima semana",
+      "I to know how to to do | what I need to to do | need to to do | next week"
+    ],
+    "S0060": [
+      "todavía | no sé | todavía no sé | cómo decir | suficientes palabras diferentes",
+      "yet/still | I don't to know | I still don't to know | how to to say | enough different words"
+    ],
+    "S0061": [
+      "podrías decir | decir eso | otra vez | un poco más | más lentamente | un poco más lentamente",
+      "could you to say | to say that | again | a little more | more slowly | a little more slowly"
+    ]
+  },
+  "legos": {
+    "S0062L02": {
+      "lego": [
+        "if I to can to help you",
+        "si puedo ayudarte"
+      ],
+      "type": "M",
+      "available_legos": 316,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "If I to can to help you",
+          "si puedo ayudarte",
+          null,
+          1
+        ],
+        [
+          "I'm not sure if I to can to help you",
+          "no estoy seguro si puedo ayudarte",
+          null,
+          2
+        ],
+        [
+          "I want to to know if I to can to help you",
+          "quiero saber si puedo ayudarte",
+          null,
+          3
+        ],
+        [
+          "I need to to know if I to can to help you",
+          "necesito saber si puedo ayudarte",
+          null,
+          3
+        ],
+        [
+          "I don't to know if I to can to help you now",
+          "no sé si puedo ayudarte ahora",
+          null,
+          4
+        ],
+        [
+          "I'm trying to to know if I to can to help you",
+          "estoy intentando saber si puedo ayudarte",
+          null,
+          4
+        ],
+        [
+          "I'm not sure if I to can to help you with that",
+          "no estoy seguro si puedo ayudarte con eso",
+          null,
+          5
+        ],
+        [
+          "I wanted to to ask if I to can to help you with that",
+          "quería preguntarte si puedo ayudarte con eso",
+          null,
+          6
+        ],
+        [
+          "I'm not sure if I to can to help you at this moment",
+          "no estoy seguro si puedo ayudarte en este momento",
+          null,
+          7
+        ],
+        [
+          "I don't to know if I to can to help you to say that in Spanish",
+          "no sé si puedo ayudarte decir eso en español",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0062L02",
+        "seed_context": {
+          "target": "I'm not sure if I to can to help you at the same time.",
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo."
+        },
+        "available_whitelist_size": 414
+      },
+      "components": [
+        [
+          "si",
+          "if"
+        ],
+        [
+          "puedo",
+          "I to can"
+        ],
+        [
+          "ayudarte",
+          "to help you"
+        ]
+      ]
+    },
+    "S0062L03": {
+      "lego": [
+        "I to can to help you",
+        "puedo ayudarte"
+      ],
+      "type": "M",
+      "available_legos": 317,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "I to can to help you",
+          "puedo ayudarte",
+          null,
+          3
+        ],
+        [
+          "I think I to can to help you",
+          "pienso que puedo ayudarte",
+          null,
+          4
+        ],
+        [
+          "I to can to help you with that",
+          "puedo ayudarte con eso",
+          null,
+          4
+        ],
+        [
+          "I'm not sure if I to can to help you",
+          "no estoy seguro si puedo ayudarte",
+          null,
+          5
+        ],
+        [
+          "I to can to help you to learn Spanish if you want",
+          "puedo ayudarte aprender español si quieres",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0062L03",
+        "seed_context": {
+          "target": "I'm not sure if I to can to help you at the same time.",
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo."
+        },
+        "available_whitelist_size": 416
+      },
+      "components": [
+        [
+          "puedo",
+          "I to can"
+        ],
+        [
+          "ayudarte",
+          "to help you"
+        ]
+      ]
+    },
+    "S0062L04": {
+      "lego": [
+        "to help you",
+        "ayudarte"
+      ],
+      "type": "A",
+      "available_legos": 318,
+      "is_final_lego": false,
+      "overlap_level": "complete",
+      "target_phrase_count": 5,
+      "practice_phrases": [
+        [
+          "Help you",
+          "ayudarte",
+          null,
+          3
+        ],
+        [
+          "I want to to help you",
+          "quiero ayudarte",
+          null,
+          3
+        ],
+        [
+          "I to can to help you",
+          "puedo ayudarte",
+          null,
+          3
+        ],
+        [
+          "I'm trying to to help you",
+          "estoy intentando ayudarte",
+          null,
+          4
+        ],
+        [
+          "I'm not sure if I to can to help you now",
+          "no estoy seguro si puedo ayudarte ahora",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "_metadata": {
+        "lego_id": "S0062L04",
+        "seed_context": {
+          "target": "I'm not sure if I to can to help you at the same time.",
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo."
+        },
+        "available_whitelist_size": 417
+      }
+    },
+    "S0062L05": {
+      "lego": [
+        "at the same time",
+        "al mismo tiempo"
+      ],
+      "type": "M",
+      "available_legos": 319,
+      "is_final_lego": true,
+      "overlap_level": "none",
+      "target_phrase_count": 9,
+      "practice_phrases": [
+        [
+          "At the same time",
+          "al mismo tiempo",
+          null,
+          1
+        ],
+        [
+          "I to can't to do that at the same time",
+          "no puedo hacer eso al mismo tiempo",
+          null,
+          2
+        ],
+        [
+          "I want to to learn at the same time",
+          "quiero aprender al mismo tiempo",
+          null,
+          2
+        ],
+        [
+          "I'm trying to to say that at the same time",
+          "estoy intentando decir eso al mismo tiempo",
+          null,
+          3
+        ],
+        [
+          "I don't think I to can to do that at the same time",
+          "no pienso que puedo hacer eso al mismo tiempo",
+          null,
+          3
+        ],
+        [
+          "I want to to learn Spanish at the same time",
+          "quiero aprender español al mismo tiempo",
+          null,
+          4
+        ],
+        [
+          "I'm not sure if I to can to do that at the same time",
+          "no estoy seguro si puedo hacer eso al mismo tiempo",
+          null,
+          4
+        ],
+        [
+          "I to can to help you to learn Spanish at the same time",
+          "puedo ayudarte aprender español al mismo tiempo",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if I to can to help you at the same time",
+          "no estoy seguro si puedo ayudarte al mismo tiempo",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0062L05",
+        "seed_context": {
+          "target": "I'm not sure if I to can to help you at the same time.",
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo."
+        },
+        "available_whitelist_size": 417
+      },
+      "components": [
+        [
+          "al",
+          "at the"
+        ],
+        [
+          "mismo",
+          "same"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Ultimate Intelligence v5.0",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md (v5.0)",
+    "output": "Write to: public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0062.json",
+    "whitelist_note": "3-category rule applied: A-types, M-types, M-components with literal translations"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "cumulative_legos_before": 315
+  }
+}

@@ -1,0 +1,582 @@
+{
+  "agent_id": "agent_15",
+  "seed_range": "S0141-S0150",
+  "extracted_at": "2025-11-14T00:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "seeds": [
+    {
+      "seed_id": "S0141",
+      "seed_pair": [
+        "没问题。一切都好。",
+        "No problem. Everything is okay."
+      ],
+      "extraction_notes": "Two separate sentences. Forward sweep: 'No problem' → '没问题' (clear), 'Everything is okay' → '一切都好' (clear). Backward sweep confirms. No overlaps needed - perfect tiling.",
+      "legos": [
+        {
+          "id": "S0141L01",
+          "type": "A",
+          "target": "没问题",
+          "known": "no problem",
+          "new": true
+        },
+        {
+          "id": "S0141L02",
+          "type": "M",
+          "target": "一切都好",
+          "known": "everything is okay",
+          "new": true,
+          "components": [
+            ["一切", "everything"],
+            ["都", "all/both"],
+            ["好", "good/okay"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0142",
+      "seed_pair": [
+        "你真好，我很感激你帮助我。",
+        "That's very kind of you and I'm grateful to you for helping."
+      ],
+      "extraction_notes": "Forward sweep: 'That's very kind of you' → '你真好' (needs chunking - '你' alone ambiguous). 'I'm grateful to you for helping' → '我很感激你帮助我' (complex). Backward sweep: '帮助我' is clear ending. Created overlap with '感激你帮助我' and '你帮助我' for pattern maximization.",
+      "legos": [
+        {
+          "id": "S0142L01",
+          "type": "M",
+          "target": "你真好",
+          "known": "that's very kind of you",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["真", "really/very"],
+            ["好", "good/kind"]
+          ]
+        },
+        {
+          "id": "S0142L02",
+          "type": "M",
+          "target": "我很感激你帮助我",
+          "known": "I'm grateful to you for helping",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["很", "very"],
+            ["感激", "grateful"],
+            ["你", "you"],
+            ["帮助", "help/helping"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0142L03",
+          "type": "M",
+          "target": "感激你帮助我",
+          "known": "grateful to you for helping",
+          "new": true,
+          "components": [
+            ["感激", "grateful"],
+            ["你", "you"],
+            ["帮助", "help"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0142L04",
+          "type": "M",
+          "target": "你帮助我",
+          "known": "you helping me",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["帮助", "help"],
+            ["我", "me"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0143",
+      "seed_pair": [
+        "这和我们之前谈论的是同一件事。",
+        "It's the same thing as we were talking about earlier."
+      ],
+      "extraction_notes": "Forward sweep: 'It's the same thing' → '这是同一件事' (but need 和 construction). 'as we were talking about' → '和我们之前谈论的' (relative clause). 'earlier' → '之前'. Created overlaps for '我们之前谈论的' and embedded constructions.",
+      "legos": [
+        {
+          "id": "S0143L01",
+          "type": "M",
+          "target": "这和我们之前谈论的是同一件事",
+          "known": "it's the same thing as we were talking about earlier",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["和", "and/with"],
+            ["我们", "we"],
+            ["之前", "before/earlier"],
+            ["谈论", "talk about"],
+            ["的", "de (modifier)"],
+            ["是", "is"],
+            ["同一", "same"],
+            ["件", "classifier"],
+            ["事", "thing/matter"]
+          ]
+        },
+        {
+          "id": "S0143L02",
+          "type": "M",
+          "target": "同一件事",
+          "known": "the same thing",
+          "new": true,
+          "components": [
+            ["同一", "same"],
+            ["件", "classifier"],
+            ["事", "thing"]
+          ]
+        },
+        {
+          "id": "S0143L03",
+          "type": "M",
+          "target": "我们之前谈论的",
+          "known": "we were talking about earlier",
+          "new": true,
+          "components": [
+            ["我们", "we"],
+            ["之前", "earlier/before"],
+            ["谈论", "talk about"],
+            ["的", "de (relative clause marker)"]
+          ]
+        },
+        {
+          "id": "S0143L04",
+          "type": "A",
+          "target": "之前",
+          "known": "earlier",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0144",
+      "seed_pair": [
+        "我今天早上醒得比我想要的早。",
+        "I woke earlier than I wanted to this morning."
+      ],
+      "extraction_notes": "Forward sweep: 'I woke' → '我醒' but needs complement. 'this morning' → '今天早上'. 'earlier than I wanted to' → '比我想要的早' (comparison structure with 得). Created overlaps for comparison pattern and nested '我想要的'.",
+      "legos": [
+        {
+          "id": "S0144L01",
+          "type": "A",
+          "target": "今天早上",
+          "known": "this morning",
+          "new": true
+        },
+        {
+          "id": "S0144L02",
+          "type": "M",
+          "target": "醒得比我想要的早",
+          "known": "woke earlier than I wanted to",
+          "new": true,
+          "components": [
+            ["醒", "wake"],
+            ["得", "de (complement marker)"],
+            ["比", "than/compared to"],
+            ["我", "I"],
+            ["想要", "want"],
+            ["的", "de (nominalizer)"],
+            ["早", "early"]
+          ]
+        },
+        {
+          "id": "S0144L03",
+          "type": "M",
+          "target": "比我想要的早",
+          "known": "earlier than I wanted to",
+          "new": true,
+          "components": [
+            ["比", "than"],
+            ["我", "I"],
+            ["想要", "want"],
+            ["的", "de"],
+            ["早", "early"]
+          ]
+        },
+        {
+          "id": "S0144L04",
+          "type": "M",
+          "target": "我想要的",
+          "known": "I wanted to",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["想要", "want"],
+            ["的", "de (nominalizer)"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0145",
+      "seed_pair": [
+        "你为什么不再高兴了？",
+        "Why are you not happy any more?"
+      ],
+      "extraction_notes": "Forward sweep: 'Why are you' → '你为什么' (wh-question structure). 'not happy' → '不高兴'. 'any more' → '不再' (negation + 再). Created full sentence chunk plus subchunks for recombination.",
+      "legos": [
+        {
+          "id": "S0145L01",
+          "type": "M",
+          "target": "你为什么不再高兴了",
+          "known": "why are you not happy any more",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["为什么", "why"],
+            ["不再", "not any more"],
+            ["高兴", "happy"],
+            ["了", "le (change of state)"]
+          ]
+        },
+        {
+          "id": "S0145L02",
+          "type": "A",
+          "target": "为什么",
+          "known": "why",
+          "new": true
+        },
+        {
+          "id": "S0145L03",
+          "type": "M",
+          "target": "不再高兴",
+          "known": "not happy any more",
+          "new": true,
+          "components": [
+            ["不再", "not any more"],
+            ["高兴", "happy"]
+          ]
+        },
+        {
+          "id": "S0145L04",
+          "type": "A",
+          "target": "不再",
+          "known": "not any more",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0146",
+      "seed_pair": [
+        "自从我们试图修理它以来，似乎什么都不工作了。",
+        "Nothing seems to be working since we tried to fix it."
+      ],
+      "extraction_notes": "Forward sweep: 'Nothing seems to be working' → '似乎什么都不工作了' (complex negation). 'since we tried to fix it' → '自从我们试图修理它以来' (temporal clause). Backward sweep confirms 自从...以来 frame. Created overlaps for temporal construction.",
+      "legos": [
+        {
+          "id": "S0146L01",
+          "type": "M",
+          "target": "似乎什么都不工作了",
+          "known": "nothing seems to be working",
+          "new": true,
+          "components": [
+            ["似乎", "seems"],
+            ["什么", "what/anything"],
+            ["都", "all"],
+            ["不", "not"],
+            ["工作", "work"],
+            ["了", "le (change of state)"]
+          ]
+        },
+        {
+          "id": "S0146L02",
+          "type": "M",
+          "target": "自从我们试图修理它以来",
+          "known": "since we tried to fix it",
+          "new": true,
+          "components": [
+            ["自从", "since"],
+            ["我们", "we"],
+            ["试图", "try to/attempt"],
+            ["修理", "fix/repair"],
+            ["它", "it"],
+            ["以来", "since (temporal frame ending)"]
+          ]
+        },
+        {
+          "id": "S0146L03",
+          "type": "M",
+          "target": "试图修理它",
+          "known": "tried to fix it",
+          "new": true,
+          "components": [
+            ["试图", "try to"],
+            ["修理", "fix"],
+            ["它", "it"]
+          ]
+        },
+        {
+          "id": "S0146L04",
+          "type": "A",
+          "target": "修理",
+          "known": "fix",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0147",
+      "seed_pair": [
+        "当她看到我感到紧张时，她非常友好。",
+        "She was very kind when she saw me feeling nervous."
+      ],
+      "extraction_notes": "Forward sweep: 'She was very kind' → '她非常友好'. 'when she saw me feeling nervous' → '当她看到我感到紧张时' (temporal + perception + emotion). Created overlaps for '看到我感到紧张' and embedded '我感到紧张'.",
+      "legos": [
+        {
+          "id": "S0147L01",
+          "type": "M",
+          "target": "她非常友好",
+          "known": "she was very kind",
+          "new": true,
+          "components": [
+            ["她", "she"],
+            ["非常", "very"],
+            ["友好", "kind/friendly"]
+          ]
+        },
+        {
+          "id": "S0147L02",
+          "type": "M",
+          "target": "当她看到我感到紧张时",
+          "known": "when she saw me feeling nervous",
+          "new": true,
+          "components": [
+            ["当", "when"],
+            ["她", "she"],
+            ["看到", "see/saw"],
+            ["我", "me"],
+            ["感到", "feel"],
+            ["紧张", "nervous"],
+            ["时", "when/time (clause marker)"]
+          ]
+        },
+        {
+          "id": "S0147L03",
+          "type": "M",
+          "target": "看到我感到紧张",
+          "known": "saw me feeling nervous",
+          "new": true,
+          "components": [
+            ["看到", "saw"],
+            ["我", "me"],
+            ["感到", "feel"],
+            ["紧张", "nervous"]
+          ]
+        },
+        {
+          "id": "S0147L04",
+          "type": "M",
+          "target": "我感到紧张",
+          "known": "I feel nervous",
+          "new": true,
+          "components": [
+            ["我", "I/me"],
+            ["感到", "feel"],
+            ["紧张", "nervous"]
+          ]
+        },
+        {
+          "id": "S0147L05",
+          "type": "A",
+          "target": "紧张",
+          "known": "nervous",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0148",
+      "seed_pair": [
+        "当我不能回答时，他不是很耐心。",
+        "He wasn't very patient when I couldn't answer."
+      ],
+      "extraction_notes": "Forward sweep: 'He wasn't very patient' → '他不是很耐心'. 'when I couldn't answer' → '当我不能回答时' (temporal clause with negation). Created overlaps for temporal construction and ability negation.",
+      "legos": [
+        {
+          "id": "S0148L01",
+          "type": "M",
+          "target": "他不是很耐心",
+          "known": "he wasn't very patient",
+          "new": true,
+          "components": [
+            ["他", "he"],
+            ["不是", "was not"],
+            ["很", "very"],
+            ["耐心", "patient"]
+          ]
+        },
+        {
+          "id": "S0148L02",
+          "type": "M",
+          "target": "当我不能回答时",
+          "known": "when I couldn't answer",
+          "new": true,
+          "components": [
+            ["当", "when"],
+            ["我", "I"],
+            ["不能", "cannot/couldn't"],
+            ["回答", "answer"],
+            ["时", "when/time"]
+          ]
+        },
+        {
+          "id": "S0148L03",
+          "type": "M",
+          "target": "我不能回答",
+          "known": "I couldn't answer",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["不能", "cannot"],
+            ["回答", "answer"]
+          ]
+        },
+        {
+          "id": "S0148L04",
+          "type": "A",
+          "target": "回答",
+          "known": "answer",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0149",
+      "seed_pair": [
+        "这不是很难，所以我希望你很快完成。",
+        "This isn't very difficult, so I hope you'll finish soon."
+      ],
+      "extraction_notes": "Forward sweep: 'This isn't very difficult' → '这不是很难'. 'so I hope' → '所以我希望'. 'you'll finish soon' → '你很快完成'. Created overlaps for hope construction and completion pattern.",
+      "legos": [
+        {
+          "id": "S0149L01",
+          "type": "M",
+          "target": "这不是很难",
+          "known": "this isn't very difficult",
+          "new": true,
+          "components": [
+            ["这", "this"],
+            ["不是", "is not"],
+            ["很", "very"],
+            ["难", "difficult"]
+          ]
+        },
+        {
+          "id": "S0149L02",
+          "type": "M",
+          "target": "所以我希望",
+          "known": "so I hope",
+          "new": true,
+          "components": [
+            ["所以", "so/therefore"],
+            ["我", "I"],
+            ["希望", "hope"]
+          ]
+        },
+        {
+          "id": "S0149L03",
+          "type": "M",
+          "target": "我希望你很快完成",
+          "known": "I hope you'll finish soon",
+          "new": true,
+          "components": [
+            ["我", "I"],
+            ["希望", "hope"],
+            ["你", "you"],
+            ["很快", "soon/quickly"],
+            ["完成", "finish"]
+          ]
+        },
+        {
+          "id": "S0149L04",
+          "type": "M",
+          "target": "你很快完成",
+          "known": "you'll finish soon",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["很快", "soon"],
+            ["完成", "finish"]
+          ]
+        },
+        {
+          "id": "S0149L05",
+          "type": "A",
+          "target": "很快",
+          "known": "soon",
+          "new": true
+        }
+      ]
+    },
+    {
+      "seed_id": "S0150",
+      "seed_pair": [
+        "你能告诉我你的名字是什么吗？",
+        "Can you tell me what your name is?"
+      ],
+      "extraction_notes": "Forward sweep: 'Can you tell me' → '你能告诉我...吗'. 'what your name is' → '你的名字是什么' (embedded question). Created overlaps for modal construction and embedded question pattern.",
+      "legos": [
+        {
+          "id": "S0150L01",
+          "type": "M",
+          "target": "你能告诉我你的名字是什么吗",
+          "known": "can you tell me what your name is",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["能", "can"],
+            ["告诉", "tell"],
+            ["我", "me"],
+            ["你的", "your"],
+            ["名字", "name"],
+            ["是", "is"],
+            ["什么", "what"],
+            ["吗", "ma (question particle)"]
+          ]
+        },
+        {
+          "id": "S0150L02",
+          "type": "M",
+          "target": "你能告诉我",
+          "known": "can you tell me",
+          "new": true,
+          "components": [
+            ["你", "you"],
+            ["能", "can"],
+            ["告诉", "tell"],
+            ["我", "me"]
+          ]
+        },
+        {
+          "id": "S0150L03",
+          "type": "M",
+          "target": "你的名字是什么",
+          "known": "what your name is",
+          "new": true,
+          "components": [
+            ["你的", "your"],
+            ["名字", "name"],
+            ["是", "is"],
+            ["什么", "what"]
+          ]
+        },
+        {
+          "id": "S0150L04",
+          "type": "A",
+          "target": "名字",
+          "known": "name",
+          "new": true
+        }
+      ]
+    }
+  ]
+}
