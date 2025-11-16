@@ -66,18 +66,27 @@ generate_ultra_fast.py
 generate_agent_03_baskets_fast.py
 generation_log.txt
 
-# Phase 5 working files (too large for git/Vercel)
-public/vfs/courses/*/phase5_outputs/
+# Phase 5: Full outputs with metadata (local debugging only)
+public/vfs/courses/*/phase5_outputs/*_FULL.json
+
+# Keep stripped basket files (these ARE pushed to branches)
+!public/vfs/courses/*/phase5_outputs/*_baskets.json
 
 # Phase 5 Working Files vs Final Output
 # =====================================
-# DO commit:    lego_baskets.json (final merged output)
-# DON'T commit: phase5_outputs/* (working files - too large)
+# DO commit:
+#   - lego_baskets.json (final merged output, ~5MB)
+#   - phase5_outputs/*_baskets.json (stripped, ~7KB each, on branches only)
+# DON'T commit:
+#   - phase5_outputs/*_FULL.json (336KB each with debug metadata)
 #
 # Workflow:
-# 1. Generate phase5_outputs/seed_*.json (stays local)
-# 2. Run: node scripts/merge_phase5_to_lego_baskets.cjs
-# 3. Commit only lego_baskets.json to git
+# 1. Agent generates phase5_outputs/seed_SXXXX_FULL.json (gitignored, local only)
+# 2. Agent strips metadata → seed_SXXXX_baskets.json (7KB, pushed to branch)
+# 3. Server merges all baskets → lego_baskets.json
+# 4. Server deletes phase5_outputs/ directory after completion
+#
+# Storage savings: 218MB → 9.6MB (96% reduction in git history)
 
 # Course Data - Pipeline State Preservation
 # ==========================================

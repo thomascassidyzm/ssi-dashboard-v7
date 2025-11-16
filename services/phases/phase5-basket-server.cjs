@@ -190,7 +190,7 @@ app.post('/start', async (req, res) => {
 
     const browsers = browserWindows || phase5Config.browsers;
     const agents = agentsPerWindow || phase5Config.agents_per_browser;
-    const seedsPerAgentConfig = seedsPerAgent || 10; // Always 10 seeds per agent from old system
+    const seedsPerAgentConfig = seedsPerAgent || phase5Config.seeds_per_agent || 10;
 
     const totalAgents = browsers * agents;
     const capacity = totalAgents * seedsPerAgentConfig;
@@ -466,6 +466,12 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 - Path to scaffolds: \`${relativeDir}/phase5_scaffolds/\`
 - Path to outputs: \`${relativeDir}/phase5_outputs/\`
 - Reference to Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+
+**CRITICAL OUTPUT WORKFLOW** (each agent must follow):
+1. Save FULL output to \`seed_SXXXX_FULL.json\` (with _metadata, _instructions, _stats)
+2. Strip metadata → extract ONLY the \`legos\` object
+3. Save stripped to \`seed_SXXXX_baskets.json\` (~7KB vs 336KB)
+4. Push ONLY stripped file to GitHub (96% bandwidth savings)
 
 ---
 

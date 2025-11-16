@@ -220,6 +220,39 @@ async function runPhaseValidation(courseCode, phase) {
       return true;
     }
 
+    if (phase === 5) {
+      // Phase 5 validators - Check gate violations in practice baskets
+      const basketsFile = path.join(VFS_ROOT, courseCode, 'phase_5', 'lego_baskets.json');
+
+      if (!fs.existsSync(basketsFile)) {
+        console.log(`   ❌ lego_baskets.json not found`);
+        return false;
+      }
+
+      // Validator: Gate violations check (curriculum integrity)
+      const gateValidatorPath = path.join(__dirname, '../../scripts/validation/check-gate-violations.js');
+
+      try {
+        execSync(`node "${gateValidatorPath}" "${path.dirname(basketsFile)}"`, {
+          cwd: VFS_ROOT,
+          stdio: 'inherit'
+        });
+        console.log(`   ✅ Gate violation validation PASSED - curriculum integrity maintained`);
+        return true;
+      } catch (error) {
+        console.log(`   ❌ Gate violation validation FAILED - curriculum integrity violations detected`);
+        console.log(`   📄 Review report: ${basketsFile.replace('.json', '_gate_report.json')}`);
+
+        // Check if we should block on validation failures
+        const config = require('../config-loader.cjs').loadConfig();
+        const thresholds = config.validation_thresholds;
+
+        // TODO: Calculate actual violation rate from report and compare to threshold
+        // For now, always fail on any gate violations
+        return false;
+      }
+    }
+
     // No validators for other phases yet
     console.log(`   ℹ️  No validators configured for Phase ${phase}`);
     return true;
