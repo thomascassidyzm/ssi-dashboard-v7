@@ -20,6 +20,15 @@
             >
               {{ formatStatus(course.status) }}
             </span>
+            <button
+              @click="showValidationPanel = !showValidationPanel"
+              class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              {{ showValidationPanel ? 'Hide' : 'Validate & Fix' }}
+            </button>
             <router-link
               :to="`/courses/${course.course_code}/compile`"
               class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
@@ -67,6 +76,110 @@
             <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
             <div class="text-3xl font-bold text-emerald-400">{{ introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0 }}</div>
             <div class="text-xs text-slate-500 mt-1">Known-only priming</div>
+          </div>
+        </div>
+
+        <!-- Validation & Fix Panel -->
+        <div v-if="showValidationPanel" class="bg-slate-800 border border-emerald-500/50 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-emerald-400 mb-6">🔬 Quality Control & Basket Management</h3>
+
+          <div class="grid grid-cols-3 gap-6">
+            <!-- LUT Check -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-400 mb-2">LUT Check (Phase 3.6)</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Check for LEGO collisions (same KNOWN → different TARGETs)
+              </p>
+              <button
+                @click="runLUTCheck"
+                :disabled="lutCheckLoading"
+                class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+              >
+                <span v-if="lutCheckLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                <span v-else>🔍</span>
+                {{ lutCheckLoading ? 'Checking...' : 'Run LUT Check' }}
+              </button>
+
+              <!-- LUT Results -->
+              <div v-if="lutCheckResult" class="mt-4 p-3 rounded-lg border" :class="{
+                'bg-emerald-900/20 border-emerald-500/50': lutCheckResult.status === 'pass',
+                'bg-red-900/20 border-red-500/50': lutCheckResult.status === 'fail'
+              }">
+                <div class="flex items-center gap-2 mb-2">
+                  <span v-if="lutCheckResult.status === 'pass'" class="text-emerald-400">✓</span>
+                  <span v-else class="text-red-400">✗</span>
+                  <span class="font-semibold" :class="{
+                    'text-emerald-400': lutCheckResult.status === 'pass',
+                    'text-red-400': lutCheckResult.status === 'fail'
+                  }">
+                    {{ lutCheckResult.status === 'pass' ? 'No Collisions' : `${lutCheckResult.collisions} Collisions Found` }}
+                  </span>
+                </div>
+                <p v-if="lutCheckResult.manifest" class="text-xs text-slate-400">
+                  Affected seeds: {{ lutCheckResult.manifest.affected_seeds?.length || 0 }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Basket Gap Analysis -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-400 mb-2">Basket Gap Analysis</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Identify missing baskets and deprecated baskets
+              </p>
+              <button
+                @click="runBasketGapAnalysis"
+                :disabled="gapAnalysisLoading"
+                class="w-full px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+              >
+                <span v-if="gapAnalysisLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                <span v-else>📊</span>
+                {{ gapAnalysisLoading ? 'Analyzing...' : 'Analyze Gaps' }}
+              </button>
+
+              <!-- Gap Results -->
+              <div v-if="gapAnalysisResult" class="mt-4 p-3 rounded-lg border bg-blue-900/20 border-blue-500/50">
+                <div class="text-sm space-y-1">
+                  <div class="flex justify-between text-slate-300">
+                    <span>Coverage:</span>
+                    <span class="font-semibold">{{ gapAnalysisResult.coverage_percentage }}%</span>
+                  </div>
+                  <div class="flex justify-between text-slate-400">
+                    <span>Missing:</span>
+                    <span>{{ gapAnalysisResult.baskets_missing?.length || 0 }}</span>
+                  </div>
+                  <div class="flex justify-between text-slate-400">
+                    <span>To Delete:</span>
+                    <span>{{ gapAnalysisResult.baskets_to_delete?.length || 0 }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Regenerate Baskets -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-400 mb-2">Regenerate Baskets</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Generate missing baskets after collision fixes
+              </p>
+              <button
+                @click="regenerateBaskets"
+                :disabled="regenerationLoading || !gapAnalysisResult || (gapAnalysisResult.baskets_missing?.length || 0) === 0"
+                class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+              >
+                <span v-if="regenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                <span v-else>🔄</span>
+                {{ regenerationLoading ? 'Regenerating...' : 'Regenerate' }}
+              </button>
+
+              <!-- Regeneration Status -->
+              <div v-if="regenerationResult" class="mt-4 p-3 rounded-lg border bg-purple-900/20 border-purple-500/50">
+                <div class="text-sm text-slate-300">
+                  <div>✓ Cleanup: {{ regenerationResult.cleanup?.deletedOldBaskets || 0 }} deleted</div>
+                  <div>⏳ Generating {{ regenerationResult.segmentation?.totalBaskets || 0 }} baskets...</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -809,6 +922,15 @@ const introductionsData = ref(null) // Introductions data from introductions.jso
 const editingIntro = ref(null) // LEGO ID being edited
 const editedIntroText = ref('') // Edited text
 const savingIntro = ref(false) // Saving state
+
+// Validation & Fix panel state
+const showValidationPanel = ref(false)
+const lutCheckLoading = ref(false)
+const lutCheckResult = ref(null)
+const gapAnalysisLoading = ref(false)
+const gapAnalysisResult = ref(null)
+const regenerationLoading = ref(false)
+const regenerationResult = ref(null)
 
 // Edit modal state
 const editModal = ref({
@@ -1618,6 +1740,120 @@ function dismissRegenerationProgress() {
   regenerationState.value.currentPhase = null
   regenerationState.value.progress = 0
   regenerationState.value.error = null
+}
+
+// Validation & Fix Functions
+async function runLUTCheck() {
+  lutCheckLoading.value = true
+  lutCheckResult.value = null
+
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/courses/${courseCode}/phase/3/validate`, {
+      method: 'POST'
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+    }
+
+    const result = await response.json()
+    lutCheckResult.value = result
+
+    // Auto-trigger gap analysis if collisions found
+    if (result.status === 'fail' && result.reextractionNeeded) {
+      console.log('Collisions detected, running gap analysis...')
+      setTimeout(() => runBasketGapAnalysis(), 500)
+    }
+  } catch (err) {
+    console.error('LUT Check error:', err)
+    alert(`LUT Check failed: ${err.message}`)
+  } finally {
+    lutCheckLoading.value = false
+  }
+}
+
+async function runBasketGapAnalysis() {
+  gapAnalysisLoading.value = true
+  gapAnalysisResult.value = null
+
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/courses/${courseCode}/baskets/gaps`)
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+    }
+
+    const result = await response.json()
+    gapAnalysisResult.value = result
+  } catch (err) {
+    console.error('Gap Analysis error:', err)
+    alert(`Gap Analysis failed: ${err.message}`)
+  } finally {
+    gapAnalysisLoading.value = false
+  }
+}
+
+async function regenerateBaskets() {
+  if (!gapAnalysisResult.value) {
+    alert('Please run Gap Analysis first')
+    return
+  }
+
+  const missing = gapAnalysisResult.value.baskets_missing?.length || 0
+  if (missing === 0) {
+    alert('No missing baskets to regenerate')
+    return
+  }
+
+  const confirmed = confirm(
+    `Regenerate ${missing} missing baskets?\n\n` +
+    `This will:\n` +
+    `1. Delete ${gapAnalysisResult.value.baskets_to_delete?.length || 0} deprecated baskets\n` +
+    `2. Generate ${missing} new baskets\n` +
+    `3. Auto-merge when complete\n\n` +
+    `Estimated time: ~${Math.ceil(missing / 50) * 12} minutes`
+  )
+
+  if (!confirmed) return
+
+  regenerationLoading.value = true
+  regenerationResult.value = null
+
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/courses/${courseCode}/phase/5/regenerate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        courseCode,
+        legoIds: gapAnalysisResult.value.baskets_missing,
+        target: course.value.target_language?.toLowerCase() || 'spa',
+        known: course.value.source_language?.toLowerCase() || 'eng'
+      })
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+    }
+
+    const result = await response.json()
+    regenerationResult.value = result
+
+    alert(
+      `Basket regeneration started!\n\n` +
+      `Browsers: ${result.segmentation?.browsersNeeded || 0}\n` +
+      `Baskets: ${result.segmentation?.totalBaskets || 0}\n` +
+      `Estimated time: ${result.segmentation?.estimatedTime || 'Unknown'}\n\n` +
+      `The process will run in the background.`
+    )
+  } catch (err) {
+    console.error('Regeneration error:', err)
+    alert(`Regeneration failed: ${err.message}`)
+  } finally {
+    regenerationLoading.value = false
+  }
 }
 
 // Cleanup on component unmount
