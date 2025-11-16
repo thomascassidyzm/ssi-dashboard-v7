@@ -691,6 +691,53 @@ app.get('/api/languages', (req, res) => {
 });
 
 /**
+ * GET /api/courses/validate/all
+ * List all courses with their validation status
+ */
+app.get('/api/courses/validate/all', async (req, res) => {
+  try {
+    const manifestPath = path.join(__dirname, '../../public/vfs/courses-manifest.json');
+    const manifest = await fs.readJson(manifestPath);
+
+    const coursesValidation = [];
+
+    for (const course of manifest.courses) {
+      if (course.actual_seed_count === 0) continue; // Skip empty courses
+
+      const courseCode = course.course_code;
+      const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+      const reportPath = legoPairsPath.replace('.json', '_fd_report.json');
+
+      let validationStatus = {
+        courseCode,
+        hasLegoPairs: await fs.pathExists(legoPairsPath),
+        hasBaskets: course.basket_count > 0,
+        collisions: 0,
+        status: 'not_validated'
+      };
+
+      // Check if there's an existing FD report
+      if (await fs.pathExists(reportPath)) {
+        const report = await fs.readJson(reportPath);
+        validationStatus.collisions = report.total_violations || 0;
+        validationStatus.status = validationStatus.collisions > 0 ? 'has_violations' : 'valid';
+        validationStatus.lastValidated = report.timestamp;
+      }
+
+      coursesValidation.push(validationStatus);
+    }
+
+    res.json({
+      courses: coursesValidation,
+      total: coursesValidation.length
+    });
+  } catch (error) {
+    console.error('Error loading validation data:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/validate
  * Run Phase 3 FD collision detection and return results
  */
