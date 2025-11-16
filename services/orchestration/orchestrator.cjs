@@ -708,12 +708,20 @@ app.get('/api/courses/validate/all', async (req, res) => {
       const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
       const reportPath = legoPairsPath.replace('.json', '_fd_report.json');
 
+      // Determine completed phases
+      const completedPhases = [];
+      if (course.actual_seed_count > 0) completedPhases.push(1);
+      if (await fs.pathExists(legoPairsPath)) completedPhases.push(3);
+      if (course.basket_count > 0) completedPhases.push(5);
+
       let validationStatus = {
         courseCode,
         hasLegoPairs: await fs.pathExists(legoPairsPath),
         hasBaskets: course.basket_count > 0,
         collisions: 0,
-        status: 'not_validated'
+        status: 'not_validated',
+        completedPhases,
+        canProgress: false
       };
 
       // Check if there's an existing FD report
