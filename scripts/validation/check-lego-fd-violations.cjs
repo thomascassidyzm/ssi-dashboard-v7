@@ -138,12 +138,46 @@ if (violations.length === 0) {
     console.log(`       This creates AMBIGUITY and violates zero-variation pedagogy!\n`);
   });
 
+  // Generate re-extraction manifest for affected seeds
+  const affectedSeeds = new Set();
+  violations.forEach(v => {
+    v.mappings.forEach(m => {
+      m.legos.forEach(lego => {
+        affectedSeeds.add(lego.seed_id);
+      });
+    });
+  });
+
+  const reExtractionManifest = {
+    reason: 'FD_VIOLATIONS',
+    affected_seeds: Array.from(affectedSeeds).sort(),
+    violations_by_seed: {}
+  };
+
+  // Group violations by seed for detailed instructions
+  affectedSeeds.forEach(seedId => {
+    const seedViolations = violations.filter(v =>
+      v.mappings.some(m => m.legos.some(lego => lego.seed_id === seedId))
+    );
+
+    reExtractionManifest.violations_by_seed[seedId] = seedViolations.map(v => ({
+      known: v.known,
+      conflicting_targets: v.mappings.map(m => m.target),
+      instruction: `The KNOWN phrase "${v.known}" maps to multiple TARGETs. When re-extracting this seed, chunk this phrase WITH adjacent LEGOs to create a larger MOLECULAR_LEGO that disambiguates meaning.`
+    }));
+  });
+
+  const manifestPath = legoPairsPath.replace('.json', '_reextraction_manifest.json');
+  fs.writeFileSync(manifestPath, JSON.stringify(reExtractionManifest, null, 2));
+
   console.log('⚠️  ACTION REQUIRED:');
-  console.log('   Review violations and either:');
-  console.log('   1. Modify LEGO pairs to use different wording');
-  console.log('   2. Add disambiguating context to KNOWN LEGOs');
-  console.log('   3. Consolidate duplicate/conflicting LEGOs');
-  console.log('   4. Ensure consistent translation choices across all seeds\n');
+  console.log(`   ${affectedSeeds.size} seeds need Phase 3 re-extraction`);
+  console.log(`   📋 Re-extraction manifest: ${manifestPath}\n`);
+  console.log('   REMEDIATION STRATEGY:');
+  console.log('   1. Re-run Phase 3 for affected seeds only');
+  console.log('   2. Include violation details in the master prompt');
+  console.log('   3. Instruct Claude to chunk violating LEGOs UP into MOLECULAR_LEGOs');
+  console.log('   4. Let Claude make linguistic chunking decisions with context\n');
 
   // Write detailed report
   const report = {
@@ -153,7 +187,9 @@ if (violations.length === 0) {
     total_legos: totalLegos,
     unique_known_legos: collisionMap.size,
     violation_count: violations.length,
-    violations: violations
+    affected_seeds_count: affectedSeeds.size,
+    violations: violations,
+    reextraction_manifest: reExtractionManifest
   };
 
   const reportFile = legoPairsPath.replace('.json', '_fd_report.json');
