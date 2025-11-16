@@ -157,7 +157,7 @@ Write to: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
 \`\`\`
 
 **After completing all translations:**
-1. Write the seed_pairs.json file
+1. Write the seed_pairs.json file to \`public/vfs/courses/${courseCode}/seed_pairs.json\`
 2. Commit and push to your Claude Code session branch
 
 ---
@@ -289,47 +289,59 @@ async function startBranchWatcher(courseCode, expectedAgents) {
       // Fetch latest from remote
       await execAsync('git fetch --all', { cwd: VFS_ROOT });
 
-      // Look for Phase 1 branches for this course
+      // Look for ANY recent claude/* branches (Claude Code auto-generates names)
       const result = await execAsync(
-        `git branch -r | grep "claude/phase1.*${courseCode}" || true`,
+        `git branch -r --sort=-committerdate | grep "origin/claude/" | head -5 || true`,
         { cwd: VFS_ROOT }
       );
 
-      const branches = result.stdout
+      const recentBranches = result.stdout
         .split('\n')
         .filter(b => b.trim())
         .map(b => b.trim().replace('origin/', ''));
 
-      if (branches.length > 0) {
-        console.log(`\n📦 Detected ${branches.length} Phase 1 branch(es) for ${courseCode}`);
-
-        // Merge the first branch (sequential mode = only 1 branch expected)
-        const branchName = branches[0];
-        console.log(`   Merging: ${branchName}`);
-
+      // Check each recent branch for seed_pairs.json in the course directory
+      for (const branchName of recentBranches) {
         try {
-          // Switch to main and merge
-          await execAsync('git checkout main', { cwd: VFS_ROOT });
-          await execAsync(`git merge origin/${branchName} --no-edit -m "Auto-merge Phase 1: ${courseCode}"`, { cwd: VFS_ROOT });
-          console.log(`   ✅ Merged ${branchName} to main`);
+          const checkFile = await execAsync(
+            `git ls-tree -r origin/${branchName} --name-only | grep "courses/${courseCode}/seed_pairs.json" || true`,
+            { cwd: VFS_ROOT }
+          );
 
-          // Verify seed_pairs.json was created
-          await mergeTranslations(courseCode);
+          if (checkFile.stdout.trim()) {
+            console.log(`\n📦 Found Phase 1 output in branch: ${branchName}`);
+            console.log(`   File: courses/${courseCode}/seed_pairs.json`);
+            console.log(`   Merging branch...`);
 
-          // Update job status
-          if (job) {
-            job.status = 'complete';
-            job.merged = true;
+            try {
+              // Switch to main and merge
+              await execAsync('git checkout main', { cwd: VFS_ROOT });
+              await execAsync(`git merge origin/${branchName} --no-edit -m "Auto-merge Phase 1: ${courseCode}"`, { cwd: VFS_ROOT });
+              console.log(`   ✅ Merged ${branchName} to main`);
+
+              // Verify seed_pairs.json was created
+              await mergeTranslations(courseCode);
+
+              // Update job status
+              if (job) {
+                job.status = 'complete';
+                job.merged = true;
+                job.branchesDetected = 1;
+              }
+
+              // Notify orchestrator
+              await notifyOrchestrator(courseCode, 'complete');
+
+              // Stop watching
+              clearInterval(watchInterval);
+              watchers.delete(courseCode);
+              return; // Exit the loop once merged
+            } catch (mergeError) {
+              console.error(`   ❌ Failed to merge ${branchName}:`, mergeError.message);
+            }
           }
-
-          // Notify orchestrator
-          await notifyOrchestrator(courseCode, 'complete');
-
-          // Stop watching
-          clearInterval(watchInterval);
-          watchers.delete(courseCode);
-        } catch (mergeError) {
-          console.error(`   ❌ Failed to merge ${branchName}:`, mergeError.message);
+        } catch (checkError) {
+          // Branch doesn't have our file, skip it
         }
       }
     } catch (error) {
