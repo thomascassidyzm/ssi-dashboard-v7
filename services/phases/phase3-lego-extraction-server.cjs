@@ -230,7 +230,9 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 **Extract LEGOs from**: Seeds S00XX through S00YY (${seedsPerAgent} seeds)
 
-**Get seed_pairs.json from**: https://ssi-dashboard-v7.vercel.app/vfs/courses/${target}_for_${known}/seed_pairs.json
+**Get seed_pairs.json from**:
+- **Local**: \`public/vfs/courses/${courseCode}/seed_pairs.json\` (try this first - you're running in the repo!)
+- **Fallback**: https://ssi-dashboard-v7.vercel.app/vfs/courses/${courseCode}/seed_pairs.json (if local not available)
 
 ---
 

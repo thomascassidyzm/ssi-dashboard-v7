@@ -358,6 +358,46 @@ app.post('/api/courses/:courseCode/start-phase', async (req, res) => {
   try {
     console.log(`\n🚀 Starting Phase ${phase} for ${courseCode}`);
 
+    // Validate prerequisite phases are complete
+    const prerequisites = {
+      1: [],           // Phase 1 has no prerequisites
+      3: [1],          // Phase 3 requires Phase 1 (seed_pairs.json)
+      5: [1, 3],       // Phase 5 requires Phases 1 & 3 (lego_pairs.json)
+      6: [1, 3, 5],    // Phase 6 requires Phases 1, 3 & 5
+      8: [1, 3, 5, 6]  // Phase 8 requires all previous phases
+    };
+
+    const requiredPhases = prerequisites[phase] || [];
+    const missingPrereqs = [];
+
+    for (const prereqPhase of requiredPhases) {
+      // Check if prerequisite file exists
+      let prereqFile;
+      if (prereqPhase === 1) {
+        prereqFile = path.join(VFS_ROOT, courseCode, 'seed_pairs.json');
+      } else if (prereqPhase === 3) {
+        prereqFile = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+      } else if (prereqPhase === 5) {
+        prereqFile = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+      }
+
+      if (prereqFile && !fs.existsSync(prereqFile)) {
+        missingPrereqs.push({
+          phase: prereqPhase,
+          file: path.basename(prereqFile)
+        });
+      }
+    }
+
+    if (missingPrereqs.length > 0) {
+      const error = `Cannot start Phase ${phase} - missing prerequisites: ${missingPrereqs.map(p => `Phase ${p.phase} (${p.file})`).join(', ')}`;
+      console.log(`   ❌ ${error}`);
+      return res.status(400).json({
+        error,
+        missingPrerequisites: missingPrereqs
+      });
+    }
+
     // Initialize or update course state
     let state = courseStates.get(courseCode) || {
       courseCode,
