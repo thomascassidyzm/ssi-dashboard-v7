@@ -124,3 +124,10 @@ public/vfs/courses/*/*_collision*.txt             # Collision text files
 # - lego_pairs.json (Phase 3 output, ~2MB)
 # - lego_baskets.json (Phase 5 output, ~5MB - contains ALL course data)
 # - introductions.json (Phase 6 output, ~500KB)
+archive/old_test_batches/
+public/vfs/courses/*/lego_pairs_fd_report.json
+public/vfs/courses/*/lego_pairs_reextraction_manifest.json
+public/vfs/courses/*/basket_*.json
+public/vfs/courses/*/deleted_baskets_backup.json
+public/vfs/courses/*/phase3_collision_reextraction_manifest.json
+public/vfs/courses/*/phase5_outputs/
