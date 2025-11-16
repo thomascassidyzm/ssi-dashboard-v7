@@ -1,0 +1,169 @@
+{
+  "agent_id": "agent_01",
+  "seed_range": "S0004-S0005",
+  "extracted_at": "2025-11-16T18:50:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "course": "spa_for_eng",
+  "seeds": [
+    {
+      "seed_id": "S0004",
+      "seed_pair": [
+        "how to say something in Spanish",
+        "cómo decir algo en español"
+      ],
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "target": "decir algo",
+          "known": "say something",
+          "new": true,
+          "components": [
+            ["decir", "say/to say"],
+            ["algo", "something"]
+          ]
+        },
+        {
+          "id": "S0004L02",
+          "type": "M",
+          "target": "algo en español",
+          "known": "something in Spanish",
+          "new": true,
+          "components": [
+            ["algo", "something"],
+            ["en", "in"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "target": "en español",
+          "known": "in Spanish",
+          "new": true,
+          "components": [
+            ["en", "in"],
+            ["español", "Spanish"]
+          ]
+        },
+        {
+          "id": "S0004L04",
+          "type": "M",
+          "target": "cómo decir",
+          "known": "how to say",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["decir", "to say"]
+          ]
+        },
+        {
+          "id": "S0004L05",
+          "type": "M",
+          "target": "cómo decir algo",
+          "known": "how to say something",
+          "new": true,
+          "components": [
+            ["cómo", "how"],
+            ["decir", "to say"],
+            ["algo", "something"]
+          ]
+        },
+        {
+          "id": "S0004L06",
+          "type": "M",
+          "target": "decir algo en español",
+          "known": "say something in Spanish",
+          "new": true,
+          "components": [
+            ["decir", "say/to say"],
+            ["algo", "something"],
+            ["en", "in"],
+            ["español", "Spanish"]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": [
+        "I'm going to practise speaking with someone else.",
+        "Voy a practicar hablar con alguien más."
+      ],
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "target": "voy a practicar",
+          "known": "I'm going to practise",
+          "new": true,
+          "components": [
+            ["voy", "I'm going"],
+            ["a", "to"],
+            ["practicar", "practise/to practise"]
+          ]
+        },
+        {
+          "id": "S0005L02",
+          "type": "M",
+          "target": "practicar hablar",
+          "known": "practise speaking",
+          "new": true,
+          "components": [
+            ["practicar", "practise/to practise"],
+            ["hablar", "speaking/to speak"]
+          ]
+        },
+        {
+          "id": "S0005L03",
+          "type": "M",
+          "target": "voy a practicar hablar",
+          "known": "I'm going to practise speaking",
+          "new": true,
+          "components": [
+            ["voy", "I'm going"],
+            ["a", "to"],
+            ["practicar", "practise"],
+            ["hablar", "speaking/to speak"]
+          ]
+        },
+        {
+          "id": "S0005L04",
+          "type": "M",
+          "target": "alguien más",
+          "known": "someone else",
+          "new": true,
+          "components": [
+            ["alguien", "someone"],
+            ["más", "else/more"]
+          ]
+        },
+        {
+          "id": "S0005L05",
+          "type": "M",
+          "target": "con alguien más",
+          "known": "with someone else",
+          "new": true,
+          "components": [
+            ["con", "with"],
+            ["alguien", "someone"],
+            ["más", "else/more"]
+          ]
+        },
+        {
+          "id": "S0005L06",
+          "type": "M",
+          "target": "hablar con alguien más",
+          "known": "speaking with someone else",
+          "new": true,
+          "components": [
+            ["hablar", "speaking/to speak"],
+            ["con", "with"],
+            ["alguien", "someone"],
+            ["más", "else/more"]
+          ]
+        }
+      ]
+    }
+  ]
+}
