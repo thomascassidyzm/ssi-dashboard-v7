@@ -64,13 +64,17 @@ generate_final.py
 generate_simple.py
 generate_ultra_fast.py
 generate_agent_03_baskets_fast.py
+generate_collision_baskets.py
 generation_log.txt
 
 # Phase 5: Full outputs with metadata (local debugging only)
 public/vfs/courses/*/phase5_outputs/*_FULL.json
+public/vfs/courses/*/phase_5/regenerated/*_FULL.json
+public/vfs/courses/*/phase_5/regenerated/regeneration_summary.json
 
 # Keep stripped basket files (these ARE pushed to branches)
 !public/vfs/courses/*/phase5_outputs/*_baskets.json
+!public/vfs/courses/*/phase_5/regenerated/*_baskets.json
 
 # Phase 5 Working Files vs Final Output
 # =====================================
