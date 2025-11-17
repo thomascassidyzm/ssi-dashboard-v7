@@ -1,0 +1,136 @@
+{
+  "S0643L01": {
+    "target": "señor",
+    "known": "sir",
+    "type": "A",
+    "baskets": [
+      [
+        "sir",
+        "señor",
+        null,
+        1
+      ],
+      [
+        "Yes, sir",
+        "Sí, señor",
+        null,
+        2
+      ],
+      [
+        "I want sir",
+        "Quiero señor",
+        null,
+        3
+      ],
+      [
+        "You have sir",
+        "Tienes señor",
+        null,
+        3
+      ],
+      [
+        "I think I want sir",
+        "Creo que quiero señor",
+        null,
+        4
+      ],
+      [
+        "Do you have sir?",
+        "¿Tienes señor?",
+        null,
+        4
+      ],
+      [
+        "I don't think I want sir",
+        "No creo que quiero señor",
+        null,
+        5
+      ],
+      [
+        "She said she wants sir",
+        "Ella dijo que quiere señor",
+        null,
+        5
+      ],
+      [
+        "Do you think you need sir?",
+        "¿Crees que necesitas señor?",
+        null,
+        6
+      ],
+      [
+        "Yes, I think you need sir",
+        "Sí, creo que necesitas señor",
+        null,
+        7
+      ]
+    ]
+  },
+  "S0643L02": {
+    "target": "quiere usted",
+    "known": "do you want",
+    "type": "M",
+    "baskets": [
+      [
+        "do you want",
+        "quiere usted",
+        null,
+        1
+      ],
+      [
+        "Yes, do you want",
+        "Sí, quiere usted",
+        null,
+        2
+      ],
+      [
+        "I want do you want",
+        "Quiero quiere usted",
+        null,
+        3
+      ],
+      [
+        "You have do you want",
+        "Tienes quiere usted",
+        null,
+        3
+      ],
+      [
+        "I think I want do you want",
+        "Creo que quiero quiere usted",
+        null,
+        4
+      ],
+      [
+        "Do you have do you want?",
+        "¿Tienes quiere usted?",
+        null,
+        4
+      ],
+      [
+        "I don't think I want do you want",
+        "No creo que quiero quiere usted",
+        null,
+        5
+      ],
+      [
+        "She said she wants do you want",
+        "Ella dijo que quiere quiere usted",
+        null,
+        5
+      ],
+      [
+        "Do you think you need do you want?",
+        "¿Crees que necesitas quiere usted?",
+        null,
+        6
+      ],
+      [
+        "Do you want sir",
+        "¿Quiere usted señor?",
+        null,
+        10
+      ]
+    ]
+  }
+}
