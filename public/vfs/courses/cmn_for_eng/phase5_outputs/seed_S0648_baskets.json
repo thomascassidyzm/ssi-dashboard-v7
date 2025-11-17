@@ -1,0 +1,211 @@
+{
+  "S0648L01": {
+    "lego": [
+      "what you said",
+      "您说的话"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "What you said",
+        "您说的话",
+        null,
+        1
+      ],
+      [
+        "What you said madam",
+        "您说的话女士",
+        null,
+        1
+      ],
+      [
+        "I think what you said",
+        "我认为您说的话",
+        null,
+        2
+      ],
+      [
+        "I want what you said",
+        "我想您说的话",
+        null,
+        2
+      ],
+      [
+        "I'm trying to think about what you said",
+        "我在试着想您说的话",
+        null,
+        3
+      ],
+      [
+        "Sir, what you said is the red one",
+        "先生，您说的话是红色的那个",
+        null,
+        3
+      ],
+      [
+        "Could you say what you said again madam",
+        "您能说您说的话吗女士",
+        null,
+        4
+      ],
+      [
+        "I can help you with what you said sir",
+        "我可以帮您您说的话先生",
+        null,
+        4
+      ],
+      [
+        "I think that what you said is on that chair madam",
+        "我认为您说的话在那把椅子上女士",
+        null,
+        5
+      ],
+      [
+        "You speak it, I'm trying to think about what you said sir",
+        "您说它，我在试着想您说的话先生",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0648L01",
+      "seed_context": {
+        "known": "what you said madam",
+        "target": "您说的话女士"
+      }
+    },
+    "components": [
+      [
+        "您",
+        "you (formal)"
+      ],
+      [
+        "说",
+        "said/say"
+      ],
+      [
+        "的",
+        "possessive/nominalizer"
+      ],
+      [
+        "话",
+        "words/speech"
+      ]
+    ]
+  },
+  "S0648L02": {
+    "lego": [
+      "what (someone) said",
+      "说的话"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0648L01",
+        "known": "what you said",
+        "target": "您说的话",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What I said",
+        "我说的话",
+        null,
+        1
+      ],
+      [
+        "What she said madam",
+        "她说的话女士",
+        null,
+        1
+      ],
+      [
+        "I think what I said",
+        "我认为我说的话",
+        null,
+        2
+      ],
+      [
+        "I want what I said",
+        "我想我说的话",
+        null,
+        2
+      ],
+      [
+        "What you said is what I said",
+        "您说的话是我说的话",
+        null,
+        3
+      ],
+      [
+        "I'm trying to think about what I said",
+        "我在试着想我说的话",
+        null,
+        3
+      ],
+      [
+        "Sir, could you say what I said with that",
+        "先生，您能说我说的话和那个吗",
+        null,
+        4
+      ],
+      [
+        "I can help you, what I said is the red one",
+        "我可以帮您，我说的话是红色的那个",
+        null,
+        4
+      ],
+      [
+        "What you said madam is on that chair, I think what I said is that one",
+        "您说的话女士在那把椅子上，我认为我说的话是那个",
+        null,
+        5
+      ],
+      [
+        "what you said madam",
+        "您说的话女士",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0648L02",
+      "seed_context": {
+        "known": "what you said madam",
+        "target": "您说的话女士"
+      }
+    },
+    "components": [
+      [
+        "说",
+        "said/say"
+      ],
+      [
+        "的",
+        "possessive/nominalizer"
+      ],
+      [
+        "话",
+        "words"
+      ]
+    ]
+  }
+}
