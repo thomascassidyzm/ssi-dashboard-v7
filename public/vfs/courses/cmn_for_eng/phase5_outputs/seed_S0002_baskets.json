@@ -1,0 +1,46 @@
+{
+  "S0002L01": {
+    "lego": ["I'm trying to", "我在试着"],
+    "type": "M",
+    "practice_phrases": [
+      ["I'm trying to", "我在试着", null, 1],
+      ["I'm trying to now", "我现在在试着", null, 2],
+      ["I'm trying to speak Chinese", "我在试着说中文", null, 2],
+      ["I'm trying to speak Chinese with you", "我在试着和你说中文", null, 3],
+      ["I'm trying to speak Chinese with you now", "我现在在试着和你说中文", null, 4]
+    ]
+  },
+  "S0002L02": {
+    "lego": ["am trying to", "在试着"],
+    "type": "M",
+    "practice_phrases": [
+      ["am trying to", "在试着", null, 1],
+      ["I am trying to", "我在试着", null, 1],
+      ["am trying to now", "现在在试着", null, 2],
+      ["am trying to speak Chinese", "在试着说中文", null, 2],
+      ["I am trying to speak Chinese with you", "我在试着和你说中文", null, 3]
+    ]
+  },
+  "S0002L03": {
+    "lego": ["to learn", "学习"],
+    "type": "M",
+    "practice_phrases": [
+      ["to learn", "学习", null, 1],
+      ["I want to learn", "我想学习", null, 2],
+      ["I'm trying to learn", "我在试着学习", null, 2],
+      ["to learn Chinese", "学习中文", null, 2],
+      ["I want to learn Chinese now", "我现在想学习中文", null, 4]
+    ]
+  },
+  "S0002L04": {
+    "lego": ["trying to learn", "试着学习"],
+    "type": "M",
+    "practice_phrases": [
+      ["trying to learn", "试着学习", null, 1],
+      ["I'm trying to learn", "我在试着学习", null, 2],
+      ["trying to learn Chinese", "试着学习中文", null, 2],
+      ["I'm trying to learn Chinese now", "我现在在试着学习中文", null, 4],
+      ["I'm trying to learn Chinese with you", "我在试着和你学习中文", null, 4]
+    ]
+  }
+}

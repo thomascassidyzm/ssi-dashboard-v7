@@ -1,0 +1,885 @@
+{
+  "S0005L01": {
+    "lego": [
+      "I'm going to",
+      "我要"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm going to learn",
+        "我要学习",
+        null,
+        2
+      ],
+      [
+        "I'm going to speak",
+        "我要说",
+        null,
+        2
+      ],
+      [
+        "I'm going to speak Chinese",
+        "我要说中文",
+        null,
+        3
+      ],
+      [
+        "I'm going to speak often",
+        "我要经常说",
+        null,
+        3
+      ],
+      [
+        "I'm going to speak with you",
+        "我要和你说",
+        null,
+        4
+      ],
+      [
+        "I'm going to say something",
+        "我要说一些东西",
+        null,
+        4
+      ],
+      [
+        "I'm going to speak Chinese with you",
+        "我要和你说中文",
+        null,
+        5
+      ],
+      [
+        "I'm going to try to learn",
+        "我要试着学习",
+        null,
+        5
+      ],
+      [
+        "I'm going to say something in Chinese",
+        "我要用中文说一些东西",
+        null,
+        6
+      ],
+      [
+        "I'm going to speak Chinese as often as possible",
+        "我要尽可能经常地说中文",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0005L01",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0005L02": {
+    "lego": [
+      "someone else",
+      "别人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm going to",
+        "我要"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "someone else",
+        "别人",
+        null,
+        1
+      ],
+      [
+        "I want to with someone else",
+        "我想和别人",
+        null,
+        2
+      ],
+      [
+        "to speak with someone else",
+        "和别人说",
+        null,
+        3
+      ],
+      [
+        "to learn with someone else",
+        "和别人学习",
+        null,
+        3
+      ],
+      [
+        "I'm going to with someone else",
+        "我要和别人",
+        null,
+        4
+      ],
+      [
+        "I want to speak with someone else",
+        "我想和别人说",
+        null,
+        4
+      ],
+      [
+        "I'm going to speak with someone else",
+        "我要和别人说",
+        null,
+        5
+      ],
+      [
+        "I'm going to learn with someone else",
+        "我要和别人学习",
+        null,
+        5
+      ],
+      [
+        "I'm going to speak Chinese with someone else",
+        "我要和别人说中文",
+        null,
+        6
+      ],
+      [
+        "I'm trying to speak with someone else now",
+        "我现在在试着和别人说",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0005L02",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0005L03": {
+    "lego": [
+      "with someone else",
+      "和别人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm going to",
+        "我要"
+      ],
+      [
+        "someone else",
+        "别人"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "with someone else",
+        "和别人",
+        null,
+        1
+      ],
+      [
+        "to speak with someone else",
+        "和别人说",
+        null,
+        2
+      ],
+      [
+        "I want to with someone else",
+        "我想和别人",
+        null,
+        3
+      ],
+      [
+        "to learn with someone else",
+        "和别人学习",
+        null,
+        3
+      ],
+      [
+        "to speak Chinese with someone else",
+        "和别人说中文",
+        null,
+        4
+      ],
+      [
+        "I'm going to with someone else",
+        "我要和别人",
+        null,
+        4
+      ],
+      [
+        "I'm going to speak with someone else",
+        "我要和别人说",
+        null,
+        5
+      ],
+      [
+        "I want to speak with someone else now",
+        "我现在想和别人说",
+        null,
+        5
+      ],
+      [
+        "I'm going to learn with someone else",
+        "我要和别人学习",
+        null,
+        6
+      ],
+      [
+        "I'm trying to speak Chinese with someone else",
+        "我在试着和别人说中文",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0005L03",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0005L04": {
+    "lego": [
+      "practise",
+      "练习"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm going to",
+        "我要"
+      ],
+      [
+        "someone else",
+        "别人"
+      ],
+      [
+        "with someone else",
+        "和别人"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "practise",
+        "练习",
+        null,
+        1
+      ],
+      [
+        "I'm going to practise",
+        "我要练习",
+        null,
+        2
+      ],
+      [
+        "I want to practise",
+        "我想练习",
+        null,
+        2
+      ],
+      [
+        "I'm trying to practise",
+        "我在试着练习",
+        null,
+        3
+      ],
+      [
+        "to practise often",
+        "经常练习",
+        null,
+        3
+      ],
+      [
+        "I'm going to practise with someone else",
+        "我要和别人练习",
+        null,
+        4
+      ],
+      [
+        "to practise as often as possible",
+        "尽可能经常地练习",
+        null,
+        4
+      ],
+      [
+        "I'm going to practise with you",
+        "我要和你练习",
+        null,
+        5
+      ],
+      [
+        "I want to practise with someone else now",
+        "我现在想和别人练习",
+        null,
+        6
+      ],
+      [
+        "I'm going to practise as often as possible",
+        "我要尽可能经常地练习",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0005L04",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0005L05": {
+    "lego": [
+      "speaking",
+      "说话"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm going to",
+        "我要"
+      ],
+      [
+        "someone else",
+        "别人"
+      ],
+      [
+        "with someone else",
+        "和别人"
+      ],
+      [
+        "practise",
+        "练习"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "speaking",
+        "说话",
+        null,
+        1
+      ],
+      [
+        "I'm going to speaking",
+        "我要说话",
+        null,
+        2
+      ],
+      [
+        "I want to speaking",
+        "我想说话",
+        null,
+        2
+      ],
+      [
+        "speaking with someone else",
+        "和别人说话",
+        null,
+        3
+      ],
+      [
+        "I'm trying to speaking",
+        "我在试着说话",
+        null,
+        3
+      ],
+      [
+        "I'm going to speaking with someone else",
+        "我要和别人说话",
+        null,
+        4
+      ],
+      [
+        "I'm going to practise speaking",
+        "我要练习说话",
+        null,
+        4
+      ],
+      [
+        "I want to speaking with you now",
+        "我现在想和你说话",
+        null,
+        5
+      ],
+      [
+        "I'm going to speaking often",
+        "我要经常说话",
+        null,
+        5
+      ],
+      [
+        "I'm going to practise speaking with someone else",
+        "我要和别人练习说话",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0005L05",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0005L06": {
+    "lego": [
+      "practise speaking",
+      "练习说话"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm going to",
+        "我要"
+      ],
+      [
+        "someone else",
+        "别人"
+      ],
+      [
+        "with someone else",
+        "和别人"
+      ],
+      [
+        "practise",
+        "练习"
+      ],
+      [
+        "speaking",
+        "说话"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "practise speaking",
+        "练习说话",
+        null,
+        1
+      ],
+      [
+        "I'm going to practise speaking",
+        "我要练习说话",
+        null,
+        2
+      ],
+      [
+        "I want to practise speaking",
+        "我想练习说话",
+        null,
+        3
+      ],
+      [
+        "I'm trying to practise speaking",
+        "我在试着练习说话",
+        null,
+        3
+      ],
+      [
+        "to practise speaking often",
+        "经常练习说话",
+        null,
+        4
+      ],
+      [
+        "practise speaking with someone else",
+        "和别人练习说话",
+        null,
+        4
+      ],
+      [
+        "I'm going to practise speaking with you",
+        "我要和你练习说话",
+        null,
+        5
+      ],
+      [
+        "I want to practise speaking now",
+        "我现在想练习说话",
+        null,
+        5
+      ],
+      [
+        "I'm going to practise speaking with someone else",
+        "我要和别人练习说话",
+        null,
+        6
+      ],
+      [
+        "I'm going to practise speaking as often as possible",
+        "我要尽可能经常地练习说话",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0005L06",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0005L07": {
+    "lego": [
+      "to speak with someone else",
+      "和别人说话"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm going to",
+        "我要"
+      ],
+      [
+        "someone else",
+        "别人"
+      ],
+      [
+        "with someone else",
+        "和别人"
+      ],
+      [
+        "practise",
+        "练习"
+      ],
+      [
+        "speaking",
+        "说话"
+      ],
+      [
+        "practise speaking",
+        "练习说话"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "to speak with someone else",
+        "和别人说话",
+        null,
+        2
+      ],
+      [
+        "I want to speak with someone else",
+        "我想和别人说话",
+        null,
+        3
+      ],
+      [
+        "I'm going to speak with someone else",
+        "我要和别人说话",
+        null,
+        3
+      ],
+      [
+        "I'm trying to speak with someone else",
+        "我在试着和别人说话",
+        null,
+        4
+      ],
+      [
+        "to practise to speak with someone else",
+        "练习和别人说话",
+        null,
+        4
+      ],
+      [
+        "how to speak with someone else",
+        "怎么和别人说话",
+        null,
+        5
+      ],
+      [
+        "I want to speak with someone else now",
+        "我现在想和别人说话",
+        null,
+        5
+      ],
+      [
+        "I'm going to practise to speak with someone else",
+        "我要练习和别人说话",
+        null,
+        6
+      ],
+      [
+        "trying to speak with someone else often",
+        "试着经常和别人说话",
+        null,
+        6
+      ],
+      [
+        "I'm going to speak with someone else as often as possible",
+        "我要尽可能经常地和别人说话",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0005L07",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0005L08": {
+    "lego": [
+      "practise speaking with someone else",
+      "和别人练习说话"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm going to",
+        "我要"
+      ],
+      [
+        "someone else",
+        "别人"
+      ],
+      [
+        "with someone else",
+        "和别人"
+      ],
+      [
+        "practise",
+        "练习"
+      ],
+      [
+        "speaking",
+        "说话"
+      ],
+      [
+        "practise speaking",
+        "练习说话"
+      ],
+      [
+        "to speak with someone else",
+        "和别人说话"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "practise speaking with someone else",
+        "和别人练习说话",
+        null,
+        3
+      ],
+      [
+        "I want to practise speaking with someone else",
+        "我想和别人练习说话",
+        null,
+        4
+      ],
+      [
+        "I'm trying to practise speaking with someone else",
+        "我在试着和别人练习说话",
+        null,
+        5
+      ],
+      [
+        "I'm going to practise speaking with someone else",
+        "我要和别人练习说话",
+        null,
+        5
+      ],
+      [
+        "to practise speaking with someone else often",
+        "经常和别人练习说话",
+        null,
+        6
+      ],
+      [
+        "how to practise speaking with someone else",
+        "怎么和别人练习说话",
+        null,
+        6
+      ],
+      [
+        "I want to practise speaking with someone else now",
+        "我现在想和别人练习说话",
+        null,
+        6
+      ],
+      [
+        "trying to practise speaking with someone else as often as possible",
+        "试着尽可能经常地和别人练习说话",
+        null,
+        8
+      ],
+      [
+        "how to practise speaking with someone else in Chinese",
+        "怎么用中文和别人练习说话",
+        null,
+        8
+      ],
+      [
+        "I'm going to practise speaking with someone else.",
+        "我要和别人练习说话。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 6
+    },
+    "_metadata": {
+      "lego_id": "S0005L08",
+      "seed_context": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
