@@ -38,7 +38,8 @@ Before you start, confirm you understand these critical principles:
 
 □ **Vocabulary sources**: 10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)
 □ **GATE compliance**: Every target language word MUST be available from these three sources
-□ **Distribution**: ALWAYS 2-2-2-4 (10 phrases per LEGO, every time)
+□ **Distribution**: ALWAYS 2-2-2-4 (10 phrases per LEGO) - **EXCEPT early seeds S0001-S0010 where fewer natural phrases is OK**
+□ **Early seed flexibility**: For S0001-S0010, prioritize grammar and naturalness over phrase count
 □ **Final LEGO rule**: Highest phrase number = complete seed sentence
 □ **Workflow**: Think → Express → Validate (NOT templates or scripts)
 □ **Extended thinking**: Required for EVERY LEGO
@@ -378,35 +379,93 @@ Fill `practice_phrases` array with format:
 
 ---
 
+## ⚠️ SPECIAL GUIDANCE: EARLY SEEDS (S0001-S0020)
+
+**The first 10-20 seeds are uniquely challenging** because vocabulary is extremely limited.
+
+### Early Seed Constraints:
+
+For **S0001-S0010** especially:
+- ❗ **GATE compliance is CRITICAL** - Only use vocabulary from current seed's earlier LEGOs
+- ❗ **Fewer phrases is OK** - If only 1-3 natural phrases are possible, that's acceptable
+- ❗ **Grammar over quantity** - Natural, grammatical sentences in BOTH languages matter more than hitting 10 phrases
+- ❗ **No forcing it** - Don't create unnatural phrases just to reach phrase count
+
+### Example: S0001L01 (First LEGO Ever)
+
+**LEGO**: "now" / "现在"
+
+**Available vocabulary**: NONE (this is the very first LEGO)
+
+**Valid baskets**:
+```json
+"practice_phrases": [
+  ["Now", "现在", null, 1]
+]
+```
+
+Only 1 phrase is valid because learners literally know zero other words. Creating "Now now now" or "现在现在" would be nonsensical.
+
+### Example: S0001L04 (Fourth LEGO)
+
+**LEGO**: "Chinese" / "中文"
+
+**Available**: "now" (现在), "I want to" (我想), "with you" (和你)
+
+**Valid baskets**:
+```json
+"practice_phrases": [
+  ["Chinese", "中文", null, 1]
+]
+```
+
+Only 1 phrase is natural. Combinations like "Chinese now" (中文现在) or "I want to Chinese" (我想中文) are ungrammatical in both languages.
+
+### When Vocabulary Grows (S0010+):
+
+By seed 10+, enough vocabulary exists to create 10 varied, natural phrases. Apply the full 2-2-2-4 distribution.
+
+**Key principle**: Quality and naturalness trump rigid phrase counts for early seeds.
+
+---
+
 ## 🎓 QUALITY EXAMPLES
 
-### Good Example: Natural Progression
+### Real Example: Chinese Course S0022L02 (Excellent Quality)
+
+**Context**: Seed S0022 teaches "Because I want to meet people who speak Chinese" (因为我想认识会说中文的人。)
+
+**LEGO**: "I want to meet" / "我想认识"
+
+**Available vocabulary**: 21 recent seeds worth of vocabulary + "because" (因为) from S0022L01
 
 ```json
-"S0362L02": {
-  "lego": ["rather quiet", "bastante callado"],
+"S0022L02": {
+  "lego": ["I want to meet", "我想认识"],
   "practice_phrases": [
-    ["Rather quiet", "bastante callado", null, 1],
-    ["He was quiet", "él estaba callado", null, 2],
-    ["He was rather quiet", "él estaba bastante callado", null, 3],
-    ["No, he was rather quiet", "No él estaba bastante callado", null, 4],
-    ["Your friend was rather quiet", "tu amigo estaba bastante callado", null, 5],
-    ["No, your friend was rather quiet", "No tu amigo estaba bastante callado", null, 6],
-    ["She said he was rather quiet", "ella dijo que él estaba bastante callado", null, 7],
-    ["Your friend said he was rather quiet", "tu amigo dijo que él estaba bastante callado", null, 8],
-    ["No, she said your friend was quiet", "No ella dijo que tu amigo estaba callado", null, 8],
-    ["No, he was rather quiet after you left", "No él estaba bastante callado después de que te fuiste", null, 10]
+    ["I want to meet.", "我想认识。", null, 1],
+    ["I want to meet you.", "我想认识你。", null, 2],
+    ["I want to meet tomorrow.", "我想明天认识。", null, 2],
+    ["I want to meet him quickly.", "我想快点认识他。", null, 3],
+    ["I want to meet other people.", "我想认识其他人。", null, 3],
+    ["I want to meet her this evening.", "我想今天晚上认识她。", null, 4],
+    ["I want to meet people who speak very well.", "我想认识说得很好的人。", null, 5],
+    ["I want to meet everyone else at six o'clock.", "我想六点认识其他所有人。", null, 5],
+    ["I want to meet people who are learning together with me.", "我想认识和我一起学的人。", null, 6],
+    ["I want to meet other people because I am learning Chinese.", "我想认识其他人因为我在学中文。", null, 7]
   ]
 }
 ```
 
-**Why this is good:**
-✅ Natural progression from simple to complex
-✅ All target language words available (GATE compliant)
-✅ Variety in scenarios and contexts
-✅ Final phrase is complete seed sentence
+**Why this is excellent:**
+✅ Natural progression from simple (1 LEGO) to complex (7 LEGOs)
+✅ All Chinese words available from previous seeds (GATE compliant)
+✅ Rich variety in scenarios: you, tomorrow, him, people, this evening, six o'clock
+✅ Both English and Chinese sound completely natural
+✅ Grammatically perfect in BOTH languages
+✅ Uses available vocabulary creatively (who speak, who are learning, other people, etc.)
 ✅ 2-2-2-4 distribution maintained
-✅ Both languages sound natural
+✅ Last phrase uses newest vocabulary "because" (因为) from current seed
 
 ### Bad Example: Template Automation
 
