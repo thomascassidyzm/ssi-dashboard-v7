@@ -1,0 +1,131 @@
+{
+  "S0434L01": {
+    "lego": ["could they cut","他们能减少"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Could they cut", "他们能减少", null, 1],
+      ["Could they cut that", "他们能减少那", null, 2],
+      ["Could they cut on Tuesday", "他们能在星期二减少", null, 3],
+      ["Could they cut everybody's time", "他们能减少大家的时间", null, 3],
+      ["Could they cut wasting everybody's time", "他们能减少浪费大家的时间", null, 4],
+      ["Could they cut that for them yet", "他们能还没有减少那对他们来说", null, 4],
+      ["Could they cut the time they're wasting on Tuesday", "他们能减少他们在星期二在浪费的时间", null, 5],
+      ["Could they cut if they need to make sure", "他们能减少如果他们需要确保", null, 5],
+      ["Could they cut wasting everybody's time if they understand the question", "他们能减少浪费大家的时间如果他们理解这个问题", null, 6],
+      ["Could they cut the time they need to visit us on Tuesday", "他们能减少他们需要在星期二来看我们的时间", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0434L02": {
+    "lego": ["cut/reduce","减少"],
+    "type": "A",
+    "current_seed_legos_available": [["could they cut","他们能减少"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Cut", "减少", null, 1],
+      ["They could cut that", "他们能减少那", null, 2],
+      ["They need to cut time", "他们需要减少时间", null, 3],
+      ["Could they cut everybody's time", "他们能减少大家的时间", null, 3],
+      ["They would like to cut wasting time", "他们想要减少浪费时间", null, 4],
+      ["They couldn't cut that for them yet", "他们找不到减少那对他们来说还没有", null, 4],
+      ["They need to make sure they cut wasting time", "他们需要确保他们减少浪费时间", null, 5],
+      ["Could they cut the time they're wasting on Tuesday", "他们能减少他们在星期二在浪费的时间", null, 5],
+      ["They would like to cut wasting everybody's time if they understand", "他们想要减少浪费大家的时间如果他们理解", null, 6],
+      ["They need to cut the time they need to visit us", "他们需要减少他们需要来看我们的时间", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0434L03": {
+    "lego": ["the number of students they take","他们招的学生数量"],
+    "type": "M",
+    "current_seed_legos_available": [["could they cut","他们能减少"],["cut/reduce","减少"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["The number of students they take", "他们招的学生数量", null, 1],
+      ["The number of students they take on Tuesday", "他们在星期二招的学生数量", null, 2],
+      ["They need to ask the number of students they take", "他们需要问他们招的学生数量", null, 3],
+      ["Could they cut the number of students they take", "他们能减少他们招的学生数量", null, 3],
+      ["They need to make sure the number of students they take", "他们需要确保他们招的学生数量", null, 4],
+      ["They couldn't find the number of students they take yet", "他们找不到他们还没有招的学生数量", null, 4],
+      ["They would like to cut the number of students they take", "他们想要减少他们招的学生数量", null, 5],
+      ["They need to ask the number of students they take on Tuesday", "他们需要问他们在星期二招的学生数量", null, 5],
+      ["They need to make sure they understand the number of students they take", "他们需要确保他们理解他们招的学生数量", null, 6],
+      ["Could they cut the number of students they take if they wanted to", "他们能减少他们招的学生数量如果他们想要", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0434L04": {
+    "lego": ["they take","他们招的"],
+    "type": "M",
+    "current_seed_legos_available": [["could they cut","他们能减少"],["cut/reduce","减少"],["the number of students they take","他们招的学生数量"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["They take", "他们招的", null, 1],
+      ["They take students on Tuesday", "他们在星期二招的学生", null, 2],
+      ["The number of students they take", "他们招的学生数量", null, 3],
+      ["They couldn't find the students they take", "他们找不到他们招的学生", null, 3],
+      ["They need to ask the students they take", "他们需要问他们招的学生", null, 4],
+      ["Could they cut the number they take yet", "他们能减少他们还没有招的数量", null, 4],
+      ["They would like to visit the students they take", "他们想要来看他们招的学生", null, 5],
+      ["They need to make sure the students they take understand", "他们需要确保他们招的学生理解", null, 5],
+      ["They couldn't find out the number of students they take on Tuesday", "他们找不到他们在星期二招的学生数量", null, 6],
+      ["Could they cut the number of students they take if that's possible", "他们能减少他们招的学生数量如果那是可能的", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0434L05": {
+    "lego": ["number of students","学生数量"],
+    "type": "M",
+    "current_seed_legos_available": [["could they cut","他们能减少"],["cut/reduce","减少"],["the number of students they take","他们招的学生数量"],["they take","他们招的"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Number of students", "学生数量", null, 1],
+      ["The number of students on Tuesday", "在星期二的学生数量", null, 2],
+      ["They need to ask the number of students", "他们需要问学生数量", null, 3],
+      ["Could they cut the number of students", "他们能减少学生数量", null, 3],
+      ["They need to make sure the number of students", "他们需要确保学生数量", null, 4],
+      ["They couldn't find the number of students they take", "他们找不到他们招的学生数量", null, 4],
+      ["They would like to cut the number of students they take", "他们想要减少他们招的学生数量", null, 5],
+      ["They need to ask the number of students they take on Tuesday", "他们需要问他们在星期二招的学生数量", null, 5],
+      ["They need to make sure they understand the number of students they take", "他们需要确保他们理解他们招的学生数量", null, 6],
+      ["Could they cut the number of students they take?", "他们能减少他们招的学生数量吗？", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null,null],[null,null]]
+  }
+}
