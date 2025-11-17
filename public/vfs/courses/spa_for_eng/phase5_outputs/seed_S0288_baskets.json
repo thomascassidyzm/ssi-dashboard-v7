@@ -1,0 +1,112 @@
+{
+  "legos": {
+    "S0288L03": {
+      "lego": [
+        "I know",
+        "que conozco"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0288L01",
+          "known": "most people",
+          "target": "la mayoría de la gente",
+          "type": "M"
+        },
+        {
+          "id": "S0288L02",
+          "known": "people I know",
+          "target": "la gente que conozco",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I know",
+          "Que conozco",
+          null,
+          1
+        ],
+        [
+          "People I know",
+          "Gente que conozco",
+          null,
+          2
+        ],
+        [
+          "People I know speak Spanish",
+          "Gente que conozco habla español",
+          null,
+          3
+        ],
+        [
+          "The people I know",
+          "La gente que conozco",
+          null,
+          3
+        ],
+        [
+          "The people I know like Spanish",
+          "A la gente que conozco le gusta español",
+          null,
+          5
+        ],
+        [
+          "Most people I know",
+          "La mayoría de la gente que conozco",
+          null,
+          4
+        ],
+        [
+          "Do you know people I know",
+          "Conoces a gente que conozco",
+          null,
+          4
+        ],
+        [
+          "How many people I know",
+          "Cuántas personas que conozco",
+          null,
+          4
+        ],
+        [
+          "Most people I know like Spanish",
+          "A la mayoría de la gente que conozco le gusta español",
+          null,
+          7
+        ],
+        [
+          "Most people I know like watching television",
+          "A la mayoría de la gente que conozco le gusta ver la televisión",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0288L03",
+        "seed_context": {
+          "known": "Most people I know like watching television.",
+          "target": "A la mayoría de la gente que conozco le gusta ver la televisión."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that/who"
+        ],
+        [
+          "conozco",
+          "I know"
+        ]
+      ]
+    }
+  }
+}

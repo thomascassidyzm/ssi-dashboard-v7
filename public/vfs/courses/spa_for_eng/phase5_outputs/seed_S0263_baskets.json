@@ -1,0 +1,97 @@
+{
+  "legos": {
+    "S0263L02": {
+      "lego": [
+        "who",
+        "quién"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0263L01",
+          "known": "I don't know",
+          "target": "no sé",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Who",
+          "Quién",
+          null,
+          1
+        ],
+        [
+          "I don't know who",
+          "No sé quién",
+          null,
+          2
+        ],
+        [
+          "Who was yesterday",
+          "Quién era ayer",
+          null,
+          3
+        ],
+        [
+          "I don't know who it is",
+          "No sé quién es",
+          null,
+          3
+        ],
+        [
+          "Who was that man",
+          "Quién era ese hombre",
+          null,
+          4
+        ],
+        [
+          "Who do you think it is",
+          "Quién crees que es",
+          null,
+          4
+        ],
+        [
+          "I don't know who that man was",
+          "No sé quién era ese hombre",
+          null,
+          5
+        ],
+        [
+          "Who do you think that man was",
+          "Quién crees que era ese hombre",
+          null,
+          6
+        ],
+        [
+          "I don't know who you were talking to",
+          "No sé con quién hablabas",
+          null,
+          5
+        ],
+        [
+          "I don't know who that man you were talking to yesterday was",
+          "No sé quién era ese hombre con el que hablabas ayer",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0263L02",
+        "seed_context": {
+          "known": "I don't know who you mean.",
+          "target": "No sé quién quieres decir."
+        }
+      },
+      "components": []
+    }
+  }
+}

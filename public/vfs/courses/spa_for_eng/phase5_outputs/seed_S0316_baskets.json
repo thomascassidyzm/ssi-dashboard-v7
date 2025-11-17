@@ -1,0 +1,262 @@
+{
+  "legos": {
+    "S0316L01": {
+      "lego": [
+        "you think that",
+        "Crees que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "Crees que",
+          "target": "you think that",
+          "lego_count": 1
+        },
+        {
+          "known": "sí, Crees que",
+          "target": "yes, you think that",
+          "lego_count": 2
+        },
+        {
+          "known": "Crees que ella podría",
+          "target": "you think that she could",
+          "lego_count": 3
+        },
+        {
+          "known": "Crees que no podría creer",
+          "target": "you think that he couldn't believe",
+          "lego_count": 3
+        },
+        {
+          "known": "Crees que ella es una amiga",
+          "target": "you think that she's a friend",
+          "lego_count": 4
+        },
+        {
+          "known": "Crees que podría escribir una historia",
+          "target": "you think that she could write a story",
+          "lego_count": 4
+        },
+        {
+          "known": "Crees que ella es una amiga de mi madre",
+          "target": "you think that she's a friend of my mother",
+          "lego_count": 5
+        },
+        {
+          "known": "Crees que podría usar la otra habitación mañana por la noche",
+          "target": "you think that she could use the other room tomorrow night",
+          "lego_count": 6
+        },
+        {
+          "known": "Crees que no podría creer los tres hechos más importantes",
+          "target": "you think that he couldn't believe the three most important facts",
+          "lego_count": 6
+        },
+        {
+          "known": "Crees que podría escribir una historia sobre ese hombre joven",
+          "target": "you think that she could write a story about that young man",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "Crees",
+          "you think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0316L03": {
+      "lego": [
+        "bring her brother",
+        "traer a su hermano"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0316L01",
+          "known": "you think that",
+          "target": "Crees que",
+          "type": "M"
+        },
+        {
+          "id": "S0316L02",
+          "known": "she could bring",
+          "target": "ella podría traer",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "traer a su hermano",
+          "target": "bring her brother",
+          "lego_count": 1
+        },
+        {
+          "known": "ella podría traer a su hermano",
+          "target": "she could bring her brother",
+          "lego_count": 2
+        },
+        {
+          "known": "Crees que ella podría traer a su hermano",
+          "target": "you think that she could bring her brother",
+          "lego_count": 3
+        },
+        {
+          "known": "sí, ella podría traer a su hermano",
+          "target": "yes, she could bring her brother",
+          "lego_count": 3
+        },
+        {
+          "known": "ella podría traer a su hermano mañana por la noche",
+          "target": "she could bring her brother tomorrow night",
+          "lego_count": 4
+        },
+        {
+          "known": "Ella dijo que podría traer a su hermano",
+          "target": "She said that she could bring her brother",
+          "lego_count": 4
+        },
+        {
+          "known": "Crees que ella podría traer a su hermano mañana por la noche",
+          "target": "you think that she could bring her brother tomorrow night",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_to_5_legos": 3
+      },
+      "target_phrase_count": 7,
+      "components": [
+        [
+          "traer",
+          "bring"
+        ],
+        [
+          "a",
+          "to/personal a"
+        ],
+        [
+          "su",
+          "her"
+        ],
+        [
+          "hermano",
+          "brother"
+        ]
+      ]
+    },
+    "S0316L04": {
+      "lego": [
+        "on Monday",
+        "el lunes"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0316L01",
+          "known": "you think that",
+          "target": "Crees que",
+          "type": "M"
+        },
+        {
+          "id": "S0316L02",
+          "known": "she could bring",
+          "target": "ella podría traer",
+          "type": "M"
+        },
+        {
+          "id": "S0316L03",
+          "known": "bring her brother",
+          "target": "traer a su hermano",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "el lunes",
+          "target": "on Monday",
+          "lego_count": 1
+        },
+        {
+          "known": "sí, el lunes",
+          "target": "yes, on Monday",
+          "lego_count": 2
+        },
+        {
+          "known": "ella podría traer a su hermano el lunes",
+          "target": "she could bring her brother on Monday",
+          "lego_count": 3
+        },
+        {
+          "known": "podría usar la otra habitación el lunes",
+          "target": "she could use the other room on Monday",
+          "lego_count": 3
+        },
+        {
+          "known": "Crees que ella podría traer a su hermano el lunes",
+          "target": "you think that she could bring her brother on Monday",
+          "lego_count": 4
+        },
+        {
+          "known": "Ella dijo que podría traer a su hermano el lunes",
+          "target": "She said that she could bring her brother on Monday",
+          "lego_count": 4
+        },
+        {
+          "known": "Crees que podría usar la otra habitación el lunes",
+          "target": "you think that she could use the other room on Monday",
+          "lego_count": 5
+        },
+        {
+          "known": "Ella dijo que podría usar la otra habitación el lunes",
+          "target": "She said that she could use the other room on Monday",
+          "lego_count": 5
+        },
+        {
+          "known": "Él dijo que no podría ver todos los cinco juegos el lunes",
+          "target": "He said that he couldn't watch all five games on Monday",
+          "lego_count": 6
+        },
+        {
+          "known": "Crees que ella podría escribir una historia sobre ese hombre el lunes",
+          "target": "you think that she could write a story about that man on Monday",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "el",
+          "on"
+        ],
+        [
+          "lunes",
+          "Monday"
+        ]
+      ]
+    }
+  }
+}

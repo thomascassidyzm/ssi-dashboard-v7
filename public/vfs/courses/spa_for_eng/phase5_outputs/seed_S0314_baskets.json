@@ -1,0 +1,354 @@
+{
+  "legos": {
+    "S0314L01": {
+      "lego": [
+        "I think that",
+        "Pienso que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "Pienso que",
+          "target": "I think that",
+          "lego_count": 1
+        },
+        {
+          "known": "Pienso que sí",
+          "target": "I think that yes",
+          "lego_count": 2
+        },
+        {
+          "known": "Pienso que él quiere trabajar",
+          "target": "I think that he wants to work",
+          "lego_count": 3
+        },
+        {
+          "known": "Pienso que ella dijo que no",
+          "target": "I think that she said that no",
+          "lego_count": 3
+        },
+        {
+          "known": "Pienso que no podría ver antes",
+          "target": "I think that I couldn't watch before",
+          "lego_count": 4
+        },
+        {
+          "known": "Pienso que ella es una amiga",
+          "target": "I think that she's a friend",
+          "lego_count": 4
+        },
+        {
+          "known": "Pienso que él dijo que podría escribir una historia",
+          "target": "I think that he said that he could write a story",
+          "lego_count": 5
+        },
+        {
+          "known": "Pienso que ella no quiere vivir en una ciudad",
+          "target": "I think that she doesn't want to live in a city",
+          "lego_count": 5
+        },
+        {
+          "known": "Pienso que conozco a esa mujer joven que está hablando con tu amigo",
+          "target": "I think that I know that young woman who's talking to your friend",
+          "lego_count": 6
+        },
+        {
+          "known": "Pienso que él dijo que no podría ver todos los cinco juegos mañana por la noche",
+          "target": "I think that he said that he couldn't watch all five games tomorrow night",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "Pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0314L02": {
+      "lego": [
+        "she could put it",
+        "ella podría ponerlo"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0314L01",
+          "known": "I think that",
+          "target": "Pienso que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "ella podría ponerlo",
+          "target": "she could put it",
+          "lego_count": 1
+        },
+        {
+          "known": "Pienso que ella podría ponerlo",
+          "target": "I think that she could put it",
+          "lego_count": 2
+        },
+        {
+          "known": "ella podría ponerlo allí",
+          "target": "she could put it over there",
+          "lego_count": 3
+        },
+        {
+          "known": "Creo que ella podría ponerlo",
+          "target": "I believe that she could put it",
+          "lego_count": 3
+        },
+        {
+          "known": "Pienso que ella podría ponerlo allí",
+          "target": "I think that she could put it over there",
+          "lego_count": 4
+        },
+        {
+          "known": "ella dijo que ella podría ponerlo",
+          "target": "she said that she could put it",
+          "lego_count": 4
+        },
+        {
+          "known": "Pienso que ella podría ponerlo mañana por la noche",
+          "target": "I think that she could put it tomorrow night",
+          "lego_count": 5
+        },
+        {
+          "known": "ella dijo que ella podría ponerlo en la otra habitación",
+          "target": "she said that she could put it in the other room",
+          "lego_count": 5
+        },
+        {
+          "known": "Pienso que ella podría ponerlo en la otra habitación mañana",
+          "target": "I think that she could put it in the other room tomorrow",
+          "lego_count": 6
+        },
+        {
+          "known": "Pienso que ella podría ponerlo en la mesa",
+          "target": "I think that she could put it on the table",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "podría",
+          "could"
+        ],
+        [
+          "ponerlo",
+          "put it"
+        ]
+      ]
+    },
+    "S0314L03": {
+      "lego": [
+        "could put it",
+        "podría ponerlo"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0314L01",
+          "known": "I think that",
+          "target": "Pienso que",
+          "type": "M"
+        },
+        {
+          "id": "S0314L02",
+          "known": "she could put it",
+          "target": "ella podría ponerlo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 0,
+        "medium_3_legos": 0,
+        "longer_4_legos": 0,
+        "longest_5_legos": 0
+      },
+      "target_phrase_count": 0,
+      "components": [
+        [
+          "podría",
+          "could"
+        ],
+        [
+          "ponerlo",
+          "put it"
+        ]
+      ]
+    },
+    "S0314L04": {
+      "lego": [
+        "put it",
+        "ponerlo"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0314L01",
+          "known": "I think that",
+          "target": "Pienso que",
+          "type": "M"
+        },
+        {
+          "id": "S0314L02",
+          "known": "she could put it",
+          "target": "ella podría ponerlo",
+          "type": "M"
+        },
+        {
+          "id": "S0314L03",
+          "known": "could put it",
+          "target": "podría ponerlo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "ponerlo",
+          "target": "put it",
+          "lego_count": 1
+        },
+        {
+          "known": "ponerlo allí",
+          "target": "put it over there",
+          "lego_count": 2
+        },
+        {
+          "known": "ella podría ponerlo",
+          "target": "she could put it",
+          "lego_count": 2
+        },
+        {
+          "known": "Pienso que podría ponerlo",
+          "target": "I think that she could put it",
+          "lego_count": 3
+        },
+        {
+          "known": "ella dijo que podría ponerlo",
+          "target": "she said that she could put it",
+          "lego_count": 4
+        },
+        {
+          "known": "podría ponerlo en la otra habitación",
+          "target": "could put it in the other room",
+          "lego_count": 4
+        },
+        {
+          "known": "Pienso que ella podría ponerlo mañana",
+          "target": "I think that she could put it tomorrow",
+          "lego_count": 5
+        },
+        {
+          "known": "él dijo que podría ponerlo mañana por la noche",
+          "target": "he said that he could put it tomorrow night",
+          "lego_count": 6
+        },
+        {
+          "known": "Pienso que podría ponerlo en la otra habitación antes",
+          "target": "I think that she could put it in the other room before",
+          "lego_count": 6
+        },
+        {
+          "known": "Pienso que ella podría ponerlo en la mesa",
+          "target": "I think that she could put it on the table",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0314L05": {
+      "lego": [
+        "on the table",
+        "en la mesa"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0314L01",
+          "known": "I think that",
+          "target": "Pienso que",
+          "type": "M"
+        },
+        {
+          "id": "S0314L02",
+          "known": "she could put it",
+          "target": "ella podría ponerlo",
+          "type": "M"
+        },
+        {
+          "id": "S0314L03",
+          "known": "could put it",
+          "target": "podría ponerlo",
+          "type": "M"
+        },
+        {
+          "id": "S0314L04",
+          "known": "put it",
+          "target": "ponerlo",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 0,
+        "medium_3_legos": 0,
+        "longer_4_legos": 0,
+        "longest_5_legos": 0
+      },
+      "target_phrase_count": 0,
+      "components": [
+        [
+          "en",
+          "on"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "mesa",
+          "table"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "legos": {
+    "S0287L05": {
+      "lego": [
+        "television",
+        "la televisión"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0287L01",
+          "known": "how many people",
+          "target": "cuántas personas",
+          "type": "M"
+        },
+        {
+          "id": "S0287L02",
+          "known": "how many people do you know",
+          "target": "cuántas personas conoces",
+          "type": "M"
+        },
+        {
+          "id": "S0287L03",
+          "known": "who like watching",
+          "target": "a las que les gusta ver",
+          "type": "M"
+        },
+        {
+          "id": "S0287L04",
+          "known": "watching television",
+          "target": "ver la televisión",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Television",
+          "La televisión",
+          null,
+          1
+        ],
+        [
+          "Watching television",
+          "Ver la televisión",
+          null,
+          2
+        ],
+        [
+          "They like television",
+          "Les gusta la televisión",
+          null,
+          3
+        ],
+        [
+          "They like watching television",
+          "Les gusta ver la televisión",
+          null,
+          3
+        ],
+        [
+          "She speaks about television",
+          "Ella habla de la televisión",
+          null,
+          4
+        ],
+        [
+          "People who like television",
+          "Personas a las que les gusta la televisión",
+          null,
+          5
+        ],
+        [
+          "People who like watching television",
+          "Personas a las que les gusta ver la televisión",
+          null,
+          6
+        ],
+        [
+          "How many people like watching television",
+          "A cuántas personas les gusta ver la televisión",
+          null,
+          6
+        ],
+        [
+          "How many people do you know who like television",
+          "Cuántas personas conoces a las que les gusta la televisión",
+          null,
+          7
+        ],
+        [
+          "How many people do you know who like watching television",
+          "Cuántas personas conoces a las que les gusta ver la televisión",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0287L05",
+        "seed_context": {
+          "known": "How many people do you know who like watching television?",
+          "target": "¿Cuántas personas conoces a las que les gusta ver la televisión?"
+        }
+      },
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "televisión",
+          "television"
+        ]
+      ]
+    }
+  }
+}

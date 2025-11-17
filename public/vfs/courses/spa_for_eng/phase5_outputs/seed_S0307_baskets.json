@@ -1,0 +1,790 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0307",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "known": "I know that young man who's sitting over there.",
+    "target": "Conozco a ese hombre joven que está sentado allí."
+  },
+  "recent_context": {
+    "S0297": {
+      "sentence": [
+        "No conozco a | conozco a muchas personas | muchas personas que hablan español | que hablan español | hablan español | español",
+        "I don't know many | I know many people | many people who speak Spanish | who speak Spanish | speak Spanish | Spanish"
+      ],
+      "new_legos": [
+        [
+          "S0297L01",
+          "I don't know many",
+          "No conozco a"
+        ],
+        [
+          "S0297L02",
+          "I know many people",
+          "conozco a muchas personas"
+        ],
+        [
+          "S0297L03",
+          "many people who speak Spanish",
+          "muchas personas que hablan español"
+        ]
+      ]
+    },
+    "S0298": {
+      "sentence": [
+        "no me queda nada | me queda | nada que decir | que decir",
+        "I've got nothing left | I have left | nothing to say | to say"
+      ],
+      "new_legos": [
+        [
+          "S0298L01",
+          "I've got nothing left",
+          "no me queda nada"
+        ],
+        [
+          "S0298L02",
+          "I have left",
+          "me queda"
+        ],
+        [
+          "S0298L03",
+          "nothing to say",
+          "nada que decir"
+        ],
+        [
+          "S0298L04",
+          "to say",
+          "que decir"
+        ]
+      ]
+    },
+    "S0299": {
+      "sentence": [
+        "él quiere | quiere pagar | pagar la mitad | la mitad",
+        "he wants | wants to pay | to pay half | half"
+      ],
+      "new_legos": [
+        [
+          "S0299L02",
+          "wants to pay",
+          "quiere pagar"
+        ],
+        [
+          "S0299L03",
+          "to pay half",
+          "pagar la mitad"
+        ],
+        [
+          "S0299L04",
+          "half",
+          "la mitad"
+        ]
+      ]
+    },
+    "S0300": {
+      "sentence": [
+        "ella no quiere | no quiere parecer | quiere parecer | parecer antipática | parecer | antipática",
+        "she doesn't want | doesn't want to seem | wants to seem | to seem unfriendly | to seem | unfriendly"
+      ],
+      "new_legos": [
+        [
+          "S0300L01",
+          "she doesn't want",
+          "ella no quiere"
+        ],
+        [
+          "S0300L02",
+          "doesn't want to seem",
+          "no quiere parecer"
+        ],
+        [
+          "S0300L03",
+          "wants to seem",
+          "quiere parecer"
+        ],
+        [
+          "S0300L04",
+          "to seem unfriendly",
+          "parecer antipática"
+        ],
+        [
+          "S0300L05",
+          "to seem",
+          "parecer"
+        ],
+        [
+          "S0300L06",
+          "unfriendly",
+          "antipática"
+        ]
+      ]
+    },
+    "S0301": {
+      "sentence": [
+        "él dijo | dijo que | que quiere | mostrarte | algo | mostrarte algo | quiere mostrarte algo",
+        "he said | said that | that he wants | to show you | something | show you something | wants to show you something"
+      ],
+      "new_legos": [
+        [
+          "S0301L01",
+          "he said",
+          "él dijo"
+        ],
+        [
+          "S0301L03",
+          "that he wants",
+          "que quiere"
+        ],
+        [
+          "S0301L04",
+          "to show you",
+          "mostrarte"
+        ],
+        [
+          "S0301L06",
+          "show you something",
+          "mostrarte algo"
+        ],
+        [
+          "S0301L07",
+          "wants to show you something",
+          "quiere mostrarte algo"
+        ]
+      ]
+    },
+    "S0302": {
+      "sentence": [
+        "ella dijo | dijo que | que no quiere | no quiere | vivir | en una ciudad | vivir en una ciudad | no quiere vivir",
+        "she said | said that | that she doesn't want | doesn't want | to live | in a city | to live in a city | doesn't want to live"
+      ],
+      "new_legos": [
+        [
+          "S0302L01",
+          "she said",
+          "ella dijo"
+        ],
+        [
+          "S0302L03",
+          "that she doesn't want",
+          "que no quiere"
+        ],
+        [
+          "S0302L05",
+          "to live",
+          "vivir"
+        ],
+        [
+          "S0302L06",
+          "in a city",
+          "en una ciudad"
+        ],
+        [
+          "S0302L07",
+          "to live in a city",
+          "vivir en una ciudad"
+        ],
+        [
+          "S0302L08",
+          "doesn't want to live",
+          "no quiere vivir"
+        ]
+      ]
+    },
+    "S0303": {
+      "sentence": [
+        "Creo que | Creo que él | Creo que él quiere | él quiere | sentarse | quiere sentarse",
+        "I think that | I think that he | think that he wants | he wants | to sit down | wants to sit down"
+      ],
+      "new_legos": [
+        [
+          "S0303L01",
+          "I think that",
+          "Creo que"
+        ],
+        [
+          "S0303L02",
+          "I think that he",
+          "Creo que él"
+        ],
+        [
+          "S0303L03",
+          "think that he wants",
+          "Creo que él quiere"
+        ],
+        [
+          "S0303L05",
+          "to sit down",
+          "sentarse"
+        ],
+        [
+          "S0303L06",
+          "wants to sit down",
+          "quiere sentarse"
+        ]
+      ]
+    },
+    "S0304": {
+      "sentence": [
+        "Creo que | Creo que ella | Creo que ella no quiere | ella no quiere | trabajar | desde casa | trabajar desde casa | no quiere trabajar",
+        "I think that | I think that she | think that she doesn't want | she doesn't want | to work | from home | to work from home | doesn't want to work"
+      ],
+      "new_legos": [
+        [
+          "S0304L02",
+          "I think that she",
+          "Creo que ella"
+        ],
+        [
+          "S0304L03",
+          "think that she doesn't want",
+          "Creo que ella no quiere"
+        ],
+        [
+          "S0304L05",
+          "to work",
+          "trabajar"
+        ],
+        [
+          "S0304L06",
+          "from home",
+          "desde casa"
+        ],
+        [
+          "S0304L07",
+          "to work from home",
+          "trabajar desde casa"
+        ],
+        [
+          "S0304L08",
+          "doesn't want to work",
+          "no quiere trabajar"
+        ]
+      ]
+    },
+    "S0305": {
+      "sentence": [
+        "mujer",
+        "woman"
+      ],
+      "new_legos": [
+        [
+          "S0305L01",
+          "woman",
+          "mujer"
+        ]
+      ]
+    },
+    "S0306": {
+      "sentence": [
+        "Conozco a esa | esa mujer joven | mujer joven | que está hablando | está hablando | con tu amigo | tu amigo | hablando con tu amigo | conozco a esa mujer joven",
+        "I know that | that young woman | to young woman | who's talking | is talking | to your friend | your friend | talking to your friend | I know that young woman"
+      ],
+      "new_legos": [
+        [
+          "S0306L01",
+          "I know that",
+          "Conozco a esa"
+        ],
+        [
+          "S0306L02",
+          "that young woman",
+          "esa mujer joven"
+        ],
+        [
+          "S0306L03",
+          "to young woman",
+          "mujer joven"
+        ],
+        [
+          "S0306L04",
+          "who's talking",
+          "que está hablando"
+        ],
+        [
+          "S0306L05",
+          "is talking",
+          "está hablando"
+        ],
+        [
+          "S0306L06",
+          "to your friend",
+          "con tu amigo"
+        ],
+        [
+          "S0306L08",
+          "talking to your friend",
+          "hablando con tu amigo"
+        ],
+        [
+          "S0306L09",
+          "I know that young woman",
+          "conozco a esa mujer joven"
+        ]
+      ]
+    }
+  },
+  "legos": {
+    "S0307L01": {
+      "lego": [
+        "I know that",
+        "Conozco a ese"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I know that one",
+          "Conozco a ese",
+          null,
+          1
+        ],
+        [
+          "I know that friend",
+          "Conozco a ese amigo",
+          null,
+          2
+        ],
+        [
+          "I know that one who speaks",
+          "Conozco a ese que habla",
+          null,
+          3
+        ],
+        [
+          "I think I know that one",
+          "Creo que conozco a ese",
+          null,
+          3
+        ],
+        [
+          "I know that friend who speaks",
+          "Conozco a ese amigo que habla",
+          null,
+          4
+        ],
+        [
+          "I don't know that friend",
+          "No conozco a ese amigo",
+          null,
+          4
+        ],
+        [
+          "I know that friend who speaks Spanish",
+          "Conozco a ese amigo que habla español",
+          null,
+          5
+        ],
+        [
+          "I think I know that one who speaks Spanish",
+          "Creo que conozco a ese que habla español",
+          null,
+          6
+        ],
+        [
+          "I know that one who wants to pay half",
+          "Conozco a ese que quiere pagar la mitad",
+          null,
+          7
+        ],
+        [
+          "I think I know that friend who wants to live in a city",
+          "Creo que conozco a ese amigo que quiere vivir en una ciudad",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "to/personal a"
+        ]
+      ]
+    },
+    "S0307L02": {
+      "lego": [
+        "that young man",
+        "ese hombre joven"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0307L01",
+          "known": "I know that",
+          "target": "Conozco a ese",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "hombre",
+          "man"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    },
+    "S0307L03": {
+      "lego": [
+        "young man",
+        "hombre joven"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0307L01",
+          "known": "I know that",
+          "target": "Conozco a ese",
+          "type": "M"
+        },
+        {
+          "id": "S0307L02",
+          "known": "that young man",
+          "target": "ese hombre joven",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "hombre",
+          "man"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    },
+    "S0307L04": {
+      "lego": [
+        "who's sitting",
+        "que está sentado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0307L01",
+          "known": "I know that",
+          "target": "Conozco a ese",
+          "type": "M"
+        },
+        {
+          "id": "S0307L02",
+          "known": "that young man",
+          "target": "ese hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L03",
+          "known": "young man",
+          "target": "hombre joven",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "que",
+          "who"
+        ],
+        [
+          "está",
+          "is"
+        ],
+        [
+          "sentado",
+          "sitting/seated"
+        ]
+      ]
+    },
+    "S0307L05": {
+      "lego": [
+        "is sitting",
+        "está sentado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0307L01",
+          "known": "I know that",
+          "target": "Conozco a ese",
+          "type": "M"
+        },
+        {
+          "id": "S0307L02",
+          "known": "that young man",
+          "target": "ese hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L03",
+          "known": "young man",
+          "target": "hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L04",
+          "known": "who's sitting",
+          "target": "que está sentado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "está",
+          "is"
+        ],
+        [
+          "sentado",
+          "sitting/seated"
+        ]
+      ]
+    },
+    "S0307L06": {
+      "lego": [
+        "over there",
+        "allí"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0307L01",
+          "known": "I know that",
+          "target": "Conozco a ese",
+          "type": "M"
+        },
+        {
+          "id": "S0307L02",
+          "known": "that young man",
+          "target": "ese hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L03",
+          "known": "young man",
+          "target": "hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L04",
+          "known": "who's sitting",
+          "target": "que está sentado",
+          "type": "M"
+        },
+        {
+          "id": "S0307L05",
+          "known": "is sitting",
+          "target": "está sentado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0307L07": {
+      "lego": [
+        "sitting over there",
+        "sentado allí"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0307L01",
+          "known": "I know that",
+          "target": "Conozco a ese",
+          "type": "M"
+        },
+        {
+          "id": "S0307L02",
+          "known": "that young man",
+          "target": "ese hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L03",
+          "known": "young man",
+          "target": "hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L04",
+          "known": "who's sitting",
+          "target": "que está sentado",
+          "type": "M"
+        },
+        {
+          "id": "S0307L05",
+          "known": "is sitting",
+          "target": "está sentado",
+          "type": "M"
+        },
+        {
+          "id": "S0307L06",
+          "known": "over there",
+          "target": "allí",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "sentado",
+          "sitting"
+        ],
+        [
+          "allí",
+          "over there"
+        ]
+      ]
+    },
+    "S0307L08": {
+      "lego": [
+        "I know that young man",
+        "conozco a ese hombre joven"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0307L01",
+          "known": "I know that",
+          "target": "Conozco a ese",
+          "type": "M"
+        },
+        {
+          "id": "S0307L02",
+          "known": "that young man",
+          "target": "ese hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L03",
+          "known": "young man",
+          "target": "hombre joven",
+          "type": "M"
+        },
+        {
+          "id": "S0307L04",
+          "known": "who's sitting",
+          "target": "que está sentado",
+          "type": "M"
+        },
+        {
+          "id": "S0307L05",
+          "known": "is sitting",
+          "target": "está sentado",
+          "type": "M"
+        },
+        {
+          "id": "S0307L06",
+          "known": "over there",
+          "target": "allí",
+          "type": "A"
+        },
+        {
+          "id": "S0307L07",
+          "known": "sitting over there",
+          "target": "sentado allí",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "personal a"
+        ],
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "hombre",
+          "man"
+        ],
+        [
+          "joven",
+          "young"
+        ]
+      ]
+    }
+  }
+}

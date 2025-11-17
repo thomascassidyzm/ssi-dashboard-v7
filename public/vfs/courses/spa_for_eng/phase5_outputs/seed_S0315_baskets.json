@@ -1,0 +1,337 @@
+{
+  "legos": {
+    "S0315L01": {
+      "lego": [
+        "I think that",
+        "Pienso que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "Pienso que",
+          "target": "I think that",
+          "lego_count": 1
+        },
+        {
+          "known": "Pienso que no",
+          "target": "I think that no",
+          "lego_count": 2
+        },
+        {
+          "known": "Pienso que ella quiere trabajar",
+          "target": "I think that she wants to work",
+          "lego_count": 3
+        },
+        {
+          "known": "Pienso que él dijo que sí",
+          "target": "I think that he said that yes",
+          "lego_count": 3
+        },
+        {
+          "known": "Pienso que no podría ver antes",
+          "target": "I think that he couldn't watch before",
+          "lego_count": 4
+        },
+        {
+          "known": "Pienso que ella es una amiga",
+          "target": "I think that she's a friend",
+          "lego_count": 4
+        },
+        {
+          "known": "Pienso que ella dijo que podría escribir una historia",
+          "target": "I think that she said that she could write a story",
+          "lego_count": 5
+        },
+        {
+          "known": "Pienso que él no quiere vivir en una ciudad",
+          "target": "I think that he doesn't want to live in a city",
+          "lego_count": 5
+        },
+        {
+          "known": "Pienso que conozco a ese hombre joven que está sentado allí",
+          "target": "I think that I know that young man who's sitting over there",
+          "lego_count": 6
+        },
+        {
+          "known": "Pienso que ella dijo que podría usar la otra habitación mañana por la noche",
+          "target": "I think that she said that she could use the other room tomorrow night",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "Pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0315L02": {
+      "lego": [
+        "couldn't afford",
+        "no podría permitirse"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0315L01",
+          "known": "I think that",
+          "target": "Pienso que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "no podría permitirse",
+          "target": "couldn't afford",
+          "lego_count": 1
+        },
+        {
+          "known": "él no podría permitirse",
+          "target": "he couldn't afford",
+          "lego_count": 2
+        },
+        {
+          "known": "Pienso que no podría permitirse",
+          "target": "I think that he couldn't afford",
+          "lego_count": 3
+        },
+        {
+          "known": "ella no podría permitirse eso",
+          "target": "she couldn't afford that",
+          "lego_count": 3
+        },
+        {
+          "known": "Pienso que él no podría permitirse eso",
+          "target": "I think that he couldn't afford that",
+          "lego_count": 4
+        },
+        {
+          "known": "él dijo que no podría permitirse",
+          "target": "he said that he couldn't afford",
+          "lego_count": 4
+        },
+        {
+          "known": "Pienso que ella no podría permitirse la otra habitación",
+          "target": "I think that she couldn't afford the other room",
+          "lego_count": 5
+        },
+        {
+          "known": "él dijo que no podría permitirse trabajar allí",
+          "target": "he said that he couldn't afford to work over there",
+          "lego_count": 6
+        },
+        {
+          "known": "Pienso que él dijo que no podría permitirse eso antes",
+          "target": "I think that he said that he couldn't afford that before",
+          "lego_count": 6
+        },
+        {
+          "known": "ella dijo que no podría permitirse la otra habitación mañana por la noche",
+          "target": "she said that she couldn't afford the other room tomorrow night",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "no",
+          "not/couldn't"
+        ],
+        [
+          "podría",
+          "could"
+        ],
+        [
+          "permitirse",
+          "afford"
+        ]
+      ]
+    },
+    "S0315L03": {
+      "lego": [
+        "the car that he wanted",
+        "el coche que quería"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0315L01",
+          "known": "I think that",
+          "target": "Pienso que",
+          "type": "M"
+        },
+        {
+          "id": "S0315L02",
+          "known": "couldn't afford",
+          "target": "no podría permitirse",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "el coche que quería",
+          "target": "the car that he wanted",
+          "lego_count": 1
+        },
+        {
+          "known": "Pienso que el coche que quería",
+          "target": "I think that the car that he wanted",
+          "lego_count": 2
+        },
+        {
+          "known": "él quiere el coche que quería",
+          "target": "he wants the car that he wanted",
+          "lego_count": 3
+        },
+        {
+          "known": "no podría permitirse el coche que quería",
+          "target": "couldn't afford the car that he wanted",
+          "lego_count": 3
+        },
+        {
+          "known": "Pienso que no podría permitirse el coche que quería",
+          "target": "I think that he couldn't afford the car that he wanted",
+          "lego_count": 4
+        },
+        {
+          "known": "él dijo que quiere el coche que quería",
+          "target": "he said that he wants the car that he wanted",
+          "lego_count": 4
+        },
+        {
+          "known": "ella dijo que no podría permitirse el coche que quería",
+          "target": "she said that she couldn't afford the car that she wanted",
+          "lego_count": 5
+        },
+        {
+          "known": "Pienso que él dijo que quiere el coche que quería",
+          "target": "I think that he said that he wants the car that he wanted",
+          "lego_count": 5
+        },
+        {
+          "known": "él dijo que no podría permitirse el coche que quería antes",
+          "target": "he said that he couldn't afford the car that he wanted before",
+          "lego_count": 6
+        },
+        {
+          "known": "Pienso que él no podría permitirse el coche que quería",
+          "target": "I think that he couldn't afford the car that he wanted",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "coche",
+          "car"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "quería",
+          "he wanted"
+        ]
+      ]
+    },
+    "S0315L04": {
+      "lego": [
+        "the car that",
+        "el coche que"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0315L02",
+          "known": "couldn't afford",
+          "target": "no podría permitirse",
+          "type": "M"
+        },
+        {
+          "id": "S0315L03",
+          "known": "the car that he wanted",
+          "target": "el coche que quería",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "el coche que",
+          "target": "the car that",
+          "lego_count": 1
+        },
+        {
+          "known": "sí, el coche que",
+          "target": "yes, the car that",
+          "lego_count": 2
+        },
+        {
+          "known": "el coche que no podría permitirse",
+          "target": "the car that he couldn't afford",
+          "lego_count": 3
+        },
+        {
+          "known": "no podría permitirse el coche que quería",
+          "target": "couldn't afford the car that he wanted",
+          "lego_count": 4
+        },
+        {
+          "known": "Él dijo que no podría permitirse el coche que quería",
+          "target": "He said that he couldn't afford the car that he wanted",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "target_phrase_count": 5,
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "coche",
+          "car"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

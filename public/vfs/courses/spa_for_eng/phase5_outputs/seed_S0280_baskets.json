@@ -1,0 +1,109 @@
+{
+  "legos": {
+    "S0280L04": {
+      "lego": [
+        "to do",
+        "hacer"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0280L01",
+          "known": "no",
+          "target": "no",
+          "type": "A"
+        },
+        {
+          "id": "S0280L02",
+          "known": "I only had to",
+          "target": "solo tuve que",
+          "type": "M"
+        },
+        {
+          "id": "S0280L03",
+          "known": "I had to",
+          "target": "tuve que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "To do",
+          "Hacer",
+          null,
+          1
+        ],
+        [
+          "I had to do",
+          "Tuve que hacer",
+          null,
+          2
+        ],
+        [
+          "I can do",
+          "Puedo hacer",
+          null,
+          3
+        ],
+        [
+          "I'm going to do",
+          "Voy a hacer",
+          null,
+          3
+        ],
+        [
+          "I only had to do",
+          "Solo tuve que hacer",
+          null,
+          4
+        ],
+        [
+          "You had to do",
+          "Tuviste que hacer",
+          null,
+          4
+        ],
+        [
+          "I had to do everything",
+          "Tuve que hacer todo",
+          null,
+          5
+        ],
+        [
+          "You had to do everything",
+          "Tuviste que hacer todo",
+          null,
+          5
+        ],
+        [
+          "I only had to do everything",
+          "Solo tuve que hacer todo",
+          null,
+          5
+        ],
+        [
+          "I had to do too much work",
+          "Tuve que hacer demasiado trabajo",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0280L04",
+        "seed_context": {
+          "known": "No I only had to do the most important job.",
+          "target": "No solo tuve que hacer el trabajo más importante."
+        }
+      },
+      "components": []
+    }
+  }
+}

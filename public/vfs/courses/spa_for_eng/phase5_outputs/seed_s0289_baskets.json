@@ -1,0 +1,39 @@
+{
+  "legos": {
+    "S0289L05": {
+      "lego": ["be there", "estar allí"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0289L01", "known": "I wonder", "target": "me pregunto", "type": "M"},
+        {"id": "S0289L02", "known": "I wonder if", "target": "me pregunto si", "type": "M"},
+        {"id": "S0289L03", "known": "she's going to be", "target": "ella va a estar", "type": "M"},
+        {"id": "S0289L04", "known": "going to be", "target": "va a estar", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["be there", "estar allí", null, 1],
+        ["going to be there", "va a estar allí", null, 2],
+        ["she's going to be there", "ella va a estar allí", null, 3],
+        ["I wonder if she's going to be there", "me pregunto si ella va a estar allí", null, 4],
+        ["he's going to be there", "él va a estar allí", null, 3],
+        ["I wonder if he's going to be there", "me pregunto si él va a estar allí", null, 4],
+        ["my sister's going to be there", "mi hermana va a estar allí", null, 4],
+        ["I wonder if my sister's going to be there", "me pregunto si mi hermana va a estar allí", null, 5],
+        ["your friend's going to be there", "tu amiga va a estar allí", null, 4],
+        ["I wonder if your friend's going to be there", "me pregunto si tu amiga va a estar allí", null, 5],
+        ["people are going to be there", "la gente va a estar allí", null, 4],
+        ["I wonder if people are going to be there", "me pregunto si la gente va a estar allí", null, 5],
+        ["I wonder if most people are going to be there", "me pregunto si la mayoría de la gente va a estar allí", null, 6],
+        ["that's not a problem, she's going to be there", "eso no es un problema, ella va a estar allí", null, 6],
+        ["I wonder if your friends are going to be there", "me pregunto si tus amigos van a estar allí", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 5,
+        "longest_5_legos": 6
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

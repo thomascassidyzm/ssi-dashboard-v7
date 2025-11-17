@@ -1,0 +1,38 @@
+{
+  "legos": {
+    "S0298L04": {
+      "lego": ["to say", "que decir"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {"id": "S0298L01", "known": "I've got nothing left", "target": "no me queda nada", "type": "M"},
+        {"id": "S0298L02", "known": "I have left", "target": "me queda", "type": "M"},
+        {"id": "S0298L03", "known": "nothing to say", "target": "nada que decir", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["to say", "que decir", null, 1],
+        ["nothing to say", "nada que decir", null, 2],
+        ["I've got nothing left to say", "no me queda nada que decir", null, 3],
+        ["I have nothing to say", "no tengo nada que decir", null, 3],
+        ["I wonder if I have nothing to say", "me pregunto si no tengo nada que decir", null, 5],
+        ["I hope I have nothing to say", "espero no tener nada que decir", null, 3],
+        ["I didn't say that I have nothing to say", "no dije que no tengo nada que decir", null, 5],
+        ["I have nothing left to say", "no me queda nada que decir", null, 3],
+        ["I wonder if I've got nothing left to say", "me pregunto si no me queda nada que decir", null, 5],
+        ["I said that I have nothing to say", "dije que no tengo nada que decir", null, 4],
+        ["I don't have enough time to say", "no tengo suficiente tiempo que decir", null, 4],
+        ["I've got nothing left to say to many people", "no me queda nada que decir a muchas personas", null, 5],
+        ["I hope I'll be able to say something, but I've got nothing left to say", "espero poder decir algo, pero no me queda nada que decir", null, 7],
+        ["I've got nothing left to say.", "No me queda nada que decir.", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 4,
+        "longer_4_legos": 3,
+        "longest_5_legos": 5
+      },
+      "target_phrase_count": 10,
+      "components": [["que", "to"], ["decir", "to say"]]
+    }
+  }
+}

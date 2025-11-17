@@ -1,0 +1,274 @@
+{
+  "legos": {
+    "S0313L01": {
+      "lego": [
+        "He said that",
+        "Él dijo que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "Él dijo que",
+          "target": "He said that",
+          "lego_count": 1
+        },
+        {
+          "known": "Él dijo que no",
+          "target": "He said that no",
+          "lego_count": 2
+        },
+        {
+          "known": "Él dijo que quiere trabajar",
+          "target": "He said that he wants to work",
+          "lego_count": 3
+        },
+        {
+          "known": "Él dijo que ella es una amiga",
+          "target": "He said that she's a friend",
+          "lego_count": 3
+        },
+        {
+          "known": "Él dijo que no quiere vivir aquí",
+          "target": "He said that he doesn't want to live here",
+          "lego_count": 4
+        },
+        {
+          "known": "Él dijo que podría escribir una historia",
+          "target": "He said that he could write a story",
+          "lego_count": 4
+        },
+        {
+          "known": "Él dijo que ella podría usar la otra habitación",
+          "target": "He said that she could use the other room",
+          "lego_count": 5
+        },
+        {
+          "known": "Él dijo que no quiere parecer antipático",
+          "target": "He said that he doesn't want to seem unfriendly",
+          "lego_count": 5
+        },
+        {
+          "known": "Él dijo que conozco a esa mujer joven que está hablando",
+          "target": "He said that I know that young woman who's talking",
+          "lego_count": 6
+        },
+        {
+          "known": "Él dijo que ella no quiere trabajar desde casa mañana por la noche",
+          "target": "He said that she doesn't want to work from home tomorrow night",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "Él",
+          "He"
+        ],
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0313L02": {
+      "lego": [
+        "said that he couldn't",
+        "dijo que no podría"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0313L01",
+          "known": "He said that",
+          "target": "Él dijo que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "dijo que no podría",
+          "target": "said that he couldn't",
+          "lego_count": 1
+        },
+        {
+          "known": "Él dijo que no podría",
+          "target": "He said that he couldn't",
+          "lego_count": 2
+        },
+        {
+          "known": "ella dijo que no podría trabajar",
+          "target": "she said that she couldn't work",
+          "lego_count": 3
+        },
+        {
+          "known": "Creo que dijo que no podría",
+          "target": "I think that he said that he couldn't",
+          "lego_count": 3
+        },
+        {
+          "known": "Él dijo que no podría escribir una historia",
+          "target": "He said that he couldn't write a story",
+          "lego_count": 4
+        },
+        {
+          "known": "ella dijo que no podría vivir en una ciudad",
+          "target": "she said that she couldn't live in a city",
+          "lego_count": 4
+        },
+        {
+          "known": "Él dijo que no podría usar la otra habitación mañana",
+          "target": "He said that he couldn't use the other room tomorrow",
+          "lego_count": 5
+        },
+        {
+          "known": "Creo que ella dijo que no podría mostrarte algo",
+          "target": "I think that she said that she couldn't show you something",
+          "lego_count": 5
+        },
+        {
+          "known": "Él dijo que no podría creer los tres hechos más importantes",
+          "target": "He said that he couldn't believe the three most important facts",
+          "lego_count": 6
+        },
+        {
+          "known": "esa mujer joven dijo que no podría trabajar desde casa mañana por la noche",
+          "target": "that young woman said that she couldn't work from home tomorrow night",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "podría",
+          "he could"
+        ]
+      ]
+    },
+    "S0313L03": {
+      "lego": [
+        "couldn't watch",
+        "no podría ver"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0313L01",
+          "known": "He said that",
+          "target": "Él dijo que",
+          "type": "M"
+        },
+        {
+          "id": "S0313L02",
+          "known": "said that he couldn't",
+          "target": "dijo que no podría",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "no podría ver",
+          "target": "couldn't watch",
+          "lego_count": 1
+        },
+        {
+          "known": "ella no podría ver",
+          "target": "she couldn't watch",
+          "lego_count": 2
+        },
+        {
+          "known": "Creo que no podría ver",
+          "target": "I think that he couldn't watch",
+          "lego_count": 3
+        },
+        {
+          "known": "Él dijo que no podría ver",
+          "target": "He said that he couldn't watch",
+          "lego_count": 3
+        },
+        {
+          "known": "ella dijo que no podría ver antes",
+          "target": "she said that she couldn't watch before",
+          "lego_count": 4
+        },
+        {
+          "known": "Creo que él no podría ver eso",
+          "target": "I think that he couldn't watch that",
+          "lego_count": 4
+        },
+        {
+          "known": "Él dijo que no podría ver a esa mujer joven",
+          "target": "He said that he couldn't watch that young woman",
+          "lego_count": 5
+        },
+        {
+          "known": "ella dijo que no podría ver a ese hombre sentado allí",
+          "target": "she said that she couldn't watch that man sitting over there",
+          "lego_count": 6
+        },
+        {
+          "known": "Creo que él dijo que no podría ver la historia sobre ese hombre",
+          "target": "I think that he said that he couldn't watch the story about that man",
+          "lego_count": 7
+        },
+        {
+          "known": "esa mujer joven dijo que no podría ver mañana por la noche",
+          "target": "that young woman said that she couldn't watch tomorrow night",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "no",
+          "not/couldn't"
+        ],
+        [
+          "podría",
+          "could"
+        ],
+        [
+          "ver",
+          "to watch/see"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0297L01": {
+      "lego": ["I don't know many", "No conozco a"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I don't know many", "No conozco a muchos", null, 1],
+        ["I don't know many friends", "No conozco a muchos amigos", null, 2],
+        ["I don't know many people", "No conozco a mucha gente", null, 2],
+        ["I wonder if I don't know many people", "me pregunto si no conozco a mucha gente", null, 4],
+        ["I don't know many people who like watching television", "No conozco a mucha gente a la que le gusta ver la televisión", null, 5],
+        ["I hope I don't know many people", "espero no conocer a mucha gente", null, 3],
+        ["I didn't say that I don't know many people", "no dije que no conozco a mucha gente", null, 5],
+        ["I don't know many people who speak Spanish", "No conozco a mucha gente que habla español", null, 4],
+        ["I said that I don't know many people", "dije que no conozco a mucha gente", null, 4],
+        ["I wonder if I don't know many friends", "me pregunto si no conozco a muchos amigos", null, 4],
+        ["I don't know many people, but I hope to meet people", "No conozco a mucha gente, pero espero conocer a personas", null, 6],
+        ["I have to find out if I don't know many people", "tengo que descubrir si no conozco a mucha gente", null, 6],
+        ["I don't know many people who like coming to the party", "No conozco a mucha gente a la que le gusta venir a la fiesta", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 3,
+        "medium_3_legos": 1,
+        "longer_4_legos": 4,
+        "longest_5_legos": 5
+      },
+      "target_phrase_count": 10,
+      "components": [["no", "don't"], ["conozco", "know"]]
+    },
+    "S0297L02": {
+      "lego": ["I know many people", "conozco a muchas personas"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0297L01", "known": "I don't know many", "target": "No conozco a", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["I know many people", "conozco a muchas personas", null, 1],
+        ["I wonder if I know many people", "me pregunto si conozco a muchas personas", null, 3],
+        ["I know many people who speak Spanish", "conozco a muchas personas que hablan español", null, 3],
+        ["I hope I know many people", "espero conocer a muchas personas", null, 2],
+        ["I know many people who like watching television", "conozco a muchas personas a las que les gusta ver la televisión", null, 4],
+        ["I didn't say that I know many people", "no dije que conozco a muchas personas", null, 4],
+        ["I said that I know many people", "dije que conozco a muchas personas", null, 3],
+        ["I know many people who like coming to the party", "conozco a muchas personas a las que les gusta venir a la fiesta", null, 5],
+        ["I wonder if I know many people who speak Spanish", "me pregunto si conozco a muchas personas que hablan español", null, 5],
+        ["I have to find out if I know many people", "tengo que descubrir si conozco a muchas personas", null, 5],
+        ["I know many people, but I don't have enough time to call you", "conozco a muchas personas, pero no tengo suficiente tiempo para llamarte", null, 6],
+        ["I hope I know many people who speak Spanish", "espero conocer a muchas personas que hablan español", null, 4],
+        ["I know many people who like speaking Spanish", "conozco a muchas personas a las que les gusta hablar español", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 3,
+        "longer_4_legos": 4,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["conozco", "know"], ["a", "to"], ["muchas", "many"], ["personas", "people"]]
+    },
+    "S0297L03": {
+      "lego": ["many people who speak Spanish", "muchas personas que hablan español"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0297L01", "known": "I don't know many", "target": "No conozco a", "type": "M"},
+        {"id": "S0297L02", "known": "I know many people", "target": "conozco a muchas personas", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["many people who speak Spanish", "muchas personas que hablan español", null, 1],
+        ["I know many people who speak Spanish", "conozco a muchas personas que hablan español", null, 2],
+        ["I don't know many people who speak Spanish", "No conozco a muchas personas que hablan español", null, 2],
+        ["I wonder if I know many people who speak Spanish", "me pregunto si conozco a muchas personas que hablan español", null, 4],
+        ["I hope to meet many people who speak Spanish", "espero conocer a muchas personas que hablan español", null, 3],
+        ["I didn't say that I know many people who speak Spanish", "no dije que conozco a muchas personas que hablan español", null, 5],
+        ["I said that I know many people who speak Spanish", "dije que conozco a muchas personas que hablan español", null, 4],
+        ["I have to find out if I know many people who speak Spanish", "tengo que descubrir si conozco a muchas personas que hablan español", null, 6],
+        ["I wonder if I don't know many people who speak Spanish", "me pregunto si no conozco a muchas personas que hablan español", null, 5],
+        ["how many people do you know who speak Spanish", "cuántas personas conoces que hablan español", null, 3],
+        ["I know many people who speak Spanish, but I don't have enough time", "conozco a muchas personas que hablan español, pero no tengo suficiente tiempo", null, 6],
+        ["I hope I'll be able to meet many people who speak Spanish", "espero poder conocer a muchas personas que hablan español", null, 5],
+        ["I don't know many people who speak Spanish", "No conozco a muchas personas que hablan español", null, 3]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 3,
+        "medium_3_legos": 3,
+        "longer_4_legos": 2,
+        "longest_5_legos": 5
+      },
+      "target_phrase_count": 10,
+      "components": [["muchas", "many"], ["personas", "people"], ["que", "who"], ["hablan", "speak"], ["español", "Spanish"]]
+    }
+  }
+}

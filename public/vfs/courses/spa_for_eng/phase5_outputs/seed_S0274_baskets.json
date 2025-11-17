@@ -1,0 +1,97 @@
+{
+  "legos": {
+    "S0274L02": {
+      "lego": [
+        "to leave",
+        "salir"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0274L01",
+          "known": "you have to",
+          "target": "tienes que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "To leave",
+          "Salir",
+          null,
+          1
+        ],
+        [
+          "You have to leave",
+          "Tienes que salir",
+          null,
+          2
+        ],
+        [
+          "Do you want to leave",
+          "Quieres salir",
+          null,
+          3
+        ],
+        [
+          "You don't want to leave",
+          "No quieres salir",
+          null,
+          3
+        ],
+        [
+          "I'm going to leave",
+          "Voy a salir",
+          null,
+          4
+        ],
+        [
+          "You have to leave late",
+          "Tienes que salir tarde",
+          null,
+          4
+        ],
+        [
+          "Would you like to leave",
+          "Te gustaría salir",
+          null,
+          5
+        ],
+        [
+          "I'm going to leave next month",
+          "Voy a salir el próximo mes",
+          null,
+          5
+        ],
+        [
+          "You have to leave with us",
+          "Tienes que salir con nosotros",
+          null,
+          5
+        ],
+        [
+          "I'm worried that you have to leave",
+          "Estoy preocupado de que tienes que salir",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0274L02",
+        "seed_context": {
+          "known": "Do you have to leave in a few days?",
+          "target": "¿Tienes que salir en unos pocos días?"
+        }
+      },
+      "components": []
+    }
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "S0308L01": {
+    "lego": [
+      "yes",
+      "sí"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "yes",
+        "sí",
+        null,
+        1
+      ],
+      [
+        "yes I know",
+        "sí conozco",
+        null,
+        2
+      ],
+      [
+        "yes I think that",
+        "sí creo que",
+        null,
+        2
+      ],
+      [
+        "yes she wants to pay",
+        "sí ella quiere pagar",
+        null,
+        2
+      ],
+      [
+        "yes she wants to sit down",
+        "sí ella quiere sentarse",
+        null,
+        2
+      ],
+      [
+        "yes I think she wants to pay",
+        "sí creo que ella quiere pagar",
+        null,
+        3
+      ],
+      [
+        "yes she doesn't want to seem unfriendly",
+        "sí ella no quiere parecer antipática",
+        null,
+        3
+      ],
+      [
+        "yes I think she wants to live in a city",
+        "sí creo que ella quiere vivir en una ciudad",
+        null,
+        4
+      ],
+      [
+        "yes I think she doesn't want to work from home",
+        "sí creo que ella no quiere trabajar desde casa",
+        null,
+        5
+      ],
+      [
+        "yes she wants to show you something",
+        "sí ella quiere mostrarte algo",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0308L01",
+      "seed_context": {
+        "target": "Yes she's a friend of my mother.",
+        "known": "Sí ella es una amiga de mi madre."
+      }
+    },
+    "components": [],
+    "_vocab_context": {
+      "recent_vocab_count": 61,
+      "earlier_legos_count": 0,
+      "recent_vocab_sample": [
+        {
+          "english": "I've got nothing left",
+          "spanish": "no me queda nada",
+          "lego_id": "S0298L01"
+        },
+        {
+          "english": "I have left",
+          "spanish": "me queda",
+          "lego_id": "S0298L02"
+        },
+        {
+          "english": "nothing to say",
+          "spanish": "nada que decir",
+          "lego_id": "S0298L03"
+        },
+        {
+          "english": "to say",
+          "spanish": "que decir",
+          "lego_id": "S0298L04"
+        },
+        {
+          "english": "he wants",
+          "spanish": "él quiere",
+          "lego_id": "S0299L01"
+        }
+      ],
+      "all_recent_vocab": [
+        {
+          "english": "I've got nothing left",
+          "spanish": "no me queda nada",
+          "lego_id": "S0298L01"
+        },
+        {
+          "english": "I have left",
+          "spanish": "me queda",
+          "lego_id": "S0298L02"
+        },
+        {
+          "english": "nothing to say",
+          "spanish": "nada que decir",
+          "lego_id": "S0298L03"
+        },
+        {
+          "english": "to say",
+          "spanish": "que decir",
+          "lego_id": "S0298L04"
+        },
+        {
+          "english": "he wants",
+          "spanish": "él quiere",
+          "lego_id": "S0299L01"
+        },
+        {
+          "english": "wants to pay",
+          "spanish": "quiere pagar",
+          "lego_id": "S0299L02"
+        },
+        {
+          "english": "to pay half",
+          "spanish": "pagar la mitad",
+          "lego_id": "S0299L03"
+        },
+        {
+          "english": "half",
+          "spanish": "la mitad",
+          "lego_id": "S0299L04"
+        },
+        {
+          "english": "she doesn't want",
+          "spanish": "ella no quiere",
+          "lego_id": "S0300L01"
+        },
+        {
+          "english": "doesn't want to seem",
+          "spanish": "no quiere parecer",
+          "lego_id": "S0300L02"
+        },
+        {
+          "english": "wants to seem",
+          "spanish": "quiere parecer",
+          "lego_id": "S0300L03"
+        },
+        {
+          "english": "to seem unfriendly",
+          "spanish": "parecer antipática",
+          "lego_id": "S0300L04"
+        },
+        {
+          "english": "to seem",
+          "spanish": "parecer",
+          "lego_id": "S0300L05"
+        },
+        {
+          "english": "unfriendly",
+          "spanish": "antipática",
+          "lego_id": "S0300L06"
+        },
+        {
+          "english": "he said",
+          "spanish": "él dijo",
+          "lego_id": "S0301L01"
+        },
+        {
+          "english": "said that",
+          "spanish": "dijo que",
+          "lego_id": "S0301L02"
+        },
+        {
+          "english": "that he wants",
+          "spanish": "que quiere",
+          "lego_id": "S0301L03"
+        },
+        {
+          "english": "to show you",
+          "spanish": "mostrarte",
+          "lego_id": "S0301L04"
+        },
+        {
+          "english": "something",
+          "spanish": "algo",
+          "lego_id": "S0301L05"
+        },
+        {
+          "english": "show you something",
+          "spanish": "mostrarte algo",
+          "lego_id": "S0301L06"
+        },
+        {
+          "english": "wants to show you something",
+          "spanish": "quiere mostrarte algo",
+          "lego_id": "S0301L07"
+        },
+        {
+          "english": "she said",
+          "spanish": "ella dijo",
+          "lego_id": "S0302L01"
+        },
+        {
+          "english": "said that",
+          "spanish": "dijo que",
+          "lego_id": "S0302L02"
+        },
+        {
+          "english": "that she doesn't want",
+          "spanish": "que no quiere",
+          "lego_id": "S0302L03"
+        },
+        {
+          "english": "doesn't want",
+          "spanish": "no quiere",
+          "lego_id": "S0302L04"
+        },
+        {
+          "english": "to live",
+          "spanish": "vivir",
+          "lego_id": "S0302L05"
+        },
+        {
+          "english": "in a city",
+          "spanish": "en una ciudad",
+          "lego_id": "S0302L06"
+        },
+        {
+          "english": "to live in a city",
+          "spanish": "vivir en una ciudad",
+          "lego_id": "S0302L07"
+        },
+        {
+          "english": "doesn't want to live",
+          "spanish": "no quiere vivir",
+          "lego_id": "S0302L08"
+        },
+        {
+          "english": "I think that",
+          "spanish": "Creo que",
+          "lego_id": "S0303L01"
+        },
+        {
+          "english": "I think that he",
+          "spanish": "Creo que él",
+          "lego_id": "S0303L02"
+        },
+        {
+          "english": "think that he wants",
+          "spanish": "Creo que él quiere",
+          "lego_id": "S0303L03"
+        },
+        {
+          "english": "he wants",
+          "spanish": "él quiere",
+          "lego_id": "S0303L04"
+        },
+        {
+          "english": "to sit down",
+          "spanish": "sentarse",
+          "lego_id": "S0303L05"
+        },
+        {
+          "english": "wants to sit down",
+          "spanish": "quiere sentarse",
+          "lego_id": "S0303L06"
+        },
+        {
+          "english": "I think that",
+          "spanish": "Creo que",
+          "lego_id": "S0304L01"
+        },
+        {
+          "english": "I think that she",
+          "spanish": "Creo que ella",
+          "lego_id": "S0304L02"
+        },
+        {
+          "english": "think that she doesn't want",
+          "spanish": "Creo que ella no quiere",
+          "lego_id": "S0304L03"
+        },
+        {
+          "english": "she doesn't want",
+          "spanish": "ella no quiere",
+          "lego_id": "S0304L04"
+        },
+        {
+          "english": "to work",
+          "spanish": "trabajar",
+          "lego_id": "S0304L05"
+        },
+        {
+          "english": "from home",
+          "spanish": "desde casa",
+          "lego_id": "S0304L06"
+        },
+        {
+          "english": "to work from home",
+          "spanish": "trabajar desde casa",
+          "lego_id": "S0304L07"
+        },
+        {
+          "english": "doesn't want to work",
+          "spanish": "no quiere trabajar",
+          "lego_id": "S0304L08"
+        },
+        {
+          "english": "woman",
+          "spanish": "mujer",
+          "lego_id": "S0305L01"
+        },
+        {
+          "english": "I know that",
+          "spanish": "Conozco a esa",
+          "lego_id": "S0306L01"
+        },
+        {
+          "english": "that young woman",
+          "spanish": "esa mujer joven",
+          "lego_id": "S0306L02"
+        },
+        {
+          "english": "to young woman",
+          "spanish": "mujer joven",
+          "lego_id": "S0306L03"
+        },
+        {
+          "english": "who's talking",
+          "spanish": "que está hablando",
+          "lego_id": "S0306L04"
+        },
+        {
+          "english": "is talking",
+          "spanish": "está hablando",
+          "lego_id": "S0306L05"
+        },
+        {
+          "english": "to your friend",
+          "spanish": "con tu amigo",
+          "lego_id": "S0306L06"
+        },
+        {
+          "english": "your friend",
+          "spanish": "tu amigo",
+          "lego_id": "S0306L07"
+        },
+        {
+          "english": "talking to your friend",
+          "spanish": "hablando con tu amigo",
+          "lego_id": "S0306L08"
+        },
+        {
+          "english": "I know that young woman",
+          "spanish": "conozco a esa mujer joven",
+          "lego_id": "S0306L09"
+        },
+        {
+          "english": "I know that",
+          "spanish": "Conozco a ese",
+          "lego_id": "S0307L01"
+        },
+        {
+          "english": "that young man",
+          "spanish": "ese hombre joven",
+          "lego_id": "S0307L02"
+        },
+        {
+          "english": "young man",
+          "spanish": "hombre joven",
+          "lego_id": "S0307L03"
+        },
+        {
+          "english": "who's sitting",
+          "spanish": "que está sentado",
+          "lego_id": "S0307L04"
+        },
+        {
+          "english": "is sitting",
+          "spanish": "está sentado",
+          "lego_id": "S0307L05"
+        },
+        {
+          "english": "over there",
+          "spanish": "allí",
+          "lego_id": "S0307L06"
+        },
+        {
+          "english": "sitting over there",
+          "spanish": "sentado allí",
+          "lego_id": "S0307L07"
+        },
+        {
+          "english": "I know that young man",
+          "spanish": "conozco a ese hombre joven",
+          "lego_id": "S0307L08"
+        }
+      ],
+      "all_earlier_legos": []
+    }
+  }
+}
