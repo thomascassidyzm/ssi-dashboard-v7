@@ -21,7 +21,8 @@ const LANGUAGE_NAMES = {
   'ita': 'Italian',
   'spa': 'Spanish',
   'fra': 'French',
-  'cmn': 'Mandarin',
+  'zho': 'Chinese',
+  'cmn': 'Chinese',  // Legacy - prefer 'zho'
   'cym': 'Welsh',
   'gle': 'Irish',
   'eus': 'Basque',

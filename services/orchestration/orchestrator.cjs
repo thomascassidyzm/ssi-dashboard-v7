@@ -948,7 +948,7 @@ app.get('/api/languages', (req, res) => {
     { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
     { code: 'bul', name: 'Bulgarian', native: 'Български' },
     { code: 'cat', name: 'Catalan', native: 'Català' },
-    { code: 'cmn', name: 'Mandarin Chinese', native: '中文' },
+    { code: 'zho', name: 'Chinese', native: '中文' },
     { code: 'cor', name: 'Cornish', native: 'Kernewek' },
     { code: 'ces', name: 'Czech', native: 'Čeština' },
     { code: 'cym', name: 'Welsh', native: 'Cymraeg' },
@@ -1223,11 +1223,11 @@ app.post('/api/courses/:courseCode/phase/3/infinitive-check', async (req, res) =
 
     if (firstSeed) {
       if (Array.isArray(firstSeed)) {
-        // Array format [seedId, [target, known], legos]
-        knownLang = firstSeed[1]?.[1];
+        // Array format [seedId, [known, target], legos]
+        knownLang = firstSeed[1]?.[0];
       } else if (firstSeed.seed_pair) {
-        // Object format {seed_id, seed_pair: [target, known], legos}
-        knownLang = firstSeed.seed_pair?.[1];
+        // Object format {seed_id, seed_pair: [known, target], legos}
+        knownLang = firstSeed.seed_pair?.[0];
       }
     }
 

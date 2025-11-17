@@ -144,8 +144,9 @@ function checkInfinitiveFormsData(data) {
     return { violations: [], totalSeeds: 0, totalLegos: 0 };
   }
 
-  // Detect format
-  const isV5_1 = data.version === '5.0.1' || (data.methodology && data.methodology.includes('COMPLETE TILING'));
+  // Detect format - check first seed structure
+  const firstSeed = data.seeds[0];
+  const isObjectFormat = firstSeed && !Array.isArray(firstSeed) && firstSeed.seed_id;
 
   // Process each seed
   for (const seed of data.seeds) {
@@ -153,7 +154,7 @@ function checkInfinitiveFormsData(data) {
 
     let seedId, legos;
 
-    if (isV5_1) {
+    if (isObjectFormat) {
       ({ seed_id: seedId, legos } = seed);
     } else {
       [seedId, , legos] = seed;
