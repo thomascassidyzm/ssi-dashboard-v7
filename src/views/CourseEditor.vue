@@ -1917,6 +1917,7 @@ async function regenerateBaskets() {
 async function confirmRegeneration() {
   regenerationLoading.value = true
   const missing = regenerationResult.value.missing
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
 
   try {
     // Call orchestrator which proxies to Phase 5 server
