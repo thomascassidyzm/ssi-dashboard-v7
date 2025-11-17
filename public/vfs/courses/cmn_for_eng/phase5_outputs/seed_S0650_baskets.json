@@ -1,0 +1,77 @@
+{
+  "S0650L01": {
+    "lego": ["Do you want to go","您想去吗"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Do you want to go?","您想去吗？",null,1],
+      ["Do you want to go sir?","您想去吗先生？",null,2],
+      ["Do you want to go madam?","您想去吗女士？",null,2],
+      ["I can help you. Do you want to go?","我可以帮您。您想去吗？",null,3],
+      ["Do you want to go sir? Are you ready?","您想去吗先生？您准备好了吗？",null,4],
+      ["Do you want to go madam? I can help you.","您想去吗女士？我可以帮您。",null,4],
+      ["I think that you want to go sir.","我认为您想去先生。",null,5],
+      ["Do you want to go madam? Are you ready? I can help you.","您想去吗女士？您准备好了吗？我可以帮您。",null,6],
+      ["I think that you want to go. Are you ready sir?","我认为您想去。您准备好了吗先生？",null,6],
+      ["Do you want to go? Could you say that madam?","您想去吗？您能说那个吗女士？",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0650L02": {
+    "lego": ["want to go","想去"],
+    "type": "M",
+    "current_seed_legos_available": [["Do you want to go","您想去吗"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I want to go.","我想去。",null,1],
+      ["I want to go sir.","我想去先生。",null,2],
+      ["I want to go madam.","我想去女士。",null,2],
+      ["I think that I want to go.","我认为我想去。",null,3],
+      ["Do you want to go sir?","您想去吗先生？",null,3],
+      ["I want to go. I'm ready madam.","我想去。我准备好了女士。",null,4],
+      ["I think that I want to go sir.","我认为我想去先生。",null,4],
+      ["I want to go madam. Are you ready?","我想去女士。您准备好了吗？",null,5],
+      ["Do you want to go? I think that I want to go too.","您想去吗？我认为我也想去。",null,6],
+      ["I want to go sir. I can help you.","我想去先生。我可以帮您。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0650L03": {
+    "lego": ["want to go (question)","想去吗"],
+    "type": "M",
+    "current_seed_legos_available": [["Do you want to go","您想去吗"],["want to go","想去"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Want to go sir?","想去吗先生？",null,2],
+      ["Want to go madam?","想去吗女士？",null,2],
+      ["I'm ready. Want to go?","我准备好了。想去吗？",null,3],
+      ["Want to go sir? I can help you.","想去吗先生？我可以帮您。",null,3],
+      ["I think that you want to go. Want to go madam?","我认为您想去。想去吗女士？",null,5],
+      ["Are you ready? Want to go sir?","您准备好了吗？想去吗先生？",null,4],
+      ["Want to go madam? I think that it's the red one.","想去吗女士？我认为是红色的那个。",null,6],
+      ["I can help you sir. Want to go? Are you ready?","我可以帮您先生。想去吗？您准备好了吗？",null,6],
+      ["Want to go? I think that you're ready madam.","想去吗？我认为您准备好了女士。",null,6],
+      ["Do you want to go madam?","您想去吗女士？",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}
