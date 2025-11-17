@@ -1,0 +1,312 @@
+{
+  "legos": {
+    "S0260L01": {
+      "lego": [
+        "I don't have",
+        "no tengo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I don't have",
+          "no tengo",
+          null,
+          1
+        ],
+        [
+          "I don't have an idea",
+          "no tengo una idea",
+          null,
+          3
+        ],
+        [
+          "I don't have time",
+          "no tengo tiempo",
+          null,
+          2
+        ],
+        [
+          "I don't have that",
+          "no tengo eso",
+          null,
+          2
+        ],
+        [
+          "I don't have the slightest idea",
+          "no tengo la más mínima idea",
+          null,
+          6
+        ],
+        [
+          "I don't have the faintest idea",
+          "no tengo ni la más mínima idea",
+          null,
+          7
+        ],
+        [
+          "I don't have a lot",
+          "no tengo mucho",
+          null,
+          3
+        ],
+        [
+          "I don't have that blue thing",
+          "no tengo esa cosa azul",
+          null,
+          5
+        ],
+        [
+          "I don't have enough time",
+          "no tengo suficiente tiempo",
+          null,
+          4
+        ],
+        [
+          "I don't have my money back",
+          "no tengo mi dinero de vuelta",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0260L01",
+        "seed_context": {
+          "known": "No tengo ni la más mínima idea.",
+          "target": "I don't have the faintest idea."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0260L02": {
+      "lego": [
+        "the faintest idea",
+        "ni la más mínima idea"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't have",
+          "no tengo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "The faintest idea",
+          "ni la más mínima idea",
+          null,
+          1
+        ],
+        [
+          "I don't have the faintest idea",
+          "no tengo ni la más mínima idea",
+          null,
+          7
+        ],
+        [
+          "I don't have the faintest idea about that",
+          "no tengo ni la más mínima idea sobre eso",
+          null,
+          9
+        ],
+        [
+          "Do you have the faintest idea",
+          "tienes ni la más mínima idea",
+          null,
+          6
+        ],
+        [
+          "I wanted the faintest idea",
+          "quería ni la más mínima idea",
+          null,
+          5
+        ],
+        [
+          "I don't have the faintest idea what that is",
+          "no tengo ni la más mínima idea qué es eso",
+          null,
+          11
+        ],
+        [
+          "Can you tell me the faintest idea",
+          "puedes decirme ni la más mínima idea",
+          null,
+          7
+        ],
+        [
+          "I don't have the faintest idea about that blue thing",
+          "no tengo ni la más mínima idea sobre esa cosa azul",
+          null,
+          11
+        ],
+        [
+          "I think I don't have the faintest idea",
+          "creo que no tengo ni la más mínima idea",
+          null,
+          9
+        ],
+        [
+          "I don't have the faintest idea over there",
+          "no tengo ni la más mínima idea de allí",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 1,
+        "long_6_plus": 8
+      },
+      "_metadata": {
+        "lego_id": "S0260L02",
+        "seed_context": {
+          "known": "No tengo ni la más mínima idea.",
+          "target": "I don't have the faintest idea."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0260L03": {
+      "lego": [
+        "the slightest idea",
+        "la más mínima idea"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't have",
+          "no tengo"
+        ],
+        [
+          "the faintest idea",
+          "ni la más mínima idea"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "The slightest idea",
+          "la más mínima idea",
+          null,
+          1
+        ],
+        [
+          "I don't have the slightest idea",
+          "no tengo la más mínima idea",
+          null,
+          6
+        ],
+        [
+          "I have the slightest idea",
+          "tengo la más mínima idea",
+          null,
+          4
+        ],
+        [
+          "Do you have the slightest idea",
+          "tienes la más mínima idea",
+          null,
+          5
+        ],
+        [
+          "I don't have the slightest idea about that",
+          "no tengo la más mínima idea sobre eso",
+          null,
+          8
+        ],
+        [
+          "I wanted the slightest idea",
+          "quería la más mínima idea",
+          null,
+          4
+        ],
+        [
+          "I don't have the slightest idea what that is",
+          "no tengo la más mínima idea qué es eso",
+          null,
+          10
+        ],
+        [
+          "Can you tell me the slightest idea",
+          "puedes decirme la más mínima idea",
+          null,
+          6
+        ],
+        [
+          "I think I don't have the slightest idea",
+          "creo que no tengo la más mínima idea",
+          null,
+          8
+        ],
+        [
+          "I don't have the faintest idea",
+          "no tengo ni la más mínima idea",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0260L03",
+        "seed_context": {
+          "known": "No tengo ni la más mínima idea.",
+          "target": "I don't have the faintest idea."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

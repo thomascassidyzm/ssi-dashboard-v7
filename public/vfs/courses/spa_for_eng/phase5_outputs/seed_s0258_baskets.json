@@ -1,0 +1,187 @@
+{
+  "legos": {
+    "S0258L01": {
+      "lego": [
+        "what's/what is",
+        "qué es"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "What is",
+          "qué es",
+          null,
+          1
+        ],
+        [
+          "What is that",
+          "qué es eso",
+          null,
+          2
+        ],
+        [
+          "What is this",
+          "qué es esto",
+          null,
+          2
+        ],
+        [
+          "What is that thing",
+          "qué es esa cosa",
+          null,
+          3
+        ],
+        [
+          "What is that blue thing",
+          "qué es esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "What is your idea",
+          "qué es tu idea",
+          null,
+          3
+        ],
+        [
+          "What is that over there",
+          "qué es eso de allí",
+          null,
+          4
+        ],
+        [
+          "What is that blue thing over there",
+          "qué es esa cosa azul de allí",
+          null,
+          6
+        ],
+        [
+          "What is the slightest idea",
+          "qué es la más mínima idea",
+          null,
+          5
+        ],
+        [
+          "What is that thing you like",
+          "qué es esa cosa que te gusta",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0258L01",
+        "seed_context": {
+          "known": "¿Qué es esa cosa azul de allí?",
+          "target": "What's that blue thing over there?"
+        }
+      }
+    },
+    "S0258L05": {
+      "lego": [
+        "over there",
+        "de allí"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what's/what is",
+          "qué es"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Over there",
+          "de allí",
+          null,
+          1
+        ],
+        [
+          "That thing over there",
+          "esa cosa de allí",
+          null,
+          3
+        ],
+        [
+          "I like that over there",
+          "me gusta eso de allí",
+          null,
+          4
+        ],
+        [
+          "What is that over there",
+          "qué es eso de allí",
+          null,
+          4
+        ],
+        [
+          "That blue thing over there",
+          "esa cosa azul de allí",
+          null,
+          4
+        ],
+        [
+          "I like that blue thing over there",
+          "me gusta esa cosa azul de allí",
+          null,
+          6
+        ],
+        [
+          "What is that blue thing over there",
+          "qué es esa cosa azul de allí",
+          null,
+          6
+        ],
+        [
+          "I wanted that thing over there",
+          "quería esa cosa de allí",
+          null,
+          5
+        ],
+        [
+          "Can you tell me about that over there",
+          "puedes decirme sobre eso de allí",
+          null,
+          7
+        ],
+        [
+          "What's that blue thing over there",
+          "qué es esa cosa azul de allí",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 1,
+        "longer_4_5": 4,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0258L05",
+        "seed_context": {
+          "known": "¿Qué es esa cosa azul de allí?",
+          "target": "What's that blue thing over there?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

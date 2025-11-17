@@ -1,0 +1,391 @@
+{
+  "legos": {
+    "S0257L01": {
+      "lego": [
+        "I like",
+        "me gusta"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I like",
+          "me gusta",
+          null,
+          1
+        ],
+        [
+          "I like that",
+          "me gusta eso",
+          null,
+          2
+        ],
+        [
+          "I like it",
+          "me gusta",
+          null,
+          1
+        ],
+        [
+          "I like that book",
+          "me gusta ese libro",
+          null,
+          3
+        ],
+        [
+          "I like that thing",
+          "me gusta esa cosa",
+          null,
+          3
+        ],
+        [
+          "I like that blue thing",
+          "me gusta esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "I like the film",
+          "me gusta la película",
+          null,
+          3
+        ],
+        [
+          "I like that blue thing over there",
+          "me gusta esa cosa azul de allí",
+          null,
+          6
+        ],
+        [
+          "I like how much I've done",
+          "me gusta cuánto he hecho",
+          null,
+          5
+        ],
+        [
+          "I like to help you",
+          "me gusta ayudarte",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 4,
+        "longer_4_5": 2,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0257L01",
+        "seed_context": {
+          "known": "Me gusta esa cosa azul.",
+          "target": "I like that blue thing."
+        }
+      }
+    },
+    "S0257L02": {
+      "lego": [
+        "that blue thing",
+        "esa cosa azul"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I like",
+          "me gusta"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "That blue thing",
+          "esa cosa azul",
+          null,
+          1
+        ],
+        [
+          "I like that blue thing",
+          "me gusta esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "I want that blue thing",
+          "quiero esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "I thought that blue thing was good",
+          "pensé que esa cosa azul era buena",
+          null,
+          8
+        ],
+        [
+          "Can you tell me about that blue thing",
+          "puedes decirme sobre esa cosa azul",
+          null,
+          7
+        ],
+        [
+          "I wanted that blue thing",
+          "quería esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "What is that blue thing",
+          "qué es esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "I like that blue thing over there",
+          "me gusta esa cosa azul de allí",
+          null,
+          6
+        ],
+        [
+          "That blue thing is fairly good",
+          "esa cosa azul es bastante buena",
+          null,
+          6
+        ],
+        [
+          "I want to ask about that blue thing",
+          "quiero preguntar sobre esa cosa azul",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 5,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0257L02",
+        "seed_context": {
+          "known": "Me gusta esa cosa azul.",
+          "target": "I like that blue thing."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0257L03": {
+      "lego": [
+        "blue thing",
+        "cosa azul"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I like",
+          "me gusta"
+        ],
+        [
+          "that blue thing",
+          "esa cosa azul"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Blue thing",
+          "cosa azul",
+          null,
+          1
+        ],
+        [
+          "That blue thing",
+          "esa cosa azul",
+          null,
+          2
+        ],
+        [
+          "The blue thing",
+          "la cosa azul",
+          null,
+          2
+        ],
+        [
+          "I like that blue thing",
+          "me gusta esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "What is that blue thing",
+          "qué es esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "I want the blue thing",
+          "quiero la cosa azul",
+          null,
+          4
+        ],
+        [
+          "That blue thing is good",
+          "esa cosa azul es buena",
+          null,
+          5
+        ],
+        [
+          "I like that blue thing over there",
+          "me gusta esa cosa azul de allí",
+          null,
+          6
+        ],
+        [
+          "What is that blue thing over there",
+          "qué es esa cosa azul de allí",
+          null,
+          7
+        ],
+        [
+          "I thought that blue thing was fairly good",
+          "pensé que esa cosa azul era bastante buena",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 0,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0257L03",
+        "seed_context": {
+          "known": "Me gusta esa cosa azul.",
+          "target": "I like that blue thing."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0257L04": {
+      "lego": [
+        "blue",
+        "azul"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I like",
+          "me gusta"
+        ],
+        [
+          "that blue thing",
+          "esa cosa azul"
+        ],
+        [
+          "blue thing",
+          "cosa azul"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Blue",
+          "azul",
+          null,
+          1
+        ],
+        [
+          "That blue thing",
+          "esa cosa azul",
+          null,
+          2
+        ],
+        [
+          "I like blue",
+          "me gusta azul",
+          null,
+          2
+        ],
+        [
+          "The blue thing",
+          "la cosa azul",
+          null,
+          2
+        ],
+        [
+          "I like that blue thing",
+          "me gusta esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "What is that blue thing",
+          "qué es esa cosa azul",
+          null,
+          4
+        ],
+        [
+          "That blue thing over there",
+          "esa cosa azul de allí",
+          null,
+          4
+        ],
+        [
+          "I like that blue thing over there",
+          "me gusta esa cosa azul de allí",
+          null,
+          6
+        ],
+        [
+          "What is that blue thing over there",
+          "qué es esa cosa azul de allí",
+          null,
+          7
+        ],
+        [
+          "I like that blue thing",
+          "me gusta esa cosa azul",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 0,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0257L04",
+        "seed_context": {
+          "known": "Me gusta esa cosa azul.",
+          "target": "I like that blue thing."
+        }
+      }
+    }
+  }
+}
