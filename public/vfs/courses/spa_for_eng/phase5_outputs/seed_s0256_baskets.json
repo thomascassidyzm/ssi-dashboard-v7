@@ -1,0 +1,647 @@
+{
+  "legos": {
+    "S0256L01": {
+      "lego": [
+        "I think I'll",
+        "Creo que"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I think I'll",
+          "Creo que",
+          null,
+          1
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo",
+          null,
+          4
+        ],
+        [
+          "I think I'll start",
+          "creo que empezaré",
+          null,
+          3
+        ],
+        [
+          "I think I'll help you",
+          "creo que te ayudaré",
+          null,
+          4
+        ],
+        [
+          "I think I'll be ready to start",
+          "creo que estaré listo para empezar",
+          null,
+          6
+        ],
+        [
+          "I think I'll be happy",
+          "creo que estaré contento",
+          null,
+          4
+        ],
+        [
+          "I think I'll be ready to help you",
+          "creo que estaré listo para ayudarte",
+          null,
+          6
+        ],
+        [
+          "I think I'll be ready in a few minutes",
+          "creo que estaré listo en unos pocos minutos",
+          null,
+          8
+        ],
+        [
+          "I think I'll be ready to start before you go",
+          "creo que estaré listo para empezar antes de que te vayas",
+          null,
+          10
+        ],
+        [
+          "I think I'll be happy with how much I've done",
+          "creo que estaré contento con cuánto he hecho",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0256L01",
+        "seed_context": {
+          "known": "Creo que estaré listo en menos de una hora.",
+          "target": "I think I'll be ready in less than an hour."
+        }
+      }
+    },
+    "S0256L02": {
+      "lego": [
+        "I think I'll be ready",
+        "creo que estaré listo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think I'll",
+          "Creo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I think I'll be ready",
+          "creo que estaré listo",
+          null,
+          4
+        ],
+        [
+          "I think I'll be ready soon",
+          "creo que estaré listo pronto",
+          null,
+          5
+        ],
+        [
+          "I think I'll be ready to start",
+          "creo que estaré listo para empezar",
+          null,
+          6
+        ],
+        [
+          "I think I'll be ready to help",
+          "creo que estaré listo para ayudar",
+          null,
+          6
+        ],
+        [
+          "I think I'll be ready to help you",
+          "creo que estaré listo para ayudarte",
+          null,
+          6
+        ],
+        [
+          "I think I'll be ready in a few minutes",
+          "creo que estaré listo en unos pocos minutos",
+          null,
+          8
+        ],
+        [
+          "I think I'll be ready before you go",
+          "creo que estaré listo antes de que te vayas",
+          null,
+          8
+        ],
+        [
+          "I think I'll be ready to start before you go",
+          "creo que estaré listo para empezar antes de que te vayas",
+          null,
+          10
+        ],
+        [
+          "I think I'll be ready to help you in a few minutes",
+          "creo que estaré listo para ayudarte en unos pocos minutos",
+          null,
+          10
+        ],
+        [
+          "I think I'll be ready since this morning",
+          "creo que estaré listo desde esta mañana",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 8
+      },
+      "_metadata": {
+        "lego_id": "S0256L02",
+        "seed_context": {
+          "known": "Creo que estaré listo en menos de una hora.",
+          "target": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0256L03": {
+      "lego": [
+        "think I'll be ready",
+        "que estaré listo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think I'll",
+          "Creo que"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I think I'll be ready",
+          "creo que estaré listo",
+          null,
+          4
+        ],
+        [
+          "You think I'll be ready",
+          "crees que estaré listo",
+          null,
+          4
+        ],
+        [
+          "When do you think I'll be ready",
+          "cuándo crees que estaré listo",
+          null,
+          6
+        ],
+        [
+          "I think I'll be ready to start",
+          "creo que estaré listo para empezar",
+          null,
+          6
+        ],
+        [
+          "You think I'll be ready to help",
+          "crees que estaré listo para ayudar",
+          null,
+          6
+        ],
+        [
+          "When do you think I'll be ready to start",
+          "cuándo crees que estaré listo para empezar",
+          null,
+          8
+        ],
+        [
+          "I think I'll be ready in a few minutes",
+          "creo que estaré listo en unos pocos minutos",
+          null,
+          8
+        ],
+        [
+          "You think I'll be ready before I go",
+          "crees que estaré listo antes de que me vaya",
+          null,
+          8
+        ],
+        [
+          "When do you think I'll be ready to help you",
+          "cuándo crees que estaré listo para ayudarte",
+          null,
+          9
+        ],
+        [
+          "I think I'll be ready to start before you go",
+          "creo que estaré listo para empezar antes de que te vayas",
+          null,
+          10
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 8
+      },
+      "_metadata": {
+        "lego_id": "S0256L03",
+        "seed_context": {
+          "known": "Creo que estaré listo en menos de una hora.",
+          "target": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0256L04": {
+      "lego": [
+        "be ready",
+        "estaré listo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think I'll",
+          "Creo que"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ],
+        [
+          "think I'll be ready",
+          "que estaré listo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Be ready",
+          "estaré listo",
+          null,
+          1
+        ],
+        [
+          "I'll be ready",
+          "estaré listo",
+          null,
+          2
+        ],
+        [
+          "I'll be ready soon",
+          "estaré listo pronto",
+          null,
+          3
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo",
+          null,
+          4
+        ],
+        [
+          "I'll be ready to start",
+          "estaré listo para empezar",
+          null,
+          4
+        ],
+        [
+          "I'll be ready to help you",
+          "estaré listo para ayudarte",
+          null,
+          5
+        ],
+        [
+          "I'll be ready in a few minutes",
+          "estaré listo en unos pocos minutos",
+          null,
+          6
+        ],
+        [
+          "When do you think I'll be ready",
+          "cuándo crees que estaré listo",
+          null,
+          6
+        ],
+        [
+          "I'll be ready to start before you go",
+          "estaré listo para empezar antes de que te vayas",
+          null,
+          8
+        ],
+        [
+          "I think I'll be ready to help you",
+          "creo que estaré listo para ayudarte",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0256L04",
+        "seed_context": {
+          "known": "Creo que estaré listo en menos de una hora.",
+          "target": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0256L05": {
+      "lego": [
+        "in less than an hour",
+        "en menos de una hora"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think I'll",
+          "Creo que"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ],
+        [
+          "think I'll be ready",
+          "que estaré listo"
+        ],
+        [
+          "be ready",
+          "estaré listo"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "In less than an hour",
+          "en menos de una hora",
+          null,
+          1
+        ],
+        [
+          "I'll be ready in less than an hour",
+          "estaré listo en menos de una hora",
+          null,
+          6
+        ],
+        [
+          "I think I'll be ready in less than an hour",
+          "creo que estaré listo en menos de una hora",
+          null,
+          8
+        ],
+        [
+          "I'll start in less than an hour",
+          "empezaré en menos de una hora",
+          null,
+          5
+        ],
+        [
+          "I should be ready in less than an hour",
+          "debo estar preparado en menos de una hora",
+          null,
+          7
+        ],
+        [
+          "I'll be ready to help you in less than an hour",
+          "estaré listo para ayudarte en menos de una hora",
+          null,
+          9
+        ],
+        [
+          "When do you think I'll be ready in less than an hour",
+          "cuándo crees que estaré listo en menos de una hora",
+          null,
+          11
+        ],
+        [
+          "I think I'll be ready to start in less than an hour",
+          "creo que estaré listo para empezar en menos de una hora",
+          null,
+          11
+        ],
+        [
+          "I wanted to start in less than an hour",
+          "quería empezar en menos de una hora",
+          null,
+          7
+        ],
+        [
+          "I'll be ready to help in less than an hour",
+          "estaré listo para ayudar en menos de una hora",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 7
+      },
+      "_metadata": {
+        "lego_id": "S0256L05",
+        "seed_context": {
+          "known": "Creo que estaré listo en menos de una hora.",
+          "target": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0256L06": {
+      "lego": [
+        "less than an hour",
+        "menos de una hora"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think I'll",
+          "Creo que"
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo"
+        ],
+        [
+          "think I'll be ready",
+          "que estaré listo"
+        ],
+        [
+          "be ready",
+          "estaré listo"
+        ],
+        [
+          "in less than an hour",
+          "en menos de una hora"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Less than an hour",
+          "menos de una hora",
+          null,
+          1
+        ],
+        [
+          "In less than an hour",
+          "en menos de una hora",
+          null,
+          2
+        ],
+        [
+          "I have less than an hour",
+          "tengo menos de una hora",
+          null,
+          4
+        ],
+        [
+          "I'll be ready in less than an hour",
+          "estaré listo en menos de una hora",
+          null,
+          6
+        ],
+        [
+          "I think I'll be ready in less than an hour",
+          "creo que estaré listo en menos de una hora",
+          null,
+          8
+        ],
+        [
+          "I should be ready in less than an hour",
+          "debo estar preparado en menos de una hora",
+          null,
+          7
+        ],
+        [
+          "I'll start in less than an hour",
+          "empezaré en menos de una hora",
+          null,
+          5
+        ],
+        [
+          "I think I'll be ready to start in less than an hour",
+          "creo que estaré listo para empezar en menos de una hora",
+          null,
+          11
+        ],
+        [
+          "I'll be ready to help you in less than an hour",
+          "estaré listo para ayudarte en menos de una hora",
+          null,
+          9
+        ],
+        [
+          "I think I'll be ready in less than an hour",
+          "creo que estaré listo en menos de una hora",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0256L06",
+        "seed_context": {
+          "known": "Creo que estaré listo en menos de una hora.",
+          "target": "I think I'll be ready in less than an hour."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}
