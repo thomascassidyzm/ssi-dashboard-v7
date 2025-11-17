@@ -1,0 +1,99 @@
+{
+  "S0218L01": {
+    "lego": ["I didn't do much on Sunday", "我星期天没做什么"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I went out Saturday.", "我星期六出去了。", null, 2],
+      ["I saw friends.", "我见了朋友。", null, 2],
+      ["I didn't do much on Sunday.", "我星期天没做什么。", null, 2],
+      ["I saw a few friends Saturday.", "我星期六见了几个朋友。", null, 3],
+      ["I went out on Saturday night.", "我星期六晚上出去了。", null, 3],
+      ["I didn't do much on Sunday but I had water.", "我星期天没做什么，但我喝了水。", null, 5],
+      ["I didn't do much on Sunday, but I went out Saturday night.", "我星期天没做什么，但我星期六晚上出去了。", null, 6],
+      ["I didn't do much on Sunday, but I saw a few friends at the weekend.", "我星期天没做什么，但我周末见了几个朋友。", null, 7],
+      ["They told us they didn't want to explain the problem at the weekend.", "他们告诉我们他们不想周末解释这个问题。", null, 6],
+      ["We don't know what they wanted to achieve, but they wanted to ask for help.", "我们不知道他们想达到什么，但他们想寻求帮助。", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [["我", "I"], ["星期天", "on Sunday"], ["没", "didn't"], ["做", "do"], ["什么", "much/anything"]]
+  },
+  "S0218L02": {
+    "lego": ["Sunday", "星期天"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0218L01",
+        "known": "I didn't do much on Sunday",
+        "target": "我星期天没做什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["I went out Sunday.", "我星期天出去了。", null, 2],
+      ["They wanted help Sunday.", "他们星期天想要帮助。", null, 2],
+      ["I didn't do much on Sunday.", "我星期天没做什么。", null, 2],
+      ["I saw a few friends Sunday.", "我星期天见了几个朋友。", null, 3],
+      ["I had water on Sunday night.", "我星期天晚上喝了水。", null, 4],
+      ["I went out to see friends Sunday.", "我星期天出去见朋友。", null, 4],
+      ["I didn't do much on Sunday, but I had a good time.", "我星期天没做什么，但我过得好。", null, 6],
+      ["I went out Sunday to see a few friends and had a glass of water.", "我星期天出去见几个朋友，喝了一杯水。", null, 8],
+      ["They told us they wanted to discuss the problem on Sunday at the weekend.", "他们告诉我们他们想星期天周末讨论这个问题。", null, 7],
+      ["We don't know what they're trying to achieve, but they wanted to ask for help on Sunday.", "我们不知道他们想达到什么，但他们想星期天寻求帮助。", null, 8]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0218L03": {
+    "lego": ["didn't do much", "没做什么"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0218L01",
+        "known": "I didn't do much on Sunday",
+        "target": "我星期天没做什么",
+        "type": "M"
+      },
+      {
+        "id": "S0218L02",
+        "known": "Sunday",
+        "target": "星期天",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["I didn't do much.", "我没做什么。", null, 1],
+      ["They didn't do much.", "他们没做什么。", null, 1],
+      ["I didn't do much on Sunday.", "我星期天没做什么。", null, 2],
+      ["They didn't do much at the weekend.", "他们周末没做什么。", null, 3],
+      ["I didn't do much, but I saw friends.", "我没做什么，但我见了朋友。", null, 4],
+      ["I didn't do much on Saturday night either.", "我星期六晚上也没做什么。", null, 4],
+      ["I didn't do much on Sunday, but I went out Saturday night.", "我星期天没做什么，但我星期六晚上出去了。", null, 6],
+      ["I didn't do much at the weekend, but I had a glass or two of water and saw a few friends.", "我周末没做什么，但我喝了一两杯水，见了几个朋友。", null, 9],
+      ["They told us they didn't do much on Sunday, but they wanted to discuss the problem.", "他们告诉我们他们星期天没做什么，但他们想讨论这个问题。", null, 8],
+      ["We don't know what they wanted to achieve at the weekend, but they didn't do much on Sunday.", "我们不知道他们周末想达到什么，但他们星期天没做什么。", null, 8]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [["没", "didn't"], ["做", "do"], ["什么", "much/anything"]]
+  }
+}

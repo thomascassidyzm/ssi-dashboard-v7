@@ -1,0 +1,211 @@
+{
+    "S0457L01": {
+        "lego": [
+            "part of the problem",
+            "问题的一部分"
+        ],
+        "type": "M",
+        "is_final_lego": false,
+        "current_seed_earlier_legos": [],
+        "practice_phrases": [
+            [
+                "part of the problem",
+                "问题的一部分",
+                null,
+                1
+            ],
+            [
+                "problem",
+                "问题",
+                null,
+                1
+            ],
+            [
+                "the problem",
+                "问题",
+                null,
+                2
+            ],
+            [
+                "a problem is",
+                "问题是",
+                null,
+                2
+            ],
+            [
+                "part is the problem",
+                "一部分是问题",
+                null,
+                2
+            ],
+            [
+                "one part of this problem",
+                "这个问题的一部分",
+                null,
+                3
+            ],
+            [
+                "part of the problem is not very efficient",
+                "问题的一部分不太有效",
+                null,
+                4
+            ],
+            [
+                "the part of the problem they said what they want",
+                "他们说的问题的一部分他们想什么",
+                null,
+                5
+            ],
+            [
+                "the main part of the problem about different areas is difficult",
+                "关于不同地区问题的主要部分是困难的",
+                null,
+                6
+            ],
+            [
+                "Part of the problem is the number of different areas.",
+                "问题的一部分是不同地区的数量。",
+                null,
+                8
+            ]
+        ],
+        "phrase_distribution": {
+            "short_1_to_2_legos": 2,
+            "medium_3_legos": 2,
+            "longer_4_legos": 2,
+            "longest_5_legos": 4
+        },
+        "target_phrase_count": 10,
+        "_metadata": {
+            "lego_id": "S0457L01",
+            "seed_context": {
+                "known": "问题的一部分是不同地区的数量。",
+                "target": "Part of the problem is the number of different areas."
+            }
+        },
+        "components": [
+            [
+                "问题",
+                "problem"
+            ],
+            [
+                "的",
+                "(possessive)"
+            ],
+            [
+                "一部分",
+                "part"
+            ]
+        ]
+    },
+    "S0457L02": {
+        "lego": [
+            "the number of different areas",
+            "不同地区的数量"
+        ],
+        "type": "M",
+        "is_final_lego": true,
+        "current_seed_earlier_legos": [
+            {
+                "id": "S0457L01",
+                "known": "part of the problem",
+                "target": "问题的一部分",
+                "type": "M"
+            }
+        ],
+        "practice_phrases": [
+            [
+                "different areas",
+                "不同地区",
+                null,
+                1
+            ],
+            [
+                "the areas",
+                "地区",
+                null,
+                1
+            ],
+            [
+                "number of areas",
+                "地区的数量",
+                null,
+                2
+            ],
+            [
+                "many different areas",
+                "很多不同地区",
+                null,
+                2
+            ],
+            [
+                "different areas is number",
+                "不同地区是数量",
+                null,
+                2
+            ],
+            [
+                "the number of areas is large",
+                "地区的数量很大",
+                null,
+                3
+            ],
+            [
+                "the number of different areas is a big problem",
+                "不同地区的数量是一个大问题",
+                null,
+                5
+            ],
+            [
+                "the number of different areas they wanted to develop new methods",
+                "不同地区的数量他们想开发新方法",
+                null,
+                5
+            ],
+            [
+                "part of the problem is the number of different areas makes it harder to do things",
+                "问题的一部分是不同地区的数量使做事情更难",
+                null,
+                6
+            ],
+            [
+                "Part of the problem is the number of different areas.",
+                "问题的一部分是不同地区的数量。",
+                null,
+                8
+            ]
+        ],
+        "phrase_distribution": {
+            "short_1_to_2_legos": 2,
+            "medium_3_legos": 2,
+            "longer_4_legos": 2,
+            "longest_5_legos": 4
+        },
+        "target_phrase_count": 10,
+        "_metadata": {
+            "lego_id": "S0457L02",
+            "seed_context": {
+                "known": "问题的一部分是不同地区的数量。",
+                "target": "Part of the problem is the number of different areas."
+            }
+        },
+        "components": [
+            [
+                "不同",
+                "different"
+            ],
+            [
+                "地区",
+                "areas"
+            ],
+            [
+                "的",
+                "(possessive)"
+            ],
+            [
+                "数量",
+                "number"
+            ]
+        ]
+    }
+}

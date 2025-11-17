@@ -1,0 +1,64 @@
+{
+  "S0385L01": {
+    "lego": ["you agree with her", "你同意她"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["You agree with her", "你同意她", null, 1],
+      ["You agree", "你同意", null, 1],
+      ["You agree with her now", "你现在同意她", null, 2],
+      ["You agree with him", "你同意他", null, 2],
+      ["Do you agree with her", "你同意她吗", null, 3],
+      ["You didn't agree with her", "你不同意她", null, 3],
+      ["You agree with what she said", "你同意她说的", null, 4],
+      ["Do you agree with her now", "你现在同意她吗", null, 4],
+      ["You didn't agree with what she said", "你不同意她说的", null, 5],
+      ["Did you agree with what she wanted", "你同意她想要的吗", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["你", "you"],
+      ["同意", "agree"],
+      ["她", "her"]
+    ]
+  },
+  "S0385L02": {
+    "lego": ["agree with her", "同意她"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {"id": "S0385L01", "known": "you agree with her", "target": "你同意她", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Agree with her", "同意她", null, 1],
+      ["I agree with her", "我同意她", null, 1],
+      ["You agree with her", "你同意她", null, 2],
+      ["He agrees with her", "他同意她", null, 2],
+      ["Do you agree with her", "你同意她吗", null, 3],
+      ["I didn't agree with her", "我不同意她", null, 3],
+      ["I agree with what she said", "我同意她说的", null, 4],
+      ["Did you agree with her yesterday", "你昨天同意她吗", null, 4],
+      ["I didn't agree with what she wanted", "我不同意她想要的", null, 5],
+      ["I couldn't agree with what she said", "我不能同意她说的", null, 5],
+      ["Did you agree with her?", "你同意她吗？", null, 2]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["同意", "agree"],
+      ["她", "her"]
+    ]
+  }
+}

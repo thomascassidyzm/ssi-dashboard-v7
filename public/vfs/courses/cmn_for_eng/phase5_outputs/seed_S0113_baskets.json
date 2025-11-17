@@ -1,0 +1,522 @@
+{
+  "S0113L01": {
+    "lego": [
+      "why can't I",
+      "为什么我不能"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Why can't I?",
+        "为什么我不能？",
+        null,
+        1
+      ],
+      [
+        "Why can't I do that?",
+        "为什么我不能做那个？",
+        null,
+        1
+      ],
+      [
+        "Why can't I learn new words?",
+        "为什么我不能学习新词？",
+        null,
+        3
+      ],
+      [
+        "Why can't I see what you were doing?",
+        "为什么我不能看到你正在做什么？",
+        null,
+        3
+      ],
+      [
+        "Why can't I work hard?",
+        "为什么我不能努力工作？",
+        null,
+        4
+      ],
+      [
+        "Why can't I change what we're doing?",
+        "为什么我不能改变我们正在做的事情？",
+        null,
+        4
+      ],
+      [
+        "Why can't I learn something new?",
+        "为什么我不能学习新东西？",
+        null,
+        5
+      ],
+      [
+        "Why can't I see the answer?",
+        "为什么我不能看到答案？",
+        null,
+        5
+      ],
+      [
+        "Why can't I learn a lot of new words after we finish?",
+        "为什么我不能在我们结束后学习很多新词？",
+        null,
+        6
+      ],
+      [
+        "Why can't I hoped to see what you were doing?",
+        "为什么我不能希望看到你正在做什么？",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0113L01",
+      "seed_context": {
+        "known": "Why can't I remember what you said?",
+        "target": "为什么我不能记得你说的话？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0113L02": {
+    "lego": [
+      "I can't remember",
+      "我不能记得"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "why can't I",
+        "为什么我不能"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I can't remember.",
+        "我不能记得。",
+        null,
+        1
+      ],
+      [
+        "I can't remember that.",
+        "我不能记得那个。",
+        null,
+        1
+      ],
+      [
+        "Why can't I remember?",
+        "为什么我不能记得？",
+        null,
+        3
+      ],
+      [
+        "I can't remember the answer.",
+        "我不能记得答案。",
+        null,
+        3
+      ],
+      [
+        "I can't remember new words.",
+        "我不能记得新词。",
+        null,
+        4
+      ],
+      [
+        "Why can't I remember what we're doing?",
+        "为什么我不能记得我们正在做的事情？",
+        null,
+        4
+      ],
+      [
+        "I can't remember when we learn something new.",
+        "我不能记得当我们学习新东西的时候。",
+        null,
+        5
+      ],
+      [
+        "Why can't I remember a lot of new words?",
+        "为什么我不能记得很多新词？",
+        null,
+        6
+      ],
+      [
+        "I can't remember what you were doing after we finish.",
+        "我不能记得你正在做什么在我们结束后。",
+        null,
+        6
+      ],
+      [
+        "That is why I can't remember we must work hard.",
+        "这就是为什么我不能记得我们必须努力工作。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0113L02",
+      "seed_context": {
+        "known": "Why can't I remember what you said?",
+        "target": "为什么我不能记得你说的话？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0113L03": {
+    "lego": [
+      "remember",
+      "记得"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "why can't I",
+        "为什么我不能"
+      ],
+      [
+        "I can't remember",
+        "我不能记得"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I can't remember.",
+        "我不能记得。",
+        null,
+        2
+      ],
+      [
+        "Remember that.",
+        "记得那个。",
+        null,
+        1
+      ],
+      [
+        "Why can't I remember new words?",
+        "为什么我不能记得新词？",
+        null,
+        3
+      ],
+      [
+        "I can't remember the answer.",
+        "我不能记得答案。",
+        null,
+        3
+      ],
+      [
+        "We need to remember what we're doing.",
+        "我们需要记得我们正在做的事情。",
+        null,
+        4
+      ],
+      [
+        "I can't remember that was very interesting.",
+        "我不能记得那非常有趣。",
+        null,
+        4
+      ],
+      [
+        "Why can't I remember when we learn something new?",
+        "为什么我不能记得当我们学习新东西的时候？",
+        null,
+        5
+      ],
+      [
+        "I can't remember but we must work hard to learn.",
+        "我不能记得但是我们必须努力工作来学习。",
+        null,
+        6
+      ],
+      [
+        "We need to remember a lot of new words after we finish.",
+        "我们需要记得很多新词在我们结束后。",
+        null,
+        7
+      ],
+      [
+        "That is why I can't remember what you were doing.",
+        "这就是为什么我不能记得你正在做什么。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0113L03",
+      "seed_context": {
+        "known": "Why can't I remember what you said?",
+        "target": "为什么我不能记得你说的话？"
+      }
+    }
+  },
+  "S0113L04": {
+    "lego": [
+      "what you said",
+      "你说的话"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "why can't I",
+        "为什么我不能"
+      ],
+      [
+        "I can't remember",
+        "我不能记得"
+      ],
+      [
+        "remember",
+        "记得"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "What you said.",
+        "你说的话。",
+        null,
+        1
+      ],
+      [
+        "I can't remember what you said.",
+        "我不能记得你说的话。",
+        null,
+        2
+      ],
+      [
+        "Why can't I remember what you said?",
+        "为什么我不能记得你说的话？",
+        null,
+        3
+      ],
+      [
+        "That was very interesting what you said.",
+        "那非常有趣你说的话。",
+        null,
+        3
+      ],
+      [
+        "I can't remember what you said about new words.",
+        "我不能记得你说的话关于新词。",
+        null,
+        4
+      ],
+      [
+        "We need to change what you said.",
+        "我们需要改变你说的话。",
+        null,
+        4
+      ],
+      [
+        "Why can't I remember what you said when we learn?",
+        "为什么我不能记得你说的话当我们学习？",
+        null,
+        5
+      ],
+      [
+        "That is why I can't remember what you said.",
+        "这就是为什么我不能记得你说的话。",
+        null,
+        6
+      ],
+      [
+        "I can't remember what you said but that was very interesting.",
+        "我不能记得你说的话但是那非常有趣。",
+        null,
+        6
+      ],
+      [
+        "We hoped to see what you said after we finish.",
+        "我们希望看到你说的话在我们结束后。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0113L04",
+      "seed_context": {
+        "known": "Why can't I remember what you said?",
+        "target": "为什么我不能记得你说的话？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0113L05": {
+    "lego": [
+      "you said",
+      "你说"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "why can't I",
+        "为什么我不能"
+      ],
+      [
+        "I can't remember",
+        "我不能记得"
+      ],
+      [
+        "remember",
+        "记得"
+      ],
+      [
+        "what you said",
+        "你说的话"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "What you said.",
+        "你说的话。",
+        null,
+        2
+      ],
+      [
+        "You said that.",
+        "你说那个。",
+        null,
+        1
+      ],
+      [
+        "Why can't I remember what you said?",
+        "为什么我不能记得你说的话？",
+        null,
+        3
+      ],
+      [
+        "I can't remember what you said.",
+        "我不能记得你说的话。",
+        null,
+        3
+      ],
+      [
+        "That was very interesting what you said.",
+        "那非常有趣你说的话。",
+        null,
+        4
+      ],
+      [
+        "You said we need to learn new words.",
+        "你说我们需要学习新词。",
+        null,
+        4
+      ],
+      [
+        "Why can't I remember what you said about new words?",
+        "为什么我不能记得你说的话关于新词？",
+        null,
+        5
+      ],
+      [
+        "I can't remember what you said when we learn something new.",
+        "我不能记得你说的话当我们学习新东西的时候。",
+        null,
+        6
+      ],
+      [
+        "Why can't I remember what you said?",
+        "为什么我不能记得你说的话？",
+        null,
+        6
+      ],
+      [
+        "That is why I can't remember what you said after we finish.",
+        "这就是为什么我不能记得你说的话在我们结束后。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0113L05",
+      "seed_context": {
+        "known": "Why can't I remember what you said?",
+        "target": "为什么我不能记得你说的话？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

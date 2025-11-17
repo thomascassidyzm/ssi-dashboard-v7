@@ -1,0 +1,667 @@
+{
+  "legos": {
+    "S0202L01": {
+      "lego": [
+        "Nobody",
+        "没有人"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Nobody heard.",
+          "没有人听说过。"
+        ],
+        [
+          "Nobody said.",
+          "没有人说。"
+        ],
+        [
+          "Nobody wanted to know.",
+          "没有人想知道。"
+        ],
+        [
+          "Nobody wanted to work.",
+          "没有人想工作。"
+        ],
+        [
+          "Nobody used to work here.",
+          "没有人过去在这里工作。"
+        ],
+        [
+          "Nobody wanted to make sure.",
+          "没有人想确保。"
+        ],
+        [
+          "Nobody wanted to know what happened.",
+          "没有人想知道会发生什么。"
+        ],
+        [
+          "Nobody wanted to finish everything in time.",
+          "没有人想及时完成所有事情。"
+        ],
+        [
+          "Nobody was trying to find the money.",
+          "没有人在试图找钱。"
+        ],
+        [
+          "Nobody was trying to find the money on the table.",
+          "没有人在试图找在桌子上的钱。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0202L01",
+        "seed_context": {
+          "known": "Nobody was sure how to answer the question.",
+          "target": "没有人确定如何回答这个问题。"
+        }
+      },
+      "components": [
+        [
+          "没有",
+          "no"
+        ],
+        [
+          "人",
+          "person"
+        ]
+      ]
+    },
+    "S0202L02": {
+      "lego": [
+        "was sure",
+        "确定"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0202L01",
+          "known": "Nobody",
+          "target": "没有人",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I was sure.",
+          "我确定。"
+        ],
+        [
+          "Nobody was sure.",
+          "没有人确定。"
+        ],
+        [
+          "They wanted to be sure.",
+          "他们想确定。"
+        ],
+        [
+          "We wanted to be sure.",
+          "我们想确定。"
+        ],
+        [
+          "I was sure it was there.",
+          "我确定它在那里。"
+        ],
+        [
+          "They wanted to make sure we finished.",
+          "他们想确保我们完成。"
+        ],
+        [
+          "Nobody was sure what was going to happen.",
+          "没有人确定会发生什么。"
+        ],
+        [
+          "We wanted to make sure everything was finished.",
+          "我们想确保所有事情都完成了。"
+        ],
+        [
+          "Nobody was sure what they wanted to say.",
+          "没有人确定他们想说什么。"
+        ],
+        [
+          "I was sure my son wanted to be a teacher.",
+          "我确定我的儿子想是老师。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0202L02",
+        "seed_context": {
+          "known": "Nobody was sure how to answer the question.",
+          "target": "没有人确定如何回答这个问题。"
+        }
+      }
+    },
+    "S0202L03": {
+      "lego": [
+        "sure how to answer",
+        "确定如何回答"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0202L01",
+          "known": "Nobody",
+          "target": "没有人",
+          "type": "M"
+        },
+        {
+          "id": "S0202L02",
+          "known": "was sure",
+          "target": "确定",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I was sure how to answer.",
+          "我确定如何回答。"
+        ],
+        [
+          "Nobody was sure how to answer.",
+          "没有人确定如何回答。"
+        ],
+        [
+          "We wanted to be sure how to answer.",
+          "我们想确定如何回答。"
+        ],
+        [
+          "They say they are sure how to answer.",
+          "他们说他们确定如何回答。"
+        ],
+        [
+          "My son was sure how to answer everything.",
+          "我的儿子确定如何回答所有事情。"
+        ],
+        [
+          "My daughter wanted to be sure how to answer.",
+          "我的女儿想确定如何回答。"
+        ],
+        [
+          "Nobody was sure how to answer what they were asking.",
+          "没有人确定如何回答他们在问的问题。"
+        ],
+        [
+          "We wanted to make sure we knew how to answer.",
+          "我们想确保我们知道如何回答。"
+        ],
+        [
+          "They said nobody was sure how to answer the latest question.",
+          "他们说没有人确定如何回答最新的问题。"
+        ],
+        [
+          "I was trying to make sure I knew how to answer everything.",
+          "我在试图确保我知道如何回答所有事情。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0202L03",
+        "seed_context": {
+          "known": "Nobody was sure how to answer the question.",
+          "target": "没有人确定如何回答这个问题。"
+        }
+      },
+      "components": [
+        [
+          "确定",
+          "sure"
+        ],
+        [
+          "如何",
+          "how"
+        ],
+        [
+          "回答",
+          "to answer"
+        ]
+      ]
+    },
+    "S0202L04": {
+      "lego": [
+        "how to answer",
+        "如何回答"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0202L01",
+          "known": "Nobody",
+          "target": "没有人",
+          "type": "M"
+        },
+        {
+          "id": "S0202L02",
+          "known": "was sure",
+          "target": "确定",
+          "type": "A"
+        },
+        {
+          "id": "S0202L03",
+          "known": "sure how to answer",
+          "target": "确定如何回答",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I know how to answer.",
+          "我知道如何回答。"
+        ],
+        [
+          "They know how to answer.",
+          "他们知道如何回答。"
+        ],
+        [
+          "We wanted to know how to answer.",
+          "我们想知道如何回答。"
+        ],
+        [
+          "Nobody was sure how to answer.",
+          "没有人确定如何回答。"
+        ],
+        [
+          "My son knows how to answer everything.",
+          "我的儿子知道如何回答所有事情。"
+        ],
+        [
+          "They wanted to know how to answer.",
+          "他们想知道如何回答。"
+        ],
+        [
+          "We were trying to find out how to answer.",
+          "我们在试图找出如何回答。"
+        ],
+        [
+          "Nobody was sure how to answer what they were asking.",
+          "没有人确定如何回答他们在问的。"
+        ],
+        [
+          "I wanted to make sure I knew how to answer the question.",
+          "我想确保我知道如何回答这个问题。"
+        ],
+        [
+          "They said they wanted to know how to answer everything in time.",
+          "他们说他们想知道如何及时回答所有事情。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0202L04",
+        "seed_context": {
+          "known": "Nobody was sure how to answer the question.",
+          "target": "没有人确定如何回答这个问题。"
+        }
+      },
+      "components": [
+        [
+          "如何",
+          "how"
+        ],
+        [
+          "回答",
+          "to answer"
+        ]
+      ]
+    },
+    "S0202L05": {
+      "lego": [
+        "how to answer the question",
+        "如何回答这个问题"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0202L01",
+          "known": "Nobody",
+          "target": "没有人",
+          "type": "M"
+        },
+        {
+          "id": "S0202L02",
+          "known": "was sure",
+          "target": "确定",
+          "type": "A"
+        },
+        {
+          "id": "S0202L03",
+          "known": "sure how to answer",
+          "target": "确定如何回答",
+          "type": "M"
+        },
+        {
+          "id": "S0202L04",
+          "known": "how to answer",
+          "target": "如何回答",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I know how to answer the question.",
+          "我知道如何回答这个问题。"
+        ],
+        [
+          "They know how to answer the question.",
+          "他们知道如何回答这个问题。"
+        ],
+        [
+          "We wanted to know how to answer the question.",
+          "我们想知道如何回答这个问题。"
+        ],
+        [
+          "Nobody was sure how to answer the question.",
+          "没有人确定如何回答这个问题。"
+        ],
+        [
+          "My son was sure how to answer the question.",
+          "我的儿子确定如何回答这个问题。"
+        ],
+        [
+          "My daughter wanted to know how to answer the question.",
+          "我的女儿想知道如何回答这个问题。"
+        ],
+        [
+          "They said they were sure how to answer the question.",
+          "他们说他们确定如何回答这个问题。"
+        ],
+        [
+          "We were trying to make sure we knew how to answer the question.",
+          "我们在试图确保我们知道如何回答这个问题。"
+        ],
+        [
+          "Nobody was sure how to answer the question they were asking.",
+          "没有人确定如何回答他们在问的这个问题。"
+        ],
+        [
+          "I wanted to make sure my son knew how to answer the latest question.",
+          "我想确保我的儿子知道如何回答最新的问题。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0202L05",
+        "seed_context": {
+          "known": "Nobody was sure how to answer the question.",
+          "target": "没有人确定如何回答这个问题。"
+        }
+      },
+      "components": [
+        [
+          "如何",
+          "how"
+        ],
+        [
+          "回答",
+          "to answer"
+        ],
+        [
+          "这个",
+          "the/this"
+        ],
+        [
+          "问题",
+          "question"
+        ]
+      ]
+    },
+    "S0202L06": {
+      "lego": [
+        "to answer the question",
+        "回答这个问题"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0202L01",
+          "known": "Nobody",
+          "target": "没有人",
+          "type": "M"
+        },
+        {
+          "id": "S0202L02",
+          "known": "was sure",
+          "target": "确定",
+          "type": "A"
+        },
+        {
+          "id": "S0202L03",
+          "known": "sure how to answer",
+          "target": "确定如何回答",
+          "type": "M"
+        },
+        {
+          "id": "S0202L04",
+          "known": "how to answer",
+          "target": "如何回答",
+          "type": "M"
+        },
+        {
+          "id": "S0202L05",
+          "known": "how to answer the question",
+          "target": "如何回答这个问题",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I wanted to answer the question.",
+          "我想回答这个问题。"
+        ],
+        [
+          "They wanted to answer the question.",
+          "他们想回答这个问题。"
+        ],
+        [
+          "We need to answer the question.",
+          "我们需要回答这个问题。"
+        ],
+        [
+          "Nobody wanted to answer the question.",
+          "没有人想回答这个问题。"
+        ],
+        [
+          "My son was trying to answer the question.",
+          "我的儿子在试图回答这个问题。"
+        ],
+        [
+          "My daughter wanted to answer the question in time.",
+          "我的女儿想及时回答这个问题。"
+        ],
+        [
+          "They said they wanted to answer the question today.",
+          "他们说他们今天想回答这个问题。"
+        ],
+        [
+          "We were trying to make sure we could answer the question.",
+          "我们在试图确保我们能回答这个问题。"
+        ],
+        [
+          "Nobody was sure how to answer the question they were asking.",
+          "没有人确定如何回答他们在问的这个问题。"
+        ],
+        [
+          "I wanted to make sure my son knew how to answer the question.",
+          "我想确保我的儿子知道如何回答这个问题。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0202L06",
+        "seed_context": {
+          "known": "Nobody was sure how to answer the question.",
+          "target": "没有人确定如何回答这个问题。"
+        }
+      },
+      "components": [
+        [
+          "回答",
+          "to answer"
+        ],
+        [
+          "这个",
+          "the/this"
+        ],
+        [
+          "问题",
+          "question"
+        ]
+      ]
+    },
+    "S0202L07": {
+      "lego": [
+        "the question",
+        "这个问题"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0202L01",
+          "known": "Nobody",
+          "target": "没有人",
+          "type": "M"
+        },
+        {
+          "id": "S0202L02",
+          "known": "was sure",
+          "target": "确定",
+          "type": "A"
+        },
+        {
+          "id": "S0202L03",
+          "known": "sure how to answer",
+          "target": "确定如何回答",
+          "type": "M"
+        },
+        {
+          "id": "S0202L04",
+          "known": "how to answer",
+          "target": "如何回答",
+          "type": "M"
+        },
+        {
+          "id": "S0202L05",
+          "known": "how to answer the question",
+          "target": "如何回答这个问题",
+          "type": "M"
+        },
+        {
+          "id": "S0202L06",
+          "known": "to answer the question",
+          "target": "回答这个问题",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I heard the question.",
+          "我听说过这个问题。"
+        ],
+        [
+          "They heard the question.",
+          "他们听说过这个问题。"
+        ],
+        [
+          "We wanted to know the question.",
+          "我们想知道这个问题。"
+        ],
+        [
+          "Nobody answered the question.",
+          "没有人回答这个问题。"
+        ],
+        [
+          "My son was trying to understand the question.",
+          "我的儿子在试图理解这个问题。"
+        ],
+        [
+          "My daughter wanted to answer the question in time.",
+          "我的女儿想及时回答这个问题。"
+        ],
+        [
+          "They said they wanted to know what the question was.",
+          "他们说他们想知道这个问题是什么。"
+        ],
+        [
+          "We were trying to make sure we understood the question completely.",
+          "我们在试图确保我们完全理解这个问题。"
+        ],
+        [
+          "I wanted to know how to answer the question they were asking.",
+          "我想知道如何回答他们在问的这个问题。"
+        ],
+        [
+          "Nobody was sure how to answer the question.",
+          "没有人确定如何回答这个问题。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0202L07",
+        "seed_context": {
+          "known": "Nobody was sure how to answer the question.",
+          "target": "没有人确定如何回答这个问题。"
+        }
+      },
+      "components": [
+        [
+          "这个",
+          "the/this"
+        ],
+        [
+          "问题",
+          "question"
+        ]
+      ]
+    }
+  }
+}

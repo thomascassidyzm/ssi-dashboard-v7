@@ -1,0 +1,413 @@
+{
+  "S0324L01": {
+    "lego": [
+      "That student",
+      "那个学生"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "That student",
+        "那个学生",
+        null,
+        1
+      ],
+      [
+        "That student wants to help",
+        "那个学生想帮",
+        null,
+        2
+      ],
+      [
+        "That student needs to read this book",
+        "那个学生需要读这本书",
+        null,
+        3
+      ],
+      [
+        "That student said that she wants to help",
+        "那个学生说她想帮",
+        null,
+        3
+      ],
+      [
+        "That student doesn't need to buy the book",
+        "那个学生不需要买书",
+        null,
+        4
+      ],
+      [
+        "That student needs to bring it tomorrow",
+        "那个学生需要明天带它",
+        null,
+        4
+      ],
+      [
+        "That student said that she needs to watch the game",
+        "那个学生说她需要看比赛",
+        null,
+        5
+      ],
+      [
+        "That student doesn't need to walk to school tonight",
+        "那个学生不需要今晚走路去学校",
+        null,
+        5
+      ],
+      [
+        "That student said that she needs to read the same book",
+        "那个学生说她需要读同一本书",
+        null,
+        6
+      ],
+      [
+        "That student needs to bring her brother to school tomorrow",
+        "那个学生需要明天带她的弟弟去学校",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "那",
+        "that"
+      ],
+      [
+        "个",
+        "(classifier)"
+      ],
+      [
+        "学生",
+        "student"
+      ]
+    ]
+  },
+  "S0324L02": {
+    "lego": [
+      "has raised",
+      "举起了"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0324L01",
+        "known": "That student",
+        "target": "那个学生",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Has raised",
+        "举起了",
+        null,
+        1
+      ],
+      [
+        "She has raised it",
+        "她举起了它",
+        null,
+        2
+      ],
+      [
+        "That student has raised it",
+        "那个学生举起了它",
+        null,
+        3
+      ],
+      [
+        "He has raised it tonight",
+        "他今晚举起了它",
+        null,
+        3
+      ],
+      [
+        "She said that she has raised it",
+        "她说她举起了它",
+        null,
+        4
+      ],
+      [
+        "That student has raised the book",
+        "那个学生举起了书",
+        null,
+        4
+      ],
+      [
+        "That student has raised it this year",
+        "那个学生今年举起了它",
+        null,
+        5
+      ],
+      [
+        "She said that the student has raised it",
+        "她说那个学生举起了它",
+        null,
+        5
+      ],
+      [
+        "That student has raised the same book tonight",
+        "那个学生今晚举起了同一本书",
+        null,
+        6
+      ],
+      [
+        "He said that that student has raised it tomorrow",
+        "他说那个学生明天举起了它",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "举",
+        "raise"
+      ],
+      [
+        "起",
+        "up"
+      ],
+      [
+        "了",
+        "(completed action)"
+      ]
+    ]
+  },
+  "S0324L03": {
+    "lego": [
+      "both of her hands",
+      "她的两只手"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0324L01",
+        "known": "That student",
+        "target": "那个学生",
+        "type": "M"
+      },
+      {
+        "id": "S0324L02",
+        "known": "has raised",
+        "target": "举起了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Both of her hands",
+        "她的两只手",
+        null,
+        1
+      ],
+      [
+        "She has both of her hands",
+        "她有她的两只手",
+        null,
+        2
+      ],
+      [
+        "She has raised both of her hands",
+        "她举起了她的两只手",
+        null,
+        3
+      ],
+      [
+        "Both of her hands are on the table",
+        "她的两只手在桌子上",
+        null,
+        3
+      ],
+      [
+        "That student has raised both of her hands",
+        "那个学生举起了她的两只手",
+        null,
+        4
+      ],
+      [
+        "She said that she has both of her hands",
+        "她说她有她的两只手",
+        null,
+        4
+      ],
+      [
+        "That student has raised both of her hands tonight",
+        "那个学生今晚举起了她的两只手",
+        null,
+        5
+      ],
+      [
+        "She said that she has raised both of her hands",
+        "她说她举起了她的两只手",
+        null,
+        5
+      ],
+      [
+        "That student has raised both of her hands this year",
+        "那个学生今年举起了她的两只手",
+        null,
+        6
+      ],
+      [
+        "She said that that student has raised both of her hands",
+        "她说那个学生举起了她的两只手",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她的",
+        "her"
+      ],
+      [
+        "两",
+        "both/two"
+      ],
+      [
+        "只",
+        "(measure word)"
+      ],
+      [
+        "手",
+        "hands"
+      ]
+    ]
+  },
+  "S0324L04": {
+    "lego": [
+      "both hands",
+      "两只手"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0324L01",
+        "known": "That student",
+        "target": "那个学生",
+        "type": "M"
+      },
+      {
+        "id": "S0324L02",
+        "known": "has raised",
+        "target": "举起了",
+        "type": "M"
+      },
+      {
+        "id": "S0324L03",
+        "known": "both of her hands",
+        "target": "她的两只手",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Both hands",
+        "两只手",
+        null,
+        1
+      ],
+      [
+        "He has both hands",
+        "他有两只手",
+        null,
+        2
+      ],
+      [
+        "She has raised both hands",
+        "她举起了两只手",
+        null,
+        3
+      ],
+      [
+        "Both hands are on the table",
+        "两只手在桌子上",
+        null,
+        3
+      ],
+      [
+        "That student has raised both hands",
+        "那个学生举起了两只手",
+        null,
+        4
+      ],
+      [
+        "He said that he has both hands",
+        "他说他有两只手",
+        null,
+        4
+      ],
+      [
+        "That student has raised both hands tonight",
+        "那个学生今晚举起了两只手",
+        null,
+        5
+      ],
+      [
+        "She said that that student has raised both hands",
+        "她说那个学生举起了两只手",
+        null,
+        5
+      ],
+      [
+        "That student needs to bring both hands to school tomorrow",
+        "那个学生明天需要带两只手去学校",
+        null,
+        6
+      ],
+      [
+        "That student has both of her hands up.",
+        "那个学生举起了她的两只手。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "两",
+        "both/two"
+      ],
+      [
+        "只",
+        "(measure word)"
+      ],
+      [
+        "手",
+        "hands"
+      ]
+    ]
+  }
+}

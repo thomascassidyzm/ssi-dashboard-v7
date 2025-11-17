@@ -1,0 +1,579 @@
+{
+  "legos": {
+    "S0443L02": {
+      "lego": [
+        "keep/continue",
+        "继续"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Continue.",
+          "继续。",
+          null,
+          1
+        ],
+        [
+          "They wanted to keep.",
+          "他们想继续。",
+          null,
+          2
+        ],
+        [
+          "Keep doing.",
+          "继续做。",
+          null,
+          2
+        ],
+        [
+          "They could continue.",
+          "他们可能继续。",
+          null,
+          3
+        ],
+        [
+          "They wanted to keep doing.",
+          "他们想继续做。",
+          null,
+          3
+        ],
+        [
+          "They don't want to continue.",
+          "他们不想继续。",
+          null,
+          4
+        ],
+        [
+          "They wanted to keep raising as much as possible.",
+          "他们想继续筹集尽可能多。",
+          null,
+          5
+        ],
+        [
+          "They wanted to continue while they're still young.",
+          "他们想在他们还年轻的时候继续。",
+          null,
+          6
+        ],
+        [
+          "They wanted to keep doing what he wanted.",
+          "他们想继续做他想的。",
+          null,
+          7
+        ],
+        [
+          "They wanted to keep doing it the same way.",
+          "他们想继续用同样的方法做。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0443L03": {
+      "lego": [
+        "the same",
+        "同样的"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "keep/continue",
+          "继续"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "The same.",
+          "同样的。",
+          null,
+          1
+        ],
+        [
+          "The same way.",
+          "同样的方法。",
+          null,
+          2
+        ],
+        [
+          "They wanted the same.",
+          "他们想同样的。",
+          null,
+          2
+        ],
+        [
+          "The same approach.",
+          "同样的方法。",
+          null,
+          3
+        ],
+        [
+          "They could keep the same approach.",
+          "他们可能继续同样的方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted the same new approach.",
+          "他们想同样的新方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted to raise the same number.",
+          "他们想筹集同样的数量。",
+          null,
+          5
+        ],
+        [
+          "They wanted to continue with the same approach.",
+          "他们想继续用同样的方法。",
+          null,
+          6
+        ],
+        [
+          "They wanted to keep doing the same thing.",
+          "他们想继续做同样的事。",
+          null,
+          7
+        ],
+        [
+          "They wanted to keep doing it the same way.",
+          "他们想继续用同样的方法做。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0443L04": {
+      "lego": [
+        "way/method",
+        "方法"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "keep/continue",
+          "继续"
+        ],
+        [
+          "the same",
+          "同样的"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "A way.",
+          "一个方法。",
+          null,
+          1
+        ],
+        [
+          "The same way.",
+          "同样的方法。",
+          null,
+          2
+        ],
+        [
+          "A new way.",
+          "一个新方法。",
+          null,
+          2
+        ],
+        [
+          "They wanted a new way.",
+          "他们想一个新方法。",
+          null,
+          3
+        ],
+        [
+          "They could keep the same way.",
+          "他们可能继续同样的方法。",
+          null,
+          4
+        ],
+        [
+          "Develop a new way.",
+          "开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted to raise a new way.",
+          "他们想筹集一个新方法。",
+          null,
+          5
+        ],
+        [
+          "They wanted to continue with the same way.",
+          "他们想继续用同样的方法。",
+          null,
+          6
+        ],
+        [
+          "They wanted to develop a new way for charity.",
+          "他们想为慈善开发一个新方法。",
+          null,
+          7
+        ],
+        [
+          "They wanted to keep doing it the same way.",
+          "他们想继续用同样的方法做。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      }
+    },
+    "S0443L06": {
+      "lego": [
+        "keep doing",
+        "继续做"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "keep/continue",
+          "继续"
+        ],
+        [
+          "the same",
+          "同样的"
+        ],
+        [
+          "way/method",
+          "方法"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Keep doing.",
+          "继续做。",
+          null,
+          1
+        ],
+        [
+          "They keep doing.",
+          "他们继续做。",
+          null,
+          2
+        ],
+        [
+          "They wanted to keep doing.",
+          "他们想继续做。",
+          null,
+          2
+        ],
+        [
+          "Keep doing the same way.",
+          "继续用同样的方法做。",
+          null,
+          3
+        ],
+        [
+          "They could keep doing it.",
+          "他们可能继续做。",
+          null,
+          4
+        ],
+        [
+          "They wanted to keep doing it the same way.",
+          "他们想继续用同样的方法做。",
+          null,
+          4
+        ],
+        [
+          "They don't want to keep doing what he wanted.",
+          "他们不想继续做他想的。",
+          null,
+          5
+        ],
+        [
+          "They wanted to keep doing it while they're young.",
+          "他们想在他们还年轻的时候继续做。",
+          null,
+          6
+        ],
+        [
+          "They could mean they want to keep doing it.",
+          "他们可能是说他们想继续做。",
+          null,
+          7
+        ],
+        [
+          "No they wanted to keep doing it the same way.",
+          "不，他们想继续用同样的方法做。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0443L07": {
+      "lego": [
+        "the same way",
+        "同样的方法"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "keep/continue",
+          "继续"
+        ],
+        [
+          "the same",
+          "同样的"
+        ],
+        [
+          "way/method",
+          "方法"
+        ],
+        [
+          "keep doing",
+          "继续做"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "The same way.",
+          "同样的方法。",
+          null,
+          1
+        ],
+        [
+          "Do it the same way.",
+          "用同样的方法做。",
+          null,
+          2
+        ],
+        [
+          "They wanted the same way.",
+          "他们想同样的方法。",
+          null,
+          2
+        ],
+        [
+          "Keep doing the same way.",
+          "继续用同样的方法做。",
+          null,
+          3
+        ],
+        [
+          "They could keep doing the same way.",
+          "他们可能继续用同样的方法做。",
+          null,
+          4
+        ],
+        [
+          "They wanted to develop the same way.",
+          "他们想开发同样的方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted to keep doing it the same way.",
+          "他们想继续用同样的方法做。",
+          null,
+          5
+        ],
+        [
+          "They don't want to do it the same way.",
+          "他们不想用同样的方法做。",
+          null,
+          6
+        ],
+        [
+          "They wanted to keep raising for charity the same way.",
+          "他们想继续用同样的方法为慈善筹集。",
+          null,
+          7
+        ],
+        [
+          "No they wanted to keep doing it the same way.",
+          "不，他们想继续用同样的方法做。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0443L08": {
+      "lego": [
+        "do it the same way",
+        "用同样的方法做"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "keep/continue",
+          "继续"
+        ],
+        [
+          "the same",
+          "同样的"
+        ],
+        [
+          "way/method",
+          "方法"
+        ],
+        [
+          "keep doing",
+          "继续做"
+        ],
+        [
+          "the same way",
+          "同样的方法"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Do it the same way.",
+          "用同样的方法做。",
+          null,
+          1
+        ],
+        [
+          "They do it the same way.",
+          "他们用同样的方法做。",
+          null,
+          2
+        ],
+        [
+          "Keep doing it the same way.",
+          "继续用同样的方法做。",
+          null,
+          2
+        ],
+        [
+          "They wanted to do it the same way.",
+          "他们想用同样的方法做。",
+          null,
+          3
+        ],
+        [
+          "They could do it the same way.",
+          "他们可能用同样的方法做。",
+          null,
+          4
+        ],
+        [
+          "They wanted to keep doing it the same way.",
+          "他们想继续用同样的方法做。",
+          null,
+          4
+        ],
+        [
+          "They don't want to do it the same way.",
+          "他们不想用同样的方法做。",
+          null,
+          5
+        ],
+        [
+          "They wanted to keep doing it the same way for charity.",
+          "他们想为慈善继续用同样的方法做。",
+          null,
+          6
+        ],
+        [
+          "They could mean they want to do it the same way.",
+          "他们可能是说他们想用同样的方法做。",
+          null,
+          7
+        ],
+        [
+          "No they wanted to keep doing it the same way.",
+          "不，他们想继续用同样的方法做。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

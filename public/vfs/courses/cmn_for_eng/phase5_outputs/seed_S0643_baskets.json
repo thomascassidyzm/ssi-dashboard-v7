@@ -1,0 +1,280 @@
+{
+  "S0643L01": {
+    "lego": [
+      "Do you want",
+      "您想要吗"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Do you want",
+        "您想要吗",
+        null,
+        3
+      ],
+      [
+        "I want",
+        "我想要",
+        null,
+        2
+      ],
+      [
+        "Do you want that",
+        "您想要那个吗",
+        null,
+        4
+      ],
+      [
+        "I want that",
+        "我想要那个",
+        null,
+        3
+      ],
+      [
+        "Do you want the bag",
+        "您想要那个包吗",
+        null,
+        5
+      ],
+      [
+        "I want the red one",
+        "我想要红色的那个",
+        null,
+        5
+      ],
+      [
+        "Do you want the red one sir",
+        "您想要红色的那个吗先生",
+        null,
+        6
+      ],
+      [
+        "I think I want the red one",
+        "我认为我想要红色的那个",
+        null,
+        6
+      ],
+      [
+        "Do you want that red bag madam",
+        "您想要那个红色的包吗女士",
+        null,
+        6
+      ],
+      [
+        "I think you want the red bag",
+        "我认为您想要红色的包",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "您",
+        "you (formal)"
+      ],
+      [
+        "想要",
+        "want"
+      ],
+      [
+        "吗",
+        "question particle"
+      ]
+    ]
+  },
+  "S0643L02": {
+    "lego": [
+      "sir",
+      "先生"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0643L01",
+        "known": "Do you want",
+        "target": "您想要吗",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "sir",
+        "先生",
+        null,
+        1
+      ],
+      [
+        "with sir",
+        "和先生",
+        null,
+        2
+      ],
+      [
+        "I think sir",
+        "我想先生",
+        null,
+        3
+      ],
+      [
+        "you want sir",
+        "您想要先生",
+        null,
+        3
+      ],
+      [
+        "with you sir",
+        "和您先生",
+        null,
+        3
+      ],
+      [
+        "that is sir",
+        "那是先生",
+        null,
+        3
+      ],
+      [
+        "I want to help you sir",
+        "我想要帮您先生",
+        null,
+        6
+      ],
+      [
+        "do you want the bag sir",
+        "您想要那个包吗先生",
+        null,
+        6
+      ],
+      [
+        "I think that is the red one sir",
+        "我认为那是红色的那个先生",
+        null,
+        8
+      ],
+      [
+        "where is the bag sir",
+        "包在哪里先生",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0643L03": {
+    "lego": [
+      "want (question)",
+      "想要吗"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0643L01",
+        "known": "Do you want",
+        "target": "您想要吗",
+        "type": "M"
+      },
+      {
+        "id": "S0643L02",
+        "known": "sir",
+        "target": "先生",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "want",
+        "想要吗",
+        null,
+        1
+      ],
+      [
+        "you want",
+        "您想要吗",
+        null,
+        2
+      ],
+      [
+        "I want that",
+        "我想要那个",
+        null,
+        3
+      ],
+      [
+        "you want that",
+        "您想要那个吗",
+        null,
+        3
+      ],
+      [
+        "do you want the bag",
+        "您想要那个包吗",
+        null,
+        5
+      ],
+      [
+        "I think you want that",
+        "我认为您想要那个",
+        null,
+        5
+      ],
+      [
+        "do you want the red one madam",
+        "您想要红色的那个吗女士",
+        null,
+        6
+      ],
+      [
+        "I think you want the red bag",
+        "我认为您想要红色的包",
+        null,
+        6
+      ],
+      [
+        "do you want that bag with you",
+        "您想要那个包和您吗",
+        null,
+        6
+      ],
+      [
+        "Do you want sir",
+        "您想要吗先生",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "想要",
+        "want"
+      ],
+      [
+        "吗",
+        "question particle"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,417 @@
+{
+  "S0124L01": {
+    "lego": [
+      "I thought",
+      "我认为"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I thought",
+        "我认为",
+        null,
+        1
+      ],
+      [
+        "I thought so",
+        "我认为是这样",
+        null,
+        2
+      ],
+      [
+        "I thought this",
+        "我认为这个",
+        null,
+        3
+      ],
+      [
+        "I thought it was good",
+        "我认为很好",
+        null,
+        3
+      ],
+      [
+        "I thought that was good",
+        "我认为那很好",
+        null,
+        4
+      ],
+      [
+        "I thought this was useful",
+        "我认为这个有用",
+        null,
+        4
+      ],
+      [
+        "I thought I wanted to speak",
+        "我认为我想说",
+        null,
+        5
+      ],
+      [
+        "I thought I could help you",
+        "我认为我能帮你",
+        null,
+        5
+      ],
+      [
+        "I thought that was a good thing",
+        "我认为那是个好东西",
+        null,
+        6
+      ],
+      [
+        "I thought you wanted to help me",
+        "我认为你想帮我",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "认为",
+        "thought"
+      ]
+    ]
+  },
+  "S0124L02": {
+    "lego": [
+      "that was a good idea",
+      "那是个好主意"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0124L01",
+        "known": "I thought",
+        "target": "我认为",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "A good idea",
+        "个好主意",
+        null,
+        1
+      ],
+      [
+        "That was a good idea",
+        "那是个好主意",
+        null,
+        2
+      ],
+      [
+        "That was a good thing",
+        "那是个好东西",
+        null,
+        3
+      ],
+      [
+        "I thought that was good",
+        "我认为那很好",
+        null,
+        3
+      ],
+      [
+        "I thought that was a good thing",
+        "我认为那是个好东西",
+        null,
+        4
+      ],
+      [
+        "I thought that was a good idea",
+        "我认为那是个好主意",
+        null,
+        4
+      ],
+      [
+        "That was a very good idea yesterday",
+        "那昨天是个很好的主意",
+        null,
+        5
+      ],
+      [
+        "I thought that was a very good idea",
+        "我认为那是个很好的主意",
+        null,
+        5
+      ],
+      [
+        "I thought that was a good idea before",
+        "我认为那之前是个好主意",
+        null,
+        6
+      ],
+      [
+        "That was a good idea when I spoke",
+        "那是个好主意当我说的时候",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "那",
+        "that"
+      ],
+      [
+        "是",
+        "was"
+      ],
+      [
+        "个",
+        "classifier"
+      ],
+      [
+        "好",
+        "good"
+      ],
+      [
+        "主意",
+        "idea"
+      ]
+    ]
+  },
+  "S0124L03": {
+    "lego": [
+      "was a good idea",
+      "是个好主意"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0124L01",
+        "known": "I thought",
+        "target": "我认为",
+        "type": "M"
+      },
+      {
+        "id": "S0124L02",
+        "known": "that was a good idea",
+        "target": "那是个好主意",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Was a good idea",
+        "是个好主意",
+        null,
+        1
+      ],
+      [
+        "This was a good idea",
+        "这是个好主意",
+        null,
+        2
+      ],
+      [
+        "That was a good idea",
+        "那是个好主意",
+        null,
+        3
+      ],
+      [
+        "I thought it was good",
+        "我认为很好",
+        null,
+        3
+      ],
+      [
+        "This was a very good idea",
+        "这是个很好的主意",
+        null,
+        4
+      ],
+      [
+        "I thought that was a good idea",
+        "我认为那是个好主意",
+        null,
+        4
+      ],
+      [
+        "That was a good idea I heard",
+        "那是个我听到的好主意",
+        null,
+        5
+      ],
+      [
+        "It was a good idea to help you",
+        "帮你是个好主意",
+        null,
+        5
+      ],
+      [
+        "I thought helping you was a good idea",
+        "我认为帮你是个好主意",
+        null,
+        6
+      ],
+      [
+        "That was a good idea when you spoke",
+        "那是个好主意当你说的时候",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "是",
+        "was"
+      ],
+      [
+        "个",
+        "classifier"
+      ],
+      [
+        "好",
+        "好"
+      ],
+      [
+        "主意",
+        "idea"
+      ]
+    ]
+  },
+  "S0124L04": {
+    "lego": [
+      "a good idea",
+      "个好主意"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0124L01",
+        "known": "I thought",
+        "target": "我认为",
+        "type": "M"
+      },
+      {
+        "id": "S0124L02",
+        "known": "that was a good idea",
+        "target": "那是个好主意",
+        "type": "M"
+      },
+      {
+        "id": "S0124L03",
+        "known": "was a good idea",
+        "target": "是个好主意",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "A good idea",
+        "个好主意",
+        null,
+        1
+      ],
+      [
+        "That's a good idea",
+        "那个好主意",
+        null,
+        2
+      ],
+      [
+        "This is a good idea",
+        "这是个好主意",
+        null,
+        3
+      ],
+      [
+        "That was a good idea",
+        "那是个好主意",
+        null,
+        3
+      ],
+      [
+        "This is a very good idea",
+        "这是个很好的主意",
+        null,
+        4
+      ],
+      [
+        "I thought that was good",
+        "我认为那很好",
+        null,
+        4
+      ],
+      [
+        "I thought that was a good thing",
+        "我认为那是个好东西",
+        null,
+        5
+      ],
+      [
+        "That was a good idea to help",
+        "那是个好主意去帮忙",
+        null,
+        5
+      ],
+      [
+        "I thought speaking Chinese was a good idea",
+        "我认为说中文是个好主意",
+        null,
+        6
+      ],
+      [
+        "I thought that was a good idea.",
+        "我认为那是个好主意。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "个",
+        "classifier"
+      ],
+      [
+        "好",
+        "good"
+      ],
+      [
+        "主意",
+        "idea"
+      ]
+    ]
+  }
+}

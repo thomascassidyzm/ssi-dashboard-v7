@@ -1,0 +1,724 @@
+{
+  "S0449L01": {
+    "lego": [
+      "say/said",
+      "说"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Say",
+        "说",
+        null,
+        1
+      ],
+      [
+        "They said",
+        "他们说",
+        null,
+        2
+      ],
+      [
+        "They said yes",
+        "他们说是的",
+        null,
+        3
+      ],
+      [
+        "They said no",
+        "他们说不",
+        null,
+        3
+      ],
+      [
+        "They said they will help",
+        "他们说他们会帮忙",
+        null,
+        4
+      ],
+      [
+        "They said they want to help",
+        "他们说他们想帮忙",
+        null,
+        4
+      ],
+      [
+        "They said they will be very happy",
+        "他们说他们会很高兴",
+        null,
+        5
+      ],
+      [
+        "They said they don't want to die",
+        "他们说他们不想死",
+        null,
+        5
+      ],
+      [
+        "They said they will be happy to help us",
+        "他们说他们会很高兴帮我们",
+        null,
+        6
+      ],
+      [
+        "They said they want to develop a new approach",
+        "他们说他们想开发一个新方法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0449L02": {
+    "lego": [
+      "almost",
+      "差不多"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0449L01",
+        "known": "say/said",
+        "target": "说",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Almost",
+        "差不多",
+        null,
+        1
+      ],
+      [
+        "Almost ready",
+        "差不多准备好",
+        null,
+        2
+      ],
+      [
+        "They are almost ready",
+        "他们差不多准备好",
+        null,
+        3
+      ],
+      [
+        "Almost done",
+        "差不多做好",
+        null,
+        2
+      ],
+      [
+        "They said they are almost ready",
+        "他们说他们差不多准备好",
+        null,
+        4
+      ],
+      [
+        "We are almost ready to help",
+        "我们差不多准备好帮忙",
+        null,
+        4
+      ],
+      [
+        "They said they are almost ready to help",
+        "他们说他们差不多准备好帮忙",
+        null,
+        5
+      ],
+      [
+        "They are almost ready to drive us home",
+        "他们差不多准备好开车送我们回家",
+        null,
+        5
+      ],
+      [
+        "They said they are almost ready to do it",
+        "他们说他们差不多准备好做",
+        null,
+        6
+      ],
+      [
+        "They are almost ready to develop a new approach",
+        "他们差不多准备好开发一个新方法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "差",
+        "differ"
+      ],
+      [
+        "不",
+        "not"
+      ],
+      [
+        "多",
+        "much"
+      ]
+    ]
+  },
+  "S0449L03": {
+    "lego": [
+      "prepare",
+      "准备"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0449L01",
+        "known": "say/said",
+        "target": "说",
+        "type": "A"
+      },
+      {
+        "id": "S0449L02",
+        "known": "almost",
+        "target": "差不多",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Prepare",
+        "准备",
+        null,
+        1
+      ],
+      [
+        "They prepare",
+        "他们准备",
+        null,
+        2
+      ],
+      [
+        "They will prepare",
+        "他们会准备",
+        null,
+        3
+      ],
+      [
+        "They want to prepare",
+        "他们想准备",
+        null,
+        3
+      ],
+      [
+        "They are almost ready to prepare",
+        "他们差不多准备好准备",
+        null,
+        4
+      ],
+      [
+        "They said they will prepare",
+        "他们说他们会准备",
+        null,
+        4
+      ],
+      [
+        "They want to prepare a new approach",
+        "他们想准备一个新方法",
+        null,
+        5
+      ],
+      [
+        "They said they want to prepare to help",
+        "他们说他们想准备帮忙",
+        null,
+        5
+      ],
+      [
+        "They will prepare to drive us home after the meal",
+        "他们会准备在饭后开车送我们回家",
+        null,
+        6
+      ],
+      [
+        "They said they are almost ready to prepare",
+        "他们说他们差不多准备好准备",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0449L04": {
+    "lego": [
+      "good/well",
+      "好"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0449L01",
+        "known": "say/said",
+        "target": "说",
+        "type": "A"
+      },
+      {
+        "id": "S0449L02",
+        "known": "almost",
+        "target": "差不多",
+        "type": "M"
+      },
+      {
+        "id": "S0449L03",
+        "known": "prepare",
+        "target": "准备",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Good",
+        "好",
+        null,
+        1
+      ],
+      [
+        "Very good",
+        "很好",
+        null,
+        2
+      ],
+      [
+        "They are good",
+        "他们好",
+        null,
+        3
+      ],
+      [
+        "Ready/prepared",
+        "准备好",
+        null,
+        2
+      ],
+      [
+        "They are prepared",
+        "他们准备好",
+        null,
+        3
+      ],
+      [
+        "They said it's good",
+        "他们说好",
+        null,
+        3
+      ],
+      [
+        "They are almost ready to be good",
+        "他们差不多准备好好",
+        null,
+        4
+      ],
+      [
+        "They said they are prepared",
+        "他们说他们准备好",
+        null,
+        4
+      ],
+      [
+        "They will be very happy and prepared",
+        "他们会很高兴准备好",
+        null,
+        5
+      ],
+      [
+        "They said they are almost prepared to help",
+        "他们说他们差不多准备好帮忙",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0449L05": {
+    "lego": [
+      "ready/prepared",
+      "准备好"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0449L01",
+        "known": "say/said",
+        "target": "说",
+        "type": "A"
+      },
+      {
+        "id": "S0449L02",
+        "known": "almost",
+        "target": "差不多",
+        "type": "M"
+      },
+      {
+        "id": "S0449L03",
+        "known": "prepare",
+        "target": "准备",
+        "type": "A"
+      },
+      {
+        "id": "S0449L04",
+        "known": "good/well",
+        "target": "好",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Ready",
+        "准备好",
+        null,
+        1
+      ],
+      [
+        "They are ready",
+        "他们准备好",
+        null,
+        2
+      ],
+      [
+        "They are almost ready",
+        "他们差不多准备好",
+        null,
+        3
+      ],
+      [
+        "We are ready",
+        "我们准备好",
+        null,
+        2
+      ],
+      [
+        "They said they are ready",
+        "他们说他们准备好",
+        null,
+        4
+      ],
+      [
+        "They are ready to help",
+        "他们准备好帮忙",
+        null,
+        4
+      ],
+      [
+        "They said they are almost ready to help",
+        "他们说他们差不多准备好帮忙",
+        null,
+        5
+      ],
+      [
+        "They are ready to drive us home",
+        "他们准备好开车送我们回家",
+        null,
+        5
+      ],
+      [
+        "They said they are ready to develop a new approach",
+        "他们说他们准备好开发一个新方法",
+        null,
+        6
+      ],
+      [
+        "They are almost ready to be very happy to help",
+        "他们差不多准备好很高兴帮忙",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "准备",
+        "prepare"
+      ],
+      [
+        "好",
+        "good/well"
+      ]
+    ]
+  },
+  "S0449L06": {
+    "lego": [
+      "were ready/are ready",
+      "准备好了"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0449L01",
+        "known": "say/said",
+        "target": "说",
+        "type": "A"
+      },
+      {
+        "id": "S0449L02",
+        "known": "almost",
+        "target": "差不多",
+        "type": "M"
+      },
+      {
+        "id": "S0449L03",
+        "known": "prepare",
+        "target": "准备",
+        "type": "A"
+      },
+      {
+        "id": "S0449L04",
+        "known": "good/well",
+        "target": "好",
+        "type": "A"
+      },
+      {
+        "id": "S0449L05",
+        "known": "ready/prepared",
+        "target": "准备好",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Were ready",
+        "准备好了",
+        null,
+        1
+      ],
+      [
+        "They were ready",
+        "他们准备好了",
+        null,
+        2
+      ],
+      [
+        "They are ready now",
+        "他们准备好了",
+        null,
+        3
+      ],
+      [
+        "We were ready",
+        "我们准备好了",
+        null,
+        2
+      ],
+      [
+        "They said they were ready",
+        "他们说他们准备好了",
+        null,
+        4
+      ],
+      [
+        "They were almost ready",
+        "他们差不多准备好了",
+        null,
+        4
+      ],
+      [
+        "They said they were almost ready to help",
+        "他们说他们差不多准备好了帮忙",
+        null,
+        5
+      ],
+      [
+        "They were ready to drive us home",
+        "他们准备好了开车送我们回家",
+        null,
+        5
+      ],
+      [
+        "They said they were ready to develop a new approach",
+        "他们说他们准备好了开发一个新方法",
+        null,
+        6
+      ],
+      [
+        "They were almost ready to be very happy to help",
+        "他们差不多准备好了很高兴帮忙",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "准备好",
+        "ready"
+      ],
+      [
+        "了",
+        "(completion marker)"
+      ]
+    ]
+  },
+  "S0449L07": {
+    "lego": [
+      "were almost ready",
+      "差不多准备好了"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0449L01",
+        "known": "say/said",
+        "target": "说",
+        "type": "A"
+      },
+      {
+        "id": "S0449L02",
+        "known": "almost",
+        "target": "差不多",
+        "type": "M"
+      },
+      {
+        "id": "S0449L03",
+        "known": "prepare",
+        "target": "准备",
+        "type": "A"
+      },
+      {
+        "id": "S0449L04",
+        "known": "good/well",
+        "target": "好",
+        "type": "A"
+      },
+      {
+        "id": "S0449L05",
+        "known": "ready/prepared",
+        "target": "准备好",
+        "type": "M"
+      },
+      {
+        "id": "S0449L06",
+        "known": "were ready/are ready",
+        "target": "准备好了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Were almost ready",
+        "差不多准备好了",
+        null,
+        1
+      ],
+      [
+        "They were almost ready",
+        "他们差不多准备好了",
+        null,
+        2
+      ],
+      [
+        "We were almost ready",
+        "我们差不多准备好了",
+        null,
+        3
+      ],
+      [
+        "They were almost ready to help",
+        "他们差不多准备好了帮忙",
+        null,
+        3
+      ],
+      [
+        "They said they were almost ready",
+        "他们说他们差不多准备好了",
+        null,
+        4
+      ],
+      [
+        "They were almost ready to do it",
+        "他们差不多准备好了做",
+        null,
+        4
+      ],
+      [
+        "They said they were almost ready to help us",
+        "他们说他们差不多准备好了帮我们",
+        null,
+        5
+      ],
+      [
+        "They were almost ready to drive us home",
+        "他们差不多准备好了开车送我们回家",
+        null,
+        5
+      ],
+      [
+        "They said they were almost ready to develop a new approach",
+        "他们说他们差不多准备好了开发一个新方法",
+        null,
+        6
+      ],
+      [
+        "They said that they were almost ready.",
+        "他们说他们差不多准备好了。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "差不多",
+        "almost"
+      ],
+      [
+        "准备好了",
+        "were ready"
+      ]
+    ]
+  }
+}

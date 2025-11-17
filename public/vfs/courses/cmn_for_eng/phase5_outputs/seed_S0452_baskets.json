@@ -1,0 +1,205 @@
+{
+  "legos": {
+    "S0452L01": {
+      "lego": [
+        "they didn't say",
+        "他们没有说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "they didn't say",
+          "他们没有说",
+          null,
+          1
+        ],
+        [
+          "they didn't say yes",
+          "他们没有说是的",
+          null,
+          2
+        ],
+        [
+          "we didn't say that",
+          "我们没有说那个",
+          null,
+          2
+        ],
+        [
+          "they didn't say they were happy",
+          "他们没有说他们很高兴",
+          null,
+          3
+        ],
+        [
+          "they didn't say they can help",
+          "他们没有说他们能帮忙",
+          null,
+          3
+        ],
+        [
+          "we didn't say we were almost ready",
+          "我们没有说我们差不多准备好了",
+          null,
+          4
+        ],
+        [
+          "they didn't say they will be able to do that",
+          "他们没有说他们会能够做那个",
+          null,
+          5
+        ],
+        [
+          "they didn't say they want to catch the train themselves",
+          "他们没有说他们想自己赶火车",
+          null,
+          5
+        ],
+        [
+          "we didn't say we thought it could be done more efficiently after the meal",
+          "我们没有说我们觉得可以在饭后更有效地做",
+          null,
+          6
+        ],
+        [
+          "They didn't say what they wanted to do.",
+          "他们没有说他们想做什么。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0452L01",
+        "seed_context": {
+          "known": "他们没有说他们想做什么。",
+          "target": "They didn't say what they wanted to do."
+        }
+      },
+      "components": [
+        [
+          "他们",
+          "they"
+        ],
+        [
+          "没有",
+          "didn't"
+        ],
+        [
+          "说",
+          "say"
+        ]
+      ]
+    },
+    "S0452L02": {
+      "lego": [
+        "didn't say",
+        "没有说"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0452L01",
+          "known": "they didn't say",
+          "target": "他们没有说",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "didn't say",
+          "没有说",
+          null,
+          1
+        ],
+        [
+          "we didn't say",
+          "我们没有说",
+          null,
+          2
+        ],
+        [
+          "they didn't say that",
+          "他们没有说那个",
+          null,
+          2
+        ],
+        [
+          "we didn't say we can help",
+          "我们没有说我们能帮忙",
+          null,
+          3
+        ],
+        [
+          "they didn't say they were ready",
+          "他们没有说他们准备好了",
+          null,
+          3
+        ],
+        [
+          "we didn't say we will be happy to do that",
+          "我们没有说我们会很高兴做那个",
+          null,
+          4
+        ],
+        [
+          "they didn't say they thought it was very good",
+          "他们没有说他们觉得很好",
+          null,
+          5
+        ],
+        [
+          "we didn't say we must catch the train after the meal",
+          "我们没有说我们必须在饭后赶火车",
+          null,
+          5
+        ],
+        [
+          "they didn't say they were able to do it more efficiently the same way",
+          "他们没有说他们能够用同样的方法更有效地做",
+          null,
+          6
+        ],
+        [
+          "They didn't say what they wanted to do.",
+          "他们没有说他们想做什么。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0452L02",
+        "seed_context": {
+          "known": "他们没有说他们想做什么。",
+          "target": "They didn't say what they wanted to do."
+        }
+      },
+      "components": [
+        [
+          "没有",
+          "didn't"
+        ],
+        [
+          "说",
+          "say"
+        ]
+      ]
+    }
+  }
+}

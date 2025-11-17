@@ -1,0 +1,201 @@
+{
+  "legos": {
+    "S0581L01": {
+      "lego": ["he'd like to know","他想知道"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["He'd like to know", "他想知道", null, 1],
+        ["He'd like to know more", "他想知道更多", null, 2],
+        ["She'd like to know", "她想知道", null, 2],
+        ["He'd like to know what happened", "他想知道发生了什么", null, 3],
+        ["We'd like to know", "我们想知道", null, 3],
+        ["He'd like to know what it's like", "他想知道它是什么样的", null, 4],
+        ["They'd like to know more about it", "他们想知道更多关于它", null, 4],
+        ["He'd like to know what happened last time", "他想知道上次发生了什么", null, 5],
+        ["She'd like to know more about the hospital", "她想知道更多关于医院", null, 5],
+        ["He'd like to know what it's like for everyone", "他想知道它对每个人是什么样的", null, 6],
+        ["We'd like to know what happened when they visited us", "我们想知道他们来看我们时发生了什么", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0581L01",
+        "seed_context": {
+          "known": "他想知道更多关于它是什么样的。",
+          "target": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0581L02": {
+      "lego": ["know more","知道更多"],
+      "type": "M",
+      "current_seed_legos_available": [["he'd like to know","他想知道"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Know more", "知道更多", null, 1],
+        ["I'd like to know more", "我想知道更多", null, 2],
+        ["He'd like to know more", "他想知道更多", null, 2],
+        ["To know more about it", "知道更多关于它", null, 3],
+        ["Want to know more", "想知道更多", null, 3],
+        ["We'd like to know more about them", "我们想知道更多关于他们", null, 4],
+        ["He'd like to know more about that", "他想知道更多关于那", null, 4],
+        ["They'd like to know more about the hospital", "他们想知道更多关于医院", null, 5],
+        ["She'd like to know more about what happened", "她想知道更多关于发生了什么", null, 5],
+        ["He'd like to know more about what it's like", "他想知道更多关于它是什么样的", null, 6],
+        ["We'd like to know more about what happened last time", "我们想知道更多关于上次发生了什么", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0581L02",
+        "seed_context": {
+          "known": "他想知道更多关于它是什么样的。",
+          "target": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0581L03": {
+      "lego": ["more about","更多关于"],
+      "type": "M",
+      "current_seed_legos_available": [["he'd like to know","他想知道"],["know more","知道更多"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["More about it", "更多关于它", null, 1],
+        ["Know more about them", "知道更多关于他们", null, 2],
+        ["More about what happened", "更多关于发生了什么", null, 2],
+        ["I'd like to know more about it", "我想知道更多关于它", null, 3],
+        ["Want to know more about that", "想知道更多关于那", null, 3],
+        ["He'd like to know more about them", "他想知道更多关于他们", null, 4],
+        ["To know more about the hospital", "知道更多关于医院", null, 4],
+        ["We'd like to know more about what happened", "我们想知道更多关于发生了什么", null, 5],
+        ["She'd like to know more about the holidays", "她想知道更多关于假期", null, 5],
+        ["He'd like to know more about what it's like", "他想知道更多关于它是什么样的", null, 6],
+        ["They'd like to know more about what happened last time", "他们想知道更多关于上次发生了什么", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0581L03",
+        "seed_context": {
+          "known": "他想知道更多关于它是什么样的。",
+          "target": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0581L04": {
+      "lego": ["about what it's like","关于它是什么样的"],
+      "type": "M",
+      "current_seed_legos_available": [["he'd like to know","他想知道"],["know more","知道更多"],["more about","更多关于"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["About what it's like", "关于它是什么样的", null, 1],
+        ["Know about what it's like", "知道关于它是什么样的", null, 2],
+        ["More about what it's like", "更多关于它是什么样的", null, 2],
+        ["To know about what it's like", "知道关于它是什么样的", null, 3],
+        ["He'd like to know about what it's like", "他想知道关于它是什么样的", null, 3],
+        ["Know more about what it's like", "知道更多关于它是什么样的", null, 4],
+        ["Want to know more about what it's like", "想知道更多关于它是什么样的", null, 4],
+        ["We'd like to know about what it's like here", "我们想知道关于它在这里是什么样的", null, 5],
+        ["They'd like to know more about what it's like", "他们想知道更多关于它是什么样的", null, 5],
+        ["He'd like to know more about what it's like for everyone", "他想知道更多关于它对每个人是什么样的", null, 6],
+        ["She'd like to know more about what it's like to wait", "她想知道更多关于等待是什么样的", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0581L04",
+        "seed_context": {
+          "known": "他想知道更多关于它是什么样的。",
+          "target": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0581L05": {
+      "lego": ["what it's like","它是什么样的"],
+      "type": "M",
+      "current_seed_legos_available": [["he'd like to know","他想知道"],["know more","知道更多"],["more about","更多关于"],["about what it's like","关于它是什么样的"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["What it's like", "它是什么样的", null, 1],
+        ["Know what it's like", "知道它是什么样的", null, 2],
+        ["What it's like here", "它在这里是什么样的", null, 2],
+        ["I'd like to know what it's like", "我想知道它是什么样的", null, 3],
+        ["He'd like to know what it's like", "他想知道它是什么样的", null, 3],
+        ["To know what it's like to wait", "知道等待是什么样的", null, 4],
+        ["Know more about what it's like", "知道更多关于它是什么样的", null, 4],
+        ["We'd like to know what it's like for them", "我们想知道它对他们是什么样的", null, 5],
+        ["He'd like to know what it's like to visit", "他想知道来看是什么样的", null, 5],
+        ["They'd like to know what it's like for everyone", "他们想知道它对每个人是什么样的", null, 6],
+        ["She'd like to know more about what it's like here", "她想知道更多关于它在这里是什么样的", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0581L05",
+        "seed_context": {
+          "known": "他想知道更多关于它是什么样的。",
+          "target": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0581L06": {
+      "lego": ["what is it like","是什么样的"],
+      "type": "M",
+      "current_seed_legos_available": [["he'd like to know","他想知道"],["know more","知道更多"],["more about","更多关于"],["about what it's like","关于它是什么样的"],["what it's like","它是什么样的"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["What is it like", "是什么样的", null, 1],
+        ["What is it like here", "在这里是什么样的", null, 2],
+        ["What is it like to wait", "等待是什么样的", null, 2],
+        ["What is it like for them", "对他们是什么样的", null, 3],
+        ["What is it like to visit", "来看是什么样的", null, 3],
+        ["What is it like for everyone", "对每个人是什么样的", null, 4],
+        ["What is it like to wait here", "在这里等待是什么样的", null, 4],
+        ["What is it like when they visit us", "当他们来看我们时是什么样的", null, 5],
+        ["What is it like to know more about it", "知道更多关于它是什么样的", null, 5],
+        ["He'd like to know a little more about what it's like.", "他想知道更多关于它是什么样的。", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0581L06",
+        "seed_context": {
+          "known": "他想知道更多关于它是什么样的。",
+          "target": "He'd like to know a little more about what it's like."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    }
+  }
+}

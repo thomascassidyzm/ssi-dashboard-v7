@@ -1,0 +1,61 @@
+{
+  "S0560L02": {
+    "lego": ["goes down to","通向"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Goes down to", "通向", null, 1],
+      ["It goes down to", "它通向", null, 1],
+      ["The path goes down to", "小路通向", null, 2],
+      ["It goes down to the end", "它通向尽头", null, 2],
+      ["The path goes down to the village", "小路通向村子", null, 3],
+      ["I think it goes down to", "我觉得它通向", null, 3],
+      ["It goes down to the church", "它通向教堂", null, 4],
+      ["The path goes down to the other end", "小路通向另一头", null, 4],
+      ["I found the path goes down to the village", "我找到小路通向村子", null, 5],
+      ["I think the path through the wood goes down to the end", "我觉得穿过树林的小路通向尽头", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [["通","go/pass"],["向","toward"]]
+  },
+  "S0560L03": {
+    "lego": ["the beach","海滩"],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0560L02",
+        "known": "goes down to",
+        "target": "通向",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["The beach", "海滩", null, 1],
+      ["It goes down to the beach", "它通向海滩", null, 2],
+      ["I found the beach", "我找到海滩", null, 2],
+      ["The beach is quiet", "海滩很安静", null, 3],
+      ["I think the beach is ugly", "我觉得海滩很丑", null, 3],
+      ["The path goes down to the beach", "小路通向海滩", null, 4],
+      ["I wish the beach is quiet", "我希望海滩很安静", null, 4],
+      ["I found the path goes down to the beach", "我找到小路通向海滩", null, 5],
+      ["I think the path through the wood goes down to the beach", "我觉得穿过树林的小路通向海滩", null, 5],
+      ["It goes down to the beach", "它通向海滩。", null, 2]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [["海滩","beach"]]
+  }
+}

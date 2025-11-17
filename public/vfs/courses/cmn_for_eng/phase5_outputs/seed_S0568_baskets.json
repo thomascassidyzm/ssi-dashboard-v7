@@ -1,0 +1,195 @@
+{
+  "legos": {
+    "S0568L01": {
+      "lego": ["I'm expecting","我期待"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I'm expecting it", "我期待它", null, 2],
+        ["I'm expecting you", "我期待你", null, 2],
+        ["I'm expecting an answer", "我期待一个答案", null, 3],
+        ["I'm expecting to find out", "我期待找出", null, 3],
+        ["I'm expecting to meet tomorrow", "我期待明天见面", null, 4],
+        ["I'm expecting you to come back", "我期待你回来", null, 4],
+        ["I'm expecting to watch the children play", "我期待看孩子们玩耍", null, 5],
+        ["I'm expecting you to get there safely", "我期待你安全到达那里", null, 5],
+        ["I'm expecting to find out what your choice is", "我期待找出你的选择是什么", null, 6],
+        ["I'm expecting to spend time outdoors watching the children play", "我期待在户外度过时间看孩子们玩耍", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0568L01",
+        "seed_context": {
+          "known": "我期待下次我们见面时看到进步。",
+          "target": "I'm expecting to see an improvement next time we meet."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0568L02": {
+      "lego": ["next time we meet","下次我们见面时"],
+      "type": "M",
+      "current_seed_legos_available": [["I'm expecting","我期待"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Next time we meet", "下次我们见面时", null, 1],
+        ["I'm expecting next time we meet", "我期待下次我们见面时", null, 2],
+        ["Find out next time we meet", "下次我们见面时找出", null, 3],
+        ["To think about it next time we meet", "下次我们见面时思考它", null, 3],
+        ["I just want next time we meet to be lovely", "我只想下次我们见面时很美好", null, 4],
+        ["I'm expecting to find out next time we meet", "我期待下次我们见面时找出", null, 4],
+        ["It's going to be better next time we meet", "下次我们见面时会更好", null, 5],
+        ["I'm expecting you to be there next time we meet", "我期待你下次我们见面时在那里", null, 5],
+        ["I'd have thought more carefully next time we meet", "我会下次我们见面时更仔细地思考", null, 6],
+        ["I'm expecting to spend lovely time outdoors next time we meet", "我期待下次我们见面时在户外度过美好时间", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0568L02",
+        "seed_context": {
+          "known": "我期待下次我们见面时看到进步。",
+          "target": "I'm expecting to see an improvement next time we meet."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0568L03": {
+      "lego": ["when we meet","我们见面时"],
+      "type": "M",
+      "current_seed_legos_available": [["I'm expecting","我期待"],["next time we meet","下次我们见面时"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["When we meet", "我们见面时", null, 1],
+        ["I'm expecting when we meet", "我期待我们见面时", null, 2],
+        ["To find out when we meet", "我们见面时找出", null, 3],
+        ["Think about it when we meet", "我们见面时思考它", null, 3],
+        ["I just want when we meet to be lovely", "我只想我们见面时很美好", null, 4],
+        ["I'm expecting it to be better when we meet", "我期待我们见面时会更好", null, 4],
+        ["I'd have thought more carefully when we meet", "我会我们见面时更仔细地思考", null, 5],
+        ["It's going to be lovely spending time when we meet", "我们见面时度过时间会很美好", null, 5],
+        ["I'm expecting to watch the children play when we meet", "我期待我们见面时看孩子们玩耍", null, 6],
+        ["I wouldn't have been able to think about it when we meet", "我不会能够我们见面时思考它", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0568L03",
+        "seed_context": {
+          "known": "我期待下次我们见面时看到进步。",
+          "target": "I'm expecting to see an improvement next time we meet."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0568L04": {
+      "lego": ["we meet","我们见面"],
+      "type": "M",
+      "current_seed_legos_available": [["I'm expecting","我期待"],["next time we meet","下次我们见面时"],["when we meet","我们见面时"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["We meet", "我们见面", null, 1],
+        ["We meet tomorrow", "我们明天见面", null, 2],
+        ["I'm expecting we meet", "我期待我们见面", null, 3],
+        ["When we meet tomorrow", "当我们明天见面", null, 3],
+        ["I'm expecting we meet at the beach", "我期待我们在海滩见面", null, 4],
+        ["It's lovely when we meet outdoors", "我们在户外见面时很美好", null, 4],
+        ["I just want we meet to be lovely", "我只想我们见面很美好", null, 5],
+        ["Next time we meet it's going to be better", "下次我们见面会更好", null, 5],
+        ["I'm expecting when we meet to spend time outdoors", "我期待我们见面时在户外度过时间", null, 6],
+        ["I'd have thought more carefully if we meet next time", "如果我们下次见面我会想得更多", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0568L04",
+        "seed_context": {
+          "known": "我期待下次我们见面时看到进步。",
+          "target": "I'm expecting to see an improvement next time we meet."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0568L06": {
+      "lego": ["see an improvement","看到进步"],
+      "type": "M",
+      "current_seed_legos_available": [["I'm expecting","我期待"],["next time we meet","下次我们见面时"],["when we meet","我们见面时"],["we meet","我们见面"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["See an improvement", "看到进步", null, 1],
+        ["I'm expecting to see an improvement", "我期待看到进步", null, 2],
+        ["To see an improvement tomorrow", "明天看到进步", null, 3],
+        ["I just want to see an improvement", "我只想看到进步", null, 3],
+        ["I'm expecting to see an improvement when we meet", "我期待我们见面时看到进步", null, 4],
+        ["I'd like to see an improvement at the beach", "我想在海滩看到进步", null, 4],
+        ["I'm expecting to see an improvement next time we meet", "我期待下次我们见面时看到进步", null, 5],
+        ["It would be lovely to see an improvement when we meet", "我们见面时看到进步会很美好", null, 5],
+        ["I wouldn't have been able to see an improvement without your help", "没有你的帮助我不会能够看到进步", null, 6],
+        ["I'm expecting to see an improvement in the children play next time we meet", "我期待下次我们见面时看到孩子们玩耍的进步", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0568L06",
+        "seed_context": {
+          "known": "我期待下次我们见面时看到进步。",
+          "target": "I'm expecting to see an improvement next time we meet."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0568L07": {
+      "lego": ["improvement","进步"],
+      "type": "A",
+      "current_seed_legos_available": [["I'm expecting","我期待"],["next time we meet","下次我们见面时"],["when we meet","我们见面时"],["we meet","我们见面"],["see an improvement","看到进步"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["An improvement", "进步", null, 1],
+        ["I'm expecting an improvement", "我期待进步", null, 2],
+        ["To see an improvement tomorrow", "明天看到进步", null, 3],
+        ["I just want an improvement", "我只想进步", null, 3],
+        ["I'm expecting to see an improvement when we meet", "我期待我们见面时看到进步", null, 4],
+        ["It would be an improvement at the beach", "在海滩会是进步", null, 4],
+        ["I'm expecting to see an improvement next time we meet", "我期待下次我们见面时看到进步", null, 5],
+        ["It's been lovely to see an improvement outdoors", "在户外看到进步很美好", null, 5],
+        ["I wouldn't have been able to see an improvement without your help", "没有你的帮助我不会能够看到进步", null, 6],
+        ["I'm expecting to see an improvement next time we meet.", "我期待下次我们见面时看到进步。", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0568L07",
+        "seed_context": {
+          "known": "我期待下次我们见面时看到进步。",
+          "target": "I'm expecting to see an improvement next time we meet."
+        }
+      }
+    }
+  }
+}

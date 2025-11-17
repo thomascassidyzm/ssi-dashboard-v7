@@ -1,0 +1,2332 @@
+{
+  "generation": 1,
+  "source_course": "ita_for_eng_30seeds",
+  "target_language": "Italian",
+  "known_language": "English",
+  "extraction_date": "2025-10-18T09:33:33.533Z",
+  "num_seeds": 30,
+  "quality_score": "approved",
+  "notes": "Generation 1 baseline extracted from approved course output",
+  "examples": [
+    {
+      "input": {
+        "seed_id": "S0001",
+        "target": "Voglio parlare italiano con te adesso.",
+        "known": "I want to speak Italian with you now.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0001L01",
+        "lego_type": "BASE",
+        "target_chunk": "Voglio",
+        "known_chunk": "I want",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"I want\" → exactly one target \"Voglio\". No alternatives, deterministic. FCFS allows: First occurrence of \"I want\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0001",
+        "target": "Voglio parlare italiano con te adesso.",
+        "known": "I want to speak Italian with you now.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0001L02",
+        "lego_type": "BASE",
+        "target_chunk": "parlare",
+        "known_chunk": "to speak",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to speak\" → exactly one target \"parlare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to speak\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0001",
+        "target": "Voglio parlare italiano con te adesso.",
+        "known": "I want to speak Italian with you now.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0001L03",
+        "lego_type": "BASE",
+        "target_chunk": "italiano",
+        "known_chunk": "Italian",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"Italian\" → exactly one target \"italiano\". No alternatives, deterministic. FCFS allows: First occurrence of \"Italian\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0001",
+        "target": "Voglio parlare italiano con te adesso.",
+        "known": "I want to speak Italian with you now.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0001L04",
+        "lego_type": "BASE",
+        "target_chunk": "con te",
+        "known_chunk": "with you",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"with you\" → exactly one target \"con te\". No alternatives, deterministic. FCFS allows: First occurrence of \"with you\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0001",
+        "target": "Voglio parlare italiano con te adesso.",
+        "known": "I want to speak Italian with you now.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0001L05",
+        "lego_type": "BASE",
+        "target_chunk": "adesso",
+        "known_chunk": "now",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"now\" → exactly one target \"adesso\". No alternatives, deterministic. FCFS allows: First occurrence of \"now\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0002",
+        "target": "Sto tentando di imparare.",
+        "known": "I'm trying to learn.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0002L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Sto tentando di",
+        "known_chunk": "I'm trying to",
+        "componentization": "I'm trying to = Sto tentando di, where Sto = I'm, tentando represents trying, and di = to"
+      },
+      "reasoning": "FD passes: Learner sees \"I'm trying to\" → exactly one target \"Sto tentando di\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'm trying to\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I'm trying to = Sto tentando di, where Sto = I'm, tentando represents trying, and di = to\""
+    },
+    {
+      "input": {
+        "seed_id": "S0002",
+        "target": "Sto tentando di imparare.",
+        "known": "I'm trying to learn.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0002L02",
+        "lego_type": "BASE",
+        "target_chunk": "imparare",
+        "known_chunk": "to learn",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to learn\" → exactly one target \"imparare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to learn\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0002",
+        "target": "Sto tentando di imparare.",
+        "known": "I'm trying to learn.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0002L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0002F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "Sto",
+        "known_chunk": "I'm",
+        "parent_lego_id": "S0002L01"
+      },
+      "reasoning": "FD passes: \"I'm\" → \"Sto\" deterministic. Classification: FEEDER extracted from parent S0002L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0002",
+        "target": "Sto tentando di imparare.",
+        "known": "I'm trying to learn.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0002L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0002F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "tentare",
+        "known_chunk": "to try",
+        "parent_lego_id": "S0002L01"
+      },
+      "reasoning": "FD passes: \"to try\" → \"tentare\" deterministic. Classification: FEEDER extracted from parent S0002L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0003",
+        "target": "Come parlare il più possibile.",
+        "known": "How to speak as much as possible.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0003L01",
+        "lego_type": "BASE",
+        "target_chunk": "Come",
+        "known_chunk": "How",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"How\" → exactly one target \"Come\". No alternatives, deterministic. FCFS allows: First occurrence of \"How\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0003",
+        "target": "Come parlare il più possibile.",
+        "known": "How to speak as much as possible.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0003L02",
+        "lego_type": "BASE",
+        "target_chunk": "il più possibile",
+        "known_chunk": "as much as possible",
+        "componentization": "as much as possible = il più possibile (idiomatic superlative phrase)"
+      },
+      "reasoning": "FD passes: Learner sees \"as much as possible\" → exactly one target \"il più possibile\". No alternatives, deterministic. FCFS allows: First occurrence of \"as much as possible\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0004",
+        "target": "Come dire qualcosa in italiano.",
+        "known": "How to say something in Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0004L01",
+        "lego_type": "BASE",
+        "target_chunk": "dire",
+        "known_chunk": "to say",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to say\" → exactly one target \"dire\". No alternatives, deterministic. FCFS allows: First occurrence of \"to say\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0004",
+        "target": "Come dire qualcosa in italiano.",
+        "known": "How to say something in Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0004L02",
+        "lego_type": "BASE",
+        "target_chunk": "qualcosa",
+        "known_chunk": "something",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"something\" → exactly one target \"qualcosa\". No alternatives, deterministic. FCFS allows: First occurrence of \"something\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0004",
+        "target": "Come dire qualcosa in italiano.",
+        "known": "How to say something in Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0004L03",
+        "lego_type": "BASE",
+        "target_chunk": "in italiano",
+        "known_chunk": "in Italian",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"in Italian\" → exactly one target \"in italiano\". No alternatives, deterministic. FCFS allows: First occurrence of \"in Italian\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0005",
+        "target": "Vado a praticare parlare con qualcun altro.",
+        "known": "I'm going to practice speaking with someone else.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0005L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Vado a praticare",
+        "known_chunk": "I'm going to practice",
+        "componentization": "I'm going to practice = Vado a praticare, where Vado = I'm going and praticare = to practice"
+      },
+      "reasoning": "FD passes: Learner sees \"I'm going to practice\" → exactly one target \"Vado a praticare\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'm going to practice\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I'm going to practice = Vado a praticare, where Vado = I'm going and praticare = to practice\""
+    },
+    {
+      "input": {
+        "seed_id": "S0005",
+        "target": "Vado a praticare parlare con qualcun altro.",
+        "known": "I'm going to practice speaking with someone else.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0005L02",
+        "lego_type": "BASE",
+        "target_chunk": "con qualcun altro",
+        "known_chunk": "with someone else",
+        "componentization": "with someone else = con qualcun altro, where con = with and qualcun altro = someone else"
+      },
+      "reasoning": "FD passes: Learner sees \"with someone else\" → exactly one target \"con qualcun altro\". No alternatives, deterministic. FCFS allows: First occurrence of \"with someone else\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0005",
+        "target": "Vado a praticare parlare con qualcun altro.",
+        "known": "I'm going to practice speaking with someone else.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0005L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0005F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "Vado",
+        "known_chunk": "I'm going",
+        "parent_lego_id": "S0005L01"
+      },
+      "reasoning": "FD passes: \"I'm going\" → \"Vado\" deterministic. Classification: FEEDER extracted from parent S0005L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0005",
+        "target": "Vado a praticare parlare con qualcun altro.",
+        "known": "I'm going to practice speaking with someone else.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0005L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0005F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "praticare",
+        "known_chunk": "to practice",
+        "parent_lego_id": "S0005L01"
+      },
+      "reasoning": "FD passes: \"to practice\" → \"praticare\" deterministic. Classification: FEEDER extracted from parent S0005L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0006",
+        "target": "Sto tentando di ricordare una parola.",
+        "known": "I'm trying to remember a word.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0006L01",
+        "lego_type": "BASE",
+        "target_chunk": "ricordare",
+        "known_chunk": "to remember",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to remember\" → exactly one target \"ricordare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to remember\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0006",
+        "target": "Sto tentando di ricordare una parola.",
+        "known": "I'm trying to remember a word.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0006L02",
+        "lego_type": "BASE",
+        "target_chunk": "una parola",
+        "known_chunk": "a word",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"a word\" → exactly one target \"una parola\". No alternatives, deterministic. FCFS allows: First occurrence of \"a word\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0007",
+        "target": "Voglio tentare il più possibile oggi.",
+        "known": "I want to try as hard as I can today.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0007L01",
+        "lego_type": "BASE",
+        "target_chunk": "tentare",
+        "known_chunk": "to try",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to try\" → exactly one target \"tentare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to try\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0007",
+        "target": "Voglio tentare il più possibile oggi.",
+        "known": "I want to try as hard as I can today.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0007L02",
+        "lego_type": "BASE",
+        "target_chunk": "oggi",
+        "known_chunk": "today",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"today\" → exactly one target \"oggi\". No alternatives, deterministic. FCFS allows: First occurrence of \"today\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0008",
+        "target": "Vado a tentare di spiegare cosa voglio dire.",
+        "known": "I'm going to try to explain what I mean.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0008L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Vado a tentare di",
+        "known_chunk": "I'm going to try to",
+        "componentization": "I'm going to try to = Vado a tentare di, where Vado = I'm going, tentare = to try, and di = to"
+      },
+      "reasoning": "FD passes: Learner sees \"I'm going to try to\" → exactly one target \"Vado a tentare di\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'm going to try to\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I'm going to try to = Vado a tentare di, where Vado = I'm going, tentare = to try, and di = to\""
+    },
+    {
+      "input": {
+        "seed_id": "S0008",
+        "target": "Vado a tentare di spiegare cosa voglio dire.",
+        "known": "I'm going to try to explain what I mean.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0008L02",
+        "lego_type": "BASE",
+        "target_chunk": "spiegare",
+        "known_chunk": "to explain",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to explain\" → exactly one target \"spiegare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to explain\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0008",
+        "target": "Vado a tentare di spiegare cosa voglio dire.",
+        "known": "I'm going to try to explain what I mean.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0008L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "cosa voglio dire",
+        "known_chunk": "what I mean",
+        "componentization": "what I mean = cosa voglio dire, where cosa = what, voglio = I want, and dire = to say"
+      },
+      "reasoning": "FD passes: Learner sees \"what I mean\" → exactly one target \"cosa voglio dire\". No alternatives, deterministic. FCFS allows: First occurrence of \"what I mean\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"what I mean = cosa voglio dire, where cosa = what, voglio = I want, and dire = to say\""
+    },
+    {
+      "input": {
+        "seed_id": "S0008",
+        "target": "Vado a tentare di spiegare cosa voglio dire.",
+        "known": "I'm going to try to explain what I mean.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0008L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0008F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "Vado",
+        "known_chunk": "I'm going",
+        "parent_lego_id": "S0008L01"
+      },
+      "reasoning": "FD passes: \"I'm going\" → \"Vado\" deterministic. Classification: FEEDER extracted from parent S0008L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0008",
+        "target": "Vado a tentare di spiegare cosa voglio dire.",
+        "known": "I'm going to try to explain what I mean.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0008L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0008F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "tentare",
+        "known_chunk": "to try",
+        "parent_lego_id": "S0008L01"
+      },
+      "reasoning": "FD passes: \"to try\" → \"tentare\" deterministic. Classification: FEEDER extracted from parent S0008L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0009",
+        "target": "Parlo un po' di italiano adesso.",
+        "known": "I speak a little Italian now.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0009L01",
+        "lego_type": "BASE",
+        "target_chunk": "Parlo",
+        "known_chunk": "I speak",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"I speak\" → exactly one target \"Parlo\". No alternatives, deterministic. FCFS allows: First occurrence of \"I speak\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0009",
+        "target": "Parlo un po' di italiano adesso.",
+        "known": "I speak a little Italian now.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0009L02",
+        "lego_type": "BASE",
+        "target_chunk": "un po' di",
+        "known_chunk": "a little",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"a little\" → exactly one target \"un po' di\". No alternatives, deterministic. FCFS allows: First occurrence of \"a little\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0010",
+        "target": "Non sono sicuro se posso ricordare tutta la frase.",
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0010L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Non sono sicuro",
+        "known_chunk": "I'm not sure",
+        "componentization": "I'm not sure = Non sono sicuro, where Non = not, sono = I am, and sicuro = sure"
+      },
+      "reasoning": "FD passes: Learner sees \"I'm not sure\" → exactly one target \"Non sono sicuro\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'm not sure\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I'm not sure = Non sono sicuro, where Non = not, sono = I am, and sicuro = sure\""
+    },
+    {
+      "input": {
+        "seed_id": "S0010",
+        "target": "Non sono sicuro se posso ricordare tutta la frase.",
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0010L02",
+        "lego_type": "BASE",
+        "target_chunk": "se",
+        "known_chunk": "if",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"if\" → exactly one target \"se\". No alternatives, deterministic. FCFS allows: First occurrence of \"if\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0010",
+        "target": "Non sono sicuro se posso ricordare tutta la frase.",
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0010L03",
+        "lego_type": "BASE",
+        "target_chunk": "posso",
+        "known_chunk": "I can",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"I can\" → exactly one target \"posso\". No alternatives, deterministic. FCFS allows: First occurrence of \"I can\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0010",
+        "target": "Non sono sicuro se posso ricordare tutta la frase.",
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0010L04",
+        "lego_type": "BASE",
+        "target_chunk": "tutta la frase",
+        "known_chunk": "the whole sentence",
+        "componentization": "the whole sentence = tutta la frase, where tutta = whole/all, la = the, and frase = sentence"
+      },
+      "reasoning": "FD passes: Learner sees \"the whole sentence\" → exactly one target \"tutta la frase\". No alternatives, deterministic. FCFS allows: First occurrence of \"the whole sentence\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0011",
+        "target": "Mi piacerebbe poter parlare dopo che finisci.",
+        "known": "I'd like to be able to speak after you finish.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0011L01",
+        "lego_type": "BASE",
+        "target_chunk": "Mi piacerebbe",
+        "known_chunk": "I'd like",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"I'd like\" → exactly one target \"Mi piacerebbe\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'd like\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0011",
+        "target": "Mi piacerebbe poter parlare dopo che finisci.",
+        "known": "I'd like to be able to speak after you finish.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0011L02",
+        "lego_type": "BASE",
+        "target_chunk": "poter",
+        "known_chunk": "to be able",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to be able\" → exactly one target \"poter\". No alternatives, deterministic. FCFS allows: First occurrence of \"to be able\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0011",
+        "target": "Mi piacerebbe poter parlare dopo che finisci.",
+        "known": "I'd like to be able to speak after you finish.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0011L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "dopo che finisci",
+        "known_chunk": "after you finish",
+        "componentization": "after you finish = dopo che finisci, where dopo che = after and finisci = you finish"
+      },
+      "reasoning": "FD passes: Learner sees \"after you finish\" → exactly one target \"dopo che finisci\". No alternatives, deterministic. FCFS allows: First occurrence of \"after you finish\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"after you finish = dopo che finisci, where dopo che = after and finisci = you finish\""
+    },
+    {
+      "input": {
+        "seed_id": "S0011",
+        "target": "Mi piacerebbe poter parlare dopo che finisci.",
+        "known": "I'd like to be able to speak after you finish.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0011L03"
+        }
+      },
+      "output": {
+        "feeder_id": "S0011F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "finire",
+        "known_chunk": "to finish",
+        "parent_lego_id": "S0011L03"
+      },
+      "reasoning": "FD passes: \"to finish\" → \"finire\" deterministic. Classification: FEEDER extracted from parent S0011L03. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0012",
+        "target": "Non mi piacerebbe indovinare cosa succederà domani.",
+        "known": "I wouldn't like to guess what's going to happen tomorrow.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0012L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Non mi piacerebbe",
+        "known_chunk": "I wouldn't like",
+        "componentization": "I wouldn't like = Non mi piacerebbe, where Non = not/wouldn't, mi = me, and piacerebbe = would like"
+      },
+      "reasoning": "FD passes: Learner sees \"I wouldn't like\" → exactly one target \"Non mi piacerebbe\". No alternatives, deterministic. FCFS allows: First occurrence of \"I wouldn't like\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I wouldn't like = Non mi piacerebbe, where Non = not/wouldn't, mi = me, and piacerebbe = would like\""
+    },
+    {
+      "input": {
+        "seed_id": "S0012",
+        "target": "Non mi piacerebbe indovinare cosa succederà domani.",
+        "known": "I wouldn't like to guess what's going to happen tomorrow.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0012L02",
+        "lego_type": "BASE",
+        "target_chunk": "indovinare",
+        "known_chunk": "to guess",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to guess\" → exactly one target \"indovinare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to guess\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0012",
+        "target": "Non mi piacerebbe indovinare cosa succederà domani.",
+        "known": "I wouldn't like to guess what's going to happen tomorrow.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0012L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "cosa succederà",
+        "known_chunk": "what's going to happen",
+        "componentization": "what's going to happen = cosa succederà, where cosa = what and succederà = will happen"
+      },
+      "reasoning": "FD passes: Learner sees \"what's going to happen\" → exactly one target \"cosa succederà\". No alternatives, deterministic. FCFS allows: First occurrence of \"what's going to happen\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"what's going to happen = cosa succederà, where cosa = what and succederà = will happen\""
+    },
+    {
+      "input": {
+        "seed_id": "S0012",
+        "target": "Non mi piacerebbe indovinare cosa succederà domani.",
+        "known": "I wouldn't like to guess what's going to happen tomorrow.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0012L04",
+        "lego_type": "BASE",
+        "target_chunk": "domani",
+        "known_chunk": "tomorrow",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"tomorrow\" → exactly one target \"domani\". No alternatives, deterministic. FCFS allows: First occurrence of \"tomorrow\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0012",
+        "target": "Non mi piacerebbe indovinare cosa succederà domani.",
+        "known": "I wouldn't like to guess what's going to happen tomorrow.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0012L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0012F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "succedere",
+        "known_chunk": "to happen",
+        "parent_lego_id": "S0012L01"
+      },
+      "reasoning": "FD passes: \"to happen\" → \"succedere\" deterministic. Classification: FEEDER extracted from parent S0012L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0013",
+        "target": "Parli italiano molto bene.",
+        "known": "You speak Italian very well.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0013L01",
+        "lego_type": "BASE",
+        "target_chunk": "Parli",
+        "known_chunk": "You speak",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"You speak\" → exactly one target \"Parli\". No alternatives, deterministic. FCFS allows: First occurrence of \"You speak\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0013",
+        "target": "Parli italiano molto bene.",
+        "known": "You speak Italian very well.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0013L02",
+        "lego_type": "BASE",
+        "target_chunk": "molto bene",
+        "known_chunk": "very well",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"very well\" → exactly one target \"molto bene\". No alternatives, deterministic. FCFS allows: First occurrence of \"very well\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0014",
+        "target": "Parli italiano tutto il giorno?",
+        "known": "Do you speak Italian all day?",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0014L01",
+        "lego_type": "BASE",
+        "target_chunk": "tutto il giorno",
+        "known_chunk": "all day",
+        "componentization": "all day = tutto il giorno, where tutto = all, il = the, and giorno = day"
+      },
+      "reasoning": "FD passes: Learner sees \"all day\" → exactly one target \"tutto il giorno\". No alternatives, deterministic. FCFS allows: First occurrence of \"all day\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0015",
+        "target": "E voglio che tu parli italiano con me domani.",
+        "known": "And I want you to speak Italian with me tomorrow.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0015L01",
+        "lego_type": "BASE",
+        "target_chunk": "E",
+        "known_chunk": "And",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"And\" → exactly one target \"E\". No alternatives, deterministic. FCFS allows: First occurrence of \"And\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0015",
+        "target": "E voglio che tu parli italiano con me domani.",
+        "known": "And I want you to speak Italian with me tomorrow.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0015L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "voglio che tu parli",
+        "known_chunk": "I want you to speak",
+        "componentization": "I want you to speak = voglio che tu parli, where voglio = I want, che = that (subjunctive trigger), tu = you, and parli = you speak"
+      },
+      "reasoning": "FD passes: Learner sees \"I want you to speak\" → exactly one target \"voglio che tu parli\". No alternatives, deterministic. FCFS allows: First occurrence of \"I want you to speak\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I want you to speak = voglio che tu parli, where voglio = I want, che = that (subjunctive trigger), tu = you, and parli = you speak\""
+    },
+    {
+      "input": {
+        "seed_id": "S0015",
+        "target": "E voglio che tu parli italiano con me domani.",
+        "known": "And I want you to speak Italian with me tomorrow.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0015L03",
+        "lego_type": "BASE",
+        "target_chunk": "con me",
+        "known_chunk": "with me",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"with me\" → exactly one target \"con me\". No alternatives, deterministic. FCFS allows: First occurrence of \"with me\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0015",
+        "target": "E voglio che tu parli italiano con me domani.",
+        "known": "And I want you to speak Italian with me tomorrow.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0015L02"
+        }
+      },
+      "output": {
+        "feeder_id": "S0015F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "parlare",
+        "known_chunk": "to speak",
+        "parent_lego_id": "S0015L02"
+      },
+      "reasoning": "FD passes: \"to speak\" → \"parlare\" deterministic. Classification: FEEDER extracted from parent S0015L02. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0016",
+        "target": "Lui vuole ritornare con tutti gli altri più tardi.",
+        "known": "He wants to come back with everyone else later on.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0016L01",
+        "lego_type": "BASE",
+        "target_chunk": "Lui vuole",
+        "known_chunk": "He wants",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"He wants\" → exactly one target \"Lui vuole\". No alternatives, deterministic. FCFS allows: First occurrence of \"He wants\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0016",
+        "target": "Lui vuole ritornare con tutti gli altri più tardi.",
+        "known": "He wants to come back with everyone else later on.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0016L02",
+        "lego_type": "BASE",
+        "target_chunk": "ritornare",
+        "known_chunk": "to come back",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to come back\" → exactly one target \"ritornare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to come back\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0016",
+        "target": "Lui vuole ritornare con tutti gli altri più tardi.",
+        "known": "He wants to come back with everyone else later on.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0016L03",
+        "lego_type": "BASE",
+        "target_chunk": "con tutti gli altri",
+        "known_chunk": "with everyone else",
+        "componentization": "with everyone else = con tutti gli altri, where con = with, tutti = everyone, and gli altri = the others"
+      },
+      "reasoning": "FD passes: Learner sees \"with everyone else\" → exactly one target \"con tutti gli altri\". No alternatives, deterministic. FCFS allows: First occurrence of \"with everyone else\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0016",
+        "target": "Lui vuole ritornare con tutti gli altri più tardi.",
+        "known": "He wants to come back with everyone else later on.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0016L04",
+        "lego_type": "BASE",
+        "target_chunk": "più tardi",
+        "known_chunk": "later on",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"later on\" → exactly one target \"più tardi\". No alternatives, deterministic. FCFS allows: First occurrence of \"later on\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0017",
+        "target": "Lei vuole scoprire qual è la risposta.",
+        "known": "She wants to find out what the answer is.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0017L01",
+        "lego_type": "BASE",
+        "target_chunk": "Lei vuole",
+        "known_chunk": "She wants",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"She wants\" → exactly one target \"Lei vuole\". No alternatives, deterministic. FCFS allows: First occurrence of \"She wants\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0017",
+        "target": "Lei vuole scoprire qual è la risposta.",
+        "known": "She wants to find out what the answer is.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0017L02",
+        "lego_type": "BASE",
+        "target_chunk": "scoprire",
+        "known_chunk": "to find out",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to find out\" → exactly one target \"scoprire\". No alternatives, deterministic. FCFS allows: First occurrence of \"to find out\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0017",
+        "target": "Lei vuole scoprire qual è la risposta.",
+        "known": "She wants to find out what the answer is.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0017L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "qual è la risposta",
+        "known_chunk": "what the answer is",
+        "componentization": "what the answer is = qual è la risposta, where qual = what/which, è = is, and la risposta = the answer"
+      },
+      "reasoning": "FD passes: Learner sees \"what the answer is\" → exactly one target \"qual è la risposta\". No alternatives, deterministic. FCFS allows: First occurrence of \"what the answer is\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"what the answer is = qual è la risposta, where qual = what/which, è = is, and la risposta = the answer\""
+    },
+    {
+      "input": {
+        "seed_id": "S0017",
+        "target": "Lei vuole scoprire qual è la risposta.",
+        "known": "She wants to find out what the answer is.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0017L03"
+        }
+      },
+      "output": {
+        "feeder_id": "S0017F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "la risposta",
+        "known_chunk": "the answer",
+        "parent_lego_id": "S0017L03"
+      },
+      "reasoning": "FD passes: \"the answer\" → \"la risposta\" deterministic. Classification: FEEDER extracted from parent S0017L03. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0018",
+        "target": "Vogliamo incontrarci alle sei stasera.",
+        "known": "We want to meet at six o'clock this evening.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0018L01",
+        "lego_type": "BASE",
+        "target_chunk": "Vogliamo",
+        "known_chunk": "We want",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"We want\" → exactly one target \"Vogliamo\". No alternatives, deterministic. FCFS allows: First occurrence of \"We want\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0018",
+        "target": "Vogliamo incontrarci alle sei stasera.",
+        "known": "We want to meet at six o'clock this evening.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0018L02",
+        "lego_type": "BASE",
+        "target_chunk": "incontrarci",
+        "known_chunk": "to meet",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to meet\" → exactly one target \"incontrarci\". No alternatives, deterministic. FCFS allows: First occurrence of \"to meet\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0018",
+        "target": "Vogliamo incontrarci alle sei stasera.",
+        "known": "We want to meet at six o'clock this evening.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0018L03",
+        "lego_type": "BASE",
+        "target_chunk": "alle sei",
+        "known_chunk": "at six o'clock",
+        "componentization": "at six o'clock = alle sei, where alle = at (the), and sei = six"
+      },
+      "reasoning": "FD passes: Learner sees \"at six o'clock\" → exactly one target \"alle sei\". No alternatives, deterministic. FCFS allows: First occurrence of \"at six o'clock\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0018",
+        "target": "Vogliamo incontrarci alle sei stasera.",
+        "known": "We want to meet at six o'clock this evening.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0018L04",
+        "lego_type": "BASE",
+        "target_chunk": "stasera",
+        "known_chunk": "this evening",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"this evening\" → exactly one target \"stasera\". No alternatives, deterministic. FCFS allows: First occurrence of \"this evening\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0019",
+        "target": "Ma non voglio smettere di parlare.",
+        "known": "But I don't want to stop talking.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0019L01",
+        "lego_type": "BASE",
+        "target_chunk": "Ma",
+        "known_chunk": "But",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"But\" → exactly one target \"Ma\". No alternatives, deterministic. FCFS allows: First occurrence of \"But\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0019",
+        "target": "Ma non voglio smettere di parlare.",
+        "known": "But I don't want to stop talking.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0019L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "non voglio",
+        "known_chunk": "I don't want",
+        "componentization": "I don't want = non voglio, where non = not and voglio = I want"
+      },
+      "reasoning": "FD passes: Learner sees \"I don't want\" → exactly one target \"non voglio\". No alternatives, deterministic. FCFS allows: First occurrence of \"I don't want\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I don't want = non voglio, where non = not and voglio = I want\""
+    },
+    {
+      "input": {
+        "seed_id": "S0019",
+        "target": "Ma non voglio smettere di parlare.",
+        "known": "But I don't want to stop talking.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0019L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "smettere di parlare",
+        "known_chunk": "to stop talking",
+        "componentization": "to stop talking = smettere di parlare, where smettere di = to stop and parlare = talking/to speak"
+      },
+      "reasoning": "FD passes: Learner sees \"to stop talking\" → exactly one target \"smettere di parlare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to stop talking\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"to stop talking = smettere di parlare, where smettere di = to stop and parlare = talking/to speak\""
+    },
+    {
+      "input": {
+        "seed_id": "S0019",
+        "target": "Ma non voglio smettere di parlare.",
+        "known": "But I don't want to stop talking.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0019L02"
+        }
+      },
+      "output": {
+        "feeder_id": "S0019F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "smettere",
+        "known_chunk": "to stop",
+        "parent_lego_id": "S0019L02"
+      },
+      "reasoning": "FD passes: \"to stop\" → \"smettere\" deterministic. Classification: FEEDER extracted from parent S0019L02. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0020",
+        "target": "Vuoi imparare il suo nome rapidamente.",
+        "known": "You want to learn their name quickly.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0020L01",
+        "lego_type": "BASE",
+        "target_chunk": "Vuoi",
+        "known_chunk": "You want",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"You want\" → exactly one target \"Vuoi\". No alternatives, deterministic. FCFS allows: First occurrence of \"You want\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0020",
+        "target": "Vuoi imparare il suo nome rapidamente.",
+        "known": "You want to learn their name quickly.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0020L02",
+        "lego_type": "BASE",
+        "target_chunk": "il suo nome",
+        "known_chunk": "their name",
+        "componentization": "their name = il suo nome, where il = the, suo = their, and nome = name"
+      },
+      "reasoning": "FD passes: Learner sees \"their name\" → exactly one target \"il suo nome\". No alternatives, deterministic. FCFS allows: First occurrence of \"their name\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0020",
+        "target": "Vuoi imparare il suo nome rapidamente.",
+        "known": "You want to learn their name quickly.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0020L03",
+        "lego_type": "BASE",
+        "target_chunk": "rapidamente",
+        "known_chunk": "quickly",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"quickly\" → exactly one target \"rapidamente\". No alternatives, deterministic. FCFS allows: First occurrence of \"quickly\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0021",
+        "target": "Perché stai imparando il suo nome?",
+        "known": "Why are you learning their name?",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0021L01",
+        "lego_type": "BASE",
+        "target_chunk": "Perché",
+        "known_chunk": "Why",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"Why\" → exactly one target \"Perché\". No alternatives, deterministic. FCFS allows: First occurrence of \"Why\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0021",
+        "target": "Perché stai imparando il suo nome?",
+        "known": "Why are you learning their name?",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0021L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "stai imparando",
+        "known_chunk": "you are learning",
+        "componentization": "you are learning = stai imparando, where stai = you are and imparando represents learning"
+      },
+      "reasoning": "FD passes: Learner sees \"you are learning\" → exactly one target \"stai imparando\". No alternatives, deterministic. FCFS allows: First occurrence of \"you are learning\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"you are learning = stai imparando, where stai = you are and imparando represents learning\""
+    },
+    {
+      "input": {
+        "seed_id": "S0021",
+        "target": "Perché stai imparando il suo nome?",
+        "known": "Why are you learning their name?",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0021L02"
+        }
+      },
+      "output": {
+        "feeder_id": "S0021F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "stai",
+        "known_chunk": "you are",
+        "parent_lego_id": "S0021L02"
+      },
+      "reasoning": "FD passes: \"you are\" → \"stai\" deterministic. Classification: FEEDER extracted from parent S0021L02. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0021",
+        "target": "Perché stai imparando il suo nome?",
+        "known": "Why are you learning their name?",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0021L02"
+        }
+      },
+      "output": {
+        "feeder_id": "S0021F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "imparare",
+        "known_chunk": "to learn",
+        "parent_lego_id": "S0021L02"
+      },
+      "reasoning": "FD passes: \"to learn\" → \"imparare\" deterministic. Classification: FEEDER extracted from parent S0021L02. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "Perché voglio incontrare persone che parlano italiano.",
+        "known": "Because I want to meet people who speak Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0022L01",
+        "lego_type": "BASE",
+        "target_chunk": "Perché",
+        "known_chunk": "Because",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"Because\" → exactly one target \"Perché\". No alternatives, deterministic. FCFS allows: First occurrence of \"Because\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "Perché voglio incontrare persone che parlano italiano.",
+        "known": "Because I want to meet people who speak Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0022L02",
+        "lego_type": "BASE",
+        "target_chunk": "incontrare",
+        "known_chunk": "to meet",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to meet\" → exactly one target \"incontrare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to meet\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "Perché voglio incontrare persone che parlano italiano.",
+        "known": "Because I want to meet people who speak Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0022L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "persone che parlano",
+        "known_chunk": "people who speak",
+        "componentization": "people who speak = persone che parlano, where persone = people, che = who, and parlano = speak"
+      },
+      "reasoning": "FD passes: Learner sees \"people who speak\" → exactly one target \"persone che parlano\". No alternatives, deterministic. FCFS allows: First occurrence of \"people who speak\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"people who speak = persone che parlano, where persone = people, che = who, and parlano = speak\""
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "Perché voglio incontrare persone che parlano italiano.",
+        "known": "Because I want to meet people who speak Italian.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0022L03"
+        }
+      },
+      "output": {
+        "feeder_id": "S0022F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "persone",
+        "known_chunk": "people",
+        "parent_lego_id": "S0022L03"
+      },
+      "reasoning": "FD passes: \"people\" → \"persone\" deterministic. Classification: FEEDER extracted from parent S0022L03. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "Perché voglio incontrare persone che parlano italiano.",
+        "known": "Because I want to meet people who speak Italian.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0022L03"
+        }
+      },
+      "output": {
+        "feeder_id": "S0022F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "parlano",
+        "known_chunk": "speak",
+        "parent_lego_id": "S0022L03"
+      },
+      "reasoning": "FD passes: \"speak\" → \"parlano\" deterministic. Classification: FEEDER extracted from parent S0022L03. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0023",
+        "target": "Sto per iniziare a parlare di più presto.",
+        "known": "I'm going to start talking more soon.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0023L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Sto per iniziare a",
+        "known_chunk": "I'm going to start",
+        "componentization": "I'm going to start = Sto per iniziare a, where Sto = I'm, per = (about to), iniziare = to start, and a = to"
+      },
+      "reasoning": "FD passes: Learner sees \"I'm going to start\" → exactly one target \"Sto per iniziare a\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'm going to start\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I'm going to start = Sto per iniziare a, where Sto = I'm, per = (about to), iniziare = to start, and a = to\""
+    },
+    {
+      "input": {
+        "seed_id": "S0023",
+        "target": "Sto per iniziare a parlare di più presto.",
+        "known": "I'm going to start talking more soon.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0023L02",
+        "lego_type": "BASE",
+        "target_chunk": "di più",
+        "known_chunk": "more",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"more\" → exactly one target \"di più\". No alternatives, deterministic. FCFS allows: First occurrence of \"more\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0023",
+        "target": "Sto per iniziare a parlare di più presto.",
+        "known": "I'm going to start talking more soon.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0023L03",
+        "lego_type": "BASE",
+        "target_chunk": "presto",
+        "known_chunk": "soon",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"soon\" → exactly one target \"presto\". No alternatives, deterministic. FCFS allows: First occurrence of \"soon\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0023",
+        "target": "Sto per iniziare a parlare di più presto.",
+        "known": "I'm going to start talking more soon.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0023L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0023F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "Sto",
+        "known_chunk": "I'm",
+        "parent_lego_id": "S0023L01"
+      },
+      "reasoning": "FD passes: \"I'm\" → \"Sto\" deterministic. Classification: FEEDER extracted from parent S0023L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0023",
+        "target": "Sto per iniziare a parlare di più presto.",
+        "known": "I'm going to start talking more soon.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0023L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0023F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "iniziare",
+        "known_chunk": "to start",
+        "parent_lego_id": "S0023L01"
+      },
+      "reasoning": "FD passes: \"to start\" → \"iniziare\" deterministic. Classification: FEEDER extracted from parent S0023L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0024",
+        "target": "Non potrò ricordare facilmente.",
+        "known": "I'm not going to be able to remember easily.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0024L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Non potrò",
+        "known_chunk": "I'm not going to be able",
+        "componentization": "I'm not going to be able = Non potrò, where Non = not and potrò = I will be able"
+      },
+      "reasoning": "FD passes: Learner sees \"I'm not going to be able\" → exactly one target \"Non potrò\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'm not going to be able\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I'm not going to be able = Non potrò, where Non = not and potrò = I will be able\""
+    },
+    {
+      "input": {
+        "seed_id": "S0024",
+        "target": "Non potrò ricordare facilmente.",
+        "known": "I'm not going to be able to remember easily.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0024L02",
+        "lego_type": "BASE",
+        "target_chunk": "facilmente",
+        "known_chunk": "easily",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"easily\" → exactly one target \"facilmente\". No alternatives, deterministic. FCFS allows: First occurrence of \"easily\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0024",
+        "target": "Non potrò ricordare facilmente.",
+        "known": "I'm not going to be able to remember easily.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0024L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0024F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "potere",
+        "known_chunk": "to be able",
+        "parent_lego_id": "S0024L01"
+      },
+      "reasoning": "FD passes: \"to be able\" → \"potere\" deterministic. Classification: FEEDER extracted from parent S0024L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0025",
+        "target": "Mi aiuterai prima che io debba andare?",
+        "known": "Are you going to help me before I have to go?",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0025L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Mi aiuterai",
+        "known_chunk": "Are you going to help me",
+        "componentization": "Are you going to help me = Mi aiuterai, where Mi = me and aiuterai = you will help"
+      },
+      "reasoning": "FD passes: Learner sees \"Are you going to help me\" → exactly one target \"Mi aiuterai\". No alternatives, deterministic. FCFS allows: First occurrence of \"Are you going to help me\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"Are you going to help me = Mi aiuterai, where Mi = me and aiuterai = you will help\""
+    },
+    {
+      "input": {
+        "seed_id": "S0025",
+        "target": "Mi aiuterai prima che io debba andare?",
+        "known": "Are you going to help me before I have to go?",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0025L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "prima che io debba",
+        "known_chunk": "before I have to",
+        "componentization": "before I have to = prima che io debba, where prima che = before (subjunctive trigger), io = I, and debba = I have to"
+      },
+      "reasoning": "FD passes: Learner sees \"before I have to\" → exactly one target \"prima che io debba\". No alternatives, deterministic. FCFS allows: First occurrence of \"before I have to\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"before I have to = prima che io debba, where prima che = before (subjunctive trigger), io = I, and debba = I have to\""
+    },
+    {
+      "input": {
+        "seed_id": "S0025",
+        "target": "Mi aiuterai prima che io debba andare?",
+        "known": "Are you going to help me before I have to go?",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0025L03",
+        "lego_type": "BASE",
+        "target_chunk": "andare",
+        "known_chunk": "to go",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to go\" → exactly one target \"andare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to go\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0025",
+        "target": "Mi aiuterai prima che io debba andare?",
+        "known": "Are you going to help me before I have to go?",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0025L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0025F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "aiutare",
+        "known_chunk": "to help",
+        "parent_lego_id": "S0025L01"
+      },
+      "reasoning": "FD passes: \"to help\" → \"aiutare\" deterministic. Classification: FEEDER extracted from parent S0025L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0025",
+        "target": "Mi aiuterai prima che io debba andare?",
+        "known": "Are you going to help me before I have to go?",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0025L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0025F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "dovere",
+        "known_chunk": "to have to",
+        "parent_lego_id": "S0025L01"
+      },
+      "reasoning": "FD passes: \"to have to\" → \"dovere\" deterministic. Classification: FEEDER extracted from parent S0025L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0026",
+        "target": "Mi piace sentire come se fossi quasi pronto per andare.",
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0026L01",
+        "lego_type": "BASE",
+        "target_chunk": "Mi piace",
+        "known_chunk": "I like",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"I like\" → exactly one target \"Mi piace\". No alternatives, deterministic. FCFS allows: First occurrence of \"I like\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0026",
+        "target": "Mi piace sentire come se fossi quasi pronto per andare.",
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0026L02",
+        "lego_type": "BASE",
+        "target_chunk": "sentire",
+        "known_chunk": "feeling",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"feeling\" → exactly one target \"sentire\". No alternatives, deterministic. FCFS allows: First occurrence of \"feeling\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0026",
+        "target": "Mi piace sentire come se fossi quasi pronto per andare.",
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0026L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "come se fossi",
+        "known_chunk": "as if I'm",
+        "componentization": "as if I'm = come se fossi, where come se = as if and fossi represents I were/am (subjunctive)"
+      },
+      "reasoning": "FD passes: Learner sees \"as if I'm\" → exactly one target \"come se fossi\". No alternatives, deterministic. FCFS allows: First occurrence of \"as if I'm\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"as if I'm = come se fossi, where come se = as if and fossi represents I were/am (subjunctive)\""
+    },
+    {
+      "input": {
+        "seed_id": "S0026",
+        "target": "Mi piace sentire come se fossi quasi pronto per andare.",
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0026L04",
+        "lego_type": "BASE",
+        "target_chunk": "quasi",
+        "known_chunk": "nearly",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"nearly\" → exactly one target \"quasi\". No alternatives, deterministic. FCFS allows: First occurrence of \"nearly\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0026",
+        "target": "Mi piace sentire come se fossi quasi pronto per andare.",
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0026L05",
+        "lego_type": "BASE",
+        "target_chunk": "pronto",
+        "known_chunk": "ready",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"ready\" → exactly one target \"pronto\". No alternatives, deterministic. FCFS allows: First occurrence of \"ready\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0026",
+        "target": "Mi piace sentire come se fossi quasi pronto per andare.",
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0026L06",
+        "lego_type": "BASE",
+        "target_chunk": "per andare",
+        "known_chunk": "to go",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to go\" → exactly one target \"per andare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to go\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0027",
+        "target": "Non mi piace prendere troppo tempo per rispondere.",
+        "known": "I don't like taking too much time to answer.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0027L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Non mi piace",
+        "known_chunk": "I don't like",
+        "componentization": "I don't like = Non mi piace, where Non = not/don't, mi = me, and piace = likes"
+      },
+      "reasoning": "FD passes: Learner sees \"I don't like\" → exactly one target \"Non mi piace\". No alternatives, deterministic. FCFS allows: First occurrence of \"I don't like\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I don't like = Non mi piace, where Non = not/don't, mi = me, and piace = likes\""
+    },
+    {
+      "input": {
+        "seed_id": "S0027",
+        "target": "Non mi piace prendere troppo tempo per rispondere.",
+        "known": "I don't like taking too much time to answer.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0027L02",
+        "lego_type": "BASE",
+        "target_chunk": "prendere",
+        "known_chunk": "taking",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"taking\" → exactly one target \"prendere\". No alternatives, deterministic. FCFS allows: First occurrence of \"taking\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0027",
+        "target": "Non mi piace prendere troppo tempo per rispondere.",
+        "known": "I don't like taking too much time to answer.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0027L03",
+        "lego_type": "BASE",
+        "target_chunk": "troppo tempo",
+        "known_chunk": "too much time",
+        "componentization": "too much time = troppo tempo, where troppo = too much and tempo = time"
+      },
+      "reasoning": "FD passes: Learner sees \"too much time\" → exactly one target \"troppo tempo\". No alternatives, deterministic. FCFS allows: First occurrence of \"too much time\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0027",
+        "target": "Non mi piace prendere troppo tempo per rispondere.",
+        "known": "I don't like taking too much time to answer.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0027L04",
+        "lego_type": "BASE",
+        "target_chunk": "per rispondere",
+        "known_chunk": "to answer",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to answer\" → exactly one target \"per rispondere\". No alternatives, deterministic. FCFS allows: First occurrence of \"to answer\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0027",
+        "target": "Non mi piace prendere troppo tempo per rispondere.",
+        "known": "I don't like taking too much time to answer.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0027L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0027F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "rispondere",
+        "known_chunk": "to answer",
+        "parent_lego_id": "S0027L01"
+      },
+      "reasoning": "FD passes: \"to answer\" → \"rispondere\" deterministic. Classification: FEEDER extracted from parent S0027L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0028",
+        "target": "È utile iniziare a parlare appena puoi.",
+        "known": "It's useful to start talking as soon as you can.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0028L01",
+        "lego_type": "BASE",
+        "target_chunk": "È utile",
+        "known_chunk": "It's useful",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"It's useful\" → exactly one target \"È utile\". No alternatives, deterministic. FCFS allows: First occurrence of \"It's useful\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0028",
+        "target": "È utile iniziare a parlare appena puoi.",
+        "known": "It's useful to start talking as soon as you can.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0028L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "iniziare a parlare",
+        "known_chunk": "to start talking",
+        "componentization": "to start talking = iniziare a parlare, where iniziare = to start/begin, a = to, and parlare = to talk/speak"
+      },
+      "reasoning": "FD passes: Learner sees \"to start talking\" → exactly one target \"iniziare a parlare\". No alternatives, deterministic. FCFS allows: First occurrence of \"to start talking\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"to start talking = iniziare a parlare, where iniziare = to start/begin, a = to, and parlare = to talk/speak\""
+    },
+    {
+      "input": {
+        "seed_id": "S0028",
+        "target": "È utile iniziare a parlare appena puoi.",
+        "known": "It's useful to start talking as soon as you can.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0028L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "appena puoi",
+        "known_chunk": "as soon as you can",
+        "componentization": "as soon as you can = appena puoi, where appena = as soon as and puoi = you can"
+      },
+      "reasoning": "FD passes: Learner sees \"as soon as you can\" → exactly one target \"appena puoi\". No alternatives, deterministic. FCFS allows: First occurrence of \"as soon as you can\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"as soon as you can = appena puoi, where appena = as soon as and puoi = you can\""
+    },
+    {
+      "input": {
+        "seed_id": "S0028",
+        "target": "È utile iniziare a parlare appena puoi.",
+        "known": "It's useful to start talking as soon as you can.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0028L02"
+        }
+      },
+      "output": {
+        "feeder_id": "S0028F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "iniziare",
+        "known_chunk": "to start",
+        "parent_lego_id": "S0028L02"
+      },
+      "reasoning": "FD passes: \"to start\" → \"iniziare\" deterministic. Classification: FEEDER extracted from parent S0028L02. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0028",
+        "target": "È utile iniziare a parlare appena puoi.",
+        "known": "It's useful to start talking as soon as you can.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0028L02"
+        }
+      },
+      "output": {
+        "feeder_id": "S0028F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "potere",
+        "known_chunk": "can",
+        "parent_lego_id": "S0028L02"
+      },
+      "reasoning": "FD passes: \"can\" → \"potere\" deterministic. Classification: FEEDER extracted from parent S0028L02. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0029",
+        "target": "Non vedo l'ora di parlare meglio appena posso.",
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0029L01",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "Non vedo l'ora di",
+        "known_chunk": "I'm looking forward to",
+        "componentization": "I'm looking forward to = Non vedo l'ora di (idiomatic expression meaning can't wait)"
+      },
+      "reasoning": "FD passes: Learner sees \"I'm looking forward to\" → exactly one target \"Non vedo l'ora di\". No alternatives, deterministic. FCFS allows: First occurrence of \"I'm looking forward to\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"I'm looking forward to = Non vedo l'ora di (idiomatic expression meaning can't wait)\""
+    },
+    {
+      "input": {
+        "seed_id": "S0029",
+        "target": "Non vedo l'ora di parlare meglio appena posso.",
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0029L02",
+        "lego_type": "BASE",
+        "target_chunk": "meglio",
+        "known_chunk": "better",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"better\" → exactly one target \"meglio\". No alternatives, deterministic. FCFS allows: First occurrence of \"better\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0029",
+        "target": "Non vedo l'ora di parlare meglio appena posso.",
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0029L03",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "appena posso",
+        "known_chunk": "as soon as I can",
+        "componentization": "as soon as I can = appena posso, where appena = as soon as and posso = I can"
+      },
+      "reasoning": "FD passes: Learner sees \"as soon as I can\" → exactly one target \"appena posso\". No alternatives, deterministic. FCFS allows: First occurrence of \"as soon as I can\" in this course. Classification: COMPOSITE because contains multiple meaningful parts. Componentization: \"as soon as I can = appena posso, where appena = as soon as and posso = I can\""
+    },
+    {
+      "input": {
+        "seed_id": "S0029",
+        "target": "Non vedo l'ora di parlare meglio appena posso.",
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0029L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0029F01",
+        "lego_type": "FEEDER",
+        "target_chunk": "vedere",
+        "known_chunk": "to see",
+        "parent_lego_id": "S0029L01"
+      },
+      "reasoning": "FD passes: \"to see\" → \"vedere\" deterministic. Classification: FEEDER extracted from parent S0029L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0029",
+        "target": "Non vedo l'ora di parlare meglio appena posso.",
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "task": "Extract FEEDER from COMPOSITE",
+        "context": {
+          "parent_lego": "S0029L01"
+        }
+      },
+      "output": {
+        "feeder_id": "S0029F02",
+        "lego_type": "FEEDER",
+        "target_chunk": "potere",
+        "known_chunk": "can",
+        "parent_lego_id": "S0029L01"
+      },
+      "reasoning": "FD passes: \"can\" → \"potere\" deterministic. Classification: FEEDER extracted from parent S0029L01. Component has pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0030",
+        "target": "Volevo domandarti qualcosa ieri.",
+        "known": "I wanted to ask you something yesterday.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0030L01",
+        "lego_type": "BASE",
+        "target_chunk": "Volevo",
+        "known_chunk": "I wanted",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"I wanted\" → exactly one target \"Volevo\". No alternatives, deterministic. FCFS allows: First occurrence of \"I wanted\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0030",
+        "target": "Volevo domandarti qualcosa ieri.",
+        "known": "I wanted to ask you something yesterday.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0030L02",
+        "lego_type": "BASE",
+        "target_chunk": "domandarti",
+        "known_chunk": "to ask you",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"to ask you\" → exactly one target \"domandarti\". No alternatives, deterministic. FCFS allows: First occurrence of \"to ask you\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0030",
+        "target": "Volevo domandarti qualcosa ieri.",
+        "known": "I wanted to ask you something yesterday.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0030L03",
+        "lego_type": "BASE",
+        "target_chunk": "qualcosa",
+        "known_chunk": "something",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"something\" → exactly one target \"qualcosa\". No alternatives, deterministic. FCFS allows: First occurrence of \"something\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0030",
+        "target": "Volevo domandarti qualcosa ieri.",
+        "known": "I wanted to ask you something yesterday.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Spanish",
+          "known_language": "English"
+        }
+      },
+      "output": {
+        "lego_id": "S0030L04",
+        "lego_type": "BASE",
+        "target_chunk": "ieri",
+        "known_chunk": "yesterday",
+        "componentization": null
+      },
+      "reasoning": "FD passes: Learner sees \"yesterday\" → exactly one target \"ieri\". No alternatives, deterministic. FCFS allows: First occurrence of \"yesterday\" in this course. Classification: BASE because cannot be meaningfully broken down further. Atomic chunk with pedagogical value."
+    },
+    {
+      "input": {
+        "seed_id": "S0022",
+        "target": "Perché voglio incontrare persone che parlano italiano.",
+        "known": "Because I want to meet people who speak Italian.",
+        "task": "Extract LEGO and classify",
+        "context": {
+          "target_language": "Italian",
+          "known_language": "English"
+        },
+        "incorrect_output": {
+          "lego_id": "S0022L02",
+          "lego_type": "BASE",
+          "target_chunk": "incontrare",
+          "known_chunk": "to meet"
+        }
+      },
+      "output": {
+        "lego_id": "S0022L02",
+        "lego_type": "COMPOSITE",
+        "target_chunk": "incontrare qualcuno",
+        "known_chunk": "to meet someone",
+        "componentization": "to meet someone = incontrare qualcuno, where incontrare = to meet and qualcuno = someone"
+      },
+      "reasoning": "FCFS violation: to",
+      "metadata": {
+        "correction_type": "human_review",
+        "error_type": "FCFS_VIOLATION",
+        "corrected_at": "2025-10-18T19:59:24.027Z",
+        "learning_priority": "high"
+      }
+    }
+  ],
+  "stats": {
+    "total_examples": 116,
+    "lego_examples": 90,
+    "feeder_examples": 25,
+    "corrections": 1
+  },
+  "corrections_added": [
+    {
+      "date": "2025-10-18T19:59:24.028Z",
+      "error_type": "FCFS_VIOLATION",
+      "seed_id": "S0022"
+    }
+  ]
+}

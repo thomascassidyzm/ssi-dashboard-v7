@@ -1,0 +1,373 @@
+{
+  "S0341L01": {
+    "lego": [
+      "a few days ago",
+      "几天前"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "A few days ago",
+        "几天前",
+        null,
+        1
+      ],
+      [
+        "I met a few days ago",
+        "我几天前见",
+        null,
+        2
+      ],
+      [
+        "Yes a few days ago",
+        "是的几天前",
+        null,
+        2
+      ],
+      [
+        "He said a few days ago",
+        "他说几天前",
+        null,
+        2
+      ],
+      [
+        "I think a few days ago",
+        "我觉得几天前",
+        null,
+        2
+      ],
+      [
+        "She said that a few days ago",
+        "她说几天前",
+        null,
+        2
+      ],
+      [
+        "I met him a few days ago",
+        "我几天前见他",
+        null,
+        3
+      ],
+      [
+        "She opened the door a few days ago",
+        "她几天前打开门",
+        null,
+        3
+      ],
+      [
+        "I'm sure he said that a few days ago",
+        "我确定他几天前说",
+        null,
+        4
+      ],
+      [
+        "I think he opened the door a few days ago",
+        "我觉得他几天前打开门",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 6,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 0
+    },
+    "target_phrase_count": 10
+  },
+  "S0341L02": {
+    "lego": [
+      "met a few days ago",
+      "几天前见过"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0341L01",
+        "known": "a few days ago",
+        "target": "几天前",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Met a few days ago",
+        "几天前见过",
+        null,
+        1
+      ],
+      [
+        "I met a few days ago",
+        "我几天前见过",
+        null,
+        2
+      ],
+      [
+        "He met a few days ago",
+        "他几天前见过",
+        null,
+        2
+      ],
+      [
+        "She met him a few days ago",
+        "她几天前见过他",
+        null,
+        3
+      ],
+      [
+        "I met her a few days ago",
+        "我几天前见过她",
+        null,
+        3
+      ],
+      [
+        "Yes I met a few days ago",
+        "是的我几天前见过",
+        null,
+        3
+      ],
+      [
+        "I'm sure I met a few days ago",
+        "我确定我几天前见过",
+        null,
+        3
+      ],
+      [
+        "I think I met him a few days ago",
+        "我觉得我几天前见过他",
+        null,
+        4
+      ],
+      [
+        "Yes I'm sure I met a few days ago",
+        "是的我确定我几天前见过",
+        null,
+        4
+      ],
+      [
+        "I think she met him a few days ago",
+        "我觉得她几天前见过他",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 3,
+      "medium_3_legos": 4,
+      "longer_4_legos": 3,
+      "longest_5_legos": 0
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "几天前",
+        "a few days ago"
+      ],
+      [
+        "见过",
+        "met"
+      ]
+    ]
+  },
+  "S0341L03": {
+    "lego": [
+      "met someone",
+      "见过一个人"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0341L01",
+        "known": "a few days ago",
+        "target": "几天前",
+        "type": "A"
+      },
+      {
+        "id": "S0341L02",
+        "known": "met a few days ago",
+        "target": "几天前见过",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Met someone",
+        "见过一个人",
+        null,
+        1
+      ],
+      [
+        "I met someone",
+        "我见过一个人",
+        null,
+        2
+      ],
+      [
+        "He met someone",
+        "他见过一个人",
+        null,
+        2
+      ],
+      [
+        "Yes I met someone",
+        "是的我见过一个人",
+        null,
+        3
+      ],
+      [
+        "I met someone yesterday",
+        "我昨天见过一个人",
+        null,
+        3
+      ],
+      [
+        "She met someone a few days ago",
+        "她几天前见过一个人",
+        null,
+        3
+      ],
+      [
+        "I'm sure I met someone",
+        "我确定我见过一个人",
+        null,
+        3
+      ],
+      [
+        "Yes I met someone a few days ago",
+        "是的我几天前见过一个人",
+        null,
+        4
+      ],
+      [
+        "I think I met someone a few days ago",
+        "我觉得我几天前见过一个人",
+        null,
+        4
+      ],
+      [
+        "I'm sure she met someone a few days ago",
+        "我确定她几天前见过一个人",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 3,
+      "medium_3_legos": 4,
+      "longer_4_legos": 3,
+      "longest_5_legos": 0
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "见过",
+        "met"
+      ],
+      [
+        "一个人",
+        "someone"
+      ]
+    ]
+  },
+  "S0341L04": {
+    "lego": [
+      "someone",
+      "一个人"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0341L01",
+        "known": "a few days ago",
+        "target": "几天前",
+        "type": "A"
+      },
+      {
+        "id": "S0341L02",
+        "known": "met a few days ago",
+        "target": "几天前见过",
+        "type": "M"
+      },
+      {
+        "id": "S0341L03",
+        "known": "met someone",
+        "target": "见过一个人",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Someone",
+        "一个人",
+        null,
+        1
+      ],
+      [
+        "I met someone",
+        "我见过一个人",
+        null,
+        2
+      ],
+      [
+        "He met someone",
+        "他见过一个人",
+        null,
+        2
+      ],
+      [
+        "Yes I met someone",
+        "是的我见过一个人",
+        null,
+        3
+      ],
+      [
+        "She met someone yesterday",
+        "她昨天见过一个人",
+        null,
+        3
+      ],
+      [
+        "I met someone a few days ago",
+        "我几天前见过一个人",
+        null,
+        3
+      ],
+      [
+        "I'm sure I met someone",
+        "我确定我见过一个人",
+        null,
+        3
+      ],
+      [
+        "Yes I met someone a few days ago",
+        "是的我几天前见过一个人",
+        null,
+        4
+      ],
+      [
+        "I think she met someone a few days ago",
+        "我觉得她几天前见过一个人",
+        null,
+        4
+      ],
+      [
+        "I met someone a few days ago.",
+        "我几天前见过一个人。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 3,
+      "medium_3_legos": 5,
+      "longer_4_legos": 2,
+      "longest_5_legos": 0
+    },
+    "target_phrase_count": 10
+  }
+}

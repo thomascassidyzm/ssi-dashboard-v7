@@ -1,0 +1,77 @@
+{
+  "S0256L02": {
+    "lego": ["less than an hour","不到一个小时"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Less than an hour.", "不到一个小时。", null, 1],
+      ["In less than an hour.", "在不到一个小时。", null, 2],
+      ["I want less than an hour.", "我想要不到一个小时。", null, 3],
+      ["I thought less than an hour.", "我觉得不到一个小时。", null, 3],
+      ["You'll be ready in less than an hour.", "你不到一个小时就准备好。", null, 4],
+      ["She'll finish in less than an hour.", "她不到一个小时就完成。", null, 4],
+      ["I want you to help me in less than an hour.", "我想让你不到一个小时就帮助我。", null, 5],
+      ["I think you'll be ready to start in less than an hour.", "我想你不到一个小时就准备好开始。", null, 6],
+      ["You think you'll finish before less than an hour?", "你觉得你不到一个小时之前就完成吗？", null, 6],
+      ["I want you to be ready to leave in less than an hour.", "我想让你不到一个小时就准备好离开。", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0256L03": {
+    "lego": ["an hour","一个小时"],
+    "type": "M",
+    "current_seed_legos_available": [["less than an hour","不到一个小时"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["An hour.", "一个小时。", null, 1],
+      ["In an hour.", "在一个小时。", null, 2],
+      ["I want an hour.", "我想要一个小时。", null, 3],
+      ["I thought an hour.", "我觉得一个小时。", null, 3],
+      ["You'll be ready in an hour.", "你一个小时就准备好。", null, 4],
+      ["She'll finish in an hour.", "她一个小时就完成。", null, 4],
+      ["I want you to help me in an hour.", "我想让你一个小时就帮助我。", null, 5],
+      ["I think you'll be ready to start in an hour.", "我想你一个小时就准备好开始。", null, 6],
+      ["You think you'll be ready to leave in an hour?", "你觉得你一个小时就准备好离开吗？", null, 6],
+      ["I want you to be ready in less than an hour.", "我想让你不到一个小时就准备好。", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0256L04": {
+    "lego": ["will be ready in less than an hour","不到一个小时就准备好"],
+    "type": "M",
+    "current_seed_legos_available": [["less than an hour","不到一个小时"],["an hour","一个小时"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'll be ready in less than an hour.", "我不到一个小时就准备好。", null, 2],
+      ["You'll be ready in less than an hour.", "你不到一个小时就准备好。", null, 2],
+      ["I think I'll be ready in less than an hour.", "我想我不到一个小时就准备好。", null, 3],
+      ["She'll be ready in less than an hour.", "她不到一个小时就准备好。", null, 3],
+      ["I want to be ready in less than an hour.", "我想要不到一个小时就准备好。", null, 4],
+      ["You think you'll be ready in less than an hour?", "你觉得你不到一个小时就准备好吗？", null, 4],
+      ["I think you'll be ready to start in less than an hour.", "我想你不到一个小时就准备好开始。", null, 5],
+      ["I want you to be ready to leave in less than an hour.", "我想让你不到一个小时就准备好离开。", null, 6],
+      ["I think she'll be ready to help you in less than an hour.", "我想她不到一个小时就准备好帮助你。", null, 6],
+      ["I think I'll be ready in less than an hour.", "我想我不到一个小时就准备好。", null, 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  }
+}

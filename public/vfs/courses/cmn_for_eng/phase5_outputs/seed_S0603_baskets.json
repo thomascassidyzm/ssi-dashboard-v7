@@ -1,0 +1,101 @@
+{
+  "S0603L01": {
+    "lego": ["we didn't have","我们没有"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["We didn't have toys.","我们没有玩具。",null,3],
+      ["We didn't have a garden.","我们没有花园。",null,4],
+      ["We didn't have a sister.","我们没有妹妹。",null,4],
+      ["We didn't have stories.","我们没有故事。",null,3],
+      ["We didn't have a place to share.","我们没有地方分享。",null,6],
+      ["We didn't have what you told me about.","我们没有你告诉我的。",null,7],
+      ["We didn't have what we were talking about.","我们没有我们在谈论的。",null,7],
+      ["We didn't have what they were doing.","我们没有他们在做的。",null,6],
+      ["We didn't have anywhere in the garden.","我们没有花园里的任何地方。",null,7],
+      ["We didn't have what my sister heard.","我们没有我妹妹听过的。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0603L02": {
+    "lego": ["didn't have anywhere to live","没有地方住"],
+    "type": "M",
+    "current_seed_legos_available": [["we didn't have","我们没有"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I didn't have anywhere to live.","我没有地方住。",null,5],
+      ["We didn't have anywhere to live.","我们没有地方住。",null,5],
+      ["My sister didn't have anywhere to live.","我妹妹没有地方住。",null,6],
+      ["You didn't have anywhere to live.","你没有地方住。",null,5],
+      ["They didn't have anywhere to live.","他们没有地方住。",null,5],
+      ["I suspect you didn't have anywhere to live.","我怀疑你没有地方住。",null,7],
+      ["We were talking about how we didn't have anywhere to live.","我们在谈论我们没有地方住。",null,10],
+      ["You told me you didn't have anywhere to live.","你告诉我你没有地方住。",null,8],
+      ["I heard you didn't have anywhere to live.","我听说你没有地方住。",null,7],
+      ["We didn't have anywhere to live in the first place.","我们最初没有地方住。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 6
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0603L03": {
+    "lego": ["anywhere to live","地方住"],
+    "type": "M",
+    "current_seed_legos_available": [["we didn't have","我们没有"],["didn't have anywhere to live","没有地方住"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I need anywhere to live.","我需要地方住。",null,4],
+      ["You need anywhere to live.","你需要地方住。",null,4],
+      ["We need anywhere to live.","我们需要地方住。",null,4],
+      ["I had to share anywhere to live.","我不得不分享地方住。",null,6],
+      ["My sister had anywhere to live.","我妹妹有地方住。",null,5],
+      ["I was happy to have anywhere to live.","我很高兴有地方住。",null,7],
+      ["I suspect you need anywhere to live.","我怀疑你需要地方住。",null,6],
+      ["You told me about anywhere to live.","你告诉我关于地方住。",null,6],
+      ["We were talking about anywhere to live in the garden.","我们在谈论花园里的地方住。",null,9],
+      ["I heard stories about anywhere to live.","我听过关于地方住的故事。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 6
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0603L04": {
+    "lego": ["at the time","那时"],
+    "type": "A",
+    "current_seed_legos_available": [["we didn't have","我们没有"],["didn't have anywhere to live","没有地方住"],["anywhere to live","地方住"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I was happy at the time.","我那时很高兴。",null,5],
+      ["I was tired at the time.","我那时很累。",null,5],
+      ["You told me at the time.","你那时告诉我。",null,5],
+      ["My sister was there at the time.","我妹妹那时在那里。",null,6],
+      ["I had to share at the time.","我那时不得不分享。",null,6],
+      ["I was talking about it at the time.","我那时在谈论它。",null,7],
+      ["I need to lie down at the time.","我那时需要躺下。",null,7],
+      ["We were talking about how it started at the time.","我们那时在谈论它是如何开始的。",null,9],
+      ["I didn't have anywhere to live at the time.","我那时没有地方住。",null,8],
+      ["We didn't have anywhere to live at the time.","我们那时没有地方住。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 7
+    }
+  }
+}

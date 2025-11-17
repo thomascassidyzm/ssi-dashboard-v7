@@ -1,0 +1,185 @@
+{
+  "S0667L02": {
+    "lego": [
+      "mind / care",
+      "介意"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Mind",
+        "介意",
+        null,
+        1
+      ],
+      [
+        "I mind",
+        "我介意",
+        null,
+        1
+      ],
+      [
+        "I mind that",
+        "我介意那个",
+        null,
+        2
+      ],
+      [
+        "You all mind",
+        "你们大家介意",
+        null,
+        2
+      ],
+      [
+        "You all mind that",
+        "你们大家介意那个",
+        null,
+        3
+      ],
+      [
+        "I mind what you said",
+        "我介意你说的话",
+        null,
+        3
+      ],
+      [
+        "You all mind it",
+        "你们大家介意它",
+        null,
+        4
+      ],
+      [
+        "You all mind going",
+        "你们大家介意去",
+        null,
+        4
+      ],
+      [
+        "I mind what you all said",
+        "我介意你们大家说的话",
+        null,
+        5
+      ],
+      [
+        "You all mind what I said",
+        "你们大家介意我说的话",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0667L02",
+      "seed_context": {
+        "known": "Do you all mind?",
+        "target": "你们大家都介意吗？"
+      }
+    }
+  },
+  "S0667L03": {
+    "lego": [
+      "mind? / Do (you) mind?",
+      "介意吗"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mind / care",
+        "介意"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "Mind?",
+        "介意吗",
+        null,
+        1
+      ],
+      [
+        "Do you mind?",
+        "你介意吗",
+        null,
+        1
+      ],
+      [
+        "Do I mind?",
+        "我介意吗",
+        null,
+        2
+      ],
+      [
+        "Do you mind that?",
+        "你介意那个吗",
+        null,
+        2
+      ],
+      [
+        "Do you all mind?",
+        "你们大家介意吗",
+        null,
+        3
+      ],
+      [
+        "Do you all mind that?",
+        "你们大家介意那个吗",
+        null,
+        3
+      ],
+      [
+        "Do you all mind it?",
+        "你们大家介意它吗",
+        null,
+        4
+      ],
+      [
+        "Do you all mind going?",
+        "你们大家介意去吗",
+        null,
+        4
+      ],
+      [
+        "Do you all mind what I said?",
+        "你们大家介意我说的话吗",
+        null,
+        5
+      ],
+      [
+        "Do you all mind?",
+        "你们大家都介意吗？",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0667L03",
+      "seed_context": {
+        "known": "Do you all mind?",
+        "target": "你们大家都介意吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

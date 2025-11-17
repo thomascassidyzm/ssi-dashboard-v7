@@ -1,0 +1,317 @@
+{
+  "legos": {
+    "S0314L03": {
+      "lego": [
+        "put it on the table",
+        "把它放在桌子上"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "She could put it on the table",
+          "她可以把它放在桌子上",
+          null,
+          1
+        ],
+        [
+          "I could put it on the table",
+          "我可以把它放在桌子上",
+          null,
+          1
+        ],
+        [
+          "He could put it on the table before",
+          "他以前可以把它放在桌子上",
+          null,
+          2
+        ],
+        [
+          "I think she could put it on the table",
+          "我觉得她可以把它放在桌子上",
+          null,
+          3
+        ],
+        [
+          "That young woman could put it on the table",
+          "那个年轻女人可以把它放在桌子上",
+          null,
+          3
+        ],
+        [
+          "My mother could put it on the table",
+          "我妈妈可以把它放在桌子上",
+          null,
+          2
+        ],
+        [
+          "I think that young man could put it on the table",
+          "我觉得那个年轻男人可以把它放在桌子上",
+          null,
+          4
+        ],
+        [
+          "She said she could put it on the table",
+          "她说她可以把它放在桌子上",
+          null,
+          4
+        ],
+        [
+          "That woman who's talking to your friend could put it on the table",
+          "正在和你朋友说话的那个女人可以把它放在桌子上",
+          null,
+          6
+        ],
+        [
+          "I think my mother could put it on the table",
+          "我觉得我妈妈可以把它放在桌子上",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0314L03",
+        "seed_context": {
+          "known": "I think that she could put it on the table.",
+          "target": "我觉得她可以把它放在桌子上。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0314L04": {
+      "lego": [
+        "put on the table",
+        "放在桌子上"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "put it on the table",
+          "把它放在桌子上"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Put on the table",
+          "放在桌子上",
+          null,
+          1
+        ],
+        [
+          "She could put on the table",
+          "她可以放在桌子上",
+          null,
+          1
+        ],
+        [
+          "I could put on the table",
+          "我可以放在桌子上",
+          null,
+          1
+        ],
+        [
+          "I think I could put on the table",
+          "我觉得我可以放在桌子上",
+          null,
+          3
+        ],
+        [
+          "He could put on the table before",
+          "他以前可以放在桌子上",
+          null,
+          2
+        ],
+        [
+          "That young woman could put on the table",
+          "那个年轻女人可以放在桌子上",
+          null,
+          3
+        ],
+        [
+          "She said she could put on the table",
+          "她说她可以放在桌子上",
+          null,
+          4
+        ],
+        [
+          "I think that young man could put on the table",
+          "我觉得那个年轻男人可以放在桌子上",
+          null,
+          4
+        ],
+        [
+          "My mother said she could put on the table",
+          "我妈妈说她可以放在桌子上",
+          null,
+          5
+        ],
+        [
+          "I think my friend could put on the table",
+          "我觉得我朋友可以放在桌子上",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0314L04",
+        "seed_context": {
+          "known": "I think that she could put it on the table.",
+          "target": "我觉得她可以把它放在桌子上。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0314L06": {
+      "lego": [
+        "table",
+        "桌子"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "put it on the table",
+          "把它放在桌子上"
+        ],
+        [
+          "put on the table",
+          "放在桌子上"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Table",
+          "桌子",
+          null,
+          1
+        ],
+        [
+          "The table",
+          "桌子",
+          null,
+          1
+        ],
+        [
+          "I think the table",
+          "我觉得桌子",
+          null,
+          2
+        ],
+        [
+          "She could use the table",
+          "她可以用桌子",
+          null,
+          2
+        ],
+        [
+          "That young woman could use the table",
+          "那个年轻女人可以用桌子",
+          null,
+          3
+        ],
+        [
+          "I think she could use the table",
+          "我觉得她可以用桌子",
+          null,
+          4
+        ],
+        [
+          "My mother said she could use the table",
+          "我妈妈说她可以用桌子",
+          null,
+          6
+        ],
+        [
+          "She said that man could use the table",
+          "她说那个男人可以用桌子",
+          null,
+          6
+        ],
+        [
+          "I think my friend could use the table at home",
+          "我觉得我朋友可以在家用桌子",
+          null,
+          7
+        ],
+        [
+          "I think that she could put it on the table",
+          "我觉得她可以把它放在桌子上",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0314L06",
+        "seed_context": {
+          "known": "I think that she could put it on the table.",
+          "target": "我觉得她可以把它放在桌子上。"
+        }
+      }
+    }
+  }
+}

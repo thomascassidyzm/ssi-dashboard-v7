@@ -1,0 +1,590 @@
+{
+  "S0498L01": {
+    "lego": [
+      "he's standing",
+      "他站在"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "He's standing.",
+        "他站在。",
+        null,
+        1
+      ],
+      [
+        "I think he's standing.",
+        "我觉得他站在。",
+        null,
+        2
+      ],
+      [
+        "He's standing under the bridge.",
+        "他站在桥下。",
+        null,
+        3
+      ],
+      [
+        "He's standing right now.",
+        "他现在站在。",
+        null,
+        2
+      ],
+      [
+        "Then he's standing.",
+        "那么他站在。",
+        null,
+        2
+      ],
+      [
+        "If he's standing, I will help.",
+        "如果他站在，我会帮助。",
+        null,
+        4
+      ],
+      [
+        "He's standing on the other side of that yellow line.",
+        "他站在那条黄线的另一边。",
+        null,
+        5
+      ],
+      [
+        "That sounds as though he's standing.",
+        "听起来好像他站在。",
+        null,
+        3
+      ],
+      [
+        "I love the way he's standing.",
+        "我喜欢他站在的方式。",
+        null,
+        4
+      ],
+      [
+        "He's standing when it really matters.",
+        "他在真正重要的时候站在。",
+        null,
+        5
+      ],
+      [
+        "Which of those places is he standing?",
+        "那些地方中哪个他站在？",
+        null,
+        4
+      ],
+      [
+        "What happens next when he's standing?",
+        "当他站在的时候接下来会发生什么？",
+        null,
+        5
+      ],
+      [
+        "After the first part of the show, he's standing.",
+        "在演出的第一部分之后，他站在。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0498L01",
+      "seed_context": {
+        "known": "他一个人站在那边入口里面。",
+        "target": "He's standing alone over there inside the entrance."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0498L02": {
+    "lego": [
+      "alone",
+      "一个人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he's standing",
+        "他站在"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Alone.",
+        "一个人。",
+        null,
+        1
+      ],
+      [
+        "He's standing alone.",
+        "他一个人站在。",
+        null,
+        2
+      ],
+      [
+        "I'm alone.",
+        "我一个人。",
+        null,
+        1
+      ],
+      [
+        "You try alone.",
+        "你一个人努力。",
+        null,
+        2
+      ],
+      [
+        "He's standing alone right now.",
+        "他现在一个人站在。",
+        null,
+        3
+      ],
+      [
+        "If you're alone, I will help you.",
+        "如果你一个人，我会帮助你。",
+        null,
+        4
+      ],
+      [
+        "I think he's standing alone under the bridge.",
+        "我觉得他一个人站在桥下。",
+        null,
+        4
+      ],
+      [
+        "Then you're alone.",
+        "那么你一个人。",
+        null,
+        2
+      ],
+      [
+        "I love to be alone when it really matters.",
+        "我喜欢在真正重要的时候一个人。",
+        null,
+        6
+      ],
+      [
+        "That sounds as though you need to be alone.",
+        "听起来好像你需要一个人。",
+        null,
+        5
+      ],
+      [
+        "He's standing alone on the other side.",
+        "他一个人站在另一边。",
+        null,
+        4
+      ],
+      [
+        "You will never trust anyone if you're alone.",
+        "如果你一个人你再也不会相信任何人。",
+        null,
+        6
+      ],
+      [
+        "Which of those places do you think is best to be alone?",
+        "你觉得那些地方中哪个最好一个人？",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0498L02",
+      "seed_context": {
+        "known": "他一个人站在那边入口里面。",
+        "target": "He's standing alone over there inside the entrance."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0498L04": {
+    "lego": [
+      "entrance",
+      "入口"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "he's standing",
+        "他站在"
+      ],
+      [
+        "alone",
+        "一个人"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "The entrance is beautiful.",
+        "入口美。",
+        null,
+        2
+      ],
+      [
+        "I think the entrance is beautiful.",
+        "我觉得入口美。",
+        null,
+        3
+      ],
+      [
+        "He's standing at the entrance.",
+        "他站在入口。",
+        null,
+        2
+      ],
+      [
+        "The entrance is really interesting.",
+        "入口真正有趣。",
+        null,
+        3
+      ],
+      [
+        "I love the entrance.",
+        "我喜欢入口。",
+        null,
+        2
+      ],
+      [
+        "If you're at the entrance, try to help.",
+        "如果你在入口，努力帮助。",
+        null,
+        4
+      ],
+      [
+        "That sounds as though the entrance is the most interesting.",
+        "听起来好像入口最有趣。",
+        null,
+        5
+      ],
+      [
+        "He's standing alone at the entrance right now.",
+        "他现在一个人站在入口。",
+        null,
+        4
+      ],
+      [
+        "Then the entrance really matters.",
+        "那么入口真正重要。",
+        null,
+        3
+      ],
+      [
+        "Which entrance do you think is the most interesting?",
+        "你觉得哪个入口最有趣？",
+        null,
+        5
+      ],
+      [
+        "What happens at the entrance when it really matters?",
+        "在真正重要的时候入口会发生什么？",
+        null,
+        6
+      ],
+      [
+        "After the first part, you need to go to the entrance.",
+        "在第一部分之后，你需要去入口。",
+        null,
+        6
+      ],
+      [
+        "I'm not planning to lose at the entrance.",
+        "我不打算在入口输。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 3,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0498L04",
+      "seed_context": {
+        "known": "他一个人站在那边入口里面。",
+        "target": "He's standing alone over there inside the entrance."
+      }
+    }
+  },
+  "S0498L05": {
+    "lego": [
+      "inside",
+      "里面"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "he's standing",
+        "他站在"
+      ],
+      [
+        "alone",
+        "一个人"
+      ],
+      [
+        "entrance",
+        "入口"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Inside.",
+        "里面。",
+        null,
+        1
+      ],
+      [
+        "He's standing inside.",
+        "他站在里面。",
+        null,
+        2
+      ],
+      [
+        "I'm inside.",
+        "我在里面。",
+        null,
+        1
+      ],
+      [
+        "You're inside right now.",
+        "你现在在里面。",
+        null,
+        2
+      ],
+      [
+        "If you're inside, I will help.",
+        "如果你在里面，我会帮助。",
+        null,
+        4
+      ],
+      [
+        "I think he's standing alone inside.",
+        "我觉得他一个人站在里面。",
+        null,
+        3
+      ],
+      [
+        "Then you're inside.",
+        "那么你在里面。",
+        null,
+        2
+      ],
+      [
+        "It's inside the entrance.",
+        "它在入口里面。",
+        null,
+        3
+      ],
+      [
+        "That sounds as though you need to be inside.",
+        "听起来好像你需要在里面。",
+        null,
+        5
+      ],
+      [
+        "I love the way it's inside.",
+        "我喜欢它在里面的方式。",
+        null,
+        4
+      ],
+      [
+        "What happens inside when it really matters?",
+        "在真正重要的时候里面会发生什么？",
+        null,
+        6
+      ],
+      [
+        "He's standing alone inside the most interesting place.",
+        "他一个人站在最有趣的地方里面。",
+        null,
+        5
+      ],
+      [
+        "You will never trust anyone inside.",
+        "你在里面再也不会相信任何人。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0498L05",
+      "seed_context": {
+        "known": "他一个人站在那边入口里面。",
+        "target": "He's standing alone over there inside the entrance."
+      }
+    }
+  },
+  "S0498L06": {
+    "lego": [
+      "inside the entrance",
+      "入口里面"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he's standing",
+        "他站在"
+      ],
+      [
+        "alone",
+        "一个人"
+      ],
+      [
+        "entrance",
+        "入口"
+      ],
+      [
+        "inside",
+        "里面"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "Inside the entrance.",
+        "入口里面。",
+        null,
+        2
+      ],
+      [
+        "He's standing inside the entrance.",
+        "他站在入口里面。",
+        null,
+        3
+      ],
+      [
+        "I'm inside the entrance.",
+        "我在入口里面。",
+        null,
+        2
+      ],
+      [
+        "You're inside the entrance right now.",
+        "你现在在入口里面。",
+        null,
+        3
+      ],
+      [
+        "He's standing alone inside the entrance.",
+        "他一个人站在入口里面。",
+        null,
+        4
+      ],
+      [
+        "If you're inside the entrance, I will help you.",
+        "如果你在入口里面，我会帮助你。",
+        null,
+        5
+      ],
+      [
+        "I think he's standing alone inside the entrance.",
+        "我觉得他一个人站在入口里面。",
+        null,
+        4
+      ],
+      [
+        "That sounds as though you're inside the entrance.",
+        "听起来好像你在入口里面。",
+        null,
+        4
+      ],
+      [
+        "Then you need to be inside the entrance.",
+        "那么你需要在入口里面。",
+        null,
+        4
+      ],
+      [
+        "I love the way you're standing inside the entrance.",
+        "我喜欢你站在入口里面的方式。",
+        null,
+        6
+      ],
+      [
+        "What happens inside the entrance when it really matters?",
+        "在真正重要的时候入口里面会发生什么？",
+        null,
+        7
+      ],
+      [
+        "I'm not planning to lose inside the entrance.",
+        "我不打算在入口里面输。",
+        null,
+        5
+      ],
+      [
+        "He's standing alone over there inside the entrance.",
+        "他一个人站在那边入口里面。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 6,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0498L06",
+      "seed_context": {
+        "known": "他一个人站在那边入口里面。",
+        "target": "He's standing alone over there inside the entrance."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

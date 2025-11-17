@@ -1,0 +1,714 @@
+{
+  "S0588L01": {
+    "lego": [
+      "so",
+      "所以"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "So",
+        "所以",
+        null,
+        1
+      ],
+      [
+        "So I want",
+        "所以我想要",
+        null,
+        2
+      ],
+      [
+        "So she insists",
+        "所以她坚持",
+        null,
+        3
+      ],
+      [
+        "So we eat eggs",
+        "所以我们吃鸡蛋",
+        null,
+        3
+      ],
+      [
+        "So I always want more",
+        "所以我总是想要更多",
+        null,
+        4
+      ],
+      [
+        "So they have eggs for supper",
+        "所以他们晚饭吃鸡蛋",
+        null,
+        4
+      ],
+      [
+        "So I want to know more",
+        "所以我想要知道更多",
+        null,
+        5
+      ],
+      [
+        "So we used to see the mountains",
+        "所以我们过去看山",
+        null,
+        5
+      ],
+      [
+        "So she insists we eat boiled eggs",
+        "所以她坚持我们吃煮鸡蛋",
+        null,
+        6
+      ],
+      [
+        "So I always want twenty eggs for supper",
+        "所以我总是想要晚饭二十个鸡蛋",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0588L02": {
+    "lego": [
+      "I wanted",
+      "我想"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0588L01",
+        "known": "so",
+        "target": "所以",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I wanted",
+        "我想",
+        null,
+        1
+      ],
+      [
+        "I wanted more",
+        "我想更多",
+        null,
+        2
+      ],
+      [
+        "I wanted to know",
+        "我想知道",
+        null,
+        3
+      ],
+      [
+        "So I wanted eggs",
+        "所以我想鸡蛋",
+        null,
+        3
+      ],
+      [
+        "I wanted to see mountains",
+        "我想看山",
+        null,
+        4
+      ],
+      [
+        "I wanted twenty boiled eggs",
+        "我想二十个煮鸡蛋",
+        null,
+        4
+      ],
+      [
+        "I wanted to know more about it",
+        "我想知道更多关于它",
+        null,
+        5
+      ],
+      [
+        "So I wanted to eat eggs",
+        "所以我想吃鸡蛋",
+        null,
+        5
+      ],
+      [
+        "I wanted to have eggs for supper",
+        "我想晚饭吃鸡蛋",
+        null,
+        6
+      ],
+      [
+        "So I wanted to know what it's like",
+        "所以我想知道它是什么样的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "想",
+        "wanted"
+      ]
+    ]
+  },
+  "S0588L03": {
+    "lego": [
+      "grow up",
+      "长大"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0588L01",
+        "known": "so",
+        "target": "所以",
+        "type": "A"
+      },
+      {
+        "id": "S0588L02",
+        "known": "I wanted",
+        "target": "我想",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Grow up",
+        "长大",
+        null,
+        1
+      ],
+      [
+        "I want to grow up",
+        "我想要长大",
+        null,
+        2
+      ],
+      [
+        "Grow up here",
+        "在这里长大",
+        null,
+        3
+      ],
+      [
+        "So I wanted to grow up",
+        "所以我想长大",
+        null,
+        3
+      ],
+      [
+        "The children grow up here",
+        "孩子们在这里长大",
+        null,
+        4
+      ],
+      [
+        "I wanted to grow up here",
+        "我想在这里长大",
+        null,
+        4
+      ],
+      [
+        "We used to grow up somewhere warm",
+        "我们过去在暖和的地方长大",
+        null,
+        5
+      ],
+      [
+        "So I wanted to grow up here",
+        "所以我想在这里长大",
+        null,
+        5
+      ],
+      [
+        "She always wanted the children to grow up",
+        "她总是想孩子们长大",
+        null,
+        6
+      ],
+      [
+        "I wanted to grow up somewhere warmer",
+        "我想在更暖和的地方长大",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0588L04": {
+    "lego": [
+      "grow up and leave home",
+      "长大离开家"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0588L01",
+        "known": "so",
+        "target": "所以",
+        "type": "A"
+      },
+      {
+        "id": "S0588L02",
+        "known": "I wanted",
+        "target": "我想",
+        "type": "M"
+      },
+      {
+        "id": "S0588L03",
+        "known": "grow up",
+        "target": "长大",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Grow up and leave home",
+        "长大离开家",
+        null,
+        1
+      ],
+      [
+        "I wanted to grow up and leave home",
+        "我想长大离开家",
+        null,
+        2
+      ],
+      [
+        "They grow up and leave home",
+        "他们长大离开家",
+        null,
+        3
+      ],
+      [
+        "So I wanted to grow up and leave home",
+        "所以我想长大离开家",
+        null,
+        3
+      ],
+      [
+        "The children grow up and leave home",
+        "孩子们长大离开家",
+        null,
+        4
+      ],
+      [
+        "We wanted to grow up and leave home",
+        "我们想长大离开家",
+        null,
+        4
+      ],
+      [
+        "She always wanted to grow up and leave home",
+        "她总是想长大离开家",
+        null,
+        5
+      ],
+      [
+        "So we wanted to grow up and leave home",
+        "所以我们想长大离开家",
+        null,
+        5
+      ],
+      [
+        "They used to want to grow up and leave home",
+        "他们过去想长大离开家",
+        null,
+        6
+      ],
+      [
+        "So I always wanted to grow up and leave home",
+        "所以我总是想长大离开家",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "长大",
+        "grow up"
+      ],
+      [
+        "离开",
+        "leave"
+      ],
+      [
+        "家",
+        "home"
+      ]
+    ]
+  },
+  "S0588L05": {
+    "lego": [
+      "leave home",
+      "离开家"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0588L01",
+        "known": "so",
+        "target": "所以",
+        "type": "A"
+      },
+      {
+        "id": "S0588L02",
+        "known": "I wanted",
+        "target": "我想",
+        "type": "M"
+      },
+      {
+        "id": "S0588L03",
+        "known": "grow up",
+        "target": "长大",
+        "type": "A"
+      },
+      {
+        "id": "S0588L04",
+        "known": "grow up and leave home",
+        "target": "长大离开家",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Leave home",
+        "离开家",
+        null,
+        1
+      ],
+      [
+        "I want to leave home",
+        "我想要离开家",
+        null,
+        2
+      ],
+      [
+        "So I wanted to leave home",
+        "所以我想离开家",
+        null,
+        3
+      ],
+      [
+        "They leave home here",
+        "他们在这里离开家",
+        null,
+        3
+      ],
+      [
+        "I wanted to leave home",
+        "我想离开家",
+        null,
+        4
+      ],
+      [
+        "The children want to leave home",
+        "孩子们想要离开家",
+        null,
+        4
+      ],
+      [
+        "So I always wanted to leave home",
+        "所以我总是想离开家",
+        null,
+        5
+      ],
+      [
+        "We used to want to leave home",
+        "我们过去想离开家",
+        null,
+        5
+      ],
+      [
+        "She always insisted the children leave home",
+        "她总是坚持孩子们离开家",
+        null,
+        6
+      ],
+      [
+        "So I wanted to grow up and leave home",
+        "所以我想长大离开家",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "离开",
+        "leave"
+      ],
+      [
+        "家",
+        "home"
+      ]
+    ]
+  },
+  "S0588L06": {
+    "lego": [
+      "leave",
+      "离开"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0588L01",
+        "known": "so",
+        "target": "所以",
+        "type": "A"
+      },
+      {
+        "id": "S0588L02",
+        "known": "I wanted",
+        "target": "我想",
+        "type": "M"
+      },
+      {
+        "id": "S0588L03",
+        "known": "grow up",
+        "target": "长大",
+        "type": "A"
+      },
+      {
+        "id": "S0588L04",
+        "known": "grow up and leave home",
+        "target": "长大离开家",
+        "type": "M"
+      },
+      {
+        "id": "S0588L05",
+        "known": "leave home",
+        "target": "离开家",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Leave",
+        "离开",
+        null,
+        1
+      ],
+      [
+        "I want to leave",
+        "我想要离开",
+        null,
+        2
+      ],
+      [
+        "So I wanted to leave",
+        "所以我想离开",
+        null,
+        3
+      ],
+      [
+        "They leave here",
+        "他们离开这里",
+        null,
+        3
+      ],
+      [
+        "I wanted to leave here",
+        "我想离开这里",
+        null,
+        4
+      ],
+      [
+        "We always want to leave",
+        "我们总是想要离开",
+        null,
+        4
+      ],
+      [
+        "So I wanted to leave home",
+        "所以我想离开家",
+        null,
+        5
+      ],
+      [
+        "The children want to leave here",
+        "孩子们想要离开这里",
+        null,
+        5
+      ],
+      [
+        "She used to insist we leave",
+        "她过去坚持我们离开",
+        null,
+        6
+      ],
+      [
+        "So I always wanted to leave home",
+        "所以我总是想离开家",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0588L07": {
+    "lego": [
+      "home",
+      "家"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0588L01",
+        "known": "so",
+        "target": "所以",
+        "type": "A"
+      },
+      {
+        "id": "S0588L02",
+        "known": "I wanted",
+        "target": "我想",
+        "type": "M"
+      },
+      {
+        "id": "S0588L03",
+        "known": "grow up",
+        "target": "长大",
+        "type": "A"
+      },
+      {
+        "id": "S0588L04",
+        "known": "grow up and leave home",
+        "target": "长大离开家",
+        "type": "M"
+      },
+      {
+        "id": "S0588L05",
+        "known": "leave home",
+        "target": "离开家",
+        "type": "M"
+      },
+      {
+        "id": "S0588L06",
+        "known": "leave",
+        "target": "离开",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Home",
+        "家",
+        null,
+        1
+      ],
+      [
+        "I want home",
+        "我想要家",
+        null,
+        2
+      ],
+      [
+        "Leave home here",
+        "离开这里家",
+        null,
+        3
+      ],
+      [
+        "So I wanted home",
+        "所以我想家",
+        null,
+        3
+      ],
+      [
+        "I want to leave home",
+        "我想要离开家",
+        null,
+        4
+      ],
+      [
+        "The children grow up at home",
+        "孩子们在家长大",
+        null,
+        4
+      ],
+      [
+        "So I wanted to leave home",
+        "所以我想离开家",
+        null,
+        5
+      ],
+      [
+        "We always used to eat eggs at home",
+        "我们过去总是在家吃鸡蛋",
+        null,
+        5
+      ],
+      [
+        "She insisted the children grow up at home",
+        "她坚持孩子们在家长大",
+        null,
+        6
+      ],
+      [
+        "So I wanted to grow up and leave home.",
+        "所以我想长大离开家。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

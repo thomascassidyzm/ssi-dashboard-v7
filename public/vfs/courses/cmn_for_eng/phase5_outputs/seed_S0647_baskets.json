@@ -1,0 +1,203 @@
+{
+  "S0647L01": {
+    "lego": [
+      "You speak it",
+      "您说它"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "You speak it",
+        "您说它",
+        null,
+        1
+      ],
+      [
+        "You speak it madam",
+        "您说它女士",
+        null,
+        1
+      ],
+      [
+        "I think you speak it",
+        "我认为您说它",
+        null,
+        2
+      ],
+      [
+        "You speak it with that",
+        "您说它和那个",
+        null,
+        2
+      ],
+      [
+        "You speak it sir, where is that",
+        "您说它先生，那个在哪里",
+        null,
+        3
+      ],
+      [
+        "I can help you, you speak it madam",
+        "我可以帮您，您说它女士",
+        null,
+        3
+      ],
+      [
+        "You speak it, I think that it's the red one",
+        "您说它，我认为是红色的那个",
+        null,
+        4
+      ],
+      [
+        "Could you say that, you speak it madam",
+        "您能说那个吗，您说它女士",
+        null,
+        4
+      ],
+      [
+        "You speak it with that chair, I'm trying to think about something sir",
+        "您说它和那把椅子，我在试着想什么事先生",
+        null,
+        5
+      ],
+      [
+        "You speak it madam, I think that it's the red one on that chair",
+        "您说它女士，我认为是那把椅子上的红色的那个",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0647L01",
+      "seed_context": {
+        "known": "You speak it madam",
+        "target": "您说它女士"
+      }
+    },
+    "components": [
+      [
+        "您",
+        "you (formal)"
+      ],
+      [
+        "说",
+        "speak/say"
+      ],
+      [
+        "它",
+        "it"
+      ]
+    ]
+  },
+  "S0647L02": {
+    "lego": [
+      "speak it",
+      "说它"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0647L01",
+        "known": "You speak it",
+        "target": "您说它",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I speak it",
+        "我说它",
+        null,
+        1
+      ],
+      [
+        "Speak it sir",
+        "说它先生",
+        null,
+        1
+      ],
+      [
+        "I can speak it",
+        "我可以说它",
+        null,
+        2
+      ],
+      [
+        "I want to speak it",
+        "我想说它",
+        null,
+        2
+      ],
+      [
+        "I think I can speak it",
+        "我认为我可以说它",
+        null,
+        3
+      ],
+      [
+        "You speak it, I can speak it madam",
+        "您说它，我可以说它女士",
+        null,
+        3
+      ],
+      [
+        "Could you speak it sir, I can help you",
+        "您能说它先生，我可以帮您",
+        null,
+        4
+      ],
+      [
+        "I'm trying to think, I want to speak it with you",
+        "我在试着想，我想说它和您",
+        null,
+        4
+      ],
+      [
+        "You speak it madam, I can speak it, where is the red one",
+        "您说它女士，我可以说它，红色的那个在哪里",
+        null,
+        5
+      ],
+      [
+        "You speak it madam",
+        "您说它女士",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0647L02",
+      "seed_context": {
+        "known": "You speak it madam",
+        "target": "您说它女士"
+      }
+    },
+    "components": [
+      [
+        "说",
+        "speak/say"
+      ],
+      [
+        "它",
+        "it"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,787 @@
+{
+  "legos": {
+    "S0204L01": {
+      "lego": [
+        "I wanted",
+        "我想"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I wanted to know.",
+          "我想知道。"
+        ],
+        [
+          "I wanted to work.",
+          "我想工作。"
+        ],
+        [
+          "I wanted to help you today.",
+          "我今天想帮你。"
+        ],
+        [
+          "I wanted to finish everything.",
+          "我想完成所有事情。"
+        ],
+        [
+          "I wanted to make sure it was finished.",
+          "我想确保它完成了。"
+        ],
+        [
+          "I wanted to answer the question you asked.",
+          "我想回答你问的这个问题。"
+        ],
+        [
+          "I wanted to know what was going to happen today.",
+          "我想知道今天会发生什么。"
+        ],
+        [
+          "I wanted to make sure we finished everything in time.",
+          "我想确保我们及时完成所有事情。"
+        ],
+        [
+          "I wanted to help you find the money on the table.",
+          "我想帮你找在桌子上的钱。"
+        ],
+        [
+          "I wanted to know how to answer the question they were asking.",
+          "我想知道如何回答他们在问的这个问题。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L01",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "想",
+          "wanted"
+        ]
+      ]
+    },
+    "S0204L02": {
+      "lego": [
+        "wanted her to help you",
+        "想让她帮你"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0204L01",
+          "known": "I wanted",
+          "target": "我想",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I wanted her to help you.",
+          "我想让她帮你。"
+        ],
+        [
+          "They wanted her to help you.",
+          "他们想让她帮你。"
+        ],
+        [
+          "I wanted her to help you today.",
+          "我今天想让她帮你。"
+        ],
+        [
+          "I wanted her to help you finish.",
+          "我想让她帮你完成。"
+        ],
+        [
+          "I wanted her to help you with the work.",
+          "我想让她帮你工作。"
+        ],
+        [
+          "I wanted her to help you answer the question.",
+          "我想让她帮你回答这个问题。"
+        ],
+        [
+          "My son wanted her to help you finish everything today.",
+          "我的儿子想让她今天帮你完成所有事情。"
+        ],
+        [
+          "They said they wanted her to help you in time.",
+          "他们说他们想让她及时帮你。"
+        ],
+        [
+          "I wanted her to help you make sure everything was finished.",
+          "我想让她帮你确保所有事情都完成了。"
+        ],
+        [
+          "Nobody was sure if I wanted her to help you answer the question.",
+          "没有人确定我是否想让她帮你回答这个问题。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L02",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      },
+      "components": [
+        [
+          "想",
+          "wanted"
+        ],
+        [
+          "让",
+          "to make/let"
+        ],
+        [
+          "她",
+          "her"
+        ],
+        [
+          "帮",
+          "to help"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    },
+    "S0204L03": {
+      "lego": [
+        "her to help you",
+        "让她帮你"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0204L01",
+          "known": "I wanted",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0204L02",
+          "known": "wanted her to help you",
+          "target": "想让她帮你",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I asked her to help you.",
+          "我要求让她帮你。"
+        ],
+        [
+          "They wanted her to help you.",
+          "他们想让她帮你。"
+        ],
+        [
+          "I wanted her to help you today.",
+          "我想让她今天帮你。"
+        ],
+        [
+          "I asked her to help you finish.",
+          "我要求让她帮你完成。"
+        ],
+        [
+          "Nobody wanted her to help you with this.",
+          "没有人想让她帮你这个。"
+        ],
+        [
+          "I wanted her to help you answer the question.",
+          "我想让她帮你回答这个问题。"
+        ],
+        [
+          "My daughter wanted her to help you finish the work today.",
+          "我的女儿想让她今天帮你完成工作。"
+        ],
+        [
+          "They said they wanted her to help you finish everything in time.",
+          "他们说他们想让她帮你及时完成所有事情。"
+        ],
+        [
+          "I wanted to make sure I asked her to help you with everything.",
+          "我想确保我要求让她帮你所有事情。"
+        ],
+        [
+          "Nobody was sure if I wanted her to help you answer all the questions.",
+          "没有人确定我是否想让她帮你回答所有这些问题。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L03",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      },
+      "components": [
+        [
+          "让",
+          "to make/let"
+        ],
+        [
+          "她",
+          "her"
+        ],
+        [
+          "帮",
+          "to help"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    },
+    "S0204L04": {
+      "lego": [
+        "to help you",
+        "帮你"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0204L01",
+          "known": "I wanted",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0204L02",
+          "known": "wanted her to help you",
+          "target": "想让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L03",
+          "known": "her to help you",
+          "target": "让她帮你",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I want to help you.",
+          "我想帮你。"
+        ],
+        [
+          "They want to help you.",
+          "他们想帮你。"
+        ],
+        [
+          "I wanted to help you today.",
+          "我今天想帮你。"
+        ],
+        [
+          "I asked her to help you.",
+          "我要求让她帮你。"
+        ],
+        [
+          "Nobody wanted to help you finish everything.",
+          "没有人想帮你完成所有事情。"
+        ],
+        [
+          "My son wanted to help you with the work.",
+          "我的儿子想帮你工作。"
+        ],
+        [
+          "My daughter was trying to help you answer the question.",
+          "我的女儿在试图帮你回答这个问题。"
+        ],
+        [
+          "They said they wanted to help you finish everything in time.",
+          "他们说他们想帮你及时完成所有事情。"
+        ],
+        [
+          "I wanted to make sure I could help you with what you were asking.",
+          "我想确保我能帮你你在问的。"
+        ],
+        [
+          "If I asked you what you wanted I would want to help you find it.",
+          "如果我问你你想要什么我会想帮你找它。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L04",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      },
+      "components": [
+        [
+          "帮",
+          "to help"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    },
+    "S0204L05": {
+      "lego": [
+        "help you to deal with the arrangements",
+        "帮你处理安排"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0204L01",
+          "known": "I wanted",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0204L02",
+          "known": "wanted her to help you",
+          "target": "想让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L03",
+          "known": "her to help you",
+          "target": "让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L04",
+          "known": "to help you",
+          "target": "帮你",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I can help you deal with the arrangements.",
+          "我能帮你处理安排。"
+        ],
+        [
+          "They want to help you deal with the arrangements.",
+          "他们想帮你处理安排。"
+        ],
+        [
+          "I wanted to help you deal with the arrangements today.",
+          "我今天想帮你处理安排。"
+        ],
+        [
+          "I asked her to help you deal with the arrangements.",
+          "我要求让她帮你处理安排。"
+        ],
+        [
+          "My son wanted to help you deal with the arrangements in time.",
+          "我的儿子想帮你及时处理安排。"
+        ],
+        [
+          "My daughter was trying to help you deal with the arrangements.",
+          "我的女儿在试图帮你处理安排。"
+        ],
+        [
+          "They said they wanted to help you deal with the arrangements today.",
+          "他们说他们今天想帮你处理安排。"
+        ],
+        [
+          "I wanted to make sure I could help you deal with the arrangements in time.",
+          "我想确保我能及时帮你处理安排。"
+        ],
+        [
+          "Nobody was sure if they wanted her to help you deal with the arrangements.",
+          "没有人确定他们是否想让她帮你处理安排。"
+        ],
+        [
+          "If I asked you to help me I wanted her to help you deal with the arrangements.",
+          "如果我要求你帮助我我想让她帮你处理安排。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L05",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      },
+      "components": [
+        [
+          "帮",
+          "help"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "处理",
+          "to deal with"
+        ],
+        [
+          "安排",
+          "the arrangements"
+        ]
+      ]
+    },
+    "S0204L06": {
+      "lego": [
+        "to deal with",
+        "处理"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0204L01",
+          "known": "I wanted",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0204L02",
+          "known": "wanted her to help you",
+          "target": "想让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L03",
+          "known": "her to help you",
+          "target": "让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L04",
+          "known": "to help you",
+          "target": "帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L05",
+          "known": "help you to deal with the arrangements",
+          "target": "帮你处理安排",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I need to deal with this.",
+          "我需要处理这个。"
+        ],
+        [
+          "They want to deal with it.",
+          "他们想处理它。"
+        ],
+        [
+          "I wanted to deal with the question.",
+          "我想处理这个问题。"
+        ],
+        [
+          "I wanted her to deal with everything.",
+          "我想让她处理所有事情。"
+        ],
+        [
+          "Nobody was sure how to deal with this.",
+          "没有人确定如何处理这个。"
+        ],
+        [
+          "My son wanted to deal with the arrangements today.",
+          "我的儿子今天想处理安排。"
+        ],
+        [
+          "They said they wanted to deal with everything in time.",
+          "他们说他们想及时处理所有事情。"
+        ],
+        [
+          "I wanted to help you deal with what was happening today.",
+          "我想帮你处理今天正在发生的。"
+        ],
+        [
+          "My daughter was trying to make sure she could deal with everything.",
+          "我的女儿在试图确保她能处理所有事情。"
+        ],
+        [
+          "If I asked you to help me I wanted her to help you deal with it.",
+          "如果我要求你帮助我我想让她帮你处理它。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L06",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      }
+    },
+    "S0204L07": {
+      "lego": [
+        "the arrangements",
+        "安排"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0204L01",
+          "known": "I wanted",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0204L02",
+          "known": "wanted her to help you",
+          "target": "想让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L03",
+          "known": "her to help you",
+          "target": "让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L04",
+          "known": "to help you",
+          "target": "帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L05",
+          "known": "help you to deal with the arrangements",
+          "target": "帮你处理安排",
+          "type": "M"
+        },
+        {
+          "id": "S0204L06",
+          "known": "to deal with",
+          "target": "处理",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I know the arrangements.",
+          "我知道安排。"
+        ],
+        [
+          "They heard the arrangements.",
+          "他们听说过安排。"
+        ],
+        [
+          "I wanted to know the arrangements.",
+          "我想知道安排。"
+        ],
+        [
+          "They wanted to finish the arrangements.",
+          "他们想完成安排。"
+        ],
+        [
+          "Nobody was sure about the arrangements today.",
+          "没有人今天确定安排。"
+        ],
+        [
+          "My son wanted to help with the arrangements.",
+          "我的儿子想帮助安排。"
+        ],
+        [
+          "They said they wanted to finish the arrangements in time.",
+          "他们说他们想及时完成安排。"
+        ],
+        [
+          "I wanted to make sure they knew about the arrangements.",
+          "我想确保他们知道安排。"
+        ],
+        [
+          "My daughter was trying to deal with the arrangements for the office today.",
+          "我的女儿今天在试图处理办公室的安排。"
+        ],
+        [
+          "If I asked you to help me I wanted you to know about the arrangements.",
+          "如果我要求你帮助我我想你知道安排。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L07",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      }
+    },
+    "S0204L08": {
+      "lego": [
+        "to deal with the arrangements",
+        "处理安排"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0204L01",
+          "known": "I wanted",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0204L02",
+          "known": "wanted her to help you",
+          "target": "想让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L03",
+          "known": "her to help you",
+          "target": "让她帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L04",
+          "known": "to help you",
+          "target": "帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0204L05",
+          "known": "help you to deal with the arrangements",
+          "target": "帮你处理安排",
+          "type": "M"
+        },
+        {
+          "id": "S0204L06",
+          "known": "to deal with",
+          "target": "处理",
+          "type": "A"
+        },
+        {
+          "id": "S0204L07",
+          "known": "the arrangements",
+          "target": "安排",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I need to deal with the arrangements.",
+          "我需要处理安排。"
+        ],
+        [
+          "They want to deal with the arrangements.",
+          "他们想处理安排。"
+        ],
+        [
+          "I wanted to deal with the arrangements today.",
+          "我今天想处理安排。"
+        ],
+        [
+          "I wanted her to deal with the arrangements.",
+          "我想让她处理安排。"
+        ],
+        [
+          "Nobody was sure how to deal with the arrangements.",
+          "没有人确定如何处理安排。"
+        ],
+        [
+          "My son wanted to deal with the arrangements in time.",
+          "我的儿子想及时处理安排。"
+        ],
+        [
+          "They said they wanted to deal with the arrangements today.",
+          "他们说他们今天想处理安排。"
+        ],
+        [
+          "I wanted to make sure we could deal with the arrangements in time.",
+          "我想确保我们能及时处理安排。"
+        ],
+        [
+          "If I asked you to help me I wanted to deal with the arrangements myself.",
+          "如果我要求你帮助我我想自己处理安排。"
+        ],
+        [
+          "I wanted her to help you to deal with the arrangements.",
+          "我想让她帮你处理安排。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0204L08",
+        "seed_context": {
+          "known": "I wanted her to help you to deal with the arrangements.",
+          "target": "我想让她帮你处理安排。"
+        }
+      },
+      "components": [
+        [
+          "处理",
+          "to deal with"
+        ],
+        [
+          "安排",
+          "the arrangements"
+        ]
+      ]
+    }
+  }
+}

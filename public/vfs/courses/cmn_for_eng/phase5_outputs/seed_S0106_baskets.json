@@ -1,0 +1,869 @@
+{
+  "S0106L01": {
+    "lego": [
+      "We don't need to",
+      "我们不需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "We don't need to",
+        "我们不需要",
+        null,
+        1
+      ],
+      [
+        "We don't need more time",
+        "我们不需要更多时间",
+        null,
+        2
+      ],
+      [
+        "We don't need to worry",
+        "我们不需要担心",
+        null,
+        3
+      ],
+      [
+        "We don't need to change",
+        "我们不需要改变",
+        null,
+        3
+      ],
+      [
+        "We don't need to hear that",
+        "我们不需要听那个",
+        null,
+        4
+      ],
+      [
+        "We don't need to say more words",
+        "我们不需要说更多的词",
+        null,
+        4
+      ],
+      [
+        "We don't need to ask ourselves why",
+        "我们不需要问问我们自己为什么",
+        null,
+        5
+      ],
+      [
+        "We don't need to worry about that",
+        "我们不需要担心那个",
+        null,
+        5
+      ],
+      [
+        "We don't need to consider doing something else",
+        "我们不需要考虑做别的东西",
+        null,
+        6
+      ],
+      [
+        "We don't need to change what we're doing",
+        "我们不需要改变我们正在做的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "不",
+        "don't"
+      ],
+      [
+        "需要",
+        "need"
+      ]
+    ]
+  },
+  "S0106L02": {
+    "lego": [
+      "don't need to",
+      "不需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0106L01",
+        "known": "We don't need to",
+        "target": "我们不需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Don't need to",
+        "不需要",
+        null,
+        1
+      ],
+      [
+        "You don't need to worry",
+        "你不需要担心",
+        null,
+        2
+      ],
+      [
+        "I don't need more time",
+        "我不需要更多时间",
+        null,
+        3
+      ],
+      [
+        "They don't need to change",
+        "他们不需要改变",
+        null,
+        3
+      ],
+      [
+        "You don't need to ask why",
+        "你不需要问为什么",
+        null,
+        4
+      ],
+      [
+        "I don't need to know that",
+        "我不需要知道那个",
+        null,
+        4
+      ],
+      [
+        "You don't need to worry about this",
+        "你不需要担心这个",
+        null,
+        5
+      ],
+      [
+        "We don't need to go as soon as that",
+        "我们不需要那么快走",
+        null,
+        5
+      ],
+      [
+        "I don't need to consider something else",
+        "我不需要考虑别的东西",
+        null,
+        6
+      ],
+      [
+        "You don't need to say many more words",
+        "你不需要说更多的词",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "不",
+        "don't"
+      ],
+      [
+        "需要",
+        "need"
+      ]
+    ]
+  },
+  "S0106L03": {
+    "lego": [
+      "feel happy",
+      "感到高兴"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0106L01",
+        "known": "We don't need to",
+        "target": "我们不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L02",
+        "known": "don't need to",
+        "target": "不需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Feel happy",
+        "感到高兴",
+        null,
+        1
+      ],
+      [
+        "I feel happy",
+        "我感到高兴",
+        null,
+        2
+      ],
+      [
+        "We don't need to feel happy",
+        "我们不需要感到高兴",
+        null,
+        3
+      ],
+      [
+        "You should feel happy",
+        "你应该感到高兴",
+        null,
+        3
+      ],
+      [
+        "I feel happy about this",
+        "我感到高兴关于这个",
+        null,
+        4
+      ],
+      [
+        "We don't need to feel happy yet",
+        "我们不需要还感到高兴",
+        null,
+        4
+      ],
+      [
+        "I'm ready to feel happy as soon as that",
+        "我准备好了那么快感到高兴",
+        null,
+        5
+      ],
+      [
+        "You should feel happy about finding out more",
+        "你应该感到高兴关于了解更多",
+        null,
+        5
+      ],
+      [
+        "We don't need to feel happy about doing this",
+        "我们不需要感到高兴关于做这个",
+        null,
+        6
+      ],
+      [
+        "I feel happy when I'm finding out more about this language",
+        "我感到高兴当我了解更多关于这个语言的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "感到",
+        "feel"
+      ],
+      [
+        "高兴",
+        "happy"
+      ]
+    ]
+  },
+  "S0106L04": {
+    "lego": [
+      "happy",
+      "高兴"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0106L01",
+        "known": "We don't need to",
+        "target": "我们不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L02",
+        "known": "don't need to",
+        "target": "不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L03",
+        "known": "feel happy",
+        "target": "感到高兴",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Happy",
+        "高兴",
+        null,
+        1
+      ],
+      [
+        "I'm happy",
+        "我很高兴",
+        null,
+        2
+      ],
+      [
+        "You feel happy",
+        "你感到高兴",
+        null,
+        3
+      ],
+      [
+        "We're happy about this",
+        "我们很高兴关于这个",
+        null,
+        3
+      ],
+      [
+        "I'm happy to go",
+        "我很高兴走",
+        null,
+        4
+      ],
+      [
+        "You should be happy",
+        "你应该很高兴",
+        null,
+        4
+      ],
+      [
+        "We're happy when we're finding out more",
+        "我们很高兴当我们了解更多",
+        null,
+        5
+      ],
+      [
+        "I'm happy to know the answer",
+        "我很高兴知道答案",
+        null,
+        5
+      ],
+      [
+        "You should be happy about doing something like that",
+        "你应该很高兴关于做类似那样的事情",
+        null,
+        6
+      ],
+      [
+        "I'm happy that I'm ready to go",
+        "我很高兴我准备好了走",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0106L05": {
+    "lego": [
+      "we just need to",
+      "我们只需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0106L01",
+        "known": "We don't need to",
+        "target": "我们不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L02",
+        "known": "don't need to",
+        "target": "不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L03",
+        "known": "feel happy",
+        "target": "感到高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0106L04",
+        "known": "happy",
+        "target": "高兴",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "We just need to",
+        "我们只需要",
+        null,
+        1
+      ],
+      [
+        "We just need more time",
+        "我们只需要更多时间",
+        null,
+        2
+      ],
+      [
+        "We just need to go",
+        "我们只需要走",
+        null,
+        3
+      ],
+      [
+        "We just need to change",
+        "我们只需要改变",
+        null,
+        3
+      ],
+      [
+        "We just need to ask why",
+        "我们只需要问为什么",
+        null,
+        4
+      ],
+      [
+        "We just need a little more time",
+        "我们只需要多一点时间",
+        null,
+        4
+      ],
+      [
+        "We just need to say something else",
+        "我们只需要说别的东西",
+        null,
+        5
+      ],
+      [
+        "We just need to consider what we're doing",
+        "我们只需要考虑我们正在做什么",
+        null,
+        5
+      ],
+      [
+        "We just need to find out more about this",
+        "我们只需要了解更多关于这个",
+        null,
+        6
+      ],
+      [
+        "We just need to worry about doing something similar",
+        "我们只需要担心做类似的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "只",
+        "just"
+      ],
+      [
+        "需要",
+        "need"
+      ]
+    ]
+  },
+  "S0106L06": {
+    "lego": [
+      "just need to",
+      "只需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0106L01",
+        "known": "We don't need to",
+        "target": "我们不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L02",
+        "known": "don't need to",
+        "target": "不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L03",
+        "known": "feel happy",
+        "target": "感到高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0106L04",
+        "known": "happy",
+        "target": "高兴",
+        "type": "A"
+      },
+      {
+        "id": "S0106L05",
+        "known": "we just need to",
+        "target": "我们只需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Just need to",
+        "只需要",
+        null,
+        1
+      ],
+      [
+        "I just need time",
+        "我只需要时间",
+        null,
+        2
+      ],
+      [
+        "You just need to go",
+        "你只需要走",
+        null,
+        3
+      ],
+      [
+        "They just need to worry",
+        "他们只需要担心",
+        null,
+        3
+      ],
+      [
+        "I just need to know why",
+        "我只需要知道为什么",
+        null,
+        4
+      ],
+      [
+        "You just need a little time",
+        "你只需要一点时间",
+        null,
+        4
+      ],
+      [
+        "I just need to hear the answer",
+        "我只需要听答案",
+        null,
+        5
+      ],
+      [
+        "You just need to consider something else",
+        "你只需要考虑别的东西",
+        null,
+        5
+      ],
+      [
+        "They just need to change what they're doing",
+        "他们只需要改变他们正在做的事情",
+        null,
+        6
+      ],
+      [
+        "I just need to ask myself why it's not working",
+        "我只需要问问我自己为什么它不起作用",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "只",
+        "just"
+      ],
+      [
+        "需要",
+        "need"
+      ]
+    ]
+  },
+  "S0106L07": {
+    "lego": [
+      "work hard",
+      "努力工作"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0106L01",
+        "known": "We don't need to",
+        "target": "我们不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L02",
+        "known": "don't need to",
+        "target": "不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L03",
+        "known": "feel happy",
+        "target": "感到高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0106L04",
+        "known": "happy",
+        "target": "高兴",
+        "type": "A"
+      },
+      {
+        "id": "S0106L05",
+        "known": "we just need to",
+        "target": "我们只需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L06",
+        "known": "just need to",
+        "target": "只需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Work hard",
+        "努力工作",
+        null,
+        1
+      ],
+      [
+        "I work hard",
+        "我努力工作",
+        null,
+        2
+      ],
+      [
+        "We just need to work hard",
+        "我们只需要努力工作",
+        null,
+        3
+      ],
+      [
+        "You should work hard",
+        "你应该努力工作",
+        null,
+        3
+      ],
+      [
+        "I'm ready to work hard",
+        "我准备好了努力工作",
+        null,
+        4
+      ],
+      [
+        "We just need to work hard now",
+        "我们只需要现在努力工作",
+        null,
+        4
+      ],
+      [
+        "You should work hard to find out more",
+        "你应该努力工作来了解更多",
+        null,
+        5
+      ],
+      [
+        "I'm trying to work hard about this language",
+        "我试图努力工作关于这个语言",
+        null,
+        5
+      ],
+      [
+        "We just need to work hard to change what we're doing",
+        "我们只需要努力工作来改变我们正在做的事情",
+        null,
+        6
+      ],
+      [
+        "I should work hard as soon as I'm ready",
+        "我应该努力工作只要我准备好了",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "努力",
+        "hard"
+      ],
+      [
+        "工作",
+        "work"
+      ]
+    ]
+  },
+  "S0106L08": {
+    "lego": [
+      "work",
+      "工作"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0106L01",
+        "known": "We don't need to",
+        "target": "我们不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L02",
+        "known": "don't need to",
+        "target": "不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L03",
+        "known": "feel happy",
+        "target": "感到高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0106L04",
+        "known": "happy",
+        "target": "高兴",
+        "type": "A"
+      },
+      {
+        "id": "S0106L05",
+        "known": "we just need to",
+        "target": "我们只需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L06",
+        "known": "just need to",
+        "target": "只需要",
+        "type": "M"
+      },
+      {
+        "id": "S0106L07",
+        "known": "work hard",
+        "target": "努力工作",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Work",
+        "工作",
+        null,
+        1
+      ],
+      [
+        "I work",
+        "我工作",
+        null,
+        2
+      ],
+      [
+        "You should work",
+        "你应该工作",
+        null,
+        3
+      ],
+      [
+        "We need to work",
+        "我们需要工作",
+        null,
+        3
+      ],
+      [
+        "I'm ready to work",
+        "我准备好了工作",
+        null,
+        4
+      ],
+      [
+        "It's not working yet",
+        "它还不起作用",
+        null,
+        4
+      ],
+      [
+        "You just need to work more",
+        "你只需要工作更多",
+        null,
+        5
+      ],
+      [
+        "I'm trying to work as soon as I can",
+        "我试图工作只要我可以",
+        null,
+        5
+      ],
+      [
+        "We should work hard to find out more about this language",
+        "我们应该努力工作来了解更多关于这个语言",
+        null,
+        6
+      ],
+      [
+        "We don't need to feel happy, we just need to work hard.",
+        "我们不需要感到高兴，我们只需要努力工作。",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

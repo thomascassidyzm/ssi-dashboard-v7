@@ -1,0 +1,202 @@
+{
+  "S0306L02": {
+    "lego": ["that young woman","那个年轻女人"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["That young woman","那个年轻女人",null,1],
+      ["I know that young woman","我认识那个年轻女人",null,1],
+      ["I think that young woman","我觉得那个年轻女人",null,2],
+      ["She said that young woman","她说那个年轻女人",null,2],
+      ["I think that young woman doesn't want to pay","我觉得那个年轻女人不想付",null,3],
+      ["He said that young woman wants to sit down","他说那个年轻女人想坐下",null,3],
+      ["I think that young woman doesn't want to work from home","我觉得那个年轻女人不想在家工作",null,4],
+      ["She said that young woman doesn't want to show you something","她说那个年轻女人不想给你看点东西",null,4],
+      ["I said that I think that young woman doesn't want to live in a city","我说我觉得那个年轻女人不想住在城市里",null,5],
+      ["That young woman doesn't want to seem unfriendly","那个年轻女人不想显得不友好",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0306L03": {
+    "lego": ["young woman","年轻女人"],
+    "type": "M",
+    "current_seed_legos_available": [["that young woman","那个年轻女人"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Young woman","年轻女人",null,1],
+      ["A young woman","一个年轻女人",null,1],
+      ["That young woman","那个年轻女人",null,2],
+      ["I know a young woman","我认识一个年轻女人",null,2],
+      ["I think that young woman doesn't want","我觉得那个年轻女人不想",null,3],
+      ["She said that young woman wants to pay","她说那个年轻女人想付",null,3],
+      ["That young woman doesn't want to work from home","那个年轻女人不想在家工作",null,4],
+      ["I think that young woman wants to sit down","我觉得那个年轻女人想坐下",null,4],
+      ["He said that young woman doesn't want to live in a city","他说那个年轻女人不想住在城市里",null,5],
+      ["I said that I think that young woman doesn't want to seem unfriendly","我说我觉得那个年轻女人不想显得不友好",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0306L07": {
+    "lego": ["talk / speak","说话"],
+    "type": "M",
+    "current_seed_legos_available": [["that young woman","那个年轻女人"],["young woman","年轻女人"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Talk","说话",null,1],
+      ["I want to talk","我想说话",null,1],
+      ["That young woman wants to talk","那个年轻女人想说话",null,2],
+      ["She doesn't want to talk","她不想说话",null,2],
+      ["I think that young woman wants to talk","我觉得那个年轻女人想说话",null,3],
+      ["She said she doesn't want to talk","她说她不想说话",null,3],
+      ["I think that young woman doesn't want to talk at home","我觉得那个年轻女人不想在家说话",null,4],
+      ["He said that young woman wants to talk","他说那个年轻女人想说话",null,4],
+      ["That young woman doesn't want to talk because she wants to sit down","那个年轻女人不想说话因为她想坐下",null,5],
+      ["I said that I think that young woman wants to talk","我说我觉得那个年轻女人想说话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0306L08": {
+    "lego": ["with your friend / to your friend","和你朋友"],
+    "type": "M",
+    "current_seed_legos_available": [["that young woman","那个年轻女人"],["young woman","年轻女人"],["talk / speak","说话"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["With your friend","和你朋友",null,1],
+      ["Talk to your friend","和你朋友说话",null,1],
+      ["That young woman and your friend","那个年轻女人和你朋友",null,2],
+      ["She wants to talk to your friend","她想和你朋友说话",null,2],
+      ["I think that young woman wants to talk to your friend","我觉得那个年轻女人想和你朋友说话",null,3],
+      ["She said she wants to talk to your friend","她说她想和你朋友说话",null,3],
+      ["That young woman doesn't want to talk to your friend at home","那个年轻女人不想在家和你朋友说话",null,4],
+      ["I think she wants to talk to your friend","我觉得她想和你朋友说话",null,4],
+      ["He said that young woman doesn't want to talk to your friend","他说那个年轻女人不想和你朋友说话",null,5],
+      ["I said that I think that young woman wants to talk to your friend","我说我觉得那个年轻女人想和你朋友说话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0306L09": {
+    "lego": ["talk to your friend","和你朋友说话"],
+    "type": "M",
+    "current_seed_legos_available": [["that young woman","那个年轻女人"],["young woman","年轻女人"],["talk / speak","说话"],["with your friend / to your friend","和你朋友"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Talk to your friend","和你朋友说话",null,1],
+      ["I want to talk to your friend","我想和你朋友说话",null,1],
+      ["That young woman wants to talk to your friend","那个年轻女人想和你朋友说话",null,2],
+      ["She doesn't want to talk to your friend","她不想和你朋友说话",null,2],
+      ["I think that young woman wants to talk to your friend","我觉得那个年轻女人想和你朋友说话",null,3],
+      ["She said she wants to talk to your friend","她说她想和你朋友说话",null,3],
+      ["I think she doesn't want to talk to your friend at home","我觉得她不想在家和你朋友说话",null,4],
+      ["That young woman wants to talk to your friend tonight","那个年轻女人想今晚和你朋友说话",null,4],
+      ["He said that young woman doesn't want to talk to your friend","他说那个年轻女人不想和你朋友说话",null,5],
+      ["I said that I think that young woman wants to talk to your friend","我说我觉得那个年轻女人想和你朋友说话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0306L10": {
+    "lego": ["is talking / are talking","正在说话"],
+    "type": "M",
+    "current_seed_legos_available": [["that young woman","那个年轻女人"],["young woman","年轻女人"],["talk / speak","说话"],["with your friend / to your friend","和你朋友"],["talk to your friend","和你朋友说话"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Is talking","正在说话",null,1],
+      ["She is talking","她正在说话",null,1],
+      ["That young woman is talking","那个年轻女人正在说话",null,2],
+      ["I think she is talking","我觉得她正在说话",null,2],
+      ["That young woman is talking to your friend","那个年轻女人正在和你朋友说话",null,3],
+      ["She is talking at home","她正在在家说话",null,3],
+      ["I think that young woman is talking to your friend","我觉得那个年轻女人正在和你朋友说话",null,4],
+      ["She said that young woman is talking","她说那个年轻女人正在说话",null,4],
+      ["He said that young woman is talking to your friend at home","他说那个年轻女人正在在家和你朋友说话",null,5],
+      ["I think that young woman is talking to your friend","我觉得那个年轻女人正在和你朋友说话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0306L11": {
+    "lego": ["is talking to your friend","正在和你朋友说话"],
+    "type": "M",
+    "current_seed_legos_available": [["that young woman","那个年轻女人"],["young woman","年轻女人"],["talk / speak","说话"],["with your friend / to your friend","和你朋友"],["talk to your friend","和你朋友说话"],["is talking / are talking","正在说话"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Is talking to your friend","正在和你朋友说话",null,1],
+      ["She is talking to your friend","她正在和你朋友说话",null,1],
+      ["That young woman is talking to your friend","那个年轻女人正在和你朋友说话",null,2],
+      ["I think she is talking to your friend","我觉得她正在和你朋友说话",null,2],
+      ["I think that young woman is talking to your friend","我觉得那个年轻女人正在和你朋友说话",null,3],
+      ["She said she is talking to your friend","她说她正在和你朋友说话",null,3],
+      ["That young woman is talking to your friend at home","那个年轻女人正在在家和你朋友说话",null,4],
+      ["He said that young woman is talking to your friend","他说那个年轻女人正在和你朋友说话",null,4],
+      ["I said that I think that young woman is talking to your friend","我说我觉得那个年轻女人正在和你朋友说话",null,5],
+      ["She said that young woman is talking to your friend at home","她说那个年轻女人正在在家和你朋友说话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0306L12": {
+    "lego": ["young woman who's talking to your friend","正在和你朋友说话的年轻女人"],
+    "type": "M",
+    "current_seed_legos_available": [["that young woman","那个年轻女人"],["young woman","年轻女人"],["talk / speak","说话"],["with your friend / to your friend","和你朋友"],["talk to your friend","和你朋友说话"],["is talking / are talking","正在说话"],["is talking to your friend","正在和你朋友说话"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["A young woman who's talking to your friend","一个正在和你朋友说话的年轻女人",null,1],
+      ["The young woman who's talking to your friend","那个正在和你朋友说话的年轻女人",null,1],
+      ["I know a young woman who's talking to your friend","我认识一个正在和你朋友说话的年轻女人",null,2],
+      ["That young woman who's talking to your friend","那个正在和你朋友说话的年轻女人",null,2],
+      ["I think that young woman who's talking to your friend","我觉得那个正在和你朋友说话的年轻女人",null,3],
+      ["She said that young woman who's talking to your friend","她说那个正在和你朋友说话的年轻女人",null,3],
+      ["I know that young woman who's talking to your friend wants to sit down","我认识那个正在和你朋友说话的年轻女人想坐下",null,4],
+      ["He said that young woman who's talking to your friend doesn't want to pay","他说那个正在和你朋友说话的年轻女人不想付",null,4],
+      ["I think that young woman who's talking to your friend doesn't want to work from home","我觉得那个正在和你朋友说话的年轻女人不想在家工作",null,5],
+      ["I know that young woman who's talking to your friend.","我认识那个正在和你朋友说话的年轻女人。",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+  }
+}

@@ -1,0 +1,593 @@
+{
+  "S0205L01": {
+    "lego": [
+      "I've forgotten",
+      "我忘记了"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I've forgotten",
+        "我忘记了",
+        null,
+        1
+      ],
+      [
+        "I've forgotten now",
+        "我现在忘记了",
+        null,
+        2
+      ],
+      [
+        "I've forgotten what you said",
+        "我忘记了你说的话",
+        null,
+        3
+      ],
+      [
+        "I've forgotten how to say it",
+        "我忘记了如何说",
+        null,
+        3
+      ],
+      [
+        "I've forgotten the word you wanted",
+        "我忘记了你想要的词",
+        null,
+        4
+      ],
+      [
+        "I've forgotten what we needed to do",
+        "我忘记了我们需要做的事",
+        null,
+        4
+      ],
+      [
+        "I've forgotten what you were trying to say",
+        "我忘记了你在试图说什么",
+        null,
+        5
+      ],
+      [
+        "I've forgotten how to answer the question",
+        "我忘记了如何回答这个问题",
+        null,
+        5
+      ],
+      [
+        "I've forgotten what I wanted to ask you",
+        "我忘记了我想问你什么",
+        null,
+        6
+      ],
+      [
+        "I've forgotten the word we were trying to remember",
+        "我忘记了我们在试图记住的词",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "忘记了",
+        "have forgotten"
+      ]
+    ]
+  },
+  "S0205L02": {
+    "lego": [
+      "have forgotten",
+      "忘记了"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I've forgotten",
+        "我忘记了"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "You have forgotten",
+        "你忘记了",
+        null,
+        1
+      ],
+      [
+        "We have forgotten",
+        "我们忘记了",
+        null,
+        2
+      ],
+      [
+        "They have forgotten now",
+        "他们现在忘记了",
+        null,
+        2
+      ],
+      [
+        "I have forgotten the word",
+        "我忘记了词",
+        null,
+        3
+      ],
+      [
+        "You have forgotten what I said",
+        "你忘记了我说的话",
+        null,
+        3
+      ],
+      [
+        "We have forgotten how to do it",
+        "我们忘记了如何做",
+        null,
+        4
+      ],
+      [
+        "They have forgotten what we wanted",
+        "他们忘记了我们想要什么",
+        null,
+        4
+      ],
+      [
+        "You have forgotten what you were trying to say",
+        "你忘记了你在试图说什么",
+        null,
+        5
+      ],
+      [
+        "We have forgotten how to answer the question",
+        "我们忘记了如何回答这个问题",
+        null,
+        6
+      ],
+      [
+        "My friend has forgotten what he needed to do",
+        "我的朋友忘记了他需要做的事",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "忘记",
+        "forgotten"
+      ],
+      [
+        "了",
+        "completion marker"
+      ]
+    ]
+  },
+  "S0205L03": {
+    "lego": [
+      "the word I was trying to say",
+      "我试图说的词"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I've forgotten",
+        "我忘记了"
+      ],
+      [
+        "have forgotten",
+        "忘记了"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "The word I was trying to say",
+        "我试图说的词",
+        null,
+        2
+      ],
+      [
+        "I want the word I was trying to say",
+        "我想要我试图说的词",
+        null,
+        2
+      ],
+      [
+        "I've forgotten the word I was trying to say",
+        "我忘记了我试图说的词",
+        null,
+        3
+      ],
+      [
+        "I remember the word I was trying to say",
+        "我记住了我试图说的词",
+        null,
+        3
+      ],
+      [
+        "You know the word I was trying to say",
+        "你知道我试图说的词",
+        null,
+        4
+      ],
+      [
+        "Can you help me find the word I was trying to say",
+        "你能帮我找我试图说的词吗",
+        null,
+        4
+      ],
+      [
+        "I've forgotten the word I was trying to say to you",
+        "我忘记了我在试图对你说的词",
+        null,
+        5
+      ],
+      [
+        "I wanted to remember the word I was trying to say",
+        "我想记住我试图说的词",
+        null,
+        5
+      ],
+      [
+        "I've forgotten the word I was trying to say before",
+        "我忘记了我之前试图说的词",
+        null,
+        6
+      ],
+      [
+        "I need to remember the word I was trying to say to you",
+        "我需要记住我在试图对你说的词",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "试图",
+        "was trying"
+      ],
+      [
+        "说",
+        "to say"
+      ],
+      [
+        "的",
+        "that/which"
+      ],
+      [
+        "词",
+        "word"
+      ]
+    ]
+  },
+  "S0205L04": {
+    "lego": [
+      "was trying to say",
+      "试图说"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I've forgotten",
+        "我忘记了"
+      ],
+      [
+        "have forgotten",
+        "忘记了"
+      ],
+      [
+        "the word I was trying to say",
+        "我试图说的词"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I was trying to say",
+        "我试图说",
+        null,
+        1
+      ],
+      [
+        "You were trying to say",
+        "你试图说",
+        null,
+        2
+      ],
+      [
+        "He was trying to say something",
+        "他试图说一些事情",
+        null,
+        2
+      ],
+      [
+        "I was trying to say the word",
+        "我试图说这个词",
+        null,
+        3
+      ],
+      [
+        "What were you trying to say",
+        "你试图说什么",
+        null,
+        3
+      ],
+      [
+        "I was trying to say what I wanted",
+        "我试图说我想要什么",
+        null,
+        4
+      ],
+      [
+        "You were trying to say something to me",
+        "你试图对我说一些事情",
+        null,
+        4
+      ],
+      [
+        "I was trying to say what I was thinking",
+        "我试图说我在想什么",
+        null,
+        5
+      ],
+      [
+        "I've forgotten what I was trying to say to you",
+        "我忘记了我在试图对你说什么",
+        null,
+        5
+      ],
+      [
+        "I was trying to say what I wanted to ask you",
+        "我试图说我想问你什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "试图",
+        "was trying"
+      ],
+      [
+        "说",
+        "to say"
+      ]
+    ]
+  },
+  "S0205L05": {
+    "lego": [
+      "was trying",
+      "试图"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I've forgotten",
+        "我忘记了"
+      ],
+      [
+        "have forgotten",
+        "忘记了"
+      ],
+      [
+        "the word I was trying to say",
+        "我试图说的词"
+      ],
+      [
+        "was trying to say",
+        "试图说"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I was trying",
+        "我试图",
+        null,
+        1
+      ],
+      [
+        "You were trying",
+        "你试图",
+        null,
+        1
+      ],
+      [
+        "He was trying to find something",
+        "他试图找一些东西",
+        null,
+        2
+      ],
+      [
+        "I was trying to remember",
+        "我试图记住",
+        null,
+        3
+      ],
+      [
+        "What were you trying to do",
+        "你试图做什么",
+        null,
+        3
+      ],
+      [
+        "I was trying to say the word",
+        "我试图说这个词",
+        null,
+        4
+      ],
+      [
+        "You were trying to help me",
+        "你试图帮助我",
+        null,
+        4
+      ],
+      [
+        "I was trying to find what I needed",
+        "我试图找我需要的东西",
+        null,
+        5
+      ],
+      [
+        "I was trying to remember the word you said",
+        "我试图记住你说的词",
+        null,
+        5
+      ],
+      [
+        "I've forgotten what I was trying to say to you",
+        "我忘记了我在试图对你说什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0205L06": {
+    "lego": [
+      "to say",
+      "说"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I've forgotten",
+        "我忘记了"
+      ],
+      [
+        "have forgotten",
+        "忘记了"
+      ],
+      [
+        "the word I was trying to say",
+        "我试图说的词"
+      ],
+      [
+        "was trying to say",
+        "试图说"
+      ],
+      [
+        "was trying",
+        "试图"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "I want to say",
+        "我想说",
+        null,
+        2
+      ],
+      [
+        "I wanted to say something",
+        "我想说一些事情",
+        null,
+        2
+      ],
+      [
+        "I was trying to say",
+        "我试图说",
+        null,
+        3
+      ],
+      [
+        "I don't know how to say it",
+        "我不知道如何说",
+        null,
+        3
+      ],
+      [
+        "I wanted to say what I was thinking",
+        "我想说我在想什么",
+        null,
+        4
+      ],
+      [
+        "I was trying to say the word",
+        "我试图说这个词",
+        null,
+        4
+      ],
+      [
+        "I've forgotten what I wanted to say to you",
+        "我忘记了我想对你说什么",
+        null,
+        5
+      ],
+      [
+        "I was trying to say what you were asking",
+        "我试图说你在问什么",
+        null,
+        5
+      ],
+      [
+        "I've forgotten the word I was trying to say",
+        "我忘记了我试图说的词",
+        null,
+        6
+      ],
+      [
+        "I've forgotten the word I was trying to say.",
+        "我忘记了我试图说的词。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

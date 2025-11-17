@@ -1,0 +1,189 @@
+{
+  "S0342L01": {
+    "lego": [
+      "said something",
+      "说了些话"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Said something",
+        "说了些话",
+        null,
+        1
+      ],
+      [
+        "He said something",
+        "他说了些话",
+        null,
+        2
+      ],
+      [
+        "She said something",
+        "她说了些话",
+        null,
+        2
+      ],
+      [
+        "Yes he said something",
+        "是的他说了些话",
+        null,
+        3
+      ],
+      [
+        "I think he said something",
+        "我觉得他说了些话",
+        null,
+        3
+      ],
+      [
+        "She said something a few days ago",
+        "她几天前说了些话",
+        null,
+        3
+      ],
+      [
+        "He said something yesterday",
+        "他昨天说了些话",
+        null,
+        3
+      ],
+      [
+        "Yes I think he said something",
+        "是的我觉得他说了些话",
+        null,
+        4
+      ],
+      [
+        "I'm sure he said something a few days ago",
+        "我确定他几天前说了些话",
+        null,
+        4
+      ],
+      [
+        "I think she said something a few days ago",
+        "我觉得她几天前说了些话",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 3,
+      "medium_3_legos": 4,
+      "longer_4_legos": 3,
+      "longest_5_legos": 0
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "说了",
+        "said"
+      ],
+      [
+        "些话",
+        "something"
+      ]
+    ]
+  },
+  "S0342L02": {
+    "lego": [
+      "someone who said something",
+      "说了些话的人"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0342L01",
+        "known": "said something",
+        "target": "说了些话",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Someone who said something",
+        "说了些话的人",
+        null,
+        1
+      ],
+      [
+        "I met someone who said something",
+        "我遇到了说了些话的人",
+        null,
+        2
+      ],
+      [
+        "He met someone who said something",
+        "他遇到了说了些话的人",
+        null,
+        2
+      ],
+      [
+        "Yes I met someone who said something",
+        "是的我遇到了说了些话的人",
+        null,
+        3
+      ],
+      [
+        "She met someone who said something",
+        "她遇到了说了些话的人",
+        null,
+        2
+      ],
+      [
+        "I met someone who said something yesterday",
+        "我昨天遇到了说了些话的人",
+        null,
+        3
+      ],
+      [
+        "I met someone who said something a few days ago",
+        "我几天前遇到了说了些话的人",
+        null,
+        3
+      ],
+      [
+        "I think I met someone who said something",
+        "我觉得我遇到了说了些话的人",
+        null,
+        3
+      ],
+      [
+        "Yes I met someone who said something a few days ago",
+        "是的我几天前遇到了说了些话的人",
+        null,
+        4
+      ],
+      [
+        "I met someone who said something.",
+        "我遇到了一个说了些话的人。",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 4,
+      "medium_3_legos": 4,
+      "longer_4_legos": 2,
+      "longest_5_legos": 0
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "说了些话",
+        "said something"
+      ],
+      [
+        "的",
+        "[relative clause marker]"
+      ],
+      [
+        "人",
+        "person/someone"
+      ]
+    ]
+  }
+}

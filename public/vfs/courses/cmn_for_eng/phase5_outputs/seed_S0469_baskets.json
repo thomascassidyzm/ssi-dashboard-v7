@@ -1,0 +1,643 @@
+{
+  "S0469L02": {
+    "lego": [
+      "mean/means",
+      "意味着"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "It means",
+        "它意味着",
+        null,
+        1
+      ],
+      [
+        "This means",
+        "这意味着",
+        null,
+        1
+      ],
+      [
+        "What does this mean",
+        "这意味着什么",
+        null,
+        2
+      ],
+      [
+        "It means a big world",
+        "它意味着一个大世界",
+        null,
+        3
+      ],
+      [
+        "This means war",
+        "这意味着战争",
+        null,
+        2
+      ],
+      [
+        "What does it mean",
+        "它意味着什么",
+        null,
+        2
+      ],
+      [
+        "It means I can find it",
+        "它意味着我可以找到它",
+        null,
+        4
+      ],
+      [
+        "This means she forgot",
+        "这意味着她忘了",
+        null,
+        3
+      ],
+      [
+        "What does this mean next time",
+        "这下次意味着什么",
+        null,
+        4
+      ],
+      [
+        "It means I can buy some postcards in the shop",
+        "它意味着我可以在商店买一些明信片",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0469L02",
+      "seed_context": {
+        "known": "但那不意味着我们不能改变它。",
+        "target": "But that doesn't mean we can't change it."
+      }
+    },
+    "components": [
+      [
+        "意味",
+        "meaning"
+      ],
+      [
+        "着",
+        "continuous aspect marker"
+      ]
+    ]
+  },
+  "S0469L03": {
+    "lego": [
+      "doesn't mean",
+      "不意味着"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mean/means",
+        "意味着"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "It doesn't mean",
+        "它不意味着",
+        null,
+        1
+      ],
+      [
+        "This doesn't mean",
+        "这不意味着",
+        null,
+        1
+      ],
+      [
+        "It doesn't mean war",
+        "它不意味着战争",
+        null,
+        2
+      ],
+      [
+        "This doesn't mean she forgot",
+        "这不意味着她忘了",
+        null,
+        3
+      ],
+      [
+        "It doesn't mean I want to find it",
+        "它不意味着我想找到它",
+        null,
+        4
+      ],
+      [
+        "This doesn't mean it's next to the hotel",
+        "这不意味着它在酒店旁边",
+        null,
+        4
+      ],
+      [
+        "It doesn't mean I told her once",
+        "它不意味着我告诉过她一次",
+        null,
+        4
+      ],
+      [
+        "This doesn't mean my grandfather fought in the war",
+        "这不意味着我的祖父在战争中战斗",
+        null,
+        6
+      ],
+      [
+        "It doesn't mean she forgot my room number",
+        "它不意味着她忘了我的房间号",
+        null,
+        5
+      ],
+      [
+        "This doesn't mean I can buy postcards at the shop near the hotel",
+        "这不意味着我可以在酒店附近的商店买明信片",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0469L03",
+      "seed_context": {
+        "known": "但那不意味着我们不能改变它。",
+        "target": "But that doesn't mean we can't change it."
+      }
+    },
+    "components": [
+      [
+        "不",
+        "not"
+      ],
+      [
+        "意味着",
+        "mean"
+      ]
+    ]
+  },
+  "S0469L04": {
+    "lego": [
+      "that doesn't mean",
+      "那不意味着"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mean/means",
+        "意味着"
+      ],
+      [
+        "doesn't mean",
+        "不意味着"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "That doesn't mean",
+        "那不意味着",
+        null,
+        1
+      ],
+      [
+        "But that doesn't mean",
+        "但那不意味着",
+        null,
+        1
+      ],
+      [
+        "That doesn't mean it's big",
+        "那不意味着它是大的",
+        null,
+        3
+      ],
+      [
+        "But that doesn't mean war",
+        "但那不意味着战争",
+        null,
+        2
+      ],
+      [
+        "That doesn't mean she forgot",
+        "那不意味着她忘了",
+        null,
+        2
+      ],
+      [
+        "But that doesn't mean I told her",
+        "但那不意味着我告诉过她",
+        null,
+        3
+      ],
+      [
+        "That doesn't mean I want to find the shop",
+        "那不意味着我想找到商店",
+        null,
+        4
+      ],
+      [
+        "But that doesn't mean my grandfather fought in Italy",
+        "但那不意味着我的祖父在意大利战斗",
+        null,
+        6
+      ],
+      [
+        "That doesn't mean I can buy some postcards next time",
+        "那不意味着我下次可以买一些明信片",
+        null,
+        6
+      ],
+      [
+        "But that doesn't mean she forgot my room number once",
+        "但那不意味着她忘了我的房间号一次",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0469L04",
+      "seed_context": {
+        "known": "但那不意味着我们不能改变它。",
+        "target": "But that doesn't mean we can't change it."
+      }
+    },
+    "components": [
+      [
+        "那",
+        "that"
+      ],
+      [
+        "不",
+        "not"
+      ],
+      [
+        "意味着",
+        "mean"
+      ]
+    ]
+  },
+  "S0469L06": {
+    "lego": [
+      "we can't",
+      "我们不能"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mean/means",
+        "意味着"
+      ],
+      [
+        "doesn't mean",
+        "不意味着"
+      ],
+      [
+        "that doesn't mean",
+        "那不意味着"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "We can't",
+        "我们不能",
+        null,
+        1
+      ],
+      [
+        "We can't find it",
+        "我们不能找到它",
+        null,
+        2
+      ],
+      [
+        "We can't throw it",
+        "我们不能扔它",
+        null,
+        2
+      ],
+      [
+        "We can't buy postcards",
+        "我们不能买明信片",
+        null,
+        2
+      ],
+      [
+        "We can't find the shop",
+        "我们不能找到商店",
+        null,
+        3
+      ],
+      [
+        "We can't ask her",
+        "我们不能问她",
+        null,
+        2
+      ],
+      [
+        "We can't find a shop near the hotel",
+        "我们不能找到酒店附近的一家商店",
+        null,
+        5
+      ],
+      [
+        "We can't buy some postcards next time",
+        "我们不能下次买一些明信片",
+        null,
+        4
+      ],
+      [
+        "We can't throw it over the wall",
+        "我们不能把它扔过墙",
+        null,
+        4
+      ],
+      [
+        "We can't find a shop where I can buy postcards near the hotel",
+        "我们不能找到酒店附近一家我可以买明信片的商店",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0469L06",
+      "seed_context": {
+        "known": "但那不意味着我们不能改变它。",
+        "target": "But that doesn't mean we can't change it."
+      }
+    },
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "不能",
+        "can't"
+      ]
+    ]
+  },
+  "S0469L08": {
+    "lego": [
+      "change it",
+      "改变它"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mean/means",
+        "意味着"
+      ],
+      [
+        "doesn't mean",
+        "不意味着"
+      ],
+      [
+        "that doesn't mean",
+        "那不意味着"
+      ],
+      [
+        "we can't",
+        "我们不能"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Change it",
+        "改变它",
+        null,
+        1
+      ],
+      [
+        "I want to change it",
+        "我想改变它",
+        null,
+        2
+      ],
+      [
+        "She can change it",
+        "她可以改变它",
+        null,
+        2
+      ],
+      [
+        "We can't change it",
+        "我们不能改变它",
+        null,
+        2
+      ],
+      [
+        "Let me change it",
+        "让我改变它",
+        null,
+        2
+      ],
+      [
+        "I want to change it next time",
+        "我想下次改变它",
+        null,
+        3
+      ],
+      [
+        "That doesn't mean I can change it",
+        "那不意味着我可以改变它",
+        null,
+        4
+      ],
+      [
+        "But that doesn't mean we can't change it",
+        "但那不意味着我们不能改变它",
+        null,
+        4
+      ],
+      [
+        "She told me once that I can change it",
+        "她告诉过我一次我可以改变它",
+        null,
+        5
+      ],
+      [
+        "That doesn't mean we can't find a way to change it next time",
+        "那不意味着我们不能下次找到一个方法改变它",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0469L08",
+      "seed_context": {
+        "known": "但那不意味着我们不能改变它。",
+        "target": "But that doesn't mean we can't change it."
+      }
+    },
+    "components": [
+      [
+        "改变",
+        "change"
+      ],
+      [
+        "它",
+        "it"
+      ]
+    ]
+  },
+  "S0469L09": {
+    "lego": [
+      "we can't change it",
+      "我们不能改变它"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mean/means",
+        "意味着"
+      ],
+      [
+        "doesn't mean",
+        "不意味着"
+      ],
+      [
+        "that doesn't mean",
+        "那不意味着"
+      ],
+      [
+        "we can't",
+        "我们不能"
+      ],
+      [
+        "change it",
+        "改变它"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "We can't change it",
+        "我们不能改变它",
+        null,
+        1
+      ],
+      [
+        "But we can't change it",
+        "但我们不能改变它",
+        null,
+        2
+      ],
+      [
+        "That means we can't change it",
+        "那意味着我们不能改变它",
+        null,
+        3
+      ],
+      [
+        "This doesn't mean we can't change it",
+        "这不意味着我们不能改变它",
+        null,
+        3
+      ],
+      [
+        "But that doesn't mean we can't change it",
+        "但那不意味着我们不能改变它",
+        null,
+        3
+      ],
+      [
+        "She told me we can't change it",
+        "她告诉过我我们不能改变它",
+        null,
+        4
+      ],
+      [
+        "That doesn't mean we can't change it next time",
+        "那不意味着我们不能下次改变它",
+        null,
+        4
+      ],
+      [
+        "I told her once that we can't change it",
+        "我告诉过她一次我们不能改变它",
+        null,
+        5
+      ],
+      [
+        "But that doesn't mean we can't find a way to change it",
+        "但那不意味着我们不能找到一个方法改变它",
+        null,
+        6
+      ],
+      [
+        "But that doesn't mean we can't change it.",
+        "但那不意味着我们不能改变它。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0469L09",
+      "seed_context": {
+        "known": "但那不意味着我们不能改变它。",
+        "target": "But that doesn't mean we can't change it."
+      }
+    },
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "不能",
+        "can't"
+      ],
+      [
+        "改变",
+        "change"
+      ],
+      [
+        "它",
+        "it"
+      ]
+    ]
+  }
+}

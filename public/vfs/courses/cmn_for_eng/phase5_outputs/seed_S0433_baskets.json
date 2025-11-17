@@ -1,0 +1,80 @@
+{
+  "S0433L01": {
+    "lego": ["they couldn't find out","他们找不到"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["They couldn't find out", "他们找不到", null, 1],
+      ["They couldn't find out yet", "他们还没有找不到", null, 2],
+      ["They couldn't find out on Tuesday", "他们在星期二找不到", null, 3],
+      ["They couldn't find out the question", "他们找不到这个问题", null, 3],
+      ["They couldn't find out the obvious question", "他们找不到明显的问题", null, 4],
+      ["They couldn't find out on Tuesday yet", "他们在星期二还没有找不到", null, 4],
+      ["They couldn't find out when they need to ask", "他们找不到他们什么时候需要问", null, 5],
+      ["They couldn't find out if they understand the question", "他们找不到他们是否理解这个问题", null, 5],
+      ["They couldn't find out when they need to visit us on Tuesday", "他们找不到他们什么时候需要在星期二来看我们", null, 6],
+      ["They couldn't find out if that would be perfect for them", "他们找不到那对他们来说是否是完美的", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0433L02": {
+    "lego": ["couldn't find","找不到"],
+    "type": "M",
+    "current_seed_legos_available": [["they couldn't find out","他们找不到"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Couldn't find", "找不到", null, 1],
+      ["They couldn't find", "他们找不到", null, 1],
+      ["They couldn't find the question", "他们找不到这个问题", null, 3],
+      ["I couldn't find that for them", "我找不到那对他们来说", null, 3],
+      ["They couldn't find us on Tuesday", "他们在星期二找不到我们", null, 4],
+      ["We couldn't find the obvious question", "我们找不到明显的问题", null, 4],
+      ["They couldn't find when they need to visit", "他们找不到他们什么时候需要来看", null, 5],
+      ["I couldn't find out if they understand yet", "我找不到他们是否还没有理解", null, 5],
+      ["They couldn't find when they need to make sure they're ready", "他们找不到他们什么时候需要确保他们准备好", null, 6],
+      ["We couldn't find out if that would be possible for them", "我们找不到那对他们来说是否是可能的", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0433L03": {
+    "lego": ["when the film started","电影什么时候开始"],
+    "type": "M",
+    "current_seed_legos_available": [["they couldn't find out","他们找不到"],["couldn't find","找不到"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["When the film started", "电影什么时候开始", null, 1],
+      ["When the film started on Tuesday", "电影什么时候在星期二开始", null, 2],
+      ["They need to ask when the film started", "他们需要问电影什么时候开始", null, 3],
+      ["They couldn't find when the film started", "他们找不到电影什么时候开始", null, 3],
+      ["They need to make sure when the film started", "他们需要确保电影什么时候开始", null, 4],
+      ["They couldn't find out when the film started yet", "他们还没有找不到电影什么时候开始", null, 4],
+      ["They need to ask when the film started on Tuesday", "他们需要问电影什么时候在星期二开始", null, 5],
+      ["They would like to find out when the film started", "他们想要找不到电影什么时候开始", null, 5],
+      ["They need to make sure they understand when the film started", "他们需要确保他们理解电影什么时候开始", null, 6],
+      ["They couldn't find out when the film started.", "他们找不到电影什么时候开始。", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

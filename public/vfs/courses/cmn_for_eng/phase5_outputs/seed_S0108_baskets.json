@@ -1,0 +1,613 @@
+{
+  "S0108L01": {
+    "lego": [
+      "We didn't hope to",
+      "我们没有希望"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "We didn't hope to",
+        "我们没有希望",
+        null,
+        1
+      ],
+      [
+        "We didn't hope to go",
+        "我们没有希望走",
+        null,
+        2
+      ],
+      [
+        "We didn't hope to see",
+        "我们没有希望看到",
+        null,
+        3
+      ],
+      [
+        "We didn't hope to know",
+        "我们没有希望知道",
+        null,
+        3
+      ],
+      [
+        "We didn't hope to feel happy",
+        "我们没有希望感到高兴",
+        null,
+        4
+      ],
+      [
+        "We didn't hope to work hard",
+        "我们没有希望努力工作",
+        null,
+        4
+      ],
+      [
+        "We didn't hope to change what we're doing",
+        "我们没有希望改变我们正在做的事情",
+        null,
+        5
+      ],
+      [
+        "We didn't hope to see the answer",
+        "我们没有希望看到答案",
+        null,
+        5
+      ],
+      [
+        "We didn't hope to find out more about this language",
+        "我们没有希望了解更多关于这个语言",
+        null,
+        6
+      ],
+      [
+        "We didn't hope to worry about doing something similar",
+        "我们没有希望担心做类似的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "没有",
+        "didn't"
+      ],
+      [
+        "希望",
+        "hope"
+      ]
+    ]
+  },
+  "S0108L02": {
+    "lego": [
+      "didn't hope to",
+      "没有希望"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0108L01",
+        "known": "We didn't hope to",
+        "target": "我们没有希望",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Didn't hope to",
+        "没有希望",
+        null,
+        1
+      ],
+      [
+        "I didn't hope to",
+        "我没有希望",
+        null,
+        2
+      ],
+      [
+        "You didn't hope to see",
+        "你没有希望看到",
+        null,
+        3
+      ],
+      [
+        "They didn't hope to go",
+        "他们没有希望走",
+        null,
+        3
+      ],
+      [
+        "I didn't hope to know that",
+        "我没有希望知道那个",
+        null,
+        4
+      ],
+      [
+        "You didn't hope to work hard",
+        "你没有希望努力工作",
+        null,
+        4
+      ],
+      [
+        "I didn't hope to feel happy about this",
+        "我没有希望感到高兴关于这个",
+        null,
+        5
+      ],
+      [
+        "They didn't hope to see what was happening",
+        "他们没有希望看到什么在发生",
+        null,
+        5
+      ],
+      [
+        "You didn't hope to change what you were doing",
+        "你没有希望改变你正在做什么",
+        null,
+        6
+      ],
+      [
+        "I didn't hope to ask about something like that",
+        "我没有希望问关于类似那样的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "没有",
+        "didn't"
+      ],
+      [
+        "希望",
+        "hope"
+      ]
+    ]
+  },
+  "S0108L03": {
+    "lego": [
+      "wake in the middle of the night",
+      "在半夜醒来"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0108L01",
+        "known": "We didn't hope to",
+        "target": "我们没有希望",
+        "type": "M"
+      },
+      {
+        "id": "S0108L02",
+        "known": "didn't hope to",
+        "target": "没有希望",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Wake in the middle of the night",
+        "在半夜醒来",
+        null,
+        1
+      ],
+      [
+        "I wake in the middle of the night",
+        "我在半夜醒来",
+        null,
+        2
+      ],
+      [
+        "We didn't hope to wake in the middle of the night",
+        "我们没有希望在半夜醒来",
+        null,
+        3
+      ],
+      [
+        "You wake in the middle of the night",
+        "你在半夜醒来",
+        null,
+        3
+      ],
+      [
+        "I didn't want to wake in the middle of the night",
+        "我不想在半夜醒来",
+        null,
+        4
+      ],
+      [
+        "They wake in the middle of the night",
+        "他们在半夜醒来",
+        null,
+        4
+      ],
+      [
+        "I didn't hope to wake in the middle of the night",
+        "我没有希望在半夜醒来",
+        null,
+        5
+      ],
+      [
+        "You should try to wake in the middle of the night",
+        "你应该试图在半夜醒来",
+        null,
+        5
+      ],
+      [
+        "We didn't need to wake in the middle of the night about that",
+        "我们不需要在半夜醒来关于那个",
+        null,
+        6
+      ],
+      [
+        "I'm worried I will wake in the middle of the night",
+        "我担心我会在半夜醒来",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "在",
+        "in"
+      ],
+      [
+        "半夜",
+        "middle of the night"
+      ],
+      [
+        "醒来",
+        "wake"
+      ]
+    ]
+  },
+  "S0108L04": {
+    "lego": [
+      "in the middle of the night",
+      "在半夜"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0108L01",
+        "known": "We didn't hope to",
+        "target": "我们没有希望",
+        "type": "M"
+      },
+      {
+        "id": "S0108L02",
+        "known": "didn't hope to",
+        "target": "没有希望",
+        "type": "M"
+      },
+      {
+        "id": "S0108L03",
+        "known": "wake in the middle of the night",
+        "target": "在半夜醒来",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "In the middle of the night",
+        "在半夜",
+        null,
+        1
+      ],
+      [
+        "I work in the middle of the night",
+        "我在半夜工作",
+        null,
+        2
+      ],
+      [
+        "We wake in the middle of the night",
+        "我们在半夜醒来",
+        null,
+        3
+      ],
+      [
+        "You go in the middle of the night",
+        "你在半夜走",
+        null,
+        3
+      ],
+      [
+        "I need to work in the middle of the night",
+        "我需要在半夜工作",
+        null,
+        4
+      ],
+      [
+        "They change in the middle of the night",
+        "他们在半夜改变",
+        null,
+        4
+      ],
+      [
+        "I didn't hope to wake in the middle of the night",
+        "我没有希望在半夜醒来",
+        null,
+        5
+      ],
+      [
+        "You should work hard in the middle of the night",
+        "你应该在半夜努力工作",
+        null,
+        5
+      ],
+      [
+        "We're doing something else in the middle of the night",
+        "我们在半夜正在做别的东西",
+        null,
+        6
+      ],
+      [
+        "I don't want to be ready in the middle of the night",
+        "我不想在半夜准备好",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "在",
+        "in"
+      ],
+      [
+        "半夜",
+        "middle of the night"
+      ]
+    ]
+  },
+  "S0108L05": {
+    "lego": [
+      "the middle of the night",
+      "半夜"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0108L01",
+        "known": "We didn't hope to",
+        "target": "我们没有希望",
+        "type": "M"
+      },
+      {
+        "id": "S0108L02",
+        "known": "didn't hope to",
+        "target": "没有希望",
+        "type": "M"
+      },
+      {
+        "id": "S0108L03",
+        "known": "wake in the middle of the night",
+        "target": "在半夜醒来",
+        "type": "M"
+      },
+      {
+        "id": "S0108L04",
+        "known": "in the middle of the night",
+        "target": "在半夜",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The middle of the night",
+        "半夜",
+        null,
+        1
+      ],
+      [
+        "It's the middle of the night",
+        "是半夜",
+        null,
+        2
+      ],
+      [
+        "In the middle of the night",
+        "在半夜",
+        null,
+        3
+      ],
+      [
+        "During the middle of the night",
+        "在半夜",
+        null,
+        3
+      ],
+      [
+        "I wake in the middle of the night",
+        "我在半夜醒来",
+        null,
+        4
+      ],
+      [
+        "It was the middle of the night",
+        "是半夜",
+        null,
+        4
+      ],
+      [
+        "I work hard in the middle of the night",
+        "我在半夜努力工作",
+        null,
+        5
+      ],
+      [
+        "You should go in the middle of the night",
+        "你应该在半夜走",
+        null,
+        5
+      ],
+      [
+        "We didn't hope to wake in the middle of the night",
+        "我们没有希望在半夜醒来",
+        null,
+        6
+      ],
+      [
+        "I'm doing something in the middle of the night",
+        "我在半夜正在做一些东西",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0108L06": {
+    "lego": [
+      "wake",
+      "醒来"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0108L01",
+        "known": "We didn't hope to",
+        "target": "我们没有希望",
+        "type": "M"
+      },
+      {
+        "id": "S0108L02",
+        "known": "didn't hope to",
+        "target": "没有希望",
+        "type": "M"
+      },
+      {
+        "id": "S0108L03",
+        "known": "wake in the middle of the night",
+        "target": "在半夜醒来",
+        "type": "M"
+      },
+      {
+        "id": "S0108L04",
+        "known": "in the middle of the night",
+        "target": "在半夜",
+        "type": "M"
+      },
+      {
+        "id": "S0108L05",
+        "known": "the middle of the night",
+        "target": "半夜",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Wake",
+        "醒来",
+        null,
+        1
+      ],
+      [
+        "I wake",
+        "我醒来",
+        null,
+        2
+      ],
+      [
+        "You should wake",
+        "你应该醒来",
+        null,
+        3
+      ],
+      [
+        "We didn't want to wake",
+        "我们不想醒来",
+        null,
+        3
+      ],
+      [
+        "I wake in the night",
+        "我在夜里醒来",
+        null,
+        4
+      ],
+      [
+        "You need to wake now",
+        "你需要现在醒来",
+        null,
+        4
+      ],
+      [
+        "I didn't hope to wake tonight",
+        "我没有希望今晚醒来",
+        null,
+        5
+      ],
+      [
+        "We wake when we need to work",
+        "我们醒来当我们需要工作",
+        null,
+        5
+      ],
+      [
+        "You should try to wake as soon as you can",
+        "你应该试图醒来只要你可以",
+        null,
+        6
+      ],
+      [
+        "We didn't hope to wake in the middle of the night.",
+        "我们没有希望在半夜醒来。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

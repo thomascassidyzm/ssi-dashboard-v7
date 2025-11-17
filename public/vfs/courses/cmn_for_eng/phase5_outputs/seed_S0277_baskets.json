@@ -1,0 +1,887 @@
+{
+  "S0277L01": {
+    "lego": [
+      "yes",
+      "是的"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Yes",
+        "是的",
+        null,
+        1
+      ],
+      [
+        "Yes I have",
+        "是的我有",
+        null,
+        2
+      ],
+      [
+        "Yes next week",
+        "是的下周",
+        null,
+        2
+      ],
+      [
+        "Yes I have work",
+        "是的我有工作",
+        null,
+        3
+      ],
+      [
+        "Yes next month",
+        "是的下个月",
+        null,
+        3
+      ],
+      [
+        "Yes I have too much work",
+        "是的我有太多工作",
+        null,
+        4
+      ],
+      [
+        "Yes I'm worried",
+        "是的我担心",
+        null,
+        4
+      ],
+      [
+        "Yes I have too much work next week",
+        "是的我下周有太多工作",
+        null,
+        5
+      ],
+      [
+        "Yes unfortunately I have too much work",
+        "是的不幸的是我有太多工作",
+        null,
+        5
+      ],
+      [
+        "Yes I have too much work next month",
+        "是的我下个月有太多工作",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "是",
+        "is/yes"
+      ],
+      [
+        "的",
+        "particle"
+      ]
+    ]
+  },
+  "S0277L02": {
+    "lego": [
+      "I have",
+      "我有"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0277L01",
+        "known": "yes",
+        "target": "是的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I have",
+        "我有",
+        null,
+        1
+      ],
+      [
+        "Yes I have",
+        "是的我有",
+        null,
+        2
+      ],
+      [
+        "I have work",
+        "我有工作",
+        null,
+        2
+      ],
+      [
+        "Yes I have work",
+        "是的我有工作",
+        null,
+        3
+      ],
+      [
+        "I have too much work",
+        "我有太多工作",
+        null,
+        3
+      ],
+      [
+        "I have a good idea",
+        "我有一个好主意",
+        null,
+        4
+      ],
+      [
+        "Yes I have too much work",
+        "是的我有太多工作",
+        null,
+        4
+      ],
+      [
+        "I have too much work next week",
+        "我下周有太多工作",
+        null,
+        5
+      ],
+      [
+        "Yes unfortunately I have too much work",
+        "是的不幸的是我有太多工作",
+        null,
+        5
+      ],
+      [
+        "I have too much work next month",
+        "我下个月有太多工作",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "有",
+        "have"
+      ]
+    ]
+  },
+  "S0277L03": {
+    "lego": [
+      "next week",
+      "下周"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0277L01",
+        "known": "yes",
+        "target": "是的",
+        "type": "M"
+      },
+      {
+        "id": "S0277L02",
+        "known": "I have",
+        "target": "我有",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Next week",
+        "下周",
+        null,
+        1
+      ],
+      [
+        "Yes next week",
+        "是的下周",
+        null,
+        2
+      ],
+      [
+        "I have work next week",
+        "我下周有工作",
+        null,
+        3
+      ],
+      [
+        "Next week she sent me",
+        "下周她给我发了",
+        null,
+        3
+      ],
+      [
+        "Yes I have work next week",
+        "是的我下周有工作",
+        null,
+        4
+      ],
+      [
+        "I have too much work next week",
+        "我下周有太多工作",
+        null,
+        4
+      ],
+      [
+        "I'm worried I'll be late next week",
+        "我担心下周我会迟到",
+        null,
+        5
+      ],
+      [
+        "Yes I have too much work next week",
+        "是的我下周有太多工作",
+        null,
+        5
+      ],
+      [
+        "Next week I have to leave",
+        "下周我必须离开",
+        null,
+        5
+      ],
+      [
+        "I have too much work next week unfortunately",
+        "不幸的是我下周有太多工作",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "下",
+        "next"
+      ],
+      [
+        "周",
+        "week"
+      ]
+    ]
+  },
+  "S0277L04": {
+    "lego": [
+      "early next week",
+      "下周初"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0277L01",
+        "known": "yes",
+        "target": "是的",
+        "type": "M"
+      },
+      {
+        "id": "S0277L02",
+        "known": "I have",
+        "target": "我有",
+        "type": "M"
+      },
+      {
+        "id": "S0277L03",
+        "known": "next week",
+        "target": "下周",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Early next week",
+        "下周初",
+        null,
+        1
+      ],
+      [
+        "Yes early next week",
+        "是的下周初",
+        null,
+        2
+      ],
+      [
+        "I have work early next week",
+        "我下周初有工作",
+        null,
+        3
+      ],
+      [
+        "Early next week she sent me",
+        "下周初她给我发了",
+        null,
+        3
+      ],
+      [
+        "Yes I have work early next week",
+        "是的我下周初有工作",
+        null,
+        4
+      ],
+      [
+        "I have too much work early next week",
+        "我下周初有太多工作",
+        null,
+        4
+      ],
+      [
+        "I'm worried I'll be late early next week",
+        "我担心下周初我会迟到",
+        null,
+        5
+      ],
+      [
+        "Yes I have too much work early next week",
+        "是的我下周初有太多工作",
+        null,
+        5
+      ],
+      [
+        "Early next week I have to leave",
+        "下周初我必须离开",
+        null,
+        5
+      ],
+      [
+        "I have too much work early next week unfortunately",
+        "不幸的是我下周初有太多工作",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "下周",
+        "next week"
+      ],
+      [
+        "初",
+        "early/beginning"
+      ]
+    ]
+  },
+  "S0277L05": {
+    "lego": [
+      "meeting",
+      "会议"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0277L01",
+        "known": "yes",
+        "target": "是的",
+        "type": "M"
+      },
+      {
+        "id": "S0277L02",
+        "known": "I have",
+        "target": "我有",
+        "type": "M"
+      },
+      {
+        "id": "S0277L03",
+        "known": "next week",
+        "target": "下周",
+        "type": "M"
+      },
+      {
+        "id": "S0277L04",
+        "known": "early next week",
+        "target": "下周初",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Meeting",
+        "会议",
+        null,
+        1
+      ],
+      [
+        "I have a meeting",
+        "我有会议",
+        null,
+        2
+      ],
+      [
+        "Yes I have a meeting",
+        "是的我有会议",
+        null,
+        3
+      ],
+      [
+        "I have a meeting next week",
+        "我下周有会议",
+        null,
+        3
+      ],
+      [
+        "Yes I have a meeting next week",
+        "是的我下周有会议",
+        null,
+        4
+      ],
+      [
+        "I have a meeting early next week",
+        "我下周初有会议",
+        null,
+        4
+      ],
+      [
+        "Yes I have a meeting early next week",
+        "是的我下周初有会议",
+        null,
+        5
+      ],
+      [
+        "I'm worried I have a meeting next week",
+        "我担心我下周有会议",
+        null,
+        5
+      ],
+      [
+        "She has a meeting early next week",
+        "她下周初有会议",
+        null,
+        5
+      ],
+      [
+        "Unfortunately I have a meeting early next week",
+        "不幸的是我下周初有会议",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0277L06": {
+    "lego": [
+      "important meeting",
+      "重要的会议"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0277L01",
+        "known": "yes",
+        "target": "是的",
+        "type": "M"
+      },
+      {
+        "id": "S0277L02",
+        "known": "I have",
+        "target": "我有",
+        "type": "M"
+      },
+      {
+        "id": "S0277L03",
+        "known": "next week",
+        "target": "下周",
+        "type": "M"
+      },
+      {
+        "id": "S0277L04",
+        "known": "early next week",
+        "target": "下周初",
+        "type": "M"
+      },
+      {
+        "id": "S0277L05",
+        "known": "meeting",
+        "target": "会议",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Important meeting",
+        "重要的会议",
+        null,
+        1
+      ],
+      [
+        "I have an important meeting",
+        "我有重要的会议",
+        null,
+        2
+      ],
+      [
+        "Yes I have an important meeting",
+        "是的我有重要的会议",
+        null,
+        3
+      ],
+      [
+        "I have an important meeting next week",
+        "我下周有重要的会议",
+        null,
+        3
+      ],
+      [
+        "Yes I have an important meeting next week",
+        "是的我下周有重要的会议",
+        null,
+        4
+      ],
+      [
+        "I have an important meeting early next week",
+        "我下周初有重要的会议",
+        null,
+        4
+      ],
+      [
+        "Yes I have an important meeting early next week",
+        "是的我下周初有重要的会议",
+        null,
+        5
+      ],
+      [
+        "She has an important meeting early next week",
+        "她下周初有重要的会议",
+        null,
+        5
+      ],
+      [
+        "I'm worried I have an important meeting next week",
+        "我担心我下周有重要的会议",
+        null,
+        5
+      ],
+      [
+        "Unfortunately I have an important meeting early next week",
+        "不幸的是我下周初有重要的会议",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "重要",
+        "important"
+      ],
+      [
+        "的",
+        "particle"
+      ],
+      [
+        "会议",
+        "meeting"
+      ]
+    ]
+  },
+  "S0277L07": {
+    "lego": [
+      "an important meeting",
+      "一个重要的会议"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0277L01",
+        "known": "yes",
+        "target": "是的",
+        "type": "M"
+      },
+      {
+        "id": "S0277L02",
+        "known": "I have",
+        "target": "我有",
+        "type": "M"
+      },
+      {
+        "id": "S0277L03",
+        "known": "next week",
+        "target": "下周",
+        "type": "M"
+      },
+      {
+        "id": "S0277L04",
+        "known": "early next week",
+        "target": "下周初",
+        "type": "M"
+      },
+      {
+        "id": "S0277L05",
+        "known": "meeting",
+        "target": "会议",
+        "type": "A"
+      },
+      {
+        "id": "S0277L06",
+        "known": "important meeting",
+        "target": "重要的会议",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "An important meeting",
+        "一个重要的会议",
+        null,
+        1
+      ],
+      [
+        "I have an important meeting",
+        "我有一个重要的会议",
+        null,
+        2
+      ],
+      [
+        "Yes I have an important meeting",
+        "是的我有一个重要的会议",
+        null,
+        3
+      ],
+      [
+        "I have an important meeting next week",
+        "我下周有一个重要的会议",
+        null,
+        3
+      ],
+      [
+        "Yes I have an important meeting next week",
+        "是的我下周有一个重要的会议",
+        null,
+        4
+      ],
+      [
+        "I have an important meeting early next week",
+        "我下周初有一个重要的会议",
+        null,
+        4
+      ],
+      [
+        "Yes I have an important meeting early next week",
+        "是的我下周初有一个重要的会议",
+        null,
+        5
+      ],
+      [
+        "She has an important meeting early next week",
+        "她下周初有一个重要的会议",
+        null,
+        5
+      ],
+      [
+        "I'm worried I have an important meeting next week",
+        "我担心我下周有一个重要的会议",
+        null,
+        5
+      ],
+      [
+        "Unfortunately I have an important meeting early next week",
+        "不幸的是我下周初有一个重要的会议",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "一个",
+        "a/an"
+      ],
+      [
+        "重要的",
+        "important"
+      ],
+      [
+        "会议",
+        "meeting"
+      ]
+    ]
+  },
+  "S0277L08": {
+    "lego": [
+      "have an important meeting",
+      "有一个重要的会议"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0277L01",
+        "known": "yes",
+        "target": "是的",
+        "type": "M"
+      },
+      {
+        "id": "S0277L02",
+        "known": "I have",
+        "target": "我有",
+        "type": "M"
+      },
+      {
+        "id": "S0277L03",
+        "known": "next week",
+        "target": "下周",
+        "type": "M"
+      },
+      {
+        "id": "S0277L04",
+        "known": "early next week",
+        "target": "下周初",
+        "type": "M"
+      },
+      {
+        "id": "S0277L05",
+        "known": "meeting",
+        "target": "会议",
+        "type": "A"
+      },
+      {
+        "id": "S0277L06",
+        "known": "important meeting",
+        "target": "重要的会议",
+        "type": "M"
+      },
+      {
+        "id": "S0277L07",
+        "known": "an important meeting",
+        "target": "一个重要的会议",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Have an important meeting",
+        "有一个重要的会议",
+        null,
+        1
+      ],
+      [
+        "I have an important meeting",
+        "我有一个重要的会议",
+        null,
+        2
+      ],
+      [
+        "Yes I have an important meeting",
+        "是的我有一个重要的会议",
+        null,
+        3
+      ],
+      [
+        "I have an important meeting next week",
+        "我下周有一个重要的会议",
+        null,
+        3
+      ],
+      [
+        "Yes I have an important meeting next week",
+        "是的我下周有一个重要的会议",
+        null,
+        4
+      ],
+      [
+        "I have an important meeting early next week",
+        "我下周初有一个重要的会议",
+        null,
+        4
+      ],
+      [
+        "She has an important meeting early next week",
+        "她下周初有一个重要的会议",
+        null,
+        5
+      ],
+      [
+        "I'm worried I have an important meeting early next week",
+        "我担心我下周初有一个重要的会议",
+        null,
+        5
+      ],
+      [
+        "Unfortunately I have an important meeting early next week",
+        "不幸的是我下周初有一个重要的会议",
+        null,
+        6
+      ],
+      [
+        "Yes I've got an important meeting early next week.",
+        "是的，我下周初有一个重要的会议。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "有",
+        "have"
+      ],
+      [
+        "一个",
+        "a/an"
+      ],
+      [
+        "重要的",
+        "important"
+      ],
+      [
+        "会议",
+        "meeting"
+      ]
+    ]
+  }
+}

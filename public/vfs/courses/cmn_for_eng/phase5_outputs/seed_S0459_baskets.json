@@ -1,0 +1,207 @@
+{
+    "S0459L01": {
+        "lego": [
+            "it wasn't in front of",
+            "它不在...的前面"
+        ],
+        "type": "M",
+        "is_final_lego": false,
+        "current_seed_earlier_legos": [],
+        "practice_phrases": [
+            [
+                "in front of",
+                "...的前面",
+                null,
+                1
+            ],
+            [
+                "wasn't there",
+                "不在那里",
+                null,
+                1
+            ],
+            [
+                "it wasn't in front",
+                "它不在前面",
+                null,
+                2
+            ],
+            [
+                "wasn't in the front",
+                "不在前面",
+                null,
+                2
+            ],
+            [
+                "wasn't in front of the window",
+                "不在窗户的前面",
+                null,
+                3
+            ],
+            [
+                "it was not in front",
+                "它不在前面",
+                null,
+                3
+            ],
+            [
+                "it wasn't in front of what we said",
+                "它不在我们说的前面",
+                null,
+                4
+            ],
+            [
+                "it wasn't in front of the different areas like we thought",
+                "它不在我们想的不同地区的前面",
+                null,
+                5
+            ],
+            [
+                "it wasn't in front of the blue sign where they said we should wait",
+                "它不在他们说我们应该等的蓝色标志的前面",
+                null,
+                6
+            ],
+            [
+                "It wasn't in front of the blue sign.",
+                "它不在蓝色标志的前面。",
+                null,
+                7
+            ]
+        ],
+        "phrase_distribution": {
+            "short_1_to_2_legos": 2,
+            "medium_3_legos": 2,
+            "longer_4_legos": 2,
+            "longest_5_legos": 4
+        },
+        "target_phrase_count": 10,
+        "_metadata": {
+            "lego_id": "S0459L01",
+            "seed_context": {
+                "known": "它不在蓝色标志的前面。",
+                "target": "It wasn't in front of the blue sign."
+            }
+        },
+        "components": [
+            [
+                "它",
+                "it"
+            ],
+            [
+                "不",
+                "wasn't"
+            ],
+            [
+                "在",
+                "in"
+            ],
+            [
+                "的前面",
+                "in front of"
+            ]
+        ]
+    },
+    "S0459L02": {
+        "lego": [
+            "the blue sign",
+            "蓝色标志"
+        ],
+        "type": "M",
+        "is_final_lego": true,
+        "current_seed_earlier_legos": [
+            {
+                "id": "S0459L01",
+                "known": "it wasn't in front of",
+                "target": "它不在...的前面",
+                "type": "M"
+            }
+        ],
+        "practice_phrases": [
+            [
+                "the blue sign",
+                "蓝色标志",
+                null,
+                1
+            ],
+            [
+                "blue sign",
+                "蓝色标志",
+                null,
+                1
+            ],
+            [
+                "the sign",
+                "标志",
+                null,
+                1
+            ],
+            [
+                "sign blue",
+                "蓝色标志",
+                null,
+                1
+            ],
+            [
+                "the blue color sign",
+                "蓝色的标志",
+                null,
+                2
+            ],
+            [
+                "it is the blue sign",
+                "这是蓝色标志",
+                null,
+                3
+            ],
+            [
+                "the blue sign is in front",
+                "蓝色标志在前面",
+                null,
+                3
+            ],
+            [
+                "they said the blue sign is the place",
+                "他们说蓝色标志是地方",
+                null,
+                4
+            ],
+            [
+                "in front of the blue sign is where they want to meet",
+                "蓝色标志前面是他们想见面的地方",
+                null,
+                6
+            ],
+            [
+                "It wasn't in front of the blue sign.",
+                "它不在蓝色标志的前面。",
+                null,
+                7
+            ]
+        ],
+        "phrase_distribution": {
+            "short_1_to_2_legos": 2,
+            "medium_3_legos": 2,
+            "longer_4_legos": 2,
+            "longest_5_legos": 4
+        },
+        "target_phrase_count": 10,
+        "_metadata": {
+            "lego_id": "S0459L02",
+            "seed_context": {
+                "known": "它不在蓝色标志的前面。",
+                "target": "It wasn't in front of the blue sign."
+            }
+        },
+        "components": [
+            [
+                "蓝色",
+                "blue"
+            ],
+            [
+                "标志",
+                "sign"
+            ]
+        ]
+    }
+}
