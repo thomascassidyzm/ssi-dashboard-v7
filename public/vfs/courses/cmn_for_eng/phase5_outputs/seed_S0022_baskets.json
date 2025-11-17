@@ -1,0 +1,544 @@
+{
+  "legos": {
+    "S0022L01": {
+      "lego": [
+        "because",
+        "因为"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Because.",
+          "因为。",
+          null,
+          1
+        ],
+        [
+          "Because I want.",
+          "因为我想要。",
+          null,
+          1
+        ],
+        [
+          "Because tomorrow is important.",
+          "因为明天很重要。",
+          null,
+          2
+        ],
+        [
+          "Because I am learning.",
+          "因为我在学。",
+          null,
+          2
+        ],
+        [
+          "Because she wants to meet.",
+          "因为她想见面。",
+          null,
+          3
+        ],
+        [
+          "Because he is coming back.",
+          "因为他在回来。",
+          null,
+          3
+        ],
+        [
+          "Because I want to speak Chinese.",
+          "因为我想要说中文。",
+          null,
+          4
+        ],
+        [
+          "Because she wants to find out the answer.",
+          "因为她想找出答案。",
+          null,
+          5
+        ],
+        [
+          "Because I want to meet at six o'clock this evening.",
+          "因为我想今天晚上六点见面。",
+          null,
+          6
+        ],
+        [
+          "Because he wants to come back with everyone else later.",
+          "因为他想晚点和其他人一起回来。",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0022L01",
+        "seed_context": {
+          "known": "因为我想认识会说中文的人。",
+          "target": "Because I want to meet people who speak Chinese."
+        }
+      }
+    },
+    "S0022L02": {
+      "lego": [
+        "I want to meet",
+        "我想认识"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "因为"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I want to meet.",
+          "我想认识。",
+          null,
+          1
+        ],
+        [
+          "I want to meet you.",
+          "我想认识你。",
+          null,
+          2
+        ],
+        [
+          "I want to meet tomorrow.",
+          "我想明天认识。",
+          null,
+          2
+        ],
+        [
+          "I want to meet him quickly.",
+          "我想快点认识他。",
+          null,
+          3
+        ],
+        [
+          "I want to meet other people.",
+          "我想认识其他人。",
+          null,
+          3
+        ],
+        [
+          "I want to meet her this evening.",
+          "我想今天晚上认识她。",
+          null,
+          4
+        ],
+        [
+          "I want to meet people who speak very well.",
+          "我想认识说得很好的人。",
+          null,
+          5
+        ],
+        [
+          "I want to meet everyone else at six o'clock.",
+          "我想六点认识其他所有人。",
+          null,
+          5
+        ],
+        [
+          "I want to meet people who are learning together with me.",
+          "我想认识和我一起学的人。",
+          null,
+          6
+        ],
+        [
+          "I want to meet other people because I am learning Chinese.",
+          "我想认识其他人因为我在学中文。",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0022L02",
+        "seed_context": {
+          "known": "因为我想认识会说中文的人。",
+          "target": "Because I want to meet people who speak Chinese."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0022L03": {
+      "lego": [
+        "to meet people who speak Chinese",
+        "认识会说中文的人"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "因为"
+        ],
+        [
+          "I want to meet",
+          "我想认识"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "To meet people who speak Chinese.",
+          "认识会说中文的人。",
+          null,
+          1
+        ],
+        [
+          "I want to meet people who speak Chinese.",
+          "我想认识会说中文的人。",
+          null,
+          2
+        ],
+        [
+          "She wants to meet people who speak Chinese.",
+          "她想认识会说中文的人。",
+          null,
+          2
+        ],
+        [
+          "To meet people who speak Chinese very well.",
+          "认识会说中文说得很好的人。",
+          null,
+          3
+        ],
+        [
+          "We want to meet people who speak Chinese.",
+          "我们想认识会说中文的人。",
+          null,
+          3
+        ],
+        [
+          "I'd like to meet people who speak Chinese tomorrow.",
+          "我想明天认识会说中文的人。",
+          null,
+          4
+        ],
+        [
+          "He wants to meet people who speak Chinese this evening.",
+          "他想今天晚上认识会说中文的人。",
+          null,
+          5
+        ],
+        [
+          "They want to meet people who speak Chinese all day together.",
+          "他们想整天一起认识会说中文的人。",
+          null,
+          6
+        ],
+        [
+          "I am learning because I want to meet people who speak Chinese.",
+          "我在学因为我想认识会说中文的人。",
+          null,
+          6
+        ],
+        [
+          "We want to meet people who speak Chinese with everyone else at six o'clock.",
+          "我们想六点和其他所有人认识会说中文的人。",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0022L03",
+        "seed_context": {
+          "known": "因为我想认识会说中文的人。",
+          "target": "Because I want to meet people who speak Chinese."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0022L04": {
+      "lego": [
+        "people who speak Chinese",
+        "会说中文的人"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "因为"
+        ],
+        [
+          "I want to meet",
+          "我想认识"
+        ],
+        [
+          "to meet people who speak Chinese",
+          "认识会说中文的人"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "People who speak Chinese.",
+          "会说中文的人。",
+          null,
+          1
+        ],
+        [
+          "People who speak Chinese very well.",
+          "会说中文说得很好的人。",
+          null,
+          2
+        ],
+        [
+          "I know people who speak Chinese.",
+          "我知道会说中文的人。",
+          null,
+          2
+        ],
+        [
+          "People who speak Chinese all day.",
+          "整天都说中文的人。",
+          null,
+          3
+        ],
+        [
+          "She wants to meet people who speak Chinese.",
+          "她想认识会说中文的人。",
+          null,
+          3
+        ],
+        [
+          "People who speak Chinese are learning together.",
+          "会说中文的人在一起学。",
+          null,
+          4
+        ],
+        [
+          "I want to find people who speak Chinese tomorrow.",
+          "我想明天找到会说中文的人。",
+          null,
+          5
+        ],
+        [
+          "He wants to come back with people who speak Chinese later.",
+          "他想晚点和会说中文的人一起回来。",
+          null,
+          6
+        ],
+        [
+          "We are learning her name because she is one of the people who speak Chinese.",
+          "我们在学她的名字因为她是会说中文的人之一。",
+          null,
+          7
+        ],
+        [
+          "I'd like to meet people who speak Chinese at six o'clock this evening.",
+          "我想今天晚上六点认识会说中文的人。",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0022L04",
+        "seed_context": {
+          "known": "因为我想认识会说中文的人。",
+          "target": "Because I want to meet people who speak Chinese."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0022L05": {
+      "lego": [
+        "can speak Chinese",
+        "会说中文"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "because",
+          "因为"
+        ],
+        [
+          "I want to meet",
+          "我想认识"
+        ],
+        [
+          "to meet people who speak Chinese",
+          "认识会说中文的人"
+        ],
+        [
+          "people who speak Chinese",
+          "会说中文的人"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Can speak Chinese.",
+          "会说中文。",
+          null,
+          1
+        ],
+        [
+          "I can speak Chinese.",
+          "我会说中文。",
+          null,
+          1
+        ],
+        [
+          "She can speak Chinese very well.",
+          "她会说中文说得很好。",
+          null,
+          2
+        ],
+        [
+          "We can speak Chinese together.",
+          "我们会一起说中文。",
+          null,
+          2
+        ],
+        [
+          "He can speak Chinese all day.",
+          "他会整天都说中文。",
+          null,
+          3
+        ],
+        [
+          "They can speak Chinese with me tomorrow.",
+          "他们明天会和我说中文。",
+          null,
+          4
+        ],
+        [
+          "I can speak Chinese after you finish speaking.",
+          "我会在你说完之后说中文。",
+          null,
+          5
+        ],
+        [
+          "You can speak Chinese with other people this evening.",
+          "你今天晚上会和其他人说中文。",
+          null,
+          5
+        ],
+        [
+          "She can speak Chinese very well because she is learning quickly.",
+          "她会说中文说得很好因为她在快点学。",
+          null,
+          7
+        ],
+        [
+          "Because I want to meet people who speak Chinese.",
+          "因为我想认识会说中文的人。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0022L05",
+        "seed_context": {
+          "known": "因为我想认识会说中文的人。",
+          "target": "Because I want to meet people who speak Chinese."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}
