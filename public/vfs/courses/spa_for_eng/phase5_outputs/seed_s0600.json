@@ -1,0 +1,34 @@
+{
+  "S0600L02": {
+    "lego": ["driven if you'd told me", "conducido si me hubieras dicho"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["I'd have driven", "habría conducido"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["If you'd told me", "Si me hubieras dicho", null, 1],
+      ["I'd have driven", "Habría conducido", null, 1],
+      ["Driven if you'd told me", "Conducido si me hubieras dicho", null, 2],
+      ["I'd have driven to the station", "Habría conducido a la estación", null, 2],
+      ["I'd have driven if you'd told me", "Habría conducido si me hubieras dicho", null, 3],
+      ["Driven if you'd told me about it", "Conducido si me hubieras dicho sobre ello", null, 3],
+      ["I'd have driven down the main road", "Habría conducido por la carretera principal", null, 4],
+      ["I'd have driven if you'd told me that", "Habría conducido si me hubieras dicho ello", null, 4],
+      ["I'd have driven to the station if you'd told me", "Habría conducido a la estación si me hubieras dicho", null, 5],
+      ["I'd have driven if you'd told me about the bus", "Habría conducido si me hubieras dicho sobre el autobús", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4": 2,
+      "long_5_plus": 4
+    },
+    "components": [
+      ["si", "if"],
+      ["me", "me"],
+      ["hubieras", "you'd"],
+      ["dicho", "told"]
+    ]
+  }
+}

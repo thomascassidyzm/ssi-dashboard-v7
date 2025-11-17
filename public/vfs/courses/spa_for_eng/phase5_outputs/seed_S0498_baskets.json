@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0498L03": {
+      "lego": [
+        "alone over there",
+        "solo allá"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0498L01",
+          "known": "is standing",
+          "target": "está de pie",
+          "type": "M"
+        },
+        {
+          "id": "S0498L02",
+          "known": "alone",
+          "target": "solo",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "alone over there",
+          "solo allá",
+          null,
+          1
+        ],
+        [
+          "he's alone over there",
+          "está solo allá",
+          null,
+          2
+        ],
+        [
+          "standing alone over there",
+          "de pie solo allá",
+          null,
+          2
+        ],
+        [
+          "alone over there on the other side",
+          "solo allá al otro lado",
+          null,
+          3
+        ],
+        [
+          "is standing alone over there now",
+          "está de pie solo allá ahora",
+          null,
+          4
+        ],
+        [
+          "alone over there by that yellow line",
+          "solo allá por esa línea amarilla",
+          null,
+          4
+        ],
+        [
+          "standing alone over there when it really matters",
+          "de pie solo allá cuando realmente importa",
+          null,
+          5
+        ],
+        [
+          "he's standing alone over there after the first part",
+          "está de pie solo allá después de la primera parte",
+          null,
+          6
+        ],
+        [
+          "that sounds like he's standing alone over there",
+          "eso suena como si está de pie solo allá",
+          null,
+          7
+        ],
+        [
+          "I love the way he's standing alone over there",
+          "me encanta la forma en que está de pie solo allá",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    }
+  }
+}

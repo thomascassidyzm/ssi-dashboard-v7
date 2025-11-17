@@ -1,0 +1,212 @@
+{
+  "seed_id": "S0580",
+  "seed_pair": [
+    "We've often wanted to take the children somewhere a little warmer.",
+    "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido."
+  ],
+  "generated_at": "2025-11-17T07:18:00.925150Z",
+  "phase": "5",
+  "course": "spa_for_eng",
+  "baskets": {
+    "S0580L04": {
+      "lego": [
+        "take the children",
+        "llevar a los niños"
+      ],
+      "type": "M",
+      "available_legos": 53,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "take the children",
+          "Llevar a los niños",
+          null,
+          null
+        ],
+        [
+          "We've wanted to take the children",
+          "Hemos querido llevar a los niños",
+          null,
+          null
+        ],
+        [
+          "We've often wanted to take the children",
+          "Frecuentemente hemos querido llevar a los niños",
+          null,
+          null
+        ],
+        [
+          "We've tried to take the children",
+          "Hemos intentado llevar a los niños",
+          null,
+          null
+        ],
+        [
+          "We've wanted to take the children to the hospital",
+          "Hemos querido llevar a los niños al hospital",
+          null,
+          null
+        ],
+        [
+          "We've been waiting to take the children on holiday",
+          "Hemos estado esperando llevar a los niños de vacaciones",
+          null,
+          null
+        ],
+        [
+          "We've often wanted to take the children on holiday",
+          "Frecuentemente hemos querido llevar a los niños de vacaciones",
+          null,
+          null
+        ],
+        [
+          "We've often tried to take the children to the hospital",
+          "Frecuentemente hemos intentado llevar a los niños al hospital",
+          null,
+          null
+        ],
+        [
+          "We've been waiting to take the children somewhere",
+          "Hemos estado esperando llevar a los niños a algún lugar",
+          null,
+          null
+        ],
+        [
+          "We've often tried to take the children somewhere",
+          "Frecuentemente hemos intentado llevar a los niños a algún lugar",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0580L04",
+        "seed_context": {
+          "target": "We've often wanted to take the children somewhere a little warmer.",
+          "known": "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "los",
+          "the"
+        ],
+        [
+          "niños",
+          "children"
+        ]
+      ]
+    },
+    "S0580L06": {
+      "lego": [
+        "children somewhere",
+        "niños a algún lugar"
+      ],
+      "type": "M",
+      "available_legos": 55,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "children somewhere",
+          "Niños a algún lugar",
+          null,
+          null
+        ],
+        [
+          "the children somewhere warmer",
+          "Los niños a algún lugar más cálido",
+          null,
+          null
+        ],
+        [
+          "to take the children somewhere",
+          "Llevar a los niños a algún lugar",
+          null,
+          null
+        ],
+        [
+          "We've wanted to take the children somewhere",
+          "Hemos querido llevar a los niños a algún lugar",
+          null,
+          null
+        ],
+        [
+          "to take the children somewhere warmer",
+          "Llevar a los niños a algún lugar más cálido",
+          null,
+          null
+        ],
+        [
+          "We've often wanted the children somewhere",
+          "Frecuentemente hemos querido a los niños en algún lugar",
+          null,
+          null
+        ],
+        [
+          "We've often wanted to take the children somewhere",
+          "Frecuentemente hemos querido llevar a los niños a algún lugar",
+          null,
+          null
+        ],
+        [
+          "We've wanted to take the children somewhere warmer",
+          "Hemos querido llevar a los niños a algún lugar más cálido",
+          null,
+          null
+        ],
+        [
+          "We've often tried to take the children somewhere warmer",
+          "Frecuentemente hemos intentado llevar a los niños a algún lugar más cálido",
+          null,
+          null
+        ],
+        [
+          "We've often been waiting to take the children somewhere",
+          "Frecuentemente hemos estado esperando llevar a los niños a algún lugar",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0580L06",
+        "seed_context": {
+          "target": "We've often wanted to take the children somewhere a little warmer.",
+          "known": "Frecuentemente hemos querido llevar a los niños a algún lugar un poco más cálido."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "algún",
+          "some"
+        ],
+        [
+          "lugar",
+          "to place"
+        ]
+      ]
+    }
+  }
+}

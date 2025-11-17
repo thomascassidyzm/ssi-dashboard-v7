@@ -1,0 +1,27 @@
+{
+  "S0590L01": {
+    "lego": ["I saw the", "Vi el"],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I saw the bus", "Vi el autobús", null, 1],
+      ["I saw the house", "Vi la casa", null, 1],
+      ["I saw the last bus", "Vi el último autobús", null, 2],
+      ["I saw the mountains", "Vi las montañas", null, 2],
+      ["I saw the children here", "Vi a los niños aquí", null, 3],
+      ["I saw the bedroom window", "Vi la ventana del dormitorio", null, 3],
+      ["I saw the mountains every morning", "Vi las montañas cada mañana", null, 4],
+      ["I saw the children in the house", "Vi a los niños en la casa", null, 4],
+      ["I saw the last bus leaving", "Vi el último autobús saliendo", null, 5],
+      ["I saw the mountains from the bedroom window", "Vi las montañas desde la ventana del dormitorio", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4": 2,
+      "long_5_plus": 4
+    },
+    "components": [[null, null], [null, null]]
+  }
+}

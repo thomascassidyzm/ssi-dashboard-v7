@@ -1,0 +1,99 @@
+{
+  "legos": {
+    "S0518L01": {
+      "lego": [
+        "I couldn't imagine",
+        "No podría imaginarme"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I couldn't imagine",
+          "No podría imaginarme",
+          null,
+          1
+        ],
+        [
+          "I could",
+          "Podría",
+          null,
+          1
+        ],
+        [
+          "I couldn't imagine that",
+          "No podría imaginarme eso",
+          null,
+          3
+        ],
+        [
+          "I heard that",
+          "Oí eso",
+          null,
+          2
+        ],
+        [
+          "I couldn't imagine the house",
+          "No podría imaginarme la casa",
+          null,
+          4
+        ],
+        [
+          "I heard about the house",
+          "Oí por la casa",
+          null,
+          4
+        ],
+        [
+          "I couldn't imagine their new house",
+          "No podría imaginarme su casa nueva",
+          null,
+          5
+        ],
+        [
+          "I couldn't imagine that when I heard",
+          "No podría imaginarme eso cuando oí",
+          null,
+          6
+        ],
+        [
+          "I couldn't imagine the perfect house here",
+          "No podría imaginarme la casa perfecta aquí",
+          null,
+          6
+        ],
+        [
+          "I heard about their new house here",
+          "Oí por su casa nueva aquí",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0518L01",
+        "seed_context": {
+          "known": "I couldn't imagine myself having exactly the same problem.",
+          "target": "No podría imaginarme teniendo exactamente el mismo problema."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "podría",
+          "I could"
+        ]
+      ]
+    }
+  }
+}

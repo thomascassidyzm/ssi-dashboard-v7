@@ -1,0 +1,47 @@
+{
+  "legos": {
+    "S0540L03": {
+      "lego": [
+        "want to leave",
+        "quieres irte"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0540L01",
+          "known": "I don't mind",
+          "target": "no me importa",
+          "type": "M"
+        },
+        {
+          "id": "S0540L02",
+          "known": "if you want",
+          "target": "si quieres",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["quieres irte", "you want to leave", null, 1],
+        ["si quieres irte", "if you want to leave", null, 2],
+        ["No me importa si quieres irte", "I don't mind if you want to leave", null, 3],
+        ["quieres irte ahora", "you want to leave now", null, 3],
+        ["No me importa si quieres irte ahora", "I don't mind if you want to leave now", null, 4],
+        ["si quieres irte temprano", "if you want to leave early", null, 4],
+        ["No me importa si quieres irte temprano", "I don't mind if you want to leave early", null, 5],
+        ["Entiendo que quieres irte", "I understand that you want to leave", null, 5],
+        ["No me importa si quieres irte conmigo", "I don't mind if you want to leave with me", null, 5],
+        ["Está bien si quieres irte ahora", "It's okay if you want to leave now", null, 6],
+        ["Sé que quieres irte", "I know you want to leave", null, 4],
+        ["No me importa si quieres irte sin mí", "I don't mind if you want to leave without me", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 6
+      },
+      "target_phrase_count": 12
+    }
+  }
+}

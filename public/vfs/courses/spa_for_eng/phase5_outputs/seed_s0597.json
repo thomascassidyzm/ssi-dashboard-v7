@@ -1,0 +1,34 @@
+{
+  "S0597L04": {
+    "lego": ["about it", "sobre ello"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["I suspect that", "sospecho que"],
+      ["he's heard", "ha oído"],
+      ["a hundred stories", "cien historias"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["About it", "Sobre ello", null, 1],
+      ["I suspect that", "Sospecho que", null, 1],
+      ["Stories about it", "Historias sobre ello", null, 2],
+      ["I suspect about it", "Sospecho sobre ello", null, 2],
+      ["A hundred stories about it", "Cien historias sobre ello", null, 3],
+      ["He's heard about it", "Ha oído sobre ello", null, 3],
+      ["I suspect that he's heard about it", "Sospecho que ha oído sobre ello", null, 4],
+      ["He's heard a hundred stories about it", "Ha oído cien historias sobre ello", null, 4],
+      ["I suspect that he's heard stories about it", "Sospecho que ha oído historias sobre ello", null, 5],
+      ["I suspect that he's heard a hundred stories about it", "Sospecho que ha oído cien historias sobre ello", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4": 2,
+      "long_5_plus": 4
+    },
+    "components": [
+      ["sobre", "about"],
+      ["ello", "it"]
+    ]
+  }
+}

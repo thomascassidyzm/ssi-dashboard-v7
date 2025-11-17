@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0553L01": {
+      "lego": [
+        "I think the",
+        "Creo que la"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "creo que la",
+          "I think the",
+          null,
+          1
+        ],
+        [
+          "creo que la iglesia",
+          "I think the church",
+          null,
+          2
+        ],
+        [
+          "creo que la iglesia es fea",
+          "I think the church is ugly",
+          null,
+          3
+        ],
+        [
+          "creo que la música",
+          "I think the music",
+          null,
+          3
+        ],
+        [
+          "creo que la toalla no está seca",
+          "I think the towel isn't dry",
+          null,
+          4
+        ],
+        [
+          "creo que la iglesia es muy fea",
+          "I think the church is very ugly",
+          null,
+          4
+        ],
+        [
+          "creo que la iglesia pequeña es muy fea",
+          "I think the small church is very ugly",
+          null,
+          5
+        ],
+        [
+          "creo que la ropa está limpia",
+          "I think the clothes are clean",
+          null,
+          5
+        ],
+        [
+          "creo que la música es muy alta",
+          "I think the music is very loud",
+          null,
+          6
+        ],
+        [
+          "creo que la toalla no está seca porque está mojada",
+          "I think the towel isn't dry because it's wet",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "creo",
+          "I think/believe"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "la",
+          "the"
+        ]
+      ]
+    }
+  }
+}

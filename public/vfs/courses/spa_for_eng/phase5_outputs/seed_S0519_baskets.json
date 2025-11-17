@@ -1,0 +1,128 @@
+{
+  "legos": {
+    "S0519L05": {
+      "lego": [
+        "seen their new baby",
+        "a su nuevo bebé"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0519L01",
+          "known": "I haven't",
+          "target": "no he",
+          "type": "M"
+        },
+        {
+          "id": "S0519L02",
+          "known": "I haven't seen",
+          "target": "no he visto",
+          "type": "M"
+        },
+        {
+          "id": "S0519L03",
+          "known": "seen their new baby",
+          "target": "visto a su nuevo bebé",
+          "type": "M"
+        },
+        {
+          "id": "S0519L04",
+          "known": "their new baby",
+          "target": "a su nuevo bebé",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "their new baby",
+          "su nuevo bebé",
+          null,
+          1
+        ],
+        [
+          "I haven't seen their new baby",
+          "No he visto a su nuevo bebé",
+          null,
+          2
+        ],
+        [
+          "their new baby here",
+          "su nuevo bebé aquí",
+          null,
+          3
+        ],
+        [
+          "seen their new baby",
+          "visto a su nuevo bebé",
+          null,
+          3
+        ],
+        [
+          "I haven't seen their new baby here",
+          "No he visto a su nuevo bebé aquí",
+          null,
+          4
+        ],
+        [
+          "their new baby and the news",
+          "su nuevo bebé y las noticias",
+          null,
+          4
+        ],
+        [
+          "I haven't seen their new baby when I could",
+          "No he visto a su nuevo bebé cuando podría",
+          null,
+          7
+        ],
+        [
+          "I heard about their new baby here",
+          "Oí por su nuevo bebé aquí",
+          null,
+          6
+        ],
+        [
+          "I couldn't imagine having exactly the same baby",
+          "No podría imaginarme teniendo exactamente el mismo bebé",
+          null,
+          6
+        ],
+        [
+          "I couldn't imagine their new baby when I heard",
+          "No podría imaginarme su nuevo bebé cuando oí",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0519L05",
+        "seed_context": {
+          "known": "I haven't seen their new baby yet.",
+          "target": "No he visto a su nuevo bebé todavía."
+        }
+      },
+      "components": [
+        [
+          "su",
+          "their"
+        ],
+        [
+          "nuevo",
+          "new"
+        ],
+        [
+          "bebé",
+          "baby"
+        ]
+      ]
+    }
+  }
+}

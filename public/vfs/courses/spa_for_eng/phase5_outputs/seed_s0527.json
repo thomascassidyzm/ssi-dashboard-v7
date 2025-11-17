@@ -1,0 +1,39 @@
+{
+  "legos": {
+    "S0527L02": {
+      "lego": [
+        "Guess who",
+        "Adivina quién"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0527L01",
+          "known": "guess",
+          "target": "adivina",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Adivina quién", "Guess who", null, 1],
+        ["Pero adivina quién", "But guess who", null, 2],
+        ["Adivina quién no he visto todavía", "Guess who I haven't seen yet", null, 3],
+        ["Adivina quién de toda la familia se fue", "Guess who from the whole family left", null, 3],
+        ["Pero adivina quién no he visto todavía", "But guess who I haven't seen yet", null, 4],
+        ["Pero adivina quién de toda la familia se fue", "But guess who from the whole family left", null, 4],
+        ["Pero adivina quién no he visto de toda la familia todavía", "But guess who I haven't seen from the whole family yet", null, 5],
+        ["Adivina quién podría haber dado una excusa en lugar de decir la verdad", "Guess who might have given an excuse instead of telling the truth", null, 6],
+        ["Pero adivina quién no puedes adivinar de toda la familia todavía", "But guess who you can't guess from the whole family yet", null, 5],
+        ["Pero adivina quién podría haber dado una excusa en lugar de decir la verdad todavía", "But guess who might have given an excuse instead of telling the truth yet", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "seed_id": "S0588",
+  "seed_pair": [
+    "So I wanted to grow up and leave home.",
+    "Así que quería crecer y salir de casa."
+  ],
+  "generated_at": "2025-11-17T07:18:00.925169Z",
+  "phase": "5",
+  "course": "spa_for_eng",
+  "baskets": {
+    "S0588L01": {
+      "lego": [
+        "So I",
+        "Así que quería"
+      ],
+      "type": "M",
+      "available_legos": 57,
+      "is_final_lego": false,
+      "overlap_level": "none",
+      "target_phrase_count": 10,
+      "practice_phrases": [
+        [
+          "So I wanted",
+          "Así que quería",
+          null,
+          null
+        ],
+        [
+          "So I wanted to know",
+          "Así que quería saber",
+          null,
+          null
+        ],
+        [
+          "So I wanted to see the mountains",
+          "Así que quería ver las montañas",
+          null,
+          null
+        ],
+        [
+          "So I wanted to wake up here",
+          "Así que quería despertar aquí",
+          null,
+          null
+        ],
+        [
+          "So I wanted to see the mountains from my window",
+          "Así que quería ver las montañas desde mi ventana",
+          null,
+          null
+        ],
+        [
+          "So I wanted to wake up every morning here",
+          "Así que quería despertar cada mañana aquí",
+          null,
+          null
+        ],
+        [
+          "So I wanted to see the mountains from my bedroom window",
+          "Así que quería ver las montañas desde la ventana de mi dormitorio",
+          null,
+          null
+        ],
+        [
+          "So I wanted to wake up each morning from this part",
+          "Así que quería despertar cada mañana desde esta parte",
+          null,
+          null
+        ],
+        [
+          "So I wanted to see the mountains from the bedroom window",
+          "Así que quería ver las montañas desde la ventana del dormitorio",
+          null,
+          null
+        ],
+        [
+          "So I wanted to see the mountains every morning from my bedroom",
+          "Así que quería ver las montañas cada mañana desde mi dormitorio",
+          null,
+          null
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "_metadata": {
+        "lego_id": "S0588L01",
+        "seed_context": {
+          "target": "So I wanted to grow up and leave home.",
+          "known": "Así que quería crecer y salir de casa."
+        }
+      },
+      "components": [
+        [
+          "así",
+          "thus/so"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

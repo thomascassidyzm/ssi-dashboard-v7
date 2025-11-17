@@ -1,0 +1,46 @@
+{
+  "legos": {
+    "S0578L01": {
+      "lego": [
+        "Somewhere warmer.",
+        "En algún lugar más"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["en algún lugar", "somewhere", null, 1],
+        ["en algún lugar más", "somewhere else", null, 1],
+        ["los niños en algún lugar", "the children somewhere", null, 2],
+        ["pasar tiempo en algún lugar", "spend time somewhere", null, 2],
+        ["hemos estado en algún lugar", "we've been somewhere", null, 2],
+        ["pasar tiempo en algún lugar más", "spend time somewhere else", null, 2],
+        ["hemos estado en algún lugar más", "we've been somewhere else", null, 2],
+        ["los niños jugar en algún lugar más", "the children playing somewhere else", null, 3],
+        ["pasar tiempo en algún lugar más encantador", "spend time somewhere more charming", null, 3],
+        ["hemos estado esperando en algún lugar más", "we've been waiting somewhere else", null, 3]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "algún",
+          "some"
+        ],
+        [
+          "lugar",
+          "to place"
+        ]
+      ]
+    }
+  }
+}

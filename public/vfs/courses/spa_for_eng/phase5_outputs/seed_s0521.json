@@ -1,0 +1,81 @@
+{
+  "legos": {
+    "S0521L01": {
+      "lego": [
+        "I'm afraid that",
+        "Tengo miedo de"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Tengo miedo", "I'm afraid", null, 1],
+        ["Tengo miedo de las llaves", "I'm afraid of the keys", null, 2],
+        ["Tengo miedo de buscar las llaves", "I'm afraid to fetch the keys", null, 3],
+        ["Tengo miedo de encontrar el mismo problema", "I'm afraid to find the same problem", null, 3],
+        ["Pero tengo miedo de mantener la puerta abierta en la oficina", "But I'm afraid to hold the door open in the office", null, 4],
+        ["Tengo miedo de encontrar la casa perfecta el primer día", "I'm afraid to find the perfect house on the first day", null, 4],
+        ["Tengo miedo de mantener la puerta abierta mientras busco las llaves en la oficina", "I'm afraid to hold the door open while I fetch the keys in the office", null, 5],
+        ["Tengo miedo de tardar varias horas en llegar a todos en la oficina", "I'm afraid to take several hours to reach everyone in the office", null, 5],
+        ["Pero tengo miedo de encontrar la casa perfecta el primer día del año nuevo", "But I'm afraid to find the perfect house on the first day of the new year", null, 6],
+        ["Tengo miedo del mismo problema en toda la familia todavía", "I'm still afraid of the same problem in the whole family", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["tengo", "I have"],
+        ["miedo", "fear"]
+      ]
+    },
+    "S0521L03": {
+      "lego": [
+        "forget why",
+        "olvides por qué"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0521L01",
+          "known": "I'm afraid that",
+          "target": "Tengo miedo de",
+          "type": "M"
+        },
+        {
+          "id": "S0521L02",
+          "known": "that you'll forget",
+          "target": "de que olvides",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["olvides por qué", "forget why", null, 1],
+        ["Tengo miedo de que olvides por qué", "I'm afraid that you'll forget why", null, 3],
+        ["olvides por qué necesitábamos las llaves", "forget why we needed the keys", null, 3],
+        ["Tengo miedo de que olvides por qué encontré la casa", "I'm afraid that you'll forget why I found the house", null, 4],
+        ["olvides por qué ambos vinieron el primer día", "forget why they both came on the first day", null, 4],
+        ["Tengo miedo de que olvides por qué tardaron varias horas", "I'm afraid that you'll forget why it took several hours", null, 4],
+        ["Pero tengo miedo de que olvides por qué ambos vinieron por su cuenta", "But I'm afraid that you'll forget why they both came on their own", null, 5],
+        ["Tengo miedo de que olvides por qué me duele cuando muevo la cabeza", "I'm afraid that you'll forget why it hurts when I move my head", null, 6],
+        ["Tengo miedo de que olvides por qué encontré la casa perfecta el primer día", "I'm afraid that you'll forget why I found the perfect house on the first day", null, 6],
+        ["Pero tengo miedo de que olvides por qué tardaron varias horas en llegar a todos en la oficina", "But I'm afraid that you'll forget why it took several hours to reach everyone in the office", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["por", "for/by"],
+        ["qué", "what"]
+      ]
+    }
+  }
+}

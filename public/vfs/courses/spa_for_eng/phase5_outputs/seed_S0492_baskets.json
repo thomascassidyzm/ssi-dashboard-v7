@@ -1,0 +1,99 @@
+{
+  "legos": {
+    "S0492L02": {
+      "lego": [
+        "places do you think",
+        "lugares crees que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0492L01",
+          "known": "which of those places",
+          "target": "cuál de esos lugares",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Do you think?",
+          "¿Crees que?",
+          null,
+          1
+        ],
+        [
+          "Do you think it is?",
+          "¿Crees que es?",
+          null,
+          2
+        ],
+        [
+          "Do you think life is easy?",
+          "¿Crees que la vida es fácil?",
+          null,
+          3
+        ],
+        [
+          "Do you think it's a challenge?",
+          "¿Crees que es un desafío?",
+          null,
+          3
+        ],
+        [
+          "Do you think the coffee is strong?",
+          "¿Crees que el café es fuerte?",
+          null,
+          4
+        ],
+        [
+          "Do you think the bridge is beautiful?",
+          "¿Crees que el puente es hermoso?",
+          null,
+          4
+        ],
+        [
+          "Which of those places do you think are beautiful?",
+          "¿Cuál de esos lugares crees que son hermosos?",
+          null,
+          5
+        ],
+        [
+          "Do you think nothing would make me happier?",
+          "¿Crees que nada me haría más feliz?",
+          null,
+          5
+        ],
+        [
+          "Do you think I love the way you try to help?",
+          "¿Crees que me encanta la forma en que intentas ayudar?",
+          null,
+          7
+        ],
+        [
+          "Do you think the only real hope is that life is meant to be easy?",
+          "¿Crees que la única esperanza real es que la vida está destinada a ser fácil?",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "crees",
+          "you think/believe"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

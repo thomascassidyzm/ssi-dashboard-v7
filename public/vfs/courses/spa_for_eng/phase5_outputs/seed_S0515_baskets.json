@@ -1,0 +1,107 @@
+{
+  "legos": {
+    "S0515L01": {
+      "lego": [
+        "On the first day of",
+        "En el primer día del"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "On the first day",
+          "En el primer día",
+          null,
+          1
+        ],
+        [
+          "The first day",
+          "El primer día",
+          null,
+          1
+        ],
+        [
+          "On the first day here",
+          "En el primer día aquí",
+          null,
+          3
+        ],
+        [
+          "The first day of the year",
+          "El primer día del año",
+          null,
+          3
+        ],
+        [
+          "I heard on the first day",
+          "Oí en el primer día",
+          null,
+          4
+        ],
+        [
+          "On the first day of the new year",
+          "En el primer día del año nuevo",
+          null,
+          4
+        ],
+        [
+          "I heard that on the first day",
+          "Oí que en el primer día",
+          null,
+          5
+        ],
+        [
+          "The first day of the new house",
+          "El primer día de la casa nueva",
+          null,
+          6
+        ],
+        [
+          "I heard here on the first day",
+          "Oí aquí en el primer día",
+          null,
+          5
+        ],
+        [
+          "On the first day of the new office",
+          "En el primer día de la oficina nueva",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0515L01",
+        "seed_context": {
+          "known": "On the first day of the new year.",
+          "target": "En el primer día del año nuevo."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "on"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "primer",
+          "to first"
+        ],
+        [
+          "día",
+          "day"
+        ]
+      ]
+    }
+  }
+}

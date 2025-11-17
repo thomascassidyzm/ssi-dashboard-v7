@@ -1,0 +1,109 @@
+{
+  "legos": {
+    "S0556L03": {
+      "lego": [
+        "at night",
+        "en la noche"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0556L01",
+          "known": "they play music",
+          "target": "tocan música",
+          "type": "M"
+        },
+        {
+          "id": "S0556L02",
+          "known": "late at night",
+          "target": "tarde en la noche",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "en la noche",
+          "at night",
+          null,
+          1
+        ],
+        [
+          "tocan música en la noche",
+          "they play music at night",
+          null,
+          2
+        ],
+        [
+          "tarde en la noche",
+          "late at night",
+          null,
+          3
+        ],
+        [
+          "tocan música tarde en la noche",
+          "they play music late at night",
+          null,
+          3
+        ],
+        [
+          "no tocan música en la noche",
+          "they don't play music at night",
+          null,
+          4
+        ],
+        [
+          "él juega en la noche",
+          "he plays at night",
+          null,
+          4
+        ],
+        [
+          "tocan música muy tarde en la noche",
+          "they play music very late at night",
+          null,
+          5
+        ],
+        [
+          "no quiero estar callado en la noche",
+          "I don't want to be quiet at night",
+          null,
+          6
+        ],
+        [
+          "el perro juega en la noche",
+          "the dog plays at night",
+          null,
+          6
+        ],
+        [
+          "tocan música alta tarde en la noche",
+          "they play loud music late at night",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "en",
+          "at/in"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "noche",
+          "night"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "legos": {
+    "S0549L03": {
+      "lego": [
+        "to be quiet",
+        "estar callado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0549L01",
+          "known": "because",
+          "target": "porque",
+          "type": "A"
+        },
+        {
+          "id": "S0549L02",
+          "known": "I have got to",
+          "target": "tengo que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "estar callado",
+          "be quiet",
+          null,
+          1
+        ],
+        [
+          "tengo que estar callado",
+          "I have got to be quiet",
+          null,
+          2
+        ],
+        [
+          "porque tengo que estar callado",
+          "because I have got to be quiet",
+          null,
+          3
+        ],
+        [
+          "quiero estar callado",
+          "I want to be quiet",
+          null,
+          3
+        ],
+        [
+          "no quiero estar callado",
+          "I don't want to be quiet",
+          null,
+          4
+        ],
+        [
+          "él tiene que estar callado",
+          "he has got to be quiet",
+          null,
+          4
+        ],
+        [
+          "porque él tiene que estar callado",
+          "because he has got to be quiet",
+          null,
+          5
+        ],
+        [
+          "no quiero estar callado aquí",
+          "I don't want to be quiet here",
+          null,
+          5
+        ],
+        [
+          "tengo que estar callado en la iglesia",
+          "I have got to be quiet in the church",
+          null,
+          6
+        ],
+        [
+          "porque tengo que estar callado en la iglesia",
+          "because I have got to be quiet in the church",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "estar",
+          "to be"
+        ],
+        [
+          "callado",
+          "quiet/silent"
+        ]
+      ]
+    }
+  }
+}

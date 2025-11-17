@@ -1,0 +1,92 @@
+{
+  "legos": {
+    "S0509L01": {
+      "lego": [
+        "I heard that you're",
+        "Oí que vas"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I heard that you're going",
+          "Oí que vas",
+          null,
+          1
+        ],
+        [
+          "I heard that you're going to pay",
+          "Oí que vas a pagar",
+          null,
+          2
+        ],
+        [
+          "I heard that you're going to the city",
+          "Oí que vas a la ciudad",
+          null,
+          3
+        ],
+        [
+          "I heard that you're going to run",
+          "Oí que vas a correr",
+          null,
+          3
+        ],
+        [
+          "I heard that you're going to open the door",
+          "Oí que vas a abrir la puerta",
+          null,
+          4
+        ],
+        [
+          "I heard that you're going to close the window",
+          "Oí que vas a cerrar la ventana",
+          null,
+          4
+        ],
+        [
+          "I heard that you're going to sit between the two girls",
+          "Oí que vas a sentarte entre las dos chicas",
+          null,
+          5
+        ],
+        [
+          "I heard that you're going to run across the grass",
+          "Oí que vas a correr a través del césped",
+          null,
+          5
+        ],
+        [
+          "I heard that you used to live around here years ago",
+          "Oí que solías vivir por aquí hace años",
+          null,
+          6
+        ],
+        [
+          "I heard that maybe we should open the door and close the window",
+          "Oí que quizás deberíamos abrir la puerta y cerrar la ventana",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "oí",
+          "I heard"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

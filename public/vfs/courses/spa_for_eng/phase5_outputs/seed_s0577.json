@@ -1,0 +1,39 @@
+{
+  "legos": {
+    "S0577L02": {
+      "lego": [
+        "been waiting",
+        "estado esperando"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0577L01",
+          "known": "we've been",
+          "target": "hemos estado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["estado esperando", "been waiting", null, 1],
+        ["hemos estado esperando", "we've been waiting", null, 2],
+        ["estado esperando a los niños", "been waiting for the children", null, 2],
+        ["hemos estado esperando a los niños", "we've been waiting for the children", null, 3],
+        ["estado esperando tiempo", "been waiting awhile", null, 2],
+        ["hemos estado esperando tiempo", "we've been waiting awhile", null, 3],
+        ["hemos estado esperando las vacaciones", "we've been waiting for the holidays", null, 3],
+        ["ha sido perturbador estado esperando", "it's been upsetting being waiting", null, 4],
+        ["hemos estado esperando pasar tiempo", "we've been waiting to spend time", null, 4],
+        ["hemos estado esperando para ver una mejora", "we've been waiting to see an improvement", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

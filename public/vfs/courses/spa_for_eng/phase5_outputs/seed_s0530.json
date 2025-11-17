@@ -1,0 +1,48 @@
+{
+  "legos": {
+    "S0530L01": {
+      "lego": [
+        "So I can count",
+        "Para que pueda contarlas"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Para que pueda contarlas", "So I can count them", null, 1],
+        ["necesito tiempo para que pueda contarlas", "I need time so I can count them", null, 2],
+        ["Dime cuántas son para que pueda contarlas", "Tell me how many there are so I can count them", null, 3],
+        ["Quiero verlas para que pueda contarlas", "I want to see them so I can count them", null, 3],
+        ["Necesito verlas todas para que pueda contarlas", "I need to see them all so I can count them", null, 4],
+        ["Dime dónde están para que pueda contarlas", "Tell me where they are so I can count them", null, 4],
+        ["Voy a necesitar verlas para que pueda contarlas", "I'm going to need to see them so I can count them", null, 5],
+        ["Me gustaría verlas para que pueda contarlas", "I'd like to see them so I can count them", null, 5],
+        ["Necesito saber dónde están para que pueda contarlas", "I need to know where they are so I can count them", null, 6],
+        ["Podrías mostrarme dónde están para que pueda contarlas", "Could you show me where they are so I can count them", null, 6],
+        ["Dame un momento para que pueda contarlas", "Give me a moment so I can count them", null, 5],
+        ["Espera un momento para que pueda contarlas todas", "Wait a moment so I can count them all", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 6
+      },
+      "target_phrase_count": 12,
+      "components": [
+        [
+          "para",
+          "for/so that"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "pueda",
+          "I can/may"
+        ]
+      ]
+    }
+  }
+}
