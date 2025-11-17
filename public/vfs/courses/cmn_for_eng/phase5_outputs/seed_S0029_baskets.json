@@ -1,20 +1,20 @@
 {
   "S0029L01": {
-    "lego": ["I look forward to","我期待"],
+    "lego": ["I look forward to", "我期待"],
     "type": "M",
     "current_seed_legos_available": [],
     "is_final_lego": false,
     "practice_phrases": [
-      ["I look forward to learning","我期待学会",null,2],
-      ["I look forward to starting","我期待开始",null,2],
-      ["I look forward to talking more","我期待多说话",null,3],
-      ["I look forward to meeting people","我期待认识人",null,3],
-      ["I look forward to learning his name","我期待学会他的名字",null,4],
-      ["I look forward to starting to talk","我期待开始说话",null,4],
-      ["I look forward to learning quickly","我期待快点学会",null,5],
-      ["I look forward to meeting people who speak Chinese","我期待认识会说中文的人",null,5],
-      ["I look forward to starting to talk more soon","我期待很快就要开始多说话",null,6],
-      ["I look forward to being able to remember","我期待能记住",null,5]
+      ["I look forward to learning", "我期待学会", null, 2],
+      ["I look forward to talking", "我期待说话", null, 2],
+      ["I look forward to meeting people", "我期待认识人", null, 3],
+      ["I look forward to starting soon", "我期待很快开始", null, 3],
+      ["I look forward to learning his name", "我期待学会他的名字", null, 4],
+      ["I look forward to talking more quickly", "我期待多快点说话", null, 4],
+      ["I look forward to meeting people who speak Chinese", "我期待认识会说中文的人", null, 6],
+      ["I look forward to starting to talk before I have to go", "我期待在我必须走之前开始说话", null, 6],
+      ["I look forward to being able to remember her name", "我期待能记住她的名字", null, 6],
+      ["I look forward to talking to people because it's useful", "我期待跟人说话因为它很有用", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -22,24 +22,24 @@
       "longer_4_5": 2,
       "long_6_plus": 4
     },
-    "components": [[null,null],[null,null]]
+    "components": [["我", "I"], ["期待", "look forward to"]]
   },
   "S0029L02": {
-    "lego": ["to speak better as soon as I can","尽快能说得更好"],
+    "lego": ["to speak better as soon as I can", "尽快能说得更好"],
     "type": "M",
-    "current_seed_legos_available": [["I look forward to","我期待"]],
+    "current_seed_legos_available": [["I look forward to", "我期待"]],
     "is_final_lego": false,
     "practice_phrases": [
-      ["I want to speak better as soon as I can","我想尽快能说得更好",null,2],
-      ["I'm going to speak better as soon as I can","我就要尽快能说得更好",null,2],
-      ["I look forward to speaking better as soon as I can","我期待尽快能说得更好",null,3],
-      ["I don't want to speak better as soon as I can","我不想尽快能说得更好",null,3],
-      ["You want to speak better as soon as you can","你想尽快能说得更好",null,4],
-      ["I like feeling as if I can speak better as soon as I can","我喜欢感觉好像我尽快能说得更好",null,4],
-      ["I'm not going to be able to speak better as soon as I can","我不会很容易就能尽快能说得更好",null,5],
-      ["I look forward to being able to speak better as soon as I can","我期待能尽快能说得更好",null,6],
-      ["I want to meet people who can speak better as soon as they can","我想认识能尽快能说得更好的人",null,6],
-      ["Because I look forward to speaking better as soon as I can","因为我期待尽快能说得更好",null,6]
+      ["I want to speak better as soon as I can", "我想尽快能说得更好", null, 2],
+      ["You speak better as soon as you can", "你尽快能说得更好", null, 2],
+      ["I look forward to speaking better as soon as I can", "我期待尽快能说得更好", null, 3],
+      ["She wants to speak better as soon as she can", "她想尽快能说得更好", null, 3],
+      ["I'm going to speak better as soon as I can", "我就要尽快能说得更好", null, 4],
+      ["I like to speak better as soon as I can", "我喜欢尽快能说得更好", null, 4],
+      ["People who speak Chinese want to speak better as soon as they can", "会说中文的人想尽快能说得更好", null, 6],
+      ["I look forward to being able to speak better as soon as I can", "我期待能尽快能说得更好", null, 6],
+      ["Before I have to go I want to speak better as soon as I can", "在我必须走之前我想尽快能说得更好", null, 7],
+      ["I like feeling as if I can speak better as soon as I can", "我喜欢感觉好像我能尽快能说得更好", null, 7]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -47,24 +47,24 @@
       "longer_4_5": 2,
       "long_6_plus": 4
     },
-    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+    "components": [["尽快", "as soon as possible"], ["能", "can/able"], ["说", "speak"], ["得更好", "better"]]
   },
   "S0029L03": {
-    "lego": ["able to speak better","能说得更好"],
+    "lego": ["able to speak better", "能说得更好"],
     "type": "M",
-    "current_seed_legos_available": [["I look forward to","我期待"],["to speak better as soon as I can","尽快能说得更好"]],
+    "current_seed_legos_available": [["I look forward to", "我期待"], ["to speak better as soon as I can", "尽快能说得更好"]],
     "is_final_lego": false,
     "practice_phrases": [
-      ["I'm able to speak better","我能说得更好",null,1],
-      ["You're able to speak better","你能说得更好",null,1],
-      ["I'm going to be able to speak better","我就要能说得更好",null,2],
-      ["I want to be able to speak better","我想能说得更好",null,2],
-      ["I look forward to being able to speak better","我期待能说得更好",null,4],
-      ["You're able to speak better than me","你能说得更好",null,4],
-      ["I'm not going to be able to speak better","我不会能说得更好",null,5],
-      ["I look forward to being able to speak better soon","我期待很快就能说得更好",null,5],
-      ["I want to meet people who are able to speak better","我想认识能说得更好的人",null,6],
-      ["I like feeling as if I'm able to speak better","我喜欢感觉好像我能说得更好",null,6]
+      ["I'm able to speak better", "我能说得更好", null, 1],
+      ["You're able to speak better", "你能说得更好", null, 1],
+      ["I'm going to be able to speak better", "我就要能说得更好", null, 3],
+      ["I want to be able to speak better", "我想能说得更好", null, 3],
+      ["I look forward to being able to speak better", "我期待能说得更好", null, 4],
+      ["She's able to speak better quickly", "她能快点说得更好", null, 4],
+      ["People who speak Chinese are able to speak better", "会说中文的人能说得更好", null, 6],
+      ["I'm going to be able to speak better before I have to go", "我就要在我必须走之前能说得更好", null, 6],
+      ["I like feeling as if I'm able to speak better now", "我喜欢感觉好像我现在能说得更好", null, 7],
+      ["You will help me be able to speak better", "你会帮我能说得更好", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -72,24 +72,24 @@
       "longer_4_5": 2,
       "long_6_plus": 4
     },
-    "components": [[null,null],[null,null],[null,null],[null,null]]
+    "components": [["能", "able/can"], ["说", "speak"], ["得更好", "better"]]
   },
   "S0029L04": {
-    "lego": ["to speak better","说得更好"],
+    "lego": ["to speak better", "说得更好"],
     "type": "M",
-    "current_seed_legos_available": [["I look forward to","我期待"],["to speak better as soon as I can","尽快能说得更好"],["able to speak better","能说得更好"]],
+    "current_seed_legos_available": [["I look forward to", "我期待"], ["to speak better as soon as I can", "尽快能说得更好"], ["able to speak better", "能说得更好"]],
     "is_final_lego": false,
     "practice_phrases": [
-      ["I want to speak better","我想说得更好",null,2],
-      ["You want to speak better","你想说得更好",null,2],
-      ["I'm going to speak better","我就要说得更好",null,3],
-      ["I look forward to speaking better","我期待说得更好",null,3],
-      ["I'm able to speak better now","我能说得更好",null,4],
-      ["I don't want to speak better","我不想说得更好",null,4],
-      ["I'm going to start to speak better soon","我很快就要开始说得更好",null,5],
-      ["I look forward to speaking better as soon as I can","我期待尽快能说得更好",null,5],
-      ["I want to meet people who can speak better","我想认识会说得更好的人",null,6],
-      ["Because I want to be able to speak better","因为我想能说得更好",null,6]
+      ["I want to speak better", "我想说得更好", null, 2],
+      ["You speak better", "你说得更好", null, 2],
+      ["I look forward to speaking better", "我期待说得更好", null, 3],
+      ["I'm going to speak better soon", "我很快就要说得更好", null, 3],
+      ["I'm able to speak better now", "我现在能说得更好", null, 4],
+      ["I like to speak better quickly", "我喜欢快点说得更好", null, 4],
+      ["People who speak Chinese want to speak better", "会说中文的人想说得更好", null, 6],
+      ["I'm going to start to speak better before I have to go", "我就要在我必须走之前开始说得更好", null, 6],
+      ["I like feeling as if I can speak better to people", "我喜欢感觉好像我能跟人说得更好", null, 7],
+      ["You will help me speak better because it's useful", "你会帮我说得更好因为它很有用", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -97,24 +97,24 @@
       "longer_4_5": 2,
       "long_6_plus": 4
     },
-    "components": [[null,null],[null,null],[null,null]]
+    "components": [["说", "speak"], ["得更好", "better"]]
   },
   "S0029L05": {
-    "lego": ["better","更好"],
+    "lego": ["better", "更好"],
     "type": "M",
-    "current_seed_legos_available": [["I look forward to","我期待"],["to speak better as soon as I can","尽快能说得更好"],["able to speak better","能说得更好"],["to speak better","说得更好"]],
+    "current_seed_legos_available": [["I look forward to", "我期待"], ["to speak better as soon as I can", "尽快能说得更好"], ["able to speak better", "能说得更好"], ["to speak better", "说得更好"]],
     "is_final_lego": false,
     "practice_phrases": [
-      ["I want better","我想更好",null,1],
-      ["It's better","是更好",null,1],
-      ["I'm speaking better","我说得更好",null,2],
-      ["I feel better","我感觉更好",null,2],
-      ["I want to speak better","我想说得更好",null,4],
-      ["I'm able to speak better","我能说得更好",null,4],
-      ["I look forward to speaking better","我期待说得更好",null,5],
-      ["I'm going to start speaking better soon","我很快就要开始说得更好",null,5],
-      ["I look forward to speaking better as soon as I can","我期待尽快能说得更好",null,6],
-      ["I like feeling as if I'm speaking better","我喜欢感觉好像我说得更好",null,6]
+      ["This is better", "这更好", null, 1],
+      ["I'm speaking better", "我说得更好", null, 1],
+      ["I feel better now", "我现在感觉更好", null, 3],
+      ["I want to speak better", "我想说得更好", null, 3],
+      ["I'm able to speak better quickly", "我能快点说得更好", null, 4],
+      ["I look forward to speaking better", "我期待说得更好", null, 4],
+      ["I'm going to start speaking better before I have to go", "我就要在我必须走之前开始说得更好", null, 6],
+      ["People who speak Chinese like to speak better", "会说中文的人喜欢说得更好", null, 6],
+      ["I like feeling as if I'm speaking better to people", "我喜欢感觉好像我跟人说得更好", null, 7],
+      ["You will help me speak better because it's very useful", "你会帮我说得更好因为它很有用", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -122,24 +122,24 @@
       "longer_4_5": 2,
       "long_6_plus": 4
     },
-    "components": [[null,null],[null,null]]
+    "components": [["更", "more"], ["好", "good/better"]]
   },
   "S0029L06": {
-    "lego": ["as soon as can","尽快能"],
+    "lego": ["as soon as can", "尽快能"],
     "type": "M",
-    "current_seed_legos_available": [["I look forward to","我期待"],["to speak better as soon as I can","尽快能说得更好"],["able to speak better","能说得更好"],["to speak better","说得更好"],["better","更好"]],
+    "current_seed_legos_available": [["I look forward to", "我期待"], ["to speak better as soon as I can", "尽快能说得更好"], ["able to speak better", "能说得更好"], ["to speak better", "说得更好"], ["better", "更好"]],
     "is_final_lego": true,
     "practice_phrases": [
-      ["I can speak as soon as I can","我尽快能说",null,2],
-      ["I'll learn as soon as I can","我尽快能学会",null,2],
-      ["I want to speak as soon as I can","我想尽快能说",null,3],
-      ["I'll start as soon as I can","我尽快能开始",null,3],
-      ["I'll be able to speak as soon as I can","我尽快能说",null,4],
-      ["I want to learn as soon as I can","我想尽快能学会",null,4],
-      ["I look forward to speaking as soon as I can","我期待尽快能说",null,5],
-      ["I'm going to speak better as soon as I can","我就要尽快能说得更好",null,6],
-      ["I look forward to speaking better as soon as I can","我期待尽快能说得更好",null,6],
-      ["I want to be able to speak better as soon as I can","我想尽快能说得更好",null,6]
+      ["I can as soon as I can", "我尽快能", null, 2],
+      ["I'll learn as soon as I can", "我尽快能学会", null, 2],
+      ["I want to speak as soon as I can", "我想尽快能说", null, 3],
+      ["I'll start as soon as I can", "我尽快能开始", null, 3],
+      ["I'll be able to speak as soon as I can", "我尽快能说", null, 4],
+      ["I want to learn his name as soon as I can", "我想尽快能学会他的名字", null, 4],
+      ["I look forward to speaking better as soon as I can", "我期待尽快能说得更好", null, 6],
+      ["I'm going to speak better as soon as I can", "我就要尽快能说得更好", null, 6],
+      ["I want to be able to speak better as soon as I can", "我想尽快能说得更好", null, 6],
+      ["I look forward to being able to speak better as soon as I can", "我期待能尽快能说得更好", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -147,6 +147,6 @@
       "longer_4_5": 2,
       "long_6_plus": 4
     },
-    "components": [[null,null],[null,null]]
+    "components": [["尽快", "as soon as possible"], ["能", "can/able"]]
   }
 }
