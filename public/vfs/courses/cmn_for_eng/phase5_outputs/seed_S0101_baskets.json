@@ -1,0 +1,399 @@
+{
+  "S0101L01": {
+    "lego": [
+      "I'm enjoying",
+      "我很享受"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I'm enjoying",
+        "我很享受",
+        null,
+        1
+      ],
+      [
+        "I'm enjoying this",
+        "我很享受这个",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying it",
+        "我很享受它",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying this now",
+        "我很享受现在这个",
+        null,
+        3
+      ],
+      [
+        "I'm really enjoying this",
+        "我很享受这个",
+        null,
+        3
+      ],
+      [
+        "I'm enjoying going home",
+        "我很享受回家",
+        null,
+        4
+      ],
+      [
+        "I'm enjoying doing this",
+        "我很享受做这个",
+        null,
+        4
+      ],
+      [
+        "I'm enjoying doing this now",
+        "我很享受现在做这个",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying playing something else",
+        "我很享受玩别的东西",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying doing something similar for a while",
+        "我很享受做类似的事情一段时间",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "很",
+        "very"
+      ],
+      [
+        "享受",
+        "enjoying"
+      ]
+    ]
+  },
+  "S0101L02": {
+    "lego": [
+      "finding out more",
+      "了解更多"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0101L01",
+        "known": "I'm enjoying",
+        "target": "我很享受",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Finding out more",
+        "了解更多",
+        null,
+        1
+      ],
+      [
+        "I'm finding out more",
+        "我了解更多",
+        null,
+        2
+      ],
+      [
+        "Finding out more now",
+        "现在了解更多",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying finding out more",
+        "我很享受了解更多",
+        null,
+        3
+      ],
+      [
+        "You should find out more",
+        "你应该了解更多",
+        null,
+        3
+      ],
+      [
+        "I want to find out more",
+        "我想了解更多",
+        null,
+        4
+      ],
+      [
+        "I need to find out more",
+        "我需要了解更多",
+        null,
+        4
+      ],
+      [
+        "I'm enjoying finding out more now",
+        "我很享受现在了解更多",
+        null,
+        5
+      ],
+      [
+        "I should consider finding out more",
+        "我应该考虑了解更多",
+        null,
+        5
+      ],
+      [
+        "I'd like to keep on finding out more for a while",
+        "我想继续了解更多一段时间",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "了解",
+        "finding out"
+      ],
+      [
+        "更多",
+        "more"
+      ]
+    ]
+  },
+  "S0101L03": {
+    "lego": [
+      "this language",
+      "这个语言"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0101L01",
+        "known": "I'm enjoying",
+        "target": "我很享受",
+        "type": "M"
+      },
+      {
+        "id": "S0101L02",
+        "known": "finding out more",
+        "target": "了解更多",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "This language",
+        "这个语言",
+        null,
+        1
+      ],
+      [
+        "I like this language",
+        "我喜欢这个语言",
+        null,
+        2
+      ],
+      [
+        "Speaking this language",
+        "说这个语言",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying this language",
+        "我很享受这个语言",
+        null,
+        3
+      ],
+      [
+        "I should speak this language",
+        "我应该说这个语言",
+        null,
+        3
+      ],
+      [
+        "I'd like this language",
+        "我想这个语言",
+        null,
+        4
+      ],
+      [
+        "I'm enjoying speaking this language",
+        "我很享受说这个语言",
+        null,
+        4
+      ],
+      [
+        "I want to speak this language",
+        "我想说这个语言",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying speaking this language now",
+        "我很享受现在说这个语言",
+        null,
+        5
+      ],
+      [
+        "If you can speak this language slowly",
+        "如果你能说这个语言慢",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0101L04": {
+    "lego": [
+      "about this language",
+      "关于这个语言的事情"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0101L01",
+        "known": "I'm enjoying",
+        "target": "我很享受",
+        "type": "M"
+      },
+      {
+        "id": "S0101L02",
+        "known": "finding out more",
+        "target": "了解更多",
+        "type": "M"
+      },
+      {
+        "id": "S0101L03",
+        "known": "this language",
+        "target": "这个语言",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "About this language",
+        "关于这个语言的事情",
+        null,
+        1
+      ],
+      [
+        "Things about this language",
+        "关于这个语言的事情",
+        null,
+        2
+      ],
+      [
+        "Something about this language",
+        "关于这个语言的事情",
+        null,
+        2
+      ],
+      [
+        "Finding out about this language",
+        "了解关于这个语言的事情",
+        null,
+        3
+      ],
+      [
+        "I worry about this language",
+        "我担心关于这个语言的事情",
+        null,
+        3
+      ],
+      [
+        "Finding out more about this language",
+        "了解更多关于这个语言的事情",
+        null,
+        4
+      ],
+      [
+        "I shouldn't worry about this language",
+        "我不应该担心关于这个语言的事情",
+        null,
+        4
+      ],
+      [
+        "I'm enjoying finding out about this language",
+        "我很享受了解关于这个语言的事情",
+        null,
+        5
+      ],
+      [
+        "I want to find out more about this language",
+        "我想了解更多关于这个语言的事情",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying finding out more about this language.",
+        "我很享受了解更多关于这个语言的事情。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "关于",
+        "about"
+      ],
+      [
+        "这个",
+        "this"
+      ],
+      [
+        "语言",
+        "language"
+      ],
+      [
+        "的",
+        "(particle)"
+      ],
+      [
+        "事情",
+        "things"
+      ]
+    ]
+  }
+}

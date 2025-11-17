@@ -1,0 +1,401 @@
+{
+  "S0102L01": {
+    "lego": [
+      "We're trying to",
+      "我们正在试图"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "We're trying to",
+        "我们正在试图",
+        null,
+        1
+      ],
+      [
+        "We're trying to go",
+        "我们正在试图走",
+        null,
+        2
+      ],
+      [
+        "We're trying to speak",
+        "我们正在试图说",
+        null,
+        2
+      ],
+      [
+        "We're trying to go now",
+        "我们正在试图现在走",
+        null,
+        3
+      ],
+      [
+        "We're trying to think",
+        "我们正在试图想",
+        null,
+        3
+      ],
+      [
+        "We're trying to go home",
+        "我们正在试图回家",
+        null,
+        4
+      ],
+      [
+        "We're trying to do this",
+        "我们正在试图做这个",
+        null,
+        4
+      ],
+      [
+        "We're trying to find out more",
+        "我们正在试图了解更多",
+        null,
+        5
+      ],
+      [
+        "We're trying to answer in time",
+        "我们正在试图及时回答",
+        null,
+        5
+      ],
+      [
+        "We're trying to speak this language slowly",
+        "我们正在试图慢慢说这个语言",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "正在",
+        "(progressive)"
+      ],
+      [
+        "试图",
+        "trying to"
+      ]
+    ]
+  },
+  "S0102L02": {
+    "lego": [
+      "trying to say",
+      "试图说"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0102L01",
+        "known": "We're trying to",
+        "target": "我们正在试图",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Trying to say",
+        "试图说",
+        null,
+        1
+      ],
+      [
+        "I'm trying to say",
+        "我试图说",
+        null,
+        2
+      ],
+      [
+        "We're trying to say",
+        "我们正在试图说",
+        null,
+        2
+      ],
+      [
+        "You're trying to say",
+        "你试图说",
+        null,
+        3
+      ],
+      [
+        "I'm trying to say this",
+        "我试图说这个",
+        null,
+        3
+      ],
+      [
+        "We're trying to say this",
+        "我们正在试图说这个",
+        null,
+        4
+      ],
+      [
+        "I'm trying to say something",
+        "我试图说一些事情",
+        null,
+        4
+      ],
+      [
+        "We're trying to say something similar",
+        "我们正在试图说类似的事情",
+        null,
+        5
+      ],
+      [
+        "I'm trying to say this in this language",
+        "我试图用这个语言说这个",
+        null,
+        5
+      ],
+      [
+        "We're trying to say something about this language",
+        "我们正在试图说关于这个语言的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "试图",
+        "trying to"
+      ],
+      [
+        "说",
+        "say"
+      ]
+    ]
+  },
+  "S0102L03": {
+    "lego": [
+      "it's not like that",
+      "它不是那样的"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0102L01",
+        "known": "We're trying to",
+        "target": "我们正在试图",
+        "type": "M"
+      },
+      {
+        "id": "S0102L02",
+        "known": "trying to say",
+        "target": "试图说",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "It's not like that",
+        "它不是那样的",
+        null,
+        1
+      ],
+      [
+        "It's not like this",
+        "它不是这样的",
+        null,
+        2
+      ],
+      [
+        "This is not like that",
+        "这不是那样的",
+        null,
+        2
+      ],
+      [
+        "I think it's not like that",
+        "我想它不是那样的",
+        null,
+        3
+      ],
+      [
+        "It's not like that now",
+        "它现在不是那样的",
+        null,
+        3
+      ],
+      [
+        "I'm saying it's not like that",
+        "我说它不是那样的",
+        null,
+        4
+      ],
+      [
+        "We're trying to say it's not like that",
+        "我们正在试图说它不是那样的",
+        null,
+        4
+      ],
+      [
+        "I'm trying to say it's not like that",
+        "我试图说它不是那样的",
+        null,
+        5
+      ],
+      [
+        "You should think it's not like that",
+        "你应该想它不是那样的",
+        null,
+        5
+      ],
+      [
+        "If you think it's not like that",
+        "如果你想它不是那样的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "它",
+        "it"
+      ],
+      [
+        "不是",
+        "is not"
+      ],
+      [
+        "那样的",
+        "like that"
+      ]
+    ]
+  },
+  "S0102L04": {
+    "lego": [
+      "like that",
+      "那样的"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0102L01",
+        "known": "We're trying to",
+        "target": "我们正在试图",
+        "type": "M"
+      },
+      {
+        "id": "S0102L02",
+        "known": "trying to say",
+        "target": "试图说",
+        "type": "M"
+      },
+      {
+        "id": "S0102L03",
+        "known": "it's not like that",
+        "target": "它不是那样的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Like that",
+        "那样的",
+        null,
+        1
+      ],
+      [
+        "It's like that",
+        "它是那样的",
+        null,
+        2
+      ],
+      [
+        "Not like that",
+        "不是那样的",
+        null,
+        2
+      ],
+      [
+        "This is like that",
+        "这是那样的",
+        null,
+        3
+      ],
+      [
+        "It's not like that",
+        "它不是那样的",
+        null,
+        3
+      ],
+      [
+        "I don't want it like that",
+        "我不想要它那样的",
+        null,
+        4
+      ],
+      [
+        "I'm trying to say it's not like that",
+        "我试图说它不是那样的",
+        null,
+        4
+      ],
+      [
+        "We're trying to say it's not like that",
+        "我们正在试图说它不是那样的",
+        null,
+        5
+      ],
+      [
+        "You shouldn't worry if it's not like that",
+        "你不应该担心如果它不是那样的",
+        null,
+        5
+      ],
+      [
+        "We're trying to say that it's not like that.",
+        "我们正在试图说它不是那样的。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "那样",
+        "that way"
+      ],
+      [
+        "的",
+        "(particle)"
+      ]
+    ]
+  }
+}
