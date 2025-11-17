@@ -1,0 +1,189 @@
+{
+  "S0487L02": {
+    "lego": [
+      "under the bridge",
+      "在桥下"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "It's under the bridge.",
+        "它在桥下。",
+        null,
+        2
+      ],
+      [
+        "She has been under the bridge since the holidays.",
+        "她从假期起就一直在桥下。",
+        null,
+        5
+      ],
+      [
+        "Whatever you do, it's under the bridge now.",
+        "无论你做什么，它现在在桥下了。",
+        null,
+        5
+      ],
+      [
+        "Your eyes are beautiful under the bridge.",
+        "你的眼睛在桥下很美。",
+        null,
+        4
+      ],
+      [
+        "It's the least I could do under the bridge.",
+        "这是我在桥下能做的最少的事。",
+        null,
+        5
+      ],
+      [
+        "Life isn't easy under the bridge.",
+        "生活在桥下不容易。",
+        null,
+        4
+      ],
+      [
+        "Nothing would make me happier than to get away from under the bridge.",
+        "没有什么比从桥下逃离更让我开心的了。",
+        null,
+        7
+      ],
+      [
+        "It's not far under the bridge.",
+        "它在桥下不远。",
+        null,
+        4
+      ],
+      [
+        "The only real hope we have left is under the bridge.",
+        "我们剩下的唯一真正的希望在桥下。",
+        null,
+        6
+      ],
+      [
+        "She has a kind heart under the bridge.",
+        "她在桥下有一颗善良的心。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 7,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0487L02",
+      "seed_context": {
+        "known": "它在桥下。",
+        "target": "It's under the bridge."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0487L03": {
+    "lego": [
+      "bridge",
+      "桥"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "under the bridge",
+        "在桥下"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "She has been sick since the bridge.",
+        "她从桥起就一直生病。",
+        null,
+        4
+      ],
+      [
+        "Whatever he says, the bridge is not far ahead now.",
+        "无论他说什么，桥现在不远了。",
+        null,
+        6
+      ],
+      [
+        "It's the least I could do at the bridge.",
+        "这是我在桥边能做的最少的事。",
+        null,
+        5
+      ],
+      [
+        "Life under the bridge isn't easy.",
+        "桥下的生活不容易。",
+        null,
+        4
+      ],
+      [
+        "The bridge is meant to be a challenge.",
+        "桥本来就是一个挑战。",
+        null,
+        4
+      ],
+      [
+        "Nothing would make me happier than to get away from the bridge.",
+        "没有什么比从桥逃离更让我开心的了。",
+        null,
+        7
+      ],
+      [
+        "The only real hope we have left is the bridge.",
+        "我们剩下的唯一真正的希望是桥。",
+        null,
+        6
+      ],
+      [
+        "Your eyes are beautiful near the bridge.",
+        "你的眼睛在桥边很美。",
+        null,
+        4
+      ],
+      [
+        "She has a kind heart at the bridge.",
+        "她在桥边有一颗善良的心。",
+        null,
+        5
+      ],
+      [
+        "It's under the bridge.",
+        "它在桥下。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0487L03",
+      "seed_context": {
+        "known": "它在桥下。",
+        "target": "It's under the bridge."
+      }
+    }
+  }
+}
