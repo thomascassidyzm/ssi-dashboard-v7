@@ -1,0 +1,268 @@
+{
+  "legos": {
+    "S0159L03": {
+      "lego": [
+        "I'm trying to say",
+        "我试图说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I'm trying to say",
+          "我试图说",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something",
+          "我试图说点什么",
+          null,
+          2
+        ],
+        [
+          "I'm trying to say something else",
+          "我试图说点别的",
+          null,
+          3
+        ],
+        [
+          "I'm trying to say this word",
+          "我试图说这个词",
+          null,
+          3
+        ],
+        [
+          "I'm trying to say something in Chinese",
+          "我试图用中文说点什么",
+          null,
+          4
+        ],
+        [
+          "I'm trying to say this word in Chinese",
+          "我试图用中文说这个词",
+          null,
+          4
+        ],
+        [
+          "I hope I'm trying to say it correctly",
+          "我希望我试图正确地说它",
+          null,
+          5
+        ],
+        [
+          "I'm trying to say what your name is",
+          "我试图说你的名字是什么",
+          null,
+          5
+        ],
+        [
+          "I'm not sure what I'm trying to say",
+          "我不确定我试图说什么",
+          null,
+          5
+        ],
+        [
+          "Can you tell me if I'm trying to say it correctly",
+          "你能告诉我我试图说得对不对吗",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["我", "I"],
+        ["试图", "try to/attempt to"],
+        ["说", "say"]
+      ]
+    },
+    "S0159L04": {
+      "lego": [
+        "what (I'm) trying to say",
+        "试图说的"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0159L03",
+          "lego": ["I'm trying to say", "我试图说"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what I'm trying to say",
+          "我试图说的",
+          null,
+          1
+        ],
+        [
+          "that's what I'm trying to say",
+          "那是我试图说的",
+          null,
+          2
+        ],
+        [
+          "I hope what I'm trying to say",
+          "我希望我试图说的",
+          null,
+          3
+        ],
+        [
+          "Can you understand what I'm trying to say",
+          "你能理解我试图说的吗",
+          null,
+          3
+        ],
+        [
+          "That isn't what I'm trying to say",
+          "那不是我试图说的",
+          null,
+          4
+        ],
+        [
+          "I hope you understand what I'm trying to say",
+          "我希望你理解我试图说的",
+          null,
+          4
+        ],
+        [
+          "I'm not sure what I'm trying to say in Chinese",
+          "我不确定我试图用中文说的",
+          null,
+          5
+        ],
+        [
+          "Can you tell me what I'm trying to say",
+          "你能告诉我我试图说的吗",
+          null,
+          5
+        ],
+        [
+          "That wasn't what I was hoping I'm trying to say",
+          "那不是我希望我试图说的",
+          null,
+          6
+        ],
+        [
+          "I don't know if you can understand what I'm trying to say",
+          "我不知道你能不能理解我试图说的",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["试图", "try to/attempt to"],
+        ["说", "say"],
+        ["的", "nominalizer particle"]
+      ]
+    },
+    "S0159L05": {
+      "lego": [
+        "what I'm trying to say",
+        "我试图说的"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0159L03",
+          "lego": ["I'm trying to say", "我试图说"]
+        },
+        {
+          "id": "S0159L04",
+          "lego": ["what (I'm) trying to say", "试图说的"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what I'm trying to say",
+          "我试图说的",
+          null,
+          1
+        ],
+        [
+          "that's what I'm trying to say",
+          "那是我试图说的",
+          null,
+          2
+        ],
+        [
+          "That isn't what I'm trying to say",
+          "那不是我试图说的",
+          null,
+          3
+        ],
+        [
+          "Can you understand what I'm trying to say",
+          "你能理解我试图说的吗",
+          null,
+          3
+        ],
+        [
+          "I hope you understand what I'm trying to say",
+          "我希望你理解我试图说的",
+          null,
+          4
+        ],
+        [
+          "That wasn't what I was hoping to say",
+          "那不是我希望说的",
+          null,
+          4
+        ],
+        [
+          "I'm not sure if that's what I'm trying to say",
+          "我不确定那是不是我试图说的",
+          null,
+          5
+        ],
+        [
+          "Can you tell me if what I'm trying to say is correct",
+          "你能告诉我我试图说的对不对吗",
+          null,
+          5
+        ],
+        [
+          "I don't know if you can understand what I'm trying to say in Chinese",
+          "我不知道你能不能理解我试图用中文说的",
+          null,
+          6
+        ],
+        [
+          "That wasn't what I was hoping would happen when I'm trying to say it",
+          "那不是我希望我试图说它时会发生的",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["我", "I"],
+        ["试图", "try to/attempt to"],
+        ["说", "say"],
+        ["的", "nominalizer particle"]
+      ]
+    }
+  }
+}

@@ -1,0 +1,415 @@
+{
+  "legos": {
+    "S0153L01": {
+      "lego": [
+        "I wouldn't have said it",
+        "我不会说它"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I wouldn't have said it",
+          "我不会说它",
+          null,
+          1
+        ],
+        [
+          "I wouldn't say it",
+          "我不会说它",
+          null,
+          2
+        ],
+        [
+          "I wouldn't have said it today",
+          "我今天不会说它",
+          null,
+          3
+        ],
+        [
+          "I wouldn't have said it earlier",
+          "我之前不会说它",
+          null,
+          3
+        ],
+        [
+          "I wouldn't have said it like that",
+          "我不会那样说它",
+          null,
+          4
+        ],
+        [
+          "she wouldn't have said it",
+          "她不会说它",
+          null,
+          4
+        ],
+        [
+          "I wouldn't have said it if I knew",
+          "如果我知道我不会说它",
+          null,
+          5
+        ],
+        [
+          "I wouldn't have said it in the same way",
+          "我不会用同样的方式说它",
+          null,
+          6
+        ],
+        [
+          "I'm not sure if I wouldn't have said it",
+          "我不确定我会不会说它",
+          null,
+          6
+        ],
+        [
+          "I wouldn't have said it if I had known what you wanted",
+          "如果我知道你想要什么我不会说它",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "不会",
+          "wouldn't"
+        ],
+        [
+          "说",
+          "say/said"
+        ],
+        [
+          "它",
+          "it"
+        ]
+      ]
+    },
+    "S0153L02": {
+      "lego": [
+        "say it",
+        "说它"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0153L01",
+          "known": "I wouldn't have said it",
+          "target": "我不会说它",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "say it",
+          "说它",
+          null,
+          1
+        ],
+        [
+          "I say it",
+          "我说它",
+          null,
+          2
+        ],
+        [
+          "can you say it",
+          "你能说它吗",
+          null,
+          3
+        ],
+        [
+          "I want to say it",
+          "我想说它",
+          null,
+          3
+        ],
+        [
+          "I'm trying to say it",
+          "我在试着说它",
+          null,
+          4
+        ],
+        [
+          "I can't say it now",
+          "我现在不能说它",
+          null,
+          4
+        ],
+        [
+          "I wouldn't have said it earlier",
+          "我之前不会说它",
+          null,
+          5
+        ],
+        [
+          "I'm not sure how to say it",
+          "我不确定怎么说它",
+          null,
+          5
+        ],
+        [
+          "I want to say it in the same way",
+          "我想用同样的方式说它",
+          null,
+          6
+        ],
+        [
+          "I'm trying to say it in exactly the same way",
+          "我在试着用完全相同的方式说它",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "说",
+          "say"
+        ],
+        [
+          "它",
+          "it"
+        ]
+      ]
+    },
+    "S0153L03": {
+      "lego": [
+        "exactly the same way",
+        "完全相同的方式"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0153L01",
+          "known": "I wouldn't have said it",
+          "target": "我不会说它",
+          "type": "M"
+        },
+        {
+          "id": "S0153L02",
+          "known": "say it",
+          "target": "说它",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "exactly the same way",
+          "完全相同的方式",
+          null,
+          1
+        ],
+        [
+          "in exactly the same way",
+          "用完全相同的方式",
+          null,
+          2
+        ],
+        [
+          "the same way as you",
+          "和你一样的方式",
+          null,
+          3
+        ],
+        [
+          "do it the same way",
+          "用同样的方式做",
+          null,
+          3
+        ],
+        [
+          "I do it exactly the same way",
+          "我用完全相同的方式做",
+          null,
+          4
+        ],
+        [
+          "say it in the same way",
+          "用同样的方式说它",
+          null,
+          4
+        ],
+        [
+          "I want to say it in exactly the same way",
+          "我想用完全相同的方式说它",
+          null,
+          6
+        ],
+        [
+          "I wouldn't have said it in exactly the same way",
+          "我不会用完全相同的方式说它",
+          null,
+          7
+        ],
+        [
+          "I'm trying to do it in exactly the same way",
+          "我在试着用完全相同的方式做",
+          null,
+          7
+        ],
+        [
+          "I'm not sure if I can say it in exactly the same way",
+          "我不确定我能不能用完全相同的方式说它",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "完全",
+          "exactly"
+        ],
+        [
+          "相同",
+          "same"
+        ],
+        [
+          "方式",
+          "way"
+        ]
+      ]
+    },
+    "S0153L04": {
+      "lego": [
+        "in exactly the same way",
+        "用完全相同的方式"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0153L01",
+          "known": "I wouldn't have said it",
+          "target": "我不会说它",
+          "type": "M"
+        },
+        {
+          "id": "S0153L02",
+          "known": "say it",
+          "target": "说它",
+          "type": "M"
+        },
+        {
+          "id": "S0153L03",
+          "known": "exactly the same way",
+          "target": "完全相同的方式",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "in exactly the same way",
+          "用完全相同的方式",
+          null,
+          1
+        ],
+        [
+          "do it in the same way",
+          "用同样的方式做",
+          null,
+          2
+        ],
+        [
+          "say it in exactly the same way",
+          "用完全相同的方式说",
+          null,
+          3
+        ],
+        [
+          "I do it in the same way",
+          "我用同样的方式做",
+          null,
+          3
+        ],
+        [
+          "I want to say it in the same way",
+          "我想用同样的方式说",
+          null,
+          4
+        ],
+        [
+          "I can do it in exactly the same way",
+          "我可以用完全相同的方式做",
+          null,
+          4
+        ],
+        [
+          "I wouldn't have said it in exactly the same way",
+          "我不会用完全相同的方式说它",
+          null,
+          6
+        ],
+        [
+          "I'm trying to say it in exactly the same way",
+          "我在试着用完全相同的方式说",
+          null,
+          6
+        ],
+        [
+          "I want to do it in exactly the same way today",
+          "我今天想用完全相同的方式做",
+          null,
+          7
+        ],
+        [
+          "I'm not sure if I can say it in exactly the same way",
+          "我不确定我能不能用完全相同的方式说",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "用",
+          "in/with"
+        ],
+        [
+          "完全",
+          "exactly"
+        ],
+        [
+          "相同",
+          "same"
+        ],
+        [
+          "方式",
+          "way"
+        ]
+      ]
+    }
+  }
+}

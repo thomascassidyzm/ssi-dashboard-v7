@@ -1,0 +1,191 @@
+{
+  "legos": {
+    "S0141L01": {
+      "lego": [
+        "no problem",
+        "没问题"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "no problem",
+          "没问题",
+          null,
+          1
+        ],
+        [
+          "it's no problem",
+          "这没问题",
+          null,
+          2
+        ],
+        [
+          "that's no problem for me",
+          "那对我没问题",
+          null,
+          3
+        ],
+        [
+          "there's no problem with that",
+          "那没问题",
+          null,
+          3
+        ],
+        [
+          "I think there's no problem",
+          "我认为没问题",
+          null,
+          4
+        ],
+        [
+          "no problem, I can help you",
+          "没问题，我能帮你",
+          null,
+          4
+        ],
+        [
+          "it's no problem for me to help you",
+          "帮你对我没问题",
+          null,
+          5
+        ],
+        [
+          "I'm sorry, but there's no problem with that",
+          "对不起，但那没问题",
+          null,
+          5
+        ],
+        [
+          "no problem, I can help you with that today",
+          "没问题，我今天能帮你那个",
+          null,
+          6
+        ],
+        [
+          "there's no problem if you want to ask me",
+          "如果你想问我，没问题",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "没",
+          "no/not have"
+        ],
+        [
+          "问题",
+          "problem"
+        ]
+      ]
+    },
+    "S0141L02": {
+      "lego": [
+        "everything is okay",
+        "一切都好"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0141L01",
+          "known": "no problem",
+          "target": "没问题",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "everything is okay",
+          "一切都好",
+          null,
+          1
+        ],
+        [
+          "everything is okay now",
+          "现在一切都好",
+          null,
+          2
+        ],
+        [
+          "I think everything is okay",
+          "我认为一切都好",
+          null,
+          3
+        ],
+        [
+          "don't worry, everything is okay",
+          "别担心，一切都好",
+          null,
+          3
+        ],
+        [
+          "no problem, everything is okay",
+          "没问题，一切都好",
+          null,
+          4
+        ],
+        [
+          "I'm happy that everything is okay",
+          "我很高兴一切都好",
+          null,
+          4
+        ],
+        [
+          "no problem, everything is okay with me",
+          "没问题，我这边一切都好",
+          null,
+          5
+        ],
+        [
+          "I want to make sure everything is okay",
+          "我想确保一切都好",
+          null,
+          5
+        ],
+        [
+          "I'm sorry if I worried you, but everything is okay",
+          "对不起如果我让你担心了，但一切都好",
+          null,
+          8
+        ],
+        [
+          "no problem, I can see that everything is okay now",
+          "没问题，我能看到现在一切都好",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "一切",
+          "everything"
+        ],
+        [
+          "都",
+          "all"
+        ],
+        [
+          "好",
+          "good/okay"
+        ]
+      ]
+    }
+  }
+}

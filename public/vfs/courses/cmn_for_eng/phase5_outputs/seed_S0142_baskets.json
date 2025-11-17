@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0142L01": {
+      "lego": [
+        "that's very kind of you",
+        "你真好"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "that's very kind of you",
+          "你真好",
+          null,
+          1
+        ],
+        [
+          "you're very kind",
+          "你很好",
+          null,
+          2
+        ],
+        [
+          "that's very kind, thank you",
+          "你真好，谢谢",
+          null,
+          3
+        ],
+        [
+          "I think that's very kind of you",
+          "我认为你真好",
+          null,
+          3
+        ],
+        [
+          "that's very kind of you to help",
+          "你帮忙真好",
+          null,
+          4
+        ],
+        [
+          "that's very kind of you to help me",
+          "你帮我真好",
+          null,
+          4
+        ],
+        [
+          "I'm grateful, that's very kind of you",
+          "我很感激，你真好",
+          null,
+          5
+        ],
+        [
+          "that's very kind of you to show me that",
+          "你给我看那个真好",
+          null,
+          5
+        ],
+        [
+          "I'm sorry to bother you, but that's very kind of you",
+          "对不起打扰你，但你真好",
+          null,
+          7
+        ],
+        [
+          "that's very kind of you to help me learn Chinese",
+          "你帮我学中文真好",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "真",
+          "really/very"
+        ],
+        [
+          "好",
+          "kind/good"
+        ]
+      ]
+    }
+  }
+}

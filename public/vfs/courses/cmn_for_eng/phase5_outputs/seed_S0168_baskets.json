@@ -1,0 +1,489 @@
+{
+  "legos": {
+    "S0168L01": {
+      "lego": [
+        "and then",
+        "然后"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "and then",
+          "然后",
+          null,
+          1
+        ],
+        [
+          "and then I can",
+          "然后我能",
+          null,
+          2
+        ],
+        [
+          "and then I want",
+          "然后我想",
+          null,
+          3
+        ],
+        [
+          "and then I'll be able to",
+          "然后我就能",
+          null,
+          3
+        ],
+        [
+          "and then I can help",
+          "然后我能帮忙",
+          null,
+          4
+        ],
+        [
+          "and then I'll come",
+          "然后我就来",
+          null,
+          4
+        ],
+        [
+          "and then I can come and help",
+          "然后我能来帮忙",
+          null,
+          5
+        ],
+        [
+          "and then I want to talk",
+          "然后我想谈",
+          null,
+          5
+        ],
+        [
+          "and then I'll be able to come tomorrow",
+          "然后我明天就能来",
+          null,
+          6
+        ],
+        [
+          "and then I'll be able to help you",
+          "然后我就能帮你",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0168L02": {
+      "lego": [
+        "I'll be able to",
+        "我就能"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0168L01",
+          "known": "and then",
+          "target": "然后",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I'll be able to",
+          "我就能",
+          null,
+          1
+        ],
+        [
+          "I'll be able to come",
+          "我就能来",
+          null,
+          2
+        ],
+        [
+          "I'll be able to help",
+          "我就能帮忙",
+          null,
+          3
+        ],
+        [
+          "and then I'll be able to",
+          "然后我就能",
+          null,
+          3
+        ],
+        [
+          "I'll be able to speak Chinese",
+          "我就能说中文",
+          null,
+          4
+        ],
+        [
+          "I'll be able to come and help",
+          "我就能来帮忙",
+          null,
+          4
+        ],
+        [
+          "and then I'll be able to help",
+          "然后我就能帮忙",
+          null,
+          5
+        ],
+        [
+          "I'll be able to come tomorrow afternoon",
+          "我明天下午就能来",
+          null,
+          5
+        ],
+        [
+          "and then I'll be able to come and help",
+          "然后我就能来帮忙",
+          null,
+          6
+        ],
+        [
+          "I'll be able to help you tomorrow afternoon",
+          "我明天下午就能帮你",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "就",
+          "then/emphasis"
+        ],
+        [
+          "能",
+          "be able to"
+        ]
+      ]
+    },
+    "S0168L03": {
+      "lego": [
+        "be able to come and help",
+        "能来帮忙"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0168L01",
+          "known": "and then",
+          "target": "然后",
+          "type": "A"
+        },
+        {
+          "id": "S0168L02",
+          "known": "I'll be able to",
+          "target": "我就能",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "be able to come and help",
+          "能来帮忙",
+          null,
+          1
+        ],
+        [
+          "I'll be able to come and help",
+          "我就能来帮忙",
+          null,
+          2
+        ],
+        [
+          "be able to come and help now",
+          "现在能来帮忙",
+          null,
+          3
+        ],
+        [
+          "and then be able to come and help",
+          "然后能来帮忙",
+          null,
+          3
+        ],
+        [
+          "I'll be able to come and help you",
+          "我就能来帮你",
+          null,
+          4
+        ],
+        [
+          "be able to come and help tomorrow",
+          "明天能来帮忙",
+          null,
+          4
+        ],
+        [
+          "I'll be able to come and help tomorrow",
+          "我明天就能来帮忙",
+          null,
+          5
+        ],
+        [
+          "and then I'll be able to come and help",
+          "然后我就能来帮忙",
+          null,
+          5
+        ],
+        [
+          "be able to come and help tomorrow afternoon",
+          "明天下午能来帮忙",
+          null,
+          6
+        ],
+        [
+          "I'll be able to come and help tomorrow afternoon",
+          "我明天下午就能来帮忙",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "能",
+          "be able to"
+        ],
+        [
+          "来",
+          "come"
+        ],
+        [
+          "帮忙",
+          "help"
+        ]
+      ]
+    },
+    "S0168L04": {
+      "lego": [
+        "help",
+        "帮忙"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0168L01",
+          "known": "and then",
+          "target": "然后",
+          "type": "A"
+        },
+        {
+          "id": "S0168L02",
+          "known": "I'll be able to",
+          "target": "我就能",
+          "type": "M"
+        },
+        {
+          "id": "S0168L03",
+          "known": "be able to come and help",
+          "target": "能来帮忙",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "help",
+          "帮忙",
+          null,
+          1
+        ],
+        [
+          "I can help",
+          "我能帮忙",
+          null,
+          2
+        ],
+        [
+          "I want to help",
+          "我想帮忙",
+          null,
+          3
+        ],
+        [
+          "come and help",
+          "来帮忙",
+          null,
+          3
+        ],
+        [
+          "I'll be able to help",
+          "我就能帮忙",
+          null,
+          4
+        ],
+        [
+          "can you help me",
+          "你能帮我忙吗",
+          null,
+          4
+        ],
+        [
+          "I want to come and help",
+          "我想来帮忙",
+          null,
+          5
+        ],
+        [
+          "and then I can help you",
+          "然后我能帮你",
+          null,
+          5
+        ],
+        [
+          "I'll be able to come and help tomorrow",
+          "我明天就能来帮忙",
+          null,
+          6
+        ],
+        [
+          "and then I'll be able to help you",
+          "然后我就能帮你",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0168L05": {
+      "lego": [
+        "[completion particle]",
+        "了"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0168L01",
+          "known": "and then",
+          "target": "然后",
+          "type": "A"
+        },
+        {
+          "id": "S0168L02",
+          "known": "I'll be able to",
+          "target": "我就能",
+          "type": "M"
+        },
+        {
+          "id": "S0168L03",
+          "known": "be able to come and help",
+          "target": "能来帮忙",
+          "type": "M"
+        },
+        {
+          "id": "S0168L04",
+          "known": "help",
+          "target": "帮忙",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "done",
+          "了",
+          null,
+          1
+        ],
+        [
+          "I'm done",
+          "我完成了",
+          null,
+          2
+        ],
+        [
+          "I can speak now",
+          "我现在会说了",
+          null,
+          3
+        ],
+        [
+          "I learned it",
+          "我学会了",
+          null,
+          3
+        ],
+        [
+          "and then I'll be able to come and help",
+          "然后我就能来帮忙了",
+          null,
+          4
+        ],
+        [
+          "I finished the whole thing",
+          "我完成整个东西了",
+          null,
+          4
+        ],
+        [
+          "I'm trying to understand what you mean",
+          "我在试着理解你的意思了",
+          null,
+          5
+        ],
+        [
+          "I can help you tomorrow afternoon",
+          "我明天下午能帮你了",
+          null,
+          5
+        ],
+        [
+          "and then I'll be able to help you",
+          "然后我就能帮你了",
+          null,
+          6
+        ],
+        [
+          "I'm not sure if I can come and help tomorrow",
+          "我不确定我明天能不能来帮忙了",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    }
+  }
+}

@@ -1,0 +1,467 @@
+{
+  "legos": {
+    "S0160L01": {
+      "lego": [
+        "this word",
+        "这个词"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "this word",
+          "这个词",
+          null,
+          1
+        ],
+        [
+          "I know this word",
+          "我知道这个词",
+          null,
+          2
+        ],
+        [
+          "I want to learn this word",
+          "我想学习这个词",
+          null,
+          2
+        ],
+        [
+          "I'm trying to learn this word",
+          "我在试着学习这个词",
+          null,
+          3
+        ],
+        [
+          "Can you tell me this word",
+          "你能告诉我这个词吗",
+          null,
+          4
+        ],
+        [
+          "I don't know what this word means",
+          "我不知道这个词是什么意思",
+          null,
+          4
+        ],
+        [
+          "I'm trying to say this word in Chinese",
+          "我在试着用中文说这个词",
+          null,
+          5
+        ],
+        [
+          "I hope you can tell me this word",
+          "我希望你能告诉我这个词",
+          null,
+          5
+        ],
+        [
+          "Can you tell me what this word means in Chinese",
+          "你能告诉我这个词用中文是什么意思吗",
+          null,
+          6
+        ],
+        [
+          "I'm not sure if I can say this word correctly",
+          "我不确定我能不能正确地说这个词",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["这", "this"],
+        ["个", "measure word"],
+        ["词", "word"]
+      ]
+    },
+    "S0160L02": {
+      "lego": [
+        "say this word",
+        "说这个词"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0160L01",
+          "lego": ["this word", "这个词"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "say this word",
+          "说这个词",
+          null,
+          1
+        ],
+        [
+          "I want to say this word",
+          "我想说这个词",
+          null,
+          2
+        ],
+        [
+          "Can you say this word",
+          "你能说这个词吗",
+          null,
+          2
+        ],
+        [
+          "I'm trying to say this word",
+          "我在试着说这个词",
+          null,
+          3
+        ],
+        [
+          "I hope I can say this word",
+          "我希望我能说这个词",
+          null,
+          4
+        ],
+        [
+          "Can you tell me how to say this word",
+          "你能告诉我怎么说这个词吗",
+          null,
+          4
+        ],
+        [
+          "I'm trying to learn how to say this word",
+          "我在试着学习怎么说这个词",
+          null,
+          5
+        ],
+        [
+          "I want to say this word in Chinese",
+          "我想用中文说这个词",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if I can say this word correctly",
+          "我不确定我能不能正确地说这个词",
+          null,
+          6
+        ],
+        [
+          "Can you tell me how to say this word in Chinese",
+          "你能告诉我怎么用中文说这个词吗",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["说", "say"],
+        ["这", "this"],
+        ["个", "measure word"],
+        ["词", "word"]
+      ]
+    },
+    "S0160L03": {
+      "lego": [
+        "say in Chinese",
+        "用中文说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0160L01",
+          "lego": ["this word", "这个词"]
+        },
+        {
+          "id": "S0160L02",
+          "lego": ["say this word", "说这个词"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "say in Chinese",
+          "用中文说",
+          null,
+          1
+        ],
+        [
+          "I want to say in Chinese",
+          "我想用中文说",
+          null,
+          2
+        ],
+        [
+          "Can you say in Chinese",
+          "你能用中文说吗",
+          null,
+          2
+        ],
+        [
+          "I'm trying to say in Chinese",
+          "我在试着用中文说",
+          null,
+          3
+        ],
+        [
+          "I hope I can say in Chinese",
+          "我希望我能用中文说",
+          null,
+          4
+        ],
+        [
+          "Can you tell me how to say in Chinese",
+          "你能告诉我怎么用中文说吗",
+          null,
+          4
+        ],
+        [
+          "I'm trying to learn how to say in Chinese",
+          "我在试着学习怎么用中文说",
+          null,
+          5
+        ],
+        [
+          "I want to say something else in Chinese",
+          "我想用中文说点别的",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if I can say this word in Chinese",
+          "我不确定我能不能用中文说这个词",
+          null,
+          6
+        ],
+        [
+          "Can you tell me how to say this word in Chinese correctly",
+          "你能告诉我怎么正确地用中文说这个词吗",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["用", "use/with"],
+        ["中文", "Chinese language"],
+        ["说", "say"]
+      ]
+    },
+    "S0160L04": {
+      "lego": [
+        "say this word in Chinese",
+        "用中文说这个词"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0160L01",
+          "lego": ["this word", "这个词"]
+        },
+        {
+          "id": "S0160L02",
+          "lego": ["say this word", "说这个词"]
+        },
+        {
+          "id": "S0160L03",
+          "lego": ["say in Chinese", "用中文说"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "say this word in Chinese",
+          "用中文说这个词",
+          null,
+          1
+        ],
+        [
+          "I want to say this word in Chinese",
+          "我想用中文说这个词",
+          null,
+          2
+        ],
+        [
+          "Can you say this word in Chinese",
+          "你能用中文说这个词吗",
+          null,
+          3
+        ],
+        [
+          "I'm trying to say this word in Chinese",
+          "我在试着用中文说这个词",
+          null,
+          3
+        ],
+        [
+          "I hope I can say this word in Chinese",
+          "我希望我能用中文说这个词",
+          null,
+          4
+        ],
+        [
+          "Can you tell me how to say this word in Chinese",
+          "你能告诉我怎么用中文说这个词吗",
+          null,
+          4
+        ],
+        [
+          "I'm trying to learn how to say this word in Chinese",
+          "我在试着学习怎么用中文说这个词",
+          null,
+          5
+        ],
+        [
+          "I want to learn how to say this word in Chinese correctly",
+          "我想学习怎么正确地用中文说这个词",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if I can say this word in Chinese correctly",
+          "我不确定我能不能正确地用中文说这个词",
+          null,
+          6
+        ],
+        [
+          "Can you tell me if I can say this word in Chinese correctly",
+          "你能告诉我我能不能正确地用中文说这个词吗",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["用", "use/with"],
+        ["中文", "Chinese language"],
+        ["说", "say"],
+        ["这", "this"],
+        ["个", "measure word"],
+        ["词", "word"]
+      ]
+    },
+    "S0160L06": {
+      "lego": [
+        "how do you say",
+        "你怎么说"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0160L01",
+          "lego": ["this word", "这个词"]
+        },
+        {
+          "id": "S0160L02",
+          "lego": ["say this word", "说这个词"]
+        },
+        {
+          "id": "S0160L03",
+          "lego": ["say in Chinese", "用中文说"]
+        },
+        {
+          "id": "S0160L04",
+          "lego": ["say this word in Chinese", "用中文说这个词"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "how do you say",
+          "你怎么说",
+          null,
+          1
+        ],
+        [
+          "how do you say this",
+          "你怎么说这个",
+          null,
+          2
+        ],
+        [
+          "how do you say this word",
+          "你怎么说这个词",
+          null,
+          2
+        ],
+        [
+          "how do you say in Chinese",
+          "你怎么用中文说",
+          null,
+          3
+        ],
+        [
+          "how do you say this word in Chinese",
+          "你怎么用中文说这个词",
+          null,
+          4
+        ],
+        [
+          "Can you tell me how do you say this",
+          "你能告诉我你怎么说这个吗",
+          null,
+          4
+        ],
+        [
+          "I want to know how do you say this word",
+          "我想知道你怎么说这个词",
+          null,
+          5
+        ],
+        [
+          "Can you tell me how do you say this word in Chinese",
+          "你能告诉我你怎么用中文说这个词吗",
+          null,
+          5
+        ],
+        [
+          "I'm trying to learn how do you say this word in Chinese",
+          "我在试着学习你怎么用中文说这个词",
+          null,
+          6
+        ],
+        [
+          "I hope you can tell me how do you say this word in Chinese correctly",
+          "我希望你能告诉我你怎么正确地用中文说这个词",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["你", "you"],
+        ["怎么", "how"],
+        ["说", "say"]
+      ]
+    }
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "legos": {
+    "S0158L01": {
+      "type": "M",
+      "practice_phrases": [
+        [
+          "Let's talk.",
+          "我们谈吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk now.",
+          "我们现在谈吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk about something else.",
+          "我们谈点别的吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk about it tomorrow.",
+          "我们明天谈它吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk when you arrive there tomorrow.",
+          "我们明天你到那里时谈吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk about what will happen next.",
+          "我们谈谈接下来会发生什么吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk about where we want to go next month.",
+          "我们谈谈下个月我们想去哪里吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk about something else when we meet on Saturday night.",
+          "我们星期六晚上见面时谈点别的吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk tomorrow morning about what you want to do.",
+          "我们明天早上谈谈你想做什么吧。",
+          null,
+          1
+        ],
+        [
+          "Let's talk about whether we can go to a restaurant tonight.",
+          "我们谈谈我们今晚能不能去餐厅吧。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
+        "let's talk",
+        "我们谈吧"
+      ]
+    },
+    "S0158L02": {
+      "lego": [
+        "something else",
+        "点别的"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0158L01",
+          "lego": ["let's talk", "我们谈吧"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "something else",
+          "点别的",
+          null,
+          1
+        ],
+        [
+          "I want something else",
+          "我想要点别的",
+          null,
+          2
+        ],
+        [
+          "let's do something else",
+          "我们做点别的吧",
+          null,
+          3
+        ],
+        [
+          "I don't mind something else",
+          "我不介意点别的",
+          null,
+          3
+        ],
+        [
+          "I hope you'll finish something else",
+          "我希望你完成点别的",
+          null,
+          4
+        ],
+        [
+          "Can you tell me something else",
+          "你能告诉我点别的吗",
+          null,
+          4
+        ],
+        [
+          "I want to learn something else now",
+          "我现在想学习点别的",
+          null,
+          5
+        ],
+        [
+          "I'm trying to say something else",
+          "我在试着说点别的",
+          null,
+          5
+        ],
+        [
+          "I hope you'll finish something else soon",
+          "我希望你很快完成点别的",
+          null,
+          5
+        ],
+        [
+          "Can you tell me what something else is",
+          "你能告诉我点别的是什么吗",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["点", "a bit/some"],
+        ["别的", "else/other"]
+      ]
+    },
+    "S0158L03": {
+      "lego": [
+        "talk about something else",
+        "谈点别的"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0158L01",
+          "lego": ["let's talk", "我们谈吧"]
+        },
+        {
+          "id": "S0158L02",
+          "lego": ["something else", "点别的"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "talk about something else",
+          "谈点别的",
+          null,
+          1
+        ],
+        [
+          "let's talk about something else",
+          "我们谈点别的吧",
+          null,
+          2
+        ],
+        [
+          "I want to talk about something else",
+          "我想谈点别的",
+          null,
+          3
+        ],
+        [
+          "I'm trying to talk about something else",
+          "我在试着谈点别的",
+          null,
+          3
+        ],
+        [
+          "Can we talk about something else now",
+          "我们现在能谈点别的吗",
+          null,
+          4
+        ],
+        [
+          "I don't mind if we talk about something else",
+          "我不介意我们谈点别的",
+          null,
+          4
+        ],
+        [
+          "I hope we can talk about something else soon",
+          "我希望我们很快能谈点别的",
+          null,
+          5
+        ],
+        [
+          "Let's talk about something else on Saturday night",
+          "我们星期六晚上谈点别的吧",
+          null,
+          5
+        ],
+        [
+          "I want to talk about something else tomorrow morning",
+          "我明天早上想谈点别的",
+          null,
+          6
+        ],
+        [
+          "Can you tell me what we should talk about something else",
+          "你能告诉我我们应该谈点别的什么吗",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["谈", "talk/discuss"],
+        ["点", "a bit/some"],
+        ["别的", "else/other"]
+      ]
+    }
+  }
+}

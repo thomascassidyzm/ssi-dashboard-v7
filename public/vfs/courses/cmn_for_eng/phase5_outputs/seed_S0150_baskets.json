@@ -1,0 +1,100 @@
+{
+  "legos": {
+    "S0150L01": {
+      "lego": ["can you tell me what your name is","你能告诉我你的名字是什么吗"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Can you tell me what your name is","你能告诉我你的名字是什么吗",null,1],
+        ["Can you tell me what your name is today","你能今天告诉我你的名字是什么吗",null,2],
+        ["Can you tell me what your name is now","你能现在告诉我你的名字是什么吗",null,3],
+        ["Can you tell me what your name is, please","你能告诉我你的名字是什么吗，拜托",null,3],
+        ["I'm sorry, can you tell me what your name is","对不起，你能告诉我你的名字是什么吗",null,4],
+        ["Can you tell me what your name is again","你能再告诉我你的名字是什么吗",null,4],
+        ["Can you tell me what your name is? I can't see it","你能告诉我你的名字是什么吗？我看不到",null,5],
+        ["I'm sorry, but can you tell me what your name is","对不起，但你能告诉我你的名字是什么吗",null,5],
+        ["Can you tell me what your name is? Everything is okay, I just forgot","你能告诉我你的名字是什么吗？一切都好，我只是忘了",null,6],
+        ["I'm very grateful if you can tell me what your name is again","如果你能再告诉我你的名字是什么，我会很感激",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0150L01",
+        "seed_context": {
+          "known": "Can you tell me what your name is?",
+          "target": "你能告诉我你的名字是什么吗？"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0150L02": {
+      "lego": ["can you tell me","你能告诉我"],
+      "type": "M",
+      "current_seed_legos_available": [["can you tell me what your name is","你能告诉我你的名字是什么吗"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Can you tell me","你能告诉我",null,1],
+        ["Can you tell me now","你能现在告诉我",null,2],
+        ["Can you tell me what happened","你能告诉我发生了什么",null,3],
+        ["Can you tell me your name","你能告诉我你的名字",null,3],
+        ["Can you tell me what this is","你能告诉我这是什么",null,4],
+        ["Can you tell me why you're nervous","你能告诉我你为什么紧张",null,4],
+        ["Can you tell me what you're trying to show me","你能告诉我你试图给我看什么",null,5],
+        ["Can you tell me what your name is","你能告诉我你的名字是什么",null,5],
+        ["I'm sorry, can you tell me what the same thing is","对不起，你能告诉我同一件事是什么",null,6],
+        ["Can you tell me what you were talking about earlier","你能告诉我你之前在谈论什么",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0150L02",
+        "seed_context": {
+          "known": "Can you tell me what your name is?",
+          "target": "你能告诉我你的名字是什么吗？"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0150L03": {
+      "lego": ["what your name is","你的名字是什么"],
+      "type": "M",
+      "current_seed_legos_available": [["can you tell me what your name is","你能告诉我你的名字是什么吗"],["can you tell me","你能告诉我"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["What your name is","你的名字是什么",null,1],
+        ["I know what your name is","我知道你的名字是什么",null,2],
+        ["Can you tell me what your name is","你能告诉我你的名字是什么",null,3],
+        ["I can't see what your name is","我看不到你的名字是什么",null,3],
+        ["I want to know what your name is","我想知道你的名字是什么",null,4],
+        ["I can't remember what your name is","我不记得你的名字是什么",null,4],
+        ["I'm sorry, can you tell me what your name is","对不起，你能告诉我你的名字是什么",null,5],
+        ["I'm trying to see what your name is","我试图看到你的名字是什么",null,5],
+        ["Can you tell me what your name is again, please","你能再告诉我你的名字是什么吗，拜托",null,6],
+        ["I'm grateful if you can tell me what your name is","如果你能告诉我你的名字是什么，我会很感激",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0150L03",
+        "seed_context": {
+          "known": "Can you tell me what your name is?",
+          "target": "你能告诉我你的名字是什么吗？"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    }
+  }
+}

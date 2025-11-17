@@ -1,0 +1,300 @@
+{
+  "legos": {
+    "S0167L01": {
+      "lego": [
+        "what do you need to do",
+        "你需要做什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "what do you need to do",
+          "你需要做什么",
+          null,
+          1
+        ],
+        [
+          "what do you need to do now",
+          "你现在需要做什么",
+          null,
+          2
+        ],
+        [
+          "what do you need to do today",
+          "你今天需要做什么",
+          null,
+          3
+        ],
+        [
+          "I want to know what you need to do",
+          "我想知道你需要做什么",
+          null,
+          3
+        ],
+        [
+          "what do you need to do on Sunday",
+          "你星期天需要做什么",
+          null,
+          4
+        ],
+        [
+          "I'm not sure what you need to do",
+          "我不确定你需要做什么",
+          null,
+          4
+        ],
+        [
+          "what do you need to do in the morning",
+          "你早上需要做什么",
+          null,
+          5
+        ],
+        [
+          "I want to know what you need to do today",
+          "我想知道你今天需要做什么",
+          null,
+          5
+        ],
+        [
+          "what do you need to do tomorrow morning",
+          "你明天早上需要做什么",
+          null,
+          6
+        ],
+        [
+          "I'm trying to understand what you need to do",
+          "我在试着理解你需要做什么",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "需要",
+          "need to"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0167L02": {
+      "lego": [
+        "what (someone) needs to do",
+        "需要做什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0167L01",
+          "known": "what do you need to do",
+          "target": "你需要做什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what needs to do",
+          "需要做什么",
+          null,
+          1
+        ],
+        [
+          "I need to know what needs to do",
+          "我需要知道需要做什么",
+          null,
+          2
+        ],
+        [
+          "what he needs to do",
+          "他需要做什么",
+          null,
+          3
+        ],
+        [
+          "what she needs to do today",
+          "她今天需要做什么",
+          null,
+          3
+        ],
+        [
+          "what I need to do tomorrow",
+          "我明天需要做什么",
+          null,
+          4
+        ],
+        [
+          "I'm not sure what needs to do",
+          "我不确定需要做什么",
+          null,
+          4
+        ],
+        [
+          "what he needs to do in Chinese",
+          "他用中文需要做什么",
+          null,
+          5
+        ],
+        [
+          "I want to know what she needs to do",
+          "我想知道她需要做什么",
+          null,
+          5
+        ],
+        [
+          "what I need to do on Sunday morning",
+          "我星期天早上需要做什么",
+          null,
+          6
+        ],
+        [
+          "I'm trying to understand what needs to do",
+          "我在试着理解需要做什么",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "需要",
+          "need to"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0167L03": {
+      "lego": [
+        "tomorrow afternoon",
+        "明天下午"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0167L01",
+          "known": "what do you need to do",
+          "target": "你需要做什么",
+          "type": "M"
+        },
+        {
+          "id": "S0167L02",
+          "known": "what (someone) needs to do",
+          "target": "需要做什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "tomorrow afternoon",
+          "明天下午",
+          null,
+          1
+        ],
+        [
+          "see you tomorrow afternoon",
+          "明天下午见",
+          null,
+          2
+        ],
+        [
+          "I can come tomorrow afternoon",
+          "我明天下午能来",
+          null,
+          3
+        ],
+        [
+          "let's talk tomorrow afternoon",
+          "我们明天下午谈吧",
+          null,
+          3
+        ],
+        [
+          "I'll be able to help tomorrow afternoon",
+          "我明天下午就能帮忙",
+          null,
+          4
+        ],
+        [
+          "what do you need to do tomorrow afternoon",
+          "你明天下午需要做什么",
+          null,
+          4
+        ],
+        [
+          "I want to come and help tomorrow afternoon",
+          "我明天下午想来帮忙",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if I can come tomorrow afternoon",
+          "我不确定我明天下午能不能来",
+          null,
+          5
+        ],
+        [
+          "what do you think you need to do tomorrow afternoon",
+          "你认为你明天下午需要做什么",
+          null,
+          6
+        ],
+        [
+          "I'm trying to know what I need to do tomorrow afternoon",
+          "我在试着知道我明天下午需要做什么",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "明天",
+          "tomorrow"
+        ],
+        [
+          "下午",
+          "afternoon"
+        ]
+      ]
+    }
+  }
+}

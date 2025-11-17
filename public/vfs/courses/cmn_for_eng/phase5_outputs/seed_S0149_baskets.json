@@ -1,0 +1,163 @@
+{
+  "legos": {
+    "S0149L01": {
+      "lego": ["this isn't very difficult","这不是很难"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["This isn't very difficult","这不是很难",null,1],
+        ["This isn't very difficult today","这今天不是很难",null,2],
+        ["This isn't very difficult to fix","这不是很难修理",null,3],
+        ["This isn't very difficult to answer","这不是很难回答",null,3],
+        ["This isn't very difficult to see","这不是很难看到",null,4],
+        ["This isn't very difficult for me","这对我来说不是很难",null,4],
+        ["This isn't very difficult to fix now","这现在不是很难修理",null,5],
+        ["This isn't very difficult to answer today","这今天不是很难回答",null,5],
+        ["This isn't very difficult, so I can help","这不是很难，所以我可以帮助",null,6],
+        ["This isn't very difficult, so I'm not nervous","这不是很难，所以我不紧张",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0149L01",
+        "seed_context": {
+          "known": "This isn't very difficult, so I hope you'll finish soon.",
+          "target": "这不是很难，所以我希望你很快完成。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0149L02": {
+      "lego": ["so I hope","所以我希望"],
+      "type": "M",
+      "current_seed_legos_available": [["this isn't very difficult","这不是很难"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["So I hope","所以我希望",null,1],
+        ["So I hope today","所以我今天希望",null,2],
+        ["So I hope you can help","所以我希望你能帮助",null,3],
+        ["So I hope you will answer","所以我希望你会回答",null,3],
+        ["So I hope everything is okay","所以我希望一切都好",null,4],
+        ["So I hope you are not nervous","所以我希望你不紧张",null,4],
+        ["So I hope you can fix it soon","所以我希望你能很快修理它",null,5],
+        ["So I hope you will try to help","所以我希望你会试图帮助",null,5],
+        ["This isn't very difficult, so I hope you can help","这不是很难，所以我希望你能帮助",null,6],
+        ["This isn't very difficult, so I hope everything is okay","这不是很难，所以我希望一切都好",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0149L02",
+        "seed_context": {
+          "known": "This isn't very difficult, so I hope you'll finish soon.",
+          "target": "这不是很难，所以我希望你很快完成。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0149L03": {
+      "lego": ["I hope you'll finish soon","我希望你很快完成"],
+      "type": "M",
+      "current_seed_legos_available": [["this isn't very difficult","这不是很难"],["so I hope","所以我希望"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I hope you'll finish soon","我希望你很快完成",null,1],
+        ["I hope you'll finish soon today","我希望你今天很快完成",null,2],
+        ["I hope you'll finish soon now","我希望你现在很快完成",null,3],
+        ["I hope you'll finish soon tomorrow","我希望你明天很快完成",null,3],
+        ["So I hope you'll finish soon","所以我希望你很快完成",null,4],
+        ["I hope you'll finish soon this morning","我希望你今天早上很快完成",null,4],
+        ["So I hope you'll finish soon today","所以我希望你今天很快完成",null,5],
+        ["I hope you'll finish soon and help me","我希望你很快完成并帮助我",null,5],
+        ["This isn't very difficult, so I hope you'll finish soon","这不是很难，所以我希望你很快完成",null,6],
+        ["I hope you'll finish soon so we can talk about it","我希望你很快完成，这样我们可以谈论它",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0149L03",
+        "seed_context": {
+          "known": "This isn't very difficult, so I hope you'll finish soon.",
+          "target": "这不是很难，所以我希望你很快完成。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0149L04": {
+      "lego": ["you'll finish soon","你很快完成"],
+      "type": "M",
+      "current_seed_legos_available": [["this isn't very difficult","这不是很难"],["so I hope","所以我希望"],["I hope you'll finish soon","我希望你很快完成"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["You'll finish soon","你很快完成",null,1],
+        ["You'll finish soon today","你今天很快完成",null,2],
+        ["I hope you'll finish soon","我希望你很快完成",null,3],
+        ["So you'll finish soon","所以你很快完成",null,3],
+        ["You'll finish soon tomorrow","你明天很快完成",null,4],
+        ["You'll finish soon this morning","你今天早上很快完成",null,4],
+        ["So I hope you'll finish soon","所以我希望你很快完成",null,5],
+        ["I hope you'll finish soon today","我希望你今天很快完成",null,5],
+        ["You'll finish soon and then we can talk","你很快完成，然后我们可以谈话",null,6],
+        ["This isn't very difficult, so I hope you'll finish soon","这不是很难，所以我希望你很快完成",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0149L04",
+        "seed_context": {
+          "known": "This isn't very difficult, so I hope you'll finish soon.",
+          "target": "这不是很难，所以我希望你很快完成。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0149L05": {
+      "lego": ["soon","很快"],
+      "type": "A",
+      "current_seed_legos_available": [["this isn't very difficult","这不是很难"],["so I hope","所以我希望"],["I hope you'll finish soon","我希望你很快完成"],["you'll finish soon","你很快完成"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Soon","很快",null,1],
+        ["Finish soon","很快完成",null,1],
+        ["I hope soon","我希望很快",null,2],
+        ["You'll finish soon","你很快完成",null,2],
+        ["I will answer soon","我很快会回答",null,3],
+        ["We can try soon","我们可以很快试试",null,3],
+        ["I hope you'll finish soon","我希望你很快完成",null,4],
+        ["I will fix it soon","我很快会修理它",null,4],
+        ["I hope we can meet soon","我希望我们很快能见面",null,5],
+        ["So I hope you'll finish soon","所以我希望你很快完成",null,5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0149L05",
+        "seed_context": {
+          "known": "This isn't very difficult, so I hope you'll finish soon.",
+          "target": "这不是很难，所以我希望你很快完成。"
+        }
+      }
+    }
+  }
+}

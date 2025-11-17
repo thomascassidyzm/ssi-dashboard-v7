@@ -1,0 +1,407 @@
+{
+  "legos": {
+    "S0140L02": {
+      "lego": [
+        "I can't see",
+        "我看不到"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I can't see",
+          "我看不到",
+          null,
+          1
+        ],
+        [
+          "I can't see you",
+          "我看不到你",
+          null,
+          2
+        ],
+        [
+          "I can't see it now",
+          "我现在看不到它",
+          null,
+          3
+        ],
+        [
+          "I can't see what you mean",
+          "我看不到你的意思",
+          null,
+          3
+        ],
+        [
+          "I'm sorry I can't see",
+          "对不起我看不到",
+          null,
+          4
+        ],
+        [
+          "I can't see what you want",
+          "我看不到你想要什么",
+          null,
+          4
+        ],
+        [
+          "I can't see what you're trying to say",
+          "我看不到你试图说什么",
+          null,
+          6
+        ],
+        [
+          "I'm not sure why I can't see",
+          "我不确定为什么我看不到",
+          null,
+          5
+        ],
+        [
+          "I can't see it because it's too far",
+          "我看不到它因为太远了",
+          null,
+          6
+        ],
+        [
+          "I'm sorry I can't see what you're talking about",
+          "对不起我看不到你在说什么",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "看不到",
+          "can't see"
+        ]
+      ]
+    },
+    "S0140L03": {
+      "lego": [
+        "show me",
+        "给我看"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0140L02",
+          "known": "I can't see",
+          "target": "我看不到",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "show me",
+          "给我看",
+          null,
+          1
+        ],
+        [
+          "please show me",
+          "请给我看",
+          null,
+          2
+        ],
+        [
+          "can you show me",
+          "你能给我看吗",
+          null,
+          3
+        ],
+        [
+          "show me that",
+          "给我看那个",
+          null,
+          2
+        ],
+        [
+          "I can't see, show me",
+          "我看不到，给我看",
+          null,
+          4
+        ],
+        [
+          "can you show me how",
+          "你能给我看怎么做吗",
+          null,
+          4
+        ],
+        [
+          "please show me what you mean",
+          "请给我看你的意思",
+          null,
+          5
+        ],
+        [
+          "I'm trying to learn, please show me",
+          "我在试着学习，请给我看",
+          null,
+          6
+        ],
+        [
+          "I can't see it, can you show me",
+          "我看不到它，你能给我看吗",
+          null,
+          6
+        ],
+        [
+          "I'm sorry I can't see, can you show me again",
+          "对不起我看不到，你能再给我看一次吗",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "给",
+          "give/to"
+        ],
+        [
+          "我",
+          "me"
+        ],
+        [
+          "看",
+          "see/look"
+        ]
+      ]
+    },
+    "S0140L04": {
+      "lego": [
+        "trying to show me",
+        "试图给我看"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0140L02",
+          "known": "I can't see",
+          "target": "我看不到",
+          "type": "M"
+        },
+        {
+          "id": "S0140L03",
+          "known": "show me",
+          "target": "给我看",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "trying to show me",
+          "试图给我看",
+          null,
+          1
+        ],
+        [
+          "you're trying to show me",
+          "你试图给我看",
+          null,
+          2
+        ],
+        [
+          "what are you trying to show me",
+          "你试图给我看什么",
+          null,
+          3
+        ],
+        [
+          "I know you're trying to show me",
+          "我知道你试图给我看",
+          null,
+          3
+        ],
+        [
+          "I can't see what you're trying to show me",
+          "我看不到你试图给我看的",
+          null,
+          4
+        ],
+        [
+          "thank you for trying to show me",
+          "谢谢你试图给我看",
+          null,
+          4
+        ],
+        [
+          "I'm sorry I can't see what you're trying to show me",
+          "对不起我看不到你试图给我看的",
+          null,
+          5
+        ],
+        [
+          "I don't know what you're trying to show me",
+          "我不知道你试图给我看什么",
+          null,
+          6
+        ],
+        [
+          "can you explain what you're trying to show me",
+          "你能解释你试图给我看什么吗",
+          null,
+          6
+        ],
+        [
+          "I'm not sure what you're trying to show me here",
+          "我不确定你在这里试图给我看什么",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "试图",
+          "trying to"
+        ],
+        [
+          "给我看",
+          "show me"
+        ]
+      ]
+    },
+    "S0140L05": {
+      "lego": [
+        "what you're trying to show me",
+        "你试图给我看的东西"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0140L02",
+          "known": "I can't see",
+          "target": "我看不到",
+          "type": "M"
+        },
+        {
+          "id": "S0140L03",
+          "known": "show me",
+          "target": "给我看",
+          "type": "M"
+        },
+        {
+          "id": "S0140L04",
+          "known": "trying to show me",
+          "target": "试图给我看",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what you're trying to show me",
+          "你试图给我看的东西",
+          null,
+          1
+        ],
+        [
+          "I see what you're trying to show me",
+          "我看到你试图给我看的东西",
+          null,
+          2
+        ],
+        [
+          "I can't see what you're trying to show me",
+          "我看不到你试图给我看的东西",
+          null,
+          3
+        ],
+        [
+          "I understand what you're trying to show me",
+          "我明白你试图给我看的东西",
+          null,
+          3
+        ],
+        [
+          "I want to see what you're trying to show me",
+          "我想看到你试图给我看的东西",
+          null,
+          4
+        ],
+        [
+          "I'm sorry I can't see what you're trying to show me",
+          "对不起我看不到你试图给我看的东西",
+          null,
+          4
+        ],
+        [
+          "I don't know what you're trying to show me here",
+          "我不知道你在这里试图给我看的东西",
+          null,
+          6
+        ],
+        [
+          "can you explain what you're trying to show me",
+          "你能解释你试图给我看的东西吗",
+          null,
+          5
+        ],
+        [
+          "I'm trying to understand what you're trying to show me",
+          "我在试着理解你试图给我看的东西",
+          null,
+          6
+        ],
+        [
+          "I'm not sure if I understand what you're trying to show me",
+          "我不确定我是否明白你试图给我看的东西",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "试图",
+          "trying to"
+        ],
+        [
+          "给我看",
+          "show me"
+        ],
+        [
+          "的东西",
+          "thing/what"
+        ]
+      ]
+    }
+  }
+}

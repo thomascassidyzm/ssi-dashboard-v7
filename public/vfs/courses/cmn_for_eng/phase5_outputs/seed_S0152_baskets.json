@@ -1,0 +1,667 @@
+{
+  "legos": {
+    "S0152L01": {
+      "lego": [
+        "if I had known",
+        "如果我知道"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "if I had known",
+          "如果我知道",
+          null,
+          1
+        ],
+        [
+          "if I had known earlier",
+          "如果我早知道",
+          null,
+          2
+        ],
+        [
+          "if I had known this",
+          "如果我知道这个",
+          null,
+          3
+        ],
+        [
+          "if I had known before",
+          "如果我之前知道",
+          null,
+          3
+        ],
+        [
+          "if I had known today",
+          "如果我今天知道",
+          null,
+          4
+        ],
+        [
+          "if I had known your name",
+          "如果我知道你的名字",
+          null,
+          4
+        ],
+        [
+          "if I had known you were here",
+          "如果我知道你在这里",
+          null,
+          5
+        ],
+        [
+          "if I had known what to say",
+          "如果我知道说什么",
+          null,
+          5
+        ],
+        [
+          "if I had known you wanted to speak",
+          "如果我知道你想说话",
+          null,
+          6
+        ],
+        [
+          "if I had known what you were trying to say",
+          "如果我知道你想说什么",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "如果",
+          "if"
+        ],
+        [
+          "我",
+          "I"
+        ],
+        [
+          "知道",
+          "know/knew"
+        ]
+      ]
+    },
+    "S0152L02": {
+      "lego": [
+        "what you wanted",
+        "你想要什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0152L01",
+          "known": "if I had known",
+          "target": "如果我知道",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what you wanted",
+          "你想要什么",
+          null,
+          1
+        ],
+        [
+          "I know what you wanted",
+          "我知道你想要什么",
+          null,
+          2
+        ],
+        [
+          "what you wanted to say",
+          "你想说什么",
+          null,
+          3
+        ],
+        [
+          "what you wanted to do",
+          "你想做什么",
+          null,
+          3
+        ],
+        [
+          "I understand what you wanted",
+          "我明白你想要什么",
+          null,
+          4
+        ],
+        [
+          "what you wanted from me",
+          "你想从我这里要什么",
+          null,
+          4
+        ],
+        [
+          "if I had known what you wanted",
+          "如果我知道你想要什么",
+          null,
+          5
+        ],
+        [
+          "I'm trying to understand what you wanted",
+          "我在试着理解你想要什么",
+          null,
+          6
+        ],
+        [
+          "I'm not sure what you wanted to say",
+          "我不确定你想说什么",
+          null,
+          6
+        ],
+        [
+          "can you tell me what you wanted to do",
+          "你能告诉我你想做什么吗",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "想要",
+          "want/wanted"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0152L03": {
+      "lego": [
+        "knew what you wanted",
+        "知道你想要什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0152L01",
+          "known": "if I had known",
+          "target": "如果我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0152L02",
+          "known": "what you wanted",
+          "target": "你想要什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "knew what you wanted",
+          "知道你想要什么",
+          null,
+          1
+        ],
+        [
+          "I knew what you wanted",
+          "我知道你想要什么",
+          null,
+          2
+        ],
+        [
+          "I knew what you wanted today",
+          "我今天知道你想要什么",
+          null,
+          3
+        ],
+        [
+          "knew what you wanted to say",
+          "知道你想说什么",
+          null,
+          3
+        ],
+        [
+          "I knew what you wanted to do",
+          "我知道你想做什么",
+          null,
+          4
+        ],
+        [
+          "she knew what you wanted",
+          "她知道你想要什么",
+          null,
+          4
+        ],
+        [
+          "if I had known what you wanted",
+          "如果我知道你想要什么",
+          null,
+          5
+        ],
+        [
+          "I didn't know what you wanted earlier",
+          "我之前不知道你想要什么",
+          null,
+          6
+        ],
+        [
+          "I'm trying to understand what you wanted to say",
+          "我在试着理解你想说什么",
+          null,
+          7
+        ],
+        [
+          "I wasn't sure if I knew what you wanted",
+          "我不确定我知不知道你想要什么",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "知道",
+          "know/knew"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "想要",
+          "want/wanted"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0152L04": {
+      "lego": [
+        "if I had known what you wanted",
+        "如果我知道你想要什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0152L01",
+          "known": "if I had known",
+          "target": "如果我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0152L02",
+          "known": "what you wanted",
+          "target": "你想要什么",
+          "type": "M"
+        },
+        {
+          "id": "S0152L03",
+          "known": "knew what you wanted",
+          "target": "知道你想要什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "if I had known what you wanted",
+          "如果我知道你想要什么",
+          null,
+          1
+        ],
+        [
+          "if I knew what you wanted",
+          "如果我知道你想要什么",
+          null,
+          2
+        ],
+        [
+          "if I had known what you wanted to say",
+          "如果我知道你想说什么",
+          null,
+          3
+        ],
+        [
+          "if I had known what you wanted to do",
+          "如果我知道你想做什么",
+          null,
+          3
+        ],
+        [
+          "if I had known what you wanted earlier",
+          "如果我早知道你想要什么",
+          null,
+          4
+        ],
+        [
+          "if I had known what you wanted from me",
+          "如果我知道你想从我这里要什么",
+          null,
+          4
+        ],
+        [
+          "if I had known what you wanted I would help",
+          "如果我知道你想要什么我会帮助",
+          null,
+          6
+        ],
+        [
+          "if I had known what you wanted I would say it",
+          "如果我知道你想要什么我会说",
+          null,
+          6
+        ],
+        [
+          "if I had known what you wanted to do today",
+          "如果我知道你今天想做什么",
+          null,
+          7
+        ],
+        [
+          "I wasn't sure if I had known what you wanted",
+          "我不确定我知不知道你想要什么",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "如果",
+          "if"
+        ],
+        [
+          "我",
+          "I"
+        ],
+        [
+          "知道",
+          "know/knew"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "想要",
+          "want/wanted"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0152L05": {
+      "lego": [
+        "I would have done it differently",
+        "我会做得不同"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0152L01",
+          "known": "if I had known",
+          "target": "如果我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0152L02",
+          "known": "what you wanted",
+          "target": "你想要什么",
+          "type": "M"
+        },
+        {
+          "id": "S0152L03",
+          "known": "knew what you wanted",
+          "target": "知道你想要什么",
+          "type": "M"
+        },
+        {
+          "id": "S0152L04",
+          "known": "if I had known what you wanted",
+          "target": "如果我知道你想要什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I would have done it differently",
+          "我会做得不同",
+          null,
+          1
+        ],
+        [
+          "done it differently",
+          "做得不同",
+          null,
+          2
+        ],
+        [
+          "I would do it differently",
+          "我会做得不同",
+          null,
+          3
+        ],
+        [
+          "I would have done it differently today",
+          "我今天会做得不同",
+          null,
+          3
+        ],
+        [
+          "I would have said it differently",
+          "我会说得不同",
+          null,
+          4
+        ],
+        [
+          "she would have done it differently",
+          "她会做得不同",
+          null,
+          4
+        ],
+        [
+          "I would have done it differently if I knew",
+          "如果我知道我会做得不同",
+          null,
+          5
+        ],
+        [
+          "if I had known what you wanted I would have done it differently",
+          "如果我知道你想要什么我会做得不同",
+          null,
+          8
+        ],
+        [
+          "I would have said it differently if I knew earlier",
+          "如果我早知道我会说得不同",
+          null,
+          6
+        ],
+        [
+          "I'm trying to do it differently this time",
+          "我这次试着做得不同",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "会",
+          "would"
+        ],
+        [
+          "做得",
+          "do/done"
+        ],
+        [
+          "不同",
+          "differently/different"
+        ]
+      ]
+    },
+    "S0152L06": {
+      "lego": [
+        "do differently",
+        "做得不同"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0152L01",
+          "known": "if I had known",
+          "target": "如果我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0152L02",
+          "known": "what you wanted",
+          "target": "你想要什么",
+          "type": "M"
+        },
+        {
+          "id": "S0152L03",
+          "known": "knew what you wanted",
+          "target": "知道你想要什么",
+          "type": "M"
+        },
+        {
+          "id": "S0152L04",
+          "known": "if I had known what you wanted",
+          "target": "如果我知道你想要什么",
+          "type": "M"
+        },
+        {
+          "id": "S0152L05",
+          "known": "I would have done it differently",
+          "target": "我会做得不同",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "do differently",
+          "做得不同",
+          null,
+          1
+        ],
+        [
+          "I do differently",
+          "我做得不同",
+          null,
+          2
+        ],
+        [
+          "do it differently today",
+          "今天做得不同",
+          null,
+          3
+        ],
+        [
+          "try to do differently",
+          "试着做得不同",
+          null,
+          3
+        ],
+        [
+          "I want to do differently",
+          "我想做得不同",
+          null,
+          4
+        ],
+        [
+          "I can do it differently",
+          "我可以做得不同",
+          null,
+          4
+        ],
+        [
+          "I'm trying to do it differently now",
+          "我现在试着做得不同",
+          null,
+          5
+        ],
+        [
+          "I would do it differently if I knew",
+          "如果我知道我会做得不同",
+          null,
+          6
+        ],
+        [
+          "I want to do it differently this time",
+          "我这次想做得不同",
+          null,
+          6
+        ],
+        [
+          "if I had known what you wanted I would do it differently",
+          "如果我知道你想要什么我会做得不同",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "做得",
+          "do"
+        ],
+        [
+          "不同",
+          "differently/different"
+        ]
+      ]
+    }
+  }
+}

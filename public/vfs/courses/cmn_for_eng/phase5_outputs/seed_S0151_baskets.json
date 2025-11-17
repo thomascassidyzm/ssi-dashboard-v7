@@ -1,0 +1,196 @@
+{
+  "legos": {
+    "S0151L01": {
+      "lego": ["that wasn't","那不是"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["That wasn't","那不是",null,1],
+        ["That wasn't good","那不是好的",null,2],
+        ["That wasn't very difficult","那不是很难",null,3],
+        ["That wasn't very kind","那不是很友好",null,3],
+        ["That wasn't what I wanted","那不是我想要的",null,4],
+        ["That wasn't the same thing","那不是同一件事",null,4],
+        ["That wasn't what I was hoping for","那不是我希望的",null,5],
+        ["That wasn't very patient of you","那不是你很耐心",null,5],
+        ["That wasn't what I was trying to show you","那不是我试图给你看的",null,6],
+        ["That wasn't what we were talking about earlier","那不是我们之前谈论的",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0151L01",
+        "seed_context": {
+          "known": "That wasn't what I was hoping would happen.",
+          "target": "那不是我希望会发生的事。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0151L02": {
+      "lego": ["I was hoping","我希望"],
+      "type": "M",
+      "current_seed_legos_available": [["that wasn't","那不是"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I was hoping","我希望",null,1],
+        ["I was hoping today","我今天希望",null,2],
+        ["I was hoping you could help","我希望你能帮助",null,3],
+        ["I was hoping to finish soon","我希望很快完成",null,3],
+        ["That wasn't what I was hoping","那不是我希望的",null,4],
+        ["I was hoping you would answer","我希望你会回答",null,4],
+        ["I was hoping you could tell me","我希望你能告诉我",null,5],
+        ["I was hoping to see you earlier","我希望早点见到你",null,5],
+        ["That wasn't what I was hoping would happen","那不是我希望会发生的",null,6],
+        ["I was hoping you could fix it soon","我希望你能很快修理它",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0151L02",
+        "seed_context": {
+          "known": "That wasn't what I was hoping would happen.",
+          "target": "那不是我希望会发生的事。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0151L03": {
+      "lego": ["would happen","会发生"],
+      "type": "M",
+      "current_seed_legos_available": [["that wasn't","那不是"],["I was hoping","我希望"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Would happen","会发生",null,1],
+        ["This would happen","这会发生",null,2],
+        ["What would happen","什么会发生",null,3],
+        ["That would happen soon","那会很快发生",null,3],
+        ["I was hoping this would happen","我希望这会发生",null,4],
+        ["What would happen today","今天什么会发生",null,4],
+        ["That wasn't what would happen","那不是会发生的",null,5],
+        ["I was hoping nothing would happen","我希望什么都不会发生",null,5],
+        ["I can tell you what would happen","我能告诉你什么会发生",null,6],
+        ["That wasn't what I was hoping would happen","那不是我希望会发生的",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0151L03",
+        "seed_context": {
+          "known": "That wasn't what I was hoping would happen.",
+          "target": "那不是我希望会发生的事。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0151L04": {
+      "lego": ["hoping would happen","希望会发生"],
+      "type": "M",
+      "current_seed_legos_available": [["that wasn't","那不是"],["I was hoping","我希望"],["would happen","会发生"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Hoping would happen","希望会发生",null,1],
+        ["I was hoping would happen","我希望会发生",null,2],
+        ["What I was hoping would happen","我希望会发生的",null,3],
+        ["I was hoping this would happen","我希望这会发生",null,3],
+        ["That wasn't what I was hoping would happen","那不是我希望会发生的",null,4],
+        ["I was hoping something would happen soon","我希望某事很快会发生",null,4],
+        ["What I was hoping would happen today","我希望今天会发生的",null,5],
+        ["I was hoping you would tell me what would happen","我希望你会告诉我什么会发生",null,5],
+        ["That wasn't what I was hoping would happen to you","那不是我希望会发生在你身上的",null,6],
+        ["I was hoping nothing difficult would happen","我希望没有困难的事会发生",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0151L04",
+        "seed_context": {
+          "known": "That wasn't what I was hoping would happen.",
+          "target": "那不是我希望会发生的事。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0151L05": {
+      "lego": ["what would happen","会发生的事"],
+      "type": "M",
+      "current_seed_legos_available": [["that wasn't","那不是"],["I was hoping","我希望"],["would happen","会发生"],["hoping would happen","希望会发生"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["What would happen","会发生的事",null,1],
+        ["What would happen today","今天会发生的事",null,2],
+        ["I know what would happen","我知道会发生的事",null,3],
+        ["Can you tell me what would happen","你能告诉我会发生的事",null,3],
+        ["That wasn't what would happen","那不是会发生的事",null,4],
+        ["I can't see what would happen","我看不到会发生的事",null,4],
+        ["I was hoping to know what would happen","我希望知道会发生的事",null,5],
+        ["That wasn't what I was hoping would happen","那不是我希望会发生的事",null,5],
+        ["Can you tell me what would happen tomorrow","你能告诉我明天会发生的事",null,6],
+        ["I'm trying to see what would happen if we tried to fix it","我试图看看如果我们试图修理它会发生什么",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0151L05",
+        "seed_context": {
+          "known": "That wasn't what I was hoping would happen.",
+          "target": "那不是我希望会发生的事。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0151L06": {
+      "lego": ["what I was hoping would happen","我希望会发生的事"],
+      "type": "M",
+      "current_seed_legos_available": [["that wasn't","那不是"],["I was hoping","我希望"],["would happen","会发生"],["hoping would happen","希望会发生"],["what would happen","会发生的事"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["What I was hoping would happen","我希望会发生的事",null,1],
+        ["That wasn't what I was hoping would happen","那不是我希望会发生的事",null,2],
+        ["What I was hoping would happen today","我希望今天会发生的事",null,3],
+        ["That's what I was hoping would happen","那是我希望会发生的事",null,3],
+        ["That wasn't what I was hoping would happen to you","那不是我希望会发生在你身上的事",null,4],
+        ["What I was hoping would happen didn't happen","我希望会发生的事没有发生",null,4],
+        ["That wasn't what I was hoping would happen this morning","那不是我希望今天早上会发生的事",null,5],
+        ["Can you tell me what I was hoping would happen","你能告诉我我希望会发生的事",null,5],
+        ["That wasn't what I was hoping would happen, so I'm not happy","那不是我希望会发生的事，所以我不高兴",null,6],
+        ["What I was hoping would happen was that everything would be okay","我希望会发生的事是一切都会好",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0151L06",
+        "seed_context": {
+          "known": "That wasn't what I was hoping would happen.",
+          "target": "那不是我希望会发生的事。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+    }
+  }
+}
