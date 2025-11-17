@@ -61,6 +61,23 @@ export default {
     _basketsCache: {},
 
     async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false }) {
+      // Route Phase 5 requests to the new Phase 5 basket server (layered architecture)
+      if (phaseSelection === 'phase5') {
+        const courseCode = `${target}_for_${known}`
+        const response = await axios.post('http://localhost:3459/start', {
+          courseCode,
+          startSeed,
+          endSeed,
+          target: target.charAt(0).toUpperCase() + target.slice(1), // Capitalize for display
+          known: known.charAt(0).toUpperCase() + known.slice(1)
+        })
+        return {
+          ...response.data,
+          courseCode // Add courseCode to response for compatibility
+        }
+      }
+
+      // All other phases use the orchestrator
       const response = await api.post('/api/courses/generate', {
         target,
         known,
