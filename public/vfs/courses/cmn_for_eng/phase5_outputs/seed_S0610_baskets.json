@@ -1,0 +1,98 @@
+{
+  "S0610L01": {
+    "lego": ["he needs","他需要"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["He needs help.","他需要帮助。",null,2],
+      ["He needs to wait.","他需要等待。",null,2],
+      ["He needs somewhere to live.","他需要地方住。",null,3],
+      ["He needs to stay together.","他需要住在一起。",null,3],
+      ["He needs to do different things.","他需要做不同的事。",null,4],
+      ["He needs somewhere to live at the time.","他那时需要地方住。",null,4],
+      ["He needs help because we didn't have anything.","他需要帮助，因为我们什么都没有。",null,5],
+      ["He needs to do the sensible thing.","他需要做明智的事。",null,5],
+      ["He needs to know what would have been sensible.","他需要知道什么会是明智的。",null,6],
+      ["He needs somewhere to stay because we didn't have anywhere to live then.","他需要住的地方，因为我们那时没有地方住。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0610L01",
+      "seed_context": {
+        "known": "他需要找工作。",
+        "target": "He needs to look for work."
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0610L02": {
+    "lego": ["need to look for work","需要找工作"],
+    "type": "M",
+    "current_seed_legos_available": [["he needs","他需要"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Need to look for work.","需要找工作。",null,1],
+      ["We need to look for work.","我们需要找工作。",null,2],
+      ["I need to look for work now.","我现在需要找工作。",null,3],
+      ["They need to look for work together.","他们需要一起找工作。",null,3],
+      ["We need to look for work in the first place.","我们最初需要找工作。",null,4],
+      ["He needs to look for work at the time.","他那时需要找工作。",null,4],
+      ["We didn't have anywhere to live, so we need to look for work.","我们没有地方住，所以需要找工作。",null,6],
+      ["They need to look for work because they needed help.","他们需要找工作，因为他们需要帮助。",null,5],
+      ["I need to look for work, and that would have been the sensible thing.","我需要找工作，那会是明智的事。",null,7],
+      ["We need to look for work because we didn't have anything at the time.","我们需要找工作，因为我们那时什么都没有。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0610L02",
+      "seed_context": {
+        "known": "他需要找工作。",
+        "target": "He needs to look for work."
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0610L03": {
+    "lego": ["look for work","找工作"],
+    "type": "M",
+    "current_seed_legos_available": [["he needs","他需要"],["need to look for work","需要找工作"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Look for work.","找工作。",null,1],
+      ["I'll look for work.","我会找工作。",null,2],
+      ["We can look for work together.","我们可以一起找工作。",null,3],
+      ["They look for work here.","他们在这里找工作。",null,3],
+      ["We would have looked for work then.","我们那时会找工作。",null,4],
+      ["I'd have looked for work in the first place.","我最初会找工作。",null,4],
+      ["He needs to look for work because we needed help.","他需要找工作，因为我们需要帮助。",null,5],
+      ["We didn't have anywhere to live, so we look for work.","我们没有地方住，所以找工作。",null,6],
+      ["I'd have looked for work if I'd known what I know now.","如果我知道我现在知道的，我会找工作。",null,7],
+      ["They would have looked for work at the time, and that would have been sensible.","他们那时会找工作，那会是明智的。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0610L03",
+      "seed_context": {
+        "known": "他需要找工作。",
+        "target": "He needs to look for work."
+      }
+    },
+    "components": [[null,null],[null,null]]
+  }
+}
