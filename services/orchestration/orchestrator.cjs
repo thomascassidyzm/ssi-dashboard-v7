@@ -1584,7 +1584,7 @@ app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
   try {
     // Proxy to Phase 5 server
     const axios = require('axios');
-    const phase5Response = await axios.post(`${PHASE_5_URL}/regenerate`, {
+    const phase5Response = await axios.post(`${PHASE_SERVERS[5]}/regenerate`, {
       courseCode,
       legoIds,
       target,
