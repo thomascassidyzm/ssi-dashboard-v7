@@ -122,7 +122,7 @@
             </div>
 
             <!-- Infinitive Check (English only) -->
-            <div v-if="course.source_language === 'English'" class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
               <h4 class="font-semibold text-emerald-400 mb-2">Infinitive Check</h4>
               <p class="text-sm text-slate-400 mb-4">
                 Validate infinitive forms in English LEGOs
