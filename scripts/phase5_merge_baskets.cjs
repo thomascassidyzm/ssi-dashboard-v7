@@ -133,7 +133,7 @@ async function mergePhase5Baskets(courseDir) {
   // Read all seed output files
   const files = await fs.readdir(outputsDir);
   const seedFiles = files
-    .filter(f => f.match(/^seed_s\d+\.json$/))
+    .filter(f => f.match(/^seed_S\d{4}_baskets\.json$/))
     .sort();
 
   if (seedFiles.length === 0) {

@@ -470,10 +470,9 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
     const outputPath = path.join(baseCourseDir, 'lego_baskets.json');
     const scriptPath = path.join(__dirname, '../../scripts/watch_and_merge_branches.cjs');
 
-    // Use custom pattern if provided (for regeneration), otherwise default
-    const branchPattern = customPattern
-      ? `claude/${customPattern}-*`
-      : `claude/baskets-${courseCode}-*`;
+    // Simple pattern: ANY claude/ branch created after job start
+    // The watcher script filters by timestamp (isNew), not by name pattern
+    const branchPattern = 'claude/';
 
     console.log(`\n[Phase 5] 👀 Starting branch watcher for ${courseCode}...`);
     console.log(`[Phase 5]    Pattern: ${branchPattern}`);
