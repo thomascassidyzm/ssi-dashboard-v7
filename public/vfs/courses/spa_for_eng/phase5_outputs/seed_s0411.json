@@ -1,0 +1,323 @@
+{
+  "legos": {
+    "S0411L02": {
+      "lego": [
+        "we would like to reserve",
+        "nos gustaría reservar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0411L01",
+          "known": "we would like",
+          "target": "nos gustaría",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Nos gustaría reservar.",
+          "We would like to reserve.",
+          null,
+          1
+        ],
+        [
+          "Nos gustaría reservar hoy.",
+          "We would like to reserve today.",
+          null,
+          2
+        ],
+        [
+          "No deberíamos reservar ahora.",
+          "We shouldn't reserve now.",
+          null,
+          3
+        ],
+        [
+          "¿Deberíamos reservar mañana?",
+          "Should we reserve tomorrow?",
+          null,
+          3
+        ],
+        [
+          "Nos gustaría reservar antes del jueves.",
+          "We would like to reserve before Thursday.",
+          null,
+          4
+        ],
+        [
+          "Sí, nos gustaría reservar ahora.",
+          "Yes, we would like to reserve now.",
+          null,
+          4
+        ],
+        [
+          "Nos gustaría reservar, pero no estoy seguro.",
+          "We would like to reserve, but I'm not sure.",
+          null,
+          5
+        ],
+        [
+          "¿Nos gustaría reservar si es posible?",
+          "Would we like to reserve if it's possible?",
+          null,
+          6
+        ],
+        [
+          "No deberíamos esperar reservar antes de mañana.",
+          "We shouldn't expect to reserve before tomorrow.",
+          null,
+          6
+        ],
+        [
+          "Sí, nos gustaría reservar, y deberíamos intentar hoy.",
+          "Yes, we would like to reserve, and we should try today.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "nos",
+          "us"
+        ],
+        [
+          "gustaría",
+          "would like"
+        ],
+        [
+          "reservar",
+          "to reserve"
+        ]
+      ]
+    },
+    "S0411L03": {
+      "lego": [
+        "to reserve a table",
+        "reservar una mesa"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0411L01",
+          "known": "we would like",
+          "target": "nos gustaría",
+          "type": "M"
+        },
+        {
+          "id": "S0411L02",
+          "known": "we would like to reserve",
+          "target": "nos gustaría reservar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Reservar una mesa.",
+          "To reserve a table.",
+          null,
+          1
+        ],
+        [
+          "Nos gustaría reservar una mesa.",
+          "We would like to reserve a table.",
+          null,
+          2
+        ],
+        [
+          "Deberíamos reservar una mesa hoy.",
+          "We should reserve a table today.",
+          null,
+          3
+        ],
+        [
+          "¿Tenemos que reservar una mesa?",
+          "Do we have to reserve a table?",
+          null,
+          3
+        ],
+        [
+          "Sí, nos gustaría reservar una mesa.",
+          "Yes, we would like to reserve a table.",
+          null,
+          4
+        ],
+        [
+          "No deberíamos esperar reservar una mesa.",
+          "We shouldn't expect to reserve a table.",
+          null,
+          4
+        ],
+        [
+          "Nos gustaría reservar una mesa antes del jueves.",
+          "We would like to reserve a table before Thursday.",
+          null,
+          5
+        ],
+        [
+          "¿Deberíamos preguntar si tenemos que reservar una mesa?",
+          "Should we ask if we have to reserve a table?",
+          null,
+          7
+        ],
+        [
+          "Sí, sería mejor reservar una mesa directamente.",
+          "Yes, it would be better to reserve a table directly.",
+          null,
+          6
+        ],
+        [
+          "Nos gustaría reservar una mesa, pero no estoy seguro de que estará bien.",
+          "We would like to reserve a table, but I'm not sure it will be okay.",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "reservar",
+          "to reserve"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "mesa",
+          "table"
+        ]
+      ]
+    },
+    "S0411L04": {
+      "lego": [
+        "a table for four",
+        "una mesa para cuatro"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0411L01",
+          "known": "we would like",
+          "target": "nos gustaría",
+          "type": "M"
+        },
+        {
+          "id": "S0411L02",
+          "known": "we would like to reserve",
+          "target": "nos gustaría reservar",
+          "type": "M"
+        },
+        {
+          "id": "S0411L03",
+          "known": "to reserve a table",
+          "target": "reservar una mesa",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Una mesa para cuatro.",
+          "A table for four.",
+          null,
+          1
+        ],
+        [
+          "Nos gustaría una mesa para cuatro.",
+          "We would like a table for four.",
+          null,
+          2
+        ],
+        [
+          "Nos gustaría reservar una mesa para cuatro.",
+          "We would like to reserve a table for four.",
+          null,
+          3
+        ],
+        [
+          "Deberíamos reservar una mesa para cuatro.",
+          "We should reserve a table for four.",
+          null,
+          3
+        ],
+        [
+          "Sí, nos gustaría reservar una mesa para cuatro.",
+          "Yes, we would like to reserve a table for four.",
+          null,
+          4
+        ],
+        [
+          "¿Tenemos que reservar una mesa para cuatro?",
+          "Do we have to reserve a table for four?",
+          null,
+          4
+        ],
+        [
+          "Nos gustaría reservar una mesa para cuatro esta noche.",
+          "We would like to reserve a table for four tonight.",
+          null,
+          5
+        ],
+        [
+          "¿Deberíamos reservar una mesa para cuatro antes del jueves?",
+          "Should we reserve a table for four before Thursday?",
+          null,
+          6
+        ],
+        [
+          "Sí, nos gustaría reservar una mesa para cuatro, pero no estoy seguro.",
+          "Yes, we would like to reserve a table for four, but I'm not sure.",
+          null,
+          7
+        ],
+        [
+          "Nos gustaría reservar una mesa para cuatro hoy, si es posible.",
+          "We would like to reserve a table for four today, if it's possible.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "mesa",
+          "table"
+        ],
+        [
+          "para",
+          "for"
+        ],
+        [
+          "cuatro",
+          "four"
+        ]
+      ]
+    }
+  }
+}

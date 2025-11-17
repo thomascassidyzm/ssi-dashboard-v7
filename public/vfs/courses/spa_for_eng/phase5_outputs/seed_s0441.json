@@ -1,0 +1,42 @@
+{
+  "legos": {
+    "S0441L01": {
+      "lego": [
+        "an approach",
+        "un acercamiento"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["un acercamiento", "an approach", null, 1],
+        ["hay un acercamiento", "there's an approach", null, 2],
+        ["necesitan un acercamiento", "they need an approach", null, 2],
+        ["podrían tomar un acercamiento", "they could take an approach", null, 3],
+        ["hay un acercamiento que necesitan", "there's an approach they need", null, 3],
+        ["todavía no están preparados para un acercamiento", "they're not ready yet for an approach", null, 4],
+        ["podrían significar que necesitan un acercamiento", "they could mean that they need an approach", null, 5],
+        ["no querían decidir lo que debería hacer para un acercamiento", "they didn't want to decide what he should do for an approach", null, 6],
+        ["hay un acercamiento si quisieran", "there's an approach if they wanted to", null, 4],
+        ["un acercamiento", "an approach", null, 1]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "un",
+          "an"
+        ],
+        [
+          "acercamiento",
+          "approach"
+        ]
+      ]
+    }
+  }
+}

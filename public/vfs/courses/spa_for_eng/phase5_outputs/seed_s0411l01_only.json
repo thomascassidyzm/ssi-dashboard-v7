@@ -1,0 +1,92 @@
+{
+  "legos": {
+    "S0411L01": {
+      "lego": [
+        "we would like",
+        "nos gustaría"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "we would like",
+          "nos gustaría",
+          null,
+          1
+        ],
+        [
+          "would like",
+          "gustaría",
+          null,
+          1
+        ],
+        [
+          "yes, we would like",
+          "sí, nos gustaría",
+          null,
+          3
+        ],
+        [
+          "we would like one",
+          "nos gustaría uno",
+          null,
+          3
+        ],
+        [
+          "no, we would like to go",
+          "no, nos gustaría ir",
+          null,
+          4
+        ],
+        [
+          "we would like to ask",
+          "nos gustaría preguntar",
+          null,
+          4
+        ],
+        [
+          "we would like to go straight home",
+          "nos gustaría ir directamente a casa",
+          null,
+          6
+        ],
+        [
+          "yes, we would like to stop somewhere for food",
+          "sí, nos gustaría parar en algún lugar para comida",
+          null,
+          8
+        ],
+        [
+          "we would like to remain quiet for as long as possible",
+          "nos gustaría permanecer callados durante tanto tiempo como sea posible",
+          null,
+          9
+        ],
+        [
+          "we would like to set a good example",
+          "nos gustaría establecer un buen ejemplo",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "nos",
+          "us"
+        ],
+        [
+          "gustaría",
+          "would like"
+        ]
+      ]
+    }
+  }
+}

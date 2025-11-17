@@ -1,0 +1,61 @@
+{
+  "legos": {
+    "S0436L05": {
+      "lego": [
+        "they need",
+        "que necesitan"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0436L02",
+          "known": "there's",
+          "target": "hay",
+          "type": "A"
+        },
+        {
+          "id": "S0436L03",
+          "known": "a minimum number",
+          "target": "un número mínimo",
+          "type": "M"
+        },
+        {
+          "id": "S0436L04",
+          "known": "a minimum number they need",
+          "target": "un número mínimo que necesitan",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["que necesitan", "they need", null, 1],
+        ["hay un número mínimo que necesitan", "there's a minimum number they need", null, 2],
+        ["hay un número mínimo que necesitan para ellos", "there's a minimum number they need for them", null, 3],
+        ["no hay un número mínimo de estudiantes que necesitan", "there's no minimum number of students they need", null, 4],
+        ["podrían reducir el número de estudiantes que necesitan", "they could cut the number of students they need", null, 4],
+        ["eso sería perfecto si hay un número mínimo que necesitan", "that would be perfect if there's a minimum number they need", null, 5],
+        ["no hay un número mínimo de estudiantes que necesitan el martes", "there's no minimum number of students they need on Tuesday", null, 5],
+        ["podrían significar que hay un número mínimo que necesitan", "they could mean that there's a minimum number they need", null, 5],
+        ["todavía no están preparados pero hay un número mínimo que necesitan", "they're not ready yet but there's a minimum number they need", null, 6],
+        ["no hay un número mínimo que necesitan", "no there's a minimum number they need", null, 3]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "que",
+          "they"
+        ],
+        [
+          "necesitan",
+          "need"
+        ]
+      ]
+    }
+  }
+}

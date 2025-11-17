@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0416L03": {
+      "lego": [
+        "next year",
+        "el próximo año"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0416L01",
+          "known": "they want to lead",
+          "target": "quieren liderar",
+          "type": "M"
+        },
+        {
+          "id": "S0416L02",
+          "known": "to lead the way",
+          "target": "liderar el camino",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "next year",
+          "el próximo año"
+        ],
+        [
+          "they want to lead next year",
+          "quieren liderar el próximo año"
+        ],
+        [
+          "we would like to reserve next year",
+          "nos gustaría reservar el próximo año"
+        ],
+        [
+          "that would be a problem next year",
+          "eso sería un problema el próximo año"
+        ],
+        [
+          "we could have a table next year",
+          "podríamos tener una mesa el próximo año"
+        ],
+        [
+          "we shouldn't try next year",
+          "no deberíamos intentar el próximo año"
+        ],
+        [
+          "I'm sure it will be okay next year",
+          "estoy seguro de que estará bien el próximo año"
+        ],
+        [
+          "it doesn't matter what we do next year",
+          "no importa lo que hagamos el próximo año"
+        ],
+        [
+          "we would like to reserve a table for four next year",
+          "nos gustaría reservar una mesa para cuatro el próximo año"
+        ],
+        [
+          "They want to lead the way next year.",
+          "Quieren liderar el camino el próximo año."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0416L03",
+        "seed_context": {
+          "known": "They want to lead the way next year.",
+          "target": "Quieren liderar el camino el próximo año."
+        }
+      },
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "próximo",
+          "next"
+        ],
+        [
+          "año",
+          "year"
+        ]
+      ]
+    }
+  }
+}

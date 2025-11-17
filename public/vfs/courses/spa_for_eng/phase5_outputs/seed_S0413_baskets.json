@@ -1,0 +1,210 @@
+{
+  "legos": {
+    "S0413L04": {
+      "lego": [
+        "close to the edge",
+        "cerca del borde"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0413L01",
+          "known": "we could fall",
+          "target": "podríamos caer",
+          "type": "M"
+        },
+        {
+          "id": "S0413L02",
+          "known": "if we go",
+          "target": "si vamos",
+          "type": "M"
+        },
+        {
+          "id": "S0413L03",
+          "known": "too close",
+          "target": "demasiado cerca",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "close to the edge",
+          "cerca del borde"
+        ],
+        [
+          "if we go close to the edge",
+          "si vamos cerca del borde"
+        ],
+        [
+          "it will be close to the edge",
+          "estará cerca del borde"
+        ],
+        [
+          "that will be close to the edge",
+          "eso estará cerca del borde"
+        ],
+        [
+          "we could be close to the edge",
+          "podríamos estar cerca del borde"
+        ],
+        [
+          "we shouldn't be close to the edge",
+          "no deberíamos estar cerca del borde"
+        ],
+        [
+          "we could fall if we go close to the edge",
+          "podríamos caer si vamos cerca del borde"
+        ],
+        [
+          "I'm sure it will be close to the edge",
+          "estoy seguro de que estará cerca del borde"
+        ],
+        [
+          "it doesn't matter if we're close to the edge",
+          "no importa si estamos cerca del borde"
+        ],
+        [
+          "we should ask if we have to be close to the edge",
+          "deberíamos preguntar si tenemos que estar cerca del borde"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0413L04",
+        "seed_context": {
+          "known": "We could fall if we go too close to the edge.",
+          "target": "Podríamos caer si vamos demasiado cerca del borde."
+        }
+      },
+      "components": [
+        [
+          "cerca",
+          "close"
+        ],
+        [
+          "del",
+          "to the"
+        ],
+        [
+          "borde",
+          "edge"
+        ]
+      ]
+    },
+    "S0413L05": {
+      "lego": [
+        "too close to the edge",
+        "demasiado cerca del borde"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0413L01",
+          "known": "we could fall",
+          "target": "podríamos caer",
+          "type": "M"
+        },
+        {
+          "id": "S0413L02",
+          "known": "if we go",
+          "target": "si vamos",
+          "type": "M"
+        },
+        {
+          "id": "S0413L03",
+          "known": "too close",
+          "target": "demasiado cerca",
+          "type": "M"
+        },
+        {
+          "id": "S0413L04",
+          "known": "close to the edge",
+          "target": "cerca del borde",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "too close to the edge",
+          "demasiado cerca del borde"
+        ],
+        [
+          "if we go too close to the edge",
+          "si vamos demasiado cerca del borde"
+        ],
+        [
+          "it will be too close to the edge",
+          "estará demasiado cerca del borde"
+        ],
+        [
+          "that will be too close to the edge",
+          "eso estará demasiado cerca del borde"
+        ],
+        [
+          "we could be too close to the edge",
+          "podríamos estar demasiado cerca del borde"
+        ],
+        [
+          "we shouldn't be too close to the edge",
+          "no deberíamos estar demasiado cerca del borde"
+        ],
+        [
+          "we could fall if we go too close to the edge",
+          "podríamos caer si vamos demasiado cerca del borde"
+        ],
+        [
+          "I'm sure it will be too close to the edge",
+          "estoy seguro de que estará demasiado cerca del borde"
+        ],
+        [
+          "it doesn't matter if we're too close to the edge",
+          "no importa si estamos demasiado cerca del borde"
+        ],
+        [
+          "We could fall if we go too close to the edge.",
+          "Podríamos caer si vamos demasiado cerca del borde."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0413L05",
+        "seed_context": {
+          "known": "We could fall if we go too close to the edge.",
+          "target": "Podríamos caer si vamos demasiado cerca del borde."
+        }
+      },
+      "components": [
+        [
+          "demasiado",
+          "too"
+        ],
+        [
+          "cerca",
+          "close"
+        ],
+        [
+          "del",
+          "to the"
+        ],
+        [
+          "borde",
+          "edge"
+        ]
+      ]
+    }
+  }
+}

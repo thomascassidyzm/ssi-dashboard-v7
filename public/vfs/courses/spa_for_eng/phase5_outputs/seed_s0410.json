@@ -1,0 +1,224 @@
+{
+  "legos": {
+    "S0410L03": {
+      "lego": [
+        "they still fight",
+        "todavía luchan"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0410L01",
+          "known": "still",
+          "target": "todavía",
+          "type": "A"
+        },
+        {
+          "id": "S0410L02",
+          "known": "they fight",
+          "target": "luchan",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "they still fight",
+          "todavía luchan",
+          null,
+          1
+        ],
+        [
+          "still fight",
+          "todavía luchan",
+          null,
+          1
+        ],
+        [
+          "no, they still fight",
+          "no, todavía luchan",
+          null,
+          3
+        ],
+        [
+          "yes, they still fight",
+          "sí, todavía luchan",
+          null,
+          3
+        ],
+        [
+          "they still fight with one",
+          "todavía luchan con uno",
+          null,
+          4
+        ],
+        [
+          "it doesn't matter, they still fight",
+          "no importa, todavía luchan",
+          null,
+          4
+        ],
+        [
+          "it doesn't matter what we do, they still fight",
+          "no importa lo que hagamos, todavía luchan",
+          null,
+          7
+        ],
+        [
+          "yes, that's the best way, they still fight",
+          "sí, esa es la mejor manera, todavía luchan",
+          null,
+          6
+        ],
+        [
+          "they still fight before Thursday",
+          "todavía luchan antes del jueves",
+          null,
+          5
+        ],
+        [
+          "no, they still fight for a happy family",
+          "no, todavía luchan para una familia feliz",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "todavía",
+          "still"
+        ],
+        [
+          "luchan",
+          "they fight"
+        ]
+      ]
+    },
+    "S0410L04": {
+      "lego": [
+        "with each other",
+        "el uno con el otro"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0410L01",
+          "known": "still",
+          "target": "todavía",
+          "type": "A"
+        },
+        {
+          "id": "S0410L02",
+          "known": "they fight",
+          "target": "luchan",
+          "type": "A"
+        },
+        {
+          "id": "S0410L03",
+          "known": "they still fight",
+          "target": "todavía luchan",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "with each other",
+          "el uno con el otro",
+          null,
+          1
+        ],
+        [
+          "one with the other",
+          "uno con el otro",
+          null,
+          2
+        ],
+        [
+          "they fight with each other",
+          "luchan el uno con el otro",
+          null,
+          3
+        ],
+        [
+          "with each other, yes",
+          "el uno con el otro, sí",
+          null,
+          3
+        ],
+        [
+          "they still fight with each other",
+          "todavía luchan el uno con el otro",
+          null,
+          4
+        ],
+        [
+          "no, with each other still",
+          "no, el uno con el otro todavía",
+          null,
+          4
+        ],
+        [
+          "it doesn't matter, they fight with each other",
+          "no importa, luchan el uno con el otro",
+          null,
+          6
+        ],
+        [
+          "we should remain quiet with each other",
+          "deberíamos permanecer callados el uno con el otro",
+          null,
+          6
+        ],
+        [
+          "yes, they still fight with each other before Thursday",
+          "sí, todavía luchan el uno con el otro antes del jueves",
+          null,
+          7
+        ],
+        [
+          "They still fight with each other.",
+          "Todavía luchan el uno con el otro.",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "uno",
+          "one"
+        ],
+        [
+          "con",
+          "with"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "otro",
+          "other"
+        ]
+      ]
+    }
+  }
+}

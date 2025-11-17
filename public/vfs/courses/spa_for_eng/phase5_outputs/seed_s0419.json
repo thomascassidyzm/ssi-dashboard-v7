@@ -1,0 +1,55 @@
+{
+  "legos": {
+    "S0419L03": {
+      "lego": [
+        "want people",
+        "que la gente"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0419L01",
+          "known": "if they want",
+          "target": "si quieren",
+          "type": "M"
+        },
+        {
+          "id": "S0419L02",
+          "known": "they want that",
+          "target": "quieren que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["la gente", "people", null, 1],
+        ["quieren que la gente", "they want people to", null, 2],
+        ["si quieren que la gente", "if they want people to", null, 3],
+        ["necesitan que la gente sirva a la comunidad", "they need people to serve the community", null, 4],
+        ["quieren que la gente lidere el camino", "they want people to lead the way", null, 4],
+        ["si quieren que la gente lidere el camino", "if they want people to lead the way", null, 5],
+        ["quieren que la gente lidere el camino el próximo año", "they want people to lead the way next year", null, 5],
+        ["si quieren que la gente lidere el camino el próximo año", "if they want people to lead the way next year", null, 6],
+        ["no querían que la gente decidiera", "they didn't want people to decide", null, 4],
+        ["podrían significar que quieren que la gente pregunte", "they could mean that they want people to ask", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "gente",
+          "people"
+        ]
+      ]
+    }
+  }
+}
