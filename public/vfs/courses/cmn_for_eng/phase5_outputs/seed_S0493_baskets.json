@@ -1,0 +1,176 @@
+{
+  "S0493L01": {
+    "lego": [
+      "next",
+      "接下来"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "next",
+        "接下来",
+        null,
+        1
+      ],
+      [
+        "what's next",
+        "接下来是什么",
+        null,
+        2
+      ],
+      [
+        "what's going to happen next",
+        "接下来会发生什么",
+        null,
+        3
+      ],
+      [
+        "I want to know what's next",
+        "我想知道接下来是什么",
+        null,
+        3
+      ],
+      [
+        "I think I know what's next",
+        "我想我知道接下来是什么",
+        null,
+        4
+      ],
+      [
+        "Can you tell me what's next",
+        "你能告诉我接下来是什么吗",
+        null,
+        4
+      ],
+      [
+        "I want to find out what happens next",
+        "我想找出接下来会发生什么",
+        null,
+        5
+      ],
+      [
+        "Do you know what's going to come next",
+        "你知道接下来会发生什么吗",
+        null,
+        5
+      ],
+      [
+        "I don't know what's going to happen next but I think it will be interesting",
+        "我不知道接下来会发生什么，但我想它会很有趣",
+        null,
+        7
+      ],
+      [
+        "What's going to come next?",
+        "接下来会发生什么？",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": []
+  },
+  "S0493L02": {
+    "lego": [
+      "what's going to happen",
+      "会发生什么"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "next",
+        "接下来"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "what's going to happen",
+        "会发生什么",
+        null,
+        3
+      ],
+      [
+        "what happens",
+        "会发生什么",
+        null,
+        2
+      ],
+      [
+        "what's going to happen next",
+        "接下来会发生什么",
+        null,
+        3
+      ],
+      [
+        "do you know what's going to happen",
+        "你知道会发生什么吗",
+        null,
+        4
+      ],
+      [
+        "I want to know what's going to happen",
+        "我想知道会发生什么",
+        null,
+        4
+      ],
+      [
+        "I don't know what's going to happen next",
+        "我不知道接下来会发生什么",
+        null,
+        5
+      ],
+      [
+        "can you tell me what's going to happen after that",
+        "你能告诉我之后会发生什么吗",
+        null,
+        6
+      ],
+      [
+        "I want to find out what's going to happen next",
+        "我想找出接下来会发生什么",
+        null,
+        6
+      ],
+      [
+        "I think I know what's going to happen but I'm not completely sure",
+        "我想我知道会发生什么，但我不完全确定",
+        null,
+        7
+      ],
+      [
+        "What's going to come next?",
+        "接下来会发生什么？",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "会",
+        "will"
+      ],
+      [
+        "发生",
+        "happen"
+      ],
+      [
+        "什么",
+        "what"
+      ]
+    ]
+  }
+}

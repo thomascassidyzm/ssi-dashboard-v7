@@ -1,0 +1,488 @@
+{
+  "S0494L01": {
+    "lego": [
+      "what happens",
+      "会发生什么"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "what happens",
+        "会发生什么",
+        null,
+        2
+      ],
+      [
+        "what happens next",
+        "接下来会发生什么",
+        null,
+        2
+      ],
+      [
+        "I don't know what happens",
+        "我不知道会发生什么",
+        null,
+        3
+      ],
+      [
+        "do you know what happens after",
+        "你知道之后会发生什么吗",
+        null,
+        3
+      ],
+      [
+        "can you tell me what happens",
+        "你能告诉我会发生什么吗",
+        null,
+        4
+      ],
+      [
+        "I want to know what happens next",
+        "我想知道接下来会发生什么",
+        null,
+        4
+      ],
+      [
+        "I want to find out what happens after that",
+        "我想找出之后会发生什么",
+        null,
+        5
+      ],
+      [
+        "do you know what happens after the first part",
+        "你知道第一部分之后会发生什么吗",
+        null,
+        6
+      ],
+      [
+        "I think I know what happens but I'm not completely sure",
+        "我想我知道会发生什么，但我不完全确定",
+        null,
+        7
+      ],
+      [
+        "can you help me understand what happens after the first part",
+        "你能帮我理解第一部分之后会发生什么吗",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "会",
+        "will"
+      ],
+      [
+        "发生",
+        "happen"
+      ],
+      [
+        "什么",
+        "what"
+      ]
+    ]
+  },
+  "S0494L02": {
+    "lego": [
+      "show",
+      "演出"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "what happens",
+        "会发生什么"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "show",
+        "演出",
+        null,
+        1
+      ],
+      [
+        "the show",
+        "这个演出",
+        null,
+        2
+      ],
+      [
+        "I love the show",
+        "我喜欢这个演出",
+        null,
+        3
+      ],
+      [
+        "the show is really interesting",
+        "这个演出真的很有趣",
+        null,
+        3
+      ],
+      [
+        "I want to see the show",
+        "我想看这个演出",
+        null,
+        4
+      ],
+      [
+        "I think the show is beautiful",
+        "我想这个演出很美",
+        null,
+        4
+      ],
+      [
+        "I want to go and see the show tonight",
+        "我想今晚去看这个演出",
+        null,
+        5
+      ],
+      [
+        "do you want to come with me to see the show",
+        "你想和我一起去看演出吗",
+        null,
+        6
+      ],
+      [
+        "I think this is the most interesting show I've ever seen",
+        "我想这是我见过的最有趣的演出",
+        null,
+        7
+      ],
+      [
+        "can you tell me what happens in the first part of the show",
+        "你能告诉我演出第一部分会发生什么吗",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": []
+  },
+  "S0494L03": {
+    "lego": [
+      "the first part",
+      "第一部分"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "what happens",
+        "会发生什么"
+      ],
+      [
+        "show",
+        "演出"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "the first part",
+        "第一部分",
+        null,
+        2
+      ],
+      [
+        "I like the first part",
+        "我喜欢第一部分",
+        null,
+        2
+      ],
+      [
+        "the first part is really interesting",
+        "第一部分真的很有趣",
+        null,
+        3
+      ],
+      [
+        "what happens in the first part",
+        "第一部分会发生什么",
+        null,
+        3
+      ],
+      [
+        "I want to know about the first part",
+        "我想知道第一部分",
+        null,
+        4
+      ],
+      [
+        "I think the first part is beautiful",
+        "我想第一部分很美",
+        null,
+        4
+      ],
+      [
+        "do you know what happens after the first part",
+        "你知道第一部分之后会发生什么吗",
+        null,
+        6
+      ],
+      [
+        "I want to find out what happens in the first part",
+        "我想找出第一部分会发生什么",
+        null,
+        6
+      ],
+      [
+        "can you tell me what happens after the first part of the show",
+        "你能告诉我演出第一部分之后会发生什么吗",
+        null,
+        8
+      ],
+      [
+        "I think the first part is the most interesting part of the show",
+        "我想第一部分是演出中最有趣的部分",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "第一",
+        "first"
+      ],
+      [
+        "部分",
+        "part"
+      ]
+    ]
+  },
+  "S0494L04": {
+    "lego": [
+      "the first part of the show",
+      "演出的第一部分"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "what happens",
+        "会发生什么"
+      ],
+      [
+        "show",
+        "演出"
+      ],
+      [
+        "the first part",
+        "第一部分"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "the first part of the show",
+        "演出的第一部分",
+        null,
+        4
+      ],
+      [
+        "I love the first part of the show",
+        "我喜欢演出的第一部分",
+        null,
+        2
+      ],
+      [
+        "the first part of the show is beautiful",
+        "演出的第一部分很美",
+        null,
+        3
+      ],
+      [
+        "what happens in the first part of the show",
+        "演出的第一部分会发生什么",
+        null,
+        4
+      ],
+      [
+        "I want to see the first part of the show",
+        "我想看演出的第一部分",
+        null,
+        4
+      ],
+      [
+        "I think the first part of the show is interesting",
+        "我想演出的第一部分很有趣",
+        null,
+        5
+      ],
+      [
+        "do you know what happens after the first part of the show",
+        "你知道演出的第一部分之后会发生什么吗",
+        null,
+        7
+      ],
+      [
+        "I want to find out what happens in the first part of the show",
+        "我想找出演出的第一部分会发生什么",
+        null,
+        7
+      ],
+      [
+        "can you tell me what happens after the first part of the show",
+        "你能告诉我演出的第一部分之后会发生什么吗",
+        null,
+        8
+      ],
+      [
+        "I think the first part of the show is the most interesting part",
+        "我想演出的第一部分是最有趣的部分",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "components": [
+      [
+        "演出",
+        "show"
+      ],
+      [
+        "的",
+        "(possessive marker)"
+      ],
+      [
+        "第一",
+        "first"
+      ],
+      [
+        "部分",
+        "part"
+      ]
+    ]
+  },
+  "S0494L05": {
+    "lego": [
+      "after the first part",
+      "第一部分之后"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "what happens",
+        "会发生什么"
+      ],
+      [
+        "show",
+        "演出"
+      ],
+      [
+        "the first part",
+        "第一部分"
+      ],
+      [
+        "the first part of the show",
+        "演出的第一部分"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "after the first part",
+        "第一部分之后",
+        null,
+        2
+      ],
+      [
+        "what happens after the first part",
+        "第一部分之后会发生什么",
+        null,
+        2
+      ],
+      [
+        "I want to know what happens after the first part",
+        "我想知道第一部分之后会发生什么",
+        null,
+        3
+      ],
+      [
+        "do you know what happens after the first part",
+        "你知道第一部分之后会发生什么吗",
+        null,
+        4
+      ],
+      [
+        "can you tell me what happens after the first part",
+        "你能告诉我第一部分之后会发生什么吗",
+        null,
+        4
+      ],
+      [
+        "I want to find out what happens after the first part",
+        "我想找出第一部分之后会发生什么",
+        null,
+        5
+      ],
+      [
+        "I think I know what happens after the first part",
+        "我想我知道第一部分之后会发生什么",
+        null,
+        5
+      ],
+      [
+        "do you know what happens after the first part of the show",
+        "你知道演出的第一部分之后会发生什么吗",
+        null,
+        7
+      ],
+      [
+        "can you help me understand what happens after the first part of the show",
+        "你能帮我理解演出的第一部分之后会发生什么吗",
+        null,
+        8
+      ],
+      [
+        "What happens after the first part of the show?",
+        "演出的第一部分之后会发生什么？",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "components": [
+      [
+        "第一",
+        "first"
+      ],
+      [
+        "部分",
+        "part"
+      ],
+      [
+        "之后",
+        "after"
+      ]
+    ]
+  }
+}
