@@ -1,0 +1,389 @@
+{
+  "S0253L01": {
+    "lego": [
+      "I should",
+      "我应该"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I should go",
+        "我应该走",
+        null,
+        1
+      ],
+      [
+        "I should help",
+        "我应该帮助",
+        null,
+        1
+      ],
+      [
+        "I should tell you",
+        "我应该告诉你",
+        null,
+        2
+      ],
+      [
+        "I should answer",
+        "我应该回答",
+        null,
+        2
+      ],
+      [
+        "I should help you",
+        "我应该帮助你",
+        null,
+        3
+      ],
+      [
+        "I should tell me something",
+        "我应该告诉我一些事情",
+        null,
+        3
+      ],
+      [
+        "I should start before you go",
+        "我应该在你走之前开始",
+        null,
+        4
+      ],
+      [
+        "I should help you finish",
+        "我应该帮助你完成",
+        null,
+        4
+      ],
+      [
+        "I should tell you something else before I go",
+        "我应该在我走之前告诉你别的事情",
+        null,
+        5
+      ],
+      [
+        "I should want to help you but I'm too busy",
+        "我应该想帮助你但我太忙了",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "应该",
+        "should"
+      ]
+    ]
+  },
+  "S0253L02": {
+    "lego": [
+      "in a few minutes",
+      "几分钟后"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I should",
+        "我应该"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'll start in a few minutes",
+        "我几分钟后开始",
+        null,
+        2
+      ],
+      [
+        "I'll go in a few minutes",
+        "我几分钟后走",
+        null,
+        2
+      ],
+      [
+        "I should start in a few minutes",
+        "我应该几分钟后开始",
+        null,
+        3
+      ],
+      [
+        "I'll help you in a few minutes",
+        "我几分钟后帮助你",
+        null,
+        3
+      ],
+      [
+        "I should answer in a few minutes",
+        "我应该几分钟后回答",
+        null,
+        4
+      ],
+      [
+        "I'll tell you in a few minutes",
+        "我几分钟后告诉你",
+        null,
+        4
+      ],
+      [
+        "I should finish in a few minutes",
+        "我应该几分钟后完成",
+        null,
+        5
+      ],
+      [
+        "I'll help you start in a few minutes",
+        "我几分钟后帮助你开始",
+        null,
+        5
+      ],
+      [
+        "I should tell you something in a few minutes",
+        "我应该几分钟后告诉你一些事情",
+        null,
+        6
+      ],
+      [
+        "I want to help you in a few minutes before I go",
+        "我想在几分钟后帮助你在我走之前",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "几",
+        "a few"
+      ],
+      [
+        "分钟",
+        "minutes"
+      ],
+      [
+        "后",
+        "after/later"
+      ]
+    ]
+  },
+  "S0253L03": {
+    "lego": [
+      "in a few minutes will be ready",
+      "几分钟后就准备好"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I should",
+        "我应该"
+      ],
+      [
+        "in a few minutes",
+        "几分钟后"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'll be ready in a few minutes",
+        "我几分钟后就准备好",
+        null,
+        2
+      ],
+      [
+        "You'll be ready in a few minutes",
+        "你几分钟后就准备好",
+        null,
+        2
+      ],
+      [
+        "I should be ready in a few minutes",
+        "我应该几分钟后就准备好",
+        null,
+        3
+      ],
+      [
+        "He'll be ready in a few minutes",
+        "他几分钟后就准备好",
+        null,
+        3
+      ],
+      [
+        "I'll be ready to start in a few minutes",
+        "我几分钟后就准备好开始",
+        null,
+        4
+      ],
+      [
+        "You should be ready in a few minutes",
+        "你应该几分钟后就准备好",
+        null,
+        4
+      ],
+      [
+        "I'll be ready to help you in a few minutes",
+        "我几分钟后就准备好帮助你",
+        null,
+        5
+      ],
+      [
+        "I should be ready to go in a few minutes",
+        "我应该几分钟后就准备好走",
+        null,
+        5
+      ],
+      [
+        "I think I'll be ready to start in a few minutes",
+        "我觉得我几分钟后就准备好开始",
+        null,
+        6
+      ],
+      [
+        "I should be ready to help you finish in a few minutes",
+        "我应该几分钟后就准备好帮助你完成",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "几",
+        "a few"
+      ],
+      [
+        "分钟",
+        "minutes"
+      ],
+      [
+        "后",
+        "after"
+      ],
+      [
+        "就",
+        "then/will"
+      ],
+      [
+        "准备好",
+        "be ready"
+      ]
+    ]
+  },
+  "S0253L04": {
+    "lego": [
+      "be ready",
+      "准备好"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I should",
+        "我应该"
+      ],
+      [
+        "in a few minutes",
+        "几分钟后"
+      ],
+      [
+        "in a few minutes will be ready",
+        "几分钟后就准备好"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "I'm ready",
+        "我准备好",
+        null,
+        1
+      ],
+      [
+        "You're ready",
+        "你准备好",
+        null,
+        1
+      ],
+      [
+        "I'm ready to start",
+        "我准备好开始",
+        null,
+        2
+      ],
+      [
+        "When will you be ready",
+        "你什么时候准备好",
+        null,
+        2
+      ],
+      [
+        "I should be ready to go",
+        "我应该准备好走",
+        null,
+        3
+      ],
+      [
+        "I'll be ready in a few minutes",
+        "我几分钟后就准备好",
+        null,
+        3
+      ],
+      [
+        "I should be ready to start soon",
+        "我应该很快准备好开始",
+        null,
+        4
+      ],
+      [
+        "I think I'll be ready to help you",
+        "我觉得我准备好帮助你",
+        null,
+        4
+      ],
+      [
+        "I should be ready to help you in a few minutes",
+        "我应该几分钟后准备好帮助你",
+        null,
+        5
+      ],
+      [
+        "I should be ready in a few minutes",
+        "我应该几分钟后就准备好",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "准备好",
+        "be ready"
+      ]
+    ]
+  }
+}
