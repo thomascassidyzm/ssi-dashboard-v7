@@ -1,0 +1,273 @@
+{
+  "S0087L01": {
+    "lego": [
+      "they are",
+      "他们是"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "they are",
+        "他们是",
+        null,
+        1
+      ],
+      [
+        "they are friends",
+        "他们是朋友",
+        null,
+        2
+      ],
+      [
+        "they are ready",
+        "他们是准备好",
+        null,
+        2
+      ],
+      [
+        "they are people",
+        "他们是人",
+        null,
+        2
+      ],
+      [
+        "they are those people",
+        "他们是那些人",
+        null,
+        2
+      ],
+      [
+        "they are not sure",
+        "他们是不确定",
+        null,
+        2
+      ],
+      [
+        "they are learning",
+        "他们是学习",
+        null,
+        2
+      ],
+      [
+        "they are happy",
+        "他们是高兴",
+        null,
+        2
+      ],
+      [
+        "they are surprised",
+        "他们是惊讶",
+        null,
+        2
+      ],
+      [
+        "they are ready to start",
+        "他们是准备好开始",
+        null,
+        3
+      ],
+      [
+        "they are not sure when",
+        "他们是不确定什么时候",
+        null,
+        3
+      ],
+      [
+        "they are learning quickly",
+        "他们是学习快",
+        null,
+        3
+      ],
+      [
+        "they are ready to start learning",
+        "他们是准备好开始学习",
+        null,
+        4
+      ],
+      [
+        "they are not sure when to start",
+        "他们是不确定什么时候开始",
+        null,
+        4
+      ],
+      [
+        "unfortunately they are not ready",
+        "不幸的是他们是不准备好",
+        null,
+        4
+      ],
+      [
+        "they are people who want to learn",
+        "他们是人想学习",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 9,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0087L01",
+      "seed_context": {
+        "known": "They are people I don't know.",
+        "target": "他们是我不认识的人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0087L05": {
+    "lego": [
+      "people I don't know",
+      "我不认识的人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "they are",
+        "他们是"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "people I don't know",
+        "我不认识的人",
+        null,
+        1
+      ],
+      [
+        "they are people I don't know",
+        "他们是我不认识的人",
+        null,
+        2
+      ],
+      [
+        "people I don't know are here",
+        "我不认识的人在这里",
+        null,
+        2
+      ],
+      [
+        "people I don't know said",
+        "我不认识的人说",
+        null,
+        2
+      ],
+      [
+        "people I don't know will wait",
+        "我不认识的人会等",
+        null,
+        2
+      ],
+      [
+        "people I don't know want to start",
+        "我不认识的人想开始",
+        null,
+        3
+      ],
+      [
+        "people I don't know are ready",
+        "我不认识的人准备好",
+        null,
+        3
+      ],
+      [
+        "people I don't know are learning",
+        "我不认识的人学习",
+        null,
+        3
+      ],
+      [
+        "unfortunately people I don't know will wait",
+        "不幸的是我不认识的人会等",
+        null,
+        4
+      ],
+      [
+        "people I don't know want to learn",
+        "我不认识的人想学习",
+        null,
+        4
+      ],
+      [
+        "people I don't know are not sure",
+        "我不认识的人不确定",
+        null,
+        4
+      ],
+      [
+        "people I don't know are ready to start",
+        "我不认识的人准备好开始",
+        null,
+        4
+      ],
+      [
+        "unfortunately people I don't know are not ready",
+        "不幸的是我不认识的人不准备好",
+        null,
+        5
+      ],
+      [
+        "people I don't know don't understand what you said",
+        "我不认识的人不理解你说的话",
+        null,
+        6
+      ],
+      [
+        "they are people I don't know",
+        "他们是我不认识的人",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 3,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0087L05",
+      "seed_context": {
+        "known": "They are people I don't know.",
+        "target": "他们是我不认识的人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
