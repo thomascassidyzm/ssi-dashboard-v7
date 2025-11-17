@@ -1,427 +1,555 @@
 {
   "legos": {
     "S0004L01": {
-      "lego_pair": [
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I want to learn some.",
+          "我想学习一些。",
+          null,
+          1
+        ],
+        [
+          "I want some now.",
+          "我现在想一些。",
+          null,
+          1
+        ],
+        [
+          "I want to learn some Chinese.",
+          "我想学习一些中文。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn some.",
+          "我在试着学习一些。",
+          null,
+          1
+        ],
+        [
+          "I want to speak some Chinese.",
+          "我想说一些中文。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn some now.",
+          "我现在在试着学习一些。",
+          null,
+          1
+        ],
+        [
+          "I want to speak some Chinese with you.",
+          "我想和你说一些中文。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to speak some Chinese.",
+          "我在试着说一些中文。",
+          null,
+          1
+        ],
+        [
+          "I want to learn some Chinese with you.",
+          "我想和你学习一些中文。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to speak some Chinese with you often.",
+          "我在试着经常和你说一些中文。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "some",
         "一些"
-      ],
-      "type": "M",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to learn some.",
-          "target": "我想学习一些。"
-        },
-        {
-          "known": "I want some now.",
-          "target": "我现在想一些。"
-        },
-        {
-          "known": "I want to learn some Chinese.",
-          "target": "我想学习一些中文。"
-        },
-        {
-          "known": "I'm trying to learn some.",
-          "target": "我在试着学习一些。"
-        },
-        {
-          "known": "I want to speak some Chinese.",
-          "target": "我想说一些中文。"
-        },
-        {
-          "known": "I'm trying to learn some now.",
-          "target": "我现在在试着学习一些。"
-        },
-        {
-          "known": "I want to speak some Chinese with you.",
-          "target": "我想和你说一些中文。"
-        },
-        {
-          "known": "I'm trying to speak some Chinese.",
-          "target": "我在试着说一些中文。"
-        },
-        {
-          "known": "I want to learn some Chinese with you.",
-          "target": "我想和你学习一些中文。"
-        },
-        {
-          "known": "I'm trying to speak some Chinese with you often.",
-          "target": "我在试着经常和你说一些中文。"
-        }
       ]
     },
     "S0004L02": {
-      "lego_pair": [
+      "type": "A",
+      "practice_phrases": [
+        [
+          "I want to learn things.",
+          "我想学习东西。",
+          null,
+          1
+        ],
+        [
+          "I want some things.",
+          "我想一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn things.",
+          "我在试着学习东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn some things.",
+          "我想学习一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn things now.",
+          "我现在想学习东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn some things.",
+          "我在试着学习一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn things with you.",
+          "我想和你学习东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn things now.",
+          "我现在在试着学习东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn some things in Chinese.",
+          "我想学习一些中文东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn some things with you often.",
+          "我在试着经常和你学习一些东西。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "things",
         "东西"
-      ],
-      "type": "A",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to learn things.",
-          "target": "我想学习东西。"
-        },
-        {
-          "known": "I want some things.",
-          "target": "我想一些东西。"
-        },
-        {
-          "known": "I'm trying to learn things.",
-          "target": "我在试着学习东西。"
-        },
-        {
-          "known": "I want to learn some things.",
-          "target": "我想学习一些东西。"
-        },
-        {
-          "known": "I want to learn things now.",
-          "target": "我现在想学习东西。"
-        },
-        {
-          "known": "I'm trying to learn some things.",
-          "target": "我在试着学习一些东西。"
-        },
-        {
-          "known": "I want to learn things with you.",
-          "target": "我想和你学习东西。"
-        },
-        {
-          "known": "I'm trying to learn things now.",
-          "target": "我现在在试着学习东西。"
-        },
-        {
-          "known": "I want to learn some things in Chinese.",
-          "target": "我想学习一些中文东西。"
-        },
-        {
-          "known": "I'm trying to learn some things with you often.",
-          "target": "我在试着经常和你学习一些东西。"
-        }
       ]
     },
     "S0004L03": {
-      "lego_pair": [
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I want to learn something.",
+          "我想学习一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want something now.",
+          "我现在想一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn something.",
+          "我在试着学习一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn something in Chinese.",
+          "我想学习一些中文东西。",
+          null,
+          1
+        ],
+        [
+          "I want to speak something.",
+          "我想说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn something now.",
+          "我现在在试着学习一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn something with you.",
+          "我想和你学习一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to speak something.",
+          "我在试着说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to speak something in Chinese.",
+          "我想说一些中文东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn something with you often.",
+          "我在试着经常和你学习一些东西。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "something",
         "一些东西"
-      ],
-      "type": "M",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to learn something.",
-          "target": "我想学习一些东西。"
-        },
-        {
-          "known": "I want something now.",
-          "target": "我现在想一些东西。"
-        },
-        {
-          "known": "I'm trying to learn something.",
-          "target": "我在试着学习一些东西。"
-        },
-        {
-          "known": "I want to learn something in Chinese.",
-          "target": "我想学习一些中文东西。"
-        },
-        {
-          "known": "I want to speak something.",
-          "target": "我想说一些东西。"
-        },
-        {
-          "known": "I'm trying to learn something now.",
-          "target": "我现在在试着学习一些东西。"
-        },
-        {
-          "known": "I want to learn something with you.",
-          "target": "我想和你学习一些东西。"
-        },
-        {
-          "known": "I'm trying to speak something.",
-          "target": "我在试着说一些东西。"
-        },
-        {
-          "known": "I want to speak something in Chinese.",
-          "target": "我想说一些中文东西。"
-        },
-        {
-          "known": "I'm trying to learn something with you often.",
-          "target": "我在试着经常和你学习一些东西。"
-        }
       ]
     },
     "S0004L04": {
-      "lego_pair": [
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I want to speak in Chinese.",
+          "我想用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to learn in Chinese.",
+          "我想用中文学习。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to speak in Chinese.",
+          "我在试着用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to speak in Chinese now.",
+          "我现在想用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to speak in Chinese with you.",
+          "我想和你用中文说。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to speak in Chinese now.",
+          "我现在在试着用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to speak something in Chinese.",
+          "我想用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to speak in Chinese with you.",
+          "我在试着和你用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to learn something in Chinese.",
+          "我想用中文学习一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to speak in Chinese with you often.",
+          "我在试着经常和你用中文说。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "in Chinese",
         "用中文"
-      ],
-      "type": "M",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to speak in Chinese.",
-          "target": "我想用中文说。"
-        },
-        {
-          "known": "I want to learn in Chinese.",
-          "target": "我想用中文学习。"
-        },
-        {
-          "known": "I'm trying to speak in Chinese.",
-          "target": "我在试着用中文说。"
-        },
-        {
-          "known": "I want to speak in Chinese now.",
-          "target": "我现在想用中文说。"
-        },
-        {
-          "known": "I want to speak in Chinese with you.",
-          "target": "我想和你用中文说。"
-        },
-        {
-          "known": "I'm trying to speak in Chinese now.",
-          "target": "我现在在试着用中文说。"
-        },
-        {
-          "known": "I want to speak something in Chinese.",
-          "target": "我想用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to speak in Chinese with you.",
-          "target": "我在试着和你用中文说。"
-        },
-        {
-          "known": "I want to learn something in Chinese.",
-          "target": "我想用中文学习一些东西。"
-        },
-        {
-          "known": "I'm trying to speak in Chinese with you often.",
-          "target": "我在试着经常和你用中文说。"
-        }
       ]
     },
     "S0004L05": {
-      "lego_pair": [
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I want to say in Chinese.",
+          "我想用中文说。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say in Chinese.",
+          "我在试着用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to say in Chinese now.",
+          "我现在想用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to say in Chinese with you.",
+          "我想和你用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to learn to say in Chinese.",
+          "我想学习用中文说。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say in Chinese now.",
+          "我现在在试着用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to say something in Chinese.",
+          "我想用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say in Chinese with you.",
+          "我在试着和你用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to say in Chinese often.",
+          "我想经常用中文说。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn how to say in Chinese.",
+          "我在试着学习怎么用中文说。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "to say in Chinese",
         "用中文说"
-      ],
-      "type": "M",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to say in Chinese.",
-          "target": "我想用中文说。"
-        },
-        {
-          "known": "I'm trying to say in Chinese.",
-          "target": "我在试着用中文说。"
-        },
-        {
-          "known": "I want to say in Chinese now.",
-          "target": "我现在想用中文说。"
-        },
-        {
-          "known": "I want to say in Chinese with you.",
-          "target": "我想和你用中文说。"
-        },
-        {
-          "known": "I want to learn to say in Chinese.",
-          "target": "我想学习用中文说。"
-        },
-        {
-          "known": "I'm trying to say in Chinese now.",
-          "target": "我现在在试着用中文说。"
-        },
-        {
-          "known": "I want to say something in Chinese.",
-          "target": "我想用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to say in Chinese with you.",
-          "target": "我在试着和你用中文说。"
-        },
-        {
-          "known": "I want to say in Chinese often.",
-          "target": "我想经常用中文说。"
-        },
-        {
-          "known": "I'm trying to learn how to say in Chinese.",
-          "target": "我在试着学习怎么用中文说。"
-        }
       ]
     },
     "S0004L06": {
-      "lego_pair": [
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I want to say something.",
+          "我想说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something.",
+          "我在试着说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to say something now.",
+          "我现在想说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to say something with you.",
+          "我想和你说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn to say something.",
+          "我想学习说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something now.",
+          "我现在在试着说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to say something in Chinese.",
+          "我想用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something with you.",
+          "我在试着和你说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to say something often.",
+          "我想经常说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn how to say something.",
+          "我在试着学习怎么说一些东西。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "to say something",
         "说一些东西"
-      ],
-      "type": "M",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to say something.",
-          "target": "我想说一些东西。"
-        },
-        {
-          "known": "I'm trying to say something.",
-          "target": "我在试着说一些东西。"
-        },
-        {
-          "known": "I want to say something now.",
-          "target": "我现在想说一些东西。"
-        },
-        {
-          "known": "I want to say something with you.",
-          "target": "我想和你说一些东西。"
-        },
-        {
-          "known": "I want to learn to say something.",
-          "target": "我想学习说一些东西。"
-        },
-        {
-          "known": "I'm trying to say something now.",
-          "target": "我现在在试着说一些东西。"
-        },
-        {
-          "known": "I want to say something in Chinese.",
-          "target": "我想用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to say something with you.",
-          "target": "我在试着和你说一些东西。"
-        },
-        {
-          "known": "I want to say something often.",
-          "target": "我想经常说一些东西。"
-        },
-        {
-          "known": "I'm trying to learn how to say something.",
-          "target": "我在试着学习怎么说一些东西。"
-        }
       ]
     },
     "S0004L07": {
-      "lego_pair": [
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I want to say something in Chinese.",
+          "我想用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something in Chinese.",
+          "我在试着用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to say something in Chinese now.",
+          "我现在想用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to say something in Chinese with you.",
+          "我想和你用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn to say something in Chinese.",
+          "我想学习用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something in Chinese now.",
+          "我现在在试着用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to say something in Chinese often.",
+          "我想经常用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something in Chinese with you.",
+          "我在试着和你用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I want to learn how to say something in Chinese.",
+          "我想学习怎么用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to say something in Chinese with you often.",
+          "我在试着经常和你用中文说一些东西。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "to say something in Chinese",
         "用中文说一些东西"
-      ],
-      "type": "M",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to say something in Chinese.",
-          "target": "我想用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to say something in Chinese.",
-          "target": "我在试着用中文说一些东西。"
-        },
-        {
-          "known": "I want to say something in Chinese now.",
-          "target": "我现在想用中文说一些东西。"
-        },
-        {
-          "known": "I want to say something in Chinese with you.",
-          "target": "我想和你用中文说一些东西。"
-        },
-        {
-          "known": "I want to learn to say something in Chinese.",
-          "target": "我想学习用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to say something in Chinese now.",
-          "target": "我现在在试着用中文说一些东西。"
-        },
-        {
-          "known": "I want to say something in Chinese often.",
-          "target": "我想经常用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to say something in Chinese with you.",
-          "target": "我在试着和你用中文说一些东西。"
-        },
-        {
-          "known": "I want to learn how to say something in Chinese.",
-          "target": "我想学习怎么用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to say something in Chinese with you often.",
-          "target": "我在试着经常和你用中文说一些东西。"
-        }
       ]
     },
     "S0004L08": {
-      "lego_pair": [
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I want to learn how to say in Chinese.",
+          "我想学习怎么用中文说。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn how to say in Chinese.",
+          "我在试着学习怎么用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to learn how to say in Chinese now.",
+          "我现在想学习怎么用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to learn how to say in Chinese with you.",
+          "我想和你学习怎么用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to learn how to say something in Chinese.",
+          "我想学习怎么用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn how to say in Chinese now.",
+          "我现在在试着学习怎么用中文说。",
+          null,
+          1
+        ],
+        [
+          "I want to learn how to say in Chinese often.",
+          "我想学习怎么经常用中文说。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn how to say in Chinese with you.",
+          "我在试着和你学习怎么用中文说。",
+          null,
+          1
+        ],
+        [
+          "I'm trying to learn how to say something in Chinese.",
+          "我在试着学习怎么用中文说一些东西。",
+          null,
+          1
+        ],
+        [
+          "how to say something in Chinese",
+          "怎么用中文说一些东西",
+          null,
+          1
+        ]
+      ],
+      "lego": [
         "how to say in Chinese",
         "怎么用中文说"
-      ],
-      "type": "M",
-      "seed_context": {
-        "known": "怎么用中文说一些东西",
-        "target": "how to say something in Chinese"
-      },
-      "practice_phrases": [
-        {
-          "known": "I want to learn how to say in Chinese.",
-          "target": "我想学习怎么用中文说。"
-        },
-        {
-          "known": "I'm trying to learn how to say in Chinese.",
-          "target": "我在试着学习怎么用中文说。"
-        },
-        {
-          "known": "I want to learn how to say in Chinese now.",
-          "target": "我现在想学习怎么用中文说。"
-        },
-        {
-          "known": "I want to learn how to say in Chinese with you.",
-          "target": "我想和你学习怎么用中文说。"
-        },
-        {
-          "known": "I want to learn how to say something in Chinese.",
-          "target": "我想学习怎么用中文说一些东西。"
-        },
-        {
-          "known": "I'm trying to learn how to say in Chinese now.",
-          "target": "我现在在试着学习怎么用中文说。"
-        },
-        {
-          "known": "I want to learn how to say in Chinese often.",
-          "target": "我想学习怎么经常用中文说。"
-        },
-        {
-          "known": "I'm trying to learn how to say in Chinese with you.",
-          "target": "我在试着和你学习怎么用中文说。"
-        },
-        {
-          "known": "I'm trying to learn how to say something in Chinese.",
-          "target": "我在试着学习怎么用中文说一些东西。"
-        },
-        {
-          "known": "how to say something in Chinese",
-          "target": "怎么用中文说一些东西"
-        }
       ]
     }
   }
