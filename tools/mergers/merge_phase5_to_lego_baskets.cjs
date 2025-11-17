@@ -10,8 +10,8 @@ const path = require('path');
 
 const courseCode = process.argv[2] || 'spa_for_eng';
 
-const PHASE5_DIR = path.join(__dirname, '../public/vfs/courses', courseCode, 'phase5_outputs');
-const OUTPUT_PATH = path.join(__dirname, '../public/vfs/courses', courseCode, 'lego_baskets.json');
+const PHASE5_DIR = path.join(__dirname, '../../public/vfs/courses', courseCode, 'phase5_outputs');
+const OUTPUT_PATH = path.join(__dirname, '../../public/vfs/courses', courseCode, 'lego_baskets.json');
 
 console.log(`📦 Merging phase5_outputs into lego_baskets.json for ${courseCode}...\n`);
 
@@ -60,8 +60,19 @@ for (const file of files) {
   try {
     const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-    // Handle both old format (data.legos) and new format (data.baskets)
-    const baskets = data.baskets || data.legos || {};
+    // Handle three formats:
+    // 1. Baskets at root level (S0001L01, S0001L02, etc.) - current format
+    // 2. data.baskets (nested format)
+    // 3. data.legos (old format)
+    let baskets;
+
+    // Check if baskets are at root level (keys like S0001L01)
+    const rootKeys = Object.keys(data);
+    if (rootKeys.length > 0 && rootKeys[0].match(/^S\d{4}L\d{2}$/)) {
+      baskets = data;
+    } else {
+      baskets = data.baskets || data.legos || {};
+    }
 
     if (Object.keys(baskets).length === 0) {
       console.log(`⊘ ${file}: no baskets found`);
