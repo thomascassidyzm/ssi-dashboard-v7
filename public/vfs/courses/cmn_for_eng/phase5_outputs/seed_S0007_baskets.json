@@ -1,437 +1,128 @@
 {
   "legos": {
     "S0007L01": {
-      "lego": [
-        "today",
-        "今天"
-      ],
+      "lego": ["today", "今天"],
       "type": "A",
+      "current_seed_legos_available": [],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [],
       "practice_phrases": [
-        [
-          "I want today",
-          "我今天想"
-        ],
-        [
-          "today",
-          "今天"
-        ],
-        [
-          "I want to speak today",
-          "我今天想说"
-        ],
-        [
-          "how to speak today",
-          "今天怎么说"
-        ],
-        [
-          "I want to learn today",
-          "我今天想学习"
-        ],
-        [
-          "I want to speak Chinese today",
-          "我今天想说中文"
-        ],
-        [
-          "I want to speak Chinese with you today",
-          "我今天想和你说中文"
-        ],
-        [
-          "I want to speak as often as possible today",
-          "我今天想尽可能经常地说"
-        ],
-        [
-          "I want to practise speaking today",
-          "我今天想练习说话"
-        ],
-        [
-          "I want to remember a word today",
-          "我今天想记住一个词"
-        ]
+        ["today", "今天", null, 1],
+        ["I want today", "我今天想", null, 2],
+        ["I want to speak today", "我今天想说", null, 3],
+        ["how to speak today", "今天怎么说", null, 3],
+        ["I want to learn today", "我今天想学习", null, 4],
+        ["I'm trying to learn today", "我今天在试着学习", null, 5],
+        ["I want to speak Chinese today", "我今天想说中文", null, 5],
+        ["I want to speak Chinese with you today", "我今天想和你说中文", null, 6],
+        ["I want to speak as often as possible today", "我今天想尽可能经常地说", null, 7],
+        ["I want to practise speaking today", "我今天想练习说话", null, 5]
       ],
       "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10,
-      "_metadata": {
-        "lego_id": "S0007L01",
-        "seed_context": {
-          "known": "我今天想尽力试试。",
-          "target": "I want to try as hard as I can today."
-        }
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
       }
     },
     "S0007L02": {
-      "lego": [
-        "as hard as one can",
-        "尽力"
-      ],
+      "lego": ["as hard as one can", "尽力"],
       "type": "M",
+      "current_seed_legos_available": [["today", "今天"]],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0007L01",
-          "known": "today",
-          "target": "今天",
-          "type": "A"
-        }
-      ],
       "practice_phrases": [
-        [
-          "I want to try as hard as I can",
-          "我想尽力学习"
-        ],
-        [
-          "as hard as I can",
-          "尽力"
-        ],
-        [
-          "I want to speak as hard as I can",
-          "我想尽力说"
-        ],
-        [
-          "I want to learn as hard as I can",
-          "我想尽力学习"
-        ],
-        [
-          "I want to speak Chinese as hard as I can",
-          "我想尽力说中文"
-        ],
-        [
-          "I'm trying to learn as hard as I can",
-          "我在尽力学习"
-        ],
-        [
-          "I want to practise speaking as hard as I can",
-          "我想尽力练习说话"
-        ],
-        [
-          "I want to remember a word as hard as I can",
-          "我想尽力记住一个词"
-        ],
-        [
-          "I want to speak with you as hard as I can today",
-          "我今天想尽力和你说"
-        ],
-        [
-          "I want to speak Chinese with someone else as hard as I can",
-          "我想尽力和别人说中文"
-        ]
+        ["as hard as I can", "尽力", null, 1],
+        ["I want as hard as I can", "我想尽力", null, 2],
+        ["I want to speak as hard as I can", "我想尽力说", null, 3],
+        ["I want to learn as hard as I can", "我想尽力学习", null, 3],
+        ["I'm trying as hard as I can", "我在尽力试着", null, 4],
+        ["I want to speak Chinese as hard as I can", "我想尽力说中文", null, 5],
+        ["I'm trying to learn as hard as I can", "我在尽力试着学习", null, 5],
+        ["I want to practise speaking as hard as I can", "我想尽力练习说话", null, 6],
+        ["I want to remember a word as hard as I can", "我想尽力记住一个词", null, 7],
+        ["I want to speak Chinese with someone else as hard as I can", "我想尽力和别人说中文", null, 7]
       ],
       "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
       },
-      "target_phrase_count": 10,
-      "_metadata": {
-        "lego_id": "S0007L02",
-        "seed_context": {
-          "known": "我今天想尽力试试。",
-          "target": "I want to try as hard as I can today."
-        }
-      },
-      "components": [
-        [
-          "尽",
-          "to the utmost"
-        ],
-        [
-          "力",
-          "strength/effort"
-        ]
-      ]
+      "components": [["尽", "to the utmost"], ["力", "strength/effort"]]
     },
     "S0007L03": {
-      "lego": [
-        "to try",
-        "试试"
-      ],
+      "lego": ["to try", "试试"],
       "type": "M",
+      "current_seed_legos_available": [["today", "今天"], ["as hard as one can", "尽力"]],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0007L01",
-          "known": "today",
-          "target": "今天",
-          "type": "A"
-        },
-        {
-          "id": "S0007L02",
-          "known": "as hard as one can",
-          "target": "尽力",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        [
-          "I want to try",
-          "我想试试"
-        ],
-        [
-          "to try",
-          "试试"
-        ],
-        [
-          "I'm going to try today",
-          "我今天要试试"
-        ],
-        [
-          "I want to try today",
-          "我今天想试试"
-        ],
-        [
-          "I want to try to speak",
-          "我想试试说"
-        ],
-        [
-          "I want to try to learn",
-          "我想试试学习"
-        ],
-        [
-          "I want to try to speak Chinese",
-          "我想试试说中文"
-        ],
-        [
-          "I want to try to speak as often as possible",
-          "我想试试尽可能经常地说"
-        ],
-        [
-          "I want to try to remember a word today",
-          "我今天想试试记住一个词"
-        ],
-        [
-          "I want to try to speak Chinese with someone else",
-          "我想试试和别人说中文"
-        ]
+        ["to try", "试试", null, 1],
+        ["I want to try", "我想试试", null, 2],
+        ["I'm going to try", "我要试试", null, 2],
+        ["I want to try today", "我今天想试试", null, 3],
+        ["I want to try to speak", "我想试试说", null, 3],
+        ["I want to try to learn", "我想试试学习", null, 4],
+        ["I want to try to speak Chinese", "我想试试说中文", null, 5],
+        ["I want to try to speak as often as possible", "我想试试尽可能经常地说", null, 6],
+        ["I want to try to remember a word today", "我今天想试试记住一个词", null, 7],
+        ["I want to try to speak Chinese with someone else", "我想试试和别人说中文", null, 6]
       ],
       "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 3
       },
-      "target_phrase_count": 10,
-      "_metadata": {
-        "lego_id": "S0007L03",
-        "seed_context": {
-          "known": "我今天想尽力试试。",
-          "target": "I want to try as hard as I can today."
-        }
-      },
-      "components": [
-        [
-          "试",
-          "try"
-        ],
-        [
-          "试",
-          "try"
-        ]
-      ]
+      "components": [["试", "try"], ["试", "try"]]
     },
     "S0007L04": {
-      "lego": [
-        "to try as hard as one can",
-        "尽力试试"
-      ],
+      "lego": ["to try as hard as one can", "尽力试试"],
       "type": "M",
+      "current_seed_legos_available": [["today", "今天"], ["as hard as one can", "尽力"], ["to try", "试试"]],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0007L01",
-          "known": "today",
-          "target": "今天",
-          "type": "A"
-        },
-        {
-          "id": "S0007L02",
-          "known": "as hard as one can",
-          "target": "尽力",
-          "type": "M"
-        },
-        {
-          "id": "S0007L03",
-          "known": "to try",
-          "target": "试试",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        [
-          "I want to try as hard as I can",
-          "我想尽力试试"
-        ],
-        [
-          "to try as hard as one can",
-          "尽力试试"
-        ],
-        [
-          "I'm going to try as hard as I can",
-          "我要尽力试试"
-        ],
-        [
-          "I want to try as hard as I can today",
-          "我今天想尽力试试"
-        ],
-        [
-          "I want to try as hard as I can to speak",
-          "我想尽力试试说"
-        ],
-        [
-          "I want to try as hard as I can to learn",
-          "我想尽力试试学习"
-        ],
-        [
-          "I want to try as hard as I can to speak Chinese",
-          "我想尽力试试说中文"
-        ],
-        [
-          "I want to try as hard as I can to remember a word",
-          "我想尽力试试记住一个词"
-        ],
-        [
-          "I'm going to try as hard as I can to speak Chinese today",
-          "我今天要尽力试试说中文"
-        ],
-        [
-          "I want to try as hard as I can to practise speaking with someone else",
-          "我想尽力试试和别人练习说话"
-        ]
+        ["to try as hard as I can", "尽力试试", null, 1],
+        ["I want to try as hard as I can", "我想尽力试试", null, 2],
+        ["I'm going to try as hard as I can", "我要尽力试试", null, 2],
+        ["I want to try as hard as I can today", "我今天想尽力试试", null, 3],
+        ["I want to try as hard as I can to speak", "我想尽力试试说", null, 3],
+        ["I want to try as hard as I can to learn", "我想尽力试试学习", null, 4],
+        ["I want to try as hard as I can to speak Chinese", "我想尽力试试说中文", null, 5],
+        ["I want to try as hard as I can to remember a word", "我想尽力试试记住一个词", null, 6],
+        ["I'm going to try as hard as I can to speak Chinese today", "我今天要尽力试试说中文", null, 6],
+        ["I want to try as hard as I can to practise speaking with someone else", "我想尽力试试和别人练习说话", null, 7]
       ],
       "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 3
       },
-      "target_phrase_count": 10,
-      "_metadata": {
-        "lego_id": "S0007L04",
-        "seed_context": {
-          "known": "我今天想尽力试试。",
-          "target": "I want to try as hard as I can today."
-        }
-      },
-      "components": [
-        [
-          "尽力",
-          "do one's best"
-        ],
-        [
-          "试试",
-          "try"
-        ]
-      ]
+      "components": [["尽力", "do one's best"], ["试试", "try"]]
     },
     "S0007L05": {
-      "lego": [
-        "I want to...today",
-        "我今天想"
-      ],
+      "lego": ["I want to...today", "我今天想"],
       "type": "M",
+      "current_seed_legos_available": [["today", "今天"], ["as hard as one can", "尽力"], ["to try", "试试"], ["to try as hard as one can", "尽力试试"]],
       "is_final_lego": true,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0007L01",
-          "known": "today",
-          "target": "今天",
-          "type": "A"
-        },
-        {
-          "id": "S0007L02",
-          "known": "as hard as one can",
-          "target": "尽力",
-          "type": "M"
-        },
-        {
-          "id": "S0007L03",
-          "known": "to try",
-          "target": "试试",
-          "type": "M"
-        },
-        {
-          "id": "S0007L04",
-          "known": "to try as hard as one can",
-          "target": "尽力试试",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        [
-          "I want to speak today",
-          "我今天想说"
-        ],
-        [
-          "I want to...today",
-          "我今天想"
-        ],
-        [
-          "I want to learn today",
-          "我今天想学习"
-        ],
-        [
-          "I want to try today",
-          "我今天想试试"
-        ],
-        [
-          "I want to speak Chinese today",
-          "我今天想说中文"
-        ],
-        [
-          "I want to practise speaking today",
-          "我今天想练习说话"
-        ],
-        [
-          "I want to remember a word today",
-          "我今天想记住一个词"
-        ],
-        [
-          "I want to speak with you today",
-          "我今天想和你说"
-        ],
-        [
-          "I want to speak as often as possible today",
-          "我今天想尽可能经常地说"
-        ],
-        [
-          "I want to try as hard as I can today",
-          "我今天想尽力试试"
-        ]
+        ["I want to...today", "我今天想", null, 1],
+        ["I want to speak today", "我今天想说", null, 2],
+        ["I want to learn today", "我今天想学习", null, 2],
+        ["I want to try today", "我今天想试试", null, 3],
+        ["I want to speak Chinese today", "我今天想说中文", null, 3],
+        ["I want to practise speaking today", "我今天想练习说话", null, 4],
+        ["I want to remember a word today", "我今天想记住一个词", null, 5],
+        ["I want to speak with you today", "我今天想和你说", null, 5],
+        ["I want to speak as often as possible today", "我今天想尽可能经常地说", null, 6],
+        ["I want to try as hard as I can today", "我今天想尽力试试", null, 4]
       ],
       "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
       },
-      "target_phrase_count": 10,
-      "_metadata": {
-        "lego_id": "S0007L05",
-        "seed_context": {
-          "known": "我今天想尽力试试。",
-          "target": "I want to try as hard as I can today."
-        }
-      },
-      "components": [
-        [
-          "我",
-          "I"
-        ],
-        [
-          "今天",
-          "today"
-        ],
-        [
-          "想",
-          "want"
-        ]
-      ]
+      "components": [["我", "I"], ["今天", "today"], ["想", "want"]]
     }
   }
 }
