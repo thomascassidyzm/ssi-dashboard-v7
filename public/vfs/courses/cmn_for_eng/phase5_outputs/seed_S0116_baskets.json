@@ -1,0 +1,130 @@
+{
+  "S0116L01": {
+    "lego": ["this isn't","这不是"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["This isn't the answer","这不是答案",null,2],
+      ["This isn't very interesting","这不是非常有趣",null,2],
+      ["This isn't what I hoped to see","这不是我希望看到",null,3],
+      ["This isn't something new","这不是新东西",null,3],
+      ["This isn't what you said","这不是你说的话",null,4],
+      ["This isn't a new word","这不是新词",null,4],
+      ["This isn't what we must learn","这不是我们必须学习",null,5],
+      ["This isn't what I can remember","这不是我能记得",null,5],
+      ["This isn't what we need to do","这不是我们需要做",null,6],
+      ["This isn't something we are learning","这不是我们正在学习",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0116L01",
+      "seed_context": {
+        "known": "This isn't the best choice I could make.",
+        "target": "这不是我能做的最好选择。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0116L02": {
+    "lego": ["I could make","我能做的"],
+    "type": "M",
+    "current_seed_legos_available": [["this isn't","这不是"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I could make that","我能做的那",null,2],
+      ["I could make something new","我能做的新东西",null,2],
+      ["This isn't what I could make","这不是我能做的",null,3],
+      ["I could make a lot of new things","我能做的很多新东西",null,3],
+      ["This isn't something I could make","这不是我能做的",null,4],
+      ["I could make what you said","我能做的你说的话",null,4],
+      ["I could make what we need to learn","我能做的我们需要学习",null,5],
+      ["This isn't what I hoped I could make","这不是我希望我能做的",null,6],
+      ["I feel as if I could make something new","我感觉好像我能做的新东西",null,5],
+      ["I could make what we are learning","我能做的我们正在学习",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0116L02",
+      "seed_context": {
+        "known": "This isn't the best choice I could make.",
+        "target": "这不是我能做的最好选择。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0116L03": {
+    "lego": ["the best choice I could make","我能做的最好选择"],
+    "type": "M",
+    "current_seed_legos_available": [["this isn't","这不是"],["I could make","我能做的"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["The best choice I could make is to learn","我能做的最好选择是学习",null,2],
+      ["The best choice I could make is to work hard","我能做的最好选择是努力工作",null,2],
+      ["This isn't the best choice I could make","这不是我能做的最好选择",null,3],
+      ["The best choice I could make is learning new words","我能做的最好选择是学习新词",null,3],
+      ["I feel as if the best choice I could make is to relax","我感觉好像我能做的最好选择是放松",null,4],
+      ["The best choice I could make is to remember that","我能做的最好选择是记得那",null,4],
+      ["This isn't the best choice I could make to learn","这不是我能做的最好选择学习",null,5],
+      ["I don't feel as if the best choice I could make is working","我不觉得好像我能做的最好选择是工作",null,6],
+      ["The best choice I could make is learning something new","我能做的最好选择是学习新东西",null,6],
+      ["I feel as if this isn't the best choice I could make","我感觉好像这不是我能做的最好选择",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0116L03",
+      "seed_context": {
+        "known": "This isn't the best choice I could make.",
+        "target": "这不是我能做的最好选择。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0116L04": {
+    "lego": ["best choice","最好选择"],
+    "type": "M",
+    "current_seed_legos_available": [["this isn't","这不是"],["I could make","我能做的"],["the best choice I could make","我能做的最好选择"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["The best choice is to learn","最好选择是学习",null,1],
+      ["The best choice is working hard","最好选择是努力工作",null,2],
+      ["This isn't the best choice","这不是最好选择",null,3],
+      ["The best choice I could make is to relax","我能做的最好选择是放松",null,3],
+      ["The best choice is learning new words","最好选择是学习新词",null,4],
+      ["I feel as if the best choice is to work","我感觉好像最好选择是工作",null,4],
+      ["This isn't the best choice I could make","这不是我能做的最好选择",null,5],
+      ["I don't feel as if the best choice is relaxing","我不觉得好像最好选择是放松",null,5],
+      ["The best choice I could make is learning something new","我能做的最好选择是学习新东西",null,6],
+      ["This isn't the best choice I could make.","这不是我能做的最好选择。",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0116L04",
+      "seed_context": {
+        "known": "This isn't the best choice I could make.",
+        "target": "这不是我能做的最好选择。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

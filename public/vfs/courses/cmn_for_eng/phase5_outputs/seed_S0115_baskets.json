@@ -1,0 +1,193 @@
+{
+  "S0115L01": {
+    "lego": ["I don't feel as if","我不觉得好像"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I don't feel as if I know","我不觉得好像我知道",null,2],
+      ["I don't feel as if that is interesting","我不觉得好像那有趣",null,2],
+      ["I don't feel as if we are friends","我不觉得好像我们是朋友",null,3],
+      ["I don't feel as if you know the answer","我不觉得好像你知道答案",null,3],
+      ["I don't feel as if we must work","我不觉得好像我们必须工作",null,4],
+      ["I don't feel as if I need to learn","我不觉得好像我需要学习",null,4],
+      ["I don't feel as if we must work hard","我不觉得好像我们必须努力工作",null,5],
+      ["I don't feel as if I can remember what you said","我不觉得好像我能记得你说的话",null,6],
+      ["I don't feel as if we are learning new words","我不觉得好像我们正在学习新词",null,5],
+      ["I don't feel as if we need to relax","我不觉得好像我们需要放松",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0115L01",
+      "seed_context": {
+        "known": "I don't feel as if I'm ready to have a conversation.",
+        "target": "我不觉得好像我准备好进行对话了。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0115L02": {
+    "lego": ["feel as if","觉得好像"],
+    "type": "M",
+    "current_seed_legos_available": [["I don't feel as if","我不觉得好像"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I feel as if I know","我觉得好像我知道",null,2],
+      ["I feel as if that is interesting","我觉得好像那有趣",null,2],
+      ["I feel as if we are friends","我觉得好像我们是朋友",null,3],
+      ["I feel as if you know the answer","我觉得好像你知道答案",null,3],
+      ["I feel as if we must learn","我觉得好像我们必须学习",null,4],
+      ["I feel as if I need to work","我觉得好像我需要工作",null,4],
+      ["I don't feel as if we must work hard","我不觉得好像我们必须努力工作",null,5],
+      ["I feel as if we are learning something new","我觉得好像我们正在学习新东西",null,6],
+      ["I don't feel as if I can remember what you said","我不觉得好像我能记得你说的话",null,7],
+      ["I feel as if we need to relax","我觉得好像我们需要放松",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0115L02",
+      "seed_context": {
+        "known": "I don't feel as if I'm ready to have a conversation.",
+        "target": "我不觉得好像我准备好进行对话了。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0115L03": {
+    "lego": ["I'm ready","我准备好"],
+    "type": "M",
+    "current_seed_legos_available": [["I don't feel as if","我不觉得好像"],["feel as if","觉得好像"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm ready to learn","我准备好学习",null,2],
+      ["I'm ready to work","我准备好工作",null,2],
+      ["I'm ready to see that","我准备好看到那",null,3],
+      ["I feel as if I'm ready","我觉得好像我准备好",null,3],
+      ["I'm ready to learn new words","我准备好学习新词",null,4],
+      ["I'm ready to work hard","我准备好努力工作",null,4],
+      ["I don't feel as if I'm ready to work","我不觉得好像我准备好工作",null,5],
+      ["I feel as if I'm ready to learn something new","我觉得好像我准备好学习新东西",null,6],
+      ["I'm ready to learn a lot of new words","我准备好学习很多新词",null,6],
+      ["I don't feel as if I'm ready to relax","我不觉得好像我准备好放松",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0115L03",
+      "seed_context": {
+        "known": "I don't feel as if I'm ready to have a conversation.",
+        "target": "我不觉得好像我准备好进行对话了。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0115L04": {
+    "lego": ["ready to have a conversation","准备好进行对话"],
+    "type": "M",
+    "current_seed_legos_available": [["I don't feel as if","我不觉得好像"],["feel as if","觉得好像"],["I'm ready","我准备好"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm ready to have a conversation","我准备好进行对话",null,2],
+      ["We are ready to have a conversation","我们准备好进行对话",null,2],
+      ["I feel as if I'm ready to have a conversation","我觉得好像我准备好进行对话",null,4],
+      ["You are ready to have a conversation","你准备好进行对话",null,3],
+      ["I don't feel as if I'm ready to have a conversation","我不觉得好像我准备好进行对话",null,4],
+      ["We must be ready to have a conversation","我们必须准备好进行对话",null,4],
+      ["I feel as if we are ready to have a conversation","我觉得好像我们准备好进行对话",null,5],
+      ["I don't feel as if you are ready to have a conversation","我不觉得好像你准备好进行对话",null,5],
+      ["I feel as if I need to be ready to have a conversation","我觉得好像我需要准备好进行对话",null,6],
+      ["We don't feel as if we are ready to have a conversation","我们不觉得好像我们准备好进行对话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0115L04",
+      "seed_context": {
+        "known": "I don't feel as if I'm ready to have a conversation.",
+        "target": "我不觉得好像我准备好进行对话了。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0115L05": {
+    "lego": ["have a conversation","进行对话"],
+    "type": "M",
+    "current_seed_legos_available": [["I don't feel as if","我不觉得好像"],["feel as if","觉得好像"],["I'm ready","我准备好"],["ready to have a conversation","准备好进行对话"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["We have a conversation","我们进行对话",null,1],
+      ["I want to have a conversation","我想进行对话",null,2],
+      ["I'm ready to have a conversation","我准备好进行对话",null,3],
+      ["We need to have a conversation","我们需要进行对话",null,3],
+      ["I hope to have a conversation","我希望进行对话",null,4],
+      ["I feel as if we must have a conversation","我觉得好像我们必须进行对话",null,4],
+      ["I don't feel as if I'm ready to have a conversation","我不觉得好像我准备好进行对话",null,5],
+      ["We don't need to have a conversation","我们不需要进行对话",null,5],
+      ["I feel as if we are ready to have a conversation","我觉得好像我们准备好进行对话",null,6],
+      ["I don't feel as if we need to have a conversation","我不觉得好像我们需要进行对话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0115L05",
+      "seed_context": {
+        "known": "I don't feel as if I'm ready to have a conversation.",
+        "target": "我不觉得好像我准备好进行对话了。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0115L06": {
+    "lego": ["conversation","对话"],
+    "type": "A",
+    "current_seed_legos_available": [["I don't feel as if","我不觉得好像"],["feel as if","觉得好像"],["I'm ready","我准备好"],["ready to have a conversation","准备好进行对话"],["have a conversation","进行对话"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["That conversation is interesting","那对话有趣",null,1],
+      ["The conversation is very interesting","对话非常有趣",null,2],
+      ["I'm ready to have a conversation","我准备好进行对话",null,3],
+      ["We must have a conversation","我们必须进行对话",null,3],
+      ["I hope to have a conversation","我希望进行对话",null,4],
+      ["I want to have a conversation","我想进行对话",null,4],
+      ["I feel as if I'm ready to have a conversation","我觉得好像我准备好进行对话",null,5],
+      ["We don't need to have a conversation","我们不需要进行对话",null,5],
+      ["I don't feel as if we are ready to have a conversation","我不觉得好像我们准备好进行对话",null,6],
+      ["I don't feel as if I'm ready to have a conversation.","我不觉得好像我准备好进行对话了。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0115L06",
+      "seed_context": {
+        "known": "I don't feel as if I'm ready to have a conversation.",
+        "target": "我不觉得好像我准备好进行对话了。"
+      }
+    }
+  }
+}

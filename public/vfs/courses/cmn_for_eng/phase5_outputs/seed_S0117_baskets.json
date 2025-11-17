@@ -1,0 +1,162 @@
+{
+  "S0117L01": {
+    "lego": ["I'm definitely","我绝对"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm definitely learning","我绝对学习",null,2],
+      ["I'm definitely ready","我绝对准备好",null,2],
+      ["I'm definitely working hard","我绝对努力工作",null,3],
+      ["I'm definitely a friend","我绝对是朋友",null,3],
+      ["I'm definitely learning new words","我绝对学习新词",null,4],
+      ["I'm definitely doing what you said","我绝对做你说的话",null,4],
+      ["I'm definitely learning something new","我绝对学习新东西",null,5],
+      ["I'm definitely ready to have a conversation","我绝对准备好进行对话",null,5],
+      ["I'm definitely doing what we must learn","我绝对做我们必须学习",null,6],
+      ["I'm definitely expecting to see what you are doing","我绝对期待看到你正在做",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0117L01",
+      "seed_context": {
+        "known": "I'm definitely doing better than I was last time we talked to each other.",
+        "target": "我绝对做得比我们上次互相交谈时更好。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0117L02": {
+    "lego": ["last time we talked to each other","我们上次互相交谈时"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm definitely","我绝对"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Last time we talked to each other was interesting","我们上次互相交谈时有趣",null,2],
+      ["Last time we talked to each other I was learning","我们上次互相交谈时我学习",null,2],
+      ["I remember last time we talked to each other","我记得我们上次互相交谈时",null,3],
+      ["Last time we talked to each other we were friends","我们上次互相交谈时我们是朋友",null,3],
+      ["Last time we talked to each other I hoped to learn","我们上次互相交谈时我希望学习",null,4],
+      ["I'm definitely thinking about last time we talked to each other","我绝对我们上次互相交谈时",null,4],
+      ["Last time we talked to each other we were learning new words","我们上次互相交谈时我们正在学习新词",null,5],
+      ["I can't remember what you said last time we talked to each other","我不能记得你说的话我们上次互相交谈时",null,6],
+      ["Last time we talked to each other I wasn't ready to relax","我们上次互相交谈时我没有准备好放松",null,6],
+      ["I feel as if last time we talked to each other was very interesting","我感觉好像我们上次互相交谈时非常有趣",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0117L02",
+      "seed_context": {
+        "known": "I'm definitely doing better than I was last time we talked to each other.",
+        "target": "我绝对做得比我们上次互相交谈时更好。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0117L03": {
+    "lego": ["talked to each other","互相交谈"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm definitely","我绝对"],["last time we talked to each other","我们上次互相交谈时"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["We talked to each other","我们互相交谈",null,1],
+      ["We must talk to each other","我们必须互相交谈",null,2],
+      ["Last time we talked to each other","我们上次互相交谈时",null,3],
+      ["We need to talk to each other","我们需要互相交谈",null,3],
+      ["We hoped to talk to each other","我们希望互相交谈",null,4],
+      ["I'm definitely ready to talk to each other","我绝对准备好互相交谈",null,4],
+      ["We must learn to talk to each other","我们必须学习互相交谈",null,5],
+      ["I feel as if we need to talk to each other","我感觉好像我们需要互相交谈",null,5],
+      ["Last time we talked to each other we were learning new words","我们上次互相交谈时我们正在学习新词",null,6],
+      ["I'm definitely expecting we will talk to each other","我绝对期待我们互相交谈",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0117L03",
+      "seed_context": {
+        "known": "I'm definitely doing better than I was last time we talked to each other.",
+        "target": "我绝对做得比我们上次互相交谈时更好。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0117L04": {
+    "lego": ["doing better than I was last time we talked to each other","做得比我们上次互相交谈时更好"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm definitely","我绝对"],["last time we talked to each other","我们上次互相交谈时"],["talked to each other","互相交谈"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm doing better than I was last time we talked to each other","我做得比我们上次互相交谈时更好",null,2],
+      ["You are doing better than I was last time we talked to each other","你做得比我们上次互相交谈时更好",null,2],
+      ["I'm definitely doing better than I was last time we talked to each other","我绝对做得比我们上次互相交谈时更好",null,3],
+      ["We are doing better than I was last time we talked to each other","我们做得比我们上次互相交谈时更好",null,3],
+      ["I feel as if I'm doing better than I was last time we talked to each other","我感觉好像我做得比我们上次互相交谈时更好",null,4],
+      ["I hope I'm doing better than I was last time we talked to each other","我希望我做得比我们上次互相交谈时更好",null,4],
+      ["I'm definitely doing better than I was last time we talked to each other now","我绝对做得比我们上次互相交谈时更好",null,5],
+      ["I don't feel as if I'm doing better than I was last time we talked to each other","我不觉得好像我做得比我们上次互相交谈时更好",null,6],
+      ["I can't remember if I'm doing better than I was last time we talked to each other","我不能记得我做得比我们上次互相交谈时更好",null,6],
+      ["I feel as if you are doing better than I was last time we talked to each other","我感觉好像你做得比我们上次互相交谈时更好",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0117L04",
+      "seed_context": {
+        "known": "I'm definitely doing better than I was last time we talked to each other.",
+        "target": "我绝对做得比我们上次互相交谈时更好。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0117L05": {
+    "lego": ["better than I was last time we talked to each other","比我们上次互相交谈时更好"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm definitely","我绝对"],["last time we talked to each other","我们上次互相交谈时"],["talked to each other","互相交谈"],["doing better than I was last time we talked to each other","做得比我们上次互相交谈时更好"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I'm better than I was last time we talked to each other","我比我们上次互相交谈时更好",null,2],
+      ["This is better than I was last time we talked to each other","这比我们上次互相交谈时更好",null,2],
+      ["I'm doing better than I was last time we talked to each other","我做得比我们上次互相交谈时更好",null,3],
+      ["You are better than I was last time we talked to each other","你比我们上次互相交谈时更好",null,3],
+      ["I'm definitely better than I was last time we talked to each other","我绝对比我们上次互相交谈时更好",null,4],
+      ["I feel better than I was last time we talked to each other","我感觉比我们上次互相交谈时更好",null,4],
+      ["I'm definitely doing better than I was last time we talked to each other","我绝对做得比我们上次互相交谈时更好",null,5],
+      ["I feel as if I'm better than I was last time we talked to each other","我感觉好像我比我们上次互相交谈时更好",null,5],
+      ["I hope I'm doing better than I was last time we talked to each other","我希望我做得比我们上次互相交谈时更好",null,6],
+      ["I'm definitely doing better than I was last time we talked to each other.","我绝对做得比我们上次互相交谈时更好。",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0117L05",
+      "seed_context": {
+        "known": "I'm definitely doing better than I was last time we talked to each other.",
+        "target": "我绝对做得比我们上次互相交谈时更好。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+  }
+}
