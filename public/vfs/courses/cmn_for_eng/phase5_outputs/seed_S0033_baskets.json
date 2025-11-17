@@ -1,0 +1,298 @@
+{
+  "S0033L01": {
+    "lego": [
+      "you have been learning Chinese",
+      "你学中文"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "You have been learning Chinese",
+        "你学中文",
+        null,
+        1
+      ],
+      [
+        "You are learning Chinese now",
+        "你现在学中文",
+        null,
+        2
+      ],
+      [
+        "You have been learning Chinese well",
+        "你学中文学得好",
+        null,
+        3
+      ],
+      [
+        "I have been learning Chinese too",
+        "我也学中文",
+        null,
+        3
+      ],
+      [
+        "You have been learning Chinese with me",
+        "你和我学中文",
+        null,
+        4
+      ],
+      [
+        "You have been learning Chinese before this",
+        "你之前学中文",
+        null,
+        4
+      ],
+      [
+        "You have been learning Chinese as soon as possible",
+        "你尽快学中文",
+        null,
+        5
+      ],
+      [
+        "You have been learning Chinese with me for a while",
+        "你和我学中文学了一会儿",
+        null,
+        5
+      ],
+      [
+        "I wanted to know if you have been learning Chinese",
+        "我想知道你学中文",
+        null,
+        6
+      ],
+      [
+        "You have been learning Chinese because you wanted to speak",
+        "你学中文因为你想说话",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "学",
+        "learn/study"
+      ],
+      [
+        "中文",
+        "Chinese/Chinese language"
+      ]
+    ]
+  },
+  "S0033L02": {
+    "lego": [
+      "have been learning for how long",
+      "学了多久了"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0033L01",
+        "known": "you have been learning Chinese",
+        "target": "你学中文",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Have been learning for how long",
+        "学了多久了",
+        null,
+        1
+      ],
+      [
+        "You have been learning Chinese for how long",
+        "你学中文学了多久了",
+        null,
+        2
+      ],
+      [
+        "I have been learning for how long now",
+        "我学了多久了现在",
+        null,
+        3
+      ],
+      [
+        "You have been speaking Chinese for how long",
+        "你说中文学了多久了",
+        null,
+        3
+      ],
+      [
+        "You have been learning Chinese with me for how long",
+        "你和我学中文学了多久了",
+        null,
+        4
+      ],
+      [
+        "I have been asking how long you have been learning",
+        "我问你学了多久了",
+        null,
+        4
+      ],
+      [
+        "You have been learning Chinese for how long before tonight",
+        "你今晚之前学中文学了多久了",
+        null,
+        5
+      ],
+      [
+        "I wanted to know how long you have been learning Chinese",
+        "我想知道你学中文学了多久了",
+        null,
+        5
+      ],
+      [
+        "You have been learning Chinese for how long with your friend",
+        "你和你朋友学中文学了多久了",
+        null,
+        6
+      ],
+      [
+        "I asked you yesterday how long you have been learning Chinese",
+        "我昨天问你学中文学了多久了",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "学",
+        "learning"
+      ],
+      [
+        "了",
+        "aspect particle"
+      ],
+      [
+        "多久",
+        "how long"
+      ],
+      [
+        "了",
+        "aspect particle"
+      ]
+    ]
+  },
+  "S0033L03": {
+    "lego": [
+      "for how long",
+      "多久了"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0033L01",
+        "known": "you have been learning Chinese",
+        "target": "你学中文",
+        "type": "M"
+      },
+      {
+        "id": "S0033L02",
+        "known": "have been learning for how long",
+        "target": "学了多久了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "For how long",
+        "多久了",
+        null,
+        1
+      ],
+      [
+        "You wanted for how long",
+        "你想多久了",
+        null,
+        2
+      ],
+      [
+        "You have been here for how long",
+        "你在这里多久了",
+        null,
+        3
+      ],
+      [
+        "I have been speaking for how long",
+        "我说话多久了",
+        null,
+        3
+      ],
+      [
+        "You have been learning Chinese for how long",
+        "你学中文多久了",
+        null,
+        4
+      ],
+      [
+        "I wanted to know for how long you have been here",
+        "我想知道你在这里多久了",
+        null,
+        4
+      ],
+      [
+        "You have been learning Chinese with me for how long now",
+        "你和我学中文多久了现在",
+        null,
+        5
+      ],
+      [
+        "I asked you yesterday about how long you have been learning",
+        "我昨天问你学了多久了",
+        null,
+        5
+      ],
+      [
+        "You wanted to know how long I have been learning Chinese",
+        "你想知道我学中文学了多久了",
+        null,
+        6
+      ],
+      [
+        "How long have you been learning Chinese?",
+        "你学中文学了多久了？",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "多久",
+        "how long"
+      ],
+      [
+        "了",
+        "aspect particle"
+      ]
+    ]
+  }
+}
