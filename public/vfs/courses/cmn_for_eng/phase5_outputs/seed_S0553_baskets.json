@@ -1,0 +1,114 @@
+{
+  "S0553L02": {
+    "lego": [
+      "the small church",
+      "小教堂"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["The small church", "小教堂", null, 1],
+      ["The small church is ugly", "小教堂很丑", null, 2],
+      ["The small church is dirty", "小教堂很脏", null, 3],
+      ["The small church is very sad", "小教堂非常悲伤", null, 3],
+      ["The small church at the end", "尽头的小教堂", null, 4],
+      ["The small church is very dirty", "小教堂非常脏", null, 4],
+      ["The small church is at the end of the village", "小教堂在村子的尽头", null, 5],
+      ["I have got to be quiet in the small church", "我必须在小教堂安静", null, 5],
+      ["The dog is dirty and wet in the small church", "狗在小教堂又脏又湿", null, 6],
+      ["The small church at the other end of the village is quiet", "村子另一头的小教堂很安静", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0553L03": {
+    "lego": [
+      "very ugly",
+      "非常丑"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0553L02",
+        "known": "the small church",
+        "target": "小教堂",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Very ugly", "非常丑", null, 1],
+      ["The dog is very ugly", "狗非常丑", null, 2],
+      ["The village is very ugly", "村子非常丑", null, 3],
+      ["The church is very ugly", "教堂非常丑", null, 3],
+      ["The small church is very ugly", "小教堂非常丑", null, 4],
+      ["The clothes are dirty and very ugly", "衣服又脏又非常丑", null, 4],
+      ["The dog is very ugly at the moment", "狗此刻非常丑", null, 5],
+      ["The church at the end is very ugly", "尽头的教堂非常丑", null, 5],
+      ["The small church at the other end is very ugly", "另一头的小教堂非常丑", null, 6],
+      ["The church at the end of the village is very ugly", "村子的尽头的教堂非常丑", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0553L04": {
+    "lego": [
+      "I think the small church is very ugly",
+      "我觉得小教堂非常丑"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0553L02",
+        "known": "the small church",
+        "target": "小教堂",
+        "type": "A"
+      },
+      {
+        "id": "S0553L03",
+        "known": "very ugly",
+        "target": "非常丑",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["I think it's very ugly", "我觉得非常丑", null, 2],
+      ["I think the church is very ugly", "我觉得教堂非常丑", null, 2],
+      ["I think the dog is very dirty", "我觉得狗非常脏", null, 3],
+      ["I think the village is very sad", "我觉得村子非常悲伤", null, 3],
+      ["I think the small church is ugly", "我觉得小教堂很丑", null, 4],
+      ["I think the clothes are very dirty", "我觉得衣服非常脏", null, 4],
+      ["I think the church at the end is very ugly", "我觉得尽头的教堂非常丑", null, 5],
+      ["I think the dog is very dirty and wet", "我觉得狗非常脏又湿", null, 5],
+      ["I think the church at the other end is very ugly", "我觉得另一头的教堂非常丑", null, 6],
+      ["I think the small church is very ugly", "我觉得小教堂非常丑", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null]
+    ]
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "S0555L02": {
+    "lego": [
+      "I'm too tired",
+      "我太累了"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I'm too tired", "我太累了", null, 1],
+      ["I'm too sad", "我太悲伤了", null, 2],
+      ["I'm too tired to play", "我太累了玩不了", null, 3],
+      ["I'm too dirty at the moment", "我此刻太脏了", null, 3],
+      ["I'm too tired to be quiet", "我太累了安静不了", null, 4],
+      ["I'm too sad to feel quiet", "我太悲伤了感到不了安静", null, 4],
+      ["I'm too tired because I have been playing in the mud", "我太累了因为我一直在泥里玩", null, 5],
+      ["I'm too tired to take the clean clothes upstairs", "我太累了把干净的衣服拿不了上楼", null, 5],
+      ["I'm too sad and tired at the moment", "我此刻太悲伤又累了", null, 6],
+      ["I'm too tired because I have got to be quiet", "我太累了因为我必须安静", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null]
+    ]
+  },
+  "S0555L03": {
+    "lego": [
+      "too tired to fetch",
+      "太累了，拿不了"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0555L02",
+        "known": "I'm too tired",
+        "target": "我太累了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Too tired to fetch", "太累了，拿不了", null, 1],
+      ["I'm too tired to fetch", "我太累了，拿不了", null, 2],
+      ["Too tired to fetch the dog", "太累了，拿不了狗", null, 3],
+      ["Too tired to fetch the clothes", "太累了，拿不了衣服", null, 3],
+      ["I'm too tired to fetch the towel", "我太累了，拿不了毛巾", null, 4],
+      ["Too sad to fetch clean clothes", "太悲伤了，拿不了干净衣服", null, 4],
+      ["I'm too tired to fetch the clean clothes upstairs", "我太累了，拿不了干净的衣服上楼", null, 5],
+      ["Too tired to fetch the dog at the moment", "太累了，此刻拿不了狗", null, 5],
+      ["I'm too tired to fetch the dirty and wet dog", "我太累了，拿不了又脏又湿的狗", null, 6],
+      ["I'm too tired to fetch the towel because it's very dirty", "我太累了，拿不了毛巾因为非常脏", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null]
+    ]
+  },
+  "S0555L04": {
+    "lego": [
+      "can't fetch",
+      "拿不了"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0555L02",
+        "known": "I'm too tired",
+        "target": "我太累了",
+        "type": "M"
+      },
+      {
+        "id": "S0555L03",
+        "known": "too tired to fetch",
+        "target": "太累了，拿不了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Can't fetch", "拿不了", null, 1],
+      ["I can't fetch the dog", "我拿不了狗", null, 2],
+      ["Can't fetch the towel", "拿不了毛巾", null, 3],
+      ["Can't fetch clean clothes", "拿不了干净衣服", null, 3],
+      ["I can't fetch the dirty dog", "我拿不了脏狗", null, 4],
+      ["Can't fetch the wet towel", "拿不了湿毛巾", null, 4],
+      ["I can't fetch the clothes because I'm too tired", "我拿不了衣服因为我太累了", null, 5],
+      ["Can't fetch the dirty and wet dog", "拿不了又脏又湿的狗", null, 5],
+      ["I can't fetch the clean clothes upstairs at the moment", "我此刻拿不了干净的衣服上楼", null, 6],
+      ["I can't fetch the towel because I'm too sad and tired", "我拿不了毛巾因为我太悲伤又累", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0555L05": {
+    "lego": [
+      "a new one",
+      "新的"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0555L02",
+        "known": "I'm too tired",
+        "target": "我太累了",
+        "type": "M"
+      },
+      {
+        "id": "S0555L03",
+        "known": "too tired to fetch",
+        "target": "太累了，拿不了",
+        "type": "M"
+      },
+      {
+        "id": "S0555L04",
+        "known": "can't fetch",
+        "target": "拿不了",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["A new one", "新的", null, 1],
+      ["I have got to fetch a new one", "我必须拿新的", null, 2],
+      ["Can't fetch a new towel", "拿不了新的毛巾", null, 3],
+      ["I'm too tired for a new one", "我太累了要不了新的", null, 3],
+      ["It's your turn to fetch a new one", "轮到你拿新的", null, 4],
+      ["I can't fetch a new clean towel", "我拿不了新的干净毛巾", null, 4],
+      ["I'm too tired to fetch a new one at the moment", "我此刻太累了拿不了新的", null, 5],
+      ["I have got to take a new one upstairs", "我必须把新的拿上楼", null, 5],
+      ["I can't fetch a new one because I'm too sad and tired", "我拿不了新的因为我太悲伤又累", null, 6],
+      ["And I'm too tired to fetch a new one", "而且我太累了，拿不了新的", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

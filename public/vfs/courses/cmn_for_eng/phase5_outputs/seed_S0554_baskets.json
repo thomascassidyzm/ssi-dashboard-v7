@@ -1,0 +1,70 @@
+{
+  "S0554L01": {
+    "lego": [
+      "this towel",
+      "这条毛巾"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["This towel", "这条毛巾", null, 1],
+      ["This towel is dirty", "这条毛巾很脏", null, 2],
+      ["This towel is wet", "这条毛巾很湿", null, 3],
+      ["This towel is very ugly", "这条毛巾非常丑", null, 3],
+      ["This towel is clean", "这条毛巾很干净", null, 4],
+      ["This towel is very dirty", "这条毛巾非常脏", null, 4],
+      ["This towel is dirty and wet", "这条毛巾又脏又湿", null, 5],
+      ["It's your turn to take this towel upstairs", "轮到你把这条毛巾拿上楼", null, 5],
+      ["This towel is at the end of the village", "这条毛巾在村子的尽头", null, 6],
+      ["I have got to take this towel upstairs at the moment", "我此刻必须把这条毛巾拿上楼", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [null, null],
+      [null, null],
+      [null, null]
+    ]
+  },
+  "S0554L02": {
+    "lego": [
+      "isn't dry",
+      "不干"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0554L01",
+        "known": "this towel",
+        "target": "这条毛巾",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Isn't dry", "不干", null, 1],
+      ["The dog isn't dry", "狗不干", null, 2],
+      ["The church isn't dry", "教堂不干", null, 3],
+      ["The village isn't dry", "村子不干", null, 3],
+      ["This towel isn't dry", "这条毛巾不干", null, 4],
+      ["The small church isn't dry", "小教堂不干", null, 4],
+      ["The clothes aren't dry at the moment", "衣服此刻不干", null, 5],
+      ["The dog isn't dry because he has been playing in the mud", "狗不干因为他一直在泥里玩", null, 5],
+      ["The towel isn't dry because it's dirty and wet", "毛巾不干因为又脏又湿", null, 6],
+      ["This towel isn't dry", "这条毛巾不干", null, 2]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
