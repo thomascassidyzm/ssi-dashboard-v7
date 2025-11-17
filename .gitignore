@@ -130,4 +130,6 @@ public/vfs/courses/*/lego_pairs_reextraction_manifest.json
 public/vfs/courses/*/basket_*.json
 public/vfs/courses/*/deleted_baskets_backup.json
 public/vfs/courses/*/phase3_collision_reextraction_manifest.json
-public/vfs/courses/*/phase5_outputs/
+# Phase 5 outputs - track directory but let course-specific .gitignore control file tracking
+!public/vfs/courses/*/phase5_outputs/
+!public/vfs/courses/*/phase5_outputs/.gitignore

@@ -724,6 +724,8 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 7. **Commit & Push**: Create branch \`claude/baskets-${courseCode}-window-N-sXXXX-sYYYY-[SESSION_ID]\`, commit ONLY stripped files, push to GitHub
    - **CRITICAL**: Append your Claude session ID to the branch name (e.g., \`-01Hjy67f2oaF4392y2gC971T\`)
    - This ensures GitHub authentication works via Claude Code on the Web
+   - **NOTE**: The phase5_outputs/.gitignore only tracks \`seed_S*_baskets.json\` files - all other files will be ignored by git
+   - Only commit the stripped basket files, not FULL files or any other outputs
 
 ---
 
