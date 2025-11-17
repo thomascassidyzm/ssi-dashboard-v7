@@ -1,0 +1,310 @@
+{
+  "S0601L01": {
+    "lego": [
+      "we were talking about",
+      "我们在谈论"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "We were talking about",
+        "我们在谈论",
+        null,
+        1
+      ],
+      [
+        "We were talking about it",
+        "我们在谈论它",
+        null,
+        2
+      ],
+      [
+        "We were talking about stories",
+        "我们在谈论故事",
+        null,
+        2
+      ],
+      [
+        "We were talking about you",
+        "我们在谈论你",
+        null,
+        2
+      ],
+      [
+        "We were talking about my sister",
+        "我们在谈论我妹妹",
+        null,
+        3
+      ],
+      [
+        "We were talking about the garden",
+        "我们在谈论花园",
+        null,
+        3
+      ],
+      [
+        "We were talking about a hundred stories",
+        "我们在谈论一百个故事",
+        null,
+        4
+      ],
+      [
+        "We were talking about how tired you were",
+        "我们在谈论你有多累",
+        null,
+        5
+      ],
+      [
+        "We were talking about what they were doing",
+        "我们在谈论他们在做什么",
+        null,
+        5
+      ],
+      [
+        "We were talking about how happy she was",
+        "我们在谈论她有多高兴",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "在",
+        "were (progressive)"
+      ],
+      [
+        "谈论",
+        "talking about"
+      ]
+    ]
+  },
+  "S0601L02": {
+    "lego": [
+      "how it all started",
+      "这一切是如何开始的"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0601L01",
+        "known": "we were talking about",
+        "target": "我们在谈论",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "How it all started",
+        "这一切是如何开始的",
+        null,
+        1
+      ],
+      [
+        "How it started",
+        "它是如何开始的",
+        null,
+        1
+      ],
+      [
+        "We were talking about how it started",
+        "我们在谈论它是如何开始的",
+        null,
+        2
+      ],
+      [
+        "I suspect how it all started",
+        "我怀疑这一切是如何开始的",
+        null,
+        2
+      ],
+      [
+        "She told me how it all started",
+        "她告诉我这一切是如何开始的",
+        null,
+        3
+      ],
+      [
+        "I need to tell you how it started",
+        "我需要告诉你它是如何开始的",
+        null,
+        4
+      ],
+      [
+        "We were talking about how it all started yesterday",
+        "我们在谈论这一切昨天是如何开始的",
+        null,
+        3
+      ],
+      [
+        "If you told me how it started",
+        "如果你告诉我它是如何开始的",
+        null,
+        3
+      ],
+      [
+        "She heard a hundred stories about how it all started",
+        "她听过关于这一切是如何开始的一百个故事",
+        null,
+        4
+      ],
+      [
+        "We were talking about how it all started",
+        "我们在谈论这一切是如何开始的",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "这一切",
+        "it all"
+      ],
+      [
+        "是",
+        "was"
+      ],
+      [
+        "如何",
+        "how"
+      ],
+      [
+        "开始",
+        "started"
+      ],
+      [
+        "的",
+        "(nominalizer)"
+      ]
+    ]
+  },
+  "S0601L03": {
+    "lego": [
+      "how it started",
+      "是如何开始的"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0601L01",
+        "known": "we were talking about",
+        "target": "我们在谈论",
+        "type": "M"
+      },
+      {
+        "id": "S0601L02",
+        "known": "how it all started",
+        "target": "这一切是如何开始的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "How it started",
+        "是如何开始的",
+        null,
+        1
+      ],
+      [
+        "It's how it started",
+        "这是如何开始的",
+        null,
+        1
+      ],
+      [
+        "We were talking about how it started",
+        "我们在谈论是如何开始的",
+        null,
+        2
+      ],
+      [
+        "This is how it started",
+        "这就是如何开始的",
+        null,
+        2
+      ],
+      [
+        "She told me how it started",
+        "她告诉我是如何开始的",
+        null,
+        3
+      ],
+      [
+        "I suspect that's how it started",
+        "我怀疑那是如何开始的",
+        null,
+        3
+      ],
+      [
+        "If you told me how it started I'd be happy",
+        "如果你告诉我是如何开始的我会很高兴",
+        null,
+        5
+      ],
+      [
+        "We were talking about how it started in the garden",
+        "我们在谈论是如何在花园里开始的",
+        null,
+        4
+      ],
+      [
+        "I heard a thousand stories about how it started",
+        "我听过关于是如何开始的一千个故事",
+        null,
+        4
+      ],
+      [
+        "We were talking about how it all started.",
+        "我们在谈论这一切是如何开始的。",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "是",
+        "was"
+      ],
+      [
+        "如何",
+        "how"
+      ],
+      [
+        "开始",
+        "started"
+      ],
+      [
+        "的",
+        "(nominalizer)"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "S0602L01": {
+    "lego": [
+      "in the first place",
+      "最初"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "In the first place",
+        "最初",
+        null,
+        1
+      ],
+      [
+        "At first",
+        "最初",
+        null,
+        1
+      ],
+      [
+        "We were talking about it at first",
+        "我们最初在谈论它",
+        null,
+        2
+      ],
+      [
+        "I suspected at first",
+        "我最初怀疑",
+        null,
+        2
+      ],
+      [
+        "In the first place I had to share",
+        "最初我不得不分享",
+        null,
+        3
+      ],
+      [
+        "She told me in the first place",
+        "她最初告诉我",
+        null,
+        3
+      ],
+      [
+        "At first I needed to lie down in the garden",
+        "最初我需要在花园里躺下",
+        null,
+        4
+      ],
+      [
+        "We were talking about it in the first place",
+        "我们最初在谈论它",
+        null,
+        3
+      ],
+      [
+        "In the first place I'd have been happy to drive",
+        "最初我会很高兴开车",
+        null,
+        5
+      ],
+      [
+        "If you'd told me in the first place I'd have driven",
+        "如果你最初告诉我我会开车",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0602L02": {
+    "lego": [
+      "how it started",
+      "它是如何开始的"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0602L01",
+        "known": "in the first place",
+        "target": "最初",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "How it started",
+        "它是如何开始的",
+        null,
+        1
+      ],
+      [
+        "How it started at first",
+        "它最初是如何开始的",
+        null,
+        2
+      ],
+      [
+        "We were talking about how it started",
+        "我们在谈论它是如何开始的",
+        null,
+        2
+      ],
+      [
+        "I suspect how it started",
+        "我怀疑它是如何开始的",
+        null,
+        2
+      ],
+      [
+        "She told me how it started",
+        "她告诉我它是如何开始的",
+        null,
+        3
+      ],
+      [
+        "He heard stories about how it started",
+        "他听过关于它是如何开始的故事",
+        null,
+        4
+      ],
+      [
+        "We were talking about how it started in the first place",
+        "我们在谈论它最初是如何开始的",
+        null,
+        3
+      ],
+      [
+        "If you told me how it started I'd be happy",
+        "如果你告诉我它是如何开始的我会很高兴",
+        null,
+        5
+      ],
+      [
+        "I heard a hundred stories about how it started in the garden",
+        "我听过关于它是如何在花园里开始的一百个故事",
+        null,
+        5
+      ],
+      [
+        "How it started in the first place.",
+        "它最初是如何开始的。",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "它",
+        "it"
+      ],
+      [
+        "是",
+        "was"
+      ],
+      [
+        "如何",
+        "how"
+      ],
+      [
+        "开始",
+        "started"
+      ],
+      [
+        "的",
+        "(nominalizer)"
+      ]
+    ]
+  }
+}
