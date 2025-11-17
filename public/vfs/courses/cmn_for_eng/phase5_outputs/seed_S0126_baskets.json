@@ -1,0 +1,649 @@
+{
+  "S0126L01": {
+    "lego": [
+      "this work",
+      "这个工作"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "This work",
+        "这个工作",
+        null,
+        1
+      ],
+      [
+        "This work is good",
+        "这个工作很好",
+        null,
+        2
+      ],
+      [
+        "I like this work",
+        "我喜欢这个工作",
+        null,
+        3
+      ],
+      [
+        "This work is very good",
+        "这个工作非常好",
+        null,
+        3
+      ],
+      [
+        "I want to do this work",
+        "我想做这个工作",
+        null,
+        4
+      ],
+      [
+        "This work helps me learn",
+        "这个工作帮我学习",
+        null,
+        4
+      ],
+      [
+        "I believe this work is very good",
+        "我相信这个工作非常好",
+        null,
+        5
+      ],
+      [
+        "This work is helping me speak Chinese",
+        "这个工作帮我说中文",
+        null,
+        5
+      ],
+      [
+        "I thought this work was a good idea",
+        "我认为这个工作是个好主意",
+        null,
+        6
+      ],
+      [
+        "I want to continue doing this work today",
+        "我今天想继续做这个工作",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "这个",
+        "this"
+      ],
+      [
+        "工作",
+        "work"
+      ]
+    ]
+  },
+  "S0126L02": {
+    "lego": [
+      "is changing",
+      "正在改变"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0126L01",
+        "known": "this work",
+        "target": "这个工作",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Is changing",
+        "正在改变",
+        null,
+        1
+      ],
+      [
+        "This is changing",
+        "这正在改变",
+        null,
+        2
+      ],
+      [
+        "It is changing now",
+        "现在正在改变",
+        null,
+        3
+      ],
+      [
+        "This work is changing",
+        "这个工作正在改变",
+        null,
+        3
+      ],
+      [
+        "That is changing very quickly",
+        "那正在很快改变",
+        null,
+        4
+      ],
+      [
+        "This is changing my thinking",
+        "这正在改变我的想法",
+        null,
+        4
+      ],
+      [
+        "This work is changing me now",
+        "这个工作现在正在改变我",
+        null,
+        5
+      ],
+      [
+        "I believe this is changing something",
+        "我相信这正在改变一些东西",
+        null,
+        5
+      ],
+      [
+        "This work is changing how I speak",
+        "这个工作正在改变我说话的方式",
+        null,
+        6
+      ],
+      [
+        "I can see that this is changing",
+        "我能看到这正在改变",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "正在",
+        "in the process of"
+      ],
+      [
+        "改变",
+        "change"
+      ]
+    ]
+  },
+  "S0126L03": {
+    "lego": [
+      "my brain",
+      "我大脑"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0126L01",
+        "known": "this work",
+        "target": "这个工作",
+        "type": "M"
+      },
+      {
+        "id": "S0126L02",
+        "known": "is changing",
+        "target": "正在改变",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "My brain",
+        "我大脑",
+        null,
+        1
+      ],
+      [
+        "My brain is good",
+        "我大脑很好",
+        null,
+        2
+      ],
+      [
+        "My brain is working",
+        "我大脑在工作",
+        null,
+        3
+      ],
+      [
+        "This is changing my brain",
+        "这正在改变我大脑",
+        null,
+        3
+      ],
+      [
+        "My brain is learning Chinese",
+        "我大脑在学中文",
+        null,
+        4
+      ],
+      [
+        "This work is changing my brain",
+        "这个工作正在改变我大脑",
+        null,
+        4
+      ],
+      [
+        "I believe my brain is getting better",
+        "我相信我大脑正在变好",
+        null,
+        5
+      ],
+      [
+        "My brain is working very well now",
+        "我大脑现在工作得很好",
+        null,
+        5
+      ],
+      [
+        "This work is helping my brain learn",
+        "这个工作正在帮我大脑学习",
+        null,
+        6
+      ],
+      [
+        "I can feel my brain changing now",
+        "我现在能感觉到我大脑在改变",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "my"
+      ],
+      [
+        "大脑",
+        "brain"
+      ]
+    ]
+  },
+  "S0126L04": {
+    "lego": [
+      "the shape of the brain",
+      "大脑的形状"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0126L01",
+        "known": "this work",
+        "target": "这个工作",
+        "type": "M"
+      },
+      {
+        "id": "S0126L02",
+        "known": "is changing",
+        "target": "正在改变",
+        "type": "M"
+      },
+      {
+        "id": "S0126L03",
+        "known": "my brain",
+        "target": "我大脑",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The shape",
+        "形状",
+        null,
+        1
+      ],
+      [
+        "The shape of the brain",
+        "大脑的形状",
+        null,
+        2
+      ],
+      [
+        "The shape is good",
+        "形状很好",
+        null,
+        3
+      ],
+      [
+        "The shape is changing",
+        "形状正在改变",
+        null,
+        3
+      ],
+      [
+        "The shape of my brain",
+        "我大脑的形状",
+        null,
+        4
+      ],
+      [
+        "This is changing the shape",
+        "这正在改变形状",
+        null,
+        4
+      ],
+      [
+        "The shape of the brain is important",
+        "大脑的形状很重要",
+        null,
+        5
+      ],
+      [
+        "This work is changing the brain shape",
+        "这个工作正在改变大脑形状",
+        null,
+        5
+      ],
+      [
+        "The shape of my brain is changing now",
+        "我大脑的形状现在正在改变",
+        null,
+        6
+      ],
+      [
+        "I can see the shape of the brain",
+        "我能看到大脑的形状",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "大脑",
+        "brain"
+      ],
+      [
+        "的",
+        "possessive"
+      ],
+      [
+        "形状",
+        "shape"
+      ]
+    ]
+  },
+  "S0126L05": {
+    "lego": [
+      "the shape of my brain",
+      "我大脑的形状"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0126L01",
+        "known": "this work",
+        "target": "这个工作",
+        "type": "M"
+      },
+      {
+        "id": "S0126L02",
+        "known": "is changing",
+        "target": "正在改变",
+        "type": "M"
+      },
+      {
+        "id": "S0126L03",
+        "known": "my brain",
+        "target": "我大脑",
+        "type": "M"
+      },
+      {
+        "id": "S0126L04",
+        "known": "the shape of the brain",
+        "target": "大脑的形状",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "My brain's shape",
+        "我大脑的形状",
+        null,
+        1
+      ],
+      [
+        "The shape of my brain",
+        "我大脑的形状",
+        null,
+        2
+      ],
+      [
+        "My brain's shape is good",
+        "我大脑的形状很好",
+        null,
+        3
+      ],
+      [
+        "This is changing my brain",
+        "这正在改变我大脑",
+        null,
+        3
+      ],
+      [
+        "The shape of my brain is changing",
+        "我大脑的形状正在改变",
+        null,
+        4
+      ],
+      [
+        "My brain's shape is getting better",
+        "我大脑的形状正在变好",
+        null,
+        4
+      ],
+      [
+        "This work is changing my brain's shape",
+        "这个工作正在改变我大脑的形状",
+        null,
+        5
+      ],
+      [
+        "The shape of my brain is very important",
+        "我大脑的形状非常重要",
+        null,
+        5
+      ],
+      [
+        "I believe the shape of my brain is changing",
+        "我相信我大脑的形状正在改变",
+        null,
+        6
+      ],
+      [
+        "I can feel the shape of my brain changing",
+        "我能感觉到我大脑的形状在改变",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "my"
+      ],
+      [
+        "大脑",
+        "brain"
+      ],
+      [
+        "的",
+        "possessive"
+      ],
+      [
+        "形状",
+        "shape"
+      ]
+    ]
+  },
+  "S0126L06": {
+    "lego": [
+      "changing the shape of my brain",
+      "改变我大脑的形状"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0126L01",
+        "known": "this work",
+        "target": "这个工作",
+        "type": "M"
+      },
+      {
+        "id": "S0126L02",
+        "known": "is changing",
+        "target": "正在改变",
+        "type": "M"
+      },
+      {
+        "id": "S0126L03",
+        "known": "my brain",
+        "target": "我大脑",
+        "type": "M"
+      },
+      {
+        "id": "S0126L04",
+        "known": "the shape of the brain",
+        "target": "大脑的形状",
+        "type": "M"
+      },
+      {
+        "id": "S0126L05",
+        "known": "the shape of my brain",
+        "target": "我大脑的形状",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Changing my brain",
+        "改变我大脑",
+        null,
+        1
+      ],
+      [
+        "Changing the brain's shape",
+        "改变大脑的形状",
+        null,
+        2
+      ],
+      [
+        "It is changing my brain",
+        "正在改变我大脑",
+        null,
+        3
+      ],
+      [
+        "Changing the shape of my brain",
+        "改变我大脑的形状",
+        null,
+        3
+      ],
+      [
+        "This is changing my brain's shape",
+        "这正在改变我大脑的形状",
+        null,
+        4
+      ],
+      [
+        "I believe it's changing my brain",
+        "我相信正在改变我大脑",
+        null,
+        4
+      ],
+      [
+        "This work is changing my brain's shape",
+        "这个工作正在改变我大脑的形状",
+        null,
+        5
+      ],
+      [
+        "Changing the shape of my brain is good",
+        "改变我大脑的形状很好",
+        null,
+        5
+      ],
+      [
+        "I can feel it changing my brain's shape now",
+        "我现在能感觉到正在改变我大脑的形状",
+        null,
+        7
+      ],
+      [
+        "This work is changing the shape of my brain.",
+        "这个工作正在改变我大脑的形状。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "改变",
+        "change"
+      ],
+      [
+        "我",
+        "my"
+      ],
+      [
+        "大脑",
+        "brain"
+      ],
+      [
+        "的",
+        "possessive"
+      ],
+      [
+        "形状",
+        "shape"
+      ]
+    ]
+  }
+}
