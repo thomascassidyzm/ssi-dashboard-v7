@@ -1,0 +1,204 @@
+{
+  "legos": {
+    "S0401L02": {
+      "lego": [
+        "it would be better",
+        "sería mejor"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0401L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "It would be better",
+          "Sería mejor",
+          null,
+          1
+        ],
+        [
+          "No, it would be better",
+          "No, sería mejor",
+          null,
+          2
+        ],
+        [
+          "It would be better to become more patient",
+          "Sería mejor volvernos más pacientes",
+          null,
+          3
+        ],
+        [
+          "It would be better to turn left",
+          "Sería mejor girar a la izquierda",
+          null,
+          3
+        ],
+        [
+          "It would be better to eat something later",
+          "Sería mejor comer algo más tarde",
+          null,
+          4
+        ],
+        [
+          "We want to become patient, it would be better",
+          "Queremos volvernos pacientes, sería mejor",
+          null,
+          4
+        ],
+        [
+          "It would be better to turn left at the next corner",
+          "Sería mejor girar a la izquierda en la próxima esquina",
+          null,
+          5
+        ],
+        [
+          "It would be better to become more patient with the children",
+          "Sería mejor volvernos más pacientes con los niños",
+          null,
+          5
+        ],
+        [
+          "It would be better to eat something at the next corner",
+          "Sería mejor comer algo en la próxima esquina",
+          null,
+          5
+        ],
+        [
+          "It would be better to turn left and walk towards the bus",
+          "Sería mejor girar a la izquierda y caminar hacia el autobús",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "sería",
+          "it would be"
+        ],
+        [
+          "mejor",
+          "better"
+        ]
+      ]
+    },
+    "S0401L03": {
+      "lego": [
+        "it would be better to go",
+        "sería mejor ir"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0401L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0401L02",
+          "known": "it would be better",
+          "target": "sería mejor",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "It would be better to go",
+          "Sería mejor ir",
+          null,
+          1
+        ],
+        [
+          "No, it would be better to go",
+          "No, sería mejor ir",
+          null,
+          2
+        ],
+        [
+          "It would be better to go to the post office",
+          "Sería mejor ir a la oficina de correos",
+          null,
+          3
+        ],
+        [
+          "It would be better to go towards the bus",
+          "Sería mejor ir hacia el autobús",
+          null,
+          3
+        ],
+        [
+          "It would be better to go and eat something later",
+          "Sería mejor ir a comer algo más tarde",
+          null,
+          4
+        ],
+        [
+          "We want to be patient, but it would be better to go",
+          "Queremos ser pacientes, pero sería mejor ir",
+          null,
+          4
+        ],
+        [
+          "It would be better to go and turn left at the corner",
+          "Sería mejor ir y girar a la izquierda en la esquina",
+          null,
+          5
+        ],
+        [
+          "It would be better to go with the child with black hair",
+          "Sería mejor ir con el niño de pelo negro",
+          null,
+          5
+        ],
+        [
+          "It would be better to go to the post office soon",
+          "Sería mejor ir a la oficina de correos pronto",
+          null,
+          5
+        ],
+        [
+          "It would be better to go towards the bus and turn left",
+          "Sería mejor ir hacia el autobús y girar a la izquierda",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "sería",
+          "it would be"
+        ],
+        [
+          "mejor",
+          "better"
+        ],
+        [
+          "ir",
+          "to go"
+        ]
+      ]
+    }
+  }
+}

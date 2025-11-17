@@ -1,0 +1,355 @@
+{
+  "legos": {
+    "S0402L04": {
+      "lego": [
+        "to stop somewhere",
+        "parar en algún lugar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0402L02",
+          "known": "it would be nice",
+          "target": "sería agradable",
+          "type": "M"
+        },
+        {
+          "id": "S0402L03",
+          "known": "it would be nice to stop",
+          "target": "sería agradable parar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to stop somewhere",
+          "parar en algún lugar",
+          null,
+          1
+        ],
+        [
+          "Yes, to stop somewhere",
+          "Sí, parar en algún lugar",
+          null,
+          2
+        ],
+        [
+          "We need to stop somewhere",
+          "necesitamos parar en algún lugar",
+          null,
+          3
+        ],
+        [
+          "We want to stop somewhere",
+          "queremos parar en algún lugar",
+          null,
+          3
+        ],
+        [
+          "We don't want to stop somewhere",
+          "no queremos parar en algún lugar",
+          null,
+          4
+        ],
+        [
+          "it would be nice to stop somewhere",
+          "sería agradable parar en algún lugar",
+          null,
+          4
+        ],
+        [
+          "We don't need to stop somewhere soon",
+          "no necesitamos parar en algún lugar pronto",
+          null,
+          5
+        ],
+        [
+          "it would be better to stop somewhere later on",
+          "sería mejor parar en algún lugar más tarde",
+          null,
+          5
+        ],
+        [
+          "We need to stop somewhere at the next corner",
+          "necesitamos parar en algún lugar en la próxima esquina",
+          null,
+          6
+        ],
+        [
+          "Do we want to stop somewhere for something?",
+          "¿queremos parar en algún lugar para algo?",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "parar",
+          "to stop"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "algún",
+          "some"
+        ],
+        [
+          "lugar",
+          "to place"
+        ]
+      ]
+    },
+    "S0402L05": {
+      "lego": [
+        "somewhere",
+        "en algún lugar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0402L02",
+          "known": "it would be nice",
+          "target": "sería agradable",
+          "type": "M"
+        },
+        {
+          "id": "S0402L03",
+          "known": "it would be nice to stop",
+          "target": "sería agradable parar",
+          "type": "M"
+        },
+        {
+          "id": "S0402L04",
+          "known": "to stop somewhere",
+          "target": "parar en algún lugar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "somewhere",
+          "en algún lugar",
+          null,
+          1
+        ],
+        [
+          "somewhere soon",
+          "en algún lugar pronto",
+          null,
+          2
+        ],
+        [
+          "to stand somewhere",
+          "estar de pie en algún lugar",
+          null,
+          3
+        ],
+        [
+          "to stop somewhere soon",
+          "parar en algún lugar pronto",
+          null,
+          3
+        ],
+        [
+          "We need to eat something somewhere",
+          "necesitamos comer algo en algún lugar",
+          null,
+          4
+        ],
+        [
+          "We don't want to stand somewhere",
+          "no queremos estar de pie en algún lugar",
+          null,
+          4
+        ],
+        [
+          "We need to get ready somewhere soon",
+          "necesitamos prepararnos en algún lugar pronto",
+          null,
+          5
+        ],
+        [
+          "it would be better to eat somewhere later on",
+          "sería mejor comer en algún lugar más tarde",
+          null,
+          5
+        ],
+        [
+          "Do we need to stand somewhere until everybody else is ready?",
+          "¿necesitamos estar de pie en algún lugar hasta que todos los demás estén preparados?",
+          null,
+          7
+        ],
+        [
+          "We want to become more patient somewhere",
+          "queremos volvernos más pacientes en algún lugar",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "algún",
+          "some"
+        ],
+        [
+          "lugar",
+          "to place"
+        ]
+      ]
+    },
+    "S0402L06": {
+      "lego": [
+        "for food",
+        "para comida"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0402L02",
+          "known": "it would be nice",
+          "target": "sería agradable",
+          "type": "M"
+        },
+        {
+          "id": "S0402L03",
+          "known": "it would be nice to stop",
+          "target": "sería agradable parar",
+          "type": "M"
+        },
+        {
+          "id": "S0402L04",
+          "known": "to stop somewhere",
+          "target": "parar en algún lugar",
+          "type": "M"
+        },
+        {
+          "id": "S0402L05",
+          "known": "somewhere",
+          "target": "en algún lugar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "for food",
+          "para comida",
+          null,
+          1
+        ],
+        [
+          "to stop for food",
+          "parar para comida",
+          null,
+          2
+        ],
+        [
+          "We need to stop for food",
+          "necesitamos parar para comida",
+          null,
+          3
+        ],
+        [
+          "to stop somewhere for food",
+          "parar en algún lugar para comida",
+          null,
+          3
+        ],
+        [
+          "We want to stop somewhere for food",
+          "queremos parar en algún lugar para comida",
+          null,
+          4
+        ],
+        [
+          "it would be nice to stop somewhere for food",
+          "sería agradable parar en algún lugar para comida",
+          null,
+          4
+        ],
+        [
+          "Do we need to stop somewhere for food?",
+          "¿necesitamos parar en algún lugar para comida?",
+          null,
+          5
+        ],
+        [
+          "Do we need to stop somewhere for food soon?",
+          "¿necesitamos parar en algún lugar para comida pronto?",
+          null,
+          6
+        ],
+        [
+          "it would be better to stop somewhere for food later on",
+          "sería mejor parar en algún lugar para comida más tarde",
+          null,
+          6
+        ],
+        [
+          "Yes it would be nice to stop somewhere for food",
+          "Sí, sería agradable parar en algún lugar para comida",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "para",
+          "for"
+        ],
+        [
+          "comida",
+          "food"
+        ]
+      ]
+    }
+  }
+}

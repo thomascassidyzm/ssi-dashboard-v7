@@ -1,0 +1,121 @@
+{
+  "legos": {
+    "S0379L05": {
+      "lego": [
+        "to travel to Africa",
+        "viajar a África"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0379L01",
+          "known": "yes",
+          "target": "sí",
+          "type": "A"
+        },
+        {
+          "id": "S0379L02",
+          "known": "I was lucky enough",
+          "target": "tuve suficiente suerte",
+          "type": "M"
+        },
+        {
+          "id": "S0379L03",
+          "known": "enough luck",
+          "target": "suficiente suerte",
+          "type": "M"
+        },
+        {
+          "id": "S0379L04",
+          "known": "to travel to Africa",
+          "target": "para viajar a África",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "To travel to Africa",
+          "Viajar a África",
+          null,
+          1
+        ],
+        [
+          "I had enough luck to travel to Africa",
+          "Tuve suficiente suerte para viajar a África",
+          null,
+          2
+        ],
+        [
+          "I thought to travel to Africa was beautiful",
+          "Pensé que viajar a África era hermoso",
+          null,
+          3
+        ],
+        [
+          "Did you have enough money to travel to Africa?",
+          "¿Tenías suficiente dinero para viajar a África?",
+          null,
+          3
+        ],
+        [
+          "I didn't have enough money to travel to Africa",
+          "No tenía suficiente dinero para viajar a África",
+          null,
+          4
+        ],
+        [
+          "I had enough luck to travel to Africa last year",
+          "Tuve suficiente suerte para viajar a África el año pasado",
+          null,
+          4
+        ],
+        [
+          "Yes, I was lucky enough to travel to Africa",
+          "Sí, tuve suficiente suerte para viajar a África",
+          null,
+          5
+        ],
+        [
+          "I thought it was very beautiful to travel to Africa",
+          "Pensé que era muy hermoso viajar a África",
+          null,
+          5
+        ],
+        [
+          "Did you see what it was like to travel to Africa?",
+          "¿Viste lo que fue viajar a África?",
+          null,
+          5
+        ],
+        [
+          "I had enough luck to travel to Africa for holidays last year",
+          "Tuve suficiente suerte para viajar a África para vacaciones el año pasado",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "viajar",
+          "to travel"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "África",
+          "Africa"
+        ]
+      ]
+    }
+  }
+}

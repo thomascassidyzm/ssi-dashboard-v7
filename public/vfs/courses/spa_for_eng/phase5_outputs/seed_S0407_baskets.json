@@ -1,0 +1,205 @@
+{
+  "legos": {
+    "S0407L01": {
+      "lego": [
+        "shouldn't we",
+        "no deberíamos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Shouldn't we?",
+          "¿No deberíamos?",
+          null,
+          1
+        ],
+        [
+          "Shouldn't we go?",
+          "¿No deberíamos ir?",
+          null,
+          2
+        ],
+        [
+          "Shouldn't we ask her?",
+          "¿No deberíamos preguntar a ella?",
+          null,
+          3
+        ],
+        [
+          "Shouldn't we eat something?",
+          "¿No deberíamos comer algo?",
+          null,
+          3
+        ],
+        [
+          "Shouldn't we go to the corner?",
+          "¿No deberíamos ir a la esquina?",
+          null,
+          4
+        ],
+        [
+          "Shouldn't we eat at home?",
+          "¿No deberíamos comer en casa?",
+          null,
+          4
+        ],
+        [
+          "Shouldn't we ask if we have to book?",
+          "¿No deberíamos preguntar si tenemos que reservar?",
+          null,
+          6
+        ],
+        [
+          "Shouldn't we turn left at the corner?",
+          "¿No deberíamos girar a la izquierda en la esquina?",
+          null,
+          6
+        ],
+        [
+          "Shouldn't we hope for something better?",
+          "¿No deberíamos esperar algo mejor?",
+          null,
+          5
+        ],
+        [
+          "Shouldn't we eat something more pleasant?",
+          "¿No deberíamos comer algo más agradable?",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0407L01",
+        "seed_context": {
+          "known": "¿No deberíamos intentar establecer un buen ejemplo?",
+          "target": "Shouldn't we try to set a good example?"
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "deberíamos",
+          "should we"
+        ]
+      ]
+    },
+    "S0407L02": {
+      "lego": [
+        "shouldn't we try",
+        "no deberíamos intentar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0407L01",
+          "known": "shouldn't we",
+          "target": "no deberíamos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Shouldn't we try?",
+          "¿No deberíamos intentar?",
+          null,
+          1
+        ],
+        [
+          "Shouldn't we try to go?",
+          "¿No deberíamos intentar ir?",
+          null,
+          2
+        ],
+        [
+          "Shouldn't we try to ask?",
+          "¿No deberíamos intentar preguntar?",
+          null,
+          3
+        ],
+        [
+          "Shouldn't we try to eat something?",
+          "¿No deberíamos intentar comer algo?",
+          null,
+          3
+        ],
+        [
+          "Shouldn't we try to turn left?",
+          "¿No deberíamos intentar girar a la izquierda?",
+          null,
+          4
+        ],
+        [
+          "Shouldn't we try to go home?",
+          "¿No deberíamos intentar ir a casa?",
+          null,
+          4
+        ],
+        [
+          "Shouldn't we try to ask if we have to book?",
+          "¿No deberíamos intentar preguntar si tenemos que reservar?",
+          null,
+          7
+        ],
+        [
+          "Shouldn't we try to eat something more pleasant?",
+          "¿No deberíamos intentar comer algo más agradable?",
+          null,
+          6
+        ],
+        [
+          "Shouldn't we try to turn left at the corner?",
+          "¿No deberíamos intentar girar a la izquierda en la esquina?",
+          null,
+          6
+        ],
+        [
+          "Shouldn't we try to hope for something better?",
+          "¿No deberíamos intentar esperar algo mejor?",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0407L02",
+        "seed_context": {
+          "known": "¿No deberíamos intentar establecer un buen ejemplo?",
+          "target": "Shouldn't we try to set a good example?"
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "deberíamos",
+          "should we"
+        ],
+        [
+          "intentar",
+          "to try"
+        ]
+      ]
+    }
+  }
+}

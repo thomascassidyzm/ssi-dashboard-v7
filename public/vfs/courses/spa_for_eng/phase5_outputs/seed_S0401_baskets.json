@@ -1,0 +1,137 @@
+{
+  "legos": {
+    "S0401L01": {
+      "lego": [
+        "No",
+        "No"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0401L02": {
+      "lego": [
+        "it would be better",
+        "sería mejor"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0401L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["sería", "it would be"],
+        ["mejor", "better"]
+      ]
+    },
+    "S0401L03": {
+      "lego": [
+        "it would be better to go",
+        "sería mejor ir"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0401L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0401L02",
+          "known": "it would be better",
+          "target": "sería mejor",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["sería", "it would be"],
+        ["mejor", "better"],
+        ["ir", "to go"]
+      ]
+    },
+    "S0401L04": {
+      "lego": [
+        "to go straight home",
+        "ir directamente a casa"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0401L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0401L02",
+          "known": "it would be better",
+          "target": "sería mejor",
+          "type": "M"
+        },
+        {
+          "id": "S0401L03",
+          "known": "it would be better to go",
+          "target": "sería mejor ir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["ir directamente a casa", "to go straight home", null, 1],
+        ["quiero ir directamente a casa", "I want to go straight home", null, 2],
+        ["voy a ir directamente a casa", "I'm going to go straight home", null, 3],
+        ["necesitamos ir directamente a casa", "we need to go straight home", null, 2],
+        ["quiero ir directamente a casa ahora", "I want to go straight home now", null, 3],
+        ["sería mejor ir directamente a casa", "it would be better to go straight home", null, 2],
+        ["queremos ir directamente a casa más tarde", "we want to go straight home later", null, 4],
+        ["no quiero ir directamente a casa", "I don't want to go straight home", null, 3],
+        ["sería mejor ir directamente a casa ahora", "it would be better to go straight home now", null, 4],
+        ["No, sería mejor ir directamente a casa.", "No, it would be better to go straight home.", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["ir", "to go"],
+        ["directamente", "straight"],
+        ["a", "to"],
+        ["casa", "home"]
+      ]
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "legos": {
+    "S0404L06": {
+      "lego": [
+        "before Thursday",
+        "antes del jueves"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0404L01",
+          "known": "we shouldn't",
+          "target": "no deberíamos",
+          "type": "M"
+        },
+        {
+          "id": "S0404L02",
+          "known": "to expect",
+          "target": "esperar",
+          "type": "A"
+        },
+        {
+          "id": "S0404L03",
+          "known": "we shouldn't expect",
+          "target": "no deberíamos esperar",
+          "type": "M"
+        },
+        {
+          "id": "S0404L04",
+          "known": "to expect to finish",
+          "target": "esperar terminar",
+          "type": "M"
+        },
+        {
+          "id": "S0404L05",
+          "known": "to finish",
+          "target": "terminar",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "before Thursday",
+          "antes del jueves",
+          null,
+          1
+        ],
+        [
+          "to finish before Thursday",
+          "terminar antes del jueves",
+          null,
+          2
+        ],
+        [
+          "we shouldn't before Thursday",
+          "no deberíamos antes del jueves",
+          null,
+          3
+        ],
+        [
+          "to expect to finish before Thursday",
+          "esperar terminar antes del jueves",
+          null,
+          3
+        ],
+        [
+          "we shouldn't finish before Thursday",
+          "no deberíamos terminar antes del jueves",
+          null,
+          4
+        ],
+        [
+          "we shouldn't expect before Thursday",
+          "no deberíamos esperar antes del jueves",
+          null,
+          4
+        ],
+        [
+          "we shouldn't expect to finish before Thursday",
+          "no deberíamos esperar terminar antes del jueves",
+          null,
+          5
+        ],
+        [
+          "they shouldn't finish before Thursday",
+          "no deberían terminar antes del jueves",
+          null,
+          5
+        ],
+        [
+          "I hope to finish before Thursday",
+          "espero terminar antes del jueves",
+          null,
+          5
+        ],
+        [
+          "We shouldn't expect to finish before Thursday.",
+          "No deberíamos esperar terminar antes del jueves.",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0404L06",
+        "seed_context": {
+          "known": "No deberíamos esperar terminar antes del jueves.",
+          "target": "We shouldn't expect to finish before Thursday."
+        }
+      },
+      "components": [
+        [
+          "antes",
+          "before"
+        ],
+        [
+          "del",
+          "of the (de+el)"
+        ],
+        [
+          "jueves",
+          "Thursday"
+        ]
+      ]
+    }
+  }
+}

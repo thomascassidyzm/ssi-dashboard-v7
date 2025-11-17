@@ -1,0 +1,143 @@
+{
+  "legos": {
+    "S0410L01": {
+      "lego": [
+        "still",
+        "todavía"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "still",
+          "todavía"
+        ],
+        [
+          "I still want",
+          "todavía quiero"
+        ],
+        [
+          "I still try to learn",
+          "todavía intento aprender"
+        ],
+        [
+          "they still speak Spanish",
+          "todavía hablan español"
+        ],
+        [
+          "I still want to help you",
+          "todavía quiero ayudarte"
+        ],
+        [
+          "we still need to think",
+          "todavía necesitamos pensar"
+        ],
+        [
+          "I still don't know what to do",
+          "todavía no sé qué hacer"
+        ],
+        [
+          "they still try to speak with me",
+          "todavía intentan hablar conmigo"
+        ],
+        [
+          "I still think it doesn't matter",
+          "todavía creo que no importa"
+        ],
+        [
+          "we still want to learn how to speak",
+          "todavía queremos aprender cómo hablar"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0410L01",
+        "seed_context": {
+          "target": "Todavía luchan el uno con el otro.",
+          "known": "They still fight with each other."
+        }
+      },
+      "components": []
+    },
+    "S0410L02": {
+      "lego": [
+        "they fight",
+        "luchan"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0410L01",
+          "known": "still",
+          "target": "todavía",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "they fight",
+          "luchan"
+        ],
+        [
+          "they still fight",
+          "todavía luchan"
+        ],
+        [
+          "they fight with me",
+          "luchan conmigo"
+        ],
+        [
+          "they still fight today",
+          "todavía luchan hoy"
+        ],
+        [
+          "they fight to help us",
+          "luchan para ayudarnos"
+        ],
+        [
+          "they still fight with them",
+          "todavía luchan con ellos"
+        ],
+        [
+          "I think they still fight with me",
+          "creo que todavía luchan conmigo"
+        ],
+        [
+          "they fight because they want to win",
+          "luchan porque quieren ganar"
+        ],
+        [
+          "they still don't know why they fight",
+          "todavía no saben por qué luchan"
+        ],
+        [
+          "I don't understand why they still fight",
+          "no entiendo por qué todavía luchan"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0410L02",
+        "seed_context": {
+          "target": "Todavía luchan el uno con el otro.",
+          "known": "They still fight with each other."
+        }
+      },
+      "components": []
+    }
+  }
+}

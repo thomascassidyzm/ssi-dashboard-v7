@@ -1,0 +1,378 @@
+{
+  "legos": {
+    "S0403L01": {
+      "lego": [
+        "we should",
+        "deberíamos"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "we should",
+          "deberíamos"
+        ],
+        [
+          "we should go",
+          "deberíamos ir"
+        ],
+        [
+          "we should eat something",
+          "deberíamos comer algo"
+        ],
+        [
+          "we should be ready",
+          "deberíamos estar preparados"
+        ],
+        [
+          "we should go home",
+          "deberíamos ir a casa"
+        ],
+        [
+          "we should eat soon",
+          "deberíamos comer pronto"
+        ],
+        [
+          "we should get ready soon",
+          "deberíamos prepararnos pronto"
+        ],
+        [
+          "we should stop somewhere",
+          "deberíamos parar en algún lugar"
+        ],
+        [
+          "we should become more patient",
+          "deberíamos volvernos más pacientes"
+        ],
+        [
+          "we should eat something later",
+          "deberíamos comer algo más tarde"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0403L01",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        [
+          "deberíamos",
+          "we should"
+        ]
+      ]
+    },
+    "S0403L02": {
+      "lego": [
+        "to remain quiet",
+        "permanecer callados"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0403L01",
+          "known": "we should",
+          "target": "deberíamos",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to remain quiet",
+          "permanecer callados"
+        ],
+        [
+          "we should remain quiet",
+          "deberíamos permanecer callados"
+        ],
+        [
+          "we need to remain quiet",
+          "necesitamos permanecer callados"
+        ],
+        [
+          "we want to remain quiet",
+          "queremos permanecer callados"
+        ],
+        [
+          "it would be better to remain quiet",
+          "sería mejor permanecer callados"
+        ],
+        [
+          "we should remain quiet soon",
+          "deberíamos permanecer callados pronto"
+        ],
+        [
+          "we should remain quiet later",
+          "deberíamos permanecer callados más tarde"
+        ],
+        [
+          "we want to remain quiet now",
+          "queremos permanecer callados pronto"
+        ],
+        [
+          "it would be nice to remain quiet",
+          "sería agradable permanecer callados"
+        ],
+        [
+          "we should remain quiet with our children",
+          "deberíamos permanecer callados con nuestros niños"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0403L02",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        [
+          "permanecer",
+          "to remain"
+        ],
+        [
+          "callados",
+          "quiet"
+        ]
+      ]
+    },
+    "S0403L03": {
+      "lego": [
+        "we should remain quiet",
+        "deberíamos permanecer callados"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0403L01",
+          "known": "we should",
+          "target": "deberíamos",
+          "type": "A"
+        },
+        {
+          "id": "S0403L02",
+          "known": "to remain quiet",
+          "target": "permanecer callados",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "we should remain quiet",
+          "deberíamos permanecer callados"
+        ],
+        [
+          "we should remain quiet now",
+          "deberíamos permanecer callados pronto"
+        ],
+        [
+          "we should remain quiet here",
+          "deberíamos permanecer callados en casa"
+        ],
+        [
+          "we should remain quiet with them",
+          "deberíamos permanecer callados con los niños"
+        ],
+        [
+          "we should remain quiet later",
+          "deberíamos permanecer callados más tarde"
+        ],
+        [
+          "we should remain quiet until everyone is ready",
+          "deberíamos permanecer callados hasta que todos estén preparados"
+        ],
+        [
+          "we should remain quiet with our children",
+          "deberíamos permanecer callados con nuestros niños"
+        ],
+        [
+          "we should remain quiet at the next corner",
+          "deberíamos permanecer callados en la próxima esquina"
+        ],
+        [
+          "we should remain quiet in some place",
+          "deberíamos permanecer callados en algún lugar"
+        ],
+        [
+          "we should remain quiet until everybody else is ready",
+          "deberíamos permanecer callados hasta que todos los demás estén preparados"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0403L03",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        [
+          "deberíamos",
+          "we should"
+        ],
+        [
+          "permanecer",
+          "to remain"
+        ],
+        [
+          "callados",
+          "quiet"
+        ]
+      ]
+    },
+    "S0403L04": {
+      "lego": [
+        "as long as possible",
+        "tanto tiempo como sea posible"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0403L01",
+          "known": "we should",
+          "target": "deberíamos",
+          "type": "A"
+        },
+        {
+          "id": "S0403L02",
+          "known": "to remain quiet",
+          "target": "permanecer callados",
+          "type": "M"
+        },
+        {
+          "id": "S0403L03",
+          "known": "we should remain quiet",
+          "target": "deberíamos permanecer callados",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["tanto tiempo como sea posible", "as long as possible", null, 1],
+        ["deberíamos prepararnos tanto tiempo como sea posible", "we should get ready as long as possible", null, 2],
+        ["queremos permanecer callados tanto tiempo como sea posible", "we want to remain quiet as long as possible", null, 3],
+        ["necesitamos estar de pie tanto tiempo como sea posible", "we need to stand as long as possible", null, 4],
+        ["deberíamos permanecer callados tanto tiempo como sea posible", "we should remain quiet as long as possible", null, 4],
+        ["queremos volvernos más pacientes tanto tiempo como sea posible", "we want to become more patient as long as possible", null, 5],
+        ["no queremos perder la esperanza tanto tiempo como sea posible", "we don't want to lose hope as long as possible", null, 6],
+        ["sería mejor prepararnos pronto tanto tiempo como sea posible", "it would be better to get ready soon as long as possible", null, 6],
+        ["deberíamos prepararnos y permanecer callados tanto tiempo como sea posible", "we should get ready and remain quiet as long as possible", null, 7],
+        ["sería agradable parar en algún lugar para comida tanto tiempo como sea posible", "it would be nice to stop somewhere for food as long as possible", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0403L04",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        ["tanto", "as"],
+        ["tiempo", "long/time"],
+        ["como", "as"],
+        ["sea", "be (subjunctive)"],
+        ["posible", "possible"]
+      ]
+    },
+    "S0403L05": {
+      "lego": [
+        "for as long as possible",
+        "durante tanto tiempo como sea posible"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0403L01",
+          "known": "we should",
+          "target": "deberíamos",
+          "type": "A"
+        },
+        {
+          "id": "S0403L02",
+          "known": "to remain quiet",
+          "target": "permanecer callados",
+          "type": "M"
+        },
+        {
+          "id": "S0403L03",
+          "known": "we should remain quiet",
+          "target": "deberíamos permanecer callados",
+          "type": "M"
+        },
+        {
+          "id": "S0403L04",
+          "known": "as long as possible",
+          "target": "tanto tiempo como sea posible",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["durante tanto tiempo como sea posible", "for as long as possible", null, 1],
+        ["deberíamos prepararnos durante tanto tiempo como sea posible", "we should get ready for as long as possible", null, 2],
+        ["queremos comer algo durante tanto tiempo como sea posible", "we want to eat something for as long as possible", null, 3],
+        ["necesitamos permanecer callados durante tanto tiempo como sea posible", "we need to remain quiet for as long as possible", null, 4],
+        ["deberíamos estar de pie durante tanto tiempo como sea posible", "we should stand for as long as possible", null, 4],
+        ["queremos volvernos más pacientes con nuestros niños durante tanto tiempo como sea posible", "we want to become more patient with our children for as long as possible", null, 6],
+        ["no queremos perder la esperanza durante tanto tiempo como sea posible", "we don't want to lose hope for as long as possible", null, 6],
+        ["sería mejor prepararnos pronto durante tanto tiempo como sea posible", "it would be better to get ready soon for as long as possible", null, 7],
+        ["deberíamos permanecer callados y comer algo más tarde durante tanto tiempo como sea posible", "we should remain quiet and eat something later on for as long as possible", null, 8],
+        ["sería agradable parar en algún lugar para comida durante tanto tiempo como sea posible", "it would be nice to stop somewhere for food for as long as possible", null, 9]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0403L05",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "Deberíamos permanecer callados durante tanto tiempo como sea posible."
+        }
+      },
+      "components": [
+        ["durante", "for"],
+        ["tanto", "as"],
+        ["tiempo", "long"],
+        ["como", "as"],
+        ["sea", "be (subj.)"],
+        ["posible", "possible"]
+      ]
+    }
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "legos": {
+    "S0404L01": {
+      "lego": [
+        "we shouldn't",
+        "no deberíamos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["no deberíamos", "we shouldn't", null, 1],
+        ["no deberíamos ir", "we shouldn't go", null, 2],
+        ["no deberíamos comer algo", "we shouldn't eat something", null, 3],
+        ["no deberíamos perder la esperanza", "we shouldn't lose hope", null, 3],
+        ["no deberíamos parar en algún lugar", "we shouldn't stop somewhere", null, 4],
+        ["no deberíamos ir directamente a casa", "we shouldn't go straight home", null, 4],
+        ["no deberíamos volvernos más pacientes con nuestros niños", "we shouldn't become more patient with our children", null, 5],
+        ["no deberíamos girar a la izquierda en la próxima esquina", "we shouldn't turn left at the next corner", null, 6],
+        ["no deberíamos estar de pie hasta que todos los demás estén preparados", "we shouldn't stand until everybody else is ready", null, 7],
+        ["no deberíamos permanecer callados durante tanto tiempo como sea posible", "we shouldn't remain quiet for as long as possible", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0404L01",
+        "seed_context": {
+          "known": "We shouldn't expect to finish before Thursday.",
+          "target": "No deberíamos esperar terminar antes del jueves."
+        }
+      },
+      "components": [
+        ["no", "not"],
+        ["deberíamos", "we should"]
+      ]
+    },
+    "S0404L02": {
+    "lego": [
+      "to expect",
+      "esperar"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
+        "To expect",
+        "Esperar",
+        null,
+        1
+      ],
+      [
+        "To expect something",
+        "Esperar algo",
+        null,
+        2
+      ],
+      [
+        "We should expect",
+        "Deberíamos esperar",
+        null,
+        2
+      ],
+      [
+        "We shouldn't expect",
+        "No deberíamos esperar",
+        null,
+        2
+      ],
+      [
+        "We should expect something better",
+        "Deberíamos esperar algo mejor",
+        null,
+        3
+      ],
+      [
+        "We shouldn't expect hope",
+        "No deberíamos esperar la esperanza",
+        null,
+        3
+      ],
+      [
+        "It would be better to expect something later on",
+        "Sería mejor esperar algo más tarde",
+        null,
+        4
+      ],
+      [
+        "We shouldn't expect to lose hope",
+        "No deberíamos esperar perder la esperanza",
+        null,
+        5
+      ],
+      [
+        "We should expect to become more patient with our children",
+        "Deberíamos esperar volvernos más pacientes con nuestros niños",
+        null,
+        5
+      ],
+      [
+        "We don't need to expect to stand until everybody else is ready",
+        "No necesitamos esperar estar de pie hasta que todos los demás estén preparados",
+        null,
+        6
+      ]
+    ]
+  },
+  "S0404L03": {
+    "lego": [
+      "we shouldn't expect",
+      "no deberíamos esperar"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "We shouldn't expect",
+        "No deberíamos esperar",
+        null,
+        1
+      ],
+      [
+        "We shouldn't expect something",
+        "No deberíamos esperar algo",
+        null,
+        2
+      ],
+      [
+        "We shouldn't expect hope",
+        "No deberíamos esperar la esperanza",
+        null,
+        2
+      ],
+      [
+        "We shouldn't expect soon",
+        "No deberíamos esperar pronto",
+        null,
+        2
+      ],
+      [
+        "We shouldn't expect something better",
+        "No deberíamos esperar algo mejor",
+        null,
+        3
+      ],
+      [
+        "We shouldn't expect more patience",
+        "No deberíamos esperar más pacientes",
+        null,
+        3
+      ],
+      [
+        "We shouldn't expect to lose hope",
+        "No deberíamos esperar perder la esperanza",
+        null,
+        4
+      ],
+      [
+        "We shouldn't expect to eat something later on",
+        "No deberíamos esperar comer algo más tarde",
+        null,
+        5
+      ],
+      [
+        "We shouldn't expect to become more patient with our children",
+        "No deberíamos esperar volvernos más pacientes con nuestros niños",
+        null,
+        5
+      ],
+      [
+        "We shouldn't expect to remain quiet for as long as possible",
+        "No deberíamos esperar permanecer callados durante tanto tiempo como sea posible",
+        null,
+        6
+      ]
+    ]
+  },
+  "S0404L04": {
+    "lego": [
+      "to expect to finish",
+      "esperar terminar"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "To expect to finish",
+        "Esperar terminar",
+        null,
+        1
+      ],
+      [
+        "We shouldn't expect to finish",
+        "No deberíamos esperar terminar",
+        null,
+        2
+      ],
+      [
+        "To expect to finish soon",
+        "Esperar terminar pronto",
+        null,
+        2
+      ],
+      [
+        "We should expect to finish",
+        "Deberíamos esperar terminar",
+        null,
+        2
+      ],
+      [
+        "We shouldn't expect to finish soon",
+        "No deberíamos esperar terminar pronto",
+        null,
+        3
+      ],
+      [
+        "We need to expect to finish later on",
+        "Necesitamos esperar terminar más tarde",
+        null,
+        4
+      ],
+      [
+        "It would be better to expect to finish soon",
+        "Sería mejor esperar terminar pronto",
+        null,
+        4
+      ],
+      [
+        "We shouldn't expect to finish something better",
+        "No deberíamos esperar terminar algo mejor",
+        null,
+        5
+      ],
+      [
+        "We want to expect to finish eating something later on",
+        "Queremos esperar terminar comer algo más tarde",
+        null,
+        5
+      ],
+      [
+        "We shouldn't expect to finish before Thursday.",
+        "No deberíamos esperar terminar antes del jueves.",
+        null,
+        6
+      ]
+    ]
+  }
+  }
+}

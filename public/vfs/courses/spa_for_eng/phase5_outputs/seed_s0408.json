@@ -1,0 +1,86 @@
+{
+  "legos": {
+    "S0408L02": {
+      "lego": [
+        "Yes that's",
+        "Sí esa es"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0408L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Yes that's",
+          "Sí esa es"
+        ],
+        [
+          "Yes that's something",
+          "Sí esa es algo"
+        ],
+        [
+          "Yes that's better",
+          "Sí esa es mejor"
+        ],
+        [
+          "Yes that's nice",
+          "Sí esa es agradable"
+        ],
+        [
+          "Yes that's a good example",
+          "Sí esa es un buen ejemplo"
+        ],
+        [
+          "Yes that's what we want",
+          "Sí esa es lo que queremos"
+        ],
+        [
+          "Yes that's what we should do",
+          "Sí esa es lo que deberíamos hacer"
+        ],
+        [
+          "Yes that's something we need",
+          "Sí esa es algo que necesitamos"
+        ],
+        [
+          "Yes that's the hope we have",
+          "Sí esa es la esperanza que tenemos"
+        ],
+        [
+          "Yes that's the best way to make a happy family",
+          "Sí esa es la mejor manera de hacer una familia feliz"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0408L02",
+        "seed_context": {
+          "known": "Sí esa es la mejor manera de hacer una familia feliz.",
+          "target": "Yes that's the best way to make a happy family."
+        }
+      },
+      "components": [
+        [
+          "esa",
+          "that"
+        ],
+        [
+          "es",
+          "is"
+        ]
+      ]
+    }
+  }
+}

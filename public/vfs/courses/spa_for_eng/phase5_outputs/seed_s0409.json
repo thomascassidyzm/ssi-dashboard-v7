@@ -1,0 +1,178 @@
+{
+  "legos": {
+    "S0409L02": {
+      "lego": [
+        "it doesn't matter",
+        "no importa"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0409L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "it doesn't matter",
+          "no importa"
+        ],
+        [
+          "No it doesn't matter",
+          "No no importa"
+        ],
+        [
+          "it doesn't matter now",
+          "no importa ahora"
+        ],
+        [
+          "it doesn't matter if",
+          "no importa si"
+        ],
+        [
+          "it doesn't matter what we want",
+          "no importa lo que queremos"
+        ],
+        [
+          "it doesn't matter what we eat",
+          "no importa lo que comemos"
+        ],
+        [
+          "it doesn't matter if we finish later",
+          "no importa si terminamos más tarde"
+        ],
+        [
+          "it doesn't matter what we should do",
+          "no importa lo que deberíamos hacer"
+        ],
+        [
+          "it doesn't matter if we lose hope",
+          "no importa si perdemos la esperanza"
+        ],
+        [
+          "No it doesn't matter what we do",
+          "No no importa lo que hagamos"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0409L02",
+        "seed_context": {
+          "known": "No no importa lo que hagamos.",
+          "target": "No it doesn't matter what we do."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "importa",
+          "it matters"
+        ]
+      ]
+    },
+    "S0409L03": {
+      "lego": [
+        "what we do",
+        "lo que hagamos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0409L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0409L02",
+          "known": "it doesn't matter",
+          "target": "no importa",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what we do",
+          "lo que hagamos"
+        ],
+        [
+          "No what we do",
+          "No lo que hagamos"
+        ],
+        [
+          "what we do matters",
+          "lo que hagamos importa"
+        ],
+        [
+          "what we do is better",
+          "lo que hagamos es mejor"
+        ],
+        [
+          "what we do should be good",
+          "lo que hagamos debería ser bueno"
+        ],
+        [
+          "what we do is the best",
+          "lo que hagamos es lo mejor"
+        ],
+        [
+          "it doesn't matter what we do now",
+          "no importa lo que hagamos ahora"
+        ],
+        [
+          "what we do should be a good example",
+          "lo que hagamos debería ser un buen ejemplo"
+        ],
+        [
+          "I'm sure what we do will be okay",
+          "estoy seguro de que lo que hagamos estará bien"
+        ],
+        [
+          "No it doesn't matter what we do",
+          "No no importa lo que hagamos"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0409L03",
+        "seed_context": {
+          "known": "No no importa lo que hagamos.",
+          "target": "No it doesn't matter what we do."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "que",
+          "that/what"
+        ],
+        [
+          "hagamos",
+          "we do (subjunctive)"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "legos": {
+    "S0402L01": {
+      "lego": [
+        "Yes",
+        "Sí"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0402L02": {
+      "lego": [
+        "it would be nice",
+        "sería agradable"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["sería agradable", "it would be nice", null, 1],
+        ["Sí, sería agradable", "Yes, it would be nice", null, 2],
+        ["sería agradable hablar contigo", "it would be nice to speak with you", null, 3],
+        ["sería agradable aprender español", "it would be nice to learn Spanish", null, 3],
+        ["sería agradable hablar contigo hoy", "it would be nice to speak with you today", null, 4],
+        ["sería agradable volver más tarde", "it would be nice to come back later", null, 4],
+        ["Sí, sería agradable hablar español contigo", "Yes, it would be nice to speak Spanish with you", null, 5],
+        ["sería agradable poder hablar español", "it would be nice to be able to speak Spanish", null, 5],
+        ["sería agradable reunirnos esta noche", "it would be nice to meet this evening", null, 5],
+        ["sería agradable aprender español contigo hoy", "it would be nice to learn Spanish with you today", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["sería", "it would be"],
+        ["agradable", "nice"]
+      ]
+    },
+    "S0402L03": {
+      "lego": [
+        "it would be nice to stop",
+        "sería agradable parar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0402L02",
+          "known": "it would be nice",
+          "target": "sería agradable",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["sería agradable parar", "it would be nice to stop", null, 1],
+        ["Sí, sería agradable parar", "Yes, it would be nice to stop", null, 2],
+        ["sería agradable parar más tarde", "it would be nice to stop later", null, 3],
+        ["sería agradable parar y hablar", "it would be nice to stop and talk", null, 3],
+        ["Sí, sería agradable parar más tarde", "Yes, it would be nice to stop later", null, 4],
+        ["sería agradable parar y descansar", "it would be nice to stop and rest", null, 4],
+        ["sería agradable parar y hablar contigo", "it would be nice to stop and speak with you", null, 5],
+        ["sería agradable parar aquí más tarde", "it would be nice to stop here later", null, 5],
+        ["Sí, sería agradable parar y hablar español", "Yes, it would be nice to stop and speak Spanish", null, 6],
+        ["sería agradable parar más tarde y hablar contigo", "it would be nice to stop later and speak with you", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["sería", "it would be"],
+        ["agradable", "nice"],
+        ["parar", "to stop"]
+      ]
+    },
+    "S0402L04": {
+      "lego": [
+        "to stop somewhere",
+        "parar en algún lugar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0402L02",
+          "known": "it would be nice",
+          "target": "sería agradable",
+          "type": "M"
+        },
+        {
+          "id": "S0402L03",
+          "known": "it would be nice to stop",
+          "target": "sería agradable parar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["parar", "to stop"],
+        ["en", "in"],
+        ["algún", "some"],
+        ["lugar", "place"]
+      ]
+    },
+    "S0402L05": {
+      "lego": [
+        "somewhere",
+        "en algún lugar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0402L02",
+          "known": "it would be nice",
+          "target": "sería agradable",
+          "type": "M"
+        },
+        {
+          "id": "S0402L03",
+          "known": "it would be nice to stop",
+          "target": "sería agradable parar",
+          "type": "M"
+        },
+        {
+          "id": "S0402L04",
+          "known": "to stop somewhere",
+          "target": "parar en algún lugar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["en", "in"],
+        ["algún", "some"],
+        ["lugar", "place"]
+      ]
+    },
+    "S0402L06": {
+      "lego": [
+        "for food",
+        "para comida"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0402L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0402L02",
+          "known": "it would be nice",
+          "target": "sería agradable",
+          "type": "M"
+        },
+        {
+          "id": "S0402L03",
+          "known": "it would be nice to stop",
+          "target": "sería agradable parar",
+          "type": "M"
+        },
+        {
+          "id": "S0402L04",
+          "known": "to stop somewhere",
+          "target": "parar en algún lugar",
+          "type": "M"
+        },
+        {
+          "id": "S0402L05",
+          "known": "somewhere",
+          "target": "en algún lugar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["para", "for"],
+        ["comida", "food"]
+      ]
+    }
+  }
+}
