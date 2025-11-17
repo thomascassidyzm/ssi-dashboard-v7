@@ -1,0 +1,101 @@
+{
+  "S0034L01": {
+    "lego": ["when other people are here", "当其他人在这里的时候"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I wanted to speak when other people are here", "我想当其他人在这里的时候说话", null, 2],
+      ["She doesn't want to read when other people are here", "她不想当其他人在这里的时候读", null, 2],
+      ["I'm not going to be quiet when other people are here", "我不会当其他人在这里的时候安静", null, 2],
+      ["He wanted to ask you something when other people are here", "他想当其他人在这里的时候问你一些事情", null, 3],
+      ["We don't want to interrupt when other people are here", "我们不想当其他人在这里的时候打断", null, 3],
+      ["I look forward to speaking better when other people are here", "我期待当其他人在这里的时候说得更好", null, 4],
+      ["She doesn't want to take too much time when other people are here", "她不想当其他人在这里的时候花太多时间", null, 4],
+      ["I'm not going to be able to remember easily when other people are here", "我不会当其他人在这里的时候很容易就能记住", null, 5],
+      ["Did you want to show me something when other people are here", "你想当其他人在这里的时候给我看一些东西吗", null, 5],
+      ["It's useful to start talking as soon as you can when other people are here", "当其他人在这里的时候尽快开始说话是有用的", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null]]
+  },
+  "S0034L03": {
+    "lego": ["are here", "在这里"],
+    "type": "M",
+    "current_seed_legos_available": [["when other people are here", "当其他人在这里的时候"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Other people are here", "其他人在这里", null, 1],
+      ["We are here tonight", "我们今晚在这里", null, 2],
+      ["They wanted to be here this afternoon", "他们想今天下午在这里", null, 2],
+      ["When you are here I want to speak", "当你在这里的时候我想说话", null, 3],
+      ["When we are here we don't want to interrupt", "当我们在这里的时候我们不想打断", null, 3],
+      ["I look forward to speaking better when you are here", "我期待当你在这里的时候说得更好", null, 4],
+      ["She doesn't want to read anything when other people are here", "她不想当其他人在这里的时候读任何东西", null, 4],
+      ["I wanted to ask you something when you are here yesterday", "我昨天想当你在这里的时候问你一些事情", null, 5],
+      ["I'm not going to be able to remember easily when other people are here", "我不会当其他人在这里的时候很容易就能记住", null, 5],
+      ["It's useful to start talking as soon as you can when other people are here", "当其他人在这里的时候尽快开始说话是有用的", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null]]
+  },
+  "S0034L04": {
+    "lego": ["he doesn't want", "他不想"],
+    "type": "M",
+    "current_seed_legos_available": [["when other people are here", "当其他人在这里的时候"], ["are here", "在这里"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["He doesn't want to read", "他不想读", null, 1],
+      ["He doesn't want to interrupt", "他不想打断", null, 1],
+      ["He doesn't want to speak tonight", "他不想今晚说话", null, 2],
+      ["He doesn't want to be quiet when other people are here", "他不想当其他人在这里的时候安静", null, 3],
+      ["He doesn't want to take too much time to answer", "他不想花太多时间回答", null, 3],
+      ["He doesn't want to read anything this afternoon", "他不想今天下午读任何东西", null, 4],
+      ["He doesn't want to interrupt the story when other people are here", "他不想当其他人在这里的时候打断这个故事", null, 4],
+      ["He doesn't want to show me something when you are here", "他不想当你在这里的时候给我看一些东西", null, 5],
+      ["He doesn't want to be able to remember easily when other people are here", "他不想当其他人在这里的时候很容易就能记住", null, 5],
+      ["He doesn't want to start talking as soon as possible when other people are here", "他不想当其他人在这里的时候尽快开始说话", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null], [null, null]]
+  },
+  "S0034L05": {
+    "lego": ["to be quiet", "安静"],
+    "type": "A",
+    "current_seed_legos_available": [["when other people are here", "当其他人在这里的时候"], ["are here", "在这里"], ["he doesn't want", "他不想"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I wanted to be quiet", "我想安静", null, 1],
+      ["She doesn't want to be quiet", "她不想安静", null, 2],
+      ["We don't want to be quiet tonight", "我们不想今晚安静", null, 2],
+      ["He doesn't want to be quiet this afternoon", "他不想今天下午安静", null, 3],
+      ["I'm not going to be quiet when you are here", "我不会当你在这里的时候安静", null, 3],
+      ["She doesn't want to be quiet when other people are here", "她不想当其他人在这里的时候安静", null, 4],
+      ["I wanted to be quiet before I have to go yesterday", "我昨天想在我必须走之前安静", null, 4],
+      ["We don't want to be quiet when other people are here this afternoon", "我们不想今天下午当其他人在这里的时候安静", null, 5],
+      ["I look forward to being able to be quiet when other people are here", "我期待当其他人在这里的时候能安静", null, 5],
+      ["He doesn't want to be quiet when other people are here", "他不想当其他人在这里的时候安静", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

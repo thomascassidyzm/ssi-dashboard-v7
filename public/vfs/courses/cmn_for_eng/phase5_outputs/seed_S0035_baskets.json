@@ -1,0 +1,101 @@
+{
+  "S0035L01": {
+    "lego": ["she doesn't want this afternoon", "她今天下午不想"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["She doesn't want to read this afternoon", "她今天下午不想读", null, 2],
+      ["She doesn't want to speak this afternoon", "她今天下午不想说话", null, 2],
+      ["She doesn't want to be quiet this afternoon", "她今天下午不想安静", null, 2],
+      ["She doesn't want to interrupt the story this afternoon", "她今天下午不想打断这个故事", null, 3],
+      ["She doesn't want to ask you something this afternoon", "她今天下午不想问你一些事情", null, 3],
+      ["She doesn't want to take too much time this afternoon", "她今天下午不想花太多时间", null, 4],
+      ["She doesn't want to show me anything this afternoon", "她今天下午不想给我看任何东西", null, 4],
+      ["She doesn't want to be able to remember easily this afternoon", "她今天下午不想很容易就能记住", null, 5],
+      ["She doesn't want to start talking as soon as possible this afternoon", "她今天下午不想尽快开始说话", null, 5],
+      ["She doesn't want to speak better when other people are here this afternoon", "她今天下午不想当其他人在这里的时候说得更好", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null], [null, null], [null, null]]
+  },
+  "S0035L02": {
+    "lego": ["this afternoon", "今天下午"],
+    "type": "M",
+    "current_seed_legos_available": [["she doesn't want this afternoon", "她今天下午不想"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I wanted to speak this afternoon", "我想今天下午说话", null, 1],
+      ["He doesn't want to read this afternoon", "他不想今天下午读", null, 2],
+      ["We are here this afternoon", "我们今天下午在这里", null, 2],
+      ["I look forward to speaking better this afternoon", "我期待今天下午说得更好", null, 3],
+      ["She doesn't want to be quiet this afternoon", "她不想今天下午安静", null, 3],
+      ["I wanted to ask you something this afternoon yesterday", "我昨天想今天下午问你一些事情", null, 4],
+      ["He doesn't want to interrupt the story this afternoon", "他不想今天下午打断这个故事", null, 4],
+      ["I'm not going to be able to remember easily this afternoon", "我不会今天下午很容易就能记住", null, 5],
+      ["She doesn't want to take too much time to answer this afternoon", "她不想今天下午花太多时间回答", null, 5],
+      ["It's useful to start talking as soon as you can this afternoon", "今天下午尽快开始说话是有用的", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null]]
+  },
+  "S0035L03": {
+    "lego": ["to read", "读"],
+    "type": "A",
+    "current_seed_legos_available": [["she doesn't want this afternoon", "她今天下午不想"], ["this afternoon", "今天下午"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I wanted to read", "我想读", null, 1],
+      ["She doesn't want to read", "她不想读", null, 1],
+      ["He wanted to read tonight", "他想今晚读", null, 2],
+      ["I look forward to reading better", "我期待读得更好", null, 3],
+      ["She doesn't want to read this afternoon", "她不想今天下午读", null, 3],
+      ["I wanted to read something when other people are here", "我想当其他人在这里的时候读一些东西", null, 4],
+      ["He doesn't want to read anything this afternoon", "他不想今天下午读任何东西", null, 4],
+      ["I'm not going to be able to read easily when you are here", "我不会当你在这里的时候很容易就能读", null, 5],
+      ["She doesn't want to read the story when other people are here tonight", "她不想今晚当其他人在这里的时候读这个故事", null, 5],
+      ["I look forward to being able to read better as soon as I can this afternoon", "我期待今天下午尽快能读得更好", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0035L04": {
+    "lego": ["anything", "任何东西"],
+    "type": "M",
+    "current_seed_legos_available": [["she doesn't want this afternoon", "她今天下午不想"], ["this afternoon", "今天下午"], ["to read", "读"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I wanted to read anything", "我想读任何东西", null, 1],
+      ["She doesn't want to show me anything", "她不想给我看任何东西", null, 2],
+      ["He doesn't want to read anything", "他不想读任何东西", null, 2],
+      ["I wanted to ask you anything yesterday", "我昨天想问你任何东西", null, 3],
+      ["She doesn't want to read anything tonight", "她不想今晚读任何东西", null, 3],
+      ["He doesn't want to interrupt anything this afternoon", "他不想今天下午打断任何东西", null, 4],
+      ["We don't want to show you anything when other people are here", "我们不想当其他人在这里的时候给你看任何东西", null, 4],
+      ["I'm not going to be able to remember anything easily this afternoon", "我不会今天下午很容易就能记住任何东西", null, 5],
+      ["She doesn't want to take too much time to read anything when you are here", "她不想当你在这里的时候花太多时间读任何东西", null, 5],
+      ["She doesn't want to read anything this afternoon", "她不想今天下午读任何东西", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null]]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "S0036L01": {
+    "lego": ["we don't want", "我们不想"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["We don't want to read", "我们不想读", null, 1],
+      ["We don't want to be quiet", "我们不想安静", null, 1],
+      ["We don't want to speak tonight", "我们不想今晚说话", null, 2],
+      ["We don't want to interrupt the story", "我们不想打断这个故事", null, 3],
+      ["We don't want to read anything this afternoon", "我们不想今天下午读任何东西", null, 3],
+      ["We don't want to take too much time to answer", "我们不想花太多时间回答", null, 4],
+      ["We don't want to be quiet when other people are here", "我们不想当其他人在这里的时候安静", null, 4],
+      ["We don't want to show you anything when you are here tonight", "我们不想今晚当你在这里的时候给你看任何东西", null, 5],
+      ["We don't want to be able to remember easily this afternoon", "我们不想今天下午很容易就能记住", null, 5],
+      ["We don't want to start talking as soon as possible when other people are here", "我们不想当其他人在这里的时候尽快开始说话", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null], [null, null]]
+  },
+  "S0036L02": {
+    "lego": ["to interrupt", "打断"],
+    "type": "A",
+    "current_seed_legos_available": [["we don't want", "我们不想"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I wanted to interrupt", "我想打断", null, 1],
+      ["He doesn't want to interrupt", "他不想打断", null, 1],
+      ["She wanted to interrupt yesterday", "她昨天想打断", null, 2],
+      ["We don't want to interrupt tonight", "我们不想今晚打断", null, 3],
+      ["I look forward to not interrupting", "我期待不打断", null, 3],
+      ["He doesn't want to interrupt the story this afternoon", "他不想今天下午打断这个故事", null, 4],
+      ["She doesn't want to interrupt when other people are here", "她不想当其他人在这里的时候打断", null, 4],
+      ["I wanted to interrupt when you wanted to speak with me yesterday", "我昨天想当你想和我说话的时候打断", null, 5],
+      ["We don't want to interrupt anything when other people are here tonight", "我们不想今晚当其他人在这里的时候打断任何东西", null, 5],
+      ["It's useful to not interrupt when other people are speaking as soon as you can", "当其他人在说话的时候尽快不打断是有用的", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0036L03": {
+    "lego": ["the story", "这个故事"],
+    "type": "M",
+    "current_seed_legos_available": [["we don't want", "我们不想"], ["to interrupt", "打断"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I wanted to read the story", "我想读这个故事", null, 1],
+      ["She doesn't want to interrupt the story", "她不想打断这个故事", null, 2],
+      ["He wanted to read the story yesterday", "他昨天想读这个故事", null, 2],
+      ["I look forward to reading the story tonight", "我期待今晚读这个故事", null, 3],
+      ["We don't want to interrupt the story tonight", "我们不想今晚打断这个故事", null, 3],
+      ["She doesn't want to read the story this afternoon", "她不想今天下午读这个故事", null, 4],
+      ["He doesn't want to interrupt the story when other people are here", "他不想当其他人在这里的时候打断这个故事", null, 4],
+      ["I wanted to ask you something about the story when you are here yesterday", "我昨天想当你在这里的时候问你关于这个故事的一些事情", null, 5],
+      ["She doesn't want to take too much time to read the story this afternoon", "她不想今天下午花太多时间读这个故事", null, 5],
+      ["We don't want to interrupt the story", "我们不想打断这个故事", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null, null], [null, null]]
+  }
+}
