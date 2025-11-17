@@ -34,7 +34,7 @@ if (!courseCode) {
 
 const coursePath = path.join(__dirname, '..', 'public', 'vfs', 'courses', courseCode);
 const legoPairsPath = path.join(coursePath, 'lego_pairs.json');
-const phase5OutputsDir = path.join(coursePath, 'phase5_outputs');
+const legoBasketsPath = path.join(coursePath, 'lego_baskets.json');
 
 // Validate paths
 if (!fs.existsSync(legoPairsPath)) {
@@ -42,8 +42,9 @@ if (!fs.existsSync(legoPairsPath)) {
   process.exit(1);
 }
 
-if (!fs.existsSync(phase5OutputsDir)) {
-  console.error(`❌ phase5_outputs directory not found: ${phase5OutputsDir}`);
+if (!fs.existsSync(legoBasketsPath)) {
+  console.error(`❌ lego_baskets.json not found: ${legoBasketsPath}`);
+  console.error(`   (This is the merged basket file - it should exist even if empty)`);
   process.exit(1);
 }
 
@@ -94,25 +95,22 @@ console.log();
 // STEP 2: Check which new: true LEGOs have baskets
 // ============================================================================
 
-console.log('Step 2: Checking for existing baskets...');
+console.log('Step 2: Checking for existing baskets in lego_baskets.json...');
 
-const basketFiles = fs.readdirSync(phase5OutputsDir)
-  .filter(f => f.match(/^seed_S\d{4}_baskets\.json$/))
-  .sort();
-
+// Read the merged basket file (single source of truth)
+const legoBasketsData = JSON.parse(fs.readFileSync(legoBasketsPath, 'utf8'));
 const legosWithBaskets = new Set();
 
-basketFiles.forEach(filename => {
-  const basketPath = path.join(phase5OutputsDir, filename);
-  const basketData = JSON.parse(fs.readFileSync(basketPath, 'utf8'));
-
-  Object.keys(basketData).forEach(legoId => {
+// Accept ANY basket that exists, regardless of phrase count
+// It's not this script's job to validate phrase quality/quantity
+if (legoBasketsData.baskets) {
+  Object.keys(legoBasketsData.baskets).forEach(legoId => {
     legosWithBaskets.add(legoId);
   });
-});
+}
 
-console.log(`  Found ${basketFiles.length} basket files`);
-console.log(`  Containing ${legosWithBaskets.size} LEGOs with baskets`);
+console.log(`  Baskets found in lego_baskets.json: ${legosWithBaskets.size}`);
+console.log(`  (Accepting any basket, regardless of phrase count)`);
 console.log();
 
 // ============================================================================
