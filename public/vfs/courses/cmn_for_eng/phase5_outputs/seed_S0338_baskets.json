@@ -1,0 +1,28 @@
+{
+  "S0338L01": {
+    "lego": ["Badly", "严重地"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Badly", "严重地", null, 1],
+      ["Not very badly", "不是很严重地", null, 2],
+      ["She can't provide badly", "她不能严重地提供", null, 3],
+      ["It's not very badly", "这不是很严重地", null, 3],
+      ["He can build badly for his sister", "他可以为他妹妹严重地建立", null, 4],
+      ["She can't open the door badly", "她不能严重地打开门", null, 4],
+      ["Do you think he can continue badly", "你觉得他可以严重地继续", null, 5],
+      ["She said she can't provide badly", "她说她不能严重地提供", null, 5],
+      ["Do you think he can continue to play badly", "你觉得他可以严重地继续玩", null, 6],
+      ["Badly.", "严重地。", null, 1]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [["严重", "serious/severe"], ["地", "adverbial marker"]]
+  }
+}
