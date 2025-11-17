@@ -1,0 +1,385 @@
+{
+  "S0341L01": {
+    "lego": [
+      "a few days ago",
+      "几天前"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "a few days ago",
+        "几天前",
+        null,
+        1
+      ],
+      [
+        "he said a few days ago",
+        "他说几天前",
+        null,
+        2
+      ],
+      [
+        "she said a few days ago",
+        "她说几天前",
+        null,
+        2
+      ],
+      [
+        "I think a few days ago",
+        "我觉得几天前",
+        null,
+        3
+      ],
+      [
+        "he can continue a few days ago",
+        "他可以继续几天前",
+        null,
+        3
+      ],
+      [
+        "I'm sure she said a few days ago",
+        "我确定她说几天前",
+        null,
+        4
+      ],
+      [
+        "she can't provide the answer a few days ago",
+        "她不能提供答案几天前",
+        null,
+        4
+      ],
+      [
+        "I'm sure he can continue to play a few days ago",
+        "我确定他可以继续玩几天前",
+        null,
+        5
+      ],
+      [
+        "she said she can't open the door a few days ago",
+        "她说她不能打开门几天前",
+        null,
+        5
+      ],
+      [
+        "I'm sure he's going to be okay a few days ago",
+        "我确定他会没事的几天前",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0341L01",
+      "seed_context": {
+        "known": "I met someone a few days ago.",
+        "target": "我几天前见过一个人。"
+      }
+    }
+  },
+  "S0341L02": {
+    "lego": [
+      "met a few days ago",
+      "几天前见过"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "a few days ago",
+        "几天前"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "met a few days ago",
+        "几天前见过",
+        null,
+        1
+      ],
+      [
+        "I met a few days ago",
+        "我几天前见过",
+        null,
+        2
+      ],
+      [
+        "she met a few days ago",
+        "她几天前见过",
+        null,
+        2
+      ],
+      [
+        "he met a few days ago",
+        "他几天前见过",
+        null,
+        2
+      ],
+      [
+        "I think she met a few days ago",
+        "我觉得她几天前见过",
+        null,
+        3
+      ],
+      [
+        "I'm sure he met a few days ago",
+        "我确定他几天前见过",
+        null,
+        3
+      ],
+      [
+        "she said she met a few days ago",
+        "她说她几天前见过",
+        null,
+        4
+      ],
+      [
+        "I'm sure she met a few days ago",
+        "我确定她几天前见过",
+        null,
+        4
+      ],
+      [
+        "I think he met a few days ago",
+        "我觉得他几天前见过",
+        null,
+        5
+      ],
+      [
+        "she said she can't meet a few days ago",
+        "她说她不能几天前见过",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0341L02",
+      "seed_context": {
+        "known": "I met someone a few days ago.",
+        "target": "我几天前见过一个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0341L03": {
+    "lego": [
+      "met someone",
+      "见过一个人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "a few days ago",
+        "几天前"
+      ],
+      [
+        "met a few days ago",
+        "几天前见过"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "met someone",
+        "见过一个人",
+        null,
+        1
+      ],
+      [
+        "I met someone",
+        "我见过一个人",
+        null,
+        2
+      ],
+      [
+        "she met someone",
+        "她见过一个人",
+        null,
+        2
+      ],
+      [
+        "I met someone a few days ago",
+        "我几天前见过一个人",
+        null,
+        3
+      ],
+      [
+        "she met someone a few days ago",
+        "她几天前见过一个人",
+        null,
+        3
+      ],
+      [
+        "he met someone a few days ago",
+        "他几天前见过一个人",
+        null,
+        3
+      ],
+      [
+        "I'm sure I met someone",
+        "我确定我见过一个人",
+        null,
+        4
+      ],
+      [
+        "I think she met someone a few days ago",
+        "我觉得她几天前见过一个人",
+        null,
+        4
+      ],
+      [
+        "I'm sure he met someone a few days ago",
+        "我确定他几天前见过一个人",
+        null,
+        5
+      ],
+      [
+        "she said she met someone a few days ago",
+        "她说她几天前见过一个人",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0341L03",
+      "seed_context": {
+        "known": "I met someone a few days ago.",
+        "target": "我几天前见过一个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0341L04": {
+    "lego": [
+      "someone",
+      "一个人"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "a few days ago",
+        "几天前"
+      ],
+      [
+        "met a few days ago",
+        "几天前见过"
+      ],
+      [
+        "met someone",
+        "见过一个人"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "someone",
+        "一个人",
+        null,
+        1
+      ],
+      [
+        "met someone",
+        "见过一个人",
+        null,
+        1
+      ],
+      [
+        "I met someone",
+        "我见过一个人",
+        null,
+        2
+      ],
+      [
+        "I met someone a few days ago",
+        "我几天前见过一个人",
+        null,
+        3
+      ],
+      [
+        "she met someone a few days ago",
+        "她几天前见过一个人",
+        null,
+        3
+      ],
+      [
+        "I'm sure I met someone",
+        "我确定我见过一个人",
+        null,
+        4
+      ],
+      [
+        "he met someone a few days ago",
+        "他几天前见过一个人",
+        null,
+        4
+      ],
+      [
+        "I think she met someone a few days ago",
+        "我觉得她几天前见过一个人",
+        null,
+        5
+      ],
+      [
+        "I'm sure he met someone a few days ago",
+        "我确定他几天前见过一个人",
+        null,
+        5
+      ],
+      [
+        "she said she met someone a few days ago",
+        "她说她几天前见过一个人",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0341L04",
+      "seed_context": {
+        "known": "I met someone a few days ago.",
+        "target": "我几天前见过一个人。"
+      }
+    }
+  }
+}

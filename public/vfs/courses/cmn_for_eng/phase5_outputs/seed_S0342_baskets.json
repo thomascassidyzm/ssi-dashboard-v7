@@ -1,0 +1,199 @@
+{
+  "S0342L01": {
+    "lego": [
+      "said something",
+      "说了些话"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "said something",
+        "说了些话",
+        null,
+        1
+      ],
+      [
+        "she said something",
+        "她说了些话",
+        null,
+        2
+      ],
+      [
+        "he said something",
+        "他说了些话",
+        null,
+        2
+      ],
+      [
+        "I think she said something",
+        "我觉得她说了些话",
+        null,
+        3
+      ],
+      [
+        "I'm sure he said something",
+        "我确定他说了些话",
+        null,
+        3
+      ],
+      [
+        "she said something a few days ago",
+        "她几天前说了些话",
+        null,
+        4
+      ],
+      [
+        "he said something a few days ago",
+        "他几天前说了些话",
+        null,
+        4
+      ],
+      [
+        "I'm sure she said something a few days ago",
+        "我确定她几天前说了些话",
+        null,
+        5
+      ],
+      [
+        "I think he said something a few days ago",
+        "我觉得他几天前说了些话",
+        null,
+        5
+      ],
+      [
+        "she said that she can't provide something",
+        "她说她不能提供些话",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0342L01",
+      "seed_context": {
+        "known": "I met someone who said something.",
+        "target": "我遇到了一个说了些话的人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0342L02": {
+    "lego": [
+      "someone who said something",
+      "说了些话的人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "said something",
+        "说了些话"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "someone who said something",
+        "说了些话的人",
+        null,
+        1
+      ],
+      [
+        "I met someone who said something",
+        "我遇到了一个说了些话的人",
+        null,
+        2
+      ],
+      [
+        "she met someone who said something",
+        "她遇到了一个说了些话的人",
+        null,
+        2
+      ],
+      [
+        "he met someone who said something",
+        "他遇到了一个说了些话的人",
+        null,
+        2
+      ],
+      [
+        "I met someone who said something a few days ago",
+        "我几天前遇到了一个说了些话的人",
+        null,
+        3
+      ],
+      [
+        "I think I met someone who said something",
+        "我觉得我遇到了一个说了些话的人",
+        null,
+        3
+      ],
+      [
+        "I'm sure I met someone who said something",
+        "我确定我遇到了一个说了些话的人",
+        null,
+        4
+      ],
+      [
+        "she met someone who said something a few days ago",
+        "她几天前遇到了一个说了些话的人",
+        null,
+        4
+      ],
+      [
+        "I think she met someone who said something a few days ago",
+        "我觉得她几天前遇到了一个说了些话的人",
+        null,
+        5
+      ],
+      [
+        "I'm sure he met someone who said something a few days ago",
+        "我确定他几天前遇到了一个说了些话的人",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0342L02",
+      "seed_context": {
+        "known": "I met someone who said something.",
+        "target": "我遇到了一个说了些话的人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

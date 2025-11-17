@@ -1,0 +1,506 @@
+{
+  "S0340L02": {
+    "lego": [
+      "I'm sure",
+      "我确定"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm sure",
+        "我确定",
+        null,
+        1
+      ],
+      [
+        "I'm sure she can",
+        "我确定她可以",
+        null,
+        2
+      ],
+      [
+        "I'm sure he can continue",
+        "我确定他可以继续",
+        null,
+        3
+      ],
+      [
+        "I'm sure she can't open the door",
+        "我确定她不能打开门",
+        null,
+        3
+      ],
+      [
+        "I'm sure she can provide the answer",
+        "我确定她可以提供答案",
+        null,
+        4
+      ],
+      [
+        "I'm sure he can build a new life",
+        "我确定他可以建立新生活",
+        null,
+        4
+      ],
+      [
+        "I'm sure you think he can continue to play",
+        "我确定你觉得他可以继续玩",
+        null,
+        5
+      ],
+      [
+        "I'm sure she said she can't spend much time",
+        "我确定她说她不能花很多时间",
+        null,
+        5
+      ],
+      [
+        "I'm sure he can let you hold the kitten",
+        "我确定他可以让你抱那只小猫",
+        null,
+        5
+      ],
+      [
+        "I'm sure he can add some valuable ideas",
+        "我确定他可以增加一些有价值的想法",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0340L02",
+      "seed_context": {
+        "known": "Yes I'm sure he's going to be okay.",
+        "target": "是的，我确定他会没事的。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0340L03": {
+    "lego": [
+      "sure",
+      "确定"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I'm sure",
+        "我确定"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm sure",
+        "我确定",
+        null,
+        1
+      ],
+      [
+        "sure she can",
+        "确定她可以",
+        null,
+        2
+      ],
+      [
+        "I'm sure he can",
+        "我确定他可以",
+        null,
+        2
+      ],
+      [
+        "I'm sure she can't provide",
+        "我确定她不能提供",
+        null,
+        3
+      ],
+      [
+        "I'm sure she can open the door",
+        "我确定她可以打开门",
+        null,
+        4
+      ],
+      [
+        "I'm sure he can continue to play",
+        "我确定他可以继续玩",
+        null,
+        4
+      ],
+      [
+        "I'm sure she can provide all the answers",
+        "我确定她可以提供所有的答案",
+        null,
+        5
+      ],
+      [
+        "I'm sure he can build a new life",
+        "我确定他可以建立新生活",
+        null,
+        5
+      ],
+      [
+        "I'm sure she said she can spend much time",
+        "我确定她说她可以花很多时间",
+        null,
+        5
+      ],
+      [
+        "I'm sure he said he can let you hold the kitten",
+        "我确定他说他可以让你抱那只小猫",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0340L03",
+      "seed_context": {
+        "known": "Yes I'm sure he's going to be okay.",
+        "target": "是的，我确定他会没事的。"
+      }
+    }
+  },
+  "S0340L04": {
+    "lego": [
+      "he's going to",
+      "他会"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm sure",
+        "我确定"
+      ],
+      [
+        "sure",
+        "确定"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "he's going to",
+        "他会",
+        null,
+        1
+      ],
+      [
+        "he's going to continue",
+        "他会继续",
+        null,
+        2
+      ],
+      [
+        "I'm sure he's going to",
+        "我确定他会",
+        null,
+        2
+      ],
+      [
+        "he's going to open the door",
+        "他会打开门",
+        null,
+        3
+      ],
+      [
+        "I'm sure he's going to continue",
+        "我确定他会继续",
+        null,
+        3
+      ],
+      [
+        "he's going to build a new life",
+        "他会建立新生活",
+        null,
+        4
+      ],
+      [
+        "I'm sure he's going to play",
+        "我确定他会玩",
+        null,
+        4
+      ],
+      [
+        "I'm sure he's going to provide all the answers",
+        "我确定他会提供所有的答案",
+        null,
+        5
+      ],
+      [
+        "I'm sure he's going to continue to play",
+        "我确定他会继续玩",
+        null,
+        5
+      ],
+      [
+        "I'm sure he's going to add some valuable ideas",
+        "我确定他会增加一些有价值的想法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0340L04",
+      "seed_context": {
+        "known": "Yes I'm sure he's going to be okay.",
+        "target": "是的，我确定他会没事的。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0340L06": {
+    "lego": [
+      "going to be okay",
+      "会没事的"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm sure",
+        "我确定"
+      ],
+      [
+        "sure",
+        "确定"
+      ],
+      [
+        "he's going to",
+        "他会"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "going to be okay",
+        "会没事的",
+        null,
+        1
+      ],
+      [
+        "I'm sure going to be okay",
+        "我确定会没事的",
+        null,
+        2
+      ],
+      [
+        "he's going to be okay",
+        "他会没事的",
+        null,
+        2
+      ],
+      [
+        "I'm sure he's going to be okay",
+        "我确定他会没事的",
+        null,
+        3
+      ],
+      [
+        "she's going to be okay",
+        "她会没事的",
+        null,
+        3
+      ],
+      [
+        "I'm sure she's going to be okay",
+        "我确定她会没事的",
+        null,
+        4
+      ],
+      [
+        "you think he's going to be okay",
+        "你觉得他会没事的",
+        null,
+        4
+      ],
+      [
+        "I'm sure you think he's going to be okay",
+        "我确定你觉得他会没事的",
+        null,
+        5
+      ],
+      [
+        "I'm sure you think she's going to be okay",
+        "我确定你觉得她会没事的",
+        null,
+        5
+      ],
+      [
+        "I don't think he's going to be okay",
+        "我觉得他不会没事的",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0340L06",
+      "seed_context": {
+        "known": "Yes I'm sure he's going to be okay.",
+        "target": "是的，我确定他会没事的。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0340L07": {
+    "lego": [
+      "okay",
+      "没事"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm sure",
+        "我确定"
+      ],
+      [
+        "sure",
+        "确定"
+      ],
+      [
+        "he's going to",
+        "他会"
+      ],
+      [
+        "going to be okay",
+        "会没事的"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "okay",
+        "没事",
+        null,
+        1
+      ],
+      [
+        "going to be okay",
+        "会没事的",
+        null,
+        1
+      ],
+      [
+        "he's going to be okay",
+        "他会没事的",
+        null,
+        2
+      ],
+      [
+        "I'm sure he's going to be okay",
+        "我确定他会没事的",
+        null,
+        3
+      ],
+      [
+        "she's going to be okay",
+        "她会没事的",
+        null,
+        3
+      ],
+      [
+        "I'm sure she's going to be okay",
+        "我确定她会没事的",
+        null,
+        4
+      ],
+      [
+        "you think he's going to be okay",
+        "你觉得他会没事的",
+        null,
+        4
+      ],
+      [
+        "I'm sure you think he's going to be okay",
+        "我确定你觉得他会没事的",
+        null,
+        5
+      ],
+      [
+        "I don't think she's going to be okay",
+        "我觉得她不会没事的",
+        null,
+        5
+      ],
+      [
+        "Yes I'm sure he's going to be okay",
+        "是的，我确定他会没事的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0340L07",
+      "seed_context": {
+        "known": "Yes I'm sure he's going to be okay.",
+        "target": "是的，我确定他会没事的。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
