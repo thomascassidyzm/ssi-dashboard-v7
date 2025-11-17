@@ -1,0 +1,331 @@
+{
+  "S0436L02": {
+    "lego": [
+      "there's a minimum number they need",
+      "有一个他们需要的最少数量"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "There's a minimum number",
+        "有一个最少数量",
+        null,
+        1
+      ],
+      [
+        "There's a number they need",
+        "有一个他们需要的数量",
+        null,
+        2
+      ],
+      [
+        "There's a minimum number of students",
+        "有一个学生的最少数量",
+        null,
+        3
+      ],
+      [
+        "There's a number they could reduce",
+        "有一个他们能减少的数量",
+        null,
+        3
+      ],
+      [
+        "There's a minimum number they could cut",
+        "有一个他们能减少的最少数量",
+        null,
+        4
+      ],
+      [
+        "There's a minimum number of students they need",
+        "有一个他们需要的学生的最少数量",
+        null,
+        4
+      ],
+      [
+        "There's a minimum number they couldn't find",
+        "有一个他们找不到的最少数量",
+        null,
+        5
+      ],
+      [
+        "There's a minimum number of students they take on Tuesday",
+        "有一个他们星期二招的学生的最少数量",
+        null,
+        5
+      ],
+      [
+        "There's a minimum number they need if they wanted to",
+        "有一个他们需要的最少数量如果他们想的话",
+        null,
+        6
+      ],
+      [
+        "There's a minimum number of students they could reduce for them",
+        "有一个他们能为他们减少的学生的最少数量",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0436L02",
+      "seed_context": {
+        "known": "不，有一个他们需要的最少数量。",
+        "target": "No there's a minimum number they need."
+      }
+    },
+    "components": [
+      [
+        "有",
+        "there's"
+      ],
+      [
+        "一个",
+        "a"
+      ],
+      [
+        "他们",
+        "they"
+      ],
+      [
+        "需要",
+        "need"
+      ],
+      [
+        "的",
+        "(relative marker)"
+      ],
+      [
+        "最少",
+        "minimum"
+      ],
+      [
+        "数量",
+        "number"
+      ]
+    ]
+  },
+  "S0436L03": {
+    "lego": [
+      "they need",
+      "他们需要的"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0436L02",
+        "known": "there's a minimum number they need",
+        "target": "有一个他们需要的最少数量",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "They need",
+        "他们需要的",
+        null,
+        1
+      ],
+      [
+        "The number they need",
+        "他们需要的数量",
+        null,
+        2
+      ],
+      [
+        "The minimum number they need",
+        "他们需要的最少数量",
+        null,
+        3
+      ],
+      [
+        "The students they need on Tuesday",
+        "他们星期二需要的学生",
+        null,
+        3
+      ],
+      [
+        "There's a minimum number they need soon",
+        "有一个他们很快需要的最少数量",
+        null,
+        4
+      ],
+      [
+        "The minimum number of students they need",
+        "他们需要的学生的最少数量",
+        null,
+        4
+      ],
+      [
+        "There's a minimum number they need for them",
+        "有一个他们需要的对他们来说的最少数量",
+        null,
+        5
+      ],
+      [
+        "They couldn't find the minimum number they need",
+        "他们找不到他们需要的最少数量",
+        null,
+        5
+      ],
+      [
+        "There's a minimum number of students they need on Tuesday",
+        "有一个他们星期二需要的学生的最少数量",
+        null,
+        6
+      ],
+      [
+        "They could mean there's a minimum number they need if they wanted to",
+        "他们可能是说有一个他们需要的最少数量如果他们想的话",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0436L03",
+      "seed_context": {
+        "known": "不，有一个他们需要的最少数量。",
+        "target": "No there's a minimum number they need."
+      }
+    },
+    "components": [
+      [
+        "他们",
+        "they"
+      ],
+      [
+        "需要",
+        "need"
+      ],
+      [
+        "的",
+        "(relative marker)"
+      ]
+    ]
+  },
+  "S0436L04": {
+    "lego": [
+      "minimum number",
+      "最少数量"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0436L02",
+        "known": "there's a minimum number they need",
+        "target": "有一个他们需要的最少数量",
+        "type": "M"
+      },
+      {
+        "id": "S0436L03",
+        "known": "they need",
+        "target": "他们需要的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Minimum number",
+        "最少数量",
+        null,
+        1
+      ],
+      [
+        "The minimum number",
+        "最少数量",
+        null,
+        2
+      ],
+      [
+        "A minimum number they need",
+        "他们需要的最少数量",
+        null,
+        3
+      ],
+      [
+        "The minimum number of students",
+        "学生的最少数量",
+        null,
+        3
+      ],
+      [
+        "There's a minimum number they need",
+        "有一个他们需要的最少数量",
+        null,
+        4
+      ],
+      [
+        "They could cut the minimum number",
+        "他们能减少最少数量",
+        null,
+        4
+      ],
+      [
+        "There's a minimum number of students they could reduce",
+        "有一个他们能减少的学生的最少数量",
+        null,
+        5
+      ],
+      [
+        "They couldn't find the minimum number they need on Tuesday",
+        "他们找不到他们星期二需要的最少数量",
+        null,
+        5
+      ],
+      [
+        "They could mean there's a minimum number of students they need for them",
+        "他们可能是说有一个他们需要的对他们来说的学生的最少数量",
+        null,
+        6
+      ],
+      [
+        "No there's a minimum number they need",
+        "不，有一个他们需要的最少数量",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0436L04",
+      "seed_context": {
+        "known": "不，有一个他们需要的最少数量。",
+        "target": "No there's a minimum number they need."
+      }
+    },
+    "components": [
+      [
+        "最少",
+        "minimum"
+      ],
+      [
+        "数量",
+        "number"
+      ]
+    ]
+  }
+}
