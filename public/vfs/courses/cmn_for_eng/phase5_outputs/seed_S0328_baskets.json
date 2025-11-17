@@ -1,0 +1,193 @@
+{
+  "S0328L02": {
+    "lego": [
+      "I think she ought to",
+      "我觉得她应该"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I think she ought to",
+        "我觉得她应该",
+        null,
+        1
+      ],
+      [
+        "I think she ought to buy",
+        "我觉得她应该买",
+        null,
+        2
+      ],
+      [
+        "I think she ought to move to school",
+        "我觉得她应该搬到学校",
+        null,
+        3
+      ],
+      [
+        "I think she ought to read books",
+        "我觉得她应该读书",
+        null,
+        3
+      ],
+      [
+        "I think she ought to buy a book",
+        "我觉得她应该买一本书",
+        null,
+        4
+      ],
+      [
+        "I think she ought to move this year",
+        "我觉得她应该今年搬",
+        null,
+        4
+      ],
+      [
+        "I think she ought to move to another country",
+        "我觉得她应该搬到另一个国家",
+        null,
+        5
+      ],
+      [
+        "I think she ought to read the same book",
+        "我觉得她应该读同一本书",
+        null,
+        5
+      ],
+      [
+        "I think she ought to consider possible problems",
+        "我觉得她应该考虑可能的问题",
+        null,
+        5
+      ],
+      [
+        "I think she ought to buy another television this year",
+        "我觉得她应该今年买另一台电视",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0328L03": {
+    "lego": [
+      "she ought to",
+      "她应该"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0328L02",
+        "known": "I think she ought to",
+        "target": "我觉得她应该",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "She ought to",
+        "她应该",
+        null,
+        1
+      ],
+      [
+        "She ought to buy",
+        "她应该买",
+        null,
+        2
+      ],
+      [
+        "She ought to move to school",
+        "她应该搬到学校",
+        null,
+        3
+      ],
+      [
+        "She ought to read books",
+        "她应该读书",
+        null,
+        3
+      ],
+      [
+        "She ought to buy this book",
+        "她应该买这本书",
+        null,
+        4
+      ],
+      [
+        "She ought to move this year",
+        "她应该今年搬",
+        null,
+        4
+      ],
+      [
+        "She ought to move to another country",
+        "她应该搬到另一个国家",
+        null,
+        5
+      ],
+      [
+        "She ought to consider possible problems",
+        "她应该考虑可能的问题",
+        null,
+        5
+      ],
+      [
+        "She ought to read the same book",
+        "她应该读同一本书",
+        null,
+        5
+      ],
+      [
+        "Yes I think she ought to.",
+        "是的，我觉得她应该。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

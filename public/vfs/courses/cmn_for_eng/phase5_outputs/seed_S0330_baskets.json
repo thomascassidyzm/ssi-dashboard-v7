@@ -1,0 +1,524 @@
+{
+  "S0330L01": {
+    "lego": [
+      "No",
+      "不"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "No",
+        "不",
+        null,
+        1
+      ],
+      [
+        "No, this year",
+        "不，今年",
+        null,
+        2
+      ],
+      [
+        "No, to school",
+        "不，去学校",
+        null,
+        2
+      ],
+      [
+        "No, I think so",
+        "不，我觉得",
+        null,
+        3
+      ],
+      [
+        "No, she doesn't need to",
+        "不，她不需要",
+        null,
+        3
+      ],
+      [
+        "No, not this year",
+        "不，今年不",
+        null,
+        4
+      ],
+      [
+        "No, he doesn't need to buy",
+        "不，他不需要买",
+        null,
+        4
+      ],
+      [
+        "No, I don't think she needs to",
+        "不，我觉得她不需要",
+        null,
+        5
+      ],
+      [
+        "No, she doesn't need to buy books",
+        "不，她不需要买书",
+        null,
+        5
+      ],
+      [
+        "No, I don't think she ought to move",
+        "不，我觉得她不应该搬",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0330L02": {
+    "lego": [
+      "I don't think it's very important",
+      "我觉得这不是很重要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0330L01",
+        "known": "No",
+        "target": "不",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I don't think it's very important",
+        "我觉得这不是很重要",
+        null,
+        1
+      ],
+      [
+        "I don't think it's very important to buy",
+        "我觉得买不是很重要",
+        null,
+        2
+      ],
+      [
+        "I don't think it's very important to move",
+        "我觉得搬不是很重要",
+        null,
+        2
+      ],
+      [
+        "I don't think it's very important to read books",
+        "我觉得读书不是很重要",
+        null,
+        3
+      ],
+      [
+        "I don't think it's very important this year",
+        "我觉得今年这不是很重要",
+        null,
+        3
+      ],
+      [
+        "I don't think it's very important to buy books",
+        "我觉得买书不是很重要",
+        null,
+        4
+      ],
+      [
+        "I don't think it's very important to walk to school",
+        "我觉得走路去学校不是很重要",
+        null,
+        4
+      ],
+      [
+        "I don't think it's very important to read the same book",
+        "我觉得读同一本书不是很重要",
+        null,
+        5
+      ],
+      [
+        "I don't think it's very important to move to another country",
+        "我觉得搬到另一个国家不是很重要",
+        null,
+        5
+      ],
+      [
+        "I don't think it's very important to consider possible problems",
+        "我觉得考虑可能的问题不是很重要",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0330L03": {
+    "lego": [
+      "it's not very important",
+      "这不是很重要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0330L01",
+        "known": "No",
+        "target": "不",
+        "type": "A"
+      },
+      {
+        "id": "S0330L02",
+        "known": "I don't think it's very important",
+        "target": "我觉得这不是很重要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "It's not very important",
+        "这不是很重要",
+        null,
+        1
+      ],
+      [
+        "It's not very important to buy",
+        "买不是很重要",
+        null,
+        2
+      ],
+      [
+        "It's not very important to read",
+        "读不是很重要",
+        null,
+        2
+      ],
+      [
+        "It's not very important to move to school",
+        "搬到学校不是很重要",
+        null,
+        3
+      ],
+      [
+        "It's not very important this year",
+        "今年这不是很重要",
+        null,
+        3
+      ],
+      [
+        "It's not very important to buy books",
+        "买书不是很重要",
+        null,
+        4
+      ],
+      [
+        "It's not very important to read books",
+        "读书不是很重要",
+        null,
+        4
+      ],
+      [
+        "It's not very important to walk to school",
+        "走路去学校不是很重要",
+        null,
+        5
+      ],
+      [
+        "It's not very important to move to another country",
+        "搬到另一个国家不是很重要",
+        null,
+        5
+      ],
+      [
+        "It's not very important to consider possible problems",
+        "考虑可能的问题不是很重要",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0330L04": {
+    "lego": [
+      "not very important",
+      "不是很重要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0330L01",
+        "known": "No",
+        "target": "不",
+        "type": "A"
+      },
+      {
+        "id": "S0330L02",
+        "known": "I don't think it's very important",
+        "target": "我觉得这不是很重要",
+        "type": "M"
+      },
+      {
+        "id": "S0330L03",
+        "known": "it's not very important",
+        "target": "这不是很重要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Not very important",
+        "不是很重要",
+        null,
+        1
+      ],
+      [
+        "Not very important to buy",
+        "买不是很重要",
+        null,
+        2
+      ],
+      [
+        "Not very important to read",
+        "读不是很重要",
+        null,
+        2
+      ],
+      [
+        "Not very important to move to school",
+        "搬到学校不是很重要",
+        null,
+        3
+      ],
+      [
+        "Not very important this year",
+        "今年不是很重要",
+        null,
+        3
+      ],
+      [
+        "Not very important to buy books",
+        "买书不是很重要",
+        null,
+        4
+      ],
+      [
+        "Not very important to read books",
+        "读书不是很重要",
+        null,
+        4
+      ],
+      [
+        "Not very important to walk to school",
+        "走路去学校不是很重要",
+        null,
+        5
+      ],
+      [
+        "Not very important to consider this problem",
+        "考虑这个问题不是很重要",
+        null,
+        5
+      ],
+      [
+        "Not very important to move to another country this year",
+        "今年搬到另一个国家不是很重要",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0330L05": {
+    "lego": [
+      "is not very",
+      "不是很"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0330L01",
+        "known": "No",
+        "target": "不",
+        "type": "A"
+      },
+      {
+        "id": "S0330L02",
+        "known": "I don't think it's very important",
+        "target": "我觉得这不是很重要",
+        "type": "M"
+      },
+      {
+        "id": "S0330L03",
+        "known": "it's not very important",
+        "target": "这不是很重要",
+        "type": "M"
+      },
+      {
+        "id": "S0330L04",
+        "known": "not very important",
+        "target": "不是很重要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Is not very",
+        "不是很",
+        null,
+        1
+      ],
+      [
+        "Is not very important",
+        "不是很重要",
+        null,
+        2
+      ],
+      [
+        "This is not very important",
+        "这不是很重要",
+        null,
+        2
+      ],
+      [
+        "This book is not very important",
+        "这本书不是很重要",
+        null,
+        3
+      ],
+      [
+        "Reading is not very important",
+        "读书不是很重要",
+        null,
+        3
+      ],
+      [
+        "Moving to school is not very important",
+        "搬到学校不是很重要",
+        null,
+        4
+      ],
+      [
+        "This year is not very important",
+        "今年不是很重要",
+        null,
+        4
+      ],
+      [
+        "Walking to school is not very important",
+        "走路去学校不是很重要",
+        null,
+        5
+      ],
+      [
+        "Buying another television is not very important",
+        "买另一台电视不是很重要",
+        null,
+        5
+      ],
+      [
+        "No I don't think it's very important.",
+        "不，我觉得这不是很重要。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
