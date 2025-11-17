@@ -1,0 +1,74 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0041",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "I feel okay, but I'm starting to feel tired.",
+    "target": "Me siento bien, pero estoy comenzando a sentirme cansado."
+  },
+  "S0041L01": {
+    "lego": ["I feel okay", "me siento bien"],
+    "type": "M",
+    "practice_phrases": [
+      ["I feel okay", "me siento bien", null, 2],
+      ["I feel okay now", "me siento bien ahora", null, 2],
+      ["I feel okay this morning", "me siento bien esta mañana", null, 3],
+      ["I feel okay at the moment", "me siento bien en este momento", null, 3],
+      ["I feel okay but I'm tired", "me siento bien pero estoy cansado", null, 4],
+      ["I don't feel okay", "no me siento bien", null, 4],
+      ["I feel okay but I want to learn", "me siento bien pero quiero aprender", null, 5],
+      ["I wanted to ask you if you feel okay", "quería preguntarte si te sientes bien", null, 6],
+      ["He doesn't feel okay when other people are here", "él no se siente bien cuando otras personas están aquí", null, 7],
+      ["She wanted to know how I feel okay", "ella quería saber cómo me siento bien", null, 6]
+    ]
+  },
+  "S0041L03": {
+    "lego": ["I'm starting to feel tired", "estoy comenzando a sentirme cansado"],
+    "type": "M",
+    "practice_phrases": [
+      ["I'm starting to feel tired", "estoy comenzando a sentirme cansado", null, 1],
+      ["Starting to feel tired", "comenzando a sentirme cansado", null, 1],
+      ["I'm starting to feel tired now", "estoy comenzando a sentirme cansado ahora", null, 3],
+      ["I'm not starting to feel tired", "no estoy comenzando a sentirme cansado", null, 3],
+      ["I'm starting to feel tired this morning", "estoy comenzando a sentirme cansado esta mañana", null, 4],
+      ["I'm starting to feel tired at the moment", "estoy comenzando a sentirme cansado en este momento", null, 4],
+      ["I'm starting to feel tired when I learn", "estoy comenzando a sentirme cansado cuando aprendo", null, 5],
+      ["I think I'm starting to feel tired", "pienso que estoy comenzando a sentirme cansado", null, 5],
+      ["I'm starting to feel tired but I feel okay", "estoy comenzando a sentirme cansado pero me siento bien", null, 6],
+      ["He's starting to feel tired at the moment", "él está comenzando a sentirse cansado en este momento", null, 6]
+    ]
+  },
+  "S0041L04": {
+    "lego": ["starting to feel", "comenzando a sentirme"],
+    "type": "M",
+    "practice_phrases": [
+      ["Starting to feel", "comenzando a sentirme", null, 1],
+      ["Starting to feel tired", "comenzando a sentirme cansado", null, 2],
+      ["I'm starting to feel okay", "estoy comenzando a sentirme bien", null, 3],
+      ["Starting to feel tired now", "comenzando a sentirme cansado ahora", null, 3],
+      ["I'm starting to feel better now", "estoy comenzando a sentirme mejor ahora", null, 4],
+      ["He's starting to feel tired", "él está comenzando a sentirse cansado", null, 4],
+      ["I'm starting to feel okay this morning", "estoy comenzando a sentirme bien esta mañana", null, 5],
+      ["I was starting to feel tired yesterday", "estaba comenzando a sentirme cansado ayer", null, 5],
+      ["I think he's starting to feel tired now", "pienso que él está comenzando a sentirse cansado ahora", null, 6],
+      ["She was starting to feel better at the moment", "ella estaba comenzando a sentirse mejor en este momento", null, 7]
+    ]
+  },
+  "S0041L05": {
+    "lego": ["feel tired", "sentirme cansado"],
+    "type": "M",
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Feel tired", "sentirme cansado", null, 1],
+      ["I feel tired", "me siento cansado", null, 2],
+      ["I don't feel tired", "no me siento cansado", null, 3],
+      ["I feel tired now", "me siento cansado ahora", null, 3],
+      ["I feel tired this morning", "me siento cansado esta mañana", null, 4],
+      ["I feel tired at the moment", "me siento cansado en este momento", null, 4],
+      ["I don't feel tired this morning", "no me siento cansado esta mañana", null, 5],
+      ["I was starting to feel tired yesterday", "estaba comenzando a sentirme cansado ayer", null, 5],
+      ["I think you feel tired at the moment", "pienso que te sientes cansado en este momento", null, 6],
+      ["I feel okay, but I'm starting to feel tired.", "Me siento bien, pero estoy comenzando a sentirme cansado.", null, 5]
+    ]
+  }
+}

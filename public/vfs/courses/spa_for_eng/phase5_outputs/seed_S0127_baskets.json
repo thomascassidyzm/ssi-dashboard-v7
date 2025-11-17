@@ -1,0 +1,36 @@
+{
+  "legos": {
+    "S0127L02": {
+      "lego": ["is why", "es por qué"],
+      "type": "M",
+      "current_seed_legos_available": [["that isn't", "eso no es"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Is why", "Es por qué", null, 1],
+        ["That is why", "Eso es por qué", null, 2],
+        ["That isn't why", "Eso no es por qué", null, 3],
+        ["I think that's why", "Pienso que eso es por qué", null, 3],
+        ["I thought that was why", "Creí que eso era por qué", null, 4],
+        ["I believe that isn't why", "Creo que eso no es por qué", null, 4],
+        ["That isn't why it's interesting", "Eso no es por qué es interesante", null, 5],
+        ["I think that isn't why you can go", "Pienso que eso no es por qué puedes ir", null, 5],
+        ["That isn't why I can ask you", "Eso no es por qué puedo preguntarte", null, 5],
+        ["I believe that isn't why you like to use your car", "Creo que eso no es por qué te gusta usar tu auto", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0127L02",
+        "seed_context": {
+          "known": "Eso no es por qué quería verte.",
+          "target": "That isn't why I wanted to see you."
+        }
+      },
+      "components": [["por", "for"], ["qué", "what/why"]]
+    }
+  }
+}

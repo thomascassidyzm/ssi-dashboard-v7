@@ -1,0 +1,77 @@
+{
+  "legos": {
+    "S0081L02": {
+      "lego": ["do you want to start", "quieres comenzar"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["do you want to start", "quieres comenzar", null, 1],
+        ["do you want to start learning", "quieres comenzar a aprender", null, 2],
+        ["do you want to start today", "quieres comenzar hoy", null, 2],
+        ["I think you want to start", "Pienso que quieres comenzar", null, 3],
+        ["do you want to start to learn", "quieres comenzar a aprender", null, 4],
+        ["I'm not sure you want to start", "No estoy seguro de que quieres comenzar", null, 4],
+        ["do you want to start learning more", "quieres comenzar a aprender más", null, 5],
+        ["I think you want to start to learn", "Pienso que quieres comenzar a aprender", null, 5],
+        ["I'm sure you want to start learning", "estoy seguro de que quieres comenzar a aprender", null, 5],
+        ["I'm not sure you want to start to learn", "No estoy seguro de que quieres comenzar a aprender", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0081L02",
+        "seed_context": {
+          "known": "¿Cuándo quieres comenzar?",
+          "target": "When do you want to start?"
+        }
+      },
+      "components": [["quieres", "you want"], ["comenzar", "to start"]]
+    },
+    "S0081L03": {
+      "lego": ["when do you want to start", "cuándo quieres comenzar"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0081L02",
+          "known": "do you want to start",
+          "target": "quieres comenzar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["when do you want to start", "cuándo quieres comenzar", null, 1],
+        ["I'm not sure when you want to start", "No estoy seguro de cuándo quieres comenzar", null, 2],
+        ["when do you want to start learning", "cuándo quieres comenzar a aprender", null, 3],
+        ["I think when you want to start", "Pienso cuándo quieres comenzar", null, 3],
+        ["when do you want to start to learn", "cuándo quieres comenzar a aprender", null, 4],
+        ["I don't understand when you want to start", "No comprendo cuándo quieres comenzar", null, 4],
+        ["I'm not sure when you want to start learning", "No estoy seguro de cuándo quieres comenzar a aprender", null, 5],
+        ["when do you want to start learning more", "cuándo quieres comenzar a aprender más", null, 5],
+        ["I'm sure when you want to start to learn", "estoy seguro de cuándo quieres comenzar a aprender", null, 5],
+        ["I don't understand when you want to start learning", "No comprendo cuándo quieres comenzar a aprender", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0081L03",
+        "seed_context": {
+          "known": "¿Cuándo quieres comenzar?",
+          "target": "When do you want to start?"
+        }
+      },
+      "components": [["cuándo", "when"], ["quieres", "you want"], ["comenzar", "to start"]]
+    }
+  }
+}

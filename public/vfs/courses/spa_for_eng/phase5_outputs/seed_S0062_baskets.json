@@ -1,0 +1,94 @@
+{
+  "version": "phase5_v1.0",
+  "seed_id": "S0062",
+  "course": "spa_for_eng",
+  "seed_pair": {
+    "known": "I'm not sure if I can help you at the same time.",
+    "target": "No estoy seguro si puedo ayudarte al mismo tiempo."
+  },
+
+  "S0062L01": {
+    "lego": ["I'm not sure if", "No estoy seguro si"],
+    "type": "M",
+    "practice_phrases": [
+      ["I'm not sure if", "No estoy seguro si", null, 1],
+      ["I'm not sure if you understand", "No estoy seguro si comprendes", null, 2],
+      ["I'm not sure if I know", "No estoy seguro si sé", null, 3],
+      ["I'm not sure if you want to try", "No estoy seguro si quieres intentar", null, 3],
+      ["I'm not sure if I can speak Spanish", "No estoy seguro si puedo hablar español", null, 4],
+      ["I'm not sure if you understand what I say", "No estoy seguro si comprendes lo que digo", null, 4],
+      ["I'm not sure if I want to finish now", "No estoy seguro si quiero terminar ahora", null, 5],
+      ["I'm not sure if you know enough words", "No estoy seguro si sabes suficientes palabras", null, 6],
+      ["I'm not sure if I can remember how to say this", "No estoy seguro si puedo recordar cómo decir esto", null, 6],
+      ["I'm not sure if you're trying to learn Spanish", "No estoy seguro si estás intentando aprender español", null, 7]
+    ]
+  },
+
+  "S0062L02": {
+    "lego": ["if I can help you", "si puedo ayudarte"],
+    "type": "M",
+    "practice_phrases": [
+      ["if I can help you", "si puedo ayudarte", null, 1],
+      ["I'm not sure if I can help you", "No estoy seguro si puedo ayudarte", null, 2],
+      ["I know if I can help you", "Sé si puedo ayudarte", null, 3],
+      ["if I can help you today", "si puedo ayudarte hoy", null, 3],
+      ["I want to know if I can help you", "Quiero saber si puedo ayudarte", null, 4],
+      ["I'm not sure if I can help you now", "No estoy seguro si puedo ayudarte ahora", null, 4],
+      ["if I can help you learn Spanish", "si puedo ayudarte aprender español", null, 5],
+      ["I'm not sure if I can help you today", "No estoy seguro si puedo ayudarte hoy", null, 5],
+      ["I don't know if I can help you with this", "No sé si puedo ayudarte con esto", null, 6],
+      ["I'm really not sure if I can help you right now", "Realmente no estoy seguro si puedo ayudarte ahora mismo", null, 7]
+    ]
+  },
+
+  "S0062L03": {
+    "lego": ["I can help you", "puedo ayudarte"],
+    "type": "M",
+    "practice_phrases": [
+      ["I can help you", "puedo ayudarte", null, 1],
+      ["I can help you now", "puedo ayudarte ahora", null, 2],
+      ["I'm not sure I can help you", "No estoy seguro puedo ayudarte", null, 3],
+      ["I can help you speak Spanish", "puedo ayudarte hablar español", null, 3],
+      ["I can help you learn new words", "puedo ayudarte aprender nuevas palabras", null, 4],
+      ["I think I can help you today", "Pienso puedo ayudarte hoy", null, 4],
+      ["I can help you if you want", "puedo ayudarte si quieres", null, 5],
+      ["I can help you understand what this means", "puedo ayudarte comprender lo que esto significa", null, 6],
+      ["I can help you practice Spanish every day", "puedo ayudarte practicar español cada día", null, 6],
+      ["Maybe I can help you learn to speak better", "Quizás puedo ayudarte aprender a hablar mejor", null, 7]
+    ]
+  },
+
+  "S0062L04": {
+    "lego": ["help you", "ayudarte"],
+    "type": "A",
+    "practice_phrases": [
+      ["help you", "ayudarte", null, 1],
+      ["I want to help you", "Quiero ayudarte", null, 2],
+      ["help you now", "ayudarte ahora", null, 2],
+      ["I can help you speak", "Puedo ayudarte hablar", null, 3],
+      ["I'm trying to help you", "Estoy intentando ayudarte", null, 4],
+      ["help you learn Spanish", "ayudarte aprender español", null, 4],
+      ["I want to help you understand this", "Quiero ayudarte comprender esto", null, 5],
+      ["I'm here to help you practice every day", "Estoy aquí para ayudarte practicar cada día", null, 6],
+      ["I really want to help you learn new words", "Realmente quiero ayudarte aprender nuevas palabras", null, 6],
+      ["I enjoy trying to help you speak Spanish better", "Disfruto intentar ayudarte hablar español mejor", null, 7]
+    ]
+  },
+
+  "S0062L05": {
+    "lego": ["at the same time", "al mismo tiempo"],
+    "type": "M",
+    "practice_phrases": [
+      ["at the same time", "al mismo tiempo", null, 1],
+      ["I can't do both at the same time", "No puedo hacer ambos al mismo tiempo", null, 2],
+      ["speak and listen at the same time", "hablar y escuchar al mismo tiempo", null, 3],
+      ["We can practice at the same time", "Podemos practicar al mismo tiempo", null, 3],
+      ["I can help you at the same time", "Puedo ayudarte al mismo tiempo", null, 4],
+      ["You want to learn both at the same time", "Quieres aprender ambos al mismo tiempo", null, 4],
+      ["I'm not sure if I can do this at the same time", "No estoy seguro si puedo hacer esto al mismo tiempo", null, 5],
+      ["We can speak Spanish and English at the same time", "Podemos hablar español e inglés al mismo tiempo", null, 6],
+      ["I'm trying to help you and learn at the same time", "Estoy intentando ayudarte y aprender al mismo tiempo", null, 6],
+      ["I'm not sure if I can help you at the same time.", "No estoy seguro si puedo ayudarte al mismo tiempo.", null, 7]
+    ]
+  }
+}

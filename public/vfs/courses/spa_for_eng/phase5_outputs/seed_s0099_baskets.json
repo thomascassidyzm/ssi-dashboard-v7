@@ -1,0 +1,49 @@
+{
+  "legos": {
+    "S0099L04": {
+      "lego": ["yourself why", "preguntarte por qué"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0099L01",
+          "known": "you should",
+          "target": "deberías",
+          "type": "A"
+        },
+        {
+          "id": "S0099L02",
+          "known": "ask yourself",
+          "target": "preguntarte",
+          "type": "A"
+        },
+        {
+          "id": "S0099L03",
+          "known": "you should ask yourself",
+          "target": "deberías preguntarte",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["ask yourself why", "preguntarte por qué", null, 1],
+        ["yourself why not", "preguntarte por qué no", null, 1],
+        ["You should ask yourself why", "Deberías preguntarte por qué", null, 2],
+        ["ask yourself why it's difficult", "preguntarte por qué es difícil", null, 2],
+        ["You should ask yourself why now", "Deberías preguntarte por qué ahora", null, 3],
+        ["I'm going to ask myself why", "Voy a preguntarme por qué", null, 3],
+        ["You should ask yourself why it's not working", "Deberías preguntarte por qué no está trabajando", null, 4],
+        ["I think you should ask yourself why", "Pienso que deberías preguntarte por qué", null, 5],
+        ["You should ask yourself why it's difficult to speak Spanish", "Deberías preguntarte por qué es difícil hablar español", null, 5],
+        ["You should ask yourself why you're not ready to speak more", "Deberías preguntarte por qué no estás preparado para hablar más", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [[null, null], [null, null]]
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "legos": {
+    "S0109L05": {
+      "lego": ["to learn a lot of new words", "aprender muchas palabras nuevas"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0109L01",
+          "known": "we must",
+          "target": "debemos",
+          "type": "A"
+        },
+        {
+          "id": "S0109L02",
+          "known": "we must work hard",
+          "target": "debemos trabajar duro",
+          "type": "M"
+        },
+        {
+          "id": "S0109L03",
+          "known": "to work hard to learn",
+          "target": "trabajar duro para aprender",
+          "type": "M"
+        },
+        {
+          "id": "S0109L04",
+          "known": "to learn a lot of new words",
+          "target": "para aprender muchas palabras nuevas",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["learn a lot of new words", "aprender muchas palabras nuevas", null, 1],
+        ["to learn new words", "aprender palabras nuevas", null, 1],
+        ["We must learn a lot of new words", "Debemos aprender muchas palabras nuevas", null, 2],
+        ["I'm trying to learn new words", "Estoy intentando aprender palabras nuevas", null, 2],
+        ["We must work hard to learn new words", "Debemos trabajar duro para aprender palabras nuevas", null, 3],
+        ["I need to learn a lot of new words", "Necesito aprender muchas palabras nuevas", null, 3],
+        ["We must work hard to learn a lot of new words", "Debemos trabajar duro para aprender muchas palabras nuevas", null, 4],
+        ["I'm enjoying learning a lot of new words in Spanish", "Estoy disfrutando aprender muchas palabras nuevas en español", null, 5],
+        ["We must work hard to learn a lot of new words quickly", "Debemos trabajar duro para aprender muchas palabras nuevas rápidamente", null, 5],
+        ["We're trying to say that we need to learn a lot of new words every day", "Estamos intentando decir que necesitamos aprender muchas palabras nuevas cada día", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [[null, null], [null, null], [null, null], [null, null]]
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "legos": {
+    "S0089L01": {
+      "lego": ["I think that I've", "Pienso que he"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I think that I've", "Pienso que he", null, 1],
+        ["I think that I've started", "Pienso que he comenzado", null, 2],
+        ["I think that I've learnt", "Pienso que he aprendido", null, 2],
+        ["I think that I've done well", "Pienso que he hecho bien", null, 3],
+        ["I think that I've learnt more", "Pienso que he aprendido más", null, 4],
+        ["I'm sure I think that I've started", "estoy seguro de que Pienso que he comenzado", null, 4],
+        ["I think that I've started to learn", "Pienso que he comenzado a aprender", null, 5],
+        ["I think that I've done very well", "Pienso que he hecho muy bien", null, 5],
+        ["I'm not sure I think that I've learnt", "No estoy seguro de que Pienso que he aprendido", null, 6],
+        ["I think that I've learnt a lot", "Pienso que he aprendido mucho", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0089L01",
+        "seed_context": {
+          "known": "Pienso que he hecho mucho en un breve tiempo.",
+          "target": "I think that I've done a lot in a short time."
+        }
+      },
+      "components": [["Pienso", "I think"], ["que he", "that I've"]]
+    },
+    "S0089L02": {
+      "lego": ["I've done", "he hecho"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0089L01",
+          "known": "I think that I've",
+          "target": "Pienso que he",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["I've done", "he hecho", null, 1],
+        ["I think I've done", "Pienso que he hecho", null, 2],
+        ["I've done that today", "he hecho eso hoy", null, 2],
+        ["I've done very well", "he hecho muy bien", null, 3],
+        ["I'm sure I've done that", "estoy seguro de que he hecho eso", null, 4],
+        ["I've done more to learn", "he hecho más para aprender", null, 4],
+        ["I think that I've done well", "Pienso que he hecho bien", null, 5],
+        ["I'm very happy I've done that", "estoy muy feliz de que he hecho eso", null, 5],
+        ["I'm not sure I've done very well", "No estoy seguro de que he hecho muy bien", null, 6],
+        ["I think that I've done a lot", "Pienso que he hecho mucho", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0089L02",
+        "seed_context": {
+          "known": "Pienso que he hecho mucho en un breve tiempo.",
+          "target": "I think that I've done a lot in a short time."
+        }
+      },
+      "components": [["he", "I've"], ["hecho", "done"]]
+    },
+    "S0089L03": {
+      "lego": ["I've done a lot", "he hecho mucho"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0089L01",
+          "known": "I think that I've",
+          "target": "Pienso que he",
+          "type": "M"
+        },
+        {
+          "id": "S0089L02",
+          "known": "I've done",
+          "target": "he hecho",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["I've done a lot", "he hecho mucho", null, 1],
+        ["I think I've done a lot", "Pienso que he hecho mucho", null, 2],
+        ["I've done a lot today", "he hecho mucho hoy", null, 2],
+        ["I'm sure I've done a lot", "estoy seguro de que he hecho mucho", null, 3],
+        ["I've done a lot to learn", "he hecho mucho para aprender", null, 4],
+        ["I'm very happy I've done a lot", "estoy muy feliz de que he hecho mucho", null, 4],
+        ["I think that I've done a lot today", "Pienso que he hecho mucho hoy", null, 5],
+        ["I've done a lot in short time", "he hecho mucho en breve tiempo", null, 5],
+        ["I'm sure I've done a lot to learn", "estoy seguro de que he hecho mucho para aprender", null, 6],
+        ["I think that I've done a lot to learn", "Pienso que he hecho mucho para aprender", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0089L03",
+        "seed_context": {
+          "known": "Pienso que he hecho mucho en un breve tiempo.",
+          "target": "I think that I've done a lot in a short time."
+        }
+      },
+      "components": [["he", "I've"], ["hecho", "done"], ["mucho", "a lot"]]
+    },
+    "S0089L04": {
+      "lego": ["in a short time", "en un breve tiempo"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0089L01",
+          "known": "I think that I've",
+          "target": "Pienso que he",
+          "type": "M"
+        },
+        {
+          "id": "S0089L02",
+          "known": "I've done",
+          "target": "he hecho",
+          "type": "M"
+        },
+        {
+          "id": "S0089L03",
+          "known": "I've done a lot",
+          "target": "he hecho mucho",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["in a short time", "en un breve tiempo", null, 1],
+        ["I've done in a short time", "he hecho en un breve tiempo", null, 2],
+        ["I started in a short time", "comenzaste en un breve tiempo", null, 2],
+        ["I'm learning in a short time", "estoy aprendiendo en un breve tiempo", null, 3],
+        ["I've done a lot in a short time", "he hecho mucho en un breve tiempo", null, 4],
+        ["I'm sure in a short time", "estoy seguro de en un breve tiempo", null, 4],
+        ["I think I've done in a short time", "Pienso que he hecho en un breve tiempo", null, 5],
+        ["I'm very happy in a short time", "estoy muy feliz en un breve tiempo", null, 5],
+        ["I think that I've done a lot in a short time", "Pienso que he hecho mucho en un breve tiempo", null, 6],
+        ["I'm sure I've done a lot in a short time", "estoy seguro de que he hecho mucho en un breve tiempo", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0089L04",
+        "seed_context": {
+          "known": "Pienso que he hecho mucho en un breve tiempo.",
+          "target": "I think that I've done a lot in a short time."
+        }
+      },
+      "components": [["en", "in"], ["un", "a"], ["breve", "short"], ["tiempo", "time"]]
+    },
+    "S0089L05": {
+      "lego": ["a short time", "un breve tiempo"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0089L01",
+          "known": "I think that I've",
+          "target": "Pienso que he",
+          "type": "M"
+        },
+        {
+          "id": "S0089L02",
+          "known": "I've done",
+          "target": "he hecho",
+          "type": "M"
+        },
+        {
+          "id": "S0089L03",
+          "known": "I've done a lot",
+          "target": "he hecho mucho",
+          "type": "M"
+        },
+        {
+          "id": "S0089L04",
+          "known": "in a short time",
+          "target": "en un breve tiempo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["a short time", "un breve tiempo", null, 1],
+        ["I started a short time", "comenzaste un breve tiempo", null, 2],
+        ["in a short time", "en un breve tiempo", null, 2],
+        ["I'm learning in a short time", "estoy aprendiendo en un breve tiempo", null, 3],
+        ["I've done in a short time", "he hecho en un breve tiempo", null, 4],
+        ["I'm very happy in a short time", "estoy muy feliz en un breve tiempo", null, 4],
+        ["I've done a lot in a short time", "he hecho mucho en un breve tiempo", null, 5],
+        ["I think I've done in a short time", "Pienso que he hecho en un breve tiempo", null, 5],
+        ["I'm sure I've done a lot in a short time", "estoy seguro de que he hecho mucho en un breve tiempo", null, 6],
+        ["I think that I've done a lot in a short time", "Pienso que he hecho mucho en un breve tiempo", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0089L05",
+        "seed_context": {
+          "known": "Pienso que he hecho mucho en un breve tiempo.",
+          "target": "I think that I've done a lot in a short time."
+        }
+      },
+      "components": [["un", "a"], ["breve", "short"], ["tiempo", "time"]]
+    }
+  }
+}

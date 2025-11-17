@@ -1,0 +1,46 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0043",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "I wasn't thinking about how to answer.",
+    "target": "No estaba pensando en cómo responder."
+  },
+  "S0043L01": {
+    "lego": ["I wasn't thinking", "no estaba pensando"],
+    "type": "M",
+    "practice_phrases": []
+  },
+  "S0043L02": {
+    "lego": ["thinking about how to answer", "pensando en cómo responder"],
+    "type": "M",
+    "practice_phrases": []
+  },
+  "S0043L03": {
+    "lego": ["about how to answer", "en cómo responder"],
+    "type": "M",
+    "practice_phrases": []
+  },
+  "S0043L04": {
+    "lego": ["how to answer", "cómo responder"],
+    "type": "M",
+    "practice_phrases": []
+  },
+  "S0043L05": {
+    "lego": ["to answer", "responder"],
+    "type": "A",
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["To answer", "responder", null, 1],
+      ["To answer now", "responder ahora", null, 2],
+      ["How to answer", "cómo responder", null, 3],
+      ["To answer in Spanish", "responder en español", null, 3],
+      ["I want to answer", "quiero responder", null, 4],
+      ["To answer this question", "responder esta pregunta", null, 4],
+      ["I want to learn how to answer", "quiero aprender cómo responder", null, 5],
+      ["I'm thinking about how to answer", "estoy pensando en cómo responder", null, 5],
+      ["I wasn't thinking about how to answer yesterday", "no estaba pensando en cómo responder ayer", null, 6],
+      ["I wasn't thinking about how to answer.", "No estaba pensando en cómo responder.", null, 5]
+    ]
+  }
+}

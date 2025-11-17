@@ -1,0 +1,60 @@
+{
+  "version": "phase5_v1.0",
+  "seed_id": "S0068",
+  "course": "spa_for_eng",
+  "seed_pair": {
+    "known": "What are you looking for?",
+    "target": "¿Qué estás buscando?"
+  },
+
+  "S0068L02": {
+    "lego": ["are you looking for", "estás buscando"],
+    "type": "M",
+    "practice_phrases": [
+      ["are you looking for", "estás buscando", null, 1],
+      ["What are you looking for", "Qué estás buscando", null, 2],
+      ["are you looking for something", "estás buscando algo", null, 2],
+      ["are you looking for a word", "estás buscando una palabra", null, 3],
+      ["What are you looking for here", "Qué estás buscando aquí", null, 3],
+      ["are you looking for help with Spanish", "estás buscando ayuda con español", null, 4],
+      ["I think you are looking for the answer", "Pienso que estás buscando la respuesta", null, 4],
+      ["What are you looking for in this book", "Qué estás buscando en este libro", null, 5],
+      ["are you looking for a way to practice Spanish", "estás buscando una manera de practicar español", null, 6],
+      ["I'm not sure what you are looking for right now", "No estoy seguro qué estás buscando ahora mismo", null, 7]
+    ]
+  },
+
+  "S0068L03": {
+    "lego": ["looking for", "buscando"],
+    "type": "A",
+    "practice_phrases": [
+      ["looking for", "buscando", null, 1],
+      ["I'm looking for", "Estoy buscando", null, 2],
+      ["looking for something", "buscando algo", null, 2],
+      ["You're looking for a word", "Estás buscando una palabra", null, 3],
+      ["I'm looking for help with Spanish", "Estoy buscando ayuda con español", null, 4],
+      ["looking for the right answer to this", "buscando la respuesta correcta a esto", null, 4],
+      ["I'm looking for a way to learn quickly", "Estoy buscando una manera de aprender rápidamente", null, 5],
+      ["What are you looking for when you practice", "Qué estás buscando cuando practicas", null, 6],
+      ["I've been looking for someone to help me speak Spanish", "He estado buscando alguien para ayudarme hablar español", null, 6],
+      ["I think you're looking for the best way to understand", "Pienso que estás buscando la mejor manera de comprender", null, 7]
+    ]
+  },
+
+  "S0068L04": {
+    "lego": ["what are you looking for", "qué estás buscando"],
+    "type": "M",
+    "practice_phrases": [
+      ["what are you looking for", "qué estás buscando", null, 1],
+      ["I know what are you looking for", "Sé qué estás buscando", null, 2],
+      ["what are you looking for here", "qué estás buscando aquí", null, 2],
+      ["what are you looking for in this book", "qué estás buscando en este libro", null, 3],
+      ["Tell me what are you looking for", "Dime qué estás buscando", null, 3],
+      ["I'm not sure what are you looking for exactly", "No estoy seguro qué estás buscando exactamente", null, 4],
+      ["what are you looking for when you practice Spanish", "qué estás buscando cuando practicas español", null, 4],
+      ["I want to understand what are you looking for", "Quiero comprender qué estás buscando", null, 5],
+      ["Can you tell me what are you looking for right now", "Puedes decirme qué estás buscando ahora mismo", null, 6],
+      ["What are you looking for?", "¿Qué estás buscando?", null, 7]
+    ]
+  }
+}

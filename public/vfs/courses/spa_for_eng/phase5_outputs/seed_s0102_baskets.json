@@ -1,0 +1,43 @@
+{
+  "legos": {
+    "S0102L03": {
+      "lego": ["trying to say that", "intentando decir que"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0102L01",
+          "known": "we're trying",
+          "target": "estamos intentando",
+          "type": "M"
+        },
+        {
+          "id": "S0102L02",
+          "known": "trying to say",
+          "target": "intentando decir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["trying to say that", "intentando decir que", null, 1],
+        ["I'm trying to say that", "Estoy intentando decir que", null, 1],
+        ["We're trying to say that", "Estamos intentando decir que", null, 2],
+        ["trying to say that it's difficult", "intentando decir que es difícil", null, 2],
+        ["I'm trying to say that now", "Estoy intentando decir que ahora", null, 3],
+        ["We're trying to say that it's not working", "Estamos intentando decir que no está trabajando", null, 3],
+        ["I'm trying to say that I'm ready", "Estoy intentando decir que estoy preparado", null, 4],
+        ["We're trying to say that it's not like that", "Estamos intentando decir que no es así", null, 5],
+        ["I'm trying to say that I need more time to learn", "Estoy intentando decir que necesito más tiempo para aprender", null, 5],
+        ["We're trying to say that we're not ready to speak Spanish yet", "Estamos intentando decir que no estamos preparados para hablar español todavía", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [[null, null], [null, null]]
+    }
+  }
+}

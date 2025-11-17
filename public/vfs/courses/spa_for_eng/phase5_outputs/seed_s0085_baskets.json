@@ -1,0 +1,123 @@
+{
+  "legos": {
+    "S0085L01": {
+      "lego": ["I don't know those", "No conozco a esas"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I don't know those", "No conozco a esas", null, 1],
+        ["I don't know those people", "No conozco a esas personas", null, 2],
+        ["I'm sure I don't know those", "estoy seguro de que no conozco a esas", null, 2],
+        ["I don't know those people today", "No conozco a esas personas hoy", null, 3],
+        ["I think I don't know those", "Pienso que no conozco a esas", null, 4],
+        ["I'm not sure I don't know those", "No estoy seguro de que no conozco a esas", null, 4],
+        ["I don't know those people very well", "No conozco a esas personas muy bien", null, 5],
+        ["I'm sure I don't know those people", "estoy seguro de que no conozco a esas personas", null, 5],
+        ["I think I don't know those people", "Pienso que no conozco a esas personas", null, 5],
+        ["I'm not sure I don't know those people", "No estoy seguro de que no conozco a esas personas", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0085L01",
+        "seed_context": {
+          "known": "No conozco a esas personas.",
+          "target": "I don't know those people."
+        }
+      },
+      "components": [["No", "I don't"], ["conozco", "know"], ["a esas", "those"]]
+    },
+    "S0085L02": {
+      "lego": ["those people", "esas personas"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0085L01",
+          "known": "I don't know those",
+          "target": "No conozco a esas",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["those people", "esas personas", null, 1],
+        ["I don't know those people", "No conozco a esas personas", null, 2],
+        ["those people are learning", "esas personas están aprendiendo", null, 2],
+        ["I think those people", "Pienso que esas personas", null, 3],
+        ["those people are doing well", "esas personas están haciendo bien", null, 4],
+        ["I'm not sure about those people", "No estoy seguro de sobre esas personas", null, 4],
+        ["I don't agree with those people", "no estoy de acuerdo con esas personas", null, 5],
+        ["those people are starting to learn", "esas personas están comenzando a aprender", null, 5],
+        ["I'm sure I don't know those people", "estoy seguro de que no conozco a esas personas", null, 5],
+        ["I think those people are doing very well", "Pienso que esas personas están haciendo muy bien", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0085L02",
+        "seed_context": {
+          "known": "No conozco a esas personas.",
+          "target": "I don't know those people."
+        }
+      },
+      "components": [["esas", "those"], ["personas", "people"]]
+    },
+    "S0085L03": {
+      "lego": ["know those people", "conozco a esas personas"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0085L01",
+          "known": "I don't know those",
+          "target": "No conozco a esas",
+          "type": "M"
+        },
+        {
+          "id": "S0085L02",
+          "known": "those people",
+          "target": "esas personas",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["know those people", "conozco a esas personas", null, 1],
+        ["I don't know those people", "No conozco a esas personas", null, 2],
+        ["I'm sure I know those people", "estoy seguro de que conozco a esas personas", null, 3],
+        ["I think I know those people", "Pienso que conozco a esas personas", null, 3],
+        ["I'm not sure I know those people", "No estoy seguro de que conozco a esas personas", null, 4],
+        ["I don't know those people very well", "No conozco a esas personas muy bien", null, 4],
+        ["I'm happy I know those people", "estoy feliz de que conozco a esas personas", null, 5],
+        ["I think I know those people very well", "Pienso que conozco a esas personas muy bien", null, 5],
+        ["I'm not sure when I know those people", "No estoy seguro de cuándo conozco a esas personas", null, 6],
+        ["I'm very happy I know those people", "estoy muy feliz de que conozco a esas personas", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0085L03",
+        "seed_context": {
+          "known": "No conozco a esas personas.",
+          "target": "I don't know those people."
+        }
+      },
+      "components": [["conozco", "know"], ["a", "to"], ["esas", "those"], ["personas", "people"]]
+    }
+  }
+}

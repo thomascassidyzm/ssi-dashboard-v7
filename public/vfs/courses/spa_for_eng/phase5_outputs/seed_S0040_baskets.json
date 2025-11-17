@@ -1,0 +1,52 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0040",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "How do you feel at the moment?",
+    "target": "¿Cómo te sientes en este momento?"
+  },
+  "S0040L01": {
+    "lego": ["how", "cómo"],
+    "type": "A",
+    "practice_phrases": []
+  },
+  "S0040L02": {
+    "lego": ["how do you feel", "cómo te sientes"],
+    "type": "M",
+    "practice_phrases": []
+  },
+  "S0040L03": {
+    "lego": ["you feel", "te sientes"],
+    "type": "M",
+    "practice_phrases": [
+      ["you feel tired", "te sientes cansado", null, 2],
+      ["how you feel", "cómo te sientes", null, 2],
+      ["you feel tired now", "te sientes cansado ahora", null, 3],
+      ["you feel okay", "te sientes bien", null, 3],
+      ["I think you feel tired", "pienso que te sientes cansado", null, 4],
+      ["you feel tired this morning", "te sientes cansado esta mañana", null, 4],
+      ["I want to know how you feel", "quiero saber cómo te sientes", null, 5],
+      ["I wanted to ask you how you feel", "quería preguntarte cómo te sientes", null, 6],
+      ["He doesn't want to know how you feel", "él no quiere saber cómo te sientes", null, 7],
+      ["Do you feel tired when other people are here", "te sientes cansado cuando otras personas están aquí", null, 7]
+    ]
+  },
+  "S0040L04": {
+    "lego": ["at the moment", "en este momento"],
+    "type": "M",
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["at the moment", "en este momento", null, 1],
+      ["I'm learning at the moment", "estoy aprendiendo en este momento", null, 2],
+      ["I'm tired at the moment", "estoy cansado en este momento", null, 3],
+      ["I feel okay at the moment", "me siento bien en este momento", null, 3],
+      ["I'm learning Spanish at the moment", "estoy aprendiendo español en este momento", null, 4],
+      ["I'm a little tired at the moment", "estoy un poco cansado en este momento", null, 4],
+      ["I don't want to speak at the moment", "no quiero hablar en este momento", null, 5],
+      ["I'm looking forward to speaking at the moment", "estoy deseando hablar en este momento", null, 5],
+      ["I don't want to interrupt the story at the moment", "no quiero interrumpir la historia en este momento", null, 6],
+      ["How do you feel at the moment?", "¿Cómo te sientes en este momento?", null, 4]
+    ]
+  }
+}

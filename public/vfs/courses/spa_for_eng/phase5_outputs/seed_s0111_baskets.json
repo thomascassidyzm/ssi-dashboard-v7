@@ -1,0 +1,29 @@
+{
+  "legos": {
+    "S0111L01": {
+      "lego": ["When we", "Cuando aprendemos"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["when we learn", "cuando aprendemos", null, 1],
+        ["when we work", "cuando trabajamos", null, 1],
+        ["When we speak Spanish", "Cuando hablamos español", null, 2],
+        ["when we learn something", "cuando aprendemos algo", null, 2],
+        ["When we speak more slowly", "Cuando hablamos más lentamente", null, 3],
+        ["when we learn something new", "cuando aprendemos algo nuevo", null, 3],
+        ["When we work hard we learn more", "Cuando trabajamos duro aprendemos más", null, 4],
+        ["When we learn new words it's difficult", "Cuando aprendemos palabras nuevas es difícil", null, 5],
+        ["When we learn something new we must work hard", "Cuando aprendemos algo nuevo debemos trabajar duro", null, 5],
+        ["When we learn a lot of new words it changes our brain", "Cuando aprendemos muchas palabras nuevas cambia nuestro cerebro", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

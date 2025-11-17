@@ -1,0 +1,77 @@
+{
+  "version": "phase5_v1.0",
+  "seed_id": "S0058",
+  "course": "spa_for_eng",
+  "seed_pair": {
+    "known": "It's interesting when you understand enough words.",
+    "target": "Es interesante cuando comprendes suficientes palabras."
+  },
+
+  "S0058L01": {
+    "lego": ["it's interesting", "es interesante"],
+    "type": "M",
+    "practice_phrases": [
+      ["It's interesting", "Es interesante", null, 1],
+      ["It's very interesting", "Es muy interesante", null, 2],
+      ["It's interesting to speak", "Es interesante hablar", null, 2],
+      ["It's interesting to learn Spanish", "Es interesante aprender español", null, 3],
+      ["It's very interesting to practice", "Es muy interesante practicar", null, 3],
+      ["It's interesting when you try", "Es interesante cuando intentas", null, 4],
+      ["It's interesting to speak with you", "Es interesante hablar contigo", null, 4],
+      ["It's interesting to learn new words", "Es interesante aprender nuevas palabras", null, 5],
+      ["It's very interesting to practice Spanish", "Es muy interesante practicar español", null, 5],
+      ["It's interesting to understand what you say", "Es interesante comprender lo que dices", null, 6]
+    ]
+  },
+
+  "S0058L02": {
+    "lego": ["interesting when", "interesante cuando"],
+    "type": "A",
+    "practice_phrases": [
+      ["interesting when", "interesante cuando", null, 1],
+      ["It's interesting when", "Es interesante cuando", null, 2],
+      ["interesting when you speak", "interesante cuando hablas", null, 3],
+      ["It's interesting when you try", "Es interesante cuando intentas", null, 3],
+      ["It's interesting when you speak Spanish", "Es interesante cuando hablas español", null, 4],
+      ["interesting when you learn words", "interesante cuando aprendes palabras", null, 4],
+      ["It's interesting when you practice every day", "Es interesante cuando practicas cada día", null, 5],
+      ["It's interesting when you understand what I say", "Es interesante cuando comprendes lo que digo", null, 6],
+      ["It's interesting when you try to speak Spanish", "Es interesante cuando intentas hablar español", null, 6],
+      ["It's very interesting when you learn new things", "Es muy interesante cuando aprendes cosas nuevas", null, 7]
+    ]
+  },
+
+  "S0058L03": {
+    "lego": ["when you understand", "cuando comprendes"],
+    "type": "M",
+    "practice_phrases": [
+      ["when you understand", "cuando comprendes", null, 1],
+      ["It's interesting when you understand", "Es interesante cuando comprendes", null, 2],
+      ["when you understand words", "cuando comprendes palabras", null, 3],
+      ["It's good when you understand", "Es bueno cuando comprendes", null, 3],
+      ["when you understand what I say", "cuando comprendes lo que digo", null, 4],
+      ["It's interesting when you understand Spanish", "Es interesante cuando comprendes español", null, 4],
+      ["when you understand enough to speak", "cuando comprendes suficiente para hablar", null, 5],
+      ["It's very good when you understand everything", "Es muy bueno cuando comprendes todo", null, 5],
+      ["It's interesting when you understand new words", "Es interesante cuando comprendes nuevas palabras", null, 6],
+      ["It's very interesting when you understand what I want to say", "Es muy interesante cuando comprendes lo que quiero decir", null, 8]
+    ]
+  },
+
+  "S0058L04": {
+    "lego": ["enough words", "suficientes palabras"],
+    "type": "M",
+    "practice_phrases": [
+      ["enough words", "suficientes palabras", null, 1],
+      ["You understand enough words", "Comprendes suficientes palabras", null, 2],
+      ["when you understand enough words", "cuando comprendes suficientes palabras", null, 3],
+      ["You know enough words to speak", "Sabes suficientes palabras para hablar", null, 4],
+      ["It's interesting when you know enough words", "Es interesante cuando sabes suficientes palabras", null, 4],
+      ["when you understand enough words to practice", "cuando comprendes suficientes palabras para practicar", null, 5],
+      ["You learn enough words every day", "Aprendes suficientes palabras cada día", null, 5],
+      ["It's good when you understand enough words", "Es bueno cuando comprendes suficientes palabras", null, 6],
+      ["It's very interesting when you learn enough words", "Es muy interesante cuando aprendes suficientes palabras", null, 6],
+      ["It's interesting when you understand enough words.", "Es interesante cuando comprendes suficientes palabras.", null, 7]
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0034",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "Él no quiere estar silencioso cuando otras personas están aquí.",
+    "target": "He doesn't want to be quiet when other people are here."
+  },
+  "legos": {
+    "S0034L01": {
+      "lego": ["he","él"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0034L02": {
+      "lego": ["doesn't want","no quiere"],
+      "type": "M",
+      "current_seed_legos_available": [["he","él"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0034L03": {
+      "lego": ["doesn't want to be","no quiere estar"],
+      "type": "M",
+      "current_seed_legos_available": [["he","él"],["doesn't want","no quiere"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0034L04": {
+      "lego": ["to be quiet","estar silencioso"],
+      "type": "M",
+      "current_seed_legos_available": [["he","él"],["doesn't want","no quiere"],["doesn't want to be","no quiere estar"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0034L06": {
+      "lego": ["other people","otras personas"],
+      "type": "M",
+      "current_seed_legos_available": [["he","él"],["doesn't want","no quiere"],["doesn't want to be","no quiere estar"],["to be quiet","estar silencioso"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["other people","otras personas",null,1],
+        ["he doesn't want other people","él no quiere a otras personas",null,2],
+        ["other people are learning Spanish","otras personas están aprendiendo español",null,1],
+        ["I wanted to ask other people","quería preguntar a otras personas",null,1],
+        ["I like feeling ready when other people are here","me gusta sentir preparado cuando otras personas están aquí",null,1],
+        ["I'm looking forward to speaking with other people","estoy deseando hablar con otras personas",null,1],
+        ["it's useful to speak with other people","es útil hablar con otras personas",null,1],
+        ["he doesn't want to be quiet near other people","él no quiere estar silencioso cerca de otras personas",null,3],
+        ["I don't like taking too much time with other people","no me gusta tomar demasiado tiempo con otras personas",null,1],
+        ["he doesn't want to speak when other people are here","él no quiere hablar cuando otras personas están aquí",null,2]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 8,
+        "quite_short_3": 1,
+        "longer_4_5": 0,
+        "long_6_plus": 1
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0034L07": {
+      "lego": ["are here","están aquí"],
+      "type": "M",
+      "current_seed_legos_available": [["he","él"],["doesn't want","no quiere"],["doesn't want to be","no quiere estar"],["to be quiet","estar silencioso"],["other people","otras personas"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["are here","están aquí",null,1],
+        ["they are here","están aquí",null,1],
+        ["other people are here","otras personas están aquí",null,2],
+        ["are you going to be here","vas a estar aquí",null,1],
+        ["I wanted to be here","quería estar aquí",null,1],
+        ["he doesn't want to be here","él no quiere estar aquí",null,2],
+        ["I'm looking forward to being here","estoy deseando estar aquí",null,1],
+        ["it's useful to speak when other people are here","es útil hablar cuando otras personas están aquí",null,2],
+        ["I don't like feeling nearly ready when they are here","no me gusta sentir casi preparado cuando están aquí",null,1],
+        ["he doesn't want to be quiet when other people are here","él no quiere estar silencioso cuando otras personas están aquí",null,4]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 7,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 1
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0034L08": {
+      "lego": ["when other people are here","cuando otras personas están aquí"],
+      "type": "M",
+      "current_seed_legos_available": [["he","él"],["doesn't want","no quiere"],["doesn't want to be","no quiere estar"],["to be quiet","estar silencioso"],["other people","otras personas"],["are here","están aquí"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["when other people are here","cuando otras personas están aquí",null,1],
+        ["I wanted to speak when other people are here","quería hablar cuando otras personas están aquí",null,1],
+        ["I'm going to start when other people are here","voy a comenzar cuando otras personas están aquí",null,1],
+        ["I like feeling ready when other people are here","me gusta sentir preparado cuando otras personas están aquí",null,1],
+        ["it's useful to speak when other people are here","es útil hablar cuando otras personas están aquí",null,1],
+        ["I'm looking forward to speaking when other people are here","estoy deseando hablar cuando otras personas están aquí",null,1],
+        ["he doesn't want to speak when other people are here","él no quiere hablar cuando otras personas están aquí",null,2],
+        ["he doesn't want to be quiet when other people are here","él no quiere estar silencioso cuando otras personas están aquí",null,4],
+        ["I don't like taking too much time to respond when other people are here","no me gusta tomar demasiado tiempo para responder cuando otras personas están aquí",null,1],
+        ["he doesn't want to be quiet when other people are here","él no quiere estar silencioso cuando otras personas están aquí",null,6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 7,
+        "quite_short_3": 0,
+        "longer_4_5": 1,
+        "long_6_plus": 2
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+    }
+  }
+}

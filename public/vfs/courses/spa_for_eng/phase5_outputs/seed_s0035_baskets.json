@@ -1,0 +1,125 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0035",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "Ella no quiere leer nada esta tarde.",
+    "target": "She doesn't want to read anything this afternoon."
+  },
+  "legos": {
+    "S0035L01": {
+      "lego": ["she","ella"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0035L03": {
+      "lego": ["doesn't want to read","no quiere leer"],
+      "type": "M",
+      "current_seed_legos_available": [["she","ella"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0035L04": {
+      "lego": ["to read","leer"],
+      "type": "A",
+      "current_seed_legos_available": [["she","ella"],["doesn't want to read","no quiere leer"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0035L05": {
+      "lego": ["to read anything","leer nada"],
+      "type": "M",
+      "current_seed_legos_available": [["she","ella"],["doesn't want to read","no quiere leer"],["to read","leer"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to read anything","leer nada",null,1],
+        ["she doesn't want to read anything","ella no quiere leer nada",null,2],
+        ["I don't want to read anything","no quiero leer nada",null,1],
+        ["he doesn't want to read anything","él no quiere leer nada",null,1],
+        ["I'm not going to be able to read anything","no voy a poder leer nada",null,1],
+        ["are you going to read anything","vas a leer algo",null,1],
+        ["I wanted to read anything yesterday","quería leer algo ayer",null,1],
+        ["she doesn't want to read anything this afternoon","ella no quiere leer nada esta tarde",null,2],
+        ["I don't like feeling as if I'm nearly ready to read anything","no me gusta sentir como si estuviera casi preparado para leer nada",null,1],
+        ["it's useful to start being able to read anything as soon as you can","es útil comenzar a poder leer nada tan pronto como puedas",null,1]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 8,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 2
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0035L06": {
+      "lego": ["anything","nada"],
+      "type": "A",
+      "current_seed_legos_available": [["she","ella"],["doesn't want to read","no quiere leer"],["to read","leer"],["to read anything","leer nada"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Anything", "Nada", null, 1],
+        ["To read anything", "Leer nada", null, 2],
+        ["She doesn't want anything", "Ella no quiere nada", null, 3],
+        ["He doesn't want anything", "Él no quiere nada", null, 3],
+        ["She doesn't want to read anything", "Ella no quiere leer nada", null, 4],
+        ["He doesn't want to show me anything", "Él no quiere mostrarme nada", null, 4],
+        ["She doesn't want to speak with me about anything", "Ella no quiere hablar conmigo de nada", null, 5],
+        ["I didn't want to ask you anything yesterday", "No quería preguntarte nada ayer", null, 5],
+        ["I don't want to speak about anything when other people are here", "No quiero hablar de nada cuando otras personas están aquí", null, 6],
+        ["She doesn't want to read anything tonight", "Ella no quiere leer nada esta noche", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0035L07": {
+      "lego": ["this afternoon","esta tarde"],
+      "type": "M",
+      "current_seed_legos_available": [["she","ella"],["doesn't want to read","no quiere leer"],["to read","leer"],["to read anything","leer nada"],["anything","nada"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["This afternoon", "Esta tarde", null, 1],
+        ["To read this afternoon", "Leer esta tarde", null, 2],
+        ["I wanted to speak with you this afternoon", "Quería hablar contigo esta tarde", null, 3],
+        ["Did you want to show me something this afternoon?", "¿Querías mostrarme algo esta tarde?", null, 3],
+        ["She doesn't want to read this afternoon", "Ella no quiere leer esta tarde", null, 4],
+        ["I'm looking forward to speaking better this afternoon", "Estoy deseando hablar mejor esta tarde", null, 4],
+        ["Are you going to help me this afternoon before I have to go?", "¿Vas a ayudarme esta tarde antes de que tenga que ir?", null, 5],
+        ["I don't like taking too much time to answer this afternoon", "No me gusta tomar demasiado tiempo para responder esta tarde", null, 5],
+        ["He doesn't want to be quiet this afternoon when other people are here", "Él no quiere estar silencioso esta tarde cuando otras personas están aquí", null, 6],
+        ["She doesn't want to read anything this afternoon", "Ella no quiere leer nada esta tarde", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "components": [[null,null],[null,null]]
+    }
+  }
+}

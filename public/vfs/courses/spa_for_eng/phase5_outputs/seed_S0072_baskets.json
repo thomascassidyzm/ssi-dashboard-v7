@@ -1,0 +1,77 @@
+{
+  "version": "phase5_v1.0",
+  "seed_id": "S0072",
+  "course": "spa_for_eng",
+  "seed_pair": {
+    "known": "I think that you're doing very well.",
+    "target": "Pienso que estás haciendo muy bien"
+  },
+
+  "S0072L01": {
+    "lego": ["I think that you're", "Pienso que estás"],
+    "type": "M",
+    "practice_phrases": [
+      ["I think that you're", "Pienso que estás", null, 1],
+      ["I think that you're learning", "Pienso que estás aprendiendo", null, 2],
+      ["I think that you're doing well", "Pienso que estás haciéndolo bien", null, 3],
+      ["I think that you're trying very hard", "Pienso que estás intentando muy duro", null, 3],
+      ["I think that you're speaking Spanish better now", "Pienso que estás hablando español mejor ahora", null, 4],
+      ["I think that you're looking for the right answer", "Pienso que estás buscando la respuesta correcta", null, 4],
+      ["I think that you're doing a very good job", "Pienso que estás haciendo un trabajo muy bueno", null, 5],
+      ["I think that you're learning enough words to speak well", "Pienso que estás aprendiendo suficientes palabras para hablar bien", null, 6],
+      ["I think that you're trying to understand what I'm saying", "Pienso que estás intentando comprender lo que estoy diciendo", null, 6],
+      ["I think that you're not sure if you can help me", "Pienso que estás no seguro si puedes ayudarme", null, 7]
+    ]
+  },
+
+  "S0072L02": {
+    "lego": ["you're doing", "estás haciendo"],
+    "type": "M",
+    "practice_phrases": [
+      ["you're doing", "estás haciendo", null, 1],
+      ["you're doing well", "estás haciendo bien", null, 2],
+      ["What you're doing", "Lo que estás haciendo", null, 2],
+      ["I think you're doing great", "Pienso estás haciendo genial", null, 3],
+      ["you're doing very well with Spanish", "estás haciendo muy bien con español", null, 4],
+      ["What you're doing is very interesting", "Lo que estás haciendo es muy interesante", null, 4],
+      ["I can see that you're doing your best", "Puedo ver que estás haciendo lo mejor", null, 5],
+      ["you're doing a really good job learning Spanish", "estás haciendo un trabajo realmente bueno aprendiendo español", null, 6],
+      ["I think you're doing better than you realize", "Pienso que estás haciendo mejor de lo que te das cuenta", null, 6],
+      ["you're doing everything you can to help me understand", "estás haciendo todo lo que puedes para ayudarme comprender", null, 7]
+    ]
+  },
+
+  "S0072L03": {
+    "lego": ["very well", "muy bien"],
+    "type": "M",
+    "practice_phrases": [
+      ["very well", "muy bien", null, 1],
+      ["You speak very well", "Hablas muy bien", null, 2],
+      ["doing very well", "haciéndolo muy bien", null, 2],
+      ["I understand you very well", "Te comprendo muy bien", null, 3],
+      ["You're learning Spanish very well", "Estás aprendiendo español muy bien", null, 4],
+      ["I think you're doing very well", "Pienso que estás haciéndolo muy bien", null, 4],
+      ["You speak and understand Spanish very well now", "Hablas y comprendes español muy bien ahora", null, 5],
+      ["I know you're trying very well to learn quickly", "Sé que estás intentando muy bien aprender rápidamente", null, 6],
+      ["You understand what I'm saying very well", "Comprendes lo que estoy diciendo muy bien", null, 6],
+      ["I'm sure that you're speaking very well for a beginner", "Estoy seguro que estás hablando muy bien para un principiante", null, 7]
+    ]
+  },
+
+  "S0072L04": {
+    "lego": ["you're doing very well", "estás haciendo muy bien"],
+    "type": "M",
+    "practice_phrases": [
+      ["you're doing very well", "estás haciendo muy bien", null, 1],
+      ["I think you're doing very well", "Pienso estás haciendo muy bien", null, 2],
+      ["you're doing very well with Spanish", "estás haciendo muy bien con español", null, 3],
+      ["you're doing very well for a beginner", "estás haciendo muy bien para un principiante", null, 3],
+      ["I can see that you're doing very well", "Puedo ver que estás haciendo muy bien", null, 4],
+      ["you're doing very well learning new words every day", "estás haciendo muy bien aprendiendo nuevas palabras cada día", null, 4],
+      ["I'm sure you're doing very well with your practice", "Estoy seguro estás haciendo muy bien con tu práctica", null, 5],
+      ["you're doing very well even when it's not easy", "estás haciendo muy bien incluso cuando no es fácil", null, 6],
+      ["I really think you're doing very well at speaking Spanish", "Realmente pienso estás haciendo muy bien hablando español", null, 6],
+      ["I think that you're doing very well.", "Pienso que estás haciendo muy bien.", null, 7]
+    ]
+  }
+}

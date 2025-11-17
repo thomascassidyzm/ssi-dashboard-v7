@@ -1,0 +1,78 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0033",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "¿Cuánto tiempo llevas aprendiendo español?",
+    "target": "How long have you been learning Spanish?"
+  },
+  "legos": {
+    "S0033L01": {
+      "lego": ["how long","cuánto tiempo"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0033L02": {
+      "lego": ["how long have you been","cuánto tiempo llevas"],
+      "type": "M",
+      "current_seed_legos_available": [["how long","cuánto tiempo"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0033L03": {
+      "lego": ["have you been learning","llevas aprendiendo"],
+      "type": "M",
+      "current_seed_legos_available": [["how long","cuánto tiempo"],["how long have you been","cuánto tiempo llevas"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0033L04": {
+      "lego": ["learning Spanish","aprendiendo español"],
+      "type": "M",
+      "current_seed_legos_available": [["how long","cuánto tiempo"],["how long have you been","cuánto tiempo llevas"],["have you been learning","llevas aprendiendo"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["learning Spanish","aprendiendo español",null,1],
+        ["I'm learning Spanish","estoy aprendiendo español",null,1],
+        ["how long learning Spanish","cuánto tiempo aprendiendo español",null,2],
+        ["have you been learning Spanish","llevas aprendiendo español",null,2],
+        ["I wanted to start learning Spanish","quería comenzar a aprender español",null,1],
+        ["how long have you been learning Spanish","cuánto tiempo llevas aprendiendo español",null,3],
+        ["I'm looking forward to learning Spanish better","estoy deseando aprender español mejor",null,1],
+        ["it's useful to start learning Spanish","es útil comenzar a aprender español",null,1],
+        ["I don't like taking too much time learning Spanish","no me gusta tomar demasiado tiempo aprendiendo español",null,2],
+        ["how long have you been learning Spanish","cuánto tiempo llevas aprendiendo español",null,4]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 1,
+        "longer_4_5": 1,
+        "long_6_plus": 4
+      },
+      "components": [[null,null],[null,null]]
+    }
+  }
+}

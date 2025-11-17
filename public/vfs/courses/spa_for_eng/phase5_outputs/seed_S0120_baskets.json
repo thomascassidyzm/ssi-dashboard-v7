@@ -1,0 +1,35 @@
+{
+  "legos": {
+    "S0120L03": {
+      "lego": ["like to go", "guste ir"],
+      "type": "A",
+      "current_seed_legos_available": [["it's interesting", "es interesante"], ["that you like", "que te guste"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Like to go", "Guste ir", null, 1],
+        ["You like to go", "Te guste ir", null, 2],
+        ["That you like to go", "Que te guste ir", null, 3],
+        ["It's interesting that you like to go", "Es interesante que te guste ir", null, 3],
+        ["That you like to go with friends", "Que te guste ir con amigos", null, 4],
+        ["It's interesting that you like to go today", "Es interesante que te guste ir hoy", null, 4],
+        ["It's interesting that you like to go to the pub", "Es interesante que te guste ir al pub", null, 5],
+        ["That you like to go when we finish", "Que te guste ir cuando terminemos", null, 5],
+        ["It's very interesting that you like to go", "Es muy interesante que te guste ir", null, 5],
+        ["It's very interesting that you like to go with friends", "Es muy interesante que te guste ir con amigos", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0120L03",
+        "seed_context": {
+          "known": "Es interesante que te guste ir en autobús.",
+          "target": "It's interesting that you like to go by bus."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "legos": {
+    "S0118L01": {
+      "lego": ["I feel better", "Me siento mejor"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I feel better", "Me siento mejor", null, 1],
+        ["I feel better today", "Me siento mejor hoy", null, 2],
+        ["I don't feel better", "No me siento mejor", null, 3],
+        ["I definitely feel better", "Definitivamente me siento mejor", null, 3],
+        ["I feel better than yesterday", "Me siento mejor que ayer", null, 4],
+        ["I feel better when we learn", "Me siento mejor cuando aprendemos", null, 4],
+        ["I feel better today than yesterday", "Me siento mejor hoy que ayer", null, 5],
+        ["I don't feel better than yesterday", "No me siento mejor que ayer", null, 5],
+        ["I definitely feel better when we talk", "Definitivamente me siento mejor cuando hablamos", null, 5],
+        ["I definitely feel better than the last time", "Definitivamente me siento mejor que la última vez", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0118L01",
+        "seed_context": {
+          "known": "Me siento mejor que como me sentía cuando estábamos en el pub.",
+          "target": "I feel better than I felt when we were in the pub."
+        }
+      },
+      "components": [["me", "myself"], ["siento", "I feel"]]
+    }
+  }
+}

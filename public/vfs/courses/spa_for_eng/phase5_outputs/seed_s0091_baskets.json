@@ -1,0 +1,43 @@
+{
+  "legos": {
+    "S0091L04": {
+      "lego": ["enough to answer", "rápido para responder"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0091L01",
+          "known": "it's difficult",
+          "target": "es difícil",
+          "type": "M"
+        },
+        {
+          "id": "S0091L03",
+          "known": "quickly enough",
+          "target": "lo suficientemente rápido",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["fast enough to answer", "rápido para responder", null, 1],
+        ["ready to answer", "preparado para responder", null, 1],
+        ["It's difficult to answer", "Es difícil para responder", null, 2],
+        ["fast enough to answer now", "rápido para responder ahora", null, 2],
+        ["quickly enough to answer well", "lo suficientemente rápido para responder bien", null, 3],
+        ["It's difficult, but fast enough to answer", "Es difícil, pero rápido para responder", null, 3],
+        ["I'm not fast enough to answer in time", "No soy rápido para responder a tiempo", null, 4],
+        ["It's difficult to think quickly enough to answer", "Es difícil pensar lo suficientemente rápido para responder", null, 5],
+        ["You speak fast, I'm not quick enough to answer", "Hablas rápido, no soy lo suficientemente rápido para responder", null, 5],
+        ["It's difficult to be fast enough to answer when you speak quickly", "Es difícil ser rápido para responder cuando hablas rápidamente", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [[null, null], [null, null]]
+    }
+  }
+}

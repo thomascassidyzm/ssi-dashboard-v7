@@ -1,0 +1,77 @@
+{
+  "version": "phase5_v1.0",
+  "seed_id": "S0064",
+  "course": "spa_for_eng",
+  "seed_pair": {
+    "known": "Learning Spanish isn't easy but it is fun.",
+    "target": "Aprender español no es fácil pero es divertido."
+  },
+
+  "S0064L01": {
+    "lego": ["Learning Spanish isn't", "Aprender español no"],
+    "type": "M",
+    "practice_phrases": [
+      ["Learning Spanish isn't", "Aprender español no", null, 1],
+      ["Learning Spanish isn't easy", "Aprender español no es fácil", null, 2],
+      ["Learning Spanish isn't like English", "Aprender español no es como inglés", null, 3],
+      ["Learning Spanish isn't what I expected", "Aprender español no es lo que esperaba", null, 3],
+      ["Learning Spanish isn't very difficult for me", "Aprender español no es muy difícil para mí", null, 4],
+      ["Learning Spanish isn't something I can do quickly", "Aprender español no es algo que puedo hacer rápidamente", null, 4],
+      ["Learning Spanish isn't always fun but I enjoy it", "Aprender español no es siempre divertido pero lo disfruto", null, 5],
+      ["Learning Spanish isn't as hard as I thought", "Aprender español no es tan difícil como pensaba", null, 6],
+      ["Learning Spanish isn't easy when you don't practice every day", "Aprender español no es fácil cuando no practicas cada día", null, 6],
+      ["Learning Spanish isn't impossible if you try to speak often", "Aprender español no es imposible si intentas hablar a menudo", null, 7]
+    ]
+  },
+
+  "S0064L02": {
+    "lego": ["isn't easy", "no es fácil"],
+    "type": "M",
+    "practice_phrases": [
+      ["isn't easy", "no es fácil", null, 1],
+      ["Learning Spanish isn't easy", "Aprender español no es fácil", null, 2],
+      ["This isn't easy", "Esto no es fácil", null, 2],
+      ["Speaking Spanish isn't easy for me", "Hablar español no es fácil para mí", null, 3],
+      ["It isn't easy to remember everything", "No es fácil recordar todo", null, 4],
+      ["Understanding new words isn't easy at first", "Comprender nuevas palabras no es fácil al principio", null, 4],
+      ["Learning a new language isn't easy but it's interesting", "Aprender un nuevo idioma no es fácil pero es interesante", null, 5],
+      ["It isn't easy when you don't know enough words", "No es fácil cuando no sabes suficientes palabras", null, 6],
+      ["Trying to speak Spanish isn't easy without practice", "Intentar hablar español no es fácil sin práctica", null, 6],
+      ["I know learning Spanish isn't easy but you're doing well", "Sé que aprender español no es fácil pero estás haciéndolo bien", null, 7]
+    ]
+  },
+
+  "S0064L03": {
+    "lego": ["but", "pero"],
+    "type": "A",
+    "practice_phrases": [
+      ["but", "pero", null, 1],
+      ["I want to speak but", "Quiero hablar pero", null, 2],
+      ["difficult but fun", "difícil pero divertido", null, 2],
+      ["It's not easy but I try", "No es fácil pero intento", null, 3],
+      ["I understand some words but not all", "Comprendo algunas palabras pero no todas", null, 4],
+      ["Learning Spanish is hard but very interesting", "Aprender español es difícil pero muy interesante", null, 4],
+      ["I want to help you but I'm not sure how", "Quiero ayudarte pero no estoy seguro cómo", null, 5],
+      ["I know it's difficult but you can do it", "Sé que es difícil pero puedes hacerlo", null, 6],
+      ["Spanish isn't easy but I enjoy practicing every day", "Español no es fácil pero disfruto practicar cada día", null, 6],
+      ["I'm trying to learn quickly but I need more time", "Estoy intentando aprender rápidamente pero necesito más tiempo", null, 7]
+    ]
+  },
+
+  "S0064L04": {
+    "lego": ["it is fun", "es divertido"],
+    "type": "M",
+    "practice_phrases": [
+      ["it is fun", "es divertido", null, 1],
+      ["Learning Spanish is fun", "Aprender español es divertido", null, 2],
+      ["but it is fun", "pero es divertido", null, 2],
+      ["Speaking with you is fun", "Hablar contigo es divertido", null, 3],
+      ["It is fun to practice every day", "Es divertido practicar cada día", null, 4],
+      ["Learning new words is fun for me", "Aprender nuevas palabras es divertido para mí", null, 4],
+      ["It is fun when you understand what people say", "Es divertido cuando comprendes lo que la gente dice", null, 5],
+      ["I think it is fun to try to speak Spanish", "Pienso que es divertido intentar hablar español", null, 6],
+      ["It isn't easy but it is fun to learn", "No es fácil pero es divertido aprender", null, 6],
+      ["Learning Spanish isn't easy but it is fun.", "Aprender español no es fácil pero es divertido.", null, 7]
+    ]
+  }
+}

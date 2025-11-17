@@ -1,0 +1,36 @@
+{
+  "legos": {
+    "S0130L01": {
+      "lego": ["That was a", "Eso fue una"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["That was a", "Eso fue una", null, 1],
+        ["That was a conversation", "Eso fue una conversación", null, 2],
+        ["That was a good idea", "Eso fue una buena idea", null, 3],
+        ["I think that was a surprise", "Pienso que eso fue una sorpresa", null, 3],
+        ["That was a very good idea", "Eso fue una muy buena idea", null, 4],
+        ["I believe that was a conversation", "Creo que eso fue una conversación", null, 4],
+        ["I'm so happy that was a good idea", "Estoy tan feliz de que eso fue una buena idea", null, 5],
+        ["I think that was a very good conversation", "Pienso que eso fue una conversación muy buena", null, 5],
+        ["That was a very interesting idea you had", "Eso fue una idea muy interesante que tuviste", null, 5],
+        ["I believe that was a surprise because it was interesting", "Creo que eso fue una sorpresa porque era interesante", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0130L01",
+        "seed_context": {
+          "known": "Eso fue una sorpresa, porque es mi amigo.",
+          "target": "That was a surprise, because he's my friend."
+        }
+      },
+      "components": [["eso", "that"], ["fue", "was"]]
+    }
+  }
+}
