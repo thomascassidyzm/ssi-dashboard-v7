@@ -1,0 +1,737 @@
+{
+  "S0301L01": {
+    "lego": [
+      "he said",
+      "他说"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "He said",
+        "他说",
+        null,
+        1
+      ],
+      [
+        "She said",
+        "她说",
+        null,
+        1
+      ],
+      [
+        "He said yesterday",
+        "他昨天说",
+        null,
+        2
+      ],
+      [
+        "She said yesterday",
+        "她昨天说",
+        null,
+        2
+      ],
+      [
+        "He said he wants",
+        "他说他想",
+        null,
+        3
+      ],
+      [
+        "He said he knows",
+        "他说他知道",
+        null,
+        3
+      ],
+      [
+        "He said he wants to learn",
+        "他说他想学会",
+        null,
+        4
+      ],
+      [
+        "He said he's going to come",
+        "他说他就要来",
+        null,
+        4
+      ],
+      [
+        "He said he wants to meet you",
+        "他说他想认识你",
+        null,
+        5
+      ],
+      [
+        "He said he wanted to ask you something",
+        "他说他想问你一些事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "说",
+        "said"
+      ]
+    ]
+  },
+  "S0301L02": {
+    "lego": [
+      "he said that he wants",
+      "他说他想"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he said",
+        "他说"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "He said that he wants",
+        "他说他想",
+        null,
+        1
+      ],
+      [
+        "She said that she wants",
+        "她说她想",
+        null,
+        1
+      ],
+      [
+        "He said that he wants to learn",
+        "他说他想学会",
+        null,
+        2
+      ],
+      [
+        "He said that he wants to come",
+        "他说他想来",
+        null,
+        2
+      ],
+      [
+        "He said that he wants to ask you",
+        "他说他想问你",
+        null,
+        3
+      ],
+      [
+        "She said that she wants to meet you",
+        "她说她想认识你",
+        null,
+        3
+      ],
+      [
+        "He said that he wants to speak Chinese",
+        "他说他想说中文",
+        null,
+        4
+      ],
+      [
+        "He said that he wants to learn Chinese",
+        "他说他想学会中文",
+        null,
+        4
+      ],
+      [
+        "He said that he wants to meet you today",
+        "他说他今天想认识你",
+        null,
+        5
+      ],
+      [
+        "He said that he wants to ask you something",
+        "他说他想问你一些事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "说",
+        "said"
+      ],
+      [
+        "他",
+        "he"
+      ],
+      [
+        "想",
+        "wants"
+      ]
+    ]
+  },
+  "S0301L03": {
+    "lego": [
+      "he wants",
+      "他想"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he said",
+        "他说"
+      ],
+      [
+        "he said that he wants",
+        "他说他想"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "He wants",
+        "他想",
+        null,
+        1
+      ],
+      [
+        "She wants",
+        "她想",
+        null,
+        1
+      ],
+      [
+        "He wants to learn",
+        "他想学会",
+        null,
+        2
+      ],
+      [
+        "He wants to come",
+        "他想来",
+        null,
+        2
+      ],
+      [
+        "He wants to speak Chinese",
+        "他想说中文",
+        null,
+        3
+      ],
+      [
+        "She wants to meet you",
+        "她想认识你",
+        null,
+        3
+      ],
+      [
+        "He wants to learn Chinese today",
+        "他今天想学会中文",
+        null,
+        4
+      ],
+      [
+        "He wants to ask you something",
+        "他想问你一些事情",
+        null,
+        4
+      ],
+      [
+        "He wants to be able to speak Chinese",
+        "他想能说中文",
+        null,
+        5
+      ],
+      [
+        "He wants to meet people who speak Chinese",
+        "他想认识会说中文的人",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "想",
+        "wants"
+      ]
+    ]
+  },
+  "S0301L04": {
+    "lego": [
+      "he wants to show you",
+      "他想给你看"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he said",
+        "他说"
+      ],
+      [
+        "he said that he wants",
+        "他说他想"
+      ],
+      [
+        "he wants",
+        "他想"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "He wants to show you",
+        "他想给你看",
+        null,
+        1
+      ],
+      [
+        "I want to show you",
+        "我想给你看",
+        null,
+        1
+      ],
+      [
+        "He wants to show me",
+        "他想给我看",
+        null,
+        2
+      ],
+      [
+        "She wants to show you",
+        "她想给你看",
+        null,
+        2
+      ],
+      [
+        "He said he wants to show you",
+        "他说他想给你看",
+        null,
+        3
+      ],
+      [
+        "He wants to show you today",
+        "他今天想给你看",
+        null,
+        3
+      ],
+      [
+        "He wants to show you his book",
+        "他想给你看他的书",
+        null,
+        4
+      ],
+      [
+        "I want to show you something",
+        "我想给你看一些东西",
+        null,
+        4
+      ],
+      [
+        "He wants to show you his Chinese book",
+        "他想给你看他的中文书",
+        null,
+        5
+      ],
+      [
+        "He said he wants to show you something today",
+        "他说他今天想给你看一些东西",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "想",
+        "wants"
+      ],
+      [
+        "给",
+        "to"
+      ],
+      [
+        "你",
+        "you"
+      ],
+      [
+        "看",
+        "show"
+      ]
+    ]
+  },
+  "S0301L05": {
+    "lego": [
+      "show you",
+      "给你看"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he said",
+        "他说"
+      ],
+      [
+        "he said that he wants",
+        "他说他想"
+      ],
+      [
+        "he wants",
+        "他想"
+      ],
+      [
+        "he wants to show you",
+        "他想给你看"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Show you",
+        "给你看",
+        null,
+        1
+      ],
+      [
+        "Show me",
+        "给我看",
+        null,
+        1
+      ],
+      [
+        "I want to show you",
+        "我想给你看",
+        null,
+        2
+      ],
+      [
+        "He wants to show you",
+        "他想给你看",
+        null,
+        2
+      ],
+      [
+        "He wants to show you today",
+        "他今天想给你看",
+        null,
+        3
+      ],
+      [
+        "I'm going to show you",
+        "我就要给你看",
+        null,
+        3
+      ],
+      [
+        "He wants to show you his book",
+        "他想给你看他的书",
+        null,
+        4
+      ],
+      [
+        "I want to show you something",
+        "我想给你看一些东西",
+        null,
+        4
+      ],
+      [
+        "He said he wants to show you",
+        "他说他想给你看",
+        null,
+        5
+      ],
+      [
+        "I want to show you how to speak Chinese",
+        "我想给你看怎么说中文",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "给",
+        "give/to"
+      ],
+      [
+        "你",
+        "you"
+      ],
+      [
+        "看",
+        "look/show"
+      ]
+    ]
+  },
+  "S0301L06": {
+    "lego": [
+      "show you something",
+      "给你看点东西"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he said",
+        "他说"
+      ],
+      [
+        "he said that he wants",
+        "他说他想"
+      ],
+      [
+        "he wants",
+        "他想"
+      ],
+      [
+        "he wants to show you",
+        "他想给你看"
+      ],
+      [
+        "show you",
+        "给你看"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Show you something",
+        "给你看点东西",
+        null,
+        2
+      ],
+      [
+        "Show me something",
+        "给我看点东西",
+        null,
+        2
+      ],
+      [
+        "I want to show you something",
+        "我想给你看点东西",
+        null,
+        3
+      ],
+      [
+        "He wants to show you something",
+        "他想给你看点东西",
+        null,
+        3
+      ],
+      [
+        "He wants to show you something today",
+        "他今天想给你看点东西",
+        null,
+        4
+      ],
+      [
+        "I'm going to show you something",
+        "我就要给你看点东西",
+        null,
+        4
+      ],
+      [
+        "He said he wants to show you something",
+        "他说他想给你看点东西",
+        null,
+        5
+      ],
+      [
+        "I want to show you something new",
+        "我想给你看点新东西",
+        null,
+        5
+      ],
+      [
+        "He wants to show you something about Chinese",
+        "他想给你看点中文东西",
+        null,
+        6
+      ],
+      [
+        "I'm going to show you something you can learn",
+        "我就要给你看点你能学的东西",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "给",
+        "give/to"
+      ],
+      [
+        "你",
+        "you"
+      ],
+      [
+        "看",
+        "look/show"
+      ],
+      [
+        "点",
+        "a bit/some"
+      ],
+      [
+        "东西",
+        "thing"
+      ]
+    ]
+  },
+  "S0301L07": {
+    "lego": [
+      "something",
+      "点东西"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "he said",
+        "他说"
+      ],
+      [
+        "he said that he wants",
+        "他说他想"
+      ],
+      [
+        "he wants",
+        "他想"
+      ],
+      [
+        "he wants to show you",
+        "他想给你看"
+      ],
+      [
+        "show you",
+        "给你看"
+      ],
+      [
+        "show you something",
+        "给你看点东西"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "I want something",
+        "我想点东西",
+        null,
+        2
+      ],
+      [
+        "I'm learning something",
+        "我在学点东西",
+        null,
+        2
+      ],
+      [
+        "I want to learn something",
+        "我想学点东西",
+        null,
+        3
+      ],
+      [
+        "I want to show you something",
+        "我想给你看点东西",
+        null,
+        3
+      ],
+      [
+        "He wants to show you something",
+        "他想给你看点东西",
+        null,
+        4
+      ],
+      [
+        "I'm going to learn something new",
+        "我就要学点新东西",
+        null,
+        4
+      ],
+      [
+        "I want to ask you something today",
+        "我今天想问你点东西",
+        null,
+        5
+      ],
+      [
+        "He said he wants to show you something",
+        "他说他想给你看点东西",
+        null,
+        5
+      ],
+      [
+        "I'm trying to learn something new about Chinese",
+        "我在试着学点中文新东西",
+        null,
+        6
+      ],
+      [
+        "He said that he wants to show you something.",
+        "他说他想给你看点东西。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "点",
+        "a bit/some"
+      ],
+      [
+        "东西",
+        "thing"
+      ]
+    ]
+  }
+}
