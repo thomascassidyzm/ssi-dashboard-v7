@@ -1,0 +1,25 @@
+{
+  "legos": {
+    "S0595L01": {
+      "lego": ["I need to", "我需要"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I need to", "我需要", null, 1],
+        ["I need to now", "我现在需要", null, 2],
+        ["I need to leave home", "我需要离开家", null, 3],
+        ["I need to see the mountains", "我需要看到山", null, 4],
+        ["I need to share", "我需要分享", null, 2],
+        ["I need to leave the station now", "我现在需要离开车站", null, 5],
+        ["I need to see my sister", "我需要看到我妹妹", null, 5],
+        ["I need to share my toys", "我需要分享我的玩具", null, 5],
+        ["I need to grow up and leave home", "我需要长大离开家", null, 6],
+        ["I need to see the last bus", "我需要看到最后一班公交车", null, 6]
+      ],
+      "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+      "target_phrase_count": 10,
+      "components": [["我", "I"], ["需要", "need to"]]
+    }
+  }
+}
