@@ -1,0 +1,585 @@
+{
+  "legos": {
+    "S0203L02": {
+      "lego": [
+        "if I asked you to help me",
+        "如果我要求你帮助我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "If I asked you.",
+          "如果我要求你。"
+        ],
+        [
+          "If I wanted you to work.",
+          "如果我想你工作。"
+        ],
+        [
+          "If I asked you to help me today.",
+          "如果我要求你今天帮助我。"
+        ],
+        [
+          "If I asked you to help me finish.",
+          "如果我要求你帮助我完成。"
+        ],
+        [
+          "If I asked you to help me find it.",
+          "如果我要求你帮助我找它。"
+        ],
+        [
+          "If I asked you to help me answer the question.",
+          "如果我要求你帮助我回答这个问题。"
+        ],
+        [
+          "If I asked you to help me finish everything in time.",
+          "如果我要求你帮助我及时完成所有事情。"
+        ],
+        [
+          "If I asked you to help me make sure everything was finished.",
+          "如果我要求你帮助我确保所有事情都完成了。"
+        ],
+        [
+          "If I asked you to help me find the money on the table.",
+          "如果我要求你帮助我找在桌子上的钱。"
+        ],
+        [
+          "If I asked you to help me answer the question they were asking.",
+          "如果我要求你帮助我回答他们在问的这个问题。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0203L02",
+        "seed_context": {
+          "known": "What would you do if I asked you to help me?",
+          "target": "如果我要求你帮助我，你会做什么？"
+        }
+      },
+      "components": [
+        [
+          "如果",
+          "if"
+        ],
+        [
+          "我",
+          "I"
+        ],
+        [
+          "要求",
+          "asked"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "帮助",
+          "to help"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0203L03": {
+      "lego": [
+        "asked you to help me",
+        "要求你帮助我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0203L02",
+          "known": "if I asked you to help me",
+          "target": "如果我要求你帮助我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I asked you to help me.",
+          "我要求你帮助我。"
+        ],
+        [
+          "They asked you to help me.",
+          "他们要求你帮助我。"
+        ],
+        [
+          "I asked you to help me today.",
+          "我今天要求你帮助我。"
+        ],
+        [
+          "If I asked you to help me.",
+          "如果我要求你帮助我。"
+        ],
+        [
+          "They asked you to help me finish everything.",
+          "他们要求你帮助我完成所有事情。"
+        ],
+        [
+          "I asked you to help me answer the question.",
+          "我要求你帮助我回答这个问题。"
+        ],
+        [
+          "My son asked you to help me with the work.",
+          "我的儿子要求你帮助我工作。"
+        ],
+        [
+          "They said they asked you to help me finish in time.",
+          "他们说他们要求你帮助我及时完成。"
+        ],
+        [
+          "I wanted to know if I asked you to help me what you would say.",
+          "我想知道如果我要求你帮助我你会说什么。"
+        ],
+        [
+          "If I asked you to help me find the money on the table what would happen.",
+          "如果我要求你帮助我找在桌子上的钱会发生什么。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0203L03",
+        "seed_context": {
+          "known": "What would you do if I asked you to help me?",
+          "target": "如果我要求你帮助我，你会做什么？"
+        }
+      },
+      "components": [
+        [
+          "要求",
+          "asked"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "帮助",
+          "to help"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0203L04": {
+      "lego": [
+        "asked you",
+        "要求你"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0203L02",
+          "known": "if I asked you to help me",
+          "target": "如果我要求你帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L03",
+          "known": "asked you to help me",
+          "target": "要求你帮助我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I asked you.",
+          "我要求你。"
+        ],
+        [
+          "They asked you.",
+          "他们要求你。"
+        ],
+        [
+          "I asked you to work today.",
+          "我要求你今天工作。"
+        ],
+        [
+          "If I asked you to help.",
+          "如果我要求你帮助。"
+        ],
+        [
+          "Nobody asked you to finish everything.",
+          "没有人要求你完成所有事情。"
+        ],
+        [
+          "I asked you to answer the question.",
+          "我要求你回答这个问题。"
+        ],
+        [
+          "My daughter asked you to help with the work.",
+          "我的女儿要求你帮助工作。"
+        ],
+        [
+          "They said they asked you to finish everything in time.",
+          "他们说他们要求你及时完成所有事情。"
+        ],
+        [
+          "I wanted to know if I asked you to help what you would do.",
+          "我想知道如果我要求你帮助你会做什么。"
+        ],
+        [
+          "If I asked you to help me answer the question what would you say.",
+          "如果我要求你帮助我回答这个问题你会说什么。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0203L04",
+        "seed_context": {
+          "known": "What would you do if I asked you to help me?",
+          "target": "如果我要求你帮助我，你会做什么？"
+        }
+      },
+      "components": [
+        [
+          "要求",
+          "asked"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    },
+    "S0203L05": {
+      "lego": [
+        "to help me",
+        "帮助我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0203L02",
+          "known": "if I asked you to help me",
+          "target": "如果我要求你帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L03",
+          "known": "asked you to help me",
+          "target": "要求你帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L04",
+          "known": "asked you",
+          "target": "要求你",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I want you to help me.",
+          "我想你帮助我。"
+        ],
+        [
+          "They want to help me.",
+          "他们想帮助我。"
+        ],
+        [
+          "I asked you to help me today.",
+          "我今天要求你帮助我。"
+        ],
+        [
+          "If I asked you to help me.",
+          "如果我要求你帮助我。"
+        ],
+        [
+          "Nobody wanted to help me finish everything.",
+          "没有人想帮助我完成所有事情。"
+        ],
+        [
+          "I asked my son to help me answer.",
+          "我要求我的儿子帮助我回答。"
+        ],
+        [
+          "My daughter wanted to help me with the work today.",
+          "我的女儿今天想帮助我工作。"
+        ],
+        [
+          "They said they wanted to help me finish everything in time.",
+          "他们说他们想帮助我及时完成所有事情。"
+        ],
+        [
+          "I wanted to know if they would be able to help me find it.",
+          "我想知道他们是否能帮助我找它。"
+        ],
+        [
+          "If I asked you to help me answer the question what would you do.",
+          "如果我要求你帮助我回答这个问题你会做什么。"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0203L05",
+        "seed_context": {
+          "known": "What would you do if I asked you to help me?",
+          "target": "如果我要求你帮助我，你会做什么？"
+        }
+      },
+      "components": [
+        [
+          "帮助",
+          "to help"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0203L06": {
+      "lego": [
+        "what would you do",
+        "你会做什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0203L02",
+          "known": "if I asked you to help me",
+          "target": "如果我要求你帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L03",
+          "known": "asked you to help me",
+          "target": "要求你帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L04",
+          "known": "asked you",
+          "target": "要求你",
+          "type": "M"
+        },
+        {
+          "id": "S0203L05",
+          "known": "to help me",
+          "target": "帮助我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "What would you do?",
+          "你会做什么？"
+        ],
+        [
+          "What would you say?",
+          "你会说什么？"
+        ],
+        [
+          "What would you do if I asked you?",
+          "如果我要求你你会做什么？"
+        ],
+        [
+          "What would you do if I asked?",
+          "如果我要求你会做什么？"
+        ],
+        [
+          "What would you do if I asked you to work?",
+          "如果我要求你工作你会做什么？"
+        ],
+        [
+          "What would you do if I asked you to help me?",
+          "如果我要求你帮助我你会做什么？"
+        ],
+        [
+          "What would you do if I asked you to finish everything today?",
+          "如果我要求你今天完成所有事情你会做什么？"
+        ],
+        [
+          "What would you do if I asked you to help me answer the question?",
+          "如果我要求你帮助我回答这个问题你会做什么？"
+        ],
+        [
+          "What would you do if I asked you to make sure everything was finished in time?",
+          "如果我要求你确保所有事情及时完成你会做什么？"
+        ],
+        [
+          "What would you do if nobody asked you to help me find the money on the table?",
+          "如果没有人要求你帮助我找在桌子上的钱你会做什么？"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0203L06",
+        "seed_context": {
+          "known": "What would you do if I asked you to help me?",
+          "target": "如果我要求你帮助我，你会做什么？"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "会",
+          "would"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0203L07": {
+      "lego": [
+        "would do what",
+        "会做什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0203L02",
+          "known": "if I asked you to help me",
+          "target": "如果我要求你帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L03",
+          "known": "asked you to help me",
+          "target": "要求你帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L04",
+          "known": "asked you",
+          "target": "要求你",
+          "type": "M"
+        },
+        {
+          "id": "S0203L05",
+          "known": "to help me",
+          "target": "帮助我",
+          "type": "M"
+        },
+        {
+          "id": "S0203L06",
+          "known": "what would you do",
+          "target": "你会做什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I would do what?",
+          "我会做什么？"
+        ],
+        [
+          "You would do what?",
+          "你会做什么？"
+        ],
+        [
+          "They wanted to know what I would do.",
+          "他们想知道我会做什么。"
+        ],
+        [
+          "I was sure what I would do.",
+          "我确定我会做什么。"
+        ],
+        [
+          "Nobody knew what they would do if I asked.",
+          "没有人知道如果我要求他们会做什么。"
+        ],
+        [
+          "My son wanted to know what I would do today.",
+          "我的儿子想知道我今天会做什么。"
+        ],
+        [
+          "They asked me what I would do if they asked me to work.",
+          "他们问我如果他们要求我工作我会做什么。"
+        ],
+        [
+          "I wanted to make sure I knew what I would do if they asked me.",
+          "我想确保我知道如果他们要求我我会做什么。"
+        ],
+        [
+          "Nobody was sure what they would do if I asked them to help me finish everything.",
+          "没有人确定如果我要求他们帮助我完成所有事情他们会做什么。"
+        ],
+        [
+          "What would you do if I asked you to help me?",
+          "如果我要求你帮助我，你会做什么？"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0203L07",
+        "seed_context": {
+          "known": "What would you do if I asked you to help me?",
+          "target": "如果我要求你帮助我，你会做什么？"
+        }
+      },
+      "components": [
+        [
+          "会",
+          "would"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  }
+}
