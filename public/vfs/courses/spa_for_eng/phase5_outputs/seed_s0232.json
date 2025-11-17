@@ -1,0 +1,166 @@
+{
+  "seed_id": "S0232",
+  "seed_pair": [
+    "I know an old woman who can remember the answer.",
+    "Conozco a una mujer vieja que puede recordar la respuesta."
+  ],
+  "legos": [
+    {
+      "lego_id": "S0232L01",
+      "type": "M",
+      "target": "conozco a una mujer vieja",
+      "known": "I know an old woman",
+      "new": true,
+      "components": [
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "to/a"
+        ],
+        [
+          "una",
+          "an/a"
+        ],
+        [
+          "mujer",
+          "to woman"
+        ],
+        [
+          "vieja",
+          "old"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0232L02",
+      "type": "A",
+      "target": "vieja que",
+      "known": "woman who",
+      "new": true,
+      "components": [],
+      "baskets": [
+        {
+          "spa": "La mujer vieja que conozco.",
+          "eng": "The old woman who I know."
+        },
+        {
+          "spa": "Una mujer vieja que quiere ayuda.",
+          "eng": "An old woman who wants help."
+        },
+        {
+          "spa": "Conozco a una mujer vieja que está intentando.",
+          "eng": "I know an old woman who is trying."
+        },
+        {
+          "spa": "Ese hombre viejo que va a preguntarte.",
+          "eng": "That old man who is going to ask you."
+        },
+        {
+          "spa": "Conozco a una mujer vieja que acaba de empezar.",
+          "eng": "I know an old woman who has just started."
+        },
+        {
+          "spa": "Una mujer vieja que te ayudaría si pudiera.",
+          "eng": "An old woman who would help you if she could."
+        },
+        {
+          "spa": "Conozco a una mujer vieja que está intentando aprender algo nuevo.",
+          "eng": "I know an old woman who is trying to learn something new."
+        },
+        {
+          "spa": "Ese hombre viejo que acaba de empezar a trabajar contigo.",
+          "eng": "That old man who has just started to work with you."
+        },
+        {
+          "spa": "Conozco a una mujer vieja que quiere practicar el habla.",
+          "eng": "I know an old woman who wants to practise speaking."
+        },
+        {
+          "spa": "Te daría una respuesta si conociera a esa mujer vieja que quería ayuda.",
+          "eng": "I would give you an answer if I knew that old woman who wanted help."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0232L03",
+      "type": "M",
+      "target": "que puede recordar",
+      "known": "who can remember",
+      "new": true,
+      "components": [
+        [
+          "puede",
+          "can"
+        ],
+        [
+          "recordar",
+          "to remember"
+        ]
+      ],
+      "baskets": [
+        {
+          "spa": "Puede recordar algo.",
+          "eng": "He can remember something."
+        },
+        {
+          "spa": "El hombre que puede recordar.",
+          "eng": "The man who can remember."
+        },
+        {
+          "spa": "Conozco a un hombre que puede recordar.",
+          "eng": "I know a man who can remember."
+        },
+        {
+          "spa": "Ese hombre joven que puede recordar la respuesta.",
+          "eng": "That young man who can remember the answer."
+        },
+        {
+          "spa": "Conozco a una mujer que puede recordar algo nuevo.",
+          "eng": "I know a woman who can remember something new."
+        },
+        {
+          "spa": "El hombre viejo que puede recordar va a decirme.",
+          "eng": "The old man who can remember is going to tell me."
+        },
+        {
+          "spa": "Conozco a un hombre joven que puede recordar lo que quiere.",
+          "eng": "I know a young man who can remember what he wants."
+        },
+        {
+          "spa": "Ese hombre está intentando decirme que puede recordar la respuesta.",
+          "eng": "That man is trying to tell me that he can remember the answer."
+        },
+        {
+          "spa": "Te ayudaría si pudiera recordar la respuesta que quieres.",
+          "eng": "I would help you if I could remember the answer that you want."
+        },
+        {
+          "spa": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "eng": "I know an old woman who can remember the answer."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0232L04",
+      "type": "M",
+      "target": "la respuesta",
+      "known": "the answer",
+      "new": false,
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "respuesta",
+          "answer"
+        ]
+      ],
+      "baskets": []
+    }
+  ]
+}

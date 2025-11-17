@@ -1,0 +1,164 @@
+{
+  "seed_id": "S0246",
+  "seed_pair": [
+    "Quería que ella te ayudara pero estaba demasiado ocupada.",
+    "I wanted her to help you but she was too busy."
+  ],
+  "legos": [
+    {
+      "lego_id": "S0246L01",
+      "type": "A",
+      "target": "Quería",
+      "known": "I wanted",
+      "new": true,
+      "components": [],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0246L02",
+      "type": "M",
+      "target": "Quería que ella te ayudara",
+      "known": "I wanted her to help you",
+      "new": true,
+      "components": [
+        [
+          "Quería",
+          "I wanted"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "te",
+          "you"
+        ],
+        [
+          "ayudara",
+          "to help"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0246L03",
+      "type": "M",
+      "target": "que ella te ayudara",
+      "known": "that she help you",
+      "new": true,
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "te",
+          "you"
+        ],
+        [
+          "ayudara",
+          "help"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0246L04",
+      "type": "A",
+      "target": "pero",
+      "known": "but",
+      "new": false,
+      "components": [],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0246L05",
+      "type": "M",
+      "target": "estaba demasiado ocupada",
+      "known": "was too busy",
+      "new": true,
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "demasiado",
+          "too"
+        ],
+        [
+          "ocupada",
+          "busy"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0246L06",
+      "type": "M",
+      "target": "demasiado ocupada",
+      "known": "too busy",
+      "new": true,
+      "components": [
+        [
+          "demasiado",
+          "too"
+        ],
+        [
+          "ocupada",
+          "busy"
+        ]
+      ],
+      "baskets": [
+        {
+          "spa": "Estoy demasiado ocupada.",
+          "eng": "I'm too busy."
+        },
+        {
+          "spa": "Estaba demasiado ocupada.",
+          "eng": "I was too busy."
+        },
+        {
+          "spa": "Quería que ella te ayudara pero estaba demasiado ocupada.",
+          "eng": "I wanted her to help you but she was too busy."
+        },
+        {
+          "spa": "Estaba demasiado ocupada para ayudar.",
+          "eng": "I was too busy to help."
+        },
+        {
+          "spa": "No quiero estar demasiado ocupada en poco tiempo.",
+          "eng": "I don't want to be too busy in a short time."
+        },
+        {
+          "spa": "Ya estaba demasiado ocupada antes del fin de semana.",
+          "eng": "I was already too busy before the weekend."
+        },
+        {
+          "spa": "Estoy contento con cuánto he hecho pero estoy demasiado ocupada.",
+          "eng": "I'm happy with how much I've done but I'm too busy."
+        },
+        {
+          "spa": "Quería decirte que estaba demasiado ocupada para ayudar.",
+          "eng": "I wanted to tell you that I was too busy to help."
+        },
+        {
+          "spa": "Conozco a alguien que está demasiado ocupada en poco tiempo.",
+          "eng": "I know someone who is too busy in a short time."
+        },
+        {
+          "spa": "Iba a intentar ayudar pero estaba demasiado ocupada.",
+          "eng": "I was going to try to help but I was too busy."
+        }
+      ]
+    }
+  ]
+}

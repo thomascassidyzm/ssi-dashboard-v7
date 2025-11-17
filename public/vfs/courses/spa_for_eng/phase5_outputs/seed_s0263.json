@@ -1,0 +1,76 @@
+{
+  "seed_id": "S0263",
+  "seed_pair": [
+    "I don't know who you mean.",
+    "No sé quién quieres decir."
+  ],
+  "legos": {
+    "S0263L01": {
+      "lego": [
+        "I don't know who",
+        "No sé quién"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["No sé quién.", "I don't know who.", null, 1],
+        ["No sé quién era.", "I don't know who it was.", null, 2],
+        ["No sé quién era ese hombre.", "I don't know who that man was.", null, 3],
+        ["No sé quién era de allí.", "I don't know who was from over there.", null, 3],
+        ["No sé quién era ese hombre ayer.", "I don't know who that man was yesterday.", null, 4],
+        ["No sé quién era ese hombre de allí.", "I don't know who that man over there was.", null, 4],
+        ["No sé quién era ese hombre con el que hablabas ayer.", "I don't know who that man you were talking to yesterday was.", null, 5],
+        ["No sé quién era ayer, creo que puede ser algo importante.", "I don't know who it was yesterday, I think it might be something important.", null, 6],
+        ["No sé quién era ese hombre de allí, me gusta esa cosa azul.", "I don't know who that man over there was, I like that blue thing.", null, 6],
+        ["No sé quién era ese hombre con el que hablabas, no tengo ni la más mínima idea.", "I don't know who that man you were talking to was, I don't have the faintest idea.", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["no", "not/don't"],
+        ["sé", "I know"]
+      ]
+    },
+    "S0263L02": {
+      "lego": [
+        "know who",
+        "sé quién"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0263L01",
+          "known": "I don't know who",
+          "target": "No sé quién",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Sé quién.", "I know who.", null, 1],
+        ["Sé quién era.", "I know who it was.", null, 2],
+        ["Sé quién era ese hombre.", "I know who that man was.", null, 3],
+        ["Sé quién era de allí.", "I know who was from over there.", null, 3],
+        ["Sé quién era ese hombre ayer.", "I know who that man was yesterday.", null, 4],
+        ["Sé quién era ese hombre de allí.", "I know who that man over there was.", null, 4],
+        ["Sé quién era ese hombre con el que hablabas ayer.", "I know who that man you were talking to yesterday was.", null, 5],
+        ["Sé quién era ayer, creo que puede ser algo importante.", "I know who it was yesterday, I think it might be something important.", null, 6],
+        ["Sé quién era, ese hombre con el que hablabas de allí ayer.", "I know who it was, that man you were talking to over there yesterday.", null, 6],
+        ["Sé quién era ese hombre con el que hablabas ayer, me gusta esa cosa azul de allí.", "I know who that man you were talking to yesterday was, I like that blue thing over there.", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

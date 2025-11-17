@@ -1,0 +1,143 @@
+{
+  "seed_id": "S0253",
+  "seed_pair": {
+    "known": "I should be ready in a few minutes.",
+    "target": "Debo estar preparado en unos pocos minutos."
+  },
+  "legos": {
+    "S0253L03": {
+      "lego_id": "S0253L03",
+      "lego": {
+        "known": "be ready",
+        "target": "estar preparado"
+      },
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "Be ready",
+          "target": "Estar preparado",
+          "complexity": 1
+        },
+        {
+          "known": "I should be ready",
+          "target": "Debo estar preparado",
+          "complexity": 2
+        },
+        {
+          "known": "I want to be ready",
+          "target": "Quiero estar preparado",
+          "complexity": 3
+        },
+        {
+          "known": "I'm going to be ready",
+          "target": "Voy a estar preparado",
+          "complexity": 3
+        },
+        {
+          "known": "I should be ready now",
+          "target": "Debo estar preparado ahora",
+          "complexity": 4
+        },
+        {
+          "known": "Can you be ready now?",
+          "target": "¿Puedes estar preparado ahora?",
+          "complexity": 4
+        },
+        {
+          "known": "I thought I should be ready",
+          "target": "Pensé que debía estar preparado",
+          "complexity": 5
+        },
+        {
+          "known": "I want to be ready before that",
+          "target": "Quiero estar preparado antes de que",
+          "complexity": 5
+        },
+        {
+          "known": "I'm going to be ready in a few minutes",
+          "target": "Voy a estar preparado en unos pocos minutos",
+          "complexity": 6
+        },
+        {
+          "known": "I should be ready in a few minutes",
+          "target": "Debo estar preparado en unos pocos minutos",
+          "complexity": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 2,
+        "medium_3": 2,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    },
+    "S0253L05": {
+      "lego_id": "S0253L05",
+      "lego": {
+        "known": "a few minutes",
+        "target": "unos pocos minutos"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        {
+          "known": "a few minutes",
+          "target": "unos pocos minutos",
+          "complexity": 1
+        },
+        {
+          "known": "in a few minutes",
+          "target": "en unos pocos minutos",
+          "complexity": 2
+        },
+        {
+          "known": "I should be ready in a few minutes",
+          "target": "Debo estar preparado en unos pocos minutos",
+          "complexity": 3
+        },
+        {
+          "known": "I want to eat in a few minutes",
+          "target": "Quiero comer en unos pocos minutos",
+          "complexity": 3
+        },
+        {
+          "known": "I've done a lot in a few minutes",
+          "target": "He hecho mucho en unos pocos minutos",
+          "complexity": 4
+        },
+        {
+          "known": "Can you tell me in a few minutes?",
+          "target": "¿Puedes decirme en unos pocos minutos?",
+          "complexity": 4
+        },
+        {
+          "known": "I thought that book was fairly good",
+          "target": "Pensé que ese libro era bastante bueno",
+          "complexity": 5
+        },
+        {
+          "known": "When will you be ready to start in a few minutes?",
+          "target": "¿Cuándo estarás preparado para empezar en unos pocos minutos?",
+          "complexity": 6
+        },
+        {
+          "known": "I want you to help me before I answer in a few minutes",
+          "target": "Quiero que me ayudes antes de que responda en unos pocos minutos",
+          "complexity": 7
+        },
+        {
+          "known": "I should be ready in a few minutes.",
+          "target": "Debo estar preparado en unos pocos minutos.",
+          "complexity": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 2,
+        "medium_3": 2,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    }
+  }
+}

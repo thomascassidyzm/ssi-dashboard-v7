@@ -1,0 +1,143 @@
+{
+  "seed_id": "S0255",
+  "seed_pair": {
+    "known": "When do you think you'll be ready to leave?",
+    "target": "¿Cuándo crees que estarás preparado para salir?"
+  },
+  "legos": {
+    "S0255L04": {
+      "lego_id": "S0255L04",
+      "lego": {
+        "known": "be ready",
+        "target": "estarás preparado"
+      },
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "be ready",
+          "target": "estarás preparado",
+          "complexity": 1
+        },
+        {
+          "known": "you'll be ready",
+          "target": "estarás preparado",
+          "complexity": 1
+        },
+        {
+          "known": "when you'll be ready to start",
+          "target": "cuándo estarás preparado para empezar",
+          "complexity": 3
+        },
+        {
+          "known": "when do you think you'll be ready",
+          "target": "cuándo crees que estarás preparado",
+          "complexity": 3
+        },
+        {
+          "known": "I want you to be ready in a short time",
+          "target": "Quiero que estés preparado en poco tiempo",
+          "complexity": 4
+        },
+        {
+          "known": "you'll be ready to eat before I answer",
+          "target": "estarás preparado para comer antes de que responda",
+          "complexity": 5
+        },
+        {
+          "known": "I thought you'd be ready, but you were too busy",
+          "target": "Pensé que estarías preparado, pero estabas demasiado ocupado",
+          "complexity": 6
+        },
+        {
+          "known": "when do you think you'll be ready to start this morning?",
+          "target": "¿cuándo crees que estarás preparado para empezar esta mañana?",
+          "complexity": 7
+        },
+        {
+          "known": "I wanted her to help you be ready in a few minutes",
+          "target": "Quería que ella te ayudara a estar preparado en unos pocos minutos",
+          "complexity": 8
+        },
+        {
+          "known": "Can you tell me when you think you'll be ready to start before we finish?",
+          "target": "¿Puedes decirme cuándo crees que estarás preparado para empezar antes de que terminemos?",
+          "complexity": 9
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 2,
+        "medium_3": 2,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    },
+    "S0255L05": {
+      "lego_id": "S0255L05",
+      "lego": {
+        "known": "to leave",
+        "target": "para salir"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        {
+          "known": "to leave",
+          "target": "para salir",
+          "complexity": 1
+        },
+        {
+          "known": "ready to leave",
+          "target": "preparado para salir",
+          "complexity": 2
+        },
+        {
+          "known": "I want to leave in a few minutes",
+          "target": "Quiero salir en unos pocos minutos",
+          "complexity": 3
+        },
+        {
+          "known": "when will you be ready to leave?",
+          "target": "¿cuándo estarás preparado para salir?",
+          "complexity": 3
+        },
+        {
+          "known": "I should be ready to leave this morning",
+          "target": "Debo estar preparado para salir esta mañana",
+          "complexity": 4
+        },
+        {
+          "known": "I've been ready to leave since this morning",
+          "target": "He estado preparado para salir desde esta mañana",
+          "complexity": 5
+        },
+        {
+          "known": "Can you tell me when you think you'll be ready to leave?",
+          "target": "¿Puedes decirme cuándo crees que estarás preparado para salir?",
+          "complexity": 6
+        },
+        {
+          "known": "I wanted her to help you be ready to leave in a short time",
+          "target": "Quería que ella te ayudara a estar preparado para salir en poco tiempo",
+          "complexity": 7
+        },
+        {
+          "known": "I want you to help me be ready to leave before we finish eating",
+          "target": "Quiero que me ayudes a estar preparado para salir antes de que terminemos de comer",
+          "complexity": 8
+        },
+        {
+          "known": "When do you think you'll be ready to leave?",
+          "target": "¿Cuándo crees que estarás preparado para salir?",
+          "complexity": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 2,
+        "medium_3": 2,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "seed_id": "S0189",
+  "seed_pair": [
+    "Yes that's a good idea.",
+    "Sí, esa es una buena idea."
+  ],
+  "legos": [
+    {
+      "lego_id": "S0189L01",
+      "type": "A",
+      "target": "Sí",
+      "known": "Yes",
+      "new": false,
+      "baskets": []
+    },
+    {
+      "lego_id": "S0189L02",
+      "type": "M",
+      "target": "Sí, esa es",
+      "known": "Yes that's",
+      "new": true,
+      "components": [
+        [
+          "esa",
+          "that"
+        ],
+        [
+          "es",
+          "is"
+        ]
+      ],
+      "baskets": [
+        {
+          "eng": "Yes that's it",
+          "spa": "Sí, esa es"
+        },
+        {
+          "eng": "Yes I believe",
+          "spa": "Sí, creo"
+        },
+        {
+          "eng": "Yes that's my mother",
+          "spa": "Sí, esa es mi madre"
+        },
+        {
+          "eng": "Yes that's the office",
+          "spa": "Sí, esa es la oficina"
+        },
+        {
+          "eng": "Yes I have to change",
+          "spa": "Sí, tengo que cambiar"
+        },
+        {
+          "eng": "Yes I have to speak now",
+          "spa": "Sí, tengo que hablar ahora"
+        },
+        {
+          "eng": "Yes I believe I have to change something",
+          "spa": "Sí, creo que tengo que cambiar algo"
+        },
+        {
+          "eng": "Yes that's different now I believe",
+          "spa": "Sí, esa es diferente ahora creo"
+        },
+        {
+          "eng": "Yes I'm happy I have the book now",
+          "spa": "Sí, estoy contento que tengo el libro ahora"
+        },
+        {
+          "eng": "Yes I believe that's something I have to read",
+          "spa": "Sí, creo que esa es algo que tengo que leer"
+        }
+      ]
+    },
+    {
+      "lego_id": "S0189L03",
+      "type": "M",
+      "target": "una buena idea",
+      "known": "a good idea",
+      "new": false,
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "buena",
+          "good"
+        ],
+        [
+          "idea",
+          "idea"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0189L04",
+      "type": "M",
+      "target": "esa es una buena idea",
+      "known": "that's a good idea",
+      "new": true,
+      "components": [
+        [
+          "esa",
+          "that"
+        ],
+        [
+          "es",
+          "is"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "buena",
+          "good"
+        ],
+        [
+          "idea",
+          "idea"
+        ]
+      ],
+      "baskets": []
+    }
+  ]
+}

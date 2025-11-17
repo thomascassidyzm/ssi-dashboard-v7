@@ -1,0 +1,143 @@
+{
+  "seed_id": "S0250",
+  "seed_pair": {
+    "known": "Can you tell me something else before I answer?",
+    "target": "¿Puedes decirme algo más antes de que responda?"
+  },
+  "legos": {
+    "S0250L06": {
+      "lego_id": "S0250L06",
+      "lego": {
+        "known": "me something else",
+        "target": "decirme algo más"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "Something else",
+          "target": "Algo más",
+          "complexity": 1
+        },
+        {
+          "known": "Tell me something else",
+          "target": "Decirme algo más",
+          "complexity": 1
+        },
+        {
+          "known": "I want something else",
+          "target": "Quiero algo más",
+          "complexity": 3
+        },
+        {
+          "known": "Can you tell me something else?",
+          "target": "¿Puedes decirme algo más?",
+          "complexity": 3
+        },
+        {
+          "known": "Can you tell me something else now?",
+          "target": "¿Puedes decirme algo más ahora?",
+          "complexity": 4
+        },
+        {
+          "known": "I thought you wanted something else",
+          "target": "Pensé que querías algo más",
+          "complexity": 4
+        },
+        {
+          "known": "I want you to tell me something else",
+          "target": "Quiero que me digas algo más",
+          "complexity": 5
+        },
+        {
+          "known": "Can you tell me something else before?",
+          "target": "¿Puedes decirme algo más antes?",
+          "complexity": 5
+        },
+        {
+          "known": "I want to ask for something else now",
+          "target": "Quiero pedir algo más ahora",
+          "complexity": 5
+        },
+        {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?",
+          "complexity": 8
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 2,
+        "medium_3": 2,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    },
+    "S0250L08": {
+      "lego_id": "S0250L08",
+      "lego": {
+        "known": "else before",
+        "target": "más antes de que"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        {
+          "known": "Before that",
+          "target": "Antes de que",
+          "complexity": 2
+        },
+        {
+          "known": "Before I answer",
+          "target": "Antes de que responda",
+          "complexity": 2
+        },
+        {
+          "known": "Something else before",
+          "target": "Algo más antes",
+          "complexity": 3
+        },
+        {
+          "known": "Tell me something else before",
+          "target": "Decirme algo más antes",
+          "complexity": 3
+        },
+        {
+          "known": "Something else before that",
+          "target": "Algo más antes de que",
+          "complexity": 4
+        },
+        {
+          "known": "I want something else before that",
+          "target": "Quiero algo más antes de que",
+          "complexity": 4
+        },
+        {
+          "known": "Tell me something else before that",
+          "target": "Decirme algo más antes de que",
+          "complexity": 5
+        },
+        {
+          "known": "Can you tell me something else before that?",
+          "target": "¿Puedes decirme algo más antes de que?",
+          "complexity": 5
+        },
+        {
+          "known": "I want something else before I answer",
+          "target": "Quiero algo más antes de que responda",
+          "complexity": 6
+        },
+        {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?",
+          "complexity": 8
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 2,
+        "medium_3": 2,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    }
+  }
+}

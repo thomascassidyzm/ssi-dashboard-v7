@@ -1,0 +1,230 @@
+{
+  "seed_id": "S0245",
+  "seed_pair": [
+    "Estoy contento con cuánto he hecho en poco tiempo.",
+    "I'm happy with how much I've done in a short time"
+  ],
+  "legos": [
+    {
+      "lego_id": "S0245L01",
+      "type": "M",
+      "target": "Estoy contento",
+      "known": "I'm happy",
+      "new": false,
+      "components": [
+        [
+          "Estoy",
+          "I'm"
+        ],
+        [
+          "contento",
+          "happy"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0245L02",
+      "type": "M",
+      "target": "Estoy contento con cuánto he hecho",
+      "known": "I'm happy with how much I've done",
+      "new": true,
+      "components": [
+        [
+          "Estoy",
+          "I'm"
+        ],
+        [
+          "contento",
+          "happy"
+        ],
+        [
+          "con",
+          "with"
+        ],
+        [
+          "cuánto",
+          "how much"
+        ],
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0245L03",
+      "type": "M",
+      "target": "con cuánto",
+      "known": "with how much",
+      "new": true,
+      "components": [
+        [
+          "con",
+          "with"
+        ],
+        [
+          "cuánto",
+          "how much"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0245L04",
+      "type": "M",
+      "target": "cuánto he hecho",
+      "known": "how much I've done",
+      "new": true,
+      "components": [
+        [
+          "cuánto",
+          "how much"
+        ],
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0245L05",
+      "type": "M",
+      "target": "he hecho",
+      "known": "I've done",
+      "new": false,
+      "components": [
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0245L06",
+      "type": "M",
+      "target": "he hecho en poco tiempo",
+      "known": "I've done in a short time",
+      "new": true,
+      "components": [
+        [
+          "he",
+          "I've"
+        ],
+        [
+          "hecho",
+          "done"
+        ],
+        [
+          "en",
+          "in"
+        ],
+        [
+          "poco",
+          "short/little"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0245L07",
+      "type": "M",
+      "target": "en poco tiempo",
+      "known": "in a short time",
+      "new": true,
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "poco",
+          "short/little"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ],
+      "baskets": [
+        {
+          "spa": "He hecho mucho en poco tiempo.",
+          "eng": "I've done a lot in a short time."
+        },
+        {
+          "spa": "Voy a intentar en poco tiempo.",
+          "eng": "I'm going to try in a short time."
+        },
+        {
+          "spa": "Estoy contento con cuánto he hecho en poco tiempo.",
+          "eng": "I'm happy with how much I've done in a short time."
+        },
+        {
+          "spa": "Ya he aprendido mucho en poco tiempo.",
+          "eng": "I've already learnt a lot in a short time."
+        },
+        {
+          "spa": "Quiero pedir la misma cosa en poco tiempo.",
+          "eng": "I want to ask for the same thing in a short time."
+        },
+        {
+          "spa": "Voy a pedir la misma cosa para comer en poco tiempo.",
+          "eng": "I'm going to ask for the same thing to eat in a short time."
+        },
+        {
+          "spa": "Estoy contento con cuánto he aprendido en poco tiempo.",
+          "eng": "I'm happy with how much I've learnt in a short time."
+        },
+        {
+          "spa": "No quiero dejar de intentar en poco tiempo.",
+          "eng": "I don't want to stop trying in a short time."
+        },
+        {
+          "spa": "Ya he hecho la misma cosa en poco tiempo.",
+          "eng": "I've already done the same thing in a short time."
+        },
+        {
+          "spa": "Voy a pedir más tiempo, no poco tiempo.",
+          "eng": "I'm going to ask for more time, not a short time."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0245L08",
+      "type": "M",
+      "target": "poco tiempo",
+      "known": "short time",
+      "new": true,
+      "components": [
+        [
+          "poco",
+          "short/little"
+        ],
+        [
+          "tiempo",
+          "time"
+        ]
+      ],
+      "baskets": []
+    }
+  ]
+}

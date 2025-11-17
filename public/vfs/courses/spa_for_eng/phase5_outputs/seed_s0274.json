@@ -1,0 +1,44 @@
+{
+  "seed_id": "S0274",
+  "seed_pair": [
+    "Do you have to leave in a few days?",
+    "¿Tienes que salir en unos pocos días?"
+  ],
+  "legos": {
+    "S0274L02": {
+      "lego": [
+        "have to leave",
+        "que salir"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0274L01",
+          "known": "you have to",
+          "target": "tienes que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Tengo que salir.", "I have to leave.", null, 2],
+        ["Tienes que salir.", "You have to leave.", null, 2],
+        ["Tienes que salir el próximo mes.", "You have to leave next month.", null, 3],
+        ["Tengo que salir, desafortunadamente.", "I have to leave, unfortunately.", null, 3],
+        ["Tienes que salir con nosotros el próximo mes.", "You have to leave with us next month.", null, 4],
+        ["Tengo que salir porque estoy preocupado.", "I have to leave because I'm worried.", null, 4],
+        ["Tienes que salir el próximo mes porque tengo demasiado trabajo.", "You have to leave next month because I have too much work.", null, 5],
+        ["Tengo que salir porque estoy preocupado de que voy a llegar tarde.", "I have to leave because I'm worried that I'm going to be late.", null, 5],
+        ["Tienes que salir con nosotros el próximo mes desafortunadamente, ¿te gustaría venir?", "You have to leave with us next month unfortunately, would you like to come?", null, 6],
+        ["Tengo que salir con tu amigo el próximo mes porque voy a llegar tarde, desafortunadamente.", "I have to leave with your friend next month because I'm going to be late, unfortunately.", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

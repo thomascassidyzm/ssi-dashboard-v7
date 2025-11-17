@@ -1,0 +1,132 @@
+{
+  "seed_id": "S0206",
+  "seed_pair": [
+    "I enjoy the chance to practise speaking with you.",
+    "Disfruto la oportunidad de practicar hablar contigo."
+  ],
+  "legos": [
+    {
+      "lego_id": "S0206L01",
+      "type": "A",
+      "target": "disfruto",
+      "known": "I enjoy",
+      "new": true,
+      "baskets": []
+    },
+    {
+      "lego_id": "S0206L02",
+      "type": "A",
+      "target": "la oportunidad",
+      "known": "the chance",
+      "new": true,
+      "baskets": []
+    },
+    {
+      "lego_id": "S0206L03",
+      "type": "M",
+      "target": "oportunidad de practicar hablar",
+      "known": "chance to practise speaking",
+      "new": true,
+      "components": [
+        [
+          "de",
+          "to"
+        ],
+        [
+          "practicar",
+          "to practise"
+        ],
+        [
+          "hablar",
+          "speaking"
+        ]
+      ],
+      "baskets": [
+        {
+          "eng": "the chance to speak",
+          "spa": "la oportunidad de hablar"
+        },
+        {
+          "eng": "I enjoy the chance",
+          "spa": "disfruto la oportunidad"
+        },
+        {
+          "eng": "the chance to practise speaking",
+          "spa": "la oportunidad de practicar hablar"
+        },
+        {
+          "eng": "I enjoy the chance to speak",
+          "spa": "disfruto la oportunidad de hablar"
+        },
+        {
+          "eng": "I wanted the chance to work",
+          "spa": "quería la oportunidad de trabajar"
+        },
+        {
+          "eng": "I enjoy the chance to practise speaking",
+          "spa": "disfruto la oportunidad de practicar hablar"
+        },
+        {
+          "eng": "my friend wanted the chance to work",
+          "spa": "mi amigo quería la oportunidad de trabajar"
+        },
+        {
+          "eng": "I enjoy the chance to speak with my son",
+          "spa": "disfruto la oportunidad de hablar con mi hijo"
+        },
+        {
+          "eng": "I was trying to say I enjoy the chance",
+          "spa": "estaba intentando decir que disfruto la oportunidad"
+        },
+        {
+          "eng": "I was trying to say I enjoy the chance to speak",
+          "spa": "estaba intentando decir que disfruto la oportunidad de hablar"
+        }
+      ]
+    },
+    {
+      "lego_id": "S0206L04",
+      "type": "M",
+      "target": "de practicar hablar",
+      "known": "chance to practise speaking",
+      "new": true,
+      "components": [
+        [
+          "practicar",
+          "to practise"
+        ],
+        [
+          "hablar",
+          "speaking"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0206L05",
+      "type": "M",
+      "target": "hablar contigo",
+      "known": "speaking with you",
+      "new": true,
+      "components": [
+        [
+          "hablar",
+          "speaking"
+        ],
+        [
+          "contigo",
+          "with you"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0206L06",
+      "type": "A",
+      "target": "contigo",
+      "known": "with you",
+      "new": false,
+      "baskets": []
+    }
+  ]
+}

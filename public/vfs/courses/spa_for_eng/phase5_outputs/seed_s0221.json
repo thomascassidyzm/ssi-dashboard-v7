@@ -1,0 +1,112 @@
+{
+  "seed_id": "S0221",
+  "seed_pair": [
+    "I watched the football and then I watched a film.",
+    "Vi el fútbol y luego vi una película."
+  ],
+  "legos": [
+    {
+      "lego_id": "S0221L01",
+      "type": "M",
+      "target": "vi el fútbol",
+      "known": "I watched the football",
+      "new": true,
+      "components": [
+        [
+          "vi",
+          "I watched"
+        ],
+        [
+          "el",
+          "the"
+        ],
+        [
+          "fútbol",
+          "football"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0221L02",
+      "type": "M",
+      "target": "fútbol y luego",
+      "known": "football and then",
+      "new": true,
+      "components": [
+        [
+          "y",
+          "and"
+        ],
+        [
+          "luego",
+          "then"
+        ]
+      ],
+      "baskets": [
+        {
+          "spa": "El fútbol y luego el agua.",
+          "eng": "The football and then the water."
+        },
+        {
+          "spa": "Vi el fútbol y luego nada.",
+          "eng": "I watched the football and then nothing."
+        },
+        {
+          "spa": "Vi el fútbol y luego a algunos amigos.",
+          "eng": "I watched the football and then some friends."
+        },
+        {
+          "spa": "El fútbol y luego un poco de televisión.",
+          "eng": "The football and then a bit of television."
+        },
+        {
+          "spa": "Vi el fútbol y luego salí el sábado.",
+          "eng": "I watched the football and then I went out on Saturday."
+        },
+        {
+          "spa": "El domingo vi el fútbol y luego agua.",
+          "eng": "On Sunday I watched the football and then water."
+        },
+        {
+          "spa": "Vi el fútbol y luego vi un poco de televisión.",
+          "eng": "I watched the football and then I watched a bit of television."
+        },
+        {
+          "spa": "El sábado por la noche vi el fútbol y luego nada.",
+          "eng": "On Saturday night I watched the football and then nothing."
+        },
+        {
+          "spa": "Vi el fútbol y luego pasé un buen tiempo.",
+          "eng": "I watched the football and then I had a good time."
+        },
+        {
+          "spa": "Fue agradable ver el fútbol y luego relajarse por un rato.",
+          "eng": "It was nice to watch the football and then relax for a while."
+        }
+      ]
+    },
+    {
+      "lego_id": "S0221L03",
+      "type": "M",
+      "target": "vi una película",
+      "known": "I watched a film",
+      "new": true,
+      "components": [
+        [
+          "vi",
+          "I watched"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "película",
+          "film"
+        ]
+      ],
+      "baskets": []
+    }
+  ]
+}

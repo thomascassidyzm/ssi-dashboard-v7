@@ -1,0 +1,210 @@
+{
+  "seed_id": "S0256",
+  "seed_pair": {
+    "known": "I think I'll be ready in less than an hour.",
+    "target": "Creo que estaré listo en menos de una hora."
+  },
+  "legos": {
+    "S0256L01": {
+      "lego_id": "S0256L01",
+      "lego": {
+        "known": "I think I'll",
+        "target": "Creo que"
+      },
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "I think",
+          "target": "Creo",
+          "complexity": 1
+        },
+        {
+          "known": "I think that",
+          "target": "Creo que",
+          "complexity": 2
+        },
+        {
+          "known": "I think she was",
+          "target": "Creo que estaba",
+          "complexity": 3
+        },
+        {
+          "known": "I think it was good",
+          "target": "Creo que era bueno",
+          "complexity": 3
+        },
+        {
+          "known": "I think you'll be ready",
+          "target": "Creo que estarás preparado",
+          "complexity": 4
+        },
+        {
+          "known": "I think I should be",
+          "target": "Creo que debo estar",
+          "complexity": 4
+        },
+        {
+          "known": "I think she was too busy",
+          "target": "Creo que estaba demasiado ocupada",
+          "complexity": 5
+        },
+        {
+          "known": "I think I should be ready",
+          "target": "Creo que debo estar preparado",
+          "complexity": 5
+        },
+        {
+          "known": "I think I've been ready",
+          "target": "Creo que he estado preparado",
+          "complexity": 5
+        },
+        {
+          "known": "I think you'll be ready in a few minutes",
+          "target": "Creo que estarás preparado en unos pocos minutos",
+          "complexity": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 2,
+        "medium_3": 2,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    },
+    "S0256L03": {
+      "lego_id": "S0256L03",
+      "lego": {
+        "known": "think I'll be ready",
+        "target": "que estaré listo"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "Ready",
+          "target": "listo",
+          "complexity": 1
+        },
+        {
+          "known": "Be ready",
+          "target": "estaré listo",
+          "complexity": 2
+        },
+        {
+          "known": "I'll be ready",
+          "target": "estaré listo",
+          "complexity": 2
+        },
+        {
+          "known": "You'll be ready",
+          "target": "estarás listo",
+          "complexity": 3
+        },
+        {
+          "known": "I think I'll be ready",
+          "target": "Creo que estaré listo",
+          "complexity": 4
+        },
+        {
+          "known": "I should be ready",
+          "target": "debo estar listo",
+          "complexity": 4
+        },
+        {
+          "known": "I'll be ready to start",
+          "target": "estaré listo para empezar",
+          "complexity": 5
+        },
+        {
+          "known": "I'll be ready to leave",
+          "target": "estaré listo para salir",
+          "complexity": 5
+        },
+        {
+          "known": "I think I'll be ready to start",
+          "target": "Creo que estaré listo para empezar",
+          "complexity": 6
+        },
+        {
+          "known": "I think I'll be ready in a few minutes",
+          "target": "Creo que estaré listo en unos pocos minutos",
+          "complexity": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 3,
+        "medium_3": 1,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    },
+    "S0256L04": {
+      "lego_id": "S0256L04",
+      "lego": {
+        "known": "be ready",
+        "target": "estaré listo"
+      },
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "Ready",
+          "target": "listo",
+          "complexity": 1
+        },
+        {
+          "known": "Be ready",
+          "target": "estar listo",
+          "complexity": 2
+        },
+        {
+          "known": "I'll be ready",
+          "target": "estaré listo",
+          "complexity": 2
+        },
+        {
+          "known": "You'll be ready",
+          "target": "estarás listo",
+          "complexity": 3
+        },
+        {
+          "known": "I think I'll be ready",
+          "target": "Creo que estaré listo",
+          "complexity": 4
+        },
+        {
+          "known": "I should be ready",
+          "target": "debo estar listo",
+          "complexity": 4
+        },
+        {
+          "known": "I'll be ready to start",
+          "target": "estaré listo para empezar",
+          "complexity": 5
+        },
+        {
+          "known": "I'll be ready to leave",
+          "target": "estaré listo para salir",
+          "complexity": 5
+        },
+        {
+          "known": "I think I'll be ready to leave",
+          "target": "Creo que estaré listo para salir",
+          "complexity": 6
+        },
+        {
+          "known": "I should be ready in a few minutes",
+          "target": "debo estar listo en unos pocos minutos",
+          "complexity": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2": 3,
+        "medium_3": 1,
+        "longer_4": 2,
+        "complex_5_plus": 4
+      }
+    }
+  }
+}

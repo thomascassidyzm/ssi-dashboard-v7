@@ -1,0 +1,106 @@
+{
+  "seed_id": "S0240",
+  "seed_pair": [
+    "My father doesn't like to stop talking.",
+    "A mi padre no le gusta dejar de hablar."
+  ],
+  "legos": [
+    {
+      "lego_id": "S0240L01",
+      "type": "M",
+      "target": "a mi padre no le gusta",
+      "known": "my father doesn't like",
+      "new": true,
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "mi",
+          "my"
+        ],
+        [
+          "padre",
+          "father"
+        ],
+        [
+          "no",
+          "not/doesn't"
+        ],
+        [
+          "le",
+          "to him"
+        ],
+        [
+          "gusta",
+          "likes/pleases"
+        ]
+      ],
+      "baskets": []
+    },
+    {
+      "lego_id": "S0240L02",
+      "type": "M",
+      "target": "dejar de hablar",
+      "known": "to stop talking",
+      "new": true,
+      "components": [
+        [
+          "dejar",
+          "to stop/leave"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "hablar",
+          "to talk/speak"
+        ]
+      ],
+      "baskets": [
+        {
+          "spa": "Quiero dejar de hablar.",
+          "eng": "I want to stop talking."
+        },
+        {
+          "spa": "Iba a dejar de hablar.",
+          "eng": "I was going to stop talking."
+        },
+        {
+          "spa": "A mi padre no le gusta dejar de hablar.",
+          "eng": "My father doesn't like to stop talking."
+        },
+        {
+          "spa": "Quiero que alguien deje de hablar.",
+          "eng": "I want someone to stop talking."
+        },
+        {
+          "spa": "A mi madre le gusta dejar de hablar antes del fin de semana.",
+          "eng": "My mother likes to stop talking before the weekend."
+        },
+        {
+          "spa": "Quería decirte que iba a dejar de hablar.",
+          "eng": "I wanted to tell you that I was going to stop talking."
+        },
+        {
+          "spa": "Conocí a alguien que dijo que quería dejar de hablar.",
+          "eng": "I met someone who said that he wanted to stop talking."
+        },
+        {
+          "spa": "Conozco a alguien que iba a intentar dejar de hablar.",
+          "eng": "I know someone who was going to try to stop talking."
+        },
+        {
+          "spa": "A mi padre no le gusta que yo deje de hablar con mi madre.",
+          "eng": "My father doesn't like that I stop talking with my mother."
+        },
+        {
+          "spa": "Iba a intentar dejar de hablar antes del fin de semana.",
+          "eng": "I was going to try to stop talking before the weekend."
+        }
+      ]
+    }
+  ]
+}
