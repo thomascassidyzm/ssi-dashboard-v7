@@ -1,0 +1,520 @@
+{
+  "S0131L01": {
+    "lego": [
+      "there are",
+      "有"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "There are",
+        "有",
+        null,
+        1
+      ],
+      [
+        "There are ideas",
+        "有想法",
+        null,
+        2
+      ],
+      [
+        "There are good ideas",
+        "有好主意",
+        null,
+        2
+      ],
+      [
+        "There are very good ideas here",
+        "有非常好的主意这儿",
+        null,
+        3
+      ],
+      [
+        "There are surprises",
+        "有惊喜",
+        null,
+        2
+      ],
+      [
+        "I think there are good ideas",
+        "我认为有好主意",
+        null,
+        3
+      ],
+      [
+        "There are very unusual ideas in this work",
+        "这个工作有很不寻常的主意",
+        null,
+        4
+      ],
+      [
+        "I believe there are very good surprises",
+        "我相信有非常好的惊喜",
+        null,
+        4
+      ],
+      [
+        "There are good ideas and I'm excited about them",
+        "有好主意我对它们感到兴奋",
+        null,
+        5
+      ],
+      [
+        "I think there are too many unusual ideas in my brain",
+        "我认为我大脑有太多不寻常的主意",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0131L02": {
+    "lego": [
+      "too many ideas",
+      "太多想法"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0131L01",
+        "known": "there are",
+        "target": "有",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Too many ideas",
+        "太多想法",
+        null,
+        1
+      ],
+      [
+        "Too many good ideas",
+        "太多好想法",
+        null,
+        2
+      ],
+      [
+        "There are too many ideas",
+        "有太多想法",
+        null,
+        2
+      ],
+      [
+        "Too many ideas in my brain",
+        "太多想法在我大脑",
+        null,
+        3
+      ],
+      [
+        "I have too many ideas",
+        "我有太多想法",
+        null,
+        3
+      ],
+      [
+        "I think there are too many ideas",
+        "我认为有太多想法",
+        null,
+        3
+      ],
+      [
+        "There are too many unusual ideas here",
+        "有太多不寻常的想法这儿",
+        null,
+        4
+      ],
+      [
+        "My friend has too many good ideas",
+        "我的朋友有太多好想法",
+        null,
+        4
+      ],
+      [
+        "I believe there are too many ideas in this work",
+        "我相信这个工作有太多想法",
+        null,
+        5
+      ],
+      [
+        "There are too many unusual ideas going around in my brain",
+        "太多不寻常的想法在我大脑转",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "太多",
+        "too many"
+      ],
+      [
+        "想法",
+        "ideas"
+      ]
+    ]
+  },
+  "S0131L03": {
+    "lego": [
+      "there are too many ideas",
+      "有太多想法"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0131L01",
+        "known": "there are",
+        "target": "有",
+        "type": "A"
+      },
+      {
+        "id": "S0131L02",
+        "known": "too many ideas",
+        "target": "太多想法",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "There are too many ideas",
+        "有太多想法",
+        null,
+        1
+      ],
+      [
+        "There are too many good ideas",
+        "有太多好想法",
+        null,
+        2
+      ],
+      [
+        "I think there are too many ideas",
+        "我认为有太多想法",
+        null,
+        3
+      ],
+      [
+        "There are too many ideas here",
+        "有太多想法这儿",
+        null,
+        2
+      ],
+      [
+        "There are too many ideas in my brain",
+        "有太多想法在我大脑",
+        null,
+        3
+      ],
+      [
+        "I believe there are too many unusual ideas",
+        "我相信有太多不寻常的想法",
+        null,
+        4
+      ],
+      [
+        "There are too many ideas and it's unusual",
+        "有太多想法很不寻常",
+        null,
+        4
+      ],
+      [
+        "My friend thinks there are too many ideas in this work",
+        "我的朋友认为这个工作有太多想法",
+        null,
+        5
+      ],
+      [
+        "There are too many very good ideas going around",
+        "有太多非常好的想法在转",
+        null,
+        5
+      ],
+      [
+        "I'm excited because there are too many unusual ideas in my brain",
+        "我兴奋因为我大脑有太多不寻常的想法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "有",
+        "there are"
+      ],
+      [
+        "太多",
+        "too many"
+      ],
+      [
+        "想法",
+        "ideas"
+      ]
+    ]
+  },
+  "S0131L04": {
+    "lego": [
+      "in my head",
+      "在我的脑海里"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0131L01",
+        "known": "there are",
+        "target": "有",
+        "type": "A"
+      },
+      {
+        "id": "S0131L02",
+        "known": "too many ideas",
+        "target": "太多想法",
+        "type": "M"
+      },
+      {
+        "id": "S0131L03",
+        "known": "there are too many ideas",
+        "target": "有太多想法",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "In my head",
+        "在我的脑海里",
+        null,
+        1
+      ],
+      [
+        "In my brain",
+        "在我大脑",
+        null,
+        1
+      ],
+      [
+        "Ideas in my head",
+        "想法在我的脑海里",
+        null,
+        2
+      ],
+      [
+        "Too many ideas in my head",
+        "太多想法在我的脑海里",
+        null,
+        3
+      ],
+      [
+        "Good ideas in my brain",
+        "好主意在我大脑",
+        null,
+        3
+      ],
+      [
+        "I have ideas in my head",
+        "我有想法在我的脑海里",
+        null,
+        3
+      ],
+      [
+        "There are too many ideas in my head",
+        "有太多想法在我的脑海里",
+        null,
+        4
+      ],
+      [
+        "Very unusual ideas in my brain",
+        "很不寻常的想法在我大脑",
+        null,
+        4
+      ],
+      [
+        "I think there are too many good ideas in my head",
+        "我认为有太多好想法在我的脑海里",
+        null,
+        5
+      ],
+      [
+        "My friend believes there are very unusual ideas in my brain",
+        "我的朋友相信有很不寻常的想法在我大脑",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "在",
+        "in"
+      ],
+      [
+        "我的",
+        "my"
+      ],
+      [
+        "脑海",
+        "mind/head"
+      ],
+      [
+        "里",
+        "inside"
+      ]
+    ]
+  },
+  "S0131L05": {
+    "lego": [
+      "going around in my head",
+      "在我的脑海里转"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0131L01",
+        "known": "there are",
+        "target": "有",
+        "type": "A"
+      },
+      {
+        "id": "S0131L02",
+        "known": "too many ideas",
+        "target": "太多想法",
+        "type": "M"
+      },
+      {
+        "id": "S0131L03",
+        "known": "there are too many ideas",
+        "target": "有太多想法",
+        "type": "M"
+      },
+      {
+        "id": "S0131L04",
+        "known": "in my head",
+        "target": "在我的脑海里",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Going around in my head",
+        "在我的脑海里转",
+        null,
+        1
+      ],
+      [
+        "Ideas going around in my head",
+        "想法在我的脑海里转",
+        null,
+        2
+      ],
+      [
+        "Going around in my brain",
+        "在我大脑转",
+        null,
+        2
+      ],
+      [
+        "Good ideas going around in my head",
+        "好想法在我的脑海里转",
+        null,
+        3
+      ],
+      [
+        "Too many ideas going around",
+        "太多想法在转",
+        null,
+        3
+      ],
+      [
+        "I have ideas going around in my head",
+        "我有想法在我的脑海里转",
+        null,
+        4
+      ],
+      [
+        "There are ideas going around in my brain",
+        "有想法在我大脑转",
+        null,
+        4
+      ],
+      [
+        "Too many unusual ideas going around in my head",
+        "太多不寻常的想法在我的脑海里转",
+        null,
+        5
+      ],
+      [
+        "I think there are very good ideas going around in my brain",
+        "我认为有很好的想法在我大脑转",
+        null,
+        5
+      ],
+      [
+        "There are too many ideas going around in my head",
+        "有太多想法在我的脑海里转",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "在",
+        "in"
+      ],
+      [
+        "我的",
+        "my"
+      ],
+      [
+        "脑海",
+        "mind"
+      ],
+      [
+        "里",
+        "inside"
+      ],
+      [
+        "转",
+        "going around/spinning"
+      ]
+    ]
+  }
+}

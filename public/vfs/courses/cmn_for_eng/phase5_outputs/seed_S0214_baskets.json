@@ -1,0 +1,288 @@
+{
+  "S0214L01": {
+    "lego": [
+      "weekend",
+      "周末"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Weekend",
+        "周末",
+        null,
+        1
+      ],
+      [
+        "The weekend",
+        "周末",
+        null,
+        1
+      ],
+      [
+        "I wanted help at the weekend",
+        "我想周末帮助",
+        null,
+        3
+      ],
+      [
+        "They wanted to spend time at the weekend",
+        "他们想花周末时间",
+        null,
+        3
+      ],
+      [
+        "We need to discuss the problem at the weekend",
+        "我们需要周末讨论这个问题",
+        null,
+        4
+      ],
+      [
+        "I wanted her to help you at the weekend",
+        "我想让她周末帮你",
+        null,
+        4
+      ],
+      [
+        "They think we need to spend more time at the weekend",
+        "他们认为我们需要花更多的周末时间",
+        null,
+        5
+      ],
+      [
+        "I didn't want to ask you at the weekend",
+        "我不想周末问你",
+        null,
+        5
+      ],
+      [
+        "They told us they wanted to spend more time meeting at the weekend",
+        "他们告诉我们他们想花更多的时间周末聚会",
+        null,
+        6
+      ],
+      [
+        "We don't know what they're trying to achieve at the weekend",
+        "我们不知道他们想周末达到什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0214L02": {
+    "lego": [
+      "Did you have a good time at the weekend",
+      "你周末过得好吗"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0214L01",
+        "known": "weekend",
+        "target": "周末",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Did you have a good time",
+        "你过得好吗",
+        null,
+        2
+      ],
+      [
+        "Did you have a good time at the weekend",
+        "你周末过得好吗",
+        null,
+        2
+      ],
+      [
+        "I wanted to ask you did you have a good time",
+        "我想问你你过得好吗",
+        null,
+        3
+      ],
+      [
+        "They think you had a good time at the weekend",
+        "他们认为你周末过得好",
+        null,
+        3
+      ],
+      [
+        "We need to know did you have a good time",
+        "我们需要知道你过得好吗",
+        null,
+        4
+      ],
+      [
+        "I didn't want to ask did you have a good time at the weekend",
+        "我不想问你周末过得好吗",
+        null,
+        4
+      ],
+      [
+        "They told us they wanted to know did you have a good time",
+        "他们告诉我们他们想知道你过得好吗",
+        null,
+        5
+      ],
+      [
+        "I've forgotten to ask you did you have a good time at the weekend",
+        "我忘记了问你你周末过得好吗",
+        null,
+        5
+      ],
+      [
+        "We don't know did you have a good time at the weekend",
+        "我们不知道你周末过得好吗",
+        null,
+        6
+      ],
+      [
+        "They wanted to ask for help to know did you have a good time",
+        "他们想寻求帮助知道你过得好吗",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "周末",
+        "at the weekend"
+      ],
+      [
+        "过得",
+        "have/spend"
+      ],
+      [
+        "好",
+        "good"
+      ],
+      [
+        "吗",
+        "question particle"
+      ]
+    ]
+  },
+  "S0214L03": {
+    "lego": [
+      "have a good time",
+      "过得好"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0214L01",
+        "known": "weekend",
+        "target": "周末",
+        "type": "A"
+      },
+      {
+        "id": "S0214L02",
+        "known": "Did you have a good time at the weekend",
+        "target": "你周末过得好吗",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Have a good time",
+        "过得好",
+        null,
+        1
+      ],
+      [
+        "I wanted to have a good time",
+        "我想过得好",
+        null,
+        2
+      ],
+      [
+        "They wanted to have a good time at the weekend",
+        "他们想周末过得好",
+        null,
+        3
+      ],
+      [
+        "We need to have a good time as a group",
+        "我们需要作为一个小组过得好",
+        null,
+        3
+      ],
+      [
+        "I enjoy the chance to have a good time",
+        "我喜欢有机会过得好",
+        null,
+        4
+      ],
+      [
+        "They think we need to have a good time at the weekend",
+        "他们认为我们需要周末过得好",
+        null,
+        4
+      ],
+      [
+        "I wanted her to help you have a good time",
+        "我想让她帮你过得好",
+        null,
+        5
+      ],
+      [
+        "They wanted to spend more time to have a good time",
+        "他们想花更多的时间过得好",
+        null,
+        5
+      ],
+      [
+        "We don't know what they're trying to achieve to have a good time",
+        "我们不知道他们想达到什么过得好",
+        null,
+        6
+      ],
+      [
+        "They told us they wanted to spend more time at the weekend to have a good time",
+        "他们告诉我们他们想花更多的时间周末过得好",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "过得",
+        "pass/spend"
+      ],
+      [
+        "好",
+        "good/well"
+      ]
+    ]
+  }
+}

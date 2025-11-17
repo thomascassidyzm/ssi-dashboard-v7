@@ -1,0 +1,428 @@
+{
+  "seed_id": "S0548",
+  "seed_pair": [
+    "I am feeling sad at the moment.",
+    "我此刻感到悲伤。"
+  ],
+  "legos": {
+    "S0548L01": {
+      "lego": [
+        "at the moment",
+        "此刻"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "At the moment",
+          "此刻",
+          null,
+          1
+        ],
+        [
+          "I am here at the moment",
+          "我此刻在这里",
+          null,
+          2
+        ],
+        [
+          "She is right at the moment",
+          "她此刻是对的",
+          null,
+          2
+        ],
+        [
+          "The dog is dirty at the moment",
+          "狗此刻很脏",
+          null,
+          2
+        ],
+        [
+          "I want to leave at the moment",
+          "我此刻想离开",
+          null,
+          2
+        ],
+        [
+          "The dog is wet at the moment",
+          "狗此刻湿",
+          null,
+          2
+        ],
+        [
+          "At the moment the dog is playing in the mud",
+          "此刻狗在泥里玩",
+          null,
+          3
+        ],
+        [
+          "I don't mind at the moment",
+          "我此刻不介意",
+          null,
+          2
+        ],
+        [
+          "At the moment it's your turn",
+          "此刻轮到你",
+          null,
+          2
+        ],
+        [
+          "The clothes are upstairs at the moment",
+          "衣服此刻在上楼",
+          null,
+          2
+        ]
+      ]
+    },
+    "S0548L02": {
+      "lego": [
+        "sad",
+        "悲伤"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0548L01",
+          "known": "at the moment",
+          "target": "此刻",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Sad",
+          "悲伤",
+          null,
+          1
+        ],
+        [
+          "I am sad",
+          "我悲伤",
+          null,
+          2
+        ],
+        [
+          "She is sad",
+          "她悲伤",
+          null,
+          2
+        ],
+        [
+          "He is sad",
+          "他悲伤",
+          null,
+          2
+        ],
+        [
+          "The dog is sad",
+          "狗悲伤",
+          null,
+          2
+        ],
+        [
+          "I am sad at the moment",
+          "我此刻悲伤",
+          null,
+          2
+        ],
+        [
+          "She is sad at the moment",
+          "她此刻悲伤",
+          null,
+          2
+        ],
+        [
+          "I am sad because the dog is dirty",
+          "我悲伤因为狗脏",
+          null,
+          3
+        ],
+        [
+          "He is sad because she was right",
+          "他悲伤因为她是对的",
+          null,
+          3
+        ],
+        [
+          "At the moment I am sad",
+          "此刻我悲伤",
+          null,
+          2
+        ]
+      ]
+    },
+    "S0548L03": {
+      "lego": [
+        "feel sad",
+        "感到悲伤"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0548L01",
+          "known": "at the moment",
+          "target": "此刻",
+          "type": "M"
+        },
+        {
+          "id": "S0548L02",
+          "known": "sad",
+          "target": "悲伤",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Feel sad",
+          "感到悲伤",
+          null,
+          1
+        ],
+        [
+          "I feel sad",
+          "我感到悲伤",
+          null,
+          2
+        ],
+        [
+          "She feels sad",
+          "她感到悲伤",
+          null,
+          2
+        ],
+        [
+          "He feels sad",
+          "他感到悲伤",
+          null,
+          2
+        ],
+        [
+          "I feel sad at the moment",
+          "我此刻感到悲伤",
+          null,
+          2
+        ],
+        [
+          "Do you feel sad",
+          "你感到悲伤吗",
+          null,
+          2
+        ],
+        [
+          "She feels sad at the moment",
+          "她此刻感到悲伤",
+          null,
+          2
+        ],
+        [
+          "I feel sad because the dog is dirty",
+          "我感到悲伤因为狗脏",
+          null,
+          3
+        ],
+        [
+          "Whenever you feel sad",
+          "每当你感到悲伤",
+          null,
+          2
+        ],
+        [
+          "I don't mind if you feel sad",
+          "我不介意你感到悲伤",
+          null,
+          3
+        ]
+      ]
+    },
+    "S0548L04": {
+      "lego": [
+        "I feel sad",
+        "我感到悲伤"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0548L01",
+          "known": "at the moment",
+          "target": "此刻",
+          "type": "M"
+        },
+        {
+          "id": "S0548L02",
+          "known": "sad",
+          "target": "悲伤",
+          "type": "A"
+        },
+        {
+          "id": "S0548L03",
+          "known": "feel sad",
+          "target": "感到悲伤",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I feel sad",
+          "我感到悲伤",
+          null,
+          1
+        ],
+        [
+          "I feel sad now",
+          "我现在感到悲伤",
+          null,
+          2
+        ],
+        [
+          "I feel sad at the moment",
+          "我此刻感到悲伤",
+          null,
+          1
+        ],
+        [
+          "I feel sad because",
+          "我感到悲伤因为",
+          null,
+          2
+        ],
+        [
+          "I feel sad because the dog is dirty",
+          "我感到悲伤因为狗脏",
+          null,
+          3
+        ],
+        [
+          "I feel sad because she was right",
+          "我感到悲伤因为她是对的",
+          null,
+          3
+        ],
+        [
+          "I feel sad whenever you leave",
+          "每当你离开我感到悲伤",
+          null,
+          3
+        ],
+        [
+          "At the moment I feel sad",
+          "此刻我感到悲伤",
+          null,
+          1
+        ],
+        [
+          "I feel sad because the dog has been playing in the mud",
+          "我感到悲伤因为狗一直在泥里玩",
+          null,
+          3
+        ],
+        [
+          "I don't mind if I feel sad",
+          "我不介意我感到悲伤",
+          null,
+          3
+        ]
+      ]
+    },
+    "S0548L05": {
+      "lego": [
+        "I am feeling sad at the moment",
+        "我此刻感到悲伤"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0548L01",
+          "known": "at the moment",
+          "target": "此刻",
+          "type": "M"
+        },
+        {
+          "id": "S0548L02",
+          "known": "sad",
+          "target": "悲伤",
+          "type": "A"
+        },
+        {
+          "id": "S0548L03",
+          "known": "feel sad",
+          "target": "感到悲伤",
+          "type": "M"
+        },
+        {
+          "id": "S0548L04",
+          "known": "I feel sad",
+          "target": "我感到悲伤",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I am feeling sad at the moment",
+          "我此刻感到悲伤",
+          null,
+          1
+        ],
+        [
+          "She is feeling sad at the moment",
+          "她此刻感到悲伤",
+          null,
+          1
+        ],
+        [
+          "He is feeling sad at the moment",
+          "他此刻感到悲伤",
+          null,
+          1
+        ],
+        [
+          "You are feeling sad at the moment",
+          "你此刻感到悲伤",
+          null,
+          1
+        ],
+        [
+          "I am feeling sad at the moment because the dog is dirty",
+          "我此刻感到悲伤因为狗脏",
+          null,
+          2
+        ],
+        [
+          "She is feeling sad at the moment because he left",
+          "她此刻感到悲伤因为他离开了",
+          null,
+          2
+        ],
+        [
+          "I am feeling sad at the moment because the dog has been playing in the mud",
+          "我此刻感到悲伤因为狗一直在泥里玩",
+          null,
+          2
+        ],
+        [
+          "At the moment I am feeling sad",
+          "此刻我感到悲伤",
+          null,
+          1
+        ],
+        [
+          "Whenever I am feeling sad at the moment I breathe slowly",
+          "每当我此刻感到悲伤我慢慢呼吸",
+          null,
+          3
+        ],
+        [
+          "I don't mind if you are feeling sad at the moment",
+          "我不介意你此刻感到悲伤",
+          null,
+          2
+        ]
+      ]
+    }
+  }
+}

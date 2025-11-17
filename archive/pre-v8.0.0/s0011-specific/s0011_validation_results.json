@@ -1,0 +1,2700 @@
+{
+  "S0011L01": {
+    "whitelist": {
+      "words": [
+        "Estoy",
+        "Hablo",
+        "No",
+        "Quiero",
+        "Voy",
+        "a",
+        "a menudo",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "de",
+        "decir",
+        "en",
+        "español",
+        "estoy",
+        "explicar",
+        "frase",
+        "fuerte",
+        "hablar",
+        "hoy",
+        "intentando",
+        "intentar",
+        "la",
+        "lo",
+        "lo más",
+        "otra",
+        "palabra",
+        "persona",
+        "posible",
+        "practicar",
+        "puedo",
+        "que",
+        "recordar",
+        "seguro",
+        "si",
+        "un poco",
+        "una"
+      ],
+      "phrases": [
+        "Estoy intentando",
+        "Hablo",
+        "No estoy seguro",
+        "Quiero",
+        "Voy a",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "decir",
+        "en",
+        "español",
+        "explicar",
+        "hablar",
+        "hoy",
+        "intentar",
+        "la frase",
+        "lo más a menudo posible",
+        "lo más fuerte que puedo",
+        "lo que",
+        "otra",
+        "persona",
+        "practicar",
+        "puedo",
+        "recordar",
+        "si",
+        "un poco de",
+        "una palabra"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L04",
+          "type": "B",
+          "target": "contigo",
+          "known": "with you",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0002L02",
+          "type": "B",
+          "target": "aprender",
+          "known": "to learn",
+          "breakdown": null,
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L02",
+          "type": "C",
+          "target": "lo más a menudo posible",
+          "known": "as often as possible",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "a menudo",
+              "often"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ],
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L02",
+          "type": "B",
+          "target": "algo",
+          "known": "something",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L03",
+          "type": "B",
+          "target": "en",
+          "known": "in",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L02",
+          "type": "B",
+          "target": "practicar",
+          "known": "to practise",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L03",
+          "type": "B",
+          "target": "con",
+          "known": "with",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L04",
+          "type": "B",
+          "target": "otra",
+          "known": "another",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L05",
+          "type": "B",
+          "target": "persona",
+          "known": "person",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L02",
+          "type": "C",
+          "target": "una palabra",
+          "known": "a word",
+          "breakdown": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "palabra",
+              "word"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L02",
+          "type": "C",
+          "target": "lo más fuerte que puedo",
+          "known": "as hard as I can",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "fuerte",
+              "hard"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "puedo",
+              "I can"
+            ]
+          ],
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L03",
+          "type": "B",
+          "target": "hoy",
+          "known": "today",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L01",
+          "type": "B",
+          "target": "explicar",
+          "known": "to explain",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L02",
+          "type": "C",
+          "target": "lo que",
+          "known": "what",
+          "breakdown": [
+            [
+              "lo",
+              "it"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0009L01",
+          "type": "B",
+          "target": "Hablo",
+          "known": "I speak",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0009L02",
+          "type": "C",
+          "target": "un poco de",
+          "known": "a little",
+          "breakdown": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "de",
+              "of"
+            ]
+          ],
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0010L01",
+          "type": "C",
+          "target": "No estoy seguro",
+          "known": "I'm not sure",
+          "breakdown": [
+            [
+              "No",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L02",
+          "type": "B",
+          "target": "si",
+          "known": "if",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L03",
+          "type": "B",
+          "target": "puedo",
+          "known": "I can",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L04",
+          "type": "C",
+          "target": "la frase",
+          "known": "the sentence",
+          "breakdown": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "frase",
+              "sentence"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L05",
+          "type": "B",
+          "target": "completa",
+          "known": "whole",
+          "breakdown": null,
+          "seedId": "S0010"
+        }
+      ],
+      "count": 44
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        {
+          "type": "short_e_phrase",
+          "basket": "S0011L01",
+          "phraseType": "e-phrase",
+          "index": 0,
+          "phrase": "Me gustaría hablar español",
+          "wordCount": 4,
+          "message": "E-phrase only has 4 words (ideal: 7-10)"
+        },
+        {
+          "type": "short_e_phrase",
+          "basket": "S0011L01",
+          "phraseType": "e-phrase",
+          "index": 1,
+          "phrase": "Me gustaría aprender algo ahora",
+          "wordCount": 5,
+          "message": "E-phrase only has 5 words (ideal: 7-10)"
+        },
+        {
+          "type": "short_e_phrase",
+          "basket": "S0011L01",
+          "phraseType": "e-phrase",
+          "index": 2,
+          "phrase": "Me gustaría practicar contigo hoy",
+          "wordCount": 5,
+          "message": "E-phrase only has 5 words (ideal: 7-10)"
+        }
+      ]
+    },
+    "basket": {
+      "lego": [
+        "Me gustaría",
+        "I'd like"
+      ],
+      "e": [
+        [
+          "Me gustaría hablar español",
+          "I'd like to speak Spanish"
+        ],
+        [
+          "Me gustaría aprender algo ahora",
+          "I'd like to learn something now"
+        ],
+        [
+          "Me gustaría practicar contigo hoy",
+          "I'd like to practise with you today"
+        ]
+      ],
+      "d": {
+        "2": [
+          [
+            "Me gustaría",
+            "I'd like"
+          ]
+        ],
+        "3": [
+          [
+            "Me gustaría hablar",
+            "I'd like to speak"
+          ],
+          [
+            "Me gustaría aprender",
+            "I'd like to learn"
+          ]
+        ],
+        "4": [
+          [
+            "Me gustaría hablar español",
+            "I'd like to speak Spanish"
+          ],
+          [
+            "Me gustaría aprender algo",
+            "I'd like to learn something"
+          ]
+        ],
+        "5": [
+          [
+            "Me gustaría hablar español contigo",
+            "I'd like to speak Spanish with you"
+          ],
+          [
+            "Me gustaría practicar contigo hoy",
+            "I'd like to practise with you today"
+          ]
+        ]
+      }
+    }
+  },
+  "S0011L02": {
+    "whitelist": {
+      "words": [
+        "Estoy",
+        "Hablo",
+        "Me",
+        "No",
+        "Quiero",
+        "Voy",
+        "a",
+        "a menudo",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "de",
+        "decir",
+        "en",
+        "español",
+        "estoy",
+        "explicar",
+        "frase",
+        "fuerte",
+        "gustaría",
+        "hablar",
+        "hoy",
+        "intentando",
+        "intentar",
+        "la",
+        "lo",
+        "lo más",
+        "otra",
+        "palabra",
+        "persona",
+        "posible",
+        "practicar",
+        "puedo",
+        "que",
+        "recordar",
+        "seguro",
+        "si",
+        "un poco",
+        "una"
+      ],
+      "phrases": [
+        "Estoy intentando",
+        "Hablo",
+        "Me gustaría",
+        "No estoy seguro",
+        "Quiero",
+        "Voy a",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "decir",
+        "en",
+        "español",
+        "explicar",
+        "hablar",
+        "hoy",
+        "intentar",
+        "la frase",
+        "lo más a menudo posible",
+        "lo más fuerte que puedo",
+        "lo que",
+        "otra",
+        "persona",
+        "practicar",
+        "puedo",
+        "recordar",
+        "si",
+        "un poco de",
+        "una palabra"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L04",
+          "type": "B",
+          "target": "contigo",
+          "known": "with you",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0002L02",
+          "type": "B",
+          "target": "aprender",
+          "known": "to learn",
+          "breakdown": null,
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L02",
+          "type": "C",
+          "target": "lo más a menudo posible",
+          "known": "as often as possible",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "a menudo",
+              "often"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ],
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L02",
+          "type": "B",
+          "target": "algo",
+          "known": "something",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L03",
+          "type": "B",
+          "target": "en",
+          "known": "in",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L02",
+          "type": "B",
+          "target": "practicar",
+          "known": "to practise",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L03",
+          "type": "B",
+          "target": "con",
+          "known": "with",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L04",
+          "type": "B",
+          "target": "otra",
+          "known": "another",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L05",
+          "type": "B",
+          "target": "persona",
+          "known": "person",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L02",
+          "type": "C",
+          "target": "una palabra",
+          "known": "a word",
+          "breakdown": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "palabra",
+              "word"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L02",
+          "type": "C",
+          "target": "lo más fuerte que puedo",
+          "known": "as hard as I can",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "fuerte",
+              "hard"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "puedo",
+              "I can"
+            ]
+          ],
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L03",
+          "type": "B",
+          "target": "hoy",
+          "known": "today",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L01",
+          "type": "B",
+          "target": "explicar",
+          "known": "to explain",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L02",
+          "type": "C",
+          "target": "lo que",
+          "known": "what",
+          "breakdown": [
+            [
+              "lo",
+              "it"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0009L01",
+          "type": "B",
+          "target": "Hablo",
+          "known": "I speak",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0009L02",
+          "type": "C",
+          "target": "un poco de",
+          "known": "a little",
+          "breakdown": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "de",
+              "of"
+            ]
+          ],
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0010L01",
+          "type": "C",
+          "target": "No estoy seguro",
+          "known": "I'm not sure",
+          "breakdown": [
+            [
+              "No",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L02",
+          "type": "B",
+          "target": "si",
+          "known": "if",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L03",
+          "type": "B",
+          "target": "puedo",
+          "known": "I can",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L04",
+          "type": "C",
+          "target": "la frase",
+          "known": "the sentence",
+          "breakdown": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "frase",
+              "sentence"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L05",
+          "type": "B",
+          "target": "completa",
+          "known": "whole",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0011L01",
+          "type": "C",
+          "target": "Me gustaría",
+          "known": "I'd like",
+          "breakdown": [
+            [
+              "Me",
+              "me"
+            ],
+            [
+              "gustaría",
+              "would like"
+            ]
+          ],
+          "seedId": "S0011"
+        }
+      ],
+      "count": 45
+    },
+    "validation": {
+      "errors": [
+        {
+          "type": "poor_tiling",
+          "basket": "S0011L02",
+          "phraseType": "e-phrase",
+          "index": 2,
+          "phrase": "Voy a poder explicar lo que quiero decir",
+          "remainder": "quiero",
+          "message": "E-phrase has untiled remainder: \"quiero\""
+        },
+        {
+          "type": "missing_basket_lego",
+          "basket": "S0011L02",
+          "phraseType": "d-phrase-2",
+          "index": 0,
+          "phrase": "Me gustaría",
+          "message": "D-phrase does not contain basket LEGO \"poder\""
+        }
+      ],
+      "warnings": [
+        {
+          "type": "short_e_phrase",
+          "basket": "S0011L02",
+          "phraseType": "e-phrase",
+          "index": 0,
+          "phrase": "Me gustaría poder hablar español",
+          "wordCount": 5,
+          "message": "E-phrase only has 5 words (ideal: 7-10)"
+        },
+        {
+          "type": "short_e_phrase",
+          "basket": "S0011L02",
+          "phraseType": "e-phrase",
+          "index": 1,
+          "phrase": "Quiero poder recordar la frase",
+          "wordCount": 5,
+          "message": "E-phrase only has 5 words (ideal: 7-10)"
+        }
+      ]
+    },
+    "basket": {
+      "lego": [
+        "poder",
+        "to be able"
+      ],
+      "e": [
+        [
+          "Me gustaría poder hablar español",
+          "I'd like to be able to speak Spanish"
+        ],
+        [
+          "Quiero poder recordar la frase",
+          "I want to be able to remember the sentence"
+        ],
+        [
+          "Voy a poder explicar lo que quiero decir",
+          "I'm going to be able to explain what I mean"
+        ]
+      ],
+      "d": {
+        "2": [
+          [
+            "Me gustaría",
+            "I'd like"
+          ],
+          [
+            "poder hablar",
+            "to be able to speak"
+          ]
+        ],
+        "3": [
+          [
+            "Me gustaría poder",
+            "I'd like to be able"
+          ],
+          [
+            "Quiero poder hablar",
+            "I want to be able to speak"
+          ]
+        ],
+        "4": [
+          [
+            "Me gustaría poder hablar",
+            "I'd like to be able to speak"
+          ],
+          [
+            "poder recordar la frase",
+            "to be able to remember the sentence"
+          ]
+        ],
+        "5": [
+          [
+            "Me gustaría poder hablar español",
+            "I'd like to be able to speak Spanish"
+          ],
+          [
+            "Quiero poder recordar la frase",
+            "I want to be able to remember the sentence"
+          ]
+        ]
+      }
+    }
+  },
+  "S0011L03": {
+    "whitelist": {
+      "words": [
+        "Estoy",
+        "Hablo",
+        "Me",
+        "No",
+        "Quiero",
+        "Voy",
+        "a",
+        "a menudo",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "de",
+        "decir",
+        "en",
+        "español",
+        "estoy",
+        "explicar",
+        "frase",
+        "fuerte",
+        "gustaría",
+        "hablar",
+        "hoy",
+        "intentando",
+        "intentar",
+        "la",
+        "lo",
+        "lo más",
+        "otra",
+        "palabra",
+        "persona",
+        "poder",
+        "posible",
+        "practicar",
+        "puedo",
+        "que",
+        "recordar",
+        "seguro",
+        "si",
+        "un poco",
+        "una"
+      ],
+      "phrases": [
+        "Estoy intentando",
+        "Hablo",
+        "Me gustaría",
+        "No estoy seguro",
+        "Quiero",
+        "Voy a",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "decir",
+        "en",
+        "español",
+        "explicar",
+        "hablar",
+        "hoy",
+        "intentar",
+        "la frase",
+        "lo más a menudo posible",
+        "lo más fuerte que puedo",
+        "lo que",
+        "otra",
+        "persona",
+        "poder",
+        "practicar",
+        "puedo",
+        "recordar",
+        "si",
+        "un poco de",
+        "una palabra"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L04",
+          "type": "B",
+          "target": "contigo",
+          "known": "with you",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0002L02",
+          "type": "B",
+          "target": "aprender",
+          "known": "to learn",
+          "breakdown": null,
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L02",
+          "type": "C",
+          "target": "lo más a menudo posible",
+          "known": "as often as possible",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "a menudo",
+              "often"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ],
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L02",
+          "type": "B",
+          "target": "algo",
+          "known": "something",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L03",
+          "type": "B",
+          "target": "en",
+          "known": "in",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L02",
+          "type": "B",
+          "target": "practicar",
+          "known": "to practise",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L03",
+          "type": "B",
+          "target": "con",
+          "known": "with",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L04",
+          "type": "B",
+          "target": "otra",
+          "known": "another",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L05",
+          "type": "B",
+          "target": "persona",
+          "known": "person",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L02",
+          "type": "C",
+          "target": "una palabra",
+          "known": "a word",
+          "breakdown": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "palabra",
+              "word"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L02",
+          "type": "C",
+          "target": "lo más fuerte que puedo",
+          "known": "as hard as I can",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "fuerte",
+              "hard"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "puedo",
+              "I can"
+            ]
+          ],
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L03",
+          "type": "B",
+          "target": "hoy",
+          "known": "today",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L01",
+          "type": "B",
+          "target": "explicar",
+          "known": "to explain",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L02",
+          "type": "C",
+          "target": "lo que",
+          "known": "what",
+          "breakdown": [
+            [
+              "lo",
+              "it"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0009L01",
+          "type": "B",
+          "target": "Hablo",
+          "known": "I speak",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0009L02",
+          "type": "C",
+          "target": "un poco de",
+          "known": "a little",
+          "breakdown": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "de",
+              "of"
+            ]
+          ],
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0010L01",
+          "type": "C",
+          "target": "No estoy seguro",
+          "known": "I'm not sure",
+          "breakdown": [
+            [
+              "No",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L02",
+          "type": "B",
+          "target": "si",
+          "known": "if",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L03",
+          "type": "B",
+          "target": "puedo",
+          "known": "I can",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L04",
+          "type": "C",
+          "target": "la frase",
+          "known": "the sentence",
+          "breakdown": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "frase",
+              "sentence"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L05",
+          "type": "B",
+          "target": "completa",
+          "known": "whole",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0011L01",
+          "type": "C",
+          "target": "Me gustaría",
+          "known": "I'd like",
+          "breakdown": [
+            [
+              "Me",
+              "me"
+            ],
+            [
+              "gustaría",
+              "would like"
+            ]
+          ],
+          "seedId": "S0011"
+        },
+        {
+          "id": "S0011L02",
+          "type": "B",
+          "target": "poder",
+          "known": "to be able",
+          "breakdown": null,
+          "seedId": "S0011"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0011"
+        }
+      ],
+      "count": 47
+    },
+    "validation": {
+      "errors": [
+        {
+          "type": "poor_tiling",
+          "basket": "S0011L03",
+          "phraseType": "e-phrase",
+          "index": 0,
+          "phrase": "Me gustaría poder hablar después de que termines",
+          "remainder": "termines",
+          "message": "E-phrase has untiled remainder: \"termines\""
+        },
+        {
+          "type": "poor_tiling",
+          "basket": "S0011L03",
+          "phraseType": "e-phrase",
+          "index": 1,
+          "phrase": "Quiero aprender después de que hables",
+          "remainder": "hables",
+          "message": "E-phrase has untiled remainder: \"hables\""
+        },
+        {
+          "type": "poor_tiling",
+          "basket": "S0011L03",
+          "phraseType": "e-phrase",
+          "index": 2,
+          "phrase": "Voy a intentar recordar después de que expliques",
+          "remainder": "expliques",
+          "message": "E-phrase has untiled remainder: \"expliques\""
+        },
+        {
+          "type": "poor_tiling",
+          "basket": "S0011L03",
+          "phraseType": "d-phrase-3",
+          "index": 1,
+          "phrase": "después de que termines",
+          "remainder": "termines",
+          "message": "D-phrase has untiled remainder: \"termines\""
+        },
+        {
+          "type": "poor_tiling",
+          "basket": "S0011L03",
+          "phraseType": "d-phrase-5",
+          "index": 1,
+          "phrase": "Quiero aprender después de que hables",
+          "remainder": "hables",
+          "message": "D-phrase has untiled remainder: \"hables\""
+        }
+      ],
+      "warnings": [
+        {
+          "type": "short_e_phrase",
+          "basket": "S0011L03",
+          "phraseType": "e-phrase",
+          "index": 1,
+          "phrase": "Quiero aprender después de que hables",
+          "wordCount": 6,
+          "message": "E-phrase only has 6 words (ideal: 7-10)"
+        }
+      ]
+    },
+    "basket": {
+      "lego": [
+        "después de que",
+        "after"
+      ],
+      "e": [
+        [
+          "Me gustaría poder hablar después de que termines",
+          "I'd like to be able to speak after you finish"
+        ],
+        [
+          "Quiero aprender después de que hables",
+          "I want to learn after you speak"
+        ],
+        [
+          "Voy a intentar recordar después de que expliques",
+          "I'm going to try to remember after you explain"
+        ]
+      ],
+      "d": {
+        "2": [
+          [
+            "después de que",
+            "after"
+          ]
+        ],
+        "3": [
+          [
+            "hablar después de que",
+            "to speak after"
+          ],
+          [
+            "después de que termines",
+            "after you finish"
+          ]
+        ],
+        "4": [
+          [
+            "poder hablar después de que",
+            "to be able to speak after"
+          ],
+          [
+            "Me gustaría después de que",
+            "I'd like after"
+          ]
+        ],
+        "5": [
+          [
+            "Me gustaría poder hablar después de que",
+            "I'd like to be able to speak after"
+          ],
+          [
+            "Quiero aprender después de que hables",
+            "I want to learn after you speak"
+          ]
+        ]
+      }
+    }
+  },
+  "S0011L04": {
+    "whitelist": {
+      "words": [
+        "Estoy",
+        "Hablo",
+        "Me",
+        "No",
+        "Quiero",
+        "Voy",
+        "a",
+        "a menudo",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "de",
+        "decir",
+        "después",
+        "en",
+        "español",
+        "estoy",
+        "explicar",
+        "frase",
+        "fuerte",
+        "gustaría",
+        "hablar",
+        "hoy",
+        "intentando",
+        "intentar",
+        "la",
+        "lo",
+        "lo más",
+        "otra",
+        "palabra",
+        "persona",
+        "poder",
+        "posible",
+        "practicar",
+        "puedo",
+        "que",
+        "recordar",
+        "seguro",
+        "si",
+        "un poco",
+        "una"
+      ],
+      "phrases": [
+        "Estoy intentando",
+        "Hablo",
+        "Me gustaría",
+        "No estoy seguro",
+        "Quiero",
+        "Voy a",
+        "ahora",
+        "algo",
+        "aprender",
+        "completa",
+        "con",
+        "contigo",
+        "cómo",
+        "decir",
+        "después de que",
+        "en",
+        "español",
+        "explicar",
+        "hablar",
+        "hoy",
+        "intentar",
+        "la frase",
+        "lo más a menudo posible",
+        "lo más fuerte que puedo",
+        "lo que",
+        "otra",
+        "persona",
+        "poder",
+        "practicar",
+        "puedo",
+        "recordar",
+        "si",
+        "un poco de",
+        "una palabra"
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L04",
+          "type": "B",
+          "target": "contigo",
+          "known": "with you",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0001"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0002L02",
+          "type": "B",
+          "target": "aprender",
+          "known": "to learn",
+          "breakdown": null,
+          "seedId": "S0002"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L02",
+          "type": "C",
+          "target": "lo más a menudo posible",
+          "known": "as often as possible",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "a menudo",
+              "often"
+            ],
+            [
+              "posible",
+              "possible"
+            ]
+          ],
+          "seedId": "S0003"
+        },
+        {
+          "id": "S0003L01",
+          "type": "B",
+          "target": "cómo",
+          "known": "how",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L02",
+          "type": "B",
+          "target": "algo",
+          "known": "something",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0004L03",
+          "type": "B",
+          "target": "en",
+          "known": "in",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0004"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L02",
+          "type": "B",
+          "target": "practicar",
+          "known": "to practise",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L03",
+          "type": "B",
+          "target": "con",
+          "known": "with",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L04",
+          "type": "B",
+          "target": "otra",
+          "known": "another",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0005L05",
+          "type": "B",
+          "target": "persona",
+          "known": "person",
+          "breakdown": null,
+          "seedId": "S0005"
+        },
+        {
+          "id": "S0002L01",
+          "type": "C",
+          "target": "Estoy intentando",
+          "known": "I'm trying",
+          "breakdown": [
+            [
+              "Estoy",
+              "I am"
+            ],
+            [
+              "intentando",
+              "trying"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0006L02",
+          "type": "C",
+          "target": "una palabra",
+          "known": "a word",
+          "breakdown": [
+            [
+              "una",
+              "a"
+            ],
+            [
+              "palabra",
+              "word"
+            ]
+          ],
+          "seedId": "S0006"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L02",
+          "type": "C",
+          "target": "lo más fuerte que puedo",
+          "known": "as hard as I can",
+          "breakdown": [
+            [
+              "lo más",
+              "as"
+            ],
+            [
+              "fuerte",
+              "hard"
+            ],
+            [
+              "que",
+              "that"
+            ],
+            [
+              "puedo",
+              "I can"
+            ]
+          ],
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0007L03",
+          "type": "B",
+          "target": "hoy",
+          "known": "today",
+          "breakdown": null,
+          "seedId": "S0007"
+        },
+        {
+          "id": "S0005L01",
+          "type": "C",
+          "target": "Voy a",
+          "known": "I'm going to",
+          "breakdown": [
+            [
+              "Voy",
+              "I go"
+            ],
+            [
+              "a",
+              "to"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0007L01",
+          "type": "B",
+          "target": "intentar",
+          "known": "to try",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L01",
+          "type": "B",
+          "target": "explicar",
+          "known": "to explain",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0008L02",
+          "type": "C",
+          "target": "lo que",
+          "known": "what",
+          "breakdown": [
+            [
+              "lo",
+              "it"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ],
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0001L01",
+          "type": "B",
+          "target": "Quiero",
+          "known": "I want",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0004L01",
+          "type": "B",
+          "target": "decir",
+          "known": "to say",
+          "breakdown": null,
+          "seedId": "S0008"
+        },
+        {
+          "id": "S0009L01",
+          "type": "B",
+          "target": "Hablo",
+          "known": "I speak",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0009L02",
+          "type": "C",
+          "target": "un poco de",
+          "known": "a little",
+          "breakdown": [
+            [
+              "un poco",
+              "a little"
+            ],
+            [
+              "de",
+              "of"
+            ]
+          ],
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L03",
+          "type": "B",
+          "target": "español",
+          "known": "Spanish",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0001L05",
+          "type": "B",
+          "target": "ahora",
+          "known": "now",
+          "breakdown": null,
+          "seedId": "S0009"
+        },
+        {
+          "id": "S0010L01",
+          "type": "C",
+          "target": "No estoy seguro",
+          "known": "I'm not sure",
+          "breakdown": [
+            [
+              "No",
+              "not"
+            ],
+            [
+              "estoy",
+              "I am"
+            ],
+            [
+              "seguro",
+              "sure"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L02",
+          "type": "B",
+          "target": "si",
+          "known": "if",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L03",
+          "type": "B",
+          "target": "puedo",
+          "known": "I can",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0006L01",
+          "type": "B",
+          "target": "recordar",
+          "known": "to remember",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L04",
+          "type": "C",
+          "target": "la frase",
+          "known": "the sentence",
+          "breakdown": [
+            [
+              "la",
+              "the"
+            ],
+            [
+              "frase",
+              "sentence"
+            ]
+          ],
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0010L05",
+          "type": "B",
+          "target": "completa",
+          "known": "whole",
+          "breakdown": null,
+          "seedId": "S0010"
+        },
+        {
+          "id": "S0011L01",
+          "type": "C",
+          "target": "Me gustaría",
+          "known": "I'd like",
+          "breakdown": [
+            [
+              "Me",
+              "me"
+            ],
+            [
+              "gustaría",
+              "would like"
+            ]
+          ],
+          "seedId": "S0011"
+        },
+        {
+          "id": "S0011L02",
+          "type": "B",
+          "target": "poder",
+          "known": "to be able",
+          "breakdown": null,
+          "seedId": "S0011"
+        },
+        {
+          "id": "S0001L02",
+          "type": "B",
+          "target": "hablar",
+          "known": "to speak",
+          "breakdown": null,
+          "seedId": "S0011"
+        },
+        {
+          "id": "S0011L03",
+          "type": "C",
+          "target": "después de que",
+          "known": "after",
+          "breakdown": [
+            [
+              "después",
+              "after"
+            ],
+            [
+              "de",
+              "of"
+            ],
+            [
+              "que",
+              "that"
+            ]
+          ],
+          "seedId": "S0011"
+        }
+      ],
+      "count": 48
+    },
+    "validation": {
+      "errors": [
+        {
+          "type": "poor_tiling",
+          "basket": "S0011L04",
+          "phraseType": "d-phrase-2",
+          "index": 0,
+          "phrase": "que termines",
+          "remainder": "que",
+          "message": "D-phrase has untiled remainder: \"que\""
+        }
+      ],
+      "warnings": []
+    },
+    "basket": {
+      "lego": [
+        "termines",
+        "you finish"
+      ],
+      "e": [
+        [
+          "Me gustaría poder hablar después de que termines",
+          "I'd like to be able to speak after you finish"
+        ],
+        [
+          "Quiero hablar español después de que termines",
+          "I want to speak Spanish after you finish"
+        ],
+        [
+          "Voy a intentar recordar después de que termines",
+          "I'm going to try to remember after you finish"
+        ]
+      ],
+      "d": {
+        "2": [
+          [
+            "que termines",
+            "you finish"
+          ]
+        ],
+        "3": [
+          [
+            "después de que termines",
+            "after you finish"
+          ]
+        ],
+        "4": [
+          [
+            "hablar después de que termines",
+            "to speak after you finish"
+          ],
+          [
+            "poder hablar después de que termines",
+            "to be able to speak after you finish"
+          ]
+        ],
+        "5": [
+          [
+            "Me gustaría poder hablar después de que termines",
+            "I'd like to be able to speak after you finish"
+          ],
+          [
+            "Quiero hablar español después de que termines",
+            "I want to speak Spanish after you finish"
+          ]
+        ]
+      }
+    }
+  }
+}

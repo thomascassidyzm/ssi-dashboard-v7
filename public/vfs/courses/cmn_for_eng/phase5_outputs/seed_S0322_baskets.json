@@ -1,0 +1,298 @@
+{
+  "S0322L01": {
+    "lego": [
+      "She said that she needs to",
+      "她说她需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "She said that she needs to",
+        "她说她需要",
+        null,
+        1
+      ],
+      [
+        "She said that she needs to help",
+        "她说她需要帮",
+        null,
+        2
+      ],
+      [
+        "She said that she needs to bring it",
+        "她说她需要带它",
+        null,
+        3
+      ],
+      [
+        "She said that she needs to use the room",
+        "她说她需要用房间",
+        null,
+        3
+      ],
+      [
+        "She said that she needs to watch the game tonight",
+        "她说她需要今晚看比赛",
+        null,
+        4
+      ],
+      [
+        "She said that she needs to bring her brother tomorrow",
+        "她说她需要明天带弟弟",
+        null,
+        4
+      ],
+      [
+        "She said that she needs to put it on the table",
+        "她说她需要把它放在桌子上",
+        null,
+        5
+      ],
+      [
+        "She said that she needs to buy another book this year",
+        "她说她需要今年买另一本书",
+        null,
+        5
+      ],
+      [
+        "She said that she needs to use the other room tomorrow night",
+        "她说她需要明天晚上用另一个房间",
+        null,
+        6
+      ],
+      [
+        "She said that she needs to bring all five books on Monday",
+        "她说她需要星期一带所有五本书来",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "说",
+        "said"
+      ],
+      [
+        "她",
+        "she"
+      ],
+      [
+        "需要",
+        "needs to"
+      ]
+    ]
+  },
+  "S0322L02": {
+    "lego": [
+      "needs to read",
+      "需要读"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0322L01",
+        "known": "She said that she needs to",
+        "target": "她说她需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Needs to read",
+        "需要读",
+        null,
+        1
+      ],
+      [
+        "She needs to read",
+        "她需要读",
+        null,
+        2
+      ],
+      [
+        "She needs to read this book",
+        "她需要读这本书",
+        null,
+        3
+      ],
+      [
+        "He needs to read it tonight",
+        "他需要今晚读它",
+        null,
+        3
+      ],
+      [
+        "She said that she needs to read",
+        "她说她需要读",
+        null,
+        4
+      ],
+      [
+        "She needs to read all five books",
+        "她需要读所有五本书",
+        null,
+        4
+      ],
+      [
+        "She said that she needs to read this book",
+        "她说她需要读这本书",
+        null,
+        5
+      ],
+      [
+        "She needs to read another book tomorrow night",
+        "她需要明天晚上读另一本书",
+        null,
+        5
+      ],
+      [
+        "She said that she needs to read all the books",
+        "她说她需要读所有的书",
+        null,
+        6
+      ],
+      [
+        "She said that she needs to read it tomorrow night",
+        "她说她需要明天晚上读它",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "需要",
+        "needs to"
+      ],
+      [
+        "读",
+        "read/to read"
+      ]
+    ]
+  },
+  "S0322L03": {
+    "lego": [
+      "the same book",
+      "同一本书"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0322L01",
+        "known": "She said that she needs to",
+        "target": "她说她需要",
+        "type": "M"
+      },
+      {
+        "id": "S0322L02",
+        "known": "needs to read",
+        "target": "需要读",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The same book",
+        "同一本书",
+        null,
+        1
+      ],
+      [
+        "Read the same book",
+        "读同一本书",
+        null,
+        2
+      ],
+      [
+        "She needs to read the same book",
+        "她需要读同一本书",
+        null,
+        3
+      ],
+      [
+        "He wants the same book tonight",
+        "他今晚想要同一本书",
+        null,
+        3
+      ],
+      [
+        "She said that she needs to read the same book",
+        "她说她需要读同一本书",
+        null,
+        4
+      ],
+      [
+        "She needs to bring the same book tomorrow",
+        "她需要明天带同一本书",
+        null,
+        4
+      ],
+      [
+        "She said that she needs to read the same book tonight",
+        "她说她需要今晚读同一本书",
+        null,
+        5
+      ],
+      [
+        "She needs to use the same room tomorrow night",
+        "她需要明天晚上用同一个房间",
+        null,
+        5
+      ],
+      [
+        "She said that she needs to buy the same book this year",
+        "她说她需要今年买同一本书",
+        null,
+        6
+      ],
+      [
+        "She said that she needs to read the same book.",
+        "她说她需要读同一本书。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "同一",
+        "the same"
+      ],
+      [
+        "本",
+        "(measure word)"
+      ],
+      [
+        "书",
+        "book"
+      ]
+    ]
+  }
+}

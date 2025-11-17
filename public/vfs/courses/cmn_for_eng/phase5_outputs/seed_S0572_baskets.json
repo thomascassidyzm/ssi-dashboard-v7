@@ -1,0 +1,733 @@
+{
+  "S0572L01": {
+    "lego": [
+      "have you forgotten",
+      "你忘记"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Have you forgotten?",
+        "你忘记了吗？",
+        null,
+        1
+      ],
+      [
+        "Have you forgotten that?",
+        "你忘记那个了吗？",
+        null,
+        1
+      ],
+      [
+        "I think you've forgotten",
+        "我觉得你忘记了",
+        null,
+        2
+      ],
+      [
+        "Have you forgotten what I said?",
+        "你忘记我说的了吗？",
+        null,
+        2
+      ],
+      [
+        "I'm not convinced you've forgotten",
+        "我不相信你忘记了",
+        null,
+        3
+      ],
+      [
+        "Have you forgotten what happened?",
+        "你忘记发生了什么了吗？",
+        null,
+        3
+      ],
+      [
+        "Have you forgotten what they said?",
+        "你忘记他们说的了吗？",
+        null,
+        4
+      ],
+      [
+        "I think you've forgotten that was a good idea",
+        "我觉得你忘记那是个好主意",
+        null,
+        4
+      ],
+      [
+        "Have you forgotten what I told you yesterday?",
+        "你忘记我昨天告诉你的了吗？",
+        null,
+        5
+      ],
+      [
+        "I'm not convinced you've forgotten what happened last time",
+        "我不相信你忘记上次发生的事了",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "忘记",
+        "forget/forgotten"
+      ]
+    ]
+  },
+  "S0572L02": {
+    "lego": [
+      "last time",
+      "上次"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "have you forgotten",
+        "你忘记"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Last time",
+        "上次",
+        null,
+        1
+      ],
+      [
+        "Last time I came",
+        "上次我来",
+        null,
+        1
+      ],
+      [
+        "I forgot last time",
+        "我上次忘记了",
+        null,
+        2
+      ],
+      [
+        "Have you forgotten last time?",
+        "你忘记上次了吗？",
+        null,
+        2
+      ],
+      [
+        "Last time they visited us",
+        "上次他们来看我们",
+        null,
+        3
+      ],
+      [
+        "I think that happened last time",
+        "我觉得那上次发生了",
+        null,
+        3
+      ],
+      [
+        "Have you forgotten what happened last time?",
+        "你忘记上次发生了什么吗？",
+        null,
+        4
+      ],
+      [
+        "Last time I was here was very special",
+        "上次我在这里很特别",
+        null,
+        4
+      ],
+      [
+        "I'm not convinced that happened last time",
+        "我不相信那上次发生了",
+        null,
+        5
+      ],
+      [
+        "Have you forgotten what they said last time they came?",
+        "你忘记他们上次来时说的话了吗？",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "上次",
+        "last time"
+      ]
+    ]
+  },
+  "S0572L03": {
+    "lego": [
+      "visited us",
+      "来看我们"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "have you forgotten",
+        "你忘记"
+      ],
+      [
+        "last time",
+        "上次"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "They visited us",
+        "他们来看我们",
+        null,
+        1
+      ],
+      [
+        "They visited us last time",
+        "他们上次来看我们",
+        null,
+        1
+      ],
+      [
+        "I think they visited us",
+        "我觉得他们来看我们",
+        null,
+        2
+      ],
+      [
+        "They came to visit us",
+        "他们来看我们",
+        null,
+        2
+      ],
+      [
+        "Have you forgotten they visited us?",
+        "你忘记他们来看我们了吗？",
+        null,
+        3
+      ],
+      [
+        "They visited us last time",
+        "他们上次来看我们",
+        null,
+        3
+      ],
+      [
+        "I remember when they visited us",
+        "我记得他们来看我们的时候",
+        null,
+        4
+      ],
+      [
+        "Last time they visited us was special",
+        "上次他们来看我们很特别",
+        null,
+        4
+      ],
+      [
+        "Have you forgotten when they visited us?",
+        "你忘记他们什么时候来看我们了吗？",
+        null,
+        5
+      ],
+      [
+        "I'm not convinced they would want to visit us",
+        "我不相信他们会想来看我们",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "来",
+        "came"
+      ],
+      [
+        "看",
+        "to see"
+      ],
+      [
+        "我们",
+        "us"
+      ]
+    ]
+  },
+  "S0572L04": {
+    "lego": [
+      "they visited us",
+      "他们来看我们"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "have you forgotten",
+        "你忘记"
+      ],
+      [
+        "last time",
+        "上次"
+      ],
+      [
+        "visited us",
+        "来看我们"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "They visited us",
+        "他们来看我们",
+        null,
+        1
+      ],
+      [
+        "They visited us yesterday",
+        "他们昨天来看我们",
+        null,
+        1
+      ],
+      [
+        "I think they visited us",
+        "我觉得他们来看我们",
+        null,
+        2
+      ],
+      [
+        "They visited us last time",
+        "他们上次来看我们",
+        null,
+        2
+      ],
+      [
+        "Have you forgotten they visited us?",
+        "你忘记他们来看我们了吗？",
+        null,
+        3
+      ],
+      [
+        "They visited us last time too",
+        "他们上次也来看我们了",
+        null,
+        3
+      ],
+      [
+        "I remember when they visited us",
+        "我记得他们来看我们的时候",
+        null,
+        4
+      ],
+      [
+        "They visited us and we were happy",
+        "他们来看我们，我们很高兴",
+        null,
+        4
+      ],
+      [
+        "Have you forgotten what happened when they visited us?",
+        "你忘记他们来看我们时发生了什么吗？",
+        null,
+        5
+      ],
+      [
+        "I'm not sure that would be a good idea when they visit us",
+        "我不确定他们来看我们时那会是个好主意",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "他们",
+        "they"
+      ],
+      [
+        "来",
+        "came"
+      ],
+      [
+        "看",
+        "to see"
+      ],
+      [
+        "我们",
+        "us"
+      ]
+    ]
+  },
+  "S0572L05": {
+    "lego": [
+      "the last time they visited us",
+      "上次他们来看我们时"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "have you forgotten",
+        "你忘记"
+      ],
+      [
+        "last time",
+        "上次"
+      ],
+      [
+        "visited us",
+        "来看我们"
+      ],
+      [
+        "they visited us",
+        "他们来看我们"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "The last time they visited us",
+        "上次他们来看我们时",
+        null,
+        1
+      ],
+      [
+        "The last time they visited us was good",
+        "上次他们来看我们时很好",
+        null,
+        2
+      ],
+      [
+        "I remember the last time they visited us",
+        "我记得上次他们来看我们时",
+        null,
+        2
+      ],
+      [
+        "The last time they visited us was special",
+        "上次他们来看我们时很特别",
+        null,
+        3
+      ],
+      [
+        "Have you forgotten the last time they visited us?",
+        "你忘记上次他们来看我们时了吗？",
+        null,
+        3
+      ],
+      [
+        "The last time they visited us we were happy",
+        "上次他们来看我们时我们很高兴",
+        null,
+        4
+      ],
+      [
+        "I think the last time they visited us was good",
+        "我觉得上次他们来看我们时很好",
+        null,
+        4
+      ],
+      [
+        "What happened the last time they visited us?",
+        "上次他们来看我们时发生了什么？",
+        null,
+        5
+      ],
+      [
+        "Have you forgotten what happened the last time they visited us?",
+        "你忘记上次他们来看我们时发生了什么吗？",
+        null,
+        5
+      ],
+      [
+        "I'm not convinced you remember the last time they visited us",
+        "我不相信你记得上次他们来看我们时",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "上次",
+        "last time"
+      ],
+      [
+        "他们",
+        "they"
+      ],
+      [
+        "来看",
+        "visited"
+      ],
+      [
+        "我们",
+        "us"
+      ],
+      [
+        "时",
+        "when/at the time"
+      ]
+    ]
+  },
+  "S0572L06": {
+    "lego": [
+      "what happened",
+      "发生了什么"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "have you forgotten",
+        "你忘记"
+      ],
+      [
+        "last time",
+        "上次"
+      ],
+      [
+        "visited us",
+        "来看我们"
+      ],
+      [
+        "they visited us",
+        "他们来看我们"
+      ],
+      [
+        "the last time they visited us",
+        "上次他们来看我们时"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "What happened?",
+        "发生了什么？",
+        null,
+        1
+      ],
+      [
+        "What happened yesterday?",
+        "昨天发生了什么？",
+        null,
+        1
+      ],
+      [
+        "I forgot what happened",
+        "我忘记发生了什么了",
+        null,
+        2
+      ],
+      [
+        "What happened last time?",
+        "上次发生了什么？",
+        null,
+        2
+      ],
+      [
+        "Have you forgotten what happened?",
+        "你忘记发生了什么了吗？",
+        null,
+        3
+      ],
+      [
+        "I think I know what happened",
+        "我觉得我知道发生了什么",
+        null,
+        3
+      ],
+      [
+        "What happened when they visited us?",
+        "他们来看我们时发生了什么？",
+        null,
+        4
+      ],
+      [
+        "Have you forgotten what happened yesterday?",
+        "你忘记昨天发生了什么了吗？",
+        null,
+        4
+      ],
+      [
+        "What happened the last time they visited us?",
+        "上次他们来看我们时发生了什么？",
+        null,
+        5
+      ],
+      [
+        "I'm not convinced you remember what happened last time",
+        "我不相信你记得上次发生了什么",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "发生",
+        "happen"
+      ],
+      [
+        "了",
+        "past marker"
+      ],
+      [
+        "什么",
+        "what"
+      ]
+    ]
+  },
+  "S0572L07": {
+    "lego": [
+      "what happened?",
+      "发生了什么吗"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "have you forgotten",
+        "你忘记"
+      ],
+      [
+        "last time",
+        "上次"
+      ],
+      [
+        "visited us",
+        "来看我们"
+      ],
+      [
+        "they visited us",
+        "他们来看我们"
+      ],
+      [
+        "the last time they visited us",
+        "上次他们来看我们时"
+      ],
+      [
+        "what happened",
+        "发生了什么"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "What happened?",
+        "发生了什么吗？",
+        null,
+        1
+      ],
+      [
+        "Do you know what happened?",
+        "你知道发生了什么吗？",
+        null,
+        1
+      ],
+      [
+        "What happened yesterday?",
+        "昨天发生了什么吗？",
+        null,
+        2
+      ],
+      [
+        "What happened last time?",
+        "上次发生了什么吗？",
+        null,
+        2
+      ],
+      [
+        "Have you forgotten what happened?",
+        "你忘记发生了什么了吗？",
+        null,
+        3
+      ],
+      [
+        "Do you remember what happened?",
+        "你记得发生了什么吗？",
+        null,
+        3
+      ],
+      [
+        "What happened when they came?",
+        "他们来的时候发生了什么吗？",
+        null,
+        4
+      ],
+      [
+        "What happened when they visited us?",
+        "他们来看我们时发生了什么吗？",
+        null,
+        4
+      ],
+      [
+        "What happened the last time they visited us?",
+        "上次他们来看我们时发生了什么吗？",
+        null,
+        5
+      ],
+      [
+        "Have you forgotten what happened the last time they visited us?",
+        "你忘记上次他们来看我们时发生了什么吗？",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "发生",
+        "happen"
+      ],
+      [
+        "了",
+        "past marker"
+      ],
+      [
+        "什么",
+        "what"
+      ],
+      [
+        "吗",
+        "question particle"
+      ]
+    ]
+  }
+}

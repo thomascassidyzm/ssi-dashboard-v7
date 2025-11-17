@@ -1,0 +1,55 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0574",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "假期对每个人都很特别。",
+    "target": "The holidays are very special for everyone."
+  },
+  "legos": {
+    "S0574L04": {
+      "lego": ["for everyone","对每个人"],
+      "type": "M",
+      "practice_phrases": [
+        ["for everyone", "对每个人", null, 2],
+        ["for everyone?", "对每个人吗？", null, 2],
+        ["It's for everyone", "它对每个人", null, 3],
+        ["This is for everyone", "这是对每个人", null, 4],
+        ["The ticket is for everyone", "票是对每个人", null, 5],
+        ["Is the choice for everyone?", "选择是对每个人吗？", null, 5],
+        ["I think it's for everyone", "我想这是对每个人", null, 5],
+        ["The holidays are for everyone", "假期是对每个人", null, 5],
+        ["Have you forgotten it's for everyone?", "你忘记了它对每个人吗？", null, 6],
+        ["I'm convinced the holidays are for everyone", "我相信假期对每个人", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0574L05": {
+      "lego": ["very special for everyone","对每个人都很特别"],
+      "type": "M",
+      "practice_phrases": [
+        ["very special for everyone", "对每个人都很特别", null, 4],
+        ["It's very special for everyone", "它对每个人都很特别", null, 5],
+        ["That's very special for everyone", "那对每个人都很特别", null, 5],
+        ["The choice is very special for everyone", "选择对每个人都很特别", null, 6],
+        ["I think it's very special for everyone", "我想它对每个人都很特别", null, 6],
+        ["The holidays are very special for everyone", "假期对每个人都很特别", null, 6],
+        ["It has been very special for everyone", "它一直对每个人都很特别", null, 6],
+        ["Last time was very special for everyone", "上次对每个人都很特别", null, 6],
+        ["Waiting has been very special for everyone", "等待对每个人都很特别", null, 6],
+        ["The holidays are very special for everyone.", "假期对每个人都很特别。", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 6
+      }
+    }
+  }
+}

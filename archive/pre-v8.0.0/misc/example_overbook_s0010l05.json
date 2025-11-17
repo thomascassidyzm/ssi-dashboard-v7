@@ -1,0 +1,118 @@
+{
+  "lego_id": "S0010L05",
+  "lego": ["the whole sentence", "toda la oración"],
+  "available_legos": 30,
+  "available_patterns": ["P01", "P02", "P12", "P03", "P05", "P06", "P18"],
+
+  "OVERBOOKING_STRATEGY": "Generate 15 high-quality phrases, filter to best 10",
+
+  "all_generated_phrases": [
+    {
+      "phrase": ["the whole sentence", "toda la oración", null, 2],
+      "quality": "✓ KEEP - Basic LEGO itself",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I want to remember the whole sentence", "Quiero recordar toda la oración", "P01", 4],
+      "quality": "✓ KEEP - Natural, uses P01 pattern",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I'm trying to remember the whole sentence", "Estoy intentando recordar toda la oración", "P02", 4],
+      "quality": "✓ KEEP - Natural, uses P02 pattern",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I'm going to remember the whole sentence", "Voy a recordar toda la oración", "P03", 4],
+      "quality": "✓ KEEP - Natural, uses P03 pattern",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I can remember the whole sentence", "Puedo recordar toda la oración", "P18", 4],
+      "quality": "✓ KEEP - Natural, uses P18 pattern",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I'm not sure if I can remember the whole sentence", "No estoy seguro si puedo recordar toda la oración", "P06", 7],
+      "quality": "✓ KEEP - Full seed! Complex, natural",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["how to remember the whole sentence", "cómo recordar toda la oración", "P12", 3],
+      "quality": "✓ KEEP - Natural, uses P12 pattern",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I can't remember the whole sentence now", "No puedo recordar toda la oración ahora", "P18", 4],
+      "quality": "✓ KEEP - Natural negation with time word",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I speak the whole sentence", "Hablo toda la oración", "P05", 3],
+      "quality": "✓ KEEP - Simple present tense",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I want to explain the whole sentence", "Quiero explicar toda la oración", "P01", 4],
+      "quality": "✓ KEEP - Natural, uses different verb",
+      "gate_check": "✓ PASS"
+    },
+    {
+      "phrase": ["I need to understand the whole sentence", "Necesito entender toda la oración", "P01", 4],
+      "quality": "❌ DISCARD - 'necesito' and 'entender' not taught until S0025",
+      "gate_check": "❌ GATE VIOLATION"
+    },
+    {
+      "phrase": ["I should write the whole sentence", "Debería escribir toda la oración", null, 3],
+      "quality": "❌ DISCARD - 'debería' (conditional) not taught yet",
+      "gate_check": "❌ GATE VIOLATION"
+    },
+    {
+      "phrase": ["You know the whole sentence", "Sabes toda la oración", "P05", 3],
+      "quality": "❌ DISCARD - 'saber' not taught until S0012",
+      "gate_check": "❌ GATE VIOLATION"
+    },
+    {
+      "phrase": ["the whole sentence is difficult", "toda la oración es difícil", null, 3],
+      "quality": "❌ DISCARD - Slightly awkward, 'difícil' not taught yet",
+      "gate_check": "❌ GATE VIOLATION"
+    },
+    {
+      "phrase": ["I'm trying learning the whole sentence", "Estoy intentando aprendiendo toda la oración", "P02", 4],
+      "quality": "❌ DISCARD - Grammatically awkward (double gerund)",
+      "gate_check": "✓ PASS but awkward"
+    }
+  ],
+
+  "filtering_results": {
+    "total_generated": 15,
+    "passed_gate": 11,
+    "grammatically_sound": 10,
+    "final_selected": 10
+  },
+
+  "final_basket": [
+    ["the whole sentence", "toda la oración", null, 2],
+    ["I want to remember the whole sentence", "Quiero recordar toda la oración", "P01", 4],
+    ["I'm trying to remember the whole sentence", "Estoy intentando recordar toda la oración", "P02", 4],
+    ["I'm going to remember the whole sentence", "Voy a recordar toda la oración", "P03", 4],
+    ["I can remember the whole sentence", "Puedo recordar toda la oración", "P18", 4],
+    ["I'm not sure if I can remember the whole sentence", "No estoy seguro si puedo recordar toda la oración", "P06", 7],
+    ["how to remember the whole sentence", "cómo recordar toda la oración", "P12", 3],
+    ["I can't remember the whole sentence now", "No puedo recordar toda la oración ahora", "P18", 4],
+    ["I speak the whole sentence", "Hablo toda la oración", "P05", 3],
+    ["I want to explain the whole sentence", "Quiero explicar toda la oración", "P01", 4]
+  ],
+
+  "discarded_reasons": {
+    "gate_violations": [
+      "necesito/entender (not taught until S0025)",
+      "debería (conditional not introduced)",
+      "saber (not taught until S0012)",
+      "difícil (adjective not taught)"
+    ],
+    "grammatical_issues": [
+      "double gerund (intentando aprendiendo)"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "S0666L02": {
+    "lego": ["think what / what do (you) think","认为怎么样"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["What do you think?","你认为怎么样？",null,3],
+      ["think what","认为怎么样",null,2],
+      ["What do you all think?","你们大家都认为怎么样？",null,4],
+      ["What do you want?","你想要怎么样？",null,3],
+      ["What do you all want?","你们大家都想要怎么样？",null,4],
+      ["What do you all say?","你们大家都说怎么样？",null,4],
+      ["What do you all feel?","你们大家都感觉怎么样？",null,4],
+      ["I think you all can help","我认为你们大家都能帮",null,6],
+      ["What do you all think you want to go?","你们大家都认为想去怎么样？",null,8],
+      ["What do you think you all said?","你认为你们大家说的话怎么样？",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0666L03": {
+    "lego": ["how / what about / how is it","怎么样"],
+    "type": "A",
+    "current_seed_legos_available": [["think what / what do (you) think","认为怎么样"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["how","怎么样",null,1],
+      ["how is it","怎么样",null,2],
+      ["how do you feel?","你感觉怎么样？",null,3],
+      ["how do you all feel?","你们大家感觉怎么样？",null,4],
+      ["What do you think?","你认为怎么样？",null,3],
+      ["Do you all want to go?","你们大家都想去怎么样？",null,5],
+      ["Could you all say that?","你们大家能说那个怎么样？",null,5],
+      ["Are you all ready?","你们大家都准备好了怎么样？",null,4],
+      ["What do you all think you said?","你们大家都认为你们说的话怎么样？",null,7],
+      ["What do you all think?","你们大家都认为怎么样？",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

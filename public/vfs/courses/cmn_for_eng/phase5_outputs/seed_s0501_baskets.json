@@ -1,0 +1,152 @@
+{
+  "S0501L01": {
+    "lego": ["if only I could","要是我能"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["要是我能帮助。","If only I could help.",null,2],
+      ["要是我能开门。","If only I could open the door.",null,2],
+      ["要是我能努力帮助。","If only I could try to help.",null,3],
+      ["要是我能睡一觉。","If only I could get some sleep.",null,3],
+      ["要是我能喜欢你努力帮助的方式。","If only I could love the way you try to help.",null,4],
+      ["要是我能开门关窗接下来。","If only I could open the door and close the window next.",null,4],
+      ["要是我能在真正重要的时候不打算输。","If only I could not plan to lose when it really matters.",null,5],
+      ["要是我能在演出的第一部分之后想坐在两个女孩中间。","If only I could want to sit between the two girls after the first part of the show.",null,6],
+      ["要是我能一个人站在那边入口里面关窗。","If only I could stand alone over there inside the entrance and close the window.",null,6],
+      ["要是我能应该在真正重要的时候想坐在两个女孩中间。","If only I could should want to sit between the two girls when it really matters.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0501L02": {
+    "lego": ["trust you","相信你们"],
+    "type": "M",
+    "current_seed_legos_available": [["if only I could","要是我能"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["要是我能相信你们。","If only I could trust you.",null,2],
+      ["我喜欢相信你们。","I love to trust you.",null,2],
+      ["要是我能相信你们帮助。","If only I could trust you to help.",null,3],
+      ["也许我应该相信你们。","Maybe I should trust you.",null,3],
+      ["要是我能相信你们接下来开门。","If only I could trust you to open the door next.",null,4],
+      ["听起来好像我应该相信你们关窗。","That sounds as though I should trust you to close the window.",null,4],
+      ["要是我能相信你们在真正重要的时候努力。","If only I could trust you to try when it really matters.",null,5],
+      ["也许我应该相信你们在演出的第一部分之后想坐。","Maybe I should trust you to want to sit after the first part of the show.",null,6],
+      ["要是我能相信你们一个人站在那边入口里面。","If only I could trust you to stand alone over there inside the entrance.",null,6],
+      ["听起来好像要是我能相信你们在真正重要的时候想坐在两个女孩中间。","That sounds as though if only I could trust you to want to sit between the two girls when it really matters.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0501L03": {
+    "lego": ["could trust you to play together","能相信你们一起玩"],
+    "type": "M",
+    "current_seed_legos_available": [["if only I could","要是我能"],["trust you","相信你们"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["要是我能相信你们一起玩。","If only I could trust you to play together.",null,2],
+      ["我喜欢能相信你们一起玩。","I love that I could trust you to play together.",null,2],
+      ["也许我能相信你们一起玩接下来。","Maybe I could trust you to play together next.",null,3],
+      ["要是我能相信你们一起玩。","If only I could trust you to play together.",null,3],
+      ["听起来好像我能相信你们一起玩在那边。","That sounds as though I could trust you to play together over there.",null,4],
+      ["要是我能相信你们一起玩在真正重要的时候。","If only I could trust you to play together when it really matters.",null,4],
+      ["也许我应该能相信你们一起玩在演出的第一部分之后。","Maybe I should be able to trust you to play together after the first part of the show.",null,5],
+      ["要是我能相信你们一起玩在两个女孩中间那边。","If only I could trust you to play together over there between the two girls.",null,6],
+      ["听起来好像要是我能相信你们一起玩在真正重要的时候。","That sounds as though if only I could trust you to play together when it really matters.",null,6],
+      ["我喜欢要是我能相信你们一起玩在演出的第一部分之后的方式。","I love the way that if only I could trust you to play together after the first part of the show.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0501L04": {
+    "lego": ["play together","一起玩"],
+    "type": "M",
+    "current_seed_legos_available": [["if only I could","要是我能"],["trust you","相信你们"],["could trust you to play together","能相信你们一起玩"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["要是我能一起玩。","If only I could play together.",null,2],
+      ["我喜欢一起玩。","I love to play together.",null,2],
+      ["要是我能相信你们一起玩。","If only I could trust you to play together.",null,3],
+      ["也许我们应该一起玩。","Maybe we should play together.",null,3],
+      ["要是我能一起玩在真正重要的时候。","If only I could play together when it really matters.",null,4],
+      ["听起来好像你们想一起玩在那边。","That sounds as though you want to play together over there.",null,4],
+      ["要是我能相信你们一起玩在演出的第一部分之后。","If only I could trust you to play together after the first part of the show.",null,5],
+      ["也许我应该相信你们一起玩在两个女孩中间。","Maybe I should trust you to play together between the two girls.",null,6],
+      ["听起来好像要是我能相信你们一起玩在真正重要的时候。","That sounds as though if only I could trust you to play together when it really matters.",null,6],
+      ["我喜欢要是我能相信你们一起玩在演出的第一部分之后的方式。","I love the way that if only I could trust you to play together after the first part of the show.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0501L05": {
+    "lego": ["without arguing","不吵架"],
+    "type": "M",
+    "current_seed_legos_available": [["if only I could","要是我能"],["trust you","相信你们"],["could trust you to play together","能相信你们一起玩"],["play together","一起玩"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["要是我能不吵架。","If only I could without arguing.",null,2],
+      ["也许我们应该不吵架。","Maybe we should without arguing.",null,2],
+      ["要是我能相信你们不吵架。","If only I could trust you without arguing.",null,3],
+      ["我喜欢你们一起玩不吵架。","I love that you play together without arguing.",null,3],
+      ["要是我能相信你们一起玩不吵架。","If only I could trust you to play together without arguing.",null,4],
+      ["听起来好像你们应该一起玩不吵架。","That sounds as though you should play together without arguing.",null,4],
+      ["也许我应该相信你们在真正重要的时候一起玩不吵架。","Maybe I should trust you to play together without arguing when it really matters.",null,5],
+      ["要是我能相信你们在演出的第一部分之后一起玩不吵架。","If only I could trust you to play together without arguing after the first part of the show.",null,6],
+      ["听起来好像要是我能相信你们一起玩不吵架在真正重要的时候。","That sounds as though if only I could trust you to play together without arguing when it really matters.",null,6],
+      ["我喜欢要是我能相信你们在两个女孩中间一起玩不吵架的方式。","I love the way that if only I could trust you to play together without arguing between the two girls.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0501L06": {
+    "lego": ["would be good/if only (ending particle)","就好了"],
+    "type": "M",
+    "current_seed_legos_available": [["if only I could","要是我能"],["trust you","相信你们"],["could trust you to play together","能相信你们一起玩"],["play together","一起玩"],["without arguing","不吵架"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["要是我能帮助就好了。","If only I could help.",null,2],
+      ["要是我能相信你们就好了。","If only I could trust you.",null,2],
+      ["要是我能一起玩就好了。","If only I could play together.",null,3],
+      ["要是我能相信你们一起玩就好了。","If only I could trust you to play together.",null,3],
+      ["要是我能在真正重要的时候相信你们就好了。","If only I could trust you when it really matters.",null,4],
+      ["要是我能相信你们一起玩不吵架就好了。","If only I could trust you to play together without arguing.",null,4],
+      ["要是我能在演出的第一部分之后相信你们一起玩就好了。","If only I could trust you to play together after the first part of the show.",null,5],
+      ["要是我能相信你们在两个女孩中间一起玩不吵架就好了。","If only I could trust you to play together without arguing between the two girls.",null,6],
+      ["要是我能在真正重要的时候相信你们一起玩不吵架就好了。","If only I could trust you to play together without arguing when it really matters.",null,6],
+      ["要是我能相信你们一起玩不吵架就好了。","If only I could trust you to play together without arguing.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

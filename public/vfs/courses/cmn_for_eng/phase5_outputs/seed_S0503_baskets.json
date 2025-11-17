@@ -1,0 +1,401 @@
+{
+  "S0503L01": {
+    "lego": [
+      "I hate",
+      "我讨厌"
+    ],
+    "type": "M",
+    "current_seed_earlier_legos": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I hate",
+        "我讨厌",
+        null,
+        1
+      ],
+      [
+        "I hate losing",
+        "我讨厌输",
+        null,
+        2
+      ],
+      [
+        "I hate it inside",
+        "我讨厌在里面",
+        null,
+        3
+      ],
+      [
+        "I hate arguing alone",
+        "我讨厌一个人吵架",
+        null,
+        3
+      ],
+      [
+        "I hate turning left inside the entrance",
+        "我讨厌在入口里面向左转",
+        null,
+        5
+      ],
+      [
+        "I hate sitting between the two girls",
+        "我讨厌坐在两个女孩中间",
+        null,
+        5
+      ],
+      [
+        "Maybe I hate getting lost inside",
+        "也许我讨厌在里面迷路",
+        null,
+        4
+      ],
+      [
+        "I hate losing when it really matters",
+        "我讨厌在真正重要的时候输",
+        null,
+        5
+      ],
+      [
+        "I hate opening the door without arguing",
+        "我讨厌不吵架地开门",
+        null,
+        5
+      ],
+      [
+        "I hate playing together inside the entrance next",
+        "我讨厌接下来在入口里面一起玩",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "讨厌",
+        "hate"
+      ]
+    ]
+  },
+  "S0503L02": {
+    "lego": [
+      "making trouble",
+      "制造麻烦"
+    ],
+    "type": "M",
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0503L01",
+        "known": "I hate",
+        "target": "我讨厌",
+        "type": "M"
+      }
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Making trouble",
+        "制造麻烦",
+        null,
+        1
+      ],
+      [
+        "I'm making trouble alone",
+        "我一个人在制造麻烦",
+        null,
+        3
+      ],
+      [
+        "She's making trouble inside",
+        "她在里面制造麻烦",
+        null,
+        3
+      ],
+      [
+        "Making trouble next",
+        "接下来制造麻烦",
+        null,
+        2
+      ],
+      [
+        "I hate making trouble when it matters",
+        "我讨厌在重要的时候制造麻烦",
+        null,
+        5
+      ],
+      [
+        "Maybe I'm making trouble inside the entrance",
+        "也许我在入口里面制造麻烦",
+        null,
+        5
+      ],
+      [
+        "She's making trouble between the two girls",
+        "她在两个女孩中间制造麻烦",
+        null,
+        4
+      ],
+      [
+        "I hate making trouble without arguing",
+        "我讨厌不吵架地制造麻烦",
+        null,
+        4
+      ],
+      [
+        "He's standing alone making trouble after the first part",
+        "他一个人站在那里在第一部分之后制造麻烦",
+        null,
+        6
+      ],
+      [
+        "I hate making trouble when it really matters",
+        "我讨厌在真正重要的时候制造麻烦",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "制造",
+        "make/create"
+      ],
+      [
+        "麻烦",
+        "trouble"
+      ]
+    ]
+  },
+  "S0503L03": {
+    "lego": [
+      "hate making trouble",
+      "讨厌制造麻烦"
+    ],
+    "type": "M",
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0503L01",
+        "known": "I hate",
+        "target": "我讨厌",
+        "type": "M"
+      },
+      {
+        "id": "S0503L02",
+        "known": "making trouble",
+        "target": "制造麻烦",
+        "type": "M"
+      }
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I hate making trouble",
+        "我讨厌制造麻烦",
+        null,
+        1
+      ],
+      [
+        "She hates making trouble alone",
+        "她讨厌一个人制造麻烦",
+        null,
+        3
+      ],
+      [
+        "I hate making trouble inside",
+        "我讨厌在里面制造麻烦",
+        null,
+        3
+      ],
+      [
+        "We hate making trouble next",
+        "我们讨厌接下来制造麻烦",
+        null,
+        3
+      ],
+      [
+        "Maybe I hate making trouble when it matters",
+        "也许我讨厌在重要的时候制造麻烦",
+        null,
+        5
+      ],
+      [
+        "I hate making trouble between the two girls",
+        "我讨厌在两个女孩中间制造麻烦",
+        null,
+        5
+      ],
+      [
+        "She hates making trouble inside the entrance",
+        "她讨厌在入口里面制造麻烦",
+        null,
+        5
+      ],
+      [
+        "I hate making trouble after the first part",
+        "我讨厌在第一部分之后制造麻烦",
+        null,
+        5
+      ],
+      [
+        "We hate making trouble when it really matters",
+        "我们讨厌在真正重要的时候制造麻烦",
+        null,
+        6
+      ],
+      [
+        "Maybe she hates making trouble without arguing next",
+        "也许她讨厌接下来不吵架地制造麻烦",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "讨厌",
+        "hate"
+      ],
+      [
+        "制造",
+        "making"
+      ],
+      [
+        "麻烦",
+        "trouble"
+      ]
+    ]
+  },
+  "S0503L05": {
+    "lego": [
+      "that one's mine",
+      "那个是我的"
+    ],
+    "type": "M",
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0503L01",
+        "known": "I hate",
+        "target": "我讨厌",
+        "type": "M"
+      },
+      {
+        "id": "S0503L02",
+        "known": "making trouble",
+        "target": "制造麻烦",
+        "type": "M"
+      },
+      {
+        "id": "S0503L03",
+        "known": "hate making trouble",
+        "target": "讨厌制造麻烦",
+        "type": "M"
+      }
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "That one's mine",
+        "那个是我的",
+        null,
+        1
+      ],
+      [
+        "Maybe that one's mine",
+        "也许那个是我的",
+        null,
+        2
+      ],
+      [
+        "That one's mine next",
+        "接下来那个是我的",
+        null,
+        2
+      ],
+      [
+        "That one inside is mine",
+        "里面的那个是我的",
+        null,
+        3
+      ],
+      [
+        "That one between the two girls is mine",
+        "两个女孩中间的那个是我的",
+        null,
+        5
+      ],
+      [
+        "Maybe that one inside the entrance is mine",
+        "也许入口里面的那个是我的",
+        null,
+        5
+      ],
+      [
+        "That one's mine after the first part",
+        "第一部分之后那个是我的",
+        null,
+        5
+      ],
+      [
+        "I hate making trouble but that one's mine",
+        "我讨厌制造麻烦但那个是我的",
+        null,
+        5
+      ],
+      [
+        "That one inside the entrance is really mine",
+        "入口里面的那个真正是我的",
+        null,
+        6
+      ],
+      [
+        "I hate making trouble but that one's mine.",
+        "我讨厌制造麻烦，但那个是我的。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "那个",
+        "that one"
+      ],
+      [
+        "是",
+        "is"
+      ],
+      [
+        "我的",
+        "mine"
+      ]
+    ]
+  }
+}

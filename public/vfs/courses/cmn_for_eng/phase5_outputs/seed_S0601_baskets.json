@@ -1,0 +1,77 @@
+{
+  "S0601L01": {
+    "lego": ["we were talking about","我们在谈论"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["We were talking about my sister.","我们在谈论我妹妹。",null,4],
+      ["We were talking about the garden.","我们在谈论花园。",null,4],
+      ["We were talking about the shops.","我们在谈论商店。",null,4],
+      ["We were talking about my toys.","我们在谈论我的玩具。",null,4],
+      ["We were talking about the stories.","我们在谈论故事。",null,4],
+      ["We were talking about what you told me.","我们在谈论你告诉我的。",null,6],
+      ["We were talking about how tired I was.","我们在谈论我有多累。",null,6],
+      ["We were talking about the main road.","我们在谈论主路。",null,5],
+      ["We were talking about what they were doing in the garden.","我们在谈论他们在花园里做什么。",null,9],
+      ["We were talking about what I heard.","我们在谈论我听过的。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 6,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0601L02": {
+    "lego": ["how it all started","这一切是如何开始的"],
+    "type": "M",
+    "current_seed_legos_available": [["we were talking about","我们在谈论"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I heard how it all started.","我听过这一切是如何开始的。",null,5],
+      ["You told me how it all started.","你告诉我这一切是如何开始的。",null,6],
+      ["I suspect how it all started.","我怀疑这一切是如何开始的。",null,5],
+      ["My sister told me how it all started.","我妹妹告诉我这一切是如何开始的。",null,7],
+      ["I need to know how it all started.","我需要知道这一切是如何开始的。",null,7],
+      ["He heard stories about how it all started.","他听过关于这一切是如何开始的故事。",null,8],
+      ["We were talking about how it all started in the garden.","我们在谈论这一切是如何在花园里开始的。",null,10],
+      ["I had to share how it all started.","我不得不分享这一切是如何开始的。",null,7],
+      ["We were talking about how it all started with my toys.","我们在谈论这一切是如何从我的玩具开始的。",null,10],
+      ["I was happy to hear how it all started.","我很高兴听到这一切是如何开始的。",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 7
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0601L03": {
+    "lego": ["how it started","是如何开始的"],
+    "type": "M",
+    "current_seed_legos_available": [["we were talking about","我们在谈论"],["how it all started","这一切是如何开始的"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I heard how it started.","我听过是如何开始的。",null,4],
+      ["You told me how it started.","你告诉我是如何开始的。",null,5],
+      ["My sister knows how it started.","我妹妹知道是如何开始的。",null,5],
+      ["I suspect how it started.","我怀疑是如何开始的。",null,4],
+      ["I need to know how it started.","我需要知道是如何开始的。",null,6],
+      ["He heard stories about how it started.","他听过关于是如何开始的故事。",null,7],
+      ["We were talking about how it started with the toys.","我们在谈论是如何从玩具开始的。",null,9],
+      ["I was happy to hear how it started.","我很高兴听到是如何开始的。",null,8],
+      ["I had to share how it started in the garden.","我不得不分享是如何在花园里开始的。",null,9],
+      ["We were talking about how it all started.","我们在谈论这一切是如何开始的。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 6
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  }
+}

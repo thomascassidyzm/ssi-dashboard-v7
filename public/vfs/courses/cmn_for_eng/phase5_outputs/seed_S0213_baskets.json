@@ -1,0 +1,512 @@
+{
+  "S0213L01": {
+    "lego": [
+      "We don't know",
+      "我们不知道"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "We don't know",
+        "我们不知道",
+        null,
+        1
+      ],
+      [
+        "We don't know what happened",
+        "我们不知道会发生什么",
+        null,
+        2
+      ],
+      [
+        "We don't know how to answer",
+        "我们不知道如何回答",
+        null,
+        3
+      ],
+      [
+        "We don't know what they wanted",
+        "我们不知道他们想",
+        null,
+        3
+      ],
+      [
+        "We don't know how to deal with this",
+        "我们不知道如何处理这个",
+        null,
+        4
+      ],
+      [
+        "We don't know what you needed to do",
+        "我们不知道你需要做的事",
+        null,
+        4
+      ],
+      [
+        "We don't know how to answer the question they asked",
+        "我们不知道如何回答他们要求这个问题",
+        null,
+        5
+      ],
+      [
+        "We don't know what they wanted to discuss about the problem",
+        "我们不知道他们想讨论关于这个问题",
+        null,
+        5
+      ],
+      [
+        "We don't know what they think we need to do to help you",
+        "我们不知道他们认为我们需要做帮你",
+        null,
+        6
+      ],
+      [
+        "We don't know how to deal with the arrangements they wanted to discuss",
+        "我们不知道如何处理他们想讨论安排",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0213L02": {
+    "lego": [
+      "what they're trying to achieve",
+      "他们想达到什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0213L01",
+        "known": "We don't know",
+        "target": "我们不知道",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What they're trying",
+        "他们想",
+        null,
+        1
+      ],
+      [
+        "What they're trying to say",
+        "他们想说",
+        null,
+        2
+      ],
+      [
+        "We don't know what they're trying",
+        "我们不知道他们想",
+        null,
+        3
+      ],
+      [
+        "What they're trying to do to help",
+        "他们想做帮助",
+        null,
+        3
+      ],
+      [
+        "We don't know what they're trying to discuss",
+        "我们不知道他们想讨论",
+        null,
+        4
+      ],
+      [
+        "What they're trying to deal with now",
+        "他们想处理现在",
+        null,
+        4
+      ],
+      [
+        "We don't know what they're trying to help us do",
+        "我们不知道他们想帮助我们做",
+        null,
+        5
+      ],
+      [
+        "What they're trying to say about the arrangements we need",
+        "他们想说关于我们需要安排",
+        null,
+        5
+      ],
+      [
+        "We don't know what they're trying to ask us about the problem",
+        "我们不知道他们想寻求我们关于这个问题",
+        null,
+        6
+      ],
+      [
+        "We don't know what they're trying to tell us about what we needed",
+        "我们不知道他们想告诉我们关于我们需要",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0213L03": {
+    "lego": [
+      "trying to achieve what",
+      "想达到什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0213L01",
+        "known": "We don't know",
+        "target": "我们不知道",
+        "type": "M"
+      },
+      {
+        "id": "S0213L02",
+        "known": "what they're trying to achieve",
+        "target": "他们想达到什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Trying to achieve",
+        "想达到",
+        null,
+        1
+      ],
+      [
+        "They're trying to achieve this",
+        "他们想达到这个",
+        null,
+        2
+      ],
+      [
+        "We're trying to achieve what you wanted",
+        "我们想达到你想",
+        null,
+        3
+      ],
+      [
+        "Trying to achieve what we needed to do",
+        "想达到我们需要做",
+        null,
+        3
+      ],
+      [
+        "We don't know what they're trying to achieve",
+        "我们不知道他们想达到什么",
+        null,
+        4
+      ],
+      [
+        "They're trying to achieve what you asked them",
+        "他们想达到你要求他们",
+        null,
+        4
+      ],
+      [
+        "We don't know what they're trying to achieve by asking",
+        "我们不知道他们想达到什么通过寻求",
+        null,
+        5
+      ],
+      [
+        "They wanted to know what we're trying to achieve with this",
+        "他们想知道我们想达到什么与这个",
+        null,
+        5
+      ],
+      [
+        "We don't know what they're trying to achieve by dealing with the problem",
+        "我们不知道他们想达到什么通过处理这个问题",
+        null,
+        6
+      ],
+      [
+        "They think we need to know what they're trying to achieve by discussing the arrangements",
+        "他们认为我们需要知道他们想达到什么通过讨论安排",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0213L04": {
+    "lego": [
+      "achieve what",
+      "达到什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0213L01",
+        "known": "We don't know",
+        "target": "我们不知道",
+        "type": "M"
+      },
+      {
+        "id": "S0213L02",
+        "known": "what they're trying to achieve",
+        "target": "他们想达到什么",
+        "type": "M"
+      },
+      {
+        "id": "S0213L03",
+        "known": "trying to achieve what",
+        "target": "想达到什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Achieve what",
+        "达到什么",
+        null,
+        1
+      ],
+      [
+        "We wanted to achieve this",
+        "我们想达到这个",
+        null,
+        2
+      ],
+      [
+        "They wanted to achieve what you needed",
+        "他们想达到你需要",
+        null,
+        3
+      ],
+      [
+        "Trying to achieve what they wanted to do",
+        "想达到他们想做",
+        null,
+        3
+      ],
+      [
+        "We don't know what they wanted to achieve",
+        "我们不知道他们想达到什么",
+        null,
+        4
+      ],
+      [
+        "They're trying to achieve what we asked them",
+        "他们想达到我们要求他们",
+        null,
+        4
+      ],
+      [
+        "We don't know what they're trying to achieve by meeting",
+        "我们不知道他们想达到什么通过聚会",
+        null,
+        5
+      ],
+      [
+        "They wanted to know what we needed to achieve with this",
+        "他们想知道我们需要达到什么与这个",
+        null,
+        5
+      ],
+      [
+        "We don't know what they wanted to achieve by asking us to help",
+        "我们不知道他们想达到什么通过寻求我们帮助",
+        null,
+        6
+      ],
+      [
+        "They think we need to discuss what they're trying to achieve with the arrangements",
+        "他们认为我们需要讨论他们想达到什么与安排",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0213L05": {
+    "lego": [
+      "to achieve",
+      "达到"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0213L01",
+        "known": "We don't know",
+        "target": "我们不知道",
+        "type": "M"
+      },
+      {
+        "id": "S0213L02",
+        "known": "what they're trying to achieve",
+        "target": "他们想达到什么",
+        "type": "M"
+      },
+      {
+        "id": "S0213L03",
+        "known": "trying to achieve what",
+        "target": "想达到什么",
+        "type": "M"
+      },
+      {
+        "id": "S0213L04",
+        "known": "achieve what",
+        "target": "达到什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "To achieve",
+        "达到",
+        null,
+        1
+      ],
+      [
+        "They wanted to achieve this",
+        "他们想达到这个",
+        null,
+        2
+      ],
+      [
+        "We need to achieve what you wanted",
+        "我们需要达到你想",
+        null,
+        3
+      ],
+      [
+        "Trying to achieve what we needed to do",
+        "想达到我们需要做",
+        null,
+        3
+      ],
+      [
+        "We don't know what they want to achieve",
+        "我们不知道他们想达到什么",
+        null,
+        4
+      ],
+      [
+        "They want to achieve what you asked them",
+        "他们想达到你要求他们",
+        null,
+        4
+      ],
+      [
+        "We don't know what they're trying to achieve by helping",
+        "我们不知道他们想达到什么通过帮助",
+        null,
+        5
+      ],
+      [
+        "They wanted to know what we needed to achieve with this",
+        "他们想知道我们需要达到什么与这个",
+        null,
+        5
+      ],
+      [
+        "We don't know what they wanted to achieve by asking us to discuss the problem",
+        "我们不知道他们想达到什么通过寻求我们讨论这个问题",
+        null,
+        6
+      ],
+      [
+        "We don't know what they're trying to achieve.",
+        "我们不知道他们想达到什么。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

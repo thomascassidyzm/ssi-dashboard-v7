@@ -1,0 +1,102 @@
+{
+  "S0037L01": {
+    "lego": ["I started last month","我上个月开始"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I started last month.","我上个月开始。",null,2],
+      ["I started yesterday.","我昨天开始。",null,2],
+      ["He started last month.","他上个月开始。",null,2],
+      ["She started last month.","她上个月开始。",null,2],
+      ["I started reading last month.","我上个月开始读。",null,3],
+      ["I started learning last month.","我上个月开始学习。",null,3],
+      ["I started to speak last month.","我上个月开始说话。",null,4],
+      ["I started to learn Chinese last month.","我上个月开始学中文。",null,4],
+      ["I started to ask you something last month.","我上个月开始想问你一些事情。",null,5],
+      ["I started to think about it last month.","我上个月开始考虑这件事。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 0
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0037L02": {
+    "lego": ["last month","上个月"],
+    "type": "M",
+    "current_seed_legos_available": [["I started last month","我上个月开始"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Last month.","上个月。",null,1],
+      ["Yesterday.","昨天。",null,1],
+      ["I wanted to ask last month.","我上个月想问。",null,2],
+      ["She started last month.","她上个月开始。",null,2],
+      ["I wanted to read last month.","我上个月想读。",null,3],
+      ["I wanted to speak with you last month.","我上个月想和你说话。",null,3],
+      ["He wanted to be quiet last month.","他上个月想安静。",null,4],
+      ["I wanted to learn Chinese last month.","我上个月想学中文。",null,4],
+      ["I wanted to ask you something last month.","我上个月想问你一些事情。",null,5],
+      ["I started to think about it last month.","我上个月开始考虑这件事。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 0
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0037L03": {
+    "lego": ["to think about it carefully","仔细地考虑"],
+    "type": "M",
+    "current_seed_legos_available": [["I started last month","我上个月开始"],["last month","上个月"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["To think carefully.","仔细地考虑。",null,2],
+      ["I think carefully.","我仔细地考虑。",null,2],
+      ["I wanted to think carefully.","我想仔细地考虑。",null,2],
+      ["She wanted to think carefully.","她想仔细地考虑。",null,2],
+      ["I wanted to think about it carefully.","我想仔细地考虑这件事。",null,3],
+      ["I started to think carefully.","我开始仔细地考虑。",null,3],
+      ["I started to think about it carefully yesterday.","我昨天开始仔细地考虑这件事。",null,4],
+      ["I started to think about it carefully last month.","我上个月开始仔细地考虑这件事。",null,4],
+      ["I wanted to think about it carefully last month.","我上个月想仔细地考虑这件事。",null,5],
+      ["I started to think about it carefully when other people were here.","当其他人在这里的时候我开始仔细地考虑这件事。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 0
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0037L04": {
+    "lego": ["this matter/about it","这件事"],
+    "type": "M",
+    "current_seed_legos_available": [["I started last month","我上个月开始"],["last month","上个月"],["to think about it carefully","仔细地考虑"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["This matter.","这件事。",null,1],
+      ["About it.","这件事。",null,1],
+      ["I started this matter.","我开始这件事。",null,2],
+      ["I wanted this matter.","我想这件事。",null,2],
+      ["I wanted to think about it.","我想考虑这件事。",null,3],
+      ["I started to think about it.","我开始考虑这件事。",null,3],
+      ["I started to think about it yesterday.","我昨天开始考虑这件事。",null,4],
+      ["I wanted to think about it last month.","我上个月想考虑这件事。",null,4],
+      ["I started to think about it carefully yesterday.","我昨天开始仔细地考虑这件事。",null,5],
+      ["I started to think about it carefully last month.","我上个月开始仔细地考虑这件事。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 0
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "S0500L04": {
+    "lego": ["want to sit","想坐"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["我想坐。","I want to sit.",null,2],
+      ["也许你想坐。","Maybe you want to sit.",null,2],
+      ["我喜欢你想坐。","I love that you want to sit.",null,3],
+      ["那么我想坐。","Then I want to sit.",null,3],
+      ["也许接下来你想坐在入口里面。","Maybe next you want to sit inside the entrance.",null,4],
+      ["听起来好像你想坐那边。","That sounds as though you want to sit over there.",null,4],
+      ["也许你应该想坐在真正重要的时候。","Maybe you should want to sit when it really matters.",null,5],
+      ["我喜欢你想坐在演出的第一部分之后。","I love that you want to sit after the first part of the show.",null,6],
+      ["也许他一个人想坐在那边入口里面。","Maybe he alone wants to sit over there inside the entrance.",null,6],
+      ["听起来好像你不打算想坐在真正重要的时候。","That sounds as though you're not planning to want to sit when it really matters.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0500L05": {
+    "lego": ["sit at","坐在"],
+    "type": "M",
+    "current_seed_legos_available": [["want to sit","想坐"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["我想坐在那边。","I want to sit over there.",null,2],
+      ["也许你想坐在入口。","Maybe you want to sit at the entrance.",null,2],
+      ["我喜欢你想坐在那边。","I love that you want to sit over there.",null,3],
+      ["那么我想坐在入口里面。","Then I want to sit inside the entrance.",null,3],
+      ["也许接下来你想坐在那些地方。","Maybe next you want to sit at those places.",null,4],
+      ["听起来好像你想坐在入口里面。","That sounds as though you want to sit inside the entrance.",null,4],
+      ["也许你应该想坐在演出的第一部分之后。","Maybe you should want to sit after the first part of the show.",null,5],
+      ["我喜欢你努力想坐在真正重要的时候。","I love the way you try to want to sit when it really matters.",null,6],
+      ["也许他一个人想坐在那边入口里面。","Maybe he alone wants to sit over there inside the entrance.",null,6],
+      ["听起来好像你不打算想坐在那些地方中哪个最有趣。","That sounds as though you're not planning to want to sit at which of those places is the most interesting.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0500L06": {
+    "lego": ["the two girls","两个女孩"],
+    "type": "M",
+    "current_seed_legos_available": [["want to sit","想坐"],["sit at","坐在"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["我喜欢两个女孩。","I love the two girls.",null,2],
+      ["也许两个女孩想坐。","Maybe the two girls want to sit.",null,2],
+      ["我喜欢两个女孩努力帮助。","I love that the two girls try to help.",null,3],
+      ["那么两个女孩想坐在那边。","Then the two girls want to sit over there.",null,3],
+      ["也许接下来两个女孩想坐在入口。","Maybe next the two girls want to sit at the entrance.",null,4],
+      ["听起来好像两个女孩想坐在入口里面。","That sounds as though the two girls want to sit inside the entrance.",null,4],
+      ["也许你应该喜欢两个女孩努力帮助的方式。","Maybe you should love the way the two girls try to help.",null,5],
+      ["我喜欢两个女孩在演出的第一部分之后想坐。","I love that the two girls want to sit after the first part of the show.",null,6],
+      ["也许两个女孩应该一个人站在那边入口里面。","Maybe the two girls should stand alone over there inside the entrance.",null,6],
+      ["听起来好像两个女孩不打算在真正重要的时候想坐在入口。","That sounds as though the two girls are not planning to want to sit at the entrance when it really matters.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0500L07": {
+    "lego": ["between","中间"],
+    "type": "A",
+    "current_seed_legos_available": [["want to sit","想坐"],["sit at","坐在"],["the two girls","两个女孩"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["我想坐在中间。","I want to sit in between.",null,2],
+      ["也许你想坐在中间。","Maybe you want to sit in between.",null,2],
+      ["我喜欢你想坐在中间。","I love that you want to sit in between.",null,3],
+      ["那么我想坐在那边中间。","Then I want to sit over there in between.",null,3],
+      ["也许两个女孩想坐在入口中间。","Maybe the two girls want to sit in between the entrance.",null,4],
+      ["听起来好像你想坐在那些地方中间。","That sounds as though you want to sit in between those places.",null,4],
+      ["也许你应该想坐在演出的第一部分之后中间。","Maybe you should want to sit in between after the first part of the show.",null,5],
+      ["我喜欢两个女孩努力想坐在入口里面中间。","I love that the two girls try to want to sit in between inside the entrance.",null,6],
+      ["也许他一个人应该站在那边入口里面中间。","Maybe he alone should stand over there in between inside the entrance.",null,6],
+      ["听起来好像你不打算想坐在那些地方中间在真正重要的时候。","That sounds as though you're not planning to want to sit in between those places when it really matters.",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0500L08": {
+    "lego": ["between the two girls","两个女孩中间"],
+    "type": "M",
+    "current_seed_legos_available": [["want to sit","想坐"],["sit at","坐在"],["the two girls","两个女孩"],["between","中间"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["我想坐在两个女孩中间。","I want to sit between the two girls.",null,2],
+      ["也许你想坐在两个女孩中间。","Maybe you want to sit between the two girls.",null,2],
+      ["我喜欢你想坐在两个女孩中间。","I love that you want to sit between the two girls.",null,3],
+      ["那么我想坐在两个女孩中间。","Then I want to sit between the two girls.",null,3],
+      ["也许接下来你想坐在两个女孩中间。","Maybe next you want to sit between the two girls.",null,4],
+      ["听起来好像你想坐在两个女孩中间。","That sounds as though you want to sit between the two girls.",null,4],
+      ["也许你应该在演出的第一部分之后想坐在两个女孩中间。","Maybe you should want to sit between the two girls after the first part of the show.",null,5],
+      ["我喜欢你努力想坐在两个女孩中间的方式。","I love the way you try to want to sit between the two girls.",null,6],
+      ["也许你不打算在真正重要的时候想坐在两个女孩中间。","Maybe you're not planning to want to sit between the two girls when it really matters.",null,6],
+      ["你为什么不想坐在两个女孩中间？","Why don't you want to sit between the two girls?",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

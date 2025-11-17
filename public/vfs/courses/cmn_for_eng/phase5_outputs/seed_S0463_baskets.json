@@ -1,0 +1,377 @@
+{
+  "S0463L01": {
+    "lego": [
+      "room",
+      "房间"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "my room",
+        "我的房间",
+        null,
+        1
+      ],
+      [
+        "his room",
+        "他的房间",
+        null,
+        1
+      ],
+      [
+        "I want to find my room",
+        "我想找我的房间",
+        null,
+        2
+      ],
+      [
+        "my grandfather's room",
+        "我的祖父的房间",
+        null,
+        2
+      ],
+      [
+        "the room near the hotel",
+        "酒店附近的房间",
+        null,
+        3
+      ],
+      [
+        "I can't find my room",
+        "我找不到我的房间",
+        null,
+        3
+      ],
+      [
+        "a room where I can buy postcards",
+        "我可以买明信片的房间",
+        null,
+        4
+      ],
+      [
+        "I want to find a room near the hotel",
+        "我想找酒店附近的房间",
+        null,
+        4
+      ],
+      [
+        "the children were tired in the room",
+        "孩子们在房间里累了",
+        null,
+        5
+      ],
+      [
+        "I want to find a room near the shop where I can buy postcards",
+        "我想找一个我可以买明信片的商店附近的房间",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0463L02": {
+    "lego": [
+      "my room",
+      "我的房间"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "room",
+        "房间"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "my room",
+        "我的房间",
+        null,
+        1
+      ],
+      [
+        "in my room",
+        "在我的房间",
+        null,
+        1
+      ],
+      [
+        "I left my room",
+        "我离开了我的房间",
+        null,
+        2
+      ],
+      [
+        "they saw my room",
+        "他们看到我的房间",
+        null,
+        2
+      ],
+      [
+        "my room is near the hotel",
+        "我的房间在酒店附近",
+        null,
+        3
+      ],
+      [
+        "I can find my room",
+        "我可以找到我的房间",
+        null,
+        3
+      ],
+      [
+        "my room wasn't in front of the blue sign",
+        "我的房间不在蓝色标志的前面",
+        null,
+        4
+      ],
+      [
+        "I had to leave my room yesterday",
+        "我昨天不得不离开我的房间",
+        null,
+        4
+      ],
+      [
+        "my room is near the shop where I can buy postcards",
+        "我的房间在我可以买明信片的商店附近",
+        null,
+        5
+      ],
+      [
+        "I want to find my room because the children are tired",
+        "我想找我的房间因为孩子们累了",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "我的",
+        "my"
+      ],
+      [
+        "房间",
+        "room"
+      ]
+    ]
+  },
+  "S0463L03": {
+    "lego": [
+      "room number",
+      "房间号"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "room",
+        "房间"
+      ],
+      [
+        "my room",
+        "我的房间"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "the room number",
+        "房间号",
+        null,
+        1
+      ],
+      [
+        "his room number",
+        "他的房间号",
+        null,
+        1
+      ],
+      [
+        "I forgot the room number",
+        "我忘了房间号",
+        null,
+        2
+      ],
+      [
+        "they said the room number",
+        "他们说了房间号",
+        null,
+        2
+      ],
+      [
+        "I want to find the room number",
+        "我想找房间号",
+        null,
+        3
+      ],
+      [
+        "the room number is different",
+        "房间号不同",
+        null,
+        3
+      ],
+      [
+        "I told her the room number once",
+        "我告诉过她一次房间号",
+        null,
+        4
+      ],
+      [
+        "the room number wasn't in front of the blue sign",
+        "房间号不在蓝色标志的前面",
+        null,
+        4
+      ],
+      [
+        "I had to leave because I forgot the room number",
+        "我不得不离开因为我忘了房间号",
+        null,
+        5
+      ],
+      [
+        "they said the room number was near the hotel last night",
+        "他们说房间号昨晚在酒店附近",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "房间",
+        "room"
+      ],
+      [
+        "号",
+        "number"
+      ]
+    ]
+  },
+  "S0463L04": {
+    "lego": [
+      "my room number",
+      "我的房间号"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "room",
+        "房间"
+      ],
+      [
+        "my room",
+        "我的房间"
+      ],
+      [
+        "room number",
+        "房间号"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "my room number",
+        "我的房间号",
+        null,
+        1
+      ],
+      [
+        "I forgot my room number",
+        "我忘了我的房间号",
+        null,
+        2
+      ],
+      [
+        "I told her my room number",
+        "我告诉过她我的房间号",
+        null,
+        2
+      ],
+      [
+        "I want to find my room number",
+        "我想找我的房间号",
+        null,
+        3
+      ],
+      [
+        "they said my room number",
+        "他们说了我的房间号",
+        null,
+        3
+      ],
+      [
+        "I told her my room number once",
+        "我告诉过她一次我的房间号",
+        null,
+        4
+      ],
+      [
+        "I had to leave because I forgot my room number",
+        "我不得不离开因为我忘了我的房间号",
+        null,
+        4
+      ],
+      [
+        "my room number is near the hotel in the past",
+        "我的房间号在过去在酒店附近",
+        null,
+        5
+      ],
+      [
+        "I told her my room number but she forgot it last night",
+        "我告诉过她我的房间号但她昨晚忘了",
+        null,
+        6
+      ],
+      [
+        "My room number.",
+        "我的房间号。",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "我的",
+        "my"
+      ],
+      [
+        "房间",
+        "room"
+      ],
+      [
+        "号",
+        "number"
+      ]
+    ]
+  }
+}

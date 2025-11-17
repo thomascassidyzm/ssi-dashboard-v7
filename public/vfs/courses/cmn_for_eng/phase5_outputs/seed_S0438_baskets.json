@@ -1,0 +1,215 @@
+{
+  "S0438L01": {
+    "lego": [
+      "they didn't want to decide",
+      "他们不想决定"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "They didn't want to decide",
+        "他们不想决定",
+        null,
+        1
+      ],
+      [
+        "They didn't want to decide on Tuesday",
+        "他们不想在星期二决定",
+        null,
+        2
+      ],
+      [
+        "They didn't want to decide when to visit",
+        "他们不想决定什么时候来看",
+        null,
+        3
+      ],
+      [
+        "They didn't want to decide the minimum number",
+        "他们不想决定最少数量",
+        null,
+        3
+      ],
+      [
+        "They didn't want to decide for charity soon",
+        "他们不想很快为慈善决定",
+        null,
+        4
+      ],
+      [
+        "They didn't want to decide the number of students",
+        "他们不想决定学生数量",
+        null,
+        4
+      ],
+      [
+        "They didn't want to decide the minimum number for them",
+        "他们不想为他们决定最少数量",
+        null,
+        5
+      ],
+      [
+        "They didn't want to decide when the film started on Tuesday",
+        "他们不想决定电影什么时候星期二开始",
+        null,
+        5
+      ],
+      [
+        "They didn't want to decide the minimum number of students they need",
+        "他们不想决定他们需要的学生的最少数量",
+        null,
+        6
+      ],
+      [
+        "They didn't want to decide the number they wanted to raise for charity",
+        "他们不想决定他们想为慈善筹集的数量",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0438L01",
+      "seed_context": {
+        "known": "他们不想决定他应该做什么。",
+        "target": "They didn't want to decide what he should do."
+      }
+    },
+    "components": [
+      [
+        "他们",
+        "they"
+      ],
+      [
+        "不",
+        "didn't"
+      ],
+      [
+        "想",
+        "want"
+      ],
+      [
+        "决定",
+        "decide"
+      ]
+    ]
+  },
+  "S0438L03": {
+    "lego": [
+      "what he should do",
+      "他应该做什么"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0438L01",
+        "known": "they didn't want to decide",
+        "target": "他们不想决定",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What he should do",
+        "他应该做什么",
+        null,
+        1
+      ],
+      [
+        "They couldn't find what he should do",
+        "他们找不到他应该做什么",
+        null,
+        2
+      ],
+      [
+        "They didn't want to decide what he should do",
+        "他们不想决定他应该做什么",
+        null,
+        3
+      ],
+      [
+        "What he should do on Tuesday",
+        "他应该在星期二做什么",
+        null,
+        3
+      ],
+      [
+        "They didn't want to ask what he should do",
+        "他们不想问他应该做什么",
+        null,
+        4
+      ],
+      [
+        "They couldn't find what he should do for them",
+        "他们找不到他应该为他们做什么",
+        null,
+        4
+      ],
+      [
+        "They didn't want to decide what he should do soon",
+        "他们不想很快决定他应该做什么",
+        null,
+        5
+      ],
+      [
+        "They couldn't find what he should do when the film started",
+        "他们找不到他应该电影开始时做什么",
+        null,
+        5
+      ],
+      [
+        "They didn't want to decide what he should do for charity on Tuesday",
+        "他们不想决定他应该在星期二为慈善做什么",
+        null,
+        6
+      ],
+      [
+        "They didn't want to decide what he should do",
+        "他们不想决定他应该做什么",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0438L03",
+      "seed_context": {
+        "known": "他们不想决定他应该做什么。",
+        "target": "They didn't want to decide what he should do."
+      }
+    },
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "应该",
+        "should"
+      ],
+      [
+        "做",
+        "do"
+      ],
+      [
+        "什么",
+        "what"
+      ]
+    ]
+  }
+}

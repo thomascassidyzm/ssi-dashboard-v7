@@ -1,0 +1,565 @@
+{
+  "legos": {
+    "S0442L01": {
+      "lego": [
+        "they",
+        "他们"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "They wanted.",
+          "他们想。",
+          null,
+          1
+        ],
+        [
+          "They could.",
+          "他们可能。",
+          null,
+          2
+        ],
+        [
+          "They don't want to die.",
+          "他们不想死。",
+          null,
+          3
+        ],
+        [
+          "They couldn't find out.",
+          "他们找不到。",
+          null,
+          3
+        ],
+        [
+          "They could cut the number.",
+          "他们能减少数量。",
+          null,
+          4
+        ],
+        [
+          "They wanted to raise for charity.",
+          "他们想为慈善筹集。",
+          null,
+          4
+        ],
+        [
+          "They wanted to raise as much as possible.",
+          "他们想筹集尽可能多的钱。",
+          null,
+          5
+        ],
+        [
+          "They want to travel while they're still young.",
+          "他们想在他们还年轻的时候旅行。",
+          null,
+          6
+        ],
+        [
+          "They didn't want to decide what he should do.",
+          "他们不想决定他应该做什么。",
+          null,
+          6
+        ],
+        [
+          "They could mean that they want you to ask.",
+          "他们可能是说他们想让你问。",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      }
+    },
+    "S0442L03": {
+      "lego": [
+        "develop",
+        "开发"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they",
+          "他们"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Develop an approach.",
+          "开发一个方法。",
+          null,
+          2
+        ],
+        [
+          "They wanted to develop.",
+          "他们想开发。",
+          null,
+          2
+        ],
+        [
+          "Develop.",
+          "开发。",
+          null,
+          1
+        ],
+        [
+          "They could develop an approach.",
+          "他们可能开发一个方法。",
+          null,
+          3
+        ],
+        [
+          "They wanted to develop a new approach.",
+          "他们想开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They could develop it.",
+          "他们可能开发。",
+          null,
+          4
+        ],
+        [
+          "They wanted to develop as much as possible.",
+          "他们想尽可能多地开发。",
+          null,
+          5
+        ],
+        [
+          "They don't want to develop what he wanted.",
+          "他们不想开发他想的。",
+          null,
+          6
+        ],
+        [
+          "They could mean they want to develop an approach.",
+          "他们可能是说他们想开发一个方法。",
+          null,
+          7
+        ],
+        [
+          "Did they want to develop a new approach?",
+          "他们想开发一个新方法吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      }
+    },
+    "S0442L04": {
+      "lego": [
+        "new",
+        "新"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "they",
+          "他们"
+        ],
+        [
+          "develop",
+          "开发"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "New.",
+          "新。",
+          null,
+          1
+        ],
+        [
+          "A new approach.",
+          "一个新方法。",
+          null,
+          2
+        ],
+        [
+          "New approach.",
+          "新方法。",
+          null,
+          2
+        ],
+        [
+          "They wanted a new approach.",
+          "他们想一个新方法。",
+          null,
+          3
+        ],
+        [
+          "They could develop a new approach.",
+          "他们可能开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted to develop a new method.",
+          "他们想开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted to raise a new number.",
+          "他们想筹集一个新数量。",
+          null,
+          5
+        ],
+        [
+          "They could mean they wanted a new approach.",
+          "他们可能是说他们想一个新方法。",
+          null,
+          6
+        ],
+        [
+          "They wanted to develop a new approach for charity.",
+          "他们想为慈善开发一个新方法。",
+          null,
+          7
+        ],
+        [
+          "Did they want to develop a new approach?",
+          "他们想开发一个新方法吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      }
+    },
+    "S0442L07": {
+      "lego": [
+        "want to develop",
+        "想开发"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they",
+          "他们"
+        ],
+        [
+          "develop",
+          "开发"
+        ],
+        [
+          "new",
+          "新"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "They want to develop.",
+          "他们想开发。",
+          null,
+          2
+        ],
+        [
+          "Want to develop an approach.",
+          "想开发一个方法。",
+          null,
+          2
+        ],
+        [
+          "They want to develop a new approach.",
+          "他们想开发一个新方法。",
+          null,
+          3
+        ],
+        [
+          "They don't want to develop.",
+          "他们不想开发。",
+          null,
+          3
+        ],
+        [
+          "They want to develop as much as possible.",
+          "他们想开发尽可能多。",
+          null,
+          4
+        ],
+        [
+          "They could want to develop a new approach.",
+          "他们可能想开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They want to develop while they're still young.",
+          "他们想在他们还年轻的时候开发。",
+          null,
+          5
+        ],
+        [
+          "They could mean they want to develop an approach.",
+          "他们可能是说他们想开发一个方法。",
+          null,
+          6
+        ],
+        [
+          "They want to develop a new approach for charity.",
+          "他们想为慈善开发一个新方法。",
+          null,
+          7
+        ],
+        [
+          "Did they want to develop a new approach?",
+          "他们想开发一个新方法吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0442L08": {
+      "lego": [
+        "new approach",
+        "新方法"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they",
+          "他们"
+        ],
+        [
+          "develop",
+          "开发"
+        ],
+        [
+          "new",
+          "新"
+        ],
+        [
+          "want to develop",
+          "想开发"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "New approach.",
+          "新方法。",
+          null,
+          1
+        ],
+        [
+          "A new approach.",
+          "一个新方法。",
+          null,
+          2
+        ],
+        [
+          "They wanted a new approach.",
+          "他们想一个新方法。",
+          null,
+          3
+        ],
+        [
+          "Develop a new approach.",
+          "开发一个新方法。",
+          null,
+          3
+        ],
+        [
+          "They could develop a new approach.",
+          "他们可能开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They want to develop a new approach.",
+          "他们想开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted to raise a new approach.",
+          "他们想筹集一个新方法。",
+          null,
+          5
+        ],
+        [
+          "They could mean they wanted a new approach.",
+          "他们可能是说他们想一个新方法。",
+          null,
+          6
+        ],
+        [
+          "They want to develop a new approach for charity.",
+          "他们想为慈善开发一个新方法。",
+          null,
+          7
+        ],
+        [
+          "Did they want to develop a new approach?",
+          "他们想开发一个新方法吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0442L09": {
+      "lego": [
+        "a new approach",
+        "一个新方法"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "they",
+          "他们"
+        ],
+        [
+          "develop",
+          "开发"
+        ],
+        [
+          "new",
+          "新"
+        ],
+        [
+          "want to develop",
+          "想开发"
+        ],
+        [
+          "new approach",
+          "新方法"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "A new approach.",
+          "一个新方法。",
+          null,
+          1
+        ],
+        [
+          "They wanted a new approach.",
+          "他们想一个新方法。",
+          null,
+          2
+        ],
+        [
+          "Develop a new approach.",
+          "开发一个新方法。",
+          null,
+          3
+        ],
+        [
+          "They could develop a new approach.",
+          "他们可能开发一个新方法。",
+          null,
+          3
+        ],
+        [
+          "They want to develop a new approach.",
+          "他们想开发一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They wanted to raise a new approach.",
+          "他们想筹集一个新方法。",
+          null,
+          4
+        ],
+        [
+          "They could mean they wanted a new approach.",
+          "他们可能是说他们想一个新方法。",
+          null,
+          5
+        ],
+        [
+          "They don't want to decide a new approach.",
+          "他们不想决定一个新方法。",
+          null,
+          6
+        ],
+        [
+          "They want to develop a new approach for charity.",
+          "他们想为慈善开发一个新方法。",
+          null,
+          6
+        ],
+        [
+          "Did they want to develop a new approach?",
+          "他们想开发一个新方法吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

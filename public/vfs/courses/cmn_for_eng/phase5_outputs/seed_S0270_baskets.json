@@ -1,0 +1,732 @@
+{
+  "S0270L01": {
+    "lego": [
+      "because",
+      "因为"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Because",
+        "因为",
+        null,
+        1
+      ],
+      [
+        "Because yesterday",
+        "因为昨天",
+        null,
+        2
+      ],
+      [
+        "Because I don't know",
+        "因为我不知道",
+        null,
+        3
+      ],
+      [
+        "Because she was here",
+        "因为她在这里",
+        null,
+        3
+      ],
+      [
+        "Because I don't want to",
+        "因为我不想",
+        null,
+        4
+      ],
+      [
+        "Because he sent an email",
+        "因为他发了一个电子邮件",
+        null,
+        4
+      ],
+      [
+        "Because I don't want to wait",
+        "因为我不想等",
+        null,
+        5
+      ],
+      [
+        "Because she sent me two emails",
+        "因为她给我发了两封电子邮件",
+        null,
+        5
+      ],
+      [
+        "Because I don't want to wait for your father",
+        "因为我不想等你爸爸",
+        null,
+        6
+      ],
+      [
+        "Because that man was talking to my father yesterday",
+        "因为那个男人昨天和我爸爸说话",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0270L02": {
+    "lego": [
+      "worried",
+      "担心"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0270L01",
+        "known": "because",
+        "target": "因为",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Worried",
+        "担心",
+        null,
+        1
+      ],
+      [
+        "I'm worried",
+        "我担心",
+        null,
+        2
+      ],
+      [
+        "She's very worried",
+        "她很担心",
+        null,
+        3
+      ],
+      [
+        "Why are you worried",
+        "为什么你担心",
+        null,
+        3
+      ],
+      [
+        "I'm worried about yesterday",
+        "我担心昨天",
+        null,
+        4
+      ],
+      [
+        "He's worried about that",
+        "他担心那",
+        null,
+        4
+      ],
+      [
+        "I'm worried because I don't know",
+        "我担心因为我不知道",
+        null,
+        5
+      ],
+      [
+        "She's worried about waiting for him",
+        "她担心等他",
+        null,
+        5
+      ],
+      [
+        "I'm worried because she didn't send the email",
+        "我担心因为她没发电子邮件",
+        null,
+        6
+      ],
+      [
+        "Why are you worried about waiting for your father",
+        "为什么你担心等你爸爸",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0270L03": {
+    "lego": [
+      "I'm worried",
+      "我担心"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0270L01",
+        "known": "because",
+        "target": "因为",
+        "type": "A"
+      },
+      {
+        "id": "S0270L02",
+        "known": "worried",
+        "target": "担心",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I'm worried",
+        "我担心",
+        null,
+        1
+      ],
+      [
+        "I'm worried now",
+        "我现在担心",
+        null,
+        2
+      ],
+      [
+        "I'm worried about that",
+        "我担心那",
+        null,
+        3
+      ],
+      [
+        "I'm worried about yesterday",
+        "我担心昨天",
+        null,
+        3
+      ],
+      [
+        "I'm worried about your father",
+        "我担心你爸爸",
+        null,
+        4
+      ],
+      [
+        "I'm worried because I don't know",
+        "我担心因为我不知道",
+        null,
+        4
+      ],
+      [
+        "I'm worried I don't want to wait",
+        "我担心我不想等",
+        null,
+        5
+      ],
+      [
+        "I'm worried about that man yesterday",
+        "我担心昨天那个男人",
+        null,
+        5
+      ],
+      [
+        "I'm worried because she didn't send the emails",
+        "我担心因为她没发电子邮件",
+        null,
+        6
+      ],
+      [
+        "I'm worried because I don't know where your father is",
+        "我担心因为我不知道你爸爸在哪里",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "担心",
+        "worried"
+      ]
+    ]
+  },
+  "S0270L04": {
+    "lego": [
+      "I will",
+      "我会"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0270L01",
+        "known": "because",
+        "target": "因为",
+        "type": "A"
+      },
+      {
+        "id": "S0270L02",
+        "known": "worried",
+        "target": "担心",
+        "type": "A"
+      },
+      {
+        "id": "S0270L03",
+        "known": "I'm worried",
+        "target": "我担心",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I will",
+        "我会",
+        null,
+        1
+      ],
+      [
+        "I will know",
+        "我会知道",
+        null,
+        2
+      ],
+      [
+        "I will wait yesterday",
+        "我会昨天等",
+        null,
+        3
+      ],
+      [
+        "I will send an email",
+        "我会发一个电子邮件",
+        null,
+        3
+      ],
+      [
+        "I will talk to him",
+        "我会和他说话",
+        null,
+        4
+      ],
+      [
+        "I will wait for you",
+        "我会等你",
+        null,
+        4
+      ],
+      [
+        "I will send you two emails",
+        "我会给你发两封电子邮件",
+        null,
+        5
+      ],
+      [
+        "I will wait for your father",
+        "我会等你爸爸",
+        null,
+        5
+      ],
+      [
+        "I will talk to that man about it",
+        "我会和那个男人说那件事",
+        null,
+        6
+      ],
+      [
+        "I will send an important email to your father",
+        "我会给你爸爸发一个重要的电子邮件",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "会",
+        "will"
+      ]
+    ]
+  },
+  "S0270L05": {
+    "lego": [
+      "be late",
+      "迟到"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0270L01",
+        "known": "because",
+        "target": "因为",
+        "type": "A"
+      },
+      {
+        "id": "S0270L02",
+        "known": "worried",
+        "target": "担心",
+        "type": "A"
+      },
+      {
+        "id": "S0270L03",
+        "known": "I'm worried",
+        "target": "我担心",
+        "type": "M"
+      },
+      {
+        "id": "S0270L04",
+        "known": "I will",
+        "target": "我会",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Be late",
+        "迟到",
+        null,
+        1
+      ],
+      [
+        "I'm late",
+        "我迟到",
+        null,
+        2
+      ],
+      [
+        "She was late yesterday",
+        "她昨天迟到",
+        null,
+        3
+      ],
+      [
+        "I don't want to be late",
+        "我不想迟到",
+        null,
+        3
+      ],
+      [
+        "He will be late",
+        "他会迟到",
+        null,
+        4
+      ],
+      [
+        "I'm worried I'll be late",
+        "我担心我会迟到",
+        null,
+        4
+      ],
+      [
+        "She doesn't want to be late",
+        "她不想迟到",
+        null,
+        5
+      ],
+      [
+        "I will be late because I waited",
+        "我会迟到因为我等了",
+        null,
+        5
+      ],
+      [
+        "I'm worried I will be late for work",
+        "我担心我会工作迟到",
+        null,
+        6
+      ],
+      [
+        "Why don't you want to wait if you'll be late",
+        "为什么你不想等如果你会迟到",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0270L06": {
+    "lego": [
+      "I'm going to be late",
+      "我会迟到"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0270L01",
+        "known": "because",
+        "target": "因为",
+        "type": "A"
+      },
+      {
+        "id": "S0270L02",
+        "known": "worried",
+        "target": "担心",
+        "type": "A"
+      },
+      {
+        "id": "S0270L03",
+        "known": "I'm worried",
+        "target": "我担心",
+        "type": "M"
+      },
+      {
+        "id": "S0270L04",
+        "known": "I will",
+        "target": "我会",
+        "type": "M"
+      },
+      {
+        "id": "S0270L05",
+        "known": "be late",
+        "target": "迟到",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I'm going to be late",
+        "我会迟到",
+        null,
+        1
+      ],
+      [
+        "I think I'm going to be late",
+        "我认为我会迟到",
+        null,
+        2
+      ],
+      [
+        "I'm going to be late today",
+        "我今天会迟到",
+        null,
+        3
+      ],
+      [
+        "I'm going to be late because",
+        "我会迟到因为",
+        null,
+        3
+      ],
+      [
+        "I'm worried I'm going to be late",
+        "我担心我会迟到",
+        null,
+        4
+      ],
+      [
+        "She said I'm going to be late",
+        "她说我会迟到",
+        null,
+        4
+      ],
+      [
+        "I'm going to be late if I wait",
+        "如果我等我会迟到",
+        null,
+        5
+      ],
+      [
+        "I don't want to wait because I'm going to be late",
+        "我不想等因为我会迟到",
+        null,
+        5
+      ],
+      [
+        "I'm worried I'm going to be late for your father",
+        "我担心我会等你爸爸迟到",
+        null,
+        6
+      ],
+      [
+        "I think I'm going to be late because I waited yesterday",
+        "我认为我会迟到因为我昨天等了",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "会",
+        "will/going to"
+      ],
+      [
+        "迟到",
+        "be late"
+      ]
+    ]
+  },
+  "S0270L07": {
+    "lego": [
+      "worried that I'm going to be late",
+      "担心我会迟到"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0270L01",
+        "known": "because",
+        "target": "因为",
+        "type": "A"
+      },
+      {
+        "id": "S0270L02",
+        "known": "worried",
+        "target": "担心",
+        "type": "A"
+      },
+      {
+        "id": "S0270L03",
+        "known": "I'm worried",
+        "target": "我担心",
+        "type": "M"
+      },
+      {
+        "id": "S0270L04",
+        "known": "I will",
+        "target": "我会",
+        "type": "M"
+      },
+      {
+        "id": "S0270L05",
+        "known": "be late",
+        "target": "迟到",
+        "type": "A"
+      },
+      {
+        "id": "S0270L06",
+        "known": "I'm going to be late",
+        "target": "我会迟到",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Worried that I'm going to be late",
+        "担心我会迟到",
+        null,
+        1
+      ],
+      [
+        "I'm worried that I'm going to be late",
+        "我担心我会迟到",
+        null,
+        2
+      ],
+      [
+        "She's worried that I'm going to be late",
+        "她担心我会迟到",
+        null,
+        3
+      ],
+      [
+        "Worried that I'm going to be late today",
+        "担心我今天会迟到",
+        null,
+        3
+      ],
+      [
+        "He's worried that I'm going to be late",
+        "他担心我会迟到",
+        null,
+        4
+      ],
+      [
+        "I'm worried that I'm going to be late because",
+        "我担心我会迟到因为",
+        null,
+        4
+      ],
+      [
+        "She's worried that I'm going to be late yesterday",
+        "她担心我昨天会迟到",
+        null,
+        5
+      ],
+      [
+        "I'm worried that I'm going to be late if I wait",
+        "我担心如果我等我会迟到",
+        null,
+        5
+      ],
+      [
+        "My father is worried that I'm going to be late",
+        "我爸爸担心我会迟到",
+        null,
+        6
+      ],
+      [
+        "I'm worried that I'm going to be late because I don't want to wait",
+        "我担心我会迟到因为我不想等",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "担心",
+        "worried"
+      ],
+      [
+        "我",
+        "I"
+      ],
+      [
+        "会",
+        "will/going to"
+      ],
+      [
+        "迟到",
+        "be late"
+      ]
+    ]
+  }
+}

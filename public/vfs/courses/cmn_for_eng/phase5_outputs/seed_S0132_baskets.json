@@ -1,0 +1,520 @@
+{
+  "S0132L01": {
+    "lego": [
+      "that",
+      "那"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "That",
+        "那",
+        null,
+        1
+      ],
+      [
+        "That is good",
+        "那是好",
+        null,
+        2
+      ],
+      [
+        "That was a surprise",
+        "那是个惊喜",
+        null,
+        2
+      ],
+      [
+        "I think that's interesting",
+        "我认为那很有趣",
+        null,
+        3
+      ],
+      [
+        "That was a good idea",
+        "那是个好主意",
+        null,
+        3
+      ],
+      [
+        "I believe that's very unusual",
+        "我相信那很不寻常",
+        null,
+        3
+      ],
+      [
+        "That's a very good surprise for me",
+        "那对我是个很好的惊喜",
+        null,
+        4
+      ],
+      [
+        "That was easier than I thought",
+        "那比我想的更容易",
+        null,
+        4
+      ],
+      [
+        "I'm excited because that's starting to feel better",
+        "我兴奋因为那开始感觉更好",
+        null,
+        5
+      ],
+      [
+        "That was a very unusual idea and my friend thinks it's good",
+        "那是个很不寻常的主意我的朋友认为好",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0132L02": {
+    "lego": [
+      "what she was saying",
+      "她正在说的"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0132L01",
+        "known": "that",
+        "target": "那",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What she was saying",
+        "她正在说的",
+        null,
+        1
+      ],
+      [
+        "What she was saying is good",
+        "她正在说的是好",
+        null,
+        2
+      ],
+      [
+        "I like what she was saying",
+        "我喜欢她正在说的",
+        null,
+        3
+      ],
+      [
+        "What he was saying",
+        "他正在说的",
+        null,
+        2
+      ],
+      [
+        "What she was saying is interesting",
+        "她正在说的很有趣",
+        null,
+        3
+      ],
+      [
+        "I think what she was saying is unusual",
+        "我认为她正在说的不寻常",
+        null,
+        4
+      ],
+      [
+        "What she was saying was a surprise",
+        "她正在说的是个惊喜",
+        null,
+        4
+      ],
+      [
+        "My friend likes what she was saying",
+        "我的朋友喜欢她正在说的",
+        null,
+        4
+      ],
+      [
+        "I believe what she was saying is very interesting",
+        "我相信她正在说的很有趣",
+        null,
+        5
+      ],
+      [
+        "What she was saying about this work is a good idea",
+        "她正在说的关于这个工作是个好主意",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "正在",
+        "was (in process of)"
+      ],
+      [
+        "说",
+        "saying"
+      ],
+      [
+        "的",
+        "(nominalizer)"
+      ]
+    ]
+  },
+  "S0132L03": {
+    "lego": [
+      "than what she was saying",
+      "比她正在说的"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0132L01",
+        "known": "that",
+        "target": "那",
+        "type": "A"
+      },
+      {
+        "id": "S0132L02",
+        "known": "what she was saying",
+        "target": "她正在说的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Than what she was saying",
+        "比她正在说的",
+        null,
+        1
+      ],
+      [
+        "Better than what she was saying",
+        "比她正在说的更好",
+        null,
+        2
+      ],
+      [
+        "More interesting than what she was saying",
+        "比她正在说的更有趣",
+        null,
+        3
+      ],
+      [
+        "Easier than what she was saying",
+        "比她正在说的更容易",
+        null,
+        3
+      ],
+      [
+        "More unusual than what he was saying",
+        "比他正在说的更不寻常",
+        null,
+        3
+      ],
+      [
+        "That's better than what she was saying",
+        "那比她正在说的更好",
+        null,
+        3
+      ],
+      [
+        "I think it's easier than what she was saying",
+        "我认为比她正在说的更容易",
+        null,
+        4
+      ],
+      [
+        "This is more interesting than what she was saying",
+        "这比她正在说的更有趣",
+        null,
+        4
+      ],
+      [
+        "My idea is better than what she was saying",
+        "我的主意比她正在说的更好",
+        null,
+        5
+      ],
+      [
+        "I believe that's more unusual than what she was saying yesterday",
+        "我相信那比她昨天正在说的更不寻常",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "比",
+        "than/compared to"
+      ],
+      [
+        "她",
+        "she"
+      ],
+      [
+        "正在",
+        "was"
+      ],
+      [
+        "说",
+        "saying"
+      ],
+      [
+        "的",
+        "(nominalizer)"
+      ]
+    ]
+  },
+  "S0132L04": {
+    "lego": [
+      "not so exciting/less exciting",
+      "不那么令人兴奋"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0132L01",
+        "known": "that",
+        "target": "那",
+        "type": "A"
+      },
+      {
+        "id": "S0132L02",
+        "known": "what she was saying",
+        "target": "她正在说的",
+        "type": "M"
+      },
+      {
+        "id": "S0132L03",
+        "known": "than what she was saying",
+        "target": "比她正在说的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Less exciting",
+        "不那么令人兴奋",
+        null,
+        1
+      ],
+      [
+        "Not so exciting",
+        "不那么令人兴奋",
+        null,
+        1
+      ],
+      [
+        "That's less exciting",
+        "那不那么令人兴奋",
+        null,
+        2
+      ],
+      [
+        "This is less exciting",
+        "这不那么令人兴奋",
+        null,
+        2
+      ],
+      [
+        "I think it's less exciting",
+        "我认为不那么令人兴奋",
+        null,
+        3
+      ],
+      [
+        "That's less exciting than before",
+        "那比以前不那么令人兴奋",
+        null,
+        3
+      ],
+      [
+        "This work is less exciting",
+        "这个工作不那么令人兴奋",
+        null,
+        3
+      ],
+      [
+        "I believe that's less exciting now",
+        "我相信那现在不那么令人兴奋",
+        null,
+        4
+      ],
+      [
+        "That idea is less exciting than what she was saying",
+        "那个主意比她正在说的不那么令人兴奋",
+        null,
+        5
+      ],
+      [
+        "My friend thinks this is less exciting than the good ideas",
+        "我的朋友认为这比那些好主意不那么令人兴奋",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "不那么",
+        "not so/less"
+      ],
+      [
+        "令人",
+        "makes people/causing"
+      ],
+      [
+        "兴奋",
+        "excited"
+      ]
+    ]
+  },
+  "S0132L05": {
+    "lego": [
+      "exciting",
+      "令人兴奋"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0132L01",
+        "known": "that",
+        "target": "那",
+        "type": "A"
+      },
+      {
+        "id": "S0132L02",
+        "known": "what she was saying",
+        "target": "她正在说的",
+        "type": "M"
+      },
+      {
+        "id": "S0132L03",
+        "known": "than what she was saying",
+        "target": "比她正在说的",
+        "type": "M"
+      },
+      {
+        "id": "S0132L04",
+        "known": "not so exciting/less exciting",
+        "target": "不那么令人兴奋",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Exciting",
+        "令人兴奋",
+        null,
+        1
+      ],
+      [
+        "Very exciting",
+        "很令人兴奋",
+        null,
+        2
+      ],
+      [
+        "That's exciting",
+        "那令人兴奋",
+        null,
+        2
+      ],
+      [
+        "I'm excited about this",
+        "我对此感到兴奋",
+        null,
+        3
+      ],
+      [
+        "This is very exciting",
+        "这很令人兴奋",
+        null,
+        3
+      ],
+      [
+        "I think that's exciting",
+        "我认为那令人兴奋",
+        null,
+        3
+      ],
+      [
+        "This work is exciting for me",
+        "这个工作对我令人兴奋",
+        null,
+        4
+      ],
+      [
+        "I'm excited because this is interesting",
+        "我兴奋因为这很有趣",
+        null,
+        4
+      ],
+      [
+        "My friend thinks your idea is very exciting",
+        "我的朋友认为你的主意很令人兴奋",
+        null,
+        5
+      ],
+      [
+        "That's less exciting than what she was saying",
+        "那比她正在说的不那么令人兴奋",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "令人",
+        "makes people"
+      ],
+      [
+        "兴奋",
+        "excited"
+      ]
+    ]
+  }
+}

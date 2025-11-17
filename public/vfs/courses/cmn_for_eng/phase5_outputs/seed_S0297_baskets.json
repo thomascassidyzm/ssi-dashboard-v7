@@ -1,0 +1,56 @@
+{
+  "S0297L02": {
+    "lego": ["don't know many", "不认识很多"],
+    "type": "M",
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I don't know many", "我不认识很多", null, 2],
+      ["She doesn't know many", "她不认识很多", null, 2],
+      ["I don't know many people", "我不认识很多人", null, 3],
+      ["I don't know that many", "我不认识那么多", null, 3],
+      ["I don't know many people who", "我不认识很多的人", null, 4],
+      ["She doesn't know many people here", "她不认识这里很多人", null, 4],
+      ["I wonder if I don't know many people who like that", "我想知道我是不是不认识很多喜欢那个的人", null, 10],
+      ["I said I don't know many people who can come tonight", "我说我不认识很多今晚能来的人", null, 9],
+      ["She said she doesn't know many people who speak Chinese", "她说她不认识很多说普通话的人", null, 8],
+      ["I don't know many people who hoped I would be able to finish", "我不认识很多希望我能完成的人", null, 10]
+    ],
+    "components": [[null, null], [null, null], [null, null]]
+  },
+  "S0297L03": {
+    "lego": ["many people who speak Chinese", "很多说普通话的人"],
+    "type": "M",
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Many people", "很多人", null, 1],
+      ["People who speak", "说的人", null, 2],
+      ["Many people who speak", "很多说的人", null, 3],
+      ["I know many people who", "我认识很多的人", null, 3],
+      ["Many people who speak Chinese here", "这里很多说普通话的人", null, 4],
+      ["I know many people who speak", "我认识很多说的人", null, 4],
+      ["I wonder how many people who speak Chinese I know", "我想知道我认识多少说普通话的人", null, 8],
+      ["She said she knows many people who speak Chinese", "她说她认识很多说普通话的人", null, 7],
+      ["Most people I know don't know many people who speak Chinese", "我认识的大多数人不认识很多说普通话的人", null, 9],
+      ["I hope I'll be able to meet many people who speak Chinese tonight", "我希望我今晚能见很多说普通话的人", null, 10]
+    ],
+    "components": [[null, null], [null, null], [null, null], [null, null], [null, null]]
+  },
+  "S0297L04": {
+    "lego": ["people who speak Chinese", "说普通话的人"],
+    "type": "M",
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["People who speak", "说的人", null, 2],
+      ["People here", "这里的人", null, 1],
+      ["I know people who speak", "我认识说的人", null, 3],
+      ["People who speak Chinese here", "这里说普通话的人", null, 3],
+      ["Most people who speak well", "大多数说得好的人", null, 4],
+      ["I know people who speak Chinese", "我认识说普通话的人", null, 4],
+      ["I wonder how many people who speak Chinese she knows", "我想知道她认识多少说普通话的人", null, 8],
+      ["Most people I know like people who speak Chinese", "我认识的大多数人喜欢说普通话的人", null, 7],
+      ["She said she hoped she would meet people who speak Chinese tonight", "她说她希望她今晚会见说普通话的人", null, 9],
+      ["I needed to find out if the people who speak Chinese would be able to come", "我需要找出说普通话的人能不能来", null, 13]
+    ],
+    "components": [[null, null], [null, null], [null, null], [null, null]]
+  }
+}

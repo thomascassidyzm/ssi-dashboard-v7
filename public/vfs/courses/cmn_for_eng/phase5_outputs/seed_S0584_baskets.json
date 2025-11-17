@@ -1,0 +1,859 @@
+{
+  "S0584L01": {
+    "lego": [
+      "every morning",
+      "每天早上"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Every morning",
+        "每天早上",
+        null,
+        1
+      ],
+      [
+        "Every morning here",
+        "每天早上这里",
+        null,
+        2
+      ],
+      [
+        "We often every morning",
+        "我们经常每天早上",
+        null,
+        2
+      ],
+      [
+        "Every morning in this place",
+        "每天早上这个地方",
+        null,
+        2
+      ],
+      [
+        "He'd like every morning",
+        "他想每天早上",
+        null,
+        2
+      ],
+      [
+        "We often wanted every morning",
+        "我们经常想每天早上",
+        null,
+        3
+      ],
+      [
+        "Every morning in this part of the world",
+        "每天早上世界的这个地方",
+        null,
+        3
+      ],
+      [
+        "He'd like to know every morning",
+        "他想知道每天早上",
+        null,
+        3
+      ],
+      [
+        "We often wanted to know more every morning",
+        "我们经常想知道更多每天早上",
+        null,
+        4
+      ],
+      [
+        "What's it like in this part of the world every morning",
+        "每天早上世界的这个地方是什么样的",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "每天",
+        "every day"
+      ],
+      [
+        "早上",
+        "morning"
+      ]
+    ]
+  },
+  "S0584L02": {
+    "lego": [
+      "wake up every morning",
+      "每天早上醒来"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0584L01",
+        "known": "every morning",
+        "target": "每天早上",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Wake up every morning",
+        "每天早上醒来",
+        null,
+        1
+      ],
+      [
+        "Wake up every morning here",
+        "每天早上醒来这里",
+        null,
+        2
+      ],
+      [
+        "We wake up every morning",
+        "我们每天早上醒来",
+        null,
+        2
+      ],
+      [
+        "Wake up every morning in this place",
+        "每天早上醒来这个地方",
+        null,
+        2
+      ],
+      [
+        "He'd like to wake up every morning",
+        "他想每天早上醒来",
+        null,
+        3
+      ],
+      [
+        "We often wake up every morning",
+        "我们经常每天早上醒来",
+        null,
+        3
+      ],
+      [
+        "Wake up every morning in this part of the world",
+        "每天早上醒来世界的这个地方",
+        null,
+        3
+      ],
+      [
+        "We often wanted to wake up every morning",
+        "我们经常想每天早上醒来",
+        null,
+        4
+      ],
+      [
+        "He'd like to wake up every morning in this place",
+        "他想每天早上醒来这个地方",
+        null,
+        4
+      ],
+      [
+        "What's it like to wake up every morning in this part of the world",
+        "每天早上醒来世界的这个地方是什么样的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "每天",
+        "every day"
+      ],
+      [
+        "早上",
+        "morning"
+      ],
+      [
+        "醒来",
+        "wake up"
+      ]
+    ]
+  },
+  "S0584L03": {
+    "lego": [
+      "wake up",
+      "醒来"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0584L01",
+        "known": "every morning",
+        "target": "每天早上",
+        "type": "M"
+      },
+      {
+        "id": "S0584L02",
+        "known": "wake up every morning",
+        "target": "每天早上醒来",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Wake up",
+        "醒来",
+        null,
+        1
+      ],
+      [
+        "Wake up here",
+        "醒来这里",
+        null,
+        2
+      ],
+      [
+        "We wake up",
+        "我们醒来",
+        null,
+        2
+      ],
+      [
+        "Wake up every morning",
+        "每天早上醒来",
+        null,
+        2
+      ],
+      [
+        "He'd like to wake up",
+        "他想醒来",
+        null,
+        2
+      ],
+      [
+        "We often wake up",
+        "我们经常醒来",
+        null,
+        2
+      ],
+      [
+        "Wake up in this place",
+        "醒来这个地方",
+        null,
+        2
+      ],
+      [
+        "We often wanted to wake up",
+        "我们经常想醒来",
+        null,
+        3
+      ],
+      [
+        "He'd like to wake up in this place",
+        "他想醒来这个地方",
+        null,
+        3
+      ],
+      [
+        "What's it like to wake up in this part of the world",
+        "醒来世界的这个地方是什么样的",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0584L04": {
+    "lego": [
+      "wake up and see the mountains",
+      "醒来看到山"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0584L01",
+        "known": "every morning",
+        "target": "每天早上",
+        "type": "M"
+      },
+      {
+        "id": "S0584L02",
+        "known": "wake up every morning",
+        "target": "每天早上醒来",
+        "type": "M"
+      },
+      {
+        "id": "S0584L03",
+        "known": "wake up",
+        "target": "醒来",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Wake up and see the mountains",
+        "醒来看到山",
+        null,
+        1
+      ],
+      [
+        "Wake up and see the mountains here",
+        "醒来看到山这里",
+        null,
+        2
+      ],
+      [
+        "We wake up and see the mountains",
+        "我们醒来看到山",
+        null,
+        2
+      ],
+      [
+        "Wake up and see the mountains every morning",
+        "每天早上醒来看到山",
+        null,
+        2
+      ],
+      [
+        "He'd like to wake up and see the mountains",
+        "他想醒来看到山",
+        null,
+        3
+      ],
+      [
+        "We often wake up and see the mountains",
+        "我们经常醒来看到山",
+        null,
+        3
+      ],
+      [
+        "Wake up and see the mountains in this place",
+        "醒来看到山这个地方",
+        null,
+        3
+      ],
+      [
+        "We often wanted to wake up and see the mountains",
+        "我们经常想醒来看到山",
+        null,
+        4
+      ],
+      [
+        "Wake up every morning and see the mountains in this place",
+        "每天早上醒来看到山这个地方",
+        null,
+        4
+      ],
+      [
+        "What's it like to wake up every morning and see the mountains",
+        "每天早上醒来看到山是什么样的",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "醒来",
+        "wake up"
+      ],
+      [
+        "看到",
+        "see"
+      ],
+      [
+        "山",
+        "mountains"
+      ]
+    ]
+  },
+  "S0584L05": {
+    "lego": [
+      "see the mountains",
+      "看到山"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0584L01",
+        "known": "every morning",
+        "target": "每天早上",
+        "type": "M"
+      },
+      {
+        "id": "S0584L02",
+        "known": "wake up every morning",
+        "target": "每天早上醒来",
+        "type": "M"
+      },
+      {
+        "id": "S0584L03",
+        "known": "wake up",
+        "target": "醒来",
+        "type": "A"
+      },
+      {
+        "id": "S0584L04",
+        "known": "wake up and see the mountains",
+        "target": "醒来看到山",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "See the mountains",
+        "看到山",
+        null,
+        1
+      ],
+      [
+        "See the mountains here",
+        "看到山这里",
+        null,
+        2
+      ],
+      [
+        "We see the mountains",
+        "我们看到山",
+        null,
+        2
+      ],
+      [
+        "See the mountains every morning",
+        "每天早上看到山",
+        null,
+        2
+      ],
+      [
+        "He'd like to see the mountains",
+        "他想看到山",
+        null,
+        3
+      ],
+      [
+        "We often see the mountains",
+        "我们经常看到山",
+        null,
+        3
+      ],
+      [
+        "See the mountains in this place",
+        "看到山这个地方",
+        null,
+        3
+      ],
+      [
+        "We often wanted to see the mountains",
+        "我们经常想看到山",
+        null,
+        4
+      ],
+      [
+        "Wake up and see the mountains every morning",
+        "每天早上醒来看到山",
+        null,
+        4
+      ],
+      [
+        "What's it like to wake up and see the mountains every morning",
+        "每天早上醒来看到山是什么样的",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "看到",
+        "see"
+      ],
+      [
+        "山",
+        "mountains"
+      ]
+    ]
+  },
+  "S0584L06": {
+    "lego": [
+      "see",
+      "看到"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0584L01",
+        "known": "every morning",
+        "target": "每天早上",
+        "type": "M"
+      },
+      {
+        "id": "S0584L02",
+        "known": "wake up every morning",
+        "target": "每天早上醒来",
+        "type": "M"
+      },
+      {
+        "id": "S0584L03",
+        "known": "wake up",
+        "target": "醒来",
+        "type": "A"
+      },
+      {
+        "id": "S0584L04",
+        "known": "wake up and see the mountains",
+        "target": "醒来看到山",
+        "type": "M"
+      },
+      {
+        "id": "S0584L05",
+        "known": "see the mountains",
+        "target": "看到山",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "See",
+        "看到",
+        null,
+        1
+      ],
+      [
+        "See here",
+        "看到这里",
+        null,
+        2
+      ],
+      [
+        "We see",
+        "我们看到",
+        null,
+        2
+      ],
+      [
+        "See every morning",
+        "每天早上看到",
+        null,
+        2
+      ],
+      [
+        "He'd like to see",
+        "他想看到",
+        null,
+        2
+      ],
+      [
+        "We often see",
+        "我们经常看到",
+        null,
+        2
+      ],
+      [
+        "See in this place",
+        "看到这个地方",
+        null,
+        2
+      ],
+      [
+        "We often wanted to see",
+        "我们经常想看到",
+        null,
+        3
+      ],
+      [
+        "Wake up and see every morning",
+        "每天早上醒来看到",
+        null,
+        3
+      ],
+      [
+        "What's it like to wake up and see the mountains",
+        "醒来看到山是什么样的",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0584L07": {
+    "lego": [
+      "mountains",
+      "山"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0584L01",
+        "known": "every morning",
+        "target": "每天早上",
+        "type": "M"
+      },
+      {
+        "id": "S0584L02",
+        "known": "wake up every morning",
+        "target": "每天早上醒来",
+        "type": "M"
+      },
+      {
+        "id": "S0584L03",
+        "known": "wake up",
+        "target": "醒来",
+        "type": "A"
+      },
+      {
+        "id": "S0584L04",
+        "known": "wake up and see the mountains",
+        "target": "醒来看到山",
+        "type": "M"
+      },
+      {
+        "id": "S0584L05",
+        "known": "see the mountains",
+        "target": "看到山",
+        "type": "M"
+      },
+      {
+        "id": "S0584L06",
+        "known": "see",
+        "target": "看到",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Mountains",
+        "山",
+        null,
+        1
+      ],
+      [
+        "Mountains here",
+        "山这里",
+        null,
+        2
+      ],
+      [
+        "The mountains every morning",
+        "每天早上山",
+        null,
+        2
+      ],
+      [
+        "We see mountains",
+        "我们看到山",
+        null,
+        2
+      ],
+      [
+        "Mountains in this place",
+        "山这个地方",
+        null,
+        2
+      ],
+      [
+        "He'd like mountains",
+        "他想山",
+        null,
+        2
+      ],
+      [
+        "We often see mountains",
+        "我们经常看到山",
+        null,
+        3
+      ],
+      [
+        "Wake up and see mountains",
+        "醒来看到山",
+        null,
+        3
+      ],
+      [
+        "See the mountains every morning",
+        "每天早上看到山",
+        null,
+        3
+      ],
+      [
+        "What's it like to see the mountains in this part of the world",
+        "世界的这个地方看到山是什么样的",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0584L08": {
+    "lego": [
+      "what is it like",
+      "是什么样的"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0584L01",
+        "known": "every morning",
+        "target": "每天早上",
+        "type": "M"
+      },
+      {
+        "id": "S0584L02",
+        "known": "wake up every morning",
+        "target": "每天早上醒来",
+        "type": "M"
+      },
+      {
+        "id": "S0584L03",
+        "known": "wake up",
+        "target": "醒来",
+        "type": "A"
+      },
+      {
+        "id": "S0584L04",
+        "known": "wake up and see the mountains",
+        "target": "醒来看到山",
+        "type": "M"
+      },
+      {
+        "id": "S0584L05",
+        "known": "see the mountains",
+        "target": "看到山",
+        "type": "M"
+      },
+      {
+        "id": "S0584L06",
+        "known": "see",
+        "target": "看到",
+        "type": "A"
+      },
+      {
+        "id": "S0584L07",
+        "known": "mountains",
+        "target": "山",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What is it like",
+        "是什么样的",
+        null,
+        1
+      ],
+      [
+        "What's it like here",
+        "这里是什么样的",
+        null,
+        2
+      ],
+      [
+        "What's this place like",
+        "这个地方是什么样的",
+        null,
+        2
+      ],
+      [
+        "What's it like every morning",
+        "每天早上是什么样的",
+        null,
+        2
+      ],
+      [
+        "What's it like to wake up",
+        "醒来是什么样的",
+        null,
+        2
+      ],
+      [
+        "What's it like to see the mountains",
+        "看到山是什么样的",
+        null,
+        2
+      ],
+      [
+        "What's it like to wake up every morning",
+        "每天早上醒来是什么样的",
+        null,
+        3
+      ],
+      [
+        "What's it like to wake up and see the mountains",
+        "醒来看到山是什么样的",
+        null,
+        3
+      ],
+      [
+        "He'd like to know what it's like to wake up every morning",
+        "他想知道每天早上醒来是什么样的",
+        null,
+        5
+      ],
+      [
+        "What's it like to wake up every morning and see the mountains?",
+        "每天早上醒来看到山是什么样的？",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "是",
+        "is"
+      ],
+      [
+        "什么样的",
+        "what kind/what like"
+      ]
+    ]
+  }
+}

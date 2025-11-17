@@ -1,0 +1,669 @@
+{
+  "legos": {
+    "S0453L01": {
+      "lego": [
+        "they said",
+        "他们说了"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "they said",
+          "他们说了",
+          null,
+          1
+        ],
+        [
+          "they said no",
+          "他们说了不",
+          null,
+          2
+        ],
+        [
+          "they said yes",
+          "他们说了是的",
+          null,
+          2
+        ],
+        [
+          "they said they can help",
+          "他们说了他们能帮忙",
+          null,
+          3
+        ],
+        [
+          "they said they were happy",
+          "他们说了他们很高兴",
+          null,
+          3
+        ],
+        [
+          "they said they will be able to",
+          "他们说了他们会能够",
+          null,
+          4
+        ],
+        [
+          "they said they were almost ready to help",
+          "他们说了他们差不多准备好帮忙",
+          null,
+          5
+        ],
+        [
+          "they said they thought it could be done",
+          "他们说了他们觉得可以做",
+          null,
+          5
+        ],
+        [
+          "they said they must catch the train themselves after the meal",
+          "他们说了他们必须在饭后自己赶火车",
+          null,
+          6
+        ],
+        [
+          "Did they say who they saw last night?",
+          "他们说了他们昨晚看到谁了吗？",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0453L01",
+        "seed_context": {
+          "known": "他们说了他们昨晚看到谁了吗？",
+          "target": "Did they say who they saw last night?"
+        }
+      },
+      "components": [
+        [
+          "他们",
+          "they"
+        ],
+        [
+          "说了",
+          "said"
+        ]
+      ]
+    },
+    "S0453L02": {
+      "lego": [
+        "who they saw last night",
+        "他们昨晚看到谁了"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0453L01",
+          "known": "they said",
+          "target": "他们说了",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "who they saw",
+          "他们看到谁",
+          null,
+          1
+        ],
+        [
+          "last night",
+          "昨晚",
+          null,
+          1
+        ],
+        [
+          "they saw who yesterday",
+          "他们昨天看到谁",
+          null,
+          2
+        ],
+        [
+          "who we saw last night",
+          "我们昨晚看到谁",
+          null,
+          2
+        ],
+        [
+          "they said who they saw yesterday",
+          "他们说了他们昨天看到谁",
+          null,
+          3
+        ],
+        [
+          "who they wanted to see last night",
+          "他们昨晚想看谁",
+          null,
+          3
+        ],
+        [
+          "they were happy who they saw after the meal",
+          "他们很高兴饭后看到谁",
+          null,
+          4
+        ],
+        [
+          "we thought who they saw last night was very good",
+          "我们觉得他们昨晚看到谁很好",
+          null,
+          5
+        ],
+        [
+          "they didn't say who they were able to see last night themselves",
+          "他们没有说他们昨晚能够自己看谁",
+          null,
+          6
+        ],
+        [
+          "Did they say who they saw last night?",
+          "他们说了他们昨晚看到谁了吗？",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0453L02",
+        "seed_context": {
+          "known": "他们说了他们昨晚看到谁了吗？",
+          "target": "Did they say who they saw last night?"
+        }
+      },
+      "components": [
+        [
+          "他们",
+          "they"
+        ],
+        [
+          "昨晚",
+          "last night"
+        ],
+        [
+          "看到",
+          "saw"
+        ],
+        [
+          "谁",
+          "who"
+        ],
+        [
+          "了",
+          "(aspect marker)"
+        ]
+      ]
+    },
+    "S0453L03": {
+      "lego": [
+        "saw who last night",
+        "昨晚看到谁了"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0453L01",
+          "known": "they said",
+          "target": "他们说了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L02",
+          "known": "who they saw last night",
+          "target": "他们昨晚看到谁了",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "saw who",
+          "看到谁",
+          null,
+          1
+        ],
+        [
+          "last night",
+          "昨晚",
+          null,
+          1
+        ],
+        [
+          "they saw who",
+          "他们看到谁",
+          null,
+          2
+        ],
+        [
+          "we saw who yesterday",
+          "我们昨天看到谁",
+          null,
+          2
+        ],
+        [
+          "they saw who was very happy",
+          "他们看到谁很高兴",
+          null,
+          3
+        ],
+        [
+          "we saw who will help last night",
+          "我们看到昨晚谁会帮忙",
+          null,
+          3
+        ],
+        [
+          "they said they saw who was almost ready",
+          "他们说了他们看到谁差不多准备好了",
+          null,
+          4
+        ],
+        [
+          "we thought we saw who wanted to catch the train",
+          "我们觉得我们看到谁想赶火车",
+          null,
+          5
+        ],
+        [
+          "they didn't say they saw who could do it more efficiently the same way",
+          "他们没有说他们看到谁能用同样的方法更有效地做",
+          null,
+          6
+        ],
+        [
+          "Did they say who they saw last night?",
+          "他们说了他们昨晚看到谁了吗？",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0453L03",
+        "seed_context": {
+          "known": "他们说了他们昨晚看到谁了吗？",
+          "target": "Did they say who they saw last night?"
+        }
+      },
+      "components": [
+        [
+          "昨晚",
+          "last night"
+        ],
+        [
+          "看到",
+          "saw"
+        ],
+        [
+          "谁",
+          "who"
+        ],
+        [
+          "了",
+          "(aspect marker)"
+        ]
+      ]
+    },
+    "S0453L04": {
+      "lego": [
+        "last night",
+        "昨晚"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0453L01",
+          "known": "they said",
+          "target": "他们说了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L02",
+          "known": "who they saw last night",
+          "target": "他们昨晚看到谁了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L03",
+          "known": "saw who last night",
+          "target": "昨晚看到谁了",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "last night",
+          "昨晚",
+          null,
+          1
+        ],
+        [
+          "yesterday",
+          "昨天",
+          null,
+          1
+        ],
+        [
+          "they were happy last night",
+          "他们昨晚很高兴",
+          null,
+          2
+        ],
+        [
+          "we will help last night",
+          "我们昨晚会帮忙",
+          null,
+          2
+        ],
+        [
+          "they said they were ready last night",
+          "他们说了他们昨晚准备好了",
+          null,
+          3
+        ],
+        [
+          "we thought we can do that last night",
+          "我们觉得我们昨晚能做那个",
+          null,
+          3
+        ],
+        [
+          "they didn't say they were able to help last night",
+          "他们没有说他们昨晚能够帮忙",
+          null,
+          4
+        ],
+        [
+          "we were almost ready to catch the train last night",
+          "我们昨晚差不多准备好赶火车",
+          null,
+          5
+        ],
+        [
+          "they said they thought it could be done more efficiently last night after the meal",
+          "他们说了他们觉得昨晚饭后可以更有效地做",
+          null,
+          6
+        ],
+        [
+          "Did they say who they saw last night?",
+          "他们说了他们昨晚看到谁了吗？",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0453L04",
+        "seed_context": {
+          "known": "他们说了他们昨晚看到谁了吗？",
+          "target": "Did they say who they saw last night?"
+        }
+      }
+    },
+    "S0453L05": {
+      "lego": [
+        "saw who",
+        "看到谁"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0453L01",
+          "known": "they said",
+          "target": "他们说了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L02",
+          "known": "who they saw last night",
+          "target": "他们昨晚看到谁了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L03",
+          "known": "saw who last night",
+          "target": "昨晚看到谁了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L04",
+          "known": "last night",
+          "target": "昨晚",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "saw who",
+          "看到谁",
+          null,
+          1
+        ],
+        [
+          "they saw who",
+          "他们看到谁",
+          null,
+          2
+        ],
+        [
+          "we saw who",
+          "我们看到谁",
+          null,
+          2
+        ],
+        [
+          "they saw who was happy",
+          "他们看到谁很高兴",
+          null,
+          2
+        ],
+        [
+          "we saw who will help",
+          "我们看到谁会帮忙",
+          null,
+          3
+        ],
+        [
+          "they said they saw who can do that",
+          "他们说了他们看到谁能做那个",
+          null,
+          3
+        ],
+        [
+          "we thought we saw who wanted to catch the train",
+          "我们觉得我们看到谁想赶火车",
+          null,
+          4
+        ],
+        [
+          "they saw who was almost ready to help themselves",
+          "他们看到谁差不多准备好自己帮忙",
+          null,
+          5
+        ],
+        [
+          "we didn't say we saw who thought it could be done more efficiently the same way",
+          "我们没有说我们看到谁觉得可以用同样的方法更有效地做",
+          null,
+          6
+        ],
+        [
+          "Did they say who they saw last night?",
+          "他们说了他们昨晚看到谁了吗？",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0453L05",
+        "seed_context": {
+          "known": "他们说了他们昨晚看到谁了吗？",
+          "target": "Did they say who they saw last night?"
+        }
+      },
+      "components": [
+        [
+          "看到",
+          "saw"
+        ],
+        [
+          "谁",
+          "who"
+        ]
+      ]
+    },
+    "S0453L06": {
+      "lego": [
+        "saw",
+        "看到"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0453L01",
+          "known": "they said",
+          "target": "他们说了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L02",
+          "known": "who they saw last night",
+          "target": "他们昨晚看到谁了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L03",
+          "known": "saw who last night",
+          "target": "昨晚看到谁了",
+          "type": "M"
+        },
+        {
+          "id": "S0453L04",
+          "known": "last night",
+          "target": "昨晚",
+          "type": "A"
+        },
+        {
+          "id": "S0453L05",
+          "known": "saw who",
+          "target": "看到谁",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "saw",
+          "看到",
+          null,
+          1
+        ],
+        [
+          "they saw",
+          "他们看到",
+          null,
+          2
+        ],
+        [
+          "we saw that",
+          "我们看到那个",
+          null,
+          2
+        ],
+        [
+          "they saw they were happy",
+          "他们看到他们很高兴",
+          null,
+          2
+        ],
+        [
+          "we saw we can help",
+          "我们看到我们能帮忙",
+          null,
+          3
+        ],
+        [
+          "they said they saw they will do that",
+          "他们说了他们看到他们会做那个",
+          null,
+          4
+        ],
+        [
+          "we thought we saw they were almost ready themselves",
+          "我们觉得我们看到他们差不多自己准备好了",
+          null,
+          5
+        ],
+        [
+          "they saw they wanted to catch the train after the meal",
+          "他们看到他们想在饭后赶火车",
+          null,
+          5
+        ],
+        [
+          "we didn't say we saw they thought it could be done more efficiently the same way",
+          "我们没有说我们看到他们觉得可以用同样的方法更有效地做",
+          null,
+          6
+        ],
+        [
+          "Did they say who they saw last night?",
+          "他们说了他们昨晚看到谁了吗？",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0453L06",
+        "seed_context": {
+          "known": "他们说了他们昨晚看到谁了吗？",
+          "target": "Did they say who they saw last night?"
+        }
+      }
+    }
+  }
+}

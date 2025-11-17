@@ -1,0 +1,290 @@
+{
+  "S0212L01": {
+    "lego": [
+      "They wanted",
+      "他们想"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "They wanted",
+        "他们想",
+        null,
+        1
+      ],
+      [
+        "They wanted to know",
+        "他们想知道",
+        null,
+        2
+      ],
+      [
+        "They wanted to help me deal with",
+        "他们想帮助我处理",
+        null,
+        3
+      ],
+      [
+        "They wanted to discuss the problem",
+        "他们想讨论这个问题",
+        null,
+        3
+      ],
+      [
+        "They wanted to know what we needed",
+        "他们想知道我们需要",
+        null,
+        4
+      ],
+      [
+        "They wanted to help you answer the question",
+        "他们想帮你回答这个问题",
+        null,
+        4
+      ],
+      [
+        "They wanted to spend more time meeting as a group",
+        "他们想花更多的时间作为一个小组聚会",
+        null,
+        5
+      ],
+      [
+        "They wanted to help us deal with the arrangements",
+        "他们想帮助我们处理安排",
+        null,
+        5
+      ],
+      [
+        "They wanted to know how to answer the question we needed to discuss",
+        "他们想知道如何回答我们需要讨论这个问题",
+        null,
+        6
+      ],
+      [
+        "They wanted to help you do what you needed to do",
+        "他们想帮你做你需要做的事",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0212L02": {
+    "lego": [
+      "wanted to ask for help",
+      "想寻求帮助"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0212L01",
+        "known": "They wanted",
+        "target": "他们想",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Wanted to ask",
+        "想寻求",
+        null,
+        1
+      ],
+      [
+        "I wanted to ask for help",
+        "我想寻求帮助",
+        null,
+        2
+      ],
+      [
+        "They wanted to ask for help discussing",
+        "他们想寻求帮助讨论",
+        null,
+        3
+      ],
+      [
+        "She wanted to ask for help dealing with",
+        "她想寻求帮助处理",
+        null,
+        3
+      ],
+      [
+        "They wanted to ask for help answering the question",
+        "他们想寻求帮助回答这个问题",
+        null,
+        4
+      ],
+      [
+        "We wanted to ask for help meeting as a group",
+        "我们想寻求帮助作为一个小组聚会",
+        null,
+        4
+      ],
+      [
+        "Nobody wanted to ask for help dealing with the problem",
+        "没有人想寻求帮助处理这个问题",
+        null,
+        5
+      ],
+      [
+        "They wanted to ask for help doing what we needed",
+        "他们想寻求帮助做我们需要",
+        null,
+        5
+      ],
+      [
+        "They wanted to ask for help dealing with the arrangements we needed to discuss",
+        "他们想寻求帮助处理我们需要讨论安排",
+        null,
+        6
+      ],
+      [
+        "They wanted to ask you for help answering the question about the arrangements",
+        "他们想寻求你帮助回答这个问题关于安排",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0212L03": {
+    "lego": [
+      "to ask for help",
+      "寻求帮助"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0212L01",
+        "known": "They wanted",
+        "target": "他们想",
+        "type": "M"
+      },
+      {
+        "id": "S0212L02",
+        "known": "wanted to ask for help",
+        "target": "想寻求帮助",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "To ask for help",
+        "寻求帮助",
+        null,
+        1
+      ],
+      [
+        "I needed to ask for help",
+        "我需要寻求帮助",
+        null,
+        2
+      ],
+      [
+        "We wanted to ask for help discussing",
+        "我们想寻求帮助讨论",
+        null,
+        3
+      ],
+      [
+        "Nobody wanted to ask for help answering",
+        "没有人想寻求帮助回答",
+        null,
+        3
+      ],
+      [
+        "They wanted to ask for help dealing with",
+        "他们想寻求帮助处理",
+        null,
+        4
+      ],
+      [
+        "You needed to ask for help doing this",
+        "你需要寻求帮助做这个",
+        null,
+        4
+      ],
+      [
+        "They think we need to ask for help discussing the problem",
+        "他们认为我们需要寻求帮助讨论这个问题",
+        null,
+        5
+      ],
+      [
+        "I wanted to ask you for help dealing with the arrangements",
+        "我想寻求你帮助处理安排",
+        null,
+        5
+      ],
+      [
+        "They told us they wanted to ask for help answering what we needed to know",
+        "他们告诉我们他们想寻求帮助回答我们需要知道",
+        null,
+        6
+      ],
+      [
+        "They wanted to ask for help.",
+        "他们想寻求帮助。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

@@ -1,0 +1,631 @@
+{
+  "S0104L01": {
+    "lego": [
+      "We need to",
+      "我们需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "We need to",
+        "我们需要",
+        null,
+        1
+      ],
+      [
+        "We need to go",
+        "我们需要走",
+        null,
+        2
+      ],
+      [
+        "We need to go home",
+        "我们需要回家",
+        null,
+        3
+      ],
+      [
+        "We need to say this",
+        "我们需要说这",
+        null,
+        3
+      ],
+      [
+        "We need to go home now",
+        "我们现在需要回家",
+        null,
+        4
+      ],
+      [
+        "We need to consider this language",
+        "我们需要考虑这个语言",
+        null,
+        4
+      ],
+      [
+        "We need to ask ourselves why it's not working",
+        "我们需要问问我们自己为什么它不起作用",
+        null,
+        5
+      ],
+      [
+        "We need to worry about doing something similar",
+        "我们需要担心做类似的事情",
+        null,
+        5
+      ],
+      [
+        "We need to find out more about what we're doing",
+        "我们需要了解更多关于我们正在做的",
+        null,
+        6
+      ],
+      [
+        "We need to be ready to go as soon as you want",
+        "我们需要准备好只要你想就走",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "需要",
+        "need"
+      ]
+    ]
+  },
+  "S0104L02": {
+    "lego": [
+      "need to change",
+      "需要改变"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0104L01",
+        "known": "We need to",
+        "target": "我们需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Need to change",
+        "需要改变",
+        null,
+        1
+      ],
+      [
+        "We need to change",
+        "我们需要改变",
+        null,
+        2
+      ],
+      [
+        "I need to change now",
+        "我现在需要改变",
+        null,
+        3
+      ],
+      [
+        "We need to change this",
+        "我们需要改变这",
+        null,
+        3
+      ],
+      [
+        "You need to change it now",
+        "你现在需要改变它",
+        null,
+        4
+      ],
+      [
+        "We need to change something similar",
+        "我们需要改变类似的事情",
+        null,
+        4
+      ],
+      [
+        "I need to change what I'm doing",
+        "我需要改变我正在做的",
+        null,
+        5
+      ],
+      [
+        "We need to change the only way it works",
+        "我们需要改变唯一的方法它起作用",
+        null,
+        5
+      ],
+      [
+        "You need to change what you're trying to say",
+        "你需要改变你正在试图说的",
+        null,
+        6
+      ],
+      [
+        "We need to change how we're trying to hear words",
+        "我们需要改变我们如何正在试图听词",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "需要",
+        "need"
+      ],
+      [
+        "改变",
+        "change"
+      ]
+    ]
+  },
+  "S0104L03": {
+    "lego": [
+      "change",
+      "改变"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0104L01",
+        "known": "We need to",
+        "target": "我们需要",
+        "type": "M"
+      },
+      {
+        "id": "S0104L02",
+        "known": "need to change",
+        "target": "需要改变",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Change",
+        "改变",
+        null,
+        1
+      ],
+      [
+        "Change this now",
+        "现在改变这",
+        null,
+        2
+      ],
+      [
+        "We need to change",
+        "我们需要改变",
+        null,
+        3
+      ],
+      [
+        "I should change it",
+        "我应该改变它",
+        null,
+        3
+      ],
+      [
+        "You need to change this",
+        "你需要改变这",
+        null,
+        4
+      ],
+      [
+        "We should change it now",
+        "我们现在应该改变它",
+        null,
+        4
+      ],
+      [
+        "I need to change what I'm saying",
+        "我需要改变我正在说的",
+        null,
+        5
+      ],
+      [
+        "We need to change something about this language",
+        "我们需要改变关于这个语言的事情",
+        null,
+        5
+      ],
+      [
+        "You should change the way you're trying to hear",
+        "你应该改变你正在试图听的方法",
+        null,
+        6
+      ],
+      [
+        "We need to change the only way we're doing this",
+        "我们需要改变我们正在做这的唯一方法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0104L04": {
+    "lego": [
+      "what we're doing",
+      "我们正在做的事情"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0104L01",
+        "known": "We need to",
+        "target": "我们需要",
+        "type": "M"
+      },
+      {
+        "id": "S0104L02",
+        "known": "need to change",
+        "target": "需要改变",
+        "type": "M"
+      },
+      {
+        "id": "S0104L03",
+        "known": "change",
+        "target": "改变",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What we're doing",
+        "我们正在做的事情",
+        null,
+        1
+      ],
+      [
+        "Change what we're doing",
+        "改变我们正在做的事情",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying what we're doing",
+        "我很享受我们正在做的事情",
+        null,
+        3
+      ],
+      [
+        "We need to change what we're doing",
+        "我们需要改变我们正在做的事情",
+        null,
+        3
+      ],
+      [
+        "I should consider what we're doing now",
+        "我现在应该考虑我们正在做的事情",
+        null,
+        4
+      ],
+      [
+        "You need to change what we're doing",
+        "你需要改变我们正在做的事情",
+        null,
+        4
+      ],
+      [
+        "We're trying to say what we're doing is this",
+        "我们正在试图说我们正在做的事情是这",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying finding out about what we're doing",
+        "我很享受了解关于我们正在做的事情",
+        null,
+        5
+      ],
+      [
+        "You should ask yourself why what we're doing is not working",
+        "你应该问问你自己为什么我们正在做的事情不起作用",
+        null,
+        6
+      ],
+      [
+        "We need to worry about changing what we're doing as soon as possible",
+        "我们需要担心尽快改变我们正在做的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "正在",
+        "(progressive)"
+      ],
+      [
+        "做",
+        "doing"
+      ],
+      [
+        "的",
+        "(particle)"
+      ],
+      [
+        "事情",
+        "things"
+      ]
+    ]
+  },
+  "S0104L05": {
+    "lego": [
+      "we're doing",
+      "我们正在做"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0104L01",
+        "known": "We need to",
+        "target": "我们需要",
+        "type": "M"
+      },
+      {
+        "id": "S0104L02",
+        "known": "need to change",
+        "target": "需要改变",
+        "type": "M"
+      },
+      {
+        "id": "S0104L03",
+        "known": "change",
+        "target": "改变",
+        "type": "A"
+      },
+      {
+        "id": "S0104L04",
+        "known": "what we're doing",
+        "target": "我们正在做的事情",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "We're doing",
+        "我们正在做",
+        null,
+        1
+      ],
+      [
+        "We're doing this now",
+        "我们现在正在做这",
+        null,
+        2
+      ],
+      [
+        "What we're doing is this",
+        "我们正在做的是这",
+        null,
+        3
+      ],
+      [
+        "I'm enjoying what we're doing",
+        "我很享受我们正在做的",
+        null,
+        3
+      ],
+      [
+        "We're doing something similar now",
+        "我们现在正在做类似的事情",
+        null,
+        4
+      ],
+      [
+        "We need to change what we're doing",
+        "我们需要改变我们正在做的",
+        null,
+        4
+      ],
+      [
+        "We're doing the only thing that will work",
+        "我们正在做唯一会起作用的事情",
+        null,
+        5
+      ],
+      [
+        "I should ask you what we're doing about this",
+        "我应该问你我们正在做什么关于这",
+        null,
+        5
+      ],
+      [
+        "We're trying to say what we're doing is not like that",
+        "我们正在试图说我们正在做的不是那样的",
+        null,
+        6
+      ],
+      [
+        "You need to find out what we're doing as soon as possible",
+        "你需要尽快了解我们正在做的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "正在",
+        "(progressive)"
+      ],
+      [
+        "做",
+        "doing"
+      ]
+    ]
+  },
+  "S0104L06": {
+    "lego": [
+      "are doing",
+      "正在做"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0104L01",
+        "known": "We need to",
+        "target": "我们需要",
+        "type": "M"
+      },
+      {
+        "id": "S0104L02",
+        "known": "need to change",
+        "target": "需要改变",
+        "type": "M"
+      },
+      {
+        "id": "S0104L03",
+        "known": "change",
+        "target": "改变",
+        "type": "A"
+      },
+      {
+        "id": "S0104L04",
+        "known": "what we're doing",
+        "target": "我们正在做的事情",
+        "type": "M"
+      },
+      {
+        "id": "S0104L05",
+        "known": "we're doing",
+        "target": "我们正在做",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Are doing",
+        "正在做",
+        null,
+        1
+      ],
+      [
+        "We're doing this",
+        "我们正在做这",
+        null,
+        2
+      ],
+      [
+        "You're doing something now",
+        "你现在正在做事情",
+        null,
+        3
+      ],
+      [
+        "We're doing it this way",
+        "我们正在做它这样",
+        null,
+        3
+      ],
+      [
+        "I'm doing something similar now",
+        "我现在正在做类似的事情",
+        null,
+        4
+      ],
+      [
+        "You're doing what I need to change",
+        "你正在做我需要改变的",
+        null,
+        4
+      ],
+      [
+        "We're trying to say what we're doing is this",
+        "我们正在试图说我们正在做的是这",
+        null,
+        5
+      ],
+      [
+        "You're doing the only thing that will make it work",
+        "你正在做唯一会让它起作用的事情",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying finding out about what you're doing with this language",
+        "我很享受了解关于你正在做什么用这个语言",
+        null,
+        6
+      ],
+      [
+        "We need to change what we're doing.",
+        "我们需要改变我们正在做的事情。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "正在",
+        "(progressive)"
+      ],
+      [
+        "做",
+        "doing"
+      ]
+    ]
+  }
+}

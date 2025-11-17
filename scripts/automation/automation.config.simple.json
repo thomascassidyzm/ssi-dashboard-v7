@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "description": "Simplified automation configuration - just the numbers you need",
+
+  "phase3_lego_extraction": {
+    "browsers": 10,
+    "agents_per_browser": 10,
+    "seeds_per_agent": 10,
+    "browser_spawn_delay_ms": 5000,
+    "headless": false,
+    "collision_avoidance": {
+      "auto_inject": true,
+      "block_on_collision": true
+    }
+  },
+
+  "phase5_basket_generation": {
+    "browsers": 4,
+    "agents_per_browser": 4,
+    "seeds_per_agent": 2,
+    "browser_spawn_delay_ms": 5000,
+    "headless": false,
+    "target_phrases_per_lego": 10
+  },
+
+  "orchestrator": {
+    "checkpoint_mode": "gated"
+  },
+
+  "performance": {
+    "max_retries": 3,
+    "retry_backoff_ms": 5000,
+    "browser_timeout_ms": 300000
+  },
+
+  "validation_thresholds": {
+    "phase3_error_rate": 0.05,
+    "phase5_gate_violations": 0.02,
+    "phase5_quality_score": 0.95
+  }
+}

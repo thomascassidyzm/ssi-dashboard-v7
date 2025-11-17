@@ -1,0 +1,152 @@
+{
+  "S0506L01": {
+    "lego": ["years ago", "多年前"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_legos_available": [],
+    "practice_phrases": [
+      ["Years ago.", "多年前。", null, 1],
+      ["Maybe years ago.", "也许多年前。", null, 2],
+      ["Years ago I hate.", "多年前我讨厌。", null, 3],
+      ["Maybe years ago I hate.", "也许多年前我讨厌。", null, 3],
+      ["Years ago I should open the door.", "多年前我应该开门。", null, 4],
+      ["Maybe years ago I should close the window.", "也许多年前我应该关窗。", null, 4],
+      ["Years ago I want to sit between the two girls.", "多年前我想坐在两个女孩中间。", null, 6],
+      ["Maybe years ago I should open the door and close the window.", "也许多年前我应该开门关窗。", null, 6],
+      ["Years ago I hate making trouble.", "多年前我讨厌制造麻烦。", null, 5],
+      ["Years ago so that I don't get left behind.", "多年前这样我就不会被落下。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0506L02": {
+    "lego": ["we moved", "我们搬家"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_legos_available": [["years ago", "多年前"]],
+    "practice_phrases": [
+      ["We moved.", "我们搬家。", null, 1],
+      ["Maybe we moved.", "也许我们搬家。", null, 2],
+      ["We moved years ago.", "我们搬家多年前。", null, 2],
+      ["Maybe we moved years ago.", "也许我们搬家多年前。", null, 3],
+      ["Years ago we moved.", "多年前我们搬家。", null, 2],
+      ["Years ago maybe we moved.", "多年前也许我们搬家。", null, 3],
+      ["We should open the door and we moved.", "我们应该开门我们搬家。", null, 5],
+      ["Years ago we moved and I hate making trouble.", "多年前我们搬家我讨厌制造麻烦。", null, 6],
+      ["Maybe years ago we moved so that I don't get left behind.", "也许多年前我们搬家这样我就不会被落下。", null, 7],
+      ["Years ago we moved inside the entrance.", "多年前我们搬家入口里面。", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0506L03": {
+    "lego": ["before we moved", "我们搬家之前"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_legos_available": [["years ago", "多年前"], ["we moved", "我们搬家"]],
+    "practice_phrases": [
+      ["Before we moved.", "我们搬家之前。", null, 1],
+      ["Maybe before we moved.", "也许我们搬家之前。", null, 2],
+      ["Years ago before we moved.", "多年前我们搬家之前。", null, 2],
+      ["Before we moved I hate.", "我们搬家之前我讨厌。", null, 3],
+      ["Maybe before we moved I hate.", "也许我们搬家之前我讨厌。", null, 3],
+      ["Years ago before we moved I hate.", "多年前我们搬家之前我讨厌。", null, 4],
+      ["Maybe years ago before we moved I should open the door.", "也许多年前我们搬家之前我应该开门。", null, 6],
+      ["Before we moved I want to sit between the two girls.", "我们搬家之前我想坐在两个女孩中间。", null, 6],
+      ["Years ago before we moved I hate making trouble.", "多年前我们搬家之前我讨厌制造麻烦。", null, 6],
+      ["Maybe years ago before we moved so that I don't get left behind.", "也许多年前我们搬家之前这样我就不会被落下。", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0506L04": {
+    "lego": ["I used to live", "我以前住"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_legos_available": [["years ago", "多年前"], ["we moved", "我们搬家"], ["before we moved", "我们搬家之前"]],
+    "practice_phrases": [
+      ["I used to live.", "我以前住。", null, 1],
+      ["I used to live years ago.", "我以前住多年前。", null, 2],
+      ["Maybe I used to live years ago.", "也许我以前住多年前。", null, 3],
+      ["I used to live before we moved.", "我以前住我们搬家之前。", null, 3],
+      ["Years ago I used to live.", "多年前我以前住。", null, 2],
+      ["I used to live years ago before we moved.", "我以前住多年前我们搬家之前。", null, 4],
+      ["Maybe I used to live years ago before we moved.", "也许我以前住多年前我们搬家之前。", null, 5],
+      ["I used to live inside the entrance years ago before we moved.", "我以前住入口里面多年前我们搬家之前。", null, 6],
+      ["Maybe I used to live and should open the door.", "也许我以前住应该开门。", null, 5],
+      ["I used to live years ago before we moved so that I don't get left behind.", "我以前住多年前我们搬家之前这样我就不会被落下。", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0506L05": {
+    "lego": ["live around here", "住在这附近"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_legos_available": [["years ago", "多年前"], ["we moved", "我们搬家"], ["before we moved", "我们搬家之前"], ["I used to live", "我以前住"]],
+    "practice_phrases": [
+      ["Live around here.", "住在这附近。", null, 1],
+      ["I used to live around here.", "我以前住在这附近。", null, 2],
+      ["Maybe I used to live around here.", "也许我以前住在这附近。", null, 3],
+      ["I used to live around here years ago.", "我以前住在这附近多年前。", null, 3],
+      ["I used to live around here before we moved.", "我以前住在这附近我们搬家之前。", null, 4],
+      ["I used to live around here years ago before we moved.", "我以前住在这附近多年前我们搬家之前。", null, 5],
+      ["Maybe I used to live around here years ago before we moved.", "也许我以前住在这附近多年前我们搬家之前。", null, 6],
+      ["I used to live around here years ago before we moved and I hate making trouble.", "我以前住在这附近多年前我们搬家之前我讨厌制造麻烦。", null, 8],
+      ["I used to live around here so that I don't get left behind.", "我以前住在这附近这样我就不会被落下。", null, 6],
+      ["Maybe I used to live around here years ago.", "也许我以前住在这附近多年前。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0506L06": {
+    "lego": ["around here", "在这附近"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_legos_available": [["years ago", "多年前"], ["we moved", "我们搬家"], ["before we moved", "我们搬家之前"], ["I used to live", "我以前住"], ["live around here", "住在这附近"]],
+    "practice_phrases": [
+      ["Around here.", "在这附近。", null, 1],
+      ["I used to live around here.", "我以前住在这附近。", null, 2],
+      ["Maybe around here.", "也许在这附近。", null, 2],
+      ["I used to live around here years ago.", "我以前住在这附近多年前。", null, 3],
+      ["Around here before we moved.", "在这附近我们搬家之前。", null, 3],
+      ["I used to live around here years ago before we moved.", "我以前住在这附近多年前我们搬家之前。", null, 5],
+      ["Maybe I used to live around here years ago before we moved.", "也许我以前住在这附近多年前我们搬家之前。", null, 6],
+      ["I used to live around here years ago before we moved and I should open the door.", "我以前住在这附近多年前我们搬家之前我应该开门。", null, 7],
+      ["Around here I used to live before we moved.", "在这附近我以前住我们搬家之前。", null, 5],
+      ["I used to live around here years ago before we moved.", "我以前住在这附近多年前我们搬家之前。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

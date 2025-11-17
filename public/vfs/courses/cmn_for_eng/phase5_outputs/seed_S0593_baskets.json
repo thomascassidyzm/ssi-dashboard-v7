@@ -1,0 +1,193 @@
+{
+  "S0593L01": {
+    "lego": ["However much I argued","无论我争论多少"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["However much I argued","无论我争论多少",null,1],
+      ["However much I argued I wanted","无论我争论多少我想",null,1],
+      ["However much I argued she insisted","无论我争论多少她坚持",null,2],
+      ["However much I argued I saw","无论我争论多少我看到",null,2],
+      ["However much I argued I wanted to leave home","无论我争论多少我想离开家",null,2],
+      ["However much I argued she told me","无论我争论多少她告诉我",null,2],
+      ["However much I argued I can see the mountains","无论我争论多少我能看到山",null,3],
+      ["However much I argued she insisted I eat eggs","无论我争论多少她坚持我吃鸡蛋",null,3],
+      ["However much I argued she used to insist","无论我争论多少她过去总是坚持",null,2],
+      ["However much I argued I wanted to grow up and leave home","无论我争论多少我想长大离开家",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0593L01",
+      "seed_context": {
+        "known": "However much I argued I still had to share.",
+        "target": "无论我争论多少，我还是要分享。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0593L02": {
+    "lego": ["I argued","我争论"],
+    "type": "M",
+    "current_seed_legos_available": [["However much I argued","无论我争论多少"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I argued","我争论",null,1],
+      ["However much I argued","无论我争论多少",null,1],
+      ["I argued every morning","我每天早上争论",null,2],
+      ["She told me I argued","她告诉我我争论",null,2],
+      ["I argued she insisted","我争论她坚持",null,2],
+      ["I can see I argued","我能看到我争论",null,2],
+      ["I argued but she told me","我争论但她告诉我",null,2],
+      ["However much I argued she insisted I eat eggs","无论我争论多少她坚持我吃鸡蛋",null,3],
+      ["I argued so I wanted to leave home","我争论所以我想离开家",null,2],
+      ["However much I argued I wanted to grow up","无论我争论多少我想长大",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 8,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0593L02",
+      "seed_context": {
+        "known": "However much I argued I still had to share.",
+        "target": "无论我争论多少，我还是要分享。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0593L03": {
+    "lego": ["I still had to share","我还是要分享"],
+    "type": "M",
+    "current_seed_legos_available": [["However much I argued","无论我争论多少"],["I argued","我争论"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I still had to share","我还是要分享",null,1],
+      ["However much I argued I still had to share","无论我争论多少我还是要分享",null,2],
+      ["I argued but I still had to share","我争论但我还是要分享",null,2],
+      ["Every morning I still had to share","每天早上我还是要分享",null,2],
+      ["She told me I still had to share","她告诉我我还是要分享",null,2],
+      ["She insisted I still had to share","她坚持我还是要分享",null,2],
+      ["I wanted to leave home but I still had to share","我想离开家但我还是要分享",null,2],
+      ["However much I argued every morning I still had to share","无论我争论多少每天早上我还是要分享",null,3],
+      ["She used to insist I still had to share","她过去总是坚持我还是要分享",null,2],
+      ["I argued she told me I still had to share","我争论她告诉我我还是要分享",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0593L03",
+      "seed_context": {
+        "known": "However much I argued I still had to share.",
+        "target": "无论我争论多少，我还是要分享。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0593L04": {
+    "lego": ["still had to share","还是要分享"],
+    "type": "M",
+    "current_seed_legos_available": [["However much I argued","无论我争论多少"],["I argued","我争论"],["I still had to share","我还是要分享"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Still had to share","还是要分享",null,1],
+      ["I still had to share","我还是要分享",null,1],
+      ["However much I argued I still had to share","无论我争论多少我还是要分享",null,2],
+      ["I argued I still had to share","我争论我还是要分享",null,2],
+      ["She told me I still had to share","她告诉我我还是要分享",null,2],
+      ["She insisted I still had to share","她坚持我还是要分享",null,2],
+      ["Every morning I still had to share","每天早上我还是要分享",null,2],
+      ["However much I argued every morning still had to share","无论我争论多少每天早上还是要分享",null,3],
+      ["She used to insist I still had to share","她过去总是坚持我还是要分享",null,2],
+      ["I wanted to leave home but still had to share","我想离开家但还是要分享",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0593L04",
+      "seed_context": {
+        "known": "However much I argued I still had to share.",
+        "target": "无论我争论多少，我还是要分享。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0593L05": {
+    "lego": ["had to share","要分享"],
+    "type": "M",
+    "current_seed_legos_available": [["However much I argued","无论我争论多少"],["I argued","我争论"],["I still had to share","我还是要分享"],["still had to share","还是要分享"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Had to share","要分享",null,1],
+      ["I had to share","我要分享",null,1],
+      ["I still had to share","我还是要分享",null,1],
+      ["She told me I had to share","她告诉我我要分享",null,2],
+      ["She insisted I had to share","她坚持我要分享",null,2],
+      ["However much I argued I had to share","无论我争论多少我要分享",null,2],
+      ["Every morning I had to share","每天早上我要分享",null,2],
+      ["She used to insist I had to share","她过去总是坚持我要分享",null,2],
+      ["However much I argued I still had to share","无论我争论多少我还是要分享",null,2],
+      ["I argued but she told me I had to share","我争论但她告诉我我要分享",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0593L05",
+      "seed_context": {
+        "known": "However much I argued I still had to share.",
+        "target": "无论我争论多少，我还是要分享。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0593L06": {
+    "lego": ["share","分享"],
+    "type": "A",
+    "current_seed_legos_available": [["However much I argued","无论我争论多少"],["I argued","我争论"],["I still had to share","我还是要分享"],["still had to share","还是要分享"],["had to share","要分享"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Share","分享",null,1],
+      ["I share","我分享",null,1],
+      ["Had to share","要分享",null,1],
+      ["I still had to share","我还是要分享",null,1],
+      ["She told me to share","她告诉我分享",null,2],
+      ["She insisted I share","她坚持我分享",null,2],
+      ["Every morning I had to share","每天早上我要分享",null,2],
+      ["However much I argued I had to share","无论我争论多少我要分享",null,2],
+      ["She used to insist I had to share","她过去总是坚持我要分享",null,2],
+      ["However much I argued I still had to share","无论我争论多少我还是要分享",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 8,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0593L06",
+      "seed_context": {
+        "known": "However much I argued I still had to share.",
+        "target": "无论我争论多少，我还是要分享。"
+      }
+    }
+  }
+}
