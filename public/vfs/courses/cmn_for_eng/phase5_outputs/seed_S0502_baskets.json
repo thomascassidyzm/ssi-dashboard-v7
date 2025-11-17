@@ -1,0 +1,421 @@
+{
+  "S0502L01": {
+    "lego": [
+      "almost got lost",
+      "差点迷路"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I almost got lost",
+        "我差点迷路",
+        null,
+        1
+      ],
+      [
+        "He almost got lost",
+        "他差点迷路",
+        null,
+        1
+      ],
+      [
+        "Maybe I almost got lost",
+        "也许我差点迷路",
+        null,
+        2
+      ],
+      [
+        "You almost got lost next",
+        "你接下来差点迷路",
+        null,
+        3
+      ],
+      [
+        "I almost got lost inside the entrance",
+        "我在入口里面差点迷路",
+        null,
+        4
+      ],
+      [
+        "She almost got lost when it matters",
+        "她在重要的时候差点迷路",
+        null,
+        5
+      ],
+      [
+        "He almost got lost between the two girls",
+        "他在两个女孩中间差点迷路",
+        null,
+        5
+      ],
+      [
+        "I almost got lost inside without arguing",
+        "我在里面不吵架差点迷路",
+        null,
+        5
+      ],
+      [
+        "You almost got lost alone inside the entrance",
+        "你一个人在入口里面差点迷路",
+        null,
+        6
+      ],
+      [
+        "Maybe he almost got lost between those places",
+        "也许他在那些地方中间差点迷路",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0502L01",
+      "seed_context": {
+        "known": "她差点迷路，因为她向左转而不是向右转。",
+        "target": "She almost got lost because she turned left instead of right."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0502L03": {
+    "lego": [
+      "turned left",
+      "向左转"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "almost got lost",
+        "差点迷路"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "She turned left",
+        "她向左转",
+        null,
+        1
+      ],
+      [
+        "I turned left",
+        "我向左转",
+        null,
+        1
+      ],
+      [
+        "Maybe she turned left",
+        "也许她向左转",
+        null,
+        2
+      ],
+      [
+        "He turned left at the entrance",
+        "他在入口向左转",
+        null,
+        3
+      ],
+      [
+        "I almost got lost and turned left",
+        "我差点迷路而且向左转",
+        null,
+        4
+      ],
+      [
+        "She turned left when it really matters",
+        "她在真正重要的时候向左转",
+        null,
+        5
+      ],
+      [
+        "He turned left inside without arguing",
+        "他在里面不吵架向左转",
+        null,
+        5
+      ],
+      [
+        "I turned left between the two girls",
+        "我在两个女孩中间向左转",
+        null,
+        5
+      ],
+      [
+        "Maybe I almost got lost because I turned left",
+        "也许我差点迷路因为我向左转",
+        null,
+        6
+      ],
+      [
+        "She almost got lost when she turned left alone",
+        "她一个人向左转的时候差点迷路",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0502L03",
+      "seed_context": {
+        "known": "她差点迷路，因为她向左转而不是向右转。",
+        "target": "She almost got lost because she turned left instead of right."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0502L04": {
+    "lego": [
+      "turn right",
+      "向右转"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "almost got lost",
+        "差点迷路"
+      ],
+      [
+        "turned left",
+        "向左转"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I turn right",
+        "我向右转",
+        null,
+        1
+      ],
+      [
+        "You should turn right",
+        "你应该向右转",
+        null,
+        2
+      ],
+      [
+        "Maybe I should turn right",
+        "也许我应该向右转",
+        null,
+        3
+      ],
+      [
+        "She should turn right at the entrance",
+        "她应该在入口向右转",
+        null,
+        4
+      ],
+      [
+        "I almost got lost because I turn right",
+        "我差点迷路因为我向右转",
+        null,
+        5
+      ],
+      [
+        "You should turn right when it really matters",
+        "你应该在真正重要的时候向右转",
+        null,
+        6
+      ],
+      [
+        "Maybe I should turn right between those places",
+        "也许我应该在那些地方中间向右转",
+        null,
+        6
+      ],
+      [
+        "If only I could turn right without arguing",
+        "要是我能不吵架向右转就好了",
+        null,
+        6
+      ],
+      [
+        "She turned left but I turn right inside",
+        "她向左转但我在里面向右转",
+        null,
+        7
+      ],
+      [
+        "I almost got lost because I turned left and should turn right",
+        "我差点迷路因为我向左转而且应该向右转",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0502L04",
+      "seed_context": {
+        "known": "她差点迷路，因为她向左转而不是向右转。",
+        "target": "She almost got lost because she turned left instead of right."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0502L05": {
+    "lego": [
+      "instead of right",
+      "而不是向右转"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "almost got lost",
+        "差点迷路"
+      ],
+      [
+        "turned left",
+        "向左转"
+      ],
+      [
+        "turn right",
+        "向右转"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "I turned left instead of right",
+        "我向左转而不是向右转",
+        null,
+        2
+      ],
+      [
+        "She turned left instead of right",
+        "她向左转而不是向右转",
+        null,
+        2
+      ],
+      [
+        "Maybe I turned left instead of right",
+        "也许我向左转而不是向右转",
+        null,
+        3
+      ],
+      [
+        "He turned left instead of right inside",
+        "他在里面向左转而不是向右转",
+        null,
+        4
+      ],
+      [
+        "I almost got lost because I turned left instead of right",
+        "我差点迷路因为我向左转而不是向右转",
+        null,
+        6
+      ],
+      [
+        "She almost got lost when she turned left instead of right",
+        "她向左转而不是向右转的时候差点迷路",
+        null,
+        7
+      ],
+      [
+        "Maybe I almost got lost because I turned left instead of right",
+        "也许我差点迷路因为我向左转而不是向右转",
+        null,
+        7
+      ],
+      [
+        "You almost got lost because you turned left instead of right inside the entrance",
+        "你差点迷路因为你在入口里面向左转而不是向右转",
+        null,
+        8
+      ],
+      [
+        "If only I could turn right without turning left instead of right",
+        "要是我能向右转不向左转而不是向右转就好了",
+        null,
+        8
+      ],
+      [
+        "She almost got lost because she turned left instead of right",
+        "她差点迷路因为她向左转而不是向右转",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0502L05",
+      "seed_context": {
+        "known": "她差点迷路，因为她向左转而不是向右转。",
+        "target": "She almost got lost because she turned left instead of right."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
