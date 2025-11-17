@@ -15,9 +15,9 @@
   },
 
   "phase5_basket_generation": {
-    "browsers": 10,
+    "browsers": 14,
     "agents_per_browser": 10,
-    "seeds_per_agent": 10,
+    "seeds_per_agent": 5,
     "browser_spawn_delay_ms": 5000,
     "headless": false,
     "target_phrases_per_lego": 10
