@@ -1,0 +1,133 @@
+{
+  "S0538L02": {
+    "lego": ["don't want to seem", "不想显得"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Don't want to seem", "不想显得", null, 1],
+      ["I don't want to seem", "我不想显得", null, 2],
+      ["I don't want to seem crazy", "我不想显得疯狂", null, 3],
+      ["She doesn't want to seem crazy", "她不想显得疯狂", null, 3],
+      ["They don't want to seem lucky", "他们不想显得运气好", null, 4],
+      ["I don't want to seem bad", "我不想显得不好", null, 4],
+      ["I used to think I didn't want to seem crazy", "我以前认为我不想显得疯狂", null, 6],
+      ["She used to think she didn't want to seem bad", "她以前认为她不想显得不好", null, 6],
+      ["You all don't want to seem crazy", "你们都不想显得疯狂", null, 5],
+      ["Unless they don't want to seem lucky", "除非他们不想显得运气好", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0538L02",
+      "seed_context": {
+        "known": "我不想显得好像我不在乎。",
+        "target": "I don't want to seem as though I don't care."
+      }
+    },
+    "components": [
+      ["不", "not"],
+      ["想", "want"],
+      ["显得", "seem/appear"]
+    ]
+  },
+  "S0538L03": {
+    "lego": ["seem as though", "显得好像"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0538L02",
+        "known": "don't want to seem",
+        "target": "不想显得",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Seem as though", "显得好像", null, 1],
+      ["Seem as though I'm wrong", "显得好像我错了", null, 2],
+      ["Don't want to seem as though I'm wrong", "不想显得好像我错了", null, 3],
+      ["Don't want to seem as though they're lucky", "不想显得好像他们运气好", null, 3],
+      ["I don't want to seem as though I'm wrong", "我不想显得好像我错了", null, 4],
+      ["She doesn't want to seem as though she's lucky", "她不想显得好像她运气好", null, 4],
+      ["They don't want to seem as though they're lucky", "他们不想显得好像他们运气好", null, 5],
+      ["I used to think I didn't want to seem as though I was wrong", "我以前认为我不想显得好像我错了", null, 6],
+      ["She doesn't want to seem as though she won't listen to you", "她不想显得好像她不会听你说的", null, 6],
+      ["You all don't want to seem as though you can win the game", "你们都不想显得好像你们能赢得比赛", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0538L03",
+      "seed_context": {
+        "known": "我不想显得好像我不在乎。",
+        "target": "I don't want to seem as though I don't care."
+      }
+    },
+    "components": [
+      ["显得", "seem"],
+      ["好像", "as though/as if"]
+    ]
+  },
+  "S0538L05": {
+    "lego": ["as though I don't care", "好像我不在乎"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0538L02",
+        "known": "don't want to seem",
+        "target": "不想显得",
+        "type": "M"
+      },
+      {
+        "id": "S0538L03",
+        "known": "seem as though",
+        "target": "显得好像",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["As though I don't care", "好像我不在乎", null, 1],
+      ["Seem as though I don't care", "显得好像我不在乎", null, 2],
+      ["Seem as though she doesn't care", "显得好像她不在乎", null, 3],
+      ["Don't want to seem as though I don't care", "不想显得好像我不在乎", null, 3],
+      ["She doesn't want to seem as though she doesn't care", "她不想显得好像她不在乎", null, 4],
+      ["They seem as though they don't care", "他们显得好像他们不在乎", null, 4],
+      ["They don't want to seem as though they don't care", "他们不想显得好像他们不在乎", null, 5],
+      ["You all don't want to seem as though you don't care", "你们都不想显得好像你们不在乎", null, 5],
+      ["I used to think I didn't want to seem as though I don't care", "我以前认为我不想显得好像我不在乎", null, 6],
+      ["I don't want to seem as though I don't care.", "我不想显得好像我不在乎。", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0538L05",
+      "seed_context": {
+        "known": "我不想显得好像我不在乎。",
+        "target": "I don't want to seem as though I don't care."
+      }
+    },
+    "components": [
+      ["好像", "as though"],
+      ["我", "I"],
+      ["不", "not"],
+      ["在乎", "care"]
+    ]
+  }
+}
