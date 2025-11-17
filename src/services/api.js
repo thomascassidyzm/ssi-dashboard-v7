@@ -510,7 +510,8 @@ export default {
         // Cache it to avoid re-fetching the 5MB file for every seed
         if (!this._basketsCache[courseCode]) {
           console.log(`[API] Fetching lego_baskets.json for ${courseCode} (not cached)`)
-          const basketsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json'))
+          // Add cache-busting to bypass GitHub CDN cache
+          const basketsRes = await fetch(`${GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_baskets.json')}?t=${Date.now()}`)
           if (basketsRes.ok) {
             this._basketsCache[courseCode] = await basketsRes.json()
           } else {
