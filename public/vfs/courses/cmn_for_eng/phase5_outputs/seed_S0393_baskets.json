@@ -1,0 +1,226 @@
+{
+  "legos": {
+    "S0393L01": {
+      "lego": ["green", "绿色"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Green", "绿色", null, 1],
+        ["The green one", "绿色的", null, 2],
+        ["I like green", "我喜欢绿色", null, 3],
+        ["That's green", "那是绿色", null, 3],
+        ["The green shirt is beautiful", "绿色衬衫很美", null, 4],
+        ["I want the green one", "我想要绿色的", null, 4],
+        ["Can you see the green building over there", "你能看到那边绿色的建筑吗", null, 5],
+        ["I think the green shirt is very nice", "我认为绿色衬衫很好", null, 5],
+        ["She said she wants to buy something green", "她说她想买绿色的东西", null, 6],
+        ["The person wearing the green shirt is standing near the entrance", "穿绿色衬衫的人站在入口附近", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0393L01",
+        "seed_context": {
+          "known": "那个穿绿色衬衫的男孩。",
+          "target": "That boy with the green shirt."
+        }
+      }
+    },
+    "S0393L02": {
+      "lego": ["shirt", "衬衫"],
+      "type": "A",
+      "current_seed_legos_available": [["green", "绿色"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["A shirt", "一件衬衫", null, 2],
+        ["That shirt", "那件衬衫", null, 2],
+        ["I need a shirt", "我需要一件衬衫", null, 3],
+        ["The shirt is beautiful", "衬衫很美", null, 3],
+        ["Can you see the green shirt", "你能看到绿色衬衫吗", null, 4],
+        ["I want to buy that shirt", "我想买那件衬衫", null, 4],
+        ["The shirt over there is very nice", "那边的衬衫很好", null, 5],
+        ["That person is wearing a beautiful green shirt", "那个人穿着美丽的绿色衬衫", null, 5],
+        ["I think the shirt opposite the entrance is too expensive", "我认为入口对面的衬衫太贵", null, 6],
+        ["Can you help me find the green shirt I left on the table", "你能帮我找我留在桌子上的绿色衬衫吗", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0393L02",
+        "seed_context": {
+          "known": "那个穿绿色衬衫的男孩。",
+          "target": "That boy with the green shirt."
+        }
+      }
+    },
+    "S0393L03": {
+      "lego": ["green shirt", "绿色衬衫"],
+      "type": "M",
+      "current_seed_legos_available": [["green", "绿色"], ["shirt", "衬衫"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Green shirt", "绿色衬衫", null, 1],
+        ["A green shirt", "一件绿色衬衫", null, 2],
+        ["I like the green shirt", "我喜欢绿色衬衫", null, 3],
+        ["That green shirt is beautiful", "那件绿色衬衫很美", null, 3],
+        ["Can you see the green shirt", "你能看到绿色衬衫吗", null, 4],
+        ["I want to buy a green shirt", "我想买一件绿色衬衫", null, 4],
+        ["The green shirt over there is very nice", "那边的绿色衬衫很好", null, 5],
+        ["The person wearing the green shirt is my friend", "穿绿色衬衫的人是我的朋友", null, 5],
+        ["I think the green shirt opposite the post office is perfect", "我认为邮局对面的绿色衬衫很完美", null, 6],
+        ["Can you help me find the green shirt I left in the room", "你能帮我找我留在房间里的绿色衬衫吗", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0393L03",
+        "seed_context": {
+          "known": "那个穿绿色衬衫的男孩。",
+          "target": "That boy with the green shirt."
+        }
+      },
+      "components": [[null, null], [null, null]]
+    },
+    "S0393L04": {
+      "lego": ["boy", "男孩"],
+      "type": "A",
+      "current_seed_legos_available": [["green", "绿色"], ["shirt", "衬衫"], ["green shirt", "绿色衬衫"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["A boy", "一个男孩", null, 2],
+        ["That boy", "那个男孩", null, 2],
+        ["I see a boy", "我看到一个男孩", null, 3],
+        ["The boy is very happy", "那个男孩很高兴", null, 3],
+        ["Can you help the boy", "你能帮助那个男孩吗", null, 4],
+        ["That boy wants to go home", "那个男孩想回家", null, 4],
+        ["The boy with the green shirt is there", "穿绿色衬衫的男孩在那里", null, 5],
+        ["I know the boy who is standing near", "我认识站在附近的那个男孩", null, 5],
+        ["That boy near the entrance needs help very quickly", "入口附近的那个男孩很快需要帮助", null, 6],
+        ["Can you see the boy with the green shirt opposite the post office", "你能看到邮局对面穿绿色衬衫的男孩吗", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0393L04",
+        "seed_context": {
+          "known": "那个穿绿色衬衫的男孩。",
+          "target": "That boy with the green shirt."
+        }
+      }
+    },
+    "S0393L05": {
+      "lego": ["wearing a green shirt", "穿绿色衬衫"],
+      "type": "M",
+      "current_seed_legos_available": [["green", "绿色"], ["shirt", "衬衫"], ["green shirt", "绿色衬衫"], ["boy", "男孩"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Wearing a green shirt", "穿绿色衬衫", null, 1],
+        ["I'm wearing a green shirt", "我穿绿色衬衫", null, 2],
+        ["She's wearing a green shirt", "她穿绿色衬衫", null, 2],
+        ["The person wearing a green shirt", "穿绿色衬衫的人", null, 3],
+        ["That boy is wearing a green shirt", "那个男孩穿绿色衬衫", null, 3],
+        ["I see someone wearing a green shirt", "我看到穿绿色衬衫的人", null, 4],
+        ["The person wearing a green shirt is there", "穿绿色衬衫的人在那里", null, 4],
+        ["Can you see the boy wearing a green shirt", "你能看到穿绿色衬衫的男孩吗", null, 5],
+        ["The person wearing a green shirt is standing near the entrance", "穿绿色衬衫的人站在入口附近", null, 5],
+        ["I want to meet the boy wearing a green shirt opposite the post office", "我想见邮局对面穿绿色衬衫的男孩", null, 6],
+        ["That boy wearing a green shirt walking towards the bus is my friend", "朝公交车走穿绿色衬衫的那个男孩是我的朋友", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0393L05",
+        "seed_context": {
+          "known": "那个穿绿色衬衫的男孩。",
+          "target": "That boy with the green shirt."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null]]
+    },
+    "S0393L06": {
+      "lego": ["boy with the green shirt", "穿绿色衬衫的男孩"],
+      "type": "M",
+      "current_seed_legos_available": [["green", "绿色"], ["shirt", "衬衫"], ["green shirt", "绿色衬衫"], ["boy", "男孩"], ["wearing a green shirt", "穿绿色衬衫"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Boy with the green shirt", "穿绿色衬衫的男孩", null, 1],
+        ["A boy with the green shirt", "一个穿绿色衬衫的男孩", null, 2],
+        ["I see a boy with the green shirt", "我看到一个穿绿色衬衫的男孩", null, 3],
+        ["The boy with the green shirt is there", "穿绿色衬衫的男孩在那里", null, 3],
+        ["Can you help the boy with the green shirt", "你能帮助穿绿色衬衫的男孩吗", null, 4],
+        ["The boy with the green shirt wants something", "穿绿色衬衫的男孩想要东西", null, 4],
+        ["I know the boy with the green shirt over there", "我认识那边穿绿色衬衫的男孩", null, 5],
+        ["The boy with the green shirt is standing near the entrance", "穿绿色衬衫的男孩站在入口附近", null, 5],
+        ["That boy with the green shirt opposite the post office is waiting", "邮局对面穿绿色衬衫的男孩在等", null, 6],
+        ["Can you see the boy with the green shirt who is walking towards the bus", "你能看到朝公交车走的穿绿色衬衫的男孩吗", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0393L06",
+        "seed_context": {
+          "known": "那个穿绿色衬衫的男孩。",
+          "target": "That boy with the green shirt."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null], [null, null]]
+    },
+    "S0393L07": {
+      "lego": ["that boy with the green shirt", "那个穿绿色衬衫的男孩"],
+      "type": "M",
+      "current_seed_legos_available": [["green", "绿色"], ["shirt", "衬衫"], ["green shirt", "绿色衬衫"], ["boy", "男孩"], ["wearing a green shirt", "穿绿色衬衫"], ["boy with the green shirt", "穿绿色衬衫的男孩"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["That boy with the green shirt", "那个穿绿色衬衫的男孩", null, 1],
+        ["I see that boy with the green shirt", "我看到那个穿绿色衬衫的男孩", null, 2],
+        ["That boy with the green shirt is there", "那个穿绿色衬衫的男孩在那里", null, 3],
+        ["Do you know that boy with the green shirt", "你认识那个穿绿色衬衫的男孩吗", null, 3],
+        ["That boy with the green shirt wants help", "那个穿绿色衬衫的男孩想要帮助", null, 4],
+        ["I want to meet that boy with the green shirt", "我想见那个穿绿色衬衫的男孩", null, 4],
+        ["Can you help that boy with the green shirt today", "你今天能帮助那个穿绿色衬衫的男孩吗", null, 5],
+        ["That boy with the green shirt is standing near the entrance", "那个穿绿色衬衫的男孩站在入口附近", null, 5],
+        ["I think that boy with the green shirt needs to go home", "我认为那个穿绿色衬衫的男孩需要回家", null, 6],
+        ["That boy with the green shirt.", "那个穿绿色衬衫的男孩。", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0393L07",
+        "seed_context": {
+          "known": "那个穿绿色衬衫的男孩。",
+          "target": "That boy with the green shirt."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null], [null, null], [null, null]]
+    }
+  }
+}

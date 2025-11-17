@@ -1,0 +1,395 @@
+{
+  "S0376L02": {
+    "lego": [
+      "didn't go anywhere",
+      "哪儿也没去"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Didn't go anywhere",
+        "哪儿也没去",
+        null,
+        1
+      ],
+      [
+        "I didn't go anywhere",
+        "我哪儿也没去",
+        null,
+        2
+      ],
+      [
+        "I didn't go anywhere on Wednesday",
+        "我星期三哪儿也没去",
+        null,
+        3
+      ],
+      [
+        "She didn't go anywhere last year",
+        "她去年哪儿也没去",
+        null,
+        3
+      ],
+      [
+        "I didn't go anywhere to see a film",
+        "我哪儿也没去看一部电影",
+        null,
+        4
+      ],
+      [
+        "I didn't go anywhere on the road",
+        "我在路上哪儿也没去",
+        null,
+        4
+      ],
+      [
+        "I didn't go anywhere in the world last year",
+        "我去年世界上哪儿也没去",
+        null,
+        5
+      ],
+      [
+        "I think she didn't go anywhere on Wednesday",
+        "我觉得她星期三哪儿也没去",
+        null,
+        5
+      ],
+      [
+        "I didn't go anywhere to see what she was doing",
+        "我哪儿也没去看她在做什么",
+        null,
+        6
+      ],
+      [
+        "I didn't go anywhere in the world to see a film",
+        "我世界上哪儿也没去看一部电影",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "哪儿",
+        "where"
+      ],
+      [
+        "也",
+        "also/even"
+      ],
+      [
+        "没",
+        "not"
+      ],
+      [
+        "去",
+        "go"
+      ]
+    ]
+  },
+  "S0376L03": {
+    "lego": [
+      "didn't go",
+      "没去"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0376L02",
+        "known": "didn't go anywhere",
+        "target": "哪儿也没去",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Didn't go",
+        "没去",
+        null,
+        1
+      ],
+      [
+        "I didn't go",
+        "我没去",
+        null,
+        2
+      ],
+      [
+        "I didn't go on Wednesday",
+        "我星期三没去",
+        null,
+        3
+      ],
+      [
+        "She didn't go last year",
+        "她去年没去",
+        null,
+        3
+      ],
+      [
+        "I didn't go to see a film",
+        "我没去看一部电影",
+        null,
+        4
+      ],
+      [
+        "I didn't go anywhere on Wednesday",
+        "我星期三哪儿也没去",
+        null,
+        4
+      ],
+      [
+        "I didn't go to see a film last year",
+        "我去年没去看一部电影",
+        null,
+        5
+      ],
+      [
+        "I didn't go anywhere to see what she created",
+        "我哪儿也没去看她创造什么",
+        null,
+        6
+      ],
+      [
+        "I think I didn't go to see a film on Wednesday",
+        "我觉得我星期三没去看一部电影",
+        null,
+        6
+      ],
+      [
+        "I didn't go anywhere in the world to see a film last year",
+        "我去年没去世界上的什么地方看一部电影",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "没",
+        "not"
+      ],
+      [
+        "去",
+        "go"
+      ]
+    ]
+  },
+  "S0376L04": {
+    "lego": [
+      "go",
+      "去"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0376L02",
+        "known": "didn't go anywhere",
+        "target": "哪儿也没去",
+        "type": "M"
+      },
+      {
+        "id": "S0376L03",
+        "known": "didn't go",
+        "target": "没去",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Go",
+        "去",
+        null,
+        1
+      ],
+      [
+        "I go",
+        "我去",
+        null,
+        2
+      ],
+      [
+        "I go on Wednesday",
+        "我星期三去",
+        null,
+        3
+      ],
+      [
+        "Did you go last year",
+        "你去年去了吗",
+        null,
+        3
+      ],
+      [
+        "I go to see a film",
+        "我去看一部电影",
+        null,
+        4
+      ],
+      [
+        "I didn't go on Wednesday",
+        "我星期三没去",
+        null,
+        4
+      ],
+      [
+        "I go to see a film on Wednesday",
+        "我星期三去看一部电影",
+        null,
+        5
+      ],
+      [
+        "Did you go anywhere in the world last year",
+        "你去年去世界上的什么地方了吗",
+        null,
+        6
+      ],
+      [
+        "I didn't go anywhere to see a film on Wednesday",
+        "我星期三哪儿也没去看一部电影",
+        null,
+        6
+      ],
+      [
+        "I think I didn't go anywhere in the world last year",
+        "我觉得我去年世界上哪儿也没去",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0376L05": {
+    "lego": [
+      "I didn't go",
+      "我没去"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0376L02",
+        "known": "didn't go anywhere",
+        "target": "哪儿也没去",
+        "type": "M"
+      },
+      {
+        "id": "S0376L03",
+        "known": "didn't go",
+        "target": "没去",
+        "type": "M"
+      },
+      {
+        "id": "S0376L04",
+        "known": "go",
+        "target": "去",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I didn't go",
+        "我没去",
+        null,
+        1
+      ],
+      [
+        "I didn't go on Wednesday",
+        "我星期三没去",
+        null,
+        2
+      ],
+      [
+        "I didn't go anywhere on Wednesday",
+        "我星期三哪儿也没去",
+        null,
+        3
+      ],
+      [
+        "I didn't go to see a film",
+        "我没去看一部电影",
+        null,
+        3
+      ],
+      [
+        "I didn't go anywhere last year",
+        "我去年哪儿也没去",
+        null,
+        4
+      ],
+      [
+        "I didn't go to see a film on Wednesday",
+        "我星期三没去看一部电影",
+        null,
+        4
+      ],
+      [
+        "I didn't go anywhere to see what she created",
+        "我哪儿也没去看她创造什么",
+        null,
+        5
+      ],
+      [
+        "I didn't go anywhere in the world last year",
+        "我去年世界上哪儿也没去",
+        null,
+        5
+      ],
+      [
+        "I didn't go anywhere to see a film on Wednesday",
+        "我星期三哪儿也没去看一部电影",
+        null,
+        6
+      ],
+      [
+        "I didn't go anywhere last month",
+        "我上个月哪儿也没去",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "没",
+        "not"
+      ],
+      [
+        "去",
+        "go"
+      ]
+    ]
+  }
+}

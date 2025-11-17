@@ -1,0 +1,125 @@
+{
+  "S0381L01": {
+    "lego": ["I didn't ask", "我没问"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I didn't ask", "我没问", null, 1],
+      ["I didn't ask him", "我没问他", null, 2],
+      ["Yes I didn't ask", "是的我没问", null, 2],
+      ["I didn't ask her", "我没问她", null, 3],
+      ["I didn't ask about it", "我没问它", null, 3],
+      ["I didn't ask what it was", "我没问它是什么", null, 4],
+      ["I didn't ask her last year", "我去年没问她", null, 4],
+      ["I didn't ask what she wanted", "我没问她想什么", null, 5],
+      ["I didn't ask what she was doing", "我没问她在做什么", null, 5],
+      ["I didn't ask what she wanted to include", "我没问她想包括什么", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["我", "I"],
+      ["没", "didn't"],
+      ["问", "ask"]
+    ]
+  },
+  "S0381L02": {
+    "lego": ["if [he] wanted", "是否想"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0381L01", "known": "I didn't ask", "target": "我没问", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["If wanted", "是否想", null, 1],
+      ["If he wanted", "他是否想", null, 2],
+      ["If she wanted to go", "她是否想去", null, 2],
+      ["I asked if he wanted", "我问他是否想", null, 3],
+      ["If he wanted to include", "他是否想包括", null, 3],
+      ["I didn't ask if he wanted", "我没问他是否想", null, 4],
+      ["If she wanted to go there", "她是否想去那儿", null, 4],
+      ["I asked if he wanted to go", "我问他是否想去", null, 5],
+      ["I didn't ask if she wanted to include", "我没问她是否想包括", null, 5],
+      ["I didn't ask if he wanted to go", "我没问他是否想去", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["是否", "if/whether"],
+      ["想", "wanted/want"]
+    ]
+  },
+  "S0381L03": {
+    "lego": ["wanted to follow us", "想跟着我们"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0381L01", "known": "I didn't ask", "target": "我没问", "type": "M"},
+      {"id": "S0381L02", "known": "if [he] wanted", "target": "是否想", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Wanted to follow us", "想跟着我们", null, 1],
+      ["He wanted to follow us", "他想跟着我们", null, 2],
+      ["She wanted to follow us", "她想跟着我们", null, 2],
+      ["If he wanted to follow", "他是否想跟着", null, 3],
+      ["He wanted to follow us there", "他想跟着我们去那儿", null, 4],
+      ["I asked if he wanted to follow", "我问他是否想跟着", null, 4],
+      ["I didn't ask if he wanted to follow", "我没问他是否想跟着", null, 5],
+      ["She wanted to follow us last year", "她去年想跟着我们", null, 5],
+      ["I didn't ask if he wanted to follow us", "我没问他是否想跟着我们", null, 6],
+      ["He wanted to follow us to Africa", "他想跟着我们去非洲", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["想", "wanted"],
+      ["跟着", "to follow"],
+      ["我们", "us"]
+    ]
+  },
+  "S0381L04": {
+    "lego": ["follow", "跟着"],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {"id": "S0381L01", "known": "I didn't ask", "target": "我没问", "type": "M"},
+      {"id": "S0381L02", "known": "if [he] wanted", "target": "是否想", "type": "M"},
+      {"id": "S0381L03", "known": "wanted to follow us", "target": "想跟着我们", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Follow", "跟着", null, 1],
+      ["To follow us", "跟着我们", null, 2],
+      ["He wanted to follow", "他想跟着", null, 2],
+      ["She wanted to follow", "她想跟着", null, 3],
+      ["If he wanted to follow", "他是否想跟着", null, 3],
+      ["He wanted to follow us", "他想跟着我们", null, 4],
+      ["I asked if he wanted to follow", "我问他是否想跟着", null, 4],
+      ["I didn't ask if he wanted to follow", "我没问他是否想跟着", null, 5],
+      ["She wanted to follow us last year", "她去年想跟着我们", null, 5],
+      ["I didn't ask if he wanted to follow us.", "我没问他是否想跟着我们。", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

@@ -1,0 +1,782 @@
+{
+  "legos": {
+    "S0395L01": {
+      "lego": [
+        "we need to",
+        "我们需要"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "We need to",
+          "我们需要",
+          null,
+          1
+        ],
+        [
+          "We need to go",
+          "我们需要去",
+          null,
+          2
+        ],
+        [
+          "We need to talk",
+          "我们需要说话",
+          null,
+          3
+        ],
+        [
+          "We need to wait",
+          "我们需要等",
+          null,
+          3
+        ],
+        [
+          "We need to go tomorrow",
+          "我们明天需要去",
+          null,
+          4
+        ],
+        [
+          "We need to buy something",
+          "我们需要买东西",
+          null,
+          4
+        ],
+        [
+          "We need to think about this",
+          "我们需要想这个",
+          null,
+          5
+        ],
+        [
+          "We need to go to the restaurant",
+          "我们需要去饭店",
+          null,
+          5
+        ],
+        [
+          "We need to wait until she comes back",
+          "我们需要等到她回来",
+          null,
+          6
+        ],
+        [
+          "We need to talk to her about this tomorrow",
+          "我们明天需要和她说这个",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0395L01",
+        "seed_context": {
+          "known": "我们需要在下个拐角处左转。",
+          "target": "We need to turn left at the next corner."
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "需要",
+          "need to"
+        ]
+      ]
+    },
+    "S0395L02": {
+      "lego": [
+        "corner",
+        "拐角"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "we need to",
+          "我们需要"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "A corner",
+          "一个拐角",
+          null,
+          1
+        ],
+        [
+          "That corner",
+          "那个拐角",
+          null,
+          2
+        ],
+        [
+          "I saw the corner",
+          "我看到拐角",
+          null,
+          3
+        ],
+        [
+          "At the corner",
+          "在拐角",
+          null,
+          3
+        ],
+        [
+          "We need to find the corner",
+          "我们需要找到拐角",
+          null,
+          4
+        ],
+        [
+          "She is at the corner",
+          "她在拐角那里",
+          null,
+          4
+        ],
+        [
+          "I will wait at the corner",
+          "我会在拐角等",
+          null,
+          5
+        ],
+        [
+          "We need to meet at that corner",
+          "我们需要在那个拐角见面",
+          null,
+          5
+        ],
+        [
+          "She said she will be at the corner",
+          "她说她会在拐角那里",
+          null,
+          6
+        ],
+        [
+          "I think the restaurant is near the corner",
+          "我觉得饭店在拐角附近",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0395L02",
+        "seed_context": {
+          "known": "我们需要在下个拐角处左转。",
+          "target": "We need to turn left at the next corner."
+        }
+      }
+    },
+    "S0395L03": {
+      "lego": [
+        "the next corner",
+        "下个拐角"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we need to",
+          "我们需要"
+        ],
+        [
+          "corner",
+          "拐角"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "The next corner",
+          "下个拐角",
+          null,
+          1
+        ],
+        [
+          "At the next corner",
+          "在下个拐角",
+          null,
+          2
+        ],
+        [
+          "I will wait at the next corner",
+          "我会在下个拐角等",
+          null,
+          3
+        ],
+        [
+          "She is at the next corner",
+          "她在下个拐角",
+          null,
+          3
+        ],
+        [
+          "We need to find the next corner",
+          "我们需要找下个拐角",
+          null,
+          4
+        ],
+        [
+          "The restaurant is at the next corner",
+          "饭店在下个拐角",
+          null,
+          4
+        ],
+        [
+          "We need to meet at the next corner",
+          "我们需要在下个拐角见面",
+          null,
+          5
+        ],
+        [
+          "I think she will be at the next corner",
+          "我觉得她会在下个拐角",
+          null,
+          5
+        ],
+        [
+          "She said the place is at the next corner",
+          "她说地方在下个拐角",
+          null,
+          6
+        ],
+        [
+          "We need to go to the next corner tomorrow",
+          "我们明天需要去下个拐角",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0395L03",
+        "seed_context": {
+          "known": "我们需要在下个拐角处左转。",
+          "target": "We need to turn left at the next corner."
+        }
+      },
+      "components": [
+        [
+          "下个",
+          "next"
+        ],
+        [
+          "拐角",
+          "corner"
+        ]
+      ]
+    },
+    "S0395L04": {
+      "lego": [
+        "at the next corner",
+        "在下个拐角处"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we need to",
+          "我们需要"
+        ],
+        [
+          "corner",
+          "拐角"
+        ],
+        [
+          "the next corner",
+          "下个拐角"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "At the next corner",
+          "在下个拐角处",
+          null,
+          1
+        ],
+        [
+          "Wait at the next corner",
+          "在下个拐角处等",
+          null,
+          2
+        ],
+        [
+          "I will be at the next corner",
+          "我会在下个拐角处",
+          null,
+          3
+        ],
+        [
+          "She is at the next corner",
+          "她在下个拐角处",
+          null,
+          3
+        ],
+        [
+          "We need to meet at the next corner",
+          "我们需要在下个拐角处见面",
+          null,
+          4
+        ],
+        [
+          "The restaurant is at the next corner",
+          "饭店在下个拐角处",
+          null,
+          4
+        ],
+        [
+          "I think she will wait at the next corner",
+          "我觉得她会在下个拐角处等",
+          null,
+          5
+        ],
+        [
+          "We need to stop at the next corner",
+          "我们需要在下个拐角处停",
+          null,
+          5
+        ],
+        [
+          "She said she will be at the next corner",
+          "她说她会在下个拐角处",
+          null,
+          6
+        ],
+        [
+          "I will meet you at the next corner tomorrow",
+          "我明天会在下个拐角处见你",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0395L04",
+        "seed_context": {
+          "known": "我们需要在下个拐角处左转。",
+          "target": "We need to turn left at the next corner."
+        }
+      },
+      "components": [
+        [
+          "在",
+          "at"
+        ],
+        [
+          "下个",
+          "next"
+        ],
+        [
+          "拐角",
+          "corner"
+        ],
+        [
+          "处",
+          "place/location marker"
+        ]
+      ]
+    },
+    "S0395L05": {
+      "lego": [
+        "turn left",
+        "左转"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we need to",
+          "我们需要"
+        ],
+        [
+          "corner",
+          "拐角"
+        ],
+        [
+          "the next corner",
+          "下个拐角"
+        ],
+        [
+          "at the next corner",
+          "在下个拐角处"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Turn left",
+          "左转",
+          null,
+          1
+        ],
+        [
+          "We turn left",
+          "我们左转",
+          null,
+          2
+        ],
+        [
+          "I want to turn left",
+          "我想左转",
+          null,
+          3
+        ],
+        [
+          "You need to turn left",
+          "你需要左转",
+          null,
+          3
+        ],
+        [
+          "We need to turn left",
+          "我们需要左转",
+          null,
+          4
+        ],
+        [
+          "She said to turn left",
+          "她说左转",
+          null,
+          4
+        ],
+        [
+          "I think we should turn left",
+          "我觉得我们应该左转",
+          null,
+          5
+        ],
+        [
+          "We need to turn left here",
+          "我们需要在这里左转",
+          null,
+          5
+        ],
+        [
+          "She told me to turn left at that place",
+          "她让我在那个地方左转",
+          null,
+          6
+        ],
+        [
+          "I don't know if we need to turn left",
+          "我不知道我们需不需要左转",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0395L05",
+        "seed_context": {
+          "known": "我们需要在下个拐角处左转。",
+          "target": "We need to turn left at the next corner."
+        }
+      },
+      "components": [
+        [
+          "左",
+          "left"
+        ],
+        [
+          "转",
+          "turn"
+        ]
+      ]
+    },
+    "S0395L06": {
+      "lego": [
+        "turn left at the next corner",
+        "在下个拐角处左转"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we need to",
+          "我们需要"
+        ],
+        [
+          "corner",
+          "拐角"
+        ],
+        [
+          "the next corner",
+          "下个拐角"
+        ],
+        [
+          "at the next corner",
+          "在下个拐角处"
+        ],
+        [
+          "turn left",
+          "左转"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Turn left at the next corner",
+          "在下个拐角处左转",
+          null,
+          1
+        ],
+        [
+          "We turn left at the next corner",
+          "我们在下个拐角处左转",
+          null,
+          2
+        ],
+        [
+          "I want to turn left at the next corner",
+          "我想在下个拐角处左转",
+          null,
+          3
+        ],
+        [
+          "You should turn left at the next corner",
+          "你应该在下个拐角处左转",
+          null,
+          3
+        ],
+        [
+          "We need to turn left at the next corner",
+          "我们需要在下个拐角处左转",
+          null,
+          4
+        ],
+        [
+          "She said to turn left at the next corner",
+          "她说在下个拐角处左转",
+          null,
+          4
+        ],
+        [
+          "I think we should turn left at the next corner",
+          "我觉得我们应该在下个拐角处左转",
+          null,
+          5
+        ],
+        [
+          "She told me to turn left at the next corner",
+          "她让我在下个拐角处左转",
+          null,
+          5
+        ],
+        [
+          "I don't know if we turn left at the next corner",
+          "我不知道我们在下个拐角处左不左转",
+          null,
+          6
+        ],
+        [
+          "We will turn left at the next corner and then go to the restaurant",
+          "我们会在下个拐角处左转然后去饭店",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0395L06",
+        "seed_context": {
+          "known": "我们需要在下个拐角处左转。",
+          "target": "We need to turn left at the next corner."
+        }
+      },
+      "components": [
+        [
+          "在",
+          "at"
+        ],
+        [
+          "下个",
+          "next"
+        ],
+        [
+          "拐角",
+          "corner"
+        ],
+        [
+          "处",
+          "place"
+        ],
+        [
+          "左转",
+          "turn left"
+        ]
+      ]
+    },
+    "S0395L07": {
+      "lego": [
+        "we need to turn left at the next corner",
+        "我们需要在下个拐角处左转"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we need to",
+          "我们需要"
+        ],
+        [
+          "corner",
+          "拐角"
+        ],
+        [
+          "the next corner",
+          "下个拐角"
+        ],
+        [
+          "at the next corner",
+          "在下个拐角处"
+        ],
+        [
+          "turn left",
+          "左转"
+        ],
+        [
+          "turn left at the next corner",
+          "在下个拐角处左转"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "We need to turn left at the next corner",
+          "我们需要在下个拐角处左转",
+          null,
+          1
+        ],
+        [
+          "I think we need to turn left at the next corner",
+          "我觉得我们需要在下个拐角处左转",
+          null,
+          2
+        ],
+        [
+          "She said we need to turn left at the next corner",
+          "她说我们需要在下个拐角处左转",
+          null,
+          3
+        ],
+        [
+          "Do we need to turn left at the next corner",
+          "我们需要在下个拐角处左转吗",
+          null,
+          3
+        ],
+        [
+          "I know we need to turn left at the next corner",
+          "我知道我们需要在下个拐角处左转",
+          null,
+          4
+        ],
+        [
+          "We need to turn left at the next corner tomorrow",
+          "我们明天需要在下个拐角处左转",
+          null,
+          4
+        ],
+        [
+          "She told me we need to turn left at the next corner",
+          "她告诉我我们需要在下个拐角处左转",
+          null,
+          5
+        ],
+        [
+          "I don't know if we need to turn left at the next corner",
+          "我不知道我们需不需要在下个拐角处左转",
+          null,
+          5
+        ],
+        [
+          "She thinks we need to turn left at the next corner to get there",
+          "她觉得我们需要在下个拐角处左转才能到那里",
+          null,
+          6
+        ],
+        [
+          "We need to turn left at the next corner.",
+          "我们需要在下个拐角处左转。",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0395L07",
+        "seed_context": {
+          "known": "我们需要在下个拐角处左转。",
+          "target": "We need to turn left at the next corner."
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "需要",
+          "need to"
+        ],
+        [
+          "在",
+          "at"
+        ],
+        [
+          "下个",
+          "next"
+        ],
+        [
+          "拐角",
+          "corner"
+        ],
+        [
+          "处",
+          "place"
+        ],
+        [
+          "左转",
+          "turn left"
+        ]
+      ]
+    }
+  }
+}

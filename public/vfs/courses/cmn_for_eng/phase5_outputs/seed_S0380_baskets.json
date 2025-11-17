@@ -1,0 +1,227 @@
+{
+  "S0380L01": {
+    "lego": ["I asked", "我问"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I asked", "我问", null, 1],
+      ["Yes I asked", "是的我问", null, 2],
+      ["I asked her", "我问她", null, 2],
+      ["I asked last year", "我去年问了", null, 3],
+      ["I asked about it", "我问了它", null, 3],
+      ["I asked what she wanted", "我问她想什么", null, 4],
+      ["Yes I asked about that", "是的我问了那个", null, 4],
+      ["I asked her last month", "我上个月问她了", null, 5],
+      ["I asked what she was doing", "我问她在做什么", null, 5],
+      ["I asked what she wanted to create", "我问她想创造什么", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["我", "I"],
+      ["问", "ask"]
+    ]
+  },
+  "S0380L02": {
+    "lego": ["ask", "问"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0380L01", "known": "I asked", "target": "我问", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Ask", "问", null, 1],
+      ["I asked", "我问", null, 2],
+      ["To ask her", "问她", null, 2],
+      ["Did you ask", "你问了吗", null, 3],
+      ["I didn't ask", "我没问", null, 3],
+      ["She wanted to ask", "她想问", null, 4],
+      ["Did you ask about it", "你问了它吗", null, 4],
+      ["I didn't ask what it was", "我没问它是什么", null, 5],
+      ["I asked what she wanted", "我问她想什么", null, 5],
+      ["Did you ask what she was doing", "你问她在做什么了吗", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0380L03": {
+    "lego": ["what she wanted to include", "她想包括什么"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0380L01", "known": "I asked", "target": "我问", "type": "M"},
+      {"id": "S0380L02", "known": "ask", "target": "问", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["What she wanted to include", "她想包括什么", null, 1],
+      ["I asked what she wanted", "我问她想包括什么", null, 2],
+      ["What did she want to include", "她想包括什么", null, 2],
+      ["I know what she wanted", "我知道她想包括什么", null, 3],
+      ["I didn't know what she wanted", "我不知道她想包括什么", null, 4],
+      ["Did you ask what she wanted", "你问她想包括什么了吗", null, 4],
+      ["I asked what she wanted to include", "我问她想包括什么", null, 5],
+      ["I didn't know what she wanted to include", "我不知道她想包括什么", null, 5],
+      ["Yes I asked what she wanted to include", "是的我问她想包括什么", null, 6],
+      ["I didn't ask what she wanted to include", "我没问她想包括什么", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["她", "she"],
+      ["想", "want"],
+      ["包括", "include"],
+      ["什么", "what"]
+    ]
+  },
+  "S0380L04": {
+    "lego": ["want to include", "想包括"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0380L01", "known": "I asked", "target": "我问", "type": "M"},
+      {"id": "S0380L02", "known": "ask", "target": "问", "type": "A"},
+      {"id": "S0380L03", "known": "what she wanted to include", "target": "她想包括什么", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Want to include", "想包括", null, 1],
+      ["I want to include", "我想包括", null, 2],
+      ["She wanted to include", "她想包括", null, 2],
+      ["What to include", "想包括什么", null, 3],
+      ["I wanted to include it", "我想包括它", null, 3],
+      ["She wanted to include something", "她想包括一些东西", null, 4],
+      ["Did you want to include it", "你想包括它吗", null, 4],
+      ["I asked what she wanted to include", "我问她想包括什么", null, 5],
+      ["I didn't know what to include", "我不知道想包括什么", null, 5],
+      ["She wanted to include it last year", "她去年想包括它", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["想", "want"],
+      ["包括", "include"]
+    ]
+  },
+  "S0380L05": {
+    "lego": ["include", "包括"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0380L01", "known": "I asked", "target": "我问", "type": "M"},
+      {"id": "S0380L02", "known": "ask", "target": "问", "type": "A"},
+      {"id": "S0380L03", "known": "what she wanted to include", "target": "她想包括什么", "type": "M"},
+      {"id": "S0380L04", "known": "want to include", "target": "想包括", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Include", "包括", null, 1],
+      ["To include it", "包括它", null, 2],
+      ["I wanted to include", "我想包括", null, 2],
+      ["She wanted to include", "她想包括", null, 3],
+      ["To include what", "包括什么", null, 3],
+      ["I wanted to include it", "我想包括它", null, 4],
+      ["Did you want to include this", "你想包括这个吗", null, 4],
+      ["She wanted to include something", "她想包括一些东西", null, 5],
+      ["I asked what she wanted to include", "我问她想包括什么", null, 5],
+      ["I didn't know what to include", "我不知道包括什么", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0380L06": {
+    "lego": ["include what", "包括什么"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0380L01", "known": "I asked", "target": "我问", "type": "M"},
+      {"id": "S0380L02", "known": "ask", "target": "问", "type": "A"},
+      {"id": "S0380L03", "known": "what she wanted to include", "target": "她想包括什么", "type": "M"},
+      {"id": "S0380L04", "known": "want to include", "target": "想包括", "type": "M"},
+      {"id": "S0380L05", "known": "include", "target": "包括", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["Include what", "包括什么", null, 1],
+      ["To include what", "包括什么", null, 2],
+      ["She wanted to include what", "她想包括什么", null, 2],
+      ["I asked to include what", "我问包括什么", null, 3],
+      ["What did she include", "她包括了什么", null, 3],
+      ["I wanted to include what", "我想包括什么", null, 4],
+      ["Did you ask to include what", "你问包括什么了吗", null, 4],
+      ["She wanted to include what last year", "她去年想包括什么", null, 5],
+      ["I asked what she wanted to include", "我问她想包括什么", null, 5],
+      ["I didn't know what she wanted to include", "我不知道她想包括什么", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["包括", "include"],
+      ["什么", "what"]
+    ]
+  },
+  "S0380L07": {
+    "lego": ["want to include what", "想包括什么"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {"id": "S0380L01", "known": "I asked", "target": "我问", "type": "M"},
+      {"id": "S0380L02", "known": "ask", "target": "问", "type": "A"},
+      {"id": "S0380L03", "known": "what she wanted to include", "target": "她想包括什么", "type": "M"},
+      {"id": "S0380L04", "known": "want to include", "target": "想包括", "type": "M"},
+      {"id": "S0380L05", "known": "include", "target": "包括", "type": "A"},
+      {"id": "S0380L06", "known": "include what", "target": "包括什么", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Want to include what", "想包括什么", null, 1],
+      ["She wanted to include what", "她想包括什么", null, 2],
+      ["I wanted to include what", "我想包括什么", null, 2],
+      ["What did she want to include", "她想包括什么", null, 3],
+      ["I asked to include what", "我问想包括什么", null, 3],
+      ["Did she want to include something", "她想包括一些东西吗", null, 4],
+      ["I asked what she wanted", "我问她想包括什么", null, 4],
+      ["She wanted to include what last year", "她去年想包括什么", null, 5],
+      ["I didn't know what she wanted to include", "我不知道她想包括什么", null, 5],
+      ["I asked what she wanted to include.", "我问她想包括什么。", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["想", "want"],
+      ["包括", "include"],
+      ["什么", "what"]
+    ]
+  }
+}

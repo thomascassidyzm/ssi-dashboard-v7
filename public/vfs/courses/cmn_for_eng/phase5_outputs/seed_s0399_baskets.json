@@ -1,0 +1,539 @@
+{
+  "legos": {
+    "S0399L01": {
+      "lego": [
+        "we don't want to",
+        "我们不想"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "We don't want to",
+          "我们不想",
+          null,
+          1
+        ],
+        [
+          "We don't want to stand",
+          "我们不想站着",
+          null,
+          2
+        ],
+        [
+          "We don't want to turn left",
+          "我们不想左转",
+          null,
+          3
+        ],
+        [
+          "We don't want to get ready",
+          "我们不想准备好",
+          null,
+          3
+        ],
+        [
+          "We don't want to wait until they're ready",
+          "我们不想等到他们准备好",
+          null,
+          4
+        ],
+        [
+          "We don't want to stand near the entrance",
+          "我们不想站在入口附近",
+          null,
+          4
+        ],
+        [
+          "We don't want to turn left at the next corner",
+          "我们不想在下个拐角处左转",
+          null,
+          6
+        ],
+        [
+          "We don't want to be more patient with our children",
+          "我们不想对我们的孩子更有耐心",
+          null,
+          6
+        ],
+        [
+          "We don't want to stand until everybody else is all ready",
+          "我们不想站着等到其他人都准备好",
+          null,
+          7
+        ],
+        [
+          "We don't want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0399L01",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "不",
+          "don't"
+        ],
+        [
+          "想",
+          "want to"
+        ]
+      ]
+    },
+    "S0399L02": {
+      "lego": [
+        "lose",
+        "失去"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0399L01",
+          "known": "we don't want to",
+          "target": "我们不想",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Lose",
+          "失去",
+          null,
+          1
+        ],
+        [
+          "We don't want to lose",
+          "我们不想失去",
+          null,
+          2
+        ],
+        [
+          "That person loses patience",
+          "那个人失去耐心",
+          null,
+          3
+        ],
+        [
+          "They lose their children",
+          "他们失去孩子",
+          null,
+          3
+        ],
+        [
+          "We don't want to lose our children",
+          "我们不想失去我们的孩子",
+          null,
+          4
+        ],
+        [
+          "The boy loses patience with other people",
+          "那个男孩对其他人失去耐心",
+          null,
+          4
+        ],
+        [
+          "We don't want to lose patience with our children",
+          "我们不想对我们的孩子失去耐心",
+          null,
+          6
+        ],
+        [
+          "Other people don't want to lose patience when they stand there",
+          "其他人站在那边不想失去耐心",
+          null,
+          7
+        ],
+        [
+          "We don't want to lose our patience until everybody is ready",
+          "我们不想失去我们的耐心等到大家准备好",
+          null,
+          7
+        ],
+        [
+          "We don't want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0399L02",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      }
+    },
+    "S0399L03": {
+      "lego": [
+        "hope",
+        "希望"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0399L01",
+          "known": "we don't want to",
+          "target": "我们不想",
+          "type": "M"
+        },
+        {
+          "id": "S0399L02",
+          "known": "lose",
+          "target": "失去",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Hope",
+          "希望",
+          null,
+          1
+        ],
+        [
+          "We have hope",
+          "我们有希望",
+          null,
+          2
+        ],
+        [
+          "That person has hope",
+          "那个人有希望",
+          null,
+          3
+        ],
+        [
+          "Our children have hope",
+          "我们的孩子有希望",
+          null,
+          3
+        ],
+        [
+          "We want to have hope soon",
+          "我们想很快有希望",
+          null,
+          4
+        ],
+        [
+          "The girl standing there has hope",
+          "站在那边的女孩有希望",
+          null,
+          4
+        ],
+        [
+          "We don't want to lose hope with our children",
+          "我们不想对我们的孩子失去希望",
+          null,
+          5
+        ],
+        [
+          "Other people standing near the entrance have hope",
+          "站在入口附近的其他人有希望",
+          null,
+          6
+        ],
+        [
+          "We need to have hope until everybody else is all ready",
+          "我们需要有希望等到其他人都准备好",
+          null,
+          7
+        ],
+        [
+          "We don't want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0399L03",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      }
+    },
+    "S0399L04": {
+      "lego": [
+        "lose hope",
+        "失去希望"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0399L01",
+          "known": "we don't want to",
+          "target": "我们不想",
+          "type": "M"
+        },
+        {
+          "id": "S0399L02",
+          "known": "lose",
+          "target": "失去",
+          "type": "A"
+        },
+        {
+          "id": "S0399L03",
+          "known": "hope",
+          "target": "希望",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Lose hope",
+          "失去希望",
+          null,
+          1
+        ],
+        [
+          "We don't lose hope",
+          "我们不失去希望",
+          null,
+          2
+        ],
+        [
+          "That person loses hope",
+          "那个人失去希望",
+          null,
+          3
+        ],
+        [
+          "Our children lose hope",
+          "我们的孩子失去希望",
+          null,
+          3
+        ],
+        [
+          "We don't want to lose hope soon",
+          "我们不想很快失去希望",
+          null,
+          4
+        ],
+        [
+          "The boy standing there loses hope",
+          "站在那边的男孩失去希望",
+          null,
+          4
+        ],
+        [
+          "We don't want to lose hope with our children",
+          "我们不想对我们的孩子失去希望",
+          null,
+          5
+        ],
+        [
+          "Other people standing near the entrance don't lose hope",
+          "站在入口附近的其他人不失去希望",
+          null,
+          6
+        ],
+        [
+          "We need to not lose hope until everybody else is ready",
+          "我们需要不失去希望等到其他人都准备好",
+          null,
+          7
+        ],
+        [
+          "We don't want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0399L04",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      },
+      "components": [
+        [
+          "失去",
+          "lose"
+        ],
+        [
+          "希望",
+          "hope"
+        ]
+      ]
+    },
+    "S0399L05": {
+      "lego": [
+        "we don't want to lose hope",
+        "我们不想失去希望"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0399L01",
+          "known": "we don't want to",
+          "target": "我们不想",
+          "type": "M"
+        },
+        {
+          "id": "S0399L02",
+          "known": "lose",
+          "target": "失去",
+          "type": "A"
+        },
+        {
+          "id": "S0399L03",
+          "known": "hope",
+          "target": "希望",
+          "type": "A"
+        },
+        {
+          "id": "S0399L04",
+          "known": "lose hope",
+          "target": "失去希望",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "We don't want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ],
+        [
+          "We never want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ],
+        [
+          "We don't want to lose our hope",
+          "我们不想失去我们的希望",
+          null,
+          4
+        ],
+        [
+          "We really don't want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ],
+        [
+          "We don't want to lose hope with our children",
+          "我们不想对我们的孩子失去希望",
+          null,
+          5
+        ],
+        [
+          "We don't want to lose hope when standing there",
+          "我们不想站在那边失去希望",
+          null,
+          4
+        ],
+        [
+          "We don't want to lose hope until everybody else is ready",
+          "我们不想失去希望等到其他人都准备好",
+          null,
+          6
+        ],
+        [
+          "We don't want to lose hope and patience with our children",
+          "我们不想对我们的孩子失去希望和耐心",
+          null,
+          7
+        ],
+        [
+          "We don't want to lose hope when we need to be patient",
+          "我们不想失去希望当我们需要有耐心",
+          null,
+          7
+        ],
+        [
+          "We don't want to lose hope",
+          "我们不想失去希望",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0399L05",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "不",
+          "don't"
+        ],
+        [
+          "想",
+          "want to"
+        ],
+        [
+          "失去",
+          "lose"
+        ],
+        [
+          "希望",
+          "hope"
+        ]
+      ]
+    }
+  }
+}

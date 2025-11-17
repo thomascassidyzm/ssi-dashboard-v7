@@ -1,0 +1,1020 @@
+{
+  "legos": {
+    "S0396L01": {
+      "lego": [
+        "we don't need to",
+        "我们不需要"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "We don't need to",
+          "我们不需要",
+          null,
+          1
+        ],
+        [
+          "We don't need to go",
+          "我们不需要去",
+          null,
+          2
+        ],
+        [
+          "We don't need to wait",
+          "我们不需要等",
+          null,
+          3
+        ],
+        [
+          "We don't need to talk",
+          "我们不需要说话",
+          null,
+          3
+        ],
+        [
+          "We don't need to buy this",
+          "我们不需要买这个",
+          null,
+          4
+        ],
+        [
+          "We don't need to go tomorrow",
+          "我们明天不需要去",
+          null,
+          4
+        ],
+        [
+          "We don't need to wait for her",
+          "我们不需要等她",
+          null,
+          5
+        ],
+        [
+          "We don't need to go to that place",
+          "我们不需要去那个地方",
+          null,
+          5
+        ],
+        [
+          "I think we don't need to do this",
+          "我觉得我们不需要做这个",
+          null,
+          6
+        ],
+        [
+          "She said we don't need to come back tomorrow",
+          "她说我们明天不需要回来",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L01",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "不",
+          "don't"
+        ],
+        [
+          "需要",
+          "need to"
+        ]
+      ]
+    },
+    "S0396L02": {
+      "lego": [
+        "stand/standing",
+        "站着"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Standing",
+          "站着",
+          null,
+          1
+        ],
+        [
+          "I am standing",
+          "我站着",
+          null,
+          2
+        ],
+        [
+          "She is standing there",
+          "她站着那里",
+          null,
+          3
+        ],
+        [
+          "We are standing here",
+          "我们站着这里",
+          null,
+          3
+        ],
+        [
+          "I don't want to be standing",
+          "我不想站着",
+          null,
+          4
+        ],
+        [
+          "She was standing at the corner",
+          "她站着拐角那里",
+          null,
+          4
+        ],
+        [
+          "We don't need to be standing",
+          "我们不需要站着",
+          null,
+          5
+        ],
+        [
+          "I saw her standing at that place",
+          "我看到她站着那个地方",
+          null,
+          5
+        ],
+        [
+          "She said she doesn't want to be standing",
+          "她说她不想站着",
+          null,
+          6
+        ],
+        [
+          "I think we don't need to be standing here",
+          "我觉得我们不需要站着这里",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L02",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      }
+    },
+    "S0396L03": {
+      "lego": [
+        "wait until",
+        "等到"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ],
+        [
+          "stand/standing",
+          "站着"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Wait until",
+          "等到",
+          null,
+          1
+        ],
+        [
+          "I will wait until",
+          "我会等到",
+          null,
+          2
+        ],
+        [
+          "Wait until she comes",
+          "等到她来",
+          null,
+          3
+        ],
+        [
+          "I can wait until tomorrow",
+          "我能等到明天",
+          null,
+          3
+        ],
+        [
+          "We need to wait until later",
+          "我们需要等到晚点",
+          null,
+          4
+        ],
+        [
+          "She said to wait until then",
+          "她说等到那时候",
+          null,
+          4
+        ],
+        [
+          "I will wait until she is ready",
+          "我会等到她准备好",
+          null,
+          5
+        ],
+        [
+          "We don't need to wait until tomorrow",
+          "我们不需要等到明天",
+          null,
+          5
+        ],
+        [
+          "I think we should wait until everyone comes",
+          "我觉得我们应该等到每个人都来",
+          null,
+          6
+        ],
+        [
+          "She told me to wait until she comes back",
+          "她让我等到她回来",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L03",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "等",
+          "wait"
+        ],
+        [
+          "到",
+          "until/reach"
+        ]
+      ]
+    },
+    "S0396L04": {
+      "lego": [
+        "other people/everybody else",
+        "其他人"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ],
+        [
+          "stand/standing",
+          "站着"
+        ],
+        [
+          "wait until",
+          "等到"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Other people",
+          "其他人",
+          null,
+          1
+        ],
+        [
+          "I saw other people",
+          "我看到其他人",
+          null,
+          2
+        ],
+        [
+          "Other people are here",
+          "其他人在这里",
+          null,
+          3
+        ],
+        [
+          "I met other people",
+          "我遇到其他人",
+          null,
+          3
+        ],
+        [
+          "Other people want to go",
+          "其他人想去",
+          null,
+          4
+        ],
+        [
+          "I talked to other people",
+          "我和其他人说话",
+          null,
+          4
+        ],
+        [
+          "We need to wait for other people",
+          "我们需要等其他人",
+          null,
+          5
+        ],
+        [
+          "Other people said they don't want to",
+          "其他人说他们不想",
+          null,
+          5
+        ],
+        [
+          "I think other people will come tomorrow",
+          "我觉得其他人明天会来",
+          null,
+          6
+        ],
+        [
+          "We don't need to wait until other people are here",
+          "我们不需要等到其他人在这里",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L04",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "其他",
+          "other"
+        ],
+        [
+          "人",
+          "people"
+        ]
+      ]
+    },
+    "S0396L05": {
+      "lego": [
+        "ready/prepared",
+        "准备好"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ],
+        [
+          "stand/standing",
+          "站着"
+        ],
+        [
+          "wait until",
+          "等到"
+        ],
+        [
+          "other people/everybody else",
+          "其他人"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Ready",
+          "准备好",
+          null,
+          1
+        ],
+        [
+          "I am ready",
+          "我准备好",
+          null,
+          2
+        ],
+        [
+          "She is ready now",
+          "她现在准备好",
+          null,
+          3
+        ],
+        [
+          "Are you ready",
+          "你准备好了吗",
+          null,
+          3
+        ],
+        [
+          "We are ready to go",
+          "我们准备好去",
+          null,
+          4
+        ],
+        [
+          "I will be ready tomorrow",
+          "我明天会准备好",
+          null,
+          4
+        ],
+        [
+          "She said she is ready",
+          "她说她准备好了",
+          null,
+          5
+        ],
+        [
+          "We need to wait until she is ready",
+          "我们需要等到她准备好",
+          null,
+          5
+        ],
+        [
+          "I don't know if I will be ready",
+          "我不知道我会不会准备好",
+          null,
+          6
+        ],
+        [
+          "We don't need to wait until everyone is ready",
+          "我们不需要等到每个人都准备好",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L05",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "准备",
+          "prepare"
+        ],
+        [
+          "好",
+          "good/ready"
+        ]
+      ]
+    },
+    "S0396L06": {
+      "lego": [
+        "all ready",
+        "都准备好"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ],
+        [
+          "stand/standing",
+          "站着"
+        ],
+        [
+          "wait until",
+          "等到"
+        ],
+        [
+          "other people/everybody else",
+          "其他人"
+        ],
+        [
+          "ready/prepared",
+          "准备好"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "All ready",
+          "都准备好",
+          null,
+          1
+        ],
+        [
+          "We are all ready",
+          "我们都准备好",
+          null,
+          2
+        ],
+        [
+          "They are all ready now",
+          "他们现在都准备好",
+          null,
+          3
+        ],
+        [
+          "Are we all ready",
+          "我们都准备好了吗",
+          null,
+          3
+        ],
+        [
+          "We are all ready to go",
+          "我们都准备好去",
+          null,
+          4
+        ],
+        [
+          "They will all be ready tomorrow",
+          "他们明天都会准备好",
+          null,
+          4
+        ],
+        [
+          "She said they are all ready",
+          "她说他们都准备好",
+          null,
+          5
+        ],
+        [
+          "We can go when we are all ready",
+          "我们都准备好的时候能去",
+          null,
+          5
+        ],
+        [
+          "I don't know if we are all ready",
+          "我不知道我们都准备好了没有",
+          null,
+          6
+        ],
+        [
+          "We need to wait until we are all ready",
+          "我们需要等到我们都准备好",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L06",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "都",
+          "all"
+        ],
+        [
+          "准备好",
+          "ready"
+        ]
+      ]
+    },
+    "S0396L07": {
+      "lego": [
+        "everybody else is ready",
+        "其他人都准备好"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ],
+        [
+          "stand/standing",
+          "站着"
+        ],
+        [
+          "wait until",
+          "等到"
+        ],
+        [
+          "other people/everybody else",
+          "其他人"
+        ],
+        [
+          "ready/prepared",
+          "准备好"
+        ],
+        [
+          "all ready",
+          "都准备好"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Everybody else is ready",
+          "其他人都准备好",
+          null,
+          1
+        ],
+        [
+          "I think everybody else is ready",
+          "我觉得其他人都准备好",
+          null,
+          2
+        ],
+        [
+          "Everybody else is ready to go",
+          "其他人都准备好去",
+          null,
+          3
+        ],
+        [
+          "Is everybody else ready",
+          "其他人都准备好了吗",
+          null,
+          3
+        ],
+        [
+          "Everybody else is ready now",
+          "其他人现在都准备好",
+          null,
+          4
+        ],
+        [
+          "She said everybody else is ready",
+          "她说其他人都准备好",
+          null,
+          4
+        ],
+        [
+          "We can go when everybody else is ready",
+          "其他人都准备好我们能去",
+          null,
+          5
+        ],
+        [
+          "I will wait until everybody else is ready",
+          "我会等到其他人都准备好",
+          null,
+          5
+        ],
+        [
+          "I don't know if everybody else is ready",
+          "我不知道其他人都准备好了没有",
+          null,
+          6
+        ],
+        [
+          "We don't need to wait until everybody else is ready",
+          "我们不需要等到其他人都准备好",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L07",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "其他人",
+          "everybody else"
+        ],
+        [
+          "都",
+          "all"
+        ],
+        [
+          "准备好",
+          "ready"
+        ]
+      ]
+    },
+    "S0396L08": {
+      "lego": [
+        "until everybody else is ready",
+        "等到其他人都准备好"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ],
+        [
+          "stand/standing",
+          "站着"
+        ],
+        [
+          "wait until",
+          "等到"
+        ],
+        [
+          "other people/everybody else",
+          "其他人"
+        ],
+        [
+          "ready/prepared",
+          "准备好"
+        ],
+        [
+          "all ready",
+          "都准备好"
+        ],
+        [
+          "everybody else is ready",
+          "其他人都准备好"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Until everybody else is ready",
+          "等到其他人都准备好",
+          null,
+          1
+        ],
+        [
+          "Wait until everybody else is ready",
+          "等到其他人都准备好",
+          null,
+          2
+        ],
+        [
+          "I will wait until everybody else is ready",
+          "我会等到其他人都准备好",
+          null,
+          3
+        ],
+        [
+          "We should wait until everybody else is ready",
+          "我们应该等到其他人都准备好",
+          null,
+          3
+        ],
+        [
+          "We can go until everybody else is ready",
+          "等到其他人都准备好我们能去",
+          null,
+          4
+        ],
+        [
+          "She said to wait until everybody else is ready",
+          "她说等到其他人都准备好",
+          null,
+          4
+        ],
+        [
+          "I think we should wait until everybody else is ready",
+          "我觉得我们应该等到其他人都准备好",
+          null,
+          5
+        ],
+        [
+          "We don't need to wait until everybody else is ready",
+          "我们不需要等到其他人都准备好",
+          null,
+          5
+        ],
+        [
+          "I don't know if we wait until everybody else is ready",
+          "我不知道我们等不等到其他人都准备好",
+          null,
+          6
+        ],
+        [
+          "She told me to wait until everybody else is ready",
+          "她让我等到其他人都准备好",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L08",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "等到",
+          "wait until"
+        ],
+        [
+          "其他人",
+          "everybody else"
+        ],
+        [
+          "都",
+          "all"
+        ],
+        [
+          "准备好",
+          "ready"
+        ]
+      ]
+    },
+    "S0396L09": {
+      "lego": [
+        "stand until everybody else is ready",
+        "站着等到其他人都准备好"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "we don't need to",
+          "我们不需要"
+        ],
+        [
+          "stand/standing",
+          "站着"
+        ],
+        [
+          "wait until",
+          "等到"
+        ],
+        [
+          "other people/everybody else",
+          "其他人"
+        ],
+        [
+          "ready/prepared",
+          "准备好"
+        ],
+        [
+          "all ready",
+          "都准备好"
+        ],
+        [
+          "everybody else is ready",
+          "其他人都准备好"
+        ],
+        [
+          "until everybody else is ready",
+          "等到其他人都准备好"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Stand until everybody else is ready",
+          "站着等到其他人都准备好",
+          null,
+          1
+        ],
+        [
+          "I will stand until everybody else is ready",
+          "我会站着等到其他人都准备好",
+          null,
+          2
+        ],
+        [
+          "We should stand until everybody else is ready",
+          "我们应该站着等到其他人都准备好",
+          null,
+          3
+        ],
+        [
+          "Do we stand until everybody else is ready",
+          "我们站着等到其他人都准备好吗",
+          null,
+          3
+        ],
+        [
+          "She said to stand until everybody else is ready",
+          "她说站着等到其他人都准备好",
+          null,
+          4
+        ],
+        [
+          "I don't want to stand until everybody else is ready",
+          "我不想站着等到其他人都准备好",
+          null,
+          4
+        ],
+        [
+          "We don't need to stand until everybody else is ready",
+          "我们不需要站着等到其他人都准备好",
+          null,
+          5
+        ],
+        [
+          "I think we should stand until everybody else is ready",
+          "我觉得我们应该站着等到其他人都准备好",
+          null,
+          5
+        ],
+        [
+          "She told me to stand until everybody else is ready",
+          "她让我站着等到其他人都准备好",
+          null,
+          6
+        ],
+        [
+          "We don't need to stand until everybody else is ready.",
+          "我们不需要站着等到其他人都准备好。",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0396L09",
+        "seed_context": {
+          "known": "我们不需要站着等到其他人都准备好。",
+          "target": "We don't need to stand until everybody else is ready."
+        }
+      },
+      "components": [
+        [
+          "站着",
+          "stand"
+        ],
+        [
+          "等到",
+          "wait until"
+        ],
+        [
+          "其他人",
+          "everybody else"
+        ],
+        [
+          "都",
+          "all"
+        ],
+        [
+          "准备好",
+          "ready"
+        ]
+      ]
+    }
+  }
+}

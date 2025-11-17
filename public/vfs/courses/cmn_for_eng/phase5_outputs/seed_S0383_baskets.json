@@ -1,0 +1,122 @@
+{
+  "S0383L03": {
+    "lego": [
+      "he wanted to put it in",
+      "他想把它放在"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["He wanted to put it in", "他想把它放在", null, 1],
+      ["Put it in", "把它放在", null, 1],
+      ["She wanted to put it in", "她想把它放在", null, 2],
+      ["He wanted to put it", "他想把它放", null, 2],
+      ["He wanted to put it in the garden", "他想把它放在花园里", null, 3],
+      ["I wanted to put it in yesterday", "我昨天想把它放在", null, 3],
+      ["She wanted to put it in last year", "她去年想把它放在", null, 4],
+      ["He said he wanted to put it in", "他说他想把它放在", null, 4],
+      ["I didn't know what he wanted to put in the garden", "我不知道他想把什么放在花园里", null, 5],
+      ["Did you ask where she wanted to put it in", "你问她想把它放在哪儿", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他", "he"],
+      ["想", "wanted"],
+      ["把", "[ba-marker]"],
+      ["它", "it"],
+      ["放在", "put in"]
+    ]
+  },
+  "S0383L04": {
+    "lego": [
+      "put in the garden",
+      "放在花园里"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0383L03",
+        "known": "he wanted to put it in",
+        "target": "他想把它放在",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Put in the garden", "放在花园里", null, 1],
+      ["In the garden", "在花园里", null, 1],
+      ["I put it in the garden", "我把它放在花园里", null, 2],
+      ["Put it in the garden", "把它放在花园里", null, 2],
+      ["He wanted to put it in the garden", "他想把它放在花园里", null, 3],
+      ["I wanted to put it in the garden", "我想把它放在花园里", null, 3],
+      ["She said she wanted to put it in the garden", "她说她想把它放在花园里", null, 4],
+      ["Did you put it in the garden yesterday", "你昨天把它放在花园里", null, 4],
+      ["I asked him if he wanted to put it in the garden", "我问他是否想把它放在花园里", null, 5],
+      ["He said he wanted to put it in the garden last year", "他说他去年想把它放在花园里", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["放在", "put in"],
+      ["花园", "garden"],
+      ["里", "in/inside"]
+    ]
+  },
+  "S0383L05": {
+    "lego": [
+      "in the garden",
+      "花园里"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0383L03",
+        "known": "he wanted to put it in",
+        "target": "他想把它放在",
+        "type": "M"
+      },
+      {
+        "id": "S0383L04",
+        "known": "put in the garden",
+        "target": "放在花园里",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["In the garden", "花园里", null, 1],
+      ["The garden", "花园", null, 1],
+      ["I was in the garden", "我在花园里", null, 2],
+      ["It's in the garden", "它在花园里", null, 2],
+      ["Put it in the garden", "把它放在花园里", null, 3],
+      ["I wanted to go to the garden", "我想去花园", null, 3],
+      ["He was in the garden yesterday", "他昨天在花园里", null, 4],
+      ["She wanted to put it in the garden", "她想把它放在花园里", null, 4],
+      ["I asked if he wanted to put it in the garden", "我问他是否想把它放在花园里", null, 5],
+      ["Yes he said he wanted to put it in the garden.", "是的，他说他想把它放在花园里。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["花园", "garden"],
+      ["里", "in/inside"]
+    ]
+  }
+}

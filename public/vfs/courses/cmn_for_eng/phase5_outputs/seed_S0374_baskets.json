@@ -1,0 +1,409 @@
+{
+  "legos": {
+    "S0374L03": {
+      "lego": [
+        "think",
+        "觉得"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I think so.",
+          "我觉得。",
+          null,
+          1
+        ],
+        [
+          "What do you think?",
+          "你觉得什么？",
+          null,
+          2
+        ],
+        [
+          "I think it was beautiful.",
+          "我觉得它很美。",
+          null,
+          2
+        ],
+        [
+          "He didn't think that.",
+          "他不觉得那个。",
+          null,
+          3
+        ],
+        [
+          "I think she told me.",
+          "我觉得她告诉我。",
+          null,
+          3
+        ],
+        [
+          "She didn't think it was beautiful.",
+          "她不觉得它很美。",
+          null,
+          4
+        ],
+        [
+          "I think I saw that place on Wednesday.",
+          "我觉得我星期三看到了那个地方。",
+          null,
+          5
+        ],
+        [
+          "Did you think that film was beautiful?",
+          "你觉得那部电影很美吗？",
+          null,
+          5
+        ],
+        [
+          "I didn't think he wanted to grow tomatoes.",
+          "我不觉得他想种西红柿。",
+          null,
+          5
+        ],
+        [
+          "Yes I think I heard that he wanted to create.",
+          "是的，我觉得我听说他想创造。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0374L03",
+        "seed_context": {
+          "known": "Yes I thought it was very beautiful.",
+          "target": "是的，我觉得它非常美。"
+        }
+      }
+    },
+    "S0374L04": {
+      "lego": [
+        "very beautiful",
+        "非常美"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "think",
+          "觉得"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Very beautiful.",
+          "非常美。",
+          null,
+          1
+        ],
+        [
+          "It was very beautiful.",
+          "它非常美。",
+          null,
+          2
+        ],
+        [
+          "That place was very beautiful.",
+          "那个地方非常美。",
+          null,
+          2
+        ],
+        [
+          "I think it was very beautiful.",
+          "我觉得它非常美。",
+          null,
+          3
+        ],
+        [
+          "The film was very beautiful.",
+          "那部电影非常美。",
+          null,
+          2
+        ],
+        [
+          "She told me it was very beautiful.",
+          "她告诉我它非常美。",
+          null,
+          4
+        ],
+        [
+          "I heard that place was very beautiful.",
+          "我听说那个地方非常美。",
+          null,
+          4
+        ],
+        [
+          "I saw that the film was very beautiful.",
+          "我看到了那部电影非常美。",
+          null,
+          5
+        ],
+        [
+          "Did you think that it was very beautiful?",
+          "你觉得它非常美吗？",
+          null,
+          5
+        ],
+        [
+          "Yes I think it was very beautiful on Wednesday.",
+          "是的，我觉得星期三它非常美。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 1,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0374L04",
+        "seed_context": {
+          "known": "Yes I thought it was very beautiful.",
+          "target": "是的，我觉得它非常美。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0374L05": {
+      "lego": [
+        "it was very beautiful",
+        "它非常美"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "think",
+          "觉得"
+        ],
+        [
+          "very beautiful",
+          "非常美"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "It was very beautiful.",
+          "它非常美。",
+          null,
+          1
+        ],
+        [
+          "Yes it was very beautiful.",
+          "是的，它非常美。",
+          null,
+          2
+        ],
+        [
+          "I thought it was very beautiful.",
+          "我觉得它非常美。",
+          null,
+          2
+        ],
+        [
+          "He said it was very beautiful.",
+          "他说它非常美。",
+          null,
+          3
+        ],
+        [
+          "She told me it was very beautiful.",
+          "她告诉我它非常美。",
+          null,
+          4
+        ],
+        [
+          "I heard that it was very beautiful.",
+          "我听说它非常美。",
+          null,
+          3
+        ],
+        [
+          "I saw that it was very beautiful on the road.",
+          "我在路上看到了它非常美。",
+          null,
+          5
+        ],
+        [
+          "Did you think that it was very beautiful?",
+          "你觉得它非常美吗？",
+          null,
+          4
+        ],
+        [
+          "Nobody told me that it was very beautiful.",
+          "没人告诉我它非常美。",
+          null,
+          4
+        ],
+        [
+          "I didn't hear that it was very beautiful.",
+          "我没听到它非常美。",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0374L05",
+        "seed_context": {
+          "known": "Yes I thought it was very beautiful.",
+          "target": "是的，我觉得它非常美。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0374L06": {
+      "lego": [
+        "thought it was very beautiful",
+        "觉得它非常美"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "think",
+          "觉得"
+        ],
+        [
+          "very beautiful",
+          "非常美"
+        ],
+        [
+          "it was very beautiful",
+          "它非常美"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "I thought it was very beautiful.",
+          "我觉得它非常美。",
+          null,
+          1
+        ],
+        [
+          "She thought it was very beautiful.",
+          "她觉得它非常美。",
+          null,
+          2
+        ],
+        [
+          "He thought it was very beautiful.",
+          "他觉得它非常美。",
+          null,
+          2
+        ],
+        [
+          "I thought that place was very beautiful.",
+          "我觉得那个地方非常美。",
+          null,
+          3
+        ],
+        [
+          "Did you think it was very beautiful?",
+          "你觉得它非常美吗？",
+          null,
+          3
+        ],
+        [
+          "Nobody thought it was very beautiful.",
+          "没人觉得它非常美。",
+          null,
+          3
+        ],
+        [
+          "I heard that she thought it was very beautiful.",
+          "我听说她觉得它非常美。",
+          null,
+          5
+        ],
+        [
+          "He told me that he thought it was very beautiful.",
+          "他告诉我他觉得它非常美。",
+          null,
+          6
+        ],
+        [
+          "I saw that film and I thought it was very beautiful.",
+          "我看了那部电影，我觉得它非常美。",
+          null,
+          6
+        ],
+        [
+          "Yes I thought it was very beautiful.",
+          "是的，我觉得它非常美。",
+          null,
+          2
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 3,
+        "longer_4_5": 0,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0374L06",
+        "seed_context": {
+          "known": "Yes I thought it was very beautiful.",
+          "target": "是的，我觉得它非常美。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

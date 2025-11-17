@@ -1,0 +1,645 @@
+{
+  "S0377L01": {
+    "lego": [
+      "last year",
+      "去年"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Last year",
+        "去年",
+        null,
+        1
+      ],
+      [
+        "I went last year",
+        "我去年去了",
+        null,
+        2
+      ],
+      [
+        "I saw a film last year",
+        "我去年看了一部电影",
+        null,
+        3
+      ],
+      [
+        "I saw it last year",
+        "我去年看到了它",
+        null,
+        3
+      ],
+      [
+        "I didn't go anywhere last year",
+        "我去年哪儿也没去",
+        null,
+        4
+      ],
+      [
+        "I went to see a film last year",
+        "我去年去看了一部电影",
+        null,
+        4
+      ],
+      [
+        "I think I saw a beautiful film last year",
+        "我觉得我去年看了一部很美的电影",
+        null,
+        5
+      ],
+      [
+        "I went to see what she was creating last year",
+        "我去年去看了她在创造什么",
+        null,
+        6
+      ],
+      [
+        "Did you go anywhere in the world last year",
+        "你去年去世界上的什么地方了吗",
+        null,
+        6
+      ],
+      [
+        "I didn't see anyone that I knew on the road last year",
+        "我去年在路上没看到任何我认识的人",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "去",
+        "last/past"
+      ],
+      [
+        "年",
+        "year"
+      ]
+    ]
+  },
+  "S0377L02": {
+    "lego": [
+      "in the world",
+      "世界上"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0377L01",
+        "known": "last year",
+        "target": "去年",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "In the world",
+        "世界上",
+        null,
+        1
+      ],
+      [
+        "I saw it in the world",
+        "我在世界上看到了它",
+        null,
+        2
+      ],
+      [
+        "It was beautiful in the world",
+        "它在世界上很美",
+        null,
+        3
+      ],
+      [
+        "I went in the world",
+        "我去了世界上",
+        null,
+        3
+      ],
+      [
+        "I didn't go anywhere in the world",
+        "我世界上哪儿也没去",
+        null,
+        4
+      ],
+      [
+        "I saw a beautiful film in the world",
+        "我在世界上看了一部很美的电影",
+        null,
+        4
+      ],
+      [
+        "I went to see a film in the world last year",
+        "我去年去世界上看了一部电影",
+        null,
+        5
+      ],
+      [
+        "Did you go anywhere in the world last year",
+        "你去年去世界上的什么地方了吗",
+        null,
+        6
+      ],
+      [
+        "I think I saw a very beautiful film in the world",
+        "我觉得我在世界上看了一部非常美的电影",
+        null,
+        6
+      ],
+      [
+        "I didn't see anyone that I knew in the world last year",
+        "我去年在世界上没看到任何我认识的人",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "世界",
+        "world"
+      ],
+      [
+        "上",
+        "on/in"
+      ]
+    ]
+  },
+  "S0377L03": {
+    "lego": [
+      "what place",
+      "什么地方"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0377L01",
+        "known": "last year",
+        "target": "去年",
+        "type": "M"
+      },
+      {
+        "id": "S0377L02",
+        "known": "in the world",
+        "target": "世界上",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What place",
+        "什么地方",
+        null,
+        1
+      ],
+      [
+        "I went to what place",
+        "我去了什么地方",
+        null,
+        2
+      ],
+      [
+        "I saw what place last year",
+        "我去年看到了什么地方",
+        null,
+        3
+      ],
+      [
+        "What place in the world",
+        "世界上的什么地方",
+        null,
+        3
+      ],
+      [
+        "I went to what place last year",
+        "我去年去了什么地方",
+        null,
+        4
+      ],
+      [
+        "Did you go to what place",
+        "你去了什么地方吗",
+        null,
+        4
+      ],
+      [
+        "I went to see what place in the world",
+        "我去看了世界上的什么地方",
+        null,
+        5
+      ],
+      [
+        "I think you went to what place last year",
+        "我觉得你去年去了什么地方",
+        null,
+        5
+      ],
+      [
+        "Did you go to what place in the world last year",
+        "你去年去了世界上的什么地方吗",
+        null,
+        6
+      ],
+      [
+        "I didn't know what place she was doing it in",
+        "我不知道她在什么地方做",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "什么",
+        "what"
+      ],
+      [
+        "地方",
+        "place"
+      ]
+    ]
+  },
+  "S0377L04": {
+    "lego": [
+      "anywhere in the world",
+      "世界上的什么地方"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0377L01",
+        "known": "last year",
+        "target": "去年",
+        "type": "M"
+      },
+      {
+        "id": "S0377L02",
+        "known": "in the world",
+        "target": "世界上",
+        "type": "M"
+      },
+      {
+        "id": "S0377L03",
+        "known": "what place",
+        "target": "什么地方",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Anywhere in the world",
+        "世界上的什么地方",
+        null,
+        1
+      ],
+      [
+        "I went anywhere in the world",
+        "我去了世界上的什么地方",
+        null,
+        2
+      ],
+      [
+        "I saw anywhere in the world",
+        "我看到了世界上的什么地方",
+        null,
+        3
+      ],
+      [
+        "I didn't go anywhere in the world",
+        "我没去世界上的什么地方",
+        null,
+        3
+      ],
+      [
+        "I went anywhere in the world last year",
+        "我去年去了世界上的什么地方",
+        null,
+        4
+      ],
+      [
+        "Did you go anywhere in the world",
+        "你去了世界上的什么地方吗",
+        null,
+        4
+      ],
+      [
+        "I went to see anywhere in the world last year",
+        "我去年去看了世界上的什么地方",
+        null,
+        5
+      ],
+      [
+        "I think you went anywhere in the world",
+        "我觉得你去了世界上的什么地方",
+        null,
+        5
+      ],
+      [
+        "Did you go anywhere in the world last year",
+        "你去年去世界上的什么地方了吗",
+        null,
+        6
+      ],
+      [
+        "I didn't see anyone that I knew anywhere in the world",
+        "我在世界上的什么地方都没看到我认识的人",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "世界",
+        "world"
+      ],
+      [
+        "上",
+        "on/in"
+      ],
+      [
+        "的",
+        "modifier"
+      ],
+      [
+        "什么",
+        "what/any"
+      ],
+      [
+        "地方",
+        "place"
+      ]
+    ]
+  },
+  "S0377L05": {
+    "lego": [
+      "did you go",
+      "你去了吗"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0377L01",
+        "known": "last year",
+        "target": "去年",
+        "type": "M"
+      },
+      {
+        "id": "S0377L02",
+        "known": "in the world",
+        "target": "世界上",
+        "type": "M"
+      },
+      {
+        "id": "S0377L03",
+        "known": "what place",
+        "target": "什么地方",
+        "type": "M"
+      },
+      {
+        "id": "S0377L04",
+        "known": "anywhere in the world",
+        "target": "世界上的什么地方",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Did you go",
+        "你去了吗",
+        null,
+        1
+      ],
+      [
+        "Did you go last year",
+        "你去年去了吗",
+        null,
+        2
+      ],
+      [
+        "Did you go on Wednesday",
+        "你星期三去了吗",
+        null,
+        3
+      ],
+      [
+        "Did you go to see a film",
+        "你去看了一部电影吗",
+        null,
+        3
+      ],
+      [
+        "Did you go anywhere in the world",
+        "你去了世界上的什么地方吗",
+        null,
+        4
+      ],
+      [
+        "Did you go to see it last year",
+        "你去年去看了它吗",
+        null,
+        4
+      ],
+      [
+        "Did you go to see a film on Wednesday",
+        "你星期三去看了一部电影吗",
+        null,
+        5
+      ],
+      [
+        "Did you go anywhere in the world last year",
+        "你去年去世界上的什么地方了吗",
+        null,
+        6
+      ],
+      [
+        "Did you go to see what she was creating",
+        "你去看了她在创造什么吗",
+        null,
+        5
+      ],
+      [
+        "Did you go to see a very beautiful film last year",
+        "你去年去看了一部非常美的电影吗",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "去",
+        "go"
+      ],
+      [
+        "了吗",
+        "past question"
+      ]
+    ]
+  },
+  "S0377L06": {
+    "lego": [
+      "did go",
+      "去了吗"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0377L01",
+        "known": "last year",
+        "target": "去年",
+        "type": "M"
+      },
+      {
+        "id": "S0377L02",
+        "known": "in the world",
+        "target": "世界上",
+        "type": "M"
+      },
+      {
+        "id": "S0377L03",
+        "known": "what place",
+        "target": "什么地方",
+        "type": "M"
+      },
+      {
+        "id": "S0377L04",
+        "known": "anywhere in the world",
+        "target": "世界上的什么地方",
+        "type": "M"
+      },
+      {
+        "id": "S0377L05",
+        "known": "did you go",
+        "target": "你去了吗",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Did go",
+        "去了吗",
+        null,
+        1
+      ],
+      [
+        "Did I go",
+        "我去了吗",
+        null,
+        2
+      ],
+      [
+        "Did you go last year",
+        "你去年去了吗",
+        null,
+        3
+      ],
+      [
+        "Did she go on Wednesday",
+        "她星期三去了吗",
+        null,
+        3
+      ],
+      [
+        "Did you go to see a film",
+        "你去看了一部电影吗",
+        null,
+        4
+      ],
+      [
+        "Did I go anywhere in the world",
+        "我去了世界上的什么地方吗",
+        null,
+        4
+      ],
+      [
+        "Did you go to see it on Wednesday",
+        "你星期三去看了它吗",
+        null,
+        5
+      ],
+      [
+        "Did she go anywhere in the world last year",
+        "她去年去了世界上的什么地方吗",
+        null,
+        6
+      ],
+      [
+        "Did you go to see a very beautiful film last year",
+        "你去年去看了一部非常美的电影吗",
+        null,
+        6
+      ],
+      [
+        "Did you go anywhere in the world last year",
+        "你去年去世界上的什么地方了吗",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "去",
+        "go"
+      ],
+      [
+        "了",
+        "past"
+      ],
+      [
+        "吗",
+        "question"
+      ]
+    ]
+  }
+}

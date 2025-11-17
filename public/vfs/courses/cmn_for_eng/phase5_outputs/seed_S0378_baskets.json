@@ -1,0 +1,508 @@
+{
+  "S0378L02": {
+    "lego": [
+      "I don't have",
+      "我没有"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I don't have",
+        "我没有",
+        null,
+        1
+      ],
+      [
+        "I don't have it",
+        "我没有它",
+        null,
+        2
+      ],
+      [
+        "I don't have a film",
+        "我没有一部电影",
+        null,
+        3
+      ],
+      [
+        "I don't have enough money",
+        "我没有足够的钱",
+        null,
+        3
+      ],
+      [
+        "I don't have anyone that I knew",
+        "我没有我认识的人",
+        null,
+        4
+      ],
+      [
+        "I don't have it on Wednesday",
+        "我星期三没有它",
+        null,
+        4
+      ],
+      [
+        "I don't have enough money to see a film",
+        "我没有足够的钱看一部电影",
+        null,
+        5
+      ],
+      [
+        "I don't have anyone that I knew last year",
+        "我去年没有我认识的人",
+        null,
+        5
+      ],
+      [
+        "I don't have enough money to go anywhere in the world",
+        "我没有足够的钱去世界上的什么地方",
+        null,
+        6
+      ],
+      [
+        "I don't have enough money to see a very beautiful film",
+        "我没有足够的钱看一部非常美的电影",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "没有",
+        "don't have"
+      ]
+    ]
+  },
+  "S0378L03": {
+    "lego": [
+      "don't have",
+      "没有"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0378L02",
+        "known": "I don't have",
+        "target": "我没有",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Don't have",
+        "没有",
+        null,
+        1
+      ],
+      [
+        "I don't have",
+        "我没有",
+        null,
+        2
+      ],
+      [
+        "I don't have it",
+        "我没有它",
+        null,
+        3
+      ],
+      [
+        "She didn't have enough money",
+        "她没有足够的钱",
+        null,
+        3
+      ],
+      [
+        "I don't have a film to see",
+        "我没有一部电影看",
+        null,
+        4
+      ],
+      [
+        "You don't have enough money",
+        "你没有足够的钱",
+        null,
+        4
+      ],
+      [
+        "I didn't have enough money last year",
+        "我去年没有足够的钱",
+        null,
+        5
+      ],
+      [
+        "She didn't have anyone that she knew",
+        "她没有她认识的人",
+        null,
+        5
+      ],
+      [
+        "I don't have enough money to go anywhere in the world",
+        "我没有足够的钱去世界上的什么地方",
+        null,
+        6
+      ],
+      [
+        "I didn't have enough money to see a film on Wednesday",
+        "我星期三没有足够的钱看一部电影",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0378L04": {
+    "lego": [
+      "enough money",
+      "足够的钱"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0378L02",
+        "known": "I don't have",
+        "target": "我没有",
+        "type": "M"
+      },
+      {
+        "id": "S0378L03",
+        "known": "don't have",
+        "target": "没有",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Enough money",
+        "足够的钱",
+        null,
+        1
+      ],
+      [
+        "I have enough money",
+        "我有足够的钱",
+        null,
+        2
+      ],
+      [
+        "I don't have enough money",
+        "我没有足够的钱",
+        null,
+        3
+      ],
+      [
+        "She had enough money last year",
+        "她去年有足够的钱",
+        null,
+        3
+      ],
+      [
+        "I don't have enough money to go",
+        "我没有足够的钱去",
+        null,
+        4
+      ],
+      [
+        "Did you have enough money last year",
+        "你去年有足够的钱吗",
+        null,
+        4
+      ],
+      [
+        "I didn't have enough money to see a film",
+        "我没有足够的钱看一部电影",
+        null,
+        5
+      ],
+      [
+        "I don't have enough money to go anywhere",
+        "我没有足够的钱去什么地方",
+        null,
+        5
+      ],
+      [
+        "I didn't have enough money to go anywhere in the world",
+        "我没有足够的钱去世界上的什么地方",
+        null,
+        6
+      ],
+      [
+        "I think I didn't have enough money to see a film on Wednesday",
+        "我觉得我星期三没有足够的钱看一部电影",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "足够",
+        "enough"
+      ],
+      [
+        "的",
+        "modifier"
+      ],
+      [
+        "钱",
+        "money"
+      ]
+    ]
+  },
+  "S0378L05": {
+    "lego": [
+      "didn't have enough money",
+      "没有足够的钱"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0378L02",
+        "known": "I don't have",
+        "target": "我没有",
+        "type": "M"
+      },
+      {
+        "id": "S0378L03",
+        "known": "don't have",
+        "target": "没有",
+        "type": "A"
+      },
+      {
+        "id": "S0378L04",
+        "known": "enough money",
+        "target": "足够的钱",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Didn't have enough money",
+        "没有足够的钱",
+        null,
+        1
+      ],
+      [
+        "I didn't have enough money",
+        "我没有足够的钱",
+        null,
+        2
+      ],
+      [
+        "I didn't have enough money to go",
+        "我没有足够的钱去",
+        null,
+        3
+      ],
+      [
+        "She didn't have enough money last year",
+        "她去年没有足够的钱",
+        null,
+        3
+      ],
+      [
+        "I didn't have enough money to see it",
+        "我没有足够的钱看它",
+        null,
+        4
+      ],
+      [
+        "I didn't have enough money on Wednesday",
+        "我星期三没有足够的钱",
+        null,
+        4
+      ],
+      [
+        "I didn't have enough money to go anywhere",
+        "我没有足够的钱去什么地方",
+        null,
+        5
+      ],
+      [
+        "I didn't have enough money to see a film last year",
+        "我去年没有足够的钱看一部电影",
+        null,
+        5
+      ],
+      [
+        "I didn't have enough money to go anywhere in the world",
+        "我没有足够的钱去世界上的什么地方",
+        null,
+        6
+      ],
+      [
+        "I think I didn't have enough money to see a beautiful film",
+        "我觉得我没有足够的钱看一部很美的电影",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "没有",
+        "don't have"
+      ],
+      [
+        "足够",
+        "enough"
+      ],
+      [
+        "的",
+        "modifier"
+      ],
+      [
+        "钱",
+        "money"
+      ]
+    ]
+  },
+  "S0378L06": {
+    "lego": [
+      "take a vacation",
+      "度假"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0378L02",
+        "known": "I don't have",
+        "target": "我没有",
+        "type": "M"
+      },
+      {
+        "id": "S0378L03",
+        "known": "don't have",
+        "target": "没有",
+        "type": "A"
+      },
+      {
+        "id": "S0378L04",
+        "known": "enough money",
+        "target": "足够的钱",
+        "type": "M"
+      },
+      {
+        "id": "S0378L05",
+        "known": "didn't have enough money",
+        "target": "没有足够的钱",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Take a vacation",
+        "度假",
+        null,
+        1
+      ],
+      [
+        "I take a vacation",
+        "我度假",
+        null,
+        2
+      ],
+      [
+        "I want to take a vacation",
+        "我想度假",
+        null,
+        3
+      ],
+      [
+        "I didn't take a vacation last year",
+        "我去年没度假",
+        null,
+        3
+      ],
+      [
+        "I didn't have enough money to take a vacation",
+        "我没有足够的钱度假",
+        null,
+        4
+      ],
+      [
+        "Did you take a vacation last year",
+        "你去年度假了吗",
+        null,
+        4
+      ],
+      [
+        "I didn't have enough money to take a vacation last year",
+        "我去年没有足够的钱度假",
+        null,
+        5
+      ],
+      [
+        "I think she didn't take a vacation on Wednesday",
+        "我觉得她星期三没度假",
+        null,
+        5
+      ],
+      [
+        "I didn't have enough money to take a vacation in the world",
+        "我没有足够的钱在世界上度假",
+        null,
+        6
+      ],
+      [
+        "No I didn't have enough money for holidays",
+        "不，我没有足够的钱度假",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "度",
+        "spend/pass"
+      ],
+      [
+        "假",
+        "holiday"
+      ]
+    ]
+  }
+}

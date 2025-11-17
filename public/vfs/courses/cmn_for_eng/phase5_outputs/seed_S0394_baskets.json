@@ -1,0 +1,754 @@
+{
+  "legos": {
+    "S0394L01": {
+      "lego": [
+        "yellow",
+        "黄色"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Yellow",
+          "黄色",
+          null,
+          1
+        ],
+        [
+          "A yellow car",
+          "一辆黄色车",
+          null,
+          2
+        ],
+        [
+          "I like yellow",
+          "我喜欢黄色",
+          null,
+          3
+        ],
+        [
+          "That is yellow",
+          "那是黄色",
+          null,
+          3
+        ],
+        [
+          "She wants a yellow one",
+          "她想要黄色的",
+          null,
+          4
+        ],
+        [
+          "I saw a yellow car",
+          "我看到一辆黄色车",
+          null,
+          4
+        ],
+        [
+          "He bought something yellow yesterday",
+          "他昨天买了黄色东西",
+          null,
+          5
+        ],
+        [
+          "She likes yellow more than red",
+          "她喜欢黄色多于红色",
+          null,
+          5
+        ],
+        [
+          "I think yellow is a beautiful color",
+          "我觉得黄色是很美的颜色",
+          null,
+          6
+        ],
+        [
+          "The yellow one over there is mine",
+          "那边的黄色那个是我的",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0394L01",
+        "seed_context": {
+          "known": "那个穿黄色连衣裙的女孩。",
+          "target": "That girl with the yellow dress."
+        }
+      }
+    },
+    "S0394L02": {
+      "lego": [
+        "dress",
+        "连衣裙"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "yellow",
+          "黄色"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "A dress",
+          "一条连衣裙",
+          null,
+          1
+        ],
+        [
+          "That dress",
+          "那条连衣裙",
+          null,
+          2
+        ],
+        [
+          "I like that dress",
+          "我喜欢那条连衣裙",
+          null,
+          3
+        ],
+        [
+          "She wants a dress",
+          "她想要一条连衣裙",
+          null,
+          3
+        ],
+        [
+          "I bought a new dress",
+          "我买了一条新连衣裙",
+          null,
+          4
+        ],
+        [
+          "She wore a beautiful dress",
+          "她穿了一条漂亮连衣裙",
+          null,
+          4
+        ],
+        [
+          "I want to buy a dress tomorrow",
+          "我明天想买一条连衣裙",
+          null,
+          5
+        ],
+        [
+          "That dress is very beautiful and expensive",
+          "那条连衣裙很漂亮很贵",
+          null,
+          5
+        ],
+        [
+          "She said she wants to wear a dress",
+          "她说她想穿一条连衣裙",
+          null,
+          6
+        ],
+        [
+          "I saw the dress she wore yesterday",
+          "我看到她昨天穿的那条连衣裙",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0394L02",
+        "seed_context": {
+          "known": "那个穿黄色连衣裙的女孩。",
+          "target": "That girl with the yellow dress."
+        }
+      }
+    },
+    "S0394L03": {
+      "lego": [
+        "yellow dress",
+        "黄色连衣裙"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yellow",
+          "黄色"
+        ],
+        [
+          "dress",
+          "连衣裙"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "A yellow dress",
+          "一条黄色连衣裙",
+          null,
+          1
+        ],
+        [
+          "That yellow dress",
+          "那条黄色连衣裙",
+          null,
+          2
+        ],
+        [
+          "I like yellow dresses",
+          "我喜欢黄色连衣裙",
+          null,
+          3
+        ],
+        [
+          "She wants a yellow dress",
+          "她想要黄色连衣裙",
+          null,
+          3
+        ],
+        [
+          "I saw a yellow dress",
+          "我看到黄色连衣裙",
+          null,
+          4
+        ],
+        [
+          "She bought a yellow dress yesterday",
+          "她昨天买了黄色连衣裙",
+          null,
+          4
+        ],
+        [
+          "I want to buy a yellow dress tomorrow",
+          "我明天想买黄色连衣裙",
+          null,
+          5
+        ],
+        [
+          "That yellow dress is very beautiful",
+          "那条黄色连衣裙很漂亮",
+          null,
+          5
+        ],
+        [
+          "She said she wants to wear a yellow dress",
+          "她说她想穿黄色连衣裙",
+          null,
+          6
+        ],
+        [
+          "I think the yellow dress over there is beautiful",
+          "我觉得那边的黄色连衣裙很漂亮",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0394L03",
+        "seed_context": {
+          "known": "那个穿黄色连衣裙的女孩。",
+          "target": "That girl with the yellow dress."
+        }
+      },
+      "components": [
+        [
+          "黄色",
+          "yellow"
+        ],
+        [
+          "连衣裙",
+          "dress"
+        ]
+      ]
+    },
+    "S0394L04": {
+      "lego": [
+        "girl",
+        "女孩"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "yellow",
+          "黄色"
+        ],
+        [
+          "dress",
+          "连衣裙"
+        ],
+        [
+          "yellow dress",
+          "黄色连衣裙"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "A girl",
+          "一个女孩",
+          null,
+          1
+        ],
+        [
+          "That girl",
+          "那个女孩",
+          null,
+          2
+        ],
+        [
+          "I saw a girl",
+          "我看到一个女孩",
+          null,
+          3
+        ],
+        [
+          "The girl over there",
+          "那边的女孩",
+          null,
+          3
+        ],
+        [
+          "She is a beautiful girl",
+          "她是一个漂亮女孩",
+          null,
+          4
+        ],
+        [
+          "I know that girl",
+          "我认识那个女孩",
+          null,
+          4
+        ],
+        [
+          "The girl said she wants to go",
+          "那个女孩说她想去",
+          null,
+          5
+        ],
+        [
+          "I met a girl at the restaurant",
+          "我在饭店遇到一个女孩",
+          null,
+          5
+        ],
+        [
+          "That girl is my friend from school",
+          "那个女孩是我学校的朋友",
+          null,
+          6
+        ],
+        [
+          "I saw a girl wearing a yellow dress yesterday",
+          "我昨天看到一个女孩穿黄色连衣裙",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0394L04",
+        "seed_context": {
+          "known": "那个穿黄色连衣裙的女孩。",
+          "target": "That girl with the yellow dress."
+        }
+      }
+    },
+    "S0394L05": {
+      "lego": [
+        "wearing a yellow dress",
+        "穿黄色连衣裙"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yellow",
+          "黄色"
+        ],
+        [
+          "dress",
+          "连衣裙"
+        ],
+        [
+          "yellow dress",
+          "黄色连衣裙"
+        ],
+        [
+          "girl",
+          "女孩"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Wearing a yellow dress",
+          "穿黄色连衣裙",
+          null,
+          1
+        ],
+        [
+          "She is wearing a yellow dress",
+          "她穿黄色连衣裙",
+          null,
+          2
+        ],
+        [
+          "I saw her wearing a yellow dress",
+          "我看到她穿黄色连衣裙",
+          null,
+          3
+        ],
+        [
+          "Someone wearing a yellow dress",
+          "有人穿黄色连衣裙",
+          null,
+          3
+        ],
+        [
+          "She was wearing a yellow dress yesterday",
+          "她昨天穿黄色连衣裙",
+          null,
+          4
+        ],
+        [
+          "I want to be wearing a yellow dress",
+          "我想穿黄色连衣裙",
+          null,
+          4
+        ],
+        [
+          "The woman wearing a yellow dress is beautiful",
+          "穿黄色连衣裙的女人很漂亮",
+          null,
+          5
+        ],
+        [
+          "She said she is wearing a yellow dress today",
+          "她说她今天穿黄色连衣裙",
+          null,
+          5
+        ],
+        [
+          "I met someone wearing a yellow dress at the restaurant",
+          "我在饭店遇到穿黄色连衣裙的人",
+          null,
+          6
+        ],
+        [
+          "She wants to go wearing a yellow dress tomorrow",
+          "她明天想穿黄色连衣裙去",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0394L05",
+        "seed_context": {
+          "known": "那个穿黄色连衣裙的女孩。",
+          "target": "That girl with the yellow dress."
+        }
+      },
+      "components": [
+        [
+          "穿",
+          "wearing"
+        ],
+        [
+          "黄色",
+          "yellow"
+        ],
+        [
+          "连衣裙",
+          "dress"
+        ]
+      ]
+    },
+    "S0394L06": {
+      "lego": [
+        "girl with the yellow dress",
+        "穿黄色连衣裙的女孩"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yellow",
+          "黄色"
+        ],
+        [
+          "dress",
+          "连衣裙"
+        ],
+        [
+          "yellow dress",
+          "黄色连衣裙"
+        ],
+        [
+          "girl",
+          "女孩"
+        ],
+        [
+          "wearing a yellow dress",
+          "穿黄色连衣裙"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "The girl with the yellow dress",
+          "穿黄色连衣裙的女孩",
+          null,
+          1
+        ],
+        [
+          "I saw the girl with the yellow dress",
+          "我看到穿黄色连衣裙的女孩",
+          null,
+          2
+        ],
+        [
+          "The girl with the yellow dress is beautiful",
+          "穿黄色连衣裙的女孩很漂亮",
+          null,
+          3
+        ],
+        [
+          "Do you know the girl with the yellow dress",
+          "你认识穿黄色连衣裙的女孩吗",
+          null,
+          3
+        ],
+        [
+          "I met the girl with the yellow dress",
+          "我遇到穿黄色连衣裙的女孩",
+          null,
+          4
+        ],
+        [
+          "The girl with the yellow dress is my friend",
+          "穿黄色连衣裙的女孩是我朋友",
+          null,
+          4
+        ],
+        [
+          "I want to talk to the girl with the yellow dress",
+          "我想和穿黄色连衣裙的女孩说话",
+          null,
+          5
+        ],
+        [
+          "The girl with the yellow dress said she wants to go",
+          "穿黄色连衣裙的女孩说她想去",
+          null,
+          5
+        ],
+        [
+          "I saw the girl with the yellow dress at the restaurant yesterday",
+          "我昨天在饭店看到穿黄色连衣裙的女孩",
+          null,
+          6
+        ],
+        [
+          "Do you think the girl with the yellow dress will come tomorrow",
+          "你觉得穿黄色连衣裙的女孩明天会来吗",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0394L06",
+        "seed_context": {
+          "known": "那个穿黄色连衣裙的女孩。",
+          "target": "That girl with the yellow dress."
+        }
+      },
+      "components": [
+        [
+          "穿",
+          "wearing/with"
+        ],
+        [
+          "黄色",
+          "yellow"
+        ],
+        [
+          "连衣裙",
+          "dress"
+        ],
+        [
+          "的",
+          "who/with"
+        ],
+        [
+          "女孩",
+          "girl"
+        ]
+      ]
+    },
+    "S0394L07": {
+      "lego": [
+        "that girl with the yellow dress",
+        "那个穿黄色连衣裙的女孩"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "yellow",
+          "黄色"
+        ],
+        [
+          "dress",
+          "连衣裙"
+        ],
+        [
+          "yellow dress",
+          "黄色连衣裙"
+        ],
+        [
+          "girl",
+          "女孩"
+        ],
+        [
+          "wearing a yellow dress",
+          "穿黄色连衣裙"
+        ],
+        [
+          "girl with the yellow dress",
+          "穿黄色连衣裙的女孩"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "That girl with the yellow dress",
+          "那个穿黄色连衣裙的女孩",
+          null,
+          1
+        ],
+        [
+          "I saw that girl with the yellow dress",
+          "我看到那个穿黄色连衣裙的女孩",
+          null,
+          2
+        ],
+        [
+          "That girl with the yellow dress is beautiful",
+          "那个穿黄色连衣裙的女孩很漂亮",
+          null,
+          3
+        ],
+        [
+          "Do you know that girl with the yellow dress",
+          "你认识那个穿黄色连衣裙的女孩吗",
+          null,
+          3
+        ],
+        [
+          "I met that girl with the yellow dress yesterday",
+          "我昨天遇到那个穿黄色连衣裙的女孩",
+          null,
+          4
+        ],
+        [
+          "That girl with the yellow dress is my friend",
+          "那个穿黄色连衣裙的女孩是我朋友",
+          null,
+          4
+        ],
+        [
+          "I want to talk to that girl with the yellow dress",
+          "我想和那个穿黄色连衣裙的女孩说话",
+          null,
+          5
+        ],
+        [
+          "That girl with the yellow dress said she wants to go",
+          "那个穿黄色连衣裙的女孩说她想去",
+          null,
+          5
+        ],
+        [
+          "I saw that girl with the yellow dress at the restaurant",
+          "我在饭店看到那个穿黄色连衣裙的女孩",
+          null,
+          6
+        ],
+        [
+          "That girl with the yellow dress.",
+          "那个穿黄色连衣裙的女孩。",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0394L07",
+        "seed_context": {
+          "known": "那个穿黄色连衣裙的女孩。",
+          "target": "That girl with the yellow dress."
+        }
+      },
+      "components": [
+        [
+          "那个",
+          "that"
+        ],
+        [
+          "穿",
+          "wearing/with"
+        ],
+        [
+          "黄色",
+          "yellow"
+        ],
+        [
+          "连衣裙",
+          "dress"
+        ],
+        [
+          "的",
+          "who/with"
+        ],
+        [
+          "女孩",
+          "girl"
+        ]
+      ]
+    }
+  }
+}

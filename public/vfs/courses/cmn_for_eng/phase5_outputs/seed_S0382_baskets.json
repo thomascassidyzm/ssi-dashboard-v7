@@ -1,0 +1,174 @@
+{
+  "S0382L01": {
+    "lego": [
+      "did you ask [him]",
+      "你问他"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Did you ask him", "你问他", null, 1],
+      ["Did you ask", "你问", null, 1],
+      ["Did you ask him yesterday", "你昨天问他", null, 2],
+      ["I asked him", "我问他", null, 2],
+      ["Did you ask him last year", "你去年问他", null, 3],
+      ["I didn't ask him", "我没问他", null, 3],
+      ["Did you ask him what she wanted", "你问他她想要什么", null, 4],
+      ["I asked him yesterday", "我昨天问他", null, 4],
+      ["Did you ask him if she wanted to go", "你问他她是否想去", null, 5],
+      ["I didn't ask him what she was doing", "我没问他她在做什么", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["你", "you"],
+      ["问", "ask"],
+      ["他", "him"]
+    ]
+  },
+  "S0382L02": {
+    "lego": [
+      "wanted to put it in",
+      "想把它放在"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0382L01",
+        "known": "did you ask [him]",
+        "target": "你问他",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Wanted to put it", "想把它放", null, 1],
+      ["Put it in", "把它放在", null, 1],
+      ["He wanted to put it in", "他想把它放在", null, 2],
+      ["She wanted to put it in", "她想把它放在", null, 2],
+      ["I wanted to put it in the garden", "我想把它放在花园里", null, 3],
+      ["He wanted to put it in last year", "他去年想把它放在", null, 3],
+      ["She wanted to put it in yesterday", "她昨天想把它放在", null, 4],
+      ["Did you ask if he wanted to put it in", "你问他是否想把它放在", null, 4],
+      ["I didn't know what she wanted to put in the garden", "我不知道她想把什么放在花园里", null, 5],
+      ["He said he wanted to put it in the garden", "他说他想把它放在花园里", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["想", "wanted"],
+      ["把", "[ba-marker]"],
+      ["它", "it"],
+      ["放在", "put in"]
+    ]
+  },
+  "S0382L03": {
+    "lego": [
+      "where to put it",
+      "把它放在哪儿"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0382L01",
+        "known": "did you ask [him]",
+        "target": "你问他",
+        "type": "M"
+      },
+      {
+        "id": "S0382L02",
+        "known": "wanted to put it in",
+        "target": "想把它放在",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Where to put it", "把它放在哪儿", null, 1],
+      ["Put it where", "把它放在哪儿", null, 1],
+      ["I didn't know where to put it", "我不知道把它放在哪儿", null, 2],
+      ["She asked where to put it", "她问把它放在哪儿", null, 2],
+      ["Did you ask where to put it", "你问把它放在哪儿", null, 3],
+      ["He wanted to know where to put it", "他想知道把它放在哪儿", null, 3],
+      ["I asked him where to put it", "我问他把它放在哪儿", null, 4],
+      ["She didn't know where to put it yesterday", "她昨天不知道把它放在哪儿", null, 4],
+      ["Did you ask him where he wanted to put it", "你问他想把它放在哪儿", null, 5],
+      ["I asked her yesterday where to put it in the garden", "我昨天问她把它放在花园的哪儿", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["把", "[ba-marker]"],
+      ["它", "it"],
+      ["放在", "put in"],
+      ["哪儿", "where"]
+    ]
+  },
+  "S0382L04": {
+    "lego": [
+      "put where",
+      "放在哪儿"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0382L01",
+        "known": "did you ask [him]",
+        "target": "你问他",
+        "type": "M"
+      },
+      {
+        "id": "S0382L02",
+        "known": "wanted to put it in",
+        "target": "想把它放在",
+        "type": "M"
+      },
+      {
+        "id": "S0382L03",
+        "known": "where to put it",
+        "target": "把它放在哪儿",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Put where", "放在哪儿", null, 1],
+      ["Where", "哪儿", null, 1],
+      ["I didn't go anywhere", "我哪儿也没去", null, 2],
+      ["Put it where", "把它放在哪儿", null, 2],
+      ["Where did you put it", "你把它放在哪儿", null, 3],
+      ["I asked where to put it", "我问放在哪儿", null, 3],
+      ["Did you ask where he wanted to put it", "你问他想把它放在哪儿", null, 4],
+      ["She didn't know where to put it yesterday", "她昨天不知道放在哪儿", null, 4],
+      ["I asked him where he wanted to put it in the garden", "我问他想把它放在花园的哪儿", null, 5],
+      ["Did you ask where he wanted to put it?", "你问他想把它放在哪儿了吗？", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["放在", "put in"],
+      ["哪儿", "where"]
+    ]
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "legos": {
+    "S0397L02": {
+      "lego": [
+        "soon/quickly",
+        "很快"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Soon",
+          "很快",
+          null,
+          1
+        ],
+        [
+          "Quickly",
+          "很快",
+          null,
+          1
+        ],
+        [
+          "We need to turn left soon",
+          "我们需要很快左转",
+          null,
+          3
+        ],
+        [
+          "They are ready soon",
+          "他们很快准备好",
+          null,
+          3
+        ],
+        [
+          "That boy is standing there soon",
+          "那个男孩很快站在那边",
+          null,
+          4
+        ],
+        [
+          "The girl needs to be ready soon",
+          "那个女孩需要很快准备好",
+          null,
+          4
+        ],
+        [
+          "We need to wait until other people are ready soon",
+          "我们需要等到其他人很快准备好",
+          null,
+          5
+        ],
+        [
+          "That person standing near the entrance will be ready soon",
+          "站在入口附近的那个人很快准备好",
+          null,
+          6
+        ],
+        [
+          "We don't need to stand until everybody else is ready soon",
+          "我们不需要站着等到其他人很快都准备好",
+          null,
+          7
+        ],
+        [
+          "Do we need to get ready soon?",
+          "我们需要很快准备好吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0397L02",
+        "seed_context": {
+          "known": "Do we need to get ready soon?",
+          "target": "我们需要很快准备好吗？"
+        }
+      }
+    },
+    "S0397L03": {
+      "lego": [
+        "get ready",
+        "准备好"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0397L02",
+          "known": "soon/quickly",
+          "target": "很快",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Get ready",
+          "准备好",
+          null,
+          1
+        ],
+        [
+          "All ready",
+          "都准备好",
+          null,
+          2
+        ],
+        [
+          "We need to get ready",
+          "我们需要准备好",
+          null,
+          3
+        ],
+        [
+          "Other people are ready",
+          "其他人准备好",
+          null,
+          3
+        ],
+        [
+          "That boy needs to get ready",
+          "那个男孩需要准备好",
+          null,
+          4
+        ],
+        [
+          "The girl is all ready now",
+          "那个女孩都准备好了",
+          null,
+          4
+        ],
+        [
+          "We need to wait until everybody else is ready",
+          "我们需要等到其他人都准备好",
+          null,
+          6
+        ],
+        [
+          "That person standing near the entrance is ready",
+          "站在入口附近的那个人准备好",
+          null,
+          6
+        ],
+        [
+          "We don't need to stand until other people get ready",
+          "我们不需要站着等到其他人准备好",
+          null,
+          7
+        ],
+        [
+          "Do we need to get ready soon?",
+          "我们需要很快准备好吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0397L03",
+        "seed_context": {
+          "known": "Do we need to get ready soon?",
+          "target": "我们需要很快准备好吗？"
+        }
+      },
+      "components": [
+        [
+          "准备",
+          "prepare"
+        ],
+        [
+          "好",
+          "ready"
+        ]
+      ]
+    },
+    "S0397L04": {
+      "lego": [
+        "get ready soon",
+        "很快准备好"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0397L02",
+          "known": "soon/quickly",
+          "target": "很快",
+          "type": "A"
+        },
+        {
+          "id": "S0397L03",
+          "known": "get ready",
+          "target": "准备好",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Get ready soon",
+          "很快准备好",
+          null,
+          2
+        ],
+        [
+          "Ready soon",
+          "很快准备好",
+          null,
+          2
+        ],
+        [
+          "We need to get ready soon",
+          "我们需要很快准备好",
+          null,
+          4
+        ],
+        [
+          "They get ready soon",
+          "他们很快准备好",
+          null,
+          3
+        ],
+        [
+          "That boy needs to get ready soon",
+          "那个男孩需要很快准备好",
+          null,
+          5
+        ],
+        [
+          "The girl will get ready soon",
+          "那个女孩很快准备好",
+          null,
+          4
+        ],
+        [
+          "We need to wait until other people get ready soon",
+          "我们需要等到其他人很快准备好",
+          null,
+          7
+        ],
+        [
+          "That person standing near the entrance gets ready soon",
+          "站在入口附近的那个人很快准备好",
+          null,
+          7
+        ],
+        [
+          "Everybody else needs to get ready soon",
+          "其他人都需要很快准备好",
+          null,
+          6
+        ],
+        [
+          "Do we need to get ready soon?",
+          "我们需要很快准备好吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0397L04",
+        "seed_context": {
+          "known": "Do we need to get ready soon?",
+          "target": "我们需要很快准备好吗？"
+        }
+      },
+      "components": [
+        [
+          "很快",
+          "soon"
+        ],
+        [
+          "准备好",
+          "get ready"
+        ]
+      ]
+    },
+    "S0397L05": {
+      "lego": [
+        "do we need to get ready soon",
+        "我们需要很快准备好吗"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0397L02",
+          "known": "soon/quickly",
+          "target": "很快",
+          "type": "A"
+        },
+        {
+          "id": "S0397L03",
+          "known": "get ready",
+          "target": "准备好",
+          "type": "M"
+        },
+        {
+          "id": "S0397L04",
+          "known": "get ready soon",
+          "target": "很快准备好",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Do we get ready soon?",
+          "我们很快准备好吗？",
+          null,
+          2
+        ],
+        [
+          "Do we need to be ready?",
+          "我们需要准备好吗？",
+          null,
+          2
+        ],
+        [
+          "Do we need to turn left?",
+          "我们需要左转吗？",
+          null,
+          3
+        ],
+        [
+          "Do we get ready soon?",
+          "我们很快准备好吗？",
+          null,
+          3
+        ],
+        [
+          "Do we need to wait until they're ready?",
+          "我们需要等到他们准备好吗？",
+          null,
+          5
+        ],
+        [
+          "Do we need to stand there soon?",
+          "我们需要很快站在那边吗？",
+          null,
+          4
+        ],
+        [
+          "Do we need to wait until other people get ready soon?",
+          "我们需要等到其他人很快准备好吗？",
+          null,
+          7
+        ],
+        [
+          "Do we need to stand until everybody else is all ready?",
+          "我们需要站着等到其他人都准备好吗？",
+          null,
+          7
+        ],
+        [
+          "Do we need to turn left at the next corner soon?",
+          "我们需要很快在下个拐角处左转吗？",
+          null,
+          6
+        ],
+        [
+          "Do we need to get ready soon?",
+          "我们需要很快准备好吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0397L05",
+        "seed_context": {
+          "known": "Do we need to get ready soon?",
+          "target": "我们需要很快准备好吗？"
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "需要",
+          "need to"
+        ],
+        [
+          "很快",
+          "soon"
+        ],
+        [
+          "准备好",
+          "get ready"
+        ],
+        [
+          "吗",
+          "question particle"
+        ]
+      ]
+    }
+  }
+}

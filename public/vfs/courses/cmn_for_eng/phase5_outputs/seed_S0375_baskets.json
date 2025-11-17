@@ -1,0 +1,209 @@
+{
+  "legos": {
+    "S0375L05": {
+      "lego": [
+        "what she was doing",
+        "她在做什么"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "What was she doing?",
+          "她在做什么？",
+          null,
+          1
+        ],
+        [
+          "I know what she was doing.",
+          "我知道她在做什么。",
+          null,
+          2
+        ],
+        [
+          "I didn't know what she was doing.",
+          "我不知道她在做什么。",
+          null,
+          2
+        ],
+        [
+          "He told me what she was doing.",
+          "他告诉我她在做什么。",
+          null,
+          3
+        ],
+        [
+          "Did you see what she was doing?",
+          "你看到了她在做什么吗？",
+          null,
+          3
+        ],
+        [
+          "I didn't hear what she was doing.",
+          "我没听到她在做什么。",
+          null,
+          3
+        ],
+        [
+          "Nobody told me what she was doing on Wednesday.",
+          "没人告诉我星期三她在做什么。",
+          null,
+          5
+        ],
+        [
+          "I heard that nobody knew what she was doing.",
+          "我听说没人知道她在做什么。",
+          null,
+          5
+        ],
+        [
+          "Did you know what she was doing on the road?",
+          "你知道她在路上在做什么吗？",
+          null,
+          5
+        ],
+        [
+          "No I didn't know what she was doing.",
+          "不，我不知道她在做什么。",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 4,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0375L05",
+        "seed_context": {
+          "known": "No I didn't know what she was doing.",
+          "target": "不，我不知道她在做什么。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0375L06": {
+      "lego": [
+        "doing what",
+        "在做什么"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "what she was doing",
+          "她在做什么"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Doing what?",
+          "在做什么？",
+          null,
+          1
+        ],
+        [
+          "What was he doing?",
+          "他在做什么？",
+          null,
+          2
+        ],
+        [
+          "I didn't know what he was doing.",
+          "我不知道他在做什么。",
+          null,
+          2
+        ],
+        [
+          "She was doing what?",
+          "她在做什么？",
+          null,
+          2
+        ],
+        [
+          "Tell me what she was doing.",
+          "告诉我她在做什么。",
+          null,
+          3
+        ],
+        [
+          "Did you hear what he was doing?",
+          "你听到了他在做什么吗？",
+          null,
+          3
+        ],
+        [
+          "I saw what she was doing on Wednesday.",
+          "我星期三看到了她在做什么。",
+          null,
+          4
+        ],
+        [
+          "Nobody told me what he was doing on the road.",
+          "没人告诉我他在路上在做什么。",
+          null,
+          5
+        ],
+        [
+          "I heard that she didn't know what he was doing.",
+          "我听说她不知道他在做什么。",
+          null,
+          5
+        ],
+        [
+          "Did you think you knew what she was doing?",
+          "你觉得你知道她在做什么吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 2,
+        "longer_4_5": 1,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0375L06",
+        "seed_context": {
+          "known": "No I didn't know what she was doing.",
+          "target": "不，我不知道她在做什么。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

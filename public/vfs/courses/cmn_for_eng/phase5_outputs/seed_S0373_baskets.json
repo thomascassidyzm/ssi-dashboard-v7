@@ -1,0 +1,294 @@
+{
+  "legos": {
+    "S0373L01": {
+      "lego": [
+        "very beautiful",
+        "很美"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "It was very beautiful.",
+          "它很美。",
+          null,
+          2
+        ],
+        [
+          "That place was very beautiful.",
+          "那个地方很美。",
+          null,
+          2
+        ],
+        [
+          "The film was very beautiful.",
+          "一部电影很美。",
+          null,
+          2
+        ],
+        [
+          "I heard that it was very beautiful.",
+          "我听说它很美。",
+          null,
+          3
+        ],
+        [
+          "She told me it was very beautiful.",
+          "她告诉我它很美。",
+          null,
+          4
+        ],
+        [
+          "I saw that it was very beautiful.",
+          "我看到了它很美。",
+          null,
+          4
+        ],
+        [
+          "I didn't know it was very beautiful.",
+          "我不知道它很美。",
+          null,
+          4
+        ],
+        [
+          "He said that the film was very beautiful.",
+          "他说那部电影很美。",
+          null,
+          5
+        ],
+        [
+          "Did you see that it was very beautiful?",
+          "你看到了它很美吗？",
+          null,
+          5
+        ],
+        [
+          "Yes I thought that place was very beautiful.",
+          "是的，我觉得那个地方很美。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 6,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0373L01",
+        "seed_context": {
+          "known": "It was beautiful.",
+          "target": "它很美。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0373L02": {
+      "lego": [
+        "it was beautiful",
+        "它很美"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "very beautiful",
+          "很美"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "It was beautiful.",
+          "它很美。",
+          null,
+          1
+        ],
+        [
+          "Yes it was beautiful.",
+          "是的，它很美。",
+          null,
+          2
+        ],
+        [
+          "I thought it was beautiful.",
+          "我觉得它很美。",
+          null,
+          2
+        ],
+        [
+          "He said it was beautiful.",
+          "他说它很美。",
+          null,
+          3
+        ],
+        [
+          "She told me it was beautiful.",
+          "她告诉我它很美。",
+          null,
+          4
+        ],
+        [
+          "I heard that it was beautiful.",
+          "我听说它很美。",
+          null,
+          3
+        ],
+        [
+          "I saw that it was beautiful on Wednesday.",
+          "我星期三看到了它很美。",
+          null,
+          5
+        ],
+        [
+          "Did you know that it was beautiful?",
+          "你知道它很美吗？",
+          null,
+          4
+        ],
+        [
+          "Nobody told me that it was beautiful.",
+          "没人告诉我它很美。",
+          null,
+          4
+        ],
+        [
+          "I didn't hear that it was beautiful.",
+          "我没听到它很美。",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 5,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0373L02",
+        "seed_context": {
+          "known": "It was beautiful.",
+          "target": "它很美。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0373L03": {
+      "lego": [
+        "beautiful",
+        "美"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "very beautiful",
+          "很美"
+        ],
+        [
+          "it was beautiful",
+          "它很美"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Beautiful.",
+          "美。",
+          null,
+          1
+        ],
+        [
+          "Very beautiful.",
+          "很美。",
+          null,
+          1
+        ],
+        [
+          "It was beautiful.",
+          "它很美。",
+          null,
+          2
+        ],
+        [
+          "That place was beautiful.",
+          "那个地方美。",
+          null,
+          2
+        ],
+        [
+          "The film was beautiful.",
+          "那部电影美。",
+          null,
+          2
+        ],
+        [
+          "I thought it was beautiful.",
+          "我觉得它美。",
+          null,
+          3
+        ],
+        [
+          "She told me it was beautiful.",
+          "她告诉我它美。",
+          null,
+          4
+        ],
+        [
+          "I heard that the film was beautiful.",
+          "我听说那部电影美。",
+          null,
+          4
+        ],
+        [
+          "Did you see that it was beautiful?",
+          "你看到了它美吗？",
+          null,
+          5
+        ],
+        [
+          "It was beautiful.",
+          "它很美。",
+          null,
+          2
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 6,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0373L03",
+        "seed_context": {
+          "known": "It was beautiful.",
+          "target": "它很美。"
+        }
+      }
+    }
+  }
+}

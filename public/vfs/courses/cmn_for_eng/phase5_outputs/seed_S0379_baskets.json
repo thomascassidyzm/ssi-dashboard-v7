@@ -1,0 +1,259 @@
+{
+  "S0379L01": {
+    "lego": ["yes", "是的"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Yes", "是的", null, 1],
+      ["Yes I know", "是的我知道", null, 2],
+      ["Yes it was beautiful", "是的它很美", null, 3],
+      ["Yes I thought so", "是的我觉得", null, 3],
+      ["Yes I didn't go anywhere", "是的我哪儿也没去", null, 4],
+      ["Yes I saw it yesterday", "是的我昨天看到了", null, 4],
+      ["Yes I went to see a film", "是的我去看了一部电影", null, 5],
+      ["Yes I didn't have enough money", "是的我没有足够的钱", null, 5],
+      ["Yes I thought it was very beautiful", "是的我觉得它非常美", null, 6],
+      ["Yes I didn't go anywhere last month", "是的我上个月哪儿也没去", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0379L02": {
+    "lego": ["I was lucky", "我很幸运"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0379L01", "known": "yes", "target": "是的", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["I was lucky", "我很幸运", null, 1],
+      ["Yes I was lucky", "是的我很幸运", null, 2],
+      ["I was lucky to go", "我很幸运能去", null, 2],
+      ["I was lucky last year", "我去年很幸运", null, 3],
+      ["I was lucky to see it", "我很幸运看到了", null, 3],
+      ["I was lucky last month", "我上个月很幸运", null, 4],
+      ["Yes I was lucky to go", "是的我很幸运能去", null, 4],
+      ["I was lucky to go last year", "我去年很幸运能去", null, 5],
+      ["I was lucky to see a film", "我很幸运去看了一部电影", null, 5],
+      ["Yes I was lucky to go last year", "是的我去年很幸运能去", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["我", "I"],
+      ["很", "very"],
+      ["幸运", "lucky"]
+    ]
+  },
+  "S0379L03": {
+    "lego": ["very lucky", "很幸运"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0379L01", "known": "yes", "target": "是的", "type": "A"},
+      {"id": "S0379L02", "known": "I was lucky", "target": "我很幸运", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Very lucky", "很幸运", null, 1],
+      ["I was very lucky", "我很幸运", null, 2],
+      ["You were very lucky", "你很幸运", null, 2],
+      ["She was very lucky", "她很幸运", null, 3],
+      ["It was very lucky", "很幸运", null, 3],
+      ["I was very lucky to go", "我很幸运能去", null, 4],
+      ["You were very lucky to see", "你很幸运看到", null, 4],
+      ["She was very lucky last year", "她去年很幸运", null, 5],
+      ["I was very lucky to see it", "我很幸运看到了它", null, 5],
+      ["Yes I was very lucky to go", "是的我很幸运能去", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["很", "very"],
+      ["幸运", "lucky"]
+    ]
+  },
+  "S0379L04": {
+    "lego": ["able to go", "能去"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0379L01", "known": "yes", "target": "是的", "type": "A"},
+      {"id": "S0379L02", "known": "I was lucky", "target": "我很幸运", "type": "M"},
+      {"id": "S0379L03", "known": "very lucky", "target": "很幸运", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Able to go", "能去", null, 1],
+      ["I was able to go", "我能去", null, 2],
+      ["I was lucky to go", "我很幸运能去", null, 3],
+      ["She was able to go", "她能去", null, 3],
+      ["I was able to go yesterday", "我昨天能去", null, 4],
+      ["You were able to go there", "你能去那儿", null, 4],
+      ["I was lucky to go last year", "我去年很幸运能去", null, 5],
+      ["She was able to go last month", "她上个月能去", null, 5],
+      ["I was lucky enough to go there", "我很幸运能去那儿", null, 6],
+      ["Yes I was lucky enough to go", "是的我很幸运能去", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["能", "able to"],
+      ["去", "go"]
+    ]
+  },
+  "S0379L05": {
+    "lego": ["Africa", "非洲"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0379L01", "known": "yes", "target": "是的", "type": "A"},
+      {"id": "S0379L02", "known": "I was lucky", "target": "我很幸运", "type": "M"},
+      {"id": "S0379L03", "known": "very lucky", "target": "很幸运", "type": "M"},
+      {"id": "S0379L04", "known": "able to go", "target": "能去", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Africa", "非洲", null, 1],
+      ["To go to Africa", "去非洲", null, 2],
+      ["I went to Africa", "我去了非洲", null, 2],
+      ["She went to Africa", "她去了非洲", null, 3],
+      ["I was able to go to Africa", "我能去非洲", null, 4],
+      ["Did you go to Africa", "你去了非洲吗", null, 4],
+      ["I was lucky to go to Africa", "我很幸运能去非洲", null, 5],
+      ["She went to Africa last year", "她去年去了非洲", null, 5],
+      ["Did you go to Africa last year", "你去年去了非洲吗", null, 6],
+      ["I was lucky enough to go to Africa", "我很幸运能去非洲", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0379L06": {
+    "lego": ["travel", "旅行"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0379L01", "known": "yes", "target": "是的", "type": "A"},
+      {"id": "S0379L02", "known": "I was lucky", "target": "我很幸运", "type": "M"},
+      {"id": "S0379L03", "known": "very lucky", "target": "很幸运", "type": "M"},
+      {"id": "S0379L04", "known": "able to go", "target": "能去", "type": "M"},
+      {"id": "S0379L05", "known": "Africa", "target": "非洲", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["Travel", "旅行", null, 1],
+      ["To go travel", "去旅行", null, 2],
+      ["I went traveling", "我去旅行了", null, 2],
+      ["To travel to Africa", "去非洲旅行", null, 3],
+      ["She went traveling", "她去旅行了", null, 3],
+      ["I was able to travel", "我能去旅行", null, 4],
+      ["Did you go traveling", "你去旅行了吗", null, 4],
+      ["I went traveling to Africa", "我去非洲旅行了", null, 5],
+      ["I was lucky to go traveling", "我很幸运能去旅行", null, 5],
+      ["Did you travel to Africa last year", "你去年去非洲旅行了吗", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0379L07": {
+    "lego": ["travel to Africa", "去非洲旅行"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0379L01", "known": "yes", "target": "是的", "type": "A"},
+      {"id": "S0379L02", "known": "I was lucky", "target": "我很幸运", "type": "M"},
+      {"id": "S0379L03", "known": "very lucky", "target": "很幸运", "type": "M"},
+      {"id": "S0379L04", "known": "able to go", "target": "能去", "type": "M"},
+      {"id": "S0379L05", "known": "Africa", "target": "非洲", "type": "A"},
+      {"id": "S0379L06", "known": "travel", "target": "旅行", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["Travel to Africa", "去非洲旅行", null, 1],
+      ["To travel to Africa", "去非洲旅行", null, 2],
+      ["I traveled to Africa", "我去非洲旅行了", null, 3],
+      ["She traveled to Africa", "她去非洲旅行了", null, 3],
+      ["I was able to travel to Africa", "我能去非洲旅行", null, 4],
+      ["Did you travel to Africa", "你去非洲旅行了吗", null, 4],
+      ["I was lucky to travel to Africa", "我很幸运能去非洲旅行", null, 5],
+      ["She traveled to Africa last year", "她去年去非洲旅行了", null, 5],
+      ["Did you travel to Africa last year", "你去年去非洲旅行了吗", null, 6],
+      ["I was lucky enough to travel to Africa", "我很幸运能去非洲旅行", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["去", "go"],
+      ["非洲", "Africa"],
+      ["旅行", "travel"]
+    ]
+  },
+  "S0379L08": {
+    "lego": ["go traveling", "去旅行"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {"id": "S0379L01", "known": "yes", "target": "是的", "type": "A"},
+      {"id": "S0379L02", "known": "I was lucky", "target": "我很幸运", "type": "M"},
+      {"id": "S0379L03", "known": "very lucky", "target": "很幸运", "type": "M"},
+      {"id": "S0379L04", "known": "able to go", "target": "能去", "type": "M"},
+      {"id": "S0379L05", "known": "Africa", "target": "非洲", "type": "A"},
+      {"id": "S0379L06", "known": "travel", "target": "旅行", "type": "A"},
+      {"id": "S0379L07", "known": "travel to Africa", "target": "去非洲旅行", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Go traveling", "去旅行", null, 1],
+      ["To go traveling", "去旅行", null, 2],
+      ["I went traveling", "我去旅行了", null, 2],
+      ["She went traveling", "她去旅行了", null, 3],
+      ["I was able to go traveling", "我能去旅行", null, 4],
+      ["Did you go traveling", "你去旅行了吗", null, 4],
+      ["I was lucky to go traveling", "我很幸运能去旅行", null, 5],
+      ["I went traveling to Africa", "我去非洲旅行了", null, 5],
+      ["I was lucky enough to travel to Africa", "我很幸运能去非洲旅行", null, 6],
+      ["Yes I was lucky enough to travel to Africa.", "是的，我很幸运能去非洲旅行。", null, 8]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["去", "go"],
+      ["旅行", "travel"]
+    ]
+  }
+}

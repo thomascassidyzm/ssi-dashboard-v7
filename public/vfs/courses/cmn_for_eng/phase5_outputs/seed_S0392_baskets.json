@@ -1,0 +1,288 @@
+{
+  "legos": {
+    "S0392L01": {
+      "lego": ["post office", "邮局"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["The post office", "邮局", null, 1],
+        ["Near the post office", "邮局附近", null, 2],
+        ["I'm going to the post office", "我去邮局", null, 3],
+        ["Where is the post office", "邮局在哪里", null, 3],
+        ["The post office is over there", "邮局在那边", null, 4],
+        ["Can you see the post office", "你能看到邮局吗", null, 4],
+        ["I need to go to the post office tomorrow", "我明天需要去邮局", null, 5],
+        ["The post office is near the bus stop", "邮局在公交车站附近", null, 5],
+        ["She said the post office opens at eight o'clock", "她说邮局八点开", null, 6],
+        ["I want to find the post office opposite the restaurant", "我想找邮局对面的餐厅", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L01",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      }
+    },
+    "S0392L02": {
+      "lego": ["opposite", "对面"],
+      "type": "A",
+      "current_seed_legos_available": [["post office", "邮局"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Opposite", "对面", null, 1],
+        ["It's opposite", "它在对面", null, 2],
+        ["The restaurant is opposite", "餐厅在对面", null, 3],
+        ["Opposite the entrance over there", "对面那边的入口", null, 3],
+        ["I'm standing opposite the post office", "我站在邮局对面", null, 4],
+        ["The house opposite is very beautiful", "对面的房子很美", null, 4],
+        ["Can you see the person opposite the entrance", "你能看到对面入口的那个人吗", null, 5],
+        ["The child is waiting opposite the bus stop", "那个孩子在公交车站对面等", null, 5],
+        ["I want to meet you opposite the restaurant tomorrow", "我明天想在餐厅对面见你", null, 6],
+        ["That building opposite the post office is where I work", "邮局对面那个建筑是我工作的地方", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L02",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      }
+    },
+    "S0392L03": {
+      "lego": ["opposite the post office", "邮局对面"],
+      "type": "M",
+      "current_seed_legos_available": [["post office", "邮局"], ["opposite", "对面"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Opposite the post office", "邮局对面", null, 1],
+        ["I'm standing opposite the post office", "我站在邮局对面", null, 2],
+        ["It's opposite the post office", "它在邮局对面", null, 3],
+        ["The restaurant is opposite the post office", "餐厅在邮局对面", null, 3],
+        ["Can you wait opposite the post office", "你能在邮局对面等吗", null, 4],
+        ["I'll meet you opposite the post office", "我在邮局对面见你", null, 4],
+        ["That child is standing opposite the post office", "那个孩子站在邮局对面", null, 5],
+        ["The building opposite the post office is very old", "邮局对面的建筑很老", null, 5],
+        ["I want to meet my friend opposite the post office tomorrow", "我明天想在邮局对面见我的朋友", null, 6],
+        ["Can you see the person with black hair opposite the post office", "你能看到邮局对面黑头发的那个人吗", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L03",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      },
+      "components": [[null, null], [null, null]]
+    },
+    "S0392L04": {
+      "lego": ["hair", "头发"],
+      "type": "A",
+      "current_seed_legos_available": [["post office", "邮局"], ["opposite", "对面"], ["opposite the post office", "邮局对面"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Hair", "头发", null, 1],
+        ["Black hair", "黑头发", null, 2],
+        ["She has beautiful hair", "她有美丽的头发", null, 3],
+        ["The person with long hair", "长头发的那个人", null, 3],
+        ["I like your hair very much", "我很喜欢你的头发", null, 4],
+        ["That child has black hair", "那个孩子有黑头发", null, 4],
+        ["The woman with beautiful hair is my friend", "美丽头发的那个女人是我的朋友", null, 5],
+        ["Can you see the person with black hair", "你能看到黑头发的那个人吗", null, 5],
+        ["The child with black hair is standing near the entrance", "黑头发的孩子站在入口附近", null, 6],
+        ["I want to meet the person with black hair opposite the post office", "我想见邮局对面黑头发的那个人", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L04",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      }
+    },
+    "S0392L05": {
+      "lego": ["black hair", "黑头发"],
+      "type": "M",
+      "current_seed_legos_available": [["post office", "邮局"], ["opposite", "对面"], ["opposite the post office", "邮局对面"], ["hair", "头发"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Black hair", "黑头发", null, 1],
+        ["With black hair", "黑头发的", null, 2],
+        ["She has black hair", "她有黑头发", null, 3],
+        ["The person with black hair", "黑头发的那个人", null, 3],
+        ["I see someone with black hair", "我看到黑头发的人", null, 4],
+        ["The child with black hair is there", "黑头发的孩子在那里", null, 4],
+        ["Can you see the person with black hair", "你能看到黑头发的那个人吗", null, 5],
+        ["The woman with black hair is very friendly", "黑头发的那个女人很友好", null, 5],
+        ["That child with black hair wants to go home", "那个黑头发的孩子想回家", null, 6],
+        ["I want to meet the person with black hair opposite the entrance", "我想见入口对面黑头发的那个人", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L05",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      },
+      "components": [[null, null], [null, null]]
+    },
+    "S0392L06": {
+      "lego": ["child", "孩子"],
+      "type": "A",
+      "current_seed_legos_available": [["post office", "邮局"], ["opposite", "对面"], ["opposite the post office", "邮局对面"], ["hair", "头发"], ["black hair", "黑头发"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["A child", "一个孩子", null, 2],
+        ["That child", "那个孩子", null, 2],
+        ["I see a child", "我看到一个孩子", null, 3],
+        ["The child is very happy", "那个孩子很高兴", null, 3],
+        ["Can you help the child", "你能帮助那个孩子吗", null, 4],
+        ["That child wants to go home", "那个孩子想回家", null, 4],
+        ["The child with black hair is standing there", "黑头发的孩子站在那里", null, 5],
+        ["I know the child who is waiting here", "我认识在这里等的那个孩子", null, 5],
+        ["That child near the entrance needs help quickly", "入口附近的那个孩子快点需要帮助", null, 6],
+        ["Can you see the child with black hair opposite the post office", "你能看到邮局对面黑头发的孩子吗", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L06",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      }
+    },
+    "S0392L07": {
+      "lego": ["child with black hair", "黑头发的孩子"],
+      "type": "M",
+      "current_seed_legos_available": [["post office", "邮局"], ["opposite", "对面"], ["opposite the post office", "邮局对面"], ["hair", "头发"], ["black hair", "黑头发"], ["child", "孩子"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Child with black hair", "黑头发的孩子", null, 1],
+        ["A child with black hair", "一个黑头发的孩子", null, 2],
+        ["I see a child with black hair", "我看到一个黑头发的孩子", null, 3],
+        ["The child with black hair is there", "黑头发的孩子在那里", null, 3],
+        ["Can you help the child with black hair", "你能帮助黑头发的孩子吗", null, 4],
+        ["The child with black hair wants something", "黑头发的孩子想要东西", null, 4],
+        ["I know the child with black hair over there", "我认识那边黑头发的那个孩子", null, 5],
+        ["The child with black hair is standing near the entrance", "黑头发的孩子站在入口附近", null, 5],
+        ["That child with black hair opposite the post office is waiting", "邮局对面黑头发的那个孩子在等", null, 6],
+        ["Can you see the child with black hair who is walking towards the bus", "你能看到朝公交车走的黑头发的孩子吗", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L07",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null]]
+    },
+    "S0392L08": {
+      "lego": ["that child with the black hair", "那个黑头发的孩子"],
+      "type": "M",
+      "current_seed_legos_available": [["post office", "邮局"], ["opposite", "对面"], ["opposite the post office", "邮局对面"], ["hair", "头发"], ["black hair", "黑头发"], ["child", "孩子"], ["child with black hair", "黑头发的孩子"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["That child with the black hair", "那个黑头发的孩子", null, 1],
+        ["I see that child with the black hair", "我看到那个黑头发的孩子", null, 2],
+        ["That child with the black hair is there", "那个黑头发的孩子在那里", null, 3],
+        ["Do you know that child with the black hair", "你认识那个黑头发的孩子吗", null, 3],
+        ["That child with the black hair wants help", "那个黑头发的孩子想要帮助", null, 4],
+        ["I want to meet that child with the black hair", "我想见那个黑头发的孩子", null, 4],
+        ["Can you help that child with the black hair today", "你今天能帮助那个黑头发的孩子吗", null, 5],
+        ["That child with the black hair is standing near the entrance", "那个黑头发的孩子站在入口附近", null, 5],
+        ["I think that child with the black hair needs to go home", "我认为那个黑头发的孩子需要回家", null, 6],
+        ["That child with the black hair opposite the post office is my friend", "邮局对面那个黑头发的孩子是我的朋友", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L08",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null], [null, null]]
+    },
+    "S0392L09": {
+      "lego": ["that child with the black hair opposite the post office", "邮局对面那个黑头发的孩子"],
+      "type": "M",
+      "current_seed_legos_available": [["post office", "邮局"], ["opposite", "对面"], ["opposite the post office", "邮局对面"], ["hair", "头发"], ["black hair", "黑头发"], ["child", "孩子"], ["child with black hair", "黑头发的孩子"], ["that child with the black hair", "那个黑头发的孩子"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["That child with the black hair opposite the post office", "邮局对面那个黑头发的孩子", null, 1],
+        ["I see that child with the black hair opposite the post office", "我看到邮局对面那个黑头发的孩子", null, 2],
+        ["That child with the black hair opposite the post office is there", "邮局对面那个黑头发的孩子在那里", null, 3],
+        ["Do you know that child with the black hair opposite the post office", "你认识邮局对面那个黑头发的孩子吗", null, 3],
+        ["That child with the black hair opposite the post office wants help", "邮局对面那个黑头发的孩子想要帮助", null, 4],
+        ["I want to meet that child with the black hair opposite the post office", "我想见邮局对面那个黑头发的孩子", null, 4],
+        ["Can you help that child with the black hair opposite the post office", "你能帮助邮局对面那个黑头发的孩子吗", null, 5],
+        ["I think that child with the black hair opposite the post office needs something", "我认为邮局对面那个黑头发的孩子需要东西", null, 5],
+        ["That child with the black hair opposite the post office is my sister's friend", "邮局对面那个黑头发的孩子是我姐姐的朋友", null, 6],
+        ["That child with the black hair opposite the post office.", "邮局对面那个黑头发的孩子。", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0392L09",
+        "seed_context": {
+          "known": "邮局对面那个黑头发的孩子。",
+          "target": "That child with the black hair opposite the post office."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null]]
+    }
+  }
+}

@@ -1,0 +1,383 @@
+{
+  "S0387L01": {
+    "lego": [
+      "no",
+      "不"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "No",
+        "不",
+        null,
+        1
+      ],
+      [
+        "No I didn't",
+        "不我没有",
+        null,
+        2
+      ],
+      [
+        "No I don't know",
+        "不我不知道",
+        null,
+        2
+      ],
+      [
+        "No I didn't go",
+        "不我没去",
+        null,
+        3
+      ],
+      [
+        "No I think so",
+        "不我认为",
+        null,
+        3
+      ],
+      [
+        "No I didn't agree with her",
+        "不我不同意她",
+        null,
+        4
+      ],
+      [
+        "No I didn't go anywhere",
+        "不我哪儿也没去",
+        null,
+        4
+      ],
+      [
+        "No I didn't have enough money",
+        "不我没有足够的钱",
+        null,
+        5
+      ],
+      [
+        "No I didn't know what she wanted",
+        "不我不知道她想要什么",
+        null,
+        5
+      ],
+      [
+        "No I didn't think she was right",
+        "不我认为她不对",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0387L02": {
+    "lego": [
+      "I think",
+      "我认为"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0387L01",
+        "known": "no",
+        "target": "不",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I think",
+        "我认为",
+        null,
+        1
+      ],
+      [
+        "I think so",
+        "我认为是",
+        null,
+        1
+      ],
+      [
+        "No I think",
+        "不我认为",
+        null,
+        2
+      ],
+      [
+        "I think she's right",
+        "我认为她对",
+        null,
+        2
+      ],
+      [
+        "I didn't think so",
+        "我不认为",
+        null,
+        3
+      ],
+      [
+        "I think she agreed",
+        "我认为她同意",
+        null,
+        3
+      ],
+      [
+        "I think it was beautiful",
+        "我认为它很美",
+        null,
+        4
+      ],
+      [
+        "I didn't think she was right",
+        "我认为她不对",
+        null,
+        4
+      ],
+      [
+        "I think she wanted to go there",
+        "我认为她想去那儿",
+        null,
+        5
+      ],
+      [
+        "No I didn't think she was right",
+        "不我认为她不对",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "认为",
+        "think"
+      ]
+    ]
+  },
+  "S0387L03": {
+    "lego": [
+      "she was not right",
+      "她不对"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0387L01",
+        "known": "no",
+        "target": "不",
+        "type": "A"
+      },
+      {
+        "id": "S0387L02",
+        "known": "I think",
+        "target": "我认为",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "She was not right",
+        "她不对",
+        null,
+        1
+      ],
+      [
+        "She's not right",
+        "她不对",
+        null,
+        1
+      ],
+      [
+        "I think she's not right",
+        "我认为她不对",
+        null,
+        2
+      ],
+      [
+        "He was not right",
+        "他不对",
+        null,
+        2
+      ],
+      [
+        "She was not right yesterday",
+        "她昨天不对",
+        null,
+        3
+      ],
+      [
+        "Do you think she's right",
+        "你认为她对吗",
+        null,
+        3
+      ],
+      [
+        "I didn't think she was right",
+        "我认为她不对",
+        null,
+        4
+      ],
+      [
+        "She was not right about that",
+        "她那个不对",
+        null,
+        4
+      ],
+      [
+        "I didn't think she was right yesterday",
+        "我认为她昨天不对",
+        null,
+        5
+      ],
+      [
+        "No I didn't think she was right",
+        "不我认为她不对",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "不",
+        "not"
+      ],
+      [
+        "对",
+        "right/correct"
+      ]
+    ]
+  },
+  "S0387L04": {
+    "lego": [
+      "right",
+      "对"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0387L01",
+        "known": "no",
+        "target": "不",
+        "type": "A"
+      },
+      {
+        "id": "S0387L02",
+        "known": "I think",
+        "target": "我认为",
+        "type": "M"
+      },
+      {
+        "id": "S0387L03",
+        "known": "she was not right",
+        "target": "她不对",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Right",
+        "对",
+        null,
+        1
+      ],
+      [
+        "She's right",
+        "她对",
+        null,
+        1
+      ],
+      [
+        "You're right",
+        "你对",
+        null,
+        2
+      ],
+      [
+        "I think she's right",
+        "我认为她对",
+        null,
+        2
+      ],
+      [
+        "She was not right",
+        "她不对",
+        null,
+        3
+      ],
+      [
+        "You were right yesterday",
+        "你昨天对",
+        null,
+        3
+      ],
+      [
+        "I don't think she was right",
+        "我不认为她对",
+        null,
+        4
+      ],
+      [
+        "Do you think she was right",
+        "你认为她对吗",
+        null,
+        4
+      ],
+      [
+        "I didn't think she was right yesterday",
+        "我认为她昨天不对",
+        null,
+        5
+      ],
+      [
+        "No I didn't think she was right",
+        "不我认为她不对",
+        null,
+        5
+      ],
+      [
+        "No I didn't think she was right.",
+        "不，我认为她不对。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

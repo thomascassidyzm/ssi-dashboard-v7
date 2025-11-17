@@ -1,0 +1,226 @@
+{
+  "legos": {
+    "S0391L01": {
+      "lego": ["bus", "公交车"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["The bus", "公交车", null, 1],
+        ["That bus", "那个公交车", null, 2],
+        ["I want the bus", "我想要公交车", null, 3],
+        ["Is the bus coming", "公交车来了吗", null, 3],
+        ["The bus is coming now", "公交车现在来了", null, 4],
+        ["I need to take the bus", "我需要坐公交车", null, 4],
+        ["The bus arrives in a few minutes", "公交车几分钟后到", null, 5],
+        ["Can you see the bus over there", "你能看到那边的公交车吗", null, 5],
+        ["I think the bus will be here soon", "我认为公交车很快就会到这里", null, 6],
+        ["She said the bus stops near the post office", "她说公交车在邮局附近停", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0391L01",
+        "seed_context": {
+          "known": "朝公交车走去的那个人。",
+          "target": "The one who is walking towards the bus."
+        }
+      }
+    },
+    "S0391L02": {
+      "lego": ["towards the bus", "朝公交车"],
+      "type": "M",
+      "current_seed_legos_available": [["bus", "公交车"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Towards the bus", "朝公交车", null, 1],
+        ["Walking towards the bus", "朝公交车走", null, 2],
+        ["I'm walking towards the bus", "我朝公交车走", null, 3],
+        ["She's going towards the bus", "她朝公交车去", null, 3],
+        ["Can you walk towards the bus", "你能朝公交车走吗", null, 4],
+        ["He wants to go towards the bus", "他想朝公交车去", null, 4],
+        ["That person is walking towards the bus now", "那个人现在朝公交车走", null, 5],
+        ["I need to walk towards the bus quickly", "我需要快点朝公交车走", null, 5],
+        ["The woman over there is walking towards the bus", "那边那个女人朝公交车走", null, 6],
+        ["Can you see the person walking towards the bus", "你能看到朝公交车走的那个人吗", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0391L02",
+        "seed_context": {
+          "known": "朝公交车走去的那个人。",
+          "target": "The one who is walking towards the bus."
+        }
+      },
+      "components": [[null, null], [null, null]]
+    },
+    "S0391L03": {
+      "lego": ["walk/go", "走去"],
+      "type": "A",
+      "current_seed_legos_available": [["bus", "公交车"], ["towards the bus", "朝公交车"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Go there", "走去那里", null, 2],
+        ["I want to go", "我想走去", null, 2],
+        ["She needs to go now", "她现在需要走去", null, 3],
+        ["Can you go over there", "你能走去那边吗", null, 3],
+        ["He's going towards the entrance", "他朝入口走去", null, 4],
+        ["The person wants to go quickly", "那个人想快点走去", null, 4],
+        ["I'm walking towards the bus over there", "我朝那边的公交车走去", null, 5],
+        ["That woman is going towards the post office", "那个女人朝邮局走去", null, 5],
+        ["The child needs to go home before evening", "那个孩子需要在晚上前走去家", null, 6],
+        ["Can you see the person who is going towards the entrance", "你能看到朝入口走去的那个人吗", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0391L03",
+        "seed_context": {
+          "known": "朝公交车走去的那个人。",
+          "target": "The one who is walking towards the bus."
+        }
+      }
+    },
+    "S0391L04": {
+      "lego": ["walking towards the bus", "朝公交车走去"],
+      "type": "M",
+      "current_seed_legos_available": [["bus", "公交车"], ["towards the bus", "朝公交车"], ["walk/go", "走去"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Walking towards the bus", "朝公交车走去", null, 1],
+        ["I'm walking towards the bus", "我朝公交车走去", null, 2],
+        ["She's walking towards the bus", "她朝公交车走去", null, 2],
+        ["That person is walking towards the bus", "那个人朝公交车走去", null, 3],
+        ["Can you walk towards the bus now", "你现在能朝公交车走去吗", null, 4],
+        ["He wants to walk towards the bus", "他想朝公交车走去", null, 4],
+        ["The woman over there is walking towards the bus", "那边那个女人朝公交车走去", null, 5],
+        ["I need to walk towards the bus very quickly", "我需要很快朝公交车走去", null, 5],
+        ["That child with black hair is walking towards the bus", "那个黑头发的孩子朝公交车走去", null, 6],
+        ["Can you see the person who is walking towards the bus", "你能看到朝公交车走去的那个人吗", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0391L04",
+        "seed_context": {
+          "known": "朝公交车走去的那个人。",
+          "target": "The one who is walking towards the bus."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null]]
+    },
+    "S0391L05": {
+      "lego": ["the one who", "的那个人"],
+      "type": "M",
+      "current_seed_legos_available": [["bus", "公交车"], ["towards the bus", "朝公交车"], ["walk/go", "走去"], ["walking towards the bus", "朝公交车走去"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["The one who is here", "在这里的那个人", null, 2],
+        ["The one who wants it", "想要它的那个人", null, 2],
+        ["The one who is working", "工作的那个人", null, 3],
+        ["The one who knows Chinese", "会说中文的那个人", null, 3],
+        ["The one who is standing near", "站在附近的那个人", null, 4],
+        ["The one who is walking there", "走去那里的那个人", null, 4],
+        ["The one who is standing near the entrance", "站在入口附近的那个人", null, 5],
+        ["The one who is walking towards the bus", "朝公交车走去的那个人", null, 5],
+        ["The one who wants to help you tomorrow", "明天想帮助你的那个人", null, 6],
+        ["The one who is sitting over there with the book", "坐在那边看书的那个人", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0391L05",
+        "seed_context": {
+          "known": "朝公交车走去的那个人。",
+          "target": "The one who is walking towards the bus."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null]]
+    },
+    "S0391L06": {
+      "lego": ["the one who is walking", "走去的那个人"],
+      "type": "M",
+      "current_seed_legos_available": [["bus", "公交车"], ["towards the bus", "朝公交车"], ["walk/go", "走去"], ["walking towards the bus", "朝公交车走去"], ["the one who", "的那个人"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["The one who is walking", "走去的那个人", null, 1],
+        ["The one who is walking there", "走去那里的那个人", null, 2],
+        ["Can you see the one who is walking", "你能看到走去的那个人吗", null, 3],
+        ["The one who is walking is my friend", "走去的那个人是我的朋友", null, 4],
+        ["I know the one who is walking there", "我认识走去那里的那个人", null, 4],
+        ["The one who is walking needs help now", "走去的那个人现在需要帮助", null, 5],
+        ["Do you know the one who is walking over there", "你认识走去那边的那个人吗", null, 5],
+        ["I want to meet the one who is walking near the entrance", "我想见走去入口附近的那个人", null, 6],
+        ["The one who is walking towards the bus is waiting for someone", "朝公交车走去的那个人在等人", null, 7],
+        ["Can you tell me who the one who is walking towards the entrance is", "你能告诉我走去入口的那个人是谁吗", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0391L06",
+        "seed_context": {
+          "known": "朝公交车走去的那个人。",
+          "target": "The one who is walking towards the bus."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null], [null, null]]
+    },
+    "S0391L07": {
+      "lego": ["the one who is walking towards the bus", "朝公交车走去的那个人"],
+      "type": "M",
+      "current_seed_legos_available": [["bus", "公交车"], ["towards the bus", "朝公交车"], ["walk/go", "走去"], ["walking towards the bus", "朝公交车走去"], ["the one who", "的那个人"], ["the one who is walking", "走去的那个人"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["The one who is walking towards the bus", "朝公交车走去的那个人", null, 1],
+        ["I see the one who is walking towards the bus", "我看到朝公交车走去的那个人", null, 2],
+        ["The one who is walking towards the bus is there", "朝公交车走去的那个人在那里", null, 3],
+        ["Can you see the one who is walking towards the bus", "你能看到朝公交车走去的那个人吗", null, 3],
+        ["I know the one who is walking towards the bus", "我认识朝公交车走去的那个人", null, 4],
+        ["The one who is walking towards the bus wants help", "朝公交车走去的那个人想要帮助", null, 4],
+        ["Do you know the one who is walking towards the bus", "你认识朝公交车走去的那个人吗", null, 5],
+        ["I want to meet the one who is walking towards the bus", "我想见朝公交车走去的那个人", null, 5],
+        ["The one who is walking towards the bus is my old friend", "朝公交车走去的那个人是我的老朋友", null, 6],
+        ["The one who is walking towards the bus.", "朝公交车走去的那个人。", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0391L07",
+        "seed_context": {
+          "known": "朝公交车走去的那个人。",
+          "target": "The one who is walking towards the bus."
+        }
+      },
+      "components": [[null, null], [null, null], [null, null], [null, null], [null, null], [null, null]]
+    }
+  }
+}

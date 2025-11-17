@@ -1,0 +1,167 @@
+{
+  "S0384L01": {
+    "lego": [
+      "I couldn't agree",
+      "我不能同意"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I couldn't agree", "我不能同意", null, 1],
+      ["I agree", "我同意", null, 1],
+      ["I couldn't agree with him", "我不能同意他", null, 2],
+      ["She couldn't agree", "她不能同意", null, 2],
+      ["I couldn't agree with what he said", "我不能同意他说的话", null, 3],
+      ["He couldn't agree with her", "他不能同意她", null, 3],
+      ["I couldn't agree with him yesterday", "我昨天不能同意他", null, 4],
+      ["She couldn't agree with what I wanted", "她不能同意我想要的", null, 4],
+      ["I couldn't agree with what she wanted to include", "我不能同意她想包括的", null, 5],
+      ["He couldn't agree with what I said last year", "他不能同意我去年说的话", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["我", "I"],
+      ["不能", "couldn't/cannot"],
+      ["同意", "agree"]
+    ]
+  },
+  "S0384L02": {
+    "lego": [
+      "agree with him",
+      "同意他"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0384L01",
+        "known": "I couldn't agree",
+        "target": "我不能同意",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Agree with him", "同意他", null, 1],
+      ["With him", "他", null, 1],
+      ["I agree with him", "我同意他", null, 2],
+      ["Agree with her", "同意她", null, 2],
+      ["I couldn't agree with him", "我不能同意他", null, 3],
+      ["She couldn't agree with him", "她不能同意他", null, 3],
+      ["I couldn't agree with him yesterday", "我昨天不能同意他", null, 4],
+      ["Did you agree with what he said", "你同意他说的话", null, 4],
+      ["I couldn't agree with what he wanted to include", "我不能同意他想包括的", null, 5],
+      ["She couldn't agree with him about what he said", "她不能同意他说的话", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["同意", "agree"],
+      ["他", "him"]
+    ]
+  },
+  "S0384L03": {
+    "lego": [
+      "what [he] said a moment ago",
+      "刚才说的话"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0384L01",
+        "known": "I couldn't agree",
+        "target": "我不能同意",
+        "type": "M"
+      },
+      {
+        "id": "S0384L02",
+        "known": "agree with him",
+        "target": "同意他",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["What he said a moment ago", "刚才说的话", null, 1],
+      ["A moment ago", "刚才", null, 1],
+      ["What she said a moment ago", "她刚才说的话", null, 2],
+      ["He said a moment ago", "他刚才说", null, 2],
+      ["I heard what he said a moment ago", "我听到他刚才说的话", null, 3],
+      ["What did she say a moment ago", "她刚才说什么", null, 3],
+      ["I couldn't agree with what he said a moment ago", "我不能同意他刚才说的话", null, 4],
+      ["She didn't know what he said a moment ago", "她不知道他刚才说的话", null, 4],
+      ["I couldn't agree with what she said a moment ago", "我不能同意她刚才说的话", null, 5],
+      ["Did you hear what he said to her a moment ago", "你听到他刚才对她说的话", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["刚才", "a moment ago/just now"],
+      ["说的", "said"],
+      ["话", "words/what"]
+    ]
+  },
+  "S0384L04": {
+    "lego": [
+      "a moment ago",
+      "刚才"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0384L01",
+        "known": "I couldn't agree",
+        "target": "我不能同意",
+        "type": "M"
+      },
+      {
+        "id": "S0384L02",
+        "known": "agree with him",
+        "target": "同意他",
+        "type": "M"
+      },
+      {
+        "id": "S0384L03",
+        "known": "what [he] said a moment ago",
+        "target": "刚才说的话",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["A moment ago", "刚才", null, 1],
+      ["Moment", "刚才", null, 1],
+      ["He said a moment ago", "他刚才说", null, 2],
+      ["I saw it a moment ago", "我刚才看到它", null, 2],
+      ["What happened a moment ago", "刚才发生了什么", null, 3],
+      ["I was there a moment ago", "我刚才在那儿", null, 3],
+      ["She asked me a moment ago", "她刚才问我", null, 4],
+      ["I heard what he said a moment ago", "我听到他刚才说的话", null, 4],
+      ["I couldn't agree with what she said a moment ago", "我不能同意她刚才说的话", null, 5],
+      ["I couldn't agree with what he said a moment ago.", "我不能同意他刚才说的话。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
