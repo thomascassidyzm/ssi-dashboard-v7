@@ -1,0 +1,156 @@
+{
+  "S0439L01": {
+    "lego": ["they don't want to die", "他们不想死"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["They don't want to die", "他们不想死", null, 1],
+      ["They don't want that", "他们不想那", null, 2],
+      ["They don't want to die yet", "他们还不想死", null, 3],
+      ["If they don't want to die", "如果他们不想死", null, 3],
+      ["They don't want to die for that", "他们不想为那死", null, 4],
+      ["They don't want to decide that", "他们不想决定那", null, 4],
+      ["They could mean they don't want to die", "他们可能是说他们不想死", null, 5],
+      ["If they don't want to die for charity", "如果他们不想为慈善死", null, 5],
+      ["They don't want to decide when they could die", "他们不想决定他们可能什么时候死", null, 6],
+      ["They don't want to die if that's not possible", "如果那是不可能的他们不想死", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他们", "they"],
+      ["不", "don't"],
+      ["想", "want"],
+      ["死", "to die"]
+    ]
+  },
+  "S0439L02": {
+    "lego": ["they don't want", "他们不想"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0439L01",
+        "known": "they don't want to die",
+        "target": "他们不想死",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["They don't want", "他们不想", null, 1],
+      ["They don't want that", "他们不想那", null, 2],
+      ["They don't want to die", "他们不想死", null, 3],
+      ["They don't want to decide", "他们不想决定", null, 3],
+      ["They don't want to die yet", "他们还不想死", null, 4],
+      ["They don't want to ask questions", "他们不想问问题", null, 4],
+      ["If they don't want to die for charity", "如果他们不想为慈善死", null, 5],
+      ["They don't want to decide what to do", "他们不想决定做什么", null, 5],
+      ["They don't want to reduce the number of students", "他们不想减少学生数量", null, 6],
+      ["They could mean they don't want to die yet", "他们可能是说他们还不想死", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他们", "they"],
+      ["不", "don't"],
+      ["想", "want"]
+    ]
+  },
+  "S0439L03": {
+    "lego": ["don't want", "不想"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0439L01",
+        "known": "they don't want to die",
+        "target": "他们不想死",
+        "type": "M"
+      },
+      {
+        "id": "S0439L02",
+        "known": "they don't want",
+        "target": "他们不想",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Don't want", "不想", null, 1],
+      ["I don't want that", "我不想那", null, 2],
+      ["They don't want to die", "他们不想死", null, 3],
+      ["You don't want to decide", "你不想决定", null, 3],
+      ["I don't want to die yet", "我还不想死", null, 4],
+      ["He doesn't want to ask that", "他不想问那", null, 4],
+      ["If you don't want to die for charity", "如果你不想为慈善死", null, 5],
+      ["I don't want to decide what he should do", "我不想决定他应该做什么", null, 5],
+      ["You could mean you don't want to reduce the number", "你可能是说你不想减少数量", null, 6],
+      ["They don't want to die but they need to decide", "他们不想死但他们需要决定", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["不", "don't"],
+      ["想", "want"]
+    ]
+  },
+  "S0439L04": {
+    "lego": ["die", "死"],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0439L01",
+        "known": "they don't want to die",
+        "target": "他们不想死",
+        "type": "M"
+      },
+      {
+        "id": "S0439L02",
+        "known": "they don't want",
+        "target": "他们不想",
+        "type": "M"
+      },
+      {
+        "id": "S0439L03",
+        "known": "don't want",
+        "target": "不想",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Die", "死", null, 1],
+      ["To die yet", "还死", null, 2],
+      ["They could die", "他们可能死", null, 3],
+      ["I don't want to die", "我不想死", null, 3],
+      ["They could die for charity", "他们可能为慈善死", null, 4],
+      ["You don't want to die yet", "你还不想死", null, 4],
+      ["If they could die for that charity", "如果他们可能为那慈善死", null, 5],
+      ["He doesn't want to die but they do", "他不想死但他们想", null, 5],
+      ["They don't want to decide when they could die", "他们不想决定他们可能什么时候死", null, 6],
+      ["They don't want to die.", "他们不想死。", null, 1]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

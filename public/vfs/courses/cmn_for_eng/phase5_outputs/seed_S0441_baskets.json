@@ -1,0 +1,63 @@
+{
+  "S0441L01": {
+    "lego": ["approach/method", "方法"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Approach", "方法", null, 1],
+      ["An approach", "一个方法", null, 2],
+      ["That approach is perfect", "那方法是完美的", null, 3],
+      ["They want an approach", "他们想一个方法", null, 3],
+      ["They need a new approach", "他们需要一个新方法", null, 4],
+      ["They could find a better approach", "他们可能找到一个更好方法", null, 4],
+      ["They want to decide what approach they need", "他们想决定他们需要什么方法", null, 5],
+      ["If they're still young they could find an approach", "如果他们还年轻他们可能找到一个方法", null, 5],
+      ["They don't want to decide what approach is perfect for charity", "他们不想决定什么方法对慈善是完美的", null, 6],
+      ["While they're still young they could develop a perfect approach for that", "在他们还年轻的时候他们可能开发一个对那完美的方法", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0441L02": {
+    "lego": ["an approach", "一个方法"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0441L01",
+        "known": "approach/method",
+        "target": "方法",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["An approach", "一个方法", null, 1],
+      ["That's an approach", "那是一个方法", null, 2],
+      ["They want an approach", "他们想一个方法", null, 3],
+      ["They need a new approach", "他们需要一个新方法", null, 3],
+      ["They could find a better approach", "他们可能找到一个更好方法", null, 4],
+      ["If they want a perfect approach", "如果他们想一个完美方法", null, 4],
+      ["They want to decide what approach they need for charity", "他们想决定他们为慈善需要什么方法", null, 5],
+      ["While they're still young they could develop an approach", "在他们还年轻的时候他们可能开发一个方法", null, 5],
+      ["They don't want to decide if that's a perfect approach yet", "他们还不想决定那是不是一个完美方法", null, 6],
+      ["An approach.", "一个方法。", null, 2]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["一个", "an/a"],
+      ["方法", "approach/method"]
+    ]
+  }
+}
