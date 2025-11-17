@@ -1,0 +1,657 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0364",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "I heard that he didn't like that place.",
+    "target": "我听说他不喜欢那个地方。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0354",
+      "known": "He didn't need to appear angry.",
+      "target": "他不需要显得生气。"
+    },
+    {
+      "seed_id": "S0355",
+      "known": "Did she need to talk to that woman you know?",
+      "target": "她需要和你认识的那个女人说话吗？"
+    },
+    {
+      "seed_id": "S0356",
+      "known": "Yes they had something important to discuss.",
+      "target": "是的，他们有重要的事情要讨论。"
+    },
+    {
+      "seed_id": "S0357",
+      "known": "No she just wanted to send her a message.",
+      "target": "不，她只是想给她发个消息。"
+    },
+    {
+      "seed_id": "S0358",
+      "known": "Your friend said that she couldn't reach the top.",
+      "target": "你的朋友说她够不到顶部。"
+    },
+    {
+      "seed_id": "S0359",
+      "known": "Your friend said that he could turn left.",
+      "target": "你的朋友说他可以向左转。"
+    },
+    {
+      "seed_id": "S0360",
+      "known": "Did your friend say anything else?",
+      "target": "你的朋友还说了别的什么吗？"
+    },
+    {
+      "seed_id": "S0361",
+      "known": "He was quiet.",
+      "target": "他很安静。"
+    },
+    {
+      "seed_id": "S0362",
+      "known": "No he was rather quiet after you left.",
+      "target": "不，你离开后他相当安静。"
+    },
+    {
+      "seed_id": "S0363",
+      "known": "Yes he felt like talking a lot.",
+      "target": "是的，他想说很多话。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0357L01",
+      "known": "just",
+      "target": "只是",
+      "type": "M"
+    },
+    {
+      "id": "S0357L02",
+      "known": "just wanted to",
+      "target": "只是想",
+      "type": "M"
+    },
+    {
+      "id": "S0357L03",
+      "known": "she just wanted to",
+      "target": "她只是想",
+      "type": "M"
+    },
+    {
+      "id": "S0357L04",
+      "known": "message",
+      "target": "消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L05",
+      "known": "a message",
+      "target": "个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L06",
+      "known": "send",
+      "target": "发",
+      "type": "A"
+    },
+    {
+      "id": "S0357L07",
+      "known": "send a message",
+      "target": "发个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L08",
+      "known": "send her",
+      "target": "给她发",
+      "type": "M"
+    },
+    {
+      "id": "S0357L09",
+      "known": "send her a message",
+      "target": "给她发个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0358L01",
+      "known": "your",
+      "target": "你的",
+      "type": "M"
+    },
+    {
+      "id": "S0358L03",
+      "known": "your friend",
+      "target": "你的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0358L04",
+      "known": "say",
+      "target": "说",
+      "type": "A"
+    },
+    {
+      "id": "S0358L05",
+      "known": "couldn't reach",
+      "target": "够不到",
+      "type": "M"
+    },
+    {
+      "id": "S0358L06",
+      "known": "she couldn't reach",
+      "target": "她够不到",
+      "type": "M"
+    },
+    {
+      "id": "S0358L07",
+      "known": "top",
+      "target": "顶部",
+      "type": "M"
+    },
+    {
+      "id": "S0358L08",
+      "known": "couldn't reach the top",
+      "target": "够不到顶部",
+      "type": "M"
+    },
+    {
+      "id": "S0359L02",
+      "known": "he could",
+      "target": "他可以",
+      "type": "M"
+    },
+    {
+      "id": "S0359L03",
+      "known": "left",
+      "target": "左",
+      "type": "A"
+    },
+    {
+      "id": "S0359L04",
+      "known": "turn",
+      "target": "转",
+      "type": "A"
+    },
+    {
+      "id": "S0359L05",
+      "known": "turn left",
+      "target": "左转",
+      "type": "M"
+    },
+    {
+      "id": "S0359L06",
+      "known": "turn left",
+      "target": "向左转",
+      "type": "M"
+    },
+    {
+      "id": "S0360L01",
+      "known": "said",
+      "target": "说了",
+      "type": "M"
+    },
+    {
+      "id": "S0360L02",
+      "known": "also said",
+      "target": "还说了",
+      "type": "M"
+    },
+    {
+      "id": "S0360L03",
+      "known": "else",
+      "target": "别的",
+      "type": "M"
+    },
+    {
+      "id": "S0360L05",
+      "known": "anything else",
+      "target": "别的什么",
+      "type": "M"
+    },
+    {
+      "id": "S0361L01",
+      "known": "he was quiet",
+      "target": "他很安静",
+      "type": "M"
+    },
+    {
+      "id": "S0362L02",
+      "known": "after you left",
+      "target": "你离开后",
+      "type": "M"
+    },
+    {
+      "id": "S0362L03",
+      "known": "he was rather quiet",
+      "target": "他相当安静",
+      "type": "M"
+    },
+    {
+      "id": "S0363L02",
+      "known": "he felt like talking",
+      "target": "他想说",
+      "type": "M"
+    },
+    {
+      "id": "S0363L03",
+      "known": "talking a lot",
+      "target": "说很多话",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0364L01": {
+      "lego": [
+        "I heard that",
+        "我听说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "I heard that.",
+          "target": "我听说了。",
+          "lego_count": 1
+        },
+        {
+          "known": "I heard that he was quiet.",
+          "target": "我听说他很安静。",
+          "lego_count": 2
+        },
+        {
+          "known": "I heard that your friend said something.",
+          "target": "我听说你的朋友说了些话。",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard that he felt like talking.",
+          "target": "我听说他想说话。",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard that after you left he turned left.",
+          "target": "我听说你离开后他向左转了。",
+          "lego_count": 4
+        },
+        {
+          "known": "I heard that she couldn't reach the top.",
+          "target": "我听说她够不到顶部。",
+          "lego_count": 4
+        },
+        {
+          "known": "I heard that he was rather quiet and just wanted to send a message.",
+          "target": "我听说他相当安静，只是想发个消息。",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that your friend felt like talking a lot after you left.",
+          "target": "我听说你离开后你的朋友想说很多话。",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that she had something important to discuss but your friend said anything else.",
+          "target": "我听说她有重要的事情要讨论，但你的朋友还说了别的。",
+          "lego_count": 6
+        },
+        {
+          "known": "I heard that he was rather quiet after you left and couldn't reach the top even if he wanted to.",
+          "target": "我听说你离开后他相当安静，即使他想也够不到顶部。",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0364L01",
+        "seed_context": {
+          "known": "I heard that he didn't like that place.",
+          "target": "我听说他不喜欢那个地方。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "听说",
+          "heard that"
+        ]
+      ]
+    },
+    "S0364L02": {
+      "lego": [
+        "he didn't like",
+        "他不喜欢"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0364L01",
+          "known": "I heard that",
+          "target": "我听说",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "He didn't like it.",
+          "target": "他不喜欢。",
+          "lego_count": 1
+        },
+        {
+          "known": "I heard that he didn't like it.",
+          "target": "我听说他不喜欢。",
+          "lego_count": 2
+        },
+        {
+          "known": "He didn't like talking a lot.",
+          "target": "他不喜欢说很多话。",
+          "lego_count": 3
+        },
+        {
+          "known": "Your friend said he didn't like it.",
+          "target": "你的朋友说他不喜欢。",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard that he didn't like sending messages.",
+          "target": "我听说他不喜欢发消息。",
+          "lego_count": 4
+        },
+        {
+          "known": "He didn't like it after you left yesterday.",
+          "target": "你昨天离开后他不喜欢了。",
+          "lego_count": 4
+        },
+        {
+          "known": "Your friend said he didn't like it and felt rather quiet about it.",
+          "target": "你的朋友说他不喜欢，对此感到相当安静。",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that he didn't like it but he had something important to discuss.",
+          "target": "我听说他不喜欢，但他有重要的事情要讨论。",
+          "lego_count": 5
+        },
+        {
+          "known": "After you left, I heard that he didn't like it and your friend said anything else.",
+          "target": "你离开后，我听说他不喜欢，你的朋友还说了别的。",
+          "lego_count": 6
+        },
+        {
+          "known": "He didn't like talking a lot and she just wanted to send her a message about it.",
+          "target": "他不喜欢说很多话，她只是想给她发个消息说这事。",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0364L02",
+        "seed_context": {
+          "known": "I heard that he didn't like that place.",
+          "target": "我听说他不喜欢那个地方。"
+        }
+      },
+      "components": [
+        [
+          "他",
+          "he"
+        ],
+        [
+          "不",
+          "didn't/not"
+        ],
+        [
+          "喜欢",
+          "like"
+        ]
+      ]
+    },
+    "S0364L03": {
+      "lego": [
+        "that place",
+        "那个地方"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0364L01",
+          "known": "I heard that",
+          "target": "我听说",
+          "type": "M"
+        },
+        {
+          "id": "S0364L02",
+          "known": "he didn't like",
+          "target": "他不喜欢",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "That place.",
+          "target": "那个地方。",
+          "lego_count": 1
+        },
+        {
+          "known": "I heard that place was important.",
+          "target": "我听说那个地方很重要。",
+          "lego_count": 2
+        },
+        {
+          "known": "He didn't like that place at all.",
+          "target": "他根本不喜欢那个地方。",
+          "lego_count": 3
+        },
+        {
+          "known": "Your friend said that place was quiet.",
+          "target": "你的朋友说那个地方很安静。",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard that he didn't like that place.",
+          "target": "我听说他不喜欢那个地方。",
+          "lego_count": 4
+        },
+        {
+          "known": "She wanted to discuss that place after you left.",
+          "target": "你离开后她想讨论那个地方。",
+          "lego_count": 4
+        },
+        {
+          "known": "Your friend said that place was quiet and he felt like talking about it.",
+          "target": "你的朋友说那个地方很安静，他想谈论它。",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that he didn't like that place and just wanted to turn left.",
+          "target": "我听说他不喜欢那个地方，只是想向左转。",
+          "lego_count": 5
+        },
+        {
+          "known": "After you left, she said that place was important and had something to discuss about it.",
+          "target": "你离开后，她说那个地方很重要，有事情要讨论。",
+          "lego_count": 6
+        },
+        {
+          "known": "I heard that he didn't like that place but your friend said he felt like talking a lot about it.",
+          "target": "我听说他不喜欢那个地方，但你的朋友说他想说很多关于它的话。",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0364L03",
+        "seed_context": {
+          "known": "I heard that he didn't like that place.",
+          "target": "我听说他不喜欢那个地方。"
+        }
+      },
+      "components": [
+        [
+          "那",
+          "that"
+        ],
+        [
+          "个",
+          "[measure word]"
+        ],
+        [
+          "地方",
+          "place"
+        ]
+      ]
+    },
+    "S0364L04": {
+      "lego": [
+        "didn't like that place",
+        "不喜欢那个地方"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0364L01",
+          "known": "I heard that",
+          "target": "我听说",
+          "type": "M"
+        },
+        {
+          "id": "S0364L02",
+          "known": "he didn't like",
+          "target": "他不喜欢",
+          "type": "M"
+        },
+        {
+          "id": "S0364L03",
+          "known": "that place",
+          "target": "那个地方",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "He didn't like that place.",
+          "target": "他不喜欢那个地方。",
+          "lego_count": 1
+        },
+        {
+          "known": "I heard that he didn't like that place.",
+          "target": "我听说他不喜欢那个地方。",
+          "lego_count": 2
+        },
+        {
+          "known": "She didn't like that place after you left.",
+          "target": "你离开后她不喜欢那个地方。",
+          "lego_count": 3
+        },
+        {
+          "known": "Your friend said he didn't like that place.",
+          "target": "你的朋友说他不喜欢那个地方。",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard that he didn't like that place at all.",
+          "target": "我听说他根本不喜欢那个地方。",
+          "lego_count": 4
+        },
+        {
+          "known": "He didn't like that place and was rather quiet.",
+          "target": "他不喜欢那个地方，相当安静。",
+          "lego_count": 4
+        },
+        {
+          "known": "Your friend said he didn't like that place but felt like talking about it.",
+          "target": "你的朋友说他不喜欢那个地方，但想谈论它。",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that he didn't like that place and just wanted to send a message.",
+          "target": "我听说他不喜欢那个地方，只是想发个消息。",
+          "lego_count": 5
+        },
+        {
+          "known": "After you left, I heard that he didn't like that place and your friend said anything else.",
+          "target": "你离开后，我听说他不喜欢那个地方，你的朋友还说了别的。",
+          "lego_count": 6
+        },
+        {
+          "known": "She didn't like that place and had something important to discuss but she couldn't reach the top.",
+          "target": "她不喜欢那个地方，有重要的事情要讨论，但她够不到顶部。",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0364L04",
+        "seed_context": {
+          "known": "I heard that he didn't like that place.",
+          "target": "我听说他不喜欢那个地方。"
+        }
+      },
+      "components": [
+        [
+          "不",
+          "didn't/not"
+        ],
+        [
+          "喜欢",
+          "like"
+        ],
+        [
+          "那",
+          "that"
+        ],
+        [
+          "个",
+          "[measure word]"
+        ],
+        [
+          "地方",
+          "place"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0364.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

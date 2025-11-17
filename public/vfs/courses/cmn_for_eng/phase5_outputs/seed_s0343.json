@@ -1,0 +1,187 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0343",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "Who said that she's worried about the economy.",
+    "target": "说她担心经济的人。"
+  },
+  "legos": {
+    "S0343L01": {
+      "lego": [
+        "economy",
+        "经济"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "the economy",
+          "target": "经济"
+        },
+        {
+          "known": "economy",
+          "target": "经济"
+        },
+        {
+          "known": "the economy is okay",
+          "target": "经济没事"
+        },
+        {
+          "known": "worried about the economy",
+          "target": "担心经济"
+        },
+        {
+          "known": "I think the economy is okay",
+          "target": "我觉得经济没事"
+        },
+        {
+          "known": "do you think the economy is okay",
+          "target": "你觉得经济没事吗"
+        },
+        {
+          "known": "I met someone who is worried about the economy",
+          "target": "我遇到了一个担心经济的人"
+        },
+        {
+          "known": "she said that she is worried about the economy",
+          "target": "她说她担心经济"
+        },
+        {
+          "known": "I met someone a few days ago who was worried about the economy",
+          "target": "我几天前见过一个担心经济的人"
+        },
+        {
+          "known": "do you think that the economy is going to be okay",
+          "target": "你觉得经济会没事的吗"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0343L02": {
+      "lego": [
+        "worried about the economy",
+        "担心经济"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "worried about the economy",
+          "target": "担心经济"
+        },
+        {
+          "known": "I'm worried about the economy",
+          "target": "我担心经济"
+        },
+        {
+          "known": "he's worried about the economy",
+          "target": "他担心经济"
+        },
+        {
+          "known": "she's not worried about the economy",
+          "target": "她不担心经济"
+        },
+        {
+          "known": "I think he's worried about the economy",
+          "target": "我觉得他担心经济"
+        },
+        {
+          "known": "I don't think she's worried about the economy",
+          "target": "我觉得她不担心经济"
+        },
+        {
+          "known": "I met someone who said that he's worried about the economy",
+          "target": "我遇到了一个说他担心经济的人"
+        },
+        {
+          "known": "I'm sure that she's worried about the economy",
+          "target": "我确定她担心经济"
+        },
+        {
+          "known": "do you think that he's worried about the economy",
+          "target": "你觉得他担心经济吗"
+        },
+        {
+          "known": "I met someone a few days ago who was worried about the economy",
+          "target": "我几天前遇到了一个担心经济的人"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0343L03": {
+      "lego": [
+        "she's worried about the economy",
+        "她担心经济"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        {
+          "known": "she's worried about the economy",
+          "target": "她担心经济"
+        },
+        {
+          "known": "I think she's worried about the economy",
+          "target": "我觉得她担心经济"
+        },
+        {
+          "known": "I'm sure she's worried about the economy",
+          "target": "我确定她担心经济"
+        },
+        {
+          "known": "I don't think she's worried about the economy",
+          "target": "我觉得她不担心经济"
+        },
+        {
+          "known": "he said that she's worried about the economy",
+          "target": "他说她担心经济"
+        },
+        {
+          "known": "do you think that she's worried about the economy",
+          "target": "你觉得她担心经济吗"
+        },
+        {
+          "known": "I met someone who said that she's worried about the economy",
+          "target": "我遇到了一个说她担心经济的人"
+        },
+        {
+          "known": "someone said a few days ago that she's worried about the economy",
+          "target": "一个人几天前说她担心经济"
+        },
+        {
+          "known": "I wanted her to know that she's worried about the economy",
+          "target": "我想让她知道她担心经济"
+        },
+        {
+          "known": "I met someone a few days ago who said that she's worried about the economy",
+          "target": "我几天前遇到了一个说她担心经济的人"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "phrases_generated": 30,
+    "total_baskets": 3
+  }
+}

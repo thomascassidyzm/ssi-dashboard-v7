@@ -1,0 +1,282 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0382",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "Did you ask where he wanted to put it?",
+    "target": "你问他想把它放在哪儿了吗？"
+  },
+  "legos": {
+    "S0382L01": {
+      "lego": [
+        "did you ask [him]",
+        "你问他"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "Did you ask him?",
+          "target": "你问他了吗？"
+        },
+        {
+          "known": "Did you ask her yesterday?",
+          "target": "你昨天问她了吗？"
+        },
+        {
+          "known": "Did you ask him what he wanted?",
+          "target": "你问他想要什么了吗？"
+        },
+        {
+          "known": "Did you ask her where she went?",
+          "target": "你问她去哪儿了吗？"
+        },
+        {
+          "known": "Did you ask him if he was traveling?",
+          "target": "你问他是否在旅行了吗？"
+        },
+        {
+          "known": "Did you ask her what she wanted to include?",
+          "target": "你问她想包括什么了吗？"
+        },
+        {
+          "known": "Did you ask him if he wanted to follow us last year?",
+          "target": "你问他去年是否想跟着我们了吗？"
+        },
+        {
+          "known": "Did you ask her if she had enough money for the vacation?",
+          "target": "你问她是否有足够的钱度假了吗？"
+        },
+        {
+          "known": "Did you ask him what place he wanted to go in the world?",
+          "target": "你问他想去世界上的什么地方了吗？"
+        },
+        {
+          "known": "Did you ask her if she wanted to go traveling to Africa last month?",
+          "target": "你问她上个月是否想去非洲旅行了吗？"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0382L02": {
+      "lego": [
+        "wanted to put it in",
+        "想把它放在"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0382L01",
+          "known": "did you ask [him]",
+          "target": "你问他",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "He wanted to put it in.",
+          "target": "他想把它放在。"
+        },
+        {
+          "known": "She wanted to put it in yesterday.",
+          "target": "她昨天想把它放在。"
+        },
+        {
+          "known": "I asked if he wanted to put it in.",
+          "target": "我问他是否想把它放在。"
+        },
+        {
+          "known": "Did you ask where he wanted to put it in?",
+          "target": "你问他想把它放在哪儿了吗？"
+        },
+        {
+          "known": "She wanted to put it in the beautiful garden.",
+          "target": "她想把它放在美丽的花园里。"
+        },
+        {
+          "known": "Did you ask him if he wanted to put it in?",
+          "target": "你问他是否想把它放在了吗？"
+        },
+        {
+          "known": "I didn't ask her where she wanted to put it in last month.",
+          "target": "我没问她上个月想把它放在哪儿。"
+        },
+        {
+          "known": "Did you ask what place he wanted to put it in when he was traveling?",
+          "target": "你问他旅行时想把它放在什么地方了吗？"
+        },
+        {
+          "known": "She asked if I wanted to put it in the garden or follow her to Africa.",
+          "target": "她问我是否想把它放在花园里还是跟着她去非洲。"
+        },
+        {
+          "known": "I didn't ask him if he wanted to put it in what place in the world he was going to.",
+          "target": "我没问他是否想把它放在他要去的世界上的什么地方。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0382L03": {
+      "lego": [
+        "where to put it",
+        "把它放在哪儿"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0382L01",
+          "known": "did you ask [him]",
+          "target": "你问他",
+          "type": "M"
+        },
+        {
+          "id": "S0382L02",
+          "known": "wanted to put it in",
+          "target": "想把它放在",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Where to put it?",
+          "target": "把它放在哪儿？"
+        },
+        {
+          "known": "I asked where to put it.",
+          "target": "我问把它放在哪儿。"
+        },
+        {
+          "known": "She didn't know where to put it yesterday.",
+          "target": "她昨天不知道把它放在哪儿。"
+        },
+        {
+          "known": "Did you ask him where to put it?",
+          "target": "你问他把它放在哪儿了吗？"
+        },
+        {
+          "known": "I didn't ask her where to put it last month.",
+          "target": "我上个月没问她把它放在哪儿。"
+        },
+        {
+          "known": "Did you ask where to put it when you were traveling?",
+          "target": "你旅行时问把它放在哪儿了吗？"
+        },
+        {
+          "known": "She asked if I knew where to put it in the garden.",
+          "target": "她问我是否知道把它放在花园的哪儿。"
+        },
+        {
+          "known": "I didn't ask him where to put it because he didn't have enough money to include it.",
+          "target": "我没问他把它放在哪儿，因为他没有足够的钱包括它。"
+        },
+        {
+          "known": "Did you ask her where to put it when she wanted to follow us to Africa last year?",
+          "target": "你问她去年想跟着我们去非洲时把它放在哪儿了吗？"
+        },
+        {
+          "known": "He asked if I wanted to include what she was doing or where to put it in the beautiful place.",
+          "target": "他问我是否想包括她在做什么还是把它放在那个美丽的地方的哪儿。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0382L04": {
+      "lego": [
+        "put where",
+        "放在哪儿"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0382L01",
+          "known": "did you ask [him]",
+          "target": "你问他",
+          "type": "M"
+        },
+        {
+          "id": "S0382L02",
+          "known": "wanted to put it in",
+          "target": "想把它放在",
+          "type": "M"
+        },
+        {
+          "id": "S0382L03",
+          "known": "where to put it",
+          "target": "把它放在哪儿",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Put where?",
+          "target": "放在哪儿？"
+        },
+        {
+          "known": "I asked him to put where.",
+          "target": "我问他放在哪儿。"
+        },
+        {
+          "known": "She wanted to know put where yesterday.",
+          "target": "她昨天想知道放在哪儿。"
+        },
+        {
+          "known": "Did you ask him where he wanted to put?",
+          "target": "你问他想放在哪儿了吗？"
+        },
+        {
+          "known": "I didn't ask her where she wanted to put it.",
+          "target": "我没问她想把它放在哪儿。"
+        },
+        {
+          "known": "Did you ask where he wanted to put it last month?",
+          "target": "你问他上个月想放在哪儿了吗？"
+        },
+        {
+          "known": "She asked if I knew where to put it in the garden.",
+          "target": "她问我是否知道把它放在花园的哪儿。"
+        },
+        {
+          "known": "I didn't ask him where to put it when he was traveling to Africa last year.",
+          "target": "我没问他去年去非洲旅行时把它放在哪儿。"
+        },
+        {
+          "known": "Did you ask her what place she wanted to put it when she wanted to follow us?",
+          "target": "你问她想跟着我们时想把它放在什么地方了吗？"
+        },
+        {
+          "known": "He asked if she wanted to include where to put it in the world or if she had enough money to go traveling.",
+          "target": "他问她是否想包括把它放在世界上的哪儿，还是她是否有足够的钱去旅行。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

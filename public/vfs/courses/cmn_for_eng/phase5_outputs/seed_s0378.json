@@ -1,0 +1,749 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0378",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "No I didn't have enough money for holidays.",
+    "target": "不，我没有足够的钱度假。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0368",
+      "known": "Yes I heard that he wanted to grow tomatoes.",
+      "target": "是的，我听说他想种西红柿。"
+    },
+    {
+      "seed_id": "S0369",
+      "known": "I saw several horses on the road.",
+      "target": "我在路上看到了几匹马。"
+    },
+    {
+      "seed_id": "S0370",
+      "known": "I didn't see anyone that I knew.",
+      "target": "我没看到任何我认识的人。"
+    },
+    {
+      "seed_id": "S0371",
+      "known": "I went to see a film on Wednesday.",
+      "target": "我星期三去看了一部电影。"
+    },
+    {
+      "seed_id": "S0372",
+      "known": "Did you see what she was trying to create?",
+      "target": "你看到她想创造什么了吗？"
+    },
+    {
+      "seed_id": "S0373",
+      "known": "It was beautiful.",
+      "target": "它很美。"
+    },
+    {
+      "seed_id": "S0374",
+      "known": "Yes I thought it was very beautiful.",
+      "target": "是的，我觉得它非常美。"
+    },
+    {
+      "seed_id": "S0375",
+      "known": "No I didn't know what she was doing.",
+      "target": "不，我不知道她在做什么。"
+    },
+    {
+      "seed_id": "S0376",
+      "known": "I didn't go anywhere last month.",
+      "target": "我上个月哪儿也没去。"
+    },
+    {
+      "seed_id": "S0377",
+      "known": "Did you go anywhere in the world last year?",
+      "target": "你去年去世界上的什么地方了吗？"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0371L01",
+      "known": "on Wednesday",
+      "target": "星期三",
+      "type": "A"
+    },
+    {
+      "id": "S0371L02",
+      "known": "went to see",
+      "target": "去看了",
+      "type": "M"
+    },
+    {
+      "id": "S0371L03",
+      "known": "a film",
+      "target": "一部电影",
+      "type": "M"
+    },
+    {
+      "id": "S0371L04",
+      "known": "went to see a film",
+      "target": "去看了一部电影",
+      "type": "M"
+    },
+    {
+      "id": "S0371L05",
+      "known": "saw a film",
+      "target": "看了一部电影",
+      "type": "M"
+    },
+    {
+      "id": "S0371L06",
+      "known": "I went to see",
+      "target": "我去看了",
+      "type": "M"
+    },
+    {
+      "id": "S0372L01",
+      "known": "you saw",
+      "target": "你看到",
+      "type": "M"
+    },
+    {
+      "id": "S0372L03",
+      "known": "what she was trying to create",
+      "target": "她想创造什么",
+      "type": "M"
+    },
+    {
+      "id": "S0372L04",
+      "known": "want to create",
+      "target": "想创造",
+      "type": "M"
+    },
+    {
+      "id": "S0372L05",
+      "known": "create",
+      "target": "创造",
+      "type": "A"
+    },
+    {
+      "id": "S0372L06",
+      "known": "create what",
+      "target": "创造什么",
+      "type": "M"
+    },
+    {
+      "id": "S0373L01",
+      "known": "very beautiful",
+      "target": "很美",
+      "type": "M"
+    },
+    {
+      "id": "S0373L02",
+      "known": "it was beautiful",
+      "target": "它很美",
+      "type": "M"
+    },
+    {
+      "id": "S0373L03",
+      "known": "beautiful",
+      "target": "美",
+      "type": "A"
+    },
+    {
+      "id": "S0374L03",
+      "known": "think",
+      "target": "觉得",
+      "type": "A"
+    },
+    {
+      "id": "S0374L04",
+      "known": "very beautiful",
+      "target": "非常美",
+      "type": "M"
+    },
+    {
+      "id": "S0374L05",
+      "known": "it was very beautiful",
+      "target": "它非常美",
+      "type": "M"
+    },
+    {
+      "id": "S0374L06",
+      "known": "thought it was very beautiful",
+      "target": "觉得它非常美",
+      "type": "M"
+    },
+    {
+      "id": "S0375L05",
+      "known": "what she was doing",
+      "target": "她在做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0375L06",
+      "known": "doing what",
+      "target": "在做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0376L02",
+      "known": "didn't go anywhere",
+      "target": "哪儿也没去",
+      "type": "M"
+    },
+    {
+      "id": "S0376L03",
+      "known": "didn't go",
+      "target": "没去",
+      "type": "M"
+    },
+    {
+      "id": "S0376L04",
+      "known": "go",
+      "target": "去",
+      "type": "A"
+    },
+    {
+      "id": "S0376L05",
+      "known": "I didn't go",
+      "target": "我没去",
+      "type": "M"
+    },
+    {
+      "id": "S0377L01",
+      "known": "last year",
+      "target": "去年",
+      "type": "M"
+    },
+    {
+      "id": "S0377L02",
+      "known": "in the world",
+      "target": "世界上",
+      "type": "M"
+    },
+    {
+      "id": "S0377L03",
+      "known": "what place",
+      "target": "什么地方",
+      "type": "M"
+    },
+    {
+      "id": "S0377L04",
+      "known": "anywhere in the world",
+      "target": "世界上的什么地方",
+      "type": "M"
+    },
+    {
+      "id": "S0377L05",
+      "known": "did you go",
+      "target": "你去了吗",
+      "type": "M"
+    },
+    {
+      "id": "S0377L06",
+      "known": "did go",
+      "target": "去了吗",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0378L02": {
+      "lego": [
+        "I don't have",
+        "我没有"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "I don't have money",
+          "target": "我没有钱",
+          "lego_count": 1
+        },
+        {
+          "known": "I don't have enough money",
+          "target": "我没有足够的钱",
+          "lego_count": 2
+        },
+        {
+          "known": "I don't have a film to see",
+          "target": "我没有一部电影要看",
+          "lego_count": 3
+        },
+        {
+          "known": "I don't have anyone that I know",
+          "target": "我没有任何我认识的人",
+          "lego_count": 3
+        },
+        {
+          "known": "I don't have enough money to go anywhere",
+          "target": "我没有足够的钱去什么地方",
+          "lego_count": 4
+        },
+        {
+          "known": "I don't have time to see a film",
+          "target": "我没有时间去看一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "I don't have enough money to take a vacation",
+          "target": "我没有足够的钱度假",
+          "lego_count": 5
+        },
+        {
+          "known": "I don't have anyone to go see a film with on Wednesday",
+          "target": "我没有任何人星期三一起去看一部电影",
+          "lego_count": 6
+        },
+        {
+          "known": "I don't have enough money to go anywhere in the world",
+          "target": "我没有足够的钱去世界上的什么地方",
+          "lego_count": 6
+        },
+        {
+          "known": "I don't have enough money to go anywhere in the world last year",
+          "target": "我去年没有足够的钱去世界上的什么地方",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0378L02",
+        "seed_context": {
+          "known": "No I didn't have enough money for holidays.",
+          "target": "不，我没有足够的钱度假。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "没有",
+          "don't have"
+        ]
+      ]
+    },
+    "S0378L03": {
+      "lego": [
+        "don't have",
+        "没有"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0378L02",
+          "known": "I don't have",
+          "target": "我没有",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Don't have money",
+          "target": "没有钱",
+          "lego_count": 1
+        },
+        {
+          "known": "Don't have enough money",
+          "target": "没有足够的钱",
+          "lego_count": 2
+        },
+        {
+          "known": "She doesn't have a film to see",
+          "target": "她没有一部电影要看",
+          "lego_count": 3
+        },
+        {
+          "known": "They don't have anyone they know",
+          "target": "他们没有任何他们认识的人",
+          "lego_count": 3
+        },
+        {
+          "known": "He doesn't have enough money to go anywhere",
+          "target": "他没有足够的钱去什么地方",
+          "lego_count": 4
+        },
+        {
+          "known": "She doesn't have time to see a film",
+          "target": "她没有时间去看一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "They don't have enough money to take a vacation",
+          "target": "他们没有足够的钱度假",
+          "lego_count": 5
+        },
+        {
+          "known": "He doesn't have enough money to go anywhere in the world",
+          "target": "他没有足够的钱去世界上的什么地方",
+          "lego_count": 6
+        },
+        {
+          "known": "She doesn't have anyone to see a beautiful film with on Wednesday",
+          "target": "她没有任何人星期三一起去看一部很美的电影",
+          "lego_count": 7
+        },
+        {
+          "known": "They don't have enough money to go anywhere in the world last year",
+          "target": "他们去年没有足够的钱去世界上的什么地方",
+          "lego_count": 8
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0378L03",
+        "seed_context": {
+          "known": "No I didn't have enough money for holidays.",
+          "target": "不，我没有足够的钱度假。"
+        }
+      }
+    },
+    "S0378L04": {
+      "lego": [
+        "enough money",
+        "足够的钱"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0378L02",
+          "known": "I don't have",
+          "target": "我没有",
+          "type": "M"
+        },
+        {
+          "id": "S0378L03",
+          "known": "don't have",
+          "target": "没有",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Enough money",
+          "target": "足够的钱",
+          "lego_count": 1
+        },
+        {
+          "known": "I don't have enough money",
+          "target": "我没有足够的钱",
+          "lego_count": 2
+        },
+        {
+          "known": "She doesn't have enough money to go",
+          "target": "她没有足够的钱去",
+          "lego_count": 3
+        },
+        {
+          "known": "I have enough money to see a film",
+          "target": "我有足够的钱去看一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "He doesn't have enough money to take a vacation",
+          "target": "他没有足够的钱度假",
+          "lego_count": 4
+        },
+        {
+          "known": "She has enough money to go anywhere last year",
+          "target": "她去年有足够的钱去什么地方",
+          "lego_count": 4
+        },
+        {
+          "known": "I don't have enough money to go anywhere in the world",
+          "target": "我没有足够的钱去世界上的什么地方",
+          "lego_count": 5
+        },
+        {
+          "known": "They don't have enough money to see a film on Wednesday",
+          "target": "他们星期三没有足够的钱去看一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "He doesn't have enough money to go anywhere in the world last year",
+          "target": "他去年没有足够的钱去世界上的什么地方",
+          "lego_count": 6
+        },
+        {
+          "known": "She doesn't have enough money to take a vacation anywhere in the world",
+          "target": "她没有足够的钱去世界上的什么地方度假",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0378L04",
+        "seed_context": {
+          "known": "No I didn't have enough money for holidays.",
+          "target": "不，我没有足够的钱度假。"
+        }
+      },
+      "components": [
+        [
+          "足够",
+          "enough"
+        ],
+        [
+          "的",
+          "modifier"
+        ],
+        [
+          "钱",
+          "money"
+        ]
+      ]
+    },
+    "S0378L05": {
+      "lego": [
+        "didn't have enough money",
+        "没有足够的钱"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0378L02",
+          "known": "I don't have",
+          "target": "我没有",
+          "type": "M"
+        },
+        {
+          "id": "S0378L03",
+          "known": "don't have",
+          "target": "没有",
+          "type": "A"
+        },
+        {
+          "id": "S0378L04",
+          "known": "enough money",
+          "target": "足够的钱",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Didn't have enough money",
+          "target": "没有足够的钱",
+          "lego_count": 1
+        },
+        {
+          "known": "I didn't have enough money",
+          "target": "我没有足够的钱",
+          "lego_count": 2
+        },
+        {
+          "known": "She didn't have enough money to go",
+          "target": "她没有足够的钱去",
+          "lego_count": 3
+        },
+        {
+          "known": "I didn't have enough money last year",
+          "target": "我去年没有足够的钱",
+          "lego_count": 3
+        },
+        {
+          "known": "He didn't have enough money to take a vacation",
+          "target": "他没有足够的钱度假",
+          "lego_count": 4
+        },
+        {
+          "known": "She didn't have enough money to see a film",
+          "target": "她没有足够的钱去看一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "I didn't have enough money to go anywhere in the world",
+          "target": "我没有足够的钱去世界上的什么地方",
+          "lego_count": 5
+        },
+        {
+          "known": "They didn't have enough money to take a vacation last year",
+          "target": "他们去年没有足够的钱度假",
+          "lego_count": 5
+        },
+        {
+          "known": "He didn't have enough money to go anywhere in the world last year",
+          "target": "他去年没有足够的钱去世界上的什么地方",
+          "lego_count": 6
+        },
+        {
+          "known": "She didn't have enough money to see a beautiful film on Wednesday",
+          "target": "她星期三没有足够的钱去看一部很美的电影",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0378L05",
+        "seed_context": {
+          "known": "No I didn't have enough money for holidays.",
+          "target": "不，我没有足够的钱度假。"
+        }
+      },
+      "components": [
+        [
+          "没有",
+          "don't have"
+        ],
+        [
+          "足够",
+          "enough"
+        ],
+        [
+          "的",
+          "modifier"
+        ],
+        [
+          "钱",
+          "money"
+        ]
+      ]
+    },
+    "S0378L06": {
+      "lego": [
+        "take a vacation",
+        "度假"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0378L02",
+          "known": "I don't have",
+          "target": "我没有",
+          "type": "M"
+        },
+        {
+          "id": "S0378L03",
+          "known": "don't have",
+          "target": "没有",
+          "type": "A"
+        },
+        {
+          "id": "S0378L04",
+          "known": "enough money",
+          "target": "足够的钱",
+          "type": "M"
+        },
+        {
+          "id": "S0378L05",
+          "known": "didn't have enough money",
+          "target": "没有足够的钱",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Take a vacation",
+          "target": "度假",
+          "lego_count": 1
+        },
+        {
+          "known": "I want to take a vacation",
+          "target": "我想度假",
+          "lego_count": 2
+        },
+        {
+          "known": "She took a vacation last year",
+          "target": "她去年度假了",
+          "lego_count": 3
+        },
+        {
+          "known": "I didn't take a vacation anywhere",
+          "target": "我哪儿也没去度假",
+          "lego_count": 3
+        },
+        {
+          "known": "He didn't have enough money to take a vacation",
+          "target": "他没有足够的钱度假",
+          "lego_count": 4
+        },
+        {
+          "known": "She wanted to take a vacation in the world",
+          "target": "她想在世界上度假",
+          "lego_count": 4
+        },
+        {
+          "known": "I didn't have enough money to take a vacation last year",
+          "target": "我去年没有足够的钱度假",
+          "lego_count": 5
+        },
+        {
+          "known": "They didn't take a vacation anywhere in the world last year",
+          "target": "他们去年没去世界上的什么地方度假",
+          "lego_count": 6
+        },
+        {
+          "known": "He didn't have enough money to take a vacation anywhere in the world",
+          "target": "他没有足够的钱去世界上的什么地方度假",
+          "lego_count": 6
+        },
+        {
+          "known": "She didn't have enough money to take a vacation anywhere in the world last year",
+          "target": "她去年没有足够的钱去世界上的什么地方度假",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0378L06",
+        "seed_context": {
+          "known": "No I didn't have enough money for holidays.",
+          "target": "不，我没有足够的钱度假。"
+        }
+      },
+      "components": [
+        [
+          "度",
+          "spend/pass"
+        ],
+        [
+          "假",
+          "holiday"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0378.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

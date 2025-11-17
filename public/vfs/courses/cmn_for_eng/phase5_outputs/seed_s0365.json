@@ -1,0 +1,493 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0365",
+  "generation_stage": "BASKET_GENERATION_COMPLETE",
+  "seed_pair": {
+    "known": "I didn't hear what she said to him.",
+    "target": "我没听到她对他说了什么。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0355",
+      "known": "Did she need to talk to that woman you know?",
+      "target": "她需要和你认识的那个女人说话吗？"
+    },
+    {
+      "seed_id": "S0356",
+      "known": "Yes they had something important to discuss.",
+      "target": "是的，他们有重要的事情要讨论。"
+    },
+    {
+      "seed_id": "S0357",
+      "known": "No she just wanted to send her a message.",
+      "target": "不，她只是想给她发个消息。"
+    },
+    {
+      "seed_id": "S0358",
+      "known": "Your friend said that she couldn't reach the top.",
+      "target": "你的朋友说她够不到顶部。"
+    },
+    {
+      "seed_id": "S0359",
+      "known": "Your friend said that he could turn left.",
+      "target": "你的朋友说他可以向左转。"
+    },
+    {
+      "seed_id": "S0360",
+      "known": "Did your friend say anything else?",
+      "target": "你的朋友还说了别的什么吗？"
+    },
+    {
+      "seed_id": "S0361",
+      "known": "He was quiet.",
+      "target": "他很安静。"
+    },
+    {
+      "seed_id": "S0362",
+      "known": "No he was rather quiet after you left.",
+      "target": "不，你离开后他相当安静。"
+    },
+    {
+      "seed_id": "S0363",
+      "known": "Yes he felt like talking a lot.",
+      "target": "是的，他想说很多话。"
+    },
+    {
+      "seed_id": "S0364",
+      "known": "I heard that he didn't like that place.",
+      "target": "我听说他不喜欢那个地方。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0357L05",
+      "known": "a message",
+      "target": "个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L06",
+      "known": "send",
+      "target": "发",
+      "type": "A"
+    },
+    {
+      "id": "S0357L07",
+      "known": "send a message",
+      "target": "发个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L08",
+      "known": "send her",
+      "target": "给她发",
+      "type": "M"
+    },
+    {
+      "id": "S0357L09",
+      "known": "send her a message",
+      "target": "给她发个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0358L01",
+      "known": "your",
+      "target": "你的",
+      "type": "M"
+    },
+    {
+      "id": "S0358L03",
+      "known": "your friend",
+      "target": "你的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0358L04",
+      "known": "say",
+      "target": "说",
+      "type": "A"
+    },
+    {
+      "id": "S0358L05",
+      "known": "couldn't reach",
+      "target": "够不到",
+      "type": "M"
+    },
+    {
+      "id": "S0358L06",
+      "known": "she couldn't reach",
+      "target": "她够不到",
+      "type": "M"
+    },
+    {
+      "id": "S0358L07",
+      "known": "top",
+      "target": "顶部",
+      "type": "M"
+    },
+    {
+      "id": "S0358L08",
+      "known": "couldn't reach the top",
+      "target": "够不到顶部",
+      "type": "M"
+    },
+    {
+      "id": "S0359L02",
+      "known": "he could",
+      "target": "他可以",
+      "type": "M"
+    },
+    {
+      "id": "S0359L03",
+      "known": "left",
+      "target": "左",
+      "type": "A"
+    },
+    {
+      "id": "S0359L04",
+      "known": "turn",
+      "target": "转",
+      "type": "A"
+    },
+    {
+      "id": "S0359L05",
+      "known": "turn left",
+      "target": "左转",
+      "type": "M"
+    },
+    {
+      "id": "S0359L06",
+      "known": "turn left",
+      "target": "向左转",
+      "type": "M"
+    },
+    {
+      "id": "S0360L01",
+      "known": "said",
+      "target": "说了",
+      "type": "M"
+    },
+    {
+      "id": "S0360L02",
+      "known": "also said",
+      "target": "还说了",
+      "type": "M"
+    },
+    {
+      "id": "S0360L03",
+      "known": "else",
+      "target": "别的",
+      "type": "M"
+    },
+    {
+      "id": "S0360L05",
+      "known": "anything else",
+      "target": "别的什么",
+      "type": "M"
+    },
+    {
+      "id": "S0361L01",
+      "known": "he was quiet",
+      "target": "他很安静",
+      "type": "M"
+    },
+    {
+      "id": "S0362L02",
+      "known": "after you left",
+      "target": "你离开后",
+      "type": "M"
+    },
+    {
+      "id": "S0362L03",
+      "known": "he was rather quiet",
+      "target": "他相当安静",
+      "type": "M"
+    },
+    {
+      "id": "S0363L02",
+      "known": "he felt like talking",
+      "target": "他想说",
+      "type": "M"
+    },
+    {
+      "id": "S0363L03",
+      "known": "talking a lot",
+      "target": "说很多话",
+      "type": "M"
+    },
+    {
+      "id": "S0364L01",
+      "known": "I heard that",
+      "target": "我听说",
+      "type": "M"
+    },
+    {
+      "id": "S0364L02",
+      "known": "he didn't like",
+      "target": "他不喜欢",
+      "type": "M"
+    },
+    {
+      "id": "S0364L03",
+      "known": "that place",
+      "target": "那个地方",
+      "type": "M"
+    },
+    {
+      "id": "S0364L04",
+      "known": "didn't like that place",
+      "target": "不喜欢那个地方",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0365L01": {
+      "lego": [
+        "I didn't hear",
+        "我没听到"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I didn't hear.", "我没听到。", null, 1],
+        ["I didn't hear that.", "我没听到那个。", null, 2],
+        ["I didn't hear your friend.", "我没听到你的朋友。", null, 2],
+        ["I didn't hear what he said.", "我没听到他说了什么。", null, 3],
+        ["I didn't hear anything else.", "我没听到别的什么。", null, 3],
+        ["I didn't hear him after you left.", "你离开后我没听到他。", null, 4],
+        ["I didn't hear that place he talked about.", "我没听到他说的那个地方。", null, 5],
+        ["I didn't hear what your friend wanted to say.", "我没听到你的朋友想说什么。", null, 6],
+        ["I didn't hear he said she couldn't reach the top.", "我没听到他说她够不到顶部。", null, 7],
+        ["I didn't hear anything else your friend said after you left.", "你离开后我没听到你的朋友说了别的什么。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0365L01",
+        "seed_context": {
+          "known": "I didn't hear what she said to him.",
+          "target": "我没听到她对他说了什么。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "没",
+          "didn't/not"
+        ],
+        [
+          "听到",
+          "hear"
+        ]
+      ]
+    },
+    "S0365L02": {
+      "lego": [
+        "she said to him",
+        "她对他说了"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0365L01",
+          "known": "I didn't hear",
+          "target": "我没听到",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["She said to him.", "她对他说了。", null, 1],
+        ["I didn't hear she said to him.", "我没听到她对他说了。", null, 2],
+        ["She said to him something important.", "她对他说了重要的事情。", null, 3],
+        ["I didn't hear what she said to him.", "我没听到她对他说了什么。", null, 3],
+        ["She said to him she wanted to talk.", "她对他说了她想说话。", null, 4],
+        ["I didn't hear she said to him anything else.", "我没听到她对他说了别的什么。", null, 4],
+        ["Your friend said she said to him she couldn't reach.", "你的朋友说她对他说了她够不到。", null, 6],
+        ["I didn't hear what she said to him after you left.", "你离开后我没听到她对他说了什么。", null, 6],
+        ["I heard that she said to him he could turn left.", "我听说她对他说了他可以向左转。", null, 7],
+        ["I didn't hear she said to him she didn't like that place.", "我没听到她对他说了她不喜欢那个地方。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0365L02",
+        "seed_context": {
+          "known": "I didn't hear what she said to him.",
+          "target": "我没听到她对他说了什么。"
+        }
+      },
+      "components": [
+        [
+          "她",
+          "she"
+        ],
+        [
+          "对",
+          "to"
+        ],
+        [
+          "他",
+          "him"
+        ],
+        [
+          "说了",
+          "said"
+        ]
+      ]
+    },
+    "S0365L03": {
+      "lego": [
+        "said to him",
+        "对他说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0365L01",
+          "known": "I didn't hear",
+          "target": "我没听到",
+          "type": "M"
+        },
+        {
+          "id": "S0365L02",
+          "known": "she said to him",
+          "target": "她对他说了",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Said to him.", "对他说。", null, 1],
+        ["I said to him.", "我对他说。", null, 2],
+        ["She wanted to say to him.", "她想对他说。", null, 2],
+        ["Your friend said to him something.", "你的朋友对他说了什么。", null, 3],
+        ["I didn't hear what you said to him.", "我没听到你对他说了什么。", null, 3],
+        ["She said to him she couldn't reach the top.", "她对他说她够不到顶部。", null, 4],
+        ["I heard that your friend said to him he was quiet.", "我听说你的朋友对他说他很安静。", null, 5],
+        ["I didn't hear anything else she said to him after you left.", "你离开后我没听到她对他说了别的什么。", null, 6],
+        ["Your friend said she wanted to say to him something important.", "你的朋友说她想对他说重要的事情。", null, 7],
+        ["I didn't hear what your friend said to him about that place.", "我没听到你的朋友对他说了那个地方什么。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0365L03",
+        "seed_context": {
+          "known": "I didn't hear what she said to him.",
+          "target": "我没听到她对他说了什么。"
+        }
+      },
+      "components": [
+        [
+          "对",
+          "to"
+        ],
+        [
+          "他",
+          "him"
+        ],
+        [
+          "说",
+          "say/said"
+        ]
+      ]
+    },
+    "S0365L04": {
+      "lego": [
+        "said what",
+        "说了什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0365L01",
+          "known": "I didn't hear",
+          "target": "我没听到",
+          "type": "M"
+        },
+        {
+          "id": "S0365L02",
+          "known": "she said to him",
+          "target": "她对他说了",
+          "type": "M"
+        },
+        {
+          "id": "S0365L03",
+          "known": "said to him",
+          "target": "对他说",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Said what?", "说了什么？", null, 1],
+        ["She said what?", "她说了什么？", null, 2],
+        ["I didn't hear he said what.", "我没听到他说了什么。", null, 2],
+        ["Your friend said what to him?", "你的朋友对他说了什么？", null, 3],
+        ["I didn't hear your friend said what.", "我没听到你的朋友说了什么。", null, 3],
+        ["I heard that she said what about that place.", "我听说她说了那个地方什么。", null, 4],
+        ["I didn't hear anything else he said what after you left.", "你离开后我没听到他说了什么别的。", null, 5],
+        ["Your friend wanted to hear what she said what to him.", "你的朋友想听到她对他说了什么。", null, 6],
+        ["I heard that your friend didn't hear what he said what about that.", "我听说你的朋友没听到他说了那个什么。", null, 7],
+        ["I didn't hear what she said to him.", "我没听到她对他说了什么。", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0365L04",
+        "seed_context": {
+          "known": "I didn't hear what she said to him.",
+          "target": "我没听到她对他说了什么。"
+        }
+      },
+      "components": [
+        [
+          "说了",
+          "said"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0365.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

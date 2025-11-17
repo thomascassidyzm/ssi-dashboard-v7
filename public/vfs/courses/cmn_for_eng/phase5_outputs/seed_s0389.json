@@ -1,0 +1,38 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0389",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "That person over there.",
+    "target": "那边那个人。"
+  },
+  "legos": {
+    "S0389L01": {
+      "lego": [
+        "that person over there",
+        "那边那个人"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["That person over there.", "那边那个人。", null, 1],
+        ["I asked that person over there.", "我问那边那个人。", null, 2],
+        ["That person over there is right.", "那边那个人对。", null, 2],
+        ["I agreed with that person over there a moment ago.", "我刚才同意那边那个人。", null, 3],
+        ["Did you ask that person over there about the garden?", "你问那边那个人关于花园了吗？", null, 4],
+        ["That person over there wanted to travel to Africa last year.", "那边那个人去年想去非洲旅行。", null, 4],
+        ["I didn't agree with that person over there who works with you.", "我不同意那边和你一起工作的那个人。", null, 5],
+        ["Yes, I asked that person over there if he wanted to work with you.", "是的，我问那边那个人是否想和你一起工作。", null, 6],
+        ["That person over there said he couldn't agree with what you said a moment ago.", "那边那个人说他不能同意你刚才说的话。", null, 7],
+        ["I asked if that person over there wanted to put it in the garden.", "我问那边那个人是否想把它放在花园里。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}
