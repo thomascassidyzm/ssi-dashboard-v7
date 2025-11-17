@@ -15,7 +15,7 @@ const AZURE_SPEECH_REGION = process.env.AZURE_SPEECH_REGION || 'westeurope';
 
 // Rate limiting
 let lastRequestTime = 0;
-const MIN_REQUEST_INTERVAL = 100; // 100ms between requests (Azure is generous)
+const MIN_REQUEST_INTERVAL = 7; // 7ms between requests = ~143 req/s (Azure allows 200 req/s, using 71%)
 
 /**
  * Initialize Azure Speech SDK config

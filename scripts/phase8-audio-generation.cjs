@@ -5,6 +5,8 @@
  * Integrates Azure TTS, ElevenLabs, audio processing, and S3 services.
  */
 
+require('dotenv').config();
+
 const fs = require('fs-extra');
 const path = require('path');
 const azureTTS = require('../services/azure-tts-service.cjs');
@@ -21,6 +23,7 @@ const errorHandler = require('../services/error-handler-service.cjs');
 const encouragementService = require('../services/encouragement-service.cjs');
 const welcomeService = require('../services/welcome-service.cjs');
 const preflightCheck = require('../services/preflight-check-service.cjs');
+const { createQCReviewDirectory } = require('./create-qc-review.cjs');
 
 // Configuration
 const VFS_BASE = path.join(__dirname, '../vfs');
@@ -92,18 +95,42 @@ async function saveVoiceRegistry(registry) {
 
 /**
  * Load voice registry and get assignments for a course
+ * Now supports language-pair-based assignments (e.g., "en-es" for all Spanish-for-English courses)
  */
 async function getVoiceAssignments(courseCode) {
   const registry = await loadVoiceRegistry();
+  const manifest = await loadCourseManifest(courseCode);
 
-  // Check if assignments already exist
+  // Extract language pair from manifest (known-target format, e.g., "en-es")
+  const languagePair = `${manifest.known}-${manifest.target}`;
+  const reversePair = `${manifest.target}-${manifest.known}`;
+
+  // 1. Try language pair assignments first (new preferred method)
+  if (registry.language_pair_assignments && registry.language_pair_assignments[languagePair]) {
+    console.log(`✓ Using voice assignments for language pair: ${languagePair}`);
+    return registry.language_pair_assignments[languagePair];
+  }
+
+  // 2. Check if reverse pair exists (e.g., "es-en" when we need "en-es")
+  if (registry.language_pair_assignments && registry.language_pair_assignments[reversePair]) {
+    console.log(`⚠️  Language pair ${languagePair} not found.`);
+    console.log(`   Found reverse pair: ${reversePair}`);
+    console.log(`   Note: Using the same voices for reversed language pairs usually works,`);
+    console.log(`   but you may want to configure specific voices for ${languagePair}.`);
+    console.log(`   Using ${reversePair} voices for now.\n`);
+    return registry.language_pair_assignments[reversePair];
+  }
+
+  // 3. Fall back to course-specific assignments (legacy/backward compatibility)
   if (registry.course_assignments && registry.course_assignments[courseCode]) {
+    console.log(`✓ Using course-specific voice assignments for: ${courseCode}`);
     return registry.course_assignments[courseCode];
   }
 
-  // No assignments - error and instruct user to configure voices first
+  // No assignments found - error and instruct user to configure voices first
   throw new Error(
-    `No voice assignments found for course: ${courseCode}\n\n` +
+    `No voice assignments found for course: ${courseCode}\n` +
+    `Language pair: ${languagePair}\n\n` +
     `You need to configure voices before running audio generation.\n\n` +
     `📖 See: docs/VOICE_SELECTION_GUIDE.md for detailed instructions\n\n` +
     `Quick start: Ask Claude Code to help you discover and select voices:\n` +
@@ -196,8 +223,9 @@ async function getVoiceDetails(voiceId) {
  */
 function collectSampleVariants(manifest) {
   const variants = [];
+  const samples = manifest.slices?.[0]?.samples || {};
 
-  for (const [text, variantList] of Object.entries(manifest.samples)) {
+  for (const [text, variantList] of Object.entries(samples)) {
     for (const variant of variantList) {
       variants.push({
         text,
@@ -221,9 +249,9 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
   const toGenerate = [];
   const matched = [];
 
-  // Get course language info
-  const targetLang = manifest.course_structure.language_combo.target_language;
-  const knownLang = manifest.course_structure.language_combo.known_language;
+  // Get course language info (v2.0.0 format has target/known at top level)
+  const targetLang = manifest.target;
+  const knownLang = manifest.known;
 
   // Check regular samples
   for (const variant of variants) {
@@ -261,7 +289,8 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
       });
 
       // Update manifest with existing UUID and duration
-      const variantInManifest = manifest.samples[variant.text].find(
+      const samples = manifest.slices?.[0]?.samples || {};
+      const variantInManifest = samples[variant.text]?.find(
         v => v.role === variant.role && v.cadence === variant.cadence
       );
       if (variantInManifest) {
@@ -287,7 +316,8 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
       });
 
       // Update manifest with new UUID (duration will be set after generation)
-      const variantInManifest = manifest.samples[variant.text].find(
+      const samples = manifest.slices?.[0]?.samples || {};
+      const variantInManifest = samples[variant.text]?.find(
         v => v.role === variant.role && v.cadence === variant.cadence
       );
       if (variantInManifest) {
@@ -377,6 +407,7 @@ async function generateMissingAudio(toGenerate) {
   await fs.ensureDir(AUDIO_TEMP_DIR);
 
   const results = [];
+  const MAX_CONCURRENT = 8; // Match Python script's worker count
 
   // Group by voice to batch efficiently
   const byVoice = {};
@@ -387,49 +418,68 @@ async function generateMissingAudio(toGenerate) {
     byVoice[sample.voiceId].push(sample);
   }
 
-  // Generate by voice
+  // Generate by voice with parallelization
   for (const [voiceId, samples] of Object.entries(byVoice)) {
-    console.log(`\n=== Generating ${samples.length} samples with ${voiceId} ===\n`);
+    console.log(`\n=== Generating ${samples.length} samples with ${voiceId} (${MAX_CONCURRENT} concurrent workers) ===\n`);
 
     const voiceDetails = await getVoiceDetails(voiceId);
 
-    for (const sample of samples) {
-      const outputPath = path.join(AUDIO_TEMP_DIR, `${sample.uuid}.mp3`);
+    let completed = 0;
+    const total = samples.length;
 
-      // Use error handler for comprehensive error handling
-      const result = await errorHandler.executeWithErrorHandling(
-        async () => {
-          await generateAudioFile(sample, voiceDetails, outputPath);
-          return {
-            success: true,
-            sample,
-            outputPath
-          };
-        },
-        {
-          maxRetries: 3,
-          backoffMs: 1000,
-          context: {
-            sample: sample.text,
-            voice: voiceDetails.provider_id,
-            role: sample.role,
-            cadence: sample.cadence,
-            uuid: sample.uuid
-          },
-          onError: (error, context, classification) => {
-            console.error(`❌ Failed to generate ${sample.uuid} after retries: ${error.message}`);
-            return {
-              success: false,
-              sample,
-              error: error.message,
-              errorType: classification.errorType,
-              skipped: classification.skippable
-            };
-          }
-        }
+    // Process samples in batches of MAX_CONCURRENT
+    for (let i = 0; i < samples.length; i += MAX_CONCURRENT) {
+      const batch = samples.slice(i, i + MAX_CONCURRENT);
+
+      // Process batch in parallel
+      const batchResults = await Promise.all(
+        batch.map(async (sample) => {
+          const outputPath = path.join(AUDIO_TEMP_DIR, `${sample.uuid}.mp3`);
+
+          // Use error handler for comprehensive error handling
+          const result = await errorHandler.executeWithErrorHandling(
+            async () => {
+              await generateAudioFile(sample, voiceDetails, outputPath);
+              return {
+                success: true,
+                sample,
+                outputPath
+              };
+            },
+            {
+              maxRetries: 3,
+              backoffMs: 1000,
+              context: {
+                sample: sample.text,
+                voice: voiceDetails.provider_id,
+                role: sample.role,
+                cadence: sample.cadence,
+                uuid: sample.uuid
+              },
+              onError: (error, context, classification) => {
+                console.error(`❌ Failed to generate ${sample.uuid} after retries: ${error.message}`);
+                return {
+                  success: false,
+                  sample,
+                  error: error.message,
+                  errorType: classification.errorType,
+                  skipped: classification.skippable
+                };
+              }
+            }
+          );
+
+          return result;
+        })
       );
 
-      results.push(result);
+      // Collect batch results
+      results.push(...batchResults);
+      completed += batch.length;
+
+      // Progress update
+      const pct = Math.round((completed / total) * 100);
+      console.log(`Progress: ${completed}/${total} samples (${pct}%)`);
     }
   }
 
@@ -546,6 +596,13 @@ async function runQCCheckpoint(generationResults, courseCode, uploadBucket) {
   const qcReportPath = path.join(VFS_BASE, 'courses', courseCode, 'qc_report_raw.json');
   const { jsonPath, mdPath } = qcService.generateQCReport(flaggedSamples, qcReportPath, uploadBucket);
 
+  // Create QC review directory with audio samples ready to listen to
+  try {
+    await createQCReviewDirectory(courseCode, qcReportPath, AUDIO_TEMP_DIR);
+  } catch (err) {
+    console.warn(`⚠️  Could not create QC review directory: ${err.message}`);
+  }
+
   const qcSummary = qcService.getQCSummary(flaggedSamples, generationResults);
   console.log(`QC Summary:`);
   console.log(`  High priority: ${qcSummary.bySeverity.high}`);
@@ -597,8 +654,9 @@ function normalizeCadences(manifest) {
   console.log('Normalizing sample cadences based on role...');
 
   let updated = 0;
+  const samples = manifest.slices?.[0]?.samples || {};
 
-  for (const [text, variants] of Object.entries(manifest.samples)) {
+  for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
       const expectedCadence = cadenceService.getCadenceForRole(variant.role);
 
@@ -665,7 +723,8 @@ function normalizeManifestRoles(manifest) {
  * Update manifest with durations
  */
 function updateManifestDurations(manifest, durations) {
-  for (const [text, variants] of Object.entries(manifest.samples)) {
+  const samples = manifest.slices?.[0]?.samples || {};
+  for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
       if (variant.id && durations[variant.id]) {
         variant.duration = durations[variant.id];
@@ -679,8 +738,9 @@ function updateManifestDurations(manifest, durations) {
  */
 function collectAllSampleIds(manifest) {
   const ids = [];
+  const samples = manifest.slices?.[0]?.samples || {};
 
-  for (const [text, variants] of Object.entries(manifest.samples)) {
+  for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
       if (variant.id) {
         ids.push(variant.id);
@@ -827,11 +887,12 @@ async function regenerateSamples(courseCode, uuids, options = {}) {
   const voiceAssignments = await getVoiceAssignments(courseCode);
 
   const samplesToRegenerate = [];
+  const samples = manifest.slices?.[0]?.samples || {};
 
   // Find samples by UUID
   for (const uuid of uuids) {
     let found = false;
-    for (const [text, variants] of Object.entries(manifest.samples)) {
+    for (const [text, variants] of Object.entries(samples)) {
       for (const variant of variants) {
         if (variant.uuid === uuid) {
           // Reconstruct sample object for generation
@@ -1155,9 +1216,10 @@ async function downloadTargetFilesFromS3(manifest, bucket) {
   const required = [];
   const downloaded = [];
   const missing = [];
+  const samples = manifest.slices?.[0]?.samples || {};
 
   // Collect all target1 and target2 samples that have UUIDs
-  for (const [text, variants] of Object.entries(manifest.samples)) {
+  for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
       if (PHASE_A_ROLES.includes(variant.role) && variant.uuid) {
         required.push({
@@ -1469,6 +1531,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
     skipUpload = false,
     uploadBucket = s3Service.STAGE_BUCKET,
     cleanupTemp = true,
+    skipQC = false,
     phase = 'auto' // 'targets', 'presentations', or 'auto'
   } = options;
 
@@ -1497,7 +1560,8 @@ async function generateAudioForCourse(courseCode, options = {}) {
     // 1. Load course manifest
     console.log('Loading course manifest...');
     const manifest = await loadCourseManifest(courseCode);
-    console.log(`Loaded: ${Object.keys(manifest.samples).length} unique phrases\n`);
+    const sampleCount = Object.keys(manifest.slices?.[0]?.samples || {}).length;
+    console.log(`Loaded: ${sampleCount} unique phrases\n`);
 
     // 2. Normalize cadences based on roles
     normalizeCadences(manifest);

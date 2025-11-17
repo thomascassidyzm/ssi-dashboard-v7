@@ -38,11 +38,17 @@ const PRICING = {
 };
 
 /**
- * Average generation speeds (seconds per character)
+ * Average generation speeds and parallelization
  */
 const GENERATION_SPEED = {
-  azure: 0.015,      // ~67 chars/sec
-  elevenlabs: 0.020  // ~50 chars/sec
+  azure: {
+    secondsPerSample: 2,      // ~2 seconds per sample average
+    concurrentWorkers: 8       // 8 parallel workers
+  },
+  elevenlabs: {
+    secondsPerSample: 2.5,    // ~2.5 seconds per sample average
+    concurrentWorkers: 5       // Rate limit: 5 req/sec on Pro tier
+  }
 };
 
 /**
@@ -113,19 +119,22 @@ function estimateElevenLabsCost(charCount, userTier = 'creator', currentUsage = 
 }
 
 /**
- * Estimate generation time
+ * Estimate generation time with parallel processing
  */
-function estimateGenerationTime(charCount, provider, rateLimit = null) {
-  const baseTime = charCount * GENERATION_SPEED[provider];
+function estimateGenerationTime(sampleCount, provider, rateLimit = null) {
+  const config = GENERATION_SPEED[provider];
+
+  // Calculate time with parallel workers
+  const totalTime = sampleCount * config.secondsPerSample;
+  const parallelTime = totalTime / config.concurrentWorkers;
 
   if (provider === 'elevenlabs' && rateLimit) {
-    // Account for rate limiting
-    const requestsNeeded = Math.ceil(charCount / 200); // ~200 chars per request
-    const rateLimitTime = requestsNeeded / rateLimit;
-    return Math.max(baseTime, rateLimitTime);
+    // Also check if rate limit is the bottleneck
+    const rateLimitTime = sampleCount / rateLimit;
+    return Math.max(parallelTime, rateLimitTime);
   }
 
-  return baseTime;
+  return parallelTime;
 }
 
 /**
@@ -150,8 +159,33 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments) {
     }
   };
 
+  // Pre-load all voice samples ONCE and create index (performance optimization)
+  console.log('Loading voice samples from MAR...');
+  const voiceSamplesCache = {};
+  const voiceIndexCache = {}; // Index for O(1) lookups
+  const uniqueVoices = [...new Set(Object.values(voiceAssignments))];
+
+  for (const voiceId of uniqueVoices) {
+    voiceSamplesCache[voiceId] = await marService.loadVoiceSamples(voiceId);
+    const count = Object.keys(voiceSamplesCache[voiceId].samples || {}).length;
+    console.log(`  ${voiceId}: ${count.toLocaleString()} existing samples`);
+
+    // Build index: key = normalizedText|role|language|cadence, value = uuid
+    // Use normalized text for case-insensitive, punctuation-agnostic matching
+    voiceIndexCache[voiceId] = new Map();
+    for (const [uuid, sample] of Object.entries(voiceSamplesCache[voiceId].samples || {})) {
+      const normalizedText = marService.normalizeText(sample.text);
+      const key = `${normalizedText}|${sample.role}|${sample.language}|${sample.cadence}`;
+      voiceIndexCache[voiceId].set(key, { uuid, ...sample });
+    }
+  }
+  console.log('');
+
   // Group samples by voice
-  for (const [text, variants] of Object.entries(manifest.samples)) {
+  // Samples are in the slice, not at top level
+  const samples = manifest.slices?.[0]?.samples || {};
+
+  for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
       const voiceId = voiceAssignments[variant.role];
 
@@ -187,16 +221,12 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments) {
         };
       }
 
-      // Check if exists in MAR
-      const voiceSamples = await marService.loadVoiceSamples(voiceId);
+      // Check if exists in MAR (use indexed lookup for O(1) performance)
+      // Normalize text for case-insensitive, punctuation-agnostic matching
       const language = variant.role.startsWith('target') ? manifest.target : manifest.known;
-      const existing = marService.findExistingSample(
-        voiceSamples,
-        text,
-        variant.role,
-        language,
-        cadence
-      );
+      const normalizedText = marService.normalizeText(text);
+      const lookupKey = `${normalizedText}|${variant.role}|${language}|${cadence}`;
+      const existing = voiceIndexCache[voiceId]?.get(lookupKey) || null;
 
       const charCount = countCharacters(text);
       const isNew = !existing;
@@ -263,10 +293,28 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
     elevenLabsUsage = 0
   } = options;
 
-  const voiceAssignments = voiceRegistry.course_assignments[courseCode];
+  // Extract language pair from manifest (known-target format, e.g., "en-es")
+  const languagePair = `${manifest.known}-${manifest.target}`;
+  const reversePair = `${manifest.target}-${manifest.known}`;
+
+  // 1. Try language pair assignments first (new preferred method)
+  let voiceAssignments = voiceRegistry.language_pair_assignments?.[languagePair];
+
+  // 2. Fall back to reverse pair if needed
+  if (!voiceAssignments) {
+    voiceAssignments = voiceRegistry.language_pair_assignments?.[reversePair];
+    if (voiceAssignments) {
+      console.log(`Note: Using reverse pair ${reversePair} for ${languagePair}`);
+    }
+  }
+
+  // 3. Fall back to course-specific assignments (legacy)
+  if (!voiceAssignments) {
+    voiceAssignments = voiceRegistry.course_assignments?.[courseCode];
+  }
 
   if (!voiceAssignments) {
-    throw new Error(`No voice assignments found for course: ${courseCode}`);
+    throw new Error(`No voice assignments found for course: ${courseCode} (language pair: ${languagePair})`);
   }
 
   // Analyze requirements
@@ -317,16 +365,16 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
       const costInfo = estimateAzureCost(newSamplesChars);
       plan.costs[voiceId] = costInfo;
       plan.timing[voiceId] = {
-        estimatedSeconds: Math.ceil(estimateGenerationTime(newSamplesChars, 'azure')),
-        estimatedMinutes: Math.ceil(estimateGenerationTime(newSamplesChars, 'azure') / 60)
+        estimatedSeconds: Math.ceil(estimateGenerationTime(voiceData.newSamples, 'azure')),
+        estimatedMinutes: Math.ceil(estimateGenerationTime(voiceData.newSamples, 'azure') / 60)
       };
 
     } else if (voiceInfo.provider === 'elevenlabs') {
       const costInfo = estimateElevenLabsCost(newSamplesChars, elevenLabsTier, elevenLabsUsage);
       plan.costs[voiceId] = costInfo;
       plan.timing[voiceId] = {
-        estimatedSeconds: Math.ceil(estimateGenerationTime(newSamplesChars, 'elevenlabs', costInfo.rateLimit)),
-        estimatedMinutes: Math.ceil(estimateGenerationTime(newSamplesChars, 'elevenlabs', costInfo.rateLimit) / 60)
+        estimatedSeconds: Math.ceil(estimateGenerationTime(voiceData.newSamples, 'elevenlabs', costInfo.rateLimit)),
+        estimatedMinutes: Math.ceil(estimateGenerationTime(voiceData.newSamples, 'elevenlabs', costInfo.rateLimit) / 60)
       };
 
       if (costInfo.exceedsQuota) {
@@ -342,9 +390,10 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
   const totalGenerationTime = Object.values(plan.timing)
     .reduce((sum, t) => sum + t.estimatedSeconds, 0);
 
-  const estimatedProcessingTime = analysis.totals.newSamples * 0.5; // ~0.5 sec per file
+  const PARALLEL_WORKERS = 8; // Match Python script and CPU count
+  const estimatedProcessingTime = (analysis.totals.newSamples * 0.5) / PARALLEL_WORKERS; // ~0.5 sec per file, 8 parallel
   const estimatedUploadTime = (analysis.totals.newSamples * 1.5) / 1024; // ~1.5MB avg per file
-  const estimatedDurationExtraction = analysis.totals.totalSamples * 0.3; // ~0.3 sec per file
+  const estimatedDurationExtraction = (analysis.totals.totalSamples * 0.3) / PARALLEL_WORKERS; // ~0.3 sec per file, 8 parallel
 
   plan.totalTiming = {
     generationSeconds: totalGenerationTime,

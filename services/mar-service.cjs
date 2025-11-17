@@ -11,6 +11,20 @@ const path = require('path');
 const MAR_BASE = path.join(__dirname, '..', 'samples_database');
 
 /**
+ * Normalize text for matching (case-insensitive, ignore trailing punctuation)
+ * Audio is the same regardless of capitalization or trailing punctuation
+ *
+ * @param {string} text - Text to normalize
+ * @returns {string} Normalized text
+ */
+function normalizeText(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[.,!?;:]+$/, ''); // Remove trailing punctuation
+}
+
+/**
  * Load voice registry
  *
  * @returns {Promise<object>} Voice registry object
@@ -78,9 +92,11 @@ async function saveVoiceSamples(voiceId, voiceSamples) {
  * @returns {object|null} Sample with UUID if exists, null otherwise
  */
 function findExistingSample(voiceSamples, text, role, language, cadence = 'natural') {
+  const normalizedText = normalizeText(text);
+
   for (const [uuid, sample] of Object.entries(voiceSamples.samples)) {
     if (
-      sample.text === text &&
+      normalizeText(sample.text) === normalizedText &&
       sample.role === role &&
       sample.language === language &&
       sample.cadence === cadence
@@ -396,6 +412,7 @@ async function addEncouragementSample(language, voiceId, uuid, sampleData) {
 }
 
 module.exports = {
+  normalizeText,
   loadVoiceRegistry,
   saveVoiceRegistry,
   loadVoiceSamples,
