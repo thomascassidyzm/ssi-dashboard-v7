@@ -3,15 +3,20 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Phase 5: GATE Validator - Vocabulary Compliance Checker
+ * Phase 5: GATE Validator - Vocabulary Compliance Checker (LANGUAGE-AGNOSTIC)
  *
- * Validates that ALL Spanish words in practice phrases are available from:
- * 1. Recent seed pairs vocabulary (all words from Spanish sentences)
+ * Validates that ALL target language tokens in practice phrases are available from:
+ * 1. Recent seed pairs vocabulary (all tokens from target language sentences)
  * 2. Current seed LEGOs available (LEGOs taught earlier in this seed)
  * 3. Current LEGO being taught
  *
+ * Tokenization:
+ * - Space-separated languages (Spanish, etc.): Split on whitespace
+ * - Chinese: Split into individual characters
+ * - Detects language automatically from lego_pairs.json structure
+ *
  * Usage: node phase5_gate_validator.cjs <course_path>
- * Example: node phase5_gate_validator.cjs public/vfs/courses/spa_for_eng_s0001-0100
+ * Example: node phase5_gate_validator.cjs public/vfs/courses/cmn_for_eng
  */
 
 // Parse command line arguments
@@ -51,29 +56,64 @@ console.log(`📁 Course: ${coursePath}\n`);
 
 // Load lego_pairs to build complete vocabulary registry
 const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
-const vocabularyRegistry = new Map(); // word -> first seed where it appeared
+const vocabularyRegistry = new Map(); // token -> first seed where it appeared
 
-// Build registry of ALL words learned in course up to each seed
+/**
+ * Detect if text is Chinese (contains CJK characters)
+ */
+function isChinese(text) {
+  return /[\u4e00-\u9fff]/.test(text);
+}
+
+/**
+ * Tokenize text based on language
+ * - Chinese: Individual characters
+ * - Other: Whitespace-separated words
+ */
+function tokenize(text) {
+  if (!text) return [];
+
+  if (isChinese(text)) {
+    // Chinese: split into individual characters, filter out punctuation
+    return text.split('').filter(char => {
+      return /[\u4e00-\u9fff]/.test(char); // Only CJK characters
+    });
+  } else {
+    // Space-separated languages: split on whitespace, remove punctuation
+    return text.split(/\s+/).map(word => {
+      return word.toLowerCase().replace(/[.,!?¿¡;:]/g, '');
+    }).filter(word => word.length > 0);
+  }
+}
+
+// Detect target language from first seed
+const targetLanguage = legoPairs.seeds.length > 0 && legoPairs.seeds[0].seed_pair
+  ? (isChinese(legoPairs.seeds[0].seed_pair[1]) ? 'Chinese' : 'Space-separated')
+  : 'Unknown';
+
+console.log(`📝 Detected target language: ${targetLanguage}`);
+console.log();
+
+// Build registry of ALL tokens learned in course up to each seed
 legoPairs.seeds.forEach(seed => {
   const seedNum = parseInt(seed.seed_id.substring(1));
 
-  // Extract words from complete seed sentence
-  const completeSentence = seed.seed_pair[0].toLowerCase();
-  const spanishWords = completeSentence.split(/\s+/);
+  // Extract tokens from complete seed sentence (target language is second element)
+  const targetSentence = seed.seed_pair[1];
+  const tokens = tokenize(targetSentence);
 
-  spanishWords.forEach(word => {
-    const normalized = word.replace(/[.,!?¿¡]/g, '');
-    if (normalized && !vocabularyRegistry.has(normalized)) {
-      vocabularyRegistry.set(normalized, seedNum);
+  tokens.forEach(token => {
+    if (token && !vocabularyRegistry.has(token)) {
+      vocabularyRegistry.set(token, seedNum);
     }
   });
 
   // Also extract from LEGO targets
   seed.legos.forEach(lego => {
-    lego.target.split(/\s+/).forEach(word => {
-      const normalized = word.toLowerCase().replace(/[.,!?¿¡]/g, '');
-      if (normalized && !vocabularyRegistry.has(normalized)) {
-        vocabularyRegistry.set(normalized, seedNum);
+    const legoTokens = tokenize(lego.target);
+    legoTokens.forEach(token => {
+      if (token && !vocabularyRegistry.has(token)) {
+        vocabularyRegistry.set(token, seedNum);
       }
     });
 
@@ -81,10 +121,10 @@ legoPairs.seeds.forEach(seed => {
     if (lego.components) {
       lego.components.forEach(([target, known]) => {
         if (target) {
-          target.split(/\s+/).forEach(word => {
-            const normalized = word.toLowerCase().replace(/[.,!?¿¡]/g, '');
-            if (normalized && !vocabularyRegistry.has(normalized)) {
-              vocabularyRegistry.set(normalized, seedNum);
+          const componentTokens = tokenize(target);
+          componentTokens.forEach(token => {
+            if (token && !vocabularyRegistry.has(token)) {
+              vocabularyRegistry.set(token, seedNum);
             }
           });
         }

@@ -1,20 +1,73 @@
 {
   "S0286L01": {
-    "lego": ["like speaking Chinese", "喜欢说普通话"],
+    "lego": [
+      "like speaking Chinese",
+      "喜欢说中文"
+    ],
     "type": "M",
     "is_final_lego": false,
     "current_seed_earlier_legos": [],
     "practice_phrases": [
-      ["I like speaking Chinese", "我喜欢说普通话", null, 1],
-      ["She likes speaking Chinese", "她喜欢说普通话", null, 2],
-      ["My sister likes speaking Chinese", "我姐姐喜欢说普通话", null, 3],
-      ["Which of your friends like speaking Chinese?", "你的哪些朋友喜欢说普通话？", null, 3],
-      ["Do you know people who like speaking Chinese?", "你认识喜欢说普通话的人吗？", null, 4],
-      ["My sister's friend likes speaking Chinese", "我姐姐的朋友喜欢说普通话", null, 4],
-      ["I only need to finish things before I like speaking Chinese", "我只需要在我喜欢说普通话之前完成事情", null, 6],
-      ["Do you mind if she likes speaking Chinese?", "你介意她喜欢说普通话吗？", null, 5],
-      ["Which of your friends like speaking Chinese before you start?", "你的哪些朋友在你开始之前喜欢说普通话？", null, 5],
-      ["That's not a problem if my sister likes speaking Chinese", "如果我姐姐喜欢说普通话，那不是问题", null, 5]
+      [
+        "I like speaking Chinese",
+        "我喜欢说中文",
+        null,
+        1
+      ],
+      [
+        "She likes speaking Chinese",
+        "她喜欢说中文",
+        null,
+        2
+      ],
+      [
+        "My sister likes speaking Chinese",
+        "我姐姐喜欢说中文",
+        null,
+        3
+      ],
+      [
+        "Which of your friends like speaking Chinese?",
+        "你的哪些朋友喜欢说中文？",
+        null,
+        3
+      ],
+      [
+        "Do you know people who like speaking Chinese?",
+        "你认识喜欢说中文的人吗？",
+        null,
+        4
+      ],
+      [
+        "My sister's friend likes speaking Chinese",
+        "我姐姐的朋友喜欢说中文",
+        null,
+        4
+      ],
+      [
+        "I only need to finish things before I like speaking Chinese",
+        "我只需要在我喜欢说中文之前完成事情",
+        null,
+        6
+      ],
+      [
+        "Do you mind if she likes speaking Chinese?",
+        "你介意她喜欢说中文吗？",
+        null,
+        5
+      ],
+      [
+        "Which of your friends like speaking Chinese before you start?",
+        "你的哪些朋友在你开始之前喜欢说中文？",
+        null,
+        5
+      ],
+      [
+        "That's not a problem if my sister likes speaking Chinese",
+        "如果我姐姐喜欢说中文，那不是问题",
+        null,
+        5
+      ]
     ],
     "phrase_distribution": {
       "short_1_to_2_legos": 2,
@@ -24,13 +77,25 @@
     },
     "target_phrase_count": 10,
     "components": [
-      ["喜欢", "like"],
-      ["说", "speaking"],
-      ["普通话", "Chinese"]
+      [
+        "喜欢",
+        "like"
+      ],
+      [
+        "说",
+        "speaking"
+      ],
+      [
+        "普通话",
+        "Chinese"
+      ]
     ]
   },
   "S0286L02": {
-    "lego": ["people who like speaking Chinese", "喜欢说普通话的人"],
+    "lego": [
+      "people who like speaking Chinese",
+      "喜欢说中文的人"
+    ],
     "type": "M",
     "is_final_lego": true,
     "current_seed_earlier_legos": [
@@ -42,16 +107,66 @@
       }
     ],
     "practice_phrases": [
-      ["People who like speaking Chinese", "喜欢说普通话的人", null, 1],
-      ["Do you know people who like speaking Chinese?", "你认识喜欢说普通话的人吗？", null, 2],
-      ["Which people who like speaking Chinese do you know?", "你认识哪些喜欢说普通话的人？", null, 3],
-      ["My sister knows people who like speaking Chinese", "我姐姐认识喜欢说普通话的人", null, 3],
-      ["She knows people who like speaking Chinese", "她认识喜欢说普通话的人", null, 4],
-      ["Which of your friends are people who like speaking Chinese?", "你的哪些朋友是喜欢说普通话的人？", null, 4],
-      ["I only know people who like speaking Chinese", "我只认识喜欢说普通话的人", null, 5],
-      ["Do you mind if she knows people who like speaking Chinese?", "你介意她认识喜欢说普通话的人吗？", null, 6],
-      ["My sister's friend knows people who like speaking Chinese", "我姐姐的朋友认识喜欢说普通话的人", null, 5],
-      ["People who like speaking Chinese.", "喜欢说普通话的人。", null, 1]
+      [
+        "People who like speaking Chinese",
+        "喜欢说中文的人",
+        null,
+        1
+      ],
+      [
+        "Do you know people who like speaking Chinese?",
+        "你认识喜欢说中文的人吗？",
+        null,
+        2
+      ],
+      [
+        "Which people who like speaking Chinese do you know?",
+        "你认识哪些喜欢说中文的人？",
+        null,
+        3
+      ],
+      [
+        "My sister knows people who like speaking Chinese",
+        "我姐姐认识喜欢说中文的人",
+        null,
+        3
+      ],
+      [
+        "She knows people who like speaking Chinese",
+        "她认识喜欢说中文的人",
+        null,
+        4
+      ],
+      [
+        "Which of your friends are people who like speaking Chinese?",
+        "你的哪些朋友是喜欢说中文的人？",
+        null,
+        4
+      ],
+      [
+        "I only know people who like speaking Chinese",
+        "我只认识喜欢说中文的人",
+        null,
+        5
+      ],
+      [
+        "Do you mind if she knows people who like speaking Chinese?",
+        "你介意她认识喜欢说中文的人吗？",
+        null,
+        6
+      ],
+      [
+        "My sister's friend knows people who like speaking Chinese",
+        "我姐姐的朋友认识喜欢说中文的人",
+        null,
+        5
+      ],
+      [
+        "People who like speaking Chinese.",
+        "喜欢说中文的人。",
+        null,
+        1
+      ]
     ],
     "phrase_distribution": {
       "short_1_to_2_legos": 2,
@@ -61,11 +176,26 @@
     },
     "target_phrase_count": 10,
     "components": [
-      ["喜欢", "like"],
-      ["说", "speaking"],
-      ["普通话", "Chinese"],
-      ["的", "who"],
-      ["人", "people"]
+      [
+        "喜欢",
+        "like"
+      ],
+      [
+        "说",
+        "speaking"
+      ],
+      [
+        "普通话",
+        "Chinese"
+      ],
+      [
+        "的",
+        "who"
+      ],
+      [
+        "人",
+        "people"
+      ]
     ]
   }
 }

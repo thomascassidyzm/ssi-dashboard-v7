@@ -1,0 +1,1576 @@
+{
+  "course": "cmn_for_eng",
+  "timestamp": "2025-11-17T18:37:16.126Z",
+  "total_phrases": 15225,
+  "total_violations": 180,
+  "compliance_rate": "98.8%",
+  "violations_by_seed": {
+    "25": [
+      {
+        "lego": "S0025L01",
+        "phrase_index": 6,
+        "phrase": "我想要在我必须走之前和大家见面",
+        "unavailable": [
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0025L02",
+        "phrase_index": 5,
+        "phrase": "我必须走去见其他人",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0025L03",
+        "phrase_index": 4,
+        "phrase": "你必须走去见她",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0025L04",
+        "phrase_index": 4,
+        "phrase": "他想走之前见大家",
+        "unavailable": [
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0025L05",
+        "phrase_index": 10,
+        "phrase": "你会在我必须走之前帮我和大家说中文吗",
+        "unavailable": [
+          "大",
+          "家"
+        ]
+      }
+    ],
+    "26": [
+      {
+        "lego": "S0026L01",
+        "phrase_index": 2,
+        "phrase": "我喜欢这个感觉",
+        "unavailable": [
+          "这"
+        ]
+      },
+      {
+        "lego": "S0026L01",
+        "phrase_index": 4,
+        "phrase": "我不喜欢这个感觉",
+        "unavailable": [
+          "这"
+        ]
+      },
+      {
+        "lego": "S0026L01",
+        "phrase_index": 7,
+        "phrase": "我喜欢感觉好像我想学会更多",
+        "unavailable": [
+          "更"
+        ]
+      },
+      {
+        "lego": "S0026L01",
+        "phrase_index": 8,
+        "phrase": "我喜欢感觉准备好走去见大家",
+        "unavailable": [
+          "去",
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0026L01",
+        "phrase_index": 9,
+        "phrase": "我喜欢感觉好像我快准备好和大家说中文",
+        "unavailable": [
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0026L02",
+        "phrase_index": 9,
+        "phrase": "他感觉好像他快准备好和大家说中文",
+        "unavailable": [
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0026L03",
+        "phrase_index": 3,
+        "phrase": "好像我快准备好走去认识其他人",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0026L03",
+        "phrase_index": 7,
+        "phrase": "我喜欢感觉好像我快准备好走去说中文",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0026L03",
+        "phrase_index": 8,
+        "phrase": "我喜欢感觉好像我快准备好走去见大家",
+        "unavailable": [
+          "去",
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0026L04",
+        "phrase_index": 4,
+        "phrase": "我快准备好走去认识其他人",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0026L04",
+        "phrase_index": 8,
+        "phrase": "我快准备好走去和大家说中文",
+        "unavailable": [
+          "去",
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0026L04",
+        "phrase_index": 10,
+        "phrase": "我喜欢感觉好像我快准备好走去认识会说中文的人",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0026L05",
+        "phrase_index": 6,
+        "phrase": "她快准备好和大家回来",
+        "unavailable": [
+          "大",
+          "家"
+        ]
+      },
+      {
+        "lego": "S0026L06",
+        "phrase_index": 3,
+        "phrase": "准备好走去认识其他人",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0026L06",
+        "phrase_index": 5,
+        "phrase": "我快准备好走去说中文",
+        "unavailable": [
+          "去"
+        ]
+      }
+    ],
+    "27": [
+      {
+        "lego": "S0027L01",
+        "phrase_index": 2,
+        "phrase": "我不喜欢这个。",
+        "unavailable": [
+          "这"
+        ]
+      },
+      {
+        "lego": "S0027L01",
+        "phrase_index": 6,
+        "phrase": "我不喜欢跟人说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0027L02",
+        "phrase_index": 4,
+        "phrase": "我们花太多时间回答这个。",
+        "unavailable": [
+          "这"
+        ]
+      },
+      {
+        "lego": "S0027L03",
+        "phrase_index": 7,
+        "phrase": "你会花太多时间跟人说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0027L03",
+        "phrase_index": 8,
+        "phrase": "我会花太多时间去见她。",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0027L04",
+        "phrase_index": 1,
+        "phrase": "我有太多时间。",
+        "unavailable": [
+          "有"
+        ]
+      },
+      {
+        "lego": "S0027L04",
+        "phrase_index": 2,
+        "phrase": "太多时间是有用的。",
+        "unavailable": [
+          "有"
+        ]
+      },
+      {
+        "lego": "S0027L04",
+        "phrase_index": 4,
+        "phrase": "我们在走之前没有太多时间。",
+        "unavailable": [
+          "没",
+          "有"
+        ]
+      },
+      {
+        "lego": "S0027L04",
+        "phrase_index": 5,
+        "phrase": "我喜欢感觉好像我有太多时间。",
+        "unavailable": [
+          "有"
+        ]
+      },
+      {
+        "lego": "S0027L04",
+        "phrase_index": 6,
+        "phrase": "你会帮我因为我有太多时间。",
+        "unavailable": [
+          "有"
+        ]
+      },
+      {
+        "lego": "S0027L04",
+        "phrase_index": 8,
+        "phrase": "我不想认识有太多时间的人。",
+        "unavailable": [
+          "有"
+        ]
+      }
+    ],
+    "28": [
+      {
+        "lego": "S0028L02",
+        "phrase_index": 7,
+        "phrase": "我会尽快开始跟她说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L03",
+        "phrase_index": 3,
+        "phrase": "她想开始跟我说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L03",
+        "phrase_index": 5,
+        "phrase": "我喜欢开始跟人说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L03",
+        "phrase_index": 9,
+        "phrase": "你会帮我开始跟她说话吗？",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L04",
+        "phrase_index": 2,
+        "phrase": "你跟我说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L04",
+        "phrase_index": 3,
+        "phrase": "她想跟人说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L04",
+        "phrase_index": 6,
+        "phrase": "你必须跟会说中文的人说话。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L04",
+        "phrase_index": 8,
+        "phrase": "在我必须走之前你会帮我跟她说话吗？",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L05",
+        "phrase_index": 1,
+        "phrase": "这是有用的。",
+        "unavailable": [
+          "这"
+        ]
+      },
+      {
+        "lego": "S0028L05",
+        "phrase_index": 3,
+        "phrase": "学她的名字对我是有用的。",
+        "unavailable": [
+          "对"
+        ]
+      },
+      {
+        "lego": "S0028L05",
+        "phrase_index": 6,
+        "phrase": "我喜欢感觉好像跟人说话是有用的。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L05",
+        "phrase_index": 7,
+        "phrase": "跟会说中文的人说话是有用的因为我想学。",
+        "unavailable": [
+          "跟"
+        ]
+      },
+      {
+        "lego": "S0028L05",
+        "phrase_index": 8,
+        "phrase": "你会帮我吗？这在我必须走之前是有用的。",
+        "unavailable": [
+          "这"
+        ]
+      },
+      {
+        "lego": "S0028L06",
+        "phrase_index": 1,
+        "phrase": "这很有用。",
+        "unavailable": [
+          "这"
+        ]
+      },
+      {
+        "lego": "S0028L06",
+        "phrase_index": 3,
+        "phrase": "学习对我很有用。",
+        "unavailable": [
+          "对"
+        ]
+      },
+      {
+        "lego": "S0028L06",
+        "phrase_index": 5,
+        "phrase": "我喜欢说话因为它很有用。",
+        "unavailable": [
+          "它"
+        ]
+      },
+      {
+        "lego": "S0028L06",
+        "phrase_index": 6,
+        "phrase": "尽快开始说话对你很有用。",
+        "unavailable": [
+          "对"
+        ]
+      },
+      {
+        "lego": "S0028L06",
+        "phrase_index": 8,
+        "phrase": "你会帮我吗？我想学因为它很有用。",
+        "unavailable": [
+          "它"
+        ]
+      },
+      {
+        "lego": "S0028L06",
+        "phrase_index": 9,
+        "phrase": "我快准备好走了，但是多说话还是很有用。",
+        "unavailable": [
+          "还"
+        ]
+      }
+    ],
+    "32": [
+      {
+        "lego": "S0032L04",
+        "phrase_index": 2,
+        "phrase": "你想这吗",
+        "unavailable": [
+          "这"
+        ]
+      }
+    ],
+    "76": [
+      {
+        "lego": "S0076L05",
+        "phrase_index": 5,
+        "phrase": "我对我已经学了什么感到很高兴",
+        "unavailable": [
+          "对"
+        ]
+      },
+      {
+        "lego": "S0076L07",
+        "phrase_index": 10,
+        "phrase": "我对我已经学了这么多已经很高兴",
+        "unavailable": [
+          "对"
+        ]
+      },
+      {
+        "lego": "S0076L08",
+        "phrase_index": 10,
+        "phrase": "我对我已经学了这么多感到很高兴。",
+        "unavailable": [
+          "对"
+        ]
+      }
+    ],
+    "77": [
+      {
+        "lego": "S0077L09",
+        "phrase_index": 10,
+        "phrase": "我对我开始理解得这么快感到惊讶。",
+        "unavailable": [
+          "对"
+        ]
+      }
+    ],
+    "78": [
+      {
+        "lego": "S0078L05",
+        "phrase_index": 6,
+        "phrase": "我对那些话感到惊讶",
+        "unavailable": [
+          "对"
+        ]
+      }
+    ],
+    "79": [
+      {
+        "lego": "S0079L06",
+        "phrase_index": 8,
+        "phrase": "我认为我们现在可以开始。",
+        "unavailable": [
+          "以"
+        ]
+      }
+    ],
+    "80": [
+      {
+        "lego": "S0080L04",
+        "phrase_index": 10,
+        "phrase": "我认为你什么时候会准备好对我很重要。",
+        "unavailable": [
+          "对"
+        ]
+      }
+    ],
+    "89": [
+      {
+        "lego": "S0089L03",
+        "phrase_index": 1,
+        "phrase": "做吧。",
+        "unavailable": [
+          "吧"
+        ]
+      }
+    ],
+    "90": [
+      {
+        "lego": "S0090L05",
+        "phrase_index": 4,
+        "phrase": "请说得慢。",
+        "unavailable": [
+          "请"
+        ]
+      },
+      {
+        "lego": "S0090L06",
+        "phrase_index": 6,
+        "phrase": "请说慢一点。",
+        "unavailable": [
+          "请"
+        ]
+      },
+      {
+        "lego": "S0090L07",
+        "phrase_index": 3,
+        "phrase": "请说得慢一点。",
+        "unavailable": [
+          "请"
+        ]
+      },
+      {
+        "lego": "S0090L08",
+        "phrase_index": 8,
+        "phrase": "我认为如果你能帮忙，那就太好了。",
+        "unavailable": [
+          "忙"
+        ]
+      },
+      {
+        "lego": "S0090L09",
+        "phrase_index": 6,
+        "phrase": "如果你能帮忙，那就太好了。",
+        "unavailable": [
+          "忙"
+        ]
+      },
+      {
+        "lego": "S0090L10",
+        "phrase_index": 4,
+        "phrase": "如果你能帮忙，那就太好了。",
+        "unavailable": [
+          "忙"
+        ]
+      }
+    ],
+    "94": [
+      {
+        "lego": "S0094L04",
+        "phrase_index": 7,
+        "phrase": "我认为这是它起作用的方式",
+        "unavailable": [
+          "式"
+        ]
+      }
+    ],
+    "95": [
+      {
+        "lego": "S0095L03",
+        "phrase_index": 10,
+        "phrase": "如果你准备好坐下一班公共汽车我们可以走",
+        "unavailable": [
+          "以"
+        ]
+      },
+      {
+        "lego": "S0095L05",
+        "phrase_index": 10,
+        "phrase": "如果你准备好我们可以一起坐下一班公共汽车",
+        "unavailable": [
+          "以"
+        ]
+      }
+    ],
+    "96": [
+      {
+        "lego": "S0096L07",
+        "phrase_index": 5,
+        "phrase": "我可以有多一点时间吗？",
+        "unavailable": [
+          "以"
+        ]
+      },
+      {
+        "lego": "S0096L07",
+        "phrase_index": 10,
+        "phrase": "你可以给我多一点时间想这个吗？",
+        "unavailable": [
+          "以"
+        ]
+      },
+      {
+        "lego": "S0096L08",
+        "phrase_index": 7,
+        "phrase": "我可以有一点时间回答吗？",
+        "unavailable": [
+          "以"
+        ]
+      }
+    ],
+    "99": [
+      {
+        "lego": "S0099L05",
+        "phrase_index": 8,
+        "phrase": "你应该问问你自己为什么它这次不起作用",
+        "unavailable": [
+          "次"
+        ]
+      }
+    ],
+    "103": [
+      {
+        "lego": "S0103L03",
+        "phrase_index": 9,
+        "phrase": "我们现在需要改变到更多的词",
+        "unavailable": [
+          "改",
+          "变"
+        ]
+      }
+    ],
+    "112": [
+      {
+        "lego": "S0112L01",
+        "phrase_index": 6,
+        "phrase": "那非常有趣去看。",
+        "unavailable": [
+          "去"
+        ]
+      },
+      {
+        "lego": "S0112L02",
+        "phrase_index": 5,
+        "phrase": "那非常有趣去学习。",
+        "unavailable": [
+          "去"
+        ]
+      }
+    ],
+    "124": [
+      {
+        "lego": "S0124L04",
+        "phrase_index": 8,
+        "phrase": "那是个好主意去帮忙",
+        "unavailable": [
+          "忙"
+        ]
+      }
+    ],
+    "125": [
+      {
+        "lego": "S0125L01",
+        "phrase_index": 7,
+        "phrase": "我相信你想帮忙",
+        "unavailable": [
+          "忙"
+        ]
+      },
+      {
+        "lego": "S0125L04",
+        "phrase_index": 8,
+        "phrase": "我认为你的主意也非常好",
+        "unavailable": [
+          "也"
+        ]
+      }
+    ],
+    "126": [
+      {
+        "lego": "S0126L02",
+        "phrase_index": 9,
+        "phrase": "这个工作正在改变我说话的方式",
+        "unavailable": [
+          "式"
+        ]
+      }
+    ],
+    "130": [
+      {
+        "lego": "S0130L04",
+        "phrase_index": 3,
+        "phrase": "我高兴因为你在这儿",
+        "unavailable": [
+          "儿"
+        ]
+      },
+      {
+        "lego": "S0130L06",
+        "phrase_index": 10,
+        "phrase": "她是我的朋友因为我们一起工作我对此感到兴奋",
+        "unavailable": [
+          "此"
+        ]
+      },
+      {
+        "lego": "S0130L07",
+        "phrase_index": 3,
+        "phrase": "我的朋友在这儿",
+        "unavailable": [
+          "儿"
+        ]
+      }
+    ],
+    "131": [
+      {
+        "lego": "S0131L01",
+        "phrase_index": 4,
+        "phrase": "有非常好的主意这儿",
+        "unavailable": [
+          "儿"
+        ]
+      },
+      {
+        "lego": "S0131L02",
+        "phrase_index": 7,
+        "phrase": "有太多不寻常的想法这儿",
+        "unavailable": [
+          "儿"
+        ]
+      },
+      {
+        "lego": "S0131L03",
+        "phrase_index": 4,
+        "phrase": "有太多想法这儿",
+        "unavailable": [
+          "儿"
+        ]
+      }
+    ],
+    "132": [
+      {
+        "lego": "S0132L05",
+        "phrase_index": 4,
+        "phrase": "我对此感到兴奋",
+        "unavailable": [
+          "此"
+        ]
+      }
+    ],
+    "206": [
+      {
+        "lego": "S0206L03",
+        "phrase_index": 10,
+        "phrase": "我一直期待有机会和你练习说话",
+        "unavailable": [
+          "直"
+        ]
+      }
+    ],
+    "209": [
+      {
+        "lego": "S0209L08",
+        "phrase_index": 8,
+        "phrase": "他们享受每周作为一个小组聚会",
+        "unavailable": [
+          "每"
+        ]
+      },
+      {
+        "lego": "S0209L10",
+        "phrase_index": 3,
+        "phrase": "他们成立一个小组",
+        "unavailable": [
+          "立"
+        ]
+      },
+      {
+        "lego": "S0209L11",
+        "phrase_index": 9,
+        "phrase": "我们的小组喜欢每周聚会",
+        "unavailable": [
+          "每"
+        ]
+      }
+    ],
+    "210": [
+      {
+        "lego": "S0210L09",
+        "phrase_index": 6,
+        "phrase": "我们应该解决这个问题",
+        "unavailable": [
+          "决"
+        ]
+      },
+      {
+        "lego": "S0210L09",
+        "phrase_index": 9,
+        "phrase": "我认为我们需要今天解决这个问题",
+        "unavailable": [
+          "决"
+        ]
+      }
+    ],
+    "213": [
+      {
+        "lego": "S0213L03",
+        "phrase_index": 7,
+        "phrase": "我们不知道他们想达到什么通过寻求",
+        "unavailable": [
+          "通"
+        ]
+      },
+      {
+        "lego": "S0213L03",
+        "phrase_index": 8,
+        "phrase": "他们想知道我们想达到什么与这个",
+        "unavailable": [
+          "与"
+        ]
+      },
+      {
+        "lego": "S0213L03",
+        "phrase_index": 9,
+        "phrase": "我们不知道他们想达到什么通过处理这个问题",
+        "unavailable": [
+          "通"
+        ]
+      },
+      {
+        "lego": "S0213L03",
+        "phrase_index": 10,
+        "phrase": "他们认为我们需要知道他们想达到什么通过讨论安排",
+        "unavailable": [
+          "通"
+        ]
+      },
+      {
+        "lego": "S0213L04",
+        "phrase_index": 7,
+        "phrase": "我们不知道他们想达到什么通过聚会",
+        "unavailable": [
+          "通"
+        ]
+      },
+      {
+        "lego": "S0213L04",
+        "phrase_index": 8,
+        "phrase": "他们想知道我们需要达到什么与这个",
+        "unavailable": [
+          "与"
+        ]
+      },
+      {
+        "lego": "S0213L04",
+        "phrase_index": 9,
+        "phrase": "我们不知道他们想达到什么通过寻求我们帮助",
+        "unavailable": [
+          "通"
+        ]
+      },
+      {
+        "lego": "S0213L04",
+        "phrase_index": 10,
+        "phrase": "他们认为我们需要讨论他们想达到什么与安排",
+        "unavailable": [
+          "与"
+        ]
+      },
+      {
+        "lego": "S0213L05",
+        "phrase_index": 7,
+        "phrase": "我们不知道他们想达到什么通过帮助",
+        "unavailable": [
+          "通"
+        ]
+      },
+      {
+        "lego": "S0213L05",
+        "phrase_index": 8,
+        "phrase": "他们想知道我们需要达到什么与这个",
+        "unavailable": [
+          "与"
+        ]
+      },
+      {
+        "lego": "S0213L05",
+        "phrase_index": 9,
+        "phrase": "我们不知道他们想达到什么通过寻求我们讨论这个问题",
+        "unavailable": [
+          "通"
+        ]
+      }
+    ],
+    "217": [
+      {
+        "lego": "S0217L02",
+        "phrase_index": 9,
+        "phrase": "他们想向几个朋友解释这个问题。",
+        "unavailable": [
+          "向"
+        ]
+      },
+      {
+        "lego": "S0217L05",
+        "phrase_index": 10,
+        "phrase": "我们不知道他们想喝什么，但他们想寻求帮助向几个朋友解释这个问题。",
+        "unavailable": [
+          "向"
+        ]
+      }
+    ],
+    "219": [
+      {
+        "lego": "S0219L05",
+        "phrase_index": 9,
+        "phrase": "他们告诉我们周末放松一会儿很好，我们想尝试达到那个。",
+        "unavailable": [
+          "尝"
+        ]
+      }
+    ],
+    "220": [
+      {
+        "lego": "S0220L06",
+        "phrase_index": 7,
+        "phrase": "我想今晚看一部电影",
+        "unavailable": [
+          "部",
+          "影"
+        ]
+      },
+      {
+        "lego": "S0220L06",
+        "phrase_index": 9,
+        "phrase": "他们想星期天看一部电影",
+        "unavailable": [
+          "部",
+          "影"
+        ]
+      },
+      {
+        "lego": "S0220L03",
+        "phrase_index": 4,
+        "phrase": "他看了电影",
+        "unavailable": [
+          "影"
+        ]
+      },
+      {
+        "lego": "S0220L03",
+        "phrase_index": 6,
+        "phrase": "他们星期六看了足球",
+        "unavailable": [
+          "球"
+        ]
+      },
+      {
+        "lego": "S0220L03",
+        "phrase_index": 8,
+        "phrase": "他星期六晚上看了电影",
+        "unavailable": [
+          "影"
+        ]
+      },
+      {
+        "lego": "S0220L03",
+        "phrase_index": 10,
+        "phrase": "他们星期六看了足球然后放松",
+        "unavailable": [
+          "球"
+        ]
+      },
+      {
+        "lego": "S0220L01",
+        "phrase_index": 3,
+        "phrase": "你看了电影吗",
+        "unavailable": [
+          "影"
+        ]
+      },
+      {
+        "lego": "S0220L01",
+        "phrase_index": 6,
+        "phrase": "你星期六看了足球吗",
+        "unavailable": [
+          "球"
+        ]
+      },
+      {
+        "lego": "S0220L01",
+        "phrase_index": 8,
+        "phrase": "你星期六晚上看了电影吗",
+        "unavailable": [
+          "影"
+        ]
+      }
+    ],
+    "302": [
+      {
+        "lego": "S0302L05",
+        "phrase_index": 9,
+        "phrase": "我不想住在人说英语的城市里",
+        "unavailable": [
+          "英"
+        ]
+      }
+    ],
+    "464": [
+      {
+        "lego": "S0464L02",
+        "phrase_index": 3,
+        "phrase": "我告诉过她号码",
+        "unavailable": [
+          "码"
+        ]
+      },
+      {
+        "lego": "S0464L04",
+        "phrase_index": 4,
+        "phrase": "我告诉过她一次号码不同",
+        "unavailable": [
+          "码"
+        ]
+      }
+    ],
+    "465": [
+      {
+        "lego": "S0465L04",
+        "phrase_index": 3,
+        "phrase": "我会问她号码",
+        "unavailable": [
+          "码"
+        ]
+      }
+    ],
+    "470": [
+      {
+        "lego": "S0470L03",
+        "phrase_index": 10,
+        "phrase": "我告诉过她一次我想爬那堵大墙",
+        "unavailable": [
+          "堵"
+        ]
+      }
+    ],
+    "490": [
+      {
+        "lego": "S0490L03",
+        "phrase_index": 4,
+        "phrase": "你再也不会明白",
+        "unavailable": [
+          "白"
+        ]
+      },
+      {
+        "lego": "S0490L03",
+        "phrase_index": 9,
+        "phrase": "那么你再也不会明白这个",
+        "unavailable": [
+          "白"
+        ]
+      },
+      {
+        "lego": "S0490L04",
+        "phrase_index": 7,
+        "phrase": "我根本不能相信任何人",
+        "unavailable": [
+          "根"
+        ]
+      }
+    ],
+    "491": [
+      {
+        "lego": "S0491L01",
+        "phrase_index": 9,
+        "phrase": "我喜欢当你帮我明白的时候",
+        "unavailable": [
+          "白"
+        ]
+      },
+      {
+        "lego": "S0491L02",
+        "phrase_index": 5,
+        "phrase": "你努力明白我",
+        "unavailable": [
+          "白"
+        ]
+      },
+      {
+        "lego": "S0491L05",
+        "phrase_index": 4,
+        "phrase": "你努力明白的方式",
+        "unavailable": [
+          "白"
+        ]
+      },
+      {
+        "lego": "S0491L05",
+        "phrase_index": 9,
+        "phrase": "我喜欢你总是努力帮助的方式",
+        "unavailable": [
+          "总"
+        ]
+      }
+    ],
+    "522": [
+      {
+        "lego": "S0522L04",
+        "phrase_index": 6,
+        "phrase": "当它伤害时说实话是愚蠢的",
+        "unavailable": [
+          "害"
+        ]
+      }
+    ],
+    "523": [
+      {
+        "lego": "S0523L02",
+        "phrase_index": 4,
+        "phrase": "你总是找借口",
+        "unavailable": [
+          "总"
+        ]
+      }
+    ],
+    "525": [
+      {
+        "lego": "S0525L06",
+        "phrase_index": 9,
+        "phrase": "我担心是否他们能够按时完成",
+        "unavailable": [
+          "按"
+        ]
+      }
+    ],
+    "571": [
+      {
+        "lego": "S0571L02",
+        "phrase_index": 6,
+        "phrase": "那会很特别",
+        "unavailable": [
+          "特"
+        ]
+      }
+    ],
+    "572": [
+      {
+        "lego": "S0572L02",
+        "phrase_index": 8,
+        "phrase": "上次我在这里很特别",
+        "unavailable": [
+          "特"
+        ]
+      },
+      {
+        "lego": "S0572L03",
+        "phrase_index": 8,
+        "phrase": "上次他们来看我们很特别",
+        "unavailable": [
+          "特"
+        ]
+      },
+      {
+        "lego": "S0572L05",
+        "phrase_index": 4,
+        "phrase": "上次他们来看我们时很特别",
+        "unavailable": [
+          "特"
+        ]
+      }
+    ],
+    "573": [
+      {
+        "lego": "S0573L02",
+        "phrase_index": 10,
+        "phrase": "我觉得假期来访是个好主意",
+        "unavailable": [
+          "访"
+        ]
+      }
+    ],
+    "577": [
+      {
+        "lego": "S0577L01",
+        "phrase_index": 2,
+        "phrase": "They've been waiting.",
+        "unavailable": [
+          "theyve"
+        ]
+      },
+      {
+        "lego": "S0577L01",
+        "phrase_index": 4,
+        "phrase": "We've been waiting when we meet.",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0577L02",
+        "phrase_index": 1,
+        "phrase": "We've been waiting for improvement.",
+        "unavailable": [
+          "weve",
+          "improvement"
+        ]
+      },
+      {
+        "lego": "S0577L02",
+        "phrase_index": 2,
+        "phrase": "We've been waiting for the holidays.",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0577L02",
+        "phrase_index": 3,
+        "phrase": "We've been waiting for what happened last time.",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0577L02",
+        "phrase_index": 4,
+        "phrase": "We've been waiting.",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0577L03",
+        "phrase_index": 1,
+        "phrase": "The hospital is very special.",
+        "unavailable": [
+          "hospital",
+          "special"
+        ]
+      },
+      {
+        "lego": "S0577L03",
+        "phrase_index": 2,
+        "phrase": "I'm expecting improvement at the hospital.",
+        "unavailable": [
+          "improvement",
+          "hospital"
+        ]
+      },
+      {
+        "lego": "S0577L03",
+        "phrase_index": 3,
+        "phrase": "The hospital is very special for everyone.",
+        "unavailable": [
+          "hospital",
+          "special"
+        ]
+      },
+      {
+        "lego": "S0577L03",
+        "phrase_index": 4,
+        "phrase": "We've been waiting for the hospital.",
+        "unavailable": [
+          "weve",
+          "hospital"
+        ]
+      },
+      {
+        "lego": "S0577L04",
+        "phrase_index": 1,
+        "phrase": "The news is upsetting.",
+        "unavailable": [
+          "upsetting"
+        ]
+      },
+      {
+        "lego": "S0577L04",
+        "phrase_index": 2,
+        "phrase": "The news has been very upsetting.",
+        "unavailable": [
+          "upsetting"
+        ]
+      },
+      {
+        "lego": "S0577L04",
+        "phrase_index": 4,
+        "phrase": "We've been waiting for the news.",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0577L05",
+        "phrase_index": 1,
+        "phrase": "The news from the hospital is upsetting.",
+        "unavailable": [
+          "hospital",
+          "upsetting"
+        ]
+      },
+      {
+        "lego": "S0577L05",
+        "phrase_index": 2,
+        "phrase": "I'm expecting the news from the hospital.",
+        "unavailable": [
+          "hospital"
+        ]
+      },
+      {
+        "lego": "S0577L05",
+        "phrase_index": 3,
+        "phrase": "The news from the hospital has been very upsetting.",
+        "unavailable": [
+          "hospital",
+          "upsetting"
+        ]
+      },
+      {
+        "lego": "S0577L05",
+        "phrase_index": 4,
+        "phrase": "We've been waiting for the news from the hospital.",
+        "unavailable": [
+          "weve",
+          "hospital"
+        ]
+      }
+    ],
+    "578": [
+      {
+        "lego": "S0578L01",
+        "phrase_index": 1,
+        "phrase": "Warm",
+        "unavailable": [
+          "warm"
+        ]
+      },
+      {
+        "lego": "S0578L01",
+        "phrase_index": 2,
+        "phrase": "Warm is very special for everyone.",
+        "unavailable": [
+          "warm",
+          "special"
+        ]
+      },
+      {
+        "lego": "S0578L01",
+        "phrase_index": 3,
+        "phrase": "The holidays are warm.",
+        "unavailable": [
+          "warm"
+        ]
+      },
+      {
+        "lego": "S0578L01",
+        "phrase_index": 4,
+        "phrase": "The hospital is warm.",
+        "unavailable": [
+          "hospital",
+          "warm"
+        ]
+      },
+      {
+        "lego": "S0578L01",
+        "phrase_index": 5,
+        "phrase": "Very warm",
+        "unavailable": [
+          "warm"
+        ]
+      },
+      {
+        "lego": "S0578L01",
+        "phrase_index": 6,
+        "phrase": "That would be warm.",
+        "unavailable": [
+          "warm"
+        ]
+      },
+      {
+        "lego": "S0578L02",
+        "phrase_index": 1,
+        "phrase": "Warmer",
+        "unavailable": [
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L02",
+        "phrase_index": 2,
+        "phrase": "The holidays are warmer.",
+        "unavailable": [
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L02",
+        "phrase_index": 3,
+        "phrase": "The hospital is warmer.",
+        "unavailable": [
+          "hospital",
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L02",
+        "phrase_index": 4,
+        "phrase": "Waiting is warmer.",
+        "unavailable": [
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L02",
+        "phrase_index": 5,
+        "phrase": "The news is warmer.",
+        "unavailable": [
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L02",
+        "phrase_index": 6,
+        "phrase": "That would be warmer.",
+        "unavailable": [
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L04",
+        "phrase_index": 1,
+        "phrase": "Somewhere warmer is very special.",
+        "unavailable": [
+          "warmer",
+          "special"
+        ]
+      },
+      {
+        "lego": "S0578L04",
+        "phrase_index": 2,
+        "phrase": "I'm expecting somewhere warmer.",
+        "unavailable": [
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L04",
+        "phrase_index": 3,
+        "phrase": "Somewhere warmer is very special for everyone.",
+        "unavailable": [
+          "warmer",
+          "special"
+        ]
+      },
+      {
+        "lego": "S0578L04",
+        "phrase_index": 4,
+        "phrase": "I'm not convinced somewhere warmer.",
+        "unavailable": [
+          "convinced",
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L04",
+        "phrase_index": 5,
+        "phrase": "Somewhere warmer has been very upsetting.",
+        "unavailable": [
+          "warmer",
+          "upsetting"
+        ]
+      },
+      {
+        "lego": "S0578L04",
+        "phrase_index": 6,
+        "phrase": "We've been waiting for somewhere warmer.",
+        "unavailable": [
+          "weve",
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0578L04",
+        "phrase_index": 7,
+        "phrase": "Somewhere warmer.",
+        "unavailable": [
+          "warmer"
+        ]
+      }
+    ],
+    "579": [
+      {
+        "lego": "S0579L02",
+        "phrase_index": 5,
+        "phrase": "You decided have tried.",
+        "unavailable": [
+          "decided"
+        ]
+      },
+      {
+        "lego": "S0579L03",
+        "phrase_index": 5,
+        "phrase": "You decided have often tried.",
+        "unavailable": [
+          "decided"
+        ]
+      },
+      {
+        "lego": "S0579L04",
+        "phrase_index": 1,
+        "phrase": "We've often tried somewhere warmer.",
+        "unavailable": [
+          "weve",
+          "warmer"
+        ]
+      },
+      {
+        "lego": "S0579L04",
+        "phrase_index": 2,
+        "phrase": "We've often tried the hospital.",
+        "unavailable": [
+          "weve",
+          "hospital"
+        ]
+      },
+      {
+        "lego": "S0579L04",
+        "phrase_index": 3,
+        "phrase": "We've often tried the holidays.",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0579L04",
+        "phrase_index": 4,
+        "phrase": "We've often tried that would be a good idea.",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0579L04",
+        "phrase_index": 5,
+        "phrase": "I'm not convinced we've often tried.",
+        "unavailable": [
+          "convinced",
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0579L04",
+        "phrase_index": 6,
+        "phrase": "Have you forgotten we've often tried?",
+        "unavailable": [
+          "weve"
+        ]
+      },
+      {
+        "lego": "S0579L04",
+        "phrase_index": 7,
+        "phrase": "We've often tried.",
+        "unavailable": [
+          "weve"
+        ]
+      }
+    ]
+  }
+}

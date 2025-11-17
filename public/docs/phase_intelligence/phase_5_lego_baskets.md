@@ -6,6 +6,36 @@
 
 ---
 
+## 🧩 WHAT ARE BASKETS & WHY DO THEY EXIST?
+
+**Baskets = Practice containers for individual LEGOs**
+
+Each LEGO that appears for the **first time** (`new: true` in lego_pairs.json) needs a basket containing:
+- **10 practice phrases** showing that LEGO in different contexts
+- **Graded complexity**: 2 short → 2 medium → 2 longer → 4 longest
+- **Recombination practice**: Using the LEGO with earlier LEGOs from recent seeds
+
+### Why Only `new: true` LEGOs?
+
+- **`new: true`** = First appearance → needs basket for initial practice
+- **`new: false`** = Recycled from earlier seeds → already has basket from first introduction
+- **Example**: If a LEGO is marked `new: false`, it appeared in an earlier seed and already has a basket from that first introduction
+
+### Pedagogical Purpose
+
+The SSi method teaches through **LEGO recombination**:
+1. **Isolation practice** (short phrases with fewer LEGOs) - Focus on the new building block
+2. **Combination practice** (medium-length phrases) - How it combines with earlier LEGOs
+3. **Rich context** (longest phrases) - Natural usage in complex utterances
+
+This creates **linguistic building blocks** that learners can recombine infinitely, rather than memorizing isolated phrases.
+
+### How Baskets Scale
+
+Each seed introduces new LEGOs. Each new LEGO needs one basket. The total baskets needed = the sum of all `new: true` LEGOs across all seeds in the course.
+
+---
+
 ## 🎭 YOUR ROLE
 
 You are a **world-leading creator of practice phrases** in the target language that help learners from the known language patterns as naturally and quickly as possible.
@@ -43,6 +73,7 @@ Before you start, confirm you understand these critical principles:
 □ **Final LEGO rule**: Highest phrase number = complete seed sentence
 □ **Workflow**: Think → Express → Validate (NOT templates or scripts)
 □ **Extended thinking**: Required for EVERY LEGO
+□ **Grammar check**: MUST review every phrase before submission (see FINAL GRAMMAR CHECK section)
 
 ⛔ **CRITICAL**: This is LINGUISTIC WORK, not coding. DO NOT write scripts, templates, or automation.
 ✅ **USE**: Your natural language intelligence to create meaningful utterances.
@@ -493,6 +524,66 @@ By seed 10+, enough vocabulary exists to create 10 varied, natural phrases. Appl
 
 ---
 
+## ✅ FINAL GRAMMAR CHECK (BEFORE SUBMISSION)
+
+**CRITICAL**: Before submitting your completed basket, YOU MUST review EVERY practice phrase for grammar and naturalness.
+
+### Why Grammar Matters (Phase 1 Philosophy)
+
+Phase 1 establishes that translations must balance three forces:
+1. **Naturalness** (target language fluency)
+2. **Transparency** (cognitive ease of mapping)
+3. **Consistency** (functional determinism)
+
+For **seeds 1-100**: Consistency trumps naturalness, BUT grammar must NEVER be wrong.
+
+### Grammar Standards
+
+**Target language grammar MUST be:**
+- ✅ **Always understandable** to native speakers
+- ✅ **Natural patterns** that build confidence in "speaking without thinking"
+- ✅ **Grammatically correct** (not perfect/poetic, but NEVER wrong)
+
+**Why this matters:**
+- Learners will practice with native speakers
+- Unnatural grammar = learner loses confidence
+- Wrong grammar = native speaker confusion
+- Natural patterns = learner speaks without fear
+
+### Self-Review Checklist
+
+Before submitting, check EACH phrase:
+
+□ **Target language**: Would a native speaker understand this naturally?
+□ **Known language**: Is this grammatically correct and natural?
+□ **Word order**: Correct for target language patterns?
+□ **Verb choice**: Right verb for the context? (e.g., 认为 vs 想 for "think")
+□ **Particle placement**: Correct position? (e.g., 为什么不等呢 NOT 为什么不呢等)
+□ **Completeness**: No missing words or incomplete phrases?
+□ **Formality level**: Appropriate for conversational learning? (not overly formal)
+
+### Common Issues to Avoid
+
+Based on quality reviews of existing baskets:
+
+❌ **Wrong word order**: "见面你" → Should be "见你"
+❌ **Introducing wrong vocabulary**: Using "think" in phrases when seed teaches "say" (GATE violation)
+❌ **Wrong verb when vocabulary IS available**: "我想" (want) for "I think" → Should be "我认为/我觉得" (think)
+❌ **Misplaced particles**: "为什么不呢等" → Should be "为什么不等呢"
+❌ **Incomplete phrases**: "many more about this" → Missing noun
+❌ **Overly formal**: "试图听" → Too formal for conversational learning, use "想听" or "试着听"
+❌ **Nonsensical English**: "When will you wait for you" → Should be "wait for me"
+
+### Quality Standard
+
+**Better 8 perfect phrases than 10 with 2 bad ones.**
+
+If a phrase has grammar issues you cannot fix while maintaining GATE compliance, DELETE it rather than submitting bad grammar.
+
+Learners need **confidence they're speaking understandable language**.
+
+---
+
 ## 🎯 SUCCESS CRITERIA
 
 Your basket generation is successful when:
@@ -504,6 +595,7 @@ Your basket generation is successful when:
 ✅ **Progressive complexity** (1-2 LEGOs → 5+ LEGOs)
 ✅ **Final LEGO rule** (highest phrase # = complete seed sentence)
 ✅ **Evidence of thinking** (not mechanical/template output)
+✅ **Grammar review completed** (every phrase checked for naturalness)
 
 ---
 

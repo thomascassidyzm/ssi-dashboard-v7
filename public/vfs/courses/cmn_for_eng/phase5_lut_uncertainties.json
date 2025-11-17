@@ -1,0 +1,1834 @@
+{
+  "course": "cmn_for_eng",
+  "timestamp": "2025-11-17T18:44:46.094Z",
+  "total_phrases": 15225,
+  "potential_uncertainties": 145,
+  "certainty_rate": "99.0%",
+  "note": "These are POTENTIAL uncertainties. Some may be intentional pedagogical variation.",
+  "violations_by_seed": {
+    "1": [
+      {
+        "lego": "S0001L03",
+        "phrase_index": 1,
+        "known": "With you",
+        "target_used": "和你",
+        "possible_targets": [
+          "和你",
+          "和你一起"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "2": [
+      {
+        "lego": "S0002L01",
+        "phrase_index": 1,
+        "known": "I'm trying to",
+        "target_used": "我在试着",
+        "possible_targets": [
+          "我在试着",
+          "我在试图"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0002L03",
+        "phrase_index": 1,
+        "known": "to learn",
+        "target_used": "学习",
+        "possible_targets": [
+          "学习",
+          "来学习"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "33": [
+      {
+        "lego": "S0033L01",
+        "phrase_index": 7,
+        "known": "People who speak Chinese",
+        "target_used": "会说中文的人",
+        "possible_targets": [
+          "会说中文的人",
+          "说中文的人"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "40": [
+      {
+        "lego": "S0040L03",
+        "phrase_index": 1,
+        "known": "How do you feel",
+        "target_used": "感觉怎么样",
+        "possible_targets": [
+          "感觉怎么样",
+          "您感觉怎么样"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "42": [
+      {
+        "lego": "S0042L02",
+        "phrase_index": 1,
+        "known": "Starting to feel",
+        "target_used": "开始觉得",
+        "possible_targets": [
+          "开始觉得",
+          "开始感觉"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "76": [
+      {
+        "lego": "S0076L05",
+        "phrase_index": 1,
+        "known": "Have already learnt",
+        "target_used": "已经学了",
+        "possible_targets": [
+          "已经学了",
+          "已经学到了"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0076L08",
+        "phrase_index": 1,
+        "known": "Happy",
+        "target_used": "高兴",
+        "possible_targets": [
+          "高兴",
+          "很高兴"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "78": [
+      {
+        "lego": "S0078L04",
+        "phrase_index": 1,
+        "known": "What you said",
+        "target_used": "你说的",
+        "possible_targets": [
+          "你说的",
+          "你说的话",
+          "您说的话"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "82": [
+      {
+        "lego": "S0082L04",
+        "phrase_index": 1,
+        "known": "Wait",
+        "target_used": "等",
+        "possible_targets": [
+          "等",
+          "等待"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "83": [
+      {
+        "lego": "S0083L02",
+        "phrase_index": 1,
+        "known": "Your friend",
+        "target_used": "你朋友",
+        "possible_targets": [
+          "你朋友",
+          "你的朋友"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0083L04",
+        "phrase_index": 1,
+        "known": "What you said",
+        "target_used": "你说的话",
+        "possible_targets": [
+          "你说的",
+          "你说的话",
+          "您说的话"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "84": [
+      {
+        "lego": "S0084L04",
+        "phrase_index": 1,
+        "known": "My friend",
+        "target_used": "我朋友",
+        "possible_targets": [
+          "我朋友",
+          "我的朋友"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "92": [
+      {
+        "lego": "S0092L01",
+        "phrase_index": 1,
+        "known": "I'd like",
+        "target_used": "我想",
+        "possible_targets": [
+          "我想",
+          "我想要"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0092L05",
+        "phrase_index": 1,
+        "known": "A while",
+        "target_used": "一段时间",
+        "possible_targets": [
+          "一段时间",
+          "一会儿"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "95": [
+      {
+        "lego": "S0095L02",
+        "phrase_index": 1,
+        "known": "I'm ready",
+        "target_used": "我准备好",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "96": [
+      {
+        "lego": "S0096L04",
+        "phrase_index": 1,
+        "known": "Ready",
+        "target_used": "准备好",
+        "possible_targets": [
+          "准备好",
+          "准备好了"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0096L04",
+        "phrase_index": 2,
+        "known": "I'm ready",
+        "target_used": "我准备好",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "97": [
+      {
+        "lego": "S0097L02",
+        "phrase_index": 1,
+        "known": "I'm ready",
+        "target_used": "我准备好了",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0097L08",
+        "phrase_index": 1,
+        "known": "Go",
+        "target_used": "走",
+        "possible_targets": [
+          "走",
+          "去"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "98": [
+      {
+        "lego": "S0098L05",
+        "phrase_index": 1,
+        "known": "Something else",
+        "target_used": "别的东西",
+        "possible_targets": [
+          "别的东西",
+          "点别的",
+          "别的事情"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "106": [
+      {
+        "lego": "S0106L03",
+        "phrase_index": 1,
+        "known": "Feel happy",
+        "target_used": "感到高兴",
+        "possible_targets": [
+          "感到高兴",
+          "感到满意"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0106L04",
+        "phrase_index": 1,
+        "known": "Happy",
+        "target_used": "高兴",
+        "possible_targets": [
+          "高兴",
+          "很高兴"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0106L08",
+        "phrase_index": 1,
+        "known": "Work",
+        "target_used": "工作",
+        "possible_targets": [
+          "起作用",
+          "工作"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "107": [
+      {
+        "lego": "S0107L03",
+        "phrase_index": 1,
+        "known": "To see",
+        "target_used": "看到",
+        "possible_targets": [
+          "看到",
+          "见"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0107L07",
+        "phrase_index": 1,
+        "known": "Doing what",
+        "target_used": "做什么",
+        "possible_targets": [
+          "做什么",
+          "在做什么"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "115": [
+      {
+        "lego": "S0115L03",
+        "phrase_index": 1,
+        "known": "I'm ready",
+        "target_used": "我准备好",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "119": [
+      {
+        "lego": "S0119L03",
+        "phrase_index": 1,
+        "known": "Something",
+        "target_used": "一些事情",
+        "possible_targets": [
+          "一些东西",
+          "一些事情",
+          "点东西",
+          "事情",
+          "点什么"
+        ],
+        "uncertainty_level": 5
+      },
+      {
+        "lego": "S0119L03",
+        "phrase_index": 2,
+        "known": "Something new",
+        "target_used": "一些新事情",
+        "possible_targets": [
+          "新东西",
+          "一些新的东西"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "120": [
+      {
+        "lego": "S0120L06",
+        "phrase_index": 1,
+        "known": "Very interesting",
+        "target_used": "很有趣",
+        "possible_targets": [
+          "很有趣",
+          "非常有趣"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "122": [
+      {
+        "lego": "S0122L01",
+        "phrase_index": 1,
+        "known": "Starting to feel",
+        "target_used": "开始感觉",
+        "possible_targets": [
+          "开始觉得",
+          "开始感觉"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "123": [
+      {
+        "lego": "S0123L01",
+        "phrase_index": 1,
+        "known": "I think",
+        "target_used": "我认为",
+        "possible_targets": [
+          "我认为",
+          "我想",
+          "我觉得"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "124": [
+      {
+        "lego": "S0124L01",
+        "phrase_index": 1,
+        "known": "I thought",
+        "target_used": "我认为",
+        "possible_targets": [
+          "我认为",
+          "我觉得"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "125": [
+      {
+        "lego": "S0125L03",
+        "phrase_index": 1,
+        "known": "Very good",
+        "target_used": "非常好",
+        "possible_targets": [
+          "非常好",
+          "很好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "128": [
+      {
+        "lego": "S0128L02",
+        "phrase_index": 1,
+        "known": "Someone",
+        "target_used": "某个人",
+        "possible_targets": [
+          "某个人",
+          "一个人"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "130": [
+      {
+        "lego": "S0130L07",
+        "phrase_index": 1,
+        "known": "My friend",
+        "target_used": "我的朋友",
+        "possible_targets": [
+          "我朋友",
+          "我的朋友"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "132": [
+      {
+        "lego": "S0132L01",
+        "phrase_index": 1,
+        "known": "That",
+        "target_used": "那",
+        "possible_targets": [
+          "那",
+          "那个"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "199": [
+      {
+        "lego": "S0199L01",
+        "phrase_index": 1,
+        "known": "My friend",
+        "target_used": "我的朋友",
+        "possible_targets": [
+          "我朋友",
+          "我的朋友"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0199L04",
+        "phrase_index": 1,
+        "known": "Work",
+        "target_used": "工作",
+        "possible_targets": [
+          "起作用",
+          "工作"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "207": [
+      {
+        "lego": "S0207L07",
+        "phrase_index": 2,
+        "known": "Something",
+        "target_used": "一些事情",
+        "possible_targets": [
+          "一些东西",
+          "一些事情",
+          "点东西",
+          "事情",
+          "点什么"
+        ],
+        "uncertainty_level": 5
+      }
+    ],
+    "216": [
+      {
+        "lego": "S0216L01",
+        "phrase_index": 1,
+        "known": "I saw",
+        "target_used": "我见了",
+        "possible_targets": [
+          "我看到",
+          "我见了"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0216L04",
+        "phrase_index": 1,
+        "known": "To see",
+        "target_used": "见",
+        "possible_targets": [
+          "看到",
+          "见"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "234": [
+      {
+        "lego": "S0234L03",
+        "phrase_index": 1,
+        "known": "met someone",
+        "target_used": "遇到一个人",
+        "possible_targets": [
+          "遇到一个人",
+          "见过一个人"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "250": [
+      {
+        "lego": "S0250L03",
+        "phrase_index": 1,
+        "known": "Something else",
+        "target_used": "别的事情",
+        "possible_targets": [
+          "别的东西",
+          "点别的",
+          "别的事情"
+        ],
+        "uncertainty_level": 3
+      },
+      {
+        "lego": "S0250L06",
+        "phrase_index": 1,
+        "known": "Before",
+        "target_used": "之前",
+        "possible_targets": [
+          "之前",
+          "以前"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0250L07",
+        "phrase_index": 1,
+        "known": "Answer",
+        "target_used": "回答",
+        "possible_targets": [
+          "答案",
+          "回答"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "251": [
+      {
+        "lego": "S0251L01",
+        "phrase_index": 1,
+        "known": "I don't want",
+        "target_used": "我不想",
+        "possible_targets": [
+          "我不想",
+          "我不想要"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0251L02",
+        "phrase_index": 1,
+        "known": "After we finish",
+        "target_used": "在我们完成之后",
+        "possible_targets": [
+          "在我们结束后",
+          "在我们完成之后"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "252": [
+      {
+        "lego": "S0252L01",
+        "phrase_index": 1,
+        "known": "When",
+        "target_used": "什么时候",
+        "possible_targets": [
+          "什么时候",
+          "当...时"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0252L04",
+        "phrase_index": 2,
+        "known": "I'm ready",
+        "target_used": "我准备好",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "253": [
+      {
+        "lego": "S0253L04",
+        "phrase_index": 1,
+        "known": "I'm ready",
+        "target_used": "我准备好",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "254": [
+      {
+        "lego": "S0254L04",
+        "phrase_index": 1,
+        "known": "I'm ready",
+        "target_used": "我准备好了",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "255": [
+      {
+        "lego": "S0255L04",
+        "phrase_index": 1,
+        "known": "I'm ready",
+        "target_used": "我准备好",
+        "possible_targets": [
+          "我准备好了",
+          "我准备好"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "260": [
+      {
+        "lego": "S0260L03",
+        "phrase_index": 1,
+        "known": "I know",
+        "target_used": "我知道",
+        "possible_targets": [
+          "我知道",
+          "我认识",
+          "我认识的"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "261": [
+      {
+        "lego": "S0261L04",
+        "phrase_index": 1,
+        "known": "Something",
+        "target_used": "一些东西",
+        "possible_targets": [
+          "一些东西",
+          "一些事情",
+          "点东西",
+          "事情",
+          "点什么"
+        ],
+        "uncertainty_level": 5
+      },
+      {
+        "lego": "S0261L04",
+        "phrase_index": 2,
+        "known": "Something else",
+        "target_used": "一些别的东西",
+        "possible_targets": [
+          "别的东西",
+          "点别的",
+          "别的事情"
+        ],
+        "uncertainty_level": 3
+      },
+      {
+        "lego": "S0261L06",
+        "phrase_index": 1,
+        "known": "Something important",
+        "target_used": "一些重要的东西",
+        "possible_targets": [
+          "一些重要的东西",
+          "重要的事情"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "263": [
+      {
+        "lego": "S0263L01",
+        "phrase_index": 1,
+        "known": "I don't know",
+        "target_used": "我不知道",
+        "possible_targets": [
+          "我不认识",
+          "我不知道"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "269": [
+      {
+        "lego": "S0269L02",
+        "phrase_index": 1,
+        "known": "Don't want",
+        "target_used": "不想",
+        "possible_targets": [
+          "不想",
+          "不想要"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0269L02",
+        "phrase_index": 2,
+        "known": "I don't want",
+        "target_used": "我不想",
+        "possible_targets": [
+          "我不想",
+          "我不想要"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "274": [
+      {
+        "lego": "S0274L02",
+        "phrase_index": 1,
+        "known": "Leave",
+        "target_used": "离开",
+        "possible_targets": [
+          "离开",
+          "留下"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "276": [
+      {
+        "lego": "S0276L02",
+        "phrase_index": 1,
+        "known": "I can",
+        "target_used": "我可以",
+        "possible_targets": [
+          "我可以",
+          "我能"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0276L05",
+        "phrase_index": 1,
+        "known": "A while",
+        "target_used": "一会儿",
+        "possible_targets": [
+          "一段时间",
+          "一会儿"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "277": [
+      {
+        "lego": "S0277L05",
+        "phrase_index": 1,
+        "known": "Meeting",
+        "target_used": "会议",
+        "possible_targets": [
+          "聚会",
+          "会议"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "278": [
+      {
+        "lego": "S0278L03",
+        "phrase_index": 1,
+        "known": "Finish",
+        "target_used": "完成",
+        "possible_targets": [
+          "结束",
+          "完成"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0278L04",
+        "phrase_index": 1,
+        "known": "Things",
+        "target_used": "事情",
+        "possible_targets": [
+          "东西",
+          "事情"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "281": [
+      {
+        "lego": "S0281L01",
+        "phrase_index": 1,
+        "known": "Do you mind",
+        "target_used": "你介意",
+        "possible_targets": [
+          "你介意",
+          "您介意吗"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "284": [
+      {
+        "lego": "S0284L02",
+        "phrase_index": 1,
+        "known": "My friend",
+        "target_used": "我的朋友",
+        "possible_targets": [
+          "我朋友",
+          "我的朋友"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0284L04",
+        "phrase_index": 2,
+        "known": "My friend",
+        "target_used": "我的朋友",
+        "possible_targets": [
+          "我朋友",
+          "我的朋友"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0284L04",
+        "phrase_index": 3,
+        "known": "Your friend",
+        "target_used": "你的朋友",
+        "possible_targets": [
+          "你朋友",
+          "你的朋友"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "299": [
+      {
+        "lego": "S0299L03",
+        "phrase_index": 1,
+        "known": "Pay",
+        "target_used": "付",
+        "possible_targets": [
+          "付",
+          "付钱"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "302": [
+      {
+        "lego": "S0302L03",
+        "phrase_index": 1,
+        "known": "I don't want",
+        "target_used": "我不想",
+        "possible_targets": [
+          "我不想",
+          "我不想要"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "303": [
+      {
+        "lego": "S0303L01",
+        "phrase_index": 1,
+        "known": "I think",
+        "target_used": "我觉得",
+        "possible_targets": [
+          "我认为",
+          "我想",
+          "我觉得"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "332": [
+      {
+        "lego": "S0332L02",
+        "phrase_index": 1,
+        "known": "Can",
+        "target_used": "可以",
+        "possible_targets": [
+          "会",
+          "可以",
+          "能"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "335": [
+      {
+        "lego": "S0335L01",
+        "phrase_index": 1,
+        "known": "I think",
+        "target_used": "我觉得",
+        "possible_targets": [
+          "我认为",
+          "我想",
+          "我觉得"
+        ],
+        "uncertainty_level": 3
+      },
+      {
+        "lego": "S0335L04",
+        "phrase_index": 1,
+        "known": "Add",
+        "target_used": "增加",
+        "possible_targets": [
+          "增加",
+          "加"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "336": [
+      {
+        "lego": "S0336L04",
+        "phrase_index": 1,
+        "known": "Open",
+        "target_used": "打开",
+        "possible_targets": [
+          "打开",
+          "开"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0336L05",
+        "phrase_index": 1,
+        "known": "Open the door",
+        "target_used": "打开门",
+        "possible_targets": [
+          "打开门",
+          "开门"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0336L06",
+        "phrase_index": 3,
+        "known": "Open the door",
+        "target_used": "打开门",
+        "possible_targets": [
+          "打开门",
+          "开门"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "337": [
+      {
+        "lego": "S0337L06",
+        "phrase_index": 1,
+        "known": "Play",
+        "target_used": "玩",
+        "possible_targets": [
+          "玩",
+          "玩耍"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "340": [
+      {
+        "lego": "S0340L02",
+        "phrase_index": 1,
+        "known": "I'm sure",
+        "target_used": "我确定",
+        "possible_targets": [
+          "我确定",
+          "我确信"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0340L03",
+        "phrase_index": 2,
+        "known": "I'm sure",
+        "target_used": "我确定",
+        "possible_targets": [
+          "我确定",
+          "我确信"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "341": [
+      {
+        "lego": "S0341L03",
+        "phrase_index": 1,
+        "known": "Met someone",
+        "target_used": "见过一个人",
+        "possible_targets": [
+          "遇到一个人",
+          "见过一个人"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0341L04",
+        "phrase_index": 1,
+        "known": "Someone",
+        "target_used": "一个人",
+        "possible_targets": [
+          "某个人",
+          "一个人"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "387": [
+      {
+        "lego": "S0387L02",
+        "phrase_index": 1,
+        "known": "I think",
+        "target_used": "我认为",
+        "possible_targets": [
+          "我认为",
+          "我想",
+          "我觉得"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "400": [
+      {
+        "lego": "S0400L04",
+        "phrase_index": 1,
+        "known": "something",
+        "target_used": "点东西",
+        "possible_targets": [
+          "一些东西",
+          "一些事情",
+          "点东西",
+          "事情",
+          "点什么"
+        ],
+        "uncertainty_level": 5
+      }
+    ],
+    "402": [
+      {
+        "lego": "S0402L03",
+        "phrase_index": 1,
+        "known": "to stop",
+        "target_used": "停下来",
+        "possible_targets": [
+          "停止",
+          "停下来"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "436": [
+      {
+        "lego": "S0436L03",
+        "phrase_index": 1,
+        "known": "They need",
+        "target_used": "他们需要的",
+        "possible_targets": [
+          "他们需要",
+          "他们需要的"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "439": [
+      {
+        "lego": "S0439L03",
+        "phrase_index": 1,
+        "known": "Don't want",
+        "target_used": "不想",
+        "possible_targets": [
+          "不想",
+          "不想要"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "440": [
+      {
+        "lego": "S0440L04",
+        "phrase_index": 1,
+        "known": "When",
+        "target_used": "的时候",
+        "possible_targets": [
+          "什么时候",
+          "当...时"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "446": [
+      {
+        "lego": "S0446L03",
+        "phrase_index": 1,
+        "known": "Window",
+        "target_used": "窗户",
+        "possible_targets": [
+          "窗户",
+          "窗"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "447": [
+      {
+        "lego": "S0447L01",
+        "phrase_index": 1,
+        "known": "Can",
+        "target_used": "能",
+        "possible_targets": [
+          "会",
+          "可以",
+          "能"
+        ],
+        "uncertainty_level": 3
+      },
+      {
+        "lego": "S0447L03",
+        "phrase_index": 3,
+        "known": "After the meal",
+        "target_used": "饭后",
+        "possible_targets": [
+          "饭后",
+          "在饭后"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0447L04",
+        "phrase_index": 1,
+        "known": "After the meal",
+        "target_used": "饭后",
+        "possible_targets": [
+          "饭后",
+          "在饭后"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0447L05",
+        "phrase_index": 1,
+        "known": "After the meal",
+        "target_used": "在饭后",
+        "possible_targets": [
+          "饭后",
+          "在饭后"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "448": [
+      {
+        "lego": "S0448L03",
+        "phrase_index": 1,
+        "known": "Happy",
+        "target_used": "高兴",
+        "possible_targets": [
+          "高兴",
+          "很高兴"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0448L05",
+        "phrase_index": 1,
+        "known": "Help",
+        "target_used": "帮忙",
+        "possible_targets": [
+          "帮助",
+          "帮忙"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "449": [
+      {
+        "lego": "S0449L04",
+        "phrase_index": 2,
+        "known": "Very good",
+        "target_used": "很好",
+        "possible_targets": [
+          "非常好",
+          "很好"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0449L05",
+        "phrase_index": 1,
+        "known": "Ready",
+        "target_used": "准备好",
+        "possible_targets": [
+          "准备好",
+          "准备好了"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "464": [
+      {
+        "lego": "S0464L06",
+        "phrase_index": 1,
+        "known": "but",
+        "target_used": "但",
+        "possible_targets": [
+          "但",
+          "但是"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "467": [
+      {
+        "lego": "S0467L03",
+        "phrase_index": 1,
+        "known": "Next to the car park",
+        "target_used": "停车场旁边",
+        "possible_targets": [
+          "停车场旁边",
+          "在停车场旁边"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0467L04",
+        "phrase_index": 1,
+        "known": "Next to the car park",
+        "target_used": "在停车场旁边",
+        "possible_targets": [
+          "停车场旁边",
+          "在停车场旁边"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "471": [
+      {
+        "lego": "S0471L01",
+        "phrase_index": 1,
+        "known": "Do you want",
+        "target_used": "你想",
+        "possible_targets": [
+          "你想",
+          "你想要",
+          "您想要吗",
+          "想要吗"
+        ],
+        "uncertainty_level": 4
+      }
+    ],
+    "473": [
+      {
+        "lego": "S0473L01",
+        "phrase_index": 1,
+        "known": "I don't want",
+        "target_used": "我不想要",
+        "possible_targets": [
+          "我不想",
+          "我不想要"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0473L02",
+        "phrase_index": 1,
+        "known": "Don't want",
+        "target_used": "不想要",
+        "possible_targets": [
+          "不想",
+          "不想要"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0473L02",
+        "phrase_index": 3,
+        "known": "I don't want",
+        "target_used": "我不想要",
+        "possible_targets": [
+          "我不想",
+          "我不想要"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "476": [
+      {
+        "lego": "S0476L05",
+        "phrase_index": 1,
+        "known": "End",
+        "target_used": "结束",
+        "possible_targets": [
+          "结束",
+          "尽头"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "490": [
+      {
+        "lego": "S0490L01",
+        "phrase_index": 1,
+        "known": "Then",
+        "target_used": "那么",
+        "possible_targets": [
+          "那么",
+          "当时"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "521": [
+      {
+        "lego": "S0521L01",
+        "phrase_index": 1,
+        "known": "I'm afraid",
+        "target_used": "我担心",
+        "possible_targets": [
+          "恐怕",
+          "我担心"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "529": [
+      {
+        "lego": "S0529L01",
+        "phrase_index": 1,
+        "known": "You all",
+        "target_used": "你们",
+        "possible_targets": [
+          "你们",
+          "你们都",
+          "你们大家",
+          "你们大家都"
+        ],
+        "uncertainty_level": 4
+      },
+      {
+        "lego": "S0529L03",
+        "phrase_index": 1,
+        "known": "I can",
+        "target_used": "我能",
+        "possible_targets": [
+          "我可以",
+          "我能"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "530": [
+      {
+        "lego": "S0530L01",
+        "phrase_index": 1,
+        "known": "So",
+        "target_used": "这样",
+        "possible_targets": [
+          "所以",
+          "这样"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "559": [
+      {
+        "lego": "S0559L01",
+        "phrase_index": 1,
+        "known": "Found",
+        "target_used": "找到",
+        "possible_targets": [
+          "找到了",
+          "找到"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "567": [
+      {
+        "lego": "S0567L05",
+        "phrase_index": 1,
+        "known": "Play",
+        "target_used": "玩耍",
+        "possible_targets": [
+          "玩",
+          "玩耍"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "585": [
+      {
+        "lego": "S0585L01",
+        "phrase_index": 1,
+        "known": "I can",
+        "target_used": "我能",
+        "possible_targets": [
+          "我可以",
+          "我能"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0585L07",
+        "phrase_index": 1,
+        "known": "Window",
+        "target_used": "窗户",
+        "possible_targets": [
+          "窗户",
+          "窗"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "586": [
+      {
+        "lego": "S0586L01",
+        "phrase_index": 1,
+        "known": "I want",
+        "target_used": "我想要",
+        "possible_targets": [
+          "我想要",
+          "我想"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0586L02",
+        "phrase_index": 1,
+        "known": "Twenty",
+        "target_used": "二十个",
+        "possible_targets": [
+          "二十个",
+          "二十"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0586L03",
+        "phrase_index": 1,
+        "known": "Twenty",
+        "target_used": "二十",
+        "possible_targets": [
+          "二十个",
+          "二十"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "588": [
+      {
+        "lego": "S0588L01",
+        "phrase_index": 1,
+        "known": "So",
+        "target_used": "所以",
+        "possible_targets": [
+          "所以",
+          "这样"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0588L06",
+        "phrase_index": 1,
+        "known": "Leave",
+        "target_used": "离开",
+        "possible_targets": [
+          "离开",
+          "留下"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "589": [
+      {
+        "lego": "S0589L06",
+        "phrase_index": 1,
+        "known": "Just",
+        "target_used": "刚",
+        "possible_targets": [
+          "只是",
+          "刚"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0589L07",
+        "phrase_index": 2,
+        "known": "I saw",
+        "target_used": "我看到",
+        "possible_targets": [
+          "我看到",
+          "我见了"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0589L10",
+        "phrase_index": 1,
+        "known": "Bus",
+        "target_used": "公交车",
+        "possible_targets": [
+          "公共汽车",
+          "公交车"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "590": [
+      {
+        "lego": "S0590L01",
+        "phrase_index": 1,
+        "known": "I saw",
+        "target_used": "我看到",
+        "possible_targets": [
+          "我看到",
+          "我见了"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0590L02",
+        "phrase_index": 2,
+        "known": "I saw",
+        "target_used": "我看到",
+        "possible_targets": [
+          "我看到",
+          "我见了"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0590L06",
+        "phrase_index": 1,
+        "known": "Leave",
+        "target_used": "离开",
+        "possible_targets": [
+          "离开",
+          "留下"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "595": [
+      {
+        "lego": "S0595L03",
+        "phrase_index": 1,
+        "known": "In the garden",
+        "target_used": "在花园里",
+        "possible_targets": [
+          "花园里",
+          "在花园里"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "598": [
+      {
+        "lego": "S0598L05",
+        "phrase_index": 2,
+        "known": "Doing what",
+        "target_used": "在做什么",
+        "possible_targets": [
+          "做什么",
+          "在做什么"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "599": [
+      {
+        "lego": "S0599L05",
+        "phrase_index": 1,
+        "known": "Happy",
+        "target_used": "很高兴",
+        "possible_targets": [
+          "高兴",
+          "很高兴"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0599L06",
+        "phrase_index": 1,
+        "known": "Happy",
+        "target_used": "高兴",
+        "possible_targets": [
+          "高兴",
+          "很高兴"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0599L06",
+        "phrase_index": 2,
+        "known": "Happy",
+        "target_used": "高兴",
+        "possible_targets": [
+          "高兴",
+          "很高兴"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "605": [
+      {
+        "lego": "L04",
+        "phrase_index": 1,
+        "known": "Help",
+        "target_used": "帮助",
+        "possible_targets": [
+          "帮助",
+          "帮忙"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "606": [
+      {
+        "lego": "L02",
+        "phrase_index": 1,
+        "known": "Then",
+        "target_used": "当时",
+        "possible_targets": [
+          "那么",
+          "当时"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "L06",
+        "phrase_index": 1,
+        "known": "Wait",
+        "target_used": "等待",
+        "possible_targets": [
+          "等",
+          "等待"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "643": [
+      {
+        "lego": "S0643L01",
+        "phrase_index": 1,
+        "known": "Do you want",
+        "target_used": "您想要吗",
+        "possible_targets": [
+          "你想",
+          "你想要",
+          "您想要吗",
+          "想要吗"
+        ],
+        "uncertainty_level": 4
+      },
+      {
+        "lego": "S0643L01",
+        "phrase_index": 2,
+        "known": "I want",
+        "target_used": "我想要",
+        "possible_targets": [
+          "我想要",
+          "我想"
+        ],
+        "uncertainty_level": 2
+      },
+      {
+        "lego": "S0643L03",
+        "phrase_index": 1,
+        "known": "want",
+        "target_used": "想要吗",
+        "possible_targets": [
+          "想",
+          "想要"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "644": [
+      {
+        "lego": "S0644L01",
+        "phrase_index": 1,
+        "known": "Could you say that",
+        "target_used": "您能说那个吗",
+        "possible_targets": [
+          "您能说那个吗",
+          "能说那个吗"
+        ],
+        "uncertainty_level": 2
+      }
+    ],
+    "645": [
+      {
+        "lego": "S0645L03",
+        "phrase_index": 1,
+        "known": "help you",
+        "target_used": "帮您",
+        "possible_targets": [
+          "帮你",
+          "帮助你",
+          "帮您"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "648": [
+      {
+        "lego": "S0648L01",
+        "phrase_index": 1,
+        "known": "What you said",
+        "target_used": "您说的话",
+        "possible_targets": [
+          "你说的",
+          "你说的话",
+          "您说的话"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "655": [
+      {
+        "lego": "S0655L02",
+        "phrase_index": 1,
+        "known": "I think",
+        "target_used": "我认为",
+        "possible_targets": [
+          "我认为",
+          "我想",
+          "我觉得"
+        ],
+        "uncertainty_level": 3
+      }
+    ],
+    "656": [
+      {
+        "lego": "S0656L01",
+        "phrase_index": 1,
+        "known": "you all",
+        "target_used": "你们大家",
+        "possible_targets": [
+          "你们",
+          "你们都",
+          "你们大家",
+          "你们大家都"
+        ],
+        "uncertainty_level": 4
+      }
+    ],
+    "661": [
+      {
+        "lego": "S0661L01",
+        "phrase_index": 1,
+        "known": "you all",
+        "target_used": "你们大家都",
+        "possible_targets": [
+          "你们",
+          "你们都",
+          "你们大家",
+          "你们大家都"
+        ],
+        "uncertainty_level": 4
+      }
+    ],
+    "662": [
+      {
+        "lego": "S0662L01",
+        "phrase_index": 1,
+        "known": "you all",
+        "target_used": "你们大家都",
+        "possible_targets": [
+          "你们",
+          "你们都",
+          "你们大家",
+          "你们大家都"
+        ],
+        "uncertainty_level": 4
+      }
+    ]
+  }
+}

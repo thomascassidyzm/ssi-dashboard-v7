@@ -76,35 +76,64 @@ echo ""
 echo "Generated $PROMPT_COUNT orchestrator prompts"
 echo ""
 
-# Step 4: Launch Safari tabs
-echo "Step 3: Launching Claude Code in Safari..."
+# Step 4: Launch Safari tabs with prompts
+echo "Step 3: Launching Claude Code in Safari with prompts..."
 echo ""
-echo "Opening $PROMPT_COUNT tabs..."
+echo "Opening $PROMPT_COUNT tabs (5 second delay between each)..."
+echo ""
 
-# Open Claude Code in Safari (first tab)
-osascript <<EOF
+# Launch tabs one by one with prompts
+for ((i=1; i<=PROMPT_COUNT; i++)); do
+  WINDOW_NUM=$(printf "%02d" $i)
+  PROMPT_FILE=".claude/recovery_prompts/window_$WINDOW_NUM.md"
+
+  echo "Tab $i: Loading window_$WINDOW_NUM.md..."
+
+  # Copy prompt to clipboard
+  cat "$PROMPT_FILE" | pbcopy
+
+  if [ $i -eq 1 ]; then
+    # First tab - create new window
+    osascript <<EOF
 tell application "Safari"
   activate
-
-  -- Create new window with first tab
   make new document
   set URL of document 1 to "https://claude.ai/code"
-  delay 2
+  delay 5
 
-  -- Open additional tabs
-  repeat with i from 2 to $PROMPT_COUNT
-    tell window 1
-      make new tab at end of tabs
-      set current tab to last tab
-      set URL of current tab to "https://claude.ai/code"
-      delay 1
-    end tell
-  end repeat
-
-  -- Return to first tab
-  set current tab of window 1 to tab 1 of window 1
+  -- Paste the prompt
+  tell application "System Events"
+    keystroke "v" using command down
+  end tell
 end tell
 EOF
+  else
+    # Additional tabs
+    osascript <<EOF
+tell application "Safari"
+  activate
+  tell window 1
+    make new tab at end of tabs
+    set current tab to last tab
+    set URL of current tab to "https://claude.ai/code"
+  end tell
+  delay 5
+
+  -- Paste the prompt
+  tell application "System Events"
+    keystroke "v" using command down
+  end tell
+end tell
+EOF
+  fi
+
+  echo "   ✅ Pasted prompt for window $WINDOW_NUM"
+
+  # 5 second delay before next tab (except after last one)
+  if [ $i -lt $PROMPT_COUNT ]; then
+    sleep 5
+  fi
+done
 
 echo ""
 echo "✅ Launched $PROMPT_COUNT Safari tabs"
