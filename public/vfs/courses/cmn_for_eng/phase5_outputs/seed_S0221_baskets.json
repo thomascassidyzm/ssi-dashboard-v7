@@ -1,0 +1,193 @@
+{
+  "S0221L01": {
+    "lego": [
+      "I watched the football",
+      "我看了足球"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I watched the football",
+        "我看了足球",
+        null,
+        1
+      ],
+      [
+        "You watched the football",
+        "你看了足球",
+        null,
+        2
+      ],
+      [
+        "I watched the football yesterday",
+        "我昨天看了足球",
+        null,
+        3
+      ],
+      [
+        "He watched the football on Saturday",
+        "他星期六看了足球",
+        null,
+        3
+      ],
+      [
+        "I watched the football on the weekend",
+        "我周末看了足球",
+        null,
+        4
+      ],
+      [
+        "They watched the football on Saturday night",
+        "他们星期六晚上看了足球",
+        null,
+        4
+      ],
+      [
+        "I watched the football with friends on Saturday",
+        "我星期六和朋友看了足球",
+        null,
+        5
+      ],
+      [
+        "He watched the football on Saturday and relaxed",
+        "他星期六看了足球然后放松",
+        null,
+        5
+      ],
+      [
+        "I watched the football on Saturday night with a few friends",
+        "我星期六晚上和几个朋友看了足球",
+        null,
+        6
+      ],
+      [
+        "They watched the football on the weekend and had a good time",
+        "他们周末看了足球过得很好",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "看了",
+        "watched"
+      ],
+      [
+        "足球",
+        "the football"
+      ]
+    ]
+  },
+  "S0221L03": {
+    "lego": [
+      "watched a film",
+      "看了一部电影"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0221L01",
+        "known": "I watched the football",
+        "target": "我看了足球",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Watched a film",
+        "看了一部电影",
+        null,
+        1
+      ],
+      [
+        "I watched a film",
+        "我看了一部电影",
+        null,
+        2
+      ],
+      [
+        "I watched a film yesterday",
+        "我昨天看了一部电影",
+        null,
+        3
+      ],
+      [
+        "He watched a film on Saturday",
+        "他星期六看了一部电影",
+        null,
+        3
+      ],
+      [
+        "I watched a film on the weekend",
+        "我周末看了一部电影",
+        null,
+        4
+      ],
+      [
+        "They watched a film on Saturday night",
+        "他们星期六晚上看了一部电影",
+        null,
+        4
+      ],
+      [
+        "I watched a film with friends on Saturday",
+        "我星期六和朋友看了一部电影",
+        null,
+        5
+      ],
+      [
+        "He watched a film on Saturday and relaxed",
+        "他星期六看了一部电影然后放松",
+        null,
+        5
+      ],
+      [
+        "I watched a film on Saturday night with a few friends",
+        "我星期六晚上和几个朋友看了一部电影",
+        null,
+        6
+      ],
+      [
+        "I watched the football and then I watched a film.",
+        "我看了足球，然后看了一部电影。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "看了",
+        "watched"
+      ],
+      [
+        "一部",
+        "a"
+      ],
+      [
+        "电影",
+        "film"
+      ]
+    ]
+  }
+}
