@@ -1,0 +1,899 @@
+{
+  "S0512L01": {
+    "lego": [
+      "I fetch the keys",
+      "我去拿钥匙"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙",
+        null,
+        1
+      ],
+      [
+        "I hate when I fetch the keys",
+        "我讨厌我去拿钥匙",
+        null,
+        2
+      ],
+      [
+        "I fetch the keys around here",
+        "我在这附近去拿钥匙",
+        null,
+        3
+      ],
+      [
+        "She's gone to look for me when I fetch the keys",
+        "她去找我当我去拿钥匙",
+        null,
+        3
+      ],
+      [
+        "I fetch the keys so that I don't get left behind",
+        "我去拿钥匙这样我就不会被落下",
+        null,
+        4
+      ],
+      [
+        "Years ago I fetch the keys around here",
+        "多年前我在这附近去拿钥匙",
+        null,
+        4
+      ],
+      [
+        "I fetch the keys before we moved to the city",
+        "我们搬到城市之前我去拿钥匙",
+        null,
+        5
+      ],
+      [
+        "She's gone to look for somewhere safe while I fetch the keys",
+        "她去找一个安全的地方当我去拿钥匙",
+        null,
+        6
+      ],
+      [
+        "Years ago before we moved, I used to fetch the keys around here",
+        "多年前我们搬家之前，我以前在这附近去拿钥匙",
+        null,
+        7
+      ],
+      [
+        "I hate making trouble but I fetch the keys so that I don't get left behind",
+        "我讨厌制造麻烦但我去拿钥匙这样我就不会被落下",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L01",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0512L02": {
+    "lego": [
+      "go fetch",
+      "去拿"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Go fetch",
+        "去拿",
+        null,
+        1
+      ],
+      [
+        "I go fetch the keys",
+        "我去拿钥匙",
+        null,
+        2
+      ],
+      [
+        "She's gone to fetch the news",
+        "她去拿这个消息",
+        null,
+        3
+      ],
+      [
+        "I hate when I go fetch",
+        "我讨厌我去拿",
+        null,
+        3
+      ],
+      [
+        "I go fetch the keys around here",
+        "我在这附近去拿钥匙",
+        null,
+        4
+      ],
+      [
+        "Years ago I used to go fetch",
+        "多年前我以前去拿",
+        null,
+        4
+      ],
+      [
+        "She's gone to fetch the keys before we moved",
+        "我们搬家之前她去拿钥匙",
+        null,
+        5
+      ],
+      [
+        "I go fetch the keys so that I don't get left behind",
+        "我去拿钥匙这样我就不会被落下",
+        null,
+        6
+      ],
+      [
+        "Years ago before we moved to the city, I used to go fetch",
+        "多年前我们搬到城市之前，我以前去拿",
+        null,
+        7
+      ],
+      [
+        "She's gone to fetch somewhere safe to park the car around here",
+        "她去拿一个安全的地方在这附近停车",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L02",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0512L03": {
+    "lego": [
+      "keys",
+      "钥匙"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙"
+      ],
+      [
+        "go fetch",
+        "去拿"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Keys",
+        "钥匙",
+        null,
+        1
+      ],
+      [
+        "I fetch the keys",
+        "我去拿钥匙",
+        null,
+        2
+      ],
+      [
+        "I hate the keys",
+        "我讨厌钥匙",
+        null,
+        2
+      ],
+      [
+        "She's gone to look for the keys",
+        "她去找钥匙",
+        null,
+        3
+      ],
+      [
+        "I go fetch the keys around here",
+        "我在这附近去拿钥匙",
+        null,
+        4
+      ],
+      [
+        "That one's mine, the keys",
+        "那个是我的，钥匙",
+        null,
+        4
+      ],
+      [
+        "Years ago I used to fetch the keys around here",
+        "多年前我以前在这附近拿钥匙",
+        null,
+        5
+      ],
+      [
+        "She's gone to look for somewhere safe for the keys",
+        "她去找一个安全的地方放钥匙",
+        null,
+        6
+      ],
+      [
+        "I go fetch the keys so that I don't get left behind",
+        "我去拿钥匙这样我就不会被落下",
+        null,
+        6
+      ],
+      [
+        "Years ago before we moved to the city, I used to fetch the keys",
+        "多年前我们搬到城市之前，我以前拿钥匙",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L03",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    }
+  },
+  "S0512L04": {
+    "lego": [
+      "while/when",
+      "的时候"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙"
+      ],
+      [
+        "go fetch",
+        "去拿"
+      ],
+      [
+        "keys",
+        "钥匙"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "When",
+        "的时候",
+        null,
+        1
+      ],
+      [
+        "When I fetch the keys",
+        "我去拿钥匙的时候",
+        null,
+        2
+      ],
+      [
+        "When we moved to the city",
+        "我们搬到城市的时候",
+        null,
+        3
+      ],
+      [
+        "When she's gone to look for the keys",
+        "她去找钥匙的时候",
+        null,
+        3
+      ],
+      [
+        "When I go fetch the keys around here",
+        "我在这附近去拿钥匙的时候",
+        null,
+        4
+      ],
+      [
+        "Years ago when we moved",
+        "多年前我们搬家的时候",
+        null,
+        4
+      ],
+      [
+        "When I fetch the keys so that I don't get left behind",
+        "我去拿钥匙这样我就不会被落下的时候",
+        null,
+        5
+      ],
+      [
+        "Years ago when I used to live around here",
+        "多年前我以前住在这附近的时候",
+        null,
+        6
+      ],
+      [
+        "When she's gone to look for somewhere safe to park the car",
+        "她去找一个安全的地方停车的时候",
+        null,
+        6
+      ],
+      [
+        "Years ago before we moved to the city, when I used to fetch the keys",
+        "多年前我们搬到城市之前，我以前拿钥匙的时候",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L04",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0512L05": {
+    "lego": [
+      "while I fetch the keys",
+      "我去拿钥匙的时候"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙"
+      ],
+      [
+        "go fetch",
+        "去拿"
+      ],
+      [
+        "keys",
+        "钥匙"
+      ],
+      [
+        "while/when",
+        "的时候"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "While I fetch the keys",
+        "我去拿钥匙的时候",
+        null,
+        1
+      ],
+      [
+        "I hate while I fetch the keys",
+        "我讨厌我去拿钥匙的时候",
+        null,
+        2
+      ],
+      [
+        "She's gone to look while I fetch the keys",
+        "她去找我去拿钥匙的时候",
+        null,
+        3
+      ],
+      [
+        "That one's mine while I fetch the keys",
+        "那个是我的我去拿钥匙的时候",
+        null,
+        3
+      ],
+      [
+        "While I fetch the keys around here years ago",
+        "多年前我在这附近去拿钥匙的时候",
+        null,
+        4
+      ],
+      [
+        "She's gone to look for somewhere safe while I fetch the keys",
+        "她去找一个安全的地方我去拿钥匙的时候",
+        null,
+        4
+      ],
+      [
+        "While I fetch the keys so that I don't get left behind",
+        "我去拿钥匙的时候这样我就不会被落下",
+        null,
+        5
+      ],
+      [
+        "Years ago before we moved, while I fetch the keys around here",
+        "多年前我们搬家之前，我在这附近去拿钥匙的时候",
+        null,
+        6
+      ],
+      [
+        "I hate making trouble while I fetch the keys around here",
+        "我讨厌制造麻烦我在这附近去拿钥匙的时候",
+        null,
+        6
+      ],
+      [
+        "She's gone to look for somewhere safe to park the car while I fetch the keys",
+        "她去找一个安全的地方停车我去拿钥匙的时候",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L05",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0512L06": {
+    "lego": [
+      "can you",
+      "你能"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙"
+      ],
+      [
+        "go fetch",
+        "去拿"
+      ],
+      [
+        "keys",
+        "钥匙"
+      ],
+      [
+        "while/when",
+        "的时候"
+      ],
+      [
+        "while I fetch the keys",
+        "我去拿钥匙的时候"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Can you",
+        "你能",
+        null,
+        1
+      ],
+      [
+        "Can you fetch the keys",
+        "你能拿钥匙",
+        null,
+        2
+      ],
+      [
+        "Can you go fetch around here",
+        "你能在这附近去拿",
+        null,
+        3
+      ],
+      [
+        "Can you hate making trouble",
+        "你能讨厌制造麻烦",
+        null,
+        3
+      ],
+      [
+        "Can you fetch the keys while I'm here",
+        "你能拿钥匙我在这里的时候",
+        null,
+        4
+      ],
+      [
+        "Can you go fetch when we moved",
+        "你能去拿我们搬家的时候",
+        null,
+        4
+      ],
+      [
+        "Can you fetch the keys so that I don't get left behind",
+        "你能拿钥匙这样我就不会被落下",
+        null,
+        5
+      ],
+      [
+        "Can you go fetch while I look for somewhere safe",
+        "你能去拿我找一个安全的地方的时候",
+        null,
+        6
+      ],
+      [
+        "Can you fetch the keys years ago before we moved to the city",
+        "多年前我们搬到城市之前你能拿钥匙",
+        null,
+        7
+      ],
+      [
+        "Can you go fetch the keys while I look for somewhere safe to park the car",
+        "你能去拿钥匙我找一个安全的地方停车的时候",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L06",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0512L07": {
+    "lego": [
+      "hold the door open",
+      "把门开着"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙"
+      ],
+      [
+        "go fetch",
+        "去拿"
+      ],
+      [
+        "keys",
+        "钥匙"
+      ],
+      [
+        "while/when",
+        "的时候"
+      ],
+      [
+        "while I fetch the keys",
+        "我去拿钥匙的时候"
+      ],
+      [
+        "can you",
+        "你能"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Hold the door open",
+        "把门开着",
+        null,
+        1
+      ],
+      [
+        "Can you hold the door open",
+        "你能把门开着",
+        null,
+        2
+      ],
+      [
+        "I hate to hold the door open",
+        "我讨厌把门开着",
+        null,
+        3
+      ],
+      [
+        "Hold the door open while I fetch the keys",
+        "我去拿钥匙的时候把门开着",
+        null,
+        3
+      ],
+      [
+        "Can you hold the door open around here",
+        "你能在这附近把门开着",
+        null,
+        4
+      ],
+      [
+        "She's gone to hold the door open while I fetch the keys",
+        "她去把门开着我去拿钥匙的时候",
+        null,
+        4
+      ],
+      [
+        "Can you hold the door open so that I don't get left behind",
+        "你能把门开着这样我就不会被落下",
+        null,
+        5
+      ],
+      [
+        "Years ago I used to hold the door open while I fetch the keys",
+        "多年前我以前把门开着我去拿钥匙的时候",
+        null,
+        6
+      ],
+      [
+        "Can you hold the door open while I fetch the keys around here",
+        "你能把门开着我在这附近去拿钥匙的时候",
+        null,
+        6
+      ],
+      [
+        "She's gone to look for somewhere safe, can you hold the door open while I fetch the keys",
+        "她去找一个安全的地方，你能把门开着我去拿钥匙的时候",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L07",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0512L08": {
+    "lego": [
+      "can you hold the door open",
+      "你能把门开着吗"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I fetch the keys",
+        "我去拿钥匙"
+      ],
+      [
+        "go fetch",
+        "去拿"
+      ],
+      [
+        "keys",
+        "钥匙"
+      ],
+      [
+        "while/when",
+        "的时候"
+      ],
+      [
+        "while I fetch the keys",
+        "我去拿钥匙的时候"
+      ],
+      [
+        "can you",
+        "你能"
+      ],
+      [
+        "hold the door open",
+        "把门开着"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "Can you hold the door open",
+        "你能把门开着吗",
+        null,
+        1
+      ],
+      [
+        "Can you hold the door open please",
+        "你能把门开着吗请",
+        null,
+        2
+      ],
+      [
+        "Can you hold the door open around here",
+        "你能在这附近把门开着吗",
+        null,
+        3
+      ],
+      [
+        "Can you hold the door open while I fetch",
+        "我去拿的时候你能把门开着吗",
+        null,
+        3
+      ],
+      [
+        "Can you hold the door open while I fetch the keys",
+        "我去拿钥匙的时候你能把门开着吗",
+        null,
+        4
+      ],
+      [
+        "Years ago, can you hold the door open",
+        "多年前，你能把门开着吗",
+        null,
+        4
+      ],
+      [
+        "Can you hold the door open so that I don't get left behind",
+        "你能把门开着这样我就不会被落下吗",
+        null,
+        5
+      ],
+      [
+        "Can you hold the door open while I go fetch the keys around here",
+        "你能把门开着我在这附近去拿钥匙的时候吗",
+        null,
+        6
+      ],
+      [
+        "Before we moved to the city, can you hold the door open while I fetch the keys",
+        "我们搬到城市之前，你能把门开着我去拿钥匙的时候吗",
+        null,
+        7
+      ],
+      [
+        "Can you hold the door open while I fetch the keys?",
+        "我去拿钥匙的时候你能把门开着吗？",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0512L08",
+      "seed_context": {
+        "known": "Can you hold the door open while I fetch the keys?",
+        "target": "我去拿钥匙的时候你能把门开着吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
