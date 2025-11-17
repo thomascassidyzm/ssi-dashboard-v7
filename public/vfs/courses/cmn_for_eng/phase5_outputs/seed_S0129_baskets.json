@@ -1,0 +1,530 @@
+{
+  "S0129L01": {
+    "lego": [
+      "I'm so happy",
+      "我很高兴"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I'm so happy",
+        "我很高兴",
+        null,
+        1
+      ],
+      [
+        "I'm so happy now",
+        "我很高兴",
+        null,
+        2
+      ],
+      [
+        "I'm so happy you're like that",
+        "我很高兴你像那",
+        null,
+        3
+      ],
+      [
+        "I'm so happy I see you",
+        "我很高兴我见你",
+        null,
+        3
+      ],
+      [
+        "I'm so happy about that idea",
+        "我很高兴那个主意",
+        null,
+        4
+      ],
+      [
+        "I'm so happy you wanted to see",
+        "我很高兴你想见",
+        null,
+        4
+      ],
+      [
+        "I'm so happy you like this work",
+        "我很高兴你喜欢这个工作",
+        null,
+        5
+      ],
+      [
+        "I'm so happy I can see you",
+        "我很高兴我能见你",
+        null,
+        5
+      ],
+      [
+        "I'm so happy you're like someone I know",
+        "我很高兴你像我认识的人",
+        null,
+        6
+      ],
+      [
+        "I'm so happy I believe that's a good idea",
+        "我很高兴我相信那是个好主意",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "很",
+        "so/very"
+      ],
+      [
+        "高兴",
+        "happy"
+      ]
+    ]
+  },
+  "S0129L02": {
+    "lego": [
+      "so happy",
+      "很高兴"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0129L01",
+        "known": "I'm so happy",
+        "target": "我很高兴",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "So happy",
+        "很高兴",
+        null,
+        1
+      ],
+      [
+        "I'm so happy",
+        "我很高兴",
+        null,
+        2
+      ],
+      [
+        "You're so happy",
+        "你很高兴",
+        null,
+        3
+      ],
+      [
+        "I feel so happy",
+        "我感觉很高兴",
+        null,
+        3
+      ],
+      [
+        "I'm so happy you came",
+        "我很高兴你来",
+        null,
+        4
+      ],
+      [
+        "You're so happy about that",
+        "你很高兴那",
+        null,
+        4
+      ],
+      [
+        "I'm so happy I can see you",
+        "我很高兴我能见你",
+        null,
+        5
+      ],
+      [
+        "I feel so happy about this work",
+        "我感觉很高兴关于这个工作",
+        null,
+        6
+      ],
+      [
+        "I'm so happy you're like someone I know",
+        "我很高兴你像我认识的人",
+        null,
+        6
+      ],
+      [
+        "I believe you're so happy that's a good idea",
+        "我相信你很高兴那是个好主意",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "很",
+        "so"
+      ],
+      [
+        "高兴",
+        "happy"
+      ]
+    ]
+  },
+  "S0129L03": {
+    "lego": [
+      "you're doing so well",
+      "你做得这么好"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0129L01",
+        "known": "I'm so happy",
+        "target": "我很高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0129L02",
+        "known": "so happy",
+        "target": "很高兴",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "You're doing so well",
+        "你做得这么好",
+        null,
+        1
+      ],
+      [
+        "I'm doing so well",
+        "我做得这么好",
+        null,
+        2
+      ],
+      [
+        "I think you're doing so well",
+        "我认为你做得这么好",
+        null,
+        3
+      ],
+      [
+        "I'm happy you're doing well",
+        "我高兴你做得好",
+        null,
+        3
+      ],
+      [
+        "You're doing so well with that",
+        "你做得这么好那",
+        null,
+        4
+      ],
+      [
+        "I believe you're doing so well",
+        "我相信你做得这么好",
+        null,
+        4
+      ],
+      [
+        "I'm so happy you're doing so well",
+        "我很高兴你做得这么好",
+        null,
+        5
+      ],
+      [
+        "You're doing so well with this work",
+        "你做得这么好这个工作",
+        null,
+        5
+      ],
+      [
+        "I feel you're doing better than I felt before",
+        "我感觉你做得比我以前感觉的更好",
+        null,
+        6
+      ],
+      [
+        "I'm definitely doing better than last time we talked",
+        "我绝对做得比我们上次交谈时更好",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "做",
+        "do"
+      ],
+      [
+        "得",
+        "complement marker"
+      ],
+      [
+        "这么",
+        "so"
+      ],
+      [
+        "好",
+        "well"
+      ]
+    ]
+  },
+  "S0129L04": {
+    "lego": [
+      "doing so well",
+      "做得这么好"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0129L01",
+        "known": "I'm so happy",
+        "target": "我很高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0129L02",
+        "known": "so happy",
+        "target": "很高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0129L03",
+        "known": "you're doing so well",
+        "target": "你做得这么好",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Doing so well",
+        "做得这么好",
+        null,
+        1
+      ],
+      [
+        "I'm doing so well",
+        "我做得这么好",
+        null,
+        2
+      ],
+      [
+        "You're doing so well",
+        "你做得这么好",
+        null,
+        3
+      ],
+      [
+        "Doing so well with that",
+        "做得这么好那",
+        null,
+        3
+      ],
+      [
+        "I think you're doing so well",
+        "我认为你做得这么好",
+        null,
+        4
+      ],
+      [
+        "I'm happy doing so well",
+        "我高兴做得这么好",
+        null,
+        4
+      ],
+      [
+        "I'm so happy you're doing so well",
+        "我很高兴你做得这么好",
+        null,
+        5
+      ],
+      [
+        "I believe you're doing so well with this",
+        "我相信你做得这么好这",
+        null,
+        6
+      ],
+      [
+        "I feel doing so well is starting to feel easier",
+        "我感觉做得这么好开始感觉更容易",
+        null,
+        7
+      ],
+      [
+        "I'm excited about you doing so well with your work",
+        "我对你做得这么好你的工作感到兴奋",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "做",
+        "do"
+      ],
+      [
+        "得",
+        "complement marker"
+      ],
+      [
+        "这么",
+        "so"
+      ],
+      [
+        "好",
+        "well"
+      ]
+    ]
+  },
+  "S0129L05": {
+    "lego": [
+      "so well",
+      "这么好"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0129L01",
+        "known": "I'm so happy",
+        "target": "我很高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0129L02",
+        "known": "so happy",
+        "target": "很高兴",
+        "type": "M"
+      },
+      {
+        "id": "S0129L03",
+        "known": "you're doing so well",
+        "target": "你做得这么好",
+        "type": "M"
+      },
+      {
+        "id": "S0129L04",
+        "known": "doing so well",
+        "target": "做得这么好",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "So well",
+        "这么好",
+        null,
+        1
+      ],
+      [
+        "Doing so well",
+        "做得这么好",
+        null,
+        2
+      ],
+      [
+        "You're doing so well",
+        "你做得这么好",
+        null,
+        3
+      ],
+      [
+        "That idea is so good",
+        "那个主意这么好",
+        null,
+        3
+      ],
+      [
+        "I think you're doing so well",
+        "我认为你做得这么好",
+        null,
+        4
+      ],
+      [
+        "You're doing so well with that",
+        "你做得这么好那",
+        null,
+        4
+      ],
+      [
+        "I'm so happy you're doing so well",
+        "我很高兴你做得这么好",
+        null,
+        5
+      ],
+      [
+        "I believe your idea was so very good",
+        "我相信你的主意这么非常好",
+        null,
+        6
+      ],
+      [
+        "You're doing so well I feel very happy",
+        "你做得这么好我感觉很高兴",
+        null,
+        6
+      ],
+      [
+        "I'm so happy that you're doing so well.",
+        "我很高兴你做得这么好。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "这么",
+        "so"
+      ],
+      [
+        "好",
+        "well"
+      ]
+    ]
+  }
+}
