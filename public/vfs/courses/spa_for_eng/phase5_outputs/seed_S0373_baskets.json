@@ -1,0 +1,157 @@
+{
+  "legos": {
+    "S0373L01": {
+      "lego": [
+        "beautiful",
+        "hermoso"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "beautiful",
+          "hermoso"
+        ],
+        [
+          "beautiful horses",
+          "caballos hermosos"
+        ],
+        [
+          "a beautiful film",
+          "una película hermosa"
+        ],
+        [
+          "that place was beautiful",
+          "ese lugar era hermoso"
+        ],
+        [
+          "the tomatoes were very beautiful",
+          "los tomates eran muy hermosos"
+        ],
+        [
+          "I saw something beautiful on Wednesday",
+          "vi algo hermoso el miércoles"
+        ],
+        [
+          "the film I saw was beautiful",
+          "la película que vi era hermosa"
+        ],
+        [
+          "nobody told me it was beautiful",
+          "nadie me dijo que era hermoso"
+        ],
+        [
+          "I heard that the place was beautiful",
+          "escuché que el lugar era hermoso"
+        ],
+        [
+          "he wanted to create something beautiful",
+          "él quería crear algo hermoso"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0373L01",
+        "seed_context": {
+          "known": "Fue hermoso.",
+          "target": "It was beautiful."
+        }
+      },
+      "components": [
+        [
+          "hermoso",
+          "beautiful"
+        ]
+      ]
+    },
+    "S0373L02": {
+      "lego": [
+        "it was beautiful",
+        "fue hermoso"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0373L01",
+          "known": "beautiful",
+          "target": "hermoso",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "it was beautiful",
+          "fue hermoso"
+        ],
+        [
+          "I heard it was beautiful",
+          "escuché que fue hermoso"
+        ],
+        [
+          "the film was beautiful",
+          "la película fue hermosa"
+        ],
+        [
+          "that place was beautiful",
+          "ese lugar fue hermoso"
+        ],
+        [
+          "yes it was very beautiful",
+          "sí fue muy hermoso"
+        ],
+        [
+          "the film I saw was beautiful",
+          "la película que vi fue hermosa"
+        ],
+        [
+          "I heard that the place was beautiful",
+          "escuché que el lugar fue hermoso"
+        ],
+        [
+          "nobody told me it was beautiful",
+          "nadie me dijo que fue hermoso"
+        ],
+        [
+          "what she was trying to create was beautiful",
+          "lo que ella estaba intentando crear fue hermoso"
+        ],
+        [
+          "It was beautiful.",
+          "Fue hermoso."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0373L02",
+        "seed_context": {
+          "known": "Fue hermoso.",
+          "target": "It was beautiful."
+        }
+      },
+      "components": [
+        [
+          "fue",
+          "it was"
+        ],
+        [
+          "hermoso",
+          "beautiful"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "legos": {
+    "S0369L01": {
+      "lego": [
+        "I saw several",
+        "Vi varios"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Vi varios",
+          "I saw several",
+          null,
+          1
+        ],
+        [
+          "Vi varios caballos",
+          "I saw several horses",
+          null,
+          2
+        ],
+        [
+          "Vi varios en la carretera",
+          "I saw several on the road",
+          null,
+          3
+        ],
+        [
+          "Sí vi varios caballos",
+          "Yes I saw several horses",
+          null,
+          3
+        ],
+        [
+          "Vi varios caballos en la carretera",
+          "I saw several horses on the road",
+          null,
+          4
+        ],
+        [
+          "No vi varios en ese lugar",
+          "I didn't see several in that place",
+          null,
+          4
+        ],
+        [
+          "Vi varios caballos después de que te fuiste",
+          "I saw several horses after you left",
+          null,
+          5
+        ],
+        [
+          "Escuché que vi varios caballos en la carretera",
+          "I heard that I saw several horses on the road",
+          null,
+          6
+        ],
+        [
+          "Vi varios caballos en la carretera después de que te fuiste",
+          "I saw several horses on the road after you left",
+          null,
+          6
+        ],
+        [
+          "Tu amigo dijo que vi varios caballos en la carretera",
+          "Your friend said that I saw several horses on the road",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0369L02": {
+      "lego": [
+        "several horses",
+        "varios caballos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0369L01",
+          "known": "I saw several",
+          "target": "Vi varios",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "varios caballos",
+          "several horses",
+          null,
+          1
+        ],
+        [
+          "Vi varios caballos",
+          "I saw several horses",
+          null,
+          2
+        ],
+        [
+          "varios caballos en la carretera",
+          "several horses on the road",
+          null,
+          3
+        ],
+        [
+          "Vi varios caballos en ese lugar",
+          "I saw several horses in that place",
+          null,
+          3
+        ],
+        [
+          "Escuché que varios caballos estaban callados",
+          "I heard that several horses were quiet",
+          null,
+          4
+        ],
+        [
+          "Vi varios caballos en la carretera",
+          "I saw several horses on the road",
+          null,
+          4
+        ],
+        [
+          "Tu amigo dijo que varios caballos estaban en la carretera",
+          "Your friend said that several horses were on the road",
+          null,
+          5
+        ],
+        [
+          "Vi varios caballos después de que te fuiste",
+          "I saw several horses after you left",
+          null,
+          5
+        ],
+        [
+          "Escuché que varios caballos estaban en ese lugar",
+          "I heard that several horses were in that place",
+          null,
+          6
+        ],
+        [
+          "Vi varios caballos en la carretera después de girar a la izquierda",
+          "I saw several horses on the road after turning left",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "varios",
+          "several"
+        ],
+        [
+          "caballos",
+          "horses"
+        ]
+      ]
+    },
+    "S0369L03": {
+      "lego": [
+        "on the road",
+        "en la carretera"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0369L01",
+          "known": "I saw several",
+          "target": "Vi varios",
+          "type": "A"
+        },
+        {
+          "id": "S0369L02",
+          "known": "several horses",
+          "target": "varios caballos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "en la carretera",
+          "on the road",
+          null,
+          1
+        ],
+        [
+          "varios caballos en la carretera",
+          "several horses on the road",
+          null,
+          2
+        ],
+        [
+          "Vi varios en la carretera",
+          "I saw several on the road",
+          null,
+          3
+        ],
+        [
+          "Él estaba callado en la carretera",
+          "He was quiet on the road",
+          null,
+          3
+        ],
+        [
+          "Vi varios caballos en la carretera",
+          "I saw several horses on the road",
+          null,
+          4
+        ],
+        [
+          "Tu amigo estaba en la carretera",
+          "Your friend was on the road",
+          null,
+          4
+        ],
+        [
+          "Escuché que varios caballos estaban en la carretera",
+          "I heard that several horses were on the road",
+          null,
+          5
+        ],
+        [
+          "Vi varios caballos en la carretera después de que te fuiste",
+          "I saw several horses on the road after you left",
+          null,
+          6
+        ],
+        [
+          "Tu amigo dijo que varios caballos estaban en la carretera",
+          "Your friend said that several horses were on the road",
+          null,
+          6
+        ],
+        [
+          "Él podía girar a la izquierda en la carretera",
+          "He could turn left on the road",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "en",
+          "on"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "carretera",
+          "road"
+        ]
+      ]
+    },
+    "S0369L04": {
+      "lego": [
+        "several",
+        "varios"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0369L01",
+          "known": "I saw several",
+          "target": "Vi varios",
+          "type": "A"
+        },
+        {
+          "id": "S0369L02",
+          "known": "several horses",
+          "target": "varios caballos",
+          "type": "M"
+        },
+        {
+          "id": "S0369L03",
+          "known": "on the road",
+          "target": "en la carretera",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "varios",
+          "several",
+          null,
+          1
+        ],
+        [
+          "varios caballos",
+          "several horses",
+          null,
+          2
+        ],
+        [
+          "Vi varios caballos",
+          "I saw several horses",
+          null,
+          3
+        ],
+        [
+          "varios en la carretera",
+          "several on the road",
+          null,
+          3
+        ],
+        [
+          "Vi varios en ese lugar",
+          "I saw several in that place",
+          null,
+          4
+        ],
+        [
+          "varios caballos en la carretera",
+          "several horses on the road",
+          null,
+          4
+        ],
+        [
+          "Vi varios caballos en la carretera",
+          "I saw several horses on the road",
+          null,
+          5
+        ],
+        [
+          "Escuché que varios caballos estaban en ese lugar",
+          "I heard that several horses were in that place",
+          null,
+          6
+        ],
+        [
+          "Tu amigo dijo que varios caballos estaban callados",
+          "Your friend said that several horses were quiet",
+          null,
+          6
+        ],
+        [
+          "Vi varios caballos en la carretera después de girar a la izquierda",
+          "I saw several horses on the road after turning left",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

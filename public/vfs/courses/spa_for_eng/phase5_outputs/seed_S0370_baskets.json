@@ -1,0 +1,423 @@
+{
+  "legos": {
+    "S0370L01": {
+      "lego": [
+        "I didn't see",
+        "No vi"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I didn't see",
+          "No vi",
+          null,
+          1
+        ],
+        [
+          "I didn't see anything",
+          "No vi nada",
+          null,
+          2
+        ],
+        [
+          "I didn't see your friend",
+          "No vi a tu amigo",
+          null,
+          3
+        ],
+        [
+          "I didn't see him",
+          "No vi a él",
+          null,
+          3
+        ],
+        [
+          "I didn't see anyone else",
+          "No vi a nadie más",
+          null,
+          4
+        ],
+        [
+          "I didn't see what she said",
+          "No vi lo que ella dijo",
+          null,
+          5
+        ],
+        [
+          "I didn't see the horses yesterday",
+          "No vi los caballos ayer",
+          null,
+          5
+        ],
+        [
+          "I didn't see several horses there",
+          "No vi varios caballos allí",
+          null,
+          5
+        ],
+        [
+          "I didn't see anyone on the road",
+          "No vi a nadie en la carretera",
+          null,
+          6
+        ],
+        [
+          "I didn't see what he wanted to grow",
+          "No vi lo que él quería cultivar",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0370L01",
+        "seed_context": {
+          "known": "No vi a nadie que yo conocía.",
+          "target": "I didn't see anyone that I knew."
+        }
+      },
+      "components": [
+        [
+          "No",
+          "didn't"
+        ],
+        [
+          "vi",
+          "I see"
+        ]
+      ]
+    },
+    "S0370L02": {
+      "lego": [
+        "anyone that I knew",
+        "a nadie que yo conocía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't see",
+          "No vi"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Anyone that I knew",
+          "A nadie que yo conocía",
+          null,
+          1
+        ],
+        [
+          "I saw anyone that I knew",
+          "Vi a nadie que yo conocía",
+          null,
+          2
+        ],
+        [
+          "I didn't see anyone that I knew",
+          "No vi a nadie que yo conocía",
+          null,
+          3
+        ],
+        [
+          "Did you see anyone that I knew",
+          "Viste a nadie que yo conocía",
+          null,
+          3
+        ],
+        [
+          "I didn't see anyone that I knew there",
+          "No vi a nadie que yo conocía allí",
+          null,
+          4
+        ],
+        [
+          "I didn't see anyone that I knew yesterday",
+          "No vi a nadie que yo conocía ayer",
+          null,
+          4
+        ],
+        [
+          "I heard that nobody saw anyone that I knew",
+          "Escuché que nadie vio a nadie que yo conocía",
+          null,
+          5
+        ],
+        [
+          "I didn't see anyone that I knew after you left",
+          "No vi a nadie que yo conocía después de que te fuiste",
+          null,
+          5
+        ],
+        [
+          "I didn't see anyone that I knew on the road",
+          "No vi a nadie que yo conocía en la carretera",
+          null,
+          6
+        ],
+        [
+          "Yes I heard that I didn't see anyone that I knew",
+          "Sí escuché que no vi a nadie que yo conocía",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0370L02",
+        "seed_context": {
+          "known": "No vi a nadie que yo conocía.",
+          "target": "I didn't see anyone that I knew."
+        }
+      },
+      "components": [
+        [
+          "a",
+          ""
+        ],
+        [
+          "nadie",
+          "anyone"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "yo",
+          "I"
+        ],
+        [
+          "conocía",
+          "knew"
+        ]
+      ]
+    },
+    "S0370L03": {
+      "lego": [
+        "that I knew",
+        "que yo conocía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't see",
+          "No vi"
+        ],
+        [
+          "anyone that I knew",
+          "a nadie que yo conocía"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "That I knew",
+          "Que yo conocía",
+          null,
+          1
+        ],
+        [
+          "Anyone that I knew",
+          "Nadie que yo conocía",
+          null,
+          2
+        ],
+        [
+          "The place that I knew",
+          "El lugar que yo conocía",
+          null,
+          3
+        ],
+        [
+          "Your friend that I knew",
+          "Tu amigo que yo conocía",
+          null,
+          3
+        ],
+        [
+          "I didn't see anyone that I knew",
+          "No vi a nadie que yo conocía",
+          null,
+          4
+        ],
+        [
+          "I heard about the place that I knew",
+          "Escuché sobre el lugar que yo conocía",
+          null,
+          5
+        ],
+        [
+          "Did you see your friend that I knew",
+          "Viste a tu amigo que yo conocía",
+          null,
+          5
+        ],
+        [
+          "I didn't hear anything about anyone that I knew",
+          "No escuché nada sobre nadie que yo conocía",
+          null,
+          5
+        ],
+        [
+          "I didn't see the horses on the road that I knew",
+          "No vi los caballos en la carretera que yo conocía",
+          null,
+          6
+        ],
+        [
+          "Yes I heard that he saw your friend that I knew",
+          "Sí escuché que él vio a tu amigo que yo conocía",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0370L03",
+        "seed_context": {
+          "known": "No vi a nadie que yo conocía.",
+          "target": "I didn't see anyone that I knew."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "yo",
+          "I"
+        ],
+        [
+          "conocía",
+          "knew"
+        ]
+      ]
+    },
+    "S0370L04": {
+      "lego": [
+        "I knew",
+        "yo conocía"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I didn't see",
+          "No vi"
+        ],
+        [
+          "anyone that I knew",
+          "a nadie que yo conocía"
+        ],
+        [
+          "that I knew",
+          "que yo conocía"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I knew",
+          "Yo conocía",
+          null,
+          1
+        ],
+        [
+          "I knew him",
+          "Yo conocía a él",
+          null,
+          2
+        ],
+        [
+          "I knew your friend",
+          "Yo conocía a tu amigo",
+          null,
+          3
+        ],
+        [
+          "I knew that place",
+          "Yo conocía ese lugar",
+          null,
+          3
+        ],
+        [
+          "I knew that he didn't like it",
+          "Yo conocía que a él no le gustó",
+          null,
+          5
+        ],
+        [
+          "I knew what she said to him",
+          "Yo conocía lo que ella le dijo a él",
+          null,
+          4
+        ],
+        [
+          "I knew several horses on the road",
+          "Yo conocía varios caballos en la carretera",
+          null,
+          5
+        ],
+        [
+          "I didn't see anyone that I knew",
+          "No vi a nadie que yo conocía",
+          null,
+          4
+        ],
+        [
+          "I knew what he wanted to grow yesterday",
+          "Yo conocía lo que él quería cultivar ayer",
+          null,
+          6
+        ],
+        [
+          "Yes I heard that I knew your friend that was quiet",
+          "Sí escuché que yo conocía a tu amigo que estaba callado",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0370L04",
+        "seed_context": {
+          "known": "No vi a nadie que yo conocía.",
+          "target": "I didn't see anyone that I knew."
+        }
+      },
+      "components": [
+        [
+          "yo",
+          "I"
+        ],
+        [
+          "conocía",
+          "knew"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "legos": {
+    "S0371L01": {
+      "lego": [
+        "I went",
+        "fui"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I went",
+          "fui",
+          null,
+          1
+        ],
+        [
+          "I went yesterday",
+          "fui ayer",
+          null,
+          2
+        ],
+        [
+          "I went to school",
+          "fui a la escuela",
+          null,
+          3
+        ],
+        [
+          "I went home yesterday",
+          "fui a casa ayer",
+          null,
+          3
+        ],
+        [
+          "I went to the place",
+          "fui al lugar",
+          null,
+          4
+        ],
+        [
+          "I went there after you left",
+          "fui allí después de que te fuiste",
+          null,
+          4
+        ],
+        [
+          "I went to see him yesterday",
+          "fui a verlo ayer",
+          null,
+          5
+        ],
+        [
+          "I went to the place yesterday",
+          "fui al lugar ayer",
+          null,
+          5
+        ],
+        [
+          "I went home after you left",
+          "fui a casa después de que te fuiste",
+          null,
+          6
+        ],
+        [
+          "I went to see the horses on the road",
+          "fui a ver los caballos en la carretera",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0371L02": {
+      "lego": [
+        "I went to see",
+        "fui a ver"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "I went",
+          "target": "fui",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I went to see",
+          "fui a ver",
+          null,
+          1
+        ],
+        [
+          "I went to see him",
+          "fui a verlo",
+          null,
+          2
+        ],
+        [
+          "I went to see the horses",
+          "fui a ver los caballos",
+          null,
+          3
+        ],
+        [
+          "I went to see the tomatoes",
+          "fui a ver los tomates",
+          null,
+          4
+        ],
+        [
+          "I went to see what he wanted",
+          "fui a ver lo que él quería",
+          null,
+          5
+        ],
+        [
+          "I went to see the horses on the road",
+          "fui a ver los caballos en la carretera",
+          null,
+          6
+        ],
+        [
+          "I went to see several horses yesterday",
+          "fui a ver varios caballos ayer",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      },
+      "target_phrase_count": 7,
+      "components": [
+        [
+          "fui",
+          "I went"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "ver",
+          "see"
+        ]
+      ]
+    },
+    "S0371L03": {
+      "lego": [
+        "to see a film",
+        "a ver una película"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "I went",
+          "target": "fui",
+          "type": "A"
+        },
+        {
+          "id": "S0371L02",
+          "known": "I went to see",
+          "target": "fui a ver",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to see a film",
+          "a ver una película",
+          null,
+          1
+        ],
+        [
+          "I went to see a film",
+          "fui a ver una película",
+          null,
+          2
+        ],
+        [
+          "to see a film yesterday",
+          "a ver una película ayer",
+          null,
+          3
+        ],
+        [
+          "I went to see a film with him",
+          "fui a ver una película con él",
+          null,
+          4
+        ],
+        [
+          "I went to see a film yesterday after you left",
+          "fui a ver una película ayer después de que te fuiste",
+          null,
+          5
+        ],
+        [
+          "Did you hear I went to see a film",
+          "Escuchaste que fui a ver una película",
+          null,
+          6
+        ],
+        [
+          "I went to see a film but nobody told me",
+          "fui a ver una película pero nadie me dijo",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      },
+      "target_phrase_count": 7,
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "ver",
+          "see"
+        ],
+        [
+          "una",
+          "a"
+        ],
+        [
+          "película",
+          "film"
+        ]
+      ]
+    },
+    "S0371L04": {
+      "lego": [
+        "a film",
+        "una película"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "I went",
+          "target": "fui",
+          "type": "A"
+        },
+        {
+          "id": "S0371L02",
+          "known": "I went to see",
+          "target": "fui a ver",
+          "type": "M"
+        },
+        {
+          "id": "S0371L03",
+          "known": "to see a film",
+          "target": "a ver una película",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "a film",
+          "una película",
+          null,
+          1
+        ],
+        [
+          "I went to see a film",
+          "fui a ver una película",
+          null,
+          2
+        ],
+        [
+          "a film yesterday",
+          "una película ayer",
+          null,
+          3
+        ],
+        [
+          "I heard that a film",
+          "Escuché que una película",
+          null,
+          3
+        ],
+        [
+          "I went to see a film yesterday",
+          "fui a ver una película ayer",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_to_5_legos": 1
+      },
+      "target_phrase_count": 5,
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "película",
+          "film"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "legos": {
+    "S0366L01": {
+      "lego": [
+        "Did you hear",
+        "Escuchaste"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Did you hear",
+          "Escuchaste",
+          null,
+          1
+        ],
+        [
+          "Did you hear that",
+          "Escuchaste eso",
+          null,
+          2
+        ],
+        [
+          "Did you hear something",
+          "Escuchaste algo",
+          null,
+          2
+        ],
+        [
+          "Did you hear what she said",
+          "Escuchaste lo que ella dijo",
+          null,
+          3
+        ],
+        [
+          "Did you hear the message",
+          "Escuchaste el mensaje",
+          null,
+          2
+        ],
+        [
+          "Did you hear what your friend said",
+          "Escuchaste lo que dijo tu amigo",
+          null,
+          4
+        ],
+        [
+          "Did you hear that he wanted to talk",
+          "Escuchaste que él quería hablar",
+          null,
+          5
+        ],
+        [
+          "Did you hear what she said to him yesterday",
+          "Escuchaste lo que ella le dijo ayer",
+          null,
+          5
+        ],
+        [
+          "Did you hear that they had something important to discuss",
+          "Escuchaste que ellos tenían algo importante que discutir",
+          null,
+          6
+        ],
+        [
+          "Did you hear what he said after you left",
+          "Escuchaste lo que él dijo después de que te fuiste",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0366L02": {
+      "lego": [
+        "what he wanted to grow",
+        "lo que él quería cultivar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0366L01",
+          "known": "Did you hear",
+          "target": "Escuchaste",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what he wanted to grow",
+          "lo que él quería cultivar",
+          null,
+          1
+        ],
+        [
+          "Did you hear what he wanted to grow",
+          "Escuchaste lo que él quería cultivar",
+          null,
+          2
+        ],
+        [
+          "I heard what he wanted to grow",
+          "Escuché lo que él quería cultivar",
+          null,
+          3
+        ],
+        [
+          "what he wanted to grow here",
+          "lo que él quería cultivar aquí",
+          null,
+          3
+        ],
+        [
+          "I didn't hear what he wanted to grow",
+          "No escuché lo que él quería cultivar",
+          null,
+          3
+        ],
+        [
+          "Your friend heard what he wanted to grow",
+          "Tu amigo escuchó lo que él quería cultivar",
+          null,
+          4
+        ],
+        [
+          "Did you hear what he wanted to grow in that place",
+          "Escuchaste lo que él quería cultivar en ese lugar",
+          null,
+          5
+        ],
+        [
+          "I heard that he wanted to grow something important",
+          "Escuché que él quería cultivar algo importante",
+          null,
+          5
+        ],
+        [
+          "Your friend said that he heard what he wanted to grow",
+          "Tu amigo dijo que escuchó lo que él quería cultivar",
+          null,
+          6
+        ],
+        [
+          "Did you hear what he wanted to grow after you left",
+          "Escuchaste lo que él quería cultivar después de que te fuiste",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "él",
+          "he"
+        ],
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "cultivar",
+          "to grow"
+        ]
+      ]
+    },
+    "S0366L03": {
+      "lego": [
+        "he wanted to grow",
+        "él quería cultivar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0366L01",
+          "known": "Did you hear",
+          "target": "Escuchaste",
+          "type": "A"
+        },
+        {
+          "id": "S0366L02",
+          "known": "what he wanted to grow",
+          "target": "lo que él quería cultivar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "he wanted to grow",
+          "él quería cultivar",
+          null,
+          1
+        ],
+        [
+          "he wanted to grow tomatoes",
+          "él quería cultivar tomates",
+          null,
+          2
+        ],
+        [
+          "Did you hear what he wanted to grow?",
+          "¿Escuchaste lo que él quería cultivar?",
+          null,
+          3
+        ],
+        [
+          "I heard that he wanted to grow something",
+          "Escuché que él quería cultivar algo",
+          null,
+          4
+        ],
+        [
+          "Your friend said that he wanted to grow vegetables",
+          "Tu amigo dijo que él quería cultivar verduras",
+          null,
+          4
+        ],
+        [
+          "She said that he wanted to grow something important",
+          "Ella dijo que él quería cultivar algo importante",
+          null,
+          5
+        ],
+        [
+          "I didn't hear what he wanted to grow there",
+          "No escuché lo que él quería cultivar allí",
+          null,
+          5
+        ],
+        [
+          "Nobody told me that he wanted to grow anything",
+          "Nadie me dijo que él quería cultivar algo",
+          null,
+          6
+        ],
+        [
+          "Your friend told me that he wanted to grow a lot",
+          "Tu amigo me dijo que él quería cultivar mucho",
+          null,
+          6
+        ],
+        [
+          "Did you hear what he wanted to grow?",
+          "¿Escuchaste lo que él quería cultivar?",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "cultivar",
+          "to grow"
+        ]
+      ]
+    },
+    "S0366L04": {
+      "lego": [
+        "wanted to grow",
+        "quería cultivar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0366L01",
+          "known": "Did you hear",
+          "target": "Escuchaste",
+          "type": "A"
+        },
+        {
+          "id": "S0366L02",
+          "known": "what he wanted to grow",
+          "target": "lo que él quería cultivar",
+          "type": "M"
+        },
+        {
+          "id": "S0366L03",
+          "known": "he wanted to grow",
+          "target": "él quería cultivar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "wanted to grow",
+          "quería cultivar",
+          null,
+          1
+        ],
+        [
+          "wanted to grow tomatoes",
+          "quería cultivar tomates",
+          null,
+          2
+        ],
+        [
+          "She just wanted to grow something",
+          "Ella solo quería cultivar algo",
+          null,
+          3
+        ],
+        [
+          "I heard she wanted to grow vegetables",
+          "Escuché que ella quería cultivar verduras",
+          null,
+          4
+        ],
+        [
+          "Nobody wanted to grow anything else",
+          "Nadie quería cultivar algo más",
+          null,
+          4
+        ],
+        [
+          "Your friend said he wanted to grow a lot",
+          "Tu amigo dijo que quería cultivar mucho",
+          null,
+          5
+        ],
+        [
+          "I didn't hear that she wanted to grow that",
+          "No escuché que ella quería cultivar eso",
+          null,
+          5
+        ],
+        [
+          "They had something important they wanted to grow there",
+          "Ellos tenían algo importante que querían cultivar allí",
+          null,
+          6
+        ],
+        [
+          "She told me she wanted to grow something after you left",
+          "Ella me dijo que quería cultivar algo después de que te fuiste",
+          null,
+          7
+        ],
+        [
+          "Did you hear what she wanted to grow at that place?",
+          "¿Escuchaste lo que ella quería cultivar en ese lugar?",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "cultivar",
+          "to grow"
+        ]
+      ]
+    }
+  }
+}

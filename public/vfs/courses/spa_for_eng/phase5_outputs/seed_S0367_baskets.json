@@ -1,0 +1,381 @@
+{
+  "legos": {
+    "S0367L01": {
+      "lego": [
+        "No",
+        "No"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "No",
+          "No",
+          null,
+          1
+        ],
+        [
+          "No I didn't hear",
+          "No no escuché",
+          null,
+          2
+        ],
+        [
+          "No she didn't want that",
+          "No ella no quería eso",
+          null,
+          3
+        ],
+        [
+          "No he didn't like that place",
+          "No a él no le gustó ese lugar",
+          null,
+          4
+        ],
+        [
+          "No he was rather quiet",
+          "No él estaba bastante callado",
+          null,
+          4
+        ],
+        [
+          "No they didn't have anything to discuss",
+          "No ellos no tenían algo que discutir",
+          null,
+          5
+        ],
+        [
+          "No she just wanted to send a message",
+          "No ella solo quería enviar un mensaje",
+          null,
+          5
+        ],
+        [
+          "No your friend didn't say anything after you left",
+          "No tu amigo no dijo algo después de que te fuiste",
+          null,
+          6
+        ],
+        [
+          "No I didn't hear what she wanted to grow there",
+          "No no escuché lo que ella quería cultivar allí",
+          null,
+          6
+        ],
+        [
+          "No nobody told me that he felt like talking a lot",
+          "No nadie me dijo que él tenía ganas de hablar mucho",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0367L02": {
+      "lego": [
+        "nobody",
+        "nadie"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0367L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "nobody",
+          "nadie",
+          null,
+          1
+        ],
+        [
+          "nobody heard",
+          "nadie escuchó",
+          null,
+          2
+        ],
+        [
+          "No nobody wanted that",
+          "No nadie quería eso",
+          null,
+          3
+        ],
+        [
+          "Nobody said anything to him",
+          "Nadie le dijo algo a él",
+          null,
+          4
+        ],
+        [
+          "Nobody wanted to grow anything",
+          "Nadie quería cultivar algo",
+          null,
+          4
+        ],
+        [
+          "No nobody felt like talking after that",
+          "No nadie tenía ganas de hablar después de eso",
+          null,
+          5
+        ],
+        [
+          "Nobody heard what she wanted to discuss",
+          "Nadie escuchó lo que ella quería discutir",
+          null,
+          5
+        ],
+        [
+          "Nobody told me that he didn't like that place",
+          "Nadie me dijo que a él no le gustó ese lugar",
+          null,
+          6
+        ],
+        [
+          "No nobody could reach the top after you left",
+          "No nadie podía alcanzar la cima después de que te fuiste",
+          null,
+          6
+        ],
+        [
+          "Nobody wanted to send her a message about anything else",
+          "Nadie quería enviarle un mensaje sobre algo más",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0367L03": {
+      "lego": [
+        "nobody told me",
+        "nadie me dijo"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0367L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0367L02",
+          "known": "nobody",
+          "target": "nadie",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "nobody told me",
+          "nadie me dijo",
+          null,
+          1
+        ],
+        [
+          "No nobody told me",
+          "No nadie me dijo",
+          null,
+          2
+        ],
+        [
+          "nobody told me anything",
+          "nadie me dijo algo",
+          null,
+          3
+        ],
+        [
+          "Nobody told me that he wanted to grow tomatoes",
+          "Nadie me dijo que él quería cultivar tomates",
+          null,
+          4
+        ],
+        [
+          "Nobody told me what she said to him",
+          "Nadie me dijo lo que ella le dijo a él",
+          null,
+          4
+        ],
+        [
+          "No nobody told me that he could turn left",
+          "No nadie me dijo que él podía girar a la izquierda",
+          null,
+          5
+        ],
+        [
+          "Nobody told me anything about that important message",
+          "Nadie me dijo algo sobre ese mensaje importante",
+          null,
+          5
+        ],
+        [
+          "Nobody told me that your friend was rather quiet after you left",
+          "Nadie me dijo que tu amigo estaba bastante callado después de que te fuiste",
+          null,
+          6
+        ],
+        [
+          "No nobody told me that she couldn't reach the top there",
+          "No nadie me dijo que ella no podía alcanzar la cima allí",
+          null,
+          6
+        ],
+        [
+          "No nobody told me.",
+          "No nadie me dijo.",
+          null,
+          2
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "nadie",
+          "nobody"
+        ],
+        [
+          "me",
+          "me"
+        ],
+        [
+          "dijo",
+          "told"
+        ]
+      ]
+    },
+    "S0367L04": {
+      "lego": [
+        "told me",
+        "me dijo"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0367L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0367L02",
+          "known": "nobody",
+          "target": "nadie",
+          "type": "A"
+        },
+        {
+          "id": "S0367L03",
+          "known": "nobody told me",
+          "target": "nadie me dijo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "told me",
+          "me dijo",
+          null,
+          1
+        ],
+        [
+          "she told me",
+          "ella me dijo",
+          null,
+          2
+        ],
+        [
+          "nobody told me",
+          "nadie me dijo",
+          null,
+          3
+        ],
+        [
+          "your friend told me that",
+          "tu amigo me dijo eso",
+          null,
+          3
+        ],
+        [
+          "she told me anything else",
+          "ella me dijo algo más",
+          null,
+          4
+        ],
+        [
+          "he told me after you left",
+          "él me dijo después de que te fuiste",
+          null,
+          4
+        ],
+        [
+          "nobody told me that he wanted to grow tomatoes",
+          "nadie me dijo que él quería cultivar tomates",
+          null,
+          5
+        ],
+        [
+          "she told me what he said to her",
+          "ella me dijo lo que él le dijo a ella",
+          null,
+          5
+        ],
+        [
+          "No nobody told me.",
+          "No nadie me dijo.",
+          null,
+          2
+        ],
+        [
+          "your friend told me that he felt like talking a lot",
+          "tu amigo me dijo que él tenía ganas de hablar mucho",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "me",
+          "me"
+        ],
+        [
+          "dijo",
+          "told"
+        ]
+      ]
+    }
+  }
+}

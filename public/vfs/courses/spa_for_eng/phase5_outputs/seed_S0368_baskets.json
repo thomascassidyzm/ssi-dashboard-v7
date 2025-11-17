@@ -1,0 +1,291 @@
+{
+  "legos": {
+    "S0368L01": {
+      "lego": [
+        "Yes",
+        "Sí"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Yes",
+          "Sí",
+          null,
+          1
+        ],
+        [
+          "Yes I heard",
+          "Sí escuché",
+          null,
+          2
+        ],
+        [
+          "Yes he wanted that",
+          "Sí él quería eso",
+          null,
+          3
+        ],
+        [
+          "Yes he said anything else",
+          "Sí él dijo algo más",
+          null,
+          4
+        ],
+        [
+          "Yes your friend told me",
+          "Sí tu amigo me dijo",
+          null,
+          4
+        ],
+        [
+          "Yes she felt like talking a lot",
+          "Sí ella tenía ganas de hablar mucho",
+          null,
+          5
+        ],
+        [
+          "Yes I heard what she wanted to grow",
+          "Sí escuché lo que ella quería cultivar",
+          null,
+          5
+        ],
+        [
+          "Yes your friend said that he could turn left there",
+          "Sí tu amigo dijo que él podía girar a la izquierda allí",
+          null,
+          6
+        ],
+        [
+          "Yes I heard that he wanted to send her a message",
+          "Sí escuché que él quería enviarle un mensaje",
+          null,
+          6
+        ],
+        [
+          "Yes nobody told me that she couldn't reach the top after you left",
+          "Sí nadie me dijo que ella no podía alcanzar la cima después de que te fuiste",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0368L03": {
+      "lego": [
+        "he wanted to grow tomatoes",
+        "él quería cultivar tomates"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0368L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "he wanted to grow tomatoes",
+          "él quería cultivar tomates",
+          null,
+          1
+        ],
+        [
+          "Yes he wanted to grow tomatoes",
+          "Sí él quería cultivar tomates",
+          null,
+          2
+        ],
+        [
+          "I heard he wanted to grow tomatoes",
+          "Escuché que él quería cultivar tomates",
+          null,
+          3
+        ],
+        [
+          "your friend said he wanted to grow tomatoes",
+          "tu amigo dijo que él quería cultivar tomates",
+          null,
+          4
+        ],
+        [
+          "nobody told me he wanted to grow tomatoes",
+          "nadie me dijo que él quería cultivar tomates",
+          null,
+          4
+        ],
+        [
+          "Yes I heard that he wanted to grow tomatoes",
+          "Sí escuché que él quería cultivar tomates",
+          null,
+          5
+        ],
+        [
+          "she told me that he wanted to grow tomatoes there",
+          "ella me dijo que él quería cultivar tomates allí",
+          null,
+          5
+        ],
+        [
+          "your friend said that he wanted to grow tomatoes after you left",
+          "tu amigo dijo que él quería cultivar tomates después de que te fuiste",
+          null,
+          6
+        ],
+        [
+          "nobody told me anything about why he wanted to grow tomatoes",
+          "nadie me dijo algo sobre por qué él quería cultivar tomates",
+          null,
+          6
+        ],
+        [
+          "Yes I heard what your friend said about why he wanted to grow tomatoes",
+          "Sí escuché lo que tu amigo dijo sobre por qué él quería cultivar tomates",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "cultivar",
+          "to grow"
+        ],
+        [
+          "tomates",
+          "tomatoes"
+        ]
+      ]
+    },
+    "S0368L04": {
+      "lego": [
+        "wanted to grow tomatoes",
+        "quería cultivar tomates"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0368L01",
+          "known": "Yes",
+          "target": "Sí",
+          "type": "A"
+        },
+        {
+          "id": "S0368L03",
+          "known": "he wanted to grow tomatoes",
+          "target": "él quería cultivar tomates",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "wanted to grow tomatoes",
+          "quería cultivar tomates",
+          null,
+          1
+        ],
+        [
+          "he wanted to grow tomatoes",
+          "él quería cultivar tomates",
+          null,
+          2
+        ],
+        [
+          "Yes wanted to grow tomatoes",
+          "Sí quería cultivar tomates",
+          null,
+          3
+        ],
+        [
+          "she wanted to grow tomatoes there",
+          "ella quería cultivar tomates allí",
+          null,
+          3
+        ],
+        [
+          "I heard she wanted to grow tomatoes",
+          "Escuché que ella quería cultivar tomates",
+          null,
+          4
+        ],
+        [
+          "your friend wanted to grow tomatoes too",
+          "tu amigo quería cultivar tomates también",
+          null,
+          4
+        ],
+        [
+          "Yes I heard that she wanted to grow tomatoes",
+          "Sí escuché que ella quería cultivar tomates",
+          null,
+          5
+        ],
+        [
+          "nobody told me that he wanted to grow tomatoes",
+          "nadie me dijo que él quería cultivar tomates",
+          null,
+          5
+        ],
+        [
+          "your friend said that she wanted to grow tomatoes after you left",
+          "tu amigo dijo que ella quería cultivar tomates después de que te fuiste",
+          null,
+          6
+        ],
+        [
+          "Yes I heard what your friend said about who wanted to grow tomatoes there",
+          "Sí escuché lo que tu amigo dijo sobre quién quería cultivar tomates allí",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "cultivar",
+          "to grow"
+        ],
+        [
+          "tomates",
+          "tomatoes"
+        ]
+      ]
+    }
+  }
+}

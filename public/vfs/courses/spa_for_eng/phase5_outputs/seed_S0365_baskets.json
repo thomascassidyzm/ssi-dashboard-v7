@@ -1,0 +1,130 @@
+{
+  "S0365L01": {
+    "lego": ["I didn't hear", "No escuché"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I didn't hear that.", "No escuché eso.", null, 2],
+      ["I didn't hear anything.", "No escuché nada.", null, 2],
+      ["I didn't hear your friend talking.", "No escuché a tu amigo hablando.", null, 3],
+      ["I didn't hear what she said.", "No escuché lo que ella dijo.", null, 3],
+      ["I didn't hear that he didn't like that place.", "No escuché que a él no le gustó ese lugar.", null, 4],
+      ["I didn't hear that she wanted to send a message.", "No escuché que ella quería enviar un mensaje.", null, 4],
+      ["I didn't hear anything else after your friend said he could turn left.", "No escuché nada más después de que tu amigo dijo que podía girar a la izquierda.", null, 6],
+      ["I didn't hear that she felt like talking a lot about that important discussion.", "No escuché que ella tenía ganas de hablar mucho sobre esa discusión importante.", null, 6],
+      ["I didn't hear that he was rather quiet after you left that place.", "No escuché que él estaba bastante callado después de que te fuiste de ese lugar.", null, 5],
+      ["I didn't hear that she couldn't reach the top because she was quiet.", "No escuché que ella no podía alcanzar la cima porque estaba callada.", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0365L01",
+      "seed_context": {
+        "known": "No escuché lo que ella le dijo a él.",
+        "target": "I didn't hear what she said to him."
+      }
+    },
+    "components": [["No", "didn't"], ["escuché", "I hear"]]
+  },
+  "S0365L02": {
+    "lego": ["what she said to him", "lo que ella le dijo a él"],
+    "type": "M",
+    "current_seed_legos_available": ["S0365L01"],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["what she said to him", "lo que ella le dijo a él", null, 1],
+      ["I didn't hear what she said to him", "No escuché lo que ella le dijo a él", null, 2],
+      ["I heard what she said to him", "Escuché lo que ella le dijo a él", null, 3],
+      ["what she said to him yesterday", "lo que ella le dijo a él ayer", null, 3],
+      ["I wanted to hear what she said to him", "Quería escuchar lo que ella le dijo a él", null, 4],
+      ["Your friend heard what she said to him", "Tu amigo escuchó lo que ella le dijo a él", null, 4],
+      ["I didn't hear what she said to him after you left", "No escuché lo que ella le dijo a él después de que te fuiste", null, 5],
+      ["I heard that she wanted to tell him something important", "Escuché que ella quería decirle algo importante", null, 6],
+      ["Your friend said he didn't hear what she said to him", "Tu amigo dijo que no escuchó lo que ella le dijo a él", null, 6],
+      ["I didn't hear what she said to him about that place", "No escuché lo que ella le dijo a él sobre ese lugar", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0365L02",
+      "seed_context": {
+        "known": "I didn't hear what she said to him.",
+        "target": "No escuché lo que ella le dijo a él."
+      }
+    },
+    "components": [["lo que", "what"], ["ella", "she"], ["le", "to him"], ["dijo", "said"], ["a él", "to him"]]
+  },
+  "S0365L03": {
+    "lego": ["she said to him", "ella le dijo a él"],
+    "type": "M",
+    "current_seed_legos_available": ["S0365L01", "S0365L02"],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["she said to him", "ella le dijo a él", null, 1],
+      ["what she said to him", "lo que ella le dijo a él", null, 2],
+      ["I heard she said to him something", "Escuché que ella le dijo a él algo", null, 4],
+      ["she said to him yesterday", "ella le dijo a él ayer", null, 3],
+      ["I didn't hear what she said to him", "No escuché lo que ella le dijo a él", null, 3],
+      ["she said to him after the discussion", "ella le dijo a él después de la discusión", null, 4],
+      ["I wanted to know what she said to him", "Quería saber lo que ella le dijo a él", null, 5],
+      ["Your friend heard what she said to him yesterday", "Tu amigo escuchó lo que ella le dijo a él ayer", null, 5],
+      ["she said to him that something important happened", "ella le dijo a él que pasó algo importante", null, 6],
+      ["I didn't hear what she said to him about that woman", "No escuché lo que ella le dijo a él sobre esa mujer", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0365L03",
+      "seed_context": {
+        "known": "I didn't hear what she said to him.",
+        "target": "No escuché lo que ella le dijo a él."
+      }
+    },
+    "components": [["ella", "she"], ["le", "to him"], ["dijo", "said"], ["a él", "to him"]]
+  },
+  "S0365L04": {
+    "lego": ["said to him", "le dijo"],
+    "type": "M",
+    "current_seed_legos_available": ["S0365L01", "S0365L02", "S0365L03"],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["said to him", "le dijo", null, 1],
+      ["she said to him", "ella le dijo", null, 1],
+      ["I said to him something", "le dije a él algo", null, 3],
+      ["what she said to him", "lo que ella le dijo", null, 2],
+      ["Your friend said to him yesterday", "Tu amigo le dijo a él ayer", null, 4],
+      ["I heard what she said to him", "Escuché lo que ella le dijo", null, 3],
+      ["she said to him that she couldn't go", "ella le dijo que no podía ir", null, 5],
+      ["I didn't hear what your friend said to him", "No escuché lo que tu amigo le dijo a él", null, 5],
+      ["she said to him that she wanted to send a message", "ella le dijo que quería enviar un mensaje", null, 6],
+      ["I didn't hear what she said to him.", "No escuché lo que ella le dijo a él.", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0365L04",
+      "seed_context": {
+        "known": "I didn't hear what she said to him.",
+        "target": "No escuché lo que ella le dijo a él."
+      }
+    },
+    "components": [["le", "to him"], ["dijo", "said"]]
+  }
+}

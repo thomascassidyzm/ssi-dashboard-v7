@@ -1,0 +1,130 @@
+{
+  "S0364L01": {
+    "lego": ["I heard that", "Escuché que"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I heard that he left.", "Escuché que él se fue.", null, 2],
+      ["I heard that she was quiet.", "Escuché que ella estaba callada.", null, 2],
+      ["I heard that your friend said something.", "Escuché que tu amigo dijo algo.", null, 3],
+      ["I heard that he could turn left.", "Escuché que él podía girar a la izquierda.", null, 3],
+      ["I heard that she wanted to send a message.", "Escuché que ella quería enviar un mensaje.", null, 4],
+      ["I heard that he didn't need to appear angry.", "Escuché que él no necesitaba aparecer enojado.", null, 4],
+      ["I heard that she felt like talking a lot after you left.", "Escuché que ella tenía ganas de hablar mucho después de que te fuiste.", null, 5],
+      ["I heard that your friend said she couldn't reach the top.", "Escuché que tu amigo dijo que ella no podía alcanzar la cima.", null, 6],
+      ["I heard that they had something important to discuss with that woman.", "Escuché que ellos tenían algo importante que discutir con esa mujer.", null, 6],
+      ["I heard that he was rather quiet after talking with you.", "Escuché que él estaba bastante callado después de hablar contigo.", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0364L01",
+      "seed_context": {
+        "known": "Escuché que a él no le gustó ese lugar.",
+        "target": "I heard that he didn't like that place."
+      }
+    },
+    "components": [["Escuché", "I heard"], ["que", "that"]]
+  },
+  "S0364L02": {
+    "lego": ["he didn't like that place", "a él no le gustó ese lugar"],
+    "type": "M",
+    "current_seed_legos_available": [["I heard that", "Escuché que"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["He didn't like that message.", "A él no le gustó ese mensaje.", null, 2],
+      ["He didn't like that woman.", "A él no le gustó esa mujer.", null, 2],
+      ["He didn't like that important discussion.", "A él no le gustó esa discusión importante.", null, 3],
+      ["She didn't like that place you know.", "A ella no le gustó ese lugar que conoces.", null, 3],
+      ["He didn't like that place after you left.", "A él no le gustó ese lugar después de que te fuiste.", null, 4],
+      ["I heard that he didn't like that place.", "Escuché que a él no le gustó ese lugar.", null, 4],
+      ["Your friend said that he didn't like that place on the left.", "Tu amigo dijo que a él no le gustó ese lugar a la izquierda.", null, 6],
+      ["She felt like talking because he didn't like that place.", "Ella tenía ganas de hablar porque a él no le gustó ese lugar.", null, 5],
+      ["He was rather quiet because he didn't like that place where they were talking.", "Él estaba bastante callado porque a él no le gustó ese lugar donde estaban hablando.", null, 6],
+      ["Did she need to appear angry because he didn't like that place?", "¿Necesitaba ella aparecer enojada porque a él no le gustó ese lugar?", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0364L02",
+      "seed_context": {
+        "known": "Escuché que a él no le gustó ese lugar.",
+        "target": "I heard that he didn't like that place."
+      }
+    },
+    "components": [["a él", "he"], ["no", "didn't"], ["le gustó", "like"], ["ese", "that"], ["lugar", "to place"]]
+  },
+  "S0364L03": {
+    "lego": ["didn't like that place", "no le gustó ese lugar"],
+    "type": "M",
+    "current_seed_legos_available": [["I heard that", "Escuché que"], ["he didn't like that place", "a él no le gustó ese lugar"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["She didn't like that message.", "No le gustó ese mensaje.", null, 2],
+      ["He didn't like that top.", "No le gustó esa cima.", null, 2],
+      ["I didn't like that quiet woman.", "No me gustó esa mujer callada.", null, 3],
+      ["Your friend didn't like that place.", "A tu amigo no le gustó ese lugar.", null, 3],
+      ["She didn't like that place you know.", "A ella no le gustó ese lugar que conoces.", null, 4],
+      ["He didn't like that place on the left.", "A él no le gustó ese lugar a la izquierda.", null, 4],
+      ["I heard that your friend didn't like that place after talking with her.", "Escuché que tu amigo no le gustó ese lugar después de hablar con ella.", null, 6],
+      ["She just wanted to say that she didn't like that place.", "Ella solo quería decir que no le gustó ese lugar.", null, 5],
+      ["They had something important to discuss because he didn't like that place.", "Ellos tenían algo importante que discutir porque no le gustó ese lugar.", null, 6],
+      ["Did she need to appear angry because she didn't like that place?", "¿Necesitaba ella aparecer enojada porque no le gustó ese lugar?", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0364L03",
+      "seed_context": {
+        "known": "Escuché que a él no le gustó ese lugar.",
+        "target": "I heard that he didn't like that place."
+      }
+    },
+    "components": [["no", "didn't"], ["le gustó", "like"], ["ese", "that"], ["lugar", "to place"]]
+  },
+  "S0364L04": {
+    "lego": ["that place", "ese lugar"],
+    "type": "M",
+    "current_seed_legos_available": [["I heard that", "Escuché que"], ["he didn't like that place", "a él no le gustó ese lugar"], ["didn't like that place", "no le gustó ese lugar"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["That place was quiet.", "Ese lugar estaba callado.", null, 2],
+      ["That place appears important.", "Ese lugar aparece importante.", null, 2],
+      ["Your friend knows that place.", "Tu amigo conoce ese lugar.", null, 3],
+      ["She felt like discussing that place.", "Ella tenía ganas de discutir ese lugar.", null, 3],
+      ["He could turn left to reach that place.", "Él podía girar a la izquierda para alcanzar ese lugar.", null, 4],
+      ["I heard that she didn't like that place.", "Escuché que a ella no le gustó ese lugar.", null, 4],
+      ["Your friend said that he just wanted to send a message about that place.", "Tu amigo dijo que él solo quería enviar un mensaje sobre ese lugar.", null, 6],
+      ["She had something important to discuss after you left that place.", "Ella tenía algo importante que discutir después de que te fuiste de ese lugar.", null, 5],
+      ["Did she need to appear angry when talking about that place?", "¿Necesitaba ella aparecer enojada cuando hablaba de ese lugar?", null, 5],
+      ["I heard that he didn't like that place.", "Escuché que a él no le gustó ese lugar.", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0364L04",
+      "seed_context": {
+        "known": "Escuché que a él no le gustó ese lugar.",
+        "target": "I heard that he didn't like that place."
+      }
+    },
+    "components": [["ese", "that"], ["lugar", "to place"]]
+  }
+}
