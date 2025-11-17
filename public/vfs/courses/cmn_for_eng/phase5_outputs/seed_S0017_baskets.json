@@ -1,0 +1,206 @@
+{
+  "legos": {
+    "S0017L01": {
+      "lego": ["she wants", "她想"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["她想", "she wants", null, 1],
+        ["她想试试", "she wants to try", null, 2],
+        ["她想说中文", "she wants to speak Chinese", null, 3],
+        ["她想记住一个词", "she wants to remember a word", null, 4],
+        ["她想今天试试", "she wants to try today", null, 3],
+        ["她想能够说话", "she'd like to be able to speak", null, 4],
+        ["她想今天说中文", "she wants to speak Chinese today", null, 5],
+        ["她想解释我的意思", "she wants to explain what I mean", null, 5],
+        ["她想记住整个句子", "she wants to remember the whole sentence", null, 6],
+        ["她想今天尽力试试", "she wants to try as hard as she can today", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0017L02": {
+      "lego": ["want to find out", "想找出"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0017L01", "known": "she wants", "target": "她想", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["想找出", "want to find out", null, 1],
+        ["她想找出", "she wants to find out", null, 2],
+        ["我想找出", "I want to find out", null, 2],
+        ["他想找出答案", "he wants to find out the answer", null, 3],
+        ["而且她想找出", "and she wants to find out", null, 3],
+        ["我想找出我的意思", "I want to find out what I mean", null, 4],
+        ["她想今天找出", "she wants to find out today", null, 4],
+        ["我不确定她想找出", "I'm not sure she wants to find out", null, 5],
+        ["而且我想找出答案", "and I want to find out the answer", null, 5],
+        ["她想能够找出明天会发生什么", "she'd like to be able to find out what's going to happen tomorrow", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0017L03": {
+      "lego": ["to find out", "找出"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0017L01", "known": "she wants", "target": "她想", "type": "M"},
+        {"id": "S0017L02", "known": "want to find out", "target": "想找出", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["找出", "find out", null, 1],
+        ["找出答案", "find out the answer", null, 2],
+        ["她想找出", "she wants to find out", null, 2],
+        ["我想找出答案", "I want to find out the answer", null, 3],
+        ["而且她想找出", "and she wants to find out", null, 3],
+        ["我想今天找出", "I want to find out today", null, 4],
+        ["她想找出我的意思", "she wants to find out what I mean", null, 4],
+        ["我不确定她想找出答案", "I'm not sure she wants to find out the answer", null, 6],
+        ["而且我想找出明天会发生什么", "and I want to find out what's going to happen tomorrow", null, 7],
+        ["她想能够找出整个句子", "she'd like to be able to find out the whole sentence", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0017L04": {
+      "lego": ["answer", "答案"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0017L01", "known": "she wants", "target": "她想", "type": "M"},
+        {"id": "S0017L02", "known": "want to find out", "target": "想找出", "type": "M"},
+        {"id": "S0017L03", "known": "to find out", "target": "找出", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["答案", "answer", null, 1],
+        ["答案是什么", "what the answer is", null, 2],
+        ["她想找出答案", "she wants to find out the answer", null, 3],
+        ["我想找出答案", "I want to find out the answer", null, 3],
+        ["而且我想找出答案", "and I want to find out the answer", null, 4],
+        ["我不确定答案是什么", "I'm not sure what the answer is", null, 4],
+        ["她想今天找出答案", "she wants to find out the answer today", null, 5],
+        ["我想能够找出答案", "I'd like to be able to find out the answer", null, 6],
+        ["而且她想找出答案", "and she wants to find out the answer", null, 5],
+        ["我不确定她想找出答案", "I'm not sure she wants to find out the answer", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0017L05": {
+      "lego": ["what is", "是什么"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0017L01", "known": "she wants", "target": "她想", "type": "M"},
+        {"id": "S0017L02", "known": "want to find out", "target": "想找出", "type": "M"},
+        {"id": "S0017L03", "known": "to find out", "target": "找出", "type": "M"},
+        {"id": "S0017L04", "known": "answer", "target": "答案", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["是什么", "what is", null, 1],
+        ["答案是什么", "what the answer is", null, 2],
+        ["我的意思是什么", "what my meaning is", null, 3],
+        ["她想找出答案是什么", "she wants to find out what the answer is", null, 4],
+        ["我不确定答案是什么", "I'm not sure what the answer is", null, 3],
+        ["而且答案是什么", "and what is the answer", null, 3],
+        ["明天会发生什么", "what's going to happen tomorrow", null, 4],
+        ["我想找出答案是什么", "I want to find out what the answer is", null, 5],
+        ["而且我想找出答案是什么", "and I want to find out what the answer is", null, 6],
+        ["我不确定她想找出答案是什么", "I'm not sure she wants to find out what the answer is", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0017L06": {
+      "lego": ["what the answer is", "答案是什么"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0017L01", "known": "she wants", "target": "她想", "type": "M"},
+        {"id": "S0017L02", "known": "want to find out", "target": "想找出", "type": "M"},
+        {"id": "S0017L03", "known": "to find out", "target": "找出", "type": "M"},
+        {"id": "S0017L04", "known": "answer", "target": "答案", "type": "A"},
+        {"id": "S0017L05", "known": "what is", "target": "是什么", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["答案是什么", "what the answer is", null, 1],
+        ["她想找出答案是什么", "she wants to find out what the answer is", null, 2],
+        ["我想找出答案是什么", "I want to find out what the answer is", null, 3],
+        ["我不确定答案是什么", "I'm not sure what the answer is", null, 3],
+        ["而且我想找出答案是什么", "and I want to find out what the answer is", null, 4],
+        ["她想知道答案是什么", "she wants to know what the answer is", null, 4],
+        ["而且她想找出答案是什么", "and she wants to find out what the answer is", null, 5],
+        ["我想今天找出答案是什么", "I want to find out what the answer is today", null, 6],
+        ["我不确定她想找出答案是什么", "I'm not sure she wants to find out what the answer is", null, 7],
+        ["而且我不确定答案是什么", "and I'm not sure what the answer is", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0017L07": {
+      "lego": ["to find out what the answer is", "找出答案是什么"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {"id": "S0017L01", "known": "she wants", "target": "她想", "type": "M"},
+        {"id": "S0017L02", "known": "want to find out", "target": "想找出", "type": "M"},
+        {"id": "S0017L03", "known": "to find out", "target": "找出", "type": "M"},
+        {"id": "S0017L04", "known": "answer", "target": "答案", "type": "A"},
+        {"id": "S0017L05", "known": "what is", "target": "是什么", "type": "M"},
+        {"id": "S0017L06", "known": "what the answer is", "target": "答案是什么", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["找出答案是什么", "find out what the answer is", null, 1],
+        ["她想找出答案是什么", "she wants to find out what the answer is", null, 2],
+        ["我想找出答案是什么", "I want to find out what the answer is", null, 3],
+        ["而且她想找出答案是什么", "and she wants to find out what the answer is", null, 4],
+        ["我不确定她想找出答案是什么", "I'm not sure she wants to find out what the answer is", null, 6],
+        ["他想找出答案是什么", "he wants to find out what the answer is", null, 4],
+        ["我想今天找出答案是什么", "I want to find out what the answer is today", null, 5],
+        ["而且我想找出答案是什么", "and I want to find out what the answer is", null, 6],
+        ["我想能够找出答案是什么", "I'd like to be able to find out what the answer is", null, 7],
+        ["而且我不确定她想找出答案是什么", "and I'm not sure she wants to find out what the answer is", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

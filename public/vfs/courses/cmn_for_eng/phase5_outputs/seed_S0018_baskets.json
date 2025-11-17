@@ -1,0 +1,308 @@
+{
+  "legos": {
+    "S0018L01": {
+      "lego": ["we want", "我们想"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["我们想", "we want", null, 1],
+        ["我们想试试", "we want to try", null, 2],
+        ["我们想说中文", "we want to speak Chinese", null, 3],
+        ["我们想记住一个词", "we want to remember a word", null, 4],
+        ["我们想今天试试", "we want to try today", null, 3],
+        ["我们想能够说话", "we'd like to be able to speak", null, 4],
+        ["我们想今天说中文", "we want to speak Chinese today", null, 5],
+        ["我们想解释我的意思", "we want to explain what I mean", null, 5],
+        ["我们想记住整个句子", "we want to remember the whole sentence", null, 6],
+        ["我们想今天尽力试试", "we want to try as hard as we can today", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L02": {
+      "lego": ["want to meet", "想见面"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["想见面", "want to meet", null, 1],
+        ["我们想见面", "we want to meet", null, 2],
+        ["我想见面", "I want to meet", null, 2],
+        ["他想今天见面", "he wants to meet today", null, 3],
+        ["而且我们想见面", "and we want to meet", null, 3],
+        ["她想明天见面", "she wants to meet tomorrow", null, 4],
+        ["我们想今天见面", "we want to meet today", null, 4],
+        ["我不确定我们想见面", "I'm not sure we want to meet", null, 5],
+        ["而且我想见面", "and I want to meet", null, 5],
+        ["我们想和其他人一起见面", "we want to meet with other people together", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L03": {
+      "lego": ["to meet", "见面"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["见面", "meet", null, 1],
+        ["今天见面", "meet today", null, 2],
+        ["我们想见面", "we want to meet", null, 2],
+        ["我想今天见面", "I want to meet today", null, 3],
+        ["而且我们想见面", "and we want to meet", null, 3],
+        ["他想明天见面", "he wants to meet tomorrow", null, 4],
+        ["我想和其他人见面", "I want to meet other people", null, 4],
+        ["我们想今天晚上见面", "we want to meet this evening", null, 5],
+        ["而且我想今天见面", "and I want to meet today", null, 5],
+        ["我不确定我们想见面", "I'm not sure we want to meet", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L05": {
+      "lego": ["evening", "晚上"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"},
+        {"id": "S0018L03", "known": "to meet", "target": "见面", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["晚上", "evening", null, 1],
+        ["今天晚上", "this evening", null, 2],
+        ["我们想今天晚上见面", "we want to meet this evening", null, 3],
+        ["我想今天晚上试试", "I want to try this evening", null, 4],
+        ["而且今天晚上", "and this evening", null, 3],
+        ["他想今天晚上说中文", "he wants to speak Chinese this evening", null, 5],
+        ["我们想今天晚上说话", "we want to speak this evening", null, 5],
+        ["我不确定我们今天晚上见面", "I'm not sure we meet this evening", null, 6],
+        ["而且我想今天晚上见面", "and I want to meet this evening", null, 6],
+        ["我们想今天晚上和其他人一起见面", "we want to meet with other people this evening", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L06": {
+      "lego": ["this evening", "今天晚上"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"},
+        {"id": "S0018L03", "known": "to meet", "target": "见面", "type": "M"},
+        {"id": "S0018L05", "known": "evening", "target": "晚上", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["今天晚上", "this evening", null, 1],
+        ["今天晚上见面", "meet this evening", null, 2],
+        ["我们想今天晚上见面", "we want to meet this evening", null, 3],
+        ["我想今天晚上试试", "I want to try this evening", null, 3],
+        ["而且我们想今天晚上见面", "and we want to meet this evening", null, 4],
+        ["他想今天晚上说中文", "he wants to speak Chinese this evening", null, 4],
+        ["我想今天晚上和其他人见面", "I want to meet other people this evening", null, 6],
+        ["我们想今天晚上说中文", "we want to speak Chinese this evening", null, 5],
+        ["而且我想今天晚上见面", "and I want to meet this evening", null, 5],
+        ["我不确定我们今天晚上见面", "I'm not sure we meet this evening", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L07": {
+      "lego": ["six o'clock", "六点"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"},
+        {"id": "S0018L03", "known": "to meet", "target": "见面", "type": "M"},
+        {"id": "S0018L05", "known": "evening", "target": "晚上", "type": "A"},
+        {"id": "S0018L06", "known": "this evening", "target": "今天晚上", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["六点", "six o'clock", null, 1],
+        ["六点见面", "meet at six o'clock", null, 2],
+        ["我们想六点见面", "we want to meet at six o'clock", null, 3],
+        ["晚上六点", "six o'clock in the evening", null, 2],
+        ["今天晚上六点", "six o'clock this evening", null, 3],
+        ["我想六点试试", "I want to try at six o'clock", null, 4],
+        ["而且我们想六点见面", "and we want to meet at six o'clock", null, 4],
+        ["我们想今天晚上六点见面", "we want to meet at six o'clock this evening", null, 5],
+        ["他想六点说中文", "he wants to speak Chinese at six o'clock", null, 5],
+        ["我不确定我们六点见面", "I'm not sure we meet at six o'clock", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L08": {
+      "lego": ["six o'clock in the evening", "晚上六点"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"},
+        {"id": "S0018L03", "known": "to meet", "target": "见面", "type": "M"},
+        {"id": "S0018L05", "known": "evening", "target": "晚上", "type": "A"},
+        {"id": "S0018L06", "known": "this evening", "target": "今天晚上", "type": "M"},
+        {"id": "S0018L07", "known": "six o'clock", "target": "六点", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["晚上六点", "six o'clock in the evening", null, 1],
+        ["晚上六点见面", "meet at six o'clock in the evening", null, 2],
+        ["我们想晚上六点见面", "we want to meet at six o'clock in the evening", null, 3],
+        ["今天晚上六点", "six o'clock this evening", null, 3],
+        ["而且我们想晚上六点见面", "and we want to meet at six o'clock in the evening", null, 4],
+        ["我想晚上六点试试", "I want to try at six o'clock in the evening", null, 4],
+        ["我们想今天晚上六点见面", "we want to meet at six o'clock this evening", null, 5],
+        ["他想晚上六点说中文", "he wants to speak Chinese at six o'clock in the evening", null, 6],
+        ["而且我想晚上六点见面", "and I want to meet at six o'clock in the evening", null, 6],
+        ["我不确定我们晚上六点见面", "I'm not sure we meet at six o'clock in the evening", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L09": {
+      "lego": ["six o'clock this evening", "今天晚上六点"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"},
+        {"id": "S0018L03", "known": "to meet", "target": "见面", "type": "M"},
+        {"id": "S0018L05", "known": "evening", "target": "晚上", "type": "A"},
+        {"id": "S0018L06", "known": "this evening", "target": "今天晚上", "type": "M"},
+        {"id": "S0018L07", "known": "six o'clock", "target": "六点", "type": "A"},
+        {"id": "S0018L08", "known": "six o'clock in the evening", "target": "晚上六点", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["今天晚上六点", "six o'clock this evening", null, 1],
+        ["今天晚上六点见面", "meet at six o'clock this evening", null, 2],
+        ["我们想今天晚上六点见面", "we want to meet at six o'clock this evening", null, 3],
+        ["而且今天晚上六点见面", "and meet at six o'clock this evening", null, 3],
+        ["而且我们想今天晚上六点见面", "and we want to meet at six o'clock this evening", null, 4],
+        ["我想今天晚上六点试试", "I want to try at six o'clock this evening", null, 4],
+        ["他想今天晚上六点说中文", "he wants to speak Chinese at six o'clock this evening", null, 6],
+        ["我不确定我们今天晚上六点见面", "I'm not sure we meet at six o'clock this evening", null, 7],
+        ["而且我想今天晚上六点见面", "and I want to meet at six o'clock this evening", null, 6],
+        ["我们想今天晚上六点和其他人见面", "we want to meet other people at six o'clock this evening", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L10": {
+      "lego": ["to meet at six o'clock", "六点见面"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"},
+        {"id": "S0018L03", "known": "to meet", "target": "见面", "type": "M"},
+        {"id": "S0018L05", "known": "evening", "target": "晚上", "type": "A"},
+        {"id": "S0018L06", "known": "this evening", "target": "今天晚上", "type": "M"},
+        {"id": "S0018L07", "known": "six o'clock", "target": "六点", "type": "A"},
+        {"id": "S0018L08", "known": "six o'clock in the evening", "target": "晚上六点", "type": "M"},
+        {"id": "S0018L09", "known": "six o'clock this evening", "target": "今天晚上六点", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["六点见面", "meet at six o'clock", null, 1],
+        ["我们想六点见面", "we want to meet at six o'clock", null, 2],
+        ["我想六点见面", "I want to meet at six o'clock", null, 2],
+        ["而且我们想六点见面", "and we want to meet at six o'clock", null, 3],
+        ["他想今天六点见面", "he wants to meet at six o'clock today", null, 4],
+        ["我们想今天晚上六点见面", "we want to meet at six o'clock this evening", null, 4],
+        ["而且我想六点见面", "and I want to meet at six o'clock", null, 5],
+        ["我不确定我们六点见面", "I'm not sure we meet at six o'clock", null, 5],
+        ["我们想明天晚上六点见面", "we want to meet at six o'clock tomorrow evening", null, 6],
+        ["而且我们想今天晚上六点见面", "and we want to meet at six o'clock this evening", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0018L11": {
+      "lego": ["to meet at six o'clock this evening", "今天晚上六点见面"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {"id": "S0018L01", "known": "we want", "target": "我们想", "type": "M"},
+        {"id": "S0018L02", "known": "want to meet", "target": "想见面", "type": "M"},
+        {"id": "S0018L03", "known": "to meet", "target": "见面", "type": "M"},
+        {"id": "S0018L05", "known": "evening", "target": "晚上", "type": "A"},
+        {"id": "S0018L06", "known": "this evening", "target": "今天晚上", "type": "M"},
+        {"id": "S0018L07", "known": "six o'clock", "target": "六点", "type": "A"},
+        {"id": "S0018L08", "known": "six o'clock in the evening", "target": "晚上六点", "type": "M"},
+        {"id": "S0018L09", "known": "six o'clock this evening", "target": "今天晚上六点", "type": "M"},
+        {"id": "S0018L10", "known": "to meet at six o'clock", "target": "六点见面", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["今天晚上六点见面", "meet at six o'clock this evening", null, 1],
+        ["我们想今天晚上六点见面", "we want to meet at six o'clock this evening", null, 2],
+        ["我想今天晚上六点见面", "I want to meet at six o'clock this evening", null, 3],
+        ["而且我们想今天晚上六点见面", "and we want to meet at six o'clock this evening", null, 4],
+        ["他想今天晚上六点见面", "he wants to meet at six o'clock this evening", null, 4],
+        ["我不确定我们今天晚上六点见面", "I'm not sure we meet at six o'clock this evening", null, 6],
+        ["而且我想今天晚上六点见面", "and I want to meet at six o'clock this evening", null, 6],
+        ["我们想和其他人今天晚上六点见面", "we want to meet other people at six o'clock this evening", null, 7],
+        ["而且他想今天晚上六点见面", "and he wants to meet at six o'clock this evening", null, 7],
+        ["我想能够今天晚上六点见面", "I'd like to be able to meet at six o'clock this evening", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}
