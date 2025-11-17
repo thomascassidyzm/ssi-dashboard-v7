@@ -1,0 +1,300 @@
+{
+  "legos": {
+    "S0254L01": {
+      "lego": [
+        "I've been",
+        "he estado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I've been",
+          "he estado",
+          null,
+          1
+        ],
+        [
+          "I've been ready",
+          "he estado preparado",
+          null,
+          2
+        ],
+        [
+          "I've been happy",
+          "he estado contento",
+          null,
+          2
+        ],
+        [
+          "I've been ready to start",
+          "he estado preparado para empezar",
+          null,
+          4
+        ],
+        [
+          "I've been ready to help you",
+          "he estado preparado para ayudarte",
+          null,
+          5
+        ],
+        [
+          "I've been happy with how much I've done",
+          "he estado contento con cuánto he hecho",
+          null,
+          7
+        ],
+        [
+          "I've been ready since this morning",
+          "he estado preparado desde esta mañana",
+          null,
+          5
+        ],
+        [
+          "I've been ready to start in a few minutes",
+          "he estado preparado para empezar en unos pocos minutos",
+          null,
+          9
+        ],
+        [
+          "I've been happy with how much I've done already",
+          "he estado contento con cuánto he hecho ya",
+          null,
+          8
+        ],
+        [
+          "I've been ready to help you before you go",
+          "he estado preparado para ayudarte antes de que te vayas",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0254L01",
+        "seed_context": {
+          "known": "He estado preparado desde esta mañana.",
+          "target": "I've been ready since this morning."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0254L02": {
+      "lego": [
+        "been ready",
+        "estado preparado"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've been",
+          "he estado"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Been ready",
+          "estado preparado",
+          null,
+          1
+        ],
+        [
+          "I've been ready",
+          "he estado preparado",
+          null,
+          2
+        ],
+        [
+          "You'll be ready",
+          "estarás preparado",
+          null,
+          2
+        ],
+        [
+          "I should be ready",
+          "debo estar preparado",
+          null,
+          2
+        ],
+        [
+          "I've been ready to start",
+          "he estado preparado para empezar",
+          null,
+          4
+        ],
+        [
+          "I should be ready to help you",
+          "debo estar preparado para ayudarte",
+          null,
+          5
+        ],
+        [
+          "I've been ready since this morning",
+          "he estado preparado desde esta mañana",
+          null,
+          5
+        ],
+        [
+          "You'll be ready to start in a few minutes",
+          "estarás preparado para empezar en unos pocos minutos",
+          null,
+          8
+        ],
+        [
+          "I've been ready to help you before you go",
+          "he estado preparado para ayudarte antes de que te vayas",
+          null,
+          8
+        ],
+        [
+          "I should be ready to start before you go",
+          "debo estar preparado para empezar antes de que te vayas",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0254L02",
+        "seed_context": {
+          "known": "He estado preparado desde esta mañana.",
+          "target": "I've been ready since this morning."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0254L04": {
+      "lego": [
+        "since this morning",
+        "desde esta mañana"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I've been",
+          "he estado"
+        ],
+        [
+          "been ready",
+          "estado preparado"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Since this morning",
+          "desde esta mañana",
+          null,
+          1
+        ],
+        [
+          "I've been ready since this morning",
+          "he estado preparado desde esta mañana",
+          null,
+          5
+        ],
+        [
+          "I wanted to help you since this morning",
+          "quería ayudarte desde esta mañana",
+          null,
+          6
+        ],
+        [
+          "I've been happy since this morning",
+          "he estado contento desde esta mañana",
+          null,
+          5
+        ],
+        [
+          "I should be ready since this morning",
+          "debo estar preparado desde esta mañana",
+          null,
+          5
+        ],
+        [
+          "I've been ready to start since this morning",
+          "he estado preparado para empezar desde esta mañana",
+          null,
+          7
+        ],
+        [
+          "I wanted to tell you something since this morning",
+          "quería decirte algo desde esta mañana",
+          null,
+          7
+        ],
+        [
+          "I've been happy with how much I've done since this morning",
+          "he estado contento con cuánto he hecho desde esta mañana",
+          null,
+          10
+        ],
+        [
+          "I should be ready to help you since this morning",
+          "debo estar preparado para ayudarte desde esta mañana",
+          null,
+          8
+        ],
+        [
+          "I've been ready since this morning",
+          "he estado preparado desde esta mañana",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 4,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0254L04",
+        "seed_context": {
+          "known": "He estado preparado desde esta mañana.",
+          "target": "I've been ready since this morning."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}
