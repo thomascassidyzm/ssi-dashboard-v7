@@ -1,0 +1,352 @@
+{
+  "legos": {
+    "S0016L01": {
+      "lego": ["he wants", "他想"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["he wants", "他想", null, 1],
+        ["he wants to try", "他想试试", null, 2],
+        ["he wants to speak Chinese", "他想说中文", null, 3],
+        ["he wants to speak Chinese today", "他想今天说中文", null, 4],
+        ["he wants to try today", "他想今天试试", null, 4],
+        ["he wants to speak with me", "他想和我说话", null, 5],
+        ["he wants to speak Chinese with me", "他想和我说中文", null, 6],
+        ["and he wants to speak Chinese", "而且他想说中文", null, 5],
+        ["he wants to be able to speak", "他想能够说话", null, 6],
+        ["he wants to speak Chinese very well", "他想中文说得很好", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["他", "he"], ["想", "want"]]
+    },
+    "S0016L02": {
+      "lego": ["want to come back", "想回来"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["want to come back", "想回来", null, 1],
+        ["he wants to come back", "他想回来", null, 2],
+        ["I want to come back", "我想回来", null, 3],
+        ["he wants to come back today", "他想今天回来", null, 4],
+        ["and he wants to come back", "而且他想回来", null, 4],
+        ["I want to come back tomorrow", "我想要明天回来", null, 5],
+        ["he wants to come back tomorrow", "他想明天回来", null, 5],
+        ["I'm not sure he wants to come back", "我不确定他想回来", null, 6],
+        ["and I want to come back tomorrow", "而且我想要明天回来", null, 6],
+        ["he wants to come back and speak Chinese", "他想回来说中文", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["想", "want"], ["回来", "come back"]]
+    },
+    "S0016L03": {
+      "lego": ["want to come back later", "想晚点回来"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["want to come back later", "想晚点回来", null, 1],
+        ["he wants to come back later", "他想晚点回来", null, 2],
+        ["I want to come back later", "我想晚点回来", null, 3],
+        ["and he wants to come back later", "而且他想晚点回来", null, 3],
+        ["I want to come back later tomorrow", "我想明天晚点回来", null, 4],
+        ["he wants to come back later tomorrow", "他想明天晚点回来", null, 4],
+        ["and I want to come back later", "而且我想晚点回来", null, 5],
+        ["I'm not sure he wants to come back later", "我不确定他想晚点回来", null, 6],
+        ["he wants to come back later and speak Chinese", "他想晚点回来说中文", null, 7],
+        ["and he wants to come back later tomorrow", "而且他想明天晚点回来", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["想", "want"], ["晚点", "later"], ["回来", "come back"]]
+    },
+    "S0016L04": {
+      "lego": ["to come back", "回来"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["come back", "回来", null, 1],
+        ["you come back", "你回来", null, 2],
+        ["he wants you to come back", "他想你回来", null, 3],
+        ["I want you to come back", "我想要你回来", null, 3],
+        ["you come back tomorrow", "你明天回来", null, 4],
+        ["and you come back", "而且你回来", null, 4],
+        ["I want you to come back tomorrow", "我想要你明天回来", null, 5],
+        ["he wants you to come back tomorrow", "他想你明天回来", null, 5],
+        ["and I want you to come back", "而且我想要你回来", null, 6],
+        ["I'm not sure you come back", "我不确定你回来", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["回", "return"], ["来", "come"]]
+    },
+    "S0016L05": {
+      "lego": ["later", "晚点"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"},
+        {"id": "S0016L04", "known": "to come back", "target": "回来", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["later", "晚点", null, 1],
+        ["speak Chinese later", "晚点说中文", null, 2],
+        ["you speak Chinese later", "你晚点说中文", null, 3],
+        ["I want you to speak Chinese later", "我想要你晚点说中文", null, 4],
+        ["he wants to speak Chinese later", "他想晚点说中文", null, 4],
+        ["and you speak Chinese later", "而且你晚点说中文", null, 5],
+        ["I want you to speak with me later", "我想要你晚点和我说话", null, 6],
+        ["he wants to come back later", "他想晚点回来", null, 5],
+        ["and he wants to speak Chinese later", "而且他想晚点说中文", null, 6],
+        ["I'm not sure you speak Chinese later", "我不确定你晚点说中文", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0016L06": {
+      "lego": ["other people", "其他人"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"},
+        {"id": "S0016L04", "known": "to come back", "target": "回来", "type": "M"},
+        {"id": "S0016L05", "known": "later", "target": "晚点", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["other people", "其他人", null, 1],
+        ["speak with other people", "和其他人说话", null, 2],
+        ["I speak Chinese with other people", "我和其他人说中文", null, 3],
+        ["I want to speak Chinese with other people", "我想和其他人说中文", null, 4],
+        ["he wants to speak with other people", "他想和其他人说话", null, 4],
+        ["and I speak Chinese with other people", "而且我和其他人说中文", null, 5],
+        ["I speak Chinese with other people tomorrow", "我明天和其他人说中文", null, 5],
+        ["I want you to speak with other people", "我想要你和其他人说话", null, 6],
+        ["he wants to speak Chinese with other people tomorrow", "他想明天和其他人说中文", null, 6],
+        ["and he wants to speak Chinese with other people", "而且他想和其他人说中文", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0016L07": {
+      "lego": ["together", "一起"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"},
+        {"id": "S0016L04", "known": "to come back", "target": "回来", "type": "M"},
+        {"id": "S0016L05", "known": "later", "target": "晚点", "type": "A"},
+        {"id": "S0016L06", "known": "other people", "target": "其他人", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["together", "一起", null, 1],
+        ["speak Chinese together", "一起说中文", null, 2],
+        ["I want to speak Chinese together", "我想一起说中文", null, 3],
+        ["you speak Chinese together with me", "你和我一起说中文", null, 4],
+        ["he wants to speak Chinese together", "他想一起说中文", null, 4],
+        ["and I want to speak Chinese together", "而且我想一起说中文", null, 5],
+        ["I want you to speak Chinese with me together", "我想要你和我一起说中文", null, 6],
+        ["he wants to speak Chinese together tomorrow", "他想明天一起说中文", null, 6],
+        ["and he wants to speak Chinese together", "而且他想一起说中文", null, 6],
+        ["I'm not sure you speak Chinese with me together", "我不确定你和我一起说中文", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0016L08": {
+      "lego": ["with everyone else", "和其他人一起"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"},
+        {"id": "S0016L04", "known": "to come back", "target": "回来", "type": "M"},
+        {"id": "S0016L05", "known": "later", "target": "晚点", "type": "A"},
+        {"id": "S0016L06", "known": "other people", "target": "其他人", "type": "A"},
+        {"id": "S0016L07", "known": "together", "target": "一起", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["with everyone else", "和其他人一起", null, 1],
+        ["speak Chinese with everyone else", "和其他人一起说中文", null, 2],
+        ["I speak Chinese with everyone else", "我和其他人一起说中文", null, 3],
+        ["I want to speak Chinese with everyone else", "我想和其他人一起说中文", null, 4],
+        ["he wants to speak with everyone else", "他想和其他人一起说话", null, 4],
+        ["and I speak Chinese with everyone else", "而且我和其他人一起说中文", null, 5],
+        ["I speak Chinese with everyone else tomorrow", "我明天和其他人一起说中文", null, 5],
+        ["I want you to speak Chinese with everyone else", "我想要你和其他人一起说中文", null, 6],
+        ["he wants to speak Chinese with everyone else tomorrow", "他想明天和其他人一起说中文", null, 6],
+        ["and he wants to speak Chinese with everyone else", "而且他想和其他人一起说中文", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["和", "with"], ["其他人", "other people"], ["一起", "together"]]
+    },
+    "S0016L09": {
+      "lego": ["to come back together", "一起回来"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"},
+        {"id": "S0016L04", "known": "to come back", "target": "回来", "type": "M"},
+        {"id": "S0016L05", "known": "later", "target": "晚点", "type": "A"},
+        {"id": "S0016L06", "known": "other people", "target": "其他人", "type": "A"},
+        {"id": "S0016L07", "known": "together", "target": "一起", "type": "A"},
+        {"id": "S0016L08", "known": "with everyone else", "target": "和其他人一起", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["come back together", "一起回来", null, 1],
+        ["you come back together", "你一起回来", null, 2],
+        ["he wants to come back together", "他想一起回来", null, 3],
+        ["I want you to come back together", "我想要你一起回来", null, 4],
+        ["you come back together tomorrow", "你明天一起回来", null, 4],
+        ["and he wants to come back together", "而且他想一起回来", null, 5],
+        ["he wants to come back together tomorrow", "他想明天一起回来", null, 5],
+        ["I want you to come back together tomorrow", "我想要你明天一起回来", null, 6],
+        ["and I want you to come back together", "而且我想要你一起回来", null, 6],
+        ["I'm not sure he wants to come back together", "我不确定他想一起回来", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["一起", "together"], ["回来", "come back"]]
+    },
+    "S0016L10": {
+      "lego": ["to come back with everyone else", "和其他人一起回来"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"},
+        {"id": "S0016L04", "known": "to come back", "target": "回来", "type": "M"},
+        {"id": "S0016L05", "known": "later", "target": "晚点", "type": "A"},
+        {"id": "S0016L06", "known": "other people", "target": "其他人", "type": "A"},
+        {"id": "S0016L07", "known": "together", "target": "一起", "type": "A"},
+        {"id": "S0016L08", "known": "with everyone else", "target": "和其他人一起", "type": "M"},
+        {"id": "S0016L09", "known": "to come back together", "target": "一起回来", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["come back with everyone else", "和其他人一起回来", null, 1],
+        ["you come back with everyone else", "你和其他人一起回来", null, 2],
+        ["he wants to come back with everyone else", "他想和其他人一起回来", null, 3],
+        ["I want you to come back with everyone else", "我想要你和其他人一起回来", null, 4],
+        ["you come back with everyone else tomorrow", "你明天和其他人一起回来", null, 4],
+        ["and he wants to come back with everyone else", "而且他想和其他人一起回来", null, 5],
+        ["he wants to come back with everyone else tomorrow", "他想明天和其他人一起回来", null, 5],
+        ["I want you to come back with everyone else tomorrow", "我想要你明天和其他人一起回来", null, 6],
+        ["and I want you to come back with everyone else", "而且我想要你和其他人一起回来", null, 6],
+        ["I'm not sure he wants to come back with everyone else", "我不确定他想和其他人一起回来", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["和", "with"], ["其他人", "other people"], ["一起", "together"], ["回来", "come back"]]
+    },
+    "S0016L11": {
+      "lego": ["to come back with everyone else later", "晚点和其他人一起回来"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {"id": "S0016L01", "known": "he wants", "target": "他想", "type": "M"},
+        {"id": "S0016L02", "known": "want to come back", "target": "想回来", "type": "M"},
+        {"id": "S0016L03", "known": "want to come back later", "target": "想晚点回来", "type": "M"},
+        {"id": "S0016L04", "known": "to come back", "target": "回来", "type": "M"},
+        {"id": "S0016L05", "known": "later", "target": "晚点", "type": "A"},
+        {"id": "S0016L06", "known": "other people", "target": "其他人", "type": "A"},
+        {"id": "S0016L07", "known": "together", "target": "一起", "type": "A"},
+        {"id": "S0016L08", "known": "with everyone else", "target": "和其他人一起", "type": "M"},
+        {"id": "S0016L09", "known": "to come back together", "target": "一起回来", "type": "M"},
+        {"id": "S0016L10", "known": "to come back with everyone else", "target": "和其他人一起回来", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["come back with everyone else later", "晚点和其他人一起回来", null, 1],
+        ["you come back with everyone else later", "你晚点和其他人一起回来", null, 2],
+        ["he wants to come back with everyone else later", "他想晚点和其他人一起回来", null, 3],
+        ["I want you to come back with everyone else later", "我想要你晚点和其他人一起回来", null, 4],
+        ["and he wants to come back with everyone else later", "而且他想晚点和其他人一起回来", null, 4],
+        ["he wants to come back with everyone else later tomorrow", "他想明天晚点和其他人一起回来", null, 5],
+        ["I want you to come back with everyone else later tomorrow", "我想要你明天晚点和其他人一起回来", null, 6],
+        ["and I want you to come back with everyone else later", "而且我想要你晚点和其他人一起回来", null, 6],
+        ["I'm not sure he wants to come back with everyone else later", "我不确定他想晚点和其他人一起回来", null, 7],
+        ["He wants to come back with everyone else later on.", "他想晚点和其他人一起回来。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["晚点", "later"], ["和", "with"], ["其他人", "other people"], ["一起", "together"], ["回来", "come back"]]
+    }
+  }
+}
