@@ -1,0 +1,501 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0053",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "known": "她想把他的信放进她的包里。",
+    "target": "She wanted to put his letter in her bag."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0043",
+      "known": "我没在想怎么回答。",
+      "target": "I wasn't thinking about how to answer."
+    },
+    {
+      "seed_id": "S0044",
+      "known": "或者我是否需要进步。",
+      "target": "Or if I need to improve."
+    },
+    {
+      "seed_id": "S0045",
+      "known": "我不需要知道所有事情。",
+      "target": "I don't need to know everything."
+    },
+    {
+      "seed_id": "S0046",
+      "known": "但我不担心犯错。",
+      "target": "But I don't worry about making mistakes."
+    },
+    {
+      "seed_id": "S0047",
+      "known": "因为我认为犯错是件好事。",
+      "target": "Because I think that it's a good thing to make mistakes."
+    },
+    {
+      "seed_id": "S0048",
+      "known": "我不在乎犯错。",
+      "target": "I don't care about making mistakes."
+    },
+    {
+      "seed_id": "S0049",
+      "known": "就是这样，如果你知道我的意思的话。",
+      "target": "It's like this, if you know what I mean."
+    },
+    {
+      "seed_id": "S0050",
+      "known": "我不是在试着尽快完成。",
+      "target": "I'm not trying to finish as quickly as possible."
+    },
+    {
+      "seed_id": "S0051",
+      "known": "我喜欢和朋友做有趣的事情。",
+      "target": "I enjoy doing interesting things with my friends."
+    },
+    {
+      "seed_id": "S0052",
+      "known": "他上周想给他的朋友写封信。",
+      "target": "He wanted to write a letter to his friend last week."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0044L03",
+      "known": "if/whether need to",
+      "target": "是否需要",
+      "type": "M"
+    },
+    {
+      "id": "S0044L04",
+      "known": "to improve",
+      "target": "进步",
+      "type": "A"
+    },
+    {
+      "id": "S0045L01",
+      "known": "I don't need to know",
+      "target": "我不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L02",
+      "known": "don't need to know",
+      "target": "不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L03",
+      "known": "everything",
+      "target": "所有事情",
+      "type": "M"
+    },
+    {
+      "id": "S0046L02",
+      "known": "I don't worry",
+      "target": "我不担心",
+      "type": "M"
+    },
+    {
+      "id": "S0046L03",
+      "known": "don't worry about making mistakes",
+      "target": "不担心犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0046L04",
+      "known": "making mistakes",
+      "target": "犯错",
+      "type": "A"
+    },
+    {
+      "id": "S0047L01",
+      "known": "because I think",
+      "target": "因为我认为",
+      "type": "M"
+    },
+    {
+      "id": "S0047L02",
+      "known": "it's a good thing to make mistakes",
+      "target": "犯错是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L03",
+      "known": "is a good thing",
+      "target": "是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L04",
+      "known": "good thing",
+      "target": "好事",
+      "type": "A"
+    },
+    {
+      "id": "S0048L01",
+      "known": "I don't care",
+      "target": "我不在乎",
+      "type": "M"
+    },
+    {
+      "id": "S0048L02",
+      "known": "don't care about making mistakes",
+      "target": "不在乎犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0049L01",
+      "known": "it's like this",
+      "target": "就是这样",
+      "type": "M"
+    },
+    {
+      "id": "S0049L02",
+      "known": "if you know",
+      "target": "如果你知道",
+      "type": "M"
+    },
+    {
+      "id": "S0049L04",
+      "known": "if you know what I mean",
+      "target": "如果你知道我的意思的话",
+      "type": "M"
+    },
+    {
+      "id": "S0050L01",
+      "known": "I'm not trying to",
+      "target": "我不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L02",
+      "known": "not trying to",
+      "target": "不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L03",
+      "known": "to finish as quickly as possible",
+      "target": "尽快完成",
+      "type": "M"
+    },
+    {
+      "id": "S0050L04",
+      "known": "as quickly as possible",
+      "target": "尽快",
+      "type": "A"
+    },
+    {
+      "id": "S0051L01",
+      "known": "I enjoy",
+      "target": "我喜欢",
+      "type": "A"
+    },
+    {
+      "id": "S0051L02",
+      "known": "with my friends",
+      "target": "和朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0051L03",
+      "known": "doing with my friends",
+      "target": "和朋友做",
+      "type": "M"
+    },
+    {
+      "id": "S0051L04",
+      "known": "do interesting things",
+      "target": "做有趣的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0051L05",
+      "known": "interesting things",
+      "target": "有趣的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0052L01",
+      "known": "last week",
+      "target": "上周",
+      "type": "A"
+    },
+    {
+      "id": "S0052L02",
+      "known": "to his friend",
+      "target": "给他的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0052L03",
+      "known": "his friend",
+      "target": "他的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0052L04",
+      "known": "write a letter",
+      "target": "写封信",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0053L01": {
+      "lego": [
+        "put his letter in her bag",
+        "把他的信放进她的包里"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Put his letter in her bag.", "把他的信放进她的包里。", null, 1],
+        ["I'm trying to put his letter in her bag.", "我在试着把他的信放进她的包里。", null, 2],
+        ["I enjoy put his letter in her bag.", "我喜欢把他的信放进她的包里。", null, 2],
+        ["I don't need to know put his letter in her bag.", "我不需要知道把他的信放进她的包里。", null, 4],
+        ["I wasn't thinking about put his letter in her bag.", "我没在想把他的信放进她的包里。", null, 3],
+        ["I was trying to put his letter in her bag last week.", "我上周在试着把他的信放进她的包里。", null, 4],
+        ["I don't worry about put his letter in her bag, it's like this.", "我不担心把他的信放进她的包里，就是这样。", null, 6],
+        ["His friend was trying to put his letter in her bag as quickly as possible.", "他的朋友在试着尽快把他的信放进她的包里。", null, 6],
+        ["I enjoy put his letter in her bag, if you know what I mean.", "我喜欢把他的信放进她的包里，如果你知道我的意思的话。", null, 7],
+        ["Because I think I was trying to put his letter in her bag with my friends last week.", "因为我认为我上周在试着和朋友把他的信放进她的包里。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0053L01",
+        "seed_context": {
+          "known": "她想把他的信放进她的包里。",
+          "target": "She wanted to put his letter in her bag."
+        }
+      },
+      "components": [
+        [
+          "把",
+          "(ba construction)"
+        ],
+        [
+          "他的",
+          "his"
+        ],
+        [
+          "信",
+          "letter"
+        ],
+        [
+          "放进",
+          "put in"
+        ],
+        [
+          "她的",
+          "her"
+        ],
+        [
+          "包",
+          "bag"
+        ],
+        [
+          "里",
+          "in/inside"
+        ]
+      ]
+    },
+    "S0053L02": {
+      "lego": [
+        "his letter",
+        "他的信"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0053L01",
+          "known": "put his letter in her bag",
+          "target": "把他的信放进她的包里",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["His letter.", "他的信。", null, 1],
+        ["I enjoy his letter.", "我喜欢他的信。", null, 2],
+        ["His letter last week.", "他的朋友上周。", null, 2],
+        ["I was thinking about his letter.", "我在想他的信。", null, 3],
+        ["I wasn't thinking about his letter last week.", "我上周没在想他的信。", null, 4],
+        ["I'm trying to put his letter in her bag.", "我在试着把他的信放进她的包里。", null, 4],
+        ["I don't need to know his letter, it's like this.", "我不需要知道他的信，就是这样。", null, 5],
+        ["His friend enjoys his letter with my friends.", "他的朋友和我的朋友喜欢他的信。", null, 5],
+        ["I was trying to put his letter in her bag as quickly as possible.", "我在试着尽快把他的信放进她的包里。", null, 6],
+        ["I don't worry about his letter because I think it's a good thing.", "我不担心他的信因为我认为是件好事。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0053L02",
+        "seed_context": {
+          "known": "她想把他的信放进她的包里。",
+          "target": "She wanted to put his letter in her bag."
+        }
+      },
+      "components": [
+        [
+          "他的",
+          "his"
+        ],
+        [
+          "信",
+          "letter"
+        ]
+      ]
+    },
+    "S0053L03": {
+      "lego": [
+        "in her bag",
+        "她的包里"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0053L01",
+          "known": "put his letter in her bag",
+          "target": "把他的信放进她的包里",
+          "type": "M"
+        },
+        {
+          "id": "S0053L02",
+          "known": "his letter",
+          "target": "他的信",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["In her bag.", "她的包里。", null, 1],
+        ["It's in her bag.", "它在她的包里。", null, 2],
+        ["His letter in her bag.", "他的信在她的包里。", null, 2],
+        ["I was thinking in her bag.", "我在想她的包里。", null, 3],
+        ["I enjoy in her bag with my friends.", "我喜欢和朋友在她的包里。", null, 4],
+        ["I'm trying to put his letter in her bag.", "我在试着把他的信放进她的包里。", null, 4],
+        ["I don't need to know in her bag, it's like this.", "我不需要知道她的包里，就是这样。", null, 5],
+        ["His friend was trying to put his letter in her bag last week.", "他的朋友上周在试着把他的信放进她的包里。", null, 6],
+        ["I wasn't thinking about put his letter in her bag as quickly as possible.", "我没在想尽快把他的信放进她的包里。", null, 6],
+        ["I enjoy doing interesting things in her bag, if you know what I mean.", "我喜欢在她的包里做有趣的事情，如果你知道我的意思的话。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0053L03",
+        "seed_context": {
+          "known": "她想把他的信放进她的包里。",
+          "target": "She wanted to put his letter in her bag."
+        }
+      },
+      "components": [
+        [
+          "她的",
+          "her"
+        ],
+        [
+          "包",
+          "bag"
+        ],
+        [
+          "里",
+          "in/inside"
+        ]
+      ]
+    },
+    "S0053L04": {
+      "lego": [
+        "her bag",
+        "她的包"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0053L01",
+          "known": "put his letter in her bag",
+          "target": "把他的信放进她的包里",
+          "type": "M"
+        },
+        {
+          "id": "S0053L02",
+          "known": "his letter",
+          "target": "他的信",
+          "type": "M"
+        },
+        {
+          "id": "S0053L03",
+          "known": "in her bag",
+          "target": "她的包里",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Her bag.", "她的包。", null, 1],
+        ["I enjoy her bag.", "我喜欢她的包。", null, 2],
+        ["Her bag is a good thing.", "她的包是件好事。", null, 3],
+        ["I was thinking about her bag last week.", "我上周在想她的包。", null, 4],
+        ["I don't need to know her bag.", "我不需要知道她的包。", null, 3],
+        ["His letter is in her bag.", "他的信在她的包里。", null, 3],
+        ["I'm trying to put his letter in her bag as quickly as possible.", "我在试着尽快把他的信放进她的包里。", null, 6],
+        ["His friend enjoys her bag with my friends, if you know what I mean.", "他的朋友和我的朋友喜欢她的包，如果你知道我的意思的话。", null, 7],
+        ["I don't worry about her bag because I think it's a good thing.", "我不担心她的包因为我认为是件好事。", null, 7],
+        ["She wanted to put his letter in her bag.", "她想把他的信放进她的包里。", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0053L04",
+        "seed_context": {
+          "known": "她想把他的信放进她的包里。",
+          "target": "She wanted to put his letter in her bag."
+        }
+      },
+      "components": [
+        [
+          "她的",
+          "her"
+        ],
+        [
+          "包",
+          "bag"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0053.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

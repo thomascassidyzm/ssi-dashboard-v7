@@ -1,0 +1,475 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0052",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "known": "他上周想给他的朋友写封信。",
+    "target": "He wanted to write a letter to his friend last week."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0042",
+      "known": "我开始觉得比昨晚好了。",
+      "target": "I was starting to feel better than last night."
+    },
+    {
+      "seed_id": "S0043",
+      "known": "我没在想怎么回答。",
+      "target": "I wasn't thinking about how to answer."
+    },
+    {
+      "seed_id": "S0044",
+      "known": "或者我是否需要进步。",
+      "target": "Or if I need to improve."
+    },
+    {
+      "seed_id": "S0045",
+      "known": "我不需要知道所有事情。",
+      "target": "I don't need to know everything."
+    },
+    {
+      "seed_id": "S0046",
+      "known": "但我不担心犯错。",
+      "target": "But I don't worry about making mistakes."
+    },
+    {
+      "seed_id": "S0047",
+      "known": "因为我认为犯错是件好事。",
+      "target": "Because I think that it's a good thing to make mistakes."
+    },
+    {
+      "seed_id": "S0048",
+      "known": "我不在乎犯错。",
+      "target": "I don't care about making mistakes."
+    },
+    {
+      "seed_id": "S0049",
+      "known": "就是这样，如果你知道我的意思的话。",
+      "target": "It's like this, if you know what I mean."
+    },
+    {
+      "seed_id": "S0050",
+      "known": "我不是在试着尽快完成。",
+      "target": "I'm not trying to finish as quickly as possible."
+    },
+    {
+      "seed_id": "S0051",
+      "known": "我喜欢和朋友做有趣的事情。",
+      "target": "I enjoy doing interesting things with my friends."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0043L02",
+      "known": "wasn't thinking",
+      "target": "没在想",
+      "type": "M"
+    },
+    {
+      "id": "S0043L03",
+      "known": "how to answer",
+      "target": "怎么回答",
+      "type": "M"
+    },
+    {
+      "id": "S0044L01",
+      "known": "or",
+      "target": "或者",
+      "type": "A"
+    },
+    {
+      "id": "S0044L02",
+      "known": "if I need to improve",
+      "target": "我是否需要进步",
+      "type": "M"
+    },
+    {
+      "id": "S0044L03",
+      "known": "if/whether need to",
+      "target": "是否需要",
+      "type": "M"
+    },
+    {
+      "id": "S0044L04",
+      "known": "to improve",
+      "target": "进步",
+      "type": "A"
+    },
+    {
+      "id": "S0045L01",
+      "known": "I don't need to know",
+      "target": "我不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L02",
+      "known": "don't need to know",
+      "target": "不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L03",
+      "known": "everything",
+      "target": "所有事情",
+      "type": "M"
+    },
+    {
+      "id": "S0046L02",
+      "known": "I don't worry",
+      "target": "我不担心",
+      "type": "M"
+    },
+    {
+      "id": "S0046L03",
+      "known": "don't worry about making mistakes",
+      "target": "不担心犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0046L04",
+      "known": "making mistakes",
+      "target": "犯错",
+      "type": "A"
+    },
+    {
+      "id": "S0047L01",
+      "known": "because I think",
+      "target": "因为我认为",
+      "type": "M"
+    },
+    {
+      "id": "S0047L02",
+      "known": "it's a good thing to make mistakes",
+      "target": "犯错是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L03",
+      "known": "is a good thing",
+      "target": "是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L04",
+      "known": "good thing",
+      "target": "好事",
+      "type": "A"
+    },
+    {
+      "id": "S0048L01",
+      "known": "I don't care",
+      "target": "我不在乎",
+      "type": "M"
+    },
+    {
+      "id": "S0048L02",
+      "known": "don't care about making mistakes",
+      "target": "不在乎犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0049L01",
+      "known": "it's like this",
+      "target": "就是这样",
+      "type": "M"
+    },
+    {
+      "id": "S0049L02",
+      "known": "if you know",
+      "target": "如果你知道",
+      "type": "M"
+    },
+    {
+      "id": "S0049L04",
+      "known": "if you know what I mean",
+      "target": "如果你知道我的意思的话",
+      "type": "M"
+    },
+    {
+      "id": "S0050L01",
+      "known": "I'm not trying to",
+      "target": "我不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L02",
+      "known": "not trying to",
+      "target": "不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L03",
+      "known": "to finish as quickly as possible",
+      "target": "尽快完成",
+      "type": "M"
+    },
+    {
+      "id": "S0050L04",
+      "known": "as quickly as possible",
+      "target": "尽快",
+      "type": "A"
+    },
+    {
+      "id": "S0051L01",
+      "known": "I enjoy",
+      "target": "我喜欢",
+      "type": "A"
+    },
+    {
+      "id": "S0051L02",
+      "known": "with my friends",
+      "target": "和朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0051L03",
+      "known": "doing with my friends",
+      "target": "和朋友做",
+      "type": "M"
+    },
+    {
+      "id": "S0051L04",
+      "known": "do interesting things",
+      "target": "做有趣的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0051L05",
+      "known": "interesting things",
+      "target": "有趣的事情",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0052L01": {
+      "lego": [
+        "last week",
+        "上周"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Last week.", "上周。", null, 1],
+        ["Last week I enjoyed.", "上周我喜欢。", null, 2],
+        ["I was starting to feel better last week.", "我上周开始觉得好了。", null, 3],
+        ["I was trying to improve last week.", "我上周在试着进步。", null, 3],
+        ["Last week I enjoyed with my friends.", "上周我喜欢和朋友。", null, 3],
+        ["I was making mistakes last week.", "我上周在犯错。", null, 3],
+        ["I was starting to feel better than last night last week.", "我上周开始觉得比昨晚好了。", null, 5],
+        ["I enjoyed doing interesting things with my friends last week.", "我上周喜欢和朋友做有趣的事情。", null, 5],
+        ["Last week I wasn't thinking about how to answer.", "上周我没在想怎么回答。", null, 5],
+        ["I was trying to finish as quickly as possible last week.", "我上周在试着尽快完成。", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0052L01",
+        "seed_context": {
+          "known": "他上周想给他的朋友写封信。",
+          "target": "He wanted to write a letter to his friend last week."
+        }
+      }
+    },
+    "S0052L02": {
+      "lego": [
+        "to his friend",
+        "给他的朋友"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0052L01",
+          "known": "last week",
+          "target": "上周",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["To his friend.", "给他的朋友。", null, 1],
+        ["To his friend last week.", "上周给他的朋友。", null, 2],
+        ["I was thinking to his friend.", "我在想给他的朋友。", null, 2],
+        ["I don't need to know to his friend.", "我不需要知道给他的朋友。", null, 4],
+        ["I enjoy to his friend.", "我喜欢给他的朋友。", null, 2],
+        ["I was trying to his friend last week.", "我上周在试着给他的朋友。", null, 4],
+        ["I was starting to feel to his friend last week.", "我上周开始觉得给他的朋友。", null, 5],
+        ["I enjoy doing interesting things to his friend.", "我喜欢做有趣的事情给他的朋友。", null, 4],
+        ["I wasn't thinking about how to answer to his friend last week.", "我上周没在想怎么回答给他的朋友。", null, 6],
+        ["I don't worry about making mistakes to his friend, it's like this.", "我不担心犯错给他的朋友，就是这样。", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0052L02",
+        "seed_context": {
+          "known": "他上周想给他的朋友写封信。",
+          "target": "He wanted to write a letter to his friend last week."
+        }
+      },
+      "components": [
+        [
+          "给",
+          "to"
+        ],
+        [
+          "他的",
+          "his"
+        ],
+        [
+          "朋友",
+          "friend"
+        ]
+      ]
+    },
+    "S0052L03": {
+      "lego": [
+        "his friend",
+        "他的朋友"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0052L01",
+          "known": "last week",
+          "target": "上周",
+          "type": "A"
+        },
+        {
+          "id": "S0052L02",
+          "known": "to his friend",
+          "target": "给他的朋友",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["His friend.", "他的朋友。", null, 1],
+        ["His friend last week.", "他的朋友上周。", null, 2],
+        ["I enjoy his friend.", "我喜欢他的朋友。", null, 2],
+        ["His friend was making mistakes.", "他的朋友在犯错。", null, 3],
+        ["I was thinking about his friend last week.", "我上周在想他的朋友。", null, 4],
+        ["His friend enjoys doing interesting things.", "他的朋友喜欢做有趣的事情。", null, 4],
+        ["I wasn't thinking about his friend last week.", "我上周没在想他的朋友。", null, 4],
+        ["His friend was trying to finish as quickly as possible.", "他的朋友在试着尽快完成。", null, 5],
+        ["I enjoy doing interesting things with his friend, if you know what I mean.", "我喜欢和他的朋友做有趣的事情，如果你知道我的意思的话。", null, 7],
+        ["His friend doesn't worry about making mistakes because it's a good thing.", "他的朋友不担心犯错因为是件好事。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0052L03",
+        "seed_context": {
+          "known": "他上周想给他的朋友写封信。",
+          "target": "He wanted to write a letter to his friend last week."
+        }
+      },
+      "components": [
+        [
+          "他的",
+          "his"
+        ],
+        [
+          "朋友",
+          "friend"
+        ]
+      ]
+    },
+    "S0052L04": {
+      "lego": [
+        "write a letter",
+        "写封信"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0052L01",
+          "known": "last week",
+          "target": "上周",
+          "type": "A"
+        },
+        {
+          "id": "S0052L02",
+          "known": "to his friend",
+          "target": "给他的朋友",
+          "type": "M"
+        },
+        {
+          "id": "S0052L03",
+          "known": "his friend",
+          "target": "他的朋友",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Write a letter.", "写封信。", null, 1],
+        ["I'm trying to write a letter.", "我在试着写封信。", null, 2],
+        ["I enjoy write a letter.", "我喜欢写封信。", null, 2],
+        ["I was trying to write a letter last week.", "我上周在试着写封信。", null, 4],
+        ["Write a letter to his friend.", "写封信给他的朋友。", null, 3],
+        ["I don't need to know write a letter.", "我不需要知道写封信。", null, 4],
+        ["I'm trying to write a letter as quickly as possible.", "我在试着尽快写封信。", null, 5],
+        ["I was trying to write a letter to his friend last week.", "我上周在试着写封信给他的朋友。", null, 5],
+        ["His friend enjoys write a letter, if you know what I mean.", "他的朋友喜欢写封信，如果你知道我的意思的话。", null, 6],
+        ["He wanted to write a letter to his friend last week.", "他上周想给他的朋友写封信。", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0052L04",
+        "seed_context": {
+          "known": "他上周想给他的朋友写封信。",
+          "target": "He wanted to write a letter to his friend last week."
+        }
+      },
+      "components": [
+        [
+          "写",
+          "write"
+        ],
+        [
+          "封",
+          "(classifier)"
+        ],
+        [
+          "信",
+          "letter"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0052.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

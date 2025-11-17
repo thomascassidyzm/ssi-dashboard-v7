@@ -1,0 +1,619 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0059",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "我知道下周我需要做什么。",
+    "target": "I know how to do what I need to do next week."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0049",
+      "known": "就是这样，如果你知道我的意思的话。",
+      "target": "It's like this, if you know what I mean."
+    },
+    {
+      "seed_id": "S0050",
+      "known": "我不是在试着尽快完成。",
+      "target": "I'm not trying to finish as quickly as possible."
+    },
+    {
+      "seed_id": "S0051",
+      "known": "我喜欢和朋友做有趣的事情。",
+      "target": "I enjoy doing interesting things with my friends."
+    },
+    {
+      "seed_id": "S0052",
+      "known": "他上周想给他的朋友写封信。",
+      "target": "He wanted to write a letter to his friend last week."
+    },
+    {
+      "seed_id": "S0053",
+      "known": "她想把他的信放进她的包里。",
+      "target": "She wanted to put his letter in her bag."
+    },
+    {
+      "seed_id": "S0054",
+      "known": "我们想多给你一点时间。",
+      "target": "We wanted to give you a little more time."
+    },
+    {
+      "seed_id": "S0055",
+      "known": "当我没睡好的时候我不喜欢醒来。",
+      "target": "I don't enjoy waking up when I didn't sleep very well."
+    },
+    {
+      "seed_id": "S0056",
+      "known": "这样我就能记住怎么说几个词。",
+      "target": "So I can remember how to say a few words."
+    },
+    {
+      "seed_id": "S0057",
+      "known": "我记不住怎么说我想说的话。",
+      "target": "I can't remember how to say what I wanted to say."
+    },
+    {
+      "seed_id": "S0058",
+      "known": "当你理解足够多的词的时候很有趣。",
+      "target": "It's interesting when you understand enough words."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0051L05",
+      "known": "interesting things",
+      "target": "有趣的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0052L01",
+      "known": "last week",
+      "target": "上周",
+      "type": "A"
+    },
+    {
+      "id": "S0052L02",
+      "known": "to his friend",
+      "target": "给他的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0052L03",
+      "known": "his friend",
+      "target": "他的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0052L04",
+      "known": "write a letter",
+      "target": "写封信",
+      "type": "M"
+    },
+    {
+      "id": "S0053L01",
+      "known": "put his letter in her bag",
+      "target": "把他的信放进她的包里",
+      "type": "M"
+    },
+    {
+      "id": "S0053L02",
+      "known": "his letter",
+      "target": "他的信",
+      "type": "M"
+    },
+    {
+      "id": "S0053L03",
+      "known": "in her bag",
+      "target": "她的包里",
+      "type": "M"
+    },
+    {
+      "id": "S0053L04",
+      "known": "her bag",
+      "target": "她的包",
+      "type": "M"
+    },
+    {
+      "id": "S0054L01",
+      "known": "we wanted",
+      "target": "我们想",
+      "type": "M"
+    },
+    {
+      "id": "S0054L02",
+      "known": "give you a little more time",
+      "target": "多给你一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0054L03",
+      "known": "give you a little time",
+      "target": "给你一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0054L04",
+      "known": "a little time",
+      "target": "一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0055L01",
+      "known": "when I didn't sleep very well",
+      "target": "当我没睡好的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0055L02",
+      "known": "didn't sleep well",
+      "target": "没睡好",
+      "type": "M"
+    },
+    {
+      "id": "S0055L03",
+      "known": "sleep well",
+      "target": "睡好",
+      "type": "M"
+    },
+    {
+      "id": "S0055L04",
+      "known": "don't enjoy",
+      "target": "不喜欢",
+      "type": "M"
+    },
+    {
+      "id": "S0055L05",
+      "known": "wake up",
+      "target": "醒来",
+      "type": "A"
+    },
+    {
+      "id": "S0056L01",
+      "known": "so I can",
+      "target": "这样我就能",
+      "type": "M"
+    },
+    {
+      "id": "S0056L02",
+      "known": "can remember",
+      "target": "能记住",
+      "type": "M"
+    },
+    {
+      "id": "S0056L03",
+      "known": "remember how to say",
+      "target": "记住怎么说",
+      "type": "M"
+    },
+    {
+      "id": "S0056L04",
+      "known": "how to say",
+      "target": "怎么说",
+      "type": "M"
+    },
+    {
+      "id": "S0056L05",
+      "known": "a few words",
+      "target": "几个词",
+      "type": "M"
+    },
+    {
+      "id": "S0057L01",
+      "known": "can't remember",
+      "target": "记不住",
+      "type": "M"
+    },
+    {
+      "id": "S0057L03",
+      "known": "what I wanted to say",
+      "target": "我想说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0057L04",
+      "known": "what to say / wanted to say",
+      "target": "想说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0058L01",
+      "known": "when you understand enough words",
+      "target": "当你理解足够多的词的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0058L02",
+      "known": "understand enough words",
+      "target": "理解足够多的词",
+      "type": "M"
+    },
+    {
+      "id": "S0058L03",
+      "known": "enough words",
+      "target": "足够多的词",
+      "type": "M"
+    },
+    {
+      "id": "S0058L04",
+      "known": "interesting / very interesting",
+      "target": "很有趣",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0059L01": {
+      "lego": [
+        "I know",
+        "我知道"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I know", "我知道", null, 1],
+        ["I know this", "我知道这", null, 2],
+        ["I know how to say", "我知道怎么说", null, 2],
+        ["I know a few words", "我知道几个词", null, 2],
+        ["I know enough words", "我知道足够多的词", null, 3],
+        ["I know what I wanted to say", "我知道我想说的话", null, 3],
+        ["I know how to write a letter", "我知道怎么写封信", null, 4],
+        ["I know how to do interesting things with my friends", "我知道怎么和朋友做有趣的事情", null, 5],
+        ["I know when you understand enough words, it's very interesting", "我知道当你理解足够多的词的时候很有趣", null, 6],
+        ["When I didn't sleep well, I know I can't remember what I wanted to say", "当我没睡好的时候，我知道我记不住我想说的话", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0059L01",
+        "seed_context": {
+          "known": "我知道下周我需要做什么。",
+          "target": "I know how to do what I need to do next week."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "知道",
+          "know"
+        ]
+      ]
+    },
+    "S0059L02": {
+      "lego": [
+        "know",
+        "知道"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0059L01",
+          "known": "I know",
+          "target": "我知道",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Know", "知道", null, 1],
+        ["I know", "我知道", null, 1],
+        ["You know", "你知道", null, 2],
+        ["He knows", "他知道", null, 2],
+        ["She knows how to say", "她知道怎么说", null, 3],
+        ["My friend knows enough words", "我的朋友知道足够多的词", null, 3],
+        ["You know what I wanted to say", "你知道我想说的话", null, 4],
+        ["He knows how to do interesting things", "他知道怎么做有趣的事情", null, 5],
+        ["She knows when you understand enough words", "她知道当你理解足够多的词的时候", null, 6],
+        ["My friend knows I can't remember how to say what I wanted to say", "我的朋友知道我记不住怎么说我想说的话", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0059L02",
+        "seed_context": {
+          "known": "我知道下周我需要做什么。",
+          "target": "I know how to do what I need to do next week."
+        }
+      }
+    },
+    "S0059L03": {
+      "lego": [
+        "next week",
+        "下周"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0059L01",
+          "known": "I know",
+          "target": "我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0059L02",
+          "known": "know",
+          "target": "知道",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Next week", "下周", null, 1],
+        ["I know next week", "我知道下周", null, 2],
+        ["Next week, I know", "下周我知道", null, 2],
+        ["He knows about next week", "他知道下周", null, 3],
+        ["Next week, you understand enough words", "下周你理解足够多的词", null, 3],
+        ["I know what to say next week", "我知道下周想说的话", null, 4],
+        ["Next week, I can remember enough words", "下周我能记住足够多的词", null, 5],
+        ["Next week, my friend knows how to write a letter", "下周我的朋友知道怎么写封信", null, 6],
+        ["I know next week I can't remember what I wanted to say", "我知道下周我记不住我想说的话", null, 7],
+        ["Next week, when you understand enough words, it's very interesting", "下周当你理解足够多的词的时候很有趣", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0059L03",
+        "seed_context": {
+          "known": "我知道下周我需要做什么。",
+          "target": "I know how to do what I need to do next week."
+        }
+      }
+    },
+    "S0059L04": {
+      "lego": [
+        "what I need to do next week",
+        "下周我需要做什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0059L01",
+          "known": "I know",
+          "target": "我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0059L02",
+          "known": "know",
+          "target": "知道",
+          "type": "A"
+        },
+        {
+          "id": "S0059L03",
+          "known": "next week",
+          "target": "下周",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["What I need to do next week", "下周我需要做什么", null, 1],
+        ["I know what I need to do next week", "我知道下周我需要做什么", null, 2],
+        ["What I need to do next week is interesting", "下周我需要做什么很有趣", null, 3],
+        ["I know what I need to do next week", "我知道下周我需要做什么", null, 3],
+        ["I can't remember what I need to do next week", "我记不住下周我需要做什么", null, 4],
+        ["I can remember what I need to do next week", "我能记住下周我需要做什么", null, 4],
+        ["I wanted to remember what I need to do next week", "我想记住下周我需要做什么", null, 5],
+        ["I don't know what I need to do next week", "我不知道下周我需要做什么", null, 5],
+        ["So I can remember what I need to do next week", "这样我就能记住下周我需要做什么", null, 6],
+        ["When I understand what I need to do next week it's interesting", "当我理解下周我需要做什么的时候很有趣", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0059L04",
+        "seed_context": {
+          "known": "我知道下周我需要做什么。",
+          "target": "I know how to do what I need to do next week."
+        }
+      },
+      "components": [
+        [
+          "下周",
+          "next week"
+        ],
+        [
+          "我",
+          "I"
+        ],
+        [
+          "需要",
+          "need"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0059L05": {
+      "lego": [
+        "need to do what / what...need to do",
+        "需要做什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0059L01",
+          "known": "I know",
+          "target": "我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0059L02",
+          "known": "know",
+          "target": "知道",
+          "type": "A"
+        },
+        {
+          "id": "S0059L03",
+          "known": "next week",
+          "target": "下周",
+          "type": "A"
+        },
+        {
+          "id": "S0059L04",
+          "known": "what I need to do next week",
+          "target": "下周我需要做什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["What I need to do", "我需要做什么", null, 1],
+        ["I know what I need to do", "我知道我需要做什么", null, 2],
+        ["What I need to do next week", "下周我需要做什么", null, 2],
+        ["I know what I need to do", "我知道我需要做什么", null, 3],
+        ["What I need to do is very interesting", "我需要做什么很有趣", null, 3],
+        ["I can't remember what I need to do", "我记不住我需要做什么", null, 4],
+        ["I can remember what I need to do next week", "我能记住下周我需要做什么", null, 5],
+        ["So I can know what I need to do", "这样我就能知道我需要做什么", null, 5],
+        ["I don't know what I need to do next week", "我不知道下周我需要做什么", null, 6],
+        ["When I understand what I need to do it's very interesting", "当我理解我需要做什么的时候很有趣", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0059L05",
+        "seed_context": {
+          "known": "我知道下周我需要做什么。",
+          "target": "I know how to do what I need to do next week."
+        }
+      },
+      "components": [
+        [
+          "需要",
+          "need"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0059L06": {
+      "lego": [
+        "do what",
+        "做什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0059L01",
+          "known": "I know",
+          "target": "我知道",
+          "type": "M"
+        },
+        {
+          "id": "S0059L02",
+          "known": "know",
+          "target": "知道",
+          "type": "A"
+        },
+        {
+          "id": "S0059L03",
+          "known": "next week",
+          "target": "下周",
+          "type": "A"
+        },
+        {
+          "id": "S0059L04",
+          "known": "what I need to do next week",
+          "target": "下周我需要做什么",
+          "type": "M"
+        },
+        {
+          "id": "S0059L05",
+          "known": "need to do what / what...need to do",
+          "target": "需要做什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Do what", "做什么", null, 1],
+        ["I know what to do", "我知道做什么", null, 2],
+        ["What I need to do", "我需要做什么", null, 2],
+        ["I know what I need to do", "我知道我需要做什么", null, 3],
+        ["What I need to do next week", "下周我需要做什么", null, 3],
+        ["I can't remember what to do next week", "我记不住下周做什么", null, 4],
+        ["I can remember what I need to do", "我能记住我需要做什么", null, 4],
+        ["So I can know what to do next week", "这样我就能知道下周做什么", null, 5],
+        ["I don't know what I need to do next week", "我不知道下周我需要做什么", null, 6],
+        ["I know how to do what I need to do next week", "我知道下周我需要做什么", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0059L06",
+        "seed_context": {
+          "known": "我知道下周我需要做什么。",
+          "target": "I know how to do what I need to do next week."
+        }
+      },
+      "components": [
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0059.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "phrases_to_generate": 60,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

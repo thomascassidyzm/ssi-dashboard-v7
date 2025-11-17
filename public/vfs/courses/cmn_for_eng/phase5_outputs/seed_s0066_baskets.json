@@ -1,0 +1,300 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0066",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "找到答案并不难。",
+    "target": "It's not difficult to find the answer."
+  },
+  "legos": {
+    "S0066L01": {
+      "lego": [
+        "find",
+        "找到"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Find", "找到", null, 1],
+        ["I want to find", "我想找到", null, 2],
+        ["You need to find", "你需要找到", null, 2],
+        ["I can't find", "我找不到", null, 2],
+        ["You could find", "你能找到", null, 2],
+        ["I need time to find", "我需要时间找到", null, 4],
+        ["I don't know how to find", "我不知道怎么找到", null, 5],
+        ["You need to find different words", "你需要找到不同的词", null, 5],
+        ["I'm trying to find how to say something", "我在试着找到怎么说一些东西", null, 7],
+        ["You take time to find enough words", "你花时间找到足够多的词", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0066L01",
+        "seed_context": {
+          "known": "找到答案并不难。",
+          "target": "It's not difficult to find the answer."
+        }
+      },
+      "components": [
+        [
+          "找",
+          "look for"
+        ],
+        [
+          "到",
+          "reach/successfully"
+        ]
+      ]
+    },
+    "S0066L03": {
+      "lego": [
+        "find the answer",
+        "找到答案"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0066L01",
+          "known": "find",
+          "target": "找到",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Find the answer", "找到答案", null, 1],
+        ["I found the answer", "我找到答案", null, 2],
+        ["You need the answer", "你需要答案", null, 2],
+        ["I can't find the answer", "我找不到答案", null, 3],
+        ["You could find the answer", "你能找到答案", null, 3],
+        ["I want to find the answer", "我想找到答案", null, 3],
+        ["I need time to find the answer", "我需要时间找到答案", null, 5],
+        ["You take time to find the answer", "你花时间找到答案", null, 5],
+        ["I don't know how to find the answer", "我不知道怎么找到答案", null, 6],
+        ["You're trying to find the answer", "你在试着找到答案", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0066L03",
+        "seed_context": {
+          "known": "找到答案并不难。",
+          "target": "It's not difficult to find the answer."
+        }
+      },
+      "components": [
+        [
+          "找到",
+          "find"
+        ],
+        [
+          "答案",
+          "answer"
+        ]
+      ]
+    },
+    "S0066L04": {
+      "lego": [
+        "difficult",
+        "难"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0066L01",
+          "known": "find",
+          "target": "找到",
+          "type": "M"
+        },
+        {
+          "id": "S0066L03",
+          "known": "find the answer",
+          "target": "找到答案",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Difficult", "难", null, 1],
+        ["Very difficult", "很难", null, 2],
+        ["It's difficult", "很难", null, 2],
+        ["This is difficult", "这很难", null, 2],
+        ["Learning Chinese is difficult", "学中文很难", null, 4],
+        ["Finding the answer is difficult", "找到答案很难", null, 4],
+        ["I know this is difficult", "我知道这很难", null, 4],
+        ["Testing yourself is difficult", "测试自己很难", null, 4],
+        ["I know learning Chinese is very difficult", "我知道学中文很难", null, 6],
+        ["Finding the answer is very difficult", "找到答案很难", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0066L04",
+        "seed_context": {
+          "known": "找到答案并不难。",
+          "target": "It's not difficult to find the answer."
+        }
+      }
+    },
+    "S0066L05": {
+      "lego": [
+        "not difficult",
+        "不难"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0066L01",
+          "known": "find",
+          "target": "找到",
+          "type": "M"
+        },
+        {
+          "id": "S0066L03",
+          "known": "find the answer",
+          "target": "找到答案",
+          "type": "M"
+        },
+        {
+          "id": "S0066L04",
+          "known": "difficult",
+          "target": "难",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Not difficult", "不难", null, 1],
+        ["It's not difficult", "不难", null, 1],
+        ["This is not difficult", "这不难", null, 2],
+        ["Learning is not difficult", "学习不难", null, 3],
+        ["Finding is not difficult", "找到不难", null, 2],
+        ["Learning Chinese is not difficult", "学中文不难", null, 4],
+        ["Testing yourself is not difficult", "测试自己不难", null, 4],
+        ["I know this is not difficult", "我知道这不难", null, 4],
+        ["Finding the answer is not difficult", "找到答案不难", null, 4],
+        ["I know learning Chinese is not difficult", "我知道学中文不难", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0066L05",
+        "seed_context": {
+          "known": "找到答案并不难。",
+          "target": "It's not difficult to find the answer."
+        }
+      },
+      "components": [
+        [
+          "不",
+          "not"
+        ],
+        [
+          "难",
+          "difficult"
+        ]
+      ]
+    },
+    "S0066L06": {
+      "lego": [
+        "not difficult at all",
+        "并不难"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0066L01",
+          "known": "find",
+          "target": "找到",
+          "type": "M"
+        },
+        {
+          "id": "S0066L03",
+          "known": "find the answer",
+          "target": "找到答案",
+          "type": "M"
+        },
+        {
+          "id": "S0066L04",
+          "known": "difficult",
+          "target": "难",
+          "type": "A"
+        },
+        {
+          "id": "S0066L05",
+          "known": "not difficult",
+          "target": "不难",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Not difficult at all", "并不难", null, 1],
+        ["It's not difficult at all", "并不难", null, 1],
+        ["This is not difficult at all", "这并不难", null, 2],
+        ["Learning is not difficult at all", "学习并不难", null, 3],
+        ["Finding is not difficult at all", "找到并不难", null, 2],
+        ["Learning Chinese is not difficult at all", "学中文并不难", null, 4],
+        ["Testing yourself is not difficult at all", "测试自己并不难", null, 4],
+        ["I know this is not difficult at all", "我知道这并不难", null, 4],
+        ["I know finding the answer is not difficult at all", "我知道找到答案并不难", null, 6],
+        ["It's not difficult to find the answer", "找到答案并不难", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0066L06",
+        "seed_context": {
+          "known": "找到答案并不难。",
+          "target": "It's not difficult to find the answer."
+        }
+      },
+      "components": [
+        [
+          "并",
+          "actually/really"
+        ],
+        [
+          "不",
+          "not"
+        ],
+        [
+          "难",
+          "difficult"
+        ]
+      ]
+    }
+  },
+  "_generation_metadata": {
+    "total_legos": 5,
+    "total_phrases": 50,
+    "generated_date": "2025-11-17",
+    "methodology": "Phase 5 Intelligence v7.0"
+  }
+}

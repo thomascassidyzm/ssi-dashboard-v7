@@ -1,0 +1,111 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0068",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "你在找什么？",
+    "target": "What are you looking for?"
+  },
+  "legos": {
+    "S0068L01": {
+      "lego": [
+        "what",
+        "什么"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["What?", "什么？", null, 1],
+        ["Do what?", "做什么？", null, 2],
+        ["What do you know?", "你知道什么？", null, 3],
+        ["What do I need to do?", "我需要做什么？", null, 4],
+        ["What do you want to do?", "你想做什么？", null, 4],
+        ["I know what you want to do", "我知道你想做什么", null, 5],
+        ["I don't know what you want to do", "我不知道你想做什么", null, 5],
+        ["Why don't you know what to do?", "你为什么不知道做什么？", null, 5],
+        ["I don't know what I need to do", "我不知道我需要做什么", null, 6],
+        ["I know what I need to do next week", "我知道下周我需要做什么", null, 7]
+      ]
+    },
+    "S0068L02": {
+      "lego": [
+        "look for",
+        "找"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Look for", "找", null, 1],
+        ["I look for", "我找", null, 2],
+        ["Why look for?", "为什么找？", null, 2],
+        ["What to look for?", "找什么？", null, 2],
+        ["I want to look for", "我想找", null, 3],
+        ["Why do you look for?", "你为什么找？", null, 3],
+        ["I want to look for the answer", "我想找答案", null, 4],
+        ["I know you want to look for", "我知道你想找", null, 4],
+        ["I don't know what to look for", "我不知道找什么", null, 4],
+        ["I want to know why you want to look for the answer", "我想知道你为什么想找答案", null, 7]
+      ]
+    },
+    "S0068L03": {
+      "lego": [
+        "are looking for",
+        "在找"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Are looking for", "在找", null, 1],
+        ["I am looking for", "我在找", null, 2],
+        ["What am I looking for?", "我在找什么", null, 3],
+        ["I am looking for time", "我在找时间", null, 3],
+        ["He is looking for the answer", "他在找答案", null, 4],
+        ["I am looking for different words", "我在找不同的词", null, 4],
+        ["Why are you looking for the answer?", "你为什么在找答案", null, 5],
+        ["I am looking for a very important answer", "我在找很重要的答案", null, 6],
+        ["Why am I looking for the answer?", "我为什么在找答案", null, 5],
+        ["I am looking for the answer you need", "我在找你需要的答案", null, 6]
+      ]
+    },
+    "S0068L04": {
+      "lego": [
+        "you are looking for",
+        "你在找"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["You are looking for", "你在找", null, 1],
+        ["You are looking for what", "你在找什么", null, 2],
+        ["You are looking for time", "你在找时间", null, 3],
+        ["You are looking for the answer", "你在找答案", null, 3],
+        ["You are looking for different words", "你在找不同的词", null, 4],
+        ["You are looking for what answer", "你在找什么答案", null, 4],
+        ["Why are you looking for the answer?", "你为什么在找答案", null, 5],
+        ["You are looking for important answers", "你在找重要的答案", null, 5],
+        ["You are looking for a very important answer", "你在找很重要的答案", null, 6],
+        ["Why are you looking for different words?", "你为什么在找不同的词", null, 6]
+      ]
+    },
+    "S0068L05": {
+      "lego": [
+        "What are you looking for?",
+        "你在找什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["What are you looking for?", "你在找什么", null, 1],
+        ["What answer are you looking for?", "你在找什么答案", null, 2],
+        ["I know what you are looking for", "我知道你在找什么", null, 4],
+        ["What different words are you looking for?", "你在找什么不同的词", null, 4],
+        ["I don't know what you are looking for", "我不知道你在找什么", null, 5],
+        ["Do you know what you are looking for?", "你知道你在找什么吗", null, 5],
+        ["Is what you are looking for important?", "你在找的很重要吗", null, 5],
+        ["Why do you know what I am looking for?", "你为什么知道我在找什么", null, 6],
+        ["I don't know what answer you are looking for", "我不知道你在找什么答案", null, 6],
+        ["What are you looking for?", "你在找什么？", null, 3]
+      ]
+    }
+  }
+}

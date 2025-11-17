@@ -1,0 +1,71 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0072",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "I think that you're doing very well.",
+    "target": "我认为你做得很好。"
+  },
+  "legos": {
+    "S0072L01": {
+      "lego": [
+        "I think (that)",
+        "我认为"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I think", "我认为", null, 1],
+        ["I think so", "我认为是", null, 2],
+        ["I don't think so", "我认为不是", null, 2],
+        ["I think you're doing well", "我认为你做得好", null, 3],
+        ["I think she's doing well", "我认为她做得好", null, 3],
+        ["I think he didn't want to stop", "我认为他不想停下来", null, 4],
+        ["I think you're doing very well", "我认为你做得很好", null, 4],
+        ["I think she's looking for the truth", "我认为她在找真相", null, 5],
+        ["I think we're ready to start", "我认为我们准备好开始", null, 5],
+        ["I think that you're doing very well with learning", "我认为你学得很好", null, 6]
+      ]
+    },
+    "S0072L02": {
+      "lego": [
+        "you're doing very well",
+        "你做得很好"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["You're doing very well", "你做得很好", null, 1],
+        ["I think you're doing very well", "我认为你做得很好", null, 2],
+        ["You're doing very well now", "你现在做得很好", null, 2],
+        ["I think you're doing very well with learning", "我认为你学得很好", null, 3],
+        ["You're doing very well at the same time", "你同时做得很好", null, 3],
+        ["I think you're doing very well with Chinese", "我认为你中文做得很好", null, 4],
+        ["When do you think you're doing very well", "你什么时候认为你做得很好", null, 5],
+        ["I think you're doing very well with learning Chinese", "我认为你学中文做得很好", null, 5],
+        ["I agree with what you said about doing very well", "我同意你对做得很好说的话", null, 6],
+        ["I think that you're doing very well", "我认为你做得很好", null, 6]
+      ]
+    },
+    "S0072L03": {
+      "lego": [
+        "doing very well",
+        "做得很好"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Doing very well", "做得很好", null, 1],
+        ["I'm doing very well", "我做得很好", null, 2],
+        ["She's doing very well", "她做得很好", null, 2],
+        ["I think I'm doing very well", "我认为我做得很好", null, 3],
+        ["He's doing very well with learning", "他学得很好", null, 3],
+        ["I think you're doing very well", "我认为你做得很好", null, 3],
+        ["I'm doing very well with learning Chinese", "我学中文做得很好", null, 4],
+        ["I think she's doing very well at the same time", "我认为她同时做得很好", null, 5],
+        ["I agree that you're doing very well with learning", "我同意你学得很好", null, 5],
+        ["I think that you're doing very well.", "我认为你做得很好。", null, 5]
+      ]
+    }
+  }
+}

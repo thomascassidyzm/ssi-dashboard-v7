@@ -1,0 +1,111 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0063",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "Are you sure you don't mind helping me?",
+    "target": "你确定你不介意帮我吗？"
+  },
+  "legos": {
+    "S0063L01": {
+      "lego": [
+        "Are you sure",
+        "你确定"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Are you sure", "你确定", null, 1],
+        ["Are you sure you can", "你确定你能", null, 2],
+        ["I wanted to know if you are sure", "我想知道你确定", null, 2],
+        ["Are you sure you know how to say it", "你确定你知道怎么说", null, 3],
+        ["Are you sure you can help me", "你确定你能帮我", null, 3],
+        ["I don't know if you are sure you can do it", "我不知道你确定你能做", null, 4],
+        ["Are you sure you can say that again slowly", "你确定你能再慢一点说一遍", null, 4],
+        ["Are you sure you can remember what I wanted to say", "你确定你能记住我想说的话", null, 5],
+        ["My friend wanted to know if you are sure you can help me", "我的朋友想知道你确定你能帮我", null, 6],
+        ["Are you sure you understand enough different words at the same time", "你确定你同时理解足够多不同的词", null, 7]
+      ]
+    },
+    "S0063L02": {
+      "lego": [
+        "don't mind",
+        "不介意"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I don't mind", "我不介意", null, 1],
+        ["You don't mind", "你不介意", null, 1],
+        ["I don't mind helping you", "我不介意帮你", null, 2],
+        ["Are you sure you don't mind", "你确定你不介意", null, 2],
+        ["I don't mind if you say it again", "我不介意你说一遍", null, 3],
+        ["She wanted to know if you don't mind", "她想知道你不介意", null, 3],
+        ["I don't mind when you don't understand enough words", "我不介意当你不理解足够多的词的时候", null, 5],
+        ["Are you sure you don't mind helping me next week", "你确定你不介意下周帮我", null, 5],
+        ["My friend doesn't mind if you can't remember how to say it", "我的朋友不介意你记不住怎么说", null, 6],
+        ["I wanted to say I don't mind if you need me to help you at the same time", "我想说我不介意你需要我同时帮你", null, 8]
+      ]
+    },
+    "S0063L03": {
+      "lego": [
+        "you don't mind",
+        "你不介意"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["You don't mind.", "你不介意。", null, 1],
+        ["You don't mind?", "你不介意吗？", null, 2],
+        ["I know you don't mind.", "我知道你不介意。", null, 3],
+        ["Are you sure you don't mind?", "你确定你不介意吗？", null, 3],
+        ["I don't know if you don't mind.", "我不知道你不介意。", null, 4],
+        ["You don't mind next week?", "你不介意下周吗？", null, 4],
+        ["You don't mind, I can help you.", "你不介意，我能帮你。", null, 5],
+        ["I know you don't mind at the same time.", "我知道你不介意同时。", null, 5],
+        ["Are you sure you don't mind next week?", "你确定你不介意下周吗？", null, 6],
+        ["I know you don't mind, are you sure?", "我知道你不介意，你确定吗？", null, 6]
+      ]
+    },
+    "S0063L04": {
+      "lego": [
+        "help me",
+        "帮我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Help me.", "帮我。", null, 1],
+        ["Help me?", "帮我吗？", null, 2],
+        ["I know you can help me.", "我知道你能帮我。", null, 3],
+        ["Could you help me?", "你能帮我吗？", null, 3],
+        ["You don't mind, help me?", "你不介意，帮我吗？", null, 4],
+        ["Are you sure you can help me?", "你确定你能帮我吗？", null, 4],
+        ["I don't know if you can help me.", "我不知道你能不能帮我。", null, 5],
+        ["Could you help me at the same time?", "你能同时帮我吗？", null, 5],
+        ["Are you sure you don't mind, help me?", "你确定你不介意，帮我吗？", null, 6],
+        ["I know you don't mind, could you help me?", "我知道你不介意，你能帮我吗？", null, 7]
+      ]
+    },
+    "S0063L05": {
+      "lego": [
+        "don't mind helping me?",
+        "不介意帮我吗"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Don't mind helping me?", "不介意帮我吗？", null, 1],
+        ["You don't mind helping me?", "你不介意帮我吗？", null, 2],
+        ["I know you don't mind helping me.", "我知道你不介意帮我。", null, 3],
+        ["Are you sure you don't mind helping me?", "你确定你不介意帮我吗？", null, 3],
+        ["I don't know, you don't mind helping me?", "我不知道，你不介意帮我吗？", null, 4],
+        ["You don't mind helping me next week?", "你不介意下周帮我吗？", null, 4],
+        ["You don't mind helping me at the same time?", "你不介意同时帮我吗？", null, 5],
+        ["I know you don't mind helping me next week.", "我知道你不介意下周帮我。", null, 6],
+        ["Are you sure you don't mind helping me at the same time?", "你确定你不介意同时帮我吗？", null, 7],
+        ["Are you sure you don't mind helping me?", "你确定你不介意帮我吗？", null, 5]
+      ]
+    }
+  }
+}

@@ -1,0 +1,559 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0056",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "这样我就能记住怎么说几个词。",
+    "target": "So I can remember how to say a few words."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0046",
+      "known": "但我不担心犯错。",
+      "target": "But I don't worry about making mistakes."
+    },
+    {
+      "seed_id": "S0047",
+      "known": "因为我认为犯错是件好事。",
+      "target": "Because I think that it's a good thing to make mistakes."
+    },
+    {
+      "seed_id": "S0048",
+      "known": "我不在乎犯错。",
+      "target": "I don't care about making mistakes."
+    },
+    {
+      "seed_id": "S0049",
+      "known": "就是这样，如果你知道我的意思的话。",
+      "target": "It's like this, if you know what I mean."
+    },
+    {
+      "seed_id": "S0050",
+      "known": "我不是在试着尽快完成。",
+      "target": "I'm not trying to finish as quickly as possible."
+    },
+    {
+      "seed_id": "S0051",
+      "known": "我喜欢和朋友做有趣的事情。",
+      "target": "I enjoy doing interesting things with my friends."
+    },
+    {
+      "seed_id": "S0052",
+      "known": "他上周想给他的朋友写封信。",
+      "target": "He wanted to write a letter to his friend last week."
+    },
+    {
+      "seed_id": "S0053",
+      "known": "她想把他的信放进她的包里。",
+      "target": "She wanted to put his letter in her bag."
+    },
+    {
+      "seed_id": "S0054",
+      "known": "我们想多给你一点时间。",
+      "target": "We wanted to give you a little more time."
+    },
+    {
+      "seed_id": "S0055",
+      "known": "当我没睡好的时候我不喜欢醒来。",
+      "target": "I don't enjoy waking up when I didn't sleep very well."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0048L02",
+      "known": "don't care about making mistakes",
+      "target": "不在乎犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0049L01",
+      "known": "it's like this",
+      "target": "就是这样",
+      "type": "M"
+    },
+    {
+      "id": "S0049L02",
+      "known": "if you know",
+      "target": "如果你知道",
+      "type": "M"
+    },
+    {
+      "id": "S0049L04",
+      "known": "if you know what I mean",
+      "target": "如果你知道我的意思的话",
+      "type": "M"
+    },
+    {
+      "id": "S0050L01",
+      "known": "I'm not trying to",
+      "target": "我不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L02",
+      "known": "not trying to",
+      "target": "不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L03",
+      "known": "to finish as quickly as possible",
+      "target": "尽快完成",
+      "type": "M"
+    },
+    {
+      "id": "S0050L04",
+      "known": "as quickly as possible",
+      "target": "尽快",
+      "type": "A"
+    },
+    {
+      "id": "S0051L01",
+      "known": "I enjoy",
+      "target": "我喜欢",
+      "type": "A"
+    },
+    {
+      "id": "S0051L02",
+      "known": "with my friends",
+      "target": "和朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0051L03",
+      "known": "doing with my friends",
+      "target": "和朋友做",
+      "type": "M"
+    },
+    {
+      "id": "S0051L04",
+      "known": "do interesting things",
+      "target": "做有趣的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0051L05",
+      "known": "interesting things",
+      "target": "有趣的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0052L01",
+      "known": "last week",
+      "target": "上周",
+      "type": "A"
+    },
+    {
+      "id": "S0052L02",
+      "known": "to his friend",
+      "target": "给他的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0052L03",
+      "known": "his friend",
+      "target": "他的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0052L04",
+      "known": "write a letter",
+      "target": "写封信",
+      "type": "M"
+    },
+    {
+      "id": "S0053L01",
+      "known": "put his letter in her bag",
+      "target": "把他的信放进她的包里",
+      "type": "M"
+    },
+    {
+      "id": "S0053L02",
+      "known": "his letter",
+      "target": "他的信",
+      "type": "M"
+    },
+    {
+      "id": "S0053L03",
+      "known": "in her bag",
+      "target": "她的包里",
+      "type": "M"
+    },
+    {
+      "id": "S0053L04",
+      "known": "her bag",
+      "target": "她的包",
+      "type": "M"
+    },
+    {
+      "id": "S0054L01",
+      "known": "we wanted",
+      "target": "我们想",
+      "type": "M"
+    },
+    {
+      "id": "S0054L02",
+      "known": "give you a little more time",
+      "target": "多给你一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0054L03",
+      "known": "give you a little time",
+      "target": "给你一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0054L04",
+      "known": "a little time",
+      "target": "一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0055L01",
+      "known": "when I didn't sleep very well",
+      "target": "当我没睡好的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0055L02",
+      "known": "didn't sleep well",
+      "target": "没睡好",
+      "type": "M"
+    },
+    {
+      "id": "S0055L03",
+      "known": "sleep well",
+      "target": "睡好",
+      "type": "M"
+    },
+    {
+      "id": "S0055L04",
+      "known": "don't enjoy",
+      "target": "不喜欢",
+      "type": "M"
+    },
+    {
+      "id": "S0055L05",
+      "known": "wake up",
+      "target": "醒来",
+      "type": "A"
+    }
+  ],
+  "legos": {
+    "S0056L01": {
+      "lego": [
+        "so I can",
+        "这样我就能"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["So I can.", "这样我就能。", null, 1],
+        ["So I can sleep well.", "这样我就能睡好。", null, 2],
+        ["So I can know.", "这样我就能知道。", null, 2],
+        ["So I can do things.", "这样我就能做事情。", null, 3],
+        ["So I can finish.", "这样我就能完成。", null, 2],
+        ["So I can finish as quickly as possible.", "这样我就能尽快完成。", null, 3],
+        ["So I can do interesting things.", "这样我就能做有趣的事情。", null, 4],
+        ["So I can do things with friends.", "这样我就能和朋友做事情。", null, 4],
+        ["So I can do interesting things with friends.", "这样我就能和朋友做有趣的事情。", null, 5],
+        ["So I can know if I need to improve.", "这样我就能知道我是否需要进步。", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0056L01",
+        "seed_context": {
+          "known": "这样我就能记住怎么说几个词。",
+          "target": "So I can remember how to say a few words."
+        }
+      },
+      "components": [
+        [
+          "这样",
+          "so/this way"
+        ],
+        [
+          "我",
+          "I"
+        ],
+        [
+          "就",
+          "then"
+        ],
+        [
+          "能",
+          "can"
+        ]
+      ]
+    },
+    "S0056L02": {
+      "lego": [
+        "can remember",
+        "能记住"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0056L01",
+          "known": "so I can",
+          "target": "这样我就能",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Can remember.", "能记住。", null, 1],
+        ["I can remember.", "我能记住。", null, 1],
+        ["So I can remember.", "这样我就能记住。", null, 2],
+        ["I can remember everything.", "我能记住所有事情。", null, 2],
+        ["He can remember everything.", "他能记住所有事情。", null, 3],
+        ["She can remember everything.", "她能记住所有事情。", null, 3],
+        ["I can remember if you know what I mean.", "如果你知道我的意思的话我能记住。", null, 4],
+        ["His friend can remember everything.", "他的朋友能记住所有事情。", null, 4],
+        ["So I can remember everything if you know what I mean.", "这样如果你知道我的意思的话我就能记住所有事情。", null, 5],
+        ["I think I can remember everything so I can finish.", "我认为我能记住所有事情这样我就能完成。", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0056L02",
+        "seed_context": {
+          "known": "这样我就能记住怎么说几个词。",
+          "target": "So I can remember how to say a few words."
+        }
+      },
+      "components": [
+        [
+          "能",
+          "can"
+        ],
+        [
+          "记住",
+          "remember"
+        ]
+      ]
+    },
+    "S0056L03": {
+      "lego": [
+        "remember how to say",
+        "记住怎么说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0056L01",
+          "known": "so I can",
+          "target": "这样我就能",
+          "type": "M"
+        },
+        {
+          "id": "S0056L02",
+          "known": "can remember",
+          "target": "能记住",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Remember how to say.", "记住怎么说。", null, 1],
+        ["I can remember how to say.", "我能记住怎么说。", null, 2],
+        ["So I can remember how to say.", "这样我就能记住怎么说。", null, 2],
+        ["I want to remember how to say.", "我想记住怎么说。", null, 3],
+        ["I enjoy remembering how to say.", "我喜欢记住怎么说。", null, 3],
+        ["My friend can remember how to say.", "我的朋友能记住怎么说。", null, 4],
+        ["So I can remember how to say things.", "这样我就能记住怎么说事情。", null, 5],
+        ["I wanted to remember how to say things.", "我想记住怎么说事情。", null, 5],
+        ["My friends wanted to remember how to say.", "我的朋友们想记住怎么说。", null, 5],
+        ["Last week I wanted to remember how to say.", "上周我想记住怎么说。", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0056L03",
+        "seed_context": {
+          "known": "这样我就能记住怎么说几个词。",
+          "target": "So I can remember how to say a few words."
+        }
+      },
+      "components": [
+        [
+          "记住",
+          "remember"
+        ],
+        [
+          "怎么",
+          "how to"
+        ],
+        [
+          "说",
+          "say"
+        ]
+      ]
+    },
+    "S0056L04": {
+      "lego": [
+        "how to say",
+        "怎么说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0056L01",
+          "known": "so I can",
+          "target": "这样我就能",
+          "type": "M"
+        },
+        {
+          "id": "S0056L02",
+          "known": "can remember",
+          "target": "能记住",
+          "type": "M"
+        },
+        {
+          "id": "S0056L03",
+          "known": "remember how to say",
+          "target": "记住怎么说",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["How to say.", "怎么说。", null, 1],
+        ["Remember how to say.", "记住怎么说。", null, 2],
+        ["I can remember how to say.", "我能记住怎么说。", null, 3],
+        ["I wanted to know how to say.", "我想知道怎么说。", null, 3],
+        ["So I can remember how to say.", "这样我就能记住怎么说。", null, 4],
+        ["I enjoy remembering how to say.", "我喜欢记住怎么说。", null, 4],
+        ["My friend can remember how to say.", "我的朋友能记住怎么说。", null, 5],
+        ["I wanted to remember how to say things.", "我想记住怎么说事情。", null, 6],
+        ["So I can remember how to say things.", "这样我就能记住怎么说事情。", null, 6],
+        ["Last week I wanted to know how to say.", "上周我想知道怎么说。", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0056L04",
+        "seed_context": {
+          "known": "这样我就能记住怎么说几个词。",
+          "target": "So I can remember how to say a few words."
+        }
+      },
+      "components": [
+        [
+          "怎么",
+          "how to"
+        ],
+        [
+          "说",
+          "say"
+        ]
+      ]
+    },
+    "S0056L05": {
+      "lego": [
+        "a few words",
+        "几个词"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0056L01",
+          "known": "so I can",
+          "target": "这样我就能",
+          "type": "M"
+        },
+        {
+          "id": "S0056L02",
+          "known": "can remember",
+          "target": "能记住",
+          "type": "M"
+        },
+        {
+          "id": "S0056L03",
+          "known": "remember how to say",
+          "target": "记住怎么说",
+          "type": "M"
+        },
+        {
+          "id": "S0056L04",
+          "known": "how to say",
+          "target": "怎么说",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["A few words.", "几个词。", null, 1],
+        ["Say a few words.", "说几个词。", null, 2],
+        ["How to say a few words.", "怎么说几个词。", null, 2],
+        ["I know a few words.", "我知道几个词。", null, 3],
+        ["Remember how to say a few words.", "记住怎么说几个词。", null, 3],
+        ["I can remember a few words.", "我能记住几个词。", null, 4],
+        ["I can remember how to say a few words.", "我能记住怎么说几个词。", null, 5],
+        ["I wanted to remember a few words.", "我想记住几个词。", null, 5],
+        ["My friend can say a few words.", "我的朋友能说几个词。", null, 5],
+        ["So I can remember how to say a few words.", "这样我就能记住怎么说几个词。", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0056L05",
+        "seed_context": {
+          "known": "这样我就能记住怎么说几个词。",
+          "target": "So I can remember how to say a few words."
+        }
+      },
+      "components": [
+        [
+          "几个",
+          "a few"
+        ],
+        [
+          "词",
+          "words"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0056_baskets.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

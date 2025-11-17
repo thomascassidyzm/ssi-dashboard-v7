@@ -1,0 +1,111 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0067",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "你为什么想停下来？",
+    "target": "Why do you want to stop?"
+  },
+  "legos": {
+    "S0067L01": {
+      "lego": [
+        "why",
+        "为什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Why?", "为什么？", null, 1],
+        ["Why not?", "为什么不？", null, 2],
+        ["Why difficult?", "为什么难？", null, 2],
+        ["Why learning Chinese?", "为什么学中文？", null, 3],
+        ["Why testing yourself?", "为什么测试自己？", null, 3],
+        ["Why finding the answer?", "为什么找到答案？", null, 4],
+        ["Why is it difficult?", "为什么很难？", null, 3],
+        ["Why is learning Chinese difficult?", "为什么学中文难？", null, 4],
+        ["Why is it not difficult?", "为什么不难？", null, 3],
+        ["Why is finding the answer difficult?", "为什么找到答案难？", null, 5]
+      ]
+    },
+    "S0067L02": {
+      "lego": [
+        "why do you",
+        "你为什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Why do you", "你为什么", null, 1],
+        ["Why do you know?", "你为什么知道？", null, 2],
+        ["Why don't you", "你为什么不", null, 2],
+        ["Why are you sure?", "你为什么确定？", null, 3],
+        ["Why do you help me?", "你为什么帮我？", null, 3],
+        ["Why don't you help me?", "你为什么不帮我？", null, 4],
+        ["Why do you know it's difficult?", "你为什么知道很难？", null, 4],
+        ["Why don't you learn Chinese?", "你为什么不学中文？", null, 4],
+        ["Why do you know it's not difficult?", "你为什么知道不难？", null, 5],
+        ["Why do you know finding the answer is difficult?", "你为什么知道找到答案难？", null, 6]
+      ]
+    },
+    "S0067L03": {
+      "lego": [
+        "want",
+        "想"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Want", "想", null, 1],
+        ["I want", "我想", null, 2],
+        ["I want to know", "我想知道", null, 3],
+        ["I want to help you", "我想帮你", null, 3],
+        ["I want to learn Chinese", "我想学中文", null, 3],
+        ["I want to test myself", "我想测试自己", null, 4],
+        ["I want to find the answer", "我想找到答案", null, 5],
+        ["I want to know why", "我想知道为什么", null, 4],
+        ["I want to know why it's difficult", "我想知道为什么难", null, 5],
+        ["I want to know why you help me", "我想知道你为什么帮我", null, 6]
+      ]
+    },
+    "S0067L04": {
+      "lego": [
+        "stop",
+        "停下来"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Stop", "停下来", null, 1],
+        ["Why stop?", "为什么停下来？", null, 2],
+        ["I can stop", "我能停下来", null, 2],
+        ["Can you stop?", "你能停下来吗？", null, 3],
+        ["Why do you stop?", "你为什么停下来？", null, 3],
+        ["I know you can stop", "我知道你能停下来", null, 4],
+        ["Are you sure you can stop?", "你确定你能停下来吗？", null, 5],
+        ["I know why you stop", "我知道你为什么停下来", null, 5],
+        ["Can you stop at the same time?", "你能同时停下来吗？", null, 4],
+        ["I don't know why you can stop at the same time", "我不知道你为什么能同时停下来", null, 7]
+      ]
+    },
+    "S0067L05": {
+      "lego": [
+        "want to stop",
+        "想停下来"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Want to stop", "想停下来", null, 1],
+        ["I want to stop", "我想停下来", null, 2],
+        ["Why want to stop?", "为什么想停下来？", null, 2],
+        ["I don't want to stop", "我不想停下来", null, 3],
+        ["Do you want to stop?", "你想停下来吗？", null, 3],
+        ["I know you want to stop", "我知道你想停下来", null, 4],
+        ["Why don't you want to stop?", "你为什么不想停下来？", null, 4],
+        ["Are you sure you want to stop?", "你确定你想停下来吗？", null, 5],
+        ["I don't know why you want to stop", "我不知道你为什么想停下来", null, 6],
+        ["Why do you want to stop?", "你为什么想停下来？", null, 3]
+      ]
+    }
+  }
+}

@@ -1,0 +1,368 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0087",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "They are people I don't know.",
+    "target": "他们是我不认识的人。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0077",
+      "known": "I'm surprised at how quickly I'm starting to understand.",
+      "target": "我对我开始理解得这么快感到惊讶。"
+    },
+    {
+      "seed_id": "S0078",
+      "known": "I don't understand what you said.",
+      "target": "我不理解你说的话。"
+    },
+    {
+      "seed_id": "S0079",
+      "known": "When did you start to learn?",
+      "target": "你什么时候开始学习的？"
+    },
+    {
+      "seed_id": "S0080",
+      "known": "I'm not sure when I'll be ready.",
+      "target": "我不确定我什么时候会准备好。"
+    },
+    {
+      "seed_id": "S0081",
+      "known": "When do you want to start?",
+      "target": "你什么时候想开始？"
+    },
+    {
+      "seed_id": "S0082",
+      "known": "I'm not going to wait for you. Why not?",
+      "target": "我不会等你。为什么不呢？"
+    },
+    {
+      "seed_id": "S0083",
+      "known": "I agree with what you said about your friend.",
+      "target": "我同意你对你朋友说的话。"
+    },
+    {
+      "seed_id": "S0084",
+      "known": "I don't agree with what he said about my friend.",
+      "target": "我不同意他对我朋友说的话。"
+    },
+    {
+      "seed_id": "S0085",
+      "known": "I don't know those people.",
+      "target": "我不认识那些人。"
+    },
+    {
+      "seed_id": "S0086",
+      "known": "It wasn't possible, unfortunately.",
+      "target": "不幸的是，这是不可能的。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0080L09",
+      "known": "sure/certain",
+      "target": "确定",
+      "type": "A"
+    },
+    {
+      "id": "S0080L10",
+      "known": "prepare",
+      "target": "准备",
+      "type": "A"
+    },
+    {
+      "id": "S0080L11",
+      "known": "good/well/okay",
+      "target": "好",
+      "type": "A"
+    },
+    {
+      "id": "S0081L03",
+      "known": "when do you want",
+      "target": "你什么时候想",
+      "type": "M"
+    },
+    {
+      "id": "S0081L04",
+      "known": "want to start",
+      "target": "想开始",
+      "type": "M"
+    },
+    {
+      "id": "S0081L05",
+      "known": "start",
+      "target": "开始",
+      "type": "A"
+    },
+    {
+      "id": "S0082L02",
+      "known": "not going to wait",
+      "target": "不会等",
+      "type": "M"
+    },
+    {
+      "id": "S0082L03",
+      "known": "wait for you",
+      "target": "等你",
+      "type": "M"
+    },
+    {
+      "id": "S0082L04",
+      "known": "wait",
+      "target": "等",
+      "type": "A"
+    },
+    {
+      "id": "S0082L05",
+      "known": "why not",
+      "target": "为什么不呢",
+      "type": "M"
+    },
+    {
+      "id": "S0083L01",
+      "known": "I agree with",
+      "target": "我同意",
+      "type": "M"
+    },
+    {
+      "id": "S0083L02",
+      "known": "your friend",
+      "target": "你朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0083L03",
+      "known": "about your friend",
+      "target": "对你朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0083L04",
+      "known": "what [someone] said",
+      "target": "说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0083L05",
+      "known": "what you said about your friend",
+      "target": "你对你朋友说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0084L01",
+      "known": "agree",
+      "target": "同意",
+      "type": "A"
+    },
+    {
+      "id": "S0084L02",
+      "known": "don't agree",
+      "target": "不同意",
+      "type": "M"
+    },
+    {
+      "id": "S0084L03",
+      "known": "I don't agree with",
+      "target": "我不同意",
+      "type": "M"
+    },
+    {
+      "id": "S0084L04",
+      "known": "my friend",
+      "target": "我朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0084L05",
+      "known": "about my friend",
+      "target": "对我朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0084L07",
+      "known": "what he said about my friend",
+      "target": "他对我朋友说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0085L03",
+      "known": "I don't know",
+      "target": "我不认识",
+      "type": "M"
+    },
+    {
+      "id": "S0085L04",
+      "known": "those",
+      "target": "那些",
+      "type": "M"
+    },
+    {
+      "id": "S0085L05",
+      "known": "those people",
+      "target": "那些人",
+      "type": "M"
+    },
+    {
+      "id": "S0085L06",
+      "known": "people",
+      "target": "人",
+      "type": "A"
+    },
+    {
+      "id": "S0086L01",
+      "known": "unfortunately",
+      "target": "不幸的是",
+      "type": "M"
+    },
+    {
+      "id": "S0086L02",
+      "known": "possible",
+      "target": "可能",
+      "type": "A"
+    },
+    {
+      "id": "S0086L03",
+      "known": "not possible",
+      "target": "不可能",
+      "type": "M"
+    },
+    {
+      "id": "S0086L04",
+      "known": "is not possible",
+      "target": "是不可能的",
+      "type": "M"
+    },
+    {
+      "id": "S0086L05",
+      "known": "it wasn't possible",
+      "target": "这是不可能的",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0087L01": {
+      "lego": [
+        "they are",
+        "他们是"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["They are", "他们是", null, 1],
+        ["They are my friends", "他们是我朋友", null, 2],
+        ["They are those people", "他们是那些人", null, 2],
+        ["They are learning Chinese now", "他们是在学中文好", null, 3],
+        ["They are people who want to wait", "他们是想等的人", null, 4],
+        ["They are ready to start learning", "他们是准备好开始学习", null, 4],
+        ["They are people I don't know well", "他们是我不认识好的人", null, 5],
+        ["They are the people your friend was talking about", "他们是你朋友说的话的人", null, 5],
+        ["Unfortunately, they are not the people I wanted to meet", "不幸的是，他们是不我想的人", null, 6],
+        ["They are people who don't agree with what you said", "他们是不同意你说的话的人", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0087L01",
+        "seed_context": {
+          "known": "They are people I don't know.",
+          "target": "他们是我不认识的人。"
+        }
+      },
+      "components": [
+        [
+          "他们",
+          "they"
+        ],
+        [
+          "是",
+          "are"
+        ]
+      ]
+    },
+    "S0087L05": {
+      "lego": [
+        "people I don't know",
+        "我不认识的人"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0087L01",
+          "known": "they are",
+          "target": "他们是",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["People I don't know", "我不认识的人", null, 1],
+        ["They are people I don't know", "他们是我不认识的人", null, 2],
+        ["I won't wait for people I don't know", "我不会等我不认识的人", null, 3],
+        ["I agree with people I don't know", "我同意我不认识的人", null, 3],
+        ["Those are people I don't know well", "那些是我不认识好的人", null, 4],
+        ["When will people I don't know be ready?", "我不认识的人什么时候会准备好？", null, 4],
+        ["Unfortunately, they are people I don't know at all", "不幸的是，他们是我不认识的人", null, 5],
+        ["I'm not sure when people I don't know will start", "我不确定我不认识的人什么时候会开始", null, 5],
+        ["I don't agree with what people I don't know said about my friend", "我不同意我不认识的人对我朋友说的话", null, 6],
+        ["They are people I don't know.", "他们是我不认识的人。", null, 2]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0087L05",
+        "seed_context": {
+          "known": "They are people I don't know.",
+          "target": "他们是我不认识的人。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "不",
+          "don't"
+        ],
+        [
+          "认识",
+          "know"
+        ],
+        [
+          "的",
+          "relative clause marker"
+        ],
+        [
+          "人",
+          "people"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0087.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_to_generate": 20,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30,
+    "phrases_generated": 20
+  }
+}

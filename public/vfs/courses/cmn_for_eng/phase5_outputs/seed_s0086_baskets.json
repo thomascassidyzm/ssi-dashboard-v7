@@ -1,0 +1,554 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0086",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "It wasn't possible, unfortunately.",
+    "target": "不幸的是，这是不可能的。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0076",
+      "known": "I'm very happy with how much I've learnt already.",
+      "target": "我对我已经学了这么多感到很高兴。"
+    },
+    {
+      "seed_id": "S0077",
+      "known": "I'm surprised at how quickly I'm starting to understand.",
+      "target": "我对我开始理解得这么快感到惊讶。"
+    },
+    {
+      "seed_id": "S0078",
+      "known": "I don't understand what you said.",
+      "target": "我不理解你说的话。"
+    },
+    {
+      "seed_id": "S0079",
+      "known": "When did you start to learn?",
+      "target": "你什么时候开始学习的？"
+    },
+    {
+      "seed_id": "S0080",
+      "known": "I'm not sure when I'll be ready.",
+      "target": "我不确定我什么时候会准备好。"
+    },
+    {
+      "seed_id": "S0081",
+      "known": "When do you want to start?",
+      "target": "你什么时候想开始？"
+    },
+    {
+      "seed_id": "S0082",
+      "known": "I'm not going to wait for you. Why not?",
+      "target": "我不会等你。为什么不呢？"
+    },
+    {
+      "seed_id": "S0083",
+      "known": "I agree with what you said about your friend.",
+      "target": "我同意你对你朋友说的话。"
+    },
+    {
+      "seed_id": "S0084",
+      "known": "I don't agree with what he said about my friend.",
+      "target": "我不同意他对我朋友说的话。"
+    },
+    {
+      "seed_id": "S0085",
+      "known": "I don't know those people.",
+      "target": "我不认识那些人。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0080L03",
+      "known": "when I'll be ready",
+      "target": "我什么时候会准备好",
+      "type": "M"
+    },
+    {
+      "id": "S0080L04",
+      "known": "when will be ready",
+      "target": "什么时候会准备好",
+      "type": "M"
+    },
+    {
+      "id": "S0080L05",
+      "known": "I'll be ready",
+      "target": "我会准备好",
+      "type": "M"
+    },
+    {
+      "id": "S0080L06",
+      "known": "be ready",
+      "target": "准备好",
+      "type": "M"
+    },
+    {
+      "id": "S0080L08",
+      "known": "will",
+      "target": "会",
+      "type": "A"
+    },
+    {
+      "id": "S0080L09",
+      "known": "sure/certain",
+      "target": "确定",
+      "type": "A"
+    },
+    {
+      "id": "S0080L10",
+      "known": "prepare",
+      "target": "准备",
+      "type": "A"
+    },
+    {
+      "id": "S0080L11",
+      "known": "good/well/okay",
+      "target": "好",
+      "type": "A"
+    },
+    {
+      "id": "S0081L03",
+      "known": "when do you want",
+      "target": "你什么时候想",
+      "type": "M"
+    },
+    {
+      "id": "S0081L04",
+      "known": "want to start",
+      "target": "想开始",
+      "type": "M"
+    },
+    {
+      "id": "S0081L05",
+      "known": "start",
+      "target": "开始",
+      "type": "A"
+    },
+    {
+      "id": "S0082L02",
+      "known": "not going to wait",
+      "target": "不会等",
+      "type": "M"
+    },
+    {
+      "id": "S0082L03",
+      "known": "wait for you",
+      "target": "等你",
+      "type": "M"
+    },
+    {
+      "id": "S0082L04",
+      "known": "wait",
+      "target": "等",
+      "type": "A"
+    },
+    {
+      "id": "S0082L05",
+      "known": "why not",
+      "target": "为什么不呢",
+      "type": "M"
+    },
+    {
+      "id": "S0083L01",
+      "known": "I agree with",
+      "target": "我同意",
+      "type": "M"
+    },
+    {
+      "id": "S0083L02",
+      "known": "your friend",
+      "target": "你朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0083L03",
+      "known": "about your friend",
+      "target": "对你朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0083L04",
+      "known": "what [someone] said",
+      "target": "说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0083L05",
+      "known": "what you said about your friend",
+      "target": "你对你朋友说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0084L01",
+      "known": "agree",
+      "target": "同意",
+      "type": "A"
+    },
+    {
+      "id": "S0084L02",
+      "known": "don't agree",
+      "target": "不同意",
+      "type": "M"
+    },
+    {
+      "id": "S0084L03",
+      "known": "I don't agree with",
+      "target": "我不同意",
+      "type": "M"
+    },
+    {
+      "id": "S0084L04",
+      "known": "my friend",
+      "target": "我朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0084L05",
+      "known": "about my friend",
+      "target": "对我朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0084L07",
+      "known": "what he said about my friend",
+      "target": "他对我朋友说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0085L03",
+      "known": "I don't know",
+      "target": "我不认识",
+      "type": "M"
+    },
+    {
+      "id": "S0085L04",
+      "known": "those",
+      "target": "那些",
+      "type": "M"
+    },
+    {
+      "id": "S0085L05",
+      "known": "those people",
+      "target": "那些人",
+      "type": "M"
+    },
+    {
+      "id": "S0085L06",
+      "known": "people",
+      "target": "人",
+      "type": "A"
+    }
+  ],
+  "legos": {
+    "S0086L01": {
+      "lego": [
+        "unfortunately",
+        "不幸的是"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Unfortunately", "不幸的是", null, 1],
+        ["Unfortunately, I don't agree", "不幸的是，我不同意", null, 2],
+        ["Unfortunately, I'm not ready", "不幸的是，我不准备好", null, 3],
+        ["Unfortunately, I won't wait", "不幸的是，我不会等", null, 3],
+        ["Unfortunately, I don't know those people", "不幸的是，我不认识那些人", null, 4],
+        ["Unfortunately, I'm not sure when to start", "不幸的是，我不确定什么时候开始", null, 4],
+        ["Unfortunately, I don't agree with what you said", "不幸的是，我不同意你说的话", null, 5],
+        ["Unfortunately, my friend won't wait for you", "不幸的是，我朋友不会等你", null, 5],
+        ["Unfortunately, I don't understand what you said about my friend", "不幸的是，我不理解你对我朋友说的话", null, 6],
+        ["Unfortunately, I don't agree with what your friend said", "不幸的是，我不同意你朋友说的话", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0086L01",
+        "seed_context": {
+          "known": "It wasn't possible, unfortunately.",
+          "target": "不幸的是，这是不可能的。"
+        }
+      },
+      "components": [
+        [
+          "不幸",
+          "unfortunate"
+        ],
+        [
+          "的",
+          "nominalizer"
+        ],
+        [
+          "是",
+          "is"
+        ]
+      ]
+    },
+    "S0086L02": {
+      "lego": [
+        "possible",
+        "可能"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0086L01",
+          "known": "unfortunately",
+          "target": "不幸的是",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Possible", "可能", null, 1],
+        ["Unfortunately, possible", "不幸的是，可能", null, 2],
+        ["When will it be possible?", "什么时候会可能？", null, 3],
+        ["It will be possible soon", "会可能好", null, 3],
+        ["I'm not sure when it's possible", "我不确定什么时候可能", null, 4],
+        ["Unfortunately, when will it be possible?", "不幸的是，什么时候会可能？", null, 4],
+        ["My friend said it will be possible", "我朋友说会可能", null, 5],
+        ["I don't agree that it will be possible", "我不同意会可能", null, 5],
+        ["Unfortunately, I'm not sure when it will be possible", "不幸的是，我不确定什么时候会可能", null, 6],
+        ["Your friend said it's not possible, unfortunately", "你朋友说不可能，不幸的是", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0086L02",
+        "seed_context": {
+          "known": "It wasn't possible, unfortunately.",
+          "target": "不幸的是，这是不可能的。"
+        }
+      }
+    },
+    "S0086L03": {
+      "lego": [
+        "not possible",
+        "不可能"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0086L01",
+          "known": "unfortunately",
+          "target": "不幸的是",
+          "type": "M"
+        },
+        {
+          "id": "S0086L02",
+          "known": "possible",
+          "target": "可能",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Not possible", "不可能", null, 1],
+        ["Unfortunately, not possible", "不幸的是，不可能", null, 2],
+        ["It's not possible now", "不可能好", null, 3],
+        ["That's not possible, unfortunately", "不可能，不幸的是", null, 3],
+        ["I said it's not possible", "我说不可能", null, 4],
+        ["My friend said it's not possible", "我朋友说不可能", null, 4],
+        ["Unfortunately, I'm not sure it's not possible", "不幸的是，我不确定不可能", null, 5],
+        ["Your friend said it's not possible to start", "你朋友说不可能开始", null, 5],
+        ["I don't agree that it's not possible to wait", "我不同意不可能等", null, 6],
+        ["Unfortunately, my friend said it's not possible to start", "不幸的是，我朋友说不可能开始", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0086L03",
+        "seed_context": {
+          "known": "It wasn't possible, unfortunately.",
+          "target": "不幸的是，这是不可能的。"
+        }
+      },
+      "components": [
+        [
+          "不",
+          "not"
+        ],
+        [
+          "可能",
+          "possible"
+        ]
+      ]
+    },
+    "S0086L04": {
+      "lego": [
+        "is not possible",
+        "是不可能的"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0086L01",
+          "known": "unfortunately",
+          "target": "不幸的是",
+          "type": "M"
+        },
+        {
+          "id": "S0086L02",
+          "known": "possible",
+          "target": "可能",
+          "type": "A"
+        },
+        {
+          "id": "S0086L03",
+          "known": "not possible",
+          "target": "不可能",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Is not possible", "是不可能的", null, 1],
+        ["This is not possible", "这是不可能的", null, 2],
+        ["Unfortunately, this is not possible", "不幸的是，这是不可能的", null, 3],
+        ["That is not possible now", "那是不可能的好", null, 3],
+        ["What you said is not possible", "你说的话是不可能的", null, 4],
+        ["I said this is not possible", "我说这是不可能的", null, 4],
+        ["Unfortunately, what you said is not possible", "不幸的是，你说的话是不可能的", null, 5],
+        ["My friend said this is not possible", "我朋友说这是不可能的", null, 5],
+        ["Unfortunately, I agree that this is not possible", "不幸的是，我同意这是不可能的", null, 6],
+        ["What your friend said about learning is not possible", "你朋友对学习说的话是不可能的", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0086L04",
+        "seed_context": {
+          "known": "It wasn't possible, unfortunately.",
+          "target": "不幸的是，这是不可能的。"
+        }
+      },
+      "components": [
+        [
+          "是",
+          "is"
+        ],
+        [
+          "不可能",
+          "not possible"
+        ],
+        [
+          "的",
+          "particle"
+        ]
+      ]
+    },
+    "S0086L05": {
+      "lego": [
+        "it wasn't possible",
+        "这是不可能的"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0086L01",
+          "known": "unfortunately",
+          "target": "不幸的是",
+          "type": "M"
+        },
+        {
+          "id": "S0086L02",
+          "known": "possible",
+          "target": "可能",
+          "type": "A"
+        },
+        {
+          "id": "S0086L03",
+          "known": "not possible",
+          "target": "不可能",
+          "type": "M"
+        },
+        {
+          "id": "S0086L04",
+          "known": "is not possible",
+          "target": "是不可能的",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["It wasn't possible", "这是不可能的", null, 1],
+        ["Unfortunately, it wasn't possible", "不幸的是，这是不可能的", null, 2],
+        ["I said it wasn't possible", "我说这是不可能的", null, 3],
+        ["My friend said it wasn't possible", "我朋友说这是不可能的", null, 3],
+        ["Unfortunately, my friend said it wasn't possible", "不幸的是，我朋友说这是不可能的", null, 4],
+        ["I agree that it wasn't possible to start", "我同意这是不可能的开始", null, 4],
+        ["Unfortunately, I agree that it wasn't possible to wait", "不幸的是，我同意这是不可能的等", null, 5],
+        ["Your friend said it wasn't possible to be ready", "你朋友说这是不可能的准备好", null, 5],
+        ["Unfortunately, I don't agree that it wasn't possible to start learning", "不幸的是，我不同意这是不可能的开始学习", null, 6],
+        ["It wasn't possible, unfortunately.", "不幸的是，这是不可能的。", null, 2]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0086L05",
+        "seed_context": {
+          "known": "It wasn't possible, unfortunately.",
+          "target": "不幸的是，这是不可能的。"
+        }
+      },
+      "components": [
+        [
+          "这",
+          "this/it"
+        ],
+        [
+          "是",
+          "is/was"
+        ],
+        [
+          "不可能",
+          "not possible"
+        ],
+        [
+          "的",
+          "particle"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0086.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30,
+    "phrases_generated": 50
+  }
+}

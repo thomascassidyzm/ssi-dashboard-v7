@@ -1,0 +1,555 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0061",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "known": "你能再慢一点说一遍吗？",
+    "target": "Could you say that again a little more slowly?"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0051",
+      "known": "我喜欢和朋友做有趣的事情。",
+      "target": "I enjoy doing interesting things with my friends."
+    },
+    {
+      "seed_id": "S0052",
+      "known": "他上周想给他的朋友写封信。",
+      "target": "He wanted to write a letter to his friend last week."
+    },
+    {
+      "seed_id": "S0053",
+      "known": "她想把他的信放进她的包里。",
+      "target": "She wanted to put his letter in her bag."
+    },
+    {
+      "seed_id": "S0054",
+      "known": "我们想多给你一点时间。",
+      "target": "We wanted to give you a little more time."
+    },
+    {
+      "seed_id": "S0055",
+      "known": "当我没睡好的时候我不喜欢醒来。",
+      "target": "I don't enjoy waking up when I didn't sleep very well."
+    },
+    {
+      "seed_id": "S0056",
+      "known": "这样我就能记住怎么说几个词。",
+      "target": "So I can remember how to say a few words."
+    },
+    {
+      "seed_id": "S0057",
+      "known": "我记不住怎么说我想说的话。",
+      "target": "I can't remember how to say what I wanted to say."
+    },
+    {
+      "seed_id": "S0058",
+      "known": "当你理解足够多的词的时候很有趣。",
+      "target": "It's interesting when you understand enough words."
+    },
+    {
+      "seed_id": "S0059",
+      "known": "我知道下周我需要做什么。",
+      "target": "I know how to do what I need to do next week."
+    },
+    {
+      "seed_id": "S0060",
+      "known": "我还不知道怎么说足够多不同的词。",
+      "target": "I don't know how to say enough different words yet."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0054L03",
+      "known": "give you a little time",
+      "target": "给你一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0054L04",
+      "known": "a little time",
+      "target": "一点时间",
+      "type": "M"
+    },
+    {
+      "id": "S0055L01",
+      "known": "when I didn't sleep very well",
+      "target": "当我没睡好的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0055L02",
+      "known": "didn't sleep well",
+      "target": "没睡好",
+      "type": "M"
+    },
+    {
+      "id": "S0055L03",
+      "known": "sleep well",
+      "target": "睡好",
+      "type": "M"
+    },
+    {
+      "id": "S0055L04",
+      "known": "don't enjoy",
+      "target": "不喜欢",
+      "type": "M"
+    },
+    {
+      "id": "S0055L05",
+      "known": "wake up",
+      "target": "醒来",
+      "type": "A"
+    },
+    {
+      "id": "S0056L01",
+      "known": "so I can",
+      "target": "这样我就能",
+      "type": "M"
+    },
+    {
+      "id": "S0056L02",
+      "known": "can remember",
+      "target": "能记住",
+      "type": "M"
+    },
+    {
+      "id": "S0056L03",
+      "known": "remember how to say",
+      "target": "记住怎么说",
+      "type": "M"
+    },
+    {
+      "id": "S0056L04",
+      "known": "how to say",
+      "target": "怎么说",
+      "type": "M"
+    },
+    {
+      "id": "S0056L05",
+      "known": "a few words",
+      "target": "几个词",
+      "type": "M"
+    },
+    {
+      "id": "S0057L01",
+      "known": "can't remember",
+      "target": "记不住",
+      "type": "M"
+    },
+    {
+      "id": "S0057L03",
+      "known": "what I wanted to say",
+      "target": "我想说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0057L04",
+      "known": "what to say / wanted to say",
+      "target": "想说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0058L01",
+      "known": "when you understand enough words",
+      "target": "当你理解足够多的词的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0058L02",
+      "known": "understand enough words",
+      "target": "理解足够多的词",
+      "type": "M"
+    },
+    {
+      "id": "S0058L03",
+      "known": "enough words",
+      "target": "足够多的词",
+      "type": "M"
+    },
+    {
+      "id": "S0058L04",
+      "known": "interesting / very interesting",
+      "target": "很有趣",
+      "type": "M"
+    },
+    {
+      "id": "S0059L01",
+      "known": "I know",
+      "target": "我知道",
+      "type": "M"
+    },
+    {
+      "id": "S0059L02",
+      "known": "know",
+      "target": "知道",
+      "type": "A"
+    },
+    {
+      "id": "S0059L03",
+      "known": "next week",
+      "target": "下周",
+      "type": "A"
+    },
+    {
+      "id": "S0059L04",
+      "known": "what I need to do next week",
+      "target": "下周我需要做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0059L05",
+      "known": "need to do what / what...need to do",
+      "target": "需要做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0059L06",
+      "known": "do what",
+      "target": "做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0060L01",
+      "known": "I don't know yet",
+      "target": "我还不知道",
+      "type": "M"
+    },
+    {
+      "id": "S0060L02",
+      "known": "don't know yet / still don't know",
+      "target": "还不知道",
+      "type": "M"
+    },
+    {
+      "id": "S0060L03",
+      "known": "don't know",
+      "target": "不知道",
+      "type": "M"
+    },
+    {
+      "id": "S0060L05",
+      "known": "enough different words",
+      "target": "足够多不同的词",
+      "type": "M"
+    },
+    {
+      "id": "S0060L06",
+      "known": "different words",
+      "target": "不同的词",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0061L01": {
+      "lego": [
+        "Could you",
+        "你能"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Could you", "你能", null, 1],
+        ["Could you know", "你能知道", null, 2],
+        ["Could you do it", "你能做", null, 2],
+        ["Could you say a few words", "你能说几个词", null, 3],
+        ["Could you remember what to say", "你能记住怎么说", null, 3],
+        ["Could you give me a little time", "你能给我一点时间", null, 4],
+        ["Could you understand enough words", "你能理解足够多的词", null, 4],
+        ["Could you remember how to say a few words", "你能记住怎么说几个词", null, 5],
+        ["Could you give me a little more time next week", "你能下周多给我一点时间", null, 6],
+        ["Could you remember how to say what I wanted to say", "你能记住怎么说我想说的话", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0061L01",
+        "seed_context": {
+          "known": "你能再慢一点说一遍吗？",
+          "target": "Could you say that again a little more slowly?"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "能",
+          "could/can"
+        ]
+      ]
+    },
+    "S0061L02": {
+      "lego": [
+        "a little slower",
+        "慢一点"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0061L01",
+          "known": "Could you",
+          "target": "你能",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["A little slower", "慢一点", null, 1],
+        ["Could you go a little slower", "你能慢一点", null, 2],
+        ["I wanted to go a little slower", "我想慢一点", null, 2],
+        ["Could you say it a little slower", "你能说慢一点", null, 3],
+        ["I wanted to do it a little slower", "我想做慢一点", null, 3],
+        ["Could you say a few words a little slower", "你能慢一点说几个词", null, 4],
+        ["I wanted to remember it a little slower", "我想慢一点记住", null, 4],
+        ["Could you understand a little slower when I say it", "你能慢一点理解当我说的时候", null, 6],
+        ["I wanted to remember how to say it a little slower", "我想记住怎么慢一点说", null, 6],
+        ["Could you say a few words a little slower so I can remember", "你能慢一点说几个词这样我就能记住", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0061L02",
+        "seed_context": {
+          "known": "你能再慢一点说一遍吗？",
+          "target": "Could you say that again a little more slowly?"
+        }
+      },
+      "components": [
+        [
+          "慢",
+          "slow"
+        ],
+        [
+          "一点",
+          "a little"
+        ]
+      ]
+    },
+    "S0061L03": {
+      "lego": [
+        "a little more slowly",
+        "再慢一点"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0061L01",
+          "known": "Could you",
+          "target": "你能",
+          "type": "M"
+        },
+        {
+          "id": "S0061L02",
+          "known": "a little slower",
+          "target": "慢一点",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["A little more slowly", "再慢一点", null, 1],
+        ["Could you go a bit more slowly", "你能再慢一点", null, 2],
+        ["I know you can slow down more", "我知道你能再慢一点", null, 3],
+        ["I need you to go a little more slowly", "我需要你再慢一点", null, 3],
+        ["My friend said you could slow down more", "我的朋友说你能再慢一点", null, 4],
+        ["When I speak I need to go more slowly", "当我说的时候我需要再慢一点", null, 5],
+        ["My friends don't know you can slow down more", "我的朋友不知道你能再慢一点", null, 5],
+        ["I wanted to say you need to slow down more", "我想说你需要再慢一点", null, 4],
+        ["When you speak I need you to go more slowly", "当你说的时候我需要你再慢一点", null, 6],
+        ["I can't remember how to say I need it slower", "我记不住怎么说我需要再慢一点", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0061L03",
+        "seed_context": {
+          "known": "你能再慢一点说一遍吗？",
+          "target": "Could you say that again a little more slowly?"
+        }
+      },
+      "components": [
+        [
+          "再",
+          "again/more"
+        ],
+        [
+          "慢",
+          "slow"
+        ],
+        [
+          "一点",
+          "a little"
+        ]
+      ]
+    },
+    "S0061L04": {
+      "lego": [
+        "say that again",
+        "说一遍"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0061L01",
+          "known": "Could you",
+          "target": "你能",
+          "type": "M"
+        },
+        {
+          "id": "S0061L02",
+          "known": "a little slower",
+          "target": "慢一点",
+          "type": "M"
+        },
+        {
+          "id": "S0061L03",
+          "known": "a little more slowly",
+          "target": "再慢一点",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Say that again", "说一遍", null, 1],
+        ["Could you say that again", "你能说一遍", null, 2],
+        ["I wanted to say that again", "我想说一遍", null, 2],
+        ["I need you to say that again", "我需要你说一遍", null, 3],
+        ["Could you say that again a little slower", "你能慢一点说一遍", null, 3],
+        ["My friend wanted to say that again", "我的朋友想说一遍", null, 4],
+        ["I know you could say that again slowly", "我知道你能慢一点说一遍", null, 4],
+        ["When you say that again I can remember", "当你说一遍的时候我能记住", null, 5],
+        ["Could you say that again more slowly next week", "你能下周再慢一点说一遍", null, 5],
+        ["I don't know how to say that again in different words", "我不知道怎么用不同的词说一遍", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0061L04",
+        "seed_context": {
+          "known": "你能再慢一点说一遍吗？",
+          "target": "Could you say that again a little more slowly?"
+        }
+      },
+      "components": [
+        [
+          "说",
+          "say"
+        ],
+        [
+          "一遍",
+          "once/again"
+        ]
+      ]
+    },
+    "S0061L05": {
+      "lego": [
+        "say that again?",
+        "说一遍吗"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0061L01",
+          "known": "Could you",
+          "target": "你能",
+          "type": "M"
+        },
+        {
+          "id": "S0061L02",
+          "known": "a little slower",
+          "target": "慢一点",
+          "type": "M"
+        },
+        {
+          "id": "S0061L03",
+          "known": "a little more slowly",
+          "target": "再慢一点",
+          "type": "M"
+        },
+        {
+          "id": "S0061L04",
+          "known": "say that again",
+          "target": "说一遍",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Could you say that again?", "你能说一遍吗", null, 1],
+        ["Could you say it again a little slower?", "你能慢一点说一遍吗", null, 2],
+        ["I wanted to know if you could say that again?", "我想知道你能说一遍吗", null, 3],
+        ["Do you know if she could say that again?", "你知道她能说一遍吗", null, 3],
+        ["Could my friend say that again next week?", "我的朋友下周能说一遍吗", null, 4],
+        ["I wanted to ask could you say that again?", "我想问你能说一遍吗", null, 4],
+        ["When I don't understand could you say it again?", "当我不理解的时候你能说一遍吗", null, 5],
+        ["I don't know if my friend could say that again?", "我不知道我的朋友能说一遍吗", null, 5],
+        ["Could you say those different words again slowly?", "你能慢一点说那些不同的词一遍吗", null, 6],
+        ["Could you say that again a little more slowly?", "你能再慢一点说一遍吗", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0061L05",
+        "seed_context": {
+          "known": "你能再慢一点说一遍吗？",
+          "target": "Could you say that again a little more slowly?"
+        }
+      },
+      "components": [
+        [
+          "说",
+          "say"
+        ],
+        [
+          "一遍",
+          "once"
+        ],
+        [
+          "吗",
+          "question particle"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0061.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

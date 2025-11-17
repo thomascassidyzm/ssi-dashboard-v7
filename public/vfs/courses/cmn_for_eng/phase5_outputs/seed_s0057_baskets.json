@@ -1,0 +1,121 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0057",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "我记不住怎么说我想说的话。",
+    "target": "I can't remember how to say what I wanted to say."
+  },
+  "legos": {
+    "S0057L01": {
+      "lego": [
+        "can't remember",
+        "记不住"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Can't remember", "记不住", null, 1],
+        ["I can't remember", "我记不住", null, 1],
+        ["I can't remember how to say", "我记不住怎么说", null, 2],
+        ["He can't remember a few words", "他记不住几个词", null, 2],
+        ["I can't remember how to say a few words", "我记不住怎么说几个词", null, 3],
+        ["She can't remember how to write a letter", "她记不住怎么写封信", null, 3],
+        ["He can't remember how to do interesting things", "他记不住怎么做有趣的事情", null, 4],
+        ["I can't remember how to do interesting things with my friends", "我记不住怎么和朋友做有趣的事情", null, 5],
+        ["She can't remember how to write a letter to his friend", "她记不住怎么给他的朋友写封信", null, 6],
+        ["When I didn't sleep well, I can't remember how to say a few words", "当我没睡好的时候，我记不住怎么说几个词", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0057L03": {
+      "lego": [
+        "what I wanted to say",
+        "我想说的话"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0057L01",
+          "known": "can't remember",
+          "target": "记不住",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["What I wanted to say", "我想说的话", null, 1],
+        ["I know what I wanted to say", "我知道我想说的话", null, 2],
+        ["This is what I wanted to say", "这是我想说的话", null, 2],
+        ["I can't remember what I wanted to say", "我记不住我想说的话", null, 2],
+        ["He knows what I wanted to say", "他知道我想说的话", null, 3],
+        ["She enjoys what I wanted to say", "她喜欢我想说的话", null, 3],
+        ["He can't remember what I wanted to say", "他记不住我想说的话", null, 4],
+        ["I wanted to write what I wanted to say", "我想写我想说的话", null, 5],
+        ["When I didn't sleep well, I can't remember what I wanted to say", "当我没睡好的时候，我记不住我想说的话", null, 6],
+        ["My friend knows how to say what I wanted to say", "我的朋友知道怎么说我想说的话", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0057L04": {
+      "lego": [
+        "what to say / wanted to say",
+        "想说的话"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0057L01",
+          "known": "can't remember",
+          "target": "记不住",
+          "type": "M"
+        },
+        {
+          "id": "S0057L03",
+          "known": "what I wanted to say",
+          "target": "我想说的话",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["What to say", "想说的话", null, 1],
+        ["I know what to say", "我知道想说的话", null, 2],
+        ["He knows what to say", "他知道想说的话", null, 2],
+        ["I can't remember what to say", "我记不住想说的话", null, 2],
+        ["She can't remember what to say", "她记不住想说的话", null, 3],
+        ["My friend knows what to say", "我的朋友知道想说的话", null, 3],
+        ["I can't remember how to say what to say", "我记不住怎么说想说的话", null, 4],
+        ["He wanted to write what to say to his friend", "他想给他的朋友写想说的话", null, 5],
+        ["When I didn't sleep well, I can't remember what to say", "当我没睡好的时候，我记不住想说的话", null, 6],
+        ["I can't remember how to say what I wanted to say", "我记不住怎么说我想说的话", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  },
+  "_generation_metadata": {
+    "generated_at": "2025-11-17",
+    "legos_generated": 3,
+    "total_phrases": 30,
+    "methodology": "Phase 5 Intelligence v7.0"
+  }
+}

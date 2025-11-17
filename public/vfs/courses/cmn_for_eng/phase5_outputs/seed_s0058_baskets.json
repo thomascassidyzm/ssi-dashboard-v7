@@ -1,0 +1,168 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0058",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "当你理解足够多的词的时候很有趣。",
+    "target": "It's interesting when you understand enough words."
+  },
+  "legos": {
+    "S0058L01": {
+      "lego": [
+        "when you understand enough words",
+        "当你理解足够多的词的时候"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["When you understand enough words", "当你理解足够多的词的时候", null, 1],
+        ["I know when you understand enough words", "我知道当你理解足够多的词的时候", null, 2],
+        ["When you understand enough words, I know", "当你理解足够多的词的时候，我知道", null, 2],
+        ["He knows when you understand enough words", "他知道当你理解足够多的词的时候", null, 3],
+        ["I enjoy when you understand enough words", "我喜欢当你理解足够多的词的时候", null, 3],
+        ["When you understand enough words, she knows what to say", "当你理解足够多的词的时候，她知道想说的话", null, 4],
+        ["My friend knows when you understand enough words", "我的朋友知道当你理解足够多的词的时候", null, 5],
+        ["When you understand enough words, I can remember how to say", "当你理解足够多的词的时候，我能记住怎么说", null, 6],
+        ["I can't remember when you understand enough words to write a letter", "我记不住当你理解足够多的词的时候写封信", null, 7],
+        ["When you understand enough words, I can remember how to say what I wanted to say", "当你理解足够多的词的时候，我能记住怎么说我想说的话", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0058L02": {
+      "lego": [
+        "understand enough words",
+        "理解足够多的词"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0058L01",
+          "known": "when you understand enough words",
+          "target": "当你理解足够多的词的时候",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Understand enough words", "理解足够多的词", null, 1],
+        ["I understand enough words", "我理解足够多的词", null, 2],
+        ["You understand enough words", "你理解足够多的词", null, 2],
+        ["He wants to understand enough words", "他想理解足够多的词", null, 3],
+        ["I want to understand enough words", "我想理解足够多的词", null, 3],
+        ["My friend wants to understand enough words", "我的朋友想理解足够多的词", null, 4],
+        ["When I didn't sleep well, I can't understand enough words", "当我没睡好的时候，我不能理解足够多的词", null, 5],
+        ["She enjoys when you understand enough words", "她喜欢当你理解足够多的词的时候", null, 6],
+        ["I want to understand enough words to write a letter to my friend", "我想理解足够多的词给我的朋友写封信", null, 7],
+        ["When I can remember how to say a few words, I understand enough words", "当我能记住怎么说几个词的时候，我理解足够多的词", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0058L03": {
+      "lego": [
+        "enough words",
+        "足够多的词"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0058L01",
+          "known": "when you understand enough words",
+          "target": "当你理解足够多的词的时候",
+          "type": "M"
+        },
+        {
+          "id": "S0058L02",
+          "known": "understand enough words",
+          "target": "理解足够多的词",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Enough words", "足够多的词", null, 1],
+        ["I know enough words", "我知道足够多的词", null, 2],
+        ["He knows enough words", "他知道足够多的词", null, 2],
+        ["She wants to know enough words", "她想知道足够多的词", null, 3],
+        ["I can't remember enough words", "我记不住足够多的词", null, 3],
+        ["My friend can remember enough words", "我的朋友能记住足够多的词", null, 4],
+        ["When I didn't sleep well, I can't remember enough words", "当我没睡好的时候，我记不住足够多的词", null, 5],
+        ["I want to understand enough words to write a letter", "我想理解足够多的词写封信", null, 6],
+        ["He wants to give me a little time to understand enough words", "他想给我一点时间理解足够多的词", null, 7],
+        ["When you understand enough words, I know enough words", "当你理解足够多的词的时候，我知道足够多的词", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0058L04": {
+      "lego": [
+        "interesting / very interesting",
+        "很有趣"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0058L01",
+          "known": "when you understand enough words",
+          "target": "当你理解足够多的词的时候",
+          "type": "M"
+        },
+        {
+          "id": "S0058L02",
+          "known": "understand enough words",
+          "target": "理解足够多的词",
+          "type": "M"
+        },
+        {
+          "id": "S0058L03",
+          "known": "enough words",
+          "target": "足够多的词",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Very interesting", "很有趣", null, 1],
+        ["This is very interesting", "这很有趣", null, 2],
+        ["I think it's very interesting", "我认为很有趣", null, 2],
+        ["He thinks it's very interesting", "他认为很有趣", null, 3],
+        ["Enough words is very interesting", "足够多的词很有趣", null, 3],
+        ["Understanding enough words is very interesting", "理解足够多的词很有趣", null, 4],
+        ["I think understanding enough words is very interesting", "我认为理解足够多的词很有趣", null, 5],
+        ["My friend thinks when you understand enough words, it's very interesting", "我的朋友认为当你理解足够多的词的时候很有趣", null, 7],
+        ["When I can remember enough words, it's very interesting", "当我能记住足够多的词的时候很有趣", null, 6],
+        ["It's interesting when you understand enough words", "当你理解足够多的词的时候很有趣", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  },
+  "_generation_metadata": {
+    "generated_at": "2025-11-17",
+    "legos_generated": 4,
+    "total_phrases": 40,
+    "methodology": "Phase 5 Intelligence v7.0"
+  }
+}

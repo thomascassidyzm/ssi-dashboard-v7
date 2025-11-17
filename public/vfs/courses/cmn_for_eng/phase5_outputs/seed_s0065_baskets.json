@@ -1,0 +1,520 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0065",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "花时间测试自己很重要。",
+    "target": "It's important to take time to test yourself."
+  },
+  "legos": {
+    "S0065L01": {
+      "lego": [
+        "time",
+        "时间"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Time", "时间", null, 1],
+        ["I need time", "我需要时间", null, 2],
+        ["You need time", "你需要时间", null, 3],
+        ["I don't have time", "我没有时间", null, 3],
+        ["You need time to learn", "你需要时间学习", null, 4],
+        ["I need time to learn", "我需要时间学习", null, 4],
+        ["I need time to learn Chinese", "我需要时间学中文", null, 5],
+        ["You need time to learn different words", "你需要时间学不同的词", null, 6],
+        ["I don't know when I need time", "我不知道什么时候需要时间", null, 6],
+        ["I need time to learn enough different words", "我需要时间学足够多不同的词", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L01",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      }
+    },
+    "S0065L02": {
+      "lego": [
+        "take time",
+        "花时间"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0065L01",
+          "known": "time",
+          "target": "时间",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Take time", "花时间", null, 1],
+        ["I take time", "我花时间", null, 2],
+        ["You take time", "你花时间", null, 2],
+        ["I take time to learn", "我花时间学习", null, 3],
+        ["You take time to learn", "你花时间学习", null, 3],
+        ["I don't take time to learn", "我不花时间学习", null, 4],
+        ["I take time to learn Chinese", "我花时间学中文", null, 4],
+        ["You need to take time to learn", "你需要花时间学习", null, 5],
+        ["I take time when I learn Chinese", "我学中文的时候花时间", null, 6],
+        ["You take time to learn different words", "你花时间学不同的词", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L02",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      },
+      "components": [
+        [
+          "花",
+          "spend"
+        ],
+        [
+          "时间",
+          "time"
+        ]
+      ]
+    },
+    "S0065L03": {
+      "lego": [
+        "test",
+        "测试"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0065L01",
+          "known": "time",
+          "target": "时间",
+          "type": "A"
+        },
+        {
+          "id": "S0065L02",
+          "known": "take time",
+          "target": "花时间",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Test", "测试", null, 1],
+        ["I want to test", "我想测试", null, 2],
+        ["You need to test", "你需要测试", null, 3],
+        ["I don't want to test", "我不想测试", null, 3],
+        ["I need time to test", "我需要时间测试", null, 4],
+        ["You take time to test", "你花时间测试", null, 4],
+        ["I take time to test when I learn", "我学习的时候花时间测试", null, 6],
+        ["You need to take time to test", "你需要花时间测试", null, 5],
+        ["I don't know how to test", "我不知道怎么测试", null, 5],
+        ["You could take time to test", "你能花时间测试", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L03",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      }
+    },
+    "S0065L04": {
+      "lego": [
+        "yourself",
+        "自己"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0065L01",
+          "known": "time",
+          "target": "时间",
+          "type": "A"
+        },
+        {
+          "id": "S0065L02",
+          "known": "take time",
+          "target": "花时间",
+          "type": "M"
+        },
+        {
+          "id": "S0065L03",
+          "known": "test",
+          "target": "测试",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Yourself", "自己", null, 1],
+        ["Help yourself", "帮自己", null, 2],
+        ["You help yourself", "你帮自己", null, 2],
+        ["I want to help myself", "我想帮自己", null, 3],
+        ["You need to help yourself", "你需要帮自己", null, 3],
+        ["I'm learning Chinese by myself", "我自己在学中文", null, 4],
+        ["You could help yourself learn Chinese", "你能帮自己学中文", null, 5],
+        ["I don't know how to help myself", "我不知道怎么帮自己", null, 6],
+        ["You're trying to learn by yourself", "你在试着自己学习", null, 5],
+        ["I take time to learn by myself", "我花时间自己学习", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L04",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      }
+    },
+    "S0065L05": {
+      "lego": [
+        "test yourself",
+        "测试自己"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0065L01",
+          "known": "time",
+          "target": "时间",
+          "type": "A"
+        },
+        {
+          "id": "S0065L02",
+          "known": "take time",
+          "target": "花时间",
+          "type": "M"
+        },
+        {
+          "id": "S0065L03",
+          "known": "test",
+          "target": "测试",
+          "type": "A"
+        },
+        {
+          "id": "S0065L04",
+          "known": "yourself",
+          "target": "自己",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Test yourself", "测试自己", null, 1],
+        ["I test myself", "我测试自己", null, 2],
+        ["You test yourself", "你测试自己", null, 2],
+        ["I want to test myself", "我想测试自己", null, 3],
+        ["You need to test yourself", "你需要测试自己", null, 3],
+        ["I take time to test myself", "我花时间测试自己", null, 4],
+        ["You could test yourself", "你能测试自己", null, 3],
+        ["I don't know how to test myself", "我不知道怎么测试自己", null, 5],
+        ["You take time to test yourself when you learn", "你学习的时候花时间测试自己", null, 7],
+        ["I need to take time to test myself", "我需要花时间测试自己", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L05",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      },
+      "components": [
+        [
+          "测试",
+          "test"
+        ],
+        [
+          "自己",
+          "yourself"
+        ]
+      ]
+    },
+    "S0065L06": {
+      "lego": [
+        "important",
+        "重要"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0065L01",
+          "known": "time",
+          "target": "时间",
+          "type": "A"
+        },
+        {
+          "id": "S0065L02",
+          "known": "take time",
+          "target": "花时间",
+          "type": "M"
+        },
+        {
+          "id": "S0065L03",
+          "known": "test",
+          "target": "测试",
+          "type": "A"
+        },
+        {
+          "id": "S0065L04",
+          "known": "yourself",
+          "target": "自己",
+          "type": "A"
+        },
+        {
+          "id": "S0065L05",
+          "known": "test yourself",
+          "target": "测试自己",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Important", "重要", null, 1],
+        ["Very important", "很重要", null, 2],
+        ["This is important", "这很重要", null, 2],
+        ["Time is important", "时间很重要", null, 3],
+        ["This is very important", "这很重要", null, 3],
+        ["Learning Chinese is important", "学中文很重要", null, 4],
+        ["I know this is important", "我知道这很重要", null, 4],
+        ["Testing yourself is important", "测试自己很重要", null, 4],
+        ["I know learning Chinese is very important", "我知道学中文很重要", null, 6],
+        ["Taking time to test yourself is important", "花时间测试自己很重要", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L06",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      }
+    },
+    "S0065L07": {
+      "lego": [
+        "very important",
+        "很重要"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0065L01",
+          "known": "time",
+          "target": "时间",
+          "type": "A"
+        },
+        {
+          "id": "S0065L02",
+          "known": "take time",
+          "target": "花时间",
+          "type": "M"
+        },
+        {
+          "id": "S0065L03",
+          "known": "test",
+          "target": "测试",
+          "type": "A"
+        },
+        {
+          "id": "S0065L04",
+          "known": "yourself",
+          "target": "自己",
+          "type": "A"
+        },
+        {
+          "id": "S0065L05",
+          "known": "test yourself",
+          "target": "测试自己",
+          "type": "M"
+        },
+        {
+          "id": "S0065L06",
+          "known": "important",
+          "target": "重要",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Very important", "很重要", null, 1],
+        ["This is very important", "这很重要", null, 2],
+        ["Time is very important", "时间很重要", null, 3],
+        ["I know this is very important", "我知道这很重要", null, 4],
+        ["Learning Chinese is very important", "学中文很重要", null, 4],
+        ["Testing yourself is very important", "测试自己很重要", null, 4],
+        ["I know learning is very important", "我知道学习很重要", null, 5],
+        ["Taking time is very important", "花时间很重要", null, 4],
+        ["I know testing yourself is very important", "我知道测试自己很重要", null, 6],
+        ["Taking time to test yourself is very important", "花时间测试自己很重要", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L07",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      },
+      "components": [
+        [
+          "很",
+          "very"
+        ],
+        [
+          "重要",
+          "important"
+        ]
+      ]
+    },
+    "S0065L08": {
+      "lego": [
+        "take time to test yourself",
+        "花时间测试自己"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0065L01",
+          "known": "time",
+          "target": "时间",
+          "type": "A"
+        },
+        {
+          "id": "S0065L02",
+          "known": "take time",
+          "target": "花时间",
+          "type": "M"
+        },
+        {
+          "id": "S0065L03",
+          "known": "test",
+          "target": "测试",
+          "type": "A"
+        },
+        {
+          "id": "S0065L04",
+          "known": "yourself",
+          "target": "自己",
+          "type": "A"
+        },
+        {
+          "id": "S0065L05",
+          "known": "test yourself",
+          "target": "测试自己",
+          "type": "M"
+        },
+        {
+          "id": "S0065L06",
+          "known": "important",
+          "target": "重要",
+          "type": "A"
+        },
+        {
+          "id": "S0065L07",
+          "known": "very important",
+          "target": "很重要",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Take time to test yourself", "花时间测试自己", null, 1],
+        ["I take time to test myself", "我花时间测试自己", null, 2],
+        ["You take time to test yourself", "你花时间测试自己", null, 2],
+        ["I need to take time to test myself", "我需要花时间测试自己", null, 3],
+        ["You need to take time to test yourself", "你需要花时间测试自己", null, 3],
+        ["I know I need to take time to test myself", "我知道我需要花时间测试自己", null, 5],
+        ["You could take time to test yourself", "你能花时间测试自己", null, 4],
+        ["Taking time to test yourself is important", "花时间测试自己很重要", null, 4],
+        ["I know taking time to test yourself is very important", "我知道花时间测试自己很重要", null, 6],
+        ["It's important to take time to test yourself", "花时间测试自己很重要", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0065L08",
+        "seed_context": {
+          "known": "花时间测试自己很重要。",
+          "target": "It's important to take time to test yourself."
+        }
+      },
+      "components": [
+        [
+          "花",
+          "spend"
+        ],
+        [
+          "时间",
+          "time"
+        ],
+        [
+          "测试",
+          "test"
+        ],
+        [
+          "自己",
+          "yourself"
+        ]
+      ]
+    }
+  },
+  "_generation_metadata": {
+    "total_legos": 8,
+    "total_phrases": 80,
+    "generated_date": "2025-11-17",
+    "methodology": "Phase 5 Intelligence v7.0"
+  }
+}

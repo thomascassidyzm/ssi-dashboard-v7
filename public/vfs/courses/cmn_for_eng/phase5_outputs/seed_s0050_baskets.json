@@ -1,0 +1,177 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0050",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "我不是在试着尽快完成。",
+    "target": "I'm not trying to finish as quickly as possible."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0040",
+      "known": "你现在感觉怎么样？",
+      "target": "How do you feel at the moment?"
+    },
+    {
+      "seed_id": "S0041",
+      "known": "我感觉还好，但我开始觉得累了。",
+      "target": "I feel okay, but I'm starting to feel tired."
+    },
+    {
+      "seed_id": "S0042",
+      "known": "我开始觉得比昨晚好了。",
+      "target": "I was starting to feel better than last night."
+    },
+    {
+      "seed_id": "S0043",
+      "known": "我没在想怎么回答。",
+      "target": "I wasn't thinking about how to answer."
+    },
+    {
+      "seed_id": "S0044",
+      "known": "或者我是否需要进步。",
+      "target": "Or if I need to improve."
+    },
+    {
+      "seed_id": "S0045",
+      "known": "我不需要知道所有事情。",
+      "target": "I don't need to know everything."
+    },
+    {
+      "seed_id": "S0046",
+      "known": "但我不担心犯错。",
+      "target": "But I don't worry about making mistakes."
+    },
+    {
+      "seed_id": "S0047",
+      "known": "因为我认为犯错是件好事。",
+      "target": "Because I think that it's a good thing to make mistakes."
+    },
+    {
+      "seed_id": "S0048",
+      "known": "我不在乎犯错。",
+      "target": "I don't care about making mistakes."
+    },
+    {
+      "seed_id": "S0049",
+      "known": "就是这样，如果你知道我的意思的话。",
+      "target": "It's like this, if you know what I mean."
+    }
+  ],
+  "legos": {
+    "S0050L01": {
+      "lego": [
+        "I'm not trying to",
+        "我不是在试着"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I'm not trying to", "我不是在试着", null, 1],
+        ["I'm not trying to now", "我现在不是在试着", null, 2],
+        ["I'm not trying to improve", "我不是在试着进步", null, 3],
+        ["I'm not trying to worry", "我不是在试着担心", null, 3],
+        ["I'm not trying to know everything", "我不是在试着知道所有事情", null, 4],
+        ["I'm not trying to answer now", "我现在不是在试着回答", null, 4],
+        ["I'm not trying to, because I feel okay", "我不是在试着，因为我感觉还好", null, 5],
+        ["If you know, I'm not trying to worry", "如果你知道，我不是在试着担心", null, 5],
+        ["I'm not trying to make mistakes, if you know what I mean", "如果你知道我的意思的话，我不是在试着犯错", null, 6],
+        ["Because I think it's a good thing, I'm not trying to worry", "因为我认为是件好事，我不是在试着担心", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0050L02": {
+      "lego": [
+        "not trying to",
+        "不是在试着"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Not trying to", "不是在试着", null, 1],
+        ["You're not trying to", "你不是在试着", null, 2],
+        ["You're not trying to improve", "你不是在试着进步", null, 3],
+        ["You're not trying to worry", "你不是在试着担心", null, 3],
+        ["You're not trying to know everything", "你不是在试着知道所有事情", null, 4],
+        ["If you know, you're not trying to", "如果你知道，你不是在试着", null, 4],
+        ["You're not trying to, it's like this", "你不是在试着，就是这样", null, 5],
+        ["You're not trying to worry about making mistakes", "你不是在试着担心犯错", null, 5],
+        ["If you know what I mean, you're not trying to worry", "如果你知道我的意思的话，你不是在试着担心", null, 6],
+        ["Because I think you're not trying to, it's a good thing", "因为我认为你不是在试着，这是件好事", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0050L03": {
+      "lego": [
+        "to finish as quickly as possible",
+        "尽快完成"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["To finish as quickly as possible", "尽快完成", null, 1],
+        ["I'm not trying to finish as quickly as possible", "我不是在试着尽快完成", null, 2],
+        ["I need to finish as quickly as possible", "我需要尽快完成", null, 3],
+        ["If you know, finish as quickly as possible", "如果你知道，尽快完成", null, 3],
+        ["I don't need to finish as quickly as possible", "我不需要尽快完成", null, 4],
+        ["I'm not trying to finish as quickly as possible now", "我现在不是在试着尽快完成", null, 4],
+        ["If I need to finish as quickly as possible, I don't worry", "如果我需要尽快完成，我不担心", null, 5],
+        ["I don't care if I need to finish as quickly as possible", "如果我需要尽快完成，我不在乎", null, 5],
+        ["If you know what I mean, I don't need to finish as quickly as possible", "如果你知道我的意思的话，我不需要尽快完成", null, 6],
+        ["If I'm trying to finish as quickly as possible, I don't worry about making mistakes", "如果我在试着尽快完成，我不担心犯错", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0050L04": {
+      "lego": [
+        "as quickly as possible",
+        "尽快"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["As quickly as possible", "尽快", null, 1],
+        ["Finish as quickly as possible", "尽快完成", null, 2],
+        ["I need to improve as quickly as possible", "我需要尽快进步", null, 3],
+        ["If you know, answer as quickly as possible", "如果你知道，尽快回答", null, 3],
+        ["I'm trying to finish as quickly as possible", "我在试着尽快完成", null, 4],
+        ["I don't need to know as quickly as possible", "我不需要尽快知道", null, 4],
+        ["If I need to improve as quickly as possible, I don't worry", "如果我需要尽快进步，我不担心", null, 5],
+        ["I don't care if I need to finish as quickly as possible", "如果我需要尽快完成，我不在乎", null, 5],
+        ["If you know what I mean, I'm trying to improve as quickly as possible", "如果你知道我的意思的话，我在试着尽快进步", null, 6],
+        ["I'm not trying to finish as quickly as possible.", "我不是在试着尽快完成。", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  },
+  "_generation_metadata": {
+    "generated_by": "claude-sonnet-4-5",
+    "generation_date": "2025-11-17",
+    "baskets_generated": 4,
+    "total_phrases": 40
+  }
+}

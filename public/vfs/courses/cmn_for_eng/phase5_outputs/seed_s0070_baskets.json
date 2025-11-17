@@ -1,0 +1,130 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0070",
+  "generation_stage": "COMPLETE",
+  "seed_pair": {
+    "known": "她不想告诉我它在哪里。",
+    "target": "She didn't want to tell me where it was."
+  },
+  "legos": {
+    "S0070L01": {
+      "lego": ["She didn't want", "她不想"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["She didn't want", "她不想", null, 1],
+        ["She didn't want to help", "她不想帮", null, 2],
+        ["She didn't want to stop", "她不想停下来", null, 2],
+        ["She didn't want to look for it", "她不想找", null, 3],
+        ["She didn't want to help me", "她不想帮我", null, 3],
+        ["She didn't want to find the answer", "她不想找到答案", null, 4],
+        ["She didn't want to test herself", "她不想测试自己", null, 4],
+        ["I know she didn't want to help", "我知道她不想帮", null, 5],
+        ["I'm not sure why she didn't want to help", "我不确定为什么她不想帮", null, 7],
+        ["She didn't want to look after the puppy", "她不想照顾小狗", null, 5]
+      ]
+    },
+    "S0070L02": {
+      "lego": ["tell", "告诉"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Tell", "告诉", null, 1],
+        ["Didn't want to tell", "不想告诉", null, 2],
+        ["She didn't want to tell", "她不想告诉", null, 2],
+        ["Why didn't want to tell", "为什么不想告诉", null, 3],
+        ["I know how to tell", "我知道怎么告诉", null, 4],
+        ["She didn't want to tell you", "她不想告诉你", null, 3],
+        ["I'm not sure why she didn't want to tell", "我不确定为什么她不想告诉", null, 7],
+        ["Are you sure she didn't want to tell", "你确定她不想告诉", null, 6],
+        ["He didn't want to tell me why", "他不想告诉我为什么", null, 5],
+        ["I don't know why she didn't want to tell", "我不知道为什么她不想告诉", null, 7]
+      ]
+    },
+    "S0070L03": {
+      "lego": ["tell me", "告诉我"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Tell me", "告诉我", null, 1],
+        ["Didn't want to tell me", "不想告诉我", null, 2],
+        ["She didn't want to tell me", "她不想告诉我", null, 2],
+        ["Why didn't want to tell me", "为什么不想告诉我", null, 3],
+        ["He didn't want to tell me", "他不想告诉我", null, 2],
+        ["She didn't want to tell me why", "她不想告诉我为什么", null, 4],
+        ["I know she didn't want to tell me", "我知道她不想告诉我", null, 4],
+        ["I'm not sure why she didn't want to tell me", "我不确定为什么她不想告诉我", null, 7],
+        ["Are you sure she didn't want to tell me", "你确定她不想告诉我", null, 6],
+        ["I don't know why she didn't want to tell me", "我不知道为什么她不想告诉我", null, 7]
+      ]
+    },
+    "S0070L04": {
+      "lego": ["where", "哪里"],
+      "type": "A",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Where", "哪里", null, 1],
+        ["You are looking for where", "你在找哪里", null, 3],
+        ["Where are you looking for", "你在找哪里", null, 3],
+        ["I know where", "我知道哪里", null, 2],
+        ["I don't know where", "我不知道哪里", null, 3],
+        ["Do you know where", "你知道哪里", null, 3],
+        ["I'm not sure where", "我不确定哪里", null, 3],
+        ["She didn't want to tell me where", "她不想告诉我哪里", null, 5],
+        ["Are you sure you know where", "你确定你知道哪里", null, 5],
+        ["I don't know where it is", "我不知道它在哪里", null, 5]
+      ]
+    },
+    "S0070L05": {
+      "lego": ["is where", "在哪里"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Is where", "在哪里", null, 1],
+        ["What are you looking for is where", "你在找什么在哪里", null, 4],
+        ["I know is where", "我知道在哪里", null, 2],
+        ["I don't know is where", "我不知道在哪里", null, 3],
+        ["Are you sure is where", "你确定在哪里", null, 3],
+        ["She didn't want to tell is where", "她不想告诉在哪里", null, 4],
+        ["I'm not sure is where", "我不确定在哪里", null, 3],
+        ["Do you know what you are looking for is where", "你知道你在找什么在哪里", null, 7],
+        ["I don't know what is where", "我不知道什么在哪里", null, 4],
+        ["She didn't want to tell me is where", "她不想告诉我在哪里", null, 5]
+      ]
+    },
+    "S0070L06": {
+      "lego": ["where it was", "它在哪里"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Where it was", "它在哪里", null, 2],
+        ["I know where it was", "我知道它在哪里", null, 3],
+        ["I don't know where it was", "我不知道它在哪里", null, 4],
+        ["Do you know where it was", "你知道它在哪里", null, 4],
+        ["I'm not sure where it was", "我不确定它在哪里", null, 4],
+        ["She didn't want to tell where it was", "她不想告诉它在哪里", null, 5],
+        ["Are you sure you know where it was", "你确定你知道它在哪里", null, 6],
+        ["I don't know why she didn't want to tell where it was", "我不知道为什么她不想告诉它在哪里", null, 9],
+        ["He didn't want to tell me where it was", "他不想告诉我它在哪里", null, 6],
+        ["She didn't want to tell me where it was", "她不想告诉我它在哪里", null, 6]
+      ]
+    },
+    "S0070L07": {
+      "lego": ["tell me where it was", "告诉我它在哪里"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Tell me where it was", "告诉我它在哪里", null, 3],
+        ["Didn't want to tell me where it was", "不想告诉我它在哪里", null, 4],
+        ["She didn't want to tell me where it was", "她不想告诉我它在哪里", null, 5],
+        ["Why didn't want to tell me where it was", "为什么不想告诉我它在哪里", null, 6],
+        ["I know she didn't want to tell me where it was", "我知道她不想告诉我它在哪里", null, 7],
+        ["Why she didn't want to tell me where it was", "为什么她不想告诉我它在哪里", null, 7],
+        ["I'm not sure why she didn't want to tell me where it was", "我不确定为什么她不想告诉我它在哪里", null, 9],
+        ["Are you sure she didn't want to tell me where it was", "你确定她不想告诉我它在哪里", null, 8],
+        ["I don't know why she didn't want to tell me where it was", "我不知道为什么她不想告诉我它在哪里", null, 9],
+        ["She didn't want to tell me where it was", "她不想告诉我它在哪里", null, 5]
+      ]
+    }
+  }
+}

@@ -1,0 +1,541 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0062",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "known": "我不确定我能不能同时帮你。",
+    "target": "I'm not sure if I can help you at the same time."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0052",
+      "known": "他上周想给他的朋友写封信。",
+      "target": "He wanted to write a letter to his friend last week."
+    },
+    {
+      "seed_id": "S0053",
+      "known": "她想把他的信放进她的包里。",
+      "target": "She wanted to put his letter in her bag."
+    },
+    {
+      "seed_id": "S0054",
+      "known": "我们想多给你一点时间。",
+      "target": "We wanted to give you a little more time."
+    },
+    {
+      "seed_id": "S0055",
+      "known": "当我没睡好的时候我不喜欢醒来。",
+      "target": "I don't enjoy waking up when I didn't sleep very well."
+    },
+    {
+      "seed_id": "S0056",
+      "known": "这样我就能记住怎么说几个词。",
+      "target": "So I can remember how to say a few words."
+    },
+    {
+      "seed_id": "S0057",
+      "known": "我记不住怎么说我想说的话。",
+      "target": "I can't remember how to say what I wanted to say."
+    },
+    {
+      "seed_id": "S0058",
+      "known": "当你理解足够多的词的时候很有趣。",
+      "target": "It's interesting when you understand enough words."
+    },
+    {
+      "seed_id": "S0059",
+      "known": "我知道下周我需要做什么。",
+      "target": "I know how to do what I need to do next week."
+    },
+    {
+      "seed_id": "S0060",
+      "known": "我还不知道怎么说足够多不同的词。",
+      "target": "I don't know how to say enough different words yet."
+    },
+    {
+      "seed_id": "S0061",
+      "known": "你能再慢一点说一遍吗？",
+      "target": "Could you say that again a little more slowly?"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0055L04",
+      "known": "don't enjoy",
+      "target": "不喜欢",
+      "type": "M"
+    },
+    {
+      "id": "S0055L05",
+      "known": "wake up",
+      "target": "醒来",
+      "type": "A"
+    },
+    {
+      "id": "S0056L01",
+      "known": "so I can",
+      "target": "这样我就能",
+      "type": "M"
+    },
+    {
+      "id": "S0056L02",
+      "known": "can remember",
+      "target": "能记住",
+      "type": "M"
+    },
+    {
+      "id": "S0056L03",
+      "known": "remember how to say",
+      "target": "记住怎么说",
+      "type": "M"
+    },
+    {
+      "id": "S0056L04",
+      "known": "how to say",
+      "target": "怎么说",
+      "type": "M"
+    },
+    {
+      "id": "S0056L05",
+      "known": "a few words",
+      "target": "几个词",
+      "type": "M"
+    },
+    {
+      "id": "S0057L01",
+      "known": "can't remember",
+      "target": "记不住",
+      "type": "M"
+    },
+    {
+      "id": "S0057L03",
+      "known": "what I wanted to say",
+      "target": "我想说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0057L04",
+      "known": "what to say / wanted to say",
+      "target": "想说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0058L01",
+      "known": "when you understand enough words",
+      "target": "当你理解足够多的词的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0058L02",
+      "known": "understand enough words",
+      "target": "理解足够多的词",
+      "type": "M"
+    },
+    {
+      "id": "S0058L03",
+      "known": "enough words",
+      "target": "足够多的词",
+      "type": "M"
+    },
+    {
+      "id": "S0058L04",
+      "known": "interesting / very interesting",
+      "target": "很有趣",
+      "type": "M"
+    },
+    {
+      "id": "S0059L01",
+      "known": "I know",
+      "target": "我知道",
+      "type": "M"
+    },
+    {
+      "id": "S0059L02",
+      "known": "know",
+      "target": "知道",
+      "type": "A"
+    },
+    {
+      "id": "S0059L03",
+      "known": "next week",
+      "target": "下周",
+      "type": "A"
+    },
+    {
+      "id": "S0059L04",
+      "known": "what I need to do next week",
+      "target": "下周我需要做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0059L05",
+      "known": "need to do what / what...need to do",
+      "target": "需要做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0059L06",
+      "known": "do what",
+      "target": "做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0060L01",
+      "known": "I don't know yet",
+      "target": "我还不知道",
+      "type": "M"
+    },
+    {
+      "id": "S0060L02",
+      "known": "don't know yet / still don't know",
+      "target": "还不知道",
+      "type": "M"
+    },
+    {
+      "id": "S0060L03",
+      "known": "don't know",
+      "target": "不知道",
+      "type": "M"
+    },
+    {
+      "id": "S0060L05",
+      "known": "enough different words",
+      "target": "足够多不同的词",
+      "type": "M"
+    },
+    {
+      "id": "S0060L06",
+      "known": "different words",
+      "target": "不同的词",
+      "type": "M"
+    },
+    {
+      "id": "S0061L01",
+      "known": "Could you",
+      "target": "你能",
+      "type": "M"
+    },
+    {
+      "id": "S0061L02",
+      "known": "a little slower",
+      "target": "慢一点",
+      "type": "M"
+    },
+    {
+      "id": "S0061L03",
+      "known": "a little more slowly",
+      "target": "再慢一点",
+      "type": "M"
+    },
+    {
+      "id": "S0061L04",
+      "known": "say that again",
+      "target": "说一遍",
+      "type": "M"
+    },
+    {
+      "id": "S0061L05",
+      "known": "say that again?",
+      "target": "说一遍吗",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0062L02": {
+      "lego": [
+        "can or not",
+        "能不能"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Can I or not", "我能不能", null, 1],
+        ["I don't know if I can or not", "我不知道我能不能", null, 2],
+        ["You don't know if you can or not", "你不知道你能不能", null, 2],
+        ["He wanted to know if I can or not", "他想知道我能不能", null, 3],
+        ["I still don't know if I can do it or not", "我还不知道我能不能做", null, 4],
+        ["My friend doesn't know if she can or not", "我的朋友不知道她能不能", null, 4],
+        ["I don't know if you can say that or not", "我不知道你能不能说", null, 5],
+        ["When you wake up you don't know if you can or not", "当你醒来的时候你不知道你能不能", null, 6],
+        ["I wanted to ask if I can remember how to say it or not", "我想问我能不能记住怎么说", null, 7],
+        ["She doesn't know if she can understand enough words or not", "她不知道她能不能理解足够多的词", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L02",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "能",
+          "can"
+        ],
+        [
+          "不能",
+          "can not"
+        ]
+      ]
+    },
+    "S0062L03": {
+      "lego": [
+        "if I can",
+        "我能不能"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0062L02",
+          "known": "can or not",
+          "target": "能不能",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["If I can", "我能不能", null, 1],
+        ["I know if I can", "我知道我能不能", null, 2],
+        ["I don't know if I can", "我不知道我能不能", null, 2],
+        ["I don't know if I can do it", "我不知道我能不能做", null, 3],
+        ["She wanted to know if I can say it", "她想知道我能不能说", null, 4],
+        ["I don't know if I can remember next week", "我不知道我能不能记住下周", null, 4],
+        ["When I wake up I don't know if I can", "当我醒来的时候我不知道我能不能", null, 5],
+        ["I still don't know if I can say enough words", "我还不知道我能不能说足够多的词", null, 6],
+        ["My friend wanted to know if I can remember how to say it", "我的朋友想知道我能不能记住怎么说", null, 6],
+        ["I don't know if I can understand what my friends wanted to say", "我不知道我能不能理解我的朋友想说的话", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L03",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "能不能",
+          "can or not"
+        ]
+      ]
+    },
+    "S0062L04": {
+      "lego": [
+        "at the same time",
+        "同时"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0062L02",
+          "known": "can or not",
+          "target": "能不能",
+          "type": "M"
+        },
+        {
+          "id": "S0062L03",
+          "known": "if I can",
+          "target": "我能不能",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["At the same time", "同时", null, 1],
+        ["I can do it at the same time", "我能同时做", null, 2],
+        ["Could you say it at the same time", "你能同时说", null, 2],
+        ["I don't know if I can do it at the same time", "我不知道我能不能同时做", null, 3],
+        ["She wanted to say it at the same time", "她想同时说", null, 3],
+        ["My friends wanted to do it at the same time", "我的朋友想同时做", null, 4],
+        ["I don't know if you can remember at the same time", "我不知道你能不能同时记住", null, 5],
+        ["He wanted to know if I can say it at the same time", "他想知道我能不能同时说", null, 5],
+        ["When I do interesting things I can remember at the same time", "当我做有趣的事情的时候我能同时记住", null, 6],
+        ["I don't know if my friends can understand different words at the same time", "我不知道我的朋友能不能同时理解不同的词", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L04",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      }
+    },
+    "S0062L05": {
+      "lego": [
+        "help you",
+        "帮你"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0062L02",
+          "known": "can or not",
+          "target": "能不能",
+          "type": "M"
+        },
+        {
+          "id": "S0062L03",
+          "known": "if I can",
+          "target": "我能不能",
+          "type": "M"
+        },
+        {
+          "id": "S0062L04",
+          "known": "at the same time",
+          "target": "同时",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Help you", "帮你", null, 1],
+        ["I can help you", "我能帮你", null, 2],
+        ["Could you help me", "你能帮我", null, 2],
+        ["I wanted to help you", "我想帮你", null, 2],
+        ["I don't know if I can help you", "我不知道我能不能帮你", null, 3],
+        ["My friend wanted to help you next week", "我的朋友想下周帮你", null, 4],
+        ["I can help you remember how to say it", "我能帮你记住怎么说", null, 5],
+        ["When you need it I can help you", "当你需要的时候我能帮你", null, 5],
+        ["I don't know if I can help you at the same time", "我不知道我能不能同时帮你", null, 6],
+        ["She wanted to know if I could help you understand those different words", "她想知道我能不能帮你理解那些不同的词", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L05",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "帮",
+          "help"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    },
+    "S0062L06": {
+      "lego": [
+        "help you at the same time",
+        "同时帮你"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0062L02",
+          "known": "can or not",
+          "target": "能不能",
+          "type": "M"
+        },
+        {
+          "id": "S0062L03",
+          "known": "if I can",
+          "target": "我能不能",
+          "type": "M"
+        },
+        {
+          "id": "S0062L04",
+          "known": "at the same time",
+          "target": "同时",
+          "type": "A"
+        },
+        {
+          "id": "S0062L05",
+          "known": "help you",
+          "target": "帮你",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Help you at the same time", "同时帮你", null, 1],
+        ["I can help you at the same time", "我能同时帮你", null, 2],
+        ["I wanted to help you at the same time", "我想同时帮你", null, 2],
+        ["Could you help me at the same time", "你能同时帮我", null, 3],
+        ["I don't know if I can help you at the same time", "我不知道我能不能同时帮你", null, 3],
+        ["My friend wanted to help you at the same time", "我的朋友想同时帮你", null, 4],
+        ["She doesn't know if she can help you at the same time", "她不知道她能不能同时帮你", null, 5],
+        ["When I do that I can help you at the same time", "当我做那个的时候我能同时帮你", null, 6],
+        ["He wanted to know if I could help you remember at the same time", "他想知道我能不能同时帮你记住", null, 6],
+        ["I'm not sure if I can help you at the same time", "我不确定我能不能同时帮你", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L06",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "同时",
+          "at the same time"
+        ],
+        [
+          "帮",
+          "help"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0062.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}
