@@ -1,0 +1,82 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0347",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "He wanted to know what was happening a week ago.",
+    "target": "Él quería saber qué estaba pasando hace una semana."
+  },
+  "legos": {
+    "S0347L01": {
+      "lego": ["wanted to know", "quería saber"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0347L02": {
+      "lego": ["wanted to know what", "quería saber qué"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0347L03": {
+      "lego": ["what was happening", "qué estaba pasando"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    },
+    "S0347L04": {
+      "lego": ["was happening", "estaba pasando"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["What was happening?", "¿Qué estaba pasando?", null, 2],
+        ["Something was happening.", "Algo estaba pasando.", null, 2],
+        ["I think something was happening.", "Pienso que algo estaba pasando.", null, 3],
+        ["I wanted to know what was happening.", "Quería saber qué estaba pasando.", null, 3],
+        ["Do you think something was happening?", "¿Crees que algo estaba pasando?", null, 4],
+        ["I'm sure something was happening.", "Estoy seguro que algo estaba pasando.", null, 4],
+        ["She said something was happening.", "Ella dijo que algo estaba pasando.", null, 5],
+        ["I wanted to know what was happening a few days ago.", "Quería saber qué estaba pasando hace unos días.", null, 6],
+        ["I'm sure I wanted to know what was happening.", "Estoy seguro que quería saber qué estaba pasando.", null, 6],
+        ["He wanted to know what was happening a few days ago.", "Él quería saber qué estaba pasando hace unos días.", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0347L05": {
+      "lego": ["a week ago", "hace una semana"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      }
+    }
+  }
+}

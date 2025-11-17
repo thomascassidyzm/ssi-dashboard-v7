@@ -1,0 +1,57 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0349",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "Did he want to go out on Friday night?",
+    "target": "¿Quería él salir el viernes por la noche?"
+  },
+  "legos": {
+    "S0349L01": {
+      "lego": ["wanted to go out", "quería salir"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I wanted to go out.", "Quería salir.", null, 1],
+        ["He wanted to go out.", "Él quería salir.", null, 2],
+        ["I think I wanted to go out.", "Pienso que quería salir.", null, 3],
+        ["I wanted to go out a few days ago.", "Quería salir hace unos días.", null, 3],
+        ["I'm sure I wanted to go out.", "Estoy seguro que quería salir.", null, 4],
+        ["I think he wanted to go out.", "Pienso que él quería salir.", null, 4],
+        ["I'm sure he wanted to go out.", "Estoy seguro que él quería salir.", null, 5],
+        ["I wanted to go out a week ago.", "Quería salir hace una semana.", null, 5],
+        ["I think I wanted to go out a few days ago.", "Pienso que quería salir hace unos días.", null, 6],
+        ["I'm sure he wanted to go out a week ago.", "Estoy seguro que él quería salir hace una semana.", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0349L02": {
+      "lego": ["on Friday night", "el viernes por la noche"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["On Friday night.", "El viernes por la noche.", null, 1],
+        ["I wanted to go out on Friday night.", "Quería salir el viernes por la noche.", null, 2],
+        ["He wanted to go out on Friday night.", "Él quería salir el viernes por la noche.", null, 3],
+        ["I think I wanted to go out on Friday night.", "Pienso que quería salir el viernes por la noche.", null, 4],
+        ["I'm sure I wanted to go out on Friday night.", "Estoy seguro que quería salir el viernes por la noche.", null, 5],
+        ["I think he wanted to go out on Friday night.", "Pienso que él quería salir el viernes por la noche.", null, 5],
+        ["I'm sure he wanted to go out on Friday night.", "Estoy seguro que él quería salir el viernes por la noche.", null, 6],
+        ["I wanted to know what was happening on Friday night.", "Quería saber qué estaba pasando el viernes por la noche.", null, 6],
+        ["I wanted to go out on Friday night a few days ago.", "Quería salir el viernes por la noche hace unos días.", null, 6],
+        ["I'm sure I wanted to know what was happening on Friday night.", "Estoy seguro que quería saber qué estaba pasando el viernes por la noche.", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    }
+  }
+}

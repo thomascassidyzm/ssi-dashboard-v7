@@ -1,0 +1,424 @@
+{
+  "legos": {
+    "S0357L01": {
+      "lego": [
+        "No",
+        "no"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0357L01",
+        "seed_context": {
+          "known": "No ella solo quería enviarle un mensaje.",
+          "target": "No she just wanted to send her a message."
+        }
+      }
+    },
+    "S0357L02": {
+      "lego": [
+        "she just wanted",
+        "ella solo quería"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0357L01",
+          "known": "No",
+          "target": "no",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "she just wanted",
+          "ella solo quería"
+        ],
+        [
+          "No she just wanted",
+          "No ella solo quería"
+        ],
+        [
+          "she just wanted to speak",
+          "ella solo quería hablar"
+        ],
+        [
+          "she just wanted to know",
+          "ella solo quería saber"
+        ],
+        [
+          "she just wanted to see something",
+          "ella solo quería ver algo"
+        ],
+        [
+          "No she just wanted to speak",
+          "No ella solo quería hablar"
+        ],
+        [
+          "No she just wanted to see someone",
+          "No ella solo quería ver a alguien"
+        ],
+        [
+          "she just wanted to know something important",
+          "ella solo quería saber algo importante"
+        ],
+        [
+          "she just wanted to see your friends",
+          "ella solo quería ver a tus amigos"
+        ],
+        [
+          "No she just wanted to speak with you",
+          "No ella solo quería hablar contigo"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0357L02",
+        "seed_context": {
+          "known": "No ella solo quería enviarle un mensaje.",
+          "target": "No she just wanted to send her a message."
+        }
+      },
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "solo",
+          "just"
+        ],
+        [
+          "quería",
+          "wanted"
+        ]
+      ]
+    },
+    "S0357L03": {
+      "lego": [
+        "just wanted",
+        "solo quería"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0357L01",
+          "known": "No",
+          "target": "no",
+          "type": "A"
+        },
+        {
+          "id": "S0357L02",
+          "known": "she just wanted",
+          "target": "ella solo quería",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "just wanted",
+          "solo quería"
+        ],
+        [
+          "No just wanted",
+          "No solo quería"
+        ],
+        [
+          "just wanted to speak",
+          "solo quería hablar"
+        ],
+        [
+          "just wanted to see",
+          "solo quería ver"
+        ],
+        [
+          "just wanted to know something",
+          "solo quería saber algo"
+        ],
+        [
+          "No just wanted to speak",
+          "No solo quería hablar"
+        ],
+        [
+          "No just wanted to see someone",
+          "No solo quería ver a alguien"
+        ],
+        [
+          "just wanted to speak with you",
+          "solo quería hablar contigo"
+        ],
+        [
+          "she just wanted to see something important",
+          "ella solo quería ver algo importante"
+        ],
+        [
+          "just wanted to know what happened",
+          "solo quería saber qué pasó"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0357L03",
+        "seed_context": {
+          "known": "No ella solo quería enviarle un mensaje.",
+          "target": "No she just wanted to send her a message."
+        }
+      },
+      "components": [
+        [
+          "solo",
+          "just"
+        ],
+        [
+          "quería",
+          "wanted"
+        ]
+      ]
+    },
+    "S0357L04": {
+      "lego": [
+        "wanted to send her",
+        "quería enviarle"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0357L01",
+          "known": "No",
+          "target": "no",
+          "type": "A"
+        },
+        {
+          "id": "S0357L02",
+          "known": "she just wanted",
+          "target": "ella solo quería",
+          "type": "M"
+        },
+        {
+          "id": "S0357L03",
+          "known": "just wanted",
+          "target": "solo quería",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "wanted to send her",
+          "quería enviarle"
+        ],
+        [
+          "she wanted to send her",
+          "ella quería enviarle"
+        ],
+        [
+          "wanted to send her something",
+          "quería enviarle algo"
+        ],
+        [
+          "No wanted to send her",
+          "No quería enviarle"
+        ],
+        [
+          "she just wanted to send her",
+          "ella solo quería enviarle"
+        ],
+        [
+          "wanted to send her a book",
+          "quería enviarle un libro"
+        ],
+        [
+          "she just wanted to send her something",
+          "ella solo quería enviarle algo"
+        ],
+        [
+          "No she just wanted to send her",
+          "No ella solo quería enviarle"
+        ],
+        [
+          "wanted to send her something important",
+          "quería enviarle algo importante"
+        ],
+        [
+          "she just wanted to send her a book",
+          "ella solo quería enviarle un libro"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0357L04",
+        "seed_context": {
+          "known": "No ella solo quería enviarle un mensaje.",
+          "target": "No she just wanted to send her a message."
+        }
+      },
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "enviarle",
+          "to send her"
+        ]
+      ]
+    },
+    "S0357L05": {
+      "lego": [
+        "send her a message",
+        "enviarle un mensaje"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0357L01",
+          "known": "No",
+          "target": "no",
+          "type": "A"
+        },
+        {
+          "id": "S0357L02",
+          "known": "she just wanted",
+          "target": "ella solo quería",
+          "type": "M"
+        },
+        {
+          "id": "S0357L03",
+          "known": "just wanted",
+          "target": "solo quería",
+          "type": "M"
+        },
+        {
+          "id": "S0357L04",
+          "known": "wanted to send her",
+          "target": "quería enviarle",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0357L05",
+        "seed_context": {
+          "known": "No ella solo quería enviarle un mensaje.",
+          "target": "No she just wanted to send her a message."
+        }
+      },
+      "components": [
+        [
+          "enviarle",
+          "send her"
+        ],
+        [
+          "un",
+          "a"
+        ],
+        [
+          "mensaje",
+          "message"
+        ]
+      ]
+    },
+    "S0357L06": {
+      "lego": [
+        "a message",
+        "un mensaje"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0357L01",
+          "known": "No",
+          "target": "no",
+          "type": "A"
+        },
+        {
+          "id": "S0357L02",
+          "known": "she just wanted",
+          "target": "ella solo quería",
+          "type": "M"
+        },
+        {
+          "id": "S0357L03",
+          "known": "just wanted",
+          "target": "solo quería",
+          "type": "M"
+        },
+        {
+          "id": "S0357L04",
+          "known": "wanted to send her",
+          "target": "quería enviarle",
+          "type": "M"
+        },
+        {
+          "id": "S0357L05",
+          "known": "send her a message",
+          "target": "enviarle un mensaje",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0357L06",
+        "seed_context": {
+          "known": "No ella solo quería enviarle un mensaje.",
+          "target": "No she just wanted to send her a message."
+        }
+      },
+      "components": [
+        [
+          "un",
+          "a"
+        ],
+        [
+          "mensaje",
+          "message"
+        ]
+      ]
+    }
+  }
+}

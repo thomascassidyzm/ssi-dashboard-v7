@@ -1,0 +1,345 @@
+{
+  "legos": {
+    "S0362L01": {
+      "lego": [
+        "No",
+        "No"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "No",
+          "No"
+        ],
+        [
+          "No he",
+          "No él"
+        ],
+        [
+          "No she wanted",
+          "No ella quería"
+        ],
+        [
+          "No he could",
+          "No él podía"
+        ],
+        [
+          "No she needed to speak",
+          "No ella necesitaba hablar"
+        ],
+        [
+          "No he wanted to turn left",
+          "No él quería girar a la izquierda"
+        ],
+        [
+          "No your friend said that",
+          "No tu amigo dijo que"
+        ],
+        [
+          "No she just wanted to send a message",
+          "No ella solo quería enviar un mensaje"
+        ],
+        [
+          "No they had something important to discuss",
+          "No ellos tenían algo importante que discutir"
+        ],
+        [
+          "No your friend said that he could turn left",
+          "No tu amigo dijo que él podía girar a la izquierda"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0362L01",
+        "seed_context": {
+          "known": "No él estaba bastante callado después de que te fuiste.",
+          "target": "No he was rather quiet after you left."
+        }
+      }
+    },
+    "S0362L02": {
+      "lego": [
+        "he was rather quiet",
+        "él estaba bastante callado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0362L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "he was rather quiet",
+          "él estaba bastante callado"
+        ],
+        [
+          "No he was rather quiet",
+          "No él estaba bastante callado"
+        ],
+        [
+          "Yes he was rather quiet",
+          "Sí él estaba bastante callado"
+        ],
+        [
+          "Your friend was rather quiet",
+          "Tu amigo estaba bastante callado"
+        ],
+        [
+          "he was rather quiet at the top",
+          "él estaba bastante callado en la cima"
+        ],
+        [
+          "She said he was rather quiet",
+          "Ella dijo que él estaba bastante callado"
+        ],
+        [
+          "Your friend said that he was rather quiet",
+          "Tu amigo dijo que él estaba bastante callado"
+        ],
+        [
+          "No your friend said he was rather quiet",
+          "No tu amigo dijo que él estaba bastante callado"
+        ],
+        [
+          "Even if he wanted he was rather quiet",
+          "Aunque él quisiera él estaba bastante callado"
+        ],
+        [
+          "No she just wanted he was rather quiet",
+          "No ella solo quería él estaba bastante callado"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0362L02",
+        "seed_context": {
+          "known": "No él estaba bastante callado después de que te fuiste.",
+          "target": "No he was rather quiet after you left."
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "bastante",
+          "rather"
+        ],
+        [
+          "callado",
+          "quiet"
+        ]
+      ]
+    },
+    "S0362L03": {
+      "lego": [
+        "was rather quiet",
+        "estaba bastante callado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0362L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0362L02",
+          "known": "he was rather quiet",
+          "target": "él estaba bastante callado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "was rather quiet",
+          "estaba bastante callado"
+        ],
+        [
+          "he was rather quiet",
+          "él estaba bastante callado"
+        ],
+        [
+          "No was rather quiet",
+          "No estaba bastante callado"
+        ],
+        [
+          "Yes was rather quiet",
+          "Sí estaba bastante callado"
+        ],
+        [
+          "Your friend was rather quiet",
+          "Tu amigo estaba bastante callado"
+        ],
+        [
+          "No he was rather quiet",
+          "No él estaba bastante callado"
+        ],
+        [
+          "she wanted he was rather quiet",
+          "ella quería él estaba bastante callado"
+        ],
+        [
+          "She said he was rather quiet",
+          "Ella dijo que él estaba bastante callado"
+        ],
+        [
+          "Your friend said that he was rather quiet",
+          "Tu amigo dijo que él estaba bastante callado"
+        ],
+        [
+          "No your friend said he was rather quiet",
+          "No tu amigo dijo que él estaba bastante callado"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0362L03",
+        "seed_context": {
+          "known": "No él estaba bastante callado después de que te fuiste.",
+          "target": "No he was rather quiet after you left."
+        }
+      },
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "bastante",
+          "rather"
+        ],
+        [
+          "callado",
+          "quiet"
+        ]
+      ]
+    },
+    "S0362L04": {
+      "lego": [
+        "rather quiet",
+        "bastante callado"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0362L01",
+          "known": "No",
+          "target": "No",
+          "type": "A"
+        },
+        {
+          "id": "S0362L02",
+          "known": "he was rather quiet",
+          "target": "él estaba bastante callado",
+          "type": "M"
+        },
+        {
+          "id": "S0362L03",
+          "known": "was rather quiet",
+          "target": "estaba bastante callado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "rather quiet",
+          "bastante callado"
+        ],
+        [
+          "was rather quiet",
+          "estaba bastante callado"
+        ],
+        [
+          "he was rather quiet",
+          "él estaba bastante callado"
+        ],
+        [
+          "No rather quiet",
+          "No bastante callado"
+        ],
+        [
+          "Yes rather quiet",
+          "Sí bastante callado"
+        ],
+        [
+          "No he was rather quiet",
+          "No él estaba bastante callado"
+        ],
+        [
+          "Your friend was rather quiet",
+          "Tu amigo estaba bastante callado"
+        ],
+        [
+          "She said he was rather quiet",
+          "Ella dijo que él estaba bastante callado"
+        ],
+        [
+          "Your friend said that he was rather quiet",
+          "Tu amigo dijo que él estaba bastante callado"
+        ],
+        [
+          "No your friend said he was rather quiet",
+          "No tu amigo dijo que él estaba bastante callado"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0362L04",
+        "seed_context": {
+          "known": "No él estaba bastante callado después de que te fuiste.",
+          "target": "No he was rather quiet after you left."
+        }
+      },
+      "components": [
+        [
+          "bastante",
+          "rather"
+        ],
+        [
+          "callado",
+          "quiet"
+        ]
+      ]
+    }
+  }
+}

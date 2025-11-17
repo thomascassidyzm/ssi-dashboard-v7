@@ -1,0 +1,165 @@
+{
+  "legos": {
+    "S0361L01": {
+      "lego": [
+        "He was quiet",
+        "Él estaba callado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "He was quiet",
+          "Él estaba callado"
+        ],
+        [
+          "No, he was quiet",
+          "No, él estaba callado"
+        ],
+        [
+          "Your friend was quiet",
+          "Tu amigo estaba callado"
+        ],
+        [
+          "He was quiet alone",
+          "Él estaba callado solo"
+        ],
+        [
+          "Your friend was quiet alone",
+          "Tu amigo estaba callado solo"
+        ],
+        [
+          "He was quiet with her",
+          "Él estaba callado con ella"
+        ],
+        [
+          "Your friend said he was quiet",
+          "Tu amigo dijo que él estaba callado"
+        ],
+        [
+          "No, he was quiet although he wanted to speak",
+          "No, él estaba callado aunque quería hablar"
+        ],
+        [
+          "Your friend said that he was quiet alone",
+          "Tu amigo dijo que él estaba callado solo"
+        ],
+        [
+          "He was quiet although she wanted to speak with him",
+          "Él estaba callado aunque ella quería hablar con él"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0361L01",
+        "seed_context": {
+          "known": "Él estaba callado.",
+          "target": "He was quiet."
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "callado",
+          "quiet"
+        ]
+      ]
+    },
+    "S0361L02": {
+      "lego": [
+        "was quiet",
+        "estaba callado"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0361L01",
+          "known": "He was quiet",
+          "target": "Él estaba callado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "was quiet",
+          "estaba callado"
+        ],
+        [
+          "He was quiet",
+          "Él estaba callado"
+        ],
+        [
+          "Your friend was quiet",
+          "Tu amigo estaba callado"
+        ],
+        [
+          "No, he was quiet",
+          "No, él estaba callado"
+        ],
+        [
+          "He was quiet alone",
+          "Él estaba callado solo"
+        ],
+        [
+          "Your friend was quiet alone",
+          "Tu amigo estaba callado solo"
+        ],
+        [
+          "Your friend said he was quiet",
+          "Tu amigo dijo que él estaba callado"
+        ],
+        [
+          "He was quiet although he wanted to speak",
+          "Él estaba callado aunque quería hablar"
+        ],
+        [
+          "Your friend said that he was quiet alone",
+          "Tu amigo dijo que él estaba callado solo"
+        ],
+        [
+          "He was quiet.",
+          "Él estaba callado."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0361L02",
+        "seed_context": {
+          "known": "Él estaba callado.",
+          "target": "He was quiet."
+        }
+      },
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "callado",
+          "quiet"
+        ]
+      ]
+    }
+  }
+}

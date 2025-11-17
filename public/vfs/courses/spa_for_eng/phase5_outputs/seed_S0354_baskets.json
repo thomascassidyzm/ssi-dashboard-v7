@@ -1,0 +1,260 @@
+{
+  "legos": {
+    "S0354L01": {
+      "lego_pair": [
+        "He didn't need to",
+        "él no necesitaba"
+      ],
+      "type": "M",
+      "seed_context": {
+        "known": "He didn't need to appear angry.",
+        "target": "Él no necesitaba aparecer enojado."
+      },
+      "practice_phrases": [
+        {
+          "known": "He didn't need to.",
+          "target": "Él no necesitaba."
+        },
+        {
+          "known": "He didn't want to.",
+          "target": "Él no quería."
+        },
+        {
+          "known": "He didn't need to run.",
+          "target": "Él no necesitaba correr."
+        },
+        {
+          "known": "He didn't need to leave.",
+          "target": "Él no necesitaba irse."
+        },
+        {
+          "known": "He didn't need to see her.",
+          "target": "Él no necesitaba ver ella."
+        },
+        {
+          "known": "He didn't need to go out.",
+          "target": "Él no necesitaba salir."
+        },
+        {
+          "known": "He didn't need to run around the field.",
+          "target": "Él no necesitaba correr alrededor del campo."
+        },
+        {
+          "known": "He didn't need to leave me alone.",
+          "target": "Él no necesitaba dejarme solo."
+        },
+        {
+          "known": "He didn't need to go out on Friday night.",
+          "target": "Él no necesitaba salir el viernes por la noche."
+        },
+        {
+          "known": "He didn't need to appear angry.",
+          "target": "Él no necesitaba aparecer enojado."
+        }
+      ]
+    },
+    "S0354L02": {
+      "lego_pair": [
+        "didn't need to",
+        "no necesitaba"
+      ],
+      "type": "M",
+      "seed_context": {
+        "known": "He didn't need to appear angry.",
+        "target": "Él no necesitaba aparecer enojado."
+      },
+      "practice_phrases": [
+        {
+          "known": "didn't need to",
+          "target": "no necesitaba"
+        },
+        {
+          "known": "I didn't want to.",
+          "target": "No quería."
+        },
+        {
+          "known": "didn't need to run",
+          "target": "no necesitaba correr"
+        },
+        {
+          "known": "didn't need to leave",
+          "target": "no necesitaba irse"
+        },
+        {
+          "known": "She didn't need to run.",
+          "target": "Ella no necesitaba correr."
+        },
+        {
+          "known": "I didn't need to go out.",
+          "target": "No necesitaba salir."
+        },
+        {
+          "known": "I didn't need to see her.",
+          "target": "No necesitaba ver ella."
+        },
+        {
+          "known": "She didn't need to run around the field.",
+          "target": "Ella no necesitaba correr alrededor del campo."
+        },
+        {
+          "known": "She didn't need to leave me alone.",
+          "target": "Ella no necesitaba dejarme solo."
+        },
+        {
+          "known": "He didn't need to appear angry.",
+          "target": "Él no necesitaba aparecer enojado."
+        }
+      ]
+    },
+    "S0354L03": {
+      "lego_pair": [
+        "need to appear",
+        "necesitaba aparecer"
+      ],
+      "type": "M",
+      "seed_context": {
+        "known": "He didn't need to appear angry.",
+        "target": "Él no necesitaba aparecer enojado."
+      },
+      "practice_phrases": [
+        {
+          "known": "need to appear",
+          "target": "necesitaba aparecer"
+        },
+        {
+          "known": "She needed to appear.",
+          "target": "Ella necesitaba aparecer."
+        },
+        {
+          "known": "He needed to appear.",
+          "target": "Él necesitaba aparecer."
+        },
+        {
+          "known": "I wanted to appear.",
+          "target": "Quería aparecer."
+        },
+        {
+          "known": "She didn't need to appear.",
+          "target": "Ella no necesitaba aparecer."
+        },
+        {
+          "known": "He wanted to appear happy.",
+          "target": "Él quería aparecer contento."
+        },
+        {
+          "known": "I didn't want to appear worried.",
+          "target": "No quería aparecer preocupada."
+        },
+        {
+          "known": "She needed to appear ready to leave.",
+          "target": "Ella necesitaba aparecer preparado para irse."
+        },
+        {
+          "known": "Even if he needed to appear happy.",
+          "target": "Aunque él necesitaba aparecer contento."
+        },
+        {
+          "known": "He didn't need to appear angry.",
+          "target": "Él no necesitaba aparecer enojado."
+        }
+      ]
+    },
+    "S0354L04": {
+      "lego": [
+        "to appear",
+        "aparecer"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0354L01",
+          "known": "He didn't need to",
+          "target": "él no necesitaba",
+          "type": "M"
+        },
+        {
+          "id": "S0354L02",
+          "known": "didn't need to",
+          "target": "no necesitaba",
+          "type": "M"
+        },
+        {
+          "id": "S0354L03",
+          "known": "need to appear",
+          "target": "necesitaba aparecer",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to appear",
+          "aparecer",
+          null,
+          1
+        ],
+        [
+          "to appear today",
+          "aparecer hoy",
+          null,
+          2
+        ],
+        [
+          "to appear angry",
+          "aparecer enojado",
+          null,
+          2
+        ],
+        [
+          "I wanted to appear",
+          "quería aparecer",
+          null,
+          3
+        ],
+        [
+          "He wanted to appear",
+          "él quería aparecer",
+          null,
+          3
+        ],
+        [
+          "She didn't need to appear",
+          "ella no necesitaba aparecer",
+          null,
+          4
+        ],
+        [
+          "I didn't want to appear angry",
+          "no quería aparecer enojado",
+          null,
+          4
+        ],
+        [
+          "He didn't need to appear angry",
+          "él no necesitaba aparecer enojado",
+          null,
+          5
+        ],
+        [
+          "She wanted to appear happy today",
+          "ella quería aparecer feliz hoy",
+          null,
+          5
+        ],
+        [
+          "Even if he wanted to appear",
+          "aunque él quisiera aparecer",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

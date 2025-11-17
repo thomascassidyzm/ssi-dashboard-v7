@@ -1,0 +1,395 @@
+{
+  "legos": {
+    "S0355L01": {
+      "lego": [
+        "Did she need to",
+        "necesitaba ella"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Did she need to",
+          "necesitaba ella",
+          null,
+          1
+        ],
+        [
+          "Did she need to know",
+          "necesitaba ella saber",
+          null,
+          2
+        ],
+        [
+          "Did she need to go out",
+          "necesitaba ella salir",
+          null,
+          2
+        ],
+        [
+          "Did she need to see him",
+          "necesitaba ella verlo",
+          null,
+          3
+        ],
+        [
+          "Did she need to run today",
+          "necesitaba ella correr hoy",
+          null,
+          3
+        ],
+        [
+          "Did she need to appear angry",
+          "necesitaba ella aparecer enojada",
+          null,
+          4
+        ],
+        [
+          "Did she need to leave me alone",
+          "necesitaba ella dejarme solo",
+          null,
+          4
+        ],
+        [
+          "Did she need to know what was happening",
+          "necesitaba ella saber qué estaba pasando",
+          null,
+          5
+        ],
+        [
+          "Did she need to run around the field",
+          "necesitaba ella correr alrededor del campo",
+          null,
+          5
+        ],
+        [
+          "Did she need to see some old friends",
+          "necesitaba ella ver a unos amigos viejos",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "necesitaba",
+          "Did need"
+        ],
+        [
+          "ella",
+          "she"
+        ]
+      ]
+    },
+    "S0355L02": {
+      "lego": [
+        "need to talk",
+        "necesitaba hablar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0355L01",
+          "known": "Did she need to",
+          "target": "necesitaba ella",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "need to talk",
+          "necesitaba hablar",
+          null,
+          1
+        ],
+        [
+          "need to talk today",
+          "necesitaba hablar hoy",
+          null,
+          2
+        ],
+        [
+          "I need to talk",
+          "necesitaba hablar",
+          null,
+          2
+        ],
+        [
+          "She needed to talk",
+          "ella necesitaba hablar",
+          null,
+          3
+        ],
+        [
+          "Did she need to talk",
+          "necesitaba ella hablar",
+          null,
+          3
+        ],
+        [
+          "He didn't need to talk",
+          "él no necesitaba hablar",
+          null,
+          4
+        ],
+        [
+          "I need to talk to him",
+          "necesitaba hablar con él",
+          null,
+          4
+        ],
+        [
+          "She needed to talk about something",
+          "ella necesitaba hablar sobre algo",
+          null,
+          5
+        ],
+        [
+          "Did she need to talk to you today",
+          "necesitaba ella hablar contigo hoy",
+          null,
+          6
+        ],
+        [
+          "He didn't need to talk about that",
+          "él no necesitaba hablar de eso",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "necesitaba",
+          "need"
+        ],
+        [
+          "hablar",
+          "to talk"
+        ]
+      ]
+    },
+    "S0355L03": {
+      "lego": [
+        "need to talk to",
+        "ella hablar con"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0355L01",
+          "known": "Did she need to",
+          "target": "necesitaba ella",
+          "type": "M"
+        },
+        {
+          "id": "S0355L02",
+          "known": "need to talk",
+          "target": "necesitaba hablar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "need to talk to",
+          "hablar con",
+          null,
+          1
+        ],
+        [
+          "talk to him",
+          "hablar con él",
+          null,
+          2
+        ],
+        [
+          "talk to her",
+          "hablar con ella",
+          null,
+          2
+        ],
+        [
+          "I need to talk to",
+          "necesito hablar con",
+          null,
+          3
+        ],
+        [
+          "She needs to talk to",
+          "ella necesita hablar con",
+          null,
+          3
+        ],
+        [
+          "Did she need to talk to him",
+          "necesitaba ella hablar con él",
+          null,
+          5
+        ],
+        [
+          "I wanted to talk to you",
+          "quería hablar contigo",
+          null,
+          4
+        ],
+        [
+          "He didn't need to talk to anyone",
+          "él no necesitaba hablar con nadie",
+          null,
+          6
+        ],
+        [
+          "She needed to talk to some friends today",
+          "ella necesitaba hablar con unos amigos hoy",
+          null,
+          7
+        ],
+        [
+          "Did she need to talk to that woman",
+          "necesitaba ella hablar con esa mujer",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "hablar",
+          "to talk"
+        ],
+        [
+          "con",
+          "to/with"
+        ]
+      ]
+    },
+    "S0355L04": {
+      "lego": [
+        "that woman",
+        "esa mujer"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0355L01",
+          "known": "Did she need to",
+          "target": "necesitaba ella",
+          "type": "M"
+        },
+        {
+          "id": "S0355L02",
+          "known": "need to talk",
+          "target": "necesitaba hablar",
+          "type": "M"
+        },
+        {
+          "id": "S0355L03",
+          "known": "need to talk to",
+          "target": "ella hablar con",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "that woman",
+          "esa mujer",
+          null,
+          1
+        ],
+        [
+          "that woman there",
+          "esa mujer allí",
+          null,
+          2
+        ],
+        [
+          "with that woman",
+          "con esa mujer",
+          null,
+          2
+        ],
+        [
+          "I saw that woman",
+          "vi a esa mujer",
+          null,
+          3
+        ],
+        [
+          "He knows that woman",
+          "él conoce a esa mujer",
+          null,
+          3
+        ],
+        [
+          "She talked to that woman",
+          "ella habló con esa mujer",
+          null,
+          4
+        ],
+        [
+          "Did she need to see that woman",
+          "necesitaba ella ver a esa mujer",
+          null,
+          5
+        ],
+        [
+          "I wanted to talk to that woman",
+          "quería hablar con esa mujer",
+          null,
+          5
+        ],
+        [
+          "He didn't want to see that woman today",
+          "él no quería ver a esa mujer hoy",
+          null,
+          7
+        ],
+        [
+          "Did she need to talk to that woman you know",
+          "necesitaba ella hablar con esa mujer que conoces",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "esa",
+          "that"
+        ],
+        [
+          "mujer",
+          "to woman"
+        ]
+      ]
+    }
+  }
+}

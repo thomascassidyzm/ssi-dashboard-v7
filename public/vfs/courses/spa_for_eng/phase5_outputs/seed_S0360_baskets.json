@@ -1,0 +1,227 @@
+{
+  "legos": {
+    "S0360L01": {
+      "lego": [
+        "Did your friend to say",
+        "tu amigo dijo"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Did your friend to say",
+          "tu amigo dijo"
+        ],
+        [
+          "Did your friend to say yes",
+          "tu amigo dijo sí"
+        ],
+        [
+          "Did your friend to say no",
+          "tu amigo dijo no"
+        ],
+        [
+          "Did your friend to say that",
+          "tu amigo dijo que"
+        ],
+        [
+          "Did your friend to say he wanted",
+          "tu amigo dijo que él quería"
+        ],
+        [
+          "Did your friend to say she needed",
+          "tu amigo dijo que ella necesitaba"
+        ],
+        [
+          "Did your friend to say he could",
+          "tu amigo dijo que él podía"
+        ],
+        [
+          "Did your friend to say she couldn't to reach the top",
+          "tu amigo dijo que ella no podía alcanzar la cima"
+        ],
+        [
+          "Did your friend to say he could to turn left",
+          "tu amigo dijo que él podía girar a la izquierda"
+        ],
+        [
+          "Did your friend to say she wanted to send a message",
+          "tu amigo dijo que ella quería enviar un mensaje"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0360L01",
+        "seed_context": {
+          "target": "Did your friend to say anything else?",
+          "known": "¿Tu amigo dijo algo más?"
+        }
+      },
+      "components": [
+        [
+          "tu",
+          "your"
+        ],
+        [
+          "amigo",
+          "friend"
+        ],
+        [
+          "dijo",
+          "to say/said"
+        ]
+      ]
+    },
+    "S0360L02": {
+      "lego": [
+        "to say anything",
+        "dijo algo"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0360L01",
+          "known": "Did your friend to say",
+          "target": "tu amigo dijo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to say anything",
+          "dijo algo"
+        ],
+        [
+          "Did he to say anything",
+          "él dijo algo"
+        ],
+        [
+          "Did your friend to say anything",
+          "tu amigo dijo algo"
+        ],
+        [
+          "she wanted to say anything",
+          "ella quería decir algo"
+        ],
+        [
+          "Did he to say anything important",
+          "él dijo algo importante"
+        ],
+        [
+          "Did your friend to say anything important",
+          "tu amigo dijo algo importante"
+        ],
+        [
+          "Did your friend to say anything about that",
+          "tu amigo dijo algo sobre eso"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      },
+      "target_phrase_count": 7,
+      "_metadata": {
+        "lego_id": "S0360L02",
+        "seed_context": {
+          "target": "Did your friend to say anything else?",
+          "known": "¿Tu amigo dijo algo más?"
+        }
+      },
+      "components": [
+        [
+          "dijo",
+          "to say"
+        ],
+        [
+          "algo",
+          "anything"
+        ]
+      ]
+    },
+    "S0360L03": {
+      "lego": [
+        "anything else",
+        "algo más"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0360L01",
+          "known": "Did your friend to say",
+          "target": "tu amigo dijo",
+          "type": "M"
+        },
+        {
+          "id": "S0360L02",
+          "known": "to say anything",
+          "target": "dijo algo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "anything else",
+          "algo más"
+        ],
+        [
+          "to say anything else",
+          "dijo algo más"
+        ],
+        [
+          "Did he want anything else",
+          "él quería algo más"
+        ],
+        [
+          "Did she need anything else",
+          "ella necesitaba algo más"
+        ],
+        [
+          "Did he to say anything else",
+          "él dijo algo más"
+        ],
+        [
+          "Did your friend to say anything else",
+          "tu amigo dijo algo más"
+        ],
+        [
+          "Did your friend to say anything else?",
+          "¿Tu amigo dijo algo más?"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 1,
+        "longer_4_to_5_legos": 5
+      },
+      "target_phrase_count": 7,
+      "_metadata": {
+        "lego_id": "S0360L03",
+        "seed_context": {
+          "target": "Did your friend to say anything else?",
+          "known": "¿Tu amigo dijo algo más?"
+        }
+      },
+      "components": [
+        [
+          "algo",
+          "anything"
+        ],
+        [
+          "más",
+          "else/more"
+        ]
+      ]
+    }
+  }
+}

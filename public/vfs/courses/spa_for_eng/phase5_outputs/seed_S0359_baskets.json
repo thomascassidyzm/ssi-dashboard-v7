@@ -1,0 +1,463 @@
+{
+  "legos": {
+    "S0359L01": {
+      "lego": [
+        "Your friend said that",
+        "tu amigo dijo que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Your friend said that",
+          "tu amigo dijo que"
+        ],
+        [
+          "Your friend said something",
+          "tu amigo dijo algo"
+        ],
+        [
+          "Your friend said that today",
+          "tu amigo dijo que hoy"
+        ],
+        [
+          "Your friend said that he wanted",
+          "tu amigo dijo que quería"
+        ],
+        [
+          "Your friend said that he knows",
+          "tu amigo dijo que él sabe"
+        ],
+        [
+          "Your friend said that she wanted to speak",
+          "tu amigo dijo que ella quería hablar"
+        ],
+        [
+          "Your friend said that he wanted to see you",
+          "tu amigo dijo que quería verte"
+        ],
+        [
+          "Your friend said that she needed to speak with you",
+          "tu amigo dijo que ella necesitaba hablar contigo"
+        ],
+        [
+          "Your friend said that he wanted to know something",
+          "tu amigo dijo que quería saber algo"
+        ],
+        [
+          "Your friend said that she wanted to see someone important",
+          "tu amigo dijo que ella quería ver a alguien importante"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0359L01",
+        "seed_context": {
+          "known": "Tu amigo dijo que él podía girar a la izquierda.",
+          "target": "Your friend said that he could turn left."
+        }
+      },
+      "components": [
+        [
+          "tu",
+          "Your"
+        ],
+        [
+          "amigo",
+          "friend"
+        ],
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0359L02": {
+      "lego": [
+        "he could",
+        "él podía"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0359L01",
+          "known": "Your friend said that",
+          "target": "tu amigo dijo que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "he could",
+          "él podía"
+        ],
+        [
+          "he could speak",
+          "él podía hablar"
+        ],
+        [
+          "he could see something",
+          "él podía ver algo"
+        ],
+        [
+          "Your friend said he could",
+          "tu amigo dijo que él podía"
+        ],
+        [
+          "he could speak with you",
+          "él podía hablar contigo"
+        ],
+        [
+          "Your friend said he could speak",
+          "tu amigo dijo que él podía hablar"
+        ],
+        [
+          "Your friend said that he could see you",
+          "tu amigo dijo que él podía verte"
+        ],
+        [
+          "he could speak with your friends today",
+          "él podía hablar con tus amigos hoy"
+        ],
+        [
+          "Your friend said that he could know something",
+          "tu amigo dijo que él podía saber algo"
+        ],
+        [
+          "Your friend said that he could see someone important",
+          "tu amigo dijo que él podía ver a alguien importante"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0359L02",
+        "seed_context": {
+          "known": "Tu amigo dijo que él podía girar a la izquierda.",
+          "target": "Your friend said that he could turn left."
+        }
+      },
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "podía",
+          "could"
+        ]
+      ]
+    },
+    "S0359L03": {
+      "lego": [
+        "could turn",
+        "podía girar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0359L01",
+          "known": "Your friend said that",
+          "target": "tu amigo dijo que",
+          "type": "M"
+        },
+        {
+          "id": "S0359L02",
+          "known": "he could",
+          "target": "él podía",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "could turn",
+          "podía girar"
+        ],
+        [
+          "he could turn",
+          "él podía girar"
+        ],
+        [
+          "she could turn around",
+          "ella podía girar alrededor"
+        ],
+        [
+          "I could turn right",
+          "yo podía girar a la derecha"
+        ],
+        [
+          "Your friend said he could turn",
+          "tu amigo dijo que él podía girar"
+        ],
+        [
+          "he could turn around the field",
+          "él podía girar alrededor del campo"
+        ],
+        [
+          "Your friend said she could turn",
+          "tu amigo dijo que ella podía girar"
+        ],
+        [
+          "he could turn around and see something",
+          "él podía girar alrededor y ver algo"
+        ],
+        [
+          "Your friend said that he could turn right",
+          "tu amigo dijo que él podía girar a la derecha"
+        ],
+        [
+          "Your friend said that she could turn around today",
+          "tu amigo dijo que ella podía girar alrededor hoy"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0359L03",
+        "seed_context": {
+          "known": "Tu amigo dijo que él podía girar a la izquierda.",
+          "target": "Your friend said that he could turn left."
+        }
+      },
+      "components": [
+        [
+          "podía",
+          "could"
+        ],
+        [
+          "girar",
+          "to turn"
+        ]
+      ]
+    },
+    "S0359L04": {
+      "lego": [
+        "to turn left",
+        "girar a la izquierda"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0359L01",
+          "known": "Your friend said that",
+          "target": "tu amigo dijo que",
+          "type": "M"
+        },
+        {
+          "id": "S0359L02",
+          "known": "he could",
+          "target": "él podía",
+          "type": "M"
+        },
+        {
+          "id": "S0359L03",
+          "known": "could turn",
+          "target": "podía girar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to turn left",
+          "girar a la izquierda"
+        ],
+        [
+          "could turn left",
+          "podía girar a la izquierda"
+        ],
+        [
+          "I wanted to turn left",
+          "yo quería girar a la izquierda"
+        ],
+        [
+          "he could turn left",
+          "él podía girar a la izquierda"
+        ],
+        [
+          "she needed to turn left",
+          "ella necesitaba girar a la izquierda"
+        ],
+        [
+          "Your friend said he could turn left",
+          "tu amigo dijo que él podía girar a la izquierda"
+        ],
+        [
+          "I wanted to turn left today",
+          "yo quería girar a la izquierda hoy"
+        ],
+        [
+          "Your friend said that he could turn left",
+          "tu amigo dijo que él podía girar a la izquierda"
+        ],
+        [
+          "she needed to turn left and see something",
+          "ella necesitaba girar a la izquierda y ver algo"
+        ],
+        [
+          "Your friend said that she could turn left today",
+          "tu amigo dijo que ella podía girar a la izquierda hoy"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0359L04",
+        "seed_context": {
+          "known": "Tu amigo dijo que él podía girar a la izquierda.",
+          "target": "Your friend said that he could turn left."
+        }
+      },
+      "components": [
+        [
+          "girar",
+          "to turn"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "izquierda",
+          "left"
+        ]
+      ]
+    },
+    "S0359L05": {
+      "lego": [
+        "to the left",
+        "a la izquierda"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0359L01",
+          "known": "Your friend said that",
+          "target": "tu amigo dijo que",
+          "type": "M"
+        },
+        {
+          "id": "S0359L02",
+          "known": "he could",
+          "target": "él podía",
+          "type": "M"
+        },
+        {
+          "id": "S0359L03",
+          "known": "could turn",
+          "target": "podía girar",
+          "type": "M"
+        },
+        {
+          "id": "S0359L04",
+          "known": "to turn left",
+          "target": "girar a la izquierda",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to the left",
+          "a la izquierda"
+        ],
+        [
+          "turn to the left",
+          "girar a la izquierda"
+        ],
+        [
+          "I wanted to the left",
+          "yo quería a la izquierda"
+        ],
+        [
+          "he could turn to the left",
+          "él podía girar a la izquierda"
+        ],
+        [
+          "she needed to turn to the left",
+          "ella necesitaba girar a la izquierda"
+        ],
+        [
+          "Your friend said he could turn to the left",
+          "tu amigo dijo que él podía girar a la izquierda"
+        ],
+        [
+          "I wanted to turn to the left today",
+          "yo quería girar a la izquierda hoy"
+        ],
+        [
+          "Your friend said that he could turn to the left",
+          "tu amigo dijo que él podía girar a la izquierda"
+        ],
+        [
+          "she needed to turn to the left and see you",
+          "ella necesitaba girar a la izquierda y verte"
+        ],
+        [
+          "Your friend said that he could turn left.",
+          "Tu amigo dijo que él podía girar a la izquierda."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0359L05",
+        "seed_context": {
+          "known": "Tu amigo dijo que él podía girar a la izquierda.",
+          "target": "Your friend said that he could turn left."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "izquierda",
+          "left"
+        ]
+      ]
+    }
+  }
+}
