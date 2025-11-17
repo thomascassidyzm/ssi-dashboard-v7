@@ -1,0 +1,284 @@
+{
+  "S0211L01": {
+    "lego": [
+      "They told us",
+      "他们告诉我们"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "They told us",
+        "他们告诉我们",
+        null,
+        1
+      ],
+      [
+        "They told us what happened",
+        "他们告诉我们会发生什么",
+        null,
+        2
+      ],
+      [
+        "They told us we need to discuss",
+        "他们告诉我们我们需要讨论",
+        null,
+        3
+      ],
+      [
+        "They told us they think we need help",
+        "他们告诉我们他们认为我们需要帮助",
+        null,
+        4
+      ],
+      [
+        "They told us they wanted to know",
+        "他们告诉我们他们想知道",
+        null,
+        4
+      ],
+      [
+        "They told us we need to help you",
+        "他们告诉我们我们需要帮你",
+        null,
+        4
+      ],
+      [
+        "They told us they wanted to know what happened",
+        "他们告诉我们他们想知道会发生什么",
+        null,
+        5
+      ],
+      [
+        "They told us they think we need to discuss the problem",
+        "他们告诉我们他们认为我们需要讨论这个问题",
+        null,
+        5
+      ],
+      [
+        "They told us they wanted to spend more time meeting as a group",
+        "他们告诉我们他们想花更多的时间作为一个小组聚会",
+        null,
+        6
+      ],
+      [
+        "They told us nobody was sure how to answer the question",
+        "他们告诉我们没有人确定如何回答这个问题",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0211L02": {
+    "lego": [
+      "they didn't want to explain",
+      "他们不想解释"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0211L01",
+        "known": "They told us",
+        "target": "他们告诉我们",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "They didn't want",
+        "他们不想",
+        null,
+        1
+      ],
+      [
+        "They didn't want to help me",
+        "他们不想帮助我",
+        null,
+        2
+      ],
+      [
+        "They didn't want to answer the question",
+        "他们不想回答这个问题",
+        null,
+        3
+      ],
+      [
+        "They didn't want to discuss the problem",
+        "他们不想讨论这个问题",
+        null,
+        3
+      ],
+      [
+        "They told us they didn't want to help",
+        "他们告诉我们他们不想帮助",
+        null,
+        4
+      ],
+      [
+        "They didn't want to deal with the arrangements",
+        "他们不想处理安排",
+        null,
+        4
+      ],
+      [
+        "They told us they didn't want to discuss",
+        "他们告诉我们他们不想讨论",
+        null,
+        4
+      ],
+      [
+        "They didn't want to help you deal with the arrangements",
+        "他们不想帮你处理安排",
+        null,
+        5
+      ],
+      [
+        "They told us they didn't want to answer the question",
+        "他们告诉我们他们不想回答这个问题",
+        null,
+        5
+      ],
+      [
+        "They told us they didn't want to help us discuss the problem",
+        "他们告诉我们他们不想帮助我们讨论这个问题",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0211L04": {
+    "lego": [
+      "to explain",
+      "解释"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0211L01",
+        "known": "They told us",
+        "target": "他们告诉我们",
+        "type": "M"
+      },
+      {
+        "id": "S0211L02",
+        "known": "they didn't want to explain",
+        "target": "他们不想解释",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Explain",
+        "解释",
+        null,
+        1
+      ],
+      [
+        "I wanted to explain",
+        "我想解释",
+        null,
+        2
+      ],
+      [
+        "They didn't want to explain what happened",
+        "他们不想解释会发生什么",
+        null,
+        3
+      ],
+      [
+        "Nobody wanted to explain the problem",
+        "没有人想解释这个问题",
+        null,
+        3
+      ],
+      [
+        "They told us they needed to explain",
+        "他们告诉我们他们需要解释",
+        null,
+        4
+      ],
+      [
+        "We wanted to explain how to answer",
+        "我们想解释如何回答",
+        null,
+        4
+      ],
+      [
+        "They told us they didn't want to explain the question",
+        "他们告诉我们他们不想解释这个问题",
+        null,
+        5
+      ],
+      [
+        "Nobody was sure how to explain the arrangements",
+        "没有人确定如何解释安排",
+        null,
+        5
+      ],
+      [
+        "They told us they wanted to explain what we needed to do",
+        "他们告诉我们他们想解释我们需要做的事",
+        null,
+        6
+      ],
+      [
+        "They told us that they didn't want to explain.",
+        "他们告诉我们他们不想解释。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
