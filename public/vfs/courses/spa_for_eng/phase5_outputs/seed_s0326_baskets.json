@@ -1,0 +1,107 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0326",
+  "generation_stage": "PHASE5_BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "No creo que necesite vender la compañía.",
+    "target": "I don't think that she needs to sell the company."
+  },
+  "legos": {
+    "S0326L01": {
+      "lego": ["I don't think that","no creo que"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I don't think that.", "No creo que.", null, 1],
+        ["I don't think that she could.", "No creo que pudiera.", null, 2],
+        ["I don't think that she could move.", "No creo que pudiera mudarse.", null, 3],
+        ["I don't think that he needs to consider.", "No creo que necesite considerar.", null, 3],
+        ["I don't think that she could bring a book.", "No creo que pudiera traer un libro.", null, 4],
+        ["I don't think that he needs to buy another television.", "No creo que necesite comprar otra televisión.", null, 4],
+        ["I don't think that she could move to a different country.", "No creo que pudiera mudarse a un país diferente.", null, 5],
+        ["I don't think that she could bring her brother on Monday.", "No creo que pudiera traer a su hermano el lunes.", null, 5],
+        ["I don't think that he needs to buy another television this year.", "No creo que necesite comprar otra televisión este año.", null, 5],
+        ["I don't think that she could afford the car that she wanted.", "No creo que pudiera permitirse el coche que quería.", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0326L02": {
+      "lego": ["I don't think that (she) needs","no creo que necesite"],
+      "type": "M",
+      "current_seed_legos_available": [["I don't think that","no creo que"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I don't think that she needs another book.", "No creo que necesite otro libro.", null, 2],
+        ["I don't think that she needs a different country.", "No creo que necesite un país diferente.", null, 2],
+        ["I don't think that she needs to move this time.", "No creo que necesite mudarse esta vez.", null, 3],
+        ["I don't think that she needs to walk to school.", "No creo que necesite caminar a la escuela.", null, 3],
+        ["I don't think that she needs to buy another television this year.", "No creo que necesite comprar otra televisión este año.", null, 4],
+        ["I don't think that she needs to read the same book on Monday.", "No creo que necesite leer el mismo libro el lunes.", null, 4],
+        ["I don't think that she needs to bring her brother to a different country.", "No creo que necesite traer a su hermano a un país diferente.", null, 5],
+        ["I don't think that she needs to consider ten possible problems this time.", "No creo que necesite considerar diez problemas posibles esta vez.", null, 5],
+        ["I don't think that she needs to move to a different country if she wanted to.", "No creo que necesite mudarse a un país diferente si quisiera.", null, 6],
+        ["I don't think that she needs to bring her brother to the same school on Monday.", "No creo que necesite traer a su hermano a la misma escuela el lunes.", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0326L03": {
+      "lego": ["needs to sell","necesite vender"],
+      "type": "M",
+      "current_seed_legos_available": [["I don't think that","no creo que"],["I don't think that (she) needs","no creo que necesite"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["She needs to sell another book.", "Ella necesita vender otro libro.", null, 2],
+        ["He needs to sell another television.", "Él necesita vender otra televisión.", null, 2],
+        ["I don't think that she needs to sell this year.", "No creo que necesite vender este año.", null, 3],
+        ["Do you think that she needs to sell on Monday?", "¿Crees que necesita vender el lunes?", null, 3],
+        ["I don't think that she needs to sell the same book this time.", "No creo que necesite vender el mismo libro esta vez.", null, 4],
+        ["I think that she needs to sell another television this year.", "Creo que necesita vender otra televisión este año.", null, 4],
+        ["I don't think that she needs to sell both hands up.", "No creo que necesite vender las dos manos arriba.", null, 5],
+        ["Do you think that she needs to sell another book to that student?", "¿Crees que necesita vender otro libro a esa estudiante?", null, 5],
+        ["I don't think that she needs to sell another television to a different country this year.", "No creo que necesite vender otra televisión a un país diferente este año.", null, 6],
+        ["She said that she needs to sell the same book if she wanted to move on Monday.", "Ella dijo que necesita vender el mismo libro si quisiera mudarse el lunes.", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0326L04": {
+      "lego": ["the company","la compañía"],
+      "type": "M",
+      "current_seed_legos_available": [["I don't think that","no creo que"],["I don't think that (she) needs","no creo que necesite"],["needs to sell","necesite vender"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["She needs the company.", "Ella necesita la compañía.", null, 1],
+        ["I don't think that the company could move.", "No creo que la compañía pudiera mudarse.", null, 2],
+        ["I think that he needs to sell the company.", "Creo que necesita vender la compañía.", null, 3],
+        ["Do you think that she needs to buy the company?", "¿Crees que necesita comprar la compañía?", null, 3],
+        ["I don't think that she needs to move the company this year.", "No creo que necesite mudar la compañía este año.", null, 4],
+        ["She said that she needs to sell the company on Monday.", "Ella dijo que necesita vender la compañía el lunes.", null, 4],
+        ["I think that she needs to consider selling the company to a different country.", "Creo que necesita considerar vender la compañía a un país diferente.", null, 5],
+        ["Do you think that she needs to bring the company to another country this time?", "¿Crees que necesita traer la compañía a otro país esta vez?", null, 5],
+        ["He said that he doesn't need to sell the company if she could bring her brother on Monday.", "Él dijo que no necesita vender la compañía si ella pudiera traer a su hermano el lunes.", null, 7],
+        ["I don't think that she needs to sell the company.", "No creo que necesite vender la compañía.", null, 4]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    }
+  }
+}

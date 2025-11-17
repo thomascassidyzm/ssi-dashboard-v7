@@ -1,0 +1,325 @@
+{
+  "legos": {
+    "S0325L01": {
+      "lego": [
+        "I think that he",
+        "Creo que necesita"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I think that he",
+          "Creo que",
+          null,
+          1
+        ],
+        [
+          "I think that he could",
+          "Creo que podría",
+          null,
+          2
+        ],
+        [
+          "I think that he could bring a book",
+          "Creo que podría traer un libro",
+          null,
+          3
+        ],
+        [
+          "I think that he could move on Monday",
+          "Creo que podría mudarse el lunes",
+          null,
+          3
+        ],
+        [
+          "I think that he could bring her brother on Monday",
+          "Creo que podría traer a su hermano el lunes",
+          null,
+          4
+        ],
+        [
+          "I think that he could move to a different country",
+          "Creo que podría mudarse a un país diferente",
+          null,
+          4
+        ],
+        [
+          "I think that he could bring another television this year",
+          "Creo que podría traer otra televisión este año",
+          null,
+          5
+        ],
+        [
+          "I think that he could move to a different country this year",
+          "Creo que podría mudarse a un país diferente este año",
+          null,
+          5
+        ],
+        [
+          "I think that he could bring the same book on Monday this time",
+          "Creo que podría traer el mismo libro el lunes esta vez",
+          null,
+          5
+        ],
+        [
+          "I think that he could afford the car that he wanted this year",
+          "Creo que podría permitirse el coche que quería este año",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0325L01",
+        "seed_context": {
+          "known": "Creo que necesita considerar diez problemas posibles.",
+          "target": "I think that he needs to consider ten possible problems."
+        }
+      },
+      "components": [
+        [
+          "Creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0325L03": {
+      "lego": [
+        "needs to consider",
+        "necesita considerar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0325L01",
+          "known": "I think that he",
+          "target": "Creo que necesita",
+          "type": "M"
+        },
+        {
+          "id": "S0325L02",
+          "known": "I think that (he) needs",
+          "target": "creo que necesita",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "needs to consider",
+          "necesita considerar",
+          null,
+          1
+        ],
+        [
+          "I think that he needs to consider",
+          "Creo que necesita considerar",
+          null,
+          2
+        ],
+        [
+          "She said that he needs to consider",
+          "Ella dijo que necesita considerar",
+          null,
+          3
+        ],
+        [
+          "He said that he needs to consider it",
+          "Él dijo que necesita considerarlo",
+          null,
+          3
+        ],
+        [
+          "I think that he needs to consider another television",
+          "Creo que necesita considerar otra televisión",
+          null,
+          4
+        ],
+        [
+          "She said that he needs to consider the same book",
+          "Ella dijo que necesita considerar el mismo libro",
+          null,
+          4
+        ],
+        [
+          "I think that he needs to consider it on Monday this time",
+          "Creo que necesita considerarlo el lunes esta vez",
+          null,
+          5
+        ],
+        [
+          "He said that he needs to consider the car that he wanted",
+          "Él dijo que necesita considerar el coche que quería",
+          null,
+          5
+        ],
+        [
+          "I don't think that he needs to consider another television this year",
+          "No creo que necesite considerar otra televisión este año",
+          null,
+          5
+        ],
+        [
+          "She said that he needs to consider if she could bring her brother",
+          "Ella dijo que necesita considerar si podría traer a su hermano",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0325L03",
+        "seed_context": {
+          "known": "Creo que necesita considerar diez problemas posibles.",
+          "target": "I think that he needs to consider ten possible problems."
+        }
+      },
+      "components": [
+        [
+          "necesita",
+          "needs"
+        ],
+        [
+          "considerar",
+          "to consider"
+        ]
+      ]
+    },
+    "S0325L04": {
+      "lego": [
+        "ten possible problems",
+        "diez problemas posibles"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0325L01",
+          "known": "I think that he",
+          "target": "Creo que necesita",
+          "type": "M"
+        },
+        {
+          "id": "S0325L02",
+          "known": "I think that (he) needs",
+          "target": "creo que necesita",
+          "type": "M"
+        },
+        {
+          "id": "S0325L03",
+          "known": "needs to consider",
+          "target": "necesita considerar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "ten possible problems",
+          "diez problemas posibles",
+          null,
+          1
+        ],
+        [
+          "consider ten possible problems",
+          "considerar diez problemas posibles",
+          null,
+          2
+        ],
+        [
+          "He needs to consider ten possible problems",
+          "Necesita considerar diez problemas posibles",
+          null,
+          3
+        ],
+        [
+          "I think that he needs to consider ten possible problems",
+          "Creo que necesita considerar diez problemas posibles",
+          null,
+          3
+        ],
+        [
+          "She said that he needs to consider ten possible problems",
+          "Ella dijo que necesita considerar diez problemas posibles",
+          null,
+          4
+        ],
+        [
+          "He said that he needs to consider ten possible problems this year",
+          "Él dijo que necesita considerar diez problemas posibles este año",
+          null,
+          4
+        ],
+        [
+          "I think that he needs to consider ten possible problems on Monday this time",
+          "Creo que necesita considerar diez problemas posibles el lunes esta vez",
+          null,
+          5
+        ],
+        [
+          "I don't think that he needs to consider ten possible problems if he wanted to",
+          "No creo que necesite considerar diez problemas posibles si quisiera",
+          null,
+          5
+        ],
+        [
+          "She said that he needs to consider ten possible problems before he could move",
+          "Ella dijo que necesita considerar diez problemas posibles antes de que pudiera mudarse",
+          null,
+          5
+        ],
+        [
+          "I think that he needs to consider ten possible problems before she could bring her brother",
+          "Creo que necesita considerar diez problemas posibles antes de que ella pudiera traer a su hermano",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0325L04",
+        "seed_context": {
+          "known": "Creo que necesita considerar diez problemas posibles.",
+          "target": "I think that he needs to consider ten possible problems."
+        }
+      },
+      "components": [
+        [
+          "diez",
+          "ten"
+        ],
+        [
+          "problemas",
+          "problems"
+        ],
+        [
+          "posibles",
+          "possible"
+        ]
+      ]
+    }
+  }
+}

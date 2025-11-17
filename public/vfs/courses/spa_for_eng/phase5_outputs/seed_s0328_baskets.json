@@ -1,0 +1,83 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0328",
+  "generation_stage": "PHASE5_BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "Sí pienso que debería.",
+    "target": "Yes I think she ought to."
+  },
+  "legos": {
+    "S0328L01": {
+      "lego": ["yes", "sí"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Yes.", "Sí.", null, 1],
+        ["Yes she could.", "Sí pudiera.", null, 2],
+        ["Yes she needs to move.", "Sí necesita mudarse.", null, 3],
+        ["Yes she could this time.", "Sí pudiera esta vez.", null, 3],
+        ["Yes I think she needs another way.", "Sí pienso que necesita otra manera.", null, 4],
+        ["Yes she said that she could move.", "Sí dijo que pudiera mudarse.", null, 4],
+        ["Yes I think she needs to read the same book.", "Sí pienso que necesita leer el mismo libro.", null, 5],
+        ["Yes she needs to move to a different country.", "Sí necesita mudarse a un país diferente.", null, 5],
+        ["Yes I think she could bring her brother to school this time.", "Sí pienso que pudiera traer a su hermano a la escuela esta vez.", null, 6],
+        ["Yes I think she needs to consider ten possible problems this year.", "Sí pienso que necesita considerar diez problemas posibles este año.", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0328L02": {
+      "lego": ["I think that", "pienso que"],
+      "type": "M",
+      "current_seed_legos_available": [["yes", "sí"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I think that she could.", "Pienso que pudiera.", null, 1],
+        ["I think that she needs to move.", "Pienso que necesita mudarse.", null, 2],
+        ["I think that she needs another way this year.", "Pienso que necesita otra manera este año.", null, 3],
+        ["I think that he needs to offer to sell.", "Pienso que necesita ofrecer vender.", null, 3],
+        ["I think that she could bring a book on Monday.", "Pienso que pudiera traer un libro el lunes.", null, 4],
+        ["I think that she needs to read the same book.", "Pienso que necesita leer el mismo libro.", null, 4],
+        ["Yes I think that she needs to move to a different country.", "Sí pienso que necesita mudarse a un país diferente.", null, 5],
+        ["I think that she could bring her brother to school this time.", "Pienso que pudiera traer a su hermano a la escuela esta vez.", null, 5],
+        ["I think that she needs to consider ten possible problems this year.", "Pienso que necesita considerar diez problemas posibles este año.", null, 6],
+        ["Yes I think that she could bring a book if she wanted to.", "Sí pienso que pudiera traer un libro si quisiera.", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0328L03": {
+      "lego": ["she ought to/should", "debería"],
+      "type": "A",
+      "current_seed_legos_available": [["yes", "sí"], ["I think that", "pienso que"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["She ought to.", "Debería.", null, 1],
+        ["I think she ought to.", "Pienso que debería.", null, 2],
+        ["She ought to read the same book.", "Debería leer el mismo libro.", null, 3],
+        ["I think she ought to move this year.", "Pienso que debería mudarse este año.", null, 3],
+        ["She said that she ought to sell the company.", "Ella dijo que debería vender la compañía.", null, 4],
+        ["I think she ought to offer another way.", "Pienso que debería ofrecer otra manera.", null, 4],
+        ["Yes I think she ought to move to a different country.", "Sí pienso que debería mudarse a un país diferente.", null, 5],
+        ["She said that she ought to read the same book on Monday.", "Ella dijo que debería leer el mismo libro el lunes.", null, 5],
+        ["I think she ought to consider ten possible problems this time.", "Pienso que debería considerar diez problemas posibles esta vez.", null, 6],
+        ["Yes I think she ought to.", "Sí pienso que debería.", null, 3]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    }
+  }
+}

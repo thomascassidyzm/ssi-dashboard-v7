@@ -1,0 +1,98 @@
+{
+  "version": "curated_v7_spanish",
+  "seed": "S0338",
+  "course_direction": "Spanish for English speakers",
+  "mapping": "KNOWN (English) → TARGET (Spanish)",
+  "seed_pair": {
+    "known": "Badly.",
+    "target": "Mal."
+  },
+  "cumulative_legos": "~1014",
+  "curation_metadata": {
+    "curated_at": "2025-11-17T06:30:41.165758",
+    "curated_by": "Claude Code - Phase 5 v7.0 GATE compliance",
+    "changes_from_previous": [
+      "Initial Phase 5 basket generation",
+      "Strict GATE compliance enforced",
+      "Natural practice phrases with progressive complexity"
+    ]
+  },
+  "S0338L01": {
+    "lego": [
+      "badly",
+      "mal"
+    ],
+    "type": "A",
+    "available_legos": 53,
+    "practice_phrases": [
+      [
+        "Badly",
+        "Mal",
+        null,
+        1
+      ],
+      [
+        "very badly",
+        "muy mal",
+        null,
+        2
+      ],
+      [
+        "I think badly",
+        "pienso mal",
+        null,
+        2
+      ],
+      [
+        "playing badly",
+        "jugando mal",
+        null,
+        2
+      ],
+      [
+        "I think it's very badly",
+        "creo que es muy mal",
+        null,
+        4
+      ],
+      [
+        "she can continue badly",
+        "puede continuar mal",
+        null,
+        2
+      ],
+      [
+        "I don't think that she can continue playing badly",
+        "no creo que pueda continuar jugando mal",
+        null,
+        6
+      ],
+      [
+        "Do you think that he can continue to play badly",
+        "crees que puede continuar jugando mal",
+        null,
+        5
+      ],
+      [
+        "She said that she can't build a new life badly",
+        "ella dijo que no puede construir una nueva vida mal",
+        null,
+        7
+      ],
+      [
+        "Badly.",
+        "Mal.",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "full_seed_included": "YES - phrase 10",
+    "gate_compliance": "STRICT - Using vocabulary from S0328-S0337 (10 most recent) only. NOTE: 'bastante' and 'lastimado' not available (S0339)."
+  }
+}

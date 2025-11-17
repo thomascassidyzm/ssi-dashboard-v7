@@ -1,0 +1,107 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0327",
+  "generation_stage": "PHASE5_BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "¿Crees que necesita ofrecer otra manera?",
+    "target": "Do you think that she needs to offer another way?"
+  },
+  "legos": {
+    "S0327L01": {
+      "lego": ["do you think that","crees que"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Do you think that she could move?", "¿Crees que ella pudiera mudarse?", null, 2],
+        ["Do you think that he wanted to?", "¿Crees que él quisiera?", null, 2],
+        ["Do you think that she needs another book?", "¿Crees que necesita otro libro?", null, 3],
+        ["Do you think that she could bring her brother?", "¿Crees que ella pudiera traer a su hermano?", null, 3],
+        ["Do you think that she needs to move this year?", "¿Crees que necesita mudarse este año?", null, 4],
+        ["Do you think that he needs to sell the company?", "¿Crees que necesita vender la compañía?", null, 4],
+        ["Do you think that she needs to read the same book on Monday?", "¿Crees que necesita leer el mismo libro el lunes?", null, 5],
+        ["Do you think that she could bring her brother to school this time?", "¿Crees que ella pudiera traer a su hermano a la escuela esta vez?", null, 5],
+        ["Do you think that she needs to consider ten possible problems if she wanted to move?", "¿Crees que necesita considerar diez problemas posibles si quisiera mudarse?", null, 6],
+        ["Do you think that she could bring her brother to a different country on Monday this year?", "¿Crees que ella pudiera traer a su hermano a un país diferente el lunes este año?", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0327L02": {
+      "lego": ["do you think that (she) needs","crees que necesita"],
+      "type": "M",
+      "current_seed_legos_available": [["do you think that","crees que"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Do you think that she needs another book?", "¿Crees que necesita otro libro?", null, 2],
+        ["Do you think that she needs the company?", "¿Crees que necesita la compañía?", null, 2],
+        ["Do you think that she needs to move on Monday?", "¿Crees que necesita mudarse el lunes?", null, 3],
+        ["Do you think that she needs to sell this year?", "¿Crees que necesita vender este año?", null, 3],
+        ["Do you think that she needs to read the same book this time?", "¿Crees que necesita leer el mismo libro esta vez?", null, 4],
+        ["Do you think that she needs to bring her brother to school?", "¿Crees que necesita traer a su hermano a la escuela?", null, 4],
+        ["Do you think that she needs to sell the company to a different country?", "¿Crees que necesita vender la compañía a un país diferente?", null, 5],
+        ["Do you think that she needs to consider ten possible problems this year on Monday?", "¿Crees que necesita considerar diez problemas posibles este año el lunes?", null, 5],
+        ["Do you think that she needs to move to a different country if she wanted to sell the company?", "¿Crees que necesita mudarse a un país diferente si quisiera vender la compañía?", null, 6],
+        ["Do you think that she needs to bring her brother to the same school on Monday this time?", "¿Crees que necesita traer a su hermano a la misma escuela el lunes esta vez?", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0327L03": {
+      "lego": ["needs to offer","necesita ofrecer"],
+      "type": "M",
+      "current_seed_legos_available": [["do you think that","crees que"],["do you think that (she) needs","crees que necesita"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Needs to offer.", "Necesita ofrecer.", null, 1],
+        ["He needs to offer.", "Él necesita ofrecer.", null, 2],
+        ["She needs to offer another way.", "Ella necesita ofrecer otra manera.", null, 3],
+        ["I think she needs to offer.", "Pienso que necesita ofrecer.", null, 3],
+        ["She said that he needs to offer to sell.", "Ella dijo que necesita ofrecer vender.", null, 4],
+        ["I think she needs to offer another way.", "Pienso que necesita ofrecer otra manera.", null, 4],
+        ["Do you think she needs to offer another way?", "¿Crees que necesita ofrecer otra manera?", null, 5],
+        ["She said that he needs to offer to move to a different country.", "Ella dijo que necesita ofrecer mudarse a un país diferente.", null, 5],
+        ["I don't think she needs to offer to sell the company this year.", "No creo que necesite ofrecer vender la compañía este año.", null, 6],
+        ["He said that he needs to offer to read the same book on Monday.", "Él dijo que necesita ofrecer leer el mismo libro el lunes.", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0327L04": {
+      "lego": ["another way","otra manera"],
+      "type": "M",
+      "current_seed_legos_available": [["do you think that","crees que"],["do you think that (she) needs","crees que necesita"],["needs to offer","necesita ofrecer"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Another way.", "Otra manera.", null, 1],
+        ["Offer another way.", "Ofrecer otra manera.", null, 2],
+        ["She needs another way this year.", "Ella necesita otra manera este año.", null, 3],
+        ["He needs to offer another way.", "Él necesita ofrecer otra manera.", null, 3],
+        ["I think she needs another way this year.", "Pienso que necesita otra manera este año.", null, 4],
+        ["She said that she needs another way.", "Ella dijo que necesita otra manera.", null, 4],
+        ["I think she needs to offer another way this year.", "Pienso que necesita ofrecer otra manera este año.", null, 5],
+        ["Do you think she needs to offer another way to move?", "¿Crees que necesita ofrecer otra manera de mudarse?", null, 5],
+        ["She said that he needs to consider another way this time.", "Ella dijo que necesita considerar otra manera esta vez.", null, 5],
+        ["Do you think that she needs to offer another way?", "¿Crees que necesita ofrecer otra manera?", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    }
+  }
+}

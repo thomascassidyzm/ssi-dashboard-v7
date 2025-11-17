@@ -1,0 +1,83 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0331",
+  "generation_stage": "PHASE5_BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "Ella no puede proveer todas las respuestas.",
+    "target": "She can't provide all the answers."
+  },
+  "legos": {
+    "S0331L01": {
+      "lego": ["she can't", "ella no puede"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["She can't.", "Ella no puede.", null, 1],
+        ["I think she can't.", "Creo que ella no puede.", null, 2],
+        ["She can't read the same book.", "Ella no puede leer el mismo libro.", null, 3],
+        ["I don't think she can't move this year.", "No creo que ella no puede mudarse este año.", null, 3],
+        ["She can't offer another way this time.", "Ella no puede ofrecer otra manera esta vez.", null, 4],
+        ["She said that she can't walk to school.", "Ella dijo que ella no puede caminar a la escuela.", null, 4],
+        ["Do you think she can't sell the company on Monday?", "¿Crees que ella no puede vender la compañía el lunes?", null, 5],
+        ["I think she can't move to a different country this year.", "Creo que ella no puede mudarse a un país diferente este año.", null, 5],
+        ["He said that she can't consider ten possible problems this time.", "Él dijo que ella no puede considerar diez problemas posibles esta vez.", null, 6],
+        ["I don't think she can't read the same book on Monday this year.", "No creo que ella no puede leer el mismo libro el lunes este año.", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0331L02": {
+      "lego": ["can't provide", "no puede proveer"],
+      "type": "M",
+      "current_seed_legos_available": [["she can't", "ella no puede"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Can't provide.", "No puede proveer.", null, 1],
+        ["She can't provide the answers.", "Ella no puede proveer las respuestas.", null, 2],
+        ["I think she can't provide another book.", "Creo que no puede proveer otro libro.", null, 3],
+        ["She can't provide the same book this time.", "No puede proveer el mismo libro esta vez.", null, 3],
+        ["He said that she can't provide another way.", "Él dijo que no puede proveer otra manera.", null, 4],
+        ["I don't think she can't provide ten possible problems.", "No creo que no puede proveer diez problemas posibles.", null, 4],
+        ["Do you think she can't provide the company this year on Monday?", "¿Crees que no puede proveer la compañía este año el lunes?", null, 5],
+        ["She said that she can't provide another book to the student this time.", "Ella dijo que no puede proveer otro libro a la estudiante esta vez.", null, 5],
+        ["I think she can't provide the same book to a different country on Monday.", "Creo que no puede proveer el mismo libro a un país diferente el lunes.", null, 6],
+        ["He said that she can't provide ten possible problems to the school this year.", "Él dijo que no puede proveer diez problemas posibles a la escuela este año.", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    },
+    "S0331L03": {
+      "lego": ["provide", "proveer"],
+      "type": "A",
+      "current_seed_legos_available": [["she can't", "ella no puede"], ["can't provide", "no puede proveer"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Provide.", "Proveer.", null, 1],
+        ["She needs to provide the answers.", "Ella necesita proveer las respuestas.", null, 2],
+        ["I think she needs to provide another book.", "Creo que necesita proveer otro libro.", null, 3],
+        ["She can't provide the same book this time.", "Ella no puede proveer el mismo libro esta vez.", null, 3],
+        ["He said that she needs to provide another way.", "Él dijo que necesita proveer otra manera.", null, 4],
+        ["I don't think she ought to provide ten possible problems.", "No creo que debería proveer diez problemas posibles.", null, 4],
+        ["Do you think she needs to provide the answers this year on Monday?", "¿Crees que necesita proveer las respuestas este año el lunes?", null, 5],
+        ["She said that she can't provide another book to the student this time.", "Ella dijo que no puede proveer otro libro a la estudiante esta vez.", null, 5],
+        ["I think she ought to provide the same book to a different country on Monday.", "Creo que debería proveer el mismo libro a un país diferente el lunes.", null, 6],
+        ["He said that she needs to provide all the answers to the school this year.", "Él dijo que necesita proveer todas las respuestas a la escuela este año.", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      }
+    }
+  }
+}

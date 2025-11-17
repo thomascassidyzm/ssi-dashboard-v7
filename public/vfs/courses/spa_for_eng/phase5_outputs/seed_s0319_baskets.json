@@ -1,0 +1,184 @@
+{
+  "legos": {
+    "S0319L03": {
+      "lego": [
+        "to move",
+        "mudarse"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0319L01",
+          "known": "She needs to move",
+          "target": "Ella necesita mudarse",
+          "type": "M"
+        },
+        {
+          "id": "S0319L02",
+          "known": "needs to move",
+          "target": "necesita mudarse",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to move",
+          "mudarse"
+        ],
+        [
+          "needs to move",
+          "necesita mudarse"
+        ],
+        [
+          "She needs to move",
+          "Ella necesita mudarse"
+        ],
+        [
+          "I think she needs to move",
+          "Pienso que necesita mudarse"
+        ],
+        [
+          "He said that she needs to move",
+          "Él dijo que necesita mudarse"
+        ],
+        [
+          "I don't think she needs to move",
+          "No creo que necesita mudarse"
+        ],
+        [
+          "I think she could move this time",
+          "Pienso que podría mudarse esta vez"
+        ],
+        [
+          "He said that she could move on Monday",
+          "Él dijo que podría mudarse el lunes"
+        ],
+        [
+          "I think she could move if she wanted to",
+          "Pienso que podría mudarse si quisiera"
+        ],
+        [
+          "She said that she could move to the other room",
+          "Ella dijo que podría mudarse a la otra habitación"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0319L03",
+        "seed_context": {
+          "known": "Ella necesita mudarse a un país diferente.",
+          "target": "She needs to move to a different country."
+        }
+      }
+    },
+    "S0319L04": {
+      "lego": [
+        "to a different country",
+        "a un país diferente"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0319L01",
+          "known": "She needs to move",
+          "target": "Ella necesita mudarse",
+          "type": "M"
+        },
+        {
+          "id": "S0319L02",
+          "known": "needs to move",
+          "target": "necesita mudarse",
+          "type": "M"
+        },
+        {
+          "id": "S0319L03",
+          "known": "to move",
+          "target": "mudarse",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to a different country",
+          "a un país diferente"
+        ],
+        [
+          "move to a different country",
+          "mudarse a un país diferente"
+        ],
+        [
+          "She needs to move to a different country",
+          "Ella necesita mudarse a un país diferente"
+        ],
+        [
+          "I think she could move to a different country",
+          "Pienso que podría mudarse a un país diferente"
+        ],
+        [
+          "He said that she needs to move to a different country",
+          "Él dijo que necesita mudarse a un país diferente"
+        ],
+        [
+          "I don't think she needs to move to a different country",
+          "No creo que necesita mudarse a un país diferente"
+        ],
+        [
+          "Do you think she could move to a different country this time",
+          "Crees que podría mudarse a un país diferente esta vez"
+        ],
+        [
+          "She said that she could move to a different country on Monday",
+          "Ella dijo que podría mudarse a un país diferente el lunes"
+        ],
+        [
+          "I think she could move to a different country if she wanted to",
+          "Pienso que podría mudarse a un país diferente si quisiera"
+        ],
+        [
+          "He said that she couldn't move to a different country before",
+          "Él dijo que no podría mudarse a un país diferente antes"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0319L04",
+        "seed_context": {
+          "known": "Ella necesita mudarse a un país diferente.",
+          "target": "She needs to move to a different country."
+        }
+      },
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "un",
+          "a"
+        ],
+        [
+          "país",
+          "country"
+        ],
+        [
+          "diferente",
+          "different"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "version": "curated_v7_phase5",
+  "seed_id": "S0337",
+  "seed_pair": {
+    "known": "Do you think that he can continue to play?",
+    "target": "¿Crees que puede continuar jugando?"
+  },
+  "legos": {
+    "S0337L01": {
+      "lego": [
+        "do you think",
+        "crees"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "do you think",
+          "crees",
+          null,
+          1
+        ],
+        [
+          "Do you think?",
+          "¿Crees?",
+          null,
+          1
+        ],
+        [
+          "Do you think so?",
+          "¿Crees que sí?",
+          null,
+          3
+        ],
+        [
+          "Do you think not?",
+          "¿Crees que no?",
+          null,
+          3
+        ],
+        [
+          "Do you think it's important?",
+          "¿Crees que es importante?",
+          null,
+          4
+        ],
+        [
+          "Do you think she can?",
+          "¿Crees que ella puede?",
+          null,
+          4
+        ],
+        [
+          "Do you think she can sell the company?",
+          "¿Crees que puede vender la compañía?",
+          null,
+          6
+        ],
+        [
+          "Do you think he can build a new life?",
+          "¿Crees que puede construir una nueva vida?",
+          null,
+          7
+        ],
+        [
+          "Do you think she can provide all the answers?",
+          "¿Crees que puede proveer todas las respuestas?",
+          null,
+          7
+        ],
+        [
+          "Do you think he can add some valuable ideas?",
+          "¿Crees que puede añadir algunas ideas valiosas?",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0337L02": {
+      "lego": [
+        "do you think that",
+        "crees que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0337L01",
+          "known": "do you think",
+          "target": "crees",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "do you think that",
+          "crees que",
+          null,
+          1
+        ],
+        [
+          "Do you think that?",
+          "¿Crees que?",
+          null,
+          1
+        ],
+        [
+          "Do you think that she can?",
+          "¿Crees que puede?",
+          null,
+          3
+        ],
+        [
+          "Do you think that he can?",
+          "¿Crees que él puede?",
+          null,
+          3
+        ],
+        [
+          "Do you think that it's important?",
+          "¿Crees que es importante?",
+          null,
+          4
+        ],
+        [
+          "Do you think that she can open?",
+          "¿Crees que puede abrir?",
+          null,
+          4
+        ],
+        [
+          "Do you think that she can sell the company?",
+          "¿Crees que puede vender la compañía?",
+          null,
+          6
+        ],
+        [
+          "Do you think that he can build a new life?",
+          "¿Crees que puede construir una nueva vida?",
+          null,
+          7
+        ],
+        [
+          "Do you think that she can provide all the answers?",
+          "¿Crees que puede proveer todas las respuestas?",
+          null,
+          7
+        ],
+        [
+          "Do you think that he can open the door for his sister?",
+          "¿Crees que puede abrir la puerta para su hermana?",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

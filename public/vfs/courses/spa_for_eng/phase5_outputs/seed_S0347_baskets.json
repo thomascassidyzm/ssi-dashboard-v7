@@ -1,0 +1,266 @@
+{
+  "legos": {
+    "S0347L01": {
+      "lego": [
+        "wanted to know",
+        "quería saber"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "quería saber",
+          "target": "wanted to know",
+          "lego_count": 1
+        },
+        {
+          "known": "ella quería saber",
+          "target": "she wanted to know",
+          "lego_count": 2
+        },
+        {
+          "known": "creo que quería saber",
+          "target": "I think she wanted to know",
+          "lego_count": 3
+        },
+        {
+          "known": "pienso que quería saber",
+          "target": "I think he wanted to know",
+          "lego_count": 3
+        },
+        {
+          "known": "no creo que quería saber",
+          "target": "I don't think she wanted to know",
+          "lego_count": 4
+        },
+        {
+          "known": "estoy seguro que quería saber",
+          "target": "I'm sure he wanted to know",
+          "lego_count": 4
+        },
+        {
+          "known": "conocí a alguien que quería saber",
+          "target": "I met someone who wanted to know",
+          "lego_count": 5
+        },
+        {
+          "known": "pienso que ella quería saber hace unos días",
+          "target": "I think she wanted to know a few days ago",
+          "lego_count": 5
+        },
+        {
+          "known": "no estoy seguro que ella quería saber algo",
+          "target": "I'm not sure she wanted to know something",
+          "lego_count": 6
+        },
+        {
+          "known": "conocí a alguien que dijo que quería saber",
+          "target": "I met someone who said that he wanted to know",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "saber",
+          "to know"
+        ]
+      ]
+    },
+    "S0347L02": {
+      "lego": [
+        "wanted to know what",
+        "quería saber qué"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0347L01",
+          "known": "wanted to know",
+          "target": "quería saber",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "quería saber qué",
+          "target": "wanted to know what",
+          "lego_count": 1
+        },
+        {
+          "known": "ella quería saber qué",
+          "target": "she wanted to know what",
+          "lego_count": 2
+        },
+        {
+          "known": "creo que quería saber qué",
+          "target": "I think she wanted to know what",
+          "lego_count": 3
+        },
+        {
+          "known": "pienso que quería saber qué",
+          "target": "I think he wanted to know what",
+          "lego_count": 3
+        },
+        {
+          "known": "no creo que quería saber qué",
+          "target": "I don't think she wanted to know what",
+          "lego_count": 4
+        },
+        {
+          "known": "estoy seguro que quería saber qué",
+          "target": "I'm sure he wanted to know what",
+          "lego_count": 4
+        },
+        {
+          "known": "conocí a alguien que quería saber qué",
+          "target": "I met someone who wanted to know what",
+          "lego_count": 5
+        },
+        {
+          "known": "pienso que ella quería saber qué hace unos días",
+          "target": "I think she wanted to know what a few days ago",
+          "lego_count": 5
+        },
+        {
+          "known": "no estoy seguro que ella quería saber qué dijo",
+          "target": "I'm not sure she wanted to know what he said",
+          "lego_count": 6
+        },
+        {
+          "known": "conocí a alguien que dijo que quería saber qué",
+          "target": "I met someone who said that he wanted to know what",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "quería",
+          "wanted"
+        ],
+        [
+          "saber",
+          "to know"
+        ],
+        [
+          "qué",
+          "what"
+        ]
+      ]
+    },
+    "S0347L03": {
+      "lego": [
+        "what was happening",
+        "qué estaba pasando"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0347L01",
+          "known": "wanted to know",
+          "target": "quería saber",
+          "type": "M"
+        },
+        {
+          "id": "S0347L02",
+          "known": "wanted to know what",
+          "target": "quería saber qué",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "qué estaba pasando",
+          "target": "what was happening",
+          "lego_count": 1
+        },
+        {
+          "known": "quería saber qué estaba pasando",
+          "target": "wanted to know what was happening",
+          "lego_count": 2
+        },
+        {
+          "known": "creo que qué estaba pasando",
+          "target": "I think what was happening",
+          "lego_count": 3
+        },
+        {
+          "known": "ella quería saber qué estaba pasando",
+          "target": "she wanted to know what was happening",
+          "lego_count": 3
+        },
+        {
+          "known": "pienso que quería saber qué estaba pasando",
+          "target": "I think he wanted to know what was happening",
+          "lego_count": 4
+        },
+        {
+          "known": "no creo que qué estaba pasando",
+          "target": "I don't think what was happening",
+          "lego_count": 4
+        },
+        {
+          "known": "estoy seguro que ella quería saber qué estaba pasando",
+          "target": "I'm sure she wanted to know what was happening",
+          "lego_count": 5
+        },
+        {
+          "known": "conocí a alguien que quería saber qué estaba pasando",
+          "target": "I met someone who wanted to know what was happening",
+          "lego_count": 5
+        },
+        {
+          "known": "pienso que ella quería saber qué estaba pasando hace unos días",
+          "target": "I think she wanted to know what was happening a few days ago",
+          "lego_count": 6
+        },
+        {
+          "known": "conocí a alguien que dijo que quería saber qué estaba pasando",
+          "target": "I met someone who said that he wanted to know what was happening",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "pasando",
+          "happening"
+        ]
+      ]
+    }
+  }
+}

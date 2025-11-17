@@ -1,0 +1,283 @@
+{
+  "version": "curated_v7_phase5",
+  "seed_id": "S0336",
+  "seed_pair": {
+    "known": "I don't think that she can open the door.",
+    "target": "No creo que pueda abrir la puerta."
+  },
+  "legos": {
+    "S0336L02": {
+      "lego": [
+        "I don't think that she can",
+        "no creo que pueda"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0336L01",
+          "known": "I don't think",
+          "target": "no creo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I don't think that she can",
+          "no creo que pueda",
+          null,
+          1
+        ],
+        [
+          "No, I don't think that she can.",
+          "No, no creo que pueda.",
+          null,
+          2
+        ],
+        [
+          "I don't think that she can sell.",
+          "No creo que pueda vender.",
+          null,
+          3
+        ],
+        [
+          "I don't think that she can offer.",
+          "No creo que pueda ofrecer.",
+          null,
+          3
+        ],
+        [
+          "I don't think that she can sell the company.",
+          "No creo que pueda vender la compañía.",
+          null,
+          5
+        ],
+        [
+          "I don't think that she can offer another way.",
+          "No creo que pueda ofrecer otra manera.",
+          null,
+          6
+        ],
+        [
+          "I don't think that she can spend much time.",
+          "No creo que pueda pasar mucho tiempo.",
+          null,
+          6
+        ],
+        [
+          "I don't think that she can build a new life.",
+          "No creo que pueda construir una nueva vida.",
+          null,
+          7
+        ],
+        [
+          "I don't think that she can provide all the answers.",
+          "No creo que pueda proveer todas las respuestas.",
+          null,
+          7
+        ],
+        [
+          "I don't think that she can add some valuable ideas.",
+          "No creo que pueda añadir algunas ideas valiosas.",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0336L03": {
+      "lego": [
+        "that she can",
+        "que pueda"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0336L01",
+          "known": "I don't think",
+          "target": "no creo",
+          "type": "M"
+        },
+        {
+          "id": "S0336L02",
+          "known": "I don't think that she can",
+          "target": "no creo que pueda",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "that she can",
+          "que pueda",
+          null,
+          1
+        ],
+        [
+          "I think that she can.",
+          "Creo que pueda.",
+          null,
+          2
+        ],
+        [
+          "I said that she can.",
+          "Dijo que pueda.",
+          null,
+          3
+        ],
+        [
+          "She said that she can.",
+          "Ella dijo que pueda.",
+          null,
+          4
+        ],
+        [
+          "I don't think that she can.",
+          "No creo que pueda.",
+          null,
+          4
+        ],
+        [
+          "I think that she can sell.",
+          "Creo que pueda vender.",
+          null,
+          4
+        ],
+        [
+          "I don't think that she can sell the company.",
+          "No creo que pueda vender la compañía.",
+          null,
+          6
+        ],
+        [
+          "I think that she can offer another way.",
+          "Creo que pueda ofrecer otra manera.",
+          null,
+          6
+        ],
+        [
+          "She said that she can build a new life.",
+          "Ella dijo que pueda construir una nueva vida.",
+          null,
+          8
+        ],
+        [
+          "I don't think that she can spend much time with the group.",
+          "No creo que pueda pasar mucho tiempo con el grupo.",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0336L04": {
+      "lego": [
+        "can open",
+        "pueda abrir"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0336L01",
+          "known": "I don't think",
+          "target": "no creo",
+          "type": "M"
+        },
+        {
+          "id": "S0336L02",
+          "known": "I don't think that she can",
+          "target": "no creo que pueda",
+          "type": "M"
+        },
+        {
+          "id": "S0336L03",
+          "known": "that she can",
+          "target": "que pueda",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "can open",
+          "pueda abrir",
+          null,
+          1
+        ],
+        [
+          "She can open.",
+          "Ella pueda abrir.",
+          null,
+          2
+        ],
+        [
+          "I think that she can open.",
+          "Creo que pueda abrir.",
+          null,
+          3
+        ],
+        [
+          "She said that she can open.",
+          "Ella dijo que pueda abrir.",
+          null,
+          4
+        ],
+        [
+          "I don't think that she can open.",
+          "No creo que pueda abrir.",
+          null,
+          4
+        ],
+        [
+          "I think that she can open the door.",
+          "Creo que pueda abrir la puerta.",
+          null,
+          5
+        ],
+        [
+          "No, I don't think that she can open the door.",
+          "No, no creo que pueda abrir la puerta.",
+          null,
+          6
+        ],
+        [
+          "I think that she can open the door with the group.",
+          "Creo que pueda abrir la puerta con el grupo.",
+          null,
+          7
+        ],
+        [
+          "She said that she can open the door for his sister.",
+          "Ella dijo que pueda abrir la puerta para su hermana.",
+          null,
+          8
+        ],
+        [
+          "I don't think that she can open the door.",
+          "No creo que pueda abrir la puerta.",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

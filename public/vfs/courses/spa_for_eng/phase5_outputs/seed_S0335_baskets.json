@@ -1,0 +1,395 @@
+{
+  "legos": {
+    "S0335L01": {
+      "lego": [
+        "I think that",
+        "Creo que"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I think that",
+          "Creo que",
+          null,
+          1
+        ],
+        [
+          "I think that he",
+          "Creo que él",
+          null,
+          2
+        ],
+        [
+          "I think that it's important",
+          "Creo que es importante",
+          null,
+          3
+        ],
+        [
+          "I think that she can",
+          "Creo que ella puede",
+          null,
+          3
+        ],
+        [
+          "I think that he can build",
+          "Creo que él puede construir",
+          null,
+          4
+        ],
+        [
+          "I think that she needs to offer",
+          "Creo que necesita ofrecer",
+          null,
+          4
+        ],
+        [
+          "I think that he needs to consider",
+          "Creo que necesita considerar",
+          null,
+          5
+        ],
+        [
+          "I think that she can provide the answers",
+          "Creo que ella puede proveer las respuestas",
+          null,
+          6
+        ],
+        [
+          "I think that he can build a new life",
+          "Creo que él puede construir una nueva vida",
+          null,
+          7
+        ],
+        [
+          "I think that it's very important",
+          "Creo que es muy importante",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "Creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0335L02": {
+      "lego": [
+        "I think that he",
+        "Creo que puede"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0335L01",
+          "known": "I think that",
+          "target": "Creo que",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I think that he",
+          "Creo que puede",
+          null,
+          1
+        ],
+        [
+          "I think that he can",
+          "Creo que puede",
+          null,
+          2
+        ],
+        [
+          "I think that he can build",
+          "Creo que puede construir",
+          null,
+          3
+        ],
+        [
+          "I think that he can offer",
+          "Creo que puede ofrecer",
+          null,
+          3
+        ],
+        [
+          "I think that he can provide answers",
+          "Creo que puede proveer respuestas",
+          null,
+          4
+        ],
+        [
+          "I think that he needs to consider",
+          "Creo que necesita considerar",
+          null,
+          4
+        ],
+        [
+          "I think that he can build a new life",
+          "Creo que puede construir una nueva vida",
+          null,
+          6
+        ],
+        [
+          "I think that he can spend much time",
+          "Creo que puede pasar mucho tiempo",
+          null,
+          5
+        ],
+        [
+          "I think that he can provide all the answers",
+          "Creo que puede proveer todas las respuestas",
+          null,
+          6
+        ],
+        [
+          "I think that he can consider possible problems",
+          "Creo que puede considerar problemas posibles",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "puede",
+          "he can"
+        ]
+      ]
+    },
+    "S0335L03": {
+      "lego": [
+        "can add",
+        "puede añadir"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0335L01",
+          "known": "I think that",
+          "target": "Creo que",
+          "type": "A"
+        },
+        {
+          "id": "S0335L02",
+          "known": "I think that he",
+          "target": "Creo que puede",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "can add",
+          "puede añadir",
+          null,
+          1
+        ],
+        [
+          "he can add",
+          "él puede añadir",
+          null,
+          2
+        ],
+        [
+          "she can add answers",
+          "ella puede añadir respuestas",
+          null,
+          3
+        ],
+        [
+          "I think that he can add",
+          "Creo que puede añadir",
+          null,
+          3
+        ],
+        [
+          "he can add new ideas",
+          "él puede añadir nuevas ideas",
+          null,
+          4
+        ],
+        [
+          "she can add all the answers",
+          "ella puede añadir todas las respuestas",
+          null,
+          4
+        ],
+        [
+          "I think that he can add answers",
+          "Creo que puede añadir respuestas",
+          null,
+          5
+        ],
+        [
+          "he can add ten possible problems",
+          "él puede añadir diez problemas posibles",
+          null,
+          5
+        ],
+        [
+          "I think that she can add new ideas",
+          "Creo que ella puede añadir nuevas ideas",
+          null,
+          6
+        ],
+        [
+          "she can add important answers",
+          "ella puede añadir respuestas importantes",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "puede",
+          "can"
+        ],
+        [
+          "añadir",
+          "add"
+        ]
+      ]
+    },
+    "S0335L04": {
+      "lego": [
+        "add",
+        "añadir"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0335L01",
+          "known": "I think that",
+          "target": "Creo que",
+          "type": "A"
+        },
+        {
+          "id": "S0335L02",
+          "known": "I think that he",
+          "target": "Creo que puede",
+          "type": "M"
+        },
+        {
+          "id": "S0335L03",
+          "known": "can add",
+          "target": "puede añadir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "add",
+          "añadir",
+          null,
+          1
+        ],
+        [
+          "to add answers",
+          "añadir respuestas",
+          null,
+          2
+        ],
+        [
+          "add new ideas",
+          "añadir nuevas ideas",
+          null,
+          3
+        ],
+        [
+          "she can add problems",
+          "puede añadir problemas",
+          null,
+          3
+        ],
+        [
+          "he needs to add ideas",
+          "necesita añadir ideas",
+          null,
+          4
+        ],
+        [
+          "she needs to add answers",
+          "necesita añadir respuestas",
+          null,
+          4
+        ],
+        [
+          "I think that he can add",
+          "Creo que puede añadir",
+          null,
+          5
+        ],
+        [
+          "she can add all the answers",
+          "puede añadir todas las respuestas",
+          null,
+          5
+        ],
+        [
+          "I think that she can add answers",
+          "Creo que ella puede añadir respuestas",
+          null,
+          6
+        ],
+        [
+          "she can add ten possible problems",
+          "puede añadir diez problemas posibles",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "añadir",
+          "add/to add"
+        ]
+      ]
+    }
+  }
+}

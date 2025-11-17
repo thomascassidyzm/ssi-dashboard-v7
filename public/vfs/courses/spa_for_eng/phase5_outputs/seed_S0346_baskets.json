@@ -1,0 +1,101 @@
+{
+  "legos": {
+    "S0346L04": {
+      "lego": [
+        "I liked",
+        "me gustó"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0346L01",
+          "known": "I wanted her to know that",
+          "target": "quería que ella supiera que",
+          "type": "M"
+        },
+        {
+          "id": "S0346L02",
+          "known": "I wanted",
+          "target": "quería",
+          "type": "A"
+        },
+        {
+          "id": "S0346L03",
+          "known": "I liked her book",
+          "target": "me gustó su libro",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "me gustó",
+          "target": "I liked",
+          "lego_count": 1
+        },
+        {
+          "known": "me gustó su libro",
+          "target": "I liked her book",
+          "lego_count": 2
+        },
+        {
+          "known": "creo que me gustó",
+          "target": "I think I liked",
+          "lego_count": 3
+        },
+        {
+          "known": "pienso que me gustó su libro",
+          "target": "I think I liked her book",
+          "lego_count": 3
+        },
+        {
+          "known": "no creo que me gustó",
+          "target": "I don't think I liked",
+          "lego_count": 4
+        },
+        {
+          "known": "creo que me gustó alguien",
+          "target": "I think I liked someone",
+          "lego_count": 4
+        },
+        {
+          "known": "creo que me gustó alguien hace unos días",
+          "target": "I think I liked someone a few days ago",
+          "lego_count": 6
+        },
+        {
+          "known": "quería que ella supiera que me gustó",
+          "target": "I wanted her to know that I liked",
+          "lego_count": 5
+        },
+        {
+          "known": "no estoy seguro que me gustó su libro",
+          "target": "I'm not sure I liked her book",
+          "lego_count": 5
+        },
+        {
+          "known": "quería que ella supiera que me gustó su libro",
+          "target": "I wanted her to know that I liked her book",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "me",
+          "to me"
+        ],
+        [
+          "gustó",
+          "pleased"
+        ]
+      ]
+    }
+  }
+}

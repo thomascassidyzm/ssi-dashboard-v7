@@ -1,0 +1,30 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0321",
+  "generation_stage": "BASKETS_GENERATED",
+  "legos": {
+    "S0321L01": {
+      "lego": ["a book", "un libro"],
+      "type": "A",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["A book.", "Un libro.", null, 1],
+        ["A book this year.", "Un libro este año.", null, 2],
+        ["She could bring a book on Monday.", "Ella podría traer un libro el lunes.", null, 3],
+        ["She could use a book this year.", "Ella podría usar un libro este año.", null, 3],
+        ["I think that she could use a book this year.", "Pienso que ella podría usar un libro este año.", null, 4],
+        ["She could bring a book on Monday this year.", "Ella podría traer un libro el lunes este año.", null, 4],
+        ["I think that she could bring a book on Monday this year.", "Pienso que ella podría traer un libro el lunes este año.", null, 5],
+        ["She said that she could use a book this year.", "Ella dijo que podría usar un libro este año.", null, 5],
+        ["Do you think that she could bring a book on Monday this year?", "¿Crees que ella podría traer un libro el lunes este año?", null, 5],
+        ["I think she could bring a book on Monday if she wanted to.", "Pienso que ella podría traer un libro el lunes si quisiera.", null, 5]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    }
+  }
+}

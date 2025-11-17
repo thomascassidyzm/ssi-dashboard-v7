@@ -1,0 +1,99 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0323",
+  "generation_stage": "BASKETS_GENERATED",
+  "legos": {
+    "S0323L01": {
+      "lego": ["he said that", "él dijo que"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["He said that.", "Él dijo que.", null, 1],
+        ["He said that this year.", "Él dijo que este año.", null, 2],
+        ["He said that he could bring a book.", "Él dijo que podría traer un libro.", null, 3],
+        ["He said that he could bring this year.", "Él dijo que podría traer este año.", null, 3],
+        ["He said that he could bring a book this year.", "Él dijo que podría traer un libro este año.", null, 4],
+        ["He said that he could bring her brother on Monday.", "Él dijo que podría traer a su hermano el lunes.", null, 4],
+        ["He said that he could bring a book on Monday this year.", "Él dijo que podría traer un libro el lunes este año.", null, 5],
+        ["He said that he couldn't watch all five games this year.", "Él dijo que no podría ver todos los cinco juegos este año.", null, 5],
+        ["He said that he could use the other room on Monday this year.", "Él dijo que podría usar la otra habitación el lunes este año.", null, 5],
+        ["He said that I think she could bring her brother on Monday.", "Él dijo que pienso que ella podría traer a su hermano el lunes.", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0323L02": {
+      "lego": ["that (he) doesn't need", "que no necesita"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["that he doesn't need", "que no necesita", null, 1],
+        ["He said that he doesn't need", "Él dijo que no necesita", null, 2],
+        ["He said that he doesn't need to move", "Él dijo que no necesita mudarse", null, 3],
+        ["He said that he doesn't need a book", "Él dijo que no necesita un libro", null, 3],
+        ["He said that he doesn't need to move on Monday", "Él dijo que no necesita mudarse el lunes", null, 4],
+        ["He said that he doesn't need a book this year", "Él dijo que no necesita un libro este año", null, 4],
+        ["He said that he doesn't need to move to a different country", "Él dijo que no necesita mudarse a un país diferente", null, 5],
+        ["He said that he doesn't need to move on Monday this year", "Él dijo que no necesita mudarse el lunes este año", null, 5],
+        ["I think that he said that he doesn't need to move", "Pienso que él dijo que no necesita mudarse", null, 5],
+        ["Do you think that he said that he doesn't need a book", "Crees que él dijo que no necesita un libro", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0323L03": {
+      "lego": ["doesn't need to walk", "no necesita caminar"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["doesn't need to walk", "no necesita caminar", null, 1],
+        ["He doesn't need to walk", "Él no necesita caminar", null, 2],
+        ["He doesn't need to walk on Monday", "Él no necesita caminar el lunes", null, 3],
+        ["He doesn't need to walk this year", "Él no necesita caminar este año", null, 3],
+        ["He said that he doesn't need to walk", "Él dijo que no necesita caminar", null, 4],
+        ["He doesn't need to walk on Monday this year", "Él no necesita caminar el lunes este año", null, 4],
+        ["He said that he doesn't need to walk on Monday", "Él dijo que no necesita caminar el lunes", null, 5],
+        ["He said that he doesn't need to walk this year", "Él dijo que no necesita caminar este año", null, 5],
+        ["I think that he doesn't need to walk on Monday", "Pienso que no necesita caminar el lunes", null, 5],
+        ["Do you think that he doesn't need to walk this year", "Crees que no necesita caminar este año", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0323L04": {
+      "lego": ["to school", "a la escuela"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["To school.", "A la escuela.", null, 1],
+        ["Walk to school.", "Caminar a la escuela.", null, 2],
+        ["He doesn't need to walk to school.", "Él no necesita caminar a la escuela.", null, 3],
+        ["She needs to move to school.", "Ella necesita mudarse a la escuela.", null, 3],
+        ["He doesn't need to walk to school on Monday.", "Él no necesita caminar a la escuela el lunes.", null, 4],
+        ["She could bring a book to school.", "Ella podría traer un libro a la escuela.", null, 4],
+        ["He said that he doesn't need to walk to school on Monday.", "Él dijo que no necesita caminar a la escuela el lunes.", null, 5],
+        ["I think that he doesn't need to walk to school.", "Pienso que no necesita caminar a la escuela.", null, 5],
+        ["Do you think that he doesn't need to walk to school this year", "Crees que no necesita caminar a la escuela este año", null, 5],
+        ["He said that he doesn't need to walk to school.", "Él dijo que no necesita caminar a la escuela.", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    }
+  }
+}

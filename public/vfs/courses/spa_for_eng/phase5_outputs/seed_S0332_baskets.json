@@ -1,0 +1,355 @@
+{
+  "legos": {
+    "S0332L01": {
+      "lego": [
+        "he to can",
+        "él puede"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "él puede",
+          "target": "he can",
+          "lego_count": 1
+        },
+        {
+          "known": "él puede leer",
+          "target": "he can read",
+          "lego_count": 2
+        },
+        {
+          "known": "él puede leer un libro",
+          "target": "he can read a book",
+          "lego_count": 3
+        },
+        {
+          "known": "creo que él puede",
+          "target": "I think that he can",
+          "lego_count": 3
+        },
+        {
+          "known": "creo que él puede leer",
+          "target": "I think that he can read",
+          "lego_count": 4
+        },
+        {
+          "known": "él puede proveer las respuestas",
+          "target": "he can provide the answers",
+          "lego_count": 4
+        },
+        {
+          "known": "creo que él puede leer un libro",
+          "target": "I think that he can read a book",
+          "lego_count": 5
+        },
+        {
+          "known": "él puede proveer todas las respuestas",
+          "target": "he can provide all the answers",
+          "lego_count": 5
+        },
+        {
+          "known": "no creo que él puede leer el mismo libro",
+          "target": "I don't think that he can read the same book",
+          "lego_count": 6
+        },
+        {
+          "known": "creo que él puede considerar los problemas posibles",
+          "target": "I think that he can consider the possible problems",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "él",
+          "he"
+        ],
+        [
+          "puede",
+          "can"
+        ]
+      ]
+    },
+    "S0332L02": {
+      "lego": [
+        "to can to build",
+        "puede construir"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0332L01",
+          "known": "he to can",
+          "target": "él puede",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "puede construir",
+          "target": "can build",
+          "lego_count": 1
+        },
+        {
+          "known": "él puede construir",
+          "target": "he can build",
+          "lego_count": 2
+        },
+        {
+          "known": "ella dijo que puede construir",
+          "target": "she said that he can build",
+          "lego_count": 3
+        },
+        {
+          "known": "creo que puede construir",
+          "target": "I think that he can build",
+          "lego_count": 3
+        },
+        {
+          "known": "creo que él puede construir",
+          "target": "I think that he can build",
+          "lego_count": 4
+        },
+        {
+          "known": "no creo que puede construir",
+          "target": "I don't think that he can build",
+          "lego_count": 4
+        },
+        {
+          "known": "él dijo que puede construir una compañía",
+          "target": "he said that he can build a company",
+          "lego_count": 5
+        },
+        {
+          "known": "creo que él puede construir la compañía",
+          "target": "I think that he can build the company",
+          "lego_count": 5
+        },
+        {
+          "known": "no creo que él puede construir otra compañía",
+          "target": "I don't think that he can build another company",
+          "lego_count": 6
+        },
+        {
+          "known": "ella dijo que él puede construir la misma compañía",
+          "target": "she said that he can build the same company",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "puede",
+          "can"
+        ],
+        [
+          "construir",
+          "to build"
+        ]
+      ]
+    },
+    "S0332L03": {
+      "lego": [
+        "to build",
+        "construir"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0332L01",
+          "known": "he to can",
+          "target": "él puede",
+          "type": "M"
+        },
+        {
+          "id": "S0332L02",
+          "known": "to can to build",
+          "target": "puede construir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "construir",
+          "target": "to build",
+          "lego_count": 1
+        },
+        {
+          "known": "construir un libro",
+          "target": "to build a book",
+          "lego_count": 2
+        },
+        {
+          "known": "necesita construir una compañía",
+          "target": "needs to build a company",
+          "lego_count": 3
+        },
+        {
+          "known": "él puede construir",
+          "target": "he can build",
+          "lego_count": 3
+        },
+        {
+          "known": "ella necesita construir la compañía",
+          "target": "she needs to build the company",
+          "lego_count": 4
+        },
+        {
+          "known": "creo que necesita construir",
+          "target": "I think that he needs to build",
+          "lego_count": 4
+        },
+        {
+          "known": "él dijo que necesita construir una compañía",
+          "target": "he said that he needs to build a company",
+          "lego_count": 5
+        },
+        {
+          "known": "creo que él puede construir la compañía",
+          "target": "I think that he can build the company",
+          "lego_count": 5
+        },
+        {
+          "known": "ella dijo que necesita construir otra manera",
+          "target": "she said that she needs to build another way",
+          "lego_count": 6
+        },
+        {
+          "known": "no creo que él puede construir la misma compañía",
+          "target": "I don't think that he can build the same company",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "construir",
+          "to build"
+        ]
+      ]
+    },
+    "S0332L04": {
+      "lego": [
+        "a new life",
+        "una nueva vida"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0332L01",
+          "known": "he to can",
+          "target": "él puede",
+          "type": "M"
+        },
+        {
+          "id": "S0332L02",
+          "known": "to can to build",
+          "target": "puede construir",
+          "type": "M"
+        },
+        {
+          "id": "S0332L03",
+          "known": "to build",
+          "target": "construir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "una nueva vida",
+          "target": "a new life",
+          "lego_count": 1
+        },
+        {
+          "known": "construir una nueva vida",
+          "target": "to build a new life",
+          "lego_count": 2
+        },
+        {
+          "known": "él puede construir una nueva vida",
+          "target": "he can build a new life",
+          "lego_count": 3
+        },
+        {
+          "known": "necesita construir una nueva vida",
+          "target": "needs to build a new life",
+          "lego_count": 3
+        },
+        {
+          "known": "creo que puede construir una nueva vida",
+          "target": "I think that he can build a new life",
+          "lego_count": 4
+        },
+        {
+          "known": "ella necesita construir una nueva vida",
+          "target": "she needs to build a new life",
+          "lego_count": 4
+        },
+        {
+          "known": "creo que él puede construir una nueva vida",
+          "target": "I think that he can build a new life",
+          "lego_count": 5
+        },
+        {
+          "known": "ella dijo que puede construir una nueva vida",
+          "target": "she said that he can build a new life",
+          "lego_count": 5
+        },
+        {
+          "known": "no creo que él puede construir una nueva vida",
+          "target": "I don't think that he can build a new life",
+          "lego_count": 6
+        },
+        {
+          "known": "ella dijo que él puede construir una nueva vida",
+          "target": "she said that he can build a new life",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "una",
+          "a"
+        ],
+        [
+          "nueva",
+          "new"
+        ],
+        [
+          "vida",
+          "life"
+        ]
+      ]
+    }
+  }
+}

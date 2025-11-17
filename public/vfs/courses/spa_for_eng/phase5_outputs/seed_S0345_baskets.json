@@ -1,0 +1,127 @@
+{
+  "S0345L01": {
+    "lego": ["who said that", "que dijo que"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Who said that", "Que dijo que", null, 1],
+      ["Who said that he's happy", "Que dijo que está contento", null, 1],
+      ["Who said that she's worried", "Que dijo que está preocupada", null, 2],
+      ["I think he said that", "Creo que dijo que", null, 2],
+      ["Who said that he can add ideas", "Que dijo que puede añadir ideas", null, 3],
+      ["Who said that she's worried about the economy", "Que dijo que está preocupada por la economía", null, 3],
+      ["Who said that he's happy to help you", "Que dijo que está contento de ayudarte", null, 4],
+      ["Who said that he's going to be okay", "Que dijo que va a estar bien", null, 4],
+      ["I met someone who said that he's happy", "Conocí a alguien que dijo que está contento", null, 5],
+      ["I don't think that he said that she can open the door", "No creo que dijo que pueda abrir la puerta", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [["que", "who"], ["dijo", "said"], ["que", "that"]]
+  },
+  "S0345L02": {
+    "lego": ["he's not ready to leave yet", "no está preparado para irse todavía"],
+    "type": "M",
+    "current_seed_legos_available": [["who said that", "que dijo que"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["He's not ready to leave yet", "No está preparado para irse todavía", null, 1],
+      ["He's not ready yet", "No está preparado todavía", null, 2],
+      ["He's not ready to leave", "No está preparado para irse", null, 2],
+      ["I think he's not ready to leave yet", "Creo que no está preparado para irse todavía", null, 3],
+      ["Who said that he's not ready to leave yet", "Que dijo que no está preparado para irse todavía", null, 3],
+      ["He said that he's not ready to leave yet", "Él dijo que no está preparado para irse todavía", null, 4],
+      ["I don't think he's ready to leave yet", "No creo que está preparado para irse todavía", null, 4],
+      ["I met someone who is not ready to leave yet", "Conocí a alguien que no está preparado para irse todavía", null, 5],
+      ["I think that he said that he's not ready to leave yet", "Creo que él dijo que no está preparado para irse todavía", null, 5],
+      ["I met someone a few days ago who said that he's not ready to leave yet", "Conocí a alguien hace unos días que dijo que no está preparado para irse todavía", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [["no", "not"], ["está", "is"], ["preparado", "ready/prepared"], ["para", "to"], ["irse", "leave (reflexive)"], ["todavía", "yet"]]
+  },
+  "S0345L03": {
+    "lego": ["he's not ready", "no está preparado"],
+    "type": "M",
+    "current_seed_legos_available": [["who said that", "que dijo que"], ["he's not ready to leave yet", "no está preparado para irse todavía"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["He's not ready", "No está preparado", null, 1],
+      ["He's not ready yet", "No está preparado todavía", null, 2],
+      ["He's not ready to leave", "No está preparado para irse", null, 2],
+      ["I think he's not ready", "Creo que no está preparado", null, 3],
+      ["Who said that he's not ready", "Que dijo que no está preparado", null, 3],
+      ["He's not ready to leave yet", "No está preparado para irse todavía", null, 4],
+      ["He said that he's not ready", "Él dijo que no está preparado", null, 4],
+      ["I don't think he's ready", "No creo que está preparado", null, 5],
+      ["I think that he said that he's not ready", "Creo que él dijo que no está preparado", null, 5],
+      ["I met someone who said that he's not ready to leave yet", "Conocí a alguien que dijo que no está preparado para irse todavía", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [["no", "not"], ["está", "is"], ["preparado", "ready/prepared"]]
+  },
+  "S0345L04": {
+    "lego": ["ready to leave", "preparado para irse"],
+    "type": "M",
+    "current_seed_legos_available": [["who said that", "que dijo que"], ["he's not ready to leave yet", "no está preparado para irse todavía"], ["he's not ready", "no está preparado"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Ready to leave", "Preparado para irse", null, 1],
+      ["Not ready to leave", "No preparado para irse", null, 2],
+      ["He's ready to leave", "Está preparado para irse", null, 2],
+      ["He's not ready to leave", "No está preparado para irse", null, 3],
+      ["I think he's ready to leave", "Creo que está preparado para irse", null, 3],
+      ["He's not ready to leave yet", "No está preparado para irse todavía", null, 4],
+      ["I don't think he's ready to leave", "No creo que está preparado para irse", null, 4],
+      ["He said that he's ready to leave", "Él dijo que está preparado para irse", null, 5],
+      ["Who said that he's not ready to leave", "Que dijo que no está preparado para irse", null, 5],
+      ["I met someone who is not ready to leave yet", "Conocí a alguien que no está preparado para irse todavía", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [["preparado", "ready/prepared"], ["para", "to"], ["irse", "leave (reflexive)"]]
+  },
+  "S0345L05": {
+    "lego": ["yet", "todavía"],
+    "type": "M",
+    "current_seed_legos_available": [["who said that", "que dijo que"], ["he's not ready to leave yet", "no está preparado para irse todavía"], ["he's not ready", "no está preparado"], ["ready to leave", "preparado para irse"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Yet", "Todavía", null, 1],
+      ["Not yet", "No todavía", null, 1],
+      ["Not ready yet", "No está preparado todavía", null, 2],
+      ["He's not ready yet", "No está preparado todavía", null, 2],
+      ["He's not ready to leave yet", "No está preparado para irse todavía", null, 3],
+      ["I don't think he's ready yet", "No creo que está preparado todavía", null, 3],
+      ["I think he's not ready to leave yet", "Creo que no está preparado para irse todavía", null, 4],
+      ["Who said that he's not ready to leave yet", "Que dijo que no está preparado para irse todavía", null, 4],
+      ["I think that he said that he's not ready to leave yet", "Creo que él dijo que no está preparado para irse todavía", null, 5],
+      ["Who said that he's not ready to leave yet.", "Que dijo que no está preparado para irse todavía.", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [["todavía", "yet"]]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0322",
+  "generation_stage": "BASKETS_GENERATED",
+  "legos": {
+    "S0322L01": {
+      "lego": ["she said that", "ella dijo que"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["She said that.", "Ella dijo que.", null, 1],
+        ["She said that this year.", "Ella dijo que este año.", null, 2],
+        ["She said that she could bring a book.", "Ella dijo que ella podría traer un libro.", null, 3],
+        ["She said that she could bring this year.", "Ella dijo que ella podría traer este año.", null, 3],
+        ["She said that she could bring a book this year.", "Ella dijo que ella podría traer un libro este año.", null, 4],
+        ["She said that she could bring her brother on Monday.", "Ella dijo que ella podría traer a su hermano el lunes.", null, 4],
+        ["She said that she could bring a book on Monday this year.", "Ella dijo que ella podría traer un libro el lunes este año.", null, 5],
+        ["She said that she could bring her brother on Monday this year.", "Ella dijo que ella podría traer a su hermano el lunes este año.", null, 5],
+        ["She said that she could use the other room on Monday this year.", "Ella dijo que podría usar la otra habitación el lunes este año.", null, 5],
+        ["She said that I think she could bring her brother on Monday.", "Ella dijo que pienso que ella podría traer a su hermano el lunes.", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0322L02": {
+      "lego": ["said that (she) needs", "dijo que necesita"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["said that she needs", "dijo que necesita", null, 1],
+        ["She said that she needs", "Ella dijo que necesita", null, 2],
+        ["She said that she needs to move", "Ella dijo que necesita mudarse", null, 3],
+        ["She said that she needs a book", "Ella dijo que necesita un libro", null, 3],
+        ["She said that she needs to move on Monday", "Ella dijo que necesita mudarse el lunes", null, 4],
+        ["She said that she needs a book this year", "Ella dijo que necesita un libro este año", null, 4],
+        ["She said that she needs to move to a different country", "Ella dijo que necesita mudarse a un país diferente", null, 5],
+        ["She said that she needs to move on Monday this year", "Ella dijo que necesita mudarse el lunes este año", null, 5],
+        ["I think that she said that she needs to move", "Pienso que ella dijo que necesita mudarse", null, 5],
+        ["Do you think that she said that she needs a book", "Crees que ella dijo que necesita un libro", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0322L03": {
+      "lego": ["needs to read", "necesita leer"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["needs to read", "necesita leer", null, 1],
+        ["She needs to read", "Ella necesita leer", null, 2],
+        ["She needs to read a book", "Ella necesita leer un libro", null, 3],
+        ["She needs to read on Monday", "Ella necesita leer el lunes", null, 3],
+        ["She needs to read a book on Monday", "Ella necesita leer un libro el lunes", null, 4],
+        ["She said that she needs to read", "Ella dijo que necesita leer", null, 4],
+        ["She said that she needs to read a book", "Ella dijo que necesita leer un libro", null, 5],
+        ["She said that she needs to read a book this year", "Ella dijo que necesita leer un libro este año", null, 5],
+        ["I think that she needs to read a book", "Pienso que necesita leer un libro", null, 5],
+        ["Do you think that she needs to read a book on Monday", "Crees que necesita leer un libro el lunes", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0322L04": {
+      "lego": ["the same book", "el mismo libro"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["the same book", "el mismo libro", null, 1],
+        ["read the same book", "leer el mismo libro", null, 2],
+        ["needs to read the same book", "necesita leer el mismo libro", null, 3],
+        ["She needs to read the same book", "Ella necesita leer el mismo libro", null, 3],
+        ["She said that she needs the same book", "Ella dijo que necesita el mismo libro", null, 4],
+        ["She needs to read the same book on Monday", "Ella necesita leer el mismo libro el lunes", null, 4],
+        ["She said that she needs to read the same book", "Ella dijo que necesita leer el mismo libro", null, 5],
+        ["She said that she needs to read the same book on Monday", "Ella dijo que necesita leer el mismo libro el lunes", null, 5],
+        ["I think that she needs to read the same book", "Pienso que necesita leer el mismo libro", null, 5],
+        ["Do you think that she needs to read the same book this year", "Crees que necesita leer el mismo libro este año", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0322L05": {
+      "lego": ["to read the same book", "leer el mismo libro"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["to read the same book", "leer el mismo libro", null, 1],
+        ["She needs to read the same book", "Ella necesita leer el mismo libro", null, 2],
+        ["She needs to read the same book on Monday", "Ella necesita leer el mismo libro el lunes", null, 3],
+        ["I think she needs to read the same book", "Pienso que necesita leer el mismo libro", null, 3],
+        ["She needs to read the same book this year", "Ella necesita leer el mismo libro este año", null, 4],
+        ["She could read the same book on Monday", "Ella podría leer el mismo libro el lunes", null, 4],
+        ["She said that she needs to read the same book on Monday", "Ella dijo que necesita leer el mismo libro el lunes", null, 5],
+        ["I think that she needs to read the same book this year", "Pienso que necesita leer el mismo libro este año", null, 5],
+        ["Do you think that she needs to read the same book", "Crees que necesita leer el mismo libro", null, 5],
+        ["She said that she needs to read the same book.", "Ella dijo que necesita leer el mismo libro.", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    }
+  }
+}
