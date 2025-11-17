@@ -1,0 +1,102 @@
+{
+  "S0384L02": {
+    "lego": [
+      "agree",
+      "estar de acuerdo"
+    ],
+    "type": "M",
+    "available_legos": 1821,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "agree",
+        "estar de acuerdo",
+        null,
+        2
+      ],
+      [
+        "I agree",
+        "estoy de acuerdo",
+        null,
+        2
+      ],
+      [
+        "I couldn't agree",
+        "No pude estar de acuerdo",
+        null,
+        3
+      ],
+      [
+        "Yes I agree",
+        "Sí estoy de acuerdo",
+        null,
+        3
+      ],
+      [
+        "he said he could agree",
+        "dijo que podía estar de acuerdo",
+        null,
+        4
+      ],
+      [
+        "I couldn't agree to yesterday",
+        "No pude estar de acuerdo ayer",
+        null,
+        4
+      ],
+      [
+        "Did you agree with what he said",
+        "¿Estuviste de acuerdo con lo que dijo",
+        null,
+        5
+      ],
+      [
+        "I wanted to agree but I couldn't",
+        "Quería estar de acuerdo pero no pude",
+        null,
+        6
+      ],
+      [
+        "he asked if I could agree",
+        "preguntó si podía estar de acuerdo",
+        null,
+        5
+      ],
+      [
+        "I couldn't agree with that last month",
+        "No pude estar de acuerdo con eso el mes pasado",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0384L02",
+      "seed_context": {
+        "target": "I couldn't agree with what he said a moment ago.",
+        "known": "No pude estar de acuerdo con lo que dijo..."
+      }
+    },
+    "components": [
+      [
+        "estar",
+        "to to be"
+      ],
+      [
+        "de",
+        "of"
+      ],
+      [
+        "acuerdo",
+        "agreement"
+      ]
+    ]
+  }
+}

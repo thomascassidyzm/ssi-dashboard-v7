@@ -1,0 +1,98 @@
+{
+  "S0333L01": {
+    "lego": [
+      "she said",
+      "ella dijo"
+    ],
+    "type": "M",
+    "available_legos": 1577,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "She said",
+        "ella dijo",
+        null,
+        1
+      ],
+      [
+        "She said yes",
+        "ella dijo sí",
+        null,
+        2
+      ],
+      [
+        "She said no",
+        "ella dijo no",
+        null,
+        2
+      ],
+      [
+        "I think she said",
+        "creo que ella dijo",
+        null,
+        3
+      ],
+      [
+        "She said it was good",
+        "ella dijo que era bueno",
+        null,
+        4
+      ],
+      [
+        "I don't think she said",
+        "no creo que ella dijo",
+        null,
+        4
+      ],
+      [
+        "She said she to can't today",
+        "ella dijo que no puede hoy",
+        null,
+        5
+      ],
+      [
+        "I think that she said yes",
+        "creo que ella dijo sí",
+        null,
+        5
+      ],
+      [
+        "She said she needs more time",
+        "ella dijo que necesita más tiempo",
+        null,
+        6
+      ],
+      [
+        "Do you think she said that",
+        "crees que ella dijo eso",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0333L01",
+      "seed_context": {
+        "target": "She said that she to can't to spend much time with the group.",
+        "known": "Ella dijo que no puede pasar mucho tiempo con el grupo."
+      }
+    },
+    "components": [
+      [
+        "ella",
+        "she"
+      ],
+      [
+        "dijo",
+        "said"
+      ]
+    ]
+  }
+}

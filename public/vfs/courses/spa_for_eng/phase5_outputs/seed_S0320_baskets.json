@@ -1,0 +1,69 @@
+{
+  "S0320L02": {
+    "lego": [
+      "doesn't need to buy",
+      "no necesita comprar"
+    ],
+    "type": "M",
+    "available_legos": 1528,
+    "is_final_lego": false,
+    "overlap_level": "complete",
+    "target_phrase_count": 5,
+    "practice_phrases": [
+      [
+        "doesn't need to buy",
+        "no necesita comprar",
+        null,
+        2
+      ],
+      [
+        "does need to buy",
+        "necesita comprar",
+        null,
+        1
+      ],
+      [
+        "doesn't need to buy",
+        "no necesita comprar",
+        null,
+        2
+      ],
+      [
+        "no doesn't need to buy",
+        "no no necesita comprar",
+        null,
+        2
+      ],
+      [
+        "doesn't need to buy",
+        "no necesita comprar",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "longer_3_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0320L02",
+      "seed_context": {
+        "target": "He doesn't need to buy another television this year.",
+        "known": "Él no necesita comprar otra televisión este año."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not/doesn't"
+      ],
+      [
+        "necesita",
+        "need"
+      ],
+      [
+        "comprar",
+        "to buy"
+      ]
+    ]
+  }
+}

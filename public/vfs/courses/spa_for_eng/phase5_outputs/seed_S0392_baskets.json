@@ -1,0 +1,69 @@
+{
+  "S0392L03": {
+    "lego": [
+      "the black hair",
+      "el pelo negro"
+    ],
+    "type": "M",
+    "available_legos": 1852,
+    "is_final_lego": false,
+    "overlap_level": "complete",
+    "target_phrase_count": 5,
+    "practice_phrases": [
+      [
+        "That child with the black hair",
+        "ese niño con el pelo negro",
+        null,
+        3
+      ],
+      [
+        "That person with the black hair is working",
+        "esa persona con el pelo negro está trabajando",
+        null,
+        4
+      ],
+      [
+        "That child with the black hair is there",
+        "ese niño con el pelo negro está allí",
+        null,
+        4
+      ],
+      [
+        "That child with the black hair is walking",
+        "ese niño con el pelo negro está caminando",
+        null,
+        4
+      ],
+      [
+        "That child with the black hair is standing near the entrance",
+        "ese niño con el pelo negro está de pie cerca de la entrada",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "longer_3_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0392L03",
+      "seed_context": {
+        "target": "That child with the black hair opposite the post office.",
+        "known": "Ese niño con el pelo negro enfrente de la oficina de correos."
+      }
+    },
+    "components": [
+      [
+        "el",
+        "the"
+      ],
+      [
+        "pelo",
+        "hair"
+      ],
+      [
+        "negro",
+        "black"
+      ]
+    ]
+  }
+}

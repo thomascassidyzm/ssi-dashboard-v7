@@ -1,0 +1,88 @@
+{
+  "S0380L01": {
+    "lego": [
+      "I asked",
+      "pregunté"
+    ],
+    "type": "A",
+    "available_legos": 1803,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "I asked",
+        "pregunté",
+        null,
+        1
+      ],
+      [
+        "I asked next week",
+        "pregunté la próxima semana",
+        null,
+        2
+      ],
+      [
+        "I asked party",
+        "pregunté fiesta",
+        null,
+        3
+      ],
+      [
+        "I asked that to book",
+        "pregunté ese libro",
+        null,
+        3
+      ],
+      [
+        "I asked to school early next week",
+        "pregunté a la escuela a principios de la próxima semana",
+        null,
+        4
+      ],
+      [
+        "I asked to book last week",
+        "pregunté libro la semana pasada",
+        null,
+        4
+      ],
+      [
+        "I asked to the party next week",
+        "pregunté a la fiesta la próxima semana",
+        null,
+        5
+      ],
+      [
+        "I asked are you ready to go home tonight",
+        "pregunté estás preparado para ir a casa esta noche",
+        null,
+        6
+      ],
+      [
+        "I asked to work from home who to speak Spanish",
+        "pregunté trabajar desde casa que hablan español",
+        null,
+        7
+      ],
+      [
+        "I asked",
+        "pregunté",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0380L01",
+      "seed_context": {
+        "target": "I asked what she wanted to include.",
+        "known": "Pregunté qué quería incluir."
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "S0272L03": {
+    "lego": [
+      "sounds like",
+      "suena como"
+    ],
+    "type": "M",
+    "available_legos": 1286,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 7,
+    "practice_phrases": [
+      [
+        "Sounds like",
+        "suena como",
+        null,
+        2
+      ],
+      [
+        "Sounds like a good idea",
+        "suena como una buena idea",
+        null,
+        4
+      ],
+      [
+        "That sounds like water",
+        "eso suena como agua",
+        null,
+        4
+      ],
+      [
+        "Yes that sounds like something good",
+        "sí eso suena como algo bueno",
+        null,
+        6
+      ],
+      [
+        "Sounds like something important",
+        "suena como algo importante",
+        null,
+        3
+      ],
+      [
+        "Sounds like your friend",
+        "suena como tu amigo",
+        null,
+        3
+      ],
+      [
+        "That sounds like Spanish",
+        "eso suena como español",
+        null,
+        4
+      ],
+      [
+        "Sounds like something different",
+        "suena como algo diferente",
+        null,
+        3
+      ],
+      [
+        "Yes sounds like a good time",
+        "sí suena como un buen tiempo",
+        null,
+        5
+      ],
+      [
+        "That sounds like a great idea",
+        "eso suena como una gran idea",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 1,
+      "medium_3_legos": 1,
+      "longer_4_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0272L03",
+      "seed_context": {
+        "target": "Yes that sounds like a great idea.",
+        "known": "Sí eso suena como una gran idea."
+      }
+    },
+    "components": [
+      [
+        "suena",
+        "sounds"
+      ],
+      [
+        "como",
+        "like"
+      ]
+    ]
+  }
+}

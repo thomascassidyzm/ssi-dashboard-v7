@@ -1,0 +1,65 @@
+{
+  "S0461L03": {
+    "lego": [
+      "I to can buy",
+      "puedo comprar"
+    ],
+    "type": "M",
+    "available_legos": 2148,
+    "is_final_lego": false,
+    "overlap_level": "complete",
+    "target_phrase_count": 5,
+    "practice_phrases": [
+      [
+        "I to can buy some water",
+        "puedo comprar agua",
+        null,
+        3
+      ],
+      [
+        "I think I to can buy something",
+        "creo que puedo comprar algo",
+        null,
+        4
+      ],
+      [
+        "Can you to tell me where I to can buy",
+        "puedes decirme donde puedo comprar",
+        null,
+        4
+      ],
+      [
+        "She said I to can buy some coffee near here",
+        "ella dijo que puedo comprar café cerca de aquí",
+        null,
+        7
+      ],
+      [
+        "I'm not sure if I to can buy anything here",
+        "no estoy seguro si puedo comprar algo aquí",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "longer_3_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0461L03",
+      "seed_context": {
+        "target": "A shop where I to can buy some postcards.",
+        "known": "Una tienda donde puedo comprar algunas postales."
+      }
+    },
+    "components": [
+      [
+        "puedo",
+        "I to can"
+      ],
+      [
+        "comprar",
+        "to buy/to buy"
+      ]
+    ]
+  }
+}

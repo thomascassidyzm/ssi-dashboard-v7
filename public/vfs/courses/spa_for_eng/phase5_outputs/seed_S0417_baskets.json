@@ -1,0 +1,69 @@
+{
+  "S0417L03": {
+    "lego": [
+      "kill those ants",
+      "matar esas hormigas"
+    ],
+    "type": "M",
+    "available_legos": 1965,
+    "is_final_lego": true,
+    "overlap_level": "complete",
+    "target_phrase_count": 5,
+    "practice_phrases": [
+      [
+        "Kill those ants",
+        "matar esas hormigas",
+        null,
+        1
+      ],
+      [
+        "They want to kill those ants",
+        "quieren matar esas hormigas",
+        null,
+        2
+      ],
+      [
+        "No, kill those ants",
+        "no matar esas hormigas",
+        null,
+        2
+      ],
+      [
+        "No, they want to kill those ants",
+        "no quieren matar esas hormigas",
+        null,
+        3
+      ],
+      [
+        "Do they want to kill those ants?",
+        "¿Quieren matar esas hormigas?",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "longer_3_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0417L03",
+      "seed_context": {
+        "target": "Do they want to kill those ants?",
+        "known": "¿Quieren matar esas hormigas?"
+      }
+    },
+    "components": [
+      [
+        "matar",
+        "to kill"
+      ],
+      [
+        "esas",
+        "those"
+      ],
+      [
+        "hormigas",
+        "ants"
+      ]
+    ]
+  }
+}

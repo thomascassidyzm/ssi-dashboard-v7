@@ -1,0 +1,110 @@
+{
+  "S0293L03": {
+    "lego": [
+      "where he's going to meet me",
+      "dónde va a reunirse conmigo"
+    ],
+    "type": "M",
+    "available_legos": 1381,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "where he's going to meet me is difficult",
+        "dónde va a reunirse conmigo es difícil",
+        null,
+        2
+      ],
+      [
+        "where he's going to meet me today",
+        "dónde va a reunirse conmigo hoy",
+        null,
+        2
+      ],
+      [
+        "I want where he's going to meet me with you",
+        "quiero dónde va a reunirse conmigo contigo",
+        null,
+        3
+      ],
+      [
+        "I want to to learn where he's going to meet me",
+        "quiero aprender dónde va a reunirse conmigo",
+        null,
+        3
+      ],
+      [
+        "where he's going to meet me",
+        "dónde va a reunirse conmigo",
+        null,
+        1
+      ],
+      [
+        "where he's going to meet me",
+        "dónde va a reunirse conmigo",
+        null,
+        1
+      ],
+      [
+        "where he's going to meet me",
+        "dónde va a reunirse conmigo",
+        null,
+        1
+      ],
+      [
+        "where he's going to meet me",
+        "dónde va a reunirse conmigo",
+        null,
+        1
+      ],
+      [
+        "where he's going to meet me",
+        "dónde va a reunirse conmigo",
+        null,
+        1
+      ],
+      [
+        "where he's going to meet me",
+        "dónde va a reunirse conmigo",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0293L03",
+      "seed_context": {
+        "target": "I to have to to find out where he's going to meet me.",
+        "known": "Tengo que descubrir dónde va a reunirse conmigo."
+      }
+    },
+    "components": [
+      [
+        "dónde",
+        "where"
+      ],
+      [
+        "va",
+        "he's going"
+      ],
+      [
+        "a",
+        "to"
+      ],
+      [
+        "reunirse",
+        "meet"
+      ],
+      [
+        "conmigo",
+        "me/with me"
+      ]
+    ]
+  }
+}

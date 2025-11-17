@@ -1,0 +1,83 @@
+{
+  "S0399L02": {
+    "lego": [
+      "we don't want to lose",
+      "no queremos perder"
+    ],
+    "type": "M",
+    "available_legos": 1880,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 7,
+    "practice_phrases": [
+      [
+        "We don't want to lose",
+        "no queremos perder",
+        null,
+        2
+      ],
+      [
+        "We want to lose",
+        "queremos perder",
+        null,
+        2
+      ],
+      [
+        "We don't want to lose hope",
+        "no queremos perder la esperanza",
+        null,
+        3
+      ],
+      [
+        "We need to lose",
+        "necesitamos perder",
+        null,
+        2
+      ],
+      [
+        "I think we don't want to lose hope",
+        "pensé que no queremos perder la esperanza",
+        null,
+        6
+      ],
+      [
+        "We don't want to lose hope soon",
+        "no queremos perder la esperanza pronto",
+        null,
+        4
+      ],
+      [
+        "That girl doesn't want to lose",
+        "esa niña no quiere perder",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 1,
+      "medium_3_legos": 1,
+      "longer_4_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0399L02",
+      "seed_context": {
+        "target": "We don't want to lose hope.",
+        "known": "No queremos perder la esperanza."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "don't/not"
+      ],
+      [
+        "queremos",
+        "we want"
+      ],
+      [
+        "perder",
+        "to lose"
+      ]
+    ]
+  }
+}

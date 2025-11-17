@@ -1,0 +1,9 @@
+# Phase 5 Outputs - Only commit stripped basket files
+# Ignore everything by default
+*
+
+# But allow stripped basket files
+!seed_S*_baskets.json
+
+# Keep this .gitignore file
+!.gitignore

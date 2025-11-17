@@ -1,0 +1,98 @@
+{
+  "S0261L01": {
+    "lego": [
+      "I think (that)",
+      "creo que"
+    ],
+    "type": "M",
+    "available_legos": 1235,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "I think (that)",
+        "creo que",
+        null,
+        1
+      ],
+      [
+        "I think (that)",
+        "creo que",
+        null,
+        1
+      ],
+      [
+        "is I think (that)",
+        "es creo que",
+        null,
+        3
+      ],
+      [
+        "isn't I think (that)",
+        "no es creo que",
+        null,
+        3
+      ],
+      [
+        "I think it's I think (that)",
+        "creo que es creo que",
+        null,
+        4
+      ],
+      [
+        "I don't think I think (that)",
+        "no creo que creo que",
+        null,
+        4
+      ],
+      [
+        "I think (that)",
+        "creo que",
+        null,
+        1
+      ],
+      [
+        "I think (that)",
+        "creo que",
+        null,
+        1
+      ],
+      [
+        "I think (that)",
+        "creo que",
+        null,
+        1
+      ],
+      [
+        "I think (that)",
+        "creo que",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0261L01",
+      "seed_context": {
+        "target": "I think it might to be something important.",
+        "known": "Creo que puede ser algo importante."
+      }
+    },
+    "components": [
+      [
+        "creo",
+        "I think"
+      ],
+      [
+        "que",
+        "that"
+      ]
+    ]
+  }
+}

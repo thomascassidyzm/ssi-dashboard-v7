@@ -1,0 +1,98 @@
+{
+  "S0310L01": {
+    "lego": [
+      "she could",
+      "ella podría"
+    ],
+    "type": "M",
+    "available_legos": 1484,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "she could",
+        "ella podría",
+        null,
+        1
+      ],
+      [
+        "she",
+        "ella",
+        null,
+        1
+      ],
+      [
+        "I could",
+        "podría",
+        null,
+        1
+      ],
+      [
+        "she's",
+        "ella es",
+        null,
+        2
+      ],
+      [
+        "she said",
+        "ella dijo",
+        null,
+        2
+      ],
+      [
+        "she speaks",
+        "ella habla",
+        null,
+        2
+      ],
+      [
+        "she wants",
+        "ella quiere",
+        null,
+        2
+      ],
+      [
+        "she didn't want",
+        "ella no quería",
+        null,
+        2
+      ],
+      [
+        "she doesn't want",
+        "ella no quiere",
+        null,
+        2
+      ],
+      [
+        "I could to make",
+        "que podría hacer",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0310L01",
+      "seed_context": {
+        "target": "She could to write a story about that man.",
+        "known": "Ella podría escribir una historia sobre ese hombre."
+      }
+    },
+    "components": [
+      [
+        "ella",
+        "she"
+      ],
+      [
+        "podría",
+        "could"
+      ]
+    ]
+  }
+}

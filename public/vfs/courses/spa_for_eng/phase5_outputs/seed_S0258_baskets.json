@@ -1,0 +1,55 @@
+{
+  "S0258L04": {
+    "lego": [
+      "blue",
+      "azul"
+    ],
+    "type": "A",
+    "available_legos": 1228,
+    "is_final_lego": false,
+    "overlap_level": "complete",
+    "target_phrase_count": 5,
+    "practice_phrases": [
+      [
+        "Blue",
+        "azul",
+        null,
+        1
+      ],
+      [
+        "That's blue",
+        "eso es azul",
+        null,
+        3
+      ],
+      [
+        "That blue thing",
+        "esa cosa azul",
+        null,
+        3
+      ],
+      [
+        "I like that blue thing",
+        "me gusta esa cosa azul",
+        null,
+        5
+      ],
+      [
+        "What's that blue thing",
+        "qué es esa cosa azul",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "longer_3_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0258L04",
+      "seed_context": {
+        "target": "What's that blue thing over there?",
+        "known": "¿Qué es esa cosa azul de allí?"
+      }
+    }
+  }
+}

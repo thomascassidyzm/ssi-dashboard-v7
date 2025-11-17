@@ -1,0 +1,102 @@
+{
+  "S0357L02": {
+    "lego": [
+      "she just wanted",
+      "ella solo quería"
+    ],
+    "type": "M",
+    "available_legos": 1695,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "she just wanted",
+        "ella solo quería",
+        null,
+        1
+      ],
+      [
+        "No she just wanted",
+        "no ella solo quería",
+        null,
+        2
+      ],
+      [
+        "she just wanted to to know",
+        "ella solo quería saber",
+        null,
+        2
+      ],
+      [
+        "she just wanted to go out",
+        "ella solo quería salir",
+        null,
+        3
+      ],
+      [
+        "No she just wanted to to see",
+        "no ella solo quería ver",
+        null,
+        3
+      ],
+      [
+        "she just wanted to leave me",
+        "ella solo quería dejarme",
+        null,
+        4
+      ],
+      [
+        "No she just wanted to to talk to him",
+        "no ella solo quería hablar con él",
+        null,
+        4
+      ],
+      [
+        "she just wanted to to see that to woman",
+        "ella solo quería ver esa mujer",
+        null,
+        5
+      ],
+      [
+        "No she just wanted to run around the field",
+        "no ella solo quería correr alrededor del campo",
+        null,
+        6
+      ],
+      [
+        "she just wanted to to discuss something important",
+        "ella solo quería discutir algo importante",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0357L02",
+      "seed_context": {
+        "target": "No she just wanted to send her a message.",
+        "known": "No ella solo quería enviarle un mensaje."
+      }
+    },
+    "components": [
+      [
+        "ella",
+        "she"
+      ],
+      [
+        "solo",
+        "just"
+      ],
+      [
+        "quería",
+        "wanted"
+      ]
+    ]
+  }
+}

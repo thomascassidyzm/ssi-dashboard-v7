@@ -1,0 +1,83 @@
+{
+  "S0313L03": {
+    "lego": [
+      "couldn't watch",
+      "no podría ver"
+    ],
+    "type": "M",
+    "available_legos": 1503,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 7,
+    "practice_phrases": [
+      [
+        "couldn't watch",
+        "no podría ver",
+        null,
+        2
+      ],
+      [
+        "could watch",
+        "podría ver",
+        null,
+        1
+      ],
+      [
+        "yes, couldn't watch",
+        "sí, no podría ver",
+        null,
+        2
+      ],
+      [
+        "she couldn't watch",
+        "ella no podría ver",
+        null,
+        2
+      ],
+      [
+        "couldn't watch before",
+        "no podría ver antes",
+        null,
+        2
+      ],
+      [
+        "couldn't watch",
+        "no podría ver",
+        null,
+        2
+      ],
+      [
+        "no couldn't watch",
+        "no no podría ver",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 1,
+      "medium_3_legos": 1,
+      "longer_4_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0313L03",
+      "seed_context": {
+        "target": "He said that he couldn't watch all five games.",
+        "known": "Él dijo que no podría ver todos los cinco juegos."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not/couldn't"
+      ],
+      [
+        "podría",
+        "could"
+      ],
+      [
+        "ver",
+        "watch/to see"
+      ]
+    ]
+  }
+}

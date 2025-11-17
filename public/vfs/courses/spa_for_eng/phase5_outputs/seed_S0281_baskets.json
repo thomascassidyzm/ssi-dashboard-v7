@@ -1,0 +1,98 @@
+{
+  "S0281L04": {
+    "lego": [
+      "my coffee",
+      "mi café"
+    ],
+    "type": "M",
+    "available_legos": 1331,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "my coffee",
+        "mi café",
+        null,
+        2
+      ],
+      [
+        "no, my coffee",
+        "no, mi café",
+        null,
+        2
+      ],
+      [
+        "I to can my coffee",
+        "puedo mi café",
+        null,
+        2
+      ],
+      [
+        "I want my coffee",
+        "quiero mi café",
+        null,
+        2
+      ],
+      [
+        "I to can't my coffee",
+        "no puedo mi café",
+        null,
+        3
+      ],
+      [
+        "I don't want my coffee",
+        "no quiero mi café",
+        null,
+        3
+      ],
+      [
+        "I'm not sure my coffee",
+        "no estoy seguro mi café",
+        null,
+        4
+      ],
+      [
+        "I would like my coffee",
+        "me gustaría mi café",
+        null,
+        3
+      ],
+      [
+        "I think that my coffee",
+        "creo que mi café",
+        null,
+        3
+      ],
+      [
+        "my coffee",
+        "mi café",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0281L04",
+      "seed_context": {
+        "target": "Do you mind if I finish my coffee before you to start?",
+        "known": "¿Te importa si termino mi café antes de que empieces?"
+      }
+    },
+    "components": [
+      [
+        "mi",
+        "my"
+      ],
+      [
+        "café",
+        "coffee"
+      ]
+    ]
+  }
+}

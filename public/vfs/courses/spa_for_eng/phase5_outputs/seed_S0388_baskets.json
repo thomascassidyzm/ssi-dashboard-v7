@@ -1,0 +1,106 @@
+{
+  "S0388L02": {
+    "lego": [
+      "you work with",
+      "con la que trabajas"
+    ],
+    "type": "M",
+    "available_legos": 1838,
+    "is_final_lego": true,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "you work with",
+        "con la que trabajas",
+        null,
+        3
+      ],
+      [
+        "the person you work with",
+        "la persona con la que trabajas",
+        null,
+        4
+      ],
+      [
+        "That person you work with",
+        "Esa persona con la que trabajas",
+        null,
+        4
+      ],
+      [
+        "the person you work with agreed",
+        "la persona con la que trabajas estuvo de acuerdo",
+        null,
+        5
+      ],
+      [
+        "That person you work with was right",
+        "Esa persona con la que trabajas tenía razón",
+        null,
+        5
+      ],
+      [
+        "the person you work with to yesterday",
+        "la persona con la que trabajas ayer",
+        null,
+        5
+      ],
+      [
+        "That person you work with didn't think so",
+        "Esa persona con la que trabajas no pensó eso",
+        null,
+        6
+      ],
+      [
+        "That person you work with agreed with her",
+        "Esa persona con la que trabajas estuvo de acuerdo con ella",
+        null,
+        6
+      ],
+      [
+        "That person you work with wanted to follow us",
+        "Esa persona con la que trabajas quería seguirnos",
+        null,
+        6
+      ],
+      [
+        "That person you work with.",
+        "Esa persona con la que trabajas.",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0388L02",
+      "seed_context": {
+        "target": "That person you work with.",
+        "known": "Esa persona con la que trabajas."
+      }
+    },
+    "components": [
+      [
+        "con",
+        "with"
+      ],
+      [
+        "la",
+        "the"
+      ],
+      [
+        "que",
+        "whom/that"
+      ],
+      [
+        "trabajas",
+        "you work"
+      ]
+    ]
+  }
+}

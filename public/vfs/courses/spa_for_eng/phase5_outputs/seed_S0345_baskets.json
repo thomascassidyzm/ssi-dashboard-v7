@@ -1,0 +1,114 @@
+{
+  "S0345L02": {
+    "lego": [
+      "he's not ready to leave yet",
+      "no está preparado para irse todavía"
+    ],
+    "type": "M",
+    "available_legos": 1641,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "he's not ready to leave yet",
+        "no está preparado para irse todavía",
+        null,
+        5
+      ],
+      [
+        "he's not ready",
+        "no está preparado",
+        null,
+        3
+      ],
+      [
+        "not ready to leave yet",
+        "no está preparado para irse todavía",
+        null,
+        5
+      ],
+      [
+        "I think he's not ready to leave yet",
+        "creo que no está preparado para irse todavía",
+        null,
+        7
+      ],
+      [
+        "yes he's not ready to leave yet",
+        "sí no está preparado para irse todavía",
+        null,
+        6
+      ],
+      [
+        "he's not ready yet",
+        "no está preparado todavía",
+        null,
+        4
+      ],
+      [
+        "I'm sure he's not ready to leave yet",
+        "estoy seguro de que no está preparado para irse todavía",
+        null,
+        9
+      ],
+      [
+        "who said that he's not ready to leave yet",
+        "que dijo que no está preparado para irse todavía",
+        null,
+        9
+      ],
+      [
+        "someone said that he's not ready to leave yet",
+        "alguien dijo que no está preparado para irse todavía",
+        null,
+        9
+      ],
+      [
+        "I met someone who said that he's not ready to leave yet",
+        "conocí a alguien que dijo que no está preparado para irse todavía",
+        null,
+        11
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0345L02",
+      "seed_context": {
+        "target": "Que dijo que no está preparado para irse todavía.",
+        "known": "Who said that he's not ready to leave yet."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not"
+      ],
+      [
+        "está",
+        "is"
+      ],
+      [
+        "preparado",
+        "ready/prepared"
+      ],
+      [
+        "para",
+        "to"
+      ],
+      [
+        "irse",
+        "leave (reflexive)"
+      ],
+      [
+        "todavía",
+        "yet"
+      ]
+    ]
+  }
+}

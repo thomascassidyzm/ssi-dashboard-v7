@@ -1,0 +1,95 @@
+{
+  "S0342L03": {
+    "lego": [
+      "who said",
+      "que dijo"
+    ],
+    "type": "M",
+    "available_legos": 1630,
+    "is_final_lego": false,
+    "overlap_level": "complete",
+    "target_phrase_count": 5,
+    "practice_phrases": [
+      [
+        "who said",
+        "que dijo",
+        null,
+        2
+      ],
+      [
+        "someone who said",
+        "alguien que dijo",
+        null,
+        3
+      ],
+      [
+        "I met someone who said",
+        "conocí a alguien que dijo",
+        null,
+        4
+      ],
+      [
+        "someone who said yes",
+        "alguien que dijo que sí",
+        null,
+        5
+      ],
+      [
+        "I met someone who said yes",
+        "conocí a alguien que dijo que sí",
+        null,
+        5
+      ],
+      [
+        "someone who said something to yesterday",
+        "alguien que dijo algo ayer",
+        null,
+        5
+      ],
+      [
+        "I think someone who said yes",
+        "creo que alguien que dijo que sí",
+        null,
+        7
+      ],
+      [
+        "I met someone who said yes to yesterday",
+        "conocí a alguien que dijo que sí ayer",
+        null,
+        7
+      ],
+      [
+        "I'm sure someone who said something",
+        "estoy seguro de que alguien que dijo algo",
+        null,
+        8
+      ],
+      [
+        "I met someone who said something in Spanish",
+        "conocí a alguien que dijo algo en español",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "longer_3_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0342L03",
+      "seed_context": {
+        "target": "Conocí a alguien que dijo algo.",
+        "known": "I met someone who said something."
+      }
+    },
+    "components": [
+      [
+        "que",
+        "who"
+      ],
+      [
+        "dijo",
+        "said"
+      ]
+    ]
+  }
+}

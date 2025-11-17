@@ -1,0 +1,88 @@
+{
+  "S0406L01": {
+    "lego": [
+      "No",
+      "No"
+    ],
+    "type": "A",
+    "available_legos": 1914,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "No",
+        "No",
+        null,
+        1
+      ],
+      [
+        "No now",
+        "No ahora",
+        null,
+        2
+      ],
+      [
+        "No I think",
+        "No creo",
+        null,
+        3
+      ],
+      [
+        "No with me",
+        "No conmigo",
+        null,
+        3
+      ],
+      [
+        "No I want",
+        "No quiero",
+        null,
+        3
+      ],
+      [
+        "No I said",
+        "No dije",
+        null,
+        3
+      ],
+      [
+        "No he said that",
+        "No él dijo que",
+        null,
+        4
+      ],
+      [
+        "No I think that",
+        "No creo que",
+        null,
+        4
+      ],
+      [
+        "No my friend said",
+        "No mi amigo dijo",
+        null,
+        4
+      ],
+      [
+        "No I wanted to",
+        "No quería",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0406L01",
+      "seed_context": {
+        "target": "No, estoy seguro de que estará bien.",
+        "known": "No I'm sure it will to be okay."
+      }
+    }
+  }
+}

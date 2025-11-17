@@ -1,0 +1,106 @@
+{
+  "S0363L02": {
+    "lego": [
+      "he felt like talking a lot",
+      "él tenía ganas de hablar mucho"
+    ],
+    "type": "M",
+    "available_legos": 1723,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        1
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        2
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        3
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        3
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        4
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        4
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        5
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        5
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        6
+      ],
+      [
+        "he felt like talking a lot",
+        "él tenía ganas de hablar mucho",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0363L02",
+      "seed_context": {
+        "target": "Yes he felt like talking a lot.",
+        "known": "Sí él tenía ganas de hablar mucho."
+      }
+    },
+    "components": [
+      [
+        "él",
+        "he"
+      ],
+      [
+        "tenía ganas de",
+        "felt like"
+      ],
+      [
+        "hablar",
+        "talking"
+      ],
+      [
+        "mucho",
+        "a lot"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "S0344L02": {
+    "lego": [
+      "he's happy to to help you",
+      "está contento de ayudarte"
+    ],
+    "type": "M",
+    "available_legos": 1637,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "he's happy to to help you",
+        "está contento de ayudarte",
+        null,
+        4
+      ],
+      [
+        "he's happy",
+        "está contento",
+        null,
+        2
+      ],
+      [
+        "yes he's happy to to help you",
+        "sí está contento de ayudarte",
+        null,
+        5
+      ],
+      [
+        "I think he's happy to to help you",
+        "creo que está contento de ayudarte",
+        null,
+        6
+      ],
+      [
+        "he's happy to to help",
+        "está contento de ayudar",
+        null,
+        4
+      ],
+      [
+        "I'm sure he's happy to to help you",
+        "estoy seguro de que está contento de ayudarte",
+        null,
+        7
+      ],
+      [
+        "who said that he's happy to to help you",
+        "que dijo que está contento de ayudarte",
+        null,
+        7
+      ],
+      [
+        "someone said that he's happy to to help you",
+        "alguien dijo que está contento de ayudarte",
+        null,
+        7
+      ],
+      [
+        "I met someone who said that he's happy to to help you",
+        "conocí a alguien que dijo que está contento de ayudarte",
+        null,
+        9
+      ],
+      [
+        "I think he's happy to to help you tonight",
+        "creo que está contento de ayudarte esta noche",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0344L02",
+      "seed_context": {
+        "target": "Que dijo que está contento de ayudarte.",
+        "known": "Who said that he's happy to to help you."
+      }
+    },
+    "components": [
+      [
+        "está",
+        "is"
+      ],
+      [
+        "contento",
+        "happy (masc)"
+      ],
+      [
+        "de",
+        "to"
+      ],
+      [
+        "ayudarte",
+        "to help you"
+      ]
+    ]
+  }
+}

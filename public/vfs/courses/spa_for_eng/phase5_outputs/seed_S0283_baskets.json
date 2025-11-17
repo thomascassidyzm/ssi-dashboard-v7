@@ -1,0 +1,106 @@
+{
+  "S0283L01": {
+    "lego": [
+      "which of your friends",
+      "cuáles de tus amigos"
+    ],
+    "type": "M",
+    "available_legos": 1337,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "which of your friends",
+        "cuáles de tus amigos",
+        null,
+        3
+      ],
+      [
+        "no, which of your friends",
+        "no, cuáles de tus amigos",
+        null,
+        4
+      ],
+      [
+        "I to can which of your friends",
+        "puedo cuáles de tus amigos",
+        null,
+        4
+      ],
+      [
+        "I want which of your friends",
+        "quiero cuáles de tus amigos",
+        null,
+        4
+      ],
+      [
+        "I to can't which of your friends",
+        "no puedo cuáles de tus amigos",
+        null,
+        4
+      ],
+      [
+        "I don't want which of your friends",
+        "no quiero cuáles de tus amigos",
+        null,
+        4
+      ],
+      [
+        "I'm not sure which of your friends",
+        "no estoy seguro cuáles de tus amigos",
+        null,
+        5
+      ],
+      [
+        "I would like which of your friends",
+        "me gustaría cuáles de tus amigos",
+        null,
+        4
+      ],
+      [
+        "I think that which of your friends",
+        "creo que cuáles de tus amigos",
+        null,
+        4
+      ],
+      [
+        "which of your friends",
+        "cuáles de tus amigos",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0283L01",
+      "seed_context": {
+        "target": "Which of your friends to speak Spanish?",
+        "known": "¿Cuáles de tus amigos hablan español?"
+      }
+    },
+    "components": [
+      [
+        "cuáles",
+        "which"
+      ],
+      [
+        "de",
+        "of"
+      ],
+      [
+        "tus",
+        "your"
+      ],
+      [
+        "amigos",
+        "friends"
+      ]
+    ]
+  }
+}

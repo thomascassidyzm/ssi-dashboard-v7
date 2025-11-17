@@ -1,0 +1,106 @@
+{
+  "S0433L02": {
+    "lego": [
+      "when the film started",
+      "cuándo empezó la película"
+    ],
+    "type": "M",
+    "available_legos": 2038,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "when the film started",
+        "cuándo empezó la película",
+        null,
+        2
+      ],
+      [
+        "the film started",
+        "empezó la película",
+        null,
+        1
+      ],
+      [
+        "I don't to know when the film started",
+        "no sé cuándo empezó la película",
+        null,
+        3
+      ],
+      [
+        "when the film started to yesterday",
+        "cuándo empezó la película ayer",
+        null,
+        3
+      ],
+      [
+        "I couldn't to find out when the film started",
+        "no pude descubrir cuándo empezó la película",
+        null,
+        4
+      ],
+      [
+        "when the film started last night",
+        "cuándo empezó la película anoche",
+        null,
+        4
+      ],
+      [
+        "I want to to know when the film started",
+        "quiero saber cuándo empezó la película",
+        null,
+        5
+      ],
+      [
+        "I'm not sure when the film started today",
+        "no estoy seguro cuándo empezó la película hoy",
+        null,
+        5
+      ],
+      [
+        "they asked me when the film started",
+        "me preguntaron cuándo empezó la película",
+        null,
+        5
+      ],
+      [
+        "I tried to to find out when the film started",
+        "intenté descubrir cuándo empezó la película",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0433L02",
+      "seed_context": {
+        "target": "They couldn't to find out when the film started.",
+        "known": "No pudieron descubrir cuándo empezó la película."
+      }
+    },
+    "components": [
+      [
+        "cuándo",
+        "when"
+      ],
+      [
+        "empezó",
+        "started"
+      ],
+      [
+        "la",
+        "the"
+      ],
+      [
+        "película",
+        "film"
+      ]
+    ]
+  }
+}

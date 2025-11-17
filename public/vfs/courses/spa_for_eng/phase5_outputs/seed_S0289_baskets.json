@@ -1,0 +1,106 @@
+{
+  "S0289L03": {
+    "lego": [
+      "she's going to to be",
+      "ella va a estar"
+    ],
+    "type": "M",
+    "available_legos": 1363,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "she's going to to be",
+        "ella va a estar",
+        null,
+        3
+      ],
+      [
+        "no, she's going to to be",
+        "no, ella va a estar",
+        null,
+        4
+      ],
+      [
+        "I to can she's going to to be",
+        "puedo ella va a estar",
+        null,
+        4
+      ],
+      [
+        "I want she's going to to be",
+        "quiero ella va a estar",
+        null,
+        4
+      ],
+      [
+        "I to can't she's going to to be",
+        "no puedo ella va a estar",
+        null,
+        4
+      ],
+      [
+        "I don't want she's going to to be",
+        "no quiero ella va a estar",
+        null,
+        4
+      ],
+      [
+        "I'm not sure she's going to to be",
+        "no estoy seguro ella va a estar",
+        null,
+        5
+      ],
+      [
+        "I would like she's going to to be",
+        "me gustaría ella va a estar",
+        null,
+        4
+      ],
+      [
+        "I think that she's going to to be",
+        "creo que ella va a estar",
+        null,
+        4
+      ],
+      [
+        "she's going to to be",
+        "ella va a estar",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0289L03",
+      "seed_context": {
+        "target": "I wonder if she's going to to be there this afternoon.",
+        "known": "Me pregunto si ella va a estar allí esta tarde."
+      }
+    },
+    "components": [
+      [
+        "ella",
+        "she"
+      ],
+      [
+        "va",
+        "going"
+      ],
+      [
+        "a",
+        "to"
+      ],
+      [
+        "estar",
+        "to be"
+      ]
+    ]
+  }
+}

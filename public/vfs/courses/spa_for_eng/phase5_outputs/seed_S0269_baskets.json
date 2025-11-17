@@ -1,0 +1,97 @@
+{
+  "S0269L03": {
+    "lego": [
+      "you want to wait",
+      "quieres esperar"
+    ],
+    "type": "M",
+    "available_legos": 1268,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 7,
+    "practice_phrases": [
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ],
+      [
+        "you want to wait",
+        "quieres esperar",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 1,
+      "medium_3_legos": 1,
+      "longer_4_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0269L03",
+      "seed_context": {
+        "target": "Why don't you want to wait for your father?",
+        "known": "¿Por qué no quieres esperar a tu padre?"
+      }
+    },
+    "components": [
+      [
+        "quieres",
+        "you want"
+      ],
+      [
+        "esperar",
+        "to wait"
+      ]
+    ]
+  }
+}

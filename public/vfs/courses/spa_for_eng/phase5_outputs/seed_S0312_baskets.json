@@ -1,0 +1,83 @@
+{
+  "S0312L02": {
+    "lego": [
+      "said that she could",
+      "dijo que podría"
+    ],
+    "type": "M",
+    "available_legos": 1497,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 7,
+    "practice_phrases": [
+      [
+        "said that she could",
+        "dijo que podría",
+        null,
+        2
+      ],
+      [
+        "no, said that she could",
+        "no, dijo que podría",
+        null,
+        2
+      ],
+      [
+        "yes, said that she could",
+        "sí, dijo que podría",
+        null,
+        2
+      ],
+      [
+        "she said that she could",
+        "ella dijo que podría",
+        null,
+        2
+      ],
+      [
+        "said that she could before",
+        "dijo que podría antes",
+        null,
+        2
+      ],
+      [
+        "said that she could",
+        "dijo que podría",
+        null,
+        2
+      ],
+      [
+        "no said that she could",
+        "no dijo que podría",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 1,
+      "medium_3_legos": 1,
+      "longer_4_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0312L02",
+      "seed_context": {
+        "target": "She said that she could to use the other room tomorrow night.",
+        "known": "Ella dijo que podría usar la otra habitación mañana por la noche."
+      }
+    },
+    "components": [
+      [
+        "dijo",
+        "said"
+      ],
+      [
+        "que",
+        "that"
+      ],
+      [
+        "podría",
+        "she could"
+      ]
+    ]
+  }
+}

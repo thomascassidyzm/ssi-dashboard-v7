@@ -1,0 +1,79 @@
+{
+  "S0351L03": {
+    "lego": [
+      "want to leave me",
+      "quería dejarme"
+    ],
+    "type": "M",
+    "available_legos": 1668,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 7,
+    "practice_phrases": [
+      [
+        "wanted to leave me",
+        "quería dejarme",
+        null,
+        1
+      ],
+      [
+        "He wanted to leave me alone",
+        "él quería dejarme solo",
+        null,
+        3
+      ],
+      [
+        "She wanted to leave me here",
+        "ella quería dejarme aquí",
+        null,
+        3
+      ],
+      [
+        "He didn't want to leave me",
+        "él no quería dejarme",
+        null,
+        4
+      ],
+      [
+        "She didn't want to leave me alone",
+        "ella no quería dejarme solo",
+        null,
+        4
+      ],
+      [
+        "I didn't want to leave me on my own",
+        "no quería dejarme solo",
+        null,
+        4
+      ],
+      [
+        "He didn't want to leave me here tonight",
+        "él no quería dejarme aquí esta noche",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 1,
+      "medium_3_legos": 1,
+      "longer_4_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0351L03",
+      "seed_context": {
+        "target": "No he didn't want to leave me on my own.",
+        "known": "No él no quería dejarme solo."
+      }
+    },
+    "components": [
+      [
+        "quería",
+        "want/wanted"
+      ],
+      [
+        "dejarme",
+        "to leave me"
+      ]
+    ]
+  }
+}

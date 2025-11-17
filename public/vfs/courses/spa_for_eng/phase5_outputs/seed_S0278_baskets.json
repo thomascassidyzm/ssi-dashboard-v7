@@ -1,0 +1,98 @@
+{
+  "S0278L01": {
+    "lego": [
+      "you had to",
+      "tuviste que"
+    ],
+    "type": "M",
+    "available_legos": 1311,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "You had to",
+        "tuviste que",
+        null,
+        2
+      ],
+      [
+        "You had to leave",
+        "tuviste que salir",
+        null,
+        3
+      ],
+      [
+        "You had to finish work",
+        "tuviste que terminar trabajo",
+        null,
+        4
+      ],
+      [
+        "Did you to have to stay here",
+        "tuviste que quedarte aquí",
+        null,
+        4
+      ],
+      [
+        "You had to to do everything today",
+        "tuviste que hacer todo hoy",
+        null,
+        5
+      ],
+      [
+        "Did you to have to leave early next week",
+        "tuviste que salir a principios de la próxima semana",
+        null,
+        7
+      ],
+      [
+        "You had to to have an important meeting",
+        "tuviste que tener una reunión importante",
+        null,
+        5
+      ],
+      [
+        "Did you to have to work too much",
+        "tuviste que trabajar demasiado",
+        null,
+        4
+      ],
+      [
+        "You had to finish everything last night",
+        "tuviste que terminar todo anoche",
+        null,
+        5
+      ],
+      [
+        "Did you to have to stay a little longer",
+        "tuviste que quedarte un poco más de tiempo",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0278L01",
+      "seed_context": {
+        "target": "Did you to have to finish everything last night?",
+        "known": "¿Tuviste que terminar todo anoche?"
+      }
+    },
+    "components": [
+      [
+        "tuviste",
+        "you had"
+      ],
+      [
+        "que",
+        "to"
+      ]
+    ]
+  }
+}

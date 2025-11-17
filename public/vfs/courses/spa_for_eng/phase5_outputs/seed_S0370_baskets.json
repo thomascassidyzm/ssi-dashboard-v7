@@ -1,0 +1,206 @@
+{
+  "S0370L01": {
+    "lego": [
+      "I didn't to see",
+      "No vi"
+    ],
+    "type": "M",
+    "available_legos": 1755,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "I didn't to see",
+        "No vi",
+        null,
+        1
+      ],
+      [
+        "I didn't to see now",
+        "No vi ahora",
+        null,
+        2
+      ],
+      [
+        "I didn't to see to him",
+        "No vi a él",
+        null,
+        3
+      ],
+      [
+        "I didn't to see to to talk more",
+        "No vi a hablar más",
+        null,
+        3
+      ],
+      [
+        "I didn't to see",
+        "No vi",
+        null,
+        4
+      ],
+      [
+        "I didn't to see",
+        "No vi",
+        null,
+        4
+      ],
+      [
+        "I didn't to see",
+        "No vi",
+        null,
+        5
+      ],
+      [
+        "I didn't to see",
+        "No vi",
+        null,
+        5
+      ],
+      [
+        "I didn't to see",
+        "No vi",
+        null,
+        6
+      ],
+      [
+        "I didn't to see",
+        "No vi",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0370L01",
+      "seed_context": {
+        "target": "I didn't to see anyone that I knew.",
+        "known": "No vi a nadie que yo conocía."
+      }
+    },
+    "components": [
+      [
+        "No",
+        "didn't"
+      ],
+      [
+        "vi",
+        "I to see"
+      ]
+    ]
+  },
+  "S0370L02": {
+    "lego": [
+      "anyone that I knew",
+      "a nadie que yo conocía"
+    ],
+    "type": "M",
+    "available_legos": 1756,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        1
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        2
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        3
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        3
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        4
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        4
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        5
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        5
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        6
+      ],
+      [
+        "anyone that I knew",
+        "a nadie que yo conocía",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0370L02",
+      "seed_context": {
+        "target": "I didn't to see anyone that I knew.",
+        "known": "No vi a nadie que yo conocía."
+      }
+    },
+    "components": [
+      [
+        "a",
+        ""
+      ],
+      [
+        "nadie",
+        "anyone"
+      ],
+      [
+        "que",
+        "that"
+      ],
+      [
+        "yo",
+        "I"
+      ],
+      [
+        "conocía",
+        "knew"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "S0321L01": {
+    "lego": [
+      "a to book",
+      "un libro"
+    ],
+    "type": "A",
+    "available_legos": 1531,
+    "is_final_lego": true,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "A to book",
+        "Un libro",
+        null,
+        1
+      ],
+      [
+        "I to have a to book",
+        "Tengo un libro",
+        null,
+        2
+      ],
+      [
+        "I want a to book",
+        "Quiero un libro",
+        null,
+        2
+      ],
+      [
+        "She needs a to book",
+        "Ella necesita un libro",
+        null,
+        3
+      ],
+      [
+        "He said a to book",
+        "Él dijo un libro",
+        null,
+        3
+      ],
+      [
+        "I want to to read a to book",
+        "Quiero leer un libro",
+        null,
+        4
+      ],
+      [
+        "She needs to buy a to book",
+        "Ella necesita comprar un libro",
+        null,
+        5
+      ],
+      [
+        "I think she needs a to book",
+        "Creo que ella necesita un libro",
+        null,
+        5
+      ],
+      [
+        "He said that he needs a to book",
+        "Él dijo que necesita un libro",
+        null,
+        6
+      ],
+      [
+        "A to book.",
+        "Un libro.",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0321L01",
+      "seed_context": {
+        "target": "A to book.",
+        "known": "Un libro."
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "S0346L03": {
+    "lego": [
+      "I liked her to book",
+      "me gustó su libro"
+    ],
+    "type": "M",
+    "available_legos": 1647,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "I liked her to book",
+        "me gustó su libro",
+        null,
+        3
+      ],
+      [
+        "I liked",
+        "me gustó",
+        null,
+        2
+      ],
+      [
+        "I liked her to book to yesterday",
+        "me gustó su libro ayer",
+        null,
+        4
+      ],
+      [
+        "yes I liked her to book",
+        "sí me gustó su libro",
+        null,
+        4
+      ],
+      [
+        "I think I liked her to book",
+        "creo que me gustó su libro",
+        null,
+        5
+      ],
+      [
+        "I liked something",
+        "me gustó algo",
+        null,
+        3
+      ],
+      [
+        "I wanted her to to know that I liked her to book",
+        "quería que ella supiera que me gustó su libro",
+        null,
+        8
+      ],
+      [
+        "I'm sure I liked her to book",
+        "estoy seguro de que me gustó su libro",
+        null,
+        6
+      ],
+      [
+        "I liked her to book at home",
+        "me gustó su libro en casa",
+        null,
+        5
+      ],
+      [
+        "someone said that I liked her to book",
+        "alguien dijo que me gustó su libro",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0346L03",
+      "seed_context": {
+        "target": "Quería que ella supiera que me gustó su libro.",
+        "known": "I wanted her to to know that I liked her to book."
+      }
+    },
+    "components": [
+      [
+        "me",
+        "to me"
+      ],
+      [
+        "gustó",
+        "pleased"
+      ],
+      [
+        "su",
+        "her"
+      ],
+      [
+        "libro",
+        "to book"
+      ]
+    ]
+  }
+}

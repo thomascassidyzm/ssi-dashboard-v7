@@ -1,0 +1,79 @@
+{
+  "S0299L02": {
+    "lego": [
+      "wants to to pay",
+      "quiere pagar"
+    ],
+    "type": "M",
+    "available_legos": 1414,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 7,
+    "practice_phrases": [
+      [
+        "wants to to pay tomorrow",
+        "quiere pagar mañana",
+        null,
+        2
+      ],
+      [
+        "wants to to pay is good",
+        "quiere pagar es bueno",
+        null,
+        3
+      ],
+      [
+        "wants to to pay",
+        "quiere pagar",
+        null,
+        1
+      ],
+      [
+        "wants to to pay",
+        "quiere pagar",
+        null,
+        1
+      ],
+      [
+        "wants to to pay",
+        "quiere pagar",
+        null,
+        1
+      ],
+      [
+        "wants to to pay",
+        "quiere pagar",
+        null,
+        1
+      ],
+      [
+        "wants to to pay",
+        "quiere pagar",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 1,
+      "medium_3_legos": 1,
+      "longer_4_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0299L02",
+      "seed_context": {
+        "target": "He wants to to pay half.",
+        "known": "Él quiere pagar la mitad."
+      }
+    },
+    "components": [
+      [
+        "quiere",
+        "wants"
+      ],
+      [
+        "pagar",
+        "to to pay"
+      ]
+    ]
+  }
+}

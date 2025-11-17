@@ -1,0 +1,106 @@
+{
+  "S0292L02": {
+    "lego": [
+      "to come to the party",
+      "venir a la fiesta"
+    ],
+    "type": "M",
+    "available_legos": 1376,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "I hope I to can to come to the party",
+        "espero poder venir a la fiesta",
+        null,
+        2
+      ],
+      [
+        "to come to the party tomorrow",
+        "venir a la fiesta mañana",
+        null,
+        2
+      ],
+      [
+        "to come to the party is easy",
+        "venir a la fiesta es fácil",
+        null,
+        3
+      ],
+      [
+        "I want to come to the party now",
+        "quiero venir a la fiesta ahora",
+        null,
+        3
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        null,
+        1
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        null,
+        1
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        null,
+        1
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        null,
+        1
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        null,
+        1
+      ],
+      [
+        "to come to the party",
+        "venir a la fiesta",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0292L02",
+      "seed_context": {
+        "target": "I hope you'll to to be able to to come to the party.",
+        "known": "Espero que puedas venir a la fiesta."
+      }
+    },
+    "components": [
+      [
+        "venir",
+        "to to come"
+      ],
+      [
+        "a",
+        "to"
+      ],
+      [
+        "la",
+        "the"
+      ],
+      [
+        "fiesta",
+        "party"
+      ]
+    ]
+  }
+}

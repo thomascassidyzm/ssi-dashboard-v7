@@ -1,0 +1,88 @@
+{
+  "S0279L02": {
+    "lego": [
+      "because",
+      "porque"
+    ],
+    "type": "A",
+    "available_legos": 1318,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "Because",
+        "porque",
+        null,
+        1
+      ],
+      [
+        "Because I to have work",
+        "porque tengo trabajo",
+        null,
+        3
+      ],
+      [
+        "Yes because I had to finish",
+        "sí porque tuve que terminar",
+        null,
+        5
+      ],
+      [
+        "Because I to have too much work",
+        "porque tengo demasiado trabajo",
+        null,
+        4
+      ],
+      [
+        "Unfortunately because I to have to leave",
+        "desafortunadamente porque tengo que salir",
+        null,
+        5
+      ],
+      [
+        "Because I had an important meeting",
+        "porque tuve una reunión importante",
+        null,
+        4
+      ],
+      [
+        "Yes because I had to stay here",
+        "sí porque tuve que quedarme aquí",
+        null,
+        6
+      ],
+      [
+        "Because I had to finish everything last night",
+        "porque tuve que terminar todo anoche",
+        null,
+        6
+      ],
+      [
+        "Because there wasn't much time left",
+        "porque no quedaba mucho tiempo",
+        null,
+        4
+      ],
+      [
+        "Because I to have to to do everything today",
+        "porque tengo que hacer todo hoy",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0279L02",
+      "seed_context": {
+        "target": "Yes because there wasn't much time left.",
+        "known": "Sí porque no quedaba mucho tiempo."
+      }
+    }
+  }
+}

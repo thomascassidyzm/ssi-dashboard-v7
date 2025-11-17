@@ -1,0 +1,99 @@
+{
+  "S0274L03": {
+    "lego": [
+      "you to have to leave",
+      "tienes que salir"
+    ],
+    "type": "M",
+    "available_legos": 1296,
+    "is_final_lego": false,
+    "overlap_level": "complete",
+    "target_phrase_count": 5,
+    "practice_phrases": [
+      [
+        "You to have to leave",
+        "tienes que salir",
+        null,
+        3
+      ],
+      [
+        "Do you to have to leave now",
+        "tienes que salir ahora",
+        null,
+        4
+      ],
+      [
+        "You to have to leave today",
+        "tienes que salir hoy",
+        null,
+        4
+      ],
+      [
+        "Do you to have to leave here",
+        "tienes que salir de aquí",
+        null,
+        5
+      ],
+      [
+        "You to have to leave with us",
+        "tienes que salir con nosotros",
+        null,
+        5
+      ],
+      [
+        "Unfortunately you to have to leave",
+        "desafortunadamente tienes que salir",
+        null,
+        4
+      ],
+      [
+        "Do you to have to leave your work",
+        "tienes que salir de tu trabajo",
+        null,
+        6
+      ],
+      [
+        "You to have to leave in a few days",
+        "tienes que salir en unos pocos días",
+        null,
+        6
+      ],
+      [
+        "Do you to have to leave next week",
+        "tienes que salir la próxima semana",
+        null,
+        5
+      ],
+      [
+        "You to have to leave too much work",
+        "tienes que salir de demasiado trabajo",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "longer_3_to_5_legos": 5
+    },
+    "_metadata": {
+      "lego_id": "S0274L03",
+      "seed_context": {
+        "target": "Do you to have to leave in a few days?",
+        "known": "¿Tienes que salir en unos pocos días?"
+      }
+    },
+    "components": [
+      [
+        "tienes",
+        "you to have"
+      ],
+      [
+        "que",
+        "to"
+      ],
+      [
+        "salir",
+        "to leave"
+      ]
+    ]
+  }
+}
