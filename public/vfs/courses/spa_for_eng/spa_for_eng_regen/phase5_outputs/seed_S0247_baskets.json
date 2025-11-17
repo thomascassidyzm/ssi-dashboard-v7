@@ -1,0 +1,101 @@
+{
+  "S0247L02": {
+    "lego": [
+      "I thought that book",
+      "Pensé que ese"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I thought",
+        "Pensé"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I thought that book",
+        "Pensé que ese",
+        null,
+        4
+      ],
+      [
+        "book",
+        "ese",
+        null,
+        1
+      ],
+      [
+        "I thought",
+        "Pensé",
+        null,
+        2
+      ],
+      [
+        "I thought that book now",
+        "Pensé que ese ahora",
+        null,
+        5
+      ],
+      [
+        "I thought that book here",
+        "Pensé que ese aquí",
+        null,
+        5
+      ],
+      [
+        "I want I thought that book",
+        "quiero Pensé que ese",
+        null,
+        6
+      ],
+      [
+        "I thought that book sometimes",
+        "Pensé que ese a veces",
+        null,
+        5
+      ],
+      [
+        "I thought that book with you",
+        "Pensé que ese contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to I thought that book",
+        "creo que quiero Pensé que ese",
+        null,
+        9
+      ],
+      [
+        "I want to I thought that book this week",
+        "quiero Pensé que ese esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0247L02",
+      "seed_context": {
+        "known": "I thought that book was fairly good.",
+        "target": "Pensé que ese libro era bastante bueno."
+      }
+    },
+    "components": [
+      [
+        "Pensé",
+        "I thought"
+      ],
+      [
+        "que",
+        "that"
+      ]
+    ]
+  }
+}

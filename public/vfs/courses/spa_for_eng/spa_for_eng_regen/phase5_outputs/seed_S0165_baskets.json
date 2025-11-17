@@ -1,0 +1,105 @@
+{
+  "S0165L02": {
+    "lego": [
+      "But I'm not sure",
+      "Pero no estoy seguro"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "but",
+        "pero"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "But I'm not sure",
+        "Pero no estoy seguro",
+        null,
+        4
+      ],
+      [
+        "But  not sure",
+        "Pero no  seguro",
+        null,
+        3
+      ],
+      [
+        "but",
+        "pero",
+        null,
+        1
+      ],
+      [
+        "you're But  not sure",
+        "estás Pero no  seguro",
+        null,
+        4
+      ],
+      [
+        "he's But  not sure",
+        "está Pero no  seguro",
+        null,
+        4
+      ],
+      [
+        "But I'm not sure right now",
+        "Pero no estoy seguro ahora mismo",
+        null,
+        6
+      ],
+      [
+        "But I'm not sure this morning",
+        "Pero no estoy seguro esta mañana",
+        null,
+        6
+      ],
+      [
+        "I think But I'm not sure",
+        "creo que Pero no estoy seguro",
+        null,
+        6
+      ],
+      [
+        "But I'm not sure but you're not",
+        "Pero no estoy seguro pero tú no",
+        null,
+        7
+      ],
+      [
+        "I was But  not sure yesterday",
+        "estaba Pero no  seguro ayer",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0165L02",
+      "seed_context": {
+        "known": "Pero no estoy seguro si es verdad.",
+        "target": "But I'm not sure if it's true."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not"
+      ],
+      [
+        "estoy",
+        "I'm"
+      ],
+      [
+        "seguro",
+        "sure"
+      ]
+    ]
+  }
+}

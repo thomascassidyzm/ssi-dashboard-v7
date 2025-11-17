@@ -1,0 +1,101 @@
+{
+  "S0221L02": {
+    "lego": [
+      "football and then",
+      "fútbol y luego"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I watched the football",
+        "vi el fútbol"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "football and then",
+        "fútbol y luego",
+        null,
+        3
+      ],
+      [
+        "then",
+        "luego",
+        null,
+        1
+      ],
+      [
+        "I watched the football",
+        "vi el fútbol",
+        null,
+        4
+      ],
+      [
+        "football and then now",
+        "fútbol y luego ahora",
+        null,
+        4
+      ],
+      [
+        "football and then here",
+        "fútbol y luego aquí",
+        null,
+        4
+      ],
+      [
+        "I want football and then",
+        "quiero fútbol y luego",
+        null,
+        5
+      ],
+      [
+        "football and then sometimes",
+        "fútbol y luego a veces",
+        null,
+        4
+      ],
+      [
+        "football and then with you",
+        "fútbol y luego contigo",
+        null,
+        5
+      ],
+      [
+        "I think I want to football and then",
+        "creo que quiero fútbol y luego",
+        null,
+        8
+      ],
+      [
+        "I want to football and then this week",
+        "quiero fútbol y luego esta semana",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 6,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0221L02",
+      "seed_context": {
+        "known": "Vi el fútbol y luego vi una película.",
+        "target": "I watched the football and then I watched a film."
+      }
+    },
+    "components": [
+      [
+        "y",
+        "and"
+      ],
+      [
+        "luego",
+        "then"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "S0064L01": {
+    "lego": [
+      "Learning Spanish isn't",
+      "Aprender español no"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Learning Spanish isn't",
+        "Aprender español no",
+        null,
+        3
+      ],
+      [
+        "isn't",
+        "no",
+        null,
+        1
+      ],
+      [
+        "Learning Spanish isn't",
+        "Aprender español no",
+        null,
+        3
+      ],
+      [
+        "Learning Spanish isn't now",
+        "Aprender español no ahora",
+        null,
+        4
+      ],
+      [
+        "Learning Spanish isn't here",
+        "Aprender español no aquí",
+        null,
+        4
+      ],
+      [
+        "I want Learning Spanish isn't",
+        "quiero Aprender español no",
+        null,
+        5
+      ],
+      [
+        "Learning Spanish isn't sometimes",
+        "Aprender español no a veces",
+        null,
+        4
+      ],
+      [
+        "Learning Spanish isn't with you",
+        "Aprender español no contigo",
+        null,
+        5
+      ],
+      [
+        "I think I want to Learning Spanish isn't",
+        "creo que quiero Aprender español no",
+        null,
+        8
+      ],
+      [
+        "I want to Learning Spanish isn't this week",
+        "quiero Aprender español no esta semana",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0064L01",
+      "seed_context": {
+        "known": "Aprender español no es fácil pero es divertido.",
+        "target": "Learning Spanish isn't easy but it is fun."
+      }
+    },
+    "components": [
+      [
+        "aprender",
+        "to learning/to learn"
+      ],
+      [
+        "español",
+        "Spanish"
+      ]
+    ]
+  }
+}

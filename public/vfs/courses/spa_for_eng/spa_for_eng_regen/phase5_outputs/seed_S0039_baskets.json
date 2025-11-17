@@ -1,0 +1,109 @@
+{
+  "S0039L04": {
+    "lego": [
+      "I'm a little",
+      "estoy un poco"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "but",
+        "pero"
+      ],
+      [
+        "I'm",
+        "estoy"
+      ],
+      [
+        "I'm a little tired",
+        "estoy un poco cansado"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm a little",
+        "estoy un poco",
+        null,
+        3
+      ],
+      [
+        "a little",
+        "un poco",
+        null,
+        2
+      ],
+      [
+        "I'm a little tired",
+        "estoy un poco cansado",
+        null,
+        4
+      ],
+      [
+        "you're a little",
+        "estás un poco",
+        null,
+        3
+      ],
+      [
+        "he's a little",
+        "está un poco",
+        null,
+        3
+      ],
+      [
+        "I'm a little right now",
+        "estoy un poco ahora mismo",
+        null,
+        5
+      ],
+      [
+        "I'm a little this morning",
+        "estoy un poco esta mañana",
+        null,
+        5
+      ],
+      [
+        "I think I'm a little",
+        "creo que estoy un poco",
+        null,
+        5
+      ],
+      [
+        "I'm a little but you're not",
+        "estoy un poco pero tú no",
+        null,
+        6
+      ],
+      [
+        "I was a little yesterday",
+        "estaba un poco ayer",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 3,
+      "longer_4_5": 5,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0039L04",
+      "seed_context": {
+        "known": "Pero estoy un poco cansado esta mañana.",
+        "target": "But I'm a little tired this morning."
+      }
+    },
+    "components": [
+      [
+        "un",
+        "a"
+      ],
+      [
+        "poco",
+        "little"
+      ]
+    ]
+  }
+}

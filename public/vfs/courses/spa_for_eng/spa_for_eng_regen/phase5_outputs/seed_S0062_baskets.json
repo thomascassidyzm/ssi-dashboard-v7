@@ -1,0 +1,100 @@
+{
+  "S0062L01": {
+    "lego": [
+      "I'm not sure if",
+      "No estoy seguro si"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm not sure if",
+        "No estoy seguro si",
+        null,
+        4
+      ],
+      [
+        "not sure if",
+        "No  seguro si",
+        null,
+        3
+      ],
+      [
+        "I'm not sure if",
+        "No estoy seguro si",
+        null,
+        4
+      ],
+      [
+        "you're not sure if",
+        "estás No  seguro si",
+        null,
+        4
+      ],
+      [
+        "he's not sure if",
+        "está No  seguro si",
+        null,
+        4
+      ],
+      [
+        "I'm not sure if right now",
+        "No estoy seguro si ahora mismo",
+        null,
+        6
+      ],
+      [
+        "I'm not sure if this morning",
+        "No estoy seguro si esta mañana",
+        null,
+        6
+      ],
+      [
+        "I think I'm not sure if",
+        "creo que No estoy seguro si",
+        null,
+        6
+      ],
+      [
+        "I'm not sure if but you're not",
+        "No estoy seguro si pero tú no",
+        null,
+        7
+      ],
+      [
+        "I was not sure if yesterday",
+        "estaba No  seguro si ayer",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0062L01",
+      "seed_context": {
+        "known": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+        "target": "I'm not sure if I can help you at the same time."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not"
+      ],
+      [
+        "estoy",
+        "I am"
+      ],
+      [
+        "seguro",
+        "sure"
+      ]
+    ]
+  }
+}

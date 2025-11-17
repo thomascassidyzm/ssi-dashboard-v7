@@ -1,0 +1,109 @@
+{
+  "S0207L04": {
+    "lego": [
+      "done what",
+      "hecho lo que"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "you've done",
+        "has hecho"
+      ],
+      [
+        "what you needed to do",
+        "lo que necesitabas hacer"
+      ],
+      [
+        "you needed to do",
+        "necesitabas hacer"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "done what",
+        "hecho lo que",
+        null,
+        2
+      ],
+      [
+        "what",
+        "que",
+        null,
+        1
+      ],
+      [
+        "you needed to do",
+        "necesitabas hacer",
+        null,
+        4
+      ],
+      [
+        "done what now",
+        "hecho lo que ahora",
+        null,
+        3
+      ],
+      [
+        "done what here",
+        "hecho lo que aquí",
+        null,
+        3
+      ],
+      [
+        "I want done what",
+        "quiero hecho lo que",
+        null,
+        4
+      ],
+      [
+        "done what sometimes",
+        "hecho lo que a veces",
+        null,
+        3
+      ],
+      [
+        "done what with you",
+        "hecho lo que contigo",
+        null,
+        4
+      ],
+      [
+        "I think I want to done what",
+        "creo que quiero hecho lo que",
+        null,
+        7
+      ],
+      [
+        "You've done what you needed to do.",
+        "Has hecho lo que necesitabas hacer",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0207L04",
+      "seed_context": {
+        "known": "Has hecho lo que necesitabas hacer",
+        "target": "You've done what you needed to do."
+      }
+    },
+    "components": [
+      [
+        "lo",
+        "what"
+      ],
+      [
+        "que",
+        "(relative)"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "S0185L01": {
+    "lego": [
+      "I think you",
+      "Creo que las"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I think you",
+        "Creo que las",
+        null,
+        3
+      ],
+      [
+        "you",
+        "las",
+        null,
+        1
+      ],
+      [
+        "I think you",
+        "Creo que las",
+        null,
+        3
+      ],
+      [
+        "I think you now",
+        "Creo que las ahora",
+        null,
+        4
+      ],
+      [
+        "I think you here",
+        "Creo que las aquí",
+        null,
+        4
+      ],
+      [
+        "I want I think you",
+        "quiero Creo que las",
+        null,
+        5
+      ],
+      [
+        "I think you sometimes",
+        "Creo que las a veces",
+        null,
+        4
+      ],
+      [
+        "I think you with you",
+        "Creo que las contigo",
+        null,
+        5
+      ],
+      [
+        "I think I want to I think you",
+        "creo que quiero Creo que las",
+        null,
+        8
+      ],
+      [
+        "I want to I think you this week",
+        "quiero Creo que las esta semana",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0185L01",
+      "seed_context": {
+        "known": "Creo que las dejaste en el trabajo.",
+        "target": "I think you left them at work."
+      }
+    },
+    "components": [
+      [
+        "Creo",
+        "I think/believe"
+      ],
+      [
+        "que",
+        "that"
+      ]
+    ]
+  }
+}

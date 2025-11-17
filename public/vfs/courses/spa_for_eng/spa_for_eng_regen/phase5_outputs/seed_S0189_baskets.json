@@ -1,0 +1,101 @@
+{
+  "S0189L02": {
+    "lego": [
+      "Yes that's",
+      "Sí, esa es"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "Yes",
+        "Sí"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Yes that's",
+        "Sí, esa es",
+        null,
+        2
+      ],
+      [
+        "that's",
+        "es",
+        null,
+        1
+      ],
+      [
+        "Yes",
+        "Sí",
+        null,
+        1
+      ],
+      [
+        "Yes that's now",
+        "Sí, esa es ahora",
+        null,
+        3
+      ],
+      [
+        "Yes that's here",
+        "Sí, esa es aquí",
+        null,
+        3
+      ],
+      [
+        "I want Yes that's",
+        "quiero Sí, esa es",
+        null,
+        4
+      ],
+      [
+        "Yes that's sometimes",
+        "Sí, esa es a veces",
+        null,
+        3
+      ],
+      [
+        "Yes that's with you",
+        "Sí, esa es contigo",
+        null,
+        4
+      ],
+      [
+        "I think I want to Yes that's",
+        "creo que quiero Sí, esa es",
+        null,
+        7
+      ],
+      [
+        "I want to Yes that's this week",
+        "quiero Sí, esa es esta semana",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0189L02",
+      "seed_context": {
+        "known": "Sí, esa es una buena idea.",
+        "target": "Yes that's a good idea."
+      }
+    },
+    "components": [
+      [
+        "esa",
+        "that"
+      ],
+      [
+        "es",
+        "is"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "S0163L02": {
+    "lego": [
+      "I think that it's",
+      "Pienso que es"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I think",
+        "pienso"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I think that it's",
+        "Pienso que es",
+        null,
+        4
+      ],
+      [
+        "it's",
+        "es",
+        null,
+        1
+      ],
+      [
+        "I think",
+        "pienso",
+        null,
+        2
+      ],
+      [
+        "I think that it's now",
+        "Pienso que es ahora",
+        null,
+        5
+      ],
+      [
+        "I think that it's here",
+        "Pienso que es aquí",
+        null,
+        5
+      ],
+      [
+        "I want I think that it's",
+        "quiero Pienso que es",
+        null,
+        6
+      ],
+      [
+        "I think that it's sometimes",
+        "Pienso que es a veces",
+        null,
+        5
+      ],
+      [
+        "I think that it's with you",
+        "Pienso que es contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to I think that it's",
+        "creo que quiero Pienso que es",
+        null,
+        9
+      ],
+      [
+        "I want to I think that it's this week",
+        "quiero Pienso que es esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0163L02",
+      "seed_context": {
+        "known": "Pienso que es interesante.",
+        "target": "I think that it's interesting."
+      }
+    },
+    "components": [
+      [
+        "pienso",
+        "I think"
+      ],
+      [
+        "que",
+        "that"
+      ]
+    ]
+  }
+}

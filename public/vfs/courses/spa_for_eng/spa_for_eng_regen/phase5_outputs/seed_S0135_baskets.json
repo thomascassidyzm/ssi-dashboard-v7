@@ -1,0 +1,199 @@
+{
+  "S0135L01": {
+    "lego": [
+      "I don't know why",
+      "No sé por"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I don't know why",
+        "No sé por",
+        null,
+        4
+      ],
+      [
+        "why",
+        "por",
+        null,
+        1
+      ],
+      [
+        "I don't know why",
+        "No sé por",
+        null,
+        4
+      ],
+      [
+        "I don't know why now",
+        "No sé por ahora",
+        null,
+        5
+      ],
+      [
+        "I don't know why here",
+        "No sé por aquí",
+        null,
+        5
+      ],
+      [
+        "I want I don't know why",
+        "quiero No sé por",
+        null,
+        6
+      ],
+      [
+        "I don't know why sometimes",
+        "No sé por a veces",
+        null,
+        5
+      ],
+      [
+        "I don't know why with you",
+        "No sé por contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to I don't know why",
+        "creo que quiero No sé por",
+        null,
+        9
+      ],
+      [
+        "I want to I don't know why this week",
+        "quiero No sé por esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0135L01",
+      "seed_context": {
+        "known": "No sé por qué piensas que es tan bueno.",
+        "target": "I don't know why you think that it's so good."
+      }
+    },
+    "components": [
+      [
+        "No",
+        "don't"
+      ],
+      [
+        "sé",
+        "I know"
+      ]
+    ]
+  },
+  "S0135L03": {
+    "lego": [
+      "know why",
+      "sé por qué"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I don't know why",
+        "No sé por"
+      ],
+      [
+        "I don't know why",
+        "No sé por qué"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "know why",
+        "sé por qué",
+        null,
+        2
+      ],
+      [
+        "why",
+        "qué",
+        null,
+        1
+      ],
+      [
+        "I don't know why",
+        "No sé por qué",
+        null,
+        4
+      ],
+      [
+        "know why now",
+        "sé por qué ahora",
+        null,
+        3
+      ],
+      [
+        "know why here",
+        "sé por qué aquí",
+        null,
+        3
+      ],
+      [
+        "I want know why",
+        "quiero sé por qué",
+        null,
+        4
+      ],
+      [
+        "know why sometimes",
+        "sé por qué a veces",
+        null,
+        3
+      ],
+      [
+        "know why with you",
+        "sé por qué contigo",
+        null,
+        4
+      ],
+      [
+        "I think I want to know why",
+        "creo que quiero sé por qué",
+        null,
+        7
+      ],
+      [
+        "I want to know why this week",
+        "quiero sé por qué esta semana",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0135L03",
+      "seed_context": {
+        "known": "No sé por qué piensas que es tan bueno.",
+        "target": "I don't know why you think that it's so good."
+      }
+    },
+    "components": [
+      [
+        "por",
+        ""
+      ],
+      [
+        "qué",
+        "why"
+      ]
+    ]
+  }
+}

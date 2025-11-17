@@ -1,0 +1,204 @@
+{
+  "S0232L02": {
+    "lego": [
+      "woman who",
+      "vieja que"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I know an old woman",
+        "conozco a una mujer vieja"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "woman who",
+        "vieja que",
+        null,
+        2
+      ],
+      [
+        "who",
+        "que",
+        null,
+        1
+      ],
+      [
+        "I know an old woman",
+        "conozco a una mujer vieja",
+        null,
+        5
+      ],
+      [
+        "woman who now",
+        "vieja que ahora",
+        null,
+        3
+      ],
+      [
+        "woman who here",
+        "vieja que aquí",
+        null,
+        3
+      ],
+      [
+        "I want woman who",
+        "quiero vieja que",
+        null,
+        4
+      ],
+      [
+        "woman who sometimes",
+        "vieja que a veces",
+        null,
+        3
+      ],
+      [
+        "woman who with you",
+        "vieja que contigo",
+        null,
+        4
+      ],
+      [
+        "I think I want to woman who",
+        "creo que quiero vieja que",
+        null,
+        7
+      ],
+      [
+        "I want to woman who this week",
+        "quiero vieja que esta semana",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0232L02",
+      "seed_context": {
+        "known": "Conozco a una mujer vieja que puede recordar la respuesta.",
+        "target": "I know an old woman who can remember the answer."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0232L03": {
+    "lego": [
+      "who can remember",
+      "que puede recordar"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I know an old woman",
+        "conozco a una mujer vieja"
+      ],
+      [
+        "woman who",
+        "vieja que"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "who can remember",
+        "que puede recordar",
+        null,
+        3
+      ],
+      [
+        "remember",
+        "recordar",
+        null,
+        1
+      ],
+      [
+        "woman who",
+        "vieja que",
+        null,
+        2
+      ],
+      [
+        "who can remember now",
+        "que puede recordar ahora",
+        null,
+        4
+      ],
+      [
+        "who can remember here",
+        "que puede recordar aquí",
+        null,
+        4
+      ],
+      [
+        "I want who can remember",
+        "quiero que puede recordar",
+        null,
+        5
+      ],
+      [
+        "who can remember sometimes",
+        "que puede recordar a veces",
+        null,
+        4
+      ],
+      [
+        "who can remember with you",
+        "que puede recordar contigo",
+        null,
+        5
+      ],
+      [
+        "I think I want to who can remember",
+        "creo que quiero que puede recordar",
+        null,
+        8
+      ],
+      [
+        "I want to who can remember this week",
+        "quiero que puede recordar esta semana",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0232L03",
+      "seed_context": {
+        "known": "Conozco a una mujer vieja que puede recordar la respuesta.",
+        "target": "I know an old woman who can remember the answer."
+      }
+    },
+    "components": [
+      [
+        "puede",
+        "can"
+      ],
+      [
+        "recordar",
+        "to remember"
+      ]
+    ]
+  }
+}

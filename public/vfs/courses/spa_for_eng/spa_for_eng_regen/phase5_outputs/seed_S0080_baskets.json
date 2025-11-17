@@ -1,0 +1,104 @@
+{
+  "S0080L01": {
+    "lego": [
+      "I'm not sure when",
+      "No estoy seguro de cuándo"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm not sure when",
+        "No estoy seguro de cuándo",
+        null,
+        4
+      ],
+      [
+        "not sure when",
+        "No  seguro de cuándo",
+        null,
+        3
+      ],
+      [
+        "I'm not sure when",
+        "No estoy seguro de cuándo",
+        null,
+        4
+      ],
+      [
+        "you're not sure when",
+        "estás No  seguro de cuándo",
+        null,
+        4
+      ],
+      [
+        "he's not sure when",
+        "está No  seguro de cuándo",
+        null,
+        4
+      ],
+      [
+        "I'm not sure when right now",
+        "No estoy seguro de cuándo ahora mismo",
+        null,
+        6
+      ],
+      [
+        "I'm not sure when this morning",
+        "No estoy seguro de cuándo esta mañana",
+        null,
+        6
+      ],
+      [
+        "I think I'm not sure when",
+        "creo que No estoy seguro de cuándo",
+        null,
+        6
+      ],
+      [
+        "I'm not sure when but you're not",
+        "No estoy seguro de cuándo pero tú no",
+        null,
+        7
+      ],
+      [
+        "I was not sure when yesterday",
+        "estaba No  seguro de cuándo ayer",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0080L01",
+      "seed_context": {
+        "known": "No estoy seguro de cuándo estaré preparado",
+        "target": "I'm not sure when I'll be ready."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not"
+      ],
+      [
+        "estoy",
+        "I am"
+      ],
+      [
+        "seguro",
+        "sure"
+      ],
+      [
+        "de",
+        "of/about"
+      ]
+    ]
+  }
+}

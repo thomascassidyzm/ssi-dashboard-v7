@@ -1,0 +1,96 @@
+{
+  "S0145L01": {
+    "lego": [
+      "Why are",
+      "¿Por qué no"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Why are",
+        "¿Por qué no",
+        null,
+        2
+      ],
+      [
+        "are",
+        "no",
+        null,
+        1
+      ],
+      [
+        "Why are",
+        "¿Por qué no",
+        null,
+        2
+      ],
+      [
+        "Why are now",
+        "¿Por qué no ahora",
+        null,
+        3
+      ],
+      [
+        "Why are here",
+        "¿Por qué no aquí",
+        null,
+        3
+      ],
+      [
+        "I want Why are",
+        "quiero ¿Por qué no",
+        null,
+        4
+      ],
+      [
+        "Why are sometimes",
+        "¿Por qué no a veces",
+        null,
+        3
+      ],
+      [
+        "Why are with you",
+        "¿Por qué no contigo",
+        null,
+        4
+      ],
+      [
+        "I think I want to Why are",
+        "creo que quiero ¿Por qué no",
+        null,
+        7
+      ],
+      [
+        "I want to Why are this week",
+        "quiero ¿Por qué no esta semana",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0145L01",
+      "seed_context": {
+        "known": "¿Por qué no estás feliz ya?",
+        "target": "Why are you not happy any more?"
+      }
+    },
+    "components": [
+      [
+        "¿Por",
+        "Why"
+      ],
+      [
+        "qué",
+        "(question marker)"
+      ]
+    ]
+  }
+}

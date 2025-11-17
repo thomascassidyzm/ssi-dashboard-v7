@@ -1,0 +1,105 @@
+{
+  "S0083L03": {
+    "lego": [
+      "with what you said",
+      "con lo que dijiste"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I agree",
+        "estoy de acuerdo"
+      ],
+      [
+        "I agree with",
+        "estoy de acuerdo con"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "with what you said",
+        "con lo que dijiste",
+        null,
+        4
+      ],
+      [
+        "said",
+        "dijiste",
+        null,
+        1
+      ],
+      [
+        "I agree with",
+        "estoy de acuerdo con",
+        null,
+        3
+      ],
+      [
+        "with what you said now",
+        "con lo que dijiste ahora",
+        null,
+        5
+      ],
+      [
+        "with what you said here",
+        "con lo que dijiste aquí",
+        null,
+        5
+      ],
+      [
+        "I want with what you said",
+        "quiero con lo que dijiste",
+        null,
+        6
+      ],
+      [
+        "with what you said sometimes",
+        "con lo que dijiste a veces",
+        null,
+        5
+      ],
+      [
+        "with what you said with you",
+        "con lo que dijiste contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to with what you said",
+        "creo que quiero con lo que dijiste",
+        null,
+        9
+      ],
+      [
+        "I want to with what you said this week",
+        "quiero con lo que dijiste esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0083L03",
+      "seed_context": {
+        "known": "Estoy de acuerdo con lo que dijiste sobre tu amigo.",
+        "target": "I agree with what you said about your friend."
+      }
+    },
+    "components": [
+      [
+        "lo que",
+        "what"
+      ],
+      [
+        "dijiste",
+        "you said"
+      ]
+    ]
+  }
+}

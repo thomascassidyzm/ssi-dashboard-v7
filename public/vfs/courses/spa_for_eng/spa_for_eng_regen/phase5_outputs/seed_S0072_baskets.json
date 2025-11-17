@@ -1,0 +1,96 @@
+{
+  "S0072L01": {
+    "lego": [
+      "I think that you're",
+      "Pienso que estás"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I think that you're",
+        "Pienso que estás",
+        null,
+        4
+      ],
+      [
+        "you're",
+        "estás",
+        null,
+        1
+      ],
+      [
+        "I think that you're",
+        "Pienso que estás",
+        null,
+        4
+      ],
+      [
+        "I think that you're now",
+        "Pienso que estás ahora",
+        null,
+        5
+      ],
+      [
+        "I think that you're here",
+        "Pienso que estás aquí",
+        null,
+        5
+      ],
+      [
+        "I want I think that you're",
+        "quiero Pienso que estás",
+        null,
+        6
+      ],
+      [
+        "I think that you're sometimes",
+        "Pienso que estás a veces",
+        null,
+        5
+      ],
+      [
+        "I think that you're with you",
+        "Pienso que estás contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to I think that you're",
+        "creo que quiero Pienso que estás",
+        null,
+        9
+      ],
+      [
+        "I want to I think that you're this week",
+        "quiero Pienso que estás esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0072L01",
+      "seed_context": {
+        "known": "Pienso que estás haciendo muy bien",
+        "target": "I think that you're doing very well."
+      }
+    },
+    "components": [
+      [
+        "pienso",
+        "I think"
+      ],
+      [
+        "que",
+        "that"
+      ]
+    ]
+  }
+}

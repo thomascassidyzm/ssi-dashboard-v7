@@ -1,0 +1,105 @@
+{
+  "S0144L03": {
+    "lego": [
+      "woke earlier",
+      "desperté más temprano"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I woke",
+        "Me desperté"
+      ],
+      [
+        "earlier than I wanted to",
+        "más temprano de lo que quería"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "woke earlier",
+        "desperté más temprano",
+        null,
+        2
+      ],
+      [
+        "earlier",
+        "temprano",
+        null,
+        1
+      ],
+      [
+        "earlier than I wanted to",
+        "más temprano de lo que quería",
+        null,
+        5
+      ],
+      [
+        "woke earlier now",
+        "desperté más temprano ahora",
+        null,
+        3
+      ],
+      [
+        "woke earlier here",
+        "desperté más temprano aquí",
+        null,
+        3
+      ],
+      [
+        "I want woke earlier",
+        "quiero desperté más temprano",
+        null,
+        4
+      ],
+      [
+        "woke earlier sometimes",
+        "desperté más temprano a veces",
+        null,
+        3
+      ],
+      [
+        "woke earlier with you",
+        "desperté más temprano contigo",
+        null,
+        4
+      ],
+      [
+        "I think I want to woke earlier",
+        "creo que quiero desperté más temprano",
+        null,
+        7
+      ],
+      [
+        "I want to woke earlier this week",
+        "quiero desperté más temprano esta semana",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0144L03",
+      "seed_context": {
+        "known": "Me desperté más temprano de lo que quería esta mañana.",
+        "target": "I woke earlier than I wanted to this morning."
+      }
+    },
+    "components": [
+      [
+        "más",
+        "more"
+      ],
+      [
+        "temprano",
+        "early"
+      ]
+    ]
+  }
+}

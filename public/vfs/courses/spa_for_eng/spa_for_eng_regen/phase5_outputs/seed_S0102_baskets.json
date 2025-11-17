@@ -1,0 +1,105 @@
+{
+  "S0102L03": {
+    "lego": [
+      "trying to say that",
+      "intentando decir que"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "we're trying",
+        "estamos intentando"
+      ],
+      [
+        "trying to say",
+        "intentando decir"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "trying to say that",
+        "intentando decir que",
+        null,
+        4
+      ],
+      [
+        "that",
+        "que",
+        null,
+        1
+      ],
+      [
+        "trying to say",
+        "intentando decir",
+        null,
+        3
+      ],
+      [
+        "trying to say that now",
+        "intentando decir que ahora",
+        null,
+        5
+      ],
+      [
+        "trying to say that here",
+        "intentando decir que aquí",
+        null,
+        5
+      ],
+      [
+        "I want trying to say that",
+        "quiero intentando decir que",
+        null,
+        6
+      ],
+      [
+        "trying to say that sometimes",
+        "intentando decir que a veces",
+        null,
+        5
+      ],
+      [
+        "trying to say that with you",
+        "intentando decir que contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to trying to say that",
+        "creo que quiero intentando decir que",
+        null,
+        9
+      ],
+      [
+        "I want to trying to say that this week",
+        "quiero intentando decir que esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0102L03",
+      "seed_context": {
+        "known": "Estamos intentando decir que no es así",
+        "target": "We're trying to say that it's not like that."
+      }
+    },
+    "components": [
+      [
+        "decir",
+        "to say"
+      ],
+      [
+        "que",
+        "that"
+      ]
+    ]
+  }
+}

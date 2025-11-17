@@ -1,0 +1,216 @@
+{
+  "S0206L03": {
+    "lego": [
+      "chance to practise speaking",
+      "oportunidad de practicar hablar"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I enjoy",
+        "disfruto"
+      ],
+      [
+        "the chance",
+        "la oportunidad"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "chance to practise speaking",
+        "oportunidad de practicar hablar",
+        null,
+        4
+      ],
+      [
+        "speaking",
+        "hablar",
+        null,
+        1
+      ],
+      [
+        "the chance",
+        "la oportunidad",
+        null,
+        2
+      ],
+      [
+        "chance to practise speaking now",
+        "oportunidad de practicar hablar ahora",
+        null,
+        5
+      ],
+      [
+        "chance to practise speaking here",
+        "oportunidad de practicar hablar aquí",
+        null,
+        5
+      ],
+      [
+        "I want chance to practise speaking",
+        "quiero oportunidad de practicar hablar",
+        null,
+        6
+      ],
+      [
+        "chance to practise speaking sometimes",
+        "oportunidad de practicar hablar a veces",
+        null,
+        5
+      ],
+      [
+        "chance to practise speaking with you",
+        "oportunidad de practicar hablar contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to chance to practise speaking",
+        "creo que quiero oportunidad de practicar hablar",
+        null,
+        9
+      ],
+      [
+        "I want to chance to practise speaking this week",
+        "quiero oportunidad de practicar hablar esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0206L03",
+      "seed_context": {
+        "known": "Disfruto la oportunidad de practicar hablar contigo",
+        "target": "I enjoy the chance to practise speaking with you."
+      }
+    },
+    "components": [
+      [
+        "de",
+        "to"
+      ],
+      [
+        "practicar",
+        "to practise"
+      ],
+      [
+        "hablar",
+        "speaking"
+      ]
+    ]
+  },
+  "S0206L04": {
+    "lego": [
+      "chance to practise speaking",
+      "de practicar hablar"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I enjoy",
+        "disfruto"
+      ],
+      [
+        "the chance",
+        "la oportunidad"
+      ],
+      [
+        "chance to practise speaking",
+        "oportunidad de practicar hablar"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "chance to practise speaking",
+        "de practicar hablar",
+        null,
+        4
+      ],
+      [
+        "speaking",
+        "hablar",
+        null,
+        1
+      ],
+      [
+        "chance to practise speaking",
+        "oportunidad de practicar hablar",
+        null,
+        4
+      ],
+      [
+        "chance to practise speaking now",
+        "de practicar hablar ahora",
+        null,
+        5
+      ],
+      [
+        "chance to practise speaking here",
+        "de practicar hablar aquí",
+        null,
+        5
+      ],
+      [
+        "I want chance to practise speaking",
+        "quiero de practicar hablar",
+        null,
+        6
+      ],
+      [
+        "chance to practise speaking sometimes",
+        "de practicar hablar a veces",
+        null,
+        5
+      ],
+      [
+        "chance to practise speaking with you",
+        "de practicar hablar contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to chance to practise speaking",
+        "creo que quiero de practicar hablar",
+        null,
+        9
+      ],
+      [
+        "I want to chance to practise speaking this week",
+        "quiero de practicar hablar esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0206L04",
+      "seed_context": {
+        "known": "Disfruto la oportunidad de practicar hablar contigo",
+        "target": "I enjoy the chance to practise speaking with you."
+      }
+    },
+    "components": [
+      [
+        "practicar",
+        "to practise"
+      ],
+      [
+        "hablar",
+        "speaking"
+      ]
+    ]
+  }
+}

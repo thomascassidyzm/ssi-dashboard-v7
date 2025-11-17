@@ -1,0 +1,100 @@
+{
+  "S0085L01": {
+    "lego": [
+      "I don't know those",
+      "No conozco a esas"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I don't know those",
+        "No conozco a esas",
+        null,
+        4
+      ],
+      [
+        "those",
+        "esas",
+        null,
+        1
+      ],
+      [
+        "I don't know those",
+        "No conozco a esas",
+        null,
+        4
+      ],
+      [
+        "I don't know those now",
+        "No conozco a esas ahora",
+        null,
+        5
+      ],
+      [
+        "I don't know those here",
+        "No conozco a esas aquí",
+        null,
+        5
+      ],
+      [
+        "I want I don't know those",
+        "quiero No conozco a esas",
+        null,
+        6
+      ],
+      [
+        "I don't know those sometimes",
+        "No conozco a esas a veces",
+        null,
+        5
+      ],
+      [
+        "I don't know those with you",
+        "No conozco a esas contigo",
+        null,
+        6
+      ],
+      [
+        "I think I want to I don't know those",
+        "creo que quiero No conozco a esas",
+        null,
+        9
+      ],
+      [
+        "I want to I don't know those this week",
+        "quiero No conozco a esas esta semana",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0085L01",
+      "seed_context": {
+        "known": "No conozco a esas personas.",
+        "target": "I don't know those people."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not"
+      ],
+      [
+        "conozco",
+        "I know"
+      ],
+      [
+        "a",
+        "personal a"
+      ]
+    ]
+  }
+}
