@@ -1,80 +1,27 @@
 {
   "legos": {
     "S0021L01": {
-      "lego": [
-        "why are you",
-        "你为什么"
-      ],
+      "lego": ["why are you","你为什么"],
       "type": "M",
       "current_seed_legos_available": [],
       "is_final_lego": false,
       "practice_phrases": [
-        [
-          "Why are you stopping?",
-          "你为什么在停止？",
-          null,
-          2
-        ],
-        [
-          "Why are you here?",
-          "你为什么在这里？",
-          null,
-          1
-        ],
-        [
-          "Why are you speaking Chinese?",
-          "你为什么在说中文？",
-          null,
-          3
-        ],
-        [
-          "Why are you learning tomorrow?",
-          "你为什么明天在学？",
-          null,
-          3
-        ],
-        [
-          "Why are you meeting with me?",
-          "你为什么和我见面？",
-          null,
-          4
-        ],
-        [
-          "Why are you coming back later?",
-          "你为什么晚点回来？",
-          null,
-          4
-        ],
-        [
-          "Why are you learning Chinese with other people?",
-          "你为什么和其他人一起学中文？",
-          null,
-          6
-        ],
-        [
-          "Why are you speaking Chinese very well?",
-          "你为什么中文说得很好？",
-          null,
-          5
-        ],
-        [
-          "Why are you trying to find out what the answer is?",
-          "你为什么在试着找出答案是什么？",
-          null,
-          7
-        ],
-        [
-          "Why are you wanting to meet at six o'clock this evening?",
-          "你为什么想今天晚上六点见面？",
-          null,
-          8
-        ]
+        ["Why are you?", "你为什么", null, 2],
+        ["Why are you here", "你为什么在这", null, 2],
+        ["Why are you speaking?", "你为什么在说", null, 3],
+        ["Why are you guessing?", "你为什么在猜", null, 3],
+        ["Why are you speaking Chinese?", "你为什么说中文", null, 4],
+        ["But why are you learning?", "但你为什么在学", null, 4],
+        ["Why are you learning this now?", "你为什么现在在学这个", null, 5],
+        ["Why are you meeting tomorrow?", "你为什么明天见面", null, 5],
+        ["Why are you speaking Chinese all day?", "你为什么整天都说中文", null, 6],
+        ["Why are you learning to speak Chinese very well?", "你为什么在学中文说得很好", null, 7]
       ],
       "phrase_distribution": {
         "really_short_1_2": 2,
         "quite_short_3": 2,
-        "longer_4_5": 2,
-        "long_6_plus": 4
+        "longer_4_5": 4,
+        "long_6_plus": 2
       },
       "_metadata": {
         "lego_id": "S0021L01",
@@ -83,97 +30,30 @@
           "target": "Why are you learning her name?"
         }
       },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
+      "components": [[null,null],[null,null]]
     },
     "S0021L02": {
-      "lego": [
-        "why are you learning",
-        "你为什么在学"
-      ],
+      "lego": ["why are you learning","你为什么在学"],
       "type": "M",
-      "current_seed_legos_available": [
-        [
-          "why are you",
-          "你为什么"
-        ]
-      ],
+      "current_seed_legos_available": [["why are you","你为什么"]],
       "is_final_lego": false,
       "practice_phrases": [
-        [
-          "Why are you learning?",
-          "你为什么在学？",
-          null,
-          1
-        ],
-        [
-          "Why are you learning Chinese?",
-          "你为什么在学中文？",
-          null,
-          2
-        ],
-        [
-          "Why are you learning his name?",
-          "你为什么在学他的名字？",
-          null,
-          3
-        ],
-        [
-          "Why are you learning that?",
-          "你为什么在学那个？",
-          null,
-          2
-        ],
-        [
-          "Why are you learning very quickly?",
-          "你为什么在学得很快？",
-          null,
-          4
-        ],
-        [
-          "Why are you learning Chinese all day?",
-          "你为什么整天都在学中文？",
-          null,
-          4
-        ],
-        [
-          "Why are you learning to speak Chinese with me?",
-          "你为什么在学和我说中文？",
-          null,
-          5
-        ],
-        [
-          "Why are you learning Chinese with other people?",
-          "你为什么在和其他人学中文？",
-          null,
-          5
-        ],
-        [
-          "Why are you learning to find out what the answer is?",
-          "你为什么在学找出答案是什么？",
-          null,
-          6
-        ],
-        [
-          "Why are you learning to meet people at six o'clock?",
-          "你为什么在学今天晚上六点见人？",
-          null,
-          7
-        ]
+        ["Why are you learning?", "你为什么在学", null, 2],
+        ["Why are you learning now?", "你为什么现在在学", null, 2],
+        ["Why are you learning Chinese?", "你为什么在学中文", null, 3],
+        ["Why are you learning this?", "你为什么在学这个", null, 3],
+        ["But why are you learning tomorrow?", "但你为什么明天在学", null, 4],
+        ["Why are you learning with me?", "你为什么和我在学", null, 4],
+        ["Why are you learning this whole sentence?", "你为什么在学这个整个句子", null, 5],
+        ["Why are you learning to speak Chinese?", "你为什么在学说中文", null, 5],
+        ["Why are you learning Chinese all day tomorrow?", "你为什么明天整天都在学中文", null, 6],
+        ["Why are you learning to speak Chinese very well quickly?", "你为什么在学快点中文说得很好", null, 7]
       ],
       "phrase_distribution": {
         "really_short_1_2": 2,
         "quite_short_3": 2,
-        "longer_4_5": 2,
-        "long_6_plus": 4
+        "longer_4_5": 4,
+        "long_6_plus": 2
       },
       "_metadata": {
         "lego_id": "S0021L02",
@@ -182,109 +62,30 @@
           "target": "Why are you learning her name?"
         }
       },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
+      "components": [[null,null],[null,null],[null,null],[null,null]]
     },
     "S0021L03": {
-      "lego": [
-        "are learning",
-        "在学"
-      ],
+      "lego": ["are learning","在学"],
       "type": "M",
-      "current_seed_legos_available": [
-        [
-          "why are you",
-          "你为什么"
-        ],
-        [
-          "why are you learning",
-          "你为什么在学"
-        ]
-      ],
+      "current_seed_legos_available": [["why are you","你为什么"],["why are you learning","你为什么在学"]],
       "is_final_lego": false,
       "practice_phrases": [
-        [
-          "They are learning.",
-          "他们在学。",
-          null,
-          1
-        ],
-        [
-          "We are learning Chinese.",
-          "我们在学中文。",
-          null,
-          2
-        ],
-        [
-          "You are learning quickly.",
-          "你在学得很快。",
-          null,
-          2
-        ],
-        [
-          "I am learning his name.",
-          "我在学他的名字。",
-          null,
-          3
-        ],
-        [
-          "We are learning all day.",
-          "我们整天都在学。",
-          null,
-          3
-        ],
-        [
-          "They are learning to speak Chinese.",
-          "他们在学说中文。",
-          null,
-          4
-        ],
-        [
-          "We are learning together with other people.",
-          "我们在和其他人一起学。",
-          null,
-          5
-        ],
-        [
-          "I am learning very well this evening.",
-          "我今天晚上在学得很好。",
-          null,
-          5
-        ],
-        [
-          "You are learning to speak Chinese with me tomorrow.",
-          "你明天在学和我说中文。",
-          null,
-          6
-        ],
-        [
-          "We are learning to find out what is going to happen.",
-          "我们在学找出会发生什么。",
-          null,
-          7
-        ]
+        ["I'm learning", "我在学", null, 2],
+        ["Are learning now", "现在在学", null, 2],
+        ["You are learning Chinese", "你在学中文", null, 3],
+        ["She's learning tomorrow", "她明天在学", null, 3],
+        ["He's learning his name quickly", "他在快点学他的名字", null, 4],
+        ["Why are you learning?", "你为什么在学", null, 4],
+        ["I'm learning to speak Chinese now", "我现在在学说中文", null, 5],
+        ["But I'm learning this evening", "但我今天晚上在学", null, 5],
+        ["We're learning Chinese all day tomorrow", "我们明天整天都在学中文", null, 6],
+        ["I'm learning to speak Chinese very well quickly", "我在学快点中文说得很好", null, 7]
       ],
       "phrase_distribution": {
         "really_short_1_2": 2,
         "quite_short_3": 2,
-        "longer_4_5": 2,
-        "long_6_plus": 4
+        "longer_4_5": 4,
+        "long_6_plus": 2
       },
       "_metadata": {
         "lego_id": "S0021L03",
@@ -293,105 +94,30 @@
           "target": "Why are you learning her name?"
         }
       },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
+      "components": [[null,null],[null,null]]
     },
     "S0021L04": {
-      "lego": [
-        "are learning her name",
-        "在学她的名字"
-      ],
+      "lego": ["are learning her name","在学她的名字"],
       "type": "M",
-      "current_seed_legos_available": [
-        [
-          "why are you",
-          "你为什么"
-        ],
-        [
-          "why are you learning",
-          "你为什么在学"
-        ],
-        [
-          "are learning",
-          "在学"
-        ]
-      ],
+      "current_seed_legos_available": [["why are you","你为什么"],["why are you learning","你为什么在学"],["are learning","在学"]],
       "is_final_lego": false,
       "practice_phrases": [
-        [
-          "They are learning her name.",
-          "他们在学她的名字。",
-          null,
-          1
-        ],
-        [
-          "We are learning her name quickly.",
-          "我们在快点学她的名字。",
-          null,
-          2
-        ],
-        [
-          "You are learning her name very well.",
-          "你在学她的名字学得很好。",
-          null,
-          3
-        ],
-        [
-          "I am learning her name today.",
-          "我今天在学她的名字。",
-          null,
-          2
-        ],
-        [
-          "We are learning her name all day.",
-          "我们整天都在学她的名字。",
-          null,
-          3
-        ],
-        [
-          "They are learning her name together.",
-          "他们一起在学她的名字。",
-          null,
-          4
-        ],
-        [
-          "You are learning her name with other people.",
-          "你在和其他人学她的名字。",
-          null,
-          4
-        ],
-        [
-          "I am learning her name after you finish speaking.",
-          "我在你说完之后学她的名字。",
-          null,
-          5
-        ],
-        [
-          "We are learning her name to meet her this evening.",
-          "我们在学她的名字今天晚上见她。",
-          null,
-          6
-        ],
-        [
-          "They are learning her name because they want to speak with her tomorrow.",
-          "他们在学她的名字因为明天想和她说话。",
-          null,
-          7
-        ]
+        ["Learning her name", "在学她的名字", null, 1],
+        ["Are learning her name", "在学她的名字", null, 2],
+        ["You're learning her name", "你在学她的名字", null, 3],
+        ["I'm learning her name", "我在学她的名字", null, 3],
+        ["He's learning her name quickly", "他在快点学她的名字", null, 4],
+        ["Why are you learning her name?", "你为什么在学她的名字", null, 4],
+        ["She's learning her name this evening", "她今天晚上在学她的名字", null, 5],
+        ["But I'm learning her name tomorrow", "但我明天在学她的名字", null, 5],
+        ["We're learning her name very well now", "我们现在在很好地学她的名字", null, 6],
+        ["I want to be able to learn her whole name quickly", "我想能够快点学会她的整个名字", null, 7]
       ],
       "phrase_distribution": {
         "really_short_1_2": 2,
         "quite_short_3": 2,
-        "longer_4_5": 2,
-        "long_6_plus": 4
+        "longer_4_5": 4,
+        "long_6_plus": 2
       },
       "_metadata": {
         "lego_id": "S0021L04",
@@ -400,121 +126,30 @@
           "target": "Why are you learning her name?"
         }
       },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
     },
     "S0021L05": {
-      "lego": [
-        "her name",
-        "她的名字"
-      ],
+      "lego": ["her name","她的名字"],
       "type": "M",
-      "current_seed_legos_available": [
-        [
-          "why are you",
-          "你为什么"
-        ],
-        [
-          "why are you learning",
-          "你为什么在学"
-        ],
-        [
-          "are learning",
-          "在学"
-        ],
-        [
-          "are learning her name",
-          "在学她的名字"
-        ]
-      ],
+      "current_seed_legos_available": [["why are you","你为什么"],["why are you learning","你为什么在学"],["are learning","在学"],["are learning her name","在学她的名字"]],
       "is_final_lego": true,
       "practice_phrases": [
-        [
-          "Her name.",
-          "她的名字。",
-          null,
-          1
-        ],
-        [
-          "I want her name.",
-          "我想要她的名字。",
-          null,
-          2
-        ],
-        [
-          "Do you know her name?",
-          "你知道她的名字吗？",
-          null,
-          2
-        ],
-        [
-          "I am learning her name.",
-          "我在学她的名字。",
-          null,
-          3
-        ],
-        [
-          "He wants to learn her name quickly.",
-          "他想快点学会她的名字。",
-          null,
-          4
-        ],
-        [
-          "We are trying to remember her name.",
-          "我们在试着记住她的名字。",
-          null,
-          4
-        ],
-        [
-          "I want to find out what her name is.",
-          "我想找出她的名字是什么。",
-          null,
-          5
-        ],
-        [
-          "She wants to meet people who know her name.",
-          "她想认识知道她的名字的人。",
-          null,
-          6
-        ],
-        [
-          "I am learning her name because I want to speak with her tomorrow.",
-          "我在学她的名字因为我想明天和她说话。",
-          null,
-          7
-        ],
-        [
-          "Why are you learning her name?",
-          "你为什么在学她的名字？",
-          null,
-          5
-        ]
+        ["Her name", "她的名字", null, 1],
+        ["Remember her name", "记住她的名字", null, 2],
+        ["I know her name", "我知道她的名字", null, 3],
+        ["Learning her name", "在学她的名字", null, 3],
+        ["I want to learn her name", "我想学会她的名字", null, 4],
+        ["You're learning her name quickly", "你在快点学她的名字", null, 4],
+        ["He wants to remember her name tomorrow", "他想明天记住她的名字", null, 5],
+        ["But I'm learning her name now", "但我现在在学她的名字", null, 5],
+        ["I'm not sure what her name is", "我不确定她的名字是什么", null, 6],
+        ["Why are you learning her name?", "你为什么在学她的名字？", null, 7]
       ],
       "phrase_distribution": {
         "really_short_1_2": 2,
         "quite_short_3": 2,
-        "longer_4_5": 2,
-        "long_6_plus": 4
+        "longer_4_5": 4,
+        "long_6_plus": 2
       },
       "_metadata": {
         "lego_id": "S0021L05",
@@ -523,20 +158,7 @@
           "target": "Why are you learning her name?"
         }
       },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
+      "components": [[null,null],[null,null],[null,null]]
     }
   }
 }
