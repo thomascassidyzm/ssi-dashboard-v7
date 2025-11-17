@@ -1,0 +1,51 @@
+{
+  "S0258L01": {
+    "lego": ["over there","那边"],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Over there.", "那边。", null, 1],
+      ["That's over there.", "那个在那边。", null, 2],
+      ["I like over there.", "我喜欢那边。", null, 2],
+      ["I want that over there.", "我想要那边那个。", null, 3],
+      ["I think that's over there.", "我想那个在那边。", null, 3],
+      ["That blue thing is over there.", "那个蓝色的东西在那边。", null, 4],
+      ["I like that blue thing over there.", "我喜欢那边那个蓝色的东西。", null, 4],
+      ["I want you to help me over there.", "我想让你在那边帮助我。", null, 5],
+      ["I think that blue thing over there is fairly good.", "我觉得那边那个蓝色的东西相当好。", null, 6],
+      ["I want you to be ready to start over there in a few minutes.", "我想让你几分钟后就在那边准备好开始。", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0258L04": {
+    "lego": ["is what/what is","是什么"],
+    "type": "M",
+    "current_seed_legos_available": [["over there","那边"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["What is that?", "那个是什么？", null, 1],
+      ["What is that thing?", "那个东西是什么？", null, 2],
+      ["What is that film?", "那部电影是什么？", null, 2],
+      ["What is that over there?", "那边那个是什么？", null, 3],
+      ["I want to know what that is.", "我想要知道那个是什么。", null, 4],
+      ["What is that blue thing?", "那个蓝色的东西是什么？", null, 4],
+      ["I think that is what you want.", "我想那个是什么你想要。", null, 5],
+      ["What is that blue thing over there before you go?", "在你走之前那边那个蓝色的东西是什么？", null, 6],
+      ["I want you to tell me what that blue thing over there is.", "我想让你告诉我那边那个蓝色的东西是什么。", null, 7],
+      ["What's that blue thing over there?", "那边那个蓝色的东西是什么？", null, 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

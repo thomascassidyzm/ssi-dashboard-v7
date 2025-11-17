@@ -1,0 +1,27 @@
+{
+  "S0259L01": {
+    "lego": ["an idea", "一个想法"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["An idea", "一个想法", null, 1],
+      ["That idea", "那个想法", null, 1],
+      ["I like that idea", "我喜欢那个想法", null, 2],
+      ["I think that's an idea", "我想那是一个想法", null, 2],
+      ["That's a good idea", "那是一个好想法", null, 3],
+      ["You think that's an idea", "你觉得那是一个想法", null, 3],
+      ["Can you tell me an idea", "你能告诉我一个想法吗", null, 4],
+      ["I want you to help me with an idea", "我想让你帮助我一个想法", null, 4],
+      ["I don't want to think about that idea before I answer", "我不想在我回答之前想那个想法", null, 5],
+      ["An idea.", "一个想法。", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [["一个", "an/one"], ["想法", "idea"]]
+  }
+}
