@@ -1,0 +1,211 @@
+{
+  "S0440L01": {
+    "lego": ["they want", "他们想"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["They want", "他们想", null, 1],
+      ["They want that", "他们想那", null, 2],
+      ["They want to die", "他们想死", null, 3],
+      ["They want to travel", "他们想旅行", null, 3],
+      ["They want to die for charity", "他们想为慈善死", null, 4],
+      ["They want to decide that", "他们想决定那", null, 4],
+      ["They want to travel when they're still young", "他们想在他们还年轻的时候旅行", null, 5],
+      ["They want to raise money for charity if possible", "他们想如果可能为慈善筹集钱", null, 5],
+      ["They want to decide what he should do for charity", "他们想决定他应该为慈善做什么", null, 6],
+      ["They want to travel while they could if that's possible", "他们想如果那是可能的他们可能的时候旅行", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他们", "they"],
+      ["想", "want"]
+    ]
+  },
+  "S0440L02": {
+    "lego": ["while they're still young", "在他们还年轻的时候"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0440L01",
+        "known": "they want",
+        "target": "他们想",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["While they're still young", "在他们还年轻的时候", null, 1],
+      ["They're still young", "他们还年轻", null, 2],
+      ["While they're still young they want to travel", "在他们还年轻的时候他们想旅行", null, 3],
+      ["They want to travel while they're still young", "他们想在他们还年轻的时候旅行", null, 3],
+      ["While they're still young they don't want to die", "在他们还年轻的时候他们不想死", null, 4],
+      ["While they're still young they could travel", "在他们还年轻的时候他们可能旅行", null, 4],
+      ["They want to raise money for charity while they're still young", "他们想在他们还年轻的时候为慈善筹集钱", null, 5],
+      ["While they're still young they could decide to travel", "在他们还年轻的时候他们可能决定旅行", null, 5],
+      ["While they're still young they don't want to decide what to do", "在他们还年轻的时候他们不想决定做什么", null, 6],
+      ["They could mean they want to travel while they're still young if possible", "他们可能是说他们想如果可能在他们还年轻的时候旅行", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["在", "while"],
+      ["他们", "they"],
+      ["还", "still"],
+      ["年轻", "young"],
+      ["的时候", "when"]
+    ]
+  },
+  "S0440L03": {
+    "lego": ["they're still young", "他们还年轻"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0440L01",
+        "known": "they want",
+        "target": "他们想",
+        "type": "M"
+      },
+      {
+        "id": "S0440L02",
+        "known": "while they're still young",
+        "target": "在他们还年轻的时候",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["They're still young", "他们还年轻", null, 1],
+      ["I'm still young", "我还年轻", null, 2],
+      ["They're still young and want to travel", "他们还年轻想旅行", null, 3],
+      ["While they're still young they travel", "在他们还年轻的时候他们旅行", null, 3],
+      ["If they're still young they could travel", "如果他们还年轻他们可能旅行", null, 4],
+      ["They're still young but ready to decide", "他们还年轻但准备好决定", null, 4],
+      ["They're still young so they want to travel for charity", "他们还年轻所以他们想为慈善旅行", null, 5],
+      ["While they're still young they could raise money for charity", "在他们还年轻的时候他们可能为慈善筹集钱", null, 5],
+      ["If they're still young they don't want to decide what to do", "如果他们还年轻他们不想决定做什么", null, 6],
+      ["They're still young but they could mean they want to travel soon", "他们还年轻但他们可能是说他们想很快旅行", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他们", "they"],
+      ["还", "still"],
+      ["年轻", "young"]
+    ]
+  },
+  "S0440L04": {
+    "lego": ["when/while", "的时候"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0440L01",
+        "known": "they want",
+        "target": "他们想",
+        "type": "M"
+      },
+      {
+        "id": "S0440L02",
+        "known": "while they're still young",
+        "target": "在他们还年轻的时候",
+        "type": "M"
+      },
+      {
+        "id": "S0440L03",
+        "known": "they're still young",
+        "target": "他们还年轻",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["When", "的时候", null, 1],
+      ["When they travel", "他们旅行的时候", null, 2],
+      ["When they're still young", "在他们还年轻的时候", null, 3],
+      ["When they want to decide", "在他们想决定的时候", null, 3],
+      ["When they could die for charity", "在他们可能为慈善死的时候", null, 4],
+      ["When they don't want to travel", "在他们不想旅行的时候", null, 4],
+      ["When they're still young they want to travel", "在他们还年轻的时候他们想旅行", null, 5],
+      ["When they could decide what to do for charity", "在他们可能决定为慈善做什么的时候", null, 5],
+      ["When the film started they were still young and ready", "在电影开始的时候他们还年轻准备好", null, 6],
+      ["They don't want to decide when they should travel while they're young", "他们不想决定他们应该在他们年轻的时候什么时候旅行", null, 7]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["的", "(modifier)"],
+      ["时候", "time/moment"]
+    ]
+  },
+  "S0440L05": {
+    "lego": ["travel", "旅行"],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0440L01",
+        "known": "they want",
+        "target": "他们想",
+        "type": "M"
+      },
+      {
+        "id": "S0440L02",
+        "known": "while they're still young",
+        "target": "在他们还年轻的时候",
+        "type": "M"
+      },
+      {
+        "id": "S0440L03",
+        "known": "they're still young",
+        "target": "他们还年轻",
+        "type": "M"
+      },
+      {
+        "id": "S0440L04",
+        "known": "when/while",
+        "target": "的时候",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Travel", "旅行", null, 1],
+      ["To travel soon", "很快旅行", null, 2],
+      ["They want to travel", "他们想旅行", null, 3],
+      ["I don't want to travel", "我不想旅行", null, 3],
+      ["They could travel for charity", "他们可能为慈善旅行", null, 4],
+      ["When they travel while young", "在他们年轻的时候他们旅行", null, 4],
+      ["They want to travel while they're still young", "他们想在他们还年轻的时候旅行", null, 5],
+      ["If they're still young they could decide to travel", "如果他们还年轻他们可能决定旅行", null, 5],
+      ["They don't want to decide when to travel while they're young", "他们不想决定他们年轻的时候什么时候旅行", null, 6],
+      ["They want to travel while they're still young.", "他们想在他们还年轻的时候旅行。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
