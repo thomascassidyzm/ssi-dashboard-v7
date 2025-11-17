@@ -525,6 +525,164 @@ async function runDeduplication(courseCode) {
 }
 
 /**
+ * Run automatic collision check (Phase 3.6)
+ * Called after deduplication to detect and fix Learner Uncertainty Test (LUT) violations
+ * LUT = when same KNOWN phrase maps to multiple different TARGET phrases
+ * Returns true if collisions found and re-extraction started
+ */
+async function runAutomaticCollisionCheck(courseCode, job) {
+  console.log(`\n🔍 [Phase 3.6] Running automatic LUT check for ${courseCode}...`);
+
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const legoPairsPath = path.join(courseDir, 'phase_3', 'lego_pairs.json');
+
+  if (!fs.existsSync(legoPairsPath)) {
+    console.log(`   ⚠️  lego_pairs.json not found, skipping LUT check`);
+    return false;
+  }
+
+  try {
+    // Read lego_pairs.json
+    const legoPairs = JSON.parse(fs.readFileSync(legoPairsPath, 'utf8'));
+
+    // Build lookup table for LUT check: known phrase → set of target phrases
+    const lut = new Map();
+    const violationsBySeed = {};
+    let totalViolations = 0;
+
+    // Scan LEGOs to build LUT (only first 100 seeds)
+    // After 100 seeds, learners have enough exposure to handle ambiguity
+    // and can benefit from larger chunks anyway
+    legoPairs.seeds.forEach((seed) => {
+      const seedId = seed.seed_id;
+      const seedNum = parseInt(seedId.replace('S', ''));
+
+      // Only check LUT violations in first 100 seeds
+      if (seedNum > 100) return;
+
+      seed.legos.forEach((lego) => {
+        const knownPhrase = lego.known;
+        const targetPhrase = lego.target;
+
+        if (!lut.has(knownPhrase)) {
+          lut.set(knownPhrase, new Map());
+        }
+
+        const targetSet = lut.get(knownPhrase);
+        if (!targetSet.has(targetPhrase)) {
+          targetSet.set(targetPhrase, []);
+        }
+
+        targetSet.get(targetPhrase).push(seedId);
+      });
+    });
+
+    // Detect LUT violations (known phrase maps to multiple different targets)
+    lut.forEach((targetSet, knownPhrase) => {
+      if (targetSet.size > 1) {
+        // LUT violation detected!
+        const targets = Array.from(targetSet.keys());
+
+        console.log(`   ⚠️  LUT VIOLATION: "${knownPhrase}" → ${targets.join(' / ')}`);
+
+        // Apply FCFS rule: First Come First Served
+        // Keep first occurrence, mark subsequent ones for re-extraction
+        const allSeeds = [];
+        targetSet.forEach((seedIds, target) => {
+          seedIds.forEach(seedId => {
+            allSeeds.push({ seedId, target });
+          });
+        });
+
+        // Sort by seed_id to maintain FCFS order
+        allSeeds.sort((a, b) => a.seedId.localeCompare(b.seedId));
+
+        const firstSeed = allSeeds[0];
+        const subsequentSeeds = allSeeds.slice(1);
+
+        subsequentSeeds.forEach(({ seedId, target }) => {
+          if (!violationsBySeed[seedId]) {
+            violationsBySeed[seedId] = [];
+          }
+
+          violationsBySeed[seedId].push({
+            collision_key: knownPhrase,
+            conflicting_targets: targets,
+            kept_target: firstSeed.target,
+            kept_in_seed: firstSeed.seedId
+          });
+
+          totalViolations++;
+        });
+      }
+    });
+
+    if (totalViolations === 0) {
+      console.log(`   ✅ No LUT violations detected - Phase 3 complete!`);
+      return false;
+    }
+
+    // LUT violations found - generate manifest and trigger re-extraction
+    const affectedSeeds = Object.keys(violationsBySeed).sort();
+
+    console.log(`\n   ⚠️  LUT VIOLATIONS DETECTED:`);
+    console.log(`      Total violations: ${totalViolations}`);
+    console.log(`      Affected seeds: ${affectedSeeds.length}`);
+    console.log(`      First affected seed: ${affectedSeeds[0]}`);
+
+    // Save manifest
+    const manifestPath = path.join(courseDir, 'lego_pairs_reextraction_manifest.json');
+    const manifest = {
+      version: '3.6.0',
+      course: courseCode,
+      generated: new Date().toISOString(),
+      total_violations: totalViolations,
+      affected_seeds: affectedSeeds,
+      violations_by_seed: violationsBySeed
+    };
+
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+    console.log(`      Manifest saved: ${manifestPath}`);
+
+    // Trigger re-extraction internally
+    console.log(`\n   🔧 Starting automatic re-extraction...`);
+
+    const reextractionJob = {
+      courseCode,
+      mode: 'auto_reextraction',
+      affectedSeeds,
+      totalSeeds: affectedSeeds.length,
+      collisionManifest: violationsBySeed,
+      status: 'preparing',
+      startedAt: new Date().toISOString(),
+      branches: [],
+      milestones: {
+        orchestratorsSpawned: 0,
+        orchestratorsTotal: affectedSeeds.length,
+        branchesDetected: 0,
+        branchesExpected: affectedSeeds.length,
+        mergeStartedAt: null,
+        mergeCompletedAt: null
+      },
+      error: null
+    };
+
+    activeJobs.set(courseCode, reextractionJob);
+
+    // Spawn re-extraction sessions asynchronously
+    setTimeout(async () => {
+      await spawnReextractionSessions(courseCode, reextractionJob);
+    }, 100);
+
+    return true; // LUT violations found and re-extraction started
+
+  } catch (error) {
+    console.error(`   ❌ LUT check failed:`, error.message);
+    throw error;
+  }
+}
+
+/**
  * Start branch watcher for phase3-segment-* branches
  */
 /**
@@ -635,6 +793,113 @@ async function startBranchWatcher(courseCode, expectedSegments) {
       }
     } catch (error) {
       console.error(`[Watcher] Error polling branches:`, error.message);
+    }
+  }, 15000);
+
+  watchers.set(courseCode, watchInterval);
+
+  return Promise.resolve();
+}
+
+/**
+ * Start branch watcher for re-extraction branches
+ * Watches for claude/phase3-reextract-* branches and triggers dedup → collision check when complete
+ */
+async function startReextractionBranchWatcher(courseCode, expectedBranches) {
+  console.log(`\n👁️  [Re-extraction Watcher] Starting for ${courseCode}`);
+  console.log(`   Expected branches: ${expectedBranches}`);
+  console.log(`   Branch pattern: claude/phase3-reextract-*-${courseCode}`);
+
+  const job = activeJobs.get(courseCode);
+  if (!job) return;
+
+  // Poll for branches every 15 seconds
+  const watchInterval = setInterval(async () => {
+    try {
+      // Fetch latest from remote
+      await execAsync('git fetch --all', { cwd: VFS_ROOT });
+
+      // Look for re-extraction branches for this course
+      const result = await execAsync(
+        `git branch -r | grep -E "claude/phase3-reextract-.*${courseCode}" || true`,
+        { cwd: VFS_ROOT }
+      );
+
+      const branches = result.stdout
+        .split('\n')
+        .filter(b => b.trim())
+        .map(b => b.trim().replace('origin/', ''));
+
+      if (branches.length > 0) {
+        // Update job with new branches
+        const currentBranchNames = job.branches.map(b => b.branchName);
+        const newBranches = branches.filter(b => !currentBranchNames.includes(b));
+
+        newBranches.forEach(branchName => {
+          // Extract seed ID from branch name
+          const seedMatch = branchName.match(/reextract-(S\d+)/i);
+          const seedId = seedMatch ? seedMatch[1] : 'unknown';
+
+          job.branches.push({
+            branchName,
+            seedId,
+            detectedAt: new Date().toISOString(),
+            merged: false
+          });
+
+          job.milestones.branchesDetected = job.branches.length;
+          job.milestones.lastBranchDetectedAt = new Date().toISOString();
+
+          console.log(`  [Re-extraction Watcher] Branch ${job.branches.length}/${expectedBranches}: ${branchName} (${seedId})`);
+        });
+
+        // Check if all branches detected
+        if (job.branches.length >= expectedBranches && job.status === 'waiting_for_completion') {
+          console.log(`\n  [Re-extraction Watcher] ✅ All ${expectedBranches} branches detected!`);
+          console.log(`  [Re-extraction Watcher] Starting merge → dedup → collision check cycle...`);
+
+          clearInterval(watchInterval);
+          watchers.delete(courseCode);
+
+          job.status = 'merging_branches';
+          job.milestones.mergeStartedAt = new Date().toISOString();
+
+          // Simulate merge (TODO: actual git merge implementation)
+          setTimeout(async () => {
+            job.merged = true;
+            job.milestones.branchesMerged = job.branches.length;
+            job.milestones.mergeCompletedAt = new Date().toISOString();
+            job.status = 'deduplicating';
+            job.branches.forEach(b => b.merged = true);
+
+            console.log(`\n  [Re-extraction Watcher] Starting deduplication...`);
+            job.milestones.deduplicationStartedAt = new Date().toISOString();
+
+            try {
+              await runDeduplication(courseCode);
+              job.milestones.deduplicationCompletedAt = new Date().toISOString();
+
+              console.log(`\n  [Re-extraction Watcher] Running LUT check again...`);
+              const lutViolationsFound = await runAutomaticCollisionCheck(courseCode, job);
+
+              if (lutViolationsFound) {
+                console.log(`\n  [Re-extraction Watcher] ⚠️  More LUT violations found - continuing cycle`);
+                // Job continues with new re-extraction
+              } else {
+                console.log(`\n  [Re-extraction Watcher] ✅ No more LUT violations - Phase 3 complete!`);
+                job.status = 'complete';
+                await notifyOrchestrator(courseCode, 'complete');
+              }
+            } catch (err) {
+              console.error(`  [Re-extraction Watcher] ❌ Error:`, err.message);
+              job.status = 'failed';
+              job.error = err.message;
+            }
+          }, 2000);
+        }
+      }
+    } catch (error) {
+      console.error(`  [Re-extraction Watcher] Error polling branches:`, error.message);
     }
   }, 15000);
 
@@ -881,6 +1146,16 @@ app.post('/phase-complete', async (req, res) => {
     // Run deduplication (Phase 3.5)
     await runDeduplication(courseCode);
 
+    // Run automatic LUT check (Phase 3.6)
+    const lutViolationsFound = await runAutomaticCollisionCheck(courseCode, job);
+
+    if (lutViolationsFound) {
+      console.log(`\n⚠️  LUT violations detected - Phase 3.6 re-extraction in progress`);
+      // Job continues - don't mark complete yet
+      // Re-extraction will trigger another dedup → LUT check cycle
+      return res.json({ acknowledged: true, status: 'reextracting' });
+    }
+
     job.status = 'complete';
     job.merged = true;
 
@@ -973,6 +1248,9 @@ async function spawnReextractionSessions(courseCode, job) {
   job.status = 'waiting_for_completion';
   console.log(`\n[Phase 3 Re-extraction] ✅ Spawned ${spawned}/${job.affectedSeeds.length} sessions`);
   console.log(`[Phase 3 Re-extraction] Monitor browser tabs for LEGO re-extraction`);
+
+  // Start branch watcher for re-extraction branches
+  await startReextractionBranchWatcher(courseCode, job.affectedSeeds.length);
 }
 
 /**
@@ -987,23 +1265,23 @@ function generateReextractionPrompt(courseCode, seedId, seedPairs, collisionInst
 
   const [knownSentence, targetSentence] = seedData;
 
-  // Format collision instructions
+  // Format collision instructions (using proven format from generate-collision-aware-reextraction.cjs)
   let collisionContext = '';
   if (collisionInstructions && collisionInstructions.length > 0) {
+    const instructions = collisionInstructions.map(c =>
+      `DO NOT extract "${c.collision_key}" as standalone LEGO. ` +
+      `Reason: Registry collision - this phrase maps to multiple different TARGETs: ${c.conflicting_targets.join(', ')}. ` +
+      `Solution: Chunk "${c.collision_key}" UP with adjacent words from this sentence to create a larger, unique LEGO. ` +
+      `Use ONLY words from the source sentence - do not add new words.`
+    ).join('\n\n');
+
     collisionContext = `
 
 ## ⚠️ COLLISION FIX MODE - CHUNKING-UP REQUIRED
 
-**This seed has ${collisionInstructions.length} collision(s) that need fixing:**
+**This seed has ${collisionInstructions.length} collision(s) that must be resolved:**
 
-${collisionInstructions.map((c, i) => `
-**Collision ${i + 1}: "${c.collision_key}"**
-- This KNOWN phrase already exists in the registry with DIFFERENT targets
-- Conflicting targets: ${c.conflicting_targets.map(t => `"${t}"`).join(', ')}
-- **DO NOT** extract "${c.collision_key}" as a standalone LEGO
-- **INSTEAD**: Chunk UP with adjacent words to add disambiguating context
-- Use ONLY words from the seed sentence - DO NOT add new words
-`).join('\n')}
+${instructions}
 
 ---
 `;

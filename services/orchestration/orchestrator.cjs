@@ -1275,13 +1275,14 @@ app.post('/api/courses/:courseCode/phase/3/infinitive-check', async (req, res) =
 
 /**
  * POST /api/courses/:courseCode/phase/3/fix-collisions
- * Re-extract colliding LEGOs with chunking-up instructions
+ * Re-extract LEGOs with LUT violations using chunking-up instructions
+ * LUT = Learner Uncertainty Test (when same KNOWN phrase → multiple TARGET phrases)
  * Uses reextraction_manifest.json to trigger targeted Phase 3 re-run
  */
 app.post('/api/courses/:courseCode/phase/3/fix-collisions', async (req, res) => {
   const { courseCode } = req.params;
 
-  console.log(`\n🔧 Starting collision fix for ${courseCode}...`);
+  console.log(`\n🔧 Starting LUT violation fix for ${courseCode}...`);
 
   try {
     const courseDir = path.join(VFS_ROOT, courseCode);
@@ -1310,21 +1311,21 @@ app.post('/api/courses/:courseCode/phase/3/fix-collisions', async (req, res) => 
     if (affectedSeeds.length === 0) {
       return res.json({
         success: true,
-        message: 'No collisions to fix',
+        message: 'No LUT violations to fix',
         affectedSeeds: 0
       });
     }
 
-    console.log(`   Found ${affectedSeeds.length} seeds with collisions`);
+    console.log(`   Found ${affectedSeeds.length} seeds with LUT violations`);
     console.log(`   Delegating to Phase 3 server for re-extraction...`);
 
-    // Delegate to Phase 3 server with collision instructions
+    // Delegate to Phase 3 server with chunking-up instructions
     const axios = require('axios');
     const phase3Response = await axios.post(`${PHASE_SERVERS[3]}/reextract`, {
       courseCode,
       affectedSeeds,
       manifest: manifest.violations_by_seed,
-      mode: 'collision_fix'
+      mode: 'lut_fix'
     }, {
       timeout: 300000 // 5 minute timeout for re-extraction
     });
@@ -1340,7 +1341,7 @@ app.post('/api/courses/:courseCode/phase/3/fix-collisions', async (req, res) => 
     });
 
   } catch (error) {
-    console.error(`   ❌ Collision fix error:`, error.message);
+    console.error(`   ❌ LUT fix error:`, error.message);
     res.status(500).json({
       error: error.message,
       courseCode
