@@ -721,7 +721,9 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 4. **Save FULL output**: Write complete JSON to \`${relativeDir}/phase5_outputs/seed_SXXXX_FULL.json\`
 5. **Strip metadata**: Extract ONLY the \`legos\` object (remove _metadata, _instructions, _stats)
 6. **Save stripped**: Write clean JSON to \`${relativeDir}/phase5_outputs/seed_SXXXX_baskets.json\`
-7. **Commit & Push**: Create branch \`claude/baskets-${courseCode}-window-N-sXXXX-sYYYY\`, commit ONLY stripped files, push to GitHub
+7. **Commit & Push**: Create branch \`claude/baskets-${courseCode}-window-N-sXXXX-sYYYY-[SESSION_ID]\`, commit ONLY stripped files, push to GitHub
+   - **CRITICAL**: Append your Claude session ID to the branch name (e.g., \`-01Hjy67f2oaF4392y2gC971T\`)
+   - This ensures GitHub authentication works via Claude Code on the Web
 
 ---
 
