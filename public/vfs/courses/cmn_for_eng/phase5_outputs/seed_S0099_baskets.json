@@ -1,0 +1,122 @@
+{
+  "S0099L01": {
+    "lego": ["you should","你应该"],
+    "type": "M",
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You should", "你应该", null, 1],
+      ["You should think", "你应该认为", null, 2],
+      ["You should go home", "你应该回家", null, 3],
+      ["You should do this", "你应该做这个", null, 3],
+      ["You should speak more slowly", "你应该说得慢一点", null, 4],
+      ["You should be ready", "你应该准备好", null, 4],
+      ["You should go home as soon as you want", "你应该只要你想就回家", null, 5],
+      ["You should consider playing something else", "你应该考虑玩别的东西", null, 5],
+      ["You should think that would be great", "你应该认为那就太好了", null, 6],
+      ["You should keep on doing this a while", "你应该继续做这个一段时间", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0099L02": {
+    "lego": ["ask yourself","问问你自己"],
+    "type": "M",
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Ask yourself", "问问你自己", null, 1],
+      ["You should ask yourself", "你应该问问你自己", null, 2],
+      ["Ask yourself if you can", "问问你自己如果你能", null, 3],
+      ["You should ask yourself this", "你应该问问你自己这个", null, 3],
+      ["Ask yourself if that would be great", "问问你自己如果那就太好了", null, 4],
+      ["You should ask yourself if you can", "你应该问问你自己如果你能", null, 4],
+      ["You should ask yourself if you are ready", "你应该问问你自己如果你准备好", null, 5],
+      ["Ask yourself if you can do this", "问问你自己如果你能做这个", null, 5],
+      ["You should ask yourself if that would be great", "你应该问问你自己如果那就太好了", null, 6],
+      ["You should ask yourself if you can go home", "你应该问问你自己如果你能回家", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0099L05": {
+    "lego": ["why it's not working","为什么它不起作用"],
+    "type": "M",
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Why it's not working", "为什么它不起作用", null, 1],
+      ["You should ask why it's not working", "你应该问为什么它不起作用", null, 2],
+      ["Ask yourself why it's not working", "问问你自己为什么它不起作用", null, 3],
+      ["You should think why it's not working", "你应该想为什么它不起作用", null, 3],
+      ["You should ask yourself why it's not working", "你应该问问你自己为什么它不起作用", null, 4],
+      ["Ask yourself why it's not working at home", "问问你自己为什么它不在家起作用", null, 4],
+      ["You should consider why it's not working", "你应该考虑为什么它不起作用", null, 5],
+      ["You should ask yourself why it's not working this time", "你应该问问你自己为什么它这次不起作用", null, 5],
+      ["You should think about why it's not working the only way", "你应该想为什么它不用唯一的方法起作用", null, 6],
+      ["Ask yourself why it's not working if you can", "问问你自己为什么它不起作用如果你能", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0099L06": {
+    "lego": ["it's not working","它不起作用"],
+    "type": "M",
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["It's not working", "它不起作用", null, 1],
+      ["You should ask it's not working", "你应该问它不起作用", null, 2],
+      ["Ask yourself why it's not working", "问问你自己为什么它不起作用", null, 3],
+      ["You should think it's not working", "你应该想它不起作用", null, 3],
+      ["You should ask yourself it's not working", "你应该问问你自己它不起作用", null, 4],
+      ["Ask if it's not working at home", "问如果它不在家起作用", null, 4],
+      ["You should consider why it's not working", "你应该考虑为什么它不起作用", null, 5],
+      ["You should ask yourself why it's not working", "你应该问问你自己为什么它不起作用", null, 5],
+      ["You should think if it's not working the only way", "你应该想如果它不用唯一的方法起作用", null, 6],
+      ["Ask yourself if it's not working you can do something else", "问问你自己如果它不起作用你能做别的东西", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0099L07": {
+    "lego": ["not working","不起作用"],
+    "type": "M",
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Not working", "不起作用", null, 1],
+      ["You should ask not working", "你应该问不起作用", null, 2],
+      ["Ask yourself why not working", "问问你自己为什么不起作用", null, 3],
+      ["You should consider not working", "你应该考虑不起作用", null, 3],
+      ["You should ask yourself it's not working", "你应该问问你自己它不起作用", null, 4],
+      ["Ask if it's not working", "问如果它不起作用", null, 4],
+      ["You should ask yourself why it's not working", "你应该问问你自己为什么它不起作用", null, 5],
+      ["You should think if not working the only way", "你应该想如果不起作用唯一的方法", null, 5],
+      ["You should ask yourself why it's not working at home", "你应该问问你自己为什么它不在家起作用", null, 6],
+      ["You should ask yourself why it's not working.", "你应该问问你自己为什么它不起作用。", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  }
+}
