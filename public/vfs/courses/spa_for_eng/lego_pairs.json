@@ -5,7 +5,7 @@
   "generated_at": "2025-11-14T01:31:22.584Z",
   "course": "spa_for_eng",
   "total_seeds": 668,
-  "total_legos": 2951,
+  "total_legos": 2945,
   "seeds": [
     {
       "seed_id": "S0001",
@@ -1005,23 +1005,6 @@
           "new": true
         },
         {
-          "id": "S0012L03",
-          "type": "M",
-          "target": "lo que",
-          "known": "what",
-          "new": true,
-          "components": [
-            [
-              "lo",
-              "the"
-            ],
-            [
-              "que",
-              "that/what"
-            ]
-          ]
-        },
-        {
           "id": "S0012L04",
           "type": "M",
           "target": "va a ocurrir",
@@ -2018,23 +2001,6 @@
           ]
         },
         {
-          "id": "S0023L05",
-          "type": "M",
-          "target": "hablar más",
-          "known": "to talk more",
-          "new": true,
-          "components": [
-            [
-              "hablar",
-              "to talk"
-            ],
-            [
-              "más",
-              "more"
-            ]
-          ]
-        },
-        {
           "id": "S0023L06",
           "type": "M",
           "target": "más pronto",
@@ -2459,23 +2425,6 @@
               "tiempo",
               "time"
             ],
-            [
-              "para",
-              "to"
-            ],
-            [
-              "responder",
-              "to answer"
-            ]
-          ]
-        },
-        {
-          "id": "S0027L06",
-          "type": "M",
-          "target": "para responder",
-          "known": "to answer",
-          "new": true,
-          "components": [
             [
               "para",
               "to"
@@ -3081,13 +3030,6 @@
               "quiet"
             ]
           ]
-        },
-        {
-          "id": "S0034L05",
-          "type": "A",
-          "target": "cuando",
-          "known": "when",
-          "new": true
         },
         {
           "id": "S0034L06",
@@ -6094,13 +6036,6 @@
       ],
       "legos": [
         {
-          "id": "S0068L01",
-          "type": "A",
-          "target": "qué",
-          "known": "what",
-          "new": true
-        },
-        {
           "id": "S0068L02",
           "type": "M",
           "target": "estás buscando",
@@ -6123,6 +6058,13 @@
           "target": "buscando",
           "known": "looking for",
           "new": true
+        },
+        {
+          "id": "S0068L04",
+          "type": "M",
+          "target": "qué estás buscando",
+          "known": "what are you looking for",
+          "new": false
         }
       ]
     },
@@ -7150,13 +7092,6 @@
       ],
       "legos": [
         {
-          "id": "S0081L01",
-          "type": "A",
-          "target": "cuándo",
-          "known": "when",
-          "new": true
-        },
-        {
           "id": "S0081L02",
           "type": "M",
           "target": "quieres comenzar",
@@ -7172,6 +7107,13 @@
               "to start"
             ]
           ]
+        },
+        {
+          "id": "S0081L03",
+          "type": "M",
+          "target": "cuándo quieres comenzar",
+          "known": "when do you want to start",
+          "new": false
         }
       ]
     },
