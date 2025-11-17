@@ -711,13 +711,17 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 - Specific seed range (e.g., "S0001-S0010")
 - Path to scaffolds: \`${relativeDir}/phase5_scaffolds/\`
 - Path to outputs: \`${relativeDir}/phase5_outputs/\`
-- Reference to Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+- Phase 5 intelligence (SSoT): https://raw.githubusercontent.com/thomascassidyzm/ssi-dashboard-v7/main/public/docs/phase_intelligence/phase_5_lego_baskets.md
 
 **CRITICAL OUTPUT WORKFLOW** (each agent must follow):
-1. Save FULL output to \`seed_SXXXX_FULL.json\` (with _metadata, _instructions, _stats)
-2. Strip metadata → extract ONLY the \`legos\` object
-3. Save stripped to \`seed_SXXXX_baskets.json\` (~7KB vs 336KB)
-4. Push ONLY stripped file to GitHub (96% bandwidth savings)
+
+1. **Read scaffold**: Load \`${relativeDir}/phase5_scaffolds/seed_SXXXX_scaffold.json\`
+2. **Fetch Phase 5 intelligence**: Read the markdown doc at the URL above
+3. **Generate baskets**: Fill in the \`practice_phrases\` arrays following the intelligence doc exactly
+4. **Save FULL output**: Write complete JSON to \`${relativeDir}/phase5_outputs/seed_SXXXX_FULL.json\`
+5. **Strip metadata**: Extract ONLY the \`legos\` object (remove _metadata, _instructions, _stats)
+6. **Save stripped**: Write clean JSON to \`${relativeDir}/phase5_outputs/seed_SXXXX_baskets.json\`
+7. **Commit & Push**: Create branch \`claude/baskets-${courseCode}-window-N-sXXXX-sYYYY\`, commit ONLY stripped files, push to GitHub
 
 ---
 
