@@ -663,30 +663,62 @@ node scripts/phase5_merge_baskets.cjs ${courseDir}
  * Opens browser with prompt
  */
 async function spawnClaudeCodeSession(prompt, windowTitle) {
-  const { exec } = require('child_process');
-  const { promisify } = require('util');
-  const execAsync = promisify(exec);
+  const { spawn } = require('child_process');
 
-  const escapedPrompt = prompt
-    .replace(/\\/g, '\\\\')
-    .replace(/"/g, '\\"')
-    .replace(/\$/g, '\\$')
-    .replace(/`/g, '\\`');
+  // Copy prompt to clipboard using pbcopy (avoids osascript length/escaping issues)
+  await new Promise((resolve, reject) => {
+    const pbcopy = spawn('pbcopy', [], { stdio: ['pipe', 'inherit', 'inherit'] });
+    pbcopy.stdin.write(prompt);
+    pbcopy.stdin.end();
+    pbcopy.on('close', (code) => {
+      if (code === 0) resolve();
+      else reject(new Error(`pbcopy failed with code ${code}`));
+    });
+  });
 
-  const script = `
-    tell application "Google Chrome"
-      set newWindow to make new window
-      set URL of active tab of newWindow to "https://claude.ai/new"
-      delay 2
-      tell application "System Events"
-        keystroke "${escapedPrompt}"
-        delay 1
-        keystroke return
-      end tell
+  const appleScript = `
+tell application "Google Chrome"
+    activate
+
+    tell window 1
+        set newTab to make new tab with properties {URL:"https://claude.ai/code"}
+        set current tab to newTab
     end tell
-  `;
 
-  await execAsync(`osascript -e '${script}'`);
+    delay 3
+
+    tell application "System Events"
+        keystroke "v" using command down
+        delay 0.5
+        keystroke return
+    end tell
+end tell
+  `.trim();
+
+  return new Promise((resolve, reject) => {
+    const child = spawn('osascript', ['-e', appleScript], {
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+
+    let stdout = '';
+    let stderr = '';
+
+    child.stdout.on('data', (data) => {
+      stdout += data.toString();
+    });
+
+    child.stderr.on('data', (data) => {
+      stderr += data.toString();
+    });
+
+    child.on('close', (code) => {
+      if (code === 0) {
+        resolve({ success: true });
+      } else {
+        reject(new Error(`osascript failed: ${stderr || stdout}`));
+      }
+    });
+  });
 }
 
 /**
@@ -755,16 +787,11 @@ app.post('/regenerate', async (req, res) => {
     return res.status(409).json({ error: `Basket regeneration already running for ${courseCode}` });
   }
 
-  const totalBaskets = legoIds.length;
-  const BASKETS_PER_AGENT = 5;
-  const AGENTS_PER_BROWSER = 10;
-  const BASKETS_PER_BROWSER = 50; // 10 agents × 5 baskets
-
   console.log(`\n[Phase 5] ====================================`);
   console.log(`[Phase 5] BASKET REGENERATION`);
   console.log(`[Phase 5] ====================================`);
   console.log(`[Phase 5] Course: ${courseCode}`);
-  console.log(`[Phase 5] Baskets to regenerate: ${totalBaskets}`);
+  console.log(`[Phase 5] LEGO_IDs to regenerate: ${legoIds.length}`);
   console.log(`[Phase 5] Target: ${target}, Known: ${known}`);
 
   const baseCourseDir = path.join(VFS_ROOT, courseCode);
@@ -843,72 +870,90 @@ app.post('/regenerate', async (req, res) => {
     console.log(`\n[Phase 5] ℹ️  No existing lego_baskets.json - first-time generation`);
   }
 
-  // Calculate segmentation
-  const browsersNeeded = Math.ceil(totalBaskets / BASKETS_PER_BROWSER);
-  const browsers = [];
-
-  for (let i = 0; i < browsersNeeded; i++) {
-    const startIdx = i * BASKETS_PER_BROWSER;
-    const endIdx = Math.min((i + 1) * BASKETS_PER_BROWSER, totalBaskets);
-    const browserBaskets = legoIds.slice(startIdx, endIdx);
-    const agentsNeeded = Math.ceil(browserBaskets.length / BASKETS_PER_AGENT);
-
-    browsers.push({
-      browserNumber: i + 1,
-      totalBaskets: browserBaskets.length,
-      agentsNeeded: agentsNeeded,
-      basketsPerAgent: BASKETS_PER_AGENT,
-      legoIds: browserBaskets
-    });
-  }
-
-  console.log(`[Phase 5] Segmentation:`);
-  console.log(`[Phase 5]   Browsers: ${browsersNeeded}`);
-  console.log(`[Phase 5]   Agents per browser: ${AGENTS_PER_BROWSER} (max)`);
-  console.log(`[Phase 5]   Baskets per agent: ${BASKETS_PER_AGENT}`);
-  console.log(`[Phase 5]   Estimated time: ~10-15 minutes per browser`);
-
-  // Initialize job state
+  // Initialize job state (using same structure as regular Phase 5)
+  const totalSeeds = legoIds.length; // For regeneration, treat each LEGO_ID as a "seed"
   const job = {
-    courseCode,
-    jobType: 'regeneration',
-    totalBaskets,
-    browsersNeeded,
-    browsers,
+    courseCode: jobKey,
+    totalSeeds,
+    baseCourseCode: courseCode,
     baseCourseDir,
     target,
     known,
-    status: 'spawning_browsers',
+    legoIds, // Regeneration-specific: list of LEGO_IDs to regenerate
+    status: 'preparing_scaffolds',
     startedAt: new Date().toISOString(),
+    milestones: {
+      scaffoldsReady: false,
+      scaffoldsReadyAt: null,
+      watcherStarted: false,
+      watcherStartedAt: null,
+      windowsSpawned: 0,
+      windowsTotal: 0,
+      lastWindowSpawnedAt: null,
+      branchesDetected: 0,
+      branchesExpected: 0,
+      lastBranchDetectedAt: null,
+      branchesMerged: 0,
+      mergeStartedAt: null,
+      mergeCompletedAt: null
+    },
+    branches: [],
+    config: null,
     windowsSpawned: 0,
     branchesDetected: 0,
     merged: false,
-    error: null
+    error: null,
+    warnings: []
   };
 
   activeJobs.set(jobKey, job);
 
-  try {
-    // STEP 1: Start branch watcher for regeneration
-    const timestamp = Date.now();
-    const branchPattern = `baskets-regen-${courseCode}-${timestamp}`;
-    await startBranchWatcher(`${courseCode}_regen`, browsersNeeded, baseCourseDir, branchPattern);
+  // ========================================
+  // NOW USE EXACT SAME FLOW AS REGULAR PHASE 5
+  // ========================================
 
-    // STEP 2: Spawn browser windows for regeneration
-    await spawnRegenerationBrowsers(courseCode, {
+  try {
+    // STEP 2: Prep Phase 5 scaffolds (mechanical work)
+    // Only prep scaffolds for the missing LEGO_IDs
+    console.log(`\n[Phase 5] STEP 2: Running scaffold prep script for ${legoIds.length} LEGO_IDs...`);
+    const { preparePhase5Scaffolds } = require('../../scripts/phase5_prep_scaffolds.cjs');
+    const scaffoldResult = await preparePhase5Scaffolds(baseCourseDir, { legoIds }); // Filter to only these LEGO_IDs
+
+    console.log(`[Phase 5] ✅ Phase 5 scaffolds ready`);
+    console.log(`[Phase 5]    Total LEGOs: ${scaffoldResult.totalNewLegos || legoIds.length}`);
+
+    // STEP 3: Load configuration for parallelization (use same config as regular Phase 5)
+    const config = loadConfig();
+    const phase5Config = config.phase5_basket_generation;
+
+    const browsersConfig = phase5Config.browsers;
+    const agentsPerBrowser = phase5Config.agents_per_browser;
+    const seedsPerAgent = phase5Config.seeds_per_agent || 10;
+
+    console.log(`\n[Phase 5] STEP 3: Parallelization Strategy (using regular Phase 5 config):`);
+    console.log(`[Phase 5]    Browser windows: ${browsersConfig}`);
+    console.log(`[Phase 5]    Agents per window: ${agentsPerBrowser}`);
+    console.log(`[Phase 5]    Seeds per agent: ${seedsPerAgent}`);
+
+    // STEP 4: Start branch watcher (same as regular Phase 5)
+    console.log(`\n[Phase 5] STEP 4: Starting branch watcher...`);
+    await startBranchWatcher(jobKey, browsersConfig, baseCourseDir);
+
+    // STEP 5: Spawn browser windows (same as regular Phase 5)
+    // Calculate seed range from LEGO_IDs
+    const seedNumbers = legoIds.map(id => parseInt(id.match(/S(\d+)/)?.[1] || '0')).filter(n => n > 0);
+    const startSeed = Math.min(...seedNumbers);
+    const endSeed = Math.max(...seedNumbers);
+
+    console.log(`\n[Phase 5] STEP 5: Spawning ${browsersConfig} browser windows...`);
+    console.log(`[Phase 5]    Seed range: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+
+    await spawnBrowserWindows(jobKey, {
       target,
       known,
-      browsers,
-      timestamp
-    }, baseCourseDir);
-
-    console.log(`\n[Phase 5] ✅ All browsers spawned for regeneration`);
-    console.log(`[Phase 5]    Waiting for branches with pattern: claude/${branchPattern}-*`);
-
-    if (job) {
-      job.status = 'waiting_for_branches';
-      job.branchPattern = branchPattern;
-    }
+      startSeed,
+      endSeed
+    }, baseCourseDir, browsersConfig, agentsPerBrowser, seedsPerAgent);
 
     // Send success response
     res.json({
@@ -921,164 +966,22 @@ app.post('/regenerate', async (req, res) => {
         deletedOldBaskets: 0,
         note: 'No existing baskets to clean up'
       },
-      segmentation: {
-        totalBaskets,
-        browsersNeeded,
-        estimatedTime: `~${browsersNeeded * 12} minutes`,
-        browsers: browsers.map(b => ({
-          browserNumber: b.browserNumber,
-          basketCount: b.totalBaskets,
-          agentCount: b.agentsNeeded
-        })),
-        branchPattern: `claude/${branchPattern}-*`
-      },
-      jobKey,
-      status: 'running'
+      job: {
+        courseCode: jobKey,
+        totalBaskets: legoIds.length,
+        config: { browsers: browsersConfig, agents: agentsPerBrowser, seedsPerAgent },
+        status: 'running',
+        scaffolds: scaffoldResult
+      }
     });
   } catch (error) {
     job.status = 'failed';
     job.error = error.message;
     activeJobs.delete(jobKey);
-    console.error(`[Phase 5] ❌ Failed to spawn browsers:`, error);
+    console.error(`[Phase 5] ❌ Failed to start regeneration:`, error);
     res.status(500).json({ error: error.message });
   }
 });
-
-/**
- * Spawn browsers for basket regeneration
- * Similar to spawnBrowserWindows but handles LEGO_ID lists instead of seed ranges
- */
-async function spawnRegenerationBrowsers(courseCode, params, baseCourseDir) {
-  const { target, known, browsers, timestamp } = params;
-
-  console.log(`\n[Phase 5] 🌐 Spawning ${browsers.length} browser windows for regeneration...`);
-
-  const config = loadConfig();
-  const spawnDelay = config.phase5_basket_generation.browser_spawn_delay_ms || 5000;
-
-  const jobKey = `${courseCode}_regen`;
-  const job = activeJobs.get(jobKey);
-
-  for (let i = 0; i < browsers.length; i++) {
-    const browserConfig = browsers[i];
-    const windowNum = browserConfig.browserNumber;
-
-    console.log(`\n[Phase 5]   Browser ${windowNum}/${browsers.length}:`);
-    console.log(`[Phase 5]     Baskets: ${browserConfig.totalBaskets}`);
-    console.log(`[Phase 5]     Agents: ${browserConfig.agentsNeeded}`);
-    console.log(`[Phase 5]     LEGO_IDs: ${browserConfig.legoIds.slice(0, 3).join(', ')}...`);
-
-    // Generate orchestrator prompt for this browser
-    const browserPrompt = generatePhase5RegenerationPrompt(
-      courseCode,
-      {
-        target,
-        known,
-        legoIds: browserConfig.legoIds,
-        agentsNeeded: browserConfig.agentsNeeded,
-        basketsPerAgent: browserConfig.basketsPerAgent,
-        timestamp,
-        browserNumber: windowNum
-      },
-      baseCourseDir
-    );
-
-    try {
-      await spawnClaudeCodeSession(browserPrompt, `phase5-regen-${windowNum}`);
-      if (job) job.windowsSpawned++;
-
-      // Stagger window spawns
-      if (i < browsers.length - 1) {
-        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next browser...`);
-        await new Promise(resolve => setTimeout(resolve, spawnDelay));
-      }
-    } catch (error) {
-      console.error(`[Phase 5]     ❌ Failed to spawn browser ${windowNum}:`, error.message);
-    }
-  }
-
-  console.log(`\n[Phase 5] ✅ Spawned ${browsers.length} browsers for regeneration`);
-
-  if (job) {
-    job.status = 'waiting_for_branches';
-  }
-}
-
-/**
- * Generate Phase 5 Regeneration Prompt
- * Adapted from generatePhase5OrchestratorPrompt but for specific LEGO_IDs
- */
-function generatePhase5RegenerationPrompt(courseCode, params, courseDir) {
-  const { target, known, legoIds, agentsNeeded, basketsPerAgent, timestamp, browserNumber } = params;
-
-  const relativeDir = getRelativeCourseDir(courseDir);
-
-  // Split LEGO_IDs into chunks for each agent
-  const agentAssignments = [];
-  for (let i = 0; i < agentsNeeded; i++) {
-    const startIdx = i * basketsPerAgent;
-    const endIdx = Math.min((i + 1) * basketsPerAgent, legoIds.length);
-    const agentLegoIds = legoIds.slice(startIdx, endIdx);
-    agentAssignments.push({
-      agentNumber: i + 1,
-      legoIds: agentLegoIds
-    });
-  }
-
-  return `# Phase 5 Regeneration Orchestrator: Spawn ${agentsNeeded} Parallel Agents
-
-**Course**: ${courseCode}
-**Mode**: BASKET REGENERATION (Targeted)
-**Total Baskets**: ${legoIds.length}
-**Required Agents**: ${agentsNeeded} parallel agents
-**Baskets per agent**: ~${basketsPerAgent}
-
----
-
-## 🎯 YOUR ONLY JOB: Spawn Agents for Regeneration
-
-You are the orchestrator. **DO NOT** read files or generate content yourself.
-
-**Your task:**
-1. Spawn ${agentsNeeded} agents in parallel
-2. Pass each agent its specific LEGO_IDs to regenerate
-3. Monitor progress and report when complete
-
-**Each agent prompt should include:**
-- Specific LEGO_IDs to regenerate (e.g., "S0003L02, S0068L01, S0142L03")
-- Path to scaffolds: \`${relativeDir}/phase5_scaffolds/\`
-- Path to outputs: \`${relativeDir}/phase5_outputs/\`
-- Reference to Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
-
-**CRITICAL OUTPUT WORKFLOW** (each agent must follow):
-1. For each LEGO_ID, load existing scaffold from \`phase5_scaffolds/seed_SXXXX_LYYYY.json\`
-2. Regenerate the basket using the same structure
-3. Save FULL output to \`seed_SXXXX_FULL.json\` (with _metadata, _instructions, _stats)
-4. Strip metadata → extract ONLY the \`legos\` object
-5. Save stripped to \`seed_SXXXX_baskets.json\`
-6. **Git workflow**: Create branch \`claude/baskets-regen-${courseCode}-${timestamp}-w${browserNumber}\`
-7. Push ONLY stripped files to GitHub
-
-**IMPORTANT**: This is REGENERATION mode - agents should replace existing baskets for these LEGO_IDs, not create new ones.
-
----
-
-## 🚀 SPAWN ALL ${agentsNeeded} AGENTS NOW
-
-Use the Task tool ${agentsNeeded} times in a single message to spawn all agents in parallel.
-
-${agentAssignments.map((agent, idx) => `
-### Agent ${agent.agentNumber} Assignment:
-LEGO_IDs: ${agent.legoIds.join(', ')}
-(${agent.legoIds.length} baskets)
-`).join('\n')}
-
-When all agents complete, they should push their changes to branch:
-\`claude/baskets-regen-${courseCode}-${timestamp}-w${browserNumber}\`
-
-Branch naming is CRITICAL - use exactly this pattern for auto-merge to work.
-`;
-}
 
 /**
  * Start server

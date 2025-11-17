@@ -787,11 +787,20 @@ app.post('/api/courses/generate', async (req, res) => {
     endSeed,
     phaseSelection = 'all',
     executionMode,
-    strategy = 'balanced'
+    strategy = 'balanced',
+    courseCode: providedCourseCode
   } = req.body;
 
-  // Generate course code
-  const courseCode = `${target.toLowerCase()}_for_${known.toLowerCase()}`;
+  // Generate or use provided course code
+  let courseCode;
+  if (providedCourseCode) {
+    courseCode = providedCourseCode;
+  } else if (target && known) {
+    courseCode = `${target.toLowerCase()}_for_${known.toLowerCase()}`;
+  } else {
+    return res.status(400).json({ error: 'Either courseCode or both target and known are required' });
+  }
+
   const totalSeeds = endSeed - startSeed + 1;
 
   console.log(`\n📋 Course generation request from dashboard:`);

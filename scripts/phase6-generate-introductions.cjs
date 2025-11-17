@@ -33,11 +33,11 @@ function getLanguageName(code) {
   return LANGUAGE_NAMES[code] || code.toUpperCase();
 }
 
-function generateBasePresentation(targetLang, knownLego, targetLego, knownSeed) {
-  return `The ${targetLang} for '${knownLego}', is: ... '${targetLego}' ... '${targetLego}'`;
+function generateAtomicPresentation(targetLang, knownLego, targetLego, knownSeed) {
+  return `The ${targetLang} for '${knownLego}', as in '${knownSeed}', is: ... '${targetLego}' ... '${targetLego}'`;
 }
 
-function generateCompositePresentation(targetLang, knownLego, targetLego, knownSeed, components) {
+function generateMolecularPresentation(targetLang, knownLego, targetLego, knownSeed, components) {
   // Build component explanation with {target1} tags
   // Component format: [[targetPart, knownPart], ...]
   // All target language parts use {target1} for consistent TTS voice
@@ -57,7 +57,7 @@ function generateCompositePresentation(targetLang, knownLego, targetLego, knownS
     explanation = componentParts.join(', ');
   }
 
-  return `The ${targetLang} for '${knownLego}', is: ... '${targetLego}' ... '${targetLego}' - ${explanation}`;
+  return `The ${targetLang} for '${knownLego}', as in '${knownSeed}', is: ... '${targetLego}' ... '${targetLego}' - ${explanation}`;
 }
 
 async function generateIntroductions(courseDir) {
@@ -113,8 +113,8 @@ async function generateIntroductions(courseDir) {
 
   const presentations = {};
   let totalLegos = 0;
-  let baseLegos = 0;
-  let compositeLegos = 0;
+  let atomicLegos = 0;
+  let molecularLegos = 0;
   let preservedEdits = 0;
 
   // Process each seed
@@ -141,18 +141,18 @@ async function generateIntroductions(courseDir) {
       let presentation;
 
       if (type === 'A' || type === 'B') {
-        // ATOMIC/BASE LEGO - simple introduction
-        presentation = generateBasePresentation(targetLang, knownLego, targetLego, knownSeed);
-        baseLegos++;
+        // ATOMIC LEGO - simple introduction
+        presentation = generateAtomicPresentation(targetLang, knownLego, targetLego, knownSeed);
+        atomicLegos++;
       } else if (type === 'M' || type === 'C') {
-        // MOLECULAR/COMPOSITE LEGO - explain components (if available)
+        // MOLECULAR LEGO - explain components (if available)
         if (components && Array.isArray(components) && components.length > 0) {
-          presentation = generateCompositePresentation(targetLang, knownLego, targetLego, knownSeed, components);
-          compositeLegos++;
+          presentation = generateMolecularPresentation(targetLang, knownLego, targetLego, knownSeed, components);
+          molecularLegos++;
         } else {
           // No components provided, treat as simple intro
-          presentation = generateBasePresentation(targetLang, knownLego, targetLego, knownSeed);
-          baseLegos++;
+          presentation = generateAtomicPresentation(targetLang, knownLego, targetLego, knownSeed);
+          atomicLegos++;
         }
       } else {
         console.warn(`[Phase 6] Unknown LEGO type "${type}" for ${legoId}, skipping`);
@@ -188,8 +188,8 @@ async function generateIntroductions(courseDir) {
   await fs.writeJson(outputPath, output, { spaces: 2 });
 
   console.log(`[Phase 6] ✅ Generated ${totalLegos} introduction presentations:`);
-  console.log(`[Phase 6]    - BASE LEGOs: ${baseLegos}`);
-  console.log(`[Phase 6]    - COMPOSITE LEGOs: ${compositeLegos}`);
+  console.log(`[Phase 6]    - ATOMIC LEGOs: ${atomicLegos}`);
+  console.log(`[Phase 6]    - MOLECULAR LEGOs: ${molecularLegos}`);
   if (preservedEdits > 0) {
     console.log(`[Phase 6]    - PRESERVED EDITS: ${preservedEdits}`);
   }
@@ -198,8 +198,8 @@ async function generateIntroductions(courseDir) {
   return {
     success: true,
     totalIntroductions: totalLegos,
-    baseLegos,
-    compositeLegos,
+    atomicLegos,
+    molecularLegos,
     outputPath
   };
 }
