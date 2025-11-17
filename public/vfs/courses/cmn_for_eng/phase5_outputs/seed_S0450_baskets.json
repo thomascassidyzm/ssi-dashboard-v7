@@ -1,0 +1,619 @@
+{
+  "S0450L01": {
+    "lego": [
+      "must/have to",
+      "必须"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Must",
+        "必须",
+        null,
+        1
+      ],
+      [
+        "They must",
+        "他们必须",
+        null,
+        2
+      ],
+      [
+        "They must help",
+        "他们必须帮忙",
+        null,
+        3
+      ],
+      [
+        "We must prepare",
+        "我们必须准备",
+        null,
+        3
+      ],
+      [
+        "They must be ready",
+        "他们必须准备好",
+        null,
+        4
+      ],
+      [
+        "They must say yes",
+        "他们必须说是的",
+        null,
+        4
+      ],
+      [
+        "They must be very happy to help",
+        "他们必须很高兴帮忙",
+        null,
+        5
+      ],
+      [
+        "They must be almost ready to help us",
+        "他们必须差不多准备好帮我们",
+        null,
+        5
+      ],
+      [
+        "They must be ready to drive us home",
+        "他们必须准备好开车送我们回家",
+        null,
+        6
+      ],
+      [
+        "They must develop a new approach efficiently",
+        "他们必须有效地开发一个新方法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "必",
+        "must"
+      ],
+      [
+        "须",
+        "must/need"
+      ]
+    ]
+  },
+  "S0450L02": {
+    "lego": [
+      "oneself/themselves",
+      "自己"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0450L01",
+        "known": "must/have to",
+        "target": "必须",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Themselves",
+        "自己",
+        null,
+        1
+      ],
+      [
+        "They themselves",
+        "他们自己",
+        null,
+        2
+      ],
+      [
+        "They must do it themselves",
+        "他们必须自己做",
+        null,
+        3
+      ],
+      [
+        "Do it themselves",
+        "自己做",
+        null,
+        2
+      ],
+      [
+        "They said they do it themselves",
+        "他们说他们自己做",
+        null,
+        4
+      ],
+      [
+        "They must help themselves",
+        "他们必须自己帮",
+        null,
+        4
+      ],
+      [
+        "They must be ready to help themselves",
+        "他们必须准备好自己帮",
+        null,
+        5
+      ],
+      [
+        "They said they must do it themselves",
+        "他们说他们必须自己做",
+        null,
+        5
+      ],
+      [
+        "They must prepare themselves to be very happy",
+        "他们必须自己准备很高兴",
+        null,
+        6
+      ],
+      [
+        "They said they were almost ready to do it themselves",
+        "他们说他们差不多准备好自己做",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "自",
+        "self"
+      ],
+      [
+        "己",
+        "self"
+      ]
+    ]
+  },
+  "S0450L03": {
+    "lego": [
+      "catch/rush",
+      "赶"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0450L01",
+        "known": "must/have to",
+        "target": "必须",
+        "type": "M"
+      },
+      {
+        "id": "S0450L02",
+        "known": "oneself/themselves",
+        "target": "自己",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Catch",
+        "赶",
+        null,
+        1
+      ],
+      [
+        "They catch",
+        "他们赶",
+        null,
+        2
+      ],
+      [
+        "They must catch it",
+        "他们必须赶",
+        null,
+        3
+      ],
+      [
+        "Catch it themselves",
+        "自己赶",
+        null,
+        2
+      ],
+      [
+        "They said they must catch it",
+        "他们说他们必须赶",
+        null,
+        4
+      ],
+      [
+        "They must catch it themselves",
+        "他们必须自己赶",
+        null,
+        4
+      ],
+      [
+        "They must be ready to catch it",
+        "他们必须准备好赶",
+        null,
+        5
+      ],
+      [
+        "They said they were almost ready to catch it",
+        "他们说他们差不多准备好赶",
+        null,
+        5
+      ],
+      [
+        "They must catch it themselves very quickly",
+        "他们必须自己很快赶",
+        null,
+        6
+      ],
+      [
+        "They said they must be ready to catch it themselves",
+        "他们说他们必须准备好自己赶",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0450L04": {
+    "lego": [
+      "train",
+      "火车"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0450L01",
+        "known": "must/have to",
+        "target": "必须",
+        "type": "M"
+      },
+      {
+        "id": "S0450L02",
+        "known": "oneself/themselves",
+        "target": "自己",
+        "type": "M"
+      },
+      {
+        "id": "S0450L03",
+        "known": "catch/rush",
+        "target": "赶",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Train",
+        "火车",
+        null,
+        1
+      ],
+      [
+        "The train",
+        "火车",
+        null,
+        2
+      ],
+      [
+        "They catch the train",
+        "他们赶火车",
+        null,
+        3
+      ],
+      [
+        "Catch the train",
+        "赶火车",
+        null,
+        2
+      ],
+      [
+        "They must catch the train",
+        "他们必须赶火车",
+        null,
+        4
+      ],
+      [
+        "They said they catch the train",
+        "他们说他们赶火车",
+        null,
+        4
+      ],
+      [
+        "They must catch the train themselves",
+        "他们必须自己赶火车",
+        null,
+        5
+      ],
+      [
+        "They said they must catch the train",
+        "他们说他们必须赶火车",
+        null,
+        5
+      ],
+      [
+        "They must be ready to catch the train",
+        "他们必须准备好赶火车",
+        null,
+        6
+      ],
+      [
+        "They said they were almost ready to catch the train",
+        "他们说他们差不多准备好赶火车",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "火",
+        "fire"
+      ],
+      [
+        "车",
+        "car"
+      ]
+    ]
+  },
+  "S0450L05": {
+    "lego": [
+      "catch the train",
+      "赶火车"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0450L01",
+        "known": "must/have to",
+        "target": "必须",
+        "type": "M"
+      },
+      {
+        "id": "S0450L02",
+        "known": "oneself/themselves",
+        "target": "自己",
+        "type": "M"
+      },
+      {
+        "id": "S0450L03",
+        "known": "catch/rush",
+        "target": "赶",
+        "type": "A"
+      },
+      {
+        "id": "S0450L04",
+        "known": "train",
+        "target": "火车",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Catch the train",
+        "赶火车",
+        null,
+        1
+      ],
+      [
+        "They catch the train",
+        "他们赶火车",
+        null,
+        2
+      ],
+      [
+        "We catch the train",
+        "我们赶火车",
+        null,
+        3
+      ],
+      [
+        "They must catch the train",
+        "他们必须赶火车",
+        null,
+        3
+      ],
+      [
+        "They said they catch the train",
+        "他们说他们赶火车",
+        null,
+        4
+      ],
+      [
+        "They catch the train themselves",
+        "他们自己赶火车",
+        null,
+        4
+      ],
+      [
+        "They must catch the train themselves",
+        "他们必须自己赶火车",
+        null,
+        5
+      ],
+      [
+        "They said they must catch the train",
+        "他们说他们必须赶火车",
+        null,
+        5
+      ],
+      [
+        "They must be ready to catch the train",
+        "他们必须准备好赶火车",
+        null,
+        6
+      ],
+      [
+        "They said they were almost ready to catch the train",
+        "他们说他们差不多准备好赶火车",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "赶",
+        "catch"
+      ],
+      [
+        "火车",
+        "train"
+      ]
+    ]
+  },
+  "S0450L06": {
+    "lego": [
+      "catch the train themselves",
+      "自己赶火车"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0450L01",
+        "known": "must/have to",
+        "target": "必须",
+        "type": "M"
+      },
+      {
+        "id": "S0450L02",
+        "known": "oneself/themselves",
+        "target": "自己",
+        "type": "M"
+      },
+      {
+        "id": "S0450L03",
+        "known": "catch/rush",
+        "target": "赶",
+        "type": "A"
+      },
+      {
+        "id": "S0450L04",
+        "known": "train",
+        "target": "火车",
+        "type": "M"
+      },
+      {
+        "id": "S0450L05",
+        "known": "catch the train",
+        "target": "赶火车",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Catch the train themselves",
+        "自己赶火车",
+        null,
+        1
+      ],
+      [
+        "They catch the train themselves",
+        "他们自己赶火车",
+        null,
+        2
+      ],
+      [
+        "We catch the train ourselves",
+        "我们自己赶火车",
+        null,
+        3
+      ],
+      [
+        "They must catch the train themselves",
+        "他们必须自己赶火车",
+        null,
+        3
+      ],
+      [
+        "They said they catch the train themselves",
+        "他们说他们自己赶火车",
+        null,
+        4
+      ],
+      [
+        "They will catch the train themselves",
+        "他们会自己赶火车",
+        null,
+        4
+      ],
+      [
+        "They said they must catch the train themselves",
+        "他们说他们必须自己赶火车",
+        null,
+        5
+      ],
+      [
+        "They must be ready to catch the train themselves",
+        "他们必须准备好自己赶火车",
+        null,
+        5
+      ],
+      [
+        "They said they were almost ready to catch the train themselves",
+        "他们说他们差不多准备好自己赶火车",
+        null,
+        6
+      ],
+      [
+        "No they have to catch the train themselves.",
+        "不，他们必须自己赶火车。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "自己",
+        "themselves"
+      ],
+      [
+        "赶",
+        "catch"
+      ],
+      [
+        "火车",
+        "train"
+      ]
+    ]
+  }
+}
