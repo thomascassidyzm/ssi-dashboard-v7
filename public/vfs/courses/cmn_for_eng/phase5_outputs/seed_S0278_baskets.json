@@ -1,0 +1,752 @@
+{
+  "S0278L01": {
+    "lego": [
+      "you have to",
+      "你必须"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "You have to",
+        "你必须",
+        null,
+        1
+      ],
+      [
+        "You have to leave",
+        "你必须离开",
+        null,
+        2
+      ],
+      [
+        "You have to wait",
+        "你必须等",
+        null,
+        2
+      ],
+      [
+        "You have to come with us",
+        "你必须和我们一起来",
+        null,
+        3
+      ],
+      [
+        "You have to leave next week",
+        "你下周必须离开",
+        null,
+        3
+      ],
+      [
+        "You have to wait for your father",
+        "你必须等你爸爸",
+        null,
+        4
+      ],
+      [
+        "You have to leave in a few days",
+        "你必须在几天后离开",
+        null,
+        4
+      ],
+      [
+        "You have to come with us next month",
+        "你下个月必须和我们一起来",
+        null,
+        5
+      ],
+      [
+        "You have to leave early next week",
+        "你下周初必须离开",
+        null,
+        5
+      ],
+      [
+        "You have to wait for your father here",
+        "你必须在这里等你爸爸",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "必须",
+        "must/have to"
+      ]
+    ]
+  },
+  "S0278L02": {
+    "lego": [
+      "last night",
+      "昨晚"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0278L01",
+        "known": "you have to",
+        "target": "你必须",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Last night",
+        "昨晚",
+        null,
+        1
+      ],
+      [
+        "You left last night",
+        "你昨晚离开",
+        null,
+        2
+      ],
+      [
+        "She sent me last night",
+        "她昨晚给我发了",
+        null,
+        2
+      ],
+      [
+        "I was worried last night",
+        "我昨晚担心",
+        null,
+        3
+      ],
+      [
+        "You had to leave last night",
+        "你昨晚必须离开",
+        null,
+        3
+      ],
+      [
+        "She sent me two emails last night",
+        "她昨晚给我发了两封电子邮件",
+        null,
+        4
+      ],
+      [
+        "I was worried I would be late last night",
+        "我昨晚担心我会迟到",
+        null,
+        4
+      ],
+      [
+        "You had to wait for your father last night",
+        "你昨晚必须等你爸爸",
+        null,
+        5
+      ],
+      [
+        "I had too much work last night",
+        "我昨晚有太多工作",
+        null,
+        5
+      ],
+      [
+        "She sent me an important message last night",
+        "她昨晚给我发了重要的消息",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "昨",
+        "yesterday"
+      ],
+      [
+        "晚",
+        "night/evening"
+      ]
+    ]
+  },
+  "S0278L03": {
+    "lego": [
+      "finish",
+      "完成"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0278L01",
+        "known": "you have to",
+        "target": "你必须",
+        "type": "M"
+      },
+      {
+        "id": "S0278L02",
+        "known": "last night",
+        "target": "昨晚",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Finish",
+        "完成",
+        null,
+        1
+      ],
+      [
+        "You have to finish",
+        "你必须完成",
+        null,
+        2
+      ],
+      [
+        "Finish your work",
+        "完成你的工作",
+        null,
+        2
+      ],
+      [
+        "You have to finish last night",
+        "你昨晚必须完成",
+        null,
+        3
+      ],
+      [
+        "I had to finish",
+        "我必须完成",
+        null,
+        3
+      ],
+      [
+        "You have to finish your work",
+        "你必须完成你的工作",
+        null,
+        4
+      ],
+      [
+        "I had to finish last night",
+        "我昨晚必须完成",
+        null,
+        4
+      ],
+      [
+        "You have to finish your work next week",
+        "你下周必须完成你的工作",
+        null,
+        5
+      ],
+      [
+        "I had to finish all my work last night",
+        "我昨晚必须完成所有工作",
+        null,
+        5
+      ],
+      [
+        "You have to finish everything early next week",
+        "你下周初必须完成所有事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "完",
+        "complete/finish"
+      ],
+      [
+        "成",
+        "accomplish/become"
+      ]
+    ]
+  },
+  "S0278L04": {
+    "lego": [
+      "things",
+      "事情"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0278L01",
+        "known": "you have to",
+        "target": "你必须",
+        "type": "M"
+      },
+      {
+        "id": "S0278L02",
+        "known": "last night",
+        "target": "昨晚",
+        "type": "M"
+      },
+      {
+        "id": "S0278L03",
+        "known": "finish",
+        "target": "完成",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Things",
+        "事情",
+        null,
+        1
+      ],
+      [
+        "All things",
+        "所有事情",
+        null,
+        2
+      ],
+      [
+        "Finish things",
+        "完成事情",
+        null,
+        2
+      ],
+      [
+        "You have to finish things",
+        "你必须完成事情",
+        null,
+        3
+      ],
+      [
+        "I had many things",
+        "我有很多事情",
+        null,
+        3
+      ],
+      [
+        "You have to finish things last night",
+        "你昨晚必须完成事情",
+        null,
+        4
+      ],
+      [
+        "I had too many things",
+        "我有太多事情",
+        null,
+        4
+      ],
+      [
+        "You have to finish all things next week",
+        "你下周必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "I had too many things to finish last night",
+        "我昨晚有太多事情要完成",
+        null,
+        5
+      ],
+      [
+        "You have to finish important things early next week",
+        "你下周初必须完成重要的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0278L05": {
+    "lego": [
+      "everything",
+      "所有事情"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0278L01",
+        "known": "you have to",
+        "target": "你必须",
+        "type": "M"
+      },
+      {
+        "id": "S0278L02",
+        "known": "last night",
+        "target": "昨晚",
+        "type": "M"
+      },
+      {
+        "id": "S0278L03",
+        "known": "finish",
+        "target": "完成",
+        "type": "M"
+      },
+      {
+        "id": "S0278L04",
+        "known": "things",
+        "target": "事情",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Everything",
+        "所有事情",
+        null,
+        1
+      ],
+      [
+        "Finish everything",
+        "完成所有事情",
+        null,
+        2
+      ],
+      [
+        "You have to finish everything",
+        "你必须完成所有事情",
+        null,
+        3
+      ],
+      [
+        "I finished everything",
+        "我完成了所有事情",
+        null,
+        3
+      ],
+      [
+        "You have to finish everything last night",
+        "你昨晚必须完成所有事情",
+        null,
+        4
+      ],
+      [
+        "I had to finish everything",
+        "我必须完成所有事情",
+        null,
+        4
+      ],
+      [
+        "You have to finish everything next week",
+        "你下周必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "I had to finish everything last night",
+        "我昨晚必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "You have to finish everything early next week",
+        "你下周初必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "I had to finish everything last night unfortunately",
+        "不幸的是我昨晚必须完成所有事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "所有",
+        "all"
+      ],
+      [
+        "事情",
+        "things"
+      ]
+    ]
+  },
+  "S0278L06": {
+    "lego": [
+      "finish everything",
+      "完成所有事情"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0278L01",
+        "known": "you have to",
+        "target": "你必须",
+        "type": "M"
+      },
+      {
+        "id": "S0278L02",
+        "known": "last night",
+        "target": "昨晚",
+        "type": "M"
+      },
+      {
+        "id": "S0278L03",
+        "known": "finish",
+        "target": "完成",
+        "type": "M"
+      },
+      {
+        "id": "S0278L04",
+        "known": "things",
+        "target": "事情",
+        "type": "A"
+      },
+      {
+        "id": "S0278L05",
+        "known": "everything",
+        "target": "所有事情",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Finish everything",
+        "完成所有事情",
+        null,
+        1
+      ],
+      [
+        "You have to finish everything",
+        "你必须完成所有事情",
+        null,
+        2
+      ],
+      [
+        "I finished everything",
+        "我完成了所有事情",
+        null,
+        2
+      ],
+      [
+        "You have to finish everything last night",
+        "你昨晚必须完成所有事情",
+        null,
+        3
+      ],
+      [
+        "I had to finish everything",
+        "我必须完成所有事情",
+        null,
+        3
+      ],
+      [
+        "You have to finish everything next week",
+        "你下周必须完成所有事情",
+        null,
+        4
+      ],
+      [
+        "I had to finish everything last night",
+        "我昨晚必须完成所有事情",
+        null,
+        4
+      ],
+      [
+        "You have to finish everything early next week",
+        "你下周初必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "She had to finish everything last night",
+        "她昨晚必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "I had to finish everything last night unfortunately",
+        "不幸的是我昨晚必须完成所有事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "完成",
+        "finish"
+      ],
+      [
+        "所有",
+        "all"
+      ],
+      [
+        "事情",
+        "things"
+      ]
+    ]
+  },
+  "S0278L07": {
+    "lego": [
+      "have to finish everything",
+      "必须完成所有事情"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0278L01",
+        "known": "you have to",
+        "target": "你必须",
+        "type": "M"
+      },
+      {
+        "id": "S0278L02",
+        "known": "last night",
+        "target": "昨晚",
+        "type": "M"
+      },
+      {
+        "id": "S0278L03",
+        "known": "finish",
+        "target": "完成",
+        "type": "M"
+      },
+      {
+        "id": "S0278L04",
+        "known": "things",
+        "target": "事情",
+        "type": "A"
+      },
+      {
+        "id": "S0278L05",
+        "known": "everything",
+        "target": "所有事情",
+        "type": "M"
+      },
+      {
+        "id": "S0278L06",
+        "known": "finish everything",
+        "target": "完成所有事情",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Have to finish everything",
+        "必须完成所有事情",
+        null,
+        1
+      ],
+      [
+        "You have to finish everything",
+        "你必须完成所有事情",
+        null,
+        2
+      ],
+      [
+        "I have to finish everything",
+        "我必须完成所有事情",
+        null,
+        2
+      ],
+      [
+        "You have to finish everything last night",
+        "你昨晚必须完成所有事情",
+        null,
+        3
+      ],
+      [
+        "You have to finish everything next week",
+        "你下周必须完成所有事情",
+        null,
+        3
+      ],
+      [
+        "I have to finish everything last night",
+        "我昨晚必须完成所有事情",
+        null,
+        4
+      ],
+      [
+        "You have to finish everything early next week",
+        "你下周初必须完成所有事情",
+        null,
+        4
+      ],
+      [
+        "She has to finish everything last night",
+        "她昨晚必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "I have to finish everything early next week unfortunately",
+        "不幸的是我下周初必须完成所有事情",
+        null,
+        5
+      ],
+      [
+        "Did you have to finish everything last night?",
+        "你昨晚必须完成所有事情吗？",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "必须",
+        "must/have to"
+      ],
+      [
+        "完成",
+        "finish"
+      ],
+      [
+        "所有",
+        "all"
+      ],
+      [
+        "事情",
+        "things"
+      ]
+    ]
+  }
+}
