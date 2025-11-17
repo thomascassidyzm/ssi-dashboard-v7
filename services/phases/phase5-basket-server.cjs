@@ -535,37 +535,62 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
  * Migrated from automation_server.cjs lines 2272-2293
  */
 async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCount, agentsPerWindow, seedsPerAgent) {
-  const { target, known, startSeed, endSeed } = params;
-  const totalSeeds = endSeed - startSeed + 1;
+  const { target, known, startSeed, endSeed, legoIds, isRegeneration } = params;
+
+  // Handle both regular mode (seed range) and regeneration mode (lego IDs)
+  const totalSeeds = isRegeneration ? legoIds.length : (endSeed - startSeed + 1);
 
   console.log(`\n[Phase 5] 🌐 Spawning ${browserCount} browser windows...`);
+  console.log(`[Phase 5]    Mode: ${isRegeneration ? 'REGENERATION (specific LEGO_IDs)' : 'FULL (seed range)'}`);
   console.log(`[Phase 5]    Each window will spawn ${agentsPerWindow} Task agents`);
-  console.log(`[Phase 5]    Each agent processes ${seedsPerAgent} seeds`);
+  console.log(`[Phase 5]    Each agent processes ${isRegeneration ? 'specific LEGOs' : `${seedsPerAgent} seeds`}`);
 
   const config = loadConfig();
   const spawnDelay = config.phase5_basket_generation.browser_spawn_delay_ms || 5000;
 
   const job = activeJobs.get(courseCode);
   let currentSeed = startSeed;
+  let currentLegoIndex = 0;
 
   for (let windowNum = 1; windowNum <= browserCount; windowNum++) {
     console.log(`\n[Phase 5]   Window ${windowNum}/${browserCount}:`);
 
-    // Calculate seed range for this window
-    const seedsInWindow = agentsPerWindow * seedsPerAgent;
-    const windowStartSeed = currentSeed;
-    const windowEndSeed = Math.min(currentSeed + seedsInWindow - 1, endSeed);
+    let windowPrompt;
 
-    console.log(`[Phase 5]     Seed range: S${String(windowStartSeed).padStart(4, '0')}-S${String(windowEndSeed).padStart(4, '0')}`);
-    console.log(`[Phase 5]     Will spawn ${agentsPerWindow} Task agents`);
+    if (isRegeneration) {
+      // Regeneration mode: distribute LEGOs across windows
+      const legosPerWindow = Math.ceil(legoIds.length / browserCount);
+      const windowStartIdx = (windowNum - 1) * legosPerWindow;
+      const windowEndIdx = Math.min(windowNum * legosPerWindow, legoIds.length);
+      const windowLegoIds = legoIds.slice(windowStartIdx, windowEndIdx);
 
-    // Generate orchestrator prompt for this window
-    // EXACT PROMPT from automation_server.cjs lines 744-779
-    const windowPrompt = generatePhase5OrchestratorPrompt(
-      courseCode,
-      { target, known, startSeed: windowStartSeed, endSeed: windowEndSeed },
-      baseCourseDir
-    );
+      console.log(`[Phase 5]     LEGO_IDs: ${windowLegoIds.length} LEGOs (${windowLegoIds.slice(0, 3).join(', ')}...)`);
+      console.log(`[Phase 5]     Will spawn ${agentsPerWindow} Task agents`);
+
+      // Generate regeneration-specific prompt
+      windowPrompt = generatePhase5OrchestratorPrompt(
+        courseCode,
+        { target, known, legoIds: windowLegoIds, isRegeneration: true },
+        baseCourseDir
+      );
+    } else {
+      // Regular mode: seed range
+      const seedsInWindow = agentsPerWindow * seedsPerAgent;
+      const windowStartSeed = currentSeed;
+      const windowEndSeed = Math.min(currentSeed + seedsInWindow - 1, endSeed);
+
+      console.log(`[Phase 5]     Seed range: S${String(windowStartSeed).padStart(4, '0')}-S${String(windowEndSeed).padStart(4, '0')}`);
+      console.log(`[Phase 5]     Will spawn ${agentsPerWindow} Task agents`);
+
+      // Generate orchestrator prompt for this window
+      windowPrompt = generatePhase5OrchestratorPrompt(
+        courseCode,
+        { target, known, startSeed: windowStartSeed, endSeed: windowEndSeed },
+        baseCourseDir
+      );
+
+      currentSeed = windowEndSeed + 1;
+    }
 
     try {
       await spawnClaudeCodeSession(windowPrompt, `phase5-window-${windowNum}`);
@@ -588,8 +613,9 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
       if (job) job.warnings.push(`Failed to spawn window ${windowNum}: ${error.message}`);
     }
 
-    currentSeed = windowEndSeed + 1;
-    if (currentSeed > endSeed) break;
+    if (!isRegeneration) {
+      if (currentSeed > endSeed) break;
+    }
   }
 
   console.log(`\n[Phase 5] ✅ Spawned ${browserCount} browser windows`);
@@ -602,17 +628,66 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
 
 /**
  * Generate Phase 5 Master Prompt - Self-Managing Practice Basket Generation
- * EXACT MIGRATION from automation_server.cjs lines 732-779
+ * Supports both regular mode (seed range) and regeneration mode (specific LEGO_IDs)
  */
 function generatePhase5OrchestratorPrompt(courseCode, params, courseDir) {
-  const { target, known, startSeed, endSeed } = params;
-  const totalSeeds = endSeed - startSeed + 1;
-
-  // Always use 10 seeds per agent for optimal parallelization
-  const seedsPerAgent = 10;
-  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+  const { target, known, startSeed, endSeed, legoIds, isRegeneration } = params;
 
   const relativeDir = getRelativeCourseDir(courseDir);
+
+  if (isRegeneration) {
+    // REGENERATION MODE: Generate baskets for specific LEGO_IDs only
+    const legosPerAgent = 50; // 50 LEGOs per agent (10 per LEGO × 5 LEGOs = manageable)
+    const agentCount = Math.ceil(legoIds.length / legosPerAgent);
+
+    return `# Phase 5 Orchestrator: Regenerate ${legoIds.length} Baskets
+
+**Course**: ${courseCode}
+**Mode**: BASKET REGENERATION
+**Total LEGOs**: ${legoIds.length} specific LEGO_IDs
+**Required Agents**: ${agentCount} parallel agents
+**LEGOs per agent**: ~${legosPerAgent}
+
+---
+
+## 🎯 YOUR ONLY JOB: Spawn Agents for Regeneration
+
+You are the orchestrator. **DO NOT** read files or generate content yourself.
+
+**Your task:**
+1. Spawn ${agentCount} agents in parallel
+2. Pass each agent its specific LEGO_IDs to regenerate
+3. Monitor progress and report when complete
+
+**CRITICAL: Each agent should:**
+- Read scaffolds ONLY for its assigned LEGO_IDs from \`${relativeDir}/phase5_scaffolds/\`
+- Generate baskets using Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+- Save outputs to \`${relativeDir}/phase5_outputs/\`
+- Follow the EXACT same workflow as regular Phase 5
+
+**LEGO_IDs to distribute among ${agentCount} agents:**
+${legoIds.slice(0, 10).join(', ')}${legoIds.length > 10 ? ` ... and ${legoIds.length - 10} more` : ''}
+
+**OUTPUT WORKFLOW** (each agent must follow):
+1. Save FULL output to \`seed_SXXXX_FULL.json\` (with _metadata, _instructions, _stats)
+2. Strip metadata → extract ONLY the \`legos\` object
+3. Save stripped to \`seed_SXXXX_baskets.json\`
+4. Push ONLY stripped file to GitHub
+
+---
+
+## 🚀 SPAWN ALL ${agentCount} AGENTS NOW
+
+Use the Task tool ${agentCount} times in a single message to spawn all agents in parallel.
+
+Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${legosPerAgent} LEGOs each).
+`;
+  }
+
+  // REGULAR MODE: Generate baskets for seed range
+  const totalSeeds = endSeed - startSeed + 1;
+  const seedsPerAgent = 10;
+  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
 
   return `# Phase 5 Orchestrator: Spawn ${agentCount} Parallel Agents
 
@@ -939,20 +1014,15 @@ app.post('/regenerate', async (req, res) => {
     console.log(`\n[Phase 5] STEP 4: Starting branch watcher...`);
     await startBranchWatcher(jobKey, browsersConfig, baseCourseDir);
 
-    // STEP 5: Spawn browser windows (same as regular Phase 5)
-    // Calculate seed range from LEGO_IDs
-    const seedNumbers = legoIds.map(id => parseInt(id.match(/S(\d+)/)?.[1] || '0')).filter(n => n > 0);
-    const startSeed = Math.min(...seedNumbers);
-    const endSeed = Math.max(...seedNumbers);
-
+    // STEP 5: Spawn browser windows (REGENERATION MODE - pass legoIds instead of seed range)
     console.log(`\n[Phase 5] STEP 5: Spawning ${browsersConfig} browser windows...`);
-    console.log(`[Phase 5]    Seed range: S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')}`);
+    console.log(`[Phase 5]    Regeneration mode: ${legoIds.length} specific LEGO_IDs`);
 
     await spawnBrowserWindows(jobKey, {
       target,
       known,
-      startSeed,
-      endSeed
+      legoIds, // Pass legoIds for regeneration
+      isRegeneration: true
     }, baseCourseDir, browsersConfig, agentsPerBrowser, seedsPerAgent);
 
     // Send success response

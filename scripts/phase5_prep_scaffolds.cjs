@@ -185,8 +185,15 @@ function generateSeedScaffold(seed, legoPairsData, currentSeedIndex) {
   };
 }
 
-async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
+async function preparePhase5Scaffolds(courseDir, options = {}) {
+  // Support both old signature (courseDir, baseCourseDir) and new (courseDir, {baseCourseDir, legoIds})
+  const baseCourseDir = typeof options === 'string' ? options : options.baseCourseDir;
+  const legoIdsFilter = options.legoIds || null;
+
   console.log(`[Phase 5 Prep] Starting scaffold generation for: ${courseDir}`);
+  if (legoIdsFilter) {
+    console.log(`[Phase 5 Prep] Filtering to ${legoIdsFilter.length} specific LEGO_IDs (regeneration mode)`);
+  }
 
   // For quick tests / segment ranges, read from base course directory
   const sourceDir = baseCourseDir || courseDir;
@@ -232,6 +239,7 @@ async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
 
   // Generate scaffold for each seed individually
   let totalNewLegos = 0;
+  let filteredScaffoldCount = 0;
 
   for (let seedIndex = 0; seedIndex < seeds.length; seedIndex++) {
     const seed = seeds[seedIndex];
@@ -242,8 +250,26 @@ async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
       continue;
     }
 
+    // If legoIds filter is provided, only include LEGOs that match
+    if (legoIdsFilter) {
+      const filteredLegos = {};
+      Object.keys(seedScaffold.legos).forEach(legoId => {
+        if (legoIdsFilter.includes(legoId)) {
+          filteredLegos[legoId] = seedScaffold.legos[legoId];
+        }
+      });
+
+      // Skip this seed if no LEGOs match the filter
+      if (Object.keys(filteredLegos).length === 0) {
+        continue;
+      }
+
+      seedScaffold.legos = filteredLegos;
+    }
+
     const newLegosCount = Object.keys(seedScaffold.legos).length;
     totalNewLegos += newLegosCount;
+    filteredScaffoldCount++;
 
     console.log(`[Phase 5 Prep] ${seed.seed_id}: ${newLegosCount} LEGOs → ${newLegosCount * 10} phrases (10 recent seeds context)`);
 
@@ -276,8 +302,13 @@ async function preparePhase5Scaffolds(courseDir, baseCourseDir = null) {
     await fs.writeJson(scaffoldPath, scaffold, { spaces: 2 });
   }
 
-  console.log(`[Phase 5 Prep] ✅ Generated ${seeds.length} scaffold files`);
-  console.log(`[Phase 5 Prep] Total new LEGOs: ${totalNewLegos} (${totalNewLegos * 10} phrases)`);
+  if (legoIdsFilter) {
+    console.log(`[Phase 5 Prep] ✅ Generated ${filteredScaffoldCount} scaffold files (filtered from ${seeds.length} total seeds)`);
+    console.log(`[Phase 5 Prep] Filtered LEGOs: ${totalNewLegos} (${totalNewLegos * 10} phrases)`);
+  } else {
+    console.log(`[Phase 5 Prep] ✅ Generated ${filteredScaffoldCount} scaffold files`);
+    console.log(`[Phase 5 Prep] Total new LEGOs: ${totalNewLegos} (${totalNewLegos * 10} phrases)`);
+  }
   console.log(`[Phase 5 Prep] Output directory: ${scaffoldsDir}`);
 
   // Create outputs directory
