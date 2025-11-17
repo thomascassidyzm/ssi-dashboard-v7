@@ -154,3 +154,9 @@ phase3_s0201_s0668/
 # PM2 process management
 .pm2/
 ecosystem.config.js
+
+# Phase 8: Audio generation temporary files
+temp/
+extracted-welcomes/
+vfs/canonical/voices.json
+vfs/canonical/welcomes.json

@@ -1,8 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "SSi Course Manifest Schema",
-  "description": "Final compiled course format for SSi mobile app (Phase 7 output)",
-  "version": "7.7.0",
+  "description": "Final compiled course format for SSi mobile app (Phase 7 output) - v7.7.0",
   "type": "object",
   "required": ["id", "version", "target", "known", "slices"],
   "properties": {
@@ -31,7 +30,29 @@
     },
     "introduction": {
       "type": "object",
-      "description": "Course introduction content"
+      "description": "Course welcome/introduction audio sample",
+      "required": ["id", "cadence", "role", "duration"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Welcome audio sample UUID (empty string if not generated yet)"
+        },
+        "cadence": {
+          "type": "string",
+          "enum": ["natural"],
+          "description": "Always natural for welcome"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["presentation"],
+          "description": "Always presentation voice (source language)"
+        },
+        "duration": {
+          "type": "number",
+          "description": "Audio duration in seconds",
+          "default": 0
+        }
+      }
     },
     "beltAssessor": {
       "type": "object",
@@ -155,12 +176,18 @@
                   },
                   "role": {
                     "type": "string",
-                    "enum": ["target1", "target2", "source"],
-                    "description": "Voice role (target1=primary target voice, target2=alternate target voice, source=known language)"
+                    "enum": ["target1", "target2", "source", "presentation"],
+                    "description": "Voice role (target1=primary target voice, target2=alternate target voice, source=known language, presentation=teaching voice including encouragement messages)"
                   },
                   "duration": {
                     "type": "number",
-                    "description": "Audio duration in seconds"
+                    "description": "Audio duration in seconds",
+                    "default": 0
+                  },
+                  "is_encouragement": {
+                    "type": "boolean",
+                    "description": "Flag to identify encouragement samples",
+                    "default": false
                   }
                 }
               }
@@ -168,11 +195,17 @@
           },
           "pooledEncouragements": {
             "type": "array",
-            "description": "Pooled encouragement audio"
+            "description": "Random encouragement messages in source language",
+            "items": {
+              "$ref": "#/definitions/encouragement"
+            }
           },
           "orderedEncouragements": {
             "type": "array",
-            "description": "Ordered encouragement audio"
+            "description": "Sequential encouragement messages in source language",
+            "items": {
+              "$ref": "#/definitions/encouragement"
+            }
           }
         }
       }
@@ -200,6 +233,23 @@
             "type": "string"
           },
           "description": "Lemmatized forms"
+        }
+      }
+    },
+    "encouragement": {
+      "type": "object",
+      "required": ["text", "id"],
+      "description": "Encouragement message structure",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Encouragement message text in source language",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "UUID for this encouragement"
         }
       }
     }
