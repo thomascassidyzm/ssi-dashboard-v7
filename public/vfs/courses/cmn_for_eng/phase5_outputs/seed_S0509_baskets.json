@@ -1,0 +1,160 @@
+{
+  "S0509L02": {
+    "lego": [
+      "you're going to pay for/buy",
+      "你要买"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["You're going to buy", "你要买", null, 1],
+      ["I'm going to buy this", "我要买这个", null, 2],
+      ["You're going to buy something", "你要买一些东西", null, 2],
+      ["She's going to pay for the entrance", "她要买入口", null, 3],
+      ["Are you going to buy a new window", "你要买一张新窗吗", null, 3],
+      ["He's going to pay for this without worrying", "他要买这个不担心", null, 4],
+      ["I heard you're going to buy something for the city", "我听说你要买一些东西给城市", null, 4],
+      ["Maybe she's going to pay for the entrance and the window", "也许她要买入口和窗", null, 5],
+      ["You're going to buy this so that you don't get left behind", "你要买这个这样你就不会被落下", null, 5],
+      ["I heard that you're going to pay for the entrance without making trouble", "我听说你要买入口不制造麻烦", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "要",
+        "want/going to"
+      ],
+      [
+        "买",
+        "buy"
+      ]
+    ]
+  },
+  "S0509L03": {
+    "lego": [
+      "a new bed",
+      "一张新床"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0509L02",
+        "known": "you're going to pay for/buy",
+        "target": "你要买",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["A new bed", "一张新床", null, 1],
+      ["I want a new bed", "我想一张新床", null, 2],
+      ["She's going to buy a new bed", "她要买一张新床", null, 2],
+      ["Do you want to sit on the new bed", "你想坐在新床吗", null, 3],
+      ["I heard you're going to buy a new bed", "我听说你要买一张新床", null, 3],
+      ["He should pay for a new bed for the entrance", "他应该付一张新床给入口", null, 4],
+      ["Maybe she's going to buy a new bed without worrying", "也许她要买一张新床不担心", null, 4],
+      ["There's no point worrying about how to pay for the new bed", "担心如何付新床的钱没有意义", null, 5],
+      ["I heard that you're going to buy a new bed for the two girls", "我听说你要买一张新床给两个女孩", null, 5],
+      ["She's worrying about how you're going to pay for a new bed without making trouble", "她担心你将如何付一张新床的钱不制造麻烦", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "一张",
+        "one (measure word for flat things)"
+      ],
+      [
+        "新",
+        "new"
+      ],
+      [
+        "床",
+        "bed"
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0509L04": {
+    "lego": [
+      "buy a new bed",
+      "买一张新床"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0509L02",
+        "known": "you're going to pay for/buy",
+        "target": "你要买",
+        "type": "M"
+      },
+      {
+        "id": "S0509L03",
+        "known": "a new bed",
+        "target": "一张新床",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Buy a new bed", "买一张新床", null, 1],
+      ["I want to buy a new bed", "我想买一张新床", null, 2],
+      ["You're going to buy a new bed", "你要买一张新床", null, 2],
+      ["She should buy a new bed for this", "她应该买一张新床给这个", null, 3],
+      ["I heard you're going to buy a new bed", "我听说你要买一张新床", null, 3],
+      ["Maybe he should buy a new bed without worrying", "也许他应该买一张新床不担心", null, 4],
+      ["Do you want to buy a new bed for the two girls", "你想买一张新床给两个女孩吗", null, 4],
+      ["There's no point worrying about how to buy a new bed", "担心如何买一张新床没有意义", null, 5],
+      ["I heard that you're going to buy a new bed so that you don't get left behind", "我听说你要买一张新床这样你就不会被落下", null, 5],
+      ["She's worrying about how you're going to buy a new bed without making trouble for them", "她担心你将如何买一张新床不给他们制造麻烦", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "买",
+        "buy"
+      ],
+      [
+        "一张",
+        "one (measure word)"
+      ],
+      [
+        "新",
+        "new"
+      ],
+      [
+        "床",
+        "bed"
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

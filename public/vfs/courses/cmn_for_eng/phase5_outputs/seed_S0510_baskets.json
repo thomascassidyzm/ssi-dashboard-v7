@@ -1,0 +1,262 @@
+{
+  "S0510L01": {
+    "lego": [
+      "she's gone to look for",
+      "她去找"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["She's gone to look for", "她去找", null, 1],
+      ["I'm going to look for this", "我去找这个", null, 2],
+      ["He's gone to look for something", "他去找一些东西", null, 2],
+      ["She's gone to look for a new bed", "她去找一张新床", null, 3],
+      ["I'm going to look for the entrance inside", "我去找入口里面", null, 3],
+      ["He's gone to look for somewhere without worrying", "他去找地方不担心", null, 4],
+      ["She's gone to look for a new bed for the two girls", "她去找一张新床给两个女孩", null, 4],
+      ["I'm going to look for the two girls so that they don't get left behind", "我去找两个女孩这样她们就不会被落下", null, 5],
+      ["He's gone to look for somewhere to sit between the two girls without arguing", "他去找地方坐在两个女孩中间不吵架", null, 5],
+      ["She's gone to look for a new bed without worrying about how to pay for it", "她去找一张新床不担心如何付钱", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "去",
+        "go"
+      ],
+      [
+        "找",
+        "look for/find"
+      ]
+    ]
+  },
+  "S0510L02": {
+    "lego": [
+      "somewhere safe",
+      "一个安全的地方"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0510L01",
+        "known": "she's gone to look for",
+        "target": "她去找",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Somewhere safe", "一个安全的地方", null, 1],
+      ["I want somewhere safe", "我想一个安全的地方", null, 2],
+      ["She's gone to look for somewhere safe", "她去找一个安全的地方", null, 2],
+      ["He wants to sit in somewhere safe", "他想坐在一个安全的地方", null, 3],
+      ["I'm going to look for somewhere safe for this", "我去找一个安全的地方给这个", null, 3],
+      ["She's gone to look for somewhere safe without worrying", "她去找一个安全的地方不担心", null, 4],
+      ["Maybe you should buy a new bed for somewhere safe", "也许你应该买一张新床给一个安全的地方", null, 4],
+      ["I'm going to look for somewhere safe so that I don't get left behind", "我去找一个安全的地方这样我就不会被落下", null, 5],
+      ["He's gone to look for somewhere safe for the two girls to play together", "他去找一个安全的地方给两个女孩一起玩", null, 5],
+      ["She's worrying about how you're going to find somewhere safe without making trouble", "她担心你将如何找一个安全的地方不制造麻烦", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "一个",
+        "one/a"
+      ],
+      [
+        "安全",
+        "safe/secure"
+      ],
+      [
+        "的",
+        "possessive particle"
+      ],
+      [
+        "地方",
+        "place"
+      ]
+    ]
+  },
+  "S0510L03": {
+    "lego": [
+      "safe place",
+      "安全的地方"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0510L01",
+        "known": "she's gone to look for",
+        "target": "她去找",
+        "type": "M"
+      },
+      {
+        "id": "S0510L02",
+        "known": "somewhere safe",
+        "target": "一个安全的地方",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Safe place", "安全的地方", null, 1],
+      ["This is a safe place", "这是安全的地方", null, 2],
+      ["She's gone to look for a safe place", "她去找安全的地方", null, 2],
+      ["I want to sit in a safe place", "我想坐在安全的地方", null, 3],
+      ["He's going to buy a safe place for this", "他要买安全的地方给这个", null, 3],
+      ["She's gone to look for a safe place without worrying", "她去找安全的地方不担心", null, 4],
+      ["Maybe we should open the door to the safe place", "也许我们应该开门到安全的地方", null, 4],
+      ["I'm going to look for a safe place to sit between the two girls", "我去找安全的地方坐在两个女孩中间", null, 5],
+      ["He's gone to look for a safe place so that they don't get left behind", "他去找安全的地方这样他们就不会被落下", null, 5],
+      ["There's no point worrying about how to find a safe place without making trouble", "担心如何找安全的地方不制造麻烦没有意义", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "安全",
+        "safe"
+      ],
+      [
+        "的",
+        "possessive particle"
+      ],
+      [
+        "地方",
+        "place"
+      ]
+    ]
+  },
+  "S0510L04": {
+    "lego": [
+      "park the car",
+      "停车"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0510L01",
+        "known": "she's gone to look for",
+        "target": "她去找",
+        "type": "M"
+      },
+      {
+        "id": "S0510L02",
+        "known": "somewhere safe",
+        "target": "一个安全的地方",
+        "type": "M"
+      },
+      {
+        "id": "S0510L03",
+        "known": "safe place",
+        "target": "安全的地方",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Park the car", "停车", null, 1],
+      ["I want to park the car", "我想停车", null, 2],
+      ["She's gone to park the car", "她去停车", null, 2],
+      ["You should park the car over there", "你应该停车在那边", null, 3],
+      ["He's going to look for somewhere to park the car", "他去找地方停车", null, 3],
+      ["She's gone to look for somewhere safe to park the car", "她去找一个安全的地方停车", null, 4],
+      ["Maybe you should park the car in a safe place inside", "也许你应该停车在安全的地方里面", null, 4],
+      ["I'm worrying about how to park the car without making trouble", "我担心如何停车不制造麻烦", null, 5],
+      ["She's gone to look for a safe place to park the car so that it doesn't get left behind", "她去找安全的地方停车这样它就不会被落下", null, 5],
+      ["There's no point worrying about how you're going to park the car in a safe place", "担心你将如何停车在安全的地方没有意义", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0510L05": {
+    "lego": [
+      "place to park the car",
+      "地方停车"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0510L01",
+        "known": "she's gone to look for",
+        "target": "她去找",
+        "type": "M"
+      },
+      {
+        "id": "S0510L02",
+        "known": "somewhere safe",
+        "target": "一个安全的地方",
+        "type": "M"
+      },
+      {
+        "id": "S0510L03",
+        "known": "safe place",
+        "target": "安全的地方",
+        "type": "M"
+      },
+      {
+        "id": "S0510L04",
+        "known": "park the car",
+        "target": "停车",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Place to park the car", "地方停车", null, 1],
+      ["I need a place to park the car", "我需要地方停车", null, 2],
+      ["She's gone to look for a place to park the car", "她去找地方停车", null, 2],
+      ["Do you know a safe place to park the car", "你知道安全的地方停车吗", null, 3],
+      ["He's worrying about finding a place to park the car", "他担心找地方停车", null, 3],
+      ["I'm going to look for a place to park the car inside", "我去找地方停车里面", null, 4],
+      ["She's gone to look for a safe place to park the car without worrying", "她去找安全的地方停车不担心", null, 4],
+      ["Maybe you should buy a safe place to park the car around here", "也许你应该买安全的地方停车在这附近", null, 5],
+      ["There's no point worrying about how to find a place to park the car", "担心如何找地方停车没有意义", null, 5],
+      ["She's gone to look for a safe place to park the car so that it doesn't get left behind", "她去找安全的地方停车这样它就不会被落下", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "地方",
+        "place"
+      ],
+      [
+        "停车",
+        "park the car"
+      ]
+    ]
+  }
+}
