@@ -1559,6 +1559,54 @@ Automated basket cleanup after LEGO re-extraction.
 });
 
 /**
+ * POST /api/courses/:courseCode/baskets/regenerate
+ * Proxy to Phase 5 server's /regenerate endpoint
+ */
+app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
+  const { courseCode } = req.params;
+  const { legoIds, target, known } = req.body;
+
+  console.log(`\n🔄 Proxying basket regeneration request to Phase 5 server for ${courseCode}...`);
+  console.log(`   LEGO_IDs: ${legoIds?.length || 0}`);
+
+  if (!legoIds || !Array.isArray(legoIds) || legoIds.length === 0) {
+    return res.status(400).json({
+      error: 'legoIds array required in request body'
+    });
+  }
+
+  if (!target || !known) {
+    return res.status(400).json({
+      error: 'target and known language names required'
+    });
+  }
+
+  try {
+    // Proxy to Phase 5 server
+    const axios = require('axios');
+    const phase5Response = await axios.post(`${PHASE_5_URL}/regenerate`, {
+      courseCode,
+      legoIds,
+      target,
+      known
+    }, {
+      timeout: 30000 // 30s timeout for initial request
+    });
+
+    console.log(`   ✅ Phase 5 server accepted regeneration request`);
+
+    res.json(phase5Response.data);
+  } catch (error) {
+    console.error('   ❌ Basket regeneration proxy error:', error.message);
+
+    const status = error.response?.status || 500;
+    const errorData = error.response?.data || { error: error.message };
+
+    res.status(status).json(errorData);
+  }
+});
+
+/**
  * Helper: Determine course status from manifest data
  */
 function determineStatus(course) {

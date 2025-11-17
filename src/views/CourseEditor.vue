@@ -1919,12 +1919,11 @@ async function confirmRegeneration() {
   const missing = regenerationResult.value.missing
 
   try {
-    // Call Phase 5 server directly
-    const response = await fetch(`http://localhost:3459/regenerate`, {
+    // Call orchestrator which proxies to Phase 5 server
+    const response = await fetch(`${apiBase}/api/courses/${courseCode}/baskets/regenerate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        courseCode,
         legoIds: gapAnalysisResult.value.baskets_missing,
         target: course.value.target_language?.toLowerCase() || 'spa',
         known: course.value.source_language?.toLowerCase() || 'eng'
