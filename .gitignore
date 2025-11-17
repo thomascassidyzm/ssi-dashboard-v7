@@ -74,6 +74,9 @@ scripts/*_generator.cjs
 scripts/AGENT*_COMPLETION_REPORT.md
 scripts/generate_agent*.cjs
 scripts/generate_agent*.py
+scripts/patch*_*.cjs
+scripts/patch*_*.json
+scripts/patch*_*.py
 
 # Phase 5: Full outputs with metadata (local debugging only)
 public/vfs/courses/*/phase5_outputs/*_FULL.json
