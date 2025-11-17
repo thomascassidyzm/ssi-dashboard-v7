@@ -1,0 +1,145 @@
+{
+  "legos": {
+    "S0073L01": {
+      "lego": ["Thank you very much","非常感谢"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Thank you very much","非常感谢",null,2],
+        ["Thank you very much!","非常感谢！",null,2],
+        ["I think thank you very much","我认为非常感谢",null,3],
+        ["Thank you very much, it's important","非常感谢，很重要",null,4],
+        ["Thank you very much for helping me","非常感谢帮我",null,4],
+        ["Thank you very much, it's not difficult","非常感谢，不难",null,5],
+        ["Thank you very much, you're doing very well","非常感谢，你做得很好",null,5],
+        ["Thank you very much, it's very important","非常感谢，很重要",null,4],
+        ["Thank you very much, I want to learn Chinese","非常感谢，我想学中文",null,6],
+        ["Thank you very much for testing yourself","非常感谢测试自己",null,5],
+        ["Thank you very much, learning Chinese is interesting","非常感谢，学中文有趣",null,6],
+        ["Thank you very much, I don't want to stop","非常感谢，我不想停下来",null,6],
+        ["Thank you very much, you don't mind helping me","非常感谢，你不介意帮我",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 5,
+        "long_6_plus": 5
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0073L03": {
+      "lego": ["I've got more","我还有更多"],
+      "type": "M",
+      "current_seed_legos_available": [["Thank you very much","非常感谢"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I've got more","我还有更多",null,3],
+        ["I've got more time","我还有更多时间",null,4],
+        ["I've got more to find","我还有更多找到",null,5],
+        ["I think I've got more","我认为我还有更多",null,5],
+        ["I've got more, thank you very much","我还有更多，非常感谢",null,5],
+        ["I've got more to test","我还有更多测试",null,5],
+        ["I've got more, it's very important","我还有更多，很重要",null,6],
+        ["I've got more to learn Chinese","我还有更多学中文",null,6],
+        ["I've got more, I don't want to stop","我还有更多，我不想停下来",null,7],
+        ["I've got more, learning Chinese is interesting","我还有更多，学中文有趣",null,7],
+        ["Thank you very much, I've got more","非常感谢，我还有更多",null,5],
+        ["I've got more, you're doing very well","我还有更多，你做得很好",null,7],
+        ["I've got more to find, it's not difficult","我还有更多找到，不难",null,8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 1,
+        "longer_4_5": 5,
+        "long_6_plus": 7
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0073L04": {
+      "lego": ["more to learn","更多要学习"],
+      "type": "M",
+      "current_seed_legos_available": [["Thank you very much","非常感谢"],["I've got more","我还有更多"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["more to learn","更多要学习",null,3],
+        ["I've got more to learn","我还有更多要学习",null,5],
+        ["more to learn Chinese","更多要学习中文",null,5],
+        ["I think more to learn","我认为更多要学习",null,4],
+        ["I want more to learn","我想更多要学习",null,4],
+        ["more to learn, it's important","更多要学习，很重要",null,5],
+        ["I've got more to learn, thank you very much","我还有更多要学习，非常感谢",null,7],
+        ["more to learn, it's not difficult","更多要学习，不难",null,6],
+        ["I've got more to learn Chinese","我还有更多要学习中文",null,7],
+        ["more to learn, I don't want to stop","更多要学习，我不想停下来",null,7],
+        ["I've got more to learn, it's very important","我还有更多要学习，很重要",null,8],
+        ["more to learn, you're doing very well","更多要学习，你做得很好",null,7],
+        ["I've got more to learn, learning Chinese is interesting","我还有更多要学习，学中文有趣",null,9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 1,
+        "longer_4_5": 4,
+        "long_6_plus": 8
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0073L06": {
+      "lego": ["learn/study","学习"],
+      "type": "A",
+      "current_seed_legos_available": [["Thank you very much","非常感谢"],["I've got more","我还有更多"],["more to learn","更多要学习"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["learn","学习",null,1],
+        ["I want to learn","我想学习",null,3],
+        ["learn Chinese","学中文",null,2],
+        ["I think learn","我认为学习",null,3],
+        ["it's important to learn","学习很重要",null,4],
+        ["I've got more to learn","我还有更多要学习",null,5],
+        ["learn, it's not difficult","学习，不难",null,4],
+        ["I want to learn, thank you very much","我想学习，非常感谢",null,5],
+        ["learn Chinese, it's very interesting","学中文，很有趣",null,5],
+        ["I don't want to stop to learn","我不想停下来学习",null,6],
+        ["I've got more to learn Chinese","我还有更多学中文",null,6],
+        ["learn, you're doing very well","学习，你做得很好",null,6],
+        ["I've got more to learn, it's important","我还有更多要学习，很重要",null,7],
+        ["learning Chinese is not easy but interesting","学中文不容易但有趣",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 6
+      }
+    },
+    "S0073L07": {
+      "lego": ["more","更多"],
+      "type": "M",
+      "current_seed_legos_available": [["Thank you very much","非常感谢"],["I've got more","我还有更多"],["more to learn","更多要学习"],["learn/study","学习"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["more","更多",null,1],
+        ["I've got more","我还有更多",null,3],
+        ["more time","更多时间",null,2],
+        ["I want more","我想更多",null,3],
+        ["more to learn","更多要学习",null,3],
+        ["I've got more time","我还有更多时间",null,4],
+        ["more to learn Chinese","更多要学习中文",null,5],
+        ["I've got more to learn","我还有更多要学习",null,5],
+        ["I think I've got more","我认为我还有更多",null,5],
+        ["I've got more, it's important","我还有更多，很重要",null,6],
+        ["I've got more to learn, thank you very much","我还有更多要学习，非常感谢",null,7],
+        ["more to learn, learning Chinese is interesting","更多要学习，学中文有趣",null,7],
+        ["I've got more to learn Chinese, it's not difficult","我还有更多学中文，不难",null,8],
+        ["Thank you very much, but I've got more to learn","非常感谢，但是我还有更多要学习",null,8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "components": [[null,null],[null,null]]
+    }
+  }
+}
