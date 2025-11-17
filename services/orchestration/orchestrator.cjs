@@ -1195,6 +1195,85 @@ app.post('/api/courses/:courseCode/phase/3/validate', async (req, res) => {
 });
 
 /**
+ * POST /api/courses/:courseCode/phase/3/infinitive-check
+ * Run infinitive form validation on English LEGOs
+ * Only applicable when source language is English
+ */
+app.post('/api/courses/:courseCode/phase/3/infinitive-check', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`\n🔍 Running infinitive check for ${courseCode}...`);
+
+  try {
+    const legoPairsPath = path.join(VFS_ROOT, courseCode, 'lego_pairs.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.status(404).json({
+        error: 'lego_pairs.json not found - run Phase 3 first',
+        courseCode
+      });
+    }
+
+    // Read lego_pairs to check if English is the known language
+    const legoPairsData = await fs.readJson(legoPairsPath);
+
+    // Check format and extract first seed to determine languages
+    let firstSeed = legoPairsData.seeds?.[0];
+    let knownLang = null;
+
+    if (firstSeed) {
+      if (Array.isArray(firstSeed)) {
+        // Array format [seedId, [target, known], legos]
+        knownLang = firstSeed[1]?.[1];
+      } else if (firstSeed.seed_pair) {
+        // Object format {seed_id, seed_pair: [target, known], legos}
+        knownLang = firstSeed.seed_pair?.[1];
+      }
+    }
+
+    // Check if it's English - look for common English words
+    const isEnglish = knownLang && /\b(I|you|the|to|and|a|is|in|it)\b/.test(knownLang);
+
+    if (!isEnglish) {
+      return res.json({
+        courseCode,
+        status: 'skip',
+        message: 'Infinitive check only applicable for English courses',
+        violations: []
+      });
+    }
+
+    // Run infinitive form checker using the existing script
+    const { checkInfinitiveFormsData } = require('../../scripts/validation/check-infinitive-forms-lib.cjs');
+    const result = checkInfinitiveFormsData(legoPairsData);
+
+    console.log(`   ${result.violations.length > 0 ? '❌' : '✅'} Infinitive check ${result.violations.length > 0 ? 'FAILED' : 'PASSED'} - ${result.violations.length} violations`);
+
+    res.json({
+      courseCode,
+      status: result.violations.length > 0 ? 'fail' : 'pass',
+      violations: result.violations.length,
+      message: result.violations.length > 0
+        ? `Found ${result.violations.length} infinitive form violations`
+        : 'No infinitive violations detected',
+      details: result.violations,
+      summary: {
+        totalSeeds: result.totalSeeds,
+        totalLegos: result.totalLegos,
+        critical: result.violations.filter(v => v.severity === 'CRITICAL').length,
+        high: result.violations.filter(v => v.severity === 'HIGH').length
+      }
+    });
+  } catch (error) {
+    console.error('   ❌ Infinitive check error:', error.message);
+    res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/baskets/gaps
  * Analyze basket gaps after LEGO re-extraction
  * Fetches data from GitHub main branch, not local files

@@ -83,7 +83,7 @@
         <div v-if="showValidationPanel" class="bg-slate-800 border border-emerald-500/50 rounded-lg p-6">
           <h3 class="text-xl font-semibold text-emerald-400 mb-6">🔬 Quality Control & Basket Management</h3>
 
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid grid-cols-4 gap-6">
             <!-- LUT Check -->
             <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
               <h4 class="font-semibold text-emerald-400 mb-2">LUT Check (Phase 3.6)</h4>
@@ -118,6 +118,53 @@
                 <p v-if="lutCheckResult.manifest" class="text-xs text-slate-400">
                   Affected seeds: {{ lutCheckResult.manifest.affected_seeds?.length || 0 }}
                 </p>
+              </div>
+            </div>
+
+            <!-- Infinitive Check (English only) -->
+            <div v-if="course.source_language === 'English'" class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-400 mb-2">Infinitive Check</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Validate infinitive forms in English LEGOs
+              </p>
+              <button
+                @click="runInfinitiveCheck"
+                :disabled="infinitiveCheckLoading"
+                class="w-full px-4 py-2 bg-yellow-600 hover:bg-yellow-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+              >
+                <span v-if="infinitiveCheckLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                <span v-else>📝</span>
+                {{ infinitiveCheckLoading ? 'Checking...' : 'Check Infinitives' }}
+              </button>
+
+              <!-- Infinitive Results -->
+              <div v-if="infinitiveCheckResult" class="mt-4 p-3 rounded-lg border" :class="{
+                'bg-emerald-900/20 border-emerald-500/50': infinitiveCheckResult.status === 'pass',
+                'bg-yellow-900/20 border-yellow-500/50': infinitiveCheckResult.status === 'fail',
+                'bg-slate-900/20 border-slate-500/50': infinitiveCheckResult.status === 'skip'
+              }">
+                <div class="flex items-center gap-2 mb-2">
+                  <span v-if="infinitiveCheckResult.status === 'pass'" class="text-emerald-400">✓</span>
+                  <span v-else-if="infinitiveCheckResult.status === 'fail'" class="text-yellow-400">⚠</span>
+                  <span v-else class="text-slate-400">—</span>
+                  <span class="font-semibold text-sm" :class="{
+                    'text-emerald-400': infinitiveCheckResult.status === 'pass',
+                    'text-yellow-400': infinitiveCheckResult.status === 'fail',
+                    'text-slate-400': infinitiveCheckResult.status === 'skip'
+                  }">
+                    {{ infinitiveCheckResult.status === 'pass' ? 'All Valid' :
+                       infinitiveCheckResult.status === 'skip' ? 'N/A' :
+                       `${infinitiveCheckResult.violations} Issues` }}
+                  </span>
+                </div>
+                <div v-if="infinitiveCheckResult.summary" class="text-xs text-slate-400 space-y-1">
+                  <div v-if="infinitiveCheckResult.summary.critical > 0">
+                    Critical: {{ infinitiveCheckResult.summary.critical }}
+                  </div>
+                  <div v-if="infinitiveCheckResult.summary.high > 0">
+                    High: {{ infinitiveCheckResult.summary.high }}
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1025,6 +1072,8 @@ const savingIntro = ref(false) // Saving state
 const showValidationPanel = ref(false)
 const lutCheckLoading = ref(false)
 const lutCheckResult = ref(null)
+const infinitiveCheckLoading = ref(false)
+const infinitiveCheckResult = ref(null)
 const gapAnalysisLoading = ref(false)
 const gapAnalysisResult = ref(null)
 const regenerationLoading = ref(false)
@@ -1868,6 +1917,30 @@ async function runLUTCheck() {
     alert(`LUT Check failed: ${err.message}`)
   } finally {
     lutCheckLoading.value = false
+  }
+}
+
+async function runInfinitiveCheck() {
+  infinitiveCheckLoading.value = true
+  infinitiveCheckResult.value = null
+
+  try {
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await fetch(`${apiBase}/api/courses/${courseCode}/phase/3/infinitive-check`, {
+      method: 'POST'
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+    }
+
+    const result = await response.json()
+    infinitiveCheckResult.value = result
+  } catch (err) {
+    console.error('Infinitive Check error:', err)
+    alert(`Infinitive Check failed: ${err.message}`)
+  } finally {
+    infinitiveCheckLoading.value = false
   }
 }
 
