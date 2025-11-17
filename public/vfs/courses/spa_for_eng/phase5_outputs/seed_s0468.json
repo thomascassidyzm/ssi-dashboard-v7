@@ -1,0 +1,108 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0468",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "known": "It's a big world.",
+    "target": "Es un mundo grande."
+  },
+  "legos": {
+    "S0468L01": {
+      "lego": [
+        "It's a",
+        "Es un"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "It's a house",
+          "Es una casa",
+          null,
+          2
+        ],
+        [
+          "It's a war",
+          "Es una guerra",
+          null,
+          2
+        ],
+        [
+          "It's a blue house",
+          "Es una casa azul",
+          null,
+          3
+        ],
+        [
+          "It's a town near Italy",
+          "Es un pueblo cerca de Italia",
+          null,
+          4
+        ],
+        [
+          "It's a house where she fought during the war",
+          "Es una casa donde ella combatió durante la guerra",
+          null,
+          7
+        ],
+        [
+          "It's a town next to the place I told you",
+          "Es un pueblo al lado del lugar que te dije",
+          null,
+          8
+        ],
+        [
+          "It's a blue house where I want to find some things to buy",
+          "Es una casa azul donde quiero encontrar algunas cosas para comprar",
+          null,
+          9
+        ],
+        [
+          "It's a big town near Italy where my grandfather fought during the war",
+          "Es un pueblo grande cerca de Italia donde mi abuelo combatió durante la guerra",
+          null,
+          10
+        ],
+        [
+          "It's a place where she told me let me find what I want in the blue house",
+          "Es un lugar donde ella me dijo déjame encontrar lo que quiero en la casa azul",
+          null,
+          10
+        ],
+        [
+          "It's a big world.",
+          "Es un mundo grande.",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0468L01",
+        "seed_context": {
+          "known": "It's a big world.",
+          "target": "Es un mundo grande."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0468.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "phrases_to_generate": 30,
+    "recent_seeds_count": 10
+  }
+}

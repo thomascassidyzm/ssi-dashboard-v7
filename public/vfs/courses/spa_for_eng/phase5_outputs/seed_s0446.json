@@ -1,0 +1,226 @@
+{
+  "S0446L04": {
+    "lego": [
+      "to break that window",
+      "romper esa ventana"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0446L01",
+        "known": "won't be able to",
+        "target": "no van a poder",
+        "type": "M"
+      },
+      {
+        "id": "S0446L02",
+        "known": "to break",
+        "target": "romper",
+        "type": "A"
+      },
+      {
+        "id": "S0446L03",
+        "known": "that window",
+        "target": "esa ventana",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "To break that window",
+        "Romper esa ventana",
+        null,
+        1
+      ],
+      [
+        "That window",
+        "Esa ventana",
+        null,
+        1
+      ],
+      [
+        "They won't be able to break that window",
+        "No van a poder romper esa ventana",
+        null,
+        2
+      ],
+      [
+        "They will be able to break that window",
+        "Van a poder romper esa ventana",
+        null,
+        2
+      ],
+      [
+        "They wanted to break that window",
+        "Querían romper esa ventana",
+        null,
+        3
+      ],
+      [
+        "They want to break that window",
+        "Quieren romper esa ventana",
+        null,
+        3
+      ],
+      [
+        "They don't want to break that window",
+        "No quieren romper esa ventana",
+        null,
+        4
+      ],
+      [
+        "They didn't want to break that window",
+        "No querían romper esa ventana",
+        null,
+        4
+      ],
+      [
+        "They wanted to develop a new approach for breaking that window",
+        "Querían desarrollar un acercamiento nuevo para romper esa ventana",
+        null,
+        5
+      ],
+      [
+        "They thought it could be done to break that window",
+        "Pensaban que podría hacerse para romper esa ventana",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "romper",
+        "to break"
+      ],
+      [
+        "esa",
+        "that"
+      ],
+      [
+        "ventana",
+        "window"
+      ]
+    ]
+  },
+  "S0446L05": {
+    "lego": [
+      "to be able to break",
+      "poder romper"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0446L01",
+        "known": "won't be able to",
+        "target": "no van a poder",
+        "type": "M"
+      },
+      {
+        "id": "S0446L02",
+        "known": "to break",
+        "target": "romper",
+        "type": "A"
+      },
+      {
+        "id": "S0446L03",
+        "known": "that window",
+        "target": "esa ventana",
+        "type": "M"
+      },
+      {
+        "id": "S0446L04",
+        "known": "to break that window",
+        "target": "romper esa ventana",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "To be able to break",
+        "Poder romper",
+        null,
+        1
+      ],
+      [
+        "Able to break that window",
+        "Poder romper esa ventana",
+        null,
+        1
+      ],
+      [
+        "They will be able to break",
+        "Van a poder romper",
+        null,
+        2
+      ],
+      [
+        "They won't be able to break",
+        "No van a poder romper",
+        null,
+        2
+      ],
+      [
+        "They want to be able to break",
+        "Quieren poder romper",
+        null,
+        3
+      ],
+      [
+        "They wanted to be able to break",
+        "Querían poder romper",
+        null,
+        3
+      ],
+      [
+        "They will be able to break that window",
+        "Van a poder romper esa ventana",
+        null,
+        4
+      ],
+      [
+        "They won't be able to break that window",
+        "No van a poder romper esa ventana",
+        null,
+        4
+      ],
+      [
+        "They wanted to be able to break that window while they're still young",
+        "Querían poder romper esa ventana mientras todavía son jóvenes",
+        null,
+        5
+      ],
+      [
+        "They don't want to be able to break that suitcase",
+        "No quieren poder romper esa maleta",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "poder",
+        "to be able"
+      ],
+      [
+        "romper",
+        "to break"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "legos": {
+    "S0446L01": {
+      "lego": [
+        "won't be able to",
+        "no van a poder"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "van",
+          "will/are going"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "poder",
+          "to be able"
+        ]
+      ],
+      "practice_phrases": [
+        [
+          "won't be able to",
+          "no van a poder"
+        ],
+        [
+          "they won't be able to",
+          "no van a poder"
+        ],
+        [
+          "won't be able to carry",
+          "no van a poder llevar"
+        ],
+        [
+          "won't be able to travel",
+          "no van a poder viajar"
+        ],
+        [
+          "won't be able to carry that suitcase",
+          "no van a poder llevar esa maleta"
+        ],
+        [
+          "won't be able to develop an approach",
+          "no van a poder desarrollar un acercamiento"
+        ],
+        [
+          "they thought they won't be able to",
+          "pensaban que no van a poder"
+        ],
+        [
+          "won't be able to carry that suitcase efficiently",
+          "no van a poder llevar esa maleta eficientemente"
+        ],
+        [
+          "they thought they won't be able to carry",
+          "pensaban que no van a poder llevar"
+        ],
+        [
+          "won't be able to travel while they're still young",
+          "no van a poder viajar mientras todavía son jóvenes"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0446L01",
+        "seed_context": {
+          "known": "Ellos no van a poder romper esa ventana.",
+          "target": "They won't be able to break that window."
+        }
+      }
+    },
+    "S0446L02": {
+      "lego": [
+        "to break",
+        "romper"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0446L01",
+          "known": "won't be able to",
+          "target": "no van a poder",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to break",
+          "romper"
+        ],
+        [
+          "won't be able to break",
+          "no van a poder romper"
+        ],
+        [
+          "they want to break",
+          "quieren romper"
+        ],
+        [
+          "they wanted to break",
+          "querían romper"
+        ],
+        [
+          "they thought it could break",
+          "pensaban que podría romper"
+        ],
+        [
+          "won't be able to break efficiently",
+          "no van a poder romper eficientemente"
+        ],
+        [
+          "they wanted to break that suitcase",
+          "querían romper esa maleta"
+        ],
+        [
+          "they thought it could break more efficiently",
+          "pensaban que podría romper más eficientemente"
+        ],
+        [
+          "won't be able to break while they travel",
+          "no van a poder romper mientras viajan"
+        ],
+        [
+          "they thought they won't be able to break",
+          "pensaban que no van a poder romper"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0446L02",
+        "seed_context": {
+          "known": "Ellos no van a poder romper esa ventana.",
+          "target": "They won't be able to break that window."
+        }
+      }
+    },
+    "S0446L03": {
+      "lego": [
+        "that window",
+        "esa ventana"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0446L01",
+          "known": "won't be able to",
+          "target": "no van a poder",
+          "type": "M"
+        },
+        {
+          "id": "S0446L02",
+          "known": "to break",
+          "target": "romper",
+          "type": "A"
+        }
+      ],
+      "components": [
+        [
+          "esa",
+          "that"
+        ],
+        [
+          "ventana",
+          "window"
+        ]
+      ],
+      "practice_phrases": [
+        [
+          "that window",
+          "esa ventana"
+        ],
+        [
+          "to break that window",
+          "romper esa ventana"
+        ],
+        [
+          "won't be able to break that window",
+          "no van a poder romper esa ventana"
+        ],
+        [
+          "they want that window",
+          "quieren esa ventana"
+        ],
+        [
+          "they wanted to break that window",
+          "querían romper esa ventana"
+        ],
+        [
+          "they thought it could break that window",
+          "pensaban que podría romper esa ventana"
+        ],
+        [
+          "they didn't want to break that window",
+          "no querían romper esa ventana"
+        ],
+        [
+          "won't be able to break that window efficiently",
+          "no van a poder romper esa ventana eficientemente"
+        ],
+        [
+          "they thought they won't be able to break that window",
+          "pensaban que no van a poder romper esa ventana"
+        ],
+        [
+          "won't be able to break that window",
+          "no van a poder romper esa ventana"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0446L03",
+        "seed_context": {
+          "known": "Ellos no van a poder romper esa ventana.",
+          "target": "They won't be able to break that window."
+        }
+      }
+    }
+  }
+}

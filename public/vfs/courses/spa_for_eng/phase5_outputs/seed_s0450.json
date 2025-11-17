@@ -1,0 +1,303 @@
+{
+  "legos": {
+    "S0450L02": {
+      "lego": [
+        "they have to",
+        "tienen que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0450L01",
+          "known": "no",
+          "target": "no",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "they have to",
+          "tienen que",
+          null,
+          1
+        ],
+        [
+          "they have to travel",
+          "tienen que viajar",
+          null,
+          2
+        ],
+        [
+          "no, they have to",
+          "no tienen que",
+          null,
+          2
+        ],
+        [
+          "they have to help",
+          "tienen que ayudar",
+          null,
+          2
+        ],
+        [
+          "they have to be ready",
+          "tienen que estar preparados",
+          null,
+          3
+        ],
+        [
+          "they have to carry that suitcase",
+          "tienen que llevar esa maleta",
+          null,
+          4
+        ],
+        [
+          "they said they have to help",
+          "dijeron que tienen que ayudar",
+          null,
+          4
+        ],
+        [
+          "they have to be happy to help",
+          "tienen que estar contentos de ayudar",
+          null,
+          5
+        ],
+        [
+          "they have to travel after the meal",
+          "tienen que viajar después de la comida",
+          null,
+          6
+        ],
+        [
+          "they thought they have to develop a new approach",
+          "pensaban que tienen que desarrollar un acercamiento nuevo",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "tienen",
+          "they have"
+        ],
+        [
+          "que",
+          "to"
+        ]
+      ]
+    },
+    "S0450L03": {
+      "lego": [
+        "to catch",
+        "tomar"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0450L01",
+          "known": "no",
+          "target": "no",
+          "type": "A"
+        },
+        {
+          "id": "S0450L02",
+          "known": "they have to",
+          "target": "tienen que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to catch",
+          "tomar",
+          null,
+          1
+        ],
+        [
+          "they have to catch",
+          "tienen que tomar",
+          null,
+          2
+        ],
+        [
+          "to catch that suitcase",
+          "tomar esa maleta",
+          null,
+          3
+        ],
+        [
+          "they want to catch",
+          "quieren tomar",
+          null,
+          2
+        ],
+        [
+          "no, they have to catch",
+          "no tienen que tomar",
+          null,
+          3
+        ],
+        [
+          "they have to catch that suitcase",
+          "tienen que tomar esa maleta",
+          null,
+          4
+        ],
+        [
+          "they said they have to catch that",
+          "dijeron que tienen que tomar esa",
+          null,
+          5
+        ],
+        [
+          "they have to be able to catch that",
+          "tienen que poder tomar esa",
+          null,
+          4
+        ],
+        [
+          "they thought they have to catch that suitcase",
+          "pensaban que tienen que tomar esa maleta",
+          null,
+          6
+        ],
+        [
+          "they have to catch that window after the meal",
+          "tienen que tomar esa ventana después de la comida",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "tomar",
+          "to catch/take"
+        ]
+      ]
+    },
+    "S0450L04": {
+      "lego": [
+        "the train",
+        "el tren"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0450L01",
+          "known": "no",
+          "target": "no",
+          "type": "A"
+        },
+        {
+          "id": "S0450L02",
+          "known": "they have to",
+          "target": "tienen que",
+          "type": "M"
+        },
+        {
+          "id": "S0450L03",
+          "known": "to catch",
+          "target": "tomar",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "the train",
+          "el tren",
+          null,
+          1
+        ],
+        [
+          "to catch the train",
+          "tomar el tren",
+          null,
+          2
+        ],
+        [
+          "they have to catch the train",
+          "tienen que tomar el tren",
+          null,
+          3
+        ],
+        [
+          "they want the train",
+          "quieren el tren",
+          null,
+          2
+        ],
+        [
+          "no, they have to catch the train",
+          "no tienen que tomar el tren",
+          null,
+          4
+        ],
+        [
+          "they want to catch the train",
+          "quieren tomar el tren",
+          null,
+          3
+        ],
+        [
+          "they said they have to catch the train",
+          "dijeron que tienen que tomar el tren",
+          null,
+          6
+        ],
+        [
+          "they have to catch the train after the meal",
+          "tienen que tomar el tren después de la comida",
+          null,
+          6
+        ],
+        [
+          "they thought they have to catch the train",
+          "pensaban que tienen que tomar el tren",
+          null,
+          6
+        ],
+        [
+          "they have to be able to catch the train",
+          "tienen que poder tomar el tren",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "tren",
+          "train"
+        ]
+      ]
+    }
+  }
+}

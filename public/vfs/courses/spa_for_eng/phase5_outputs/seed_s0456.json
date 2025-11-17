@@ -1,0 +1,115 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0456",
+  "generation_stage": "PHRASE_GENERATION_COMPLETE",
+  "seed_pair": {
+    "known": "He might be there but it's not very likely.",
+    "target": "Puede que esté allí pero no es muy probable."
+  },
+  "legos": {
+    "S0456L02": {
+      "lego": [
+        "be there",
+        "esté allí"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0456L01",
+          "known": "he might be",
+          "target": "puede que esté",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Be there",
+          "Esté allí",
+          null,
+          1
+        ],
+        [
+          "They might be there",
+          "Puede que estén allí",
+          null,
+          2
+        ],
+        [
+          "He might be there at home",
+          "Puede que esté allí en casa",
+          null,
+          4
+        ],
+        [
+          "She might be there to help",
+          "Puede que ella esté allí para ayudar",
+          null,
+          4
+        ],
+        [
+          "He might be there after the meal",
+          "Puede que esté allí después de la comida",
+          null,
+          5
+        ],
+        [
+          "He might be there with the tired friends",
+          "Puede que esté allí con los amigos cansados",
+          null,
+          5
+        ],
+        [
+          "He might be there at about six but they were tired",
+          "Puede que esté allí como a las seis pero estaban cansados",
+          null,
+          7
+        ],
+        [
+          "He might be there to help almost leave after they said",
+          "Puede que esté allí para ayudar a casi irnos después de que ellos dijeron",
+          null,
+          8
+        ],
+        [
+          "He might be there last night but did they say what happened at home",
+          "Puede que estuviera allí anoche pero dijeron qué pasó en casa",
+          null,
+          8
+        ],
+        [
+          "He might be there but it's not very likely.",
+          "Puede que esté allí pero no es muy probable.",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0456L02",
+        "seed_context": {
+          "known": "He might be there but it's not very likely.",
+          "target": "Puede que esté allí pero no es muy probable."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seeds + current seed's earlier LEGOs + current LEGO (NO massive whitelist!)",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0456.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seeds_count": 10
+  }
+}

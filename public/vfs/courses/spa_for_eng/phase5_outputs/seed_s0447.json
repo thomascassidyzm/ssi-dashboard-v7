@@ -1,0 +1,94 @@
+{
+  "S0447L01": {
+    "lego": [
+      "will they be able to",
+      "van a poder"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Will they be able to",
+        "Van a poder",
+        null,
+        1
+      ],
+      [
+        "They will be able to",
+        "Van a poder",
+        null,
+        1
+      ],
+      [
+        "Will they be able to travel",
+        "Van a poder viajar",
+        null,
+        2
+      ],
+      [
+        "They will be able to carry that suitcase",
+        "Van a poder llevar esa maleta",
+        null,
+        2
+      ],
+      [
+        "Will they be able to develop a new approach",
+        "Van a poder desarrollar un acercamiento nuevo",
+        null,
+        3
+      ],
+      [
+        "They will be able to break that window",
+        "Van a poder romper esa ventana",
+        null,
+        3
+      ],
+      [
+        "Will they be able to travel while they're still young",
+        "Van a poder viajar mientras todavía son jóvenes",
+        null,
+        4
+      ],
+      [
+        "They will be able to carry that suitcase",
+        "Van a poder llevar esa maleta",
+        null,
+        4
+      ],
+      [
+        "Will they be able to raise as much as possible for charity",
+        "Van a poder recaudar tanto como posible para caridad",
+        null,
+        5
+      ],
+      [
+        "They thought they will be able to do it more efficiently",
+        "Pensaban que van a poder hacerse más eficientemente",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "van",
+        "will/are going"
+      ],
+      [
+        "a",
+        "to"
+      ],
+      [
+        "poder",
+        "to be able"
+      ]
+    ]
+  }
+}

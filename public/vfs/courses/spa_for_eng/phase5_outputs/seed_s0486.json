@@ -1,0 +1,403 @@
+{
+  "legos": {
+    "S0486L01": {
+      "lego": [
+        "I think your",
+        "Creo que tus"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I think your",
+          "Creo que tus",
+          null,
+          1
+        ],
+        [
+          "I think your heart",
+          "Creo que tu corazón",
+          null,
+          2
+        ],
+        [
+          "I think your life",
+          "Creo que tu vida",
+          null,
+          2
+        ],
+        [
+          "I think your heart is kind",
+          "Creo que tu corazón es amable",
+          null,
+          4
+        ],
+        [
+          "I think your life is beautiful",
+          "Creo que tu vida es hermosa",
+          null,
+          4
+        ],
+        [
+          "I think your hope is real",
+          "Creo que tu esperanza es real",
+          null,
+          4
+        ],
+        [
+          "I think your life is not easy",
+          "Creo que tu vida no es fácil",
+          null,
+          5
+        ],
+        [
+          "I think your heart is so kind now",
+          "Creo que tu corazón es tan amable ahora",
+          null,
+          6
+        ],
+        [
+          "I think your life is destined to be happy",
+          "Creo que tu vida está destinada a ser feliz",
+          null,
+          7
+        ],
+        [
+          "I think your only real hope is waiting",
+          "Creo que tu única esperanza real es esperando",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0486L02": {
+      "lego": [
+        "your eyes",
+        "tus ojos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0486L01",
+          "known": "I think your",
+          "target": "Creo que tus",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "your eyes",
+          "tus ojos",
+          null,
+          1
+        ],
+        [
+          "I think your eyes",
+          "Creo que tus ojos",
+          null,
+          2
+        ],
+        [
+          "your eyes are beautiful",
+          "tus ojos son hermosos",
+          null,
+          2
+        ],
+        [
+          "I think your eyes are kind",
+          "Creo que tus ojos son amables",
+          null,
+          3
+        ],
+        [
+          "your eyes are very beautiful",
+          "tus ojos son muy hermosos",
+          null,
+          3
+        ],
+        [
+          "I think your eyes are so beautiful",
+          "Creo que tus ojos son tan hermosos",
+          null,
+          5
+        ],
+        [
+          "your eyes are not serious",
+          "tus ojos no son serios",
+          null,
+          3
+        ],
+        [
+          "I think your eyes are happy now",
+          "Creo que tus ojos son felices ahora",
+          null,
+          5
+        ],
+        [
+          "your eyes are the most beautiful thing",
+          "tus ojos son la cosa más hermosa",
+          null,
+          6
+        ],
+        [
+          "I think your eyes are destined to be happy",
+          "Creo que tus ojos están destinados a ser felices",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "tus",
+          "your"
+        ],
+        [
+          "ojos",
+          "eyes"
+        ]
+      ]
+    },
+    "S0486L03": {
+      "lego": [
+        "are beautiful",
+        "son hermosos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0486L01",
+          "known": "I think your",
+          "target": "Creo que tus",
+          "type": "M"
+        },
+        {
+          "id": "S0486L02",
+          "known": "your eyes",
+          "target": "tus ojos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "are beautiful",
+          "son hermosos",
+          null,
+          1
+        ],
+        [
+          "they are beautiful",
+          "son hermosos",
+          null,
+          1
+        ],
+        [
+          "your eyes are beautiful",
+          "tus ojos son hermosos",
+          null,
+          2
+        ],
+        [
+          "I think they are beautiful",
+          "Creo que son hermosos",
+          null,
+          2
+        ],
+        [
+          "are beautiful and kind",
+          "son hermosos y amables",
+          null,
+          3
+        ],
+        [
+          "I think your eyes are beautiful",
+          "Creo que tus ojos son hermosos",
+          null,
+          3
+        ],
+        [
+          "are beautiful but not serious",
+          "son hermosos pero no serios",
+          null,
+          4
+        ],
+        [
+          "your eyes are beautiful and happy",
+          "tus ojos son hermosos y felices",
+          null,
+          4
+        ],
+        [
+          "I think your eyes are beautiful now",
+          "Creo que tus ojos son hermosos ahora",
+          null,
+          5
+        ],
+        [
+          "are beautiful and destined to be happy",
+          "son hermosos y destinados a ser felices",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "son",
+          "are"
+        ],
+        [
+          "hermosos",
+          "beautiful"
+        ]
+      ]
+    },
+    "S0486L04": {
+      "lego": [
+        "your eyes are beautiful",
+        "tus ojos son hermosos"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0486L01",
+          "known": "I think your",
+          "target": "Creo que tus",
+          "type": "M"
+        },
+        {
+          "id": "S0486L02",
+          "known": "your eyes",
+          "target": "tus ojos",
+          "type": "M"
+        },
+        {
+          "id": "S0486L03",
+          "known": "are beautiful",
+          "target": "son hermosos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "your eyes are beautiful",
+          "tus ojos son hermosos",
+          null,
+          1
+        ],
+        [
+          "I think your eyes are beautiful",
+          "Creo que tus ojos son hermosos",
+          null,
+          2
+        ],
+        [
+          "your eyes are beautiful and kind",
+          "tus ojos son hermosos y amables",
+          null,
+          3
+        ],
+        [
+          "your eyes are beautiful now",
+          "tus ojos son hermosos ahora",
+          null,
+          2
+        ],
+        [
+          "I think your eyes are beautiful but serious",
+          "Creo que tus ojos son hermosos pero serios",
+          null,
+          4
+        ],
+        [
+          "your eyes are beautiful and so happy",
+          "tus ojos son hermosos y tan felices",
+          null,
+          5
+        ],
+        [
+          "I think your eyes are beautiful and that's real",
+          "Creo que tus ojos son hermosos y eso es real",
+          null,
+          6
+        ],
+        [
+          "your eyes are beautiful like your heart",
+          "tus ojos son hermosos como tu corazón",
+          null,
+          5
+        ],
+        [
+          "I think your eyes are beautiful and your life is happy",
+          "Creo que tus ojos son hermosos y tu vida es feliz",
+          null,
+          7
+        ],
+        [
+          "I think your eyes are beautiful.",
+          "Creo que tus ojos son hermosos.",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "tus",
+          "your"
+        ],
+        [
+          "ojos",
+          "eyes"
+        ],
+        [
+          "son",
+          "are"
+        ],
+        [
+          "hermosos",
+          "beautiful"
+        ]
+      ]
+    }
+  }
+}

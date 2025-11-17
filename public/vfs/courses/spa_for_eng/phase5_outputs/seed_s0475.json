@@ -1,0 +1,403 @@
+{
+  "legos": {
+    "S0475L01": {
+      "lego": [
+        "there are many reasons",
+        "hay muchas razones"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "there are many reasons",
+          "hay muchas razones",
+          null,
+          1
+        ],
+        [
+          "many reasons",
+          "muchas razones",
+          null,
+          1
+        ],
+        [
+          "there are many reasons for that",
+          "hay muchas razones para eso",
+          null,
+          3
+        ],
+        [
+          "but there are many reasons",
+          "pero hay muchas razones",
+          null,
+          2
+        ],
+        [
+          "there are many reasons for the problem",
+          "hay muchas razones para el problema",
+          null,
+          4
+        ],
+        [
+          "there are many reasons that we know",
+          "hay muchas razones que sabemos",
+          null,
+          4
+        ],
+        [
+          "there are many reasons before that",
+          "hay muchas razones antes de eso",
+          null,
+          5
+        ],
+        [
+          "there are many reasons for the next time",
+          "hay muchas razones para la próxima vez",
+          null,
+          5
+        ],
+        [
+          "there are many reasons but that doesn't mean",
+          "hay muchas razones pero eso no significa",
+          null,
+          6
+        ],
+        [
+          "there are many reasons before we stop",
+          "hay muchas razones antes de que paremos",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "hay",
+          "there are"
+        ],
+        [
+          "muchas",
+          "many"
+        ],
+        [
+          "razones",
+          "reasons"
+        ]
+      ]
+    },
+    "S0475L02": {
+      "lego": [
+        "many reasons",
+        "muchas razones"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0475L01",
+          "known": "there are many reasons",
+          "target": "hay muchas razones",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "many reasons",
+          "muchas razones",
+          null,
+          1
+        ],
+        [
+          "many reasons for that",
+          "muchas razones para eso",
+          null,
+          2
+        ],
+        [
+          "there are many reasons here",
+          "hay muchas razones aquí",
+          null,
+          2
+        ],
+        [
+          "many reasons for the problem",
+          "muchas razones para el problema",
+          null,
+          3
+        ],
+        [
+          "I want many reasons",
+          "quiero muchas razones",
+          null,
+          2
+        ],
+        [
+          "there are many reasons but I want more",
+          "hay muchas razones pero quiero más",
+          null,
+          5
+        ],
+        [
+          "many reasons that we don't know",
+          "muchas razones que no sabemos",
+          null,
+          4
+        ],
+        [
+          "there are many reasons for the next time",
+          "hay muchas razones para la próxima vez",
+          null,
+          5
+        ],
+        [
+          "many reasons before we can stop",
+          "muchas razones antes de que podamos parar",
+          null,
+          5
+        ],
+        [
+          "there are many reasons for this big problem",
+          "hay muchas razones para este problema grande",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "muchas",
+          "many"
+        ],
+        [
+          "razones",
+          "reasons"
+        ]
+      ]
+    },
+    "S0475L03": {
+      "lego": [
+        "to consider waiting",
+        "para considerar esperar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0475L01",
+          "known": "there are many reasons",
+          "target": "hay muchas razones",
+          "type": "M"
+        },
+        {
+          "id": "S0475L02",
+          "known": "many reasons",
+          "target": "muchas razones",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to consider waiting",
+          "para considerar esperar",
+          null,
+          1
+        ],
+        [
+          "I want to consider waiting",
+          "quiero considerar esperar",
+          null,
+          2
+        ],
+        [
+          "many reasons to consider waiting",
+          "muchas razones para considerar esperar",
+          null,
+          2
+        ],
+        [
+          "to consider waiting before that",
+          "para considerar esperar antes de eso",
+          null,
+          3
+        ],
+        [
+          "I want to consider waiting but",
+          "quiero considerar esperar pero",
+          null,
+          3
+        ],
+        [
+          "there are many reasons to consider waiting",
+          "hay muchas razones para considerar esperar",
+          null,
+          3
+        ],
+        [
+          "to consider waiting the next time",
+          "para considerar esperar la próxima vez",
+          null,
+          4
+        ],
+        [
+          "many reasons to consider waiting before we stop",
+          "muchas razones para considerar esperar antes de que paremos",
+          null,
+          6
+        ],
+        [
+          "I want to consider waiting for the facts",
+          "quiero considerar esperar para los hechos",
+          null,
+          5
+        ],
+        [
+          "there are many reasons to consider waiting before that",
+          "hay muchas razones para considerar esperar antes de eso",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "para",
+          "to"
+        ],
+        [
+          "considerar",
+          "to consider/consider"
+        ],
+        [
+          "esperar",
+          "to wait/waiting"
+        ]
+      ]
+    },
+    "S0475L04": {
+      "lego": [
+        "to consider waiting",
+        "considerar esperar"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0475L01",
+          "known": "there are many reasons",
+          "target": "hay muchas razones",
+          "type": "M"
+        },
+        {
+          "id": "S0475L02",
+          "known": "many reasons",
+          "target": "muchas razones",
+          "type": "M"
+        },
+        {
+          "id": "S0475L03",
+          "known": "to consider waiting",
+          "target": "para considerar esperar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to consider waiting",
+          "considerar esperar",
+          null,
+          1
+        ],
+        [
+          "I want to consider waiting",
+          "quiero considerar esperar",
+          null,
+          2
+        ],
+        [
+          "to consider waiting before stopping",
+          "considerar esperar antes de parar",
+          null,
+          3
+        ],
+        [
+          "many reasons to consider waiting",
+          "muchas razones para considerar esperar",
+          null,
+          3
+        ],
+        [
+          "I want to consider waiting next time",
+          "quiero considerar esperar la próxima vez",
+          null,
+          4
+        ],
+        [
+          "to consider waiting but that's the problem",
+          "considerar esperar pero eso es el problema",
+          null,
+          5
+        ],
+        [
+          "many reasons to consider waiting before that",
+          "muchas razones para considerar esperar antes de eso",
+          null,
+          5
+        ],
+        [
+          "I want to consider waiting before we stop",
+          "quiero considerar esperar antes de que paremos",
+          null,
+          5
+        ],
+        [
+          "there are many reasons to consider waiting next time",
+          "hay muchas razones para considerar esperar la próxima vez",
+          null,
+          6
+        ],
+        [
+          "There are many reasons to consider waiting.",
+          "Hay muchas razones para considerar esperar.",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "considerar",
+          "to consider/consider"
+        ],
+        [
+          "esperar",
+          "to wait/waiting"
+        ]
+      ]
+    }
+  }
+}

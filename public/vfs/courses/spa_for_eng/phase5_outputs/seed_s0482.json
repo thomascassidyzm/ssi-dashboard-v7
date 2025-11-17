@@ -1,0 +1,419 @@
+{
+  "legos": {
+    "S0482L01": {
+      "lego": [
+        "the only real hope",
+        "la única esperanza real"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "the only real hope",
+          "la única esperanza real",
+          null,
+          1
+        ],
+        [
+          "the only real hope now",
+          "la única esperanza real ahora",
+          null,
+          2
+        ],
+        [
+          "the only real hope we have",
+          "la única esperanza real que tenemos",
+          null,
+          3
+        ],
+        [
+          "I want the only real hope",
+          "quiero la única esperanza real",
+          null,
+          2
+        ],
+        [
+          "the only real hope that remains",
+          "la única esperanza real que queda",
+          null,
+          3
+        ],
+        [
+          "the only real hope for us",
+          "la única esperanza real para nosotros",
+          null,
+          4
+        ],
+        [
+          "the only real hope is waiting",
+          "la única esperanza real es esperando",
+          null,
+          4
+        ],
+        [
+          "the only real hope that we have left",
+          "la única esperanza real que nos queda",
+          null,
+          4
+        ],
+        [
+          "the only real hope is to consider waiting",
+          "la única esperanza real es considerar esperar",
+          null,
+          5
+        ],
+        [
+          "the only real hope that remains for us now",
+          "la única esperanza real que nos queda ahora",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "única",
+          "only"
+        ],
+        [
+          "esperanza",
+          "hope"
+        ],
+        [
+          "real",
+          "real"
+        ]
+      ]
+    },
+    "S0482L02": {
+      "lego": [
+        "is that",
+        "es que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0482L01",
+          "known": "the only real hope",
+          "target": "la única esperanza real",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "is that",
+          "es que",
+          null,
+          1
+        ],
+        [
+          "the problem is that",
+          "el problema es que",
+          null,
+          2
+        ],
+        [
+          "the minimum is that",
+          "lo mínimo es que",
+          null,
+          2
+        ],
+        [
+          "the only real hope is that",
+          "la única esperanza real es que",
+          null,
+          2
+        ],
+        [
+          "what I want is that",
+          "lo que quiero es que",
+          null,
+          3
+        ],
+        [
+          "the only real hope is that we wait",
+          "la única esperanza real es que esperamos",
+          null,
+          5
+        ],
+        [
+          "the part of the problem is that",
+          "la parte del problema es que",
+          null,
+          4
+        ],
+        [
+          "what remains is that",
+          "lo que queda es que",
+          null,
+          3
+        ],
+        [
+          "the only real hope is that we can wait",
+          "la única esperanza real es que podemos esperar",
+          null,
+          6
+        ],
+        [
+          "the only real hope we have is that",
+          "la única esperanza real que tenemos es que",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "es",
+          "is"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0482L03": {
+      "lego": [
+        "they're not serious",
+        "no son serios"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0482L01",
+          "known": "the only real hope",
+          "target": "la única esperanza real",
+          "type": "M"
+        },
+        {
+          "id": "S0482L02",
+          "known": "is that",
+          "target": "es que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "they're not serious",
+          "no son serios",
+          null,
+          1
+        ],
+        [
+          "they're not serious now",
+          "no son serios ahora",
+          null,
+          2
+        ],
+        [
+          "I hope they're not serious",
+          "espero que no son serios",
+          null,
+          3
+        ],
+        [
+          "the problem is that they're not serious",
+          "el problema es que no son serios",
+          null,
+          3
+        ],
+        [
+          "they're not serious about waiting",
+          "no son serios sobre esperar",
+          null,
+          3
+        ],
+        [
+          "I hope they're not serious about that",
+          "espero que no son serios sobre eso",
+          null,
+          5
+        ],
+        [
+          "the only real hope is that they're not serious",
+          "la única esperanza real es que no son serios",
+          null,
+          4
+        ],
+        [
+          "they're not serious but that's the minimum",
+          "no son serios pero eso es lo mínimo",
+          null,
+          6
+        ],
+        [
+          "I want to believe they're not serious",
+          "quiero creer que no son serios",
+          null,
+          5
+        ],
+        [
+          "the only real hope that remains is that they're not serious",
+          "la única esperanza real que queda es que no son serios",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "son",
+          "they are"
+        ],
+        [
+          "serios",
+          "serious"
+        ]
+      ]
+    },
+    "S0482L04": {
+      "lego": [
+        "is that they're not serious",
+        "es que no son serios"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0482L01",
+          "known": "the only real hope",
+          "target": "la única esperanza real",
+          "type": "M"
+        },
+        {
+          "id": "S0482L02",
+          "known": "is that",
+          "target": "es que",
+          "type": "M"
+        },
+        {
+          "id": "S0482L03",
+          "known": "they're not serious",
+          "target": "no son serios",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "is that they're not serious",
+          "es que no son serios",
+          null,
+          1
+        ],
+        [
+          "the problem is that they're not serious",
+          "el problema es que no son serios",
+          null,
+          2
+        ],
+        [
+          "my hope is that they're not serious",
+          "mi esperanza es que no son serios",
+          null,
+          3
+        ],
+        [
+          "the only real hope is that they're not serious",
+          "la única esperanza real es que no son serios",
+          null,
+          2
+        ],
+        [
+          "what I want is that they're not serious",
+          "lo que quiero es que no son serios",
+          null,
+          4
+        ],
+        [
+          "the minimum is that they're not serious now",
+          "lo mínimo es que no son serios ahora",
+          null,
+          4
+        ],
+        [
+          "the only hope is that they're not serious about waiting",
+          "la única esperanza es que no son serios sobre esperar",
+          null,
+          5
+        ],
+        [
+          "the only real hope we have is that they're not serious",
+          "la única esperanza real que tenemos es que no son serios",
+          null,
+          6
+        ],
+        [
+          "what remains is that they're not serious about the problem",
+          "lo que queda es que no son serios sobre el problema",
+          null,
+          7
+        ],
+        [
+          "The only real hope is that they're not serious.",
+          "La única esperanza real es que no son serios.",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "es",
+          "is"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "no",
+          "not"
+        ],
+        [
+          "son",
+          "they are"
+        ],
+        [
+          "serios",
+          "serious"
+        ]
+      ]
+    }
+  }
+}
