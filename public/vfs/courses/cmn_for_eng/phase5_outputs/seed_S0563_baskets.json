@@ -1,182 +1,211 @@
-[
-  [
-    "I wouldn't have been able to.",
-    "我不会能够。",
-    null,
-    1
-  ],
-  [
-    "I wouldn't have been able to help.",
-    "我不会能够帮助。",
-    null,
-    2
-  ],
-  [
-    "I wouldn't have been able to get there.",
-    "我不会能够到达那里。",
-    null,
-    3
-  ],
-  [
-    "I wouldn't have been able to fetch the towel.",
-    "我不会能够拿毛巾。",
-    null,
-    3
-  ],
-  [
-    "I wouldn't have been able to play music.",
-    "我不会能够放音乐。",
-    null,
-    4
-  ],
-  [
-    "I wouldn't have been able to safely get there.",
-    "我不会能够安全到达那里。",
-    null,
-    4
-  ],
-  [
-    "I wouldn't have been able to get to the church.",
-    "我不会能够到达教堂。",
-    null,
-    5
-  ],
-  [
-    "I wouldn't have been able to fetch a new one.",
-    "我不会能够拿新的。",
-    null,
-    5
-  ],
-  [
-    "I wouldn't have been able to play music late at night.",
-    "我不会能够深夜放音乐。",
-    null,
-    6
-  ],
-  [
-    "I wouldn't have been able to get to the church at the other end of the village.",
-    "我不会能够到达村子另一头的教堂。",
-    null,
-    7
-  ],
-  [
-    "Keep going.",
-    "继续下去。",
-    null,
-    1
-  ],
-  [
-    "Be able to keep going.",
-    "能够继续下去。",
-    null,
-    1
-  ],
-  [
-    "I can keep going.",
-    "我能够继续下去。",
-    null,
-    3
-  ],
-  [
-    "They can keep going.",
-    "他们能够继续下去。",
-    null,
-    3
-  ],
-  [
-    "I wouldn't be able to keep going.",
-    "我不会能够继续下去。",
-    null,
-    4
-  ],
-  [
-    "Can you be able to keep going?",
-    "你能够继续下去吗？",
-    null,
-    4
-  ],
-  [
-    "I'm too tired to be able to keep going.",
-    "我太累了，不能继续下去。",
-    null,
-    5
-  ],
-  [
-    "I just want to be able to keep going.",
-    "我只想能够继续下去。",
-    null,
-    5
-  ],
-  [
-    "Without your help, I wouldn't be able to keep going.",
-    "没有你的帮助，我不会能够继续下去。",
-    null,
-    6
-  ],
-  [
-    "I think they will be able to keep going.",
-    "我觉得他们会能够继续下去。",
-    null,
-    6
-  ],
-  [
-    "Keep going.",
-    "继续下去。",
-    null,
-    1
-  ],
-  [
-    "I keep going.",
-    "我继续下去。",
-    null,
-    2
-  ],
-  [
-    "Can you keep going?",
-    "你能继续下去吗？",
-    null,
-    3
-  ],
-  [
-    "I just want to keep going.",
-    "我只想继续下去。",
-    null,
-    3
-  ],
-  [
-    "I can't keep going, I'm too tired.",
-    "我不能继续下去，我太累了。",
-    null,
-    4
-  ],
-  [
-    "They just want to keep going there.",
-    "他们只想继续下去那里。",
-    null,
-    4
-  ],
-  [
-    "I wouldn't have been able to keep going.",
-    "我不会能够继续下去。",
-    null,
-    5
-  ],
-  [
-    "Without your help, I can't keep going.",
-    "没有你的帮助，我不能继续下去。",
-    null,
-    5
-  ],
-  [
-    "I'm too tired, I just can't keep going any longer.",
-    "我太累了，我真的不能继续下去了。",
-    null,
-    6
-  ],
-  [
-    "I wouldn't have been able to keep going any longer.",
-    "我不会能够继续下去了。",
-    null,
-    5
-  ]
-]
+{
+  "legos": {
+    "S0563L01": {
+      "type": "M",
+      "practice_phrases": [
+        [
+          "I wouldn't have been able to find it.",
+          "我不会能够找到。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to help.",
+          "我不会能够帮助。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to get there safely.",
+          "我不会能够安全到达那里。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to keep going without your help.",
+          "没有你的帮助我不会能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to find the path through the wood.",
+          "我不会能够找到穿过树林的小路。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to get to the beach safely.",
+          "我不会能够安全到达海滩。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to do it without your help.",
+          "没有你的帮助我不会能够做到。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to keep going if it's so late at night.",
+          "如果夜这么深了我不会能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to safely get there late at night.",
+          "我不会能够深夜安全到达那里。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to find the path that goes down to the beach without your help.",
+          "没有你的帮助我不会能够找到通向海滩的小路。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
+        "I wouldn't have been able to",
+        "我不会能够"
+      ]
+    },
+    "S0563L02": {
+      "type": "M",
+      "practice_phrases": [
+        [
+          "Be able to keep going.",
+          "能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I want to be able to keep going.",
+          "我想能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I just want to be able to keep going.",
+          "我只想能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I hope I will be able to keep going.",
+          "我希望我会能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to keep going without your help.",
+          "没有你的帮助我不会能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't be able to keep going if it's so late at night.",
+          "如果夜这么深了我不会能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I just want to be able to keep going to get there.",
+          "我只想能够继续下去到达那里。",
+          null,
+          1
+        ],
+        [
+          "Without your help I wouldn't be able to keep going safely.",
+          "没有你的帮助我不会能够安全地继续下去。",
+          null,
+          1
+        ],
+        [
+          "I hope I will be able to keep going to find the path.",
+          "我希望我会能够继续下去找到小路。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to keep going through the wood to the beach.",
+          "我不会能够穿过树林继续下去到海滩。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
+        "be able to keep going",
+        "能够继续下去"
+      ]
+    },
+    "S0563L03": {
+      "type": "M",
+      "practice_phrases": [
+        [
+          "Keep going to get there.",
+          "继续下去到达那里。",
+          null,
+          1
+        ],
+        [
+          "I want to keep going.",
+          "我想继续下去。",
+          null,
+          1
+        ],
+        [
+          "I just want to keep going safely.",
+          "我只想安全地继续下去。",
+          null,
+          1
+        ],
+        [
+          "I hope I can keep going to the beach.",
+          "我希望我能继续下去到海滩。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to keep going without your help.",
+          "没有你的帮助我不会能够继续下去。",
+          null,
+          1
+        ],
+        [
+          "I just want to keep going to find the path.",
+          "我只想继续下去找到小路。",
+          null,
+          1
+        ],
+        [
+          "I can't keep going if it's so late at night.",
+          "如果夜这么深了我不能继续下去。",
+          null,
+          1
+        ],
+        [
+          "Without your help I wouldn't be able to keep going safely.",
+          "没有你的帮助我不会能够安全地继续下去。",
+          null,
+          1
+        ],
+        [
+          "I just want to keep going through the wood to the beach.",
+          "我只想继续下去穿过树林到海滩。",
+          null,
+          1
+        ],
+        [
+          "I wouldn't have been able to keep going to get there safely late at night.",
+          "我不会能够深夜继续下去安全到达那里。",
+          null,
+          1
+        ]
+      ],
+      "lego": [
+        "keep going",
+        "继续下去"
+      ]
+    }
+  }
+}
