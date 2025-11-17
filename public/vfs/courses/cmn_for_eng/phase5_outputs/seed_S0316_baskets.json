@@ -1,0 +1,120 @@
+{
+  "S0316L01": {
+    "lego": ["do you think","你觉得"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Do you think so?","你觉得呢？",null,3],
+      ["Do you think she could?","你觉得她可以吗？",null,4],
+      ["Do you think he could write?","你觉得他可以写吗？",null,5],
+      ["Do you think she could use that room?","你觉得她可以用那个房间吗？",null,7],
+      ["Do you think he could watch the games?","你觉得他可以看比赛吗？",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0316L03": {
+    "lego": ["could bring","可以带"],
+    "type": "M",
+    "current_seed_legos_available": [["do you think","你觉得"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["She could bring it.","她可以带来。",null,3],
+      ["He could bring that car.","他可以带那辆车来。",null,4],
+      ["She could bring a friend.","她可以带一个朋友来。",null,4],
+      ["Do you think she could bring it?","你觉得她可以带来吗？",null,6],
+      ["He could bring the other car.","他可以带另一辆车来。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0316L04": {
+    "lego": ["bring her brother","带她弟弟来"],
+    "type": "M",
+    "current_seed_legos_available": [["do you think","你觉得"],["could bring","可以带"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["She could bring her brother.","她可以带她弟弟来。",null,4],
+      ["Do you think she could bring her brother?","你觉得她可以带她弟弟来吗？",null,7],
+      ["She could bring her brother before.","她以前可以带她弟弟来。",null,5],
+      ["I think she could bring her brother.","我觉得她可以带她弟弟来。",null,6],
+      ["She said she could bring her brother.","她说她可以带她弟弟来。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0316L05": {
+    "lego": ["her brother","她弟弟"],
+    "type": "M",
+    "current_seed_legos_available": [["do you think","你觉得"],["could bring","可以带"],["bring her brother","带她弟弟来"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Her brother is over there.","她弟弟在那边。",null,4],
+      ["I've never seen her brother.","我从未见过她弟弟。",null,4],
+      ["Her brother could use that room.","她弟弟可以用那个房间。",null,5],
+      ["I think her brother could write a story.","我觉得她弟弟可以写一个故事。",null,7],
+      ["Her brother is talking to your friend.","她弟弟正在和你朋友说话。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0316L06": {
+    "lego": ["younger brother","弟弟"],
+    "type": "A",
+    "current_seed_legos_available": [["do you think","你觉得"],["could bring","可以带"],["bring her brother","带她弟弟来"],["her brother","她弟弟"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["My younger brother","我弟弟",null,2],
+      ["Her younger brother","她弟弟",null,2],
+      ["My younger brother could write.","我弟弟可以写。",null,4],
+      ["Her younger brother is sitting there.","她弟弟坐在那边。",null,5],
+      ["I think my younger brother could watch.","我觉得我弟弟可以看。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    }
+  },
+  "S0316L07": {
+    "lego": ["Monday","星期一"],
+    "type": "A",
+    "current_seed_legos_available": [["do you think","你觉得"],["could bring","可以带"],["bring her brother","带她弟弟来"],["her brother","她弟弟"],["younger brother","弟弟"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Monday","星期一",null,1],
+      ["She could use it Monday.","她星期一可以用。",null,4],
+      ["He could watch the games Monday.","他星期一可以看比赛。",null,6],
+      ["I think she could bring it Monday.","我觉得她星期一可以带来。",null,6],
+      ["Do you think that she could bring her brother on Monday?","你觉得她星期一可以带她弟弟来吗？",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 1,
+      "long_6_plus": 3
+    }
+  }
+}

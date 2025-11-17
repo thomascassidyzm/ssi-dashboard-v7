@@ -1,0 +1,42 @@
+{
+  "S0318L03": {
+    "lego": ["this time","这次"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["This time","这次",null,2],
+      ["She could use it this time.","这次她可以用。",null,5],
+      ["He could watch this time.","这次他可以看。",null,4],
+      ["I think she could bring it this time.","我觉得这次她可以带来。",null,6],
+      ["Do you think she could write this time?","你觉得这次她可以写吗？",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0318L04": {
+    "lego": ["she couldn't","她不能"],
+    "type": "M",
+    "current_seed_legos_available": [["this time","这次"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["She couldn't.","她不能。",null,2],
+      ["She couldn't believe it.","她不能相信。",null,3],
+      ["She couldn't use that room.","她不能用那个房间。",null,4],
+      ["I think she couldn't watch the games.","我觉得她不能看比赛。",null,6],
+      ["No I don't think she could this time.","不，我觉得这次她不能。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  }
+}
