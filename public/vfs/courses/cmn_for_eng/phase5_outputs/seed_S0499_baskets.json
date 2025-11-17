@@ -1,0 +1,213 @@
+{
+  "legos": {
+    "S0499L01": {
+      "lego": ["maybe", "也许"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Maybe", "也许", null, 1],
+        ["Maybe now", "也许现在", null, 2],
+        ["Maybe you need", "也许你需要", null, 2],
+        ["Maybe I love the way", "也许我喜欢这个方式", null, 4],
+        ["Maybe that sounds", "也许听起来", null, 2],
+        ["Maybe you try to help", "也许你努力帮助", null, 4],
+        ["Maybe when it matters", "也许当它重要的时候", null, 3],
+        ["Maybe I'm not planning to lose", "也许我不打算输", null, 5],
+        ["Maybe if you don't give me", "也许如果你不给我", null, 5],
+        ["Maybe you need to get some sleep", "也许你需要睡一觉", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["也许", "maybe"]]
+    },
+    "S0499L03": {
+      "lego": ["should", "应该"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0499L01", "known": "maybe", "target": "也许", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["Should", "应该", null, 1],
+        ["I should", "我应该", null, 1],
+        ["You should try", "你应该努力", null, 2],
+        ["Maybe I should help", "也许我应该帮助", null, 3],
+        ["We should trust", "我们应该相信", null, 2],
+        ["You should get some sleep", "你应该睡一觉", null, 4],
+        ["Maybe you should try to help", "也许你应该努力帮助", null, 4],
+        ["I should trust anyone", "我应该相信任何人", null, 3],
+        ["Maybe we should when it matters", "也许我们应该当它重要的时候", null, 5],
+        ["You should get some sleep now", "你现在应该睡一觉", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["应该", "should"]]
+    },
+    "S0499L04": {
+      "lego": ["open", "开"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0499L01", "known": "maybe", "target": "也许", "type": "A"},
+        {"id": "S0499L03", "known": "should", "target": "应该", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["Open", "开", null, 1],
+        ["Open now", "现在开", null, 2],
+        ["I should open", "我应该开", null, 2],
+        ["Maybe you should open", "也许你应该开", null, 3],
+        ["Open when it matters", "当它重要的时候开", null, 3],
+        ["We should open right now", "我们应该现在开", null, 4],
+        ["Maybe I should open after the first part", "也许我应该第一部分之后开", null, 6],
+        ["You should open when it really matters", "你应该在真正重要的时候开", null, 6],
+        ["Maybe we should open inside the entrance", "也许我们应该在入口里面开", null, 6],
+        ["I should try to open", "我应该努力开", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["开", "open"]]
+    },
+    "S0499L06": {
+      "lego": ["open the door", "开门"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0499L01", "known": "maybe", "target": "也许", "type": "A"},
+        {"id": "S0499L03", "known": "should", "target": "应该", "type": "A"},
+        {"id": "S0499L04", "known": "open", "target": "开", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["Open the door", "开门", null, 1],
+        ["I should open the door", "我应该开门", null, 2],
+        ["Open the door now", "现在开门", null, 2],
+        ["Maybe you should open the door", "也许你应该开门", null, 3],
+        ["We should open the door", "我们应该开门", null, 2],
+        ["Maybe I should open the door right now", "也许我应该现在开门", null, 4],
+        ["You should open the door when it matters", "你应该当它重要的时候开门", null, 5],
+        ["Maybe we should open the door inside the entrance", "也许我们应该在入口里面开门", null, 6],
+        ["I should try to open the door", "我应该努力开门", null, 4],
+        ["Maybe you should open the door after the first part", "也许你应该第一部分之后开门", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["开", "open"], ["门", "door"]]
+    },
+    "S0499L07": {
+      "lego": ["close", "关"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0499L01", "known": "maybe", "target": "也许", "type": "A"},
+        {"id": "S0499L03", "known": "should", "target": "应该", "type": "A"},
+        {"id": "S0499L04", "known": "open", "target": "开", "type": "A"},
+        {"id": "S0499L06", "known": "open the door", "target": "开门", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["Close", "关", null, 1],
+        ["Close now", "现在关", null, 2],
+        ["I should close", "我应该关", null, 2],
+        ["Maybe you should close", "也许你应该关", null, 3],
+        ["We should close", "我们应该关", null, 2],
+        ["Maybe I should close right now", "也许我应该现在关", null, 4],
+        ["You should close when it matters", "你应该当它重要的时候关", null, 5],
+        ["Maybe we should open the door and close", "也许我们应该开门和关", null, 5],
+        ["I should close inside the entrance", "我应该在入口里面关", null, 5],
+        ["Maybe you should try to close", "也许你应该努力关", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["关", "close"]]
+    },
+    "S0499L08": {
+      "lego": ["window", "窗"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0499L01", "known": "maybe", "target": "也许", "type": "A"},
+        {"id": "S0499L03", "known": "should", "target": "应该", "type": "A"},
+        {"id": "S0499L04", "known": "open", "target": "开", "type": "A"},
+        {"id": "S0499L06", "known": "open the door", "target": "开门", "type": "M"},
+        {"id": "S0499L07", "known": "close", "target": "关", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["Window", "窗", null, 1],
+        ["The window", "窗", null, 1],
+        ["Open the window", "开窗", null, 2],
+        ["Close the window", "关窗", null, 2],
+        ["I should close the window", "我应该关窗", null, 3],
+        ["Maybe open the window", "也许开窗", null, 2],
+        ["You should open the window now", "你应该现在开窗", null, 4],
+        ["Maybe I should close the window", "也许我应该关窗", null, 3],
+        ["We should open the door and the window", "我们应该开门和窗", null, 5],
+        ["Maybe you should close the window right now", "也许你应该现在关窗", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["窗", "window"]]
+    },
+    "S0499L09": {
+      "lego": ["close the window", "关窗"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {"id": "S0499L01", "known": "maybe", "target": "也许", "type": "A"},
+        {"id": "S0499L03", "known": "should", "target": "应该", "type": "A"},
+        {"id": "S0499L04", "known": "open", "target": "开", "type": "A"},
+        {"id": "S0499L06", "known": "open the door", "target": "开门", "type": "M"},
+        {"id": "S0499L07", "known": "close", "target": "关", "type": "A"},
+        {"id": "S0499L08", "known": "window", "target": "窗", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["Close the window", "关窗", null, 1],
+        ["I should close the window", "我应该关窗", null, 2],
+        ["Close the window now", "现在关窗", null, 2],
+        ["Maybe you should close the window", "也许你应该关窗", null, 3],
+        ["We should close the window", "我们应该关窗", null, 2],
+        ["Maybe I should close the window right now", "也许我应该现在关窗", null, 4],
+        ["You should try to close the window", "你应该努力关窗", null, 4],
+        ["Open the door and close the window", "开门关窗", null, 2],
+        ["Maybe we should open the door and close the window now", "也许我们应该现在开门关窗", null, 5],
+        ["Maybe we should open the door and close the window.", "也许我们应该开门关窗。", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["关", "close"], ["窗", "window"]]
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "legos": {
+    "S0500L04": {
+      "lego": ["want to sit", "想坐"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Want to sit", "想坐", null, 1],
+        ["I want to sit", "我想坐", null, 1],
+        ["You want to sit", "你想坐", null, 1],
+        ["Maybe I want to sit", "也许我想坐", null, 2],
+        ["I don't want to sit", "我不想坐", null, 2],
+        ["You want to sit now", "你现在想坐", null, 3],
+        ["Maybe you should want to sit", "也许你应该想坐", null, 3],
+        ["I want to sit when it matters", "我想当它重要的时候坐", null, 4],
+        ["You don't want to sit right now", "你现在不想坐", null, 4],
+        ["Maybe I want to sit inside the entrance", "也许我想在入口里面坐", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["想", "want to"], ["坐", "sit"]]
+    },
+    "S0500L05": {
+      "lego": ["sit at", "坐在"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0500L04", "known": "want to sit", "target": "想坐", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["Sit at", "坐在", null, 1],
+        ["I sit at", "我坐在", null, 1],
+        ["Want to sit at", "想坐在", null, 1],
+        ["I want to sit at", "我想坐在", null, 2],
+        ["You should sit at", "你应该坐在", null, 2],
+        ["Maybe I want to sit at", "也许我想坐在", null, 3],
+        ["He's standing alone but I want to sit at", "他一个人站在但我想坐在", null, 6],
+        ["You should sit at the entrance", "你应该坐在入口", null, 4],
+        ["I want to sit at the first part", "我想坐在第一部分", null, 5],
+        ["Maybe you want to sit at the door", "也许你想坐在门", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["坐", "sit"], ["在", "at"]]
+    },
+    "S0500L06": {
+      "lego": ["the two girls", "两个女孩"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0500L04", "known": "want to sit", "target": "想坐", "type": "M"},
+        {"id": "S0500L05", "known": "sit at", "target": "坐在", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["The two girls", "两个女孩", null, 1],
+        ["I love the two girls", "我喜欢两个女孩", null, 3],
+        ["The two girls should try", "两个女孩应该努力", null, 3],
+        ["I want to help the two girls", "我想帮助两个女孩", null, 4],
+        ["The two girls are standing", "两个女孩站在", null, 2],
+        ["Maybe the two girls should open the door", "也许两个女孩应该开门", null, 5],
+        ["I trust the two girls to help", "我相信两个女孩帮助", null, 4],
+        ["The two girls want to sit now", "两个女孩现在想坐", null, 4],
+        ["You should sit at the two girls", "你应该坐在两个女孩", null, 4],
+        ["Maybe I should trust the two girls when it matters", "也许我应该当它重要的时候相信两个女孩", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["两个", "two"], ["女孩", "girls"]]
+    },
+    "S0500L07": {
+      "lego": ["between", "中间"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {"id": "S0500L04", "known": "want to sit", "target": "想坐", "type": "M"},
+        {"id": "S0500L05", "known": "sit at", "target": "坐在", "type": "M"},
+        {"id": "S0500L06", "known": "the two girls", "target": "两个女孩", "type": "M"}
+      ],
+      "practice_phrases": [
+        ["Between", "中间", null, 1],
+        ["I'm between", "我在中间", null, 1],
+        ["Sit between", "坐中间", null, 1],
+        ["I want to sit between", "我想坐中间", null, 2],
+        ["Maybe between", "也许中间", null, 2],
+        ["You should sit at between", "你应该坐在中间", null, 3],
+        ["I want to sit at between now", "我现在想坐在中间", null, 4],
+        ["The two girls are standing between", "两个女孩站在中间", null, 3],
+        ["Maybe you should sit between the door and window", "也许你应该坐在门和窗中间", null, 6],
+        ["I love the way you sit between", "我喜欢你坐中间的方式", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["中间", "between/middle"]]
+    },
+    "S0500L08": {
+      "lego": ["between the two girls", "两个女孩中间"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {"id": "S0500L04", "known": "want to sit", "target": "想坐", "type": "M"},
+        {"id": "S0500L05", "known": "sit at", "target": "坐在", "type": "M"},
+        {"id": "S0500L06", "known": "the two girls", "target": "两个女孩", "type": "M"},
+        {"id": "S0500L07", "known": "between", "target": "中间", "type": "A"}
+      ],
+      "practice_phrases": [
+        ["Between the two girls", "两个女孩中间", null, 1],
+        ["I'm between the two girls", "我在两个女孩中间", null, 2],
+        ["Sit between the two girls", "坐在两个女孩中间", null, 2],
+        ["I want to sit between the two girls", "我想坐在两个女孩中间", null, 3],
+        ["He's standing between the two girls", "他站在两个女孩中间", null, 3],
+        ["Maybe you should sit between the two girls", "也许你应该坐在两个女孩中间", null, 4],
+        ["I don't want to sit between the two girls", "我不想坐在两个女孩中间", null, 4],
+        ["You should sit between the two girls now", "你现在应该坐在两个女孩中间", null, 5],
+        ["I want to sit between the two girls when it matters", "我想当它重要的时候坐在两个女孩中间", null, 6],
+        ["Why don't you want to sit between the two girls?", "你为什么不想坐在两个女孩中间？", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["两个女孩", "the two girls"], ["中间", "between"]]
+    }
+  }
+}
