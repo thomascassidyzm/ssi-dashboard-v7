@@ -1,0 +1,282 @@
+{
+  "legos": {
+    "S0588L04": {
+      "lego": [
+        "grow up and leave home",
+        "长大离开家"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "grow up and leave home",
+          "长大离开家",
+          null,
+          1
+        ],
+        [
+          "I wanted to grow up and leave home",
+          "我想长大离开家",
+          null,
+          2
+        ],
+        [
+          "grow up and leave home here",
+          "在这里长大离开家",
+          null,
+          3
+        ],
+        [
+          "to grow up and leave home",
+          "长大离开家",
+          null,
+          1
+        ],
+        [
+          "we wanted to grow up and leave home",
+          "我们想长大离开家",
+          null,
+          4
+        ],
+        [
+          "I always wanted to grow up and leave home",
+          "我总是想长大离开家",
+          null,
+          4
+        ],
+        [
+          "he'd like to grow up and leave home",
+          "他想知道长大离开家",
+          null,
+          5
+        ],
+        [
+          "I wanted to grow up and leave home every morning",
+          "我每天早上想长大离开家",
+          null,
+          5
+        ],
+        [
+          "she used to insist we grow up and leave home",
+          "她过去总是坚持我们长大离开家",
+          null,
+          6
+        ],
+        [
+          "I've often wanted to grow up and leave home here",
+          "我经常想要在这里长大离开家",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0588L05": {
+      "lego": [
+        "leave home",
+        "离开家"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0588L04",
+          "known": "grow up and leave home",
+          "target": "长大离开家",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "leave home",
+          "离开家",
+          null,
+          1
+        ],
+        [
+          "I wanted to leave home",
+          "我想离开家",
+          null,
+          2
+        ],
+        [
+          "we always leave home",
+          "我们总是离开家",
+          null,
+          3
+        ],
+        [
+          "leave home here",
+          "在这里离开家",
+          null,
+          2
+        ],
+        [
+          "I can leave home every morning",
+          "我每天早上能离开家",
+          null,
+          4
+        ],
+        [
+          "she insists we leave home",
+          "她坚持我们离开家",
+          null,
+          4
+        ],
+        [
+          "I've often wanted to leave home",
+          "我经常想要离开家",
+          null,
+          5
+        ],
+        [
+          "he'd like to know about leave home",
+          "他想知道关于离开家",
+          null,
+          6
+        ],
+        [
+          "I wanted to grow up and leave home",
+          "我想长大离开家",
+          null,
+          5
+        ],
+        [
+          "we've often wanted to leave home every morning",
+          "我们每天早上经常想要离开家",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0588L07": {
+      "lego": [
+        "home",
+        "家"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0588L04",
+          "known": "grow up and leave home",
+          "target": "长大离开家",
+          "type": "M"
+        },
+        {
+          "id": "S0588L05",
+          "known": "leave home",
+          "target": "离开家",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "home",
+          "家",
+          null,
+          1
+        ],
+        [
+          "at home",
+          "在家",
+          null,
+          2
+        ],
+        [
+          "I wanted home",
+          "我想要家",
+          null,
+          3
+        ],
+        [
+          "leave home",
+          "离开家",
+          null,
+          2
+        ],
+        [
+          "I can see home",
+          "我能看到家",
+          null,
+          4
+        ],
+        [
+          "we always wanted home",
+          "我们总是想要家",
+          null,
+          4
+        ],
+        [
+          "I've often wanted to leave home",
+          "我经常想要离开家",
+          null,
+          5
+        ],
+        [
+          "he'd like to know about home here",
+          "他想知道关于这里的家",
+          null,
+          6
+        ],
+        [
+          "I wanted to grow up and leave home",
+          "我想长大离开家",
+          null,
+          5
+        ],
+        [
+          "So I wanted to grow up and leave home",
+          "所以我想长大离开家",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

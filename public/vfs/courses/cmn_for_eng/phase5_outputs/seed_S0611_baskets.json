@@ -1,0 +1,101 @@
+{
+  "S0611L01": {
+    "lego": ["I would have been ready","我会准备好"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I would have been ready.","我会准备好。",null,1],
+      ["I would have been ready then.","我当时会准备好。",null,2],
+      ["I would have been ready to wait.","我会准备好等待。",null,3],
+      ["I would have been ready to help.","我会准备好帮助。",null,3],
+      ["I would have been ready at the time.","我那时会准备好。",null,4],
+      ["I would have been ready to do different things.","我会准备好做不同的事。",null,4],
+      ["I would have been ready to stay with her.","我会准备好和她住在一起。",null,5],
+      ["I would have been ready if you'd told me.","如果你告诉我我会准备好。",null,6],
+      ["I would have been ready to talk about how it all started.","我会准备好谈论这一切是如何开始的。",null,9],
+      ["I would have been ready to do the sensible thing in the first place.","我会准备好最初做明智的事。",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0611L03": {
+    "lego": ["to look somewhere else","去别的地方看看"],
+    "type": "M",
+    "current_seed_legos_available": [["I would have been ready","我会准备好"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["To look somewhere else.","去别的地方看看。",null,1],
+      ["I need to look somewhere else.","我需要去别的地方看看。",null,2],
+      ["We have to look somewhere else.","我们要去别的地方看看。",null,2],
+      ["He needs to look somewhere else.","他需要去别的地方看看。",null,3],
+      ["To look somewhere else for help.","去别的地方看看找帮助。",null,3],
+      ["I would have been ready to look somewhere else.","我会准备好去别的地方看看。",null,4],
+      ["We need to look somewhere else at the time.","我们那时需要去别的地方看看。",null,4],
+      ["She offered to look somewhere else with us.","她提出和我们去别的地方看看。",null,5],
+      ["I'd have known to look somewhere else if you'd told me.","如果你告诉我我会知道去别的地方看看。",null,9],
+      ["We were talking about how we need to look somewhere else to live.","我们在谈论我们如何需要去别的地方看看住。",null,11]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0611L04": {
+    "lego": ["somewhere else","别的地方"],
+    "type": "M",
+    "current_seed_legos_available": [["I would have been ready","我会准备好"],["to look somewhere else","去别的地方看看"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Somewhere else.","别的地方。",null,1],
+      ["I went somewhere else.","我去了别的地方。",null,2],
+      ["To stay somewhere else.","住在别的地方。",null,2],
+      ["We need somewhere else to live.","我们需要别的地方住。",null,3],
+      ["He needs to look somewhere else.","他需要去别的地方看看。",null,3],
+      ["I would have been ready somewhere else.","我会在别的地方准备好。",null,4],
+      ["We didn't have anywhere to live somewhere else.","我们没有地方在别的地方住。",null,4],
+      ["She offered to let us stay somewhere else.","她提出让我们住在别的地方。",null,5],
+      ["I would have been ready to look somewhere else at the time.","我那时会准备好去别的地方看看。",null,6],
+      ["We were talking about how we need to look for work somewhere else.","我们在谈论我们如何需要在别的地方找工作。",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0611L05": {
+    "lego": ["to have a look","看看"],
+    "type": "A",
+    "current_seed_legos_available": [["I would have been ready","我会准备好"],["to look somewhere else","去别的地方看看"],["somewhere else","别的地方"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["To have a look.","看看。",null,1],
+      ["I want to have a look.","我想看看。",null,2],
+      ["We need to have a look.","我们需要看看。",null,2],
+      ["He needs to have a look.","他需要看看。",null,3],
+      ["To have a look somewhere else.","去别的地方看看。",null,3],
+      ["I would have been ready to have a look.","我会准备好看看。",null,4],
+      ["She offered to have a look at the time.","她那时提出看看。",null,4],
+      ["We need to have a look at how it all started.","我们需要看看这一切是如何开始的。",null,8],
+      ["I'd have been ready to have a look if you'd told me then.","如果你当时告诉我我会准备好看看。",null,10],
+      ["I would have been ready to look somewhere else.","我会准备好去别的地方看看。",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    }
+  }
+}

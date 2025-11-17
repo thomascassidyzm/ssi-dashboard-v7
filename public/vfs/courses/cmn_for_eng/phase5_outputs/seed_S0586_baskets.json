@@ -1,0 +1,478 @@
+{
+  "legos": {
+    "S0586L02": {
+      "lego": [
+        "twenty",
+        "二十个"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "twenty",
+          "二十个",
+          null,
+          1
+        ],
+        [
+          "twenty children",
+          "二十个孩子",
+          null,
+          2
+        ],
+        [
+          "I want twenty",
+          "我想要二十个",
+          null,
+          3
+        ],
+        [
+          "twenty mountains",
+          "二十个山",
+          null,
+          2
+        ],
+        [
+          "I can see twenty",
+          "我能看到二十个",
+          null,
+          4
+        ],
+        [
+          "We often want twenty",
+          "我们经常想要二十个",
+          null,
+          4
+        ],
+        [
+          "I'd like to know twenty",
+          "我想知道二十个",
+          null,
+          5
+        ],
+        [
+          "We've often wanted twenty children",
+          "我们经常想要二十个孩子",
+          null,
+          6
+        ],
+        [
+          "I can see twenty mountains every morning",
+          "我每天早上能看到二十个山",
+          null,
+          7
+        ],
+        [
+          "We've been waiting for twenty",
+          "我们一直在等二十个",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0586L03": {
+      "lego": [
+        "twenty",
+        "二十"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0586L02",
+          "known": "twenty",
+          "target": "二十个",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "twenty",
+          "二十",
+          null,
+          1
+        ],
+        [
+          "about twenty",
+          "关于二十",
+          null,
+          2
+        ],
+        [
+          "I want twenty",
+          "我想要二十",
+          null,
+          3
+        ],
+        [
+          "know more about twenty",
+          "知道更多关于二十",
+          null,
+          3
+        ],
+        [
+          "We've often tried twenty",
+          "我们经常尝试过二十",
+          null,
+          4
+        ],
+        [
+          "I can see about twenty",
+          "我能看到关于二十",
+          null,
+          4
+        ],
+        [
+          "He'd like to know about twenty",
+          "他想知道关于二十",
+          null,
+          5
+        ],
+        [
+          "I can see about twenty mountains here",
+          "我能在这里看到关于二十个山",
+          null,
+          7
+        ],
+        [
+          "We've been waiting for about twenty",
+          "我们一直在等关于二十",
+          null,
+          5
+        ],
+        [
+          "I'd like to know more about twenty children",
+          "我想知道更多关于二十个孩子",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0586L04": {
+      "lego": [
+        "boiled eggs",
+        "煮鸡蛋"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0586L02",
+          "known": "twenty",
+          "target": "二十个",
+          "type": "M"
+        },
+        {
+          "id": "S0586L03",
+          "known": "twenty",
+          "target": "二十",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "boiled eggs",
+          "煮鸡蛋",
+          null,
+          1
+        ],
+        [
+          "twenty boiled eggs",
+          "二十个煮鸡蛋",
+          null,
+          2
+        ],
+        [
+          "I want boiled eggs",
+          "我想要煮鸡蛋",
+          null,
+          3
+        ],
+        [
+          "I can see boiled eggs",
+          "我能看到煮鸡蛋",
+          null,
+          3
+        ],
+        [
+          "We often want boiled eggs",
+          "我们经常想要煮鸡蛋",
+          null,
+          4
+        ],
+        [
+          "I want about twenty boiled eggs",
+          "我想要关于二十个煮鸡蛋",
+          null,
+          4
+        ],
+        [
+          "We've often wanted boiled eggs every morning",
+          "我们每天早上经常想要煮鸡蛋",
+          null,
+          6
+        ],
+        [
+          "I can see twenty boiled eggs here",
+          "我能在这里看到二十个煮鸡蛋",
+          null,
+          6
+        ],
+        [
+          "He'd like to know about boiled eggs",
+          "他想知道关于煮鸡蛋",
+          null,
+          5
+        ],
+        [
+          "We've been waiting for twenty boiled eggs",
+          "我们一直在等二十个煮鸡蛋",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0586L05": {
+      "lego": [
+        "eggs",
+        "鸡蛋"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0586L02",
+          "known": "twenty",
+          "target": "二十个",
+          "type": "M"
+        },
+        {
+          "id": "S0586L03",
+          "known": "twenty",
+          "target": "二十",
+          "type": "A"
+        },
+        {
+          "id": "S0586L04",
+          "known": "boiled eggs",
+          "target": "煮鸡蛋",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "eggs",
+          "鸡蛋",
+          null,
+          1
+        ],
+        [
+          "twenty eggs",
+          "二十个鸡蛋",
+          null,
+          2
+        ],
+        [
+          "I want eggs every morning",
+          "我每天早上想要鸡蛋",
+          null,
+          4
+        ],
+        [
+          "about twenty eggs",
+          "关于二十个鸡蛋",
+          null,
+          3
+        ],
+        [
+          "We often want eggs",
+          "我们经常想要鸡蛋",
+          null,
+          4
+        ],
+        [
+          "I can see eggs",
+          "我能看到鸡蛋",
+          null,
+          3
+        ],
+        [
+          "He'd like to know about eggs",
+          "他想知道关于鸡蛋",
+          null,
+          5
+        ],
+        [
+          "We've often wanted to take twenty eggs",
+          "我们经常想要带二十个鸡蛋",
+          null,
+          6
+        ],
+        [
+          "I can see about twenty eggs here",
+          "我能在这里看到关于二十个鸡蛋",
+          null,
+          6
+        ],
+        [
+          "We've been waiting for about twenty eggs",
+          "我们一直在等关于二十个鸡蛋",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0586L06": {
+      "lego": [
+        "boil",
+        "煮"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0586L02",
+          "known": "twenty",
+          "target": "二十个",
+          "type": "M"
+        },
+        {
+          "id": "S0586L03",
+          "known": "twenty",
+          "target": "二十",
+          "type": "A"
+        },
+        {
+          "id": "S0586L04",
+          "known": "boiled eggs",
+          "target": "煮鸡蛋",
+          "type": "M"
+        },
+        {
+          "id": "S0586L05",
+          "known": "eggs",
+          "target": "鸡蛋",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "boil",
+          "煮",
+          null,
+          1
+        ],
+        [
+          "boil eggs",
+          "煮鸡蛋",
+          null,
+          2
+        ],
+        [
+          "I want to boil",
+          "我想要煮",
+          null,
+          3
+        ],
+        [
+          "I can boil eggs",
+          "我能煮鸡蛋",
+          null,
+          3
+        ],
+        [
+          "boil about twenty eggs",
+          "煮关于二十个鸡蛋",
+          null,
+          4
+        ],
+        [
+          "I want to boil eggs",
+          "我想要煮鸡蛋",
+          null,
+          4
+        ],
+        [
+          "We often want to boil eggs",
+          "我们经常想要煮鸡蛋",
+          null,
+          5
+        ],
+        [
+          "I'd like to know how to boil eggs",
+          "我想知道怎么煮鸡蛋",
+          null,
+          6
+        ],
+        [
+          "I want to boil about twenty eggs",
+          "我想要煮关于二十个鸡蛋",
+          null,
+          5
+        ],
+        [
+          "I want twenty boiled eggs",
+          "我想要二十个煮鸡蛋",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

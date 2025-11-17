@@ -1,0 +1,102 @@
+{
+  "S0599L01": {
+    "lego": ["if you'd told me","如果你告诉我"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["If you'd told me", "如果你告诉我", null, 1],
+      ["If you'd told me about it", "如果你告诉我关于它的", null, 1],
+      ["If you'd told me stories", "如果你告诉我故事", null, 1],
+      ["If you'd told me about the garden", "如果你告诉我关于花园的", null, 1],
+      ["If you'd told me about my sister", "如果你告诉我关于我妹妹的", null, 1],
+      ["If you'd told me about the last bus", "如果你告诉我关于最后一班公交车的", null, 1],
+      ["If you'd told me I had to share", "如果你告诉我我不得不分享", null, 1],
+      ["If you'd told me about leaving the station", "如果你告诉我关于离开车站的", null, 1],
+      ["If you'd told me he's heard a thousand stories", "如果你告诉我他听过一千个故事", null, 1],
+      ["If you'd told me what they were doing", "如果你告诉我他们在做什么", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0599L02": {
+    "lego": ["you told me","你告诉我"],
+    "type": "M",
+    "current_seed_legos_available": [["if you'd told me","如果你告诉我"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You told me", "你告诉我", null, 1],
+      ["You told me stories", "你告诉我故事", null, 1],
+      ["If you'd told me about it", "如果你告诉我关于它的", null, 2],
+      ["You told me about the garden", "你告诉我关于花园的", null, 1],
+      ["You told me about my toys", "你告诉我关于我的玩具的", null, 1],
+      ["If you'd told me what they were doing", "如果你告诉我他们在做什么", null, 2],
+      ["You told me I had to share with my sister", "你告诉我我不得不和我妹妹分享", null, 1],
+      ["If you'd told me about the last bus", "如果你告诉我关于最后一班公交车的", null, 2],
+      ["You told me he's heard a thousand stories", "你告诉我他听过一千个故事", null, 1],
+      ["You told me I need to lie down in the garden", "你告诉我我需要在花园里躺下", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0599L04": {
+    "lego": ["I'd have been happy to drive","我会很高兴开车"],
+    "type": "M",
+    "current_seed_legos_available": [["if you'd told me","如果你告诉我"],["you told me","你告诉我"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'd have been happy to drive", "我会很高兴开车", null, 1],
+      ["I'd have been happy to drive if you'd told me", "如果你告诉我，我会很高兴开车", null, 2],
+      ["I'd have been happy", "我会很高兴", null, 1],
+      ["I'd have been happy to share", "我会很高兴分享", null, 1],
+      ["I'd have been happy in the garden", "我会很高兴在花园里", null, 1],
+      ["I'd have been happy with my sister", "我会很高兴和我妹妹", null, 1],
+      ["I'd have been happy to drive to the station", "我会很高兴开车到车站", null, 1],
+      ["If you'd told me I'd have been happy to drive", "如果你告诉我，我会很高兴开车", null, 2],
+      ["I'd have been happy to drive along the main road", "我会很高兴沿着主路开车", null, 1],
+      ["You told me I'd have been happy to drive", "你告诉我我会很高兴开车", null, 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0599L05": {
+    "lego": ["happy","很高兴"],
+    "type": "M",
+    "current_seed_legos_available": [["if you'd told me","如果你告诉我"],["you told me","你告诉我"],["I'd have been happy to drive","我会很高兴开车"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Happy", "很高兴", null, 1],
+      ["I'd have been happy", "我会很高兴", null, 2],
+      ["Happy in the garden", "很高兴在花园里", null, 1],
+      ["Happy with my sister", "很高兴和我妹妹", null, 1],
+      ["I'd have been happy if you'd told me", "如果你告诉我，我会很高兴", null, 3],
+      ["You told me I'd have been happy", "你告诉我我会很高兴", null, 3],
+      ["I'd have been happy to share my toys", "我会很高兴分享我的玩具", null, 2],
+      ["If you'd told me I'd have been happy to drive", "如果你告诉我，我会很高兴开车", null, 4],
+      ["Happy to lie down in the garden", "很高兴在花园里躺下", null, 1],
+      ["I'd have been happy to drive if you'd told me", "如果你告诉我，我会很高兴开车", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

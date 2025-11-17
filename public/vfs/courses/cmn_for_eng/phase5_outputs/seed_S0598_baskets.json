@@ -1,0 +1,127 @@
+{
+  "S0598L01": {
+    "lego": ["He's heard","他听过"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["He's heard", "他听过", null, 1],
+      ["He's heard stories", "他听过故事", null, 1],
+      ["He's heard about the garden", "他听过关于花园的", null, 1],
+      ["He's heard about my sister", "他听过关于我妹妹的", null, 1],
+      ["He's heard about the last bus", "他听过关于最后一班公交车的", null, 1],
+      ["He's heard about leaving the station", "他听过关于离开车站的", null, 1],
+      ["He's heard I need to share my toys", "他听过我需要分享我的玩具", null, 1],
+      ["He's heard she just seen the last bus leaving the station", "他听过她刚看到最后一班公交车离开车站", null, 1],
+      ["He's heard I had to share my toys with my sister", "他听过我不得不和我妹妹分享我的玩具", null, 1],
+      ["He's heard she told me about the last bus", "他听过她告诉我关于最后一班公交车的", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0598L02": {
+    "lego": ["a thousand stories about what they were doing","关于他们在做什么的一千个故事"],
+    "type": "M",
+    "current_seed_legos_available": [["He's heard","他听过"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["A thousand stories about what they were doing", "关于他们在做什么的一千个故事", null, 1],
+      ["Stories about what they were doing", "关于他们在做什么的故事", null, 1],
+      ["He's heard a thousand stories about what they were doing", "他听过关于他们在做什么的一千个故事", null, 2],
+      ["A thousand stories about leaving home", "关于离开家的一千个故事", null, 1],
+      ["Stories about the garden", "关于花园的故事", null, 1],
+      ["A thousand stories about the station", "关于车站的一千个故事", null, 1],
+      ["He's heard stories about what they were doing", "他听过关于他们在做什么的故事", null, 2],
+      ["I suspect he's heard a thousand stories about what they were doing", "我怀疑他听过关于他们在做什么的一千个故事", null, 2],
+      ["She told me a thousand stories about what they were doing", "她告诉我关于他们在做什么的一千个故事", null, 2],
+      ["He's heard a thousand stories about leaving the station", "他听过关于离开车站的一千个故事", null, 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0598L03": {
+    "lego": ["a thousand stories","一千个故事"],
+    "type": "M",
+    "current_seed_legos_available": [["He's heard","他听过"],["a thousand stories about what they were doing","关于他们在做什么的一千个故事"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["A thousand stories", "一千个故事", null, 1],
+      ["He's heard a thousand stories", "他听过一千个故事", null, 2],
+      ["A thousand stories about the garden", "关于花园的一千个故事", null, 2],
+      ["A thousand stories about home", "关于家的一千个故事", null, 2],
+      ["He's heard a thousand stories about it", "他听过关于它的一千个故事", null, 2],
+      ["She told me a thousand stories", "她告诉我一千个故事", null, 2],
+      ["I suspect he's heard a thousand stories about what they were doing", "我怀疑他听过关于他们在做什么的一千个故事", null, 3],
+      ["He's heard a thousand stories about leaving home", "他听过关于离开家的一千个故事", null, 2],
+      ["She told me he's heard a thousand stories about it", "她告诉我他听过关于它的一千个故事", null, 2],
+      ["He's heard a thousand stories about what they were doing", "他听过关于他们在做什么的一千个故事", null, 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0598L04": {
+    "lego": ["what they were doing","他们在做什么"],
+    "type": "M",
+    "current_seed_legos_available": [["He's heard","他听过"],["a thousand stories about what they were doing","关于他们在做什么的一千个故事"],["a thousand stories","一千个故事"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["What they were doing", "他们在做什么", null, 1],
+      ["Stories about what they were doing", "关于他们在做什么的故事", null, 2],
+      ["He's heard about what they were doing", "他听过关于他们在做什么的", null, 2],
+      ["A thousand stories about what they were doing", "关于他们在做什么的一千个故事", null, 2],
+      ["I suspect what they were doing", "我怀疑他们在做什么", null, 1],
+      ["She told me what they were doing", "她告诉我他们在做什么", null, 1],
+      ["He's heard a thousand stories about what they were doing", "他听过关于他们在做什么的一千个故事", null, 4],
+      ["I suspect he's heard stories about what they were doing", "我怀疑他听过关于他们在做什么的故事", null, 3],
+      ["She told me he's heard about what they were doing", "她告诉我他听过关于他们在做什么的", null, 2],
+      ["I need to share stories about what they were doing", "我需要分享关于他们在做什么的故事", null, 2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0598L05": {
+    "lego": ["were doing what","在做什么"],
+    "type": "M",
+    "current_seed_legos_available": [["He's heard","他听过"],["a thousand stories about what they were doing","关于他们在做什么的一千个故事"],["a thousand stories","一千个故事"],["what they were doing","他们在做什么"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["What were they doing", "他们在做什么", null, 1],
+      ["Stories about what were they doing", "关于他们在做什么的故事", null, 2],
+      ["He's heard about what were they doing", "他听过关于他们在做什么的", null, 2],
+      ["A thousand stories about what were they doing", "关于他们在做什么的一千个故事", null, 2],
+      ["I suspect what were they doing", "我怀疑他们在做什么", null, 1],
+      ["She told me what were they doing", "她告诉我他们在做什么", null, 1],
+      ["He's heard a thousand stories about what were they doing", "他听过关于他们在做什么的一千个故事", null, 4],
+      ["I suspect he's heard stories about what were they doing", "我怀疑他听过关于他们在做什么的故事", null, 3],
+      ["She told me he's heard about what were they doing", "她告诉我他听过关于他们在做什么的", null, 2],
+      ["He's heard a thousand stories about what they were doing", "他听过关于他们在做什么的一千个故事", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

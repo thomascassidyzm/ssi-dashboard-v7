@@ -1,0 +1,877 @@
+{
+  "legos": {
+    "S0587L01": {
+      "lego": [
+        "she used to insist",
+        "她过去总是坚持"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "she used to insist",
+          "她过去总是坚持",
+          null,
+          1
+        ],
+        [
+          "she used to insist here",
+          "她过去总是在这里坚持",
+          null,
+          2
+        ],
+        [
+          "she used to insist every morning",
+          "她每天早上过去总是坚持",
+          null,
+          3
+        ],
+        [
+          "she used to insist about eggs",
+          "她过去总是坚持关于鸡蛋",
+          null,
+          3
+        ],
+        [
+          "she used to insist we often tried",
+          "她过去总是坚持我们经常尝试过",
+          null,
+          4
+        ],
+        [
+          "she used to insist about twenty",
+          "她过去总是坚持关于二十",
+          null,
+          4
+        ],
+        [
+          "she used to insist we've been waiting",
+          "她过去总是坚持我们一直在等",
+          null,
+          5
+        ],
+        [
+          "she used to insist about boiled eggs every morning",
+          "她每天早上过去总是坚持关于煮鸡蛋",
+          null,
+          6
+        ],
+        [
+          "she used to insist we can see the mountains",
+          "她过去总是坚持我们能看到山",
+          null,
+          7
+        ],
+        [
+          "she used to insist we often wanted warmer places",
+          "她过去总是坚持我们经常想要更暖和的地方",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0587L02": {
+      "lego": [
+        "used to always insist",
+        "过去总是坚持"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0587L01",
+          "known": "she used to insist",
+          "target": "她过去总是坚持",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "used to always insist",
+          "过去总是坚持",
+          null,
+          1
+        ],
+        [
+          "I used to always insist",
+          "我过去总是坚持",
+          null,
+          2
+        ],
+        [
+          "used to always insist here",
+          "过去总是在这里坚持",
+          null,
+          3
+        ],
+        [
+          "we used to always insist",
+          "我们过去总是坚持",
+          null,
+          2
+        ],
+        [
+          "he used to always insist about eggs",
+          "他过去总是坚持关于鸡蛋",
+          null,
+          4
+        ],
+        [
+          "I used to always insist every morning",
+          "我每天早上过去总是坚持",
+          null,
+          4
+        ],
+        [
+          "she used to always insist we've tried",
+          "她过去总是坚持我们尝试过",
+          null,
+          5
+        ],
+        [
+          "we used to always insist about twenty eggs",
+          "我们过去总是坚持关于二十个鸡蛋",
+          null,
+          6
+        ],
+        [
+          "I used to always insist I can see the mountains",
+          "我过去总是坚持我能看到山",
+          null,
+          7
+        ],
+        [
+          "he used to always insist about warmer places here",
+          "他过去总是在这里坚持关于更暖和的地方",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0587L04": {
+      "lego": [
+        "always",
+        "总是"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0587L01",
+          "known": "she used to insist",
+          "target": "她过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L02",
+          "known": "used to always insist",
+          "target": "过去总是坚持",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "always",
+          "总是",
+          null,
+          1
+        ],
+        [
+          "always here",
+          "总是在这里",
+          null,
+          2
+        ],
+        [
+          "I always want eggs",
+          "我总是想要鸡蛋",
+          null,
+          3
+        ],
+        [
+          "we always see",
+          "我们总是看到",
+          null,
+          3
+        ],
+        [
+          "she always used to insist",
+          "她总是过去坚持",
+          null,
+          4
+        ],
+        [
+          "I always can see mountains",
+          "我总是能看到山",
+          null,
+          4
+        ],
+        [
+          "we always wake up every morning",
+          "我们每天早上总是醒来",
+          null,
+          5
+        ],
+        [
+          "I always want about twenty boiled eggs",
+          "我总是想要关于二十个煮鸡蛋",
+          null,
+          6
+        ],
+        [
+          "she always used to insist we've tried",
+          "她总是过去坚持我们尝试过",
+          null,
+          6
+        ],
+        [
+          "we always know more about warmer places",
+          "我们总是知道更多关于更暖和的地方",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0587L05": {
+      "lego": [
+        "insist",
+        "坚持"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0587L01",
+          "known": "she used to insist",
+          "target": "她过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L02",
+          "known": "used to always insist",
+          "target": "过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L04",
+          "known": "always",
+          "target": "总是",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "insist",
+          "坚持",
+          null,
+          1
+        ],
+        [
+          "I insist",
+          "我坚持",
+          null,
+          2
+        ],
+        [
+          "she always insists",
+          "她总是坚持",
+          null,
+          3
+        ],
+        [
+          "insist about eggs",
+          "坚持关于鸡蛋",
+          null,
+          3
+        ],
+        [
+          "we always insist here",
+          "我们总是在这里坚持",
+          null,
+          4
+        ],
+        [
+          "I insist we can see",
+          "我坚持我们能看到",
+          null,
+          4
+        ],
+        [
+          "she used to always insist we've tried",
+          "她过去总是坚持我们尝试过",
+          null,
+          5
+        ],
+        [
+          "I insist we want about twenty eggs",
+          "我坚持我们想要关于二十个鸡蛋",
+          null,
+          6
+        ],
+        [
+          "we always insist about warmer places every morning",
+          "我们每天早上总是坚持关于更暖和的地方",
+          null,
+          7
+        ],
+        [
+          "she insists I can see the mountains here",
+          "她坚持我能在这里看到山",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0587L06": {
+      "lego": [
+        "we had eggs for supper",
+        "我们晚饭吃鸡蛋"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0587L01",
+          "known": "she used to insist",
+          "target": "她过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L02",
+          "known": "used to always insist",
+          "target": "过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L04",
+          "known": "always",
+          "target": "总是",
+          "type": "A"
+        },
+        {
+          "id": "S0587L05",
+          "known": "insist",
+          "target": "坚持",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "we had eggs for supper",
+          "我们晚饭吃鸡蛋",
+          null,
+          1
+        ],
+        [
+          "we always had eggs for supper",
+          "我们总是晚饭吃鸡蛋",
+          null,
+          2
+        ],
+        [
+          "we had eggs for supper here",
+          "我们在这里晚饭吃鸡蛋",
+          null,
+          3
+        ],
+        [
+          "I insist we had eggs for supper",
+          "我坚持我们晚饭吃鸡蛋",
+          null,
+          3
+        ],
+        [
+          "we had twenty eggs for supper",
+          "我们晚饭吃二十个鸡蛋",
+          null,
+          4
+        ],
+        [
+          "she insists we had eggs for supper",
+          "她坚持我们晚饭吃鸡蛋",
+          null,
+          4
+        ],
+        [
+          "we always had boiled eggs for supper here",
+          "我们总是在这里晚饭吃煮鸡蛋",
+          null,
+          5
+        ],
+        [
+          "she used to insist we had eggs for supper",
+          "她过去总是坚持我们晚饭吃鸡蛋",
+          null,
+          5
+        ],
+        [
+          "I always insist we had about twenty eggs for supper",
+          "我总是坚持我们晚饭吃关于二十个鸡蛋",
+          null,
+          7
+        ],
+        [
+          "she used to always insist we had eggs for supper every morning",
+          "她过去总是坚持我们每天早上晚饭吃鸡蛋",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0587L07": {
+      "lego": [
+        "have eggs for supper",
+        "晚饭吃鸡蛋"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0587L01",
+          "known": "she used to insist",
+          "target": "她过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L02",
+          "known": "used to always insist",
+          "target": "过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L04",
+          "known": "always",
+          "target": "总是",
+          "type": "A"
+        },
+        {
+          "id": "S0587L05",
+          "known": "insist",
+          "target": "坚持",
+          "type": "A"
+        },
+        {
+          "id": "S0587L06",
+          "known": "we had eggs for supper",
+          "target": "我们晚饭吃鸡蛋",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "have eggs for supper",
+          "晚饭吃鸡蛋",
+          null,
+          1
+        ],
+        [
+          "I have eggs for supper",
+          "我晚饭吃鸡蛋",
+          null,
+          2
+        ],
+        [
+          "we always have eggs for supper",
+          "我们总是晚饭吃鸡蛋",
+          null,
+          3
+        ],
+        [
+          "have boiled eggs for supper",
+          "晚饭吃煮鸡蛋",
+          null,
+          2
+        ],
+        [
+          "she insists we have eggs for supper",
+          "她坚持我们晚饭吃鸡蛋",
+          null,
+          4
+        ],
+        [
+          "I have twenty eggs for supper",
+          "我晚饭吃二十个鸡蛋",
+          null,
+          4
+        ],
+        [
+          "we always have eggs for supper here",
+          "我们总是在这里晚饭吃鸡蛋",
+          null,
+          5
+        ],
+        [
+          "she used to insist we have eggs for supper",
+          "她过去总是坚持我们晚饭吃鸡蛋",
+          null,
+          5
+        ],
+        [
+          "I always have about twenty boiled eggs for supper",
+          "我总是晚饭吃关于二十个煮鸡蛋",
+          null,
+          6
+        ],
+        [
+          "she used to always insist I have eggs for supper every morning",
+          "她过去总是坚持我每天早上晚饭吃鸡蛋",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0587L08": {
+      "lego": [
+        "eat eggs",
+        "吃鸡蛋"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0587L01",
+          "known": "she used to insist",
+          "target": "她过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L02",
+          "known": "used to always insist",
+          "target": "过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L04",
+          "known": "always",
+          "target": "总是",
+          "type": "A"
+        },
+        {
+          "id": "S0587L05",
+          "known": "insist",
+          "target": "坚持",
+          "type": "A"
+        },
+        {
+          "id": "S0587L06",
+          "known": "we had eggs for supper",
+          "target": "我们晚饭吃鸡蛋",
+          "type": "M"
+        },
+        {
+          "id": "S0587L07",
+          "known": "have eggs for supper",
+          "target": "晚饭吃鸡蛋",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "eat eggs",
+          "吃鸡蛋",
+          null,
+          1
+        ],
+        [
+          "I eat eggs",
+          "我吃鸡蛋",
+          null,
+          2
+        ],
+        [
+          "we always eat eggs",
+          "我们总是吃鸡蛋",
+          null,
+          3
+        ],
+        [
+          "eat boiled eggs",
+          "吃煮鸡蛋",
+          null,
+          2
+        ],
+        [
+          "she insists we eat eggs",
+          "她坚持我们吃鸡蛋",
+          null,
+          4
+        ],
+        [
+          "I eat twenty eggs",
+          "我吃二十个鸡蛋",
+          null,
+          4
+        ],
+        [
+          "we always eat eggs every morning",
+          "我们每天早上总是吃鸡蛋",
+          null,
+          5
+        ],
+        [
+          "she used to insist we eat eggs here",
+          "她过去总是坚持我们在这里吃鸡蛋",
+          null,
+          6
+        ],
+        [
+          "I always eat about twenty boiled eggs for supper",
+          "我总是晚饭吃关于二十个煮鸡蛋",
+          null,
+          7
+        ],
+        [
+          "she used to always insist we eat eggs every morning",
+          "她过去总是坚持我们每天早上吃鸡蛋",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0587L09": {
+      "lego": [
+        "supper",
+        "晚饭"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0587L01",
+          "known": "she used to insist",
+          "target": "她过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L02",
+          "known": "used to always insist",
+          "target": "过去总是坚持",
+          "type": "M"
+        },
+        {
+          "id": "S0587L04",
+          "known": "always",
+          "target": "总是",
+          "type": "A"
+        },
+        {
+          "id": "S0587L05",
+          "known": "insist",
+          "target": "坚持",
+          "type": "A"
+        },
+        {
+          "id": "S0587L06",
+          "known": "we had eggs for supper",
+          "target": "我们晚饭吃鸡蛋",
+          "type": "M"
+        },
+        {
+          "id": "S0587L07",
+          "known": "have eggs for supper",
+          "target": "晚饭吃鸡蛋",
+          "type": "M"
+        },
+        {
+          "id": "S0587L08",
+          "known": "eat eggs",
+          "target": "吃鸡蛋",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "supper",
+          "晚饭",
+          null,
+          1
+        ],
+        [
+          "for supper",
+          "晚饭",
+          null,
+          1
+        ],
+        [
+          "eggs for supper",
+          "鸡蛋晚饭",
+          null,
+          2
+        ],
+        [
+          "I always eat for supper",
+          "我总是吃晚饭",
+          null,
+          4
+        ],
+        [
+          "we have supper here",
+          "我们在这里吃晚饭",
+          null,
+          3
+        ],
+        [
+          "twenty eggs for supper",
+          "二十个鸡蛋晚饭",
+          null,
+          3
+        ],
+        [
+          "she insists we eat eggs for supper",
+          "她坚持我们晚饭吃鸡蛋",
+          null,
+          5
+        ],
+        [
+          "I always have boiled eggs for supper every morning",
+          "我每天早上总是晚饭吃煮鸡蛋",
+          null,
+          6
+        ],
+        [
+          "we used to always have about twenty eggs for supper",
+          "我们过去总是晚饭吃关于二十个鸡蛋",
+          null,
+          6
+        ],
+        [
+          "she used to insist we eat eggs for supper here",
+          "她过去总是坚持我们在这里晚饭吃鸡蛋",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

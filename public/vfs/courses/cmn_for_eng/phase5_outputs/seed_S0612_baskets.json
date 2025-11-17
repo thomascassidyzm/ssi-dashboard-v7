@@ -1,0 +1,52 @@
+{
+  "S0612L01": {
+    "lego": ["we would have bought","我们会买"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["We would have bought it.","我们会买它。",null,2],
+      ["We would have bought more.","我们会买更多。",null,2],
+      ["We would have bought help.","我们会买帮助。",null,3],
+      ["We would have bought different things.","我们会买不同的事。",null,3],
+      ["We would have bought it at the time.","我们那时会买它。",null,4],
+      ["We would have bought something then.","我们当时会买一些东西。",null,4],
+      ["We would have bought it if we'd known.","如果我们知道我们会买它。",null,6],
+      ["We would have bought something in the first place.","我们最初会买一些东西。",null,5],
+      ["We would have bought different things if you'd told me what I know now.","如果你告诉我我现在知道的我们会买不同的事。",null,12],
+      ["We would have bought something because we needed help at the time.","我们会买一些东西因为我们那时需要帮助。",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0612L03": {
+    "lego": ["buy something","买一些东西"],
+    "type": "M",
+    "current_seed_legos_available": [["we would have bought","我们会买"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Buy something.","买一些东西。",null,1],
+      ["I buy something.","我买一些东西。",null,2],
+      ["To buy something.","买一些东西。",null,2],
+      ["He needs to buy something.","他需要买一些东西。",null,3],
+      ["We need to buy something.","我们需要买一些东西。",null,3],
+      ["We would have bought something then.","我们当时会买一些东西。",null,4],
+      ["I'd have known to buy something.","我会知道买一些东西。",null,4],
+      ["She offered to let us buy something.","她提出让我们买一些东西。",null,5],
+      ["We need to buy something because we needed help at the time.","我们需要买一些东西因为我们那时需要帮助。",null,9],
+      ["We would have bought something.","我们会买一些东西。",null,1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "S0610L01": {
+    "lego": ["he needs","他需要"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["He needs help.","他需要帮助。",null,2],
+      ["He needs time.","他需要时间。",null,2],
+      ["He needs to wait.","他需要等待。",null,3],
+      ["He needs to know.","他需要知道。",null,3],
+      ["He needs help at the time.","他那时需要帮助。",null,4],
+      ["He needs to do different things.","他需要做不同的事。",null,4],
+      ["He needs to stay with her.","他需要和她住在一起。",null,5],
+      ["He needs to know what I know now.","他需要知道我现在知道的。",null,6],
+      ["He needs help because we didn't have anywhere to live.","他需要帮助因为我们没有地方住。",null,9],
+      ["He needs to know how it all started in the first place.","他需要知道这一切最初是如何开始的。",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0610L02": {
+    "lego": ["need to look for work","需要找工作"],
+    "type": "M",
+    "current_seed_legos_available": [["he needs","他需要"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Need to look for work.","需要找工作。",null,1],
+      ["I need to look for work.","我需要找工作。",null,2],
+      ["We need to look for work.","我们需要找工作。",null,2],
+      ["You need to look for work.","你需要找工作。",null,3],
+      ["She needs to look for work.","她需要找工作。",null,3],
+      ["He needs to look for work now.","他现在需要找工作。",null,4],
+      ["I need to look for work then.","我当时需要找工作。",null,4],
+      ["We need to look for work at the time.","我们那时需要找工作。",null,5],
+      ["They need to look for work because we needed help.","他们需要找工作因为我们需要帮助。",null,7],
+      ["I'd have known I need to look for work in the first place.","我会知道我最初需要找工作。",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0610L03": {
+    "lego": ["look for work","找工作"],
+    "type": "M",
+    "current_seed_legos_available": [["he needs","他需要"],["need to look for work","需要找工作"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Look for work.","找工作。",null,1],
+      ["I look for work.","我找工作。",null,2],
+      ["To look for work.","找工作。",null,2],
+      ["We look for work.","我们找工作。",null,3],
+      ["She needs to look for work.","她需要找工作。",null,3],
+      ["I look for work at the time.","我那时找工作。",null,4],
+      ["He needs to look for work now.","他现在需要找工作。",null,4],
+      ["I'd have known to look for work then.","我当时会知道要找工作。",null,6],
+      ["We were talking about how to look for work.","我们在谈论如何找工作。",null,6],
+      ["He needs to look for work because we needed help.","他需要找工作因为我们需要帮助。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

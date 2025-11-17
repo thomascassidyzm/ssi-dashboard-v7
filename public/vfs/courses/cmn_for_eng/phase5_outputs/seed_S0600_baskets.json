@@ -1,0 +1,126 @@
+{
+  "S0600L01": {
+    "lego": ["if you'd told me how tired you were","如果你告诉我你有多累"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["If you'd told me how tired you were", "如果你告诉我你有多累", null, 1],
+      ["If you'd told me how happy you were", "如果你告诉我你有多高兴", null, 1],
+      ["If you'd told me about it", "如果你告诉我关于它的", null, 1],
+      ["If you'd told me about the garden", "如果你告诉我关于花园的", null, 1],
+      ["If you'd told me about my sister", "如果你告诉我关于我妹妹的", null, 1],
+      ["If you'd told me how tired you were I'd have driven", "如果你告诉我你有多累，我会开车", null, 1],
+      ["If you'd told me I need to share my toys", "如果你告诉我我需要分享我的玩具", null, 1],
+      ["If you'd told me about what they were doing", "如果你告诉我关于他们在做什么的", null, 1],
+      ["If you'd told me he's heard a thousand stories", "如果你告诉我他听过一千个故事", null, 1],
+      ["If you'd told me about leaving the station", "如果你告诉我关于离开车站的", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0600L02": {
+    "lego": ["how tired you were","你有多累"],
+    "type": "M",
+    "current_seed_legos_available": [["if you'd told me how tired you were","如果你告诉我你有多累"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["How tired you were", "你有多累", null, 1],
+      ["If you'd told me how tired you were", "如果你告诉我你有多累", null, 2],
+      ["You told me how tired you were", "你告诉我你有多累", null, 1],
+      ["How happy you were", "你有多高兴", null, 1],
+      ["She told me how tired you were", "她告诉我你有多累", null, 1],
+      ["I suspect how tired you were", "我怀疑你有多累", null, 1],
+      ["If you'd told me how tired you were I'd have driven", "如果你告诉我你有多累，我会开车", null, 2],
+      ["He's heard about how tired you were", "他听过关于你有多累的", null, 1],
+      ["I need to share how tired you were", "我需要分享你有多累", null, 1],
+      ["You told me stories about how tired you were", "你告诉我关于你有多累的故事", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0600L03": {
+    "lego": ["tired","累"],
+    "type": "A",
+    "current_seed_legos_available": [["if you'd told me how tired you were","如果你告诉我你有多累"],["how tired you were","你有多累"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Tired", "累", null, 1],
+      ["How tired you were", "你有多累", null, 2],
+      ["You were tired", "你累", null, 1],
+      ["I was tired", "我累", null, 1],
+      ["My sister was tired", "我妹妹累", null, 1],
+      ["If you'd told me how tired you were", "如果你告诉我你有多累", null, 3],
+      ["Tired in the garden", "在花园里累", null, 1],
+      ["He's heard you were tired", "他听过你累", null, 1],
+      ["You told me you were tired", "你告诉我你累", null, 1],
+      ["I need to lie down because I'm tired", "我需要躺下因为我累", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0600L04": {
+    "lego": ["I'd have driven","我会开车"],
+    "type": "M",
+    "current_seed_legos_available": [["if you'd told me how tired you were","如果你告诉我你有多累"],["how tired you were","你有多累"],["tired","累"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'd have driven", "我会开车", null, 1],
+      ["If you'd told me I'd have driven", "如果你告诉我，我会开车", null, 2],
+      ["I'd have driven to the station", "我会开车到车站", null, 1],
+      ["I'd have driven along the main road", "我会沿着主路开车", null, 1],
+      ["I'd have driven if you'd told me how tired you were", "如果你告诉我你有多累，我会开车", null, 4],
+      ["You told me I'd have driven", "你告诉我我会开车", null, 2],
+      ["I'd have driven with my sister", "我会和我妹妹开车", null, 1],
+      ["If you'd told me how tired you were I'd have driven", "如果你告诉我你有多累，我会开车", null, 4],
+      ["I'd have driven to the garden", "我会开车到花园", null, 1],
+      ["She told me I'd have driven", "她告诉我我会开车", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0600L05": {
+    "lego": ["told me how tired you were","告诉我你有多累"],
+    "type": "M",
+    "current_seed_legos_available": [["if you'd told me how tired you were","如果你告诉我你有多累"],["how tired you were","你有多累"],["tired","累"],["I'd have driven","我会开车"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Told me how tired you were", "告诉我你有多累", null, 1],
+      ["You told me how tired you were", "你告诉我你有多累", null, 2],
+      ["If you'd told me how tired you were", "如果你告诉我你有多累", null, 3],
+      ["She told me how tired you were", "她告诉我你有多累", null, 1],
+      ["You told me how happy you were", "你告诉我你有多高兴", null, 1],
+      ["If you'd told me how tired you were I'd have driven", "如果你告诉我你有多累，我会开车", null, 5],
+      ["You told me stories about how tired you were", "你告诉我关于你有多累的故事", null, 2],
+      ["He's heard you told me how tired you were", "他听过你告诉我你有多累", null, 2],
+      ["I suspect you told me how tired you were", "我怀疑你告诉我你有多累", null, 2],
+      ["I'd have driven if you'd told me how tired you were", "如果你告诉我你有多累，我会开车", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}
