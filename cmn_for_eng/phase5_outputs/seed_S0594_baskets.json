@@ -1,0 +1,256 @@
+{
+  "S0594L01": {
+    "lego": ["I had to","我不得不"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I had to","我不得不",null,1],
+      ["I had to share","我不得不分享",null,2],
+      ["I had to see","我不得不看到",null,2],
+      ["I had to leave home","我不得不离开家",null,2],
+      ["I had to grow up","我不得不长大",null,2],
+      ["However much I argued I had to","无论我争论多少我不得不",null,2],
+      ["She told me I had to","她告诉我我不得不",null,2],
+      ["Every morning I had to","每天早上我不得不",null,2],
+      ["She used to insist I had to","她过去总是坚持我不得不",null,2],
+      ["I had to leave home and grow up","我不得不离开家长大",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 10,
+      "quite_short_3": 0,
+      "longer_4_5": 0,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L01",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0594L03": {
+    "lego": ["with my sister","和我妹妹"],
+    "type": "M",
+    "current_seed_legos_available": [["I had to","我不得不"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["With my sister","和我妹妹",null,1],
+      ["I had to with my sister","我不得不和我妹妹",null,2],
+      ["Share with my sister","和我妹妹分享",null,2],
+      ["I had to share with my sister","我不得不和我妹妹分享",null,3],
+      ["I wanted to leave home with my sister","我想和我妹妹离开家",null,2],
+      ["She told me with my sister","她告诉我和我妹妹",null,2],
+      ["I can see the mountains with my sister","我能和我妹妹看到山",null,3],
+      ["Every morning with my sister I had to","每天早上和我妹妹我不得不",null,3],
+      ["I argued I had to share with my sister","我争论我不得不和我妹妹分享",null,4],
+      ["However much I argued I had to with my sister","无论我争论多少我不得不和我妹妹",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L03",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0594L04": {
+    "lego": ["my sister","我妹妹"],
+    "type": "M",
+    "current_seed_legos_available": [["I had to","我不得不"],["with my sister","和我妹妹"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["My sister","我妹妹",null,1],
+      ["With my sister","和我妹妹",null,1],
+      ["I had to with my sister","我不得不和我妹妹",null,2],
+      ["My sister told me","我妹妹告诉我",null,2],
+      ["My sister saw","我妹妹看到",null,2],
+      ["I had to share with my sister","我不得不和我妹妹分享",null,3],
+      ["My sister used to insist","我妹妹过去总是坚持",null,2],
+      ["Every morning my sister","每天早上我妹妹",null,2],
+      ["However much I argued with my sister","无论我争论多少和我妹妹",null,2],
+      ["I wanted to leave home with my sister","我想和我妹妹离开家",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 8,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L04",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0594L05": {
+    "lego": ["sister","妹妹"],
+    "type": "A",
+    "current_seed_legos_available": [["I had to","我不得不"],["with my sister","和我妹妹"],["my sister","我妹妹"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Sister","妹妹",null,1],
+      ["My sister","我妹妹",null,1],
+      ["With my sister","和我妹妹",null,1],
+      ["Sister told me","妹妹告诉我",null,2],
+      ["Sister saw","妹妹看到",null,2],
+      ["I had to with sister","我不得不和妹妹",null,2],
+      ["Sister used to insist","妹妹过去总是坚持",null,2],
+      ["Every morning sister","每天早上妹妹",null,2],
+      ["I wanted to leave home with sister","我想和妹妹离开家",null,2],
+      ["However much I argued sister insisted","无论我争论多少妹妹坚持",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 8,
+      "quite_short_3": 1,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L05",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    }
+  },
+  "S0594L06": {
+    "lego": ["share my toys","分享我的玩具"],
+    "type": "M",
+    "current_seed_legos_available": [["I had to","我不得不"],["with my sister","和我妹妹"],["my sister","我妹妹"],["sister","妹妹"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Share my toys","分享我的玩具",null,1],
+      ["I had to share my toys","我不得不分享我的玩具",null,2],
+      ["Share my toys with my sister","和我妹妹分享我的玩具",null,2],
+      ["I had to share my toys with my sister","我不得不和我妹妹分享我的玩具",null,3],
+      ["She told me to share my toys","她告诉我分享我的玩具",null,2],
+      ["She insisted I share my toys","她坚持我分享我的玩具",null,2],
+      ["Every morning share my toys","每天早上分享我的玩具",null,2],
+      ["However much I argued share my toys","无论我争论多少分享我的玩具",null,2],
+      ["I still had to share my toys","我还是要分享我的玩具",null,2],
+      ["She used to insist I share my toys with sister","她过去总是坚持我和妹妹分享我的玩具",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L06",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0594L07": {
+    "lego": ["my toys","我的玩具"],
+    "type": "M",
+    "current_seed_legos_available": [["I had to","我不得不"],["with my sister","和我妹妹"],["my sister","我妹妹"],["sister","妹妹"],["share my toys","分享我的玩具"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["My toys","我的玩具",null,1],
+      ["Share my toys","分享我的玩具",null,1],
+      ["I had to share my toys","我不得不分享我的玩具",null,2],
+      ["My toys with my sister","我的玩具和我妹妹",null,2],
+      ["She told me my toys","她告诉我我的玩具",null,2],
+      ["I saw my toys","我看到我的玩具",null,2],
+      ["Share my toys with my sister","和我妹妹分享我的玩具",null,2],
+      ["I had to share my toys with my sister","我不得不和我妹妹分享我的玩具",null,3],
+      ["Every morning I had to share my toys","每天早上我不得不分享我的玩具",null,3],
+      ["However much I argued I still had to share my toys","无论我争论多少我还是要分享我的玩具",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L07",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0594L08": {
+    "lego": ["toys","玩具"],
+    "type": "A",
+    "current_seed_legos_available": [["I had to","我不得不"],["with my sister","和我妹妹"],["my sister","我妹妹"],["sister","妹妹"],["share my toys","分享我的玩具"],["my toys","我的玩具"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Toys","玩具",null,1],
+      ["My toys","我的玩具",null,1],
+      ["Share toys","分享玩具",null,1],
+      ["I had to share toys","我不得不分享玩具",null,2],
+      ["She told me toys","她告诉我玩具",null,2],
+      ["I saw toys","我看到玩具",null,2],
+      ["Share toys with sister","和妹妹分享玩具",null,2],
+      ["I had to share my toys with my sister","我不得不和我妹妹分享我的玩具",null,3],
+      ["Every morning share toys","每天早上分享玩具",null,2],
+      ["However much I argued I had to share toys","无论我争论多少我不得不分享玩具",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 7,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L08",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    }
+  },
+  "S0594L09": {
+    "lego": ["share my toys with my sister","和我妹妹分享我的玩具"],
+    "type": "M",
+    "current_seed_legos_available": [["I had to","我不得不"],["with my sister","和我妹妹"],["my sister","我妹妹"],["sister","妹妹"],["share my toys","分享我的玩具"],["my toys","我的玩具"],["toys","玩具"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Share my toys with my sister","和我妹妹分享我的玩具",null,1],
+      ["I share my toys with my sister","我和我妹妹分享我的玩具",null,2],
+      ["I had to share my toys with my sister","我不得不和我妹妹分享我的玩具",null,2],
+      ["She told me to share my toys with my sister","她告诉我和我妹妹分享我的玩具",null,2],
+      ["She insisted I share my toys with my sister","她坚持我和我妹妹分享我的玩具",null,2],
+      ["Every morning share my toys with my sister","每天早上和我妹妹分享我的玩具",null,2],
+      ["However much I argued share my toys with my sister","无论我争论多少和我妹妹分享我的玩具",null,2],
+      ["I still had to share my toys with my sister","我还是要和我妹妹分享我的玩具",null,2],
+      ["She used to insist I share my toys with my sister","她过去总是坚持我和我妹妹分享我的玩具",null,2],
+      ["I had to share my toys with my sister","我不得不和我妹妹分享我的玩具",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 10,
+      "quite_short_3": 0,
+      "longer_4_5": 0,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0594L09",
+      "seed_context": {
+        "known": "I had to share my toys with my sister.",
+        "target": "我不得不和我妹妹分享我的玩具。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  }
+}
