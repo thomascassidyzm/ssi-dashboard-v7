@@ -1,0 +1,253 @@
+{
+  "legos": {
+    "S0630L01": {
+      "lego": [
+        "can I have",
+        "puedo tener"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "can I have",
+          "puedo tener"
+        ],
+        [
+          "can I have coffee",
+          "puedo tener café"
+        ],
+        [
+          "can I have tea",
+          "puedo tener té"
+        ],
+        [
+          "can I have something",
+          "puedo tener algo"
+        ],
+        [
+          "can I have it",
+          "puedo tenerlo"
+        ],
+        [
+          "can I have that",
+          "puedo tener eso"
+        ],
+        [
+          "can I have something to drink",
+          "puedo tener algo para beber"
+        ],
+        [
+          "can I have a cup of coffee",
+          "puedo tener un café"
+        ],
+        [
+          "can I have coffee or tea",
+          "puedo tener café o té"
+        ],
+        [
+          "can I have something to drink please",
+          "puedo tener algo para beber por favor"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0630L01",
+        "seed_context": {
+          "known": "¿Puedo tener algo para beber por favor?",
+          "target": "Can I have something to drink please?"
+        }
+      },
+      "components": [
+        [
+          "puedo",
+          "can I"
+        ],
+        [
+          "tener",
+          "to have"
+        ]
+      ]
+    },
+    "S0630L02": {
+      "lego": [
+        "have something to drink",
+        "tener algo para beber"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0630L01",
+          "known": "puedo tener",
+          "target": "can I have",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "have something to drink",
+          "tener algo para beber"
+        ],
+        [
+          "can I have something to drink",
+          "puedo tener algo para beber"
+        ],
+        [
+          "have something to drink please",
+          "tener algo para beber por favor"
+        ],
+        [
+          "I like to have something to drink",
+          "me gusta tener algo para beber"
+        ],
+        [
+          "do you want to have something to drink",
+          "quieres tener algo para beber"
+        ],
+        [
+          "can I have something to drink please",
+          "puedo tener algo para beber por favor"
+        ],
+        [
+          "yes can I have something to drink",
+          "sí puedo tener algo para beber"
+        ],
+        [
+          "can I have something to drink or tea",
+          "puedo tener algo para beber o té"
+        ],
+        [
+          "I like to have something to drink with milk",
+          "me gusta tener algo para beber con leche"
+        ],
+        [
+          "do you want to have something to drink or coffee",
+          "quieres tener algo para beber o café"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0630L02",
+        "seed_context": {
+          "known": "¿Puedo tener algo para beber por favor?",
+          "target": "Can I have something to drink please?"
+        }
+      },
+      "components": [
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "para",
+          "to"
+        ],
+        [
+          "beber",
+          "to drink"
+        ]
+      ]
+    },
+    "S0630L03": {
+      "lego": [
+        "something to drink",
+        "algo para beber"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0630L01",
+          "known": "puedo tener",
+          "target": "can I have",
+          "type": "M"
+        },
+        {
+          "id": "S0630L02",
+          "known": "tener algo para beber",
+          "target": "have something to drink",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "something to drink",
+          "algo para beber"
+        ],
+        [
+          "something to drink please",
+          "algo para beber por favor"
+        ],
+        [
+          "do you want something to drink",
+          "quieres algo para beber"
+        ],
+        [
+          "I like something to drink",
+          "me gusta algo para beber"
+        ],
+        [
+          "can I have something to drink",
+          "puedo tener algo para beber"
+        ],
+        [
+          "something to drink with milk",
+          "algo para beber con leche"
+        ],
+        [
+          "yes I like something to drink",
+          "sí me gusta algo para beber"
+        ],
+        [
+          "can I have something to drink please",
+          "puedo tener algo para beber por favor"
+        ],
+        [
+          "do you want something to drink or coffee",
+          "quieres algo para beber o café"
+        ],
+        [
+          "something to drink with milk without sugar",
+          "algo para beber con leche sin azúcar"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0630L03",
+        "seed_context": {
+          "known": "¿Puedo tener algo para beber por favor?",
+          "target": "Can I have something to drink please?"
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to/for"
+        ],
+        [
+          "beber",
+          "to drink"
+        ]
+      ]
+    }
+  }
+}

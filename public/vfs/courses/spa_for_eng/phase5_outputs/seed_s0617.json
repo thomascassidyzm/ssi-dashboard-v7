@@ -1,0 +1,42 @@
+{
+  "legos": {
+    "S0617L01": {
+      "lego": [
+        "You thought that it",
+        "Pensaste que era"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["pensaste que era", "you thought that it", null, 1],
+        ["pensaste que era algo", "you thought that it was something", null, 2],
+        ["pensaste que era trabajo", "you thought that it was work", null, 2],
+        ["pensaste que era lo sensato", "you thought that it was the sensible thing", null, 3],
+        ["pensaste que era lo sensato que hacer", "you thought that it was the sensible thing to do", null, 4],
+        ["pensé que pensaste que era algo", "I thought you thought that it was something", null, 4],
+        ["probablemente pensaste que era algo", "you probably thought that it was something", null, 5],
+        ["pensé que pensaste que era lo sensato", "I thought you thought that it was the sensible thing", null, 5],
+        ["pensé que pensaste que era lo sensato que hacer", "I thought you thought that it was the sensible thing to do", null, 6],
+        ["si hubiera sabido pensaste que era algo", "if I'd known you thought that it was something", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "pensaste",
+          "you thought"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

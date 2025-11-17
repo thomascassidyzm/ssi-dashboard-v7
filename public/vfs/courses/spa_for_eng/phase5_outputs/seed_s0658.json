@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0658L01": {
+      "lego": [
+        "do you all want",
+        "quieren todos ustedes"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Do you all want?",
+          "¿Quieren todos ustedes?",
+          null,
+          1
+        ],
+        [
+          "You all want",
+          "Todos ustedes quieren",
+          null,
+          1
+        ],
+        [
+          "Do you all want to go?",
+          "¿Quieren todos ustedes ir?",
+          null,
+          3
+        ],
+        [
+          "What do you all want?",
+          "¿Qué quieren todos ustedes?",
+          null,
+          2
+        ],
+        [
+          "Do you all want to go, madam?",
+          "¿Quieren todos ustedes ir, señora?",
+          null,
+          4
+        ],
+        [
+          "What do you all want, sir?",
+          "¿Qué quieren todos ustedes, señor?",
+          null,
+          3
+        ],
+        [
+          "I'm not sure if you all want to go",
+          "No estoy seguro de si todos ustedes quieren ir",
+          null,
+          5
+        ],
+        [
+          "Do you all want to go with you all?",
+          "¿Quieren todos ustedes ir con todos ustedes?",
+          null,
+          5
+        ],
+        [
+          "I think that you all want to go, madam",
+          "Creo que todos ustedes quieren ir, señora",
+          null,
+          6
+        ],
+        [
+          "What do you all want? How do you all feel?",
+          "¿Qué quieren todos ustedes? ¿Cómo se sienten todos ustedes?",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "quieren",
+          "do you want"
+        ],
+        [
+          "todos",
+          "all"
+        ],
+        [
+          "ustedes",
+          "you"
+        ]
+      ]
+    }
+  }
+}

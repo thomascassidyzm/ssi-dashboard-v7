@@ -1,0 +1,79 @@
+{
+  "legos": {
+    "S0631L01": {
+      "lego": [
+        "What would you like?",
+        "¿Qué quieres?"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "what would you like",
+          "qué quieres"
+        ],
+        [
+          "what would you like to drink",
+          "qué quieres beber"
+        ],
+        [
+          "what coffee would you like",
+          "qué café quieres"
+        ],
+        [
+          "what tea would you like",
+          "qué té quieres"
+        ],
+        [
+          "what would you like coffee or tea",
+          "qué quieres café o té"
+        ],
+        [
+          "what would you like with milk",
+          "qué quieres con leche"
+        ],
+        [
+          "what would you like to drink please",
+          "qué quieres beber por favor"
+        ],
+        [
+          "what would you like with milk or without sugar",
+          "qué quieres con leche o sin azúcar"
+        ],
+        [
+          "what would you like something to drink",
+          "qué quieres algo para beber"
+        ],
+        [
+          "What would you like?",
+          "¿Qué quieres?"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0631L01",
+        "seed_context": {
+          "known": "¿Qué quieres?",
+          "target": "What would you like?"
+        }
+      },
+      "components": [
+        [
+          "Qué",
+          "What"
+        ],
+        [
+          "quieres",
+          "would you like/want"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "legos": {
+    "S0667L01": {
+      "lego": [
+        "do you mind",
+        "les importa"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Do you mind?",
+          "¿Les importa?",
+          null,
+          1
+        ],
+        [
+          "Do you all mind?",
+          "¿Les importa a todos ustedes?",
+          null,
+          2
+        ],
+        [
+          "Do you mind what?",
+          "¿Les importa qué?",
+          null,
+          2
+        ],
+        [
+          "I can help. Do you mind?",
+          "Puedo ayudar. ¿Les importa?",
+          null,
+          3
+        ],
+        [
+          "Do you mind what you think?",
+          "¿Les importa lo que piensan?",
+          null,
+          4
+        ],
+        [
+          "Are you all ready? Do you mind?",
+          "¿Están todos ustedes preparados? ¿Les importa?",
+          null,
+          4
+        ],
+        [
+          "Could you all say if you mind?",
+          "¿Podrían todos ustedes decir si les importa?",
+          null,
+          4
+        ],
+        [
+          "Do you all mind what you all could say?",
+          "¿Les importa a todos ustedes lo que todos ustedes podrían decir?",
+          null,
+          5
+        ],
+        [
+          "Do you mind if you all want to go?",
+          "¿Les importa si todos ustedes quieren ir?",
+          null,
+          5
+        ],
+        [
+          "I can help you all. Do you all mind what you all think?",
+          "Puedo ayudar a todos ustedes. ¿Les importa a todos ustedes lo que todos ustedes piensan?",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "les",
+          "you (plural)"
+        ],
+        [
+          "importa",
+          "mind/matter"
+        ]
+      ]
+    }
+  }
+}

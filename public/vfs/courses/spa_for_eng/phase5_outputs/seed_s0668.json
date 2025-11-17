@@ -1,0 +1,95 @@
+{
+  "legos": {
+    "S0668L05": {
+      "lego": [
+        "able to go",
+        "puedan ir"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0668L03",
+          "known": "you all can",
+          "target": "todos ustedes puedan",
+          "type": "M"
+        },
+        {
+          "id": "S0668L04",
+          "known": "be able to go",
+          "target": "puedan ir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Able to go",
+          "Puedan ir",
+          null,
+          1
+        ],
+        [
+          "Go",
+          "Ir",
+          null,
+          1
+        ],
+        [
+          "You all can go",
+          "Todos ustedes puedan ir",
+          null,
+          2
+        ],
+        [
+          "I hope you can go",
+          "Espero que puedan ir",
+          null,
+          3
+        ],
+        [
+          "What do you think you all can say?",
+          "¿Qué piensan que todos ustedes puedan decir?",
+          null,
+          4
+        ],
+        [
+          "I can help. I hope you can go",
+          "Puedo ayudar. Espero que puedan ir",
+          null,
+          4
+        ],
+        [
+          "Could you all say you all can go?",
+          "¿Podrían todos ustedes decir que todos ustedes puedan ir?",
+          null,
+          5
+        ],
+        [
+          "I can help you all. I hope you all can go",
+          "Puedo ayudar a todos ustedes. Espero que todos ustedes puedan ir",
+          null,
+          6
+        ],
+        [
+          "What do you all think? I hope you all can go",
+          "¿Qué piensan todos ustedes? Espero que todos ustedes puedan ir",
+          null,
+          6
+        ],
+        [
+          "I hope you'll all be able to go",
+          "Espero que todos ustedes puedan ir",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

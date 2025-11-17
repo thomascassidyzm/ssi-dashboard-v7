@@ -1,0 +1,70 @@
+{
+  "legos": {
+    "S0623L01": {
+      "lego": [
+        "do you want",
+        "quieres"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Do you want that?",
+          "¿Quieres eso?"
+        ],
+        [
+          "Do you want to?",
+          "¿Quieres?"
+        ],
+        [
+          "Do you want to tell her?",
+          "¿Quieres decirle?"
+        ],
+        [
+          "Do you want a house there?",
+          "¿Quieres una casa allí?"
+        ],
+        [
+          "Do you want to tell her since it was a mistake?",
+          "¿Quieres decirle desde que era un error?"
+        ],
+        [
+          "Do you want that to be where your house was?",
+          "¿Quieres que eso era donde estaba tu casa?"
+        ],
+        [
+          "Do you want a house very near where your family was?",
+          "¿Quieres una casa muy cerca donde estaba tu familia?"
+        ],
+        [
+          "Do you want to tell her that it would have been very near?",
+          "¿Quieres decirle que habría una casa muy cerca?"
+        ],
+        [
+          "Do you want to tell her that you thought that was a mistake?",
+          "¿Quieres decirle que pensaste eso era un error?"
+        ],
+        [
+          "Do you want that to be where the children had broken it?",
+          "¿Quieres que eso era donde los niños lo habían roto?"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0623L01",
+        "seed_context": {
+          "known": "Do you want a cup of coffee or tea?",
+          "target": "¿Quieres un café o un té?"
+        }
+      },
+      "components": []
+    }
+  }
+}

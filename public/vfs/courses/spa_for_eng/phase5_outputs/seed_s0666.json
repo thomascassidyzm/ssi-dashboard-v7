@@ -1,0 +1,183 @@
+{
+  "legos": {
+    "S0666L01": {
+      "lego": [
+        "what",
+        "qué"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "What?",
+          "¿Qué?",
+          null,
+          1
+        ],
+        [
+          "What do you think?",
+          "¿Qué piensas?",
+          null,
+          2
+        ],
+        [
+          "What do you all want?",
+          "¿Qué quieren todos ustedes?",
+          null,
+          3
+        ],
+        [
+          "What do you all think?",
+          "¿Qué piensan todos ustedes?",
+          null,
+          3
+        ],
+        [
+          "What do you all want, sir?",
+          "¿Qué quieren todos ustedes, señor?",
+          null,
+          4
+        ],
+        [
+          "What do you all think, madam?",
+          "¿Qué piensan todos ustedes, señora?",
+          null,
+          4
+        ],
+        [
+          "What do you all want to say?",
+          "¿Qué quieren todos ustedes decir?",
+          null,
+          5
+        ],
+        [
+          "I think that what you all want is to go",
+          "Creo que lo que todos ustedes quieren es ir",
+          null,
+          7
+        ],
+        [
+          "What do you all think? How do you all feel?",
+          "¿Qué piensan todos ustedes? ¿Cómo se sienten todos ustedes?",
+          null,
+          6
+        ],
+        [
+          "What do you all want to say, madam?",
+          "¿Qué quieren todos ustedes decir, señora?",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0666L04": {
+      "lego": [
+        "what do you think",
+        "qué piensan"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0666L01",
+          "known": "what",
+          "target": "qué",
+          "type": "A"
+        },
+        {
+          "id": "S0666L03",
+          "known": "think",
+          "target": "piensan",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "What do you think?",
+          "¿Qué piensan?",
+          null,
+          1
+        ],
+        [
+          "Think",
+          "Piensan",
+          null,
+          1
+        ],
+        [
+          "What do you all think?",
+          "¿Qué piensan todos ustedes?",
+          null,
+          2
+        ],
+        [
+          "What do you think you all want?",
+          "¿Qué piensan que todos ustedes quieren?",
+          null,
+          3
+        ],
+        [
+          "I can help. What do you think?",
+          "Puedo ayudar. ¿Qué piensan?",
+          null,
+          4
+        ],
+        [
+          "Could you all say what you think?",
+          "¿Podrían todos ustedes decir qué piensan?",
+          null,
+          4
+        ],
+        [
+          "What do you all think you all said?",
+          "¿Qué piensan todos ustedes que todos ustedes dijeron?",
+          null,
+          5
+        ],
+        [
+          "I can help you all with what you think",
+          "Puedo ayudar a todos ustedes con lo que piensan",
+          null,
+          5
+        ],
+        [
+          "Are you all ready? What do you think?",
+          "¿Están todos ustedes preparados? ¿Qué piensan?",
+          null,
+          5
+        ],
+        [
+          "What do you all think?",
+          "¿Qué piensan todos ustedes?",
+          null,
+          2
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "piensan",
+          "think"
+        ]
+      ]
+    }
+  }
+}

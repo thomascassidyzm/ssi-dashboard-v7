@@ -1,0 +1,66 @@
+{
+  "seed_id": "S0653",
+  "seed_pair": [
+    "Do you mind madam?",
+    "¿Le importa señora?"
+  ],
+  "lego_baskets": {
+    "S0653L01": {
+      "lego_id": "S0653L01",
+      "lego_pair": [
+        "madam",
+        "señora"
+      ],
+      "phrases": []
+    },
+    "S0653L02": {
+      "lego_id": "S0653L02",
+      "lego_pair": [
+        "do you mind",
+        "le importa"
+      ],
+      "phrases": [
+        {
+          "known": "Do you mind?",
+          "target": "¿Le importa?"
+        },
+        {
+          "known": "Do you want, madam?",
+          "target": "¿Quiere, señora?"
+        },
+        {
+          "known": "What do you think, madam?",
+          "target": "¿Qué piensa, señora?"
+        },
+        {
+          "known": "Do you want something, madam?",
+          "target": "¿Quiere algo, señora?"
+        },
+        {
+          "known": "Could you say that, madam?",
+          "target": "¿Podría decir eso, señora?"
+        },
+        {
+          "known": "What do you think you need, madam?",
+          "target": "¿Qué piensa que necesita, señora?"
+        },
+        {
+          "known": "Could you say what you think, madam?",
+          "target": "¿Podría decir qué piensa, señora?"
+        },
+        {
+          "known": "Do you mind what you're doing?",
+          "target": "¿Le importa lo que está haciendo?"
+        },
+        {
+          "known": "Do you mind what you said, madam?",
+          "target": "¿Le importa lo que dijo, señora?"
+        },
+        {
+          "known": "Do you mind madam?",
+          "target": "¿Le importa señora?"
+        }
+      ]
+    }
+  }
+}

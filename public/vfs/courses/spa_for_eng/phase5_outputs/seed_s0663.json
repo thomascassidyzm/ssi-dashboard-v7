@@ -1,0 +1,187 @@
+{
+  "legos": {
+    "S0663L01": {
+      "lego": [
+        "what you",
+        "lo que todos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "What you speak",
+          "Lo que todos ustedes hablan",
+          null,
+          2
+        ],
+        [
+          "What you want",
+          "Lo que todos ustedes quieren",
+          null,
+          2
+        ],
+        [
+          "What you could say, sir",
+          "Lo que todos ustedes podrían decir, señor",
+          null,
+          3
+        ],
+        [
+          "What you all feel, madam",
+          "Lo que todos ustedes sienten, señora",
+          null,
+          3
+        ],
+        [
+          "What you all want with you all",
+          "Lo que todos ustedes quieren con todos ustedes",
+          null,
+          4
+        ],
+        [
+          "What you speak, I can help",
+          "Lo que todos ustedes hablan, puedo ayudar",
+          null,
+          4
+        ],
+        [
+          "I'm not sure what you all could say",
+          "No estoy seguro de lo que todos ustedes podrían decir",
+          null,
+          5
+        ],
+        [
+          "What you all are doing is very well",
+          "Lo que todos ustedes están haciendo está muy bien",
+          null,
+          6
+        ],
+        [
+          "I think what you all want is very well, sir",
+          "Creo que lo que todos ustedes quieren está muy bien, señor",
+          null,
+          7
+        ],
+        [
+          "I'm not sure if what you all could say is something very well",
+          "No estoy seguro de si lo que todos ustedes podrían decir es algo muy bien",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "lo",
+          "the/it"
+        ],
+        [
+          "que",
+          "that/what"
+        ]
+      ]
+    },
+    "S0663L02": {
+      "lego": [
+        "what you all",
+        "que todos ustedes"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0663L01",
+          "known": "what you",
+          "target": "lo que todos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "What you all want",
+          "Qué todos ustedes quieren",
+          null,
+          2
+        ],
+        [
+          "What you all speak",
+          "Qué todos ustedes hablan",
+          null,
+          2
+        ],
+        [
+          "What you all could say, madam",
+          "Qué todos ustedes podrían decir, señora",
+          null,
+          3
+        ],
+        [
+          "What you all are doing, sir",
+          "Qué todos ustedes están haciendo, señor",
+          null,
+          3
+        ],
+        [
+          "What you all could help with you all",
+          "Qué todos ustedes podrían ayudar con todos ustedes",
+          null,
+          4
+        ],
+        [
+          "What you all feel is very well",
+          "Qué todos ustedes sienten está muy bien",
+          null,
+          4
+        ],
+        [
+          "I'm not sure what you all could say now",
+          "No estoy seguro de qué todos ustedes podrían decir ahora",
+          null,
+          5
+        ],
+        [
+          "I think what you all are doing is something very well",
+          "Creo que qué todos ustedes están haciendo es algo muy bien",
+          null,
+          7
+        ],
+        [
+          "What you all want, I can help with you all, madam",
+          "Qué todos ustedes quieren, puedo ayudar con todos ustedes, señora",
+          null,
+          6
+        ],
+        [
+          "I'm not sure if what you all could say is something with you all",
+          "No estoy seguro de si qué todos ustedes podrían decir es algo con todos ustedes",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "todos",
+          "all"
+        ],
+        [
+          "ustedes",
+          "you"
+        ]
+      ]
+    }
+  }
+}

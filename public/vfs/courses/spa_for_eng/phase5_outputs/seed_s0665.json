@@ -1,0 +1,201 @@
+{
+  "legos": {
+    "S0665L01": {
+      "lego": [
+        "Do you all",
+        "¿Quieren todos ustedes"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "You all",
+          "Todos ustedes",
+          null,
+          1
+        ],
+        [
+          "Do you all want?",
+          "¿Quieren todos ustedes?",
+          null,
+          1
+        ],
+        [
+          "Do you all want to go?",
+          "¿Quieren todos ustedes ir?",
+          null,
+          3
+        ],
+        [
+          "What do you all want?",
+          "¿Qué quieren todos ustedes?",
+          null,
+          3
+        ],
+        [
+          "Do you all want to go, sir?",
+          "¿Quieren todos ustedes ir, señor?",
+          null,
+          4
+        ],
+        [
+          "Do you all want something?",
+          "¿Quieren todos ustedes algo?",
+          null,
+          4
+        ],
+        [
+          "I think that you all want to go",
+          "Creo que todos ustedes quieren ir",
+          null,
+          5
+        ],
+        [
+          "Do you all want to say something?",
+          "¿Quieren todos ustedes decir algo?",
+          null,
+          5
+        ],
+        [
+          "How do you all feel? Do you all want to go?",
+          "¿Cómo se sienten todos ustedes? ¿Quieren todos ustedes ir?",
+          null,
+          6
+        ],
+        [
+          "Do you all want to go with you all, madam?",
+          "¿Quieren todos ustedes ir con todos ustedes, señora?",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "todos",
+          "all"
+        ],
+        [
+          "ustedes",
+          "you"
+        ]
+      ]
+    },
+    "S0665L03": {
+      "lego": [
+        "to go",
+        "ir"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0665L01",
+          "target": "¿Quieren todos ustedes",
+          "known": "Do you all",
+          "components": [
+            [
+              "todos",
+              "all"
+            ],
+            [
+              "ustedes",
+              "you"
+            ]
+          ]
+        },
+        {
+          "id": "S0665L02",
+          "target": "quieren ir",
+          "known": "want to go",
+          "components": [
+            [
+              "quieren",
+              "want"
+            ],
+            [
+              "ir",
+              "to go"
+            ]
+          ]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "To go",
+          "Ir",
+          null,
+          1
+        ],
+        [
+          "Want to go",
+          "Quieren ir",
+          null,
+          2
+        ],
+        [
+          "You all want to go",
+          "Todos ustedes quieren ir",
+          null,
+          3
+        ],
+        [
+          "I want to go",
+          "Quiero ir",
+          null,
+          3
+        ],
+        [
+          "Could you all go, sir?",
+          "¿Podrían todos ustedes ir, señor?",
+          null,
+          4
+        ],
+        [
+          "I can help you all to go",
+          "Puedo ayudar a todos ustedes ir",
+          null,
+          4
+        ],
+        [
+          "I think that you all want to go",
+          "Creo que todos ustedes quieren ir",
+          null,
+          5
+        ],
+        [
+          "Could you all say that you want to go?",
+          "¿Podrían todos ustedes decir que quieren ir?",
+          null,
+          6
+        ],
+        [
+          "I think that you all want to go, madam",
+          "Creo que todos ustedes quieren ir, señora",
+          null,
+          6
+        ],
+        [
+          "Do you all want to go?",
+          "¿Quieren todos ustedes ir?",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

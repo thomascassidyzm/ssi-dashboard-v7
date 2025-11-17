@@ -1,0 +1,71 @@
+{
+  "legos": {
+    "S0616L05": {
+      "lego": [
+        "to say that",
+        "al decir que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0616L01",
+          "known": "that",
+          "target": "eso",
+          "type": "A"
+        },
+        {
+          "id": "S0616L02",
+          "known": "you were very brave",
+          "target": "fuiste muy valiente",
+          "type": "M"
+        },
+        {
+          "id": "S0616L03",
+          "known": "very brave",
+          "target": "muy valiente",
+          "type": "M"
+        },
+        {
+          "id": "S0616L04",
+          "known": "brave to say",
+          "target": "valiente al decir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["al decir que", "to say that", null, 1],
+        ["valiente al decir que", "brave to say that", null, 2],
+        ["muy valiente al decir que", "very brave to say that", null, 3],
+        ["fuiste valiente al decir que", "you were brave to say that", null, 3],
+        ["fuiste muy valiente al decir que", "you were very brave to say that", null, 4],
+        ["pensé que fuiste valiente al decir que", "I thought you were brave to say that", null, 4],
+        ["habría sido valiente al decir que", "it would have been brave to say that", null, 5],
+        ["pensé que fuiste muy valiente al decir que", "I thought you were very brave to say that", null, 5],
+        ["probablemente fuiste muy valiente al decir que", "you were probably very brave to say that", null, 5],
+        ["si hubiera sabido habría sido valiente al decir que", "if I'd known it would have been brave to say that", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "al",
+          "to/on"
+        ],
+        [
+          "decir",
+          "to say"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

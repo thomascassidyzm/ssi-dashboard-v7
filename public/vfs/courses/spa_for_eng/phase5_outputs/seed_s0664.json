@@ -1,0 +1,92 @@
+{
+  "legos": {
+    "S0664L01": {
+      "lego": [
+        "Are you all",
+        "¿Están todos ustedes"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Are you all?",
+          "¿Están todos ustedes?",
+          null,
+          1
+        ],
+        [
+          "You all are",
+          "Todos ustedes están",
+          null,
+          1
+        ],
+        [
+          "Are you all, sir?",
+          "¿Están todos ustedes, señor?",
+          null,
+          2
+        ],
+        [
+          "Are you all, madam?",
+          "¿Están todos ustedes, señora?",
+          null,
+          2
+        ],
+        [
+          "Are you all doing something?",
+          "¿Están todos ustedes haciendo algo?",
+          null,
+          3
+        ],
+        [
+          "Are you all with you all now?",
+          "¿Están todos ustedes con todos ustedes ahora?",
+          null,
+          4
+        ],
+        [
+          "I'm not sure if you all are doing something",
+          "No estoy seguro de si todos ustedes están haciendo algo",
+          null,
+          5
+        ],
+        [
+          "I think you all are doing what you all said, madam",
+          "Creo que todos ustedes están haciendo lo que todos ustedes dijeron, señora",
+          null,
+          7
+        ],
+        [
+          "Are you all doing what you all could say is very well?",
+          "¿Están todos ustedes haciendo lo que todos ustedes podrían decir está muy bien?",
+          null,
+          8
+        ],
+        [
+          "I'm not sure if you all are doing what you all said is something very well, sir",
+          "No estoy seguro de si todos ustedes están haciendo lo que todos ustedes dijeron es algo muy bien, señor",
+          null,
+          10
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "todos",
+          "all"
+        ],
+        [
+          "ustedes",
+          "you"
+        ]
+      ]
+    }
+  }
+}

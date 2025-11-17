@@ -1,0 +1,70 @@
+{
+  "legos": {
+    "S0622L01": {
+      "lego": [
+        "I knew that",
+        "Sabía que"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I knew that",
+          "Sabía que"
+        ],
+        [
+          "I knew that too",
+          "Sabía eso"
+        ],
+        [
+          "I knew that was a mistake",
+          "Sabía que era un error"
+        ],
+        [
+          "I knew that was very near",
+          "Sabía que estaba muy cerca"
+        ],
+        [
+          "I knew that since a long time ago",
+          "Sabía eso desde hace mucho tiempo"
+        ],
+        [
+          "I knew that was where your house was",
+          "Sabía que era donde estaba tu casa"
+        ],
+        [
+          "I knew that you thought it was a mistake",
+          "Sabía que pensaste que era un error"
+        ],
+        [
+          "I knew that probably would have been a mistake",
+          "Sabía que probablemente habría un error"
+        ],
+        [
+          "I knew that we would have bought something there",
+          "Sabía que habríamos comprado algo allí"
+        ],
+        [
+          "I knew that was the last time we saw each other",
+          "Sabía que era última vez nos vimos"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0622L01",
+        "seed_context": {
+          "known": "I knew that the children had broken it.",
+          "target": "Sabía que los niños lo habían roto."
+        }
+      },
+      "components": []
+    }
+  }
+}

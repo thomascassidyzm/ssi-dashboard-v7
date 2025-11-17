@@ -1,0 +1,66 @@
+{
+  "seed_id": "S0652",
+  "seed_pair": [
+    "What do you need sir?",
+    "¿Qué necesita señor?"
+  ],
+  "lego_baskets": {
+    "S0652L01": {
+      "lego_id": "S0652L01",
+      "lego_pair": [
+        "sir",
+        "señor"
+      ],
+      "phrases": []
+    },
+    "S0652L02": {
+      "lego_id": "S0652L02",
+      "lego_pair": [
+        "what do you need",
+        "qué necesita"
+      ],
+      "phrases": [
+        {
+          "known": "What do you need?",
+          "target": "¿Qué necesita?"
+        },
+        {
+          "known": "Do you need something?",
+          "target": "¿Necesita algo?"
+        },
+        {
+          "known": "What do you think, sir?",
+          "target": "¿Qué piensa, señor?"
+        },
+        {
+          "known": "What do you want, madam?",
+          "target": "¿Qué quiere, señora?"
+        },
+        {
+          "known": "Could you say that, sir?",
+          "target": "¿Podría decir eso, señor?"
+        },
+        {
+          "known": "What do you think you need?",
+          "target": "¿Qué piensa que necesita?"
+        },
+        {
+          "known": "What do you think you're doing, sir?",
+          "target": "¿Qué piensa que está haciendo, señor?"
+        },
+        {
+          "known": "Could you say what you think, madam?",
+          "target": "¿Podría decir qué piensa, señora?"
+        },
+        {
+          "known": "You're doing what you need, sir.",
+          "target": "Está haciendo lo que necesita, señor."
+        },
+        {
+          "known": "What do you need sir?",
+          "target": "¿Qué necesita señor?"
+        }
+      ]
+    }
+  }
+}

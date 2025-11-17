@@ -1,0 +1,82 @@
+{
+  "seed_id": "S0654",
+  "seed_pair": [
+    "I'm not sure if I can help you, sir.",
+    "No estoy seguro de si puedo ayudarte, señor."
+  ],
+  "lego_baskets": {
+    "S0654L01": {
+      "lego_id": "S0654L01",
+      "lego_pair": [
+        "sir",
+        "señor"
+      ],
+      "phrases": []
+    },
+    "S0654L02": {
+      "lego_id": "S0654L02",
+      "lego_pair": [
+        "I'm not sure if",
+        "No estoy seguro de si"
+      ],
+      "phrases": [
+        {
+          "known": "I'm not sure.",
+          "target": "No estoy seguro."
+        },
+        {
+          "known": "I'm not sure, sir.",
+          "target": "No estoy seguro, señor."
+        },
+        {
+          "known": "I'm not sure what you think.",
+          "target": "No estoy seguro de qué piensa."
+        },
+        {
+          "known": "I'm not sure what you need.",
+          "target": "No estoy seguro de qué necesita."
+        },
+        {
+          "known": "I'm not sure what you said, madam.",
+          "target": "No estoy seguro de lo que dijo, señora."
+        },
+        {
+          "known": "I'm not sure if you're ready.",
+          "target": "No estoy seguro de si está preparado."
+        },
+        {
+          "known": "I'm not sure if you want to go, madam.",
+          "target": "No estoy seguro de si quiere ir, señora."
+        },
+        {
+          "known": "I'm not sure if you could say that, sir.",
+          "target": "No estoy seguro de si podría decir eso, señor."
+        },
+        {
+          "known": "I'm not sure if I can help you, madam.",
+          "target": "No estoy seguro de si puedo ayudarle, señora."
+        },
+        {
+          "known": "I'm not sure if I can help you, sir.",
+          "target": "No estoy seguro de si puedo ayudarte, señor."
+        }
+      ]
+    },
+    "S0654L03": {
+      "lego_id": "S0654L03",
+      "lego_pair": [
+        "if I can help you",
+        "si puedo ayudarte"
+      ],
+      "phrases": []
+    },
+    "S0654L04": {
+      "lego_id": "S0654L04",
+      "lego_pair": [
+        "I can help you",
+        "puedo ayudarte"
+      ],
+      "phrases": []
+    }
+  }
+}

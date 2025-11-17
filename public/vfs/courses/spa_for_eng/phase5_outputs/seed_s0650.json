@@ -1,0 +1,76 @@
+{
+  "seed_id": "S0650",
+  "seed_pair": [
+    "Do you want to go madam?",
+    "¿Quiere ir señora?"
+  ],
+  "phase5_baskets": {
+    "S0650L02": {
+      "lego_id": "S0650L02",
+      "target": "quiere ir",
+      "known": "do you want to go",
+      "baskets": [
+        [
+          "Go",
+          "Ir",
+          null,
+          1
+        ],
+        [
+          "Go madam",
+          "Ir señora",
+          null,
+          2
+        ],
+        [
+          "Want to go",
+          "Quiere ir",
+          null,
+          3
+        ],
+        [
+          "I can go",
+          "Puedo ir",
+          null,
+          3
+        ],
+        [
+          "Could you go sir?",
+          "¿Podría ir señor?",
+          null,
+          4
+        ],
+        [
+          "Do you want to go?",
+          "¿Quiere ir?",
+          null,
+          5
+        ],
+        [
+          "I think that you want to go",
+          "Pienso que quiere ir",
+          null,
+          6
+        ],
+        [
+          "Could you say you want to go?",
+          "¿Podría decir que quiere ir?",
+          null,
+          7
+        ],
+        [
+          "I think you want to go madam",
+          "Pienso que quiere ir señora",
+          null,
+          7
+        ],
+        [
+          "Do you want to go madam?",
+          "¿Quiere ir señora?",
+          null,
+          6
+        ]
+      ]
+    }
+  }
+}

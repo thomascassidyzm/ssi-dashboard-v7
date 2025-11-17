@@ -1,0 +1,92 @@
+{
+  "legos": {
+    "S0624L03": {
+      "lego": [
+        "Yes, that would be",
+        "Sí, eso sería"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0624L01",
+          "known": "sí",
+          "target": "yes",
+          "type": "A"
+        },
+        {
+          "id": "S0624L02",
+          "known": "genial",
+          "target": "great",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Yes, that would be great",
+          "Sí, eso sería genial"
+        ],
+        [
+          "Yes, that would be a mistake",
+          "Sí, eso sería un error"
+        ],
+        [
+          "Yes, that would be very near",
+          "Sí, eso sería muy cerca"
+        ],
+        [
+          "Yes, that would be a great coffee or tea",
+          "Sí, eso sería un café o té genial"
+        ],
+        [
+          "Yes, that would be very near your family",
+          "Sí, eso sería muy cerca de tu familia"
+        ],
+        [
+          "Yes, that would be a coffee or tea",
+          "Sí, eso sería un café o un té"
+        ],
+        [
+          "Yes, that would be very near where the children were",
+          "Sí, eso sería muy cerca donde estaba los niños"
+        ],
+        [
+          "Yes, that would be great, or would that be a mistake?",
+          "Sí, eso sería genial, o sería un error?"
+        ],
+        [
+          "Yes, I knew that would be a very great coffee",
+          "Sí, sabía que eso sería un café muy genial"
+        ],
+        [
+          "Yes, that would be great since you thought it was a mistake",
+          "Sí, eso sería genial desde que pensaste era un error"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0624L03",
+        "seed_context": {
+          "known": "Yes, that would be great, please.",
+          "target": "Sí, eso sería genial, por favor."
+        }
+      },
+      "components": [
+        [
+          "eso",
+          "that"
+        ],
+        [
+          "sería",
+          "would be"
+        ]
+      ]
+    }
+  }
+}

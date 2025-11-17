@@ -1,0 +1,76 @@
+{
+  "seed_id": "S0643",
+  "seed_pair": [
+    "Do you want sir",
+    "¿Quiere usted señor?"
+  ],
+  "phase5_baskets": {
+    "S0643L02": {
+      "lego_id": "S0643L02",
+      "target": "quiere usted",
+      "known": "do you want",
+      "baskets": [
+        [
+          "Do you want?",
+          "¿Quiere usted?",
+          null,
+          1
+        ],
+        [
+          "Do you want sir?",
+          "¿Quiere usted señor?",
+          null,
+          2
+        ],
+        [
+          "Do you want the red one?",
+          "¿Quiere usted el rojo?",
+          null,
+          3
+        ],
+        [
+          "Do you want madam?",
+          "¿Quiere usted señora?",
+          null,
+          3
+        ],
+        [
+          "Do you want one of those?",
+          "¿Quiere usted uno de esos?",
+          null,
+          4
+        ],
+        [
+          "Do you want that chair?",
+          "¿Quiere usted esa silla?",
+          null,
+          4
+        ],
+        [
+          "Do you want one of those sir?",
+          "¿Quiere usted uno de esos señor?",
+          null,
+          5
+        ],
+        [
+          "Do you want the red one madam?",
+          "¿Quiere usted el rojo señora?",
+          null,
+          5
+        ],
+        [
+          "Do you want that chair madam?",
+          "¿Quiere usted esa silla señora?",
+          null,
+          5
+        ],
+        [
+          "Do you want one of those madam?",
+          "¿Quiere usted uno de esos señora?",
+          null,
+          5
+        ]
+      ]
+    }
+  }
+}
