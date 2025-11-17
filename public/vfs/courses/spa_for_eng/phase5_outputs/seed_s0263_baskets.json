@@ -1,0 +1,300 @@
+{
+  "legos": {
+    "S0263L02": {
+      "lego": [
+        "know who",
+        "sé quién"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Know who",
+          "sé quién",
+          null,
+          1
+        ],
+        [
+          "I know who",
+          "sé quién",
+          null,
+          1
+        ],
+        [
+          "I don't know who",
+          "no sé quién",
+          null,
+          2
+        ],
+        [
+          "I know who you mean",
+          "sé quién quieres decir",
+          null,
+          4
+        ],
+        [
+          "I don't know who that was",
+          "no sé quién era ese",
+          null,
+          5
+        ],
+        [
+          "I know who that man was",
+          "sé quién era ese hombre",
+          null,
+          6
+        ],
+        [
+          "I don't know who you were talking to",
+          "no sé quién estabas hablando con",
+          null,
+          7
+        ],
+        [
+          "I know who was talking yesterday",
+          "sé quién estaba hablando ayer",
+          null,
+          6
+        ],
+        [
+          "I don't know who you mean",
+          "no sé quién quieres decir",
+          null,
+          5
+        ],
+        [
+          "I know who that man you were talking to was",
+          "sé quién era ese hombre con el que hablabas",
+          null,
+          11
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 0,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0263L02",
+        "seed_context": {
+          "known": "No sé quién quieres decir.",
+          "target": "I don't know who you mean."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0263L03": {
+      "lego": [
+        "you mean/want to say",
+        "quieres decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "know who",
+          "sé quién"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "You mean",
+          "quieres decir",
+          null,
+          1
+        ],
+        [
+          "What you mean",
+          "lo que quieres decir",
+          null,
+          3
+        ],
+        [
+          "I know what you mean",
+          "sé lo que quieres decir",
+          null,
+          5
+        ],
+        [
+          "Who you mean",
+          "quién quieres decir",
+          null,
+          2
+        ],
+        [
+          "I don't know who you mean",
+          "no sé quién quieres decir",
+          null,
+          5
+        ],
+        [
+          "I think I know what you mean",
+          "creo que sé lo que quieres decir",
+          null,
+          8
+        ],
+        [
+          "I know who you mean",
+          "sé quién quieres decir",
+          null,
+          4
+        ],
+        [
+          "Can you tell me who you mean",
+          "puedes decirme quién quieres decir",
+          null,
+          6
+        ],
+        [
+          "I don't know what you mean by that",
+          "no sé lo que quieres decir con eso",
+          null,
+          9
+        ],
+        [
+          "I think you mean that man",
+          "creo que quieres decir ese hombre",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0263L03",
+        "seed_context": {
+          "known": "No sé quién quieres decir.",
+          "target": "I don't know who you mean."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0263L04": {
+      "lego": [
+        "who you mean",
+        "quién quieres decir"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "know who",
+          "sé quién"
+        ],
+        [
+          "you mean/want to say",
+          "quieres decir"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Who you mean",
+          "quién quieres decir",
+          null,
+          1
+        ],
+        [
+          "I know who you mean",
+          "sé quién quieres decir",
+          null,
+          4
+        ],
+        [
+          "I don't know who you mean",
+          "no sé quién quieres decir",
+          null,
+          5
+        ],
+        [
+          "I think I know who you mean",
+          "creo que sé quién quieres decir",
+          null,
+          7
+        ],
+        [
+          "Who you mean is that old man",
+          "quién quieres decir es ese hombre viejo",
+          null,
+          8
+        ],
+        [
+          "Can you tell me who you mean",
+          "puedes decirme quién quieres decir",
+          null,
+          6
+        ],
+        [
+          "I don't know who you mean by that",
+          "no sé quién quieres decir con eso",
+          null,
+          8
+        ],
+        [
+          "I think who you mean was talking yesterday",
+          "creo que quién quieres decir estaba hablando ayer",
+          null,
+          10
+        ],
+        [
+          "I know who you mean is important",
+          "sé quién quieres decir es importante",
+          null,
+          7
+        ],
+        [
+          "I don't know who you mean",
+          "no sé quién quieres decir",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 7
+      },
+      "_metadata": {
+        "lego_id": "S0263L04",
+        "seed_context": {
+          "known": "No sé quién quieres decir.",
+          "target": "I don't know who you mean."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

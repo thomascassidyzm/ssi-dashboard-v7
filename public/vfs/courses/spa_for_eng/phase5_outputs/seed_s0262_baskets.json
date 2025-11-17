@@ -1,0 +1,419 @@
+{
+  "legos": {
+    "S0262L01": {
+      "lego": [
+        "who was",
+        "quién era"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Who was",
+          "quién era",
+          null,
+          1
+        ],
+        [
+          "Who was that",
+          "quién era ese",
+          null,
+          2
+        ],
+        [
+          "Who was that man",
+          "quién era ese hombre",
+          null,
+          3
+        ],
+        [
+          "Who was talking",
+          "quién estaba hablando",
+          null,
+          2
+        ],
+        [
+          "Who was that old man",
+          "quién era ese hombre viejo",
+          null,
+          4
+        ],
+        [
+          "Who was that man over there",
+          "quién era ese hombre de allí",
+          null,
+          5
+        ],
+        [
+          "Who was the man you were talking to",
+          "quién era el hombre con el que hablabas",
+          null,
+          9
+        ],
+        [
+          "Who was that man you were talking to",
+          "quién era ese hombre con el que hablabas",
+          null,
+          8
+        ],
+        [
+          "Who was that important man",
+          "quién era ese hombre importante",
+          null,
+          4
+        ],
+        [
+          "Who was that man yesterday",
+          "quién era ese hombre ayer",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0262L01",
+        "seed_context": {
+          "known": "¿Quién era ese hombre con el que hablabas ayer?",
+          "target": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0262L03": {
+      "lego": [
+        "you were talking to/with whom you were talking",
+        "con el que hablabas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "You were talking to",
+          "con el que hablabas",
+          null,
+          1
+        ],
+        [
+          "The man you were talking to",
+          "el hombre con el que hablabas",
+          null,
+          6
+        ],
+        [
+          "That man you were talking to",
+          "ese hombre con el que hablabas",
+          null,
+          6
+        ],
+        [
+          "Who was the man you were talking to",
+          "quién era el hombre con el que hablabas",
+          null,
+          9
+        ],
+        [
+          "That old man you were talking to",
+          "ese hombre viejo con el que hablabas",
+          null,
+          7
+        ],
+        [
+          "I know who you were talking to",
+          "sé quién estabas hablando con",
+          null,
+          6
+        ],
+        [
+          "The man you were talking to yesterday",
+          "el hombre con el que hablabas ayer",
+          null,
+          7
+        ],
+        [
+          "Who was that man you were talking to",
+          "quién era ese hombre con el que hablabas",
+          null,
+          8
+        ],
+        [
+          "I think that man you were talking to was important",
+          "creo que ese hombre con el que hablabas era importante",
+          null,
+          11
+        ],
+        [
+          "That man you were talking to over there",
+          "ese hombre con el que hablabas de allí",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 9
+      },
+      "_metadata": {
+        "lego_id": "S0262L03",
+        "seed_context": {
+          "known": "¿Quién era ese hombre con el que hablabas ayer?",
+          "target": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0262L04": {
+      "lego": [
+        "were talking yesterday",
+        "hablabas ayer"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ],
+        [
+          "you were talking to/with whom you were talking",
+          "con el que hablabas"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Were talking yesterday",
+          "hablabas ayer",
+          null,
+          1
+        ],
+        [
+          "You were talking yesterday",
+          "hablabas ayer",
+          null,
+          2
+        ],
+        [
+          "The man you were talking yesterday",
+          "el hombre que hablabas ayer",
+          null,
+          6
+        ],
+        [
+          "Who was talking yesterday",
+          "quién estaba hablando ayer",
+          null,
+          3
+        ],
+        [
+          "You were talking to that man yesterday",
+          "hablabas con ese hombre ayer",
+          null,
+          6
+        ],
+        [
+          "I think you were talking yesterday",
+          "creo que hablabas ayer",
+          null,
+          5
+        ],
+        [
+          "Who was the man you were talking yesterday",
+          "quién era el hombre que hablabas ayer",
+          null,
+          9
+        ],
+        [
+          "You were talking to that old man yesterday",
+          "hablabas con ese hombre viejo ayer",
+          null,
+          7
+        ],
+        [
+          "I know you were talking to someone yesterday",
+          "sé que hablabas con alguien ayer",
+          null,
+          7
+        ],
+        [
+          "That man you were talking to yesterday",
+          "ese hombre con el que hablabas ayer",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 1,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0262L04",
+        "seed_context": {
+          "known": "¿Quién era ese hombre con el que hablabas ayer?",
+          "target": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0262L06": {
+      "lego": [
+        "that man you were talking to",
+        "ese hombre con el que hablabas"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "who was",
+          "quién era"
+        ],
+        [
+          "you were talking to/with whom you were talking",
+          "con el que hablabas"
+        ],
+        [
+          "were talking yesterday",
+          "hablabas ayer"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "That man you were talking to",
+          "ese hombre con el que hablabas",
+          null,
+          1
+        ],
+        [
+          "I know that man you were talking to",
+          "conozco ese hombre con el que hablabas",
+          null,
+          7
+        ],
+        [
+          "Who was that man you were talking to",
+          "quién era ese hombre con el que hablabas",
+          null,
+          8
+        ],
+        [
+          "I like that man you were talking to",
+          "me gusta ese hombre con el que hablabas",
+          null,
+          8
+        ],
+        [
+          "That man you were talking to yesterday",
+          "ese hombre con el que hablabas ayer",
+          null,
+          7
+        ],
+        [
+          "I think that man you were talking to was important",
+          "creo que ese hombre con el que hablabas era importante",
+          null,
+          11
+        ],
+        [
+          "That man you were talking to is an old man",
+          "ese hombre con el que hablabas es un hombre viejo",
+          null,
+          12
+        ],
+        [
+          "Who was that man you were talking to over there",
+          "quién era ese hombre con el que hablabas de allí",
+          null,
+          10
+        ],
+        [
+          "I don't know that man you were talking to",
+          "no sé ese hombre con el que hablabas",
+          null,
+          9
+        ],
+        [
+          "Who was that man you were talking to yesterday",
+          "quién era ese hombre con el que hablabas ayer",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 9
+      },
+      "_metadata": {
+        "lego_id": "S0262L06",
+        "seed_context": {
+          "known": "¿Quién era ese hombre con el que hablabas ayer?",
+          "target": "Who was that man you were talking to yesterday?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

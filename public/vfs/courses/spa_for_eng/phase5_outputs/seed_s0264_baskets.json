@@ -1,0 +1,191 @@
+{
+  "legos": {
+    "S0264L01": {
+      "lego": [
+        "an old man",
+        "un hombre viejo"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "An old man",
+          "un hombre viejo",
+          null,
+          1
+        ],
+        [
+          "That's an old man",
+          "ese es un hombre viejo",
+          null,
+          4
+        ],
+        [
+          "I know an old man",
+          "conozco un hombre viejo",
+          null,
+          4
+        ],
+        [
+          "Who was that old man",
+          "quién era ese hombre viejo",
+          null,
+          4
+        ],
+        [
+          "I think that's an old man",
+          "creo que ese es un hombre viejo",
+          null,
+          6
+        ],
+        [
+          "I was talking to an old man",
+          "estaba hablando con un hombre viejo",
+          null,
+          7
+        ],
+        [
+          "That man you were talking to is an old man",
+          "ese hombre con el que hablabas es un hombre viejo",
+          null,
+          12
+        ],
+        [
+          "I don't know who that old man was",
+          "no sé quién era ese hombre viejo",
+          null,
+          8
+        ],
+        [
+          "I think it might be an old man",
+          "creo que puede ser un hombre viejo",
+          null,
+          8
+        ],
+        [
+          "Who was that old man you were talking to yesterday",
+          "quién era ese hombre viejo con el que hablabas ayer",
+          null,
+          11
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0264L01",
+        "seed_context": {
+          "known": "Un hombre viejo.",
+          "target": "An old man."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0264L02": {
+      "lego": [
+        "old",
+        "viejo"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "an old man",
+          "un hombre viejo"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Old",
+          "viejo",
+          null,
+          1
+        ],
+        [
+          "An old man",
+          "un hombre viejo",
+          null,
+          1
+        ],
+        [
+          "That old man",
+          "ese hombre viejo",
+          null,
+          2
+        ],
+        [
+          "The old man",
+          "el hombre viejo",
+          null,
+          2
+        ],
+        [
+          "Who was that old man",
+          "quién era ese hombre viejo",
+          null,
+          4
+        ],
+        [
+          "I know that old man",
+          "conozco ese hombre viejo",
+          null,
+          4
+        ],
+        [
+          "That old man over there",
+          "ese hombre viejo de allí",
+          null,
+          4
+        ],
+        [
+          "I was talking to that old man yesterday",
+          "estaba hablando con ese hombre viejo ayer",
+          null,
+          8
+        ],
+        [
+          "I don't know who that old man was",
+          "no sé quién era ese hombre viejo",
+          null,
+          8
+        ],
+        [
+          "An old man",
+          "un hombre viejo",
+          null,
+          1
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 0,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0264L02",
+        "seed_context": {
+          "known": "Un hombre viejo.",
+          "target": "An old man."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "legos": {
+    "S0261L01": {
+      "lego": [
+        "I think (that)",
+        "creo que"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I think",
+          "creo que",
+          null,
+          1
+        ],
+        [
+          "I think that",
+          "creo que eso",
+          null,
+          2
+        ],
+        [
+          "I think it's good",
+          "creo que es bueno",
+          null,
+          4
+        ],
+        [
+          "I think I'll be ready",
+          "creo que estaré listo",
+          null,
+          4
+        ],
+        [
+          "I think it might be important",
+          "creo que puede ser importante",
+          null,
+          5
+        ],
+        [
+          "I think that blue thing is good",
+          "creo que esa cosa azul es buena",
+          null,
+          7
+        ],
+        [
+          "I think that man was talking",
+          "creo que ese hombre estaba hablando",
+          null,
+          6
+        ],
+        [
+          "I think it might be something important",
+          "creo que puede ser algo importante",
+          null,
+          6
+        ],
+        [
+          "I think I don't have an idea",
+          "creo que no tengo una idea",
+          null,
+          6
+        ],
+        [
+          "I think you were talking to that man",
+          "creo que estabas hablando con ese hombre",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 0,
+        "longer_4_5": 3,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0261L01",
+        "seed_context": {
+          "known": "Creo que puede ser algo importante.",
+          "target": "I think it might be something important."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0261L02": {
+      "lego": [
+        "might be/can be",
+        "puede ser"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think (that)",
+          "creo que"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Might be",
+          "puede ser",
+          null,
+          1
+        ],
+        [
+          "It might be",
+          "puede ser",
+          null,
+          1
+        ],
+        [
+          "It might be good",
+          "puede ser bueno",
+          null,
+          3
+        ],
+        [
+          "It might be important",
+          "puede ser importante",
+          null,
+          3
+        ],
+        [
+          "It might be an idea",
+          "puede ser una idea",
+          null,
+          4
+        ],
+        [
+          "It might be something important",
+          "puede ser algo importante",
+          null,
+          4
+        ],
+        [
+          "I think it might be important",
+          "creo que puede ser importante",
+          null,
+          5
+        ],
+        [
+          "It might be that blue thing",
+          "puede ser esa cosa azul",
+          null,
+          5
+        ],
+        [
+          "I think it might be something important",
+          "creo que puede ser algo importante",
+          null,
+          6
+        ],
+        [
+          "It might be that man over there",
+          "puede ser ese hombre de allí",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      },
+      "_metadata": {
+        "lego_id": "S0261L02",
+        "seed_context": {
+          "known": "Creo que puede ser algo importante.",
+          "target": "I think it might be something important."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0261L03": {
+      "lego": [
+        "something important",
+        "algo importante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think (that)",
+          "creo que"
+        ],
+        [
+          "might be/can be",
+          "puede ser"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Something important",
+          "algo importante",
+          null,
+          1
+        ],
+        [
+          "It's something important",
+          "es algo importante",
+          null,
+          2
+        ],
+        [
+          "I have something important",
+          "tengo algo importante",
+          null,
+          3
+        ],
+        [
+          "It might be something important",
+          "puede ser algo importante",
+          null,
+          4
+        ],
+        [
+          "I think it's something important",
+          "creo que es algo importante",
+          null,
+          5
+        ],
+        [
+          "I wanted to tell you something important",
+          "quería decirte algo importante",
+          null,
+          6
+        ],
+        [
+          "Can you tell me something important",
+          "puedes decirme algo importante",
+          null,
+          5
+        ],
+        [
+          "I think it might be something important",
+          "creo que puede ser algo importante",
+          null,
+          6
+        ],
+        [
+          "I don't know who has something important",
+          "no sé quién tiene algo importante",
+          null,
+          7
+        ],
+        [
+          "It might be something important over there",
+          "puede ser algo importante de allí",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0261L03",
+        "seed_context": {
+          "known": "Creo que puede ser algo importante.",
+          "target": "I think it might be something important."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0261L04": {
+      "lego": [
+        "to be something important",
+        "ser algo importante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think (that)",
+          "creo que"
+        ],
+        [
+          "might be/can be",
+          "puede ser"
+        ],
+        [
+          "something important",
+          "algo importante"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "To be something important",
+          "ser algo importante",
+          null,
+          1
+        ],
+        [
+          "It might be something important",
+          "puede ser algo importante",
+          null,
+          4
+        ],
+        [
+          "I think it might be something important",
+          "creo que puede ser algo importante",
+          null,
+          6
+        ],
+        [
+          "I should be something important",
+          "debo ser algo importante",
+          null,
+          4
+        ],
+        [
+          "I wanted it to be something important",
+          "quería que fuera algo importante",
+          null,
+          6
+        ],
+        [
+          "It can be something important",
+          "puede ser algo importante",
+          null,
+          4
+        ],
+        [
+          "I think it can be something important",
+          "creo que puede ser algo importante",
+          null,
+          6
+        ],
+        [
+          "I don't know if it might be something important",
+          "no sé si puede ser algo importante",
+          null,
+          9
+        ],
+        [
+          "You think it might be something important",
+          "crees que puede ser algo importante",
+          null,
+          6
+        ],
+        [
+          "It might be something important over there",
+          "puede ser algo importante de allí",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 4,
+        "long_6_plus": 5
+      },
+      "_metadata": {
+        "lego_id": "S0261L04",
+        "seed_context": {
+          "known": "Creo que puede ser algo importante.",
+          "target": "I think it might be something important."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0261L05": {
+      "lego": [
+        "might be something important",
+        "puede ser algo importante"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think (that)",
+          "creo que"
+        ],
+        [
+          "might be/can be",
+          "puede ser"
+        ],
+        [
+          "something important",
+          "algo importante"
+        ],
+        [
+          "to be something important",
+          "ser algo importante"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Might be something important",
+          "puede ser algo importante",
+          null,
+          1
+        ],
+        [
+          "It might be something important",
+          "puede ser algo importante",
+          null,
+          4
+        ],
+        [
+          "I think it might be something important",
+          "creo que puede ser algo importante",
+          null,
+          6
+        ],
+        [
+          "That might be something important",
+          "eso puede ser algo importante",
+          null,
+          5
+        ],
+        [
+          "This can be something important",
+          "esto puede ser algo importante",
+          null,
+          5
+        ],
+        [
+          "I think that might be something important",
+          "creo que eso puede ser algo importante",
+          null,
+          7
+        ],
+        [
+          "What you said might be something important",
+          "lo que dijiste puede ser algo importante",
+          null,
+          8
+        ],
+        [
+          "I don't know if it might be something important",
+          "no sé si puede ser algo importante",
+          null,
+          9
+        ],
+        [
+          "That blue thing might be something important",
+          "esa cosa azul puede ser algo importante",
+          null,
+          7
+        ],
+        [
+          "I think it might be something important",
+          "creo que puede ser algo importante",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 3,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0261L05",
+        "seed_context": {
+          "known": "Creo que puede ser algo importante.",
+          "target": "I think it might be something important."
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}
