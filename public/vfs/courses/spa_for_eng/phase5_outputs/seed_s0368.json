@@ -1,0 +1,220 @@
+{
+  "S0368L01": {
+    "lego": ["Yes", "Sí"],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Yes", "Sí", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 0,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0368L01",
+      "seed_context": {
+        "known": "Yes I heard that he wanted to grow tomatoes.",
+        "target": "Sí escuché que él quería cultivar tomates."
+      }
+    },
+    "components": []
+  },
+  "S0368L02": {
+    "lego": ["Yes I heard that", "Sí escuché que"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "Sí"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I heard that", "escuché que", null, 1],
+      ["Yes I heard that", "Sí escuché que", null, 2],
+      ["I heard that too", "escuché eso también", null, 2],
+      ["I heard that yesterday", "escuché que ayer", null, 3],
+      ["Yes I heard that today", "Sí escuché eso hoy", null, 3],
+      ["I heard that he wanted to", "escuché que él quería", null, 4],
+      ["Yes I heard that from him", "Sí escuché eso de él", null, 4],
+      ["I heard that he wanted to go", "escuché que él quería ir", null, 5],
+      ["Yes I heard that she said that", "Sí escuché que ella dijo eso", null, 5],
+      ["I heard that he wanted to grow tomatoes", "escuché que él quería cultivar tomates", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0368L02",
+      "seed_context": {
+        "known": "Yes I heard that he wanted to grow tomatoes.",
+        "target": "Sí escuché que él quería cultivar tomates."
+      }
+    },
+    "components": [
+      ["escuché", "I heard"],
+      ["que", "that"]
+    ]
+  },
+  "S0368L03": {
+    "lego": ["he wanted to grow tomatoes", "él quería cultivar tomates"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "Sí"],
+      ["Yes I heard that", "Sí escuché que"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["he wanted to grow tomatoes", "él quería cultivar tomates", null, 1],
+      ["Yes he wanted to grow tomatoes", "Sí él quería cultivar tomates", null, 2],
+      ["I heard he wanted to grow tomatoes", "escuché que él quería cultivar tomates", null, 2],
+      ["he wanted to grow vegetables", "él quería cultivar vegetales", null, 3],
+      ["he wanted to grow tomatoes here", "él quería cultivar tomates aquí", null, 3],
+      ["Yes I heard he wanted to grow tomatoes", "Sí escuché que él quería cultivar tomates", null, 4],
+      ["he wanted to grow tomatoes in the garden", "él quería cultivar tomates en el jardín", null, 4],
+      ["I heard that he wanted to grow tomatoes here", "escuché que él quería cultivar tomates aquí", null, 5],
+      ["Yes he wanted to grow tomatoes this year", "Sí él quería cultivar tomates este año", null, 5],
+      ["I heard that he wanted to grow tomatoes in the garden", "escuché que él quería cultivar tomates en el jardín", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0368L03",
+      "seed_context": {
+        "known": "Yes I heard that he wanted to grow tomatoes.",
+        "target": "Sí escuché que él quería cultivar tomates."
+      }
+    },
+    "components": [
+      ["él", "he"],
+      ["quería", "wanted"],
+      ["cultivar", "to grow"],
+      ["tomates", "tomatoes"]
+    ]
+  },
+  "S0368L04": {
+    "lego": ["wanted to grow tomatoes", "quería cultivar tomates"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "Sí"],
+      ["Yes I heard that", "Sí escuché que"],
+      ["he wanted to grow tomatoes", "él quería cultivar tomates"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["wanted to grow tomatoes", "quería cultivar tomates", null, 1],
+      ["I wanted to grow tomatoes", "quería cultivar tomates", null, 2],
+      ["he wanted to grow tomatoes", "él quería cultivar tomates", null, 2],
+      ["wanted to grow vegetables", "quería cultivar vegetales", null, 3],
+      ["she wanted to grow tomatoes", "ella quería cultivar tomates", null, 3],
+      ["I wanted to grow tomatoes here", "quería cultivar tomates aquí", null, 4],
+      ["he wanted to grow tomatoes too", "él quería cultivar tomates también", null, 4],
+      ["I heard he wanted to grow tomatoes", "escuché que él quería cultivar tomates", null, 5],
+      ["she wanted to grow tomatoes in the garden", "ella quería cultivar tomates en el jardín", null, 5],
+      ["Yes I heard that he wanted to grow tomatoes", "Sí escuché que él quería cultivar tomates", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0368L04",
+      "seed_context": {
+        "known": "Yes I heard that he wanted to grow tomatoes.",
+        "target": "Sí escuché que él quería cultivar tomates."
+      }
+    },
+    "components": [
+      ["quería", "wanted"],
+      ["cultivar", "to grow"],
+      ["tomates", "tomatoes"]
+    ]
+  },
+  "S0368L05": {
+    "lego": ["to grow tomatoes", "cultivar tomates"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "Sí"],
+      ["Yes I heard that", "Sí escuché que"],
+      ["he wanted to grow tomatoes", "él quería cultivar tomates"],
+      ["wanted to grow tomatoes", "quería cultivar tomates"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["to grow tomatoes", "cultivar tomates", null, 1],
+      ["I want to grow tomatoes", "quiero cultivar tomates", null, 2],
+      ["to grow vegetables", "cultivar vegetales", null, 2],
+      ["he wanted to grow tomatoes", "él quería cultivar tomates", null, 3],
+      ["to grow tomatoes here", "cultivar tomates aquí", null, 3],
+      ["I want to grow tomatoes in the garden", "quiero cultivar tomates en el jardín", null, 4],
+      ["he needed to grow tomatoes", "él necesitaba cultivar tomates", null, 4],
+      ["I heard that he wanted to grow tomatoes", "escuché que él quería cultivar tomates", null, 5],
+      ["to grow tomatoes and vegetables this year", "cultivar tomates y vegetales este año", null, 5],
+      ["Yes I heard that he wanted to grow tomatoes", "Sí escuché que él quería cultivar tomates", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0368L05",
+      "seed_context": {
+        "known": "Yes I heard that he wanted to grow tomatoes.",
+        "target": "Sí escuché que él quería cultivar tomates."
+      }
+    },
+    "components": [
+      ["cultivar", "to grow"],
+      ["tomates", "tomatoes"]
+    ]
+  },
+  "S0368L06": {
+    "lego": ["tomatoes", "tomates"],
+    "type": "A",
+    "current_seed_legos_available": [
+      ["Yes", "Sí"],
+      ["Yes I heard that", "Sí escuché que"],
+      ["he wanted to grow tomatoes", "él quería cultivar tomates"],
+      ["wanted to grow tomatoes", "quería cultivar tomates"],
+      ["to grow tomatoes", "cultivar tomates"]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["tomatoes", "tomates", null, 1],
+      ["to grow tomatoes", "cultivar tomates", null, 2],
+      ["I like tomatoes", "me gustan los tomates", null, 2],
+      ["red tomatoes", "tomates rojos", null, 3],
+      ["he wanted to grow tomatoes", "él quería cultivar tomates", null, 3],
+      ["I want to grow tomatoes", "quiero cultivar tomates", null, 4],
+      ["I like to eat tomatoes", "me gusta comer tomates", null, 4],
+      ["I heard that he wanted to grow tomatoes", "escuché que él quería cultivar tomates", null, 5],
+      ["he wanted to grow tomatoes in the garden", "él quería cultivar tomates en el jardín", null, 5],
+      ["Yes I heard that he wanted to grow tomatoes.", "Sí escuché que él quería cultivar tomates.", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0368L06",
+      "seed_context": {
+        "known": "Yes I heard that he wanted to grow tomatoes.",
+        "target": "Sí escuché que él quería cultivar tomates."
+      }
+    },
+    "components": []
+  }
+}

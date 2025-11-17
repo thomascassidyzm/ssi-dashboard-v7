@@ -1,0 +1,59 @@
+{
+  "legos": {
+    "S0377L03": {
+      "lego": [
+        "go anywhere",
+        "a alguna parte"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0377L01",
+          "known": "did you go",
+          "target": "fuiste",
+          "type": "A"
+        },
+        {
+          "id": "S0377L02",
+          "known": "did you go anywhere",
+          "target": "fuiste a alguna parte",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["a alguna parte", "anywhere", null, 1],
+        ["fuiste a alguna parte", "did you go anywhere", null, 2],
+        ["fui a alguna parte el miércoles", "I went somewhere on Wednesday", null, 3],
+        ["¿Fuiste a alguna parte el miércoles?", "Did you go anywhere on Wednesday?", null, 3],
+        ["no fui a alguna parte", "I didn't go anywhere", null, 4],
+        ["fuiste a alguna parte el mes pasado", "did you go anywhere last month", null, 4],
+        ["¿Fuiste a alguna parte después de que te fuiste?", "Did you go anywhere after you left?", null, 5],
+        ["no sabía que fuiste a alguna parte", "I didn't know you went anywhere", null, 5],
+        ["fuiste a alguna parte para ver una película", "did you go anywhere to see a film", null, 6],
+        ["¿Fuiste a alguna parte el mes pasado para cultivar tomates?", "Did you go anywhere last month to grow tomatoes?", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "alguna",
+          "some"
+        ],
+        [
+          "parte",
+          "where/place"
+        ]
+      ]
+    }
+  }
+}

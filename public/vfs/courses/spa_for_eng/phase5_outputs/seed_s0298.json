@@ -1,0 +1,136 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0298",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "No me queda nada que decir.",
+    "target": "I've got nothing left to say."
+  },
+  "recent_seed_pairs": {
+    "S0288": [["A la mayoría de la gente que conozco le gusta ver la televisión.","Most people I know like watching television."],[["S0288L01","most people","la mayoría de la gente"],["S0288L02","people I know","la gente que conozco"],["S0288L03","people I know","gente que conozco"],["S0288L04","like watching television","le gusta ver la televisión"]]],
+    "S0289": [["Me pregunto si ella va a estar allí esta tarde.","I wonder if she's going to be there this afternoon."],[["S0289L01","I wonder","me pregunto"],["S0289L02","I wonder if","me pregunto si"],["S0289L03","she's going to be","ella va a estar"],["S0289L04","going to be","va a estar"],["S0289L05","be there","estar allí"]]],
+    "S0290": [["Me pregunto si él sabe la respuesta.","I wonder if he knows the answer."],[["S0290L01","he knows","él sabe"],["S0290L02","knows the answer","sabe la respuesta"]]],
+    "S0291": [["Espero poder hablar mejor pronto.","I hope I'll be able to speak better soon."],[["S0291L01","I hope","espero"],["S0291L02","I hope to be able to","espero poder"]]],
+    "S0292": [["Espero que puedas venir a la fiesta.","I hope you'll be able to come to the party."],[["S0292L01","I hope you'll be able to","espero que puedas"],["S0292L02","to come to the party","venir a la fiesta"],["S0292L03","to the party","a la fiesta"],["S0292L04","the party","la fiesta"]]],
+    "S0293": [["Tengo que descubrir dónde va a reunirse conmigo.","I have to find out where he's going to meet me."],[["S0293L02","I have to find out","tengo que descubrir"],["S0293L03","where he's going to meet me","dónde va a reunirse conmigo"],["S0293L04","going to meet","va a reunirse"],["S0293L05","meet me","reunirse conmigo"]]],
+    "S0294": [["No tengo suficiente tiempo para llamarte esta noche.","I don't have enough time to call you tonight."],[["S0294L02","enough time","suficiente tiempo"],["S0294L03","I don't have enough time","no tengo suficiente tiempo"],["S0294L04","to call you","para llamarte"],["S0294L05","call you","llamarte"]]],
+    "S0295": [["No dije que quería terminar en un día.","I didn't say that I wanted to finish in a day."],[["S0295L01","I didn't say","no dije"],["S0295L02","I didn't say that","no dije que"],["S0295L03","that I wanted to finish","que quería terminar"],["S0295L04","I wanted to finish","quería terminar"],["S0295L06","in a day","en un día"],["S0295L07","a day","un día"]]],
+    "S0296": [["Dije que necesitaba un poco más de tiempo.","I said that I needed a little more time."],[["S0296L01","I said that","dije que"],["S0296L02","that I needed","que necesitaba"],["S0296L03","I needed","necesitaba"]]],
+    "S0297": [["No conozco a muchas personas que hablan español.","I don't know many people who speak Spanish."],[["S0297L01","I don't know many","No conozco a"],["S0297L02","I know many people","conozco a muchas personas"],["S0297L03","many people who speak Spanish","muchas personas que hablan español"]]]
+  },
+  "legos": {
+    "S0298L01": {
+      "lego": ["I've got nothing left","no me queda nada"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0298L01",
+        "seed_context": {
+          "known": "No me queda nada que decir.",
+          "target": "I've got nothing left to say."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0298L02": {
+      "lego": ["I have left","me queda"],
+      "type": "M",
+      "current_seed_legos_available": [["I've got nothing left","no me queda nada"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0298L02",
+        "seed_context": {
+          "known": "No me queda nada que decir.",
+          "target": "I've got nothing left to say."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0298L03": {
+      "lego": ["nothing to say","nada que decir"],
+      "type": "M",
+      "current_seed_legos_available": [["I've got nothing left","no me queda nada"],["I have left","me queda"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0298L03",
+        "seed_context": {
+          "known": "No me queda nada que decir.",
+          "target": "I've got nothing left to say."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0298L04": {
+      "lego": ["to say","que decir"],
+      "type": "M",
+      "current_seed_legos_available": [["I've got nothing left","no me queda nada"],["I have left","me queda"],["nothing to say","nada que decir"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["To say", "Que decir", null, 1],
+        ["I have left", "Me queda", null, 2],
+        ["Nothing to say", "Nada que decir", null, 2],
+        ["I've got nothing left", "No me queda nada", null, 3],
+        ["I hope to be able to say", "Espero poder decir", null, 4],
+        ["I don't have enough time to say", "No tengo suficiente tiempo para decir", null, 5],
+        ["I wonder if he knows what to say", "Me pregunto si él sabe que decir", null, 6],
+        ["I didn't say that I wanted to finish", "No dije que quería terminar", null, 6],
+        ["I have nothing left to say", "No me queda nada que decir", null, 6],
+        ["I've got nothing left to say", "No me queda nada que decir", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0298L04",
+        "seed_context": {
+          "known": "No me queda nada que decir.",
+          "target": "I've got nothing left to say."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0298.json",
+    "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
+    "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+    "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
+    "recent_context_seeds": 10,
+    "recent_legos_available": 37
+  }
+}

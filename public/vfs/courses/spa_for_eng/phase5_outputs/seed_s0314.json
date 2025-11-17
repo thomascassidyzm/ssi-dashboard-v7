@@ -1,0 +1,92 @@
+{
+  "legos": {
+    "S0314L01": {
+      "lego": [
+        "I think that",
+        "Pienso que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I think that",
+          "Pienso que",
+          null,
+          1
+        ],
+        [
+          "I think that she",
+          "Pienso que ella",
+          null,
+          2
+        ],
+        [
+          "I think that she is young",
+          "Pienso que ella es joven",
+          null,
+          3
+        ],
+        [
+          "I think that she wants it",
+          "Pienso que ella lo quiere",
+          null,
+          3
+        ],
+        [
+          "I think that she is talking now",
+          "Pienso que ella está hablando ahora",
+          null,
+          4
+        ],
+        [
+          "I think that she doesn't want it",
+          "Pienso que ella no lo quiere",
+          null,
+          4
+        ],
+        [
+          "I think that she wants to work here",
+          "Pienso que ella quiere trabajar aquí",
+          null,
+          5
+        ],
+        [
+          "I think that she is at home now",
+          "Pienso que ella está en casa ahora",
+          null,
+          5
+        ],
+        [
+          "I think that she doesn't want to work",
+          "Pienso que ella no quiere trabajar",
+          null,
+          6
+        ],
+        [
+          "I think that she wants to work from home",
+          "Pienso que ella quiere trabajar desde casa",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "Pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

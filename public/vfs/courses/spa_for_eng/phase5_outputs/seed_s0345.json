@@ -1,0 +1,102 @@
+{
+  "S0345L04": {
+    "lego": [
+      "ready to leave",
+      "preparado para irse"
+    ],
+    "type": "M",
+    "available_legos": 1643,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "Ready to leave",
+        "preparado para irse",
+        null,
+        1
+      ],
+      [
+        "He's ready to leave",
+        "él está preparado para irse",
+        null,
+        3
+      ],
+      [
+        "She's ready to leave now",
+        "ella está preparado para irse ahora",
+        null,
+        4
+      ],
+      [
+        "I'm ready to leave today",
+        "estoy preparado para irse hoy",
+        null,
+        4
+      ],
+      [
+        "He's not ready to leave yet",
+        "no está preparado para irse todavía",
+        null,
+        4
+      ],
+      [
+        "I think he's ready to leave",
+        "creo que está preparado para irse",
+        null,
+        5
+      ],
+      [
+        "I'm sure she's ready to leave now",
+        "estoy seguro que ella está preparado para irse ahora",
+        null,
+        6
+      ],
+      [
+        "Who said that he's ready to leave",
+        "que dijo que está preparado para irse",
+        null,
+        6
+      ],
+      [
+        "Someone said he's not ready to leave",
+        "alguien dijo que no está preparado para irse",
+        null,
+        7
+      ],
+      [
+        "Who said that he's not ready to leave yet",
+        "que dijo que no está preparado para irse todavía",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0345L04",
+      "seed_context": {
+        "target": "Que dijo que no está preparado para irse todavía.",
+        "known": "Who said that he's not ready to leave yet."
+      }
+    },
+    "components": [
+      [
+        "preparado",
+        "ready/prepared"
+      ],
+      [
+        "para",
+        "to"
+      ],
+      [
+        "irse",
+        "leave (reflexive)"
+      ]
+    ]
+  }
+}

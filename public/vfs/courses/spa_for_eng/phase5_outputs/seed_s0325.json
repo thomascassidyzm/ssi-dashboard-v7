@@ -1,0 +1,92 @@
+{
+  "legos": {
+    "S0325L01": {
+      "lego": [
+        "I think that he",
+        "Creo que necesita"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I think that he needs",
+          "Creo que necesita",
+          null,
+          1
+        ],
+        [
+          "I think that he needs it",
+          "Creo que lo necesita",
+          null,
+          2
+        ],
+        [
+          "I think that he needs help",
+          "Creo que necesita ayuda",
+          null,
+          3
+        ],
+        [
+          "I think that he needs time",
+          "Creo que necesita tiempo",
+          null,
+          3
+        ],
+        [
+          "I think that he needs to move",
+          "Creo que necesita mudarse",
+          null,
+          4
+        ],
+        [
+          "I think that he needs to buy it",
+          "Creo que necesita comprarlo",
+          null,
+          4
+        ],
+        [
+          "I think that he needs to go to school",
+          "Creo que necesita ir a la escuela",
+          null,
+          6
+        ],
+        [
+          "I think that he needs to move to a different country",
+          "Creo que necesita mudarse a un país diferente",
+          null,
+          7
+        ],
+        [
+          "I think that he needs to buy the car",
+          "Creo que necesita comprar el coche",
+          null,
+          6
+        ],
+        [
+          "I think that he needs to walk up there",
+          "Creo que necesita caminar arriba allí",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

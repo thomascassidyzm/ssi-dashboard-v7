@@ -1,0 +1,98 @@
+{
+  "S0340L02": {
+    "lego": [
+      "Yes I'm sure",
+      "Sí, estoy seguro"
+    ],
+    "type": "M",
+    "available_legos": 1620,
+    "is_final_lego": false,
+    "overlap_level": "partial",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "I'm sure",
+        "estoy seguro",
+        null,
+        1
+      ],
+      [
+        "Yes I'm sure",
+        "Sí, estoy seguro",
+        null,
+        2
+      ],
+      [
+        "I'm sure he can",
+        "estoy seguro que él puede",
+        null,
+        3
+      ],
+      [
+        "Yes I'm sure she wants",
+        "Sí, estoy seguro que ella quiere",
+        null,
+        4
+      ],
+      [
+        "I'm sure he's okay",
+        "estoy seguro que él está bien",
+        null,
+        4
+      ],
+      [
+        "Yes I'm sure that's important",
+        "Sí, estoy seguro que es importante",
+        null,
+        4
+      ],
+      [
+        "I'm sure she can continue playing",
+        "estoy seguro que ella puede continuar jugando",
+        null,
+        5
+      ],
+      [
+        "Yes I'm sure he's hurt himself",
+        "Sí, estoy seguro que se ha lastimado",
+        null,
+        5
+      ],
+      [
+        "I'm sure she can open the door",
+        "estoy seguro que ella puede abrir la puerta",
+        null,
+        6
+      ],
+      [
+        "Yes I'm sure he's going to be okay",
+        "Sí, estoy seguro que va a estar bien",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0340L02",
+      "seed_context": {
+        "target": "Yes I'm sure he's going to be okay.",
+        "known": "Sí, estoy seguro que va a estar bien."
+      }
+    },
+    "components": [
+      [
+        "estoy",
+        "I'm"
+      ],
+      [
+        "seguro",
+        "sure"
+      ]
+    ]
+  }
+}

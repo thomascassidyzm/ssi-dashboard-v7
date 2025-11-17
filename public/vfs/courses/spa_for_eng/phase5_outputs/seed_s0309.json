@@ -1,0 +1,165 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0309",
+  "generation_stage": "PARTIAL_PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "No nunca la he visto antes.",
+    "target": "No I've never seen her before."
+  },
+  "recent_seed_pairs": {
+    "S0299": [["Él quiere pagar la mitad.","He wants to pay half."],[["S0299L02","wants to pay","quiere pagar"],["S0299L03","to pay half","pagar la mitad"],["S0299L04","half","la mitad"]]],
+    "S0300": [["Ella no quiere parecer antipática.","She doesn't want to seem unfriendly."],[["S0300L01","she doesn't want","ella no quiere"],["S0300L02","doesn't want to seem","no quiere parecer"],["S0300L03","wants to seem","quiere parecer"],["S0300L04","to seem unfriendly","parecer antipática"],["S0300L05","to seem","parecer"],["S0300L06","unfriendly","antipática"]]],
+    "S0301": [["Él dijo que quiere mostrarte algo.","He said that he wants to show you something."],[["S0301L01","he said","él dijo"],["S0301L03","that he wants","que quiere"],["S0301L04","to show you","mostrarte"],["S0301L06","show you something","mostrarte algo"],["S0301L07","wants to show you something","quiere mostrarte algo"]]],
+    "S0302": [["Ella dijo que no quiere vivir en una ciudad.","She said that she doesn't want to live in a city."],[["S0302L01","she said","ella dijo"],["S0302L03","that she doesn't want","que no quiere"],["S0302L05","to live","vivir"],["S0302L06","in a city","en una ciudad"],["S0302L07","to live in a city","vivir en una ciudad"],["S0302L08","doesn't want to live","no quiere vivir"]]],
+    "S0303": [["Creo que él quiere sentarse.","I think that he wants to sit down."],[["S0303L01","I think that","Creo que"],["S0303L02","I think that he","Creo que él"],["S0303L03","think that he wants","Creo que él quiere"],["S0303L05","to sit down","sentarse"],["S0303L06","wants to sit down","quiere sentarse"]]],
+    "S0304": [["Creo que ella no quiere trabajar desde casa.","I think that she doesn't want to work from home."],[["S0304L02","I think that she","Creo que ella"],["S0304L03","think that she doesn't want","Creo que ella no quiere"],["S0304L05","to work","trabajar"],["S0304L06","from home","desde casa"],["S0304L07","to work from home","trabajar desde casa"],["S0304L08","doesn't want to work","no quiere trabajar"]]],
+    "S0305": [["Mujer.","Woman."],[["S0305L01","woman","mujer"]]],
+    "S0306": [["Conozco a esa mujer joven que está hablando con tu amigo.","I know that young woman who's talking to your friend."],[["S0306L01","I know that","Conozco a esa"],["S0306L02","that young woman","esa mujer joven"],["S0306L03","to young woman","mujer joven"],["S0306L04","who's talking","que está hablando"],["S0306L05","is talking","está hablando"],["S0306L06","to your friend","con tu amigo"],["S0306L08","talking to your friend","hablando con tu amigo"],["S0306L09","I know that young woman","conozco a esa mujer joven"]]],
+    "S0307": [["Conozco a ese hombre joven que está sentado allí.","I know that young man who's sitting over there."],[["S0307L01","I know that","Conozco a ese"],["S0307L02","that young man","ese hombre joven"],["S0307L03","young man","hombre joven"],["S0307L04","who's sitting","que está sentado"],["S0307L05","is sitting","está sentado"],["S0307L06","over there","allí"],["S0307L07","sitting over there","sentado allí"],["S0307L08","I know that young man","conozco a ese hombre joven"]]],
+    "S0308": [["Sí ella es una amiga de mi madre.","Yes she's a friend of my mother."],[["S0308L02","she's","ella es"],["S0308L03","she's a friend","es una amiga"],["S0308L04","she's a friend","ella es una amiga"],["S0308L05","of my mother","de mi madre"],["S0308L06","my mother","mi madre"],["S0308L07","a friend of my mother","una amiga de mi madre"]]]
+  },
+  "legos": {
+    "S0309L02": {
+      "lego": ["never","nunca"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L02",
+        "seed_context": {
+          "known": "No nunca la he visto antes.",
+          "target": "No I've never seen her before."
+        }
+      }
+    },
+    "S0309L03": {
+      "lego": ["I've seen her","la he visto"],
+      "type": "M",
+      "current_seed_legos_available": [["never","nunca"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L03",
+        "seed_context": {
+          "known": "No nunca la he visto antes.",
+          "target": "No I've never seen her before."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0309L04": {
+      "lego": ["I've seen","he visto"],
+      "type": "M",
+      "current_seed_legos_available": [["never","nunca"],["I've seen her","la he visto"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L04",
+        "seed_context": {
+          "known": "No nunca la he visto antes.",
+          "target": "No I've never seen her before."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0309L05": {
+      "lego": ["before","antes"],
+      "type": "A",
+      "current_seed_legos_available": [["never","nunca"],["I've seen her","la he visto"],["I've seen","he visto"]],
+      "is_final_lego": false,
+      "practice_phrases": [["Before","Antes",null,1],["I've seen before","He visto antes",null,2],["I've seen her before","La he visto antes",null,3],["I've never seen before","Nunca he visto antes",null,3],["I've never seen her before","Nunca la he visto antes",null,4],["He wants to pay half before","Quiere pagar la mitad antes",null,4],["She doesn't want to seem unfriendly before","No quiere parecer antipática antes",null,5],["He said he wants to show you something before","Él dijo que quiere mostrarte algo antes",null,6],["I think she doesn't want to work from home before","Creo que ella no quiere trabajar desde casa antes",null,7],["No I've never seen her before","No nunca la he visto antes",null,5]],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0309L05",
+        "seed_context": {
+          "known": "No nunca la he visto antes.",
+          "target": "No I've never seen her before."
+        }
+      }
+    },
+    "S0309L06": {
+      "lego": ["I've never seen her","nunca la he visto"],
+      "type": "M",
+      "current_seed_legos_available": [["never","nunca"],["I've seen her","la he visto"],["I've seen","he visto"],["before","antes"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L06",
+        "seed_context": {
+          "known": "No nunca la he visto antes.",
+          "target": "No I've never seen her before."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0309L07": {
+      "lego": ["seen before","visto antes"],
+      "type": "M",
+      "current_seed_legos_available": [["never","nunca"],["I've seen her","la he visto"],["I've seen","he visto"],["before","antes"],["I've never seen her","nunca la he visto"]],
+      "is_final_lego": true,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0309L07",
+        "seed_context": {
+          "known": "No nunca la he visto antes.",
+          "target": "No I've never seen her before."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/spa_for_eng/phase5_outputs/seed_s0309.json",
+    "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
+    "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+    "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "total_legos_in_seed": 7,
+    "phrases_to_generate": 72,
+    "recent_context_seeds": 10,
+    "recent_legos_available": 54
+  }
+}

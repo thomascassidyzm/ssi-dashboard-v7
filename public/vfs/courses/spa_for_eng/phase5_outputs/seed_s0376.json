@@ -1,0 +1,59 @@
+{
+  "legos": {
+    "S0376L03": {
+      "lego": [
+        "go anywhere",
+        "fui a ninguna parte"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0376L01",
+          "known": "I didn't go",
+          "target": "no fui",
+          "type": "M"
+        },
+        {
+          "id": "S0376L02",
+          "known": "I didn't go anywhere",
+          "target": "no fui a ninguna parte",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["fui a ninguna parte", "I went nowhere", null, 1],
+        ["no fui a ninguna parte", "I didn't go anywhere", null, 2],
+        ["fui a ninguna parte el miércoles", "I went nowhere on Wednesday", null, 3],
+        ["no fui a ninguna parte ese lugar", "I didn't go anywhere near that place", null, 3],
+        ["no fui a ninguna parte el mes pasado", "I didn't go anywhere last month", null, 4],
+        ["él no fue a ninguna parte", "he didn't go anywhere", null, 4],
+        ["no fui a ninguna parte después de que te fuiste", "I didn't go anywhere after you left", null, 5],
+        ["no fui a ninguna parte en ese lugar hermoso", "I didn't go anywhere in that beautiful place", null, 5],
+        ["no sabía que no fui a ninguna parte", "I didn't know I didn't go anywhere", null, 6],
+        ["no fui a ninguna parte el mes pasado después de que te fuiste", "I didn't go anywhere last month after you left", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "a",
+          "to"
+        ],
+        [
+          "ninguna",
+          "no"
+        ],
+        [
+          "parte",
+          "where/place"
+        ]
+      ]
+    }
+  }
+}

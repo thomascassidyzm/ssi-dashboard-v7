@@ -1,0 +1,88 @@
+{
+  "S0339L02": {
+    "lego": [
+      "No I think",
+      "No, pienso"
+    ],
+    "type": "A",
+    "available_legos": 1613,
+    "is_final_lego": false,
+    "overlap_level": "none",
+    "target_phrase_count": 10,
+    "practice_phrases": [
+      [
+        "No I think",
+        "No, pienso",
+        null,
+        1
+      ],
+      [
+        "No I think so",
+        "No, pienso que sí",
+        null,
+        2
+      ],
+      [
+        "No I think he can",
+        "No, pienso que él puede",
+        null,
+        3
+      ],
+      [
+        "No I think she wants",
+        "No, pienso que ella quiere",
+        null,
+        3
+      ],
+      [
+        "No I think he's okay",
+        "No, pienso que él está bien",
+        null,
+        4
+      ],
+      [
+        "No I think that's important",
+        "No, pienso que es importante",
+        null,
+        4
+      ],
+      [
+        "No I think she can continue",
+        "No, pienso que ella puede continuar",
+        null,
+        5
+      ],
+      [
+        "No I think he's hurt himself",
+        "No, pienso que se ha lastimado",
+        null,
+        5
+      ],
+      [
+        "No I think she can open the door",
+        "No, pienso que ella puede abrir la puerta",
+        null,
+        6
+      ],
+      [
+        "No I think he's hurt himself quite badly",
+        "No, pienso que se ha lastimado bastante mal",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "_metadata": {
+      "lego_id": "S0339L02",
+      "seed_context": {
+        "target": "No I think he's hurt himself quite badly.",
+        "known": "No, pienso que se ha lastimado bastante mal."
+      }
+    }
+  }
+}

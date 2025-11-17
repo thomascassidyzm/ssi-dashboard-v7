@@ -1,0 +1,99 @@
+{
+  "legos": {
+    "S0335L02": {
+      "lego": [
+        "I think that he",
+        "Creo que puede"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0335L01",
+          "known": "I think that",
+          "target": "Creo que",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I think that he can",
+          "Creo que puede",
+          null,
+          1
+        ],
+        [
+          "I think that he can help",
+          "Creo que puede ayudar",
+          null,
+          2
+        ],
+        [
+          "I think that he can do it",
+          "Creo que puede hacerlo",
+          null,
+          3
+        ],
+        [
+          "I think that he can build it",
+          "Creo que puede construirlo",
+          null,
+          3
+        ],
+        [
+          "I think that he can help you",
+          "Creo que puede ayudarte",
+          null,
+          4
+        ],
+        [
+          "I think that he can consider it",
+          "Creo que puede considerarlo",
+          null,
+          4
+        ],
+        [
+          "I think that he can help with the group",
+          "Creo que puede ayudar con el grupo",
+          null,
+          6
+        ],
+        [
+          "I think that he can build the company",
+          "Creo que puede construir la compañía",
+          null,
+          5
+        ],
+        [
+          "I think that he can consider the problems",
+          "Creo que puede considerar los problemas",
+          null,
+          5
+        ],
+        [
+          "I think that he can hold the kitten now",
+          "Creo que puede sostener el gatito ahora",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "creo",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

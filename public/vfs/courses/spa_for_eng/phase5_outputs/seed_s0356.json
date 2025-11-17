@@ -1,0 +1,221 @@
+{
+  "S0356L01": {
+    "lego": ["Yes", "sí"],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Yes", "Sí", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 0,
+      "longer_4_5": 0,
+      "long_6_plus": 0
+    },
+    "_metadata": {
+      "lego_id": "S0356L01",
+      "seed_context": {
+        "known": "Yes they had something important to discuss.",
+        "target": "Sí ellos tenían algo importante que discutir."
+      }
+    },
+    "components": []
+  },
+  "S0356L02": {
+    "lego": ["they had", "ellos tenían"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "sí"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["they had", "ellos tenían", null, 1],
+      ["Yes they had", "Sí ellos tenían", null, 2],
+      ["they had something", "ellos tenían algo", null, 2],
+      ["they had time", "ellos tenían tiempo", null, 3],
+      ["they had to talk", "ellos tenían que hablar", null, 3],
+      ["Yes they had something", "Sí ellos tenían algo", null, 4],
+      ["they had to see someone", "ellos tenían que ver a alguien", null, 4],
+      ["Yes they had time to talk", "Sí ellos tenían tiempo para hablar", null, 5],
+      ["they had something important", "ellos tenían algo importante", null, 5],
+      ["Yes they had something important to do", "Sí ellos tenían algo importante que hacer", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0356L02",
+      "seed_context": {
+        "known": "Yes they had something important to discuss.",
+        "target": "Sí ellos tenían algo importante que discutir."
+      }
+    },
+    "components": [
+      ["ellos", "they"],
+      ["tenían", "had"]
+    ]
+  },
+  "S0356L03": {
+    "lego": ["had something", "tenían algo"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "sí"],
+      ["they had", "ellos tenían"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["had something", "tenían algo", null, 1],
+      ["they had something", "ellos tenían algo", null, 2],
+      ["I had something", "tenía algo", null, 2],
+      ["had something important", "tenían algo importante", null, 3],
+      ["they had something to say", "ellos tenían algo que decir", null, 3],
+      ["Yes they had something", "Sí ellos tenían algo", null, 4],
+      ["I had something to tell you", "tenía algo que decirte", null, 4],
+      ["they had something important to discuss", "ellos tenían algo importante que discutir", null, 5],
+      ["Yes they had something to do", "Sí ellos tenían algo que hacer", null, 5],
+      ["they had something important to talk about", "ellos tenían algo importante de que hablar", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0356L03",
+      "seed_context": {
+        "known": "Yes they had something important to discuss.",
+        "target": "Sí ellos tenían algo importante que discutir."
+      }
+    },
+    "components": [
+      ["tenían", "had"],
+      ["algo", "something"]
+    ]
+  },
+  "S0356L04": {
+    "lego": ["something important", "algo importante"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "sí"],
+      ["they had", "ellos tenían"],
+      ["had something", "tenían algo"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["something important", "algo importante", null, 1],
+      ["to do something important", "hacer algo importante", null, 2],
+      ["I have something important", "tengo algo importante", null, 2],
+      ["to say something important", "decir algo importante", null, 3],
+      ["they had something important", "ellos tenían algo importante", null, 3],
+      ["I need to do something important", "necesito hacer algo importante", null, 4],
+      ["to talk about something important", "hablar de algo importante", null, 4],
+      ["they had something important to discuss", "ellos tenían algo importante que discutir", null, 5],
+      ["Yes I have something important to tell you", "Sí tengo algo importante que decirte", null, 5],
+      ["I wanted to say something important to them", "quería decirles algo importante", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0356L04",
+      "seed_context": {
+        "known": "Yes they had something important to discuss.",
+        "target": "Sí ellos tenían algo importante que discutir."
+      }
+    },
+    "components": [
+      ["algo", "something"],
+      ["importante", "important"]
+    ]
+  },
+  "S0356L05": {
+    "lego": ["important to discuss", "importante que discutir"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "sí"],
+      ["they had", "ellos tenían"],
+      ["had something", "tenían algo"],
+      ["something important", "algo importante"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["important to discuss", "importante que discutir", null, 1],
+      ["something important to discuss", "algo importante que discutir", null, 2],
+      ["very important to discuss", "muy importante que discutir", null, 2],
+      ["important to discuss with you", "importante que discutir contigo", null, 3],
+      ["they had important to discuss", "ellos tenían importante que discutir", null, 3],
+      ["something important to discuss today", "algo importante que discutir hoy", null, 4],
+      ["very important to discuss with them", "muy importante que discutir con ellos", null, 4],
+      ["they had something important to discuss", "ellos tenían algo importante que discutir", null, 5],
+      ["I have something important to discuss with you", "tengo algo importante que discutir contigo", null, 5],
+      ["Yes they had something very important to discuss", "Sí ellos tenían algo muy importante que discutir", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0356L05",
+      "seed_context": {
+        "known": "Yes they had something important to discuss.",
+        "target": "Sí ellos tenían algo importante que discutir."
+      }
+    },
+    "components": [
+      ["importante", "important"],
+      ["que", "to"],
+      ["discutir", "to discuss"]
+    ]
+  },
+  "S0356L06": {
+    "lego": ["to discuss", "que discutir"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Yes", "sí"],
+      ["they had", "ellos tenían"],
+      ["had something", "tenían algo"],
+      ["something important", "algo importante"],
+      ["important to discuss", "importante que discutir"]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["to discuss", "que discutir", null, 1],
+      ["something to discuss", "algo que discutir", null, 2],
+      ["I have to discuss", "tengo que discutir", null, 2],
+      ["something to discuss with you", "algo que discutir contigo", null, 3],
+      ["nothing to discuss", "nada que discutir", null, 3],
+      ["something important to discuss", "algo importante que discutir", null, 4],
+      ["they have something to discuss", "ellos tienen algo que discutir", null, 4],
+      ["I have something important to discuss with you", "tengo algo importante que discutir contigo", null, 5],
+      ["they had nothing important to discuss", "ellos no tenían nada importante que discutir", null, 5],
+      ["Yes they had something important to discuss.", "Sí ellos tenían algo importante que discutir.", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0356L06",
+      "seed_context": {
+        "known": "Yes they had something important to discuss.",
+        "target": "Sí ellos tenían algo importante que discutir."
+      }
+    },
+    "components": [
+      ["que", "to"],
+      ["discutir", "to discuss"]
+    ]
+  }
+}

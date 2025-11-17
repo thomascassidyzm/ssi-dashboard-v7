@@ -1,0 +1,32 @@
+{
+  "legos": {
+    "S0369L01": {
+      "lego": [
+        "I saw several",
+        "Vi varios"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Vi varios", "I saw several", null, 1],
+        ["Vi varios tomates", "I saw several tomatoes", null, 2],
+        ["Él dijo que vi varios", "He said that I saw several", null, 3],
+        ["No vi varios tomates", "I didn't see several tomatoes", null, 3],
+        ["Vi varios tomates en ese lugar", "I saw several tomatoes in that place", null, 4],
+        ["Él dijo que vi varios tomates", "He said that I saw several tomatoes", null, 4],
+        ["Vi varios después de que te fuiste", "I saw several after you left", null, 5],
+        ["No vi varios en ese lugar", "I didn't see several in that place", null, 5],
+        ["Él dijo que vi varios tomates en ese lugar", "He said that I saw several tomatoes in that place", null, 6],
+        ["Vi varios tomates después de que te fuiste", "I saw several tomatoes after you left", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

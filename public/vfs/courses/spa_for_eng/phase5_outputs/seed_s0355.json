@@ -1,0 +1,233 @@
+{
+  "S0355L01": {
+    "lego": ["Did she need to", "necesitaba ella"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Did she need to", "necesitaba ella", null, 1],
+      ["Did she need to talk", "necesitaba ella hablar", null, 2],
+      ["Did she need to go", "necesitaba ella ir", null, 2],
+      ["Did she need to know", "necesitaba ella saber", null, 3],
+      ["Did she need to see him", "necesitaba ella verlo", null, 3],
+      ["Did she need to do something", "necesitaba ella hacer algo", null, 4],
+      ["Did she need to talk today", "necesitaba ella hablar hoy", null, 4],
+      ["Did she need to see that woman", "necesitaba ella ver a esa mujer", null, 5],
+      ["Did she need to know something important", "necesitaba ella saber algo importante", null, 5],
+      ["Did she need to talk with someone you know", "necesitaba ella hablar con alguien que conoces", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0355L01",
+      "seed_context": {
+        "known": "Did she need to talk to that woman you know?",
+        "target": "¿Necesitaba ella hablar con esa mujer que conoces?"
+      }
+    },
+    "components": [
+      ["necesitaba", "Did need"],
+      ["ella", "she"]
+    ]
+  },
+  "S0355L02": {
+    "lego": ["need to talk", "necesitaba hablar"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Did she need to", "necesitaba ella"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["need to talk", "necesitaba hablar", null, 1],
+      ["Did she need to talk", "necesitaba ella hablar", null, 2],
+      ["I need to talk", "necesito hablar", null, 2],
+      ["need to talk today", "necesitaba hablar hoy", null, 3],
+      ["need to talk with someone", "necesitaba hablar con alguien", null, 3],
+      ["Did she need to talk with you", "necesitaba ella hablar contigo", null, 4],
+      ["I need to talk with her", "necesito hablar con ella", null, 4],
+      ["Did she need to talk with him today", "necesitaba ella hablar con él hoy", null, 5],
+      ["need to talk about something important", "necesitaba hablar sobre algo importante", null, 5],
+      ["Did she need to talk with that woman", "necesitaba ella hablar con esa mujer", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0355L02",
+      "seed_context": {
+        "known": "Did she need to talk to that woman you know?",
+        "target": "¿Necesitaba ella hablar con esa mujer que conoces?"
+      }
+    },
+    "components": [
+      ["necesitaba", "need"],
+      ["hablar", "to talk"]
+    ]
+  },
+  "S0355L03": {
+    "lego": ["need to talk to", "ella hablar con"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Did she need to", "necesitaba ella"],
+      ["need to talk", "necesitaba hablar"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["to talk with her", "hablar con ella", null, 1],
+      ["she to talk with", "ella hablar con", null, 2],
+      ["Did she need to talk with", "necesitaba ella hablar con", null, 2],
+      ["to talk with someone", "hablar con alguien", null, 3],
+      ["she need to talk with you", "ella necesitaba hablar contigo", null, 3],
+      ["Did she need to talk with him", "necesitaba ella hablar con él", null, 4],
+      ["she to talk with that woman", "ella hablar con esa mujer", null, 4],
+      ["Did she need to talk with her today", "necesitaba ella hablar con ella hoy", null, 5],
+      ["Did she need to talk with someone important", "necesitaba ella hablar con alguien importante", null, 5],
+      ["Did she need to talk with that person you know", "necesitaba ella hablar con esa persona que conoces", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0355L03",
+      "seed_context": {
+        "known": "Did she need to talk to that woman you know?",
+        "target": "¿Necesitaba ella hablar con esa mujer que conoces?"
+      }
+    },
+    "components": [
+      ["hablar", "to talk"],
+      ["con", "to/with"]
+    ]
+  },
+  "S0355L04": {
+    "lego": ["that woman", "esa mujer"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Did she need to", "necesitaba ella"],
+      ["need to talk", "necesitaba hablar"],
+      ["need to talk to", "ella hablar con"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["that woman", "esa mujer", null, 1],
+      ["with that woman", "con esa mujer", null, 2],
+      ["to see that woman", "ver a esa mujer", null, 2],
+      ["to talk with that woman", "hablar con esa mujer", null, 3],
+      ["I know that woman", "conozco a esa mujer", null, 3],
+      ["Did she need to see that woman", "necesitaba ella ver a esa mujer", null, 4],
+      ["to talk with that woman today", "hablar con esa mujer hoy", null, 4],
+      ["Did she need to talk with that woman", "necesitaba ella hablar con esa mujer", null, 5],
+      ["I wanted to see that woman yesterday", "quería ver a esa mujer ayer", null, 5],
+      ["Did she need to talk with that woman you know", "necesitaba ella hablar con esa mujer que conoces", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0355L04",
+      "seed_context": {
+        "known": "Did she need to talk to that woman you know?",
+        "target": "¿Necesitaba ella hablar con esa mujer que conoces?"
+      }
+    },
+    "components": [
+      ["esa", "that"],
+      ["mujer", "to woman"]
+    ]
+  },
+  "S0355L05": {
+    "lego": ["to woman you know", "mujer que conoces"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Did she need to", "necesitaba ella"],
+      ["need to talk", "necesitaba hablar"],
+      ["need to talk to", "ella hablar con"],
+      ["that woman", "esa mujer"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["woman you know", "mujer que conoces", null, 1],
+      ["that woman you know", "esa mujer que conoces", null, 2],
+      ["the woman you know", "la mujer que conoces", null, 2],
+      ["with that woman you know", "con esa mujer que conoces", null, 3],
+      ["to see that woman you know", "ver a esa mujer que conoces", null, 3],
+      ["to talk with that woman you know", "hablar con esa mujer que conoces", null, 4],
+      ["I know that woman you know", "conozco a esa mujer que conoces", null, 4],
+      ["Did she need to talk with that woman you know", "necesitaba ella hablar con esa mujer que conoces", null, 5],
+      ["Did she want to see that woman you know", "quería ella ver a esa mujer que conoces", null, 5],
+      ["Did she need to talk with that woman you know today", "necesitaba ella hablar con esa mujer que conoces hoy", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0355L05",
+      "seed_context": {
+        "known": "Did she need to talk to that woman you know?",
+        "target": "¿Necesitaba ella hablar con esa mujer que conoces?"
+      }
+    },
+    "components": [
+      ["mujer", "to woman"],
+      ["que", "that"],
+      ["conoces", "you know"]
+    ]
+  },
+  "S0355L06": {
+    "lego": ["you know", "que conoces"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["Did she need to", "necesitaba ella"],
+      ["need to talk", "necesitaba hablar"],
+      ["need to talk to", "ella hablar con"],
+      ["that woman", "esa mujer"],
+      ["to woman you know", "mujer que conoces"]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["you know", "que conoces", null, 1],
+      ["that you know", "eso que conoces", null, 2],
+      ["the person you know", "la persona que conoces", null, 2],
+      ["something you know", "algo que conoces", null, 3],
+      ["that woman you know", "esa mujer que conoces", null, 3],
+      ["with the person you know", "con la persona que conoces", null, 4],
+      ["about something you know", "sobre algo que conoces", null, 4],
+      ["to talk with that woman you know", "hablar con esa mujer que conoces", null, 5],
+      ["Did she need to see that person you know", "necesitaba ella ver a esa persona que conoces", null, 5],
+      ["Did she need to talk to that woman you know?", "¿Necesitaba ella hablar con esa mujer que conoces?", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0355L06",
+      "seed_context": {
+        "known": "Did she need to talk to that woman you know?",
+        "target": "¿Necesitaba ella hablar con esa mujer que conoces?"
+      }
+    },
+    "components": [
+      ["que", "that"],
+      ["conoces", "you know"]
+    ]
+  }
+}
