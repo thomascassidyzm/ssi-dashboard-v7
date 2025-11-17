@@ -1,64 +1,21 @@
 {
   "legos": {
     "S0013L02": {
-      "lego": [
-        "very well",
-        "很好"
-      ],
+      "lego": ["very well", "很好"],
       "type": "M",
+      "current_seed_legos_available": [],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [],
       "practice_phrases": [
-        {
-          "known": "很好",
-          "target": "very well",
-          "lego_count": 1
-        },
-        {
-          "known": "会说一点中文很好",
-          "target": "can speak a little Chinese very well",
-          "lego_count": 2
-        },
-        {
-          "known": "我想能够说得很好",
-          "target": "I'd like to be able to speak very well",
-          "lego_count": 3
-        },
-        {
-          "known": "我现在会说得很好",
-          "target": "I can speak very well now",
-          "lego_count": 3
-        },
-        {
-          "known": "我想明天能够说得很好",
-          "target": "I'd like to be able to speak very well tomorrow",
-          "lego_count": 4
-        },
-        {
-          "known": "我不确定能不能记住得很好",
-          "target": "I'm not sure if I can or can't remember very well",
-          "lego_count": 4
-        },
-        {
-          "known": "我想能够说完整个句子很好",
-          "target": "I'd like to be able to finish the whole sentence very well",
-          "lego_count": 5
-        },
-        {
-          "known": "我现在会说一点中文说得很好",
-          "target": "I can speak a little Chinese very well now",
-          "lego_count": 5
-        },
-        {
-          "known": "在你说完之后我想能够说得很好",
-          "target": "after you finish I'd like to be able to speak very well",
-          "lego_count": 6
-        },
-        {
-          "known": "明天会发生什么我不确定能不能猜得很好",
-          "target": "what's going to happen tomorrow I'm not sure if I can guess very well",
-          "lego_count": 7
-        }
+        ["very well", "很好", null, 1],
+        ["I can speak a little Chinese very well", "我会说一点中文很好", null, 2],
+        ["I'd like to be able to speak very well", "我想能够说得很好", null, 3],
+        ["I can speak very well now", "我现在会说得很好", null, 3],
+        ["I'd like to be able to speak very well tomorrow", "我想明天能够说得很好", null, 4],
+        ["I'm not sure if I can or can't remember very well", "我不确定我能不能记住得很好", null, 4],
+        ["I'd like to be able to finish the whole sentence very well", "我想能够说完整个句子很好", null, 5],
+        ["I can speak a little Chinese very well now", "我现在会说一点中文说得很好", null, 5],
+        ["after you finish I'd like to be able to speak very well", "在你说完之后我想能够说得很好", null, 6],
+        ["what's going to happen tomorrow I'm not sure if I can guess very well", "明天会发生什么我不确定我能不能猜得很好", null, 7]
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -67,83 +24,24 @@
         "longest_5_legos": 4
       },
       "target_phrase_count": 10,
-      "components": [
-        [
-          "很",
-          "very"
-        ],
-        [
-          "好",
-          "well/good"
-        ]
-      ]
+      "components": [["很", "very"], ["好", "well/good"]]
     },
     "S0013L04": {
-      "lego": [
-        "to speak very well",
-        "说得很好"
-      ],
+      "lego": ["to speak very well", "说得很好"],
       "type": "M",
+      "current_seed_legos_available": [["very well", "很好"]],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0013L02",
-          "known": "very well",
-          "target": "很好",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        {
-          "known": "说得很好",
-          "target": "to speak very well",
-          "lego_count": 1
-        },
-        {
-          "known": "会说得很好",
-          "target": "can speak very well",
-          "lego_count": 2
-        },
-        {
-          "known": "我现在说得很好",
-          "target": "I speak very well now",
-          "lego_count": 3
-        },
-        {
-          "known": "我想能够说得很好",
-          "target": "I'd like to be able to speak very well",
-          "lego_count": 3
-        },
-        {
-          "known": "在你说完之后说得很好",
-          "target": "to speak very well after you finish",
-          "lego_count": 4
-        },
-        {
-          "known": "我不确定能不能说得很好",
-          "target": "I'm not sure if I can or can't speak very well",
-          "lego_count": 4
-        },
-        {
-          "known": "我想明天能够说一点中文说得很好",
-          "target": "I'd like to be able to speak a little Chinese very well tomorrow",
-          "lego_count": 6
-        },
-        {
-          "known": "我现在会说整个句子说得很好",
-          "target": "I can now speak the whole sentence very well",
-          "lego_count": 5
-        },
-        {
-          "known": "在你说完之后我想能够说得很好",
-          "target": "after you finish I'd like to be able to speak very well",
-          "lego_count": 6
-        },
-        {
-          "known": "明天会发生什么我不确定但是我想说得很好",
-          "target": "what's going to happen tomorrow I'm not sure but I'd like to speak very well",
-          "lego_count": 7
-        }
+        ["to speak very well", "说得很好", null, 1],
+        ["can speak very well", "会说得很好", null, 2],
+        ["I speak very well now", "我现在说得很好", null, 3],
+        ["I'd like to be able to speak very well", "我想能够说得很好", null, 3],
+        ["to speak very well after you finish", "在你说完之后说得很好", null, 4],
+        ["I'm not sure if I can or can't speak very well", "我不确定我能不能说得很好", null, 4],
+        ["I'd like to be able to speak a little Chinese very well tomorrow", "我想明天能够说一点中文说得很好", null, 6],
+        ["I can now speak the whole sentence very well", "我现在会说整个句子说得很好", null, 5],
+        ["after you finish I'd like to be able to speak very well", "在你说完之后我想能够说得很好", null, 6],
+        ["what's going to happen tomorrow I'm not sure but I'd like to speak very well", "明天会发生什么我不确定但是我想说得很好", null, 7]
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -152,97 +50,24 @@
         "longest_5_legos": 4
       },
       "target_phrase_count": 10,
-      "components": [
-        [
-          "说",
-          "speak"
-        ],
-        [
-          "得",
-          "(complement marker)"
-        ],
-        [
-          "很",
-          "very"
-        ],
-        [
-          "好",
-          "well"
-        ]
-      ]
+      "components": [["说", "speak"], ["得", "(complement marker)"], ["很", "very"], ["好", "well"]]
     },
     "S0013L05": {
-      "lego": [
-        "to speak Chinese very well",
-        "中文说得很好"
-      ],
+      "lego": ["to speak Chinese very well", "中文说得很好"],
       "type": "M",
+      "current_seed_legos_available": [["very well", "很好"], ["to speak very well", "说得很好"]],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0013L02",
-          "known": "very well",
-          "target": "很好",
-          "type": "M"
-        },
-        {
-          "id": "S0013L04",
-          "known": "to speak very well",
-          "target": "说得很好",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        {
-          "known": "中文说得很好",
-          "target": "to speak Chinese very well",
-          "lego_count": 1
-        },
-        {
-          "known": "会中文说得很好",
-          "target": "can speak Chinese very well",
-          "lego_count": 2
-        },
-        {
-          "known": "我现在中文说得很好",
-          "target": "I speak Chinese very well now",
-          "lego_count": 3
-        },
-        {
-          "known": "我想能够中文说得很好",
-          "target": "I'd like to be able to speak Chinese very well",
-          "lego_count": 3
-        },
-        {
-          "known": "我不确定能不能中文说得很好",
-          "target": "I'm not sure if I can or can't speak Chinese very well",
-          "lego_count": 4
-        },
-        {
-          "known": "明天我想能够中文说得很好",
-          "target": "tomorrow I'd like to be able to speak Chinese very well",
-          "lego_count": 4
-        },
-        {
-          "known": "在你说完之后我想能够中文说得很好",
-          "target": "after you finish I'd like to be able to speak Chinese very well",
-          "lego_count": 6
-        },
-        {
-          "known": "我现在会说一点但是我想中文说得很好",
-          "target": "I can speak a little now but I'd like to speak Chinese very well",
-          "lego_count": 6
-        },
-        {
-          "known": "我不确定明天能不能记住整个句子中文说得很好",
-          "target": "I'm not sure if tomorrow I can or can't remember the whole sentence to speak Chinese very well",
-          "lego_count": 7
-        },
-        {
-          "known": "在你说完之后我想能够说整个句子中文说得很好",
-          "target": "after you finish I'd like to be able to speak the whole sentence Chinese very well",
-          "lego_count": 7
-        }
+        ["to speak Chinese very well", "中文说得很好", null, 1],
+        ["can speak Chinese very well", "会中文说得很好", null, 2],
+        ["I speak Chinese very well now", "我现在中文说得很好", null, 3],
+        ["I'd like to be able to speak Chinese very well", "我想能够中文说得很好", null, 3],
+        ["I'm not sure if I can or can't speak Chinese very well", "我不确定我能不能中文说得很好", null, 4],
+        ["tomorrow I'd like to be able to speak Chinese very well", "明天我想能够中文说得很好", null, 4],
+        ["after you finish I'd like to be able to speak Chinese very well", "在你说完之后我想能够中文说得很好", null, 6],
+        ["I can speak a little now but I'd like to speak Chinese very well", "我现在会说一点但是我想中文说得很好", null, 6],
+        ["I'm not sure if tomorrow I can or can't remember the whole sentence to speak Chinese very well", "我不确定明天我能不能记住整个句子中文说得很好", null, 7],
+        ["after you finish I'd like to be able to speak the whole sentence Chinese very well", "在你说完之后我想能够说整个句子中文说得很好", null, 7]
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -251,107 +76,24 @@
         "longest_5_legos": 4
       },
       "target_phrase_count": 10,
-      "components": [
-        [
-          "中文",
-          "Chinese"
-        ],
-        [
-          "说",
-          "speak"
-        ],
-        [
-          "得",
-          "(complement marker)"
-        ],
-        [
-          "很",
-          "very"
-        ],
-        [
-          "好",
-          "well"
-        ]
-      ]
+      "components": [["中文", "Chinese"], ["说", "speak"], ["得", "(complement marker)"], ["很", "very"], ["好", "well"]]
     },
     "S0013L06": {
-      "lego": [
-        "you speak Chinese very well",
-        "你中文说得很好"
-      ],
+      "lego": ["you speak Chinese very well", "你中文说得很好"],
       "type": "M",
+      "current_seed_legos_available": [["very well", "很好"], ["to speak very well", "说得很好"], ["to speak Chinese very well", "中文说得很好"]],
       "is_final_lego": true,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0013L02",
-          "known": "very well",
-          "target": "很好",
-          "type": "M"
-        },
-        {
-          "id": "S0013L04",
-          "known": "to speak very well",
-          "target": "说得很好",
-          "type": "M"
-        },
-        {
-          "id": "S0013L05",
-          "known": "to speak Chinese very well",
-          "target": "中文说得很好",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        {
-          "known": "你中文说得很好",
-          "target": "you speak Chinese very well",
-          "lego_count": 1
-        },
-        {
-          "known": "你现在中文说得很好",
-          "target": "you speak Chinese very well now",
-          "lego_count": 2
-        },
-        {
-          "known": "我想你中文说得很好",
-          "target": "I think you speak Chinese very well",
-          "lego_count": 3
-        },
-        {
-          "known": "我不确定你中文说得很好",
-          "target": "I'm not sure you speak Chinese very well",
-          "lego_count": 3
-        },
-        {
-          "known": "在你说完之后你中文说得很好",
-          "target": "after you finish you speak Chinese very well",
-          "lego_count": 4
-        },
-        {
-          "known": "明天我想你能够中文说得很好",
-          "target": "tomorrow I think you'll be able to speak Chinese very well",
-          "lego_count": 4
-        },
-        {
-          "known": "我现在会说一点但是你中文说得很好",
-          "target": "I can speak a little now but you speak Chinese very well",
-          "lego_count": 6
-        },
-        {
-          "known": "在你说完整个句子之后我想你中文说得很好",
-          "target": "after you finish the whole sentence I think you speak Chinese very well",
-          "lego_count": 6
-        },
-        {
-          "known": "我不确定明天会发生什么但是我想你中文说得很好",
-          "target": "I'm not sure what's going to happen tomorrow but I think you speak Chinese very well",
-          "lego_count": 7
-        },
-        {
-          "known": "你中文说得很好。",
-          "target": "You speak Chinese very well.",
-          "lego_count": 1
-        }
+        ["you speak Chinese very well", "你中文说得很好", null, 1],
+        ["you speak Chinese very well now", "你现在中文说得很好", null, 2],
+        ["I think you speak Chinese very well", "我想你中文说得很好", null, 3],
+        ["I'm not sure you speak Chinese very well", "我不确定你中文说得很好", null, 3],
+        ["after you finish you speak Chinese very well", "在你说完之后你中文说得很好", null, 4],
+        ["tomorrow I think you'll be able to speak Chinese very well", "明天我想你能够中文说得很好", null, 4],
+        ["I can speak a little now but you speak Chinese very well", "我现在会说一点但是你中文说得很好", null, 6],
+        ["after you finish the whole sentence I think you speak Chinese very well", "在你说完整个句子之后我想你中文说得很好", null, 6],
+        ["I'm not sure what's going to happen tomorrow but I think you speak Chinese very well", "我不确定明天会发生什么但是我想你中文说得很好", null, 7],
+        ["You speak Chinese very well.", "你中文说得很好。", null, 1]
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -360,32 +102,7 @@
         "longest_5_legos": 4
       },
       "target_phrase_count": 10,
-      "components": [
-        [
-          "你",
-          "you"
-        ],
-        [
-          "中文",
-          "Chinese"
-        ],
-        [
-          "说",
-          "speak"
-        ],
-        [
-          "得",
-          "(complement marker)"
-        ],
-        [
-          "很",
-          "very"
-        ],
-        [
-          "好",
-          "well"
-        ]
-      ]
+      "components": [["你", "you"], ["中文", "Chinese"], ["说", "speak"], ["得", "(complement marker)"], ["很", "very"], ["好", "well"]]
     }
   }
 }
