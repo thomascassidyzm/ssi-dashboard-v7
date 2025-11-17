@@ -1,169 +1,95 @@
 {
   "S0026L01": {
-    "lego": [
-      "I like feeling",
-      "我喜欢感觉"
-    ],
+    "lego": ["I like feeling","我喜欢感觉"],
     "type": "M",
     "current_seed_legos_available": [],
     "is_final_lego": false,
     "practice_phrases": [
-      [
-        "I like feeling",
-        "我喜欢感觉",
-        null,
-        3
-      ],
-      [
-        "I like feeling this",
-        "我喜欢这个感觉",
-        null,
-        2
-      ],
-      [
-        "I like feeling ready",
-        "我喜欢感觉准备好",
-        null,
-        3
-      ],
-      [
-        "I don't like feeling this",
-        "我不喜欢这个感觉",
-        null,
-        3
-      ],
-      [
-        "I like feeling as if I can speak Chinese",
-        "我喜欢感觉好像我会说中文",
-        null,
-        4
-      ],
-      [
-        "I like feeling ready to meet other people",
-        "我喜欢感觉准备好认识其他人",
-        null,
-        4
-      ],
-      [
-        "I like feeling as if I want to learn more",
-        "我喜欢感觉好像我想学会更多",
-        null,
-        5
-      ],
-      [
-        "I like feeling ready to go and meet everyone",
-        "我喜欢感觉准备好走去见大家",
-        null,
-        5
-      ],
-      [
-        "I like feeling as if I'm nearly ready to speak Chinese with everyone",
-        "我喜欢感觉好像我快准备好和大家说中文",
-        null,
-        6
-      ],
-      [
-        "I like feeling as if I can meet people who speak Chinese",
-        "我喜欢感觉好像我能认识会说中文的人",
-        null,
-        6
-      ]
+      ["I like feeling", "我喜欢感觉", null, 3],
+      ["I like feeling happy", "我喜欢感觉快乐", null, 2],
+      ["I like feeling ready", "我喜欢感觉准备好", null, 3],
+      ["I like feeling as if I can speak Chinese", "我喜欢感觉好像我会说中文", null, 4],
+      ["I don't like feeling", "我不喜欢感觉", null, 3],
+      ["Do you like feeling ready to go", "你喜欢感觉准备好走吗", null, 5],
+      ["I like feeling as if I'm able to remember", "我喜欢感觉好像我能记住", null, 5],
+      ["He likes feeling as if he wants to learn", "他喜欢感觉好像他想学会", null, 5],
+      ["I like feeling as if I'm going to meet other people", "我喜欢感觉好像我要去见其他人", null, 6],
+      ["She likes feeling as if she will help me before I have to go", "她喜欢感觉好像她会在我必须走之前帮我", null, 7]
     ],
     "phrase_distribution": {
       "really_short_1_2": 1,
       "quite_short_3": 3,
-      "longer_4_5": 3,
-      "long_6_plus": 3
+      "longer_4_5": 4,
+      "long_6_plus": 2
     },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
+    "components": [[null,null],[null,null],[null,null]]
   },
   "S0026L02": {
-    "lego": [
-      "feeling as if",
-      "感觉好像"
-    ],
+    "lego": ["feeling as if","感觉好像"],
     "type": "M",
-    "current_seed_legos_available": [
-      [
-        "I like feeling",
-        "我喜欢感觉"
-      ]
-    ],
+    "current_seed_legos_available": [["I like feeling","我喜欢感觉"]],
     "is_final_lego": false,
     "practice_phrases": [
-      [
-        "feeling as if",
-        "感觉好像",
-        null,
-        2
-      ],
-      [
-        "I'm feeling as if",
-        "我感觉好像",
-        null,
-        2
-      ],
-      [
-        "feeling as if I want to go",
-        "感觉好像我想走",
-        null,
-        3
-      ],
-      [
-        "I like feeling as if I can speak Chinese",
-        "我喜欢感觉好像我会说中文",
-        null,
-        4
-      ],
-      [
-        "I'm feeling as if I have to go",
-        "我感觉好像我必须走",
-        null,
-        4
-      ],
-      [
-        "I like feeling as if I'm ready",
-        "我喜欢感觉好像我准备好",
-        null,
-        4
-      ],
-      [
-        "She's feeling as if she wants to come back",
-        "她感觉好像她想回来",
-        null,
-        5
-      ],
-      [
-        "I'm feeling as if I want to meet other people",
-        "我感觉好像我想认识其他人",
-        null,
-        5
-      ],
-      [
-        "He's feeling as if he's nearly ready to speak Chinese with everyone",
-        "他感觉好像他快准备好和大家说中文",
-        null,
-        6
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go",
-        "我喜欢感觉好像我快准备好走了",
-        null,
-        6
-      ]
+      ["feeling as if", "感觉好像", null, 2],
+      ["I like feeling as if", "我喜欢感觉好像", null, 2],
+      ["feeling as if I want to speak", "感觉好像我想说话", null, 3],
+      ["I like feeling as if I can help", "我喜欢感觉好像我能帮", null, 3],
+      ["feeling as if you want to learn", "感觉好像你想学会", null, 4],
+      ["I like feeling as if I will meet her", "我喜欢感觉好像我会见她", null, 4],
+      ["feeling as if he's ready to go", "感觉好像他准备好走", null, 4],
+      ["I like feeling as if I'm going to find out the answer", "我喜欢感觉好像我要去找出答案", null, 5],
+      ["feeling as if she wants to come back later", "感觉好像她想晚点回来", null, 6],
+      ["I like feeling as if I will help me before I have to go", "我喜欢感觉好像我会在我必须走之前帮我", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0026L03": {
+    "lego": ["as if I'm nearly ready to go","好像我快准备好走了"],
+    "type": "M",
+    "current_seed_legos_available": [["I like feeling","我喜欢感觉"],["feeling as if","感觉好像"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["as if I'm nearly ready to go", "好像我快准备好走了", null, 6],
+      ["as if I'm ready to go", "好像我准备好走了", null, 2],
+      ["as if I'm nearly ready", "好像我快准备好", null, 3],
+      ["I like feeling as if I'm nearly ready to go", "我喜欢感觉好像我快准备好走了", null, 4],
+      ["as if I'm nearly ready to meet", "好像我快准备好见面", null, 4],
+      ["as if I'm nearly ready to speak Chinese", "好像我快准备好说中文", null, 5],
+      ["feeling as if I'm nearly ready to go", "感觉好像我快准备好走了", null, 5],
+      ["as if I'm nearly ready to help other people", "好像我快准备好帮其他人", null, 5],
+      ["as if I'm nearly ready to find out what the answer is", "好像我快准备好找出答案是什么", null, 6],
+      ["as if I'm nearly ready to meet people who speak Chinese", "好像我快准备好认识会说中文的人", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0026L04": {
+    "lego": ["I'm nearly ready to go","我快准备好走了"],
+    "type": "M",
+    "current_seed_legos_available": [["I like feeling","我喜欢感觉"],["feeling as if","感觉好像"],["as if I'm nearly ready to go","好像我快准备好走了"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm nearly ready to go", "我快准备好走了", null, 5],
+      ["I'm ready to go", "我准备好走了", null, 2],
+      ["I'm nearly ready", "我快准备好", null, 2],
+      ["I'm nearly ready to speak", "我快准备好说话", null, 3],
+      ["I'm nearly ready to go and meet her", "我快准备好走去见她", null, 4],
+      ["I'm nearly ready to help you", "我快准备好帮你", null, 4],
+      ["I'm nearly ready to go later", "我快准备好晚点走", null, 4],
+      ["I'm nearly ready to find out the answer", "我快准备好找出答案", null, 5],
+      ["I'm nearly ready to meet people who speak Chinese", "我快准备好认识会说中文的人", null, 6],
+      ["I like feeling as if I'm nearly ready to go", "我喜欢感觉好像我快准备好走了", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -171,327 +97,24 @@
       "longer_4_5": 4,
       "long_6_plus": 3
     },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0026L03": {
-    "lego": [
-      "as if I'm nearly ready to go",
-      "好像我快准备好走了"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "I like feeling",
-        "我喜欢感觉"
-      ],
-      [
-        "feeling as if",
-        "感觉好像"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "as if I'm nearly ready to go",
-        "好像我快准备好走了",
-        null,
-        6
-      ],
-      [
-        "I'm feeling as if I'm nearly ready to go",
-        "我感觉好像我快准备好走了",
-        null,
-        2
-      ],
-      [
-        "as if I'm nearly ready to go and meet other people",
-        "好像我快准备好走去认识其他人",
-        null,
-        3
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go",
-        "我喜欢感觉好像我快准备好走了",
-        null,
-        4
-      ],
-      [
-        "I don't want to stop feeling as if I'm nearly ready to go",
-        "我不想停止感觉好像我快准备好走了",
-        null,
-        5
-      ],
-      [
-        "I want to come back later as if I'm nearly ready to go",
-        "我想晚点回来好像我快准备好走了",
-        null,
-        6
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go and speak Chinese",
-        "我喜欢感觉好像我快准备好走去说中文",
-        null,
-        6
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go and meet everyone",
-        "我喜欢感觉好像我快准备好走去见大家",
-        null,
-        6
-      ],
-      [
-        "She wants to find out if I'm feeling as if I'm nearly ready to go",
-        "她想找出我是不是感觉好像我快准备好走了",
-        null,
-        7
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go before I have to",
-        "我喜欢感觉好像我快准备好在我必须之前走",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 1,
-      "quite_short_3": 1,
-      "longer_4_5": 2,
-      "long_6_plus": 6
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0026L04": {
-    "lego": [
-      "I'm nearly ready to go",
-      "我快准备好走了"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "I like feeling",
-        "我喜欢感觉"
-      ],
-      [
-        "feeling as if",
-        "感觉好像"
-      ],
-      [
-        "as if I'm nearly ready to go",
-        "好像我快准备好走了"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "I'm nearly ready to go",
-        "我快准备好走了",
-        null,
-        5
-      ],
-      [
-        "I'm nearly ready to go now",
-        "我快准备好现在走了",
-        null,
-        2
-      ],
-      [
-        "I think I'm nearly ready to go",
-        "我想我快准备好走了",
-        null,
-        3
-      ],
-      [
-        "I'm nearly ready to go and meet other people",
-        "我快准备好走去认识其他人",
-        null,
-        4
-      ],
-      [
-        "I'm nearly ready to go before I have to",
-        "我快准备好在我必须之前走",
-        null,
-        4
-      ],
-      [
-        "I'm feeling as if I'm nearly ready to go",
-        "我感觉好像我快准备好走了",
-        null,
-        5
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go",
-        "我喜欢感觉好像我快准备好走了",
-        null,
-        5
-      ],
-      [
-        "I'm nearly ready to go and speak Chinese with everyone",
-        "我快准备好走去和大家说中文",
-        null,
-        6
-      ],
-      [
-        "I want to meet you before I'm nearly ready to go",
-        "我想要在我快准备好走之前见你",
-        null,
-        6
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go and meet people who speak Chinese",
-        "我喜欢感觉好像我快准备好走去认识会说中文的人",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 1,
-      "quite_short_3": 1,
-      "longer_4_5": 3,
-      "long_6_plus": 5
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
   },
   "S0026L05": {
-    "lego": [
-      "nearly ready",
-      "快准备好"
-    ],
+    "lego": ["nearly ready","快准备好"],
     "type": "M",
-    "current_seed_legos_available": [
-      [
-        "I like feeling",
-        "我喜欢感觉"
-      ],
-      [
-        "feeling as if",
-        "感觉好像"
-      ],
-      [
-        "as if I'm nearly ready to go",
-        "好像我快准备好走了"
-      ],
-      [
-        "I'm nearly ready to go",
-        "我快准备好走了"
-      ]
-    ],
+    "current_seed_legos_available": [["I like feeling","我喜欢感觉"],["feeling as if","感觉好像"],["as if I'm nearly ready to go","好像我快准备好走了"],["I'm nearly ready to go","我快准备好走了"]],
     "is_final_lego": false,
     "practice_phrases": [
-      [
-        "nearly ready",
-        "快准备好",
-        null,
-        2
-      ],
-      [
-        "I'm nearly ready",
-        "我快准备好",
-        null,
-        2
-      ],
-      [
-        "nearly ready to speak Chinese",
-        "快准备好说中文",
-        null,
-        3
-      ],
-      [
-        "I'm nearly ready to meet other people",
-        "我快准备好认识其他人",
-        null,
-        3
-      ],
-      [
-        "I'm nearly ready to go before I have to",
-        "我快准备好在我必须之前走",
-        null,
-        4
-      ],
-      [
-        "She's nearly ready to come back with everyone",
-        "她快准备好和大家回来",
-        null,
-        4
-      ],
-      [
-        "I'm feeling as if I'm nearly ready",
-        "我感觉好像我快准备好",
-        null,
-        4
-      ],
-      [
-        "I like feeling as if I'm nearly ready to speak Chinese with you",
-        "我喜欢感觉好像我快准备好和你说中文",
-        null,
-        6
-      ],
-      [
-        "I want to find out if you're nearly ready to go",
-        "我想找出你是不是快准备好走了",
-        null,
-        6
-      ],
-      [
-        "I like feeling as if I'm nearly ready to meet people who speak Chinese",
-        "我喜欢感觉好像我快准备好认识会说中文的人",
-        null,
-        6
-      ]
+      ["nearly ready", "快准备好", null, 2],
+      ["I'm nearly ready", "我快准备好", null, 1],
+      ["nearly ready to speak", "快准备好说话", null, 3],
+      ["nearly ready to go", "快准备好走", null, 3],
+      ["You're nearly ready to help me", "你快准备好帮我", null, 4],
+      ["He's nearly ready to meet", "他快准备好见面", null, 4],
+      ["I'm nearly ready to learn his name", "我快准备好学会他的名字", null, 4],
+      ["She's nearly ready to find out what the answer is", "她快准备好找出答案是什么", null, 5],
+      ["We're nearly ready to meet at six o'clock this evening", "我们快准备好今天晚上六点见面", null, 6],
+      ["I like feeling as if I'm nearly ready to go", "我喜欢感觉好像我快准备好走了", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -499,123 +122,31 @@
       "longer_4_5": 3,
       "long_6_plus": 3
     },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
+    "components": [[null,null],[null,null]]
   },
   "S0026L06": {
-    "lego": [
-      "ready to go",
-      "准备好走"
-    ],
+    "lego": ["ready to go","准备好走"],
     "type": "M",
-    "current_seed_legos_available": [
-      [
-        "I like feeling",
-        "我喜欢感觉"
-      ],
-      [
-        "feeling as if",
-        "感觉好像"
-      ],
-      [
-        "as if I'm nearly ready to go",
-        "好像我快准备好走了"
-      ],
-      [
-        "I'm nearly ready to go",
-        "我快准备好走了"
-      ],
-      [
-        "nearly ready",
-        "快准备好"
-      ]
-    ],
+    "current_seed_legos_available": [["I like feeling","我喜欢感觉"],["feeling as if","感觉好像"],["as if I'm nearly ready to go","好像我快准备好走了"],["I'm nearly ready to go","我快准备好走了"],["nearly ready","快准备好"]],
     "is_final_lego": true,
     "practice_phrases": [
-      [
-        "ready to go",
-        "准备好走",
-        null,
-        2
-      ],
-      [
-        "I'm ready to go",
-        "我准备好走",
-        null,
-        2
-      ],
-      [
-        "ready to go and meet other people",
-        "准备好走去认识其他人",
-        null,
-        3
-      ],
-      [
-        "I'm ready to go before I have to",
-        "我准备好在我必须之前走",
-        null,
-        4
-      ],
-      [
-        "I'm nearly ready to go and speak Chinese",
-        "我快准备好走去说中文",
-        null,
-        4
-      ],
-      [
-        "I'm feeling as if I'm ready to go",
-        "我感觉好像我准备好走",
-        null,
-        4
-      ],
-      [
-        "I want to be ready to go before six o'clock",
-        "我想要在六点之前准备好走",
-        null,
-        5
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go",
-        "我喜欢感觉好像我快准备好走",
-        null,
-        5
-      ],
-      [
-        "I want you to help me be ready to go before I have to",
-        "我想要你帮我在我必须之前准备好走",
-        null,
-        6
-      ],
-      [
-        "I like feeling as if I'm nearly ready to go.",
-        "我喜欢感觉好像我快准备好走了。",
-        null,
-        6
-      ]
+      ["ready to go", "准备好走", null, 2],
+      ["I'm ready to go", "我准备好走", null, 2],
+      ["ready to go and meet", "准备好走去见面", null, 3],
+      ["Are you ready to go", "你准备好走吗", null, 3],
+      ["He's ready to go later", "他准备好晚点走", null, 4],
+      ["I'm ready to go before I have to go", "我准备好在我必须走之前走", null, 5],
+      ["She's ready to go and help other people", "她准备好走去帮其他人", null, 5],
+      ["We're ready to go and meet at six o'clock", "我们准备好走去六点见面", null, 5],
+      ["I'm nearly ready to go but I don't want to stop talking", "我快准备好走了但我不想停止说话", null, 6],
+      ["I like feeling as if I'm nearly ready to go.", "我喜欢感觉好像我快准备好走了。", null, 6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
-      "quite_short_3": 1,
-      "longer_4_5": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
       "long_6_plus": 3
     },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
+    "components": [[null,null],[null,null]]
   }
 }
