@@ -1,0 +1,734 @@
+{
+  "S0335L01": {
+    "lego": [
+      "I think",
+      "我觉得"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I think",
+        "我觉得",
+        null,
+        1
+      ],
+      [
+        "I think yes",
+        "我觉得是的",
+        null,
+        2
+      ],
+      [
+        "I think it's important",
+        "我觉得这很重要",
+        null,
+        3
+      ],
+      [
+        "I think he can build",
+        "我觉得他可以建立",
+        null,
+        3
+      ],
+      [
+        "I think she needs to consider",
+        "我觉得她需要考虑",
+        null,
+        4
+      ],
+      [
+        "I think he can hold it",
+        "我觉得他可以抱它",
+        null,
+        4
+      ],
+      [
+        "I think she ought to provide answers",
+        "我觉得她应该提供答案",
+        null,
+        5
+      ],
+      [
+        "I think he can build a new life",
+        "我觉得他可以建立新生活",
+        null,
+        5
+      ],
+      [
+        "I think she needs to spend time with the group",
+        "我觉得她需要和小组花时间",
+        null,
+        6
+      ],
+      [
+        "I think he can let you hold the kitten",
+        "我觉得他可以让你抱那只小猫",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "觉得",
+        "think"
+      ]
+    ]
+  },
+  "S0335L02": {
+    "lego": [
+      "he can",
+      "他可以"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0335L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "He can",
+        "他可以",
+        null,
+        1
+      ],
+      [
+        "He can build",
+        "他可以建立",
+        null,
+        2
+      ],
+      [
+        "I think he can help",
+        "我觉得他可以帮",
+        null,
+        3
+      ],
+      [
+        "He can provide answers",
+        "他可以提供答案",
+        null,
+        3
+      ],
+      [
+        "I think he can build new",
+        "我觉得他可以建立新的",
+        null,
+        4
+      ],
+      [
+        "He can hold the kitten today",
+        "他可以今天抱那只小猫",
+        null,
+        4
+      ],
+      [
+        "I think he can provide important answers",
+        "我觉得他可以提供重要的答案",
+        null,
+        5
+      ],
+      [
+        "He can build a new life for her",
+        "他可以为她建立新生活",
+        null,
+        5
+      ],
+      [
+        "I think he can spend time with the group",
+        "我觉得他可以和小组花时间",
+        null,
+        6
+      ],
+      [
+        "He can let you hold the kitten for his sister",
+        "他可以让你为他妹妹抱那只小猫",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "可以",
+        "can"
+      ]
+    ]
+  },
+  "S0335L03": {
+    "lego": [
+      "can add",
+      "可以增加"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0335L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0335L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Can add",
+        "可以增加",
+        null,
+        1
+      ],
+      [
+        "He can add",
+        "他可以增加",
+        null,
+        2
+      ],
+      [
+        "I think she can add",
+        "我觉得她可以增加",
+        null,
+        3
+      ],
+      [
+        "He can add something",
+        "他可以增加一些东西",
+        null,
+        3
+      ],
+      [
+        "I think he can add new",
+        "我觉得他可以增加新的",
+        null,
+        4
+      ],
+      [
+        "She can add important answers",
+        "她可以增加重要的答案",
+        null,
+        4
+      ],
+      [
+        "I think he can add something important",
+        "我觉得他可以增加重要的东西",
+        null,
+        5
+      ],
+      [
+        "He can add a new life for her",
+        "他可以为她增加新生活",
+        null,
+        5
+      ],
+      [
+        "I think she can add time with the group",
+        "我觉得她可以增加和小组的时间",
+        null,
+        6
+      ],
+      [
+        "He can add all the answers for the company",
+        "他可以为公司增加所有的答案",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "可以",
+        "can"
+      ],
+      [
+        "增加",
+        "add"
+      ]
+    ]
+  },
+  "S0335L04": {
+    "lego": [
+      "add",
+      "增加"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0335L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0335L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0335L03",
+        "known": "can add",
+        "target": "可以增加",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Add",
+        "增加",
+        null,
+        1
+      ],
+      [
+        "Can add",
+        "可以增加",
+        null,
+        2
+      ],
+      [
+        "He can add something",
+        "他可以增加一些东西",
+        null,
+        3
+      ],
+      [
+        "I think he can add",
+        "我觉得他可以增加",
+        null,
+        3
+      ],
+      [
+        "She can add important answers",
+        "她可以增加重要的答案",
+        null,
+        4
+      ],
+      [
+        "He can add time today",
+        "他可以今天增加时间",
+        null,
+        4
+      ],
+      [
+        "I think she can add something important",
+        "我觉得她可以增加重要的东西",
+        null,
+        5
+      ],
+      [
+        "He can add new life for his sister",
+        "他可以为他妹妹增加新生活",
+        null,
+        5
+      ],
+      [
+        "I think he can add all the important answers",
+        "我觉得他可以增加所有重要的答案",
+        null,
+        6
+      ],
+      [
+        "She can add much time with the group today",
+        "她可以今天和小组增加很多时间",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0335L05": {
+    "lego": [
+      "some valuable ideas",
+      "一些有价值的想法"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0335L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0335L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0335L03",
+        "known": "can add",
+        "target": "可以增加",
+        "type": "M"
+      },
+      {
+        "id": "S0335L04",
+        "known": "add",
+        "target": "增加",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Some valuable ideas",
+        "一些有价值的想法",
+        null,
+        1
+      ],
+      [
+        "Add some valuable ideas",
+        "增加一些有价值的想法",
+        null,
+        2
+      ],
+      [
+        "He can add valuable ideas",
+        "他可以增加有价值的想法",
+        null,
+        3
+      ],
+      [
+        "She has some valuable ideas",
+        "她有一些有价值的想法",
+        null,
+        3
+      ],
+      [
+        "I think he can add ideas",
+        "我觉得他可以增加想法",
+        null,
+        4
+      ],
+      [
+        "He can add some important ideas",
+        "他可以增加一些重要的想法",
+        null,
+        4
+      ],
+      [
+        "I think she can add valuable ideas",
+        "我觉得她可以增加有价值的想法",
+        null,
+        5
+      ],
+      [
+        "He can add some valuable ideas today",
+        "他可以今天增加一些有价值的想法",
+        null,
+        5
+      ],
+      [
+        "I think he can add some valuable ideas",
+        "我觉得他可以增加一些有价值的想法",
+        null,
+        6
+      ],
+      [
+        "She said he can add some very important ideas",
+        "她说他可以增加一些很重要的想法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "一些",
+        "some"
+      ],
+      [
+        "有价值的",
+        "valuable"
+      ],
+      [
+        "想法",
+        "ideas"
+      ]
+    ]
+  },
+  "S0335L06": {
+    "lego": [
+      "valuable ideas",
+      "有价值的想法"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0335L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0335L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0335L03",
+        "known": "can add",
+        "target": "可以增加",
+        "type": "M"
+      },
+      {
+        "id": "S0335L04",
+        "known": "add",
+        "target": "增加",
+        "type": "A"
+      },
+      {
+        "id": "S0335L05",
+        "known": "some valuable ideas",
+        "target": "一些有价值的想法",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Valuable ideas",
+        "有价值的想法",
+        null,
+        1
+      ],
+      [
+        "Some valuable ideas",
+        "一些有价值的想法",
+        null,
+        2
+      ],
+      [
+        "Add valuable ideas",
+        "增加有价值的想法",
+        null,
+        3
+      ],
+      [
+        "He has valuable ideas",
+        "他有有价值的想法",
+        null,
+        3
+      ],
+      [
+        "I think he can add",
+        "我觉得他可以增加",
+        null,
+        4
+      ],
+      [
+        "She can add valuable ideas",
+        "她可以增加有价值的想法",
+        null,
+        4
+      ],
+      [
+        "I think he can add valuable ideas",
+        "我觉得他可以增加有价值的想法",
+        null,
+        5
+      ],
+      [
+        "He can add some valuable ideas today",
+        "他可以今天增加一些有价值的想法",
+        null,
+        5
+      ],
+      [
+        "I think she needs to consider valuable ideas",
+        "我觉得她需要考虑有价值的想法",
+        null,
+        6
+      ],
+      [
+        "He said she can add some very valuable ideas",
+        "他说她可以增加一些很有价值的想法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "有价值的",
+        "valuable"
+      ],
+      [
+        "想法",
+        "ideas"
+      ]
+    ]
+  },
+  "S0335L07": {
+    "lego": [
+      "ideas",
+      "想法"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0335L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0335L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0335L03",
+        "known": "can add",
+        "target": "可以增加",
+        "type": "M"
+      },
+      {
+        "id": "S0335L04",
+        "known": "add",
+        "target": "增加",
+        "type": "A"
+      },
+      {
+        "id": "S0335L05",
+        "known": "some valuable ideas",
+        "target": "一些有价值的想法",
+        "type": "M"
+      },
+      {
+        "id": "S0335L06",
+        "known": "valuable ideas",
+        "target": "有价值的想法",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Ideas",
+        "想法",
+        null,
+        1
+      ],
+      [
+        "Valuable ideas",
+        "有价值的想法",
+        null,
+        2
+      ],
+      [
+        "Some valuable ideas",
+        "一些有价值的想法",
+        null,
+        3
+      ],
+      [
+        "Add valuable ideas",
+        "增加有价值的想法",
+        null,
+        3
+      ],
+      [
+        "He can add some ideas",
+        "他可以增加一些想法",
+        null,
+        4
+      ],
+      [
+        "She has valuable ideas",
+        "她有有价值的想法",
+        null,
+        4
+      ],
+      [
+        "I think he can add valuable ideas",
+        "我觉得他可以增加有价值的想法",
+        null,
+        5
+      ],
+      [
+        "He can add some important ideas today",
+        "他可以今天增加一些重要的想法",
+        null,
+        5
+      ],
+      [
+        "I think he can add some valuable ideas",
+        "我觉得他可以增加一些有价值的想法",
+        null,
+        6
+      ],
+      [
+        "I think that he can add some valuable ideas.",
+        "我觉得他可以增加一些有价值的想法。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

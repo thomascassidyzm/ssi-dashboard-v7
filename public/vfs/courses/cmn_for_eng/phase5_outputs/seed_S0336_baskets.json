@@ -1,0 +1,605 @@
+{
+  "S0336L01": {
+    "lego": [
+      "I don't think",
+      "我觉得"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I don't think",
+        "我觉得",
+        null,
+        1
+      ],
+      [
+        "I don't think so",
+        "我不觉得",
+        null,
+        2
+      ],
+      [
+        "I don't think it's important",
+        "我觉得这不是很重要",
+        null,
+        3
+      ],
+      [
+        "I don't think she can help",
+        "我觉得她不能帮",
+        null,
+        3
+      ],
+      [
+        "I don't think he needs to",
+        "我觉得他不需要",
+        null,
+        4
+      ],
+      [
+        "I don't think she can build",
+        "我觉得她不能建立",
+        null,
+        4
+      ],
+      [
+        "I don't think she ought to provide answers",
+        "我觉得她不应该提供答案",
+        null,
+        5
+      ],
+      [
+        "I don't think he can add valuable ideas",
+        "我觉得他不能增加有价值的想法",
+        null,
+        5
+      ],
+      [
+        "I don't think she can spend time with the group",
+        "我觉得她不能和小组花时间",
+        null,
+        6
+      ],
+      [
+        "I don't think he needs to consider all the problems",
+        "我觉得他不需要考虑所有的问题",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "觉得",
+        "think"
+      ]
+    ]
+  },
+  "S0336L02": {
+    "lego": [
+      "she can't",
+      "她不能"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0336L01",
+        "known": "I don't think",
+        "target": "我觉得",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "She can't",
+        "她不能",
+        null,
+        1
+      ],
+      [
+        "She can't help",
+        "她不能帮",
+        null,
+        2
+      ],
+      [
+        "I don't think she can",
+        "我觉得她不能",
+        null,
+        3
+      ],
+      [
+        "She can't provide answers",
+        "她不能提供答案",
+        null,
+        3
+      ],
+      [
+        "I don't think she can build",
+        "我觉得她不能建立",
+        null,
+        4
+      ],
+      [
+        "She can't spend much time",
+        "她不能花很多时间",
+        null,
+        4
+      ],
+      [
+        "I don't think she can add ideas",
+        "我觉得她不能增加想法",
+        null,
+        5
+      ],
+      [
+        "She can't provide all the answers today",
+        "她今天不能提供所有的答案",
+        null,
+        5
+      ],
+      [
+        "I don't think she can spend time with the group",
+        "我觉得她不能和小组花时间",
+        null,
+        6
+      ],
+      [
+        "She can't build a new life for the company",
+        "她不能为公司建立新生活",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "不能",
+        "can't"
+      ]
+    ]
+  },
+  "S0336L03": {
+    "lego": [
+      "can't open",
+      "不能打开"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0336L01",
+        "known": "I don't think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0336L02",
+        "known": "she can't",
+        "target": "她不能",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Can't open",
+        "不能打开",
+        null,
+        1
+      ],
+      [
+        "She can't open",
+        "她不能打开",
+        null,
+        2
+      ],
+      [
+        "I can't open it",
+        "我不能打开它",
+        null,
+        3
+      ],
+      [
+        "He can't open today",
+        "他今天不能打开",
+        null,
+        3
+      ],
+      [
+        "I don't think she can open",
+        "我觉得她不能打开",
+        null,
+        4
+      ],
+      [
+        "She can't open it today",
+        "她今天不能打开它",
+        null,
+        4
+      ],
+      [
+        "I don't think he can open something",
+        "我觉得他不能打开东西",
+        null,
+        5
+      ],
+      [
+        "She can't open it for the group",
+        "她不能为小组打开它",
+        null,
+        5
+      ],
+      [
+        "I don't think she can open something important",
+        "我觉得她不能打开重要的东西",
+        null,
+        6
+      ],
+      [
+        "He said she can't open it for the company",
+        "他说她不能为公司打开它",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "不能",
+        "can't"
+      ],
+      [
+        "打开",
+        "open"
+      ]
+    ]
+  },
+  "S0336L04": {
+    "lego": [
+      "open",
+      "打开"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0336L01",
+        "known": "I don't think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0336L02",
+        "known": "she can't",
+        "target": "她不能",
+        "type": "M"
+      },
+      {
+        "id": "S0336L03",
+        "known": "can't open",
+        "target": "不能打开",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Open",
+        "打开",
+        null,
+        1
+      ],
+      [
+        "Can't open",
+        "不能打开",
+        null,
+        2
+      ],
+      [
+        "She can't open it",
+        "她不能打开它",
+        null,
+        3
+      ],
+      [
+        "I can't open today",
+        "我今天不能打开",
+        null,
+        3
+      ],
+      [
+        "I don't think she can open",
+        "我觉得她不能打开",
+        null,
+        4
+      ],
+      [
+        "He can't open it today",
+        "他今天不能打开它",
+        null,
+        4
+      ],
+      [
+        "I don't think he can open something",
+        "我觉得他不能打开东西",
+        null,
+        5
+      ],
+      [
+        "She can't open it for me today",
+        "她今天不能为我打开它",
+        null,
+        5
+      ],
+      [
+        "I don't think she can open something important",
+        "我觉得她不能打开重要的东西",
+        null,
+        6
+      ],
+      [
+        "He said she can't open it for the company",
+        "他说她不能为公司打开它",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0336L05": {
+    "lego": [
+      "open the door",
+      "打开门"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0336L01",
+        "known": "I don't think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0336L02",
+        "known": "she can't",
+        "target": "她不能",
+        "type": "M"
+      },
+      {
+        "id": "S0336L03",
+        "known": "can't open",
+        "target": "不能打开",
+        "type": "M"
+      },
+      {
+        "id": "S0336L04",
+        "known": "open",
+        "target": "打开",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Open the door",
+        "打开门",
+        null,
+        1
+      ],
+      [
+        "Can't open the door",
+        "不能打开门",
+        null,
+        2
+      ],
+      [
+        "She can't open the door",
+        "她不能打开门",
+        null,
+        3
+      ],
+      [
+        "I can open the door",
+        "我可以打开门",
+        null,
+        3
+      ],
+      [
+        "I don't think she can open",
+        "我觉得她不能打开",
+        null,
+        4
+      ],
+      [
+        "He can't open the door today",
+        "他今天不能打开门",
+        null,
+        4
+      ],
+      [
+        "I don't think she can open the door",
+        "我觉得她不能打开门",
+        null,
+        5
+      ],
+      [
+        "She can't open the door for me today",
+        "她今天不能为我打开门",
+        null,
+        5
+      ],
+      [
+        "I don't think he can open the door today",
+        "我觉得他今天不能打开门",
+        null,
+        6
+      ],
+      [
+        "He said she can't open the door for the group",
+        "他说她不能为小组打开门",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "打开",
+        "open"
+      ],
+      [
+        "门",
+        "the door"
+      ]
+    ]
+  },
+  "S0336L06": {
+    "lego": [
+      "door",
+      "门"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0336L01",
+        "known": "I don't think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0336L02",
+        "known": "she can't",
+        "target": "她不能",
+        "type": "M"
+      },
+      {
+        "id": "S0336L03",
+        "known": "can't open",
+        "target": "不能打开",
+        "type": "M"
+      },
+      {
+        "id": "S0336L04",
+        "known": "open",
+        "target": "打开",
+        "type": "A"
+      },
+      {
+        "id": "S0336L05",
+        "known": "open the door",
+        "target": "打开门",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Door",
+        "门",
+        null,
+        1
+      ],
+      [
+        "The door",
+        "门",
+        null,
+        2
+      ],
+      [
+        "Open the door",
+        "打开门",
+        null,
+        3
+      ],
+      [
+        "Can't open the door",
+        "不能打开门",
+        null,
+        3
+      ],
+      [
+        "She can't open the door",
+        "她不能打开门",
+        null,
+        4
+      ],
+      [
+        "I can open the door",
+        "我可以打开门",
+        null,
+        4
+      ],
+      [
+        "I don't think she can open the door",
+        "我觉得她不能打开门",
+        null,
+        5
+      ],
+      [
+        "He can't open the door for me today",
+        "他今天不能为我打开门",
+        null,
+        5
+      ],
+      [
+        "She said I can't open the door for her",
+        "她说我不能为她打开门",
+        null,
+        6
+      ],
+      [
+        "I don't think that she can open the door.",
+        "我觉得她不能打开门。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
