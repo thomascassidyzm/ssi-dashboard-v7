@@ -1,0 +1,34 @@
+{
+  "legos": {
+    "S0335L07": {
+      "lego": ["ideas", "想法"],
+      "type": "A",
+      "current_seed_legos_available": [
+        {"id": "S0335L03", "known": "can add", "target": "可以增加", "type": "M"},
+        {"id": "S0335L04", "known": "add", "target": "增加", "type": "A"},
+        {"id": "S0335L05", "known": "some valuable ideas", "target": "一些有价值的想法", "type": "M"},
+        {"id": "S0335L06", "known": "valuable ideas", "target": "有价值的想法", "type": "M"}
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["ideas", "想法", null, 1],
+        ["add ideas", "增加想法", null, 2],
+        ["He can add ideas", "他可以增加想法", null, 3],
+        ["Valuable ideas are important", "有价值的想法很重要", null, 3],
+        ["I think he can add ideas", "我觉得他可以增加想法", null, 4],
+        ["She can't provide ideas", "她不能提供想法", null, 4],
+        ["I think he can add some valuable ideas", "我觉得他可以增加一些有价值的想法", null, 5],
+        ["She said she can't provide all the ideas", "她说她不能提供所有的想法", null, 6],
+        ["I think she needs to offer another way and add ideas", "我觉得她需要提供另一种方法和增加想法", null, 7],
+        ["He can build a new life with valuable ideas", "他可以用有价值的想法建立新生活", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}
