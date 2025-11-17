@@ -1,0 +1,504 @@
+{
+  "legos": {
+    "S0478L01": {
+      "lego": [
+        "she has",
+        "她有"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "she has",
+          "她有",
+          null,
+          1
+        ],
+        [
+          "she has now",
+          "她现在有",
+          null,
+          2
+        ],
+        [
+          "she has a name",
+          "她有一个名字",
+          null,
+          3
+        ],
+        [
+          "she has a word",
+          "她有一个词",
+          null,
+          3
+        ],
+        [
+          "she has something to say",
+          "她有一些东西要说",
+          null,
+          4
+        ],
+        [
+          "she has a lot to learn",
+          "她有很多要学习",
+          null,
+          5
+        ],
+        [
+          "she has time to speak with you",
+          "她有时间和你说话",
+          null,
+          5
+        ],
+        [
+          "she has something important to explain",
+          "她有重要的东西要解释",
+          null,
+          5
+        ],
+        [
+          "she has a way to help people",
+          "她有一个方式帮助人们",
+          null,
+          6
+        ],
+        [
+          "she has the ability to understand everything",
+          "她有能力理解一切",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "她",
+          "she"
+        ],
+        [
+          "有",
+          "has"
+        ]
+      ]
+    },
+    "S0478L02": {
+      "lego": [
+        "a (measure word for hearts)",
+        "一颗"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0478L01",
+          "known": "she has",
+          "target": "她有",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "one",
+          "一颗",
+          null,
+          1
+        ],
+        [
+          "a heart",
+          "一颗心",
+          null,
+          2
+        ],
+        [
+          "she has a heart",
+          "她有一颗心",
+          null,
+          3
+        ],
+        [
+          "just one heart",
+          "只有一颗心",
+          null,
+          3
+        ],
+        [
+          "everyone has a heart",
+          "每个人有一颗心",
+          null,
+          4
+        ],
+        [
+          "I want to have a heart",
+          "我想要有一颗心",
+          null,
+          5
+        ],
+        [
+          "she has a good heart",
+          "她有一颗好心",
+          null,
+          4
+        ],
+        [
+          "a heart that understands people",
+          "一颗理解人们的心",
+          null,
+          5
+        ],
+        [
+          "she has a heart full of love",
+          "她有一颗充满爱的心",
+          null,
+          6
+        ],
+        [
+          "everyone needs a heart to feel things",
+          "每个人需要一颗心来感受事情",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "一",
+          "one"
+        ],
+        [
+          "颗",
+          "(measure word)"
+        ]
+      ]
+    },
+    "S0478L03": {
+      "lego": [
+        "kind heart",
+        "善良的心"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0478L01",
+          "known": "she has",
+          "target": "她有",
+          "type": "M"
+        },
+        {
+          "id": "S0478L02",
+          "known": "a (measure word for hearts)",
+          "target": "一颗",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "kind heart",
+          "善良的心",
+          null,
+          1
+        ],
+        [
+          "a kind heart",
+          "一颗善良的心",
+          null,
+          2
+        ],
+        [
+          "she has a kind heart",
+          "她有一颗善良的心",
+          null,
+          3
+        ],
+        [
+          "such a kind heart",
+          "这样一颗善良的心",
+          null,
+          3
+        ],
+        [
+          "people with a kind heart",
+          "有善良的心的人们",
+          null,
+          4
+        ],
+        [
+          "everyone needs a kind heart",
+          "每个人需要一颗善良的心",
+          null,
+          5
+        ],
+        [
+          "she has such a kind heart inside",
+          "她里面有一颗善良的心",
+          null,
+          5
+        ],
+        [
+          "a kind heart helps other people",
+          "一颗善良的心帮助其他人",
+          null,
+          5
+        ],
+        [
+          "I want to have a kind heart like hers",
+          "我想有一颗像她一样善良的心",
+          null,
+          8
+        ],
+        [
+          "she has the most kind heart I know",
+          "她有我知道的最善良的心",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "善良",
+          "kind"
+        ],
+        [
+          "的",
+          "(attributive)"
+        ],
+        [
+          "心",
+          "heart"
+        ]
+      ]
+    },
+    "S0478L04": {
+      "lego": [
+        "kind",
+        "善良"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0478L01",
+          "known": "she has",
+          "target": "她有",
+          "type": "M"
+        },
+        {
+          "id": "S0478L02",
+          "known": "a (measure word for hearts)",
+          "target": "一颗",
+          "type": "M"
+        },
+        {
+          "id": "S0478L03",
+          "known": "kind heart",
+          "target": "善良的心",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "kind",
+          "善良",
+          null,
+          1
+        ],
+        [
+          "very kind",
+          "很善良",
+          null,
+          2
+        ],
+        [
+          "she is kind",
+          "她善良",
+          null,
+          2
+        ],
+        [
+          "kind to everyone",
+          "对每个人善良",
+          null,
+          3
+        ],
+        [
+          "she is very kind",
+          "她很善良",
+          null,
+          3
+        ],
+        [
+          "kind and helpful people",
+          "善良和乐于助人的人们",
+          null,
+          4
+        ],
+        [
+          "she is kind to other people",
+          "她对其他人善良",
+          null,
+          5
+        ],
+        [
+          "being kind is important to her",
+          "善良对她很重要",
+          null,
+          5
+        ],
+        [
+          "she has always been kind to everyone",
+          "她总是对每个人善良",
+          null,
+          6
+        ],
+        [
+          "the most kind person I have ever met",
+          "我遇到过的最善良的人",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "善良",
+          "kind"
+        ]
+      ]
+    },
+    "S0478L05": {
+      "lego": [
+        "heart",
+        "心"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0478L01",
+          "known": "she has",
+          "target": "她有",
+          "type": "M"
+        },
+        {
+          "id": "S0478L02",
+          "known": "a (measure word for hearts)",
+          "target": "一颗",
+          "type": "M"
+        },
+        {
+          "id": "S0478L03",
+          "known": "kind heart",
+          "target": "善良的心",
+          "type": "M"
+        },
+        {
+          "id": "S0478L04",
+          "known": "kind",
+          "target": "善良",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "heart",
+          "心",
+          null,
+          1
+        ],
+        [
+          "a heart",
+          "一颗心",
+          null,
+          2
+        ],
+        [
+          "in the heart",
+          "在心里",
+          null,
+          3
+        ],
+        [
+          "from the heart",
+          "从心里",
+          null,
+          3
+        ],
+        [
+          "with all my heart",
+          "用我全部的心",
+          null,
+          4
+        ],
+        [
+          "the heart knows everything",
+          "心知道一切",
+          null,
+          4
+        ],
+        [
+          "she speaks from the heart",
+          "她从心里说话",
+          null,
+          5
+        ],
+        [
+          "a good heart helps other people",
+          "一颗好心帮助其他人",
+          null,
+          6
+        ],
+        [
+          "she listens with her whole heart",
+          "她用她全部的心听",
+          null,
+          6
+        ],
+        [
+          "She has such a kind heart.",
+          "她有一颗善良的心。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "心",
+          "heart"
+        ]
+      ]
+    }
+  }
+}
