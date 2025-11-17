@@ -1,0 +1,144 @@
+{
+  "S0492L02": {
+    "lego": [
+      "those places",
+      "那些地方"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Those places", "那些地方", null, 1],
+      ["I love those places", "我喜欢那些地方", null, 2],
+      ["Do you know those places", "你知道那些地方", null, 3],
+      ["I've been to those places", "我去过那些地方", null, 3],
+      ["Do you think about those places", "你想那些地方", null, 4],
+      ["I really love those places here", "我真的喜欢这里那些地方", null, 4],
+      ["Have you ever been to those places", "你去过那些地方吗", null, 5],
+      ["I think those places are very interesting", "我觉得那些地方很有趣", null, 5],
+      ["Do you think those places are good", "你觉得那些地方好吗", null, 6],
+      ["I want to go to those places tomorrow", "我想明天去那些地方", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "那些",
+        "those"
+      ],
+      [
+        "地方",
+        "places"
+      ]
+    ]
+  },
+  "S0492L03": {
+    "lego": [
+      "which of those places",
+      "那些地方中哪个"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0492L02",
+        "known": "those places",
+        "target": "那些地方",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Which of those places", "那些地方中哪个", null, 1],
+      ["Which one do you love", "你喜欢哪个", null, 2],
+      ["Which of those places is good", "那些地方中哪个好", null, 3],
+      ["Which one do you think", "你觉得哪个", null, 3],
+      ["Which of those places is better", "那些地方中哪个更好", null, 4],
+      ["Which one do you think is good", "你觉得哪个好", null, 4],
+      ["Which of those places do you love", "你喜欢那些地方中哪个", null, 5],
+      ["Which of those places should I visit", "我应该去那些地方中哪个", null, 5],
+      ["Which of those places do you think is good", "你觉得那些地方中哪个好", null, 6],
+      ["Which of those places do you really love", "你真的喜欢那些地方中哪个", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "那些",
+        "those"
+      ],
+      [
+        "地方",
+        "places"
+      ],
+      [
+        "中",
+        "among/in"
+      ],
+      [
+        "哪个",
+        "which one"
+      ]
+    ]
+  },
+  "S0492L04": {
+    "lego": [
+      "the most interesting",
+      "最有趣"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0492L02",
+        "known": "those places",
+        "target": "那些地方",
+        "type": "M"
+      },
+      {
+        "id": "S0492L03",
+        "known": "which of those places",
+        "target": "那些地方中哪个",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["The most interesting", "最有趣", null, 1],
+      ["This is most interesting", "这最有趣", null, 2],
+      ["I think this is interesting", "我觉得这很有趣", null, 3],
+      ["Which one is most interesting", "哪个最有趣", null, 3],
+      ["This place is most interesting", "这个地方最有趣", null, 4],
+      ["Do you think this is interesting", "你觉得这有趣吗", null, 4],
+      ["I think those places are interesting", "我觉得那些地方有趣", null, 5],
+      ["Which place do you think is interesting", "你觉得哪个地方有趣", null, 5],
+      ["Which of those places is the most interesting", "那些地方中哪个最有趣", null, 6],
+      ["Which of those places do you think is the most interesting?", "你觉得那些地方中哪个最有趣？", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "最",
+        "most"
+      ],
+      [
+        "有趣",
+        "interesting"
+      ]
+    ]
+  }
+}
