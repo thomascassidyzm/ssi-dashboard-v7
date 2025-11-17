@@ -1,0 +1,733 @@
+{
+  "S0497L01": {
+    "lego": [
+      "that sounds",
+      "听起来"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "That sounds beautiful.",
+        "听起来美。",
+        null,
+        2
+      ],
+      [
+        "That sounds interesting.",
+        "听起来有趣。",
+        null,
+        2
+      ],
+      [
+        "That sounds really beautiful.",
+        "听起来真正美。",
+        null,
+        3
+      ],
+      [
+        "I think that sounds beautiful.",
+        "我觉得听起来美。",
+        null,
+        3
+      ],
+      [
+        "That sounds like the most interesting show.",
+        "听起来像最有趣的演出。",
+        null,
+        4
+      ],
+      [
+        "If you try, that sounds beautiful.",
+        "如果你努力，听起来美。",
+        null,
+        4
+      ],
+      [
+        "Then that sounds interesting.",
+        "那么听起来有趣。",
+        null,
+        3
+      ],
+      [
+        "That sounds like the way you try to help.",
+        "听起来像你努力帮助的方式。",
+        null,
+        5
+      ],
+      [
+        "I love the way that sounds.",
+        "我喜欢听起来的方式。",
+        null,
+        4
+      ],
+      [
+        "That sounds really important when it matters.",
+        "听起来在它重要的时候真正重要。",
+        null,
+        6
+      ],
+      [
+        "Which of those places sounds the most interesting?",
+        "那些地方中哪个听起来最有趣？",
+        null,
+        5
+      ],
+      [
+        "What happens next? That sounds interesting.",
+        "接下来会发生什么？听起来有趣。",
+        null,
+        5
+      ],
+      [
+        "After the first part of the show, that sounds beautiful.",
+        "在演出的第一部分之后，听起来美。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 5,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0497L01",
+      "seed_context": {
+        "known": "听起来好像你需要睡一觉。",
+        "target": "That sounds as though you need to get some sleep."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0497L02": {
+    "lego": [
+      "as though",
+      "好像"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "that sounds",
+        "听起来"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "As though you try.",
+        "好像你努力。",
+        null,
+        2
+      ],
+      [
+        "As though it's beautiful.",
+        "好像它美。",
+        null,
+        2
+      ],
+      [
+        "As though you lose.",
+        "好像你输。",
+        null,
+        2
+      ],
+      [
+        "It's as though you really try to help.",
+        "好像你真正努力帮助。",
+        null,
+        4
+      ],
+      [
+        "That sounds as though you love it.",
+        "听起来好像你喜欢它。",
+        null,
+        4
+      ],
+      [
+        "As though you trust anyone.",
+        "好像你相信任何人。",
+        null,
+        3
+      ],
+      [
+        "I think it's as though you're planning to lose.",
+        "我觉得好像你打算输。",
+        null,
+        5
+      ],
+      [
+        "As though what happens next really matters.",
+        "好像接下来会发生的真正重要。",
+        null,
+        5
+      ],
+      [
+        "That sounds as though the show is really interesting.",
+        "听起来好像演出真正有趣。",
+        null,
+        5
+      ],
+      [
+        "As though you're standing on the other side.",
+        "好像你站在另一边。",
+        null,
+        4
+      ],
+      [
+        "It's as though you're under the bridge right now.",
+        "好像你现在在桥下。",
+        null,
+        5
+      ],
+      [
+        "Then it's as though you will never trust anyone again.",
+        "那么好像你再也不会相信任何人。",
+        null,
+        7
+      ],
+      [
+        "As though you're inside the most interesting place.",
+        "好像你在最有趣的地方里面。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 7,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0497L02",
+      "seed_context": {
+        "known": "听起来好像你需要睡一觉。",
+        "target": "That sounds as though you need to get some sleep."
+      }
+    }
+  },
+  "S0497L03": {
+    "lego": [
+      "sounds as though",
+      "听起来好像"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "that sounds",
+        "听起来"
+      ],
+      [
+        "as though",
+        "好像"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "That sounds as though you try.",
+        "听起来好像你努力。",
+        null,
+        3
+      ],
+      [
+        "It sounds as though you lose.",
+        "听起来好像你输。",
+        null,
+        3
+      ],
+      [
+        "That sounds as though it's beautiful.",
+        "听起来好像它美。",
+        null,
+        3
+      ],
+      [
+        "It sounds as though you really love it.",
+        "听起来好像你真正喜欢它。",
+        null,
+        4
+      ],
+      [
+        "That sounds as though you trust anyone.",
+        "听起来好像你相信任何人。",
+        null,
+        4
+      ],
+      [
+        "It sounds as though what happens next really matters.",
+        "听起来好像接下来会发生的真正重要。",
+        null,
+        6
+      ],
+      [
+        "That sounds as though you're planning to help.",
+        "听起来好像你打算帮助。",
+        null,
+        4
+      ],
+      [
+        "It sounds as though the show is the most interesting.",
+        "听起来好像演出最有趣。",
+        null,
+        5
+      ],
+      [
+        "That sounds as though you're standing on the other side of that yellow line.",
+        "听起来好像你站在那条黄线的另一边。",
+        null,
+        8
+      ],
+      [
+        "It sounds as though you will never trust anyone again.",
+        "听起来好像你再也不会相信任何人。",
+        null,
+        6
+      ],
+      [
+        "That sounds as though you're inside the entrance.",
+        "听起来好像你在入口里面。",
+        null,
+        5
+      ],
+      [
+        "It sounds as though the first part of the show really matters.",
+        "听起来好像演出的第一部分真正重要。",
+        null,
+        7
+      ],
+      [
+        "That sounds as though you love the way I try to help.",
+        "听起来好像你喜欢我努力帮助的方式。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 3,
+      "longer_4_5": 5,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0497L03",
+      "seed_context": {
+        "known": "听起来好像你需要睡一觉。",
+        "target": "That sounds as though you need to get some sleep."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0497L04": {
+    "lego": [
+      "you need",
+      "你需要"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "that sounds",
+        "听起来"
+      ],
+      [
+        "as though",
+        "好像"
+      ],
+      [
+        "sounds as though",
+        "听起来好像"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "You need help.",
+        "你需要帮助。",
+        null,
+        2
+      ],
+      [
+        "I think you need help.",
+        "我觉得你需要帮助。",
+        null,
+        3
+      ],
+      [
+        "You need to try.",
+        "你需要努力。",
+        null,
+        2
+      ],
+      [
+        "If you need help.",
+        "如果你需要帮助。",
+        null,
+        3
+      ],
+      [
+        "You need a strong cup of coffee.",
+        "你需要一杯浓咖啡。",
+        null,
+        4
+      ],
+      [
+        "Then you need to trust anyone.",
+        "那么你需要相信任何人。",
+        null,
+        4
+      ],
+      [
+        "It sounds as though you need help.",
+        "听起来好像你需要帮助。",
+        null,
+        4
+      ],
+      [
+        "I love the way you need to help.",
+        "我喜欢你需要帮助的方式。",
+        null,
+        5
+      ],
+      [
+        "You need to try when it really matters.",
+        "你需要在它真正重要的时候努力。",
+        null,
+        6
+      ],
+      [
+        "What you need is really important.",
+        "你需要的真正重要。",
+        null,
+        4
+      ],
+      [
+        "You need to stand on the other side of the bridge.",
+        "你需要站在桥的另一边。",
+        null,
+        6
+      ],
+      [
+        "That sounds as though you need the most interesting show.",
+        "听起来好像你需要最有趣的演出。",
+        null,
+        6
+      ],
+      [
+        "I'm not planning to give you what you need.",
+        "我不打算给你你需要的。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0497L04",
+      "seed_context": {
+        "known": "听起来好像你需要睡一觉。",
+        "target": "That sounds as though you need to get some sleep."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0497L05": {
+    "lego": [
+      "get some sleep",
+      "睡一觉"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "that sounds",
+        "听起来"
+      ],
+      [
+        "as though",
+        "好像"
+      ],
+      [
+        "sounds as though",
+        "听起来好像"
+      ],
+      [
+        "you need",
+        "你需要"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Get some sleep.",
+        "睡一觉。",
+        null,
+        1
+      ],
+      [
+        "You need to get some sleep.",
+        "你需要睡一觉。",
+        null,
+        3
+      ],
+      [
+        "I think you need to get some sleep.",
+        "我觉得你需要睡一觉。",
+        null,
+        4
+      ],
+      [
+        "If you don't get some sleep.",
+        "如果你不睡一觉。",
+        null,
+        3
+      ],
+      [
+        "Then get some sleep.",
+        "那么睡一觉。",
+        null,
+        2
+      ],
+      [
+        "I love to get some sleep.",
+        "我喜欢睡一觉。",
+        null,
+        3
+      ],
+      [
+        "That sounds as though you need to get some sleep.",
+        "听起来好像你需要睡一觉。",
+        null,
+        5
+      ],
+      [
+        "You really need to get some sleep right now.",
+        "你现在真正需要睡一觉。",
+        null,
+        5
+      ],
+      [
+        "After the show, you need to get some sleep.",
+        "在演出之后，你需要睡一觉。",
+        null,
+        5
+      ],
+      [
+        "I'm not planning to get some sleep when it really matters.",
+        "我不打算在真正重要的时候睡一觉。",
+        null,
+        7
+      ],
+      [
+        "Which of those places do you think is best to get some sleep?",
+        "你觉得那些地方中哪个最好睡一觉？",
+        null,
+        7
+      ],
+      [
+        "If you try to help, then you need to get some sleep.",
+        "如果你努力帮助，那么你需要睡一觉。",
+        null,
+        7
+      ],
+      [
+        "What happens next if you don't get some sleep?",
+        "如果你不睡一觉接下来会发生什么？",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0497L05",
+      "seed_context": {
+        "known": "听起来好像你需要睡一觉。",
+        "target": "That sounds as though you need to get some sleep."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0497L06": {
+    "lego": [
+      "need to get some sleep",
+      "需要睡一觉"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "that sounds",
+        "听起来"
+      ],
+      [
+        "as though",
+        "好像"
+      ],
+      [
+        "sounds as though",
+        "听起来好像"
+      ],
+      [
+        "you need",
+        "你需要"
+      ],
+      [
+        "get some sleep",
+        "睡一觉"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "You need to get some sleep.",
+        "你需要睡一觉。",
+        null,
+        3
+      ],
+      [
+        "I think you need to get some sleep.",
+        "我觉得你需要睡一觉。",
+        null,
+        4
+      ],
+      [
+        "I really need to get some sleep.",
+        "我真正需要睡一觉。",
+        null,
+        4
+      ],
+      [
+        "You need to get some sleep right now.",
+        "你现在需要睡一觉。",
+        null,
+        4
+      ],
+      [
+        "That sounds as though you need to get some sleep.",
+        "听起来好像你需要睡一觉。",
+        null,
+        5
+      ],
+      [
+        "If you need to get some sleep, then try.",
+        "如果你需要睡一觉，那么努力。",
+        null,
+        5
+      ],
+      [
+        "I love the way you need to get some sleep.",
+        "我喜欢你需要睡一觉的方式。",
+        null,
+        6
+      ],
+      [
+        "After the first part of the show, you need to get some sleep.",
+        "在演出的第一部分之后，你需要睡一觉。",
+        null,
+        7
+      ],
+      [
+        "When it really matters, you need to get some sleep.",
+        "在真正重要的时候，你需要睡一觉。",
+        null,
+        6
+      ],
+      [
+        "Which of those places do you need to get some sleep?",
+        "那些地方中哪个你需要睡一觉？",
+        null,
+        6
+      ],
+      [
+        "I'm not planning to help if you need to get some sleep.",
+        "如果你需要睡一觉我不打算帮助。",
+        null,
+        7
+      ],
+      [
+        "It sounds as though you really need to get some sleep after you lose.",
+        "听起来好像你输之后真正需要睡一觉。",
+        null,
+        8
+      ],
+      [
+        "That sounds as though you need to get some sleep.",
+        "听起来好像你需要睡一觉。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 7
+    },
+    "_metadata": {
+      "lego_id": "S0497L06",
+      "seed_context": {
+        "known": "听起来好像你需要睡一觉。",
+        "target": "That sounds as though you need to get some sleep."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

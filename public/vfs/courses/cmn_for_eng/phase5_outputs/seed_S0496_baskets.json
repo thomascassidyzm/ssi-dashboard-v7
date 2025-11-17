@@ -1,0 +1,598 @@
+{
+  "S0496L01": {
+    "lego": [
+      "I'm not planning to",
+      "我不打算"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm not planning to lose.",
+        "我不打算输。",
+        null,
+        2
+      ],
+      [
+        "I'm not planning to help.",
+        "我不打算帮助。",
+        null,
+        2
+      ],
+      [
+        "I'm not planning to help you.",
+        "我不打算帮助你。",
+        null,
+        3
+      ],
+      [
+        "I'm not planning to trust anyone.",
+        "我不打算相信任何人。",
+        null,
+        3
+      ],
+      [
+        "Then I'm not planning to help.",
+        "那么我不打算帮助。",
+        null,
+        3
+      ],
+      [
+        "I'm not planning to help right now.",
+        "我不打算现在帮助。",
+        null,
+        3
+      ],
+      [
+        "If you try, I'm not planning to help.",
+        "如果你努力，我不打算帮助。",
+        null,
+        4
+      ],
+      [
+        "I'm not planning to lose when it matters.",
+        "我不打算在它重要的时候输。",
+        null,
+        5
+      ],
+      [
+        "I'm not planning to make you a strong cup of coffee.",
+        "我不打算给你泡一杯浓咖啡。",
+        null,
+        6
+      ],
+      [
+        "I'm not planning to trust the way you try to help.",
+        "我不打算相信你努力帮助的方式。",
+        null,
+        6
+      ],
+      [
+        "I'm not planning to love the way you try.",
+        "我不打算喜欢你努力的方式。",
+        null,
+        5
+      ],
+      [
+        "I'm not planning to help you after the first part.",
+        "我不打算在第一部分之后帮助你。",
+        null,
+        5
+      ],
+      [
+        "I think I'm not planning to help you right now.",
+        "我觉得我不打算现在帮助你。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 4,
+      "longer_4_5": 5,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0496L01",
+      "seed_context": {
+        "known": "我不打算在真正重要的时候输。",
+        "target": "I'm not planning to lose when it really matters."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0496L02": {
+    "lego": [
+      "lose",
+      "输"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I'm not planning to",
+        "我不打算"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I'm not planning to lose.",
+        "我不打算输。",
+        null,
+        2
+      ],
+      [
+        "You try to lose.",
+        "你努力输。",
+        null,
+        2
+      ],
+      [
+        "If you lose.",
+        "如果你输。",
+        null,
+        2
+      ],
+      [
+        "Then you lose.",
+        "那么你输。",
+        null,
+        2
+      ],
+      [
+        "You lose right now.",
+        "你现在输。",
+        null,
+        2
+      ],
+      [
+        "I think you lose.",
+        "我觉得你输。",
+        null,
+        2
+      ],
+      [
+        "I'm not planning to lose when it matters.",
+        "我不打算在它重要的时候输。",
+        null,
+        5
+      ],
+      [
+        "I'm not planning to lose after the first part of the show.",
+        "我不打算在演出的第一部分之后输。",
+        null,
+        7
+      ],
+      [
+        "If you lose, then I will never trust anyone again.",
+        "如果你输，那么我再也不会相信任何人了。",
+        null,
+        7
+      ],
+      [
+        "I love the way you try, but you lose.",
+        "我喜欢你努力的方式，但是你输。",
+        null,
+        5
+      ],
+      [
+        "Which of those places do you think you lose?",
+        "你觉得那些地方中哪个你输？",
+        null,
+        5
+      ],
+      [
+        "What happens next if you lose?",
+        "如果你输接下来会发生什么？",
+        null,
+        4
+      ],
+      [
+        "You try to help, but you lose when it matters.",
+        "你努力帮助，但是你在它重要的时候输。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 6,
+      "quite_short_3": 0,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0496L02",
+      "seed_context": {
+        "known": "我不打算在真正重要的时候输。",
+        "target": "I'm not planning to lose when it really matters."
+      }
+    }
+  },
+  "S0496L03": {
+    "lego": [
+      "really",
+      "真正"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "I'm not planning to",
+        "我不打算"
+      ],
+      [
+        "lose",
+        "输"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Really beautiful.",
+        "真正美。",
+        null,
+        1
+      ],
+      [
+        "Your eyes are really beautiful.",
+        "你的眼睛真正美。",
+        null,
+        3
+      ],
+      [
+        "It's really interesting.",
+        "它真正有趣。",
+        null,
+        2
+      ],
+      [
+        "The show is really interesting.",
+        "演出真正有趣。",
+        null,
+        3
+      ],
+      [
+        "I think it's really beautiful.",
+        "我觉得它真正美。",
+        null,
+        3
+      ],
+      [
+        "Which of those places is really the most interesting?",
+        "那些地方中哪个真正最有趣？",
+        null,
+        5
+      ],
+      [
+        "I love the way you really try to help.",
+        "我喜欢你真正努力帮助的方式。",
+        null,
+        6
+      ],
+      [
+        "If you really try, then I will help you.",
+        "如果你真正努力，那么我会帮助你。",
+        null,
+        6
+      ],
+      [
+        "I'm not planning to lose what's really important.",
+        "我不打算输真正重要的。",
+        null,
+        5
+      ],
+      [
+        "The first part of the show is really beautiful.",
+        "演出的第一部分真正美。",
+        null,
+        5
+      ],
+      [
+        "What happens next is really interesting.",
+        "接下来会发生的真正有趣。",
+        null,
+        4
+      ],
+      [
+        "I really love your eyes.",
+        "我真正喜欢你的眼睛。",
+        null,
+        4
+      ],
+      [
+        "You really try to help, but you lose.",
+        "你真正努力帮助，但是你输。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 5,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0496L03",
+      "seed_context": {
+        "known": "我不打算在真正重要的时候输。",
+        "target": "I'm not planning to lose when it really matters."
+      }
+    }
+  },
+  "S0496L04": {
+    "lego": [
+      "really matters",
+      "真正重要"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm not planning to",
+        "我不打算"
+      ],
+      [
+        "lose",
+        "输"
+      ],
+      [
+        "really",
+        "真正"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "It really matters.",
+        "它真正重要。",
+        null,
+        2
+      ],
+      [
+        "When it really matters.",
+        "当它真正重要的时候。",
+        null,
+        3
+      ],
+      [
+        "What really matters.",
+        "什么真正重要。",
+        null,
+        2
+      ],
+      [
+        "The show really matters.",
+        "演出真正重要。",
+        null,
+        2
+      ],
+      [
+        "I think it really matters.",
+        "我觉得它真正重要。",
+        null,
+        3
+      ],
+      [
+        "If you try, it really matters.",
+        "如果你努力，它真正重要。",
+        null,
+        4
+      ],
+      [
+        "Then what really matters?",
+        "那么什么真正重要？",
+        null,
+        3
+      ],
+      [
+        "I love the way you help when it really matters.",
+        "我喜欢你在它真正重要的时候帮助的方式。",
+        null,
+        8
+      ],
+      [
+        "Which of those places really matters?",
+        "那些地方中哪个真正重要？",
+        null,
+        4
+      ],
+      [
+        "The first part really matters.",
+        "第一部分真正重要。",
+        null,
+        3
+      ],
+      [
+        "Your eyes are beautiful, but that's not what really matters.",
+        "你的眼睛美，但是那不是真正重要的。",
+        null,
+        7
+      ],
+      [
+        "I'm not planning to lose when it really matters.",
+        "我不打算在它真正重要的时候输。",
+        null,
+        5
+      ],
+      [
+        "What happens next really matters to everyone.",
+        "接下来会发生什么真正重要。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0496L04",
+      "seed_context": {
+        "known": "我不打算在真正重要的时候输。",
+        "target": "I'm not planning to lose when it really matters."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0496L05": {
+    "lego": [
+      "when it really matters",
+      "在真正重要的时候"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I'm not planning to",
+        "我不打算"
+      ],
+      [
+        "lose",
+        "输"
+      ],
+      [
+        "really",
+        "真正"
+      ],
+      [
+        "really matters",
+        "真正重要"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "When it really matters.",
+        "在真正重要的时候。",
+        null,
+        3
+      ],
+      [
+        "I help you when it really matters.",
+        "我在真正重要的时候帮助你。",
+        null,
+        4
+      ],
+      [
+        "I try when it really matters.",
+        "我在真正重要的时候努力。",
+        null,
+        4
+      ],
+      [
+        "You lose when it really matters.",
+        "你在真正重要的时候输。",
+        null,
+        4
+      ],
+      [
+        "I'm not planning to lose when it really matters.",
+        "我不打算在真正重要的时候输。",
+        null,
+        5
+      ],
+      [
+        "If you don't help me when it really matters.",
+        "如果你在真正重要的时候不帮助我。",
+        null,
+        6
+      ],
+      [
+        "I love the way you try to help when it really matters.",
+        "我喜欢你在真正重要的时候努力帮助的方式。",
+        null,
+        8
+      ],
+      [
+        "Then I will never trust anyone when it really matters.",
+        "那么我在真正重要的时候再也不会相信任何人。",
+        null,
+        8
+      ],
+      [
+        "What happens when it really matters?",
+        "在真正重要的时候会发生什么？",
+        null,
+        5
+      ],
+      [
+        "Which of those places matters when it really matters?",
+        "那些地方中哪个在真正重要的时候重要？",
+        null,
+        6
+      ],
+      [
+        "I think you try to help when it really matters.",
+        "我觉得你在真正重要的时候努力帮助。",
+        null,
+        7
+      ],
+      [
+        "The first part of the show happens when it really matters.",
+        "演出的第一部分在真正重要的时候发生。",
+        null,
+        7
+      ],
+      [
+        "I'm not planning to lose when it really matters.",
+        "我不打算在真正重要的时候输。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 5,
+      "long_6_plus": 7
+    },
+    "_metadata": {
+      "lego_id": "S0496L05",
+      "seed_context": {
+        "known": "我不打算在真正重要的时候输。",
+        "target": "I'm not planning to lose when it really matters."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
