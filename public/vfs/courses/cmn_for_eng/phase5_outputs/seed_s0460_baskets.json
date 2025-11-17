@@ -1,0 +1,1077 @@
+{
+  "legos": {
+    "S0460L01": {
+      "lego": [
+        "I want to find",
+        "我想找"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I want to find",
+          "我想找",
+          null,
+          1
+        ],
+        [
+          "want to find",
+          "想找",
+          null,
+          1
+        ],
+        [
+          "they want to find",
+          "他们想找",
+          null,
+          2
+        ],
+        [
+          "we want to find",
+          "我们想找",
+          null,
+          2
+        ],
+        [
+          "I want to find a shop",
+          "我想找商店",
+          null,
+          3
+        ],
+        [
+          "he wants to find a shop",
+          "他想找商店",
+          null,
+          3
+        ],
+        [
+          "I want to find different areas",
+          "我想找不同地区",
+          null,
+          4
+        ],
+        [
+          "we want to find the hotel",
+          "我们想找酒店",
+          null,
+          4
+        ],
+        [
+          "I want to find a shop near the blue sign",
+          "我想找蓝色标志附近的商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L01",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "想",
+          "want to"
+        ],
+        [
+          "找",
+          "find"
+        ]
+      ]
+    },
+    "S0460L02": {
+      "lego": [
+        "want to find",
+        "想找"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "want to find",
+          "想找",
+          null,
+          1
+        ],
+        [
+          "I want to find",
+          "我想找",
+          null,
+          1
+        ],
+        [
+          "he wants to find",
+          "他想找",
+          null,
+          2
+        ],
+        [
+          "they want to find",
+          "他们想找",
+          null,
+          2
+        ],
+        [
+          "they want to find a shop",
+          "他们想找商店",
+          null,
+          3
+        ],
+        [
+          "we want to find the hotel",
+          "我们想找酒店",
+          null,
+          3
+        ],
+        [
+          "I want to find a shop near here",
+          "我想找附近的商店",
+          null,
+          4
+        ],
+        [
+          "he wants to find different areas",
+          "他想找不同地区",
+          null,
+          4
+        ],
+        [
+          "they want to find a shop in the past",
+          "他们想找过去的商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L02",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      },
+      "components": [
+        [
+          "想",
+          "want to"
+        ],
+        [
+          "找",
+          "find"
+        ]
+      ]
+    },
+    "S0460L03": {
+      "lego": [
+        "find",
+        "找"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L02",
+          "known": "want to find",
+          "target": "想找",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "find",
+          "找",
+          null,
+          1
+        ],
+        [
+          "I find",
+          "我找",
+          null,
+          1
+        ],
+        [
+          "they find",
+          "他们找",
+          null,
+          2
+        ],
+        [
+          "we find",
+          "我们找",
+          null,
+          2
+        ],
+        [
+          "I want to find",
+          "我想找",
+          null,
+          3
+        ],
+        [
+          "they find a shop",
+          "他们找商店",
+          null,
+          3
+        ],
+        [
+          "I find a shop near here",
+          "我找附近的商店",
+          null,
+          4
+        ],
+        [
+          "we find different areas",
+          "我们找不同地区",
+          null,
+          4
+        ],
+        [
+          "they find a shop near the hotel",
+          "他们找酒店附近的商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L03",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      }
+    },
+    "S0460L04": {
+      "lego": [
+        "a shop near the hotel",
+        "酒店附近的一家商店"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L02",
+          "known": "want to find",
+          "target": "想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L03",
+          "known": "find",
+          "target": "找",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "a shop",
+          "一家商店",
+          null,
+          1
+        ],
+        [
+          "near the hotel",
+          "酒店附近",
+          null,
+          1
+        ],
+        [
+          "a shop near the hotel",
+          "酒店附近的一家商店",
+          null,
+          2
+        ],
+        [
+          "the shop near here",
+          "附近的商店",
+          null,
+          2
+        ],
+        [
+          "a shop near the blue sign",
+          "蓝色标志附近的商店",
+          null,
+          3
+        ],
+        [
+          "a big shop near the hotel",
+          "酒店附近的大商店",
+          null,
+          3
+        ],
+        [
+          "I want to find a shop",
+          "我想找一家商店",
+          null,
+          4
+        ],
+        [
+          "they find a shop near the hotel",
+          "他们找酒店附近的商店",
+          null,
+          4
+        ],
+        [
+          "we want to find a shop near the hotel",
+          "我们想找酒店附近的一家商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L04",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      },
+      "components": [
+        [
+          "酒店",
+          "the hotel"
+        ],
+        [
+          "附近",
+          "near"
+        ],
+        [
+          "的",
+          "(possessive)"
+        ],
+        [
+          "一家",
+          "a (measure word)"
+        ],
+        [
+          "商店",
+          "shop"
+        ]
+      ]
+    },
+    "S0460L05": {
+      "lego": [
+        "near the hotel",
+        "酒店附近"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L02",
+          "known": "want to find",
+          "target": "想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L03",
+          "known": "find",
+          "target": "找",
+          "type": "A"
+        },
+        {
+          "id": "S0460L04",
+          "known": "a shop near the hotel",
+          "target": "酒店附近的一家商店",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "near the hotel",
+          "酒店附近",
+          null,
+          1
+        ],
+        [
+          "near here",
+          "附近",
+          null,
+          1
+        ],
+        [
+          "a shop near the hotel",
+          "酒店附近的商店",
+          null,
+          2
+        ],
+        [
+          "they are near the hotel",
+          "他们在酒店附近",
+          null,
+          2
+        ],
+        [
+          "I find a shop near the hotel",
+          "我找酒店附近的商店",
+          null,
+          3
+        ],
+        [
+          "near the hotel in the past",
+          "过去的酒店附近",
+          null,
+          3
+        ],
+        [
+          "a shop near the hotel was different",
+          "酒店附近的商店不同",
+          null,
+          4
+        ],
+        [
+          "they want to find near the hotel",
+          "他们想找酒店附近",
+          null,
+          4
+        ],
+        [
+          "we find a shop near the hotel in different areas",
+          "我们在不同地区找酒店附近的商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L05",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      },
+      "components": [
+        [
+          "酒店",
+          "hotel"
+        ],
+        [
+          "附近",
+          "near"
+        ]
+      ]
+    },
+    "S0460L06": {
+      "lego": [
+        "a shop nearby",
+        "附近的一家商店"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L02",
+          "known": "want to find",
+          "target": "想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L03",
+          "known": "find",
+          "target": "找",
+          "type": "A"
+        },
+        {
+          "id": "S0460L04",
+          "known": "a shop near the hotel",
+          "target": "酒店附近的一家商店",
+          "type": "M"
+        },
+        {
+          "id": "S0460L05",
+          "known": "near the hotel",
+          "target": "酒店附近",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "a shop nearby",
+          "附近的一家商店",
+          null,
+          1
+        ],
+        [
+          "nearby",
+          "附近",
+          null,
+          1
+        ],
+        [
+          "a shop nearby is different",
+          "附近的商店不同",
+          null,
+          2
+        ],
+        [
+          "they find a shop nearby",
+          "他们找附近的商店",
+          null,
+          2
+        ],
+        [
+          "I want to find a shop nearby",
+          "我想找附近的一家商店",
+          null,
+          3
+        ],
+        [
+          "a shop nearby in the past",
+          "过去附近的商店",
+          null,
+          3
+        ],
+        [
+          "we find a shop nearby near the hotel",
+          "我们找酒店附近的商店",
+          null,
+          4
+        ],
+        [
+          "they want to find a shop nearby",
+          "他们想找附近的一家商店",
+          null,
+          4
+        ],
+        [
+          "I want to find a shop nearby near the blue sign",
+          "我想找蓝色标志附近的一家商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L06",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      },
+      "components": [
+        [
+          "附近",
+          "nearby"
+        ],
+        [
+          "的",
+          "(possessive)"
+        ],
+        [
+          "一家",
+          "a (measure word)"
+        ],
+        [
+          "商店",
+          "shop"
+        ]
+      ]
+    },
+    "S0460L07": {
+      "lego": [
+        "a shop",
+        "一家商店"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L02",
+          "known": "want to find",
+          "target": "想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L03",
+          "known": "find",
+          "target": "找",
+          "type": "A"
+        },
+        {
+          "id": "S0460L04",
+          "known": "a shop near the hotel",
+          "target": "酒店附近的一家商店",
+          "type": "M"
+        },
+        {
+          "id": "S0460L05",
+          "known": "near the hotel",
+          "target": "酒店附近",
+          "type": "M"
+        },
+        {
+          "id": "S0460L06",
+          "known": "a shop nearby",
+          "target": "附近的一家商店",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "a shop",
+          "一家商店",
+          null,
+          1
+        ],
+        [
+          "the shop",
+          "商店",
+          null,
+          1
+        ],
+        [
+          "a shop is different",
+          "一家商店不同",
+          null,
+          2
+        ],
+        [
+          "I find a shop",
+          "我找一家商店",
+          null,
+          2
+        ],
+        [
+          "they want to find a shop",
+          "他们想找一家商店",
+          null,
+          3
+        ],
+        [
+          "a shop near the hotel",
+          "酒店附近的一家商店",
+          null,
+          3
+        ],
+        [
+          "we find a shop in different areas",
+          "我们在不同地区找一家商店",
+          null,
+          4
+        ],
+        [
+          "a shop nearby was much easier to find",
+          "附近的商店容易得多找",
+          null,
+          4
+        ],
+        [
+          "I want to find a shop near the hotel in the past",
+          "我想找过去酒店附近的一家商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L07",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      },
+      "components": [
+        [
+          "一家",
+          "a (measure word)"
+        ],
+        [
+          "商店",
+          "shop"
+        ]
+      ]
+    },
+    "S0460L08": {
+      "lego": [
+        "hotel",
+        "酒店"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L02",
+          "known": "want to find",
+          "target": "想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L03",
+          "known": "find",
+          "target": "找",
+          "type": "A"
+        },
+        {
+          "id": "S0460L04",
+          "known": "a shop near the hotel",
+          "target": "酒店附近的一家商店",
+          "type": "M"
+        },
+        {
+          "id": "S0460L05",
+          "known": "near the hotel",
+          "target": "酒店附近",
+          "type": "M"
+        },
+        {
+          "id": "S0460L06",
+          "known": "a shop nearby",
+          "target": "附近的一家商店",
+          "type": "M"
+        },
+        {
+          "id": "S0460L07",
+          "known": "a shop",
+          "target": "一家商店",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "hotel",
+          "酒店",
+          null,
+          1
+        ],
+        [
+          "the hotel",
+          "酒店",
+          null,
+          1
+        ],
+        [
+          "near the hotel",
+          "酒店附近",
+          null,
+          2
+        ],
+        [
+          "the hotel is different",
+          "酒店不同",
+          null,
+          2
+        ],
+        [
+          "I find the hotel nearby",
+          "我找附近的酒店",
+          null,
+          3
+        ],
+        [
+          "they want to find the hotel",
+          "他们想找酒店",
+          null,
+          3
+        ],
+        [
+          "the hotel was much easier to find",
+          "酒店容易得多找",
+          null,
+          4
+        ],
+        [
+          "we find the hotel in different areas",
+          "我们在不同地区找酒店",
+          null,
+          4
+        ],
+        [
+          "I want to find a shop near the hotel in the past",
+          "我想找过去酒店附近的商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L08",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      }
+    },
+    "S0460L10": {
+      "lego": [
+        "shop",
+        "商店"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0460L01",
+          "known": "I want to find",
+          "target": "我想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L02",
+          "known": "want to find",
+          "target": "想找",
+          "type": "M"
+        },
+        {
+          "id": "S0460L03",
+          "known": "find",
+          "target": "找",
+          "type": "A"
+        },
+        {
+          "id": "S0460L04",
+          "known": "a shop near the hotel",
+          "target": "酒店附近的一家商店",
+          "type": "M"
+        },
+        {
+          "id": "S0460L05",
+          "known": "near the hotel",
+          "target": "酒店附近",
+          "type": "M"
+        },
+        {
+          "id": "S0460L06",
+          "known": "a shop nearby",
+          "target": "附近的一家商店",
+          "type": "M"
+        },
+        {
+          "id": "S0460L07",
+          "known": "a shop",
+          "target": "一家商店",
+          "type": "M"
+        },
+        {
+          "id": "S0460L08",
+          "known": "hotel",
+          "target": "酒店",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "shop",
+          "商店",
+          null,
+          1
+        ],
+        [
+          "a shop",
+          "一家商店",
+          null,
+          1
+        ],
+        [
+          "the shop is different",
+          "商店不同",
+          null,
+          2
+        ],
+        [
+          "I find a shop",
+          "我找商店",
+          null,
+          2
+        ],
+        [
+          "they want to find a shop",
+          "他们想找商店",
+          null,
+          3
+        ],
+        [
+          "a shop near the hotel",
+          "酒店附近的商店",
+          null,
+          3
+        ],
+        [
+          "we find a shop in different areas",
+          "我们在不同地区找商店",
+          null,
+          4
+        ],
+        [
+          "a shop nearby was much easier to find",
+          "附近的商店容易得多找",
+          null,
+          4
+        ],
+        [
+          "I want to find a shop near the blue sign",
+          "我想找蓝色标志附近的商店",
+          null,
+          5
+        ],
+        [
+          "I want to find a shop near the hotel.",
+          "我想找酒店附近的一家商店。",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0460L10",
+        "seed_context": {
+          "known": "我想找酒店附近的一家商店。",
+          "target": "I want to find a shop near the hotel."
+        }
+      }
+    }
+  }
+}

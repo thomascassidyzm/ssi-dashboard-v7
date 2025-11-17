@@ -1,0 +1,907 @@
+{
+  "legos": {
+    "S0462L01": {
+      "lego": [
+        "grandfather",
+        "祖父"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "grandfather",
+          "祖父",
+          null,
+          1
+        ],
+        [
+          "a grandfather",
+          "祖父",
+          null,
+          1
+        ],
+        [
+          "grandfather is different",
+          "祖父不同",
+          null,
+          2
+        ],
+        [
+          "my grandfather",
+          "我的祖父",
+          null,
+          2
+        ],
+        [
+          "they said grandfather",
+          "他们说祖父",
+          null,
+          3
+        ],
+        [
+          "grandfather can buy postcards",
+          "祖父可以买明信片",
+          null,
+          3
+        ],
+        [
+          "grandfather was in the past near here",
+          "祖父在过去在附近",
+          null,
+          4
+        ],
+        [
+          "my grandfather wants to find a shop",
+          "我的祖父想找商店",
+          null,
+          4
+        ],
+        [
+          "grandfather can buy postcards in a shop near the hotel",
+          "祖父可以在酒店附近的商店买明信片",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L01",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      }
+    },
+    "S0462L02": {
+      "lego": [
+        "my grandfather",
+        "我的祖父"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0462L01",
+          "known": "grandfather",
+          "target": "祖父",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "my grandfather",
+          "我的祖父",
+          null,
+          1
+        ],
+        [
+          "grandfather",
+          "祖父",
+          null,
+          1
+        ],
+        [
+          "my grandfather is different",
+          "我的祖父不同",
+          null,
+          2
+        ],
+        [
+          "they said my grandfather",
+          "他们说我的祖父",
+          null,
+          2
+        ],
+        [
+          "my grandfather can buy postcards",
+          "我的祖父可以买明信片",
+          null,
+          3
+        ],
+        [
+          "my grandfather wants to find",
+          "我的祖父想找",
+          null,
+          3
+        ],
+        [
+          "my grandfather was in the past near the hotel",
+          "我的祖父在过去在酒店附近",
+          null,
+          4
+        ],
+        [
+          "my grandfather can buy postcards in the shop",
+          "我的祖父可以在商店买明信片",
+          null,
+          4
+        ],
+        [
+          "my grandfather wants to find a shop where he can buy postcards",
+          "我的祖父想找他可以买明信片的商店",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L02",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      },
+      "components": [
+        [
+          "我的",
+          "my"
+        ],
+        [
+          "祖父",
+          "grandfather"
+        ]
+      ]
+    },
+    "S0462L03": {
+      "lego": [
+        "war",
+        "战争"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0462L01",
+          "known": "grandfather",
+          "target": "祖父",
+          "type": "A"
+        },
+        {
+          "id": "S0462L02",
+          "known": "my grandfather",
+          "target": "我的祖父",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "war",
+          "战争",
+          null,
+          1
+        ],
+        [
+          "the war",
+          "战争",
+          null,
+          1
+        ],
+        [
+          "war is different",
+          "战争不同",
+          null,
+          2
+        ],
+        [
+          "during the war",
+          "在战争期间",
+          null,
+          2
+        ],
+        [
+          "they said the war",
+          "他们说战争",
+          null,
+          3
+        ],
+        [
+          "war in the past",
+          "过去的战争",
+          null,
+          3
+        ],
+        [
+          "my grandfather during the war",
+          "我的祖父在战争期间",
+          null,
+          4
+        ],
+        [
+          "the war was much easier in the past",
+          "战争在过去容易得多",
+          null,
+          4
+        ],
+        [
+          "my grandfather fought in Italy during the war",
+          "我的祖父在战争期间在意大利战斗",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L03",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      }
+    },
+    "S0462L04": {
+      "lego": [
+        "during the war",
+        "在战争期间"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0462L01",
+          "known": "grandfather",
+          "target": "祖父",
+          "type": "A"
+        },
+        {
+          "id": "S0462L02",
+          "known": "my grandfather",
+          "target": "我的祖父",
+          "type": "M"
+        },
+        {
+          "id": "S0462L03",
+          "known": "war",
+          "target": "战争",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "during the war",
+          "在战争期间",
+          null,
+          1
+        ],
+        [
+          "the war",
+          "战争",
+          null,
+          1
+        ],
+        [
+          "during the war in the past",
+          "在过去战争期间",
+          null,
+          2
+        ],
+        [
+          "they fought during the war",
+          "他们在战争期间战斗",
+          null,
+          2
+        ],
+        [
+          "my grandfather fought during the war",
+          "我的祖父在战争期间战斗",
+          null,
+          3
+        ],
+        [
+          "during the war in different areas",
+          "在战争期间在不同地区",
+          null,
+          3
+        ],
+        [
+          "he fought in Italy during the war",
+          "他在战争期间在意大利战斗",
+          null,
+          4
+        ],
+        [
+          "my grandfather fought in Italy during the war",
+          "我的祖父在战争期间在意大利战斗",
+          null,
+          4
+        ],
+        [
+          "they said my grandfather fought in different areas during the war",
+          "他们说我的祖父在战争期间在不同地区战斗",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L04",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      },
+      "components": [
+        [
+          "在",
+          "in/during"
+        ],
+        [
+          "战争",
+          "war"
+        ],
+        [
+          "期间",
+          "period/during"
+        ]
+      ]
+    },
+    "S0462L05": {
+      "lego": [
+        "Italy",
+        "意大利"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0462L01",
+          "known": "grandfather",
+          "target": "祖父",
+          "type": "A"
+        },
+        {
+          "id": "S0462L02",
+          "known": "my grandfather",
+          "target": "我的祖父",
+          "type": "M"
+        },
+        {
+          "id": "S0462L03",
+          "known": "war",
+          "target": "战争",
+          "type": "A"
+        },
+        {
+          "id": "S0462L04",
+          "known": "during the war",
+          "target": "在战争期间",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Italy",
+          "意大利",
+          null,
+          1
+        ],
+        [
+          "in Italy",
+          "在意大利",
+          null,
+          1
+        ],
+        [
+          "they are in Italy",
+          "他们在意大利",
+          null,
+          2
+        ],
+        [
+          "Italy is different",
+          "意大利不同",
+          null,
+          2
+        ],
+        [
+          "my grandfather in Italy",
+          "我的祖父在意大利",
+          null,
+          3
+        ],
+        [
+          "Italy in the past",
+          "过去的意大利",
+          null,
+          3
+        ],
+        [
+          "they want to find a shop in Italy",
+          "他们想在意大利找商店",
+          null,
+          4
+        ],
+        [
+          "my grandfather fought in Italy during the war",
+          "我的祖父在战争期间在意大利战斗",
+          null,
+          4
+        ],
+        [
+          "they said my grandfather was in Italy during the war",
+          "他们说我的祖父在战争期间在意大利",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L05",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      }
+    },
+    "S0462L06": {
+      "lego": [
+        "in Italy",
+        "在意大利"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0462L01",
+          "known": "grandfather",
+          "target": "祖父",
+          "type": "A"
+        },
+        {
+          "id": "S0462L02",
+          "known": "my grandfather",
+          "target": "我的祖父",
+          "type": "M"
+        },
+        {
+          "id": "S0462L03",
+          "known": "war",
+          "target": "战争",
+          "type": "A"
+        },
+        {
+          "id": "S0462L04",
+          "known": "during the war",
+          "target": "在战争期间",
+          "type": "M"
+        },
+        {
+          "id": "S0462L05",
+          "known": "Italy",
+          "target": "意大利",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "in Italy",
+          "在意大利",
+          null,
+          1
+        ],
+        [
+          "Italy",
+          "意大利",
+          null,
+          1
+        ],
+        [
+          "fought in Italy",
+          "在意大利战斗",
+          null,
+          2
+        ],
+        [
+          "they are in Italy",
+          "他们在意大利",
+          null,
+          2
+        ],
+        [
+          "my grandfather fought in Italy",
+          "我的祖父在意大利战斗",
+          null,
+          3
+        ],
+        [
+          "in Italy in the past",
+          "在过去在意大利",
+          null,
+          3
+        ],
+        [
+          "they want to find a shop in Italy",
+          "他们想在意大利找商店",
+          null,
+          4
+        ],
+        [
+          "my grandfather fought in Italy during the war",
+          "我的祖父在战争期间在意大利战斗",
+          null,
+          4
+        ],
+        [
+          "they said my grandfather fought in Italy in different areas",
+          "他们说我的祖父在意大利不同地区战斗",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L06",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      },
+      "components": [
+        [
+          "在",
+          "in"
+        ],
+        [
+          "意大利",
+          "Italy"
+        ]
+      ]
+    },
+    "S0462L07": {
+      "lego": [
+        "fight/fought",
+        "战斗"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0462L01",
+          "known": "grandfather",
+          "target": "祖父",
+          "type": "A"
+        },
+        {
+          "id": "S0462L02",
+          "known": "my grandfather",
+          "target": "我的祖父",
+          "type": "M"
+        },
+        {
+          "id": "S0462L03",
+          "known": "war",
+          "target": "战争",
+          "type": "A"
+        },
+        {
+          "id": "S0462L04",
+          "known": "during the war",
+          "target": "在战争期间",
+          "type": "M"
+        },
+        {
+          "id": "S0462L05",
+          "known": "Italy",
+          "target": "意大利",
+          "type": "A"
+        },
+        {
+          "id": "S0462L06",
+          "known": "in Italy",
+          "target": "在意大利",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "fought",
+          "战斗",
+          null,
+          1
+        ],
+        [
+          "fight",
+          "战斗",
+          null,
+          1
+        ],
+        [
+          "he fought",
+          "他战斗",
+          null,
+          2
+        ],
+        [
+          "they fought",
+          "他们战斗",
+          null,
+          2
+        ],
+        [
+          "my grandfather fought",
+          "我的祖父战斗",
+          null,
+          3
+        ],
+        [
+          "fought in different areas",
+          "在不同地区战斗",
+          null,
+          3
+        ],
+        [
+          "my grandfather fought in the past",
+          "我的祖父在过去战斗",
+          null,
+          4
+        ],
+        [
+          "he fought in Italy during the war",
+          "他在战争期间在意大利战斗",
+          null,
+          4
+        ],
+        [
+          "they said my grandfather fought in different areas during the war",
+          "他们说我的祖父在战争期间在不同地区战斗",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L07",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      }
+    },
+    "S0462L08": {
+      "lego": [
+        "fought in Italy",
+        "在意大利战斗"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0462L01",
+          "known": "grandfather",
+          "target": "祖父",
+          "type": "A"
+        },
+        {
+          "id": "S0462L02",
+          "known": "my grandfather",
+          "target": "我的祖父",
+          "type": "M"
+        },
+        {
+          "id": "S0462L03",
+          "known": "war",
+          "target": "战争",
+          "type": "A"
+        },
+        {
+          "id": "S0462L04",
+          "known": "during the war",
+          "target": "在战争期间",
+          "type": "M"
+        },
+        {
+          "id": "S0462L05",
+          "known": "Italy",
+          "target": "意大利",
+          "type": "A"
+        },
+        {
+          "id": "S0462L06",
+          "known": "in Italy",
+          "target": "在意大利",
+          "type": "M"
+        },
+        {
+          "id": "S0462L07",
+          "known": "fight/fought",
+          "target": "战斗",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "fought in Italy",
+          "在意大利战斗",
+          null,
+          1
+        ],
+        [
+          "he fought in Italy",
+          "他在意大利战斗",
+          null,
+          1
+        ],
+        [
+          "they fought in Italy",
+          "他们在意大利战斗",
+          null,
+          2
+        ],
+        [
+          "my grandfather fought in Italy",
+          "我的祖父在意大利战斗",
+          null,
+          2
+        ],
+        [
+          "fought in Italy during the war",
+          "在战争期间在意大利战斗",
+          null,
+          3
+        ],
+        [
+          "he fought in Italy in the past",
+          "他在过去在意大利战斗",
+          null,
+          3
+        ],
+        [
+          "my grandfather fought in Italy during the war",
+          "我的祖父在战争期间在意大利战斗",
+          null,
+          4
+        ],
+        [
+          "they said he fought in Italy during the war",
+          "他们说他在战争期间在意大利战斗",
+          null,
+          4
+        ],
+        [
+          "my grandfather fought in Italy in different areas during the war",
+          "我的祖父在战争期间在意大利不同地区战斗",
+          null,
+          5
+        ],
+        [
+          "My grandfather fought in Italy during the war.",
+          "我的祖父在战争期间在意大利战斗。",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0462L08",
+        "seed_context": {
+          "known": "我的祖父在战争期间在意大利战斗。",
+          "target": "My grandfather fought in Italy during the war."
+        }
+      },
+      "components": [
+        [
+          "在",
+          "in"
+        ],
+        [
+          "意大利",
+          "Italy"
+        ],
+        [
+          "战斗",
+          "fought"
+        ]
+      ]
+    }
+  }
+}
