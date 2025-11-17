@@ -1,0 +1,111 @@
+{
+  "S0327L01": {
+    "lego": ["do you think that", "crees que"],
+    "type": "M",
+    "practice_phrases": [
+      ["Do you think that", "Crees que", null, 1],
+      ["Do you think that this time", "Crees que esta vez", null, 2],
+      ["Do you think that she could", "Crees que podría", null, 2],
+      ["Do you think that she needs a book", "Crees que necesita un libro", null, 3],
+      ["Do you think that she could this time", "Crees que pudiera esta vez", null, 3],
+      ["Do you think that she needs to move", "Crees que necesita mudarse", null, 3],
+      ["Do you think that she needs to sell the company", "Crees que necesita vender la compañía", null, 4],
+      ["Do you think that she could bring her brother on Monday", "Crees que podría traer a su hermano el lunes", null, 5],
+      ["Do you think that she needs to read the same book", "Crees que necesita leer el mismo libro", null, 5],
+      ["Do you think that she needs to move to a different country", "Crees que necesita mudarse a un país diferente", null, 6]
+    ]
+  },
+  "S0327L02": {
+    "lego": ["do you think that (she) needs", "crees que necesita"],
+    "type": "M",
+    "practice_phrases": [
+      ["Do you think that (she) needs", "Crees que necesita", null, 1],
+      ["Do you think that she needs a book", "Crees que necesita un libro", null, 2],
+      ["Do you think that she needs to move", "Crees que necesita mudarse", null, 2],
+      ["Do you think that she needs to sell the company", "Crees que necesita vender la compañía", null, 3],
+      ["Do you think that she needs another television", "Crees que necesita otra televisión", null, 3],
+      ["Do you think that she needs to move this year", "Crees que necesita mudarse este año", null, 4],
+      ["Do you think that she needs to read the same book", "Crees que necesita leer el mismo libro", null, 4],
+      ["Do you think that she needs to walk to school this time", "Crees que necesita caminar a la escuela esta vez", null, 5],
+      ["Do you think that she needs to buy another book this year", "Crees que necesita comprar otro libro este año", null, 5],
+      ["Do you think that she needs to move to a different country", "Crees que necesita mudarse a un país diferente", null, 5]
+    ]
+  },
+  "S0327L03": {
+    "lego": ["needs to offer", "necesita ofrecer"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["do you think that", "crees que"],
+      ["do you think that (she) needs", "crees que necesita"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Needs to offer", "Necesita ofrecer", null, 1],
+      ["She needs to offer", "Ella necesita ofrecer", null, 1],
+      ["Needs to offer the book", "Necesita ofrecer el libro", null, 2],
+      ["He needs to offer help", "Él necesita ofrecer algo", null, 2],
+      ["I think she needs to offer", "Creo que necesita ofrecer", null, 3],
+      ["She needs to offer the same book", "Ella necesita ofrecer el mismo libro", null, 3],
+      ["Do you think she needs to offer", "Crees que necesita ofrecer", null, 2],
+      ["She needs to offer a different country", "Ella necesita ofrecer un país diferente", null, 3],
+      ["I don't think she needs to offer the company", "No creo que necesite ofrecer la compañía", null, 4],
+      ["Do you think that she needs to offer the same book this time", "Crees que necesita ofrecer el mismo libro esta vez", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0327L03",
+      "seed_context": {
+        "known": "¿Crees que necesita ofrecer otra manera?",
+        "target": "Do you think that she needs to offer another way?"
+      }
+    },
+    "components": [
+      ["necesita", "needs"],
+      ["ofrecer", "to offer"]
+    ]
+  },
+  "S0327L04": {
+    "lego": ["another way", "otra manera"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["do you think that", "crees que"],
+      ["do you think that (she) needs", "crees que necesita"],
+      ["needs to offer", "necesita ofrecer"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Another way", "Otra manera", null, 1],
+      ["In another way", "De otra manera", null, 1],
+      ["She needs another way", "Ella necesita otra manera", null, 2],
+      ["I think another way", "Creo que otra manera", null, 2],
+      ["She needs to consider another way", "Ella necesita considerar otra manera", null, 3],
+      ["She needs to sell another way", "Ella necesita vender otra manera", null, 3],
+      ["I don't think another way is needed", "No creo que otra manera sea necesaria", null, 4],
+      ["She needs to offer another way to move", "Ella necesita ofrecer otra manera de mudarse", null, 5],
+      ["Do you think she needs to offer another way", "Crees que necesita ofrecer otra manera", null, 4],
+      ["I think that she needs to offer another way this time", "Creo que necesita ofrecer otra manera esta vez", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0327L04",
+      "seed_context": {
+        "known": "¿Crees que necesita ofrecer otra manera?",
+        "target": "Do you think that she needs to offer another way?"
+      }
+    },
+    "components": [
+      ["otra", "another"],
+      ["manera", "way"]
+    ]
+  }
+}

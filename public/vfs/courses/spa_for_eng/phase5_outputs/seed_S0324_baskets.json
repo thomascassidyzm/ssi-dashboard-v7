@@ -1,0 +1,310 @@
+{
+  "legos": {
+    "S0324L02": {
+      "lego": [
+        "has both of her hands/has the two hands",
+        "tiene las dos manos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0324L01",
+          "known": "that student",
+          "target": "esa estudiante",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "has both hands",
+          "tiene las dos manos",
+          null,
+          1
+        ],
+        [
+          "He has both hands",
+          "Él tiene las dos manos",
+          null,
+          2
+        ],
+        [
+          "That student has both hands",
+          "Esa estudiante tiene las dos manos",
+          null,
+          3
+        ],
+        [
+          "She has both hands on the table",
+          "Ella tiene las dos manos en la mesa",
+          null,
+          3
+        ],
+        [
+          "I think she has both hands",
+          "Pienso que ella tiene las dos manos",
+          null,
+          4
+        ],
+        [
+          "He said that she has both hands",
+          "Él dijo que ella tiene las dos manos",
+          null,
+          4
+        ],
+        [
+          "That student has both hands on the table",
+          "Esa estudiante tiene las dos manos en la mesa",
+          null,
+          5
+        ],
+        [
+          "I think that student has both hands",
+          "Pienso que esa estudiante tiene las dos manos",
+          null,
+          5
+        ],
+        [
+          "She said that student has both hands on Monday",
+          "Ella dijo que esa estudiante tiene las dos manos el lunes",
+          null,
+          6
+        ],
+        [
+          "I think that student has both hands on the table this time",
+          "Pienso que esa estudiante tiene las dos manos en la mesa esta vez",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "tiene",
+          "has"
+        ],
+        [
+          "las",
+          "the"
+        ],
+        [
+          "dos",
+          "two/both"
+        ],
+        [
+          "manos",
+          "hands"
+        ]
+      ]
+    },
+    "S0324L03": {
+      "lego": [
+        "both hands/the two hands",
+        "las dos manos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0324L01",
+          "known": "that student",
+          "target": "esa estudiante",
+          "type": "M"
+        },
+        {
+          "id": "S0324L02",
+          "known": "has both of her hands/has the two hands",
+          "target": "tiene las dos manos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "both hands",
+          "las dos manos",
+          null,
+          1
+        ],
+        [
+          "with both hands",
+          "con las dos manos",
+          null,
+          2
+        ],
+        [
+          "She has both hands",
+          "Ella tiene las dos manos",
+          null,
+          3
+        ],
+        [
+          "both hands on the table",
+          "las dos manos en la mesa",
+          null,
+          3
+        ],
+        [
+          "He could put both hands on Monday",
+          "Él podría poner las dos manos el lunes",
+          null,
+          4
+        ],
+        [
+          "I think she has both hands",
+          "Pienso que ella tiene las dos manos",
+          null,
+          4
+        ],
+        [
+          "That student has both hands on the table",
+          "Esa estudiante tiene las dos manos en la mesa",
+          null,
+          5
+        ],
+        [
+          "She could bring both hands to school",
+          "Ella podría traer las dos manos a la escuela",
+          null,
+          5
+        ],
+        [
+          "I think that student could put both hands on the table",
+          "Pienso que esa estudiante podría poner las dos manos en la mesa",
+          null,
+          6
+        ],
+        [
+          "He said that student has both hands on the table this time",
+          "Él dijo que esa estudiante tiene las dos manos en la mesa esta vez",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "las",
+          "the"
+        ],
+        [
+          "dos",
+          "two/both"
+        ],
+        [
+          "manos",
+          "hands"
+        ]
+      ]
+    },
+    "S0324L04": {
+      "lego": [
+        "up",
+        "arriba"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0324L01",
+          "known": "that student",
+          "target": "esa estudiante",
+          "type": "M"
+        },
+        {
+          "id": "S0324L02",
+          "known": "has both of her hands/has the two hands",
+          "target": "tiene las dos manos",
+          "type": "M"
+        },
+        {
+          "id": "S0324L03",
+          "known": "both hands/the two hands",
+          "target": "las dos manos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "up",
+          "arriba",
+          null,
+          1
+        ],
+        [
+          "both hands up",
+          "las dos manos arriba",
+          null,
+          2
+        ],
+        [
+          "She has both hands up",
+          "Ella tiene las dos manos arriba",
+          null,
+          3
+        ],
+        [
+          "put both hands up",
+          "poner las dos manos arriba",
+          null,
+          3
+        ],
+        [
+          "That student has both hands up",
+          "Esa estudiante tiene las dos manos arriba",
+          null,
+          4
+        ],
+        [
+          "I think she has both hands up",
+          "Pienso que ella tiene las dos manos arriba",
+          null,
+          4
+        ],
+        [
+          "He said that student has both hands up",
+          "Él dijo que esa estudiante tiene las dos manos arriba",
+          null,
+          5
+        ],
+        [
+          "She could put both hands up on Monday",
+          "Ella podría poner las dos manos arriba el lunes",
+          null,
+          5
+        ],
+        [
+          "I think that student could put both hands up this time",
+          "Pienso que esa estudiante podría poner las dos manos arriba esta vez",
+          null,
+          6
+        ],
+        [
+          "That student has both of her hands up",
+          "Esa estudiante tiene las dos manos arriba",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    }
+  }
+}

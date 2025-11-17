@@ -1,0 +1,407 @@
+{
+  "legos": {
+    "S0322L01": {
+      "lego": [
+        "she said that",
+        "ella dijo que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "she said that",
+          "ella dijo que",
+          null,
+          1
+        ],
+        [
+          "She said that on Monday",
+          "Ella dijo que el lunes",
+          null,
+          2
+        ],
+        [
+          "She said that this year",
+          "Ella dijo que este año",
+          null,
+          2
+        ],
+        [
+          "She said that she could",
+          "Ella dijo que podría",
+          null,
+          3
+        ],
+        [
+          "She said that this time",
+          "Ella dijo que esta vez",
+          null,
+          3
+        ],
+        [
+          "She said that she could write",
+          "Ella dijo que podría escribir",
+          null,
+          4
+        ],
+        [
+          "She said that she could buy a book",
+          "Ella dijo que podría comprar un libro",
+          null,
+          5
+        ],
+        [
+          "She said that she needs to move",
+          "Ella dijo que necesita mudarse",
+          null,
+          5
+        ],
+        [
+          "She said that she could write a story this year",
+          "Ella dijo que podría escribir una historia este año",
+          null,
+          7
+        ],
+        [
+          "She said that she needs to move to a different country",
+          "Ella dijo que necesita mudarse a un país diferente",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0322L02": {
+      "lego": [
+        "said that (she) needs",
+        "dijo que necesita"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0322L01",
+          "known": "she said that",
+          "target": "ella dijo que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "said that she needs",
+          "dijo que necesita",
+          null,
+          1
+        ],
+        [
+          "She said that she needs",
+          "Ella dijo que necesita",
+          null,
+          2
+        ],
+        [
+          "She said that she needs un libro",
+          "Ella dijo que necesita un libro",
+          null,
+          3
+        ],
+        [
+          "He said that she needs mudarse",
+          "Él dijo que necesita mudarse",
+          null,
+          3
+        ],
+        [
+          "She said that she needs comprar un coche",
+          "Ella dijo que necesita comprar un coche",
+          null,
+          4
+        ],
+        [
+          "She said that she needs esta vez",
+          "Ella dijo que necesita esta vez",
+          null,
+          4
+        ],
+        [
+          "She said that she needs mudarse a un país diferente",
+          "Ella dijo que necesita mudarse a un país diferente",
+          null,
+          5
+        ],
+        [
+          "He said that she needs comprar otra televisión este año",
+          "Él dijo que necesita comprar otra televisión este año",
+          null,
+          6
+        ],
+        [
+          "She said that she needs usar la habitación esta noche",
+          "Ella dijo que necesita usar la habitación esta noche",
+          null,
+          5
+        ],
+        [
+          "I think she said that she needs mudarse el lunes",
+          "Pienso que ella dijo que necesita mudarse el lunes",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "dijo",
+          "said"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "necesita",
+          "needs"
+        ]
+      ]
+    },
+    "S0322L03": {
+      "lego": [
+        "needs to read",
+        "necesita leer"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0322L01",
+          "known": "she said that",
+          "target": "ella dijo que",
+          "type": "M"
+        },
+        {
+          "id": "S0322L02",
+          "known": "said that (she) needs",
+          "target": "dijo que necesita",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "needs to read",
+          "necesita leer",
+          null,
+          1
+        ],
+        [
+          "She needs to read",
+          "Ella necesita leer",
+          null,
+          2
+        ],
+        [
+          "He needs to read un libro",
+          "Él necesita leer un libro",
+          null,
+          3
+        ],
+        [
+          "She needs to read esta vez",
+          "Ella necesita leer esta vez",
+          null,
+          3
+        ],
+        [
+          "I think she needs to read un libro",
+          "Pienso que ella necesita leer un libro",
+          null,
+          4
+        ],
+        [
+          "She said that she needs to read",
+          "Ella dijo que necesita leer",
+          null,
+          4
+        ],
+        [
+          "She said that she needs to read un libro",
+          "Ella dijo que necesita leer un libro",
+          null,
+          5
+        ],
+        [
+          "He said that she needs to read esta vez",
+          "Él dijo que necesita leer esta vez",
+          null,
+          5
+        ],
+        [
+          "I think she needs to read un libro esta noche",
+          "Pienso que ella necesita leer un libro esta noche",
+          null,
+          5
+        ],
+        [
+          "She said that she needs to read un libro el lunes por la mañana",
+          "Ella dijo que necesita leer un libro el lunes por la mañana",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "necesita",
+          "needs"
+        ],
+        [
+          "leer",
+          "to read"
+        ]
+      ]
+    },
+    "S0322L04": {
+      "lego": [
+        "the same book",
+        "el mismo libro"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0322L01",
+          "known": "she said that",
+          "target": "ella dijo que",
+          "type": "M"
+        },
+        {
+          "id": "S0322L02",
+          "known": "said that (she) needs",
+          "target": "dijo que necesita",
+          "type": "M"
+        },
+        {
+          "id": "S0322L03",
+          "known": "needs to read",
+          "target": "necesita leer",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "the same book",
+          "el mismo libro",
+          null,
+          1
+        ],
+        [
+          "She said the same book",
+          "Ella dijo el mismo libro",
+          null,
+          2
+        ],
+        [
+          "She needs to read the same book",
+          "Ella necesita leer el mismo libro",
+          null,
+          3
+        ],
+        [
+          "I think the same book",
+          "Pienso que el mismo libro",
+          null,
+          3
+        ],
+        [
+          "He said that she needs the same book",
+          "Él dijo que necesita el mismo libro",
+          null,
+          4
+        ],
+        [
+          "She needs to read the same book esta vez",
+          "Ella necesita leer el mismo libro esta vez",
+          null,
+          4
+        ],
+        [
+          "She said that she needs to read the same book",
+          "Ella dijo que necesita leer el mismo libro",
+          null,
+          5
+        ],
+        [
+          "I think she needs to read the same book esta noche",
+          "Pienso que ella necesita leer el mismo libro esta noche",
+          null,
+          5
+        ],
+        [
+          "He said that she needs to read the same book esta vez",
+          "Él dijo que necesita leer el mismo libro esta vez",
+          null,
+          6
+        ],
+        [
+          "I think she said that she needs to read the same book",
+          "Pienso que ella dijo que necesita leer el mismo libro",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "mismo",
+          "same"
+        ],
+        [
+          "libro",
+          "book"
+        ]
+      ]
+    }
+  }
+}

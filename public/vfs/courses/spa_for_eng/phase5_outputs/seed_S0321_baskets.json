@@ -1,0 +1,83 @@
+{
+  "legos": {
+    "S0321L01": {
+      "lego": [
+        "a book",
+        "un libro"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "a book",
+          "un libro",
+          null,
+          1
+        ],
+        [
+          "another book",
+          "otro libro",
+          null,
+          2
+        ],
+        [
+          "to buy a book",
+          "comprar un libro",
+          null,
+          2
+        ],
+        [
+          "He could buy a book",
+          "Él podría comprar un libro",
+          null,
+          3
+        ],
+        [
+          "to buy another book",
+          "comprar otro libro",
+          null,
+          3
+        ],
+        [
+          "He doesn't need to buy a book",
+          "Él no necesita comprar un libro",
+          null,
+          4
+        ],
+        [
+          "She said that she could buy a book",
+          "Ella dijo que podría comprar un libro",
+          null,
+          5
+        ],
+        [
+          "I think that he could buy a book",
+          "Pienso que él podría comprar un libro",
+          null,
+          6
+        ],
+        [
+          "He doesn't need to buy another book this year",
+          "Él no necesita comprar otro libro este año",
+          null,
+          6
+        ],
+        [
+          "A book",
+          "Un libro",
+          null,
+          1
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    }
+  }
+}

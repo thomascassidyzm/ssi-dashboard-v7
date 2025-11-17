@@ -1,0 +1,193 @@
+{
+  "S0318L01": {
+    "lego": [
+      "I don't think she could",
+      "no creo que pudiera"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I don't think she could",
+        "no creo que pudiera",
+        null,
+        1
+      ],
+      [
+        "No I don't think she could",
+        "No, no creo que pudiera",
+        null,
+        2
+      ],
+      [
+        "I don't think she could write",
+        "no creo que pudiera escribir",
+        null,
+        3
+      ],
+      [
+        "I don't think she could tonight",
+        "no creo que pudiera esta noche",
+        null,
+        3
+      ],
+      [
+        "I don't think she could write a story",
+        "no creo que pudiera escribir una historia",
+        null,
+        4
+      ],
+      [
+        "I don't think she could use the room",
+        "no creo que pudiera usar la habitación",
+        null,
+        4
+      ],
+      [
+        "I don't think she could bring her brother tonight",
+        "no creo que pudiera traer a su hermano esta noche",
+        null,
+        5
+      ],
+      [
+        "I don't think she could write a story tomorrow",
+        "no creo que pudiera escribir una historia mañana",
+        null,
+        5
+      ],
+      [
+        "I don't think she could use the other room tonight",
+        "no creo que pudiera usar la otra habitación esta noche",
+        null,
+        6
+      ],
+      [
+        "I don't think she could put it on the table tomorrow",
+        "no creo que pudiera ponerlo en la mesa mañana",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "no",
+        "not"
+      ],
+      [
+        "creo",
+        "I think"
+      ],
+      [
+        "que",
+        "that"
+      ],
+      [
+        "pudiera",
+        "she could"
+      ]
+    ]
+  },
+  "S0318L02": {
+    "lego": [
+      "this time",
+      "esta vez"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0318L01",
+        "known": "I don't think she could",
+        "target": "no creo que pudiera",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "this time",
+        "esta vez",
+        null,
+        1
+      ],
+      [
+        "not this time",
+        "no esta vez",
+        null,
+        2
+      ],
+      [
+        "she could this time",
+        "ella podría esta vez",
+        null,
+        3
+      ],
+      [
+        "I could this time",
+        "podría esta vez",
+        null,
+        2
+      ],
+      [
+        "I don't think she could this time",
+        "no creo que pudiera esta vez",
+        null,
+        3
+      ],
+      [
+        "she could write this time",
+        "ella podría escribir esta vez",
+        null,
+        4
+      ],
+      [
+        "I don't think she could write this time",
+        "no creo que pudiera escribir esta vez",
+        null,
+        4
+      ],
+      [
+        "I don't think she could use the room this time",
+        "no creo que pudiera usar la habitación esta vez",
+        null,
+        5
+      ],
+      [
+        "I don't think she could bring her brother this time",
+        "no creo que pudiera traer a su hermano esta vez",
+        null,
+        5
+      ],
+      [
+        "No I don't think she could this time.",
+        "No, no creo que pudiera esta vez.",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "esta",
+        "this"
+      ],
+      [
+        "vez",
+        "time"
+      ]
+    ]
+  }
+}

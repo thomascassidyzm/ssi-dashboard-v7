@@ -1,0 +1,288 @@
+{
+  "S0331L01": {
+    "lego": [
+      "she can't",
+      "ella no puede"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "She can't.",
+        "Ella no puede.",
+        null,
+        1
+      ],
+      [
+        "No, she can't.",
+        "No, ella no puede.",
+        null,
+        2
+      ],
+      [
+        "Yes, she can't.",
+        "Sí, ella no puede.",
+        null,
+        3
+      ],
+      [
+        "She can't walk.",
+        "Ella no puede caminar.",
+        null,
+        3
+      ],
+      [
+        "I think she can't.",
+        "Pienso que ella no puede.",
+        null,
+        4
+      ],
+      [
+        "She can't read books.",
+        "Ella no puede leer libros.",
+        null,
+        4
+      ],
+      [
+        "She can't walk to school.",
+        "Ella no puede caminar a la escuela.",
+        null,
+        5
+      ],
+      [
+        "I think she can't sell that.",
+        "Pienso que ella no puede vender eso.",
+        null,
+        5
+      ],
+      [
+        "I think she can't read the same book.",
+        "Pienso que ella no puede leer el mismo libro.",
+        null,
+        6
+      ],
+      [
+        "Do you think she can't offer another way?",
+        "¿Crees que ella no puede ofrecer otra manera?",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0331L01",
+      "seed_context": {
+        "known": "She can't provide all the answers.",
+        "target": "Ella no puede proveer todas las respuestas."
+      }
+    },
+    "components": [
+      [
+        "ella",
+        "she"
+      ],
+      [
+        "no",
+        "not"
+      ],
+      [
+        "puede",
+        "can"
+      ]
+    ]
+  },
+  "S0331L02": {
+    "lego": [
+      "can't provide",
+      "no puede proveer"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      "S0331L01"
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Can't provide.",
+        "No puede proveer.",
+        null,
+        1
+      ],
+      [
+        "She can't provide.",
+        "Ella no puede proveer.",
+        null,
+        2
+      ],
+      [
+        "She can't provide books.",
+        "Ella no puede proveer libros.",
+        null,
+        3
+      ],
+      [
+        "He can't provide that.",
+        "Él no puede proveer eso.",
+        null,
+        3
+      ],
+      [
+        "I think she can't provide.",
+        "Pienso que ella no puede proveer.",
+        null,
+        4
+      ],
+      [
+        "She can't provide the book.",
+        "Ella no puede proveer el libro.",
+        null,
+        4
+      ],
+      [
+        "She can't provide another way.",
+        "Ella no puede proveer otra manera.",
+        null,
+        5
+      ],
+      [
+        "I think she can't provide that.",
+        "Pienso que ella no puede proveer eso.",
+        null,
+        5
+      ],
+      [
+        "I don't think she can't provide the book.",
+        "No creo que ella no puede proveer el libro.",
+        null,
+        6
+      ],
+      [
+        "Do you think she can't provide all the answers?",
+        "¿Crees que ella no puede proveer todas las respuestas?",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0331L02",
+      "seed_context": {
+        "known": "She can't provide all the answers.",
+        "target": "Ella no puede proveer todas las respuestas."
+      }
+    },
+    "components": [
+      [
+        "no",
+        "not"
+      ],
+      [
+        "puede",
+        "can"
+      ],
+      [
+        "proveer",
+        "to provide"
+      ]
+    ]
+  },
+  "S0331L03": {
+    "lego": [
+      "provide",
+      "proveer"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      "S0331L01",
+      "S0331L02"
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Provide.",
+        "Proveer.",
+        null,
+        1
+      ],
+      [
+        "She can provide.",
+        "Ella puede proveer.",
+        null,
+        2
+      ],
+      [
+        "I want to provide.",
+        "Quiero proveer.",
+        null,
+        3
+      ],
+      [
+        "She needs to provide.",
+        "Ella necesita proveer.",
+        null,
+        3
+      ],
+      [
+        "I think she can provide.",
+        "Pienso que ella puede proveer.",
+        null,
+        4
+      ],
+      [
+        "She needs to provide books.",
+        "Ella necesita proveer libros.",
+        null,
+        4
+      ],
+      [
+        "I think she needs to provide.",
+        "Pienso que ella necesita proveer.",
+        null,
+        5
+      ],
+      [
+        "She can provide another way.",
+        "Ella puede proveer otra manera.",
+        null,
+        5
+      ],
+      [
+        "I think she needs to provide the same book.",
+        "Pienso que ella necesita proveer el mismo libro.",
+        null,
+        6
+      ],
+      [
+        "Do you think she needs to provide all the answers?",
+        "¿Crees que ella necesita proveer todas las respuestas?",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0331L03",
+      "seed_context": {
+        "known": "She can't provide all the answers.",
+        "target": "Ella no puede proveer todas las respuestas."
+      }
+    },
+    "components": []
+  }
+}

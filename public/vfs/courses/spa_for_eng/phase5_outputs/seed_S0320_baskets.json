@@ -1,0 +1,402 @@
+{
+  "legos": {
+    "S0320L01": {
+      "lego": [
+        "He doesn't need to buy",
+        "Él no necesita comprar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "He doesn't need to buy",
+          "Él no necesita comprar",
+          null,
+          1
+        ],
+        [
+          "I think he doesn't need to buy",
+          "Creo que no necesita comprar",
+          null,
+          2
+        ],
+        [
+          "He doesn't need to buy tonight",
+          "Él no necesita comprar esta noche",
+          null,
+          2
+        ],
+        [
+          "She said he doesn't need to buy",
+          "Ella dijo que no necesita comprar",
+          null,
+          3
+        ],
+        [
+          "He doesn't need to buy this time",
+          "Él no necesita comprar esta vez",
+          null,
+          3
+        ],
+        [
+          "I don't think he doesn't need to buy",
+          "No creo que no necesite comprar",
+          null,
+          4
+        ],
+        [
+          "He doesn't need to buy before Monday",
+          "Él no necesita comprar antes del lunes",
+          null,
+          4
+        ],
+        [
+          "He said that he doesn't need to buy tomorrow",
+          "Él dijo que no necesita comprar mañana",
+          null,
+          5
+        ],
+        [
+          "I think he doesn't need to buy the other room",
+          "Creo que no necesita comprar la otra habitación",
+          null,
+          5
+        ],
+        [
+          "Do you think he doesn't need to buy another television tomorrow?",
+          "¿Crees que no necesita comprar otra televisión mañana?",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0320L01",
+        "seed_context": {
+          "known": "Él no necesita comprar otra televisión este año.",
+          "target": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "Él",
+          "He"
+        ],
+        [
+          "no",
+          "not/doesn't"
+        ],
+        [
+          "necesita",
+          "need"
+        ],
+        [
+          "comprar",
+          "to buy"
+        ]
+      ]
+    },
+    "S0320L02": {
+      "lego": [
+        "doesn't need to buy",
+        "no necesita comprar"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0320L01",
+          "known": "He doesn't need to buy",
+          "target": "Él no necesita comprar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "doesn't need to buy",
+          "no necesita comprar",
+          null,
+          1
+        ],
+        [
+          "She doesn't need to buy tomorrow",
+          "Ella no necesita comprar mañana",
+          null,
+          2
+        ],
+        [
+          "I think she doesn't need to buy",
+          "Creo que no necesita comprar",
+          null,
+          3
+        ],
+        [
+          "He said he doesn't need to buy tonight",
+          "Él dijo que no necesita comprar esta noche",
+          null,
+          4
+        ],
+        [
+          "Do you think she doesn't need to buy another television?",
+          "¿Crees que no necesita comprar otra televisión?",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "longer_3_to_5_legos": 5
+      },
+      "target_phrase_count": 5,
+      "_metadata": {
+        "lego_id": "S0320L02",
+        "seed_context": {
+          "known": "Él no necesita comprar otra televisión este año.",
+          "target": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not/doesn't"
+        ],
+        [
+          "necesita",
+          "need"
+        ],
+        [
+          "comprar",
+          "to buy"
+        ]
+      ]
+    },
+    "S0320L03": {
+      "lego": [
+        "another television",
+        "otra televisión"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0320L01",
+          "known": "He doesn't need to buy",
+          "target": "Él no necesita comprar",
+          "type": "M"
+        },
+        {
+          "id": "S0320L02",
+          "known": "doesn't need to buy",
+          "target": "no necesita comprar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "another television",
+          "otra televisión",
+          null,
+          1
+        ],
+        [
+          "I want another television tomorrow",
+          "Quiero otra televisión mañana",
+          null,
+          2
+        ],
+        [
+          "She could buy another television",
+          "Ella podría comprar otra televisión",
+          null,
+          2
+        ],
+        [
+          "He doesn't want another television tonight",
+          "Él no quiere otra televisión esta noche",
+          null,
+          3
+        ],
+        [
+          "to buy another television this time",
+          "comprar otra televisión esta vez",
+          null,
+          3
+        ],
+        [
+          "I think he wants another television tomorrow",
+          "Creo que quiere otra televisión mañana",
+          null,
+          4
+        ],
+        [
+          "She doesn't need to buy another television tonight",
+          "Ella no necesita comprar otra televisión esta noche",
+          null,
+          4
+        ],
+        [
+          "He said that he wants another television tomorrow night",
+          "Él dijo que quiere otra televisión mañana por la noche",
+          null,
+          5
+        ],
+        [
+          "Do you think she could buy another television before Monday?",
+          "¿Crees que ella podría comprar otra televisión antes del lunes?",
+          null,
+          6
+        ],
+        [
+          "I don't think he doesn't need to buy another television this time",
+          "No creo que no necesite comprar otra televisión esta vez",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0320L03",
+        "seed_context": {
+          "known": "Él no necesita comprar otra televisión este año.",
+          "target": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "otra",
+          "another"
+        ],
+        [
+          "televisión",
+          "television"
+        ]
+      ]
+    },
+    "S0320L04": {
+      "lego": [
+        "this year",
+        "este año"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0320L01",
+          "known": "He doesn't need to buy",
+          "target": "Él no necesita comprar",
+          "type": "M"
+        },
+        {
+          "id": "S0320L02",
+          "known": "doesn't need to buy",
+          "target": "no necesita comprar",
+          "type": "M"
+        },
+        {
+          "id": "S0320L03",
+          "known": "another television",
+          "target": "otra televisión",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "this year",
+          "este año",
+          null,
+          1
+        ],
+        [
+          "on Monday this year",
+          "el lunes este año",
+          null,
+          2
+        ],
+        [
+          "another television this year",
+          "otra televisión este año",
+          null,
+          2
+        ],
+        [
+          "She could write this year",
+          "Ella podría escribir este año",
+          null,
+          3
+        ],
+        [
+          "to a different country this year",
+          "a un país diferente este año",
+          null,
+          3
+        ],
+        [
+          "She could write a story this year",
+          "Ella podría escribir una historia este año",
+          null,
+          4
+        ],
+        [
+          "She needs to move to a different country this year",
+          "Ella necesita mudarse a un país diferente este año",
+          null,
+          5
+        ],
+        [
+          "I think that she could write a story this year",
+          "Pienso que ella podría escribir una historia este año",
+          null,
+          6
+        ],
+        [
+          "She said that she needs to move this year",
+          "Ella dijo que necesita mudarse este año",
+          null,
+          5
+        ],
+        [
+          "He doesn't need to buy another television this year",
+          "Él no necesita comprar otra televisión este año",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0320L04",
+        "seed_context": {
+          "known": "Él no necesita comprar otra televisión este año.",
+          "target": "He doesn't need to buy another television this year."
+        }
+      },
+      "components": [
+        [
+          "este",
+          "this"
+        ],
+        [
+          "año",
+          "year"
+        ]
+      ]
+    }
+  }
+}

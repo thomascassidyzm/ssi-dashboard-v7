@@ -1,0 +1,89 @@
+{
+  "S0328L01": {
+    "lego": ["yes", "sí"],
+    "type": "A",
+    "practice_phrases": [
+      ["Yes", "Sí", null, 1],
+      ["Yes this time", "Sí esta vez", null, 2],
+      ["Yes I think that", "Sí pienso que", null, 2],
+      ["Yes she could if she wanted to", "Sí podría si quisiera", null, 3],
+      ["Yes I think she needs", "Sí pienso que necesita", null, 3],
+      ["Yes she needs to move", "Sí necesita mudarse", null, 3],
+      ["Yes I think that she needs a book", "Sí pienso que necesita un libro", null, 4],
+      ["Yes she needs to read the same book", "Sí necesita leer el mismo libro", null, 4],
+      ["Yes I don't think she could this time", "Sí no creo que pudiera esta vez", null, 5],
+      ["Yes I think she needs to move to a different country", "Sí pienso que necesita mudarse a un país diferente", null, 6]
+    ]
+  },
+  "S0328L02": {
+    "lego": ["I think that", "pienso que"],
+    "type": "M",
+    "current_seed_legos_available": [
+      ["yes", "sí"]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I think that", "Pienso que", null, 1],
+      ["Yes I think that", "Sí pienso que", null, 2],
+      ["I think that she could", "Pienso que podría", null, 2],
+      ["I think that she needs a book", "Pienso que necesita un libro", null, 3],
+      ["Yes I think that she needs", "Sí pienso que necesita", null, 3],
+      ["I think that she needs to move", "Pienso que necesita mudarse", null, 3],
+      ["Yes I think that she could this time", "Sí pienso que podría esta vez", null, 4],
+      ["I think that she needs to read a book", "Pienso que necesita leer un libro", null, 4],
+      ["I think that she needs to consider ten possible problems", "Pienso que necesita considerar diez problemas posibles", null, 5],
+      ["Yes I think that she needs to move to a different country", "Sí pienso que necesita mudarse a un país diferente", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0328L02",
+      "seed_context": {
+        "known": "Sí pienso que debería.",
+        "target": "Yes I think she ought to."
+      }
+    },
+    "components": [
+      ["pienso", "I think"],
+      ["que", "that"]
+    ]
+  },
+  "S0328L03": {
+    "lego": ["she ought to/should", "debería"],
+    "type": "A",
+    "current_seed_legos_available": [
+      ["yes", "sí"],
+      ["I think that", "pienso que"]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["She ought to", "Debería", null, 1],
+      ["Yes she ought to", "Sí debería", null, 2],
+      ["I think she ought to", "Pienso que debería", null, 2],
+      ["She ought to move", "Debería mudarse", null, 2],
+      ["Yes I think she ought to", "Sí pienso que debería", null, 3],
+      ["She ought to read a book", "Debería leer un libro", null, 3],
+      ["I think she ought to move this year", "Pienso que debería mudarse este año", null, 4],
+      ["She ought to consider ten possible problems", "Debería considerar diez problemas posibles", null, 4],
+      ["Yes I think she ought to sell the company", "Sí pienso que debería vender la compañía", null, 5],
+      ["Yes I think she ought to.", "Sí pienso que debería.", null, 3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0328L03",
+      "seed_context": {
+        "known": "Sí pienso que debería.",
+        "target": "Yes I think she ought to."
+      }
+    }
+  }
+}
