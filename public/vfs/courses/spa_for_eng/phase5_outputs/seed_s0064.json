@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0064L01": {
+      "lego": [
+        "Learning Spanish isn't",
+        "Aprender español no"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Aprender español no es posible",
+          "Learning Spanish isn't possible",
+          null,
+          2
+        ],
+        [
+          "Aprender español no es interesante",
+          "Learning Spanish isn't interesting",
+          null,
+          2
+        ],
+        [
+          "Aprender español no es muy interesante",
+          "Learning Spanish isn't very interesting",
+          null,
+          3
+        ],
+        [
+          "Aprender español no es posible ahora",
+          "Learning Spanish isn't possible now",
+          null,
+          3
+        ],
+        [
+          "Aprender español no es posible para todos",
+          "Learning Spanish isn't possible for everyone",
+          null,
+          4
+        ],
+        [
+          "Aprender español no es interesante pero es mejor",
+          "Learning Spanish isn't interesting but it's better",
+          null,
+          4
+        ],
+        [
+          "Aprender español no es tan interesante como quiero",
+          "Learning Spanish isn't as interesting as I want",
+          null,
+          6
+        ],
+        [
+          "Aprender español no es posible si no quiero practicar",
+          "Learning Spanish isn't possible if I don't want to practice",
+          null,
+          7
+        ],
+        [
+          "Aprender español no es algo que puedo hacer ahora",
+          "Learning Spanish isn't something I can do now",
+          null,
+          7
+        ],
+        [
+          "Aprender español no es posible pero voy a intentar",
+          "Learning Spanish isn't possible but I'm going to try",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "aprender",
+          "to learning/to learn"
+        ],
+        [
+          "español",
+          "Spanish"
+        ],
+        [
+          "no",
+          "not"
+        ]
+      ]
+    }
+  }
+}

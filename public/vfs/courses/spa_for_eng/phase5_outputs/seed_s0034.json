@@ -1,0 +1,343 @@
+{
+  "legos": {
+    "S0034L06": {
+      "lego": [
+        "other people",
+        "otras personas"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0034L01",
+          "known": "he",
+          "target": "él",
+          "type": "A"
+        },
+        {
+          "id": "S0034L02",
+          "known": "doesn't want",
+          "target": "no quiere",
+          "type": "M"
+        },
+        {
+          "id": "S0034L03",
+          "known": "doesn't want to be",
+          "target": "no quiere estar",
+          "type": "M"
+        },
+        {
+          "id": "S0034L04",
+          "known": "to be quiet",
+          "target": "estar silencioso",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "otras personas",
+          "target": "other people",
+          "lego_count": 1
+        },
+        {
+          "known": "con otras personas",
+          "target": "with other people",
+          "lego_count": 2
+        },
+        {
+          "known": "quiero encontrar otras personas",
+          "target": "I want to meet other people",
+          "lego_count": 3
+        },
+        {
+          "known": "hablar con otras personas",
+          "target": "to speak with other people",
+          "lego_count": 3
+        },
+        {
+          "known": "voy a hablar con otras personas",
+          "target": "I'm going to speak with other people",
+          "lego_count": 4
+        },
+        {
+          "known": "quiero hablar con otras personas",
+          "target": "I want to speak with other people",
+          "lego_count": 4
+        },
+        {
+          "known": "quiero hablar español con otras personas",
+          "target": "I want to speak Spanish with other people",
+          "lego_count": 5
+        },
+        {
+          "known": "me gusta hablar con otras personas",
+          "target": "I like speaking with other people",
+          "lego_count": 5
+        },
+        {
+          "known": "quiero encontrar personas que hablan español",
+          "target": "I want to meet people who speak Spanish",
+          "lego_count": 6
+        },
+        {
+          "known": "voy a comenzar a hablar con otras personas",
+          "target": "I'm going to start speaking with other people",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "otras",
+          "other"
+        ],
+        [
+          "personas",
+          "people"
+        ]
+      ]
+    },
+    "S0034L07": {
+      "lego": [
+        "are here",
+        "están aquí"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0034L01",
+          "known": "he",
+          "target": "él",
+          "type": "A"
+        },
+        {
+          "id": "S0034L02",
+          "known": "doesn't want",
+          "target": "no quiere",
+          "type": "M"
+        },
+        {
+          "id": "S0034L03",
+          "known": "doesn't want to be",
+          "target": "no quiere estar",
+          "type": "M"
+        },
+        {
+          "id": "S0034L04",
+          "known": "to be quiet",
+          "target": "estar silencioso",
+          "type": "M"
+        },
+        {
+          "id": "S0034L06",
+          "known": "other people",
+          "target": "otras personas",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "están aquí",
+          "target": "are here",
+          "lego_count": 1
+        },
+        {
+          "known": "otras personas están aquí",
+          "target": "other people are here",
+          "lego_count": 2
+        },
+        {
+          "known": "no están aquí ahora",
+          "target": "they're not here now",
+          "lego_count": 3
+        },
+        {
+          "known": "querías hablar cuando están aquí",
+          "target": "you wanted to speak when they're here",
+          "lego_count": 3
+        },
+        {
+          "known": "voy a hablar cuando están aquí",
+          "target": "I'm going to speak when they're here",
+          "lego_count": 4
+        },
+        {
+          "known": "quiero hablar cuando otras personas están aquí",
+          "target": "I want to speak when other people are here",
+          "lego_count": 4
+        },
+        {
+          "known": "él no quiere hablar cuando están aquí",
+          "target": "he doesn't want to speak when they're here",
+          "lego_count": 5
+        },
+        {
+          "known": "me gusta hablar cuando otras personas están aquí",
+          "target": "I like speaking when other people are here",
+          "lego_count": 5
+        },
+        {
+          "known": "quiero estar silencioso cuando otras personas están aquí",
+          "target": "I want to be quiet when other people are here",
+          "lego_count": 6
+        },
+        {
+          "known": "él no quiere estar silencioso cuando otras personas están aquí",
+          "target": "he doesn't want to be quiet when other people are here",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "están",
+          "are"
+        ],
+        [
+          "aquí",
+          "here"
+        ]
+      ]
+    },
+    "S0034L08": {
+      "lego": [
+        "when other people are here",
+        "cuando otras personas están aquí"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0034L01",
+          "known": "he",
+          "target": "él",
+          "type": "A"
+        },
+        {
+          "id": "S0034L02",
+          "known": "doesn't want",
+          "target": "no quiere",
+          "type": "M"
+        },
+        {
+          "id": "S0034L03",
+          "known": "doesn't want to be",
+          "target": "no quiere estar",
+          "type": "M"
+        },
+        {
+          "id": "S0034L04",
+          "known": "to be quiet",
+          "target": "estar silencioso",
+          "type": "M"
+        },
+        {
+          "id": "S0034L06",
+          "known": "other people",
+          "target": "otras personas",
+          "type": "M"
+        },
+        {
+          "id": "S0034L07",
+          "known": "are here",
+          "target": "están aquí",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "cuando otras personas están aquí",
+          "target": "when other people are here",
+          "lego_count": 1
+        },
+        {
+          "known": "hablar cuando otras personas están aquí",
+          "target": "to speak when other people are here",
+          "lego_count": 2
+        },
+        {
+          "known": "quiero hablar cuando otras personas están aquí",
+          "target": "I want to speak when other people are here",
+          "lego_count": 3
+        },
+        {
+          "known": "no quiero hablar cuando otras personas están aquí",
+          "target": "I don't want to speak when other people are here",
+          "lego_count": 3
+        },
+        {
+          "known": "voy a hablar cuando otras personas están aquí",
+          "target": "I'm going to speak when other people are here",
+          "lego_count": 4
+        },
+        {
+          "known": "él quiere hablar cuando otras personas están aquí",
+          "target": "he wants to speak when other people are here",
+          "lego_count": 4
+        },
+        {
+          "known": "quiero hablar español cuando otras personas están aquí",
+          "target": "I want to speak Spanish when other people are here",
+          "lego_count": 5
+        },
+        {
+          "known": "voy a hablar contigo cuando otras personas están aquí",
+          "target": "I'm going to speak with you when other people are here",
+          "lego_count": 5
+        },
+        {
+          "known": "quiero estar silencioso cuando otras personas están aquí",
+          "target": "I want to be quiet when other people are here",
+          "lego_count": 6
+        },
+        {
+          "known": "Él no quiere estar silencioso cuando otras personas están aquí.",
+          "target": "He doesn't want to be quiet when other people are here.",
+          "lego_count": 1
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "cuando",
+          "when"
+        ],
+        [
+          "otras",
+          "other"
+        ],
+        [
+          "personas",
+          "people"
+        ],
+        [
+          "están",
+          "are"
+        ],
+        [
+          "aquí",
+          "here"
+        ]
+      ]
+    }
+  }
+}

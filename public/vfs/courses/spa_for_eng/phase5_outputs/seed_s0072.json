@@ -1,0 +1,96 @@
+{
+  "legos": {
+    "S0072L01": {
+      "lego": [
+        "I think that you're",
+        "Pienso que estás"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Pienso que estás bien",
+          "I think that you're fine",
+          null,
+          2
+        ],
+        [
+          "Pienso que estás aquí",
+          "I think that you're here",
+          null,
+          2
+        ],
+        [
+          "Pienso que estás cansado",
+          "I think that you're tired",
+          null,
+          2
+        ],
+        [
+          "Pienso que estás seguro",
+          "I think that you're sure",
+          null,
+          2
+        ],
+        [
+          "Pienso que estás intentando aprender",
+          "I think that you're trying to learn",
+          null,
+          4
+        ],
+        [
+          "Pienso que estás aprendiendo español",
+          "I think that you're learning Spanish",
+          null,
+          3
+        ],
+        [
+          "Pienso que estás intentando hablar español",
+          "I think that you're trying to speak Spanish",
+          null,
+          4
+        ],
+        [
+          "Pienso que estás aprendiendo algo importante",
+          "I think that you're learning something important",
+          null,
+          4
+        ],
+        [
+          "Pienso que estás intentando recordar las palabras",
+          "I think that you're trying to remember the words",
+          null,
+          5
+        ],
+        [
+          "Pienso que estás aprendiendo muy rápidamente",
+          "I think that you're learning very quickly",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "estás",
+          "you're"
+        ]
+      ]
+    }
+  }
+}

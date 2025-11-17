@@ -1,0 +1,57 @@
+{
+  "legos": {
+    "S0043L05": {
+      "lego": [
+        "responder",
+        "to answer"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0043L01",
+          "known": "I wasn't thinking",
+          "target": "no estaba pensando",
+          "type": "M"
+        },
+        {
+          "id": "S0043L02",
+          "known": "thinking about how to answer",
+          "target": "pensando en cómo responder",
+          "type": "M"
+        },
+        {
+          "id": "S0043L03",
+          "known": "about how to answer",
+          "target": "en cómo responder",
+          "type": "M"
+        },
+        {
+          "id": "S0043L04",
+          "known": "how to answer",
+          "target": "cómo responder",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["responder", "to answer", null, 1],
+        ["cómo responder", "how to answer", null, 2],
+        ["pensando en cómo responder", "thinking about how to answer", null, 3],
+        ["no estaba pensando en cómo responder", "I wasn't thinking about how to answer", null, 3],
+        ["estaba pensando en cómo responder", "I was thinking about how to answer", null, 4],
+        ["estaba pensando cuidadosamente en cómo responder", "I was thinking carefully about how to answer", null, 4],
+        ["no estaba pensando en cómo responder esta mañana", "I wasn't thinking about how to answer this morning", null, 5],
+        ["estaba comenzando a pensar en cómo responder", "I was starting to think about how to answer", null, 5],
+        ["no estaba pensando en cómo responder, pero estoy pensando en este momento", "I wasn't thinking about how to answer, but I'm thinking at the moment", null, 7],
+        ["no estaba pensando en cómo responder.", "I wasn't thinking about how to answer.", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

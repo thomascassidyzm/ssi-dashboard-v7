@@ -1,0 +1,61 @@
+{
+  "legos": {
+    "S0033L04": {
+      "lego": [
+        "learning Spanish",
+        "aprendiendo español"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0033L01",
+          "known": "how long",
+          "target": "cuánto tiempo",
+          "type": "M"
+        },
+        {
+          "id": "S0033L02",
+          "known": "how long have you been",
+          "target": "cuánto tiempo llevas",
+          "type": "M"
+        },
+        {
+          "id": "S0033L03",
+          "known": "have you been learning",
+          "target": "llevas aprendiendo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["aprendiendo español", "learning Spanish", null, 1],
+        ["llevas aprendiendo español", "you've been learning Spanish", null, 2],
+        ["estoy aprendiendo español ahora", "I'm learning Spanish now", null, 3],
+        ["quiero aprender español contigo", "I want to learn Spanish with you", null, 3],
+        ["estoy intentando aprender español", "I'm trying to learn Spanish", null, 4],
+        ["voy a comenzar aprendiendo español", "I'm going to start learning Spanish", null, 4],
+        ["cuánto tiempo llevas aprendiendo español", "how long have you been learning Spanish", null, 5],
+        ["me gusta aprender español contigo", "I like learning Spanish with you", null, 5],
+        ["estoy deseando hablar español mejor", "I'm looking forward to speaking Spanish better", null, 6],
+        ["quiero poder hablar español tan pronto como pueda", "I want to be able to speak Spanish as soon as I can", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "aprendiendo",
+          "learning"
+        ],
+        [
+          "español",
+          "Spanish"
+        ]
+      ]
+    }
+  }
+}

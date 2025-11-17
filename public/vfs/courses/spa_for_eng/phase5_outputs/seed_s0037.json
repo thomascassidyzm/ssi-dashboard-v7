@@ -1,0 +1,142 @@
+{
+  "legos": {
+    "S0037L06": {
+      "lego": [
+        "carefully",
+        "cuidadosamente"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0037L01",
+          "known": "I started",
+          "target": "comencé",
+          "type": "A"
+        },
+        {
+          "id": "S0037L02",
+          "known": "I started to think",
+          "target": "comencé a pensar",
+          "type": "M"
+        },
+        {
+          "id": "S0037L03",
+          "known": "to think",
+          "target": "pensar",
+          "type": "A"
+        },
+        {
+          "id": "S0037L04",
+          "known": "to think about it",
+          "target": "pensar sobre eso",
+          "type": "M"
+        },
+        {
+          "id": "S0037L05",
+          "known": "about it",
+          "target": "sobre eso",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["cuidadosamente", "carefully", null, 1],
+        ["pensar cuidadosamente", "to think carefully", null, 2],
+        ["comencé a pensar cuidadosamente", "I started to think carefully", null, 3],
+        ["quería pensar cuidadosamente", "I wanted to think carefully", null, 3],
+        ["comencé a pensar sobre eso cuidadosamente", "I started to think about it carefully", null, 4],
+        ["ella quiere pensar cuidadosamente", "she wants to think carefully", null, 4],
+        ["quería pensar sobre eso cuidadosamente ayer", "I wanted to think about it carefully yesterday", null, 5],
+        ["él no quiere pensar cuidadosamente", "he doesn't want to think carefully", null, 5],
+        ["no me gusta pensar sobre eso cuidadosamente", "I don't like to think about it carefully", null, 6],
+        ["ella no quiere pensar sobre eso cuidadosamente", "she doesn't want to think about it carefully", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0037L07": {
+      "lego": [
+        "last month",
+        "el mes pasado"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0037L01",
+          "known": "I started",
+          "target": "comencé",
+          "type": "A"
+        },
+        {
+          "id": "S0037L02",
+          "known": "I started to think",
+          "target": "comencé a pensar",
+          "type": "M"
+        },
+        {
+          "id": "S0037L03",
+          "known": "to think",
+          "target": "pensar",
+          "type": "A"
+        },
+        {
+          "id": "S0037L04",
+          "known": "to think about it",
+          "target": "pensar sobre eso",
+          "type": "M"
+        },
+        {
+          "id": "S0037L05",
+          "known": "about it",
+          "target": "sobre eso",
+          "type": "M"
+        },
+        {
+          "id": "S0037L06",
+          "known": "carefully",
+          "target": "cuidadosamente",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["el mes pasado", "last month", null, 1],
+        ["comencé el mes pasado", "I started last month", null, 2],
+        ["comencé a pensar el mes pasado", "I started to think last month", null, 3],
+        ["querías hablar conmigo el mes pasado", "you wanted to speak with me last month", null, 3],
+        ["comencé a pensar sobre eso el mes pasado", "I started to think about it last month", null, 4],
+        ["ella quería hablar conmigo el mes pasado", "she wanted to speak with me last month", null, 4],
+        ["comencé a pensar sobre eso cuidadosamente el mes pasado", "I started to think about it carefully last month", null, 5],
+        ["él no quiere interrumpir el mes pasado", "he doesn't want to interrupt last month", null, 5],
+        ["quería preguntarte algo sobre eso el mes pasado", "I wanted to ask you something about it last month", null, 6],
+        ["ella no quiere leer nada sobre eso el mes pasado", "she doesn't want to read anything about it last month", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "el",
+          "the"
+        ],
+        [
+          "mes",
+          "month"
+        ],
+        [
+          "pasado",
+          "last/past"
+        ]
+      ]
+    }
+  }
+}

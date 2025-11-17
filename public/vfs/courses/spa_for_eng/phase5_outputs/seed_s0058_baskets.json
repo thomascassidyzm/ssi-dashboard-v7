@@ -1,0 +1,86 @@
+{
+  "legos": {
+    "S0058L02": {
+      "lego": [
+        "interesting when",
+        "interesante cuando"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0058L01",
+          "known": "it's interesting",
+          "target": "es interesante",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "interesting when",
+          "interesante cuando"
+        ],
+        [
+          "it's interesting when",
+          "es interesante cuando"
+        ],
+        [
+          "interesting when you speak",
+          "interesante cuando hablas"
+        ],
+        [
+          "it's interesting when I can",
+          "es interesante cuando puedo"
+        ],
+        [
+          "it's interesting when you speak Spanish",
+          "es interesante cuando hablas español"
+        ],
+        [
+          "interesting when I can remember",
+          "interesante cuando puedo recordar"
+        ],
+        [
+          "it's interesting when you speak Spanish with me",
+          "es interesante cuando hablas español conmigo"
+        ],
+        [
+          "it's interesting when I'm trying to learn",
+          "es interesante cuando estoy intentando aprender"
+        ],
+        [
+          "interesting when I can remember a word",
+          "interesante cuando puedo recordar una palabra"
+        ],
+        [
+          "it's interesting when I want to speak with you",
+          "es interesante cuando quiero hablar contigo"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0058L02",
+        "seed_context": {
+          "known": "Es interesante cuando comprendes suficientes palabras.",
+          "target": "It's interesting when you understand enough words."
+        }
+      },
+      "components": [
+        [
+          "interesante",
+          "interesting"
+        ],
+        [
+          "cuando",
+          "when"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "legos": {
+    "S0068L04": {
+      "lego": [
+        "what are you looking for",
+        "qué estás buscando"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0068L02",
+          "known": "are you looking for",
+          "target": "estás buscando",
+          "type": "M"
+        },
+        {
+          "id": "S0068L03",
+          "known": "looking for",
+          "target": "buscando",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "¿Qué estás buscando?",
+          "What are you looking for?",
+          null,
+          1
+        ],
+        [
+          "¿Qué estás buscando ahora?",
+          "What are you looking for now?",
+          null,
+          2
+        ],
+        [
+          "¿Qué estás buscando aquí?",
+          "What are you looking for here?",
+          null,
+          2
+        ],
+        [
+          "No sé qué estás buscando",
+          "I don't know what you're looking for",
+          null,
+          3
+        ],
+        [
+          "¿Qué estás buscando en su bolsa?",
+          "What are you looking for in his bag?",
+          null,
+          4
+        ],
+        [
+          "Todavía no sé qué estás buscando",
+          "I still don't know what you're looking for",
+          null,
+          4
+        ],
+        [
+          "¿Qué estás buscando aquí en este momento?",
+          "What are you looking for here at this moment?",
+          null,
+          5
+        ],
+        [
+          "No estoy seguro de qué estás buscando",
+          "I'm not sure what you're looking for",
+          null,
+          5
+        ],
+        [
+          "Puedo ayudarte pero no sé qué estás buscando",
+          "I can help you but I don't know what you're looking for",
+          null,
+          7
+        ],
+        [
+          "¿Qué estás buscando?",
+          "What are you looking for?",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "qué",
+          "what"
+        ],
+        [
+          "estás",
+          "are you"
+        ],
+        [
+          "buscando",
+          "looking for"
+        ]
+      ]
+    }
+  }
+}

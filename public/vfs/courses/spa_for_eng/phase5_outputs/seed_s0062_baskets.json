@@ -1,0 +1,83 @@
+{
+  "legos": {
+    "S0062L01": {
+      "lego": [
+        "I'm not sure if",
+        "No estoy seguro si"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I'm not sure if",
+          "no estoy seguro si"
+        ],
+        [
+          "I'm not sure if I can",
+          "no estoy seguro si puedo"
+        ],
+        [
+          "I'm not sure if I want to",
+          "no estoy seguro si quiero"
+        ],
+        [
+          "I'm not sure if I can speak",
+          "no estoy seguro si puedo hablar"
+        ],
+        [
+          "I'm not sure if I can remember",
+          "no estoy seguro si puedo recordar"
+        ],
+        [
+          "I'm not sure if I want to try",
+          "no estoy seguro si quiero intentar"
+        ],
+        [
+          "I'm not sure if I can speak Spanish",
+          "no estoy seguro si puedo hablar español"
+        ],
+        [
+          "I'm not sure if I'm trying to learn",
+          "no estoy seguro si estoy intentando aprender"
+        ],
+        [
+          "I'm not sure if I can remember a word",
+          "no estoy seguro si puedo recordar una palabra"
+        ],
+        [
+          "I'm not sure if I want to speak Spanish with you",
+          "no estoy seguro si quiero hablar español contigo"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0062L01",
+        "seed_context": {
+          "known": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "estoy",
+          "I am"
+        ],
+        [
+          "seguro",
+          "sure"
+        ]
+      ]
+    }
+  }
+}

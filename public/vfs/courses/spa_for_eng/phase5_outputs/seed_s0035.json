@@ -1,0 +1,327 @@
+{
+  "legos": {
+    "S0035L05": {
+      "lego": [
+        "to read anything",
+        "leer nada"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0035L01",
+          "known": "she",
+          "target": "ella",
+          "type": "A"
+        },
+        {
+          "id": "S0035L02",
+          "known": "doesn't want",
+          "target": "no quiere",
+          "type": "M"
+        },
+        {
+          "id": "S0035L03",
+          "known": "doesn't want to read",
+          "target": "no quiere leer",
+          "type": "M"
+        },
+        {
+          "id": "S0035L04",
+          "known": "to read",
+          "target": "leer",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "leer nada",
+          "target": "to read anything",
+          "lego_count": 1
+        },
+        {
+          "known": "no quiero leer nada",
+          "target": "I don't want to read anything",
+          "lego_count": 2
+        },
+        {
+          "known": "ella no quiere leer nada",
+          "target": "she doesn't want to read anything",
+          "lego_count": 3
+        },
+        {
+          "known": "no voy a leer nada",
+          "target": "I'm not going to read anything",
+          "lego_count": 3
+        },
+        {
+          "known": "no voy a leer nada hoy",
+          "target": "I'm not going to read anything today",
+          "lego_count": 4
+        },
+        {
+          "known": "ella no quiere leer nada hoy",
+          "target": "she doesn't want to read anything today",
+          "lego_count": 4
+        },
+        {
+          "known": "no quiero leer nada ahora",
+          "target": "I don't want to read anything now",
+          "lego_count": 5
+        },
+        {
+          "known": "ella no quiere leer nada mañana",
+          "target": "she doesn't want to read anything tomorrow",
+          "lego_count": 5
+        },
+        {
+          "known": "no voy a leer nada después de que termines",
+          "target": "I'm not going to read anything after you finish",
+          "lego_count": 6
+        },
+        {
+          "known": "no quiero leer nada con alguien más",
+          "target": "I don't want to read anything with someone else",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "leer",
+          "to read"
+        ],
+        [
+          "nada",
+          "anything/nothing"
+        ]
+      ]
+    },
+    "S0035L06": {
+      "lego": [
+        "anything",
+        "nada"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0035L01",
+          "known": "she",
+          "target": "ella",
+          "type": "A"
+        },
+        {
+          "id": "S0035L02",
+          "known": "doesn't want",
+          "target": "no quiere",
+          "type": "M"
+        },
+        {
+          "id": "S0035L03",
+          "known": "doesn't want to read",
+          "target": "no quiere leer",
+          "type": "M"
+        },
+        {
+          "id": "S0035L04",
+          "known": "to read",
+          "target": "leer",
+          "type": "A"
+        },
+        {
+          "id": "S0035L05",
+          "known": "to read anything",
+          "target": "leer nada",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "nada",
+          "target": "anything",
+          "lego_count": 1
+        },
+        {
+          "known": "decir nada",
+          "target": "to say anything",
+          "lego_count": 2
+        },
+        {
+          "known": "no quiero decir nada",
+          "target": "I don't want to say anything",
+          "lego_count": 3
+        },
+        {
+          "known": "ella no quiere decir nada",
+          "target": "she doesn't want to say anything",
+          "lego_count": 3
+        },
+        {
+          "known": "no voy a decir nada",
+          "target": "I'm not going to say anything",
+          "lego_count": 4
+        },
+        {
+          "known": "no quiero recordar nada",
+          "target": "I don't want to remember anything",
+          "lego_count": 4
+        },
+        {
+          "known": "no quiero decir nada ahora",
+          "target": "I don't want to say anything now",
+          "lego_count": 5
+        },
+        {
+          "known": "ella no quiere leer nada",
+          "target": "she doesn't want to read anything",
+          "lego_count": 5
+        },
+        {
+          "known": "no voy a recordar nada después de que termines",
+          "target": "I'm not going to remember anything after you finish",
+          "lego_count": 6
+        },
+        {
+          "known": "no quiero aprender nada con alguien más",
+          "target": "I don't want to learn anything with someone else",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "nada",
+          "anything/nothing"
+        ]
+      ]
+    },
+    "S0035L07": {
+      "lego": [
+        "this afternoon",
+        "esta tarde"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0035L01",
+          "known": "she",
+          "target": "ella",
+          "type": "A"
+        },
+        {
+          "id": "S0035L02",
+          "known": "doesn't want",
+          "target": "no quiere",
+          "type": "M"
+        },
+        {
+          "id": "S0035L03",
+          "known": "doesn't want to read",
+          "target": "no quiere leer",
+          "type": "M"
+        },
+        {
+          "id": "S0035L04",
+          "known": "to read",
+          "target": "leer",
+          "type": "A"
+        },
+        {
+          "id": "S0035L05",
+          "known": "to read anything",
+          "target": "leer nada",
+          "type": "M"
+        },
+        {
+          "id": "S0035L06",
+          "known": "anything",
+          "target": "nada",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "esta tarde",
+          "target": "this afternoon",
+          "lego_count": 1
+        },
+        {
+          "known": "leer esta tarde",
+          "target": "to read this afternoon",
+          "lego_count": 2
+        },
+        {
+          "known": "quiero hablar esta tarde",
+          "target": "I want to speak this afternoon",
+          "lego_count": 3
+        },
+        {
+          "known": "ella no quiere leer esta tarde",
+          "target": "she doesn't want to read this afternoon",
+          "lego_count": 3
+        },
+        {
+          "known": "voy a practicar esta tarde",
+          "target": "I'm going to practise this afternoon",
+          "lego_count": 4
+        },
+        {
+          "known": "ella no quiere leer nada esta tarde",
+          "target": "she doesn't want to read anything this afternoon",
+          "lego_count": 4
+        },
+        {
+          "known": "quiero intentar hablar español esta tarde",
+          "target": "I want to try to speak Spanish this afternoon",
+          "lego_count": 6
+        },
+        {
+          "known": "voy a intentar recordar toda la oración esta tarde",
+          "target": "I'm going to try to remember the whole sentence this afternoon",
+          "lego_count": 7
+        },
+        {
+          "known": "él no quiere estar silencioso cuando otras personas están aquí esta tarde",
+          "target": "he doesn't want to be quiet when other people are here this afternoon",
+          "lego_count": 9
+        },
+        {
+          "known": "Ella no quiere leer nada esta tarde.",
+          "target": "She doesn't want to read anything this afternoon.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "tarde",
+          "afternoon"
+        ]
+      ]
+    }
+  }
+}

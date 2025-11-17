@@ -1,0 +1,128 @@
+{
+  "legos": {
+    "S0041L04": {
+      "lego": [
+        "comenzando a sentirme",
+        "starting to feel"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0041L01",
+          "known": "I feel okay",
+          "target": "me siento bien",
+          "type": "M"
+        },
+        {
+          "id": "S0041L02",
+          "known": "but",
+          "target": "pero",
+          "type": "A"
+        },
+        {
+          "id": "S0041L03",
+          "known": "I'm starting to feel tired",
+          "target": "estoy comenzando a sentirme cansado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["comenzando a sentirme", "starting to feel", null, 1],
+        ["estoy comenzando a sentirme bien", "I'm starting to feel okay", null, 2],
+        ["estoy comenzando a sentirme cansado", "I'm starting to feel tired", null, 3],
+        ["pero estoy comenzando a sentirme bien", "but I'm starting to feel okay", null, 3],
+        ["estoy comenzando a sentirme un poco cansado", "I'm starting to feel a little tired", null, 4],
+        ["estoy comenzando a sentirme bien esta mañana", "I'm starting to feel okay this morning", null, 4],
+        ["pero estoy comenzando a sentirme un poco cansado", "but I'm starting to feel a little tired", null, 5],
+        ["estoy comenzando a sentirme cansado en este momento", "I'm starting to feel tired at the moment", null, 5],
+        ["estoy comenzando a sentirme un poco cansado esta mañana", "I'm starting to feel a little tired this morning", null, 5],
+        ["me siento bien, pero estoy comenzando a sentirme un poco cansado", "I feel okay, but I'm starting to feel a little tired", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "comenzando",
+          "starting"
+        ],
+        [
+          "a",
+          "to"
+        ],
+        [
+          "sentirme",
+          "feel myself"
+        ]
+      ]
+    },
+    "S0041L05": {
+      "lego": [
+        "sentirme cansado",
+        "feel tired"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0041L01",
+          "known": "I feel okay",
+          "target": "me siento bien",
+          "type": "M"
+        },
+        {
+          "id": "S0041L02",
+          "known": "but",
+          "target": "pero",
+          "type": "A"
+        },
+        {
+          "id": "S0041L03",
+          "known": "I'm starting to feel tired",
+          "target": "estoy comenzando a sentirme cansado",
+          "type": "M"
+        },
+        {
+          "id": "S0041L04",
+          "known": "starting to feel",
+          "target": "comenzando a sentirme",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["sentirme cansado", "feel tired", null, 1],
+        ["estoy comenzando a sentirme cansado", "I'm starting to feel tired", null, 2],
+        ["estoy comenzando a sentirme cansado esta mañana", "I'm starting to feel tired this morning", null, 3],
+        ["pero estoy comenzando a sentirme cansado", "but I'm starting to feel tired", null, 3],
+        ["estoy comenzando a sentirme un poco cansado", "I'm starting to feel a little tired", null, 4],
+        ["estoy comenzando a sentirme cansado en este momento", "I'm starting to feel tired at the moment", null, 4],
+        ["me siento bien, pero estoy comenzando a sentirme cansado", "I feel okay, but I'm starting to feel tired", null, 5],
+        ["pero estoy comenzando a sentirme un poco cansado", "but I'm starting to feel a little tired", null, 5],
+        ["estoy comenzando a sentirme un poco cansado esta mañana", "I'm starting to feel a little tired this morning", null, 5],
+        ["me siento bien, pero estoy comenzando a sentirme cansado.", "I feel okay, but I'm starting to feel tired.", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "sentirme",
+          "feel myself"
+        ],
+        [
+          "cansado",
+          "tired"
+        ]
+      ]
+    }
+  }
+}

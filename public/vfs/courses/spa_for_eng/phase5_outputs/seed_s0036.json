@@ -1,0 +1,208 @@
+{
+  "legos": {
+    "S0036L04": {
+      "lego": [
+        "to interrupt the story",
+        "interrumpir la historia"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0036L01",
+          "known": "we don't want",
+          "target": "no queremos",
+          "type": "M"
+        },
+        {
+          "id": "S0036L02",
+          "known": "we don't want to interrupt",
+          "target": "no queremos interrumpir",
+          "type": "M"
+        },
+        {
+          "id": "S0036L03",
+          "known": "to interrupt",
+          "target": "interrumpir",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "interrumpir la historia",
+          "target": "to interrupt the story",
+          "lego_count": 1
+        },
+        {
+          "known": "no queremos interrumpir la historia",
+          "target": "we don't want to interrupt the story",
+          "lego_count": 2
+        },
+        {
+          "known": "quiero interrumpir la historia",
+          "target": "I want to interrupt the story",
+          "lego_count": 3
+        },
+        {
+          "known": "no queremos interrumpir la historia ahora",
+          "target": "we don't want to interrupt the story now",
+          "lego_count": 3
+        },
+        {
+          "known": "ella no quiere interrumpir la historia esta tarde",
+          "target": "she doesn't want to interrupt the story this afternoon",
+          "lego_count": 4
+        },
+        {
+          "known": "voy a intentar interrumpir la historia",
+          "target": "I'm going to try to interrupt the story",
+          "lego_count": 4
+        },
+        {
+          "known": "no queremos interrumpir la historia cuando hablas",
+          "target": "we don't want to interrupt the story when you speak",
+          "lego_count": 6
+        },
+        {
+          "known": "él no quiere interrumpir la historia antes de que termines",
+          "target": "he doesn't want to interrupt the story before you finish",
+          "lego_count": 7
+        },
+        {
+          "known": "voy a intentar interrumpir la historia cuando otras personas están aquí",
+          "target": "I'm going to try to interrupt the story when other people are here",
+          "lego_count": 8
+        },
+        {
+          "known": "No queremos interrumpir la historia.",
+          "target": "We don't want to interrupt the story.",
+          "lego_count": 2
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "interrumpir",
+          "to interrupt"
+        ],
+        [
+          "la",
+          "the"
+        ],
+        [
+          "historia",
+          "story"
+        ]
+      ]
+    },
+    "S0036L05": {
+      "lego": [
+        "the story",
+        "la historia"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0036L01",
+          "known": "we don't want",
+          "target": "no queremos",
+          "type": "M"
+        },
+        {
+          "id": "S0036L02",
+          "known": "we don't want to interrupt",
+          "target": "no queremos interrumpir",
+          "type": "M"
+        },
+        {
+          "id": "S0036L03",
+          "known": "to interrupt",
+          "target": "interrumpir",
+          "type": "A"
+        },
+        {
+          "id": "S0036L04",
+          "known": "to interrupt the story",
+          "target": "interrumpir la historia",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "la historia",
+          "target": "the story",
+          "lego_count": 1
+        },
+        {
+          "known": "interrumpir la historia",
+          "target": "to interrupt the story",
+          "lego_count": 2
+        },
+        {
+          "known": "quiero leer la historia",
+          "target": "I want to read the story",
+          "lego_count": 3
+        },
+        {
+          "known": "no queremos interrumpir la historia",
+          "target": "we don't want to interrupt the story",
+          "lego_count": 3
+        },
+        {
+          "known": "ella no quiere leer la historia esta tarde",
+          "target": "she doesn't want to read the story this afternoon",
+          "lego_count": 4
+        },
+        {
+          "known": "voy a intentar leer la historia",
+          "target": "I'm going to try to read the story",
+          "lego_count": 4
+        },
+        {
+          "known": "no queremos interrumpir la historia cuando hablas",
+          "target": "we don't want to interrupt the story when you speak",
+          "lego_count": 6
+        },
+        {
+          "known": "quiero intentar recordar la historia cuando termines",
+          "target": "I want to try to remember the story when you finish",
+          "lego_count": 7
+        },
+        {
+          "known": "él no quiere interrumpir la historia cuando otras personas están aquí",
+          "target": "he doesn't want to interrupt the story when other people are here",
+          "lego_count": 8
+        },
+        {
+          "known": "No queremos interrumpir la historia.",
+          "target": "We don't want to interrupt the story.",
+          "lego_count": 3
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "la",
+          "the"
+        ],
+        [
+          "historia",
+          "story"
+        ]
+      ]
+    }
+  }
+}

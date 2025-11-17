@@ -1,0 +1,65 @@
+{
+  "legos": {
+    "S0038L04": {
+      "lego": [
+        "about a week",
+        "aproximadamente una semana"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0038L01",
+          "known": "I've been learning",
+          "target": "llevo aprendiendo",
+          "type": "M"
+        },
+        {
+          "id": "S0038L02",
+          "known": "learning",
+          "target": "aprendiendo",
+          "type": "A"
+        },
+        {
+          "id": "S0038L03",
+          "known": "about",
+          "target": "aproximadamente",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["aproximadamente una semana", "about a week", null, 1],
+        ["llevo aprendiendo aproximadamente una semana", "I've been learning for about a week", null, 2],
+        ["llevo aprendiendo español aproximadamente una semana", "I've been learning Spanish for about a week", null, 3],
+        ["llevas aprendiendo aproximadamente una semana", "you've been learning for about a week", null, 3],
+        ["llevo aprendiendo español cuidadosamente aproximadamente una semana", "I've been learning Spanish carefully for about a week", null, 4],
+        ["ella lleva aprendiendo aproximadamente una semana", "she's been learning for about a week", null, 4],
+        ["cuánto tiempo llevo aprendiendo aproximadamente una semana", "how long have I been learning about a week", null, 5],
+        ["él lleva aprendiendo español aproximadamente una semana", "he's been learning Spanish for about a week", null, 5],
+        ["ella lleva aprendiendo español cuidadosamente aproximadamente una semana", "she's been learning Spanish carefully for about a week", null, 6],
+        ["cuánto tiempo lleva ella aprendiendo español aproximadamente una semana", "how long has she been learning Spanish about a week", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "aproximadamente",
+          "about/approximately"
+        ],
+        [
+          "una",
+          "a/one"
+        ],
+        [
+          "semana",
+          "week"
+        ]
+      ]
+    }
+  }
+}
