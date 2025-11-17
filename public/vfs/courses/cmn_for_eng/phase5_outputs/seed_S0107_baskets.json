@@ -1,0 +1,685 @@
+{
+  "legos": {
+    "S0107L01": {
+      "lego": [
+        "We hoped to",
+        "我们希望"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "我们希望",
+          "target": "We hoped to",
+          "lego_count": 1
+        },
+        {
+          "known": "我们希望走",
+          "target": "We hoped to go",
+          "lego_count": 2
+        },
+        {
+          "known": "我们希望改变它",
+          "target": "We hoped to change it",
+          "lego_count": 3
+        },
+        {
+          "known": "我们希望知道答案",
+          "target": "We hoped to know the answer",
+          "lego_count": 3
+        },
+        {
+          "known": "我们希望了解更多",
+          "target": "We hoped to find out more",
+          "lego_count": 4
+        },
+        {
+          "known": "我们希望感到高兴",
+          "target": "We hoped to feel happy",
+          "lego_count": 4
+        },
+        {
+          "known": "我们希望听更多的词",
+          "target": "We hoped to hear many more words",
+          "lego_count": 5
+        },
+        {
+          "known": "我们希望努力工作",
+          "target": "We hoped to work hard",
+          "lego_count": 5
+        },
+        {
+          "known": "我们希望改变我们正在做的事情",
+          "target": "We hoped to change what we're doing",
+          "lego_count": 6
+        },
+        {
+          "known": "我们希望考虑做类似的事情",
+          "target": "We hoped to consider doing something similar",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "希望",
+          "hoped"
+        ]
+      ]
+    },
+    "S0107L02": {
+      "lego": [
+        "hoped to see",
+        "希望看到"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0107L01",
+          "known": "We hoped to",
+          "target": "我们希望",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "希望看到",
+          "target": "hoped to see",
+          "lego_count": 1
+        },
+        {
+          "known": "我希望看到",
+          "target": "I hoped to see",
+          "lego_count": 2
+        },
+        {
+          "known": "我们希望看到它",
+          "target": "we hoped to see it",
+          "lego_count": 3
+        },
+        {
+          "known": "他希望看到答案",
+          "target": "he hoped to see the answer",
+          "lego_count": 3
+        },
+        {
+          "known": "我希望看到别的东西",
+          "target": "I hoped to see something else",
+          "lego_count": 4
+        },
+        {
+          "known": "我们希望看到更多",
+          "target": "we hoped to see more",
+          "lego_count": 4
+        },
+        {
+          "known": "我希望看到你正在做什么",
+          "target": "I hoped to see what you're doing",
+          "lego_count": 5
+        },
+        {
+          "known": "我们希望看到它起作用",
+          "target": "we hoped to see it work",
+          "lego_count": 5
+        },
+        {
+          "known": "这就是为什么我们希望看到它",
+          "target": "that is why we hoped to see it",
+          "lego_count": 6
+        },
+        {
+          "known": "我们希望看到你正在做的事情",
+          "target": "we hoped to see what you're doing",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "希望",
+          "hoped"
+        ],
+        [
+          "看到",
+          "to see"
+        ]
+      ]
+    },
+    "S0107L03": {
+      "lego": [
+        "to see",
+        "看到"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0107L01",
+          "known": "We hoped to",
+          "target": "我们希望",
+          "type": "M"
+        },
+        {
+          "id": "S0107L02",
+          "known": "hoped to see",
+          "target": "希望看到",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "看到",
+          "target": "to see",
+          "lego_count": 1
+        },
+        {
+          "known": "我看到",
+          "target": "I see",
+          "lego_count": 2
+        },
+        {
+          "known": "我想看到它",
+          "target": "I'd like to see it",
+          "lego_count": 3
+        },
+        {
+          "known": "我们希望看到",
+          "target": "we hoped to see",
+          "lego_count": 3
+        },
+        {
+          "known": "你应该看到答案",
+          "target": "you should see the answer",
+          "lego_count": 4
+        },
+        {
+          "known": "我很享受看到更多",
+          "target": "I'm enjoying seeing more",
+          "lego_count": 4
+        },
+        {
+          "known": "我们希望看到你正在做什么",
+          "target": "we hoped to see what you're doing",
+          "lego_count": 5
+        },
+        {
+          "known": "你不应该担心看到它",
+          "target": "you shouldn't worry about seeing it",
+          "lego_count": 5
+        },
+        {
+          "known": "这就是为什么我们希望看到它起作用",
+          "target": "that is why we hoped to see it work",
+          "lego_count": 6
+        },
+        {
+          "known": "我很享受看到更多关于这个语言的事情",
+          "target": "I'm enjoying seeing more about this language",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0107L04": {
+      "lego": [
+        "what you were doing",
+        "你正在做什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0107L01",
+          "known": "We hoped to",
+          "target": "我们希望",
+          "type": "M"
+        },
+        {
+          "id": "S0107L02",
+          "known": "hoped to see",
+          "target": "希望看到",
+          "type": "M"
+        },
+        {
+          "id": "S0107L03",
+          "known": "to see",
+          "target": "看到",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "你正在做什么",
+          "target": "what you were doing",
+          "lego_count": 1
+        },
+        {
+          "known": "我知道你正在做什么",
+          "target": "I know what you were doing",
+          "lego_count": 2
+        },
+        {
+          "known": "我应该知道你正在做什么",
+          "target": "I should know what you were doing",
+          "lego_count": 3
+        },
+        {
+          "known": "我们希望看到你正在做什么",
+          "target": "we hoped to see what you were doing",
+          "lego_count": 3
+        },
+        {
+          "known": "我不知道你正在做什么",
+          "target": "I didn't know what you were doing",
+          "lego_count": 4
+        },
+        {
+          "known": "这就是你正在做什么",
+          "target": "that is what you were doing",
+          "lego_count": 4
+        },
+        {
+          "known": "我很享受了解你正在做什么",
+          "target": "I'm enjoying finding out what you were doing",
+          "lego_count": 5
+        },
+        {
+          "known": "我们需要改变你正在做什么",
+          "target": "we need to change what you were doing",
+          "lego_count": 5
+        },
+        {
+          "known": "这就是为什么我希望看到你正在做什么",
+          "target": "that is why I hoped to see what you were doing",
+          "lego_count": 6
+        },
+        {
+          "known": "你应该考虑改变你正在做什么",
+          "target": "you should consider changing what you were doing",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "正在",
+          "(progressive)"
+        ],
+        [
+          "做",
+          "doing"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0107L05": {
+      "lego": [
+        "you were doing",
+        "你正在做"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0107L01",
+          "known": "We hoped to",
+          "target": "我们希望",
+          "type": "M"
+        },
+        {
+          "id": "S0107L02",
+          "known": "hoped to see",
+          "target": "希望看到",
+          "type": "M"
+        },
+        {
+          "id": "S0107L03",
+          "known": "to see",
+          "target": "看到",
+          "type": "A"
+        },
+        {
+          "id": "S0107L04",
+          "known": "what you were doing",
+          "target": "你正在做什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "你正在做",
+          "target": "you were doing",
+          "lego_count": 1
+        },
+        {
+          "known": "我知道你正在做",
+          "target": "I know you were doing",
+          "lego_count": 2
+        },
+        {
+          "known": "你正在做什么",
+          "target": "what you were doing",
+          "lego_count": 3
+        },
+        {
+          "known": "我看到你正在做",
+          "target": "I see you were doing",
+          "lego_count": 3
+        },
+        {
+          "known": "我希望看到你正在做",
+          "target": "I hoped to see you were doing",
+          "lego_count": 4
+        },
+        {
+          "known": "这就是你正在做",
+          "target": "that is what you were doing",
+          "lego_count": 4
+        },
+        {
+          "known": "我很享受看到你正在做什么",
+          "target": "I'm enjoying seeing what you were doing",
+          "lego_count": 5
+        },
+        {
+          "known": "我们需要改变你正在做的事情",
+          "target": "we need to change what you were doing",
+          "lego_count": 5
+        },
+        {
+          "known": "这就是为什么我们希望看到你正在做",
+          "target": "that is why we hoped to see you were doing",
+          "lego_count": 6
+        },
+        {
+          "known": "你应该考虑你正在做类似的事情",
+          "target": "you should consider what you were doing something similar",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "正在",
+          "(progressive)"
+        ],
+        [
+          "做",
+          "doing"
+        ]
+      ]
+    },
+    "S0107L06": {
+      "lego": [
+        "were doing",
+        "正在做"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0107L01",
+          "known": "We hoped to",
+          "target": "我们希望",
+          "type": "M"
+        },
+        {
+          "id": "S0107L02",
+          "known": "hoped to see",
+          "target": "希望看到",
+          "type": "M"
+        },
+        {
+          "id": "S0107L03",
+          "known": "to see",
+          "target": "看到",
+          "type": "A"
+        },
+        {
+          "id": "S0107L04",
+          "known": "what you were doing",
+          "target": "你正在做什么",
+          "type": "M"
+        },
+        {
+          "id": "S0107L05",
+          "known": "you were doing",
+          "target": "你正在做",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "正在做",
+          "target": "were doing",
+          "lego_count": 1
+        },
+        {
+          "known": "我正在做",
+          "target": "I was doing",
+          "lego_count": 2
+        },
+        {
+          "known": "你正在做什么",
+          "target": "what you were doing",
+          "lego_count": 3
+        },
+        {
+          "known": "我们正在做它",
+          "target": "we were doing it",
+          "lego_count": 3
+        },
+        {
+          "known": "我知道你正在做什么",
+          "target": "I know what you were doing",
+          "lego_count": 4
+        },
+        {
+          "known": "我们正在做的事情",
+          "target": "what we were doing",
+          "lego_count": 4
+        },
+        {
+          "known": "我很享受我正在做的事情",
+          "target": "I'm enjoying what I was doing",
+          "lego_count": 5
+        },
+        {
+          "known": "我们希望看到你正在做什么",
+          "target": "we hoped to see what you were doing",
+          "lego_count": 5
+        },
+        {
+          "known": "这就是为什么我们需要改变我们正在做的事情",
+          "target": "that is why we need to change what we were doing",
+          "lego_count": 6
+        },
+        {
+          "known": "你应该考虑你正在做类似的事情",
+          "target": "you should consider what you were doing something similar",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "正在",
+          "(progressive)"
+        ],
+        [
+          "做",
+          "doing"
+        ]
+      ]
+    },
+    "S0107L07": {
+      "lego": [
+        "doing what",
+        "做什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0107L01",
+          "known": "We hoped to",
+          "target": "我们希望",
+          "type": "M"
+        },
+        {
+          "id": "S0107L02",
+          "known": "hoped to see",
+          "target": "希望看到",
+          "type": "M"
+        },
+        {
+          "id": "S0107L03",
+          "known": "to see",
+          "target": "看到",
+          "type": "A"
+        },
+        {
+          "id": "S0107L04",
+          "known": "what you were doing",
+          "target": "你正在做什么",
+          "type": "M"
+        },
+        {
+          "id": "S0107L05",
+          "known": "you were doing",
+          "target": "你正在做",
+          "type": "M"
+        },
+        {
+          "id": "S0107L06",
+          "known": "were doing",
+          "target": "正在做",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "做什么",
+          "target": "doing what",
+          "lego_count": 1
+        },
+        {
+          "known": "你做什么",
+          "target": "you doing what",
+          "lego_count": 2
+        },
+        {
+          "known": "你正在做什么",
+          "target": "what you were doing",
+          "lego_count": 3
+        },
+        {
+          "known": "我知道做什么",
+          "target": "I know what to do",
+          "lego_count": 3
+        },
+        {
+          "known": "我不知道做什么",
+          "target": "I don't know what to do",
+          "lego_count": 4
+        },
+        {
+          "known": "我们正在做什么",
+          "target": "what we were doing",
+          "lego_count": 4
+        },
+        {
+          "known": "我们希望看到你正在做什么",
+          "target": "we hoped to see what you were doing",
+          "lego_count": 5
+        },
+        {
+          "known": "这就是我正在做什么",
+          "target": "that is what I was doing",
+          "lego_count": 5
+        },
+        {
+          "known": "你应该考虑你正在做什么",
+          "target": "you should consider what you were doing",
+          "lego_count": 6
+        },
+        {
+          "known": "我们希望看到你正在做什么。",
+          "target": "We hoped to see what you were doing.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "做",
+          "doing"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  }
+}
