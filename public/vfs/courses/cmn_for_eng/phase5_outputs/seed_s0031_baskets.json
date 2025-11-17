@@ -1,0 +1,76 @@
+{
+  "S0031L01": {
+    "lego": ["you wanted","你想"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You wanted to go","你想走",null,2],
+      ["You wanted to help me","你想帮我",null,2],
+      ["You wanted to ask me","你想问我",null,2],
+      ["You wanted to meet people","你想认识人",null,2],
+      ["You wanted to start talking","你想开始说话",null,2],
+      ["You wanted to ask me something","你想问我一些事情",null,2],
+      ["You wanted to speak better","你想说得更好",null,2],
+      ["You wanted to help me yesterday","你想昨天帮我",null,2],
+      ["You wanted to meet people who speak Chinese","你想认识会说中文的人",null,2],
+      ["You wanted to ask me something yesterday","你想昨天问我一些事情",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0031L02": {
+    "lego": ["tonight","今晚"],
+    "type": "A",
+    "current_seed_legos_available": [["you wanted","你想"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Tonight","今晚",null,1],
+      ["You wanted tonight","你想今晚",null,2],
+      ["I have to go tonight","我今晚必须走",null,2],
+      ["I wanted to ask you tonight","我今晚想问你",null,2],
+      ["You wanted to help me tonight","你想今晚帮我",null,3],
+      ["You wanted to go tonight","你想今晚走",null,3],
+      ["I wanted to speak with you tonight","我想今晚和你说话",null,3],
+      ["You wanted to ask me something tonight","你想今晚问我一些事情",null,3],
+      ["I wanted to meet people who speak Chinese tonight","我想今晚认识会说中文的人",null,3],
+      ["You wanted to speak better tonight","你想今晚说得更好",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0031L03": {
+    "lego": ["to speak with me","和我说话"],
+    "type": "M",
+    "current_seed_legos_available": [["you wanted","你想"],["tonight","今晚"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["To speak with me","和我说话",null,1],
+      ["You wanted to speak with me","你想和我说话",null,2],
+      ["I wanted to speak with you","我想和你说话",null,2],
+      ["You wanted to speak with me tonight","你想今晚和我说话",null,3],
+      ["I wanted to speak with you tonight","我想今晚和你说话",null,3],
+      ["I wanted to speak with you yesterday","我想昨天和你说话",null,3],
+      ["You wanted to speak with me before I go","你想在我走之前和我说话",null,3],
+      ["I wanted to speak with you as soon as possible","我想尽快和你说话",null,3],
+      ["You wanted to speak with me before I have to go","你想在我必须走之前和我说话",null,3],
+      ["You wanted to speak with me tonight","你想今晚和我说话",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}
