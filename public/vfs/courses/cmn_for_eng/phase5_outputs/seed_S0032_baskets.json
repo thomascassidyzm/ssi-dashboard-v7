@@ -1,0 +1,130 @@
+{
+  "S0032L01": {
+    "lego": [
+      "did you want",
+      "你想"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Did you want", "你想", null, 1],
+      ["Did you want yesterday", "你想昨天", null, 2],
+      ["Did you want to help me", "你想帮我", null, 3],
+      ["Did you want to speak better", "你想说得更好", null, 3],
+      ["Did you want to ask me something", "你想问我一些事情", null, 4],
+      ["Did you want to help me yesterday", "你想昨天帮我", null, 4],
+      ["Did you want to speak with me tonight", "你想今晚和我说话", null, 5],
+      ["Did you want to help me start talking", "你想帮我开始说话", null, 5],
+      ["Did you want to ask me something useful yesterday", "你想昨天问我一些有用的事情", null, 6],
+      ["Did you want to help me speak better as soon as possible", "你想帮我尽快能说得更好", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "想",
+        "want"
+      ]
+    ]
+  },
+  "S0032L02": {
+    "lego": [
+      "to show me",
+      "给我看"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0032L01",
+        "known": "did you want",
+        "target": "你想",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["To show me", "给我看", null, 1],
+      ["You wanted to show me", "你想给我看", null, 2],
+      ["Did you want to show me", "你想给我看", null, 3],
+      ["I wanted to show you something", "我想给你看一些东西", null, 3],
+      ["You wanted to show me yesterday", "你想昨天给我看", null, 4],
+      ["Did you want to show me tonight", "你想今晚给我看", null, 4],
+      ["I wanted to show you something useful", "我想给你看一些有用的东西", null, 5],
+      ["You wanted to show me something yesterday", "你想昨天给我看一些东西", null, 5],
+      ["Did you want to show me something useful tonight", "你想今晚给我看一些有用的东西", null, 6],
+      ["I wanted to show you something useful as soon as possible", "我想尽快给你看一些有用的东西", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "给",
+        "to/for"
+      ],
+      [
+        "我",
+        "me"
+      ],
+      [
+        "看",
+        "to look/see/show"
+      ]
+    ]
+  },
+  "S0032L04": {
+    "lego": [
+      "question particle",
+      "吗"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0032L01",
+        "known": "did you want",
+        "target": "你想",
+        "type": "M"
+      },
+      {
+        "id": "S0032L02",
+        "known": "to show me",
+        "target": "给我看",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Question", "吗", null, 1],
+      ["Did you want this", "你想这吗", null, 2],
+      ["Will you help me", "你会帮我吗", null, 3],
+      ["Did you want to help me", "你想帮我吗", null, 3],
+      ["Did you want to show me something", "你想给我看一些东西吗", null, 4],
+      ["Will you help me speak better", "你会帮我说得更好吗", null, 4],
+      ["Did you want to ask me something yesterday", "你想昨天问我一些事情吗", null, 5],
+      ["Will you help me start talking as soon as possible", "你会帮我尽快开始说话吗", null, 5],
+      ["Did you want to show me something useful tonight", "你想今晚给我看一些有用的东西吗", null, 6],
+      ["Did you want to show me something?", "你想给我看一些东西吗？", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
