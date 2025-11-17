@@ -1,0 +1,617 @@
+{
+  "S0315L01": {
+    "lego": [
+      "I think",
+      "我觉得"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I think",
+        "我觉得",
+        null,
+        1
+      ],
+      [
+        "I think yes",
+        "我觉得是的",
+        null,
+        2
+      ],
+      [
+        "I think he wants",
+        "我觉得他想",
+        null,
+        3
+      ],
+      [
+        "I think she could",
+        "我觉得她可以",
+        null,
+        3
+      ],
+      [
+        "I think he couldn't believe",
+        "我觉得他不能相信",
+        null,
+        4
+      ],
+      [
+        "I think she could write",
+        "我觉得她可以写",
+        null,
+        4
+      ],
+      [
+        "I think she could put it on the table",
+        "我觉得她可以把它放在桌子上",
+        null,
+        5
+      ],
+      [
+        "I think that man could watch five games",
+        "我觉得那个男人可以看五场比赛",
+        null,
+        5
+      ],
+      [
+        "I think that young woman could write a story about that man",
+        "我觉得那个年轻女人可以写一个关于那个男人的故事",
+        null,
+        6
+      ],
+      [
+        "I think she could watch all five games tomorrow night",
+        "我觉得她可以明天晚上看所有五场比赛",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "觉得",
+        "think/feel"
+      ]
+    ]
+  },
+  "S0315L02": {
+    "lego": [
+      "he couldn't afford",
+      "他买不起"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0315L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "He couldn't afford",
+        "他买不起",
+        null,
+        1
+      ],
+      [
+        "I think he couldn't afford",
+        "我觉得他买不起",
+        null,
+        2
+      ],
+      [
+        "He said he couldn't afford",
+        "他说他买不起",
+        null,
+        3
+      ],
+      [
+        "He couldn't afford the room",
+        "他买不起房间",
+        null,
+        3
+      ],
+      [
+        "I think he couldn't afford it",
+        "我觉得他买不起它",
+        null,
+        4
+      ],
+      [
+        "He said he couldn't afford it",
+        "他说他买不起它",
+        null,
+        4
+      ],
+      [
+        "I think that man couldn't afford the room",
+        "我觉得那个男人买不起房间",
+        null,
+        5
+      ],
+      [
+        "He said he couldn't afford the other room",
+        "他说他买不起另一个房间",
+        null,
+        5
+      ],
+      [
+        "I think that young man couldn't afford it before",
+        "我觉得那个年轻男人以前买不起它",
+        null,
+        6
+      ],
+      [
+        "She said that man couldn't afford the other room tomorrow",
+        "她说那个男人明天买不起另一个房间",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "买",
+        "buy"
+      ],
+      [
+        "不起",
+        "cannot afford"
+      ]
+    ]
+  },
+  "S0315L03": {
+    "lego": [
+      "can't afford",
+      "买不起"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0315L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0315L02",
+        "known": "he couldn't afford",
+        "target": "他买不起",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Can't afford",
+        "买不起",
+        null,
+        1
+      ],
+      [
+        "He couldn't afford",
+        "他买不起",
+        null,
+        2
+      ],
+      [
+        "I think can't afford",
+        "我觉得买不起",
+        null,
+        3
+      ],
+      [
+        "She couldn't afford it",
+        "她买不起它",
+        null,
+        3
+      ],
+      [
+        "I think he couldn't afford",
+        "我觉得他买不起",
+        null,
+        4
+      ],
+      [
+        "He couldn't afford the room",
+        "他买不起房间",
+        null,
+        4
+      ],
+      [
+        "I think that man couldn't afford it",
+        "我觉得那个男人买不起它",
+        null,
+        5
+      ],
+      [
+        "She couldn't afford the other room tomorrow",
+        "她买不起明天的另一个房间",
+        null,
+        5
+      ],
+      [
+        "He said that young man couldn't afford the room before",
+        "他说那个年轻男人以前买不起房间",
+        null,
+        6
+      ],
+      [
+        "I think that woman couldn't afford it tomorrow night",
+        "我觉得那个女人明天晚上买不起它",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "买",
+        "buy"
+      ],
+      [
+        "不起",
+        "cannot afford"
+      ]
+    ]
+  },
+  "S0315L04": {
+    "lego": [
+      "the car that he wanted",
+      "他想要的车"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0315L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0315L02",
+        "known": "he couldn't afford",
+        "target": "他买不起",
+        "type": "M"
+      },
+      {
+        "id": "S0315L03",
+        "known": "can't afford",
+        "target": "买不起",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The car that he wanted",
+        "他想要的车",
+        null,
+        1
+      ],
+      [
+        "Couldn't afford the car that he wanted",
+        "买不起他想要的车",
+        null,
+        2
+      ],
+      [
+        "He couldn't afford the car that he wanted",
+        "他买不起他想要的车",
+        null,
+        3
+      ],
+      [
+        "I think the car that he wanted",
+        "我觉得他想要的车",
+        null,
+        3
+      ],
+      [
+        "I think he couldn't afford the car that he wanted",
+        "我觉得他买不起他想要的车",
+        null,
+        4
+      ],
+      [
+        "He said the car that he wanted",
+        "他说他想要的车",
+        null,
+        4
+      ],
+      [
+        "She said he couldn't afford the car that he wanted",
+        "她说他买不起他想要的车",
+        null,
+        5
+      ],
+      [
+        "I think that man couldn't afford the car that he wanted",
+        "我觉得那个男人买不起他想要的车",
+        null,
+        5
+      ],
+      [
+        "He said that young man couldn't afford the car that he wanted before",
+        "他说那个年轻男人以前买不起他想要的车",
+        null,
+        6
+      ],
+      [
+        "I think he couldn't afford the car that he wanted before",
+        "我觉得他以前买不起他想要的车",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "想要",
+        "want"
+      ],
+      [
+        "的",
+        "DE"
+      ],
+      [
+        "车",
+        "car"
+      ]
+    ]
+  },
+  "S0315L05": {
+    "lego": [
+      "want",
+      "想要"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0315L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0315L02",
+        "known": "he couldn't afford",
+        "target": "他买不起",
+        "type": "M"
+      },
+      {
+        "id": "S0315L03",
+        "known": "can't afford",
+        "target": "买不起",
+        "type": "M"
+      },
+      {
+        "id": "S0315L04",
+        "known": "the car that he wanted",
+        "target": "他想要的车",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Want",
+        "想要",
+        null,
+        1
+      ],
+      [
+        "He wanted",
+        "他想要",
+        null,
+        2
+      ],
+      [
+        "I think he wanted",
+        "我觉得他想要",
+        null,
+        3
+      ],
+      [
+        "She wanted it",
+        "她想要它",
+        null,
+        3
+      ],
+      [
+        "I think she wanted it",
+        "我觉得她想要它",
+        null,
+        4
+      ],
+      [
+        "He said he wanted it",
+        "他说他想要它",
+        null,
+        4
+      ],
+      [
+        "I think that man wanted the room",
+        "我觉得那个男人想要房间",
+        null,
+        5
+      ],
+      [
+        "He said she wanted the other room tomorrow",
+        "他说她想要明天的另一个房间",
+        null,
+        5
+      ],
+      [
+        "I think that young woman wanted the table before",
+        "我觉得那个年轻女人以前想要桌子",
+        null,
+        6
+      ],
+      [
+        "He said that young man wanted it tomorrow night",
+        "他说那个年轻男人明天晚上想要它",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0315L06": {
+    "lego": [
+      "car",
+      "车"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0315L01",
+        "known": "I think",
+        "target": "我觉得",
+        "type": "M"
+      },
+      {
+        "id": "S0315L02",
+        "known": "he couldn't afford",
+        "target": "他买不起",
+        "type": "M"
+      },
+      {
+        "id": "S0315L03",
+        "known": "can't afford",
+        "target": "买不起",
+        "type": "M"
+      },
+      {
+        "id": "S0315L04",
+        "known": "the car that he wanted",
+        "target": "他想要的车",
+        "type": "M"
+      },
+      {
+        "id": "S0315L05",
+        "known": "want",
+        "target": "想要",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Car",
+        "车",
+        null,
+        1
+      ],
+      [
+        "He wanted car",
+        "他想要车",
+        null,
+        2
+      ],
+      [
+        "The car that he wanted",
+        "他想要的车",
+        null,
+        3
+      ],
+      [
+        "Couldn't afford car",
+        "买不起车",
+        null,
+        3
+      ],
+      [
+        "He couldn't afford the car that he wanted",
+        "他买不起他想要的车",
+        null,
+        4
+      ],
+      [
+        "I think he wanted car",
+        "我觉得他想要车",
+        null,
+        4
+      ],
+      [
+        "I think he couldn't afford the car that he wanted",
+        "我觉得他买不起他想要的车",
+        null,
+        5
+      ],
+      [
+        "He said that man couldn't afford the car that he wanted",
+        "他说那个男人买不起他想要的车",
+        null,
+        5
+      ],
+      [
+        "She said he couldn't afford the car that he wanted before",
+        "她说他以前买不起他想要的车",
+        null,
+        6
+      ],
+      [
+        "I think that he couldn't afford the car that he wanted.",
+        "我觉得他买不起他想要的车。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

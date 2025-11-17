@@ -1,0 +1,742 @@
+{
+  "S0313L01": {
+    "lego": [
+      "he said",
+      "他说"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "He said",
+        "他说",
+        null,
+        1
+      ],
+      [
+        "He said yes",
+        "他说是的",
+        null,
+        2
+      ],
+      [
+        "He said he wants",
+        "他说他想",
+        null,
+        3
+      ],
+      [
+        "He said tomorrow night",
+        "他说明天晚上",
+        null,
+        3
+      ],
+      [
+        "He said he couldn't believe",
+        "他说他不能相信",
+        null,
+        4
+      ],
+      [
+        "He said she could write",
+        "他说她可以写",
+        null,
+        4
+      ],
+      [
+        "He said that man could use the other room",
+        "他说那个男人可以用另一个房间",
+        null,
+        5
+      ],
+      [
+        "He said she could write a story about that man",
+        "他说她可以写一个关于那个男人的故事",
+        null,
+        6
+      ],
+      [
+        "He said he wants to work from home tomorrow",
+        "他说他想明天在家工作",
+        null,
+        5
+      ],
+      [
+        "He said she could use the other room tomorrow night",
+        "他说她可以明天晚上用另一个房间",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "说",
+        "said"
+      ]
+    ]
+  },
+  "S0313L02": {
+    "lego": [
+      "he couldn't",
+      "他不能"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0313L01",
+        "known": "he said",
+        "target": "他说",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "He couldn't",
+        "他不能",
+        null,
+        1
+      ],
+      [
+        "He couldn't believe",
+        "他不能相信",
+        null,
+        2
+      ],
+      [
+        "He said he couldn't",
+        "他说他不能",
+        null,
+        3
+      ],
+      [
+        "He couldn't use the room",
+        "他不能用房间",
+        null,
+        3
+      ],
+      [
+        "He said he couldn't believe",
+        "他说他不能相信",
+        null,
+        4
+      ],
+      [
+        "He couldn't believe the facts",
+        "他不能相信事实",
+        null,
+        4
+      ],
+      [
+        "He said he couldn't use the other room",
+        "他说他不能用另一个房间",
+        null,
+        5
+      ],
+      [
+        "He couldn't believe that man wants to work",
+        "他不能相信那个男人想工作",
+        null,
+        5
+      ],
+      [
+        "He said he couldn't believe the most important facts",
+        "他说他不能相信最重要的事实",
+        null,
+        6
+      ],
+      [
+        "He couldn't believe she wants to work from home tomorrow",
+        "他不能相信她想明天在家工作",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "不能",
+        "couldn't/cannot"
+      ]
+    ]
+  },
+  "S0313L03": {
+    "lego": [
+      "couldn't watch",
+      "不能看"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0313L01",
+        "known": "he said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0313L02",
+        "known": "he couldn't",
+        "target": "他不能",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Couldn't watch",
+        "不能看",
+        null,
+        1
+      ],
+      [
+        "He couldn't watch",
+        "他不能看",
+        null,
+        2
+      ],
+      [
+        "She couldn't watch before",
+        "她不能看以前",
+        null,
+        3
+      ],
+      [
+        "He said couldn't watch",
+        "他说不能看",
+        null,
+        3
+      ],
+      [
+        "He said he couldn't watch",
+        "他说他不能看",
+        null,
+        4
+      ],
+      [
+        "She couldn't watch tomorrow night",
+        "她不能明天晚上看",
+        null,
+        4
+      ],
+      [
+        "He said that man couldn't watch",
+        "他说那个男人不能看",
+        null,
+        5
+      ],
+      [
+        "She couldn't watch the story about that man",
+        "她不能看关于那个男人的故事",
+        null,
+        5
+      ],
+      [
+        "He said she couldn't watch before tomorrow night",
+        "他说她不能在明天晚上以前看",
+        null,
+        6
+      ],
+      [
+        "That young man couldn't watch at home before",
+        "那个年轻男人不能以前在家看",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "不能",
+        "couldn't/cannot"
+      ],
+      [
+        "看",
+        "watch"
+      ]
+    ]
+  },
+  "S0313L04": {
+    "lego": [
+      "watch",
+      "看"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0313L01",
+        "known": "he said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0313L02",
+        "known": "he couldn't",
+        "target": "他不能",
+        "type": "M"
+      },
+      {
+        "id": "S0313L03",
+        "known": "couldn't watch",
+        "target": "不能看",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Watch",
+        "看",
+        null,
+        1
+      ],
+      [
+        "He couldn't watch",
+        "他不能看",
+        null,
+        2
+      ],
+      [
+        "She could watch tomorrow",
+        "她可以明天看",
+        null,
+        3
+      ],
+      [
+        "I think watch",
+        "我觉得看",
+        null,
+        3
+      ],
+      [
+        "He said he couldn't watch",
+        "他说他不能看",
+        null,
+        4
+      ],
+      [
+        "She could watch at home",
+        "她可以在家看",
+        null,
+        4
+      ],
+      [
+        "He said that young man couldn't watch",
+        "他说那个年轻男人不能看",
+        null,
+        5
+      ],
+      [
+        "I think she could watch tomorrow night",
+        "我觉得她可以明天晚上看",
+        null,
+        5
+      ],
+      [
+        "He said he couldn't watch before tomorrow night",
+        "他说他不能在明天晚上以前看",
+        null,
+        6
+      ],
+      [
+        "That young woman could watch the story about that man",
+        "那个年轻女人可以看关于那个男人的故事",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0313L05": {
+    "lego": [
+      "all five games",
+      "所有五场比赛"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0313L01",
+        "known": "he said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0313L02",
+        "known": "he couldn't",
+        "target": "他不能",
+        "type": "M"
+      },
+      {
+        "id": "S0313L03",
+        "known": "couldn't watch",
+        "target": "不能看",
+        "type": "M"
+      },
+      {
+        "id": "S0313L04",
+        "known": "watch",
+        "target": "看",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "All five games",
+        "所有五场比赛",
+        null,
+        1
+      ],
+      [
+        "Watch all five games",
+        "看所有五场比赛",
+        null,
+        2
+      ],
+      [
+        "Couldn't watch all five games",
+        "不能看所有五场比赛",
+        null,
+        3
+      ],
+      [
+        "He couldn't watch all five games",
+        "他不能看所有五场比赛",
+        null,
+        3
+      ],
+      [
+        "She could watch all five games",
+        "她可以看所有五场比赛",
+        null,
+        4
+      ],
+      [
+        "He said watch all five games",
+        "他说看所有五场比赛",
+        null,
+        4
+      ],
+      [
+        "He said he couldn't watch all five games",
+        "他说他不能看所有五场比赛",
+        null,
+        5
+      ],
+      [
+        "I think she could watch all five games tomorrow",
+        "我觉得她可以明天看所有五场比赛",
+        null,
+        5
+      ],
+      [
+        "He said that young man couldn't watch all five games",
+        "他说那个年轻男人不能看所有五场比赛",
+        null,
+        6
+      ],
+      [
+        "She said that woman could watch all five games tomorrow night",
+        "她说那个女人可以明天晚上看所有五场比赛",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "所有",
+        "all"
+      ],
+      [
+        "五",
+        "five"
+      ],
+      [
+        "场",
+        "MW"
+      ],
+      [
+        "比赛",
+        "games"
+      ]
+    ]
+  },
+  "S0313L06": {
+    "lego": [
+      "five games",
+      "五场比赛"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0313L01",
+        "known": "he said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0313L02",
+        "known": "he couldn't",
+        "target": "他不能",
+        "type": "M"
+      },
+      {
+        "id": "S0313L03",
+        "known": "couldn't watch",
+        "target": "不能看",
+        "type": "M"
+      },
+      {
+        "id": "S0313L04",
+        "known": "watch",
+        "target": "看",
+        "type": "A"
+      },
+      {
+        "id": "S0313L05",
+        "known": "all five games",
+        "target": "所有五场比赛",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Five games",
+        "五场比赛",
+        null,
+        1
+      ],
+      [
+        "Watch five games",
+        "看五场比赛",
+        null,
+        2
+      ],
+      [
+        "Couldn't watch five games",
+        "不能看五场比赛",
+        null,
+        3
+      ],
+      [
+        "He couldn't watch five games",
+        "他不能看五场比赛",
+        null,
+        3
+      ],
+      [
+        "She could watch five games tomorrow",
+        "她可以明天看五场比赛",
+        null,
+        4
+      ],
+      [
+        "He said watch five games",
+        "他说看五场比赛",
+        null,
+        4
+      ],
+      [
+        "He said he couldn't watch five games",
+        "他说他不能看五场比赛",
+        null,
+        5
+      ],
+      [
+        "I think that man could watch five games",
+        "我觉得那个男人可以看五场比赛",
+        null,
+        5
+      ],
+      [
+        "He said that young man couldn't watch five games tomorrow",
+        "他说那个年轻男人不能明天看五场比赛",
+        null,
+        6
+      ],
+      [
+        "She said that woman could watch five games tomorrow night",
+        "她说那个女人可以明天晚上看五场比赛",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "五",
+        "five"
+      ],
+      [
+        "场",
+        "MW"
+      ],
+      [
+        "比赛",
+        "games"
+      ]
+    ]
+  },
+  "S0313L07": {
+    "lego": [
+      "games",
+      "比赛"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0313L01",
+        "known": "he said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0313L02",
+        "known": "he couldn't",
+        "target": "他不能",
+        "type": "M"
+      },
+      {
+        "id": "S0313L03",
+        "known": "couldn't watch",
+        "target": "不能看",
+        "type": "M"
+      },
+      {
+        "id": "S0313L04",
+        "known": "watch",
+        "target": "看",
+        "type": "A"
+      },
+      {
+        "id": "S0313L05",
+        "known": "all five games",
+        "target": "所有五场比赛",
+        "type": "M"
+      },
+      {
+        "id": "S0313L06",
+        "known": "five games",
+        "target": "五场比赛",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Games",
+        "比赛",
+        null,
+        1
+      ],
+      [
+        "Five games",
+        "五场比赛",
+        null,
+        2
+      ],
+      [
+        "Watch all five games",
+        "看所有五场比赛",
+        null,
+        3
+      ],
+      [
+        "He couldn't watch games",
+        "他不能看比赛",
+        null,
+        3
+      ],
+      [
+        "She could watch five games tomorrow",
+        "她可以明天看五场比赛",
+        null,
+        4
+      ],
+      [
+        "He said watch all five games",
+        "他说看所有五场比赛",
+        null,
+        4
+      ],
+      [
+        "He said he couldn't watch all five games",
+        "他说他不能看所有五场比赛",
+        null,
+        5
+      ],
+      [
+        "I think that man could watch five games tomorrow",
+        "我觉得那个男人可以明天看五场比赛",
+        null,
+        5
+      ],
+      [
+        "He said that young man couldn't watch all five games tomorrow night",
+        "他说那个年轻男人不能明天晚上看所有五场比赛",
+        null,
+        6
+      ],
+      [
+        "He said that he couldn't watch all five games.",
+        "他说他不能看所有五场比赛。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
