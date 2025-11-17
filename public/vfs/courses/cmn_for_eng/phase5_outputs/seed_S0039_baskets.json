@@ -1,0 +1,307 @@
+{
+  "S0039L02": {
+    "lego": [
+      "I this morning",
+      "我今天早上"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I this morning",
+        "我今天早上",
+        null,
+        2
+      ],
+      [
+        "You this morning",
+        "你今天早上",
+        null,
+        2
+      ],
+      [
+        "I wanted something this morning",
+        "我今天早上想一些东西",
+        null,
+        3
+      ],
+      [
+        "You started this morning",
+        "你今天早上开始",
+        null,
+        3
+      ],
+      [
+        "I started learning this morning",
+        "我今天早上开始学",
+        null,
+        4
+      ],
+      [
+        "I wanted to ask you this morning",
+        "我今天早上想问你",
+        null,
+        4
+      ],
+      [
+        "I started learning Chinese this morning",
+        "我今天早上开始学中文",
+        null,
+        5
+      ],
+      [
+        "I wanted to speak with you this morning",
+        "我今天早上想和你说话",
+        null,
+        6
+      ],
+      [
+        "I've been learning Chinese this morning",
+        "我今天早上已经学了中文",
+        null,
+        6
+      ],
+      [
+        "I started to think about it this morning",
+        "我今天早上开始考虑这件事",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0039L02",
+      "seed_context": {
+        "known": "但我今天早上有点累。",
+        "target": "But I'm a little tired this morning."
+      }
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "今天早上",
+        "this morning"
+      ]
+    ]
+  },
+  "S0039L03": {
+    "lego": [
+      "this morning",
+      "今天早上"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0039L02",
+        "known": "I this morning",
+        "target": "我今天早上",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "This morning",
+        "今天早上",
+        null,
+        1
+      ],
+      [
+        "This afternoon",
+        "今天下午",
+        null,
+        2
+      ],
+      [
+        "I started this morning",
+        "我今天早上开始",
+        null,
+        3
+      ],
+      [
+        "You wanted this morning",
+        "你今天早上想",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask this morning",
+        "我今天早上想问",
+        null,
+        4
+      ],
+      [
+        "I started learning this morning",
+        "我今天早上开始学",
+        null,
+        4
+      ],
+      [
+        "I wanted to speak with you this morning",
+        "我今天早上想和你说话",
+        null,
+        5
+      ],
+      [
+        "I started learning Chinese this morning",
+        "我今天早上开始学中文",
+        null,
+        6
+      ],
+      [
+        "I've been learning Chinese this morning",
+        "我今天早上已经学了中文",
+        null,
+        6
+      ],
+      [
+        "You started to think carefully this morning",
+        "你今天早上开始仔细地考虑",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0039L03",
+      "seed_context": {
+        "known": "但我今天早上有点累。",
+        "target": "But I'm a little tired this morning."
+      }
+    },
+    "components": [
+      [
+        "今天",
+        "today"
+      ],
+      [
+        "早上",
+        "morning"
+      ]
+    ]
+  },
+  "S0039L04": {
+    "lego": [
+      "a little tired",
+      "有点累"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0039L02",
+        "known": "I this morning",
+        "target": "我今天早上",
+        "type": "M"
+      },
+      {
+        "id": "S0039L03",
+        "known": "this morning",
+        "target": "今天早上",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "A little tired",
+        "有点累",
+        null,
+        2
+      ],
+      [
+        "I'm a little tired",
+        "我有点累",
+        null,
+        2
+      ],
+      [
+        "You're a little tired today",
+        "你今天有点累",
+        null,
+        3
+      ],
+      [
+        "I'm a little tired yesterday",
+        "我昨天有点累",
+        null,
+        3
+      ],
+      [
+        "I'm a little tired this afternoon",
+        "我今天下午有点累",
+        null,
+        4
+      ],
+      [
+        "You're a little tired this morning",
+        "你今天早上有点累",
+        null,
+        4
+      ],
+      [
+        "I'm a little tired this morning now",
+        "我今天早上有点累",
+        null,
+        5
+      ],
+      [
+        "I wanted to speak but I'm a little tired",
+        "我想说话但我有点累",
+        null,
+        6
+      ],
+      [
+        "I'm a little tired this morning",
+        "我今天早上有点累",
+        null,
+        6
+      ],
+      [
+        "But I'm a little tired this morning",
+        "但我今天早上有点累",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0039L04",
+      "seed_context": {
+        "known": "但我今天早上有点累。",
+        "target": "But I'm a little tired this morning."
+      }
+    },
+    "components": [
+      [
+        "有点",
+        "a little/somewhat"
+      ],
+      [
+        "累",
+        "tired"
+      ]
+    ]
+  }
+}

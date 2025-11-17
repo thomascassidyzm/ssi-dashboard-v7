@@ -1,0 +1,323 @@
+{
+  "S0038L01": {
+    "lego": [
+      "I've been learning",
+      "我已经学了"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I've been learning",
+        "我已经学了",
+        null,
+        2
+      ],
+      [
+        "You've been learning",
+        "你已经学了",
+        null,
+        2
+      ],
+      [
+        "I've been learning Chinese",
+        "我已经学了中文",
+        null,
+        3
+      ],
+      [
+        "You've been learning Chinese",
+        "你已经学了中文",
+        null,
+        3
+      ],
+      [
+        "I've been learning Chinese yesterday",
+        "我昨天已经学了中文",
+        null,
+        4
+      ],
+      [
+        "I've been learning something",
+        "我已经学了一些东西",
+        null,
+        4
+      ],
+      [
+        "I've been learning Chinese last month",
+        "我上个月已经学了中文",
+        null,
+        5
+      ],
+      [
+        "You've been learning this matter carefully",
+        "你已经仔细地学了这件事",
+        null,
+        6
+      ],
+      [
+        "I've been learning Chinese this afternoon",
+        "我今天下午已经学了中文",
+        null,
+        6
+      ],
+      [
+        "I've been learning to speak better",
+        "我已经学了说得更好",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0038L01",
+      "seed_context": {
+        "known": "我已经学了大约一个星期了。",
+        "target": "I've been learning for about a week."
+      }
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "已经",
+        "already"
+      ],
+      [
+        "学",
+        "learn/study"
+      ],
+      [
+        "了",
+        "aspect particle"
+      ]
+    ]
+  },
+  "S0038L02": {
+    "lego": [
+      "about a week",
+      "大约一个星期"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0038L01",
+        "known": "I've been learning",
+        "target": "我已经学了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "About a week",
+        "大约一个星期",
+        null,
+        2
+      ],
+      [
+        "A week",
+        "一个星期",
+        null,
+        1
+      ],
+      [
+        "I've been learning for about a week",
+        "我已经学了大约一个星期",
+        null,
+        3
+      ],
+      [
+        "I wanted about a week",
+        "我想大约一个星期",
+        null,
+        3
+      ],
+      [
+        "I've been here for about a week",
+        "我在这里大约一个星期了",
+        null,
+        4
+      ],
+      [
+        "I started learning about a week ago",
+        "我大约一个星期开始学",
+        null,
+        4
+      ],
+      [
+        "I've been learning Chinese for about a week",
+        "我已经学了中文大约一个星期",
+        null,
+        5
+      ],
+      [
+        "I've been speaking Chinese for about a week",
+        "我已经说了中文大约一个星期",
+        null,
+        6
+      ],
+      [
+        "You've been learning Chinese for about a week",
+        "你已经学了中文大约一个星期",
+        null,
+        6
+      ],
+      [
+        "I've been learning to speak better for about a week",
+        "我已经学了说得更好大约一个星期",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0038L02",
+      "seed_context": {
+        "known": "我已经学了大约一个星期了。",
+        "target": "I've been learning for about a week."
+      }
+    },
+    "components": [
+      [
+        "大约",
+        "about/approximately"
+      ],
+      [
+        "一个",
+        "one"
+      ],
+      [
+        "星期",
+        "week"
+      ]
+    ]
+  },
+  "S0038L03": {
+    "lego": [
+      "a week",
+      "一个星期"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0038L01",
+        "known": "I've been learning",
+        "target": "我已经学了",
+        "type": "M"
+      },
+      {
+        "id": "S0038L02",
+        "known": "about a week",
+        "target": "大约一个星期",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "A week",
+        "一个星期",
+        null,
+        1
+      ],
+      [
+        "One week",
+        "一个星期",
+        null,
+        1
+      ],
+      [
+        "I've been learning for a week",
+        "我已经学了一个星期",
+        null,
+        3
+      ],
+      [
+        "I wanted a week",
+        "我想一个星期",
+        null,
+        3
+      ],
+      [
+        "I've been here for a week",
+        "我在这里一个星期了",
+        null,
+        4
+      ],
+      [
+        "I started learning a week ago",
+        "我一个星期开始学",
+        null,
+        4
+      ],
+      [
+        "I've been learning Chinese for a week",
+        "我已经学了中文一个星期",
+        null,
+        5
+      ],
+      [
+        "I've been speaking Chinese for a week",
+        "我已经说了中文一个星期",
+        null,
+        6
+      ],
+      [
+        "I've been learning for about a week now",
+        "我已经学了大约一个星期了",
+        null,
+        6
+      ],
+      [
+        "I've been learning for about a week",
+        "我已经学了大约一个星期了",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0038L03",
+      "seed_context": {
+        "known": "我已经学了大约一个星期了。",
+        "target": "I've been learning for about a week."
+      }
+    },
+    "components": [
+      [
+        "一",
+        "one"
+      ],
+      [
+        "个",
+        "measure word"
+      ],
+      [
+        "星期",
+        "week"
+      ]
+    ]
+  }
+}

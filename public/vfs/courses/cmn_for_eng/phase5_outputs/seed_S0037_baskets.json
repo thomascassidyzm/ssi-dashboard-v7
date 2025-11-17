@@ -1,0 +1,437 @@
+{
+  "S0037L01": {
+    "lego": [
+      "I started last month",
+      "我上个月开始"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I started yesterday",
+        "我昨天开始",
+        null,
+        2
+      ],
+      [
+        "You started last month",
+        "你上个月开始",
+        null,
+        1
+      ],
+      [
+        "I started learning yesterday",
+        "我昨天开始学",
+        null,
+        3
+      ],
+      [
+        "You started learning last month",
+        "你上个月开始学",
+        null,
+        3
+      ],
+      [
+        "I started learning Chinese yesterday",
+        "我昨天开始学中文",
+        null,
+        4
+      ],
+      [
+        "I started speaking Chinese last month",
+        "我上个月开始说中文",
+        null,
+        4
+      ],
+      [
+        "I started speaking with you yesterday",
+        "我昨天开始和你说话",
+        null,
+        5
+      ],
+      [
+        "I started learning Chinese last month",
+        "我上个月开始学中文",
+        null,
+        5
+      ],
+      [
+        "You started speaking Chinese last month",
+        "你上个月开始说中文",
+        null,
+        6
+      ],
+      [
+        "I started speaking better yesterday",
+        "我昨天开始说得更好",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0037L01",
+      "seed_context": {
+        "known": "我上个月开始仔细地考虑这件事。",
+        "target": "I started to think about it carefully last month."
+      }
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "上个月",
+        "last month"
+      ],
+      [
+        "开始",
+        "started/to begin"
+      ]
+    ]
+  },
+  "S0037L02": {
+    "lego": [
+      "last month",
+      "上个月"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0037L01",
+        "known": "I started last month",
+        "target": "我上个月开始",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Last month",
+        "上个月",
+        null,
+        1
+      ],
+      [
+        "Yesterday",
+        "昨天",
+        null,
+        1
+      ],
+      [
+        "I started last month",
+        "我上个月开始",
+        null,
+        3
+      ],
+      [
+        "You wanted something last month",
+        "你上个月想一些东西",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask you last month",
+        "我上个月想问你",
+        null,
+        4
+      ],
+      [
+        "You started learning last month",
+        "你上个月开始学",
+        null,
+        4
+      ],
+      [
+        "I started learning Chinese last month",
+        "我上个月开始学中文",
+        null,
+        5
+      ],
+      [
+        "I wanted to speak with you last month",
+        "我上个月想和你说话",
+        null,
+        6
+      ],
+      [
+        "You started speaking Chinese last month",
+        "你上个月开始说中文",
+        null,
+        6
+      ],
+      [
+        "I started speaking better last month",
+        "我上个月开始说得更好",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0037L02",
+      "seed_context": {
+        "known": "我上个月开始仔细地考虑这件事。",
+        "target": "I started to think about it carefully last month."
+      }
+    },
+    "components": [
+      [
+        "上",
+        "last/previous"
+      ],
+      [
+        "个",
+        "measure word"
+      ],
+      [
+        "月",
+        "month"
+      ]
+    ]
+  },
+  "S0037L03": {
+    "lego": [
+      "to think about it carefully",
+      "仔细地考虑"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0037L01",
+        "known": "I started last month",
+        "target": "我上个月开始",
+        "type": "M"
+      },
+      {
+        "id": "S0037L02",
+        "known": "last month",
+        "target": "上个月",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Think about it carefully",
+        "仔细地考虑",
+        null,
+        2
+      ],
+      [
+        "Read carefully",
+        "仔细地读",
+        null,
+        2
+      ],
+      [
+        "I think about it carefully",
+        "我仔细地考虑",
+        null,
+        3
+      ],
+      [
+        "You think about it carefully",
+        "你仔细地考虑",
+        null,
+        3
+      ],
+      [
+        "I wanted to think about it carefully",
+        "我想仔细地考虑",
+        null,
+        4
+      ],
+      [
+        "You started to think about it carefully",
+        "你开始仔细地考虑",
+        null,
+        4
+      ],
+      [
+        "I started to think about it carefully yesterday",
+        "我昨天开始仔细地考虑",
+        null,
+        5
+      ],
+      [
+        "I wanted to think about it carefully yesterday",
+        "我昨天想仔细地考虑",
+        null,
+        6
+      ],
+      [
+        "I started to think about it carefully last month",
+        "我上个月开始仔细地考虑",
+        null,
+        6
+      ],
+      [
+        "You started to think about it carefully last month",
+        "你上个月开始仔细地考虑",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0037L03",
+      "seed_context": {
+        "known": "我上个月开始仔细地考虑这件事。",
+        "target": "I started to think about it carefully last month."
+      }
+    },
+    "components": [
+      [
+        "仔细",
+        "carefully/careful"
+      ],
+      [
+        "地",
+        "adverb marker"
+      ],
+      [
+        "考虑",
+        "to think about/consider"
+      ]
+    ]
+  },
+  "S0037L04": {
+    "lego": [
+      "this matter/about it",
+      "这件事"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0037L01",
+        "known": "I started last month",
+        "target": "我上个月开始",
+        "type": "M"
+      },
+      {
+        "id": "S0037L02",
+        "known": "last month",
+        "target": "上个月",
+        "type": "M"
+      },
+      {
+        "id": "S0037L03",
+        "known": "to think about it carefully",
+        "target": "仔细地考虑",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "This matter",
+        "这件事",
+        null,
+        1
+      ],
+      [
+        "This thing",
+        "这个东西",
+        null,
+        2
+      ],
+      [
+        "I started this matter yesterday",
+        "我昨天开始这件事",
+        null,
+        3
+      ],
+      [
+        "You wanted this matter",
+        "你想这件事",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask about this matter",
+        "我想问这件事",
+        null,
+        4
+      ],
+      [
+        "I started thinking about this matter",
+        "我开始考虑这件事",
+        null,
+        4
+      ],
+      [
+        "I started to think about this matter yesterday",
+        "我昨天开始考虑这件事",
+        null,
+        5
+      ],
+      [
+        "I wanted to think carefully about this matter",
+        "我想仔细地考虑这件事",
+        null,
+        6
+      ],
+      [
+        "I started to think about this matter carefully last month",
+        "我上个月开始仔细地考虑这件事",
+        null,
+        7
+      ],
+      [
+        "I started to think about it carefully last month",
+        "我上个月开始仔细地考虑这件事",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0037L04",
+      "seed_context": {
+        "known": "我上个月开始仔细地考虑这件事。",
+        "target": "I started to think about it carefully last month."
+      }
+    },
+    "components": [
+      [
+        "这",
+        "this"
+      ],
+      [
+        "件",
+        "measure word"
+      ],
+      [
+        "事",
+        "matter/thing/affair"
+      ]
+    ]
+  }
+}
