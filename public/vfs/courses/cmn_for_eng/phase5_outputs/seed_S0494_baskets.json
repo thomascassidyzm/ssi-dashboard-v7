@@ -1,0 +1,128 @@
+{
+  "legos": {
+    "S0494L01": {
+      "lego": ["what happens","会发生什么"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["what happens","会发生什么",null,1],
+        ["what happens next","接下来会发生什么",null,2],
+        ["I love what happens","我喜欢会发生什么",null,3],
+        ["what happens under the bridge","桥下会发生什么",null,3],
+        ["what happens if you help me","如果你帮我会发生什么",null,4],
+        ["what happens right now","现在会发生什么",null,3],
+        ["I think what happens is a challenge","我觉得会发生的是一个挑战",null,5],
+        ["what happens is meant to be","会发生的本来就是",null,4],
+        ["what happens makes me happy","会发生的让我开心",null,4],
+        ["what happens on the other side of the bridge","桥的另一边会发生什么",null,6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [["会","will/happen"],["发生","happen"],["什么","what"]]
+    },
+    "S0494L02": {
+      "lego": ["show","演出"],
+      "type": "A",
+      "current_seed_legos_available": [["what happens","会发生什么"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["show","演出",null,1],
+        ["the show","演出",null,1],
+        ["I love the show","我喜欢演出",null,3],
+        ["what happens at the show","演出会发生什么",null,3],
+        ["the show is a challenge","演出是一个挑战",null,4],
+        ["the show makes me happy","演出让我开心",null,4],
+        ["I think the show is beautiful","我觉得演出很美",null,5],
+        ["what happens next in the show","接下来演出会发生什么",null,5],
+        ["the show is the most interesting thing","演出是最有趣的事",null,5],
+        ["if you help me I'll love the show","如果你帮我我会喜欢演出",null,6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      }
+    },
+    "S0494L03": {
+      "lego": ["the first part","第一部分"],
+      "type": "M",
+      "current_seed_legos_available": [["what happens","会发生什么"],["show","演出"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["the first part","第一部分",null,1],
+        ["I love the first part","我喜欢第一部分",null,3],
+        ["the first part is beautiful","第一部分很美",null,3],
+        ["what happens in the first part","第一部分会发生什么",null,3],
+        ["the first part is a challenge","第一部分是一个挑战",null,4],
+        ["the first part makes me happy","第一部分让我开心",null,4],
+        ["I think the first part is the most interesting","我觉得第一部分是最有趣的",null,6],
+        ["what happens next in the first part","接下来第一部分会发生什么",null,5],
+        ["the first part is on the other side","第一部分在另一边",null,5],
+        ["if you help me understand the first part","如果你帮我理解第一部分",null,6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [["第一","first"],["部分","part"]]
+    },
+    "S0494L04": {
+      "lego": ["the first part of the show","演出的第一部分"],
+      "type": "M",
+      "current_seed_legos_available": [["what happens","会发生什么"],["show","演出"],["the first part","第一部分"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["the first part of the show","演出的第一部分",null,1],
+        ["I love the first part of the show","我喜欢演出的第一部分",null,3],
+        ["the first part of the show is beautiful","演出的第一部分很美",null,4],
+        ["what happens in the first part of the show","演出的第一部分会发生什么",null,3],
+        ["the first part of the show is a challenge","演出的第一部分是一个挑战",null,5],
+        ["the first part of the show makes me happy","演出的第一部分让我开心",null,5],
+        ["I think the first part of the show is the most interesting","我觉得演出的第一部分是最有趣的",null,7],
+        ["what happens next in the first part of the show","接下来演出的第一部分会发生什么",null,6],
+        ["nothing makes me happier than the first part of the show","没有什么比演出的第一部分更让我开心",null,7],
+        ["if you help me understand the first part of the show","如果你帮我理解演出的第一部分",null,7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [["演出","show"],["的","of"],["第一部分","the first part"]]
+    },
+    "S0494L05": {
+      "lego": ["after the first part","第一部分之后"],
+      "type": "M",
+      "current_seed_legos_available": [["what happens","会发生什么"],["show","演出"],["the first part","第一部分"],["the first part of the show","演出的第一部分"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["after the first part","第一部分之后",null,1],
+        ["what happens after the first part","第一部分之后会发生什么",null,2],
+        ["I love what happens after the first part","我喜欢第一部分之后会发生的",null,4],
+        ["after the first part is a challenge","第一部分之后是一个挑战",null,4],
+        ["after the first part makes me happy","第一部分之后让我开心",null,4],
+        ["I think after the first part is the most interesting","我觉得第一部分之后是最有趣的",null,6],
+        ["what happens next after the first part","接下来第一部分之后会发生什么",null,5],
+        ["nothing makes me happier than what happens after the first part","没有什么比第一部分之后发生的更让我开心",null,8],
+        ["if you help me understand what happens after the first part","如果你帮我理解第一部分之后会发生什么",null,8],
+        ["What happens after the first part of the show?","演出的第一部分之后会发生什么？",null,5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [["第一部分","the first part"],["之后","after"]]
+    }
+  }
+}
