@@ -1,0 +1,102 @@
+{
+  "S0041L01": {
+    "lego": ["I feel okay","我感觉还好"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I feel okay","我感觉还好",null,1],
+      ["You feel okay","你感觉还好",null,1],
+      ["I feel okay now","我现在感觉还好",null,3],
+      ["I feel okay this morning","我今天早上感觉还好",null,3],
+      ["I feel okay when I'm here","当我在这里的时候我感觉还好",null,4],
+      ["I feel okay when I read","当我读的时候我感觉还好",null,4],
+      ["I feel okay about learning Chinese","我对学中文感觉还好",null,5],
+      ["I feel okay when other people are here","当其他人在这里的时候我感觉还好",null,6],
+      ["I wanted to speak with you because I feel okay now","我想和你说话因为我现在感觉还好",null,7],
+      ["I've been learning for about a week and I feel okay","我已经学了大约一个星期了我感觉还好",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0041L03": {
+    "lego": ["I'm starting to feel tired","我开始觉得累了"],
+    "type": "M",
+    "current_seed_legos_available": [["I feel okay","我感觉还好"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm starting to feel tired","我开始觉得累了",null,1],
+      ["He's starting to feel tired","他开始觉得累了",null,1],
+      ["I'm starting to feel tired now","我现在开始觉得累了",null,3],
+      ["I'm starting to feel tired this afternoon","我今天下午开始觉得累了",null,3],
+      ["I'm starting to feel tired when I read","当我读的时候我开始觉得累了",null,4],
+      ["I'm starting to feel tired about this story","我对这个故事开始觉得累了",null,5],
+      ["I wanted to ask you something but I'm starting to feel tired","我想问你一些事情但我开始觉得累了",null,6],
+      ["When other people speak I'm starting to feel tired","当其他人说话的时候我开始觉得累了",null,6],
+      ["I don't want to interrupt but I'm starting to feel tired","我不想打断但我开始觉得累了",null,7],
+      ["I've been learning Chinese and now I'm starting to feel tired","我一直在学中文现在我开始觉得累了",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0041L04": {
+    "lego": ["starting to feel tired","开始觉得累了"],
+    "type": "M",
+    "current_seed_legos_available": [["I feel okay","我感觉还好"],["I'm starting to feel tired","我开始觉得累了"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm starting to feel tired","我开始觉得累了",null,1],
+      ["You're starting to feel tired","你开始觉得累了",null,1],
+      ["I'm starting to feel tired now","我现在开始觉得累了",null,3],
+      ["She's starting to feel tired tonight","她今晚开始觉得累了",null,3],
+      ["I'm starting to feel tired when I read this","当我读这个的时候我开始觉得累了",null,4],
+      ["I'm starting to feel tired about learning","我对学习开始觉得累了",null,5],
+      ["When I think about it I'm starting to feel tired","当我考虑这件事的时候我开始觉得累了",null,6],
+      ["I didn't want to be quiet but I'm starting to feel tired","我不想安静但我开始觉得累了",null,6],
+      ["I wanted to speak with you but I'm starting to feel tired","我想和你说话但我开始觉得累了",null,7],
+      ["I feel okay this morning but now I'm starting to feel tired","我今天早上感觉还好但现在我开始觉得累了",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0041L05": {
+    "lego": ["to feel tired","觉得累了"],
+    "type": "M",
+    "current_seed_legos_available": [["I feel okay","我感觉还好"],["I'm starting to feel tired","我开始觉得累了"],["starting to feel tired","开始觉得累了"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I'm starting to feel tired","我开始觉得累了",null,1],
+      ["You're starting to feel tired","你开始觉得累了",null,1],
+      ["I don't want to feel tired","我不想觉得累了",null,3],
+      ["I'm starting to feel tired now","我现在开始觉得累了",null,3],
+      ["When I read I start to feel tired","当我读的时候我开始觉得累了",null,4],
+      ["I'm starting to feel tired this afternoon","我今天下午开始觉得累了",null,5],
+      ["I wanted to show you something but I'm starting to feel tired","我想给你看一些东西但我开始觉得累了",null,6],
+      ["When other people speak I'm starting to feel tired","当其他人说话的时候我开始觉得累了",null,6],
+      ["I've been learning Chinese and I'm starting to feel tired","我一直在学中文我开始觉得累了",null,7],
+      ["I feel okay, but I'm starting to feel tired","我感觉还好，但我开始觉得累了",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

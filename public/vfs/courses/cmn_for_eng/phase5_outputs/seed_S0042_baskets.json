@@ -1,0 +1,126 @@
+{
+  "S0042L01": {
+    "lego": ["I was starting to feel","我开始觉得"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I was starting to feel tired","我开始觉得累",null,1],
+      ["I was starting to feel okay","我开始觉得还好",null,1],
+      ["I was starting to feel tired now","我现在开始觉得累",null,3],
+      ["I was starting to feel okay this morning","我今天早上开始觉得还好",null,3],
+      ["I was starting to feel tired when I read","当我读的时候我开始觉得累",null,4],
+      ["I was starting to feel better about this story","我对这个故事开始觉得比较好",null,5],
+      ["I was starting to feel tired when other people spoke","当其他人说话的时候我开始觉得累",null,6],
+      ["I was starting to feel okay about learning Chinese","我对学中文开始觉得还好",null,6],
+      ["I wanted to ask you something but I was starting to feel tired","我想问你一些事情但我开始觉得累",null,7],
+      ["Last month I was starting to feel better about it","上个月我对这件事开始觉得比较好",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0042L02": {
+    "lego": ["starting to feel","开始觉得"],
+    "type": "M",
+    "current_seed_legos_available": [["I was starting to feel","我开始觉得"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm starting to feel tired","我开始觉得累",null,1],
+      ["You're starting to feel okay","你开始觉得还好",null,1],
+      ["I'm starting to feel tired now","我现在开始觉得累",null,3],
+      ["He's starting to feel better tonight","他今晚开始觉得好了",null,3],
+      ["I'm starting to feel okay when I'm here","当我在这里的时候我开始觉得还好",null,4],
+      ["She's starting to feel tired this afternoon","她今天下午开始觉得累",null,5],
+      ["I wanted to show you but I'm starting to feel tired","我想给你看但我开始觉得累",null,6],
+      ["When I read this story I'm starting to feel tired","当我读这个故事的时候我开始觉得累",null,6],
+      ["I don't want to interrupt but I'm starting to feel tired","我不想打断但我开始觉得累",null,7],
+      ["I've been learning for a week and I'm starting to feel okay","我已经学了一个星期了我开始觉得还好",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0042L03": {
+    "lego": ["feel better than last night","觉得比昨晚好了"],
+    "type": "M",
+    "current_seed_legos_available": [["I was starting to feel","我开始觉得"],["starting to feel","开始觉得"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I feel better than last night","我觉得比昨晚好了",null,1],
+      ["You feel better than last night","你觉得比昨晚好了",null,1],
+      ["I feel better than last night now","我现在觉得比昨晚好了",null,3],
+      ["I feel better than last night this morning","我今天早上觉得比昨晚好了",null,3],
+      ["I wanted to feel better than last night","我想觉得比昨晚好了",null,4],
+      ["I'm starting to feel better than last night","我开始觉得比昨晚好了",null,5],
+      ["When I think about it I feel better than last night","当我考虑这件事的时候我觉得比昨晚好了",null,6],
+      ["I feel better than last night when I'm here","当我在这里的时候我觉得比昨晚好了",null,6],
+      ["I wanted to ask you because I feel better than last night","我想问你因为我觉得比昨晚好了",null,7],
+      ["I feel better than last night about learning Chinese","我对学中文觉得比昨晚好了",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0042L04": {
+    "lego": ["better than last night","比昨晚好"],
+    "type": "M",
+    "current_seed_legos_available": [["I was starting to feel","我开始觉得"],["starting to feel","开始觉得"],["feel better than last night","觉得比昨晚好了"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I feel better than last night","我觉得比昨晚好",null,1],
+      ["This is better than last night","这比昨晚好",null,1],
+      ["I feel better than last night now","我现在觉得比昨晚好",null,3],
+      ["This morning is better than last night","今天早上比昨晚好",null,3],
+      ["I'm starting to feel better than last night","我开始觉得比昨晚好",null,4],
+      ["The story is better than last night","这个故事比昨晚好",null,5],
+      ["When I'm here I feel better than last night","当我在这里的时候我觉得比昨晚好",null,6],
+      ["I wanted to show you something better than last night","我想给你看一些比昨晚好的东西",null,6],
+      ["I don't want to read anything but I feel better than last night","我不想读任何东西但我觉得比昨晚好",null,7],
+      ["I feel okay and I'm starting to feel better than last night","我感觉还好我开始觉得比昨晚好",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0042L05": {
+    "lego": ["last night","昨晚"],
+    "type": "A",
+    "current_seed_legos_available": [["I was starting to feel","我开始觉得"],["starting to feel","开始觉得"],["feel better than last night","觉得比昨晚好了"],["better than last night","比昨晚好"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I read last night","我昨晚读了",null,1],
+      ["You were here last night","你昨晚在这里",null,1],
+      ["I wanted to speak last night","我昨晚想说话",null,3],
+      ["I was learning Chinese last night","我昨晚在学中文",null,3],
+      ["I wanted to ask you something last night","我昨晚想问你一些事情",null,4],
+      ["I started to think about it last night","我昨晚开始考虑这件事",null,5],
+      ["I wanted to show you the story last night","我昨晚想给你看这个故事",null,6],
+      ["I didn't want to be quiet last night","我昨晚不想安静",null,6],
+      ["I was starting to feel tired last night but now I feel okay","我昨晚开始觉得累了但现在我感觉还好",null,7],
+      ["I was starting to feel better than last night","我开始觉得比昨晚好了",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

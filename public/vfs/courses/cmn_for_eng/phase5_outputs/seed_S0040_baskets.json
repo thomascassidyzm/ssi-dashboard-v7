@@ -1,0 +1,76 @@
+{
+  "S0040L01": {
+    "lego": ["how do you feel at the moment","你现在感觉怎么样"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["How do you feel now?","你现在感觉怎么样？",null,1],
+      ["How do I feel now?","我现在感觉怎么样？",null,1],
+      ["How do you feel this morning?","你今天早上感觉怎么样？",null,3],
+      ["How did you feel yesterday?","你昨天感觉怎么样？",null,3],
+      ["How do you feel when you're here?","当你在这里的时候你感觉怎么样？",null,4],
+      ["How do you feel when you read this story?","当你读这个故事的时候你感觉怎么样？",null,5],
+      ["How did you feel when I wanted to ask you something?","我想问你一些事情的时候你感觉怎么样？",null,6],
+      ["How do you feel when other people are here?","当其他人在这里的时候你感觉怎么样？",null,6],
+      ["How do you feel about learning Chinese?","你对学中文感觉怎么样？",null,7],
+      ["How do you feel about speaking with me tonight?","你对今晚和我说话感觉怎么样？",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0040L02": {
+    "lego": ["at the moment/now","现在"],
+    "type": "A",
+    "current_seed_legos_available": [["how do you feel at the moment","你现在感觉怎么样"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm reading now","我现在在读",null,1],
+      ["They're here now","他们现在在这里",null,1],
+      ["I don't want to read now","我现在不想读",null,3],
+      ["I want to speak with you now","我现在想和你说话",null,3],
+      ["I'm learning Chinese now","我现在在学中文",null,4],
+      ["I'm starting to think about it now","我现在开始考虑这件事",null,5],
+      ["I wanted to show you something but I'm a little tired now","我想给你看一些东西但我现在有点累",null,6],
+      ["I don't want to interrupt the story now","我现在不想打断这个故事",null,6],
+      ["When other people are here I feel quiet now","当其他人在这里的时候我现在感觉安静",null,7],
+      ["I've been learning for about a week and now I feel okay","我已经学了大约一个星期了现在我感觉还好",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0040L03": {
+    "lego": ["how do you feel","感觉怎么样"],
+    "type": "M",
+    "current_seed_legos_available": [["how do you feel at the moment","你现在感觉怎么样"],["at the moment/now","现在"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["How do you feel?","你感觉怎么样？",null,1],
+      ["How do I feel?","我感觉怎么样？",null,1],
+      ["How do you feel this afternoon?","你今天下午感觉怎么样？",null,3],
+      ["How do you feel tonight?","你今晚感觉怎么样？",null,3],
+      ["How do you feel when you read?","当你读的时候你感觉怎么样？",null,4],
+      ["How do you feel about this story?","你对这个故事感觉怎么样？",null,5],
+      ["How do you feel when you're learning Chinese?","当你在学中文的时候你感觉怎么样？",null,6],
+      ["How did you feel about it last month?","你上个月对这件事感觉怎么样？",null,6],
+      ["How do you feel about speaking with other people?","你对和其他人说话感觉怎么样？",null,7],
+      ["How do you feel at the moment?","你现在感觉怎么样？",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  }
+}
