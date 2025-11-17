@@ -2,8 +2,36 @@
  * INFINITIVE FORM LINGUISTIC VALIDATOR (Library version)
  *
  * CommonJS library for validating infinitive forms in English LEGOs
+ * Only flags violations when target language is in infinitive form
  * Used by orchestrator validation endpoints
  */
+
+// Spanish infinitive patterns (ends in -ar, -er, -ir)
+const SPANISH_INFINITIVE_PATTERN = /\b\w+(ar|er|ir)\b/;
+
+// French infinitive patterns (ends in -er, -ir, -re, -oir)
+const FRENCH_INFINITIVE_PATTERN = /\b\w+(er|ir|re|oir)\b/;
+
+// Italian infinitive patterns (ends in -are, -ere, -ire)
+const ITALIAN_INFINITIVE_PATTERN = /\b\w+(are|ere|ire)\b/;
+
+function startsWithTargetInfinitive(target, targetLang) {
+  if (!target || typeof target !== 'string') return false;
+
+  const firstWord = target.trim().split(/\s+/)[0].toLowerCase();
+
+  // Detect language and check if first word is infinitive
+  if (targetLang === 'spa' || targetLang === 'es') {
+    return /\w+(ar|er|ir)$/.test(firstWord);
+  } else if (targetLang === 'fra' || targetLang === 'fr') {
+    return /\w+(er|ir|re|oir)$/.test(firstWord);
+  } else if (targetLang === 'ita' || targetLang === 'it') {
+    return /\w+(are|ere|ire)$/.test(firstWord);
+  }
+
+  // For other languages, we can't reliably detect infinitives
+  return false;
+}
 
 // Common English infinitive verbs
 const COMMON_INFINITIVE_VERBS = [
@@ -69,7 +97,7 @@ function hasToInfinitive(text) {
   });
 }
 
-function analyzeLego(lego, seedId) {
+function analyzeLego(lego, seedId, targetLang) {
   const violations = [];
 
   // Extract LEGO components based on format
@@ -81,13 +109,19 @@ function analyzeLego(lego, seedId) {
     ({ id: legoId, type, target, known } = lego);
   }
 
-  if (!known || typeof known !== 'string') {
+  if (!known || typeof known !== 'string' || !target || typeof target !== 'string') {
     return violations;
   }
 
   const knownText = known.trim();
+  const targetText = target.trim();
 
-  // RULE 1: Check for bare infinitive at start (without modal/trigger)
+  // ONLY check if target STARTS with an infinitive
+  if (!startsWithTargetInfinitive(targetText, targetLang)) {
+    return violations; // Skip - target is not an infinitive
+  }
+
+  // RULE 1: Target is infinitive, so English should have "to"
   if (startsWithBareInfinitive(knownText)) {
     const hasModal = containsModal(knownText);
     const hasBareInfinitiveTrigger = containsBareInfinitiveTrigger(knownText);
@@ -98,10 +132,10 @@ function analyzeLego(lego, seedId) {
         type: 'MISSING_TO_INFINITIVE',
         seedId,
         legoId,
-        target,
+        target: targetText,
         known: knownText,
         severity: 'HIGH',
-        message: `Bare infinitive without "to" - should be "to ${knownText}"`,
+        message: `Target infinitive "${targetText}" should map to "to ${knownText}"`,
         suggestion: `to ${knownText}`
       });
     }
@@ -118,10 +152,10 @@ function analyzeLego(lego, seedId) {
         type: 'COMPOSITE_BARE_INFINITIVE',
         seedId,
         legoId,
-        target,
+        target: targetText,
         known: knownText,
         severity: 'HIGH',
-        message: `Composite infinitive phrase missing "to"`,
+        message: `Target infinitive "${targetText}" should map to "to ${knownText}"`,
         suggestion: `to ${knownText}`
       });
     }
@@ -143,6 +177,10 @@ function checkInfinitiveFormsData(data) {
   if (!data.seeds || !Array.isArray(data.seeds)) {
     return { violations: [], totalSeeds: 0, totalLegos: 0 };
   }
+
+  // Extract target language from course code (e.g., "spa_for_eng" -> "spa")
+  const courseCode = data.course || '';
+  const targetLang = courseCode.split('_')[0] || '';
 
   // Detect format - check first seed structure
   const firstSeed = data.seeds[0];
@@ -169,7 +207,7 @@ function checkInfinitiveFormsData(data) {
       const lego = legos[i];
       totalLegos++;
 
-      const legoViolations = analyzeLego(lego, seedId);
+      const legoViolations = analyzeLego(lego, seedId, targetLang);
 
       // Mark if it's the first LEGO (initial position)
       if (i === 0 && legoViolations.length > 0) {
