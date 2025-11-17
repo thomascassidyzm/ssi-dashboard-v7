@@ -127,7 +127,7 @@ async function generateIntroductions(courseDir) {
 
     if (!legos || !Array.isArray(legos)) continue;
 
-    const [targetSeed, knownSeed] = Array.isArray(seedPair) ? seedPair : [seedPair.target, seedPair.known];
+    const [knownSeed, targetSeed] = Array.isArray(seedPair) ? seedPair : [seedPair.known, seedPair.target];
 
     // Process each LEGO in this seed
     for (const lego of legos) {
