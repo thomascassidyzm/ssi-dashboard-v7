@@ -1,0 +1,1123 @@
+{
+  "S0589L01": {
+    "lego": [
+      "she told me",
+      "她告诉我"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "She told me",
+        "她告诉我",
+        null,
+        1
+      ],
+      [
+        "She told me yesterday",
+        "她昨天告诉我",
+        null,
+        2
+      ],
+      [
+        "She told me this",
+        "她告诉我这个",
+        null,
+        2
+      ],
+      [
+        "She told me about home",
+        "她告诉我关于家的事",
+        null,
+        3
+      ],
+      [
+        "She told me she wanted to leave",
+        "她告诉我她想离开",
+        null,
+        4
+      ],
+      [
+        "She told me about the mountains",
+        "她告诉我关于山的事",
+        null,
+        4
+      ],
+      [
+        "She told me she wanted to grow up here",
+        "她告诉我她想在这里长大",
+        null,
+        5
+      ],
+      [
+        "She told me she wanted to see the mountains",
+        "她告诉我她想看到山",
+        null,
+        5
+      ],
+      [
+        "She told me every morning she can see the mountains",
+        "她告诉我每天早上她能看到山",
+        null,
+        6
+      ],
+      [
+        "She told me she wanted to leave home and grow up here",
+        "她告诉我她想离开家在这里长大",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "告诉",
+        "told"
+      ],
+      [
+        "我",
+        "me"
+      ]
+    ]
+  },
+  "S0589L02": {
+    "lego": [
+      "told me",
+      "告诉我"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Told me",
+        "告诉我",
+        null,
+        1
+      ],
+      [
+        "She told me",
+        "她告诉我",
+        null,
+        1
+      ],
+      [
+        "Told me yesterday",
+        "昨天告诉我",
+        null,
+        2
+      ],
+      [
+        "Told me about the mountains",
+        "告诉我关于山的事",
+        null,
+        3
+      ],
+      [
+        "She told me about home",
+        "她告诉我关于家的事",
+        null,
+        3
+      ],
+      [
+        "Told me she wanted to leave",
+        "告诉我她想离开",
+        null,
+        4
+      ],
+      [
+        "She told me about the children",
+        "她告诉我关于孩子们的事",
+        null,
+        4
+      ],
+      [
+        "Told me she wanted to grow up here",
+        "告诉我她想在这里长大",
+        null,
+        5
+      ],
+      [
+        "She told me she wanted to see the mountains every morning",
+        "她告诉我她想每天早上看到山",
+        null,
+        5
+      ],
+      [
+        "Told me every morning she can see the mountains from her window",
+        "告诉我每天早上她能从她的窗户看到山",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "告诉",
+        "told"
+      ],
+      [
+        "我",
+        "me"
+      ]
+    ]
+  },
+  "S0589L03": {
+    "lego": [
+      "tell",
+      "告诉"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Tell",
+        "告诉",
+        null,
+        1
+      ],
+      [
+        "Tell me",
+        "告诉我",
+        null,
+        1
+      ],
+      [
+        "She told me",
+        "她告诉我",
+        null,
+        2
+      ],
+      [
+        "I want to tell you",
+        "我想告诉你",
+        null,
+        3
+      ],
+      [
+        "Tell me about the mountains",
+        "告诉我关于山的事",
+        null,
+        3
+      ],
+      [
+        "She told me she wanted this",
+        "她告诉我她想这个",
+        null,
+        4
+      ],
+      [
+        "I want to tell you about home",
+        "我想告诉你关于家的事",
+        null,
+        4
+      ],
+      [
+        "Tell me what it's like to grow up here",
+        "告诉我在这里长大是什么样的",
+        null,
+        5
+      ],
+      [
+        "She told me she wanted to see the mountains",
+        "她告诉我她想看到山",
+        null,
+        5
+      ],
+      [
+        "I want to tell you what it's like to wake up every morning and see the mountains",
+        "我想告诉你每天早上醒来看到山是什么样的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0589L04": {
+    "lego": [
+      "she'd just seen",
+      "她刚看到"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L03",
+        "known": "tell",
+        "target": "告诉",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "She'd just seen",
+        "她刚看到",
+        null,
+        1
+      ],
+      [
+        "She'd just seen this",
+        "她刚看到这个",
+        null,
+        2
+      ],
+      [
+        "She'd just seen the mountains",
+        "她刚看到山",
+        null,
+        2
+      ],
+      [
+        "She told me she'd just seen something",
+        "她告诉我她刚看到一些东西",
+        null,
+        3
+      ],
+      [
+        "She'd just seen the children leave",
+        "她刚看到孩子们离开",
+        null,
+        3
+      ],
+      [
+        "She told me she'd just seen the mountains",
+        "她告诉我她刚看到山",
+        null,
+        4
+      ],
+      [
+        "She'd just seen the children leave home",
+        "她刚看到孩子们离开家",
+        null,
+        4
+      ],
+      [
+        "She told me she'd just seen something interesting",
+        "她告诉我她刚看到一些有趣的东西",
+        null,
+        5
+      ],
+      [
+        "She'd just seen the mountains from her bedroom window",
+        "她刚从她的卧室窗户看到山",
+        null,
+        5
+      ],
+      [
+        "She told me she'd just seen the children wake up and leave home",
+        "她告诉我她刚看到孩子们醒来离开家",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "刚",
+        "just"
+      ],
+      [
+        "看到",
+        "seen"
+      ]
+    ]
+  },
+  "S0589L05": {
+    "lego": [
+      "just seen",
+      "刚看到"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L03",
+        "known": "tell",
+        "target": "告诉",
+        "type": "A"
+      },
+      {
+        "id": "S0589L04",
+        "known": "she'd just seen",
+        "target": "她刚看到",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Just seen",
+        "刚看到",
+        null,
+        1
+      ],
+      [
+        "She'd just seen",
+        "她刚看到",
+        null,
+        1
+      ],
+      [
+        "Just seen this",
+        "刚看到这个",
+        null,
+        2
+      ],
+      [
+        "I've just seen the mountains",
+        "我刚看到山",
+        null,
+        2
+      ],
+      [
+        "Just seen the children leave",
+        "刚看到孩子们离开",
+        null,
+        3
+      ],
+      [
+        "She told me she'd just seen something",
+        "她告诉我她刚看到一些东西",
+        null,
+        3
+      ],
+      [
+        "I've just seen something interesting here",
+        "我刚在这里看到一些有趣的东西",
+        null,
+        4
+      ],
+      [
+        "She'd just seen the mountains from her window",
+        "她刚从她的窗户看到山",
+        null,
+        4
+      ],
+      [
+        "She told me she'd just seen the children leave home",
+        "她告诉我她刚看到孩子们离开家",
+        null,
+        5
+      ],
+      [
+        "I've just seen the children wake up and leave for the mountains",
+        "我刚看到孩子们醒来去山那里",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "刚",
+        "just"
+      ],
+      [
+        "看到",
+        "seen"
+      ]
+    ]
+  },
+  "S0589L06": {
+    "lego": [
+      "just",
+      "刚"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L03",
+        "known": "tell",
+        "target": "告诉",
+        "type": "A"
+      },
+      {
+        "id": "S0589L04",
+        "known": "she'd just seen",
+        "target": "她刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L05",
+        "known": "just seen",
+        "target": "刚看到",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Just",
+        "刚",
+        null,
+        1
+      ],
+      [
+        "Just now",
+        "刚才",
+        null,
+        2
+      ],
+      [
+        "I just saw",
+        "我刚看到",
+        null,
+        2
+      ],
+      [
+        "She just told me",
+        "她刚告诉我",
+        null,
+        3
+      ],
+      [
+        "I just saw the mountains",
+        "我刚看到山",
+        null,
+        3
+      ],
+      [
+        "She just told me about this",
+        "她刚告诉我这个",
+        null,
+        4
+      ],
+      [
+        "I just saw the children leave",
+        "我刚看到孩子们离开",
+        null,
+        4
+      ],
+      [
+        "She just told me about the mountains",
+        "她刚告诉我关于山的事",
+        null,
+        5
+      ],
+      [
+        "I just saw something interesting from my window",
+        "我刚从我的窗户看到一些有趣的东西",
+        null,
+        5
+      ],
+      [
+        "She just told me she wanted to wake up every morning and see the mountains",
+        "她刚告诉我她想每天早上醒来看到山",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0589L07": {
+    "lego": [
+      "see",
+      "看到"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L03",
+        "known": "tell",
+        "target": "告诉",
+        "type": "A"
+      },
+      {
+        "id": "S0589L04",
+        "known": "she'd just seen",
+        "target": "她刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L05",
+        "known": "just seen",
+        "target": "刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L06",
+        "known": "just",
+        "target": "刚",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "See",
+        "看到",
+        null,
+        1
+      ],
+      [
+        "I saw",
+        "我看到",
+        null,
+        1
+      ],
+      [
+        "She saw this",
+        "她看到这个",
+        null,
+        2
+      ],
+      [
+        "I can see the mountains",
+        "我能看到山",
+        null,
+        2
+      ],
+      [
+        "She just saw something here",
+        "她刚在这里看到一些东西",
+        null,
+        3
+      ],
+      [
+        "I want to see the children",
+        "我想看到孩子们",
+        null,
+        3
+      ],
+      [
+        "She told me she saw the mountains",
+        "她告诉我她看到山",
+        null,
+        4
+      ],
+      [
+        "I can see the mountains from my window",
+        "我能从我的窗户看到山",
+        null,
+        4
+      ],
+      [
+        "She just saw the children leave home yesterday",
+        "她昨天刚看到孩子们离开家",
+        null,
+        5
+      ],
+      [
+        "I want to wake up every morning and see the mountains from my bedroom window",
+        "我想每天早上醒来从我的卧室窗户看到山",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0589L08": {
+    "lego": [
+      "the last bus",
+      "最后一班公交车"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L03",
+        "known": "tell",
+        "target": "告诉",
+        "type": "A"
+      },
+      {
+        "id": "S0589L04",
+        "known": "she'd just seen",
+        "target": "她刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L05",
+        "known": "just seen",
+        "target": "刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L06",
+        "known": "just",
+        "target": "刚",
+        "type": "A"
+      },
+      {
+        "id": "S0589L07",
+        "known": "see",
+        "target": "看到",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The last bus",
+        "最后一班公交车",
+        null,
+        1
+      ],
+      [
+        "I saw the last bus",
+        "我看到最后一班公交车",
+        null,
+        2
+      ],
+      [
+        "She saw the last bus",
+        "她看到最后一班公交车",
+        null,
+        2
+      ],
+      [
+        "She just saw the last bus",
+        "她刚看到最后一班公交车",
+        null,
+        3
+      ],
+      [
+        "She told me about the last bus",
+        "她告诉我关于最后一班公交车的事",
+        null,
+        3
+      ],
+      [
+        "I just saw the last bus leave",
+        "我刚看到最后一班公交车离开",
+        null,
+        4
+      ],
+      [
+        "She told me she saw the last bus",
+        "她告诉我她看到最后一班公交车",
+        null,
+        4
+      ],
+      [
+        "She just saw the last bus leave yesterday",
+        "她昨天刚看到最后一班公交车离开",
+        null,
+        5
+      ],
+      [
+        "She told me she'd just seen the last bus leave",
+        "她告诉我她刚看到最后一班公交车离开",
+        null,
+        5
+      ],
+      [
+        "I want to tell you I just saw the last bus leaving from here",
+        "我想告诉你我刚看到最后一班公交车从这里离开",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "最后",
+        "last"
+      ],
+      [
+        "一班",
+        "one (counter)"
+      ],
+      [
+        "公交车",
+        "bus"
+      ]
+    ]
+  },
+  "S0589L09": {
+    "lego": [
+      "last",
+      "最后"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L03",
+        "known": "tell",
+        "target": "告诉",
+        "type": "A"
+      },
+      {
+        "id": "S0589L04",
+        "known": "she'd just seen",
+        "target": "她刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L05",
+        "known": "just seen",
+        "target": "刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L06",
+        "known": "just",
+        "target": "刚",
+        "type": "A"
+      },
+      {
+        "id": "S0589L07",
+        "known": "see",
+        "target": "看到",
+        "type": "A"
+      },
+      {
+        "id": "S0589L08",
+        "known": "the last bus",
+        "target": "最后一班公交车",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Last",
+        "最后",
+        null,
+        1
+      ],
+      [
+        "The last one",
+        "最后一个",
+        null,
+        2
+      ],
+      [
+        "The last bus",
+        "最后一班公交车",
+        null,
+        2
+      ],
+      [
+        "I saw the last one",
+        "我看到最后一个",
+        null,
+        3
+      ],
+      [
+        "The last time I saw this",
+        "我最后一次看到这个",
+        null,
+        3
+      ],
+      [
+        "She just saw the last bus",
+        "她刚看到最后一班公交车",
+        null,
+        4
+      ],
+      [
+        "I told her about the last bus",
+        "我告诉她关于最后一班公交车的事",
+        null,
+        4
+      ],
+      [
+        "The last time she told me about this",
+        "她最后一次告诉我这个",
+        null,
+        5
+      ],
+      [
+        "She just saw the last bus leave yesterday",
+        "她昨天刚看到最后一班公交车离开",
+        null,
+        5
+      ],
+      [
+        "I want to tell you about the last time I saw the mountains from here",
+        "我想告诉你我最后一次从这里看到山",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0589L10": {
+    "lego": [
+      "bus",
+      "公交车"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0589L01",
+        "known": "she told me",
+        "target": "她告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L02",
+        "known": "told me",
+        "target": "告诉我",
+        "type": "M"
+      },
+      {
+        "id": "S0589L03",
+        "known": "tell",
+        "target": "告诉",
+        "type": "A"
+      },
+      {
+        "id": "S0589L04",
+        "known": "she'd just seen",
+        "target": "她刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L05",
+        "known": "just seen",
+        "target": "刚看到",
+        "type": "M"
+      },
+      {
+        "id": "S0589L06",
+        "known": "just",
+        "target": "刚",
+        "type": "A"
+      },
+      {
+        "id": "S0589L07",
+        "known": "see",
+        "target": "看到",
+        "type": "A"
+      },
+      {
+        "id": "S0589L08",
+        "known": "the last bus",
+        "target": "最后一班公交车",
+        "type": "M"
+      },
+      {
+        "id": "S0589L09",
+        "known": "last",
+        "target": "最后",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Bus",
+        "公交车",
+        null,
+        1
+      ],
+      [
+        "The bus",
+        "公交车",
+        null,
+        1
+      ],
+      [
+        "I saw the bus",
+        "我看到公交车",
+        null,
+        2
+      ],
+      [
+        "The last bus",
+        "最后一班公交车",
+        null,
+        2
+      ],
+      [
+        "She just saw the bus",
+        "她刚看到公交车",
+        null,
+        3
+      ],
+      [
+        "I want to see the bus",
+        "我想看到公交车",
+        null,
+        3
+      ],
+      [
+        "She told me about the bus",
+        "她告诉我关于公交车的事",
+        null,
+        4
+      ],
+      [
+        "I just saw the last bus leave",
+        "我刚看到最后一班公交车离开",
+        null,
+        4
+      ],
+      [
+        "She told me she'd just seen the bus",
+        "她告诉我她刚看到公交车",
+        null,
+        5
+      ],
+      [
+        "She told me she'd just seen the last bus.",
+        "她告诉我她刚看到最后一班公交车。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
