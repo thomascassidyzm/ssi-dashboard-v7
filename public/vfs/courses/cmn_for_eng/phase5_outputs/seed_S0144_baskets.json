@@ -1,78 +1,12 @@
 {
   "version": "curated_v7_spanish",
-  "seed_id": "S0142",
+  "seed_id": "S0144",
   "generation_stage": "BASKETS_GENERATED",
   "seed_pair": {
-    "known": "That's very kind of you and I'm grateful to you for helping.",
-    "target": "你真好，我很感激你帮助我。"
+    "known": "I woke earlier than I wanted to this morning.",
+    "target": "我今天早上醒得比我想要的早。"
   },
   "recent_seed_pairs": {
-    "S0132": [
-      [
-        "That's less exciting than what she was saying.",
-        "那比她正在说的不那么令人兴奋。"
-      ],
-      [
-        [
-          "S0132L01",
-          "that",
-          "那"
-        ],
-        [
-          "S0132L02",
-          "what she was saying",
-          "她正在说的"
-        ],
-        [
-          "S0132L03",
-          "than what she was saying",
-          "比她正在说的"
-        ],
-        [
-          "S0132L04",
-          "not so exciting/less exciting",
-          "不那么令人兴奋"
-        ],
-        [
-          "S0132L05",
-          "exciting",
-          "令人兴奋"
-        ]
-      ]
-    ],
-    "S0133": [
-      [
-        "You get to know someone very well when you work together.",
-        "当你们一起工作的时候你会非常了解一个人。"
-      ],
-      [
-        [
-          "S0133L01",
-          "when you work together",
-          "当你们一起工作的时候"
-        ],
-        [
-          "S0133L02",
-          "work together",
-          "一起工作"
-        ],
-        [
-          "S0133L03",
-          "you will/you get to",
-          "你会"
-        ],
-        [
-          "S0133L04",
-          "know someone",
-          "了解一个人"
-        ],
-        [
-          "S0133L05",
-          "know someone very well",
-          "非常了解一个人"
-        ]
-      ]
-    ],
     "S0134": [
       [
         "It's not a problem when you work at something difficult with them.",
@@ -306,132 +240,146 @@
           "一切都好"
         ]
       ]
+    ],
+    "S0142": [
+      [
+        "That's very kind of you and I'm grateful to you for helping.",
+        "你真好，我很感激你帮助我。"
+      ],
+      [
+        [
+          "S0142L01",
+          "that's very kind of you",
+          "你真好"
+        ],
+        [
+          "S0142L02",
+          "I'm grateful to you for helping",
+          "我很感激你帮助我"
+        ],
+        [
+          "S0142L03",
+          "grateful to you for helping",
+          "感激你帮助我"
+        ],
+        [
+          "S0142L04",
+          "you helping me",
+          "你帮助我"
+        ]
+      ]
+    ],
+    "S0143": [
+      [
+        "It's the same thing as we were talking about earlier.",
+        "这和我们之前谈论的是同一件事。"
+      ],
+      [
+        [
+          "S0143L01",
+          "it's the same thing as we were talking about earlier",
+          "这和我们之前谈论的是同一件事"
+        ],
+        [
+          "S0143L02",
+          "the same thing",
+          "同一件事"
+        ],
+        [
+          "S0143L03",
+          "we were talking about earlier",
+          "我们之前谈论的"
+        ],
+        [
+          "S0143L04",
+          "earlier",
+          "之前"
+        ]
+      ]
     ]
   },
   "legos": {
-    "S0142L01": {
+    "S0144L02": {
       "lego": [
-        "that's very kind of you",
-        "你真好"
+        "woke earlier than I wanted to",
+        "醒得比我想要的早"
       ],
       "type": "M",
       "current_seed_legos_available": [],
       "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
-      },
-      "_metadata": {
-        "lego_id": "S0142L01",
-        "seed_context": {
-          "known": "That's very kind of you and I'm grateful to you for helping.",
-          "target": "你真好，我很感激你帮助我。"
-        }
-      },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
-    },
-    "S0142L02": {
-      "lego": [
-        "I'm grateful to you for helping",
-        "我很感激你帮助我"
-      ],
-      "type": "M",
-      "current_seed_legos_available": [
-        [
-          "that's very kind of you",
-          "你真好"
-        ]
-      ],
-      "is_final_lego": false,
       "practice_phrases": [
         [
-          "I'm grateful.",
-          "我很感激。",
-          null,
-          1
-        ],
-        [
-          "I'm grateful to you.",
-          "我很感激你。",
+          "I woke earlier.",
+          "我醒得早。",
           null,
           2
         ],
         [
-          "I'm grateful for helping.",
-          "我很感激帮助。",
+          "Woke earlier than I wanted.",
+          "醒得比我想要的早。",
           null,
           2
         ],
         [
-          "I'm grateful to you for this.",
-          "我很感激你这个。",
+          "I woke earlier today.",
+          "我今天醒得早。",
           null,
           3
         ],
         [
-          "I'm grateful to you for helping me.",
-          "我很感激你帮助我。",
+          "I woke earlier than I wanted.",
+          "我醒得比我想要的早。",
           null,
           3
         ],
         [
-          "I'm very grateful to you for helping.",
-          "我很感激你帮助。",
+          "I woke earlier than I wanted to.",
+          "我醒得比我想要的早。",
           null,
           4
         ],
         [
-          "I'm grateful to you for helping with this.",
-          "我很感激你帮助这个。",
+          "I woke earlier than I wanted to today.",
+          "我今天醒得比我想要的早。",
           null,
           5
         ],
         [
-          "I'm grateful to you for helping me today.",
-          "我很感激你今天帮助我。",
+          "I woke earlier than I wanted this morning.",
+          "我今天早上醒得比我想要的早。",
           null,
           6
         ],
         [
-          "I'm very grateful to you for helping me.",
-          "我很感激你帮助我。",
-          null,
-          6
-        ],
-        [
-          "I'm grateful to you for helping me and I'm happy.",
-          "我很感激你帮助我，我很高兴。",
+          "I woke earlier than I wanted to this morning.",
+          "我今天早上醒得比我想要的早。",
           null,
           7
+        ],
+        [
+          "I'm sorry I woke earlier than I wanted to.",
+          "对不起我醒得比我想要的早。",
+          null,
+          8
+        ],
+        [
+          "I woke earlier than I wanted to this morning because of you.",
+          "我今天早上醒得比我想要的早因为你。",
+          null,
+          9
         ]
       ],
       "phrase_distribution": {
-        "really_short_1_2": 3,
+        "really_short_1_2": 2,
         "quite_short_3": 2,
         "longer_4_5": 2,
-        "long_6_plus": 3
+        "long_6_plus": 4
       },
       "_metadata": {
-        "lego_id": "S0142L02",
+        "lego_id": "S0144L02",
         "seed_context": {
-          "known": "That's very kind of you and I'm grateful to you for helping.",
-          "target": "你真好，我很感激你帮助我。"
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "我今天早上醒得比我想要的早。"
         }
       },
       "components": [
@@ -458,84 +406,84 @@
         [
           null,
           null
+        ],
+        [
+          null,
+          null
         ]
       ]
     },
-    "S0142L03": {
+    "S0144L03": {
       "lego": [
-        "grateful to you for helping",
-        "感激你帮助我"
+        "earlier than I wanted to",
+        "比我想要的早"
       ],
       "type": "M",
       "current_seed_legos_available": [
         [
-          "that's very kind of you",
-          "你真好"
-        ],
-        [
-          "I'm grateful to you for helping",
-          "我很感激你帮助我"
+          "woke earlier than I wanted to",
+          "醒得比我想要的早"
         ]
       ],
       "is_final_lego": false,
       "practice_phrases": [
         [
-          "Grateful.",
-          "感激。",
+          "Earlier than I wanted.",
+          "比我想要的早。",
           null,
           1
         ],
         [
-          "Grateful to you.",
-          "感激你。",
+          "It's earlier than I wanted.",
+          "比我想要的早。",
           null,
           2
         ],
         [
-          "Very grateful to you.",
-          "很感激你。",
+          "Earlier than I wanted to.",
+          "比我想要的早。",
           null,
           2
         ],
         [
-          "Grateful to you for this.",
-          "感激你这个。",
+          "This is earlier than I wanted.",
+          "这比我想要的早。",
           null,
           3
         ],
         [
-          "Grateful to you for helping.",
-          "感激你帮助。",
+          "I left earlier than I wanted to.",
+          "我离开得比我想要的早。",
           null,
           3
         ],
         [
-          "I'm grateful to you for helping me.",
-          "我感激你帮助我。",
+          "I arrived earlier than I wanted to.",
+          "我到得比我想要的早。",
           null,
           4
         ],
         [
-          "Very grateful to you for helping me.",
-          "很感激你帮助我。",
+          "I woke earlier than I wanted to.",
+          "我醒得比我想要的早。",
           null,
-          5
+          4
         ],
         [
-          "I'm grateful to you for helping with that.",
-          "我感激你帮助那个。",
+          "I needed to leave earlier than I wanted to.",
+          "我需要离开得比我想要的早。",
           null,
           6
         ],
         [
-          "I'm very grateful to you for helping me today.",
-          "我很感激你今天帮助我。",
+          "I woke earlier than I wanted to this morning.",
+          "我今天早上醒得比我想要的早。",
           null,
           7
         ],
         [
-          "I'm grateful to you for helping me because you're kind.",
-          "我感激你帮助我因为你真好。",
+          "I'm sorry I left earlier than I wanted to today.",
+          "对不起我今天离开得比我想要的早。",
           null,
           8
         ]
@@ -547,10 +495,10 @@
         "long_6_plus": 3
       },
       "_metadata": {
-        "lego_id": "S0142L03",
+        "lego_id": "S0144L03",
         "seed_context": {
-          "known": "That's very kind of you and I'm grateful to you for helping.",
-          "target": "你真好，我很感激你帮助我。"
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "我今天早上醒得比我想要的早。"
         }
       },
       "components": [
@@ -569,88 +517,88 @@
         [
           null,
           null
+        ],
+        [
+          null,
+          null
         ]
       ]
     },
-    "S0142L04": {
+    "S0144L04": {
       "lego": [
-        "you helping me",
-        "你帮助我"
+        "I wanted to",
+        "我想要的"
       ],
       "type": "M",
       "current_seed_legos_available": [
         [
-          "that's very kind of you",
-          "你真好"
+          "woke earlier than I wanted to",
+          "醒得比我想要的早"
         ],
         [
-          "I'm grateful to you for helping",
-          "我很感激你帮助我"
-        ],
-        [
-          "grateful to you for helping",
-          "感激你帮助我"
+          "earlier than I wanted to",
+          "比我想要的早"
         ]
       ],
       "is_final_lego": true,
       "practice_phrases": [
         [
-          "You helping.",
-          "你帮助。",
+          "I wanted to.",
+          "我想要。",
           null,
           1
         ],
         [
-          "You helping me.",
-          "你帮助我。",
+          "I wanted to meet.",
+          "我想要见面。",
           null,
           2
         ],
         [
-          "Thank you for helping me.",
-          "谢谢你帮助我。",
+          "I wanted to leave.",
+          "我想要离开。",
           null,
           2
         ],
         [
-          "You helping me today.",
-          "你今天帮助我。",
+          "I wanted to talk.",
+          "我想要说话。",
           null,
           3
         ],
         [
-          "I'm grateful for you helping me.",
-          "我感激你帮助我。",
+          "I wanted to meet you.",
+          "我想要见你。",
           null,
           3
         ],
         [
-          "You helping me is very kind.",
-          "你帮助我很好。",
+          "I wanted to leave earlier.",
+          "我想要早点离开。",
           null,
           4
         ],
         [
-          "Thank you for helping me with this.",
-          "谢谢你帮助我这个。",
+          "I wanted to talk to you.",
+          "我想要和你说话。",
           null,
-          5
+          4
         ],
         [
-          "I'm grateful to you for helping me today.",
-          "我很感激你今天帮助我。",
+          "This is what I wanted to do.",
+          "这是我想要做的。",
           null,
           6
         ],
         [
-          "You helping me is what I wanted.",
-          "你帮助我是我想要的。",
+          "I wanted to meet earlier than this.",
+          "我想要比这个早见面。",
           null,
           7
         ],
         [
-          "That's very kind of you and I'm grateful to you for helping.",
-          "你真好，我很感激你帮助我。",
+          "I woke earlier than I wanted to this morning.",
+          "我今天早上醒得比我想要的早。",
           null,
           8
         ]
@@ -662,10 +610,10 @@
         "long_6_plus": 3
       },
       "_metadata": {
-        "lego_id": "S0142L04",
+        "lego_id": "S0144L04",
         "seed_context": {
-          "known": "That's very kind of you and I'm grateful to you for helping.",
-          "target": "你真好，我很感激你帮助我。"
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "我今天早上醒得比我想要的早。"
         }
       },
       "components": [
@@ -687,7 +635,7 @@
   "_instructions": {
     "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
     "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
-    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0142.json",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0144.json",
     "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
     "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
     "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
@@ -696,10 +644,10 @@
     "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
   },
   "_stats": {
-    "new_legos_in_seed": 4,
+    "new_legos_in_seed": 3,
     "total_legos_in_seed": 4,
-    "phrases_to_generate": 48,
+    "phrases_to_generate": 36,
     "recent_context_seeds": 10,
-    "recent_legos_available": 44
+    "recent_legos_available": 42
   }
 }

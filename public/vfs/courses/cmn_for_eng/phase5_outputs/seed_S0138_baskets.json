@@ -1,12 +1,45 @@
 {
   "version": "curated_v7_spanish",
-  "seed_id": "S0139",
+  "seed_id": "S0138",
   "generation_stage": "BASKET_GENERATION_COMPLETE",
   "seed_pair": {
-    "known": "I'm sorry that I need to leave so early.",
-    "target": "对不起我需要这么早离开。"
+    "known": "This was where my friend wanted to meet us.",
+    "target": "这是我朋友想要和我们见面的地方。"
   },
   "recent_seed_pairs": {
+    "S0128": [
+      [
+        "You're like someone I used to know.",
+        "你像我以前认识的某个人。"
+      ],
+      [
+        [
+          "S0128L01",
+          "you're like",
+          "你像"
+        ],
+        [
+          "S0128L02",
+          "someone",
+          "某个人"
+        ],
+        [
+          "S0128L03",
+          "used to know",
+          "以前认识"
+        ],
+        [
+          "S0128L04",
+          "I used to know",
+          "我以前认识的"
+        ],
+        [
+          "S0128L05",
+          "someone I used to know",
+          "我以前认识的某个人"
+        ]
+      ]
+    ],
     "S0129": [
       [
         "I'm so happy that you're doing so well.",
@@ -303,194 +336,166 @@
           "更重要"
         ]
       ]
-    ],
-    "S0138": [
-      [
-        "This was where my friend wanted to meet us.",
-        "这是我朋友想要和我们见面的地方。"
-      ],
-      [
-        [
-          "S0138L01",
-          "this was/this is",
-          "这是"
-        ],
-        [
-          "S0138L03",
-          "meet us/meet with us",
-          "和我们见面"
-        ],
-        [
-          "S0138L04",
-          "wanted to meet us",
-          "想要和我们见面"
-        ],
-        [
-          "S0138L05",
-          "where my friend wanted to meet us",
-          "我朋友想要和我们见面的地方"
-        ]
-      ]
     ]
   },
   "legos": {
-    "S0139L01": {
+    "S0138L01": {
       "lego": [
-        "I'm sorry",
-        "对不起"
+        "this was/this is",
+        "这是"
       ],
       "type": "A",
       "current_seed_legos_available": [],
       "is_final_lego": false,
       "practice_phrases": [
         [
-          "I'm sorry.",
-          "对不起。",
-          null,
-          1
-        ],
-        [
-          "I'm very sorry.",
-          "我很对不起。",
+          "This is good.",
+          "这是好的。",
           null,
           2
         ],
         [
-          "I'm sorry about that.",
-          "对不起那个。",
+          "This was easy.",
+          "这是容易的。",
+          null,
+          2
+        ],
+        [
+          "This is my friend.",
+          "这是我的朋友。",
           null,
           3
         ],
         [
-          "I'm so sorry for this.",
-          "我很对不起这个。",
+          "This was a surprise.",
+          "这是个惊喜。",
+          null,
+          3
+        ],
+        [
+          "This is where I work.",
+          "这是我工作的地方。",
           null,
           4
         ],
         [
-          "I'm sorry that I'm late.",
-          "对不起我迟到了。",
+          "This was what I wanted.",
+          "这是我想要的。",
           null,
           4
         ],
         [
-          "I'm sorry, but I can't help.",
-          "对不起，但我不能帮忙。",
-          null,
-          5
-        ],
-        [
-          "I'm sorry that I didn't understand what you said.",
-          "对不起我不理解你说的。",
-          null,
-          7
-        ],
-        [
-          "I'm sorry, but I need to leave early today.",
-          "对不起，但我今天需要早点离开。",
-          null,
-          7
-        ],
-        [
-          "I'm sorry that this isn't what you wanted to hear.",
-          "对不起这不是你想听的。",
+          "This is the place where we met last time.",
+          "这是我们上次见面的地方。",
           null,
           8
         ],
         [
-          "I'm very sorry that I can't meet you at that time.",
-          "我很对不起我不能在那个时间和你见面。",
+          "This was something that I didn't know before.",
+          "这是我以前不知道的事情。",
+          null,
+          7
+        ],
+        [
+          "This is why I think that we should talk more.",
+          "这是为什么我认为我们应该多说话。",
           null,
           9
+        ],
+        [
+          "This was the idea that she wanted to tell us about.",
+          "这是她想告诉我们的想法。",
+          null,
+          10
         ]
       ],
       "phrase_distribution": {
-        "really_short_1_2": 1,
-        "quite_short_3": 1,
-        "longer_4_5": 3,
-        "long_6_plus": 5
+        "really_short_1_2": 0,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 4
       },
       "_metadata": {
-        "lego_id": "S0139L01",
+        "lego_id": "S0138L01",
         "seed_context": {
-          "known": "I'm sorry that I need to leave so early.",
-          "target": "对不起我需要这么早离开。"
+          "known": "This was where my friend wanted to meet us.",
+          "target": "这是我朋友想要和我们见面的地方。"
         }
       }
     },
-    "S0139L02": {
+    "S0138L03": {
       "lego": [
-        "I need to/I need",
-        "我需要"
+        "meet us/meet with us",
+        "和我们见面"
       ],
       "type": "M",
       "current_seed_legos_available": [
         [
-          "I'm sorry",
-          "对不起"
+          "this was/this is",
+          "这是"
         ]
       ],
       "is_final_lego": false,
       "practice_phrases": [
         [
-          "I need help.",
-          "我需要帮助。",
+          "Meet us there.",
+          "在那里和我们见面。",
           null,
           2
         ],
         [
-          "I need this.",
-          "我需要这个。",
+          "They'll meet us.",
+          "他们会和我们见面。",
           null,
           2
         ],
         [
-          "I need to go.",
-          "我需要走。",
+          "Can you meet us?",
+          "你能和我们见面吗？",
           null,
           3
         ],
         [
-          "I need to know.",
-          "我需要知道。",
-          null,
-          3
-        ],
-        [
-          "I need to talk with you.",
-          "我需要和你说话。",
+          "She wants to meet us.",
+          "她想和我们见面。",
           null,
           4
         ],
         [
-          "I need to think about this.",
-          "我需要考虑这个。",
+          "My friend will meet us tomorrow.",
+          "我的朋友明天会和我们见面。",
           null,
-          4
+          5
         ],
         [
-          "I need to understand what you're trying to say.",
-          "我需要理解你想说什么。",
+          "They wanted to meet us earlier.",
+          "他们想早点和我们见面。",
           null,
-          7
+          5
         ],
         [
-          "I need to leave early because I have another meeting.",
-          "我需要早点离开因为我有另一个会议。",
+          "I think that she wants to meet us at the same place.",
+          "我认为她想在同一个地方和我们见面。",
+          null,
+          10
+        ],
+        [
+          "He said that he can meet us after work today.",
+          "他说今天下班后他能和我们见面。",
           null,
           8
         ],
         [
-          "I think that I need to work more on this problem.",
-          "我认为我需要在这个问题上多做工作。",
+          "This is where my friend wanted to meet us last time.",
+          "这是我朋友上次想和我们见面的地方。",
+          null,
+          10
+        ],
+        [
+          "I don't know why they didn't want to meet us yesterday.",
+          "我不知道为什么他们昨天不想和我们见面。",
           null,
           9
-        ],
-        [
-          "I need to know where we're going to meet tomorrow.",
-          "我需要知道我们明天在哪里见面。",
-          null,
-          8
         ]
       ],
       "phrase_distribution": {
@@ -500,10 +505,10 @@
         "long_6_plus": 6
       },
       "_metadata": {
-        "lego_id": "S0139L02",
+        "lego_id": "S0138L03",
         "seed_context": {
-          "known": "I'm sorry that I need to leave so early.",
-          "target": "对不起我需要这么早离开。"
+          "known": "This was where my friend wanted to meet us.",
+          "target": "这是我朋友想要和我们见面的地方。"
         }
       },
       "components": [
@@ -514,38 +519,103 @@
         [
           null,
           null
+        ],
+        [
+          null,
+          null
         ]
       ]
     },
-    "S0139L03": {
+    "S0138L04": {
       "lego": [
-        "so early",
-        "这么早"
+        "wanted to meet us",
+        "想要和我们见面"
       ],
       "type": "M",
       "current_seed_legos_available": [
         [
-          "I'm sorry",
-          "对不起"
+          "this was/this is",
+          "这是"
         ],
         [
-          "I need to/I need",
-          "我需要"
+          "meet us/meet with us",
+          "和我们见面"
         ]
       ],
       "is_final_lego": false,
-      "practice_phrases": [],
+      "practice_phrases": [
+        [
+          "She wanted to meet us.",
+          "她想要和我们见面。",
+          null,
+          4
+        ],
+        [
+          "They wanted to meet us.",
+          "他们想要和我们见面。",
+          null,
+          4
+        ],
+        [
+          "My friend wanted to meet us.",
+          "我的朋友想要和我们见面。",
+          null,
+          5
+        ],
+        [
+          "Someone wanted to meet us yesterday.",
+          "有人昨天想要和我们见面。",
+          null,
+          5
+        ],
+        [
+          "I know that she wanted to meet us.",
+          "我知道她想要和我们见面。",
+          null,
+          6
+        ],
+        [
+          "He said that they wanted to meet us.",
+          "他说他们想要和我们见面。",
+          null,
+          6
+        ],
+        [
+          "This is the person who wanted to meet us at the office.",
+          "这是想在办公室和我们见面的人。",
+          null,
+          10
+        ],
+        [
+          "I don't understand why she wanted to meet us so early.",
+          "我不理解为什么她想要这么早和我们见面。",
+          null,
+          9
+        ],
+        [
+          "He told me that his friend wanted to meet us about the work.",
+          "他告诉我他的朋友想要和我们见面谈论工作。",
+          null,
+          11
+        ],
+        [
+          "That was the place where they wanted to meet us last week.",
+          "那是他们上周想要和我们见面的地方。",
+          null,
+          10
+        ]
+      ],
       "phrase_distribution": {
         "really_short_1_2": 0,
         "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
+        "longer_4_5": 2,
+        "long_6_plus": 8
       },
       "_metadata": {
-        "lego_id": "S0139L03",
+        "lego_id": "S0138L04",
         "seed_context": {
-          "known": "I'm sorry that I need to leave so early.",
-          "target": "对不起我需要这么早离开。"
+          "known": "This was where my friend wanted to meet us.",
+          "target": "这是我朋友想要和我们见面的地方。"
         }
       },
       "components": [
@@ -556,48 +626,6 @@
         [
           null,
           null
-        ]
-      ]
-    },
-    "S0139L04": {
-      "lego": [
-        "leave so early",
-        "这么早离开"
-      ],
-      "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I'm sorry",
-          "对不起"
-        ],
-        [
-          "I need to/I need",
-          "我需要"
-        ],
-        [
-          "so early",
-          "这么早"
-        ]
-      ],
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
-      },
-      "_metadata": {
-        "lego_id": "S0139L04",
-        "seed_context": {
-          "known": "I'm sorry that I need to leave so early.",
-          "target": "对不起我需要这么早离开。"
-        }
-      },
-      "components": [
-        [
-          null,
-          null
         ],
         [
           null,
@@ -609,46 +637,119 @@
         ]
       ]
     },
-    "S0139L05": {
+    "S0138L05": {
       "lego": [
-        "need to leave so early",
-        "需要这么早离开"
+        "where my friend wanted to meet us",
+        "我朋友想要和我们见面的地方"
       ],
       "type": "M",
       "current_seed_legos_available": [
         [
-          "I'm sorry",
-          "对不起"
+          "this was/this is",
+          "这是"
         ],
         [
-          "I need to/I need",
-          "我需要"
+          "meet us/meet with us",
+          "和我们见面"
         ],
         [
-          "so early",
-          "这么早"
-        ],
-        [
-          "leave so early",
-          "这么早离开"
+          "wanted to meet us",
+          "想要和我们见面"
         ]
       ],
       "is_final_lego": true,
-      "practice_phrases": [],
+      "practice_phrases": [
+        [
+          "That's where my friend wanted to meet us.",
+          "那是我朋友想要和我们见面的地方。",
+          null,
+          7
+        ],
+        [
+          "This is where my friend wanted to meet us.",
+          "这是我朋友想要和我们见面的地方。",
+          null,
+          7
+        ],
+        [
+          "I know where my friend wanted to meet us.",
+          "我知道我朋友想要和我们见面的地方。",
+          null,
+          8
+        ],
+        [
+          "She said where my friend wanted to meet us.",
+          "她说了我朋友想要和我们见面的地方。",
+          null,
+          8
+        ],
+        [
+          "I don't know where my friend wanted to meet us.",
+          "我不知道我朋友想要和我们见面的地方。",
+          null,
+          9
+        ],
+        [
+          "Can you tell me where my friend wanted to meet us?",
+          "你能告诉我我朋友想要和我们见面的地方吗？",
+          null,
+          10
+        ],
+        [
+          "This was the place where my friend wanted to meet us last time.",
+          "这是我朋友上次想要和我们见面的地方。",
+          null,
+          11
+        ],
+        [
+          "I'm not sure if this is where my friend wanted to meet us.",
+          "我不确定这是不是我朋友想要和我们见面的地方。",
+          null,
+          12
+        ],
+        [
+          "Do you remember where my friend wanted to meet us for dinner?",
+          "你记得我朋友想要和我们见面吃晚饭的地方吗？",
+          null,
+          11
+        ],
+        [
+          "That wasn't where my friend wanted to meet us, but it was a good place.",
+          "那不是我朋友想要和我们见面的地方，但它是个好地方。",
+          null,
+          14
+        ]
+      ],
       "phrase_distribution": {
         "really_short_1_2": 0,
         "quite_short_3": 0,
         "longer_4_5": 0,
-        "long_6_plus": 0
+        "long_6_plus": 10
       },
       "_metadata": {
-        "lego_id": "S0139L05",
+        "lego_id": "S0138L05",
         "seed_context": {
-          "known": "I'm sorry that I need to leave so early.",
-          "target": "对不起我需要这么早离开。"
+          "known": "This was where my friend wanted to meet us.",
+          "target": "这是我朋友想要和我们见面的地方。"
         }
       },
       "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
         [
           null,
           null
@@ -671,7 +772,7 @@
   "_instructions": {
     "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
     "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
-    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0139.json",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0138.json",
     "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
     "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
     "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
@@ -680,17 +781,17 @@
     "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
   },
   "_stats": {
-    "new_legos_in_seed": 5,
+    "new_legos_in_seed": 4,
     "total_legos_in_seed": 5,
-    "phrases_to_generate": 60,
+    "phrases_to_generate": 48,
     "recent_context_seeds": 10,
-    "recent_legos_available": 49
+    "recent_legos_available": 50
   },
   "_generation_metadata": {
-    "generated_at": "2025-11-17T23:08:38.136Z",
+    "generated_at": "2025-11-17T23:08:38.135Z",
     "generator": "phase5_generate_cmn_batch3.cjs",
     "batch": "batch3",
-    "legos_generated": 2,
-    "total_phrases": 20
+    "legos_generated": 4,
+    "total_phrases": 40
   }
 }

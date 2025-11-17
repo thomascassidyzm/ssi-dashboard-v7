@@ -1,63 +1,12 @@
 {
   "version": "curated_v7_spanish",
-  "seed_id": "S0153",
+  "seed_id": "S0155",
   "generation_stage": "PHRASES_GENERATED",
   "seed_pair": {
-    "known": "I wouldn't have said it in exactly the same way.",
-    "target": "我不会用完全相同的方式说它。"
+    "known": "I don't mind waiting for a few minutes tomorrow morning.",
+    "target": "我不介意明天早上等几分钟。"
   },
   "recent_seed_pairs": {
-    "S0143": [
-      [
-        "It's the same thing as we were talking about earlier.",
-        "这和我们之前谈论的是同一件事。"
-      ],
-      [
-        [
-          "S0143L01",
-          "it's the same thing as we were talking about earlier",
-          "这和我们之前谈论的是同一件事"
-        ],
-        [
-          "S0143L02",
-          "the same thing",
-          "同一件事"
-        ],
-        [
-          "S0143L03",
-          "we were talking about earlier",
-          "我们之前谈论的"
-        ],
-        [
-          "S0143L04",
-          "earlier",
-          "之前"
-        ]
-      ]
-    ],
-    "S0144": [
-      [
-        "I woke earlier than I wanted to this morning.",
-        "我今天早上醒得比我想要的早。"
-      ],
-      [
-        [
-          "S0144L02",
-          "woke earlier than I wanted to",
-          "醒得比我想要的早"
-        ],
-        [
-          "S0144L03",
-          "earlier than I wanted to",
-          "比我想要的早"
-        ],
-        [
-          "S0144L04",
-          "I wanted to",
-          "我想要的"
-        ]
-      ]
-    ],
     "S0145": [
       [
         "Why are you not happy any more?",
@@ -301,279 +250,141 @@
           "做得不同"
         ]
       ]
+    ],
+    "S0153": [
+      [
+        "I wouldn't have said it in exactly the same way.",
+        "我不会用完全相同的方式说它。"
+      ],
+      [
+        [
+          "S0153L01",
+          "I wouldn't have said it",
+          "我不会说它"
+        ],
+        [
+          "S0153L02",
+          "say it",
+          "说它"
+        ],
+        [
+          "S0153L03",
+          "exactly the same way",
+          "完全相同的方式"
+        ],
+        [
+          "S0153L04",
+          "in exactly the same way",
+          "用完全相同的方式"
+        ],
+        [
+          "S0153L05",
+          "say in exactly the same way",
+          "用完全相同的方式说"
+        ]
+      ]
+    ],
+    "S0154": [
+      [
+        "Where do you want to meet on Saturday night?",
+        "你想在星期六晚上在哪里见面？"
+      ],
+      [
+        [
+          "S0154L02",
+          "where",
+          "在哪里"
+        ],
+        [
+          "S0154L03",
+          "meet",
+          "见面"
+        ],
+        [
+          "S0154L04",
+          "where to meet",
+          "在哪里见面"
+        ],
+        [
+          "S0154L05",
+          "Saturday night",
+          "星期六晚上"
+        ],
+        [
+          "S0154L06",
+          "on Saturday night",
+          "在星期六晚上"
+        ]
+      ]
     ]
   },
   "legos": {
-    "S0153L01": {
+    "S0155L01": {
       "lego": [
-        "I wouldn't have said it",
-        "我不会说它"
+        "I don't mind",
+        "我不介意"
       ],
       "type": "M",
       "current_seed_legos_available": [],
       "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
-      },
-      "_metadata": {
-        "lego_id": "S0153L01",
-        "seed_context": {
-          "known": "I wouldn't have said it in exactly the same way.",
-          "target": "我不会用完全相同的方式说它。"
-        }
-      },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
-    },
-    "S0153L02": {
-      "lego": [
-        "say it",
-        "说它"
-      ],
-      "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I wouldn't have said it",
-          "我不会说它"
-        ]
-      ],
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
-      },
-      "_metadata": {
-        "lego_id": "S0153L02",
-        "seed_context": {
-          "known": "I wouldn't have said it in exactly the same way.",
-          "target": "我不会用完全相同的方式说它。"
-        }
-      },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
-    },
-    "S0153L03": {
-      "lego": [
-        "exactly the same way",
-        "完全相同的方式"
-      ],
-      "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I wouldn't have said it",
-          "我不会说它"
-        ],
-        [
-          "say it",
-          "说它"
-        ]
-      ],
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
-      },
-      "_metadata": {
-        "lego_id": "S0153L03",
-        "seed_context": {
-          "known": "I wouldn't have said it in exactly the same way.",
-          "target": "我不会用完全相同的方式说它。"
-        }
-      },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
-    },
-    "S0153L04": {
-      "lego": [
-        "in exactly the same way",
-        "用完全相同的方式"
-      ],
-      "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I wouldn't have said it",
-          "我不会说它"
-        ],
-        [
-          "say it",
-          "说它"
-        ],
-        [
-          "exactly the same way",
-          "完全相同的方式"
-        ]
-      ],
-      "is_final_lego": false,
-      "practice_phrases": [],
-      "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
-      },
-      "_metadata": {
-        "lego_id": "S0153L04",
-        "seed_context": {
-          "known": "I wouldn't have said it in exactly the same way.",
-          "target": "我不会用完全相同的方式说它。"
-        }
-      },
-      "components": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
-    },
-    "S0153L05": {
-      "lego": [
-        "say in exactly the same way",
-        "用完全相同的方式说"
-      ],
-      "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I wouldn't have said it",
-          "我不会说它"
-        ],
-        [
-          "say it",
-          "说它"
-        ],
-        [
-          "exactly the same way",
-          "完全相同的方式"
-        ],
-        [
-          "in exactly the same way",
-          "用完全相同的方式"
-        ]
-      ],
-      "is_final_lego": true,
       "practice_phrases": [
         [
-          "Say it.",
-          "说它。",
+          "No problem.",
+          "没问题。",
           null,
           2
         ],
         [
-          "Say differently.",
-          "用不同方式说。",
+          "It's fine.",
+          "没关系。",
           null,
           2
         ],
         [
-          "I can say.",
-          "我能这样说。",
+          "I don't mind.",
+          "我不介意。",
           null,
           3
         ],
         [
-          "Don't say it.",
-          "不要这样说。",
+          "She doesn't mind.",
+          "她不介意。",
           null,
           3
         ],
         [
-          "I would say it differently.",
-          "我会用不同的方式说它。",
+          "I don't mind doing it.",
+          "我不介意做它。",
           null,
           5
         ],
         [
-          "She can't say it correctly.",
-          "她不能用正确的方式说它。",
+          "I don't mind if late.",
+          "我不介意如果迟到。",
           null,
           5
         ],
         [
-          "I wouldn't say it in exactly the same way.",
-          "我不会用完全相同的方式说它。",
+          "I don't mind waiting for a few minutes.",
+          "我不介意等几分钟。",
           null,
-          9
+          7
         ],
         [
-          "He always tries to say it in the same way.",
-          "他总是试图用相同的方式说它。",
+          "I don't mind helping you with your homework tonight.",
+          "我不介意今晚帮你做作业。",
           null,
-          9
+          8
         ],
         [
-          "We should say it in exactly the same way.",
-          "我们应该用完全相同的方式说它。",
+          "She doesn't mind if we arrive a little late.",
+          "她不介意我们晚到一点。",
           null,
-          9
+          8
         ],
         [
-          "Can you say it in exactly the same way?",
-          "你能用完全相同的方式说它吗？",
+          "I don't mind going to the store if needed.",
+          "如果需要我不介意去商店。",
           null,
           9
         ]
@@ -585,10 +396,10 @@
         "long_6_plus": 4
       },
       "_metadata": {
-        "lego_id": "S0153L05",
+        "lego_id": "S0155L01",
         "seed_context": {
-          "known": "I wouldn't have said it in exactly the same way.",
-          "target": "我不会用完全相同的方式说它。"
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
         }
       },
       "components": [
@@ -603,11 +414,312 @@
         [
           null,
           null
+        ]
+      ]
+    },
+    "S0155L02": {
+      "lego": [
+        "a few minutes",
+        "几分钟"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't mind",
+          "我不介意"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Few minutes.",
+          "一些分钟。",
+          null,
+          2
+        ],
+        [
+          "Just minutes.",
+          "只需几分钟。",
+          null,
+          2
+        ],
+        [
+          "A few minutes.",
+          "几分钟。",
+          null,
+          3
+        ],
+        [
+          "Wait a moment.",
+          "等一会儿。",
+          null,
+          3
+        ],
+        [
+          "I need a few minutes.",
+          "我需要几分钟。",
+          null,
+          5
+        ],
+        [
+          "Give me a few minutes.",
+          "给我几分钟。",
+          null,
+          5
+        ],
+        [
+          "I'll be ready in a few minutes.",
+          "我几分钟后就准备好了。",
+          null,
+          7
+        ],
+        [
+          "Can you wait for a few minutes while I finish?",
+          "你能等几分钟直到我完成吗？",
+          null,
+          10
+        ],
+        [
+          "It will only take a few minutes to do it.",
+          "做它只需要几分钟。",
+          null,
+          10
+        ],
+        [
+          "I was late by just a few minutes this morning.",
+          "我今天早上只迟到了几分钟。",
+          null,
+          10
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0155L02",
+        "seed_context": {
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0155L03": {
+      "lego": [
+        "wait for a few minutes",
+        "等几分钟"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't mind",
+          "我不介意"
+        ],
+        [
+          "a few minutes",
+          "几分钟"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Wait here.",
+          "在这里等。",
+          null,
+          2
+        ],
+        [
+          "Please wait.",
+          "请等。",
+          null,
+          2
+        ],
+        [
+          "I can wait.",
+          "我能等。",
+          null,
+          3
+        ],
+        [
+          "Don't wait long.",
+          "不要等太久。",
+          null,
+          3
+        ],
+        [
+          "I don't mind waiting here.",
+          "我不介意在这里等。",
+          null,
+          5
+        ],
+        [
+          "Can you wait for me?",
+          "你能等我吗？",
+          null,
+          5
+        ],
+        [
+          "I don't mind waiting for a few minutes.",
+          "我不介意等几分钟。",
+          null,
+          7
+        ],
+        [
+          "We had to wait for a few minutes before starting.",
+          "我们不得不在开始前等几分钟。",
+          null,
+          9
+        ],
+        [
+          "She asked me to wait for a few minutes outside.",
+          "她让我在外面等几分钟。",
+          null,
+          9
+        ],
+        [
+          "I'm happy to wait for a few minutes if needed.",
+          "如果需要我很乐意等几分钟。",
+          null,
+          10
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0155L03",
+        "seed_context": {
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
         ],
         [
           null,
           null
         ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0155L04": {
+      "lego": [
+        "tomorrow morning",
+        "明天早上"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I don't mind",
+          "我不介意"
+        ],
+        [
+          "a few minutes",
+          "几分钟"
+        ],
+        [
+          "wait for a few minutes",
+          "等几分钟"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Tomorrow morning.",
+          "明天早上。",
+          null,
+          2
+        ],
+        [
+          "See you.",
+          "明天见。",
+          null,
+          2
+        ],
+        [
+          "I'll call tomorrow.",
+          "我明天打电话。",
+          null,
+          3
+        ],
+        [
+          "Let's meet tomorrow.",
+          "我们明天见面。",
+          null,
+          3
+        ],
+        [
+          "I have to leave tomorrow.",
+          "我明天得走。",
+          null,
+          5
+        ],
+        [
+          "We're going shopping tomorrow morning.",
+          "我们明天早上去购物。",
+          null,
+          5
+        ],
+        [
+          "I don't mind waiting for a few minutes tomorrow morning.",
+          "我不介意明天早上等几分钟。",
+          null,
+          9
+        ],
+        [
+          "I need to wake up very early tomorrow morning.",
+          "我明天早上需要很早起床。",
+          null,
+          8
+        ],
+        [
+          "Can you call me tomorrow morning before you leave?",
+          "你明天早上离开前能给我打电话吗？",
+          null,
+          9
+        ],
+        [
+          "We have an important meeting scheduled for tomorrow morning.",
+          "我们明天早上安排了一个重要的会议。",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0155L04",
+        "seed_context": {
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
+        }
+      },
+      "components": [
         [
           null,
           null
@@ -622,7 +734,7 @@
   "_instructions": {
     "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
     "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
-    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0153.json",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0155.json",
     "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
     "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
     "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
@@ -631,16 +743,19 @@
     "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
   },
   "_stats": {
-    "new_legos_in_seed": 5,
-    "total_legos_in_seed": 5,
-    "phrases_to_generate": 60,
+    "new_legos_in_seed": 4,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 48,
     "recent_context_seeds": 10,
-    "recent_legos_available": 43
+    "recent_legos_available": 46
   },
   "_generation_metadata": {
-    "total_phrases_generated": 10,
+    "total_phrases_generated": 40,
     "legos_processed": [
-      "S0153L05"
+      "S0155L01",
+      "S0155L02",
+      "S0155L03",
+      "S0155L04"
     ]
   }
 }
