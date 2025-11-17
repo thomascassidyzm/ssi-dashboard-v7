@@ -1,0 +1,744 @@
+{
+  "S0334L01": {
+    "lego": [
+      "He said",
+      "他说"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "He said",
+        "他说",
+        null,
+        1
+      ],
+      [
+        "She said yes",
+        "她说是的",
+        null,
+        2
+      ],
+      [
+        "He said it's important",
+        "他说这很重要",
+        null,
+        3
+      ],
+      [
+        "She said she can build",
+        "她说她可以建立",
+        null,
+        3
+      ],
+      [
+        "He said she can't provide answers",
+        "他说她不能提供答案",
+        null,
+        4
+      ],
+      [
+        "She said he needs to consider",
+        "她说他需要考虑",
+        null,
+        4
+      ],
+      [
+        "He said she ought to offer another way",
+        "他说她应该提供另一种方法",
+        null,
+        5
+      ],
+      [
+        "She said it's not very important today",
+        "她说这今天不是很重要",
+        null,
+        5
+      ],
+      [
+        "He said she can't spend much time with the group",
+        "他说她不能和小组花很多时间",
+        null,
+        6
+      ],
+      [
+        "She said that student needs to consider possible problems",
+        "她说那个学生需要考虑可能的问题",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "He"
+      ],
+      [
+        "说",
+        "said"
+      ]
+    ]
+  },
+  "S0334L02": {
+    "lego": [
+      "he can",
+      "他可以"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0334L01",
+        "known": "He said",
+        "target": "他说",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "He can",
+        "他可以",
+        null,
+        1
+      ],
+      [
+        "He can build",
+        "他可以建立",
+        null,
+        2
+      ],
+      [
+        "She said he can help",
+        "她说他可以帮",
+        null,
+        3
+      ],
+      [
+        "He can provide another way",
+        "他可以提供另一种方法",
+        null,
+        3
+      ],
+      [
+        "She said he can consider problems",
+        "她说他可以考虑问题",
+        null,
+        4
+      ],
+      [
+        "He can build new life today",
+        "他可以今天建立新生活",
+        null,
+        4
+      ],
+      [
+        "She said he can offer important answers",
+        "她说他可以提供重要的答案",
+        null,
+        5
+      ],
+      [
+        "He can build a new life for his sister",
+        "他可以为他妹妹建立新生活",
+        null,
+        5
+      ],
+      [
+        "She said he can spend time with the group",
+        "她说他可以和小组花时间",
+        null,
+        6
+      ],
+      [
+        "He can provide all the answers for the company",
+        "他可以为公司提供所有的答案",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "可以",
+        "can"
+      ]
+    ]
+  },
+  "S0334L03": {
+    "lego": [
+      "can let",
+      "可以让"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0334L01",
+        "known": "He said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0334L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Can let",
+        "可以让",
+        null,
+        1
+      ],
+      [
+        "He can let me",
+        "他可以让我",
+        null,
+        2
+      ],
+      [
+        "She can let him build",
+        "她可以让他建立",
+        null,
+        3
+      ],
+      [
+        "He can let her consider",
+        "他可以让她考虑",
+        null,
+        3
+      ],
+      [
+        "She said he can let me",
+        "她说他可以让我",
+        null,
+        4
+      ],
+      [
+        "He can let her provide answers",
+        "他可以让她提供答案",
+        null,
+        4
+      ],
+      [
+        "She can let him build a new life",
+        "她可以让他建立新生活",
+        null,
+        5
+      ],
+      [
+        "He said she can let him consider problems",
+        "他说她可以让他考虑问题",
+        null,
+        5
+      ],
+      [
+        "She can let that student spend time with the group",
+        "她可以让那个学生和小组花时间",
+        null,
+        6
+      ],
+      [
+        "He said she can let him offer another important way",
+        "他说她可以让他提供另一个重要的方法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "可以",
+        "can"
+      ],
+      [
+        "让",
+        "let"
+      ]
+    ]
+  },
+  "S0334L04": {
+    "lego": [
+      "let you hold",
+      "让你抱"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0334L01",
+        "known": "He said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0334L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0334L03",
+        "known": "can let",
+        "target": "可以让",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Let you hold",
+        "让你抱",
+        null,
+        1
+      ],
+      [
+        "Can let you hold",
+        "可以让你抱",
+        null,
+        2
+      ],
+      [
+        "He can let you hold",
+        "他可以让你抱",
+        null,
+        3
+      ],
+      [
+        "She can let you hold",
+        "她可以让你抱",
+        null,
+        3
+      ],
+      [
+        "He said he can let me",
+        "他说他可以让我",
+        null,
+        4
+      ],
+      [
+        "She can let you hold today",
+        "她可以让你今天抱",
+        null,
+        4
+      ],
+      [
+        "He said he can let you hold",
+        "他说他可以让你抱",
+        null,
+        5
+      ],
+      [
+        "She said she can let you hold",
+        "她说她可以让你抱",
+        null,
+        5
+      ],
+      [
+        "He said he can let you hold it",
+        "他说他可以让你抱它",
+        null,
+        6
+      ],
+      [
+        "She said she can let you hold something important",
+        "她说她可以让你抱重要的东西",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "让",
+        "let"
+      ],
+      [
+        "你",
+        "you"
+      ],
+      [
+        "抱",
+        "hold"
+      ]
+    ]
+  },
+  "S0334L05": {
+    "lego": [
+      "hold",
+      "抱"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0334L01",
+        "known": "He said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0334L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0334L03",
+        "known": "can let",
+        "target": "可以让",
+        "type": "M"
+      },
+      {
+        "id": "S0334L04",
+        "known": "let you hold",
+        "target": "让你抱",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Hold",
+        "抱",
+        null,
+        1
+      ],
+      [
+        "Can hold",
+        "可以抱",
+        null,
+        2
+      ],
+      [
+        "Let me hold it",
+        "让我抱它",
+        null,
+        3
+      ],
+      [
+        "She can hold it",
+        "她可以抱它",
+        null,
+        3
+      ],
+      [
+        "He can let me hold",
+        "他可以让我抱",
+        null,
+        4
+      ],
+      [
+        "She can let you hold",
+        "她可以让你抱",
+        null,
+        4
+      ],
+      [
+        "He said she can let me hold",
+        "他说她可以让我抱",
+        null,
+        5
+      ],
+      [
+        "She can let you hold it today",
+        "她可以让你今天抱它",
+        null,
+        5
+      ],
+      [
+        "He said he can let you hold something",
+        "他说他可以让你抱东西",
+        null,
+        6
+      ],
+      [
+        "She said she can let you hold it",
+        "她说她可以让你抱它",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0334L06": {
+    "lego": [
+      "the kitten",
+      "那只小猫"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0334L01",
+        "known": "He said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0334L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0334L03",
+        "known": "can let",
+        "target": "可以让",
+        "type": "M"
+      },
+      {
+        "id": "S0334L04",
+        "known": "let you hold",
+        "target": "让你抱",
+        "type": "M"
+      },
+      {
+        "id": "S0334L05",
+        "known": "hold",
+        "target": "抱",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The kitten",
+        "那只小猫",
+        null,
+        1
+      ],
+      [
+        "Hold the kitten",
+        "抱那只小猫",
+        null,
+        2
+      ],
+      [
+        "Can hold the kitten",
+        "可以抱那只小猫",
+        null,
+        3
+      ],
+      [
+        "Let you hold the kitten",
+        "让你抱那只小猫",
+        null,
+        3
+      ],
+      [
+        "He can hold the kitten",
+        "他可以抱那只小猫",
+        null,
+        4
+      ],
+      [
+        "She can let you hold",
+        "她可以让你抱",
+        null,
+        4
+      ],
+      [
+        "He can let you hold the kitten",
+        "他可以让你抱那只小猫",
+        null,
+        5
+      ],
+      [
+        "She said he can hold the kitten",
+        "她说他可以抱那只小猫",
+        null,
+        5
+      ],
+      [
+        "He said he can let you hold the kitten",
+        "他说他可以让你抱那只小猫",
+        null,
+        6
+      ],
+      [
+        "She said she can let you hold the kitten today",
+        "她说她可以今天让你抱那只小猫",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "那只",
+        "the"
+      ],
+      [
+        "小猫",
+        "kitten"
+      ]
+    ]
+  },
+  "S0334L07": {
+    "lego": [
+      "kitten",
+      "小猫"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0334L01",
+        "known": "He said",
+        "target": "他说",
+        "type": "M"
+      },
+      {
+        "id": "S0334L02",
+        "known": "he can",
+        "target": "他可以",
+        "type": "M"
+      },
+      {
+        "id": "S0334L03",
+        "known": "can let",
+        "target": "可以让",
+        "type": "M"
+      },
+      {
+        "id": "S0334L04",
+        "known": "let you hold",
+        "target": "让你抱",
+        "type": "M"
+      },
+      {
+        "id": "S0334L05",
+        "known": "hold",
+        "target": "抱",
+        "type": "A"
+      },
+      {
+        "id": "S0334L06",
+        "known": "the kitten",
+        "target": "那只小猫",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Kitten",
+        "小猫",
+        null,
+        1
+      ],
+      [
+        "The kitten",
+        "那只小猫",
+        null,
+        2
+      ],
+      [
+        "Hold the kitten",
+        "抱那只小猫",
+        null,
+        3
+      ],
+      [
+        "Can hold the kitten",
+        "可以抱那只小猫",
+        null,
+        3
+      ],
+      [
+        "Let you hold the kitten",
+        "让你抱那只小猫",
+        null,
+        4
+      ],
+      [
+        "He can hold the kitten",
+        "他可以抱那只小猫",
+        null,
+        4
+      ],
+      [
+        "He can let you hold the kitten",
+        "他可以让你抱那只小猫",
+        null,
+        5
+      ],
+      [
+        "She said he can hold the kitten",
+        "她说他可以抱那只小猫",
+        null,
+        5
+      ],
+      [
+        "He said he can let you hold the kitten",
+        "他说他可以让你抱那只小猫",
+        null,
+        6
+      ],
+      [
+        "He said that he can let you hold the kitten",
+        "他说他可以让你抱那只小猫。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "小",
+        "small"
+      ],
+      [
+        "猫",
+        "cat"
+      ]
+    ]
+  }
+}
