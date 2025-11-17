@@ -1,0 +1,643 @@
+{
+  "S0511L01": {
+    "lego": [
+      "the news",
+      "这个消息"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I heard the news.",
+        "我听说这个消息。",
+        null,
+        1
+      ],
+      [
+        "I hate the news.",
+        "我讨厌这个消息。",
+        null,
+        2
+      ],
+      [
+        "The news almost got lost.",
+        "这个消息差点迷路。",
+        null,
+        2
+      ],
+      [
+        "She's gone to look for the news.",
+        "她去找这个消息了。",
+        null,
+        3
+      ],
+      [
+        "The news turned left.",
+        "这个消息向左转了。",
+        null,
+        2
+      ],
+      [
+        "I heard the news years ago before we moved.",
+        "多年前我们搬家之前我听说这个消息。",
+        null,
+        5
+      ],
+      [
+        "I used to live around here when I heard the news.",
+        "我听说这个消息的时候我以前住在这附近。",
+        null,
+        6
+      ],
+      [
+        "She's gone to look for the news in a safe place.",
+        "她去一个安全的地方找这个消息了。",
+        null,
+        6
+      ],
+      [
+        "I heard the news before we moved to the city.",
+        "我们搬到城市之前我听说这个消息。",
+        null,
+        5
+      ],
+      [
+        "I hate making trouble about the news.",
+        "我讨厌制造关于这个消息的麻烦。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0511L01",
+      "seed_context": {
+        "known": "The news took several hours to reach everyone in the office.",
+        "target": "这个消息花了几个小时才传到办公室的每个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0511L02": {
+    "lego": [
+      "took several hours",
+      "花了几个小时"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "the news",
+        "这个消息"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "It took several hours.",
+        "花了几个小时。",
+        null,
+        1
+      ],
+      [
+        "That one took several hours.",
+        "那个花了几个小时。",
+        null,
+        2
+      ],
+      [
+        "The news took several hours.",
+        "这个消息花了几个小时。",
+        null,
+        2
+      ],
+      [
+        "We moved and it took several hours.",
+        "我们搬家花了几个小时。",
+        null,
+        3
+      ],
+      [
+        "Buying a new bed took several hours.",
+        "买一张新床花了几个小时。",
+        null,
+        4
+      ],
+      [
+        "Running across the grass took several hours.",
+        "跑过草地花了几个小时。",
+        null,
+        4
+      ],
+      [
+        "She's gone to look for somewhere safe and it took several hours.",
+        "她去找一个安全的地方花了几个小时。",
+        null,
+        6
+      ],
+      [
+        "Before we moved to the city it took several hours.",
+        "我们搬到城市之前花了几个小时。",
+        null,
+        5
+      ],
+      [
+        "I heard the news and it took several hours to reach me.",
+        "我听说这个消息花了几个小时才传到我。",
+        null,
+        6
+      ],
+      [
+        "Looking for a place to park the car took several hours.",
+        "找地方停车花了几个小时。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0511L02",
+      "seed_context": {
+        "known": "The news took several hours to reach everyone in the office.",
+        "target": "这个消息花了几个小时才传到办公室的每个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0511L03": {
+    "lego": [
+      "several hours",
+      "几个小时"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "the news",
+        "这个消息"
+      ],
+      [
+        "took several hours",
+        "花了几个小时"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I waited several hours.",
+        "我等了几个小时。",
+        null,
+        1
+      ],
+      [
+        "She's gone for several hours.",
+        "她去了几个小时。",
+        null,
+        2
+      ],
+      [
+        "We moved several hours ago.",
+        "我们几个小时前搬家了。",
+        null,
+        2
+      ],
+      [
+        "I lived around here several hours ago.",
+        "几个小时前我住在这附近。",
+        null,
+        3
+      ],
+      [
+        "The news took several hours to arrive.",
+        "这个消息花了几个小时才到。",
+        null,
+        4
+      ],
+      [
+        "I hate waiting several hours without arguing.",
+        "我讨厌等几个小时不吵架。",
+        null,
+        4
+      ],
+      [
+        "Before we moved I waited several hours to hear the news.",
+        "我们搬家之前我等了几个小时听这个消息。",
+        null,
+        7
+      ],
+      [
+        "She's gone to look for somewhere safe for several hours.",
+        "她去找一个安全的地方几个小时了。",
+        null,
+        6
+      ],
+      [
+        "I used to live around here several hours before we moved to the city.",
+        "我们搬到城市之前几个小时我以前住在这附近。",
+        null,
+        8
+      ],
+      [
+        "Years ago I waited several hours.",
+        "多年前我等了几个小时。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0511L03",
+      "seed_context": {
+        "known": "The news took several hours to reach everyone in the office.",
+        "target": "这个消息花了几个小时才传到办公室的每个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0511L04": {
+    "lego": [
+      "to reach",
+      "才传到"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "the news",
+        "这个消息"
+      ],
+      [
+        "took several hours",
+        "花了几个小时"
+      ],
+      [
+        "several hours",
+        "几个小时"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "It took hours to reach.",
+        "花了小时才传到。",
+        null,
+        2
+      ],
+      [
+        "The news took time to reach.",
+        "这个消息花了时间才传到。",
+        null,
+        2
+      ],
+      [
+        "It took several hours to reach me.",
+        "花了几个小时才传到我。",
+        null,
+        3
+      ],
+      [
+        "The news took several hours to reach.",
+        "这个消息花了几个小时才传到。",
+        null,
+        3
+      ],
+      [
+        "Years ago the news took hours to reach everyone.",
+        "多年前这个消息花了小时才传到每个人。",
+        null,
+        5
+      ],
+      [
+        "Before we moved the news took several hours to reach me.",
+        "我们搬家之前这个消息花了几个小时才传到我。",
+        null,
+        6
+      ],
+      [
+        "I heard that the news took several hours to reach everyone in the city.",
+        "我听说这个消息花了几个小时才传到城市的每个人。",
+        null,
+        8
+      ],
+      [
+        "She's gone to look for the news that took several hours to reach.",
+        "她去找花了几个小时才传到的这个消息了。",
+        null,
+        7
+      ],
+      [
+        "I used to live around here when the news took several hours to reach everyone.",
+        "这个消息花了几个小时才传到每个人的时候我以前住在这附近。",
+        null,
+        9
+      ],
+      [
+        "The news about buying a new bed took several hours to reach.",
+        "买一张新床的这个消息花了几个小时才传到。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0511L04",
+      "seed_context": {
+        "known": "The news took several hours to reach everyone in the office.",
+        "target": "这个消息花了几个小时才传到办公室的每个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0511L05": {
+    "lego": [
+      "everyone in the office",
+      "办公室的每个人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "the news",
+        "这个消息"
+      ],
+      [
+        "took several hours",
+        "花了几个小时"
+      ],
+      [
+        "several hours",
+        "几个小时"
+      ],
+      [
+        "to reach",
+        "才传到"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I heard everyone in the office.",
+        "我听说办公室的每个人。",
+        null,
+        2
+      ],
+      [
+        "Everyone in the office moved.",
+        "办公室的每个人搬家了。",
+        null,
+        2
+      ],
+      [
+        "I hate everyone in the office.",
+        "我讨厌办公室的每个人。",
+        null,
+        2
+      ],
+      [
+        "Everyone in the office bought a new bed.",
+        "办公室的每个人买了一张新床。",
+        null,
+        3
+      ],
+      [
+        "The news reached everyone in the office.",
+        "这个消息传到了办公室的每个人。",
+        null,
+        3
+      ],
+      [
+        "Years ago everyone in the office moved to the city.",
+        "多年前办公室的每个人搬到了城市。",
+        null,
+        5
+      ],
+      [
+        "Before we moved everyone in the office used to live around here.",
+        "我们搬家之前办公室的每个人以前住在这附近。",
+        null,
+        7
+      ],
+      [
+        "I heard the news took several hours to reach everyone in the office.",
+        "我听说这个消息花了几个小时才传到办公室的每个人。",
+        null,
+        8
+      ],
+      [
+        "She's gone to look for a safe place for everyone in the office to park.",
+        "她去找一个安全的地方让办公室的每个人停车了。",
+        null,
+        9
+      ],
+      [
+        "Everyone in the office hates making trouble about the news.",
+        "办公室的每个人讨厌制造关于这个消息的麻烦。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0511L05",
+      "seed_context": {
+        "known": "The news took several hours to reach everyone in the office.",
+        "target": "这个消息花了几个小时才传到办公室的每个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0511L06": {
+    "lego": [
+      "everyone",
+      "每个人"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "the news",
+        "这个消息"
+      ],
+      [
+        "took several hours",
+        "花了几个小时"
+      ],
+      [
+        "several hours",
+        "几个小时"
+      ],
+      [
+        "to reach",
+        "才传到"
+      ],
+      [
+        "everyone in the office",
+        "办公室的每个人"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "I heard everyone.",
+        "我听说每个人。",
+        null,
+        1
+      ],
+      [
+        "Everyone moved.",
+        "每个人搬家了。",
+        null,
+        1
+      ],
+      [
+        "I hate everyone.",
+        "我讨厌每个人。",
+        null,
+        1
+      ],
+      [
+        "Everyone bought a new bed.",
+        "每个人买了一张新床。",
+        null,
+        3
+      ],
+      [
+        "The news reached everyone.",
+        "这个消息传到了每个人。",
+        null,
+        2
+      ],
+      [
+        "Years ago everyone moved to the city.",
+        "多年前每个人搬到了城市。",
+        null,
+        4
+      ],
+      [
+        "Before we moved everyone used to live around here.",
+        "我们搬家之前每个人以前住在这附近。",
+        null,
+        6
+      ],
+      [
+        "I heard the news took several hours to reach everyone.",
+        "我听说这个消息花了几个小时才传到每个人。",
+        null,
+        6
+      ],
+      [
+        "She's gone to look for a safe place for everyone to park the car.",
+        "她去找一个安全的地方让每个人停车了。",
+        null,
+        8
+      ],
+      [
+        "The news took several hours to reach everyone in the office.",
+        "这个消息花了几个小时才传到办公室的每个人。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0511L06",
+      "seed_context": {
+        "known": "The news took several hours to reach everyone in the office.",
+        "target": "这个消息花了几个小时才传到办公室的每个人。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
