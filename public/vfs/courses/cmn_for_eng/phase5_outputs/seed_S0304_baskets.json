@@ -1,0 +1,102 @@
+{
+  "S0304L02": {
+    "lego": ["I think that she doesn't want","我觉得她不想"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I think that she doesn't want","我觉得她不想",null,1],
+      ["I think that she doesn't want to pay","我觉得她不想付",null,2],
+      ["I think that she doesn't want half","我觉得她不想一半",null,2],
+      ["I think that she doesn't want to sit down","我觉得她不想坐下",null,3],
+      ["I think that she doesn't want to show you","我觉得她不想给你看",null,3],
+      ["I think that she doesn't want to live in a city","我觉得她不想住在城市里",null,4],
+      ["I think that she doesn't want to show you something","我觉得她不想给你看点东西",null,4],
+      ["I think that she doesn't want to seem unfriendly","我觉得她不想显得不友好",null,5],
+      ["I said that I think that she doesn't want to sit down","我说我觉得她不想坐下",null,6],
+      ["I think that she doesn't want to call you tonight","我觉得她不想今晚给你打电话",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0304L05": {
+    "lego": ["doesn't want to work from home","不想在家工作"],
+    "type": "M",
+    "current_seed_legos_available": [["I think that she doesn't want","我觉得她不想"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["She doesn't want to work from home","她不想在家工作",null,1],
+      ["He doesn't want to work from home","他不想在家工作",null,1],
+      ["I think that she doesn't want to work from home","我觉得她不想在家工作",null,2],
+      ["She said that she doesn't want to work from home","她说她不想在家工作",null,2],
+      ["She doesn't want to work from home tonight","她不想今晚在家工作",null,3],
+      ["I said that she doesn't want to work from home","我说她不想在家工作",null,3],
+      ["I think that she doesn't want to work from home tonight","我觉得她不想今晚在家工作",null,4],
+      ["He said that she doesn't want to work from home","他说她不想在家工作",null,4],
+      ["She said that she doesn't want to work from home in a city","她说她不想在城市里在家工作",null,5],
+      ["I think that she doesn't want to work from home because she wants to sit down","我觉得她不想在家工作因为她想坐下",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0304L06": {
+    "lego": ["work from home","在家工作"],
+    "type": "M",
+    "current_seed_legos_available": [["I think that she doesn't want","我觉得她不想"],["doesn't want to work from home","不想在家工作"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Work from home","在家工作",null,1],
+      ["I want to work from home","我想在家工作",null,1],
+      ["She doesn't want to work from home","她不想在家工作",null,2],
+      ["He wants to work from home","他想在家工作",null,2],
+      ["I think that she doesn't want to work from home","我觉得她不想在家工作",null,3],
+      ["I want to work from home tonight","我想今晚在家工作",null,3],
+      ["She said that she doesn't want to work from home","她说她不想在家工作",null,4],
+      ["He said that he wants to work from home","他说他想在家工作",null,4],
+      ["I think that she doesn't want to work from home tonight","我觉得她不想今晚在家工作",null,5],
+      ["She said that she doesn't want to work from home because she wants to sit down","她说她不想在家工作因为她想坐下",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0304L07": {
+    "lego": ["at home / from home","在家"],
+    "type": "M",
+    "current_seed_legos_available": [["I think that she doesn't want","我觉得她不想"],["doesn't want to work from home","不想在家工作"],["work from home","在家工作"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["At home","在家",null,1],
+      ["I'm at home","我在家",null,1],
+      ["She doesn't want to work from home","她不想在家工作",null,2],
+      ["I want to work from home","我想在家工作",null,2],
+      ["I think that she doesn't want to work from home","我觉得她不想在家工作",null,3],
+      ["She said that she's at home","她说她在家",null,3],
+      ["She doesn't want to work from home tonight","她不想今晚在家工作",null,4],
+      ["I think that she's at home","我觉得她在家",null,4],
+      ["She said that she doesn't want to work from home tonight","她说她不想今晚在家工作",null,5],
+      ["I think that she doesn't want to work from home because she wants to sit down","我觉得她不想在家工作因为她想坐下",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  }
+}
