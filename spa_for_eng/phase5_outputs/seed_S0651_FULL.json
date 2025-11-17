@@ -1,0 +1,50 @@
+{
+  "_metadata": {
+    "seed_id": "S0651",
+    "generated_at": "2025-11-17T02:39:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 2,
+    "basket_count": 20
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 20,
+    "baskets_per_lego": {
+      "S0651L01": 10,
+      "S0651L02": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "What do you think madam?",
+      "¿Qué piensa señora?"
+    ]
+  },
+  "legos": {
+    "S0651L01": [
+      ["madam", "señora", null, 1],
+      ["thank you madam", "gracias señora", null, 2],
+      ["with you madam", "contigo señora", null, 2],
+      ["Where is the bag madam?", "¿Dónde está la bolsa señora?", null, 5],
+      ["I think that is madam", "Creo que esa es señora", null, 5],
+      ["It's the red one madam", "Es el rojo señora", null, 4],
+      ["I can help you madam", "Puedo ayudarle señora", null, 4],
+      ["how do you feel madam?", "¿Cómo se siente señora?", null, 4],
+      ["Do you want to go madam?", "¿Quiere ir señora?", null, 5],
+      ["What do you think madam?", "¿Qué piensa señora?", null, 4]
+    ],
+    "S0651L02": [
+      ["what do you think", "qué piensa", null, 1],
+      ["What do you think madam?", "¿Qué piensa señora?", null, 2],
+      ["I think what do you think", "Creo que qué piensa", null, 5],
+      ["What do you think sir?", "¿Qué piensa señor?", null, 4],
+      ["What do you think please?", "¿Qué piensa por favor?", null, 4],
+      ["I can help. What do you think?", "Puedo ayudar. ¿Qué piensa?", null, 6],
+      ["What do you think about the bag?", "¿Qué piensa sobre la bolsa?", null, 6],
+      ["Could you say what do you think madam?", "¿Podría decir qué piensa señora?", null, 7],
+      ["What do you think about the red one?", "¿Qué piensa sobre el rojo?", null, 6],
+      ["What do you think madam?", "¿Qué piensa señora?", null, 4]
+    ]
+  }
+}

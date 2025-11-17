@@ -1,0 +1,63 @@
+{
+  "_metadata": {
+    "seed_id": "S0638",
+    "generated_at": "2025-11-17T02:26:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 3,
+    "basket_count": 30
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 30,
+    "baskets_per_lego": {
+      "S0638L01": 10,
+      "S0638L02": 10,
+      "S0638L03": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "I'm trying to think.",
+      "Estoy intentando pensar."
+    ]
+  },
+  "legos": {
+    "S0638L01": [
+      ["I'm trying", "Estoy intentando", null, 1],
+      ["I'm trying to think", "Estoy intentando pensar", null, 2],
+      ["I think I'm trying", "Creo que estoy intentando", null, 3],
+      ["I'm trying but I'm not thirsty", "Estoy intentando pero no tengo sed", null, 5],
+      ["I'm trying with you", "Estoy intentando contigo", null, 3],
+      ["I'm trying to have something to drink", "Estoy intentando tener algo para beber", null, 6],
+      ["I think I'm trying please", "Creo que estoy intentando por favor", null, 5],
+      ["I'm trying to think where is the bag", "Estoy intentando pensar dónde está la bolsa", null, 7],
+      ["I'm trying but that would be fine", "Estoy intentando pero eso estaría bien", null, 6],
+      ["I'm trying to think", "Estoy intentando pensar", null, 3]
+    ],
+    "S0638L02": [
+      ["trying to think", "intentando pensar", null, 1],
+      ["I'm trying to think", "Estoy intentando pensar", null, 2],
+      ["I'm trying to think where is", "Estoy intentando pensar dónde está", null, 4],
+      ["I'm trying to think please", "Estoy intentando pensar por favor", null, 4],
+      ["I'm trying to think about the bag", "Estoy intentando pensar sobre la bolsa", null, 5],
+      ["I think I'm trying to think", "Creo que estoy intentando pensar", null, 4],
+      ["I'm trying to think where is her bag", "Estoy intentando pensar dónde está su bolsa", null, 6],
+      ["I'm trying to think but I'm not ready", "Estoy intentando pensar pero no estoy preparado", null, 7],
+      ["I'm trying to think about Jane's bag", "Estoy intentando pensar sobre la bolsa de Jane", null, 7],
+      ["I'm trying to think", "Estoy intentando pensar", null, 3]
+    ],
+    "S0638L03": [
+      ["to think", "pensar", null, 1],
+      ["I'm trying to think", "Estoy intentando pensar", null, 2],
+      ["I want to think", "Quiero pensar", null, 2],
+      ["I'm trying to think please", "Estoy intentando pensar por favor", null, 4],
+      ["I'm trying to think where is the bag", "Estoy intentando pensar dónde está la bolsa", null, 6],
+      ["I think I'm trying to think", "Creo que estoy intentando pensar", null, 4],
+      ["I'm trying to think about her bag", "Estoy intentando pensar sobre su bolsa", null, 6],
+      ["I'm trying to think where is Jane's bag", "Estoy intentando pensar dónde está la bolsa de Jane", null, 8],
+      ["I'm trying to think but I'm not ready", "Estoy intentando pensar pero no estoy preparado", null, 7],
+      ["I'm trying to think", "Estoy intentando pensar", null, 3]
+    ]
+  }
+}

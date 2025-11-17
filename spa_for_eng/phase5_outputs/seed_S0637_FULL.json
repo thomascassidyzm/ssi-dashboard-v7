@@ -1,0 +1,50 @@
+{
+  "_metadata": {
+    "seed_id": "S0637",
+    "generated_at": "2025-11-17T02:25:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 2,
+    "basket_count": 20
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 20,
+    "baskets_per_lego": {
+      "S0637L01": 10,
+      "S0637L02": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "Where is her bag?",
+      "¿Dónde está su bolsa?"
+    ]
+  },
+  "legos": {
+    "S0637L01": [
+      ["Where is?", "¿Dónde está?", null, 1],
+      ["Where is the bag?", "¿Dónde está la bolsa?", null, 2],
+      ["Where is your bag?", "¿Dónde está tu bolsa?", null, 2],
+      ["Where is your coffee?", "¿Dónde está tu café?", null, 3],
+      ["Where is the glass of water?", "¿Dónde está el vaso de agua?", null, 4],
+      ["Where is the large glass?", "¿Dónde está el vaso grande?", null, 4],
+      ["Where is one of those?", "¿Dónde está uno de esos?", null, 4],
+      ["Where is Jane's bag?", "¿Dónde está la bolsa de Jane?", null, 4],
+      ["I think where is the bag", "Creo que dónde está la bolsa", null, 5],
+      ["Where is her bag?", "¿Dónde está su bolsa?", null, 3]
+    ],
+    "S0637L02": [
+      ["her bag", "su bolsa", null, 1],
+      ["Where is her bag?", "¿Dónde está su bolsa?", null, 2],
+      ["I think that is her bag", "Creo que esa es su bolsa", null, 4],
+      ["I think her bag is ready", "Creo que su bolsa está preparado", null, 5],
+      ["Her bag would be fine", "Su bolsa estaría bien", null, 4],
+      ["I think that that is her bag", "Creo que esa es su bolsa", null, 5],
+      ["Where is her bag please?", "¿Dónde está su bolsa por favor?", null, 4],
+      ["I think her bag is one of those", "Creo que su bolsa es uno de esos", null, 7],
+      ["Do you think that is her bag?", "¿Creo que esa es su bolsa?", null, 6],
+      ["Where is her bag?", "¿Dónde está su bolsa?", null, 3]
+    ]
+  }
+}

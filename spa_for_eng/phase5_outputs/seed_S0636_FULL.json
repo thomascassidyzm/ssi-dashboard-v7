@@ -1,0 +1,63 @@
+{
+  "_metadata": {
+    "seed_id": "S0636",
+    "generated_at": "2025-11-17T02:24:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 3,
+    "basket_count": 30
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 30,
+    "baskets_per_lego": {
+      "S0636L01": 10,
+      "S0636L02": 10,
+      "S0636L03": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "I think that that is Jane's bag.",
+      "Creo que esa es la bolsa de Jane."
+    ]
+  },
+  "legos": {
+    "S0636L01": [
+      ["I think that that", "Creo que esa", null, 1],
+      ["I think that", "Creo que", null, 1],
+      ["I think that that is", "Creo que esa es", null, 2],
+      ["I think that that is the bag", "Creo que esa es la bolsa", null, 3],
+      ["I think that that is your bag", "Creo que esa es tu bolsa", null, 4],
+      ["I think that that is a large glass", "Creo que esa es un vaso grande", null, 5],
+      ["I think that that is your coffee", "Creo que esa es tu café", null, 5],
+      ["I think that that would be great", "Creo que esa sería genial", null, 5],
+      ["I think that that is one of those", "Creo que esa es uno de esos", null, 6],
+      ["I think that that is Jane's bag", "Creo que esa es la bolsa de Jane", null, 6]
+    ],
+    "S0636L02": [
+      ["that is", "esa es", null, 1],
+      ["that is the bag", "esa es la bolsa", null, 2],
+      ["I think that is", "Creo que es", null, 2],
+      ["I think that is the bag", "Creo que es la bolsa", null, 3],
+      ["I think that is your bag", "Creo que es tu bolsa", null, 4],
+      ["I think that is Jane's bag", "Creo que es la bolsa de Jane", null, 5],
+      ["I think that is your coffee", "Creo que es tu café", null, 5],
+      ["I think that is one of those", "Creo que es uno de esos", null, 5],
+      ["I think that is a large glass of water", "Creo que es un vaso grande de agua", null, 6],
+      ["I think that that is Jane's bag", "Creo que esa es la bolsa de Jane", null, 6]
+    ],
+    "S0636L03": [
+      ["Jane's bag", "la bolsa de Jane", null, 1],
+      ["the bag", "la bolsa", null, 1],
+      ["that is Jane's bag", "esa es la bolsa de Jane", null, 3],
+      ["I think that is Jane's bag", "Creo que es la bolsa de Jane", null, 4],
+      ["I think that that is Jane's bag", "Creo que esa es la bolsa de Jane", null, 5],
+      ["I think that Jane's bag is ready", "Creo que la bolsa de Jane está preparado", null, 6],
+      ["I think that Jane's bag would be fine", "Creo que la bolsa de Jane estaría bien", null, 7],
+      ["Do you think that is Jane's bag", "Creo que esa es la bolsa de Jane", null, 6],
+      ["I think one of those is Jane's bag", "Creo que uno de esos es la bolsa de Jane", null, 7],
+      ["I think that that is Jane's bag", "Creo que esa es la bolsa de Jane", null, 6]
+    ]
+  }
+}

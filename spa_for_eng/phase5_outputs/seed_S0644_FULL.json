@@ -1,0 +1,89 @@
+{
+  "_metadata": {
+    "seed_id": "S0644",
+    "generated_at": "2025-11-17T02:32:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 5,
+    "basket_count": 50
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 50,
+    "baskets_per_lego": {
+      "S0644L01": 10,
+      "S0644L02": 10,
+      "S0644L03": 10,
+      "S0644L04": 10,
+      "S0644L05": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "Could you say that sir?",
+      "¿Podría decir eso señor?"
+    ]
+  },
+  "legos": {
+    "S0644L01": [
+      ["could you", "podría", null, 1],
+      ["Could you please?", "¿Podría por favor?", null, 2],
+      ["Could you thank you", "Podría gracias", null, 2],
+      ["Could you think?", "¿Podría pensar?", null, 2],
+      ["Could you with me?", "¿Podría conmigo?", null, 3],
+      ["I think could you", "Creo que podría", null, 3],
+      ["Could you say that?", "¿Podría decir eso?", null, 3],
+      ["Could you have something to drink?", "¿Podría tener algo de beber?", null, 6],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 4],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 4]
+    ],
+    "S0644L02": [
+      ["that", "eso", null, 1],
+      ["I think that", "Creo que eso", null, 2],
+      ["that is", "eso es", null, 2],
+      ["Could you say that?", "¿Podría decir eso?", null, 3],
+      ["I think that is the bag", "Creo que eso es la bolsa", null, 6],
+      ["I think that is the red one", "Creo que eso es el rojo", null, 6],
+      ["Where is that?", "¿Dónde está eso?", null, 3],
+      ["I think that would be fine", "Creo que eso estaría bien", null, 6],
+      ["that is Jane's bag", "eso es la bolsa de Jane", null, 5],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 4]
+    ],
+    "S0644L03": [
+      ["sir", "señor", null, 1],
+      ["thank you sir", "gracias señor", null, 2],
+      ["with you sir", "contigo señor", null, 2],
+      ["Where is the bag sir?", "¿Dónde está la bolsa señor?", null, 5],
+      ["I think that is sir", "Creo que esa es señor", null, 5],
+      ["It's the red one sir", "Es el rojo señor", null, 4],
+      ["I'm trying to think sir", "Estoy intentando pensar señor", null, 5],
+      ["Do you want sir", "¿Quiere usted señor?", null, 3],
+      ["how do you feel sir?", "¿Cómo se siente señor?", null, 4],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 4]
+    ],
+    "S0644L04": [
+      ["could you say", "podría decir", null, 1],
+      ["Could you say that?", "¿Podría decir eso?", null, 2],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 3],
+      ["I think could you say", "Creo que podría decir", null, 4],
+      ["Could you say that please?", "¿Podría decir eso por favor?", null, 4],
+      ["Could you say where is the bag?", "¿Podría decir dónde está la bolsa?", null, 6],
+      ["Could you say that is the red one?", "¿Podría decir eso es el rojo?", null, 6],
+      ["Could you say that madam?", "¿Podría decir eso señora?", null, 4],
+      ["I'm trying to think could you say", "Estoy intentando pensar podría decir", null, 7],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 4]
+    ],
+    "S0644L05": [
+      ["to say that", "decir eso", null, 1],
+      ["Could you say that?", "¿Podría decir eso?", null, 2],
+      ["I'm trying to say that", "Estoy intentando decir eso", null, 4],
+      ["Do you want to say that?", "¿Quiere usted decir eso?", null, 5],
+      ["I think to say that", "Creo que decir eso", null, 4],
+      ["to say that is the bag", "decir eso es la bolsa", null, 5],
+      ["I'm trying to say that is the red one", "Estoy intentando decir eso es el rojo", null, 8],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 4],
+      ["to say that please", "decir eso por favor", null, 4],
+      ["Could you say that sir?", "¿Podría decir eso señor?", null, 4]
+    ]
+  }
+}

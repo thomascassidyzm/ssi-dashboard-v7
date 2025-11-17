@@ -1,0 +1,50 @@
+{
+  "_metadata": {
+    "seed_id": "S0639",
+    "generated_at": "2025-11-17T02:27:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 2,
+    "basket_count": 20
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 20,
+    "baskets_per_lego": {
+      "S0639L01": 10,
+      "S0639L02": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "with you sir",
+      "contigo señor"
+    ]
+  },
+  "legos": {
+    "S0639L01": [
+      ["with you", "contigo", null, 1],
+      ["I'm trying with you", "Estoy intentando contigo", null, 2],
+      ["I think with you", "Creo contigo", null, 2],
+      ["something to drink with you", "algo de beber contigo", null, 4],
+      ["I'm trying to think with you", "Estoy intentando pensar contigo", null, 4],
+      ["I think that is with you", "Creo que eso es contigo", null, 5],
+      ["Where is the bag with you?", "¿Dónde está la bolsa contigo?", null, 5],
+      ["I think I'm trying with you please", "Creo que estoy intentando contigo por favor", null, 6],
+      ["I'm trying to have something to drink with you", "Estoy intentando tener algo de beber contigo", null, 7],
+      ["with you sir", "contigo señor", null, 2]
+    ],
+    "S0639L02": [
+      ["sir", "señor", null, 1],
+      ["with you sir", "contigo señor", null, 2],
+      ["I think that sir", "Creo que señor", null, 3],
+      ["thank you sir", "gracias señor", null, 2],
+      ["Where is the bag sir?", "¿Dónde está la bolsa señor?", null, 4],
+      ["I'm trying to think sir", "Estoy intentando pensar señor", null, 4],
+      ["Do you want something to drink sir?", "¿Quieres algo de beber señor?", null, 6],
+      ["I think that is Jane's bag sir", "Creo que esa es la bolsa de Jane señor", null, 7],
+      ["Where is her bag sir?", "¿Dónde está su bolsa señor?", null, 5],
+      ["with you sir", "contigo señor", null, 2]
+    ]
+  }
+}

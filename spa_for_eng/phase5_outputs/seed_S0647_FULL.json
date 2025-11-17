@@ -1,0 +1,50 @@
+{
+  "_metadata": {
+    "seed_id": "S0647",
+    "generated_at": "2025-11-17T02:35:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 2,
+    "basket_count": 20
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 20,
+    "baskets_per_lego": {
+      "S0647L01": 10,
+      "S0647L02": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "You speak it madam",
+      "Lo habla señora"
+    ]
+  },
+  "legos": {
+    "S0647L01": [
+      ["madam", "señora", null, 1],
+      ["thank you madam", "gracias señora", null, 2],
+      ["with you madam", "contigo señora", null, 2],
+      ["Where is the bag madam?", "¿Dónde está la bolsa señora?", null, 5],
+      ["I think that is madam", "Creo que esa es señora", null, 5],
+      ["It's the red one madam", "Es el rojo señora", null, 4],
+      ["I can help you madam", "Puedo ayudarle señora", null, 4],
+      ["how do you feel madam?", "¿Cómo se siente señora?", null, 4],
+      ["Could you say that madam?", "¿Podría decir eso señora?", null, 5],
+      ["You speak it madam", "Lo habla señora", null, 3]
+    ],
+    "S0647L02": [
+      ["you speak it", "lo habla", null, 1],
+      ["You speak it madam", "Lo habla señora", null, 2],
+      ["I think you speak it", "Creo que lo habla", null, 4],
+      ["You speak it sir", "Lo habla señor", null, 3],
+      ["You speak it please", "Lo habla por favor", null, 4],
+      ["I can help you. You speak it", "Puedo ayudarle. Lo habla", null, 5],
+      ["You speak it with me", "Lo habla conmigo", null, 4],
+      ["Could you? You speak it madam", "¿Podría? Lo habla señora", null, 5],
+      ["I think you speak it very well", "Creo que lo habla muy bien", null, 7],
+      ["You speak it madam", "Lo habla señora", null, 3]
+    ]
+  }
+}

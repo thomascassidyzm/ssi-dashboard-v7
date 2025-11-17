@@ -1,0 +1,50 @@
+{
+  "_metadata": {
+    "seed_id": "S0650",
+    "generated_at": "2025-11-17T02:38:00.000Z",
+    "phase": "5",
+    "course": "spa_for_eng",
+    "lego_count": 2,
+    "basket_count": 20
+  },
+  "_instructions": "Phase 5 basket generation following v7.0 methodology",
+  "_stats": {
+    "total_baskets": 20,
+    "baskets_per_lego": {
+      "S0650L01": 10,
+      "S0650L02": 10
+    }
+  },
+  "_seed_context": {
+    "seed_pair": [
+      "Do you want to go madam?",
+      "¿Quiere ir señora?"
+    ]
+  },
+  "legos": {
+    "S0650L01": [
+      ["madam", "señora", null, 1],
+      ["thank you madam", "gracias señora", null, 2],
+      ["with you madam", "contigo señora", null, 2],
+      ["Where is the bag madam?", "¿Dónde está la bolsa señora?", null, 5],
+      ["I think that is madam", "Creo que esa es señora", null, 5],
+      ["It's the red one madam", "Es el rojo señora", null, 4],
+      ["I can help you madam", "Puedo ayudarle señora", null, 4],
+      ["how do you feel madam?", "¿Cómo se siente señora?", null, 4],
+      ["You speak it madam", "Lo habla señora", null, 3],
+      ["Do you want to go madam?", "¿Quiere ir señora?", null, 5]
+    ],
+    "S0650L02": [
+      ["do you want to go", "quiere ir", null, 1],
+      ["Do you want to go madam?", "¿Quiere ir señora?", null, 2],
+      ["I think do you want to go", "Creo que quiere ir", null, 5],
+      ["Do you want to go sir?", "¿Quiere ir señor?", null, 4],
+      ["Do you want to go please?", "¿Quiere ir por favor?", null, 5],
+      ["Do you want to go with me?", "¿Quiere ir conmigo?", null, 5],
+      ["I can help you. Do you want to go?", "Puedo ayudarle. ¿Quiere ir?", null, 7],
+      ["Could you? Do you want to go madam?", "¿Podría? ¿Quiere ir señora?", null, 6],
+      ["Are you ready? Do you want to go?", "¿Está preparado? ¿Quiere ir?", null, 7],
+      ["Do you want to go madam?", "¿Quiere ir señora?", null, 5]
+    ]
+  }
+}
