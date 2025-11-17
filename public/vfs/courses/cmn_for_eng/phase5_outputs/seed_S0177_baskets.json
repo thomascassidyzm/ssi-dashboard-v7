@@ -1,0 +1,403 @@
+{
+  "S0177L01": {
+    "lego": [
+      "I'll ask her",
+      "我会问她"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I'll ask her",
+        "我会问她",
+        null,
+        1
+      ],
+      [
+        "I'll ask her tonight",
+        "我今晚会问她",
+        null,
+        2
+      ],
+      [
+        "I'll ask her when she calls",
+        "她打电话时我会问她",
+        null,
+        3
+      ],
+      [
+        "I'll ask her what she prefers",
+        "我会问她她更喜欢什么",
+        null,
+        3
+      ],
+      [
+        "I'll ask her if she's interested",
+        "我会问她她是否感兴趣",
+        null,
+        4
+      ],
+      [
+        "I'll ask her about it this afternoon",
+        "我今天下午会问她",
+        null,
+        4
+      ],
+      [
+        "I'll ask her when she gets home from school",
+        "她放学回家时我会问她",
+        null,
+        5
+      ],
+      [
+        "I'll ask her if she wants to come along",
+        "我会问她她想不想一起来",
+        null,
+        5
+      ],
+      [
+        "I'll ask her what day works best for her schedule",
+        "我会问她哪天最适合她的日程",
+        null,
+        6
+      ],
+      [
+        "I'll ask her to let me know by tomorrow morning",
+        "我会让她明天早上告诉我",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "会",
+        "will"
+      ],
+      [
+        "问",
+        "ask"
+      ],
+      [
+        "她",
+        "her"
+      ]
+    ]
+  },
+  "S0177L02": {
+    "lego": [
+      "where she wants to go",
+      "她想去哪里"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0177L01",
+        "known": "I'll ask her",
+        "target": "我会问她",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "where she wants to go",
+        "她想去哪里",
+        null,
+        1
+      ],
+      [
+        "I know where she wants to go",
+        "我知道她想去哪里",
+        null,
+        2
+      ],
+      [
+        "Do you know where she wants to go",
+        "你知道她想去哪里吗",
+        null,
+        3
+      ],
+      [
+        "I don't know where she wants to go",
+        "我不知道她想去哪里",
+        null,
+        3
+      ],
+      [
+        "We should find out where she wants to go",
+        "我们应该弄清楚她想去哪里",
+        null,
+        4
+      ],
+      [
+        "Can you ask where she wants to go first",
+        "你能先问问她想去哪里吗",
+        null,
+        4
+      ],
+      [
+        "It doesn't matter where she wants to go I think",
+        "我觉得她想去哪里都无所谓",
+        null,
+        5
+      ],
+      [
+        "Let's plan the trip based on where she wants to go",
+        "我们根据她想去哪里来计划旅行吧",
+        null,
+        5
+      ],
+      [
+        "I'm curious to know where she wants to go for her birthday",
+        "我很想知道她生日想去哪里",
+        null,
+        6
+      ],
+      [
+        "We'll decide together where she wants to go and what to do",
+        "我们会一起决定她想去哪里和做什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "想",
+        "wants"
+      ],
+      [
+        "去",
+        "go"
+      ],
+      [
+        "哪里",
+        "where"
+      ]
+    ]
+  },
+  "S0177L03": {
+    "lego": [
+      "want to go where",
+      "想去哪里"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0177L01",
+        "known": "I'll ask her",
+        "target": "我会问她",
+        "type": "M"
+      },
+      {
+        "id": "S0177L02",
+        "known": "where she wants to go",
+        "target": "她想去哪里",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "want to go where",
+        "想去哪里",
+        null,
+        1
+      ],
+      [
+        "I want to go where it's warm",
+        "我想去温暖的地方",
+        null,
+        2
+      ],
+      [
+        "Do you want to go where we went last time",
+        "你想去我们上次去的地方吗",
+        null,
+        3
+      ],
+      [
+        "I want to go where nobody knows me",
+        "我想去没人认识我的地方",
+        null,
+        3
+      ],
+      [
+        "We want to go where the food is good",
+        "我们想去食物好吃的地方",
+        null,
+        4
+      ],
+      [
+        "They want to go where it's quiet and peaceful",
+        "他们想去安静祥和的地方",
+        null,
+        4
+      ],
+      [
+        "I don't want to go where there are too many people",
+        "我不想去人太多的地方",
+        null,
+        5
+      ],
+      [
+        "She wants to go where she can practice speaking Chinese",
+        "她想去能练习说中文的地方",
+        null,
+        5
+      ],
+      [
+        "We all want to go where we can relax and have fun together",
+        "我们都想去能一起放松和玩得开心的地方",
+        null,
+        6
+      ],
+      [
+        "I want to go where you want to go it doesn't matter to me",
+        "我想去你想去的地方对我来说都可以",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "想",
+        "want"
+      ],
+      [
+        "去",
+        "go"
+      ],
+      [
+        "哪里",
+        "where"
+      ]
+    ]
+  },
+  "S0177L04": {
+    "lego": [
+      "where",
+      "哪里"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0177L01",
+        "known": "I'll ask her",
+        "target": "我会问她",
+        "type": "M"
+      },
+      {
+        "id": "S0177L02",
+        "known": "where she wants to go",
+        "target": "她想去哪里",
+        "type": "M"
+      },
+      {
+        "id": "S0177L03",
+        "known": "want to go where",
+        "target": "想去哪里",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "where",
+        "哪里",
+        null,
+        1
+      ],
+      [
+        "Where are you going",
+        "你去哪里",
+        null,
+        2
+      ],
+      [
+        "I don't know where to start",
+        "我不知道从哪里开始",
+        null,
+        3
+      ],
+      [
+        "Where did you put my keys",
+        "你把我的钥匙放哪里了",
+        null,
+        3
+      ],
+      [
+        "Where can I find a good restaurant",
+        "我在哪里能找到好餐厅",
+        null,
+        4
+      ],
+      [
+        "Tell me where you want to meet",
+        "告诉我你想在哪里见面",
+        null,
+        4
+      ],
+      [
+        "I can't remember where I left my phone",
+        "我记不起我把手机放哪里了",
+        null,
+        5
+      ],
+      [
+        "Where do you think we should go for vacation",
+        "你觉得我们应该去哪里度假",
+        null,
+        5
+      ],
+      [
+        "I need to know where you'll be this weekend please",
+        "我需要知道你这周末会在哪里",
+        null,
+        6
+      ],
+      [
+        "I'll ask her where she wants to go.",
+        "我会问她她想去哪里。",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

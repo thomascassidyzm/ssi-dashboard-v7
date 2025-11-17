@@ -1,0 +1,97 @@
+{
+  "S0165L01": {
+    "lego": ["but","但是"],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["But I don't mind","但是我不介意",null,4],
+      ["But I think it's interesting","但是我认为它很有趣",null,6],
+      ["But do you want to go?","但是你想去吗？",null,6],
+      ["But I won't be able to be there","但是我不能在那里",null,8],
+      ["But let's talk about something else","但是我们谈点别的吧",null,6],
+      ["But that isn't what I'm trying to say","但是那不是我试图说的",null,9],
+      ["But how do you say this word?","但是你怎么说这个词？",null,7],
+      ["But can you give me that book?","但是你能给我那本书吗？",null,7],
+      ["But I don't mind waiting for a few minutes","但是我不介意等几分钟",null,8],
+      ["But do you want to go to a restaurant tonight?","但是你想今晚去餐厅吗？",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 2,
+      "long_6_plus": 8
+    },
+    "_metadata": {
+      "lego_id": "S0165L01",
+      "seed_context": {
+        "known": "But I'm not sure if it's true.",
+        "target": "但是我不确定它是不是真的。"
+      }
+    }
+  },
+  "S0165L03": {
+    "lego": ["if it's true","是不是真的"],
+    "type": "M",
+    "current_seed_legos_available": [["but","但是"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["If it's true","是不是真的",null,3],
+      ["I'm not sure if it's true","我不确定是不是真的",null,6],
+      ["Do you think if it's true?","你认为是不是真的？",null,6],
+      ["I don't know if it's true","我不知道是不是真的",null,6],
+      ["But I'm not sure if it's true","但是我不确定是不是真的",null,7],
+      ["Can you tell me if it's true?","你能告诉我是不是真的吗？",null,7],
+      ["I'm trying to say if it's true","我试图说是不是真的",null,7],
+      ["I don't mind waiting to know if it's true","我不介意等着知道是不是真的",null,9],
+      ["Let's talk about if it's true tomorrow","我们明天谈谈是不是真的吧",null,7],
+      ["I won't be able to tell you if it's true next month","我不能下个月告诉你是不是真的",null,11]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 0,
+      "long_6_plus": 9
+    },
+    "_metadata": {
+      "lego_id": "S0165L03",
+      "seed_context": {
+        "known": "But I'm not sure if it's true.",
+        "target": "但是我不确定它是不是真的。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0165L04": {
+    "lego": ["if it's true","它是不是真的"],
+    "type": "M",
+    "current_seed_legos_available": [["but","但是"],["if it's true","是不是真的"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["If it's true","它是不是真的",null,3],
+      ["I'm not sure if it's true","我不确定它是不是真的",null,6],
+      ["I think if it's true","我认为它是不是真的",null,5],
+      ["Do you know if it's true?","你知道它是不是真的吗？",null,6],
+      ["I don't mind if it's true","我不介意它是不是真的",null,6],
+      ["But I'm not sure if it's true","但是我不确定它是不是真的",null,7],
+      ["Can you tell me if it's true?","你能告诉我它是不是真的吗？",null,7],
+      ["Let's talk about if it's true","我们谈谈它是不是真的吧",null,6],
+      ["I'm trying to say if it's true tomorrow morning","我试图明天早上说它是不是真的",null,9],
+      ["But I'm not sure if it's true.","但是我不确定它是不是真的。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 7
+    },
+    "_metadata": {
+      "lego_id": "S0165L04",
+      "seed_context": {
+        "known": "But I'm not sure if it's true.",
+        "target": "但是我不确定它是不是真的。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

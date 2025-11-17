@@ -1,0 +1,475 @@
+{
+  "S0182L01": {
+    "lego": [
+      "seen",
+      "看到"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I've seen",
+        "我看到",
+        null,
+        1
+      ],
+      [
+        "Have you seen",
+        "你看到过",
+        null,
+        1
+      ],
+      [
+        "I've seen her",
+        "我看到她",
+        null,
+        2
+      ],
+      [
+        "Have you seen him",
+        "你看到过他",
+        null,
+        2
+      ],
+      [
+        "I've seen my mother",
+        "我看到我妈妈",
+        null,
+        3
+      ],
+      [
+        "Have you seen that",
+        "你看到过那个吗",
+        null,
+        3
+      ],
+      [
+        "I've seen where she wants to go",
+        "我看到她想去哪里",
+        null,
+        4
+      ],
+      [
+        "Have you seen my mother",
+        "你看到过我妈妈吗",
+        null,
+        4
+      ],
+      [
+        "I've seen what you want to do",
+        "我看到你想做什么",
+        null,
+        5
+      ],
+      [
+        "Have you seen what I'm saying",
+        "你看到我在说什么吗",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0182L02": {
+    "lego": [
+      "have seen",
+      "看到过"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "seen",
+        "看到"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I have seen",
+        "我看到过",
+        null,
+        1
+      ],
+      [
+        "You have seen",
+        "你看到过",
+        null,
+        1
+      ],
+      [
+        "I have seen him",
+        "我看到过他",
+        null,
+        2
+      ],
+      [
+        "I have seen her",
+        "我看到过她",
+        null,
+        2
+      ],
+      [
+        "I have seen my mother",
+        "我看到过我妈妈",
+        null,
+        3
+      ],
+      [
+        "You have seen that",
+        "你看到过那个",
+        null,
+        3
+      ],
+      [
+        "I have seen where she wants to go",
+        "我看到过她想去哪里",
+        null,
+        4
+      ],
+      [
+        "I have seen what you want to do",
+        "我看到过你想做什么",
+        null,
+        4
+      ],
+      [
+        "I have seen although I didn't have time",
+        "我看到过虽然我没有时间",
+        null,
+        5
+      ],
+      [
+        "You have seen what I'm saying",
+        "你看到过我在说什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0182L03": {
+    "lego": [
+      "anywhere",
+      "在哪里"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "seen",
+        "看到"
+      ],
+      [
+        "have seen",
+        "看到过"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "anywhere",
+        "在哪里",
+        null,
+        1
+      ],
+      [
+        "I've seen it anywhere",
+        "我在哪里看到它",
+        null,
+        1
+      ],
+      [
+        "Have you seen anywhere",
+        "你在哪里看到过",
+        null,
+        2
+      ],
+      [
+        "Where do you want to go",
+        "你想去哪里",
+        null,
+        2
+      ],
+      [
+        "I've seen her anywhere",
+        "我在哪里看到她",
+        null,
+        3
+      ],
+      [
+        "Have you seen him anywhere",
+        "你在哪里看到过他",
+        null,
+        3
+      ],
+      [
+        "I'll ask her where she wants to go",
+        "我会问她她想去哪里",
+        null,
+        4
+      ],
+      [
+        "Have you seen that anywhere",
+        "你在哪里看到过那个",
+        null,
+        4
+      ],
+      [
+        "I'll ask him where he wants to go next year",
+        "我会问他明年他想去哪里",
+        null,
+        5
+      ],
+      [
+        "Have you seen my mother anywhere",
+        "你在哪里看到过我妈妈",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0182L04": {
+    "lego": [
+      "my keys",
+      "我的钥匙"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "seen",
+        "看到"
+      ],
+      [
+        "have seen",
+        "看到过"
+      ],
+      [
+        "anywhere",
+        "在哪里"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "my keys",
+        "我的钥匙",
+        null,
+        1
+      ],
+      [
+        "I have my keys",
+        "我有我的钥匙",
+        null,
+        1
+      ],
+      [
+        "Have you seen my keys",
+        "你看到过我的钥匙",
+        null,
+        2
+      ],
+      [
+        "I can't find my keys",
+        "我找不到我的钥匙",
+        null,
+        2
+      ],
+      [
+        "I have to take my keys",
+        "我必须带我的钥匙",
+        null,
+        3
+      ],
+      [
+        "Where are my keys",
+        "我的钥匙在哪里",
+        null,
+        3
+      ],
+      [
+        "I have to find my keys",
+        "我必须找到我的钥匙",
+        null,
+        4
+      ],
+      [
+        "Have you seen my keys anywhere",
+        "你在哪里看到过我的钥匙",
+        null,
+        4
+      ],
+      [
+        "I'll ask her where my keys are",
+        "我会问她我的钥匙在哪里",
+        null,
+        5
+      ],
+      [
+        "Can you help me look for my keys",
+        "你能帮我找我的钥匙吗",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0182L05": {
+    "lego": [
+      "have you seen",
+      "你看到过"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "seen",
+        "看到"
+      ],
+      [
+        "have seen",
+        "看到过"
+      ],
+      [
+        "anywhere",
+        "在哪里"
+      ],
+      [
+        "my keys",
+        "我的钥匙"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "have you seen",
+        "你看到过",
+        null,
+        1
+      ],
+      [
+        "have you seen him",
+        "你看到过他",
+        null,
+        1
+      ],
+      [
+        "have you seen her",
+        "你看到过她",
+        null,
+        2
+      ],
+      [
+        "have you seen my keys",
+        "你看到过我的钥匙",
+        null,
+        2
+      ],
+      [
+        "have you seen my mother",
+        "你看到过我妈妈",
+        null,
+        3
+      ],
+      [
+        "have you seen that anywhere",
+        "你在哪里看到过那个",
+        null,
+        3
+      ],
+      [
+        "have you seen what I'm saying",
+        "你看到过我在说什么",
+        null,
+        4
+      ],
+      [
+        "have you seen my keys anywhere",
+        "你在哪里看到过我的钥匙",
+        null,
+        4
+      ],
+      [
+        "have you seen where she wants to go",
+        "你看到过她想去哪里",
+        null,
+        5
+      ],
+      [
+        "Have you seen my keys anywhere?",
+        "你在哪里看到过我的钥匙吗？",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

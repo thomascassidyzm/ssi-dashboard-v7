@@ -1,0 +1,97 @@
+{
+  "S0172L01": {
+    "lego": ["Yes","是的"],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Yes, it's very interesting.","是的，它很有趣。",null,4],
+      ["Yes, thank you.","是的，谢谢。",null,2],
+      ["Yes, I think that it's true.","是的，我认为它是真的。",null,6],
+      ["Yes, but I'm not sure.","是的，但是我不确定。",null,5],
+      ["Yes, what do you need?","是的，你需要什么？",null,5],
+      ["Yes, I'll be able to help.","是的，我就能帮忙。",null,6],
+      ["Yes, I can help you tomorrow afternoon.","是的，我明天下午能帮你。",null,6],
+      ["Yes, I want you to tell me.","是的，我想让你告诉我。",null,7],
+      ["Yes, do you want me to help you look for it?","是的，你想让我帮你找它吗？",null,11],
+      ["Yes, I'd like you to help.","是的，我想让你帮忙。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0172L01",
+      "seed_context": {
+        "known": "Yes that would be very helpful.",
+        "target": "是的，那会很有帮助。"
+      }
+    }
+  },
+  "S0172L02": {
+    "lego": ["that would be very helpful","那会很有帮助"],
+    "type": "M",
+    "current_seed_legos_available": [["Yes","是的"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["That would be very helpful.","那会很有帮助。",null,1],
+      ["I think that would be very helpful.","我认为那会很有帮助。",null,2],
+      ["Yes, that would be very helpful.","是的，那会很有帮助。",null,2],
+      ["But that would be very helpful.","但是那会很有帮助。",null,2],
+      ["I think that would be very helpful tomorrow afternoon.","我认为那明天下午会很有帮助。",null,3],
+      ["That would be very helpful, thank you.","那会很有帮助，谢谢。",null,2],
+      ["I'm not sure, but that would be very helpful.","我不确定，但是那会很有帮助。",null,4],
+      ["Do you want me to help? Yes, that would be very helpful.","你想让我帮忙吗？是的，那会很有帮助。",null,6],
+      ["I'd like you to tell me if that would be very helpful.","我想让你告诉我那是不是会很有帮助。",null,5],
+      ["What do you think? I think that would be very helpful.","你怎么想？我认为那会很有帮助。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0172L02",
+      "seed_context": {
+        "known": "Yes that would be very helpful.",
+        "target": "是的，那会很有帮助。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0172L03": {
+    "lego": ["very helpful","很有帮助"],
+    "type": "M",
+    "current_seed_legos_available": [["Yes","是的"],["that would be very helpful","那会很有帮助"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["It's very helpful.","它很有帮助。",null,2],
+      ["That's very helpful, thank you.","那很有帮助，谢谢。",null,2],
+      ["I think it's very helpful.","我认为它很有帮助。",null,3],
+      ["An interesting book is very helpful.","一本有趣的书很有帮助。",null,3],
+      ["I think that book is very helpful.","我认为那本书很有帮助。",null,4],
+      ["What do you need? That would be very helpful.","你需要什么？那会很有帮助。",null,5],
+      ["Yes, I'll be able to help. That's very helpful.","是的，我就能帮忙。那很有帮助。",null,7],
+      ["I'd like you to tell me if it's very helpful.","我想让你告诉我它是不是很有帮助。",null,7],
+      ["Do you want me to help you? Yes, that would be very helpful.","你想让我帮你吗？是的，那会很有帮助。",null,10],
+      ["Yes, that would be very helpful.","是的，那会很有帮助。",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0172L03",
+      "seed_context": {
+        "known": "Yes that would be very helpful.",
+        "target": "是的，那会很有帮助。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

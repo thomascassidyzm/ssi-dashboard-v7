@@ -1,0 +1,409 @@
+{
+  "S0175L01": {
+    "lego": [
+      "What do you want to do",
+      "你想做什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "What do you want to do",
+        "你想做什么",
+        null,
+        1
+      ],
+      [
+        "What do you want to do today",
+        "你今天想做什么",
+        null,
+        2
+      ],
+      [
+        "What do you want to do now",
+        "你现在想做什么",
+        null,
+        3
+      ],
+      [
+        "What do you want to do tomorrow",
+        "你明天想做什么",
+        null,
+        3
+      ],
+      [
+        "What do you want to do after that",
+        "你之后想做什么",
+        null,
+        4
+      ],
+      [
+        "What do you want to do this evening",
+        "你今晚想做什么",
+        null,
+        4
+      ],
+      [
+        "What do you want to do at the weekend",
+        "你周末想做什么",
+        null,
+        5
+      ],
+      [
+        "What do you want to do with your friends",
+        "你想和你的朋友做什么",
+        null,
+        5
+      ],
+      [
+        "What do you want to do when you get home",
+        "你回家后想做什么",
+        null,
+        6
+      ],
+      [
+        "What do you want to do",
+        "你想做什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "想",
+        "want"
+      ],
+      [
+        "做",
+        "do"
+      ],
+      [
+        "什么",
+        "what"
+      ]
+    ]
+  },
+  "S0175L02": {
+    "lego": [
+      "want to do what",
+      "想做什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0175L01",
+        "known": "What do you want to do",
+        "target": "你想做什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "want to do what",
+        "想做什么",
+        null,
+        1
+      ],
+      [
+        "I want to do what you want",
+        "我想做你想做的",
+        null,
+        2
+      ],
+      [
+        "She doesn't want to do what I want",
+        "她不想做我想做的",
+        null,
+        3
+      ],
+      [
+        "I want to do what he suggested",
+        "我想做他建议的",
+        null,
+        3
+      ],
+      [
+        "We want to do what feels right",
+        "我们想做感觉对的事",
+        null,
+        4
+      ],
+      [
+        "They want to do what we discussed",
+        "他们想做我们讨论的",
+        null,
+        4
+      ],
+      [
+        "Do you want to do what I'm doing now",
+        "你想做我现在在做的吗",
+        null,
+        5
+      ],
+      [
+        "I want to do what makes everyone happy",
+        "我想做让大家开心的事",
+        null,
+        5
+      ],
+      [
+        "She wants to do what he wants to do too",
+        "她也想做他想做的",
+        null,
+        6
+      ],
+      [
+        "I don't want to do what you want to do",
+        "我不想做你想做的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "想",
+        "want"
+      ],
+      [
+        "做",
+        "do"
+      ],
+      [
+        "什么",
+        "what"
+      ]
+    ]
+  },
+  "S0175L03": {
+    "lego": [
+      "on Sunday morning",
+      "在星期天早上"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0175L01",
+        "known": "What do you want to do",
+        "target": "你想做什么",
+        "type": "M"
+      },
+      {
+        "id": "S0175L02",
+        "known": "want to do what",
+        "target": "想做什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "on Sunday morning",
+        "在星期天早上",
+        null,
+        1
+      ],
+      [
+        "I'll call you on Sunday morning",
+        "我星期天早上给你打电话",
+        null,
+        2
+      ],
+      [
+        "We can meet on Sunday morning",
+        "我们可以星期天早上见面",
+        null,
+        3
+      ],
+      [
+        "Let's talk on Sunday morning instead",
+        "我们星期天早上再谈吧",
+        null,
+        3
+      ],
+      [
+        "I have to work on Sunday morning",
+        "我星期天早上要工作",
+        null,
+        4
+      ],
+      [
+        "She's coming over on Sunday morning",
+        "她星期天早上会过来",
+        null,
+        4
+      ],
+      [
+        "Can we do it on Sunday morning or afternoon",
+        "我们可以星期天早上或下午做吗",
+        null,
+        5
+      ],
+      [
+        "I'm not available on Sunday morning this week",
+        "我这周星期天早上没空",
+        null,
+        5
+      ],
+      [
+        "Let's plan something fun on Sunday morning together",
+        "我们一起计划星期天早上做点有趣的事",
+        null,
+        6
+      ],
+      [
+        "I prefer to relax at home on Sunday morning",
+        "我更喜欢星期天早上在家放松",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "在",
+        "on"
+      ],
+      [
+        "星期天",
+        "Sunday"
+      ],
+      [
+        "早上",
+        "morning"
+      ]
+    ]
+  },
+  "S0175L04": {
+    "lego": [
+      "Sunday morning",
+      "星期天早上"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0175L01",
+        "known": "What do you want to do",
+        "target": "你想做什么",
+        "type": "M"
+      },
+      {
+        "id": "S0175L02",
+        "known": "want to do what",
+        "target": "想做什么",
+        "type": "M"
+      },
+      {
+        "id": "S0175L03",
+        "known": "on Sunday morning",
+        "target": "在星期天早上",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Sunday morning",
+        "星期天早上",
+        null,
+        1
+      ],
+      [
+        "Every Sunday morning I exercise",
+        "每个星期天早上我锻炼",
+        null,
+        2
+      ],
+      [
+        "Sunday morning is my favorite time",
+        "星期天早上是我最喜欢的时候",
+        null,
+        3
+      ],
+      [
+        "I love sleeping in on Sunday morning",
+        "我喜欢星期天早上睡懒觉",
+        null,
+        3
+      ],
+      [
+        "Sunday morning coffee is the best",
+        "星期天早上的咖啡最好喝",
+        null,
+        4
+      ],
+      [
+        "What are you doing this Sunday morning",
+        "你这个星期天早上做什么",
+        null,
+        4
+      ],
+      [
+        "I usually go to the market on Sunday morning",
+        "我通常星期天早上去市场",
+        null,
+        5
+      ],
+      [
+        "We always have breakfast together on Sunday morning",
+        "我们总是星期天早上一起吃早餐",
+        null,
+        5
+      ],
+      [
+        "Sunday morning is when I catch up with friends",
+        "星期天早上是我和朋友聚会的时候",
+        null,
+        6
+      ],
+      [
+        "What do you want to do on Sunday morning?",
+        "你想在星期天早上做什么？",
+        null,
+        9
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "星期天",
+        "Sunday"
+      ],
+      [
+        "早上",
+        "morning"
+      ]
+    ]
+  }
+}

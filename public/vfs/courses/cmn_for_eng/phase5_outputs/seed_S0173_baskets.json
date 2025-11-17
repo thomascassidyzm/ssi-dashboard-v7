@@ -1,0 +1,129 @@
+{
+  "S0173L01": {
+    "lego": ["No need","不用了"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["No need.","不用了。",null,1],
+      ["No need, thank you.","不用了，谢谢。",null,2],
+      ["No need, I'll be able to help.","不用了，我就能帮忙。",null,4],
+      ["No need to help me.","不用帮我了。",null,3],
+      ["No need, but that's very helpful.","不用了，但是那很有帮助。",null,4],
+      ["No need, I can do it tomorrow afternoon.","不用了，我明天下午能做。",null,5],
+      ["No need, I think I'll be able to do it.","不用了，我认为我就能做了。",null,8],
+      ["Do you want me to help? No need.","你想让我帮忙吗？不用了。",null,6],
+      ["I'd like you to tell me what you need. No need.","我想让你告诉我你需要什么。不用了。",null,8],
+      ["No need, I'm not sure if it's very helpful.","不用了，我不确定它是不是很有帮助。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0173L01",
+      "seed_context": {
+        "known": "No thank you I can manage on my own.",
+        "target": "不用了，谢谢，我可以自己应付。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0173L02": {
+    "lego": ["thank you","谢谢"],
+    "type": "A",
+    "current_seed_legos_available": [["No need","不用了"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Thank you.","谢谢。",null,1],
+      ["Yes, thank you.","是的，谢谢。",null,2],
+      ["No need, thank you.","不用了，谢谢。",null,2],
+      ["Thank you, that's very helpful.","谢谢，那很有帮助。",null,3],
+      ["I'll be able to help. Thank you.","我就能帮忙。谢谢。",null,4],
+      ["Thank you, but I'm not sure.","谢谢，但是我不确定。",null,4],
+      ["Thank you, I think it's very interesting.","谢谢，我认为它很有趣。",null,5],
+      ["Do you want me to help? Yes, thank you.","你想让我帮忙吗？是的，谢谢。",null,7],
+      ["I'd like you to tell me. Thank you, that would be very helpful.","我想让你告诉我。谢谢，那会很有帮助。",null,9],
+      ["Thank you, I'll be able to come and help tomorrow afternoon.","谢谢，我明天下午就能来帮忙了。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0173L02",
+      "seed_context": {
+        "known": "No thank you I can manage on my own.",
+        "target": "不用了，谢谢，我可以自己应付。"
+      }
+    }
+  },
+  "S0173L03": {
+    "lego": ["I can manage on my own","我可以自己应付"],
+    "type": "M",
+    "current_seed_legos_available": [["No need","不用了"],["thank you","谢谢"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I can manage on my own.","我可以自己应付。",null,1],
+      ["Thank you, I can manage on my own.","谢谢，我可以自己应付。",null,2],
+      ["No need, I can manage on my own.","不用了，我可以自己应付。",null,2],
+      ["I think I can manage on my own.","我认为我可以自己应付。",null,3],
+      ["Yes, I can manage on my own, thank you.","是的，我可以自己应付，谢谢。",null,3],
+      ["I can manage on my own tomorrow afternoon.","我明天下午可以自己应付。",null,3],
+      ["But I'm not sure if I can manage on my own.","但是我不确定我是不是可以自己应付。",null,6],
+      ["Do you want me to help? No need, I can manage on my own.","你想让我帮忙吗？不用了，我可以自己应付。",null,8],
+      ["I'd like you to tell me if I can manage on my own.","我想让你告诉我我是不是可以自己应付。",null,8],
+      ["No need, thank you, I can manage on my own.","不用了，谢谢，我可以自己应付。",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0173L03",
+      "seed_context": {
+        "known": "No thank you I can manage on my own.",
+        "target": "不用了，谢谢，我可以自己应付。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0173L04": {
+    "lego": ["manage on my own","自己应付"],
+    "type": "M",
+    "current_seed_legos_available": [["No need","不用了"],["thank you","谢谢"],["I can manage on my own","我可以自己应付"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I can manage on my own.","我可以自己应付。",null,2],
+      ["Can you manage on my own?","你能自己应付吗？",null,2],
+      ["I think I can manage on my own.","我认为我可以自己应付。",null,4],
+      ["I'm not sure if I can manage on my own.","我不确定我是不是可以自己应付。",null,5],
+      ["Do you want me to help you? I can manage on my own.","你想让我帮你吗？我可以自己应付。",null,8],
+      ["Thank you, but I can manage on my own.","谢谢，但是我可以自己应付。",null,4],
+      ["I'll be able to manage on my own tomorrow afternoon.","我明天下午就能自己应付了。",null,6],
+      ["I'd like you to tell me if I can manage on my own.","我想让你告诉我我是不是可以自己应付。",null,9],
+      ["Yes, I think I can manage on my own, but that would be very helpful.","是的，我认为我可以自己应付，但是那会很有帮助。",null,11],
+      ["No thank you I can manage on my own.","不用了，谢谢，我可以自己应付。",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0173L04",
+      "seed_context": {
+        "known": "No thank you I can manage on my own.",
+        "target": "不用了，谢谢，我可以自己应付。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

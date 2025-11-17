@@ -1,0 +1,162 @@
+{
+  "S0180L01": {
+    "lego": ["I'd like to read","我想读"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'd like to read.","我想读。",null,1],
+      ["I'd like to read it.","我想读它。",null,1],
+      ["I'd like to read later.","我想晚点读。",null,1],
+      ["I'd like to read what you need.","我想读你需要什么。",null,3],
+      ["I'd like to read next year.","我想明年读。",null,2],
+      ["I'd like to read when I have time.","我想我有时间的时候读。",null,4],
+      ["I'd like to read, although I don't have time now.","我想读，虽然我现在没有时间。",null,5],
+      ["I'd like to read what you're going to do.","我想读你打算做什么。",null,5],
+      ["I'd like to read if you'll be able to help me understand.","如果你能帮我理解，我想读。",null,6],
+      ["I'd like to read, but I need to help you first.","我想读，但我需要先帮你。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0180L01",
+      "seed_context": {
+        "known": "I'd like to read my book for a while.",
+        "target": "我想读一会儿我的书。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0180L02": {
+    "lego": ["read my book for a while","读一会儿我的书"],
+    "type": "M",
+    "current_seed_legos_available": [["I'd like to read","我想读"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'd like to read my book for a while.","我想读一会儿我的书。",null,2],
+      ["Read my book for a while.","读一会儿我的书。",null,1],
+      ["I want to read my book for a while.","我想读一会儿我的书。",null,2],
+      ["Can I read my book for a while?","我可以读一会儿我的书吗？",null,3],
+      ["I'll read my book for a while.","我会读一会儿我的书。",null,3],
+      ["I need to read my book for a while.","我需要读一会儿我的书。",null,4],
+      ["I'd like to read my book for a while before I help.","我想在帮忙之前读一会儿我的书。",null,5],
+      ["I want you to let me read my book for a while.","我想让你让我读一会儿我的书。",null,5],
+      ["Can you understand that I want to read my book for a while?","你能理解我想读一会儿我的书吗？",null,6],
+      ["I'd like to read my book for a while, although I know you need help.","我想读一会儿我的书，虽然我知道你需要帮助。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0180L02",
+      "seed_context": {
+        "known": "I'd like to read my book for a while.",
+        "target": "我想读一会儿我的书。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0180L03": {
+    "lego": ["read for a while","读一会儿"],
+    "type": "M",
+    "current_seed_legos_available": [["I'd like to read","我想读"],["read my book for a while","读一会儿我的书"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'd like to read for a while.","我想读一会儿。",null,2],
+      ["Read for a while.","读一会儿。",null,1],
+      ["I want to read for a while.","我想读一会儿。",null,2],
+      ["Can I read for a while?","我可以读一会儿吗？",null,3],
+      ["I need to read for a while.","我需要读一会儿。",null,3],
+      ["I'll be able to read for a while.","我就能读一会儿。",null,4],
+      ["I'd like to read for a while before I see you.","我想在见你之前读一会儿。",null,5],
+      ["I want you to let me read for a while first.","我想让你先让我读一会儿。",null,5],
+      ["Can you help me later? I want to read for a while now.","你能晚点帮我吗？我现在想读一会儿。",null,6],
+      ["I didn't have time to read for a while, although I wanted to.","我没有时间读一会儿，虽然我想。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0180L03",
+      "seed_context": {
+        "known": "I'd like to read my book for a while.",
+        "target": "我想读一会儿我的书。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0180L04": {
+    "lego": ["for a while","一会儿"],
+    "type": "M",
+    "current_seed_legos_available": [["I'd like to read","我想读"],["read my book for a while","读一会儿我的书"],["read for a while","读一会儿"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["For a while.","一会儿。",null,1],
+      ["I'll come for a while.","我会来一会儿。",null,1],
+      ["I'd like to read for a while.","我想读一会儿。",null,3],
+      ["I need to go for a while.","我需要走一会儿。",null,2],
+      ["Can I help you for a while?","我可以帮你一会儿吗？",null,3],
+      ["I'll be able to help for a while.","我就能帮一会儿。",null,4],
+      ["I want to see you for a while before I go.","我想在我走之前见你一会儿。",null,5],
+      ["I'd like you to wait for a while.","我想让你等一会儿。",null,4],
+      ["Can you understand what I'm saying? I need time for a while.","你能理解我在说什么吗？我需要时间一会儿。",null,6],
+      ["I'll ask her to come and help for a while.","我会问她来帮一会儿。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0180L04",
+      "seed_context": {
+        "known": "I'd like to read my book for a while.",
+        "target": "我想读一会儿我的书。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0180L05": {
+    "lego": ["my book","我的书"],
+    "type": "M",
+    "current_seed_legos_available": [["I'd like to read","我想读"],["read my book for a while","读一会儿我的书"],["read for a while","读一会儿"],["for a while","一会儿"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["My book.","我的书。",null,1],
+      ["I'd like to read my book.","我想读我的书。",null,2],
+      ["I need my book.","我需要我的书。",null,1],
+      ["Can you help me look for my book?","你能帮我找我的书吗？",null,3],
+      ["I want you to tell me where my book is.","我想让你告诉我我的书在哪里。",null,4],
+      ["I'll ask her where my book is.","我会问她我的书在哪里。",null,4],
+      ["I didn't have time to read my book, although I wanted to.","我没有时间读我的书，虽然我想。",null,6],
+      ["Can you understand what I need? I need my book.","你能理解我需要什么吗？我需要我的书。",null,5],
+      ["I'll be able to help you after I read my book for a while.","我读一会儿我的书之后就能帮你。",null,7],
+      ["I'd like to read my book for a while.","我想读一会儿我的书。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0180L05",
+      "seed_context": {
+        "known": "I'd like to read my book for a while.",
+        "target": "我想读一会儿我的书。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

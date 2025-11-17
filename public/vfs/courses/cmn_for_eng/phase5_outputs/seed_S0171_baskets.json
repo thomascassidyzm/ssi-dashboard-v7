@@ -1,0 +1,337 @@
+{
+  "legos": {
+    "S0171L01": {
+      "lego": [
+        "Do you want me to help you",
+        "你想让我帮你"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Do you want me to help you",
+          "你想让我帮你",
+          null,
+          1
+        ],
+        [
+          "Do you want me to help you tomorrow?",
+          "你想让我明天帮你吗？",
+          null,
+          2
+        ],
+        [
+          "you want me to help you",
+          "你想让我帮你",
+          null,
+          1
+        ],
+        [
+          "Do you want me to help you do that?",
+          "你想让我帮你做那个吗？",
+          null,
+          3
+        ],
+        [
+          "you want me to help you tomorrow",
+          "你想让我明天帮你",
+          null,
+          2
+        ],
+        [
+          "Do you want me to help you tomorrow afternoon?",
+          "你想让我明天下午帮你吗？",
+          null,
+          4
+        ],
+        [
+          "Do you want me to help you on Sunday morning?",
+          "你想让我星期天早上帮你吗？",
+          null,
+          5
+        ],
+        [
+          "you want me to help you do that tomorrow",
+          "你想让我明天帮你做那个",
+          null,
+          4
+        ],
+        [
+          "Do you want me to help you do that tomorrow afternoon?",
+          "你想让我明天下午帮你做那个吗？",
+          null,
+          6
+        ],
+        [
+          "But do you want me to help you tomorrow?",
+          "但是你想让我明天帮你吗？",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0171L01",
+        "seed_context": {
+          "known": "Do you want me to help you look for it?",
+          "target": "你想让我帮你找它吗？"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "想",
+          "want"
+        ],
+        [
+          "让",
+          "to let/make"
+        ],
+        [
+          "我",
+          "me"
+        ],
+        [
+          "帮",
+          "help"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    },
+    "S0171L02": {
+      "lego": [
+        "help you look for it",
+        "帮你找它"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0171L01",
+          "known": "Do you want me to help you",
+          "target": "你想让我帮你",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "help you look for it",
+          "帮你找它",
+          null,
+          1
+        ],
+        [
+          "I can help you look for it",
+          "我能帮你找它",
+          null,
+          2
+        ],
+        [
+          "help you look for it tomorrow",
+          "明天帮你找它",
+          null,
+          2
+        ],
+        [
+          "I'll help you look for it",
+          "我帮你找它",
+          null,
+          2
+        ],
+        [
+          "I can help you look for it tomorrow",
+          "我明天能帮你找它",
+          null,
+          3
+        ],
+        [
+          "help you look for it tomorrow afternoon",
+          "明天下午帮你找它",
+          null,
+          3
+        ],
+        [
+          "Do you want me to help you look for it?",
+          "你想让我帮你找它吗？",
+          null,
+          4
+        ],
+        [
+          "I can help you look for it tomorrow afternoon",
+          "我明天下午能帮你找它",
+          null,
+          4
+        ],
+        [
+          "Do you want me to help you look for it tomorrow?",
+          "你想让我明天帮你找它吗？",
+          null,
+          5
+        ],
+        [
+          "But do you want me to help you look for it?",
+          "但是你想让我帮你找它吗？",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0171L02",
+        "seed_context": {
+          "known": "Do you want me to help you look for it?",
+          "target": "你想让我帮你找它吗？"
+        }
+      },
+      "components": [
+        [
+          "帮",
+          "help"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "找",
+          "look for"
+        ],
+        [
+          "它",
+          "it"
+        ]
+      ]
+    },
+    "S0171L03": {
+      "lego": [
+        "look for it?",
+        "找它吗"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0171L01",
+          "known": "Do you want me to help you",
+          "target": "你想让我帮你",
+          "type": "M"
+        },
+        {
+          "id": "S0171L02",
+          "known": "help you look for it",
+          "target": "帮你找它",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "look for it",
+          "找它",
+          null,
+          1
+        ],
+        [
+          "Can you look for it?",
+          "你能找它吗？",
+          null,
+          2
+        ],
+        [
+          "look for it tomorrow",
+          "明天找它",
+          null,
+          2
+        ],
+        [
+          "Do you want to look for it?",
+          "你想找它吗？",
+          null,
+          2
+        ],
+        [
+          "help you look for it",
+          "帮你找它",
+          null,
+          2
+        ],
+        [
+          "Can you look for it tomorrow?",
+          "你明天能找它吗？",
+          null,
+          3
+        ],
+        [
+          "Do you want me to help you look for it?",
+          "你想让我帮你找它吗？",
+          null,
+          4
+        ],
+        [
+          "Can you help me look for it tomorrow?",
+          "你明天能帮我找它吗？",
+          null,
+          4
+        ],
+        [
+          "I can help you look for it tomorrow afternoon",
+          "我明天下午能帮你找它",
+          null,
+          5
+        ],
+        [
+          "Do you want me to help you look for it?",
+          "你想让我帮你找它吗？",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0171L03",
+        "seed_context": {
+          "known": "Do you want me to help you look for it?",
+          "target": "你想让我帮你找它吗？"
+        }
+      },
+      "components": [
+        [
+          "找",
+          "look for"
+        ],
+        [
+          "它",
+          "it"
+        ],
+        [
+          "吗",
+          "?"
+        ]
+      ]
+    }
+  }
+}

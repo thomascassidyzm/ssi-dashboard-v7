@@ -1,0 +1,288 @@
+{
+  "S0192L01": {
+    "lego": [
+      "I",
+      "我"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I ask.",
+        "我问。",
+        null,
+        1
+      ],
+      [
+        "I mind.",
+        "我介意。",
+        null,
+        1
+      ],
+      [
+        "I think them.",
+        "我想它们。",
+        null,
+        2
+      ],
+      [
+        "I have seen.",
+        "我看到过。",
+        null,
+        2
+      ],
+      [
+        "I'm happy so far.",
+        "到目前为止我很高兴。",
+        null,
+        3
+      ],
+      [
+        "I don't need them.",
+        "我不需要它们。",
+        null,
+        3
+      ],
+      [
+        "I saw them in the office.",
+        "我在办公室看到它们。",
+        null,
+        4
+      ],
+      [
+        "I'm afraid I have to ask.",
+        "恐怕我必须问。",
+        null,
+        4
+      ],
+      [
+        "I think that's a good idea so far.",
+        "我想到目前为止那是个好主意。",
+        null,
+        5
+      ],
+      [
+        "I don't mind at all but I ask you some questions.",
+        "我一点也不介意但是我问你一些问题。",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0192L01",
+      "seed_context": {
+        "known": "I'm busy tomorrow night.",
+        "target": "我明天晚上很忙。"
+      }
+    }
+  },
+  "S0192L02": {
+    "lego": [
+      "tomorrow night",
+      "明天晚上"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I",
+        "我"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Tomorrow night.",
+        "明天晚上。",
+        null,
+        1
+      ],
+      [
+        "I think tomorrow night.",
+        "我想明天晚上。",
+        null,
+        2
+      ],
+      [
+        "I ask tomorrow night.",
+        "我明天晚上问。",
+        null,
+        2
+      ],
+      [
+        "I saw them tomorrow night.",
+        "我明天晚上看到它们。",
+        null,
+        3
+      ],
+      [
+        "I don't mind tomorrow night.",
+        "我明天晚上不介意。",
+        null,
+        3
+      ],
+      [
+        "That's a good idea tomorrow night.",
+        "那明天晚上是个好主意。",
+        null,
+        4
+      ],
+      [
+        "I have to ask you tomorrow night.",
+        "我明天晚上必须问你。",
+        null,
+        4
+      ],
+      [
+        "I'm afraid I ask you some questions tomorrow night.",
+        "恐怕我明天晚上问你一些问题。",
+        null,
+        6
+      ],
+      [
+        "I think I saw them at work tomorrow night.",
+        "我想我明天晚上在工作的地方看到它们。",
+        null,
+        6
+      ],
+      [
+        "I don't need to talk about them tomorrow night.",
+        "我明天晚上不需要谈它们。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0192L02",
+      "seed_context": {
+        "known": "I'm busy tomorrow night.",
+        "target": "我明天晚上很忙。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0192L03": {
+    "lego": [
+      "busy",
+      "很忙"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I",
+        "我"
+      ],
+      [
+        "tomorrow night",
+        "明天晚上"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "I'm busy.",
+        "我很忙。",
+        null,
+        1
+      ],
+      [
+        "I'm busy tomorrow night.",
+        "我明天晚上很忙。",
+        null,
+        2
+      ],
+      [
+        "I think I'm busy.",
+        "我想我很忙。",
+        null,
+        2
+      ],
+      [
+        "I'm busy at work.",
+        "我在工作的地方很忙。",
+        null,
+        3
+      ],
+      [
+        "I'm busy so far.",
+        "到目前为止我很忙。",
+        null,
+        3
+      ],
+      [
+        "I'm afraid I'm busy tomorrow night.",
+        "恐怕我明天晚上很忙。",
+        null,
+        4
+      ],
+      [
+        "So I'm busy a while ago.",
+        "所以我刚才很忙。",
+        null,
+        4
+      ],
+      [
+        "I think I'm busy at work tomorrow night.",
+        "我想我明天晚上在工作的地方很忙。",
+        null,
+        5
+      ],
+      [
+        "I'm happy so far but I'm busy tomorrow night.",
+        "到目前为止我很高兴但是我明天晚上很忙。",
+        null,
+        7
+      ],
+      [
+        "I'm busy tomorrow night.",
+        "我明天晚上很忙。",
+        null,
+        2
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0192L03",
+      "seed_context": {
+        "known": "I'm busy tomorrow night.",
+        "target": "我明天晚上很忙。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

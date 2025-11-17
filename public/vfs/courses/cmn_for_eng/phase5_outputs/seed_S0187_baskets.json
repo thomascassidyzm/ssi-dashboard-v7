@@ -1,0 +1,195 @@
+{
+  "legos": {
+    "S0187L03": {
+      "lego": [
+        "I'm happy",
+        "我很高兴"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "happy",
+          "高兴",
+          null,
+          1
+        ],
+        [
+          "I'm happy",
+          "我很高兴",
+          null,
+          1
+        ],
+        [
+          "I think I'm happy",
+          "我想我很高兴",
+          null,
+          3
+        ],
+        [
+          "She thinks I'm happy",
+          "她想我很高兴",
+          null,
+          3
+        ],
+        [
+          "She saw them and I'm happy",
+          "她看到它们我很高兴",
+          null,
+          4
+        ],
+        [
+          "I have to see her, I'm happy",
+          "我必须见她我很高兴",
+          null,
+          4
+        ],
+        [
+          "I saw them in the office, I'm happy",
+          "我在办公室看到它们我很高兴",
+          null,
+          5
+        ],
+        [
+          "I think I saw her at work and I'm happy",
+          "我想我在工作的地方看到她我很高兴",
+          null,
+          7
+        ],
+        [
+          "I'm afraid she didn't have time but I'm happy",
+          "恐怕她没有时间但我很高兴",
+          null,
+          5
+        ],
+        [
+          "I think she saw them in the office and I'm happy",
+          "我想她在办公室看到它们我很高兴",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "很",
+          "very"
+        ],
+        [
+          "高兴",
+          "happy"
+        ]
+      ]
+    },
+    "S0187L04": {
+      "lego": [
+        "so far",
+        "到目前为止"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0187L03",
+          "known": "I'm happy",
+          "target": "我很高兴",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "so far",
+          "到目前为止",
+          null,
+          1
+        ],
+        [
+          "I think so far",
+          "我想到目前为止",
+          null,
+          2
+        ],
+        [
+          "so far she's happy",
+          "到目前为止她很高兴",
+          null,
+          3
+        ],
+        [
+          "so far I saw her",
+          "到目前为止我看到她",
+          null,
+          3
+        ],
+        [
+          "so far she saw them",
+          "到目前为止她看到它们",
+          null,
+          4
+        ],
+        [
+          "so far I didn't have time to see her",
+          "到目前为止我没有时间见她",
+          null,
+          4
+        ],
+        [
+          "so far I think I saw her at work",
+          "到目前为止我想我在工作的地方看到她",
+          null,
+          6
+        ],
+        [
+          "so far I saw them in the office",
+          "到目前为止我在办公室看到它们",
+          null,
+          5
+        ],
+        [
+          "so far I'm afraid she didn't have time to see them",
+          "到目前为止恐怕她没有时间见它们",
+          null,
+          6
+        ],
+        [
+          "I'm happy so far",
+          "到目前为止我很高兴",
+          null,
+          2
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "到",
+          "to/until"
+        ],
+        [
+          "目前",
+          "present"
+        ],
+        [
+          "为止",
+          "up to"
+        ]
+      ]
+    }
+  }
+}

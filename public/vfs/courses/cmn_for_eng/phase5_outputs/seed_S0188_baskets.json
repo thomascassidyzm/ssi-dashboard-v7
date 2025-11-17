@@ -1,0 +1,379 @@
+{
+  "legos": {
+    "S0188L01": {
+      "lego": [
+        "so",
+        "所以"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "so",
+          "所以",
+          null,
+          1
+        ],
+        [
+          "so I think",
+          "所以我想",
+          null,
+          2
+        ],
+        [
+          "so I'm happy",
+          "所以我很高兴",
+          null,
+          2
+        ],
+        [
+          "so I have to see her",
+          "所以我必须见她",
+          null,
+          4
+        ],
+        [
+          "so I didn't have time",
+          "所以我没有时间",
+          null,
+          3
+        ],
+        [
+          "so she saw them",
+          "所以她看到它们",
+          null,
+          3
+        ],
+        [
+          "so I saw her in the office",
+          "所以我在办公室看到她",
+          null,
+          5
+        ],
+        [
+          "so I think I saw them at work",
+          "所以我想我在工作的地方看到它们",
+          null,
+          6
+        ],
+        [
+          "so I'm afraid she didn't have time",
+          "所以恐怕她没有时间",
+          null,
+          5
+        ],
+        [
+          "so I'm happy so far",
+          "所以我到目前为止很高兴",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0188L02": {
+      "lego": [
+        "need",
+        "需要"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0188L01",
+          "known": "so",
+          "target": "所以",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "need",
+          "需要",
+          null,
+          1
+        ],
+        [
+          "I need",
+          "我需要",
+          null,
+          1
+        ],
+        [
+          "she needs to see",
+          "她需要见",
+          null,
+          3
+        ],
+        [
+          "I think I need",
+          "我想我需要",
+          null,
+          3
+        ],
+        [
+          "so I need to see her",
+          "所以我需要见她",
+          null,
+          4
+        ],
+        [
+          "I need to see them at work",
+          "我需要在工作的地方见它们",
+          null,
+          5
+        ],
+        [
+          "I think she needs to see them",
+          "我想她需要见它们",
+          null,
+          5
+        ],
+        [
+          "so I need to see her in the office",
+          "所以我需要在办公室见她",
+          null,
+          6
+        ],
+        [
+          "I'm happy I need to see her",
+          "我很高兴我需要见她",
+          null,
+          5
+        ],
+        [
+          "I think so I need to talk about it",
+          "我想所以我需要谈",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0188L03": {
+      "lego": [
+        "don't need",
+        "不需要"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0188L01",
+          "known": "so",
+          "target": "所以",
+          "type": "A"
+        },
+        {
+          "id": "S0188L02",
+          "known": "need",
+          "target": "需要",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "don't need",
+          "不需要",
+          null,
+          1
+        ],
+        [
+          "don't need to see",
+          "不需要见",
+          null,
+          2
+        ],
+        [
+          "I think I don't need",
+          "我想我不需要",
+          null,
+          3
+        ],
+        [
+          "she doesn't need to see them",
+          "她不需要见它们",
+          null,
+          4
+        ],
+        [
+          "so I don't need",
+          "所以我不需要",
+          null,
+          2
+        ],
+        [
+          "I don't need to see her at work",
+          "我不需要在工作的地方见她",
+          null,
+          5
+        ],
+        [
+          "so I don't need to see them",
+          "所以我不需要见它们",
+          null,
+          4
+        ],
+        [
+          "I'm happy I don't need to see her",
+          "我很高兴我不需要见她",
+          null,
+          6
+        ],
+        [
+          "I think so I don't need to talk about it",
+          "我想所以我不需要谈",
+          null,
+          6
+        ],
+        [
+          "so far I don't need to see them",
+          "到目前为止我不需要见它们",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "不",
+          "not/don't"
+        ],
+        [
+          "需要",
+          "need"
+        ]
+      ]
+    },
+    "S0188L04": {
+      "lego": [
+        "I don't need",
+        "我不需要"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0188L01",
+          "known": "so",
+          "target": "所以",
+          "type": "A"
+        },
+        {
+          "id": "S0188L02",
+          "known": "need",
+          "target": "需要",
+          "type": "A"
+        },
+        {
+          "id": "S0188L03",
+          "known": "don't need",
+          "target": "不需要",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I don't need",
+          "我不需要",
+          null,
+          1
+        ],
+        [
+          "I don't need to see",
+          "我不需要见",
+          null,
+          2
+        ],
+        [
+          "I think I don't need to",
+          "我想我不需要",
+          null,
+          3
+        ],
+        [
+          "I don't need to see her",
+          "我不需要见她",
+          null,
+          3
+        ],
+        [
+          "so I don't need to see them",
+          "所以我不需要见它们",
+          null,
+          4
+        ],
+        [
+          "I don't need to see them at work",
+          "我不需要在工作的地方见它们",
+          null,
+          5
+        ],
+        [
+          "I'm happy I don't need to see her",
+          "我很高兴我不需要见她",
+          null,
+          5
+        ],
+        [
+          "so far I don't need to talk about it",
+          "到目前为止我不需要谈",
+          null,
+          5
+        ],
+        [
+          "I think so I don't need to see them in the office",
+          "我想所以我不需要在办公室见它们",
+          null,
+          7
+        ],
+        [
+          "so I don't need to change",
+          "所以我不需要改变",
+          null,
+          3
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "不需要",
+          "don't need"
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,633 @@
+{
+  "legos": {
+    "S0185L01": {
+      "lego": [
+        "I think",
+        "我想"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I think",
+          "我想",
+          null,
+          1
+        ],
+        [
+          "I think I saw",
+          "我想我看到",
+          null,
+          2
+        ],
+        [
+          "I think you left",
+          "我想你落",
+          null,
+          2
+        ],
+        [
+          "I think I saw them",
+          "我想我看到它们",
+          null,
+          3
+        ],
+        [
+          "I think you left them",
+          "我想你把它们落",
+          null,
+          3
+        ],
+        [
+          "I think they're in the office",
+          "我想它们在办公室",
+          null,
+          4
+        ],
+        [
+          "I think I saw them in the office",
+          "我想我在办公室看到它们",
+          null,
+          4
+        ],
+        [
+          "I think you left them at work",
+          "我想你把它们落在工作的地方",
+          null,
+          5
+        ],
+        [
+          "I think I have to see the doctor",
+          "我想我必须去看医生",
+          null,
+          5
+        ],
+        [
+          "I think I saw my keys in the office a while ago",
+          "我想我刚才在办公室看到我的钥匙",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0185L01",
+        "seed_context": {
+          "known": "I think you left them at work.",
+          "target": "我想你把它们落在工作的地方了。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0185L02": {
+      "lego": [
+        "left",
+        "落"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "我想"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "left",
+          "落",
+          null,
+          1
+        ],
+        [
+          "you left",
+          "你落",
+          null,
+          2
+        ],
+        [
+          "I think you left",
+          "我想你落",
+          null,
+          2
+        ],
+        [
+          "you left them",
+          "你把它们落",
+          null,
+          3
+        ],
+        [
+          "I think you left them",
+          "我想你把它们落",
+          null,
+          3
+        ],
+        [
+          "you left them at work",
+          "你把它们落在工作的地方",
+          null,
+          4
+        ],
+        [
+          "I think you left them at work",
+          "我想你把它们落在工作的地方",
+          null,
+          4
+        ],
+        [
+          "you left my keys in the office",
+          "你把我的钥匙落在办公室",
+          null,
+          5
+        ],
+        [
+          "I think you left them in the office a while ago",
+          "我想你刚才把它们落在办公室",
+          null,
+          6
+        ],
+        [
+          "I think you left my keys at work a while ago",
+          "我想你刚才把我的钥匙落在工作的地方",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0185L02",
+        "seed_context": {
+          "known": "I think you left them at work.",
+          "target": "我想你把它们落在工作的地方了。"
+        }
+      }
+    },
+    "S0185L03": {
+      "lego": [
+        "place",
+        "地方"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "我想"
+        ],
+        [
+          "left",
+          "落"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "place",
+          "地方",
+          null,
+          1
+        ],
+        [
+          "at work",
+          "工作的地方",
+          null,
+          2
+        ],
+        [
+          "I think place",
+          "我想地方",
+          null,
+          2
+        ],
+        [
+          "left at work",
+          "落在工作的地方",
+          null,
+          3
+        ],
+        [
+          "them at work",
+          "它们在工作的地方",
+          null,
+          3
+        ],
+        [
+          "I think you left at work",
+          "我想你落在工作的地方",
+          null,
+          4
+        ],
+        [
+          "you left them at work",
+          "你把它们落在工作的地方",
+          null,
+          4
+        ],
+        [
+          "I saw them at work a while ago",
+          "我刚才在工作的地方看到它们",
+          null,
+          5
+        ],
+        [
+          "I think you left them at work",
+          "我想你把它们落在工作的地方",
+          null,
+          5
+        ],
+        [
+          "I think I saw my mother at work a while ago",
+          "我想我刚才在工作的地方看到我妈妈",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0185L03",
+        "seed_context": {
+          "known": "I think you left them at work.",
+          "target": "我想你把它们落在工作的地方了。"
+        }
+      }
+    },
+    "S0185L04": {
+      "lego": [
+        "at work",
+        "工作的地方"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "我想"
+        ],
+        [
+          "left",
+          "落"
+        ],
+        [
+          "place",
+          "地方"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "at work",
+          "工作的地方",
+          null,
+          1
+        ],
+        [
+          "them at work",
+          "它们在工作的地方",
+          null,
+          2
+        ],
+        [
+          "I saw at work",
+          "我在工作的地方看到",
+          null,
+          2
+        ],
+        [
+          "left them at work",
+          "把它们落在工作的地方",
+          null,
+          3
+        ],
+        [
+          "I saw them at work",
+          "我在工作的地方看到它们",
+          null,
+          3
+        ],
+        [
+          "I think at work",
+          "我想在工作的地方",
+          null,
+          3
+        ],
+        [
+          "you left them at work",
+          "你把它们落在工作的地方",
+          null,
+          4
+        ],
+        [
+          "I saw them at work a while ago",
+          "我刚才在工作的地方看到它们",
+          null,
+          4
+        ],
+        [
+          "I think you left them at work",
+          "我想你把它们落在工作的地方",
+          null,
+          5
+        ],
+        [
+          "I think I saw my keys at work a while ago",
+          "我想我刚才在工作的地方看到我的钥匙",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0185L04",
+        "seed_context": {
+          "known": "I think you left them at work.",
+          "target": "我想你把它们落在工作的地方了。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0185L05": {
+      "lego": [
+        "at work",
+        "在工作的地方"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "我想"
+        ],
+        [
+          "left",
+          "落"
+        ],
+        [
+          "place",
+          "地方"
+        ],
+        [
+          "at work",
+          "工作的地方"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "at work",
+          "在工作的地方",
+          null,
+          1
+        ],
+        [
+          "I saw at work",
+          "我在工作的地方看到",
+          null,
+          2
+        ],
+        [
+          "them at work",
+          "它们在工作的地方",
+          null,
+          2
+        ],
+        [
+          "I saw them at work",
+          "我在工作的地方看到它们",
+          null,
+          3
+        ],
+        [
+          "left them at work",
+          "把它们落在工作的地方",
+          null,
+          3
+        ],
+        [
+          "I think at work",
+          "我想在工作的地方",
+          null,
+          3
+        ],
+        [
+          "you left them at work",
+          "你把它们落在工作的地方",
+          null,
+          4
+        ],
+        [
+          "I think I saw at work",
+          "我想我在工作的地方看到",
+          null,
+          4
+        ],
+        [
+          "I saw them at work a while ago",
+          "我刚才在工作的地方看到它们",
+          null,
+          5
+        ],
+        [
+          "I think you left my keys at work a while ago",
+          "我想你刚才把我的钥匙落在工作的地方",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0185L05",
+        "seed_context": {
+          "known": "I think you left them at work.",
+          "target": "我想你把它们落在工作的地方了。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0185L06": {
+      "lego": [
+        "left them at",
+        "把它们落在"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "I think",
+          "我想"
+        ],
+        [
+          "left",
+          "落"
+        ],
+        [
+          "place",
+          "地方"
+        ],
+        [
+          "at work",
+          "工作的地方"
+        ],
+        [
+          "at work",
+          "在工作的地方"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "left them at",
+          "把它们落在",
+          null,
+          1
+        ],
+        [
+          "you left them at",
+          "你把它们落在",
+          null,
+          2
+        ],
+        [
+          "left them at work",
+          "把它们落在工作的地方",
+          null,
+          2
+        ],
+        [
+          "you left them at work",
+          "你把它们落在工作的地方",
+          null,
+          3
+        ],
+        [
+          "I think left them at",
+          "我想把它们落在",
+          null,
+          3
+        ],
+        [
+          "I think you left them at work",
+          "我想你把它们落在工作的地方",
+          null,
+          4
+        ],
+        [
+          "you left them at the office",
+          "你把它们落在办公室",
+          null,
+          4
+        ],
+        [
+          "I think you left them at work",
+          "我想你把它们落在工作的地方了",
+          null,
+          5
+        ],
+        [
+          "you left them at the office a while ago",
+          "你刚才把它们落在办公室",
+          null,
+          5
+        ],
+        [
+          "I think you left my keys at work a while ago",
+          "我想你刚才把我的钥匙落在工作的地方",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0185L06",
+        "seed_context": {
+          "known": "I think you left them at work.",
+          "target": "我想你把它们落在工作的地方了。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

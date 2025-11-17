@@ -1,0 +1,397 @@
+{
+  "legos": {
+    "S0184L02": {
+      "lego": [
+        "a while ago",
+        "刚才"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "a while ago",
+          "刚才",
+          null,
+          1
+        ],
+        [
+          "I saw a while ago",
+          "我看到 刚才",
+          null,
+          2
+        ],
+        [
+          "a while ago I saw",
+          "刚才 我看到",
+          null,
+          2
+        ],
+        [
+          "I saw them a while ago",
+          "我刚才看到它们",
+          null,
+          3
+        ],
+        [
+          "a while ago in the office",
+          "刚才 在办公室",
+          null,
+          3
+        ],
+        [
+          "I saw them in the office a while ago",
+          "我刚才在办公室看到它们了",
+          null,
+          4
+        ],
+        [
+          "Have you seen them a while ago",
+          "你刚才看到它们了吗",
+          null,
+          4
+        ],
+        [
+          "I saw my keys a while ago",
+          "我刚才看到我的钥匙",
+          null,
+          5
+        ],
+        [
+          "I think I saw them a while ago",
+          "我想我刚才看到它们了",
+          null,
+          5
+        ],
+        [
+          "I saw my mother a while ago in the office",
+          "我刚才在办公室看到我妈妈了",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0184L02",
+        "seed_context": {
+          "known": "Yes I saw them in the office a while ago.",
+          "target": "是的，我刚才在办公室看到它们了。"
+        }
+      }
+    },
+    "S0184L03": {
+      "lego": [
+        "in the office",
+        "在办公室"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "a while ago",
+          "刚才"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "in the office",
+          "在办公室",
+          null,
+          1
+        ],
+        [
+          "I saw in the office",
+          "我在办公室看到",
+          null,
+          2
+        ],
+        [
+          "I saw them in the office",
+          "我在办公室看到它们",
+          null,
+          2
+        ],
+        [
+          "a while ago in the office",
+          "刚才在办公室",
+          null,
+          2
+        ],
+        [
+          "I saw them in the office",
+          "我在办公室看到它们",
+          null,
+          3
+        ],
+        [
+          "Have you seen them in the office",
+          "你在办公室看到它们了吗",
+          null,
+          4
+        ],
+        [
+          "I think they're in the office",
+          "我想它们在办公室",
+          null,
+          4
+        ],
+        [
+          "I saw my keys in the office",
+          "我在办公室看到我的钥匙",
+          null,
+          5
+        ],
+        [
+          "I didn't have time in the office",
+          "我在办公室没有时间",
+          null,
+          5
+        ],
+        [
+          "I have to see the doctor in the office",
+          "我必须在办公室看医生",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 4,
+        "quite_short_3": 1,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0184L03",
+        "seed_context": {
+          "known": "Yes I saw them in the office a while ago.",
+          "target": "是的，我刚才在办公室看到它们了。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0184L04": {
+      "lego": [
+        "I saw",
+        "我看到"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "a while ago",
+          "刚才"
+        ],
+        [
+          "in the office",
+          "在办公室"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "I saw",
+          "我看到",
+          null,
+          1
+        ],
+        [
+          "I saw them",
+          "我看到它们",
+          null,
+          2
+        ],
+        [
+          "I saw a while ago",
+          "我刚才看到",
+          null,
+          2
+        ],
+        [
+          "I saw in the office",
+          "我在办公室看到",
+          null,
+          3
+        ],
+        [
+          "I saw them a while ago",
+          "我刚才看到它们",
+          null,
+          3
+        ],
+        [
+          "I saw them in the office",
+          "我在办公室看到它们",
+          null,
+          3
+        ],
+        [
+          "I saw them in the office a while ago",
+          "我刚才在办公室看到它们",
+          null,
+          4
+        ],
+        [
+          "I saw my keys in the office",
+          "我在办公室看到我的钥匙",
+          null,
+          5
+        ],
+        [
+          "I saw my mother a while ago",
+          "我刚才看到我妈妈",
+          null,
+          5
+        ],
+        [
+          "I think I saw them at work a while ago",
+          "我想我刚才在工作的地方看到它们",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 3,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0184L04",
+        "seed_context": {
+          "known": "Yes I saw them in the office a while ago.",
+          "target": "是的，我刚才在办公室看到它们了。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0184L05": {
+      "lego": [
+        "saw them",
+        "看到它们"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "a while ago",
+          "刚才"
+        ],
+        [
+          "in the office",
+          "在办公室"
+        ],
+        [
+          "I saw",
+          "我看到"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "saw them",
+          "看到它们",
+          null,
+          1
+        ],
+        [
+          "I saw them",
+          "我看到它们",
+          null,
+          2
+        ],
+        [
+          "saw them a while ago",
+          "刚才看到它们",
+          null,
+          2
+        ],
+        [
+          "I saw them in the office",
+          "我在办公室看到它们",
+          null,
+          3
+        ],
+        [
+          "I saw them a while ago",
+          "我刚才看到它们",
+          null,
+          3
+        ],
+        [
+          "Have you seen them in the office",
+          "你在办公室看到它们了吗",
+          null,
+          4
+        ],
+        [
+          "I saw them in the office a while ago",
+          "我刚才在办公室看到它们",
+          null,
+          4
+        ],
+        [
+          "I think I saw them at work",
+          "我想我在工作的地方看到它们",
+          null,
+          5
+        ],
+        [
+          "I'm afraid I haven't seen them anywhere",
+          "恐怕我在哪里都没有看到它们",
+          null,
+          6
+        ],
+        [
+          "I think you left them at work a while ago",
+          "我想你刚才把它们落在工作的地方了",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0184L05",
+        "seed_context": {
+          "known": "Yes I saw them in the office a while ago.",
+          "target": "是的，我刚才在办公室看到它们了。"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

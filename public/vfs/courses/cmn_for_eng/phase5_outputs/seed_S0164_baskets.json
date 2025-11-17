@@ -1,0 +1,98 @@
+{
+  "S0164L01": {
+    "lego": ["a book","一本书"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["A book","一本书",null,2],
+      ["I want a book","我想要一本书",null,4],
+      ["Can you give me a book?","你能给我一本书吗？",null,6],
+      ["I'm trying to read a book","我试图读一本书",null,6],
+      ["I don't mind reading a book","我不介意读一本书",null,6],
+      ["Do you want to read a book tonight?","你想今晚读一本书吗？",null,7],
+      ["I think that's a book","我认为那是一本书",null,5],
+      ["How do you say 'a book' in Chinese?","你怎么用中文说'一本书'？",null,8],
+      ["Let's talk about a book","我们谈谈一本书吧",null,5],
+      ["I won't be able to give you a book tomorrow morning","我不能明天早上给你一本书",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0164L01",
+      "seed_context": {
+        "known": "An interesting book",
+        "target": "一本有趣的书"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0164L02": {
+    "lego": ["interesting book","有趣的书"],
+    "type": "M",
+    "current_seed_legos_available": [["a book","一本书"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Interesting book","有趣的书",null,2],
+      ["That's an interesting book","那是有趣的书",null,4],
+      ["I think it's an interesting book","我认为它是有趣的书",null,6],
+      ["Can you give me that interesting book?","你能给我那有趣的书吗？",null,7],
+      ["I want to read an interesting book","我想读有趣的书",null,6],
+      ["Do you want an interesting book?","你想要有趣的书吗？",null,5],
+      ["I'm trying to find an interesting book","我试图找到有趣的书",null,7],
+      ["I don't mind reading an interesting book tomorrow","我不介意明天读有趣的书",null,7],
+      ["Let's talk about that interesting book on Sunday","我们在星期天谈谈那有趣的书吧",null,8],
+      ["Where do you want to read an interesting book tonight?","你想今晚在哪里读有趣的书？",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 2,
+      "long_6_plus": 6
+    },
+    "_metadata": {
+      "lego_id": "S0164L02",
+      "seed_context": {
+        "known": "An interesting book",
+        "target": "一本有趣的书"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0164L03": {
+    "lego": ["an interesting book","一本有趣的书"],
+    "type": "M",
+    "current_seed_legos_available": [["a book","一本书"],["interesting book","有趣的书"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["An interesting book","一本有趣的书",null,3],
+      ["I want an interesting book","我想要一本有趣的书",null,5],
+      ["That's an interesting book","那是一本有趣的书",null,4],
+      ["Can you give me an interesting book?","你能给我一本有趣的书吗？",null,7],
+      ["I'm trying to read an interesting book","我试图读一本有趣的书",null,7],
+      ["I think it's an interesting book","我认为它是一本有趣的书",null,6],
+      ["I don't mind reading an interesting book","我不介意读一本有趣的书",null,7],
+      ["Do you want to read an interesting book tonight?","你想今晚读一本有趣的书吗？",null,8],
+      ["How do you say 'an interesting book' in Chinese?","你怎么用中文说'一本有趣的书'？",null,9],
+      ["An interesting book","一本有趣的书",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "_metadata": {
+      "lego_id": "S0164L03",
+      "seed_context": {
+        "known": "An interesting book",
+        "target": "一本有趣的书"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  }
+}

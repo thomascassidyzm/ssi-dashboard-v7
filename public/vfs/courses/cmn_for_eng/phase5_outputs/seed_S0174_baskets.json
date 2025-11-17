@@ -1,0 +1,98 @@
+{
+  "S0174L01": {
+    "lego": ["Can you understand","你能理解"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Can you understand?","你能理解吗？",null,1],
+      ["Can you understand that?","你能理解那个吗？",null,2],
+      ["Yes, I can understand.","是的，我能理解。",null,3],
+      ["Can you understand my name?","你能理解我的名字吗？",null,3],
+      ["I'm not sure if you can understand.","我不确定你是不是能理解。",null,5],
+      ["Can you understand what you need to do?","你能理解你需要做什么吗？",null,5],
+      ["I'd like you to tell me if you can understand.","我想让你告诉我你是不是能理解。",null,7],
+      ["Can you understand? Yes, that would be very helpful.","你能理解吗？是的，那会很有帮助。",null,7],
+      ["I think you can understand, but I'm not sure if it's true.","我认为你能理解，但是我不确定它是不是真的。",null,11],
+      ["Can you understand what I want you to do tomorrow afternoon?","你能理解我想让你明天下午做什么吗？",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0174L01",
+      "seed_context": {
+        "known": "Can you understand what I'm saying?",
+        "target": "你能理解我在说什么吗？"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0174L02": {
+    "lego": ["what I'm saying","我在说什么"],
+    "type": "M",
+    "current_seed_legos_available": [["Can you understand","你能理解"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["What I'm saying is true.","我在说什么是真的。",null,2],
+      ["Can you understand what I'm saying?","你能理解我在说什么吗？",null,2],
+      ["I think what I'm saying is very helpful.","我认为我在说什么很有帮助。",null,4],
+      ["Do you understand what I'm saying?","你理解我在说什么吗？",null,3],
+      ["I'm not sure if what I'm saying is true.","我不确定我在说什么是不是真的。",null,6],
+      ["What I'm saying is very interesting, thank you.","我在说什么很有趣，谢谢。",null,4],
+      ["I'd like you to tell me if you can understand what I'm saying.","我想让你告诉我你是不是能理解我在说什么。",null,9],
+      ["Can you understand what I'm saying? Yes, that would be very helpful.","你能理解我在说什么吗？是的，那会很有帮助。",null,9],
+      ["But I'm not sure if you can understand what I'm saying.","但是我不确定你是不是能理解我在说什么。",null,9],
+      ["What I'm saying is that I'll be able to help tomorrow afternoon.","我在说什么是我明天下午就能帮忙了。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0174L02",
+      "seed_context": {
+        "known": "Can you understand what I'm saying?",
+        "target": "你能理解我在说什么吗？"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0174L03": {
+    "lego": ["say what","说什么"],
+    "type": "M",
+    "current_seed_legos_available": [["Can you understand","你能理解"],["what I'm saying","我在说什么"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["What I'm saying","我在说什么",null,2],
+      ["I don't understand what I'm saying.","我不理解我在说什么。",null,3],
+      ["Can you understand what I'm saying?","你能理解我在说什么吗？",null,3],
+      ["What do you want me to say what?","你想让我说什么？",null,4],
+      ["I'd like you to tell me what I'm saying.","我想让你告诉我我在说什么。",null,5],
+      ["I'm not sure what I'm saying is true.","我不确定我在说什么是真的。",null,5],
+      ["Can you understand what I'm saying? Yes, thank you.","你能理解我在说什么吗？是的，谢谢。",null,7],
+      ["But I think what I'm saying would be very helpful tomorrow afternoon.","但是我认为我在说什么明天下午会很有帮助。",null,9],
+      ["I'd like you to tell me if you can understand what I'm saying.","我想让你告诉我你是不是能理解我在说什么。",null,10],
+      ["Can you understand what I'm saying?","你能理解我在说什么吗？",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0174L03",
+      "seed_context": {
+        "known": "Can you understand what I'm saying?",
+        "target": "你能理解我在说什么吗？"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

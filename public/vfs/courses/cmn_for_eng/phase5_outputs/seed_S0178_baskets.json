@@ -1,0 +1,98 @@
+{
+  "S0178L01": {
+    "lego": ["I didn't have time","我没有时间"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I didn't have time.","我没有时间。",null,1],
+      ["I didn't have time then.","我那时没有时间。",null,1],
+      ["I didn't have time, I'll ask her.","我没有时间，我会问她。",null,3],
+      ["I didn't have time to help you.","我没有时间帮你。",null,3],
+      ["I didn't have time to help you look for it.","我没有时间帮你找它。",null,4],
+      ["I didn't have time to tell you what I need.","我没有时间告诉你我需要什么。",null,4],
+      ["I didn't have time, although I'll be able to come and help later on.","我没有时间，虽然我就能来帮忙了。",null,5],
+      ["I didn't have time to understand what you wanted me to do.","我没有时间理解你想让我做什么。",null,5],
+      ["I didn't have time to ask her where she wants to go.","我没有时间问她她想去哪里。",null,6],
+      ["I didn't have time to help you, although I wanted to.","我没有时间帮你，虽然我想。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0178L01",
+      "seed_context": {
+        "known": "I didn't have time, although I wanted to see you.",
+        "target": "我没有时间，虽然我想见你。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0178L02": {
+    "lego": ["didn't have time","没有时间"],
+    "type": "M",
+    "current_seed_legos_available": [["I didn't have time","我没有时间"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I didn't have time.","我没有时间。",null,2],
+      ["He didn't have time.","他没有时间。",null,1],
+      ["I didn't have time to help.","我没有时间帮忙。",null,3],
+      ["She didn't have time to come.","她没有时间来。",null,2],
+      ["I didn't have time to see you.","我没有时间见你。",null,3],
+      ["He didn't have time to help you.","他没有时间帮你。",null,3],
+      ["I didn't have time to ask him.","我没有时间问他。",null,4],
+      ["She didn't have time to tell me what she needs.","她没有时间告诉我她需要什么。",null,5],
+      ["I didn't have time to understand what you're saying.","我没有时间理解你在说什么。",null,5],
+      ["He didn't have time to help, although he wanted to.","他没有时间帮忙，虽然他想。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0178L02",
+      "seed_context": {
+        "known": "I didn't have time, although I wanted to see you.",
+        "target": "我没有时间，虽然我想见你。"
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0178L03": {
+    "lego": ["although I wanted to see you","虽然我想见你"],
+    "type": "M",
+    "current_seed_legos_available": [["I didn't have time","我没有时间"],["didn't have time","没有时间"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Although I wanted to see you.","虽然我想见你。",null,1],
+      ["I didn't have time, although I wanted to see you.","我没有时间，虽然我想见你。",null,3],
+      ["I'll come later, although I wanted to see you now.","我会晚点来，虽然我想现在见你。",null,4],
+      ["I can't help, although I wanted to see you.","我不能帮忙，虽然我想见你。",null,4],
+      ["I'll ask her later, although I wanted to see you first.","我会晚点问她，虽然我想先见你。",null,5],
+      ["I need to go, although I wanted to see you.","我需要走了，虽然我想见你。",null,5],
+      ["I can manage on my own, although I wanted to see you and ask for help.","我可以自己应付，虽然我想见你并寻求帮助。",null,7],
+      ["I'll be able to come later, although I wanted to see you now.","我就能晚点来，虽然我想现在见你。",null,6],
+      ["I didn't have time to help you, although I wanted to see you.","我没有时间帮你，虽然我想见你。",null,6],
+      ["I'll tell you what I need later, although I wanted to see you first.","我会晚点告诉你我需要什么，虽然我想先见你。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0178L03",
+      "seed_context": {
+        "known": "I didn't have time, although I wanted to see you.",
+        "target": "我没有时间，虽然我想见你。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  }
+}

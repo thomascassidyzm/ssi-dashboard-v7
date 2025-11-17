@@ -1,0 +1,372 @@
+{
+  "S0166L01": {
+    "lego": [
+      "my name",
+      "我的名字"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "My name",
+        "我的名字",
+        null,
+        1
+      ],
+      [
+        "This is my name",
+        "这是我的名字",
+        null,
+        1
+      ],
+      [
+        "My name is interesting",
+        "我的名字很有趣",
+        null,
+        2
+      ],
+      [
+        "I want my name",
+        "我想我的名字",
+        null,
+        2
+      ],
+      [
+        "Do you know my name?",
+        "你知道我的名字吗？",
+        null,
+        3
+      ],
+      [
+        "My name is a book",
+        "我的名字是一本书",
+        null,
+        3
+      ],
+      [
+        "I think my name is interesting",
+        "我认为我的名字很有趣",
+        null,
+        4
+      ],
+      [
+        "Can you say my name?",
+        "你能说我的名字吗？",
+        null,
+        4
+      ],
+      [
+        "How do you say my name in Chinese?",
+        "你怎么用中文说我的名字？",
+        null,
+        5
+      ],
+      [
+        "I want to learn how to say my name in Chinese",
+        "我想学会怎么用中文说我的名字",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0166L02": {
+    "lego": [
+      "not very",
+      "不是很"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "my name",
+        "我的名字"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Not very interesting",
+        "不是很有趣",
+        null,
+        1
+      ],
+      [
+        "Not very sure",
+        "不是很确定",
+        null,
+        1
+      ],
+      [
+        "It's not very interesting",
+        "它不是很有趣",
+        null,
+        2
+      ],
+      [
+        "I'm not very sure",
+        "我不是很确定",
+        null,
+        2
+      ],
+      [
+        "That book is not very interesting",
+        "那本书不是很有趣",
+        null,
+        3
+      ],
+      [
+        "My name is not very interesting",
+        "我的名字不是很有趣",
+        null,
+        3
+      ],
+      [
+        "I think it's not very interesting",
+        "我认为它不是很有趣",
+        null,
+        4
+      ],
+      [
+        "The book is not very interesting tonight",
+        "那本书今晚不是很有趣",
+        null,
+        4
+      ],
+      [
+        "I'm not very sure about that",
+        "我对那个不是很确定",
+        null,
+        5
+      ],
+      [
+        "I think that restaurant is not very interesting",
+        "我认为那个餐厅不是很有趣",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0166L03": {
+    "lego": [
+      "unusual",
+      "不寻常"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "my name",
+        "我的名字"
+      ],
+      [
+        "not very",
+        "不是很"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Unusual",
+        "不寻常",
+        null,
+        1
+      ],
+      [
+        "It's unusual",
+        "它不寻常",
+        null,
+        1
+      ],
+      [
+        "That's unusual",
+        "那个不寻常",
+        null,
+        2
+      ],
+      [
+        "Very unusual",
+        "很不寻常",
+        null,
+        2
+      ],
+      [
+        "This is very unusual",
+        "这是很不寻常",
+        null,
+        3
+      ],
+      [
+        "The book is unusual",
+        "那本书不寻常",
+        null,
+        3
+      ],
+      [
+        "I think that's unusual",
+        "我认为那个不寻常",
+        null,
+        4
+      ],
+      [
+        "My name is unusual",
+        "我的名字不寻常",
+        null,
+        4
+      ],
+      [
+        "That word is very unusual",
+        "那个词很不寻常",
+        null,
+        5
+      ],
+      [
+        "I think this book is very unusual",
+        "我认为这本书很不寻常",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": []
+  },
+  "S0166L04": {
+    "lego": [
+      "very unusual",
+      "很不寻常"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "my name",
+        "我的名字"
+      ],
+      [
+        "not very",
+        "不是很"
+      ],
+      [
+        "unusual",
+        "不寻常"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "Very unusual",
+        "很不寻常",
+        null,
+        1
+      ],
+      [
+        "It's very unusual",
+        "它很不寻常",
+        null,
+        1
+      ],
+      [
+        "That's very unusual",
+        "那个很不寻常",
+        null,
+        2
+      ],
+      [
+        "This word is very unusual",
+        "这个词很不寻常",
+        null,
+        2
+      ],
+      [
+        "I think that's very unusual",
+        "我认为那个很不寻常",
+        null,
+        3
+      ],
+      [
+        "The book is very unusual",
+        "那本书很不寻常",
+        null,
+        3
+      ],
+      [
+        "My name is very unusual",
+        "我的名字很不寻常",
+        null,
+        4
+      ],
+      [
+        "That restaurant is very unusual tonight",
+        "那个餐厅今晚很不寻常",
+        null,
+        4
+      ],
+      [
+        "I think this book is very unusual",
+        "我认为这本书很不寻常",
+        null,
+        5
+      ],
+      [
+        "My name is not very unusual.",
+        "我的名字不是很不寻常。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

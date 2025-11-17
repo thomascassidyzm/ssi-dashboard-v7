@@ -1,0 +1,403 @@
+{
+  "legos": {
+    "S0186L03": {
+      "lego": [
+        "talk about",
+        "谈"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "talk about",
+          "谈",
+          null,
+          1
+        ],
+        [
+          "talk about them",
+          "谈它们",
+          null,
+          2
+        ],
+        [
+          "I think talk about",
+          "我想谈",
+          null,
+          2
+        ],
+        [
+          "talk about different thing",
+          "谈不同的事情",
+          null,
+          3
+        ],
+        [
+          "I want to talk about",
+          "我想谈",
+          null,
+          3
+        ],
+        [
+          "Do you want to talk about",
+          "你想谈吗",
+          null,
+          4
+        ],
+        [
+          "I think we should talk about",
+          "我想我们应该谈",
+          null,
+          4
+        ],
+        [
+          "talk about something different",
+          "谈点不同的事情",
+          null,
+          4
+        ],
+        [
+          "Do you want to talk about them",
+          "你想谈它们吗",
+          null,
+          5
+        ],
+        [
+          "I think you should talk about something different",
+          "我想你应该谈点不同的事情",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0186L03",
+        "seed_context": {
+          "known": "Do you want to talk about something different next week?",
+          "target": "你想下周谈点不同的事情吗？"
+        }
+      }
+    },
+    "S0186L04": {
+      "lego": [
+        "thing",
+        "事情"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [
+        [
+          "talk about",
+          "谈"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "thing",
+          "事情",
+          null,
+          1
+        ],
+        [
+          "different thing",
+          "不同的事情",
+          null,
+          2
+        ],
+        [
+          "talk about thing",
+          "谈事情",
+          null,
+          2
+        ],
+        [
+          "talk about different thing",
+          "谈不同的事情",
+          null,
+          3
+        ],
+        [
+          "I think different thing",
+          "我想不同的事情",
+          null,
+          3
+        ],
+        [
+          "Do you want different thing",
+          "你想不同的事情吗",
+          null,
+          4
+        ],
+        [
+          "talk about something different",
+          "谈点不同的事情",
+          null,
+          4
+        ],
+        [
+          "I think you left different thing",
+          "我想你落了不同的事情",
+          null,
+          5
+        ],
+        [
+          "Do you want to talk about different thing",
+          "你想谈不同的事情吗",
+          null,
+          5
+        ],
+        [
+          "I think we should talk about something different",
+          "我想我们应该谈点不同的事情",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
+      },
+      "_metadata": {
+        "lego_id": "S0186L04",
+        "seed_context": {
+          "known": "Do you want to talk about something different next week?",
+          "target": "你想下周谈点不同的事情吗？"
+        }
+      }
+    },
+    "S0186L05": {
+      "lego": [
+        "different thing",
+        "不同的事情"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "talk about",
+          "谈"
+        ],
+        [
+          "thing",
+          "事情"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "different thing",
+          "不同的事情",
+          null,
+          1
+        ],
+        [
+          "talk about different thing",
+          "谈不同的事情",
+          null,
+          2
+        ],
+        [
+          "I think different thing",
+          "我想不同的事情",
+          null,
+          2
+        ],
+        [
+          "Do you want different thing",
+          "你想不同的事情吗",
+          null,
+          3
+        ],
+        [
+          "talk about something different",
+          "谈点不同的事情",
+          null,
+          3
+        ],
+        [
+          "I saw something different",
+          "我看到不同的事情",
+          null,
+          3
+        ],
+        [
+          "Do you want to talk about different thing",
+          "你想谈不同的事情吗",
+          null,
+          4
+        ],
+        [
+          "I think we should talk about different thing",
+          "我想我们应该谈不同的事情",
+          null,
+          5
+        ],
+        [
+          "I think you left something different at work",
+          "我想你把不同的事情落在工作的地方",
+          null,
+          6
+        ],
+        [
+          "Do you want to talk about something different at work",
+          "你想在工作的地方谈点不同的事情吗",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 3,
+        "longer_4_5": 2,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0186L05",
+        "seed_context": {
+          "known": "Do you want to talk about something different next week?",
+          "target": "你想下周谈点不同的事情吗？"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0186L06": {
+      "lego": [
+        "talk about something different",
+        "谈点不同的事情"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "talk about",
+          "谈"
+        ],
+        [
+          "thing",
+          "事情"
+        ],
+        [
+          "different thing",
+          "不同的事情"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "talk about something different",
+          "谈点不同的事情",
+          null,
+          1
+        ],
+        [
+          "I think talk about something different",
+          "我想谈点不同的事情",
+          null,
+          2
+        ],
+        [
+          "want to talk about something different",
+          "想谈点不同的事情",
+          null,
+          2
+        ],
+        [
+          "Do you want to talk about something different",
+          "你想谈点不同的事情吗",
+          null,
+          3
+        ],
+        [
+          "I think we should talk about something different",
+          "我想我们应该谈点不同的事情",
+          null,
+          4
+        ],
+        [
+          "I want to talk about something different",
+          "我想谈点不同的事情",
+          null,
+          4
+        ],
+        [
+          "talk about something different at work",
+          "在工作的地方谈点不同的事情",
+          null,
+          4
+        ],
+        [
+          "Do you want to talk about something different at work",
+          "你想在工作的地方谈点不同的事情吗",
+          null,
+          5
+        ],
+        [
+          "I think I saw something different in the office",
+          "我想我在办公室看到不同的事情",
+          null,
+          6
+        ],
+        [
+          "I think we should talk about something different at work a while ago",
+          "我想我们刚才应该在工作的地方谈点不同的事情",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0186L06",
+        "seed_context": {
+          "known": "Do you want to talk about something different next week?",
+          "target": "你想下周谈点不同的事情吗？"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

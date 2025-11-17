@@ -1,0 +1,278 @@
+{
+  "legos": {
+    "S0189L02": {
+      "lego": [
+        "that's",
+        "那是"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "that's",
+          "那是",
+          null,
+          1
+        ],
+        [
+          "I think that's",
+          "我想那是",
+          null,
+          2
+        ],
+        [
+          "I'm happy that's",
+          "我很高兴那是",
+          null,
+          2
+        ],
+        [
+          "so I think that's",
+          "所以我想那是",
+          null,
+          3
+        ],
+        [
+          "I saw that's in the office",
+          "我看到那是在办公室",
+          null,
+          4
+        ],
+        [
+          "she thinks that's different",
+          "她想那是不同",
+          null,
+          4
+        ],
+        [
+          "I don't need to think that's",
+          "我不需要想那是",
+          null,
+          4
+        ],
+        [
+          "so far I think that's",
+          "到目前为止我想那是",
+          null,
+          3
+        ],
+        [
+          "I'm afraid that's at work",
+          "恐怕那是在工作的地方",
+          null,
+          4
+        ],
+        [
+          "so I'm happy that's in the office",
+          "所以我很高兴那是在办公室",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "那",
+          "that"
+        ],
+        [
+          "是",
+          "is"
+        ]
+      ]
+    },
+    "S0189L03": {
+      "lego": [
+        "idea",
+        "主意"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0189L02",
+          "known": "that's",
+          "target": "那是",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "idea",
+          "主意",
+          null,
+          1
+        ],
+        [
+          "an idea",
+          "一个主意",
+          null,
+          1
+        ],
+        [
+          "I think an idea",
+          "我想一个主意",
+          null,
+          3
+        ],
+        [
+          "that's an idea",
+          "那是一个主意",
+          null,
+          2
+        ],
+        [
+          "so that's an idea",
+          "所以那是一个主意",
+          null,
+          3
+        ],
+        [
+          "I don't need an idea",
+          "我不需要一个主意",
+          null,
+          3
+        ],
+        [
+          "I saw her idea at work",
+          "我在工作的地方看到她的主意",
+          null,
+          5
+        ],
+        [
+          "so I think that's an idea",
+          "所以我想那是一个主意",
+          null,
+          4
+        ],
+        [
+          "I'm happy that's an idea",
+          "我很高兴那是一个主意",
+          null,
+          4
+        ],
+        [
+          "so far I think that's a different idea",
+          "到目前为止我想那是一个不同的主意",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0189L04": {
+      "lego": [
+        "good idea",
+        "好主意"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0189L02",
+          "known": "that's",
+          "target": "那是",
+          "type": "M"
+        },
+        {
+          "id": "S0189L03",
+          "known": "idea",
+          "target": "主意",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "good idea",
+          "好主意",
+          null,
+          1
+        ],
+        [
+          "a good idea",
+          "一个好主意",
+          null,
+          1
+        ],
+        [
+          "that's a good idea",
+          "那是一个好主意",
+          null,
+          2
+        ],
+        [
+          "I think that's a good idea",
+          "我想那是一个好主意",
+          null,
+          3
+        ],
+        [
+          "so that's a good idea",
+          "所以那是一个好主意",
+          null,
+          3
+        ],
+        [
+          "I'm happy that's a good idea",
+          "我很高兴那是一个好主意",
+          null,
+          4
+        ],
+        [
+          "so I think that's a good idea",
+          "所以我想那是一个好主意",
+          null,
+          4
+        ],
+        [
+          "I don't need a good idea",
+          "我不需要一个好主意",
+          null,
+          4
+        ],
+        [
+          "so far I think that's a good idea",
+          "到目前为止我想那是一个好主意",
+          null,
+          5
+        ],
+        [
+          "so I'm happy that's a good idea so far",
+          "所以我很高兴那是到目前为止一个好主意",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "好",
+          "good"
+        ],
+        [
+          "主意",
+          "idea"
+        ]
+      ]
+    }
+  }
+}

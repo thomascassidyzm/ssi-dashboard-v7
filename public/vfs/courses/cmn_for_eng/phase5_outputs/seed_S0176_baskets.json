@@ -1,0 +1,399 @@
+{
+  "S0176L01": {
+    "lego": [
+      "I'll ask him",
+      "我会问他"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I'll ask him",
+        "我会问他",
+        null,
+        1
+      ],
+      [
+        "I'll ask him tomorrow",
+        "我明天会问他",
+        null,
+        2
+      ],
+      [
+        "I'll ask him when I see him",
+        "我见到他时会问他",
+        null,
+        3
+      ],
+      [
+        "I'll ask him what he thinks",
+        "我会问他他怎么想",
+        null,
+        3
+      ],
+      [
+        "I'll ask him if he's available",
+        "我会问他他是否有空",
+        null,
+        4
+      ],
+      [
+        "I'll ask him about it later today",
+        "我今天晚些时候会问他",
+        null,
+        4
+      ],
+      [
+        "I'll ask him when he gets back from work",
+        "我会在他下班回来时问他",
+        null,
+        5
+      ],
+      [
+        "I'll ask him if he can help us tomorrow",
+        "我会问他明天能否帮我们",
+        null,
+        5
+      ],
+      [
+        "I'll ask him what time would be best for everyone",
+        "我会问他什么时间对大家最合适",
+        null,
+        6
+      ],
+      [
+        "I'll ask him to join us for dinner tonight",
+        "我会邀请他今晚和我们一起吃饭",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "会",
+        "will"
+      ],
+      [
+        "问",
+        "ask"
+      ],
+      [
+        "他",
+        "him"
+      ]
+    ]
+  },
+  "S0176L02": {
+    "lego": [
+      "if he'll be able to help next year",
+      "明年他能不能帮忙"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0176L01",
+        "known": "I'll ask him",
+        "target": "我会问他",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "if he'll be able to help next year",
+        "明年他能不能帮忙",
+        null,
+        1
+      ],
+      [
+        "I wonder if he'll be able to help next year",
+        "我想知道明年他能不能帮忙",
+        null,
+        2
+      ],
+      [
+        "Do you know if he'll be able to help next year",
+        "你知道明年他能不能帮忙吗",
+        null,
+        3
+      ],
+      [
+        "I'm not sure if he'll be able to help next year",
+        "我不确定明年他能不能帮忙",
+        null,
+        3
+      ],
+      [
+        "We need to find out if he'll be able to help next year",
+        "我们需要弄清楚明年他能不能帮忙",
+        null,
+        4
+      ],
+      [
+        "I'll check if he'll be able to help next year",
+        "我会确认明年他能不能帮忙",
+        null,
+        4
+      ],
+      [
+        "It depends on if he'll be able to help next year or not",
+        "这取决于明年他能不能帮忙",
+        null,
+        5
+      ],
+      [
+        "Can you ask if he'll be able to help next year when you see him",
+        "你见到他时能问问明年他能不能帮忙吗",
+        null,
+        5
+      ],
+      [
+        "We're waiting to hear if he'll be able to help next year before deciding",
+        "我们在等着听明年他能不能帮忙再决定",
+        null,
+        6
+      ],
+      [
+        "I really hope if he'll be able to help next year because we need him",
+        "我真希望明年他能帮忙因为我们需要他",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "明年",
+        "next year"
+      ],
+      [
+        "他",
+        "he"
+      ],
+      [
+        "能不能",
+        "can or cannot"
+      ],
+      [
+        "帮忙",
+        "help"
+      ]
+    ]
+  },
+  "S0176L03": {
+    "lego": [
+      "whether able to help",
+      "能不能帮忙"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0176L01",
+        "known": "I'll ask him",
+        "target": "我会问他",
+        "type": "M"
+      },
+      {
+        "id": "S0176L02",
+        "known": "if he'll be able to help next year",
+        "target": "明年他能不能帮忙",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "whether able to help",
+        "能不能帮忙",
+        null,
+        1
+      ],
+      [
+        "I don't know whether able to help",
+        "我不知道能不能帮忙",
+        null,
+        2
+      ],
+      [
+        "Can you check whether able to help tomorrow",
+        "你能查一下明天能不能帮忙吗",
+        null,
+        3
+      ],
+      [
+        "We'll see whether able to help later",
+        "我们晚点看看能不能帮忙",
+        null,
+        3
+      ],
+      [
+        "I need to know whether able to help soon",
+        "我需要尽快知道能不能帮忙",
+        null,
+        4
+      ],
+      [
+        "He asked me whether able to help this weekend",
+        "他问我这周末能不能帮忙",
+        null,
+        4
+      ],
+      [
+        "Let me find out whether able to help before I confirm",
+        "让我先确认能不能帮忙再答复",
+        null,
+        5
+      ],
+      [
+        "It's not clear whether able to help with this project yet",
+        "还不清楚能不能帮这个项目的忙",
+        null,
+        5
+      ],
+      [
+        "We should ask everyone whether able to help before making plans",
+        "我们应该在做计划前问问大家能不能帮忙",
+        null,
+        6
+      ],
+      [
+        "I want to know whether able to help so I can plan accordingly",
+        "我想知道能不能帮忙这样我好做相应安排",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "能不能",
+        "can or cannot"
+      ],
+      [
+        "帮忙",
+        "help"
+      ]
+    ]
+  },
+  "S0176L04": {
+    "lego": [
+      "next year",
+      "明年"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0176L01",
+        "known": "I'll ask him",
+        "target": "我会问他",
+        "type": "M"
+      },
+      {
+        "id": "S0176L02",
+        "known": "if he'll be able to help next year",
+        "target": "明年他能不能帮忙",
+        "type": "M"
+      },
+      {
+        "id": "S0176L03",
+        "known": "whether able to help",
+        "target": "能不能帮忙",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "next year",
+        "明年",
+        null,
+        1
+      ],
+      [
+        "I'm going to Japan next year",
+        "我明年要去日本",
+        null,
+        2
+      ],
+      [
+        "We'll move to a new house next year",
+        "我们明年会搬到新房子",
+        null,
+        3
+      ],
+      [
+        "She's planning to study abroad next year",
+        "她计划明年出国留学",
+        null,
+        3
+      ],
+      [
+        "Next year will be better I think",
+        "我觉得明年会更好",
+        null,
+        4
+      ],
+      [
+        "Are you coming back to visit next year",
+        "你明年会回来看看吗",
+        null,
+        4
+      ],
+      [
+        "I hope to finish this project by next year",
+        "我希望明年之前完成这个项目",
+        null,
+        5
+      ],
+      [
+        "We're saving money to buy a car next year",
+        "我们在存钱明年买车",
+        null,
+        5
+      ],
+      [
+        "I'll have more free time to travel next year hopefully",
+        "希望明年我会有更多空闲时间旅行",
+        null,
+        6
+      ],
+      [
+        "I'll ask him if he'll be able to help next year.",
+        "我会问他明年他能不能帮忙。",
+        null,
+        12
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

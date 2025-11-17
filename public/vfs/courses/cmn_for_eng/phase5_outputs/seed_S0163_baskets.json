@@ -1,0 +1,65 @@
+{
+  "S0163L02": {
+    "lego": ["it","它"],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I don't mind it","我不介意它",null,4],
+      ["Can you give me it?","你能给我它吗？",null,5],
+      ["I wouldn't have said it","我不会说它",null,5],
+      ["How do you say it in Chinese?","你怎么用中文说它？",null,7],
+      ["What do you think about it?","你对它怎么想？",null,6],
+      ["I'm trying to say it","我试图说它",null,5],
+      ["Let's talk about it","我们谈谈它吧",null,4],
+      ["Do you want to read it?","你想读它吗？",null,5],
+      ["I won't be able to explain it","我不能解释它",null,6],
+      ["I don't mind waiting for it tomorrow morning","我不介意明天早上等它",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 2,
+      "longer_4_5": 6,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0163L02",
+      "seed_context": {
+        "known": "I think that it's interesting.",
+        "target": "我认为它很有趣。"
+      }
+    }
+  },
+  "S0163L04": {
+    "lego": ["it's very interesting","它很有趣"],
+    "type": "M",
+    "current_seed_legos_available": [["it","它"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["It's very interesting","它很有趣",null,3],
+      ["I think it's very interesting","我认为它很有趣",null,5],
+      ["It's very interesting in Chinese","用中文它很有趣",null,5],
+      ["That book is very interesting","那本书很有趣",null,5],
+      ["This word is very interesting","这个词很有趣",null,5],
+      ["I think that word is very interesting","我认为那个词很有趣",null,7],
+      ["But it's very interesting","但是它很有趣",null,4],
+      ["I don't mind waiting because it's very interesting","我不介意等因为它很有趣",null,8],
+      ["Where do you want to meet? It's very interesting","你想在哪里见面？它很有趣",null,9],
+      ["I think that it's interesting.","我认为它很有趣。",null,5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 2,
+      "longer_4_5": 5,
+      "long_6_plus": 3
+    },
+    "_metadata": {
+      "lego_id": "S0163L04",
+      "seed_context": {
+        "known": "I think that it's interesting.",
+        "target": "我认为它很有趣。"
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

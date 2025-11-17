@@ -1,0 +1,447 @@
+{
+  "legos": {
+    "S0170L01": {
+      "lego": [
+        "I'd like you to",
+        "我想让你"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I'd like you to",
+          "我想让你",
+          null,
+          1
+        ],
+        [
+          "I'd like you to help",
+          "我想让你帮忙",
+          null,
+          2
+        ],
+        [
+          "I'd like you to come",
+          "我想让你来",
+          null,
+          2
+        ],
+        [
+          "I'd like you to say that",
+          "我想让你说那个",
+          null,
+          3
+        ],
+        [
+          "I'd like you to come tomorrow",
+          "我想让你明天来",
+          null,
+          3
+        ],
+        [
+          "I'd like you to think about that",
+          "我想让你想那个",
+          null,
+          3
+        ],
+        [
+          "I'd like you to help tomorrow afternoon",
+          "我想让你明天下午帮忙",
+          null,
+          4
+        ],
+        [
+          "I'd like you to give me that book",
+          "我想让你给我那本书",
+          null,
+          4
+        ],
+        [
+          "I'd like you to come and help tomorrow",
+          "我想让你明天来帮忙",
+          null,
+          5
+        ],
+        [
+          "I'd like you to say this word in Chinese",
+          "我想让你用中文说这个词",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0170L01",
+        "seed_context": {
+          "known": "I'd like you to tell me what you need.",
+          "target": "我想让你告诉我你需要什么。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "想",
+          "want/would like"
+        ],
+        [
+          "让",
+          "let/make"
+        ],
+        [
+          "你",
+          "you"
+        ]
+      ]
+    },
+    "S0170L02": {
+      "lego": [
+        "want you to tell me",
+        "想让你告诉我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0170L01",
+          "known": "I'd like you to",
+          "target": "我想让你",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "want you to tell me",
+          "想让你告诉我",
+          null,
+          1
+        ],
+        [
+          "I want you to tell me",
+          "我想让你告诉我",
+          null,
+          2
+        ],
+        [
+          "I'd like you to tell me",
+          "我想让你告诉我",
+          null,
+          2
+        ],
+        [
+          "I want you to tell me that",
+          "我想让你告诉我那个",
+          null,
+          3
+        ],
+        [
+          "I'd like you to tell me tomorrow",
+          "我想让你明天告诉我",
+          null,
+          3
+        ],
+        [
+          "I want you to tell me what you think",
+          "我想让你告诉我你怎么想",
+          null,
+          4
+        ],
+        [
+          "I'd like you to tell me tomorrow afternoon",
+          "我想让你明天下午告诉我",
+          null,
+          4
+        ],
+        [
+          "I want you to tell me what you need",
+          "我想让你告诉我你需要什么",
+          null,
+          5
+        ],
+        [
+          "I'd like you to tell me what you think about that",
+          "我想让你告诉我你对那个怎么想",
+          null,
+          6
+        ],
+        [
+          "I want you to tell me what you need to do",
+          "我想让你告诉我你需要做什么",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0170L02",
+        "seed_context": {
+          "known": "I'd like you to tell me what you need.",
+          "target": "我想让你告诉我你需要什么。"
+        }
+      },
+      "components": [
+        [
+          "想",
+          "want"
+        ],
+        [
+          "让",
+          "let/make"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "告诉",
+          "tell"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0170L03": {
+      "lego": [
+        "tell me",
+        "告诉我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0170L01",
+          "known": "I'd like you to",
+          "target": "我想让你",
+          "type": "M"
+        },
+        {
+          "id": "S0170L02",
+          "known": "want you to tell me",
+          "target": "想让你告诉我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "tell me",
+          "告诉我",
+          null,
+          1
+        ],
+        [
+          "Tell me that",
+          "告诉我那个",
+          null,
+          2
+        ],
+        [
+          "tell me tomorrow",
+          "明天告诉我",
+          null,
+          2
+        ],
+        [
+          "Tell me what you think",
+          "告诉我你怎么想",
+          null,
+          3
+        ],
+        [
+          "tell me tomorrow afternoon",
+          "明天下午告诉我",
+          null,
+          3
+        ],
+        [
+          "Tell me what you need",
+          "告诉我你需要什么",
+          null,
+          3
+        ],
+        [
+          "Tell me what you need to do",
+          "告诉我你需要做什么",
+          null,
+          4
+        ],
+        [
+          "Tell me what you think about that",
+          "告诉我你对那个怎么想",
+          null,
+          4
+        ],
+        [
+          "Can you tell me what you need to do tomorrow?",
+          "你能告诉我你明天需要做什么吗？",
+          null,
+          6
+        ],
+        [
+          "tell me what you need to do tomorrow afternoon",
+          "告诉我你明天下午需要做什么",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0170L03",
+        "seed_context": {
+          "known": "I'd like you to tell me what you need.",
+          "target": "我想让你告诉我你需要什么。"
+        }
+      },
+      "components": [
+        [
+          "告诉",
+          "tell"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0170L04": {
+      "lego": [
+        "what you need",
+        "你需要什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0170L01",
+          "known": "I'd like you to",
+          "target": "我想让你",
+          "type": "M"
+        },
+        {
+          "id": "S0170L02",
+          "known": "want you to tell me",
+          "target": "想让你告诉我",
+          "type": "M"
+        },
+        {
+          "id": "S0170L03",
+          "known": "tell me",
+          "target": "告诉我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what you need",
+          "你需要什么",
+          null,
+          1
+        ],
+        [
+          "Tell me what you need",
+          "告诉我你需要什么",
+          null,
+          2
+        ],
+        [
+          "what you need to do",
+          "你需要做什么",
+          null,
+          2
+        ],
+        [
+          "Tell me what you need to do",
+          "告诉我你需要做什么",
+          null,
+          3
+        ],
+        [
+          "what you need tomorrow",
+          "你明天需要什么",
+          null,
+          2
+        ],
+        [
+          "Tell me what you need to do tomorrow",
+          "告诉我你明天需要做什么",
+          null,
+          4
+        ],
+        [
+          "what you need to do tomorrow afternoon",
+          "你明天下午需要做什么",
+          null,
+          4
+        ],
+        [
+          "I'd like you to tell me what you need",
+          "我想让你告诉我你需要什么",
+          null,
+          5
+        ],
+        [
+          "I want you to tell me what you need to do",
+          "我想让你告诉我你需要做什么",
+          null,
+          6
+        ],
+        [
+          "I'd like you to tell me what you need.",
+          "我想让你告诉我你需要什么。",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_plus_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0170L04",
+        "seed_context": {
+          "known": "I'd like you to tell me what you need.",
+          "target": "我想让你告诉我你需要什么。"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "需要",
+          "need"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  }
+}

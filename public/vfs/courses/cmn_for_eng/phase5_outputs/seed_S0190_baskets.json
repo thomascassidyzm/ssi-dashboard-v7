@@ -1,0 +1,605 @@
+{
+  "S0190L01": {
+    "lego": [
+      "mind",
+      "介意"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I don't mind.",
+        "我不介意。",
+        null,
+        1
+      ],
+      [
+        "Do you mind?",
+        "你介意吗？",
+        null,
+        1
+      ],
+      [
+        "I think you mind.",
+        "我想你介意。",
+        null,
+        2
+      ],
+      [
+        "I'm afraid I mind.",
+        "恐怕我介意。",
+        null,
+        2
+      ],
+      [
+        "I don't mind at work.",
+        "我在工作的地方不介意。",
+        null,
+        3
+      ],
+      [
+        "Do you mind so far?",
+        "到目前为止你介意吗？",
+        null,
+        3
+      ],
+      [
+        "I don't need to mind them.",
+        "我不需要介意它们。",
+        null,
+        4
+      ],
+      [
+        "I think I mind a while ago.",
+        "我想我刚才介意了。",
+        null,
+        5
+      ],
+      [
+        "I'm afraid I don't mind at work so far.",
+        "恐怕到目前为止我在工作的地方不介意。",
+        null,
+        6
+      ],
+      [
+        "I think you mind but I don't need to mind.",
+        "我想你介意但是我不需要介意。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0190L01",
+      "seed_context": {
+        "known": "Do you mind if I ask you some questions?",
+        "target": "你介意我问你一些问题吗？"
+      }
+    }
+  },
+  "S0190L02": {
+    "lego": [
+      "you mind",
+      "你介意"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mind",
+        "介意"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Do you mind?",
+        "你介意吗？",
+        null,
+        1
+      ],
+      [
+        "I think you mind.",
+        "我想你介意。",
+        null,
+        2
+      ],
+      [
+        "Do you mind them?",
+        "你介意它们吗？",
+        null,
+        2
+      ],
+      [
+        "So do you mind?",
+        "所以你介意吗？",
+        null,
+        2
+      ],
+      [
+        "I'm afraid you mind them.",
+        "恐怕你介意它们。",
+        null,
+        3
+      ],
+      [
+        "Do you mind at work?",
+        "你在工作的地方介意吗？",
+        null,
+        3
+      ],
+      [
+        "I think you mind a while ago.",
+        "我想你刚才介意了。",
+        null,
+        4
+      ],
+      [
+        "Do you mind that's a good idea?",
+        "你介意那是个好主意吗？",
+        null,
+        5
+      ],
+      [
+        "I'm happy so far but do you mind?",
+        "到目前为止我很高兴但是你介意吗？",
+        null,
+        6
+      ],
+      [
+        "I think you mind but I don't need to mind.",
+        "我想你介意但是我不需要介意。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0190L02",
+      "seed_context": {
+        "known": "Do you mind if I ask you some questions?",
+        "target": "你介意我问你一些问题吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0190L03": {
+    "lego": [
+      "ask",
+      "问"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "mind",
+        "介意"
+      ],
+      [
+        "you mind",
+        "你介意"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I ask.",
+        "我问。",
+        null,
+        1
+      ],
+      [
+        "I have to ask.",
+        "我必须问。",
+        null,
+        2
+      ],
+      [
+        "I ask them.",
+        "我问它们。",
+        null,
+        2
+      ],
+      [
+        "I think I ask.",
+        "我想我问。",
+        null,
+        2
+      ],
+      [
+        "I ask at work.",
+        "我在工作的地方问。",
+        null,
+        3
+      ],
+      [
+        "I don't need to ask.",
+        "我不需要问。",
+        null,
+        3
+      ],
+      [
+        "I ask my mother a while ago.",
+        "我刚才问我妈妈。",
+        null,
+        4
+      ],
+      [
+        "I'm afraid I have to ask them.",
+        "恐怕我必须问它们。",
+        null,
+        5
+      ],
+      [
+        "I think I ask my mother at work.",
+        "我想我在工作的地方问我妈妈。",
+        null,
+        5
+      ],
+      [
+        "So I don't need to ask but you mind.",
+        "所以我不需要问但是你介意。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0190L03",
+      "seed_context": {
+        "known": "Do you mind if I ask you some questions?",
+        "target": "你介意我问你一些问题吗？"
+      }
+    }
+  },
+  "S0190L04": {
+    "lego": [
+      "I ask you",
+      "我问你"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mind",
+        "介意"
+      ],
+      [
+        "you mind",
+        "你介意"
+      ],
+      [
+        "ask",
+        "问"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I ask you.",
+        "我问你。",
+        null,
+        1
+      ],
+      [
+        "I ask you them.",
+        "我问你它们。",
+        null,
+        2
+      ],
+      [
+        "So I ask you.",
+        "所以我问你。",
+        null,
+        2
+      ],
+      [
+        "I think I ask you.",
+        "我想我问你。",
+        null,
+        2
+      ],
+      [
+        "I ask you at work.",
+        "我在工作的地方问你。",
+        null,
+        3
+      ],
+      [
+        "I ask you a while ago.",
+        "我刚才问你。",
+        null,
+        3
+      ],
+      [
+        "I'm afraid I ask you them.",
+        "恐怕我问你它们。",
+        null,
+        4
+      ],
+      [
+        "I think I ask you at work so far.",
+        "我想到目前为止我在工作的地方问你。",
+        null,
+        6
+      ],
+      [
+        "So I ask you but you mind them.",
+        "所以我问你但是你介意它们。",
+        null,
+        6
+      ],
+      [
+        "I'm happy so far but I ask you them.",
+        "到目前为止我很高兴但是我问你它们。",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0190L04",
+      "seed_context": {
+        "known": "Do you mind if I ask you some questions?",
+        "target": "你介意我问你一些问题吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0190L05": {
+    "lego": [
+      "question",
+      "问题"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "mind",
+        "介意"
+      ],
+      [
+        "you mind",
+        "你介意"
+      ],
+      [
+        "ask",
+        "问"
+      ],
+      [
+        "I ask you",
+        "我问你"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "That's a question.",
+        "那是个问题。",
+        null,
+        2
+      ],
+      [
+        "A good question.",
+        "一个好问题。",
+        null,
+        2
+      ],
+      [
+        "I ask a question.",
+        "我问一个问题。",
+        null,
+        2
+      ],
+      [
+        "I have a question.",
+        "我有一个问题。",
+        null,
+        2
+      ],
+      [
+        "I think that's a question.",
+        "我想那是个问题。",
+        null,
+        3
+      ],
+      [
+        "That's a good question so far.",
+        "到目前为止那是个好问题。",
+        null,
+        4
+      ],
+      [
+        "I ask you a question at work.",
+        "我在工作的地方问你一个问题。",
+        null,
+        4
+      ],
+      [
+        "I'm afraid that's a good question.",
+        "恐怕那是个好问题。",
+        null,
+        4
+      ],
+      [
+        "I think I ask you a question but you mind.",
+        "我想我问你一个问题但是你介意。",
+        null,
+        8
+      ],
+      [
+        "I have a good question so I ask you.",
+        "我有一个好问题所以我问你。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0190L05",
+      "seed_context": {
+        "known": "Do you mind if I ask you some questions?",
+        "target": "你介意我问你一些问题吗？"
+      }
+    }
+  },
+  "S0190L06": {
+    "lego": [
+      "some questions",
+      "一些问题"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "mind",
+        "介意"
+      ],
+      [
+        "you mind",
+        "你介意"
+      ],
+      [
+        "ask",
+        "问"
+      ],
+      [
+        "I ask you",
+        "我问你"
+      ],
+      [
+        "question",
+        "问题"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I have some questions.",
+        "我有一些问题。",
+        null,
+        2
+      ],
+      [
+        "Some questions.",
+        "一些问题。",
+        null,
+        1
+      ],
+      [
+        "I ask some questions.",
+        "我问一些问题。",
+        null,
+        2
+      ],
+      [
+        "That's some questions.",
+        "那是一些问题。",
+        null,
+        2
+      ],
+      [
+        "I ask you some questions.",
+        "我问你一些问题。",
+        null,
+        2
+      ],
+      [
+        "I think I have some questions.",
+        "我想我有一些问题。",
+        null,
+        3
+      ],
+      [
+        "I ask you some questions at work.",
+        "我在工作的地方问你一些问题。",
+        null,
+        3
+      ],
+      [
+        "So I ask you some questions so far.",
+        "所以到目前为止我问你一些问题。",
+        null,
+        4
+      ],
+      [
+        "I'm afraid I have to ask you some questions.",
+        "恐怕我必须问你一些问题。",
+        null,
+        5
+      ],
+      [
+        "Do you mind I ask you some questions?",
+        "你介意我问你一些问题吗？",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 5,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "_metadata": {
+      "lego_id": "S0190L06",
+      "seed_context": {
+        "known": "Do you mind if I ask you some questions?",
+        "target": "你介意我问你一些问题吗？"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
