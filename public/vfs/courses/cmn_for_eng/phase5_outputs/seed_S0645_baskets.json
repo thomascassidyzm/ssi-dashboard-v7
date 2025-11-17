@@ -1,0 +1,298 @@
+{
+  "S0645L01": {
+    "lego": [
+      "I can help you",
+      "我可以帮您"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I can help you",
+        "我可以帮您",
+        null,
+        4
+      ],
+      [
+        "I can help",
+        "我可以帮",
+        null,
+        3
+      ],
+      [
+        "I think I can help",
+        "我想我可以帮",
+        null,
+        5
+      ],
+      [
+        "I can help you now",
+        "我现在可以帮您",
+        null,
+        5
+      ],
+      [
+        "I think I can help you",
+        "我认为我可以帮您",
+        null,
+        6
+      ],
+      [
+        "I can help you with that",
+        "我可以帮您那个",
+        null,
+        6
+      ],
+      [
+        "I think I can help you with that bag",
+        "我认为我可以帮您那个包",
+        null,
+        9
+      ],
+      [
+        "I can help you say where that is",
+        "我可以帮您说那个在哪里",
+        null,
+        8
+      ],
+      [
+        "I think that I can help you with that sir",
+        "我认为我可以帮您那个先生",
+        null,
+        10
+      ],
+      [
+        "I can help you think where the red bag is",
+        "我可以帮您想红色的包在哪里",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "可以",
+        "can"
+      ],
+      [
+        "帮",
+        "help"
+      ],
+      [
+        "您",
+        "you (formal)"
+      ]
+    ]
+  },
+  "S0645L02": {
+    "lego": [
+      "can help you",
+      "可以帮您"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0645L01",
+        "known": "I can help you",
+        "target": "我可以帮您",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "can help",
+        "可以帮",
+        null,
+        2
+      ],
+      [
+        "I can help",
+        "我可以帮",
+        null,
+        3
+      ],
+      [
+        "can help you",
+        "可以帮您",
+        null,
+        3
+      ],
+      [
+        "I can help you",
+        "我可以帮您",
+        null,
+        4
+      ],
+      [
+        "I think can help you",
+        "我想可以帮您",
+        null,
+        5
+      ],
+      [
+        "I can help you with that",
+        "我可以帮您那个",
+        null,
+        6
+      ],
+      [
+        "I think I can help you now sir",
+        "我想我可以帮您现在先生",
+        null,
+        8
+      ],
+      [
+        "I think that I can help you with that",
+        "我认为我可以帮您那个",
+        null,
+        9
+      ],
+      [
+        "you could say that I can help you madam",
+        "您能说我可以帮您女士",
+        null,
+        9
+      ],
+      [
+        "I think I can help you say where that is",
+        "我认为我可以帮您说那个在哪里",
+        null,
+        10
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "可以",
+        "can"
+      ],
+      [
+        "帮",
+        "help"
+      ],
+      [
+        "您",
+        "you (formal)"
+      ]
+    ]
+  },
+  "S0645L03": {
+    "lego": [
+      "help you",
+      "帮您"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0645L01",
+        "known": "I can help you",
+        "target": "我可以帮您",
+        "type": "M"
+      },
+      {
+        "id": "S0645L02",
+        "known": "can help you",
+        "target": "可以帮您",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "help you",
+        "帮您",
+        null,
+        2
+      ],
+      [
+        "I help you",
+        "我帮您",
+        null,
+        3
+      ],
+      [
+        "I can help you",
+        "我可以帮您",
+        null,
+        4
+      ],
+      [
+        "could help you",
+        "能帮您",
+        null,
+        3
+      ],
+      [
+        "I think I help you",
+        "我想我帮您",
+        null,
+        5
+      ],
+      [
+        "I want to help you",
+        "我想要帮您",
+        null,
+        5
+      ],
+      [
+        "I think that I can help you now",
+        "我认为我现在可以帮您",
+        null,
+        7
+      ],
+      [
+        "you could say I can help you with that",
+        "您能说我可以帮您那个",
+        null,
+        9
+      ],
+      [
+        "I think I can help you with the red bag",
+        "我认为我可以帮您红色的包",
+        null,
+        10
+      ],
+      [
+        "I can help you madam",
+        "我可以帮您女士",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "帮",
+        "help"
+      ],
+      [
+        "您",
+        "you (formal)"
+      ]
+    ]
+  }
+}
