@@ -1,0 +1,613 @@
+{
+  "S0110L01": {
+    "lego": [
+      "We're friends",
+      "我们是朋友"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "We're friends",
+        "我们是朋友",
+        null,
+        1
+      ],
+      [
+        "You shouldn't worry, we're friends",
+        "你不应该担心，我们是朋友",
+        null,
+        2
+      ],
+      [
+        "We're friends, we're trying to say that",
+        "我们是朋友，我们正在试图说那",
+        null,
+        3
+      ],
+      [
+        "We're friends and we need to change",
+        "我们是朋友，我们需要改变",
+        null,
+        3
+      ],
+      [
+        "That is why we're friends",
+        "这就是为什么我们是朋友",
+        null,
+        2
+      ],
+      [
+        "We're friends, we just need to work hard",
+        "我们是朋友，我们只需要努力工作",
+        null,
+        4
+      ],
+      [
+        "I'm enjoying finding out we're friends",
+        "我很享受了解我们是朋友",
+        null,
+        3
+      ],
+      [
+        "We hoped to see that we're friends",
+        "我们希望看到我们是朋友",
+        null,
+        3
+      ],
+      [
+        "We must learn new words because we're friends",
+        "我们必须学习新词因为我们是朋友",
+        null,
+        4
+      ],
+      [
+        "You shouldn't worry about doing something similar, we're friends",
+        "你不应该担心做类似的事情，我们是朋友",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0110L01",
+      "seed_context": {
+        "known": "We're friends, and after we finish I'd like to relax.",
+        "target": "我们是朋友，在我们结束后我想放松一下。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0110L02": {
+    "lego": [
+      "friends",
+      "朋友"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "We're friends",
+        "我们是朋友"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "We're friends",
+        "我们是朋友",
+        null,
+        1
+      ],
+      [
+        "You should know we're friends",
+        "你应该知道我们是朋友",
+        null,
+        2
+      ],
+      [
+        "We're trying to say we're friends",
+        "我们正在试图说我们是朋友",
+        null,
+        3
+      ],
+      [
+        "We need to change because we're friends",
+        "我们需要改变因为我们是朋友",
+        null,
+        3
+      ],
+      [
+        "That is why we're friends",
+        "这就是为什么我们是朋友",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying finding out we're friends",
+        "我很享受了解我们是朋友",
+        null,
+        3
+      ],
+      [
+        "We don't need to worry, we're friends",
+        "我们不需要担心，我们是朋友",
+        null,
+        4
+      ],
+      [
+        "We hoped to see we're friends",
+        "我们希望看到我们是朋友",
+        null,
+        3
+      ],
+      [
+        "We must work hard to learn, but we're friends",
+        "我们必须努力工作来学习，但我们是朋友",
+        null,
+        5
+      ],
+      [
+        "You shouldn't worry about doing something similar, we're friends",
+        "你不应该担心做类似的事情，我们是朋友",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0110L02",
+      "seed_context": {
+        "known": "We're friends, and after we finish I'd like to relax.",
+        "target": "我们是朋友，在我们结束后我想放松一下。"
+      }
+    }
+  },
+  "S0110L03": {
+    "lego": [
+      "after we finish",
+      "在我们结束后"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "We're friends",
+        "我们是朋友"
+      ],
+      [
+        "friends",
+        "朋友"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "After we finish",
+        "在我们结束后",
+        null,
+        1
+      ],
+      [
+        "After we finish, we need to change",
+        "在我们结束后，我们需要改变",
+        null,
+        3
+      ],
+      [
+        "You should know after we finish",
+        "你应该知道在我们结束后",
+        null,
+        2
+      ],
+      [
+        "After we finish, we're trying to learn",
+        "在我们结束后，我们正在试图学习",
+        null,
+        3
+      ],
+      [
+        "That is why after we finish",
+        "这就是为什么在我们结束后",
+        null,
+        2
+      ],
+      [
+        "We hoped to see what happens after we finish",
+        "我们希望看到在我们结束后发生什么",
+        null,
+        5
+      ],
+      [
+        "After we finish, we just need to work hard",
+        "在我们结束后，我们只需要努力工作",
+        null,
+        4
+      ],
+      [
+        "I'm enjoying finding out what happens after we finish",
+        "我很享受了解在我们结束后发生什么",
+        null,
+        5
+      ],
+      [
+        "After we finish, we must learn a lot of new words",
+        "在我们结束后，我们必须学习很多新词",
+        null,
+        5
+      ],
+      [
+        "You shouldn't worry about doing something similar after we finish",
+        "你不应该担心在我们结束后做类似的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0110L03",
+      "seed_context": {
+        "known": "We're friends, and after we finish I'd like to relax.",
+        "target": "我们是朋友，在我们结束后我想放松一下。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0110L04": {
+    "lego": [
+      "finish",
+      "结束"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "We're friends",
+        "我们是朋友"
+      ],
+      [
+        "friends",
+        "朋友"
+      ],
+      [
+        "after we finish",
+        "在我们结束后"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "We need to finish",
+        "我们需要结束",
+        null,
+        2
+      ],
+      [
+        "After we finish",
+        "在我们结束后",
+        null,
+        1
+      ],
+      [
+        "We're trying to finish",
+        "我们正在试图结束",
+        null,
+        2
+      ],
+      [
+        "You should finish",
+        "你应该结束",
+        null,
+        1
+      ],
+      [
+        "We hoped to finish",
+        "我们希望结束",
+        null,
+        2
+      ],
+      [
+        "That is why we must finish",
+        "这就是为什么我们必须结束",
+        null,
+        3
+      ],
+      [
+        "I'm enjoying trying to finish",
+        "我很享受试图结束",
+        null,
+        3
+      ],
+      [
+        "We don't need to worry, we just need to finish",
+        "我们不需要担心，我们只需要结束",
+        null,
+        4
+      ],
+      [
+        "After we finish, we must work hard to learn",
+        "在我们结束后，我们必须努力工作来学习",
+        null,
+        5
+      ],
+      [
+        "You shouldn't worry about doing something similar after we finish",
+        "你不应该担心在我们结束后做类似的事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0110L04",
+      "seed_context": {
+        "known": "We're friends, and after we finish I'd like to relax.",
+        "target": "我们是朋友，在我们结束后我想放松一下。"
+      }
+    }
+  },
+  "S0110L06": {
+    "lego": [
+      "relax",
+      "放松一下"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "We're friends",
+        "我们是朋友"
+      ],
+      [
+        "friends",
+        "朋友"
+      ],
+      [
+        "after we finish",
+        "在我们结束后"
+      ],
+      [
+        "finish",
+        "结束"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "We need to relax",
+        "我们需要放松一下",
+        null,
+        2
+      ],
+      [
+        "After we finish, we need to relax",
+        "在我们结束后，我们需要放松一下",
+        null,
+        3
+      ],
+      [
+        "You should relax",
+        "你应该放松一下",
+        null,
+        1
+      ],
+      [
+        "We're trying to relax",
+        "我们正在试图放松一下",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying trying to relax",
+        "我很享受试图放松一下",
+        null,
+        3
+      ],
+      [
+        "That is why we need to relax",
+        "这就是为什么我们需要放松一下",
+        null,
+        3
+      ],
+      [
+        "We hoped to relax after we finish",
+        "我们希望在我们结束后放松一下",
+        null,
+        4
+      ],
+      [
+        "We just need to relax",
+        "我们只需要放松一下",
+        null,
+        2
+      ],
+      [
+        "We're friends, after we finish we need to relax",
+        "我们是朋友，在我们结束后我们需要放松一下",
+        null,
+        5
+      ],
+      [
+        "You shouldn't worry, after we finish you should relax",
+        "你不应该担心，在我们结束后你应该放松一下",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0110L06",
+      "seed_context": {
+        "known": "We're friends, and after we finish I'd like to relax.",
+        "target": "我们是朋友，在我们结束后我想放松一下。"
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0110L07": {
+    "lego": [
+      "relax",
+      "放松"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "We're friends",
+        "我们是朋友"
+      ],
+      [
+        "friends",
+        "朋友"
+      ],
+      [
+        "after we finish",
+        "在我们结束后"
+      ],
+      [
+        "finish",
+        "结束"
+      ],
+      [
+        "relax",
+        "放松一下"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "We need to relax",
+        "我们需要放松",
+        null,
+        2
+      ],
+      [
+        "You should relax",
+        "你应该放松",
+        null,
+        1
+      ],
+      [
+        "We're trying to relax",
+        "我们正在试图放松",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying trying to relax",
+        "我很享受试图放松",
+        null,
+        3
+      ],
+      [
+        "After we finish, we need to relax",
+        "在我们结束后，我们需要放松",
+        null,
+        3
+      ],
+      [
+        "That is why we need to relax",
+        "这就是为什么我们需要放松",
+        null,
+        3
+      ],
+      [
+        "We hoped to relax after we finish",
+        "我们希望在我们结束后放松",
+        null,
+        4
+      ],
+      [
+        "We just need to relax",
+        "我们只需要放松",
+        null,
+        2
+      ],
+      [
+        "You shouldn't worry, after we finish you should relax",
+        "你不应该担心，在我们结束后你应该放松",
+        null,
+        5
+      ],
+      [
+        "We're friends, and after we finish I'd like to relax.",
+        "我们是朋友，在我们结束后我想放松一下。",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0110L07",
+      "seed_context": {
+        "known": "We're friends, and after we finish I'd like to relax.",
+        "target": "我们是朋友，在我们结束后我想放松一下。"
+      }
+    }
+  }
+}

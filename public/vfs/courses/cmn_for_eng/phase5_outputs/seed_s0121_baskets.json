@@ -1,0 +1,152 @@
+{
+  "S0121L01": {
+    "lego": ["you don't like","你不喜欢"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You don't like something.","你不喜欢一些事情。",null,2],
+      ["You don't like the conversation.","你不喜欢对话。",null,2],
+      ["You don't like what I said.","你不喜欢我说的话。",null,3],
+      ["You don't like when you leave.","你不喜欢你离开时。",null,3],
+      ["You don't like to go by bus.","你不喜欢坐公共汽车去。",null,4],
+      ["You don't like that was very interesting.","你不喜欢那非常有趣。",null,4],
+      ["You don't like when we were in the pub.","你不喜欢我们在酒吧时。",null,5],
+      ["You don't like when we learn something new.","你不喜欢当我们学习新东西的时候。",null,5],
+      ["You don't like what you said before you leave.","你不喜欢在你离开前你说的话。",null,6],
+      ["You don't like when we talked to each other last time.","你不喜欢我们上次互相交谈时。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0121L02": {
+    "lego": ["like to use","喜欢用"],
+    "type": "M",
+    "current_seed_legos_available": [["you don't like","你不喜欢"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I like to use something.","我喜欢用一些事情。",null,2],
+      ["You like to use something new.","你喜欢用新东西。",null,2],
+      ["I like to use our brain.","我喜欢用我们的大脑。",null,3],
+      ["We like to use the conversation.","我们喜欢用对话。",null,3],
+      ["You don't like to use something new.","你不喜欢用新东西。",null,4],
+      ["I like to use what you said.","我喜欢用你说的话。",null,4],
+      ["You don't like to use when we learn.","你不喜欢用当我们学习的时候。",null,5],
+      ["I like to use the best choice I could make.","我喜欢用我能做的最好选择。",null,6],
+      ["You don't like to use that was very interesting.","你不喜欢用那非常有趣。",null,6],
+      ["I like to use when we talked to each other.","我喜欢用我们互相交谈时。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0121L03": {
+    "lego": ["you don't like to use","你不喜欢用"],
+    "type": "M",
+    "current_seed_legos_available": [["you don't like","你不喜欢"],["like to use","喜欢用"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You don't like to use something.","你不喜欢用一些事情。",null,2],
+      ["You don't like to use our brain.","你不喜欢用我们的大脑。",null,2],
+      ["You don't like to use something new.","你不喜欢用新东西。",null,3],
+      ["You don't like to use the conversation.","你不喜欢用对话。",null,3],
+      ["You don't like to use what I said.","你不喜欢用我说的话。",null,4],
+      ["You don't like to use the best choice.","你不喜欢用最好选择。",null,4],
+      ["You don't like to use when we were in the pub.","你不喜欢用我们在酒吧时。",null,5],
+      ["You don't like to use when we learn something new.","你不喜欢用当我们学习新东西的时候。",null,6],
+      ["You don't like to use what you said before you leave.","你不喜欢用在你离开前你说的话。",null,7],
+      ["You don't like to use that was very interesting yesterday.","你不喜欢用那昨天非常有趣。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0121L04": {
+    "lego": ["use your car","用你的车"],
+    "type": "M",
+    "current_seed_legos_available": [["you don't like","你不喜欢"],["like to use","喜欢用"],["you don't like to use","你不喜欢用"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Use your car.","用你的车。",null,1],
+      ["I use your car.","我用你的车。",null,2],
+      ["Can I use your car?","我能用你的车吗？",null,3],
+      ["You like to use your car.","你喜欢用你的车。",null,3],
+      ["You don't like to use your car.","你不喜欢用你的车。",null,4],
+      ["I can use your car before you leave.","在你离开前我能用你的车。",null,5],
+      ["You don't like when I use your car.","你不喜欢我用你的车时。",null,5],
+      ["I feel as if I use your car.","我感觉好像我用你的车。",null,6],
+      ["You don't like to use your car when we go.","你不喜欢当我们去的时候用你的车。",null,7],
+      ["I can ask you something before I use your car.","在我用你的车前我能问你一些事情。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0121L05": {
+    "lego": ["your car","你的车"],
+    "type": "M",
+    "current_seed_legos_available": [["you don't like","你不喜欢"],["like to use","喜欢用"],["you don't like to use","你不喜欢用"],["use your car","用你的车"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Your car.","你的车。",null,1],
+      ["I like your car.","我喜欢你的车。",null,2],
+      ["Your car is very interesting.","你的车非常有趣。",null,3],
+      ["I remember your car.","我记得你的车。",null,2],
+      ["I use your car when I go.","我去的时候用你的车。",null,4],
+      ["You don't like your car.","你不喜欢你的车。",null,3],
+      ["You don't like to use your car.","你不喜欢用你的车。",null,4],
+      ["I feel as if your car is the best choice.","我感觉好像你的车是最好选择。",null,7],
+      ["Can I ask you something about your car before you leave?","在你离开前我能问你关于你的车的一些事情吗？",null,8],
+      ["You don't like when I use your car to go by bus.","你不喜欢我用你的车去坐公共汽车时。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0121L06": {
+    "lego": ["it's unusual","这很不寻常"],
+    "type": "M",
+    "current_seed_legos_available": [["you don't like","你不喜欢"],["like to use","喜欢用"],["you don't like to use","你不喜欢用"],["use your car","用你的车"],["your car","你的车"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["It's unusual.","这很不寻常。",null,1],
+      ["It's unusual that I remember.","我记得这很不寻常。",null,2],
+      ["It's unusual you like your car.","你喜欢你的车这很不寻常。",null,3],
+      ["It's unusual when we learn something new.","当我们学习新东西的时候这很不寻常。",null,3],
+      ["It's unusual you don't like the conversation.","你不喜欢对话这很不寻常。",null,4],
+      ["It's unusual that you use your car.","你用你的车这很不寻常。",null,4],
+      ["It's unusual you don't like to go by bus.","你不喜欢坐公共汽车去这很不寻常。",null,5],
+      ["It's unusual that you like to use your car.","你喜欢用你的车这很不寻常。",null,5],
+      ["It's unusual you don't like when we talked to each other.","你不喜欢我们互相交谈时这很不寻常。",null,6],
+      ["It's unusual that you don't like to use your car.","你不喜欢用你的车这很不寻常。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

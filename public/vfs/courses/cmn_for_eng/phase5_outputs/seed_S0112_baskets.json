@@ -1,0 +1,102 @@
+{
+  "S0112L01": {
+    "lego": ["that was very interesting","那非常有趣"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["That was work.","那是工作。",null,2],
+      ["That was very interesting.","那非常有趣。",null,2],
+      ["That was very interesting, we must learn.","那非常有趣，我们必须学习。",null,3],
+      ["That was very interesting when we learn.","那非常有趣当我们学习的时候。",null,3],
+      ["That was very interesting, we just need to learn.","那非常有趣，我们只需要学习。",null,4],
+      ["That was very interesting, we need to change.","那非常有趣，我们需要改变。",null,4],
+      ["That was very interesting, we hoped to see something new.","那非常有趣，我们希望看到新东西。",null,5],
+      ["That was very interesting when we learn something new.","那非常有趣当我们学习新东西的时候。",null,5],
+      ["That was very interesting, we're trying to learn new words.","那非常有趣，我们正在试图学习新词。",null,6],
+      ["That was very interesting, after we finish we just need to relax.","那非常有趣，在我们结束后我们只需要放松一下。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0112L02": {
+    "lego": ["very interesting","非常有趣"],
+    "type": "M",
+    "current_seed_legos_available": [["that was very interesting","那非常有趣"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["That was very interesting.","那非常有趣。",null,2],
+      ["Very interesting.","非常有趣。",null,1],
+      ["Very interesting, we need to learn.","非常有趣，我们需要学习。",null,3],
+      ["That was very interesting, we must work hard.","那非常有趣，我们必须努力工作。",null,3],
+      ["Very interesting, we're trying to see something new.","非常有趣，我们正在试图看到新东西。",null,4],
+      ["That was very interesting, we need to change.","那非常有趣，我们需要改变。",null,4],
+      ["Very interesting, when we learn something new it changes our brain.","非常有趣，当我们学习新东西的时候它改变我们的大脑。",null,6],
+      ["That was very interesting, we hoped to see what you were doing.","那非常有趣，我们希望看到你正在做什么。",null,6],
+      ["Very interesting, we must work hard to learn a lot of new words.","非常有趣，我们必须努力工作来学习很多新词。",null,7],
+      ["That was very interesting, after we finish we just need to relax.","那非常有趣，在我们结束后我们只需要放松一下。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0112L03": {
+    "lego": ["I wasn't expecting it","我没有期待它"],
+    "type": "M",
+    "current_seed_legos_available": [["that was very interesting","那非常有趣"],["very interesting","非常有趣"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I wasn't expecting it.","我没有期待它。",null,1],
+      ["I wasn't expecting it, we're friends.","我没有期待它，我们是朋友。",null,2],
+      ["I wasn't expecting it, we need to change.","我没有期待它，我们需要改变。",null,3],
+      ["I wasn't expecting it, that was very interesting.","我没有期待它，那非常有趣。",null,3],
+      ["I wasn't expecting it, we must work hard.","我没有期待它，我们必须努力工作。",null,4],
+      ["I wasn't expecting it when we learn something new.","我没有期待它当我们学习新东西的时候。",null,4],
+      ["I wasn't expecting it, we hoped to see something new.","我没有期待它，我们希望看到新东西。",null,5],
+      ["I wasn't expecting it, we're trying to learn new words.","我没有期待它，我们正在试图学习新词。",null,5],
+      ["I wasn't expecting it, we just need to relax after we finish.","我没有期待它，在我们结束后我们只需要放松一下。",null,6],
+      ["I wasn't expecting it, we must work hard to learn a lot of new words.","我没有期待它，我们必须努力工作来学习很多新词。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0112L04": {
+    "lego": ["expecting it","期待它"],
+    "type": "M",
+    "current_seed_legos_available": [["that was very interesting","那非常有趣"],["very interesting","非常有趣"],["I wasn't expecting it","我没有期待它"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I wasn't expecting it.","我没有期待它。",null,2],
+      ["I wasn't expecting it, that was very interesting.","我没有期待它，那非常有趣。",null,3],
+      ["I wasn't expecting it, we must work hard.","我没有期待它，我们必须努力工作。",null,3],
+      ["I wasn't expecting it, we need to change.","我没有期待它，我们需要改变。",null,4],
+      ["I wasn't expecting it when we learn something new.","我没有期待它当我们学习新东西的时候。",null,4],
+      ["I wasn't expecting it, we hoped to see what you were doing.","我没有期待它，我们希望看到你正在做什么。",null,5],
+      ["I wasn't expecting it, that was very interesting when we learn.","我没有期待它，那非常有趣当我们学习的时候。",null,5],
+      ["I wasn't expecting it, we must work hard to learn new words.","我没有期待它，我们必须努力工作来学习新词。",null,6],
+      ["I wasn't expecting it, that was very interesting after we finish.","我没有期待它，在我们结束后那非常有趣。",null,6],
+      ["That was very interesting, and I wasn't expecting it.","那非常有趣，我没有期待它。",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 3
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "S0114L01": {
+    "lego": ["I feel as if","我感觉好像"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I feel as if I can't remember.","我感觉好像我不能记得。",null,2],
+      ["I feel as if we need to change.","我感觉好像我们需要改变。",null,2],
+      ["I feel as if I wasn't expecting it.","我感觉好像我没有期待它。",null,3],
+      ["I feel as if we must work hard.","我感觉好像我们必须努力工作。",null,3],
+      ["I feel as if I can't remember the answer.","我感觉好像我不能记得答案。",null,4],
+      ["I feel as if we're trying to learn.","我感觉好像我们正在试图学习。",null,4],
+      ["I feel as if I can't remember what you said.","我感觉好像我不能记得你说的话。",null,5],
+      ["I feel as if we need to learn something new.","我感觉好像我们需要学习新东西。",null,5],
+      ["I feel as if we must work hard to learn new words.","我感觉好像我们必须努力工作来学习新词。",null,6],
+      ["I feel as if that was very interesting when we learn.","我感觉好像那非常有趣当我们学习的时候。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0114L02": {
+    "lego": ["doing worse today than yesterday","今天做得比昨天差"],
+    "type": "M",
+    "current_seed_legos_available": [["I feel as if","我感觉好像"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm doing worse today than yesterday.","我今天做得比昨天差。",null,1],
+      ["Doing worse today than yesterday.","今天做得比昨天差。",null,1],
+      ["I feel as if I'm doing worse today than yesterday.","我感觉好像我今天做得比昨天差。",null,2],
+      ["I'm doing worse today than yesterday, we need to change.","我今天做得比昨天差，我们需要改变。",null,3],
+      ["I'm doing worse today than yesterday, we must work hard.","我今天做得比昨天差，我们必须努力工作。",null,4],
+      ["Doing worse today than yesterday, we just need to learn.","今天做得比昨天差，我们只需要学习。",null,4],
+      ["I feel as if I'm doing worse today than yesterday, we must learn.","我感觉好像我今天做得比昨天差，我们必须学习。",null,5],
+      ["I'm doing worse today than yesterday, I can't remember what you said.","我今天做得比昨天差，我不能记得你说的话。",null,5],
+      ["I feel as if I'm doing worse today than yesterday when we learn something new.","我感觉好像我今天做得比昨天差当我们学习新东西的时候。",null,6],
+      ["I'm doing worse today than yesterday, we must work hard to learn new words.","我今天做得比昨天差，我们必须努力工作来学习新词。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0114L03": {
+    "lego": ["doing worse than yesterday","做得比昨天差"],
+    "type": "M",
+    "current_seed_legos_available": [["I feel as if","我感觉好像"],["doing worse today than yesterday","今天做得比昨天差"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm doing worse than yesterday.","我做得比昨天差。",null,1],
+      ["Doing worse than yesterday, we need to change.","做得比昨天差，我们需要改变。",null,2],
+      ["I'm doing worse than yesterday, I feel as if I can't remember.","我做得比昨天差，我感觉好像我不能记得。",null,3],
+      ["Doing worse than yesterday, we must work hard.","做得比昨天差，我们必须努力工作。",null,3],
+      ["I'm doing worse than yesterday, that was very interesting.","我做得比昨天差，那非常有趣。",null,4],
+      ["I feel as if I'm doing worse than yesterday, we need to learn.","我感觉好像我做得比昨天差，我们需要学习。",null,4],
+      ["I'm doing worse than yesterday, I can't remember what you said.","我做得比昨天差，我不能记得你说的话。",null,5],
+      ["Doing worse than yesterday when we learn something new.","做得比昨天差当我们学习新东西的时候。",null,5],
+      ["I feel as if I'm doing worse than yesterday, we must work hard to learn.","我感觉好像我做得比昨天差，我们必须努力工作来学习。",null,6],
+      ["I'm doing worse than yesterday, we just need to relax after we finish.","我做得比昨天差，在我们结束后我们只需要放松一下。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0114L04": {
+    "lego": ["worse than yesterday","比昨天差"],
+    "type": "M",
+    "current_seed_legos_available": [["I feel as if","我感觉好像"],["doing worse today than yesterday","今天做得比昨天差"],["doing worse than yesterday","做得比昨天差"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Worse than yesterday.","比昨天差。",null,1],
+      ["I'm doing worse than yesterday.","我做得比昨天差。",null,2],
+      ["Worse than yesterday, we need to change.","比昨天差，我们需要改变。",null,3],
+      ["I'm doing worse than yesterday, I feel as if I can't remember.","我做得比昨天差，我感觉好像我不能记得。",null,3],
+      ["I feel as if I'm doing worse than yesterday.","我感觉好像我做得比昨天差。",null,4],
+      ["Worse than yesterday, we must work hard to learn.","比昨天差，我们必须努力工作来学习。",null,4],
+      ["I'm doing worse than yesterday, I can't remember what you said.","我做得比昨天差，我不能记得你说的话。",null,5],
+      ["I feel as if I'm doing worse today than yesterday.","我感觉好像我今天做得比昨天差。",null,5],
+      ["Worse than yesterday when we learn something new, that was very interesting.","比昨天差当我们学习新东西的时候，那非常有趣。",null,6],
+      ["I'm doing worse than yesterday, we just need to relax after we finish.","我做得比昨天差，在我们结束后我们只需要放松一下。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}

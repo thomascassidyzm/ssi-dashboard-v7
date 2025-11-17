@@ -1,0 +1,504 @@
+{
+  "S0105L01": {
+    "lego": [
+      "That is why",
+      "这就是为什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "That is why",
+        "这就是为什么",
+        null,
+        1
+      ],
+      [
+        "That is why I'm ready",
+        "这就是为什么我准备好",
+        null,
+        2
+      ],
+      [
+        "That is why we need to go",
+        "这就是为什么我们需要走",
+        null,
+        3
+      ],
+      [
+        "That is why this is it",
+        "这就是为什么这是它",
+        null,
+        3
+      ],
+      [
+        "That is why I need more time",
+        "这就是为什么我需要更多时间",
+        null,
+        4
+      ],
+      [
+        "That is why we need to change",
+        "这就是为什么我们需要改变",
+        null,
+        4
+      ],
+      [
+        "That is why I'm not ready to go yet",
+        "这就是为什么我还没准备好走",
+        null,
+        5
+      ],
+      [
+        "That is why we're trying to say this",
+        "这就是为什么我们正在试图说这",
+        null,
+        5
+      ],
+      [
+        "That is why you should ask yourself about this language",
+        "这就是为什么你应该问问你自己关于这个语言",
+        null,
+        6
+      ],
+      [
+        "That is why we need to change what we're doing",
+        "这就是为什么我们需要改变我们正在做的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "这",
+        "this/that"
+      ],
+      [
+        "就是",
+        "is"
+      ],
+      [
+        "为什么",
+        "why"
+      ]
+    ]
+  },
+  "S0105L02": {
+    "lego": [
+      "he didn't know",
+      "他不知道"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0105L01",
+        "known": "That is why",
+        "target": "这就是为什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "He didn't know",
+        "他不知道",
+        null,
+        1
+      ],
+      [
+        "That's why he didn't know",
+        "这就是为什么他不知道",
+        null,
+        2
+      ],
+      [
+        "He didn't know this now",
+        "他现在不知道这",
+        null,
+        3
+      ],
+      [
+        "He didn't know it's ready",
+        "他不知道它准备好",
+        null,
+        3
+      ],
+      [
+        "He didn't know I need to go",
+        "他不知道我需要走",
+        null,
+        4
+      ],
+      [
+        "That is why he didn't know this",
+        "这就是为什么他不知道这",
+        null,
+        4
+      ],
+      [
+        "He didn't know we need to change it",
+        "他不知道我们需要改变它",
+        null,
+        5
+      ],
+      [
+        "He didn't know that's the only way it works",
+        "他不知道那是唯一的方法它起作用",
+        null,
+        5
+      ],
+      [
+        "That is why he didn't know what we're trying to do",
+        "这就是为什么他不知道我们正在试图做什么",
+        null,
+        6
+      ],
+      [
+        "He didn't know you should ask yourself about this language",
+        "他不知道你应该问问你自己关于这个语言",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "不",
+        "not"
+      ],
+      [
+        "知道",
+        "know"
+      ]
+    ]
+  },
+  "S0105L03": {
+    "lego": [
+      "didn't know",
+      "不知道"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0105L01",
+        "known": "That is why",
+        "target": "这就是为什么",
+        "type": "M"
+      },
+      {
+        "id": "S0105L02",
+        "known": "he didn't know",
+        "target": "他不知道",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Didn't know",
+        "不知道",
+        null,
+        1
+      ],
+      [
+        "I didn't know this",
+        "我不知道这",
+        null,
+        2
+      ],
+      [
+        "He didn't know it now",
+        "他现在不知道它",
+        null,
+        3
+      ],
+      [
+        "I didn't know you're ready",
+        "我不知道你准备好",
+        null,
+        3
+      ],
+      [
+        "We didn't know it's time to go",
+        "我们不知道该走了",
+        null,
+        4
+      ],
+      [
+        "That is why he didn't know",
+        "这就是为什么他不知道",
+        null,
+        4
+      ],
+      [
+        "I didn't know we need to change this",
+        "我不知道我们需要改变这",
+        null,
+        5
+      ],
+      [
+        "You didn't know that's the only way it works",
+        "你不知道那是唯一的方法它起作用",
+        null,
+        5
+      ],
+      [
+        "I didn't know we should worry about what we're doing",
+        "我不知道我们应该担心我们正在做的",
+        null,
+        6
+      ],
+      [
+        "He didn't know you're trying to hear many more words",
+        "他不知道你正在试图听更多的词",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "不",
+        "not"
+      ],
+      [
+        "知道",
+        "know"
+      ]
+    ]
+  },
+  "S0105L04": {
+    "lego": [
+      "know the answer",
+      "知道答案"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0105L01",
+        "known": "That is why",
+        "target": "这就是为什么",
+        "type": "M"
+      },
+      {
+        "id": "S0105L02",
+        "known": "he didn't know",
+        "target": "他不知道",
+        "type": "M"
+      },
+      {
+        "id": "S0105L03",
+        "known": "didn't know",
+        "target": "不知道",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Know the answer",
+        "知道答案",
+        null,
+        1
+      ],
+      [
+        "I know the answer",
+        "我知道答案",
+        null,
+        2
+      ],
+      [
+        "He didn't know the answer",
+        "他不知道答案",
+        null,
+        3
+      ],
+      [
+        "I should know the answer",
+        "我应该知道答案",
+        null,
+        3
+      ],
+      [
+        "We need to know the answer",
+        "我们需要知道答案",
+        null,
+        4
+      ],
+      [
+        "That is why he didn't know the answer",
+        "这就是为什么他不知道答案",
+        null,
+        4
+      ],
+      [
+        "You should ask yourself if you know the answer",
+        "你应该问问你自己是否你知道答案",
+        null,
+        5
+      ],
+      [
+        "I didn't know the answer about what we're doing",
+        "我不知道答案关于我们正在做的",
+        null,
+        5
+      ],
+      [
+        "He didn't know the answer to why it's not working",
+        "他不知道答案关于为什么它不起作用",
+        null,
+        6
+      ],
+      [
+        "That is why I need to find out the answer now",
+        "这就是为什么我现在需要了解答案",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "知道",
+        "know"
+      ],
+      [
+        "答案",
+        "answer"
+      ]
+    ]
+  },
+  "S0105L05": {
+    "lego": [
+      "the answer",
+      "答案"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0105L01",
+        "known": "That is why",
+        "target": "这就是为什么",
+        "type": "M"
+      },
+      {
+        "id": "S0105L02",
+        "known": "he didn't know",
+        "target": "他不知道",
+        "type": "M"
+      },
+      {
+        "id": "S0105L03",
+        "known": "didn't know",
+        "target": "不知道",
+        "type": "M"
+      },
+      {
+        "id": "S0105L04",
+        "known": "know the answer",
+        "target": "知道答案",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The answer",
+        "答案",
+        null,
+        1
+      ],
+      [
+        "I know the answer",
+        "我知道答案",
+        null,
+        2
+      ],
+      [
+        "This is the answer now",
+        "这现在是答案",
+        null,
+        3
+      ],
+      [
+        "He didn't know the answer",
+        "他不知道答案",
+        null,
+        3
+      ],
+      [
+        "You should consider the answer",
+        "你应该考虑答案",
+        null,
+        4
+      ],
+      [
+        "I need to know the answer",
+        "我需要知道答案",
+        null,
+        4
+      ],
+      [
+        "That is why he didn't know the answer",
+        "这就是为什么他不知道答案",
+        null,
+        5
+      ],
+      [
+        "You should ask yourself about the answer",
+        "你应该问问你自己关于答案",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying finding out the answer about this language",
+        "我很享受了解答案关于这个语言",
+        null,
+        6
+      ],
+      [
+        "That is why he didn't know the answer.",
+        "这就是为什么他不知道答案。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

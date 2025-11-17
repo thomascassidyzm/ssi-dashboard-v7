@@ -1,0 +1,152 @@
+{
+  "S0122L01": {
+    "lego": ["starting to feel","开始感觉"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm starting to feel something.","我开始感觉一些事情。",null,2],
+      ["It's starting to feel very interesting.","它开始感觉非常有趣。",null,2],
+      ["I'm starting to feel as if I remember.","我开始感觉好像我记得。",null,3],
+      ["You're starting to feel worse than yesterday.","你开始感觉比昨天差。",null,3],
+      ["I'm starting to feel ready to have a conversation.","我开始感觉准备好进行对话。",null,4],
+      ["It's starting to feel like the best choice.","它开始感觉像最好选择。",null,4],
+      ["I'm starting to feel better than when we were in the pub.","我开始感觉比我们在酒吧时更好。",null,5],
+      ["I'm starting to feel as if you like to use your car.","我开始感觉好像你喜欢用你的车。",null,6],
+      ["It's starting to feel as if I'm ready before you leave.","它开始感觉好像在你离开前我准备好。",null,6],
+      ["I'm starting to feel better than I was last time we talked to each other.","我开始感觉比我们上次互相交谈时更好。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0122L02": {
+    "lego": ["feel easier","感觉更容易了"],
+    "type": "M",
+    "current_seed_legos_available": [["starting to feel","开始感觉"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I feel easier.","我感觉更容易了。",null,1],
+      ["It's starting to feel easier.","它开始感觉更容易了。",null,2],
+      ["The conversation is starting to feel easier.","对话开始感觉更容易了。",null,3],
+      ["I feel easier when you remember.","我感觉更容易了当你记得。",null,3],
+      ["It's starting to feel easier than yesterday.","它开始感觉比昨天更容易了。",null,4],
+      ["I feel easier when I use your car.","我感觉更容易了当我用你的车。",null,4],
+      ["It's starting to feel easier to have a conversation.","它开始感觉进行对话更容易了。",null,5],
+      ["I feel easier when we talked to each other.","我感觉更容易了当我们互相交谈。",null,5],
+      ["It's starting to feel easier than when we were in the pub.","它开始感觉比我们在酒吧时更容易了。",null,6],
+      ["I feel easier when you like to go by bus.","我感觉更容易了当你喜欢坐公共汽车去。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0122L03": {
+    "lego": ["easier","更容易"],
+    "type": "M",
+    "current_seed_legos_available": [["starting to feel","开始感觉"],["feel easier","感觉更容易了"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["It's easier.","它更容易。",null,1],
+      ["Easier than yesterday.","比昨天更容易。",null,2],
+      ["It's starting to feel easier.","它开始感觉更容易。",null,2],
+      ["It's easier when you remember.","它更容易当你记得。",null,3],
+      ["It's easier to have a conversation.","进行对话更容易。",null,3],
+      ["It's easier than when we were in the pub.","它比我们在酒吧时更容易。",null,4],
+      ["It's starting to feel easier than yesterday.","它开始感觉比昨天更容易。",null,4],
+      ["It's easier when we learn something new.","它更容易当我们学习新东西。",null,5],
+      ["It's easier to use your car than to go by bus.","用你的车比坐公共汽车去更容易。",null,6],
+      ["It's starting to feel easier when we talked to each other.","它开始感觉更容易当我们互相交谈。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0122L04": {
+    "lego": ["how it's going","它的进展"],
+    "type": "M",
+    "current_seed_legos_available": [["starting to feel","开始感觉"],["feel easier","感觉更容易了"],["easier","更容易"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["How it's going?","它的进展？",null,1],
+      ["I remember how it's going.","我记得它的进展。",null,2],
+      ["I like how it's going.","我喜欢它的进展。",null,2],
+      ["Can I ask you how it's going?","我能问你它的进展吗？",null,3],
+      ["It's starting to feel easier how it's going.","它开始感觉更容易它的进展。",null,4],
+      ["I feel better than how it's going yesterday.","我感觉比它昨天的进展更好。",null,4],
+      ["I wasn't expecting how it's going when we were in the pub.","我没有期待它的进展当我们在酒吧时。",null,5],
+      ["I can remember how it's going when we talked to each other.","我能记得它的进展当我们互相交谈。",null,6],
+      ["That was very interesting how it's going before you leave.","那非常有趣它的进展在你离开前。",null,6],
+      ["I'm starting to feel easier about how it's going than yesterday.","我开始感觉更容易关于它的进展比昨天。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0122L05": {
+    "lego": ["excited about how it's going","对它的进展感到兴奋"],
+    "type": "M",
+    "current_seed_legos_available": [["starting to feel","开始感觉"],["feel easier","感觉更容易了"],["easier","更容易"],["how it's going","它的进展"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm excited about how it's going.","我对它的进展感到兴奋。",null,2],
+      ["You're excited about how it's going.","你对它的进展感到兴奋。",null,2],
+      ["I'm starting to feel excited about how it's going.","我开始感觉对它的进展感到兴奋。",null,3],
+      ["I'm excited about how it's going today.","我对它今天的进展感到兴奋。",null,3],
+      ["I'm excited about how it's going than yesterday.","我对它的进展比昨天感到兴奋。",null,4],
+      ["I'm excited about how it's going when we talk.","我对它的进展感到兴奋当我们交谈。",null,4],
+      ["I'm starting to feel excited about how it's going easier.","我开始感觉对它的进展更容易感到兴奋。",null,5],
+      ["I'm excited about how it's going when we were in the pub.","我对它的进展感到兴奋当我们在酒吧时。",null,5],
+      ["I'm excited about how it's going and I wasn't expecting it.","我对它的进展感到兴奋，我没有期待它。",null,6],
+      ["I'm starting to feel easier and excited about how it's going.","我开始感觉更容易了和对它的进展感到兴奋。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0122L06": {
+    "lego": ["feel excited","感到兴奋"],
+    "type": "M",
+    "current_seed_legos_available": [["starting to feel","开始感觉"],["feel easier","感觉更容易了"],["easier","更容易"],["how it's going","它的进展"],["excited about how it's going","对它的进展感到兴奋"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I feel excited.","我感到兴奋。",null,1],
+      ["I'm starting to feel excited.","我开始感到兴奋。",null,2],
+      ["I feel excited when you remember.","我感到兴奋当你记得。",null,3],
+      ["I feel excited about the conversation.","我对对话感到兴奋。",null,3],
+      ["I feel excited about how it's going.","我对它的进展感到兴奋。",null,4],
+      ["I'm starting to feel excited and easier.","我开始感到兴奋和更容易了。",null,4],
+      ["I feel excited when we talked to each other.","我感到兴奋当我们互相交谈。",null,5],
+      ["I'm starting to feel excited about how it's going.","我开始对它的进展感到兴奋。",null,5],
+      ["I feel excited when it's starting to feel easier.","我感到兴奋当它开始感觉更容易了。",null,6],
+      ["It's starting to feel easier and I'm excited about how it's going.","它开始感觉更容易了，我对它的进展感到兴奋。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

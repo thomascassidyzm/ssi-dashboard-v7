@@ -1,0 +1,102 @@
+{
+  "S0127L01": {
+    "lego": ["that isn't","那不是"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["That isn't interesting.","那不是有趣。",null,2],
+      ["I think that isn't good.","我认为那不是好。",null,3],
+      ["That isn't a good idea.","那不是个好主意。",null,3],
+      ["I believe that isn't very good.","我相信那不是非常好。",null,4],
+      ["That isn't how it's going.","那不是它的进展。",null,4],
+      ["That isn't what I thought before you leave.","那不是在你离开前我认为的。",null,5],
+      ["I feel that isn't better than before.","我感觉那不是比以前更好。",null,6],
+      ["I'm definitely feeling that isn't easier.","我绝对感觉那不是更容易。",null,6],
+      ["Can I ask you something? That isn't what I thought.","我能问你一些事情吗？那不是我认为的。",null,7],
+      ["That isn't when we were in the pub last time.","那不是我们上次在酒吧时。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0127L03": {
+    "lego": ["I wanted to see you","我想见你"],
+    "type": "M",
+    "current_seed_legos_available": [["that isn't","那不是"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I wanted to see you.","我想见你。",null,1],
+      ["I wanted to see you before.","我以前想见你。",null,2],
+      ["I wanted to see you yesterday.","我昨天想见你。",null,2],
+      ["I thought I wanted to see you.","我认为我想见你。",null,3],
+      ["I wanted to see you in the pub.","我想在酒吧见你。",null,4],
+      ["I believe I wanted to see you.","我相信我想见你。",null,4],
+      ["I wanted to see you before you leave.","我想在你离开前见你。",null,5],
+      ["Can I ask you something? I wanted to see you.","我能问你一些事情吗？我想见你。",null,6],
+      ["I feel better because I wanted to see you.","我感觉更好因为我想见你。",null,7],
+      ["I'm definitely excited that I wanted to see you last time.","我绝对兴奋我上次想见你。",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0127L04": {
+    "lego": ["want to see","想见"],
+    "type": "M",
+    "current_seed_legos_available": [["that isn't","那不是"],["I wanted to see you","我想见你"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I want to see you.","我想见你。",null,2],
+      ["You like to want to see.","你喜欢想见。",null,3],
+      ["I don't like to want to see.","我不喜欢想见。",null,4],
+      ["I think you want to see something.","我认为你想见一些事情。",null,4],
+      ["Can I ask you? I want to see.","我能问你吗？我想见。",null,5],
+      ["I believe you want to see your car.","我相信你想见你的车。",null,5],
+      ["I feel excited that you want to see how it's going.","我感到兴奋你想见它的进展。",null,8],
+      ["You don't like when I want to see in the pub.","你不喜欢当我想在酒吧见时。",null,9],
+      ["I'm definitely starting to feel that you want to see better.","我绝对开始感觉你想见更好。",null,10],
+      ["That isn't interesting because I wanted to see you before you leave.","那不是有趣因为我想在你离开前见你。",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0127L05": {
+    "lego": ["see you","见你"],
+    "type": "M",
+    "current_seed_legos_available": [["that isn't","那不是"],["I wanted to see you","我想见你"],["want to see","想见"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I see you.","我见你。",null,1],
+      ["Can I see you?","我能见你吗？",null,2],
+      ["I like to see you.","我喜欢见你。",null,3],
+      ["I think I see you better.","我认为我见你更好。",null,4],
+      ["I want to see you before you leave.","我想在你离开前见你。",null,5],
+      ["I'm excited to see you in the pub.","我兴奋在酒吧见你。",null,5],
+      ["I believe it's interesting that I see you.","我相信我见你这很有趣。",null,7],
+      ["I feel better when I see you last time we talked.","我感觉更好当我见你我们上次交谈时。",null,9],
+      ["I'm definitely doing better because I can see you.","我绝对做得更好因为我能见你。",null,9],
+      ["That isn't why I wanted to see you.","那不是为什么我想见你。",null,7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

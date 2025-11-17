@@ -1,0 +1,127 @@
+{
+  "S0128L01": {
+    "lego": ["you're like","你像"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You're like that.","你像那。",null,2],
+      ["I think you're like that.","我认为你像那。",null,3],
+      ["You're like your idea.","你像你的主意。",null,3],
+      ["I believe you're like that too.","我相信你也像那。",null,4],
+      ["You're like how it's going.","你像它的进展。",null,4],
+      ["It's interesting that you're like something better.","你像一些事情更好这很有趣。",null,6],
+      ["You're like what I thought before you leave.","你像在你离开前我认为的。",null,7],
+      ["I feel that you're like when we were in the pub.","我感觉你像我们在酒吧时。",null,8],
+      ["Can I ask you something? You're like your car.","我能问你一些事情吗？你像你的车。",null,7],
+      ["I'm starting to feel that you're like a good idea.","我开始感觉你像个好主意。",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 5
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0128L02": {
+    "lego": ["someone","某个人"],
+    "type": "M",
+    "current_seed_legos_available": [["you're like","你像"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Can I ask someone?","我能问某个人吗？",null,2],
+      ["I wanted to see someone.","我想见某个人。",null,2],
+      ["I think someone is better.","我认为某个人更好。",null,3],
+      ["You're like someone interesting.","你像某个人有趣。",null,3],
+      ["I believe someone has a good idea.","我相信某个人有个好主意。",null,4],
+      ["Someone you like is leaving.","你喜欢的某个人在离开。",null,4],
+      ["I feel better when someone is in the pub.","我感觉更好当某个人在酒吧时。",null,7],
+      ["That isn't why I wanted to see someone before.","那不是为什么我以前想见某个人。",null,8],
+      ["It's starting to feel easier when someone asks you something.","它开始感觉更容易当某个人问你一些事情时。",null,9],
+      ["I'm definitely excited that someone you're like is very good.","我绝对兴奋你像的某个人非常好。",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0128L03": {
+    "lego": ["used to know","以前认识"],
+    "type": "M",
+    "current_seed_legos_available": [["you're like","你像"],["someone","某个人"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I used to know that.","我以前认识那。",null,2],
+      ["You used to know something.","你以前认识一些事情。",null,2],
+      ["I think you used to know.","我认为你以前认识。",null,3],
+      ["I used to know your idea.","我以前认识你的主意。",null,3],
+      ["I believe someone used to know better.","我相信某个人以前认识更好。",null,4],
+      ["You're like someone you used to know.","你像你以前认识的某个人。",null,5],
+      ["Can I ask you something you used to know before you leave?","在你离开前我能问你你以前认识的一些事情吗？",null,8],
+      ["I feel better than when I used to know in the pub.","我感觉比我在酒吧时以前认识的更好。",null,9],
+      ["It's interesting that you used to know how it's going.","你以前认识它的进展这很有趣。",null,8],
+      ["That isn't why you're like someone I used to know.","那不是为什么你像我以前认识的某个人。",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0128L04": {
+    "lego": ["I used to know","我以前认识的"],
+    "type": "M",
+    "current_seed_legos_available": [["you're like","你像"],["someone","某个人"],["used to know","以前认识"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["That's what I used to know.","那是我以前认识的。",null,2],
+      ["Something I used to know is interesting.","我以前认识的一些事情很有趣。",null,3],
+      ["I think that I used to know better.","我认为我以前认识的更好。",null,4],
+      ["You're like someone I used to know.","你像我以前认识的某个人。",null,4],
+      ["I believe your idea is what I used to know.","我相信你的主意是我以前认识的。",null,5],
+      ["Can I ask you about what I used to know?","我能问你关于我以前认识的吗？",null,6],
+      ["I feel better because of someone I used to know in the pub.","我感觉更好因为我在酒吧以前认识的某个人。",null,9],
+      ["That isn't why I wanted to see what I used to know.","那不是为什么我想见我以前认识的。",null,9],
+      ["It's starting to feel easier with someone I used to know before you leave.","它开始感觉更容易和我以前认识的某个人在你离开前。",null,11],
+      ["I'm definitely excited about how someone I used to know is doing.","我绝对兴奋关于我以前认识的某个人在做。",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0128L05": {
+    "lego": ["someone I used to know","我以前认识的某个人"],
+    "type": "M",
+    "current_seed_legos_available": [["you're like","你像"],["someone","某个人"],["used to know","以前认识"],["I used to know","我以前认识的"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["That's someone I used to know.","那是我以前认识的某个人。",null,2],
+      ["I think about someone I used to know.","我认为关于我以前认识的某个人。",null,3],
+      ["I wanted to see someone I used to know.","我想见我以前认识的某个人。",null,3],
+      ["I believe that's someone I used to know better.","我相信那是我以前认识的某个人更好。",null,4],
+      ["You're like someone I used to know in the pub.","你像我在酒吧以前认识的某个人。",null,5],
+      ["Can I ask you about someone I used to know?","我能问你关于我以前认识的某个人吗？",null,5],
+      ["I feel better when I think about someone I used to know.","我感觉更好当我想关于我以前认识的某个人时。",null,8],
+      ["It's interesting that you're like someone I used to know before you leave.","你像我在你离开前以前认识的某个人这很有趣。",null,10],
+      ["That isn't why I'm excited about someone I used to know.","那不是为什么我兴奋关于我以前认识的某个人。",null,9],
+      ["You're like someone I used to know.","你像我以前认识的某个人。",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  }
+}

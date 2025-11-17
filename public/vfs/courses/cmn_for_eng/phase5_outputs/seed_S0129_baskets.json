@@ -1,0 +1,127 @@
+{
+  "S0129L01": {
+    "lego": ["I'm so happy","我很高兴"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm so happy.","我很高兴。",null,1],
+      ["I'm so happy today.","我今天很高兴。",null,2],
+      ["I think I'm so happy.","我认为我很高兴。",null,3],
+      ["I'm so happy about your idea.","我很高兴关于你的主意。",null,3],
+      ["I'm so happy before you leave.","我很高兴在你离开前。",null,4],
+      ["I believe I'm so happy about that.","我相信我很高兴关于那。",null,4],
+      ["I'm so happy that's a good idea.","我很高兴那是个好主意。",null,5],
+      ["Can I ask you something? I'm so happy to see you.","我能问你一些事情吗？我很高兴见你。",null,7],
+      ["I'm so happy when I'm starting to feel better.","我很高兴当我开始感觉更好时。",null,8],
+      ["I'm so happy you're like someone I used to know.","我很高兴你像我以前认识的某个人。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0129L02": {
+    "lego": ["so happy","很高兴"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm so happy","我很高兴"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You're so happy.","你很高兴。",null,1],
+      ["I'm so happy now.","我现在很高兴。",null,2],
+      ["I feel so happy.","我感觉很高兴。",null,2],
+      ["Someone is so happy today.","某个人今天很高兴。",null,3],
+      ["I think you're so happy about that.","我认为你很高兴关于那。",null,4],
+      ["You're like someone so happy.","你像某个人很高兴。",null,4],
+      ["I believe you feel so happy before you leave.","我相信你感觉很高兴在你离开前。",null,6],
+      ["Can I ask you why you're so happy?","我能问你为什么你很高兴吗？",null,6],
+      ["It's interesting that I'm so happy when I see you.","我很高兴当我见你这很有趣。",null,9],
+      ["I wanted to see you because I'm so happy about your idea.","我想见你因为我很高兴关于你的主意。",null,10]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 1,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0129L03": {
+    "lego": ["you're doing so well","你做得这么好"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm so happy","我很高兴"],["so happy","很高兴"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["You're doing so well.","你做得这么好。",null,1],
+      ["I think you're doing so well.","我认为你做得这么好。",null,2],
+      ["You're doing so well today.","你今天做得这么好。",null,3],
+      ["I believe you're doing so well now.","我相信你现在做得这么好。",null,3],
+      ["I'm so happy you're doing so well.","我很高兴你做得这么好。",null,4],
+      ["It's interesting that you're doing so well.","你做得这么好这很有趣。",null,4],
+      ["Can I ask you how you're doing so well?","我能问你你怎么做得这么好吗？",null,6],
+      ["That isn't why I think you're doing so well before you leave.","那不是为什么我认为你在你离开前做得这么好。",null,10],
+      ["I wanted to see you because you're doing so well.","我想见你因为你做得这么好。",null,8],
+      ["You're like someone I used to know who's doing so well.","你像我以前认识的做得这么好的某个人。",null,9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0129L04": {
+    "lego": ["doing so well","做得这么好"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm so happy","我很高兴"],["so happy","很高兴"],["you're doing so well","你做得这么好"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I'm doing so well.","我做得这么好。",null,1],
+      ["Someone is doing so well.","某个人做得这么好。",null,2],
+      ["I think I'm doing so well now.","我认为我现在做得这么好。",null,3],
+      ["Doing so well is interesting.","做得这么好很有趣。",null,3],
+      ["I believe you're doing so well today.","我相信你今天做得这么好。",null,4],
+      ["I'm so happy about doing so well.","我很高兴关于做得这么好。",null,4],
+      ["Can I ask you about doing so well before you leave?","在你离开前我能问你关于做得这么好吗？",null,7],
+      ["You're like someone I used to know who's doing so well.","你像我以前认识的做得这么好的某个人。",null,8],
+      ["I feel better than before because I'm doing so well.","我感觉比以前更好因为我做得这么好。",null,9],
+      ["I wanted to see you when you're doing so well.","我想见你当你做得这么好时。",null,8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0129L05": {
+    "lego": ["so well","这么好"],
+    "type": "M",
+    "current_seed_legos_available": [["I'm so happy","我很高兴"],["so happy","很高兴"],["you're doing so well","你做得这么好"],["doing so well","做得这么好"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["That's so well.","那这么好。",null,2],
+      ["I think so well.","我认为这么好。",null,2],
+      ["You're doing so well today.","你今天做得这么好。",null,3],
+      ["I believe you're so well.","我相信你这么好。",null,3],
+      ["I'm so happy you're doing so well.","我很高兴你做得这么好。",null,4],
+      ["Someone I used to know is so well.","我以前认识的某个人这么好。",null,5],
+      ["Can I ask you why you're doing so well?","我能问你为什么你做得这么好吗？",null,6],
+      ["It's interesting that you're like someone doing so well.","你像某个人做得这么好这很有趣。",null,8],
+      ["I wanted to see you because you're doing so well before you leave.","我想见你因为你在你离开前做得这么好。",null,10],
+      ["I'm so happy that you're doing so well.","我很高兴你做得这么好。",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

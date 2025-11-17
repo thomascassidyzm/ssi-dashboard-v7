@@ -1,0 +1,515 @@
+{
+  "legos": {
+    "S0120L01": {
+      "lego": [
+        "you like",
+        "你喜欢"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "You like",
+          "你喜欢",
+          null,
+          1
+        ],
+        [
+          "What you like",
+          "你喜欢的",
+          null,
+          2
+        ],
+        [
+          "You like something new",
+          "你喜欢新东西",
+          null,
+          2
+        ],
+        [
+          "I can't remember what you like",
+          "我不能记得你喜欢",
+          null,
+          3
+        ],
+        [
+          "I feel as if you like",
+          "我感觉好像你喜欢",
+          null,
+          3
+        ],
+        [
+          "Can I ask you what you like",
+          "我能问你你喜欢",
+          null,
+          4
+        ],
+        [
+          "You like to learn something new",
+          "你喜欢来学习新东西",
+          null,
+          4
+        ],
+        [
+          "I wasn't expecting it you like to relax",
+          "我没有期待它你喜欢放松一下",
+          null,
+          5
+        ],
+        [
+          "Why can't I remember what you like when we were in the pub",
+          "为什么我不能记得我们在酒吧时你喜欢",
+          null,
+          6
+        ],
+        [
+          "I'm definitely you like to have a conversation after we finish",
+          "我绝对你喜欢在我们结束后进行对话",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0120L02": {
+      "lego": [
+        "go by bus",
+        "坐公共汽车"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you like",
+          "你喜欢"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Go by bus",
+          "坐公共汽车",
+          null,
+          1
+        ],
+        [
+          "You like go by bus",
+          "你喜欢坐公共汽车",
+          null,
+          2
+        ],
+        [
+          "I'd like to go by bus",
+          "我想坐公共汽车",
+          null,
+          2
+        ],
+        [
+          "Can I ask you go by bus",
+          "我能问你坐公共汽车",
+          null,
+          3
+        ],
+        [
+          "I'm ready to go by bus",
+          "我准备好坐公共汽车",
+          null,
+          3
+        ],
+        [
+          "After we finish I'd like to go by bus",
+          "在我们结束后我想坐公共汽车",
+          null,
+          4
+        ],
+        [
+          "You like to go by bus",
+          "你喜欢坐公共汽车",
+          null,
+          4
+        ],
+        [
+          "Why can't I remember you like go by bus",
+          "为什么我不能记得你喜欢坐公共汽车",
+          null,
+          5
+        ],
+        [
+          "I wasn't expecting it you like to relax go by bus",
+          "我没有期待它你喜欢放松一下坐公共汽车",
+          null,
+          6
+        ],
+        [
+          "I'm definitely doing better when you like go by bus",
+          "我绝对做得更好当你喜欢坐公共汽车",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0120L03": {
+      "lego": [
+        "to go by bus",
+        "坐公共汽车去"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you like",
+          "你喜欢"
+        ],
+        [
+          "go by bus",
+          "坐公共汽车"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "To go by bus",
+          "坐公共汽车去",
+          null,
+          1
+        ],
+        [
+          "You like to go by bus",
+          "你喜欢坐公共汽车去",
+          null,
+          2
+        ],
+        [
+          "I'd like to go by bus",
+          "我想坐公共汽车去",
+          null,
+          2
+        ],
+        [
+          "I'm ready to go by bus",
+          "我准备好坐公共汽车去",
+          null,
+          3
+        ],
+        [
+          "Can I ask you to go by bus",
+          "我能问你坐公共汽车去",
+          null,
+          3
+        ],
+        [
+          "After we finish I'd like to go by bus",
+          "在我们结束后我想坐公共汽车去",
+          null,
+          4
+        ],
+        [
+          "That was very interesting to go by bus",
+          "那非常有趣坐公共汽车去",
+          null,
+          4
+        ],
+        [
+          "Why can't I remember you like to go by bus",
+          "为什么我不能记得你喜欢坐公共汽车去",
+          null,
+          5
+        ],
+        [
+          "I wasn't expecting it you like to go by bus before you leave",
+          "我没有期待它在你离开前你喜欢坐公共汽车去",
+          null,
+          6
+        ],
+        [
+          "I'm definitely doing better when you like to go by bus",
+          "我绝对做得更好当你喜欢坐公共汽车去",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0120L04": {
+      "lego": [
+        "you like to go by bus",
+        "你喜欢坐公共汽车去"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you like",
+          "你喜欢"
+        ],
+        [
+          "go by bus",
+          "坐公共汽车"
+        ],
+        [
+          "to go by bus",
+          "坐公共汽车去"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "You like to go by bus",
+          "你喜欢坐公共汽车去",
+          null,
+          1
+        ],
+        [
+          "I remember you like to go by bus",
+          "我记得你喜欢坐公共汽车去",
+          null,
+          2
+        ],
+        [
+          "That was you like to go by bus",
+          "那是你喜欢坐公共汽车去",
+          null,
+          2
+        ],
+        [
+          "Can I ask you you like to go by bus",
+          "我能问你你喜欢坐公共汽车去",
+          null,
+          3
+        ],
+        [
+          "I feel as if you like to go by bus",
+          "我感觉好像你喜欢坐公共汽车去",
+          null,
+          3
+        ],
+        [
+          "Why can't I remember you like to go by bus",
+          "为什么我不能记得你喜欢坐公共汽车去",
+          null,
+          4
+        ],
+        [
+          "That was very interesting you like to go by bus",
+          "那非常有趣你喜欢坐公共汽车去",
+          null,
+          4
+        ],
+        [
+          "I wasn't expecting it you like to go by bus before you leave",
+          "我没有期待它在你离开前你喜欢坐公共汽车去",
+          null,
+          5
+        ],
+        [
+          "Can I ask you something before you leave you like to go by bus",
+          "在你离开前我能问你一些事情你喜欢坐公共汽车去",
+          null,
+          6
+        ],
+        [
+          "I'm definitely doing better when I remember you like to go by bus",
+          "我绝对做得更好当我记得你喜欢坐公共汽车去",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0120L05": {
+      "lego": [
+        "this is very interesting",
+        "这很有趣"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "you like",
+          "你喜欢"
+        ],
+        [
+          "go by bus",
+          "坐公共汽车"
+        ],
+        [
+          "to go by bus",
+          "坐公共汽车去"
+        ],
+        [
+          "you like to go by bus",
+          "你喜欢坐公共汽车去"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "This is very interesting",
+          "这很有趣",
+          null,
+          1
+        ],
+        [
+          "That was very interesting",
+          "那非常有趣",
+          null,
+          2
+        ],
+        [
+          "This is very interesting to learn",
+          "这很有趣来学习",
+          null,
+          2
+        ],
+        [
+          "I feel as if this is very interesting",
+          "我感觉好像这很有趣",
+          null,
+          3
+        ],
+        [
+          "This is very interesting you like",
+          "这很有趣你喜欢",
+          null,
+          3
+        ],
+        [
+          "This is very interesting to go by bus",
+          "这很有趣坐公共汽车去",
+          null,
+          4
+        ],
+        [
+          "This is very interesting when we learn something new",
+          "当我们学习新东西的时候这很有趣",
+          null,
+          4
+        ],
+        [
+          "I wasn't expecting it this is very interesting you like to go by bus",
+          "我没有期待它这很有趣你喜欢坐公共汽车去",
+          null,
+          6
+        ],
+        [
+          "Can I ask you something this is very interesting you like to go by bus",
+          "我能问你一些事情这很有趣你喜欢坐公共汽车去",
+          null,
+          6
+        ],
+        [
+          "It's interesting that you like to go by bus.",
+          "你喜欢坐公共汽车去这很有趣。",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 3,
+        "long_6_plus": 2
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}

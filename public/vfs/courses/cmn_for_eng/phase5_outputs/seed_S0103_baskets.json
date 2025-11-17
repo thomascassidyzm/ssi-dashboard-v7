@@ -1,0 +1,508 @@
+{
+  "S0103L01": {
+    "lego": [
+      "We're not trying to",
+      "我们不是在试图"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "We're not trying to",
+        "我们不是在试图",
+        null,
+        1
+      ],
+      [
+        "We're not trying to now",
+        "我们现在不是在试图",
+        null,
+        2
+      ],
+      [
+        "We're not trying to go home",
+        "我们不是在试图回家",
+        null,
+        3
+      ],
+      [
+        "We're not trying to say this",
+        "我们不是在试图说这",
+        null,
+        3
+      ],
+      [
+        "We're not trying to go home now",
+        "我们现在不是在试图回家",
+        null,
+        4
+      ],
+      [
+        "We're not trying to make it work",
+        "我们不是在试图让它起作用",
+        null,
+        4
+      ],
+      [
+        "We're not trying to say it's time to go",
+        "我们不是在试图说该走了",
+        null,
+        5
+      ],
+      [
+        "We're not trying to worry about this",
+        "我们不是在试图担心这",
+        null,
+        5
+      ],
+      [
+        "We're not trying to ask yourself why it's not working",
+        "我们不是在试图问问你自己为什么它不起作用",
+        null,
+        6
+      ],
+      [
+        "We're not trying to say it's the only way",
+        "我们不是在试图说这是唯一的方法",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我们",
+        "we"
+      ],
+      [
+        "不是",
+        "not"
+      ],
+      [
+        "在",
+        "(progressive)"
+      ],
+      [
+        "试图",
+        "trying to"
+      ]
+    ]
+  },
+  "S0103L02": {
+    "lego": [
+      "trying to hear",
+      "试图听"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0103L01",
+        "known": "We're not trying to",
+        "target": "我们不是在试图",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Trying to hear",
+        "试图听",
+        null,
+        1
+      ],
+      [
+        "We're trying to hear",
+        "我们正在试图听",
+        null,
+        2
+      ],
+      [
+        "We're not trying to hear",
+        "我们不是在试图听",
+        null,
+        2
+      ],
+      [
+        "I'm trying to hear you now",
+        "我现在正在试图听你",
+        null,
+        3
+      ],
+      [
+        "We're trying to hear this language",
+        "我们正在试图听这个语言",
+        null,
+        3
+      ],
+      [
+        "We're not trying to hear it now",
+        "我们现在不是在试图听它",
+        null,
+        4
+      ],
+      [
+        "I'm trying to hear you say this",
+        "我正在试图听你说这",
+        null,
+        4
+      ],
+      [
+        "We're trying to hear the only way it works",
+        "我们正在试图听唯一的方法它起作用",
+        null,
+        5
+      ],
+      [
+        "We're not trying to hear you say that",
+        "我们不是在试图听你说那样的",
+        null,
+        5
+      ],
+      [
+        "I'm trying to hear you ask yourself why",
+        "我正在试图听你问问你自己为什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "试图",
+        "trying to"
+      ],
+      [
+        "听",
+        "hear"
+      ]
+    ]
+  },
+  "S0103L03": {
+    "lego": [
+      "many more words",
+      "更多的词"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0103L01",
+        "known": "We're not trying to",
+        "target": "我们不是在试图",
+        "type": "M"
+      },
+      {
+        "id": "S0103L02",
+        "known": "trying to hear",
+        "target": "试图听",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Many more words",
+        "更多的词",
+        null,
+        1
+      ],
+      [
+        "We need many more words",
+        "我们需要更多的词",
+        null,
+        2
+      ],
+      [
+        "I'm enjoying many more words now",
+        "我现在很享受更多的词",
+        null,
+        3
+      ],
+      [
+        "We're trying to hear many more words",
+        "我们正在试图听更多的词",
+        null,
+        3
+      ],
+      [
+        "I should consider many more words now",
+        "我现在应该考虑更多的词",
+        null,
+        4
+      ],
+      [
+        "We're not trying to hear many more words",
+        "我们不是在试图听更多的词",
+        null,
+        4
+      ],
+      [
+        "You should ask yourself about many more words",
+        "你应该问问你自己关于更多的词",
+        null,
+        5
+      ],
+      [
+        "I'm enjoying finding out about many more words",
+        "我很享受了解关于更多的词",
+        null,
+        5
+      ],
+      [
+        "We need to change to many more words now",
+        "我们现在需要改变到更多的词",
+        null,
+        6
+      ],
+      [
+        "You're ready to hear many more words as soon as you want",
+        "你准备好了只要你想就听更多的词",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "更多",
+        "many more"
+      ],
+      [
+        "的",
+        "(particle)"
+      ],
+      [
+        "词",
+        "words"
+      ]
+    ]
+  },
+  "S0103L04": {
+    "lego": [
+      "many more",
+      "更多的"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0103L01",
+        "known": "We're not trying to",
+        "target": "我们不是在试图",
+        "type": "M"
+      },
+      {
+        "id": "S0103L02",
+        "known": "trying to hear",
+        "target": "试图听",
+        "type": "M"
+      },
+      {
+        "id": "S0103L03",
+        "known": "many more words",
+        "target": "更多的词",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Many more",
+        "更多的",
+        null,
+        1
+      ],
+      [
+        "I need many more",
+        "我需要更多的",
+        null,
+        2
+      ],
+      [
+        "We're trying many more now",
+        "我们现在正在试更多的",
+        null,
+        3
+      ],
+      [
+        "I'm enjoying many more this language",
+        "我很享受更多的这个语言",
+        null,
+        3
+      ],
+      [
+        "You should consider many more words",
+        "你应该考虑更多的词",
+        null,
+        4
+      ],
+      [
+        "We're not trying to hear many more",
+        "我们不是在试图听更多的",
+        null,
+        4
+      ],
+      [
+        "I need a little more time for many more",
+        "我需要多一点时间为了更多的",
+        null,
+        5
+      ],
+      [
+        "We're trying to say many more about this",
+        "我们正在试图说更多的关于这",
+        null,
+        5
+      ],
+      [
+        "You're ready to find out many more as soon as you want",
+        "你准备好了只要你想就了解更多的",
+        null,
+        6
+      ],
+      [
+        "I'm enjoying finding out many more about what we're doing",
+        "我很享受了解更多的关于我们正在做的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "更多",
+        "more"
+      ],
+      [
+        "的",
+        "(particle)"
+      ]
+    ]
+  },
+  "S0103L05": {
+    "lego": [
+      "words",
+      "词"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0103L01",
+        "known": "We're not trying to",
+        "target": "我们不是在试图",
+        "type": "M"
+      },
+      {
+        "id": "S0103L02",
+        "known": "trying to hear",
+        "target": "试图听",
+        "type": "M"
+      },
+      {
+        "id": "S0103L03",
+        "known": "many more words",
+        "target": "更多的词",
+        "type": "M"
+      },
+      {
+        "id": "S0103L04",
+        "known": "many more",
+        "target": "更多的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Words",
+        "词",
+        null,
+        1
+      ],
+      [
+        "More words",
+        "更多词",
+        null,
+        2
+      ],
+      [
+        "I need more words now",
+        "我现在需要更多词",
+        null,
+        3
+      ],
+      [
+        "We're trying to hear words",
+        "我们正在试图听词",
+        null,
+        3
+      ],
+      [
+        "I'm enjoying finding out more words",
+        "我很享受了解更多词",
+        null,
+        4
+      ],
+      [
+        "You should consider many more words",
+        "你应该考虑更多的词",
+        null,
+        4
+      ],
+      [
+        "We're not trying to hear many words now",
+        "我们现在不是在试图听更多词",
+        null,
+        5
+      ],
+      [
+        "I'm trying to say many more words about this",
+        "我正在试图说更多的词关于这",
+        null,
+        5
+      ],
+      [
+        "You're ready to hear many more words as soon as you want",
+        "你准备好了只要你想就听更多的词",
+        null,
+        6
+      ],
+      [
+        "We're not trying to hear many more words.",
+        "我们不是在试图听更多的词。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

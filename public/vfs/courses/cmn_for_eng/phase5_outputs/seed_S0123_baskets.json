@@ -1,0 +1,102 @@
+{
+  "S0123L01": {
+    "lego": ["I think","我认为"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I think something.","我认为一些事情。",null,2],
+      ["I think I remember.","我认为我记得。",null,2],
+      ["I think you like your car.","我认为你喜欢你的车。",null,3],
+      ["I think it's very interesting.","我认为它非常有趣。",null,3],
+      ["I think you don't like the conversation.","我认为你不喜欢对话。",null,4],
+      ["I think I feel better than yesterday.","我认为我感觉比昨天更好。",null,4],
+      ["I think it's starting to feel easier.","我认为它开始感觉更容易了。",null,5],
+      ["I think you like to go by bus.","我认为你喜欢坐公共汽车去。",null,5],
+      ["I think I'm ready to have a conversation.","我认为我准备好进行对话了。",null,6],
+      ["I think it's easier when we talked to each other.","我认为它更容易当我们互相交谈。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0123L02": {
+    "lego": ["that's a good idea","那是个好主意"],
+    "type": "M",
+    "current_seed_legos_available": [["I think","我认为"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["That's a good idea.","那是个好主意。",null,1],
+      ["I think that's a good idea.","我认为那是个好主意。",null,2],
+      ["That's a good idea before you leave.","那是个好主意在你离开前。",null,3],
+      ["I remember that's a good idea.","我记得那是个好主意。",null,3],
+      ["That's a good idea when we talk.","那是个好主意当我们交谈。",null,4],
+      ["I think that's a good idea today.","我认为那是个好主意今天。",null,4],
+      ["That's a good idea to use your car.","那是个好主意用你的车。",null,5],
+      ["I think that's a good idea when we were in the pub.","我认为那是个好主意当我们在酒吧时。",null,5],
+      ["That's a good idea and I wasn't expecting it.","那是个好主意，我没有期待它。",null,6],
+      ["I think that's a good idea and it's very interesting.","我认为那是个好主意，它非常有趣。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0123L03": {
+    "lego": ["is a good idea","是个好主意"],
+    "type": "M",
+    "current_seed_legos_available": [["I think","我认为"],["that's a good idea","那是个好主意"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["This is a good idea.","这是个好主意。",null,1],
+      ["That is a good idea.","那是个好主意。",null,1],
+      ["I think it is a good idea.","我认为它是个好主意。",null,2],
+      ["The conversation is a good idea.","对话是个好主意。",null,2],
+      ["Using your car is a good idea.","用你的车是个好主意。",null,3],
+      ["I think that's a good idea today.","我认为那是个好主意今天。",null,3],
+      ["To go by bus is a good idea.","坐公共汽车去是个好主意。",null,4],
+      ["I think having a conversation is a good idea.","我认为进行对话是个好主意。",null,4],
+      ["I think learning something new is a good idea.","我认为学习新东西是个好主意。",null,5],
+      ["I think when we talked to each other is a good idea.","我认为我们互相交谈时是个好主意。",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null]]
+  },
+  "S0123L04": {
+    "lego": ["a good idea","个好主意"],
+    "type": "M",
+    "current_seed_legos_available": [["I think","我认为"],["that's a good idea","那是个好主意"],["is a good idea","是个好主意"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["A good idea.","个好主意。",null,1],
+      ["That's a good idea.","那是个好主意。",null,2],
+      ["It's a good idea.","它是个好主意。",null,2],
+      ["I think it's a good idea.","我认为它是个好主意。",null,3],
+      ["Using your car is a good idea.","用你的车是个好主意。",null,3],
+      ["I think the conversation is a good idea.","我认为对话是个好主意。",null,4],
+      ["To go by bus is a good idea today.","坐公共汽车去今天是个好主意。",null,4],
+      ["I think learning something new is a good idea.","我认为学习新东西是个好主意。",null,5],
+      ["I think when we talk to each other is a good idea.","我认为我们互相交谈时是个好主意。",null,6],
+      ["I think that's a good idea.","我认为那是个好主意。",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  }
+}
