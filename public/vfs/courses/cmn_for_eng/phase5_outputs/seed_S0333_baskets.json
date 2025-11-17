@@ -1,0 +1,107 @@
+{
+  "S0333L01": {
+    "lego": ["She said","她说"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["She said", "她说", null, 1],
+      ["She said that she needs to", "她说她需要", null, 2],
+      ["She said that she can't read", "她说她不能读", null, 3],
+      ["She said that she can build", "她说她可以建立", null, 3],
+      ["She said that she needs to provide", "她说她需要提供", null, 4],
+      ["She said that she can't walk to school", "她说她不能走路去学校", null, 4],
+      ["She said that she can build new life", "她说她可以建立新生活", null, 5],
+      ["She said that she needs to consider the problem", "她说她需要考虑问题", null, 5],
+      ["She said that she can't provide all the answers", "她说她不能提供所有的答案", null, 6],
+      ["She said that she can build a new life for his sister", "她说她可以为他妹妹建立新生活", null, 7]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["她","She"],["说","said"]]
+  },
+  "S0333L02": {
+    "lego": ["she can't","她不能"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0333L01","known":"She said","target":"她说","type":"M"}],
+    "practice_phrases": [
+      ["She can't", "她不能", null, 1],
+      ["She said she can't", "她说她不能", null, 2],
+      ["She can't read the book", "她不能读那本书", null, 3],
+      ["She can't walk to school", "她不能走路去学校", null, 3],
+      ["She said she can't provide", "她说她不能提供", null, 4],
+      ["She can't consider the problem", "她不能考虑问题", null, 4],
+      ["She said she can't build the company", "她说她不能建立公司", null, 5],
+      ["She can't provide all the answers", "她不能提供所有的答案", null, 5],
+      ["She said she can't consider the possible problems", "她说她不能考虑可能的问题", null, 6],
+      ["She can't build a new life for his sister", "她不能为他妹妹建立新生活", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["她","she"],["不能","can't"]]
+  },
+  "S0333L03": {
+    "lego": ["with the group","和小组"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0333L01","known":"She said","target":"她说","type":"M"},{"id":"S0333L02","known":"she can't","target":"她不能","type":"M"}],
+    "practice_phrases": [
+      ["With the group", "和小组", null, 1],
+      ["Walk with the group", "和小组走路", null, 2],
+      ["She needs to read with the group", "她需要和小组读", null, 3],
+      ["I can provide with the group", "我可以和小组提供", null, 3],
+      ["He can build with the group", "他可以和小组建立", null, 4],
+      ["She said she needs to walk with the group", "她说她需要和小组走路", null, 4],
+      ["He can consider the problem with the group", "他可以和小组考虑问题", null, 5],
+      ["She said she can build with the group", "她说她可以和小组建立", null, 5],
+      ["I think that he needs to consider with the group", "我觉得他需要和小组考虑", null, 6],
+      ["She said she can't provide the answers with the group", "她说她不能和小组提供答案", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["和","with"],["小组","the group"]]
+  },
+  "S0333L04": {
+    "lego": ["spend much time","花很多时间"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0333L01","known":"She said","target":"她说","type":"M"},{"id":"S0333L02","known":"she can't","target":"她不能","type":"M"},{"id":"S0333L03","known":"with the group","target":"和小组","type":"M"}],
+    "practice_phrases": [
+      ["Spend much time", "花很多时间", null, 1],
+      ["She needs to spend much time", "她需要花很多时间", null, 2],
+      ["I can't spend much time", "我不能花很多时间", null, 3],
+      ["He can spend much time", "他可以花很多时间", null, 3],
+      ["She said she needs to spend much time", "她说她需要花很多时间", null, 4],
+      ["I can't spend much time with the group", "我不能和小组花很多时间", null, 4],
+      ["He can spend much time building the company", "他可以花很多时间建立公司", null, 5],
+      ["She said she can spend much time reading", "她说她可以花很多时间读", null, 5],
+      ["I think that she can't spend much time with the group", "我觉得她不能和小组花很多时间", null, 6],
+      ["She said she can't spend much time considering the problem", "她说她不能花很多时间考虑问题", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["花","spend"],["很多","much"],["时间","time"]]
+  },
+  "S0333L05": {
+    "lego": ["much time","很多时间"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [{"id":"S0333L01","known":"She said","target":"她说","type":"M"},{"id":"S0333L02","known":"she can't","target":"她不能","type":"M"},{"id":"S0333L03","known":"with the group","target":"和小组","type":"M"},{"id":"S0333L04","known":"spend much time","target":"花很多时间","type":"M"}],
+    "practice_phrases": [
+      ["Much time", "很多时间", null, 1],
+      ["Spend much time", "花很多时间", null, 2],
+      ["She needs much time", "她需要很多时间", null, 3],
+      ["I can't spend much time", "我不能花很多时间", null, 3],
+      ["He can spend much time", "他可以花很多时间", null, 4],
+      ["She said she needs much time", "她说她需要很多时间", null, 4],
+      ["I can't spend much time with the group", "我不能和小组花很多时间", null, 5],
+      ["She said she can spend much time", "她说她可以花很多时间", null, 5],
+      ["I think that she needs much time to build", "我觉得她需要很多时间建立", null, 6],
+      ["She said that she can't spend much time with the group.", "她说她不能和小组花很多时间。", null, 5]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["很多","much"],["时间","time"]]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "S0332L01": {
+    "lego": ["He can","他可以"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["He can", "他可以", null, 1],
+      ["He can read", "他可以读", null, 2],
+      ["He can walk to school", "他可以走路去学校", null, 3],
+      ["He can consider the problem", "他可以考虑问题", null, 3],
+      ["He can provide another way", "他可以提供另一种方法", null, 4],
+      ["He can read the same book", "他可以读同一本书", null, 4],
+      ["He can sell off the company", "他可以卖掉公司", null, 5],
+      ["He can consider possible problems", "他可以考虑可能的问题", null, 5],
+      ["I think that he can provide the answers", "我觉得他可以提供答案", null, 6],
+      ["He can consider ten possible problems", "他可以考虑十个可能的问题", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["他","He"],["可以","can"]]
+  },
+  "S0332L02": {
+    "lego": ["can","可以"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0332L01","known":"He can","target":"他可以","type":"M"}],
+    "practice_phrases": [
+      ["Can", "可以", null, 1],
+      ["She can", "她可以", null, 1],
+      ["I can read", "我可以读", null, 2],
+      ["She can walk", "她可以走路", null, 2],
+      ["That student can provide", "那个学生可以提供", null, 3],
+      ["I can consider the company", "我可以考虑公司", null, 3],
+      ["She can read the same book", "她可以读同一本书", null, 4],
+      ["I can walk to school", "我可以走路去学校", null, 4],
+      ["She can consider the possible problems", "她可以考虑可能的问题", null, 5],
+      ["That student can sell off the company", "那个学生可以卖掉公司", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10
+  },
+  "S0332L03": {
+    "lego": ["can build","可以建立"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0332L01","known":"He can","target":"他可以","type":"M"},{"id":"S0332L02","known":"can","target":"可以","type":"A"}],
+    "practice_phrases": [
+      ["Can build", "可以建立", null, 1],
+      ["He can build", "他可以建立", null, 2],
+      ["She can build a company", "她可以建立公司", null, 3],
+      ["I can build another way", "我可以建立另一种方法", null, 3],
+      ["He can build the same way", "他可以建立同一种方法", null, 4],
+      ["That student can build a company", "那个学生可以建立公司", null, 4],
+      ["She can build another way to school", "她可以建立另一种去学校的方法", null, 5],
+      ["I can build another way for the company", "我可以建立公司的另一种方法", null, 5],
+      ["He can build another way to consider the problem", "他可以建立另一种考虑问题的方法", null, 6],
+      ["I think that she can build another way", "我觉得她可以建立另一种方法", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["可以","can"],["建立","build"]]
+  },
+  "S0332L04": {
+    "lego": ["build","建立"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0332L01","known":"He can","target":"他可以","type":"M"},{"id":"S0332L02","known":"can","target":"可以","type":"A"},{"id":"S0332L03","known":"can build","target":"可以建立","type":"M"}],
+    "practice_phrases": [
+      ["Build", "建立", null, 1],
+      ["She needs to build", "她需要建立", null, 2],
+      ["He needs to build a company", "他需要建立公司", null, 3],
+      ["I need to build another way", "我需要建立另一种方法", null, 3],
+      ["She needs to build the same company", "她需要建立同一家公司", null, 4],
+      ["He ought to build another way", "他应该建立另一种方法", null, 4],
+      ["That student needs to build a company", "那个学生需要建立公司", null, 5],
+      ["She said that she needs to build", "她说她需要建立", null, 5],
+      ["I think that she needs to build another way", "我觉得她需要建立另一种方法", null, 6],
+      ["Do you think that he needs to build the company", "你觉得他需要建立那家公司吗", null, 7]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10
+  },
+  "S0332L05": {
+    "lego": ["new life","新生活"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0332L01","known":"He can","target":"他可以","type":"M"},{"id":"S0332L02","known":"can","target":"可以","type":"A"},{"id":"S0332L03","known":"can build","target":"可以建立","type":"M"},{"id":"S0332L04","known":"build","target":"建立","type":"A"}],
+    "practice_phrases": [
+      ["New life", "新生活", null, 1],
+      ["Build new life", "建立新生活", null, 2],
+      ["I need new life", "我需要新生活", null, 3],
+      ["Consider new life", "考虑新生活", null, 2],
+      ["He needs to build new life", "他需要建立新生活", null, 4],
+      ["She ought to consider new life", "她应该考虑新生活", null, 4],
+      ["That student needs to provide new life", "那个学生需要提供新生活", null, 5],
+      ["I think I need to consider new life", "我觉得我需要考虑新生活", null, 5],
+      ["She said that she needs to build new life", "她说她需要建立新生活", null, 6],
+      ["Do you think that he needs to build new life", "你觉得他需要建立新生活吗", null, 7]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["新","new"],["生活","life"]]
+  },
+  "S0332L06": {
+    "lego": ["build a new life","建立新生活"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0332L01","known":"He can","target":"他可以","type":"M"},{"id":"S0332L02","known":"can","target":"可以","type":"A"},{"id":"S0332L03","known":"can build","target":"可以建立","type":"M"},{"id":"S0332L04","known":"build","target":"建立","type":"A"},{"id":"S0332L05","known":"new life","target":"新生活","type":"M"}],
+    "practice_phrases": [
+      ["Build a new life", "建立新生活", null, 1],
+      ["Can build a new life", "可以建立新生活", null, 2],
+      ["He needs to build a new life", "他需要建立新生活", null, 3],
+      ["I can build a new life", "我可以建立新生活", null, 3],
+      ["She ought to build a new life", "她应该建立新生活", null, 4],
+      ["That student can build a new life", "那个学生可以建立新生活", null, 4],
+      ["I think that he needs to build a new life", "我觉得他需要建立新生活", null, 5],
+      ["She said that she can build a new life", "她说她可以建立新生活", null, 5],
+      ["Do you think that she needs to build a new life", "你觉得她需要建立新生活吗", null, 6],
+      ["He can build a new life", "他可以建立新生活", null, 3]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["建立","build"],["新生活","new life"]]
+  },
+  "S0332L07": {
+    "lego": ["for his sister","为他妹妹"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [{"id":"S0332L01","known":"He can","target":"他可以","type":"M"},{"id":"S0332L02","known":"can","target":"可以","type":"A"},{"id":"S0332L03","known":"can build","target":"可以建立","type":"M"},{"id":"S0332L04","known":"build","target":"建立","type":"A"},{"id":"S0332L05","known":"new life","target":"新生活","type":"M"},{"id":"S0332L06","known":"build a new life","target":"建立新生活","type":"M"}],
+    "practice_phrases": [
+      ["For his sister", "为他妹妹", null, 1],
+      ["Build for his sister", "为他妹妹建立", null, 2],
+      ["He needs to provide for his sister", "他需要为他妹妹提供", null, 3],
+      ["I can build for his sister", "我可以为他妹妹建立", null, 3],
+      ["She ought to consider for his sister", "她应该为他妹妹考虑", null, 4],
+      ["He can build a new life for his sister", "他可以为他妹妹建立新生活", null, 4],
+      ["I think that he needs to build for his sister", "我觉得他需要为他妹妹建立", null, 5],
+      ["She said that she can provide for his sister", "她说她可以为他妹妹提供", null, 5],
+      ["Do you think that she needs to build for his sister", "你觉得她需要为他妹妹建立吗", null, 6],
+      ["He can build a new life for his sister.", "他可以为他妹妹建立新生活。", null, 4]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["为","for"],["他","his"],["妹妹","sister"]]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "S0331L01": {
+    "lego": ["She can't","她不能"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["She can't", "她不能", null, 1],
+      ["She can't read", "她不能读", null, 2],
+      ["She can't walk to school", "她不能走路去学校", null, 3],
+      ["She can't consider the company", "她不能考虑公司", null, 3],
+      ["She can't offer another way", "她不能提供另一种方法", null, 4],
+      ["She can't read the same book", "她不能读同一本书", null, 4],
+      ["She can't sell off the company", "她不能卖掉公司", null, 5],
+      ["She can't consider possible problems", "她不能考虑可能的问题", null, 5],
+      ["I think that she can't read the book", "我觉得她不能读那本书", null, 6],
+      ["She can't consider ten possible problems", "她不能考虑十个可能的问题", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [["她","She"],["不能","can't"]]
+  },
+  "S0331L02": {
+    "lego": ["can't","不能"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0331L01","known":"She can't","target":"她不能","type":"M"}],
+    "practice_phrases": [
+      ["Can't", "不能", null, 1],
+      ["He can't", "他不能", null, 1],
+      ["I can't read", "我不能读", null, 2],
+      ["He can't walk", "他不能走路", null, 2],
+      ["That student can't offer", "那个学生不能提供", null, 3],
+      ["I can't consider the company", "我不能考虑公司", null, 3],
+      ["He can't read the same book", "他不能读同一本书", null, 4],
+      ["I can't walk to school", "我不能走路去学校", null, 4],
+      ["He can't consider the possible problems", "他不能考虑可能的问题", null, 5],
+      ["That student can't sell off the company", "那个学生不能卖掉公司", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10
+  },
+  "S0331L03": {
+    "lego": ["can't provide","不能提供"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0331L01","known":"She can't","target":"她不能","type":"M"},{"id":"S0331L02","known":"can't","target":"不能","type":"A"}],
+    "practice_phrases": [
+      ["Can't provide", "不能提供", null, 1],
+      ["She can't provide", "她不能提供", null, 2],
+      ["He can't provide a book", "他不能提供一本书", null, 3],
+      ["I can't provide another way", "我不能提供另一种方法", null, 3],
+      ["She can't provide the same book", "她不能提供同一本书", null, 4],
+      ["That student can't provide a book", "那个学生不能提供一本书", null, 4],
+      ["He can't provide another way to school", "他不能提供另一种去学校的方法", null, 5],
+      ["I can't provide another way for the company", "我不能提供公司的另一种方法", null, 5],
+      ["She can't provide another way to consider the problem", "她不能提供另一种考虑问题的方法", null, 6],
+      ["I think that he can't provide another way", "我觉得他不能提供另一种方法", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["不能","can't"],["提供","provide"]]
+  },
+  "S0331L04": {
+    "lego": ["provide","提供"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0331L01","known":"She can't","target":"她不能","type":"M"},{"id":"S0331L02","known":"can't","target":"不能","type":"A"},{"id":"S0331L03","known":"can't provide","target":"不能提供","type":"M"}],
+    "practice_phrases": [
+      ["Provide", "提供", null, 1],
+      ["He needs to provide", "他需要提供", null, 2],
+      ["She needs to provide a book", "她需要提供一本书", null, 3],
+      ["I need to provide another way", "我需要提供另一种方法", null, 3],
+      ["She needs to provide the same book", "她需要提供同一本书", null, 4],
+      ["He ought to provide another way", "他应该提供另一种方法", null, 4],
+      ["That student needs to provide a book", "那个学生需要提供一本书", null, 5],
+      ["She said that she needs to provide", "她说她需要提供", null, 5],
+      ["I think that she needs to provide another way", "我觉得她需要提供另一种方法", null, 6],
+      ["Do you think that he needs to provide the book", "你觉得他需要提供那本书吗", null, 7]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10
+  },
+  "S0331L05": {
+    "lego": ["all the answers","所有的答案"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id":"S0331L01","known":"She can't","target":"她不能","type":"M"},{"id":"S0331L02","known":"can't","target":"不能","type":"A"},{"id":"S0331L03","known":"can't provide","target":"不能提供","type":"M"},{"id":"S0331L04","known":"provide","target":"提供","type":"A"}],
+    "practice_phrases": [
+      ["All the answers", "所有的答案", null, 1],
+      ["Read all the answers", "读所有的答案", null, 2],
+      ["I need all the answers", "我需要所有的答案", null, 3],
+      ["Consider all the answers", "考虑所有的答案", null, 2],
+      ["He needs to read all the answers", "他需要读所有的答案", null, 4],
+      ["She ought to consider all the answers", "她应该考虑所有的答案", null, 4],
+      ["That student needs to provide all the answers", "那个学生需要提供所有的答案", null, 5],
+      ["I think I need to consider all the answers", "我觉得我需要考虑所有的答案", null, 5],
+      ["She said that she needs to read all the answers", "她说她需要读所有的答案", null, 6],
+      ["Do you think that he needs to provide all the answers", "你觉得他需要提供所有的答案吗", null, 7]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["所有的","all the"],["答案","answers"]]
+  },
+  "S0331L06": {
+    "lego": ["provide all the answers","提供所有的答案"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [{"id":"S0331L01","known":"She can't","target":"她不能","type":"M"},{"id":"S0331L02","known":"can't","target":"不能","type":"A"},{"id":"S0331L03","known":"can't provide","target":"不能提供","type":"M"},{"id":"S0331L04","known":"provide","target":"提供","type":"A"},{"id":"S0331L05","known":"all the answers","target":"所有的答案","type":"M"}],
+    "practice_phrases": [
+      ["Provide all the answers", "提供所有的答案", null, 1],
+      ["Can't provide all the answers", "不能提供所有的答案", null, 2],
+      ["He needs to provide all the answers", "他需要提供所有的答案", null, 3],
+      ["I can't provide all the answers", "我不能提供所有的答案", null, 3],
+      ["She ought to provide all the answers", "她应该提供所有的答案", null, 4],
+      ["That student can't provide all the answers", "那个学生不能提供所有的答案", null, 4],
+      ["I think that he needs to provide all the answers", "我觉得他需要提供所有的答案", null, 5],
+      ["She said that she can't provide all the answers", "她说她不能提供所有的答案", null, 5],
+      ["Do you think that she needs to provide all the answers", "你觉得她需要提供所有的答案吗", null, 6],
+      ["She can't provide all the answers.", "她不能提供所有的答案。", null, 4]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2,"medium_3_legos": 2,"longer_4_legos": 2,"longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [["提供","provide"],["所有的","all the"],["答案","answers"]]
+  }
+}
