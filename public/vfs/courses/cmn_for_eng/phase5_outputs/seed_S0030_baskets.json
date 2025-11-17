@@ -1,127 +1,561 @@
 {
   "S0030L01": {
-    "lego": ["yesterday","昨天"],
+    "lego": [
+      "yesterday",
+      "昨天"
+    ],
     "type": "M",
-    "current_seed_legos_available": [],
     "is_final_lego": false,
+    "current_seed_earlier_legos": [],
     "practice_phrases": [
-      ["I wanted yesterday","我昨天想",null,1],
-      ["I started yesterday","我昨天开始",null,1],
-      ["I wanted to learn yesterday","我昨天想学会",null,2],
-      ["I wanted to meet yesterday","我昨天想认识",null,2],
-      ["I was going to start yesterday","我昨天就要开始",null,3],
-      ["I wanted to ask you yesterday","我昨天想问你",null,3],
-      ["I wanted to start talking yesterday","我昨天想开始说话",null,4],
-      ["I wanted to meet people yesterday","我昨天想认识人",null,4],
-      ["I wanted to be able to remember yesterday","我昨天想能记住",null,5],
-      ["I wanted to meet people who speak Chinese yesterday","我昨天想认识会说中文的人",null,6]
+      [
+        "I wanted to learn yesterday.",
+        "我昨天想学。",
+        null,
+        2
+      ],
+      [
+        "You started talking yesterday.",
+        "你昨天开始说话。",
+        null,
+        2
+      ],
+      [
+        "She wanted to meet people yesterday.",
+        "她昨天想认识人。",
+        null,
+        3
+      ],
+      [
+        "We looked forward to going yesterday.",
+        "我们昨天期待走。",
+        null,
+        3
+      ],
+      [
+        "I wanted to speak better yesterday.",
+        "我昨天想说得更好。",
+        null,
+        4
+      ],
+      [
+        "I don't want to stop learning yesterday.",
+        "我昨天不想停止学。",
+        null,
+        4
+      ],
+      [
+        "People who speak Chinese wanted to help yesterday.",
+        "会说中文的人昨天想帮。",
+        null,
+        5
+      ],
+      [
+        "I wanted to meet her as soon as possible yesterday.",
+        "我昨天想尽快认识她。",
+        null,
+        5
+      ],
+      [
+        "Will you help me learn her name before going yesterday?",
+        "你昨天会在走之前帮我学她的名字吗？",
+        null,
+        6
+      ],
+      [
+        "I wanted to speak better because it's useful yesterday.",
+        "我昨天想说得更好因为它很有用。",
+        null,
+        6
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
     },
-    "components": [[null,null],[null,null]]
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0030L01",
+      "seed_context": {
+        "known": "我昨天想问你一些事情。",
+        "target": "I wanted to ask you something yesterday."
+      }
+    },
+    "components": [
+      [
+        "昨",
+        "yesterday"
+      ],
+      [
+        "天",
+        "day"
+      ]
+    ]
   },
   "S0030L02": {
-    "lego": ["I wanted to ask you","我想问你"],
+    "lego": [
+      "I wanted to ask you",
+      "我想问你"
+    ],
     "type": "M",
-    "current_seed_legos_available": [["yesterday","昨天"]],
     "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0030L01",
+        "known": "yesterday",
+        "target": "昨天",
+        "type": "M"
+      }
+    ],
     "practice_phrases": [
-      ["I wanted to ask you","我想问你",null,1],
-      ["I wanted to ask you yesterday","我昨天想问你",null,2],
-      ["I wanted to ask you his name","我想问你他的名字",null,2],
-      ["I wanted to ask you something","我想问你一些事情",null,3],
-      ["I wanted to ask you why","我想问你为什么",null,3],
-      ["I wanted to ask you about his name","我想问你他的名字",null,4],
-      ["I wanted to ask you something yesterday","我昨天想问你一些事情",null,4],
-      ["I wanted to ask you because I wanted to learn","我想问你因为我想学会",null,5],
-      ["I wanted to ask you why you're learning","我想问你为什么在学",null,5],
-      ["I wanted to ask you something about Chinese yesterday","我昨天想问你一些中文事情",null,6]
+      [
+        "I wanted to ask you soon.",
+        "我很快想问你。",
+        null,
+        2
+      ],
+      [
+        "I wanted to ask you yesterday.",
+        "我昨天想问你。",
+        null,
+        2
+      ],
+      [
+        "I wanted to ask you something.",
+        "我想问你一些事情。",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask you before going.",
+        "我在走之前想问你。",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask you her name.",
+        "我想问你她的名字。",
+        null,
+        4
+      ],
+      [
+        "I wanted to ask you as soon as possible.",
+        "我想尽快问你。",
+        null,
+        4
+      ],
+      [
+        "I wanted to ask you because I want to learn.",
+        "我想问你因为我想学。",
+        null,
+        5
+      ],
+      [
+        "I wanted to ask you something useful before I have to go.",
+        "我在我必须走之前想问你一些有用的事情。",
+        null,
+        6
+      ],
+      [
+        "Will you help me? I wanted to ask you yesterday.",
+        "你会帮我吗？我昨天想问你。",
+        null,
+        5
+      ],
+      [
+        "I wanted to ask you something because speaking better is useful.",
+        "我想问你一些事情因为说得更好很有用。",
+        null,
+        6
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
     },
-    "components": [[null,null],[null,null],[null,null],[null,null]]
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0030L02",
+      "seed_context": {
+        "known": "我昨天想问你一些事情。",
+        "target": "I wanted to ask you something yesterday."
+      }
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "想",
+        "wanted"
+      ],
+      [
+        "问",
+        "ask"
+      ],
+      [
+        "你",
+        "you"
+      ]
+    ]
   },
   "S0030L03": {
-    "lego": ["wanted to ask you","想问你"],
+    "lego": [
+      "wanted to ask you",
+      "想问你"
+    ],
     "type": "M",
-    "current_seed_legos_available": [["yesterday","昨天"],["I wanted to ask you","我想问你"]],
     "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0030L01",
+        "known": "yesterday",
+        "target": "昨天",
+        "type": "M"
+      },
+      {
+        "id": "S0030L02",
+        "known": "I wanted to ask you",
+        "target": "我想问你",
+        "type": "M"
+      }
+    ],
     "practice_phrases": [
-      ["I wanted to ask you","我想问你",null,1],
-      ["You wanted to ask me","你想问我",null,1],
-      ["I wanted to ask you yesterday","我昨天想问你",null,2],
-      ["He wanted to ask you","他想问你",null,2],
-      ["I wanted to ask you something","我想问你一些事情",null,3],
-      ["I wanted to ask you his name","我想问你他的名字",null,3],
-      ["I wanted to ask you why you're learning","我想问你为什么在学",null,4],
-      ["I wanted to ask you about Chinese","我想问你中文",null,4],
-      ["I wanted to ask you something yesterday","我昨天想问你一些事情",null,5],
-      ["I wanted to ask you because I wanted to meet people","我想问你因为我想认识人",null,6]
+      [
+        "She wanted to ask you.",
+        "她想问你。",
+        null,
+        2
+      ],
+      [
+        "I wanted to ask you yesterday.",
+        "我昨天想问你。",
+        null,
+        2
+      ],
+      [
+        "We wanted to ask you something.",
+        "我们想问你一些事情。",
+        null,
+        3
+      ],
+      [
+        "She wanted to ask you soon.",
+        "她很快想问你。",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask you her name.",
+        "我想问你她的名字。",
+        null,
+        4
+      ],
+      [
+        "People wanted to ask you before going.",
+        "人想在走之前问你。",
+        null,
+        4
+      ],
+      [
+        "She wanted to ask you because she wants to learn.",
+        "她想问你因为她想学。",
+        null,
+        5
+      ],
+      [
+        "I wanted to ask you something useful as soon as possible.",
+        "我想尽快问你一些有用的事情。",
+        null,
+        5
+      ],
+      [
+        "Will you help me? I wanted to ask you yesterday.",
+        "你会帮我吗？我昨天想问你。",
+        null,
+        5
+      ],
+      [
+        "People who speak Chinese wanted to ask you before they have to go.",
+        "会说中文的人在他们必须走之前想问你。",
+        null,
+        6
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
     },
-    "components": [[null,null],[null,null],[null,null]]
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0030L03",
+      "seed_context": {
+        "known": "我昨天想问你一些事情。",
+        "target": "I wanted to ask you something yesterday."
+      }
+    },
+    "components": [
+      [
+        "想",
+        "wanted"
+      ],
+      [
+        "问",
+        "ask"
+      ],
+      [
+        "你",
+        "you"
+      ]
+    ]
   },
   "S0030L04": {
-    "lego": ["wanted to ask","想问"],
+    "lego": [
+      "wanted to ask",
+      "想问"
+    ],
     "type": "M",
-    "current_seed_legos_available": [["yesterday","昨天"],["I wanted to ask you","我想问你"],["wanted to ask you","想问你"]],
     "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0030L01",
+        "known": "yesterday",
+        "target": "昨天",
+        "type": "M"
+      },
+      {
+        "id": "S0030L02",
+        "known": "I wanted to ask you",
+        "target": "我想问你",
+        "type": "M"
+      },
+      {
+        "id": "S0030L03",
+        "known": "wanted to ask you",
+        "target": "想问你",
+        "type": "M"
+      }
+    ],
     "practice_phrases": [
-      ["I wanted to ask","我想问",null,1],
-      ["You wanted to ask","你想问",null,1],
-      ["I wanted to ask you","我想问你",null,2],
-      ["He wanted to ask","他想问",null,2],
-      ["I wanted to ask yesterday","我昨天想问",null,3],
-      ["I wanted to ask something","我想问一些事情",null,3],
-      ["I wanted to ask you yesterday","我昨天想问你",null,4],
-      ["I wanted to ask about his name","我想问他的名字",null,4],
-      ["I wanted to ask you something yesterday","我昨天想问你一些事情",null,5],
-      ["I wanted to ask because I wanted to learn","我想问因为我想学会",null,5]
+      [
+        "I wanted to ask.",
+        "我想问。",
+        null,
+        2
+      ],
+      [
+        "She wanted to ask yesterday.",
+        "她昨天想问。",
+        null,
+        2
+      ],
+      [
+        "We wanted to ask you something.",
+        "我们想问你一些事情。",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask her soon.",
+        "我很快想问她。",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask you before going.",
+        "我在走之前想问你。",
+        null,
+        4
+      ],
+      [
+        "She wanted to ask as soon as possible.",
+        "她想尽快问。",
+        null,
+        4
+      ],
+      [
+        "People wanted to ask because they want to learn better.",
+        "人想问因为他们想学得更好。",
+        null,
+        5
+      ],
+      [
+        "I wanted to ask you something useful yesterday.",
+        "我昨天想问你一些有用的事情。",
+        null,
+        5
+      ],
+      [
+        "Will you help me? I wanted to ask her name.",
+        "你会帮我吗？我想问她的名字。",
+        null,
+        5
+      ],
+      [
+        "I look forward to meeting people, but I wanted to ask you first.",
+        "我期待认识人，但是我首先想问你。",
+        null,
+        6
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
     },
-    "components": [[null,null],[null,null]]
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0030L04",
+      "seed_context": {
+        "known": "我昨天想问你一些事情。",
+        "target": "I wanted to ask you something yesterday."
+      }
+    },
+    "components": [
+      [
+        "想",
+        "wanted"
+      ],
+      [
+        "问",
+        "ask"
+      ]
+    ]
   },
   "S0030L05": {
-    "lego": ["to ask you something","问你一些事情"],
+    "lego": [
+      "to ask you something",
+      "问你一些事情"
+    ],
     "type": "M",
-    "current_seed_legos_available": [["yesterday","昨天"],["I wanted to ask you","我想问你"],["wanted to ask you","想问你"],["wanted to ask","想问"]],
     "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0030L01",
+        "known": "yesterday",
+        "target": "昨天",
+        "type": "M"
+      },
+      {
+        "id": "S0030L02",
+        "known": "I wanted to ask you",
+        "target": "我想问你",
+        "type": "M"
+      },
+      {
+        "id": "S0030L03",
+        "known": "wanted to ask you",
+        "target": "想问你",
+        "type": "M"
+      },
+      {
+        "id": "S0030L04",
+        "known": "wanted to ask",
+        "target": "想问",
+        "type": "M"
+      }
+    ],
     "practice_phrases": [
-      ["I want to ask you something","我想问你一些事情",null,2],
-      ["I'm going to ask you something","我就要问你一些事情",null,2],
-      ["I wanted to ask you something","我想问你一些事情",null,3],
-      ["I'll ask you something","我会问你一些事情",null,3],
-      ["I wanted to ask you something yesterday","我昨天想问你一些事情",null,4],
-      ["I'm going to ask you something soon","我很快就要问你一些事情",null,4],
-      ["I wanted to ask you something before I go","我想问你一些事情在我必须走之前",null,5],
-      ["I'm going to start to ask you something","我就要开始问你一些事情",null,5],
-      ["I wanted to ask you something yesterday because I wanted to learn","我昨天想问你一些事情因为我想学会",null,6],
-      ["I look forward to being able to ask you something","我期待能问你一些事情",null,6]
+      [
+        "I want to ask you something.",
+        "我想问你一些事情。",
+        null,
+        2
+      ],
+      [
+        "She wants to ask you something.",
+        "她想问你一些事情。",
+        null,
+        2
+      ],
+      [
+        "We want to ask you something soon.",
+        "我们很快想问你一些事情。",
+        null,
+        3
+      ],
+      [
+        "I wanted to ask you something yesterday.",
+        "我昨天想问你一些事情。",
+        null,
+        3
+      ],
+      [
+        "I want to ask you something before going.",
+        "我在走之前想问你一些事情。",
+        null,
+        4
+      ],
+      [
+        "She wants to ask you something as soon as possible.",
+        "她想尽快问你一些事情。",
+        null,
+        4
+      ],
+      [
+        "People want to ask you something because they want to learn.",
+        "人想问你一些事情因为他们想学。",
+        null,
+        5
+      ],
+      [
+        "I look forward to asking you something useful before I have to go.",
+        "我期待在我必须走之前问你一些有用的事情。",
+        null,
+        6
+      ],
+      [
+        "Will you help me to ask you something about speaking better?",
+        "你会帮我问你一些关于说得更好的事情吗？",
+        null,
+        6
+      ],
+      [
+        "I wanted to ask you something yesterday.",
+        "我昨天想问你一些事情。",
+        null,
+        2
+      ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
     },
-    "components": [[null,null],[null,null],[null,null],[null,null]]
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0030L05",
+      "seed_context": {
+        "known": "我昨天想问你一些事情。",
+        "target": "I wanted to ask you something yesterday."
+      }
+    },
+    "components": [
+      [
+        "问",
+        "ask"
+      ],
+      [
+        "你",
+        "you"
+      ],
+      [
+        "一些",
+        "some"
+      ],
+      [
+        "事情",
+        "things"
+      ]
+    ]
   }
 }
