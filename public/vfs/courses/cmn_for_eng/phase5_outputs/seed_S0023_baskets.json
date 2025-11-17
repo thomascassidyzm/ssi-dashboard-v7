@@ -1,0 +1,162 @@
+{
+  "S0023L01": {
+    "lego": ["I soon will","我很快就要"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I soon will stop.", "我很快就要停止。", null, 2],
+      ["I soon will come back.", "我很快就要回来。", null, 2],
+      ["I soon will stop talking.", "我很快就要停止说话。", null, 3],
+      ["I soon will meet you.", "我很快就要见面你。", null, 3],
+      ["I soon will learn his name.", "我很快就要学会他的名字。", null, 4],
+      ["I soon will find out the answer.", "我很快就要找出答案。", null, 4],
+      ["I soon will want to meet people who speak Chinese.", "我很快就要想认识会说中文的人。", null, 6],
+      ["I soon will speak Chinese with you.", "我很快就要和你说中文。", null, 5],
+      ["I soon will come back with everyone else later.", "我很快就要晚点和其他人一起回来。", null, 6],
+      ["I soon will meet at six o'clock this evening.", "我很快就要今天晚上六点见面。", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0023L01",
+      "seed_context": {
+        "known": "我很快就要开始多说话了。",
+        "target": "I'm going to start talking more soon."
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0023L02": {
+    "lego": ["soon will start","很快就要开始"],
+    "type": "M",
+    "current_seed_legos_available": [["I soon will","我很快就要"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["She soon will start.", "她很快就要开始。", null, 2],
+      ["He soon will start.", "他很快就要开始。", null, 2],
+      ["I soon will start talking.", "我很快就要开始说话。", null, 3],
+      ["You soon will start learning.", "你很快就要开始在学。", null, 3],
+      ["We soon will start meeting people.", "我们很快就要开始认识人。", null, 4],
+      ["I soon will start speaking Chinese.", "我很快就要开始会说中文。", null, 4],
+      ["She soon will start learning his name quickly.", "她很快就要开始快点学会他的名字。", null, 5],
+      ["I soon will start speaking Chinese with you.", "我很快就要开始和你说中文。", null, 5],
+      ["He soon will start wanting to find out what the answer is.", "他很快就要开始想找出答案是什么。", null, 7],
+      ["I soon will start meeting at six o'clock this evening.", "我很快就要开始今天晚上六点见面。", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0023L02",
+      "seed_context": {
+        "known": "我很快就要开始多说话了。",
+        "target": "I'm going to start talking more soon."
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0023L03": {
+    "lego": ["will start","就要开始"],
+    "type": "M",
+    "current_seed_legos_available": [["I soon will","我很快就要"],["soon will start","很快就要开始"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["She will start.", "她就要开始。", null, 2],
+      ["He will start.", "他就要开始。", null, 2],
+      ["I will start talking.", "我就要开始说话。", null, 3],
+      ["You will start learning.", "你就要开始在学。", null, 3],
+      ["We will start meeting people.", "我们就要开始认识人。", null, 4],
+      ["I will start speaking Chinese.", "我就要开始会说中文。", null, 4],
+      ["She will start learning his name quickly.", "她就要开始快点学会他的名字。", null, 5],
+      ["I will start speaking Chinese with you.", "我就要开始和你说中文。", null, 5],
+      ["He will start wanting to find out what the answer is.", "他就要开始想找出答案是什么。", null, 6],
+      ["I will start meeting at six o'clock this evening.", "我就要开始今天晚上六点见面。", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0023L03",
+      "seed_context": {
+        "known": "我很快就要开始多说话了。",
+        "target": "I'm going to start talking more soon."
+      }
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0023L04": {
+    "lego": ["to start talking more","开始多说话"],
+    "type": "M",
+    "current_seed_legos_available": [["I soon will","我很快就要"],["soon will start","很快就要开始"],["will start","就要开始"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["I want to start talking more.", "我想要开始多说话。", null, 2],
+      ["You want to start talking more.", "你想开始多说话。", null, 2],
+      ["She wants to start talking more.", "她想开始多说话。", null, 3],
+      ["He wants to start talking more.", "他想开始多说话。", null, 3],
+      ["I don't want to start talking more.", "我不想开始多说话。", null, 4],
+      ["We want to start talking more.", "我们想开始多说话。", null, 4],
+      ["I soon will want to start talking more.", "我很快就要想开始多说话。", null, 5],
+      ["You want to start talking more with me.", "你想和我开始多说话。", null, 5],
+      ["I want to start talking more with people who speak Chinese.", "我想要和会说中文的人开始多说话。", null, 6],
+      ["Because I want to start talking more with you.", "因为我想要和你开始多说话。", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0023L04",
+      "seed_context": {
+        "known": "我很快就要开始多说话了。",
+        "target": "I'm going to start talking more soon."
+      }
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0023L05": {
+    "lego": ["to talk more","多说话"],
+    "type": "M",
+    "current_seed_legos_available": [["I soon will","我很快就要"],["soon will start","很快就要开始"],["will start","就要开始"],["to start talking more","开始多说话"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["I want to talk more.", "我想要多说话。", null, 2],
+      ["You want to talk more.", "你想多说话。", null, 2],
+      ["She wants to talk more.", "她想多说话。", null, 3],
+      ["He wants to talk more.", "他想多说话。", null, 3],
+      ["I don't want to talk more.", "我不想多说话。", null, 4],
+      ["We want to talk more.", "我们想多说话。", null, 4],
+      ["I want to talk more with people who speak Chinese.", "我想要和会说中文的人多说话。", null, 6],
+      ["You want to talk more with me.", "你想和我多说话。", null, 5],
+      ["Because I want to meet people who can talk more.", "因为我想认识能多说话的人。", null, 6],
+      ["I'm going to start talking more soon.", "我很快就要开始多说话了。", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0023L05",
+      "seed_context": {
+        "known": "我很快就要开始多说话了。",
+        "target": "I'm going to start talking more soon."
+      }
+    },
+    "components": [[null,null],[null,null]]
+  }
+}

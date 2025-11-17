@@ -1,0 +1,237 @@
+{
+  "S0027L01": {
+    "lego": [
+      "I don't like",
+      "我不喜欢"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I don't like talking.", "我不喜欢说话。"],
+      ["I don't like this.", "我不喜欢这个。"],
+      ["I don't like feeling as if I'm ready.", "我不喜欢感觉好像我准备好了。"],
+      ["I don't like learning her name.", "我不喜欢学她的名字。"],
+      ["I don't like people who speak Chinese.", "我不喜欢会说中文的人。"],
+      ["I don't like talking to people.", "我不喜欢跟人说话。"],
+      ["I don't like wanting to meet people.", "我不喜欢想认识人。"],
+      ["I don't like feeling nearly ready to go.", "我不喜欢感觉快准备好走了。"],
+      ["I don't like talking more.", "我不喜欢多说话。"],
+      ["I don't like starting to talk.", "我不喜欢开始说话。"]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0027L01",
+      "seed_context": {
+        "known": "我不喜欢花太多时间回答。",
+        "target": "I don't like taking too much time to answer."
+      }
+    },
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "不",
+        "not"
+      ],
+      [
+        "喜欢",
+        "like"
+      ]
+    ]
+  },
+  "S0027L02": {
+    "lego": [
+      "take too much time to answer",
+      "花太多时间回答"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0027L01",
+        "known": "I don't like",
+        "target": "我不喜欢",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["You take too much time to answer.", "你花太多时间回答。"],
+      ["I take too much time to answer.", "我花太多时间回答。"],
+      ["She wants to take too much time to answer.", "她想花太多时间回答。"],
+      ["We take too much time to answer this.", "我们花太多时间回答这个。"],
+      ["I don't like people who take too much time to answer.", "我不喜欢花太多时间回答的人。"],
+      ["Do you take too much time to answer her?", "你花太多时间回答她吗？"],
+      ["I'm going to take too much time to answer.", "我会花太多时间回答。"],
+      ["You don't want to take too much time to answer.", "你不想花太多时间回答。"],
+      ["Before I have to go, I take too much time to answer.", "在我必须走之前，我花太多时间回答。"],
+      ["I don't like taking too much time to answer.", "我不喜欢花太多时间回答。"]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0027L02",
+      "seed_context": {
+        "known": "我不喜欢花太多时间回答。",
+        "target": "I don't like taking too much time to answer."
+      }
+    },
+    "components": [
+      [
+        "花",
+        "spend/take"
+      ],
+      [
+        "太多",
+        "too much"
+      ],
+      [
+        "时间",
+        "time"
+      ],
+      [
+        "回答",
+        "answer"
+      ]
+    ]
+  },
+  "S0027L03": {
+    "lego": [
+      "to take too much time",
+      "花太多时间"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0027L01",
+        "known": "I don't like",
+        "target": "我不喜欢",
+        "type": "M"
+      },
+      {
+        "id": "S0027L02",
+        "known": "take too much time to answer",
+        "target": "花太多时间回答",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["I take too much time.", "我花太多时间。"],
+      ["You take too much time.", "你花太多时间。"],
+      ["She wants to take too much time talking.", "她想花太多时间说话。"],
+      ["We don't want to take too much time.", "我们不想花太多时间。"],
+      ["I don't like to take too much time learning.", "我不喜欢花太多时间学。"],
+      ["Do you take too much time before going?", "你在走之前花太多时间吗？"],
+      ["You will take too much time talking to people.", "你会花太多时间跟人说话。"],
+      ["I'm going to take too much time to meet her.", "我会花太多时间去见她。"],
+      ["Because I take too much time, I have to go.", "因为我花太多时间，我必须走。"],
+      ["I don't like taking too much time to answer.", "我不喜欢花太多时间回答。"]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0027L03",
+      "seed_context": {
+        "known": "我不喜欢花太多时间回答。",
+        "target": "I don't like taking too much time to answer."
+      }
+    },
+    "components": [
+      [
+        "花",
+        "spend/take"
+      ],
+      [
+        "太多",
+        "too much"
+      ],
+      [
+        "时间",
+        "time"
+      ]
+    ]
+  },
+  "S0027L04": {
+    "lego": [
+      "too much time",
+      "太多时间"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0027L01",
+        "known": "I don't like",
+        "target": "我不喜欢",
+        "type": "M"
+      },
+      {
+        "id": "S0027L02",
+        "known": "take too much time to answer",
+        "target": "花太多时间回答",
+        "type": "M"
+      },
+      {
+        "id": "S0027L03",
+        "known": "to take too much time",
+        "target": "花太多时间",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["I have too much time.", "我有太多时间。"],
+      ["Too much time is useful.", "太多时间是有用的。"],
+      ["She wants too much time to talk.", "她想要太多时间说话。"],
+      ["We don't have too much time before going.", "我们在走之前没有太多时间。"],
+      ["I like feeling as if I have too much time.", "我喜欢感觉好像我有太多时间。"],
+      ["You will help me because I have too much time.", "你会帮我因为我有太多时间。"],
+      ["Too much time is not going to help you learn.", "太多时间不会帮你学。"],
+      ["I don't want to meet people who have too much time.", "我不想认识有太多时间的人。"],
+      ["Are you nearly ready before I take too much time to answer?", "在我花太多时间回答之前你快准备好了吗？"],
+      ["I don't like taking too much time to answer.", "我不喜欢花太多时间回答。"]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0027L04",
+      "seed_context": {
+        "known": "我不喜欢花太多时间回答。",
+        "target": "I don't like taking too much time to answer."
+      }
+    },
+    "components": [
+      [
+        "太多",
+        "too much"
+      ],
+      [
+        "时间",
+        "time"
+      ]
+    ]
+  }
+}
