@@ -1349,23 +1349,6 @@
           ]
         },
         {
-          "id": "S0011L04",
-          "type": "M",
-          "target": "说话",
-          "known": "to speak",
-          "new": true,
-          "components": [
-            [
-              "说",
-              "speak"
-            ],
-            [
-              "话",
-              "words/talk"
-            ]
-          ]
-        },
-        {
           "id": "S0011L05",
           "type": "M",
           "target": "说完",
@@ -1602,7 +1585,8 @@
           "type": "A",
           "target": "中文",
           "known": "Mandarin Chinese",
-          "new": true
+          "new": false,
+          "ref": "S0001"
         },
         {
           "id": "S0013L02",
@@ -1611,27 +1595,6 @@
           "known": "very well",
           "new": true,
           "components": [
-            [
-              "很",
-              "very"
-            ],
-            [
-              "好",
-              "well/good"
-            ]
-          ]
-        },
-        {
-          "id": "S0013L03",
-          "type": "M",
-          "target": "得很好",
-          "known": "very well",
-          "new": true,
-          "components": [
-            [
-              "得",
-              "(complement marker)"
-            ],
             [
               "很",
               "very"
@@ -1770,23 +1733,6 @@
           "new": true
         },
         {
-          "id": "S0014L04",
-          "type": "M",
-          "target": "整天都",
-          "known": "all day",
-          "new": true,
-          "components": [
-            [
-              "整天",
-              "all day"
-            ],
-            [
-              "都",
-              "all/even"
-            ]
-          ]
-        },
-        {
           "id": "S0014L05",
           "type": "M",
           "target": "说中文吗",
@@ -1920,7 +1866,8 @@
           "type": "A",
           "target": "明天",
           "known": "tomorrow",
-          "new": true
+          "new": false,
+          "ref": "S0012"
         },
         {
           "id": "S0015L05",
@@ -1944,7 +1891,7 @@
           "type": "M",
           "target": "说中文",
           "known": "to speak Chinese",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -1954,7 +1901,8 @@
               "中文",
               "Chinese"
             ]
-          ]
+          ],
+          "ref": "S0014"
         },
         {
           "id": "S0015L07",
@@ -2473,7 +2421,8 @@
           "type": "A",
           "target": "今天",
           "known": "today",
-          "new": true
+          "new": false,
+          "ref": "S0007"
         },
         {
           "id": "S0018L05",
@@ -2750,23 +2699,6 @@
             [
               "学会",
               "learn"
-            ]
-          ]
-        },
-        {
-          "id": "S0020L03",
-          "type": "M",
-          "target": "学会",
-          "known": "to learn",
-          "new": true,
-          "components": [
-            [
-              "学",
-              "study/learn"
-            ],
-            [
-              "会",
-              "can/know"
             ]
           ]
         },
@@ -3152,7 +3084,7 @@
           "type": "M",
           "target": "说中文",
           "known": "to speak Chinese",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -3162,7 +3094,8 @@
               "中文",
               "Chinese"
             ]
-          ]
+          ],
+          "ref": "S0014"
         }
       ]
     },
@@ -3393,7 +3326,7 @@
           "type": "M",
           "target": "记住",
           "known": "to remember",
-          "new": true,
+          "new": false,
           "components": [
             [
               "记",
@@ -3403,7 +3336,8 @@
               "住",
               "firmly/successfully"
             ]
-          ]
+          ],
+          "ref": "S0006"
         }
       ]
     },
@@ -3783,13 +3717,6 @@
               "time"
             ]
           ]
-        },
-        {
-          "id": "S0027L05",
-          "type": "A",
-          "target": "回答",
-          "known": "answer",
-          "new": true
         }
       ]
     },
@@ -4158,23 +4085,6 @@
               "things"
             ]
           ]
-        },
-        {
-          "id": "S0030L06",
-          "type": "M",
-          "target": "一些事情",
-          "known": "something",
-          "new": true,
-          "components": [
-            [
-              "一些",
-              "some"
-            ],
-            [
-              "事情",
-              "things/matters"
-            ]
-          ]
         }
       ]
     },
@@ -4282,7 +4192,7 @@
           "type": "M",
           "target": "一些东西",
           "known": "something",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一些",
@@ -4292,7 +4202,8 @@
               "东西",
               "thing/stuff"
             ]
-          ]
+          ],
+          "ref": "S0004"
         },
         {
           "id": "S0032L04",
@@ -4420,7 +4331,7 @@
           "type": "M",
           "target": "其他人",
           "known": "other people",
-          "new": true,
+          "new": false,
           "components": [
             [
               "其他",
@@ -4430,7 +4341,8 @@
               "人",
               "people"
             ]
-          ]
+          ],
+          "ref": "S0016"
         },
         {
           "id": "S0034L03",
@@ -4789,7 +4701,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0039L02",
@@ -4935,7 +4848,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0041L03",
@@ -5339,7 +5253,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0046L02",
@@ -5576,7 +5491,7 @@
           "type": "M",
           "target": "我的意思",
           "known": "what I mean",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -5590,7 +5505,8 @@
               "意思",
               "meaning"
             ]
-          ]
+          ],
+          "ref": "S0008"
         },
         {
           "id": "S0049L04",
@@ -6302,7 +6218,7 @@
           "type": "M",
           "target": "怎么说",
           "known": "how to say",
-          "new": true,
+          "new": false,
           "components": [
             [
               "怎么",
@@ -6312,7 +6228,8 @@
               "说",
               "say"
             ]
-          ]
+          ],
+          "ref": "S0056"
         },
         {
           "id": "S0057L03",
@@ -6641,7 +6558,7 @@
           "type": "M",
           "target": "怎么说",
           "known": "how to say",
-          "new": true,
+          "new": false,
           "components": [
             [
               "怎么",
@@ -6651,7 +6568,8 @@
               "说",
               "say"
             ]
-          ]
+          ],
+          "ref": "S0056"
         },
         {
           "id": "S0060L05",
@@ -6807,7 +6725,7 @@
           "type": "M",
           "target": "我不确定",
           "known": "I'm not sure",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -6821,7 +6739,8 @@
               "确定",
               "sure"
             ]
-          ]
+          ],
+          "ref": "S0010"
         },
         {
           "id": "S0062L02",
@@ -7018,7 +6937,8 @@
           "type": "A",
           "target": "中文",
           "known": "Chinese",
-          "new": true
+          "new": false,
+          "ref": "S0014"
         },
         {
           "id": "S0064L02",
@@ -7271,7 +7191,8 @@
           "type": "A",
           "target": "答案",
           "known": "answer",
-          "new": true
+          "new": false,
+          "ref": "S0017"
         },
         {
           "id": "S0066L03",
@@ -7925,7 +7846,7 @@
           "type": "M",
           "target": "很好",
           "known": "very well",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -7935,7 +7856,8 @@
               "好",
               "well/good"
             ]
-          ]
+          ],
+          "ref": "S0013"
         }
       ]
     },
@@ -7961,23 +7883,6 @@
             [
               "感谢",
               "thank you"
-            ]
-          ]
-        },
-        {
-          "id": "S0073L02",
-          "type": "M",
-          "target": "但是",
-          "known": "but",
-          "new": true,
-          "components": [
-            [
-              "但",
-              "but"
-            ],
-            [
-              "是",
-              "is/marker"
             ]
           ]
         },
@@ -8028,23 +7933,6 @@
           ]
         },
         {
-          "id": "S0073L05",
-          "type": "M",
-          "target": "要学习",
-          "known": "to learn",
-          "new": true,
-          "components": [
-            [
-              "要",
-              "to/need to"
-            ],
-            [
-              "学习",
-              "learn"
-            ]
-          ]
-        },
-        {
           "id": "S0073L06",
           "type": "A",
           "target": "学习",
@@ -8083,7 +7971,7 @@
           "type": "M",
           "target": "非常感谢",
           "known": "Thank you very much",
-          "new": true,
+          "new": false,
           "components": [
             [
               "非常",
@@ -8093,7 +7981,8 @@
               "感谢",
               "thank you"
             ]
-          ]
+          ],
+          "ref": "S0073"
         },
         {
           "id": "S0074L02",
@@ -8143,23 +8032,6 @@
           "target": "理解",
           "known": "understand",
           "new": true
-        },
-        {
-          "id": "S0074L05",
-          "type": "M",
-          "target": "帮助我",
-          "known": "help me",
-          "new": true,
-          "components": [
-            [
-              "帮助",
-              "help"
-            ],
-            [
-              "我",
-              "me"
-            ]
-          ]
         },
         {
           "id": "S0074L06",
@@ -8237,7 +8109,7 @@
           "type": "M",
           "target": "更多要学习",
           "known": "more to learn",
-          "new": true,
+          "new": false,
           "components": [
             [
               "更多",
@@ -8251,24 +8123,8 @@
               "学习",
               "learn"
             ]
-          ]
-        },
-        {
-          "id": "S0075L04",
-          "type": "M",
-          "target": "要学习",
-          "known": "to learn",
-          "new": true,
-          "components": [
-            [
-              "要",
-              "to"
-            ],
-            [
-              "学习",
-              "learn"
-            ]
-          ]
+          ],
+          "ref": "S0073"
         },
         {
           "id": "S0075L05",
@@ -8552,7 +8408,8 @@
           "type": "A",
           "target": "理解",
           "known": "understand",
-          "new": true
+          "new": false,
+          "ref": "S0074"
         },
         {
           "id": "S0077L08",
@@ -8617,31 +8474,6 @@
           ]
         },
         {
-          "id": "S0078L03",
-          "type": "M",
-          "target": "你说的话",
-          "known": "what you said",
-          "new": true,
-          "components": [
-            [
-              "你",
-              "you"
-            ],
-            [
-              "说",
-              "said"
-            ],
-            [
-              "的",
-              "relative marker"
-            ],
-            [
-              "话",
-              "words/speech"
-            ]
-          ]
-        },
-        {
           "id": "S0078L04",
           "type": "M",
           "target": "你说的",
@@ -8674,7 +8506,8 @@
           "type": "A",
           "target": "理解",
           "known": "understand",
-          "new": true
+          "new": false,
+          "ref": "S0074"
         },
         {
           "id": "S0078L07",
@@ -8778,14 +8611,16 @@
           "type": "A",
           "target": "学习",
           "known": "learn/study",
-          "new": true
+          "new": false,
+          "ref": "S0073"
         },
         {
           "id": "S0079L06",
           "type": "A",
           "target": "开始",
           "known": "start/begin",
-          "new": true
+          "new": false,
+          "ref": "S0077"
         }
       ]
     },
@@ -8802,7 +8637,7 @@
           "type": "M",
           "target": "我不确定",
           "known": "I'm not sure",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -8816,14 +8651,15 @@
               "确定",
               "sure"
             ]
-          ]
+          ],
+          "ref": "S0010"
         },
         {
           "id": "S0080L02",
           "type": "M",
           "target": "不确定",
           "known": "not sure",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -8833,7 +8669,8 @@
               "确定",
               "sure"
             ]
-          ]
+          ],
+          "ref": "S0010"
         },
         {
           "id": "S0080L03",
@@ -8924,7 +8761,7 @@
           "type": "M",
           "target": "什么时候",
           "known": "when",
-          "new": true,
+          "new": false,
           "components": [
             [
               "什么",
@@ -8934,7 +8771,8 @@
               "时候",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0079"
         },
         {
           "id": "S0080L08",
@@ -8978,14 +8816,15 @@
           "type": "A",
           "target": "什么时候",
           "known": "when",
-          "new": true
+          "new": false,
+          "ref": "S0079"
         },
         {
           "id": "S0081L02",
           "type": "M",
           "target": "你想",
           "known": "you want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -8995,7 +8834,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0020"
         },
         {
           "id": "S0081L03",
@@ -9056,7 +8896,7 @@
           "type": "M",
           "target": "我不会",
           "known": "I'm not going to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -9066,7 +8906,8 @@
               "不会",
               "not going to/won't"
             ]
-          ]
+          ],
+          "ref": "S0024"
         },
         {
           "id": "S0082L02",
@@ -9349,7 +9190,7 @@
           "type": "M",
           "target": "说的话",
           "known": "what [someone] said",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -9363,7 +9204,8 @@
               "话",
               "words"
             ]
-          ]
+          ],
+          "ref": "S0083"
         },
         {
           "id": "S0084L07",
@@ -9411,30 +9253,6 @@
         "I don't know those people."
       ],
       "legos": [
-        {
-          "id": "S0085L01",
-          "type": "A",
-          "target": "认识",
-          "known": "know",
-          "new": true
-        },
-        {
-          "id": "S0085L02",
-          "type": "M",
-          "target": "不认识",
-          "known": "don't know",
-          "new": true,
-          "components": [
-            [
-              "不",
-              "don't"
-            ],
-            [
-              "认识",
-              "know"
-            ]
-          ]
-        },
         {
           "id": "S0085L03",
           "type": "M",
@@ -9624,35 +9442,11 @@
           ]
         },
         {
-          "id": "S0087L02",
-          "type": "A",
-          "target": "认识",
-          "known": "know",
-          "new": true
-        },
-        {
-          "id": "S0087L03",
-          "type": "M",
-          "target": "不认识",
-          "known": "don't know",
-          "new": true,
-          "components": [
-            [
-              "不",
-              "don't"
-            ],
-            [
-              "认识",
-              "know"
-            ]
-          ]
-        },
-        {
           "id": "S0087L04",
           "type": "M",
           "target": "我不认识",
           "known": "I don't know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -9666,7 +9460,8 @@
               "认识",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0085"
         },
         {
           "id": "S0087L05",
@@ -9702,7 +9497,8 @@
           "type": "A",
           "target": "人",
           "known": "people",
-          "new": true
+          "new": false,
+          "ref": "S0085"
         }
       ]
     },
@@ -9735,7 +9531,8 @@
           "type": "A",
           "target": "准备",
           "known": "prepare",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         },
         {
           "id": "S0088L03",
@@ -9814,7 +9611,7 @@
           "type": "M",
           "target": "我不认识的人",
           "known": "people I don't know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -9836,7 +9633,8 @@
               "人",
               "people"
             ]
-          ]
+          ],
+          "ref": "S0087"
         },
         {
           "id": "S0088L08",
@@ -10019,13 +9817,6 @@
           "type": "A",
           "target": "如果",
           "known": "if",
-          "new": true
-        },
-        {
-          "id": "S0090L02",
-          "type": "A",
-          "target": "能",
-          "known": "can",
           "new": true
         },
         {
@@ -10280,7 +10071,7 @@
           "type": "M",
           "target": "我想",
           "known": "I'd like",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -10290,7 +10081,8 @@
               "想",
               "would like/want"
             ]
-          ]
+          ],
+          "ref": "S0011"
         },
         {
           "id": "S0092L02",
@@ -10364,7 +10156,8 @@
           "type": "A",
           "target": "现在",
           "known": "now",
-          "new": true
+          "new": false,
+          "ref": "S0001"
         },
         {
           "id": "S0093L02",
@@ -10520,7 +10313,7 @@
           "type": "M",
           "target": "准备好",
           "known": "ready",
-          "new": true,
+          "new": false,
           "components": [
             [
               "准备",
@@ -10530,7 +10323,8 @@
               "好",
               "good/complete"
             ]
-          ]
+          ],
+          "ref": "S0088"
         },
         {
           "id": "S0095L03",
@@ -10625,7 +10419,7 @@
           "type": "M",
           "target": "我还没准备好",
           "known": "I'm not ready yet",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -10639,14 +10433,15 @@
               "准备好",
               "ready"
             ]
-          ]
+          ],
+          "ref": "S0088"
         },
         {
           "id": "S0096L03",
           "type": "M",
           "target": "还没准备好",
           "known": "not ready yet",
-          "new": true,
+          "new": false,
           "components": [
             [
               "还没",
@@ -10656,14 +10451,15 @@
               "准备好",
               "ready"
             ]
-          ]
+          ],
+          "ref": "S0088"
         },
         {
           "id": "S0096L04",
           "type": "M",
           "target": "准备好",
           "known": "ready",
-          "new": true,
+          "new": false,
           "components": [
             [
               "准备",
@@ -10673,7 +10469,8 @@
               "好",
               "complete"
             ]
-          ]
+          ],
+          "ref": "S0088"
         },
         {
           "id": "S0096L05",
@@ -10735,7 +10532,7 @@
           "type": "M",
           "target": "一点时间",
           "known": "a little time",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一点",
@@ -10745,7 +10542,8 @@
               "时间",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0054"
         }
       ]
     },
@@ -10795,23 +10593,6 @@
           ]
         },
         {
-          "id": "S0097L03",
-          "type": "M",
-          "target": "准备好了",
-          "known": "ready",
-          "new": true,
-          "components": [
-            [
-              "准备好",
-              "ready"
-            ],
-            [
-              "了",
-              "[particle]"
-            ]
-          ]
-        },
-        {
           "id": "S0097L04",
           "type": "M",
           "target": "只要你想",
@@ -10837,7 +10618,7 @@
           "type": "M",
           "target": "你想",
           "known": "you want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -10847,7 +10628,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0020"
         },
         {
           "id": "S0097L06",
@@ -10991,13 +10773,6 @@
               "thing"
             ]
           ]
-        },
-        {
-          "id": "S0098L06",
-          "type": "A",
-          "target": "东西",
-          "known": "thing",
-          "new": true
         }
       ]
     },
@@ -11043,28 +10818,11 @@
           ]
         },
         {
-          "id": "S0099L03",
-          "type": "M",
-          "target": "你自己",
-          "known": "yourself",
-          "new": true,
-          "components": [
-            [
-              "你",
-              "you"
-            ],
-            [
-              "自己",
-              "self"
-            ]
-          ]
-        },
-        {
           "id": "S0099L04",
           "type": "M",
           "target": "为什么",
           "known": "why",
-          "new": true,
+          "new": false,
           "components": [
             [
               "为",
@@ -11074,7 +10832,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0067"
         },
         {
           "id": "S0099L05",
@@ -11136,7 +10895,7 @@
           "type": "M",
           "target": "起作用",
           "known": "work",
-          "new": true,
+          "new": false,
           "components": [
             [
               "起",
@@ -11146,7 +10905,8 @@
               "作用",
               "effect"
             ]
-          ]
+          ],
+          "ref": "S0094"
         }
       ]
     },
@@ -11273,13 +11033,6 @@
               "thing/matter"
             ]
           ]
-        },
-        {
-          "id": "S0100L08",
-          "type": "A",
-          "target": "事情",
-          "known": "thing",
-          "new": true
         }
       ]
     },
@@ -11823,7 +11576,8 @@
           "type": "A",
           "target": "高兴",
           "known": "happy",
-          "new": true
+          "new": false,
+          "ref": "S0076"
         },
         {
           "id": "S0106L05",
@@ -12168,7 +11922,7 @@
           "type": "M",
           "target": "努力工作",
           "known": "work hard",
-          "new": true,
+          "new": false,
           "components": [
             [
               "努力",
@@ -12178,7 +11932,8 @@
               "工作",
               "work"
             ]
-          ]
+          ],
+          "ref": "S0106"
         },
         {
           "id": "S0109L04",
@@ -12272,7 +12027,8 @@
           "type": "A",
           "target": "词",
           "known": "words",
-          "new": true
+          "new": false,
+          "ref": "S0103"
         }
       ]
     },
@@ -12348,7 +12104,7 @@
           "type": "M",
           "target": "我想",
           "known": "I'd like",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -12358,7 +12114,8 @@
               "想",
               "would like"
             ]
-          ]
+          ],
+          "ref": "S0011"
         },
         {
           "id": "S0110L06",
@@ -12809,14 +12566,16 @@
           "type": "A",
           "target": "今天",
           "known": "today",
-          "new": true
+          "new": false,
+          "ref": "S0007"
         },
         {
           "id": "S0114L06",
           "type": "A",
           "target": "昨天",
           "known": "yesterday",
-          "new": true
+          "new": false,
+          "ref": "S0030"
         }
       ]
     },
@@ -13639,7 +13398,7 @@
           "type": "M",
           "target": "很有趣",
           "known": "very interesting",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -13649,7 +13408,8 @@
               "有趣",
               "interesting"
             ]
-          ]
+          ],
+          "ref": "S0064"
         }
       ]
     },
@@ -14099,7 +13859,7 @@
           "type": "M",
           "target": "个好主意",
           "known": "a good idea",
-          "new": true,
+          "new": false,
           "components": [
             [
               "个",
@@ -14113,7 +13873,8 @@
               "主意",
               "idea"
             ]
-          ]
+          ],
+          "ref": "S0123"
         }
       ]
     },
@@ -14366,7 +14127,8 @@
           "type": "A",
           "target": "为什么",
           "known": "why",
-          "new": true
+          "new": false,
+          "ref": "S0067"
         },
         {
           "id": "S0127L03",
@@ -14736,7 +14498,8 @@
           "type": "A",
           "target": "因为",
           "known": "because",
-          "new": true
+          "new": false,
+          "ref": "S0022"
         },
         {
           "id": "S0130L05",
@@ -15483,7 +15246,7 @@
           "type": "M",
           "target": "我的朋友",
           "known": "my friend",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我的",
@@ -15493,7 +15256,8 @@
               "朋友",
               "friend"
             ]
-          ]
+          ],
+          "ref": "S0130"
         }
       ]
     },
@@ -15600,7 +15364,7 @@
           "type": "M",
           "target": "我朋友",
           "known": "my friend",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -15610,7 +15374,8 @@
               "朋友",
               "friend"
             ]
-          ]
+          ],
+          "ref": "S0084"
         },
         {
           "id": "S0138L03",
@@ -15811,7 +15576,8 @@
           "type": "A",
           "target": "对不起",
           "known": "I'm sorry",
-          "new": true
+          "new": false,
+          "ref": "S0139"
         },
         {
           "id": "S0140L02",
@@ -16192,7 +15958,8 @@
           "type": "A",
           "target": "今天早上",
           "known": "this morning",
-          "new": true
+          "new": false,
+          "ref": "S0039"
         },
         {
           "id": "S0144L02",
@@ -16325,7 +16092,8 @@
           "type": "A",
           "target": "为什么",
           "known": "why",
-          "new": true
+          "new": false,
+          "ref": "S0067"
         },
         {
           "id": "S0145L03",
@@ -16891,7 +16659,8 @@
           "type": "A",
           "target": "名字",
           "known": "name",
-          "new": true
+          "new": false,
+          "ref": "S0020"
         }
       ]
     },
@@ -17343,7 +17112,7 @@
           "type": "M",
           "target": "你想",
           "known": "you want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -17353,7 +17122,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0020"
         },
         {
           "id": "S0154L02",
@@ -17586,7 +17356,8 @@
           "type": "A",
           "target": "今晚",
           "known": "tonight",
-          "new": true
+          "new": false,
+          "ref": "S0031"
         },
         {
           "id": "S0156L05",
@@ -17783,7 +17554,7 @@
           "type": "M",
           "target": "那不是",
           "known": "that isn't",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那",
@@ -17793,14 +17564,15 @@
               "不是",
               "isn't"
             ]
-          ]
+          ],
+          "ref": "S0127"
         },
         {
           "id": "S0159L02",
           "type": "M",
           "target": "试图说",
           "known": "trying to say",
-          "new": true,
+          "new": false,
           "components": [
             [
               "试图",
@@ -17810,7 +17582,8 @@
               "说",
               "say"
             ]
-          ]
+          ],
+          "ref": "S0102"
         },
         {
           "id": "S0159L03",
@@ -17981,7 +17754,7 @@
           "type": "M",
           "target": "怎么用中文说",
           "known": "how to say in Mandarin Chinese",
-          "new": true,
+          "new": false,
           "components": [
             [
               "怎么",
@@ -17999,7 +17772,8 @@
               "说",
               "say"
             ]
-          ]
+          ],
+          "ref": "S0004"
         },
         {
           "id": "S0160L06",
@@ -18206,7 +17980,7 @@
           "type": "M",
           "target": "我认为",
           "known": "I think (that)",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -18216,7 +17990,8 @@
               "认为",
               "think/believe"
             ]
-          ]
+          ],
+          "ref": "S0072"
         },
         {
           "id": "S0163L02",
@@ -18230,7 +18005,7 @@
           "type": "M",
           "target": "很有趣",
           "known": "very interesting",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -18240,7 +18015,8 @@
               "有趣",
               "interesting"
             ]
-          ]
+          ],
+          "ref": "S0064"
         },
         {
           "id": "S0163L04",
@@ -18364,7 +18140,7 @@
           "type": "M",
           "target": "我不确定",
           "known": "I'm not sure",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -18378,7 +18154,8 @@
               "确定",
               "sure/certain"
             ]
-          ]
+          ],
+          "ref": "S0010"
         },
         {
           "id": "S0165L03",
@@ -18701,7 +18478,7 @@
           "type": "M",
           "target": "做什么",
           "known": "do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -18711,7 +18488,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0059"
         }
       ]
     },
@@ -18781,7 +18559,7 @@
           "type": "M",
           "target": "告诉我",
           "known": "tell me",
-          "new": true,
+          "new": false,
           "components": [
             [
               "告诉",
@@ -18791,7 +18569,8 @@
               "我",
               "me"
             ]
-          ]
+          ],
+          "ref": "S0070"
         },
         {
           "id": "S0170L04",
@@ -19171,7 +18950,7 @@
           "type": "M",
           "target": "在星期天早上",
           "known": "on Sunday morning",
-          "new": true,
+          "new": false,
           "components": [
             [
               "在",
@@ -19185,14 +18964,15 @@
               "早上",
               "morning"
             ]
-          ]
+          ],
+          "ref": "S0161"
         },
         {
           "id": "S0175L04",
           "type": "M",
           "target": "星期天早上",
           "known": "Sunday morning",
-          "new": true,
+          "new": false,
           "components": [
             [
               "星期天",
@@ -19202,7 +18982,8 @@
               "早上",
               "morning"
             ]
-          ]
+          ],
+          "ref": "S0161"
         }
       ]
     },
@@ -19372,7 +19153,8 @@
           "type": "A",
           "target": "哪里",
           "known": "where",
-          "new": true
+          "new": false,
+          "ref": "S0070"
         }
       ]
     },
@@ -19455,7 +19237,7 @@
           "type": "M",
           "target": "我想见你",
           "known": "I wanted to see you",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -19473,14 +19255,15 @@
               "你",
               "you"
             ]
-          ]
+          ],
+          "ref": "S0127"
         },
         {
           "id": "S0178L05",
           "type": "M",
           "target": "见你",
           "known": "see you",
-          "new": true,
+          "new": false,
           "components": [
             [
               "见",
@@ -19490,7 +19273,8 @@
               "你",
               "you"
             ]
-          ]
+          ],
+          "ref": "S0127"
         }
       ]
     },
@@ -19569,7 +19353,8 @@
           "type": "A",
           "target": "下午",
           "known": "afternoon",
-          "new": true
+          "new": false,
+          "ref": "S0069"
         }
       ]
     },
@@ -19691,7 +19476,8 @@
           "type": "A",
           "target": "但是",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0165"
         },
         {
           "id": "S0181L02",
@@ -19886,7 +19672,8 @@
           "type": "A",
           "target": "吗",
           "known": "question particle",
-          "new": true
+          "new": false,
+          "ref": "S0032"
         }
       ]
     },
@@ -19902,7 +19689,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0183L02",
@@ -19970,7 +19758,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -19980,7 +19768,8 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0184L02",
@@ -20165,7 +19954,7 @@
           "type": "M",
           "target": "你想",
           "known": "you want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -20175,14 +19964,16 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0020"
         },
         {
           "id": "S0186L02",
           "type": "A",
           "target": "下周",
           "known": "next week",
-          "new": true
+          "new": false,
+          "ref": "S0059"
         },
         {
           "id": "S0186L03",
@@ -20253,7 +20044,8 @@
           "type": "A",
           "target": "吗",
           "known": "question particle",
-          "new": true
+          "new": false,
+          "ref": "S0032"
         }
       ]
     },
@@ -20269,14 +20061,15 @@
           "type": "A",
           "target": "高兴",
           "known": "happy",
-          "new": true
+          "new": false,
+          "ref": "S0076"
         },
         {
           "id": "S0187L02",
           "type": "M",
           "target": "很高兴",
           "known": "very happy",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -20286,7 +20079,8 @@
               "高兴",
               "happy"
             ]
-          ]
+          ],
+          "ref": "S0076"
         },
         {
           "id": "S0187L03",
@@ -20396,7 +20190,8 @@
           "type": "A",
           "target": "改变",
           "known": "change",
-          "new": true
+          "new": false,
+          "ref": "S0104"
         }
       ]
     },
@@ -20412,7 +20207,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -20422,7 +20217,8 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0189L02",
@@ -20470,7 +20266,7 @@
           "type": "M",
           "target": "个好主意",
           "known": "a good idea",
-          "new": true,
+          "new": false,
           "components": [
             [
               "个",
@@ -20484,7 +20280,8 @@
               "主意",
               "idea"
             ]
-          ]
+          ],
+          "ref": "S0123"
         }
       ]
     },
@@ -20576,7 +20373,8 @@
           "type": "A",
           "target": "吗",
           "known": "question particle",
-          "new": true
+          "new": false,
+          "ref": "S0032"
         }
       ]
     },
@@ -20593,14 +20391,15 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0191L02",
           "type": "M",
           "target": "我不介意",
           "known": "I don't mind",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -20614,7 +20413,8 @@
               "介意",
               "mind"
             ]
-          ]
+          ],
+          "ref": "S0155"
         },
         {
           "id": "S0191L03",
@@ -20736,28 +20536,32 @@
           "type": "A",
           "target": "对不起",
           "known": "I'm sorry",
-          "new": true
+          "new": false,
+          "ref": "S0139"
         },
         {
           "id": "S0193L02",
           "type": "A",
           "target": "但是",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0165"
         },
         {
           "id": "S0193L03",
           "type": "A",
           "target": "我",
           "known": "I",
-          "new": true
+          "new": false,
+          "ref": "S0192"
         },
         {
           "id": "S0193L04",
           "type": "A",
           "target": "今天",
           "known": "today",
-          "new": true
+          "new": false,
+          "ref": "S0007"
         },
         {
           "id": "S0193L05",
@@ -20820,7 +20624,7 @@
           "type": "M",
           "target": "你在找",
           "known": "you are looking for",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -20834,7 +20638,8 @@
               "找",
               "look for/find"
             ]
-          ]
+          ],
+          "ref": "S0068"
         },
         {
           "id": "S0194L02",
@@ -21236,7 +21041,7 @@
           "type": "M",
           "target": "我的朋友",
           "known": "my friend",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -21250,7 +21055,8 @@
               "朋友",
               "friend"
             ]
-          ]
+          ],
+          "ref": "S0130"
         },
         {
           "id": "S0199L02",
@@ -21281,7 +21087,8 @@
           "type": "A",
           "target": "工作",
           "known": "work",
-          "new": true
+          "new": false,
+          "ref": "S0106"
         },
         {
           "id": "S0199L05",
@@ -21394,7 +21201,7 @@
           "type": "M",
           "target": "所有事情",
           "known": "everything",
-          "new": true,
+          "new": false,
           "components": [
             [
               "所有",
@@ -21404,7 +21211,8 @@
               "事情",
               "things/matters"
             ]
-          ]
+          ],
+          "ref": "S0045"
         },
         {
           "id": "S0200L07",
@@ -21707,7 +21515,8 @@
           "type": "A",
           "target": "如果",
           "known": "if",
-          "new": true
+          "new": false,
+          "ref": "S0090"
         },
         {
           "id": "S0203L02",
@@ -22108,7 +21917,8 @@
           "type": "A",
           "target": "词",
           "known": "word",
-          "new": true
+          "new": false,
+          "ref": "S0006"
         }
       ]
     },
@@ -22124,7 +21934,7 @@
           "type": "M",
           "target": "我喜欢",
           "known": "I enjoy",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -22134,7 +21944,8 @@
               "喜欢",
               "enjoy"
             ]
-          ]
+          ],
+          "ref": "S0051"
         },
         {
           "id": "S0206L02",
@@ -22247,14 +22058,15 @@
           "type": "A",
           "target": "说话",
           "known": "speaking",
-          "new": true
+          "new": false,
+          "ref": "S0005"
         },
         {
           "id": "S0206L09",
           "type": "M",
           "target": "和你",
           "known": "with you",
-          "new": true,
+          "new": false,
           "components": [
             [
               "和",
@@ -22264,7 +22076,8 @@
               "你",
               "you"
             ]
-          ]
+          ],
+          "ref": "S0001"
         }
       ]
     },
@@ -22415,7 +22228,7 @@
           "type": "M",
           "target": "不想",
           "known": "didn't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -22425,7 +22238,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0069"
         },
         {
           "id": "S0208L03",
@@ -22524,7 +22338,7 @@
           "type": "M",
           "target": "怎么说",
           "known": "how to say",
-          "new": true,
+          "new": false,
           "components": [
             [
               "怎么",
@@ -22534,14 +22348,15 @@
               "说",
               "to say"
             ]
-          ]
+          ],
+          "ref": "S0056"
         },
         {
           "id": "S0208L08",
           "type": "M",
           "target": "说它",
           "known": "say it",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -22551,14 +22366,16 @@
               "它",
               "it"
             ]
-          ]
+          ],
+          "ref": "S0153"
         },
         {
           "id": "S0208L09",
           "type": "A",
           "target": "它",
           "known": "it",
-          "new": true
+          "new": false,
+          "ref": "S0163"
         }
       ]
     },
@@ -22682,7 +22499,8 @@
           "type": "A",
           "target": "时间",
           "known": "time",
-          "new": true
+          "new": false,
+          "ref": "S0065"
         },
         {
           "id": "S0209L08",
@@ -22792,7 +22610,8 @@
           "type": "A",
           "target": "认为",
           "known": "think",
-          "new": true
+          "new": false,
+          "ref": "S0089"
         },
         {
           "id": "S0210L03",
@@ -22979,7 +22798,7 @@
           "type": "M",
           "target": "不想",
           "known": "didn't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -22989,7 +22808,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0069"
         },
         {
           "id": "S0211L04",
@@ -23067,7 +22887,8 @@
           "type": "A",
           "target": "帮助",
           "known": "help",
-          "new": true
+          "new": false,
+          "ref": "S0074"
         }
       ]
     },
@@ -23266,7 +23087,7 @@
           "type": "M",
           "target": "星期六晚上",
           "known": "Saturday night",
-          "new": true,
+          "new": false,
           "components": [
             [
               "星期六",
@@ -23276,7 +23097,8 @@
               "晚上",
               "night/evening"
             ]
-          ]
+          ],
+          "ref": "S0154"
         },
         {
           "id": "S0215L03",
@@ -23517,7 +23339,7 @@
           "type": "M",
           "target": "做什么",
           "known": "do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -23527,14 +23349,16 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0059"
         },
         {
           "id": "S0218L05",
           "type": "A",
           "target": "做",
           "known": "to do",
-          "new": true
+          "new": false,
+          "ref": "S0207"
         }
       ]
     },
@@ -23599,7 +23423,8 @@
           "type": "A",
           "target": "一会儿",
           "known": "for a while",
-          "new": true
+          "new": false,
+          "ref": "S0180"
         },
         {
           "id": "S0219L05",
@@ -23750,7 +23575,8 @@
           "type": "A",
           "target": "然后",
           "known": "and then",
-          "new": true
+          "new": false,
+          "ref": "S0168"
         },
         {
           "id": "S0221L03",
@@ -24376,7 +24202,7 @@
           "type": "M",
           "target": "练习说话",
           "known": "practise speaking",
-          "new": true,
+          "new": false,
           "components": [
             [
               "练习",
@@ -24386,7 +24212,8 @@
               "说话",
               "speaking"
             ]
-          ]
+          ],
+          "ref": "S0005"
         }
       ]
     },
@@ -24675,7 +24502,7 @@
           "type": "M",
           "target": "想寻求帮助",
           "known": "wanted to ask for help",
-          "new": true,
+          "new": false,
           "components": [
             [
               "想",
@@ -24689,7 +24516,8 @@
               "帮助",
               "help"
             ]
-          ]
+          ],
+          "ref": "S0212"
         },
         {
           "id": "S0231L04",
@@ -24722,7 +24550,7 @@
           "type": "M",
           "target": "我认识",
           "known": "I know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -24732,7 +24560,8 @@
               "认识",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0231"
         },
         {
           "id": "S0232L02",
@@ -24760,7 +24589,7 @@
           "type": "M",
           "target": "能记住",
           "known": "can remember",
-          "new": true,
+          "new": false,
           "components": [
             [
               "能",
@@ -24770,14 +24599,16 @@
               "记住",
               "remember"
             ]
-          ]
+          ],
+          "ref": "S0056"
         },
         {
           "id": "S0232L04",
           "type": "A",
           "target": "答案",
           "known": "answer",
-          "new": true
+          "new": false,
+          "ref": "S0017"
         }
       ]
     },
@@ -24793,7 +24624,7 @@
           "type": "M",
           "target": "我认识",
           "known": "I know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -24803,7 +24634,8 @@
               "认识",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0231"
         },
         {
           "id": "S0233L02",
@@ -24899,7 +24731,8 @@
           "type": "A",
           "target": "昨晚",
           "known": "last night",
-          "new": true
+          "new": false,
+          "ref": "S0042"
         },
         {
           "id": "S0234L03",
@@ -24973,7 +24806,7 @@
           "type": "M",
           "target": "一起工作",
           "known": "work together",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一起",
@@ -24983,7 +24816,8 @@
               "工作",
               "work"
             ]
-          ]
+          ],
+          "ref": "S0133"
         }
       ]
     },
@@ -25016,7 +24850,7 @@
           "type": "M",
           "target": "遇到一个人",
           "known": "met someone",
-          "new": true,
+          "new": false,
           "components": [
             [
               "遇到",
@@ -25030,7 +24864,8 @@
               "人",
               "someone/person"
             ]
-          ]
+          ],
+          "ref": "S0234"
         },
         {
           "id": "S0235L03",
@@ -25104,7 +24939,7 @@
           "type": "M",
           "target": "一些事情",
           "known": "something",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一些",
@@ -25114,7 +24949,8 @@
               "事情",
               "things/matter"
             ]
-          ]
+          ],
+          "ref": "S0119"
         }
       ]
     },
@@ -25130,7 +24966,7 @@
           "type": "M",
           "target": "我认识",
           "known": "I know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -25140,7 +24976,8 @@
               "认识",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0231"
         },
         {
           "id": "S0236L02",
@@ -25336,7 +25173,8 @@
           "type": "A",
           "target": "周末",
           "known": "weekend",
-          "new": true
+          "new": false,
+          "ref": "S0214"
         }
       ]
     },
@@ -25431,7 +25269,8 @@
           "type": "A",
           "target": "昨天",
           "known": "yesterday",
-          "new": true
+          "new": false,
+          "ref": "S0030"
         }
       ]
     },
@@ -25447,7 +25286,7 @@
           "type": "M",
           "target": "我妈妈",
           "known": "my mother",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -25457,7 +25296,8 @@
               "妈妈",
               "mother"
             ]
-          ]
+          ],
+          "ref": "S0181"
         },
         {
           "id": "S0239L02",
@@ -25571,7 +25411,7 @@
           "type": "M",
           "target": "我不想",
           "known": "I don't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -25581,7 +25421,8 @@
               "不想",
               "don't want"
             ]
-          ]
+          ],
+          "ref": "S0019"
         },
         {
           "id": "S0241L02",
@@ -25906,7 +25747,7 @@
           "type": "M",
           "target": "很多",
           "known": "a lot",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -25916,7 +25757,8 @@
               "多",
               "many/much"
             ]
-          ]
+          ],
+          "ref": "S0089"
         }
       ]
     },
@@ -25987,7 +25829,7 @@
           "type": "M",
           "target": "在短时间内",
           "known": "in a short time",
-          "new": true,
+          "new": false,
           "components": [
             [
               "在",
@@ -26001,14 +25843,15 @@
               "内",
               "within"
             ]
-          ]
+          ],
+          "ref": "S0089"
         },
         {
           "id": "S0245L05",
           "type": "M",
           "target": "短时间",
           "known": "short time",
-          "new": true,
+          "new": false,
           "components": [
             [
               "短",
@@ -26018,7 +25861,8 @@
               "时间",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0089"
         }
       ]
     },
@@ -26089,7 +25933,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0246L05",
@@ -26121,7 +25966,7 @@
           "type": "M",
           "target": "太忙了",
           "known": "too busy",
-          "new": true,
+          "new": false,
           "components": [
             [
               "太",
@@ -26135,7 +25980,8 @@
               "了",
               "LE"
             ]
-          ]
+          ],
+          "ref": "S0193"
         }
       ]
     },
@@ -26168,7 +26014,7 @@
           "type": "M",
           "target": "那本书",
           "known": "that book",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那",
@@ -26182,7 +26028,8 @@
               "书",
               "book"
             ]
-          ]
+          ],
+          "ref": "S0161"
         },
         {
           "id": "S0247L03",
@@ -26215,7 +26062,7 @@
           "type": "M",
           "target": "我觉得",
           "known": "I thought",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -26225,7 +26072,8 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0247"
         },
         {
           "id": "S0248L02",
@@ -26291,7 +26139,7 @@
           "type": "M",
           "target": "我想要",
           "known": "I want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -26301,7 +26149,8 @@
               "想要",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0015"
         },
         {
           "id": "S0248L06",
@@ -26366,7 +26215,7 @@
           "type": "M",
           "target": "想让",
           "known": "want to let",
-          "new": true,
+          "new": false,
           "components": [
             [
               "想",
@@ -26376,7 +26225,8 @@
               "让",
               "let/make"
             ]
-          ]
+          ],
+          "ref": "S0246"
         },
         {
           "id": "S0249L03",
@@ -26447,7 +26297,7 @@
           "type": "M",
           "target": "你能",
           "known": "you can",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -26457,14 +26307,15 @@
               "能",
               "can"
             ]
-          ]
+          ],
+          "ref": "S0090"
         },
         {
           "id": "S0250L02",
           "type": "M",
           "target": "告诉我",
           "known": "tell me",
-          "new": true,
+          "new": false,
           "components": [
             [
               "告诉",
@@ -26474,7 +26325,8 @@
               "我",
               "me"
             ]
-          ]
+          ],
+          "ref": "S0070"
         },
         {
           "id": "S0250L03",
@@ -26540,7 +26392,7 @@
           "type": "M",
           "target": "之前",
           "known": "before",
-          "new": true,
+          "new": false,
           "components": [
             [
               "之",
@@ -26550,14 +26402,16 @@
               "前",
               "before/front"
             ]
-          ]
+          ],
+          "ref": "S0249"
         },
         {
           "id": "S0250L07",
           "type": "A",
           "target": "回答",
           "known": "answer",
-          "new": true
+          "new": false,
+          "ref": "S0148"
         }
       ]
     },
@@ -26574,7 +26428,7 @@
           "type": "M",
           "target": "我不想",
           "known": "I don't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -26588,7 +26442,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0019"
         },
         {
           "id": "S0251L02",
@@ -26680,7 +26535,7 @@
           "type": "M",
           "target": "什么时候",
           "known": "when",
-          "new": true,
+          "new": false,
           "components": [
             [
               "什么",
@@ -26690,7 +26545,8 @@
               "时候",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0079"
         },
         {
           "id": "S0252L02",
@@ -26731,7 +26587,8 @@
           "type": "A",
           "target": "准备好",
           "known": "be ready",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         }
       ]
     },
@@ -26748,7 +26605,7 @@
           "type": "M",
           "target": "我应该",
           "known": "I should",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -26758,7 +26615,8 @@
               "应该",
               "should"
             ]
-          ]
+          ],
+          "ref": "S0098"
         },
         {
           "id": "S0253L02",
@@ -26815,7 +26673,8 @@
           "type": "A",
           "target": "准备好",
           "known": "be ready",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         }
       ]
     },
@@ -26853,7 +26712,7 @@
           "type": "M",
           "target": "今天早上",
           "known": "this morning",
-          "new": true,
+          "new": false,
           "components": [
             [
               "今天",
@@ -26863,7 +26722,8 @@
               "早上",
               "morning"
             ]
-          ]
+          ],
+          "ref": "S0039"
         },
         {
           "id": "S0254L03",
@@ -26947,7 +26807,7 @@
           "type": "M",
           "target": "什么时候",
           "known": "when",
-          "new": true,
+          "new": false,
           "components": [
             [
               "什么",
@@ -26957,7 +26817,8 @@
               "时候",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0079"
         },
         {
           "id": "S0255L03",
@@ -26981,7 +26842,8 @@
           "type": "A",
           "target": "准备好",
           "known": "be ready",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         }
       ]
     },
@@ -26998,7 +26860,7 @@
           "type": "M",
           "target": "我想",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -27008,7 +26870,8 @@
               "想",
               "think"
             ]
-          ]
+          ],
+          "ref": "S0185"
         },
         {
           "id": "S0256L02",
@@ -27082,7 +26945,8 @@
           "type": "A",
           "target": "准备好",
           "known": "be ready",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         }
       ]
     },
@@ -27196,7 +27060,7 @@
           "type": "M",
           "target": "那个蓝色的东西",
           "known": "that blue thing",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那个",
@@ -27214,14 +27078,15 @@
               "东西",
               "thing"
             ]
-          ]
+          ],
+          "ref": "S0257"
         },
         {
           "id": "S0258L03",
           "type": "M",
           "target": "蓝色的东西",
           "known": "blue thing",
-          "new": true,
+          "new": false,
           "components": [
             [
               "蓝色",
@@ -27235,7 +27100,8 @@
               "东西",
               "thing"
             ]
-          ]
+          ],
+          "ref": "S0257"
         },
         {
           "id": "S0258L04",
@@ -27342,7 +27208,8 @@
           "type": "A",
           "target": "知道",
           "known": "know",
-          "new": true
+          "new": false,
+          "ref": "S0059"
         }
       ]
     },
@@ -27358,7 +27225,8 @@
           "type": "A",
           "target": "我认为",
           "known": "I think",
-          "new": true
+          "new": false,
+          "ref": "S0123"
         },
         {
           "id": "S0261L02",
@@ -27403,7 +27271,7 @@
           "type": "M",
           "target": "一些东西",
           "known": "something",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一些",
@@ -27413,7 +27281,8 @@
               "东西",
               "thing"
             ]
-          ]
+          ],
+          "ref": "S0004"
         },
         {
           "id": "S0261L05",
@@ -27475,7 +27344,8 @@
           "type": "A",
           "target": "昨天",
           "known": "yesterday",
-          "new": true
+          "new": false,
+          "ref": "S0030"
         },
         {
           "id": "S0262L02",
@@ -27542,7 +27412,7 @@
           "type": "M",
           "target": "我不知道",
           "known": "I don't know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -27556,7 +27426,8 @@
               "知道",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0135"
         },
         {
           "id": "S0263L02",
@@ -27650,7 +27521,7 @@
           "type": "M",
           "target": "一个老男人",
           "known": "an old man",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一个",
@@ -27664,7 +27535,8 @@
               "男人",
               "man"
             ]
-          ]
+          ],
+          "ref": "S0231"
         }
       ]
     },
@@ -27680,7 +27552,8 @@
           "type": "A",
           "target": "朋友",
           "known": "friend",
-          "new": true
+          "new": false,
+          "ref": "S0216"
         },
         {
           "id": "S0265L02",
@@ -27737,7 +27610,7 @@
           "type": "M",
           "target": "我爸爸",
           "known": "my father",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -27747,7 +27620,8 @@
               "爸爸",
               "father"
             ]
-          ]
+          ],
+          "ref": "S0240"
         },
         {
           "id": "S0266L04",
@@ -27830,7 +27704,7 @@
           "type": "M",
           "target": "你朋友",
           "known": "your friend",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -27840,7 +27714,8 @@
               "朋友",
               "friend"
             ]
-          ]
+          ],
+          "ref": "S0083"
         },
         {
           "id": "S0267L02",
@@ -27957,7 +27832,8 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0268L02",
@@ -27971,7 +27847,8 @@
           "type": "A",
           "target": "上周",
           "known": "last week",
-          "new": true
+          "new": false,
+          "ref": "S0052"
         },
         {
           "id": "S0268L04",
@@ -28086,14 +27963,15 @@
           "type": "A",
           "target": "为什么",
           "known": "why",
-          "new": true
+          "new": false,
+          "ref": "S0067"
         },
         {
           "id": "S0269L02",
           "type": "M",
           "target": "不想",
           "known": "don't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -28103,7 +27981,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0241"
         },
         {
           "id": "S0269L03",
@@ -28189,7 +28068,8 @@
           "type": "A",
           "target": "因为",
           "known": "because",
-          "new": true
+          "new": false,
+          "ref": "S0022"
         },
         {
           "id": "S0270L02",
@@ -28316,7 +28196,7 @@
           "type": "M",
           "target": "下个月",
           "known": "next month",
-          "new": true,
+          "new": false,
           "components": [
             [
               "下",
@@ -28330,7 +28210,8 @@
               "月",
               "month"
             ]
-          ]
+          ],
+          "ref": "S0157"
         },
         {
           "id": "S0271L03",
@@ -28428,7 +28309,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -28438,7 +28319,8 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0272L02",
@@ -28462,7 +28344,7 @@
           "type": "M",
           "target": "好主意",
           "known": "good idea",
-          "new": true,
+          "new": false,
           "components": [
             [
               "好",
@@ -28472,14 +28354,15 @@
               "主意",
               "idea"
             ]
-          ]
+          ],
+          "ref": "S0189"
         },
         {
           "id": "S0272L04",
           "type": "M",
           "target": "是个好主意",
           "known": "is a good idea",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -28497,7 +28380,8 @@
               "主意",
               "idea"
             ]
-          ]
+          ],
+          "ref": "S0123"
         },
         {
           "id": "S0272L05",
@@ -28542,14 +28426,15 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0273L02",
           "type": "M",
           "target": "不幸的是",
           "known": "unfortunately",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不幸",
@@ -28559,7 +28444,8 @@
               "的是",
               "particle structure"
             ]
-          ]
+          ],
+          "ref": "S0086"
         },
         {
           "id": "S0273L03",
@@ -28600,7 +28486,8 @@
           "type": "A",
           "target": "工作",
           "known": "work",
-          "new": true
+          "new": false,
+          "ref": "S0106"
         },
         {
           "id": "S0273L06",
@@ -28778,7 +28665,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0276L02",
@@ -28915,7 +28803,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -28925,14 +28813,15 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0277L02",
           "type": "M",
           "target": "我有",
           "known": "I have",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -28942,14 +28831,15 @@
               "有",
               "have"
             ]
-          ]
+          ],
+          "ref": "S0273"
         },
         {
           "id": "S0277L03",
           "type": "M",
           "target": "下周",
           "known": "next week",
-          "new": true,
+          "new": false,
           "components": [
             [
               "下",
@@ -28959,7 +28849,8 @@
               "周",
               "week"
             ]
-          ]
+          ],
+          "ref": "S0059"
         },
         {
           "id": "S0277L04",
@@ -29066,7 +28957,7 @@
           "type": "M",
           "target": "你必须",
           "known": "you have to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -29076,14 +28967,15 @@
               "必须",
               "must/have to"
             ]
-          ]
+          ],
+          "ref": "S0274"
         },
         {
           "id": "S0278L02",
           "type": "M",
           "target": "昨晚",
           "known": "last night",
-          "new": true,
+          "new": false,
           "components": [
             [
               "昨",
@@ -29093,7 +28985,8 @@
               "晚",
               "night/evening"
             ]
-          ]
+          ],
+          "ref": "S0042"
         },
         {
           "id": "S0278L03",
@@ -29124,7 +29017,7 @@
           "type": "M",
           "target": "所有事情",
           "known": "everything",
-          "new": true,
+          "new": false,
           "components": [
             [
               "所有",
@@ -29134,14 +29027,15 @@
               "事情",
               "things"
             ]
-          ]
+          ],
+          "ref": "S0045"
         },
         {
           "id": "S0278L06",
           "type": "M",
           "target": "完成所有事情",
           "known": "finish everything",
-          "new": true,
+          "new": false,
           "components": [
             [
               "完成",
@@ -29155,7 +29049,8 @@
               "事情",
               "things"
             ]
-          ]
+          ],
+          "ref": "S0200"
         },
         {
           "id": "S0278L07",
@@ -29196,7 +29091,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -29206,14 +29101,15 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0279L02",
           "type": "M",
           "target": "因为",
           "known": "because",
-          "new": true,
+          "new": false,
           "components": [
             [
               "因",
@@ -29223,7 +29119,8 @@
               "为",
               "for/because"
             ]
-          ]
+          ],
+          "ref": "S0022"
         },
         {
           "id": "S0279L03",
@@ -29237,7 +29134,8 @@
           "type": "A",
           "target": "时间",
           "known": "time",
-          "new": true
+          "new": false,
+          "ref": "S0065"
         },
         {
           "id": "S0279L05",
@@ -29295,7 +29193,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0280L02",
@@ -29336,14 +29235,16 @@
           "type": "A",
           "target": "做",
           "known": "do",
-          "new": true
+          "new": false,
+          "ref": "S0089"
         },
         {
           "id": "S0280L05",
           "type": "A",
           "target": "工作",
           "known": "work",
-          "new": true
+          "new": false,
+          "ref": "S0106"
         },
         {
           "id": "S0280L06",
@@ -29553,7 +29454,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0282L02",
@@ -29700,7 +29602,8 @@
           "type": "A",
           "target": "朋友",
           "known": "friend",
-          "new": true
+          "new": false,
+          "ref": "S0216"
         }
       ]
     },
@@ -29813,7 +29716,8 @@
           "type": "A",
           "target": "人",
           "known": "people",
-          "new": true
+          "new": false,
+          "ref": "S0085"
         }
       ]
     },
@@ -29878,7 +29782,7 @@
           "type": "M",
           "target": "看电视",
           "known": "watch television",
-          "new": true,
+          "new": false,
           "components": [
             [
               "看",
@@ -29888,14 +29792,16 @@
               "电视",
               "television"
             ]
-          ]
+          ],
+          "ref": "S0220"
         },
         {
           "id": "S0287L05",
           "type": "A",
           "target": "电视",
           "known": "television",
-          "new": true
+          "new": false,
+          "ref": "S0220"
         },
         {
           "id": "S0287L06",
@@ -30037,7 +29943,7 @@
           "type": "M",
           "target": "今天下午",
           "known": "this afternoon",
-          "new": true,
+          "new": false,
           "components": [
             [
               "今天",
@@ -30047,14 +29953,16 @@
               "下午",
               "afternoon"
             ]
-          ]
+          ],
+          "ref": "S0035"
         },
         {
           "id": "S0289L03",
           "type": "A",
           "target": "下午",
           "known": "afternoon",
-          "new": true
+          "new": false,
+          "ref": "S0069"
         },
         {
           "id": "S0289L04",
@@ -30082,7 +29990,7 @@
           "type": "M",
           "target": "在那里",
           "known": "be there",
-          "new": true,
+          "new": false,
           "components": [
             [
               "在",
@@ -30092,14 +30000,16 @@
               "那里",
               "there"
             ]
-          ]
+          ],
+          "ref": "S0157"
         },
         {
           "id": "S0289L06",
           "type": "A",
           "target": "那里",
           "known": "there",
-          "new": true
+          "new": false,
+          "ref": "S0157"
         }
       ]
     },
@@ -30161,7 +30071,8 @@
           "type": "A",
           "target": "答案",
           "known": "answer",
-          "new": true
+          "new": false,
+          "ref": "S0017"
         }
       ]
     },
@@ -30215,7 +30126,8 @@
           "type": "A",
           "target": "很快",
           "known": "soon",
-          "new": true
+          "new": false,
+          "ref": "S0149"
         },
         {
           "id": "S0291L04",
@@ -30277,7 +30189,7 @@
           "type": "M",
           "target": "我希望",
           "known": "I hope",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -30287,7 +30199,8 @@
               "希望",
               "hope"
             ]
-          ]
+          ],
+          "ref": "S0291"
         },
         {
           "id": "S0292L02",
@@ -30387,7 +30300,7 @@
           "type": "M",
           "target": "我必须",
           "known": "I have to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -30397,7 +30310,8 @@
               "必须",
               "have to/must"
             ]
-          ]
+          ],
+          "ref": "S0181"
         },
         {
           "id": "S0293L02",
@@ -30449,7 +30363,8 @@
           "type": "A",
           "target": "在哪里",
           "known": "where",
-          "new": true
+          "new": false,
+          "ref": "S0154"
         },
         {
           "id": "S0293L06",
@@ -30507,7 +30422,8 @@
           "type": "A",
           "target": "今晚",
           "known": "tonight",
-          "new": true
+          "new": false,
+          "ref": "S0031"
         },
         {
           "id": "S0294L03",
@@ -30618,7 +30534,7 @@
           "type": "M",
           "target": "我想",
           "known": "I wanted",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -30628,7 +30544,8 @@
               "想",
               "wanted/want"
             ]
-          ]
+          ],
+          "ref": "S0204"
         },
         {
           "id": "S0295L03",
@@ -30677,7 +30594,8 @@
           "type": "A",
           "target": "完成",
           "known": "finish",
-          "new": true
+          "new": false,
+          "ref": "S0278"
         }
       ]
     },
@@ -30727,7 +30645,7 @@
           "type": "M",
           "target": "多一点时间",
           "known": "a little more time",
-          "new": true,
+          "new": false,
           "components": [
             [
               "多",
@@ -30741,14 +30659,15 @@
               "时间",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0096"
         },
         {
           "id": "S0296L04",
           "type": "M",
           "target": "一点时间",
           "known": "a little time",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一点",
@@ -30758,7 +30677,8 @@
               "时间",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0054"
         }
       ]
     },
@@ -30774,7 +30694,7 @@
           "type": "M",
           "target": "我不认识",
           "known": "I don't know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -30788,7 +30708,8 @@
               "认识",
               "know (people)"
             ]
-          ]
+          ],
+          "ref": "S0085"
         },
         {
           "id": "S0297L02",
@@ -30870,7 +30791,8 @@
           "type": "A",
           "target": "普通话",
           "known": "Mandarin Chinese",
-          "new": true
+          "new": false,
+          "ref": "S0283"
         }
       ]
     },
@@ -30973,7 +30895,7 @@
           "type": "M",
           "target": "他想",
           "known": "he wants",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -30983,7 +30905,8 @@
               "想",
               "wants/want"
             ]
-          ]
+          ],
+          "ref": "S0016"
         },
         {
           "id": "S0299L02",
@@ -31138,7 +31061,7 @@
           "type": "M",
           "target": "他想",
           "known": "he wants",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -31148,7 +31071,8 @@
               "想",
               "wants"
             ]
-          ]
+          ],
+          "ref": "S0016"
         },
         {
           "id": "S0301L04",
@@ -31324,7 +31248,7 @@
           "type": "M",
           "target": "她不想",
           "known": "she doesn't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -31338,7 +31262,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0300"
         },
         {
           "id": "S0302L05",
@@ -31483,7 +31408,7 @@
           "type": "M",
           "target": "他想",
           "known": "he wants",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -31493,7 +31418,8 @@
               "想",
               "wants"
             ]
-          ]
+          ],
+          "ref": "S0016"
         },
         {
           "id": "S0303L04",
@@ -31573,7 +31499,7 @@
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -31583,7 +31509,8 @@
               "觉得",
               "think"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0304L02",
@@ -31619,7 +31546,7 @@
           "type": "M",
           "target": "她不想",
           "known": "she doesn't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -31633,14 +31560,15 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0300"
         },
         {
           "id": "S0304L04",
           "type": "M",
           "target": "不想",
           "known": "don't want / doesn't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -31650,7 +31578,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0302"
         },
         {
           "id": "S0304L05",
@@ -31724,7 +31653,8 @@
           "type": "A",
           "target": "工作",
           "known": "work",
-          "new": true
+          "new": false,
+          "ref": "S0106"
         }
       ]
     },
@@ -31758,7 +31688,7 @@
           "type": "M",
           "target": "我认识",
           "known": "I know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -31768,7 +31698,8 @@
               "认识",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0231"
         },
         {
           "id": "S0306L02",
@@ -31813,14 +31744,15 @@
           "type": "A",
           "target": "女人",
           "known": "woman",
-          "new": true
+          "new": false,
+          "ref": "S0305"
         },
         {
           "id": "S0306L05",
           "type": "M",
           "target": "你朋友",
           "known": "your friend",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -31830,14 +31762,16 @@
               "朋友",
               "friend"
             ]
-          ]
+          ],
+          "ref": "S0083"
         },
         {
           "id": "S0306L06",
           "type": "A",
           "target": "朋友",
           "known": "friend",
-          "new": true
+          "new": false,
+          "ref": "S0216"
         },
         {
           "id": "S0306L07",
@@ -32004,7 +31938,7 @@
           "type": "M",
           "target": "我认识",
           "known": "I know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -32014,7 +31948,8 @@
               "认识",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0231"
         },
         {
           "id": "S0307L02",
@@ -32059,7 +31994,8 @@
           "type": "A",
           "target": "男人",
           "known": "man",
-          "new": true
+          "new": false,
+          "ref": "S0264"
         },
         {
           "id": "S0307L05",
@@ -32154,7 +32090,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -32164,7 +32100,8 @@
               "的",
               "(particle)"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0308L02",
@@ -32188,7 +32125,7 @@
           "type": "M",
           "target": "我妈妈",
           "known": "my mother",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -32198,7 +32135,8 @@
               "妈妈",
               "mother/mom"
             ]
-          ]
+          ],
+          "ref": "S0181"
         },
         {
           "id": "S0308L04",
@@ -32258,7 +32196,8 @@
           "type": "A",
           "target": "朋友",
           "known": "friend",
-          "new": true
+          "new": false,
+          "ref": "S0216"
         }
       ]
     },
@@ -32275,7 +32214,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0309L02",
@@ -32562,7 +32502,7 @@
           "type": "M",
           "target": "那个男人",
           "known": "that man",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那个",
@@ -32572,14 +32512,16 @@
               "男人",
               "man"
             ]
-          ]
+          ],
+          "ref": "S0262"
         },
         {
           "id": "S0310L08",
           "type": "A",
           "target": "男人",
           "known": "man",
-          "new": true
+          "new": false,
+          "ref": "S0264"
         },
         {
           "id": "S0310L09",
@@ -32789,7 +32731,7 @@
           "type": "M",
           "target": "她说",
           "known": "she said",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -32799,7 +32741,8 @@
               "说",
               "said"
             ]
-          ]
+          ],
+          "ref": "S0302"
         },
         {
           "id": "S0312L02",
@@ -32879,7 +32822,7 @@
           "type": "M",
           "target": "明天晚上",
           "known": "tomorrow night",
-          "new": true,
+          "new": false,
           "components": [
             [
               "明天",
@@ -32889,14 +32832,16 @@
               "晚上",
               "night/evening"
             ]
-          ]
+          ],
+          "ref": "S0192"
         },
         {
           "id": "S0312L08",
           "type": "A",
           "target": "明天",
           "known": "tomorrow",
-          "new": true
+          "new": false,
+          "ref": "S0012"
         }
       ]
     },
@@ -32912,7 +32857,7 @@
           "type": "M",
           "target": "他说",
           "known": "he said",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -32922,14 +32867,15 @@
               "说",
               "said"
             ]
-          ]
+          ],
+          "ref": "S0301"
         },
         {
           "id": "S0313L02",
           "type": "M",
           "target": "他不能",
           "known": "he couldn't",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -32939,7 +32885,8 @@
               "不能",
               "couldn't/cannot"
             ]
-          ]
+          ],
+          "ref": "S0311"
         },
         {
           "id": "S0313L03",
@@ -33032,7 +32979,7 @@
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -33042,14 +32989,15 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0314L02",
           "type": "M",
           "target": "她可以",
           "known": "she could",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -33059,7 +33007,8 @@
               "可以",
               "could/can"
             ]
-          ]
+          ],
+          "ref": "S0312"
         },
         {
           "id": "S0314L03",
@@ -33124,7 +33073,7 @@
           "type": "M",
           "target": "在桌子上",
           "known": "on the table",
-          "new": true,
+          "new": false,
           "components": [
             [
               "在",
@@ -33138,7 +33087,8 @@
               "上",
               "on/above"
             ]
-          ]
+          ],
+          "ref": "S0195"
         },
         {
           "id": "S0314L06",
@@ -33161,7 +33111,7 @@
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -33171,7 +33121,8 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0315L02",
@@ -33241,7 +33192,8 @@
           "type": "A",
           "target": "想要",
           "known": "want",
-          "new": true
+          "new": false,
+          "ref": "S0248"
         },
         {
           "id": "S0315L06",
@@ -33281,7 +33233,7 @@
           "type": "M",
           "target": "她可以",
           "known": "she could",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -33291,7 +33243,8 @@
               "可以",
               "could/can"
             ]
-          ]
+          ],
+          "ref": "S0312"
         },
         {
           "id": "S0316L03",
@@ -33380,7 +33333,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -33390,14 +33343,15 @@
               "的",
               "DE"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0317L02",
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -33407,7 +33361,8 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0317L03",
@@ -33439,14 +33394,15 @@
           "type": "A",
           "target": "如果",
           "known": "if",
-          "new": true
+          "new": false,
+          "ref": "S0090"
         },
         {
           "id": "S0317L05",
           "type": "M",
           "target": "她可以",
           "known": "she could",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -33456,7 +33412,8 @@
               "可以",
               "could/can"
             ]
-          ]
+          ],
+          "ref": "S0312"
         }
       ]
     },
@@ -33472,14 +33429,15 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0318L02",
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -33489,7 +33447,8 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0318L03",
@@ -33556,7 +33515,8 @@
           "type": "A",
           "target": "需要",
           "known": "need to",
-          "new": true
+          "new": false,
+          "ref": "S0280"
         },
         {
           "id": "S0319L03",
@@ -33691,7 +33651,8 @@
           "type": "A",
           "target": "电视",
           "known": "television",
-          "new": true
+          "new": false,
+          "ref": "S0220"
         },
         {
           "id": "S0320L06",
@@ -33855,7 +33816,7 @@
           "type": "M",
           "target": "不需要",
           "known": "doesn't need to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -33865,7 +33826,8 @@
               "需要",
               "need to"
             ]
-          ]
+          ],
+          "ref": "S0320"
         },
         {
           "id": "S0323L03",
@@ -34297,7 +34259,7 @@
           "type": "M",
           "target": "是的",
           "known": "Yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -34307,7 +34269,8 @@
               "的",
               "(particle)"
             ]
-          ]
+          ],
+          "ref": "S0172"
         },
         {
           "id": "S0328L02",
@@ -34386,7 +34349,7 @@
           "type": "M",
           "target": "很重要",
           "known": "very important",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -34396,7 +34359,8 @@
               "重要",
               "important"
             ]
-          ]
+          ],
+          "ref": "S0065"
         }
       ]
     },
@@ -34820,7 +34784,8 @@
           "type": "A",
           "target": "时间",
           "known": "time",
-          "new": true
+          "new": false,
+          "ref": "S0065"
         }
       ]
     },
@@ -34958,7 +34923,7 @@
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -34968,14 +34933,15 @@
               "觉得",
               "think"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0335L02",
           "type": "M",
           "target": "他可以",
           "known": "he can",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -34985,7 +34951,8 @@
               "可以",
               "can"
             ]
-          ]
+          ],
+          "ref": "S0334"
         },
         {
           "id": "S0335L03",
@@ -35087,7 +35054,7 @@
           "type": "M",
           "target": "她不能",
           "known": "she can't",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -35097,7 +35064,8 @@
               "不能",
               "can't"
             ]
-          ]
+          ],
+          "ref": "S0333"
         },
         {
           "id": "S0336L03",
@@ -35178,7 +35146,7 @@
           "type": "M",
           "target": "他可以",
           "known": "he can",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -35188,7 +35156,8 @@
               "可以",
               "can"
             ]
-          ]
+          ],
+          "ref": "S0334"
         },
         {
           "id": "S0337L03",
@@ -35285,14 +35254,15 @@
           "type": "A",
           "target": "不",
           "known": "No",
-          "new": true
+          "new": false,
+          "ref": "S0330"
         },
         {
           "id": "S0339L02",
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -35302,7 +35272,8 @@
               "觉得",
               "think"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0339L03",
@@ -35380,7 +35351,8 @@
           "type": "A",
           "target": "是的",
           "known": "Yes",
-          "new": true
+          "new": false,
+          "ref": "S0172"
         },
         {
           "id": "S0340L02",
@@ -35428,7 +35400,8 @@
           "type": "A",
           "target": "会",
           "known": "will",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         },
         {
           "id": "S0340L06",
@@ -35636,7 +35609,7 @@
           "type": "M",
           "target": "帮你",
           "known": "help you",
-          "new": true,
+          "new": false,
           "components": [
             [
               "帮",
@@ -35646,7 +35619,8 @@
               "你",
               "you"
             ]
-          ]
+          ],
+          "ref": "S0062"
         },
         {
           "id": "S0344L02",
@@ -35711,7 +35685,7 @@
           "type": "M",
           "target": "准备好离开",
           "known": "ready to leave",
-          "new": true,
+          "new": false,
           "components": [
             [
               "准备好",
@@ -35721,7 +35695,8 @@
               "离开",
               "to leave"
             ]
-          ]
+          ],
+          "ref": "S0255"
         },
         {
           "id": "S0345L03",
@@ -35942,7 +35917,7 @@
           "type": "M",
           "target": "想知道",
           "known": "wanted to know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "想",
@@ -35952,7 +35927,8 @@
               "知道",
               "to know"
             ]
-          ]
+          ],
+          "ref": "S0201"
         },
         {
           "id": "S0347L05",
@@ -35989,7 +35965,7 @@
           "type": "M",
           "target": "会发生什么",
           "known": "what was going to happen",
-          "new": true,
+          "new": false,
           "components": [
             [
               "会",
@@ -36003,7 +35979,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0201"
         },
         {
           "id": "S0348L02",
@@ -36132,7 +36109,8 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0350L02",
@@ -36237,7 +36215,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0351L02",
@@ -36446,7 +36425,8 @@
           "type": "A",
           "target": "需要",
           "known": "need to",
-          "new": true
+          "new": false,
+          "ref": "S0280"
         },
         {
           "id": "S0353L02",
@@ -36660,7 +36640,7 @@
           "type": "M",
           "target": "说话",
           "known": "talk",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -36670,14 +36650,15 @@
               "话",
               "words"
             ]
-          ]
+          ],
+          "ref": "S0088"
         },
         {
           "id": "S0355L03",
           "type": "M",
           "target": "那个",
           "known": "that",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那",
@@ -36687,14 +36668,15 @@
               "个",
               "MW"
             ]
-          ]
+          ],
+          "ref": "S0162"
         },
         {
           "id": "S0355L04",
           "type": "M",
           "target": "女人",
           "known": "woman",
-          "new": true,
+          "new": false,
           "components": [
             [
               "女",
@@ -36704,14 +36686,15 @@
               "人",
               "person"
             ]
-          ]
+          ],
+          "ref": "S0305"
         },
         {
           "id": "S0355L05",
           "type": "M",
           "target": "那个女人",
           "known": "that woman",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那个",
@@ -36721,7 +36704,8 @@
               "女人",
               "woman"
             ]
-          ]
+          ],
+          "ref": "S0229"
         },
         {
           "id": "S0355L06",
@@ -36808,7 +36792,8 @@
           "type": "A",
           "target": "吗",
           "known": "question particle",
-          "new": true
+          "new": false,
+          "ref": "S0032"
         }
       ]
     },
@@ -36824,7 +36809,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -36834,7 +36819,8 @@
               "的",
               "DE"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0356L02",
@@ -36875,7 +36861,7 @@
           "type": "M",
           "target": "重要",
           "known": "important",
-          "new": true,
+          "new": false,
           "components": [
             [
               "重",
@@ -36885,7 +36871,8 @@
               "要",
               "important"
             ]
-          ]
+          ],
+          "ref": "S0065"
         },
         {
           "id": "S0356L05",
@@ -37183,7 +37170,7 @@
           "type": "M",
           "target": "朋友",
           "known": "friend",
-          "new": true,
+          "new": false,
           "components": [
             [
               "朋",
@@ -37193,7 +37180,8 @@
               "友",
               "friend"
             ]
-          ]
+          ],
+          "ref": "S0216"
         },
         {
           "id": "S0358L03",
@@ -37305,7 +37293,7 @@
           "type": "M",
           "target": "可以",
           "known": "can",
-          "new": true,
+          "new": false,
           "components": [
             [
               "可",
@@ -37315,7 +37303,8 @@
               "以",
               "can"
             ]
-          ]
+          ],
+          "ref": "S0332"
         },
         {
           "id": "S0359L02",
@@ -37455,7 +37444,8 @@
           "type": "A",
           "target": "什么",
           "known": "what",
-          "new": true
+          "new": false,
+          "ref": "S0068"
         },
         {
           "id": "S0360L05",
@@ -37520,7 +37510,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0362L02",
@@ -37579,7 +37570,8 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0363L02",
@@ -37912,7 +37904,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0367L02",
@@ -37953,14 +37946,15 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0368L02",
           "type": "M",
           "target": "我听说",
           "known": "I heard that",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -37970,14 +37964,15 @@
               "听说",
               "heard that"
             ]
-          ]
+          ],
+          "ref": "S0364"
         },
         {
           "id": "S0368L03",
           "type": "M",
           "target": "他想种",
           "known": "he wanted to grow",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -37991,7 +37986,8 @@
               "种",
               "to grow"
             ]
-          ]
+          ],
+          "ref": "S0366"
         },
         {
           "id": "S0368L04",
@@ -38331,7 +38327,7 @@
           "type": "M",
           "target": "看到",
           "known": "to see",
-          "new": true,
+          "new": false,
           "components": [
             [
               "看",
@@ -38341,7 +38337,8 @@
               "到",
               "result complement"
             ]
-          ]
+          ],
+          "ref": "S0107"
         },
         {
           "id": "S0372L03",
@@ -38414,7 +38411,8 @@
           "type": "A",
           "target": "什么",
           "known": "what",
-          "new": true
+          "new": false,
+          "ref": "S0068"
         }
       ]
     },
@@ -38484,14 +38482,15 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0374L02",
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -38501,7 +38500,8 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0374L03",
@@ -38587,14 +38587,15 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0375L02",
           "type": "M",
           "target": "我不知道",
           "known": "I don't know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -38608,14 +38609,15 @@
               "知道",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0135"
         },
         {
           "id": "S0375L03",
           "type": "M",
           "target": "不知道",
           "known": "don't know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -38625,14 +38627,16 @@
               "知道",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0060"
         },
         {
           "id": "S0375L04",
           "type": "A",
           "target": "知道",
           "known": "know",
-          "new": true
+          "new": false,
+          "ref": "S0059"
         },
         {
           "id": "S0375L05",
@@ -38685,7 +38689,7 @@
           "type": "M",
           "target": "做什么",
           "known": "do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -38695,7 +38699,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0059"
         }
       ]
     },
@@ -38711,7 +38716,7 @@
           "type": "M",
           "target": "上个月",
           "known": "last month",
-          "new": true,
+          "new": false,
           "components": [
             [
               "上",
@@ -38725,7 +38730,8 @@
               "月",
               "month"
             ]
-          ]
+          ],
+          "ref": "S0037"
         },
         {
           "id": "S0376L02",
@@ -38942,7 +38948,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0378L02",
@@ -39045,7 +39052,8 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0379L02",
@@ -39185,7 +39193,8 @@
           "type": "A",
           "target": "问",
           "known": "ask",
-          "new": true
+          "new": false,
+          "ref": "S0190"
         },
         {
           "id": "S0380L03",
@@ -39460,14 +39469,15 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0383L02",
           "type": "M",
           "target": "他说",
           "known": "he said",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他",
@@ -39477,7 +39487,8 @@
               "说",
               "said"
             ]
-          ]
+          ],
+          "ref": "S0301"
         },
         {
           "id": "S0383L03",
@@ -39712,14 +39723,15 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0387L02",
           "type": "M",
           "target": "我认为",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -39729,7 +39741,8 @@
               "认为",
               "think"
             ]
-          ]
+          ],
+          "ref": "S0123"
         },
         {
           "id": "S0387L03",
@@ -39794,7 +39807,7 @@
           "type": "M",
           "target": "一起工作",
           "known": "work together",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一起",
@@ -39804,7 +39817,8 @@
               "工作",
               "work"
             ]
-          ]
+          ],
+          "ref": "S0133"
         },
         {
           "id": "S0388L03",
@@ -39879,7 +39893,8 @@
           "type": "A",
           "target": "那边",
           "known": "over there",
-          "new": true
+          "new": false,
+          "ref": "S0258"
         }
       ]
     },
@@ -40586,7 +40601,7 @@
           "type": "M",
           "target": "左转",
           "known": "turn left",
-          "new": true,
+          "new": false,
           "components": [
             [
               "左",
@@ -40596,7 +40611,8 @@
               "转",
               "turn"
             ]
-          ]
+          ],
+          "ref": "S0359"
         },
         {
           "id": "S0395L06",
@@ -40858,7 +40874,7 @@
           "type": "M",
           "target": "我们需要",
           "known": "we need to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我们",
@@ -40868,7 +40884,8 @@
               "需要",
               "need to"
             ]
-          ]
+          ],
+          "ref": "S0395"
         },
         {
           "id": "S0397L02",
@@ -41189,7 +41206,7 @@
           "type": "M",
           "target": "我们想",
           "known": "we want to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我们",
@@ -41199,7 +41216,8 @@
               "想",
               "want to"
             ]
-          ]
+          ],
+          "ref": "S0398"
         },
         {
           "id": "S0400L02",
@@ -41331,7 +41349,8 @@
           "type": "A",
           "target": "不",
           "known": "No",
-          "new": true
+          "new": false,
+          "ref": "S0330"
         },
         {
           "id": "S0401L02",
@@ -41355,7 +41374,7 @@
           "type": "M",
           "target": "回家",
           "known": "go home",
-          "new": true,
+          "new": false,
           "components": [
             [
               "回",
@@ -41365,7 +41384,8 @@
               "家",
               "home"
             ]
-          ]
+          ],
+          "ref": "S0095"
         },
         {
           "id": "S0401L04",
@@ -41402,7 +41422,7 @@
           "type": "M",
           "target": "是的",
           "known": "Yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -41412,7 +41432,8 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0172"
         },
         {
           "id": "S0402L02",
@@ -41848,7 +41869,8 @@
           "type": "A",
           "target": "不",
           "known": "No",
-          "new": true
+          "new": false,
+          "ref": "S0330"
         },
         {
           "id": "S0406L02",
@@ -42071,7 +42093,7 @@
           "type": "M",
           "target": "是的",
           "known": "Yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -42081,14 +42103,15 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0172"
         },
         {
           "id": "S0408L02",
           "type": "M",
           "target": "那是",
           "known": "that's",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那",
@@ -42098,7 +42121,8 @@
               "是",
               "is"
             ]
-          ]
+          ],
+          "ref": "S0189"
         },
         {
           "id": "S0408L03",
@@ -42215,14 +42239,15 @@
           "type": "A",
           "target": "不",
           "known": "No",
-          "new": true
+          "new": false,
+          "ref": "S0330"
         },
         {
           "id": "S0409L02",
           "type": "M",
           "target": "做什么",
           "known": "do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -42232,7 +42257,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0059"
         },
         {
           "id": "S0409L03",
@@ -42893,7 +42919,8 @@
           "type": "A",
           "target": "问题",
           "known": "problem",
-          "new": true
+          "new": false,
+          "ref": "S0282"
         }
       ]
     },
@@ -42909,7 +42936,7 @@
           "type": "M",
           "target": "他们想",
           "known": "they want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他们",
@@ -42919,7 +42946,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0200"
         },
         {
           "id": "S0416L02",
@@ -43005,7 +43033,7 @@
           "type": "M",
           "target": "他们想",
           "known": "they want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他们",
@@ -43015,7 +43043,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0200"
         },
         {
           "id": "S0417L02",
@@ -43175,7 +43204,7 @@
           "type": "M",
           "target": "他们想",
           "known": "they want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他们",
@@ -43185,7 +43214,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0200"
         },
         {
           "id": "S0419L03",
@@ -43288,7 +43318,8 @@
           "type": "A",
           "target": "问",
           "known": "ask",
-          "new": true
+          "new": false,
+          "ref": "S0190"
         },
         {
           "id": "S0420L03",
@@ -43540,7 +43571,8 @@
           "type": "A",
           "target": "吗",
           "known": "[question particle]",
-          "new": true
+          "new": false,
+          "ref": "S0161"
         }
       ]
     },
@@ -43556,7 +43588,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0424L02",
@@ -43639,7 +43672,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -43649,7 +43682,8 @@
               "的",
               "[particle]"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0425L02",
@@ -43976,7 +44010,8 @@
           "type": "A",
           "target": "吗",
           "known": "[question particle]",
-          "new": true
+          "new": false,
+          "ref": "S0161"
         }
       ]
     },
@@ -43992,7 +44027,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -44002,7 +44037,8 @@
               "的",
               "[particle]"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0429L02",
@@ -44085,7 +44121,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0430L02",
@@ -44185,14 +44222,16 @@
           "type": "A",
           "target": "准备好",
           "known": "ready",
-          "new": true
+          "new": false,
+          "ref": "S0088"
         },
         {
           "id": "S0431L04",
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0431L05",
@@ -44391,7 +44430,8 @@
           "type": "A",
           "target": "什么时候",
           "known": "when",
-          "new": true
+          "new": false,
+          "ref": "S0079"
         }
       ]
     },
@@ -44502,7 +44542,8 @@
           "type": "A",
           "target": "吗",
           "known": "?",
-          "new": true
+          "new": false,
+          "ref": "S0337"
         }
       ]
     },
@@ -44518,7 +44559,8 @@
           "type": "A",
           "target": "是的",
           "known": "yes",
-          "new": true
+          "new": false,
+          "ref": "S0097"
         },
         {
           "id": "S0435L02",
@@ -44583,7 +44625,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0436L02",
@@ -44761,7 +44804,7 @@
           "type": "M",
           "target": "尽可能",
           "known": "as...as possible",
-          "new": true,
+          "new": false,
           "components": [
             [
               "尽",
@@ -44771,7 +44814,8 @@
               "可能",
               "possible"
             ]
-          ]
+          ],
+          "ref": "S0003"
         }
       ]
     },
@@ -44812,7 +44856,7 @@
           "type": "M",
           "target": "不想",
           "known": "didn't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -44822,7 +44866,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0069"
         },
         {
           "id": "S0438L03",
@@ -44854,7 +44899,7 @@
           "type": "M",
           "target": "做什么",
           "known": "do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -44864,7 +44909,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0059"
         }
       ]
     },
@@ -44926,7 +44972,7 @@
           "type": "M",
           "target": "不想",
           "known": "don't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -44936,7 +44982,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0241"
         },
         {
           "id": "S0439L04",
@@ -44959,7 +45006,7 @@
           "type": "M",
           "target": "他们想",
           "known": "they want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他们",
@@ -44969,7 +45016,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0200"
         },
         {
           "id": "S0440L02",
@@ -45043,7 +45091,8 @@
           "type": "A",
           "target": "旅行",
           "known": "travel",
-          "new": true
+          "new": false,
+          "ref": "S0379"
         }
       ]
     },
@@ -45099,7 +45148,8 @@
           "type": "A",
           "target": "想",
           "known": "want to",
-          "new": true
+          "new": false,
+          "ref": "S0352"
         },
         {
           "id": "S0442L03",
@@ -45120,14 +45170,15 @@
           "type": "A",
           "target": "方法",
           "known": "approach/method",
-          "new": true
+          "new": false,
+          "ref": "S0441"
         },
         {
           "id": "S0442L06",
           "type": "M",
           "target": "他们想",
           "known": "they want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他们",
@@ -45137,7 +45188,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0200"
         },
         {
           "id": "S0442L07",
@@ -45208,7 +45260,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0443L02",
@@ -45246,7 +45299,8 @@
           "type": "A",
           "target": "做",
           "known": "do",
-          "new": true
+          "new": false,
+          "ref": "S0089"
         },
         {
           "id": "S0443L06",
@@ -45321,7 +45375,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -45331,7 +45385,8 @@
               "的",
               "(particle)"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0444L02",
@@ -45437,7 +45492,8 @@
           "type": "A",
           "target": "会",
           "known": "will",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         },
         {
           "id": "S0445L02",
@@ -45485,7 +45541,7 @@
           "type": "M",
           "target": "那个",
           "known": "that",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那",
@@ -45495,7 +45551,8 @@
               "个",
               "(classifier)"
             ]
-          ]
+          ],
+          "ref": "S0162"
         },
         {
           "id": "S0445L06",
@@ -45801,7 +45858,8 @@
           "type": "A",
           "target": "会",
           "known": "will",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         },
         {
           "id": "S0448L02",
@@ -45839,7 +45897,7 @@
           "type": "M",
           "target": "帮忙",
           "known": "help",
-          "new": true,
+          "new": false,
           "components": [
             [
               "帮",
@@ -45849,7 +45907,8 @@
               "忙",
               "busy"
             ]
-          ]
+          ],
+          "ref": "S0168"
         },
         {
           "id": "S0448L06",
@@ -45931,7 +45990,8 @@
           "type": "A",
           "target": "准备",
           "known": "prepare",
-          "new": true
+          "new": false,
+          "ref": "S0080"
         },
         {
           "id": "S0449L04",
@@ -45945,7 +46005,7 @@
           "type": "M",
           "target": "准备好",
           "known": "ready/prepared",
-          "new": true,
+          "new": false,
           "components": [
             [
               "准备",
@@ -45955,7 +46015,8 @@
               "好",
               "good/well"
             ]
-          ]
+          ],
+          "ref": "S0396"
         },
         {
           "id": "S0449L06",
@@ -46169,7 +46230,7 @@
           "type": "M",
           "target": "做什么",
           "known": "do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -46179,7 +46240,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0059"
         }
       ]
     },
@@ -46233,7 +46295,7 @@
           "type": "M",
           "target": "他们想做什么",
           "known": "what they wanted to do",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他们",
@@ -46251,14 +46313,15 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0451"
         },
         {
           "id": "S0452L04",
           "type": "M",
           "target": "想做什么",
           "known": "want to do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "想",
@@ -46272,14 +46335,15 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0175"
         },
         {
           "id": "S0452L05",
           "type": "M",
           "target": "做什么",
           "known": "do what",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -46289,7 +46353,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0059"
         }
       ]
     },
@@ -46305,7 +46370,7 @@
           "type": "M",
           "target": "他们说了",
           "known": "they said",
-          "new": true,
+          "new": false,
           "components": [
             [
               "他们",
@@ -46315,7 +46380,8 @@
               "说了",
               "said"
             ]
-          ]
+          ],
+          "ref": "S0451"
         },
         {
           "id": "S0453L02",
@@ -46376,7 +46442,8 @@
           "type": "A",
           "target": "昨晚",
           "known": "last night",
-          "new": true
+          "new": false,
+          "ref": "S0042"
         },
         {
           "id": "S0453L05",
@@ -46549,14 +46616,16 @@
           "type": "A",
           "target": "离开",
           "known": "leave",
-          "new": true
+          "new": false,
+          "ref": "S0274"
         },
         {
           "id": "S0455L05",
           "type": "A",
           "target": "因为",
           "known": "because",
-          "new": true
+          "new": false,
+          "ref": "S0022"
         },
         {
           "id": "S0455L06",
@@ -46645,7 +46714,7 @@
           "type": "M",
           "target": "在那里",
           "known": "be there",
-          "new": true,
+          "new": false,
           "components": [
             [
               "在",
@@ -46655,14 +46724,16 @@
               "那里",
               "there"
             ]
-          ]
+          ],
+          "ref": "S0157"
         },
         {
           "id": "S0456L04",
           "type": "A",
           "target": "那里",
           "known": "there",
-          "new": true
+          "new": false,
+          "ref": "S0157"
         },
         {
           "id": "S0456L05",
@@ -47203,7 +47274,8 @@
           "type": "A",
           "target": "附近",
           "known": "near",
-          "new": true
+          "new": false,
+          "ref": "S0390"
         },
         {
           "id": "S0460L10",
@@ -47226,7 +47298,8 @@
           "type": "A",
           "target": "买",
           "known": "buy",
-          "new": true
+          "new": false,
+          "ref": "S0320"
         },
         {
           "id": "S0461L02",
@@ -47240,7 +47313,8 @@
           "type": "A",
           "target": "商店",
           "known": "shop",
-          "new": true
+          "new": false,
+          "ref": "S0460"
         },
         {
           "id": "S0461L04",
@@ -47306,7 +47380,7 @@
           "type": "M",
           "target": "一家商店",
           "known": "a shop",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一家",
@@ -47316,7 +47390,8 @@
               "商店",
               "shop"
             ]
-          ]
+          ],
+          "ref": "S0460"
         },
         {
           "id": "S0461L08",
@@ -47482,7 +47557,8 @@
           "type": "A",
           "target": "房间",
           "known": "room",
-          "new": true
+          "new": false,
+          "ref": "S0312"
         },
         {
           "id": "S0463L02",
@@ -47623,7 +47699,7 @@
           "type": "M",
           "target": "我的房间号",
           "known": "my room number",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我的",
@@ -47637,14 +47713,16 @@
               "号",
               "number"
             ]
-          ]
+          ],
+          "ref": "S0463"
         },
         {
           "id": "S0464L06",
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0464L07",
@@ -47701,7 +47779,8 @@
           "type": "A",
           "target": "问",
           "known": "ask",
-          "new": true
+          "new": false,
+          "ref": "S0190"
         },
         {
           "id": "S0465L03",
@@ -47754,7 +47833,8 @@
           "type": "A",
           "target": "名字",
           "known": "name",
-          "new": true
+          "new": false,
+          "ref": "S0020"
         },
         {
           "id": "S0465L06",
@@ -48202,7 +48282,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0469L02",
@@ -48264,7 +48345,7 @@
           "type": "M",
           "target": "不能",
           "known": "can't",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -48274,7 +48355,8 @@
               "能",
               "can"
             ]
-          ]
+          ],
+          "ref": "S0331"
         },
         {
           "id": "S0469L06",
@@ -48298,7 +48380,8 @@
           "type": "A",
           "target": "改变",
           "known": "change",
-          "new": true
+          "new": false,
+          "ref": "S0104"
         },
         {
           "id": "S0469L08",
@@ -48356,14 +48439,15 @@
           "type": "A",
           "target": "想",
           "known": "want",
-          "new": true
+          "new": false,
+          "ref": "S0067"
         },
         {
           "id": "S0470L02",
           "type": "M",
           "target": "你想",
           "known": "you want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -48373,7 +48457,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0020"
         },
         {
           "id": "S0470L03",
@@ -48428,7 +48513,7 @@
           "type": "M",
           "target": "停下来",
           "known": "stop",
-          "new": true,
+          "new": false,
           "components": [
             [
               "停",
@@ -48438,7 +48523,8 @@
               "下来",
               "down/resultative complement"
             ]
-          ]
+          ],
+          "ref": "S0067"
         },
         {
           "id": "S0470L08",
@@ -48538,7 +48624,7 @@
           "type": "M",
           "target": "停下来",
           "known": "to stop",
-          "new": true,
+          "new": false,
           "components": [
             [
               "停",
@@ -48548,7 +48634,8 @@
               "下来",
               "down/descending action"
             ]
-          ]
+          ],
+          "ref": "S0402"
         },
         {
           "id": "S0471L03",
@@ -48595,7 +48682,7 @@
           "type": "M",
           "target": "问题的一部分",
           "known": "part of the problem",
-          "new": true,
+          "new": false,
           "components": [
             [
               "问题",
@@ -48609,14 +48696,16 @@
               "一部分",
               "a part/one part"
             ]
-          ]
+          ],
+          "ref": "S0457"
         },
         {
           "id": "S0472L02",
           "type": "A",
           "target": "一部分",
           "known": "a part",
-          "new": true
+          "new": false,
+          "ref": "S0457"
         },
         {
           "id": "S0472L03",
@@ -48651,7 +48740,7 @@
           "type": "M",
           "target": "不知道",
           "known": "don't know",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -48661,7 +48750,8 @@
               "知道",
               "know"
             ]
-          ]
+          ],
+          "ref": "S0060"
         },
         {
           "id": "S0472L06",
@@ -48722,14 +48812,16 @@
           "type": "A",
           "target": "想要",
           "known": "want",
-          "new": true
+          "new": false,
+          "ref": "S0248"
         },
         {
           "id": "S0473L04",
           "type": "A",
           "target": "它",
           "known": "it",
-          "new": true
+          "new": false,
+          "ref": "S0163"
         }
       ]
     },
@@ -49344,7 +49436,8 @@
           "type": "A",
           "target": "现在",
           "known": "now",
-          "new": true
+          "new": false,
+          "ref": "S0001"
         },
         {
           "id": "S0480L06",
@@ -49398,7 +49491,8 @@
           "type": "A",
           "target": "希望",
           "known": "hope",
-          "new": true
+          "new": false,
+          "ref": "S0399"
         },
         {
           "id": "S0481L03",
@@ -49497,7 +49591,7 @@
           "type": "M",
           "target": "唯一真正的希望",
           "known": "the only real hope",
-          "new": true,
+          "new": false,
           "components": [
             [
               "唯一",
@@ -49515,21 +49609,24 @@
               "希望",
               "hope"
             ]
-          ]
+          ],
+          "ref": "S0481"
         },
         {
           "id": "S0482L02",
           "type": "A",
           "target": "是",
           "known": "is",
-          "new": true
+          "new": false,
+          "ref": "S0472"
         },
         {
           "id": "S0482L03",
           "type": "A",
           "target": "他们",
           "known": "they",
-          "new": true
+          "new": false,
+          "ref": "S0442"
         },
         {
           "id": "S0482L04",
@@ -49611,7 +49708,7 @@
           "type": "M",
           "target": "不容易",
           "known": "not easy",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -49621,7 +49718,8 @@
               "容易",
               "easy"
             ]
-          ]
+          ],
+          "ref": "S0064"
         },
         {
           "id": "S0483L03",
@@ -49649,7 +49747,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0483L05",
@@ -49936,7 +50035,7 @@
           "type": "M",
           "target": "我觉得",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -49946,7 +50045,8 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0303"
         },
         {
           "id": "S0486L02",
@@ -49974,7 +50074,7 @@
           "type": "M",
           "target": "很美",
           "known": "very beautiful",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -49984,7 +50084,8 @@
               "美",
               "beautiful"
             ]
-          ]
+          ],
+          "ref": "S0373"
         }
       ]
     },
@@ -50000,7 +50101,8 @@
           "type": "A",
           "target": "它",
           "known": "it",
-          "new": true
+          "new": false,
+          "ref": "S0163"
         },
         {
           "id": "S0487L02",
@@ -50297,7 +50399,8 @@
           "type": "A",
           "target": "我",
           "known": "I",
-          "new": true
+          "new": false,
+          "ref": "S0192"
         },
         {
           "id": "S0490L03",
@@ -50414,7 +50517,7 @@
           "type": "M",
           "target": "努力帮助",
           "known": "try to help",
-          "new": true,
+          "new": false,
           "components": [
             [
               "努力",
@@ -50424,7 +50527,8 @@
               "帮助",
               "help"
             ]
-          ]
+          ],
+          "ref": "S0236"
         },
         {
           "id": "S0491L04",
@@ -50490,7 +50594,7 @@
           "type": "M",
           "target": "你觉得",
           "known": "do you think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -50500,7 +50604,8 @@
               "觉得",
               "think/feel"
             ]
-          ]
+          ],
+          "ref": "S0316"
         },
         {
           "id": "S0492L02",
@@ -50582,7 +50687,7 @@
           "type": "M",
           "target": "会发生什么",
           "known": "what's going to happen",
-          "new": true,
+          "new": false,
           "components": [
             [
               "会",
@@ -50596,7 +50701,8 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0012"
         }
       ]
     },
@@ -50712,7 +50818,8 @@
           "type": "A",
           "target": "重要",
           "known": "important",
-          "new": true
+          "new": false,
+          "ref": "S0065"
         },
         {
           "id": "S0495L02",
@@ -50982,7 +51089,8 @@
           "type": "A",
           "target": "那边",
           "known": "over there",
-          "new": true
+          "new": false,
+          "ref": "S0258"
         },
         {
           "id": "S0498L04",
@@ -51036,7 +51144,7 @@
           "type": "M",
           "target": "我们应该",
           "known": "we should",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我们",
@@ -51046,7 +51154,8 @@
               "应该",
               "should"
             ]
-          ]
+          ],
+          "ref": "S0403"
         },
         {
           "id": "S0499L03",
@@ -51067,7 +51176,8 @@
           "type": "A",
           "target": "门",
           "known": "door",
-          "new": true
+          "new": false,
+          "ref": "S0336"
         },
         {
           "id": "S0499L06",
@@ -51131,14 +51241,15 @@
           "type": "A",
           "target": "为什么",
           "known": "why",
-          "new": true
+          "new": false,
+          "ref": "S0067"
         },
         {
           "id": "S0500L02",
           "type": "M",
           "target": "你为什么不想",
           "known": "why don't you want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -51156,14 +51267,15 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0269"
         },
         {
           "id": "S0500L03",
           "type": "M",
           "target": "不想",
           "known": "don't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "不",
@@ -51173,7 +51285,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0241"
         },
         {
           "id": "S0500L04",
@@ -51418,7 +51531,8 @@
           "type": "A",
           "target": "因为",
           "known": "because",
-          "new": true
+          "new": false,
+          "ref": "S0022"
         },
         {
           "id": "S0502L03",
@@ -51557,7 +51671,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0503L05",
@@ -51595,7 +51710,7 @@
           "type": "M",
           "target": "我要",
           "known": "I'm going to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -51605,7 +51720,8 @@
               "要",
               "will/going to"
             ]
-          ]
+          ],
+          "ref": "S0005"
         },
         {
           "id": "S0504L02",
@@ -51897,7 +52013,8 @@
           "type": "A",
           "target": "城市",
           "known": "city",
-          "new": true
+          "new": false,
+          "ref": "S0302"
         },
         {
           "id": "S0507L03",
@@ -52015,7 +52132,7 @@
           "type": "M",
           "target": "我听说",
           "known": "I heard that",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -52025,7 +52142,8 @@
               "听说",
               "heard/hear said"
             ]
-          ]
+          ],
+          "ref": "S0364"
         },
         {
           "id": "S0509L02",
@@ -52792,7 +52910,7 @@
           "type": "M",
           "target": "第一天",
           "known": "the first day",
-          "new": true,
+          "new": false,
           "components": [
             [
               "第一",
@@ -52802,7 +52920,8 @@
               "天",
               "day"
             ]
-          ]
+          ],
+          "ref": "S0514"
         },
         {
           "id": "S0515L04",
@@ -52944,21 +53063,24 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0517L02",
           "type": "A",
           "target": "他们",
           "known": "they",
-          "new": true
+          "new": false,
+          "ref": "S0442"
         },
         {
           "id": "S0517L03",
           "type": "A",
           "target": "一起",
           "known": "together",
-          "new": true
+          "new": false,
+          "ref": "S0016"
         },
         {
           "id": "S0517L04",
@@ -53152,7 +53274,8 @@
           "type": "A",
           "target": "问题",
           "known": "problem",
-          "new": true
+          "new": false,
+          "ref": "S0282"
         }
       ]
     },
@@ -53323,14 +53446,16 @@
           "type": "A",
           "target": "可能",
           "known": "might",
-          "new": true
+          "new": false,
+          "ref": "S0456"
         },
         {
           "id": "S0520L03",
           "type": "A",
           "target": "发生",
           "known": "happen",
-          "new": true
+          "new": false,
+          "ref": "S0012"
         },
         {
           "id": "S0520L04",
@@ -53468,14 +53593,15 @@
           "type": "A",
           "target": "为什么",
           "known": "why",
-          "new": true
+          "new": false,
+          "ref": "S0067"
         },
         {
           "id": "S0521L05",
           "type": "M",
           "target": "我们需要",
           "known": "we need",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我们",
@@ -53485,7 +53611,8 @@
               "需要",
               "need"
             ]
-          ]
+          ],
+          "ref": "S0210"
         },
         {
           "id": "S0521L06",
@@ -53894,14 +54021,15 @@
           "type": "A",
           "target": "完成",
           "known": "finish",
-          "new": true
+          "new": false,
+          "ref": "S0278"
         },
         {
           "id": "S0525L04",
           "type": "M",
           "target": "能够",
           "known": "be able to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "能",
@@ -53911,7 +54039,8 @@
               "够",
               "enough/reach"
             ]
-          ]
+          ],
+          "ref": "S0445"
         },
         {
           "id": "S0525L05",
@@ -54025,7 +54154,8 @@
           "type": "A",
           "target": "相信",
           "known": "believe",
-          "new": true
+          "new": false,
+          "ref": "S0311"
         },
         {
           "id": "S0526L03",
@@ -54070,7 +54200,8 @@
           "type": "A",
           "target": "猜",
           "known": "guess",
-          "new": true
+          "new": false,
+          "ref": "S0012"
         },
         {
           "id": "S0526L06",
@@ -54172,14 +54303,15 @@
           "type": "A",
           "target": "告诉",
           "known": "tell",
-          "new": true
+          "new": false,
+          "ref": "S0070"
         },
         {
           "id": "S0527L04",
           "type": "M",
           "target": "告诉我",
           "known": "tell me",
-          "new": true,
+          "new": false,
           "components": [
             [
               "告诉",
@@ -54189,14 +54321,16 @@
               "我",
               "me"
             ]
-          ]
+          ],
+          "ref": "S0070"
         },
         {
           "id": "S0527L05",
           "type": "A",
           "target": "故事",
           "known": "story",
-          "new": true
+          "new": false,
+          "ref": "S0310"
         },
         {
           "id": "S0527L06",
@@ -54237,7 +54371,7 @@
           "type": "M",
           "target": "那个",
           "known": "that",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那",
@@ -54247,7 +54381,8 @@
               "个",
               "(classifier)"
             ]
-          ]
+          ],
+          "ref": "S0162"
         },
         {
           "id": "S0527L09",
@@ -54330,7 +54465,8 @@
           "type": "A",
           "target": "应该",
           "known": "should",
-          "new": true
+          "new": false,
+          "ref": "S0499"
         },
         {
           "id": "S0528L03",
@@ -54354,7 +54490,7 @@
           "type": "M",
           "target": "那些",
           "known": "those",
-          "new": true,
+          "new": false,
           "components": [
             [
               "那",
@@ -54364,14 +54500,16 @@
               "些",
               "(plural)"
             ]
-          ]
+          ],
+          "ref": "S0085"
         },
         {
           "id": "S0528L05",
           "type": "A",
           "target": "东西",
           "known": "things",
-          "new": true
+          "new": false,
+          "ref": "S0004"
         },
         {
           "id": "S0528L06",
@@ -54395,7 +54533,8 @@
           "type": "A",
           "target": "房间",
           "known": "room",
-          "new": true
+          "new": false,
+          "ref": "S0312"
         },
         {
           "id": "S0528L08",
@@ -54673,7 +54812,8 @@
           "type": "A",
           "target": "能",
           "known": "can",
-          "new": true
+          "new": false,
+          "ref": "S0529"
         },
         {
           "id": "S0530L03",
@@ -55354,7 +55494,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0537L02",
@@ -55391,7 +55532,7 @@
           "type": "M",
           "target": "我不想",
           "known": "I don't want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -55405,7 +55546,8 @@
               "想",
               "want/think"
             ]
-          ]
+          ],
+          "ref": "S0019"
         },
         {
           "id": "S0538L02",
@@ -55450,7 +55592,7 @@
           "type": "M",
           "target": "我不在乎",
           "known": "I don't care",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -55464,7 +55606,8 @@
               "在乎",
               "care"
             ]
-          ]
+          ],
+          "ref": "S0048"
         },
         {
           "id": "S0538L05",
@@ -55505,7 +55648,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0539L02",
@@ -55580,7 +55724,8 @@
           "type": "A",
           "target": "离开",
           "known": "leave",
-          "new": true
+          "new": false,
+          "ref": "S0274"
         },
         {
           "id": "S0540L04",
@@ -55608,7 +55753,7 @@
           "type": "M",
           "target": "我不介意",
           "known": "I don't mind",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -55622,7 +55767,8 @@
               "介意",
               "mind"
             ]
-          ]
+          ],
+          "ref": "S0155"
         }
       ]
     },
@@ -55690,7 +55836,7 @@
           "type": "M",
           "target": "是个好主意",
           "known": "is a good idea",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -55708,7 +55854,8 @@
               "主意",
               "idea"
             ]
-          ]
+          ],
+          "ref": "S0123"
         },
         {
           "id": "S0541L06",
@@ -55757,7 +55904,8 @@
           "type": "A",
           "target": "生气",
           "known": "angry",
-          "new": true
+          "new": false,
+          "ref": "S0354"
         },
         {
           "id": "S0542L02",
@@ -55865,7 +56013,8 @@
           "type": "A",
           "target": "对",
           "known": "right",
-          "new": true
+          "new": false,
+          "ref": "S0387"
         },
         {
           "id": "S0543L02",
@@ -56266,7 +56415,8 @@
           "type": "A",
           "target": "因为",
           "known": "because",
-          "new": true
+          "new": false,
+          "ref": "S0022"
         },
         {
           "id": "S0547L02",
@@ -56280,7 +56430,8 @@
           "type": "A",
           "target": "玩",
           "known": "play",
-          "new": true
+          "new": false,
+          "ref": "S0337"
         },
         {
           "id": "S0547L04",
@@ -56689,7 +56840,8 @@
           "type": "A",
           "target": "很丑",
           "known": "is ugly",
-          "new": true
+          "new": false,
+          "ref": "S0551"
         }
       ]
     },
@@ -56706,7 +56858,8 @@
           "type": "A",
           "target": "我觉得",
           "known": "I think",
-          "new": true
+          "new": false,
+          "ref": "S0303"
         },
         {
           "id": "S0553L02",
@@ -56808,7 +56961,8 @@
           "type": "A",
           "target": "而且",
           "known": "and",
-          "new": true
+          "new": false,
+          "ref": "S0015"
         },
         {
           "id": "S0555L02",
@@ -56889,7 +57043,8 @@
           "type": "A",
           "target": "他们",
           "known": "they",
-          "new": true
+          "new": false,
+          "ref": "S0442"
         },
         {
           "id": "S0556L02",
@@ -57179,7 +57334,8 @@
           "type": "A",
           "target": "它",
           "known": "it",
-          "new": true
+          "new": false,
+          "ref": "S0163"
         },
         {
           "id": "S0560L02",
@@ -57209,7 +57365,7 @@
           "type": "M",
           "target": "我不在乎",
           "known": "I don't care",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -57219,7 +57375,8 @@
               "不在乎",
               "don't care"
             ]
-          ]
+          ],
+          "ref": "S0048"
         },
         {
           "id": "S0561L02",
@@ -57360,7 +57517,8 @@
           "type": "A",
           "target": "那里",
           "known": "there",
-          "new": true
+          "new": false,
+          "ref": "S0157"
         }
       ]
     },
@@ -57478,7 +57636,8 @@
           "type": "A",
           "target": "帮助",
           "known": "help",
-          "new": true
+          "new": false,
+          "ref": "S0074"
         },
         {
           "id": "S0564L04",
@@ -57723,7 +57882,7 @@
           "type": "M",
           "target": "我会",
           "known": "I would",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -57733,7 +57892,8 @@
               "会",
               "would"
             ]
-          ]
+          ],
+          "ref": "S0565"
         },
         {
           "id": "S0566L07",
@@ -57833,7 +57993,8 @@
           "type": "A",
           "target": "孩子们",
           "known": "the children",
-          "new": true
+          "new": false,
+          "ref": "S0455"
         },
         {
           "id": "S0567L05",
@@ -57987,7 +58148,8 @@
           "type": "A",
           "target": "下次",
           "known": "next time",
-          "new": true
+          "new": false,
+          "ref": "S0465"
         },
         {
           "id": "S0568L06",
@@ -58327,7 +58489,7 @@
           "type": "M",
           "target": "愿意付",
           "known": "willing to pay",
-          "new": true,
+          "new": false,
           "components": [
             [
               "愿意",
@@ -58337,14 +58499,15 @@
               "付",
               "pay"
             ]
-          ]
+          ],
+          "ref": "S0569"
         },
         {
           "id": "S0570L09",
           "type": "M",
           "target": "付多少钱",
           "known": "pay how much",
-          "new": true,
+          "new": false,
           "components": [
             [
               "付",
@@ -58358,14 +58521,15 @@
               "钱",
               "money"
             ]
-          ]
+          ],
+          "ref": "S0569"
         },
         {
           "id": "S0570L10",
           "type": "M",
           "target": "多少钱",
           "known": "how much money",
-          "new": true,
+          "new": false,
           "components": [
             [
               "多少",
@@ -58375,7 +58539,8 @@
               "钱",
               "money"
             ]
-          ]
+          ],
+          "ref": "S0569"
         }
       ]
     },
@@ -58433,7 +58598,7 @@
           "type": "M",
           "target": "好主意",
           "known": "good idea",
-          "new": true,
+          "new": false,
           "components": [
             [
               "好",
@@ -58443,14 +58608,15 @@
               "主意",
               "idea"
             ]
-          ]
+          ],
+          "ref": "S0189"
         },
         {
           "id": "S0571L04",
           "type": "M",
           "target": "个好主意",
           "known": "a good idea",
-          "new": true,
+          "new": false,
           "components": [
             [
               "个",
@@ -58464,7 +58630,8 @@
               "主意",
               "idea"
             ]
-          ]
+          ],
+          "ref": "S0123"
         },
         {
           "id": "S0571L05",
@@ -58667,7 +58834,7 @@
           "type": "M",
           "target": "这是",
           "known": "it's",
-          "new": true,
+          "new": false,
           "components": [
             [
               "这",
@@ -58677,7 +58844,8 @@
               "是",
               "is"
             ]
-          ]
+          ],
+          "ref": "S0481"
         },
         {
           "id": "S0573L02",
@@ -58804,14 +58972,15 @@
           "type": "A",
           "target": "假期",
           "known": "the holidays",
-          "new": true
+          "new": false,
+          "ref": "S0573"
         },
         {
           "id": "S0574L02",
           "type": "M",
           "target": "很特别",
           "known": "very special",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -58821,14 +58990,15 @@
               "特别",
               "special"
             ]
-          ]
+          ],
+          "ref": "S0573"
         },
         {
           "id": "S0574L03",
           "type": "M",
           "target": "每个人",
           "known": "everyone",
-          "new": true,
+          "new": false,
           "components": [
             [
               "每",
@@ -58842,7 +59012,8 @@
               "人",
               "person"
             ]
-          ]
+          ],
+          "ref": "S0511"
         },
         {
           "id": "S0574L04",
@@ -59011,14 +59182,15 @@
           "type": "A",
           "target": "一直",
           "known": "has been",
-          "new": true
+          "new": false,
+          "ref": "S0575"
         },
         {
           "id": "S0576L03",
           "type": "M",
           "target": "令人难过",
           "known": "upsetting",
-          "new": true,
+          "new": false,
           "components": [
             [
               "令",
@@ -59032,14 +59204,15 @@
               "难过",
               "sad/upset"
             ]
-          ]
+          ],
+          "ref": "S0575"
         },
         {
           "id": "S0576L04",
           "type": "M",
           "target": "很令人难过",
           "known": "very upsetting",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -59053,14 +59226,15 @@
               "难过",
               "sad"
             ]
-          ]
+          ],
+          "ref": "S0575"
         },
         {
           "id": "S0576L05",
           "type": "M",
           "target": "一直很令人难过",
           "known": "has been very upsetting",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一直",
@@ -59078,7 +59252,8 @@
               "难过",
               "sad"
             ]
-          ]
+          ],
+          "ref": "S0575"
         },
         {
           "id": "S0576L06",
@@ -59237,7 +59412,8 @@
           "type": "A",
           "target": "地方",
           "known": "place",
-          "new": true
+          "new": false,
+          "ref": "S0185"
         },
         {
           "id": "S0578L04",
@@ -59278,7 +59454,8 @@
           "type": "A",
           "target": "经常",
           "known": "often",
-          "new": true
+          "new": false,
+          "ref": "S0003"
         },
         {
           "id": "S0579L02",
@@ -59412,7 +59589,7 @@
           "type": "M",
           "target": "孩子们",
           "known": "the children",
-          "new": true,
+          "new": false,
           "components": [
             [
               "孩子",
@@ -59422,7 +59599,8 @@
               "们",
               "plural marker"
             ]
-          ]
+          ],
+          "ref": "S0455"
         },
         {
           "id": "S0580L05",
@@ -59467,7 +59645,8 @@
           "type": "A",
           "target": "暖和",
           "known": "warm",
-          "new": true
+          "new": false,
+          "ref": "S0578"
         },
         {
           "id": "S0580L08",
@@ -59688,7 +59867,7 @@
           "type": "M",
           "target": "在这里",
           "known": "here",
-          "new": true,
+          "new": false,
           "components": [
             [
               "在",
@@ -59698,14 +59877,15 @@
               "这里",
               "here"
             ]
-          ]
+          ],
+          "ref": "S0276"
         },
         {
           "id": "S0582L04",
           "type": "M",
           "target": "是什么样的",
           "known": "what is it like",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -59715,7 +59895,8 @@
               "什么样的",
               "what kind/what like"
             ]
-          ]
+          ],
+          "ref": "S0581"
         }
       ]
     },
@@ -59773,7 +59954,7 @@
           "type": "M",
           "target": "是什么样的",
           "known": "what is it like",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -59783,7 +59964,8 @@
               "什么样的",
               "what kind/what like"
             ]
-          ]
+          ],
+          "ref": "S0581"
         }
       ]
     },
@@ -59837,7 +60019,8 @@
           "type": "A",
           "target": "醒来",
           "known": "wake up",
-          "new": true
+          "new": false,
+          "ref": "S0055"
         },
         {
           "id": "S0584L04",
@@ -59896,7 +60079,7 @@
           "type": "M",
           "target": "是什么样的",
           "known": "what is it like",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -59906,7 +60089,8 @@
               "什么样的",
               "what kind/what like"
             ]
-          ]
+          ],
+          "ref": "S0581"
         }
       ]
     },
@@ -59960,7 +60144,7 @@
           "type": "M",
           "target": "看到山",
           "known": "see the mountains",
-          "new": true,
+          "new": false,
           "components": [
             [
               "看到",
@@ -59970,7 +60154,8 @@
               "山",
               "mountains"
             ]
-          ]
+          ],
+          "ref": "S0584"
         },
         {
           "id": "S0585L04",
@@ -60030,14 +60215,16 @@
           "type": "A",
           "target": "窗户",
           "known": "window",
-          "new": true
+          "new": false,
+          "ref": "S0446"
         },
         {
           "id": "S0585L08",
           "type": "A",
           "target": "山",
           "known": "mountains",
-          "new": true
+          "new": false,
+          "ref": "S0584"
         }
       ]
     },
@@ -60053,7 +60240,7 @@
           "type": "M",
           "target": "我想要",
           "known": "I want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -60063,7 +60250,8 @@
               "想要",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0015"
         },
         {
           "id": "S0586L02",
@@ -60180,7 +60368,8 @@
           "type": "A",
           "target": "过去",
           "known": "used to",
-          "new": true
+          "new": false,
+          "ref": "S0199"
         },
         {
           "id": "S0587L04",
@@ -60271,7 +60460,8 @@
           "type": "A",
           "target": "鸡蛋",
           "known": "eggs",
-          "new": true
+          "new": false,
+          "ref": "S0586"
         }
       ]
     },
@@ -60287,14 +60477,15 @@
           "type": "A",
           "target": "所以",
           "known": "so",
-          "new": true
+          "new": false,
+          "ref": "S0188"
         },
         {
           "id": "S0588L02",
           "type": "M",
           "target": "我想",
           "known": "I wanted",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -60304,14 +60495,16 @@
               "想",
               "wanted"
             ]
-          ]
+          ],
+          "ref": "S0204"
         },
         {
           "id": "S0588L03",
           "type": "A",
           "target": "长大",
           "known": "grow up",
-          "new": true
+          "new": false,
+          "ref": "S0582"
         },
         {
           "id": "S0588L04",
@@ -60356,7 +60549,8 @@
           "type": "A",
           "target": "离开",
           "known": "leave",
-          "new": true
+          "new": false,
+          "ref": "S0274"
         },
         {
           "id": "S0588L07",
@@ -60400,7 +60594,7 @@
           "type": "M",
           "target": "告诉我",
           "known": "told me",
-          "new": true,
+          "new": false,
           "components": [
             [
               "告诉",
@@ -60410,14 +60604,16 @@
               "我",
               "me"
             ]
-          ]
+          ],
+          "ref": "S0367"
         },
         {
           "id": "S0589L03",
           "type": "A",
           "target": "告诉",
           "known": "tell",
-          "new": true
+          "new": false,
+          "ref": "S0070"
         },
         {
           "id": "S0589L04",
@@ -60469,7 +60665,8 @@
           "type": "A",
           "target": "看到",
           "known": "see",
-          "new": true
+          "new": false,
+          "ref": "S0584"
         },
         {
           "id": "S0589L08",
@@ -60504,7 +60701,8 @@
           "type": "A",
           "target": "公交车",
           "known": "bus",
-          "new": true
+          "new": false,
+          "ref": "S0391"
         }
       ]
     },
@@ -60520,7 +60718,7 @@
           "type": "M",
           "target": "我看到",
           "known": "I saw",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -60530,21 +60728,23 @@
               "看到",
               "saw"
             ]
-          ]
+          ],
+          "ref": "S0184"
         },
         {
           "id": "S0590L02",
           "type": "A",
           "target": "看到",
           "known": "see",
-          "new": true
+          "new": false,
+          "ref": "S0584"
         },
         {
           "id": "S0590L03",
           "type": "M",
           "target": "最后一班公交车",
           "known": "the last bus",
-          "new": true,
+          "new": false,
           "components": [
             [
               "最后",
@@ -60558,7 +60758,8 @@
               "公交车",
               "bus"
             ]
-          ]
+          ],
+          "ref": "S0589"
         },
         {
           "id": "S0590L04",
@@ -60589,7 +60790,8 @@
           "type": "A",
           "target": "离开",
           "known": "leave",
-          "new": true
+          "new": false,
+          "ref": "S0274"
         }
       ]
     },
@@ -60862,7 +61064,8 @@
           "type": "A",
           "target": "不得不",
           "known": "had to",
-          "new": true
+          "new": false,
+          "ref": "S0455"
         },
         {
           "id": "S0594L03",
@@ -61011,7 +61214,8 @@
           "type": "A",
           "target": "需要",
           "known": "need to",
-          "new": true
+          "new": false,
+          "ref": "S0280"
         },
         {
           "id": "S0595L03",
@@ -61101,7 +61305,7 @@
           "type": "M",
           "target": "我需要",
           "known": "I need to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -61111,7 +61315,8 @@
               "需要",
               "need to"
             ]
-          ]
+          ],
+          "ref": "S0595"
         },
         {
           "id": "S0596L02",
@@ -61142,7 +61347,8 @@
           "type": "A",
           "target": "一会儿",
           "known": "for a while",
-          "new": true
+          "new": false,
+          "ref": "S0180"
         },
         {
           "id": "S0596L05",
@@ -61421,7 +61627,8 @@
           "type": "A",
           "target": "做什么",
           "known": "do what",
-          "new": true
+          "new": false,
+          "ref": "S0059"
         }
       ]
     },
@@ -61484,7 +61691,8 @@
           "type": "A",
           "target": "告诉",
           "known": "tell",
-          "new": true
+          "new": false,
+          "ref": "S0070"
         },
         {
           "id": "S0599L04",
@@ -61537,14 +61745,16 @@
           "type": "A",
           "target": "高兴",
           "known": "happy",
-          "new": true
+          "new": false,
+          "ref": "S0076"
         },
         {
           "id": "S0599L07",
           "type": "A",
           "target": "开车",
           "known": "drive",
-          "new": true
+          "new": false,
+          "ref": "S0447"
         }
       ]
     },
@@ -61950,7 +62160,8 @@
           "type": "A",
           "target": "因为",
           "known": "because",
-          "new": true
+          "new": false,
+          "ref": "S0022"
         },
         {
           "id": "S0605L02",
@@ -61995,7 +62206,8 @@
           "type": "A",
           "target": "帮助",
           "known": "help",
-          "new": true
+          "new": false,
+          "ref": "S0074"
         }
       ]
     },
@@ -62011,7 +62223,8 @@
           "type": "A",
           "target": "如果",
           "known": "if",
-          "new": true
+          "new": false,
+          "ref": "S0090"
         },
         {
           "id": "S0606L02",
@@ -62046,7 +62259,8 @@
           "type": "A",
           "target": "现在",
           "known": "now",
-          "new": true
+          "new": false,
+          "ref": "S0001"
         },
         {
           "id": "S0606L05",
@@ -62293,7 +62507,8 @@
           "type": "A",
           "target": "问",
           "known": "ask",
-          "new": true
+          "new": false,
+          "ref": "S0190"
         }
       ]
     },
@@ -62364,7 +62579,8 @@
           "type": "A",
           "target": "工作",
           "known": "work",
-          "new": true
+          "new": false,
+          "ref": "S0106"
         }
       ]
     },
@@ -62402,7 +62618,8 @@
           "type": "A",
           "target": "准备好",
           "known": "ready",
-          "new": true
+          "new": false,
+          "ref": "S0088"
         },
         {
           "id": "S0611L03",
@@ -62485,7 +62702,7 @@
           "type": "M",
           "target": "一些东西",
           "known": "something",
-          "new": true,
+          "new": false,
           "components": [
             [
               "一些",
@@ -62495,7 +62712,8 @@
               "东西",
               "things"
             ]
-          ]
+          ],
+          "ref": "S0004"
         },
         {
           "id": "S0612L03",
@@ -62717,7 +62935,7 @@
           "type": "M",
           "target": "我认为",
           "known": "I thought",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -62727,7 +62945,8 @@
               "认为",
               "think/thought"
             ]
-          ]
+          ],
+          "ref": "S0124"
         },
         {
           "id": "S0615L02",
@@ -62828,7 +63047,7 @@
           "type": "M",
           "target": "你说",
           "known": "you said",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -62838,7 +63057,8 @@
               "说",
               "said"
             ]
-          ]
+          ],
+          "ref": "S0113"
         },
         {
           "id": "S0616L02",
@@ -62912,7 +63132,7 @@
           "type": "M",
           "target": "很勇敢",
           "known": "very brave",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -62922,7 +63142,8 @@
               "勇敢",
               "brave"
             ]
-          ]
+          ],
+          "ref": "S0615"
         }
       ]
     },
@@ -63134,7 +63355,7 @@
           "type": "M",
           "target": "很长时间",
           "known": "a long time",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -63148,7 +63369,8 @@
               "时间",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0618"
         },
         {
           "id": "S0619L05",
@@ -63235,7 +63457,8 @@
           "type": "A",
           "target": "上次",
           "known": "last time",
-          "new": true
+          "new": false,
+          "ref": "S0572"
         },
         {
           "id": "S0620L05",
@@ -63267,7 +63490,7 @@
           "type": "M",
           "target": "很长时间",
           "known": "a long time",
-          "new": true,
+          "new": false,
           "components": [
             [
               "很",
@@ -63281,7 +63504,8 @@
               "时间",
               "time"
             ]
-          ]
+          ],
+          "ref": "S0618"
         }
       ]
     },
@@ -63449,7 +63673,7 @@
           "type": "M",
           "target": "孩子们",
           "known": "the children",
-          "new": true,
+          "new": false,
           "components": [
             [
               "孩子",
@@ -63459,7 +63683,8 @@
               "们",
               "plural marker"
             ]
-          ]
+          ],
+          "ref": "S0455"
         },
         {
           "id": "S0622L03",
@@ -63644,7 +63869,7 @@
           "type": "M",
           "target": "是的",
           "known": "yes",
-          "new": true,
+          "new": false,
           "components": [
             [
               "是",
@@ -63654,7 +63879,8 @@
               "的",
               "particle"
             ]
-          ]
+          ],
+          "ref": "S0097"
         },
         {
           "id": "S0624L02",
@@ -63707,7 +63933,8 @@
           "type": "A",
           "target": "谢谢",
           "known": "thank you",
-          "new": true
+          "new": false,
+          "ref": "S0173"
         }
       ]
     },
@@ -63723,7 +63950,7 @@
           "type": "M",
           "target": "你想",
           "known": "do you want",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -63733,7 +63960,8 @@
               "想",
               "want"
             ]
-          ]
+          ],
+          "ref": "S0471"
         },
         {
           "id": "S0625L02",
@@ -63757,7 +63985,8 @@
           "type": "A",
           "target": "喝",
           "known": "to drink",
-          "new": true
+          "new": false,
+          "ref": "S0217"
         },
         {
           "id": "S0625L04",
@@ -63802,7 +64031,8 @@
           "type": "A",
           "target": "什么",
           "known": "what",
-          "new": true
+          "new": false,
+          "ref": "S0068"
         }
       ]
     },
@@ -63818,7 +64048,8 @@
           "type": "A",
           "target": "不",
           "known": "no",
-          "new": true
+          "new": false,
+          "ref": "S0096"
         },
         {
           "id": "S0626L02",
@@ -63870,7 +64101,8 @@
           "type": "A",
           "target": "谢谢",
           "known": "thank you",
-          "new": true
+          "new": false,
+          "ref": "S0173"
         }
       ]
     },
@@ -63886,7 +64118,7 @@
           "type": "M",
           "target": "你的",
           "known": "your",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你",
@@ -63896,7 +64128,8 @@
               "的",
               "possessive"
             ]
-          ]
+          ],
+          "ref": "S0358"
         },
         {
           "id": "S0627L02",
@@ -63920,7 +64153,8 @@
           "type": "A",
           "target": "咖啡",
           "known": "coffee",
-          "new": true
+          "new": false,
+          "ref": "S0623"
         },
         {
           "id": "S0627L04",
@@ -64011,7 +64245,8 @@
           "type": "A",
           "target": "茶",
           "known": "tea",
-          "new": true
+          "new": false,
+          "ref": "S0623"
         }
       ]
     },
@@ -64027,7 +64262,7 @@
           "type": "M",
           "target": "我喜欢",
           "known": "I like",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -64037,7 +64272,8 @@
               "喜欢",
               "like"
             ]
-          ]
+          ],
+          "ref": "S0257"
         },
         {
           "id": "S0629L02",
@@ -64075,7 +64311,8 @@
           "type": "A",
           "target": "但",
           "known": "but",
-          "new": true
+          "new": false,
+          "ref": "S0019"
         },
         {
           "id": "S0629L06",
@@ -64170,7 +64407,8 @@
           "type": "A",
           "target": "可以",
           "known": "can",
-          "new": true
+          "new": false,
+          "ref": "S0332"
         },
         {
           "id": "S0630L03",
@@ -64201,7 +64439,7 @@
           "type": "M",
           "target": "喝点什么",
           "known": "something to drink",
-          "new": true,
+          "new": false,
           "components": [
             [
               "喝",
@@ -64215,14 +64453,15 @@
               "什么",
               "what/something"
             ]
-          ]
+          ],
+          "ref": "S0625"
         },
         {
           "id": "S0630L06",
           "type": "M",
           "target": "点什么",
           "known": "something",
-          "new": true,
+          "new": false,
           "components": [
             [
               "点",
@@ -64232,14 +64471,16 @@
               "什么",
               "what"
             ]
-          ]
+          ],
+          "ref": "S0625"
         },
         {
           "id": "S0630L07",
           "type": "A",
           "target": "什么",
           "known": "what",
-          "new": true
+          "new": false,
+          "ref": "S0068"
         }
       ]
     },
@@ -64279,7 +64520,8 @@
           "type": "A",
           "target": "什么",
           "known": "what",
-          "new": true
+          "new": false,
+          "ref": "S0068"
         },
         {
           "id": "S0631L04",
@@ -64358,7 +64600,8 @@
           "type": "A",
           "target": "水",
           "known": "water",
-          "new": true
+          "new": false,
+          "ref": "S0217"
         },
         {
           "id": "S0632L03",
@@ -64533,7 +64776,8 @@
           "type": "A",
           "target": "我",
           "known": "I",
-          "new": true
+          "new": false,
+          "ref": "S0192"
         },
         {
           "id": "S0634L02",
@@ -64637,7 +64881,8 @@
           "type": "A",
           "target": "那",
           "known": "that",
-          "new": true
+          "new": false,
+          "ref": "S0132"
         },
         {
           "id": "S0635L02",
@@ -64730,7 +64975,7 @@
           "type": "M",
           "target": "认为",
           "known": "think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "认",
@@ -64740,14 +64985,15 @@
               "为",
               "as/to be"
             ]
-          ]
+          ],
+          "ref": "S0089"
         },
         {
           "id": "S0636L02",
           "type": "M",
           "target": "我认为",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -64761,7 +65007,8 @@
               "为",
               "(verbal complement)"
             ]
-          ]
+          ],
+          "ref": "S0123"
         },
         {
           "id": "S0636L03",
@@ -64831,7 +65078,7 @@
           "type": "M",
           "target": "哪里",
           "known": "where",
-          "new": true,
+          "new": false,
           "components": [
             [
               "哪",
@@ -64841,7 +65088,8 @@
               "里",
               "place/inside"
             ]
-          ]
+          ],
+          "ref": "S0070"
         },
         {
           "id": "S0637L02",
@@ -64872,7 +65120,7 @@
           "type": "M",
           "target": "她的包",
           "known": "her bag",
-          "new": true,
+          "new": false,
           "components": [
             [
               "她",
@@ -64886,7 +65134,8 @@
               "包",
               "bag"
             ]
-          ]
+          ],
+          "ref": "S0053"
         },
         {
           "id": "S0637L05",
@@ -64951,7 +65200,7 @@
           "type": "M",
           "target": "我在试着",
           "known": "I'm trying to",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -64969,7 +65218,8 @@
               "着",
               "to"
             ]
-          ]
+          ],
+          "ref": "S0002"
         },
         {
           "id": "S0638L04",
@@ -65259,7 +65509,7 @@
           "type": "M",
           "target": "红色的那个",
           "known": "the red one",
-          "new": true,
+          "new": false,
           "components": [
             [
               "红色",
@@ -65273,7 +65523,8 @@
               "那个",
               "that one"
             ]
-          ]
+          ],
+          "ref": "S0640"
         },
         {
           "id": "S0641L04",
@@ -65468,7 +65719,7 @@
           "type": "M",
           "target": "说那个",
           "known": "say that",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -65478,7 +65729,8 @@
               "那个",
               "that"
             ]
-          ]
+          ],
+          "ref": "S0615"
         }
       ]
     },
@@ -65947,7 +66199,8 @@
           "type": "A",
           "target": "女士",
           "known": "madam",
-          "new": true
+          "new": false,
+          "ref": "S0642"
         }
       ]
     },
@@ -65985,7 +66238,8 @@
           "type": "A",
           "target": "先生",
           "known": "sir",
-          "new": true
+          "new": false,
+          "ref": "S0643"
         }
       ]
     },
@@ -66023,7 +66277,8 @@
           "type": "A",
           "target": "女士",
           "known": "madam",
-          "new": true
+          "new": false,
+          "ref": "S0642"
         }
       ]
     },
@@ -66040,7 +66295,7 @@
           "type": "M",
           "target": "我不确定",
           "known": "I'm not sure",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -66054,7 +66309,8 @@
               "确定",
               "sure/certain"
             ]
-          ]
+          ],
+          "ref": "S0010"
         },
         {
           "id": "S0654L02",
@@ -66115,7 +66371,8 @@
           "type": "A",
           "target": "先生",
           "known": "sir",
-          "new": true
+          "new": false,
+          "ref": "S0643"
         }
       ]
     },
@@ -66132,7 +66389,7 @@
           "type": "M",
           "target": "我认为",
           "known": "I think",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -66142,7 +66399,8 @@
               "认为",
               "think"
             ]
-          ]
+          ],
+          "ref": "S0123"
         },
         {
           "id": "S0655L02",
@@ -66215,7 +66473,8 @@
           "type": "A",
           "target": "女士",
           "known": "madam",
-          "new": true
+          "new": false,
+          "ref": "S0642"
         }
       ]
     },
@@ -66280,7 +66539,7 @@
           "type": "M",
           "target": "你们大家",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -66290,14 +66549,15 @@
               "大家",
               "everyone/all"
             ]
-          ]
+          ],
+          "ref": "S0656"
         },
         {
           "id": "S0657L02",
           "type": "M",
           "target": "感觉怎么样",
           "known": "how do you feel",
-          "new": true,
+          "new": false,
           "components": [
             [
               "感觉",
@@ -66307,7 +66567,8 @@
               "怎么样",
               "how/how about"
             ]
-          ]
+          ],
+          "ref": "S0040"
         },
         {
           "id": "S0657L03",
@@ -66349,7 +66610,7 @@
           "type": "M",
           "target": "你们大家",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -66359,7 +66620,8 @@
               "大家",
               "everyone/all"
             ]
-          ]
+          ],
+          "ref": "S0656"
         },
         {
           "id": "S0658L02",
@@ -66418,7 +66680,7 @@
           "type": "M",
           "target": "你们大家",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -66428,7 +66690,8 @@
               "大家",
               "everyone/all"
             ]
-          ]
+          ],
+          "ref": "S0656"
         },
         {
           "id": "S0659L02",
@@ -66452,7 +66715,8 @@
           "type": "A",
           "target": "那个",
           "known": "that",
-          "new": true
+          "new": false,
+          "ref": "S0162"
         },
         {
           "id": "S0659L04",
@@ -66527,7 +66791,7 @@
           "type": "M",
           "target": "我可以",
           "known": "I can",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -66537,7 +66801,8 @@
               "可以",
               "can/may"
             ]
-          ]
+          ],
+          "ref": "S0276"
         },
         {
           "id": "S0660L02",
@@ -66586,7 +66851,7 @@
           "type": "M",
           "target": "你们大家",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -66596,7 +66861,8 @@
               "大家",
               "everyone/all"
             ]
-          ]
+          ],
+          "ref": "S0656"
         },
         {
           "id": "S0660L05",
@@ -66663,7 +66929,7 @@
           "type": "M",
           "target": "在做什么事",
           "known": "doing something",
-          "new": true,
+          "new": false,
           "components": [
             [
               "在",
@@ -66681,14 +66947,15 @@
               "事",
               "thing/matter"
             ]
-          ]
+          ],
+          "ref": "S0646"
         },
         {
           "id": "S0661L03",
           "type": "M",
           "target": "做什么事",
           "known": "do something",
-          "new": true,
+          "new": false,
           "components": [
             [
               "做",
@@ -66702,7 +66969,8 @@
               "事",
               "thing/matter"
             ]
-          ]
+          ],
+          "ref": "S0646"
         }
       ]
     },
@@ -66740,7 +67008,7 @@
           "type": "M",
           "target": "说它",
           "known": "speak it",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -66750,7 +67018,8 @@
               "它",
               "it"
             ]
-          ]
+          ],
+          "ref": "S0647"
         }
       ]
     },
@@ -66767,7 +67036,7 @@
           "type": "M",
           "target": "你们大家",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -66777,14 +67046,15 @@
               "大家",
               "everyone/all"
             ]
-          ]
+          ],
+          "ref": "S0656"
         },
         {
           "id": "S0663L02",
           "type": "M",
           "target": "说的话",
           "known": "what (someone) said",
-          "new": true,
+          "new": false,
           "components": [
             [
               "说",
@@ -66798,7 +67068,8 @@
               "话",
               "words/speech"
             ]
-          ]
+          ],
+          "ref": "S0648"
         },
         {
           "id": "S0663L03",
@@ -66844,7 +67115,7 @@
           "type": "M",
           "target": "你们大家都",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -66858,7 +67129,8 @@
               "都",
               "all"
             ]
-          ]
+          ],
+          "ref": "S0662"
         },
         {
           "id": "S0664L02",
@@ -66921,7 +67193,7 @@
           "type": "M",
           "target": "你们大家都",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -66935,14 +67207,15 @@
               "都",
               "all"
             ]
-          ]
+          ],
+          "ref": "S0662"
         },
         {
           "id": "S0665L02",
           "type": "M",
           "target": "想去",
           "known": "want to go",
-          "new": true,
+          "new": false,
           "components": [
             [
               "想",
@@ -66952,7 +67225,8 @@
               "去",
               "go"
             ]
-          ]
+          ],
+          "ref": "S0650"
         },
         {
           "id": "S0665L03",
@@ -66990,7 +67264,7 @@
           "type": "M",
           "target": "你们大家都",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -67004,7 +67278,8 @@
               "都",
               "all"
             ]
-          ]
+          ],
+          "ref": "S0662"
         },
         {
           "id": "S0666L02",
@@ -67045,7 +67320,7 @@
           "type": "M",
           "target": "你们大家都",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -67059,7 +67334,8 @@
               "都",
               "all"
             ]
-          ]
+          ],
+          "ref": "S0662"
         },
         {
           "id": "S0667L02",
@@ -67100,7 +67376,7 @@
           "type": "M",
           "target": "我希望",
           "known": "I hope",
-          "new": true,
+          "new": false,
           "components": [
             [
               "我",
@@ -67110,14 +67386,15 @@
               "希望",
               "hope"
             ]
-          ]
+          ],
+          "ref": "S0291"
         },
         {
           "id": "S0668L02",
           "type": "M",
           "target": "你们大家都",
           "known": "you all",
-          "new": true,
+          "new": false,
           "components": [
             [
               "你们",
@@ -67131,7 +67408,8 @@
               "都",
               "all"
             ]
-          ]
+          ],
+          "ref": "S0662"
         },
         {
           "id": "S0668L03",
