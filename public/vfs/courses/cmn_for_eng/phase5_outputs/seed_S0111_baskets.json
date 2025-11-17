@@ -1,0 +1,542 @@
+{
+  "legos": {
+    "S0111L01": {
+      "lego": [
+        "when we learn something new",
+        "当我们学习新东西的时候"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "When we learn something new",
+          "当我们学习新东西的时候",
+          null,
+          1
+        ],
+        [
+          "When we learn something new, we work hard",
+          "当我们学习新东西的时候，我们努力工作",
+          null,
+          2
+        ],
+        [
+          "When we learn something new, we must relax",
+          "当我们学习新东西的时候，我们必须放松",
+          null,
+          3
+        ],
+        [
+          "When we learn something new, we need to change",
+          "当我们学习新东西的时候，我们需要改变",
+          null,
+          3
+        ],
+        [
+          "When we learn something new, we don't need to worry",
+          "当我们学习新东西的时候，我们不需要担心",
+          null,
+          4
+        ],
+        [
+          "When we learn something new, we're trying to finish",
+          "当我们学习新东西的时候，我们正在试图结束",
+          null,
+          4
+        ],
+        [
+          "When we learn something new, we must work hard",
+          "当我们学习新东西的时候，我们必须努力工作",
+          null,
+          5
+        ],
+        [
+          "When we learn something new, that is why we work hard",
+          "当我们学习新东西的时候，这就是为什么我们努力工作",
+          null,
+          5
+        ],
+        [
+          "When we learn something new, we need to change what we're doing",
+          "当我们学习新东西的时候，我们需要改变我们正在做的事情",
+          null,
+          6
+        ],
+        [
+          "When we learn something new, we're friends and we must work hard to learn",
+          "当我们学习新东西的时候，我们是朋友我们必须努力工作来学习",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0111L01",
+        "seed_context": {
+          "target": "当我们学习新东西的时候它改变我们的大脑。",
+          "known": "When we learn something new it changes our brain."
+        }
+      },
+      "components": [
+        [
+          "当",
+          "when"
+        ],
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "学习",
+          "learn"
+        ],
+        [
+          "新",
+          "new"
+        ],
+        [
+          "东西",
+          "thing/something"
+        ],
+        [
+          "的时候",
+          "(time marker)"
+        ]
+      ]
+    },
+    "S0111L02": {
+      "lego": [
+        "learn something new",
+        "学习新东西"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when we learn something new",
+          "当我们学习新东西的时候"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Learn something new",
+          "学习新东西",
+          null,
+          1
+        ],
+        [
+          "We learn something new",
+          "我们学习新东西",
+          null,
+          2
+        ],
+        [
+          "We must learn something new",
+          "我们必须学习新东西",
+          null,
+          3
+        ],
+        [
+          "We need to learn something new",
+          "我们需要学习新东西",
+          null,
+          3
+        ],
+        [
+          "We're trying to learn something new",
+          "我们正在试图学习新东西",
+          null,
+          4
+        ],
+        [
+          "We hoped to learn something new",
+          "我们希望学习新东西",
+          null,
+          4
+        ],
+        [
+          "When we learn something new, we work hard",
+          "当我们学习新东西的时候，我们努力工作",
+          null,
+          5
+        ],
+        [
+          "We must work hard to learn something new",
+          "我们必须努力工作来学习新东西",
+          null,
+          5
+        ],
+        [
+          "We're friends, we need to learn something new",
+          "我们是朋友，我们需要学习新东西",
+          null,
+          6
+        ],
+        [
+          "That is why we must work hard to learn something new",
+          "这就是为什么我们必须努力工作来学习新东西",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0111L02",
+        "seed_context": {
+          "target": "当我们学习新东西的时候它改变我们的大脑。",
+          "known": "When we learn something new it changes our brain."
+        }
+      },
+      "components": [
+        [
+          "学习",
+          "learn"
+        ],
+        [
+          "新",
+          "new"
+        ],
+        [
+          "东西",
+          "thing/something"
+        ]
+      ]
+    },
+    "S0111L03": {
+      "lego": [
+        "something new",
+        "新东西"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when we learn something new",
+          "当我们学习新东西的时候"
+        ],
+        [
+          "learn something new",
+          "学习新东西"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Something new",
+          "新东西",
+          null,
+          1
+        ],
+        [
+          "We learn something new",
+          "我们学习新东西",
+          null,
+          2
+        ],
+        [
+          "We hoped for something new",
+          "我们希望新东西",
+          null,
+          3
+        ],
+        [
+          "We need something new",
+          "我们需要新东西",
+          null,
+          3
+        ],
+        [
+          "We're trying to learn something new",
+          "我们正在试图学习新东西",
+          null,
+          4
+        ],
+        [
+          "We must learn something new",
+          "我们必须学习新东西",
+          null,
+          4
+        ],
+        [
+          "When we learn something new, we work hard",
+          "当我们学习新东西的时候，我们努力工作",
+          null,
+          5
+        ],
+        [
+          "That is why we need something new",
+          "这就是为什么我们需要新东西",
+          null,
+          5
+        ],
+        [
+          "We must work hard to learn something new",
+          "我们必须努力工作来学习新东西",
+          null,
+          6
+        ],
+        [
+          "After we finish, we hoped to learn something new",
+          "在我们结束后，我们希望学习新东西",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0111L03",
+        "seed_context": {
+          "target": "当我们学习新东西的时候它改变我们的大脑。",
+          "known": "When we learn something new it changes our brain."
+        }
+      },
+      "components": [
+        [
+          "新",
+          "new"
+        ],
+        [
+          "东西",
+          "thing/something"
+        ]
+      ]
+    },
+    "S0111L04": {
+      "lego": [
+        "it changes",
+        "它改变"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when we learn something new",
+          "当我们学习新东西的时候"
+        ],
+        [
+          "learn something new",
+          "学习新东西"
+        ],
+        [
+          "something new",
+          "新东西"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "It changes",
+          "它改变",
+          null,
+          1
+        ],
+        [
+          "It changes this",
+          "它改变这个",
+          null,
+          2
+        ],
+        [
+          "We need to change, it changes",
+          "我们需要改变，它改变",
+          null,
+          3
+        ],
+        [
+          "It changes what we're doing",
+          "它改变我们正在做的事情",
+          null,
+          3
+        ],
+        [
+          "When we learn, it changes",
+          "当我们学习的时候，它改变",
+          null,
+          4
+        ],
+        [
+          "We must change this, it changes",
+          "我们必须改变这个，它改变",
+          null,
+          4
+        ],
+        [
+          "When we learn something new, it changes",
+          "当我们学习新东西的时候，它改变",
+          null,
+          5
+        ],
+        [
+          "That is why it changes what we're doing",
+          "这就是为什么它改变我们正在做的事情",
+          null,
+          5
+        ],
+        [
+          "We need to change what we're doing, it changes",
+          "我们需要改变我们正在做的事情，它改变",
+          null,
+          6
+        ],
+        [
+          "When we learn something new, it changes what we're doing",
+          "当我们学习新东西的时候，它改变我们正在做的事情",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0111L04",
+        "seed_context": {
+          "target": "当我们学习新东西的时候它改变我们的大脑。",
+          "known": "When we learn something new it changes our brain."
+        }
+      },
+      "components": [
+        [
+          "它",
+          "it"
+        ],
+        [
+          "改变",
+          "changes"
+        ]
+      ]
+    },
+    "S0111L05": {
+      "lego": [
+        "our brain",
+        "我们的大脑"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "when we learn something new",
+          "当我们学习新东西的时候"
+        ],
+        [
+          "learn something new",
+          "学习新东西"
+        ],
+        [
+          "something new",
+          "新东西"
+        ],
+        [
+          "it changes",
+          "它改变"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Our brain",
+          "我们的大脑",
+          null,
+          1
+        ],
+        [
+          "It changes our brain",
+          "它改变我们的大脑",
+          null,
+          2
+        ],
+        [
+          "We must change our brain",
+          "我们必须改变我们的大脑",
+          null,
+          3
+        ],
+        [
+          "We need our brain",
+          "我们需要我们的大脑",
+          null,
+          3
+        ],
+        [
+          "Learning changes our brain",
+          "学习改变我们的大脑",
+          null,
+          4
+        ],
+        [
+          "It changes our brain",
+          "它改变我们的大脑",
+          null,
+          4
+        ],
+        [
+          "When we learn something new, it changes our brain",
+          "当我们学习新东西的时候，它改变我们的大脑",
+          null,
+          5
+        ],
+        [
+          "That is why it changes our brain",
+          "这就是为什么它改变我们的大脑",
+          null,
+          5
+        ],
+        [
+          "We must work hard to learn, it changes our brain",
+          "我们必须努力工作来学习，它改变我们的大脑",
+          null,
+          6
+        ],
+        [
+          "When we learn something new it changes our brain.",
+          "当我们学习新东西的时候它改变我们的大脑。",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0111L05",
+        "seed_context": {
+          "target": "当我们学习新东西的时候它改变我们的大脑。",
+          "known": "When we learn something new it changes our brain."
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "our"
+        ],
+        [
+          "的",
+          "(possessive marker)"
+        ],
+        [
+          "大脑",
+          "brain"
+        ]
+      ]
+    }
+  }
+}
