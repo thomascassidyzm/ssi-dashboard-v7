@@ -1,0 +1,413 @@
+{
+  "S0327L01": {
+    "lego": [
+      "Do you think that she needs to",
+      "你觉得她需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Do you think",
+        "你觉得",
+        null,
+        1
+      ],
+      [
+        "Do you think that she needs to",
+        "你觉得她需要",
+        null,
+        1
+      ],
+      [
+        "Do you think that she needs to read",
+        "你觉得她需要读",
+        null,
+        2
+      ],
+      [
+        "Do you think that she needs to buy",
+        "你觉得她需要买",
+        null,
+        2
+      ],
+      [
+        "Do you think that she needs to move this year",
+        "你觉得她需要今年搬",
+        null,
+        3
+      ],
+      [
+        "Do you think that she needs to consider this",
+        "你觉得她需要考虑这",
+        null,
+        3
+      ],
+      [
+        "Do you think that she needs to move to another country",
+        "你觉得她需要搬到另一个国家",
+        null,
+        4
+      ],
+      [
+        "Do you think that she needs to read the same book",
+        "你觉得她需要读同一本书",
+        null,
+        4
+      ],
+      [
+        "Do you think that she needs to buy a television this year",
+        "你觉得她需要今年买一台电视",
+        null,
+        5
+      ],
+      [
+        "Do you think that she needs to consider ten possible problems",
+        "你觉得她需要考虑十个可能的问题",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "觉得",
+        "think"
+      ],
+      [
+        "她",
+        "she"
+      ],
+      [
+        "需要",
+        "needs to"
+      ]
+    ]
+  },
+  "S0327L02": {
+    "lego": [
+      "needs to offer",
+      "需要提供"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0327L01",
+        "known": "Do you think that she needs to",
+        "target": "你觉得她需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Needs to offer",
+        "需要提供",
+        null,
+        1
+      ],
+      [
+        "She needs to offer",
+        "她需要提供",
+        null,
+        2
+      ],
+      [
+        "He needs to offer this",
+        "他需要提供这",
+        null,
+        2
+      ],
+      [
+        "Do you think she needs to offer",
+        "你觉得她需要提供",
+        null,
+        2
+      ],
+      [
+        "She needs to offer this this time",
+        "她需要这次提供这",
+        null,
+        3
+      ],
+      [
+        "He needs to offer another way",
+        "他需要提供另一种方法",
+        null,
+        3
+      ],
+      [
+        "Do you think that she needs to offer this",
+        "你觉得她需要提供这",
+        null,
+        3
+      ],
+      [
+        "She needs to offer another way this time",
+        "她需要这次提供另一种方法",
+        null,
+        4
+      ],
+      [
+        "I think that he needs to offer another way",
+        "我觉得他需要提供另一种方法",
+        null,
+        4
+      ],
+      [
+        "Do you think that she needs to offer another way this year",
+        "你觉得她需要今年提供另一种方法",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "需要",
+        "needs to"
+      ],
+      [
+        "提供",
+        "offer"
+      ]
+    ]
+  },
+  "S0327L03": {
+    "lego": [
+      "another way",
+      "另一种方法"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0327L01",
+        "known": "Do you think that she needs to",
+        "target": "你觉得她需要",
+        "type": "M"
+      },
+      {
+        "id": "S0327L02",
+        "known": "needs to offer",
+        "target": "需要提供",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Another way",
+        "另一种方法",
+        null,
+        1
+      ],
+      [
+        "Offer another way",
+        "提供另一种方法",
+        null,
+        2
+      ],
+      [
+        "She needs to offer another way",
+        "她需要提供另一种方法",
+        null,
+        2
+      ],
+      [
+        "She could consider another way",
+        "她可以考虑另一种方法",
+        null,
+        2
+      ],
+      [
+        "He needs to offer another way this time",
+        "他需要这次提供另一种方法",
+        null,
+        3
+      ],
+      [
+        "Do you think she needs to offer another way",
+        "你觉得她需要提供另一种方法",
+        null,
+        3
+      ],
+      [
+        "I think that he needs to consider another way",
+        "我觉得他需要考虑另一种方法",
+        null,
+        4
+      ],
+      [
+        "She needs to consider another way to move",
+        "她需要考虑另一种方法搬",
+        null,
+        4
+      ],
+      [
+        "Do you think that she needs to offer another way this time",
+        "你觉得她需要这次提供另一种方法",
+        null,
+        4
+      ],
+      [
+        "I think that she needs to consider another way this year",
+        "我觉得她需要今年考虑另一种方法",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "另",
+        "another"
+      ],
+      [
+        "一",
+        "one"
+      ],
+      [
+        "种",
+        "(kind of)"
+      ],
+      [
+        "方法",
+        "way"
+      ]
+    ]
+  },
+  "S0327L04": {
+    "lego": [
+      "offer another way?",
+      "提供另一种方法吗"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0327L01",
+        "known": "Do you think that she needs to",
+        "target": "你觉得她需要",
+        "type": "M"
+      },
+      {
+        "id": "S0327L02",
+        "known": "needs to offer",
+        "target": "需要提供",
+        "type": "M"
+      },
+      {
+        "id": "S0327L03",
+        "known": "another way",
+        "target": "另一种方法",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Offer another way?",
+        "提供另一种方法吗",
+        null,
+        2
+      ],
+      [
+        "Could she offer another way?",
+        "她可以提供另一种方法吗",
+        null,
+        2
+      ],
+      [
+        "Does she need to offer another way?",
+        "她需要提供另一种方法吗",
+        null,
+        3
+      ],
+      [
+        "Could you bring another way?",
+        "你可以带另一种方法吗",
+        null,
+        2
+      ],
+      [
+        "Do you think she needs to offer another way?",
+        "你觉得她需要提供另一种方法吗",
+        null,
+        3
+      ],
+      [
+        "Does he need to consider another way this time?",
+        "他需要这次考虑另一种方法吗",
+        null,
+        4
+      ],
+      [
+        "Do you think that she needs to offer another way?",
+        "你觉得她需要提供另一种方法吗",
+        null,
+        4
+      ],
+      [
+        "Does she need to offer another way this year?",
+        "她需要今年提供另一种方法吗",
+        null,
+        4
+      ],
+      [
+        "Do you think that he needs to consider another way this time?",
+        "你觉得他需要这次考虑另一种方法吗",
+        null,
+        5
+      ],
+      [
+        "Do you think that she needs to offer another way?",
+        "你觉得她需要提供另一种方法吗？",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "提供",
+        "offer"
+      ],
+      [
+        "另一种方法",
+        "another way"
+      ],
+      [
+        "吗",
+        "(question)"
+      ]
+    ]
+  }
+}

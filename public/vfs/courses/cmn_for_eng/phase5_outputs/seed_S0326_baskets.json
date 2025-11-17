@@ -1,0 +1,399 @@
+{
+  "S0326L01": {
+    "lego": [
+      "I don't think that she needs to",
+      "我觉得她不需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I don't think",
+        "我觉得不",
+        null,
+        1
+      ],
+      [
+        "I don't think that she needs to",
+        "我觉得她不需要",
+        null,
+        1
+      ],
+      [
+        "I don't think that she needs to read",
+        "我觉得她不需要读",
+        null,
+        2
+      ],
+      [
+        "I don't think that she needs to buy",
+        "我觉得她不需要买",
+        null,
+        2
+      ],
+      [
+        "I don't think that she needs to move this year",
+        "我觉得她不需要今年搬",
+        null,
+        3
+      ],
+      [
+        "I don't think that she needs to consider this",
+        "我觉得她不需要考虑这",
+        null,
+        3
+      ],
+      [
+        "I don't think that she needs to move to another country",
+        "我觉得她不需要搬到另一个国家",
+        null,
+        4
+      ],
+      [
+        "I don't think that she needs to read the same book",
+        "我觉得她不需要读同一本书",
+        null,
+        4
+      ],
+      [
+        "I don't think that she needs to buy another television this year",
+        "我觉得她不需要今年买另一台电视",
+        null,
+        5
+      ],
+      [
+        "I don't think that she needs to consider ten possible problems",
+        "我觉得她不需要考虑十个可能的问题",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "觉得",
+        "think"
+      ],
+      [
+        "她",
+        "she"
+      ],
+      [
+        "不",
+        "doesn't"
+      ],
+      [
+        "需要",
+        "need to"
+      ]
+    ]
+  },
+  "S0326L02": {
+    "lego": [
+      "she doesn't need to",
+      "她不需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0326L01",
+        "known": "I don't think that she needs to",
+        "target": "我觉得她不需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "She doesn't need to",
+        "她不需要",
+        null,
+        1
+      ],
+      [
+        "She doesn't need to buy",
+        "她不需要买",
+        null,
+        2
+      ],
+      [
+        "She doesn't need to read this",
+        "她不需要读这",
+        null,
+        2
+      ],
+      [
+        "She doesn't need to consider this time",
+        "她不需要这次考虑",
+        null,
+        3
+      ],
+      [
+        "She doesn't need to buy a book",
+        "她不需要买一本书",
+        null,
+        3
+      ],
+      [
+        "She doesn't need to move this year",
+        "她不需要今年搬",
+        null,
+        3
+      ],
+      [
+        "She doesn't need to move to another country",
+        "她不需要搬到另一个国家",
+        null,
+        4
+      ],
+      [
+        "She doesn't need to buy another television this year",
+        "她不需要今年买另一台电视",
+        null,
+        5
+      ],
+      [
+        "I don't think that she doesn't need to consider",
+        "我觉得她不需要考虑",
+        null,
+        3
+      ],
+      [
+        "She doesn't need to consider ten possible problems this time",
+        "她不需要这次考虑十个可能的问题",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "不",
+        "doesn't"
+      ],
+      [
+        "需要",
+        "need to"
+      ]
+    ]
+  },
+  "S0326L03": {
+    "lego": [
+      "sell off",
+      "卖掉"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0326L01",
+        "known": "I don't think that she needs to",
+        "target": "我觉得她不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0326L02",
+        "known": "she doesn't need to",
+        "target": "她不需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Sell off",
+        "卖掉",
+        null,
+        1
+      ],
+      [
+        "She needs to sell off",
+        "她需要卖掉",
+        null,
+        2
+      ],
+      [
+        "She doesn't need to sell off",
+        "她不需要卖掉",
+        null,
+        2
+      ],
+      [
+        "He could sell off the car",
+        "他可以卖掉车",
+        null,
+        2
+      ],
+      [
+        "I think she needs to sell off",
+        "我觉得她需要卖掉",
+        null,
+        3
+      ],
+      [
+        "She doesn't need to sell off this year",
+        "她不需要今年卖掉",
+        null,
+        3
+      ],
+      [
+        "I don't think that she needs to sell off",
+        "我觉得她不需要卖掉",
+        null,
+        2
+      ],
+      [
+        "He said that he needs to sell off the car",
+        "他说他需要卖掉车",
+        null,
+        4
+      ],
+      [
+        "She doesn't need to sell off another television this time",
+        "她不需要这次卖掉另一台电视",
+        null,
+        5
+      ],
+      [
+        "I don't think that she needs to sell off this year",
+        "我觉得她不需要今年卖掉",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "卖",
+        "sell"
+      ],
+      [
+        "掉",
+        "(resultative complement)"
+      ]
+    ]
+  },
+  "S0326L04": {
+    "lego": [
+      "the company",
+      "公司"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0326L01",
+        "known": "I don't think that she needs to",
+        "target": "我觉得她不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0326L02",
+        "known": "she doesn't need to",
+        "target": "她不需要",
+        "type": "M"
+      },
+      {
+        "id": "S0326L03",
+        "known": "sell off",
+        "target": "卖掉",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "The company",
+        "公司",
+        null,
+        1
+      ],
+      [
+        "Sell the company",
+        "卖公司",
+        null,
+        2
+      ],
+      [
+        "She needs to sell the company",
+        "她需要卖公司",
+        null,
+        2
+      ],
+      [
+        "Sell off the company",
+        "卖掉公司",
+        null,
+        2
+      ],
+      [
+        "She doesn't need to sell the company",
+        "她不需要卖公司",
+        null,
+        3
+      ],
+      [
+        "She needs to sell off the company",
+        "她需要卖掉公司",
+        null,
+        3
+      ],
+      [
+        "I think she needs to sell off the company",
+        "我觉得她需要卖掉公司",
+        null,
+        4
+      ],
+      [
+        "She doesn't need to sell off the company",
+        "她不需要卖掉公司",
+        null,
+        3
+      ],
+      [
+        "I don't think that she needs to sell the company",
+        "我觉得她不需要卖公司",
+        null,
+        4
+      ],
+      [
+        "I don't think that she needs to sell the company.",
+        "我觉得她不需要卖掉公司。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

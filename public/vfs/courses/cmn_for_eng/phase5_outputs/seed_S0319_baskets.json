@@ -1,0 +1,471 @@
+{
+  "S0319L01": {
+    "lego": [
+      "she needs to",
+      "她需要"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "She needs to go",
+        "她需要去",
+        null,
+        1
+      ],
+      [
+        "She needs to come",
+        "她需要来",
+        null,
+        1
+      ],
+      [
+        "She needs to do this",
+        "她需要做这个",
+        null,
+        2
+      ],
+      [
+        "She needs to start",
+        "她需要开始",
+        null,
+        2
+      ],
+      [
+        "She needs to come this time",
+        "她需要这次来",
+        null,
+        3
+      ],
+      [
+        "She needs to ask her brother",
+        "她需要问她弟弟",
+        null,
+        3
+      ],
+      [
+        "She needs to bring her brother",
+        "她需要带她弟弟来",
+        null,
+        4
+      ],
+      [
+        "She needs to speak Chinese now",
+        "她现在需要说中文",
+        null,
+        4
+      ],
+      [
+        "She needs to be able to speak",
+        "她需要能说",
+        null,
+        5
+      ],
+      [
+        "She needs to think about what she wants",
+        "她需要想她想要什么",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "她",
+        "she"
+      ],
+      [
+        "需要",
+        "need to"
+      ]
+    ]
+  },
+  "S0319L02": {
+    "lego": [
+      "need to",
+      "需要"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "she needs to",
+        "她需要"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I need to",
+        "我需要",
+        null,
+        1
+      ],
+      [
+        "You need to",
+        "你需要",
+        null,
+        1
+      ],
+      [
+        "I need to go",
+        "我需要去",
+        null,
+        2
+      ],
+      [
+        "We need to come",
+        "我们需要来",
+        null,
+        2
+      ],
+      [
+        "I need to do this",
+        "我需要做这个",
+        null,
+        3
+      ],
+      [
+        "You need to ask her",
+        "你需要问她",
+        null,
+        3
+      ],
+      [
+        "She needs to speak Chinese",
+        "她需要说中文",
+        null,
+        4
+      ],
+      [
+        "I need to be able to",
+        "我需要能",
+        null,
+        4
+      ],
+      [
+        "I need to think about this",
+        "我需要想这个",
+        null,
+        5
+      ],
+      [
+        "You need to be able to speak",
+        "你需要能说",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": []
+  },
+  "S0319L03": {
+    "lego": [
+      "move to",
+      "搬到"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "she needs to",
+        "她需要"
+      ],
+      [
+        "need to",
+        "需要"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I want to move to",
+        "我想搬到",
+        null,
+        2
+      ],
+      [
+        "She needs to move to",
+        "她需要搬到",
+        null,
+        2
+      ],
+      [
+        "I'm going to move to",
+        "我就要搬到",
+        null,
+        3
+      ],
+      [
+        "I need to move to",
+        "我需要搬到",
+        null,
+        3
+      ],
+      [
+        "She wants to move to her brother's",
+        "她想搬到她弟弟的",
+        null,
+        4
+      ],
+      [
+        "I need to move to Monday",
+        "我需要星期一搬到",
+        null,
+        4
+      ],
+      [
+        "She needs to move to this time",
+        "她这次需要搬到",
+        null,
+        5
+      ],
+      [
+        "I think I need to move to",
+        "我觉得我需要搬到",
+        null,
+        5
+      ],
+      [
+        "She needs to move to if she wants to",
+        "她需要搬到如果她想的话",
+        null,
+        6
+      ],
+      [
+        "I think she needs to move to",
+        "我觉得她需要搬到",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "搬",
+        "move"
+      ],
+      [
+        "到",
+        "to/arrive"
+      ]
+    ]
+  },
+  "S0319L04": {
+    "lego": [
+      "a different country",
+      "另一个国家"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "she needs to",
+        "她需要"
+      ],
+      [
+        "need to",
+        "需要"
+      ],
+      [
+        "move to",
+        "搬到"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "A different country",
+        "另一个国家",
+        null,
+        1
+      ],
+      [
+        "I want a different country",
+        "我想要另一个国家",
+        null,
+        2
+      ],
+      [
+        "She's in a different country",
+        "她在另一个国家",
+        null,
+        2
+      ],
+      [
+        "I need to go to a different country",
+        "我需要去另一个国家",
+        null,
+        3
+      ],
+      [
+        "She's going to a different country",
+        "她就要去另一个国家",
+        null,
+        3
+      ],
+      [
+        "She needs to move to a different country",
+        "她需要搬到另一个国家",
+        null,
+        4
+      ],
+      [
+        "I want to move to a different country",
+        "我想搬到另一个国家",
+        null,
+        4
+      ],
+      [
+        "I think she's in a different country",
+        "我觉得她在另一个国家",
+        null,
+        5
+      ],
+      [
+        "I need to move to a different country",
+        "我需要搬到另一个国家",
+        null,
+        5
+      ],
+      [
+        "I think she needs to go to a different country",
+        "我觉得她需要去另一个国家",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "另",
+        "other/another"
+      ],
+      [
+        "一",
+        "one"
+      ],
+      [
+        "个",
+        "MW"
+      ],
+      [
+        "国家",
+        "country"
+      ]
+    ]
+  },
+  "S0319L05": {
+    "lego": [
+      "country",
+      "国家"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "she needs to",
+        "她需要"
+      ],
+      [
+        "need to",
+        "需要"
+      ],
+      [
+        "move to",
+        "搬到"
+      ],
+      [
+        "a different country",
+        "另一个国家"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "This country",
+        "这个国家",
+        null,
+        1
+      ],
+      [
+        "A country",
+        "一个国家",
+        null,
+        1
+      ],
+      [
+        "A different country",
+        "另一个国家",
+        null,
+        2
+      ],
+      [
+        "I'm in this country",
+        "我在这个国家",
+        null,
+        2
+      ],
+      [
+        "She's going to this country",
+        "她就要去这个国家",
+        null,
+        3
+      ],
+      [
+        "I need to go to a country",
+        "我需要去一个国家",
+        null,
+        3
+      ],
+      [
+        "She needs to move to this country",
+        "她需要搬到这个国家",
+        null,
+        4
+      ],
+      [
+        "I want to move to this country",
+        "我想搬到这个国家",
+        null,
+        4
+      ],
+      [
+        "I think she's in a different country",
+        "我觉得她在另一个国家",
+        null,
+        5
+      ],
+      [
+        "She needs to move to a different country.",
+        "她需要搬到另一个国家。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": []
+  }
+}

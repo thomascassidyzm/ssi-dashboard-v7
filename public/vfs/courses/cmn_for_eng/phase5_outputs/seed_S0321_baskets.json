@@ -1,0 +1,93 @@
+{
+  "S0321L01": {
+    "lego": [
+      "A book",
+      "一本书"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "A book",
+        "一本书",
+        null,
+        1
+      ],
+      [
+        "I want a book",
+        "我想要一本书",
+        null,
+        2
+      ],
+      [
+        "I have a book",
+        "我有一本书",
+        null,
+        2
+      ],
+      [
+        "I'm going to buy a book",
+        "我就要买一本书",
+        null,
+        3
+      ],
+      [
+        "I need to buy a book",
+        "我需要买一本书",
+        null,
+        3
+      ],
+      [
+        "I want to buy a book this year",
+        "我今年想买一本书",
+        null,
+        4
+      ],
+      [
+        "She needs to buy a book",
+        "她需要买一本书",
+        null,
+        4
+      ],
+      [
+        "I think I need to buy a book",
+        "我觉得我需要买一本书",
+        null,
+        5
+      ],
+      [
+        "He doesn't need to buy a book this year",
+        "他今年不需要买一本书",
+        null,
+        5
+      ],
+      [
+        "A book.",
+        "一本书。",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "一",
+        "a/one"
+      ],
+      [
+        "本",
+        "(measure word for books)"
+      ],
+      [
+        "书",
+        "book"
+      ]
+    ]
+  }
+}

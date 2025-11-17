@@ -1,0 +1,417 @@
+{
+  "S0325L01": {
+    "lego": [
+      "I think that he needs to",
+      "我觉得他需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I think",
+        "我觉得",
+        null,
+        1
+      ],
+      [
+        "I think that he needs to",
+        "我觉得他需要",
+        null,
+        1
+      ],
+      [
+        "I think that he needs to buy",
+        "我觉得他需要买",
+        null,
+        2
+      ],
+      [
+        "I think that he needs to read",
+        "我觉得他需要读",
+        null,
+        2
+      ],
+      [
+        "I think that he needs to move this year",
+        "我觉得他需要今年搬",
+        null,
+        3
+      ],
+      [
+        "I think that he needs to buy a book",
+        "我觉得他需要买一本书",
+        null,
+        3
+      ],
+      [
+        "I think that he needs to move to another country",
+        "我觉得他需要搬到另一个国家",
+        null,
+        4
+      ],
+      [
+        "I think that he needs to read the same book",
+        "我觉得他需要读同一本书",
+        null,
+        4
+      ],
+      [
+        "I think that he needs to buy another television this year",
+        "我觉得他需要今年买另一台电视",
+        null,
+        5
+      ],
+      [
+        "I think that he needs to move to a different country this year",
+        "我觉得他需要今年搬到另一个国家",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "觉得",
+        "think"
+      ],
+      [
+        "他",
+        "he"
+      ],
+      [
+        "需要",
+        "needs to"
+      ]
+    ]
+  },
+  "S0325L02": {
+    "lego": [
+      "needs to consider",
+      "需要考虑"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0325L01",
+        "known": "I think that he needs to",
+        "target": "我觉得他需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Needs to consider",
+        "需要考虑",
+        null,
+        1
+      ],
+      [
+        "He needs to consider",
+        "他需要考虑",
+        null,
+        2
+      ],
+      [
+        "She needs to consider this",
+        "她需要考虑这",
+        null,
+        2
+      ],
+      [
+        "I think he needs to consider",
+        "我觉得他需要考虑",
+        null,
+        2
+      ],
+      [
+        "He needs to consider this time",
+        "他需要这次考虑",
+        null,
+        3
+      ],
+      [
+        "She needs to consider another way",
+        "她需要考虑另一种方法",
+        null,
+        3
+      ],
+      [
+        "I think that he needs to consider this",
+        "我觉得他需要考虑这",
+        null,
+        3
+      ],
+      [
+        "He needs to consider moving to another country",
+        "他需要考虑搬到另一个国家",
+        null,
+        4
+      ],
+      [
+        "I think that he needs to consider if she could",
+        "我觉得他需要考虑她是否可以",
+        null,
+        4
+      ],
+      [
+        "She needs to consider moving to a different country this year",
+        "她需要今年考虑搬到另一个国家",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "需要",
+        "needs to"
+      ],
+      [
+        "考虑",
+        "consider"
+      ]
+    ]
+  },
+  "S0325L03": {
+    "lego": [
+      "ten possible problems",
+      "十个可能的问题"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0325L01",
+        "known": "I think that he needs to",
+        "target": "我觉得他需要",
+        "type": "M"
+      },
+      {
+        "id": "S0325L02",
+        "known": "needs to consider",
+        "target": "需要考虑",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Ten problems",
+        "十个问题",
+        null,
+        1
+      ],
+      [
+        "Ten possible problems",
+        "十个可能的问题",
+        null,
+        1
+      ],
+      [
+        "He needs to consider ten problems",
+        "他需要考虑十个问题",
+        null,
+        2
+      ],
+      [
+        "She could bring ten books",
+        "她可以带十本书",
+        null,
+        2
+      ],
+      [
+        "I think he needs to consider ten problems",
+        "我觉得他需要考虑十个问题",
+        null,
+        3
+      ],
+      [
+        "He needs to consider ten possible problems",
+        "他需要考虑十个可能的问题",
+        null,
+        2
+      ],
+      [
+        "I think that he needs to consider ten problems this time",
+        "我觉得他需要这次考虑十个问题",
+        null,
+        4
+      ],
+      [
+        "She said that she needs to read ten books this year",
+        "她说她需要今年读十本书",
+        null,
+        4
+      ],
+      [
+        "I think that he needs to consider ten possible problems",
+        "我觉得他需要考虑十个可能的问题",
+        null,
+        3
+      ],
+      [
+        "He said that he needs to consider ten possible problems this time",
+        "他说他需要这次考虑十个可能的问题",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "十",
+        "ten"
+      ],
+      [
+        "个",
+        "(measure word)"
+      ],
+      [
+        "可能",
+        "possible"
+      ],
+      [
+        "的",
+        "(adj marker)"
+      ],
+      [
+        "问题",
+        "problems"
+      ]
+    ]
+  },
+  "S0325L04": {
+    "lego": [
+      "possible problems",
+      "可能的问题"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0325L01",
+        "known": "I think that he needs to",
+        "target": "我觉得他需要",
+        "type": "M"
+      },
+      {
+        "id": "S0325L02",
+        "known": "needs to consider",
+        "target": "需要考虑",
+        "type": "M"
+      },
+      {
+        "id": "S0325L03",
+        "known": "ten possible problems",
+        "target": "十个可能的问题",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Possible problems",
+        "可能的问题",
+        null,
+        1
+      ],
+      [
+        "Ten possible problems",
+        "十个可能的问题",
+        null,
+        2
+      ],
+      [
+        "He needs to consider possible problems",
+        "他需要考虑可能的问题",
+        null,
+        2
+      ],
+      [
+        "She could bring possible problems",
+        "她可以带来可能的问题",
+        null,
+        2
+      ],
+      [
+        "I think he needs to consider possible problems",
+        "我觉得他需要考虑可能的问题",
+        null,
+        3
+      ],
+      [
+        "He needs to consider ten possible problems",
+        "他需要考虑十个可能的问题",
+        null,
+        3
+      ],
+      [
+        "I think that he needs to consider possible problems this time",
+        "我觉得他需要这次考虑可能的问题",
+        null,
+        4
+      ],
+      [
+        "She said that she needs to consider possible problems this year",
+        "她说她需要今年考虑可能的问题",
+        null,
+        4
+      ],
+      [
+        "I think that he needs to consider ten possible problems this time",
+        "我觉得他需要这次考虑十个可能的问题",
+        null,
+        4
+      ],
+      [
+        "I think that he needs to consider ten possible problems.",
+        "我觉得他需要考虑十个可能的问题。",
+        null,
+        4
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "可能",
+        "possible"
+      ],
+      [
+        "的",
+        "(adj marker)"
+      ],
+      [
+        "问题",
+        "problems"
+      ]
+    ]
+  }
+}
