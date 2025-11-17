@@ -1,0 +1,685 @@
+{
+  "legos": {
+    "S0011L01": {
+      "lego": [
+        "I'd like",
+        "我想"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I'd like",
+          "我想"
+        ],
+        [
+          "I'd like to try",
+          "我想试试"
+        ],
+        [
+          "I'd like to speak Chinese",
+          "我想说中文"
+        ],
+        [
+          "I'd like to learn today",
+          "我想今天学习"
+        ],
+        [
+          "I'd like to speak a little",
+          "我想说一点"
+        ],
+        [
+          "I'd like to try to remember",
+          "我想试着记住"
+        ],
+        [
+          "I'd like to speak Chinese now",
+          "我想现在说中文"
+        ],
+        [
+          "I'd like to try to explain",
+          "我想试着解释"
+        ],
+        [
+          "I'd like to remember a word",
+          "我想记住一个词"
+        ],
+        [
+          "I'd like to speak a little Chinese",
+          "我想说一点中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0011L01",
+        "seed_context": {
+          "known": "我想能够在你说完之后说话。",
+          "target": "I'd like to be able to speak after you finish."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "想",
+          "'d like/want"
+        ]
+      ]
+    },
+    "S0011L02": {
+      "lego": [
+        "I'd like to be able to",
+        "我想能够"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0011L01",
+          "known": "I'd like",
+          "target": "我想",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I'd like to be able to",
+          "我想能够"
+        ],
+        [
+          "I'd like to be able to try",
+          "我想能够试试"
+        ],
+        [
+          "I'd like to be able to learn",
+          "我想能够学习"
+        ],
+        [
+          "I'd like to be able to speak",
+          "我想能够说话"
+        ],
+        [
+          "I'd like to be able to remember",
+          "我想能够记住"
+        ],
+        [
+          "I'd like to be able to explain",
+          "我想能够解释"
+        ],
+        [
+          "I'd like to be able to speak Chinese",
+          "我想能够说中文"
+        ],
+        [
+          "I'd like to be able to try today",
+          "我想能够今天试试"
+        ],
+        [
+          "I'd like to be able to remember a word",
+          "我想能够记住一个词"
+        ],
+        [
+          "I'd like to be able to speak a little Chinese",
+          "我想能够说一点中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0011L02",
+        "seed_context": {
+          "known": "我想能够在你说完之后说话。",
+          "target": "I'd like to be able to speak after you finish."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "想",
+          "'d like/want"
+        ],
+        [
+          "能够",
+          "to be able to"
+        ]
+      ]
+    },
+    "S0011L03": {
+      "lego": [
+        "be able to speak",
+        "能够说话"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0011L01",
+          "known": "I'd like",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0011L02",
+          "known": "I'd like to be able to",
+          "target": "我想能够",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "be able to speak",
+          "能够说话"
+        ],
+        [
+          "I'd like to be able to speak",
+          "我想能够说话"
+        ],
+        [
+          "be able to speak today",
+          "能够今天说话"
+        ],
+        [
+          "be able to speak Chinese",
+          "能够说中文"
+        ],
+        [
+          "I'm not sure I'd like to be able to speak",
+          "我不确定我想能够说话"
+        ],
+        [
+          "be able to speak a little",
+          "能够说一点"
+        ],
+        [
+          "I'd like to be able to speak Chinese now",
+          "我想能够现在说中文"
+        ],
+        [
+          "be able to speak a little Chinese",
+          "能够说一点中文"
+        ],
+        [
+          "I'd like to be able to speak Chinese today",
+          "我想能够今天说中文"
+        ],
+        [
+          "I'd like to be able to speak a little Chinese now",
+          "我想能够现在说一点中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0011L03",
+        "seed_context": {
+          "known": "我想能够在你说完之后说话。",
+          "target": "I'd like to be able to speak after you finish."
+        }
+      },
+      "components": [
+        [
+          "能够",
+          "be able to"
+        ],
+        [
+          "说话",
+          "speak"
+        ]
+      ]
+    },
+    "S0011L05": {
+      "lego": [
+        "to finish speaking",
+        "说完"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0011L01",
+          "known": "I'd like",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0011L02",
+          "known": "I'd like to be able to",
+          "target": "我想能够",
+          "type": "M"
+        },
+        {
+          "id": "S0011L03",
+          "known": "be able to speak",
+          "target": "能够说话",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to finish speaking",
+          "说完"
+        ],
+        [
+          "I'd like to finish speaking",
+          "我想说完"
+        ],
+        [
+          "to finish speaking today",
+          "今天说完"
+        ],
+        [
+          "to finish speaking Chinese",
+          "说完中文"
+        ],
+        [
+          "I'd like to be able to finish speaking",
+          "我想能够说完"
+        ],
+        [
+          "I'm trying to finish speaking",
+          "我在试着说完"
+        ],
+        [
+          "I'd like to finish speaking now",
+          "我想现在说完"
+        ],
+        [
+          "I'd like to try to finish speaking",
+          "我想试着说完"
+        ],
+        [
+          "I'm not sure I'd like to finish speaking",
+          "我不确定我想说完"
+        ],
+        [
+          "I'd like to be able to finish speaking today",
+          "我想能够今天说完"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0011L05",
+        "seed_context": {
+          "known": "我想能够在你说完之后说话。",
+          "target": "I'd like to be able to speak after you finish."
+        }
+      },
+      "components": [
+        [
+          "说",
+          "speak"
+        ],
+        [
+          "完",
+          "finish"
+        ]
+      ]
+    },
+    "S0011L06": {
+      "lego": [
+        "you finish",
+        "你说完"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0011L01",
+          "known": "I'd like",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0011L02",
+          "known": "I'd like to be able to",
+          "target": "我想能够",
+          "type": "M"
+        },
+        {
+          "id": "S0011L03",
+          "known": "be able to speak",
+          "target": "能够说话",
+          "type": "M"
+        },
+        {
+          "id": "S0011L05",
+          "known": "to finish speaking",
+          "target": "说完",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "you finish",
+          "你说完"
+        ],
+        [
+          "I'd like you to finish",
+          "我想你说完"
+        ],
+        [
+          "you finish speaking today",
+          "你今天说完"
+        ],
+        [
+          "you finish speaking Chinese",
+          "你说完中文"
+        ],
+        [
+          "I'd like you to finish speaking",
+          "我想你说完"
+        ],
+        [
+          "I'm not sure you finish",
+          "我不确定你说完"
+        ],
+        [
+          "you finish speaking a little",
+          "你说完一点"
+        ],
+        [
+          "I'd like you to finish speaking today",
+          "我想你今天说完"
+        ],
+        [
+          "I'd like you to finish speaking Chinese",
+          "我想你说完中文"
+        ],
+        [
+          "I'm not sure you finish speaking Chinese",
+          "我不确定你说完中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0011L06",
+        "seed_context": {
+          "known": "我想能够在你说完之后说话。",
+          "target": "I'd like to be able to speak after you finish."
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "说",
+          "speak"
+        ],
+        [
+          "完",
+          "finish"
+        ]
+      ]
+    },
+    "S0011L07": {
+      "lego": [
+        "after finishing",
+        "说完之后"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0011L01",
+          "known": "I'd like",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0011L02",
+          "known": "I'd like to be able to",
+          "target": "我想能够",
+          "type": "M"
+        },
+        {
+          "id": "S0011L03",
+          "known": "be able to speak",
+          "target": "能够说话",
+          "type": "M"
+        },
+        {
+          "id": "S0011L05",
+          "known": "to finish speaking",
+          "target": "说完",
+          "type": "M"
+        },
+        {
+          "id": "S0011L06",
+          "known": "you finish",
+          "target": "你说完",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "after finishing",
+          "说完之后"
+        ],
+        [
+          "I'd like after finishing",
+          "我想说完之后"
+        ],
+        [
+          "after finishing I'd like to speak",
+          "说完之后我想说话"
+        ],
+        [
+          "after finishing I can speak",
+          "说完之后我会说话"
+        ],
+        [
+          "I'd like to speak after finishing",
+          "我想说完之后说话"
+        ],
+        [
+          "after finishing to be able to speak",
+          "说完之后能够说话"
+        ],
+        [
+          "I'd like to be able to speak after finishing",
+          "我想能够说完之后说话"
+        ],
+        [
+          "after finishing I can speak a little Chinese",
+          "说完之后我会说一点中文"
+        ],
+        [
+          "I'd like to try to speak after finishing",
+          "我想试着说完之后说话"
+        ],
+        [
+          "I'd like to be able to speak Chinese after finishing",
+          "我想能够说完之后说中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0011L07",
+        "seed_context": {
+          "known": "我想能够在你说完之后说话。",
+          "target": "I'd like to be able to speak after you finish."
+        }
+      },
+      "components": [
+        [
+          "说",
+          "speak"
+        ],
+        [
+          "完",
+          "finish"
+        ],
+        [
+          "之后",
+          "after"
+        ]
+      ]
+    },
+    "S0011L08": {
+      "lego": [
+        "after you finish",
+        "在你说完之后"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0011L01",
+          "known": "I'd like",
+          "target": "我想",
+          "type": "M"
+        },
+        {
+          "id": "S0011L02",
+          "known": "I'd like to be able to",
+          "target": "我想能够",
+          "type": "M"
+        },
+        {
+          "id": "S0011L03",
+          "known": "be able to speak",
+          "target": "能够说话",
+          "type": "M"
+        },
+        {
+          "id": "S0011L05",
+          "known": "to finish speaking",
+          "target": "说完",
+          "type": "M"
+        },
+        {
+          "id": "S0011L06",
+          "known": "you finish",
+          "target": "你说完",
+          "type": "M"
+        },
+        {
+          "id": "S0011L07",
+          "known": "after finishing",
+          "target": "说完之后",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "after you finish",
+          "在你说完之后"
+        ],
+        [
+          "I'd like after you finish",
+          "我想在你说完之后"
+        ],
+        [
+          "after you finish I'd like to speak",
+          "在你说完之后我想说话"
+        ],
+        [
+          "after you finish I can speak",
+          "在你说完之后我会说话"
+        ],
+        [
+          "I'd like to speak after you finish",
+          "我想在你说完之后说话"
+        ],
+        [
+          "after you finish to be able to speak",
+          "在你说完之后能够说话"
+        ],
+        [
+          "I'd like to be able to speak after you finish",
+          "我想能够在你说完之后说话"
+        ],
+        [
+          "after you finish I can speak a little Chinese",
+          "在你说完之后我会说一点中文"
+        ],
+        [
+          "I'd like to try to speak after you finish",
+          "我想试着在你说完之后说话"
+        ],
+        [
+          "I'd like to be able to speak Chinese after you finish",
+          "我想能够在你说完之后说中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0011L08",
+        "seed_context": {
+          "known": "我想能够在你说完之后说话。",
+          "target": "I'd like to be able to speak after you finish."
+        }
+      },
+      "components": [
+        [
+          "在",
+          "at/in"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "说",
+          "speak"
+        ],
+        [
+          "完",
+          "finish"
+        ],
+        [
+          "之后",
+          "after"
+        ]
+      ]
+    }
+  }
+}
