@@ -1,0 +1,183 @@
+{
+  "S0495L01": {
+    "lego": [
+      "important",
+      "重要"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Important",
+        "重要",
+        null,
+        1
+      ],
+      [
+        "Very important",
+        "很重要",
+        null,
+        2
+      ],
+      [
+        "This is important",
+        "这很重要",
+        null,
+        3
+      ],
+      [
+        "It's very important",
+        "它很重要",
+        null,
+        3
+      ],
+      [
+        "I think it's important",
+        "我觉得很重要",
+        null,
+        4
+      ],
+      [
+        "This is very important to me",
+        "这对我很重要",
+        null,
+        4
+      ],
+      [
+        "I think this is very important",
+        "我觉得这很重要",
+        null,
+        5
+      ],
+      [
+        "What you say is very important",
+        "你说的很重要",
+        null,
+        5
+      ],
+      [
+        "I think it's important to understand this",
+        "我觉得明白这个很重要",
+        null,
+        6
+      ],
+      [
+        "What happens next is very important to me",
+        "接下来发生什么对我很重要",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0495L02": {
+    "lego": [
+      "when it matters",
+      "当它重要的时候"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0495L01",
+        "known": "important",
+        "target": "重要",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "When it matters",
+        "当它重要的时候",
+        null,
+        1
+      ],
+      [
+        "When it matters to me",
+        "当它对我重要的时候",
+        null,
+        2
+      ],
+      [
+        "I'll help when it matters",
+        "当它重要的时候我会帮忙",
+        null,
+        3
+      ],
+      [
+        "I'll be there when it matters",
+        "当它重要的时候我会在那里",
+        null,
+        3
+      ],
+      [
+        "I want to help when it matters",
+        "当它重要的时候我想帮忙",
+        null,
+        4
+      ],
+      [
+        "You'll understand when it matters",
+        "当它重要的时候你会明白",
+        null,
+        4
+      ],
+      [
+        "I think I'll be ready when it matters",
+        "我觉得当它重要的时候我会准备好",
+        null,
+        5
+      ],
+      [
+        "I want to be there when it matters",
+        "当它重要的时候我想在那里",
+        null,
+        5
+      ],
+      [
+        "I'll do what I need to do when it matters",
+        "当它重要的时候我会做我需要做的",
+        null,
+        6
+      ],
+      [
+        "When it matters.",
+        "当它重要的时候。",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "当",
+        "when"
+      ],
+      [
+        "它",
+        "it"
+      ],
+      [
+        "重要",
+        "matters/is important"
+      ],
+      [
+        "的时候",
+        "at the time"
+      ]
+    ]
+  }
+}

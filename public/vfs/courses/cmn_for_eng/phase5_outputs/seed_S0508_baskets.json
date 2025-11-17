@@ -1,0 +1,403 @@
+{
+  "S0508L01": {
+    "lego": [
+      "worrying about how you're going to",
+      "担心你将如何"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Worrying about how you're going to",
+        "担心你将如何",
+        null,
+        1
+      ],
+      [
+        "I'm worrying about how you're going to",
+        "我担心你将如何",
+        null,
+        2
+      ],
+      [
+        "She's worrying about how you're going to pay",
+        "她担心你将如何付钱",
+        null,
+        3
+      ],
+      [
+        "Maybe he's worrying about how you're going to",
+        "也许他担心你将如何",
+        null,
+        3
+      ],
+      [
+        "I'm worrying about how you're going to open the door",
+        "我担心你将如何开门",
+        null,
+        4
+      ],
+      [
+        "We're worrying about how you're going to find it",
+        "我们担心你将如何找",
+        null,
+        4
+      ],
+      [
+        "I hate worrying about how you're going to pay for that",
+        "我讨厌担心你将如何付那个的钱",
+        null,
+        5
+      ],
+      [
+        "She's worrying about how you're going to close the window",
+        "她担心你将如何关窗",
+        null,
+        5
+      ],
+      [
+        "Maybe I should stop worrying about how you're going to pay",
+        "也许我应该停止担心你将如何付钱",
+        null,
+        6
+      ],
+      [
+        "I'm worrying about how you're going to pay instead of playing together",
+        "我担心你将如何付钱而不是一起玩",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0508L01",
+      "seed_context": {
+        "known": "担心你将如何付钱没有意义。",
+        "target": "There's no point worrying about how you're going to pay."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0508L02": {
+    "lego": [
+      "how to pay",
+      "如何付钱"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "worrying about how you're going to",
+        "担心你将如何"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "How to pay",
+        "如何付钱",
+        null,
+        1
+      ],
+      [
+        "I know how to pay",
+        "我知道如何付钱",
+        null,
+        2
+      ],
+      [
+        "She's learning how to pay for things",
+        "她在学如何付钱买东西",
+        null,
+        3
+      ],
+      [
+        "Do you know how to pay?",
+        "你知道如何付钱吗？",
+        null,
+        3
+      ],
+      [
+        "I should learn how to pay for it",
+        "我应该学如何付它的钱",
+        null,
+        4
+      ],
+      [
+        "Maybe I don't know how to pay",
+        "也许我不知道如何付钱",
+        null,
+        4
+      ],
+      [
+        "I'm worrying about how you're going to learn how to pay",
+        "我担心你将如何学会如何付钱",
+        null,
+        5
+      ],
+      [
+        "She doesn't know how to pay for a new bed",
+        "她不知道如何付一张新床的钱",
+        null,
+        5
+      ],
+      [
+        "I hate not knowing how to pay for things in the city",
+        "我讨厌不知道如何在城市付钱买东西",
+        null,
+        6
+      ],
+      [
+        "Years ago I learned how to pay without making trouble",
+        "多年前我学会了如何付钱不制造麻烦",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0508L02",
+      "seed_context": {
+        "known": "担心你将如何付钱没有意义。",
+        "target": "There's no point worrying about how you're going to pay."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0508L03": {
+    "lego": [
+      "pay",
+      "付钱"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "worrying about how you're going to",
+        "担心你将如何"
+      ],
+      [
+        "how to pay",
+        "如何付钱"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Pay",
+        "付钱",
+        null,
+        1
+      ],
+      [
+        "I'll pay",
+        "我付钱",
+        null,
+        1
+      ],
+      [
+        "She's going to pay for it",
+        "她要付它的钱",
+        null,
+        2
+      ],
+      [
+        "We should pay together",
+        "我们应该一起付钱",
+        null,
+        2
+      ],
+      [
+        "I hate having to pay for that",
+        "我讨厌必须付那个的钱",
+        null,
+        3
+      ],
+      [
+        "Maybe he'll pay for the entrance",
+        "也许他会付入口的钱",
+        null,
+        3
+      ],
+      [
+        "I'm going to pay instead of her",
+        "我要付钱而不是她",
+        null,
+        4
+      ],
+      [
+        "She almost forgot to pay for the grass",
+        "她差点忘记付草地的钱",
+        null,
+        4
+      ],
+      [
+        "I should pay before we move to the city",
+        "我应该在我们搬到城市之前付钱",
+        null,
+        5
+      ],
+      [
+        "Years ago I used to pay for everything alone",
+        "多年前我以前一个人付所有东西的钱",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0508L03",
+      "seed_context": {
+        "known": "担心你将如何付钱没有意义。",
+        "target": "There's no point worrying about how you're going to pay."
+      }
+    }
+  },
+  "S0508L04": {
+    "lego": [
+      "no point/meaningless",
+      "没有意义"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "worrying about how you're going to",
+        "担心你将如何"
+      ],
+      [
+        "how to pay",
+        "如何付钱"
+      ],
+      [
+        "pay",
+        "付钱"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "No point",
+        "没有意义",
+        null,
+        1
+      ],
+      [
+        "That's meaningless",
+        "那没有意义",
+        null,
+        1
+      ],
+      [
+        "It's no point worrying",
+        "担心没有意义",
+        null,
+        2
+      ],
+      [
+        "This is meaningless to me",
+        "这对我没有意义",
+        null,
+        2
+      ],
+      [
+        "There's no point arguing about it",
+        "吵架没有意义",
+        null,
+        3
+      ],
+      [
+        "Maybe it's meaningless to pay",
+        "也许付钱没有意义",
+        null,
+        3
+      ],
+      [
+        "It's no point sitting alone inside there",
+        "一个人坐在那里面没有意义",
+        null,
+        4
+      ],
+      [
+        "There's no point making trouble about that",
+        "制造那个麻烦没有意义",
+        null,
+        4
+      ],
+      [
+        "I hate feeling that worrying is meaningless",
+        "我讨厌感觉担心没有意义",
+        null,
+        5
+      ],
+      [
+        "There's no point worrying about how you're going to pay",
+        "担心你将如何付钱没有意义",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0508L04",
+      "seed_context": {
+        "known": "担心你将如何付钱没有意义。",
+        "target": "There's no point worrying about how you're going to pay."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

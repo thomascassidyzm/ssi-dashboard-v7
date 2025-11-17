@@ -1,0 +1,322 @@
+{
+  "S0509L02": {
+    "lego": [
+      "you're going to pay for/buy",
+      "你要买"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "You're going to buy",
+        "你要买",
+        null,
+        1
+      ],
+      [
+        "I heard you're going to buy",
+        "我听说你要买",
+        null,
+        2
+      ],
+      [
+        "You're going to buy that one",
+        "你要买那个",
+        null,
+        2
+      ],
+      [
+        "Maybe you're going to buy it",
+        "也许你要买",
+        null,
+        2
+      ],
+      [
+        "You're going to buy the window",
+        "你要买窗",
+        null,
+        2
+      ],
+      [
+        "She said you're going to buy grass",
+        "她说你要买草地",
+        null,
+        3
+      ],
+      [
+        "I hate that you're going to buy it",
+        "我讨厌你要买",
+        null,
+        3
+      ],
+      [
+        "You're going to buy it instead of me",
+        "你要买而不是我",
+        null,
+        4
+      ],
+      [
+        "I heard you're going to buy something around here",
+        "我听说你要在这附近买东西",
+        null,
+        4
+      ],
+      [
+        "You're going to buy it without worrying about how to pay",
+        "你要买不担心如何付钱",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0509L02",
+      "seed_context": {
+        "known": "我听说你要买一张新床。",
+        "target": "I heard that you're going to pay for a new bed."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0509L03": {
+    "lego": [
+      "a new bed",
+      "一张新床"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "you're going to pay for/buy",
+        "你要买"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "A new bed",
+        "一张新床",
+        null,
+        1
+      ],
+      [
+        "I want a new bed",
+        "我想要一张新床",
+        null,
+        2
+      ],
+      [
+        "She needs a new bed",
+        "她需要一张新床",
+        null,
+        2
+      ],
+      [
+        "Maybe I should get a new bed",
+        "也许我应该买一张新床",
+        null,
+        3
+      ],
+      [
+        "That's a new bed over there",
+        "那边是一张新床",
+        null,
+        3
+      ],
+      [
+        "I hate sleeping on a new bed",
+        "我讨厌睡一张新床",
+        null,
+        3
+      ],
+      [
+        "She's looking for a new bed inside",
+        "她在里面找一张新床",
+        null,
+        4
+      ],
+      [
+        "I'm going to buy a new bed tomorrow",
+        "我明天要买一张新床",
+        null,
+        4
+      ],
+      [
+        "Years ago we moved a new bed to the city",
+        "多年前我们搬了一张新床到城市",
+        null,
+        5
+      ],
+      [
+        "You're going to buy a new bed instead of a window",
+        "你要买一张新床而不是窗",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0509L03",
+      "seed_context": {
+        "known": "我听说你要买一张新床。",
+        "target": "I heard that you're going to pay for a new bed."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0509L04": {
+    "lego": [
+      "buy a new bed",
+      "买一张新床"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "you're going to pay for/buy",
+        "你要买"
+      ],
+      [
+        "a new bed",
+        "一张新床"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "Buy a new bed",
+        "买一张新床",
+        null,
+        1
+      ],
+      [
+        "I'll buy a new bed",
+        "我买一张新床",
+        null,
+        2
+      ],
+      [
+        "She wants to buy a new bed",
+        "她想买一张新床",
+        null,
+        2
+      ],
+      [
+        "We should buy a new bed",
+        "我们应该买一张新床",
+        null,
+        2
+      ],
+      [
+        "Maybe I'll buy a new bed tomorrow",
+        "也许我明天买一张新床",
+        null,
+        3
+      ],
+      [
+        "I hate having to buy a new bed",
+        "我讨厌必须买一张新床",
+        null,
+        3
+      ],
+      [
+        "He's going to buy a new bed in the city",
+        "他要在城市买一张新床",
+        null,
+        4
+      ],
+      [
+        "I'm worrying about how to buy a new bed",
+        "我担心如何买一张新床",
+        null,
+        4
+      ],
+      [
+        "She almost forgot to buy a new bed before we moved",
+        "她差点忘记在我们搬家之前买一张新床",
+        null,
+        5
+      ],
+      [
+        "I heard that you're going to buy a new bed",
+        "我听说你要买一张新床",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
+      "lego_id": "S0509L04",
+      "seed_context": {
+        "known": "我听说你要买一张新床。",
+        "target": "I heard that you're going to pay for a new bed."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

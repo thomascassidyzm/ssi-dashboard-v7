@@ -1,0 +1,299 @@
+{
+  "S0498L01": {
+    "lego": [
+      "he's standing",
+      "他站在"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["He's standing", "他站在", null, 1],
+      ["He's standing over there", "他站在那边", null, 2],
+      ["He's standing under the bridge now", "他站在桥下现在", null, 3],
+      ["She's standing on the other side", "她站在另一边", null, 3],
+      ["He's standing alone over there right now", "他一个人站在那边现在", null, 4],
+      ["He's standing next to the yellow line then", "那么他站在黄线旁边", null, 4],
+      ["She's standing under the bridge when it really matters", "她站在桥下在真正重要的时候", null, 5],
+      ["He's standing on the other side of that yellow line", "他站在那条黄线的另一边", null, 5],
+      ["It sounds as though he's standing alone over there right now", "听起来好像他现在一个人站在那边", null, 6],
+      ["I think he's standing on the other side waiting to get some sleep", "我觉得他站在另一边等睡一觉", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "他",
+        "he"
+      ],
+      [
+        "站",
+        "stand"
+      ],
+      [
+        "在",
+        "at/in"
+      ]
+    ]
+  },
+  "S0498L02": {
+    "lego": [
+      "alone",
+      "一个人"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0498L01",
+        "known": "he's standing",
+        "target": "他站在",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Alone", "一个人", null, 1],
+      ["He's standing alone", "他一个人站在", null, 2],
+      ["I'm planning alone right now", "我现在一个人打算", null, 3],
+      ["She's standing alone over there", "她一个人站在那边", null, 3],
+      ["I need to sleep alone tonight", "我需要今晚一个人睡", null, 4],
+      ["He's standing alone under the bridge", "他一个人站在桥下", null, 4],
+      ["You're not planning to lose alone then", "那么你不打算一个人输", null, 5],
+      ["I will never trust anyone when I'm alone", "我一个人的时候永远不会相信任何人", null, 5],
+      ["That sounds as though you need to get some sleep alone", "听起来好像你需要一个人睡一觉", null, 6],
+      ["He's standing alone on the other side of that yellow line right now", "他现在一个人站在那条黄线的另一边", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "一个",
+        "one"
+      ],
+      [
+        "人",
+        "person"
+      ]
+    ]
+  },
+  "S0498L03": {
+    "lego": [
+      "over there",
+      "那边"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0498L01",
+        "known": "he's standing",
+        "target": "他站在",
+        "type": "M"
+      },
+      {
+        "id": "S0498L02",
+        "known": "alone",
+        "target": "一个人",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Over there", "那边", null, 1],
+      ["He's standing over there", "他站在那边", null, 2],
+      ["It's over there right now", "它现在在那边", null, 3],
+      ["I'm planning to go over there", "我打算去那边", null, 3],
+      ["He's standing alone over there then", "那么他一个人站在那边", null, 4],
+      ["The bridge is over there on the side", "桥在那边旁边", null, 4],
+      ["I think the most interesting place is over there", "我觉得最有趣的地方在那边", null, 5],
+      ["She's standing alone over there under the bridge right now", "她现在一个人站在那边桥下", null, 5],
+      ["That sounds as though you need to go over there to get some sleep", "听起来好像你需要去那边睡一觉", null, 6],
+      ["He's not planning to lose when he's standing alone over there tonight", "他今晚一个人站在那边的时候不打算输", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0498L04": {
+    "lego": [
+      "entrance",
+      "入口"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0498L01",
+        "known": "he's standing",
+        "target": "他站在",
+        "type": "M"
+      },
+      {
+        "id": "S0498L02",
+        "known": "alone",
+        "target": "一个人",
+        "type": "M"
+      },
+      {
+        "id": "S0498L03",
+        "known": "over there",
+        "target": "那边",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Entrance", "入口", null, 1],
+      ["The entrance is important", "入口重要", null, 2],
+      ["He's standing at the entrance", "他站在入口", null, 3],
+      ["The entrance is over there now", "入口现在在那边", null, 3],
+      ["She's standing alone at the entrance", "她一个人站在入口", null, 4],
+      ["The entrance is on the other side", "入口在另一边", null, 4],
+      ["I think the entrance is over there under the bridge", "我觉得入口在那边桥下", null, 5],
+      ["He's standing alone at the entrance right now then", "那么他现在一个人站在入口", null, 5],
+      ["That sounds as though the entrance is on the other side of the bridge", "听起来好像入口在桥的另一边", null, 6],
+      ["I'm not planning to lose when I'm standing alone at the entrance tonight", "我今晚一个人站在入口的时候不打算输", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0498L05": {
+    "lego": [
+      "inside",
+      "里面"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0498L01",
+        "known": "he's standing",
+        "target": "他站在",
+        "type": "M"
+      },
+      {
+        "id": "S0498L02",
+        "known": "alone",
+        "target": "一个人",
+        "type": "M"
+      },
+      {
+        "id": "S0498L03",
+        "known": "over there",
+        "target": "那边",
+        "type": "A"
+      },
+      {
+        "id": "S0498L04",
+        "known": "entrance",
+        "target": "入口",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Inside", "里面", null, 1],
+      ["He's standing inside", "他站在里面", null, 2],
+      ["It's inside right now", "它现在在里面", null, 3],
+      ["I'm planning to go inside", "我打算去里面", null, 3],
+      ["She's standing alone inside then", "那么她一个人站在里面", null, 4],
+      ["The bridge is inside over there", "桥在那边里面", null, 4],
+      ["He's standing alone inside the entrance right now", "他现在一个人站在入口里面", null, 5],
+      ["I think you need to go inside to get sleep", "我觉得你需要去里面睡", null, 5],
+      ["That sounds as though he's standing inside when it really matters", "听起来好像他在真正重要的时候站在里面", null, 6],
+      ["If you go inside the entrance over there then you will need some sleep", "如果你去那边入口里面那么你需要睡一觉", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0498L06": {
+    "lego": [
+      "inside the entrance",
+      "入口里面"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0498L01",
+        "known": "he's standing",
+        "target": "他站在",
+        "type": "M"
+      },
+      {
+        "id": "S0498L02",
+        "known": "alone",
+        "target": "一个人",
+        "type": "M"
+      },
+      {
+        "id": "S0498L03",
+        "known": "over there",
+        "target": "那边",
+        "type": "A"
+      },
+      {
+        "id": "S0498L04",
+        "known": "entrance",
+        "target": "入口",
+        "type": "A"
+      },
+      {
+        "id": "S0498L05",
+        "known": "inside",
+        "target": "里面",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Inside the entrance", "入口里面", null, 1],
+      ["He's standing inside the entrance", "他站在入口里面", null, 2],
+      ["It's inside the entrance over there", "它在那边入口里面", null, 3],
+      ["I'm planning to go inside the entrance", "我打算去入口里面", null, 3],
+      ["She's standing alone inside the entrance", "她一个人站在入口里面", null, 4],
+      ["He's standing inside the entrance right now", "他现在站在入口里面", null, 4],
+      ["He's standing alone over there inside the entrance then", "那么他一个人站在那边入口里面", null, 5],
+      ["I think you need to go inside the entrance to sleep", "我觉得你需要去入口里面睡", null, 5],
+      ["That sounds as though he's standing alone inside the entrance over there", "听起来好像他一个人站在那边入口里面", null, 6],
+      ["He's not planning to lose when he's standing alone inside the entrance tonight", "他今晚一个人站在入口里面的时候不打算输", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "入口",
+        "entrance"
+      ],
+      [
+        "里面",
+        "inside"
+      ]
+    ]
+  }
+}

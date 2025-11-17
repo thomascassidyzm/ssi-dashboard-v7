@@ -1,0 +1,261 @@
+{
+  "S0517L01": {
+    "lego": ["but", "但"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["But", "但", null, 1],
+      ["But they", "但他们", null, 2],
+      ["But I heard", "但我听说", null, 3],
+      ["But they came yesterday", "但他们昨天来了", null, 3],
+      ["But I found a house", "但我找到了房子", null, 4],
+      ["But you can help me", "但你能帮我", null, 4],
+      ["But I heard you want a new bed", "但我听说你要新床", null, 5],
+      ["But they both came on their own", "但他们两个都是自己来的", null, 5],
+      ["But we moved to the city yesterday", "但我们昨天搬到了城市", null, 6],
+      ["But I found the perfect house on the first day", "但我第一天就找到了完美的房子", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0517L02": {
+    "lego": ["they", "他们"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0517L01",
+        "known": "but",
+        "target": "但",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["They", "他们", null, 1],
+      ["They came", "他们来了", null, 2],
+      ["But they found it", "但他们找到了", null, 3],
+      ["They both came yesterday", "他们两个都昨天来了", null, 3],
+      ["They moved to the city", "他们搬到了城市", null, 4],
+      ["But they want a house", "但他们要房子", null, 4],
+      ["They heard the news this morning", "他们今天早上听说了消息", null, 5],
+      ["But they both came on their own", "但他们两个都是自己来的", null, 5],
+      ["They found the perfect house on the first day", "他们第一天就找到了完美的房子", null, 6],
+      ["But they went to look for a safe place", "但他们去找一个安全的地方", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0517L03": {
+    "lego": ["together", "一起"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0517L01",
+        "known": "but",
+        "target": "但",
+        "type": "A"
+      },
+      {
+        "id": "S0517L02",
+        "known": "they",
+        "target": "他们",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Together", "一起", null, 1],
+      ["They came together", "他们一起来了", null, 2],
+      ["But we went together", "但我们一起去了", null, 3],
+      ["They both came together", "他们两个都一起来了", null, 3],
+      ["We moved together yesterday", "我们昨天一起搬了", null, 4],
+      ["But they went together", "但他们一起去了", null, 4],
+      ["They came to the city together", "他们一起来到了城市", null, 5],
+      ["But we found the house together", "但我们一起找到了房子", null, 5],
+      ["They both came to the office together yesterday", "他们两个都昨天一起来到了办公室", null, 6],
+      ["But they went to look for a house together", "但他们一起去找房子了", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0517L04": {
+    "lego": ["left", "离开了"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0517L01",
+        "known": "but",
+        "target": "但",
+        "type": "A"
+      },
+      {
+        "id": "S0517L02",
+        "known": "they",
+        "target": "他们",
+        "type": "A"
+      },
+      {
+        "id": "S0517L03",
+        "known": "together",
+        "target": "一起",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Left", "离开了", null, 1],
+      ["They left", "他们离开了", null, 2],
+      ["But I left yesterday", "但我昨天离开了", null, 3],
+      ["They left the office", "他们离开了办公室", null, 3],
+      ["She left on the first day", "她第一天就离开了", null, 4],
+      ["But we left the city", "但我们离开了城市", null, 4],
+      ["They both left the office yesterday", "他们两个都昨天离开了办公室", null, 5],
+      ["But she left when I came", "但她在我来的时候离开了", null, 5],
+      ["They left on the first day of the new year", "他们在新年的第一天离开了", null, 6],
+      ["But everyone in the office left yesterday morning", "但办公室的每个人昨天早上都离开了", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["离开", "leave/depart"],
+      ["了", "completion marker"]
+    ]
+  },
+  "S0517L05": {
+    "lego": ["left together", "一起离开了"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0517L01",
+        "known": "but",
+        "target": "但",
+        "type": "A"
+      },
+      {
+        "id": "S0517L02",
+        "known": "they",
+        "target": "他们",
+        "type": "A"
+      },
+      {
+        "id": "S0517L03",
+        "known": "together",
+        "target": "一起",
+        "type": "A"
+      },
+      {
+        "id": "S0517L04",
+        "known": "left",
+        "target": "离开了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Left together", "一起离开了", null, 1],
+      ["They left together", "他们一起离开了", null, 2],
+      ["But we left together", "但我们一起离开了", null, 3],
+      ["We left together yesterday", "我们昨天一起离开了", null, 3],
+      ["They both left together", "他们两个都一起离开了", null, 4],
+      ["But they left together yesterday", "但他们昨天一起离开了", null, 4],
+      ["They both left the office together", "他们两个都一起离开了办公室", null, 5],
+      ["But we left the city together", "但我们一起离开了城市", null, 5],
+      ["They left together on the first day", "他们第一天就一起离开了", null, 6],
+      ["But everyone in the office left together yesterday", "但办公室的每个人昨天都一起离开了", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["一起", "together"],
+      ["离开", "leave"],
+      ["了", "completion marker"]
+    ]
+  },
+  "S0517L06": {
+    "lego": ["they left together", "他们一起离开了"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0517L01",
+        "known": "but",
+        "target": "但",
+        "type": "A"
+      },
+      {
+        "id": "S0517L02",
+        "known": "they",
+        "target": "他们",
+        "type": "A"
+      },
+      {
+        "id": "S0517L03",
+        "known": "together",
+        "target": "一起",
+        "type": "A"
+      },
+      {
+        "id": "S0517L04",
+        "known": "left",
+        "target": "离开了",
+        "type": "M"
+      },
+      {
+        "id": "S0517L05",
+        "known": "left together",
+        "target": "一起离开了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["They left together", "他们一起离开了", null, 1],
+      ["They both left together", "他们两个都一起离开了", null, 2],
+      ["But they left together", "但他们一起离开了", null, 3],
+      ["They left together yesterday", "他们昨天一起离开了", null, 3],
+      ["They left the office together", "他们一起离开了办公室", null, 4],
+      ["But they both left together", "但他们两个都一起离开了", null, 4],
+      ["They left the city together yesterday", "他们昨天一起离开了城市", null, 5],
+      ["But they left the office together", "但他们一起离开了办公室", null, 5],
+      ["They both left together on the first day", "他们两个都第一天就一起离开了", null, 6],
+      ["But they left with each other.", "但他们一起离开了。", null, 3]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他们", "they"],
+      ["一起", "together"],
+      ["离开了", "left"]
+    ]
+  }
+}

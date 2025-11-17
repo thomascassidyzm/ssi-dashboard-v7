@@ -1,0 +1,319 @@
+{
+  "S0497L01": {
+    "lego": [
+      "that sounds",
+      "听起来"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["That sounds", "听起来", null, 1],
+      ["That sounds important", "听起来重要", null, 2],
+      ["That sounds really beautiful to me", "听起来对我真正美", null, 3],
+      ["That sounds like you need help", "听起来你需要帮", null, 3],
+      ["That sounds like the most interesting part", "听起来最有趣的部分", null, 4],
+      ["That sounds really important to me right now", "听起来现在对我真正重要", null, 4],
+      ["That sounds as though you need some sleep then", "听起来那么你需要睡", null, 5],
+      ["That sounds like you're not planning to lose again", "听起来你不打算再也输", null, 5],
+      ["That sounds like the most interesting show I've ever seen", "听起来我见过的最有趣的演出", null, 6],
+      ["That sounds really important when you think about what comes next", "听起来当你想接下来的真正重要", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "听",
+        "hear/listen"
+      ],
+      [
+        "起来",
+        "appear/seem"
+      ]
+    ]
+  },
+  "S0497L02": {
+    "lego": [
+      "as though",
+      "好像"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0497L01",
+        "known": "that sounds",
+        "target": "听起来",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["As though", "好像", null, 1],
+      ["It's as though you need", "好像你需要", null, 2],
+      ["As though you want to lose", "好像你想输", null, 3],
+      ["That sounds as though it's important", "听起来好像重要", null, 3],
+      ["As though you really need some help", "好像你真正需要一些帮", null, 4],
+      ["That sounds as though you need to sleep", "听起来好像你需要睡", null, 4],
+      ["It's as though you don't want to trust anyone", "好像你不想相信任何人", null, 5],
+      ["That sounds as though you're planning to help me", "听起来好像你打算帮我", null, 5],
+      ["As though you will never trust anyone ever again then", "好像那么你再也不会相信任何人了", null, 6],
+      ["That sounds as though you're not planning to lose when it really matters", "听起来好像你不打算在真正重要的时候输", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0497L03": {
+    "lego": [
+      "sounds as though",
+      "听起来好像"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0497L01",
+        "known": "that sounds",
+        "target": "听起来",
+        "type": "M"
+      },
+      {
+        "id": "S0497L02",
+        "known": "as though",
+        "target": "好像",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Sounds as though", "听起来好像", null, 1],
+      ["Sounds as though you need help", "听起来好像你需要帮", null, 2],
+      ["It sounds as though you're planning", "听起来好像你打算", null, 3],
+      ["Sounds as though you need some sleep", "听起来好像你需要睡", null, 3],
+      ["It sounds as though you really need help", "听起来好像你真正需要帮", null, 4],
+      ["Sounds as though you're not planning to lose", "听起来好像你不打算输", null, 4],
+      ["That sounds as though you need to get some sleep", "听起来好像你需要睡一觉", null, 5],
+      ["It sounds as though you love the way I try", "听起来好像你喜欢我努力的方式", null, 5],
+      ["Sounds as though you will never trust anyone ever again then", "听起来好像那么你再也不会相信任何人了", null, 6],
+      ["That sounds as though you're not planning to lose when it really matters to you", "听起来好像你不打算在对你真正重要的时候输", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "听起来",
+        "sounds"
+      ],
+      [
+        "好像",
+        "as though"
+      ]
+    ]
+  },
+  "S0497L04": {
+    "lego": [
+      "you need",
+      "你需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0497L01",
+        "known": "that sounds",
+        "target": "听起来",
+        "type": "M"
+      },
+      {
+        "id": "S0497L02",
+        "known": "as though",
+        "target": "好像",
+        "type": "A"
+      },
+      {
+        "id": "S0497L03",
+        "known": "sounds as though",
+        "target": "听起来好像",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["You need", "你需要", null, 1],
+      ["You need to help me", "你需要帮我", null, 2],
+      ["You need to trust me now", "你需要现在相信我", null, 3],
+      ["You need to get some sleep", "你需要睡一觉", null, 3],
+      ["I think you need to help me", "我觉得你需要帮我", null, 4],
+      ["You need to try when it matters", "你需要在重要的时候努力", null, 4],
+      ["That sounds as though you need some help right now", "听起来好像你现在需要一些帮", null, 5],
+      ["You need to think about what really matters to you", "你需要想对你真正重要的", null, 5],
+      ["I think you need to help me when it really matters then", "我觉得那么你需要在真正重要的时候帮我", null, 6],
+      ["Sounds as though you need to make me a strong cup of coffee right now", "听起来好像你需要现在给我泡一杯浓咖啡", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "需要",
+        "need"
+      ]
+    ]
+  },
+  "S0497L05": {
+    "lego": [
+      "get some sleep",
+      "睡一觉"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0497L01",
+        "known": "that sounds",
+        "target": "听起来",
+        "type": "M"
+      },
+      {
+        "id": "S0497L02",
+        "known": "as though",
+        "target": "好像",
+        "type": "A"
+      },
+      {
+        "id": "S0497L03",
+        "known": "sounds as though",
+        "target": "听起来好像",
+        "type": "M"
+      },
+      {
+        "id": "S0497L04",
+        "known": "you need",
+        "target": "你需要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Get some sleep", "睡一觉", null, 1],
+      ["I need to get some sleep", "我需要睡一觉", null, 2],
+      ["You need to get some sleep", "你需要睡一觉", null, 3],
+      ["Get some sleep then help me", "睡一觉那么帮我", null, 3],
+      ["I'm planning to get some sleep now", "我打算现在睡一觉", null, 4],
+      ["You really need to get some sleep", "你真正需要睡一觉", null, 4],
+      ["That sounds as though you need to get some sleep", "听起来好像你需要睡一觉", null, 5],
+      ["I think you need to get some sleep right now", "我觉得你需要现在睡一觉", null, 5],
+      ["If you don't get some sleep then you will never help anyone", "如果你不睡一觉那么你永远不会帮任何人", null, 6],
+      ["It sounds as though you need to get some sleep when the show ends", "听起来好像你需要在演出结束的时候睡一觉", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "睡",
+        "sleep"
+      ],
+      [
+        "一觉",
+        "one sleep"
+      ]
+    ]
+  },
+  "S0497L06": {
+    "lego": [
+      "need to get some sleep",
+      "需要睡一觉"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0497L01",
+        "known": "that sounds",
+        "target": "听起来",
+        "type": "M"
+      },
+      {
+        "id": "S0497L02",
+        "known": "as though",
+        "target": "好像",
+        "type": "A"
+      },
+      {
+        "id": "S0497L03",
+        "known": "sounds as though",
+        "target": "听起来好像",
+        "type": "M"
+      },
+      {
+        "id": "S0497L04",
+        "known": "you need",
+        "target": "你需要",
+        "type": "M"
+      },
+      {
+        "id": "S0497L05",
+        "known": "get some sleep",
+        "target": "睡一觉",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Need to get some sleep", "需要睡一觉", null, 1],
+      ["I need to get some sleep", "我需要睡一觉", null, 2],
+      ["You need to get some sleep now", "你需要现在睡一觉", null, 3],
+      ["I think you need to get sleep", "我觉得你需要睡", null, 3],
+      ["You really need to get some sleep then", "那么你真正需要睡一觉", null, 4],
+      ["That sounds like you need to get sleep", "听起来你需要睡", null, 4],
+      ["Sounds as though you need to get some sleep right now", "听起来好像你需要现在睡一觉", null, 5],
+      ["I think you need to get some sleep after the show", "我觉得你需要在演出之后睡一觉", null, 5],
+      ["That sounds as though you really need to get some sleep when it matters", "听起来好像你真正需要在重要的时候睡一觉", null, 6],
+      ["If you don't need to get some sleep then help me make coffee right now", "如果你不需要睡一觉那么现在帮我泡咖啡", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "需要",
+        "need"
+      ],
+      [
+        "睡",
+        "sleep"
+      ],
+      [
+        "一觉",
+        "one sleep"
+      ]
+    ]
+  }
+}

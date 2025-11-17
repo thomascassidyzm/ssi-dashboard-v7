@@ -1,0 +1,528 @@
+{
+  "S0522L01": {
+    "lego": [
+      "let's agree",
+      "我们同意"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "我们同意。",
+        "Let's agree.",
+        null,
+        1
+      ],
+      [
+        "我们同意留在这里。",
+        "Let's agree to stay here.",
+        null,
+        2
+      ],
+      [
+        "我们同意第一天就去。",
+        "Let's agree to go on the first day.",
+        null,
+        2
+      ],
+      [
+        "我们同意这可能发生在我们身上。",
+        "Let's agree it might happen to us.",
+        null,
+        3
+      ],
+      [
+        "我们同意他们两个都应该自己来。",
+        "Let's agree they both should come on their own.",
+        null,
+        3
+      ],
+      [
+        "我们同意这个消息应该传到每个人。",
+        "Let's agree the news should reach everyone.",
+        null,
+        4
+      ],
+      [
+        "我们同意整个家庭需要留在这里。",
+        "Let's agree the whole family needs to stay here.",
+        null,
+        4
+      ],
+      [
+        "我们同意这可能发生在整个家庭身上第一天。",
+        "Let's agree it might have happened to the whole family on the first day.",
+        null,
+        5
+      ],
+      [
+        "我们同意我无法想象完全相同的问题发生在我身上。",
+        "Let's agree I couldn't imagine exactly the same problem happening to me.",
+        null,
+        6
+      ],
+      [
+        "我们同意当他们一起离开的时候这个消息花了几个小时才传到。",
+        "Let's agree the news took several hours to reach when they left together.",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0522L01",
+      "seed_context": {
+        "known": "我们同意说实话是愚蠢的吧。",
+        "target": "Let's agree that it was stupid to tell the truth."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0522L02": {
+    "lego": [
+      "tell the truth",
+      "说实话"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "let's agree",
+        "我们同意"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "说实话。",
+        "Tell the truth.",
+        null,
+        1
+      ],
+      [
+        "你能说实话吗？",
+        "Can you tell the truth?",
+        null,
+        2
+      ],
+      [
+        "我担心说实话。",
+        "I'm afraid to tell the truth.",
+        null,
+        2
+      ],
+      [
+        "他们两个都说实话了。",
+        "They both told the truth.",
+        null,
+        3
+      ],
+      [
+        "我们同意说实话。",
+        "Let's agree to tell the truth.",
+        null,
+        3
+      ],
+      [
+        "我还没见过他说实话。",
+        "I haven't seen him tell the truth yet.",
+        null,
+        4
+      ],
+      [
+        "第一天就应该说实话的。",
+        "We should have told the truth on the first day.",
+        null,
+        4
+      ],
+      [
+        "我担心你会忘记说实话的重要性。",
+        "I'm afraid you'll forget the importance of telling the truth.",
+        null,
+        5
+      ],
+      [
+        "这个消息传到的时候他们才知道应该说实话。",
+        "They only knew they should tell the truth when the news reached.",
+        null,
+        6
+      ],
+      [
+        "我无法想象整个家庭都不能说实话当他们一起留在这里。",
+        "I couldn't imagine the whole family couldn't tell the truth when they stayed here together.",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0522L02",
+      "seed_context": {
+        "known": "我们同意说实话是愚蠢的吧。",
+        "target": "Let's agree that it was stupid to tell the truth."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0522L03": {
+    "lego": [
+      "is stupid",
+      "是愚蠢的"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "let's agree",
+        "我们同意"
+      ],
+      [
+        "tell the truth",
+        "说实话"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "这是愚蠢的。",
+        "This is stupid.",
+        null,
+        1
+      ],
+      [
+        "说实话是愚蠢的。",
+        "Telling the truth is stupid.",
+        null,
+        2
+      ],
+      [
+        "我担心这是愚蠢的。",
+        "I'm afraid this is stupid.",
+        null,
+        2
+      ],
+      [
+        "留在这里是愚蠢的。",
+        "Staying here is stupid.",
+        null,
+        3
+      ],
+      [
+        "我们同意这是愚蠢的。",
+        "Let's agree this is stupid.",
+        null,
+        3
+      ],
+      [
+        "忘记他们的新宝宝是愚蠢的。",
+        "Forgetting their new baby is stupid.",
+        null,
+        4
+      ],
+      [
+        "我无法想象这是愚蠢的决定。",
+        "I couldn't imagine this is a stupid decision.",
+        null,
+        4
+      ],
+      [
+        "第一天就离开是愚蠢的当整个家庭需要留在这里。",
+        "Leaving on the first day is stupid when the whole family needs to stay here.",
+        null,
+        5
+      ],
+      [
+        "我担心你会忘记不说实话是愚蠢的。",
+        "I'm afraid you'll forget not telling the truth is stupid.",
+        null,
+        6
+      ],
+      [
+        "我们同意这可能发生在整个家庭身上是愚蠢的事情。",
+        "Let's agree it might have happened to the whole family is a stupid thing.",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0522L03",
+      "seed_context": {
+        "known": "我们同意说实话是愚蠢的吧。",
+        "target": "Let's agree that it was stupid to tell the truth."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0522L04": {
+    "lego": [
+      "telling the truth is stupid",
+      "说实话是愚蠢的"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "let's agree",
+        "我们同意"
+      ],
+      [
+        "tell the truth",
+        "说实话"
+      ],
+      [
+        "is stupid",
+        "是愚蠢的"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "说实话是愚蠢的。",
+        "Telling the truth is stupid.",
+        null,
+        1
+      ],
+      [
+        "我担心说实话是愚蠢的。",
+        "I'm afraid telling the truth is stupid.",
+        null,
+        2
+      ],
+      [
+        "他们两个都认为说实话是愚蠢的。",
+        "They both think telling the truth is stupid.",
+        null,
+        3
+      ],
+      [
+        "我们同意说实话是愚蠢的。",
+        "Let's agree telling the truth is stupid.",
+        null,
+        3
+      ],
+      [
+        "我无法想象说实话是愚蠢的。",
+        "I couldn't imagine telling the truth is stupid.",
+        null,
+        4
+      ],
+      [
+        "第一天就知道说实话是愚蠢的了。",
+        "We knew on the first day telling the truth is stupid.",
+        null,
+        4
+      ],
+      [
+        "我担心你会忘记说实话是愚蠢的在这种情况下。",
+        "I'm afraid you'll forget telling the truth is stupid in this situation.",
+        null,
+        5
+      ],
+      [
+        "整个家庭都认为说实话是愚蠢的当他们需要留在这里。",
+        "The whole family thinks telling the truth is stupid when they need to stay here.",
+        null,
+        6
+      ],
+      [
+        "我还没见过有人相信说实话是愚蠢的但他们两个都这么认为。",
+        "I haven't seen anyone believe telling the truth is stupid but they both think so.",
+        null,
+        7
+      ],
+      [
+        "我们同意说实话是愚蠢的但这个消息花了几个小时才传到每个人。",
+        "Let's agree telling the truth is stupid but the news took several hours to reach everyone.",
+        null,
+        8
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0522L04",
+      "seed_context": {
+        "known": "我们同意说实话是愚蠢的吧。",
+        "target": "Let's agree that it was stupid to tell the truth."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0522L05": {
+    "lego": [
+      "let's agree that it was stupid to tell the truth",
+      "我们同意说实话是愚蠢的吧"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "let's agree",
+        "我们同意"
+      ],
+      [
+        "tell the truth",
+        "说实话"
+      ],
+      [
+        "is stupid",
+        "是愚蠢的"
+      ],
+      [
+        "telling the truth is stupid",
+        "说实话是愚蠢的"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "我们同意说实话是愚蠢的吧。",
+        "Let's agree that it was stupid to tell the truth.",
+        null,
+        1
+      ],
+      [
+        "我担心我们同意说实话是愚蠢的吧。",
+        "I'm afraid we agree that it was stupid to tell the truth.",
+        null,
+        2
+      ],
+      [
+        "他们两个都同意说实话是愚蠢的吧。",
+        "They both agree that it was stupid to tell the truth.",
+        null,
+        3
+      ],
+      [
+        "第一天我们就同意说实话是愚蠢的吧。",
+        "On the first day we agreed that it was stupid to tell the truth.",
+        null,
+        3
+      ],
+      [
+        "整个家庭都同意说实话是愚蠢的吧。",
+        "The whole family agrees that it was stupid to tell the truth.",
+        null,
+        4
+      ],
+      [
+        "我无法想象我们同意说实话是愚蠢的吧。",
+        "I couldn't imagine we agree that it was stupid to tell the truth.",
+        null,
+        4
+      ],
+      [
+        "你会忘记我们同意说实话是愚蠢的吧当他们离开的时候。",
+        "You'll forget we agreed that it was stupid to tell the truth when they left.",
+        null,
+        5
+      ],
+      [
+        "我担心整个家庭都会同意说实话是愚蠢的吧当他们需要留在这里。",
+        "I'm afraid the whole family will agree that it was stupid to tell the truth when they need to stay here.",
+        null,
+        6
+      ],
+      [
+        "我还没见过他们但我们同意说实话是愚蠢的吧当这个消息传到每个人的时候。",
+        "I haven't seen them yet but we agree that it was stupid to tell the truth when the news reached everyone.",
+        null,
+        8
+      ],
+      [
+        "我们同意说实话是愚蠢的吧。",
+        "Let's agree that it was stupid to tell the truth.",
+        null,
+        1
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 4,
+      "long_6_plus": 2
+    },
+    "_metadata": {
+      "lego_id": "S0522L05",
+      "seed_context": {
+        "known": "我们同意说实话是愚蠢的吧。",
+        "target": "Let's agree that it was stupid to tell the truth."
+      }
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}

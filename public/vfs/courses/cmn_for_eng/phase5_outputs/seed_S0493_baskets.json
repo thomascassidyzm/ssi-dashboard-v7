@@ -1,0 +1,179 @@
+{
+  "S0493L01": {
+    "lego": [
+      "next",
+      "接下来"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "Next",
+        "接下来",
+        null,
+        1
+      ],
+      [
+        "Next, I want",
+        "接下来，我想",
+        null,
+        2
+      ],
+      [
+        "What comes next",
+        "接下来是什么",
+        null,
+        3
+      ],
+      [
+        "Next I want to go",
+        "接下来我想去",
+        null,
+        3
+      ],
+      [
+        "What do you want next",
+        "接下来你想要什么",
+        null,
+        4
+      ],
+      [
+        "Next I want to help you",
+        "接下来我想帮你",
+        null,
+        4
+      ],
+      [
+        "What are you going to do next",
+        "接下来你会做什么",
+        null,
+        5
+      ],
+      [
+        "Next I want to speak with you",
+        "接下来我想和你说话",
+        null,
+        5
+      ],
+      [
+        "What do you want to do next",
+        "接下来你想做什么",
+        null,
+        6
+      ],
+      [
+        "Next I'm going to help you speak better",
+        "接下来我会帮你说得更好",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0493L02": {
+    "lego": [
+      "what's going to happen",
+      "会发生什么"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0493L01",
+        "known": "next",
+        "target": "接下来",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "What's going to happen",
+        "会发生什么",
+        null,
+        1
+      ],
+      [
+        "What's going to happen now",
+        "现在会发生什么",
+        null,
+        2
+      ],
+      [
+        "What's going to happen next",
+        "接下来会发生什么",
+        null,
+        3
+      ],
+      [
+        "What's going to happen today",
+        "今天会发生什么",
+        null,
+        3
+      ],
+      [
+        "What's going to happen after that",
+        "那之后会发生什么",
+        null,
+        4
+      ],
+      [
+        "What do you think will happen",
+        "你觉得会发生什么",
+        null,
+        4
+      ],
+      [
+        "What do you think is going to happen",
+        "你觉得会发生什么",
+        null,
+        5
+      ],
+      [
+        "What's going to happen to me next",
+        "接下来我会发生什么",
+        null,
+        5
+      ],
+      [
+        "What's going to happen after I speak",
+        "我说话之后会发生什么",
+        null,
+        6
+      ],
+      [
+        "What's going to come next?",
+        "接下来会发生什么？",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "会",
+        "will"
+      ],
+      [
+        "发生",
+        "happen"
+      ],
+      [
+        "什么",
+        "what"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "S0519L01": {
+    "lego": ["I haven't seen yet", "我还没见过"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I haven't seen yet", "我还没见过", null, 1],
+      ["I haven't seen it", "我还没见过", null, 2],
+      ["I haven't seen this house", "我还没见过这个房子", null, 3],
+      ["I haven't seen them yet", "我还没见过他们", null, 3],
+      ["I haven't seen the news", "我还没见过这个消息", null, 4],
+      ["But I haven't seen it", "但我还没见过", null, 4],
+      ["I haven't seen the new house yet", "我还没见过新房子", null, 5],
+      ["I haven't seen them together yet", "我还没见过他们一起", null, 5],
+      ["But I haven't seen the perfect house yet", "但我还没见过完美的房子", null, 6],
+      ["I haven't seen them since they left together", "他们一起离开后我还没见过他们", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["我", "I"],
+      ["还", "yet/still"],
+      ["没", "not"],
+      ["见过", "seen"]
+    ]
+  },
+  "S0519L02": {
+    "lego": ["haven't seen yet", "还没见过"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0519L01",
+        "known": "I haven't seen yet",
+        "target": "我还没见过",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Haven't seen yet", "还没见过", null, 1],
+      ["You haven't seen yet", "你还没见过", null, 2],
+      ["I haven't seen this", "我还没见过这个", null, 3],
+      ["They haven't seen it", "他们还没见过", null, 3],
+      ["She hasn't seen the house", "她还没见过房子", null, 4],
+      ["But you haven't seen", "但你还没见过", null, 4],
+      ["They haven't seen the new city", "他们还没见过新城市", null, 5],
+      ["We haven't seen them together yet", "我们还没见过他们一起", null, 5],
+      ["But they haven't seen the perfect house", "但他们还没见过完美的房子", null, 6],
+      ["You haven't seen them since they left", "他们离开后你还没见过他们", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["还", "yet/still"],
+      ["没", "not"],
+      ["见过", "seen"]
+    ]
+  },
+  "S0519L03": {
+    "lego": ["seen", "见过"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0519L01",
+        "known": "I haven't seen yet",
+        "target": "我还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L02",
+        "known": "haven't seen yet",
+        "target": "还没见过",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Seen", "见过", null, 1],
+      ["I've seen this", "我见过这个", null, 2],
+      ["I've seen the house", "我见过房子", null, 3],
+      ["I haven't seen them", "我还没见过他们", null, 3],
+      ["You've seen this problem", "你见过这个问题", null, 4],
+      ["But I've seen it", "但我见过", null, 4],
+      ["I've seen them together before", "我以前见过他们一起", null, 5],
+      ["She's seen the perfect house", "她见过完美的房子", null, 5],
+      ["But I haven't seen the new house yet", "但我还没见过新房子", null, 6],
+      ["I've seen exactly the same problem before", "我以前见过完全相同的问题", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["见", "see/meet"],
+      ["过", "experience marker"]
+    ]
+  },
+  "S0519L04": {
+    "lego": ["their", "他们的"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0519L01",
+        "known": "I haven't seen yet",
+        "target": "我还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L02",
+        "known": "haven't seen yet",
+        "target": "还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L03",
+        "known": "seen",
+        "target": "见过",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Their", "他们的", null, 1],
+      ["Their house", "他们的房子", null, 2],
+      ["I've seen their house", "我见过他们的房子", null, 3],
+      ["This is their problem", "这是他们的问题", null, 3],
+      ["I heard about their news", "我听说了他们的消息", null, 4],
+      ["But their house", "但他们的房子", null, 4],
+      ["I haven't seen their new house", "我还没见过他们的新房子", null, 5],
+      ["This is their perfect place", "这是他们的完美地方", null, 5],
+      ["But I couldn't imagine their problem", "但我无法想象他们的问题", null, 6],
+      ["I haven't seen their new house yet", "我还没见过他们的新房子", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他们", "they"],
+      ["的", "possessive marker"]
+    ]
+  },
+  "S0519L05": {
+    "lego": ["new baby", "新宝宝"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0519L01",
+        "known": "I haven't seen yet",
+        "target": "我还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L02",
+        "known": "haven't seen yet",
+        "target": "还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L03",
+        "known": "seen",
+        "target": "见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L04",
+        "known": "their",
+        "target": "他们的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["New baby", "新宝宝", null, 1],
+      ["A new baby", "新宝宝", null, 2],
+      ["I've seen the baby", "我见过宝宝", null, 3],
+      ["This is a new baby", "这是新宝宝", null, 3],
+      ["I heard about the baby", "我听说了宝宝", null, 4],
+      ["But a new baby", "但新宝宝", null, 4],
+      ["I haven't seen the new baby", "我还没见过新宝宝", null, 5],
+      ["They have a new baby now", "他们现在有新宝宝了", null, 5],
+      ["But I haven't seen the new baby yet", "但我还没见过新宝宝", null, 6],
+      ["I heard they have a new baby now", "我听说他们现在有新宝宝了", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["新", "new"],
+      ["宝宝", "baby"]
+    ]
+  },
+  "S0519L06": {
+    "lego": ["their new baby", "他们的新宝宝"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0519L01",
+        "known": "I haven't seen yet",
+        "target": "我还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L02",
+        "known": "haven't seen yet",
+        "target": "还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L03",
+        "known": "seen",
+        "target": "见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L04",
+        "known": "their",
+        "target": "他们的",
+        "type": "M"
+      },
+      {
+        "id": "S0519L05",
+        "known": "new baby",
+        "target": "新宝宝",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Their new baby", "他们的新宝宝", null, 1],
+      ["I've seen their baby", "我见过他们的宝宝", null, 2],
+      ["This is their new baby", "这是他们的新宝宝", null, 3],
+      ["I haven't seen their baby", "我还没见过他们的宝宝", null, 3],
+      ["I heard about their baby", "我听说了他们的宝宝", null, 4],
+      ["But their new baby", "但他们的新宝宝", null, 4],
+      ["I haven't seen their new baby yet", "我还没见过他们的新宝宝", null, 5],
+      ["I heard they have a new baby", "我听说他们有新宝宝了", null, 5],
+      ["But I haven't seen their new baby yet", "但我还没见过他们的新宝宝", null, 6],
+      ["I couldn't imagine them having a new baby", "我无法想象他们有新宝宝", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["他们的", "their"],
+      ["新", "new"],
+      ["宝宝", "baby"]
+    ]
+  },
+  "S0519L07": {
+    "lego": ["baby", "宝宝"],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0519L01",
+        "known": "I haven't seen yet",
+        "target": "我还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L02",
+        "known": "haven't seen yet",
+        "target": "还没见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L03",
+        "known": "seen",
+        "target": "见过",
+        "type": "M"
+      },
+      {
+        "id": "S0519L04",
+        "known": "their",
+        "target": "他们的",
+        "type": "M"
+      },
+      {
+        "id": "S0519L05",
+        "known": "new baby",
+        "target": "新宝宝",
+        "type": "M"
+      },
+      {
+        "id": "S0519L06",
+        "known": "their new baby",
+        "target": "他们的新宝宝",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Baby", "宝宝", null, 1],
+      ["The baby", "宝宝", null, 2],
+      ["I've seen the baby", "我见过宝宝", null, 3],
+      ["This is their baby", "这是他们的宝宝", null, 3],
+      ["I heard about the baby", "我听说了宝宝", null, 4],
+      ["But the new baby", "但新宝宝", null, 4],
+      ["I haven't seen the baby yet", "我还没见过宝宝", null, 5],
+      ["I heard they have a new baby", "我听说他们有新宝宝", null, 5],
+      ["But I haven't seen their new baby yet", "但我还没见过他们的新宝宝", null, 6],
+      ["I haven't seen their new baby yet.", "我还没见过他们的新宝宝。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}

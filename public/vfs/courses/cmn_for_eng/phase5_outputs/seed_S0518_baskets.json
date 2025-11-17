@@ -1,0 +1,402 @@
+{
+  "S0518L01": {
+    "lego": ["I couldn't imagine", "我无法想象"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I couldn't imagine", "我无法想象", null, 1],
+      ["I couldn't imagine it", "我无法想象它", null, 2],
+      ["I couldn't imagine this news", "我无法想象这个消息", null, 3],
+      ["I couldn't imagine they left", "我无法想象他们离开了", null, 3],
+      ["I couldn't imagine the perfect house", "我无法想象完美的房子", null, 4],
+      ["I couldn't imagine they both left", "我无法想象他们两个都离开了", null, 4],
+      ["I couldn't imagine they left together yesterday", "我无法想象他们昨天一起离开了", null, 5],
+      ["I couldn't imagine we moved to the city", "我无法想象我们搬到了城市", null, 5],
+      ["I couldn't imagine finding the perfect house on the first day", "我无法想象第一天就找到了完美的房子", null, 6],
+      ["But I couldn't imagine they both left together yesterday", "但我无法想象他们两个都昨天一起离开了", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["我", "I"],
+      ["无法", "unable to/cannot"],
+      ["想象", "imagine"]
+    ]
+  },
+  "S0518L02": {
+    "lego": ["couldn't imagine", "无法想象"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0518L01",
+        "known": "I couldn't imagine",
+        "target": "我无法想象",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Couldn't imagine", "无法想象", null, 1],
+      ["You couldn't imagine", "你无法想象", null, 2],
+      ["I couldn't imagine this", "我无法想象这个", null, 3],
+      ["She couldn't imagine it", "她无法想象它", null, 3],
+      ["They couldn't imagine the news", "他们无法想象这个消息", null, 4],
+      ["But I couldn't imagine", "但我无法想象", null, 4],
+      ["You couldn't imagine they left together", "你无法想象他们一起离开了", null, 5],
+      ["She couldn't imagine moving to the city", "她无法想象搬到城市", null, 5],
+      ["They couldn't imagine finding the perfect house", "他们无法想象找到完美的房子", null, 6],
+      ["But we couldn't imagine they left on the first day", "但我们无法想象他们第一天就离开了", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["无法", "unable to/cannot"],
+      ["想象", "imagine"]
+    ]
+  },
+  "S0518L03": {
+    "lego": ["imagine", "想象"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0518L01",
+        "known": "I couldn't imagine",
+        "target": "我无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L02",
+        "known": "couldn't imagine",
+        "target": "无法想象",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Imagine", "想象", null, 1],
+      ["I imagine", "我想象", null, 2],
+      ["I can imagine this", "我能想象这个", null, 3],
+      ["You couldn't imagine it", "你无法想象", null, 3],
+      ["But I can imagine", "但我能想象", null, 4],
+      ["She couldn't imagine they left", "她无法想象他们离开了", null, 4],
+      ["I imagine they moved to the city", "我想象他们搬到了城市", null, 5],
+      ["You couldn't imagine this news yesterday", "你昨天无法想象这个消息", null, 5],
+      ["But I couldn't imagine they left together", "但我无法想象他们一起离开了", null, 6],
+      ["I can imagine finding the perfect house", "我能想象找到完美的房子", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0518L04": {
+    "lego": ["myself", "自己"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0518L01",
+        "known": "I couldn't imagine",
+        "target": "我无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L02",
+        "known": "couldn't imagine",
+        "target": "无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L03",
+        "known": "imagine",
+        "target": "想象",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Myself", "自己", null, 1],
+      ["I came myself", "我自己来了", null, 2],
+      ["I couldn't imagine myself", "我无法想象自己", null, 3],
+      ["I found it myself", "我自己找到了", null, 3],
+      ["They came on their own", "他们是自己来的", null, 4],
+      ["But I came myself", "但我自己来了", null, 4],
+      ["I couldn't imagine myself moving", "我无法想象自己搬家", null, 5],
+      ["I found the house myself yesterday", "我昨天自己找到了房子", null, 5],
+      ["They both came on their own", "他们两个都是自己来的", null, 6],
+      ["But I couldn't imagine myself leaving the city", "但我无法想象自己离开城市", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0518L05": {
+    "lego": ["exactly the same", "完全相同的"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0518L01",
+        "known": "I couldn't imagine",
+        "target": "我无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L02",
+        "known": "couldn't imagine",
+        "target": "无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L03",
+        "known": "imagine",
+        "target": "想象",
+        "type": "A"
+      },
+      {
+        "id": "S0518L04",
+        "known": "myself",
+        "target": "自己",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["Exactly the same", "完全相同的", null, 1],
+      ["The same news", "相同的消息", null, 2],
+      ["I heard the same thing", "我听说了相同的事", null, 3],
+      ["Exactly the same house", "完全相同的房子", null, 3],
+      ["They found the same place", "他们找到了相同的地方", null, 4],
+      ["But exactly the same", "但完全相同的", null, 4],
+      ["I couldn't imagine the same thing", "我无法想象相同的事", null, 5],
+      ["We moved to exactly the same city", "我们搬到了完全相同的城市", null, 5],
+      ["They both came on exactly the same day", "他们两个都在完全相同的一天来了", null, 6],
+      ["But I found exactly the same perfect house", "但我找到了完全相同的完美房子", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["完全", "completely/exactly"],
+      ["相同", "same"],
+      ["的", "attributive marker"]
+    ]
+  },
+  "S0518L06": {
+    "lego": ["the same problem", "相同的问题"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0518L01",
+        "known": "I couldn't imagine",
+        "target": "我无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L02",
+        "known": "couldn't imagine",
+        "target": "无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L03",
+        "known": "imagine",
+        "target": "想象",
+        "type": "A"
+      },
+      {
+        "id": "S0518L04",
+        "known": "myself",
+        "target": "自己",
+        "type": "A"
+      },
+      {
+        "id": "S0518L05",
+        "known": "exactly the same",
+        "target": "完全相同的",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["The same problem", "相同的问题", null, 1],
+      ["I have a problem", "我有问题", null, 2],
+      ["This is the same problem", "这是相同的问题", null, 3],
+      ["I couldn't imagine the problem", "我无法想象这个问题", null, 3],
+      ["You have the same problem", "你有相同的问题", null, 4],
+      ["But the same problem", "但相同的问题", null, 4],
+      ["I heard about the same problem", "我听说了相同的问题", null, 5],
+      ["They both have the same problem", "他们两个都有相同的问题", null, 5],
+      ["I couldn't imagine having the same problem", "我无法想象有相同的问题", null, 6],
+      ["But you couldn't imagine the same problem yesterday", "但你昨天无法想象相同的问题", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["相同", "same"],
+      ["的", "attributive marker"],
+      ["问题", "problem"]
+    ]
+  },
+  "S0518L07": {
+    "lego": ["exactly the same problem", "完全相同的问题"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0518L01",
+        "known": "I couldn't imagine",
+        "target": "我无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L02",
+        "known": "couldn't imagine",
+        "target": "无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L03",
+        "known": "imagine",
+        "target": "想象",
+        "type": "A"
+      },
+      {
+        "id": "S0518L04",
+        "known": "myself",
+        "target": "自己",
+        "type": "A"
+      },
+      {
+        "id": "S0518L05",
+        "known": "exactly the same",
+        "target": "完全相同的",
+        "type": "M"
+      },
+      {
+        "id": "S0518L06",
+        "known": "the same problem",
+        "target": "相同的问题",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Exactly the same problem", "完全相同的问题", null, 1],
+      ["This is exactly the same problem", "这是完全相同的问题", null, 2],
+      ["I have exactly the same problem", "我有完全相同的问题", null, 3],
+      ["I couldn't imagine this problem", "我无法想象这个问题", null, 3],
+      ["They have exactly the same problem", "他们有完全相同的问题", null, 4],
+      ["But exactly the same problem", "但完全相同的问题", null, 4],
+      ["I heard about exactly the same problem", "我听说了完全相同的问题", null, 5],
+      ["I couldn't imagine having the same problem", "我无法想象有相同的问题", null, 5],
+      ["They both have exactly the same problem", "他们两个都有完全相同的问题", null, 6],
+      ["But I couldn't imagine myself having exactly the same problem", "但我无法想象自己有完全相同的问题", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["完全", "completely/exactly"],
+      ["相同", "same"],
+      ["的", "attributive marker"],
+      ["问题", "problem"]
+    ]
+  },
+  "S0518L08": {
+    "lego": ["problem", "问题"],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0518L01",
+        "known": "I couldn't imagine",
+        "target": "我无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L02",
+        "known": "couldn't imagine",
+        "target": "无法想象",
+        "type": "M"
+      },
+      {
+        "id": "S0518L03",
+        "known": "imagine",
+        "target": "想象",
+        "type": "A"
+      },
+      {
+        "id": "S0518L04",
+        "known": "myself",
+        "target": "自己",
+        "type": "A"
+      },
+      {
+        "id": "S0518L05",
+        "known": "exactly the same",
+        "target": "完全相同的",
+        "type": "M"
+      },
+      {
+        "id": "S0518L06",
+        "known": "the same problem",
+        "target": "相同的问题",
+        "type": "M"
+      },
+      {
+        "id": "S0518L07",
+        "known": "exactly the same problem",
+        "target": "完全相同的问题",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Problem", "问题", null, 1],
+      ["This problem", "这个问题", null, 2],
+      ["I have a problem", "我有问题", null, 3],
+      ["This is the problem", "这是问题", null, 3],
+      ["They have this problem", "他们有这个问题", null, 4],
+      ["But this is a problem", "但这是一个问题", null, 4],
+      ["I heard about this problem yesterday", "我昨天听说了这个问题", null, 5],
+      ["They both have exactly the same problem", "他们两个都有完全相同的问题", null, 5],
+      ["But I couldn't imagine myself having this problem", "但我无法想象自己有这个问题", null, 6],
+      ["I couldn't imagine myself having exactly the same problem.", "我无法想象自己有完全相同的问题。", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
