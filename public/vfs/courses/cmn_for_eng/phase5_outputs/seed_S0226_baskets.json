@@ -1,0 +1,325 @@
+{
+  "legos": {
+    "S0226L01": {
+      "lego": [
+        "the man",
+        "那个男人"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "the man",
+          "那个男人",
+          null,
+          1
+        ],
+        [
+          "that man",
+          "那个男人",
+          null,
+          1
+        ],
+        [
+          "the man is learning",
+          "那个男人在学习",
+          null,
+          3
+        ],
+        [
+          "the man wants to help",
+          "那个男人想帮助",
+          null,
+          3
+        ],
+        [
+          "the man watched a film",
+          "那个男人看了一部电影",
+          null,
+          4
+        ],
+        [
+          "the man would give you an answer",
+          "那个男人会给你一个答案",
+          null,
+          5
+        ],
+        [
+          "the man is going to ask you tomorrow",
+          "那个男人明天会问你",
+          null,
+          5
+        ],
+        [
+          "the man just started to learn",
+          "那个男人刚开始学习",
+          null,
+          4
+        ],
+        [
+          "the man watched a bit of television",
+          "那个男人看了一点电视",
+          null,
+          5
+        ],
+        [
+          "the man would help you if he could",
+          "如果那个男人能，他会帮助你",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0226L01",
+        "seed_context": {
+          "known": "The man is trying to help me.",
+          "target": "那个男人想帮助我。"
+        }
+      },
+      "components": [
+        [
+          "那个",
+          "that/the"
+        ],
+        [
+          "男人",
+          "man"
+        ]
+      ]
+    },
+    "S0226L02": {
+      "lego": [
+        "the man is trying to help me",
+        "那个男人想帮助我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0226L01",
+          "known": "the man",
+          "target": "那个男人",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "the man is trying to help me",
+          "那个男人想帮助我",
+          null,
+          1
+        ],
+        [
+          "trying to help me",
+          "想帮助我",
+          null,
+          2
+        ],
+        [
+          "the man is trying to help me learn",
+          "那个男人想帮助我学习",
+          null,
+          4
+        ],
+        [
+          "the man is trying to help me now",
+          "那个男人现在想帮助我",
+          null,
+          3
+        ],
+        [
+          "the man is trying to help me a bit",
+          "那个男人想帮助我一点",
+          null,
+          4
+        ],
+        [
+          "the man is trying to help me tomorrow",
+          "那个男人明天想帮助我",
+          null,
+          4
+        ],
+        [
+          "the man is trying to help me watch television",
+          "那个男人想帮助我看电视",
+          null,
+          5
+        ],
+        [
+          "the man is trying to help me give you an answer",
+          "那个男人想帮助我给你一个答案",
+          null,
+          6
+        ],
+        [
+          "the man is trying to help me relax for a while",
+          "那个男人想帮助我放松一会儿",
+          null,
+          5
+        ],
+        [
+          "the man is trying to help me if he can",
+          "如果他能，那个男人想帮助我",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0226L02",
+        "seed_context": {
+          "known": "The man is trying to help me.",
+          "target": "那个男人想帮助我。"
+        }
+      },
+      "components": [
+        [
+          "那个",
+          "the"
+        ],
+        [
+          "男人",
+          "man"
+        ],
+        [
+          "想",
+          "is trying to"
+        ],
+        [
+          "帮助",
+          "help"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0226L03": {
+      "lego": [
+        "trying to help me",
+        "想帮助我"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0226L01",
+          "known": "the man",
+          "target": "那个男人",
+          "type": "M"
+        },
+        {
+          "id": "S0226L02",
+          "known": "the man is trying to help me",
+          "target": "那个男人想帮助我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "trying to help me",
+          "想帮助我",
+          null,
+          1
+        ],
+        [
+          "trying to help",
+          "想帮助",
+          null,
+          1
+        ],
+        [
+          "trying to help me learn",
+          "想帮助我学习",
+          null,
+          3
+        ],
+        [
+          "trying to help me now",
+          "现在想帮助我",
+          null,
+          2
+        ],
+        [
+          "he's trying to help me watch television",
+          "他想帮助我看电视",
+          null,
+          4
+        ],
+        [
+          "trying to help me give an answer",
+          "想帮助我给一个答案",
+          null,
+          4
+        ],
+        [
+          "he's trying to help me relax for a while",
+          "他想帮助我放松一会儿",
+          null,
+          5
+        ],
+        [
+          "trying to help me if he can",
+          "如果他能就想帮助我",
+          null,
+          4
+        ],
+        [
+          "he's trying to help me learn something new",
+          "他想帮助我学习一些新的东西",
+          null,
+          6
+        ],
+        [
+          "he's trying to help me ask you tomorrow",
+          "他想帮助我明天问你",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0226L03",
+        "seed_context": {
+          "known": "The man is trying to help me.",
+          "target": "那个男人想帮助我。"
+        }
+      },
+      "components": [
+        [
+          "想",
+          "trying to"
+        ],
+        [
+          "帮助",
+          "help"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    }
+  }
+}

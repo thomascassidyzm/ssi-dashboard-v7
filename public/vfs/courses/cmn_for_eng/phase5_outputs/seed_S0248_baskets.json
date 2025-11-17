@@ -1,0 +1,541 @@
+{
+  "legos": {
+    "S0248L02": {
+      "lego": [
+        "that film",
+        "那部电影"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "that film",
+          "那部电影",
+          null,
+          1
+        ],
+        [
+          "I saw that film",
+          "我看了那部电影",
+          null,
+          2
+        ],
+        [
+          "I thought about that film",
+          "我觉得那部电影",
+          null,
+          3
+        ],
+        [
+          "that film was good",
+          "那部电影很好",
+          null,
+          3
+        ],
+        [
+          "I wanted to see that film",
+          "我想看那部电影",
+          null,
+          4
+        ],
+        [
+          "I thought that film was good",
+          "我觉得那部电影很好",
+          null,
+          4
+        ],
+        [
+          "I thought that film was fairly good",
+          "我觉得那部电影相当好",
+          null,
+          5
+        ],
+        [
+          "I wanted her to help me see that film",
+          "我想让她帮我看那部电影",
+          null,
+          7
+        ],
+        [
+          "my mother likes to watch that film",
+          "我妈妈喜欢看那部电影",
+          null,
+          6
+        ],
+        [
+          "I thought that film was too long",
+          "我觉得那部电影太长了",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0248L02",
+        "seed_context": {
+          "known": "I thought the film was complete rubbish and I want my money back.",
+          "target": "我觉得那部电影完全是垃圾，我想要退款。"
+        }
+      },
+      "components": [
+        [
+          "那",
+          "that"
+        ],
+        [
+          "部",
+          "CL:film"
+        ],
+        [
+          "电影",
+          "film"
+        ]
+      ]
+    },
+    "S0248L03": {
+      "lego": [
+        "was complete rubbish",
+        "完全是垃圾"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0248L02",
+          "known": "that film",
+          "target": "那部电影",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "was complete rubbish",
+          "完全是垃圾",
+          null,
+          1
+        ],
+        [
+          "that was complete rubbish",
+          "那完全是垃圾",
+          null,
+          2
+        ],
+        [
+          "I thought was complete rubbish",
+          "我觉得完全是垃圾",
+          null,
+          3
+        ],
+        [
+          "the film was complete rubbish",
+          "那部电影完全是垃圾",
+          null,
+          3
+        ],
+        [
+          "I thought that was complete rubbish",
+          "我觉得那完全是垃圾",
+          null,
+          4
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "我觉得那部电影完全是垃圾",
+          null,
+          4
+        ],
+        [
+          "I thought that film was complete rubbish",
+          "我觉得那部电影完全是垃圾",
+          null,
+          5
+        ],
+        [
+          "I wanted to tell you it was complete rubbish",
+          "我想告诉你它完全是垃圾",
+          null,
+          7
+        ],
+        [
+          "he thought the book was complete rubbish",
+          "他觉得那本书完全是垃圾",
+          null,
+          6
+        ],
+        [
+          "I thought that thing was complete rubbish",
+          "我觉得那个东西完全是垃圾",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0248L03",
+        "seed_context": {
+          "known": "I thought the film was complete rubbish and I want my money back.",
+          "target": "我觉得那部电影完全是垃圾，我想要退款。"
+        }
+      },
+      "components": [
+        [
+          "完全",
+          "completely"
+        ],
+        [
+          "是",
+          "is/was"
+        ],
+        [
+          "垃圾",
+          "rubbish"
+        ]
+      ]
+    },
+    "S0248L04": {
+      "lego": [
+        "completely is",
+        "完全是"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0248L02",
+          "known": "that film",
+          "target": "那部电影",
+          "type": "M"
+        },
+        {
+          "id": "S0248L03",
+          "known": "was complete rubbish",
+          "target": "完全是垃圾",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "completely is",
+          "完全是",
+          null,
+          1
+        ],
+        [
+          "that completely is",
+          "那完全是",
+          null,
+          2
+        ],
+        [
+          "I thought completely is",
+          "我觉得完全是",
+          null,
+          3
+        ],
+        [
+          "it completely is wrong",
+          "它完全是错的",
+          null,
+          3
+        ],
+        [
+          "I thought that completely is",
+          "我觉得那完全是",
+          null,
+          4
+        ],
+        [
+          "that film completely is bad",
+          "那部电影完全是坏的",
+          null,
+          4
+        ],
+        [
+          "I thought that completely is wrong",
+          "我觉得那完全是错的",
+          null,
+          5
+        ],
+        [
+          "I wanted to tell you that completely is",
+          "我想告诉你那完全是",
+          null,
+          6
+        ],
+        [
+          "he thought that completely is rubbish",
+          "他觉得那完全是垃圾",
+          null,
+          6
+        ],
+        [
+          "I thought the same thing completely is",
+          "我觉得同样的东西完全是",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0248L04",
+        "seed_context": {
+          "known": "I thought the film was complete rubbish and I want my money back.",
+          "target": "我觉得那部电影完全是垃圾，我想要退款。"
+        }
+      },
+      "components": [
+        [
+          "完全",
+          "completely"
+        ],
+        [
+          "是",
+          "is"
+        ]
+      ]
+    },
+    "S0248L06": {
+      "lego": [
+        "want",
+        "想要"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0248L02",
+          "known": "that film",
+          "target": "那部电影",
+          "type": "M"
+        },
+        {
+          "id": "S0248L03",
+          "known": "was complete rubbish",
+          "target": "完全是垃圾",
+          "type": "M"
+        },
+        {
+          "id": "S0248L04",
+          "known": "completely is",
+          "target": "完全是",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "want",
+          "想要",
+          null,
+          1
+        ],
+        [
+          "I want",
+          "我想要",
+          null,
+          1
+        ],
+        [
+          "I want more",
+          "我想要更多",
+          null,
+          2
+        ],
+        [
+          "I want to help",
+          "我想要帮助",
+          null,
+          3
+        ],
+        [
+          "I want to help you",
+          "我想要帮助你",
+          null,
+          4
+        ],
+        [
+          "I want more time",
+          "我想要更多时间",
+          null,
+          3
+        ],
+        [
+          "I want to give her more time",
+          "我想要给她更多时间",
+          null,
+          5
+        ],
+        [
+          "I want to tell you something",
+          "我想要告诉你一些东西",
+          null,
+          5
+        ],
+        [
+          "I want to help but I'm too busy",
+          "我想要帮助但我太忙了",
+          null,
+          7
+        ],
+        [
+          "I want to ask for the same thing",
+          "我想要同样的东西",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0248L06",
+        "seed_context": {
+          "known": "I thought the film was complete rubbish and I want my money back.",
+          "target": "我觉得那部电影完全是垃圾，我想要退款。"
+        }
+      },
+      "components": [
+        [
+          "想",
+          "think/want"
+        ],
+        [
+          "要",
+          "want"
+        ]
+      ]
+    },
+    "S0248L07": {
+      "lego": [
+        "refund",
+        "退款"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0248L02",
+          "known": "that film",
+          "target": "那部电影",
+          "type": "M"
+        },
+        {
+          "id": "S0248L03",
+          "known": "was complete rubbish",
+          "target": "完全是垃圾",
+          "type": "M"
+        },
+        {
+          "id": "S0248L04",
+          "known": "completely is",
+          "target": "完全是",
+          "type": "M"
+        },
+        {
+          "id": "S0248L06",
+          "known": "want",
+          "target": "想要",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "refund",
+          "退款",
+          null,
+          1
+        ],
+        [
+          "a refund",
+          "退款",
+          null,
+          1
+        ],
+        [
+          "I want a refund",
+          "我想要退款",
+          null,
+          2
+        ],
+        [
+          "ask for a refund",
+          "要求退款",
+          null,
+          2
+        ],
+        [
+          "I want to ask for a refund",
+          "我想要求退款",
+          null,
+          4
+        ],
+        [
+          "I'm going to ask for a refund",
+          "我会要求退款",
+          null,
+          4
+        ],
+        [
+          "I thought that film was rubbish and I want a refund",
+          "我觉得那部电影是垃圾我想要退款",
+          null,
+          8
+        ],
+        [
+          "I want to give him a refund",
+          "我想要给他退款",
+          null,
+          5
+        ],
+        [
+          "I wanted to tell you to ask for a refund",
+          "我想告诉你要求退款",
+          null,
+          6
+        ],
+        [
+          "he wanted me to help him get a refund",
+          "他想让我帮他得到退款",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0248L07",
+        "seed_context": {
+          "known": "I thought the film was complete rubbish and I want my money back.",
+          "target": "我觉得那部电影完全是垃圾，我想要退款。"
+        }
+      }
+    }
+  }
+}

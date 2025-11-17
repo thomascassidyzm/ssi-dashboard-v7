@@ -1,0 +1,443 @@
+{
+  "legos": {
+    "S0227L01": {
+      "lego": [
+        "that man is going to tell me",
+        "那个男人会告诉我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "that man is going to tell me",
+          "那个男人会告诉我",
+          null,
+          1
+        ],
+        [
+          "going to tell me",
+          "会告诉我",
+          null,
+          2
+        ],
+        [
+          "that man is going to tell me now",
+          "那个男人现在会告诉我",
+          null,
+          3
+        ],
+        [
+          "that man is going to tell me tomorrow",
+          "那个男人明天会告诉我",
+          null,
+          3
+        ],
+        [
+          "that man is going to tell me something",
+          "那个男人会告诉我一些东西",
+          null,
+          4
+        ],
+        [
+          "that man is going to tell me what he wants",
+          "那个男人会告诉我他想要什么",
+          null,
+          5
+        ],
+        [
+          "that man is going to tell me if he can",
+          "如果他能，那个男人会告诉我",
+          null,
+          5
+        ],
+        [
+          "that man is going to tell me something new",
+          "那个男人会告诉我一些新的东西",
+          null,
+          5
+        ],
+        [
+          "that man is going to tell me how to help",
+          "那个男人会告诉我怎么帮助",
+          null,
+          5
+        ],
+        [
+          "that man is going to tell me the answer",
+          "那个男人会告诉我答案",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0227L01",
+        "seed_context": {
+          "known": "That man is going to tell me something new.",
+          "target": "那个男人会告诉我一些新的东西。"
+        }
+      },
+      "components": [
+        [
+          "那个",
+          "that"
+        ],
+        [
+          "男人",
+          "man"
+        ],
+        [
+          "会",
+          "is going to"
+        ],
+        [
+          "告诉",
+          "tell"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0227L02": {
+      "lego": [
+        "is going to tell me",
+        "会告诉我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0227L01",
+          "known": "that man is going to tell me",
+          "target": "那个男人会告诉我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "is going to tell me",
+          "会告诉我",
+          null,
+          1
+        ],
+        [
+          "going to tell me",
+          "会告诉我",
+          null,
+          1
+        ],
+        [
+          "he is going to tell me now",
+          "他现在会告诉我",
+          null,
+          3
+        ],
+        [
+          "is going to tell me something",
+          "会告诉我一些东西",
+          null,
+          3
+        ],
+        [
+          "he is going to tell me tomorrow",
+          "他明天会告诉我",
+          null,
+          3
+        ],
+        [
+          "is going to tell me what he wants",
+          "会告诉我他想要什么",
+          null,
+          4
+        ],
+        [
+          "he is going to tell me something new",
+          "他会告诉我一些新的东西",
+          null,
+          5
+        ],
+        [
+          "is going to tell me if he can",
+          "如果他能会告诉我",
+          null,
+          4
+        ],
+        [
+          "he is going to tell me how to learn",
+          "他会告诉我怎么学习",
+          null,
+          5
+        ],
+        [
+          "is going to tell me the whole thing",
+          "会告诉我整个东西",
+          null,
+          4
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0227L02",
+        "seed_context": {
+          "known": "That man is going to tell me something new.",
+          "target": "那个男人会告诉我一些新的东西。"
+        }
+      },
+      "components": [
+        [
+          "会",
+          "is going to"
+        ],
+        [
+          "告诉",
+          "tell"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0227L03": {
+      "lego": [
+        "something new",
+        "一些新的东西"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0227L01",
+          "known": "that man is going to tell me",
+          "target": "那个男人会告诉我",
+          "type": "M"
+        },
+        {
+          "id": "S0227L02",
+          "known": "is going to tell me",
+          "target": "会告诉我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "something new",
+          "一些新的东西",
+          null,
+          1
+        ],
+        [
+          "new things",
+          "新的东西",
+          null,
+          2
+        ],
+        [
+          "I want something new",
+          "我想一些新的东西",
+          null,
+          3
+        ],
+        [
+          "to learn something new",
+          "学习一些新的东西",
+          null,
+          3
+        ],
+        [
+          "he's going to tell me something new",
+          "他会告诉我一些新的东西",
+          null,
+          4
+        ],
+        [
+          "I'm trying to learn something new",
+          "我在试着学习一些新的东西",
+          null,
+          5
+        ],
+        [
+          "I want to learn something new tomorrow",
+          "我明天想学习一些新的东西",
+          null,
+          5
+        ],
+        [
+          "he's going to show me something new",
+          "他会给我看一些新的东西",
+          null,
+          5
+        ],
+        [
+          "I'm trying to say something new",
+          "我在试着说一些新的东西",
+          null,
+          5
+        ],
+        [
+          "can you tell me something new",
+          "你能告诉我一些新的东西吗",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0227L03",
+        "seed_context": {
+          "known": "That man is going to tell me something new.",
+          "target": "那个男人会告诉我一些新的东西。"
+        }
+      },
+      "components": [
+        [
+          "一些",
+          "some"
+        ],
+        [
+          "新的",
+          "new"
+        ],
+        [
+          "东西",
+          "thing/something"
+        ]
+      ]
+    },
+    "S0227L04": {
+      "lego": [
+        "new thing",
+        "新的东西"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0227L01",
+          "known": "that man is going to tell me",
+          "target": "那个男人会告诉我",
+          "type": "M"
+        },
+        {
+          "id": "S0227L02",
+          "known": "is going to tell me",
+          "target": "会告诉我",
+          "type": "M"
+        },
+        {
+          "id": "S0227L03",
+          "known": "something new",
+          "target": "一些新的东西",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "new thing",
+          "新的东西",
+          null,
+          1
+        ],
+        [
+          "a new thing",
+          "一个新的东西",
+          null,
+          2
+        ],
+        [
+          "I want a new thing",
+          "我想一个新的东西",
+          null,
+          3
+        ],
+        [
+          "to learn a new thing",
+          "学习新的东西",
+          null,
+          3
+        ],
+        [
+          "he's going to tell me a new thing",
+          "他会告诉我新的东西",
+          null,
+          4
+        ],
+        [
+          "I'm trying to learn a new thing",
+          "我在试着学习新的东西",
+          null,
+          4
+        ],
+        [
+          "I want to learn a new thing tomorrow",
+          "我明天想学习新的东西",
+          null,
+          5
+        ],
+        [
+          "can you show me a new thing",
+          "你能给我看新的东西吗",
+          null,
+          5
+        ],
+        [
+          "I'm trying to say a new thing",
+          "我在试着说新的东西",
+          null,
+          5
+        ],
+        [
+          "he would tell me a new thing if he could",
+          "如果他能，他会告诉我新的东西",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0227L04",
+        "seed_context": {
+          "known": "That man is going to tell me something new.",
+          "target": "那个男人会告诉我一些新的东西。"
+        }
+      },
+      "components": [
+        [
+          "新的",
+          "new"
+        ],
+        [
+          "东西",
+          "thing"
+        ]
+      ]
+    }
+  }
+}

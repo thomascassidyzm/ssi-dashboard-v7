@@ -1,0 +1,87 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0237",
+  "generation_stage": "PHRASES_GENERATED",
+  "baskets": [
+    {
+      "lego_id": "S0237L01",
+      "lego": [
+        "he wanted me to",
+        "他想让我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        {
+          "known": "he wanted me to",
+          "target": "他想让我",
+          "lego_count": 1
+        },
+        {
+          "known": "he wanted me to help",
+          "target": "他想让我帮助",
+          "lego_count": 2
+        },
+        {
+          "known": "he wanted me to tell you",
+          "target": "他想让我告诉你",
+          "lego_count": 3
+        },
+        {
+          "known": "that man wanted me to work",
+          "target": "那个男人想让我工作",
+          "lego_count": 3
+        },
+        {
+          "known": "he wanted me to help your sister",
+          "target": "他想让我帮助你妹妹",
+          "lego_count": 4
+        },
+        {
+          "known": "he wanted me to try to help you",
+          "target": "他想让我努力帮助你",
+          "lego_count": 4
+        },
+        {
+          "known": "he wanted me to tell you something before the weekend",
+          "target": "他想让我在周末之前告诉你一些事情",
+          "lego_count": 5
+        },
+        {
+          "known": "that man wanted me to work with your brother",
+          "target": "那个男人想让我和你弟弟一起工作",
+          "lego_count": 5
+        },
+        {
+          "known": "he wanted me to ask that woman for help",
+          "target": "他想让我向那个女人寻求帮助",
+          "lego_count": 5
+        },
+        {
+          "known": "I met someone who wanted me to try to help",
+          "target": "我遇到一个想让我努力帮助的人",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0237L01",
+        "seed_context": {
+          "known": "He wanted me to tell you before the weekend.",
+          "target": "他想让我在周末之前告诉你。"
+        }
+      }
+    }
+  ],
+  "_stats": {
+    "baskets_generated": 1,
+    "total_phrases": 10,
+    "generated_at": "2025-11-17T23:10:45.392Z"
+  }
+}
