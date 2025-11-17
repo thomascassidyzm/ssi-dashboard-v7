@@ -1,0 +1,480 @@
+{
+  "S0215L01": {
+    "lego": [
+      "I went out",
+      "我出去了"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I went out",
+        "我出去了",
+        null,
+        1
+      ],
+      [
+        "I went out at the weekend",
+        "我周末出去了",
+        null,
+        2
+      ],
+      [
+        "I wanted to go out",
+        "我想出去",
+        null,
+        3
+      ],
+      [
+        "I went out to have a good time",
+        "我出去了过得好",
+        null,
+        3
+      ],
+      [
+        "I didn't want to go out at the weekend",
+        "我不想周末出去",
+        null,
+        4
+      ],
+      [
+        "I went out to spend more time as a group",
+        "我出去了花更多的时间作为一个小组",
+        null,
+        4
+      ],
+      [
+        "I've forgotten that I wanted to go out",
+        "我忘记了我想出去",
+        null,
+        5
+      ],
+      [
+        "They think that I went out to have a good time",
+        "他们认为我出去了过得好",
+        null,
+        5
+      ],
+      [
+        "I went out at the weekend to spend more time meeting as a group",
+        "我周末出去了花更多的时间作为一个小组聚会",
+        null,
+        6
+      ],
+      [
+        "They told us that I didn't want to go out to discuss the problem",
+        "他们告诉我们我不想出去讨论这个问题",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "出去",
+        "go out"
+      ],
+      [
+        "了",
+        "aspect particle"
+      ]
+    ]
+  },
+  "S0215L02": {
+    "lego": [
+      "Saturday night",
+      "星期六晚上"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0215L01",
+        "known": "I went out",
+        "target": "我出去了",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Saturday night",
+        "星期六晚上",
+        null,
+        1
+      ],
+      [
+        "I went out on Saturday night",
+        "我星期六晚上出去了",
+        null,
+        2
+      ],
+      [
+        "They wanted to meet on Saturday night",
+        "他们想星期六晚上聚会",
+        null,
+        3
+      ],
+      [
+        "I enjoy Saturday night",
+        "我喜欢星期六晚上",
+        null,
+        3
+      ],
+      [
+        "I wanted to have a good time on Saturday night",
+        "我想星期六晚上过得好",
+        null,
+        4
+      ],
+      [
+        "We need to discuss the problem on Saturday night",
+        "我们需要星期六晚上讨论这个问题",
+        null,
+        4
+      ],
+      [
+        "I went out on Saturday night to spend more time as a group",
+        "我星期六晚上出去了花更多的时间作为一个小组",
+        null,
+        5
+      ],
+      [
+        "They think we need to meet on Saturday night",
+        "他们认为我们需要星期六晚上聚会",
+        null,
+        5
+      ],
+      [
+        "I didn't want to ask you to go out on Saturday night",
+        "我不想问你星期六晚上出去",
+        null,
+        6
+      ],
+      [
+        "They told us they wanted to spend more time meeting on Saturday night",
+        "他们告诉我们他们想花更多的时间星期六晚上聚会",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "星期六",
+        "Saturday"
+      ],
+      [
+        "晚上",
+        "night/evening"
+      ]
+    ]
+  },
+  "S0215L03": {
+    "lego": [
+      "Saturday",
+      "星期六"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0215L01",
+        "known": "I went out",
+        "target": "我出去了",
+        "type": "M"
+      },
+      {
+        "id": "S0215L02",
+        "known": "Saturday night",
+        "target": "星期六晚上",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Saturday",
+        "星期六",
+        null,
+        1
+      ],
+      [
+        "I went out on Saturday",
+        "我星期六出去了",
+        null,
+        2
+      ],
+      [
+        "They wanted to meet on Saturday",
+        "他们想星期六聚会",
+        null,
+        3
+      ],
+      [
+        "I enjoy the chance on Saturday",
+        "我喜欢星期六有机会",
+        null,
+        3
+      ],
+      [
+        "We need to discuss the problem on Saturday",
+        "我们需要星期六讨论这个问题",
+        null,
+        4
+      ],
+      [
+        "I wanted to have a good time on Saturday",
+        "我想星期六过得好",
+        null,
+        4
+      ],
+      [
+        "They think we need to spend more time on Saturday",
+        "他们认为我们需要星期六花更多的时间",
+        null,
+        5
+      ],
+      [
+        "I didn't want to go out on Saturday",
+        "我不想星期六出去",
+        null,
+        5
+      ],
+      [
+        "I went out on Saturday to spend time meeting as a group",
+        "我星期六出去了花时间作为一个小组聚会",
+        null,
+        6
+      ],
+      [
+        "They told us they wanted to ask for help on Saturday",
+        "他们告诉我们他们想星期六寻求帮助",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0215L04": {
+    "lego": [
+      "night",
+      "晚上"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0215L01",
+        "known": "I went out",
+        "target": "我出去了",
+        "type": "M"
+      },
+      {
+        "id": "S0215L02",
+        "known": "Saturday night",
+        "target": "星期六晚上",
+        "type": "M"
+      },
+      {
+        "id": "S0215L03",
+        "known": "Saturday",
+        "target": "星期六",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Night",
+        "晚上",
+        null,
+        1
+      ],
+      [
+        "I went out at night",
+        "我晚上出去了",
+        null,
+        2
+      ],
+      [
+        "They wanted to meet at night",
+        "他们想晚上聚会",
+        null,
+        3
+      ],
+      [
+        "I enjoy the night",
+        "我喜欢晚上",
+        null,
+        3
+      ],
+      [
+        "We need to discuss the problem at night",
+        "我们需要晚上讨论这个问题",
+        null,
+        4
+      ],
+      [
+        "I wanted to have a good time at night",
+        "我想晚上过得好",
+        null,
+        4
+      ],
+      [
+        "They think we need to spend more time at night",
+        "他们认为我们需要晚上花更多的时间",
+        null,
+        5
+      ],
+      [
+        "I didn't want to go out at night at the weekend",
+        "我不想周末晚上出去",
+        null,
+        5
+      ],
+      [
+        "I went out at night to spend more time as a group",
+        "我晚上出去了花更多的时间作为一个小组",
+        null,
+        6
+      ],
+      [
+        "They told us they wanted to ask for help at night on Saturday",
+        "他们告诉我们他们想星期六晚上寻求帮助",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0215L05": {
+    "lego": [
+      "to go out",
+      "出去"
+    ],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0215L01",
+        "known": "I went out",
+        "target": "我出去了",
+        "type": "M"
+      },
+      {
+        "id": "S0215L02",
+        "known": "Saturday night",
+        "target": "星期六晚上",
+        "type": "M"
+      },
+      {
+        "id": "S0215L03",
+        "known": "Saturday",
+        "target": "星期六",
+        "type": "A"
+      },
+      {
+        "id": "S0215L04",
+        "known": "night",
+        "target": "晚上",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "To go out",
+        "出去",
+        null,
+        1
+      ],
+      [
+        "I wanted to go out",
+        "我想出去",
+        null,
+        2
+      ],
+      [
+        "They wanted to go out on Saturday",
+        "他们想星期六出去",
+        null,
+        3
+      ],
+      [
+        "I enjoy to go out at night",
+        "我喜欢晚上出去",
+        null,
+        3
+      ],
+      [
+        "We need to go out to discuss the problem",
+        "我们需要出去讨论这个问题",
+        null,
+        4
+      ],
+      [
+        "I didn't want to go out at the weekend",
+        "我不想周末出去",
+        null,
+        4
+      ],
+      [
+        "They think we need to go out to have a good time",
+        "他们认为我们需要出去过得好",
+        null,
+        5
+      ],
+      [
+        "I wanted to go out on Saturday night to meet as a group",
+        "我想星期六晚上出去作为一个小组聚会",
+        null,
+        5
+      ],
+      [
+        "They told us they wanted to go out to spend more time",
+        "他们告诉我们他们想出去花更多的时间",
+        null,
+        6
+      ],
+      [
+        "We don't know what they're trying to achieve to go out at night",
+        "我们不知道他们想达到什么晚上出去",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  }
+}
