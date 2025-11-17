@@ -1,0 +1,89 @@
+{
+  "legos": {
+    "S0148L04": {
+      "lego": [
+        "patient when",
+        "paciente cuando"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0148L01",
+          "known": "He wasn't very patient",
+          "target": "Él no era muy paciente",
+          "type": "M"
+        },
+        {
+          "id": "S0148L02",
+          "known": "wasn't very patient",
+          "target": "no era muy paciente",
+          "type": "M"
+        },
+        {
+          "id": "S0148L03",
+          "known": "very patient",
+          "target": "muy paciente",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "patient when",
+          "paciente cuando"
+        ],
+        [
+          "He wasn't very patient when",
+          "Él no era muy paciente cuando"
+        ],
+        [
+          "She was very patient when I was here",
+          "Ella era muy paciente cuando estaba aquí"
+        ],
+        [
+          "He was patient when I was learning",
+          "Él era paciente cuando estaba aprendiendo"
+        ],
+        [
+          "He wasn't very patient when I was trying to speak",
+          "Él no era muy paciente cuando estaba intentando hablar"
+        ],
+        [
+          "She was patient when I was learning Spanish",
+          "Ella era paciente cuando estaba aprendiendo español"
+        ],
+        [
+          "He wasn't very patient when I was trying to learn Spanish",
+          "Él no era muy paciente cuando estaba intentando aprender español"
+        ],
+        [
+          "She was very patient when I was speaking with him",
+          "Ella era muy paciente cuando estaba hablando con él"
+        ],
+        [
+          "He wasn't patient when I was trying to speak Spanish here",
+          "Él no era paciente cuando estaba intentando hablar español aquí"
+        ],
+        [
+          "She was very patient when I was learning Spanish with you",
+          "Ella era muy paciente cuando estaba aprendiendo español contigo"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0148L04",
+        "seed_context": {
+          "known": "He wasn't very patient when I couldn't answer.",
+          "target": "Él no era muy paciente cuando no pude responder."
+        }
+      },
+      "components": []
+    }
+  }
+}

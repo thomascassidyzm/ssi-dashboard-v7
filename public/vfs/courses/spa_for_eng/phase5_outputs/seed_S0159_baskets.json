@@ -1,0 +1,86 @@
+{
+  "legos": {
+    "S0159L02": {
+      "lego": [
+        "isn't what",
+        "es lo que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0159L01",
+          "known": "that isn't",
+          "target": "eso no es",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "it's what",
+          "es lo que"
+        ],
+        [
+          "that isn't what",
+          "eso no es lo que"
+        ],
+        [
+          "it's what I want soon",
+          "es lo que quiero pronto"
+        ],
+        [
+          "that isn't what I want",
+          "eso no es lo que quiero"
+        ],
+        [
+          "that isn't what I want soon",
+          "eso no es lo que quiero pronto"
+        ],
+        [
+          "so that isn't what I want",
+          "entonces eso no es lo que quiero"
+        ],
+        [
+          "so that isn't what I want soon",
+          "entonces eso no es lo que quiero pronto"
+        ],
+        [
+          "that isn't what I hope you'll finish soon",
+          "eso no es lo que espero que termines pronto"
+        ],
+        [
+          "so that isn't what I hope you'll finish soon",
+          "entonces eso no es lo que espero que termines pronto"
+        ],
+        [
+          "that isn't what I want now, I don't mind waiting",
+          "eso no es lo que quiero ahora, no me importa esperar"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0159L02",
+        "seed_context": {
+          "known": "That isn't what I'm trying to say.",
+          "target": "Eso no es lo que estoy intentando decir."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "the"
+        ],
+        [
+          "que",
+          "that/what"
+        ]
+      ]
+    }
+  }
+}

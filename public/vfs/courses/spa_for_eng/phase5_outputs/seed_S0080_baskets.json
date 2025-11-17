@@ -1,0 +1,175 @@
+{
+  "legos": {
+    "S0080L01": {
+      "lego": [
+        "I'm not sure when",
+        "No estoy seguro de cuándo"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["No estoy seguro de cuándo", "I'm not sure when", null, 1],
+        ["No estoy seguro", "I'm not sure", null, 2],
+        ["No estoy seguro de cuándo comenzar", "I'm not sure when to start", null, 3],
+        ["No estoy seguro de cuándo aprender", "I'm not sure when to learn", null, 3],
+        ["No estoy seguro de cuándo comenzaste a aprender", "I'm not sure when you started to learn", null, 4],
+        ["No estoy seguro de cuándo tengo más que aprender", "I'm not sure when I've got more to learn", null, 4],
+        ["No estoy seguro de cuándo estoy comenzando a comprender", "I'm not sure when I'm starting to understand", null, 5],
+        ["No estoy seguro de cuándo comprendo lo que dijiste", "I'm not sure when I understand what you said", null, 5],
+        ["No estoy seguro de cuándo estoy muy feliz con cuánto he aprendido", "I'm not sure when I'm very happy with how much I've learnt", null, 6],
+        ["No estoy seguro de cuándo pienso que estás haciendo muy bien", "I'm not sure when I think that you're doing very well", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["no", "not"],
+        ["estoy", "I am"],
+        ["seguro", "sure"],
+        ["de", "of/about"]
+      ]
+    },
+    "S0080L02": {
+      "lego": [
+        "I'm sure",
+        "estoy seguro de"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0080L01",
+          "known": "I'm not sure when",
+          "target": "No estoy seguro de cuándo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Estoy seguro", "I'm sure", null, 1],
+        ["Estoy seguro de eso", "I'm sure about that", null, 2],
+        ["Estoy seguro de cuándo comenzar", "I'm sure when to start", null, 3],
+        ["Estoy seguro de lo que dijiste", "I'm sure about what you said", null, 3],
+        ["Estoy seguro de que tengo más que aprender", "I'm sure that I've got more to learn", null, 4],
+        ["Estoy seguro de que estás haciendo muy bien", "I'm sure that you're doing very well", null, 4],
+        ["Estoy seguro de cuánto he aprendido ya", "I'm sure about how much I've learnt already", null, 5],
+        ["Estoy seguro de que estoy comenzando a comprender", "I'm sure that I'm starting to understand", null, 5],
+        ["Pero estoy seguro de que tienes más que aprender", "But I'm sure that you've got more to learn", null, 6],
+        ["Estoy muy feliz, pero no estoy seguro de cuándo estaré preparado", "I'm very happy, but I'm not sure when I'll be ready", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["estoy", "I am"],
+        ["seguro", "sure"],
+        ["de", "of/about"]
+      ]
+    },
+    "S0080L03": {
+      "lego": [
+        "when I'll be ready",
+        "cuándo estaré preparado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0080L01",
+          "known": "I'm not sure when",
+          "target": "No estoy seguro de cuándo",
+          "type": "M"
+        },
+        {
+          "id": "S0080L02",
+          "known": "I'm sure",
+          "target": "estoy seguro de",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Cuándo estaré preparado", "When I'll be ready", null, 1],
+        ["No estoy seguro de cuándo estaré preparado", "I'm not sure when I'll be ready", null, 2],
+        ["Tienes que comprender cuándo estaré preparado", "You have to understand when I'll be ready", null, 3],
+        ["Pienso que no estoy seguro de cuándo estaré preparado", "I think that I'm not sure when I'll be ready", null, 3],
+        ["No comprendo cuándo estaré preparado para aprender más", "I don't understand when I'll be ready to learn more", null, 4],
+        ["Estoy sorprendido de cuándo estaré preparado para comenzar", "I'm surprised at when I'll be ready to start", null, 4],
+        ["No estoy seguro de cuándo estaré preparado, pero tengo más que aprender", "I'm not sure when I'll be ready, but I've got more to learn", null, 5],
+        ["Muchas gracias por ayudarme a comprender cuándo estaré preparado", "Thank you very much for helping me to understand when I'll be ready", null, 5],
+        ["No comprendo cuándo estaré preparado para comenzar a aprender", "I don't understand when I'll be ready to start to learn", null, 6],
+        ["No estoy seguro de cuándo estaré preparado, pero estoy muy feliz con cuánto he aprendido ya", "I'm not sure when I'll be ready, but I'm very happy with how much I've learnt already", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["cuándo", "when"],
+        ["estaré", "I will be"],
+        ["preparado", "ready/prepared"]
+      ]
+    },
+    "S0080L04": {
+      "lego": [
+        "I'll be ready",
+        "estaré preparado"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0080L01",
+          "known": "I'm not sure when",
+          "target": "No estoy seguro de cuándo",
+          "type": "M"
+        },
+        {
+          "id": "S0080L02",
+          "known": "I'm sure",
+          "target": "estoy seguro de",
+          "type": "M"
+        },
+        {
+          "id": "S0080L03",
+          "known": "when I'll be ready",
+          "target": "cuándo estaré preparado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Estaré preparado", "I'll be ready", null, 1],
+        ["Ya estaré preparado", "I'll be ready already", null, 2],
+        ["Estaré preparado para comenzar a aprender", "I'll be ready to start to learn", null, 3],
+        ["No estoy seguro, pero estaré preparado", "I'm not sure, but I'll be ready", null, 3],
+        ["Estaré preparado cuando tengo más que aprender", "I'll be ready when I've got more to learn", null, 4],
+        ["Pienso que estaré preparado para ayudarme a comprender", "I think that I'll be ready to help me understand", null, 4],
+        ["Estaré preparado cuando estoy comenzando a comprender lo que dijiste", "I'll be ready when I'm starting to understand what you said", null, 5],
+        ["No estoy seguro de cuándo, pero estaré preparado para aprender", "I'm not sure when, but I'll be ready to learn", null, 5],
+        ["Muchas gracias, pero no estoy seguro de cuándo estaré preparado", "Thank you very much, but I'm not sure when I'll be ready", null, 6],
+        ["Estoy muy feliz con cuánto he aprendido, pero no estoy seguro de cuándo estaré preparado", "I'm very happy with how much I've learnt, but I'm not sure when I'll be ready", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["estaré", "I will be"],
+        ["preparado", "ready"]
+      ]
+    }
+  }
+}

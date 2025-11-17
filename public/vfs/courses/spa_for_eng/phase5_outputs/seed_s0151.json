@@ -1,0 +1,36 @@
+{
+  "legos": {
+    "S0151L02": {
+      "lego": ["wasn't what", "era lo que"],
+      "type": "M",
+      "current_seed_legos_available": [["that wasn't", "eso no era"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Wasn't what", "Era lo que", null, 1],
+        ["That wasn't what", "Eso no era lo que", null, 2],
+        ["That wasn't what your name is", "Eso no era lo que es tu nombre", null, 3],
+        ["That wasn't what I wanted", "Eso no era lo que quería", null, 3],
+        ["That wasn't what you can tell me", "Eso no era lo que puedes decirme", null, 4],
+        ["That wasn't what I could answer", "Eso no era lo que pude responder", null, 4],
+        ["That wasn't what seems to be working", "Eso no era lo que parece estar funcionando", null, 5],
+        ["That wasn't what I was hoping", "Eso no era lo que estaba esperando", null, 5],
+        ["That wasn't what I hope you'll finish soon", "Eso no era lo que espero que termines pronto", null, 6],
+        ["That wasn't what we were talking about earlier", "Eso no era lo que estábamos hablando antes", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0151L02",
+        "seed_context": {
+          "known": "Eso no era lo que estaba esperando que pasara.",
+          "target": "That wasn't what I was hoping would happen."
+        }
+      },
+      "components": [[null, null], [null, null]]
+    }
+  }
+}

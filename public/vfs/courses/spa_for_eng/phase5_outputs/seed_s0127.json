@@ -1,0 +1,86 @@
+{
+  "legos": {
+    "S0127L02": {
+      "lego": [
+        "isn't why",
+        "es por qué"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0127L01",
+          "known": "that isn't",
+          "target": "eso no es",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "why",
+          "por qué"
+        ],
+        [
+          "it isn't why",
+          "no es por qué"
+        ],
+        [
+          "that isn't why",
+          "eso no es por qué"
+        ],
+        [
+          "why I feel better",
+          "por qué me siento mejor"
+        ],
+        [
+          "that isn't why I'm better",
+          "eso no es por qué estoy mejor"
+        ],
+        [
+          "it isn't why we talked about it",
+          "no es por qué lo hablamos"
+        ],
+        [
+          "that isn't why I think it's good",
+          "eso no es por qué pienso que es buena"
+        ],
+        [
+          "it isn't why I feel like before",
+          "no es por qué me siento como antes"
+        ],
+        [
+          "why I'm excited about how it's going",
+          "por qué estoy entusiasmado por cómo va"
+        ],
+        [
+          "that isn't why I thought it was a good idea",
+          "eso no es por qué creí que era una buena idea"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0127L02",
+        "seed_context": {
+          "known": "That isn't why I wanted to see you.",
+          "target": "Eso no es por qué quería verte."
+        }
+      },
+      "components": [
+        [
+          "por",
+          "for"
+        ],
+        [
+          "qué",
+          "what/why"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "legos": {
+    "S0158L02": {
+      "lego": [
+        "something else",
+        "algo más"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0158L01",
+          "known": "let's talk about",
+          "target": "hablemos de",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "something else",
+          "algo más"
+        ],
+        [
+          "let's talk about something else",
+          "hablemos de algo más"
+        ],
+        [
+          "let's talk about something else soon",
+          "hablemos de algo más pronto"
+        ],
+        [
+          "let's talk about something else tonight",
+          "hablemos de algo más esta noche"
+        ],
+        [
+          "I hope we talk about something else soon",
+          "espero que hablemos de algo más pronto"
+        ],
+        [
+          "I won't be able to be there, let's talk about something else",
+          "no podré estar ahí, hablemos de algo más"
+        ],
+        [
+          "that wasn't what you wanted, so let's talk about something else",
+          "eso no era lo que querías, entonces hablemos de algo más"
+        ],
+        [
+          "I hope you finish soon, then let's talk about something else",
+          "espero que termines pronto, entonces hablemos de algo más"
+        ],
+        [
+          "I won't be able to be there tonight, let's talk about something else",
+          "no podré estar ahí esta noche, hablemos de algo más"
+        ],
+        [
+          "I don't mind waiting, so let's talk about something else soon",
+          "no me importa esperar, entonces hablemos de algo más pronto"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0158L02",
+        "seed_context": {
+          "known": "Let's talk about something else.",
+          "target": "Hablemos de algo más."
+        }
+      },
+      "components": [
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "más",
+          "more/else"
+        ]
+      ]
+    }
+  }
+}

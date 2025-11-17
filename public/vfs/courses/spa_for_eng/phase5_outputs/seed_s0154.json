@@ -1,0 +1,35 @@
+{
+  "legos": {
+    "S0154L01": {
+      "lego": ["where", "dónde"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Where", "Dónde", null, 1],
+        ["Where you are", "Dónde estás", null, 2],
+        ["Where your name is", "Dónde es tu nombre", null, 2],
+        ["Where I can tell you", "Dónde puedo decirte", null, 3],
+        ["Where you can answer", "Dónde puedes responder", null, 3],
+        ["Where I was hoping", "Dónde estaba esperando", null, 4],
+        ["Where I hope you'll finish", "Dónde espero que termines", null, 4],
+        ["Where we were talking about", "Dónde estábamos hablando", null, 5],
+        ["Where I would have done it differently", "Dónde lo habría hecho diferentemente", null, 5],
+        ["Where that wasn't what I was hoping", "Dónde eso no era lo que estaba esperando", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0154L01",
+        "seed_context": {
+          "known": "¿Dónde quieres encontrarte el sábado por la noche?",
+          "target": "Where do you want to meet on Saturday night?"
+        }
+      }
+    }
+  }
+}

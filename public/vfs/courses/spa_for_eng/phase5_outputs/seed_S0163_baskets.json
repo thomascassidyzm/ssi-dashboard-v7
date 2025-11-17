@@ -1,0 +1,86 @@
+{
+  "legos": {
+    "S0163L02": {
+      "lego": [
+        "I think that it's",
+        "Pienso que es"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0163L01",
+          "known": "I think",
+          "target": "pienso",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I think that it's",
+          "pienso que es"
+        ],
+        [
+          "I think that it's something else",
+          "pienso que es algo más"
+        ],
+        [
+          "I think that it's this word in Spanish",
+          "pienso que es esta palabra en español"
+        ],
+        [
+          "I think that it's something else in Spanish",
+          "pienso que es algo más en español"
+        ],
+        [
+          "I think that it's something else, let's talk about that",
+          "pienso que es algo más, hablemos de eso"
+        ],
+        [
+          "I don't mind waiting, I think that it's something else in Spanish",
+          "no me importa esperar, pienso que es algo más en español"
+        ],
+        [
+          "I think that it's something else, let's talk about that tonight",
+          "pienso que es algo más, hablemos de eso esta noche"
+        ],
+        [
+          "I don't mind waiting a few minutes, I think that it's something else in Spanish",
+          "no me importa esperar unos minutos, pienso que es algo más en español"
+        ],
+        [
+          "I think that it's this word in Spanish, let's talk about that",
+          "pienso que es esta palabra en español, hablemos de eso"
+        ],
+        [
+          "I won't be able to be there tonight, I think that it's something else",
+          "no podré estar ahí esta noche, pienso que es algo más"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0163L02",
+        "seed_context": {
+          "known": "I think that it's interesting.",
+          "target": "Pienso que es interesante."
+        }
+      },
+      "components": [
+        [
+          "pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

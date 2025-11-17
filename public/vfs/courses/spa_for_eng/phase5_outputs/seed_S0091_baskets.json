@@ -1,0 +1,102 @@
+{
+  "legos": {
+    "S0091L04": {
+      "lego": [
+        "enough to answer",
+        "rápido para responder"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0091L01",
+          "known": "it's difficult",
+          "target": "es difícil",
+          "type": "M"
+        },
+        {
+          "id": "S0091L02",
+          "known": "to think",
+          "target": "pensar",
+          "type": "A"
+        },
+        {
+          "id": "S0091L03",
+          "known": "quickly enough",
+          "target": "lo suficientemente rápido",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to answer",
+          "para responder"
+        ],
+        [
+          "quickly, to answer",
+          "rápido, para responder"
+        ],
+        [
+          "It's difficult to answer",
+          "Es difícil para responder"
+        ],
+        [
+          "I'm ready to answer",
+          "Estoy preparado para responder"
+        ],
+        [
+          "I'm not ready to answer",
+          "No estoy preparado para responder"
+        ],
+        [
+          "I think it's difficult to answer",
+          "Pienso que es difícil para responder"
+        ],
+        [
+          "It's difficult to think quickly to answer",
+          "Es difícil pensar rápido para responder"
+        ],
+        [
+          "Unfortunately, it's difficult to answer",
+          "Desafortunadamente, es difícil para responder"
+        ],
+        [
+          "I'm not ready to think quickly to answer",
+          "No estoy preparado para pensar rápido para responder"
+        ],
+        [
+          "It's difficult to think quickly enough to answer",
+          "Es difícil pensar lo suficientemente rápido para responder"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0091L04",
+        "seed_context": {
+          "known": "Es difícil pensar lo suficientemente rápido para responder a tiempo.",
+          "target": "It's difficult to think quickly enough to answer in time."
+        }
+      },
+      "components": [
+        [
+          "rápido",
+          "quick/quickly"
+        ],
+        [
+          "para",
+          "to"
+        ],
+        [
+          "responder",
+          "to answer/respond"
+        ]
+      ]
+    }
+  }
+}

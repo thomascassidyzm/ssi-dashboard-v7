@@ -1,0 +1,79 @@
+{
+  "legos": {
+    "S0132L01": {
+      "lego": [
+        "That's less",
+        "Eso es menos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "that is",
+          "eso es"
+        ],
+        [
+          "is less",
+          "es menos"
+        ],
+        [
+          "that's less",
+          "eso es menos"
+        ],
+        [
+          "that's very good",
+          "eso es muy buena"
+        ],
+        [
+          "that's less of an idea",
+          "eso es menos una idea"
+        ],
+        [
+          "that's a good idea",
+          "eso es una buena idea"
+        ],
+        [
+          "that's less than a good idea",
+          "eso es menos que una buena idea"
+        ],
+        [
+          "that's like a way of work",
+          "eso es como una forma de trabajo"
+        ],
+        [
+          "that's less than what I thought",
+          "eso es menos de lo que creí"
+        ],
+        [
+          "that's why I'm so happy it's going well",
+          "eso es por qué estoy tan feliz que va bien"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0132L01",
+        "seed_context": {
+          "known": "That's less exciting than what she was saying.",
+          "target": "Eso es menos emocionante que lo que decía."
+        }
+      },
+      "components": [
+        [
+          "Eso",
+          "That"
+        ],
+        [
+          "es",
+          "is"
+        ]
+      ]
+    }
+  }
+}

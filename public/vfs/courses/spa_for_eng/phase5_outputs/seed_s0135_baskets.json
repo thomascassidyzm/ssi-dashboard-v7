@@ -1,0 +1,171 @@
+{
+  "legos": {
+    "S0135L01": {
+      "lego": [
+        "I don't know why",
+        "No sé por qué"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I don't know why",
+          "No sé por qué"
+        ],
+        [
+          "I don't know why, I'm sorry",
+          "No sé por qué, lo siento"
+        ],
+        [
+          "I don't know why that isn't a problem",
+          "No sé por qué eso no es un problema"
+        ],
+        [
+          "I don't know why your idea was very good",
+          "No sé por qué tu idea era muy buena"
+        ],
+        [
+          "I don't know why this work is changing",
+          "No sé por qué este trabajo está cambiando"
+        ],
+        [
+          "I don't know why he's my friend",
+          "No sé por qué es mi amigo"
+        ],
+        [
+          "I don't know why there are too many ideas",
+          "No sé por qué hay demasiadas ideas"
+        ],
+        [
+          "I don't know why you get to know someone when you work together",
+          "No sé por qué llegas a conocer a alguien cuando trabajan juntos"
+        ],
+        [
+          "I don't know why it's not a problem when you work with them",
+          "No sé por qué no es un problema cuando trabajas con ellos"
+        ],
+        [
+          "I don't know why there are too many ideas in my head",
+          "No sé por qué hay demasiadas ideas en mi cabeza"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L01",
+        "seed_context": {
+          "known": "No sé por qué piensas que es tan bueno.",
+          "target": "I don't know why you think that it's so good."
+        }
+      },
+      "components": [
+        [
+          "I",
+          "No"
+        ],
+        [
+          "don't know",
+          "sé"
+        ],
+        [
+          "why",
+          "por qué"
+        ]
+      ]
+    },
+    "S0135L03": {
+      "lego": [
+        "know why",
+        "sé por qué"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "know why",
+          "sé por qué"
+        ],
+        [
+          "I don't know why",
+          "No sé por qué"
+        ],
+        [
+          "I know why he's my friend",
+          "Sé por qué es mi amigo"
+        ],
+        [
+          "I know why that was a surprise",
+          "Sé por qué eso fue una sorpresa"
+        ],
+        [
+          "I know why your idea was very good",
+          "Sé por qué tu idea era muy buena"
+        ],
+        [
+          "I know why this work is changing",
+          "Sé por qué este trabajo está cambiando"
+        ],
+        [
+          "I know why you're like someone I used to know",
+          "Sé por qué eres como alguien que conocía"
+        ],
+        [
+          "I know why it's not a problem when you work together",
+          "Sé por qué no es un problema cuando trabajan juntos"
+        ],
+        [
+          "I know why there are too many ideas in my head",
+          "Sé por qué hay demasiadas ideas en mi cabeza"
+        ],
+        [
+          "I know why you get to know someone very well when you work together",
+          "Sé por qué llegas a conocer muy bien a alguien cuando trabajan juntos"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L03",
+        "seed_context": {
+          "known": "No sé por qué piensas que es tan bueno.",
+          "target": "I don't know why you think that it's so good."
+        }
+      },
+      "components": [
+        [
+          "know",
+          "sé"
+        ],
+        [
+          "why",
+          "por qué"
+        ]
+      ]
+    }
+  }
+}

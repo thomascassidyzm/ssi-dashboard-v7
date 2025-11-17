@@ -1,0 +1,36 @@
+{
+  "legos": {
+    "S0152L04": {
+      "lego": ["known what", "sabido lo que"],
+      "type": "M",
+      "current_seed_legos_available": [["I would have done it", "lo habría hecho"], ["differently", "diferentemente"], ["if I had known", "si hubiera sabido"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Known what", "Sabido lo que", null, 1],
+        ["If I had known what", "Si hubiera sabido lo que", null, 2],
+        ["I had known what you wanted", "Hubiera sabido lo que querías", null, 3],
+        ["If I had known what your name is", "Si hubiera sabido lo que es tu nombre", null, 3],
+        ["If I had known what you can tell me", "Si hubiera sabido lo que puedes decirme", null, 4],
+        ["If I had known what seems to be working", "Si hubiera sabido lo que parece estar funcionando", null, 4],
+        ["If I had known what I was hoping would happen", "Si hubiera sabido lo que estaba esperando que pasara", null, 5],
+        ["If I had known what we were talking about earlier", "Si hubiera sabido lo que estábamos hablando antes", null, 5],
+        ["I would have done it differently if I had known what", "Lo habría hecho diferentemente si hubiera sabido lo que", null, 6],
+        ["If I had known what you wanted I would have done it", "Si hubiera sabido lo que querías lo habría hecho", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0152L04",
+        "seed_context": {
+          "known": "Lo habría hecho diferentemente si hubiera sabido lo que querías.",
+          "target": "I would have done it differently if I had known what you wanted."
+        }
+      },
+      "components": [[null, null], [null, null]]
+    }
+  }
+}

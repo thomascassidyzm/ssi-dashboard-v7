@@ -1,0 +1,79 @@
+{
+  "legos": {
+    "S0145L01": {
+      "lego": [
+        "Why are",
+        "¿Por qué no"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Why are",
+          "¿Por qué no"
+        ],
+        [
+          "Why aren't you here?",
+          "¿Por qué no estás aquí?"
+        ],
+        [
+          "Why aren't you working now?",
+          "¿Por qué no estás trabajando ahora?"
+        ],
+        [
+          "Why aren't you learning Spanish?",
+          "¿Por qué no estás aprendiendo español?"
+        ],
+        [
+          "Why aren't you trying to learn?",
+          "¿Por qué no estás intentando aprender?"
+        ],
+        [
+          "Why aren't you speaking with me?",
+          "¿Por qué no estás hablando conmigo?"
+        ],
+        [
+          "Why aren't you trying to speak Spanish?",
+          "¿Por qué no estás intentando hablar español?"
+        ],
+        [
+          "Why aren't you learning Spanish with me now?",
+          "¿Por qué no estás aprendiendo español conmigo ahora?"
+        ],
+        [
+          "Why aren't you trying to speak Spanish now?",
+          "¿Por qué no estás intentando hablar español ahora?"
+        ],
+        [
+          "Why aren't you trying to learn Spanish with me?",
+          "¿Por qué no estás intentando aprender español conmigo?"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0145L01",
+        "seed_context": {
+          "known": "Why are you not happy any more?",
+          "target": "¿Por qué no estás feliz ya?"
+        }
+      },
+      "components": [
+        [
+          "¿Por",
+          "Why"
+        ],
+        [
+          "qué",
+          "(question marker)"
+        ]
+      ]
+    }
+  }
+}

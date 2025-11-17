@@ -1,0 +1,53 @@
+{
+  "legos": {
+    "S0165L02": {
+      "lego": [
+        "But I'm not sure",
+        "Pero no estoy seguro"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0165L01",
+          "known": "but",
+          "target": "pero",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Pero no estoy seguro", "But I'm not sure", null, 1],
+        ["Pero no estoy seguro ahí", "But I'm not sure there", null, 2],
+        ["Pero no estoy seguro esta noche", "But I'm not sure tonight", null, 3],
+        ["Pero no estoy seguro de eso", "But I'm not sure about that", null, 3],
+        ["Pero no estoy seguro mañana por la mañana", "But I'm not sure tomorrow morning", null, 4],
+        ["No estoy seguro, pero puedes darme ese libro", "I'm not sure, but can you give me that book", null, 4],
+        ["Pero no estoy seguro qué piensas de eso", "But I'm not sure what you think about that", null, 5],
+        ["No estoy seguro, pero pienso que es interesante", "I'm not sure, but I think that it's interesting", null, 5],
+        ["Pero no estoy seguro el domingo por la mañana", "But I'm not sure on Sunday morning", null, 5],
+        ["No estoy seguro, pero no podré estar ahí esta noche", "I'm not sure, but I won't be able to be there tonight", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "estoy",
+          "I'm"
+        ],
+        [
+          "seguro",
+          "sure"
+        ]
+      ]
+    }
+  }
+}

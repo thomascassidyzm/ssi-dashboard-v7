@@ -1,0 +1,173 @@
+{
+  "legos": {
+    "S0083L01": {
+      "lego": [
+        "I agree",
+        "estoy de acuerdo"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Estoy de acuerdo", "I agree", null, 1],
+        ["No estoy de acuerdo", "I don't agree", null, 2],
+        ["Estoy de acuerdo contigo ahora", "I agree with you now", null, 3],
+        ["Pienso que estoy de acuerdo", "I think that I agree", null, 3],
+        ["No estoy de acuerdo, pero tengo más que aprender", "I don't agree, but I've got more to learn", null, 4],
+        ["Estoy de acuerdo con cuánto he aprendido ya", "I agree with how much I've learnt already", null, 4],
+        ["No estoy seguro, pero pienso que estoy de acuerdo", "I'm not sure, but I think that I agree", null, 5],
+        ["Estoy muy feliz de que estoy de acuerdo contigo", "I'm very happy that I agree with you", null, 5],
+        ["No estoy de acuerdo con lo que dijiste sobre aprender español", "I don't agree with what you said about learning Spanish", null, 6],
+        ["Muchas gracias por ayudarme a comprender, estoy de acuerdo contigo ahora", "Thank you very much for helping me to understand, I agree with you now", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["estoy", "I am"],
+        ["de acuerdo", "in agreement"]
+      ]
+    },
+    "S0083L02": {
+      "lego": [
+        "I agree with",
+        "estoy de acuerdo con"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0083L01",
+          "known": "I agree",
+          "target": "estoy de acuerdo",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Estoy de acuerdo con eso", "I agree with that", null, 1],
+        ["No estoy de acuerdo contigo", "I don't agree with you", null, 2],
+        ["Estoy de acuerdo con lo que dijiste", "I agree with what you said", null, 3],
+        ["Pienso que estoy de acuerdo con eso", "I think that I agree with that", null, 3],
+        ["No estoy seguro, pero estoy de acuerdo contigo", "I'm not sure, but I agree with you", null, 4],
+        ["Estoy de acuerdo con cuándo quieres comenzar ahora", "I agree with when you want to start now", null, 4],
+        ["Muchas gracias, estoy de acuerdo con lo que dijiste sobre aprender", "Thank you very much, I agree with what you said about learning", null, 5],
+        ["No estoy de acuerdo con cuándo estaré preparado para comenzar", "I don't agree with when I'll be ready to start", null, 5],
+        ["Estoy muy feliz de que estoy de acuerdo con lo que dijiste", "I'm very happy that I agree with what you said", null, 6],
+        ["No estoy seguro de cuándo, pero estoy de acuerdo con lo que dijiste sobre comenzar a aprender", "I'm not sure when, but I agree with what you said about starting to learn", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["estoy", "I am"],
+        ["de acuerdo", "in agreement"],
+        ["con", "with"]
+      ]
+    },
+    "S0083L03": {
+      "lego": [
+        "with what you said",
+        "con lo que dijiste"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0083L01",
+          "known": "I agree",
+          "target": "estoy de acuerdo",
+          "type": "M"
+        },
+        {
+          "id": "S0083L02",
+          "known": "I agree with",
+          "target": "estoy de acuerdo con",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Con lo que dijiste", "With what you said", null, 1],
+        ["Estoy de acuerdo con lo que dijiste", "I agree with what you said", null, 2],
+        ["No comprendo con lo que dijiste ahora", "I don't understand with what you said now", null, 3],
+        ["Estoy muy feliz con lo que dijiste", "I'm very happy with what you said", null, 3],
+        ["No estoy seguro con lo que dijiste sobre comenzar", "I'm not sure with what you said about starting", null, 4],
+        ["Pienso que estoy de acuerdo con lo que dijiste", "I think that I agree with what you said", null, 4],
+        ["Muchas gracias por ayudarme a comprender con lo que dijiste", "Thank you very much for helping me to understand with what you said", null, 5],
+        ["No estoy de acuerdo con lo que dijiste sobre cuándo estaré preparado", "I don't agree with what you said about when I'll be ready", null, 5],
+        ["Estoy sorprendido de que no comprendo con lo que dijiste sobre aprender español", "I'm surprised that I don't understand with what you said about learning Spanish", null, 6],
+        ["No estoy seguro de cuándo quieres comenzar, pero estoy de acuerdo con lo que dijiste", "I'm not sure when you want to start, but I agree with what you said", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["lo que", "what"],
+        ["dijiste", "you said"]
+      ]
+    },
+    "S0083L04": {
+      "lego": [
+        "about your friend",
+        "sobre tu amigo"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0083L01",
+          "known": "I agree",
+          "target": "estoy de acuerdo",
+          "type": "M"
+        },
+        {
+          "id": "S0083L02",
+          "known": "I agree with",
+          "target": "estoy de acuerdo con",
+          "type": "M"
+        },
+        {
+          "id": "S0083L03",
+          "known": "with what you said",
+          "target": "con lo que dijiste",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Sobre tu amigo", "About your friend", null, 1],
+        ["Lo que dijiste sobre tu amigo", "What you said about your friend", null, 2],
+        ["Estoy de acuerdo con lo que dijiste sobre tu amigo", "I agree with what you said about your friend", null, 3],
+        ["No comprendo lo que dijiste sobre tu amigo", "I don't understand what you said about your friend", null, 3],
+        ["Pienso que estoy de acuerdo sobre tu amigo ahora", "I think that I agree about your friend now", null, 4],
+        ["Muchas gracias por lo que dijiste sobre tu amigo", "Thank you very much for what you said about your friend", null, 4],
+        ["No estoy seguro de lo que dijiste sobre tu amigo y aprender español", "I'm not sure about what you said about your friend and learning Spanish", null, 5],
+        ["Estoy muy feliz con lo que dijiste sobre tu amigo", "I'm very happy with what you said about your friend", null, 5],
+        ["No comprendo lo que dijiste sobre tu amigo, pero tengo más que aprender", "I don't understand what you said about your friend, but I've got more to learn", null, 6],
+        ["Estoy de acuerdo con lo que dijiste sobre tu amigo, pero no estoy seguro de cuándo quieres comenzar a aprender", "I agree with what you said about your friend, but I'm not sure when you want to start to learn", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["sobre", "about"],
+        ["tu", "your"],
+        ["amigo", "friend"]
+      ]
+    }
+  }
+}

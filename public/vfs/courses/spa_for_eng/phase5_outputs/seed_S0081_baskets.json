@@ -1,0 +1,71 @@
+{
+  "legos": {
+    "S0081L02": {
+      "lego": [
+        "do you want to start",
+        "quieres comenzar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Quieres comenzar", "You want to start", null, 1],
+        ["¿Quieres comenzar ahora?", "Do you want to start now?", null, 2],
+        ["Quieres comenzar a aprender español", "You want to start to learn Spanish", null, 3],
+        ["¿Quieres comenzar a comprender la verdad?", "Do you want to start to understand the truth?", null, 3],
+        ["No estoy seguro de que quieres comenzar", "I'm not sure that you want to start", null, 4],
+        ["Pienso que quieres comenzar a aprender más", "I think that you want to start to learn more", null, 4],
+        ["¿Quieres comenzar a ayudarme a comprender lo que dijiste?", "Do you want to start to help me to understand what you said?", null, 5],
+        ["Estoy muy feliz de que quieres comenzar ahora", "I'm very happy that you want to start now", null, 5],
+        ["No comprendo por qué no quieres comenzar a aprender", "I don't understand why you don't want to start to learn", null, 6],
+        ["Pienso que quieres comenzar, pero no estoy seguro de cuándo estaré preparado", "I think that you want to start, but I'm not sure when I'll be ready", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["quieres", "do you want"],
+        ["comenzar", "to start"]
+      ]
+    },
+    "S0081L03": {
+      "lego": [
+        "when do you want to start",
+        "cuándo quieres comenzar"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0081L02",
+          "known": "do you want to start",
+          "target": "quieres comenzar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["¿Cuándo quieres comenzar?", "When do you want to start?", null, 1],
+        ["No estoy seguro de cuándo quieres comenzar", "I'm not sure when you want to start", null, 2],
+        ["¿Cuándo quieres comenzar a aprender español?", "When do you want to start to learn Spanish?", null, 3],
+        ["No comprendo cuándo quieres comenzar a aprender", "I don't understand when you want to start to learn", null, 3],
+        ["Pienso que no estoy seguro de cuándo quieres comenzar", "I think that I'm not sure when you want to start", null, 4],
+        ["Muchas gracias por decirme cuándo quieres comenzar a aprender", "Thank you very much for telling me when you want to start to learn", null, 4],
+        ["No estoy seguro de cuándo quieres comenzar, pero estaré preparado", "I'm not sure when you want to start, but I'll be ready", null, 5],
+        ["¿Cuándo quieres comenzar a ayudarme a comprender lo que dijiste?", "When do you want to start to help me to understand what you said?", null, 5],
+        ["No comprendo cuándo quieres comenzar, pero tengo más que aprender", "I don't understand when you want to start, but I've got more to learn", null, 6],
+        ["Estoy sorprendido de cuándo quieres comenzar, pero estoy muy feliz con cuánto he aprendido ya", "I'm surprised at when you want to start, but I'm very happy with how much I've learnt already", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

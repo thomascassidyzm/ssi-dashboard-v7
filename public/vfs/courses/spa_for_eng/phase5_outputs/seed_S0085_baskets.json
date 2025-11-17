@@ -1,0 +1,87 @@
+{
+  "legos": {
+    "S0085L01": {
+      "lego": [
+        "I don't know those",
+        "No conozco a esas"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I don't know those",
+          "No conozco a esas"
+        ],
+        [
+          "I don't know",
+          "No conozco"
+        ],
+        [
+          "I'm not sure about those",
+          "No estoy seguro de esas"
+        ],
+        [
+          "I'm surprised about those",
+          "Estoy sorprendido de esas"
+        ],
+        [
+          "I'm not ready, I don't know those",
+          "No estoy preparado, no conozco a esas"
+        ],
+        [
+          "When? I don't know those",
+          "¿Cuándo? No conozco a esas"
+        ],
+        [
+          "I'm very happy, I don't know those",
+          "Estoy muy feliz, no conozco a esas"
+        ],
+        [
+          "I don't understand, I don't know those",
+          "No comprendo, no conozco a esas"
+        ],
+        [
+          "I agree, I don't know those",
+          "Estoy de acuerdo, no conozco a esas"
+        ],
+        [
+          "I'm starting to understand, I don't know those",
+          "Estoy comenzando a comprender, no conozco a esas"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0085L01",
+        "seed_context": {
+          "known": "No conozco a esas personas.",
+          "target": "I don't know those people."
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "conozco",
+          "I know"
+        ],
+        [
+          "a",
+          "personal a"
+        ],
+        [
+          "esas",
+          "those"
+        ]
+      ]
+    }
+  }
+}

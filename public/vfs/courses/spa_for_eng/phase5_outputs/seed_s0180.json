@@ -1,0 +1,71 @@
+{
+  "legos": {
+    "S0180L05": {
+      "lego": [
+        "for a while",
+        "por un rato"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0180L01",
+          "known": "I'd like",
+          "target": "me gustaría",
+          "type": "M"
+        },
+        {
+          "id": "S0180L02",
+          "known": "I'd like to read",
+          "target": "me gustaría leer",
+          "type": "M"
+        },
+        {
+          "id": "S0180L03",
+          "known": "to read my book",
+          "target": "leer mi libro",
+          "type": "M"
+        },
+        {
+          "id": "S0180L04",
+          "known": "my book",
+          "target": "mi libro",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["por un rato", "for a while", null, 1],
+        ["me gustaría por un rato", "I'd like for a while", null, 2],
+        ["me gustaría leer por un rato", "I'd like to read for a while", null, 3],
+        ["quieres hacer por un rato", "you want to do for a while", null, 3],
+        ["me gustaría leer mi libro por un rato", "I'd like to read my book for a while", null, 4],
+        ["qué quieres hacer por un rato", "what do you want to do for a while", null, 4],
+        ["me gustaría verte por un rato el domingo", "I'd like to see you for a while on Sunday", null, 5],
+        ["no tuve tiempo por un rato por la mañana", "I didn't have time for a while in the morning", null, 5],
+        ["me gustaría leer mi libro por un rato por la tarde", "I'd like to read my book for a while in the afternoon", null, 6],
+        ["Me gustaría leer mi libro por un rato.", "I'd like to read my book for a while.", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "por",
+          "for"
+        ],
+        [
+          "un",
+          "a"
+        ],
+        [
+          "rato",
+          "while"
+        ]
+      ]
+    }
+  }
+}

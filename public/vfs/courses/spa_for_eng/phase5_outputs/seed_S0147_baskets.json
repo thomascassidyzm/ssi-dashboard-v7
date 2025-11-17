@@ -1,0 +1,89 @@
+{
+  "legos": {
+    "S0147L04": {
+      "lego": [
+        "kind when",
+        "amable cuando"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0147L01",
+          "known": "She was very kind",
+          "target": "Ella era muy amable",
+          "type": "M"
+        },
+        {
+          "id": "S0147L02",
+          "known": "was very kind",
+          "target": "era muy amable",
+          "type": "M"
+        },
+        {
+          "id": "S0147L03",
+          "known": "very kind",
+          "target": "muy amable",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "kind when",
+          "amable cuando"
+        ],
+        [
+          "She was very kind when",
+          "Ella era muy amable cuando"
+        ],
+        [
+          "She was very kind when I was here",
+          "Ella era muy amable cuando estaba aquí"
+        ],
+        [
+          "He was kind when I was learning",
+          "Él era amable cuando estaba aprendiendo"
+        ],
+        [
+          "She was very kind when I was trying to speak",
+          "Ella era muy amable cuando estaba intentando hablar"
+        ],
+        [
+          "He was kind when I was learning Spanish",
+          "Él era amable cuando estaba aprendiendo español"
+        ],
+        [
+          "She was very kind when I was trying to learn Spanish",
+          "Ella era muy amable cuando estaba intentando aprender español"
+        ],
+        [
+          "He was very kind when I was speaking with her",
+          "Él era muy amable cuando estaba hablando con ella"
+        ],
+        [
+          "She was kind when I was trying to speak Spanish here",
+          "Ella era amable cuando estaba intentando hablar español aquí"
+        ],
+        [
+          "She was very kind when I was learning Spanish with you",
+          "Ella era muy amable cuando estaba aprendiendo español contigo"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0147L04",
+        "seed_context": {
+          "known": "She was very kind when she saw me feeling nervous.",
+          "target": "Ella era muy amable cuando me vio sintiéndome nervioso."
+        }
+      },
+      "components": []
+    }
+  }
+}

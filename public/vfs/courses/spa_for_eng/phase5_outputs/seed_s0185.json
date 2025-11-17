@@ -1,0 +1,42 @@
+{
+  "legos": {
+    "S0185L01": {
+      "lego": [
+        "I think you",
+        "Creo que las"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Creo que las vi", "I think I saw them", null, 1],
+        ["Creo que las vi por la mañana", "I think I saw them in the morning", null, 2],
+        ["Creo que las vi en la oficina", "I think I saw them in the office", null, 3],
+        ["Creo que las vi hace un rato", "I think I saw them a while ago", null, 3],
+        ["Creo que las vi en la oficina por la tarde", "I think I saw them in the office in the afternoon", null, 4],
+        ["Creo que las vi en la oficina hace un rato", "I think I saw them in the office a while ago", null, 4],
+        ["Sí, creo que las vi en la oficina por la mañana", "Yes, I think I saw them in the office in the morning", null, 5],
+        ["Creo que las vi en algún lugar por la tarde", "I think I saw them somewhere in the afternoon", null, 5],
+        ["Creo que las vi en la oficina el domingo por la mañana", "I think I saw them in the office on Sunday morning", null, 6],
+        ["Sí, creo que las vi en la oficina hace un rato", "Yes, I think I saw them in the office a while ago", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "Creo",
+          "I think/believe"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "legos": {
+    "S0089L01": {
+      "lego": [
+        "I think that I've",
+        "Pienso que he"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I think that I've",
+          "Pienso que he"
+        ],
+        [
+          "I think",
+          "Pienso"
+        ],
+        [
+          "I think I'm ready",
+          "Pienso que estoy preparado"
+        ],
+        [
+          "I think it wasn't possible",
+          "Pienso que no fue posible"
+        ],
+        [
+          "I think I'm not ready to speak",
+          "Pienso que no estoy preparado para hablar"
+        ],
+        [
+          "I think I'm ready to start",
+          "Pienso que estoy preparado para comenzar"
+        ],
+        [
+          "I think I don't know those people",
+          "Pienso que no conozco a esas personas"
+        ],
+        [
+          "I think I agree with your friend",
+          "Pienso que estoy de acuerdo con tu amigo"
+        ],
+        [
+          "When do you want to start? I think I'm ready",
+          "¿Cuándo quieres comenzar? Pienso que estoy preparado"
+        ],
+        [
+          "Unfortunately, I think it wasn't possible",
+          "Desafortunadamente, pienso que no fue posible"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0089L01",
+        "seed_context": {
+          "known": "Pienso que he hecho mucho en un breve tiempo.",
+          "target": "I think that I've done a lot in a short time."
+        }
+      },
+      "components": [
+        [
+          "pienso",
+          "I think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "he",
+          "I've/I have"
+        ]
+      ]
+    }
+  }
+}
