@@ -1,0 +1,211 @@
+{
+  "legos": {
+    "S0015L01": {
+      "lego": ["and", "而且"],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["and", "而且", null, 1],
+        ["and I want", "而且我想", null, 2],
+        ["and I want to speak", "而且我想说话", null, 3],
+        ["and I can speak Chinese", "而且我会说中文", null, 3],
+        ["and I'd like to speak Chinese", "而且我想说中文", null, 4],
+        ["and I'm trying to remember a word", "而且我在试着记住一个词", null, 4],
+        ["and I can speak a little Chinese now", "而且我现在会说一点中文", null, 5],
+        ["and I'd like to be able to speak", "而且我想能够说话", null, 5],
+        ["and tomorrow I'd like to speak with someone else", "而且明天我想和别人说话", null, 6],
+        ["and I'm not sure what's going to happen tomorrow", "而且我不确定明天会发生什么", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0015L02": {
+      "lego": ["I want", "我想要"],
+      "type": "M",
+      "current_seed_legos_available": [["and", "而且"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I want", "我想要", null, 1],
+        ["I want to speak", "我想要说话", null, 2],
+        ["I want to speak Chinese", "我想要说中文", null, 3],
+        ["I want to remember a word", "我想要记住一个词", null, 3],
+        ["I want to speak with someone else", "我想要和别人说话", null, 4],
+        ["I want to be able to speak", "我想要能够说话", null, 4],
+        ["and I want to speak Chinese tomorrow", "而且我想要明天说中文", null, 5],
+        ["I want to speak a little Chinese now", "我想要现在说一点中文", null, 5],
+        ["I want to be able to speak after you finish", "我想要能够在你说完之后说话", null, 6],
+        ["and I want to remember the whole sentence tomorrow", "而且我想要明天记住整个句子", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["我", "I"], ["想要", "want"]]
+    },
+    "S0015L03": {
+      "lego": ["want you to", "想要你"],
+      "type": "M",
+      "current_seed_legos_available": [["and", "而且"], ["I want", "我想要"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["want you to", "想要你", null, 1],
+        ["I want you to speak", "我想要你说话", null, 2],
+        ["I want you to speak Chinese", "我想要你说中文", null, 3],
+        ["I want you to remember this", "我想要你记住这个", null, 3],
+        ["I want you to speak with me", "我想要你和我说话", null, 4],
+        ["I want you to speak Chinese tomorrow", "我想要你明天说中文", null, 4],
+        ["and I want you to be able to speak", "而且我想要你能够说话", null, 5],
+        ["I want you to speak a little Chinese now", "我想要你现在说一点中文", null, 5],
+        ["I want you to be able to speak after finishing", "我想要你能够说完之后说话", null, 6],
+        ["and I want you to remember the whole sentence tomorrow", "而且我想要你明天记住整个句子", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["想要", "want"], ["你", "you to"]]
+    },
+    "S0015L05": {
+      "lego": ["with me", "和我"],
+      "type": "M",
+      "current_seed_legos_available": [["and", "而且"], ["I want", "我想要"], ["want you to", "想要你"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["with me", "和我", null, 1],
+        ["speak with me", "和我说话", null, 2],
+        ["to speak Chinese with me", "和我说中文", null, 3],
+        ["I want to speak with me", "我想和我说话", null, 3],
+        ["can you speak Chinese with me", "你会和我说中文", null, 4],
+        ["I want you to speak with me", "我想要你和我说话", null, 4],
+        ["and I'd like to speak Chinese with me", "而且我想和我说中文", null, 5],
+        ["can you speak Chinese with me tomorrow", "你明天会和我说中文", null, 5],
+        ["I want you to be able to speak with me", "我想要你能够和我说话", null, 6],
+        ["and I want you to speak a little Chinese with me", "而且我想要你和我说一点中文", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["和", "with"], ["我", "me"]]
+    },
+    "S0015L07": {
+      "lego": ["to speak Chinese with me", "和我说中文"],
+      "type": "M",
+      "current_seed_legos_available": [["and", "而且"], ["I want", "我想要"], ["want you to", "想要你"], ["with me", "和我"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to speak Chinese with me", "和我说中文", null, 1],
+        ["can speak Chinese with me", "会和我说中文", null, 2],
+        ["I want to speak Chinese with me", "我想和我说中文", null, 3],
+        ["you can speak Chinese with me", "你会和我说中文", null, 3],
+        ["I'd like to speak Chinese with me now", "我现在想和我说中文", null, 4],
+        ["I want you to speak Chinese with me", "我想要你和我说中文", null, 4],
+        ["and I'd like to be able to speak Chinese with me", "而且我想能够和我说中文", null, 5],
+        ["can you speak Chinese with me after you finish", "你说完之后会和我说中文", null, 5],
+        ["I'm not sure if you can speak Chinese with me tomorrow", "我不确定你明天能不能和我说中文", null, 6],
+        ["and I want you to be able to speak Chinese with me", "而且我想要你能够和我说中文", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+    },
+    "S0015L08": {
+      "lego": ["to speak Chinese with me tomorrow", "明天和我说中文"],
+      "type": "M",
+      "current_seed_legos_available": [["and", "而且"], ["I want", "我想要"], ["want you to", "想要你"], ["with me", "和我"], ["to speak Chinese with me", "和我说中文"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["to speak Chinese with me tomorrow", "明天和我说中文", null, 1],
+        ["can speak Chinese with me tomorrow", "明天会和我说中文", null, 2],
+        ["I want to speak Chinese with me tomorrow", "我想明天和我说中文", null, 3],
+        ["you can speak Chinese with me tomorrow", "你明天会和我说中文", null, 3],
+        ["I'd like to speak Chinese with me tomorrow now", "我现在想明天和我说中文", null, 4],
+        ["I want you to speak Chinese with me tomorrow", "我想要你明天和我说中文", null, 4],
+        ["and I'd like to be able to speak Chinese with me tomorrow", "而且我想能够明天和我说中文", null, 5],
+        ["I'm not sure if you can speak Chinese with me tomorrow", "我不确定你能不能明天和我说中文", null, 5],
+        ["after you finish can you speak Chinese with me tomorrow", "在你说完之后你能明天和我说中文", null, 6],
+        ["and I want you to be able to speak Chinese with me tomorrow", "而且我想要你能够明天和我说中文", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["明天", "tomorrow"], ["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+    },
+    "S0015L09": {
+      "lego": ["you speak Chinese with me tomorrow", "你明天和我说中文"],
+      "type": "M",
+      "current_seed_legos_available": [["and", "而且"], ["I want", "我想要"], ["want you to", "想要你"], ["with me", "和我"], ["to speak Chinese with me", "和我说中文"], ["to speak Chinese with me tomorrow", "明天和我说中文"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["you speak Chinese with me tomorrow", "你明天和我说中文", null, 1],
+        ["can you speak Chinese with me tomorrow", "你明天会和我说中文", null, 2],
+        ["I think you speak Chinese with me tomorrow", "我想你明天和我说中文", null, 3],
+        ["I want you speak Chinese with me tomorrow", "我想要你明天和我说中文", null, 3],
+        ["I'm not sure you speak Chinese with me tomorrow", "我不确定你明天和我说中文", null, 4],
+        ["and you speak Chinese with me tomorrow now", "而且你现在明天和我说中文", null, 4],
+        ["I'd like you to be able to speak Chinese with me tomorrow", "我想你能够明天和我说中文", null, 5],
+        ["after you finish you speak Chinese with me tomorrow", "在你说完之后你明天和我说中文", null, 5],
+        ["I'm not sure if you can or can't speak Chinese with me tomorrow", "我不确定你能不能明天和我说中文", null, 6],
+        ["and I want you to be able to speak Chinese with me tomorrow", "而且我想要你能够明天和我说中文", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["你", "you"], ["明天", "tomorrow"], ["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+    },
+    "S0015L10": {
+      "lego": ["I want you to speak Chinese with me tomorrow", "我想要你明天和我说中文"],
+      "type": "M",
+      "current_seed_legos_available": [["and", "而且"], ["I want", "我想要"], ["want you to", "想要你"], ["with me", "和我"], ["to speak Chinese with me", "和我说中文"], ["to speak Chinese with me tomorrow", "明天和我说中文"], ["you speak Chinese with me tomorrow", "你明天和我说中文"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["I want you to speak Chinese with me tomorrow", "我想要你明天和我说中文", null, 1],
+        ["and I want you to speak Chinese with me tomorrow", "而且我想要你明天和我说中文", null, 2],
+        ["I want you to speak Chinese with me tomorrow now", "我现在想要你明天和我说中文", null, 3],
+        ["I really want you to speak Chinese with me tomorrow", "我真的想要你明天和我说中文", null, 3],
+        ["I'm not sure I want you to speak Chinese with me tomorrow", "我不确定我想要你明天和我说中文", null, 4],
+        ["after you finish I want you to speak Chinese with me tomorrow", "在你说完之后我想要你明天和我说中文", null, 4],
+        ["I want you to be able to speak Chinese with me tomorrow", "我想要你能够明天和我说中文", null, 5],
+        ["I want you to speak a little Chinese with me tomorrow", "我想要你明天和我说一点中文", null, 5],
+        ["I want you to remember the whole sentence and speak Chinese with me tomorrow", "我想要你记住整个句子明天和我说中文", null, 6],
+        ["And I want you to speak Chinese with me tomorrow.", "而且我想要你明天和我说中文。", null, 2]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [["我", "I"], ["想要", "want"], ["你", "you to"], ["明天", "tomorrow"], ["和", "with"], ["我", "me"], ["说", "speak"], ["中文", "Chinese"]]
+    }
+  }
+}
