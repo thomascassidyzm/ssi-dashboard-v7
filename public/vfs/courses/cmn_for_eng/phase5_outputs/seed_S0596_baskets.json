@@ -1,0 +1,99 @@
+{
+  "legos": {
+    "S0596L02": {
+      "lego": ["close my eyes","闭上眼睛"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I close my eyes", "我闭上眼睛", null, 2],
+        ["Just close my eyes", "刚闭上眼睛", null, 2],
+        ["I need to close my eyes", "我需要闭上眼睛", null, 3],
+        ["She told me close my eyes", "她告诉我闭上眼睛", null, 3],
+        ["I close my eyes at home", "我在家闭上眼睛", null, 4],
+        ["I close my eyes in the garden", "我在花园里闭上眼睛", null, 4],
+        ["I need to close my eyes and lie down", "我需要闭上眼睛躺下", null, 5],
+        ["I always close my eyes in the garden", "我总是在花园里闭上眼睛", null, 5],
+        ["She told me I had to close my eyes", "她告诉我我不得不闭上眼睛", null, 6],
+        ["I close my eyes and lie down in the garden", "我在花园里闭上眼睛躺下", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0596L02",
+        "seed_context": {
+          "known": "And I need to close my eyes for a while.",
+          "target": "我需要闭上眼睛一会儿。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0596L03": {
+      "lego": ["eyes","眼睛"],
+      "type": "A",
+      "current_seed_legos_available": [["close my eyes","闭上眼睛"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["My eyes", "我的眼睛", null, 2],
+        ["Her eyes", "她的眼睛", null, 2],
+        ["I need my eyes", "我需要我的眼睛", null, 3],
+        ["She told me about eyes", "她告诉我关于眼睛", null, 3],
+        ["I close my eyes at home", "我在家闭上眼睛", null, 4],
+        ["My eyes in the garden", "我的眼睛在花园里", null, 4],
+        ["I had to share my toys and eyes", "我不得不分享我的玩具和眼睛", null, 5],
+        ["I always close my eyes in the garden", "我总是在花园里闭上眼睛", null, 5],
+        ["She told me that my eyes were last", "她告诉我我的眼睛是最后的", null, 6],
+        ["I need to close my eyes and lie down", "我需要闭上眼睛躺下", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0596L03",
+        "seed_context": {
+          "known": "And I need to close my eyes for a while.",
+          "target": "我需要闭上眼睛一会儿。"
+        }
+      }
+    },
+    "S0596L05": {
+      "lego": ["close my eyes for a while","闭上眼睛一会儿"],
+      "type": "M",
+      "current_seed_legos_available": [["close my eyes","闭上眼睛"],["eyes","眼睛"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Close my eyes for a while", "闭上眼睛一会儿", null, 1],
+        ["I close my eyes for a while", "我闭上眼睛一会儿", null, 2],
+        ["Just close my eyes for a while", "刚闭上眼睛一会儿", null, 3],
+        ["I need to close my eyes for a while", "我需要闭上眼睛一会儿", null, 3],
+        ["She told me close my eyes for a while", "她告诉我闭上眼睛一会儿", null, 4],
+        ["I close my eyes for a while at home", "我在家闭上眼睛一会儿", null, 4],
+        ["I always close my eyes for a while in the garden", "我总是在花园里闭上眼睛一会儿", null, 5],
+        ["I need to close my eyes for a while and lie down", "我需要闭上眼睛一会儿躺下", null, 5],
+        ["She told me I had to close my eyes for a while", "她告诉我我不得不闭上眼睛一会儿", null, 6],
+        ["And I need to close my eyes for a while", "我需要闭上眼睛一会儿", null, 3]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0596L05",
+        "seed_context": {
+          "known": "And I need to close my eyes for a while.",
+          "target": "我需要闭上眼睛一会儿。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    }
+  }
+}

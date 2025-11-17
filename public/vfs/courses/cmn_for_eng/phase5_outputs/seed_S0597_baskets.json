@@ -1,0 +1,257 @@
+{
+  "legos": {
+    "S0597L01": {
+      "lego": ["I suspect","我怀疑"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I suspect", "我怀疑", null, 1],
+        ["I suspect this", "我怀疑这个", null, 2],
+        ["I suspect my sister", "我怀疑我妹妹", null, 3],
+        ["I suspect she told me", "我怀疑她告诉我", null, 3],
+        ["I suspect I need to leave home", "我怀疑我需要离开家", null, 4],
+        ["I suspect she just saw the last", "我怀疑她刚看到最后", null, 4],
+        ["I suspect I had to share my toys", "我怀疑我不得不分享我的玩具", null, 5],
+        ["I suspect I need to lie down in the garden", "我怀疑我需要在花园里躺下", null, 5],
+        ["I suspect she always insists I share with my sister", "我怀疑她总是坚持我和我妹妹分享", null, 6],
+        ["I suspect she told me I had to close my eyes", "我怀疑她告诉我我不得不闭上眼睛", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L01",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0597L02": {
+      "lego": ["suspect","怀疑"],
+      "type": "A",
+      "current_seed_legos_available": [["I suspect","我怀疑"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Suspect this", "怀疑这个", null, 2],
+        ["I suspect", "我怀疑", null, 2],
+        ["She told me suspect", "她告诉我怀疑", null, 3],
+        ["I suspect my sister", "我怀疑我妹妹", null, 3],
+        ["I need to suspect at home", "我需要在家怀疑", null, 4],
+        ["I suspect I had to leave", "我怀疑我不得不离开", null, 4],
+        ["I always suspect I need to share", "我总是怀疑我需要分享", null, 5],
+        ["I suspect she just saw the last bus", "我怀疑她刚看到最后一班公交车", null, 5],
+        ["I suspect I had to share my toys with my sister", "我怀疑我不得不和我妹妹分享我的玩具", null, 6],
+        ["I suspect she insists I lie down in the garden", "我怀疑她坚持我在花园里躺下", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L02",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      }
+    },
+    "S0597L03": {
+      "lego": ["he's heard","他听过"],
+      "type": "M",
+      "current_seed_legos_available": [["I suspect","我怀疑"],["suspect","怀疑"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["He's heard this", "他听过这个", null, 2],
+        ["I suspect he's heard", "我怀疑他听过", null, 2],
+        ["He's heard about my sister", "他听过关于我妹妹", null, 3],
+        ["She told me he's heard", "她告诉我他听过", null, 3],
+        ["I suspect he's heard at home", "我怀疑他在家听过", null, 4],
+        ["He's heard I need to leave home", "他听过我需要离开家", null, 4],
+        ["I suspect he's heard I had to share", "我怀疑他听过我不得不分享", null, 5],
+        ["He's heard I always lie down in the garden", "他听过我总是在花园里躺下", null, 5],
+        ["I suspect he's heard she insists I share my toys", "我怀疑他听过她坚持我分享我的玩具", null, 6],
+        ["He's heard I had to close my eyes for a while", "他听过我不得不闭上眼睛一会儿", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L03",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0597L04": {
+      "lego": ["heard","听过"],
+      "type": "A",
+      "current_seed_legos_available": [["I suspect","我怀疑"],["suspect","怀疑"],["he's heard","他听过"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I heard", "我听过", null, 1],
+        ["Just heard this", "刚听过这个", null, 2],
+        ["She told me heard", "她告诉我听过", null, 3],
+        ["I suspect I heard", "我怀疑我听过", null, 3],
+        ["I heard about my sister at home", "我在家听过关于我妹妹", null, 4],
+        ["I suspect he's heard about toys", "我怀疑他听过关于玩具", null, 4],
+        ["I heard I need to leave home always", "我听过我总是需要离开家", null, 5],
+        ["I suspect I heard she insists on sharing", "我怀疑我听过她坚持分享", null, 5],
+        ["I heard I had to share my toys with my sister", "我听过我不得不和我妹妹分享我的玩具", null, 6],
+        ["I suspect he's heard I need to close my eyes in the garden", "我怀疑他听过我需要在花园里闭上眼睛", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L04",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      }
+    },
+    "S0597L05": {
+      "lego": ["a hundred stories about it","关于它的一百个故事"],
+      "type": "M",
+      "current_seed_legos_available": [["I suspect","我怀疑"],["suspect","怀疑"],["he's heard","他听过"],["heard","听过"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["A hundred stories about it", "关于它的一百个故事", null, 1],
+        ["I heard a hundred stories about it", "我听过关于它的一百个故事", null, 2],
+        ["I suspect a hundred stories about it", "我怀疑关于它的一百个故事", null, 3],
+        ["She told me a hundred stories about it", "她告诉我关于它的一百个故事", null, 3],
+        ["I heard a hundred stories about it at home", "我在家听过关于它的一百个故事", null, 4],
+        ["I suspect he's heard a hundred stories about it", "我怀疑他听过关于它的一百个故事", null, 4],
+        ["I need to share a hundred stories about it always", "我总是需要分享关于它的一百个故事", null, 5],
+        ["I suspect I heard a hundred stories about it in the garden", "我怀疑我在花园里听过关于它的一百个故事", null, 5],
+        ["She told me I had to hear a hundred stories about it", "她告诉我我不得不听关于它的一百个故事", null, 6],
+        ["I suspect he's heard a hundred stories about it and shared", "我怀疑他听过关于它的一百个故事并分享", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L05",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0597L06": {
+      "lego": ["a hundred stories","一百个故事"],
+      "type": "M",
+      "current_seed_legos_available": [["I suspect","我怀疑"],["suspect","怀疑"],["he's heard","他听过"],["heard","听过"],["a hundred stories about it","关于它的一百个故事"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["A hundred stories", "一百个故事", null, 1],
+        ["I heard a hundred stories", "我听过一百个故事", null, 2],
+        ["I suspect a hundred stories", "我怀疑一百个故事", null, 3],
+        ["She told me a hundred stories", "她告诉我一百个故事", null, 3],
+        ["I heard a hundred stories at home", "我在家听过一百个故事", null, 4],
+        ["I suspect he's heard a hundred stories", "我怀疑他听过一百个故事", null, 4],
+        ["I need to share a hundred stories always", "我总是需要分享一百个故事", null, 5],
+        ["I suspect I heard a hundred stories in the garden", "我怀疑我在花园里听过一百个故事", null, 5],
+        ["She told me I had to hear a hundred stories", "她告诉我我不得不听一百个故事", null, 6],
+        ["I suspect he's heard a hundred stories and shared them", "我怀疑他听过一百个故事并分享它们", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L06",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0597L07": {
+      "lego": ["stories","故事"],
+      "type": "A",
+      "current_seed_legos_available": [["I suspect","我怀疑"],["suspect","怀疑"],["he's heard","他听过"],["heard","听过"],["a hundred stories about it","关于它的一百个故事"],["a hundred stories","一百个故事"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Stories", "故事", null, 1],
+        ["I heard stories", "我听过故事", null, 2],
+        ["I suspect stories", "我怀疑故事", null, 3],
+        ["She told me stories", "她告诉我故事", null, 3],
+        ["I heard stories at home always", "我总是在家听过故事", null, 4],
+        ["I suspect he's heard stories", "我怀疑他听过故事", null, 4],
+        ["I need to share stories in the garden", "我需要在花园里分享故事", null, 5],
+        ["I suspect I heard stories about my sister", "我怀疑我听过关于我妹妹的故事", null, 5],
+        ["She told me I had to share stories with my sister", "她告诉我我不得不和我妹妹分享故事", null, 6],
+        ["I suspect he's heard a hundred stories about it", "我怀疑他听过关于它的一百个故事", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L07",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      }
+    },
+    "S0597L08": {
+      "lego": ["about it","关于它的"],
+      "type": "M",
+      "current_seed_legos_available": [["I suspect","我怀疑"],["suspect","怀疑"],["he's heard","他听过"],["heard","听过"],["a hundred stories about it","关于它的一百个故事"],["a hundred stories","一百个故事"],["stories","故事"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["About it", "关于它的", null, 1],
+        ["Stories about it", "关于它的故事", null, 2],
+        ["I suspect about it", "我怀疑关于它的", null, 3],
+        ["She told me about it", "她告诉我关于它的", null, 3],
+        ["I heard stories about it", "我听过关于它的故事", null, 4],
+        ["I suspect he's heard about it", "我怀疑他听过关于它的", null, 4],
+        ["I need to share stories about it always", "我总是需要分享关于它的故事", null, 5],
+        ["I suspect I heard a hundred stories about it", "我怀疑我听过关于它的一百个故事", null, 5],
+        ["She told me I had to hear stories about it", "她告诉我我不得不听关于它的故事", null, 6],
+        ["I suspect that he's heard a hundred stories about it", "我怀疑他听过关于它的一百个故事", null, 4]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 2
+      },
+      "_metadata": {
+        "lego_id": "S0597L08",
+        "seed_context": {
+          "known": "I suspect that he's heard a hundred stories about it.",
+          "target": "我怀疑他听过关于它的一百个故事。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    }
+  }
+}
