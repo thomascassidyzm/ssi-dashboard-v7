@@ -1,194 +1,140 @@
 {
-  "S0217L01": {
-    "lego": ["I had", "我喝了"],
-    "type": "M",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [],
-    "practice_phrases": [
-      ["I saw friends.", "我见了朋友。", null, 2],
-      ["I went out.", "我出去了。", null, 1],
-      ["I saw a few friends.", "我见了几个朋友。", null, 2],
-      ["I went out Saturday.", "我星期六出去了。", null, 2],
-      ["I went out Saturday night.", "我星期六晚上出去了。", null, 3],
-      ["I saw a few friends at the weekend.", "我周末见了几个朋友。", null, 3],
-      ["I went out on Saturday night to see friends.", "我星期六晚上出去见朋友。", null, 5],
-      ["I saw a few friends and had a good time.", "我见了几个朋友，过得好。", null, 4],
-      ["They wanted to ask for help at the weekend.", "他们周末想寻求帮助。", null, 3],
-      ["We don't know what they want to achieve.", "我们不知道他们想达到什么。", null, 3]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [["我", "I"], ["喝", "drink"], ["了", "aspect particle"]]
-  },
   "S0217L02": {
-    "lego": ["a glass or two of water", "一两杯水"],
+    "lego": [
+      "a glass or two of water",
+      "一两杯水"
+    ],
     "type": "M",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0217L01",
-        "known": "I had",
-        "target": "我喝了",
-        "type": "M"
-      }
-    ],
     "practice_phrases": [
-      ["I had water.", "我喝了水。", null, 2],
-      ["I saw friends.", "我见了朋友。", null, 2],
-      ["I had a glass or two of water.", "我喝了一两杯水。", null, 3],
-      ["I went out on Saturday.", "我星期六出去了。", null, 2],
-      ["I had water on Saturday night.", "我星期六晚上喝了水。", null, 4],
-      ["I saw a few friends at the weekend.", "我周末见了几个朋友。", null, 3],
-      ["I had a glass or two of water and went out.", "我喝了一两杯水，然后出去了。", null, 5],
-      ["I had water before I went out Saturday night.", "我星期六晚上出去前喝了水。", null, 6],
-      ["They wanted to explain the problem to a few friends.", "他们想向几个朋友解释这个问题。", null, 5],
-      ["We don't know what they want to discuss at the weekend.", "我们不知道他们周末想讨论什么。", null, 5]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [["一两", "one or two"], ["杯", "glass/cup"], ["水", "water"]]
-  },
-  "S0217L03": {
-    "lego": ["a glass or two", "一两杯"],
-    "type": "M",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0217L01",
-        "known": "I had",
-        "target": "我喝了",
-        "type": "M"
-      },
-      {
-        "id": "S0217L02",
-        "known": "a glass or two of water",
-        "target": "一两杯水",
-        "type": "M"
-      }
-    ],
-    "practice_phrases": [
-      ["I had a glass or two.", "我喝了一两杯。", null, 2],
-      ["I saw friends Saturday.", "我星期六见了朋友。", null, 3],
-      ["I had a glass or two of water.", "我喝了一两杯水。", null, 3],
-      ["I went out to see friends.", "我出去见朋友。", null, 3],
-      ["I had a glass or two before I went out.", "我出去前喝了一两杯。", null, 4],
-      ["I saw a few friends Saturday night.", "我星期六晚上见了几个朋友。", null, 4],
-      ["I had a glass or two of water at the weekend.", "我周末喝了一两杯水。", null, 5],
-      ["I had water before I went out to see a few friends.", "我出去见几个朋友前喝了水。", null, 7],
-      ["They told us they wanted to have a good time at the weekend.", "他们告诉我们他们想周末过得好。", null, 6],
-      ["We don't know what they wanted to discuss with friends on Saturday.", "我们不知道他们星期六想和朋友讨论什么。", null, 7]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [["一两", "one or two"], ["杯", "glass/cup"]]
-  },
-  "S0217L04": {
-    "lego": ["water", "水"],
-    "type": "A",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0217L01",
-        "known": "I had",
-        "target": "我喝了",
-        "type": "M"
-      },
-      {
-        "id": "S0217L02",
-        "known": "a glass or two of water",
-        "target": "一两杯水",
-        "type": "M"
-      },
-      {
-        "id": "S0217L03",
-        "known": "a glass or two",
-        "target": "一两杯",
-        "type": "M"
-      }
-    ],
-    "practice_phrases": [
-      ["Water is good.", "水很好。", null, 2],
-      ["I had water.", "我喝了水。", null, 2],
-      ["I had a glass of water.", "我喝了一杯水。", null, 3],
-      ["I went out Saturday night.", "我星期六晚上出去了。", null, 3],
-      ["I had water before going out Saturday.", "我星期六出去前喝了水。", null, 5],
-      ["I had a glass or two of water.", "我喝了一两杯水。", null, 3],
-      ["I had a glass or two of water and saw a few friends.", "我喝了一两杯水，然后见了几个朋友。", null, 6],
-      ["I had water at the weekend and had a good time with friends.", "我周末喝了水，和朋友过得好。", null, 7],
-      ["They told us they wanted to discuss the problem at the weekend.", "他们告诉我们他们想周末讨论这个问题。", null, 6],
-      ["We don't know what they're trying to achieve with a few friends on Saturday night.", "我们不知道他们星期六晚上想和几个朋友达到什么。", null, 8]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10
+      [
+        "A glass or two of water",
+        "一两杯水",
+        null,
+        1
+      ],
+      [
+        "I had water",
+        "我喝了水",
+        null,
+        2
+      ],
+      [
+        "A glass or two",
+        "一两杯",
+        null,
+        2
+      ],
+      [
+        "I wanted a glass of water",
+        "我想要一杯水",
+        null,
+        3
+      ],
+      [
+        "They had a glass or two of water",
+        "他们喝了一两杯水",
+        null,
+        5
+      ],
+      [
+        "We needed a glass or two of water",
+        "我们需要一两杯水",
+        null,
+        5
+      ],
+      [
+        "I had a glass or two of water yesterday",
+        "我昨天喝了一两杯水",
+        null,
+        6
+      ],
+      [
+        "They said they wanted a glass or two of water",
+        "他们说他们想要一两杯水",
+        null,
+        8
+      ],
+      [
+        "We don't know if they had a glass or two of water",
+        "我们不知道他们是否喝了一两杯水",
+        null,
+        9
+      ],
+      [
+        "I had a glass or two of water",
+        "我喝了一两杯水",
+        null,
+        5
+      ]
+    ]
   },
   "S0217L05": {
-    "lego": ["to drink", "喝"],
+    "lego": [
+      "to drink",
+      "喝"
+    ],
     "type": "A",
-    "is_final_lego": true,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0217L01",
-        "known": "I had",
-        "target": "我喝了",
-        "type": "M"
-      },
-      {
-        "id": "S0217L02",
-        "known": "a glass or two of water",
-        "target": "一两杯水",
-        "type": "M"
-      },
-      {
-        "id": "S0217L03",
-        "known": "a glass or two",
-        "target": "一两杯",
-        "type": "M"
-      },
-      {
-        "id": "S0217L04",
-        "known": "water",
-        "target": "水",
-        "type": "A"
-      }
-    ],
     "practice_phrases": [
-      ["I want to drink water.", "我想喝水。", null, 2],
-      ["They wanted to drink.", "他们想喝。", null, 2],
-      ["I want to drink a glass of water.", "我想喝一杯水。", null, 3],
-      ["I went out to drink water Saturday.", "我星期六出去喝水。", null, 4],
-      ["I had a glass or two of water.", "我喝了一两杯水。", null, 3],
-      ["They wanted to drink water at the weekend.", "他们想周末喝水。", null, 4],
-      ["I want to drink a glass or two of water before going out.", "我出去前想喝一两杯水。", null, 7],
-      ["I had a glass or two of water on Saturday night before I saw friends.", "我星期六晚上见朋友前喝了一两杯水。", null, 8],
-      ["They told us they wanted to drink water and have a good time at the weekend.", "他们告诉我们他们想周末喝水，过得好。", null, 8],
-      ["We don't know what they want to drink, but they wanted to ask for help explaining the problem to a few friends.", "我们不知道他们想喝什么，但他们想寻求帮助向几个朋友解释这个问题。", null, 12]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10
+      [
+        "To drink",
+        "喝",
+        null,
+        1
+      ],
+      [
+        "I wanted to drink",
+        "我想喝",
+        null,
+        2
+      ],
+      [
+        "To drink water",
+        "喝水",
+        null,
+        2
+      ],
+      [
+        "They wanted to drink",
+        "他们想喝",
+        null,
+        3
+      ],
+      [
+        "We needed to drink water",
+        "我们需要喝水",
+        null,
+        4
+      ],
+      [
+        "I had something to drink",
+        "我喝了一些东西",
+        null,
+        4
+      ],
+      [
+        "They said they wanted to drink water",
+        "他们说他们想喝水",
+        null,
+        6
+      ],
+      [
+        "We don't know what they wanted to drink",
+        "我们不知道他们想喝什么",
+        null,
+        7
+      ],
+      [
+        "I wanted to ask if they had anything to drink",
+        "我想问他们是否有什么喝的",
+        null,
+        8
+      ],
+      [
+        "I had a glass or two of water",
+        "我喝了一两杯水",
+        null,
+        5
+      ]
+    ]
   }
 }

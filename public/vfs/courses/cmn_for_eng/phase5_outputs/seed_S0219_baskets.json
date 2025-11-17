@@ -1,144 +1,71 @@
 {
-  "S0219L01": {
-    "lego": ["It was nice to relax for a while", "放松一会儿很好"],
-    "type": "M",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [],
-    "practice_phrases": [
-      ["I saw friends Saturday.", "我星期六见了朋友。", null, 2],
-      ["I had water Sunday.", "我星期天喝了水。", null, 2],
-      ["It was nice to relax for a while.", "放松一会儿很好。", null, 2],
-      ["I went out to see friends.", "我出去见朋友。", null, 3],
-      ["I had a good time at the weekend.", "我周末过得好。", null, 3],
-      ["I saw a few friends and had water.", "我见了几个朋友，喝了水。", null, 4],
-      ["It was nice to relax for a while after I saw friends at the weekend.", "我周末见朋友后放松一会儿很好。", null, 7],
-      ["I didn't do much on Sunday, but it was nice to relax for a while.", "我星期天没做什么，但放松一会儿很好。", null, 6],
-      ["They told us they wanted to ask for help, but we don't know what they're trying to achieve.", "他们告诉我们他们想寻求帮助，但我们不知道他们想达到什么。", null, 8],
-      ["I went out Saturday night to see a few friends, and it was nice to have a good time at the weekend.", "我星期六晚上出去见几个朋友，周末过得好很好。", null, 9]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [["放松", "to relax"], ["一会儿", "for a while"], ["很", "very"], ["好", "good/nice"]]
-  },
-  "S0219L02": {
-    "lego": ["to relax for a while", "放松一会儿"],
-    "type": "M",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0219L01",
-        "known": "It was nice to relax for a while",
-        "target": "放松一会儿很好",
-        "type": "M"
-      }
-    ],
-    "practice_phrases": [
-      ["I want to relax for a while.", "我想放松一会儿。", null, 2],
-      ["They wanted to relax.", "他们想放松。", null, 2],
-      ["It was nice to relax for a while.", "放松一会儿很好。", null, 2],
-      ["I want to relax at the weekend.", "我想周末放松。", null, 3],
-      ["I went out to relax for a while Saturday.", "我星期六出去放松一会儿。", null, 4],
-      ["They wanted to relax and see a few friends.", "他们想放松，见几个朋友。", null, 5],
-      ["I didn't do much on Sunday, but I wanted to relax for a while.", "我星期天没做什么，但我想放松一会儿。", null, 6],
-      ["I had a glass or two of water and wanted to relax for a while at the weekend.", "我喝了一两杯水，想周末放松一会儿。", null, 8],
-      ["They told us they wanted to relax for a while, but we don't know what they're trying to achieve.", "他们告诉我们他们想放松一会儿，但我们不知道他们想达到什么。", null, 9],
-      ["I went out Saturday night to see friends and relax for a while, and I had a good time.", "我星期六晚上出去见朋友，放松一会儿，过得好。", null, 10]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [["放松", "relax"], ["一会儿", "for a while"]]
-  },
-  "S0219L03": {
-    "lego": ["to relax", "放松"],
-    "type": "A",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0219L01",
-        "known": "It was nice to relax for a while",
-        "target": "放松一会儿很好",
-        "type": "M"
-      },
-      {
-        "id": "S0219L02",
-        "known": "to relax for a while",
-        "target": "放松一会儿",
-        "type": "M"
-      }
-    ],
-    "practice_phrases": [
-      ["I want to relax.", "我想放松。", null, 1],
-      ["They wanted to relax.", "他们想放松。", null, 2],
-      ["I need to relax Saturday.", "我星期六需要放松。", null, 3],
-      ["I want to relax at the weekend.", "我想周末放松。", null, 3],
-      ["I went out to relax on Saturday night.", "我星期六晚上出去放松。", null, 4],
-      ["They wanted to relax and see a few friends.", "他们想放松，见几个朋友。", null, 5],
-      ["I want to relax for a while after I see friends at the weekend.", "我周末见朋友后想放松一会儿。", null, 7],
-      ["I didn't do much on Sunday, but I wanted to relax and have a good time.", "我星期天没做什么，但我想放松，过得好。", null, 7],
-      ["They told us they wanted to relax at the weekend, but we don't know what they're trying to achieve.", "他们告诉我们他们想周末放松，但我们不知道他们想达到什么。", null, 9],
-      ["I went out Saturday night to relax for a while and see a few friends, and I had a glass or two of water.", "我星期六晚上出去放松一会儿，见几个朋友，喝了一两杯水。", null, 11]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10
-  },
   "S0219L05": {
-    "lego": ["very good", "很好"],
+    "lego": [
+      "very good",
+      "很好"
+    ],
     "type": "M",
-    "is_final_lego": true,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0219L01",
-        "known": "It was nice to relax for a while",
-        "target": "放松一会儿很好",
-        "type": "M"
-      },
-      {
-        "id": "S0219L02",
-        "known": "to relax for a while",
-        "target": "放松一会儿",
-        "type": "M"
-      },
-      {
-        "id": "S0219L03",
-        "known": "to relax",
-        "target": "放松",
-        "type": "A"
-      }
-    ],
     "practice_phrases": [
-      ["Water is very good.", "水很好。", null, 2],
-      ["Friends are very good.", "朋友很好。", null, 2],
-      ["It was nice to relax for a while.", "放松一会儿很好。", null, 2],
-      ["The weekend was very good.", "周末很好。", null, 2],
-      ["I had a very good time Saturday.", "我星期六过得很好。", null, 4],
-      ["To relax at the weekend is very good.", "周末放松很好。", null, 4],
-      ["I saw a few friends and it was very good to relax for a while.", "我见了几个朋友，放松一会儿很好。", null, 7],
-      ["I went out Saturday night to see friends and had a very good time at the weekend.", "我星期六晚上出去见朋友，周末过得很好。", null, 8],
-      ["They told us that to relax for a while at the weekend is very good, and we wanted to try to achieve that.", "他们告诉我们周末放松一会儿很好，我们想尝试达到那个。", null, 12],
-      ["I didn't do much on Sunday, but I went out Saturday night, saw a few friends, had a glass or two of water, and it was very good to relax for a while.", "我星期天没做什么，但我星期六晚上出去了，见了几个朋友，喝了一两杯水，放松一会儿很好。", null, 15]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [["很", "very"], ["好", "good"]]
+      [
+        "Very good",
+        "很好",
+        null,
+        1
+      ],
+      [
+        "It was very good",
+        "很好",
+        null,
+        1
+      ],
+      [
+        "Very good to relax",
+        "放松很好",
+        null,
+        2
+      ],
+      [
+        "It was very good to relax",
+        "放松很好",
+        null,
+        3
+      ],
+      [
+        "I thought it was very good",
+        "我觉得很好",
+        null,
+        3
+      ],
+      [
+        "They said it was very good",
+        "他们说很好",
+        null,
+        4
+      ],
+      [
+        "It was very good to relax for a while",
+        "放松一会儿很好",
+        null,
+        4
+      ],
+      [
+        "I thought it was very good to relax",
+        "我觉得放松很好",
+        null,
+        5
+      ],
+      [
+        "They told us it was very good to relax",
+        "他们告诉我们放松很好",
+        null,
+        6
+      ],
+      [
+        "It was nice to relax for a while",
+        "放松一会儿很好",
+        null,
+        4
+      ]
+    ]
   }
 }

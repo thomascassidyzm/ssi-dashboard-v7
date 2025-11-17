@@ -1,227 +1,28 @@
 {
   "S0655L02": {
-    "lego": [
-      "I think that you're doing very well",
-      "我认为您做得很好"
-    ],
+    "lego": ["I think that you're doing very well", "我认为您做得很好"],
     "type": "M",
-    "current_seed_legos_available": [],
     "is_final_lego": false,
+    "current_seed_earlier_legos": [],
     "practice_phrases": [
-      [
-        "I think",
-        "我认为",
-        null,
-        1
-      ],
-      [
-        "You're doing well",
-        "您做得好",
-        null,
-        2
-      ],
-      [
-        "I think you're ready",
-        "我认为您准备好了",
-        null,
-        3
-      ],
-      [
-        "I think you can help",
-        "我认为您可以帮",
-        null,
-        3
-      ],
-      [
-        "I think you're doing something",
-        "我认为您在做什么事",
-        null,
-        4
-      ],
-      [
-        "I think you want to go",
-        "我认为您想去",
-        null,
-        4
-      ],
-      [
-        "I think you're doing very well",
-        "我认为您做得很好",
-        null,
-        5
-      ],
-      [
-        "I think you can help me madam",
-        "我认为您可以帮我女士",
-        null,
-        5
-      ],
-      [
-        "I think you're ready to go",
-        "我认为您准备好去",
-        null,
-        5
-      ],
-      [
-        "I think you're doing something very well",
-        "我认为您做什么事做得很好",
-        null,
-        6
-      ]
+      ["I think you're doing well", "我认为您做得很好", null, 4],
+      ["I think that you're doing very well", "我认为您做得很好", null, 5],
+      ["I think that you're doing very well sir", "我认为您做得很好先生", null, 6],
+      ["I think that you're doing very well madam", "我认为您做得很好女士", null, 6],
+      ["I think that you're doing something well", "我认为您在做什么事做得好", null, 6],
+      ["I think that you're doing very well with that", "我认为您那个做得很好", null, 7],
+      ["Do you think that you're doing very well", "您认为您做得很好吗", null, 7],
+      ["I think that she's doing very well", "我认为她做得很好", null, 5],
+      ["I can help if I think that you're doing well", "如果我认为您做得好我可以帮忙", null, 11],
+      ["I think that you're doing very well madam thank you", "我认为您做得很好女士谢谢", null, 8]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "really_short_1_2": 0,
+      "quite_short_3": 0,
+      "longer_4_5": 3,
+      "long_6_plus": 7
     },
-    "_metadata": {
-      "lego_id": "S0655L02",
-      "seed_context": {
-        "known": "I think that you're doing very well, madam.",
-        "target": "我认为您做得很好，女士。"
-      }
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0655L03": {
-    "lego": [
-      "you're doing very well",
-      "您做得很好"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "I think that you're doing very well",
-        "我认为您做得很好"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "You're doing well",
-        "您做得好",
-        null,
-        1
-      ],
-      [
-        "You're doing something",
-        "您在做什么事",
-        null,
-        2
-      ],
-      [
-        "I think you're doing well",
-        "我认为您做得好",
-        null,
-        3
-      ],
-      [
-        "You're doing very well madam",
-        "您做得很好女士",
-        null,
-        3
-      ],
-      [
-        "I think you're doing very well",
-        "我认为您做得很好",
-        null,
-        4
-      ],
-      [
-        "You're doing something very well",
-        "您做什么事做得很好",
-        null,
-        4
-      ],
-      [
-        "I think you're doing very well madam",
-        "我认为您做得很好女士",
-        null,
-        5
-      ],
-      [
-        "You're doing something very well madam",
-        "您做什么事做得很好女士",
-        null,
-        5
-      ],
-      [
-        "I think you're doing something very well",
-        "我认为您做什么事做得很好",
-        null,
-        6
-      ],
-      [
-        "I think you're doing something very well madam",
-        "我认为您做什么事做得很好女士",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "_metadata": {
-      "lego_id": "S0655L03",
-      "seed_context": {
-        "known": "I think that you're doing very well, madam.",
-        "target": "我认为您做得很好，女士。"
-      }
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
+    "target_phrase_count": 10,
+    "components": [["I think that", "我认为"], ["you're doing", "您做得"], ["very well", "很好"]]
   }
 }

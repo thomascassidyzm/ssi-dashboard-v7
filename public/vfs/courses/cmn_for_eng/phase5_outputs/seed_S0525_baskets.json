@@ -1,98 +1,71 @@
 {
-  "S0525L01": {
-    "lego": ["to check", "看看"],
-    "type": "M",
-    "practice_phrases": [
-      ["To check", "看看", null, 1],
-      ["Check the phone", "看看电话", null, 1],
-      ["I need to check", "我需要看看", null, 2],
-      ["Let me check", "让我看看", null, 2],
-      ["To check the baby", "看看宝宝", null, 3],
-      ["I need to check the problem", "我需要看看问题", null, 3],
-      ["To check their new house", "看看他们的新房子", null, 4],
-      ["I'm afraid to check the same problem", "我担心看看相同的问题", null, 4],
-      ["Let's check if they both came on their own", "让我们看看他们两个都自己来了", null, 5],
-      ["I need to check why we needed to stay here", "我需要看看我们为什么需要留在这里", null, 6]
-    ]
-  },
-  "S0525L02": {
-    "lego": ["whether", "是否"],
-    "type": "M",
-    "practice_phrases": [
-      ["Whether", "是否", null, 1],
-      ["Whether they came", "是否他们来了", null, 1],
-      ["Check whether", "看看是否", null, 2],
-      ["I don't know whether", "我不知道是否", null, 2],
-      ["Whether they both came", "是否他们两个都来了", null, 3],
-      ["Check whether they left", "看看是否他们离开了", null, 3],
-      ["I need to check whether", "我需要看看是否", null, 4],
-      ["Whether they came on their own", "是否他们自己来了", null, 4],
-      ["I'm afraid to check whether they agree", "我担心看看是否他们同意", null, 5],
-      ["Check whether they'll call back in three or four minutes", "看看是否他们三四分钟后回电话", null, 6]
-    ]
-  },
-  "S0525L05": {
-    "lego": ["able to finish", "能够完成"],
-    "type": "M",
-    "practice_phrases": [
-      ["Able to finish", "能够完成", null, 1],
-      ["I'm able to finish", "我能够完成", null, 1],
-      ["Not able to finish", "不能够完成", null, 2],
-      ["They're able to finish", "他们能够完成", null, 2],
-      ["Whether able to finish", "是否能够完成", null, 3],
-      ["I'm not able to finish", "我不能够完成", null, 3],
-      ["Check if able to finish", "看看是否能够完成", null, 4],
-      ["They both are able to finish", "他们两个都能够完成", null, 4],
-      ["I'm afraid I'm not able to finish", "我担心我不能够完成", null, 5],
-      ["Check whether they're able to finish in three or four minutes", "看看是否他们三四分钟后能够完成", null, 6]
-    ]
-  },
   "S0525L06": {
-    "lego": ["whether able to finish", "是否能够完成"],
+    "lego": [
+      "whether able to finish",
+      "是否能够完成"
+    ],
     "type": "M",
     "practice_phrases": [
-      ["Whether able to finish", "是否能够完成", null, 1],
-      ["Check whether able to finish", "看看是否能够完成", null, 1],
-      ["I don't know whether able to finish", "我不知道是否能够完成", null, 2],
-      ["Whether they're able to finish", "是否他们能够完成", null, 2],
-      ["Check whether able to finish today", "看看是否今天能够完成", null, 3],
-      ["Whether both are able to finish", "是否两个都能够完成", null, 3],
-      ["I need to check whether able to finish", "我需要看看是否能够完成", null, 4],
-      ["Whether you're able to finish the problem", "是否你能够完成问题", null, 4],
-      ["I'm afraid whether they're able to finish on time", "我担心是否他们能够按时完成", null, 5],
-      ["Check whether they're able to finish in three or four minutes", "看看是否他们三四分钟后能够完成", null, 6]
-    ]
-  },
-  "S0525L07": {
-    "lego": ["if you've been able to finish", "你是否能够完成"],
-    "type": "M",
-    "practice_phrases": [
-      ["If you've been able to finish", "你是否能够完成", null, 1],
-      ["Check if you've been able to finish", "看看你是否能够完成", null, 1],
-      ["I don't know if you've been able to finish", "我不知道你是否能够完成", null, 2],
-      ["If you're able to finish", "你是否能够完成", null, 2],
-      ["Let me check if you've been able to finish", "让我看看你是否能够完成", null, 3],
-      ["I need to know if you've been able to finish", "我需要知道你是否能够完成", null, 3],
-      ["To check if you've been able to finish today", "看看你今天是否能够完成", null, 4],
-      ["I'm afraid if you've been able to finish", "我担心你是否能够完成", null, 4],
-      ["Let's agree to check if you've been able to finish", "我们同意看看你是否能够完成", null, 5],
-      ["I'll call you back to check if you've been able to finish", "我给你回电话看看你是否能够完成", null, 6]
-    ]
-  },
-  "S0525L08": {
-    "lego": ["to check if you've been able to finish", "看看你是否能够完成"],
-    "type": "M",
-    "practice_phrases": [
-      ["To check if you've been able to finish", "看看你是否能够完成", null, 1],
-      ["I need to check if you've been able to finish", "我需要看看你是否能够完成", null, 2],
-      ["Let me check if you've been able to finish", "让我看看你是否能够完成", null, 2],
-      ["I came to check if you've been able to finish", "我来看看你是否能够完成", null, 3],
-      ["I'm calling to check if you've been able to finish", "我打电话看看你是否能够完成", null, 3],
-      ["I'm afraid to check if you've been able to finish", "我担心看看你是否能够完成", null, 4],
-      ["I need to stay to check if you've been able to finish", "我需要留下看看你是否能够完成", null, 4],
-      ["I'll call you back to check if you've been able to finish", "我会给你回电话看看你是否能够完成", null, 5],
-      ["Instead of giving excuse I came to check if you've been able to finish", "而不是找借口我来看看你是否能够完成", null, 6],
-      ["To check if you've been able to finish.", "看看你是否能够完成。", null, 1]
+      [
+        "Whether able to finish",
+        "是否能够完成",
+        null,
+        1
+      ],
+      [
+        "Check whether able to finish",
+        "看看是否能够完成",
+        null,
+        1
+      ],
+      [
+        "I don't know whether able to finish",
+        "我不知道是否能够完成",
+        null,
+        2
+      ],
+      [
+        "Whether they're able to finish",
+        "是否他们能够完成",
+        null,
+        2
+      ],
+      [
+        "Check whether able to finish today",
+        "看看是否今天能够完成",
+        null,
+        3
+      ],
+      [
+        "Whether both are able to finish",
+        "是否两个都能够完成",
+        null,
+        3
+      ],
+      [
+        "I need to check whether able to finish",
+        "我需要看看是否能够完成",
+        null,
+        4
+      ],
+      [
+        "Whether you're able to finish the problem",
+        "是否你能够完成问题",
+        null,
+        4
+      ],
+      [
+        "I'm afraid whether they're able to finish on time",
+        "我担心是否他们能够按时完成",
+        null,
+        5
+      ],
+      [
+        "Check whether they're able to finish in three or four minutes",
+        "看看是否他们三四分钟后能够完成",
+        null,
+        6
+      ]
     ]
   }
 }

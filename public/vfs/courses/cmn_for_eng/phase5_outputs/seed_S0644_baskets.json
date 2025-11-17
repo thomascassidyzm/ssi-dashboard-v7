@@ -1,201 +1,28 @@
 {
   "S0644L01": {
-    "lego": [
-      "Could you say that",
-      "您能说那个吗"
-    ],
+    "lego": ["Could you say that", "您能说那个吗"],
     "type": "M",
     "is_final_lego": false,
     "current_seed_earlier_legos": [],
     "practice_phrases": [
-      [
-        "Could you say that",
-        "您能说那个吗",
-        null,
-        4
-      ],
-      [
-        "say that",
-        "说那个",
-        null,
-        2
-      ],
-      [
-        "I think that",
-        "我想那个",
-        null,
-        3
-      ],
-      [
-        "could you want that",
-        "您能想要那个吗",
-        null,
-        4
-      ],
-      [
-        "I think you could say that",
-        "我认为您能说那个",
-        null,
-        6
-      ],
-      [
-        "could you say where that is",
-        "您能说那个在哪里吗",
-        null,
-        6
-      ],
-      [
-        "I think that you could say that now",
-        "我认为您现在能说那个",
-        null,
-        7
-      ],
-      [
-        "could you say that is the red one",
-        "您能说那是红色的那个吗",
-        null,
-        7
-      ],
-      [
-        "could you say that is the red bag madam",
-        "您能说那是红色的包吗女士",
-        null,
-        8
-      ],
-      [
-        "I think you could say that with me sir",
-        "我认为您能和我说那个先生",
-        null,
-        8
-      ]
+      ["Could you say that", "您能说那个吗", null, 3],
+      ["Could you say that again", "您能再说那个吗", null, 4],
+      ["Could you say that sir", "您能说那个吗先生", null, 4],
+      ["Could you say that please", "您能说那个吗请", null, 4],
+      ["Could you say that one more time", "您能再说一次那个吗", null, 6],
+      ["Could you say that madam", "您能说那个吗女士", null, 4],
+      ["Could you say that for me", "您能为我说那个吗", null, 5],
+      ["Could you say where the bag is", "您能说包在哪里吗", null, 6],
+      ["Could you say that slowly", "您能慢慢说那个吗", null, 4],
+      ["Could you say that to Jane", "您能对简说那个吗", null, 5]
     ],
     "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
+      "really_short_1_2": 0,
+      "quite_short_3": 1,
+      "longer_4_5": 7,
+      "long_6_plus": 2
     },
     "target_phrase_count": 10,
-    "components": [
-      [
-        "您",
-        "you (formal)"
-      ],
-      [
-        "能",
-        "could/can"
-      ],
-      [
-        "说",
-        "say"
-      ],
-      [
-        "那个",
-        "that"
-      ],
-      [
-        "吗",
-        "question particle"
-      ]
-    ]
-  },
-  "S0644L02": {
-    "lego": [
-      "could say that",
-      "能说那个"
-    ],
-    "type": "M",
-    "is_final_lego": true,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0644L01",
-        "known": "Could you say that",
-        "target": "您能说那个吗",
-        "type": "M"
-      }
-    ],
-    "practice_phrases": [
-      [
-        "could say",
-        "能说",
-        null,
-        2
-      ],
-      [
-        "I could say",
-        "我能说",
-        null,
-        3
-      ],
-      [
-        "you could say that",
-        "您能说那个",
-        null,
-        4
-      ],
-      [
-        "I could say that",
-        "我能说那个",
-        null,
-        4
-      ],
-      [
-        "I think I could say that",
-        "我认为我能说那个",
-        null,
-        6
-      ],
-      [
-        "you could say that is red",
-        "您能说那是红色的",
-        null,
-        6
-      ],
-      [
-        "I think you could say that is the bag",
-        "我认为您能说那是包",
-        null,
-        9
-      ],
-      [
-        "you could say that the red one is here",
-        "您能说红色的那个在这里",
-        null,
-        8
-      ],
-      [
-        "I think you could say where that bag is",
-        "我认为您能说那个包在哪里",
-        null,
-        9
-      ],
-      [
-        "Could you say that sir?",
-        "您能说那个吗先生",
-        null,
-        5
-      ]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [
-      [
-        "能",
-        "could/can"
-      ],
-      [
-        "说",
-        "say"
-      ],
-      [
-        "那个",
-        "that"
-      ]
-    ]
+    "components": [["Could you", "您能"], ["say", "说"], ["that", "那个"], ["question marker", "吗"]]
   }
 }

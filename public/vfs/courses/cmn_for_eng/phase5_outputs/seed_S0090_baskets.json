@@ -1,623 +1,128 @@
 {
-  "S0090L01": {
-    "lego": [
-      "if",
-      "如果"
-    ],
-    "type": "A",
-    "practice_phrases": [
-      [
-        "If possible.",
-        "如果可能。",
-        null,
-        1
-      ],
-      [
-        "If you can.",
-        "如果你能。",
-        null,
-        2
-      ],
-      [
-        "If you want to.",
-        "如果你想。",
-        null,
-        3
-      ],
-      [
-        "If you're ready.",
-        "如果你准备好了。",
-        null,
-        3
-      ],
-      [
-        "If you can do this.",
-        "如果你能做这个。",
-        null,
-        4
-      ],
-      [
-        "If you can wait for me.",
-        "如果你能等我。",
-        null,
-        4
-      ],
-      [
-        "If you can speak more slowly.",
-        "如果你能说得慢一点。",
-        null,
-        5
-      ],
-      [
-        "If you think that's good.",
-        "如果你认为那很好。",
-        null,
-        5
-      ],
-      [
-        "If you can talk to those people.",
-        "如果你能和那些人说话。",
-        null,
-        5
-      ],
-      [
-        "If you can do this in a short time.",
-        "如果你能在短时间内做这个。",
-        null,
-        5
-      ]
-    ]
-  },
-  "S0090L03": {
-    "lego": [
-      "you can",
-      "你能"
-    ],
-    "type": "M",
-    "practice_phrases": [
-      [
-        "You can.",
-        "你能。",
-        null,
-        1
-      ],
-      [
-        "You can do this.",
-        "你能做这个。",
-        null,
-        2
-      ],
-      [
-        "You can start now.",
-        "你能现在开始。",
-        null,
-        3
-      ],
-      [
-        "I think you can.",
-        "我认为你能。",
-        null,
-        3
-      ],
-      [
-        "You can speak slowly.",
-        "你能说得慢。",
-        null,
-        4
-      ],
-      [
-        "You can talk to people.",
-        "你能和人说话。",
-        null,
-        4
-      ],
-      [
-        "If you can, that would be great.",
-        "如果你能，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "You can do a lot in a short time.",
-        "你能在短时间内做很多。",
-        null,
-        5
-      ],
-      [
-        "You can speak more slowly.",
-        "你能说得慢一点。",
-        null,
-        5
-      ],
-      [
-        "I think you can do this already.",
-        "我认为你已经能做这个。",
-        null,
-        5
-      ]
-    ]
-  },
-  "S0090L04": {
-    "lego": [
-      "speak",
-      "说"
-    ],
-    "type": "A",
-    "practice_phrases": [
-      [
-        "Speak.",
-        "说。",
-        null,
-        1
-      ],
-      [
-        "I can speak.",
-        "我能说。",
-        null,
-        2
-      ],
-      [
-        "Can you speak?",
-        "你能说吗？",
-        null,
-        3
-      ],
-      [
-        "I want to speak.",
-        "我想说。",
-        null,
-        3
-      ],
-      [
-        "I can speak slowly.",
-        "我能说得慢。",
-        null,
-        4
-      ],
-      [
-        "I'm ready to speak now.",
-        "我准备好现在说。",
-        null,
-        4
-      ],
-      [
-        "I can speak to those people.",
-        "我能和那些人说。",
-        null,
-        5
-      ],
-      [
-        "If you can speak more slowly.",
-        "如果你能说得慢一点。",
-        null,
-        5
-      ],
-      [
-        "I think I can speak to people now.",
-        "我认为我现在能和人说。",
-        null,
-        5
-      ],
-      [
-        "Can you speak more slowly?",
-        "你能说得慢一点吗？",
-        null,
-        5
-      ]
-    ]
-  },
   "S0090L05": {
-    "lego": [
-      "speak slowly",
-      "说得慢"
-    ],
-    "type": "M",
     "practice_phrases": [
-      [
-        "Speak slowly.",
-        "说得慢。",
-        null,
-        1
-      ],
-      [
-        "I can speak slowly.",
-        "我能说得慢。",
-        null,
-        2
-      ],
-      [
-        "Can you speak slowly?",
-        "你能说得慢吗？",
-        null,
-        3
-      ],
-      [
-        "Please speak slowly.",
-        "请说得慢。",
-        null,
-        3
-      ],
-      [
-        "I'll speak slowly for you.",
-        "我会为你说得慢。",
-        null,
-        4
-      ],
-      [
-        "I think I can speak slowly.",
-        "我认为我能说得慢。",
-        null,
-        4
-      ],
-      [
-        "If you can speak slowly, that's good.",
-        "如果你能说得慢，那很好。",
-        null,
-        5
-      ],
-      [
-        "Can you speak slowly to those people?",
-        "你能对那些人说得慢吗？",
-        null,
-        5
-      ],
-      [
-        "I can speak slowly when I talk.",
-        "我说话时能说得慢。",
-        null,
-        5
-      ],
-      [
-        "I'm ready to speak slowly now.",
-        "我准备好现在说得慢。",
-        null,
-        5
-      ]
-    ]
+      ["Speak slowly","说得慢", null, 1],
+      ["You can speak slowly","你能说得慢", null, 3],
+      ["If you speak slowly","如果你说得慢", null, 4],
+      ["If you can speak slowly","如果你能说得慢", null, 4],
+      ["I think you can speak slowly","我认为你能说得慢", null, 5],
+      ["Can you speak slowly when you talk","你能在说话时说得慢吗", null, 7],
+      ["If you can speak slowly that would help","如果你能说得慢那会帮助", null, 8],
+      ["I'm not ready to speak slowly yet","我还没准备好说得慢", null, 7],
+      ["Thank you for speaking slowly to help me","非常感谢你说得慢帮助我", null, 9],
+      ["If you can speak slowly when we talk","如果你能在我们说话时说得慢", null, 9]
+    ],
+    "_metadata": {
+      "lego_id": "S0090L05",
+      "seed_context": {
+        "known": "If you can speak more slowly that would be great.",
+        "target": "如果你能说得慢一点那就太好了。"
+      }
+    }
   },
   "S0090L06": {
-    "lego": [
-      "a bit slower",
-      "慢一点"
-    ],
-    "type": "M",
     "practice_phrases": [
-      [
-        "A bit slower.",
-        "慢一点。",
-        null,
-        1
-      ],
-      [
-        "Can you go a bit slower?",
-        "你能慢一点吗？",
-        null,
-        2
-      ],
-      [
-        "Speak a bit slower.",
-        "说慢一点。",
-        null,
-        3
-      ],
-      [
-        "I can do this a bit slower.",
-        "我能慢一点做这个。",
-        null,
-        3
-      ],
-      [
-        "I'll speak a bit slower.",
-        "我会说慢一点。",
-        null,
-        4
-      ],
-      [
-        "Please speak a bit slower.",
-        "请说慢一点。",
-        null,
-        4
-      ],
-      [
-        "If you can speak a bit slower, that's great.",
-        "如果你能说慢一点，那很好。",
-        null,
-        5
-      ],
-      [
-        "Can you speak a bit slower to me?",
-        "你能对我说慢一点吗？",
-        null,
-        5
-      ],
-      [
-        "I think you can speak a bit slower.",
-        "我认为你能说慢一点。",
-        null,
-        5
-      ],
-      [
-        "I can talk a bit slower to people.",
-        "我能对人说话慢一点。",
-        null,
-        5
-      ]
-    ]
+      ["A bit slower","慢一点", null, 1],
+      ["Speak a bit slower","说慢一点", null, 2],
+      ["You can speak a bit slower","你能说慢一点", null, 4],
+      ["If you speak a bit slower","如果你说慢一点", null, 4],
+      ["Can you do it a bit slower","你能做慢一点吗", null, 5],
+      ["I think you can speak a bit slower","我认为你能说慢一点", null, 7],
+      ["If you can speak a bit slower when you talk","如果你能在说话时说慢一点", null, 9],
+      ["I'm starting to understand when you speak a bit slower","当你说慢一点时我开始理解", null, 9],
+      ["That would be great if you speak a bit slower","如果你说慢一点那就太好了", null, 10],
+      ["Thank you for speaking a bit slower to help me","非常感谢你说慢一点帮助我", null, 10]
+    ],
+    "_metadata": {
+      "lego_id": "S0090L06",
+      "seed_context": {
+        "known": "If you can speak more slowly that would be great.",
+        "target": "如果你能说得慢一点那就太好了。"
+      }
+    }
   },
   "S0090L07": {
-    "lego": [
-      "speak more slowly",
-      "说得慢一点"
-    ],
-    "type": "M",
     "practice_phrases": [
-      [
-        "Speak more slowly.",
-        "说得慢一点。",
-        null,
-        1
-      ],
-      [
-        "Can you speak more slowly?",
-        "你能说得慢一点吗？",
-        null,
-        2
-      ],
-      [
-        "Please speak more slowly.",
-        "请说得慢一点。",
-        null,
-        3
-      ],
-      [
-        "I can speak more slowly.",
-        "我能说得慢一点。",
-        null,
-        3
-      ],
-      [
-        "I'll speak more slowly for you.",
-        "我会为你说得慢一点。",
-        null,
-        4
-      ],
-      [
-        "I think I can speak more slowly.",
-        "我认为我能说得慢一点。",
-        null,
-        4
-      ],
-      [
-        "If you can speak more slowly, that's good.",
-        "如果你能说得慢一点，那很好。",
-        null,
-        5
-      ],
-      [
-        "Can you speak more slowly to those people?",
-        "你能对那些人说得慢一点吗？",
-        null,
-        5
-      ],
-      [
-        "I'm ready to speak more slowly now.",
-        "我准备好现在说得慢一点。",
-        null,
-        5
-      ],
-      [
-        "If you can speak more slowly, that would be great.",
-        "如果你能说得慢一点，那就太好了。",
-        null,
-        5
-      ]
-    ]
+      ["Speak more slowly","说得慢一点", null, 1],
+      ["You can speak more slowly","你能说得慢一点", null, 3],
+      ["If you speak more slowly","如果你说得慢一点", null, 4],
+      ["If you can speak more slowly","如果你能说得慢一点", null, 5],
+      ["I think you can speak more slowly","我认为你能说得慢一点", null, 6],
+      ["Can you speak more slowly when you talk","你能在说话时说得慢一点吗", null, 8],
+      ["I'm starting to understand when you speak more slowly","当你说得慢一点时我开始理解", null, 9],
+      ["If you can speak more slowly that would help me","如果你能说得慢一点那会帮助我", null, 10],
+      ["Thank you for speaking more slowly to help me understand","非常感谢你说得慢一点帮助我理解", null, 11],
+      ["I think if you speak more slowly I will understand","我认为如果你说得慢一点我会理解", null, 11]
+    ],
+    "_metadata": {
+      "lego_id": "S0090L07",
+      "seed_context": {
+        "known": "If you can speak more slowly that would be great.",
+        "target": "如果你能说得慢一点那就太好了。"
+      }
+    }
   },
   "S0090L08": {
-    "lego": [
-      "great",
-      "太好了"
-    ],
-    "type": "M",
     "practice_phrases": [
-      [
-        "Great!",
-        "太好了！",
-        null,
-        1
-      ],
-      [
-        "That's great.",
-        "那太好了。",
-        null,
-        2
-      ],
-      [
-        "That would be great.",
-        "那就太好了。",
-        null,
-        3
-      ],
-      [
-        "I think that's great.",
-        "我认为那太好了。",
-        null,
-        3
-      ],
-      [
-        "If you can, that's great.",
-        "如果你能，那太好了。",
-        null,
-        4
-      ],
-      [
-        "That would be great for me.",
-        "那对我来说太好了。",
-        null,
-        4
-      ],
-      [
-        "If you can do this, that would be great.",
-        "如果你能做这个，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "I think if you can help, that would be great.",
-        "我认为如果你能帮忙，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can speak more slowly, that would be great.",
-        "如果你能说得慢一点，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can wait for me, that would be great.",
-        "如果你能等我，那就太好了。",
-        null,
-        5
-      ]
-    ]
+      ["Great","太好了", null, 1],
+      ["That's great","那太好了", null, 2],
+      ["I think that's great","我认为那太好了", null, 4],
+      ["If you can do that it would be great","如果你能做那就太好了", null, 8],
+      ["I'm very happy that would be great","我很高兴那就太好了", null, 7],
+      ["Thank you very much that's great","非常感谢那太好了", null, 6],
+      ["I think if you speak more slowly that would be great","我认为如果你说得慢一点那就太好了", null, 11],
+      ["That's great when you speak more slowly","当你说得慢一点时那太好了", null, 8],
+      ["I'm surprised how great it is when you speak slowly","我对当你说得慢时多么好感到惊讶", null, 11],
+      ["If you can help me understand that would be great","如果你能帮助我理解那就太好了", null, 10]
+    ],
+    "_metadata": {
+      "lego_id": "S0090L08",
+      "seed_context": {
+        "known": "If you can speak more slowly that would be great.",
+        "target": "如果你能说得慢一点那就太好了。"
+      }
+    }
   },
   "S0090L09": {
-    "lego": [
-      "would be great",
-      "就太好了"
-    ],
-    "type": "M",
     "practice_phrases": [
-      [
-        "That would be great.",
-        "那就太好了。",
-        null,
-        1
-      ],
-      [
-        "It would be great.",
-        "这就太好了。",
-        null,
-        2
-      ],
-      [
-        "That would be great for me.",
-        "那对我就太好了。",
-        null,
-        3
-      ],
-      [
-        "I think that would be great.",
-        "我认为那就太好了。",
-        null,
-        3
-      ],
-      [
-        "If you can, that would be great.",
-        "如果你能，那就太好了。",
-        null,
-        4
-      ],
-      [
-        "If you can help, that would be great.",
-        "如果你能帮忙，那就太好了。",
-        null,
-        4
-      ],
-      [
-        "If you can speak slowly, that would be great.",
-        "如果你能说得慢，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can do this, that would be great.",
-        "如果你能做这个，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can wait for me, that would be great.",
-        "如果你能等我，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can speak more slowly, that would be great.",
-        "如果你能说得慢一点，那就太好了。",
-        null,
-        5
-      ]
-    ]
+      ["Would be great","就太好了", null, 1],
+      ["That would be great","那就太好了", null, 2],
+      ["I think that would be great","我认为那就太好了", null, 4],
+      ["If you can do that it would be great","如果你能做那就太好了", null, 8],
+      ["If you help me that would be great","如果你帮助我那就太好了", null, 7],
+      ["If you can speak slowly that would be great","如果你能说得慢那就太好了", null, 8],
+      ["Thank you very much that would be great","非常感谢那就太好了", null, 7],
+      ["When you're ready to start that would be great","当你准备好开始时那就太好了", null, 9],
+      ["I think if you can speak more slowly that would be great","我认为如果你能说得慢一点那就太好了", null, 12],
+      ["If you can talk to me a bit slower that would be great","如果你能对我说话慢一点那就太好了", null, 11]
+    ],
+    "_metadata": {
+      "lego_id": "S0090L09",
+      "seed_context": {
+        "known": "If you can speak more slowly that would be great.",
+        "target": "如果你能说得慢一点那就太好了。"
+      }
+    }
   },
   "S0090L10": {
-    "lego": [
-      "that would be great",
-      "那就太好了"
-    ],
-    "type": "M",
     "practice_phrases": [
-      [
-        "That would be great.",
-        "那就太好了。",
-        null,
-        1
-      ],
-      [
-        "I think that would be great.",
-        "我认为那就太好了。",
-        null,
-        2
-      ],
-      [
-        "If you can, that would be great.",
-        "如果你能，那就太好了。",
-        null,
-        3
-      ],
-      [
-        "If you can help, that would be great.",
-        "如果你能帮忙，那就太好了。",
-        null,
-        3
-      ],
-      [
-        "If you can do this, that would be great.",
-        "如果你能做这个，那就太好了。",
-        null,
-        4
-      ],
-      [
-        "If you can wait, that would be great.",
-        "如果你能等，那就太好了。",
-        null,
-        4
-      ],
-      [
-        "If you can speak slowly, that would be great.",
-        "如果你能说得慢，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can do this for me, that would be great.",
-        "如果你能为我做这个，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can talk to my friend, that would be great.",
-        "如果你能和我朋友说话，那就太好了。",
-        null,
-        5
-      ],
-      [
-        "If you can speak more slowly that would be great.",
-        "如果你能说得慢一点那就太好了。",
-        null,
-        5
-      ]
-    ]
+      ["That would be great","那就太好了", null, 1],
+      ["I think that would be great","我认为那就太好了", null, 4],
+      ["If you can do that that would be great","如果你能做那那就太好了", null, 8],
+      ["If you help me that would be great","如果你帮助我那就太好了", null, 7],
+      ["If you can speak slowly that would be great","如果你能说得慢那就太好了", null, 8],
+      ["When you're ready to start that would be great","当你准备好开始时那就太好了", null, 9],
+      ["Thank you very much if you can help that would be great","非常感谢如果你能帮助那就太好了", null, 11],
+      ["I'm not sure when you'll be ready but that would be great","我不确定你什么时候会准备好但那就太好了", null, 13],
+      ["If you can talk to people I don't know that would be great","如果你能和我不认识的人说话那就太好了", null, 13],
+      ["If you can speak more slowly that would be great","如果你能说得慢一点那就太好了", null, 10]
+    ],
+    "_metadata": {
+      "lego_id": "S0090L10",
+      "seed_context": {
+        "known": "If you can speak more slowly that would be great.",
+        "target": "如果你能说得慢一点那就太好了。"
+      }
+    }
   }
 }

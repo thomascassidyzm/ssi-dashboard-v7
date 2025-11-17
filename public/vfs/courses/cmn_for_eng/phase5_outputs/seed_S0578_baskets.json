@@ -5,44 +5,77 @@
       "暖和"
     ],
     "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
     "practice_phrases": [
       [
-        "暖和",
         "Warm",
+        "暖和",
         null,
         1
       ],
       [
-        "暖和对每个人都很特别。",
-        "Warm is very special for everyone.",
-        null,
-        2
-      ],
-      [
-        "假期暖和。",
-        "The holidays are warm.",
-        null,
-        2
-      ],
-      [
-        "医院暖和。",
-        "The hospital is warm.",
-        null,
-        2
-      ],
-      [
+        "It's warm",
         "很暖和",
-        "Very warm",
-        null,
-        1
-      ],
-      [
-        "那会是暖和。",
-        "That would be warm.",
         null,
         2
+      ],
+      [
+        "The weather is warm",
+        "天气很暖和",
+        null,
+        3
+      ],
+      [
+        "I like it warm",
+        "我喜欢暖和",
+        null,
+        3
+      ],
+      [
+        "It's nice and warm here",
+        "这里很nice和暖和",
+        null,
+        4
+      ],
+      [
+        "The room feels very warm",
+        "房间感觉很暖和",
+        null,
+        4
+      ],
+      [
+        "I want to go somewhere warm",
+        "我想去暖和的地方",
+        null,
+        5
+      ],
+      [
+        "It's getting warmer every day now",
+        "现在每天都越来越暖和",
+        null,
+        5
+      ],
+      [
+        "I need to find somewhere that's warm",
+        "我需要找个暖和的地方",
+        null,
+        6
+      ],
+      [
+        "I'm looking for a place that's warm and comfortable",
+        "我在找一个暖和舒适的地方",
+        null,
+        7
       ]
-    ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
   },
   "S0578L02": {
     "lego": [
@@ -50,42 +83,90 @@
       "更暖和"
     ],
     "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      [
+        "warm",
+        "暖和"
+      ]
+    ],
     "practice_phrases": [
       [
-        "更暖和",
         "Warmer",
+        "更暖和",
         null,
         1
       ],
       [
-        "假期更暖和。",
-        "The holidays are warmer.",
+        "It's warmer now",
+        "现在更暖和",
         null,
         2
       ],
       [
-        "医院更暖和。",
-        "The hospital is warmer.",
+        "I need somewhere warmer",
+        "我需要更暖和的地方",
         null,
-        2
+        3
       ],
       [
-        "等待更暖和。",
-        "Waiting is warmer.",
+        "It's getting warmer",
+        "越来越更暖和",
         null,
-        2
+        3
       ],
       [
-        "消息更暖和。",
-        "The news is warmer.",
+        "This place is much warmer",
+        "这个地方更暖和多了",
         null,
-        2
+        4
       ],
       [
-        "那会是更暖和。",
-        "That would be warmer.",
+        "I want to go somewhere warmer",
+        "我想去更暖和的地方",
         null,
-        2
+        4
+      ],
+      [
+        "It would be nice to find somewhere warmer",
+        "找到更暖和的地方会很好",
+        null,
+        5
+      ],
+      [
+        "We should look for somewhere warmer to stay",
+        "我们应该找更暖和的地方住",
+        null,
+        5
+      ],
+      [
+        "I think we need to move somewhere warmer",
+        "我觉得我们需要搬到更暖和的地方",
+        null,
+        6
+      ],
+      [
+        "It's much warmer here than it was at the hospital",
+        "这里比医院更暖和多了",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "更",
+        "more"
+      ],
+      [
+        "暖和",
+        "warm"
       ]
     ]
   },
@@ -95,48 +176,98 @@
       "更暖和的地方"
     ],
     "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      [
+        "warm",
+        "暖和"
+      ],
+      [
+        "warmer",
+        "更暖和"
+      ]
+    ],
     "practice_phrases": [
       [
-        "更暖和的地方很特别。",
-        "Somewhere warmer is very special.",
+        "Somewhere warmer",
+        "更暖和的地方",
+        null,
+        1
+      ],
+      [
+        "I need somewhere warmer",
+        "我需要更暖和的地方",
+        null,
+        2
+      ],
+      [
+        "Let's find somewhere warmer",
+        "我们找更暖和的地方",
         null,
         3
       ],
       [
-        "我期待更暖和的地方。",
-        "I'm expecting somewhere warmer.",
+        "I want somewhere warmer",
+        "我想要更暖和的地方",
         null,
         3
       ],
       [
-        "更暖和的地方对每个人都很特别。",
-        "Somewhere warmer is very special for everyone.",
+        "We should go somewhere warmer",
+        "我们应该去更暖和的地方",
         null,
         4
       ],
       [
-        "我不相信更暖和的地方。",
-        "I'm not convinced somewhere warmer.",
+        "I'm looking for somewhere warmer",
+        "我在找更暖和的地方",
         null,
-        3
+        4
       ],
       [
-        "更暖和的地方一直很令人难过。",
-        "Somewhere warmer has been very upsetting.",
+        "I think we need somewhere warmer to stay",
+        "我觉得我们需要更暖和的地方住",
         null,
-        3
+        5
       ],
       [
-        "我们一直在等更暖和的地方。",
-        "We've been waiting for somewhere warmer.",
+        "We've been waiting to move somewhere warmer",
+        "我们一直在等搬到更暖和的地方",
         null,
-        3
+        5
       ],
       [
-        "更暖和的地方。",
+        "I would love to find somewhere warmer for the holidays",
+        "我很想找更暖和的地方度假",
+        null,
+        6
+      ],
+      [
         "Somewhere warmer.",
+        "更暖和的地方。",
         null,
         1
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "更暖和",
+        "warmer"
+      ],
+      [
+        "的",
+        "possessive"
+      ],
+      [
+        "地方",
+        "place"
       ]
     ]
   }

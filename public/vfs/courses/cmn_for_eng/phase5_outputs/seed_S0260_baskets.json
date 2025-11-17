@@ -196,18 +196,13 @@
       "知道"
     ],
     "type": "A",
-    "current_seed_legos_available": [
-      [
-        "not at all/not even a bit",
-        "一点也不"
-      ],
-      [
-        "don't know at all/don't have the faintest idea",
-        "一点也不知道"
-      ]
-    ],
-    "is_final_lego": true,
     "practice_phrases": [
+      [
+        "Know",
+        "知道",
+        null,
+        1
+      ],
       [
         "I know",
         "我知道",
@@ -221,65 +216,53 @@
         1
       ],
       [
-        "I don't know at all",
-        "我一点也不知道",
+        "I don't know",
+        "我不知道",
         null,
         2
       ],
       [
-        "I want to know",
-        "我想知道",
+        "Do you know",
+        "你知道吗",
         null,
         2
       ],
       [
-        "I should know before I answer",
-        "我应该在我回答之前知道",
+        "I don't know the answer",
+        "我不知道答案",
         null,
         3
       ],
       [
-        "I don't know when",
-        "我一点也不知道什么时候",
-        null,
-        3
-      ],
-      [
-        "You should know before you leave",
-        "你应该在离开之前知道",
+        "I don't know what to do",
+        "我不知道该做什么",
         null,
         4
       ],
       [
-        "I want you to tell me so I know",
-        "我想让你告诉我这样我知道",
+        "Do you know who that man is",
+        "你知道那个男人是谁吗",
         null,
         4
       ],
       [
-        "I don't know what that blue thing is at all",
-        "我一点也不知道那个蓝色的东西是什么",
+        "I don't know if I should leave",
+        "我不知道我是否应该离开",
         null,
         5
       ],
       [
-        "I don't have the faintest idea.",
-        "我一点也不知道。",
+        "I don't have the faintest idea",
+        "我一点也不知道",
         null,
-        2
+        5
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        null,
-        null
-      ]
-    ]
+      "really_short_1_2": 5,
+      "quite_short_3": 1,
+      "longer_4_5": 4,
+      "long_6_plus": 0
+    }
   }
 }

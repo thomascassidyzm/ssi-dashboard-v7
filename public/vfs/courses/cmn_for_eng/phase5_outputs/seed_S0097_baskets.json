@@ -1,145 +1,44 @@
 {
-  "S0097L01": {
-    "lego": ["yes","是的"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["Yes", "是的", null, 1],
-      ["Yes, I think", "是的，我认为", null, 2],
-      ["Yes, this is great", "是的，这个太好了", null, 3],
-      ["Yes, you can speak", "是的，你能说", null, 3],
-      ["Yes, I need a while", "是的，我需要一段时间", null, 4],
-      ["Yes, that would be great", "是的，那就太好了", null, 4],
-      ["Yes, if you can speak slowly", "是的，如果你能说得慢", null, 5],
-      ["Yes, I think that would be great", "是的，我认为那就太好了", null, 5],
-      ["Yes, I need a little more time", "是的，我需要多一点时间", null, 6],
-      ["Yes, if you can speak more slowly", "是的，如果你能说得慢一点", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null]]
-  },
   "S0097L02": {
-    "lego": ["I'm ready","我准备好了"],
-    "type": "M",
-    "is_final_lego": false,
     "practice_phrases": [
-      ["I'm ready", "我准备好了", null, 1],
-      ["Yes, I'm ready", "是的，我准备好了", null, 2],
-      ["I'm ready to speak", "我准备好说", null, 3],
-      ["I'm ready to do this", "我准备好做这个", null, 3],
-      ["Yes, I'm ready to talk", "是的，我准备好说话", null, 4],
-      ["I'm ready to go home", "我准备好回家", null, 4],
-      ["Yes, I'm ready to speak slowly", "是的，我准备好说得慢", null, 5],
-      ["I'm ready to do this a while", "我准备好做这个一段时间", null, 5],
-      ["Yes, I'm ready to answer in time", "是的，我准备好及时回答", null, 6],
-      ["I'm ready to keep on doing this", "我准备好继续做这个", null, 6]
+      ["I'm ready","我准备好了", null, 1],
+      ["Yes I'm ready","是的我准备好了", null, 2],
+      ["I think I'm ready","我认为我准备好了", null, 3],
+      ["I'm ready to go","我准备好了走", null, 4],
+      ["I'm ready to start","我准备好了开始", null, 4],
+      ["I'm not sure when I'm ready","我不确定我什么时候准备好了", null, 7],
+      ["Yes I'm ready to take the bus","是的我准备好了坐公共汽车", null, 7],
+      ["I'm ready to talk when you are ready","我准备好了说话当你准备好了", null, 9],
+      ["Thank you I'm ready to go as soon as you want","非常感谢我准备好了只要你想走", null, 11],
+      ["I'm ready to speak more slowly if that would help","我准备好了说得慢一点如果那会帮助", null, 11]
     ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null],[null,null]]
-  },
-  "S0097L04": {
-    "lego": ["as soon as you want","只要你想"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["As soon as you want", "只要你想", null, 1],
-      ["Yes, as soon as you want", "是的，只要你想", null, 2],
-      ["I'm ready as soon as you want", "我准备好了只要你想", null, 3],
-      ["As soon as you want to talk", "只要你想说话", null, 3],
-      ["Yes, I'm ready as soon as you want", "是的，我准备好了只要你想", null, 4],
-      ["As soon as you want to do this", "只要你想做这个", null, 4],
-      ["I'm ready to speak as soon as you want", "我准备好说只要你想", null, 5],
-      ["Yes, as soon as you want to go home", "是的，只要你想回家", null, 5],
-      ["I'm ready as soon as you want to do this", "我准备好了只要你想做这个", null, 6],
-      ["As soon as you want I'm ready to speak slowly", "只要你想我准备好说得慢", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null],[null,null]]
-  },
-  "S0097L06": {
-    "lego": ["I can go","我就可以走"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["I can go", "我就可以走", null, 1],
-      ["Yes, I can go", "是的，我就可以走", null, 2],
-      ["I can go as soon as you want", "我就可以走只要你想", null, 3],
-      ["I'm ready, I can go", "我准备好了，我就可以走", null, 3],
-      ["Yes, I can go as soon as you want", "是的，我就可以走只要你想", null, 4],
-      ["I'm ready, I can go home", "我准备好了，我就可以走回家", null, 4],
-      ["Yes, I'm ready, I can go as soon as you want", "是的，我准备好了，我就可以走只要你想", null, 5],
-      ["I can go as soon as you want to go", "我就可以走只要你想走", null, 5],
-      ["Yes, I'm ready to go, I can go", "是的，我准备好走，我就可以走", null, 6],
-      ["I can go home as soon as you want", "我就可以走回家只要你想", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null],[null,null],[null,null]]
-  },
-  "S0097L07": {
-    "lego": ["can go","可以走"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["Can go", "可以走", null, 1],
-      ["Yes, can go", "是的，可以走", null, 2],
-      ["I can go home", "我可以走回家", null, 3],
-      ["You can go as soon as you want", "你可以走只要你想", null, 3],
-      ["Yes, I'm ready, can go", "是的，我准备好了，可以走", null, 4],
-      ["I can go, you can go", "我可以走，你可以走", null, 4],
-      ["Yes, as soon as you want can go", "是的，只要你想可以走", null, 5],
-      ["I'm ready, I can go home", "我准备好了，我可以走回家", null, 5],
-      ["Yes, you can go as soon as you want", "是的，你可以走只要你想", null, 6],
-      ["I'm ready, as soon as you want I can go", "我准备好了，只要你想我可以走", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null]]
+    "_metadata": {
+      "lego_id": "S0097L02",
+      "seed_context": {
+        "known": "Yes I'm ready to go as soon as you want.",
+        "target": "是的，我准备好了，只要你想我就可以走。"
+      }
+    }
   },
   "S0097L08": {
-    "lego": ["go","走"],
-    "type": "A",
-    "is_final_lego": true,
     "practice_phrases": [
-      ["Go", "走", null, 1],
-      ["Yes, go", "是的，走", null, 2],
-      ["I can go home", "我可以走回家", null, 3],
-      ["I'm ready to go", "我准备好走", null, 3],
-      ["Yes, I can go home", "是的，我可以走回家", null, 4],
-      ["I'm ready, can go", "我准备好了，可以走", null, 4],
-      ["Yes, I'm ready to go home", "是的，我准备好走回家", null, 5],
-      ["I can go as soon as you want", "我可以走只要你想", null, 5],
-      ["Yes, I'm ready, I can go home", "是的，我准备好了，我可以走回家", null, 6],
-      ["Yes I'm ready to go as soon as you want.", "是的，我准备好了，只要你想我就可以走。", null, 7]
+      ["Go","走", null, 1],
+      ["I can go","我可以走", null, 2],
+      ["Yes I can go","是的我可以走", null, 3],
+      ["I'm ready to go","我准备好了走", null, 4],
+      ["When can you go","你什么时候可以走", null, 4],
+      ["I think I'm ready to go","我认为我准备好了走", null, 6],
+      ["I can go as soon as you want","我可以走只要你想", null, 7],
+      ["Yes I'm ready to go when you're ready","是的我准备好了走当你准备好了", null, 10],
+      ["I can go home on the next bus","我可以走回家坐下一班公共汽车", null, 9],
+      ["Yes I'm ready to go as soon as you want","是的我准备好了只要你想我就可以走", null, 11]
     ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+    "_metadata": {
+      "lego_id": "S0097L08",
+      "seed_context": {
+        "known": "Yes I'm ready to go as soon as you want.",
+        "target": "是的，我准备好了，只要你想我就可以走。"
+      }
     }
   }
 }

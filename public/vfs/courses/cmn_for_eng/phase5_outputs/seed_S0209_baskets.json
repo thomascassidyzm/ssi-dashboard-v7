@@ -1,746 +1,72 @@
 {
-  "S0209L01": {
-    "lego": [
-      "They want",
-      "他们想"
-    ],
-    "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [],
-    "practice_phrases": [
-      [
-        "They want it",
-        "他们想它",
-        null,
-        1
-      ],
-      [
-        "They want that",
-        "他们想那个",
-        null,
-        1
-      ],
-      [
-        "They want to go",
-        "他们想去",
-        null,
-        2
-      ],
-      [
-        "They want to learn",
-        "他们想学",
-        null,
-        2
-      ],
-      [
-        "They want to meet people",
-        "他们想认识人",
-        null,
-        3
-      ],
-      [
-        "They want to speak Chinese",
-        "他们想说中文",
-        null,
-        3
-      ],
-      [
-        "They want to learn new words",
-        "他们想学新词",
-        null,
-        4
-      ],
-      [
-        "They want to work together",
-        "他们想一起工作",
-        null,
-        4
-      ],
-      [
-        "They want to start learning Chinese now",
-        "他们现在想开始学中文",
-        null,
-        5
-      ],
-      [
-        "They want to meet people who speak Chinese",
-        "他们想认识会说中文的人",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
-  "S0209L02": {
-    "lego": [
-      "want to spend more time",
-      "想花更多的时间"
-    ],
-    "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ]
-    ],
-    "practice_phrases": [
-      [
-        "I want to spend more time",
-        "我想花更多的时间",
-        null,
-        2
-      ],
-      [
-        "They want to spend more time",
-        "他们想花更多的时间",
-        null,
-        2
-      ],
-      [
-        "I want to spend more time learning",
-        "我想花更多的时间学",
-        null,
-        3
-      ],
-      [
-        "We want to spend more time",
-        "我们想花更多的时间",
-        null,
-        3
-      ],
-      [
-        "They want to spend more time together",
-        "他们想花更多的时间一起",
-        null,
-        4
-      ],
-      [
-        "I want to spend more time speaking",
-        "我想花更多的时间说话",
-        null,
-        4
-      ],
-      [
-        "I want to spend more time learning Chinese",
-        "我想花更多的时间学中文",
-        null,
-        5
-      ],
-      [
-        "They want to spend more time at work",
-        "他们想花更多的时间在工作",
-        null,
-        5
-      ],
-      [
-        "I want to spend more time with people who speak Chinese",
-        "我想花更多的时间和会说中文的人",
-        null,
-        6
-      ],
-      [
-        "They want to spend more time learning new words together",
-        "他们想花更多的时间一起学新词",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
-  "S0209L03": {
-    "lego": [
-      "to spend more time",
-      "花更多的时间"
-    ],
-    "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ]
-    ],
-    "practice_phrases": [
-      [
-        "I need to spend more time",
-        "我需要花更多的时间",
-        null,
-        2
-      ],
-      [
-        "I want to spend more time",
-        "我想花更多的时间",
-        null,
-        2
-      ],
-      [
-        "I'm going to spend more time",
-        "我就要花更多的时间",
-        null,
-        3
-      ],
-      [
-        "We need to spend more time",
-        "我们需要花更多的时间",
-        null,
-        3
-      ],
-      [
-        "I need to spend more time learning",
-        "我需要花更多的时间学",
-        null,
-        4
-      ],
-      [
-        "I want to spend more time speaking",
-        "我想花更多的时间说话",
-        null,
-        4
-      ],
-      [
-        "I need to spend more time studying Chinese",
-        "我需要花更多的时间学习中文",
-        null,
-        5
-      ],
-      [
-        "I'm going to spend more time at work",
-        "我就要花更多的时间在工作",
-        null,
-        5
-      ],
-      [
-        "I want to spend more time with you learning",
-        "我想花更多的时间和你学",
-        null,
-        6
-      ],
-      [
-        "They want to spend more time meeting people together",
-        "他们想花更多的时间一起认识人",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
-  "S0209L04": {
-    "lego": [
-      "to spend",
-      "花"
-    ],
-    "type": "A",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ]
-    ],
-    "practice_phrases": [
-      [
-        "I want to spend",
-        "我想花",
-        null,
-        1
-      ],
-      [
-        "I need to spend",
-        "我需要花",
-        null,
-        1
-      ],
-      [
-        "I'm going to spend",
-        "我就要花",
-        null,
-        2
-      ],
-      [
-        "They want to spend",
-        "他们想花",
-        null,
-        2
-      ],
-      [
-        "I need to spend time",
-        "我需要花时间",
-        null,
-        3
-      ],
-      [
-        "I want to spend time learning",
-        "我想花时间学",
-        null,
-        3
-      ],
-      [
-        "I'm going to spend more time",
-        "我就要花更多的时间",
-        null,
-        4
-      ],
-      [
-        "I need to spend time speaking",
-        "我需要花时间说话",
-        null,
-        4
-      ],
-      [
-        "I want to spend more time learning Chinese",
-        "我想花更多的时间学中文",
-        null,
-        5
-      ],
-      [
-        "They want to spend more time meeting people together",
-        "他们想花更多的时间一起认识人",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
-  "S0209L05": {
-    "lego": [
-      "more time",
-      "更多的时间"
-    ],
-    "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ],
-      [
-        "to spend",
-        "花"
-      ]
-    ],
-    "practice_phrases": [
-      [
-        "I need more time",
-        "我需要更多的时间",
-        null,
-        1
-      ],
-      [
-        "I want more time",
-        "我想更多的时间",
-        null,
-        1
-      ],
-      [
-        "I have more time",
-        "我有更多的时间",
-        null,
-        2
-      ],
-      [
-        "We need more time",
-        "我们需要更多的时间",
-        null,
-        2
-      ],
-      [
-        "I need more time to learn",
-        "我需要更多的时间学",
-        null,
-        3
-      ],
-      [
-        "I want more time to speak",
-        "我想更多的时间说话",
-        null,
-        3
-      ],
-      [
-        "I have more time to study",
-        "我有更多的时间学习",
-        null,
-        4
-      ],
-      [
-        "They want more time together",
-        "他们想更多的时间一起",
-        null,
-        4
-      ],
-      [
-        "I need more time to learn Chinese well",
-        "我需要更多的时间学好中文",
-        null,
-        5
-      ],
-      [
-        "I want to spend more time learning new words",
-        "我想花更多的时间学新词",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
-  "S0209L06": {
-    "lego": [
-      "more",
-      "更多的"
-    ],
-    "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ],
-      [
-        "to spend",
-        "花"
-      ],
-      [
-        "more time",
-        "更多的时间"
-      ]
-    ],
-    "practice_phrases": [
-      [
-        "I want more",
-        "我想更多的",
-        null,
-        1
-      ],
-      [
-        "I need more",
-        "我需要更多的",
-        null,
-        1
-      ],
-      [
-        "I have more",
-        "我有更多的",
-        null,
-        2
-      ],
-      [
-        "They want more",
-        "他们想更多的",
-        null,
-        2
-      ],
-      [
-        "I need more time",
-        "我需要更多的时间",
-        null,
-        3
-      ],
-      [
-        "I want more books",
-        "我想更多的书",
-        null,
-        3
-      ],
-      [
-        "I have more questions",
-        "我有更多的问题",
-        null,
-        4
-      ],
-      [
-        "They want more people",
-        "他们想更多的人",
-        null,
-        4
-      ],
-      [
-        "I need more time to learn Chinese",
-        "我需要更多的时间学中文",
-        null,
-        5
-      ],
-      [
-        "I want to spend more time learning new words",
-        "我想花更多的时间学新词",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
   "S0209L08": {
     "lego": [
       "meeting as a group",
       "作为一个小组聚会"
     ],
     "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ],
-      [
-        "to spend",
-        "花"
-      ],
-      [
-        "more time",
-        "更多的时间"
-      ],
-      [
-        "more",
-        "更多的"
-      ]
-    ],
     "practice_phrases": [
       [
-        "I like meeting as a group",
-        "我喜欢作为一个小组聚会",
+        "Meeting as a group",
+        "作为一个小组聚会",
+        null,
+        1
+      ],
+      [
+        "They want meeting",
+        "他们想聚会",
         null,
         2
       ],
       [
-        "They're meeting as a group",
-        "他们作为一个小组聚会",
-        null,
-        2
-      ],
-      [
-        "We're meeting as a group",
-        "我们作为一个小组聚会",
-        null,
-        3
-      ],
-      [
-        "I enjoy meeting as a group",
-        "我享受作为一个小组聚会",
-        null,
-        3
-      ],
-      [
-        "They want to be meeting as a group",
-        "他们想作为一个小组聚会",
+        "We wanted to meet as a group",
+        "我们想作为一个小组聚会",
         null,
         4
       ],
       [
-        "We're meeting as a group today",
-        "我们今天作为一个小组聚会",
+        "Meeting as a group today",
+        "今天作为一个小组聚会",
+        null,
+        3
+      ],
+      [
+        "They enjoy meeting as a group",
+        "他们喜欢作为一个小组聚会",
         null,
         4
       ],
       [
-        "I like meeting as a group to learn",
-        "我喜欢作为一个小组聚会学",
+        "We needed meeting as a group",
+        "我们需要作为一个小组聚会",
         null,
-        5
+        4
       ],
       [
-        "They enjoy meeting as a group every week",
-        "他们享受每周作为一个小组聚会",
+        "They wanted to spend time meeting as a group",
+        "他们想花时间作为一个小组聚会",
         null,
-        5
+        6
       ],
       [
-        "We want to spend more time meeting as a group",
+        "I think we need meeting as a group",
+        "我认为我们需要作为一个小组聚会",
+        null,
+        6
+      ],
+      [
+        "They said they wanted meeting as a group",
+        "他们说他们想作为一个小组聚会",
+        null,
+        7
+      ],
+      [
+        "We wanted to spend more time meeting as a group",
         "我们想花更多的时间作为一个小组聚会",
         null,
-        6
-      ],
-      [
-        "They want to spend more time meeting as a group to learn Chinese",
-        "他们想花更多的时间作为一个小组聚会学中文",
-        null,
-        7
+        8
       ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
-  "S0209L09": {
-    "lego": [
-      "as a group",
-      "作为一个小组"
-    ],
-    "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ],
-      [
-        "to spend",
-        "花"
-      ],
-      [
-        "more time",
-        "更多的时间"
-      ],
-      [
-        "more",
-        "更多的"
-      ],
-      [
-        "meeting as a group",
-        "作为一个小组聚会"
-      ]
-    ],
-    "practice_phrases": [
-      [
-        "We work as a group",
-        "我们作为一个小组工作",
-        null,
-        2
-      ],
-      [
-        "They learn as a group",
-        "他们作为一个小组学",
-        null,
-        2
-      ],
-      [
-        "We're learning as a group",
-        "我们作为一个小组在学",
-        null,
-        3
-      ],
-      [
-        "They meet as a group",
-        "他们作为一个小组聚会",
-        null,
-        3
-      ],
-      [
-        "We study Chinese as a group",
-        "我们作为一个小组学中文",
-        null,
-        4
-      ],
-      [
-        "They work together as a group",
-        "他们作为一个小组一起工作",
-        null,
-        4
-      ],
-      [
-        "We like to learn as a group",
-        "我们喜欢作为一个小组学",
-        null,
-        5
-      ],
-      [
-        "They want to meet as a group",
-        "他们想作为一个小组聚会",
-        null,
-        5
-      ],
-      [
-        "We enjoy spending time learning Chinese as a group",
-        "我们享受作为一个小组花时间学中文",
-        null,
-        6
-      ],
-      [
-        "They want to spend more time meeting as a group",
-        "他们想花更多的时间作为一个小组聚会",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
+    ]
   },
   "S0209L10": {
     "lego": [
@@ -748,110 +74,68 @@
       "一个小组"
     ],
     "type": "M",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ],
-      [
-        "to spend",
-        "花"
-      ],
-      [
-        "more time",
-        "更多的时间"
-      ],
-      [
-        "more",
-        "更多的"
-      ],
-      [
-        "meeting as a group",
-        "作为一个小组聚会"
-      ],
-      [
-        "as a group",
-        "作为一个小组"
-      ]
-    ],
     "practice_phrases": [
       [
-        "I have a group",
-        "我有一个小组",
+        "A group",
+        "一个小组",
         null,
         1
       ],
       [
-        "We're a group",
-        "我们是一个小组",
+        "A small group",
+        "一个小组",
         null,
         1
-      ],
-      [
-        "They formed a group",
-        "他们成立一个小组",
-        null,
-        2
-      ],
-      [
-        "We work in a group",
-        "我们在一个小组工作",
-        null,
-        2
-      ],
-      [
-        "I'm part of a group",
-        "我是一个小组的",
-        null,
-        3
       ],
       [
         "They want a group",
-        "他们想一个小组",
+        "他们想要一个小组",
         null,
         3
       ],
       [
-        "We study Chinese in a group",
-        "我们在一个小组学中文",
+        "We needed a group",
+        "我们需要一个小组",
+        null,
+        3
+      ],
+      [
+        "Meeting as a group",
+        "作为一个小组聚会",
         null,
         4
       ],
       [
-        "They meet as a group",
-        "他们作为一个小组聚会",
+        "They enjoy a group meeting",
+        "他们喜欢一个小组聚会",
         null,
         4
       ],
       [
-        "I like learning Chinese with a group",
-        "我喜欢和一个小组学中文",
+        "I wanted to know about a group",
+        "我想知道一个小组",
         null,
         5
       ],
       [
-        "They want to spend more time as a group learning",
-        "他们想作为一个小组花更多的时间学",
+        "They said they wanted a group",
+        "他们说他们想要一个小组",
         null,
         6
+      ],
+      [
+        "We wanted to spend time as a group",
+        "我们想花时间作为一个小组",
+        null,
+        7
+      ],
+      [
+        "They want to spend more time meeting as a group",
+        "他们想花更多的时间作为一个小组聚会",
+        null,
+        8
       ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
+    ]
   },
   "S0209L11": {
     "lego": [
@@ -859,50 +143,10 @@
       "小组"
     ],
     "type": "A",
-    "new": true,
-    "is_final_lego": false,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ],
-      [
-        "to spend",
-        "花"
-      ],
-      [
-        "more time",
-        "更多的时间"
-      ],
-      [
-        "more",
-        "更多的"
-      ],
-      [
-        "meeting as a group",
-        "作为一个小组聚会"
-      ],
-      [
-        "as a group",
-        "作为一个小组"
-      ],
-      [
-        "a group",
-        "一个小组"
-      ]
-    ],
     "practice_phrases": [
       [
-        "Our group",
-        "我们的小组",
+        "Group",
+        "小组",
         null,
         1
       ],
@@ -919,172 +163,47 @@
         2
       ],
       [
-        "Their group",
-        "他们的小组",
-        null,
-        2
-      ],
-      [
-        "Our group is learning",
-        "我们的小组在学",
+        "They want a group",
+        "他们想要小组",
         null,
         3
       ],
       [
-        "The group meets today",
-        "这个小组今天聚会",
-        null,
-        3
-      ],
-      [
-        "Our group studies Chinese together",
-        "我们的小组一起学中文",
+        "Meeting as a group",
+        "作为一个小组聚会",
         null,
         4
       ],
       [
-        "Their group wants to learn",
-        "他们的小组想学",
+        "They wanted a group meeting",
+        "他们想要一个小组聚会",
         null,
         4
       ],
       [
-        "Our group likes to meet every week",
-        "我们的小组喜欢每周聚会",
+        "I wanted to know about the group",
+        "我想知道这个小组",
         null,
         5
       ],
       [
-        "They want to spend more time as a group",
-        "他们想作为一个小组花更多的时间",
+        "They enjoy meeting as a group",
+        "他们喜欢作为一个小组聚会",
         null,
         6
+      ],
+      [
+        "We wanted to spend time with the group",
+        "我们想花时间和这个小组在一起",
+        null,
+        7
+      ],
+      [
+        "They want to spend more time meeting as a group",
+        "他们想花更多的时间作为一个小组聚会",
+        null,
+        8
       ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
-  },
-  "S0209L12": {
-    "lego": [
-      "meeting",
-      "聚会"
-    ],
-    "type": "A",
-    "new": true,
-    "is_final_lego": true,
-    "current_seed_legos_available": [
-      [
-        "They want",
-        "他们想"
-      ],
-      [
-        "want to spend more time",
-        "想花更多的时间"
-      ],
-      [
-        "to spend more time",
-        "花更多的时间"
-      ],
-      [
-        "to spend",
-        "花"
-      ],
-      [
-        "more time",
-        "更多的时间"
-      ],
-      [
-        "more",
-        "更多的"
-      ],
-      [
-        "meeting as a group",
-        "作为一个小组聚会"
-      ],
-      [
-        "as a group",
-        "作为一个小组"
-      ],
-      [
-        "a group",
-        "一个小组"
-      ],
-      [
-        "group",
-        "小组"
-      ]
-    ],
-    "practice_phrases": [
-      [
-        "The meeting",
-        "这个聚会",
-        null,
-        1
-      ],
-      [
-        "Our meeting",
-        "我们的聚会",
-        null,
-        1
-      ],
-      [
-        "A meeting today",
-        "今天的聚会",
-        null,
-        2
-      ],
-      [
-        "The meeting started",
-        "这个聚会开始了",
-        null,
-        2
-      ],
-      [
-        "I'm going to the meeting",
-        "我就要去聚会",
-        null,
-        3
-      ],
-      [
-        "We have a meeting today",
-        "我们今天有聚会",
-        null,
-        3
-      ],
-      [
-        "The meeting is very important",
-        "这个聚会很重要",
-        null,
-        4
-      ],
-      [
-        "I enjoyed the meeting yesterday",
-        "我昨天享受了这个聚会",
-        null,
-        4
-      ],
-      [
-        "We want to have more meetings to learn",
-        "我们想有更多的聚会学",
-        null,
-        5
-      ],
-      [
-        "They want to spend more time meeting as a group.",
-        "他们想花更多的时间作为一个小组聚会。",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    }
+    ]
   }
 }

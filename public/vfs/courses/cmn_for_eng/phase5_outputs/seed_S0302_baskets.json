@@ -408,17 +408,13 @@
       [
         "don't want / doesn't want",
         "不想"
-      ],
-      [
-        "she doesn't want",
-        "她不想"
       ]
     ],
     "is_final_lego": false,
     "practice_phrases": [
       [
-        "I don't want to live in a city",
-        "我不想住在城市里",
+        "She doesn't want to live in a city",
+        "她不想住在城市里",
         null,
         2
       ],
@@ -429,14 +425,8 @@
         2
       ],
       [
-        "She doesn't want to live in a city",
-        "她不想住在城市里",
-        null,
-        3
-      ],
-      [
-        "They don't want to live in a city",
-        "他们不想住在城市里",
+        "I don't want to live in a city",
+        "我不想住在城市里",
         null,
         3
       ],
@@ -444,35 +434,41 @@
         "She said she doesn't want to live in a city",
         "她说她不想住在城市里",
         null,
-        4
+        3
       ],
       [
-        "I don't want to live in a big city",
-        "我不想住在大城市里",
+        "She doesn't want to live in a city anymore",
+        "她不想再住在城市里了",
         null,
         4
       ],
       [
-        "He doesn't want to live in a city right now",
-        "他现在不想住在城市里",
+        "He said he doesn't want to live in a city",
+        "他说他不想住在城市里",
+        null,
+        4
+      ],
+      [
+        "She told me she doesn't want to live in a city",
+        "她告诉我她不想住在城市里",
         null,
         5
       ],
       [
-        "She doesn't want to live in a city with her friend",
-        "她不想和她的朋友住在城市里",
+        "I don't want to live in a city with other people",
+        "我不想和其他人住在城市里",
         null,
         5
       ],
       [
-        "I don't want to live in a city where people speak English",
-        "我不想住在人说英语的城市里",
+        "She said that she doesn't want to live in a city anymore",
+        "她说她不想再住在城市里了",
         null,
         6
       ],
       [
-        "She said she doesn't want to live in a city anymore",
-        "她说她不想再住在城市里",
+        "She said that she doesn't want to live in a city",
+        "她说她不想住在城市里",
         null,
         6
       ]
@@ -480,33 +476,33 @@
     "phrase_distribution": {
       "really_short_1_2": 2,
       "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "longer_4_5": 4,
+      "long_6_plus": 2
     },
     "components": [
       [
-        "不",
-        "not"
+        null,
+        null
       ],
       [
-        "想",
-        "want"
+        null,
+        null
       ],
       [
-        "住",
-        "live"
+        null,
+        null
       ],
       [
-        "在",
-        "in"
+        null,
+        null
       ],
       [
-        "城市",
-        "city"
+        null,
+        null
       ],
       [
-        "里",
-        "in"
+        null,
+        null
       ]
     ]
   },
