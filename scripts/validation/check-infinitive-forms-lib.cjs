@@ -116,12 +116,21 @@ function analyzeLego(lego, seedId, targetLang) {
   const knownText = known.trim();
   const targetText = target.trim();
 
-  // ONLY check if target STARTS with an infinitive
-  if (!startsWithTargetInfinitive(targetText, targetLang)) {
-    return violations; // Skip - target is not an infinitive
+  // Check if we can detect infinitives in target language
+  const canDetectTargetInfinitives = ['spa', 'es', 'fra', 'fr', 'ita', 'it'].includes(targetLang);
+
+  if (canDetectTargetInfinitives) {
+    // For Romance languages: check if target STARTS with infinitive
+    if (!startsWithTargetInfinitive(targetText, targetLang)) {
+      return violations; // Skip - target is not an infinitive
+    }
+  } else {
+    // For languages where we can't detect infinitives (Chinese, etc.):
+    // Check all LEGOs that start with bare infinitive in English
+    // We'll assume these SHOULD have "to" unless there's a good reason
   }
 
-  // RULE 1: Target is infinitive, so English should have "to"
+  // RULE 1: Check if English starts with bare infinitive without "to"
   if (startsWithBareInfinitive(knownText)) {
     const hasModal = containsModal(knownText);
     const hasBareInfinitiveTrigger = containsBareInfinitiveTrigger(knownText);
@@ -135,7 +144,9 @@ function analyzeLego(lego, seedId, targetLang) {
         target: targetText,
         known: knownText,
         severity: 'HIGH',
-        message: `Target infinitive "${targetText}" should map to "to ${knownText}"`,
+        message: canDetectTargetInfinitives
+          ? `Target infinitive "${targetText}" should map to "to ${knownText}"`
+          : `Bare infinitive "${knownText}" should probably be "to ${knownText}"`,
         suggestion: `to ${knownText}`
       });
     }
@@ -155,7 +166,9 @@ function analyzeLego(lego, seedId, targetLang) {
         target: targetText,
         known: knownText,
         severity: 'HIGH',
-        message: `Target infinitive "${targetText}" should map to "to ${knownText}"`,
+        message: canDetectTargetInfinitives
+          ? `Target infinitive "${targetText}" should map to "to ${knownText}"`
+          : `Composite phrase "${knownText}" should probably be "to ${knownText}"`,
         suggestion: `to ${knownText}`
       });
     }

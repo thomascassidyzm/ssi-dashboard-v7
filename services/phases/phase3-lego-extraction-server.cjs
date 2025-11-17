@@ -910,6 +910,239 @@ async function notifyOrchestrator(courseCode, status) {
 }
 
 /**
+ * Spawn Claude Code sessions for re-extracting colliding seeds
+ * One session per seed with collision-specific chunking instructions
+ */
+async function spawnReextractionSessions(courseCode, job) {
+  console.log(`\n[Phase 3 Re-extraction] Starting spawning for ${job.affectedSeeds.length} seeds...`);
+
+  const spawnClaudeWebAgent = await loadWebAgentSpawner();
+
+  if (!spawnClaudeWebAgent) {
+    console.error(`[Phase 3 Re-extraction] ❌ Web agent spawner not available`);
+    job.status = 'failed';
+    job.error = 'Web agent spawner not available';
+    return;
+  }
+
+  job.status = 'spawning';
+
+  const courseDir = path.join(VFS_ROOT, courseCode);
+  const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+  const seedPairs = await fs.readJson(seedPairsPath);
+
+  // Spawn sessions (batch of 10 at a time to avoid overwhelming system)
+  const BATCH_SIZE = 10;
+  let spawned = 0;
+
+  for (let i = 0; i < job.affectedSeeds.length; i += BATCH_SIZE) {
+    const batch = job.affectedSeeds.slice(i, i + BATCH_SIZE);
+
+    console.log(`\n[Phase 3 Re-extraction] Spawning batch ${Math.floor(i / BATCH_SIZE) + 1}: Seeds ${batch[0]} to ${batch[batch.length - 1]}`);
+
+    for (const seedId of batch) {
+      const collisionInstructions = job.collisionManifest[seedId] || [];
+
+      // Generate prompt with collision context
+      const prompt = generateReextractionPrompt(courseCode, seedId, seedPairs, collisionInstructions);
+
+      try {
+        await spawnClaudeWebAgent(prompt, 3, 'safari');
+        spawned++;
+        job.milestones.orchestratorsSpawned = spawned;
+        console.log(`    ✅ ${seedId} session spawned (${spawned}/${job.affectedSeeds.length})`);
+
+        // Brief delay between spawns
+        if (i + batch.indexOf(seedId) < job.affectedSeeds.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+      } catch (error) {
+        console.error(`    ❌ Failed to spawn ${seedId}:`, error.message);
+        if (!job.warnings) job.warnings = [];
+        job.warnings.push(`Failed to spawn ${seedId}: ${error.message}`);
+      }
+    }
+
+    // Longer delay between batches
+    if (i + BATCH_SIZE < job.affectedSeeds.length) {
+      console.log(`    Waiting 10s before next batch...`);
+      await new Promise(resolve => setTimeout(resolve, 10000));
+    }
+  }
+
+  job.status = 'waiting_for_completion';
+  console.log(`\n[Phase 3 Re-extraction] ✅ Spawned ${spawned}/${job.affectedSeeds.length} sessions`);
+  console.log(`[Phase 3 Re-extraction] Monitor browser tabs for LEGO re-extraction`);
+}
+
+/**
+ * Generate re-extraction prompt with collision-specific chunking instructions
+ */
+function generateReextractionPrompt(courseCode, seedId, seedPairs, collisionInstructions) {
+  // Get the seed pair
+  const seedData = seedPairs.translations?.[seedId];
+  if (!seedData) {
+    throw new Error(`Seed ${seedId} not found in seed_pairs.json`);
+  }
+
+  const [knownSentence, targetSentence] = seedData;
+
+  // Format collision instructions
+  let collisionContext = '';
+  if (collisionInstructions && collisionInstructions.length > 0) {
+    collisionContext = `
+
+## ⚠️ COLLISION FIX MODE - CHUNKING-UP REQUIRED
+
+**This seed has ${collisionInstructions.length} collision(s) that need fixing:**
+
+${collisionInstructions.map((c, i) => `
+**Collision ${i + 1}: "${c.collision_key}"**
+- This KNOWN phrase already exists in the registry with DIFFERENT targets
+- Conflicting targets: ${c.conflicting_targets.map(t => `"${t}"`).join(', ')}
+- **DO NOT** extract "${c.collision_key}" as a standalone LEGO
+- **INSTEAD**: Chunk UP with adjacent words to add disambiguating context
+- Use ONLY words from the seed sentence - DO NOT add new words
+`).join('\n')}
+
+---
+`;
+  }
+
+  return `
+# Phase 3 Re-extraction: Fix Collisions for ${seedId}
+
+## 📚 STEP 1: READ PHASE INTELLIGENCE
+
+**Read this document NOW** (430 lines - v7.0):
+- https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs_v7.md
+- Or local: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
+
+---
+${collisionContext}
+
+## 📖 YOUR TASK: Re-extract ${seedId}
+
+**Seed Pair:**
+- **Known**: ${knownSentence}
+- **Target**: ${targetSentence}
+
+**Your job:**
+1. Extract LEGOs from this seed following Phase 3 v7.0 methodology
+2. Apply the TWO CORE HEURISTICS (from intelligence doc)
+3. **CRITICAL**: Apply collision-fixing chunking instructions above
+4. Save output to: \`public/vfs/courses/${courseCode}/reextraction/${seedId}_legos.json\`
+
+**Output Format:**
+\`\`\`json
+{
+  "seed_id": "${seedId}",
+  "seed_pair": ["${knownSentence}", "${targetSentence}"],
+  "reextracted_at": "<ISO timestamp>",
+  "collision_fixes_applied": ${collisionInstructions.length},
+  "legos": [
+    {
+      "id": "${seedId}L01",
+      "type": "A" or "M",
+      "target": "word",
+      "known": "word",
+      "new": true,
+      "components": [["word", "word"]]  // For M-types only
+    }
+  ]
+}
+\`\`\`
+
+## 🎬 EXECUTE NOW
+
+1. Read the Phase Intelligence doc
+2. Extract LEGOs with collision-aware chunking
+3. Save the JSON file
+4. Commit and push (Claude Code on Web handles git automatically)
+5. Branch name: \`claude/phase3-reextract-${seedId}-${courseCode}\`
+`;
+}
+
+/**
+ * POST /reextract
+ * Re-extract specific seeds with collision-fixing chunking instructions
+ * Called by orchestrator after LUT check finds collisions
+ */
+app.post('/reextract', async (req, res) => {
+  const { courseCode, affectedSeeds, manifest, mode } = req.body;
+
+  if (!courseCode || !affectedSeeds || !Array.isArray(affectedSeeds)) {
+    return res.status(400).json({
+      error: 'courseCode and affectedSeeds array required'
+    });
+  }
+
+  console.log(`\n[Phase 3 Re-extraction] Starting collision fix for ${courseCode}`);
+  console.log(`[Phase 3 Re-extraction] Affected seeds: ${affectedSeeds.length}`);
+  console.log(`[Phase 3 Re-extraction] Mode: ${mode || 'collision_fix'}`);
+
+  try {
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+
+    if (!await fs.pathExists(seedPairsPath)) {
+      return res.status(404).json({
+        error: 'seed_pairs.json not found',
+        courseCode
+      });
+    }
+
+    // Create reextraction job
+    const job = {
+      courseCode,
+      mode: 'reextraction',
+      affectedSeeds,
+      totalSeeds: affectedSeeds.length,
+      collisionManifest: manifest,
+      status: 'preparing',
+      startedAt: new Date().toISOString(),
+      branches: [],
+      milestones: {
+        orchestratorsSpawned: 0,
+        orchestratorsTotal: affectedSeeds.length,
+        branchesDetected: 0,
+        branchesExpected: affectedSeeds.length,
+        mergeStartedAt: null,
+        mergeCompletedAt: null
+      },
+      error: null
+    };
+
+    activeJobs.set(courseCode, job);
+
+    console.log(`[Phase 3 Re-extraction] Job created for ${courseCode}`);
+    console.log(`[Phase 3 Re-extraction] Will re-extract ${affectedSeeds.length} seeds with chunking instructions`);
+
+    // Return immediately - actual spawning happens async
+    res.json({
+      success: true,
+      courseCode,
+      jobId: courseCode,
+      affectedSeeds: affectedSeeds.length,
+      message: `Re-extraction job started for ${affectedSeeds.length} seeds`,
+      status: 'preparing'
+    });
+
+    // Spawn re-extraction sessions asynchronously
+    setTimeout(async () => {
+      await spawnReextractionSessions(courseCode, job);
+    }, 100);
+
+  } catch (error) {
+    console.error(`[Phase 3 Re-extraction] Error:`, error.message);
+    return res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
  * GET /health
  * Health check
  */

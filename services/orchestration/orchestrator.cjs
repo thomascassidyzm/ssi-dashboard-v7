@@ -1274,6 +1274,81 @@ app.post('/api/courses/:courseCode/phase/3/infinitive-check', async (req, res) =
 });
 
 /**
+ * POST /api/courses/:courseCode/phase/3/fix-collisions
+ * Re-extract colliding LEGOs with chunking-up instructions
+ * Uses reextraction_manifest.json to trigger targeted Phase 3 re-run
+ */
+app.post('/api/courses/:courseCode/phase/3/fix-collisions', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`\n🔧 Starting collision fix for ${courseCode}...`);
+
+  try {
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const manifestPath = path.join(courseDir, 'lego_pairs_reextraction_manifest.json');
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+
+    // Check for reextraction manifest
+    if (!await fs.pathExists(manifestPath)) {
+      return res.status(404).json({
+        error: 'No reextraction manifest found. Run LUT Check first.',
+        courseCode
+      });
+    }
+
+    // Check for seed_pairs.json
+    if (!await fs.pathExists(seedPairsPath)) {
+      return res.status(404).json({
+        error: 'seed_pairs.json not found. Run Phase 1 first.',
+        courseCode
+      });
+    }
+
+    const manifest = await fs.readJson(manifestPath);
+    const affectedSeeds = manifest.affected_seeds || [];
+
+    if (affectedSeeds.length === 0) {
+      return res.json({
+        success: true,
+        message: 'No collisions to fix',
+        affectedSeeds: 0
+      });
+    }
+
+    console.log(`   Found ${affectedSeeds.length} seeds with collisions`);
+    console.log(`   Delegating to Phase 3 server for re-extraction...`);
+
+    // Delegate to Phase 3 server with collision instructions
+    const axios = require('axios');
+    const phase3Response = await axios.post(`${PHASE_SERVERS[3]}/reextract`, {
+      courseCode,
+      affectedSeeds,
+      manifest: manifest.violations_by_seed,
+      mode: 'collision_fix'
+    }, {
+      timeout: 300000 // 5 minute timeout for re-extraction
+    });
+
+    console.log(`   ✅ Phase 3 re-extraction started`);
+
+    res.json({
+      success: true,
+      courseCode,
+      affectedSeeds: affectedSeeds.length,
+      message: `Re-extracting ${affectedSeeds.length} seeds with chunking-up instructions`,
+      jobId: phase3Response.data.jobId || courseCode
+    });
+
+  } catch (error) {
+    console.error(`   ❌ Collision fix error:`, error.message);
+    res.status(500).json({
+      error: error.message,
+      courseCode
+    });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/baskets/gaps
  * Analyze basket gaps after LEGO re-extraction
  * Fetches data from GitHub main branch, not local files
