@@ -1,744 +1,245 @@
 {
-  "S0006L01": {
-    "lego": [
-      "to remember",
-      "记住"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "to remember",
-        "记住",
-        null,
-        1
-      ],
-      [
-        "I want to remember",
-        "我想记住",
-        null,
-        2
-      ],
-      [
-        "I'm trying to remember",
-        "我在试着记住",
-        null,
-        2
-      ],
-      [
-        "I'm going to remember",
-        "我要记住",
-        null,
-        3
-      ],
-      [
-        "how to remember",
-        "怎么记住",
-        null,
-        3
-      ],
-      [
-        "trying to remember often",
-        "试着经常记住",
-        null,
-        4
-      ],
-      [
-        "I want to remember now",
-        "我现在想记住",
-        null,
-        4
-      ],
-      [
-        "I'm going to remember with you",
-        "我要和你记住",
-        null,
-        5
-      ],
-      [
-        "I'm trying to remember as often as possible",
-        "我在试着尽可能经常地记住",
-        null,
-        6
-      ],
-      [
-        "how to remember something in Chinese",
-        "怎么用中文记住一些东西",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 2
-    },
-    "_metadata": {
-      "lego_id": "S0006L01",
-      "seed_context": {
-        "known": "我在试着记住一个词。",
-        "target": "I'm trying to remember a word."
-      }
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0006L02": {
-    "lego": [
-      "a",
-      "一个"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "to remember",
-        "记住"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "a",
-        "一个",
-        null,
-        1
-      ],
-      [
-        "I want to a",
-        "我想一个",
-        null,
-        2
-      ],
-      [
-        "to remember a",
-        "记住一个",
-        null,
-        2
-      ],
-      [
-        "a thing",
-        "一个东西",
-        null,
-        3
-      ],
-      [
-        "I'm trying to a",
-        "我在试着一个",
-        null,
-        3
-      ],
-      [
-        "I'm going to a",
-        "我要一个",
-        null,
-        4
-      ],
-      [
-        "to learn a",
-        "学习一个",
-        null,
-        4
-      ],
-      [
-        "I want to remember a now",
-        "我现在想记住一个",
-        null,
-        5
-      ],
-      [
-        "I'm trying to remember a",
-        "我在试着记住一个",
-        null,
-        5
-      ],
-      [
-        "how to say a in Chinese",
-        "怎么用中文说一个",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 2
-    },
-    "_metadata": {
-      "lego_id": "S0006L02",
-      "seed_context": {
-        "known": "我在试着记住一个词。",
-        "target": "I'm trying to remember a word."
-      }
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0006L03": {
-    "lego": [
-      "word",
-      "词"
-    ],
-    "type": "A",
-    "current_seed_legos_available": [
-      [
+  "legos": {
+    "S0006L01": {
+      "lego": [
         "to remember",
         "记住"
       ],
-      [
-        "a",
-        "一个"
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["记住", "remember", null, 1],
+        ["我想记住", "I want to remember", null, 2],
+        ["我在试着记住", "I'm trying to remember", null, 2],
+        ["怎么记住", "how to remember", null, 3],
+        ["经常记住", "remember often", null, 3],
+        ["我要和你记住", "I'm going to remember with you", null, 4],
+        ["我想现在记住", "I want to remember now", null, 4],
+        ["我在试着经常记住", "I'm trying to remember often", null, 5],
+        ["我要试着记住", "I'm going to try to remember", null, 5],
+        ["怎么用中文记住一些东西", "how to remember something in Chinese", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [
+        ["记", "remember"],
+        ["住", "firmly"]
       ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "word",
-        "词",
-        null,
-        1
-      ],
-      [
-        "a word",
-        "一个词",
-        null,
-        2
-      ],
-      [
-        "I want to word",
-        "我想词",
-        null,
-        2
-      ],
-      [
-        "to remember word",
-        "记住词",
-        null,
-        3
-      ],
-      [
-        "Chinese word",
-        "中文词",
-        null,
-        3
-      ],
-      [
-        "I'm trying to word",
-        "我在试着词",
-        null,
-        4
-      ],
-      [
-        "to remember a word",
-        "记住一个词",
-        null,
-        4
-      ],
-      [
-        "I want to a word now",
-        "我现在想一个词",
-        null,
-        5
-      ],
-      [
-        "how to say word in Chinese",
-        "怎么用中文说词",
-        null,
-        6
-      ],
-      [
-        "I'm trying to remember a word",
-        "我在试着记住一个词",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 2
     },
-    "_metadata": {
-      "lego_id": "S0006L03",
-      "seed_context": {
-        "known": "我在试着记住一个词。",
-        "target": "I'm trying to remember a word."
-      }
-    }
-  },
-  "S0006L04": {
-    "lego": [
-      "a word",
-      "一个词"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "to remember",
-        "记住"
-      ],
-      [
+    "S0006L02": {
+      "lego": [
         "a",
         "一个"
       ],
-      [
-        "word",
-        "词"
+      "type": "M",
+      "current_seed_legos_available": [
+        ["to remember", "记住"]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["一个", "a", null, 1],
+        ["记住一个", "remember a", null, 2],
+        ["我想一个", "I want a", null, 2],
+        ["一个东西", "a thing", null, 3],
+        ["说一个", "say a", null, 3],
+        ["我要学习一个", "I'm going to learn a", null, 4],
+        ["和你一个", "with you a", null, 4],
+        ["我在试着记住一个", "I'm trying to remember a", null, 5],
+        ["说一个东西", "say a thing", null, 5],
+        ["我想用中文说一个", "I want to say a in Chinese", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [
+        ["一", "one"],
+        ["个", "classifier"]
       ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "a word",
-        "一个词",
-        null,
-        1
-      ],
-      [
-        "I want to a word",
-        "我想一个词",
-        null,
-        2
-      ],
-      [
-        "to remember a word",
-        "记住一个词",
-        null,
-        2
-      ],
-      [
-        "I'm trying to a word",
-        "我在试着一个词",
-        null,
-        3
-      ],
-      [
-        "how to a word",
-        "怎么一个词",
-        null,
-        3
-      ],
-      [
-        "a word in Chinese",
-        "用中文一个词",
-        null,
-        4
-      ],
-      [
-        "I'm going to a word",
-        "我要一个词",
-        null,
-        4
-      ],
-      [
-        "I want to remember a word",
-        "我想记住一个词",
-        null,
-        5
-      ],
-      [
-        "I'm trying to remember a word",
-        "我在试着记住一个词",
-        null,
-        5
-      ],
-      [
-        "how to say a word in Chinese",
-        "怎么用中文说一个词",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 3,
-      "quite_short_3": 2,
-      "longer_4_5": 3,
-      "long_6_plus": 2
     },
-    "_metadata": {
-      "lego_id": "S0006L04",
-      "seed_context": {
-        "known": "我在试着记住一个词。",
-        "target": "I'm trying to remember a word."
-      }
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0006L05": {
-    "lego": [
-      "to remember a word",
-      "记住一个词"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "to remember",
-        "记住"
-      ],
-      [
-        "a",
-        "一个"
-      ],
-      [
+    "S0006L03": {
+      "lego": [
         "word",
         "词"
       ],
-      [
-        "a word",
-        "一个词"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "to remember a word",
-        "记住一个词",
-        null,
-        2
+      "type": "A",
+      "current_seed_legos_available": [
+        ["to remember", "记住"],
+        ["a", "一个"]
       ],
-      [
-        "I want to remember a word",
-        "我想记住一个词",
-        null,
-        3
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["词", "word", null, 1],
+        ["一个词", "a word", null, 2],
+        ["记住词", "remember words", null, 2],
+        ["中文词", "Chinese word", null, 3],
+        ["说词", "say words", null, 3],
+        ["我想学习词", "I want to learn words", null, 4],
+        ["记住一个词", "remember a word", null, 4],
+        ["我在试着说词", "I'm trying to say words", null, 5],
+        ["怎么说词", "how to say words", null, 5],
+        ["我在试着记住一个词", "I'm trying to remember a word", null, 6]
       ],
-      [
-        "I'm trying to remember a word",
-        "我在试着记住一个词",
-        null,
-        3
-      ],
-      [
-        "how to remember a word",
-        "怎么记住一个词",
-        null,
-        4
-      ],
-      [
-        "I'm going to remember a word",
-        "我要记住一个词",
-        null,
-        4
-      ],
-      [
-        "to remember a word often",
-        "经常记住一个词",
-        null,
-        5
-      ],
-      [
-        "I want to remember a word now",
-        "我现在想记住一个词",
-        null,
-        5
-      ],
-      [
-        "trying to remember a word with you",
-        "试着和你记住一个词",
-        null,
-        6
-      ],
-      [
-        "I'm trying to remember a word in Chinese",
-        "我在试着用中文记住一个词",
-        null,
-        7
-      ],
-      [
-        "how to remember a word as often as possible",
-        "怎么尽可能经常地记住一个词",
-        null,
-        8
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 1,
-      "quite_short_3": 2,
-      "longer_4_5": 4,
-      "long_6_plus": 3
-    },
-    "_metadata": {
-      "lego_id": "S0006L05",
-      "seed_context": {
-        "known": "我在试着记住一个词。",
-        "target": "I'm trying to remember a word."
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
       }
     },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0006L06": {
-    "lego": [
-      "trying to remember",
-      "试着记住"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "to remember",
-        "记住"
-      ],
-      [
-        "a",
-        "一个"
-      ],
-      [
-        "word",
-        "词"
-      ],
-      [
+    "S0006L04": {
+      "lego": [
         "a word",
         "一个词"
       ],
-      [
-        "to remember a word",
-        "记住一个词"
+      "type": "M",
+      "current_seed_legos_available": [
+        ["to remember", "记住"],
+        ["a", "一个"],
+        ["word", "词"]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["一个词", "a word", null, 1],
+        ["记住一个词", "remember a word", null, 2],
+        ["我想一个词", "I want a word", null, 2],
+        ["说一个词", "say a word", null, 3],
+        ["我在试着一个词", "I'm trying a word", null, 3],
+        ["用中文一个词", "a word in Chinese", null, 4],
+        ["我要学习一个词", "I'm going to learn a word", null, 4],
+        ["我想记住一个词", "I want to remember a word", null, 5],
+        ["我在试着记住一个词", "I'm trying to remember a word", null, 5],
+        ["怎么用中文说一个词", "how to say a word in Chinese", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [
+        ["一个", "a"],
+        ["词", "word"]
       ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "trying to remember",
-        "试着记住",
-        null,
-        2
-      ],
-      [
-        "I'm trying to remember",
-        "我在试着记住",
-        null,
-        3
-      ],
-      [
-        "trying to remember a word",
-        "试着记住一个词",
-        null,
-        3
-      ],
-      [
-        "trying to remember often",
-        "试着经常记住",
-        null,
-        4
-      ],
-      [
-        "trying to remember with you",
-        "试着和你记住",
-        null,
-        4
-      ],
-      [
-        "I'm trying to remember a",
-        "我在试着记住一个",
-        null,
-        5
-      ],
-      [
-        "I'm trying to remember now",
-        "我现在在试着记住",
-        null,
-        5
-      ],
-      [
-        "trying to remember something in Chinese",
-        "试着用中文记住一些东西",
-        null,
-        6
-      ],
-      [
-        "I'm trying to remember a word",
-        "我在试着记住一个词",
-        null,
-        6
-      ],
-      [
-        "trying to remember as often as possible",
-        "试着尽可能经常地记住",
-        null,
-        7
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 1,
-      "quite_short_3": 2,
-      "longer_4_5": 4,
-      "long_6_plus": 3
     },
-    "_metadata": {
-      "lego_id": "S0006L06",
-      "seed_context": {
-        "known": "我在试着记住一个词。",
-        "target": "I'm trying to remember a word."
-      }
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0006L07": {
-    "lego": [
-      "trying to remember a word",
-      "试着记住一个词"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "to remember",
-        "记住"
-      ],
-      [
-        "a",
-        "一个"
-      ],
-      [
-        "word",
-        "词"
-      ],
-      [
-        "a word",
-        "一个词"
-      ],
-      [
+    "S0006L05": {
+      "lego": [
         "to remember a word",
         "记住一个词"
       ],
-      [
+      "type": "M",
+      "current_seed_legos_available": [
+        ["to remember", "记住"],
+        ["a", "一个"],
+        ["word", "词"],
+        ["a word", "一个词"]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["记住一个词", "remember a word", null, 1],
+        ["我想记住一个词", "I want to remember a word", null, 2],
+        ["我在试着记住一个词", "I'm trying to remember a word", null, 2],
+        ["怎么记住一个词", "how to remember a word", null, 3],
+        ["我要记住一个词", "I'm going to remember a word", null, 3],
+        ["经常记住一个词", "remember a word often", null, 4],
+        ["现在我想记住一个词", "I want to remember a word now", null, 4],
+        ["和你记住一个词", "remember a word with you", null, 5],
+        ["我在试着用中文记住一个词", "I'm trying to remember a word in Chinese", null, 5],
+        ["怎么尽可能经常地记住一个词", "how to remember a word as often as possible", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [
+        ["记住", "remember"],
+        ["一个词", "a word"]
+      ]
+    },
+    "S0006L06": {
+      "lego": [
         "trying to remember",
         "试着记住"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        ["to remember", "记住"],
+        ["a", "一个"],
+        ["word", "词"],
+        ["a word", "一个词"],
+        ["to remember a word", "记住一个词"]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["试着记住", "trying to remember", null, 1],
+        ["我在试着记住", "I'm trying to remember", null, 2],
+        ["试着记住一个词", "trying to remember a word", null, 2],
+        ["经常试着记住", "trying to remember often", null, 3],
+        ["和你试着记住", "trying to remember with you", null, 3],
+        ["我在试着记住一个", "I'm trying to remember a", null, 4],
+        ["现在在试着记住", "trying to remember now", null, 4],
+        ["我在试着经常记住", "I'm trying to remember often", null, 5],
+        ["试着用中文记住一些东西", "trying to remember something in Chinese", null, 5],
+        ["我在试着记住一个词", "I'm trying to remember a word", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [
+        ["试着", "trying to"],
+        ["记住", "remember"]
       ]
-    ],
-    "is_final_lego": true,
-    "practice_phrases": [
-      [
+    },
+    "S0006L07": {
+      "lego": [
         "trying to remember a word",
-        "试着记住一个词",
-        null,
-        3
+        "试着记住一个词"
       ],
-      [
-        "I'm trying to remember a word",
-        "我在试着记住一个词",
-        null,
-        4
+      "type": "M",
+      "current_seed_legos_available": [
+        ["to remember", "记住"],
+        ["a", "一个"],
+        ["word", "词"],
+        ["a word", "一个词"],
+        ["to remember a word", "记住一个词"],
+        ["trying to remember", "试着记住"]
       ],
-      [
-        "trying to remember a word now",
-        "现在试着记住一个词",
-        null,
-        5
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["试着记住一个词", "trying to remember a word", null, 1],
+        ["我在试着记住一个词", "I'm trying to remember a word", null, 2],
+        ["现在试着记住一个词", "trying to remember a word now", null, 2],
+        ["经常试着记住一个词", "trying to remember a word often", null, 3],
+        ["我想试着记住一个词", "I want to try to remember a word", null, 3],
+        ["怎么试着记住一个词", "how to try to remember a word", null, 4],
+        ["用中文试着记住一个词", "trying to remember a word in Chinese", null, 4],
+        ["我在试着和你记住一个词", "I'm trying to remember a word with you", null, 5],
+        ["试着尽可能经常地记住一个词", "trying to remember a word as often as possible", null, 5],
+        ["我在试着记住一个词。", "I'm trying to remember a word.", null, 6]
       ],
-      [
-        "trying to remember a word often",
-        "经常试着记住一个词",
-        null,
-        5
-      ],
-      [
-        "how to trying to remember a word",
-        "怎么试着记住一个词",
-        null,
-        6
-      ],
-      [
-        "trying to remember a word in Chinese",
-        "试着用中文记住一个词",
-        null,
-        6
-      ],
-      [
-        "I want to trying to remember a word",
-        "我想试着记住一个词",
-        null,
-        6
-      ],
-      [
-        "I'm trying to remember a word with you",
-        "我在试着和你记住一个词",
-        null,
-        7
-      ],
-      [
-        "trying to remember a word as often as possible",
-        "试着尽可能经常地记住一个词",
-        null,
-        8
-      ],
-      [
-        "I'm trying to remember a word.",
-        "我在试着记住一个词。",
-        null,
-        4
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "components": [
+        ["试着", "trying to"],
+        ["记住", "remember"],
+        ["一个词", "a word"]
       ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 0,
-      "quite_short_3": 1,
-      "longer_4_5": 3,
-      "long_6_plus": 6
-    },
-    "_metadata": {
-      "lego_id": "S0006L07",
-      "seed_context": {
-        "known": "我在试着记住一个词。",
-        "target": "I'm trying to remember a word."
-      }
-    },
-    "components": [
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ],
-      [
-        null,
-        null
-      ]
-    ]
+    }
   }
 }
