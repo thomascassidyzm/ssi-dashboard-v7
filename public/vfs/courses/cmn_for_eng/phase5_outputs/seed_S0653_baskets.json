@@ -1,0 +1,24 @@
+{
+  "S0653L01": {
+    "lego": ["Do you mind", "您介意吗"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["You speak it", "您说它"],
+      ["Do you mind?", "您介意吗？"],
+      ["I can help you", "我可以帮您"],
+      ["Do you want to go?", "您想去吗？"],
+      ["Sir, do you mind?", "先生，您介意吗？"],
+      ["What do you need?", "您需要什么？"],
+      ["Madam, are you ready?", "女士，您准备好了吗？"],
+      ["Sir, do you need help?", "先生，您需要帮吗？"],
+      ["Madam, what do you think?", "女士，您认为怎么样？"],
+      ["Do you mind madam?", "您介意吗女士？"]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "_metadata": {"lego_id": "S0653L01", "seed_context": {"known": "Do you mind madam?", "target": "您介意吗女士？"}},
+    "components": [["您", "you (formal)"], ["介意", "mind"], ["吗", "question particle"]]
+  }
+}
