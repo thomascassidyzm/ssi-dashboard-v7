@@ -133,3 +133,24 @@ public/vfs/courses/*/phase3_collision_reextraction_manifest.json
 # Phase 5 outputs - track directory but let course-specific .gitignore control file tracking
 !public/vfs/courses/*/phase5_outputs/
 !public/vfs/courses/*/phase5_outputs/.gitignore
+dist/docs
+
+# Project management docs (local planning artifacts)
+.project/
+
+# Claude recovery prompts (local context, not needed in repo)
+.claude/recovery_prompts/
+
+# Session-specific documentation (ephemeral agent communications)
+docs/sessions/
+
+# Old logs (already gitignored via logs/ but being explicit)
+*.log
+
+# Recovered/temporary data directories
+recovered_phase5_seeds/
+phase3_s0201_s0668/
+
+# PM2 process management
+.pm2/
+ecosystem.config.js
