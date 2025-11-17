@@ -1,0 +1,148 @@
+{
+  "S0337L01": {
+    "lego": ["Do you think", "你觉得"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Do you think", "你觉得", null, 1],
+      ["Do you think she ought to", "你觉得她应该", null, 2],
+      ["Do you think it's important", "你觉得这很重要", null, 3],
+      ["Do you think he can build", "你觉得他可以建立", null, 3],
+      ["Do you think she can't provide", "你觉得她不能提供", null, 4],
+      ["Do you think he can add ideas", "你觉得他可以增加想法", null, 4],
+      ["Do you think she can't open the door", "你觉得她不能打开门", null, 5],
+      ["Do you think he can build a new life", "你觉得他可以建立新生活", null, 5],
+      ["Do you think he can let you hold the kitten", "你觉得他可以让你抱那只小猫", null, 6],
+      ["Do you think she can't provide all the answers", "你觉得她不能提供所有的答案", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [[null, null], [null, null]]
+  },
+  "S0337L03": {
+    "lego": ["can continue", "可以继续"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id": "S0337L01", "known": "Do you think", "target": "你觉得", "type": "M"}],
+    "practice_phrases": [
+      ["Can continue", "可以继续", null, 1],
+      ["He can continue", "他可以继续", null, 2],
+      ["Do you think he can continue", "你觉得他可以继续", null, 3],
+      ["She said he can continue", "她说他可以继续", null, 3],
+      ["He can continue to build", "他可以继续建立", null, 4],
+      ["Do you think she can continue to provide", "你觉得她可以继续提供", null, 4],
+      ["He said she can continue to hold the kitten", "他说她可以继续抱那只小猫", null, 5],
+      ["Do you think he can continue to add ideas", "你觉得他可以继续增加想法", null, 5],
+      ["Do you think she can continue to open the door", "你觉得她可以继续打开门", null, 6],
+      ["She said he can continue to build a new life", "她说他可以继续建立新生活", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [[null, null], [null, null]]
+  },
+  "S0337L04": {
+    "lego": ["continue", "继续"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0337L01", "known": "Do you think", "target": "你觉得", "type": "M"},
+      {"id": "S0337L03", "known": "can continue", "target": "可以继续", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Continue", "继续", null, 1],
+      ["He can continue", "他可以继续", null, 2],
+      ["She said continue", "她说继续", null, 3],
+      ["Do you think continue", "你觉得继续", null, 3],
+      ["He can continue to build", "他可以继续建立", null, 4],
+      ["She can continue to provide ideas", "她可以继续提供想法", null, 4],
+      ["Do you think he can continue to add", "你觉得他可以继续增加", null, 5],
+      ["She said he can continue to hold", "她说他可以继续抱", null, 5],
+      ["Do you think she can continue to open the door", "你觉得她可以继续打开门", null, 6],
+      ["He said she can continue to provide all the answers", "他说她可以继续提供所有的答案", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10
+  },
+  "S0337L05": {
+    "lego": ["continue to play", "继续玩"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0337L01", "known": "Do you think", "target": "你觉得", "type": "M"},
+      {"id": "S0337L03", "known": "can continue", "target": "可以继续", "type": "M"},
+      {"id": "S0337L04", "known": "continue", "target": "继续", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["Continue to play", "继续玩", null, 1],
+      ["He can continue to play", "他可以继续玩", null, 2],
+      ["Do you think continue to play", "你觉得继续玩", null, 3],
+      ["She said continue to play", "她说继续玩", null, 3],
+      ["Do you think he can continue to play", "你觉得他可以继续玩", null, 4],
+      ["She said he can continue to play", "她说他可以继续玩", null, 4],
+      ["Do you think she can continue to play", "你觉得她可以继续玩", null, 5],
+      ["He said she can continue to play", "他说她可以继续玩", null, 5],
+      ["Do you think he can continue to play with the kitten", "你觉得他可以继续和小猫玩", null, 6],
+      ["She said he can continue to play for his sister", "她说他可以为他妹妹继续玩", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [[null, null], [null, null]]
+  },
+  "S0337L06": {
+    "lego": ["play", "玩"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0337L01", "known": "Do you think", "target": "你觉得", "type": "M"},
+      {"id": "S0337L03", "known": "can continue", "target": "可以继续", "type": "M"},
+      {"id": "S0337L04", "known": "continue", "target": "继续", "type": "A"},
+      {"id": "S0337L05", "known": "continue to play", "target": "继续玩", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Play", "玩", null, 1],
+      ["He can play", "他可以玩", null, 2],
+      ["Do you think play", "你觉得玩", null, 3],
+      ["She said play", "她说玩", null, 3],
+      ["He can continue to play", "他可以继续玩", null, 4],
+      ["Do you think he can play", "你觉得他可以玩", null, 4],
+      ["She said he can continue to play", "她说他可以继续玩", null, 5],
+      ["Do you think she can continue to play", "你觉得她可以继续玩", null, 5],
+      ["Do you think he can play with the kitten", "你觉得他可以和小猫玩", null, 6],
+      ["She said he can continue to play for his sister", "她说他可以为他妹妹继续玩", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10
+  },
+  "S0337L07": {
+    "lego": ["?", "吗"],
+    "type": "A",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {"id": "S0337L01", "known": "Do you think", "target": "你觉得", "type": "M"},
+      {"id": "S0337L03", "known": "can continue", "target": "可以继续", "type": "M"},
+      {"id": "S0337L04", "known": "continue", "target": "继续", "type": "A"},
+      {"id": "S0337L05", "known": "continue to play", "target": "继续玩", "type": "M"},
+      {"id": "S0337L06", "known": "play", "target": "玩", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["Question particle", "吗", null, 1],
+      ["Can he play?", "他可以玩吗", null, 2],
+      ["Do you think he can?", "你觉得他可以吗", null, 3],
+      ["Can he continue to play?", "他可以继续玩吗", null, 3],
+      ["Do you think he can play?", "你觉得他可以玩吗", null, 4],
+      ["Do you think she can continue?", "你觉得她可以继续吗", null, 4],
+      ["Do you think he can continue to play?", "你觉得他可以继续玩吗", null, 5],
+      ["Do you think she can continue to play?", "你觉得她可以继续玩吗", null, 5],
+      ["Do you think he can continue to play with the kitten?", "你觉得他可以继续和小猫玩吗", null, 6],
+      ["Do you think she can continue to open the door?", "你觉得她可以继续打开门吗", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "S0338L01": {
+    "lego": ["Badly", "严重地"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Badly", "严重地", null, 1],
+      ["It's important badly", "这很重要严重地", null, 2],
+      ["She can't badly", "她不能严重地", null, 3],
+      ["He can play badly", "他可以严重地玩", null, 3],
+      ["She can't provide badly", "她不能严重地提供", null, 4],
+      ["He can build badly", "他可以严重地建立", null, 4],
+      ["She can't open the door badly", "她不能严重地打开门", null, 5],
+      ["He can continue to play badly", "他可以严重地继续玩", null, 5],
+      ["Do you think he can play badly", "你觉得他可以严重地玩吗", null, 6],
+      ["She said he can continue to play badly", "她说他可以严重地继续玩", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [[null, null], [null, null]]
+  }
+}

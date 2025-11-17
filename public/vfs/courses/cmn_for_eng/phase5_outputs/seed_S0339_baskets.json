@@ -1,0 +1,92 @@
+{
+  "S0339L03": {
+    "lego": ["he's hurt himself quite badly", "他伤得很严重"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["He's hurt himself quite badly", "他伤得很严重", null, 1],
+      ["I think he's hurt himself quite badly", "我觉得他伤得很严重", null, 2],
+      ["She said he's hurt himself quite badly", "她说他伤得很严重", null, 3],
+      ["Do you think he's hurt himself quite badly", "你觉得他伤得很严重", null, 3],
+      ["No I think he's hurt himself quite badly", "不我觉得他伤得很严重", null, 4],
+      ["She said I think he's hurt himself quite badly", "她说我觉得他伤得很严重", null, 4],
+      ["Do you think he's hurt himself quite badly playing", "你觉得他玩伤得很严重", null, 5],
+      ["I think he's hurt himself quite badly with the kitten", "我觉得他和小猫伤得很严重", null, 5],
+      ["She said do you think he's hurt himself quite badly", "她说你觉得他伤得很严重吗", null, 6],
+      ["No I think he's hurt himself quite badly and can't continue", "不我觉得他伤得很严重不能继续", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [[null, null], [null, null], [null, null]]
+  },
+  "S0339L04": {
+    "lego": ["hurt himself quite badly", "伤得很严重"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [{"id": "S0339L03", "known": "he's hurt himself quite badly", "target": "他伤得很严重", "type": "M"}],
+    "practice_phrases": [
+      ["Hurt himself quite badly", "伤得很严重", null, 1],
+      ["He's hurt himself quite badly", "他伤得很严重", null, 2],
+      ["She can't hurt himself quite badly", "她不能伤得很严重", null, 3],
+      ["I think hurt himself quite badly", "我觉得伤得很严重", null, 3],
+      ["He's hurt himself quite badly playing", "他玩伤得很严重", null, 4],
+      ["She said hurt himself quite badly", "她说伤得很严重", null, 4],
+      ["Do you think he's hurt himself quite badly", "你觉得他伤得很严重", null, 5],
+      ["I think he's hurt himself quite badly", "我觉得他伤得很严重", null, 5],
+      ["She said he's hurt himself quite badly and can't play", "她说他伤得很严重不能玩", null, 6],
+      ["No I think he's hurt himself quite badly with the door", "不我觉得他和门伤得很严重", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [[null, null], [null, null]]
+  },
+  "S0339L05": {
+    "lego": ["hurt", "伤"],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {"id": "S0339L03", "known": "he's hurt himself quite badly", "target": "他伤得很严重", "type": "M"},
+      {"id": "S0339L04", "known": "hurt himself quite badly", "target": "伤得很严重", "type": "M"}
+    ],
+    "practice_phrases": [
+      ["Hurt", "伤", null, 1],
+      ["Hurt quite badly", "伤得很严重", null, 2],
+      ["He can hurt", "他可以伤", null, 3],
+      ["I think hurt", "我觉得伤", null, 3],
+      ["He's hurt himself quite badly", "他伤得很严重", null, 4],
+      ["She said he can hurt", "她说他可以伤", null, 4],
+      ["Do you think he's hurt quite badly", "你觉得他伤得很严重", null, 5],
+      ["I think he's hurt himself quite badly", "我觉得他伤得很严重", null, 5],
+      ["She said do you think he's hurt badly", "她说你觉得他伤得很严重吗", null, 6],
+      ["No I think he's hurt himself quite badly playing", "不我觉得他玩伤得很严重", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10
+  },
+  "S0339L06": {
+    "lego": ["quite badly", "很严重"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {"id": "S0339L03", "known": "he's hurt himself quite badly", "target": "他伤得很严重", "type": "M"},
+      {"id": "S0339L04", "known": "hurt himself quite badly", "target": "伤得很严重", "type": "M"},
+      {"id": "S0339L05", "known": "hurt", "target": "伤", "type": "A"}
+    ],
+    "practice_phrases": [
+      ["Quite badly", "很严重", null, 1],
+      ["Hurt quite badly", "伤得很严重", null, 2],
+      ["It's important quite badly", "这很重要很严重", null, 3],
+      ["He's hurt quite badly", "他伤得很严重", null, 3],
+      ["He's hurt himself quite badly", "他伤得很严重", null, 4],
+      ["I think hurt quite badly", "我觉得伤得很严重", null, 4],
+      ["Do you think he's hurt quite badly", "你觉得他伤得很严重", null, 5],
+      ["I think he's hurt himself quite badly", "我觉得他伤得很严重", null, 5],
+      ["She said he's hurt himself quite badly playing", "她说他玩伤得很严重", null, 6],
+      ["No I think he's hurt himself quite badly and can't continue", "不我觉得他伤得很严重不能继续", null, 6]
+    ],
+    "phrase_distribution": {"short_1_to_2_legos": 2, "medium_3_legos": 2, "longer_4_legos": 2, "longest_5_legos": 4},
+    "target_phrase_count": 10,
+    "components": [[null, null], [null, null]]
+  }
+}
