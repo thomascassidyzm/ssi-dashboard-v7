@@ -1,0 +1,769 @@
+{
+  "legos": {
+    "S0012L01": {
+      "lego": [
+        "I wouldn't like",
+        "我不想"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I wouldn't like",
+          "我不想"
+        ],
+        [
+          "I wouldn't like to try",
+          "我不想试试"
+        ],
+        [
+          "I wouldn't like to learn",
+          "我不想学习"
+        ],
+        [
+          "I wouldn't like to speak Chinese",
+          "我不想说中文"
+        ],
+        [
+          "I wouldn't like to try today",
+          "我不想今天试试"
+        ],
+        [
+          "I wouldn't like to speak now",
+          "我不想现在说话"
+        ],
+        [
+          "I wouldn't like to try to explain",
+          "我不想试着解释"
+        ],
+        [
+          "I wouldn't like to be able to speak",
+          "我不想能够说话"
+        ],
+        [
+          "I wouldn't like to remember a word",
+          "我不想记住一个词"
+        ],
+        [
+          "I wouldn't like to speak a little Chinese",
+          "我不想说一点中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L01",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "不",
+          "not"
+        ],
+        [
+          "想",
+          "like/want"
+        ]
+      ]
+    },
+    "S0012L02": {
+      "lego": [
+        "wouldn't like to guess",
+        "不想猜"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0012L01",
+          "known": "I wouldn't like",
+          "target": "我不想",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "wouldn't like to guess",
+          "不想猜"
+        ],
+        [
+          "I wouldn't like to guess",
+          "我不想猜"
+        ],
+        [
+          "wouldn't like to guess today",
+          "不想今天猜"
+        ],
+        [
+          "wouldn't like to guess now",
+          "不想现在猜"
+        ],
+        [
+          "I'm not sure I wouldn't like to guess",
+          "我不确定我不想猜"
+        ],
+        [
+          "I wouldn't like to try to guess",
+          "我不想试着猜"
+        ],
+        [
+          "wouldn't like to guess a little",
+          "不想猜一点"
+        ],
+        [
+          "I wouldn't like to be able to guess",
+          "我不想能够猜"
+        ],
+        [
+          "I wouldn't like to guess what I mean",
+          "我不想猜我的意思"
+        ],
+        [
+          "I wouldn't like to try to guess a word",
+          "我不想试着猜一个词"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L02",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      },
+      "components": [
+        [
+          "不",
+          "not"
+        ],
+        [
+          "想",
+          "like/want"
+        ],
+        [
+          "猜",
+          "guess"
+        ]
+      ]
+    },
+    "S0012L03": {
+      "lego": [
+        "guess",
+        "猜"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0012L01",
+          "known": "I wouldn't like",
+          "target": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0012L02",
+          "known": "wouldn't like to guess",
+          "target": "不想猜",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "guess",
+          "猜"
+        ],
+        [
+          "I wouldn't like to guess",
+          "我不想猜"
+        ],
+        [
+          "to try to guess",
+          "试着猜"
+        ],
+        [
+          "can guess",
+          "会猜"
+        ],
+        [
+          "I'm trying to guess",
+          "我在试着猜"
+        ],
+        [
+          "I'm not sure I can guess",
+          "我不确定我会猜"
+        ],
+        [
+          "I'd like to try to guess",
+          "我想试着猜"
+        ],
+        [
+          "I can guess a little",
+          "我会猜一点"
+        ],
+        [
+          "trying to guess what I mean",
+          "试着猜我的意思"
+        ],
+        [
+          "I wouldn't like to be able to guess now",
+          "我不想能够现在猜"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L03",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      }
+    },
+    "S0012L04": {
+      "lego": [
+        "tomorrow",
+        "明天"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0012L01",
+          "known": "I wouldn't like",
+          "target": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0012L02",
+          "known": "wouldn't like to guess",
+          "target": "不想猜",
+          "type": "M"
+        },
+        {
+          "id": "S0012L03",
+          "known": "guess",
+          "target": "猜",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "tomorrow",
+          "明天"
+        ],
+        [
+          "I'd like tomorrow",
+          "我想明天"
+        ],
+        [
+          "to try tomorrow",
+          "明天试试"
+        ],
+        [
+          "to speak Chinese tomorrow",
+          "明天说中文"
+        ],
+        [
+          "I'm trying to learn tomorrow",
+          "我在试着明天学习"
+        ],
+        [
+          "I can speak tomorrow",
+          "我会明天说话"
+        ],
+        [
+          "I wouldn't like to guess tomorrow",
+          "我不想明天猜"
+        ],
+        [
+          "I'd like to try to speak tomorrow",
+          "我想试着明天说话"
+        ],
+        [
+          "I'm not sure I can speak tomorrow",
+          "我不确定我会明天说话"
+        ],
+        [
+          "I'd like to be able to speak Chinese tomorrow",
+          "我想能够明天说中文"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L04",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      }
+    },
+    "S0012L05": {
+      "lego": [
+        "going to happen",
+        "会发生"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0012L01",
+          "known": "I wouldn't like",
+          "target": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0012L02",
+          "known": "wouldn't like to guess",
+          "target": "不想猜",
+          "type": "M"
+        },
+        {
+          "id": "S0012L03",
+          "known": "guess",
+          "target": "猜",
+          "type": "A"
+        },
+        {
+          "id": "S0012L04",
+          "known": "tomorrow",
+          "target": "明天",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "going to happen",
+          "会发生"
+        ],
+        [
+          "I wouldn't like going to happen",
+          "我不想会发生"
+        ],
+        [
+          "going to happen today",
+          "今天会发生"
+        ],
+        [
+          "going to happen tomorrow",
+          "明天会发生"
+        ],
+        [
+          "I'm not sure going to happen",
+          "我不确定会发生"
+        ],
+        [
+          "I'd like going to happen",
+          "我想会发生"
+        ],
+        [
+          "going to happen after you finish",
+          "在你说完之后会发生"
+        ],
+        [
+          "I'm trying to guess going to happen",
+          "我在试着猜会发生"
+        ],
+        [
+          "I wouldn't like to guess going to happen",
+          "我不想猜会发生"
+        ],
+        [
+          "I'm not sure I'd like going to happen tomorrow",
+          "我不确定我想明天会发生"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L05",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      },
+      "components": [
+        [
+          "会",
+          "will/going to"
+        ],
+        [
+          "发生",
+          "happen"
+        ]
+      ]
+    },
+    "S0012L06": {
+      "lego": [
+        "happen",
+        "发生"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0012L01",
+          "known": "I wouldn't like",
+          "target": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0012L02",
+          "known": "wouldn't like to guess",
+          "target": "不想猜",
+          "type": "M"
+        },
+        {
+          "id": "S0012L03",
+          "known": "guess",
+          "target": "猜",
+          "type": "A"
+        },
+        {
+          "id": "S0012L04",
+          "known": "tomorrow",
+          "target": "明天",
+          "type": "A"
+        },
+        {
+          "id": "S0012L05",
+          "known": "going to happen",
+          "target": "会发生",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "happen",
+          "发生"
+        ],
+        [
+          "I wouldn't like happen",
+          "我不想发生"
+        ],
+        [
+          "to try happen",
+          "试着发生"
+        ],
+        [
+          "can happen",
+          "会发生"
+        ],
+        [
+          "I'm not sure happen",
+          "我不确定发生"
+        ],
+        [
+          "happen tomorrow",
+          "明天发生"
+        ],
+        [
+          "I'd like to try happen",
+          "我想试着发生"
+        ],
+        [
+          "I can happen now",
+          "我会现在发生"
+        ],
+        [
+          "I wouldn't like to guess happen",
+          "我不想猜发生"
+        ],
+        [
+          "I'm not sure I can happen tomorrow",
+          "我不确定我会明天发生"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L06",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      }
+    },
+    "S0012L07": {
+      "lego": [
+        "what's going to happen",
+        "会发生什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0012L01",
+          "known": "I wouldn't like",
+          "target": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0012L02",
+          "known": "wouldn't like to guess",
+          "target": "不想猜",
+          "type": "M"
+        },
+        {
+          "id": "S0012L03",
+          "known": "guess",
+          "target": "猜",
+          "type": "A"
+        },
+        {
+          "id": "S0012L04",
+          "known": "tomorrow",
+          "target": "明天",
+          "type": "A"
+        },
+        {
+          "id": "S0012L05",
+          "known": "going to happen",
+          "target": "会发生",
+          "type": "M"
+        },
+        {
+          "id": "S0012L06",
+          "known": "happen",
+          "target": "发生",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what's going to happen",
+          "会发生什么"
+        ],
+        [
+          "I wouldn't like what's going to happen",
+          "我不想会发生什么"
+        ],
+        [
+          "I'd like what's going to happen",
+          "我想会发生什么"
+        ],
+        [
+          "what's going to happen today",
+          "今天会发生什么"
+        ],
+        [
+          "I'm not sure what's going to happen",
+          "我不确定会发生什么"
+        ],
+        [
+          "to guess what's going to happen",
+          "猜会发生什么"
+        ],
+        [
+          "what's going to happen after you finish",
+          "在你说完之后会发生什么"
+        ],
+        [
+          "I'm trying to guess what's going to happen",
+          "我在试着猜会发生什么"
+        ],
+        [
+          "I wouldn't like to guess what's going to happen",
+          "我不想猜会发生什么"
+        ],
+        [
+          "I'm not sure I'd like what's going to happen now",
+          "我不确定我想现在会发生什么"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L07",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      },
+      "components": [
+        [
+          "会",
+          "will/going to"
+        ],
+        [
+          "发生",
+          "happen"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0012L08": {
+      "lego": [
+        "what's going to happen tomorrow",
+        "明天会发生什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0012L01",
+          "known": "I wouldn't like",
+          "target": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0012L02",
+          "known": "wouldn't like to guess",
+          "target": "不想猜",
+          "type": "M"
+        },
+        {
+          "id": "S0012L03",
+          "known": "guess",
+          "target": "猜",
+          "type": "A"
+        },
+        {
+          "id": "S0012L04",
+          "known": "tomorrow",
+          "target": "明天",
+          "type": "A"
+        },
+        {
+          "id": "S0012L05",
+          "known": "going to happen",
+          "target": "会发生",
+          "type": "M"
+        },
+        {
+          "id": "S0012L06",
+          "known": "happen",
+          "target": "发生",
+          "type": "A"
+        },
+        {
+          "id": "S0012L07",
+          "known": "what's going to happen",
+          "target": "会发生什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "what's going to happen tomorrow",
+          "明天会发生什么"
+        ],
+        [
+          "I wouldn't like what's going to happen tomorrow",
+          "我不想明天会发生什么"
+        ],
+        [
+          "I'd like what's going to happen tomorrow",
+          "我想明天会发生什么"
+        ],
+        [
+          "I'm not sure what's going to happen tomorrow",
+          "我不确定明天会发生什么"
+        ],
+        [
+          "to guess what's going to happen tomorrow",
+          "猜明天会发生什么"
+        ],
+        [
+          "I can guess what's going to happen tomorrow",
+          "我会猜明天会发生什么"
+        ],
+        [
+          "I'm trying to guess what's going to happen tomorrow",
+          "我在试着猜明天会发生什么"
+        ],
+        [
+          "I wouldn't like to guess what's going to happen tomorrow",
+          "我不想猜明天会发生什么"
+        ],
+        [
+          "I'm not sure I can guess what's going to happen tomorrow",
+          "我不确定我会猜明天会发生什么"
+        ],
+        [
+          "I'd like to be able to guess what's going to happen tomorrow",
+          "我想能够猜明天会发生什么"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0012L08",
+        "seed_context": {
+          "known": "我不想猜明天会发生什么。",
+          "target": "I wouldn't like to guess what's going to happen tomorrow."
+        }
+      },
+      "components": [
+        [
+          "明天",
+          "tomorrow"
+        ],
+        [
+          "会",
+          "will/going to"
+        ],
+        [
+          "发生",
+          "happen"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  }
+}
