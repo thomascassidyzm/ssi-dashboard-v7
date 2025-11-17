@@ -1,0 +1,520 @@
+{
+  "legos": {
+    "S0250L01": {
+      "lego": [
+        "Can you",
+        "Puedes"
+      ],
+      "type": "A",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Can you",
+          "Puedes",
+          null,
+          1
+        ],
+        [
+          "Can you help me",
+          "Puedes ayudarme",
+          null,
+          2
+        ],
+        [
+          "Can you give her more time",
+          "Puedes darle más tiempo",
+          null,
+          4
+        ],
+        [
+          "Can you help me before you go",
+          "Puedes ayudarme antes de que te vayas",
+          null,
+          5
+        ],
+        [
+          "Can you give me more time",
+          "Puedes darme más tiempo",
+          null,
+          4
+        ],
+        [
+          "Can you ask for the same thing",
+          "Puedes pedir la misma cosa",
+          null,
+          5
+        ],
+        [
+          "Can you help me with how much I've done",
+          "Puedes ayudarme con cuánto he hecho",
+          null,
+          7
+        ],
+        [
+          "Can you give her more time before you go",
+          "Puedes darle más tiempo antes de que te vayas",
+          null,
+          7
+        ],
+        [
+          "Can you ask for the same thing to eat",
+          "Puedes pedir la misma cosa para comer",
+          null,
+          7
+        ],
+        [
+          "Can you help me with how much I've done already",
+          "Puedes ayudarme con cuánto he hecho ya",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 0,
+        "longer_4_5": 4,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0250L01",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      }
+    },
+    "S0250L02": {
+      "lego": [
+        "Can you tell me",
+        "Puedes decirme"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Can you tell me",
+          "Puedes decirme",
+          null,
+          1
+        ],
+        [
+          "Can you tell me more",
+          "Puedes decirme más",
+          null,
+          2
+        ],
+        [
+          "Can you tell me how much",
+          "Puedes decirme cuánto",
+          null,
+          3
+        ],
+        [
+          "Can you tell me before I go",
+          "Puedes decirme antes de que me vaya",
+          null,
+          5
+        ],
+        [
+          "Can you tell me how much time",
+          "Puedes decirme cuánto tiempo",
+          null,
+          4
+        ],
+        [
+          "Can you tell me before you go",
+          "Puedes decirme antes de que te vayas",
+          null,
+          5
+        ],
+        [
+          "Can you tell me how much I've done",
+          "Puedes decirme cuánto he hecho",
+          null,
+          6
+        ],
+        [
+          "Can you tell me how much time I have",
+          "Puedes decirme cuánto tiempo tengo",
+          null,
+          6
+        ],
+        [
+          "Can you tell me before you go back",
+          "Puedes decirme antes de que te vayas de vuelta",
+          null,
+          8
+        ],
+        [
+          "Can you tell me how much I've done already",
+          "Puedes decirme cuánto he hecho ya",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0250L02",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0250L04": {
+      "lego": [
+        "Can you tell me something else",
+        "Puedes decirme algo más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más",
+          null,
+          1
+        ],
+        [
+          "Can you tell me something else before I go",
+          "Puedes decirme algo más antes de que me vaya",
+          null,
+          6
+        ],
+        [
+          "Can you tell me something else I can do",
+          "Puedes decirme algo más que pueda hacer",
+          null,
+          7
+        ],
+        [
+          "Can you tell me something else before you go",
+          "Puedes decirme algo más antes de que te vayas",
+          null,
+          6
+        ],
+        [
+          "Can you tell me something else to help me",
+          "Puedes decirme algo más para ayudarme",
+          null,
+          6
+        ],
+        [
+          "Can you tell me something else I've done",
+          "Puedes decirme algo más que he hecho",
+          null,
+          6
+        ],
+        [
+          "Can you tell me something else before you go back",
+          "Puedes decirme algo más antes de que te vayas de vuelta",
+          null,
+          9
+        ],
+        [
+          "Can you tell me something else that I can do",
+          "Puedes decirme algo más que pueda hacer",
+          null,
+          7
+        ],
+        [
+          "Can you tell me something else to help me before you go",
+          "Puedes decirme algo más para ayudarme antes de que te vayas",
+          null,
+          10
+        ],
+        [
+          "Can you tell me something else I can ask for",
+          "Puedes decirme algo más que pueda pedir",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 9
+      },
+      "_metadata": {
+        "lego_id": "S0250L04",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0250L05": {
+      "lego": [
+        "tell me something else",
+        "decirme algo más"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ]
+      ],
+      "is_final_lego": false,
+      "practice_phrases": [
+        [
+          "Tell me something else",
+          "Decirme algo más",
+          null,
+          1
+        ],
+        [
+          "I want to tell you something else",
+          "Quiero decirte algo más",
+          null,
+          5
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más",
+          null,
+          1
+        ],
+        [
+          "I wanted to tell you something else",
+          "Quería decirte algo más",
+          null,
+          5
+        ],
+        [
+          "Tell me something else before you go",
+          "Decirme algo más antes de que te vayas",
+          null,
+          6
+        ],
+        [
+          "I want to tell you something else before I go",
+          "Quiero decirte algo más antes de que me vaya",
+          null,
+          9
+        ],
+        [
+          "Can you tell me something else before you go",
+          "Puedes decirme algo más antes de que te vayas",
+          null,
+          6
+        ],
+        [
+          "I wanted to tell you something else before you go",
+          "Quería decirte algo más antes de que te vayas",
+          null,
+          8
+        ],
+        [
+          "Tell me something else I can do to help",
+          "Decirme algo más que pueda hacer para ayudar",
+          null,
+          8
+        ],
+        [
+          "I want to tell you something else I've done",
+          "Quiero decirte algo más que he hecho",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 6
+      },
+      "_metadata": {
+        "lego_id": "S0250L05",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "S0250L07": {
+      "lego": [
+        "before I answer",
+        "antes de que responda"
+      ],
+      "type": "M",
+      "current_seed_legos_available": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ],
+        [
+          "tell me something else",
+          "decirme algo más"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        [
+          "Before I answer",
+          "Antes de que responda",
+          null,
+          1
+        ],
+        [
+          "I want to ask you before I answer",
+          "Quiero preguntarte antes de que responda",
+          null,
+          6
+        ],
+        [
+          "Can you help me before I answer",
+          "Puedes ayudarme antes de que responda",
+          null,
+          5
+        ],
+        [
+          "I wanted to ask you before I answer",
+          "Quería preguntarte antes de que responda",
+          null,
+          6
+        ],
+        [
+          "Tell me before I answer",
+          "Decirme antes de que responda",
+          null,
+          4
+        ],
+        [
+          "Can you give me more time before I answer",
+          "Puedes darme más tiempo antes de que responda",
+          null,
+          7
+        ],
+        [
+          "I want to ask for help before I answer",
+          "Quiero pedir ayuda antes de que responda",
+          null,
+          7
+        ],
+        [
+          "Can you tell me how much time before I answer",
+          "Puedes decirme cuánto tiempo antes de que responda",
+          null,
+          8
+        ],
+        [
+          "I want to tell you something else before I answer",
+          "Quiero decirte algo más antes de que responda",
+          null,
+          9
+        ],
+        [
+          "Can you tell me something else before I answer",
+          "Puedes decirme algo más antes de que responda",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 1,
+        "quite_short_3": 0,
+        "longer_4_5": 2,
+        "long_6_plus": 7
+      },
+      "_metadata": {
+        "lego_id": "S0250L07",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  }
+}
