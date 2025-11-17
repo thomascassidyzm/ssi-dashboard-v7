@@ -1,0 +1,115 @@
+{
+  "S0263L01": {
+    "lego": ["I don't know", "我不知道"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["I don't know", "我不知道", null, 1],
+      ["I don't know who that man is", "我不知道那个男人是谁", null, 2],
+      ["I don't know when you left", "我不知道你什么时候离开", null, 3],
+      ["I don't know what that blue thing is", "我不知道那个蓝色的东西是什么", null, 3],
+      ["I don't know when that man will be ready", "我不知道那个男人什么时候准备好", null, 4],
+      ["I don't know who you were talking with yesterday", "我不知道你昨天和谁说话", null, 4],
+      ["I don't know when that man will be ready to start", "我不知道那个男人什么时候准备好开始", null, 5],
+      ["I don't know who that man was you were talking with", "我不知道你和那个男人说话是谁", null, 5],
+      ["I don't know at all when that man will be ready to leave", "我一点也不知道那个男人什么时候准备好离开", null, 6],
+      ["I don't know at all who that man was you were talking with yesterday", "我一点也不知道你昨天和那个男人说话是谁", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["我", "I"],
+      ["不", "don't"],
+      ["知道", "know"]
+    ]
+  },
+  "S0263L02": {
+    "lego": ["you mean", "你指的是"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0263L01",
+        "known": "I don't know",
+        "target": "我不知道",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["You mean", "你指的是", null, 1],
+      ["You mean that man", "你指的是那个男人", null, 2],
+      ["You mean that blue thing", "你指的是那个蓝色的东西", null, 3],
+      ["I think you mean yesterday", "我想你指的是昨天", null, 3],
+      ["I don't know what you mean", "我不知道你指的是什么", null, 4],
+      ["You mean that man over there", "你指的是那边那个男人", null, 4],
+      ["I think you mean that man who left yesterday", "我想你指的是昨天离开那个男人", null, 5],
+      ["I don't know what you mean at all", "我一点也不知道你指的是什么", null, 5],
+      ["I think you mean that blue thing over there is important", "我想你指的是那边那个蓝色的东西很重要", null, 6],
+      ["I don't know what important thing you mean when you were talking", "我不知道你说话时你指的是什么重要的东西", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["你", "you"],
+      ["指", "point to/mean"],
+      ["的", "de"],
+      ["是", "is"]
+    ]
+  },
+  "S0263L03": {
+    "lego": ["who you mean", "你指的是谁"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0263L01",
+        "known": "I don't know",
+        "target": "我不知道",
+        "type": "M"
+      },
+      {
+        "id": "S0263L02",
+        "known": "you mean",
+        "target": "你指的是",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Who you mean", "你指的是谁", null, 1],
+      ["I don't know who you mean", "我不知道你指的是谁", null, 2],
+      ["Who do you think you mean", "你觉得你指的是谁", null, 3],
+      ["I don't know who you mean yesterday", "我不知道你昨天指的是谁", null, 3],
+      ["I don't know who you mean at all", "我一点也不知道你指的是谁", null, 4],
+      ["Who you mean might be that man", "你指的是谁可能是那个男人", null, 4],
+      ["I don't know who you mean when you were talking", "我不知道你说话时你指的是谁", null, 5],
+      ["Who you mean might be that man over there yesterday", "你指的是谁可能是昨天那边那个男人", null, 5],
+      ["I don't know at all who you mean was talking with you", "我一点也不知道你指的是谁和你说话", null, 6],
+      ["I don't know who you mean when you were talking with that man yesterday", "我不知道你昨天和那个男人说话时你指的是谁", null, 6]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      ["你", "you"],
+      ["指", "point to/mean"],
+      ["的", "de"],
+      ["是", "is"],
+      ["谁", "who"]
+    ]
+  }
+}
