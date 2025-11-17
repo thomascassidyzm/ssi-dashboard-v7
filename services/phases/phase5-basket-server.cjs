@@ -585,7 +585,7 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
       // Generate orchestrator prompt for this window
       windowPrompt = generatePhase5OrchestratorPrompt(
         courseCode,
-        { target, known, startSeed: windowStartSeed, endSeed: windowEndSeed },
+        { target, known, startSeed: windowStartSeed, endSeed: windowEndSeed, agentsPerWindow, seedsPerAgent },
         baseCourseDir
       );
 
@@ -631,7 +631,7 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
  * Supports both regular mode (seed range) and regeneration mode (specific LEGO_IDs)
  */
 function generatePhase5OrchestratorPrompt(courseCode, params, courseDir) {
-  const { target, known, startSeed, endSeed, legoIds, isRegeneration } = params;
+  const { target, known, startSeed, endSeed, legoIds, isRegeneration, agentsPerWindow, seedsPerAgent } = params;
 
   const relativeDir = getRelativeCourseDir(courseDir);
 
@@ -686,15 +686,15 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 
   // REGULAR MODE: Generate baskets for seed range
   const totalSeeds = endSeed - startSeed + 1;
-  const seedsPerAgent = 10;
-  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+  const agentCount = agentsPerWindow || Math.ceil(totalSeeds / (seedsPerAgent || 10));
+  const actualSeedsPerAgent = seedsPerAgent || 10;
 
   return `# Phase 5 Orchestrator: Spawn ${agentCount} Parallel Agents
 
 **Course**: ${courseCode}
 **Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
 **Required Agents**: ${agentCount} parallel agents
-**Seeds per agent**: ${seedsPerAgent}
+**Seeds per agent**: ${actualSeedsPerAgent}
 
 ---
 
@@ -704,7 +704,7 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 
 **Your task:**
 1. Spawn ${agentCount} agents in parallel
-2. Pass each agent its seed range (10 seeds each)
+2. Pass each agent its seed range (${actualSeedsPerAgent} seeds each)
 3. Monitor progress and report when complete
 
 **Each agent prompt should include:**
@@ -751,23 +751,33 @@ async function spawnClaudeCodeSession(prompt, windowTitle) {
     });
   });
 
+  // Use Safari (supports AppleScript tab API properly)
+  const browser = 'Safari';
   const appleScript = `
-tell application "Google Chrome"
+-- Open Claude Code on the Web
+tell application "${browser}"
     activate
 
+    -- Open new tab with claude.ai/code
     tell window 1
         set newTab to make new tab with properties {URL:"https://claude.ai/code"}
         set current tab to newTab
     end tell
 
+    -- Wait for page to load (3 seconds)
     delay 3
 
+    -- Simulate Cmd+V to paste prompt into input field
     tell application "System Events"
         keystroke "v" using command down
         delay 0.5
+        -- Auto-submit with Enter for fully automated execution
         keystroke return
     end tell
 end tell
+
+-- Return success
+return "success"
   `.trim();
 
   return new Promise((resolve, reject) => {
@@ -884,7 +894,7 @@ app.post('/regenerate', async (req, res) => {
   let cleanupResult = null;
 
   if (await fs.pathExists(basketsPath)) {
-    console.log(`\n[Phase 5] Step 1: Cleaning up ${totalBaskets} old baskets...`);
+    console.log(`\n[Phase 5] Step 1: Cleaning up baskets for ${legoIds.length} LEGOs...`);
 
     try {
       const basketsData = await fs.readJson(basketsPath);
