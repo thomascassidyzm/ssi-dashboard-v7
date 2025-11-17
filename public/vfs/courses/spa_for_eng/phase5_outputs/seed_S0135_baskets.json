@@ -1,0 +1,635 @@
+{
+  "legos": {
+    "S0135L01": {
+      "lego": [
+        "I don't know why",
+        "No sé por"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I don't know why",
+          "No sé por"
+        ],
+        [
+          "I don't know",
+          "No sé"
+        ],
+        [
+          "I don't know why I'm happy",
+          "No sé por qué estoy feliz"
+        ],
+        [
+          "I don't know why that's good",
+          "No sé por qué eso es bueno"
+        ],
+        [
+          "I don't know why I believe that",
+          "No sé por qué creo eso"
+        ],
+        [
+          "I don't know why your idea is good",
+          "No sé por qué tu idea es buena"
+        ],
+        [
+          "I don't know why that's a good idea",
+          "No sé por qué eso es una buena idea"
+        ],
+        [
+          "I don't know why you're so happy now",
+          "No sé por qué estás tan feliz ahora"
+        ],
+        [
+          "I don't know why this work is changing",
+          "No sé por qué este trabajo está cambiando"
+        ],
+        [
+          "I don't know why I'm so happy today",
+          "No sé por qué estoy tan feliz hoy"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L01",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "No",
+          "don't"
+        ],
+        [
+          "sé",
+          "I know"
+        ]
+      ]
+    },
+    "S0135L02": {
+      "lego": [
+        "I don't know why",
+        "No sé por qué"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L02",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "No",
+          "don't"
+        ],
+        [
+          "sé",
+          "I know"
+        ],
+        [
+          "por qué",
+          "why"
+        ]
+      ]
+    },
+    "S0135L03": {
+      "lego": [
+        "know why",
+        "sé por qué"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I know why",
+          "Sé por qué"
+        ],
+        [
+          "know why",
+          "sé por qué"
+        ],
+        [
+          "I know why you're happy",
+          "Sé por qué estás feliz"
+        ],
+        [
+          "I know why that's good",
+          "Sé por qué eso es bueno"
+        ],
+        [
+          "I know why I believe that",
+          "Sé por qué creo eso"
+        ],
+        [
+          "I know why your idea is good",
+          "Sé por qué tu idea es buena"
+        ],
+        [
+          "I don't know why but I know why",
+          "No sé por qué pero sé por qué"
+        ],
+        [
+          "I know why you think that's a good idea",
+          "Sé por qué piensas que eso es una buena idea"
+        ],
+        [
+          "I know why this work is changing now",
+          "Sé por qué este trabajo está cambiando ahora"
+        ],
+        [
+          "I know why you're so happy today",
+          "Sé por qué estás tan feliz hoy"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L03",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "por",
+          ""
+        ],
+        [
+          "qué",
+          "why"
+        ]
+      ]
+    },
+    "S0135L04": {
+      "lego": [
+        "why you think",
+        "por qué piensas"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L03",
+          "known": "know why",
+          "target": "sé por qué",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L04",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "por qué",
+          "why"
+        ],
+        [
+          "piensas",
+          "you think"
+        ]
+      ]
+    },
+    "S0135L05": {
+      "lego": [
+        "you think",
+        "piensas"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L03",
+          "known": "know why",
+          "target": "sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L04",
+          "known": "why you think",
+          "target": "por qué piensas",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L05",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": []
+    },
+    "S0135L06": {
+      "lego": [
+        "think that it's so good",
+        "piensas que es tan bueno"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L03",
+          "known": "know why",
+          "target": "sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L04",
+          "known": "why you think",
+          "target": "por qué piensas",
+          "type": "M"
+        },
+        {
+          "id": "S0135L05",
+          "known": "you think",
+          "target": "piensas",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L06",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "piensas",
+          "think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "es",
+          "it's"
+        ],
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    },
+    "S0135L07": {
+      "lego": [
+        "that it's so good",
+        "que es tan bueno"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L03",
+          "known": "know why",
+          "target": "sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L04",
+          "known": "why you think",
+          "target": "por qué piensas",
+          "type": "M"
+        },
+        {
+          "id": "S0135L05",
+          "known": "you think",
+          "target": "piensas",
+          "type": "A"
+        },
+        {
+          "id": "S0135L06",
+          "known": "think that it's so good",
+          "target": "piensas que es tan bueno",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L07",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "es",
+          "it's"
+        ],
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    },
+    "S0135L08": {
+      "lego": [
+        "it's so good",
+        "es tan bueno"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L03",
+          "known": "know why",
+          "target": "sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L04",
+          "known": "why you think",
+          "target": "por qué piensas",
+          "type": "M"
+        },
+        {
+          "id": "S0135L05",
+          "known": "you think",
+          "target": "piensas",
+          "type": "A"
+        },
+        {
+          "id": "S0135L06",
+          "known": "think that it's so good",
+          "target": "piensas que es tan bueno",
+          "type": "M"
+        },
+        {
+          "id": "S0135L07",
+          "known": "that it's so good",
+          "target": "que es tan bueno",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L08",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "es",
+          "it's"
+        ],
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    },
+    "S0135L09": {
+      "lego": [
+        "so good",
+        "tan bueno"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0135L01",
+          "known": "I don't know why",
+          "target": "No sé por",
+          "type": "M"
+        },
+        {
+          "id": "S0135L02",
+          "known": "I don't know why",
+          "target": "No sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L03",
+          "known": "know why",
+          "target": "sé por qué",
+          "type": "M"
+        },
+        {
+          "id": "S0135L04",
+          "known": "why you think",
+          "target": "por qué piensas",
+          "type": "M"
+        },
+        {
+          "id": "S0135L05",
+          "known": "you think",
+          "target": "piensas",
+          "type": "A"
+        },
+        {
+          "id": "S0135L06",
+          "known": "think that it's so good",
+          "target": "piensas que es tan bueno",
+          "type": "M"
+        },
+        {
+          "id": "S0135L07",
+          "known": "that it's so good",
+          "target": "que es tan bueno",
+          "type": "M"
+        },
+        {
+          "id": "S0135L08",
+          "known": "it's so good",
+          "target": "es tan bueno",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0135L09",
+        "seed_context": {
+          "known": "I don't know why you think that it's so good.",
+          "target": "No sé por qué piensas que es tan bueno."
+        }
+      },
+      "components": [
+        [
+          "tan",
+          "so"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    }
+  }
+}

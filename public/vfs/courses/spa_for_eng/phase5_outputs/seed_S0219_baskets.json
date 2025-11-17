@@ -1,0 +1,89 @@
+{
+  "legos": {
+    "S0219L04": {
+      "lego": [
+        "nice to relax",
+        "agradable relajarse"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0219L01",
+          "known": "it was",
+          "target": "fue",
+          "type": "A"
+        },
+        {
+          "id": "S0219L02",
+          "known": "nice",
+          "target": "agradable",
+          "type": "A"
+        },
+        {
+          "id": "S0219L03",
+          "known": "it was nice",
+          "target": "fue agradable",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "nice to relax",
+          "agradable relajarse"
+        ],
+        [
+          "it was nice to relax",
+          "fue agradable relajarse"
+        ],
+        [
+          "nice to relax a little",
+          "agradable relajarse un poco"
+        ],
+        [
+          "it was nice to relax more",
+          "fue agradable relajarse más"
+        ],
+        [
+          "nice to relax and practise",
+          "agradable relajarse y practicar"
+        ],
+        [
+          "it was nice to relax and speak",
+          "fue agradable relajarse y hablar"
+        ],
+        [
+          "it was nice to relax for a while",
+          "fue agradable relajarse por un rato"
+        ],
+        [
+          "nice to relax and try to speak",
+          "agradable relajarse y intentar hablar"
+        ],
+        [
+          "it was nice to relax and practise speaking",
+          "fue agradable relajarse y practicar hablando"
+        ],
+        [
+          "it was nice to relax with someone for a while",
+          "fue agradable relajarse con alguien por un rato"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0219L04",
+        "seed_context": {
+          "known": "Fue agradable relajarse por un rato.",
+          "target": "It was nice to relax for a while."
+        }
+      },
+      "components": []
+    }
+  }
+}

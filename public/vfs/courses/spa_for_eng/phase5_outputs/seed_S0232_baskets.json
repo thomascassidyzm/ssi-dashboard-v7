@@ -1,0 +1,165 @@
+{
+  "legos": {
+    "S0232L02": {
+      "lego": [
+        "woman who",
+        "vieja que"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0232L01",
+          "known": "I know an old woman",
+          "target": "conozco a una mujer vieja",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "woman who",
+          "mujer que"
+        ],
+        [
+          "old woman who",
+          "mujer vieja que"
+        ],
+        [
+          "a woman who can help",
+          "una mujer que puede ayudar"
+        ],
+        [
+          "an old woman who can speak",
+          "una mujer vieja que puede hablar"
+        ],
+        [
+          "a woman who can remember",
+          "una mujer que puede recordar"
+        ],
+        [
+          "an old woman who can help me",
+          "una mujer vieja que puede ayudarme"
+        ],
+        [
+          "I know a woman who can help",
+          "conozco a una mujer que puede ayudar"
+        ],
+        [
+          "an old woman who can remember something",
+          "una mujer vieja que puede recordar algo"
+        ],
+        [
+          "I know an old woman who can remember",
+          "conozco a una mujer vieja que puede recordar"
+        ],
+        [
+          "I know an old woman who can remember the answer",
+          "conozco a una mujer vieja que puede recordar la respuesta"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0232L02",
+        "seed_context": {
+          "known": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "target": "I know an old woman who can remember the answer."
+        }
+      },
+      "components": []
+    },
+    "S0232L03": {
+      "lego": [
+        "who can remember",
+        "que puede recordar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0232L01",
+          "known": "I know an old woman",
+          "target": "conozco a una mujer vieja",
+          "type": "M"
+        },
+        {
+          "id": "S0232L02",
+          "known": "woman who",
+          "target": "vieja que",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "who can remember",
+          "que puede recordar"
+        ],
+        [
+          "woman who can remember",
+          "mujer que puede recordar"
+        ],
+        [
+          "who can remember the answer",
+          "que puede recordar la respuesta"
+        ],
+        [
+          "someone who can remember the word",
+          "alguien que puede recordar la palabra"
+        ],
+        [
+          "a man who can remember something",
+          "un hombre que puede recordar algo"
+        ],
+        [
+          "who can remember what I wanted",
+          "que puede recordar lo que quería"
+        ],
+        [
+          "an old woman who can remember",
+          "una mujer vieja que puede recordar"
+        ],
+        [
+          "I know someone who can remember the answer",
+          "conozco a alguien que puede recordar la respuesta"
+        ],
+        [
+          "a woman who can remember what I needed",
+          "una mujer que puede recordar lo que necesitaba"
+        ],
+        [
+          "an old woman who can remember the answer",
+          "una mujer vieja que puede recordar la respuesta"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0232L03",
+        "seed_context": {
+          "known": "Conozco a una mujer vieja que puede recordar la respuesta.",
+          "target": "I know an old woman who can remember the answer."
+        }
+      },
+      "components": [
+        [
+          "puede",
+          "can"
+        ],
+        [
+          "recordar",
+          "to remember"
+        ]
+      ]
+    }
+  }
+}

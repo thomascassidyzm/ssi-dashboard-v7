@@ -1,0 +1,63 @@
+{
+  "legos": {
+    "S0240L01": {
+      "lego": ["a mi padre no le gusta", "my father doesn't like"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["a", "to"],
+        ["mi", "my"],
+        ["padre", "father"],
+        ["no", "not/doesn't"],
+        ["le", "to him"],
+        ["gusta", "likes/pleases"]
+      ]
+    },
+    "S0240L02": {
+      "lego": ["dejar de hablar", "to stop talking"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0240L01",
+          "known": "my father doesn't like",
+          "target": "a mi padre no le gusta",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["dejar de hablar", "to stop talking", null, 1],
+        ["quiere dejar de hablar", "wants to stop talking", null, 2],
+        ["a mi padre no le gusta dejar de hablar", "my father doesn't like to stop talking", null, 2],
+        ["no quiere dejar de hablar", "doesn't want to stop talking", null, 3],
+        ["va a dejar de hablar mañana", "is going to stop talking tomorrow", null, 4],
+        ["a mi madre le gusta dejar de hablar", "my mother likes to stop talking", null, 4],
+        ["intentar ayudar a dejar de hablar", "to try to help to stop talking", null, 5],
+        ["no le gusta dejar de hablar antes del fin de semana", "doesn't like to stop talking before the weekend", null, 6],
+        ["quería que dejara de hablar contigo", "wanted him to stop talking with you", null, 6],
+        ["A mi padre no le gusta dejar de hablar.", "My father doesn't like to stop talking.", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["dejar", "to stop/leave"],
+        ["de", "of"],
+        ["hablar", "to talk/speak"]
+      ]
+    }
+  }
+}

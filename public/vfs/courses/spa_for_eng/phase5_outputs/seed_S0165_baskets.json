@@ -1,0 +1,180 @@
+{
+  "legos": {
+    "S0165L01": {
+      "lego": [
+        "but",
+        "pero"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0165L01",
+        "seed_context": {
+          "known": "But I'm not sure if it's true.",
+          "target": "Pero no estoy seguro si es verdad."
+        }
+      }
+    },
+    "S0165L02": {
+      "lego": [
+        "But I'm not sure",
+        "Pero no estoy seguro"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0165L01",
+          "known": "but",
+          "target": "pero",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "But I'm not sure",
+          "pero no estoy seguro"
+        ],
+        [
+          "I'm not sure",
+          "no estoy seguro"
+        ],
+        [
+          "But I'm not sure if it's true",
+          "pero no estoy seguro si es verdad"
+        ],
+        [
+          "But I'm not sure what I want",
+          "pero no estoy seguro qué quiero"
+        ],
+        [
+          "But I'm not sure what to say",
+          "pero no estoy seguro qué decir"
+        ],
+        [
+          "But I'm not sure if that's interesting",
+          "pero no estoy seguro si eso es interesante"
+        ],
+        [
+          "I think that it's true but I'm not sure",
+          "pienso que es verdad pero no estoy seguro"
+        ],
+        [
+          "But I'm not sure if that's what I want",
+          "pero no estoy seguro si eso es lo que quiero"
+        ],
+        [
+          "But I'm not sure what you're trying to say",
+          "pero no estoy seguro qué estás intentando decir"
+        ],
+        [
+          "I think it's interesting but I'm not sure if it's true",
+          "pienso que es interesante pero no estoy seguro si es verdad"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0165L02",
+        "seed_context": {
+          "known": "But I'm not sure if it's true.",
+          "target": "Pero no estoy seguro si es verdad."
+        }
+      }
+    },
+    "S0165L03": {
+      "lego": [
+        "if it's true",
+        "si es verdad"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0165L01",
+          "known": "but",
+          "target": "pero",
+          "type": "M"
+        },
+        {
+          "id": "S0165L02",
+          "known": "But I'm not sure",
+          "target": "Pero no estoy seguro",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0165L03",
+        "seed_context": {
+          "known": "But I'm not sure if it's true.",
+          "target": "Pero no estoy seguro si es verdad."
+        }
+      }
+    },
+    "S0165L04": {
+      "lego": [
+        "it's true",
+        "es verdad"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0165L01",
+          "known": "but",
+          "target": "pero",
+          "type": "M"
+        },
+        {
+          "id": "S0165L02",
+          "known": "But I'm not sure",
+          "target": "Pero no estoy seguro",
+          "type": "M"
+        },
+        {
+          "id": "S0165L03",
+          "known": "if it's true",
+          "target": "si es verdad",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0165L04",
+        "seed_context": {
+          "known": "But I'm not sure if it's true.",
+          "target": "Pero no estoy seguro si es verdad."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "legos": {
+    "S0207L04": {
+      "lego": [
+        "done what",
+        "hecho lo que"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0207L01",
+          "known": "you've done",
+          "target": "has hecho",
+          "type": "M"
+        },
+        {
+          "id": "S0207L02",
+          "known": "what you needed to do",
+          "target": "lo que necesitabas hacer",
+          "type": "M"
+        },
+        {
+          "id": "S0207L03",
+          "known": "you needed to do",
+          "target": "necesitabas hacer",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "done what",
+          "hecho lo que"
+        ],
+        [
+          "you've done what",
+          "has hecho lo que"
+        ],
+        [
+          "you've done what I wanted",
+          "has hecho lo que quería"
+        ],
+        [
+          "I've done what you wanted",
+          "he hecho lo que querías"
+        ],
+        [
+          "you've done what you needed",
+          "has hecho lo que necesitabas"
+        ],
+        [
+          "I've done what I needed",
+          "he hecho lo que necesitaba"
+        ],
+        [
+          "you've done what you needed to do",
+          "has hecho lo que necesitabas hacer"
+        ],
+        [
+          "I've done what I wanted to do",
+          "he hecho lo que quería hacer"
+        ],
+        [
+          "I wanted to know what you've done",
+          "quería saber lo que has hecho"
+        ],
+        [
+          "you've done what I wanted to do",
+          "has hecho lo que quería hacer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0207L04",
+        "seed_context": {
+          "known": "Has hecho lo que necesitabas hacer",
+          "target": "You've done what you needed to do."
+        }
+      },
+      "components": [
+        [
+          "lo",
+          "what"
+        ],
+        [
+          "que",
+          "(relative)"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,1009 @@
+{
+  "legos": {
+    "S0250L01": {
+      "lego": [
+        "Can you",
+        "Puedes"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you help",
+          "Puedes ayudar"
+        ],
+        [
+          "Can you help me",
+          "Puedes ayudarme"
+        ],
+        [
+          "Can you read",
+          "Puedes leer"
+        ],
+        [
+          "Can you give her more time",
+          "Puedes darle más tiempo"
+        ],
+        [
+          "Can you stop talking",
+          "Puedes dejar de hablar"
+        ],
+        [
+          "Can you help me to read",
+          "Puedes ayudarme a leer"
+        ],
+        [
+          "Can you ask for the same thing",
+          "Puedes pedir la misma cosa"
+        ],
+        [
+          "Can you try to help me",
+          "Puedes intentar ayudarme"
+        ],
+        [
+          "Can you give her more time to read",
+          "Puedes darle más tiempo para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0250L01",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": []
+    },
+    "S0250L02": {
+      "lego": [
+        "Can you tell me",
+        "Puedes decirme"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0250L01",
+          "known": "Can you",
+          "target": "Puedes",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "Can you",
+          "Puedes"
+        ],
+        [
+          "Can you tell me to read",
+          "Puedes decirme para leer"
+        ],
+        [
+          "Can you tell me to help",
+          "Puedes decirme para ayudar"
+        ],
+        [
+          "Can you tell me already",
+          "Puedes decirme ya"
+        ],
+        [
+          "Can you tell me to stop talking",
+          "Puedes decirme dejar de hablar"
+        ],
+        [
+          "Can you tell me before the weekend",
+          "Puedes decirme antes del fin de semana"
+        ],
+        [
+          "Can you tell me to give her more time",
+          "Puedes decirme darle más tiempo"
+        ],
+        [
+          "Can you tell me to try to help",
+          "Puedes decirme intentar ayudar"
+        ],
+        [
+          "Can you tell me before the weekend to read",
+          "Puedes decirme antes del fin de semana para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0250L02",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "Puedes",
+          "Can you"
+        ],
+        [
+          "decirme",
+          "tell me"
+        ]
+      ]
+    },
+    "S0250L04": {
+      "lego": [
+        "Can you tell me something else",
+        "Puedes decirme algo más"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0250L01",
+          "known": "Can you",
+          "target": "Puedes",
+          "type": "A"
+        },
+        {
+          "id": "S0250L02",
+          "known": "Can you tell me",
+          "target": "Puedes decirme",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ],
+        [
+          "Can you tell me",
+          "Puedes decirme"
+        ],
+        [
+          "Can you tell me something else to read",
+          "Puedes decirme algo más para leer"
+        ],
+        [
+          "Can you tell me something else to help",
+          "Puedes decirme algo más para ayudar"
+        ],
+        [
+          "Can you tell me something else already",
+          "Puedes decirme algo más ya"
+        ],
+        [
+          "Can you tell me something else before the weekend",
+          "Puedes decirme algo más antes del fin de semana"
+        ],
+        [
+          "Can you tell me something else to give her",
+          "Puedes decirme algo más para darle"
+        ],
+        [
+          "Can you tell me something else to ask for",
+          "Puedes decirme algo más para pedir"
+        ],
+        [
+          "Can you tell me something else to try to help",
+          "Puedes decirme algo más para intentar ayudar"
+        ],
+        [
+          "Can you tell me something else before the weekend to read",
+          "Puedes decirme algo más antes del fin de semana para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0250L04",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "Puedes",
+          "Can you"
+        ],
+        [
+          "decirme",
+          "tell me"
+        ],
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "más",
+          "else"
+        ]
+      ]
+    },
+    "S0250L05": {
+      "lego": [
+        "tell me something else",
+        "decirme algo más"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0250L01",
+          "known": "Can you",
+          "target": "Puedes",
+          "type": "A"
+        },
+        {
+          "id": "S0250L02",
+          "known": "Can you tell me",
+          "target": "Puedes decirme",
+          "type": "M"
+        },
+        {
+          "id": "S0250L04",
+          "known": "Can you tell me something else",
+          "target": "Puedes decirme algo más",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "tell me something else",
+          "decirme algo más"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ],
+        [
+          "tell me something else to read",
+          "decirme algo más para leer"
+        ],
+        [
+          "tell me something else to help",
+          "decirme algo más para ayudar"
+        ],
+        [
+          "Can you tell me something else already",
+          "Puedes decirme algo más ya"
+        ],
+        [
+          "tell me something else before the weekend",
+          "decirme algo más antes del fin de semana"
+        ],
+        [
+          "Can you tell me something else to give her",
+          "Puedes decirme algo más para darle"
+        ],
+        [
+          "tell me something else to ask for",
+          "decirme algo más para pedir"
+        ],
+        [
+          "Can you tell me something else to try to help",
+          "Puedes decirme algo más para intentar ayudar"
+        ],
+        [
+          "tell me something else before the weekend to read",
+          "decirme algo más antes del fin de semana para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0250L05",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "decirme",
+          "tell me"
+        ],
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "más",
+          "else"
+        ]
+      ]
+    },
+    "S0250L06": {
+      "lego": [
+        "me something else",
+        "decirme algo más"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0250L01",
+          "known": "Can you",
+          "target": "Puedes",
+          "type": "A"
+        },
+        {
+          "id": "S0250L02",
+          "known": "Can you tell me",
+          "target": "Puedes decirme",
+          "type": "M"
+        },
+        {
+          "id": "S0250L04",
+          "known": "Can you tell me something else",
+          "target": "Puedes decirme algo más",
+          "type": "M"
+        },
+        {
+          "id": "S0250L05",
+          "known": "tell me something else",
+          "target": "decirme algo más",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "me something else",
+          "decirme algo más"
+        ],
+        [
+          "tell me something else",
+          "decirme algo más"
+        ],
+        [
+          "Can you tell me something else",
+          "Puedes decirme algo más"
+        ],
+        [
+          "me something else to read",
+          "decirme algo más para leer"
+        ],
+        [
+          "tell me something else to help",
+          "decirme algo más para ayudar"
+        ],
+        [
+          "me something else already",
+          "decirme algo más ya"
+        ],
+        [
+          "Can you tell me something else before the weekend",
+          "Puedes decirme algo más antes del fin de semana"
+        ],
+        [
+          "me something else to ask for",
+          "decirme algo más para pedir"
+        ],
+        [
+          "tell me something else to try to help",
+          "decirme algo más para intentar ayudar"
+        ],
+        [
+          "Can you tell me something else before the weekend to read",
+          "Puedes decirme algo más antes del fin de semana para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0250L06",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "algo",
+          "something"
+        ],
+        [
+          "más",
+          "else"
+        ]
+      ]
+    },
+    "S0250L07": {
+      "lego": [
+        "before I answer",
+        "antes de que responda"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0250L01",
+          "known": "Can you",
+          "target": "Puedes",
+          "type": "A"
+        },
+        {
+          "id": "S0250L02",
+          "known": "Can you tell me",
+          "target": "Puedes decirme",
+          "type": "M"
+        },
+        {
+          "id": "S0250L04",
+          "known": "Can you tell me something else",
+          "target": "Puedes decirme algo más",
+          "type": "M"
+        },
+        {
+          "id": "S0250L05",
+          "known": "tell me something else",
+          "target": "decirme algo más",
+          "type": "M"
+        },
+        {
+          "id": "S0250L06",
+          "known": "me something else",
+          "target": "decirme algo más",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "before I answer",
+          "antes de que responda"
+        ],
+        [
+          "Can you tell me before I answer",
+          "Puedes decirme antes de que responda"
+        ],
+        [
+          "before I answer to help",
+          "antes de que responda para ayudar"
+        ],
+        [
+          "before I answer already",
+          "antes de que responda ya"
+        ],
+        [
+          "Can you tell me something else before I answer",
+          "Puedes decirme algo más antes de que responda"
+        ],
+        [
+          "before I answer to read",
+          "antes de que responda para leer"
+        ],
+        [
+          "tell me before I answer",
+          "decirme antes de que responda"
+        ],
+        [
+          "before I answer to give her more time",
+          "antes de que responda para darle más tiempo"
+        ],
+        [
+          "Can you tell me something else before I answer to read",
+          "Puedes decirme algo más antes de que responda para leer"
+        ],
+        [
+          "Can you help me before I answer to read",
+          "Puedes ayudarme antes de que responda para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0250L07",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "antes de que",
+          "before"
+        ],
+        [
+          "responda",
+          "I answer"
+        ]
+      ]
+    },
+    "S0250L08": {
+      "lego": [
+        "else before",
+        "más antes de que"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0250L01",
+          "known": "Can you",
+          "target": "Puedes",
+          "type": "A"
+        },
+        {
+          "id": "S0250L02",
+          "known": "Can you tell me",
+          "target": "Puedes decirme",
+          "type": "M"
+        },
+        {
+          "id": "S0250L04",
+          "known": "Can you tell me something else",
+          "target": "Puedes decirme algo más",
+          "type": "M"
+        },
+        {
+          "id": "S0250L05",
+          "known": "tell me something else",
+          "target": "decirme algo más",
+          "type": "M"
+        },
+        {
+          "id": "S0250L06",
+          "known": "me something else",
+          "target": "decirme algo más",
+          "type": "M"
+        },
+        {
+          "id": "S0250L07",
+          "known": "before I answer",
+          "target": "antes de que responda",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "else before",
+          "más antes de que"
+        ],
+        [
+          "something else before",
+          "algo más antes de que"
+        ],
+        [
+          "me something else before",
+          "decirme algo más antes de que"
+        ],
+        [
+          "tell me something else before",
+          "decirme algo más antes de que"
+        ],
+        [
+          "Can you tell me something else before I answer",
+          "Puedes decirme algo más antes de que responda"
+        ],
+        [
+          "else before to read",
+          "más antes de que para leer"
+        ],
+        [
+          "something else before to help",
+          "algo más antes de que para ayudar"
+        ],
+        [
+          "tell me something else before to read",
+          "decirme algo más antes de que para leer"
+        ],
+        [
+          "Can you tell me something else before to help",
+          "Puedes decirme algo más antes de que para ayudar"
+        ],
+        [
+          "Can you tell me something else before I answer?",
+          "¿Puedes decirme algo más antes de que responda?"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0250L08",
+        "seed_context": {
+          "known": "Can you tell me something else before I answer?",
+          "target": "¿Puedes decirme algo más antes de que responda?"
+        }
+      },
+      "components": [
+        [
+          "antes",
+          "before"
+        ],
+        [
+          "de",
+          "of"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    }
+  },
+  "seed_pair": {
+    "target": "¿Puedes decirme algo más antes de que responda?",
+    "known": "Can you tell me something else before I answer?"
+  },
+  "recent_context": {
+    "S0240": {
+      "sentence": [
+        "My father doesn't like to stop talking.",
+        "A mi padre no le gusta dejar de hablar."
+      ],
+      "new_legos": [
+        [
+          "S0240L01",
+          "my father doesn't like",
+          "a mi padre no le gusta"
+        ],
+        [
+          "S0240L02",
+          "to stop talking",
+          "dejar de hablar"
+        ]
+      ]
+    },
+    "S0241": {
+      "sentence": [
+        "No quiero dárselo.",
+        "I don't want to give it to him."
+      ],
+      "new_legos": [
+        [
+          "S0241L01",
+          "I don't want",
+          "No quiero"
+        ],
+        [
+          "S0241L02",
+          "want to give it to him",
+          "quiero dárselo"
+        ],
+        [
+          "S0241L03",
+          "give it to him",
+          "dárselo"
+        ]
+      ]
+    },
+    "S0242": {
+      "sentence": [
+        "Quiero darle más tiempo.",
+        "I want to give her more time."
+      ],
+      "new_legos": [
+        [
+          "S0242L01",
+          "I want",
+          "Quiero"
+        ],
+        [
+          "S0242L02",
+          "I want to give her",
+          "Quiero darle"
+        ],
+        [
+          "S0242L03",
+          "give her",
+          "darle"
+        ],
+        [
+          "S0242L04",
+          "give her more time",
+          "darle más tiempo"
+        ]
+      ]
+    },
+    "S0243": {
+      "sentence": [
+        "Voy a pedir la misma cosa para comer.",
+        "I'm going to ask for the same thing to eat."
+      ],
+      "new_legos": [
+        [
+          "S0243L01",
+          "I'm going to",
+          "Voy a"
+        ],
+        [
+          "S0243L02",
+          "I'm going to ask for",
+          "Voy a pedir"
+        ],
+        [
+          "S0243L03",
+          "ask for",
+          "pedir"
+        ],
+        [
+          "S0243L04",
+          "to ask for the same thing",
+          "pedir la misma cosa"
+        ],
+        [
+          "S0243L06",
+          "the same thing to eat",
+          "la misma cosa para comer"
+        ],
+        [
+          "S0243L07",
+          "to eat",
+          "para comer"
+        ]
+      ]
+    },
+    "S0244": {
+      "sentence": [
+        "Ya he aprendido mucho.",
+        "I've learnt a lot already"
+      ],
+      "new_legos": [
+        [
+          "S0244L01",
+          "already",
+          "Ya"
+        ],
+        [
+          "S0244L02",
+          "I've already learnt",
+          "Ya he aprendido"
+        ],
+        [
+          "S0244L04",
+          "I've learnt a lot",
+          "he aprendido mucho"
+        ],
+        [
+          "S0244L05",
+          "a lot",
+          "mucho"
+        ]
+      ]
+    },
+    "S0245": {
+      "sentence": [
+        "Estoy contento con cuánto he hecho en poco tiempo.",
+        "I'm happy with how much I've done in a short time"
+      ],
+      "new_legos": [
+        [
+          "S0245L02",
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "S0245L03",
+          "with how much",
+          "con cuánto"
+        ],
+        [
+          "S0245L04",
+          "how much I've done",
+          "cuánto he hecho"
+        ],
+        [
+          "S0245L06",
+          "I've done in a short time",
+          "he hecho en poco tiempo"
+        ],
+        [
+          "S0245L07",
+          "in a short time",
+          "en poco tiempo"
+        ],
+        [
+          "S0245L08",
+          "short time",
+          "poco tiempo"
+        ]
+      ]
+    },
+    "S0246": {
+      "sentence": [
+        "Quería que ella te ayudara pero estaba demasiado ocupada.",
+        "I wanted her to help you but she was too busy."
+      ],
+      "new_legos": [
+        [
+          "S0246L01",
+          "I wanted",
+          "Quería"
+        ],
+        [
+          "S0246L02",
+          "I wanted her to help you",
+          "Quería que ella te ayudara"
+        ],
+        [
+          "S0246L03",
+          "that she help you",
+          "que ella te ayudara"
+        ],
+        [
+          "S0246L05",
+          "was too busy",
+          "estaba demasiado ocupada"
+        ],
+        [
+          "S0246L06",
+          "too busy",
+          "demasiado ocupada"
+        ]
+      ]
+    },
+    "S0247": {
+      "sentence": [
+        "Pensé que ese libro era bastante bueno.",
+        "I thought that book was fairly good."
+      ],
+      "new_legos": [
+        [
+          "S0247L01",
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "S0247L02",
+          "I thought that book",
+          "Pensé que ese"
+        ],
+        [
+          "S0247L03",
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "S0247L05",
+          "that book was fairly good",
+          "ese libro era bastante bueno"
+        ],
+        [
+          "S0247L06",
+          "was fairly good",
+          "era bastante bueno"
+        ],
+        [
+          "S0247L07",
+          "fairly good",
+          "bastante bueno"
+        ]
+      ]
+    },
+    "S0248": {
+      "sentence": [
+        "Pensé que la película era basura completa y quiero mi dinero de vuelta.",
+        "I thought the film was complete rubbish and I want my money back."
+      ],
+      "new_legos": [
+        [
+          "S0248L02",
+          "I thought that",
+          "Pensé que"
+        ],
+        [
+          "S0248L03",
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "S0248L04",
+          "the film",
+          "la película"
+        ],
+        [
+          "S0248L05",
+          "the film was complete rubbish",
+          "la película era basura completa"
+        ],
+        [
+          "S0248L06",
+          "was complete rubbish",
+          "era basura completa"
+        ],
+        [
+          "S0248L07",
+          "complete rubbish",
+          "basura completa"
+        ],
+        [
+          "S0248L10",
+          "I want my money back",
+          "quiero mi dinero de vuelta"
+        ],
+        [
+          "S0248L11",
+          "my money",
+          "mi dinero"
+        ],
+        [
+          "S0248L12",
+          "my money back",
+          "mi dinero de vuelta"
+        ],
+        [
+          "S0248L13",
+          "back",
+          "de vuelta"
+        ]
+      ]
+    },
+    "S0249": {
+      "sentence": [
+        "Quiero que me ayudes antes de que te vayas.",
+        "I want you to help me before you go."
+      ],
+      "new_legos": [
+        [
+          "S0249L02",
+          "I want you to help me",
+          "Quiero que me ayudes"
+        ],
+        [
+          "S0249L03",
+          "that you help me",
+          "que me ayudes"
+        ],
+        [
+          "S0249L04",
+          "I want you to help me before you go",
+          "Quiero que me ayudes antes de que te vayas"
+        ],
+        [
+          "S0249L05",
+          "before you go",
+          "antes de que te vayas"
+        ],
+        [
+          "S0249L06",
+          "before",
+          "antes de que"
+        ]
+      ]
+    }
+  }
+}

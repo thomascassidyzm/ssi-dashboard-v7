@@ -1,0 +1,215 @@
+{
+  "legos": {
+    "S0145L01": {
+      "lego": [
+        "Why are",
+        "¿Por qué no"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Why are you not",
+          "¿Por qué no"
+        ],
+        [
+          "Why not",
+          "¿Por qué no"
+        ],
+        [
+          "Why are you not happy",
+          "¿Por qué no estás feliz"
+        ],
+        [
+          "Why are you not coming",
+          "¿Por qué no vienes"
+        ],
+        [
+          "Why are you not happy today",
+          "¿Por qué no estás feliz hoy"
+        ],
+        [
+          "Why are you not here now",
+          "¿Por qué no estás aquí ahora"
+        ],
+        [
+          "Why are you not happy any more",
+          "¿Por qué no estás feliz ya"
+        ],
+        [
+          "Why are you not so happy today",
+          "¿Por qué no estás tan feliz hoy"
+        ],
+        [
+          "Why are you not working this morning",
+          "¿Por qué no estás trabajando esta mañana"
+        ],
+        [
+          "I don't know why you're not happy",
+          "No sé por qué no estás feliz"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0145L01",
+        "seed_context": {
+          "known": "Why are you not happy any more?",
+          "target": "¿Por qué no estás feliz ya?"
+        }
+      },
+      "components": [
+        [
+          "¿Por",
+          "Why"
+        ],
+        [
+          "qué",
+          "(question marker)"
+        ]
+      ]
+    },
+    "S0145L02": {
+      "lego": [
+        "you are not happy",
+        "no estás feliz"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0145L01",
+          "known": "Why are",
+          "target": "¿Por qué no",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0145L02",
+        "seed_context": {
+          "known": "Why are you not happy any more?",
+          "target": "¿Por qué no estás feliz ya?"
+        }
+      },
+      "components": [
+        [
+          "no",
+          "not"
+        ],
+        [
+          "estás",
+          "you are"
+        ],
+        [
+          "feliz",
+          "happy"
+        ]
+      ]
+    },
+    "S0145L03": {
+      "lego": [
+        "you are happy",
+        "estás feliz"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0145L01",
+          "known": "Why are",
+          "target": "¿Por qué no",
+          "type": "M"
+        },
+        {
+          "id": "S0145L02",
+          "known": "you are not happy",
+          "target": "no estás feliz",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0145L03",
+        "seed_context": {
+          "known": "Why are you not happy any more?",
+          "target": "¿Por qué no estás feliz ya?"
+        }
+      },
+      "components": [
+        [
+          "estás",
+          "you are"
+        ],
+        [
+          "feliz",
+          "happy"
+        ]
+      ]
+    },
+    "S0145L04": {
+      "lego": [
+        "any more",
+        "ya"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0145L01",
+          "known": "Why are",
+          "target": "¿Por qué no",
+          "type": "M"
+        },
+        {
+          "id": "S0145L02",
+          "known": "you are not happy",
+          "target": "no estás feliz",
+          "type": "M"
+        },
+        {
+          "id": "S0145L03",
+          "known": "you are happy",
+          "target": "estás feliz",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0145L04",
+        "seed_context": {
+          "known": "Why are you not happy any more?",
+          "target": "¿Por qué no estás feliz ya?"
+        }
+      },
+      "components": []
+    }
+  }
+}

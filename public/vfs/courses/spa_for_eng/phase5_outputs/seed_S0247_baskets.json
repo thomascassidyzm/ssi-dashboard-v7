@@ -1,0 +1,832 @@
+{
+  "legos": {
+    "S0247L01": {
+      "lego": [
+        "I thought",
+        "Pensé"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought to help",
+          "Pensé ayudar"
+        ],
+        [
+          "I thought to give her more time",
+          "Pensé darle más tiempo"
+        ],
+        [
+          "I thought to ask for the same thing",
+          "Pensé pedir la misma cosa"
+        ],
+        [
+          "I thought I wanted to help you",
+          "Pensé que quería ayudarte"
+        ],
+        [
+          "I thought to stop talking",
+          "Pensé dejar de hablar"
+        ],
+        [
+          "I thought I wanted her to help you",
+          "Pensé que quería que ella te ayudara"
+        ],
+        [
+          "I thought to give it to him",
+          "Pensé dárselo"
+        ],
+        [
+          "I thought she was too busy to help",
+          "Pensé que ella estaba demasiado ocupada para ayudar"
+        ],
+        [
+          "I thought I wanted to give her more time to read",
+          "Pensé que quería darle más tiempo para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0247L01",
+        "seed_context": {
+          "known": "I thought that book was fairly good.",
+          "target": "Pensé que ese libro era bastante bueno."
+        }
+      },
+      "components": []
+    },
+    "S0247L02": {
+      "lego": [
+        "I thought that book",
+        "Pensé que ese"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0247L01",
+          "known": "I thought",
+          "target": "Pensé",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I thought that book",
+          "Pensé que ese"
+        ],
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "I thought that book to read",
+          "Pensé que ese libro para leer"
+        ],
+        [
+          "I thought that someone wanted to help",
+          "Pensé que alguien quería ayudar"
+        ],
+        [
+          "I thought that book I wanted to give her",
+          "Pensé que ese libro quería darle"
+        ],
+        [
+          "I thought that he wanted",
+          "Pensé que él quería"
+        ],
+        [
+          "I thought that book to ask for",
+          "Pensé que ese libro para pedir"
+        ],
+        [
+          "I thought that she was too busy",
+          "Pensé que ella estaba demasiado ocupada"
+        ],
+        [
+          "I thought that book I wanted to give her to read",
+          "Pensé que ese libro quería darle para leer"
+        ],
+        [
+          "I thought that someone was going to try to help",
+          "Pensé que alguien iba a intentar ayudar"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0247L02",
+        "seed_context": {
+          "known": "I thought that book was fairly good.",
+          "target": "Pensé que ese libro era bastante bueno."
+        }
+      },
+      "components": [
+        [
+          "Pensé",
+          "I thought"
+        ],
+        [
+          "que",
+          "that"
+        ]
+      ]
+    },
+    "S0247L03": {
+      "lego": [
+        "I thought that book was fairly good",
+        "Pensé que ese libro era bastante bueno"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0247L01",
+          "known": "I thought",
+          "target": "Pensé",
+          "type": "A"
+        },
+        {
+          "id": "S0247L02",
+          "known": "I thought that book",
+          "target": "Pensé que ese",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "I thought that book",
+          "Pensé que ese"
+        ],
+        [
+          "I thought that book was to read",
+          "Pensé que ese libro era para leer"
+        ],
+        [
+          "I thought that book was the same thing",
+          "Pensé que ese libro era la misma cosa"
+        ],
+        [
+          "I thought that book was fairly good to read",
+          "Pensé que ese libro era bastante bueno para leer"
+        ],
+        [
+          "I thought that book was to help",
+          "Pensé que ese libro era para ayudar"
+        ],
+        [
+          "I thought that book was fairly good already",
+          "Pensé que ese libro era bastante bueno ya"
+        ],
+        [
+          "I thought that book was to ask for",
+          "Pensé que ese libro era para pedir"
+        ],
+        [
+          "I thought that book was fairly good to give her",
+          "Pensé que ese libro era bastante bueno para darle"
+        ],
+        [
+          "I thought that book was fairly good.",
+          "Pensé que ese libro era bastante bueno."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0247L03",
+        "seed_context": {
+          "known": "I thought that book was fairly good.",
+          "target": "Pensé que ese libro era bastante bueno."
+        }
+      },
+      "components": [
+        [
+          "Pensé",
+          "I thought"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "libro",
+          "book"
+        ],
+        [
+          "era",
+          "was"
+        ],
+        [
+          "bastante",
+          "fairly"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    },
+    "S0247L05": {
+      "lego": [
+        "that book was fairly good",
+        "ese libro era bastante bueno"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0247L01",
+          "known": "I thought",
+          "target": "Pensé",
+          "type": "A"
+        },
+        {
+          "id": "S0247L02",
+          "known": "I thought that book",
+          "target": "Pensé que ese",
+          "type": "M"
+        },
+        {
+          "id": "S0247L03",
+          "known": "I thought that book was fairly good",
+          "target": "Pensé que ese libro era bastante bueno",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "that book was fairly good",
+          "ese libro era bastante bueno"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "that book was to read",
+          "ese libro era para leer"
+        ],
+        [
+          "that book was the same thing",
+          "ese libro era la misma cosa"
+        ],
+        [
+          "I thought that book was fairly good already",
+          "Pensé que ese libro era bastante bueno ya"
+        ],
+        [
+          "that book was to help",
+          "ese libro era para ayudar"
+        ],
+        [
+          "that book was fairly good to read",
+          "ese libro era bastante bueno para leer"
+        ],
+        [
+          "I thought that book was fairly good to give her",
+          "Pensé que ese libro era bastante bueno para darle"
+        ],
+        [
+          "that book was fairly good to ask for",
+          "ese libro era bastante bueno para pedir"
+        ],
+        [
+          "I thought that book was fairly good to read before the weekend",
+          "Pensé que ese libro era bastante bueno para leer antes del fin de semana"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0247L05",
+        "seed_context": {
+          "known": "I thought that book was fairly good.",
+          "target": "Pensé que ese libro era bastante bueno."
+        }
+      },
+      "components": [
+        [
+          "ese",
+          "that"
+        ],
+        [
+          "libro",
+          "book"
+        ],
+        [
+          "era",
+          "was"
+        ],
+        [
+          "bastante",
+          "fairly"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    },
+    "S0247L06": {
+      "lego": [
+        "was fairly good",
+        "era bastante bueno"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0247L01",
+          "known": "I thought",
+          "target": "Pensé",
+          "type": "A"
+        },
+        {
+          "id": "S0247L02",
+          "known": "I thought that book",
+          "target": "Pensé que ese",
+          "type": "M"
+        },
+        {
+          "id": "S0247L03",
+          "known": "I thought that book was fairly good",
+          "target": "Pensé que ese libro era bastante bueno",
+          "type": "M"
+        },
+        {
+          "id": "S0247L05",
+          "known": "that book was fairly good",
+          "target": "ese libro era bastante bueno",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "was fairly good",
+          "era bastante bueno"
+        ],
+        [
+          "that book was fairly good",
+          "ese libro era bastante bueno"
+        ],
+        [
+          "was fairly good to read",
+          "era bastante bueno para leer"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "was fairly good to help",
+          "era bastante bueno para ayudar"
+        ],
+        [
+          "was fairly good already",
+          "era bastante bueno ya"
+        ],
+        [
+          "that book was fairly good to read",
+          "ese libro era bastante bueno para leer"
+        ],
+        [
+          "I thought that book was fairly good to give her",
+          "Pensé que ese libro era bastante bueno para darle"
+        ],
+        [
+          "was fairly good to ask for the same thing",
+          "era bastante bueno para pedir la misma cosa"
+        ],
+        [
+          "I thought that book was fairly good to read before the weekend",
+          "Pensé que ese libro era bastante bueno para leer antes del fin de semana"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0247L06",
+        "seed_context": {
+          "known": "I thought that book was fairly good.",
+          "target": "Pensé que ese libro era bastante bueno."
+        }
+      },
+      "components": [
+        [
+          "era",
+          "was"
+        ],
+        [
+          "bastante",
+          "fairly"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    },
+    "S0247L07": {
+      "lego": [
+        "fairly good",
+        "bastante bueno"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0247L01",
+          "known": "I thought",
+          "target": "Pensé",
+          "type": "A"
+        },
+        {
+          "id": "S0247L02",
+          "known": "I thought that book",
+          "target": "Pensé que ese",
+          "type": "M"
+        },
+        {
+          "id": "S0247L03",
+          "known": "I thought that book was fairly good",
+          "target": "Pensé que ese libro era bastante bueno",
+          "type": "M"
+        },
+        {
+          "id": "S0247L05",
+          "known": "that book was fairly good",
+          "target": "ese libro era bastante bueno",
+          "type": "M"
+        },
+        {
+          "id": "S0247L06",
+          "known": "was fairly good",
+          "target": "era bastante bueno",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "fairly good",
+          "bastante bueno"
+        ],
+        [
+          "was fairly good",
+          "era bastante bueno"
+        ],
+        [
+          "fairly good to read",
+          "bastante bueno para leer"
+        ],
+        [
+          "that book was fairly good",
+          "ese libro era bastante bueno"
+        ],
+        [
+          "fairly good to help",
+          "bastante bueno para ayudar"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "fairly good to give her",
+          "bastante bueno para darle"
+        ],
+        [
+          "was fairly good already",
+          "era bastante bueno ya"
+        ],
+        [
+          "fairly good to read before the weekend",
+          "bastante bueno para leer antes del fin de semana"
+        ],
+        [
+          "I thought that book was fairly good.",
+          "Pensé que ese libro era bastante bueno."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0247L07",
+        "seed_context": {
+          "known": "I thought that book was fairly good.",
+          "target": "Pensé que ese libro era bastante bueno."
+        }
+      },
+      "components": [
+        [
+          "bastante",
+          "fairly"
+        ],
+        [
+          "bueno",
+          "good"
+        ]
+      ]
+    }
+  },
+  "seed_pair": {
+    "target": "Pensé que ese libro era bastante bueno.",
+    "known": "I thought that book was fairly good."
+  },
+  "recent_context": {
+    "S0237": {
+      "sentence": [
+        "He wanted me to tell you before the weekend.",
+        "Quería que te dijera antes del fin de semana."
+      ],
+      "new_legos": [
+        [
+          "S0237L01",
+          "he wanted me to tell you",
+          "quería que te dijera"
+        ],
+        [
+          "S0237L02",
+          "before the weekend",
+          "antes del fin de semana"
+        ]
+      ]
+    },
+    "S0238": {
+      "sentence": [
+        "He wanted you to tell me yesterday.",
+        "Quería que me dijeras ayer."
+      ],
+      "new_legos": [
+        [
+          "S0238L01",
+          "he wanted you to tell me",
+          "quería que me dijeras"
+        ]
+      ]
+    },
+    "S0239": {
+      "sentence": [
+        "My mother likes to read.",
+        "A mi madre le gusta leer."
+      ],
+      "new_legos": [
+        [
+          "S0239L01",
+          "my mother likes",
+          "a mi madre le gusta"
+        ]
+      ]
+    },
+    "S0240": {
+      "sentence": [
+        "My father doesn't like to stop talking.",
+        "A mi padre no le gusta dejar de hablar."
+      ],
+      "new_legos": [
+        [
+          "S0240L01",
+          "my father doesn't like",
+          "a mi padre no le gusta"
+        ],
+        [
+          "S0240L02",
+          "to stop talking",
+          "dejar de hablar"
+        ]
+      ]
+    },
+    "S0241": {
+      "sentence": [
+        "No quiero dárselo.",
+        "I don't want to give it to him."
+      ],
+      "new_legos": [
+        [
+          "S0241L01",
+          "I don't want",
+          "No quiero"
+        ],
+        [
+          "S0241L02",
+          "want to give it to him",
+          "quiero dárselo"
+        ],
+        [
+          "S0241L03",
+          "give it to him",
+          "dárselo"
+        ]
+      ]
+    },
+    "S0242": {
+      "sentence": [
+        "Quiero darle más tiempo.",
+        "I want to give her more time."
+      ],
+      "new_legos": [
+        [
+          "S0242L01",
+          "I want",
+          "Quiero"
+        ],
+        [
+          "S0242L02",
+          "I want to give her",
+          "Quiero darle"
+        ],
+        [
+          "S0242L03",
+          "give her",
+          "darle"
+        ],
+        [
+          "S0242L04",
+          "give her more time",
+          "darle más tiempo"
+        ]
+      ]
+    },
+    "S0243": {
+      "sentence": [
+        "Voy a pedir la misma cosa para comer.",
+        "I'm going to ask for the same thing to eat."
+      ],
+      "new_legos": [
+        [
+          "S0243L01",
+          "I'm going to",
+          "Voy a"
+        ],
+        [
+          "S0243L02",
+          "I'm going to ask for",
+          "Voy a pedir"
+        ],
+        [
+          "S0243L03",
+          "ask for",
+          "pedir"
+        ],
+        [
+          "S0243L04",
+          "to ask for the same thing",
+          "pedir la misma cosa"
+        ],
+        [
+          "S0243L06",
+          "the same thing to eat",
+          "la misma cosa para comer"
+        ],
+        [
+          "S0243L07",
+          "to eat",
+          "para comer"
+        ]
+      ]
+    },
+    "S0244": {
+      "sentence": [
+        "Ya he aprendido mucho.",
+        "I've learnt a lot already"
+      ],
+      "new_legos": [
+        [
+          "S0244L01",
+          "already",
+          "Ya"
+        ],
+        [
+          "S0244L02",
+          "I've already learnt",
+          "Ya he aprendido"
+        ],
+        [
+          "S0244L04",
+          "I've learnt a lot",
+          "he aprendido mucho"
+        ],
+        [
+          "S0244L05",
+          "a lot",
+          "mucho"
+        ]
+      ]
+    },
+    "S0245": {
+      "sentence": [
+        "Estoy contento con cuánto he hecho en poco tiempo.",
+        "I'm happy with how much I've done in a short time"
+      ],
+      "new_legos": [
+        [
+          "S0245L02",
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "S0245L03",
+          "with how much",
+          "con cuánto"
+        ],
+        [
+          "S0245L04",
+          "how much I've done",
+          "cuánto he hecho"
+        ],
+        [
+          "S0245L06",
+          "I've done in a short time",
+          "he hecho en poco tiempo"
+        ],
+        [
+          "S0245L07",
+          "in a short time",
+          "en poco tiempo"
+        ],
+        [
+          "S0245L08",
+          "short time",
+          "poco tiempo"
+        ]
+      ]
+    },
+    "S0246": {
+      "sentence": [
+        "Quería que ella te ayudara pero estaba demasiado ocupada.",
+        "I wanted her to help you but she was too busy."
+      ],
+      "new_legos": [
+        [
+          "S0246L01",
+          "I wanted",
+          "Quería"
+        ],
+        [
+          "S0246L02",
+          "I wanted her to help you",
+          "Quería que ella te ayudara"
+        ],
+        [
+          "S0246L03",
+          "that she help you",
+          "que ella te ayudara"
+        ],
+        [
+          "S0246L05",
+          "was too busy",
+          "estaba demasiado ocupada"
+        ],
+        [
+          "S0246L06",
+          "too busy",
+          "demasiado ocupada"
+        ]
+      ]
+    }
+  }
+}

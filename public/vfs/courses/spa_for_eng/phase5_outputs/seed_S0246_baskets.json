@@ -1,0 +1,704 @@
+{
+  "legos": {
+    "S0246L01": {
+      "lego": [
+        "I wanted",
+        "Quería"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I wanted",
+          "Quería"
+        ],
+        [
+          "I wanted to help",
+          "Quería ayudar"
+        ],
+        [
+          "I wanted to give her more time",
+          "Quería darle más tiempo"
+        ],
+        [
+          "I wanted to ask for the same thing",
+          "Quería pedir la misma cosa"
+        ],
+        [
+          "I wanted to tell you before the weekend",
+          "Quería decirte antes del fin de semana"
+        ],
+        [
+          "I wanted to stop talking",
+          "Quería dejar de hablar"
+        ],
+        [
+          "I wanted to ask for the same thing to eat",
+          "Quería pedir la misma cosa para comer"
+        ],
+        [
+          "I wanted to give it to him",
+          "Quería dárselo"
+        ],
+        [
+          "I wanted to try to help before the weekend",
+          "Quería intentar ayudar antes del fin de semana"
+        ],
+        [
+          "I wanted to give her more time to read",
+          "Quería darle más tiempo para leer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0246L01",
+        "seed_context": {
+          "known": "I wanted her to help you but she was too busy.",
+          "target": "Quería que ella te ayudara pero estaba demasiado ocupada."
+        }
+      },
+      "components": []
+    },
+    "S0246L02": {
+      "lego": [
+        "I wanted her to help you",
+        "Quería que ella te ayudara"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0246L01",
+          "known": "I wanted",
+          "target": "Quería",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I wanted her to help you",
+          "Quería que ella te ayudara"
+        ],
+        [
+          "I wanted",
+          "Quería"
+        ],
+        [
+          "I wanted her to help you to read",
+          "Quería que ella te ayudara a leer"
+        ],
+        [
+          "I wanted her to help you before the weekend",
+          "Quería que ella te ayudara antes del fin de semana"
+        ],
+        [
+          "I wanted her to help you with the same thing",
+          "Quería que ella te ayudara con la misma cosa"
+        ],
+        [
+          "I wanted to help you",
+          "Quería ayudarte"
+        ],
+        [
+          "I wanted her to help you to stop talking",
+          "Quería que ella te ayudara a dejar de hablar"
+        ],
+        [
+          "I wanted her to help you already",
+          "Quería que ella te ayudara ya"
+        ],
+        [
+          "I wanted her to help you before the weekend to read",
+          "Quería que ella te ayudara antes del fin de semana para leer"
+        ],
+        [
+          "I wanted her to help you to ask for the same thing to eat",
+          "Quería que ella te ayudara a pedir la misma cosa para comer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0246L02",
+        "seed_context": {
+          "known": "I wanted her to help you but she was too busy.",
+          "target": "Quería que ella te ayudara pero estaba demasiado ocupada."
+        }
+      },
+      "components": [
+        [
+          "Quería",
+          "I wanted"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "te",
+          "you"
+        ],
+        [
+          "ayudara",
+          "to help"
+        ]
+      ]
+    },
+    "S0246L03": {
+      "lego": [
+        "that she help you",
+        "que ella te ayudara"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0246L01",
+          "known": "I wanted",
+          "target": "Quería",
+          "type": "A"
+        },
+        {
+          "id": "S0246L02",
+          "known": "I wanted her to help you",
+          "target": "Quería que ella te ayudara",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "that she help you",
+          "que ella te ayudara"
+        ],
+        [
+          "I wanted that she help you",
+          "Quería que ella te ayudara"
+        ],
+        [
+          "that she help you to read",
+          "que ella te ayudara a leer"
+        ],
+        [
+          "that she help you before the weekend",
+          "que ella te ayudara antes del fin de semana"
+        ],
+        [
+          "I wanted that she help you already",
+          "Quería que ella te ayudara ya"
+        ],
+        [
+          "that she help you to eat",
+          "que ella te ayudara a comer"
+        ],
+        [
+          "I wanted that she help you to stop talking",
+          "Quería que ella te ayudara a dejar de hablar"
+        ],
+        [
+          "that she help you with the same thing",
+          "que ella te ayudara con la misma cosa"
+        ],
+        [
+          "I wanted that she help you before the weekend to read",
+          "Quería que ella te ayudara antes del fin de semana para leer"
+        ],
+        [
+          "I wanted that she help you to give her more time",
+          "Quería que ella te ayudara a darle más tiempo"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0246L03",
+        "seed_context": {
+          "known": "I wanted her to help you but she was too busy.",
+          "target": "Quería que ella te ayudara pero estaba demasiado ocupada."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "that"
+        ],
+        [
+          "ella",
+          "she"
+        ],
+        [
+          "te",
+          "you"
+        ],
+        [
+          "ayudara",
+          "help"
+        ]
+      ]
+    },
+    "S0246L05": {
+      "lego": [
+        "was too busy",
+        "estaba demasiado ocupada"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0246L01",
+          "known": "I wanted",
+          "target": "Quería",
+          "type": "A"
+        },
+        {
+          "id": "S0246L02",
+          "known": "I wanted her to help you",
+          "target": "Quería que ella te ayudara",
+          "type": "M"
+        },
+        {
+          "id": "S0246L03",
+          "known": "that she help you",
+          "target": "que ella te ayudara",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "was too busy",
+          "estaba demasiado ocupada"
+        ],
+        [
+          "she was too busy",
+          "ella estaba demasiado ocupada"
+        ],
+        [
+          "she was too busy to help",
+          "ella estaba demasiado ocupada para ayudar"
+        ],
+        [
+          "she was too busy to help you",
+          "ella estaba demasiado ocupada para ayudarte"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ],
+        [
+          "she was too busy to read",
+          "ella estaba demasiado ocupada para leer"
+        ],
+        [
+          "she was too busy to stop talking",
+          "ella estaba demasiado ocupada para dejar de hablar"
+        ],
+        [
+          "she was too busy to help you to read",
+          "ella estaba demasiado ocupada para ayudarte a leer"
+        ],
+        [
+          "I wanted her to help you before the weekend but she was too busy",
+          "Quería que ella te ayudara antes del fin de semana pero estaba demasiado ocupada"
+        ],
+        [
+          "she was too busy to give her more time to help you",
+          "ella estaba demasiado ocupada para darle más tiempo para ayudarte"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0246L05",
+        "seed_context": {
+          "known": "I wanted her to help you but she was too busy.",
+          "target": "Quería que ella te ayudara pero estaba demasiado ocupada."
+        }
+      },
+      "components": [
+        [
+          "estaba",
+          "was"
+        ],
+        [
+          "demasiado",
+          "too"
+        ],
+        [
+          "ocupada",
+          "busy"
+        ]
+      ]
+    },
+    "S0246L06": {
+      "lego": [
+        "too busy",
+        "demasiado ocupada"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0246L01",
+          "known": "I wanted",
+          "target": "Quería",
+          "type": "A"
+        },
+        {
+          "id": "S0246L02",
+          "known": "I wanted her to help you",
+          "target": "Quería que ella te ayudara",
+          "type": "M"
+        },
+        {
+          "id": "S0246L03",
+          "known": "that she help you",
+          "target": "que ella te ayudara",
+          "type": "M"
+        },
+        {
+          "id": "S0246L05",
+          "known": "was too busy",
+          "target": "estaba demasiado ocupada",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "too busy",
+          "demasiado ocupada"
+        ],
+        [
+          "she was too busy",
+          "ella estaba demasiado ocupada"
+        ],
+        [
+          "too busy to help",
+          "demasiado ocupada para ayudar"
+        ],
+        [
+          "too busy to help you",
+          "demasiado ocupada para ayudarte"
+        ],
+        [
+          "she was too busy to read",
+          "ella estaba demasiado ocupada para leer"
+        ],
+        [
+          "too busy to stop talking",
+          "demasiado ocupada para dejar de hablar"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ],
+        [
+          "she was too busy to give her more time",
+          "ella estaba demasiado ocupada para darle más tiempo"
+        ],
+        [
+          "she was too busy to try to help you before the weekend",
+          "ella estaba demasiado ocupada para intentar ayudarte antes del fin de semana"
+        ],
+        [
+          "I wanted her to help you but she was too busy.",
+          "Quería que ella te ayudara pero estaba demasiado ocupada."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0246L06",
+        "seed_context": {
+          "known": "I wanted her to help you but she was too busy.",
+          "target": "Quería que ella te ayudara pero estaba demasiado ocupada."
+        }
+      },
+      "components": [
+        [
+          "demasiado",
+          "too"
+        ],
+        [
+          "ocupada",
+          "busy"
+        ]
+      ]
+    }
+  },
+  "seed_pair": {
+    "target": "Quería que ella te ayudara pero estaba demasiado ocupada.",
+    "known": "I wanted her to help you but she was too busy."
+  },
+  "recent_context": {
+    "S0236": {
+      "sentence": [
+        "I know someone who said that she was going to try to help.",
+        "Conozco a alguien que dijo que iba a intentar ayudar."
+      ],
+      "new_legos": [
+        [
+          "S0236L01",
+          "I know someone",
+          "conozco a alguien"
+        ],
+        [
+          "S0236L04",
+          "was going to try",
+          "iba a intentar"
+        ],
+        [
+          "S0236L05",
+          "to try to help",
+          "intentar ayudar"
+        ]
+      ]
+    },
+    "S0237": {
+      "sentence": [
+        "He wanted me to tell you before the weekend.",
+        "Quería que te dijera antes del fin de semana."
+      ],
+      "new_legos": [
+        [
+          "S0237L01",
+          "he wanted me to tell you",
+          "quería que te dijera"
+        ],
+        [
+          "S0237L02",
+          "before the weekend",
+          "antes del fin de semana"
+        ]
+      ]
+    },
+    "S0238": {
+      "sentence": [
+        "He wanted you to tell me yesterday.",
+        "Quería que me dijeras ayer."
+      ],
+      "new_legos": [
+        [
+          "S0238L01",
+          "he wanted you to tell me",
+          "quería que me dijeras"
+        ]
+      ]
+    },
+    "S0239": {
+      "sentence": [
+        "My mother likes to read.",
+        "A mi madre le gusta leer."
+      ],
+      "new_legos": [
+        [
+          "S0239L01",
+          "my mother likes",
+          "a mi madre le gusta"
+        ]
+      ]
+    },
+    "S0240": {
+      "sentence": [
+        "My father doesn't like to stop talking.",
+        "A mi padre no le gusta dejar de hablar."
+      ],
+      "new_legos": [
+        [
+          "S0240L01",
+          "my father doesn't like",
+          "a mi padre no le gusta"
+        ],
+        [
+          "S0240L02",
+          "to stop talking",
+          "dejar de hablar"
+        ]
+      ]
+    },
+    "S0241": {
+      "sentence": [
+        "No quiero dárselo.",
+        "I don't want to give it to him."
+      ],
+      "new_legos": [
+        [
+          "S0241L01",
+          "I don't want",
+          "No quiero"
+        ],
+        [
+          "S0241L02",
+          "want to give it to him",
+          "quiero dárselo"
+        ],
+        [
+          "S0241L03",
+          "give it to him",
+          "dárselo"
+        ]
+      ]
+    },
+    "S0242": {
+      "sentence": [
+        "Quiero darle más tiempo.",
+        "I want to give her more time."
+      ],
+      "new_legos": [
+        [
+          "S0242L01",
+          "I want",
+          "Quiero"
+        ],
+        [
+          "S0242L02",
+          "I want to give her",
+          "Quiero darle"
+        ],
+        [
+          "S0242L03",
+          "give her",
+          "darle"
+        ],
+        [
+          "S0242L04",
+          "give her more time",
+          "darle más tiempo"
+        ]
+      ]
+    },
+    "S0243": {
+      "sentence": [
+        "Voy a pedir la misma cosa para comer.",
+        "I'm going to ask for the same thing to eat."
+      ],
+      "new_legos": [
+        [
+          "S0243L01",
+          "I'm going to",
+          "Voy a"
+        ],
+        [
+          "S0243L02",
+          "I'm going to ask for",
+          "Voy a pedir"
+        ],
+        [
+          "S0243L03",
+          "ask for",
+          "pedir"
+        ],
+        [
+          "S0243L04",
+          "to ask for the same thing",
+          "pedir la misma cosa"
+        ],
+        [
+          "S0243L06",
+          "the same thing to eat",
+          "la misma cosa para comer"
+        ],
+        [
+          "S0243L07",
+          "to eat",
+          "para comer"
+        ]
+      ]
+    },
+    "S0244": {
+      "sentence": [
+        "Ya he aprendido mucho.",
+        "I've learnt a lot already"
+      ],
+      "new_legos": [
+        [
+          "S0244L01",
+          "already",
+          "Ya"
+        ],
+        [
+          "S0244L02",
+          "I've already learnt",
+          "Ya he aprendido"
+        ],
+        [
+          "S0244L04",
+          "I've learnt a lot",
+          "he aprendido mucho"
+        ],
+        [
+          "S0244L05",
+          "a lot",
+          "mucho"
+        ]
+      ]
+    },
+    "S0245": {
+      "sentence": [
+        "Estoy contento con cuánto he hecho en poco tiempo.",
+        "I'm happy with how much I've done in a short time"
+      ],
+      "new_legos": [
+        [
+          "S0245L02",
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "S0245L03",
+          "with how much",
+          "con cuánto"
+        ],
+        [
+          "S0245L04",
+          "how much I've done",
+          "cuánto he hecho"
+        ],
+        [
+          "S0245L06",
+          "I've done in a short time",
+          "he hecho en poco tiempo"
+        ],
+        [
+          "S0245L07",
+          "in a short time",
+          "en poco tiempo"
+        ],
+        [
+          "S0245L08",
+          "short time",
+          "poco tiempo"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,445 @@
+{
+  "legos": {
+    "S0253L01": {
+      "lego": [
+        "I should be",
+        "debo estar"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "I should be",
+          "debo estar"
+        ],
+        [
+          "I should be happy",
+          "debo estar contento"
+        ],
+        [
+          "I should be ready",
+          "debo estar preparado"
+        ],
+        [
+          "I should be ready to start",
+          "debo estar preparado para empezar"
+        ],
+        [
+          "I thought I should be happy",
+          "Pensé que debo estar contento"
+        ],
+        [
+          "I should be too busy to help",
+          "debo estar demasiado ocupado para ayudar"
+        ],
+        [
+          "I should be ready before you go",
+          "debo estar preparado antes de que te vayas"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "I should be ready to start in a short time",
+          "debo estar preparado para empezar en poco tiempo"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0253L01",
+        "seed_context": {
+          "known": "Debo estar preparado en unos pocos minutos.",
+          "target": "I should be ready in a few minutes."
+        }
+      },
+      "components": [
+        [
+          "debo",
+          "I should/must"
+        ],
+        [
+          "estar",
+          "to be"
+        ]
+      ]
+    },
+    "S0253L02": {
+      "lego": [
+        "to be ready",
+        "estar preparado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0253L01",
+          "known": "I should be",
+          "target": "debo estar",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to be ready",
+          "estar preparado"
+        ],
+        [
+          "I should be ready",
+          "debo estar preparado"
+        ],
+        [
+          "to be ready to start",
+          "estar preparado para empezar"
+        ],
+        [
+          "you'll be ready",
+          "estarás preparado"
+        ],
+        [
+          "I wanted to be ready",
+          "Quería estar preparado"
+        ],
+        [
+          "I should be ready before you go",
+          "debo estar preparado antes de que te vayas"
+        ],
+        [
+          "to be ready to start in a short time",
+          "estar preparado para empezar en poco tiempo"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "when will you be ready to start",
+          "cuándo estarás preparado para empezar"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0253L02",
+        "seed_context": {
+          "known": "Debo estar preparado en unos pocos minutos.",
+          "target": "I should be ready in a few minutes."
+        }
+      },
+      "components": [
+        [
+          "estar",
+          "to be"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0253L03": {
+      "lego": [
+        "be ready",
+        "estar preparado"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0253L01",
+          "known": "I should be",
+          "target": "debo estar",
+          "type": "M"
+        },
+        {
+          "id": "S0253L02",
+          "known": "to be ready",
+          "target": "estar preparado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "be ready",
+          "estar preparado"
+        ],
+        [
+          "I should be ready",
+          "debo estar preparado"
+        ],
+        [
+          "to be ready",
+          "estar preparado"
+        ],
+        [
+          "you'll be ready to start",
+          "estarás preparado para empezar"
+        ],
+        [
+          "I wanted to be ready",
+          "Quería estar preparado"
+        ],
+        [
+          "when will you be ready",
+          "cuándo estarás preparado"
+        ],
+        [
+          "I should be ready before you go",
+          "debo estar preparado antes de que te vayas"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "you'll be ready to start in a short time",
+          "estarás preparado para empezar en poco tiempo"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0253L03",
+        "seed_context": {
+          "known": "Debo estar preparado en unos pocos minutos.",
+          "target": "I should be ready in a few minutes."
+        }
+      }
+    },
+    "S0253L04": {
+      "lego": [
+        "in a few minutes",
+        "en unos pocos minutos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0253L01",
+          "known": "I should be",
+          "target": "debo estar",
+          "type": "M"
+        },
+        {
+          "id": "S0253L02",
+          "known": "to be ready",
+          "target": "estar preparado",
+          "type": "M"
+        },
+        {
+          "id": "S0253L03",
+          "known": "be ready",
+          "target": "estar preparado",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "in a few minutes",
+          "en unos pocos minutos"
+        ],
+        [
+          "I should be ready in a few minutes",
+          "debo estar preparado en unos pocos minutos"
+        ],
+        [
+          "in a short time",
+          "en poco tiempo"
+        ],
+        [
+          "ready in a few minutes",
+          "preparado en unos pocos minutos"
+        ],
+        [
+          "I want to start in a few minutes",
+          "Quiero empezar en unos pocos minutos"
+        ],
+        [
+          "you'll be ready in a few minutes",
+          "estarás preparado en unos pocos minutos"
+        ],
+        [
+          "I've done a lot in a short time",
+          "he hecho mucho en poco tiempo"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "to be ready to start in a few minutes",
+          "estar preparado para empezar en unos pocos minutos"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0253L04",
+        "seed_context": {
+          "known": "Debo estar preparado en unos pocos minutos.",
+          "target": "I should be ready in a few minutes."
+        }
+      },
+      "components": [
+        [
+          "en",
+          "in"
+        ],
+        [
+          "unos",
+          "some/a few"
+        ],
+        [
+          "pocos",
+          "few"
+        ],
+        [
+          "minutos",
+          "minutes"
+        ]
+      ]
+    },
+    "S0253L05": {
+      "lego": [
+        "a few minutes",
+        "unos pocos minutos"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0253L01",
+          "known": "I should be",
+          "target": "debo estar",
+          "type": "M"
+        },
+        {
+          "id": "S0253L02",
+          "known": "to be ready",
+          "target": "estar preparado",
+          "type": "M"
+        },
+        {
+          "id": "S0253L03",
+          "known": "be ready",
+          "target": "estar preparado",
+          "type": "A"
+        },
+        {
+          "id": "S0253L04",
+          "known": "in a few minutes",
+          "target": "en unos pocos minutos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "a few minutes",
+          "unos pocos minutos"
+        ],
+        [
+          "in a few minutes",
+          "en unos pocos minutos"
+        ],
+        [
+          "a short time",
+          "poco tiempo"
+        ],
+        [
+          "ready in a few minutes",
+          "preparado en unos pocos minutos"
+        ],
+        [
+          "I want to start in a few minutes",
+          "Quiero empezar en unos pocos minutos"
+        ],
+        [
+          "you'll be ready in a few minutes",
+          "estarás preparado en unos pocos minutos"
+        ],
+        [
+          "I've done a lot in a short time",
+          "he hecho mucho en poco tiempo"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "to be ready to start in a few minutes",
+          "estar preparado para empezar en unos pocos minutos"
+        ],
+        [
+          "I should be ready in a few minutes.",
+          "Debo estar preparado en unos pocos minutos."
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0253L05",
+        "seed_context": {
+          "known": "Debo estar preparado en unos pocos minutos.",
+          "target": "I should be ready in a few minutes."
+        }
+      },
+      "components": [
+        [
+          "unos",
+          "some/a few"
+        ],
+        [
+          "pocos",
+          "few"
+        ],
+        [
+          "minutos",
+          "minutes"
+        ]
+      ]
+    }
+  }
+}

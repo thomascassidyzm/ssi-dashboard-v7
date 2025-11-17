@@ -1,0 +1,121 @@
+{
+  "legos": {
+    "S0234L01": {
+      "lego": ["conocí a alguien", "I met someone"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["conocí", "I met"],
+        ["a", "to/a"],
+        ["alguien", "someone"]
+      ]
+    },
+    "S0234L02": {
+      "lego": ["anoche", "last night"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0234L01",
+          "known": "I met someone",
+          "target": "conocí a alguien",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0234L03": {
+      "lego": ["anoche que", "night who"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0234L01",
+          "known": "I met someone",
+          "target": "conocí a alguien",
+          "type": "M"
+        },
+        {
+          "id": "S0234L02",
+          "known": "last night",
+          "target": "anoche",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["alguien anoche que", "someone last night who", null, 1],
+        ["conocí anoche que", "I met last night who", null, 2],
+        ["conocí a alguien anoche que", "I met someone last night who", null, 2],
+        ["el hombre anoche que trabaja", "the man last night who works", null, 3],
+        ["conocí a alguien anoche que quiere ayudar", "I met someone last night who wants to help", null, 4],
+        ["la mujer anoche que está intentando", "the woman last night who is trying", null, 4],
+        ["conocí a alguien anoche que trabaja contigo", "I met someone last night who works with you", null, 5],
+        ["el hombre anoche que va a preguntarte", "the man last night who is going to ask you", null, 5],
+        ["conocí a alguien anoche que quería pedir ayuda", "I met someone last night who wanted to ask for help", null, 6],
+        ["la mujer anoche que puede recordar la respuesta", "the woman last night who can remember the answer", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0234L04": {
+      "lego": ["trabaja con tu hermano", "works with your brother"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0234L01",
+          "known": "I met someone",
+          "target": "conocí a alguien",
+          "type": "M"
+        },
+        {
+          "id": "S0234L02",
+          "known": "last night",
+          "target": "anoche",
+          "type": "A"
+        },
+        {
+          "id": "S0234L03",
+          "known": "night who",
+          "target": "anoche que",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["trabaja", "works"],
+        ["con", "with"],
+        ["tu", "your"],
+        ["hermano", "brother"]
+      ]
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "legos": {
+    "S0159L01": {
+      "lego": [
+        "that isn't",
+        "eso no es"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0159L01",
+        "seed_context": {
+          "known": "That isn't what I'm trying to say.",
+          "target": "Eso no es lo que estoy intentando decir."
+        }
+      }
+    },
+    "S0159L02": {
+      "lego": [
+        "isn't what",
+        "no es lo que"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0159L01",
+          "known": "that isn't",
+          "target": "eso no es",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "That isn't what I want",
+          "eso no es lo que quiero"
+        ],
+        [
+          "This isn't what I think",
+          "esto no es lo que pienso"
+        ],
+        [
+          "That isn't what I'm trying to say",
+          "eso no es lo que estoy intentando decir"
+        ],
+        [
+          "This isn't what I want to do",
+          "esto no es lo que quiero hacer"
+        ],
+        [
+          "That isn't what I want to talk about",
+          "eso no es lo que quiero hablar"
+        ],
+        [
+          "This isn't what I'm trying to do now",
+          "esto no es lo que estoy intentando hacer ahora"
+        ],
+        [
+          "I think that isn't what I want",
+          "pienso que eso no es lo que quiero"
+        ],
+        [
+          "That isn't what I'm trying to say today",
+          "eso no es lo que estoy intentando decir hoy"
+        ],
+        [
+          "I don't think that isn't what you want",
+          "no pienso que eso no es lo que quieres"
+        ],
+        [
+          "This isn't what I want to talk about now",
+          "esto no es lo que quiero hablar ahora"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0159L02",
+        "seed_context": {
+          "known": "That isn't what I'm trying to say.",
+          "target": "Eso no es lo que estoy intentando decir."
+        }
+      }
+    },
+    "S0159L03": {
+      "lego": [
+        "I'm trying",
+        "estoy intentando"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0159L01",
+          "known": "that isn't",
+          "target": "eso no es",
+          "type": "M"
+        },
+        {
+          "id": "S0159L02",
+          "known": "isn't what",
+          "target": "no es lo que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0159L03",
+        "seed_context": {
+          "known": "That isn't what I'm trying to say.",
+          "target": "Eso no es lo que estoy intentando decir."
+        }
+      }
+    },
+    "S0159L04": {
+      "lego": [
+        "I'm trying to to say",
+        "estoy intentando decir"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0159L01",
+          "known": "that isn't",
+          "target": "eso no es",
+          "type": "M"
+        },
+        {
+          "id": "S0159L02",
+          "known": "isn't what",
+          "target": "no es lo que",
+          "type": "M"
+        },
+        {
+          "id": "S0159L03",
+          "known": "I'm trying",
+          "target": "estoy intentando",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0159L04",
+        "seed_context": {
+          "known": "That isn't what I'm trying to say.",
+          "target": "Eso no es lo que estoy intentando decir."
+        }
+      }
+    },
+    "S0159L05": {
+      "lego": [
+        "to to say",
+        "decir"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0159L01",
+          "known": "that isn't",
+          "target": "eso no es",
+          "type": "M"
+        },
+        {
+          "id": "S0159L02",
+          "known": "isn't what",
+          "target": "no es lo que",
+          "type": "M"
+        },
+        {
+          "id": "S0159L03",
+          "known": "I'm trying",
+          "target": "estoy intentando",
+          "type": "M"
+        },
+        {
+          "id": "S0159L04",
+          "known": "I'm trying to to say",
+          "target": "estoy intentando decir",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0159L05",
+        "seed_context": {
+          "known": "That isn't what I'm trying to say.",
+          "target": "Eso no es lo que estoy intentando decir."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,441 @@
+{
+  "legos": {
+    "S0255L01": {
+      "lego": [
+        "when do you think",
+        "cuándo crees"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "when do you think",
+          "cuándo crees"
+        ],
+        [
+          "I thought",
+          "Pensé"
+        ],
+        [
+          "when will you be ready",
+          "cuándo estarás preparado"
+        ],
+        [
+          "when do you think you'll be ready",
+          "cuándo crees que estarás preparado"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "I'm happy with how much I've done",
+          "Estoy contento con cuánto he hecho"
+        ],
+        [
+          "when do you think you'll be ready to start",
+          "cuándo crees que estarás preparado para empezar"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "when do you think you'll be ready before you go",
+          "cuándo crees que estarás preparado antes de que te vayas"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0255L01",
+        "seed_context": {
+          "known": "¿Cuándo crees que estarás preparado para salir?",
+          "target": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "cuándo",
+          "when"
+        ],
+        [
+          "crees",
+          "you think"
+        ]
+      ]
+    },
+    "S0255L02": {
+      "lego": [
+        "you think you'll be ready",
+        "crees que estarás preparado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0255L01",
+          "known": "when do you think",
+          "target": "cuándo crees",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "you think you'll be ready",
+          "crees que estarás preparado"
+        ],
+        [
+          "when do you think you'll be ready",
+          "cuándo crees que estarás preparado"
+        ],
+        [
+          "I thought you'll be ready",
+          "Pensé que estarás preparado"
+        ],
+        [
+          "you think you'll be ready to start",
+          "crees que estarás preparado para empezar"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "when do you think you'll be ready to start",
+          "cuándo crees que estarás preparado para empezar"
+        ],
+        [
+          "you think you'll be ready in a few minutes",
+          "crees que estarás preparado en unos pocos minutos"
+        ],
+        [
+          "I thought the film was complete rubbish",
+          "Pensé que la película era basura completa"
+        ],
+        [
+          "when do you think you'll be ready before you go",
+          "cuándo crees que estarás preparado antes de que te vayas"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0255L02",
+        "seed_context": {
+          "known": "¿Cuándo crees que estarás preparado para salir?",
+          "target": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "crees",
+          "you think"
+        ],
+        [
+          "que",
+          "that"
+        ],
+        [
+          "estarás",
+          "you will be"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0255L03": {
+      "lego": [
+        "you'll be ready",
+        "estarás preparado"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0255L01",
+          "known": "when do you think",
+          "target": "cuándo crees",
+          "type": "M"
+        },
+        {
+          "id": "S0255L02",
+          "known": "you think you'll be ready",
+          "target": "crees que estarás preparado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "you'll be ready",
+          "estarás preparado"
+        ],
+        [
+          "when will you be ready",
+          "cuándo estarás preparado"
+        ],
+        [
+          "you'll be ready to start",
+          "estarás preparado para empezar"
+        ],
+        [
+          "I think you'll be ready",
+          "creo que estarás preparado"
+        ],
+        [
+          "when do you think you'll be ready",
+          "cuándo crees que estarás preparado"
+        ],
+        [
+          "you'll be ready in a few minutes",
+          "estarás preparado en unos pocos minutos"
+        ],
+        [
+          "I thought you'll be ready to start",
+          "Pensé que estarás preparado para empezar"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "when will you be ready to start in a short time",
+          "cuándo estarás preparado para empezar en poco tiempo"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0255L03",
+        "seed_context": {
+          "known": "¿Cuándo crees que estarás preparado para salir?",
+          "target": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "estarás",
+          "you will be"
+        ],
+        [
+          "preparado",
+          "ready"
+        ]
+      ]
+    },
+    "S0255L04": {
+      "lego": [
+        "be ready",
+        "estarás preparado"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0255L01",
+          "known": "when do you think",
+          "target": "cuándo crees",
+          "type": "M"
+        },
+        {
+          "id": "S0255L02",
+          "known": "you think you'll be ready",
+          "target": "crees que estarás preparado",
+          "type": "M"
+        },
+        {
+          "id": "S0255L03",
+          "known": "you'll be ready",
+          "target": "estarás preparado",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "be ready",
+          "estar preparado"
+        ],
+        [
+          "you'll be ready",
+          "estarás preparado"
+        ],
+        [
+          "to be ready",
+          "estar preparado"
+        ],
+        [
+          "when will you be ready",
+          "cuándo estarás preparado"
+        ],
+        [
+          "I should be ready to start",
+          "debo estar preparado para empezar"
+        ],
+        [
+          "when do you think you'll be ready",
+          "cuándo crees que estarás preparado"
+        ],
+        [
+          "you'll be ready in a few minutes",
+          "estarás preparado en unos pocos minutos"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "when will you be ready to start in a short time",
+          "cuándo estarás preparado para empezar en poco tiempo"
+        ],
+        [
+          "I wanted her to help you but she was too busy",
+          "Quería que ella te ayudara pero estaba demasiado ocupada"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0255L04",
+        "seed_context": {
+          "known": "¿Cuándo crees que estarás preparado para salir?",
+          "target": "When do you think you'll be ready to leave?"
+        }
+      }
+    },
+    "S0255L05": {
+      "lego": [
+        "to leave",
+        "para salir"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0255L01",
+          "known": "when do you think",
+          "target": "cuándo crees",
+          "type": "M"
+        },
+        {
+          "id": "S0255L02",
+          "known": "you think you'll be ready",
+          "target": "crees que estarás preparado",
+          "type": "M"
+        },
+        {
+          "id": "S0255L03",
+          "known": "you'll be ready",
+          "target": "estarás preparado",
+          "type": "M"
+        },
+        {
+          "id": "S0255L04",
+          "known": "be ready",
+          "target": "estarás preparado",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "to leave",
+          "para salir"
+        ],
+        [
+          "ready to leave",
+          "preparado para salir"
+        ],
+        [
+          "to start",
+          "para empezar"
+        ],
+        [
+          "you'll be ready to leave",
+          "estarás preparado para salir"
+        ],
+        [
+          "I want to leave before you go",
+          "Quiero salir antes de que te vayas"
+        ],
+        [
+          "when will you be ready to leave",
+          "cuándo estarás preparado para salir"
+        ],
+        [
+          "you'll be ready to leave in a few minutes",
+          "estarás preparado para salir en unos pocos minutos"
+        ],
+        [
+          "I thought that book was fairly good",
+          "Pensé que ese libro era bastante bueno"
+        ],
+        [
+          "when do you think you'll be ready to start",
+          "cuándo crees que estarás preparado para empezar"
+        ],
+        [
+          "When do you think you'll be ready to leave?",
+          "¿Cuándo crees que estarás preparado para salir?"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0255L05",
+        "seed_context": {
+          "known": "¿Cuándo crees que estarás preparado para salir?",
+          "target": "When do you think you'll be ready to leave?"
+        }
+      },
+      "components": [
+        [
+          "para",
+          "to/for"
+        ],
+        [
+          "salir",
+          "to leave/go out"
+        ]
+      ]
+    }
+  }
+}

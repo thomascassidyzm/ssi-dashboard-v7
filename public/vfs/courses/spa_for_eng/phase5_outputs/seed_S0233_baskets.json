@@ -1,0 +1,90 @@
+{
+  "legos": {
+    "S0233L01": {
+      "lego": ["conozco a una mujer joven", "I know a young woman"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["conozco", "I know"],
+        ["a", "to/a"],
+        ["una", "a"],
+        ["mujer", "to woman"],
+        ["joven", "young"]
+      ]
+    },
+    "S0233L02": {
+      "lego": ["joven que", "woman who"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0233L01",
+          "known": "I know a young woman",
+          "target": "conozco a una mujer joven",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["mujer joven que", "young woman who", null, 1],
+        ["una mujer joven que", "a young woman who", null, 2],
+        ["conozco a una mujer joven que", "I know a young woman who", null, 2],
+        ["la mujer joven que trabaja", "the young woman who works", null, 3],
+        ["una mujer joven que quiere ayudar", "a young woman who wants to help", null, 4],
+        ["conozco a una mujer joven que puede recordar", "I know a young woman who can remember", null, 4],
+        ["la mujer joven que está intentando ayudarme", "the young woman who is trying to help me", null, 5],
+        ["conozco a una mujer joven que trabaja contigo", "I know a young woman who works with you", null, 5],
+        ["una mujer joven que va a preguntarte mañana", "a young woman who is going to ask you tomorrow", null, 6],
+        ["conozco a una mujer joven que quería pedir ayuda", "I know a young woman who wanted to ask for help", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0233L03": {
+      "lego": ["conoce a tu hermana", "knows your sister"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0233L01",
+          "known": "I know a young woman",
+          "target": "conozco a una mujer joven",
+          "type": "M"
+        },
+        {
+          "id": "S0233L02",
+          "known": "woman who",
+          "target": "joven que",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["conoce", "knows"],
+        ["a", "to/a"],
+        ["tu", "your"],
+        ["hermana", "sister"]
+      ]
+    }
+  }
+}

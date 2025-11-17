@@ -1,0 +1,180 @@
+{
+  "legos": {
+    "S0163L01": {
+      "lego": [
+        "I think",
+        "pienso"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0163L01",
+        "seed_context": {
+          "known": "I think that it's interesting.",
+          "target": "Pienso que es interesante."
+        }
+      }
+    },
+    "S0163L02": {
+      "lego": [
+        "I think that it's",
+        "Pienso que es"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0163L01",
+          "known": "I think",
+          "target": "pienso",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I think that it's good",
+          "pienso que es bueno"
+        ],
+        [
+          "I think that it's interesting",
+          "pienso que es interesante"
+        ],
+        [
+          "I think that it's something else",
+          "pienso que es algo más"
+        ],
+        [
+          "I think that it's true",
+          "pienso que es verdad"
+        ],
+        [
+          "I think that it's a good book",
+          "pienso que es un buen libro"
+        ],
+        [
+          "I think that it's an interesting word",
+          "pienso que es una palabra interesante"
+        ],
+        [
+          "I think that it's what I want to say",
+          "pienso que es lo que quiero decir"
+        ],
+        [
+          "I think that it's interesting to talk about",
+          "pienso que es interesante hablar de eso"
+        ],
+        [
+          "I don't think that it's what you want",
+          "no pienso que es lo que quieres"
+        ],
+        [
+          "I think that it's something else we can do",
+          "pienso que es algo más que podemos hacer"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0163L02",
+        "seed_context": {
+          "known": "I think that it's interesting.",
+          "target": "Pienso que es interesante."
+        }
+      }
+    },
+    "S0163L03": {
+      "lego": [
+        "that it's interesting",
+        "que es interesante"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0163L01",
+          "known": "I think",
+          "target": "pienso",
+          "type": "M"
+        },
+        {
+          "id": "S0163L02",
+          "known": "I think that it's",
+          "target": "Pienso que es",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0163L03",
+        "seed_context": {
+          "known": "I think that it's interesting.",
+          "target": "Pienso que es interesante."
+        }
+      }
+    },
+    "S0163L04": {
+      "lego": [
+        "it's interesting",
+        "es interesante"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0163L01",
+          "known": "I think",
+          "target": "pienso",
+          "type": "M"
+        },
+        {
+          "id": "S0163L02",
+          "known": "I think that it's",
+          "target": "Pienso que es",
+          "type": "M"
+        },
+        {
+          "id": "S0163L03",
+          "known": "that it's interesting",
+          "target": "que es interesante",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0163L04",
+        "seed_context": {
+          "known": "I think that it's interesting.",
+          "target": "Pienso que es interesante."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "legos": {
+    "S0158L01": {
+      "lego": [
+        "let's to talk about",
+        "hablemos de"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0158L01",
+        "seed_context": {
+          "known": "Let's talk about something else.",
+          "target": "Hablemos de algo más."
+        }
+      }
+    },
+    "S0158L02": {
+      "lego": [
+        "something else",
+        "algo más"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0158L01",
+          "known": "let's to talk about",
+          "target": "hablemos de",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "something else",
+          "algo más"
+        ],
+        [
+          "I want something else",
+          "quiero algo más"
+        ],
+        [
+          "Let's talk about something else",
+          "hablemos de algo más"
+        ],
+        [
+          "I think something else",
+          "pienso algo más"
+        ],
+        [
+          "I want to do something else",
+          "quiero hacer algo más"
+        ],
+        [
+          "Let's try something else now",
+          "probemos algo más ahora"
+        ],
+        [
+          "I think I want something else",
+          "pienso que quiero algo más"
+        ],
+        [
+          "Let's talk about something else today",
+          "hablemos de algo más hoy"
+        ],
+        [
+          "I don't mind doing something else",
+          "no me importa hacer algo más"
+        ],
+        [
+          "I think we can talk about something else",
+          "pienso que podemos hablar de algo más"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0158L02",
+        "seed_context": {
+          "known": "Let's talk about something else.",
+          "target": "Hablemos de algo más."
+        }
+      }
+    }
+  }
+}

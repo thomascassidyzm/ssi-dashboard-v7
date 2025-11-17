@@ -1,0 +1,229 @@
+{
+  "legos": {
+    "S0180L01": {
+      "lego": [
+        "I'd like",
+        "me gustaría"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0180L01",
+        "seed_context": {
+          "known": "I'd like to read my book for a while.",
+          "target": "Me gustaría leer mi libro por un rato."
+        }
+      }
+    },
+    "S0180L02": {
+      "lego": [
+        "I'd like to to read",
+        "me gustaría leer"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0180L01",
+          "known": "I'd like",
+          "target": "me gustaría",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0180L02",
+        "seed_context": {
+          "known": "I'd like to read my book for a while.",
+          "target": "Me gustaría leer mi libro por un rato."
+        }
+      }
+    },
+    "S0180L03": {
+      "lego": [
+        "to read my to book",
+        "leer mi libro"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0180L01",
+          "known": "I'd like",
+          "target": "me gustaría",
+          "type": "M"
+        },
+        {
+          "id": "S0180L02",
+          "known": "I'd like to to read",
+          "target": "me gustaría leer",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0180L03",
+        "seed_context": {
+          "known": "I'd like to read my book for a while.",
+          "target": "Me gustaría leer mi libro por un rato."
+        }
+      }
+    },
+    "S0180L04": {
+      "lego": [
+        "my to book",
+        "mi libro"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0180L01",
+          "known": "I'd like",
+          "target": "me gustaría",
+          "type": "M"
+        },
+        {
+          "id": "S0180L02",
+          "known": "I'd like to to read",
+          "target": "me gustaría leer",
+          "type": "M"
+        },
+        {
+          "id": "S0180L03",
+          "known": "to read my to book",
+          "target": "leer mi libro",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0180L04",
+        "seed_context": {
+          "known": "I'd like to read my book for a while.",
+          "target": "Me gustaría leer mi libro por un rato."
+        }
+      }
+    },
+    "S0180L05": {
+      "lego": [
+        "for a while",
+        "por un rato"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0180L01",
+          "known": "I'd like",
+          "target": "me gustaría",
+          "type": "M"
+        },
+        {
+          "id": "S0180L02",
+          "known": "I'd like to to read",
+          "target": "me gustaría leer",
+          "type": "M"
+        },
+        {
+          "id": "S0180L03",
+          "known": "to read my to book",
+          "target": "leer mi libro",
+          "type": "M"
+        },
+        {
+          "id": "S0180L04",
+          "known": "my to book",
+          "target": "mi libro",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "for a while",
+          "por un rato"
+        ],
+        [
+          "I want for a while",
+          "quiero por un rato"
+        ],
+        [
+          "I'd like to read for a while",
+          "me gustaría leer por un rato"
+        ],
+        [
+          "I want to wait for a while",
+          "quiero esperar por un rato"
+        ],
+        [
+          "I'd like to read my book for a while",
+          "me gustaría leer mi libro por un rato"
+        ],
+        [
+          "Let's talk about this for a while",
+          "hablemos de esto por un rato"
+        ],
+        [
+          "I think I'd like to read for a while",
+          "pienso que me gustaría leer por un rato"
+        ],
+        [
+          "I'd like to read my book for a while today",
+          "me gustaría leer mi libro por un rato hoy"
+        ],
+        [
+          "But I'm not sure I want to wait for a while",
+          "pero no estoy seguro que quiero esperar por un rato"
+        ],
+        [
+          "I think I'd like to read my book for a while",
+          "pienso que me gustaría leer mi libro por un rato"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0180L05",
+        "seed_context": {
+          "known": "I'd like to read my book for a while.",
+          "target": "Me gustaría leer mi libro por un rato."
+        }
+      }
+    }
+  }
+}

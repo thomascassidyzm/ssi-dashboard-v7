@@ -1,0 +1,283 @@
+{
+  "legos": {
+    "S0144L01": {
+      "lego": [
+        "I woke",
+        "Me desperté"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0144L01",
+        "seed_context": {
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "Me desperté más temprano de lo que quería esta mañana."
+        }
+      },
+      "components": [
+        [
+          "Me",
+          "myself"
+        ],
+        [
+          "desperté",
+          "woke"
+        ]
+      ]
+    },
+    "S0144L02": {
+      "lego": [
+        "earlier than I wanted to",
+        "más temprano de lo que quería"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0144L01",
+          "known": "I woke",
+          "target": "Me desperté",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0144L02",
+        "seed_context": {
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "Me desperté más temprano de lo que quería esta mañana."
+        }
+      },
+      "components": [
+        [
+          "más temprano",
+          "earlier"
+        ],
+        [
+          "de lo que",
+          "than"
+        ],
+        [
+          "quería",
+          "I wanted"
+        ]
+      ]
+    },
+    "S0144L03": {
+      "lego": [
+        "woke earlier",
+        "desperté más temprano"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0144L01",
+          "known": "I woke",
+          "target": "Me desperté",
+          "type": "M"
+        },
+        {
+          "id": "S0144L02",
+          "known": "earlier than I wanted to",
+          "target": "más temprano de lo que quería",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I woke earlier",
+          "Desperté más temprano"
+        ],
+        [
+          "woke earlier",
+          "desperté más temprano"
+        ],
+        [
+          "I woke earlier today",
+          "Desperté más temprano hoy"
+        ],
+        [
+          "I woke earlier this morning",
+          "Desperté más temprano esta mañana"
+        ],
+        [
+          "I don't know why I woke earlier",
+          "No sé por qué desperté más temprano"
+        ],
+        [
+          "I woke earlier than I wanted to",
+          "Desperté más temprano de lo que quería"
+        ],
+        [
+          "I don't know why I woke earlier today",
+          "No sé por qué desperté más temprano hoy"
+        ],
+        [
+          "I woke earlier this morning than I wanted",
+          "Desperté más temprano esta mañana de lo que quería"
+        ],
+        [
+          "I think I woke earlier than you did",
+          "Pienso que desperté más temprano que tú"
+        ],
+        [
+          "I'm not happy because I woke earlier today",
+          "No estoy feliz porque desperté más temprano hoy"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0144L03",
+        "seed_context": {
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "Me desperté más temprano de lo que quería esta mañana."
+        }
+      },
+      "components": [
+        [
+          "más",
+          "more"
+        ],
+        [
+          "temprano",
+          "early"
+        ]
+      ]
+    },
+    "S0144L04": {
+      "lego": [
+        "than I wanted to",
+        "de lo que quería"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0144L01",
+          "known": "I woke",
+          "target": "Me desperté",
+          "type": "M"
+        },
+        {
+          "id": "S0144L02",
+          "known": "earlier than I wanted to",
+          "target": "más temprano de lo que quería",
+          "type": "M"
+        },
+        {
+          "id": "S0144L03",
+          "known": "woke earlier",
+          "target": "desperté más temprano",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0144L04",
+        "seed_context": {
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "Me desperté más temprano de lo que quería esta mañana."
+        }
+      },
+      "components": [
+        [
+          "de lo que",
+          "than"
+        ],
+        [
+          "quería",
+          "I wanted"
+        ]
+      ]
+    },
+    "S0144L05": {
+      "lego": [
+        "this morning",
+        "esta mañana"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0144L01",
+          "known": "I woke",
+          "target": "Me desperté",
+          "type": "M"
+        },
+        {
+          "id": "S0144L02",
+          "known": "earlier than I wanted to",
+          "target": "más temprano de lo que quería",
+          "type": "M"
+        },
+        {
+          "id": "S0144L03",
+          "known": "woke earlier",
+          "target": "desperté más temprano",
+          "type": "M"
+        },
+        {
+          "id": "S0144L04",
+          "known": "than I wanted to",
+          "target": "de lo que quería",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0144L05",
+        "seed_context": {
+          "known": "I woke earlier than I wanted to this morning.",
+          "target": "Me desperté más temprano de lo que quería esta mañana."
+        }
+      },
+      "components": [
+        [
+          "esta",
+          "this"
+        ],
+        [
+          "mañana",
+          "morning"
+        ]
+      ]
+    }
+  }
+}

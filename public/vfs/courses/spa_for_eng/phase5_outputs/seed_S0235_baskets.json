@@ -1,0 +1,124 @@
+{
+  "legos": {
+    "S0235L01": {
+      "lego": ["conocí a alguien", "I met someone"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["conocí", "I met"],
+        ["a", "to/a"],
+        ["alguien", "someone"]
+      ]
+    },
+    "S0235L02": {
+      "lego": ["alguien que", "someone who"],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0235L01",
+          "known": "I met someone",
+          "target": "conocí a alguien",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["alguien que", "someone who", null, 1],
+        ["conocí a alguien que", "I met someone who", null, 2],
+        ["alguien que trabaja", "someone who works", null, 2],
+        ["conocí a alguien que quiere ayudar", "I met someone who wants to help", null, 3],
+        ["alguien que está intentando aprender", "someone who is trying to learn", null, 4],
+        ["conocí a alguien que trabaja contigo", "I met someone who works with you", null, 4],
+        ["alguien que va a preguntarte mañana", "someone who is going to ask you tomorrow", null, 5],
+        ["conocí a alguien que quería pedir ayuda", "I met someone who wanted to ask for help", null, 5],
+        ["alguien que puede recordar la respuesta", "someone who can remember the answer", null, 6],
+        ["conocí a alguien que acaba de empezar a practicar", "I met someone who has just started to practise", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0235L03": {
+      "lego": ["dijo que", "said that"],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0235L01",
+          "known": "I met someone",
+          "target": "conocí a alguien",
+          "type": "M"
+        },
+        {
+          "id": "S0235L02",
+          "known": "someone who",
+          "target": "alguien que",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["dijo", "said"],
+        ["que", "that"]
+      ]
+    },
+    "S0235L04": {
+      "lego": ["quería decirte algo", "wanted to tell you something"],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0235L01",
+          "known": "I met someone",
+          "target": "conocí a alguien",
+          "type": "M"
+        },
+        {
+          "id": "S0235L02",
+          "known": "someone who",
+          "target": "alguien que",
+          "type": "A"
+        },
+        {
+          "id": "S0235L03",
+          "known": "said that",
+          "target": "dijo que",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["quería", "wanted"],
+        ["decirte", "to tell you"],
+        ["algo", "something"]
+      ]
+    }
+  }
+}

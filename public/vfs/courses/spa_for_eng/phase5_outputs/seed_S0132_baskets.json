@@ -1,0 +1,287 @@
+{
+  "legos": {
+    "S0132L01": {
+      "lego": [
+        "That's less",
+        "Eso es menos"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "That's less",
+          "Eso es menos"
+        ],
+        [
+          "It's less",
+          "Es menos"
+        ],
+        [
+          "I think that's less",
+          "Pienso que eso es menos"
+        ],
+        [
+          "That's less easy",
+          "Eso es menos fácil"
+        ],
+        [
+          "I believe that's less easy",
+          "Creo que eso es menos fácil"
+        ],
+        [
+          "That's less a good idea",
+          "Eso es menos una buena idea"
+        ],
+        [
+          "I think that's less a good idea",
+          "Pienso que eso es menos una buena idea"
+        ],
+        [
+          "I'm so happy that's less difficult",
+          "Estoy tan feliz de que eso es menos difícil"
+        ],
+        [
+          "That's less how it's going now",
+          "Eso es menos cómo va ahora"
+        ],
+        [
+          "I believe that's less a surprise",
+          "Creo que eso es menos una sorpresa"
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0132L01",
+        "seed_context": {
+          "known": "That's less exciting than what she was saying.",
+          "target": "Eso es menos emocionante que lo que decía."
+        }
+      },
+      "components": [
+        [
+          "Eso",
+          "That"
+        ],
+        [
+          "es",
+          "is"
+        ]
+      ]
+    },
+    "S0132L02": {
+      "lego": [
+        "is less exciting",
+        "es menos emocionante"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0132L01",
+          "known": "That's less",
+          "target": "Eso es menos",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0132L02",
+        "seed_context": {
+          "known": "That's less exciting than what she was saying.",
+          "target": "Eso es menos emocionante que lo que decía."
+        }
+      },
+      "components": [
+        [
+          "es",
+          "is"
+        ],
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "emocionante",
+          "exciting"
+        ]
+      ]
+    },
+    "S0132L03": {
+      "lego": [
+        "less exciting",
+        "menos emocionante"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0132L01",
+          "known": "That's less",
+          "target": "Eso es menos",
+          "type": "M"
+        },
+        {
+          "id": "S0132L02",
+          "known": "is less exciting",
+          "target": "es menos emocionante",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0132L03",
+        "seed_context": {
+          "known": "That's less exciting than what she was saying.",
+          "target": "Eso es menos emocionante que lo que decía."
+        }
+      },
+      "components": [
+        [
+          "menos",
+          "less"
+        ],
+        [
+          "emocionante",
+          "exciting"
+        ]
+      ]
+    },
+    "S0132L04": {
+      "lego": [
+        "than what she was saying",
+        "que lo que decía"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0132L01",
+          "known": "That's less",
+          "target": "Eso es menos",
+          "type": "M"
+        },
+        {
+          "id": "S0132L02",
+          "known": "is less exciting",
+          "target": "es menos emocionante",
+          "type": "M"
+        },
+        {
+          "id": "S0132L03",
+          "known": "less exciting",
+          "target": "menos emocionante",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0132L04",
+        "seed_context": {
+          "known": "That's less exciting than what she was saying.",
+          "target": "Eso es menos emocionante que lo que decía."
+        }
+      },
+      "components": [
+        [
+          "que",
+          "than"
+        ],
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "decía",
+          "she was saying"
+        ]
+      ]
+    },
+    "S0132L05": {
+      "lego": [
+        "what she was saying",
+        "lo que decía"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0132L01",
+          "known": "That's less",
+          "target": "Eso es menos",
+          "type": "M"
+        },
+        {
+          "id": "S0132L02",
+          "known": "is less exciting",
+          "target": "es menos emocionante",
+          "type": "M"
+        },
+        {
+          "id": "S0132L03",
+          "known": "less exciting",
+          "target": "menos emocionante",
+          "type": "M"
+        },
+        {
+          "id": "S0132L04",
+          "known": "than what she was saying",
+          "target": "que lo que decía",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0132L05",
+        "seed_context": {
+          "known": "That's less exciting than what she was saying.",
+          "target": "Eso es menos emocionante que lo que decía."
+        }
+      },
+      "components": [
+        [
+          "lo que",
+          "what"
+        ],
+        [
+          "decía",
+          "she was saying"
+        ]
+      ]
+    }
+  }
+}
