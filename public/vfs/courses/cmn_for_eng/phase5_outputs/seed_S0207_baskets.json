@@ -1,0 +1,705 @@
+{
+  "S0207L01": {
+    "lego": [
+      "You've done",
+      "你已经做了"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "You've done it",
+        "你已经做了",
+        null,
+        1
+      ],
+      [
+        "You've done well",
+        "你已经做了很好",
+        null,
+        2
+      ],
+      [
+        "You've done what I asked",
+        "你已经做了我要求的",
+        null,
+        2
+      ],
+      [
+        "You've done something good",
+        "你已经做了一些好事情",
+        null,
+        3
+      ],
+      [
+        "You've done what you wanted",
+        "你已经做了你想要的",
+        null,
+        3
+      ],
+      [
+        "You've done everything we needed",
+        "你已经做了我们需要的所有事情",
+        null,
+        4
+      ],
+      [
+        "You've done what I was asking",
+        "你已经做了我在要求的",
+        null,
+        4
+      ],
+      [
+        "You've done what you were trying to do",
+        "你已经做了你在试图做的",
+        null,
+        5
+      ],
+      [
+        "You've done everything I wanted you to do",
+        "你已经做了我想让你做的所有事情",
+        null,
+        5
+      ],
+      [
+        "You've done what you needed to do before",
+        "你已经做了你之前需要做的事",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "你",
+        "You"
+      ],
+      [
+        "已经",
+        "already"
+      ],
+      [
+        "做了",
+        "done"
+      ]
+    ]
+  },
+  "S0207L02": {
+    "lego": [
+      "have done",
+      "已经做了"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "You've done",
+        "你已经做了"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I have done it",
+        "我已经做了",
+        null,
+        1
+      ],
+      [
+        "We have done",
+        "我们已经做了",
+        null,
+        1
+      ],
+      [
+        "They have done well",
+        "他们已经做了很好",
+        null,
+        2
+      ],
+      [
+        "I have done what you asked",
+        "我已经做了你要求的",
+        null,
+        2
+      ],
+      [
+        "We have done everything",
+        "我们已经做了所有事情",
+        null,
+        3
+      ],
+      [
+        "I have done what I wanted",
+        "我已经做了我想要的",
+        null,
+        3
+      ],
+      [
+        "They have done what we needed",
+        "他们已经做了我们需要的",
+        null,
+        4
+      ],
+      [
+        "I have done what you were asking",
+        "我已经做了你在要求的",
+        null,
+        4
+      ],
+      [
+        "We have done what we were trying to do",
+        "我们已经做了我们在试图做的",
+        null,
+        5
+      ],
+      [
+        "I have done everything you wanted me to do",
+        "我已经做了你想让我做的所有事情",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "已经",
+        "already"
+      ],
+      [
+        "做了",
+        "done"
+      ]
+    ]
+  },
+  "S0207L03": {
+    "lego": [
+      "what you needed to do",
+      "你需要做的事"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "You've done",
+        "你已经做了"
+      ],
+      [
+        "have done",
+        "已经做了"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "What you needed to do",
+        "你需要做的事",
+        null,
+        2
+      ],
+      [
+        "I know what you needed to do",
+        "我知道你需要做的事",
+        null,
+        2
+      ],
+      [
+        "You've done what you needed to do",
+        "你已经做了你需要做的事",
+        null,
+        3
+      ],
+      [
+        "I understand what you needed to do",
+        "我理解你需要做的事",
+        null,
+        3
+      ],
+      [
+        "This is what you needed to do",
+        "这是你需要做的事",
+        null,
+        4
+      ],
+      [
+        "You remember what you needed to do",
+        "你记住你需要做的事",
+        null,
+        4
+      ],
+      [
+        "You've forgotten what you needed to do before",
+        "你忘记了你之前需要做的事",
+        null,
+        5
+      ],
+      [
+        "I wanted to help you do what you needed to do",
+        "我想帮你做你需要做的事",
+        null,
+        5
+      ],
+      [
+        "You've done what you needed to do for me",
+        "你已经做了你需要为我做的事",
+        null,
+        6
+      ],
+      [
+        "I was trying to understand what you needed to do",
+        "我在试图理解你需要做的事",
+        null,
+        7
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "你",
+        "you"
+      ],
+      [
+        "需要",
+        "needed"
+      ],
+      [
+        "做",
+        "to do"
+      ],
+      [
+        "的",
+        "that/which"
+      ],
+      [
+        "事",
+        "thing"
+      ]
+    ]
+  },
+  "S0207L04": {
+    "lego": [
+      "needed to do",
+      "需要做"
+    ],
+    "type": "M",
+    "current_seed_legos_available": [
+      [
+        "You've done",
+        "你已经做了"
+      ],
+      [
+        "have done",
+        "已经做了"
+      ],
+      [
+        "what you needed to do",
+        "你需要做的事"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I needed to do it",
+        "我需要做",
+        null,
+        1
+      ],
+      [
+        "You needed to do something",
+        "你需要做一些事情",
+        null,
+        2
+      ],
+      [
+        "I needed to do",
+        "我需要做",
+        null,
+        1
+      ],
+      [
+        "What did you need to do",
+        "你需要做什么",
+        null,
+        3
+      ],
+      [
+        "I needed to do this",
+        "我需要做这个",
+        null,
+        3
+      ],
+      [
+        "You needed to do what I asked",
+        "你需要做我要求的",
+        null,
+        4
+      ],
+      [
+        "I needed to do everything",
+        "我需要做所有事情",
+        null,
+        4
+      ],
+      [
+        "You've done what you needed to do",
+        "你已经做了你需要做的",
+        null,
+        5
+      ],
+      [
+        "I knew what I needed to do before",
+        "我知道我之前需要做什么",
+        null,
+        5
+      ],
+      [
+        "You needed to do what we were asking you to do",
+        "你需要做我们在要求你做的",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        "需要",
+        "needed"
+      ],
+      [
+        "做",
+        "to do"
+      ]
+    ]
+  },
+  "S0207L05": {
+    "lego": [
+      "needed",
+      "需要"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "You've done",
+        "你已经做了"
+      ],
+      [
+        "have done",
+        "已经做了"
+      ],
+      [
+        "what you needed to do",
+        "你需要做的事"
+      ],
+      [
+        "needed to do",
+        "需要做"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I needed it",
+        "我需要",
+        null,
+        1
+      ],
+      [
+        "You needed help",
+        "你需要帮助",
+        null,
+        2
+      ],
+      [
+        "We needed something",
+        "我们需要一些东西",
+        null,
+        2
+      ],
+      [
+        "I needed to learn",
+        "我需要学",
+        null,
+        3
+      ],
+      [
+        "What did you need",
+        "你需要什么",
+        null,
+        3
+      ],
+      [
+        "I needed to do this",
+        "我需要做这个",
+        null,
+        4
+      ],
+      [
+        "You needed the chance to practise",
+        "你需要机会练习",
+        null,
+        4
+      ],
+      [
+        "I needed to remember what you said",
+        "我需要记住你说的话",
+        null,
+        5
+      ],
+      [
+        "You needed to do what I was asking",
+        "你需要做我在要求的",
+        null,
+        5
+      ],
+      [
+        "I needed to understand what you were trying to say",
+        "我需要理解你在试图说什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0207L06": {
+    "lego": [
+      "to do",
+      "做"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "You've done",
+        "你已经做了"
+      ],
+      [
+        "have done",
+        "已经做了"
+      ],
+      [
+        "what you needed to do",
+        "你需要做的事"
+      ],
+      [
+        "needed to do",
+        "需要做"
+      ],
+      [
+        "needed",
+        "需要"
+      ]
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "I want to do it",
+        "我想做",
+        null,
+        2
+      ],
+      [
+        "To do something",
+        "做一些事情",
+        null,
+        1
+      ],
+      [
+        "I needed to do this",
+        "我需要做这个",
+        null,
+        2
+      ],
+      [
+        "What to do",
+        "做什么",
+        null,
+        3
+      ],
+      [
+        "I know what to do",
+        "我知道做什么",
+        null,
+        3
+      ],
+      [
+        "I wanted to do what you asked",
+        "我想做你要求的",
+        null,
+        4
+      ],
+      [
+        "I needed to do everything",
+        "我需要做所有事情",
+        null,
+        4
+      ],
+      [
+        "I've done what I needed to do",
+        "我已经做了我需要做的",
+        null,
+        5
+      ],
+      [
+        "I was trying to do what you wanted",
+        "我在试图做你想要的",
+        null,
+        5
+      ],
+      [
+        "I needed to understand what you wanted me to do",
+        "我需要理解你想让我做什么",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ]
+    ]
+  },
+  "S0207L07": {
+    "lego": [
+      "thing",
+      "事"
+    ],
+    "type": "A",
+    "current_seed_legos_available": [
+      [
+        "You've done",
+        "你已经做了"
+      ],
+      [
+        "have done",
+        "已经做了"
+      ],
+      [
+        "what you needed to do",
+        "你需要做的事"
+      ],
+      [
+        "needed to do",
+        "需要做"
+      ],
+      [
+        "needed",
+        "需要"
+      ],
+      [
+        "to do",
+        "做"
+      ]
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "One thing",
+        "一个事",
+        null,
+        1
+      ],
+      [
+        "Something",
+        "一些事情",
+        null,
+        1
+      ],
+      [
+        "I need to do this thing",
+        "我需要做这个事",
+        null,
+        2
+      ],
+      [
+        "This is the thing",
+        "这是这个事",
+        null,
+        2
+      ],
+      [
+        "I wanted to say something",
+        "我想说一些事情",
+        null,
+        3
+      ],
+      [
+        "This is a good thing",
+        "这是一个好事",
+        null,
+        3
+      ],
+      [
+        "I needed to do this thing",
+        "我需要做这个事",
+        null,
+        4
+      ],
+      [
+        "You've done what you needed to do",
+        "你已经做了你需要做的事",
+        null,
+        4
+      ],
+      [
+        "I was trying to remember something important",
+        "我在试图记住一些重要事情",
+        null,
+        5
+      ],
+      [
+        "You've done what you needed to do.",
+        "你已经做了你需要做的事。",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [
+      [
+        null,
+        null
+      ]
+    ]
+  }
+}
