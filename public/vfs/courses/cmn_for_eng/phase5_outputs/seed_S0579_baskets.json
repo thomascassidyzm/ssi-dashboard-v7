@@ -5,138 +5,85 @@
       "尝试过"
     ],
     "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
     "practice_phrases": [
       [
-        "尝试过",
         "Have tried",
+        "尝试过",
         null,
         1
       ],
       [
-        "他们尝试过。",
-        "They have tried.",
-        null,
-        1
-      ],
-      [
-        "我尝试过。",
-        "I have tried.",
-        null,
-        1
-      ],
-      [
-        "你尝试过吗？",
-        "Have you tried?",
-        null,
-        1
-      ],
-      [
-        "你决定了尝试过。",
-        "You decided have tried.",
+        "I have tried",
+        "我尝试过",
         null,
         2
       ],
       [
-        "上次尝试过",
-        "Last time have tried",
+        "We have tried this",
+        "我们尝试过这个",
         null,
-        2
+        3
+      ],
+      [
+        "They have tried before",
+        "他们之前尝试过",
+        null,
+        3
+      ],
+      [
+        "I have tried many times",
+        "我尝试过很多次",
+        null,
+        4
+      ],
+      [
+        "We have tried to help",
+        "我们尝试过帮助",
+        null,
+        4
+      ],
+      [
+        "I have tried to find somewhere warmer",
+        "我尝试过找更暖和的地方",
+        null,
+        5
+      ],
+      [
+        "We have tried to wait patiently",
+        "我们尝试过耐心等待",
+        null,
+        5
+      ],
+      [
+        "They have tried to contact the hospital",
+        "他们尝试过联系医院",
+        null,
+        6
+      ],
+      [
+        "I have tried everything I can think of already",
+        "我已经尝试过我能想到的一切",
+        null,
+        7
       ]
-    ]
-  },
-  "S0579L03": {
-    "lego": [
-      "have often tried",
-      "经常尝试过"
     ],
-    "type": "M",
-    "practice_phrases": [
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
       [
-        "经常尝试过",
-        "Have often tried",
-        null,
-        1
+        "尝试",
+        "try"
       ],
       [
-        "他们经常尝试过。",
-        "They have often tried.",
-        null,
-        1
-      ],
-      [
-        "我经常尝试过。",
-        "I have often tried.",
-        null,
-        1
-      ],
-      [
-        "你经常尝试过吗？",
-        "Have you often tried?",
-        null,
-        1
-      ],
-      [
-        "你决定了经常尝试过。",
-        "You decided have often tried.",
-        null,
-        2
-      ],
-      [
-        "上次经常尝试过。",
-        "Last time have often tried.",
-        null,
-        2
-      ]
-    ]
-  },
-  "S0579L04": {
-    "lego": [
-      "we've often tried",
-      "我们经常尝试过"
-    ],
-    "type": "M",
-    "practice_phrases": [
-      [
-        "我们经常尝试过更暖和的地方。",
-        "We've often tried somewhere warmer.",
-        null,
-        3
-      ],
-      [
-        "我们经常尝试过医院。",
-        "We've often tried the hospital.",
-        null,
-        3
-      ],
-      [
-        "我们经常尝试过假期。",
-        "We've often tried the holidays.",
-        null,
-        3
-      ],
-      [
-        "我们经常尝试过那会是个好主意。",
-        "We've often tried that would be a good idea.",
-        null,
-        3
-      ],
-      [
-        "我不相信我们经常尝试过。",
-        "I'm not convinced we've often tried.",
-        null,
-        3
-      ],
-      [
-        "你忘记我们经常尝试过吗？",
-        "Have you forgotten we've often tried?",
-        null,
-        3
-      ],
-      [
-        "我们经常尝试过。",
-        "We've often tried.",
-        null,
-        1
+        "过",
+        "past experience marker"
       ]
     ]
   }

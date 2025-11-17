@@ -66,6 +66,15 @@ generate_ultra_fast.py
 generate_agent_03_baskets_fast.py
 generation_log.txt
 
+# Agent-generated scripts (experimental workspace, not committed)
+scripts/agent*
+scripts/batch-temp/
+scripts/*_generator.py
+scripts/*_generator.cjs
+scripts/AGENT*_COMPLETION_REPORT.md
+scripts/generate_agent*.cjs
+scripts/generate_agent*.py
+
 # Phase 5: Full outputs with metadata (local debugging only)
 public/vfs/courses/*/phase5_outputs/*_FULL.json
 

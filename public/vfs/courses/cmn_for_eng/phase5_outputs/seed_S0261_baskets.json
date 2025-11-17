@@ -280,21 +280,6 @@
       "一些东西"
     ],
     "type": "M",
-    "current_seed_legos_available": [
-      [
-        "I think",
-        "我认为"
-      ],
-      [
-        "it might be",
-        "它可能是"
-      ],
-      [
-        "might be",
-        "可能是"
-      ]
-    ],
-    "is_final_lego": false,
     "practice_phrases": [
       [
         "Something",
@@ -303,65 +288,65 @@
         1
       ],
       [
-        "Something else",
-        "一些别的东西",
+        "Some things",
+        "一些东西",
         null,
         1
       ],
       [
-        "I want something",
-        "我想要一些东西",
+        "I saw something",
+        "我看见一些东西",
         null,
         2
       ],
       [
-        "It might be something",
-        "它可能是一些东西",
+        "Something important",
+        "一些重要的东西",
         null,
         2
       ],
       [
-        "I think it's something important",
-        "我认为它是一些重要的东西",
+        "I have something to tell you",
+        "我有一些东西要告诉你",
         null,
         3
       ],
       [
-        "Can you tell me something",
-        "你能告诉我一些事情吗",
+        "I think I saw something",
+        "我想我看见一些东西",
         null,
         3
       ],
       [
-        "I want to know something before I answer",
-        "我想在我回答之前知道一些事情",
+        "I don't know what that something is",
+        "我不知道那是什么东西",
         null,
         4
       ],
       [
-        "I think it might be something else",
-        "我认为它可能是一些别的东西",
-        null,
-        4
-      ],
-      [
-        "I don't know at all what that something is",
-        "我一点也不知道那是什么东西",
+        "I think it might be something important",
+        "我认为它可能是一些重要的东西",
         null,
         5
       ],
       [
-        "I want you to tell me something before you leave",
-        "我想让你在你离开之前告诉我一些事情",
+        "She said she wants to show you something",
+        "她说她想给你看一些东西",
+        null,
+        5
+      ],
+      [
+        "I think I saw something important over there",
+        "我想我在那边看见一些重要的东西",
         null,
         6
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
+      "really_short_1_2": 4,
       "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
+      "longer_4_5": 3,
+      "long_6_plus": 1
     },
     "components": [
       [

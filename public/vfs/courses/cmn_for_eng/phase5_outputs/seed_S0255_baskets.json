@@ -280,45 +280,36 @@
       "准备好"
     ],
     "type": "A",
-    "current_seed_legos_available": [
-      [
-        "you think",
-        "你觉得"
-      ],
-      [
-        "when",
-        "什么时候"
-      ],
-      [
-        "ready to leave",
-        "准备好离开"
-      ]
-    ],
-    "is_final_lego": true,
     "practice_phrases": [
+      [
+        "Ready",
+        "准备好",
+        null,
+        1
+      ],
+      [
+        "Be ready",
+        "准备好",
+        null,
+        1
+      ],
       [
         "I'm ready",
         "我准备好",
         null,
-        1
+        2
       ],
       [
         "Are you ready",
-        "你准备好",
+        "你准备好吗",
         null,
-        1
+        2
       ],
       [
         "When will you be ready",
         "你什么时候准备好",
         null,
-        2
-      ],
-      [
-        "I'm ready to leave",
-        "我准备好离开",
-        null,
-        2
+        3
       ],
       [
         "I should be ready soon",
@@ -327,26 +318,20 @@
         3
       ],
       [
+        "I think I'm ready to leave",
+        "我想我准备好离开",
+        null,
+        4
+      ],
+      [
         "Do you think you're ready",
-        "你觉得你准备好",
-        null,
-        3
-      ],
-      [
-        "I'll be ready in a few minutes",
-        "我几分钟后准备好",
+        "你觉得你准备好吗",
         null,
         4
       ],
       [
-        "When do you think you'll be ready",
-        "你觉得你什么时候准备好",
-        null,
-        4
-      ],
-      [
-        "I've been ready to start since this morning",
-        "我从今天早上准备好开始",
+        "I've been ready since this morning",
+        "我从今天早上就准备好了",
         null,
         5
       ],
@@ -354,20 +339,14 @@
         "When do you think you'll be ready to leave",
         "你觉得你什么时候准备好离开",
         null,
-        5
+        6
       ]
     ],
     "phrase_distribution": {
-      "really_short_1_2": 2,
+      "really_short_1_2": 4,
       "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        "准备好",
-        "be ready"
-      ]
-    ]
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    }
   }
 }

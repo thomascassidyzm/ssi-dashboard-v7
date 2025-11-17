@@ -1,260 +1,72 @@
 {
-  "S0220L06": {
+  "S0220L01": {
     "lego": [
-      "to watch",
-      "看"
+      "Did you watch a bit of television",
+      "你看了一点电视吗"
     ],
-    "type": "A",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [],
+    "type": "M",
     "practice_phrases": [
       [
-        "Watch",
-        "看",
+        "Did you watch television",
+        "你看了电视吗",
         null,
-        1
+        3
       ],
       [
-        "I watch",
-        "我看",
+        "Watch a bit of television",
+        "看一点电视",
         null,
         2
       ],
       [
-        "I watch television",
-        "我看电视",
+        "Did you watch a bit",
+        "你看了一点吗",
         null,
         3
       ],
       [
-        "He wants to watch",
-        "他想看",
-        null,
-        3
-      ],
-      [
-        "I want to watch television",
-        "我想看电视",
+        "I watched a bit of television",
+        "我看了一点电视",
         null,
         4
       ],
       [
-        "They want to watch tonight",
-        "他们想今晚看",
-        null,
-        4
-      ],
-      [
-        "I want to watch a film tonight",
-        "我想今晚看一部电影",
+        "They wanted to watch a bit of television",
+        "他们想看一点电视",
         null,
         5
       ],
       [
-        "He wants to watch television on Saturday",
-        "他想星期六看电视",
-        null,
-        5
-      ],
-      [
-        "They want to watch a film on Sunday",
-        "他们想星期天看一部电影",
+        "We don't know if you watched television",
+        "我们不知道你是否看了电视",
         null,
         6
       ],
       [
-        "I want to watch television on Saturday night",
-        "我想星期六晚上看电视",
+        "I thought you wanted to watch a bit of television",
+        "我觉得你想看一点电视",
         null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": []
-  },
-  "S0220L05": {
-    "lego": [
-      "television",
-      "电视"
-    ],
-    "type": "A",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0220L06",
-        "known": "to watch",
-        "target": "看",
-        "type": "A"
-      }
-    ],
-    "practice_phrases": [
-      [
-        "Television",
-        "电视",
-        null,
-        1
+        7
       ],
       [
-        "Watch television",
-        "看电视",
+        "They asked if you watched a bit of television",
+        "他们问你是否看了一点电视",
         null,
-        2
+        8
       ],
       [
-        "I watch television tonight",
-        "我今晚看电视",
+        "Did you watch a bit of television on Sunday",
+        "你星期天看了一点电视吗",
         null,
-        3
+        7
       ],
       [
-        "He wants television now",
-        "他现在想要电视",
-        null,
-        3
-      ],
-      [
-        "I want to watch television",
-        "我想看电视",
-        null,
-        4
-      ],
-      [
-        "They watch television on Saturday",
-        "他们星期六看电视",
-        null,
-        4
-      ],
-      [
-        "He wants to watch television tonight",
-        "他想今晚看电视",
-        null,
-        5
-      ],
-      [
-        "I want to watch television on Sunday",
-        "我想星期天看电视",
-        null,
-        5
-      ],
-      [
-        "They want to watch television on Saturday night",
-        "他们想星期六晚上看电视",
-        null,
-        6
-      ],
-      [
-        "I want to watch television with friends tonight",
-        "我想今晚和朋友看电视",
+        "Did you watch a bit of television",
+        "你看了一点电视吗",
         null,
         6
       ]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": []
-  },
-  "S0220L04": {
-    "lego": [
-      "a bit",
-      "一点"
-    ],
-    "type": "A",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0220L06",
-        "known": "to watch",
-        "target": "看",
-        "type": "A"
-      },
-      {
-        "id": "S0220L05",
-        "known": "television",
-        "target": "电视",
-        "type": "A"
-      }
-    ],
-    "practice_phrases": [
-      [
-        "A bit",
-        "一点",
-        null,
-        1
-      ],
-      [
-        "A bit now",
-        "现在一点",
-        null,
-        2
-      ],
-      [
-        "I watch a bit",
-        "我看一点",
-        null,
-        3
-      ],
-      [
-        "He wants a bit",
-        "他想要一点",
-        null,
-        3
-      ],
-      [
-        "I watch a bit tonight",
-        "我今晚看一点",
-        null,
-        4
-      ],
-      [
-        "They drink a bit of water",
-        "他们喝一点水",
-        null,
-        4
-      ],
-      [
-        "I want to watch a bit of television",
-        "我想看一点电视",
-        null,
-        5
-      ],
-      [
-        "He wants to drink a bit of water",
-        "他想喝一点水",
-        null,
-        5
-      ],
-      [
-        "I want to watch a bit of television tonight",
-        "我想今晚看一点电视",
-        null,
-        6
-      ],
-      [
-        "They want to drink a bit of water now",
-        "他们现在想喝一点水",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": []
+    ]
   },
   "S0220L03": {
     "lego": [
@@ -262,27 +74,6 @@
       "看了"
     ],
     "type": "M",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0220L06",
-        "known": "to watch",
-        "target": "看",
-        "type": "A"
-      },
-      {
-        "id": "S0220L05",
-        "known": "television",
-        "target": "电视",
-        "type": "A"
-      },
-      {
-        "id": "S0220L04",
-        "known": "a bit",
-        "target": "一点",
-        "type": "A"
-      }
-    ],
     "practice_phrases": [
       [
         "Watched",
@@ -297,313 +88,121 @@
         2
       ],
       [
-        "I watched television",
-        "我看了电视",
+        "You watched television",
+        "你看了电视",
         null,
         3
       ],
       [
-        "He watched the film",
-        "他看了电影",
+        "I watched a bit",
+        "我看了一点",
         null,
         3
       ],
       [
-        "I watched a bit yesterday",
-        "我昨天看了一点",
+        "They watched television",
+        "他们看了电视",
         null,
-        4
+        3
       ],
       [
-        "They watched the football on Saturday",
-        "他们星期六看了足球",
-        null,
-        4
-      ],
-      [
-        "I watched a bit of television yesterday",
-        "我昨天看了一点电视",
+        "We watched a bit of television",
+        "我们看了一点电视",
         null,
         5
       ],
       [
-        "He watched the film on Saturday night",
-        "他星期六晚上看了电影",
+        "I watched a few friends on television",
+        "我看了几个朋友在电视上",
+        null,
+        6
+      ],
+      [
+        "They said they watched a bit of television",
+        "他们说他们看了一点电视",
+        null,
+        7
+      ],
+      [
+        "Did you watch a bit of television on Sunday",
+        "你星期天看了一点电视吗",
+        null,
+        7
+      ],
+      [
+        "You watched a bit of television",
+        "你看了一点电视",
         null,
         5
-      ],
-      [
-        "I watched a bit of television on Sunday",
-        "我星期天看了一点电视",
-        null,
-        6
-      ],
-      [
-        "They watched the football on Saturday and relaxed",
-        "他们星期六看了足球然后放松",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [
-      [
-        "看",
-        "watch"
-      ],
-      [
-        "了",
-        "aspect particle"
       ]
     ]
   },
-  "S0220L02": {
+  "S0220L06": {
     "lego": [
-      "watch television",
-      "看电视"
+      "to watch",
+      "看"
     ],
-    "type": "M",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0220L06",
-        "known": "to watch",
-        "target": "看",
-        "type": "A"
-      },
-      {
-        "id": "S0220L05",
-        "known": "television",
-        "target": "电视",
-        "type": "A"
-      },
-      {
-        "id": "S0220L04",
-        "known": "a bit",
-        "target": "一点",
-        "type": "A"
-      },
-      {
-        "id": "S0220L03",
-        "known": "watched",
-        "target": "看了",
-        "type": "M"
-      }
-    ],
+    "type": "A",
     "practice_phrases": [
       [
-        "Watch television",
+        "To watch",
+        "看",
+        null,
+        1
+      ],
+      [
+        "I wanted to watch",
+        "我想看",
+        null,
+        2
+      ],
+      [
+        "To watch television",
         "看电视",
         null,
-        1
-      ],
-      [
-        "I watch television",
-        "我看电视",
-        null,
         2
       ],
       [
-        "I watch television tonight",
-        "我今晚看电视",
+        "They wanted to watch",
+        "他们想看",
         null,
         3
       ],
       [
-        "He wants to watch television",
-        "他想看电视",
-        null,
-        3
-      ],
-      [
-        "I want to watch television tonight",
-        "我想今晚看电视",
+        "We needed to watch television",
+        "我们需要看电视",
         null,
         4
       ],
       [
-        "They watch television on Saturday night",
-        "他们星期六晚上看电视",
+        "I wanted to watch a bit",
+        "我想看一点",
         null,
         4
       ],
       [
-        "I watched television with friends on Saturday",
-        "我星期六和朋友看了电视",
-        null,
-        5
-      ],
-      [
-        "He wants to watch television on Sunday night",
-        "他想星期天晚上看电视",
-        null,
-        5
-      ],
-      [
-        "I want to watch television with friends tonight",
-        "我想今晚和朋友看电视",
+        "They said they wanted to watch television",
+        "他们说他们想看电视",
         null,
         6
       ],
       [
-        "They watched television and relaxed on the weekend",
-        "他们周末看了电视然后放松",
+        "Did you want to watch a bit of television",
+        "你想看一点电视吗",
+        null,
+        7
+      ],
+      [
+        "We don't know if they wanted to watch",
+        "我们不知道他们是否想看",
+        null,
+        7
+      ],
+      [
+        "Did you watch a bit of television",
+        "你看了一点电视吗",
         null,
         6
-      ]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [
-      [
-        "看",
-        "watch"
-      ],
-      [
-        "电视",
-        "television"
-      ]
-    ]
-  },
-  "S0220L01": {
-    "lego": [
-      "Did you watch a bit of television",
-      "你看了一点电视吗"
-    ],
-    "type": "M",
-    "is_final_lego": true,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0220L06",
-        "known": "to watch",
-        "target": "看",
-        "type": "A"
-      },
-      {
-        "id": "S0220L05",
-        "known": "television",
-        "target": "电视",
-        "type": "A"
-      },
-      {
-        "id": "S0220L04",
-        "known": "a bit",
-        "target": "一点",
-        "type": "A"
-      },
-      {
-        "id": "S0220L03",
-        "known": "watched",
-        "target": "看了",
-        "type": "M"
-      },
-      {
-        "id": "S0220L02",
-        "known": "watch television",
-        "target": "看电视",
-        "type": "M"
-      }
-    ],
-    "practice_phrases": [
-      [
-        "Did you watch",
-        "你看了吗",
-        null,
-        1
-      ],
-      [
-        "Did you watch television",
-        "你看了电视吗",
-        null,
-        2
-      ],
-      [
-        "Did you watch the film",
-        "你看了电影吗",
-        null,
-        3
-      ],
-      [
-        "Did you watch television yesterday",
-        "你昨天看了电视吗",
-        null,
-        3
-      ],
-      [
-        "Did you watch a bit yesterday",
-        "你昨天看了一点吗",
-        null,
-        4
-      ],
-      [
-        "Did you watch the football on Saturday",
-        "你星期六看了足球吗",
-        null,
-        4
-      ],
-      [
-        "Did you watch a bit of television yesterday",
-        "你昨天看了一点电视吗",
-        null,
-        5
-      ],
-      [
-        "Did you watch the film on Saturday night",
-        "你星期六晚上看了电影吗",
-        null,
-        5
-      ],
-      [
-        "Did you watch a bit of television on the weekend",
-        "你周末看了一点电视吗",
-        null,
-        6
-      ],
-      [
-        "Did you watch a bit of television?",
-        "你看了一点电视吗？",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
-    },
-    "target_phrase_count": 10,
-    "components": [
-      [
-        "你",
-        "you"
-      ],
-      [
-        "看了",
-        "watched"
-      ],
-      [
-        "一点",
-        "a bit"
-      ],
-      [
-        "电视",
-        "television"
-      ],
-      [
-        "吗",
-        "question particle"
       ]
     ]
   }

@@ -1,214 +1,14 @@
 {
-  "S0464L01": {
-    "lego": [
-      "told",
-      "告诉过"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "I told",
-        "我告诉过",
-        null,
-        1
-      ],
-      [
-        "he told",
-        "他告诉过",
-        null,
-        1
-      ],
-      [
-        "I told him yesterday",
-        "我昨天告诉过他",
-        null,
-        2
-      ],
-      [
-        "they told me",
-        "他们告诉过我",
-        null,
-        2
-      ],
-      [
-        "I told my grandfather about it",
-        "我告诉过我的祖父",
-        null,
-        3
-      ],
-      [
-        "I told the children",
-        "我告诉过孩子们",
-        null,
-        3
-      ],
-      [
-        "I told him the room number",
-        "我告诉过他房间号",
-        null,
-        4
-      ],
-      [
-        "I told her because she asked",
-        "我告诉过她因为她问了",
-        null,
-        4
-      ],
-      [
-        "I told my friends at about six o'clock",
-        "我大约六点钟告诉过我的朋友",
-        null,
-        5
-      ],
-      [
-        "I told them I want to find a shop near the hotel",
-        "我告诉过他们我想找酒店附近的一家商店",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        "告诉",
-        "tell"
-      ],
-      [
-        "过",
-        "past experience marker"
-      ]
-    ]
-  },
   "S0464L02": {
     "lego": [
       "I told her",
       "我告诉过她"
     ],
     "type": "M",
-    "current_seed_legos_available": [
-      [
-        "told",
-        "告诉过"
-      ]
-    ],
-    "is_final_lego": false,
     "practice_phrases": [
       [
         "I told her",
         "我告诉过她",
-        null,
-        1
-      ],
-      [
-        "I told her yesterday",
-        "我昨天告诉过她",
-        null,
-        2
-      ],
-      [
-        "I told her the number",
-        "我告诉过她号码",
-        null,
-        2
-      ],
-      [
-        "I told her about the room",
-        "我告诉过她房间的事",
-        null,
-        3
-      ],
-      [
-        "I told her it was different",
-        "我告诉过她它不同",
-        null,
-        3
-      ],
-      [
-        "I told her the room number",
-        "我告诉过她房间号",
-        null,
-        4
-      ],
-      [
-        "I told her about the blue sign",
-        "我告诉过她蓝色标志的事",
-        null,
-        4
-      ],
-      [
-        "I told her I want to find the shop",
-        "我告诉过她我想找商店",
-        null,
-        5
-      ],
-      [
-        "I told her the children were tired last night",
-        "我告诉过她孩子们昨晚累了",
-        null,
-        5
-      ],
-      [
-        "I told her I want to find a shop near the hotel",
-        "我告诉过她我想找酒店附近的一家商店",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        "我",
-        "I"
-      ],
-      [
-        "告诉过",
-        "told"
-      ],
-      [
-        "她",
-        "her"
-      ]
-    ]
-  },
-  "S0464L03": {
-    "lego": [
-      "once",
-      "一次"
-    ],
-    "type": "A",
-    "current_seed_legos_available": [
-      [
-        "told",
-        "告诉过"
-      ],
-      [
-        "I told her",
-        "我告诉过她"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "once",
-        "一次",
-        null,
-        1
-      ],
-      [
-        "I told once",
-        "我告诉过一次",
         null,
         1
       ],
@@ -219,58 +19,52 @@
         2
       ],
       [
-        "he came once",
-        "他来了一次",
+        "I told her something",
+        "我告诉过她点东西",
         null,
         2
       ],
       [
-        "I saw him once yesterday",
-        "我昨天看到他一次",
+        "I told her my name",
+        "我告诉过她我的名字",
         null,
         3
       ],
       [
-        "I told her once about it",
-        "我告诉过她一次",
+        "I told her the number",
+        "我告诉过她号码",
         null,
         3
       ],
       [
-        "I told her the room number once",
-        "我告诉过她一次房间号",
+        "I told her my room number",
+        "我告诉过她我的房间号",
         null,
         4
       ],
       [
-        "our friends came round once last night",
-        "我们的朋友昨晚来了一次",
-        null,
-        4
-      ],
-      [
-        "I told her once I want to find the shop",
-        "我告诉过她一次我想找商店",
+        "I told her once but she forgot",
+        "我告诉过她一次但她忘了",
         null,
         5
       ],
       [
-        "I told my grandfather once during the war in Italy",
-        "我在战争期间在意大利告诉过我的祖父一次",
+        "I told her my room number once",
+        "我告诉过她一次我的房间号",
         null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
+        5
+      ],
       [
+        "I told her but she forgot it",
+        "我告诉过她但她忘了",
         null,
-        null
+        5
+      ],
+      [
+        "I told her my room number once but she forgot it.",
+        "我告诉过她一次我的房间号，但她忘了。",
+        null,
+        7
       ]
     ]
   },
@@ -280,21 +74,6 @@
       "我告诉过她一次"
     ],
     "type": "M",
-    "current_seed_legos_available": [
-      [
-        "told",
-        "告诉过"
-      ],
-      [
-        "I told her",
-        "我告诉过她"
-      ],
-      [
-        "once",
-        "一次"
-      ]
-    ],
-    "is_final_lego": false,
     "practice_phrases": [
       [
         "I told her once",
@@ -303,522 +82,58 @@
         1
       ],
       [
-        "I told her once yesterday",
-        "我昨天告诉过她一次",
+        "I told her once before",
+        "我告诉过她一次以前",
         null,
         2
       ],
       [
-        "I told her once about the room",
-        "我告诉过她一次房间的事",
-        null,
-        2
-      ],
-      [
-        "I told her once the number was different",
-        "我告诉过她一次号码不同",
+        "I told her my name once",
+        "我告诉过她一次我的名字",
         null,
         3
       ],
       [
-        "I told her once it wasn't there",
-        "我告诉过她一次它不在那里",
+        "I told her the number once",
+        "我告诉过她一次号码",
         null,
         3
       ],
       [
-        "I told her once the room number",
-        "我告诉过她一次房间号",
+        "I told her once but she forgot",
+        "我告诉过她一次但她忘了",
         null,
         4
-      ],
-      [
-        "I told her once in the past",
-        "我在过去告诉过她一次",
-        null,
-        4
-      ],
-      [
-        "I told her once I want to find the shop",
-        "我告诉过她一次我想找商店",
-        null,
-        5
-      ],
-      [
-        "I told her once but she might not remember",
-        "我告诉过她一次但她可能不记得",
-        null,
-        5
-      ],
-      [
-        "I told her once about the shop where I can buy postcards",
-        "我告诉过她一次我可以买明信片的商店",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        "我",
-        "I"
-      ],
-      [
-        "告诉过",
-        "told"
-      ],
-      [
-        "她",
-        "her"
-      ],
-      [
-        "一次",
-        "once"
-      ]
-    ]
-  },
-  "S0464L05": {
-    "lego": [
-      "my room number",
-      "我的房间号"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "told",
-        "告诉过"
-      ],
-      [
-        "I told her",
-        "我告诉过她"
-      ],
-      [
-        "once",
-        "一次"
-      ],
-      [
-        "I told her once",
-        "我告诉过她一次"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "my room number",
-        "我的房间号",
-        null,
-        1
-      ],
-      [
-        "I forgot my room number",
-        "我忘了我的房间号",
-        null,
-        2
-      ],
-      [
-        "I told her my room number",
-        "我告诉过她我的房间号",
-        null,
-        2
-      ],
-      [
-        "they said my room number",
-        "他们说了我的房间号",
-        null,
-        3
       ],
       [
         "I told her my room number once",
         "我告诉过她一次我的房间号",
         null,
-        3
-      ],
-      [
-        "I want to find my room number",
-        "我想找我的房间号",
-        null,
         4
       ],
       [
-        "my room number is near the hotel",
-        "我的房间号在酒店附近",
-        null,
-        4
-      ],
-      [
-        "I told her my room number once yesterday",
-        "我昨天告诉过她一次我的房间号",
-        null,
-        5
-      ],
-      [
-        "my room number wasn't in front of the blue sign",
-        "我的房间号不在蓝色标志的前面",
-        null,
-        5
-      ],
-      [
-        "I told her my room number once but it was different",
-        "我告诉过她一次我的房间号但它不同",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        "我的",
-        "my"
-      ],
-      [
-        "房间",
-        "room"
-      ],
-      [
-        "号",
-        "number"
-      ]
-    ]
-  },
-  "S0464L06": {
-    "lego": [
-      "but",
-      "但"
-    ],
-    "type": "A",
-    "current_seed_legos_available": [
-      [
-        "told",
-        "告诉过"
-      ],
-      [
-        "I told her",
-        "我告诉过她"
-      ],
-      [
-        "once",
-        "一次"
-      ],
-      [
-        "I told her once",
-        "我告诉过她一次"
-      ],
-      [
-        "my room number",
-        "我的房间号"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "but",
-        "但",
-        null,
-        1
-      ],
-      [
-        "I told but...",
-        "我告诉过但是...",
-        null,
-        1
-      ],
-      [
-        "I told her but she...",
-        "我告诉过她但她...",
-        null,
-        2
-      ],
-      [
-        "I came but he left",
-        "我来了但他离开了",
-        null,
-        2
-      ],
-      [
-        "I told her once but she forgot",
+        "I told her once but she forgot it",
         "我告诉过她一次但她忘了",
         null,
-        3
-      ],
-      [
-        "it might be there but it's not likely",
-        "它可能在那里但不太可能",
-        null,
-        3
-      ],
-      [
-        "I told her my room number but she forgot",
-        "我告诉过她我的房间号但她忘了",
-        null,
-        4
-      ],
-      [
-        "our friends came but the children were tired",
-        "我们的朋友来了但孩子们累了",
-        null,
-        4
-      ],
-      [
-        "I want to find the shop but it wasn't there",
-        "我想找商店但它不在那里",
-        null,
         5
       ],
       [
-        "I told her the room number once but she forgot it last night",
-        "我告诉过她一次房间号但她昨晚忘了",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        null,
-        null
-      ]
-    ]
-  },
-  "S0464L07": {
-    "lego": [
-      "forgot",
-      "忘了"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "told",
-        "告诉过"
-      ],
-      [
-        "I told her",
-        "我告诉过她"
-      ],
-      [
-        "once",
-        "一次"
-      ],
-      [
-        "I told her once",
-        "我告诉过她一次"
-      ],
-      [
-        "my room number",
-        "我的房间号"
-      ],
-      [
-        "but",
-        "但"
-      ]
-    ],
-    "is_final_lego": false,
-    "practice_phrases": [
-      [
-        "I forgot",
-        "我忘了",
-        null,
-        1
-      ],
-      [
-        "he forgot",
-        "他忘了",
-        null,
-        1
-      ],
-      [
-        "I forgot the room number",
-        "我忘了房间号",
-        null,
-        2
-      ],
-      [
-        "they forgot yesterday",
-        "他们昨天忘了",
-        null,
-        2
-      ],
-      [
-        "I forgot my room number",
-        "我忘了我的房间号",
-        null,
-        3
-      ],
-      [
-        "I forgot but I remember now",
-        "我忘了但我现在记得",
-        null,
-        3
-      ],
-      [
-        "I forgot the number of different areas",
-        "我忘了不同地区的数量",
-        null,
-        4
-      ],
-      [
-        "I forgot where the shop is near the hotel",
-        "我忘了商店在酒店附近哪里",
-        null,
-        4
-      ],
-      [
-        "I told her once but she forgot the room number",
-        "我告诉过她一次但她忘了房间号",
-        null,
-        5
-      ],
-      [
-        "the children forgot the room number because they were tired last night",
-        "孩子们忘了房间号因为他们昨晚累了",
-        null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        "忘",
-        "forget"
-      ],
-      [
-        "了",
-        "completion marker"
-      ]
-    ]
-  },
-  "S0464L08": {
-    "lego": [
-      "she forgot",
-      "她忘了"
-    ],
-    "type": "M",
-    "current_seed_legos_available": [
-      [
-        "told",
-        "告诉过"
-      ],
-      [
-        "I told her",
-        "我告诉过她"
-      ],
-      [
-        "once",
-        "一次"
-      ],
-      [
-        "I told her once",
-        "我告诉过她一次"
-      ],
-      [
-        "my room number",
-        "我的房间号"
-      ],
-      [
-        "but",
-        "但"
-      ],
-      [
-        "forgot",
-        "忘了"
-      ]
-    ],
-    "is_final_lego": true,
-    "practice_phrases": [
-      [
-        "she forgot",
-        "她忘了",
-        null,
-        1
-      ],
-      [
-        "she forgot yesterday",
-        "她昨天忘了",
-        null,
-        2
-      ],
-      [
-        "she forgot the room number",
-        "她忘了房间号",
-        null,
-        2
-      ],
-      [
-        "she forgot my room number",
-        "她忘了我的房间号",
-        null,
-        3
-      ],
-      [
-        "I told her but she forgot",
-        "我告诉过她但她忘了",
-        null,
-        3
-      ],
-      [
-        "I told her once but she forgot",
-        "我告诉过她一次但她忘了",
-        null,
-        4
-      ],
-      [
-        "she forgot where the shop is near the hotel",
-        "她忘了商店在酒店附近哪里",
-        null,
-        4
-      ],
-      [
-        "I told her my room number but she forgot it",
-        "我告诉过她我的房间号但她忘了",
-        null,
-        5
-      ],
-      [
-        "I told her my room number once but she forgot it yesterday",
-        "我昨天告诉过她一次我的房间号但她忘了",
+        "I told her my number once but she forgot",
+        "我告诉过她一次我的号但她忘了",
         null,
         6
       ],
       [
-        "I told her my room number once but she forgot it.",
-        "我告诉过她一次我的房间号，但她忘了。",
+        "I told her once but she forgot my room number",
+        "我告诉过她一次但她忘了我的房间号",
         null,
-        6
-      ]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [
-      [
-        "她",
-        "she"
+        7
       ],
       [
-        "忘了",
-        "forgot"
+        "I told her my room number once but she forgot it",
+        "我告诉过她一次我的房间号但她忘了",
+        null,
+        7
       ]
     ]
   }

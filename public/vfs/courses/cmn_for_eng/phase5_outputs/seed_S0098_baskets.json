@@ -1,122 +1,23 @@
 {
-  "S0098L01": {
-    "lego": ["I should","我应该"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["I should", "我应该", null, 1],
-      ["I should think", "我应该认为", null, 2],
-      ["I should go home", "我应该回家", null, 3],
-      ["I should do this", "我应该做这个", null, 3],
-      ["I should speak more slowly", "我应该说得慢一点", null, 4],
-      ["I should answer in time", "我应该及时回答", null, 4],
-      ["I should go home as soon as you want", "我应该只要你想就回家", null, 5],
-      ["I should keep on doing this a while", "我应该继续做这个一段时间", null, 5],
-      ["I should think that would be great", "我应该认为那就太好了", null, 6],
-      ["I should be ready to go home", "我应该准备好回家", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null]]
-  },
-  "S0098L02": {
-    "lego": ["should consider","应该考虑"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["Should consider", "应该考虑", null, 1],
-      ["I should consider", "我应该考虑", null, 2],
-      ["I should consider doing this", "我应该考虑做这个", null, 3],
-      ["You should consider going home", "你应该考虑回家", null, 3],
-      ["I should consider that a while", "我应该考虑那个一段时间", null, 4],
-      ["I should consider if you can", "我应该考虑如果你能", null, 4],
-      ["I should consider going home as soon as you want", "我应该考虑只要你想就回家", null, 5],
-      ["You should consider doing this a while", "你应该考虑做这个一段时间", null, 5],
-      ["I should consider if that would be great", "我应该考虑如果那就太好了", null, 6],
-      ["I should consider keep on doing this", "我应该考虑继续做这个", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null]]
-  },
-  "S0098L03": {
-    "lego": ["consider playing","考虑玩"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["Consider playing", "考虑玩", null, 1],
-      ["I should consider playing", "我应该考虑玩", null, 2],
-      ["You should consider playing this", "你应该考虑玩这个", null, 3],
-      ["I should consider playing a while", "我应该考虑玩一段时间", null, 3],
-      ["You should consider playing at home", "你应该考虑在家玩", null, 4],
-      ["I should consider playing if you can", "我应该考虑玩如果你能", null, 4],
-      ["I should consider playing this a while", "我应该考虑玩这个一段时间", null, 5],
-      ["You should consider playing as soon as you want", "你应该考虑只要你想就玩", null, 5],
-      ["I should consider playing if that would be great", "我应该考虑玩如果那就太好了", null, 6],
-      ["I should consider playing at home a while", "我应该考虑在家玩一段时间", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null]]
-  },
-  "S0098L04": {
-    "lego": ["play something else","玩别的东西"],
-    "type": "M",
-    "is_final_lego": false,
-    "practice_phrases": [
-      ["Play something else", "玩别的东西", null, 1],
-      ["I should play something else", "我应该玩别的东西", null, 2],
-      ["You should consider playing something else", "你应该考虑玩别的东西", null, 3],
-      ["I should play something else at home", "我应该在家玩别的东西", null, 3],
-      ["I should consider playing something else a while", "我应该考虑玩别的东西一段时间", null, 4],
-      ["You should play something else if you can", "你应该玩别的东西如果你能", null, 4],
-      ["I should consider playing something else at home", "我应该考虑在家玩别的东西", null, 5],
-      ["I should play something else a while", "我应该玩别的东西一段时间", null, 5],
-      ["You should consider playing something else if that would be great", "你应该考虑玩别的东西如果那就太好了", null, 6],
-      ["I should consider playing something else at home a while", "我应该考虑在家玩别的东西一段时间", null, 6]
-    ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null]]
-  },
   "S0098L05": {
-    "lego": ["something else","别的东西"],
-    "type": "M",
-    "is_final_lego": true,
     "practice_phrases": [
-      ["Something else", "别的东西", null, 1],
-      ["I should consider something else", "我应该考虑别的东西", null, 2],
-      ["You should play something else", "你应该玩别的东西", null, 3],
-      ["I should do something else", "我应该做别的东西", null, 3],
-      ["I should consider playing something else", "我应该考虑玩别的东西", null, 4],
-      ["You should think about something else", "你应该想别的东西", null, 4],
-      ["I should consider doing something else at home", "我应该考虑在家做别的东西", null, 5],
-      ["I should play something else a while", "我应该玩别的东西一段时间", null, 5],
-      ["You should consider playing something else if you can", "你应该考虑玩别的东西如果你能", null, 6],
-      ["I should consider playing something else.", "我应该考虑玩别的东西。", null, 5]
+      ["Something else","别的东西", null, 1],
+      ["I should do something else","我应该做别的东西", null, 4],
+      ["Play something else","玩别的东西", null, 2],
+      ["I think I should play something else","我认为我应该玩别的东西", null, 6],
+      ["I should consider doing something else","我应该考虑做别的东西", null, 5],
+      ["Can you talk about something else","你能说话对别的东西", null, 6],
+      ["I need a little more time to think about something else","我需要多一点时间认为别的东西", null, 11],
+      ["I should consider playing something else with someone else","我应该考虑和别人玩别的东西", null, 9],
+      ["Yes I'm ready to do something else as soon as you want","是的我准备好了只要你想做别的东西", null, 13],
+      ["I should consider playing something else","我应该考虑玩别的东西", null, 6]
     ],
-    "phrase_distribution": {
-      "really_short_1_2": 2,
-      "quite_short_3": 2,
-      "longer_4_5": 2,
-      "long_6_plus": 4
-    },
-    "components": [[null,null],[null,null]]
+    "_metadata": {
+      "lego_id": "S0098L05",
+      "seed_context": {
+        "known": "I should consider playing something else.",
+        "target": "我应该考虑玩别的东西。"
+      }
+    }
   }
 }

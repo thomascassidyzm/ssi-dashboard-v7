@@ -1,416 +1,63 @@
 {
-  "S0598L01": {
-    "lego": [
-      "He's heard",
-      "他听过"
-    ],
-    "type": "M",
-    "practice_phrases": [
-      [
-        "He's heard",
-        "他听过",
-        null,
-        1
-      ],
-      [
-        "He's heard",
-        "他听过",
-        null,
-        1
-      ],
-      [
-        "He's heard stories",
-        "他听过故事",
-        null,
-        2
-      ],
-      [
-        "He's heard what they were doing",
-        "他听过他们在做什么",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories",
-        "他听过一千个故事",
-        null,
-        3
-      ],
-      [
-        "He's heard stories about what they were doing",
-        "他听过关于他们在做什么的故事",
-        null,
-        4
-      ],
-      [
-        "He's heard a thousand stories about them",
-        "他听过关于他们的一千个故事",
-        null,
-        4
-      ],
-      [
-        "He's heard a thousand stories about what they were doing",
-        "他听过关于他们在做什么的一千个故事",
-        null,
-        5
-      ],
-      [
-        "He's heard about what they were doing",
-        "他听过关于他们在做什么",
-        null,
-        4
-      ],
-      [
-        "He's heard many things about what they were doing",
-        "他听过很多关于他们在做什么的事",
-        null,
-        5
-      ]
-    ]
-  },
-  "S0598L02": {
-    "lego": [
-      "a thousand stories about what they were doing",
-      "关于他们在做什么的一千个故事"
-    ],
-    "type": "M",
-    "practice_phrases": [
-      [
-        "A thousand stories about what they were doing",
-        "关于他们在做什么的一千个故事",
-        null,
-        1
-      ],
-      [
-        "Stories about what they were doing",
-        "关于他们在做什么的故事",
-        null,
-        1
-      ],
-      [
-        "He's heard a thousand stories about what they were doing",
-        "他听过关于他们在做什么的一千个故事",
-        null,
-        2
-      ],
-      [
-        "A thousand stories about what they were doing there",
-        "关于他们在那里做什么的一千个故事",
-        null,
-        3
-      ],
-      [
-        "Many stories about what they were doing",
-        "很多关于他们在做什么的故事",
-        null,
-        2
-      ],
-      [
-        "He's heard stories about what they were doing",
-        "他听过关于他们在做什么的故事",
-        null,
-        3
-      ],
-      [
-        "A thousand stories about what they were doing here",
-        "关于他们在这里做什么的一千个故事",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about what they were doing",
-        "他听过关于他们在做什么的一千个故事",
-        null,
-        3
-      ],
-      [
-        "A thousand stories about what they were doing now",
-        "关于他们现在在做什么的一千个故事",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about what they were doing there",
-        "他听过关于他们在那里做什么的一千个故事",
-        null,
-        4
-      ]
-    ]
-  },
-  "S0598L03": {
-    "lego": [
-      "a thousand stories",
-      "一千个故事"
-    ],
-    "type": "M",
-    "practice_phrases": [
-      [
-        "A thousand stories",
-        "一千个故事",
-        null,
-        1
-      ],
-      [
-        "A thousand stories",
-        "一千个故事",
-        null,
-        1
-      ],
-      [
-        "He's heard a thousand stories",
-        "他听过一千个故事",
-        null,
-        2
-      ],
-      [
-        "A thousand stories about them",
-        "关于他们的一千个故事",
-        null,
-        2
-      ],
-      [
-        "A thousand stories about what they were doing",
-        "关于他们在做什么的一千个故事",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about them",
-        "他听过关于他们的一千个故事",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about what they were doing",
-        "他听过关于他们在做什么的一千个故事",
-        null,
-        4
-      ],
-      [
-        "A thousand stories about what they were doing here",
-        "关于他们在这里做什么的一千个故事",
-        null,
-        4
-      ],
-      [
-        "He's heard a thousand stories here",
-        "他在这里听过一千个故事",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about what they were doing there",
-        "他听过关于他们在那里做什么的一千个故事",
-        null,
-        5
-      ]
-    ]
-  },
   "S0598L04": {
-    "lego": [
-      "what they were doing",
-      "他们在做什么"
-    ],
+    "lego": ["what they were doing", "他们在做什么"],
     "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      ["He's heard", "他听过"],
+      ["a thousand stories about what they were doing", "关于他们在做什么的一千个故事"],
+      ["a thousand stories", "一千个故事"]
+    ],
     "practice_phrases": [
-      [
-        "What they were doing",
-        "他们在做什么",
-        null,
-        1
-      ],
-      [
-        "What were they doing",
-        "他们在做什么",
-        null,
-        1
-      ],
-      [
-        "Stories about what they were doing",
-        "关于他们在做什么的故事",
-        null,
-        2
-      ],
-      [
-        "He's heard about what they were doing",
-        "他听过他们在做什么",
-        null,
-        2
-      ],
-      [
-        "A thousand stories about what they were doing",
-        "关于他们在做什么的一千个故事",
-        null,
-        3
-      ],
-      [
-        "He's heard stories about what they were doing",
-        "他听过关于他们在做什么的故事",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about what they were doing",
-        "他听过关于他们在做什么的一千个故事",
-        null,
-        4
-      ],
-      [
-        "What they were doing here",
-        "他们在这里做什么",
-        null,
-        2
-      ],
-      [
-        "What they were doing there",
-        "他们在那里做什么",
-        null,
-        2
-      ],
-      [
-        "He's heard a thousand stories about what they were doing there",
-        "他听过关于他们在那里做什么的一千个故事",
-        null,
-        5
-      ]
-    ]
+      ["what were they doing", "他们在做什么", null, 3],
+      ["what they were doing", "他们在做什么", null, 3],
+      ["I saw what they were doing", "我看到他们在做什么", null, 5],
+      ["She told me what they were doing", "她告诉我他们在做什么", null, 6],
+      ["what they were doing there", "他们在那里做什么", null, 4],
+      ["He's heard stories about what they were doing", "他听过关于他们在做什么的故事", null, 7],
+      ["what were they doing at the station", "他们在车站做什么", null, 6],
+      ["I need to know what they were doing", "我需要知道他们在做什么", null, 7],
+      ["what they were doing at home", "他们在家做什么", null, 5],
+      ["I argued about what they were doing", "我争论他们在做什么", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 0,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 5
+    },
+    "target_phrase_count": 10,
+    "components": [["what", "什么"], ["they", "他们"], ["were doing", "在做"]]
   },
   "S0598L05": {
-    "lego": [
-      "were doing what",
-      "在做什么"
-    ],
+    "lego": ["were doing what", "在做什么"],
     "type": "M",
-    "practice_phrases": [
-      [
-        "Were doing what",
-        "在做什么",
-        null,
-        1
-      ],
-      [
-        "Doing what",
-        "在做什么",
-        null,
-        1
-      ],
-      [
-        "What they were doing",
-        "他们在做什么",
-        null,
-        2
-      ],
-      [
-        "Stories about what they were doing",
-        "关于他们在做什么的故事",
-        null,
-        3
-      ],
-      [
-        "He's heard what they were doing",
-        "他听过他们在做什么",
-        null,
-        3
-      ],
-      [
-        "A thousand stories about what they were doing",
-        "关于他们在做什么的一千个故事",
-        null,
-        4
-      ],
-      [
-        "He's heard stories about what they were doing",
-        "他听过关于他们在做什么的故事",
-        null,
-        4
-      ],
-      [
-        "He's heard a thousand stories about what they were doing",
-        "他听过关于他们在做什么的一千个故事",
-        null,
-        5
-      ],
-      [
-        "What were they doing here",
-        "他们在这里做什么",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about what they were doing there",
-        "他听过关于他们在那里做什么的一千个故事",
-        null,
-        6
-      ]
-    ]
-  },
-  "S0598L06": {
-    "lego": [
-      "do what",
-      "做什么"
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      ["He's heard", "他听过"],
+      ["a thousand stories about what they were doing", "关于他们在做什么的一千个故事"],
+      ["a thousand stories", "一千个故事"],
+      ["what they were doing", "他们在做什么"]
     ],
-    "type": "A",
     "practice_phrases": [
-      [
-        "Do what",
-        "做什么",
-        null,
-        1
-      ],
-      [
-        "What to do",
-        "做什么",
-        null,
-        1
-      ],
-      [
-        "What they were doing",
-        "他们在做什么",
-        null,
-        2
-      ],
-      [
-        "Stories about what they were doing",
-        "关于他们在做什么的故事",
-        null,
-        3
-      ],
-      [
-        "A thousand stories about what they were doing",
-        "关于他们在做什么的一千个故事",
-        null,
-        4
-      ],
-      [
-        "He's heard what they were doing",
-        "他听过他们在做什么",
-        null,
-        3
-      ],
-      [
-        "He's heard stories about what they were doing",
-        "他听过关于他们在做什么的故事",
-        null,
-        4
-      ],
-      [
-        "He's heard a thousand stories about what they were doing",
-        "他听过关于他们在做什么的一千个故事",
-        null,
-        5
-      ],
-      [
-        "What they were doing there",
-        "他们在那里做什么",
-        null,
-        3
-      ],
-      [
-        "He's heard a thousand stories about what they were doing.",
-        "他听过关于他们在做什么的一千个故事。",
-        null,
-        5
-      ]
-    ]
+      ["doing what", "做什么", null, 2],
+      ["were doing what", "在做什么", null, 2],
+      ["they were doing what", "他们在做什么", null, 3],
+      ["you were doing what", "你在做什么", null, 3],
+      ["I was doing what I had to", "我在做我不得不做的", null, 6],
+      ["she was doing what she needed", "她在做她需要的", null, 5],
+      ["were you doing what I told you", "你在做我告诉你的吗", null, 7],
+      ["they were doing what they saw", "他们在做他们看到的", null, 6],
+      ["I was doing what my sister does", "我在做我妹妹做的", null, 7],
+      ["he's heard about what I was doing", "他听过关于我在做什么的", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 1,
+      "long_6_plus": 5
+    },
+    "target_phrase_count": 10,
+    "components": [["were doing", "在做"], ["what", "什么"]]
   }
 }

@@ -1,44 +1,28 @@
 {
   "S0661L01": {
-    "lego": [
-      "you're all / you all",
-      "你们大家都"
-    ],
+    "lego": ["you're all / you all", "你们大家都"],
     "type": "M",
-    "is_final_lego": true,
+    "is_final_lego": false,
     "current_seed_earlier_legos": [],
     "practice_phrases": [
       ["you all", "你们大家都", null, 1],
-      ["you all want", "你们大家都想", null, 2],
-      ["you all want to go", "你们大家都想去", null, 3],
+      ["you're all here", "你们大家都在这里", null, 2],
+      ["you all want", "你们大家都想要", null, 2],
+      ["you're all doing well", "你们大家都做得好", null, 3],
+      ["you all speak it", "你们大家都说它", null, 3],
+      ["you're all ready", "你们大家都准备好了", null, 2],
       ["you all can help", "你们大家都可以帮", null, 3],
-      ["you all speak it", "你们大家都说它", null, 4],
-      ["you all are ready", "你们大家都准备好了", null, 4],
-      ["I think you're all doing very well", "我认为你们大家都做得很好", null, 5],
-      ["I'm not sure if I can help you all", "我不确定我能不能帮你们大家都", null, 6],
-      ["could you all say that", "你们大家都能说那个吗", null, 5],
-      ["you're all doing something", "你们大家都在做什么事", null, 5]
+      ["I think you're all doing very well", "我认为你们大家都做得很好", null, 6],
+      ["you all say that madam", "你们大家都说那个女士", null, 4],
+      ["Do you all need something sir", "你们大家都需要什么事吗先生", null, 6]
     ],
     "phrase_distribution": {
-      "short_1_to_2_legos": 2,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 4
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 2
     },
     "target_phrase_count": 10,
-    "components": [
-      [
-        "你们",
-        "you (plural)"
-      ],
-      [
-        "大家",
-        "everyone/all"
-      ],
-      [
-        "都",
-        "all"
-      ]
-    ]
+    "components": [["you", "你们"], ["all", "大家"], ["all (everyone)", "都"]]
   }
 }

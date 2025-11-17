@@ -5,8 +5,6 @@
       "是的"
     ],
     "type": "A",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [],
     "practice_phrases": [
       [
         "Yes",
@@ -15,67 +13,66 @@
         1
       ],
       [
-        "No",
-        "不",
+        "Yes I know",
+        "是的我知道",
         null,
         1
       ],
       [
-        "Yes I think",
-        "是的我觉得",
+        "Yes I'm sure",
+        "是的我确定",
         null,
         2
       ],
       [
-        "Yes she said",
-        "是的她说",
+        "Yes I'm ready",
+        "是的我准备好",
         null,
         2
       ],
       [
         "Yes I think so",
-        "是的我觉得是",
+        "是的我想是的",
         null,
         3
       ],
       [
-        "Yes he can play",
-        "是的他可以玩",
+        "Yes I met someone",
+        "是的我见过一个人",
         null,
         3
       ],
       [
-        "Yes I think he can",
-        "是的我觉得他可以",
+        "Yes I'm sure he's here",
+        "是的我确定他在这里",
         null,
         4
       ],
       [
-        "Yes she can open the door",
-        "是的她可以打开门",
+        "Yes I think I can help",
+        "是的我想我能帮忙",
         null,
         4
       ],
       [
-        "Yes I think she can continue",
-        "是的我觉得她可以继续",
+        "Yes I'm sure he's hurt himself",
+        "是的我确定他伤了自己",
         null,
         5
       ],
       [
-        "Yes I think he can add valuable ideas",
-        "是的我觉得他可以增加有价值的想法",
+        "Yes I'm sure that he's hurt himself quite badly",
+        "是的我确定他伤得很严重",
         null,
-        5
+        6
       ]
     ],
     "phrase_distribution": {
-      "short_1_to_2_legos": 4,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 2
-    },
-    "target_phrase_count": 10
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    }
   },
   "S0340L02": {
     "lego": [
@@ -83,15 +80,8 @@
       "我确定"
     ],
     "type": "M",
+    "current_seed_legos_available": [],
     "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0340L01",
-        "known": "Yes",
-        "target": "是的",
-        "type": "A"
-      }
-    ],
     "practice_phrases": [
       [
         "I'm sure",
@@ -103,72 +93,71 @@
         "Yes I'm sure",
         "是的我确定",
         null,
-        2
+        1
       ],
       [
-        "I'm sure he can",
-        "我确定他可以",
+        "I'm sure he's here",
+        "我确定他在这里",
         null,
         2
       ],
       [
-        "I'm sure she said",
-        "我确定她说",
+        "I'm sure you're right",
+        "我确定你是对的",
         null,
         2
       ],
       [
-        "I'm sure he can play",
-        "我确定他可以玩",
+        "I'm sure he's hurt himself",
+        "我确定他伤了自己",
         null,
         3
       ],
       [
-        "I'm sure she can continue",
-        "我确定她可以继续",
+        "I'm sure that's important",
+        "我确定那很重要",
         null,
         3
       ],
       [
-        "I'm sure he can open the door",
-        "我确定他可以打开门",
+        "I'm sure he wants to help you",
+        "我确定他想帮助你",
         null,
         4
       ],
       [
-        "I'm sure she can provide answers",
-        "我确定她可以提供答案",
+        "I'm sure she's ready to leave",
+        "我确定她准备好离开",
         null,
         4
       ],
       [
-        "I'm sure he can add valuable ideas",
-        "我确定他可以增加有价值的想法",
+        "I'm sure that he's hurt himself quite badly",
+        "我确定他伤得很严重",
         null,
         5
       ],
       [
-        "I'm sure she can build a new life",
-        "我确定她可以建立新生活",
+        "I'm sure she doesn't want to live in a city",
+        "我确定她不想住在城市里",
         null,
-        5
+        6
       ]
     ],
     "phrase_distribution": {
-      "short_1_to_2_legos": 3,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 3
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 1
     },
-    "target_phrase_count": 10,
     "components": [
       [
-        "我",
-        "I'm"
+        null,
+        null
       ],
       [
-        "确定",
-        "sure"
+        null,
+        null
       ]
     ]
   },
@@ -178,21 +167,13 @@
       "确定"
     ],
     "type": "A",
-    "is_final_lego": false,
-    "current_seed_earlier_legos": [
-      {
-        "id": "S0340L01",
-        "known": "Yes",
-        "target": "是的",
-        "type": "A"
-      },
-      {
-        "id": "S0340L02",
-        "known": "I'm sure",
-        "target": "我确定",
-        "type": "M"
-      }
+    "current_seed_legos_available": [
+      [
+        "I'm sure",
+        "我确定"
+      ]
     ],
+    "is_final_lego": false,
     "practice_phrases": [
       [
         "Sure",
@@ -207,61 +188,60 @@
         1
       ],
       [
-        "Yes I'm sure",
-        "是的我确定",
+        "Are you sure",
+        "你确定吗",
         null,
         2
       ],
       [
-        "I'm sure he can",
-        "我确定他可以",
+        "I'm not sure",
+        "我不确定",
         null,
         2
       ],
       [
-        "I'm sure she can play",
-        "我确定她可以玩",
+        "I'm sure he's here",
+        "我确定他在这里",
         null,
         3
       ],
       [
-        "I'm sure he can continue",
-        "我确定他可以继续",
+        "Are you sure about this",
+        "你确定这个吗",
         null,
         3
       ],
       [
-        "I'm sure she can open the door",
-        "我确定她可以打开门",
+        "I'm sure that he's hurt himself",
+        "我确定他伤了自己",
         null,
         4
       ],
       [
-        "I'm sure he can provide the answers",
-        "我确定他可以提供答案",
+        "I'm not sure if I can help",
+        "我不确定我能不能帮忙",
         null,
         4
       ],
       [
-        "Yes I'm sure he can add valuable ideas",
-        "是的我确定他可以增加有价值的想法",
+        "I'm sure he wants to continue talking to you",
+        "我确定他想继续和你说话",
         null,
         5
       ],
       [
-        "I'm sure she can build a new life",
-        "我确定她可以建立新生活",
+        "Are you sure that you want to move to a city",
+        "你确定你想搬到城市吗",
         null,
-        5
+        6
       ]
     ],
     "phrase_distribution": {
-      "short_1_to_2_legos": 4,
-      "medium_3_legos": 2,
-      "longer_4_legos": 2,
-      "longest_5_legos": 2
-    },
-    "target_phrase_count": 10
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    }
   },
   "S0340L04": {
     "lego": [

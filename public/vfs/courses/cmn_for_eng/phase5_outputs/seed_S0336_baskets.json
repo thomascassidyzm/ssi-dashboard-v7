@@ -1,98 +1,439 @@
 {
   "S0336L01": {
-    "lego": ["I don't think", "我觉得"],
+    "lego": [
+      "I don't think",
+      "我觉得"
+    ],
     "type": "M",
     "practice_phrases": [
-      ["I don't think", "我觉得", null, 1],
-      ["I don't think so", "我不觉得", null, 2],
-      ["I don't think she can", "我觉得她不能", null, 3],
-      ["I don't think it's good", "我觉得不好", null, 3],
-      ["I don't think you can come", "我觉得你不能来", null, 4],
-      ["I don't think he can help", "我觉得他不能帮", null, 4],
-      ["I don't think she can open it", "我觉得她不能打开它", null, 5],
-      ["I don't think we need to go", "我觉得我们不需要去", null, 5],
-      ["I don't think he can let you hold it", "我觉得他不能让你抱它", null, 6],
-      ["I don't think she can come here today", "我觉得她今天不能来这里", null, 6]
+      [
+        "I don't think",
+        "我觉得",
+        null,
+        1
+      ],
+      [
+        "I don't think so",
+        "我不觉得",
+        null,
+        2
+      ],
+      [
+        "I don't think she can",
+        "我觉得她不能",
+        null,
+        3
+      ],
+      [
+        "I don't think it's good",
+        "我觉得不好",
+        null,
+        3
+      ],
+      [
+        "I don't think you can come",
+        "我觉得你不能来",
+        null,
+        4
+      ],
+      [
+        "I don't think he can help",
+        "我觉得他不能帮",
+        null,
+        4
+      ],
+      [
+        "I don't think she can open it",
+        "我觉得她不能打开它",
+        null,
+        5
+      ],
+      [
+        "I don't think we need to go",
+        "我觉得我们不需要去",
+        null,
+        5
+      ],
+      [
+        "I don't think he can let you hold it",
+        "我觉得他不能让你抱它",
+        null,
+        6
+      ],
+      [
+        "I don't think she can come here today",
+        "我觉得她今天不能来这里",
+        null,
+        6
+      ]
     ]
   },
   "S0336L02": {
-    "lego": ["she can't", "她不能"],
+    "lego": [
+      "she can't",
+      "她不能"
+    ],
     "type": "M",
     "practice_phrases": [
-      ["She can't", "她不能", null, 1],
-      ["She can't open", "她不能打开", null, 2],
-      ["I don't think she can't", "我觉得她不能", null, 3],
-      ["She can't help you", "她不能帮你", null, 3],
-      ["She can't come today", "她今天不能来", null, 4],
-      ["She can't do it now", "她现在不能做", null, 4],
-      ["I don't think she can't open it", "我觉得她不能打开它", null, 5],
-      ["She can't let you hold the kitten", "她不能让你抱那只小猫", null, 5],
-      ["I don't think she can't open the door", "我觉得她不能打开门", null, 6],
-      ["She can't add some valuable ideas", "她不能增加一些有价值的想法", null, 6]
+      [
+        "She can't",
+        "她不能",
+        null,
+        1
+      ],
+      [
+        "She can't open",
+        "她不能打开",
+        null,
+        2
+      ],
+      [
+        "I don't think she can't",
+        "我觉得她不能",
+        null,
+        3
+      ],
+      [
+        "She can't help you",
+        "她不能帮你",
+        null,
+        3
+      ],
+      [
+        "She can't come today",
+        "她今天不能来",
+        null,
+        4
+      ],
+      [
+        "She can't do it now",
+        "她现在不能做",
+        null,
+        4
+      ],
+      [
+        "I don't think she can't open it",
+        "我觉得她不能打开它",
+        null,
+        5
+      ],
+      [
+        "She can't let you hold the kitten",
+        "她不能让你抱那只小猫",
+        null,
+        5
+      ],
+      [
+        "I don't think she can't open the door",
+        "我觉得她不能打开门",
+        null,
+        6
+      ],
+      [
+        "She can't add some valuable ideas",
+        "她不能增加一些有价值的想法",
+        null,
+        6
+      ]
     ]
   },
   "S0336L03": {
-    "lego": ["can't open", "不能打开"],
+    "lego": [
+      "can't open",
+      "不能打开"
+    ],
     "type": "M",
+    "current_seed_legos_available": [
+      [
+        "I don't think",
+        "我觉得"
+      ]
+    ],
+    "is_final_lego": false,
     "practice_phrases": [
-      ["Can't open", "不能打开", null, 1],
-      ["She can't open", "她不能打开", null, 2],
-      ["I think can't open", "我觉得不能打开", null, 3],
-      ["I can't open it", "我不能打开它", null, 3],
-      ["She can't open the door", "她不能打开门", null, 4],
-      ["I don't think can't open", "我觉得不能打开", null, 4],
-      ["I don't think she can't open", "我觉得她不能打开", null, 5],
-      ["I think he can't open the door", "我觉得他不能打开门", null, 5],
-      ["I don't think she can't open it", "我觉得她不能打开它", null, 6],
-      ["I don't think she can't open the door", "我觉得她不能打开门", null, 6]
+      [
+        "Can't open",
+        "不能打开",
+        null,
+        1
+      ],
+      [
+        "I can't open it",
+        "我不能打开",
+        null,
+        1
+      ],
+      [
+        "I can't open this",
+        "我不能打开这个",
+        null,
+        2
+      ],
+      [
+        "She can't open that",
+        "她不能打开那个",
+        null,
+        2
+      ],
+      [
+        "I can't open this thing",
+        "我不能打开这个东西",
+        null,
+        3
+      ],
+      [
+        "You can't open it now",
+        "你现在不能打开",
+        null,
+        3
+      ],
+      [
+        "I can't open this thing you gave me",
+        "我不能打开你给我的这个东西",
+        null,
+        4
+      ],
+      [
+        "She said she can't open it",
+        "她说她不能打开",
+        null,
+        4
+      ],
+      [
+        "I don't know why I can't open this",
+        "我不知道为什么我不能打开这个",
+        null,
+        5
+      ],
+      [
+        "He told me that he can't open the door",
+        "他告诉我他不能打开门",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 4,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 1
+    },
+    "components": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
     ]
   },
   "S0336L04": {
-    "lego": ["open", "打开"],
+    "lego": [
+      "open",
+      "打开"
+    ],
     "type": "A",
     "practice_phrases": [
-      ["Open", "打开", null, 1],
-      ["Can't open", "不能打开", null, 2],
-      ["She can't open", "她不能打开", null, 3],
-      ["I want to open", "我想打开", null, 3],
-      ["I can't open it", "我不能打开它", null, 4],
-      ["I need to open it", "我需要打开它", null, 4],
-      ["She can't open the door", "她不能打开门", null, 5],
-      ["I think I can't open it", "我觉得我不能打开它", null, 5],
-      ["I don't think she can't open it", "我觉得她不能打开它", null, 6],
-      ["I don't think she can't open the door", "我觉得她不能打开门", null, 6]
+      [
+        "Open",
+        "打开",
+        null,
+        1
+      ],
+      [
+        "Can't open",
+        "不能打开",
+        null,
+        2
+      ],
+      [
+        "She can't open",
+        "她不能打开",
+        null,
+        3
+      ],
+      [
+        "I want to open",
+        "我想打开",
+        null,
+        3
+      ],
+      [
+        "I can't open it",
+        "我不能打开它",
+        null,
+        4
+      ],
+      [
+        "I need to open it",
+        "我需要打开它",
+        null,
+        4
+      ],
+      [
+        "She can't open the door",
+        "她不能打开门",
+        null,
+        5
+      ],
+      [
+        "I think I can't open it",
+        "我觉得我不能打开它",
+        null,
+        5
+      ],
+      [
+        "I don't think she can't open it",
+        "我觉得她不能打开它",
+        null,
+        6
+      ],
+      [
+        "I don't think she can't open the door",
+        "我觉得她不能打开门",
+        null,
+        6
+      ]
     ]
   },
   "S0336L05": {
-    "lego": ["open the door", "打开门"],
+    "lego": [
+      "open the door",
+      "打开门"
+    ],
     "type": "M",
     "practice_phrases": [
-      ["Open the door", "打开门", null, 1],
-      ["Can't open the door", "不能打开门", null, 2],
-      ["She can't open the door", "她不能打开门", null, 3],
-      ["I want to open the door", "我想打开门", null, 3],
-      ["I can't open the door", "我不能打开门", null, 4],
-      ["I need to open the door", "我需要打开门", null, 4],
-      ["I think she can't open the door", "我觉得她不能打开门", null, 5],
-      ["I don't think she can open the door", "我觉得她不能打开门", null, 5],
-      ["I don't think she can't open the door now", "我觉得她现在不能打开门", null, 6],
-      ["I don't think that she can open the door", "我觉得她不能打开门", null, 6]
+      [
+        "Open the door",
+        "打开门",
+        null,
+        1
+      ],
+      [
+        "Can't open the door",
+        "不能打开门",
+        null,
+        2
+      ],
+      [
+        "She can't open the door",
+        "她不能打开门",
+        null,
+        3
+      ],
+      [
+        "I want to open the door",
+        "我想打开门",
+        null,
+        3
+      ],
+      [
+        "I can't open the door",
+        "我不能打开门",
+        null,
+        4
+      ],
+      [
+        "I need to open the door",
+        "我需要打开门",
+        null,
+        4
+      ],
+      [
+        "I think she can't open the door",
+        "我觉得她不能打开门",
+        null,
+        5
+      ],
+      [
+        "I don't think she can open the door",
+        "我觉得她不能打开门",
+        null,
+        5
+      ],
+      [
+        "I don't think she can't open the door now",
+        "我觉得她现在不能打开门",
+        null,
+        6
+      ],
+      [
+        "I don't think that she can open the door",
+        "我觉得她不能打开门",
+        null,
+        6
+      ]
     ]
   },
   "S0336L06": {
-    "lego": ["door", "门"],
+    "lego": [
+      "door",
+      "门"
+    ],
     "type": "A",
     "practice_phrases": [
-      ["Door", "门", null, 1],
-      ["The door", "门", null, 1],
-      ["Open the door", "打开门", null, 3],
-      ["I want the door", "我想要那个门", null, 3],
-      ["Can't open the door", "不能打开门", null, 4],
-      ["I need to open the door", "我需要打开门", null, 4],
-      ["She can't open the door", "她不能打开门", null, 5],
-      ["I think I can't open the door", "我觉得我不能打开门", null, 5],
-      ["I don't think she can open the door", "我觉得她不能打开门", null, 6],
-      ["I don't think that she can open the door.", "我觉得她不能打开门。", null, 6]
+      [
+        "Door",
+        "门",
+        null,
+        1
+      ],
+      [
+        "The door",
+        "门",
+        null,
+        1
+      ],
+      [
+        "Open the door",
+        "打开门",
+        null,
+        3
+      ],
+      [
+        "I want the door",
+        "我想要那个门",
+        null,
+        3
+      ],
+      [
+        "Can't open the door",
+        "不能打开门",
+        null,
+        4
+      ],
+      [
+        "I need to open the door",
+        "我需要打开门",
+        null,
+        4
+      ],
+      [
+        "She can't open the door",
+        "她不能打开门",
+        null,
+        5
+      ],
+      [
+        "I think I can't open the door",
+        "我觉得我不能打开门",
+        null,
+        5
+      ],
+      [
+        "I don't think she can open the door",
+        "我觉得她不能打开门",
+        null,
+        6
+      ],
+      [
+        "I don't think that she can open the door.",
+        "我觉得她不能打开门。",
+        null,
+        6
+      ]
     ]
   }
 }
