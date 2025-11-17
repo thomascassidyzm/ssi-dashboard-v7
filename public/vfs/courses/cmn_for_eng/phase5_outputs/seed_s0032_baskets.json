@@ -1,0 +1,76 @@
+{
+  "S0032L01": {
+    "lego": ["did you want","你想"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Did you want to go","你想走",null,2],
+      ["Did you want to help me","你想帮我",null,2],
+      ["Did you want to ask me","你想问我",null,2],
+      ["Did you want to speak","你想说话",null,2],
+      ["Did you want to start talking","你想开始说话",null,2],
+      ["Did you want to meet people","你想认识人",null,2],
+      ["Did you want to ask me something","你想问我一些事情",null,2],
+      ["Did you want to speak with me","你想和我说话",null,2],
+      ["Did you want to meet people who speak Chinese","你想认识会说中文的人",null,2],
+      ["Did you want to help me yesterday","你想昨天帮我",null,2]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0032L02": {
+    "lego": ["to show me","给我看"],
+    "type": "M",
+    "current_seed_legos_available": [["did you want","你想"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["To show me","给我看",null,1],
+      ["Did you want to show me","你想给我看",null,2],
+      ["You wanted to show me","你想给我看",null,2],
+      ["I wanted to show you","我想给你看",null,2],
+      ["Did you want to show me something","你想给我看一些东西",null,3],
+      ["You wanted to show me something","你想给我看一些东西",null,3],
+      ["I wanted to show you something","我想给你看一些东西",null,3],
+      ["Did you want to show me yesterday","你想昨天给我看",null,3],
+      ["You wanted to show me something yesterday","你想昨天给我看一些东西",null,3],
+      ["Did you want to show me tonight","你想今晚给我看",null,3]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0032L04": {
+    "lego": ["question particle","吗"],
+    "type": "A",
+    "current_seed_legos_available": [["did you want","你想"],["to show me","给我看"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Did you want to go","你想走吗",null,2],
+      ["Did you want to help me","你想帮我吗",null,2],
+      ["Will you help me","你会帮我吗",null,2],
+      ["Did you want to speak with me","你想和我说话吗",null,3],
+      ["Did you want to ask me something","你想问我一些事情吗",null,3],
+      ["Did you want to show me","你想给我看吗",null,3],
+      ["Did you want to meet people","你想认识人吗",null,3],
+      ["Did you want to show me something","你想给我看一些东西吗",null,4],
+      ["Are you going to help me before I have to go","在我必须走之前你会帮我吗",null,6],
+      ["Did you want to show me something","你想给我看一些东西吗",null,4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}
