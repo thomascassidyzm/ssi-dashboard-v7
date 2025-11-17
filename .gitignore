@@ -169,3 +169,11 @@ temp/
 extracted-welcomes/
 vfs/canonical/voices.json
 vfs/canonical/welcomes.json
+
+# Agent-generated scripts (per CLAUDE.md)
+scripts/*.sh
+scripts/*.cjs
+scripts/*.js
+scripts/*.py
+scripts/*.json
+scripts/batch-temp/
