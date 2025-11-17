@@ -1,0 +1,428 @@
+{
+  "seed_id": "S0549",
+  "seed_pair": [
+    "Because I have got to be quiet.",
+    "因为我必须安静。"
+  ],
+  "legos": {
+    "S0549L01": {
+      "lego": [
+        "have got to",
+        "必须"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "Have got to",
+          "必须",
+          null,
+          1
+        ],
+        [
+          "I have got to",
+          "我必须",
+          null,
+          2
+        ],
+        [
+          "She has got to",
+          "她必须",
+          null,
+          2
+        ],
+        [
+          "He has got to",
+          "他必须",
+          null,
+          2
+        ],
+        [
+          "You have got to leave",
+          "你必须离开",
+          null,
+          2
+        ],
+        [
+          "I have got to leave now",
+          "我现在必须离开",
+          null,
+          3
+        ],
+        [
+          "I have got to take the clothes upstairs",
+          "我必须把衣服拿上楼",
+          null,
+          3
+        ],
+        [
+          "She has got to breathe slowly",
+          "她必须慢慢呼吸",
+          null,
+          2
+        ],
+        [
+          "Because you have got to leave",
+          "因为你必须离开",
+          null,
+          2
+        ],
+        [
+          "I have got to try at the moment",
+          "我此刻必须试",
+          null,
+          3
+        ]
+      ]
+    },
+    "S0549L02": {
+      "lego": [
+        "quiet",
+        "安静"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0549L01",
+          "known": "have got to",
+          "target": "必须",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Quiet",
+          "安静",
+          null,
+          1
+        ],
+        [
+          "Be quiet",
+          "安静",
+          null,
+          1
+        ],
+        [
+          "I am quiet",
+          "我安静",
+          null,
+          2
+        ],
+        [
+          "She is quiet",
+          "她安静",
+          null,
+          2
+        ],
+        [
+          "The dog is quiet",
+          "狗安静",
+          null,
+          2
+        ],
+        [
+          "I have got to be quiet",
+          "我必须安静",
+          null,
+          2
+        ],
+        [
+          "She has got to be quiet",
+          "她必须安静",
+          null,
+          2
+        ],
+        [
+          "At the moment I am quiet",
+          "此刻我安静",
+          null,
+          2
+        ],
+        [
+          "The dog is quiet at the moment",
+          "狗此刻安静",
+          null,
+          2
+        ],
+        [
+          "Because I am quiet",
+          "因为我安静",
+          null,
+          2
+        ]
+      ]
+    },
+    "S0549L03": {
+      "lego": [
+        "have got to be quiet",
+        "必须安静"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0549L01",
+          "known": "have got to",
+          "target": "必须",
+          "type": "A"
+        },
+        {
+          "id": "S0549L02",
+          "known": "quiet",
+          "target": "安静",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Have got to be quiet",
+          "必须安静",
+          null,
+          1
+        ],
+        [
+          "I have got to be quiet",
+          "我必须安静",
+          null,
+          1
+        ],
+        [
+          "She has got to be quiet",
+          "她必须安静",
+          null,
+          1
+        ],
+        [
+          "He has got to be quiet",
+          "他必须安静",
+          null,
+          1
+        ],
+        [
+          "You have got to be quiet",
+          "你必须安静",
+          null,
+          1
+        ],
+        [
+          "The dog has got to be quiet",
+          "狗必须安静",
+          null,
+          1
+        ],
+        [
+          "I have got to be quiet at the moment",
+          "我此刻必须安静",
+          null,
+          2
+        ],
+        [
+          "She has got to be quiet at the moment",
+          "她此刻必须安静",
+          null,
+          2
+        ],
+        [
+          "Because I have got to be quiet",
+          "因为我必须安静",
+          null,
+          1
+        ],
+        [
+          "Whenever you feel angry you have got to be quiet",
+          "每当你感到生气你必须安静",
+          null,
+          3
+        ]
+      ]
+    },
+    "S0549L04": {
+      "lego": [
+        "I have got to be quiet",
+        "我必须安静"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0549L01",
+          "known": "have got to",
+          "target": "必须",
+          "type": "A"
+        },
+        {
+          "id": "S0549L02",
+          "known": "quiet",
+          "target": "安静",
+          "type": "A"
+        },
+        {
+          "id": "S0549L03",
+          "known": "have got to be quiet",
+          "target": "必须安静",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "I have got to be quiet",
+          "我必须安静",
+          null,
+          1
+        ],
+        [
+          "I have got to be quiet now",
+          "我现在必须安静",
+          null,
+          2
+        ],
+        [
+          "I have got to be quiet at the moment",
+          "我此刻必须安静",
+          null,
+          1
+        ],
+        [
+          "Because I have got to be quiet",
+          "因为我必须安静",
+          null,
+          1
+        ],
+        [
+          "I have got to be quiet whenever you leave",
+          "每当你离开我必须安静",
+          null,
+          3
+        ],
+        [
+          "At the moment I have got to be quiet",
+          "此刻我必须安静",
+          null,
+          1
+        ],
+        [
+          "I don't mind because I have got to be quiet",
+          "我不介意因为我必须安静",
+          null,
+          2
+        ],
+        [
+          "Whenever I feel sad I have got to be quiet",
+          "每当我感到悲伤我必须安静",
+          null,
+          3
+        ],
+        [
+          "I have got to be quiet and breathe slowly",
+          "我必须安静和慢慢呼吸",
+          null,
+          3
+        ],
+        [
+          "She was right that I have got to be quiet",
+          "她是对的我必须安静",
+          null,
+          2
+        ]
+      ]
+    },
+    "S0549L05": {
+      "lego": [
+        "because I have got to be quiet",
+        "因为我必须安静"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0549L01",
+          "known": "have got to",
+          "target": "必须",
+          "type": "A"
+        },
+        {
+          "id": "S0549L02",
+          "known": "quiet",
+          "target": "安静",
+          "type": "A"
+        },
+        {
+          "id": "S0549L03",
+          "known": "have got to be quiet",
+          "target": "必须安静",
+          "type": "M"
+        },
+        {
+          "id": "S0549L04",
+          "known": "I have got to be quiet",
+          "target": "我必须安静",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Because I have got to be quiet",
+          "因为我必须安静",
+          null,
+          1
+        ],
+        [
+          "Because she has got to be quiet",
+          "因为她必须安静",
+          null,
+          1
+        ],
+        [
+          "Because he has got to be quiet",
+          "因为他必须安静",
+          null,
+          1
+        ],
+        [
+          "Because you have got to be quiet",
+          "因为你必须安静",
+          null,
+          1
+        ],
+        [
+          "Because I have got to be quiet at the moment",
+          "因为我此刻必须安静",
+          null,
+          1
+        ],
+        [
+          "I am feeling sad because I have got to be quiet",
+          "我感到悲伤因为我必须安静",
+          null,
+          2
+        ],
+        [
+          "I don't mind because I have got to be quiet",
+          "我不介意因为我必须安静",
+          null,
+          1
+        ],
+        [
+          "She was right because I have got to be quiet",
+          "她是对的因为我必须安静",
+          null,
+          2
+        ],
+        [
+          "At the moment I am quiet because I have got to be quiet",
+          "此刻我安静因为我必须安静",
+          null,
+          2
+        ],
+        [
+          "Whenever I feel angry I breathe slowly because I have got to be quiet",
+          "每当我感到生气我慢慢呼吸因为我必须安静",
+          null,
+          4
+        ]
+      ]
+    }
+  }
+}
