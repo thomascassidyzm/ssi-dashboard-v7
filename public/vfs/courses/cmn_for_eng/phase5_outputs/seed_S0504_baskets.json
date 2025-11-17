@@ -1,0 +1,280 @@
+{
+  "S0504L02": {
+    "lego": [
+      "run across",
+      "跑过"
+    ],
+    "type": "M",
+    "current_seed_earlier_legos": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Run across",
+        "跑过",
+        null,
+        1
+      ],
+      [
+        "I'm going to run across",
+        "我要跑过",
+        null,
+        2
+      ],
+      [
+        "She should run across alone",
+        "她应该一个人跑过",
+        null,
+        4
+      ],
+      [
+        "Maybe I'll run across next",
+        "也许我接下来要跑过",
+        null,
+        4
+      ],
+      [
+        "He's going to run across inside the entrance",
+        "他要在入口里面跑过",
+        null,
+        6
+      ],
+      [
+        "I'm going to run across after the first part",
+        "我要在第一部分之后跑过",
+        null,
+        6
+      ],
+      [
+        "She hates running across alone",
+        "她讨厌一个人跑过",
+        null,
+        3
+      ],
+      [
+        "I'm going to run across when it matters",
+        "我要在重要的时候跑过",
+        null,
+        5
+      ],
+      [
+        "Maybe we should run across without arguing",
+        "也许我们应该不吵架地跑过",
+        null,
+        5
+      ],
+      [
+        "He's going to run across between the two girls",
+        "他要在两个女孩中间跑过",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "跑",
+        "run"
+      ],
+      [
+        "过",
+        "across"
+      ]
+    ]
+  },
+  "S0504L03": {
+    "lego": [
+      "grass",
+      "草地"
+    ],
+    "type": "A",
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0504L02",
+        "known": "run across",
+        "target": "跑过",
+        "type": "M"
+      }
+    ],
+    "is_final_lego": false,
+    "practice_phrases": [
+      [
+        "Grass",
+        "草地",
+        null,
+        1
+      ],
+      [
+        "That grass",
+        "那个草地",
+        null,
+        2
+      ],
+      [
+        "On the grass alone",
+        "一个人在草地上",
+        null,
+        3
+      ],
+      [
+        "The grass inside",
+        "里面的草地",
+        null,
+        3
+      ],
+      [
+        "Maybe that grass is mine",
+        "也许那个草地是我的",
+        null,
+        4
+      ],
+      [
+        "I hate sitting on the grass",
+        "我讨厌坐在草地上",
+        null,
+        4
+      ],
+      [
+        "She's standing alone on the grass next",
+        "她接下来一个人站在草地上",
+        null,
+        5
+      ],
+      [
+        "The grass between the two girls",
+        "两个女孩中间的草地",
+        null,
+        5
+      ],
+      [
+        "I'm going to run across the grass when it matters",
+        "我要在重要的时候跑过草地",
+        null,
+        6
+      ],
+      [
+        "Maybe she should close the window and play on the grass",
+        "也许她应该关窗然后在草地上玩",
+        null,
+        6
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0504L04": {
+    "lego": [
+      "run across the grass",
+      "跑过草地"
+    ],
+    "type": "M",
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0504L02",
+        "known": "run across",
+        "target": "跑过",
+        "type": "M"
+      },
+      {
+        "id": "S0504L03",
+        "known": "grass",
+        "target": "草地",
+        "type": "A"
+      }
+    ],
+    "is_final_lego": true,
+    "practice_phrases": [
+      [
+        "Run across the grass",
+        "跑过草地",
+        null,
+        1
+      ],
+      [
+        "I'm going to run across the grass",
+        "我要跑过草地",
+        null,
+        2
+      ],
+      [
+        "She should run across the grass alone",
+        "她应该一个人跑过草地",
+        null,
+        4
+      ],
+      [
+        "We'll run across the grass next",
+        "我们接下来要跑过草地",
+        null,
+        3
+      ],
+      [
+        "Maybe I'm going to run across the grass",
+        "也许我要跑过草地",
+        null,
+        3
+      ],
+      [
+        "He's going to run across the grass after the first part",
+        "他要在第一部分之后跑过草地",
+        null,
+        6
+      ],
+      [
+        "I hate running across the grass when it matters",
+        "我讨厌在重要的时候跑过草地",
+        null,
+        6
+      ],
+      [
+        "She's going to run across the grass without arguing",
+        "她要不吵架地跑过草地",
+        null,
+        5
+      ],
+      [
+        "Maybe we should run across the grass when it really matters",
+        "也许我们应该在真正重要的时候跑过草地",
+        null,
+        7
+      ],
+      [
+        "I'm going to run across the grass.",
+        "我要跑过草地。",
+        null,
+        3
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "跑",
+        "run"
+      ],
+      [
+        "过",
+        "across"
+      ],
+      [
+        "草地",
+        "grass"
+      ]
+    ]
+  }
+}
