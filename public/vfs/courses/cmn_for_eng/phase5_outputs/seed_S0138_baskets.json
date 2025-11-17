@@ -1,0 +1,419 @@
+{
+  "S0138L01": {
+    "lego": [
+      "this was/this is",
+      "这是"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "This is",
+        "这是",
+        null,
+        1
+      ],
+      [
+        "This is good",
+        "这是好",
+        null,
+        2
+      ],
+      [
+        "This is my friend",
+        "这是我的朋友",
+        null,
+        3
+      ],
+      [
+        "This is someone I know",
+        "这是我认识的人",
+        null,
+        3
+      ],
+      [
+        "I don't know if this is good",
+        "我不知道这是不是好",
+        null,
+        4
+      ],
+      [
+        "Of course this is my friend",
+        "当然这是我的朋友",
+        null,
+        4
+      ],
+      [
+        "I think this is more important",
+        "我认为这是更重要",
+        null,
+        5
+      ],
+      [
+        "This is someone who likes to talk",
+        "这是喜欢说话的人",
+        null,
+        5
+      ],
+      [
+        "This is where my friend wanted to meet us",
+        "这是我朋友想要和我们见面的地方",
+        null,
+        5
+      ],
+      [
+        "I'm sorry this is not a problem",
+        "对不起这不是问题",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0138L03": {
+    "lego": [
+      "meet us/meet with us",
+      "和我们见面"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0138L01",
+        "known": "this was/this is",
+        "target": "这是",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Meet us",
+        "和我们见面",
+        null,
+        1
+      ],
+      [
+        "She wanted to meet us",
+        "她想要和我们见面",
+        null,
+        2
+      ],
+      [
+        "I don't want to meet us",
+        "我不想要和我们见面",
+        null,
+        3
+      ],
+      [
+        "My friend wanted to meet us",
+        "我的朋友想要和我们见面",
+        null,
+        3
+      ],
+      [
+        "Of course she wanted to meet us",
+        "当然她想要和我们见面",
+        null,
+        4
+      ],
+      [
+        "This is someone who wanted to meet us",
+        "这是想要和我们见面的人",
+        null,
+        4
+      ],
+      [
+        "I don't know why she wanted to meet us",
+        "我不知道为什么她想要和我们见面",
+        null,
+        5
+      ],
+      [
+        "I'm sorry my friend wanted to meet us",
+        "对不起我的朋友想要和我们见面",
+        null,
+        5
+      ],
+      [
+        "You can ask her if she wanted to meet us",
+        "你可以问她她是不是想要和我们见面",
+        null,
+        5
+      ],
+      [
+        "This is where my friend wanted to meet us",
+        "这是我朋友想要和我们见面的地方",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "和",
+        "with"
+      ],
+      [
+        "我们",
+        "us"
+      ],
+      [
+        "见面",
+        "meet"
+      ]
+    ]
+  },
+  "S0138L04": {
+    "lego": [
+      "wanted to meet us",
+      "想要和我们见面"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0138L01",
+        "known": "this was/this is",
+        "target": "这是",
+        "type": "A"
+      },
+      {
+        "id": "S0138L03",
+        "known": "meet us/meet with us",
+        "target": "和我们见面",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Wanted to meet us",
+        "想要和我们见面",
+        null,
+        1
+      ],
+      [
+        "She wanted to meet us",
+        "她想要和我们见面",
+        null,
+        2
+      ],
+      [
+        "My friend wanted to meet us",
+        "我的朋友想要和我们见面",
+        null,
+        3
+      ],
+      [
+        "I think she wanted to meet us",
+        "我认为她想要和我们见面",
+        null,
+        3
+      ],
+      [
+        "Of course my friend wanted to meet us",
+        "当然我的朋友想要和我们见面",
+        null,
+        4
+      ],
+      [
+        "This is someone who wanted to meet us",
+        "这是想要和我们见面的人",
+        null,
+        4
+      ],
+      [
+        "I don't know why she wanted to meet us",
+        "我不知道为什么她想要和我们见面",
+        null,
+        5
+      ],
+      [
+        "I'm sorry that she wanted to meet us",
+        "对不起她想要和我们见面",
+        null,
+        5
+      ],
+      [
+        "You can ask her if she wanted to meet us",
+        "你可以问她她是不是想要和我们见面",
+        null,
+        5
+      ],
+      [
+        "This is where my friend wanted to meet us",
+        "这是我朋友想要和我们见面的地方",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "想要",
+        "wanted to/want to"
+      ],
+      [
+        "和",
+        "with"
+      ],
+      [
+        "我们",
+        "us"
+      ],
+      [
+        "见面",
+        "meet"
+      ]
+    ]
+  },
+  "S0138L05": {
+    "lego": [
+      "where my friend wanted to meet us",
+      "我朋友想要和我们见面的地方"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0138L01",
+        "known": "this was/this is",
+        "target": "这是",
+        "type": "A"
+      },
+      {
+        "id": "S0138L03",
+        "known": "meet us/meet with us",
+        "target": "和我们见面",
+        "type": "M"
+      },
+      {
+        "id": "S0138L04",
+        "known": "wanted to meet us",
+        "target": "想要和我们见面",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Where my friend wanted to meet us",
+        "我朋友想要和我们见面的地方",
+        null,
+        1
+      ],
+      [
+        "This is where my friend wanted to meet us",
+        "这是我朋友想要和我们见面的地方",
+        null,
+        2
+      ],
+      [
+        "I know where my friend wanted to meet us",
+        "我知道我朋友想要和我们见面的地方",
+        null,
+        3
+      ],
+      [
+        "I think this is where my friend wanted to meet us",
+        "我认为这是我朋友想要和我们见面的地方",
+        null,
+        3
+      ],
+      [
+        "Of course this is where my friend wanted to meet us",
+        "当然这是我朋友想要和我们见面的地方",
+        null,
+        4
+      ],
+      [
+        "I don't know where my friend wanted to meet us",
+        "我不知道我朋友想要和我们见面的地方",
+        null,
+        4
+      ],
+      [
+        "I'm sorry I don't know where my friend wanted to meet us",
+        "对不起我不知道我朋友想要和我们见面的地方",
+        null,
+        5
+      ],
+      [
+        "You can ask her where my friend wanted to meet us",
+        "你可以问她我朋友想要和我们见面的地方",
+        null,
+        5
+      ],
+      [
+        "That's not where my friend wanted to meet us",
+        "那不是我朋友想要和我们见面的地方",
+        null,
+        5
+      ],
+      [
+        "I think you know where my friend wanted to meet us",
+        "我认为你知道我朋友想要和我们见面的地方",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "my"
+      ],
+      [
+        "朋友",
+        "friend"
+      ],
+      [
+        "想要",
+        "wanted to"
+      ],
+      [
+        "和",
+        "with"
+      ],
+      [
+        "我们",
+        "us"
+      ],
+      [
+        "见面",
+        "meet"
+      ],
+      [
+        "的",
+        "(de-nominalizer)"
+      ],
+      [
+        "地方",
+        "place/where"
+      ]
+    ]
+  }
+}

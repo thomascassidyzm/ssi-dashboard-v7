@@ -1,0 +1,406 @@
+{
+  "S0137L02": {
+    "lego": [
+      "talk/speak",
+      "说话"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0137L01",
+        "known": "talk often/to talk often",
+        "target": "经常说话",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I talk",
+        "我说话",
+        null,
+        2
+      ],
+      [
+        "You talk",
+        "你说话",
+        null,
+        2
+      ],
+      [
+        "I like to talk",
+        "我喜欢说话",
+        null,
+        3
+      ],
+      [
+        "You can talk",
+        "你可以说话",
+        null,
+        3
+      ],
+      [
+        "Of course I can talk",
+        "当然我可以说话",
+        null,
+        4
+      ],
+      [
+        "I don't know how to talk",
+        "我不知道怎么说话",
+        null,
+        4
+      ],
+      [
+        "This is someone who likes to talk",
+        "这是喜欢说话的人",
+        null,
+        5
+      ],
+      [
+        "I'm sorry I don't like to talk",
+        "对不起我不喜欢说话",
+        null,
+        5
+      ],
+      [
+        "You think I need to talk often",
+        "你认为我需要经常说话",
+        null,
+        5
+      ],
+      [
+        "Of course you can talk because she's my friend",
+        "当然你可以说话因为她是我的朋友",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0137L03": {
+    "lego": [
+      "perfect/to be perfect",
+      "完美"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0137L01",
+        "known": "talk often/to talk often",
+        "target": "经常说话",
+        "type": "M"
+      },
+      {
+        "id": "S0137L02",
+        "known": "talk/speak",
+        "target": "说话",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "Perfect",
+        "完美",
+        null,
+        1
+      ],
+      [
+        "That's perfect",
+        "那完美",
+        null,
+        2
+      ],
+      [
+        "This is perfect",
+        "这是完美",
+        null,
+        3
+      ],
+      [
+        "I think it's perfect",
+        "我认为它完美",
+        null,
+        3
+      ],
+      [
+        "Of course that's perfect",
+        "当然那是完美",
+        null,
+        4
+      ],
+      [
+        "I don't know if it's perfect",
+        "我不知道它是不是完美",
+        null,
+        4
+      ],
+      [
+        "This is someone who wanted to be perfect",
+        "这是想要完美的人",
+        null,
+        5
+      ],
+      [
+        "I'm sorry it's not perfect",
+        "对不起它不完美",
+        null,
+        5
+      ],
+      [
+        "You think talking often is perfect",
+        "你认为经常说话完美",
+        null,
+        5
+      ],
+      [
+        "Of course you can ask her if it's perfect",
+        "当然你可以问她它是不是完美",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0137L04": {
+    "lego": [
+      "more important than to be perfect",
+      "比完美更重要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0137L01",
+        "known": "talk often/to talk often",
+        "target": "经常说话",
+        "type": "M"
+      },
+      {
+        "id": "S0137L02",
+        "known": "talk/speak",
+        "target": "说话",
+        "type": "A"
+      },
+      {
+        "id": "S0137L03",
+        "known": "perfect/to be perfect",
+        "target": "完美",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "More important than to be perfect",
+        "比完美更重要",
+        null,
+        1
+      ],
+      [
+        "That is more important than to be perfect",
+        "那比完美更重要",
+        null,
+        2
+      ],
+      [
+        "This is more important than to be perfect",
+        "这是比完美更重要",
+        null,
+        3
+      ],
+      [
+        "I think this is more important than to be perfect",
+        "我认为这比完美更重要",
+        null,
+        3
+      ],
+      [
+        "Of course this is more important than to be perfect",
+        "当然这比完美更重要",
+        null,
+        4
+      ],
+      [
+        "I don't know what's more important than to be perfect",
+        "我不知道什么比完美更重要",
+        null,
+        4
+      ],
+      [
+        "You think talking often is more important than to be perfect",
+        "你认为经常说话比完美更重要",
+        null,
+        5
+      ],
+      [
+        "I'm sorry but talking is more important than to be perfect",
+        "对不起但说话比完美更重要",
+        null,
+        5
+      ],
+      [
+        "This is someone who thinks working together is more important than to be perfect",
+        "这是认为一起工作比完美更重要的人",
+        null,
+        5
+      ],
+      [
+        "You can ask her what's more important than to be perfect because she's my friend",
+        "你可以问她什么比完美更重要因为她是我的朋友",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "比",
+        "than/compared to"
+      ],
+      [
+        "完美",
+        "perfect"
+      ],
+      [
+        "更",
+        "more"
+      ],
+      [
+        "重要",
+        "important"
+      ]
+    ]
+  },
+  "S0137L05": {
+    "lego": [
+      "more important",
+      "更重要"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0137L01",
+        "known": "talk often/to talk often",
+        "target": "经常说话",
+        "type": "M"
+      },
+      {
+        "id": "S0137L02",
+        "known": "talk/speak",
+        "target": "说话",
+        "type": "A"
+      },
+      {
+        "id": "S0137L03",
+        "known": "perfect/to be perfect",
+        "target": "完美",
+        "type": "A"
+      },
+      {
+        "id": "S0137L04",
+        "known": "more important than to be perfect",
+        "target": "比完美更重要",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "More important",
+        "更重要",
+        null,
+        1
+      ],
+      [
+        "That's more important",
+        "那更重要",
+        null,
+        2
+      ],
+      [
+        "This is more important",
+        "这更重要",
+        null,
+        2
+      ],
+      [
+        "I think this is more important",
+        "我认为这更重要",
+        null,
+        3
+      ],
+      [
+        "Of course that's more important",
+        "当然那更重要",
+        null,
+        3
+      ],
+      [
+        "I don't know what's more important",
+        "我不知道什么更重要",
+        null,
+        4
+      ],
+      [
+        "This is more important than talking",
+        "这比说话更重要",
+        null,
+        4
+      ],
+      [
+        "I'm sorry but this is more important",
+        "对不起但这更重要",
+        null,
+        5
+      ],
+      [
+        "You think working together is more important",
+        "你认为一起工作更重要",
+        null,
+        5
+      ],
+      [
+        "This is someone who thinks talking often is more important than being perfect",
+        "这是认为经常说话比完美更重要的人",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "更",
+        "more"
+      ],
+      [
+        "重要",
+        "important"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "S0139L01": {
+    "lego": [
+      "I'm sorry",
+      "对不起"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      [
+        "I'm sorry",
+        "对不起",
+        null,
+        1
+      ],
+      [
+        "I'm sorry about that",
+        "对不起那个",
+        null,
+        2
+      ],
+      [
+        "I'm sorry I don't know",
+        "对不起我不知道",
+        null,
+        3
+      ],
+      [
+        "I'm sorry this is not good",
+        "对不起这不好",
+        null,
+        3
+      ],
+      [
+        "I'm sorry I can't talk",
+        "对不起我不能说话",
+        null,
+        4
+      ],
+      [
+        "I'm sorry but this is more important",
+        "对不起但这更重要",
+        null,
+        4
+      ],
+      [
+        "I'm sorry that she's my friend",
+        "对不起她是我的朋友",
+        null,
+        5
+      ],
+      [
+        "I'm sorry I don't like to talk",
+        "对不起我不喜欢说话",
+        null,
+        5
+      ],
+      [
+        "I'm sorry I need to leave so early",
+        "对不起我需要这么早离开",
+        null,
+        5
+      ],
+      [
+        "I'm sorry I don't know where my friend wanted to meet us",
+        "对不起我不知道我朋友想要和我们见面的地方",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10
+  },
+  "S0139L02": {
+    "lego": [
+      "I need to/I need",
+      "我需要"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0139L01",
+        "known": "I'm sorry",
+        "target": "对不起",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      [
+        "I need to",
+        "我需要",
+        null,
+        1
+      ],
+      [
+        "I need to talk",
+        "我需要说话",
+        null,
+        2
+      ],
+      [
+        "I need to know this",
+        "我需要知道这",
+        null,
+        3
+      ],
+      [
+        "I need to work together",
+        "我需要一起工作",
+        null,
+        3
+      ],
+      [
+        "I need to ask my friend",
+        "我需要问我的朋友",
+        null,
+        4
+      ],
+      [
+        "I'm sorry I need to talk",
+        "对不起我需要说话",
+        null,
+        4
+      ],
+      [
+        "I need to know where she wanted to meet us",
+        "我需要知道她想要和我们见面的地方",
+        null,
+        5
+      ],
+      [
+        "I'm sorry I need to leave so early",
+        "对不起我需要这么早离开",
+        null,
+        5
+      ],
+      [
+        "I think I need to talk often",
+        "我认为我需要经常说话",
+        null,
+        5
+      ],
+      [
+        "I need to ask her because she's my friend",
+        "我需要问她因为她是我的朋友",
+        null,
+        5
+      ]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "components": [
+      [
+        "我",
+        "I"
+      ],
+      [
+        "需要",
+        "need to"
+      ]
+    ]
+  }
+}
