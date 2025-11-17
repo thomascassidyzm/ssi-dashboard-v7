@@ -1137,6 +1137,263 @@ app.post('/regenerate', async (req, res) => {
 });
 
 /**
+ * POST /launch-12-masters
+ * Launch the 12-master orchestration system for Phase 5
+ *
+ * This endpoint:
+ * 1. Runs detection to find missing baskets
+ * 2. Generates patch manifest dividing work across 12 masters
+ * 3. Generates 12 master prompts
+ * 4. Launches 12 Safari windows with Claude Code
+ *
+ * Body: {
+ *   courseCode: string,
+ *   target: string,
+ *   known: string
+ * }
+ */
+app.post('/launch-12-masters', async (req, res) => {
+  const { courseCode, target, known } = req.body;
+
+  if (!courseCode || !target || !known) {
+    return res.status(400).json({ error: 'courseCode, target, known required' });
+  }
+
+  console.log(`\n[Phase 5] ====================================`);
+  console.log(`[Phase 5] 12-MASTER LAUNCH`);
+  console.log(`[Phase 5] ====================================`);
+  console.log(`[Phase 5] Course: ${courseCode}`);
+  console.log(`[Phase 5] Target: ${target}, Known: ${known}`);
+
+  const baseCourseDir = path.join(VFS_ROOT, courseCode);
+
+  try {
+    // STEP 1: Run detection to find missing baskets
+    console.log(`\n[Phase 5] Step 1: Running detection...`);
+    const { execSync } = require('child_process');
+
+    const detectionOutput = execSync(
+      `node scripts/detect_missing_baskets_new_only.cjs ${courseCode}`,
+      { cwd: path.join(__dirname, '../..'), encoding: 'utf8' }
+    );
+
+    console.log(detectionOutput);
+
+    // Read the detection results
+    const missingBasketsPath = path.join(baseCourseDir, 'phase5_missing_baskets_new_only.json');
+    if (!await fs.pathExists(missingBasketsPath)) {
+      return res.status(500).json({ error: 'Detection script did not generate output file' });
+    }
+
+    const missingData = await fs.readJson(missingBasketsPath);
+    const totalMissing = missingData.missing_baskets.length;
+
+    console.log(`[Phase 5] ✅ Detection complete: ${totalMissing} missing baskets`);
+
+    if (totalMissing === 0) {
+      return res.json({
+        success: true,
+        message: 'No missing baskets - Phase 5 already complete!',
+        totalMissing: 0
+      });
+    }
+
+    // STEP 2: Generate patch manifest
+    console.log(`\n[Phase 5] Step 2: Generating patch manifest...`);
+
+    const legos = missingData.missing_baskets.map(b => b.legoId);
+    const patches = [
+      { name: 'patch_01', range: 'S0001_S0056', start: 1, end: 56 },
+      { name: 'patch_02', range: 'S0057_S0112', start: 57, end: 112 },
+      { name: 'patch_03', range: 'S0113_S0168', start: 113, end: 168 },
+      { name: 'patch_04', range: 'S0169_S0224', start: 169, end: 224 },
+      { name: 'patch_05', range: 'S0225_S0280', start: 225, end: 280 },
+      { name: 'patch_06', range: 'S0281_S0336', start: 281, end: 336 },
+      { name: 'patch_07', range: 'S0337_S0392', start: 337, end: 392 },
+      { name: 'patch_08', range: 'S0393_S0448', start: 393, end: 448 },
+      { name: 'patch_09', range: 'S0449_S0504', start: 449, end: 504 },
+      { name: 'patch_10', range: 'S0505_S0560', start: 505, end: 560 },
+      { name: 'patch_11', range: 'S0561_S0616', start: 561, end: 616 },
+      { name: 'patch_12', range: 'S0617_S0668', start: 617, end: 668 }
+    ];
+
+    const manifest = {
+      course: courseCode,
+      generated: new Date().toISOString(),
+      total_missing: totalMissing,
+      patches: []
+    };
+
+    patches.forEach(patch => {
+      const patchLegos = legos.filter(legoId => {
+        const seedNum = parseInt(legoId.substring(1, 5));
+        return seedNum >= patch.start && seedNum <= patch.end;
+      });
+
+      manifest.patches.push({
+        patch_number: parseInt(patch.name.split('_')[1]),
+        patch_name: patch.name,
+        seed_range: patch.range,
+        seed_start: `S${String(patch.start).padStart(4, '0')}`,
+        seed_end: `S${String(patch.end).padStart(4, '0')}`,
+        lego_count: patchLegos.length,
+        legos: patchLegos.sort()
+      });
+    });
+
+    // Save manifest
+    const manifestPath = path.join(baseCourseDir, 'phase5_patch_manifest.json');
+    await fs.writeJson(manifestPath, manifest, { spaces: 2 });
+    console.log(`[Phase 5] ✅ Manifest saved: ${totalMissing} LEGOs across 12 patches`);
+
+    // STEP 3: Generate 12 master prompts
+    console.log(`\n[Phase 5] Step 3: Generating 12 master prompts...`);
+
+    const promptsDir = path.join(__dirname, '../../scripts/phase5_master_prompts');
+    await fs.ensureDir(promptsDir);
+
+    for (const patch of manifest.patches) {
+      const promptContent = `# Phase 5 Master Orchestrator: Patch ${patch.patch_number}
+
+**Course:** \`${courseCode}\`
+**Your Patch:** Seeds \`${patch.seed_start}\` to \`${patch.seed_end}\` (56 seeds)
+**Missing LEGOs in your patch:** ${patch.lego_count}
+
+---
+
+## 🎯 YOUR MISSION
+
+You are responsible for generating ALL missing baskets in your patch range.
+
+**Your workflow:**
+
+1. ✅ **Read your LEGO list** (provided below)
+2. ✅ **Create scaffolds** for all LEGOs in your list
+3. ✅ **Spawn sub-agents** (10 baskets per agent, standard Phase 5 workflow)
+4. ✅ **Monitor completion** and report summary
+
+---
+
+## 📋 YOUR LEGO LIST (${patch.lego_count} LEGOs)
+
+\`\`\`json
+${JSON.stringify(patch.legos, null, 2)}
+\`\`\`
+
+---
+
+## 🔧 STEP 1: Create Scaffolds
+
+For each LEGO in your list, create a scaffold using the **standard Phase 5 scaffold generation logic**.
+
+**Scaffold location:** \`public/vfs/courses/${courseCode}/phase5_scaffolds/\`
+
+**Scaffold format:** Standard Phase 5 scaffold (includes recent_context, current_seed_legos_available, etc.)
+
+Use the existing scaffold generation tools/logic - nothing special needed.
+
+---
+
+## 🚀 STEP 2: Spawn Sub-Agents
+
+Once scaffolds are ready:
+
+1. **Batch your LEGOs:** ~10 baskets per sub-agent
+2. **Spawn agents in parallel:** Use the Task tool multiple times in one message
+3. **Each sub-agent receives:**
+   - Their specific LEGO IDs
+   - Path to their scaffolds
+   - Standard Phase 5 intelligence prompt: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+
+**Sub-agent workflow (standard Phase 5):**
+- Read scaffold
+- Generate 10 practice phrases (2-2-2-4 distribution)
+- Grammar self-check
+- Save to \`phase5_outputs/seed_SXXXX_baskets.json\`
+- Push to GitHub (in batches)
+
+---
+
+## 📊 STEP 3: Monitor & Report
+
+Track completion and report:
+
+\`\`\`
+✅ Patch ${patch.patch_number} Complete
+   Seeds: ${patch.seed_start}-${patch.seed_end}
+   LEGOs generated: ${patch.lego_count}
+   Sub-agents spawned: [calculated]
+   Status: All baskets saved to phase5_outputs/
+\`\`\`
+
+---
+
+## ⚠️ IMPORTANT NOTES
+
+- **You own this patch** - no coordination needed with other masters
+- **Standard Phase 5 workflow** - nothing special about "regeneration"
+- **10 baskets per sub-agent** - this means ~100 phrases per agent (10 baskets × 10 phrases)
+- **Grammar check required** - sub-agents must self-review before saving
+- **Push in batches** - don't push 1000+ files at once
+
+---
+
+## 🚀 BEGIN NOW
+
+Start with Step 1: Create scaffolds for your ${patch.lego_count} LEGOs.
+`;
+
+      const promptPath = path.join(promptsDir, `${patch.patch_name}_${patch.seed_range}.md`);
+      await fs.writeFile(promptPath, promptContent);
+    }
+
+    console.log(`[Phase 5] ✅ Generated 12 master prompts in scripts/phase5_master_prompts/`);
+
+    // STEP 4: Launch 12 Safari windows
+    console.log(`\n[Phase 5] Step 4: Launching 12 Safari windows...`);
+
+    for (let i = 0; i < 12; i++) {
+      const patch = manifest.patches[i];
+      const promptPath = path.join(promptsDir, `${patch.patch_name}_${patch.seed_range}.md`);
+      const promptContent = await fs.readFile(promptPath, 'utf8');
+
+      console.log(`[Phase 5]   Launching Patch ${patch.patch_number}: ${patch.lego_count} LEGOs...`);
+
+      try {
+        await spawnClaudeCodeSession(promptContent, `Patch ${patch.patch_number}`);
+      } catch (error) {
+        console.error(`[Phase 5]   ⚠️  Failed to launch Patch ${patch.patch_number}:`, error.message);
+      }
+
+      // 5 second delay between launches (critical for reliability)
+      if (i < 11) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+      }
+    }
+
+    console.log(`\n[Phase 5] ✅ Launched 12 master orchestrators`);
+    console.log(`[Phase 5] Monitor progress in Safari tabs`);
+
+    res.json({
+      success: true,
+      message: `Launched 12 masters for ${totalMissing} missing baskets`,
+      totalMissing,
+      patches: manifest.patches.map(p => ({
+        patch: p.patch_number,
+        legos: p.lego_count
+      }))
+    });
+
+  } catch (error) {
+    console.error(`[Phase 5] ❌ 12-master launch failed:`, error);
+    res.status(500).json({
+      error: error.message,
+      stack: error.stack
+    });
+  }
+});
+
+/**
  * Start server
  */
 app.listen(PORT, () => {

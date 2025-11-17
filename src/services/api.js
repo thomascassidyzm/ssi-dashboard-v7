@@ -64,6 +64,21 @@ export default {
       // Route Phase 5 requests to the new Phase 5 basket server (layered architecture)
       if (phaseSelection === 'phase5') {
         const courseCode = `${target}_for_${known}`
+
+        // Use 12-master launch for staged segments (full course with 668 seeds)
+        if (segmentMode === 'staged' && endSeed === 668) {
+          const response = await axios.post('http://localhost:3459/launch-12-masters', {
+            courseCode,
+            target: target.charAt(0).toUpperCase() + target.slice(1), // Capitalize for display
+            known: known.charAt(0).toUpperCase() + known.slice(1)
+          })
+          return {
+            ...response.data,
+            courseCode // Add courseCode to response for compatibility
+          }
+        }
+
+        // Use regular single-orchestrator launch for single-pass mode
         const response = await axios.post('http://localhost:3459/start', {
           courseCode,
           startSeed,
