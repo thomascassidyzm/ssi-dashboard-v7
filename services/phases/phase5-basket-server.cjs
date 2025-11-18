@@ -56,6 +56,41 @@ const activeJobs = new Map();
  * Identify missing LEGOs in a seed range
  * Returns array of LEGO IDs that need baskets generated
  */
+/**
+ * Get ALL LEGOs in a seed range (for force regenerate)
+ * Does NOT check existing baskets - returns all new LEGOs in range
+ */
+async function getAllLegosInRange(baseCourseDir, startSeed, endSeed) {
+  const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+  const legoPairs = await fs.readJson(legoPairsPath);
+
+  const allLegos = [];
+
+  for (const seed of legoPairs.seeds || []) {
+    const seedNum = parseInt(seed.seed_id.replace('S', ''));
+
+    if (seedNum >= startSeed && seedNum <= endSeed) {
+      for (const lego of seed.legos || []) {
+        if (lego.new) {
+          allLegos.push({
+            legoId: lego.id,
+            seed: seed.seed_id,
+            target: lego.target,
+            known: lego.known,
+            type: lego.type || 'M'
+          });
+        }
+      }
+    }
+  }
+
+  return allLegos;
+}
+
+/**
+ * Identify LEGOs that are missing baskets (for intelligent resume)
+ * Checks existing lego_baskets.json and only returns LEGOs without baskets
+ */
 async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
   const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
   const basketsPath = path.join(baseCourseDir, 'lego_baskets.json');
@@ -388,27 +423,38 @@ app.post('/start', async (req, res) => {
     job.milestones.scaffoldsReady = true;
     job.milestones.scaffoldsReadyAt = new Date().toISOString();
 
-    // STEP 1.5: Identify missing LEGOs and load scaffold data for web agents
-    console.log(`\n[Phase 5] Identifying missing LEGOs...`);
-    const missingLegos = await identifyMissingLegos(baseCourseDir, startSeed, endSeed);
-    console.log(`[Phase 5] ✅ Found ${missingLegos.length} LEGOs needing baskets`);
+    // STEP 1.5: Identify LEGOs to generate
+    // - Full course: Intelligent resume (only missing LEGOs)
+    // - Specific range: Force regenerate (all LEGOs in range)
+    let targetLegos;
 
-    if (missingLegos.length === 0) {
-      console.log(`[Phase 5] ✅ All baskets already exist for seeds ${startSeed}-${endSeed}`);
-      return res.json({
-        success: true,
-        alreadyComplete: true,
-        message: `All baskets exist for seeds ${startSeed}-${endSeed}`,
-        basketCount: 0
-      });
+    if (isFullCourse) {
+      console.log(`\n[Phase 5] 🔄 Full course mode: Identifying missing LEGOs for intelligent resume...`);
+      targetLegos = await identifyMissingLegos(baseCourseDir, startSeed, endSeed);
+      console.log(`[Phase 5] ✅ Found ${targetLegos.length} LEGOs needing baskets`);
+
+      if (targetLegos.length === 0) {
+        console.log(`[Phase 5] ✅ All baskets already exist - Phase 5 complete!`);
+        return res.json({
+          success: true,
+          alreadyComplete: true,
+          message: `Phase 5 complete - all baskets exist`,
+          basketCount: 0
+        });
+      }
+    } else {
+      console.log(`\n[Phase 5] 🎯 Specific range mode: Force regenerating seeds ${startSeed}-${endSeed}...`);
+      // Get ALL LEGOs in range (ignore existing baskets)
+      targetLegos = await getAllLegosInRange(baseCourseDir, startSeed, endSeed);
+      console.log(`[Phase 5] ✅ Found ${targetLegos.length} LEGOs to generate (force regenerate)`);
     }
 
-    console.log(`\n[Phase 5] Loading scaffold data for ${missingLegos.length} LEGOs...`);
-    const legoData = await loadScaffoldData(baseCourseDir, missingLegos);
+    console.log(`\n[Phase 5] Loading scaffold data for ${targetLegos.length} LEGOs...`);
+    const legoData = await loadScaffoldData(baseCourseDir, targetLegos);
     console.log(`[Phase 5] ✅ Scaffold data loaded and ready for embedding`);
 
     // Store in job for tracking
-    job.missingLegos = missingLegos;
+    job.targetLegos = targetLegos;
     job.legoData = legoData;
 
     // STEP 2: Load configuration for parallelization
@@ -452,9 +498,9 @@ app.post('/start', async (req, res) => {
       known,
       startSeed,
       endSeed,
-      legoData,        // ← NEW: Embedded LEGO data for web agents
-      missingLegos,     // ← NEW: List of LEGOs to generate
-      stagingOnly       // ← Pass through staging flag
+      legoData,        // ← Embedded LEGO data for web agents
+      targetLegos,     // ← List of LEGOs to generate (missing or force regenerate)
+      stagingOnly      // ← Pass through staging flag
     }, baseCourseDir, browsers, agents, seedsPerAgentConfig, job);
 
     res.json({
@@ -464,8 +510,7 @@ app.post('/start', async (req, res) => {
         courseCode,
         totalSeeds,
         config: job.config,
-        status: 'running',
-        scaffolds: scaffoldResult
+        status: 'running'
       }
     });
   } catch (error) {
@@ -891,8 +936,8 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   // REGULAR MODE: Generate baskets for seed range
   const totalSeeds = endSeed - startSeed + 1;
   const legoData = params.legoData || {};
-  const missingLegos = params.missingLegos || [];
-  const legoCount = missingLegos.length;
+  const targetLegos = params.targetLegos || [];
+  const legoCount = targetLegos.length;
   const agentCount = agentsPerWindow || Math.ceil(legoCount / 10); // ~10 LEGOs per agent
   const legosPerAgent = Math.ceil(legoCount / agentCount);
   const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
@@ -901,7 +946,7 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 
 **Course:** \`${courseCode}\`
 **Your Range:** Seeds \`S${String(startSeed).padStart(4, '0')}\` to \`S${String(endSeed).padStart(4, '0')}\` (${totalSeeds} seeds)
-**Missing LEGOs:** ${legoCount} LEGOs need baskets
+**Target LEGOs:** ${legoCount} LEGOs to generate
 **Upload mode:** Staging + ngrok ✅
 
 ---
