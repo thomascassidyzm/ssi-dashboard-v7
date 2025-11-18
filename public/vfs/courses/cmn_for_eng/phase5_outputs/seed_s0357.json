@@ -1,487 +1,173 @@
 {
   "version": "curated_v7_spanish",
   "seed_id": "S0357",
-  "generation_stage": "BASKETS_COMPLETE",
+  "generation_stage": "PHRASES_GENERATED",
   "seed_pair": {
     "known": "No she just wanted to send her a message.",
     "target": "不，她只是想给她发个消息。"
   },
   "legos": {
     "S0357L01": {
-      "lego": [
-        "just",
-        "只是"
-      ],
+      "lego": ["just", "只是"],
       "type": "M",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [],
       "practice_phrases": [
-        ["只是", "just", null, 1],
-        ["只是想", "just want", null, 2],
-        ["她只是想", "she just wants", null, 3],
-        ["他只是需要", "he just needs", null, 3],
-        ["她只是想看", "she just wants to see", null, 4],
-        ["他只是想知道", "he just wants to know", null, 4],
-        ["她只是想发消息", "she just wants to send a message", null, 5],
-        ["他只是想见朋友", "he just wants to see friends", null, 5],
-        ["她只是想和她说话", "she just wants to talk to her", null, 6],
-        ["他只是不想把她一个人留下", "he just doesn't want to leave her on her own", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Just", "只是", null, 1],
+        ["Just wanted", "只是想", null, 2],
+        ["He just wanted", "他只是想", null, 3],
+        ["She just wanted", "她只是想", null, 3],
+        ["He just needed to", "他只是需要", null, 4],
+        ["She just wanted to see", "她只是想见", null, 4],
+        ["He just wanted to know", "他只是想知道", null, 5],
+        ["She just wanted to go out", "她只是想出去", null, 5],
+        ["He just wanted to see some friends", "他只是想见一些朋友", null, 6],
+        ["She just wanted to discuss something important", "她只是想讨论重要的事情", null, 6]
+      ]
     },
     "S0357L02": {
-      "lego": [
-        "just wanted to",
-        "只是想"
-      ],
+      "lego": ["just wanted to", "只是想"],
       "type": "M",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        ["只是想", "just wanted to", null, 1],
-        ["她只是想", "she just wanted to", null, 2],
-        ["她只是想看", "she just wanted to see", null, 3],
-        ["他只是想知道", "he just wanted to know", null, 3],
-        ["她只是想出去", "she just wanted to go out", null, 4],
-        ["他只是想见她", "he just wanted to see her", null, 4],
-        ["她只是想发消息", "she just wanted to send a message", null, 5],
-        ["他只是想见老朋友", "he just wanted to see old friends", null, 5],
-        ["她只是想和她说话", "she just wanted to talk to her", null, 6],
-        ["她只是想给她发消息", "she just wanted to send her a message", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Just wanted to", "只是想", null, 1],
+        ["She just wanted to", "她只是想", null, 2],
+        ["He just wanted to see", "他只是想见", null, 3],
+        ["She just wanted to know", "她只是想知道", null, 3],
+        ["He just wanted to go out", "他只是想出去", null, 4],
+        ["She just wanted to see her", "她只是想见她", null, 4],
+        ["He just wanted to see old friends", "他只是想见老朋友", null, 5],
+        ["She just wanted to know what happened", "她只是想知道发生了什么", null, 6],
+        ["He just wanted to go out on Friday", "他只是想星期五出去", null, 6],
+        ["She just wanted to discuss something important", "她只是想讨论重要的事情", null, 7]
+      ]
     },
     "S0357L03": {
-      "lego": [
-        "she just wanted to",
-        "她只是想"
-      ],
+      "lego": ["she just wanted to", "她只是想"],
       "type": "M",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        },
-        {
-          "id": "S0357L02",
-          "known": "just wanted to",
-          "target": "只是想",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        ["她只是想", "she just wanted to", null, 1],
-        ["她只是想看", "she just wanted to see", null, 2],
-        ["她只是想知道", "she just wanted to know", null, 3],
-        ["她只是想出去", "she just wanted to go out", null, 3],
-        ["她只是想见她", "she just wanted to see her", null, 4],
-        ["她只是想发消息", "she just wanted to send a message", null, 4],
-        ["她只是想和她说话", "she just wanted to talk to her", null, 5],
-        ["她只是想见一些朋友", "she just wanted to see some friends", null, 5],
-        ["她只是想给她发消息", "she just wanted to send her a message", null, 6],
-        ["她只是想讨论重要的事情", "she just wanted to discuss something important", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["She just wanted to.", "她只是想。", null, 1],
+        ["No, she just wanted to.", "不，她只是想。", null, 2],
+        ["She just wanted to know.", "她只是想知道。", null, 3],
+        ["She just wanted to see him.", "她只是想见他。", null, 3],
+        ["She just wanted to go out.", "她只是想出去。", null, 4],
+        ["No, she just wanted to know.", "不，她只是想知道。", null, 4],
+        ["She just wanted to talk to him.", "她只是想和他说话。", null, 5],
+        ["She just wanted to see some friends.", "她只是想见一些朋友。", null, 6],
+        ["She just wanted to see that woman.", "她只是想见那个女人。", null, 5],
+        ["No, she just wanted to discuss something important.", "不，她只是想讨论重要的事情。", null, 7]
+      ]
     },
     "S0357L04": {
-      "lego": [
-        "message",
-        "消息"
-      ],
+      "lego": ["message", "消息"],
       "type": "M",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        },
-        {
-          "id": "S0357L02",
-          "known": "just wanted to",
-          "target": "只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L03",
-          "known": "she just wanted to",
-          "target": "她只是想",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        ["消息", "message", null, 1],
-        ["发消息", "send a message", null, 2],
-        ["给她发消息", "send her a message", null, 3],
-        ["重要的消息", "important message", null, 3],
-        ["她想发消息", "she wants to send a message", null, 4],
-        ["他收到消息", "he received a message", null, 4],
-        ["她只是想发消息", "she just wanted to send a message", null, 5],
-        ["他想发重要的消息", "he wants to send an important message", null, 5],
-        ["她只是想给她发消息", "she just wanted to send her a message", null, 6],
-        ["他需要讨论重要的消息", "he needs to discuss the important message", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Message", "消息", null, 1],
+        ["Important message", "重要的消息", null, 2],
+        ["What message?", "什么消息？", null, 2],
+        ["That message", "那消息", null, 2],
+        ["What important message?", "什么重要的消息？", null, 3],
+        ["No, that important message", "不，那重要的消息", null, 4],
+        ["Important message to discuss", "重要的消息要讨论", null, 5],
+        ["She wanted to know what message", "她想知道什么消息", null, 5],
+        ["He needed to discuss that message", "他需要讨论那消息", null, 6],
+        ["He wanted to discuss that important message", "他想讨论那重要的消息", null, 7]
+      ]
     },
     "S0357L05": {
-      "lego": [
-        "a message",
-        "个消息"
-      ],
+      "lego": ["a message", "个消息"],
       "type": "M",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        },
-        {
-          "id": "S0357L02",
-          "known": "just wanted to",
-          "target": "只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L03",
-          "known": "she just wanted to",
-          "target": "她只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L04",
-          "known": "message",
-          "target": "消息",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        ["个消息", "a message", null, 1],
-        ["发个消息", "send a message", null, 2],
-        ["给她发个消息", "send her a message", null, 3],
-        ["他收到个消息", "he received a message", null, 3],
-        ["她想发个消息", "she wants to send a message", null, 4],
-        ["他只是发了个消息", "he just sent a message", null, 4],
-        ["她只是想发个消息", "she just wanted to send a message", null, 5],
-        ["他想给她发个消息", "he wants to send her a message", null, 5],
-        ["她只是想给她发个消息", "she just wanted to send her a message", null, 6],
-        ["他需要发个重要的消息", "he needs to send an important message", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["A message", "个消息", null, 1],
+        ["Just a message", "只是个消息", null, 2],
+        ["An important message", "个重要的消息", null, 3],
+        ["She had a message", "她有个消息", null, 3],
+        ["Just an important message", "只是个重要的消息", null, 4],
+        ["No, just a message", "不，只是个消息", null, 4],
+        ["They had an important message", "他们有个重要的消息", null, 5],
+        ["She just had an important message", "她只是有个重要的消息", null, 5],
+        ["No, they had an important message", "不，他们有个重要的消息", null, 6],
+        ["They had an important message to discuss", "他们有个重要的消息要讨论", null, 7]
+      ]
     },
     "S0357L06": {
-      "lego": [
-        "send",
-        "发"
-      ],
+      "lego": ["send", "发"],
       "type": "A",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        },
-        {
-          "id": "S0357L02",
-          "known": "just wanted to",
-          "target": "只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L03",
-          "known": "she just wanted to",
-          "target": "她只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L04",
-          "known": "message",
-          "target": "消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L05",
-          "known": "a message",
-          "target": "个消息",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        ["发", "send", null, 1],
-        ["她想发", "she wants to send", null, 2],
-        ["她想发消息", "she wants to send a message", null, 3],
-        ["他不想发消息", "he doesn't want to send a message", null, 3],
-        ["她需要发个消息", "she needs to send a message", null, 4],
-        ["你想发什么？", "what do you want to send?", null, 4],
-        ["她只是想发消息", "she just wants to send a message", null, 5],
-        ["他星期五想发消息", "he wants to send a message on Friday", null, 5],
-        ["她不想发个消息给你", "she doesn't want to send you a message", null, 6],
-        ["即使她想发，她也做不到", "even if she wants to send, she wouldn't be able to", null, 7]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Send", "发", null, 1],
+        ["Just send", "只是发", null, 2],
+        ["She wanted to send", "她想发", null, 3],
+        ["She just wanted to send", "她只是想发", null, 4],
+        ["No, just send", "不，只是发", null, 3],
+        ["She needed to send", "她需要发", null, 4],
+        ["He wanted to send a message", "他想发个消息", null, 5],
+        ["She just wanted to send a message", "她只是想发个消息", null, 6],
+        ["He wanted to send an important message", "他想发个重要的消息", null, 6],
+        ["No, she just wanted to send an important message", "不，她只是想发个重要的消息", null, 7]
+      ]
     },
     "S0357L07": {
-      "lego": [
-        "send a message",
-        "发个消息"
-      ],
+      "lego": ["send a message", "发个消息"],
       "type": "M",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        },
-        {
-          "id": "S0357L02",
-          "known": "just wanted to",
-          "target": "只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L03",
-          "known": "she just wanted to",
-          "target": "她只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L04",
-          "known": "message",
-          "target": "消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L05",
-          "known": "a message",
-          "target": "个消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L06",
-          "known": "send",
-          "target": "发",
-          "type": "A"
-        }
-      ],
       "practice_phrases": [
-        ["发个消息", "send a message", null, 1],
-        ["她想发个消息", "she wants to send a message", null, 2],
-        ["他只是想发个消息", "he just wants to send a message", null, 3],
-        ["她不想发个消息", "she doesn't want to send a message", null, 3],
-        ["她需要发个消息给他", "she needs to send him a message", null, 4],
-        ["你想发个消息吗？", "do you want to send a message?", null, 4],
-        ["她星期五想发个消息", "she wants to send a message on Friday", null, 5],
-        ["他不需要发个消息给她", "he doesn't need to send her a message", null, 5],
-        ["即使她想发个消息，她也做不到", "even if she wants to send a message, she wouldn't be able to", null, 6],
-        ["她只是想发个消息给那个女人", "she just wants to send a message to that woman", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Send a message", "发个消息", null, 1],
+        ["Just send a message", "只是发个消息", null, 2],
+        ["She wanted to send a message", "她想发个消息", null, 3],
+        ["She just wanted to send a message", "她只是想发个消息", null, 4],
+        ["No, just send a message", "不，只是发个消息", null, 4],
+        ["He needed to send a message", "他需要发个消息", null, 4],
+        ["He wanted to send an important message", "他想发个重要的消息", null, 5],
+        ["She just wanted to send an important message", "她只是想发个重要的消息", null, 6],
+        ["No, he needed to send an important message", "不，他需要发个重要的消息", null, 6],
+        ["They wanted to send an important message", "他们想发个重要的消息", null, 5]
+      ]
     },
     "S0357L08": {
-      "lego": [
-        "send her",
-        "给她发"
-      ],
+      "lego": ["send her", "给她发"],
       "type": "M",
       "is_final_lego": false,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        },
-        {
-          "id": "S0357L02",
-          "known": "just wanted to",
-          "target": "只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L03",
-          "known": "she just wanted to",
-          "target": "她只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L04",
-          "known": "message",
-          "target": "消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L05",
-          "known": "a message",
-          "target": "个消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L06",
-          "known": "send",
-          "target": "发",
-          "type": "A"
-        },
-        {
-          "id": "S0357L07",
-          "known": "send a message",
-          "target": "发个消息",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        ["给她发", "send her", null, 1],
-        ["想给她发", "want to send her", null, 2],
-        ["她想给她发消息", "she wants to send her a message", null, 3],
-        ["他不想给她发", "he doesn't want to send her", null, 3],
-        ["她需要给她发消息", "she needs to send her a message", null, 4],
-        ["你想给她发什么？", "what do you want to send her?", null, 4],
-        ["她只是想给她发个消息", "she just wants to send her a message", null, 5],
-        ["他不想给她发个消息", "he doesn't want to send her a message", null, 5],
-        ["即使她想给她发，她也做不到", "even if she wants to send her, she wouldn't be able to", null, 6],
-        ["她星期五想给她发个消息", "she wants to send her a message on Friday", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Send her", "给她发", null, 1],
+        ["Just send her", "只是给她发", null, 2],
+        ["She wanted to send her", "她想给她发", null, 3],
+        ["He just wanted to send her", "他只是想给她发", null, 4],
+        ["No, just send her", "不，只是给她发", null, 3],
+        ["He needed to send her", "他需要给她发", null, 4],
+        ["He wanted to send her a message", "他想给她发个消息", null, 5],
+        ["She just wanted to send her a message", "她只是想给她发个消息", null, 6],
+        ["No, he needed to send her a message", "不，他需要给她发个消息", null, 6],
+        ["She wanted to send her an important message", "她想给她发个重要的消息", null, 7]
+      ]
     },
     "S0357L09": {
-      "lego": [
-        "send her a message",
-        "给她发个消息"
-      ],
+      "lego": ["send her a message", "给她发个消息"],
       "type": "M",
       "is_final_lego": true,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0357L01",
-          "known": "just",
-          "target": "只是",
-          "type": "M"
-        },
-        {
-          "id": "S0357L02",
-          "known": "just wanted to",
-          "target": "只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L03",
-          "known": "she just wanted to",
-          "target": "她只是想",
-          "type": "M"
-        },
-        {
-          "id": "S0357L04",
-          "known": "message",
-          "target": "消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L05",
-          "known": "a message",
-          "target": "个消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L06",
-          "known": "send",
-          "target": "发",
-          "type": "A"
-        },
-        {
-          "id": "S0357L07",
-          "known": "send a message",
-          "target": "发个消息",
-          "type": "M"
-        },
-        {
-          "id": "S0357L08",
-          "known": "send her",
-          "target": "给她发",
-          "type": "M"
-        }
-      ],
       "practice_phrases": [
-        ["给她发个消息", "send her a message", null, 1],
-        ["想给她发个消息", "want to send her a message", null, 2],
-        ["她想给她发个消息", "she wants to send her a message", null, 3],
-        ["他不想给她发个消息", "he doesn't want to send her a message", null, 3],
-        ["她需要给她发个消息", "she needs to send her a message", null, 4],
-        ["你想给她发个消息吗？", "do you want to send her a message?", null, 4],
-        ["她只是想给她发个消息", "she just wants to send her a message", null, 5],
-        ["他星期五想给她发个消息", "he wants to send her a message on Friday", null, 5],
-        ["即使她想给她发个消息，她也做不到", "even if she wants to send her a message, she wouldn't be able to", null, 6],
-        ["她不需要给她发个消息", "she doesn't need to send her a message", null, 6]
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Send her a message", "给她发个消息", null, 1],
+        ["Just send her a message", "只是给她发个消息", null, 2],
+        ["He wanted to send her a message", "他想给她发个消息", null, 3],
+        ["She just wanted to send her a message", "她只是想给她发个消息", null, 4],
+        ["No, just send her a message", "不，只是给她发个消息", null, 4],
+        ["He needed to send her a message", "他需要给她发个消息", null, 5],
+        ["He wanted to send her an important message", "他想给她发个重要的消息", null, 6],
+        ["She needed to send her an important message", "她需要给她发个重要的消息", null, 7],
+        ["No, he needed to send her an important message", "不，他需要给她发个重要的消息", null, 7],
+        ["No she just wanted to send her a message.", "不，她只是想给她发个消息。", null, 5]
+      ]
     }
+  },
+  "_generation_notes": {
+    "generator": "Claude Code - Phase 5 v7.0",
+    "methodology": "Linguistic intelligence: Think → Express → Validate",
+    "vocabulary_sources": "Recent 10 seeds + current seed earlier LEGOs + current LEGO",
+    "gate_compliance": "All Chinese words validated against available vocabulary",
+    "distribution": "2-2-2-4 (10 phrases per LEGO)",
+    "final_lego_rule": "S0357L09 phrase #10 = complete seed sentence",
+    "grammar_reviewed": true
   }
 }

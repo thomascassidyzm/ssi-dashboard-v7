@@ -465,8 +465,8 @@
           "lego_count": 4
         },
         {
-          "known": "nobody told me about a film that he didn't like",
-          "target": "没人告诉我关于他不喜欢的一部电影",
+          "known": "Nobody told me he didn't like a film",
+          "target": "没人告诉我他不喜欢一部电影",
           "lego_count": 5
         },
         {
@@ -475,13 +475,13 @@
           "lego_count": 5
         },
         {
-          "known": "I didn't see anyone that I knew when I went to see a film",
-          "target": "我去看电影的时候没看到任何我认识的人",
+          "known": "I didn't see anyone that I knew after I saw a film",
+          "target": "我看了一部电影后没看到任何我认识的人",
           "lego_count": 6
         },
         {
-          "known": "did you hear what he said about a film that you went to see on Wednesday",
-          "target": "你听到他说的关于你星期三去看的一部电影了吗",
+          "known": "Did you hear what he said that you went to see a film on Wednesday",
+          "target": "你听到他说你星期三去看了一部电影了吗",
           "lego_count": 7
         }
       ],
@@ -588,8 +588,8 @@
           "lego_count": 6
         },
         {
-          "known": "nobody told me what film you went to see a film about on Wednesday",
-          "target": "没人告诉我你星期三去看了关于什么的一部电影",
+          "known": "Nobody told me what film you went to see on Wednesday",
+          "target": "没人告诉我你星期三去看了什么电影",
           "lego_count": 6
         }
       ],
@@ -701,13 +701,13 @@
           "lego_count": 5
         },
         {
-          "known": "did you hear what film he saw a film about on Wednesday",
-          "target": "你听到他星期三看了关于什么的一部电影了吗",
+          "known": "Did you hear what film he saw on Wednesday",
+          "target": "你听到他星期三看了什么电影了吗",
           "lego_count": 6
         },
         {
-          "known": "I didn't see anyone that I knew when I saw a film at that place",
-          "target": "我在那个地方看电影的时候没看到任何我认识的人",
+          "known": "I didn't see anyone that I knew after I saw a film at that place",
+          "target": "我在那个地方看了一部电影后没看到任何我认识的人",
           "lego_count": 7
         }
       ],
@@ -806,14 +806,9 @@
           "lego_count": 4
         },
         {
-          "known": "I went to see a film on Wednesday",
-          "target": "我星期三去看了一部电影",
-          "lego_count": 4
-        },
-        {
           "known": "I went to see what he wanted to grow",
           "target": "我去看了他想种什么",
-          "lego_count": 5
+          "lego_count": 4
         },
         {
           "known": "I went to see people that I knew at that place",
@@ -823,11 +818,16 @@
         {
           "known": "I went to see a film after you left on Wednesday",
           "target": "你星期三离开后我去看了一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "Nobody told me what I went to see at that place on Wednesday",
+          "target": "没人告诉我我星期三在那个地方去看了什么",
           "lego_count": 6
         },
         {
-          "known": "nobody told me what I went to see at that place on Wednesday",
-          "target": "没人告诉我我星期三在那个地方去看了什么",
+          "known": "I went to see a film on Wednesday.",
+          "target": "我星期三去看了一部电影。",
           "lego_count": 6
         }
       ],

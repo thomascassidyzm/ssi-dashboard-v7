@@ -1,0 +1,125 @@
+{
+  "S0347L01": {
+    "lego": [
+      "a week ago",
+      "一周前"
+    ],
+    "type": "A",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["A week ago", "一周前", null, 1],
+      ["I met someone a week ago", "我一周前见过一个人", null, 3],
+      ["He said something a week ago", "他一周前说了些话", null, 3],
+      ["She worried about the economy a week ago", "她一周前担心经济", null, 3],
+      ["I think he said something a week ago", "我觉得他一周前说了些话", null, 4],
+      ["I met someone who said something a week ago", "我遇到了一个一周前说了些话的人", null, 7],
+      ["I'm sure he said something a week ago", "我确定他一周前说了些话", null, 5],
+      ["Do you think she worried about the economy a week ago?", "你觉得她一周前担心经济吗？", null, 6],
+      ["Someone said he was happy to help you a week ago", "一个人说他一周前很乐意帮你", null, 7],
+      ["I think someone said something a week ago", "我觉得一个人一周前说了些话", null, 6]
+    ]
+  },
+  "S0347L02": {
+    "lego": [
+      "what was happening",
+      "发生了什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0347L01",
+        "known": "a week ago",
+        "target": "一周前",
+        "type": "A"
+      }
+    ],
+    "practice_phrases": [
+      ["What was happening", "发生了什么", null, 1],
+      ["What was happening a week ago", "一周前发生了什么", null, 2],
+      ["He said, 'What was happening?'", "他说发生了什么？", null, 3],
+      ["She said, 'What was happening?'", "她说发生了什么？", null, 3],
+      ["He said, 'What was happening a week ago?'", "他说一周前发生了什么？", null, 4],
+      ["What do you think was happening?", "你觉得发生了什么？", null, 4],
+      ["I'm sure he said, 'What was happening?'", "我确定他说发生了什么", null, 5],
+      ["Someone said, 'What was happening a week ago?'", "一个人说一周前发生了什么？", null, 6],
+      ["I met someone who said, 'What was happening?'", "我遇到了一个说发生了什么的人", null, 7],
+      ["I think someone said, 'What was happening a week ago?'", "我觉得一个人说一周前发生了什么", null, 7]
+    ]
+  },
+  "S0347L03": {
+    "lego": [
+      "what was happening a week ago",
+      "一周前发生了什么"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0347L01",
+        "known": "a week ago",
+        "target": "一周前",
+        "type": "A"
+      },
+      {
+        "id": "S0347L02",
+        "known": "what was happening",
+        "target": "发生了什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["What was happening a week ago", "一周前发生了什么", null, 1],
+      ["He said, 'What was happening a week ago?'", "他说一周前发生了什么？", null, 2],
+      ["She said, 'What was happening a week ago?'", "她说一周前发生了什么？", null, 3],
+      ["What do you think was happening a week ago?", "你觉得一周前发生了什么？", null, 3],
+      ["I think: what was happening a week ago?", "我觉得一周前发生了什么？", null, 4],
+      ["I'm sure he said, 'What was happening a week ago?'", "我确定他说一周前发生了什么", null, 4],
+      ["Someone said, 'What was happening a week ago?'", "一个人说一周前发生了什么？", null, 5],
+      ["I met someone who said, 'What was happening a week ago?'", "我遇到了一个说一周前发生了什么的人", null, 7],
+      ["I think someone said, 'What was happening a week ago?'", "我觉得一个人说一周前发生了什么", null, 6],
+      ["Do you think someone said, 'What was happening a week ago?'", "你觉得一个人说一周前发生了什么吗？", null, 7]
+    ]
+  },
+  "S0347L05": {
+    "lego": [
+      "he wanted to know",
+      "他想知道"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0347L01",
+        "known": "a week ago",
+        "target": "一周前",
+        "type": "A"
+      },
+      {
+        "id": "S0347L02",
+        "known": "what was happening",
+        "target": "发生了什么",
+        "type": "M"
+      },
+      {
+        "id": "S0347L03",
+        "known": "what was happening a week ago",
+        "target": "一周前发生了什么",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["He wanted to know", "他想知道", null, 1],
+      ["He wanted to know what was happening", "他想知道发生了什么", null, 2],
+      ["He wanted to know what was happening a week ago", "他想知道一周前发生了什么", null, 3],
+      ["I think he wanted to know", "我觉得他想知道", null, 3],
+      ["I think he wanted to know what was happening", "我觉得他想知道发生了什么", null, 4],
+      ["Do you think he wanted to know?", "你觉得他想知道吗？", null, 4],
+      ["I'm sure he wanted to know", "我确定他想知道", null, 5],
+      ["I'm sure he wanted to know what was happening", "我确定他想知道发生了什么", null, 6],
+      ["I think he wanted to know what was happening a week ago", "我觉得他想知道一周前发生了什么", null, 7],
+      ["He wanted to know what was happening a week ago.", "他想知道一周前发生了什么。", null, 7]
+    ]
+  }
+}

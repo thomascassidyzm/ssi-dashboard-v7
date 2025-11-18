@@ -1,0 +1,137 @@
+{
+  "S0346L01": {
+    "lego": [
+      "her book",
+      "她的书"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Her book", "她的书", null, 1],
+      ["I think it's her book", "我觉得是她的书", null, 3],
+      ["He said it's her book", "他说是她的书", null, 3],
+      ["Do you think it's her book?", "你觉得是她的书吗？", null, 3],
+      ["I'm sure it's her book", "我确定是她的书", null, 4],
+      ["She said it's her book", "她说是她的书", null, 4],
+      ["Someone said it's her book", "一个人说是她的书", null, 5],
+      ["I met someone who said it's her book", "我遇到了一个说是她的书的人", null, 7],
+      ["I think someone said it's her book", "我觉得一个人说是她的书", null, 6],
+      ["Do you think someone said it's her book?", "你觉得一个人说是她的书吗？", null, 7]
+    ]
+  },
+  "S0346L02": {
+    "lego": [
+      "liked her book",
+      "喜欢她的书"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0346L01",
+        "known": "her book",
+        "target": "她的书",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Liked her book", "喜欢她的书", null, 1],
+      ["I liked her book", "我喜欢她的书", null, 2],
+      ["He liked her book", "他喜欢她的书", null, 3],
+      ["She liked her book", "她喜欢她的书", null, 3],
+      ["I think he liked her book", "我觉得他喜欢她的书", null, 4],
+      ["Do you think she liked her book?", "你觉得她喜欢她的书吗？", null, 4],
+      ["I'm sure he liked her book", "我确定他喜欢她的书", null, 5],
+      ["Someone said she liked her book", "一个人说她喜欢她的书", null, 6],
+      ["I met someone who liked her book", "我遇到了一个喜欢她的书的人", null, 7],
+      ["I think someone said he liked her book", "我觉得一个人说他喜欢她的书", null, 7]
+    ]
+  },
+  "S0346L04": {
+    "lego": [
+      "her to know",
+      "让她知道"
+    ],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0346L01",
+        "known": "her book",
+        "target": "她的书",
+        "type": "M"
+      },
+      {
+        "id": "S0346L02",
+        "known": "liked her book",
+        "target": "喜欢她的书",
+        "type": "M"
+      },
+      {
+        "id": "S0346L03",
+        "known": "I liked her book",
+        "target": "我喜欢她的书",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Let her know", "让她知道", null, 1],
+      ["I can let her know", "我可以让她知道", null, 2],
+      ["He can let her know", "他可以让她知道", null, 3],
+      ["She can let her know", "她可以让她知道", null, 3],
+      ["I think he can let her know", "我觉得他可以让她知道", null, 4],
+      ["Do you think she can let her know?", "你觉得她可以让她知道吗？", null, 4],
+      ["I'm sure he can let her know", "我确定他可以让她知道", null, 5],
+      ["Someone said he can let her know", "一个人说他可以让她知道", null, 6],
+      ["I met someone who can let her know", "我遇到了一个可以让她知道的人", null, 7],
+      ["I think someone said he can let her know", "我觉得一个人说他可以让她知道", null, 7]
+    ]
+  },
+  "S0346L05": {
+    "lego": [
+      "wanted her to know",
+      "想让她知道"
+    ],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0346L01",
+        "known": "her book",
+        "target": "她的书",
+        "type": "M"
+      },
+      {
+        "id": "S0346L02",
+        "known": "liked her book",
+        "target": "喜欢她的书",
+        "type": "M"
+      },
+      {
+        "id": "S0346L03",
+        "known": "I liked her book",
+        "target": "我喜欢她的书",
+        "type": "M"
+      },
+      {
+        "id": "S0346L04",
+        "known": "her to know",
+        "target": "让她知道",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Wanted her to know", "想让她知道", null, 1],
+      ["I wanted her to know", "我想让她知道", null, 2],
+      ["He wanted her to know", "他想让她知道", null, 3],
+      ["She wanted her to know", "她想让她知道", null, 3],
+      ["I think he wanted her to know", "我觉得他想让她知道", null, 4],
+      ["Do you think she wanted her to know?", "你觉得她想让她知道吗？", null, 4],
+      ["I'm sure he wanted her to know", "我确定他想让她知道", null, 5],
+      ["Someone said she wanted her to know", "一个人说她想让她知道", null, 6],
+      ["I wanted her to know that I liked her book", "我想让她知道我喜欢她的书", null, 7],
+      ["I wanted her to know that I liked her book.", "我想让她知道我喜欢她的书。", null, 7]
+    ]
+  }
+}

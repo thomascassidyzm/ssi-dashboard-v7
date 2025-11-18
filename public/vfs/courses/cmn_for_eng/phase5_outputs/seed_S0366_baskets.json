@@ -1,0 +1,71 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0366",
+  "generation_stage": "BASKETS_COMPLETED",
+  "seed_pair": {
+    "known": "Did you hear what he wanted to grow?",
+    "target": "你听到他想种什么了吗？"
+  },
+  "baskets": {
+    "S0366L01": {
+      "lego": ["did you hear", "你听到"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Did you hear", "你听到", null, 1],
+        ["Did you hear her", "你听到她", null, 2],
+        ["Did you hear that", "你听到那个", null, 2],
+        ["Did you hear what she said", "你听到她说什么", null, 4],
+        ["Did you hear what he said", "你听到他说什么", null, 4],
+        ["I didn't hear, did you hear", "我没听到，你听到吗", null, 4],
+        ["Did you hear what your friend said", "你听到你的朋友说什么", null, 5],
+        ["Did you hear what she said to him", "你听到她对他说什么", null, 6],
+        ["Did you hear what she said to your friend", "你听到她对你的朋友说什么", null, 6],
+        ["I heard that he didn't like that place, did you hear", "我听说他不喜欢那个地方，你听到吗", null, 8]
+      ]
+    },
+    "S0366L02": {
+      "lego": ["he wanted to grow", "他想种"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["He wanted to grow", "他想种", null, 1],
+        ["She wanted to grow", "她想种", null, 1],
+        ["He also wanted to grow", "他也想种", null, 2],
+        ["Your friend wanted to grow", "你的朋友想种", null, 3],
+        ["He just wanted to grow", "他只是想种", null, 3],
+        ["Did you hear he wanted to grow", "你听到他想种", null, 4],
+        ["She also wanted to grow", "她也想种", null, 3],
+        ["Your friend also wanted to grow", "你的朋友也想种", null, 4],
+        ["Did you hear your friend wanted to grow", "你听到你的朋友想种", null, 5],
+        ["I heard that he wanted to grow", "我听说他想种", null, 4]
+      ]
+    },
+    "S0366L03": {
+      "lego": ["grow what", "种什么"],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Grow what", "种什么", null, 1],
+        ["He wanted to grow what", "他想种什么", null, 2],
+        ["She wanted to grow what", "她想种什么", null, 2],
+        ["Did you hear grow what", "你听到种什么", null, 3],
+        ["Your friend wanted to grow what", "你的朋友想种什么", null, 3],
+        ["Did you hear he wanted to grow what", "你听到他想种什么", null, 4],
+        ["Did you hear she wanted to grow what", "你听到她想种什么", null, 4],
+        ["I heard that he wanted to grow what", "我听说他想种什么", null, 5],
+        ["Did you hear your friend wanted to grow what", "你听到你的朋友想种什么", null, 6],
+        ["Did you hear what your friend wanted to grow", "你听到你的朋友想种什么", null, 6]
+      ]
+    }
+  },
+  "_generation_metadata": {
+    "generated_by": "Claude-Sonnet-4.5",
+    "generation_date": "2025-11-18",
+    "methodology_version": "v7.0",
+    "total_baskets": 3,
+    "total_phrases": 30,
+    "gate_compliance_verified": true,
+    "grammar_checked": true
+  }
+}

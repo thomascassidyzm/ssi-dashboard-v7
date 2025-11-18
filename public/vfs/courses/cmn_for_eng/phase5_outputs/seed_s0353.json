@@ -1,296 +1,96 @@
 {
   "version": "curated_v7_spanish",
   "seed_id": "S0353",
-  "generation_stage": "PHRASES_GENERATED",
+  "generation_stage": "BASKETS_COMPLETE_V7",
   "seed_pair": {
     "known": "She needed to run around the field.",
     "target": "她需要绕着田地跑。"
   },
   "legos": {
     "S0353L02": {
-      "lego": [
-        "she needed to",
-        "她需要"
-      ],
+      "lego": ["she needed to", "她需要"],
       "type": "M",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "she needed to leave",
-          "target": "她需要离开"
-        },
-        {
-          "known": "she needed to know",
-          "target": "她需要知道"
-        },
-        {
-          "known": "she needed to go out",
-          "target": "她需要出去"
-        },
-        {
-          "known": "she needed to see friends",
-          "target": "她需要见朋友"
-        },
-        {
-          "known": "she needed to leave Friday night",
-          "target": "她需要星期五晚上离开"
-        },
-        {
-          "known": "she needed to see old friends",
-          "target": "她需要见老朋友"
-        },
-        {
-          "known": "she needed to know what was happening a week ago",
-          "target": "她需要知道一周前发生了什么"
-        },
-        {
-          "known": "even if she wanted to she needed to leave",
-          "target": "即使她想，她需要离开"
-        },
-        {
-          "known": "she needed to go out on Friday night to see friends",
-          "target": "她需要星期五晚上出去见朋友"
-        },
-        {
-          "known": "she needed to know what was going to happen this week",
-          "target": "她需要知道这周会发生什么"
-        }
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["She needed to", "她需要", null, 1],
+        ["She needed to leave", "她需要离开", null, 2],
+        ["She needed to go out", "她需要出去", null, 3],
+        ["She needed to know", "她需要知道", null, 3],
+        ["She needed to see friends", "她需要见朋友", null, 4],
+        ["She needed to help you", "她需要帮你", null, 4],
+        ["She needed to see old friends", "她需要见老朋友", null, 5],
+        ["She needed to go out Friday night", "她需要星期五晚上出去", null, 6],
+        ["She needed to know what was happening", "她需要知道发生了什么", null, 6],
+        ["She needed to see some old friends Friday night", "她需要星期五晚上见一些老朋友", null, 7]
+      ]
     },
     "S0353L03": {
-      "lego": [
-        "run",
-        "跑"
-      ],
+      "lego": ["run", "跑"],
       "type": "A",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "run away",
-          "target": "跑开"
-        },
-        {
-          "known": "she runs",
-          "target": "她跑"
-        },
-        {
-          "known": "wanted to run",
-          "target": "想跑"
-        },
-        {
-          "known": "she wanted to run",
-          "target": "她想跑"
-        },
-        {
-          "known": "she needed to run Friday",
-          "target": "她需要星期五跑"
-        },
-        {
-          "known": "needed to run away",
-          "target": "需要跑开"
-        },
-        {
-          "known": "she wanted to run but she wouldn't be able to",
-          "target": "她想跑，但她做不到"
-        },
-        {
-          "known": "even if she needed to run she wouldn't be able to",
-          "target": "即使她需要跑，她也做不到"
-        },
-        {
-          "known": "she didn't want to run on Friday night",
-          "target": "她不想星期五晚上跑"
-        },
-        {
-          "known": "she needed to run but she didn't want to leave friends",
-          "target": "她需要跑，但她不想离开朋友"
-        }
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Run.", "跑。", null, 1],
+        ["She needed to run.", "她需要跑。", null, 2],
+        ["He wanted to run.", "他想跑。", null, 3],
+        ["She wanted to run.", "她想跑。", null, 3],
+        ["She didn't want to run.", "她不想跑。", null, 4],
+        ["He didn't want to run.", "他不想跑。", null, 4],
+        ["She wanted to run on Friday night.", "她星期五晚上想跑。", null, 5],
+        ["Even if she wanted to run.", "即使她想跑。", null, 5],
+        ["She needed to run a week ago.", "她一周前需要跑。", null, 6],
+        ["Did she need to run on Friday night?", "她星期五晚上需要跑吗？", null, 7]
+      ]
     },
     "S0353L04": {
-      "lego": [
-        "field",
-        "田地"
-      ],
+      "lego": ["field", "田地"],
       "type": "M",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "the field",
-          "target": "田地"
-        },
-        {
-          "known": "see the field",
-          "target": "看见田地"
-        },
-        {
-          "known": "leave the field",
-          "target": "离开田地"
-        },
-        {
-          "known": "wanted to see field",
-          "target": "想看田地"
-        },
-        {
-          "known": "she needed to leave field",
-          "target": "她需要离开田地"
-        },
-        {
-          "known": "he wanted to see field",
-          "target": "他想看田地"
-        },
-        {
-          "known": "she didn't want to leave the field on Friday",
-          "target": "她不想星期五离开田地"
-        },
-        {
-          "known": "he needed to know what was happening at the field",
-          "target": "他需要知道田地发生了什么"
-        },
-        {
-          "known": "even if she wanted to she wouldn't be able to see field",
-          "target": "即使她想，她也做不到看田地"
-        },
-        {
-          "known": "she wanted to go to the field a week ago",
-          "target": "她想一周前去田地"
-        }
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Field.", "田地。", null, 1],
+        ["Her field.", "她的田地。", null, 2],
+        ["She liked the field.", "她喜欢田地。", null, 3],
+        ["She needed to run.", "她需要跑。", null, 3],
+        ["She liked her field.", "她喜欢她的田地。", null, 4],
+        ["Did she know the field?", "她知道田地吗？", null, 4],
+        ["She liked the field a week ago.", "她一周前喜欢田地。", null, 5],
+        ["Even if she liked the field.", "即使她喜欢田地。", null, 5],
+        ["He wanted to see her field.", "他想见她的田地。", null, 6],
+        ["She wanted to see her field on Friday night.", "她星期五晚上想见她的田地。", null, 7]
+      ]
     },
     "S0353L05": {
-      "lego": [
-        "around the field",
-        "绕着田地"
-      ],
+      "lego": ["around the field", "绕着田地"],
       "type": "M",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "go around the field",
-          "target": "绕着田地走"
-        },
-        {
-          "known": "around the field",
-          "target": "绕着田地"
-        },
-        {
-          "known": "wanted to go around field",
-          "target": "想绕着田地走"
-        },
-        {
-          "known": "she went around the field",
-          "target": "她绕着田地走了"
-        },
-        {
-          "known": "she needed to go around field",
-          "target": "她需要绕着田地走"
-        },
-        {
-          "known": "he wanted around the field",
-          "target": "他想绕着田地"
-        },
-        {
-          "known": "she didn't want to go around the field on Friday",
-          "target": "她不想星期五绕着田地走"
-        },
-        {
-          "known": "even if she needed to she wouldn't go around field",
-          "target": "即使她需要，她也不会绕着田地走"
-        },
-        {
-          "known": "she wanted to go around the field but she wouldn't be able to",
-          "target": "她想绕着田地走，但她做不到"
-        },
-        {
-          "known": "he needed to know what was happening around the field a week ago",
-          "target": "他需要知道一周前田地周围发生了什么"
-        }
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Around the field.", "绕着田地。", null, 1],
+        ["She needed to run around the field.", "她需要绕着田地跑。", null, 2],
+        ["He wanted to run around the field.", "他想绕着田地跑。", null, 3],
+        ["She wanted to run around the field.", "她想绕着田地跑。", null, 3],
+        ["She didn't want to run around the field.", "她不想绕着田地跑。", null, 4],
+        ["He didn't want to run around the field.", "他不想绕着田地跑。", null, 4],
+        ["She wanted to run around the field on Friday night.", "她星期五晚上想绕着田地跑。", null, 5],
+        ["Even if she wanted to run around the field.", "即使她想绕着田地跑。", null, 5],
+        ["She needed to run around the field a week ago.", "她一周前需要绕着田地跑。", null, 6],
+        ["Did she need to run around the field on Friday night?", "她星期五晚上需要绕着田地跑吗？", null, 7]
+      ]
     },
     "S0353L06": {
-      "lego": [
-        "run around the field",
-        "绕着田地跑"
-      ],
+      "lego": ["run around the field", "绕着田地跑"],
       "type": "M",
       "is_final_lego": true,
       "practice_phrases": [
-        {
-          "known": "run around the field",
-          "target": "绕着田地跑"
-        },
-        {
-          "known": "wanted to run around field",
-          "target": "想绕着田地跑"
-        },
-        {
-          "known": "she needs to run around field",
-          "target": "她需要绕着田地跑"
-        },
-        {
-          "known": "needed to run around the field",
-          "target": "需要绕着田地跑"
-        },
-        {
-          "known": "she wanted to run around field",
-          "target": "她想绕着田地跑"
-        },
-        {
-          "known": "didn't want to run around field",
-          "target": "不想绕着田地跑"
-        },
-        {
-          "known": "she needed to run around the field on Friday",
-          "target": "她需要星期五绕着田地跑"
-        },
-        {
-          "known": "even if she wanted to run around field she wouldn't be able to",
-          "target": "即使她想绕着田地跑，她也做不到"
-        },
-        {
-          "known": "she didn't want to run around the field on Friday night",
-          "target": "她不想星期五晚上绕着田地跑"
-        },
-        {
-          "known": "he needed to know if she could run around the field",
-          "target": "他需要知道她能不能绕着田地跑"
-        }
-      ],
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+        ["Run around the field.", "绕着田地跑。", null, 1],
+        ["She needed to run around the field.", "她需要绕着田地跑。", null, 2],
+        ["He wanted to run around the field.", "他想绕着田地跑。", null, 3],
+        ["She wanted to run around the field.", "她想绕着田地跑。", null, 3],
+        ["She didn't want to run around the field.", "她不想绕着田地跑。", null, 4],
+        ["He didn't want to run around the field.", "他不想绕着田地跑。", null, 4],
+        ["She wanted to run around the field on Friday night.", "她星期五晚上想绕着田地跑。", null, 5],
+        ["Even if she wanted to run around the field.", "即使她想绕着田地跑。", null, 5],
+        ["She needed to run around the field a week ago.", "她一周前需要绕着田地跑。", null, 6],
+        ["She needed to run around the field.", "她需要绕着田地跑。", null, 2]
+      ]
     }
   }
 }

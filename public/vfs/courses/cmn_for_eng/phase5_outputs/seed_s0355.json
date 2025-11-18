@@ -1,310 +1,95 @@
 {
   "version": "curated_v7_spanish",
   "seed_id": "S0355",
-  "generation_stage": "BASKETS_GENERATED",
+  "generation_stage": "BASKETS_COMPLETE_V7",
   "seed_pair": {
     "known": "Did she need to talk to that woman you know?",
     "target": "她需要和你认识的那个女人说话吗？"
   },
   "legos": {
     "S0355L01": {
-      "lego": [
-        "she need to",
-        "她需要"
-      ],
+      "lego": ["she need to", "她需要"],
       "type": "M",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "She needed to run.",
-          "target": "她需要跑。",
-          "lego_count": 2
-        },
-        {
-          "known": "She needed to go out on Friday night.",
-          "target": "她星期五晚上需要出去。",
-          "lego_count": 2
-        },
-        {
-          "known": "She needed to see some old friends.",
-          "target": "她需要见一些老朋友。",
-          "lego_count": 3
-        },
-        {
-          "known": "She needed to appear angry when she went out.",
-          "target": "她出去的时候需要显得生气。",
-          "lego_count": 3
-        },
-        {
-          "known": "She needed to run around the field on Friday night.",
-          "target": "她星期五晚上需要绕着田地跑。",
-          "lego_count": 4
-        },
-        {
-          "known": "She needed to know what was happening a week ago.",
-          "target": "她需要知道一周前发生了什么。",
-          "lego_count": 4
-        },
-        {
-          "known": "She needed to see some old friends on Friday night, but she didn't want to go out.",
-          "target": "她星期五晚上需要见一些老朋友，但是她不想出去。",
-          "lego_count": 5
-        },
-        {
-          "known": "She needed to appear happy when she wanted to see some old friends.",
-          "target": "她想见一些老朋友的时候需要显得开心。",
-          "lego_count": 5
-        },
-        {
-          "known": "Even if she needed to run around the field, she didn't want to leave me on my own.",
-          "target": "即使她需要绕着田地跑，她不想把我一个人留下。",
-          "lego_count": 6
-        },
-        {
-          "known": "She needed to know what was going to happen on Friday night when she wanted to go out and see some old friends.",
-          "target": "她星期五晚上想出去见一些老朋友的时候需要知道会发生什么。",
-          "lego_count": 7
-        }
+        ["She needed to.", "她需要。", null, 1],
+        ["She needed to run.", "她需要跑。", null, 2],
+        ["She needed to know.", "她需要知道。", null, 3],
+        ["She needed to go out.", "她需要出去。", null, 3],
+        ["She needed to see him.", "她需要见他。", null, 4],
+        ["She needed to run around the field.", "她需要绕着田地跑。", null, 4],
+        ["She needed to go out on Friday night.", "她星期五晚上需要出去。", null, 5],
+        ["She needed to see some old friends.", "她需要见一些老朋友。", null, 5],
+        ["She needed to know what was happening a week ago.", "她需要知道一周前发生了什么。", null, 6],
+        ["She needed to appear angry when she went out on Friday night.", "她星期五晚上出去的时候需要显得生气。", null, 7]
       ]
     },
     "S0355L06": {
-      "lego": [
-        "know",
-        "认识"
-      ],
+      "lego": ["know", "认识"],
       "type": "M",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "I know him.",
-          "target": "我认识他。",
-          "lego_count": 1
-        },
-        {
-          "known": "She wanted to know her.",
-          "target": "她想认识她。",
-          "lego_count": 2
-        },
-        {
-          "known": "He didn't want to know some old friends.",
-          "target": "他不想认识一些老朋友。",
-          "lego_count": 3
-        },
-        {
-          "known": "She needed to know that woman on Friday night.",
-          "target": "她星期五晚上需要认识那个女人。",
-          "lego_count": 3
-        },
-        {
-          "known": "He wanted to know some old friends when he went out.",
-          "target": "他出去的时候想认识一些老朋友。",
-          "lego_count": 4
-        },
-        {
-          "known": "She didn't need to know him when she appeared angry.",
-          "target": "她显得生气的时候不需要认识他。",
-          "lego_count": 4
-        },
-        {
-          "known": "He wanted to know some old friends on Friday night when he went out.",
-          "target": "他星期五晚上出去的时候想认识一些老朋友。",
-          "lego_count": 5
-        },
-        {
-          "known": "She needed to know that woman who wanted to see him a week ago.",
-          "target": "她需要认识一周前想见他的那个女人。",
-          "lego_count": 5
-        },
-        {
-          "known": "Even if he wanted to know some old friends, he didn't need to go out on Friday night.",
-          "target": "即使他想认识一些老朋友，他星期五晚上不需要出去。",
-          "lego_count": 6
-        },
-        {
-          "known": "She wanted to know that woman he talked about, but she didn't want to know what was happening a week ago.",
-          "target": "她想认识他说的那个女人，但是她不想知道一周前发生了什么。",
-          "lego_count": 7
-        }
+        ["I know.", "我认识。", null, 1],
+        ["I know her.", "我认识她。", null, 2],
+        ["I know that woman.", "我认识那个女人。", null, 3],
+        ["I know old friends.", "我认识老朋友。", null, 3],
+        ["I know some old friends.", "我认识一些老朋友。", null, 4],
+        ["She needed to know her.", "她需要认识她。", null, 4],
+        ["She needed to know that woman.", "她需要认识那个女人。", null, 5],
+        ["She needed to know some old friends.", "她需要认识一些老朋友。", null, 5],
+        ["She needed to know that woman on Friday.", "她需要在星期五认识那个女人。", null, 6],
+        ["She needed to know that woman on Friday night.", "她需要在星期五晚上认识那个女人。", null, 6]
       ]
     },
     "S0355L07": {
-      "lego": [
-        "you know",
-        "你认识的"
-      ],
+      "lego": ["you know", "你认识的"],
       "type": "M",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "That man you know.",
-          "target": "你认识的那个男人。",
-          "lego_count": 1
-        },
-        {
-          "known": "The woman you know appeared angry.",
-          "target": "你认识的那个女人显得生气。",
-          "lego_count": 2
-        },
-        {
-          "known": "She wanted to see that man you know.",
-          "target": "她想见你认识的那个男人。",
-          "lego_count": 3
-        },
-        {
-          "known": "He didn't need to know that woman you know.",
-          "target": "他不需要认识你认识的那个女人。",
-          "lego_count": 3
-        },
-        {
-          "known": "She needed to see that man you know on Friday night.",
-          "target": "她星期五晚上需要见你认识的那个男人。",
-          "lego_count": 4
-        },
-        {
-          "known": "The woman you know wanted to go out and see some old friends.",
-          "target": "你认识的那个女人想出去见一些老朋友。",
-          "lego_count": 4
-        },
-        {
-          "known": "He wanted to know what was happening with that woman you know a week ago.",
-          "target": "他想知道一周前你认识的那个女人发生了什么。",
-          "lego_count": 5
-        },
-        {
-          "known": "She didn't want to leave that man you know on his own on Friday night.",
-          "target": "她星期五晚上不想把你认识的那个男人一个人留下。",
-          "lego_count": 5
-        },
-        {
-          "known": "That woman you know needed to run around the field, but she didn't want to appear angry when she did it.",
-          "target": "你认识的那个女人需要绕着田地跑，但是她跑的时候不想显得生气。",
-          "lego_count": 6
-        },
-        {
-          "known": "Even if that man you know wanted to see some old friends on Friday night, he wouldn't be able to go out.",
-          "target": "即使你认识的那个男人星期五晚上想见一些老朋友，他也做不到出去。",
-          "lego_count": 7
-        }
+        ["The person you know", "你认识的人", null, 2],
+        ["The woman you know", "你认识的女人", null, 2],
+        ["The old friend you know", "你认识的老朋友", null, 3],
+        ["That woman you know", "你认识的那个女人", null, 3],
+        ["The old friends you know", "你认识的老朋友们", null, 4],
+        ["She needed that woman you know.", "她需要你认识的那个女人。", null, 4],
+        ["She needed to see that woman you know.", "她需要见你认识的那个女人。", null, 5],
+        ["She needed to know that woman you know.", "她需要认识你认识的那个女人。", null, 5],
+        ["That old friend you know went out on Friday night.", "你认识的那个老朋友星期五晚上出去了。", null, 6],
+        ["She needed to see some old friends you know.", "她需要见一些你认识的老朋友。", null, 6]
       ]
     },
     "S0355L08": {
-      "lego": [
-        "that woman you know",
-        "你认识的那个女人"
-      ],
+      "lego": ["that woman you know", "你认识的那个女人"],
       "type": "M",
       "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "That woman you know appeared angry.",
-          "target": "你认识的那个女人显得生气。",
-          "lego_count": 2
-        },
-        {
-          "known": "That woman you know needed to run around the field.",
-          "target": "你认识的那个女人需要绕着田地跑。",
-          "lego_count": 2
-        },
-        {
-          "known": "He wanted to see that woman you know.",
-          "target": "他想见你认识的那个女人。",
-          "lego_count": 3
-        },
-        {
-          "known": "That woman you know didn't want to go out on Friday night.",
-          "target": "你认识的那个女人星期五晚上不想出去。",
-          "lego_count": 3
-        },
-        {
-          "known": "She needed to see that woman you know a week ago.",
-          "target": "她一周前需要见你认识的那个女人。",
-          "lego_count": 4
-        },
-        {
-          "known": "That woman you know wanted to see some old friends on Friday night.",
-          "target": "你认识的那个女人星期五晚上想见一些老朋友。",
-          "lego_count": 4
-        },
-        {
-          "known": "He wanted to know what was happening with that woman you know a week ago.",
-          "target": "他想知道一周前你认识的那个女人发生了什么。",
-          "lego_count": 5
-        },
-        {
-          "known": "That woman you know didn't need to appear angry when she went out on Friday night.",
-          "target": "你认识的那个女人星期五晚上出去的时候不需要显得生气。",
-          "lego_count": 5
-        },
-        {
-          "known": "She wanted to know if that woman you know needed to run around the field on Friday night when she went out.",
-          "target": "她想知道你认识的那个女人星期五晚上出去的时候是否需要绕着田地跑。",
-          "lego_count": 6
-        },
-        {
-          "known": "Even if that woman you know wanted to see some old friends, she didn't want to leave me on my own a week ago.",
-          "target": "即使你认识的那个女人想见一些老朋友，她一周前不想把我一个人留下。",
-          "lego_count": 7
-        }
+        ["That woman you know", "你认识的那个女人", null, 1],
+        ["She saw that woman you know.", "她看见了你认识的那个女人。", null, 2],
+        ["She needed that woman you know.", "她需要你认识的那个女人。", null, 3],
+        ["I know that woman you know.", "我认识你认识的那个女人。", null, 3],
+        ["She needed to see that woman you know.", "她需要见你认识的那个女人。", null, 4],
+        ["She needed to know that woman you know.", "她需要认识你认识的那个女人。", null, 4],
+        ["She went out with that woman you know.", "她和你认识的那个女人出去了。", null, 5],
+        ["She wanted to see that woman you know on Friday.", "她星期五想见你认识的那个女人。", null, 5],
+        ["She needed to see that woman you know on Friday night.", "她需要在星期五晚上见你认识的那个女人。", null, 6],
+        ["She didn't want to know what that woman you know was doing.", "她不想知道你认识的那个女人在做什么。", null, 7]
       ]
     },
     "S0355L09": {
-      "lego": [
-        "talk to that woman you know",
-        "和你认识的那个女人说话"
-      ],
+      "lego": ["talk to that woman you know", "和你认识的那个女人说话"],
       "type": "M",
       "is_final_lego": true,
       "practice_phrases": [
-        {
-          "known": "Talk to that woman you know.",
-          "target": "和你认识的那个女人说话。",
-          "lego_count": 1
-        },
-        {
-          "known": "She needed to talk to that woman you know.",
-          "target": "她需要和你认识的那个女人说话。",
-          "lego_count": 2
-        },
-        {
-          "known": "He wanted to talk to that woman you know on Friday night.",
-          "target": "他星期五晚上想和你认识的那个女人说话。",
-          "lego_count": 3
-        },
-        {
-          "known": "She didn't need to talk to that woman you know a week ago.",
-          "target": "她一周前不需要和你认识的那个女人说话。",
-          "lego_count": 3
-        },
-        {
-          "known": "He needed to talk to that woman you know when he went out on Friday night.",
-          "target": "他星期五晚上出去的时候需要和你认识的那个女人说话。",
-          "lego_count": 4
-        },
-        {
-          "known": "She didn't want to talk to that woman you know when she appeared angry.",
-          "target": "她显得生气的时候不想和你认识的那个女人说话。",
-          "lego_count": 4
-        },
-        {
-          "known": "He wanted to know if she needed to talk to that woman you know on Friday night.",
-          "target": "他想知道她星期五晚上是否需要和你认识的那个女人说话。",
-          "lego_count": 5
-        },
-        {
-          "known": "She needed to talk to that woman you know when she wanted to see some old friends a week ago.",
-          "target": "她一周前想见一些老朋友的时候需要和你认识的那个女人说话。",
-          "lego_count": 5
-        },
-        {
-          "known": "Even if he wanted to talk to that woman you know, he didn't need to go out on Friday night and leave me on my own.",
-          "target": "即使他想和你认识的那个女人说话，他星期五晚上不需要出去把我一个人留下。",
-          "lego_count": 6
-        },
-        {
-          "known": "She wanted to know what was happening a week ago when he didn't want to talk to that woman you know and appeared angry.",
-          "target": "他不想和你认识的那个女人说话显得生气的时候，她想知道一周前发生了什么。",
-          "lego_count": 7
-        }
+        ["Talk to that woman you know.", "和你认识的那个女人说话。", null, 1],
+        ["She talks to that woman you know.", "她和你认识的那个女人说话。", null, 2],
+        ["She wanted to talk to that woman you know.", "她想和你认识的那个女人说话。", null, 3],
+        ["She needed to talk to that woman you know.", "她需要和你认识的那个女人说话。", null, 3],
+        ["She didn't want to talk to that woman you know.", "她不想和你认识的那个女人说话。", null, 4],
+        ["She needed to talk to that woman you know on Friday.", "她需要在星期五和你认识的那个女人说话。", null, 4],
+        ["She needed to talk to that woman you know about the book.", "她需要和你认识的那个女人谈论这本书。", null, 5],
+        ["She wanted to talk to that woman you know on Friday night.", "她想在星期五晚上和你认识的那个女人说话。", null, 5],
+        ["She needed to talk to that woman you know on Friday night about her old friends.", "她需要在星期五晚上和你认识的那个女人谈论她的老朋友。", null, 7],
+        ["Did she need to talk to that woman you know?", "她需要和你认识的那个女人说话吗？", null, 3]
       ]
     }
   }

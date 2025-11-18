@@ -1,0 +1,37 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0363",
+  "generation_stage": "BASKETS_COMPLETED",
+  "seed_pair": {
+    "known": "Yes he felt like talking a lot.",
+    "target": "是的，他想说很多话。"
+  },
+  "baskets": {
+    "S0363L03": {
+      "lego": ["talking a lot", "说很多话"],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Talking a lot", "说很多话", null, 1],
+        ["He felt like talking a lot", "他想说很多话", null, 2],
+        ["She wanted to talk a lot", "她想说很多话", null, 2],
+        ["Your friend felt like talking a lot", "你的朋友想说很多话", null, 3],
+        ["He also felt like talking a lot", "他也想说很多话", null, 3],
+        ["No, he felt like talking a lot", "不，他想说很多话", null, 3],
+        ["She just wanted to talk a lot", "她只是想说很多话", null, 4],
+        ["Your friend also wanted to talk a lot", "你的朋友也想说很多话", null, 4],
+        ["He just wanted to talk a lot to her", "他只是想和她说很多话", null, 5],
+        ["Yes he felt like talking a lot.", "是的，他想说很多话。", null, 3]
+      ]
+    }
+  },
+  "_generation_metadata": {
+    "generated_by": "Claude-Sonnet-4.5",
+    "generation_date": "2025-11-18",
+    "methodology_version": "v7.0",
+    "total_baskets": 1,
+    "total_phrases": 10,
+    "gate_compliance_verified": true,
+    "grammar_checked": true
+  }
+}
