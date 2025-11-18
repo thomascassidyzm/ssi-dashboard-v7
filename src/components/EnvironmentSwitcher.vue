@@ -94,7 +94,9 @@ async function switchEnvironment() {
 async function checkConnection() {
   try {
     const url = currentApiUrl.value
-    const response = await fetch(`${url}/api/health`, {
+    // ngrok proxy uses /health, local API uses /api/health
+    const healthPath = selectedEnv.value === 'api' ? '/api/health' : '/health'
+    const response = await fetch(`${url}${healthPath}`, {
       headers: {
         'ngrok-skip-browser-warning': 'true'
       },
