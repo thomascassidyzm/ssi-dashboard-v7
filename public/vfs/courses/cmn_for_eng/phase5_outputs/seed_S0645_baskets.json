@@ -1,0 +1,28 @@
+{
+  "S0645L03": {
+    "lego": ["help you", "帮您"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [["I can help you", "我可以帮您"], ["can help you", "可以帮您"]],
+    "practice_phrases": [
+      ["help you", "帮您", null, 1],
+      ["I help you", "我帮您", null, 2],
+      ["can help you", "可以帮您", null, 2],
+      ["I can help you", "我可以帮您", null, 3],
+      ["help you madam", "帮您女士", null, 2],
+      ["I can help you sir", "我可以帮您先生", null, 4],
+      ["want to help you", "想要帮您", null, 3],
+      ["trying to help you", "试着帮您", null, 3],
+      ["I can help you with that", "我可以帮您那个", null, 5],
+      ["Could I help you find the bag", "我能帮您找包吗", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 2,
+      "long_6_plus": 1
+    },
+    "target_phrase_count": 10,
+    "components": [["help", "帮"], ["you (formal)", "您"]]
+  }
+}

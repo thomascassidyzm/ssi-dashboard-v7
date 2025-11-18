@@ -1,0 +1,54 @@
+{
+  "S0643L01": {
+    "lego": ["Do you want", "您想要吗"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["Do you want", "您想要吗", null, 2],
+      ["Do you want water", "您想要水吗", null, 3],
+      ["Do you want that", "您想要那个吗", null, 3],
+      ["Do you want that one", "您想要那个吗", null, 4],
+      ["Do you want the red one", "您想要红色的那个吗", null, 5],
+      ["Do you want one of those", "您想要其中一个吗", null, 5],
+      ["Do you want a large glass of water", "您想要一大杯水吗", null, 7],
+      ["Do you want to think about it", "您想要想一想吗", null, 6],
+      ["Do you want the bag on that chair", "您想要那把椅子上的包吗", null, 7],
+      ["Do you want me to help you", "您想要我帮您吗", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 1,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 4
+    },
+    "target_phrase_count": 10,
+    "components": [["Do you", "您"], ["want", "想要吗"]]
+  },
+  "S0643L03": {
+    "lego": ["want (question)", "想要吗"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [["Do you want", "您想要吗"], ["sir", "先生"]],
+    "practice_phrases": [
+      ["want", "想要吗", null, 1],
+      ["Do you want", "您想要吗", null, 2],
+      ["you want that", "您想要那个吗", null, 3],
+      ["want water", "想要水吗", null, 2],
+      ["Do you want sir", "您想要吗先生", null, 3],
+      ["you want one of those", "您想要其中一个吗", null, 5],
+      ["want the red bag", "想要红色的包吗", null, 4],
+      ["Do you want that bag sir", "您想要那个包吗先生", null, 5],
+      ["you want to think about it", "您想要想一想吗", null, 6],
+      ["want me to help you madam", "想要我帮您吗女士", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 3,
+      "long_6_plus": 3
+    },
+    "target_phrase_count": 10,
+    "components": [["want", "想要"], ["question marker", "吗"]]
+  }
+}

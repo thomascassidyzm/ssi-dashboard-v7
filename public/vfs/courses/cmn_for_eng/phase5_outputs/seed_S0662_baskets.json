@@ -1,0 +1,28 @@
+{
+  "S0662L01": {
+    "lego": ["you all", "你们大家都"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["you all", "你们大家都", null, 1],
+      ["you all speak", "你们大家都说", null, 2],
+      ["you all speak it", "你们大家都说它", null, 2],
+      ["you all want that", "你们大家都想要那个", null, 3],
+      ["you all can help", "你们大家都可以帮", null, 3],
+      ["you all are doing well", "你们大家都做得好", null, 3],
+      ["you all feel good", "你们大家都感觉好", null, 3],
+      ["I think you all speak it well", "我认为你们大家都说它说得好", null, 7],
+      ["you all need to say that madam", "你们大家都需要说那个女士", null, 6],
+      ["Could you all speak it sir", "你们大家都能说它吗先生", null, 5]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 3,
+      "quite_short_3": 4,
+      "longer_4_5": 1,
+      "long_6_plus": 2
+    },
+    "target_phrase_count": 10,
+    "components": [["you", "你们"], ["all", "大家"], ["all (everyone)", "都"]]
+  }
+}

@@ -6,8 +6,8 @@
         "听起来"
       ],
       "type": "M",
+      "current_seed_legos_available": [],
       "is_final_lego": false,
-      "current_seed_earlier_legos": [],
       "practice_phrases": [
         [
           "That sounds like coffee.",
@@ -76,15 +76,14 @@
         "longer_4_5": 4,
         "long_6_plus": 1
       },
-      "target_phrase_count": 10,
       "components": [
         [
-          "听",
-          "listen/hear"
+          null,
+          null
         ],
         [
-          "起来",
-          "up/arise"
+          null,
+          null
         ]
       ]
     },
@@ -94,22 +93,14 @@
         "听起来是个好主意"
       ],
       "type": "M",
-      "is_final_lego": true,
-      "current_seed_earlier_legos": [
-        {
-          "id": "S0272L02",
-          "known": "sounds like",
-          "target": "听起来",
-          "type": "M"
-        }
-      ],
-      "practice_phrases": [
+      "current_seed_legos_available": [
         [
-          "Sounds like a good idea.",
-          "听起来是个好主意。",
-          null,
-          1
-        ],
+          "sounds like",
+          "听起来"
+        ]
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
         [
           "That sounds like a good idea.",
           "那听起来是个好主意。",
@@ -117,8 +108,8 @@
           2
         ],
         [
-          "Waiting sounds like a good idea.",
-          "等听起来是个好主意。",
+          "It sounds like a good idea.",
+          "它听起来是个好主意。",
           null,
           2
         ],
@@ -129,22 +120,28 @@
           3
         ],
         [
-          "Waiting for your father sounds like a good idea.",
-          "等你爸爸听起来是个好主意。",
+          "Waiting for her sounds like a good idea.",
+          "等她听起来是个好主意。",
+          null,
+          3
+        ],
+        [
+          "That sounds like a good idea to me.",
+          "那对我来说听起来是个好主意。",
           null,
           4
         ],
         [
-          "Coming next month sounds like a good idea.",
-          "下个月来听起来是个好主意。",
+          "Talking to your father sounds like a good idea.",
+          "和你爸爸说话听起来是个好主意。",
           null,
-          3
+          4
         ],
         [
-          "Sending an email sounds like a good idea.",
-          "发电子邮件听起来是个好主意。",
+          "Coming with us next month sounds like a good idea.",
+          "下个月和我们一起来听起来是个好主意。",
           null,
-          3
+          5
         ],
         [
           "Sending an email to your friend sounds like a good idea.",
@@ -153,10 +150,10 @@
           5
         ],
         [
-          "Coming with us next month sounds like a good idea.",
-          "下个月和我们一起来听起来是个好主意。",
+          "Waiting for your father before we come sounds like a good idea.",
+          "我们来之前等你爸爸听起来是个好主意。",
           null,
-          5
+          7
         ],
         [
           "Yes that sounds like a good idea.",
@@ -166,32 +163,31 @@
         ]
       ],
       "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
+        "really_short_1_2": 3,
+        "quite_short_3": 2,
+        "longer_4_5": 4,
+        "long_6_plus": 1
       },
-      "target_phrase_count": 10,
       "components": [
         [
-          "听起来",
-          "sounds like"
+          null,
+          null
         ],
         [
-          "是",
-          "is"
+          null,
+          null
         ],
         [
-          "个",
-          "classifier"
+          null,
+          null
         ],
         [
-          "好",
-          "good"
+          null,
+          null
         ],
         [
-          "主意",
-          "idea"
+          null,
+          null
         ]
       ]
     }
