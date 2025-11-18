@@ -1715,14 +1715,26 @@ app.post('/upload-basket', async (req, res) => {
     await fs.ensureDir(phase5StagingDir);
 
     // Save individual basket file to phase5_outputs
+    // MERGE with existing baskets (multiple workers may upload LEGOs from same seed)
     const basketFilePath = path.join(phase5OutputsDir, `seed_${seed}_baskets.json`);
-    await fs.writeJson(basketFilePath, baskets, { spaces: 2 });
-    console.log(`   💾 Saved to ${basketFilePath}`);
+    let existingOutputBaskets = {};
+    if (await fs.pathExists(basketFilePath)) {
+      existingOutputBaskets = await fs.readJson(basketFilePath);
+    }
+    const mergedOutputBaskets = { ...existingOutputBaskets, ...baskets };
+    await fs.writeJson(basketFilePath, mergedOutputBaskets, { spaces: 2 });
+    console.log(`   💾 Saved to ${basketFilePath} (${Object.keys(mergedOutputBaskets).length} LEGOs)`);
 
     // Save to staging for review (git-ignored, safe)
+    // MERGE with existing baskets (multiple workers may upload LEGOs from same seed)
     const stagingFilePath = path.join(phase5StagingDir, `seed_${seed}_baskets.json`);
-    await fs.writeJson(stagingFilePath, baskets, { spaces: 2 });
-    console.log(`   📦 Staged to ${stagingFilePath}`);
+    let existingBaskets = {};
+    if (await fs.pathExists(stagingFilePath)) {
+      existingBaskets = await fs.readJson(stagingFilePath);
+    }
+    const mergedBaskets = { ...existingBaskets, ...baskets };
+    await fs.writeJson(stagingFilePath, mergedBaskets, { spaces: 2 });
+    console.log(`   📦 Staged to ${stagingFilePath} (${Object.keys(mergedBaskets).length} LEGOs total)`);
 
     // STAGING WORKFLOW: Never auto-merge to canon
     // Use tools/phase5/extract-and-normalize.cjs to review and merge when ready
