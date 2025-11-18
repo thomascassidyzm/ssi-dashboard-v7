@@ -800,7 +800,7 @@ You are responsible for generating baskets for all LEGOs in seeds ${startSeed}-$
 - Course path: \`${relativeDir}\`
 - Upload URL: \`${ngrokUrl}/phase5/upload-basket\`
 - Agent ID: \`agent-{{NUM}}\`
-- Staging flag: \`stagingOnly: ${job.stagingOnly || false}\`
+- Staging flag: \`stagingOnly: ${params.stagingOnly || false}\`
 
 **What you DON'T need to do:**
 - ❌ Create scaffolds (agents read from lego_pairs.json directly)
