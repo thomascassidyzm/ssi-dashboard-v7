@@ -1,0 +1,613 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0615",
+  "generation_stage": "PHRASES_GENERATED_BATCH_4",
+  "seed_pair": {
+    "known": "I thought you were very brave to say that.",
+    "target": "我认为你说那个很勇敢。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0605",
+      "known": "因为我们需要帮助。",
+      "target": "Because we needed help."
+    },
+    {
+      "seed_id": "S0606",
+      "known": "如果我当时知道我现在知道的，我会等待。",
+      "target": "If I'd known then what I know now I'd have waited."
+    },
+    {
+      "seed_id": "S0607",
+      "known": "如果我知道，我会做不同的事。",
+      "target": "If I'd known I'd have done things differently."
+    },
+    {
+      "seed_id": "S0608",
+      "known": "那会是明智的事。",
+      "target": "It would have been the sensible thing to do."
+    },
+    {
+      "seed_id": "S0609",
+      "known": "明智的事会是问。",
+      "target": "The sensible thing to do would have been to ask."
+    },
+    {
+      "seed_id": "S0610",
+      "known": "他需要找工作。",
+      "target": "He needs to look for work."
+    },
+    {
+      "seed_id": "S0611",
+      "known": "I would have been ready to look somewhere else.",
+      "target": "我会准备好去别的地方看看。"
+    },
+    {
+      "seed_id": "S0612",
+      "known": "We would have bought something.",
+      "target": "我们会买一些东西。"
+    },
+    {
+      "seed_id": "S0613",
+      "known": "We probably would have bought a house there.",
+      "target": "我们可能会在那里买房子。"
+    },
+    {
+      "seed_id": "S0614",
+      "known": "It's near where your family live.",
+      "target": "它靠近你家人住的地方。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0606L02",
+      "known": "then",
+      "target": "当时",
+      "type": "A"
+    },
+    {
+      "id": "S0606L03",
+      "known": "I'd known then",
+      "target": "我当时知道",
+      "type": "M"
+    },
+    {
+      "id": "S0606L05",
+      "known": "what I know now",
+      "target": "我现在知道的",
+      "type": "M"
+    },
+    {
+      "id": "S0606L06",
+      "known": "wait",
+      "target": "等待",
+      "type": "A"
+    },
+    {
+      "id": "S0606L07",
+      "known": "I'd have waited",
+      "target": "我会等待",
+      "type": "M"
+    },
+    {
+      "id": "S0607L01",
+      "known": "I'd known",
+      "target": "我知道",
+      "type": "M"
+    },
+    {
+      "id": "S0607L02",
+      "known": "I'd have done",
+      "target": "我会做",
+      "type": "M"
+    },
+    {
+      "id": "S0607L03",
+      "known": "done things differently",
+      "target": "做不同的事",
+      "type": "M"
+    },
+    {
+      "id": "S0607L04",
+      "known": "different things",
+      "target": "不同的事",
+      "type": "M"
+    },
+    {
+      "id": "S0608L01",
+      "known": "it would have been",
+      "target": "那会是",
+      "type": "M"
+    },
+    {
+      "id": "S0608L02",
+      "known": "would have been",
+      "target": "会是",
+      "type": "M"
+    },
+    {
+      "id": "S0608L03",
+      "known": "the sensible thing",
+      "target": "明智的事",
+      "type": "M"
+    },
+    {
+      "id": "S0609L01",
+      "known": "the sensible thing would have been",
+      "target": "明智的事会是",
+      "type": "M"
+    },
+    {
+      "id": "S0610L01",
+      "known": "he needs",
+      "target": "他需要",
+      "type": "M"
+    },
+    {
+      "id": "S0610L02",
+      "known": "need to look for work",
+      "target": "需要找工作",
+      "type": "M"
+    },
+    {
+      "id": "S0610L03",
+      "known": "look for work",
+      "target": "找工作",
+      "type": "M"
+    },
+    {
+      "id": "S0611L01",
+      "known": "I would have been ready",
+      "target": "我会准备好",
+      "type": "M"
+    },
+    {
+      "id": "S0611L03",
+      "known": "to look somewhere else",
+      "target": "去别的地方看看",
+      "type": "M"
+    },
+    {
+      "id": "S0611L04",
+      "known": "somewhere else",
+      "target": "别的地方",
+      "type": "M"
+    },
+    {
+      "id": "S0611L05",
+      "known": "to have a look",
+      "target": "看看",
+      "type": "A"
+    },
+    {
+      "id": "S0612L01",
+      "known": "we would have bought",
+      "target": "我们会买",
+      "type": "M"
+    },
+    {
+      "id": "S0612L03",
+      "known": "buy something",
+      "target": "买一些东西",
+      "type": "M"
+    },
+    {
+      "id": "S0613L01",
+      "known": "we probably would have",
+      "target": "我们可能会",
+      "type": "M"
+    },
+    {
+      "id": "S0613L02",
+      "known": "there",
+      "target": "在那里",
+      "type": "M"
+    },
+    {
+      "id": "S0613L03",
+      "known": "buy a house",
+      "target": "买房子",
+      "type": "M"
+    },
+    {
+      "id": "S0613L04",
+      "known": "buy a house there",
+      "target": "在那里买房子",
+      "type": "M"
+    },
+    {
+      "id": "S0614L01",
+      "known": "it's near",
+      "target": "它靠近",
+      "type": "M"
+    },
+    {
+      "id": "S0614L02",
+      "known": "your family",
+      "target": "你家人",
+      "type": "M"
+    },
+    {
+      "id": "S0614L03",
+      "known": "where...live",
+      "target": "住的地方",
+      "type": "M"
+    },
+    {
+      "id": "S0614L04",
+      "known": "where your family live",
+      "target": "你家人住的地方",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0615L02": {
+      "lego": [
+        "you said that",
+        "你说那个"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "you said that",
+          "target": "你说那个"
+        },
+        {
+          "known": "he said that",
+          "target": "他说那个"
+        },
+        {
+          "known": "I'd known you said that.",
+          "target": "我知道你说那个。"
+        },
+        {
+          "known": "You said that then.",
+          "target": "你当时说那个。"
+        },
+        {
+          "known": "I would have been ready when you said that.",
+          "target": "当你说那个时我会准备好。"
+        },
+        {
+          "known": "You said that near where your family live.",
+          "target": "你在你家人住的地方附近说那个。"
+        },
+        {
+          "known": "If I'd known you said that I'd have waited.",
+          "target": "如果我知道你说那个，我会等待。"
+        },
+        {
+          "known": "You said that we would have bought a house there.",
+          "target": "你说那个我们会在那里买房子。"
+        },
+        {
+          "known": "The sensible thing would have been when you said that.",
+          "target": "当你说那个时明智的事会是。"
+        },
+        {
+          "known": "We probably would have done things differently when you said that.",
+          "target": "当你说那个时我们可能会做不同的事。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0615L02",
+        "seed_context": {
+          "known": "I thought you were very brave to say that.",
+          "target": "我认为你说那个很勇敢。"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "说",
+          "said"
+        ],
+        [
+          "那个",
+          "that"
+        ]
+      ]
+    },
+    "S0615L03": {
+      "lego": [
+        "say that",
+        "说那个"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0615L02",
+          "known": "you said that",
+          "target": "你说那个",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "say that",
+          "target": "说那个"
+        },
+        {
+          "known": "He needs to say that.",
+          "target": "他需要说那个。"
+        },
+        {
+          "known": "I'd have waited to say that.",
+          "target": "我会等待说那个。"
+        },
+        {
+          "known": "say that there",
+          "target": "在那里说那个"
+        },
+        {
+          "known": "I would have been ready to say that.",
+          "target": "我会准备好说那个。"
+        },
+        {
+          "known": "We would have bought something when we say that.",
+          "target": "当我们说那个时我们会买一些东西。"
+        },
+        {
+          "known": "The sensible thing would have been to say that.",
+          "target": "明智的事会是说那个。"
+        },
+        {
+          "known": "I would have been ready to say that where your family live.",
+          "target": "我会准备好在你家人住的地方说那个。"
+        },
+        {
+          "known": "We probably would have bought a house there when we say that.",
+          "target": "当我们说那个时我们可能会在那里买房子。"
+        },
+        {
+          "known": "If I'd known then I'd have done things differently to say that.",
+          "target": "如果我当时知道，我会做不同的事来说那个。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0615L03",
+        "seed_context": {
+          "known": "I thought you were very brave to say that.",
+          "target": "我认为你说那个很勇敢。"
+        }
+      },
+      "components": [
+        [
+          "说",
+          "say"
+        ],
+        [
+          "那个",
+          "that"
+        ]
+      ]
+    },
+    "S0615L04": {
+      "lego": [
+        "very brave",
+        "很勇敢"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0615L02",
+          "known": "you said that",
+          "target": "你说那个",
+          "type": "M"
+        },
+        {
+          "id": "S0615L03",
+          "known": "say that",
+          "target": "说那个",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "very brave",
+          "target": "很勇敢"
+        },
+        {
+          "known": "You were very brave.",
+          "target": "你很勇敢。"
+        },
+        {
+          "known": "It would have been very brave.",
+          "target": "那会是很勇敢。"
+        },
+        {
+          "known": "very brave then",
+          "target": "当时很勇敢"
+        },
+        {
+          "known": "He needs to be very brave.",
+          "target": "他需要很勇敢。"
+        },
+        {
+          "known": "You said that was very brave.",
+          "target": "你说那个很勇敢。"
+        },
+        {
+          "known": "I thought you were very brave when you said that.",
+          "target": "我认为当你说那个时你很勇敢。"
+        },
+        {
+          "known": "It would have been very brave to say that there.",
+          "target": "在那里说那个会是很勇敢。"
+        },
+        {
+          "known": "We probably would have been very brave to buy a house there.",
+          "target": "我们可能会很勇敢在那里买房子。"
+        },
+        {
+          "known": "The sensible thing would have been to be very brave.",
+          "target": "明智的事会是很勇敢。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0615L04",
+        "seed_context": {
+          "known": "I thought you were very brave to say that.",
+          "target": "我认为你说那个很勇敢。"
+        }
+      },
+      "components": [
+        [
+          "很",
+          "very"
+        ],
+        [
+          "勇敢",
+          "brave"
+        ]
+      ]
+    },
+    "S0615L05": {
+      "lego": [
+        "you were very brave to say that",
+        "你说那个很勇敢"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0615L02",
+          "known": "you said that",
+          "target": "你说那个",
+          "type": "M"
+        },
+        {
+          "id": "S0615L03",
+          "known": "say that",
+          "target": "说那个",
+          "type": "M"
+        },
+        {
+          "id": "S0615L04",
+          "known": "very brave",
+          "target": "很勇敢",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "You were very brave to say that.",
+          "target": "你说那个很勇敢。"
+        },
+        {
+          "known": "very brave to say that",
+          "target": "说那个很勇敢"
+        },
+        {
+          "known": "You were very brave to say that then.",
+          "target": "你当时说那个很勇敢。"
+        },
+        {
+          "known": "I thought you were very brave to say that.",
+          "target": "我认为你说那个很勇敢。"
+        },
+        {
+          "known": "It would have been very brave to say that there.",
+          "target": "在那里说那个会是很勇敢。"
+        },
+        {
+          "known": "He needs to be very brave to say that.",
+          "target": "他需要说那个很勇敢。"
+        },
+        {
+          "known": "I'd known you were very brave to say that.",
+          "target": "我知道你说那个很勇敢。"
+        },
+        {
+          "known": "You were very brave to say that where your family live.",
+          "target": "你在你家人住的地方说那个很勇敢。"
+        },
+        {
+          "known": "We probably would have thought you were very brave to say that.",
+          "target": "我们可能会认为你说那个很勇敢。"
+        },
+        {
+          "known": "The sensible thing would have been to be very brave to say that.",
+          "target": "明智的事会是说那个很勇敢。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0615L05",
+        "seed_context": {
+          "known": "I thought you were very brave to say that.",
+          "target": "我认为你说那个很勇敢。"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "说",
+          "say"
+        ],
+        [
+          "那个",
+          "that"
+        ],
+        [
+          "很",
+          "very"
+        ],
+        [
+          "勇敢",
+          "brave"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0615.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}
