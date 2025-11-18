@@ -820,16 +820,36 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
         baseCourseDir
       );
     } else {
-      // Regular mode: divide LEGOs among windows
+      // Regular mode: divide SEEDS among windows (not LEGOs - seeds are atomic units)
       const targetLegos = params.targetLegos || [];
       const legoData = params.legoData || {};
 
-      const legosPerWindow = Math.ceil(targetLegos.length / browserCount);
-      const windowStartIdx = (windowNum - 1) * legosPerWindow;
-      const windowEndIdx = Math.min(windowNum * legosPerWindow, targetLegos.length);
-      const windowTargetLegos = targetLegos.slice(windowStartIdx, windowEndIdx);
+      // Group LEGOs by seed
+      const legosBySeed = {};
+      for (const lego of targetLegos) {
+        const seedId = lego.seed;
+        if (!legosBySeed[seedId]) {
+          legosBySeed[seedId] = [];
+        }
+        legosBySeed[seedId].push(lego);
+      }
 
-      // Extract LEGO data for this window's LEGOs only
+      // Get sorted list of seeds
+      const seeds = Object.keys(legosBySeed).sort();
+
+      // Divide SEEDS among windows (each seed stays together)
+      const seedsPerWindow = Math.ceil(seeds.length / browserCount);
+      const windowStartIdx = (windowNum - 1) * seedsPerWindow;
+      const windowEndIdx = Math.min(windowNum * seedsPerWindow, seeds.length);
+      const windowSeeds = seeds.slice(windowStartIdx, windowEndIdx);
+
+      // Collect all LEGOs from this window's seeds
+      const windowTargetLegos = [];
+      for (const seedId of windowSeeds) {
+        windowTargetLegos.push(...legosBySeed[seedId]);
+      }
+
+      // Extract LEGO data for this window's LEGOs
       const windowLegoData = {};
       for (const lego of windowTargetLegos) {
         if (legoData[lego.legoId]) {
@@ -837,7 +857,7 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
         }
       }
 
-      console.log(`[Phase 5]     LEGOs: ${windowTargetLegos.length} LEGOs (${Math.round(JSON.stringify(windowLegoData).length / 1024)} KB)`);
+      console.log(`[Phase 5]     Seeds: ${windowSeeds.join(', ')} (${windowTargetLegos.length} LEGOs, ${Math.round(JSON.stringify(windowLegoData).length / 1024)} KB)`);
       console.log(`[Phase 5]     Will spawn ${agentsPerWindow} Task agents`);
 
       // Generate orchestrator prompt for this window with embedded LEGO data
