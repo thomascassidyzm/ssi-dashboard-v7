@@ -457,21 +457,36 @@ app.post('/start', async (req, res) => {
     job.targetLegos = targetLegos;
     job.legoData = legoData;
 
-    // STEP 2: THREE-TIER ARCHITECTURE CONFIGURATION
-    // Fixed architecture: 15 Masters × 10 Workers = 150 concurrent workers
-    const masterCount = 15;          // Browser tabs (Master orchestrators)
-    const workersPerMaster = 10;     // Workers spawned by each Master via Task tool
-    const seedsPerWorker = 5;        // Seeds per worker agent
+    // STEP 2: THREE-TIER ARCHITECTURE CONFIGURATION (Dynamic Sizing)
+    // Choose configuration based on job size
+    let masterCount, workersPerMaster, seedsPerWorker, configType;
 
-    const totalWorkers = masterCount * workersPerMaster;       // 150 workers
-    const capacity = totalWorkers * seedsPerWorker;            // 750 seed capacity
+    if (totalSeeds <= 30) {
+      // SMALL TEST PATTERN (≤30 seeds)
+      // For testing quality AND processes
+      masterCount = 3;           // Browser tabs
+      workersPerMaster = 5;      // Workers per Master
+      seedsPerWorker = 2;        // Seeds per worker
+      configType = 'Small Test';
+    } else {
+      // FULL COURSE PATTERN (>30 seeds)
+      // For production runs
+      masterCount = 15;          // Browser tabs
+      workersPerMaster = 10;     // Workers per Master
+      seedsPerWorker = 5;        // Seeds per worker
+      configType = 'Full Course';
+    }
 
-    console.log(`\n[Phase 5] Three-Tier Architecture:`);
+    const totalWorkers = masterCount * workersPerMaster;
+    const capacity = totalWorkers * seedsPerWorker;
+
+    console.log(`\n[Phase 5] Three-Tier Architecture (${configType} Pattern):`);
     console.log(`[Phase 5]    Tier 1 - Orchestrator: 1 (this server)`);
     console.log(`[Phase 5]    Tier 2 - Masters: ${masterCount} browser tabs`);
     console.log(`[Phase 5]    Tier 3 - Workers: ${workersPerMaster} per Master (${totalWorkers} total)`);
     console.log(`[Phase 5]    Seeds per worker: ${seedsPerWorker}`);
     console.log(`[Phase 5]    Total capacity: ${capacity} seeds`);
+    console.log(`[Phase 5]    Job size: ${totalSeeds} seeds`);
     console.log(`[Phase 5]    Target LEGOs: ${targetLegos.length} LEGOs`);
 
     if (capacity < totalSeeds) {
@@ -480,6 +495,7 @@ app.post('/start', async (req, res) => {
     }
 
     job.config = {
+      configType,
       masterCount,
       workersPerMaster,
       seedsPerWorker,
