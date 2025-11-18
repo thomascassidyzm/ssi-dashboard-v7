@@ -1,7 +1,7 @@
 {
   "version": "curated_v7_spanish",
   "seed_id": "S0050",
-  "generation_stage": "BASKETS_COMPLETE",
+  "generation_stage": "BASKETS_GENERATED",
   "seed_pair": {
     "known": "我不是在试着尽快完成。",
     "target": "I'm not trying to finish as quickly as possible."
@@ -250,16 +250,56 @@
       "is_final_lego": false,
       "current_seed_earlier_legos": [],
       "practice_phrases": [
-        ["I'm not trying to.", "我不是在试着。", null, 1],
-        ["I'm not trying to now.", "我现在不是在试着。", null, 2],
-        ["I'm not trying to improve.", "我不是在试着进步。", null, 3],
-        ["I'm not trying to answer now.", "我现在不是在试着回答。", null, 3],
-        ["I'm not trying to know everything.", "我不是在试着知道所有事情。", null, 4],
-        ["But I'm not trying to worry.", "但我不是在试着担心。", null, 4],
-        ["I'm not trying to worry about making mistakes.", "我不是在试着担心犯错。", null, 5],
-        ["But I'm not trying to improve, if you know what I mean.", "但我不是在试着进步，如果你知道我的意思的话。", null, 6],
-        ["I think I'm not trying to know everything now.", "我认为我现在不是在试着知道所有事情。", null, 6],
-        ["I'm not trying to improve because I don't care about making mistakes.", "我不是在试着进步因为我不在乎犯错。", null, 7]
+        {
+          "known": "我不是在试着进步。",
+          "target": "I'm not trying to improve.",
+          "lego_count": 2
+        },
+        {
+          "known": "我不是在试着回答。",
+          "target": "I'm not trying to answer.",
+          "lego_count": 2
+        },
+        {
+          "known": "我不是在试着知道所有事情。",
+          "target": "I'm not trying to know everything.",
+          "lego_count": 3
+        },
+        {
+          "known": "我不是在试着担心犯错。",
+          "target": "I'm not trying to worry about making mistakes.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我不是在试着觉得好。",
+          "target": "Last night I wasn't trying to feel good.",
+          "lego_count": 4
+        },
+        {
+          "known": "我不是在试着觉得比昨晚好。",
+          "target": "I'm not trying to feel better than last night.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为我不是在试着犯错。",
+          "target": "Because I think I'm not trying to make mistakes.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不是在试着进步或者知道所有事情。",
+          "target": "I'm not trying to improve or know everything.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不是在试着回答，如果你知道的话。",
+          "target": "I'm not trying to answer, if you know.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不是在试着知道怎么回答，因为我认为犯错是件好事。",
+          "target": "I'm not trying to know how to answer, because I think making mistakes is a good thing.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -310,16 +350,56 @@
         }
       ],
       "practice_phrases": [
-        ["Not trying to", "不是在试着", null, 1],
-        ["Not trying to now", "现在不是在试着", null, 2],
-        ["I'm not trying to improve.", "我不是在试着进步。", null, 3],
-        ["Not trying to know everything", "不是在试着知道所有事情", null, 3],
-        ["But I'm not trying to answer.", "但我不是在试着回答。", null, 4],
-        ["I'm not trying to feel tired now.", "我现在不是在试着觉得累。", null, 4],
-        ["If you know, I'm not trying to worry.", "如果你知道，我不是在试着担心。", null, 5],
-        ["I think I'm not trying to improve, if you know what I mean.", "我认为我不是在试着进步，如果你知道我的意思的话。", null, 7],
-        ["It's like this: I'm not trying to know everything because I don't worry.", "就是这样：我不是在试着知道所有事情因为我不担心。", null, 8],
-        ["I'm not trying to feel better now, but I don't care about making mistakes.", "我现在不是在试着觉得好，但我不在乎犯错。", null, 8]
+        {
+          "known": "我不是在试着进步。",
+          "target": "I'm not trying to improve.",
+          "lego_count": 2
+        },
+        {
+          "known": "他不是在试着回答。",
+          "target": "He's not trying to answer.",
+          "lego_count": 2
+        },
+        {
+          "known": "我不是在试着知道所有事情。",
+          "target": "I'm not trying to know everything.",
+          "lego_count": 3
+        },
+        {
+          "known": "他不是在试着担心犯错。",
+          "target": "He's not trying to worry about making mistakes.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我不是在试着觉得累。",
+          "target": "Last night I wasn't trying to feel tired.",
+          "lego_count": 4
+        },
+        {
+          "known": "我不是在试着觉得比昨晚好。",
+          "target": "I'm not trying to feel better than last night.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为我不是在试着知道所有事情。",
+          "target": "Because I think I'm not trying to know everything.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不是在试着进步，或者犯错是件好事。",
+          "target": "I'm not trying to improve, or making mistakes is a good thing.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不是在试着回答，如果你知道我的意思的话。",
+          "target": "I'm not trying to answer, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不在乎我不是在试着尽快完成所有事情。",
+          "target": "I don't care I'm not trying to finish everything as quickly as possible.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -372,16 +452,56 @@
         }
       ],
       "practice_phrases": [
-        ["To finish as quickly as possible", "尽快完成", null, 1],
-        ["To finish as quickly as possible now", "现在尽快完成", null, 2],
-        ["I'm not trying to finish as quickly as possible.", "我不是在试着尽快完成。", null, 3],
-        ["Not trying to finish as quickly as possible", "不是在试着尽快完成", null, 3],
-        ["I'm not trying to finish as quickly as possible now.", "我现在不是在试着尽快完成。", null, 4],
-        ["But I'm not trying to finish as quickly as possible.", "但我不是在试着尽快完成。", null, 4],
-        ["I think I'm not trying to finish as quickly as possible.", "我认为我不是在试着尽快完成。", null, 5],
-        ["I'm not trying to finish as quickly as possible, if you know what I mean.", "我不是在试着尽快完成，如果你知道我的意思的话。", null, 6],
-        ["I don't worry because I'm not trying to finish as quickly as possible.", "我不担心因为我不是在试着尽快完成。", null, 6],
-        ["I don't care about making mistakes because I'm not trying to finish as quickly as possible.", "我不在乎犯错因为我不是在试着尽快完成。", null, 7]
+        {
+          "known": "我需要尽快完成。",
+          "target": "I need to finish as quickly as possible.",
+          "lego_count": 2
+        },
+        {
+          "known": "尽快完成是件好事。",
+          "target": "To finish as quickly as possible is a good thing.",
+          "lego_count": 2
+        },
+        {
+          "known": "我不是在试着尽快完成。",
+          "target": "I'm not trying to finish as quickly as possible.",
+          "lego_count": 3
+        },
+        {
+          "known": "我不担心尽快完成所有事情。",
+          "target": "I don't worry about finishing everything as quickly as possible.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我是否需要尽快完成。",
+          "target": "Last night whether I need to finish as quickly as possible.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为尽快完成是件好事。",
+          "target": "Because I think to finish as quickly as possible is a good thing.",
+          "lego_count": 4
+        },
+        {
+          "known": "我不是在试着尽快完成，如果你知道我的意思的话。",
+          "target": "I'm not trying to finish as quickly as possible, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不需要知道怎么尽快完成所有事情。",
+          "target": "I don't need to know how to finish everything as quickly as possible.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不是在试着尽快完成，或者是否需要进步。",
+          "target": "I'm not trying to finish as quickly as possible, or whether need to improve.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不在乎是否需要尽快完成，因为我认为犯错是件好事。",
+          "target": "I don't care whether need to finish as quickly as possible, because I think making mistakes is a good thing.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -436,16 +556,56 @@
         }
       ],
       "practice_phrases": [
-        ["As quickly as possible", "尽快", null, 1],
-        ["As quickly as possible now", "现在尽快", null, 2],
-        ["I need to improve as quickly as possible.", "我需要尽快进步。", null, 3],
-        ["I think as quickly as possible.", "我认为尽快。", null, 3],
-        ["Not trying to finish as quickly as possible", "不是在试着尽快完成", null, 4],
-        ["But I need to answer as quickly as possible.", "但我需要尽快回答。", null, 4],
-        ["I don't need to know everything as quickly as possible.", "我不需要尽快知道所有事情。", null, 5],
-        ["I think I need to answer as quickly as possible, if you know what I mean.", "我认为我需要尽快回答，如果你知道我的意思的话。", null, 6],
-        ["It's like this: I don't worry about improving as quickly as possible.", "就是这样：我不担心尽快进步。", null, 6],
-        ["I'm not trying to finish as quickly as possible.", "我不是在试着尽快完成。", null, 7]
+        {
+          "known": "我需要尽快回答。",
+          "target": "I need to answer as quickly as possible.",
+          "lego_count": 1
+        },
+        {
+          "known": "尽快进步。",
+          "target": "Improve as quickly as possible.",
+          "lego_count": 1
+        },
+        {
+          "known": "我不是在试着尽快完成。",
+          "target": "I'm not trying to finish as quickly as possible.",
+          "lego_count": 3
+        },
+        {
+          "known": "我不需要知道怎么尽快做。",
+          "target": "I don't need to know how to do it as quickly as possible.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我是否需要尽快完成所有事情。",
+          "target": "Last night whether I need to finish everything as quickly as possible.",
+          "lego_count": 4
+        },
+        {
+          "known": "我不担心尽快完成，因为我认为就是这样。",
+          "target": "I don't worry about finishing as quickly as possible, because I think it's like this.",
+          "lego_count": 4
+        },
+        {
+          "known": "我不是在试着尽快完成，如果你知道我的意思的话。",
+          "target": "I'm not trying to finish as quickly as possible, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我不在乎是否需要尽快进步或者尽快犯错。",
+          "target": "I don't care whether need to improve as quickly as possible or make mistakes as quickly as possible.",
+          "lego_count": 5
+        },
+        {
+          "known": "因为我认为尽快完成所有事情不是件好事。",
+          "target": "Because I think to finish everything as quickly as possible is not a good thing.",
+          "lego_count": 5
+        },
+        {
+          "known": "我没在想怎么尽快回答，或者是否需要尽快进步。",
+          "target": "I wasn't thinking about how to answer as quickly as possible, or whether need to improve as quickly as possible.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -468,11 +628,11 @@
     "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
     "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
     "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
-    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0050.json"
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0050_baskets.json"
   },
   "_stats": {
     "new_legos_in_seed": 4,
-    "phrases_to_generate": 40,
+    "phrases_generated": 40,
     "recent_seed_pairs_count": 10,
     "recent_new_legos_count": 30
   }

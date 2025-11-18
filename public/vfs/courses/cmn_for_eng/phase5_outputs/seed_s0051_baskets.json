@@ -1,7 +1,7 @@
 {
   "version": "curated_v7_spanish",
   "seed_id": "S0051",
-  "generation_stage": "BASKETS_COMPLETE",
+  "generation_stage": "BASKETS_GENERATED",
   "seed_pair": {
     "known": "我喜欢和朋友做有趣的事情。",
     "target": "I enjoy doing interesting things with my friends."
@@ -250,16 +250,56 @@
       "is_final_lego": false,
       "current_seed_earlier_legos": [],
       "practice_phrases": [
-        ["I enjoy.", "我喜欢。", null, 1],
-        ["I enjoy now.", "我现在喜欢。", null, 2],
-        ["I enjoy making mistakes.", "我喜欢犯错。", null, 3],
-        ["But I enjoy making mistakes now.", "但我现在喜欢犯错。", null, 3],
-        ["I enjoy it, if you know what I mean.", "我喜欢，如果你知道我的意思的话。", null, 4],
-        ["I don't worry because I enjoy it.", "我不担心因为我喜欢。", null, 4],
-        ["I enjoy making mistakes because I think it's a good thing.", "我喜欢犯错因为我认为是件好事。", null, 6],
-        ["I enjoy it now because I don't care about making mistakes.", "我现在喜欢因为我不在乎犯错。", null, 6],
-        ["I enjoy making mistakes, and I'm not trying to improve as quickly as possible.", "我喜欢犯错，我不是在试着尽快进步。", null, 7],
-        ["It's like this: I enjoy making mistakes because I think it's a good thing.", "就是这样：我喜欢犯错因为我认为是件好事。", null, 8]
+        {
+          "known": "我喜欢犯错。",
+          "target": "I enjoy making mistakes.",
+          "lego_count": 2
+        },
+        {
+          "known": "我喜欢进步。",
+          "target": "I enjoy improving.",
+          "lego_count": 2
+        },
+        {
+          "known": "我喜欢知道所有事情。",
+          "target": "I enjoy knowing everything.",
+          "lego_count": 3
+        },
+        {
+          "known": "我喜欢回答，如果你知道的话。",
+          "target": "I enjoy answering, if you know.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我喜欢觉得比较好。",
+          "target": "Last night I enjoyed feeling better.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为我喜欢犯错。",
+          "target": "Because I think I enjoy making mistakes.",
+          "lego_count": 4
+        },
+        {
+          "known": "我喜欢犯错，因为我认为是件好事。",
+          "target": "I enjoy making mistakes, because I think it's a good thing.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢进步，或者我不在乎犯错。",
+          "target": "I enjoy improving, or I don't care about making mistakes.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢知道所有事情，如果你知道我的意思的话。",
+          "target": "I enjoy knowing everything, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢回答，但我不担心犯错，因为我认为是件好事。",
+          "target": "I enjoy answering, but I don't worry about making mistakes, because I think it's a good thing.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -292,16 +332,56 @@
         }
       ],
       "practice_phrases": [
-        ["With my friends", "和朋友", null, 1],
-        ["With my friends now", "现在和朋友", null, 2],
-        ["I enjoy with my friends.", "我喜欢和朋友。", null, 3],
-        ["I don't worry with my friends.", "我和朋友不担心。", null, 3],
-        ["But I enjoy it with my friends.", "但我喜欢和朋友。", null, 4],
-        ["I enjoy making mistakes with my friends now.", "我现在喜欢和朋友犯错。", null, 4],
-        ["I enjoy with my friends, if you know what I mean.", "我喜欢和朋友，如果你知道我的意思的话。", null, 5],
-        ["I think I enjoy with my friends because I don't worry about making mistakes.", "我认为我喜欢和朋友因为我不担心犯错。", null, 7],
-        ["I don't care about making mistakes with my friends, if you know what I mean.", "我不在乎和朋友犯错，如果你知道我的意思的话。", null, 8],
-        ["It's like this: I enjoy with my friends because I don't worry about making mistakes.", "就是这样：我喜欢和朋友因为我不担心犯错。", null, 8]
+        {
+          "known": "我喜欢和朋友。",
+          "target": "I enjoy with my friends.",
+          "lego_count": 2
+        },
+        {
+          "known": "和朋友犯错。",
+          "target": "Making mistakes with my friends.",
+          "lego_count": 2
+        },
+        {
+          "known": "我喜欢和朋友进步。",
+          "target": "I enjoy improving with my friends.",
+          "lego_count": 3
+        },
+        {
+          "known": "我喜欢和朋友回答所有事情。",
+          "target": "I enjoy answering everything with my friends.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我喜欢和朋友觉得好。",
+          "target": "Last night I enjoyed feeling good with my friends.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为我喜欢和朋友。",
+          "target": "Because I think I enjoy with my friends.",
+          "lego_count": 4
+        },
+        {
+          "known": "我喜欢和朋友犯错，因为我认为是件好事。",
+          "target": "I enjoy making mistakes with my friends, because I think it's a good thing.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友进步，如果你知道我的意思的话。",
+          "target": "I enjoy improving with my friends, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友，但我不担心犯错。",
+          "target": "I enjoy with my friends, but I don't worry about making mistakes.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友回答，或者我不在乎是否需要进步。",
+          "target": "I enjoy answering with my friends, or I don't care whether need to improve.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -350,16 +430,56 @@
         }
       ],
       "practice_phrases": [
-        ["Doing with my friends", "和朋友做", null, 1],
-        ["Doing with my friends now", "现在和朋友做", null, 2],
-        ["I enjoy doing with my friends.", "我喜欢和朋友做。", null, 3],
-        ["I enjoy doing with my friends now.", "我现在喜欢和朋友做。", null, 3],
-        ["But I enjoy doing with my friends.", "但我喜欢和朋友做。", null, 4],
-        ["I think I enjoy doing with my friends.", "我认为我喜欢和朋友做。", null, 4],
-        ["I enjoy doing with my friends, if you know what I mean.", "我喜欢和朋友做，如果你知道我的意思的话。", null, 5],
-        ["I don't worry because I enjoy doing with my friends.", "我不担心因为我喜欢和朋友做。", null, 6],
-        ["It's like this: I enjoy doing with my friends and I don't care about making mistakes.", "就是这样：我喜欢和朋友做我不在乎犯错。", null, 8],
-        ["I'm not trying to finish as quickly as possible because I enjoy doing with my friends.", "我不是在试着尽快完成因为我喜欢和朋友做。", null, 8]
+        {
+          "known": "我喜欢和朋友做。",
+          "target": "I enjoy doing with my friends.",
+          "lego_count": 2
+        },
+        {
+          "known": "和朋友做所有事情。",
+          "target": "Doing everything with my friends.",
+          "lego_count": 2
+        },
+        {
+          "known": "我喜欢和朋友做，如果你知道的话。",
+          "target": "I enjoy doing with my friends, if you know.",
+          "lego_count": 3
+        },
+        {
+          "known": "我喜欢和朋友做所有事情。",
+          "target": "I enjoy doing everything with my friends.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我喜欢和朋友做，觉得很好。",
+          "target": "Last night I enjoyed doing with my friends, feeling good.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为我喜欢和朋友做。",
+          "target": "Because I think I enjoy doing with my friends.",
+          "lego_count": 4
+        },
+        {
+          "known": "我喜欢和朋友做，因为我认为是件好事。",
+          "target": "I enjoy doing with my friends, because I think it's a good thing.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友做所有事情，如果你知道我的意思的话。",
+          "target": "I enjoy doing everything with my friends, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友做，但我不担心犯错。",
+          "target": "I enjoy doing with my friends, but I don't worry about making mistakes.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友做，或者我不在乎是否需要尽快完成。",
+          "target": "I enjoy doing with my friends, or I don't care whether need to finish as quickly as possible.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -418,16 +538,56 @@
         }
       ],
       "practice_phrases": [
-        ["Do interesting things", "做有趣的事情", null, 1],
-        ["Do interesting things now", "现在做有趣的事情", null, 2],
-        ["I enjoy doing interesting things.", "我喜欢做有趣的事情。", null, 3],
-        ["I enjoy doing interesting things with my friends.", "我喜欢和朋友做有趣的事情。", null, 3],
-        ["I enjoy doing interesting things with my friends now.", "我现在喜欢和朋友做有趣的事情。", null, 4],
-        ["But I enjoy doing interesting things with my friends.", "但我喜欢和朋友做有趣的事情。", null, 4],
-        ["I think I enjoy doing interesting things with my friends, if you know what I mean.", "我认为我喜欢和朋友做有趣的事情，如果你知道我的意思的话。", null, 6],
-        ["I enjoy doing interesting things with my friends because I don't worry about making mistakes.", "我喜欢和朋友做有趣的事情因为我不担心犯错。", null, 7],
-        ["It's like this: I enjoy doing interesting things with my friends and I don't care about making mistakes.", "就是这样：我喜欢和朋友做有趣的事情我不在乎犯错。", null, 8],
-        ["I'm not trying to finish as quickly as possible because I enjoy doing interesting things with my friends.", "我不是在试着尽快完成因为我喜欢和朋友做有趣的事情。", null, 9]
+        {
+          "known": "我喜欢做有趣的事情。",
+          "target": "I enjoy doing interesting things.",
+          "lego_count": 2
+        },
+        {
+          "known": "做有趣的事情是件好事。",
+          "target": "Doing interesting things is a good thing.",
+          "lego_count": 2
+        },
+        {
+          "known": "我喜欢和朋友做有趣的事情。",
+          "target": "I enjoy doing interesting things with my friends.",
+          "lego_count": 3
+        },
+        {
+          "known": "我需要做有趣的事情，如果你知道的话。",
+          "target": "I need to do interesting things, if you know.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我喜欢做有趣的事情，觉得很好。",
+          "target": "Last night I enjoyed doing interesting things, feeling good.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为做有趣的事情是件好事。",
+          "target": "Because I think doing interesting things is a good thing.",
+          "lego_count": 4
+        },
+        {
+          "known": "我喜欢和朋友做有趣的事情，如果你知道我的意思的话。",
+          "target": "I enjoy doing interesting things with my friends, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢做有趣的事情，但我不担心犯错。",
+          "target": "I enjoy doing interesting things, but I don't worry about making mistakes.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友做有趣的事情，因为我认为是件好事。",
+          "target": "I enjoy doing interesting things with my friends, because I think it's a good thing.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢做有趣的事情，或者我不在乎是否需要尽快完成。",
+          "target": "I enjoy doing interesting things, or I don't care whether need to finish as quickly as possible.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -492,16 +652,56 @@
         }
       ],
       "practice_phrases": [
-        ["Interesting things", "有趣的事情", null, 1],
-        ["Interesting things now", "现在有趣的事情", null, 2],
-        ["I enjoy interesting things.", "我喜欢有趣的事情。", null, 3],
-        ["I don't know interesting things.", "我不知道有趣的事情。", null, 3],
-        ["But I enjoy interesting things.", "但我喜欢有趣的事情。", null, 4],
-        ["I think interesting things are a good thing.", "我认为有趣的事情是件好事。", null, 4],
-        ["I enjoy interesting things with my friends now.", "我现在喜欢和朋友有趣的事情。", null, 5],
-        ["I enjoy interesting things with my friends, if you know what I mean.", "我喜欢和朋友有趣的事情，如果你知道我的意思的话。", null, 6],
-        ["I don't worry because I think interesting things are a good thing, if you know what I mean.", "我不担心因为我认为有趣的事情是件好事，如果你知道我的意思的话。", null, 8],
-        ["I enjoy doing interesting things with my friends.", "我喜欢和朋友做有趣的事情。", null, 8]
+        {
+          "known": "我喜欢有趣的事情。",
+          "target": "I enjoy interesting things.",
+          "lego_count": 2
+        },
+        {
+          "known": "有趣的事情是件好事。",
+          "target": "Interesting things are a good thing.",
+          "lego_count": 2
+        },
+        {
+          "known": "我喜欢和朋友有趣的事情。",
+          "target": "I enjoy interesting things with my friends.",
+          "lego_count": 3
+        },
+        {
+          "known": "我需要知道有趣的事情，如果你知道的话。",
+          "target": "I need to know interesting things, if you know.",
+          "lego_count": 3
+        },
+        {
+          "known": "昨晚我喜欢有趣的事情，觉得很好。",
+          "target": "Last night I enjoyed interesting things, feeling good.",
+          "lego_count": 4
+        },
+        {
+          "known": "因为我认为有趣的事情是件好事。",
+          "target": "Because I think interesting things are a good thing.",
+          "lego_count": 4
+        },
+        {
+          "known": "我喜欢有趣的事情，如果你知道我的意思的话。",
+          "target": "I enjoy interesting things, if you know what I mean.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢和朋友有趣的事情，但我不担心犯错。",
+          "target": "I enjoy interesting things with my friends, but I don't worry about making mistakes.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢有趣的事情，因为我认为犯错也是件好事。",
+          "target": "I enjoy interesting things, because I think making mistakes is also a good thing.",
+          "lego_count": 5
+        },
+        {
+          "known": "我喜欢有趣的事情，或者我不在乎是否需要尽快进步。",
+          "target": "I enjoy interesting things, or I don't care whether need to improve as quickly as possible.",
+          "lego_count": 5
+        }
       ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
@@ -534,11 +734,11 @@
     "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
     "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
     "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
-    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0051.json"
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0051_baskets.json"
   },
   "_stats": {
     "new_legos_in_seed": 5,
-    "phrases_to_generate": 50,
+    "phrases_generated": 50,
     "recent_seed_pairs_count": 10,
     "recent_new_legos_count": 30
   }
