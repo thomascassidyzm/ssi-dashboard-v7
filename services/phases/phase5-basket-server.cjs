@@ -741,10 +741,11 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 ${legoIds.slice(0, 10).join(', ')}${legoIds.length > 10 ? ` ... and ${legoIds.length - 10} more` : ''}
 
 **OUTPUT WORKFLOW** (each agent must follow):
-1. Save FULL output to \`seed_SXXXX_FULL.json\` (with _metadata, _instructions, _stats)
-2. Strip metadata → extract ONLY the \`legos\` object
-3. Save stripped to \`seed_SXXXX_baskets.json\`
-4. Push ONLY stripped file to GitHub
+1. Read lego_pairs.json to get LEGO details for assigned LEGO_IDs
+2. Generate practice baskets using Phase 5 intelligence
+3. Upload via ngrok: \`POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase5/upload-basket\`
+4. Include \`stagingOnly: true\` in upload payload
+5. No git commits - all uploads go to staging for review
 
 ---
 
@@ -753,6 +754,8 @@ ${legoIds.slice(0, 10).join(', ')}${legoIds.length > 10 ? ` ... and ${legoIds.le
 Use the Task tool ${agentCount} times in a single message to spawn all agents in parallel.
 
 Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${legosPerAgent} LEGOs each).
+
+**Worker prompt template:** Use \`docs/prompts/phase5_worker_prompt_with_staging.md\`
 `;
   }
 
@@ -760,56 +763,84 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   const totalSeeds = endSeed - startSeed + 1;
   const agentCount = agentsPerWindow || Math.ceil(totalSeeds / (seedsPerAgent || 10));
   const actualSeedsPerAgent = seedsPerAgent || 10;
+  const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
-  return `# Phase 5 Orchestrator: Spawn ${agentCount} Parallel Agents
+  return `# Phase 5 Master Orchestrator
 
-**Course**: ${courseCode}
-**Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
-**Required Agents**: ${agentCount} parallel agents
-**Seeds per agent**: ${actualSeedsPerAgent}
-
----
-
-## 🎯 YOUR ONLY JOB: Spawn Agents
-
-You are the orchestrator. **DO NOT** read files or generate content yourself.
-
-**Your task:**
-1. Spawn ${agentCount} agents in parallel
-2. Pass each agent its seed range (${actualSeedsPerAgent} seeds each)
-3. Monitor progress and report when complete
-
-**Each agent prompt should include:**
-- Specific seed range (e.g., "S0001-S0010")
-- Path to scaffolds: \`${relativeDir}/phase5_scaffolds/\`
-- Path to outputs: \`${relativeDir}/phase5_outputs/\`
-- Phase 5 intelligence (SSoT): https://raw.githubusercontent.com/thomascassidyzm/ssi-dashboard-v7/main/public/docs/phase_intelligence/phase_5_lego_baskets.md
-
-**CRITICAL OUTPUT WORKFLOW** (each agent must follow):
-
-1. **Read scaffold**: Load \`${relativeDir}/phase5_scaffolds/seed_SXXXX_scaffold.json\`
-2. **Fetch Phase 5 intelligence**: Read the markdown doc at the URL above
-3. **Generate baskets**: Fill in the \`practice_phrases\` arrays following the intelligence doc exactly
-4. **Save FULL output**: Write complete JSON to \`${relativeDir}/phase5_outputs/seed_SXXXX_FULL.json\`
-5. **Strip metadata**: Extract ONLY the \`legos\` object (remove _metadata, _instructions, _stats)
-6. **Save stripped**: Write clean JSON to \`${relativeDir}/phase5_outputs/seed_SXXXX_baskets.json\`
-7. **Commit & Push**: Create branch \`claude/baskets-${courseCode}-window-N-sXXXX-sYYYY-[SESSION_ID]\`, commit ONLY stripped files, push to GitHub
-   - **CRITICAL**: Append your Claude session ID to the branch name (e.g., \`-01Hjy67f2oaF4392y2gC971T\`)
-   - This ensures GitHub authentication works via Claude Code on the Web
-   - **NOTE**: The phase5_outputs/.gitignore only tracks \`seed_S*_baskets.json\` files - all other files will be ignored by git
-   - Only commit the stripped basket files, not FULL files or any other outputs
+**Course:** \`${courseCode}\`
+**Your Range:** Seeds \`S${String(startSeed).padStart(4, '0')}\` to \`S${String(endSeed).padStart(4, '0')}\` (${totalSeeds} seeds)
+**Upload mode:** Staging + ngrok ✅
 
 ---
 
-## 🚀 SPAWN ALL ${agentCount} AGENTS NOW
+## 🎯 YOUR MISSION
 
-Use the Task tool ${agentCount} times in a single message to spawn all agents in parallel.
+You are responsible for generating baskets for all LEGOs in seeds ${startSeed}-${endSeed}.
 
-When all agents complete, tell the user to run validation:
+**Your workflow:**
 
-\`\`\`bash
-node scripts/phase5_merge_baskets.cjs ${courseDir}
+1. ✅ **Identify LEGOs** - Read seed_pairs.json and lego_pairs.json to find all LEGOs in your seed range
+2. ✅ **Spawn sub-agents** (${actualSeedsPerAgent} seeds per agent = ~${agentCount} agents)
+3. ✅ **Sub-agents upload via ngrok** (no git, no branches!)
+4. ✅ **Monitor completion** and report summary
+
+---
+
+## 🚀 STEP 1: Spawn Sub-Agents
+
+**Critical**: Divide your ${totalSeeds} seeds among ${agentCount} sub-agents.
+
+**Batching strategy:**
+- ~${actualSeedsPerAgent} seeds per sub-agent
+- This means ${agentCount} agents total
+- Spawn ALL agents in parallel (use Task tool ${agentCount} times in ONE message)
+
+**Each sub-agent receives:**
+- Their specific seed range (e.g., S${String(startSeed).padStart(4, '0')}-S${String(startSeed + actualSeedsPerAgent - 1).padStart(4, '0')})
+- Course path: \`${relativeDir}\`
+- Upload URL: \`${ngrokUrl}/phase5/upload-basket\`
+- Agent ID: \`agent-{{NUM}}\`
+- Staging flag: \`stagingOnly: ${job.stagingOnly || false}\`
+
+**What you DON'T need to do:**
+- ❌ Create scaffolds (agents read from lego_pairs.json directly)
+- ❌ Push to GitHub (no git involved!)
+- ❌ Merge files (saved to staging, reviewed separately)
+
+**Worker prompt template:**
+Use the docs at \`docs/prompts/phase5_worker_prompt_with_staging.md\` as the template for each sub-agent.
+
+---
+
+## 📊 STEP 2: Monitor & Report
+
+Track completion and report:
+
 \`\`\`
+✅ Phase 5 Complete (Seeds ${startSeed}-${endSeed})
+   Seeds processed: ${totalSeeds}
+   Sub-agents spawned: ${agentCount}
+   Upload method: ngrok → staging
+   Status: All agents completed
+\`\`\`
+
+---
+
+## ⚠️ IMPORTANT NOTES
+
+### Staging Workflow (New!)
+- **Sub-agents upload via ngrok** → No git conflicts
+- **Baskets saved to staging first** → Safe review before canon merge
+- **Manual merge when ready** → Use \`node tools/phase5/preview-merge.cjs ${courseCode}\`
+- **Zero git risk** → Staging is git-ignored
+
+### Your Role as Master
+- **You orchestrate** - you don't generate content yourself
+- **You spawn agents** - use Task tool to create sub-agents
+- **You monitor** - track when agents complete
+- **You report** - tell user when complete
+
+**START NOW: Spawn all ${agentCount} agents in parallel!**
 `;
 }
 
