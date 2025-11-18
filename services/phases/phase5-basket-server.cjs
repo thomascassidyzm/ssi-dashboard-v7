@@ -1440,27 +1440,30 @@ app.post('/upload-basket', async (req, res) => {
     await fs.writeJson(basketFilePath, baskets, { spaces: 2 });
     console.log(`   💾 Saved to ${basketFilePath}`);
 
-    // ALSO save to staging for review (git-ignored, safe)
+    // Save to staging for review (git-ignored, safe)
     const stagingFilePath = path.join(phase5StagingDir, `seed_${seed}_baskets.json`);
     await fs.writeJson(stagingFilePath, baskets, { spaces: 2 });
     console.log(`   📦 Staged to ${stagingFilePath}`);
 
-    // If staging-only mode, skip merge to canon
-    if (stagingOnly) {
-      console.log(`   ⏸️  Staging-only mode: skipping merge to canon`);
-      return res.json({
-        success: true,
-        message: 'Baskets saved to staging (not merged to canon)',
-        stagingPath: stagingFilePath,
-        basketCount: Object.keys(baskets).length
-      });
-    }
+    // STAGING WORKFLOW: Never auto-merge to canon
+    // Use tools/phase5/extract-and-normalize.cjs to review and merge when ready
+    console.log(`   ✅ Staging complete - use extract-and-normalize.cjs to review and merge`);
 
+    return res.json({
+      success: true,
+      message: 'Baskets saved to staging (use extract-and-normalize.cjs to merge)',
+      stagingPath: stagingFilePath,
+      basketCount: Object.keys(baskets).length,
+      reviewCommand: `node tools/phase5/preview-merge.cjs ${course}`,
+      mergeCommand: `node tools/phase5/extract-and-normalize.cjs ${course}`
+    });
+
+    // LEGACY AUTO-MERGE CODE (disabled - use extract-and-normalize.cjs instead)
     // Load or create lego_baskets.json
-    let legoBaskets = { metadata: {}, baskets: {} };
-    if (await fs.pathExists(legoBasketsPath)) {
-      legoBaskets = await fs.readJson(legoBasketsPath);
-    }
+    // let legoBaskets = { metadata: {}, baskets: {} };
+    // if (await fs.pathExists(legoBasketsPath)) {
+    //   legoBaskets = await fs.readJson(legoBasketsPath);
+    // }
 
     // Merge baskets
     let addedCount = 0;
