@@ -147,7 +147,8 @@ app.post('/start', async (req, res) => {
     known,
     browserWindows,
     agentsPerWindow,
-    seedsPerAgent
+    seedsPerAgent,
+    stagingOnly = false
   } = req.body;
 
   if (!courseCode || !startSeed || !endSeed || !target || !known) {
@@ -228,6 +229,7 @@ app.post('/start', async (req, res) => {
     endSeed,
     target,
     known,
+    stagingOnly,
     status: 'preparing_scaffolds',
     startedAt: new Date().toISOString(),
 

@@ -130,9 +130,12 @@ Content-Type: application/json
       ... (same format)
     }
   },
-  "agentId": "{{AGENT_ID}}"
+  "agentId": "{{AGENT_ID}}",
+  "stagingOnly": {{STAGING_ONLY}}
 }
 ```
+
+**Note**: `stagingOnly` should be `true` for review-before-merge, `false` for auto-merge to canon.
 
 ### Upload Strategy
 
