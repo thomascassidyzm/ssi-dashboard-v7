@@ -1412,7 +1412,7 @@ Start with Step 1: Create scaffolds for your ${patch.lego_count} LEGOs.
  */
 app.post('/upload-basket', async (req, res) => {
   try {
-    const { course, seed, baskets, agentId } = req.body;
+    const { course, seed, baskets, agentId, stagingOnly = false } = req.body;
 
     if (!course || !seed || !baskets) {
       return res.status(400).json({
@@ -1427,14 +1427,32 @@ app.post('/upload-basket', async (req, res) => {
     const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
     const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
     const phase5OutputsDir = path.join(courseDir, 'phase5_outputs');
+    const phase5StagingDir = path.join(courseDir, 'phase5_baskets_staging');
 
     // Ensure directories exist
     await fs.ensureDir(phase5OutputsDir);
+    await fs.ensureDir(phase5StagingDir);
 
-    // Save individual basket file
+    // Save individual basket file to phase5_outputs
     const basketFilePath = path.join(phase5OutputsDir, `seed_${seed}_baskets.json`);
     await fs.writeJson(basketFilePath, baskets, { spaces: 2 });
     console.log(`   💾 Saved to ${basketFilePath}`);
+
+    // ALSO save to staging for review (git-ignored, safe)
+    const stagingFilePath = path.join(phase5StagingDir, `seed_${seed}_baskets.json`);
+    await fs.writeJson(stagingFilePath, baskets, { spaces: 2 });
+    console.log(`   📦 Staged to ${stagingFilePath}`);
+
+    // If staging-only mode, skip merge to canon
+    if (stagingOnly) {
+      console.log(`   ⏸️  Staging-only mode: skipping merge to canon`);
+      return res.json({
+        success: true,
+        message: 'Baskets saved to staging (not merged to canon)',
+        stagingPath: stagingFilePath,
+        basketCount: Object.keys(baskets).length
+      });
+    }
 
     // Load or create lego_baskets.json
     let legoBaskets = { metadata: {}, baskets: {} };
