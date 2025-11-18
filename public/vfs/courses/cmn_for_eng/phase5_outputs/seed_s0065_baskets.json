@@ -347,12 +347,23 @@
       "type": "A",
       "current_seed_legos_available": [],
       "is_final_lego": false,
-      "practice_phrases": [],
+      "practice_phrases": [
+        ["Time", "时间", null, 1],
+        ["A little time", "一点时间", null, 2],
+        ["Give you time", "给你时间", null, 3],
+        ["I need time", "我需要时间", null, 3],
+        ["We wanted to give you a little time", "我们想给你一点时间", null, 5],
+        ["I need time next week", "下周我需要时间", null, 4],
+        ["I know you don't mind giving me a little time", "我知道你不介意给我一点时间", null, 6],
+        ["Are you sure you can give me time next week?", "你确定下周你能给我时间吗？", null, 6],
+        ["I'm not sure I can give you enough time to remember", "我不确定我能给你足够时间记住", null, 7],
+        ["When you don't understand you need more time to remember", "当你不理解时你需要更多时间记住", null, 7]
+      ],
       "phrase_distribution": {
-        "really_short_1_2": 0,
-        "quite_short_3": 0,
-        "longer_4_5": 0,
-        "long_6_plus": 0
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
       },
       "_metadata": {
         "lego_id": "S0065L01",
