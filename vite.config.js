@@ -28,11 +28,17 @@ export default defineConfig({
           const items = fs.readdirSync(vfsPath)
           for (const item of items) {
             const itemPath = path.join(vfsPath, item)
-            const stat = fs.statSync(itemPath)
-            if (stat.isDirectory()) {
-              // Remove course directories (spa_for_eng, cmn_for_eng, etc.)
-              fs.removeSync(itemPath)
-              console.log(`✓ Excluded from build: vfs/courses/${item}`)
+            try {
+              // Use lstatSync to handle symlinks (doesn't follow them)
+              const stat = fs.lstatSync(itemPath)
+              if (stat.isDirectory() || stat.isSymbolicLink()) {
+                // Remove course directories and symlinks (spa_for_eng, cmn_for_eng, zho_for_eng, etc.)
+                fs.removeSync(itemPath)
+                console.log(`✓ Excluded from build: vfs/courses/${item}`)
+              }
+            } catch (err) {
+              // Skip if file doesn't exist or can't be accessed
+              console.log(`⚠ Skipped: vfs/courses/${item} (${err.message})`)
             }
           }
         }
