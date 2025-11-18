@@ -1,0 +1,179 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0070",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "她不想告诉我它在哪里。",
+    "target": "She didn't want to tell me where it was."
+  },
+  "legos": {
+    "S0070L01": {
+      "lego": ["She didn't want","她不想"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["She didn't want","她不想", null, 1],
+        ["She didn't want to stop","她不想停下来", null, 2],
+        ["She didn't want to help","她不想帮忙", null, 3],
+        ["She didn't want to find it","她不想找到它", null, 3],
+        ["She didn't want to learn Chinese","她不想学中文", null, 4],
+        ["She didn't want to test herself","她不想测试自己", null, 4],
+        ["She didn't want to say different words","她不想说不同的词", null, 6],
+        ["She didn't want to help at the same time","她不想同时帮忙", null, 6],
+        ["She didn't want to say that again more slowly","她不想再慢一点说一遍", null, 7],
+        ["She didn't want to find the answer next week","她下周不想找到答案", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0070L02": {
+      "lego": ["tell","告诉"],
+      "type": "A",
+      "current_seed_legos_available": [["She didn't want","她不想"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["tell","告诉", null, 1],
+        ["to tell","告诉", null, 2],
+        ["I can tell","我能告诉", null, 2],
+        ["tell him","告诉他", null, 3],
+        ["I want to tell you","我想告诉你", null, 4],
+        ["She didn't want to tell","她不想告诉", null, 4],
+        ["I can tell you the answer","我能告诉你答案", null, 5],
+        ["She didn't want to tell him","她不想告诉他", null, 5],
+        ["Could you tell me where it is?","你能告诉我它在哪里吗？", null, 7],
+        ["I don't know how to tell you","我不知道怎么告诉你", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 3,
+        "quite_short_3": 1,
+        "longer_4_5": 3,
+        "long_6_plus": 3
+      }
+    },
+    "S0070L03": {
+      "lego": ["tell me","告诉我"],
+      "type": "M",
+      "current_seed_legos_available": [["She didn't want","她不想"],["tell","告诉"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["tell me","告诉我", null, 1],
+        ["to tell me","告诉我", null, 2],
+        ["Can you tell me?","你能告诉我吗？", null, 3],
+        ["tell me why","告诉我为什么", null, 3],
+        ["She didn't want to tell me","她不想告诉我", null, 4],
+        ["Could you tell me the answer?","你能告诉我答案吗？", null, 5],
+        ["Please tell me what you need","请告诉我你需要什么", null, 5],
+        ["She didn't want to tell me where it is","她不想告诉我它在哪里", null, 7],
+        ["Can you tell me what you are looking for?","你能告诉我你在找什么吗？", null, 8],
+        ["Could you tell me why you want to stop?","你能告诉我你为什么想停下来吗？", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0070L04": {
+      "lego": ["where","哪里"],
+      "type": "A",
+      "practice_phrases": [
+        ["Where?", "哪里？", null, 1],
+        ["Tell me where.", "告诉我哪里。", null, 2],
+        ["I don't know where.", "我不知道哪里。", null, 3],
+        ["She didn't tell where.", "她不告诉哪里。", null, 3],
+        ["Could you tell me where it is?", "你能告诉我在哪里吗？", null, 4],
+        ["I'm not sure where to help you.", "我不确定在哪里帮你。", null, 5],
+        ["She didn't want to tell me where to find it.", "她不想告诉我在哪里找到它。", null, 6],
+        ["I don't know where you want to stop looking for it.", "我不知道你想在哪里停止找它。", null, 7],
+        ["Are you sure you don't mind telling me where it is?", "你确定你不介意告诉我它在哪里吗？", null, 8],
+        ["He didn't want to tell me where to look after the puppy all afternoon.", "他不想告诉我整个下午在哪里照顾小狗。", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0070L05": {
+      "lego": ["is where","在哪里"],
+      "type": "M",
+      "practice_phrases": [
+        ["It is where?", "它在哪里？", null, 1],
+        ["That is where.", "那在哪里。", null, 2],
+        ["I don't know where it is.", "我不知道它在哪里。", null, 3],
+        ["Tell me where it is.", "告诉我它在哪里。", null, 3],
+        ["Could you tell me where the answer is?", "你能告诉我答案在哪里吗？", null, 4],
+        ["She didn't want to say where it is.", "她不想说它在哪里。", null, 5],
+        ["I'm not sure where the puppy is at the same time.", "我不确定小狗同时在哪里。", null, 6],
+        ["Are you sure you don't mind helping me find where it is?", "你确定你不介意帮我找到它在哪里吗？", null, 8],
+        ["He didn't want to tell me where the young dog is all afternoon.", "他不想整个下午告诉我那只小狗在哪里。", null, 9],
+        ["I don't know where it is but learning Chinese isn't easy to find the answer.", "我不知道它在哪里，但学中文找到答案不容易。", null, 10]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0070L06": {
+      "lego": ["where it was","它在哪里"],
+      "type": "M",
+      "practice_phrases": [
+        ["Where it was?", "它在哪里？", null, 1],
+        ["Tell me where it was.", "告诉我它在哪里。", null, 2],
+        ["I don't know where it was.", "我不知道它在哪里。", null, 3],
+        ["She didn't tell where it was.", "她不告诉它在哪里。", null, 3],
+        ["Could you say again where it was?", "你能再说一遍它在哪里吗？", null, 4],
+        ["She didn't want to tell where it was.", "她不想告诉它在哪里。", null, 5],
+        ["I'm not sure if I can help you find where it was.", "我不确定我能不能帮你找到它在哪里。", null, 7],
+        ["Are you sure you don't mind helping me understand where it was?", "你确定你不介意帮我理解它在哪里吗？", null, 8],
+        ["He didn't want to tell me where it was all afternoon but I need to know.", "他不想整个下午告诉我它在哪里，但我需要知道。", null, 10],
+        ["I don't know how to say where it was yet with enough different words.", "我还不知道怎么用足够多不同的词说它在哪里。", null, 11]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0070L07": {
+      "lego": ["tell me where it was","告诉我它在哪里"],
+      "type": "M",
+      "practice_phrases": [
+        ["Tell me where it was.", "告诉我它在哪里。", null, 1],
+        ["She didn't tell me where it was.", "她不告诉我它在哪里。", null, 2],
+        ["Could you tell me where it was?", "你能告诉我它在哪里吗？", null, 3],
+        ["I want you to tell me where it was.", "我想你告诉我它在哪里。", null, 3],
+        ["She didn't want to tell me where it was.", "她不想告诉我它在哪里。", null, 4],
+        ["Are you sure you can tell me where it was?", "你确定你能告诉我它在哪里吗？", null, 5],
+        ["I'm not sure if you can tell me where it was at the same time.", "我不确定你能不能同时告诉我它在哪里。", null, 7],
+        ["He didn't want to tell me where it was all afternoon but it's important.", "他不想整个下午告诉我它在哪里，但很重要。", null, 8],
+        ["Are you sure you don't mind taking time to tell me where it was?", "你确定你不介意花时间告诉我它在哪里吗？", null, 9],
+        ["She didn't want to tell me where it was because learning Chinese isn't easy to find different words.", "她不想告诉我它在哪里，因为学中文找到不同的词不容易。", null, 12]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    }
+  },
+  "_metadata": {
+    "generated_date": "2025-11-18",
+    "legos_completed": ["S0070L04", "S0070L05", "S0070L06", "S0070L07"],
+    "total_phrases_generated": 40,
+    "generator": "claude-phase5-basket-generator"
+  }
+}
