@@ -48,6 +48,113 @@ app.use(bodyParser.json({ limit: '50mb' }));
 // Active jobs (courseCode -> job state)
 const activeJobs = new Map();
 
+// ==============================================================================
+// HELPER FUNCTIONS: LEGO DATA PREPARATION FOR WEB AGENTS
+// ==============================================================================
+
+/**
+ * Identify missing LEGOs in a seed range
+ * Returns array of LEGO IDs that need baskets generated
+ */
+async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
+  const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+  const basketsPath = path.join(baseCourseDir, 'lego_baskets.json');
+
+  // Load lego_pairs to get all LEGOs
+  const legoPairs = await fs.readJson(legoPairsPath);
+
+  // Load existing baskets (if exists)
+  let existingBaskets = {};
+  if (await fs.pathExists(basketsPath)) {
+    const basketsData = await fs.readJson(basketsPath);
+    existingBaskets = basketsData.baskets || {};
+  }
+
+  // Find all LEGOs in seed range that don't have baskets
+  const missingLegos = [];
+
+  for (const seed of legoPairs.seeds || []) {
+    const seedNum = parseInt(seed.seed.replace('S', ''));
+
+    if (seedNum >= startSeed && seedNum <= endSeed) {
+      for (const lego of seed.legos || []) {
+        if (lego.new && !existingBaskets[lego.id]) {
+          missingLegos.push({
+            legoId: lego.id,
+            seed: seed.seed,
+            target: lego.target,
+            known: lego.known,
+            type: lego.type || 'M'
+          });
+        }
+      }
+    }
+  }
+
+  return missingLegos;
+}
+
+/**
+ * Load scaffold data for LEGOs
+ * Returns object with complete LEGO data ready to embed in prompt
+ */
+async function loadScaffoldData(baseCourseDir, missingLegos) {
+  const legoData = {};
+  const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+  const scaffoldDir = path.join(baseCourseDir, 'phase5_scaffolds');
+
+  // Load full lego_pairs for context
+  const legoPairs = await fs.readJson(legoPairsPath);
+
+  // Build seed lookup
+  const seedMap = {};
+  for (const seed of legoPairs.seeds || []) {
+    seedMap[seed.seed] = seed;
+  }
+
+  for (const lego of missingLegos) {
+    const seedId = lego.seed;
+    const scaffoldPath = path.join(scaffoldDir, `seed_${seedId}_scaffold.json`);
+
+    // Try to load scaffold
+    let scaffoldData = null;
+    if (await fs.pathExists(scaffoldPath)) {
+      try {
+        const fullScaffold = await fs.readJson(scaffoldPath);
+        scaffoldData = fullScaffold.legos?.[lego.legoId];
+      } catch (err) {
+        console.warn(`[Phase 5] Could not load scaffold for ${lego.legoId}: ${err.message}`);
+      }
+    }
+
+    // Build LEGO data with or without scaffold
+    const seedInfo = seedMap[seedId];
+    const legoIndex = seedInfo?.legos?.findIndex(l => l.id === lego.legoId) || 0;
+
+    legoData[lego.legoId] = {
+      lego: [lego.target, lego.known],
+      type: lego.type,
+      seed: seedId,
+
+      // Scaffold data (if available)
+      recent_context: scaffoldData?.recent_context || {},
+      current_seed_earlier_legos: scaffoldData?.current_seed_earlier_legos || [],
+      is_final_lego: legoIndex === (seedInfo?.legos?.length - 1),
+
+      // Fallback: basic context if no scaffold
+      seed_sentence: seedInfo?.sentence || [],
+      seed_legos: seedInfo?.legos?.map(l => ({
+        id: l.id,
+        target: l.target,
+        known: l.known,
+        new: l.new
+      })) || []
+    };
+  }
+
+  return legoData;
+}
+
 // Branch watcher processes (courseCode -> child process)
 const watchers = new Map();
 
@@ -285,6 +392,29 @@ app.post('/start', async (req, res) => {
     console.log(`[Phase 5]    Total seeds: ${scaffoldResult.totalSeeds}`);
     console.log(`[Phase 5]    Total LEGOs: ${scaffoldResult.totalNewLegos}`);
 
+    // STEP 1.5: Identify missing LEGOs and load scaffold data for web agents
+    console.log(`\n[Phase 5] Identifying missing LEGOs...`);
+    const missingLegos = await identifyMissingLegos(baseCourseDir, startSeed, endSeed);
+    console.log(`[Phase 5] ✅ Found ${missingLegos.length} LEGOs needing baskets`);
+
+    if (missingLegos.length === 0) {
+      console.log(`[Phase 5] ✅ All baskets already exist for seeds ${startSeed}-${endSeed}`);
+      return res.json({
+        success: true,
+        alreadyComplete: true,
+        message: `All baskets exist for seeds ${startSeed}-${endSeed}`,
+        basketCount: 0
+      });
+    }
+
+    console.log(`\n[Phase 5] Loading scaffold data for ${missingLegos.length} LEGOs...`);
+    const legoData = await loadScaffoldData(baseCourseDir, missingLegos);
+    console.log(`[Phase 5] ✅ Scaffold data loaded and ready for embedding`);
+
+    // Store in job for tracking
+    job.missingLegos = missingLegos;
+    job.legoData = legoData;
+
     // STEP 2: Load configuration for parallelization
     const config = loadConfig();
     const phase5Config = config.phase5_basket_generation;
@@ -320,12 +450,15 @@ app.post('/start', async (req, res) => {
     job.milestones.watcherStarted = true;
     job.milestones.watcherStartedAt = new Date().toISOString();
 
-    // STEP 4: Spawn browser windows
+    // STEP 4: Spawn browser windows with embedded LEGO data
     await spawnBrowserWindows(courseCode, {
       target,
       known,
       startSeed,
-      endSeed
+      endSeed,
+      legoData,        // ← NEW: Embedded LEGO data for web agents
+      missingLegos,     // ← NEW: List of LEGOs to generate
+      stagingOnly       // ← Pass through staging flag
     }, baseCourseDir, browsers, agents, seedsPerAgentConfig);
 
     res.json({
@@ -761,49 +894,76 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 
   // REGULAR MODE: Generate baskets for seed range
   const totalSeeds = endSeed - startSeed + 1;
-  const agentCount = agentsPerWindow || Math.ceil(totalSeeds / (seedsPerAgent || 10));
-  const actualSeedsPerAgent = seedsPerAgent || 10;
+  const legoData = params.legoData || {};
+  const missingLegos = params.missingLegos || [];
+  const legoCount = missingLegos.length;
+  const agentCount = agentsPerWindow || Math.ceil(legoCount / 10); // ~10 LEGOs per agent
+  const legosPerAgent = Math.ceil(legoCount / agentCount);
   const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
   return `# Phase 5 Master Orchestrator
 
 **Course:** \`${courseCode}\`
 **Your Range:** Seeds \`S${String(startSeed).padStart(4, '0')}\` to \`S${String(endSeed).padStart(4, '0')}\` (${totalSeeds} seeds)
+**Missing LEGOs:** ${legoCount} LEGOs need baskets
 **Upload mode:** Staging + ngrok ✅
 
 ---
 
 ## 🎯 YOUR MISSION
 
-You are responsible for generating baskets for all LEGOs in seeds ${startSeed}-${endSeed}.
+You are responsible for generating baskets for ${legoCount} LEGOs.
 
 **Your workflow:**
 
-1. ✅ **Identify LEGOs** - Read lego_pairs.json to find all LEGOs in your seed range
-2. ✅ **Spawn sub-agents** (${actualSeedsPerAgent} seeds per agent = ~${agentCount} agents)
-3. ✅ **Sub-agents upload via ngrok** (no git, no branches!)
-4. ✅ **Monitor completion** and report summary
+1. ✅ **LEGO data embedded** - All LEGO data provided below (NO file reads needed!)
+2. ✅ **Spawn ${agentCount} sub-agents** (~${legosPerAgent} LEGOs per agent)
+3. ✅ **Sub-agents generate baskets** using embedded data
+4. ✅ **Sub-agents upload via ngrok** (no git, no branches!)
+5. ✅ **Monitor completion** and report summary
+
+---
+
+## 📋 COMPLETE LEGO DATA (${legoCount} LEGOs)
+
+**CRITICAL:** All LEGO and scaffold data is embedded below. Sub-agents do NOT need to read any local files.
+
+\`\`\`json
+${JSON.stringify(legoData, null, 2)}
+\`\`\`
+
+**Each LEGO includes:**
+- \`lego\`: [target, known] language pair
+- \`type\`: A/M/F/X (difficulty level)
+- \`seed\`: Seed ID this LEGO belongs to
+- \`recent_context\`: Vocabulary from recent seeds (GATE compliance)
+- \`current_seed_earlier_legos\`: LEGOs taught earlier in same seed
+- \`is_final_lego\`: Whether this is the last LEGO in the seed
+- \`seed_sentence\`: Full seed sentence (fallback context)
+- \`seed_legos\`: All LEGOs in this seed (fallback context)
+
+**Pass this complete data structure to each sub-agent.**
 
 ---
 
 ## 🚀 STEP 1: Spawn Sub-Agents
 
-**Critical**: Divide your ${totalSeeds} seeds among ${agentCount} sub-agents.
+**Critical**: Divide your ${legoCount} LEGOs among ${agentCount} sub-agents.
 
 **Batching strategy:**
-- ~${actualSeedsPerAgent} seeds per sub-agent
+- ~${legosPerAgent} LEGOs per sub-agent
 - This means ${agentCount} agents total
 - Spawn ALL agents in parallel (use Task tool ${agentCount} times in ONE message)
 
 **Each sub-agent receives:**
-- Their specific seed range (e.g., S${String(startSeed).padStart(4, '0')}-S${String(startSeed + actualSeedsPerAgent - 1).padStart(4, '0')})
-- Course path: \`${relativeDir}\`
+- Their subset of LEGO data (from the JSON above - divide ${legoCount} LEGOs evenly)
 - Upload URL: \`${ngrokUrl}/phase5/upload-basket\`
-- Agent ID: \`agent-{{NUM}}\`
+- Agent ID: \`worker-{{NUM}}\`
 - Staging flag: \`stagingOnly: ${params.stagingOnly || false}\`
 
 **What you DON'T need to do:**
-- ❌ Create scaffolds (agents read from lego_pairs.json directly)
+- ❌ Read any local files (all data embedded above!)
+- ❌ Create scaffolds (already embedded!)
 - ❌ Push to GitHub (no git involved!)
 - ❌ Merge files (saved to staging, reviewed separately)
 
@@ -812,6 +972,13 @@ Fetch from: https://ssi-dashboard-v7.vercel.app/prompts/phase5_worker.md
 
 ⛔ **CRITICAL**: This template includes the full Phase 5 intelligence guidance embedded directly.
 The template has a HUGE "NO SCRIPTS" warning at the top. Make sure sub-agents read and follow it!
+
+**When spawning each worker agent:**
+1. Use the Task tool to create a new agent
+2. In the prompt, include their subset of LEGO data from the JSON above
+3. Tell them their agent ID (worker-1, worker-2, etc.)
+4. Tell them the upload URL and staging flag
+5. Reference the worker prompt template URL
 
 ---
 

@@ -67,25 +67,23 @@ Generate practice baskets for YOUR assigned LEGOs:
 
 ---
 
-## 🔧 STEP 1: Read Scaffolds
+## 🔧 STEP 1: Review Your LEGO Data
 
-For each LEGO in your list:
+**CRITICAL:** Your master agent provided complete LEGO data for you. All data is embedded in your prompt above.
 
-```bash
-# Scaffold location
-public/vfs/courses/{{COURSE_CODE}}/phase5_scaffolds/seed_{{SEED}}_scaffold.json
-```
+**DO NOT try to read local files!** You are a web agent and cannot access the local filesystem.
 
-**Scaffold contains:**
-- LEGO pair (target/known)
-- LEGO type (A/M/F/X)
-- Recent context (previous seeds for vocabulary)
-- Current seed LEGOs (other LEGOs in this seed)
+**Each LEGO in your assignment includes:**
+- `lego`: [target, known] language pair
+- `type`: A/M/F/X (difficulty level)
+- `seed`: Seed ID this LEGO belongs to
+- `recent_context`: Vocabulary from recent seeds for GATE compliance
+- `current_seed_earlier_legos`: LEGOs taught earlier in same seed
+- `is_final_lego`: Whether this is the last LEGO in the seed
+- `seed_sentence`: Full seed sentence (fallback context)
+- `seed_legos`: All LEGOs in this seed (fallback context)
 
-**If scaffold missing:**
-- Check if `lego_pairs.json` has this LEGO
-- Generate scaffold yourself using standard logic
-- Or skip and report error
+**Everything you need is embedded above.** No file reads required.
 
 ---
 
