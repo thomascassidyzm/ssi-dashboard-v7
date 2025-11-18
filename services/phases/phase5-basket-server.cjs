@@ -457,51 +457,54 @@ app.post('/start', async (req, res) => {
     job.targetLegos = targetLegos;
     job.legoData = legoData;
 
-    // STEP 2: Load configuration for parallelization
-    const config = loadConfig();
-    const phase5Config = config.phase5_basket_generation;
+    // STEP 2: THREE-TIER ARCHITECTURE CONFIGURATION
+    // Fixed architecture: 15 Masters × 10 Workers = 150 concurrent workers
+    const masterCount = 15;          // Browser tabs (Master orchestrators)
+    const workersPerMaster = 10;     // Workers spawned by each Master via Task tool
+    const seedsPerWorker = 5;        // Seeds per worker agent
 
-    const browsers = browserWindows || phase5Config.browsers;
-    const agents = agentsPerWindow || phase5Config.agents_per_browser;
-    const seedsPerAgentConfig = seedsPerAgent || phase5Config.seeds_per_agent || 10;
+    const totalWorkers = masterCount * workersPerMaster;       // 150 workers
+    const capacity = totalWorkers * seedsPerWorker;            // 750 seed capacity
 
-    const totalAgents = browsers * agents;
-    const capacity = totalAgents * seedsPerAgentConfig;
-
-    console.log(`\n[Phase 5] Parallelization Strategy:`);
-    console.log(`[Phase 5]    Browser windows: ${browsers}`);
-    console.log(`[Phase 5]    Agents per window: ${agents}`);
-    console.log(`[Phase 5]    Seeds per agent: ${seedsPerAgentConfig}`);
-    console.log(`[Phase 5]    Total agents: ${totalAgents}`);
+    console.log(`\n[Phase 5] Three-Tier Architecture:`);
+    console.log(`[Phase 5]    Tier 1 - Orchestrator: 1 (this server)`);
+    console.log(`[Phase 5]    Tier 2 - Masters: ${masterCount} browser tabs`);
+    console.log(`[Phase 5]    Tier 3 - Workers: ${workersPerMaster} per Master (${totalWorkers} total)`);
+    console.log(`[Phase 5]    Seeds per worker: ${seedsPerWorker}`);
     console.log(`[Phase 5]    Total capacity: ${capacity} seeds`);
+    console.log(`[Phase 5]    Target LEGOs: ${targetLegos.length} LEGOs`);
 
     if (capacity < totalSeeds) {
       console.warn(`[Phase 5] ⚠️  Warning: Capacity (${capacity}) < Total Seeds (${totalSeeds})`);
-      console.warn(`[Phase 5]    Some seeds will not be processed!`);
+      console.warn(`[Phase 5]    Increase masterCount or seedsPerWorker!`);
     }
 
-    job.config = { browsers, agents, seedsPerAgent: seedsPerAgentConfig, totalAgents, capacity };
-    job.milestones.windowsTotal = browsers;
-    job.milestones.branchesExpected = browsers;
-    job.status = 'spawning_windows';
+    job.config = {
+      masterCount,
+      workersPerMaster,
+      seedsPerWorker,
+      totalWorkers,
+      capacity,
+      // Legacy fields for backward compatibility
+      browsers: masterCount,
+      agents: workersPerMaster,
+      totalAgents: totalWorkers
+    };
+    job.milestones.windowsTotal = masterCount;
+    job.milestones.branchesExpected = 0; // No git branches in ngrok architecture
+    job.status = 'spawning_masters';
 
-    // STEP 3: Start branch watcher
-    await startBranchWatcher(courseCode, browsers, baseCourseDir);
-
-    // Update milestone
-    job.milestones.watcherStarted = true;
-    job.milestones.watcherStartedAt = new Date().toISOString();
-
-    // STEP 4: Spawn browser windows with embedded LEGO data
+    // STEP 3: Spawn Master browser tabs with embedded scaffold data
+    // No branch watcher needed - workers upload directly via ngrok
     await spawnBrowserWindows(courseCode, {
       target,
       known,
       startSeed,
       endSeed,
-      legoData,        // ← Embedded LEGO data for web agents
+      legoData,        // ← Embedded scaffold data for Masters
       targetLegos,     // ← List of LEGOs to generate (missing or force regenerate)
       stagingOnly      // ← Pass through staging flag
-    }, baseCourseDir, browsers, agents, seedsPerAgentConfig, job);
+    }, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job);
 
     res.json({
       success: true,
@@ -775,110 +778,90 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
 }
 
 /**
- * Spawn parallel browser windows
- * Each window spawns multiple Task agents (from old system)
+ * Spawn Master browser tabs (THREE-TIER ARCHITECTURE)
+ * Each Master receives scaffold subset and spawns Worker agents via Task tool
  *
- * Migrated from automation_server.cjs lines 2272-2293
+ * @param {string} courseCode - Course identifier
+ * @param {object} params - Contains legoData, targetLegos, startSeed, endSeed, etc.
+ * @param {string} baseCourseDir - Base course directory path
+ * @param {number} masterCount - Number of Master tabs to spawn (15)
+ * @param {number} workersPerMaster - Workers each Master spawns via Task tool (10)
+ * @param {number} seedsPerWorker - Seeds per worker agent (5)
+ * @param {object} job - Job tracking object
  */
-async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCount, agentsPerWindow, seedsPerAgent, job = null) {
-  const { target, known, startSeed, endSeed, legoIds, isRegeneration } = params;
+async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job = null) {
+  const { target, known, startSeed, endSeed, legoData, targetLegos } = params;
 
-  // Handle both regular mode (seed range) and regeneration mode (lego IDs)
-  const totalSeeds = isRegeneration ? legoIds.length : (endSeed - startSeed + 1);
-
-  console.log(`\n[Phase 5] 🌐 Spawning ${browserCount} browser windows...`);
-  console.log(`[Phase 5]    Mode: ${isRegeneration ? 'REGENERATION (specific LEGO_IDs)' : 'FULL (seed range)'}`);
-  console.log(`[Phase 5]    Each window will spawn ${agentsPerWindow} Task agents`);
-  console.log(`[Phase 5]    Each agent processes ${isRegeneration ? 'specific LEGOs' : `${seedsPerAgent} seeds`}`);
+  console.log(`\n[Phase 5] 🌐 Spawning ${masterCount} Master browser tabs...`);
+  console.log(`[Phase 5]    Each Master spawns ${workersPerMaster} workers via Task tool`);
+  console.log(`[Phase 5]    Each worker processes ~${seedsPerWorker} seeds`);
+  console.log(`[Phase 5]    Total LEGOs: ${targetLegos.length}`);
 
   const config = loadConfig();
   const spawnDelay = config.phase5_basket_generation.browser_spawn_delay_ms || 5000;
 
-  // job parameter passed from /start endpoint (or null if called standalone)
-  let currentSeed = startSeed;
-  let currentLegoIndex = 0;
+  // Group LEGOs by seed for clean division
+  const legosBySeed = {};
+  for (const lego of targetLegos) {
+    const seedId = lego.seed;
+    if (!legosBySeed[seedId]) {
+      legosBySeed[seedId] = [];
+    }
+    legosBySeed[seedId].push(lego);
+  }
 
-  for (let windowNum = 1; windowNum <= browserCount; windowNum++) {
-    console.log(`\n[Phase 5]   Window ${windowNum}/${browserCount}:`);
+  // Get sorted list of seeds
+  const seeds = Object.keys(legosBySeed).sort();
+  console.log(`[Phase 5]    Total seeds with LEGOs: ${seeds.length}`);
 
-    let windowPrompt;
+  // Divide SEEDS among Masters (each seed stays together - atomic unit)
+  const seedsPerMaster = Math.ceil(seeds.length / masterCount);
 
-    if (isRegeneration) {
-      // Regeneration mode: distribute LEGOs across windows
-      const legosPerWindow = Math.ceil(legoIds.length / browserCount);
-      const windowStartIdx = (windowNum - 1) * legosPerWindow;
-      const windowEndIdx = Math.min(windowNum * legosPerWindow, legoIds.length);
-      const windowLegoIds = legoIds.slice(windowStartIdx, windowEndIdx);
+  for (let masterNum = 1; masterNum <= masterCount; masterNum++) {
+    console.log(`\n[Phase 5]   Master ${masterNum}/${masterCount}:`);
 
-      console.log(`[Phase 5]     LEGO_IDs: ${windowLegoIds.length} LEGOs (${windowLegoIds.slice(0, 3).join(', ')}...)`);
-      console.log(`[Phase 5]     Will spawn ${agentsPerWindow} Task agents`);
+    // Calculate this Master's seed range
+    const masterStartIdx = (masterNum - 1) * seedsPerMaster;
+    const masterEndIdx = Math.min(masterNum * seedsPerMaster, seeds.length);
+    const masterSeeds = seeds.slice(masterStartIdx, masterEndIdx);
 
-      // Generate regeneration-specific prompt
-      windowPrompt = generatePhase5OrchestratorPrompt(
-        courseCode,
-        { target, known, legoIds: windowLegoIds, isRegeneration: true },
-        baseCourseDir
-      );
-    } else {
-      // Regular mode: divide SEEDS among windows (not LEGOs - seeds are atomic units)
-      const targetLegos = params.targetLegos || [];
-      const legoData = params.legoData || {};
-
-      // Group LEGOs by seed
-      const legosBySeed = {};
-      for (const lego of targetLegos) {
-        const seedId = lego.seed;
-        if (!legosBySeed[seedId]) {
-          legosBySeed[seedId] = [];
-        }
-        legosBySeed[seedId].push(lego);
-      }
-
-      // Get sorted list of seeds
-      const seeds = Object.keys(legosBySeed).sort();
-
-      // Divide SEEDS among windows (each seed stays together)
-      const seedsPerWindow = Math.ceil(seeds.length / browserCount);
-      const windowStartIdx = (windowNum - 1) * seedsPerWindow;
-      const windowEndIdx = Math.min(windowNum * seedsPerWindow, seeds.length);
-      const windowSeeds = seeds.slice(windowStartIdx, windowEndIdx);
-
-      // Collect all LEGOs from this window's seeds
-      const windowTargetLegos = [];
-      for (const seedId of windowSeeds) {
-        windowTargetLegos.push(...legosBySeed[seedId]);
-      }
-
-      // Extract LEGO data for this window's LEGOs
-      const windowLegoData = {};
-      for (const lego of windowTargetLegos) {
-        if (legoData[lego.legoId]) {
-          windowLegoData[lego.legoId] = legoData[lego.legoId];
-        }
-      }
-
-      console.log(`[Phase 5]     Seeds: ${windowSeeds.join(', ')} (${windowTargetLegos.length} LEGOs, ${Math.round(JSON.stringify(windowLegoData).length / 1024)} KB)`);
-      console.log(`[Phase 5]     Will spawn ${agentsPerWindow} Task agents`);
-
-      // Generate orchestrator prompt for this window with embedded LEGO data
-      windowPrompt = generatePhase5OrchestratorPrompt(
-        courseCode,
-        {
-          target,
-          known,
-          startSeed,
-          endSeed,
-          legoData: windowLegoData,
-          targetLegos: windowTargetLegos,
-          agentsPerWindow,
-          stagingOnly: params.stagingOnly
-        },
-        baseCourseDir
-      );
+    // Collect all LEGOs from this Master's seeds
+    const masterTargetLegos = [];
+    for (const seedId of masterSeeds) {
+      masterTargetLegos.push(...legosBySeed[seedId]);
     }
 
+    // Extract scaffold data for this Master's LEGOs
+    const masterLegoData = {};
+    for (const lego of masterTargetLegos) {
+      if (legoData[lego.legoId]) {
+        masterLegoData[lego.legoId] = legoData[lego.legoId];
+      }
+    }
+
+    const dataSize = Math.round(JSON.stringify(masterLegoData).length / 1024);
+    console.log(`[Phase 5]     Seeds: ${masterSeeds.slice(0, 5).join(', ')}${masterSeeds.length > 5 ? '...' : ''} (${masterSeeds.length} seeds)`);
+    console.log(`[Phase 5]     LEGOs: ${masterTargetLegos.length} LEGOs (${dataSize} KB scaffold data)`);
+    console.log(`[Phase 5]     Will spawn ${workersPerMaster} workers via Task tool`);
+
+    // Generate Master orchestrator prompt with embedded scaffold data
+    const masterPrompt = generatePhase5OrchestratorPrompt(
+      courseCode,
+      {
+        target,
+        known,
+        startSeed: parseInt(masterSeeds[0].replace('S', '')),
+        endSeed: parseInt(masterSeeds[masterSeeds.length - 1].replace('S', '')),
+        legoData: masterLegoData,
+        targetLegos: masterTargetLegos,
+        agentsPerWindow: workersPerMaster,  // Workers per Master
+        stagingOnly: params.stagingOnly
+      },
+      baseCourseDir
+    );
+
     try {
-      await spawnClaudeCodeSession(windowPrompt, `phase5-window-${windowNum}`);
+      await spawnClaudeCodeSession(masterPrompt, `phase5-master-${masterNum}`);
 
       // Update milestones
       if (job) {
@@ -887,27 +870,24 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
         job.milestones.lastWindowSpawnedAt = new Date().toISOString();
       }
 
-      // Stagger window spawns (from config, default 5000ms)
-      if (windowNum < browserCount) {
-        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next window...`);
+      // Stagger Master spawns (default 5000ms)
+      if (masterNum < masterCount) {
+        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next Master...`);
         await new Promise(resolve => setTimeout(resolve, spawnDelay));
       }
     } catch (error) {
-      console.error(`[Phase 5]     ❌ Failed to spawn window ${windowNum}:`, error.message);
+      console.error(`[Phase 5]     ❌ Failed to spawn Master ${masterNum}:`, error.message);
       if (job && !job.warnings) job.warnings = [];
-      if (job) job.warnings.push(`Failed to spawn window ${windowNum}: ${error.message}`);
-    }
-
-    if (!isRegeneration) {
-      if (currentSeed > endSeed) break;
+      if (job) job.warnings.push(`Failed to spawn Master ${masterNum}: ${error.message}`);
     }
   }
 
-  console.log(`\n[Phase 5] ✅ Spawned ${browserCount} browser windows`);
-  console.log(`[Phase 5]    Waiting for branches...`);
+  console.log(`\n[Phase 5] ✅ Spawned ${masterCount} Master browser tabs`);
+  console.log(`[Phase 5]    Masters will spawn ${masterCount * workersPerMaster} workers total`);
+  console.log(`[Phase 5]    Workers upload baskets via ngrok`);
 
   if (job) {
-    job.status = 'waiting_for_branches';
+    job.status = 'workers_generating';
   }
 }
 
@@ -972,62 +952,76 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 `;
   }
 
-  // REGULAR MODE: Generate baskets for seed range
+  // THREE-TIER MODE: Master spawns workers
   const totalSeeds = endSeed - startSeed + 1;
   const legoData = params.legoData || {};
   const targetLegos = params.targetLegos || [];
   const legoCount = targetLegos.length;
-  const agentCount = agentsPerWindow || Math.ceil(legoCount / 10); // ~10 LEGOs per agent
-  const legosPerAgent = Math.ceil(legoCount / agentCount);
+
+  // Fixed: 10 workers per Master
+  const workerCount = 10;
+  const legosPerWorker = Math.ceil(legoCount / workerCount);
+
   const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
-  return `# Phase 5 Master Orchestrator
+  // Group LEGOs by seed for clean division
+  const legosBySeed = {};
+  for (const lego of targetLegos) {
+    const seedId = lego.seed;
+    if (!legosBySeed[seedId]) {
+      legosBySeed[seedId] = [];
+    }
+    legosBySeed[seedId].push(lego);
+  }
+  const seeds = Object.keys(legosBySeed).sort();
+  const seedsPerWorker = Math.ceil(seeds.length / workerCount);
+
+  return `# Phase 5 Master Orchestrator - Three-Tier Architecture
 
 **Course:** \`${courseCode}\`
 **Your Range:** Seeds \`S${String(startSeed).padStart(4, '0')}\` to \`S${String(endSeed).padStart(4, '0')}\` (${totalSeeds} seeds)
-**Target LEGOs:** ${legoCount} LEGOs to generate
-**Upload mode:** Staging + ngrok ✅
+**Target LEGOs:** ${legoCount} LEGOs across ${seeds.length} seeds
+**Workers to spawn:** ${workerCount} (via Task tool)
+**LEGOs per worker:** ~${legosPerWorker} LEGOs (~${seedsPerWorker} seeds each)
 
 ---
 
 ## ⚡ CRITICAL: SILENT OPERATION
 
-**DO NOT print verbose output to console!**
+**You AND your workers must work silently!**
 
-- ❌ NO "Processing LEGO S0001L01..." messages
-- ❌ NO "Generated 10 phrases for..." logs
-- ❌ NO progress bars or status updates
-- ✅ Work silently
-- ✅ POST results via HTTP
-- ✅ Only print brief final summary
+- ❌ NO verbose logging ("Processing LEGO...", "Generated phrases...")
+- ✅ Spawn workers silently (no progress logs)
+- ✅ Workers upload via HTTP (doesn't count as output)
+- ✅ Only brief final summary: "✅ Master complete: 10 workers spawned, ${legoCount} LEGOs generated"
 
-**Why:** Browser output has 32k token limit. Verbose logging wastes tokens and risks hitting limits.
+**Why:** Browser has 32K token output limit. Silent operation keeps you safe.
 
 ---
 
-## 🎯 YOUR MISSION
+## 🎯 YOUR MISSION: SPAWN 10 WORKERS
 
-You are responsible for generating baskets for ${legoCount} LEGOs.
+You are a **Master Orchestrator**. You DON'T generate baskets yourself.
 
 **Your workflow:**
 
-1. ✅ **Read LEGO data below** - All data embedded (NO file reads needed!)
-2. ✅ **Generate ${legoCount} baskets** - Use extended thinking for each LEGO
-3. ✅ **Work SILENTLY** - No verbose console output
-4. ✅ **Upload via HTTP** - POST to ngrok endpoint (details below)
-5. ✅ **Report brief summary** - Just final status
+1. ✅ **Divide scaffolds below** - Split ${seeds.length} seeds among ${workerCount} workers (~${seedsPerWorker} seeds each)
+2. ✅ **Spawn ${workerCount} workers** - Use Task tool ${workerCount} times in ONE message (parallel!)
+3. ✅ **Work SILENTLY** - No verbose progress logs
+4. ✅ **Monitor completion** - Workers will upload via ngrok
+5. ✅ **Report brief summary** - "✅ Master complete: 10 workers spawned"
 
 ---
 
-## 📋 COMPLETE LEGO DATA (${legoCount} LEGOs)
+## 📋 COMPLETE SCAFFOLD DATA (${legoCount} LEGOs)
 
-**CRITICAL:** All LEGO and scaffold data is embedded below. You do NOT need to read any local files.
+**CRITICAL:** All scaffold data is embedded below. Divide this among your ${workerCount} workers.
 
 \`\`\`json
 ${JSON.stringify(legoData, null, 2)}
 \`\`\`
 
-**Each LEGO includes:**
+**Each LEGO scaffold includes:**
 - \`lego\`: [target, known] language pair
 - \`type\`: A/M/F/X (difficulty level)
 - \`seed\`: Seed ID this LEGO belongs to
@@ -1039,102 +1033,96 @@ ${JSON.stringify(legoData, null, 2)}
 
 ---
 
-## 🎨 HOW TO GENERATE BASKETS
+## 🚀 HOW TO SPAWN WORKERS
 
-For each LEGO, you will:
+**1. Divide scaffolds by SEED (keep seeds together):**
 
-1. **Use Extended Thinking** - Deeply analyze linguistic patterns and construction
-2. **Generate 10 practice phrases** - Progressive difficulty (1-5 stars)
-3. **Follow GATE compliance** - Only use vocabulary from \`recent_context\`
-4. **Upload via HTTP** - POST to ngrok endpoint
+Seeds in your range: ${seeds.join(', ')}
 
-### Generation Process Per LEGO
+Divide these ${seeds.length} seeds among ${workerCount} workers (~${seedsPerWorker} seeds per worker).
 
-**Analyze the LEGO:**
-- Target language phrase (what learner will produce)
-- Known language meaning (what learner starts with)
-- Type (A/M/F/X) - complexity level
-- Recent context vocabulary (GATE: what words are available)
-- Seed context (pedagogical sequence)
+**Example division:**
+- Worker 1: Seeds ${seeds.slice(0, seedsPerWorker).join(', ')} (first ${seedsPerWorker} seeds)
+- Worker 2: Seeds ${seeds.slice(seedsPerWorker, seedsPerWorker * 2).join(', ')} (next ${seedsPerWorker} seeds)
+- ... etc for all ${workerCount} workers
 
-**Generate 10 practice phrases:**
-1. ⭐ Start simple (isolate the LEGO)
-2. ⭐⭐ Add one complexity layer
-3. ⭐⭐⭐ Combine with recent LEGOs
-4. ⭐⭐⭐⭐ Multi-layer recombination
-5. ⭐⭐⭐⭐⭐ Complex natural phrases
+**2. Spawn all ${workerCount} workers in parallel:**
 
-**GATE Compliance:**
-- Target words MUST come from \`recent_context\` vocabulary
-- If needed, use \`current_seed_earlier_legos\` for same-seed recombination
-- Fallback: \`seed_legos\` for emergency context
+Use Task tool ${workerCount} times in a SINGLE message. Each worker receives:
 
-**Basket Format:**
-\`\`\`json
+\`\`\`
+Task tool prompt for worker-1:
 {
-  "S0001L01": {
-    "lego": ["quiero", "I want"],
-    "type": "M",
-    "practice_phrases": [
-      ["I want", "quiero", null, 1],
-      ["I want now", "quiero ahora", null, 2],
-      ["I want to learn", "quiero aprender", null, 2],
-      ...
-    ]
-  }
+  "subagent_type": "general-purpose",
+  "description": "Phase 5 Worker 1",
+  "prompt": "You are Phase 5 Worker 1. Generate baskets for the following LEGOs and upload via ngrok.
+
+## SCAFFOLD DATA (Your subset)
+<Embed worker 1's scaffold subset here as JSON>
+
+## INSTRUCTIONS
+Fetch worker instructions from: https://ssi-dashboard-v7.vercel.app/prompts/phase5_worker.md
+
+## UPLOAD ENDPOINT
+POST ${ngrokUrl}/phase5/upload-basket
+
+## PAYLOAD FORMAT
+{
+  \\"courseCode\\": \\"${courseCode}\\",
+  \\"seed\\": \\"S0001\\",
+  \\"baskets\\": { \\"S0001L01\\": {...}, ... },
+  \\"stagingOnly\\": ${params.stagingOnly || true}
+}
+
+## WORK SILENTLY
+Generate baskets silently, upload via HTTP, report brief summary only."
 }
 \`\`\`
 
-Each practice phrase: \`[known, target, audio_filename, difficulty]\`
+**3. Monitor silently:**
+
+Workers will upload their baskets via ngrok. No need to track - just spawn and let them work.
+
+**4. Report when all spawned:**
+
+\`\`\`
+✅ Master complete: ${workerCount} workers spawned for ${legoCount} LEGOs
+\`\`\`
 
 ---
 
-## 📤 UPLOAD INSTRUCTIONS
+## 📤 WORKER UPLOAD ENDPOINT
 
-**Upload URL:** \`${ngrokUrl}/phase5/upload-basket\`
+Workers POST to: \`${ngrokUrl}/phase5/upload-basket\`
 
-**Request format:**
-\`\`\`bash
-curl -X POST ${ngrokUrl}/phase5/upload-basket \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "courseCode": "${courseCode}",
-    "seed": "S0001",
-    "baskets": { "S0001L01": {...}, "S0001L02": {...} },
-    "stagingOnly": ${params.stagingOnly || false}
-  }'
-\`\`\`
-
-**Upload strategy:**
-- Process LEGOs in order (seed by seed)
-- Upload each seed when complete (all LEGOs in that seed done)
-- Server will merge uploads (safe to upload same seed multiple times)
-
-**Response:**
+**Payload format:**
 \`\`\`json
 {
-  "success": true,
+  "courseCode": "${courseCode}",
   "seed": "S0001",
-  "legoCount": 8,
-  "savedTo": "staging"
+  "baskets": {
+    "S0001L01": {
+      "lego": ["target", "known"],
+      "type": "M",
+      "practice_phrases": [
+        ["known phrase", "target phrase", null, 1],
+        ...
+      ]
+    }
+  },
+  "stagingOnly": ${params.stagingOnly || true}
 }
 \`\`\`
 
 ---
 
-## ⚠️ IMPORTANT NOTES
+## 🎯 START NOW
 
-### Staging Workflow
-- **Baskets saved to staging first** → Safe review before canon merge
-- **Manual merge when ready** → Use merge tool after review
-- **Zero git risk** → Staging is git-ignored
+**Spawn all ${workerCount} workers in parallel using Task tool!**
 
-### Silent Operation
-- **No verbose logs** - Work quietly, only brief summary at end
-- **HTTP uploads track progress** - Server logs each upload
-- **Output limit: 32K tokens** - Silent operation keeps you safe
+Divide the ${seeds.length} seeds evenly, embed each worker's scaffold subset, and let them work silently.
 
-**START NOW: Generate baskets for all ${legoCount} LEGOs!**
+Report: "✅ Master complete: ${workerCount} workers spawned for ${legoCount} LEGOs"
 `;
 }
 
@@ -1159,13 +1147,13 @@ async function spawnClaudeCodeSession(prompt, windowTitle) {
   // Use Safari (supports AppleScript tab API properly)
   const browser = 'Safari';
   const appleScript = `
--- Open Claude on the Web
+-- Open Claude Code on the Web
 tell application "${browser}"
     activate
 
-    -- Open new tab with claude.ai/new (fresh conversation)
+    -- Open new tab with claude.ai/code (has Task tool!)
     tell window 1
-        set newTab to make new tab with properties {URL:"https://claude.ai/new"}
+        set newTab to make new tab with properties {URL:"https://claude.ai/code"}
         set current tab to newTab
     end tell
 

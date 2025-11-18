@@ -5,6 +5,11 @@
 **Upload URL:** `{{NGROK_URL}}/phase5/upload-basket`
 **Agent ID:** `{{AGENT_ID}}`
 
+**Three-Tier Architecture:**
+- **Tier 1:** Orchestrator (server) - Prepares scaffolds, spawns Masters
+- **Tier 2:** Master (your parent) - Divided work, spawned you via Task tool
+- **Tier 3:** Worker (you!) - Generate baskets, upload via ngrok
+
 ---
 
 ## ⛔⛔⛔ CRITICAL: THIS IS LINGUISTIC WORK, NOT CODING ⛔⛔⛔
