@@ -1,0 +1,784 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0383",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "是的，他说他想把它放在花园里。",
+    "mandarin": "Yes he said he wanted to put it in the garden."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0373",
+      "english": "它很美。",
+      "mandarin": "It was beautiful."
+    },
+    {
+      "seed_id": "S0374",
+      "english": "是的，我觉得它非常美。",
+      "mandarin": "Yes I thought it was very beautiful."
+    },
+    {
+      "seed_id": "S0375",
+      "english": "不，我不知道她在做什么。",
+      "mandarin": "No I didn't know what she was doing."
+    },
+    {
+      "seed_id": "S0376",
+      "english": "我上个月哪儿也没去。",
+      "mandarin": "I didn't go anywhere last month."
+    },
+    {
+      "seed_id": "S0377",
+      "english": "你去年去世界上的什么地方了吗？",
+      "mandarin": "Did you go anywhere in the world last year?"
+    },
+    {
+      "seed_id": "S0378",
+      "english": "不，我没有足够的钱度假。",
+      "mandarin": "No I didn't have enough money for holidays."
+    },
+    {
+      "seed_id": "S0379",
+      "english": "是的，我很幸运能去非洲旅行。",
+      "mandarin": "Yes I was lucky enough to travel to Africa."
+    },
+    {
+      "seed_id": "S0380",
+      "english": "我问她想包括什么。",
+      "mandarin": "I asked what she wanted to include."
+    },
+    {
+      "seed_id": "S0381",
+      "english": "我没问他是否想跟着我们。",
+      "mandarin": "I didn't ask if he wanted to follow us."
+    },
+    {
+      "seed_id": "S0382",
+      "english": "你问他想把它放在哪儿了吗？",
+      "mandarin": "Did you ask where he wanted to put it?"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0377L03",
+      "english": "what place",
+      "mandarin": "什么地方",
+      "type": "M"
+    },
+    {
+      "id": "S0377L04",
+      "english": "anywhere in the world",
+      "mandarin": "世界上的什么地方",
+      "type": "M"
+    },
+    {
+      "id": "S0377L05",
+      "english": "did you go",
+      "mandarin": "你去了吗",
+      "type": "M"
+    },
+    {
+      "id": "S0377L06",
+      "english": "did go",
+      "mandarin": "去了吗",
+      "type": "M"
+    },
+    {
+      "id": "S0378L02",
+      "english": "I don't have",
+      "mandarin": "我没有",
+      "type": "M"
+    },
+    {
+      "id": "S0378L03",
+      "english": "don't have",
+      "mandarin": "没有",
+      "type": "A"
+    },
+    {
+      "id": "S0378L04",
+      "english": "enough money",
+      "mandarin": "足够的钱",
+      "type": "M"
+    },
+    {
+      "id": "S0378L05",
+      "english": "didn't have enough money",
+      "mandarin": "没有足够的钱",
+      "type": "M"
+    },
+    {
+      "id": "S0378L06",
+      "english": "take a vacation",
+      "mandarin": "度假",
+      "type": "M"
+    },
+    {
+      "id": "S0379L02",
+      "english": "I was lucky",
+      "mandarin": "我很幸运",
+      "type": "M"
+    },
+    {
+      "id": "S0379L03",
+      "english": "very lucky",
+      "mandarin": "很幸运",
+      "type": "M"
+    },
+    {
+      "id": "S0379L04",
+      "english": "able to go",
+      "mandarin": "能去",
+      "type": "M"
+    },
+    {
+      "id": "S0379L05",
+      "english": "Africa",
+      "mandarin": "非洲",
+      "type": "A"
+    },
+    {
+      "id": "S0379L06",
+      "english": "travel",
+      "mandarin": "旅行",
+      "type": "A"
+    },
+    {
+      "id": "S0379L07",
+      "english": "travel to Africa",
+      "mandarin": "去非洲旅行",
+      "type": "M"
+    },
+    {
+      "id": "S0379L08",
+      "english": "go traveling",
+      "mandarin": "去旅行",
+      "type": "M"
+    },
+    {
+      "id": "S0380L01",
+      "english": "I asked",
+      "mandarin": "我问",
+      "type": "M"
+    },
+    {
+      "id": "S0380L03",
+      "english": "what she wanted to include",
+      "mandarin": "她想包括什么",
+      "type": "M"
+    },
+    {
+      "id": "S0380L04",
+      "english": "want to include",
+      "mandarin": "想包括",
+      "type": "M"
+    },
+    {
+      "id": "S0380L05",
+      "english": "include",
+      "mandarin": "包括",
+      "type": "A"
+    },
+    {
+      "id": "S0380L06",
+      "english": "include what",
+      "mandarin": "包括什么",
+      "type": "M"
+    },
+    {
+      "id": "S0380L07",
+      "english": "want to include what",
+      "mandarin": "想包括什么",
+      "type": "M"
+    },
+    {
+      "id": "S0381L01",
+      "english": "I didn't ask",
+      "mandarin": "我没问",
+      "type": "M"
+    },
+    {
+      "id": "S0381L02",
+      "english": "if [he] wanted",
+      "mandarin": "是否想",
+      "type": "M"
+    },
+    {
+      "id": "S0381L03",
+      "english": "wanted to follow us",
+      "mandarin": "想跟着我们",
+      "type": "M"
+    },
+    {
+      "id": "S0381L04",
+      "english": "follow",
+      "mandarin": "跟着",
+      "type": "A"
+    },
+    {
+      "id": "S0382L01",
+      "english": "did you ask [him]",
+      "mandarin": "你问他",
+      "type": "M"
+    },
+    {
+      "id": "S0382L02",
+      "english": "wanted to put it in",
+      "mandarin": "想把它放在",
+      "type": "M"
+    },
+    {
+      "id": "S0382L03",
+      "english": "where to put it",
+      "mandarin": "把它放在哪儿",
+      "type": "M"
+    },
+    {
+      "id": "S0382L04",
+      "english": "put where",
+      "mandarin": "放在哪儿",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0383L03": {
+      "lego_id": "S0383L03",
+      "lego": {
+        "english": "he wanted to put it in",
+        "mandarin": "他想把它放在"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0383L03",
+        "seed_context": {
+          "english": "是的，他说他想把它放在花园里。",
+          "mandarin": "Yes he said he wanted to put it in the garden."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "他",
+          "english": "he"
+        },
+        {
+          "mandarin": "想",
+          "english": "wanted"
+        },
+        {
+          "mandarin": "把",
+          "english": "[ba-marker]"
+        },
+        {
+          "mandarin": "它",
+          "english": "it"
+        },
+        {
+          "mandarin": "放在",
+          "english": "put in"
+        }
+      ]
+    },
+    "S0383L04": {
+      "lego_id": "S0383L04",
+      "lego": {
+        "english": "put in the garden",
+        "mandarin": "放在花园里"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0383L03",
+          "english": "he wanted to put it in",
+          "mandarin": "他想把它放在",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0383L04",
+        "seed_context": {
+          "english": "是的，他说他想把它放在花园里。",
+          "mandarin": "Yes he said he wanted to put it in the garden."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "放在",
+          "english": "put in"
+        },
+        {
+          "mandarin": "花园",
+          "english": "garden"
+        },
+        {
+          "mandarin": "里",
+          "english": "in/inside"
+        }
+      ]
+    },
+    "S0383L05": {
+      "lego_id": "S0383L05",
+      "lego": {
+        "english": "in the garden",
+        "mandarin": "花园里"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0383L03",
+          "english": "he wanted to put it in",
+          "mandarin": "他想把它放在",
+          "type": "M"
+        },
+        {
+          "id": "S0383L04",
+          "english": "put in the garden",
+          "mandarin": "放在花园里",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0383L05",
+        "seed_context": {
+          "english": "是的，他说他想把它放在花园里。",
+          "mandarin": "Yes he said he wanted to put it in the garden."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "花园",
+          "english": "garden"
+        },
+        {
+          "mandarin": "里",
+          "english": "in/inside"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0383.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "phrases_to_generate": 30,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

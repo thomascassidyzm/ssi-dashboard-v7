@@ -1,0 +1,776 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0505",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "So that I don't get left behind.",
+    "mandarin": "这样我就不会被落下。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0495",
+      "english": "When it matters.",
+      "mandarin": "当它重要的时候。"
+    },
+    {
+      "seed_id": "S0496",
+      "english": "I'm not planning to lose when it really matters.",
+      "mandarin": "我不打算在真正重要的时候输。"
+    },
+    {
+      "seed_id": "S0497",
+      "english": "That sounds as though you need to get some sleep.",
+      "mandarin": "听起来好像你需要睡一觉。"
+    },
+    {
+      "seed_id": "S0498",
+      "english": "He's standing alone over there inside the entrance.",
+      "mandarin": "他一个人站在那边入口里面。"
+    },
+    {
+      "seed_id": "S0499",
+      "english": "Maybe we should open the door and close the window.",
+      "mandarin": "也许我们应该开门关窗。"
+    },
+    {
+      "seed_id": "S0500",
+      "english": "Why don't you want to sit between the two girls?",
+      "mandarin": "你为什么不想坐在两个女孩中间？"
+    },
+    {
+      "seed_id": "S0501",
+      "english": "If only I could trust you to play together without arguing.",
+      "mandarin": "要是我能相信你们一起玩不吵架就好了。"
+    },
+    {
+      "seed_id": "S0502",
+      "english": "She almost got lost because she turned left instead of right.",
+      "mandarin": "她差点迷路，因为她向左转而不是向右转。"
+    },
+    {
+      "seed_id": "S0503",
+      "english": "I hate making trouble but that one's mine.",
+      "mandarin": "我讨厌制造麻烦，但那个是我的。"
+    },
+    {
+      "seed_id": "S0504",
+      "english": "I'm going to run across the grass.",
+      "mandarin": "我要跑过草地。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0498L06",
+      "english": "inside the entrance",
+      "mandarin": "入口里面",
+      "type": "M"
+    },
+    {
+      "id": "S0499L01",
+      "english": "maybe",
+      "mandarin": "也许",
+      "type": "A"
+    },
+    {
+      "id": "S0499L03",
+      "english": "should",
+      "mandarin": "应该",
+      "type": "A"
+    },
+    {
+      "id": "S0499L04",
+      "english": "open",
+      "mandarin": "开",
+      "type": "A"
+    },
+    {
+      "id": "S0499L06",
+      "english": "open the door",
+      "mandarin": "开门",
+      "type": "M"
+    },
+    {
+      "id": "S0499L07",
+      "english": "close",
+      "mandarin": "关",
+      "type": "A"
+    },
+    {
+      "id": "S0499L08",
+      "english": "window",
+      "mandarin": "窗",
+      "type": "A"
+    },
+    {
+      "id": "S0499L09",
+      "english": "close the window",
+      "mandarin": "关窗",
+      "type": "M"
+    },
+    {
+      "id": "S0500L04",
+      "english": "want to sit",
+      "mandarin": "想坐",
+      "type": "M"
+    },
+    {
+      "id": "S0500L05",
+      "english": "sit at",
+      "mandarin": "坐在",
+      "type": "M"
+    },
+    {
+      "id": "S0500L06",
+      "english": "the two girls",
+      "mandarin": "两个女孩",
+      "type": "M"
+    },
+    {
+      "id": "S0500L07",
+      "english": "between",
+      "mandarin": "中间",
+      "type": "A"
+    },
+    {
+      "id": "S0500L08",
+      "english": "between the two girls",
+      "mandarin": "两个女孩中间",
+      "type": "M"
+    },
+    {
+      "id": "S0501L01",
+      "english": "if only I could",
+      "mandarin": "要是我能",
+      "type": "M"
+    },
+    {
+      "id": "S0501L02",
+      "english": "trust you",
+      "mandarin": "相信你们",
+      "type": "M"
+    },
+    {
+      "id": "S0501L03",
+      "english": "could trust you to play together",
+      "mandarin": "能相信你们一起玩",
+      "type": "M"
+    },
+    {
+      "id": "S0501L04",
+      "english": "play together",
+      "mandarin": "一起玩",
+      "type": "M"
+    },
+    {
+      "id": "S0501L05",
+      "english": "without arguing",
+      "mandarin": "不吵架",
+      "type": "M"
+    },
+    {
+      "id": "S0501L06",
+      "english": "would be good/if only (ending particle)",
+      "mandarin": "就好了",
+      "type": "M"
+    },
+    {
+      "id": "S0502L01",
+      "english": "almost got lost",
+      "mandarin": "差点迷路",
+      "type": "M"
+    },
+    {
+      "id": "S0502L03",
+      "english": "turned left",
+      "mandarin": "向左转",
+      "type": "M"
+    },
+    {
+      "id": "S0502L04",
+      "english": "turn right",
+      "mandarin": "向右转",
+      "type": "M"
+    },
+    {
+      "id": "S0502L05",
+      "english": "instead of right",
+      "mandarin": "而不是向右转",
+      "type": "M"
+    },
+    {
+      "id": "S0503L01",
+      "english": "I hate",
+      "mandarin": "我讨厌",
+      "type": "M"
+    },
+    {
+      "id": "S0503L02",
+      "english": "making trouble",
+      "mandarin": "制造麻烦",
+      "type": "M"
+    },
+    {
+      "id": "S0503L03",
+      "english": "hate making trouble",
+      "mandarin": "讨厌制造麻烦",
+      "type": "M"
+    },
+    {
+      "id": "S0503L05",
+      "english": "that one's mine",
+      "mandarin": "那个是我的",
+      "type": "M"
+    },
+    {
+      "id": "S0504L02",
+      "english": "run across",
+      "mandarin": "跑过",
+      "type": "M"
+    },
+    {
+      "id": "S0504L03",
+      "english": "grass",
+      "mandarin": "草地",
+      "type": "A"
+    },
+    {
+      "id": "S0504L04",
+      "english": "run across the grass",
+      "mandarin": "跑过草地",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0505L01": {
+      "lego_id": "S0505L01",
+      "lego": {
+        "english": "so that I",
+        "mandarin": "这样我就"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0505L01",
+        "seed_context": {
+          "english": "So that I don't get left behind.",
+          "mandarin": "这样我就不会被落下。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "这样",
+          "english": "this way/so"
+        },
+        {
+          "mandarin": "我",
+          "english": "I"
+        },
+        {
+          "mandarin": "就",
+          "english": "then/will"
+        }
+      ]
+    },
+    "S0505L02": {
+      "lego_id": "S0505L02",
+      "lego": {
+        "english": "won't get left behind",
+        "mandarin": "不会被落下"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0505L01",
+          "english": "so that I",
+          "mandarin": "这样我就",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0505L02",
+        "seed_context": {
+          "english": "So that I don't get left behind.",
+          "mandarin": "这样我就不会被落下。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "不会",
+          "english": "won't"
+        },
+        {
+          "mandarin": "被",
+          "english": "(passive marker)"
+        },
+        {
+          "mandarin": "落下",
+          "english": "left behind"
+        }
+      ]
+    },
+    "S0505L03": {
+      "lego_id": "S0505L03",
+      "lego": {
+        "english": "get left behind",
+        "mandarin": "被落下"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0505L01",
+          "english": "so that I",
+          "mandarin": "这样我就",
+          "type": "M"
+        },
+        {
+          "id": "S0505L02",
+          "english": "won't get left behind",
+          "mandarin": "不会被落下",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0505L03",
+        "seed_context": {
+          "english": "So that I don't get left behind.",
+          "mandarin": "这样我就不会被落下。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "被",
+          "english": "(passive marker)"
+        },
+        {
+          "mandarin": "落下",
+          "english": "left behind/fall behind"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0505.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "phrases_to_generate": 30,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

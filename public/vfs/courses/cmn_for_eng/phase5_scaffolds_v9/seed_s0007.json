@@ -1,0 +1,779 @@
+{
+  "version": "v9.0_explicit_labels",
+  "seed_id": "S0007",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "I want to try as hard as I can today.",
+    "mandarin": "我今天想尽力试试。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0001",
+      "english": "I want to speak Chinese with you now.",
+      "mandarin": "我现在想和你说中文。"
+    },
+    {
+      "seed_id": "S0002",
+      "english": "I'm trying to learn.",
+      "mandarin": "我在试着学习。"
+    },
+    {
+      "seed_id": "S0003",
+      "english": "how to speak as often as possible.",
+      "mandarin": "怎么尽可能经常地说。"
+    },
+    {
+      "seed_id": "S0004",
+      "english": "how to say something in Chinese",
+      "mandarin": "怎么用中文说一些东西"
+    },
+    {
+      "seed_id": "S0005",
+      "english": "I'm going to practise speaking with someone else.",
+      "mandarin": "我要和别人练习说话。"
+    },
+    {
+      "seed_id": "S0006",
+      "english": "I'm trying to remember a word.",
+      "mandarin": "我在试着记住一个词。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0003L01",
+      "english": "how to",
+      "mandarin": "怎么",
+      "type": "A"
+    },
+    {
+      "id": "S0003L02",
+      "english": "to speak",
+      "mandarin": "说",
+      "type": "A"
+    },
+    {
+      "id": "S0003L03",
+      "english": "how to speak",
+      "mandarin": "怎么说",
+      "type": "M"
+    },
+    {
+      "id": "S0003L04",
+      "english": "often",
+      "mandarin": "经常",
+      "type": "A"
+    },
+    {
+      "id": "S0003L05",
+      "english": "as...as possible",
+      "mandarin": "尽可能",
+      "type": "M"
+    },
+    {
+      "id": "S0003L06",
+      "english": "to speak often",
+      "mandarin": "经常地说",
+      "type": "M"
+    },
+    {
+      "id": "S0003L07",
+      "english": "to speak as often as possible",
+      "mandarin": "尽可能经常地说",
+      "type": "M"
+    },
+    {
+      "id": "S0004L01",
+      "english": "some",
+      "mandarin": "一些",
+      "type": "M"
+    },
+    {
+      "id": "S0004L02",
+      "english": "things",
+      "mandarin": "东西",
+      "type": "A"
+    },
+    {
+      "id": "S0004L03",
+      "english": "something",
+      "mandarin": "一些东西",
+      "type": "M"
+    },
+    {
+      "id": "S0004L04",
+      "english": "in Chinese",
+      "mandarin": "用中文",
+      "type": "M"
+    },
+    {
+      "id": "S0004L05",
+      "english": "to say in Chinese",
+      "mandarin": "用中文说",
+      "type": "M"
+    },
+    {
+      "id": "S0004L06",
+      "english": "to say something",
+      "mandarin": "说一些东西",
+      "type": "M"
+    },
+    {
+      "id": "S0004L07",
+      "english": "to say something in Chinese",
+      "mandarin": "用中文说一些东西",
+      "type": "M"
+    },
+    {
+      "id": "S0004L08",
+      "english": "how to say in Chinese",
+      "mandarin": "怎么用中文说",
+      "type": "M"
+    },
+    {
+      "id": "S0005L01",
+      "english": "I'm going to",
+      "mandarin": "我要",
+      "type": "M"
+    },
+    {
+      "id": "S0005L02",
+      "english": "someone else",
+      "mandarin": "别人",
+      "type": "M"
+    },
+    {
+      "id": "S0005L03",
+      "english": "with someone else",
+      "mandarin": "和别人",
+      "type": "M"
+    },
+    {
+      "id": "S0005L04",
+      "english": "practise",
+      "mandarin": "练习",
+      "type": "M"
+    },
+    {
+      "id": "S0005L05",
+      "english": "speaking",
+      "mandarin": "说话",
+      "type": "M"
+    },
+    {
+      "id": "S0005L06",
+      "english": "practise speaking",
+      "mandarin": "练习说话",
+      "type": "M"
+    },
+    {
+      "id": "S0005L07",
+      "english": "to speak with someone else",
+      "mandarin": "和别人说话",
+      "type": "M"
+    },
+    {
+      "id": "S0005L08",
+      "english": "practise speaking with someone else",
+      "mandarin": "和别人练习说话",
+      "type": "M"
+    },
+    {
+      "id": "S0006L01",
+      "english": "to remember",
+      "mandarin": "记住",
+      "type": "M"
+    },
+    {
+      "id": "S0006L02",
+      "english": "a",
+      "mandarin": "一个",
+      "type": "M"
+    },
+    {
+      "id": "S0006L03",
+      "english": "word",
+      "mandarin": "词",
+      "type": "A"
+    },
+    {
+      "id": "S0006L04",
+      "english": "a word",
+      "mandarin": "一个词",
+      "type": "M"
+    },
+    {
+      "id": "S0006L05",
+      "english": "to remember a word",
+      "mandarin": "记住一个词",
+      "type": "M"
+    },
+    {
+      "id": "S0006L06",
+      "english": "trying to remember",
+      "mandarin": "试着记住",
+      "type": "M"
+    },
+    {
+      "id": "S0006L07",
+      "english": "trying to remember a word",
+      "mandarin": "试着记住一个词",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0007L01": {
+      "lego": {
+        "english": "today",
+        "mandarin": "今天"
+      },
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0007L01",
+        "seed_context": {
+          "english": "I want to try as hard as I can today.",
+          "mandarin": "我今天想尽力试试。"
+        }
+      }
+    },
+    "S0007L02": {
+      "lego": {
+        "english": "as hard as one can",
+        "mandarin": "尽力"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0007L01",
+          "english": "today",
+          "mandarin": "今天",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0007L02",
+        "seed_context": {
+          "english": "I want to try as hard as I can today.",
+          "mandarin": "我今天想尽力试试。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "尽",
+          "english": "to the utmost"
+        },
+        {
+          "mandarin": "力",
+          "english": "strength/effort"
+        }
+      ]
+    },
+    "S0007L03": {
+      "lego": {
+        "english": "to try",
+        "mandarin": "试试"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0007L01",
+          "english": "today",
+          "mandarin": "今天",
+          "type": "A"
+        },
+        {
+          "id": "S0007L02",
+          "english": "as hard as one can",
+          "mandarin": "尽力",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0007L03",
+        "seed_context": {
+          "english": "I want to try as hard as I can today.",
+          "mandarin": "我今天想尽力试试。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "试",
+          "english": "try"
+        },
+        {
+          "mandarin": "试",
+          "english": "try"
+        }
+      ]
+    },
+    "S0007L04": {
+      "lego": {
+        "english": "to try as hard as one can",
+        "mandarin": "尽力试试"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0007L01",
+          "english": "today",
+          "mandarin": "今天",
+          "type": "A"
+        },
+        {
+          "id": "S0007L02",
+          "english": "as hard as one can",
+          "mandarin": "尽力",
+          "type": "M"
+        },
+        {
+          "id": "S0007L03",
+          "english": "to try",
+          "mandarin": "试试",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0007L04",
+        "seed_context": {
+          "english": "I want to try as hard as I can today.",
+          "mandarin": "我今天想尽力试试。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "尽力",
+          "english": "do one's best"
+        },
+        {
+          "mandarin": "试试",
+          "english": "try"
+        }
+      ]
+    },
+    "S0007L05": {
+      "lego": {
+        "english": "I want to...today",
+        "mandarin": "我今天想"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0007L01",
+          "english": "today",
+          "mandarin": "今天",
+          "type": "A"
+        },
+        {
+          "id": "S0007L02",
+          "english": "as hard as one can",
+          "mandarin": "尽力",
+          "type": "M"
+        },
+        {
+          "id": "S0007L03",
+          "english": "to try",
+          "mandarin": "试试",
+          "type": "M"
+        },
+        {
+          "id": "S0007L04",
+          "english": "to try as hard as one can",
+          "mandarin": "尽力试试",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0007L05",
+        "seed_context": {
+          "english": "I want to try as hard as I can today.",
+          "mandarin": "我今天想尽力试试。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "我",
+          "english": "I"
+        },
+        {
+          "mandarin": "今天",
+          "english": "today"
+        },
+        {
+          "mandarin": "想",
+          "english": "want"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v9.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "phrase_format": "Each phrase has explicit fields: {english: \"...\", mandarin: \"...\", notes: \"\"}",
+    "slots": "12 pre-allocated slots - fill first 10, leave last 2 empty for future expansion",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs_v9/seed_s0007.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "phrase_slots_per_lego": 12,
+    "recent_seed_pairs_count": 6,
+    "recent_new_legos_count": 30
+  }
+}

@@ -1,0 +1,1059 @@
+{
+  "version": "v9.0_explicit_labels",
+  "seed_id": "S0019",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "But I don't want to stop talking.",
+    "mandarin": "但我不想停止说话。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0009",
+      "english": "I speak a little Chinese now.",
+      "mandarin": "我现在会说一点中文。"
+    },
+    {
+      "seed_id": "S0010",
+      "english": "I'm not sure if I can remember the whole sentence.",
+      "mandarin": "我不确定我能不能记住整个句子。"
+    },
+    {
+      "seed_id": "S0011",
+      "english": "I'd like to be able to speak after you finish.",
+      "mandarin": "我想能够在你说完之后说话。"
+    },
+    {
+      "seed_id": "S0012",
+      "english": "I wouldn't like to guess what's going to happen tomorrow.",
+      "mandarin": "我不想猜明天会发生什么。"
+    },
+    {
+      "seed_id": "S0013",
+      "english": "You speak Chinese very well.",
+      "mandarin": "你中文说得很好。"
+    },
+    {
+      "seed_id": "S0014",
+      "english": "Do you speak Chinese all day?",
+      "mandarin": "你整天都说中文吗？"
+    },
+    {
+      "seed_id": "S0015",
+      "english": "And I want you to speak Chinese with me tomorrow.",
+      "mandarin": "而且我想要你明天和我说中文。"
+    },
+    {
+      "seed_id": "S0016",
+      "english": "He wants to come back with everyone else later on.",
+      "mandarin": "他想晚点和其他人一起回来。"
+    },
+    {
+      "seed_id": "S0017",
+      "english": "She wants to find out what the answer is.",
+      "mandarin": "她想找出答案是什么。"
+    },
+    {
+      "seed_id": "S0018",
+      "english": "We want to meet at six o'clock this evening.",
+      "mandarin": "我们想今天晚上六点见面。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0015L09",
+      "english": "you speak Chinese with me tomorrow",
+      "mandarin": "你明天和我说中文",
+      "type": "M"
+    },
+    {
+      "id": "S0015L10",
+      "english": "I want you to speak Chinese with me tomorrow",
+      "mandarin": "我想要你明天和我说中文",
+      "type": "M"
+    },
+    {
+      "id": "S0016L01",
+      "english": "he wants",
+      "mandarin": "他想",
+      "type": "M"
+    },
+    {
+      "id": "S0016L02",
+      "english": "want to come back",
+      "mandarin": "想回来",
+      "type": "M"
+    },
+    {
+      "id": "S0016L03",
+      "english": "want to come back later",
+      "mandarin": "想晚点回来",
+      "type": "M"
+    },
+    {
+      "id": "S0016L04",
+      "english": "to come back",
+      "mandarin": "回来",
+      "type": "M"
+    },
+    {
+      "id": "S0016L05",
+      "english": "later",
+      "mandarin": "晚点",
+      "type": "A"
+    },
+    {
+      "id": "S0016L06",
+      "english": "other people",
+      "mandarin": "其他人",
+      "type": "A"
+    },
+    {
+      "id": "S0016L07",
+      "english": "together",
+      "mandarin": "一起",
+      "type": "A"
+    },
+    {
+      "id": "S0016L08",
+      "english": "with everyone else",
+      "mandarin": "和其他人一起",
+      "type": "M"
+    },
+    {
+      "id": "S0016L09",
+      "english": "to come back together",
+      "mandarin": "一起回来",
+      "type": "M"
+    },
+    {
+      "id": "S0016L10",
+      "english": "to come back with everyone else",
+      "mandarin": "和其他人一起回来",
+      "type": "M"
+    },
+    {
+      "id": "S0016L11",
+      "english": "to come back with everyone else later",
+      "mandarin": "晚点和其他人一起回来",
+      "type": "M"
+    },
+    {
+      "id": "S0017L01",
+      "english": "she wants",
+      "mandarin": "她想",
+      "type": "M"
+    },
+    {
+      "id": "S0017L02",
+      "english": "want to find out",
+      "mandarin": "想找出",
+      "type": "M"
+    },
+    {
+      "id": "S0017L03",
+      "english": "to find out",
+      "mandarin": "找出",
+      "type": "M"
+    },
+    {
+      "id": "S0017L04",
+      "english": "answer",
+      "mandarin": "答案",
+      "type": "A"
+    },
+    {
+      "id": "S0017L05",
+      "english": "what is",
+      "mandarin": "是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0017L06",
+      "english": "what the answer is",
+      "mandarin": "答案是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0017L07",
+      "english": "to find out what the answer is",
+      "mandarin": "找出答案是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0018L01",
+      "english": "we want",
+      "mandarin": "我们想",
+      "type": "M"
+    },
+    {
+      "id": "S0018L02",
+      "english": "want to meet",
+      "mandarin": "想见面",
+      "type": "M"
+    },
+    {
+      "id": "S0018L03",
+      "english": "to meet",
+      "mandarin": "见面",
+      "type": "M"
+    },
+    {
+      "id": "S0018L05",
+      "english": "evening",
+      "mandarin": "晚上",
+      "type": "A"
+    },
+    {
+      "id": "S0018L06",
+      "english": "this evening",
+      "mandarin": "今天晚上",
+      "type": "M"
+    },
+    {
+      "id": "S0018L07",
+      "english": "six o'clock",
+      "mandarin": "六点",
+      "type": "A"
+    },
+    {
+      "id": "S0018L08",
+      "english": "six o'clock in the evening",
+      "mandarin": "晚上六点",
+      "type": "M"
+    },
+    {
+      "id": "S0018L09",
+      "english": "six o'clock this evening",
+      "mandarin": "今天晚上六点",
+      "type": "M"
+    },
+    {
+      "id": "S0018L10",
+      "english": "to meet at six o'clock",
+      "mandarin": "六点见面",
+      "type": "M"
+    },
+    {
+      "id": "S0018L11",
+      "english": "to meet at six o'clock this evening",
+      "mandarin": "今天晚上六点见面",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0019L01": {
+      "lego": {
+        "english": "but",
+        "mandarin": "但"
+      },
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0019L01",
+        "seed_context": {
+          "english": "But I don't want to stop talking.",
+          "mandarin": "但我不想停止说话。"
+        }
+      }
+    },
+    "S0019L02": {
+      "lego": {
+        "english": "I don't want",
+        "mandarin": "我不想"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0019L01",
+          "english": "but",
+          "mandarin": "但",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0019L02",
+        "seed_context": {
+          "english": "But I don't want to stop talking.",
+          "mandarin": "但我不想停止说话。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "我",
+          "english": "I"
+        },
+        {
+          "mandarin": "不",
+          "english": "not"
+        },
+        {
+          "mandarin": "想",
+          "english": "want"
+        }
+      ]
+    },
+    "S0019L03": {
+      "lego": {
+        "english": "don't want to stop",
+        "mandarin": "不想停止"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0019L01",
+          "english": "but",
+          "mandarin": "但",
+          "type": "A"
+        },
+        {
+          "id": "S0019L02",
+          "english": "I don't want",
+          "mandarin": "我不想",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0019L03",
+        "seed_context": {
+          "english": "But I don't want to stop talking.",
+          "mandarin": "但我不想停止说话。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "不",
+          "english": "not"
+        },
+        {
+          "mandarin": "想",
+          "english": "want"
+        },
+        {
+          "mandarin": "停止",
+          "english": "stop"
+        }
+      ]
+    },
+    "S0019L04": {
+      "lego": {
+        "english": "to stop",
+        "mandarin": "停止"
+      },
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0019L01",
+          "english": "but",
+          "mandarin": "但",
+          "type": "A"
+        },
+        {
+          "id": "S0019L02",
+          "english": "I don't want",
+          "mandarin": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0019L03",
+          "english": "don't want to stop",
+          "mandarin": "不想停止",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0019L04",
+        "seed_context": {
+          "english": "But I don't want to stop talking.",
+          "mandarin": "但我不想停止说话。"
+        }
+      }
+    },
+    "S0019L05": {
+      "lego": {
+        "english": "talking",
+        "mandarin": "说话"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0019L01",
+          "english": "but",
+          "mandarin": "但",
+          "type": "A"
+        },
+        {
+          "id": "S0019L02",
+          "english": "I don't want",
+          "mandarin": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0019L03",
+          "english": "don't want to stop",
+          "mandarin": "不想停止",
+          "type": "M"
+        },
+        {
+          "id": "S0019L04",
+          "english": "to stop",
+          "mandarin": "停止",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0019L05",
+        "seed_context": {
+          "english": "But I don't want to stop talking.",
+          "mandarin": "但我不想停止说话。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "说",
+          "english": "speak"
+        },
+        {
+          "mandarin": "话",
+          "english": "words"
+        }
+      ]
+    },
+    "S0019L06": {
+      "lego": {
+        "english": "to stop talking",
+        "mandarin": "停止说话"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0019L01",
+          "english": "but",
+          "mandarin": "但",
+          "type": "A"
+        },
+        {
+          "id": "S0019L02",
+          "english": "I don't want",
+          "mandarin": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0019L03",
+          "english": "don't want to stop",
+          "mandarin": "不想停止",
+          "type": "M"
+        },
+        {
+          "id": "S0019L04",
+          "english": "to stop",
+          "mandarin": "停止",
+          "type": "A"
+        },
+        {
+          "id": "S0019L05",
+          "english": "talking",
+          "mandarin": "说话",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0019L06",
+        "seed_context": {
+          "english": "But I don't want to stop talking.",
+          "mandarin": "但我不想停止说话。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "停止",
+          "english": "stop"
+        },
+        {
+          "mandarin": "说话",
+          "english": "talking"
+        }
+      ]
+    },
+    "S0019L07": {
+      "lego": {
+        "english": "don't want to stop talking",
+        "mandarin": "不想停止说话"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0019L01",
+          "english": "but",
+          "mandarin": "但",
+          "type": "A"
+        },
+        {
+          "id": "S0019L02",
+          "english": "I don't want",
+          "mandarin": "我不想",
+          "type": "M"
+        },
+        {
+          "id": "S0019L03",
+          "english": "don't want to stop",
+          "mandarin": "不想停止",
+          "type": "M"
+        },
+        {
+          "id": "S0019L04",
+          "english": "to stop",
+          "mandarin": "停止",
+          "type": "A"
+        },
+        {
+          "id": "S0019L05",
+          "english": "talking",
+          "mandarin": "说话",
+          "type": "M"
+        },
+        {
+          "id": "S0019L06",
+          "english": "to stop talking",
+          "mandarin": "停止说话",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0019L07",
+        "seed_context": {
+          "english": "But I don't want to stop talking.",
+          "mandarin": "但我不想停止说话。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "不",
+          "english": "not"
+        },
+        {
+          "mandarin": "想",
+          "english": "want"
+        },
+        {
+          "mandarin": "停止",
+          "english": "stop"
+        },
+        {
+          "mandarin": "说话",
+          "english": "talking"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v9.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "phrase_format": "Each phrase has explicit fields: {english: \"...\", mandarin: \"...\", notes: \"\"}",
+    "slots": "12 pre-allocated slots - fill first 10, leave last 2 empty for future expansion",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs_v9/seed_s0019.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "phrases_to_generate": 70,
+    "phrase_slots_per_lego": 12,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

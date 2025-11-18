@@ -1,0 +1,613 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0253",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "我应该几分钟后就准备好。",
+    "mandarin": "I should be ready in a few minutes."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0243",
+      "english": "我会要同样的东西吃。",
+      "mandarin": "I'm going to ask for the same thing to eat."
+    },
+    {
+      "seed_id": "S0244",
+      "english": "我已经学到了很多。",
+      "mandarin": "I've learnt a lot already"
+    },
+    {
+      "seed_id": "S0245",
+      "english": "我对我在短时间内做了多少感到满意。",
+      "mandarin": "I'm happy with how much I've done in a short time"
+    },
+    {
+      "seed_id": "S0246",
+      "english": "我想让她帮助你，但她太忙了。",
+      "mandarin": "I wanted her to help you but she was too busy."
+    },
+    {
+      "seed_id": "S0247",
+      "english": "我觉得那本书相当好。",
+      "mandarin": "I thought that book was fairly good."
+    },
+    {
+      "seed_id": "S0248",
+      "english": "我觉得那部电影完全是垃圾，我想要退款。",
+      "mandarin": "I thought the film was complete rubbish and I want my money back."
+    },
+    {
+      "seed_id": "S0249",
+      "english": "我想让你在走之前帮助我。",
+      "mandarin": "I want you to help me before you go."
+    },
+    {
+      "seed_id": "S0250",
+      "english": "在我回答之前你能告诉我别的事情吗？",
+      "mandarin": "Can you tell me something else before I answer?"
+    },
+    {
+      "seed_id": "S0251",
+      "english": "我不想在我们完成之后才知道。",
+      "mandarin": "I don't want to find out until after we finish."
+    },
+    {
+      "seed_id": "S0252",
+      "english": "你什么时候准备好开始？",
+      "mandarin": "When will you be ready to start?"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0243L05",
+      "english": "the same thing to eat",
+      "mandarin": "同样的东西吃",
+      "type": "M"
+    },
+    {
+      "id": "S0244L01",
+      "english": "I've already",
+      "mandarin": "我已经",
+      "type": "M"
+    },
+    {
+      "id": "S0244L02",
+      "english": "have already learnt",
+      "mandarin": "已经学到了",
+      "type": "M"
+    },
+    {
+      "id": "S0244L03",
+      "english": "have learnt",
+      "mandarin": "学到了",
+      "type": "M"
+    },
+    {
+      "id": "S0245L01",
+      "english": "feel happy",
+      "mandarin": "感到满意",
+      "type": "M"
+    },
+    {
+      "id": "S0245L02",
+      "english": "have done",
+      "mandarin": "做了",
+      "type": "M"
+    },
+    {
+      "id": "S0245L03",
+      "english": "how much have done",
+      "mandarin": "做了多少",
+      "type": "M"
+    },
+    {
+      "id": "S0246L01",
+      "english": "I wanted to let",
+      "mandarin": "我想让",
+      "type": "M"
+    },
+    {
+      "id": "S0246L02",
+      "english": "want to let",
+      "mandarin": "想让",
+      "type": "M"
+    },
+    {
+      "id": "S0246L03",
+      "english": "help you",
+      "mandarin": "帮助你",
+      "type": "M"
+    },
+    {
+      "id": "S0246L05",
+      "english": "she was too busy",
+      "mandarin": "她太忙了",
+      "type": "M"
+    },
+    {
+      "id": "S0247L01",
+      "english": "I thought",
+      "mandarin": "我觉得",
+      "type": "M"
+    },
+    {
+      "id": "S0247L03",
+      "english": "fairly good",
+      "mandarin": "相当好",
+      "type": "M"
+    },
+    {
+      "id": "S0248L02",
+      "english": "that film",
+      "mandarin": "那部电影",
+      "type": "M"
+    },
+    {
+      "id": "S0248L03",
+      "english": "was complete rubbish",
+      "mandarin": "完全是垃圾",
+      "type": "M"
+    },
+    {
+      "id": "S0248L04",
+      "english": "completely is",
+      "mandarin": "完全是",
+      "type": "M"
+    },
+    {
+      "id": "S0248L06",
+      "english": "want",
+      "mandarin": "想要",
+      "type": "M"
+    },
+    {
+      "id": "S0248L07",
+      "english": "refund",
+      "mandarin": "退款",
+      "type": "A"
+    },
+    {
+      "id": "S0249L01",
+      "english": "I want you to",
+      "mandarin": "我想让你",
+      "type": "M"
+    },
+    {
+      "id": "S0249L03",
+      "english": "help me",
+      "mandarin": "帮助我",
+      "type": "M"
+    },
+    {
+      "id": "S0249L04",
+      "english": "before you go",
+      "mandarin": "在走之前",
+      "type": "M"
+    },
+    {
+      "id": "S0249L05",
+      "english": "before",
+      "mandarin": "之前",
+      "type": "M"
+    },
+    {
+      "id": "S0250L03",
+      "english": "something else",
+      "mandarin": "别的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0250L04",
+      "english": "other",
+      "mandarin": "别的",
+      "type": "M"
+    },
+    {
+      "id": "S0250L05",
+      "english": "before I answer",
+      "mandarin": "在我回答之前",
+      "type": "M"
+    },
+    {
+      "id": "S0251L02",
+      "english": "after we finish",
+      "mandarin": "在我们完成之后",
+      "type": "M"
+    },
+    {
+      "id": "S0251L03",
+      "english": "until after we finish to find out",
+      "mandarin": "在我们完成之后才知道",
+      "type": "M"
+    },
+    {
+      "id": "S0251L04",
+      "english": "only then find out",
+      "mandarin": "才知道",
+      "type": "M"
+    },
+    {
+      "id": "S0252L02",
+      "english": "you be ready",
+      "mandarin": "你...准备好",
+      "type": "M"
+    },
+    {
+      "id": "S0252L03",
+      "english": "ready to start",
+      "mandarin": "准备好开始",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0253L02": {
+      "lego_id": "S0253L02",
+      "lego": {
+        "english": "in a few minutes",
+        "mandarin": "几分钟后"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0253L02",
+        "seed_context": {
+          "english": "我应该几分钟后就准备好。",
+          "mandarin": "I should be ready in a few minutes."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "几",
+          "english": "a few/several"
+        },
+        {
+          "mandarin": "分钟",
+          "english": "minutes"
+        },
+        {
+          "mandarin": "后",
+          "english": "after/later"
+        }
+      ]
+    },
+    "S0253L03": {
+      "lego_id": "S0253L03",
+      "lego": {
+        "english": "in a few minutes will be ready",
+        "mandarin": "几分钟后就准备好"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0253L02",
+          "english": "in a few minutes",
+          "mandarin": "几分钟后",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0253L03",
+        "seed_context": {
+          "english": "我应该几分钟后就准备好。",
+          "mandarin": "I should be ready in a few minutes."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "几",
+          "english": "a few"
+        },
+        {
+          "mandarin": "分钟",
+          "english": "minutes"
+        },
+        {
+          "mandarin": "后",
+          "english": "after"
+        },
+        {
+          "mandarin": "就",
+          "english": "then/will"
+        },
+        {
+          "mandarin": "准备好",
+          "english": "be ready"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0253.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_to_generate": 20,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

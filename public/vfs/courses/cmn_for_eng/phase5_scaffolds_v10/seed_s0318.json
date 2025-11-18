@@ -1,0 +1,597 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0318",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "不，我觉得这次她不能。",
+    "mandarin": "No I don't think she could this time."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0308",
+      "english": "是的，她是我妈妈的朋友。",
+      "mandarin": "Yes she's a friend of my mother."
+    },
+    {
+      "seed_id": "S0309",
+      "english": "不，我以前从未见过她。",
+      "mandarin": "No I've never seen her before."
+    },
+    {
+      "seed_id": "S0310",
+      "english": "她可以写一个关于那个男人的故事。",
+      "mandarin": "She could write a story about that man."
+    },
+    {
+      "seed_id": "S0311",
+      "english": "他不能相信三个最重要的事实。",
+      "mandarin": "He couldn't believe the three most important facts."
+    },
+    {
+      "seed_id": "S0312",
+      "english": "她说她明天晚上可以用另一个房间。",
+      "mandarin": "She said that she could use the other room tomorrow night."
+    },
+    {
+      "seed_id": "S0313",
+      "english": "他说他不能看所有五场比赛。",
+      "mandarin": "He said that he couldn't watch all five games."
+    },
+    {
+      "seed_id": "S0314",
+      "english": "我觉得她可以把它放在桌子上。",
+      "mandarin": "I think that she could put it on the table."
+    },
+    {
+      "seed_id": "S0315",
+      "english": "我觉得他买不起他想要的车。",
+      "mandarin": "I think that he couldn't afford the car that he wanted."
+    },
+    {
+      "seed_id": "S0316",
+      "english": "你觉得她星期一可以带她弟弟来吗？",
+      "mandarin": "Do you think that she could bring her brother on Monday?"
+    },
+    {
+      "seed_id": "S0317",
+      "english": "是的，我觉得如果她想的话她可以。",
+      "mandarin": "Yes I think she could if she wanted to."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0311L01",
+      "english": "he couldn't",
+      "mandarin": "他不能",
+      "type": "M"
+    },
+    {
+      "id": "S0311L02",
+      "english": "he couldn't believe",
+      "mandarin": "他不能相信",
+      "type": "M"
+    },
+    {
+      "id": "S0311L03",
+      "english": "believe",
+      "mandarin": "相信",
+      "type": "A"
+    },
+    {
+      "id": "S0311L04",
+      "english": "the three most important facts",
+      "mandarin": "三个最重要的事实",
+      "type": "M"
+    },
+    {
+      "id": "S0311L05",
+      "english": "most important facts",
+      "mandarin": "最重要的事实",
+      "type": "M"
+    },
+    {
+      "id": "S0311L06",
+      "english": "facts",
+      "mandarin": "事实",
+      "type": "A"
+    },
+    {
+      "id": "S0312L02",
+      "english": "she could",
+      "mandarin": "她可以",
+      "type": "M"
+    },
+    {
+      "id": "S0312L03",
+      "english": "could use",
+      "mandarin": "可以用",
+      "type": "M"
+    },
+    {
+      "id": "S0312L04",
+      "english": "use",
+      "mandarin": "用",
+      "type": "A"
+    },
+    {
+      "id": "S0312L05",
+      "english": "the other room",
+      "mandarin": "另一个房间",
+      "type": "M"
+    },
+    {
+      "id": "S0312L06",
+      "english": "room",
+      "mandarin": "房间",
+      "type": "A"
+    },
+    {
+      "id": "S0313L03",
+      "english": "couldn't watch",
+      "mandarin": "不能看",
+      "type": "M"
+    },
+    {
+      "id": "S0313L04",
+      "english": "watch",
+      "mandarin": "看",
+      "type": "A"
+    },
+    {
+      "id": "S0313L05",
+      "english": "all five games",
+      "mandarin": "所有五场比赛",
+      "type": "M"
+    },
+    {
+      "id": "S0313L06",
+      "english": "five games",
+      "mandarin": "五场比赛",
+      "type": "M"
+    },
+    {
+      "id": "S0313L07",
+      "english": "games",
+      "mandarin": "比赛",
+      "type": "A"
+    },
+    {
+      "id": "S0314L03",
+      "english": "put it on the table",
+      "mandarin": "把它放在桌子上",
+      "type": "M"
+    },
+    {
+      "id": "S0314L04",
+      "english": "put on the table",
+      "mandarin": "放在桌子上",
+      "type": "M"
+    },
+    {
+      "id": "S0314L06",
+      "english": "table",
+      "mandarin": "桌子",
+      "type": "A"
+    },
+    {
+      "id": "S0315L02",
+      "english": "he couldn't afford",
+      "mandarin": "他买不起",
+      "type": "M"
+    },
+    {
+      "id": "S0315L03",
+      "english": "can't afford",
+      "mandarin": "买不起",
+      "type": "M"
+    },
+    {
+      "id": "S0315L04",
+      "english": "the car that he wanted",
+      "mandarin": "他想要的车",
+      "type": "M"
+    },
+    {
+      "id": "S0315L06",
+      "english": "car",
+      "mandarin": "车",
+      "type": "A"
+    },
+    {
+      "id": "S0316L01",
+      "english": "do you think",
+      "mandarin": "你觉得",
+      "type": "M"
+    },
+    {
+      "id": "S0316L03",
+      "english": "could bring",
+      "mandarin": "可以带",
+      "type": "M"
+    },
+    {
+      "id": "S0316L04",
+      "english": "bring her brother",
+      "mandarin": "带她弟弟来",
+      "type": "M"
+    },
+    {
+      "id": "S0316L05",
+      "english": "her brother",
+      "mandarin": "她弟弟",
+      "type": "M"
+    },
+    {
+      "id": "S0316L06",
+      "english": "younger brother",
+      "mandarin": "弟弟",
+      "type": "A"
+    },
+    {
+      "id": "S0316L07",
+      "english": "Monday",
+      "mandarin": "星期一",
+      "type": "A"
+    },
+    {
+      "id": "S0317L03",
+      "english": "if she wanted to",
+      "mandarin": "如果她想的话",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0318L03": {
+      "lego_id": "S0318L03",
+      "lego": {
+        "english": "this time",
+        "mandarin": "这次"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0318L03",
+        "seed_context": {
+          "english": "不，我觉得这次她不能。",
+          "mandarin": "No I don't think she could this time."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "这",
+          "english": "this"
+        },
+        {
+          "mandarin": "次",
+          "english": "time/occasion"
+        }
+      ]
+    },
+    "S0318L04": {
+      "lego_id": "S0318L04",
+      "lego": {
+        "english": "she couldn't",
+        "mandarin": "她不能"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0318L03",
+          "english": "this time",
+          "mandarin": "这次",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0318L04",
+        "seed_context": {
+          "english": "不，我觉得这次她不能。",
+          "mandarin": "No I don't think she could this time."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "她",
+          "english": "she"
+        },
+        {
+          "mandarin": "不能",
+          "english": "couldn't/cannot"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0318.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_to_generate": 20,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

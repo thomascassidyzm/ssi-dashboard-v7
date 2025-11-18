@@ -1,0 +1,436 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0329",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "这很重要。",
+    "mandarin": "It's important."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0319",
+      "english": "她需要搬到另一个国家。",
+      "mandarin": "She needs to move to a different country."
+    },
+    {
+      "seed_id": "S0320",
+      "english": "他今年不需要买另一台电视。",
+      "mandarin": "He doesn't need to buy another television this year."
+    },
+    {
+      "seed_id": "S0321",
+      "english": "一本书。",
+      "mandarin": "A book."
+    },
+    {
+      "seed_id": "S0322",
+      "english": "她说她需要读同一本书。",
+      "mandarin": "She said that she needs to read the same book."
+    },
+    {
+      "seed_id": "S0323",
+      "english": "他说他不需要走路去学校。",
+      "mandarin": "He said that he doesn't need to walk to school."
+    },
+    {
+      "seed_id": "S0324",
+      "english": "那个学生举起了她的两只手。",
+      "mandarin": "That student has both of her hands up."
+    },
+    {
+      "seed_id": "S0325",
+      "english": "我觉得他需要考虑十个可能的问题。",
+      "mandarin": "I think that he needs to consider ten possible problems."
+    },
+    {
+      "seed_id": "S0326",
+      "english": "我觉得她不需要卖掉公司。",
+      "mandarin": "I don't think that she needs to sell the company."
+    },
+    {
+      "seed_id": "S0327",
+      "english": "你觉得她需要提供另一种方法吗？",
+      "mandarin": "Do you think that she needs to offer another way?"
+    },
+    {
+      "seed_id": "S0328",
+      "english": "是的，我觉得她应该。",
+      "mandarin": "Yes I think she ought to."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0320L01",
+      "english": "he doesn't need to",
+      "mandarin": "他不需要",
+      "type": "M"
+    },
+    {
+      "id": "S0320L02",
+      "english": "doesn't need to",
+      "mandarin": "不需要",
+      "type": "M"
+    },
+    {
+      "id": "S0320L03",
+      "english": "buy",
+      "mandarin": "买",
+      "type": "A"
+    },
+    {
+      "id": "S0320L04",
+      "english": "another television",
+      "mandarin": "另一台电视",
+      "type": "M"
+    },
+    {
+      "id": "S0320L06",
+      "english": "this year",
+      "mandarin": "今年",
+      "type": "M"
+    },
+    {
+      "id": "S0321L01",
+      "english": "A book",
+      "mandarin": "一本书",
+      "type": "M"
+    },
+    {
+      "id": "S0322L01",
+      "english": "She said that she needs to",
+      "mandarin": "她说她需要",
+      "type": "M"
+    },
+    {
+      "id": "S0322L02",
+      "english": "needs to read",
+      "mandarin": "需要读",
+      "type": "M"
+    },
+    {
+      "id": "S0322L03",
+      "english": "the same book",
+      "mandarin": "同一本书",
+      "type": "M"
+    },
+    {
+      "id": "S0323L01",
+      "english": "He said that he doesn't need to",
+      "mandarin": "他说他不需要",
+      "type": "M"
+    },
+    {
+      "id": "S0323L03",
+      "english": "walk to school",
+      "mandarin": "走路去学校",
+      "type": "M"
+    },
+    {
+      "id": "S0323L04",
+      "english": "to school",
+      "mandarin": "去学校",
+      "type": "M"
+    },
+    {
+      "id": "S0324L01",
+      "english": "That student",
+      "mandarin": "那个学生",
+      "type": "M"
+    },
+    {
+      "id": "S0324L02",
+      "english": "has raised",
+      "mandarin": "举起了",
+      "type": "M"
+    },
+    {
+      "id": "S0324L03",
+      "english": "both of her hands",
+      "mandarin": "她的两只手",
+      "type": "M"
+    },
+    {
+      "id": "S0324L04",
+      "english": "both hands",
+      "mandarin": "两只手",
+      "type": "M"
+    },
+    {
+      "id": "S0325L01",
+      "english": "I think that he needs to",
+      "mandarin": "我觉得他需要",
+      "type": "M"
+    },
+    {
+      "id": "S0325L02",
+      "english": "needs to consider",
+      "mandarin": "需要考虑",
+      "type": "M"
+    },
+    {
+      "id": "S0325L03",
+      "english": "ten possible problems",
+      "mandarin": "十个可能的问题",
+      "type": "M"
+    },
+    {
+      "id": "S0325L04",
+      "english": "possible problems",
+      "mandarin": "可能的问题",
+      "type": "M"
+    },
+    {
+      "id": "S0326L01",
+      "english": "I don't think that she needs to",
+      "mandarin": "我觉得她不需要",
+      "type": "M"
+    },
+    {
+      "id": "S0326L02",
+      "english": "she doesn't need to",
+      "mandarin": "她不需要",
+      "type": "M"
+    },
+    {
+      "id": "S0326L03",
+      "english": "sell off",
+      "mandarin": "卖掉",
+      "type": "M"
+    },
+    {
+      "id": "S0326L04",
+      "english": "the company",
+      "mandarin": "公司",
+      "type": "A"
+    },
+    {
+      "id": "S0327L01",
+      "english": "Do you think that she needs to",
+      "mandarin": "你觉得她需要",
+      "type": "M"
+    },
+    {
+      "id": "S0327L02",
+      "english": "needs to offer",
+      "mandarin": "需要提供",
+      "type": "M"
+    },
+    {
+      "id": "S0327L03",
+      "english": "another way",
+      "mandarin": "另一种方法",
+      "type": "M"
+    },
+    {
+      "id": "S0327L04",
+      "english": "offer another way?",
+      "mandarin": "提供另一种方法吗",
+      "type": "M"
+    },
+    {
+      "id": "S0328L02",
+      "english": "I think she ought to",
+      "mandarin": "我觉得她应该",
+      "type": "M"
+    },
+    {
+      "id": "S0328L03",
+      "english": "she ought to",
+      "mandarin": "她应该",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0329L01": {
+      "lego_id": "S0329L01",
+      "lego": {
+        "english": "It's important",
+        "mandarin": "这很重要"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0329L01",
+        "seed_context": {
+          "english": "这很重要。",
+          "mandarin": "It's important."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "这",
+          "english": "this/it"
+        },
+        {
+          "mandarin": "很",
+          "english": "very/is"
+        },
+        {
+          "mandarin": "重要",
+          "english": "important"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0329.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 1,
+    "phrases_to_generate": 10,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

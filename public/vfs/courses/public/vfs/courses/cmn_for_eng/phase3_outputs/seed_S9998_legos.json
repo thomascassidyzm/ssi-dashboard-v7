@@ -1,0 +1,33 @@
+{
+  "seed_id": "S9998",
+  "seed_pair": [
+    "This is a test sentence.",
+    "这是一个测试句子。"
+  ],
+  "legos": [
+    {
+      "id": "S9998L01",
+      "type": "A",
+      "target": "测试",
+      "known": "test",
+      "new": true
+    },
+    {
+      "id": "S9998L02",
+      "type": "M",
+      "target": "一个测试",
+      "known": "a test",
+      "new": true,
+      "components": [
+        [
+          "一个",
+          "a"
+        ],
+        [
+          "测试",
+          "test"
+        ]
+      ]
+    }
+  ]
+}

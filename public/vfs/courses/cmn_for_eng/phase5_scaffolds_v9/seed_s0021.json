@@ -1,0 +1,829 @@
+{
+  "version": "v9.0_explicit_labels",
+  "seed_id": "S0021",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "Why are you learning her name?",
+    "mandarin": "你为什么在学她的名字？"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0011",
+      "english": "I'd like to be able to speak after you finish.",
+      "mandarin": "我想能够在你说完之后说话。"
+    },
+    {
+      "seed_id": "S0012",
+      "english": "I wouldn't like to guess what's going to happen tomorrow.",
+      "mandarin": "我不想猜明天会发生什么。"
+    },
+    {
+      "seed_id": "S0013",
+      "english": "You speak Chinese very well.",
+      "mandarin": "你中文说得很好。"
+    },
+    {
+      "seed_id": "S0014",
+      "english": "Do you speak Chinese all day?",
+      "mandarin": "你整天都说中文吗？"
+    },
+    {
+      "seed_id": "S0015",
+      "english": "And I want you to speak Chinese with me tomorrow.",
+      "mandarin": "而且我想要你明天和我说中文。"
+    },
+    {
+      "seed_id": "S0016",
+      "english": "He wants to come back with everyone else later on.",
+      "mandarin": "他想晚点和其他人一起回来。"
+    },
+    {
+      "seed_id": "S0017",
+      "english": "She wants to find out what the answer is.",
+      "mandarin": "她想找出答案是什么。"
+    },
+    {
+      "seed_id": "S0018",
+      "english": "We want to meet at six o'clock this evening.",
+      "mandarin": "我们想今天晚上六点见面。"
+    },
+    {
+      "seed_id": "S0019",
+      "english": "But I don't want to stop talking.",
+      "mandarin": "但我不想停止说话。"
+    },
+    {
+      "seed_id": "S0020",
+      "english": "You want to learn his name quickly.",
+      "mandarin": "你想快点学会他的名字。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0017L04",
+      "english": "answer",
+      "mandarin": "答案",
+      "type": "A"
+    },
+    {
+      "id": "S0017L05",
+      "english": "what is",
+      "mandarin": "是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0017L06",
+      "english": "what the answer is",
+      "mandarin": "答案是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0017L07",
+      "english": "to find out what the answer is",
+      "mandarin": "找出答案是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0018L01",
+      "english": "we want",
+      "mandarin": "我们想",
+      "type": "M"
+    },
+    {
+      "id": "S0018L02",
+      "english": "want to meet",
+      "mandarin": "想见面",
+      "type": "M"
+    },
+    {
+      "id": "S0018L03",
+      "english": "to meet",
+      "mandarin": "见面",
+      "type": "M"
+    },
+    {
+      "id": "S0018L05",
+      "english": "evening",
+      "mandarin": "晚上",
+      "type": "A"
+    },
+    {
+      "id": "S0018L06",
+      "english": "this evening",
+      "mandarin": "今天晚上",
+      "type": "M"
+    },
+    {
+      "id": "S0018L07",
+      "english": "six o'clock",
+      "mandarin": "六点",
+      "type": "A"
+    },
+    {
+      "id": "S0018L08",
+      "english": "six o'clock in the evening",
+      "mandarin": "晚上六点",
+      "type": "M"
+    },
+    {
+      "id": "S0018L09",
+      "english": "six o'clock this evening",
+      "mandarin": "今天晚上六点",
+      "type": "M"
+    },
+    {
+      "id": "S0018L10",
+      "english": "to meet at six o'clock",
+      "mandarin": "六点见面",
+      "type": "M"
+    },
+    {
+      "id": "S0018L11",
+      "english": "to meet at six o'clock this evening",
+      "mandarin": "今天晚上六点见面",
+      "type": "M"
+    },
+    {
+      "id": "S0019L01",
+      "english": "but",
+      "mandarin": "但",
+      "type": "A"
+    },
+    {
+      "id": "S0019L02",
+      "english": "I don't want",
+      "mandarin": "我不想",
+      "type": "M"
+    },
+    {
+      "id": "S0019L03",
+      "english": "don't want to stop",
+      "mandarin": "不想停止",
+      "type": "M"
+    },
+    {
+      "id": "S0019L04",
+      "english": "to stop",
+      "mandarin": "停止",
+      "type": "A"
+    },
+    {
+      "id": "S0019L05",
+      "english": "talking",
+      "mandarin": "说话",
+      "type": "M"
+    },
+    {
+      "id": "S0019L06",
+      "english": "to stop talking",
+      "mandarin": "停止说话",
+      "type": "M"
+    },
+    {
+      "id": "S0019L07",
+      "english": "don't want to stop talking",
+      "mandarin": "不想停止说话",
+      "type": "M"
+    },
+    {
+      "id": "S0020L01",
+      "english": "you want",
+      "mandarin": "你想",
+      "type": "M"
+    },
+    {
+      "id": "S0020L02",
+      "english": "want to learn",
+      "mandarin": "想学会",
+      "type": "M"
+    },
+    {
+      "id": "S0020L04",
+      "english": "quickly",
+      "mandarin": "快点",
+      "type": "A"
+    },
+    {
+      "id": "S0020L05",
+      "english": "his",
+      "mandarin": "他的",
+      "type": "M"
+    },
+    {
+      "id": "S0020L06",
+      "english": "name",
+      "mandarin": "名字",
+      "type": "A"
+    },
+    {
+      "id": "S0020L07",
+      "english": "his name",
+      "mandarin": "他的名字",
+      "type": "M"
+    },
+    {
+      "id": "S0020L08",
+      "english": "to learn his name",
+      "mandarin": "学会他的名字",
+      "type": "M"
+    },
+    {
+      "id": "S0020L09",
+      "english": "to learn his name quickly",
+      "mandarin": "快点学会他的名字",
+      "type": "M"
+    },
+    {
+      "id": "S0020L10",
+      "english": "want to learn his name quickly",
+      "mandarin": "想快点学会他的名字",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0021L01": {
+      "lego": {
+        "english": "why are you",
+        "mandarin": "你为什么"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0021L01",
+        "seed_context": {
+          "english": "Why are you learning her name?",
+          "mandarin": "你为什么在学她的名字？"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "你",
+          "english": "you"
+        },
+        {
+          "mandarin": "为什么",
+          "english": "why"
+        }
+      ]
+    },
+    "S0021L02": {
+      "lego": {
+        "english": "why are you learning",
+        "mandarin": "你为什么在学"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0021L01",
+          "english": "why are you",
+          "mandarin": "你为什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0021L02",
+        "seed_context": {
+          "english": "Why are you learning her name?",
+          "mandarin": "你为什么在学她的名字？"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "你",
+          "english": "you"
+        },
+        {
+          "mandarin": "为什么",
+          "english": "why"
+        },
+        {
+          "mandarin": "在",
+          "english": "are/in progress"
+        },
+        {
+          "mandarin": "学",
+          "english": "learning/study"
+        }
+      ]
+    },
+    "S0021L03": {
+      "lego": {
+        "english": "are learning",
+        "mandarin": "在学"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0021L01",
+          "english": "why are you",
+          "mandarin": "你为什么",
+          "type": "M"
+        },
+        {
+          "id": "S0021L02",
+          "english": "why are you learning",
+          "mandarin": "你为什么在学",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0021L03",
+        "seed_context": {
+          "english": "Why are you learning her name?",
+          "mandarin": "你为什么在学她的名字？"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "在",
+          "english": "are/in progress"
+        },
+        {
+          "mandarin": "学",
+          "english": "learning/study"
+        }
+      ]
+    },
+    "S0021L04": {
+      "lego": {
+        "english": "are learning her name",
+        "mandarin": "在学她的名字"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0021L01",
+          "english": "why are you",
+          "mandarin": "你为什么",
+          "type": "M"
+        },
+        {
+          "id": "S0021L02",
+          "english": "why are you learning",
+          "mandarin": "你为什么在学",
+          "type": "M"
+        },
+        {
+          "id": "S0021L03",
+          "english": "are learning",
+          "mandarin": "在学",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0021L04",
+        "seed_context": {
+          "english": "Why are you learning her name?",
+          "mandarin": "你为什么在学她的名字？"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "在",
+          "english": "are/in progress"
+        },
+        {
+          "mandarin": "学",
+          "english": "learning"
+        },
+        {
+          "mandarin": "她",
+          "english": "her"
+        },
+        {
+          "mandarin": "的",
+          "english": "'s/of"
+        },
+        {
+          "mandarin": "名字",
+          "english": "name"
+        }
+      ]
+    },
+    "S0021L05": {
+      "lego": {
+        "english": "her name",
+        "mandarin": "她的名字"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0021L01",
+          "english": "why are you",
+          "mandarin": "你为什么",
+          "type": "M"
+        },
+        {
+          "id": "S0021L02",
+          "english": "why are you learning",
+          "mandarin": "你为什么在学",
+          "type": "M"
+        },
+        {
+          "id": "S0021L03",
+          "english": "are learning",
+          "mandarin": "在学",
+          "type": "M"
+        },
+        {
+          "id": "S0021L04",
+          "english": "are learning her name",
+          "mandarin": "在学她的名字",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        },
+        {
+          "english": "",
+          "mandarin": "",
+          "notes": ""
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0021L05",
+        "seed_context": {
+          "english": "Why are you learning her name?",
+          "mandarin": "你为什么在学她的名字？"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "她",
+          "english": "her"
+        },
+        {
+          "mandarin": "的",
+          "english": "'s/of"
+        },
+        {
+          "mandarin": "名字",
+          "english": "name"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v9.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "phrase_format": "Each phrase has explicit fields: {english: \"...\", mandarin: \"...\", notes: \"\"}",
+    "slots": "12 pre-allocated slots - fill first 10, leave last 2 empty for future expansion",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs_v9/seed_s0021.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "phrase_slots_per_lego": 12,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

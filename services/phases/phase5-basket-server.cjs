@@ -942,7 +942,7 @@ ${JSON.stringify(legoData, null, 2)}
 - \`seed_sentence\`: Full seed sentence (fallback context)
 - \`seed_legos\`: All LEGOs in this seed (fallback context)
 
-**Pass this complete data structure to each sub-agent.**
+**YOU receive all ${legoCount} LEGOs (${((JSON.stringify(legoData).length) / 1024 / 1024).toFixed(2)} MB).** Divide this data evenly among your ${agentCount} sub-agents (~${legosPerAgent} LEGOs each = ~${((JSON.stringify(legoData).length / agentCount) / 1024).toFixed(0)} KB per agent).
 
 ---
 
@@ -955,10 +955,11 @@ ${JSON.stringify(legoData, null, 2)}
 - This means ${agentCount} agents total
 - Spawn ALL agents in parallel (use Task tool ${agentCount} times in ONE message)
 
-**Each sub-agent receives:**
-- Their subset of LEGO data (from the JSON above - divide ${legoCount} LEGOs evenly)
+**Each sub-agent receives (in their prompt):**
+- **ONLY their assigned LEGO subset** (do NOT send all ${legoCount} LEGOs to each worker!)
+- Example: worker-1 gets LEGOs 1-${legosPerAgent}, worker-2 gets LEGOs ${legosPerAgent + 1}-${legosPerAgent * 2}, etc.
 - Upload URL: \`${ngrokUrl}/phase5/upload-basket\`
-- Agent ID: \`worker-{{NUM}}\`
+- Agent ID: \`worker-1\`, \`worker-2\`, etc.
 - Staging flag: \`stagingOnly: ${params.stagingOnly || false}\`
 
 **What you DON'T need to do:**
@@ -975,10 +976,22 @@ The template has a HUGE "NO SCRIPTS" warning at the top. Make sure sub-agents re
 
 **When spawning each worker agent:**
 1. Use the Task tool to create a new agent
-2. In the prompt, include their subset of LEGO data from the JSON above
+2. **CRITICAL**: Extract ONLY their assigned LEGOs from the full JSON above
+   - Don't send all ${legoCount} LEGOs to each worker!
+   - Extract their subset (e.g., LEGOs 1-${legosPerAgent} for worker-1)
+   - Include ONLY those LEGOs in their prompt as JSON
 3. Tell them their agent ID (worker-1, worker-2, etc.)
 4. Tell them the upload URL and staging flag
 5. Reference the worker prompt template URL
+
+**Example for worker-1:**
+\`\`\`json
+{
+  "S0001L01": { lego: [...], type: "M", seed: "S0001", ... },
+  "S0001L02": { lego: [...], type: "M", seed: "S0001", ... },
+  ... (only ${legosPerAgent} LEGOs)
+}
+\`\`\`
 
 ---
 

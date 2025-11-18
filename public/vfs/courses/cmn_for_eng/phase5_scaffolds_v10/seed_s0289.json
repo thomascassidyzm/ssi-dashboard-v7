@@ -1,0 +1,605 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0289",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "我想知道她今天下午会不会在那里。",
+    "mandarin": "I wonder if she's going to be there this afternoon."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0279",
+      "english": "是的，因为没剩多少时间了。",
+      "mandarin": "Yes because there wasn't much time left."
+    },
+    {
+      "seed_id": "S0280",
+      "english": "不，我只需要做最重要的工作。",
+      "mandarin": "No I only had to do the most important job."
+    },
+    {
+      "seed_id": "S0281",
+      "english": "你介意我在你开始之前喝完我的咖啡吗？",
+      "mandarin": "Do you mind if I finish my coffee before you start?"
+    },
+    {
+      "seed_id": "S0282",
+      "english": "不，那不是问题。",
+      "mandarin": "No that's not a problem."
+    },
+    {
+      "seed_id": "S0283",
+      "english": "你的哪些朋友说普通话？",
+      "mandarin": "Which of your friends speak Chinese?"
+    },
+    {
+      "seed_id": "S0284",
+      "english": "你认识我姐姐的朋友吗？",
+      "mandarin": "Do you know my sister's friend?"
+    },
+    {
+      "seed_id": "S0285",
+      "english": "她说普通话。",
+      "mandarin": "She speaks Chinese."
+    },
+    {
+      "seed_id": "S0286",
+      "english": "喜欢说普通话的人。",
+      "mandarin": "People who like speaking Chinese."
+    },
+    {
+      "seed_id": "S0287",
+      "english": "你认识多少喜欢看电视的人？",
+      "mandarin": "How many people do you know who like watching television?"
+    },
+    {
+      "seed_id": "S0288",
+      "english": "我认识的大多数人喜欢看电视。",
+      "mandarin": "Most people I know like watching television."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0280L02",
+      "english": "I only",
+      "mandarin": "我只",
+      "type": "M"
+    },
+    {
+      "id": "S0280L03",
+      "english": "need to",
+      "mandarin": "需要",
+      "type": "M"
+    },
+    {
+      "id": "S0280L06",
+      "english": "important work",
+      "mandarin": "重要的工作",
+      "type": "M"
+    },
+    {
+      "id": "S0280L07",
+      "english": "the most important work",
+      "mandarin": "最重要的工作",
+      "type": "M"
+    },
+    {
+      "id": "S0280L08",
+      "english": "do the most important job",
+      "mandarin": "做最重要的工作",
+      "type": "M"
+    },
+    {
+      "id": "S0280L09",
+      "english": "need to do the most important job",
+      "mandarin": "需要做最重要的工作",
+      "type": "M"
+    },
+    {
+      "id": "S0281L01",
+      "english": "do you mind",
+      "mandarin": "你介意",
+      "type": "M"
+    },
+    {
+      "id": "S0281L02",
+      "english": "my coffee",
+      "mandarin": "我的咖啡",
+      "type": "M"
+    },
+    {
+      "id": "S0281L03",
+      "english": "finish my coffee",
+      "mandarin": "喝完我的咖啡",
+      "type": "M"
+    },
+    {
+      "id": "S0281L04",
+      "english": "you start",
+      "mandarin": "你开始",
+      "type": "M"
+    },
+    {
+      "id": "S0281L05",
+      "english": "before you start",
+      "mandarin": "在你开始之前",
+      "type": "M"
+    },
+    {
+      "id": "S0282L02",
+      "english": "that's not a problem",
+      "mandarin": "那不是问题",
+      "type": "M"
+    },
+    {
+      "id": "S0282L03",
+      "english": "problem",
+      "mandarin": "问题",
+      "type": "A"
+    },
+    {
+      "id": "S0283L01",
+      "english": "which of your friends",
+      "mandarin": "你的哪些朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0283L02",
+      "english": "speak Chinese",
+      "mandarin": "说中文",
+      "type": "M"
+    },
+    {
+      "id": "S0283L03",
+      "english": "Chinese",
+      "mandarin": "中文",
+      "type": "A"
+    },
+    {
+      "id": "S0284L01",
+      "english": "do you know",
+      "mandarin": "你认识",
+      "type": "M"
+    },
+    {
+      "id": "S0284L02",
+      "english": "my sister's friend",
+      "mandarin": "我姐姐的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0284L03",
+      "english": "older sister",
+      "mandarin": "姐姐",
+      "type": "A"
+    },
+    {
+      "id": "S0285L01",
+      "english": "she speaks",
+      "mandarin": "她说",
+      "type": "M"
+    },
+    {
+      "id": "S0285L02",
+      "english": "she speaks Chinese",
+      "mandarin": "她说中文",
+      "type": "M"
+    },
+    {
+      "id": "S0286L01",
+      "english": "like speaking Chinese",
+      "mandarin": "喜欢说中文",
+      "type": "M"
+    },
+    {
+      "id": "S0286L02",
+      "english": "people who like speaking Chinese",
+      "mandarin": "喜欢说中文的人",
+      "type": "M"
+    },
+    {
+      "id": "S0287L01",
+      "english": "how many do you know",
+      "mandarin": "你认识多少",
+      "type": "M"
+    },
+    {
+      "id": "S0287L02",
+      "english": "how many",
+      "mandarin": "多少",
+      "type": "A"
+    },
+    {
+      "id": "S0287L03",
+      "english": "like watching television",
+      "mandarin": "喜欢看电视",
+      "type": "M"
+    },
+    {
+      "id": "S0287L06",
+      "english": "people who like watching television",
+      "mandarin": "喜欢看电视的人",
+      "type": "M"
+    },
+    {
+      "id": "S0288L01",
+      "english": "I know",
+      "mandarin": "我认识的",
+      "type": "M"
+    },
+    {
+      "id": "S0288L02",
+      "english": "most people",
+      "mandarin": "大多数人",
+      "type": "M"
+    },
+    {
+      "id": "S0288L03",
+      "english": "most people I know",
+      "mandarin": "我认识的大多数人",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0289L01": {
+      "lego_id": "S0289L01",
+      "lego": {
+        "english": "I wonder",
+        "mandarin": "我想知道"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0289L01",
+        "seed_context": {
+          "english": "我想知道她今天下午会不会在那里。",
+          "mandarin": "I wonder if she's going to be there this afternoon."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "我",
+          "english": "I"
+        },
+        {
+          "mandarin": "想",
+          "english": "want to"
+        },
+        {
+          "mandarin": "知道",
+          "english": "know"
+        }
+      ]
+    },
+    "S0289L04": {
+      "lego_id": "S0289L04",
+      "lego": {
+        "english": "is going to be there",
+        "mandarin": "会不会在那里"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0289L01",
+          "english": "I wonder",
+          "mandarin": "我想知道",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0289L04",
+        "seed_context": {
+          "english": "我想知道她今天下午会不会在那里。",
+          "mandarin": "I wonder if she's going to be there this afternoon."
+        }
+      },
+      "components": [
+        {
+          "mandarin": "会不会",
+          "english": "will or not / going to"
+        },
+        {
+          "mandarin": "在",
+          "english": "be at"
+        },
+        {
+          "mandarin": "那里",
+          "english": "there"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0289.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_to_generate": 20,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}
