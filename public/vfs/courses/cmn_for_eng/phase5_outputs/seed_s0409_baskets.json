@@ -1,0 +1,102 @@
+{
+  "S0409L03": {
+    "lego": ["what we do","我们做什么"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["What we","我们什么",null,1],
+      ["We do","我们做",null,1],
+      ["What we do","我们做什么",null,1],
+      ["What they do","他们做什么",null,1],
+      ["What we should do","我们应该做什么",null,1],
+      ["What we eat","我们吃什么",null,1],
+      ["It doesn't matter what we do","我们做什么都不重要",null,2],
+      ["What we do is very important","我们做什么很重要",null,1],
+      ["I don't know what we should do","我不知道我们应该做什么",null,1],
+      ["What we do affects our children","我们做什么影响我们的孩子",null,1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0409L04": {
+    "lego": ["not important","不重要"],
+    "type": "M",
+    "current_seed_legos_available": [["what we do","我们做什么"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["Not important","不重要",null,1],
+      ["It's unimportant","不重要",null,1],
+      ["That's not important","那不重要",null,1],
+      ["This not important","这不重要",null,1],
+      ["It's not very important","这不是很重要",null,1],
+      ["That is not important","那是不重要的",null,1],
+      ["This question is not important","这个问题不重要",null,1],
+      ["What we eat is not important","我们吃什么不重要",null,1],
+      ["It's not important when we finish","我们什么时候完成不重要",null,1],
+      ["The time is not important for this","时间对这个不重要",null,1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null]]
+  },
+  "S0409L05": {
+    "lego": ["doesn't matter","都不重要"],
+    "type": "M",
+    "current_seed_legos_available": [["what we do","我们做什么"],["not important","不重要"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["都不重要。","It doesn't matter.",null,1],
+      ["这都不重要。","This doesn't matter.",null,2],
+      ["我们做什么都不重要。","What we do doesn't matter.",null,3],
+      ["现在都不重要了。","It doesn't matter now.",null,3],
+      ["我们应该做什么都不重要。","It doesn't matter what we should do.",null,4],
+      ["你们在哪里都不重要。","It doesn't matter where you are.",null,4],
+      ["我们现在做什么都不重要了。","It doesn't matter what we do now.",null,6],
+      ["你们想在哪里停下来都不重要。","It doesn't matter where you want to stop.",null,7],
+      ["我们应该在星期四之前完成什么都不重要。","It doesn't matter what we should finish before Thursday.",null,8],
+      ["他们是否需要预订都不重要。","It doesn't matter whether they need to book.",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null]]
+  },
+  "S0409L06": {
+    "lego": ["it doesn't matter what we do","我们做什么都不重要"],
+    "type": "M",
+    "current_seed_legos_available": [["what we do","我们做什么"],["not important","不重要"],["doesn't matter","都不重要"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["我们做什么都不重要。","It doesn't matter what we do.",null,1],
+      ["我们做什么都不重要吗？","Doesn't it matter what we do?",null,2],
+      ["我们做什么都不重要了。","It doesn't matter what we do now.",null,3],
+      ["也许我们做什么都不重要。","Maybe it doesn't matter what we do.",null,3],
+      ["我确信我们做什么都不重要。","I'm sure it doesn't matter what we do.",null,4],
+      ["我们做什么都不重要的。","It doesn't matter what we do at all.",null,4],
+      ["我们应该问一下我们做什么都不重要吗？","Should we ask if it doesn't matter what we do?",null,6],
+      ["听起来好像我们做什么都不重要。","It sounds as though it doesn't matter what we do.",null,7],
+      ["我们不应该期望我们做什么都不重要。","We shouldn't expect that it doesn't matter what we do.",null,8],
+      ["现在我们做什么都不重要了。","Now it doesn't matter what we do.",null,6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+  }
+}

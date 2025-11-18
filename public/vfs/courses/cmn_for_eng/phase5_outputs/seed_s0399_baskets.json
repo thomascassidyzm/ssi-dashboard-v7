@@ -1,0 +1,131 @@
+{
+  "legos": {
+    "S0399L01": {
+      "lego": ["we don't want to","我们不想"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["We don't want to","我们不想",null,1],
+        ["We don't want to go","我们不想去",null,2],
+        ["We don't want to wait","我们不想等",null,3],
+        ["We don't want to lose","我们不想失去",null,3],
+        ["We don't want to go home","我们不想回家",null,4],
+        ["We don't want to wait here","我们不想在这里等",null,5],
+        ["We don't want to go home now","我们不想现在回家",null,5],
+        ["We don't want to lose our patience","我们不想失去耐心",null,6],
+        ["We don't want to wait for other people","我们不想等其他人",null,7],
+        ["We don't want to go home too early","我们不想太早回家",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0399L01",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0399L03": {
+      "lego": ["hope","希望"],
+      "type": "A",
+      "current_seed_legos_available": [["we don't want to","我们不想"],["lose","失去"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Hope","希望",null,1],
+        ["Our hope","我们的希望",null,1],
+        ["I have hope","我有希望",null,2],
+        ["We need hope","我们需要希望",null,2],
+        ["We should have hope","我们应该有希望",null,3],
+        ["They don't have hope","他们没有希望",null,3],
+        ["We don't want to lose hope","我们不想失去希望",null,4],
+        ["The children need hope","孩子们需要希望",null,4],
+        ["We should never lose hope","我们永远不应该失去希望",null,5],
+        ["Hope is very important for us","希望对我们很重要",null,6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0399L03",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      }
+    },
+    "S0399L04": {
+      "lego": ["lose hope","失去希望"],
+      "type": "M",
+      "current_seed_legos_available": [["we don't want to","我们不想"],["lose","失去"],["hope","希望"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Lose hope","失去希望",null,1],
+        ["Don't lose hope","不要失去希望",null,2],
+        ["Never lose hope","永远不要失去希望",null,3],
+        ["We shouldn't lose hope","我们不应该失去希望",null,3],
+        ["They will not lose hope","他们不会失去希望",null,4],
+        ["I don't want to lose hope","我不想失去希望",null,5],
+        ["We don't want to lose hope","我们不想失去希望",null,5],
+        ["The children should never lose hope","孩子们永远不应该失去希望",null,6],
+        ["We don't want to lose hope now","我们不想现在失去希望",null,6],
+        ["We should try not to lose hope","我们应该尽量不失去希望",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0399L04",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0399L05": {
+      "lego": ["we don't want to lose hope","我们不想失去希望"],
+      "type": "M",
+      "current_seed_legos_available": [["we don't want to","我们不想"],["lose","失去"],["hope","希望"],["lose hope","失去希望"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["We don't want to lose hope","我们不想失去希望",null,1],
+        ["We don't want to lose hope now","我们不想现在失去希望",null,2],
+        ["We don't want to lose hope today","我们不想今天失去希望",null,3],
+        ["We really don't want to lose hope","我们真的不想失去希望",null,3],
+        ["We don't want to lose hope yet","我们还不想失去希望",null,4],
+        ["We don't want to lose hope right now","我们不想现在失去希望",null,5],
+        ["We don't want to lose hope for our children","我们不想为我们的孩子失去希望",null,6],
+        ["We don't want to lose hope at this time","我们不想在这个时候失去希望",null,7],
+        ["We really don't want to lose hope now","我们真的不想现在失去希望",null,7],
+        ["We don't want to lose hope no matter what happens","无论发生什么我们都不想失去希望",null,8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0399L05",
+        "seed_context": {
+          "known": "We don't want to lose hope.",
+          "target": "我们不想失去希望。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null],[null,null]]
+    }
+  }
+}

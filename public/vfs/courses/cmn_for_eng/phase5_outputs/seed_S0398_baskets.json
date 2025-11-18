@@ -1,0 +1,738 @@
+{
+  "legos": {
+    "S0398L01": {
+      "lego": [
+        "we want to",
+        "我们想"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "we want to",
+          "我们想",
+          null,
+          1
+        ],
+        [
+          "we want to learn",
+          "我们想学习",
+          null,
+          2
+        ],
+        [
+          "we want to try",
+          "我们想试试",
+          null,
+          3
+        ],
+        [
+          "we want to go now",
+          "我们现在想去",
+          null,
+          3
+        ],
+        [
+          "we want to help you",
+          "我们想帮助你",
+          null,
+          4
+        ],
+        [
+          "we want to speak Chinese",
+          "我们想说中文",
+          null,
+          4
+        ],
+        [
+          "we want to learn how to speak",
+          "我们想学习怎么说",
+          null,
+          5
+        ],
+        [
+          "we want to try to understand this",
+          "我们想试着理解这个",
+          null,
+          6
+        ],
+        [
+          "we want to help our children learn",
+          "我们想帮助我们的孩子学习",
+          null,
+          6
+        ],
+        [
+          "we want to become better at teaching",
+          "我们想在教学方面变得更好",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "想",
+          "want to"
+        ]
+      ]
+    },
+    "S0398L02": {
+      "lego": [
+        "child/children",
+        "孩子"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0398L01",
+          "known": "we want to",
+          "target": "我们想",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "child",
+          "孩子",
+          null,
+          1
+        ],
+        [
+          "a child",
+          "一个孩子",
+          null,
+          2
+        ],
+        [
+          "the child is learning",
+          "孩子在学习",
+          null,
+          3
+        ],
+        [
+          "that child over there",
+          "那边那个孩子",
+          null,
+          3
+        ],
+        [
+          "I'm helping the child",
+          "我在帮助这个孩子",
+          null,
+          4
+        ],
+        [
+          "the child wants to learn",
+          "孩子想学习",
+          null,
+          4
+        ],
+        [
+          "we want to help the child",
+          "我们想帮助这个孩子",
+          null,
+          5
+        ],
+        [
+          "the child is trying to speak Chinese",
+          "孩子在试着说中文",
+          null,
+          6
+        ],
+        [
+          "I'm teaching the child how to be patient",
+          "我在教孩子怎么有耐心",
+          null,
+          7
+        ],
+        [
+          "we want to understand what the child needs",
+          "我们想理解孩子需要什么",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0398L03": {
+      "lego": [
+        "our children",
+        "我们的孩子"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0398L01",
+          "known": "we want to",
+          "target": "我们想",
+          "type": "M"
+        },
+        {
+          "id": "S0398L02",
+          "known": "child/children",
+          "target": "孩子",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "our children",
+          "我们的孩子",
+          null,
+          1
+        ],
+        [
+          "our children are learning",
+          "我们的孩子在学习",
+          null,
+          2
+        ],
+        [
+          "we love our children",
+          "我们爱我们的孩子",
+          null,
+          3
+        ],
+        [
+          "our children need help",
+          "我们的孩子需要帮助",
+          null,
+          3
+        ],
+        [
+          "we want to help our children",
+          "我们想帮助我们的孩子",
+          null,
+          4
+        ],
+        [
+          "our children are trying to learn",
+          "我们的孩子在试着学习",
+          null,
+          4
+        ],
+        [
+          "we want to teach our children Chinese",
+          "我们想教我们的孩子中文",
+          null,
+          5
+        ],
+        [
+          "our children want to speak with you",
+          "我们的孩子想和你说话",
+          null,
+          6
+        ],
+        [
+          "we need to be patient with our children",
+          "我们需要对我们的孩子有耐心",
+          null,
+          6
+        ],
+        [
+          "we want to understand what our children are saying",
+          "我们想理解我们的孩子在说什么",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我们",
+          "our"
+        ],
+        [
+          "的",
+          "(possessive particle)"
+        ],
+        [
+          "孩子",
+          "children"
+        ]
+      ]
+    },
+    "S0398L04": {
+      "lego": [
+        "with our children/towards our children",
+        "对我们的孩子"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0398L01",
+          "known": "we want to",
+          "target": "我们想",
+          "type": "M"
+        },
+        {
+          "id": "S0398L02",
+          "known": "child/children",
+          "target": "孩子",
+          "type": "A"
+        },
+        {
+          "id": "S0398L03",
+          "known": "our children",
+          "target": "我们的孩子",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "towards our children",
+          "对我们的孩子",
+          null,
+          1
+        ],
+        [
+          "patient towards our children",
+          "对我们的孩子有耐心",
+          null,
+          2
+        ],
+        [
+          "we are kind towards our children",
+          "我们对我们的孩子很友善",
+          null,
+          3
+        ],
+        [
+          "be gentle towards our children",
+          "对我们的孩子温柔",
+          null,
+          3
+        ],
+        [
+          "we want to be patient towards our children",
+          "我们想对我们的孩子有耐心",
+          null,
+          5
+        ],
+        [
+          "we need to be understanding towards our children",
+          "我们需要对我们的孩子理解",
+          null,
+          5
+        ],
+        [
+          "I'm trying to be more patient towards our children",
+          "我在试着对我们的孩子更有耐心",
+          null,
+          6
+        ],
+        [
+          "we should be more kind and patient towards our children",
+          "我们应该对我们的孩子更友善和有耐心",
+          null,
+          7
+        ],
+        [
+          "we want to become better teachers towards our children",
+          "我们想成为对我们的孩子更好的老师",
+          null,
+          7
+        ],
+        [
+          "I need to learn how to be more understanding towards our children",
+          "我需要学习如何对我们的孩子更理解",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "对",
+          "towards/with"
+        ],
+        [
+          "我们的孩子",
+          "our children"
+        ]
+      ]
+    },
+    "S0398L05": {
+      "lego": [
+        "patience",
+        "耐心"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0398L01",
+          "known": "we want to",
+          "target": "我们想",
+          "type": "M"
+        },
+        {
+          "id": "S0398L02",
+          "known": "child/children",
+          "target": "孩子",
+          "type": "A"
+        },
+        {
+          "id": "S0398L03",
+          "known": "our children",
+          "target": "我们的孩子",
+          "type": "M"
+        },
+        {
+          "id": "S0398L04",
+          "known": "with our children/towards our children",
+          "target": "对我们的孩子",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "patience",
+          "耐心",
+          null,
+          1
+        ],
+        [
+          "have patience",
+          "有耐心",
+          null,
+          2
+        ],
+        [
+          "I need patience",
+          "我需要耐心",
+          null,
+          3
+        ],
+        [
+          "learning patience is important",
+          "学习耐心很重要",
+          null,
+          3
+        ],
+        [
+          "we want to have patience",
+          "我们想有耐心",
+          null,
+          4
+        ],
+        [
+          "I'm trying to learn patience",
+          "我在试着学习耐心",
+          null,
+          4
+        ],
+        [
+          "we need to show more patience",
+          "我们需要表现出更多耐心",
+          null,
+          5
+        ],
+        [
+          "patience is something we need to practice",
+          "耐心是我们需要练习的东西",
+          null,
+          6
+        ],
+        [
+          "I want to teach our children about patience",
+          "我想教我们的孩子关于耐心",
+          null,
+          6
+        ],
+        [
+          "we are trying to become better at showing patience",
+          "我们在试着变得更善于表现耐心",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": []
+    },
+    "S0398L06": {
+      "lego": [
+        "patient/have patience",
+        "有耐心"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0398L01",
+          "known": "we want to",
+          "target": "我们想",
+          "type": "M"
+        },
+        {
+          "id": "S0398L02",
+          "known": "child/children",
+          "target": "孩子",
+          "type": "A"
+        },
+        {
+          "id": "S0398L03",
+          "known": "our children",
+          "target": "我们的孩子",
+          "type": "M"
+        },
+        {
+          "id": "S0398L04",
+          "known": "with our children/towards our children",
+          "target": "对我们的孩子",
+          "type": "M"
+        },
+        {
+          "id": "S0398L05",
+          "known": "patience",
+          "target": "耐心",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "have patience",
+          "有耐心",
+          null,
+          1
+        ],
+        [
+          "I'm patient",
+          "我有耐心",
+          null,
+          2
+        ],
+        [
+          "we need to be patient",
+          "我们需要有耐心",
+          null,
+          3
+        ],
+        [
+          "be patient with children",
+          "对孩子有耐心",
+          null,
+          3
+        ],
+        [
+          "we want to be patient",
+          "我们想有耐心",
+          null,
+          4
+        ],
+        [
+          "I'm trying to be patient",
+          "我在试着有耐心",
+          null,
+          4
+        ],
+        [
+          "we want to be patient with our children",
+          "我们想对我们的孩子有耐心",
+          null,
+          6
+        ],
+        [
+          "I need to learn how to be patient",
+          "我需要学习如何有耐心",
+          null,
+          6
+        ],
+        [
+          "we are trying to be more patient when teaching",
+          "我们在试着在教学时更有耐心",
+          null,
+          7
+        ],
+        [
+          "I want to become patient with our children",
+          "我想对我们的孩子变得有耐心",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "有",
+          "have"
+        ],
+        [
+          "耐心",
+          "patience"
+        ]
+      ]
+    },
+    "S0398L07": {
+      "lego": [
+        "more patient",
+        "更有耐心"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0398L01",
+          "known": "we want to",
+          "target": "我们想",
+          "type": "M"
+        },
+        {
+          "id": "S0398L02",
+          "known": "child/children",
+          "target": "孩子",
+          "type": "A"
+        },
+        {
+          "id": "S0398L03",
+          "known": "our children",
+          "target": "我们的孩子",
+          "type": "M"
+        },
+        {
+          "id": "S0398L04",
+          "known": "with our children/towards our children",
+          "target": "对我们的孩子",
+          "type": "M"
+        },
+        {
+          "id": "S0398L05",
+          "known": "patience",
+          "target": "耐心",
+          "type": "A"
+        },
+        {
+          "id": "S0398L06",
+          "known": "patient/have patience",
+          "target": "有耐心",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "more patient",
+          "更有耐心",
+          null,
+          1
+        ],
+        [
+          "become more patient",
+          "变得更有耐心",
+          null,
+          2
+        ],
+        [
+          "I want to be more patient",
+          "我想更有耐心",
+          null,
+          3
+        ],
+        [
+          "we need to be more patient",
+          "我们需要更有耐心",
+          null,
+          3
+        ],
+        [
+          "I'm trying to become more patient",
+          "我在试着变得更有耐心",
+          null,
+          4
+        ],
+        [
+          "we want to be more patient",
+          "我们想更有耐心",
+          null,
+          4
+        ],
+        [
+          "I need to learn to be more patient",
+          "我需要学习更有耐心",
+          null,
+          5
+        ],
+        [
+          "we want to become more patient with our children",
+          "我们想对我们的孩子更有耐心",
+          null,
+          6
+        ],
+        [
+          "I'm trying to be more patient when I teach",
+          "我在试着在教学时更有耐心",
+          null,
+          6
+        ],
+        [
+          "we need to learn how to be more patient with our children",
+          "我们需要学习如何对我们的孩子更有耐心",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "更",
+          "more"
+        ],
+        [
+          "有耐心",
+          "patient"
+        ]
+      ]
+    }
+  }
+}

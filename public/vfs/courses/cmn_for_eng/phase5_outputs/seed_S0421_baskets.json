@@ -1,0 +1,46 @@
+{
+  "S0421L01": {
+    "lego": ["because they already know", "因为他们已经知道"],
+    "type": "M",
+    "practice_phrases": [
+      ["Because they already know", "因为他们已经知道", null, 1],
+      ["Because they already know", "因为他们已经知道", null, 1],
+      ["Because they already know how old", "因为他们已经知道多大了", null, 2],
+      ["Because they already know he's getting weak", "因为他们已经知道他变弱了", null, 2],
+      ["They don't need to ask because they already know", "他们不需要问，因为他们已经知道", null, 4],
+      ["Because they already know how old he is", "因为他们已经知道他多大了", null, 3],
+      ["They don't need to ask how old he is because they already know", "他们不需要问他多大了，因为他们已经知道", null, 6],
+      ["We couldn't allow them to win because they already know he's getting weak", "我们不能让他们赢得，因为他们已经知道他变弱了", null, 8],
+      ["If they want people to like them because they already know", "如果他们想让人们喜欢他们，因为他们已经知道", null, 6],
+      ["They still fight with each other because they already know he's getting weak", "他们仍然互相打架，因为他们已经知道他变弱了", null, 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 1,
+      "long_6_plus": 4
+    }
+  },
+  "S0421L02": {
+    "lego": ["he's getting weak", "他变弱了"],
+    "type": "M",
+    "practice_phrases": [
+      ["He's getting weak", "他变弱了", null, 1],
+      ["He's getting weak", "他变弱了", null, 1],
+      ["They know he's getting weak", "他们知道他变弱了", null, 2],
+      ["Because he's getting weak", "因为他变弱了", null, 2],
+      ["Because they already know he's getting weak", "因为他们已经知道他变弱了", null, 3],
+      ["They could fall because he's getting weak", "因为他变弱了，他们可能会摔倒", null, 4],
+      ["We couldn't allow them to win because he's getting weak", "我们不能让他们赢得，因为他变弱了", null, 7],
+      ["They still fight with each other because they already know he's getting weak", "他们仍然互相打架，因为他们已经知道他变弱了", null, 8],
+      ["If you ask me he's getting weak next year", "如果你问我，他明年会变弱了", null, 6],
+      ["That wouldn't be a problem if he's getting weak", "如果他变弱了，那不会是个问题", null, 6]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 3,
+      "longer_4_5": 2,
+      "long_6_plus": 3
+    }
+  }
+}

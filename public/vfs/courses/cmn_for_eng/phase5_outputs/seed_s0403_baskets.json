@@ -1,0 +1,164 @@
+{
+  "legos": {
+    "S0403L01": {
+      "lego": ["we should","我们应该"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["We should","我们应该",null,1],
+        ["We should go","我们应该去",null,2],
+        ["We should wait","我们应该等",null,2],
+        ["We should be patient","我们应该有耐心",null,3],
+        ["We should go home","我们应该回家",null,3],
+        ["We should be ready soon","我们应该很快准备好",null,4],
+        ["We should wait for them","我们应该等他们",null,4],
+        ["We should turn left at the corner","我们应该在拐角处左转",null,6],
+        ["We should get ready for our children","我们应该为我们的孩子准备好",null,7],
+        ["We should be patient with other people","我们应该对其他人有耐心",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0403L01",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "我们应该尽可能长时间保持安静。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0403L02": {
+      "lego": ["as ... as possible","尽可能"],
+      "type": "M",
+      "current_seed_legos_available": [["we should","我们应该"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["As possible","尽可能",null,1],
+        ["As soon as possible","尽快",null,2],
+        ["As much as possible","尽可能多",null,2],
+        ["As long as possible","尽可能长",null,3],
+        ["We should wait as long as possible","我们应该尽可能长时间等待",null,4],
+        ["As quietly as possible","尽可能安静",null,4],
+        ["We should be ready as soon as possible","我们应该尽快准备好",null,5],
+        ["Try to speak as clearly as possible","尽量说得尽可能清楚",null,6],
+        ["We should remain quiet as long as possible","我们应该尽可能长时间保持安静",null,6],
+        ["They should prepare as much as possible","他们应该尽可能多地准备",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0403L02",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "我们应该尽可能长时间保持安静。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0403L03": {
+      "lego": ["a long time","长时间"],
+      "type": "M",
+      "current_seed_legos_available": [["we should","我们应该"],["as ... as possible","尽可能"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["A long time","长时间",null,1],
+        ["For a long time","很长时间",null,2],
+        ["Wait a long time","等很长时间",null,2],
+        ["A very long time","很长时间",null,3],
+        ["We waited a long time","我们等了很长时间",null,4],
+        ["Standing for a long time","站了很长时间",null,4],
+        ["We should wait for a long time","我们应该等很长时间",null,5],
+        ["The children waited a long time","孩子们等了很长时间",null,5],
+        ["We have been ready for a long time","我们已经准备好很长时间了",null,6],
+        ["We should remain quiet for a long time","我们应该保持安静很长时间",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0403L03",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "我们应该尽可能长时间保持安静。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0403L04": {
+      "lego": ["for as long as possible","尽可能长时间"],
+      "type": "M",
+      "current_seed_legos_available": [["we should","我们应该"],["as ... as possible","尽可能"],["a long time","长时间"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["For as long as possible","尽可能长时间",null,1],
+        ["Wait for as long as possible","尽可能长时间等待",null,2],
+        ["Stand for as long as possible","尽可能长时间站着",null,3],
+        ["We should wait for as long as possible","我们应该尽可能长时间等待",null,3],
+        ["Remain quiet for as long as possible","尽可能长时间保持安静",null,4],
+        ["We need to wait for as long as possible","我们需要尽可能长时间等待",null,5],
+        ["We should stand for as long as possible","我们应该尽可能长时间站着",null,5],
+        ["The children should wait for as long as possible","孩子们应该尽可能长时间等待",null,6],
+        ["We should be patient for as long as possible","我们应该尽可能长时间有耐心",null,7],
+        ["We should remain ready for as long as possible","我们应该尽可能长时间保持准备",null,7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0403L04",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "我们应该尽可能长时间保持安静。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0403L05": {
+      "lego": ["remain quiet","保持安静"],
+      "type": "M",
+      "current_seed_legos_available": [["we should","我们应该"],["as ... as possible","尽可能"],["a long time","长时间"],["for as long as possible","尽可能长时间"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Remain quiet","保持安静",null,1],
+        ["Please remain quiet","请保持安静",null,2],
+        ["We should remain quiet","我们应该保持安静",null,3],
+        ["The children remain quiet","孩子们保持安静",null,3],
+        ["We need to remain quiet","我们需要保持安静",null,4],
+        ["We should remain quiet now","我们应该现在保持安静",null,4],
+        ["We should remain quiet for a long time","我们应该长时间保持安静",null,5],
+        ["The children should remain quiet","孩子们应该保持安静",null,5],
+        ["We should remain quiet for as long as possible","我们应该尽可能长时间保持安静",null,6],
+        ["We all should remain quiet until other people are ready","我们都应该保持安静直到其他人准备好",null,8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0403L05",
+        "seed_context": {
+          "known": "We should remain quiet for as long as possible.",
+          "target": "我们应该尽可能长时间保持安静。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    }
+  }
+}

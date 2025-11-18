@@ -1,0 +1,68 @@
+{
+  "S0412L01": {
+    "lego": ["we couldn't", "我们不能"],
+    "type": "M",
+    "practice_phrases": [
+      ["We couldn't", "我们不能", null, 1],
+      ["We couldn't go", "我们不能去", null, 2],
+      ["We couldn't allow this", "我们不能允许这个", null, 2],
+      ["We couldn't finish today", "我们今天不能完成", null, 2],
+      ["We couldn't find the book", "我们不能找到那本书", null, 3],
+      ["We couldn't understand the question", "我们不能理解这个问题", null, 3],
+      ["We couldn't allow them to win", "我们不能让他们赢", null, 3],
+      ["We couldn't expect to finish before Thursday", "我们不能期望在星期四之前完成", null, 4],
+      ["We couldn't allow them to win everything", "我们不能让他们赢得一切", null, 3],
+      ["We couldn't remain quiet for as long as possible", "我们不能尽可能长时间保持安静", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0412L02": {
+    "lego": ["allow them to win", "让他们赢得"],
+    "type": "M",
+    "practice_phrases": [
+      ["Allow them to win", "让他们赢得", null, 1],
+      ["We allow them to win", "我们让他们赢得", null, 2],
+      ["Don't allow them to win", "不要让他们赢得", null, 2],
+      ["Can't allow them to win", "不能让他们赢得", null, 2],
+      ["We can't allow them to win", "我们不能让他们赢得", null, 3],
+      ["We shouldn't allow them to win", "我们不应该让他们赢得", null, 3],
+      ["We couldn't allow them to win", "我们不能让他们赢得", null, 3],
+      ["We should never allow them to win everything", "我们永远不应该让他们赢得一切", null, 4],
+      ["We couldn't allow them to win this game", "我们不能让他们赢得这场比赛", null, 4],
+      ["Should we allow them to win this time", "我们应该这次让他们赢得吗", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0412L03": {
+    "lego": ["win everything", "赢得一切"],
+    "type": "M",
+    "practice_phrases": [
+      ["Win everything", "赢得一切", null, 1],
+      ["They win everything", "他们赢得一切", null, 2],
+      ["Can't win everything", "不能赢得一切", null, 2],
+      ["We can't win everything", "我们不能赢得一切", null, 2],
+      ["They want to win everything", "他们想赢得一切", null, 3],
+      ["We couldn't win everything today", "我们今天不能赢得一切", null, 3],
+      ["We couldn't allow them to win everything", "我们不能让他们赢得一切", null, 3],
+      ["They expect to win everything this year", "他们期望今年赢得一切", null, 4],
+      ["We shouldn't allow them to win everything", "我们不应该让他们赢得一切", null, 3],
+      ["It doesn't matter if they win everything", "如果他们赢得一切都不重要", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

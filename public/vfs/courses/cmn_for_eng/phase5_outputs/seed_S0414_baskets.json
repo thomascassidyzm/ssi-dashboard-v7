@@ -1,4 +1,26 @@
 {
+  "S0414L01": {
+    "lego": ["we can", "我们可以"],
+    "type": "M",
+    "practice_phrases": [
+      ["We can", "我们可以", null, 1],
+      ["We can try", "我们可以试试", null, 1],
+      ["We can go now", "我们可以现在走", null, 1],
+      ["We can help you", "我们可以帮你", null, 1],
+      ["We can try it tomorrow", "我们可以明天试试", null, 1],
+      ["We can start right away", "我们可以马上开始", null, 1],
+      ["We can go to the restaurant tonight", "我们可以今晚去餐厅", null, 1],
+      ["We can ask if they have a table", "我们可以问他们是否有桌子", null, 1],
+      ["We can reserve a table for four people", "我们可以预订一张四人桌", null, 1],
+      ["We can have dinner together this weekend", "我们可以这个周末一起吃晚饭", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
   "S0414L02": {
     "lego": [
       "can have",
@@ -67,5 +89,71 @@
         6
       ]
     ]
+  },
+  "S0414L03": {
+    "lego": ["have a bottle of red wine", "要一瓶红葡萄酒"],
+    "type": "M",
+    "practice_phrases": [
+      ["Have a bottle", "要一瓶", null, 1],
+      ["Have a bottle of wine", "要一瓶葡萄酒", null, 1],
+      ["I'll have a bottle", "我要一瓶", null, 1],
+      ["They have a bottle of red wine", "他们要一瓶红葡萄酒", null, 1],
+      ["We should have a bottle of wine", "我们应该要一瓶葡萄酒", null, 1],
+      ["Can we have a bottle of water", "我们可以要一瓶水吗", null, 2],
+      ["I would like to have a bottle of red wine tonight", "我今晚想要一瓶红葡萄酒", null, 1],
+      ["Could you have a bottle of red wine ready for us", "你能为我们准备一瓶红葡萄酒吗", null, 1],
+      ["We could have a bottle of red wine with dinner", "我们可以晚饭时要一瓶红葡萄酒", null, 2],
+      ["They want to have a bottle of red wine for the table", "他们想为桌子要一瓶红葡萄酒", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0414L04": {
+    "lego": ["a bottle of red wine", "一瓶红葡萄酒"],
+    "type": "M",
+    "practice_phrases": [
+      ["A bottle of wine", "一瓶葡萄酒", null, 1],
+      ["A bottle of red wine", "一瓶红葡萄酒", null, 1],
+      ["Get a bottle of wine", "拿一瓶葡萄酒", null, 1],
+      ["I want a bottle of red wine", "我想要一瓶红葡萄酒", null, 1],
+      ["Here is a bottle of red wine", "这是一瓶红葡萄酒", null, 1],
+      ["Please bring a bottle of red wine", "请带一瓶红葡萄酒", null, 1],
+      ["We would like to order a bottle of red wine", "我们想点一瓶红葡萄酒", null, 1],
+      ["They already ordered a bottle of red wine for the table", "他们已经为桌子点了一瓶红葡萄酒", null, 1],
+      ["Could you recommend a bottle of red wine for tonight's dinner", "你能为今晚的晚餐推荐一瓶红葡萄酒吗", null, 1],
+      ["I'm sure a bottle of red wine would be perfect with this meal", "我确信一瓶红葡萄酒配这顿饭会很完美", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  },
+  "S0414L05": {
+    "lego": ["red wine", "红葡萄酒"],
+    "type": "M",
+    "practice_phrases": [
+      ["Red wine", "红葡萄酒", null, 1],
+      ["Good red wine", "好红葡萄酒", null, 1],
+      ["I like red wine", "我喜欢红葡萄酒", null, 1],
+      ["Do you have red wine", "你有红葡萄酒吗", null, 1],
+      ["This red wine is excellent", "这红葡萄酒很好", null, 1],
+      ["Red wine is better with meat", "红葡萄酒配肉更好", null, 1],
+      ["I prefer red wine over white wine for dinner", "我晚餐更喜欢红葡萄酒而不是白葡萄酒", null, 1],
+      ["They still fight about whether red wine is better than white", "他们仍然争论红葡萄酒是否比白葡萄酒好", null, 1],
+      ["We couldn't allow them to finish all the red wine tonight", "我们不能让他们今晚喝完所有红葡萄酒", null, 1],
+      ["If you ask me red wine is the best way to enjoy a good meal", "如果你问我红葡萄酒是享受美食的最好方式", null, 1]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
   }
 }

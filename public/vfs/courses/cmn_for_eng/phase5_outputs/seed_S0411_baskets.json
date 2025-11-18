@@ -1,0 +1,24 @@
+{
+  "S0411L04": {
+    "lego": ["a table for four", "一张四人桌"],
+    "type": "M",
+    "practice_phrases": [
+      ["A table for four", "一张四人桌", null, 1],
+      ["Reserve a table for four", "预订一张四人桌", null, 2],
+      ["We need a table for four", "我们需要一张四人桌", null, 2],
+      ["A table for four please", "请给一张四人桌", null, 2],
+      ["We would like a table for four", "我们想要一张四人桌", null, 2],
+      ["Can I reserve a table for four", "我可以预订一张四人桌吗", null, 3],
+      ["We would like to reserve a table for four", "我们想预订一张四人桌", null, 3],
+      ["I want to book a table for four for tonight", "我想为今晚预订一张四人桌", null, 4],
+      ["We would like a table for four for tonight", "我们想为今晚要一张四人桌", null, 3],
+      ["Could we reserve a table for four for tonight", "我们能为今晚预订一张四人桌吗", null, 4]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    }
+  }
+}

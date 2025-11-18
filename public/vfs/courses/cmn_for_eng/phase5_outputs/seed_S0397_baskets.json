@@ -1,0 +1,341 @@
+{
+  "legos": {
+    "S0397L02": {
+      "type": "A",
+      "lego": ["soon/quickly", "很快"],
+      "practice_phrases": [
+        ["Soon.", "很快。", null, 1],
+        ["Come quickly.", "很快来。", null, 1],
+        ["I'll be ready soon.", "我很快准备好。", null, 1],
+        ["She's coming back soon.", "她很快回来。", null, 1],
+        ["Can you come here quickly?", "你能很快来这里吗？", null, 1],
+        ["We need to go soon.", "我们需要很快去。", null, 1],
+        ["Other people will be ready very soon.", "其他人很快就准备好。", null, 1],
+        ["The bus is coming soon near the entrance.", "公交车很快在入口附近来。", null, 1],
+        ["I think we should turn left soon at the corner.", "我认为我们应该很快在拐角处左转。", null, 1],
+        ["The boy with the green shirt said he'll be ready soon.", "穿绿色衬衫的男孩说他很快准备好。", null, 1]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
+    },
+    "S0397L03": {
+      "lego": [
+        "get ready",
+        "准备好"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0397L02",
+          "known": "soon/quickly",
+          "target": "很快",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "get ready",
+          "准备好",
+          null,
+          1
+        ],
+        [
+          "get ready now",
+          "现在准备好",
+          null,
+          2
+        ],
+        [
+          "I need to get ready",
+          "我需要准备好",
+          null,
+          3
+        ],
+        [
+          "we should get ready",
+          "我们应该准备好",
+          null,
+          3
+        ],
+        [
+          "I'm trying to get ready",
+          "我在试着准备好",
+          null,
+          4
+        ],
+        [
+          "we need to get ready",
+          "我们需要准备好",
+          null,
+          4
+        ],
+        [
+          "I want to get ready now",
+          "我现在想准备好",
+          null,
+          5
+        ],
+        [
+          "we need to get ready for school",
+          "我们需要为学校准备好",
+          null,
+          6
+        ],
+        [
+          "I'm trying to get ready for the meeting",
+          "我在试着为会议准备好",
+          null,
+          7
+        ],
+        [
+          "do we need to get ready for work",
+          "我们需要为工作准备好吗",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "准备",
+          "prepare/ready"
+        ],
+        [
+          "好",
+          "good/well (complement)"
+        ]
+      ]
+    },
+    "S0397L04": {
+      "lego": [
+        "get ready soon",
+        "很快准备好"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0397L02",
+          "known": "soon/quickly",
+          "target": "很快",
+          "type": "A"
+        },
+        {
+          "id": "S0397L03",
+          "known": "get ready",
+          "target": "准备好",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "get ready soon",
+          "很快准备好",
+          null,
+          1
+        ],
+        [
+          "I need to get ready soon",
+          "我需要很快准备好",
+          null,
+          3
+        ],
+        [
+          "we should get ready soon",
+          "我们应该很快准备好",
+          null,
+          3
+        ],
+        [
+          "get ready soon for school",
+          "很快为学校准备好",
+          null,
+          2
+        ],
+        [
+          "I want to get ready soon",
+          "我想很快准备好",
+          null,
+          4
+        ],
+        [
+          "we need to get ready soon",
+          "我们需要很快准备好",
+          null,
+          4
+        ],
+        [
+          "I'm trying to get ready soon",
+          "我在试着很快准备好",
+          null,
+          5
+        ],
+        [
+          "we should get ready soon for the meeting",
+          "我们应该很快为会议准备好",
+          null,
+          6
+        ],
+        [
+          "I need to get ready soon for work",
+          "我需要很快为工作准备好",
+          null,
+          6
+        ],
+        [
+          "do we need to get ready soon for the trip",
+          "我们需要很快为旅行准备好吗",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "很快",
+          "soon/quickly"
+        ],
+        [
+          "准备好",
+          "get ready"
+        ]
+      ]
+    },
+    "S0397L05": {
+      "lego": [
+        "do we need to get ready soon",
+        "我们需要很快准备好吗"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0397L02",
+          "known": "soon/quickly",
+          "target": "很快",
+          "type": "A"
+        },
+        {
+          "id": "S0397L03",
+          "known": "get ready",
+          "target": "准备好",
+          "type": "M"
+        },
+        {
+          "id": "S0397L04",
+          "known": "get ready soon",
+          "target": "很快准备好",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "do we need to get ready soon",
+          "我们需要很快准备好吗",
+          null,
+          1
+        ],
+        [
+          "do we need to get ready soon for school",
+          "我们需要很快为学校准备好吗",
+          null,
+          2
+        ],
+        [
+          "do we need to get ready soon now",
+          "我们现在需要很快准备好吗",
+          null,
+          3
+        ],
+        [
+          "do we need to get ready soon for the meeting",
+          "我们需要很快为会议准备好吗",
+          null,
+          3
+        ],
+        [
+          "do we need to get ready soon today",
+          "我们今天需要很快准备好吗",
+          null,
+          4
+        ],
+        [
+          "do we need to get ready soon for work tomorrow",
+          "我们明天需要很快为工作准备好吗",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if we need to get ready soon",
+          "我不确定我们是否需要很快准备好",
+          null,
+          6
+        ],
+        [
+          "do we need to get ready soon for the trip next week",
+          "我们下周需要很快为旅行准备好吗",
+          null,
+          6
+        ],
+        [
+          "I want to know if we need to get ready soon",
+          "我想知道我们是否需要很快准备好",
+          null,
+          7
+        ],
+        [
+          "do we really need to get ready soon for this",
+          "我们真的需要很快为这个准备好吗",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "需要",
+          "need"
+        ],
+        [
+          "很快",
+          "soon"
+        ],
+        [
+          "准备好",
+          "get ready"
+        ],
+        [
+          "吗",
+          "(question particle)"
+        ]
+      ]
+    }
+  }
+}

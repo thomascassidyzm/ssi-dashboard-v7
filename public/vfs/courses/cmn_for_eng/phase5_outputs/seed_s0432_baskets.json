@@ -1,0 +1,361 @@
+{
+  "legos": {
+    "S0432L01": {
+      "lego": [
+        "they could mean",
+        "他们可能是说"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "They could mean",
+          "他们可能是说",
+          null,
+          1
+        ],
+        [
+          "Could mean",
+          "可能是说",
+          null,
+          1
+        ],
+        [
+          "They could mean yes",
+          "他们可能是说是的",
+          null,
+          3
+        ],
+        [
+          "They could mean a question",
+          "他们可能是说一个问题",
+          null,
+          3
+        ],
+        [
+          "They could mean that for them",
+          "他们可能是说那对他们来说",
+          null,
+          4
+        ],
+        [
+          "They could mean they need to ask",
+          "他们可能是说他们需要问",
+          null,
+          5
+        ],
+        [
+          "They could mean they're not ready yet but soon",
+          "他们可能是说他们还没有准备好但很快",
+          null,
+          6
+        ],
+        [
+          "They could mean that they need to make sure they understand",
+          "他们可能是说他们需要确保他们理解",
+          null,
+          7
+        ],
+        [
+          "They could mean that they would like to visit us on Tuesday",
+          "他们可能是说他们想在星期二来看我们",
+          null,
+          8
+        ],
+        [
+          "They could mean that they wouldn't like you to think they're bored",
+          "他们可能是说他们不想让你觉得他们无聊",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [null, null],
+        [null, null],
+        [null, null],
+        [null, null]
+      ]
+    },
+    "S0432L02": {
+      "lego": [
+        "could/possibly",
+        "可能"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0432L01",
+          "lego": ["they could mean", "他们可能是说"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "Could",
+          "可能",
+          null,
+          1
+        ],
+        [
+          "Possibly",
+          "可能",
+          null,
+          1
+        ],
+        [
+          "They could understand",
+          "他们可能理解",
+          null,
+          2
+        ],
+        [
+          "Could be ready",
+          "可能准备好",
+          null,
+          2
+        ],
+        [
+          "They could be ready soon",
+          "他们可能很快就准备好",
+          null,
+          4
+        ],
+        [
+          "Could they visit us Tuesday",
+          "他们可能星期二来看我们",
+          null,
+          4
+        ],
+        [
+          "They could be wasting everybody's time possibly",
+          "他们可能在浪费大家的时间",
+          null,
+          6
+        ],
+        [
+          "Could they need to make sure they understand this",
+          "他们可能需要确保他们理解这个",
+          null,
+          7
+        ],
+        [
+          "They could possibly want to love each other but they're unhappy",
+          "他们可能想要彼此相爱但他们不开心",
+          null,
+          8
+        ],
+        [
+          "Could they possibly mean that they wouldn't like you to ask",
+          "他们可能是说他们不想让你问",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0432L03": {
+      "lego": [
+        "they want you to ask",
+        "他们想让你问"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0432L01",
+          "lego": ["they could mean", "他们可能是说"]
+        },
+        {
+          "id": "S0432L02",
+          "lego": ["could/possibly", "可能"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "They want you",
+          "他们想让你",
+          null,
+          2
+        ],
+        [
+          "Want you to ask",
+          "想让你问",
+          null,
+          2
+        ],
+        [
+          "They want you to ask",
+          "他们想让你问",
+          null,
+          3
+        ],
+        [
+          "They want you to understand",
+          "他们想让你理解",
+          null,
+          3
+        ],
+        [
+          "They want you to ask a question",
+          "他们想让你问一个问题",
+          null,
+          4
+        ],
+        [
+          "They want you to visit us Tuesday",
+          "他们想让你星期二来看我们",
+          null,
+          5
+        ],
+        [
+          "They want you to ask such an obvious question",
+          "他们想让你问这么明显的问题",
+          null,
+          6
+        ],
+        [
+          "They could mean that they want you to ask a question",
+          "他们可能是说他们想让你问一个问题",
+          null,
+          7
+        ],
+        [
+          "They want you to make sure that you understand the question",
+          "他们想让你确保你理解这个问题",
+          null,
+          7
+        ],
+        [
+          "They could possibly mean that they want you to ask if they're ready",
+          "他们可能是说他们想让你问他们准备好了没有",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [null, null],
+        [null, null],
+        [null, null],
+        [null, null],
+        [null, null]
+      ]
+    },
+    "S0432L04": {
+      "lego": [
+        "you to ask",
+        "让你问"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0432L01",
+          "lego": ["they could mean", "他们可能是说"]
+        },
+        {
+          "id": "S0432L02",
+          "lego": ["could/possibly", "可能"]
+        },
+        {
+          "id": "S0432L03",
+          "lego": ["they want you to ask", "他们想让你问"]
+        }
+      ],
+      "practice_phrases": [
+        [
+          "You to ask",
+          "让你问",
+          null,
+          1
+        ],
+        [
+          "To ask",
+          "问",
+          null,
+          1
+        ],
+        [
+          "Want you to ask",
+          "想让你问",
+          null,
+          3
+        ],
+        [
+          "They want you to ask",
+          "他们想让你问",
+          null,
+          3
+        ],
+        [
+          "They want you to ask them",
+          "他们想让你问他们",
+          null,
+          4
+        ],
+        [
+          "Want you to ask a question",
+          "想让你问一个问题",
+          null,
+          4
+        ],
+        [
+          "They could mean they want you to ask a question",
+          "他们可能是说他们想让你问一个问题",
+          null,
+          6
+        ],
+        [
+          "They wouldn't like you to ask such an obvious question",
+          "他们不想让你问这么明显的问题",
+          null,
+          7
+        ],
+        [
+          "They want you to ask if they would like to visit us",
+          "他们想让你问他们想不想来看我们",
+          null,
+          8
+        ],
+        [
+          "They could possibly mean that they need you to ask if they're ready",
+          "他们可能是说他们需要让你问他们准备好了没有",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [null, null],
+        [null, null],
+        [null, null]
+      ]
+    }
+  }
+}

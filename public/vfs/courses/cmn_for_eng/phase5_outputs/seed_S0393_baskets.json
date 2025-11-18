@@ -1,0 +1,754 @@
+{
+  "legos": {
+    "S0393L01": {
+      "lego": [
+        "green",
+        "绿色"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "green",
+          "绿色",
+          null,
+          1
+        ],
+        [
+          "is green",
+          "是绿色",
+          null,
+          2
+        ],
+        [
+          "I like green",
+          "我喜欢绿色",
+          null,
+          3
+        ],
+        [
+          "this is green",
+          "这是绿色",
+          null,
+          3
+        ],
+        [
+          "that one is green",
+          "那个是绿色",
+          null,
+          4
+        ],
+        [
+          "I want the green one",
+          "我想要绿色的",
+          null,
+          4
+        ],
+        [
+          "I really like green things",
+          "我真的喜欢绿色的东西",
+          null,
+          5
+        ],
+        [
+          "do you have anything in green",
+          "你有绿色的东西吗",
+          null,
+          5
+        ],
+        [
+          "I think green looks good on you",
+          "我觉得绿色很适合你",
+          null,
+          5
+        ],
+        [
+          "she said she wanted the green one",
+          "她说她想要绿色的",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0393L02": {
+      "lego": [
+        "shirt",
+        "衬衫"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0393L01",
+          "known": "green",
+          "target": "绿色",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "shirt",
+          "衬衫",
+          null,
+          1
+        ],
+        [
+          "a shirt",
+          "一件衬衫",
+          null,
+          2
+        ],
+        [
+          "I need a shirt",
+          "我需要一件衬衫",
+          null,
+          3
+        ],
+        [
+          "this is my shirt",
+          "这是我的衬衫",
+          null,
+          3
+        ],
+        [
+          "do you have a shirt",
+          "你有衬衫吗",
+          null,
+          4
+        ],
+        [
+          "I want to buy a shirt",
+          "我想买一件衬衫",
+          null,
+          5
+        ],
+        [
+          "where can I find a good shirt",
+          "我在哪里能找到好衬衫",
+          null,
+          6
+        ],
+        [
+          "I need a new shirt for work",
+          "我需要一件新衬衫去上班",
+          null,
+          6
+        ],
+        [
+          "he said he wanted to buy a shirt",
+          "他说他想买一件衬衫",
+          null,
+          6
+        ],
+        [
+          "that shirt over there looks really nice",
+          "那边那件衬衫看起来真的很好",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0393L03": {
+      "lego": [
+        "green shirt",
+        "绿色衬衫"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0393L01",
+          "known": "green",
+          "target": "绿色",
+          "type": "A"
+        },
+        {
+          "id": "S0393L02",
+          "known": "shirt",
+          "target": "衬衫",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "green shirt",
+          "绿色衬衫",
+          null,
+          1
+        ],
+        [
+          "a green shirt",
+          "一件绿色衬衫",
+          null,
+          2
+        ],
+        [
+          "I like green shirts",
+          "我喜欢绿色衬衫",
+          null,
+          3
+        ],
+        [
+          "I want a green shirt",
+          "我想要一件绿色衬衫",
+          null,
+          4
+        ],
+        [
+          "do you have a green shirt",
+          "你有绿色衬衫吗",
+          null,
+          4
+        ],
+        [
+          "I need to buy a green shirt",
+          "我需要买一件绿色衬衫",
+          null,
+          5
+        ],
+        [
+          "that green shirt looks really good",
+          "那件绿色衬衫看起来真的很好",
+          null,
+          5
+        ],
+        [
+          "I said I wanted the green shirt",
+          "我说我想要那件绿色衬衫",
+          null,
+          6
+        ],
+        [
+          "the green shirt is near the entrance",
+          "绿色衬衫在入口附近",
+          null,
+          5
+        ],
+        [
+          "she told me she wanted to buy a green shirt",
+          "她告诉我她想买一件绿色衬衫",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "绿色",
+          "green"
+        ],
+        [
+          "衬衫",
+          "shirt"
+        ]
+      ]
+    },
+    "S0393L04": {
+      "lego": [
+        "boy",
+        "男孩"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0393L01",
+          "known": "green",
+          "target": "绿色",
+          "type": "A"
+        },
+        {
+          "id": "S0393L02",
+          "known": "shirt",
+          "target": "衬衫",
+          "type": "A"
+        },
+        {
+          "id": "S0393L03",
+          "known": "green shirt",
+          "target": "绿色衬衫",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "boy",
+          "男孩",
+          null,
+          1
+        ],
+        [
+          "a boy",
+          "一个男孩",
+          null,
+          2
+        ],
+        [
+          "that boy over there",
+          "那边那个男孩",
+          null,
+          3
+        ],
+        [
+          "I saw a boy",
+          "我看到一个男孩",
+          null,
+          3
+        ],
+        [
+          "the boy is standing there",
+          "男孩站在那里",
+          null,
+          4
+        ],
+        [
+          "a boy walked towards the bus",
+          "一个男孩朝公交车走去",
+          null,
+          5
+        ],
+        [
+          "I saw a boy near the entrance",
+          "我在入口附近看到一个男孩",
+          null,
+          6
+        ],
+        [
+          "that boy said he wanted to buy something",
+          "那个男孩说他想买东西",
+          null,
+          6
+        ],
+        [
+          "the boy with the black hair is over there",
+          "那个黑头发的男孩在那边",
+          null,
+          6
+        ],
+        [
+          "I think the boy standing near the post office is right",
+          "我觉得站在邮局附近的男孩是对的",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0393L05": {
+      "lego": [
+        "wearing a green shirt",
+        "穿绿色衬衫"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0393L01",
+          "known": "green",
+          "target": "绿色",
+          "type": "A"
+        },
+        {
+          "id": "S0393L02",
+          "known": "shirt",
+          "target": "衬衫",
+          "type": "A"
+        },
+        {
+          "id": "S0393L03",
+          "known": "green shirt",
+          "target": "绿色衬衫",
+          "type": "M"
+        },
+        {
+          "id": "S0393L04",
+          "known": "boy",
+          "target": "男孩",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "wearing a green shirt",
+          "穿绿色衬衫",
+          null,
+          1
+        ],
+        [
+          "is wearing a green shirt",
+          "穿着绿色衬衫",
+          null,
+          2
+        ],
+        [
+          "I am wearing a green shirt",
+          "我穿着绿色衬衫",
+          null,
+          3
+        ],
+        [
+          "he is wearing a green shirt",
+          "他穿着绿色衬衫",
+          null,
+          3
+        ],
+        [
+          "that person is wearing a green shirt",
+          "那个人穿着绿色衬衫",
+          null,
+          4
+        ],
+        [
+          "I want to wear a green shirt today",
+          "我今天想穿绿色衬衫",
+          null,
+          5
+        ],
+        [
+          "the person wearing a green shirt is over there",
+          "穿绿色衬衫的人在那边",
+          null,
+          6
+        ],
+        [
+          "I saw someone wearing a green shirt near the entrance",
+          "我在入口附近看到有人穿绿色衬衫",
+          null,
+          7
+        ],
+        [
+          "the person wearing a green shirt said he wanted to go",
+          "穿绿色衬衫的人说他想去",
+          null,
+          7
+        ],
+        [
+          "I think the one wearing a green shirt is standing near the bus",
+          "我觉得穿绿色衬衫的人站在公交车附近",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "穿",
+          "wearing"
+        ],
+        [
+          "绿色",
+          "green"
+        ],
+        [
+          "衬衫",
+          "shirt"
+        ]
+      ]
+    },
+    "S0393L06": {
+      "lego": [
+        "boy with the green shirt",
+        "穿绿色衬衫的男孩"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0393L01",
+          "known": "green",
+          "target": "绿色",
+          "type": "A"
+        },
+        {
+          "id": "S0393L02",
+          "known": "shirt",
+          "target": "衬衫",
+          "type": "A"
+        },
+        {
+          "id": "S0393L03",
+          "known": "green shirt",
+          "target": "绿色衬衫",
+          "type": "M"
+        },
+        {
+          "id": "S0393L04",
+          "known": "boy",
+          "target": "男孩",
+          "type": "A"
+        },
+        {
+          "id": "S0393L05",
+          "known": "wearing a green shirt",
+          "target": "穿绿色衬衫",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "boy with the green shirt",
+          "穿绿色衬衫的男孩",
+          null,
+          1
+        ],
+        [
+          "the boy with the green shirt",
+          "穿绿色衬衫的男孩",
+          null,
+          2
+        ],
+        [
+          "I saw the boy with the green shirt",
+          "我看到穿绿色衬衫的男孩",
+          null,
+          3
+        ],
+        [
+          "the boy with the green shirt is here",
+          "穿绿色衬衫的男孩在这里",
+          null,
+          4
+        ],
+        [
+          "do you know the boy with the green shirt",
+          "你认识穿绿色衬衫的男孩吗",
+          null,
+          5
+        ],
+        [
+          "the boy with the green shirt is standing over there",
+          "穿绿色衬衫的男孩站在那边",
+          null,
+          6
+        ],
+        [
+          "I think the boy with the green shirt is right",
+          "我觉得穿绿色衬衫的男孩是对的",
+          null,
+          6
+        ],
+        [
+          "the boy with the green shirt said he wanted to go",
+          "穿绿色衬衫的男孩说他想去",
+          null,
+          7
+        ],
+        [
+          "I saw the boy with the green shirt walking towards the bus",
+          "我看到穿绿色衬衫的男孩朝公交车走去",
+          null,
+          8
+        ],
+        [
+          "the boy with the green shirt is the one standing near the entrance",
+          "穿绿色衬衫的男孩就是站在入口附近的那个人",
+          null,
+          9
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "男孩",
+          "boy"
+        ],
+        [
+          "穿",
+          "with/wearing"
+        ],
+        [
+          "绿色",
+          "green"
+        ],
+        [
+          "衬衫",
+          "shirt"
+        ],
+        [
+          "的",
+          "particle"
+        ]
+      ]
+    },
+    "S0393L07": {
+      "lego": [
+        "that boy with the green shirt",
+        "那个穿绿色衬衫的男孩"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0393L01",
+          "known": "green",
+          "target": "绿色",
+          "type": "A"
+        },
+        {
+          "id": "S0393L02",
+          "known": "shirt",
+          "target": "衬衫",
+          "type": "A"
+        },
+        {
+          "id": "S0393L03",
+          "known": "green shirt",
+          "target": "绿色衬衫",
+          "type": "M"
+        },
+        {
+          "id": "S0393L04",
+          "known": "boy",
+          "target": "男孩",
+          "type": "A"
+        },
+        {
+          "id": "S0393L05",
+          "known": "wearing a green shirt",
+          "target": "穿绿色衬衫",
+          "type": "M"
+        },
+        {
+          "id": "S0393L06",
+          "known": "boy with the green shirt",
+          "target": "穿绿色衬衫的男孩",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "that boy with the green shirt",
+          "那个穿绿色衬衫的男孩",
+          null,
+          1
+        ],
+        [
+          "I saw that boy with the green shirt",
+          "我看到那个穿绿色衬衫的男孩",
+          null,
+          2
+        ],
+        [
+          "that boy with the green shirt is here",
+          "那个穿绿色衬衫的男孩在这里",
+          null,
+          3
+        ],
+        [
+          "do you know that boy with the green shirt",
+          "你认识那个穿绿色衬衫的男孩吗",
+          null,
+          4
+        ],
+        [
+          "that boy with the green shirt is over there",
+          "那个穿绿色衬衫的男孩在那边",
+          null,
+          4
+        ],
+        [
+          "I think that boy with the green shirt is right",
+          "我觉得那个穿绿色衬衫的男孩是对的",
+          null,
+          6
+        ],
+        [
+          "that boy with the green shirt said he wanted to go",
+          "那个穿绿色衬衫的男孩说他想去",
+          null,
+          7
+        ],
+        [
+          "I saw that boy with the green shirt walking towards the bus",
+          "我看到那个穿绿色衬衫的男孩朝公交车走去",
+          null,
+          8
+        ],
+        [
+          "that boy with the green shirt is standing near the entrance",
+          "那个穿绿色衬衫的男孩站在入口附近",
+          null,
+          6
+        ],
+        [
+          "I couldn't agree with what that boy with the green shirt said",
+          "我不能同意那个穿绿色衬衫的男孩说的话",
+          null,
+          8
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "那个",
+          "that"
+        ],
+        [
+          "男孩",
+          "boy"
+        ],
+        [
+          "穿",
+          "with/wearing"
+        ],
+        [
+          "绿色",
+          "green"
+        ],
+        [
+          "衬衫",
+          "shirt"
+        ],
+        [
+          "的",
+          "particle"
+        ]
+      ]
+    }
+  }
+}

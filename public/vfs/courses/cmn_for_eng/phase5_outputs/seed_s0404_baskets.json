@@ -1,0 +1,285 @@
+{
+  "legos": {
+    "S0404L01": {
+      "lego": [
+        "we shouldn't",
+        "我们不应该"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["我们不应该", "we shouldn't", null, 1],
+        ["我们不应该去", "we shouldn't go", null, 1],
+        ["我们不应该失去希望", "we shouldn't lose hope", null, 2],
+        ["我们不应该等太久", "we shouldn't wait too long", null, 3],
+        ["我们不应该现在离开", "we shouldn't leave now", null, 2],
+        ["我们不应该失去耐心", "we shouldn't lose patience", null, 3],
+        ["我们不应该期望他们很快准备好", "we shouldn't expect them to get ready soon", null, 5],
+        ["我们不应该在某个地方停下来吃东西", "we shouldn't stop somewhere for food", null, 6],
+        ["我们不应该对我们的孩子失去耐心", "we shouldn't lose patience with our children", null, 6],
+        ["我们不应该期望在下个拐角处左转", "we shouldn't expect to turn left at the next corner", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [null, null],
+        [null, null],
+        [null, null]
+      ]
+    },
+    "S0404L02": {
+      "lego": [
+        "expect",
+        "期望"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0404L01",
+          "known": "we shouldn't",
+          "target": "我们不应该",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["期望", "expect", null, 1],
+        ["我期望", "I expect", null, 1],
+        ["我们期望很快完成", "we expect to finish soon", null, 3],
+        ["我们不应该期望", "we shouldn't expect", null, 2],
+        ["他们期望准备好", "they expect to be ready", null, 3],
+        ["我们期望在星期四完成", "we expect to finish on Thursday", null, 4],
+        ["我们不应该期望他们准备好", "we shouldn't expect them to be ready", null, 5],
+        ["我们期望晚些时候吃点东西", "we expect to eat something later on", null, 6],
+        ["我们不应该期望很快完成工作", "we shouldn't expect to finish work soon", null, 6],
+        ["我们期望他们在下个拐角处左转", "we expect them to turn left at the next corner", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0404L03": {
+      "lego": [
+        "to finish",
+        "完成"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0404L01",
+          "known": "we shouldn't",
+          "target": "我们不应该",
+          "type": "M"
+        },
+        {
+          "id": "S0404L02",
+          "known": "expect",
+          "target": "期望",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["完成", "finish", null, 1],
+        ["我们完成", "we finish", null, 1],
+        ["很快完成", "finish soon", null, 2],
+        ["我们期望完成", "we expect to finish", null, 2],
+        ["今天完成工作", "finish work today", null, 3],
+        ["我们不应该完成", "we shouldn't finish", null, 2],
+        ["我们需要在星期四完成", "we need to finish on Thursday", null, 4],
+        ["我们期望明天完成所有工作", "we expect to finish all work tomorrow", null, 5],
+        ["我们不应该期望很快完成", "we shouldn't expect to finish soon", null, 4],
+        ["我们期望在星期四之前完成所有工作", "we expect to finish all work before Thursday", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0404L04": {
+      "lego": [
+        "Thursday",
+        "星期四"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0404L01",
+          "known": "we shouldn't",
+          "target": "我们不应该",
+          "type": "M"
+        },
+        {
+          "id": "S0404L02",
+          "known": "expect",
+          "target": "期望",
+          "type": "A"
+        },
+        {
+          "id": "S0404L03",
+          "known": "to finish",
+          "target": "完成",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["星期四", "Thursday", null, 1],
+        ["在星期四", "on Thursday", null, 1],
+        ["星期四我们离开", "Thursday we leave", null, 2],
+        ["我们星期四完成", "we finish on Thursday", null, 2],
+        ["我们期望星期四完成", "we expect to finish on Thursday", null, 3],
+        ["星期四我们需要准备好", "Thursday we need to be ready", null, 4],
+        ["我们不应该星期四离开", "we shouldn't leave on Thursday", null, 3],
+        ["我们期望星期四完成所有工作", "we expect to finish all work on Thursday", null, 5],
+        ["我们不应该期望星期四完成工作", "we shouldn't expect to finish work on Thursday", null, 6],
+        ["星期四我们应该保持安静尽可能长时间", "Thursday we should remain quiet for as long as possible", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [null, null],
+        [null, null]
+      ]
+    },
+    "S0404L05": {
+      "lego": [
+        "before Thursday",
+        "在星期四之前"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0404L01",
+          "known": "we shouldn't",
+          "target": "我们不应该",
+          "type": "M"
+        },
+        {
+          "id": "S0404L02",
+          "known": "expect",
+          "target": "期望",
+          "type": "A"
+        },
+        {
+          "id": "S0404L03",
+          "known": "to finish",
+          "target": "完成",
+          "type": "A"
+        },
+        {
+          "id": "S0404L04",
+          "known": "Thursday",
+          "target": "星期四",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["在星期四之前", "before Thursday", null, 1],
+        ["在星期四之前离开", "leave before Thursday", null, 2],
+        ["我们在星期四之前完成", "we finish before Thursday", null, 2],
+        ["我们期望在星期四之前完成", "we expect to finish before Thursday", null, 3],
+        ["在星期四之前准备好", "be ready before Thursday", null, 3],
+        ["我们需要在星期四之前离开", "we need to leave before Thursday", null, 4],
+        ["我们不应该在星期四之前离开", "we shouldn't leave before Thursday", null, 3],
+        ["我们期望在星期四之前完成所有工作", "we expect to finish all work before Thursday", null, 5],
+        ["我们不应该期望在星期四之前完成", "we shouldn't expect to finish before Thursday", null, 4],
+        ["我们应该在星期四之前准备好所有东西", "we should be ready with everything before Thursday", null, 6]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [null, null],
+        [null, null],
+        [null, null]
+      ]
+    },
+    "S0404L06": {
+      "lego": [
+        "expect to finish",
+        "期望完成"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0404L01",
+          "known": "we shouldn't",
+          "target": "我们不应该",
+          "type": "M"
+        },
+        {
+          "id": "S0404L02",
+          "known": "expect",
+          "target": "期望",
+          "type": "A"
+        },
+        {
+          "id": "S0404L03",
+          "known": "to finish",
+          "target": "完成",
+          "type": "A"
+        },
+        {
+          "id": "S0404L04",
+          "known": "Thursday",
+          "target": "星期四",
+          "type": "M"
+        },
+        {
+          "id": "S0404L05",
+          "known": "before Thursday",
+          "target": "在星期四之前",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["期望完成", "expect to finish", null, 1],
+        ["我们期望完成", "we expect to finish", null, 1],
+        ["我们期望完成工作", "we expect to finish work", null, 2],
+        ["期望完成所有工作", "expect to finish all work", null, 3],
+        ["我们期望完成这个项目", "we expect to finish this project", null, 3],
+        ["我们不应该期望完成", "we shouldn't expect to finish", null, 2],
+        ["我们期望在星期四完成", "we expect to finish on Thursday", null, 3],
+        ["我们期望在星期四之前完成", "we expect to finish before Thursday", null, 3],
+        ["我们不应该期望在星期四之前完成", "we shouldn't expect to finish before Thursday", null, 4],
+        ["我们期望明天完成所有工作，但我们不应该期望在星期四之前完成", "we expect to finish all work tomorrow, but we shouldn't expect to finish before Thursday", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [null, null],
+        [null, null]
+      ]
+    }
+  }
+}

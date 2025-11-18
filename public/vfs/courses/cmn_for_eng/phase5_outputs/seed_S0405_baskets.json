@@ -1,0 +1,361 @@
+{
+  "legos": {
+    "S0405L05": {
+      "lego": [
+        "book",
+        "预订"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0405L01",
+          "known": "should we",
+          "target": "我们应该",
+          "type": "M"
+        },
+        {
+          "id": "S0405L02",
+          "known": "ask",
+          "target": "问一下",
+          "type": "M"
+        },
+        {
+          "id": "S0405L03",
+          "known": "if/whether",
+          "target": "是否",
+          "type": "M"
+        },
+        {
+          "id": "S0405L04",
+          "known": "have to",
+          "target": "需要",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "book",
+          "预订",
+          null,
+          1
+        ],
+        [
+          "to book",
+          "预订",
+          null,
+          1
+        ],
+        [
+          "book a table",
+          "预订一张桌子",
+          null,
+          3
+        ],
+        [
+          "book a room",
+          "预订一个房间",
+          null,
+          3
+        ],
+        [
+          "should we book now",
+          "我们应该现在预订吗",
+          null,
+          4
+        ],
+        [
+          "we have to book",
+          "我们需要预订",
+          null,
+          4
+        ],
+        [
+          "I want to book a hotel room",
+          "我想预订一个酒店房间",
+          null,
+          6
+        ],
+        [
+          "should we book a table for dinner",
+          "我们应该预订晚餐的桌子吗",
+          null,
+          6
+        ],
+        [
+          "do we have to book in advance",
+          "我们需要提前预订吗",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if we need to book",
+          "我不确定我们是否需要预订",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "预订",
+          "book/reserve"
+        ]
+      ]
+    },
+    "S0405L06": {
+      "lego": [
+        "have to book",
+        "需要预订"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0405L01",
+          "known": "should we",
+          "target": "我们应该",
+          "type": "M"
+        },
+        {
+          "id": "S0405L02",
+          "known": "ask",
+          "target": "问一下",
+          "type": "M"
+        },
+        {
+          "id": "S0405L03",
+          "known": "if/whether",
+          "target": "是否",
+          "type": "M"
+        },
+        {
+          "id": "S0405L04",
+          "known": "have to",
+          "target": "需要",
+          "type": "A"
+        },
+        {
+          "id": "S0405L05",
+          "known": "book",
+          "target": "预订",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "have to book",
+          "需要预订",
+          null,
+          1
+        ],
+        [
+          "we have to book",
+          "我们需要预订",
+          null,
+          2
+        ],
+        [
+          "do we have to book",
+          "我们需要预订吗",
+          null,
+          3
+        ],
+        [
+          "they have to book now",
+          "他们现在需要预订",
+          null,
+          3
+        ],
+        [
+          "we have to book today",
+          "我们今天需要预订",
+          null,
+          4
+        ],
+        [
+          "do we have to book soon",
+          "我们需要很快预订吗",
+          null,
+          5
+        ],
+        [
+          "we have to book a table for dinner",
+          "我们需要预订晚餐的桌子",
+          null,
+          6
+        ],
+        [
+          "do we have to book before Thursday",
+          "我们需要在星期四之前预订吗",
+          null,
+          6
+        ],
+        [
+          "I'm sure we have to book in advance",
+          "我确信我们需要提前预订",
+          null,
+          6
+        ],
+        [
+          "should we ask if we have to book",
+          "我们应该问一下是否需要预订吗",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "需要",
+          "have to/need to"
+        ],
+        [
+          "预订",
+          "book"
+        ]
+      ]
+    },
+    "S0405L07": {
+      "lego": [
+        "if we have to book",
+        "是否需要预订"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0405L01",
+          "known": "should we",
+          "target": "我们应该",
+          "type": "M"
+        },
+        {
+          "id": "S0405L02",
+          "known": "ask",
+          "target": "问一下",
+          "type": "M"
+        },
+        {
+          "id": "S0405L03",
+          "known": "if/whether",
+          "target": "是否",
+          "type": "M"
+        },
+        {
+          "id": "S0405L04",
+          "known": "have to",
+          "target": "需要",
+          "type": "A"
+        },
+        {
+          "id": "S0405L05",
+          "known": "book",
+          "target": "预订",
+          "type": "M"
+        },
+        {
+          "id": "S0405L06",
+          "known": "have to book",
+          "target": "需要预订",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "if we have to book",
+          "是否需要预订",
+          null,
+          1
+        ],
+        [
+          "ask if we have to book",
+          "问一下是否需要预订",
+          null,
+          2
+        ],
+        [
+          "I don't know if we have to book",
+          "我不知道是否需要预订",
+          null,
+          3
+        ],
+        [
+          "not sure if we have to book",
+          "不确定是否需要预订",
+          null,
+          3
+        ],
+        [
+          "should we ask if we have to book",
+          "我们应该问一下是否需要预订吗",
+          null,
+          4
+        ],
+        [
+          "can you ask if we have to book",
+          "你能问一下是否需要预订吗",
+          null,
+          5
+        ],
+        [
+          "I'm not sure if we have to book a table",
+          "我不确定我们是否需要预订桌子",
+          null,
+          6
+        ],
+        [
+          "they want to know if we have to book",
+          "他们想知道我们是否需要预订",
+          null,
+          6
+        ],
+        [
+          "we should ask if we have to book before Thursday",
+          "我们应该问一下是否需要在星期四之前预订",
+          null,
+          7
+        ],
+        [
+          "do you know if we have to book in advance",
+          "你知道我们是否需要提前预订吗",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "是否",
+          "if/whether"
+        ],
+        [
+          "需要",
+          "have to"
+        ],
+        [
+          "预订",
+          "book"
+        ]
+      ]
+    }
+  }
+}
