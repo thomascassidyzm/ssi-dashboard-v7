@@ -67,7 +67,7 @@ export default {
 
         // Use 12-master launch for staged segments (full course with 668 seeds)
         if (segmentMode === 'staged' && endSeed === 668) {
-          const response = await axios.post('http://localhost:3459/launch-12-masters', {
+          const response = await api.post('/phase5/launch-12-masters', {
             courseCode,
             target: target.charAt(0).toUpperCase() + target.slice(1), // Capitalize for display
             known: known.charAt(0).toUpperCase() + known.slice(1)
@@ -79,7 +79,7 @@ export default {
         }
 
         // Use regular single-orchestrator launch for single-pass mode
-        const response = await axios.post('http://localhost:3459/start', {
+        const response = await api.post('/phase5/start', {
           courseCode,
           startSeed,
           endSeed,
