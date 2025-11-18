@@ -126,16 +126,16 @@
     "current_seed_legos_available": [["maybe","也许"],["should","应该"],["open","开"],["open the door","开门"],["close","关"]],
     "is_final_lego": false,
     "practice_phrases": [
-      ["也许窗。","Maybe the window.",null,2],
-      ["你应该关窗。","You should close the window.",null,2],
-      ["也许你努力开窗。","Maybe you try to open the window.",null,3],
-      ["也许我应该关窗。","Maybe I should close the window.",null,3],
-      ["也许你应该接下来开窗。","Maybe you should open the window next.",null,4],
-      ["听起来好像你应该关窗。","That sounds as though you should close the window.",null,4],
-      ["也许如果你现在开门那么你应该关窗。","Maybe if you open the door right now then you should close the window.",null,5],
-      ["也许你应该在演出的第一部分之后关窗。","Maybe you should close the window after the first part of the show.",null,6],
-      ["也许我应该努力开窗在真正重要的时候。","Maybe I should try to open the window when it really matters.",null,6],
-      ["也许他一个人应该站在那边开门关窗。","Maybe he alone should stand over there and open the door and close the window.",null,7]
+      ["Window.","窗。",null,1],
+      ["The window.","那个窗。",null,2],
+      ["Open the window.","开窗。",null,3],
+      ["Close the window.","关窗。",null,3],
+      ["Maybe open the window.","也许开窗。",null,4],
+      ["You should close the window.","你应该关窗。",null,4],
+      ["Maybe you should open the window.","也许你应该开窗。",null,5],
+      ["I should close the window now.","我现在应该关窗。",null,5],
+      ["Maybe we should open the window next.","也许我们接下来应该开窗。",null,6],
+      ["Maybe he should close the window alone.","也许他应该一个人关窗。",null,6]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
@@ -150,16 +150,16 @@
     "current_seed_legos_available": [["maybe","也许"],["should","应该"],["open","开"],["open the door","开门"],["close","关"],["window","窗"]],
     "is_final_lego": true,
     "practice_phrases": [
-      ["也许关窗。","Maybe close the window.",null,2],
-      ["你应该关窗。","You should close the window.",null,2],
-      ["也许你努力关窗。","Maybe you try to close the window.",null,3],
-      ["也许我应该关窗。","Maybe I should close the window.",null,3],
-      ["也许你应该接下来关窗。","Maybe you should close the window next.",null,4],
-      ["听起来好像你应该关窗。","That sounds as though you should close the window.",null,4],
-      ["也许如果你现在开门那么你应该关窗。","Maybe if you open the door right now then you should close the window.",null,5],
-      ["也许你应该在演出的第一部分之后关窗。","Maybe you should close the window after the first part of the show.",null,6],
-      ["也许我应该努力在真正重要的时候开门关窗。","Maybe I should try to open the door and close the window when it really matters.",null,6],
-      ["也许我们应该开门关窗。","Maybe we should open the door and close the window.",null,7]
+      ["Close the window.","关窗。",null,1],
+      ["Maybe close the window.","也许关窗。",null,2],
+      ["You should close the window.","你应该关窗。",null,3],
+      ["Maybe I should close the window.","也许我应该关窗。",null,3],
+      ["Maybe you should close the window.","也许你应该关窗。",null,4],
+      ["I should close the window now.","我现在应该关窗。",null,4],
+      ["Maybe we should close the window next.","也许我们接下来应该关窗。",null,5],
+      ["Maybe you should open the door and close the window.","也许你应该开门关窗。",null,6],
+      ["I should open the door and close the window now.","我现在应该开门关窗。",null,6],
+      ["Maybe we should open the door and close the window.","也许我们应该开门关窗。",null,7]
     ],
     "phrase_distribution": {
       "really_short_1_2": 2,
