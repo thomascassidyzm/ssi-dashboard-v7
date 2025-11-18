@@ -1,0 +1,545 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0051",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "我喜欢和朋友做有趣的事情。",
+    "target": "I enjoy doing interesting things with my friends."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0041",
+      "known": "我感觉还好，但我开始觉得累了。",
+      "target": "I feel okay, but I'm starting to feel tired."
+    },
+    {
+      "seed_id": "S0042",
+      "known": "我开始觉得比昨晚好了。",
+      "target": "I was starting to feel better than last night."
+    },
+    {
+      "seed_id": "S0043",
+      "known": "我没在想怎么回答。",
+      "target": "I wasn't thinking about how to answer."
+    },
+    {
+      "seed_id": "S0044",
+      "known": "或者我是否需要进步。",
+      "target": "Or if I need to improve."
+    },
+    {
+      "seed_id": "S0045",
+      "known": "我不需要知道所有事情。",
+      "target": "I don't need to know everything."
+    },
+    {
+      "seed_id": "S0046",
+      "known": "但我不担心犯错。",
+      "target": "But I don't worry about making mistakes."
+    },
+    {
+      "seed_id": "S0047",
+      "known": "因为我认为犯错是件好事。",
+      "target": "Because I think that it's a good thing to make mistakes."
+    },
+    {
+      "seed_id": "S0048",
+      "known": "我不在乎犯错。",
+      "target": "I don't care about making mistakes."
+    },
+    {
+      "seed_id": "S0049",
+      "known": "就是这样，如果你知道我的意思的话。",
+      "target": "It's like this, if you know what I mean."
+    },
+    {
+      "seed_id": "S0050",
+      "known": "我不是在试着尽快完成。",
+      "target": "I'm not trying to finish as quickly as possible."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0042L02",
+      "known": "starting to feel",
+      "target": "开始觉得",
+      "type": "M"
+    },
+    {
+      "id": "S0042L03",
+      "known": "feel better than last night",
+      "target": "觉得比昨晚好了",
+      "type": "M"
+    },
+    {
+      "id": "S0042L04",
+      "known": "better than last night",
+      "target": "比昨晚好",
+      "type": "M"
+    },
+    {
+      "id": "S0042L05",
+      "known": "last night",
+      "target": "昨晚",
+      "type": "A"
+    },
+    {
+      "id": "S0043L01",
+      "known": "I wasn't thinking",
+      "target": "我没在想",
+      "type": "M"
+    },
+    {
+      "id": "S0043L02",
+      "known": "wasn't thinking",
+      "target": "没在想",
+      "type": "M"
+    },
+    {
+      "id": "S0043L03",
+      "known": "how to answer",
+      "target": "怎么回答",
+      "type": "M"
+    },
+    {
+      "id": "S0044L01",
+      "known": "or",
+      "target": "或者",
+      "type": "A"
+    },
+    {
+      "id": "S0044L02",
+      "known": "if I need to improve",
+      "target": "我是否需要进步",
+      "type": "M"
+    },
+    {
+      "id": "S0044L03",
+      "known": "if/whether need to",
+      "target": "是否需要",
+      "type": "M"
+    },
+    {
+      "id": "S0044L04",
+      "known": "to improve",
+      "target": "进步",
+      "type": "A"
+    },
+    {
+      "id": "S0045L01",
+      "known": "I don't need to know",
+      "target": "我不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L02",
+      "known": "don't need to know",
+      "target": "不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L03",
+      "known": "everything",
+      "target": "所有事情",
+      "type": "M"
+    },
+    {
+      "id": "S0046L02",
+      "known": "I don't worry",
+      "target": "我不担心",
+      "type": "M"
+    },
+    {
+      "id": "S0046L03",
+      "known": "don't worry about making mistakes",
+      "target": "不担心犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0046L04",
+      "known": "making mistakes",
+      "target": "犯错",
+      "type": "A"
+    },
+    {
+      "id": "S0047L01",
+      "known": "because I think",
+      "target": "因为我认为",
+      "type": "M"
+    },
+    {
+      "id": "S0047L02",
+      "known": "it's a good thing to make mistakes",
+      "target": "犯错是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L03",
+      "known": "is a good thing",
+      "target": "是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L04",
+      "known": "good thing",
+      "target": "好事",
+      "type": "A"
+    },
+    {
+      "id": "S0048L01",
+      "known": "I don't care",
+      "target": "我不在乎",
+      "type": "M"
+    },
+    {
+      "id": "S0048L02",
+      "known": "don't care about making mistakes",
+      "target": "不在乎犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0049L01",
+      "known": "it's like this",
+      "target": "就是这样",
+      "type": "M"
+    },
+    {
+      "id": "S0049L02",
+      "known": "if you know",
+      "target": "如果你知道",
+      "type": "M"
+    },
+    {
+      "id": "S0049L04",
+      "known": "if you know what I mean",
+      "target": "如果你知道我的意思的话",
+      "type": "M"
+    },
+    {
+      "id": "S0050L01",
+      "known": "I'm not trying to",
+      "target": "我不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L02",
+      "known": "not trying to",
+      "target": "不是在试着",
+      "type": "M"
+    },
+    {
+      "id": "S0050L03",
+      "known": "to finish as quickly as possible",
+      "target": "尽快完成",
+      "type": "M"
+    },
+    {
+      "id": "S0050L04",
+      "known": "as quickly as possible",
+      "target": "尽快",
+      "type": "A"
+    }
+  ],
+  "legos": {
+    "S0051L01": {
+      "lego": [
+        "I enjoy",
+        "我喜欢"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I enjoy.", "我喜欢。", null, 1],
+        ["I enjoy now.", "我现在喜欢。", null, 2],
+        ["I enjoy making mistakes.", "我喜欢犯错。", null, 3],
+        ["But I enjoy making mistakes now.", "但我现在喜欢犯错。", null, 3],
+        ["I enjoy it, if you know what I mean.", "我喜欢，如果你知道我的意思的话。", null, 4],
+        ["I don't worry because I enjoy it.", "我不担心因为我喜欢。", null, 4],
+        ["I enjoy making mistakes because I think it's a good thing.", "我喜欢犯错因为我认为是件好事。", null, 6],
+        ["I enjoy it now because I don't care about making mistakes.", "我现在喜欢因为我不在乎犯错。", null, 6],
+        ["I enjoy making mistakes, and I'm not trying to improve as quickly as possible.", "我喜欢犯错，我不是在试着尽快进步。", null, 7],
+        ["It's like this: I enjoy making mistakes because I think it's a good thing.", "就是这样：我喜欢犯错因为我认为是件好事。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0051L01",
+        "seed_context": {
+          "known": "我喜欢和朋友做有趣的事情。",
+          "target": "I enjoy doing interesting things with my friends."
+        }
+      }
+    },
+    "S0051L02": {
+      "lego": [
+        "with my friends",
+        "和朋友"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0051L01",
+          "known": "I enjoy",
+          "target": "我喜欢",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["With my friends", "和朋友", null, 1],
+        ["With my friends now", "现在和朋友", null, 2],
+        ["I enjoy with my friends.", "我喜欢和朋友。", null, 3],
+        ["I don't worry with my friends.", "我和朋友不担心。", null, 3],
+        ["But I enjoy it with my friends.", "但我喜欢和朋友。", null, 4],
+        ["I enjoy making mistakes with my friends now.", "我现在喜欢和朋友犯错。", null, 4],
+        ["I enjoy with my friends, if you know what I mean.", "我喜欢和朋友，如果你知道我的意思的话。", null, 5],
+        ["I think I enjoy with my friends because I don't worry about making mistakes.", "我认为我喜欢和朋友因为我不担心犯错。", null, 7],
+        ["I don't care about making mistakes with my friends, if you know what I mean.", "我不在乎和朋友犯错，如果你知道我的意思的话。", null, 8],
+        ["It's like this: I enjoy with my friends because I don't worry about making mistakes.", "就是这样：我喜欢和朋友因为我不担心犯错。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0051L02",
+        "seed_context": {
+          "known": "我喜欢和朋友做有趣的事情。",
+          "target": "I enjoy doing interesting things with my friends."
+        }
+      },
+      "components": [
+        [
+          "和",
+          "with"
+        ],
+        [
+          "朋友",
+          "friends"
+        ]
+      ]
+    },
+    "S0051L03": {
+      "lego": [
+        "doing with my friends",
+        "和朋友做"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0051L01",
+          "known": "I enjoy",
+          "target": "我喜欢",
+          "type": "A"
+        },
+        {
+          "id": "S0051L02",
+          "known": "with my friends",
+          "target": "和朋友",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Doing with my friends", "和朋友做", null, 1],
+        ["Doing with my friends now", "现在和朋友做", null, 2],
+        ["I enjoy doing with my friends.", "我喜欢和朋友做。", null, 3],
+        ["I enjoy doing with my friends now.", "我现在喜欢和朋友做。", null, 3],
+        ["But I enjoy doing with my friends.", "但我喜欢和朋友做。", null, 4],
+        ["I think I enjoy doing with my friends.", "我认为我喜欢和朋友做。", null, 4],
+        ["I enjoy doing with my friends, if you know what I mean.", "我喜欢和朋友做，如果你知道我的意思的话。", null, 5],
+        ["I don't worry because I enjoy doing with my friends.", "我不担心因为我喜欢和朋友做。", null, 6],
+        ["It's like this: I enjoy doing with my friends and I don't care about making mistakes.", "就是这样：我喜欢和朋友做我不在乎犯错。", null, 8],
+        ["I'm not trying to finish as quickly as possible because I enjoy doing with my friends.", "我不是在试着尽快完成因为我喜欢和朋友做。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0051L03",
+        "seed_context": {
+          "known": "我喜欢和朋友做有趣的事情。",
+          "target": "I enjoy doing interesting things with my friends."
+        }
+      },
+      "components": [
+        [
+          "和",
+          "with"
+        ],
+        [
+          "朋友",
+          "friends"
+        ],
+        [
+          "做",
+          "do/doing"
+        ]
+      ]
+    },
+    "S0051L04": {
+      "lego": [
+        "do interesting things",
+        "做有趣的事情"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0051L01",
+          "known": "I enjoy",
+          "target": "我喜欢",
+          "type": "A"
+        },
+        {
+          "id": "S0051L02",
+          "known": "with my friends",
+          "target": "和朋友",
+          "type": "M"
+        },
+        {
+          "id": "S0051L03",
+          "known": "doing with my friends",
+          "target": "和朋友做",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Do interesting things", "做有趣的事情", null, 1],
+        ["Do interesting things now", "现在做有趣的事情", null, 2],
+        ["I enjoy doing interesting things.", "我喜欢做有趣的事情。", null, 3],
+        ["I enjoy doing interesting things with my friends.", "我喜欢和朋友做有趣的事情。", null, 3],
+        ["I enjoy doing interesting things with my friends now.", "我现在喜欢和朋友做有趣的事情。", null, 4],
+        ["But I enjoy doing interesting things with my friends.", "但我喜欢和朋友做有趣的事情。", null, 4],
+        ["I think I enjoy doing interesting things with my friends, if you know what I mean.", "我认为我喜欢和朋友做有趣的事情，如果你知道我的意思的话。", null, 6],
+        ["I enjoy doing interesting things with my friends because I don't worry about making mistakes.", "我喜欢和朋友做有趣的事情因为我不担心犯错。", null, 7],
+        ["It's like this: I enjoy doing interesting things with my friends and I don't care about making mistakes.", "就是这样：我喜欢和朋友做有趣的事情我不在乎犯错。", null, 8],
+        ["I'm not trying to finish as quickly as possible because I enjoy doing interesting things with my friends.", "我不是在试着尽快完成因为我喜欢和朋友做有趣的事情。", null, 9]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0051L04",
+        "seed_context": {
+          "known": "我喜欢和朋友做有趣的事情。",
+          "target": "I enjoy doing interesting things with my friends."
+        }
+      },
+      "components": [
+        [
+          "做",
+          "do/doing"
+        ],
+        [
+          "有趣的",
+          "interesting"
+        ],
+        [
+          "事情",
+          "things"
+        ]
+      ]
+    },
+    "S0051L05": {
+      "lego": [
+        "interesting things",
+        "有趣的事情"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0051L01",
+          "known": "I enjoy",
+          "target": "我喜欢",
+          "type": "A"
+        },
+        {
+          "id": "S0051L02",
+          "known": "with my friends",
+          "target": "和朋友",
+          "type": "M"
+        },
+        {
+          "id": "S0051L03",
+          "known": "doing with my friends",
+          "target": "和朋友做",
+          "type": "M"
+        },
+        {
+          "id": "S0051L04",
+          "known": "do interesting things",
+          "target": "做有趣的事情",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Interesting things", "有趣的事情", null, 1],
+        ["Interesting things now", "现在有趣的事情", null, 2],
+        ["I enjoy interesting things.", "我喜欢有趣的事情。", null, 3],
+        ["I don't know interesting things.", "我不知道有趣的事情。", null, 3],
+        ["But I enjoy interesting things.", "但我喜欢有趣的事情。", null, 4],
+        ["I think interesting things are a good thing.", "我认为有趣的事情是件好事。", null, 4],
+        ["I enjoy interesting things with my friends now.", "我现在喜欢和朋友有趣的事情。", null, 5],
+        ["I enjoy interesting things with my friends, if you know what I mean.", "我喜欢和朋友有趣的事情，如果你知道我的意思的话。", null, 6],
+        ["I don't worry because I think interesting things are a good thing, if you know what I mean.", "我不担心因为我认为有趣的事情是件好事，如果你知道我的意思的话。", null, 8],
+        ["I enjoy doing interesting things with my friends.", "我喜欢和朋友做有趣的事情。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0051L05",
+        "seed_context": {
+          "known": "我喜欢和朋友做有趣的事情。",
+          "target": "I enjoy doing interesting things with my friends."
+        }
+      },
+      "components": [
+        [
+          "有趣的",
+          "interesting"
+        ],
+        [
+          "事情",
+          "things"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0051.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

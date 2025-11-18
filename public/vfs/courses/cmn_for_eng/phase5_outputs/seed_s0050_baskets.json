@@ -1,0 +1,479 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0050",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "我不是在试着尽快完成。",
+    "target": "I'm not trying to finish as quickly as possible."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0040",
+      "known": "你现在感觉怎么样？",
+      "target": "How do you feel at the moment?"
+    },
+    {
+      "seed_id": "S0041",
+      "known": "我感觉还好，但我开始觉得累了。",
+      "target": "I feel okay, but I'm starting to feel tired."
+    },
+    {
+      "seed_id": "S0042",
+      "known": "我开始觉得比昨晚好了。",
+      "target": "I was starting to feel better than last night."
+    },
+    {
+      "seed_id": "S0043",
+      "known": "我没在想怎么回答。",
+      "target": "I wasn't thinking about how to answer."
+    },
+    {
+      "seed_id": "S0044",
+      "known": "或者我是否需要进步。",
+      "target": "Or if I need to improve."
+    },
+    {
+      "seed_id": "S0045",
+      "known": "我不需要知道所有事情。",
+      "target": "I don't need to know everything."
+    },
+    {
+      "seed_id": "S0046",
+      "known": "但我不担心犯错。",
+      "target": "But I don't worry about making mistakes."
+    },
+    {
+      "seed_id": "S0047",
+      "known": "因为我认为犯错是件好事。",
+      "target": "Because I think that it's a good thing to make mistakes."
+    },
+    {
+      "seed_id": "S0048",
+      "known": "我不在乎犯错。",
+      "target": "I don't care about making mistakes."
+    },
+    {
+      "seed_id": "S0049",
+      "known": "就是这样，如果你知道我的意思的话。",
+      "target": "It's like this, if you know what I mean."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0041L03",
+      "known": "I'm starting to feel tired",
+      "target": "我开始觉得累了",
+      "type": "M"
+    },
+    {
+      "id": "S0041L04",
+      "known": "starting to feel tired",
+      "target": "开始觉得累了",
+      "type": "M"
+    },
+    {
+      "id": "S0041L05",
+      "known": "to feel tired",
+      "target": "觉得累了",
+      "type": "M"
+    },
+    {
+      "id": "S0042L01",
+      "known": "I was starting to feel",
+      "target": "我开始觉得",
+      "type": "M"
+    },
+    {
+      "id": "S0042L02",
+      "known": "starting to feel",
+      "target": "开始觉得",
+      "type": "M"
+    },
+    {
+      "id": "S0042L03",
+      "known": "feel better than last night",
+      "target": "觉得比昨晚好了",
+      "type": "M"
+    },
+    {
+      "id": "S0042L04",
+      "known": "better than last night",
+      "target": "比昨晚好",
+      "type": "M"
+    },
+    {
+      "id": "S0042L05",
+      "known": "last night",
+      "target": "昨晚",
+      "type": "A"
+    },
+    {
+      "id": "S0043L01",
+      "known": "I wasn't thinking",
+      "target": "我没在想",
+      "type": "M"
+    },
+    {
+      "id": "S0043L02",
+      "known": "wasn't thinking",
+      "target": "没在想",
+      "type": "M"
+    },
+    {
+      "id": "S0043L03",
+      "known": "how to answer",
+      "target": "怎么回答",
+      "type": "M"
+    },
+    {
+      "id": "S0044L01",
+      "known": "or",
+      "target": "或者",
+      "type": "A"
+    },
+    {
+      "id": "S0044L02",
+      "known": "if I need to improve",
+      "target": "我是否需要进步",
+      "type": "M"
+    },
+    {
+      "id": "S0044L03",
+      "known": "if/whether need to",
+      "target": "是否需要",
+      "type": "M"
+    },
+    {
+      "id": "S0044L04",
+      "known": "to improve",
+      "target": "进步",
+      "type": "A"
+    },
+    {
+      "id": "S0045L01",
+      "known": "I don't need to know",
+      "target": "我不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L02",
+      "known": "don't need to know",
+      "target": "不需要知道",
+      "type": "M"
+    },
+    {
+      "id": "S0045L03",
+      "known": "everything",
+      "target": "所有事情",
+      "type": "M"
+    },
+    {
+      "id": "S0046L02",
+      "known": "I don't worry",
+      "target": "我不担心",
+      "type": "M"
+    },
+    {
+      "id": "S0046L03",
+      "known": "don't worry about making mistakes",
+      "target": "不担心犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0046L04",
+      "known": "making mistakes",
+      "target": "犯错",
+      "type": "A"
+    },
+    {
+      "id": "S0047L01",
+      "known": "because I think",
+      "target": "因为我认为",
+      "type": "M"
+    },
+    {
+      "id": "S0047L02",
+      "known": "it's a good thing to make mistakes",
+      "target": "犯错是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L03",
+      "known": "is a good thing",
+      "target": "是件好事",
+      "type": "M"
+    },
+    {
+      "id": "S0047L04",
+      "known": "good thing",
+      "target": "好事",
+      "type": "A"
+    },
+    {
+      "id": "S0048L01",
+      "known": "I don't care",
+      "target": "我不在乎",
+      "type": "M"
+    },
+    {
+      "id": "S0048L02",
+      "known": "don't care about making mistakes",
+      "target": "不在乎犯错",
+      "type": "M"
+    },
+    {
+      "id": "S0049L01",
+      "known": "it's like this",
+      "target": "就是这样",
+      "type": "M"
+    },
+    {
+      "id": "S0049L02",
+      "known": "if you know",
+      "target": "如果你知道",
+      "type": "M"
+    },
+    {
+      "id": "S0049L04",
+      "known": "if you know what I mean",
+      "target": "如果你知道我的意思的话",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0050L01": {
+      "lego": [
+        "I'm not trying to",
+        "我不是在试着"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I'm not trying to.", "我不是在试着。", null, 1],
+        ["I'm not trying to now.", "我现在不是在试着。", null, 2],
+        ["I'm not trying to improve.", "我不是在试着进步。", null, 3],
+        ["I'm not trying to answer now.", "我现在不是在试着回答。", null, 3],
+        ["I'm not trying to know everything.", "我不是在试着知道所有事情。", null, 4],
+        ["But I'm not trying to worry.", "但我不是在试着担心。", null, 4],
+        ["I'm not trying to worry about making mistakes.", "我不是在试着担心犯错。", null, 5],
+        ["But I'm not trying to improve, if you know what I mean.", "但我不是在试着进步，如果你知道我的意思的话。", null, 6],
+        ["I think I'm not trying to know everything now.", "我认为我现在不是在试着知道所有事情。", null, 6],
+        ["I'm not trying to improve because I don't care about making mistakes.", "我不是在试着进步因为我不在乎犯错。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0050L01",
+        "seed_context": {
+          "known": "我不是在试着尽快完成。",
+          "target": "I'm not trying to finish as quickly as possible."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "不是",
+          "not"
+        ],
+        [
+          "在",
+          "(progressive marker)"
+        ],
+        [
+          "试着",
+          "trying"
+        ]
+      ]
+    },
+    "S0050L02": {
+      "lego": [
+        "not trying to",
+        "不是在试着"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0050L01",
+          "known": "I'm not trying to",
+          "target": "我不是在试着",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Not trying to", "不是在试着", null, 1],
+        ["Not trying to now", "现在不是在试着", null, 2],
+        ["I'm not trying to improve.", "我不是在试着进步。", null, 3],
+        ["Not trying to know everything", "不是在试着知道所有事情", null, 3],
+        ["But I'm not trying to answer.", "但我不是在试着回答。", null, 4],
+        ["I'm not trying to feel tired now.", "我现在不是在试着觉得累。", null, 4],
+        ["If you know, I'm not trying to worry.", "如果你知道，我不是在试着担心。", null, 5],
+        ["I think I'm not trying to improve, if you know what I mean.", "我认为我不是在试着进步，如果你知道我的意思的话。", null, 7],
+        ["It's like this: I'm not trying to know everything because I don't worry.", "就是这样：我不是在试着知道所有事情因为我不担心。", null, 8],
+        ["I'm not trying to feel better now, but I don't care about making mistakes.", "我现在不是在试着觉得好，但我不在乎犯错。", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0050L02",
+        "seed_context": {
+          "known": "我不是在试着尽快完成。",
+          "target": "I'm not trying to finish as quickly as possible."
+        }
+      },
+      "components": [
+        [
+          "不是",
+          "not"
+        ],
+        [
+          "在",
+          "(progressive marker)"
+        ],
+        [
+          "试着",
+          "trying"
+        ]
+      ]
+    },
+    "S0050L03": {
+      "lego": [
+        "to finish as quickly as possible",
+        "尽快完成"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0050L01",
+          "known": "I'm not trying to",
+          "target": "我不是在试着",
+          "type": "M"
+        },
+        {
+          "id": "S0050L02",
+          "known": "not trying to",
+          "target": "不是在试着",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["To finish as quickly as possible", "尽快完成", null, 1],
+        ["To finish as quickly as possible now", "现在尽快完成", null, 2],
+        ["I'm not trying to finish as quickly as possible.", "我不是在试着尽快完成。", null, 3],
+        ["Not trying to finish as quickly as possible", "不是在试着尽快完成", null, 3],
+        ["I'm not trying to finish as quickly as possible now.", "我现在不是在试着尽快完成。", null, 4],
+        ["But I'm not trying to finish as quickly as possible.", "但我不是在试着尽快完成。", null, 4],
+        ["I think I'm not trying to finish as quickly as possible.", "我认为我不是在试着尽快完成。", null, 5],
+        ["I'm not trying to finish as quickly as possible, if you know what I mean.", "我不是在试着尽快完成，如果你知道我的意思的话。", null, 6],
+        ["I don't worry because I'm not trying to finish as quickly as possible.", "我不担心因为我不是在试着尽快完成。", null, 6],
+        ["I don't care about making mistakes because I'm not trying to finish as quickly as possible.", "我不在乎犯错因为我不是在试着尽快完成。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0050L03",
+        "seed_context": {
+          "known": "我不是在试着尽快完成。",
+          "target": "I'm not trying to finish as quickly as possible."
+        }
+      },
+      "components": [
+        [
+          "尽快",
+          "as quickly as possible"
+        ],
+        [
+          "完成",
+          "finish"
+        ]
+      ]
+    },
+    "S0050L04": {
+      "lego": [
+        "as quickly as possible",
+        "尽快"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0050L01",
+          "known": "I'm not trying to",
+          "target": "我不是在试着",
+          "type": "M"
+        },
+        {
+          "id": "S0050L02",
+          "known": "not trying to",
+          "target": "不是在试着",
+          "type": "M"
+        },
+        {
+          "id": "S0050L03",
+          "known": "to finish as quickly as possible",
+          "target": "尽快完成",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["As quickly as possible", "尽快", null, 1],
+        ["As quickly as possible now", "现在尽快", null, 2],
+        ["I need to improve as quickly as possible.", "我需要尽快进步。", null, 3],
+        ["I think as quickly as possible.", "我认为尽快。", null, 3],
+        ["Not trying to finish as quickly as possible", "不是在试着尽快完成", null, 4],
+        ["But I need to answer as quickly as possible.", "但我需要尽快回答。", null, 4],
+        ["I don't need to know everything as quickly as possible.", "我不需要尽快知道所有事情。", null, 5],
+        ["I think I need to answer as quickly as possible, if you know what I mean.", "我认为我需要尽快回答，如果你知道我的意思的话。", null, 6],
+        ["It's like this: I don't worry about improving as quickly as possible.", "就是这样：我不担心尽快进步。", null, 6],
+        ["I'm not trying to finish as quickly as possible.", "我不是在试着尽快完成。", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0050L04",
+        "seed_context": {
+          "known": "我不是在试着尽快完成。",
+          "target": "I'm not trying to finish as quickly as possible."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0050.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

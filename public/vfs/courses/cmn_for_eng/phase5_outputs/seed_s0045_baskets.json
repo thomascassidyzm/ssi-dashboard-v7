@@ -1,0 +1,515 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0045",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "我不需要知道所有事情。",
+    "target": "I don't need to know everything."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0035",
+      "known": "她今天下午不想读任何东西。",
+      "target": "She doesn't want to read anything this afternoon."
+    },
+    {
+      "seed_id": "S0036",
+      "known": "我们不想打断这个故事。",
+      "target": "We don't want to interrupt the story."
+    },
+    {
+      "seed_id": "S0037",
+      "known": "我上个月开始仔细地考虑这件事。",
+      "target": "I started to think about it carefully last month."
+    },
+    {
+      "seed_id": "S0038",
+      "known": "我已经学了大约一个星期了。",
+      "target": "I've been learning for about a week."
+    },
+    {
+      "seed_id": "S0039",
+      "known": "但我今天早上有点累。",
+      "target": "But I'm a little tired this morning."
+    },
+    {
+      "seed_id": "S0040",
+      "known": "你现在感觉怎么样？",
+      "target": "How do you feel at the moment?"
+    },
+    {
+      "seed_id": "S0041",
+      "known": "我感觉还好，但我开始觉得累了。",
+      "target": "I feel okay, but I'm starting to feel tired."
+    },
+    {
+      "seed_id": "S0042",
+      "known": "我开始觉得比昨晚好了。",
+      "target": "I was starting to feel better than last night."
+    },
+    {
+      "seed_id": "S0043",
+      "known": "我没在想怎么回答。",
+      "target": "I wasn't thinking about how to answer."
+    },
+    {
+      "seed_id": "S0044",
+      "known": "或者我是否需要进步。",
+      "target": "Or if I need to improve."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0036L03",
+      "known": "the story",
+      "target": "这个故事",
+      "type": "M"
+    },
+    {
+      "id": "S0037L01",
+      "known": "I started last month",
+      "target": "我上个月开始",
+      "type": "M"
+    },
+    {
+      "id": "S0037L02",
+      "known": "last month",
+      "target": "上个月",
+      "type": "M"
+    },
+    {
+      "id": "S0037L03",
+      "known": "to think about it carefully",
+      "target": "仔细地考虑",
+      "type": "M"
+    },
+    {
+      "id": "S0037L04",
+      "known": "this matter/about it",
+      "target": "这件事",
+      "type": "M"
+    },
+    {
+      "id": "S0038L01",
+      "known": "I've been learning",
+      "target": "我已经学了",
+      "type": "M"
+    },
+    {
+      "id": "S0038L02",
+      "known": "about a week",
+      "target": "大约一个星期",
+      "type": "M"
+    },
+    {
+      "id": "S0038L03",
+      "known": "a week",
+      "target": "一个星期",
+      "type": "M"
+    },
+    {
+      "id": "S0039L02",
+      "known": "I this morning",
+      "target": "我今天早上",
+      "type": "M"
+    },
+    {
+      "id": "S0039L03",
+      "known": "this morning",
+      "target": "今天早上",
+      "type": "M"
+    },
+    {
+      "id": "S0039L04",
+      "known": "a little tired",
+      "target": "有点累",
+      "type": "M"
+    },
+    {
+      "id": "S0040L01",
+      "known": "how do you feel at the moment",
+      "target": "你现在感觉怎么样",
+      "type": "M"
+    },
+    {
+      "id": "S0040L02",
+      "known": "at the moment/now",
+      "target": "现在",
+      "type": "A"
+    },
+    {
+      "id": "S0040L03",
+      "known": "how do you feel",
+      "target": "感觉怎么样",
+      "type": "M"
+    },
+    {
+      "id": "S0041L01",
+      "known": "I feel okay",
+      "target": "我感觉还好",
+      "type": "M"
+    },
+    {
+      "id": "S0041L03",
+      "known": "I'm starting to feel tired",
+      "target": "我开始觉得累了",
+      "type": "M"
+    },
+    {
+      "id": "S0041L04",
+      "known": "starting to feel tired",
+      "target": "开始觉得累了",
+      "type": "M"
+    },
+    {
+      "id": "S0041L05",
+      "known": "to feel tired",
+      "target": "觉得累了",
+      "type": "M"
+    },
+    {
+      "id": "S0042L01",
+      "known": "I was starting to feel",
+      "target": "我开始觉得",
+      "type": "M"
+    },
+    {
+      "id": "S0042L02",
+      "known": "starting to feel",
+      "target": "开始觉得",
+      "type": "M"
+    },
+    {
+      "id": "S0042L03",
+      "known": "feel better than last night",
+      "target": "觉得比昨晚好了",
+      "type": "M"
+    },
+    {
+      "id": "S0042L04",
+      "known": "better than last night",
+      "target": "比昨晚好",
+      "type": "M"
+    },
+    {
+      "id": "S0042L05",
+      "known": "last night",
+      "target": "昨晚",
+      "type": "A"
+    },
+    {
+      "id": "S0043L01",
+      "known": "I wasn't thinking",
+      "target": "我没在想",
+      "type": "M"
+    },
+    {
+      "id": "S0043L02",
+      "known": "wasn't thinking",
+      "target": "没在想",
+      "type": "M"
+    },
+    {
+      "id": "S0043L03",
+      "known": "how to answer",
+      "target": "怎么回答",
+      "type": "M"
+    },
+    {
+      "id": "S0044L01",
+      "known": "or",
+      "target": "或者",
+      "type": "A"
+    },
+    {
+      "id": "S0044L02",
+      "known": "if I need to improve",
+      "target": "我是否需要进步",
+      "type": "M"
+    },
+    {
+      "id": "S0044L03",
+      "known": "if/whether need to",
+      "target": "是否需要",
+      "type": "M"
+    },
+    {
+      "id": "S0044L04",
+      "known": "to improve",
+      "target": "进步",
+      "type": "A"
+    }
+  ],
+  "legos": {
+    "S0045L01": {
+      "lego": [
+        "I don't need to know",
+        "我不需要知道"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "我不需要知道。",
+          "target": "I don't need to know."
+        },
+        {
+          "known": "我不需要知道这件事。",
+          "target": "I don't need to know about this matter."
+        },
+        {
+          "known": "我不需要知道这个故事。",
+          "target": "I don't need to know the story."
+        },
+        {
+          "known": "我不需要知道怎么回答这件事。",
+          "target": "I don't need to know how to answer about this matter."
+        },
+        {
+          "known": "我不需要知道她今天下午感觉怎么样。",
+          "target": "I don't need to know how she feels this afternoon."
+        },
+        {
+          "known": "我不需要知道是否需要进步或者读这个故事。",
+          "target": "I don't need to know if I need to improve or read the story."
+        },
+        {
+          "known": "我不需要知道他昨晚有点累，但我开始觉得比昨晚好了。",
+          "target": "I don't need to know he was a little tired last night, but I was starting to feel better than last night."
+        },
+        {
+          "known": "我不需要知道她今天下午不想读任何东西或者打断这个故事。",
+          "target": "I don't need to know she doesn't want to read anything this afternoon or interrupt the story."
+        },
+        {
+          "known": "我不需要知道我上个月开始仔细地考虑这件事，或者我是否需要进步。",
+          "target": "I don't need to know I started to think about this matter carefully last month, or if I need to improve."
+        },
+        {
+          "known": "我不需要知道我已经学了大约一个星期了，但我今天早上没在想怎么回答。",
+          "target": "I don't need to know I've been learning for about a week, but I wasn't thinking about how to answer this morning."
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0045L01",
+        "seed_context": {
+          "known": "我不需要知道所有事情。",
+          "target": "I don't need to know everything."
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "不",
+          "don't/not"
+        ],
+        [
+          "需要",
+          "need"
+        ],
+        [
+          "知道",
+          "to know"
+        ]
+      ]
+    },
+    "S0045L02": {
+      "lego": [
+        "don't need to know",
+        "不需要知道"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0045L01",
+          "known": "I don't need to know",
+          "target": "我不需要知道",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "不需要知道。",
+          "target": "Don't need to know."
+        },
+        {
+          "known": "她不需要知道这件事。",
+          "target": "She doesn't need to know about this matter."
+        },
+        {
+          "known": "他不需要知道怎么回答。",
+          "target": "He doesn't need to know how to answer."
+        },
+        {
+          "known": "我们不需要知道这个故事或者进步。",
+          "target": "We don't need to know the story or improve."
+        },
+        {
+          "known": "他今天早上不需要知道感觉怎么样。",
+          "target": "He doesn't need to know how he feels this morning."
+        },
+        {
+          "known": "她不需要知道她是否需要进步，她今天下午有点累。",
+          "target": "She doesn't need to know if she needs to improve, she's a little tired this afternoon."
+        },
+        {
+          "known": "我上个月开始觉得我不需要知道这件事，但我现在感觉还好。",
+          "target": "I started to feel last month I don't need to know about this matter, but I feel okay now."
+        },
+        {
+          "known": "他不需要知道她今天下午不想读任何东西或者打断这个故事。",
+          "target": "He doesn't need to know she doesn't want to read anything this afternoon or interrupt the story."
+        },
+        {
+          "known": "我不需要知道我已经学了大约一个星期了，或者我昨晚没在想怎么回答。",
+          "target": "I don't need to know I've been learning for about a week, or I wasn't thinking about how to answer last night."
+        },
+        {
+          "known": "她上个月开始仔细地考虑她不需要知道所有事情，但她开始觉得比昨晚好了。",
+          "target": "She started to think carefully last month she doesn't need to know everything, but she was starting to feel better than last night."
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0045L02",
+        "seed_context": {
+          "known": "我不需要知道所有事情。",
+          "target": "I don't need to know everything."
+        }
+      },
+      "components": [
+        [
+          "不",
+          "don't"
+        ],
+        [
+          "需要",
+          "need"
+        ],
+        [
+          "知道",
+          "to know"
+        ]
+      ]
+    },
+    "S0045L03": {
+      "lego": [
+        "everything",
+        "所有事情"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0045L01",
+          "known": "I don't need to know",
+          "target": "我不需要知道",
+          "type": "M"
+        },
+        {
+          "id": "S0045L02",
+          "known": "don't need to know",
+          "target": "不需要知道",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "所有事情。",
+          "target": "Everything."
+        },
+        {
+          "known": "我知道所有事情。",
+          "target": "I know everything."
+        },
+        {
+          "known": "她不想读所有事情。",
+          "target": "She doesn't want to read everything."
+        },
+        {
+          "known": "我不需要知道所有事情或者怎么回答。",
+          "target": "I don't need to know everything or how to answer."
+        },
+        {
+          "known": "他今天早上不需要知道所有事情。",
+          "target": "He doesn't need to know everything this morning."
+        },
+        {
+          "known": "我不需要知道所有事情，但我已经学了大约一个星期了。",
+          "target": "I don't need to know everything, but I've been learning for about a week."
+        },
+        {
+          "known": "她今天下午不想学所有事情，她有点累或者不需要进步。",
+          "target": "She doesn't want to learn everything this afternoon, she's a little tired or doesn't need to improve."
+        },
+        {
+          "known": "我上个月开始仔细地考虑所有事情，但我昨晚没在想怎么回答这个故事。",
+          "target": "I started to think about everything carefully last month, but I wasn't thinking about how to answer about the story last night."
+        },
+        {
+          "known": "他不需要知道所有事情，或者他是否需要进步和打断这个故事。",
+          "target": "He doesn't need to know everything, or if he needs to improve and interrupt the story."
+        },
+        {
+          "known": "我不需要知道所有事情，我今天早上没在想怎么回答，但我开始觉得比昨晚好了，现在我感觉还好。",
+          "target": "I don't need to know everything, I wasn't thinking about how to answer this morning, but I was starting to feel better than last night, now I feel okay."
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0045L03",
+        "seed_context": {
+          "known": "我不需要知道所有事情。",
+          "target": "I don't need to know everything."
+        }
+      },
+      "components": [
+        [
+          "所有",
+          "all"
+        ],
+        [
+          "事情",
+          "things/matters"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0045.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "phrases_to_generate": 30,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}
