@@ -60,7 +60,7 @@ export default {
     // Initialize cache for baskets to avoid re-fetching 5MB files
     _basketsCache: {},
 
-    async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false }) {
+    async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false, stagingOnly = false }) {
       // Route Phase 5 requests to the new Phase 5 basket server (layered architecture)
       if (phaseSelection === 'phase5') {
         const courseCode = `${target}_for_${known}`
@@ -70,7 +70,8 @@ export default {
           const response = await api.post('/phase5/launch-12-masters', {
             courseCode,
             target: target.charAt(0).toUpperCase() + target.slice(1), // Capitalize for display
-            known: known.charAt(0).toUpperCase() + known.slice(1)
+            known: known.charAt(0).toUpperCase() + known.slice(1),
+            stagingOnly
           })
           return {
             ...response.data,
@@ -84,7 +85,8 @@ export default {
           startSeed,
           endSeed,
           target: target.charAt(0).toUpperCase() + target.slice(1), // Capitalize for display
-          known: known.charAt(0).toUpperCase() + known.slice(1)
+          known: known.charAt(0).toUpperCase() + known.slice(1),
+          stagingOnly
         })
         return {
           ...response.data,
