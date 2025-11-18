@@ -1,0 +1,574 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0458",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "在过去一切都容易得多。",
+    "target": "It was all much easier in the past."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0448",
+      "known": "是的，他们会很高兴帮忙。",
+      "target": "Yes they'll be happy to help."
+    },
+    {
+      "seed_id": "S0449",
+      "known": "他们说他们差不多准备好了。",
+      "target": "They said that they were almost ready."
+    },
+    {
+      "seed_id": "S0450",
+      "known": "不，他们必须自己赶火车。",
+      "target": "No they have to catch the train themselves."
+    },
+    {
+      "seed_id": "S0451",
+      "known": "他们说了他们想做什么。",
+      "target": "They said what they wanted to do."
+    },
+    {
+      "seed_id": "S0452",
+      "known": "他们没有说他们想做什么。",
+      "target": "They didn't say what they wanted to do."
+    },
+    {
+      "seed_id": "S0453",
+      "known": "他们说了他们昨晚看到谁了吗？",
+      "target": "Did they say who they saw last night?"
+    },
+    {
+      "seed_id": "S0454",
+      "known": "我们的朋友大约六点钟来了。",
+      "target": "Our friends came round at about six o'clock."
+    },
+    {
+      "seed_id": "S0455",
+      "known": "我们不得不离开，因为孩子们累了。",
+      "target": "We had to leave because the children were tired."
+    },
+    {
+      "seed_id": "S0456",
+      "known": "他可能在那里，但不太可能。",
+      "target": "He might be there but it's not very likely."
+    },
+    {
+      "seed_id": "S0457",
+      "known": "问题的一部分是不同地区的数量。",
+      "target": "Part of the problem is the number of different areas."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0452L01",
+      "known": "they didn't say",
+      "target": "他们没有说",
+      "type": "M"
+    },
+    {
+      "id": "S0452L02",
+      "known": "didn't say",
+      "target": "没有说",
+      "type": "M"
+    },
+    {
+      "id": "S0453L02",
+      "known": "who they saw last night",
+      "target": "他们昨晚看到谁了",
+      "type": "M"
+    },
+    {
+      "id": "S0453L03",
+      "known": "saw who last night",
+      "target": "昨晚看到谁了",
+      "type": "M"
+    },
+    {
+      "id": "S0453L05",
+      "known": "saw who",
+      "target": "看到谁",
+      "type": "M"
+    },
+    {
+      "id": "S0453L06",
+      "known": "saw",
+      "target": "看到",
+      "type": "A"
+    },
+    {
+      "id": "S0454L01",
+      "known": "our friends",
+      "target": "我们的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0454L02",
+      "known": "at about six o'clock",
+      "target": "大约六点钟",
+      "type": "M"
+    },
+    {
+      "id": "S0454L03",
+      "known": "six o'clock",
+      "target": "六点钟",
+      "type": "M"
+    },
+    {
+      "id": "S0454L04",
+      "known": "came",
+      "target": "来了",
+      "type": "A"
+    },
+    {
+      "id": "S0454L05",
+      "known": "friends came",
+      "target": "朋友来了",
+      "type": "M"
+    },
+    {
+      "id": "S0455L01",
+      "known": "we had to leave",
+      "target": "我们不得不离开",
+      "type": "M"
+    },
+    {
+      "id": "S0455L02",
+      "known": "had to leave",
+      "target": "不得不离开",
+      "type": "M"
+    },
+    {
+      "id": "S0455L03",
+      "known": "had to",
+      "target": "不得不",
+      "type": "A"
+    },
+    {
+      "id": "S0455L06",
+      "known": "because the children were tired",
+      "target": "因为孩子们累了",
+      "type": "M"
+    },
+    {
+      "id": "S0455L07",
+      "known": "the children",
+      "target": "孩子们",
+      "type": "A"
+    },
+    {
+      "id": "S0455L08",
+      "known": "were tired",
+      "target": "累了",
+      "type": "A"
+    },
+    {
+      "id": "S0456L01",
+      "known": "he might be there",
+      "target": "他可能在那里",
+      "type": "M"
+    },
+    {
+      "id": "S0456L02",
+      "known": "might be there",
+      "target": "可能在那里",
+      "type": "M"
+    },
+    {
+      "id": "S0456L05",
+      "known": "might",
+      "target": "可能",
+      "type": "A"
+    },
+    {
+      "id": "S0456L06",
+      "known": "but it's not very likely",
+      "target": "但不太可能",
+      "type": "M"
+    },
+    {
+      "id": "S0456L07",
+      "known": "not very likely",
+      "target": "不太可能",
+      "type": "M"
+    },
+    {
+      "id": "S0457L01",
+      "known": "part of the problem",
+      "target": "问题的一部分",
+      "type": "M"
+    },
+    {
+      "id": "S0457L02",
+      "known": "a part",
+      "target": "一部分",
+      "type": "A"
+    },
+    {
+      "id": "S0457L03",
+      "known": "the number of different areas",
+      "target": "不同地区的数量",
+      "type": "M"
+    },
+    {
+      "id": "S0457L04",
+      "known": "number of areas",
+      "target": "地区的数量",
+      "type": "M"
+    },
+    {
+      "id": "S0457L05",
+      "known": "different areas",
+      "target": "不同地区",
+      "type": "M"
+    },
+    {
+      "id": "S0457L06",
+      "known": "number",
+      "target": "数量",
+      "type": "A"
+    },
+    {
+      "id": "S0457L07",
+      "known": "different",
+      "target": "不同",
+      "type": "A"
+    },
+    {
+      "id": "S0457L08",
+      "known": "areas",
+      "target": "地区",
+      "type": "A"
+    }
+  ],
+  "legos": {
+    "S0458L03": {
+      "lego": [
+        "much easier",
+        "容易得多"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0458L01",
+          "known": "in the past",
+          "target": "在过去",
+          "type": "M"
+        },
+        {
+          "id": "S0458L02",
+          "known": "all",
+          "target": "一切都",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "这容易得多。",
+          "target": "This is much easier.",
+          "lego_count": 1
+        },
+        {
+          "known": "在过去容易得多。",
+          "target": "It was much easier in the past.",
+          "lego_count": 2
+        },
+        {
+          "known": "他们说了这容易得多。",
+          "target": "They said this is much easier.",
+          "lego_count": 3
+        },
+        {
+          "known": "孩子们觉得容易得多了。",
+          "target": "The children find it much easier.",
+          "lego_count": 3
+        },
+        {
+          "known": "在过去赶火车容易得多。",
+          "target": "Catching trains was much easier in the past.",
+          "lego_count": 4
+        },
+        {
+          "known": "我们的朋友说这容易得多。",
+          "target": "Our friends said this is much easier.",
+          "lego_count": 4
+        },
+        {
+          "known": "他们说了在过去容易得多，但不太可能了。",
+          "target": "They said it was much easier in the past, but not very likely now.",
+          "lego_count": 5
+        },
+        {
+          "known": "孩子们累了，因为现在不容易得多了。",
+          "target": "The children were tired because it's not much easier now.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们的朋友昨晚说了这可能容易得多。",
+          "target": "Our friends said last night this might be much easier.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说在不同地区会容易得多。",
+          "target": "They didn't say it would be much easier in different areas.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0458L03",
+        "seed_context": {
+          "known": "在过去一切都容易得多。",
+          "target": "It was all much easier in the past."
+        }
+      },
+      "components": [
+        [
+          "容易",
+          "easy"
+        ],
+        [
+          "得多",
+          "much (more)"
+        ]
+      ]
+    },
+    "S0458L04": {
+      "lego": [
+        "was all much easier",
+        "一切都容易得多"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0458L01",
+          "known": "in the past",
+          "target": "在过去",
+          "type": "M"
+        },
+        {
+          "id": "S0458L02",
+          "known": "all",
+          "target": "一切都",
+          "type": "M"
+        },
+        {
+          "id": "S0458L03",
+          "known": "much easier",
+          "target": "容易得多",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "一切都容易得多。",
+          "target": "It was all much easier.",
+          "lego_count": 1
+        },
+        {
+          "known": "在过去一切都容易得多。",
+          "target": "It was all much easier in the past.",
+          "lego_count": 2
+        },
+        {
+          "known": "他们说了一切都容易得多。",
+          "target": "They said it was all much easier.",
+          "lego_count": 3
+        },
+        {
+          "known": "我们的朋友说一切都容易得多。",
+          "target": "Our friends said it was all much easier.",
+          "lego_count": 3
+        },
+        {
+          "known": "孩子们觉得一切都容易得多了。",
+          "target": "The children felt it was all much easier.",
+          "lego_count": 4
+        },
+        {
+          "known": "在过去一切都容易得多，但现在不是。",
+          "target": "It was all much easier in the past, but not now.",
+          "lego_count": 4
+        },
+        {
+          "known": "他们昨晚说了在过去一切都容易得多。",
+          "target": "They said last night it was all much easier in the past.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们的朋友可能觉得一切都容易得多，但不太可能。",
+          "target": "Our friends might feel it was all much easier, but it's not very likely.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说一切都容易得多，因为孩子们累了。",
+          "target": "They didn't say it was all much easier because the children were tired.",
+          "lego_count": 5
+        },
+        {
+          "known": "在不同地区一切都容易得多，他们昨晚看到了。",
+          "target": "It was all much easier in different areas, they saw last night.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0458L04",
+        "seed_context": {
+          "known": "在过去一切都容易得多。",
+          "target": "It was all much easier in the past."
+        }
+      },
+      "components": [
+        [
+          "一切",
+          "everything"
+        ],
+        [
+          "都",
+          "all"
+        ],
+        [
+          "容易",
+          "easy"
+        ],
+        [
+          "得多",
+          "much (more)"
+        ]
+      ]
+    },
+    "S0458L05": {
+      "lego": [
+        "much (more)",
+        "得多"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0458L01",
+          "known": "in the past",
+          "target": "在过去",
+          "type": "M"
+        },
+        {
+          "id": "S0458L02",
+          "known": "all",
+          "target": "一切都",
+          "type": "M"
+        },
+        {
+          "id": "S0458L03",
+          "known": "much easier",
+          "target": "容易得多",
+          "type": "M"
+        },
+        {
+          "id": "S0458L04",
+          "known": "was all much easier",
+          "target": "一切都容易得多",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Much easier",
+          "target": "容易得多",
+          "lego_count": 1
+        },
+        {
+          "known": "Everything is much easier",
+          "target": "一切都容易得多",
+          "lego_count": 2
+        },
+        {
+          "known": "They said it's much easier",
+          "target": "他们说容易得多",
+          "lego_count": 3
+        },
+        {
+          "known": "It was much easier in the past",
+          "target": "在过去容易得多",
+          "lego_count": 3
+        },
+        {
+          "known": "The children were much more tired",
+          "target": "孩子们累得多了",
+          "lego_count": 4
+        },
+        {
+          "known": "Our friends said it was much easier",
+          "target": "我们的朋友说容易得多",
+          "lego_count": 4
+        },
+        {
+          "known": "They said the children were much more tired",
+          "target": "他们说孩子们累得多了",
+          "lego_count": 5
+        },
+        {
+          "known": "He said it might be much easier",
+          "target": "他说可能容易得多",
+          "lego_count": 5
+        },
+        {
+          "known": "They said in the past it was much easier",
+          "target": "他们说在过去容易得多",
+          "lego_count": 6
+        },
+        {
+          "known": "It was all much easier in the past.",
+          "target": "在过去一切都容易得多。",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 1,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0458L05",
+        "seed_context": {
+          "known": "在过去一切都容易得多。",
+          "target": "It was all much easier in the past."
+        }
+      },
+      "components": [
+        [
+          "得多",
+          "much (more)"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0458_baskets.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_generated": 20,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

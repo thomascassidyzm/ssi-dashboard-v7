@@ -1,0 +1,918 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0457",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "问题的一部分是不同地区的数量。",
+    "target": "Part of the problem is the number of different areas."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0447",
+      "known": "他们能在饭后开车送我们回家吗？",
+      "target": "Will they be able to drive us home after the meal?"
+    },
+    {
+      "seed_id": "S0448",
+      "known": "是的，他们会很高兴帮忙。",
+      "target": "Yes they'll be happy to help."
+    },
+    {
+      "seed_id": "S0449",
+      "known": "他们说他们差不多准备好了。",
+      "target": "They said that they were almost ready."
+    },
+    {
+      "seed_id": "S0450",
+      "known": "不，他们必须自己赶火车。",
+      "target": "No they have to catch the train themselves."
+    },
+    {
+      "seed_id": "S0451",
+      "known": "他们说了他们想做什么。",
+      "target": "They said what they wanted to do."
+    },
+    {
+      "seed_id": "S0452",
+      "known": "他们没有说他们想做什么。",
+      "target": "They didn't say what they wanted to do."
+    },
+    {
+      "seed_id": "S0453",
+      "known": "他们说了他们昨晚看到谁了吗？",
+      "target": "Did they say who they saw last night?"
+    },
+    {
+      "seed_id": "S0454",
+      "known": "我们的朋友大约六点钟来了。",
+      "target": "Our friends came round at about six o'clock."
+    },
+    {
+      "seed_id": "S0455",
+      "known": "我们不得不离开，因为孩子们累了。",
+      "target": "We had to leave because the children were tired."
+    },
+    {
+      "seed_id": "S0456",
+      "known": "他可能在那里，但不太可能。",
+      "target": "He might be there but it's not very likely."
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0450L02",
+      "known": "oneself/themselves",
+      "target": "自己",
+      "type": "M"
+    },
+    {
+      "id": "S0450L03",
+      "known": "catch/rush",
+      "target": "赶",
+      "type": "A"
+    },
+    {
+      "id": "S0450L04",
+      "known": "train",
+      "target": "火车",
+      "type": "M"
+    },
+    {
+      "id": "S0450L05",
+      "known": "catch the train",
+      "target": "赶火车",
+      "type": "M"
+    },
+    {
+      "id": "S0450L06",
+      "known": "catch the train themselves",
+      "target": "自己赶火车",
+      "type": "M"
+    },
+    {
+      "id": "S0451L01",
+      "known": "they said",
+      "target": "他们说了",
+      "type": "M"
+    },
+    {
+      "id": "S0451L02",
+      "known": "what they wanted to do",
+      "target": "他们想做什么",
+      "type": "M"
+    },
+    {
+      "id": "S0451L03",
+      "known": "want to do",
+      "target": "想做",
+      "type": "M"
+    },
+    {
+      "id": "S0452L01",
+      "known": "they didn't say",
+      "target": "他们没有说",
+      "type": "M"
+    },
+    {
+      "id": "S0452L02",
+      "known": "didn't say",
+      "target": "没有说",
+      "type": "M"
+    },
+    {
+      "id": "S0453L02",
+      "known": "who they saw last night",
+      "target": "他们昨晚看到谁了",
+      "type": "M"
+    },
+    {
+      "id": "S0453L03",
+      "known": "saw who last night",
+      "target": "昨晚看到谁了",
+      "type": "M"
+    },
+    {
+      "id": "S0453L05",
+      "known": "saw who",
+      "target": "看到谁",
+      "type": "M"
+    },
+    {
+      "id": "S0453L06",
+      "known": "saw",
+      "target": "看到",
+      "type": "A"
+    },
+    {
+      "id": "S0454L01",
+      "known": "our friends",
+      "target": "我们的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0454L02",
+      "known": "at about six o'clock",
+      "target": "大约六点钟",
+      "type": "M"
+    },
+    {
+      "id": "S0454L03",
+      "known": "six o'clock",
+      "target": "六点钟",
+      "type": "M"
+    },
+    {
+      "id": "S0454L04",
+      "known": "came",
+      "target": "来了",
+      "type": "A"
+    },
+    {
+      "id": "S0454L05",
+      "known": "friends came",
+      "target": "朋友来了",
+      "type": "M"
+    },
+    {
+      "id": "S0455L01",
+      "known": "we had to leave",
+      "target": "我们不得不离开",
+      "type": "M"
+    },
+    {
+      "id": "S0455L02",
+      "known": "had to leave",
+      "target": "不得不离开",
+      "type": "M"
+    },
+    {
+      "id": "S0455L03",
+      "known": "had to",
+      "target": "不得不",
+      "type": "A"
+    },
+    {
+      "id": "S0455L06",
+      "known": "because the children were tired",
+      "target": "因为孩子们累了",
+      "type": "M"
+    },
+    {
+      "id": "S0455L07",
+      "known": "the children",
+      "target": "孩子们",
+      "type": "A"
+    },
+    {
+      "id": "S0455L08",
+      "known": "were tired",
+      "target": "累了",
+      "type": "A"
+    },
+    {
+      "id": "S0456L01",
+      "known": "he might be there",
+      "target": "他可能在那里",
+      "type": "M"
+    },
+    {
+      "id": "S0456L02",
+      "known": "might be there",
+      "target": "可能在那里",
+      "type": "M"
+    },
+    {
+      "id": "S0456L05",
+      "known": "might",
+      "target": "可能",
+      "type": "A"
+    },
+    {
+      "id": "S0456L06",
+      "known": "but it's not very likely",
+      "target": "但不太可能",
+      "type": "M"
+    },
+    {
+      "id": "S0456L07",
+      "known": "not very likely",
+      "target": "不太可能",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0457L03": {
+      "lego": [
+        "the number of different areas",
+        "不同地区的数量"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0457L01",
+          "known": "part of the problem",
+          "target": "问题的一部分",
+          "type": "M"
+        },
+        {
+          "id": "S0457L02",
+          "known": "a part",
+          "target": "一部分",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "不同地区的数量",
+          "target": "The number of different areas",
+          "lego_count": 1
+        },
+        {
+          "known": "不同地区的数量很大。",
+          "target": "The number of different areas is large.",
+          "lego_count": 2
+        },
+        {
+          "known": "他们看到不同地区的数量。",
+          "target": "They saw the number of different areas.",
+          "lego_count": 3
+        },
+        {
+          "known": "我们的朋友说了不同地区的数量。",
+          "target": "Our friends said the number of different areas.",
+          "lego_count": 3
+        },
+        {
+          "known": "不同地区的数量可能很大。",
+          "target": "The number of different areas might be large.",
+          "lego_count": 4
+        },
+        {
+          "known": "孩子们看到不同地区的数量了。",
+          "target": "The children saw the number of different areas.",
+          "lego_count": 4
+        },
+        {
+          "known": "他们昨晚看到不同地区的数量了。",
+          "target": "They saw the number of different areas last night.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们的朋友说了不同地区的数量很大。",
+          "target": "Our friends said the number of different areas is large.",
+          "lego_count": 5
+        },
+        {
+          "known": "不同地区的数量是问题的一部分。",
+          "target": "The number of different areas is part of the problem.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说不同地区的数量有多大。",
+          "target": "They didn't say how large the number of different areas is.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0457L03",
+        "seed_context": {
+          "known": "问题的一部分是不同地区的数量。",
+          "target": "Part of the problem is the number of different areas."
+        }
+      },
+      "components": [
+        [
+          "不同",
+          "different"
+        ],
+        [
+          "地区",
+          "areas"
+        ],
+        [
+          "的",
+          "of"
+        ],
+        [
+          "数量",
+          "number"
+        ]
+      ]
+    },
+    "S0457L04": {
+      "lego": [
+        "number of areas",
+        "地区的数量"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0457L01",
+          "known": "part of the problem",
+          "target": "问题的一部分",
+          "type": "M"
+        },
+        {
+          "id": "S0457L02",
+          "known": "a part",
+          "target": "一部分",
+          "type": "A"
+        },
+        {
+          "id": "S0457L03",
+          "known": "the number of different areas",
+          "target": "不同地区的数量",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "地区的数量",
+          "target": "Number of areas",
+          "lego_count": 1
+        },
+        {
+          "known": "地区的数量很多。",
+          "target": "The number of areas is many.",
+          "lego_count": 2
+        },
+        {
+          "known": "他们说了地区的数量很多。",
+          "target": "They said the number of areas is many.",
+          "lego_count": 3
+        },
+        {
+          "known": "我们看到地区的数量了。",
+          "target": "We saw the number of areas.",
+          "lego_count": 3
+        },
+        {
+          "known": "地区的数量可能是问题的一部分。",
+          "target": "The number of areas might be part of the problem.",
+          "lego_count": 4
+        },
+        {
+          "known": "我们不得不看地区的数量。",
+          "target": "We had to look at the number of areas.",
+          "lego_count": 4
+        },
+        {
+          "known": "我们的朋友昨晚说了地区的数量很多。",
+          "target": "Our friends said last night the number of areas is many.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说地区的数量是多少。",
+          "target": "They didn't say what the number of areas is.",
+          "lego_count": 5
+        },
+        {
+          "known": "孩子们可能看到地区的数量了。",
+          "target": "The children might have seen the number of areas.",
+          "lego_count": 5
+        },
+        {
+          "known": "地区的数量是问题的一部分，但不太可能改变。",
+          "target": "The number of areas is part of the problem, but not very likely to change.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0457L04",
+        "seed_context": {
+          "known": "问题的一部分是不同地区的数量。",
+          "target": "Part of the problem is the number of different areas."
+        }
+      },
+      "components": [
+        [
+          "地区",
+          "areas"
+        ],
+        [
+          "的",
+          "of"
+        ],
+        [
+          "数量",
+          "number"
+        ]
+      ]
+    },
+    "S0457L05": {
+      "lego": [
+        "different areas",
+        "不同地区"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0457L01",
+          "known": "part of the problem",
+          "target": "问题的一部分",
+          "type": "M"
+        },
+        {
+          "id": "S0457L02",
+          "known": "a part",
+          "target": "一部分",
+          "type": "A"
+        },
+        {
+          "id": "S0457L03",
+          "known": "the number of different areas",
+          "target": "不同地区的数量",
+          "type": "M"
+        },
+        {
+          "id": "S0457L04",
+          "known": "number of areas",
+          "target": "地区的数量",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "不同地区",
+          "target": "Different areas",
+          "lego_count": 1
+        },
+        {
+          "known": "他们在不同地区。",
+          "target": "They are in different areas.",
+          "lego_count": 2
+        },
+        {
+          "known": "我们的朋友来自不同地区。",
+          "target": "Our friends come from different areas.",
+          "lego_count": 3
+        },
+        {
+          "known": "孩子们看到不同地区了。",
+          "target": "The children saw different areas.",
+          "lego_count": 3
+        },
+        {
+          "known": "他们昨晚在不同地区看到朋友了。",
+          "target": "They saw friends in different areas last night.",
+          "lego_count": 4
+        },
+        {
+          "known": "我们不得不去不同地区看他们。",
+          "target": "We had to go to different areas to see them.",
+          "lego_count": 4
+        },
+        {
+          "known": "他们说了他们在不同地区看到朋友了。",
+          "target": "They said they saw friends in different areas.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们的朋友可能在不同地区，但不太可能。",
+          "target": "Our friends might be in different areas, but it's not very likely.",
+          "lego_count": 5
+        },
+        {
+          "known": "孩子们累了，因为他们去了不同地区。",
+          "target": "The children were tired because they went to different areas.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说他们想去哪些不同地区。",
+          "target": "They didn't say which different areas they wanted to go to.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0457L05",
+        "seed_context": {
+          "known": "问题的一部分是不同地区的数量。",
+          "target": "Part of the problem is the number of different areas."
+        }
+      },
+      "components": [
+        [
+          "不同",
+          "different"
+        ],
+        [
+          "地区",
+          "areas"
+        ]
+      ]
+    },
+    "S0457L06": {
+      "lego": [
+        "number",
+        "数量"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0457L01",
+          "known": "part of the problem",
+          "target": "问题的一部分",
+          "type": "M"
+        },
+        {
+          "id": "S0457L02",
+          "known": "a part",
+          "target": "一部分",
+          "type": "A"
+        },
+        {
+          "id": "S0457L03",
+          "known": "the number of different areas",
+          "target": "不同地区的数量",
+          "type": "M"
+        },
+        {
+          "id": "S0457L04",
+          "known": "number of areas",
+          "target": "地区的数量",
+          "type": "M"
+        },
+        {
+          "id": "S0457L05",
+          "known": "different areas",
+          "target": "不同地区",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "数量很大。",
+          "target": "The number is large.",
+          "lego_count": 1
+        },
+        {
+          "known": "朋友的数量",
+          "target": "The number of friends",
+          "lego_count": 2
+        },
+        {
+          "known": "他们说了数量很大。",
+          "target": "They said the number is large.",
+          "lego_count": 3
+        },
+        {
+          "known": "孩子们的数量不多。",
+          "target": "The number of children is not many.",
+          "lego_count": 3
+        },
+        {
+          "known": "我们的朋友看到数量了。",
+          "target": "Our friends saw the number.",
+          "lego_count": 4
+        },
+        {
+          "known": "火车的数量可能很多。",
+          "target": "The number of trains might be many.",
+          "lego_count": 4
+        },
+        {
+          "known": "他们昨晚说了朋友的数量很多。",
+          "target": "They said last night the number of friends is many.",
+          "lego_count": 5
+        },
+        {
+          "known": "孩子们累了，因为数量太大了。",
+          "target": "The children were tired because the number is too large.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们不得不看火车的数量是多少。",
+          "target": "We had to look at what the number of trains is.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说地区的数量，但可能很大。",
+          "target": "They didn't say the number of areas, but it might be large.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0457L06",
+        "seed_context": {
+          "known": "问题的一部分是不同地区的数量。",
+          "target": "Part of the problem is the number of different areas."
+        }
+      }
+    },
+    "S0457L07": {
+      "lego": [
+        "different",
+        "不同"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0457L01",
+          "known": "part of the problem",
+          "target": "问题的一部分",
+          "type": "M"
+        },
+        {
+          "id": "S0457L02",
+          "known": "a part",
+          "target": "一部分",
+          "type": "A"
+        },
+        {
+          "id": "S0457L03",
+          "known": "the number of different areas",
+          "target": "不同地区的数量",
+          "type": "M"
+        },
+        {
+          "id": "S0457L04",
+          "known": "number of areas",
+          "target": "地区的数量",
+          "type": "M"
+        },
+        {
+          "id": "S0457L05",
+          "known": "different areas",
+          "target": "不同地区",
+          "type": "M"
+        },
+        {
+          "id": "S0457L06",
+          "known": "number",
+          "target": "数量",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "他们很不同。",
+          "target": "They are very different.",
+          "lego_count": 1
+        },
+        {
+          "known": "不同的朋友",
+          "target": "Different friends",
+          "lego_count": 2
+        },
+        {
+          "known": "孩子们看到不同的朋友了。",
+          "target": "The children saw different friends.",
+          "lego_count": 3
+        },
+        {
+          "known": "他们说了不同的事情。",
+          "target": "They said different things.",
+          "lego_count": 3
+        },
+        {
+          "known": "我们的朋友来自不同的地方。",
+          "target": "Our friends come from different places.",
+          "lego_count": 4
+        },
+        {
+          "known": "他们昨晚看到不同的人了。",
+          "target": "They saw different people last night.",
+          "lego_count": 4
+        },
+        {
+          "known": "孩子们累了，因为他们去了不同的地方。",
+          "target": "The children were tired because they went to different places.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说他们想做不同的事情。",
+          "target": "They didn't say they wanted to do different things.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们的朋友可能在不同的地方，但不太可能。",
+          "target": "Our friends might be in different places, but it's not very likely.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们不得不去不同的地方赶火车。",
+          "target": "We had to go to different places to catch the train.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0457L07",
+        "seed_context": {
+          "known": "问题的一部分是不同地区的数量。",
+          "target": "Part of the problem is the number of different areas."
+        }
+      }
+    },
+    "S0457L08": {
+      "lego": [
+        "areas",
+        "地区"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0457L01",
+          "known": "part of the problem",
+          "target": "问题的一部分",
+          "type": "M"
+        },
+        {
+          "id": "S0457L02",
+          "known": "a part",
+          "target": "一部分",
+          "type": "A"
+        },
+        {
+          "id": "S0457L03",
+          "known": "the number of different areas",
+          "target": "不同地区的数量",
+          "type": "M"
+        },
+        {
+          "id": "S0457L04",
+          "known": "number of areas",
+          "target": "地区的数量",
+          "type": "M"
+        },
+        {
+          "id": "S0457L05",
+          "known": "different areas",
+          "target": "不同地区",
+          "type": "M"
+        },
+        {
+          "id": "S0457L06",
+          "known": "number",
+          "target": "数量",
+          "type": "A"
+        },
+        {
+          "id": "S0457L07",
+          "known": "different",
+          "target": "不同",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "这些地区很大。",
+          "target": "These areas are large.",
+          "lego_count": 1
+        },
+        {
+          "known": "他们去那些地区了。",
+          "target": "They went to those areas.",
+          "lego_count": 2
+        },
+        {
+          "known": "孩子们在这些地区玩。",
+          "target": "The children play in these areas.",
+          "lego_count": 3
+        },
+        {
+          "known": "朋友们来自不同的地区。",
+          "target": "Friends come from different areas.",
+          "lego_count": 3
+        },
+        {
+          "known": "他们昨晚在那些地区看到朋友了。",
+          "target": "They saw friends in those areas last night.",
+          "lego_count": 4
+        },
+        {
+          "known": "我们可能不得不去那些地区。",
+          "target": "We might have to go to those areas.",
+          "lego_count": 4
+        },
+        {
+          "known": "他们说了他们在那些地区看到什么了。",
+          "target": "They said what they saw in those areas.",
+          "lego_count": 5
+        },
+        {
+          "known": "孩子们累了，因为他们去了很多地区。",
+          "target": "The children were tired because they went to many areas.",
+          "lego_count": 5
+        },
+        {
+          "known": "我们的朋友可能在那些地区，但不太可能。",
+          "target": "Our friends might be in those areas, but it's not very likely.",
+          "lego_count": 5
+        },
+        {
+          "known": "他们没有说他们想去哪些地区赶火车。",
+          "target": "They didn't say which areas they wanted to go to to catch the train.",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0457L08",
+        "seed_context": {
+          "known": "问题的一部分是不同地区的数量。",
+          "target": "Part of the problem is the number of different areas."
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0457_baskets.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "phrases_generated": 60,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}
