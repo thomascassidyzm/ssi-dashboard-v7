@@ -1,0 +1,225 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0231",
+  "generation_stage": "PHRASES_GENERATED",
+  "baskets": [
+    {
+      "lego_id": "S0231L04",
+      "lego": [
+        "ask for help",
+        "寻求帮助"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": [
+        {
+          "known": "ask for help",
+          "target": "寻求帮助",
+          "lego_count": 1
+        },
+        {
+          "known": "I know someone",
+          "target": "我认识一个人",
+          "lego_count": 2
+        },
+        {
+          "known": "I met a young man",
+          "target": "我遇到一个年轻男人",
+          "lego_count": 3
+        },
+        {
+          "known": "that woman would help you",
+          "target": "那个女人会帮助你",
+          "lego_count": 3
+        },
+        {
+          "known": "I know an old man who can help",
+          "target": "我认识一个能帮助的老男人",
+          "lego_count": 4
+        },
+        {
+          "known": "that man wants to ask for help",
+          "target": "那个男人想寻求帮助",
+          "lego_count": 4
+        },
+        {
+          "known": "I know a young woman who wants to ask for help",
+          "target": "我认识一个想寻求帮助的年轻女人",
+          "lego_count": 5
+        },
+        {
+          "known": "that man would ask for help if he could",
+          "target": "如果那个男人能，他会寻求帮助",
+          "lego_count": 5
+        },
+        {
+          "known": "I met someone who wanted to ask for help",
+          "target": "我遇到一个想寻求帮助的人",
+          "lego_count": 5
+        },
+        {
+          "known": "he wanted to tell me to ask for help",
+          "target": "他想告诉我寻求帮助",
+          "lego_count": 5
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0231L04",
+        "seed_context": {
+          "known": "I know an old man who wanted to ask for help.",
+          "target": "我认识一个想寻求帮助的老男人。"
+        }
+      }
+    }
+  ],
+  "_stats": {
+    "baskets_generated": 1,
+    "total_phrases": 10,
+    "generated_at": "2025-11-17T23:09:01.140Z"
+  },
+  "S0231L01": {
+    "lego": [
+      "I know",
+      "我认识"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "I know",
+        "我认识",
+        null,
+        1
+      ],
+      [
+        "I know him",
+        "我认识他",
+        null,
+        1
+      ],
+      [
+        "I know a man",
+        "我认识一个男人",
+        null,
+        2
+      ],
+      [
+        "I know that woman",
+        "我认识那个女人",
+        null,
+        2
+      ],
+      [
+        "I know a young man",
+        "我认识一个年轻男人",
+        null,
+        3
+      ],
+      [
+        "I know an old woman",
+        "我认识一个老女人",
+        null,
+        3
+      ],
+      [
+        "I know a man who wants to help",
+        "我认识一个想帮助的男人",
+        null,
+        5
+      ],
+      [
+        "I know that woman would help you",
+        "我知道那个女人会帮助你",
+        null,
+        5
+      ],
+      [
+        "I know a young man who works",
+        "我认识一个工作的年轻男人",
+        null,
+        5
+      ],
+      [
+        "I know an old man who wanted help",
+        "我认识一个想要帮助的老男人",
+        null,
+        5
+      ]
+    ]
+  },
+  "S0231L02": {
+    "lego": [
+      "an old man",
+      "一个老男人"
+    ],
+    "type": "M",
+    "practice_phrases": [
+      [
+        "An old man",
+        "一个老男人",
+        null,
+        1
+      ],
+      [
+        "An old woman",
+        "一个老女人",
+        null,
+        1
+      ],
+      [
+        "I know an old man",
+        "我认识一个老男人",
+        null,
+        2
+      ],
+      [
+        "That old man",
+        "那个老男人",
+        null,
+        2
+      ],
+      [
+        "An old man wants help",
+        "一个老男人想要帮助",
+        null,
+        3
+      ],
+      [
+        "An old man would help you",
+        "一个老男人会帮助你",
+        null,
+        3
+      ],
+      [
+        "I know an old man who wants help",
+        "我认识一个想要帮助的老男人",
+        null,
+        5
+      ],
+      [
+        "An old man wants to ask for help",
+        "一个老男人想寻求帮助",
+        null,
+        5
+      ],
+      [
+        "That old man would help you tomorrow",
+        "那个老男人明天会帮助你",
+        null,
+        5
+      ],
+      [
+        "An old man is trying to help me",
+        "一个老男人想帮助我",
+        null,
+        4
+      ]
+    ]
+  }
+}

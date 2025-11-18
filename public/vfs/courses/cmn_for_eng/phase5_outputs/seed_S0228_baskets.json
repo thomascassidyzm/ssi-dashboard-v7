@@ -1,0 +1,217 @@
+{
+  "legos": {
+    "S0228L01": {
+      "lego": [
+        "that man has just started",
+        "那个男人刚开始"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "that man has just started",
+          "那个男人刚开始",
+          null,
+          1
+        ],
+        [
+          "just started",
+          "刚开始",
+          null,
+          1
+        ],
+        [
+          "that man has just started learning",
+          "那个男人刚开始学习",
+          null,
+          3
+        ],
+        [
+          "that man has just started now",
+          "那个男人现在刚开始",
+          null,
+          3
+        ],
+        [
+          "that man has just started to help me",
+          "那个男人刚开始帮助我",
+          null,
+          4
+        ],
+        [
+          "that man has just started watching television",
+          "那个男人刚开始看电视",
+          null,
+          4
+        ],
+        [
+          "that man has just started to learn something new",
+          "那个男人刚开始学习一些新的东西",
+          null,
+          6
+        ],
+        [
+          "that man has just started trying to help",
+          "那个男人刚开始试着帮助",
+          null,
+          5
+        ],
+        [
+          "that man has just started to ask questions",
+          "那个男人刚开始问问题",
+          null,
+          4
+        ],
+        [
+          "that man has just started to relax for a while",
+          "那个男人刚开始放松一会儿",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0228L01",
+        "seed_context": {
+          "known": "That man has just started to practise speaking.",
+          "target": "那个男人刚开始练习说话。"
+        }
+      },
+      "components": [
+        [
+          "那个",
+          "that"
+        ],
+        [
+          "男人",
+          "man"
+        ],
+        [
+          "刚",
+          "just"
+        ],
+        [
+          "开始",
+          "started"
+        ]
+      ]
+    },
+    "S0228L02": {
+      "lego": [
+        "just started to practise speaking",
+        "刚开始练习说话"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0228L01",
+          "known": "that man has just started",
+          "target": "那个男人刚开始",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "just started to practise speaking",
+          "刚开始练习说话",
+          null,
+          1
+        ],
+        [
+          "practise speaking",
+          "练习说话",
+          null,
+          1
+        ],
+        [
+          "I just started to practise speaking",
+          "我刚开始练习说话",
+          null,
+          3
+        ],
+        [
+          "just started to practise speaking now",
+          "现在刚开始练习说话",
+          null,
+          3
+        ],
+        [
+          "he just started to practise speaking Chinese",
+          "他刚开始练习说中文",
+          null,
+          4
+        ],
+        [
+          "I want to practise speaking",
+          "我想练习说话",
+          null,
+          3
+        ],
+        [
+          "that man has just started to practise speaking",
+          "那个男人刚开始练习说话",
+          null,
+          4
+        ],
+        [
+          "I'm trying to practise speaking a bit",
+          "我在试着练习说话一点",
+          null,
+          5
+        ],
+        [
+          "I want to practise speaking every day",
+          "我想每天练习说话",
+          null,
+          4
+        ],
+        [
+          "I want to practise speaking something new",
+          "我想练习说一些新的东西",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0228L02",
+        "seed_context": {
+          "known": "That man has just started to practise speaking.",
+          "target": "那个男人刚开始练习说话。"
+        }
+      },
+      "components": [
+        [
+          "刚",
+          "just"
+        ],
+        [
+          "开始",
+          "started"
+        ],
+        [
+          "练习",
+          "to practise"
+        ],
+        [
+          "说话",
+          "speaking"
+        ]
+      ]
+    }
+  }
+}

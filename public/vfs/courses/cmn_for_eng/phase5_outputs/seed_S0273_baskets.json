@@ -6,12 +6,12 @@
         "我有"
       ],
       "type": "M",
-      "current_seed_legos_available": [],
       "is_final_lego": false,
+      "current_seed_earlier_legos": [],
       "practice_phrases": [
         [
-          "I have coffee.",
-          "我有咖啡。",
+          "I have.",
+          "我有。",
           null,
           1
         ],
@@ -22,68 +22,69 @@
           2
         ],
         [
-          "I have two emails.",
-          "我有两封电子邮件。",
-          null,
-          2
-        ],
-        [
           "I have an old friend.",
           "我有一个老朋友。",
           null,
           3
         ],
         [
-          "I have that man's email.",
-          "我有那个男人的电子邮件。",
+          "I have two emails.",
+          "我有两封电子邮件。",
           null,
           3
         ],
         [
-          "I have something important to say.",
-          "我有一些重要的话要说。",
+          "I have your email.",
+          "我有你的电子邮件。",
+          null,
+          3
+        ],
+        [
+          "I have your father's email.",
+          "我有你爸爸的电子邮件。",
           null,
           4
         ],
         [
-          "I have a friend coming with us.",
-          "我有一个朋友和我们一起来。",
-          null,
-          4
-        ],
-        [
-          "I have heard from your father.",
-          "我收到了你爸爸的消息。",
+          "I have an old friend of my father.",
+          "我有我爸爸的一个老朋友。",
           null,
           5
         ],
         [
-          "I have been waiting for your email.",
-          "我一直在等你的电子邮件。",
+          "I have a friend coming next month.",
+          "我有一个朋友下个月来。",
           null,
           5
         ],
         [
-          "I have talked to that old friend of my father.",
-          "我和我爸爸的那个老朋友说过话。",
+          "I have a friend who is worried.",
+          "我有一个担心的朋友。",
           null,
-          7
+          5
+        ],
+        [
+          "I have heard from your friend.",
+          "我收到了你朋友的消息。",
+          null,
+          5
         ]
       ],
       "phrase_distribution": {
-        "really_short_1_2": 3,
-        "quite_short_3": 2,
-        "longer_4_5": 4,
-        "long_6_plus": 1
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
       },
+      "target_phrase_count": 10,
       "components": [
         [
-          null,
-          null
+          "我",
+          "I"
         ],
         [
-          null,
-          null
+          "有",
+          "have"
         ]
       ]
     },
@@ -93,23 +94,19 @@
         "太多"
       ],
       "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I have",
-          "我有"
-        ]
-      ],
       "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0273L03",
+          "known": "I have",
+          "target": "我有",
+          "type": "M"
+        }
+      ],
       "practice_phrases": [
         [
-          "Too much coffee.",
-          "太多咖啡。",
-          null,
-          1
-        ],
-        [
-          "That's too much.",
-          "那太多了。",
+          "Too much.",
+          "太多。",
           null,
           1
         ],
@@ -120,26 +117,26 @@
           2
         ],
         [
-          "Too much to say.",
-          "太多要说。",
+          "She has too much.",
+          "她有太多。",
           null,
           2
         ],
         [
-          "She has too much coffee.",
-          "她有太多咖啡。",
+          "That's too much.",
+          "那太多了。",
           null,
           2
         ],
         [
-          "I have too much to do.",
-          "我有太多要做。",
+          "My father has too much.",
+          "我爸爸有太多。",
           null,
           3
         ],
         [
-          "That man has too much.",
-          "那个男人有太多。",
+          "Your friend has too much.",
+          "你朋友有太多。",
           null,
           3
         ],
@@ -150,32 +147,39 @@
           4
         ],
         [
-          "She sent me too much email.",
-          "她给我发了太多电子邮件。",
+          "She has too much next month.",
+          "她下个月有太多。",
           null,
           4
         ],
         [
-          "You mean I have too much coming next month?",
-          "你指的是我下个月有太多要来吗？",
+          "Your father has too much next month.",
+          "你爸爸下个月有太多。",
           null,
-          6
+          5
+        ],
+        [
+          "I'm worried your friend has too much.",
+          "我担心你朋友有太多。",
+          null,
+          5
         ]
       ],
       "phrase_distribution": {
-        "really_short_1_2": 4,
-        "quite_short_3": 2,
-        "longer_4_5": 3,
-        "long_6_plus": 1
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
       },
+      "target_phrase_count": 10,
       "components": [
         [
-          null,
-          null
+          "太",
+          "too"
         ],
         [
-          null,
-          null
+          "多",
+          "much/many"
         ]
       ]
     },
@@ -185,17 +189,21 @@
         "太多工作"
       ],
       "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I have",
-          "我有"
-        ],
-        [
-          "too much",
-          "太多"
-        ]
-      ],
       "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0273L03",
+          "known": "I have",
+          "target": "我有",
+          "type": "M"
+        },
+        {
+          "id": "S0273L04",
+          "known": "too much",
+          "target": "太多",
+          "type": "M"
+        }
+      ],
       "practice_phrases": [
         [
           "Too much work.",
@@ -206,12 +214,6 @@
         [
           "I have too much work.",
           "我有太多工作。",
-          null,
-          2
-        ],
-        [
-          "That's too much work.",
-          "那太多工作。",
           null,
           2
         ],
@@ -228,8 +230,14 @@
           3
         ],
         [
+          "Your friend has too much work.",
+          "你朋友有太多工作。",
+          null,
+          3
+        ],
+        [
           "That sounds like too much work.",
-          "那听起来太多工作。",
+          "那听起来是太多工作。",
           null,
           3
         ],
@@ -240,38 +248,39 @@
           4
         ],
         [
-          "Coming with us sounds like too much work.",
-          "和我们一起来听起来太多工作。",
+          "She has too much work next month.",
+          "她下个月有太多工作。",
           null,
           4
         ],
         [
-          "She sent me an email about too much work.",
-          "她给我发了一封关于太多工作的电子邮件。",
+          "Coming with us sounds like too much work.",
+          "和我们一起来听起来是太多工作。",
           null,
-          6
+          5
         ],
         [
-          "I don't want to wait because I have too much work.",
-          "我不想等因为我有太多工作。",
+          "Your father has too much work next month.",
+          "你爸爸下个月有太多工作。",
           null,
-          7
+          5
         ]
       ],
       "phrase_distribution": {
-        "really_short_1_2": 3,
-        "quite_short_3": 2,
-        "longer_4_5": 2,
-        "long_6_plus": 3
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
       },
+      "target_phrase_count": 10,
       "components": [
         [
-          null,
-          null
+          "太多",
+          "too much"
         ],
         [
-          null,
-          null
+          "工作",
+          "work"
         ]
       ]
     },
@@ -281,22 +290,34 @@
         "有太多工作"
       ],
       "type": "M",
-      "current_seed_legos_available": [
-        [
-          "I have",
-          "我有"
-        ],
-        [
-          "too much",
-          "太多"
-        ],
-        [
-          "too much work",
-          "太多工作"
-        ]
-      ],
       "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0273L03",
+          "known": "I have",
+          "target": "我有",
+          "type": "M"
+        },
+        {
+          "id": "S0273L04",
+          "known": "too much",
+          "target": "太多",
+          "type": "M"
+        },
+        {
+          "id": "S0273L06",
+          "known": "too much work",
+          "target": "太多工作",
+          "type": "M"
+        }
+      ],
       "practice_phrases": [
+        [
+          "Have too much work.",
+          "有太多工作。",
+          null,
+          1
+        ],
         [
           "I have too much work.",
           "我有太多工作。",
@@ -306,12 +327,6 @@
         [
           "She has too much work.",
           "她有太多工作。",
-          null,
-          2
-        ],
-        [
-          "You have too much work.",
-          "你有太多工作。",
           null,
           2
         ],
@@ -334,22 +349,22 @@
           4
         ],
         [
-          "That man has too much work next month.",
-          "那个男人下个月有太多工作。",
+          "She has too much work next month.",
+          "她下个月有太多工作。",
           null,
           4
         ],
         [
-          "I have too much work to come with you.",
-          "我有太多工作不能和你一起来。",
+          "That man has too much work.",
+          "那个男人有太多工作。",
           null,
-          5
+          3
         ],
         [
-          "She sent me an email saying she has too much work.",
-          "她给我发了一封电子邮件说她有太多工作。",
+          "I'm worried your friend has too much work.",
+          "我担心你朋友有太多工作。",
           null,
-          6
+          5
         ],
         [
           "No unfortunately I have too much work.",
@@ -359,23 +374,24 @@
         ]
       ],
       "phrase_distribution": {
-        "really_short_1_2": 3,
-        "quite_short_3": 2,
-        "longer_4_5": 3,
-        "long_6_plus": 2
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
       },
+      "target_phrase_count": 10,
       "components": [
         [
-          null,
-          null
+          "有",
+          "have"
         ],
         [
-          null,
-          null
+          "太多",
+          "too much"
         ],
         [
-          null,
-          null
+          "工作",
+          "work"
         ]
       ]
     }

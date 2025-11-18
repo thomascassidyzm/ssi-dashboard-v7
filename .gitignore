@@ -75,6 +75,25 @@ scripts/AGENT*_COMPLETION_REPORT.md
 scripts/generate_agent*.cjs
 scripts/generate_agent*.py
 
+# Patch-specific temporary files (Patch 5 and similar batch work)
+scripts/patch5_*.json
+scripts/verify_patch5_*.cjs
+scripts/create_patch5_*.cjs
+scripts/generate_cmn_batch*.py
+scripts/generate_cmn_batch*.cjs
+scripts/verify_cmn_batch*.py
+scripts/grammar_check_cmn_*.py
+scripts/fix_cmn_batch*.cjs
+scripts/generate_batch*_cmn_baskets.py
+scripts/verify_batch*.cjs
+scripts/BATCH*_COMPLETION_REPORT.txt
+scripts/batch*_summary*.py
+scripts/batch*_summary*.txt
+scripts/batch*_summary*.md
+scripts/batch*_SUMMARY*.md
+scripts/batch_*_grammar_check.md
+scripts/cmn_batch*_generation_report.md
+
 # Phase 5: Full outputs with metadata (local debugging only)
 public/vfs/courses/*/phase5_outputs/*_FULL.json
 

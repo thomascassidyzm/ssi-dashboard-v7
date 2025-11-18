@@ -1,0 +1,691 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0243",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "I'm going to ask for the same thing to eat.",
+    "target": "我会要同样的东西吃。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0233",
+      "known": "I know a young woman who knows your sister.",
+      "target": "我认识一个认识你妹妹的年轻女人。"
+    },
+    {
+      "seed_id": "S0234",
+      "known": "I met someone last night who works with your brother.",
+      "target": "我昨晚遇到一个和你弟弟一起工作的人。"
+    },
+    {
+      "seed_id": "S0235",
+      "known": "I met someone who said that he wanted to tell you something.",
+      "target": "我遇到一个说他想告诉你一些事情的人。"
+    },
+    {
+      "seed_id": "S0236",
+      "known": "I know someone who said that she was going to try to help.",
+      "target": "我认识一个说她会努力帮助的人。"
+    },
+    {
+      "seed_id": "S0237",
+      "known": "He wanted me to tell you before the weekend.",
+      "target": "他想让我在周末之前告诉你。"
+    },
+    {
+      "seed_id": "S0238",
+      "known": "He wanted you to tell me yesterday.",
+      "target": "他想让你昨天告诉我。"
+    },
+    {
+      "seed_id": "S0239",
+      "known": "My mother likes to read.",
+      "target": "我妈妈喜欢阅读。"
+    },
+    {
+      "seed_id": "S0240",
+      "known": "My father doesn't like to stop talking.",
+      "target": "我爸爸不喜欢停止说话。"
+    },
+    {
+      "seed_id": "S0241",
+      "known": "I don't want to give it to him.",
+      "target": "我不想把它给他。"
+    },
+    {
+      "seed_id": "S0242",
+      "known": "I want to give her more time.",
+      "target": "我想给她更多时间。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0234L03",
+      "known": "met someone",
+      "target": "遇到一个人",
+      "type": "M"
+    },
+    {
+      "id": "S0234L04",
+      "known": "works with your brother",
+      "target": "和你弟弟一起工作",
+      "type": "M"
+    },
+    {
+      "id": "S0234L05",
+      "known": "your brother",
+      "target": "你弟弟",
+      "type": "M"
+    },
+    {
+      "id": "S0235L01",
+      "known": "I met",
+      "target": "我遇到",
+      "type": "M"
+    },
+    {
+      "id": "S0235L03",
+      "known": "said that he wanted",
+      "target": "说他想",
+      "type": "M"
+    },
+    {
+      "id": "S0235L04",
+      "known": "wanted to tell you",
+      "target": "想告诉你",
+      "type": "M"
+    },
+    {
+      "id": "S0235L05",
+      "known": "tell you something",
+      "target": "告诉你一些事情",
+      "type": "M"
+    },
+    {
+      "id": "S0236L02",
+      "known": "know someone",
+      "target": "认识一个人",
+      "type": "M"
+    },
+    {
+      "id": "S0236L03",
+      "known": "said that she was going to",
+      "target": "说她会",
+      "type": "M"
+    },
+    {
+      "id": "S0236L04",
+      "known": "was going to try to help",
+      "target": "会努力帮助",
+      "type": "M"
+    },
+    {
+      "id": "S0236L05",
+      "known": "try to help",
+      "target": "努力帮助",
+      "type": "M"
+    },
+    {
+      "id": "S0237L01",
+      "known": "he wanted me to",
+      "target": "他想让我",
+      "type": "M"
+    },
+    {
+      "id": "S0237L02",
+      "known": "wanted me to tell you",
+      "target": "想让我告诉你",
+      "type": "M"
+    },
+    {
+      "id": "S0237L03",
+      "known": "me to tell you",
+      "target": "让我告诉你",
+      "type": "M"
+    },
+    {
+      "id": "S0237L04",
+      "known": "before the weekend",
+      "target": "在周末之前",
+      "type": "M"
+    },
+    {
+      "id": "S0238L01",
+      "known": "he wanted you to",
+      "target": "他想让你",
+      "type": "M"
+    },
+    {
+      "id": "S0238L02",
+      "known": "wanted you to tell me",
+      "target": "想让你告诉我",
+      "type": "M"
+    },
+    {
+      "id": "S0238L03",
+      "known": "you to tell me",
+      "target": "让你告诉我",
+      "type": "M"
+    },
+    {
+      "id": "S0239L02",
+      "known": "likes to read",
+      "target": "喜欢阅读",
+      "type": "M"
+    },
+    {
+      "id": "S0240L01",
+      "known": "my father",
+      "target": "我爸爸",
+      "type": "M"
+    },
+    {
+      "id": "S0240L02",
+      "known": "doesn't like",
+      "target": "不喜欢",
+      "type": "M"
+    },
+    {
+      "id": "S0240L03",
+      "known": "like to stop talking",
+      "target": "喜欢停止说话",
+      "type": "M"
+    },
+    {
+      "id": "S0240L04",
+      "known": "stop talking",
+      "target": "停止说话",
+      "type": "M"
+    },
+    {
+      "id": "S0241L02",
+      "known": "don't want",
+      "target": "不想",
+      "type": "M"
+    },
+    {
+      "id": "S0241L03",
+      "known": "give it to him",
+      "target": "把它给他",
+      "type": "M"
+    },
+    {
+      "id": "S0241L04",
+      "known": "give him",
+      "target": "给他",
+      "type": "M"
+    },
+    {
+      "id": "S0242L01",
+      "known": "I want",
+      "target": "我想",
+      "type": "M"
+    },
+    {
+      "id": "S0242L02",
+      "known": "give her",
+      "target": "给她",
+      "type": "M"
+    },
+    {
+      "id": "S0242L03",
+      "known": "more time",
+      "target": "更多时间",
+      "type": "M"
+    },
+    {
+      "id": "S0242L04",
+      "known": "give her more time",
+      "target": "给她更多时间",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0243L01": {
+      "lego": [
+        "I'm going to ask for",
+        "我会要"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0243L01",
+        "seed_context": {
+          "known": "I'm going to ask for the same thing to eat.",
+          "target": "我会要同样的东西吃。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "会",
+          "will/going to"
+        ],
+        [
+          "要",
+          "ask for/want"
+        ]
+      ]
+    },
+    "S0243L02": {
+      "lego": [
+        "going to ask for",
+        "会要"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0243L01",
+          "known": "I'm going to ask for",
+          "target": "我会要",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0243L02",
+        "seed_context": {
+          "known": "I'm going to ask for the same thing to eat.",
+          "target": "我会要同样的东西吃。"
+        }
+      },
+      "components": [
+        [
+          "会",
+          "will/going to"
+        ],
+        [
+          "要",
+          "ask for/want"
+        ]
+      ]
+    },
+    "S0243L03": {
+      "lego": [
+        "the same thing",
+        "同样的东西"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0243L01",
+          "known": "I'm going to ask for",
+          "target": "我会要",
+          "type": "M"
+        },
+        {
+          "id": "S0243L02",
+          "known": "going to ask for",
+          "target": "会要",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "the same thing",
+          "同样的东西",
+          null,
+          1
+        ],
+        [
+          "I want the same thing",
+          "我想要同样的东西",
+          null,
+          2
+        ],
+        [
+          "She likes the same thing",
+          "她喜欢同样的东西",
+          null,
+          3
+        ],
+        [
+          "I'm going to ask for the same thing",
+          "我会要同样的东西",
+          null,
+          3
+        ],
+        [
+          "I don't want the same thing",
+          "我不想要同样的东西",
+          null,
+          4
+        ],
+        [
+          "My father likes the same thing",
+          "我爸爸喜欢同样的东西",
+          null,
+          4
+        ],
+        [
+          "I want to give her the same thing",
+          "我想给她同样的东西",
+          null,
+          5
+        ],
+        [
+          "She wanted the same thing yesterday",
+          "她昨天想要同样的东西",
+          null,
+          5
+        ],
+        [
+          "I'm going to ask for the same thing to eat",
+          "我会要同样的东西吃",
+          null,
+          5
+        ],
+        [
+          "I know someone who wants the same thing",
+          "我认识一个想要同样的东西的人",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0243L03",
+        "seed_context": {
+          "known": "I'm going to ask for the same thing to eat.",
+          "target": "我会要同样的东西吃。"
+        }
+      },
+      "components": [
+        [
+          "同样",
+          "same"
+        ],
+        [
+          "的",
+          "DE"
+        ],
+        [
+          "东西",
+          "thing"
+        ]
+      ]
+    },
+    "S0243L04": {
+      "lego": [
+        "thing to eat",
+        "东西吃"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0243L01",
+          "known": "I'm going to ask for",
+          "target": "我会要",
+          "type": "M"
+        },
+        {
+          "id": "S0243L02",
+          "known": "going to ask for",
+          "target": "会要",
+          "type": "M"
+        },
+        {
+          "id": "S0243L03",
+          "known": "the same thing",
+          "target": "同样的东西",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "thing to eat",
+          "东西吃",
+          null,
+          1
+        ],
+        [
+          "I want something to eat",
+          "我想要东西吃",
+          null,
+          2
+        ],
+        [
+          "She likes things to eat",
+          "她喜欢东西吃",
+          null,
+          3
+        ],
+        [
+          "I'm going to ask for something to eat",
+          "我会要东西吃",
+          null,
+          3
+        ],
+        [
+          "I don't want anything to eat",
+          "我不想要东西吃",
+          null,
+          4
+        ],
+        [
+          "My mother wants something to eat",
+          "我妈妈想要东西吃",
+          null,
+          4
+        ],
+        [
+          "I want to give him something to eat",
+          "我想给他东西吃",
+          null,
+          5
+        ],
+        [
+          "She wanted something to eat yesterday",
+          "她昨天想要东西吃",
+          null,
+          5
+        ],
+        [
+          "I'm going to ask for more things to eat",
+          "我会要更多东西吃",
+          null,
+          5
+        ],
+        [
+          "I know someone who has things to eat",
+          "我认识一个有东西吃的人",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0243L04",
+        "seed_context": {
+          "known": "I'm going to ask for the same thing to eat.",
+          "target": "我会要同样的东西吃。"
+        }
+      },
+      "components": [
+        [
+          "东西",
+          "thing"
+        ],
+        [
+          "吃",
+          "to eat"
+        ]
+      ]
+    },
+    "S0243L05": {
+      "lego": [
+        "the same thing to eat",
+        "同样的东西吃"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0243L01",
+          "known": "I'm going to ask for",
+          "target": "我会要",
+          "type": "M"
+        },
+        {
+          "id": "S0243L02",
+          "known": "going to ask for",
+          "target": "会要",
+          "type": "M"
+        },
+        {
+          "id": "S0243L03",
+          "known": "the same thing",
+          "target": "同样的东西",
+          "type": "M"
+        },
+        {
+          "id": "S0243L04",
+          "known": "thing to eat",
+          "target": "东西吃",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "the same thing to eat",
+          "同样的东西吃",
+          null,
+          1
+        ],
+        [
+          "I want the same thing to eat",
+          "我想要同样的东西吃",
+          null,
+          2
+        ],
+        [
+          "She likes the same thing to eat",
+          "她喜欢同样的东西吃",
+          null,
+          3
+        ],
+        [
+          "I'm going to ask for the same thing to eat",
+          "我会要同样的东西吃",
+          null,
+          3
+        ],
+        [
+          "I don't want the same thing to eat",
+          "我不想要同样的东西吃",
+          null,
+          4
+        ],
+        [
+          "My brother wants the same thing to eat",
+          "我弟弟想要同样的东西吃",
+          null,
+          4
+        ],
+        [
+          "I want to give her the same thing to eat",
+          "我想给她同样的东西吃",
+          null,
+          5
+        ],
+        [
+          "She wanted the same thing to eat yesterday",
+          "她昨天想要同样的东西吃",
+          null,
+          5
+        ],
+        [
+          "I'm going to ask for the same thing to eat today",
+          "我今天会要同样的东西吃",
+          null,
+          6
+        ],
+        [
+          "I know someone who wants the same thing to eat",
+          "我认识一个想要同样的东西吃的人",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0243L05",
+        "seed_context": {
+          "known": "I'm going to ask for the same thing to eat.",
+          "target": "我会要同样的东西吃。"
+        }
+      },
+      "components": [
+        [
+          "同样",
+          "same"
+        ],
+        [
+          "的",
+          "DE"
+        ],
+        [
+          "东西",
+          "thing"
+        ],
+        [
+          "吃",
+          "to eat"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0243.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}
