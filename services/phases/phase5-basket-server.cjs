@@ -459,7 +459,7 @@ app.post('/start', async (req, res) => {
       legoData,        // ← NEW: Embedded LEGO data for web agents
       missingLegos,     // ← NEW: List of LEGOs to generate
       stagingOnly       // ← Pass through staging flag
-    }, baseCourseDir, browsers, agents, seedsPerAgentConfig);
+    }, baseCourseDir, browsers, agents, seedsPerAgentConfig, job);
 
     res.json({
       success: true,
@@ -739,7 +739,7 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
  *
  * Migrated from automation_server.cjs lines 2272-2293
  */
-async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCount, agentsPerWindow, seedsPerAgent) {
+async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCount, agentsPerWindow, seedsPerAgent, job = null) {
   const { target, known, startSeed, endSeed, legoIds, isRegeneration } = params;
 
   // Handle both regular mode (seed range) and regeneration mode (lego IDs)
@@ -753,7 +753,7 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
   const config = loadConfig();
   const spawnDelay = config.phase5_basket_generation.browser_spawn_delay_ms || 5000;
 
-  const job = activeJobs.get(courseCode);
+  // job parameter passed from /start endpoint (or null if called standalone)
   let currentSeed = startSeed;
   let currentLegoIndex = 0;
 
