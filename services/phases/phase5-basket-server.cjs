@@ -171,8 +171,8 @@ app.post('/start', async (req, res) => {
   // Detect segment range and get base course code
   const segmentMatch = courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/);
   const baseCourseCode = segmentMatch ? segmentMatch[1] : courseCode;
-  const baseCourseDir = path.join(VFS_ROOT, baseCourseCode);
-  const courseDir = path.join(VFS_ROOT, courseCode);
+  const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', baseCourseCode);
+  const courseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
 
   if (segmentMatch) {
     console.log(`[Phase 5] Segment range detected: ${courseCode}`);
@@ -952,7 +952,7 @@ app.post('/regenerate', async (req, res) => {
   console.log(`[Phase 5] LEGO_IDs to regenerate: ${legoIds.length}`);
   console.log(`[Phase 5] Target: ${target}, Known: ${known}`);
 
-  const baseCourseDir = path.join(VFS_ROOT, courseCode);
+  const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
 
   // Check prerequisites
   const seedPairsPath = path.join(baseCourseDir, 'seed_pairs.json');
@@ -1165,7 +1165,7 @@ app.post('/launch-12-masters', async (req, res) => {
   console.log(`[Phase 5] Course: ${courseCode}`);
   console.log(`[Phase 5] Target: ${target}, Known: ${known}`);
 
-  const baseCourseDir = path.join(VFS_ROOT, courseCode);
+  const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
 
   try {
     // STEP 1: Run detection to find missing baskets
