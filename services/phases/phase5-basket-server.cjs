@@ -808,7 +808,10 @@ You are responsible for generating baskets for all LEGOs in seeds ${startSeed}-$
 - ❌ Merge files (saved to staging, reviewed separately)
 
 **Worker prompt template:**
-Use the docs at \`docs/prompts/phase5_worker_prompt_with_staging.md\` as the template for each sub-agent.
+Use \`docs/prompts/phase5_worker_prompt_v2_embedded.md\` as the template for each sub-agent.
+
+⛔ **CRITICAL**: This template includes the full Phase 5 intelligence guidance embedded directly.
+The template has a HUGE "NO SCRIPTS" warning at the top. Make sure sub-agents read and follow it!
 
 ---
 
