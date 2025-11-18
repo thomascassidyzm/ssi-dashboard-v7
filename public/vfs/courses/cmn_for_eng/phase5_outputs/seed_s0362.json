@@ -1,0 +1,443 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0362",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "No he was rather quiet after you left.",
+    "target": "不，你离开后他相当安静。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0352",
+      "known": "Even if he wanted to he wouldn't be able to.",
+      "target": "即使他想，他也做不到。"
+    },
+    {
+      "seed_id": "S0353",
+      "known": "She needed to run around the field.",
+      "target": "她需要绕着田地跑。"
+    },
+    {
+      "seed_id": "S0354",
+      "known": "He didn't need to appear angry.",
+      "target": "他不需要显得生气。"
+    },
+    {
+      "seed_id": "S0355",
+      "known": "Did she need to talk to that woman you know?",
+      "target": "她需要和你认识的那个女人说话吗？"
+    },
+    {
+      "seed_id": "S0356",
+      "known": "Yes they had something important to discuss.",
+      "target": "是的，他们有重要的事情要讨论。"
+    },
+    {
+      "seed_id": "S0357",
+      "known": "No she just wanted to send her a message.",
+      "target": "不，她只是想给她发个消息。"
+    },
+    {
+      "seed_id": "S0358",
+      "known": "Your friend said that she couldn't reach the top.",
+      "target": "你的朋友说她够不到顶部。"
+    },
+    {
+      "seed_id": "S0359",
+      "known": "Your friend said that he could turn left.",
+      "target": "你的朋友说他可以向左转。"
+    },
+    {
+      "seed_id": "S0360",
+      "known": "Did your friend say anything else?",
+      "target": "你的朋友还说了别的什么吗？"
+    },
+    {
+      "seed_id": "S0361",
+      "known": "He was quiet.",
+      "target": "他很安静。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0356L06",
+      "known": "something important",
+      "target": "重要的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0356L07",
+      "known": "discuss",
+      "target": "讨论",
+      "type": "M"
+    },
+    {
+      "id": "S0356L08",
+      "known": "to discuss",
+      "target": "要讨论",
+      "type": "M"
+    },
+    {
+      "id": "S0356L09",
+      "known": "something to discuss",
+      "target": "事情要讨论",
+      "type": "M"
+    },
+    {
+      "id": "S0357L01",
+      "known": "just",
+      "target": "只是",
+      "type": "M"
+    },
+    {
+      "id": "S0357L02",
+      "known": "just wanted to",
+      "target": "只是想",
+      "type": "M"
+    },
+    {
+      "id": "S0357L03",
+      "known": "she just wanted to",
+      "target": "她只是想",
+      "type": "M"
+    },
+    {
+      "id": "S0357L04",
+      "known": "message",
+      "target": "消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L05",
+      "known": "a message",
+      "target": "个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L06",
+      "known": "send",
+      "target": "发",
+      "type": "A"
+    },
+    {
+      "id": "S0357L07",
+      "known": "send a message",
+      "target": "发个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0357L08",
+      "known": "send her",
+      "target": "给她发",
+      "type": "M"
+    },
+    {
+      "id": "S0357L09",
+      "known": "send her a message",
+      "target": "给她发个消息",
+      "type": "M"
+    },
+    {
+      "id": "S0358L01",
+      "known": "your",
+      "target": "你的",
+      "type": "M"
+    },
+    {
+      "id": "S0358L03",
+      "known": "your friend",
+      "target": "你的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0358L04",
+      "known": "say",
+      "target": "说",
+      "type": "A"
+    },
+    {
+      "id": "S0358L05",
+      "known": "couldn't reach",
+      "target": "够不到",
+      "type": "M"
+    },
+    {
+      "id": "S0358L06",
+      "known": "she couldn't reach",
+      "target": "她够不到",
+      "type": "M"
+    },
+    {
+      "id": "S0358L07",
+      "known": "top",
+      "target": "顶部",
+      "type": "M"
+    },
+    {
+      "id": "S0358L08",
+      "known": "couldn't reach the top",
+      "target": "够不到顶部",
+      "type": "M"
+    },
+    {
+      "id": "S0359L02",
+      "known": "he could",
+      "target": "他可以",
+      "type": "M"
+    },
+    {
+      "id": "S0359L03",
+      "known": "left",
+      "target": "左",
+      "type": "A"
+    },
+    {
+      "id": "S0359L04",
+      "known": "turn",
+      "target": "转",
+      "type": "A"
+    },
+    {
+      "id": "S0359L05",
+      "known": "turn left",
+      "target": "左转",
+      "type": "M"
+    },
+    {
+      "id": "S0359L06",
+      "known": "turn left",
+      "target": "向左转",
+      "type": "M"
+    },
+    {
+      "id": "S0360L01",
+      "known": "said",
+      "target": "说了",
+      "type": "M"
+    },
+    {
+      "id": "S0360L02",
+      "known": "also said",
+      "target": "还说了",
+      "type": "M"
+    },
+    {
+      "id": "S0360L03",
+      "known": "else",
+      "target": "别的",
+      "type": "M"
+    },
+    {
+      "id": "S0360L05",
+      "known": "anything else",
+      "target": "别的什么",
+      "type": "M"
+    },
+    {
+      "id": "S0361L01",
+      "known": "he was quiet",
+      "target": "他很安静",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0362L02": {
+      "lego": [
+        "after you left",
+        "你离开后"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "After you left.",
+          "target": "你离开后。",
+          "lego_count": 1
+        },
+        {
+          "known": "He was quiet after you left.",
+          "target": "你离开后他很安静。",
+          "lego_count": 2
+        },
+        {
+          "known": "She sent a message after you left.",
+          "target": "你离开后她发了个消息。",
+          "lego_count": 3
+        },
+        {
+          "known": "Your friend said something after you left.",
+          "target": "你离开后你的朋友说了些话。",
+          "lego_count": 3
+        },
+        {
+          "known": "After you left, he could turn left.",
+          "target": "你离开后，他可以向左转。",
+          "lego_count": 4
+        },
+        {
+          "known": "She just wanted to discuss it after you left.",
+          "target": "你离开后她只是想讨论这事。",
+          "lego_count": 4
+        },
+        {
+          "known": "After you left, your friend said he couldn't reach the top.",
+          "target": "你离开后，你的朋友说他够不到顶部。",
+          "lego_count": 5
+        },
+        {
+          "known": "She just wanted to send her a message after you left.",
+          "target": "你离开后她只是想给她发个消息。",
+          "lego_count": 5
+        },
+        {
+          "known": "Did your friend say anything else after you left or did he stay quiet?",
+          "target": "你离开后你的朋友还说了别的什么，还是保持安静？",
+          "lego_count": 6
+        },
+        {
+          "known": "After you left, she said she had something important to discuss with him.",
+          "target": "你离开后，她说她有重要的事情要和他讨论。",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0362L02",
+        "seed_context": {
+          "known": "No he was rather quiet after you left.",
+          "target": "不，你离开后他相当安静。"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "离开",
+          "left/to leave"
+        ],
+        [
+          "后",
+          "after"
+        ]
+      ]
+    },
+    "S0362L03": {
+      "lego": [
+        "he was rather quiet",
+        "他相当安静"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0362L02",
+          "known": "after you left",
+          "target": "你离开后",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "He was rather quiet.",
+          "target": "他相当安静。",
+          "lego_count": 1
+        },
+        {
+          "known": "He was rather quiet after you left.",
+          "target": "你离开后他相当安静。",
+          "lego_count": 2
+        },
+        {
+          "known": "Your friend said he was rather quiet.",
+          "target": "你的朋友说他相当安静。",
+          "lego_count": 3
+        },
+        {
+          "known": "He was rather quiet but could turn left.",
+          "target": "他相当安静，但可以向左转。",
+          "lego_count": 3
+        },
+        {
+          "known": "She said he was rather quiet after you left.",
+          "target": "她说你离开后他相当安静。",
+          "lego_count": 4
+        },
+        {
+          "known": "He was rather quiet and couldn't reach the top.",
+          "target": "他相当安静，够不到顶部。",
+          "lego_count": 4
+        },
+        {
+          "known": "Your friend said he was rather quiet and just wanted to send a message.",
+          "target": "你的朋友说他相当安静，只是想发个消息。",
+          "lego_count": 5
+        },
+        {
+          "known": "After you left, he was rather quiet but had something important to discuss.",
+          "target": "你离开后，他相当安静，但有重要的事情要讨论。",
+          "lego_count": 5
+        },
+        {
+          "known": "Did your friend say he was rather quiet or did he say anything else after you left?",
+          "target": "你的朋友说他相当安静，还是你离开后说了别的什么？",
+          "lego_count": 6
+        },
+        {
+          "known": "She said he was rather quiet after you left and couldn't reach the top even if he wanted to.",
+          "target": "她说你离开后他相当安静，即使他想也够不到顶部。",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0362L03",
+        "seed_context": {
+          "known": "No he was rather quiet after you left.",
+          "target": "不，你离开后他相当安静。"
+        }
+      },
+      "components": [
+        [
+          "他",
+          "he"
+        ],
+        [
+          "相当",
+          "rather/quite"
+        ],
+        [
+          "安静",
+          "quiet"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0362.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_to_generate": 20,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

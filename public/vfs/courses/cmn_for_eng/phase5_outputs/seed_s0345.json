@@ -1,0 +1,241 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0345",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "Who said that he's not ready to leave yet.",
+    "target": "说他还没准备好离开的人。"
+  },
+  "legos": {
+    "S0345L01": {
+      "lego": [
+        "to leave",
+        "离开"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "To leave.",
+          "target": "离开。"
+        },
+        {
+          "known": "I want to leave.",
+          "target": "我想离开。"
+        },
+        {
+          "known": "He wants to leave now.",
+          "target": "他现在想离开。"
+        },
+        {
+          "known": "I think she wants to leave.",
+          "target": "我觉得她想离开。"
+        },
+        {
+          "known": "Do you want to leave the door open?",
+          "target": "你想离开时开着门吗？"
+        },
+        {
+          "known": "I'm sure he wants to leave.",
+          "target": "我确定他想离开。"
+        },
+        {
+          "known": "I met someone who wants to leave a few days ago.",
+          "target": "我几天前遇到一个想离开的人。"
+        },
+        {
+          "known": "Do you think she's happy to leave and continue to play?",
+          "target": "你觉得她很乐意离开并继续玩吗？"
+        },
+        {
+          "known": "I met someone a few days ago who said he wants to leave.",
+          "target": "我几天前遇到一个人说他想离开。"
+        },
+        {
+          "known": "I think the person who wants to leave is worried about the economy.",
+          "target": "我觉得想离开的人担心经济。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0345L03": {
+      "lego": [
+        "not ready to leave yet",
+        "还没准备好离开"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0345L01",
+          "known": "to leave",
+          "target": "离开",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Not ready to leave yet.",
+          "target": "还没准备好离开。"
+        },
+        {
+          "known": "I'm not ready to leave yet.",
+          "target": "我还没准备好离开。"
+        },
+        {
+          "known": "She's not ready to leave yet today.",
+          "target": "她今天还没准备好离开。"
+        },
+        {
+          "known": "I think I'm not ready to leave yet.",
+          "target": "我觉得我还没准备好离开。"
+        },
+        {
+          "known": "Do you think she's not ready to leave yet?",
+          "target": "你觉得她还没准备好离开吗？"
+        },
+        {
+          "known": "I'm sure she's not ready to leave yet.",
+          "target": "我确定她还没准备好离开。"
+        },
+        {
+          "known": "I met someone who's not ready to leave yet a few days ago.",
+          "target": "我几天前遇到一个还没准备好离开的人。"
+        },
+        {
+          "known": "Do you think she's not ready to leave yet and open the door?",
+          "target": "你觉得她还没准备好离开并打开门吗？"
+        },
+        {
+          "known": "I met someone who said she's not ready to leave yet a few days ago.",
+          "target": "我几天前遇到一个人说她还没准备好离开。"
+        },
+        {
+          "known": "I'm sure the person who's not ready to leave yet is worried about the economy.",
+          "target": "我确定还没准备好离开的人担心经济。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "还",
+          "yet/still"
+        ],
+        [
+          "没",
+          "not"
+        ],
+        [
+          "准备好",
+          "ready"
+        ],
+        [
+          "离开",
+          "to leave"
+        ]
+      ]
+    },
+    "S0345L04": {
+      "lego": [
+        "he's not ready to leave yet",
+        "他还没准备好离开"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0345L01",
+          "known": "to leave",
+          "target": "离开",
+          "type": "A"
+        },
+        {
+          "id": "S0345L03",
+          "known": "not ready to leave yet",
+          "target": "还没准备好离开",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "He's not ready to leave yet.",
+          "target": "他还没准备好离开。"
+        },
+        {
+          "known": "I think he's not ready to leave yet.",
+          "target": "我觉得他还没准备好离开。"
+        },
+        {
+          "known": "He's not ready to leave yet today.",
+          "target": "他今天还没准备好离开。"
+        },
+        {
+          "known": "I'm sure he's not ready to leave yet.",
+          "target": "我确定他还没准备好离开。"
+        },
+        {
+          "known": "Do you think he's not ready to leave yet?",
+          "target": "你觉得他还没准备好离开吗？"
+        },
+        {
+          "known": "He's not ready to leave yet and open the door.",
+          "target": "他还没准备好离开并打开门。"
+        },
+        {
+          "known": "I met someone who said he's not ready to leave yet.",
+          "target": "我遇到了一个说他还没准备好离开的人。"
+        },
+        {
+          "known": "Do you think he's not ready to leave yet and continue to play?",
+          "target": "你觉得他还没准备好离开并继续玩吗？"
+        },
+        {
+          "known": "I met someone a few days ago who said he's not ready to leave yet.",
+          "target": "我几天前遇到一个人说他还没准备好离开。"
+        },
+        {
+          "known": "I'm sure he's not ready to leave yet but he's happy to help you.",
+          "target": "我确定他还没准备好离开，但他很乐意帮你。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        [
+          "他",
+          "he"
+        ],
+        [
+          "还没",
+          "not yet"
+        ],
+        [
+          "准备好",
+          "ready"
+        ],
+        [
+          "离开",
+          "to leave"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0375",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "No I didn't know what she was doing.",
+    "target": "不，我不知道她在做什么。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0365",
+      "known": "I didn't hear what she said to him.",
+      "target": "我没听到她对他说了什么。"
+    },
+    {
+      "seed_id": "S0366",
+      "known": "Did you hear what he wanted to grow?",
+      "target": "你听到他想种什么了吗？"
+    },
+    {
+      "seed_id": "S0367",
+      "known": "No nobody told me.",
+      "target": "不，没人告诉我。"
+    },
+    {
+      "seed_id": "S0368",
+      "known": "Yes I heard that he wanted to grow tomatoes.",
+      "target": "是的，我听说他想种西红柿。"
+    },
+    {
+      "seed_id": "S0369",
+      "known": "I saw several horses on the road.",
+      "target": "我在路上看到了几匹马。"
+    },
+    {
+      "seed_id": "S0370",
+      "known": "I didn't see anyone that I knew.",
+      "target": "我没看到任何我认识的人。"
+    },
+    {
+      "seed_id": "S0371",
+      "known": "I went to see a film on Wednesday.",
+      "target": "我星期三去看了一部电影。"
+    },
+    {
+      "seed_id": "S0372",
+      "known": "Did you see what she was trying to create?",
+      "target": "你看到她想创造什么了吗？"
+    },
+    {
+      "seed_id": "S0373",
+      "known": "It was beautiful.",
+      "target": "它很美。"
+    },
+    {
+      "seed_id": "S0374",
+      "known": "Yes I thought it was very beautiful.",
+      "target": "是的，我觉得它非常美。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0366L03",
+      "known": "grow what",
+      "target": "种什么",
+      "type": "M"
+    },
+    {
+      "id": "S0366L04",
+      "known": "[question marker]",
+      "target": "了吗",
+      "type": "M"
+    },
+    {
+      "id": "S0367L02",
+      "known": "nobody",
+      "target": "没人",
+      "type": "A"
+    },
+    {
+      "id": "S0367L03",
+      "known": "told me",
+      "target": "告诉我",
+      "type": "M"
+    },
+    {
+      "id": "S0368L04",
+      "known": "tomatoes",
+      "target": "西红柿",
+      "type": "A"
+    },
+    {
+      "id": "S0369L01",
+      "known": "I on the road",
+      "target": "我在路上",
+      "type": "M"
+    },
+    {
+      "id": "S0369L02",
+      "known": "on the road",
+      "target": "在路上",
+      "type": "M"
+    },
+    {
+      "id": "S0369L03",
+      "known": "saw",
+      "target": "看到了",
+      "type": "M"
+    },
+    {
+      "id": "S0369L04",
+      "known": "several horses",
+      "target": "几匹马",
+      "type": "M"
+    },
+    {
+      "id": "S0370L01",
+      "known": "I didn't see",
+      "target": "我没看到",
+      "type": "M"
+    },
+    {
+      "id": "S0370L02",
+      "known": "people that I knew",
+      "target": "我认识的人",
+      "type": "M"
+    },
+    {
+      "id": "S0370L03",
+      "known": "anyone that I knew",
+      "target": "任何我认识的人",
+      "type": "M"
+    },
+    {
+      "id": "S0371L01",
+      "known": "on Wednesday",
+      "target": "星期三",
+      "type": "A"
+    },
+    {
+      "id": "S0371L02",
+      "known": "went to see",
+      "target": "去看了",
+      "type": "M"
+    },
+    {
+      "id": "S0371L03",
+      "known": "a film",
+      "target": "一部电影",
+      "type": "M"
+    },
+    {
+      "id": "S0371L04",
+      "known": "went to see a film",
+      "target": "去看了一部电影",
+      "type": "M"
+    },
+    {
+      "id": "S0371L05",
+      "known": "saw a film",
+      "target": "看了一部电影",
+      "type": "M"
+    },
+    {
+      "id": "S0371L06",
+      "known": "I went to see",
+      "target": "我去看了",
+      "type": "M"
+    },
+    {
+      "id": "S0372L01",
+      "known": "you saw",
+      "target": "你看到",
+      "type": "M"
+    },
+    {
+      "id": "S0372L03",
+      "known": "what she was trying to create",
+      "target": "她想创造什么",
+      "type": "M"
+    },
+    {
+      "id": "S0372L04",
+      "known": "want to create",
+      "target": "想创造",
+      "type": "M"
+    },
+    {
+      "id": "S0372L05",
+      "known": "create",
+      "target": "创造",
+      "type": "A"
+    },
+    {
+      "id": "S0372L06",
+      "known": "create what",
+      "target": "创造什么",
+      "type": "M"
+    },
+    {
+      "id": "S0373L01",
+      "known": "very beautiful",
+      "target": "很美",
+      "type": "M"
+    },
+    {
+      "id": "S0373L02",
+      "known": "it was beautiful",
+      "target": "它很美",
+      "type": "M"
+    },
+    {
+      "id": "S0373L03",
+      "known": "beautiful",
+      "target": "美",
+      "type": "A"
+    },
+    {
+      "id": "S0374L03",
+      "known": "think",
+      "target": "觉得",
+      "type": "A"
+    },
+    {
+      "id": "S0374L04",
+      "known": "very beautiful",
+      "target": "非常美",
+      "type": "M"
+    },
+    {
+      "id": "S0374L05",
+      "known": "it was very beautiful",
+      "target": "它非常美",
+      "type": "M"
+    },
+    {
+      "id": "S0374L06",
+      "known": "thought it was very beautiful",
+      "target": "觉得它非常美",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0375L05": {
+      "lego": [
+        "what she was doing",
+        "她在做什么"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "She was doing",
+          "target": "她在做",
+          "lego_count": 1
+        },
+        {
+          "known": "What she was doing",
+          "target": "她在做什么",
+          "lego_count": 1
+        },
+        {
+          "known": "I saw what she was doing",
+          "target": "我看到了她在做什么",
+          "lego_count": 3
+        },
+        {
+          "known": "I didn't see what she was doing",
+          "target": "我没看到她在做什么",
+          "lego_count": 3
+        },
+        {
+          "known": "Nobody told me what she was doing",
+          "target": "没人告诉我她在做什么",
+          "lego_count": 4
+        },
+        {
+          "known": "Did you see what she was doing on Wednesday",
+          "target": "你看到她星期三在做什么了吗",
+          "lego_count": 4
+        },
+        {
+          "known": "I didn't know what she was doing on the road",
+          "target": "我不知道她在路上在做什么",
+          "lego_count": 5
+        },
+        {
+          "known": "I wanted to see what she was doing",
+          "target": "我想看到她在做什么",
+          "lego_count": 5
+        },
+        {
+          "known": "Did you hear what she was doing on Wednesday",
+          "target": "你听到她星期三在做什么了吗",
+          "lego_count": 5
+        },
+        {
+          "known": "I thought what she was doing was very beautiful",
+          "target": "我觉得她在做什么非常美",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0375L05",
+        "seed_context": {
+          "known": "No I didn't know what she was doing.",
+          "target": "不，我不知道她在做什么。"
+        }
+      },
+      "components": [
+        [
+          "她",
+          "she"
+        ],
+        [
+          "在",
+          "in process"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    },
+    "S0375L06": {
+      "lego": [
+        "doing what",
+        "在做什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0375L05",
+          "known": "what she was doing",
+          "target": "她在做什么",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Doing what",
+          "target": "在做什么",
+          "lego_count": 1
+        },
+        {
+          "known": "I was doing what",
+          "target": "我在做什么",
+          "lego_count": 2
+        },
+        {
+          "known": "You saw me doing what",
+          "target": "你看到我在做什么",
+          "lego_count": 3
+        },
+        {
+          "known": "What she was doing what",
+          "target": "她在做什么",
+          "lego_count": 3
+        },
+        {
+          "known": "I didn't know what I was doing what",
+          "target": "我不知道我在做什么",
+          "lego_count": 4
+        },
+        {
+          "known": "Nobody told me what I was doing what",
+          "target": "没人告诉我我在做什么",
+          "lego_count": 4
+        },
+        {
+          "known": "Did you hear what she was doing what on Wednesday",
+          "target": "你听到她星期三在做什么了吗",
+          "lego_count": 5
+        },
+        {
+          "known": "I wanted to know what she was doing what",
+          "target": "我想知道她在做什么",
+          "lego_count": 5
+        },
+        {
+          "known": "I went to see what she was doing what on the road",
+          "target": "我去看了她在路上在做什么",
+          "lego_count": 6
+        },
+        {
+          "known": "I thought what she was doing what was very beautiful",
+          "target": "我觉得她在做什么非常美",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0375L06",
+        "seed_context": {
+          "known": "No I didn't know what she was doing.",
+          "target": "不，我不知道她在做什么。"
+        }
+      },
+      "components": [
+        [
+          "在",
+          "in process"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0375.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 2,
+    "phrases_to_generate": 20,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

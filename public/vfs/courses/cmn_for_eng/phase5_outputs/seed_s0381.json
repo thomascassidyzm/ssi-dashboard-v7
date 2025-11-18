@@ -1,0 +1,282 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0381",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "I didn't ask if he wanted to follow us.",
+    "target": "我没问他是否想跟着我们。"
+  },
+  "legos": {
+    "S0381L01": {
+      "lego": [
+        "I didn't ask",
+        "我没问"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "I didn't ask.",
+          "target": "我没问。"
+        },
+        {
+          "known": "I didn't ask him.",
+          "target": "我没问他。"
+        },
+        {
+          "known": "I didn't ask what she wanted.",
+          "target": "我没问她想要什么。"
+        },
+        {
+          "known": "I didn't ask where he went.",
+          "target": "我没问他去哪儿了。"
+        },
+        {
+          "known": "I didn't ask if she was traveling.",
+          "target": "我没问她是否在旅行。"
+        },
+        {
+          "known": "I didn't ask what she was doing yesterday.",
+          "target": "我没问她昨天在做什么。"
+        },
+        {
+          "known": "I didn't ask if he had enough money.",
+          "target": "我没问他是否有足够的钱。"
+        },
+        {
+          "known": "I didn't ask where he wanted to go last year.",
+          "target": "我没问他去年想去哪儿。"
+        },
+        {
+          "known": "I didn't ask if she wanted to include it.",
+          "target": "我没问她是否想包括它。"
+        },
+        {
+          "known": "I didn't ask what place she wanted to go in the world.",
+          "target": "我没问她想去世界上的什么地方。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0381L02": {
+      "lego": [
+        "if [he] wanted",
+        "是否想"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0381L01",
+          "known": "I didn't ask",
+          "target": "我没问",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "If he wanted to go.",
+          "target": "是否他想去。"
+        },
+        {
+          "known": "I asked if he wanted it.",
+          "target": "我问他是否想要它。"
+        },
+        {
+          "known": "She asked if he wanted to travel.",
+          "target": "她问他是否想旅行。"
+        },
+        {
+          "known": "I didn't ask if he wanted to go.",
+          "target": "我没问他是否想去。"
+        },
+        {
+          "known": "I asked if she wanted to go to Africa.",
+          "target": "我问她是否想去非洲。"
+        },
+        {
+          "known": "I didn't ask if he wanted enough money for holidays.",
+          "target": "我没问他是否想要足够的钱度假。"
+        },
+        {
+          "known": "I didn't ask if she wanted to include what she was doing.",
+          "target": "我没问她是否想包括她在做什么。"
+        },
+        {
+          "known": "I asked if he wanted to go anywhere in the world last year.",
+          "target": "我问他去年是否想去世界上的什么地方。"
+        },
+        {
+          "known": "She didn't ask if he wanted to travel to Africa last year.",
+          "target": "她没问他去年是否想去非洲旅行。"
+        },
+        {
+          "known": "I didn't ask if he wanted to include what place he was going to.",
+          "target": "我没问他是否想包括他要去什么地方。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0381L03": {
+      "lego": [
+        "wanted to follow us",
+        "想跟着我们"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0381L01",
+          "known": "I didn't ask",
+          "target": "我没问",
+          "type": "M"
+        },
+        {
+          "id": "S0381L02",
+          "known": "if [he] wanted",
+          "target": "是否想",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "He wanted to follow us.",
+          "target": "他想跟着我们。"
+        },
+        {
+          "known": "She wanted to follow us yesterday.",
+          "target": "她昨天想跟着我们。"
+        },
+        {
+          "known": "I asked if he wanted to follow us.",
+          "target": "我问他是否想跟着我们。"
+        },
+        {
+          "known": "He wanted to follow us to Africa.",
+          "target": "他想跟着我们去非洲。"
+        },
+        {
+          "known": "She wanted to follow us when we went traveling.",
+          "target": "她想跟着我们去旅行。"
+        },
+        {
+          "known": "I didn't ask if he wanted to follow us last year.",
+          "target": "我没问他去年是否想跟着我们。"
+        },
+        {
+          "known": "He wanted to follow us to the beautiful place in the world.",
+          "target": "他想跟着我们去世界上美丽的地方。"
+        },
+        {
+          "known": "I didn't ask if she wanted to follow us when we went traveling last month.",
+          "target": "我没问她上个月我们去旅行时是否想跟着我们。"
+        },
+        {
+          "known": "She asked if he wanted to follow us to what place we were going.",
+          "target": "她问他是否想跟着我们去我们要去的什么地方。"
+        },
+        {
+          "known": "I didn't ask if he wanted to follow us to Africa because he didn't have enough money.",
+          "target": "我没问他是否想跟着我们去非洲，因为他没有足够的钱。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0381L04": {
+      "lego": [
+        "follow",
+        "跟着"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0381L01",
+          "known": "I didn't ask",
+          "target": "我没问",
+          "type": "M"
+        },
+        {
+          "id": "S0381L02",
+          "known": "if [he] wanted",
+          "target": "是否想",
+          "type": "M"
+        },
+        {
+          "id": "S0381L03",
+          "known": "wanted to follow us",
+          "target": "想跟着我们",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Follow me.",
+          "target": "跟着我。"
+        },
+        {
+          "known": "I wanted to follow her.",
+          "target": "我想跟着她。"
+        },
+        {
+          "known": "She wanted to follow him yesterday.",
+          "target": "她昨天想跟着他。"
+        },
+        {
+          "known": "I asked if he wanted to follow us.",
+          "target": "我问他是否想跟着我们。"
+        },
+        {
+          "known": "He didn't want to follow her to Africa.",
+          "target": "他不想跟着她去非洲。"
+        },
+        {
+          "known": "I didn't ask if she wanted to follow us last year.",
+          "target": "我没问她去年是否想跟着我们。"
+        },
+        {
+          "known": "She asked if I wanted to follow her when she went traveling.",
+          "target": "她问我她去旅行时是否想跟着她。"
+        },
+        {
+          "known": "I didn't ask him if he wanted to follow me to what place I was going.",
+          "target": "我没问他是否想跟着我去我要去的什么地方。"
+        },
+        {
+          "known": "He wanted to follow us to the beautiful garden but he didn't have enough money.",
+          "target": "他想跟着我们去那个美丽的花园，但他没有足够的钱。"
+        },
+        {
+          "known": "I asked if she wanted to follow us anywhere in the world we wanted to go traveling.",
+          "target": "我问她是否想跟着我们去世界上我们想去旅行的任何地方。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

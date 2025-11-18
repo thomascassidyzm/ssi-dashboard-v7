@@ -1,0 +1,877 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0371",
+  "generation_stage": "PHRASES_GENERATED_PENDING_VALIDATION",
+  "seed_pair": {
+    "known": "I went to see a film on Wednesday.",
+    "target": "我星期三去看了一部电影。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0361",
+      "known": "He was quiet.",
+      "target": "他很安静。"
+    },
+    {
+      "seed_id": "S0362",
+      "known": "No he was rather quiet after you left.",
+      "target": "不，你离开后他相当安静。"
+    },
+    {
+      "seed_id": "S0363",
+      "known": "Yes he felt like talking a lot.",
+      "target": "是的，他想说很多话。"
+    },
+    {
+      "seed_id": "S0364",
+      "known": "I heard that he didn't like that place.",
+      "target": "我听说他不喜欢那个地方。"
+    },
+    {
+      "seed_id": "S0365",
+      "known": "I didn't hear what she said to him.",
+      "target": "我没听到她对他说了什么。"
+    },
+    {
+      "seed_id": "S0366",
+      "known": "Did you hear what he wanted to grow?",
+      "target": "你听到他想种什么了吗？"
+    },
+    {
+      "seed_id": "S0367",
+      "known": "No nobody told me.",
+      "target": "不，没人告诉我。"
+    },
+    {
+      "seed_id": "S0368",
+      "known": "Yes I heard that he wanted to grow tomatoes.",
+      "target": "是的，我听说他想种西红柿。"
+    },
+    {
+      "seed_id": "S0369",
+      "known": "I saw several horses on the road.",
+      "target": "我在路上看到了几匹马。"
+    },
+    {
+      "seed_id": "S0370",
+      "known": "I didn't see anyone that I knew.",
+      "target": "我没看到任何我认识的人。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0360L02",
+      "known": "also said",
+      "target": "还说了",
+      "type": "M"
+    },
+    {
+      "id": "S0360L03",
+      "known": "else",
+      "target": "别的",
+      "type": "M"
+    },
+    {
+      "id": "S0360L05",
+      "known": "anything else",
+      "target": "别的什么",
+      "type": "M"
+    },
+    {
+      "id": "S0361L01",
+      "known": "he was quiet",
+      "target": "他很安静",
+      "type": "M"
+    },
+    {
+      "id": "S0362L02",
+      "known": "after you left",
+      "target": "你离开后",
+      "type": "M"
+    },
+    {
+      "id": "S0362L03",
+      "known": "he was rather quiet",
+      "target": "他相当安静",
+      "type": "M"
+    },
+    {
+      "id": "S0363L02",
+      "known": "he felt like talking",
+      "target": "他想说",
+      "type": "M"
+    },
+    {
+      "id": "S0363L03",
+      "known": "talking a lot",
+      "target": "说很多话",
+      "type": "M"
+    },
+    {
+      "id": "S0364L01",
+      "known": "I heard that",
+      "target": "我听说",
+      "type": "M"
+    },
+    {
+      "id": "S0364L02",
+      "known": "he didn't like",
+      "target": "他不喜欢",
+      "type": "M"
+    },
+    {
+      "id": "S0364L03",
+      "known": "that place",
+      "target": "那个地方",
+      "type": "M"
+    },
+    {
+      "id": "S0364L04",
+      "known": "didn't like that place",
+      "target": "不喜欢那个地方",
+      "type": "M"
+    },
+    {
+      "id": "S0365L01",
+      "known": "I didn't hear",
+      "target": "我没听到",
+      "type": "M"
+    },
+    {
+      "id": "S0365L02",
+      "known": "she said to him",
+      "target": "她对他说了",
+      "type": "M"
+    },
+    {
+      "id": "S0365L03",
+      "known": "said to him",
+      "target": "对他说",
+      "type": "M"
+    },
+    {
+      "id": "S0365L04",
+      "known": "said what",
+      "target": "说了什么",
+      "type": "M"
+    },
+    {
+      "id": "S0366L01",
+      "known": "did you hear",
+      "target": "你听到",
+      "type": "M"
+    },
+    {
+      "id": "S0366L02",
+      "known": "he wanted to grow",
+      "target": "他想种",
+      "type": "M"
+    },
+    {
+      "id": "S0366L03",
+      "known": "grow what",
+      "target": "种什么",
+      "type": "M"
+    },
+    {
+      "id": "S0366L04",
+      "known": "[question marker]",
+      "target": "了吗",
+      "type": "M"
+    },
+    {
+      "id": "S0367L02",
+      "known": "nobody",
+      "target": "没人",
+      "type": "A"
+    },
+    {
+      "id": "S0367L03",
+      "known": "told me",
+      "target": "告诉我",
+      "type": "M"
+    },
+    {
+      "id": "S0368L04",
+      "known": "tomatoes",
+      "target": "西红柿",
+      "type": "A"
+    },
+    {
+      "id": "S0369L01",
+      "known": "I on the road",
+      "target": "我在路上",
+      "type": "M"
+    },
+    {
+      "id": "S0369L02",
+      "known": "on the road",
+      "target": "在路上",
+      "type": "M"
+    },
+    {
+      "id": "S0369L03",
+      "known": "saw",
+      "target": "看到了",
+      "type": "M"
+    },
+    {
+      "id": "S0369L04",
+      "known": "several horses",
+      "target": "几匹马",
+      "type": "M"
+    },
+    {
+      "id": "S0370L01",
+      "known": "I didn't see",
+      "target": "我没看到",
+      "type": "M"
+    },
+    {
+      "id": "S0370L02",
+      "known": "people that I knew",
+      "target": "我认识的人",
+      "type": "M"
+    },
+    {
+      "id": "S0370L03",
+      "known": "anyone that I knew",
+      "target": "任何我认识的人",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0371L01": {
+      "lego": [
+        "on Wednesday",
+        "星期三"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "on Wednesday",
+          "target": "星期三",
+          "lego_count": 1
+        },
+        {
+          "known": "I saw on Wednesday",
+          "target": "我星期三看到了",
+          "lego_count": 2
+        },
+        {
+          "known": "I saw several horses on Wednesday",
+          "target": "我星期三看到了几匹马",
+          "lego_count": 3
+        },
+        {
+          "known": "I didn't hear on Wednesday",
+          "target": "我星期三没听到",
+          "lego_count": 3
+        },
+        {
+          "known": "I didn't see anyone on Wednesday",
+          "target": "我星期三没看到任何人",
+          "lego_count": 4
+        },
+        {
+          "known": "nobody told me on Wednesday",
+          "target": "星期三没人告诉我",
+          "lego_count": 4
+        },
+        {
+          "known": "I heard that he didn't like that place on Wednesday",
+          "target": "我听说他星期三不喜欢那个地方",
+          "lego_count": 5
+        },
+        {
+          "known": "I saw people that I knew on the road on Wednesday",
+          "target": "我星期三在路上看到了我认识的人",
+          "lego_count": 5
+        },
+        {
+          "known": "I didn't see anyone that I knew on Wednesday after you left",
+          "target": "你星期三离开后我没看到任何我认识的人",
+          "lego_count": 6
+        },
+        {
+          "known": "did you hear what he said to him on Wednesday",
+          "target": "你听到他星期三对他说了什么了吗",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0371L01",
+        "seed_context": {
+          "known": "I went to see a film on Wednesday.",
+          "target": "我星期三去看了一部电影。"
+        }
+      }
+    },
+    "S0371L02": {
+      "lego": [
+        "went to see",
+        "去看了"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "on Wednesday",
+          "target": "星期三",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "went to see",
+          "target": "去看了",
+          "lego_count": 1
+        },
+        {
+          "known": "I went to see on Wednesday",
+          "target": "我星期三去看了",
+          "lego_count": 2
+        },
+        {
+          "known": "he went to see several horses",
+          "target": "他去看了几匹马",
+          "lego_count": 3
+        },
+        {
+          "known": "I went to see that place",
+          "target": "我去看了那个地方",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard that he went to see",
+          "target": "我听说他去看了",
+          "lego_count": 4
+        },
+        {
+          "known": "you went to see on the road",
+          "target": "你在路上去看了",
+          "lego_count": 4
+        },
+        {
+          "known": "I went to see people that I knew on Wednesday",
+          "target": "我星期三去看了我认识的人",
+          "lego_count": 5
+        },
+        {
+          "known": "nobody told me what he went to see",
+          "target": "没人告诉我他去看了什么",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that you went to see that place after I left",
+          "target": "我听说我离开后你去看了那个地方",
+          "lego_count": 6
+        },
+        {
+          "known": "did you hear that he went to see several horses on the road on Wednesday",
+          "target": "你听说他星期三在路上去看了几匹马了吗",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0371L02",
+        "seed_context": {
+          "known": "I went to see a film on Wednesday.",
+          "target": "我星期三去看了一部电影。"
+        }
+      },
+      "components": [
+        [
+          "去",
+          "to go"
+        ],
+        [
+          "看",
+          "to see"
+        ],
+        [
+          "了",
+          "past marker"
+        ]
+      ]
+    },
+    "S0371L03": {
+      "lego": [
+        "a film",
+        "一部电影"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "on Wednesday",
+          "target": "星期三",
+          "type": "A"
+        },
+        {
+          "id": "S0371L02",
+          "known": "went to see",
+          "target": "去看了",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "a film",
+          "target": "一部电影",
+          "lego_count": 1
+        },
+        {
+          "known": "saw a film on Wednesday",
+          "target": "星期三看了一部电影",
+          "lego_count": 2
+        },
+        {
+          "known": "I went to see a film",
+          "target": "我去看了一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "he didn't like a film",
+          "target": "他不喜欢一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard about a film on Wednesday",
+          "target": "我星期三听说了一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "I went to see a film on Wednesday",
+          "target": "我星期三去看了一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "nobody told me about a film that he didn't like",
+          "target": "没人告诉我关于他不喜欢的一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that you went to see a film on Wednesday",
+          "target": "我听说你星期三去看了一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "I didn't see anyone that I knew when I went to see a film",
+          "target": "我去看电影的时候没看到任何我认识的人",
+          "lego_count": 6
+        },
+        {
+          "known": "did you hear what he said about a film that you went to see on Wednesday",
+          "target": "你听到他说的关于你星期三去看的一部电影了吗",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0371L03",
+        "seed_context": {
+          "known": "I went to see a film on Wednesday.",
+          "target": "我星期三去看了一部电影。"
+        }
+      },
+      "components": [
+        [
+          "一",
+          "one"
+        ],
+        [
+          "部",
+          "classifier"
+        ],
+        [
+          "电影",
+          "film"
+        ]
+      ]
+    },
+    "S0371L04": {
+      "lego": [
+        "went to see a film",
+        "去看了一部电影"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "on Wednesday",
+          "target": "星期三",
+          "type": "A"
+        },
+        {
+          "id": "S0371L02",
+          "known": "went to see",
+          "target": "去看了",
+          "type": "M"
+        },
+        {
+          "id": "S0371L03",
+          "known": "a film",
+          "target": "一部电影",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "went to see a film",
+          "target": "去看了一部电影",
+          "lego_count": 1
+        },
+        {
+          "known": "I went to see a film on Wednesday",
+          "target": "我星期三去看了一部电影",
+          "lego_count": 2
+        },
+        {
+          "known": "he went to see a film that I liked",
+          "target": "他去看了我喜欢的一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard he went to see a film",
+          "target": "我听说他去看了一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "nobody told me you went to see a film",
+          "target": "没人告诉我你去看了一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "I went to see a film on the road",
+          "target": "我在路上去看了一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "I went to see a film after you left on Wednesday",
+          "target": "你星期三离开后我去看了一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that people that I knew went to see a film",
+          "target": "我听说我认识的人去看了一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "did you hear that he went to see a film at that place on Wednesday",
+          "target": "你听说他星期三在那个地方去看了一部电影了吗",
+          "lego_count": 6
+        },
+        {
+          "known": "nobody told me what film you went to see a film about on Wednesday",
+          "target": "没人告诉我你星期三去看了关于什么的一部电影",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0371L04",
+        "seed_context": {
+          "known": "I went to see a film on Wednesday.",
+          "target": "我星期三去看了一部电影。"
+        }
+      },
+      "components": [
+        [
+          "去",
+          "to go"
+        ],
+        [
+          "看了",
+          "to see (past)"
+        ],
+        [
+          "一部",
+          "a"
+        ],
+        [
+          "电影",
+          "film"
+        ]
+      ]
+    },
+    "S0371L05": {
+      "lego": [
+        "saw a film",
+        "看了一部电影"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "on Wednesday",
+          "target": "星期三",
+          "type": "A"
+        },
+        {
+          "id": "S0371L02",
+          "known": "went to see",
+          "target": "去看了",
+          "type": "M"
+        },
+        {
+          "id": "S0371L03",
+          "known": "a film",
+          "target": "一部电影",
+          "type": "M"
+        },
+        {
+          "id": "S0371L04",
+          "known": "went to see a film",
+          "target": "去看了一部电影",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "saw a film",
+          "target": "看了一部电影",
+          "lego_count": 1
+        },
+        {
+          "known": "I saw a film on Wednesday",
+          "target": "我星期三看了一部电影",
+          "lego_count": 2
+        },
+        {
+          "known": "he saw a film that I liked",
+          "target": "他看了我喜欢的一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "I heard you saw a film",
+          "target": "我听说你看了一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "I saw a film at that place",
+          "target": "我在那个地方看了一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "nobody told me he saw a film",
+          "target": "没人告诉我他看了一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "I saw a film after you left on Wednesday",
+          "target": "你星期三离开后我看了一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "I heard that people that I knew saw a film",
+          "target": "我听说我认识的人看了一部电影",
+          "lego_count": 5
+        },
+        {
+          "known": "did you hear what film he saw a film about on Wednesday",
+          "target": "你听到他星期三看了关于什么的一部电影了吗",
+          "lego_count": 6
+        },
+        {
+          "known": "I didn't see anyone that I knew when I saw a film at that place",
+          "target": "我在那个地方看电影的时候没看到任何我认识的人",
+          "lego_count": 7
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0371L05",
+        "seed_context": {
+          "known": "I went to see a film on Wednesday.",
+          "target": "我星期三去看了一部电影。"
+        }
+      },
+      "components": [
+        [
+          "看了",
+          "saw"
+        ],
+        [
+          "一部",
+          "a"
+        ],
+        [
+          "电影",
+          "film"
+        ]
+      ]
+    },
+    "S0371L06": {
+      "lego": [
+        "I went to see",
+        "我去看了"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0371L01",
+          "known": "on Wednesday",
+          "target": "星期三",
+          "type": "A"
+        },
+        {
+          "id": "S0371L02",
+          "known": "went to see",
+          "target": "去看了",
+          "type": "M"
+        },
+        {
+          "id": "S0371L03",
+          "known": "a film",
+          "target": "一部电影",
+          "type": "M"
+        },
+        {
+          "id": "S0371L04",
+          "known": "went to see a film",
+          "target": "去看了一部电影",
+          "type": "M"
+        },
+        {
+          "id": "S0371L05",
+          "known": "saw a film",
+          "target": "看了一部电影",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "I went to see",
+          "target": "我去看了",
+          "lego_count": 1
+        },
+        {
+          "known": "I went to see on Wednesday",
+          "target": "我星期三去看了",
+          "lego_count": 2
+        },
+        {
+          "known": "I went to see a film",
+          "target": "我去看了一部电影",
+          "lego_count": 3
+        },
+        {
+          "known": "I went to see that place",
+          "target": "我去看了那个地方",
+          "lego_count": 3
+        },
+        {
+          "known": "I went to see several horses on the road",
+          "target": "我去看了路上的几匹马",
+          "lego_count": 4
+        },
+        {
+          "known": "I went to see a film on Wednesday",
+          "target": "我星期三去看了一部电影",
+          "lego_count": 4
+        },
+        {
+          "known": "I went to see what he wanted to grow",
+          "target": "我去看了他想种什么",
+          "lego_count": 5
+        },
+        {
+          "known": "I went to see people that I knew at that place",
+          "target": "我去看了在那个地方我认识的人",
+          "lego_count": 5
+        },
+        {
+          "known": "I went to see a film after you left on Wednesday",
+          "target": "你星期三离开后我去看了一部电影",
+          "lego_count": 6
+        },
+        {
+          "known": "nobody told me what I went to see at that place on Wednesday",
+          "target": "没人告诉我我星期三在那个地方去看了什么",
+          "lego_count": 6
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0371L06",
+        "seed_context": {
+          "known": "I went to see a film on Wednesday.",
+          "target": "我星期三去看了一部电影。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "去",
+          "to go"
+        ],
+        [
+          "看了",
+          "to see (past)"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0371.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 6,
+    "phrases_to_generate": 60,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

@@ -1,0 +1,927 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0391",
+  "generation_stage": "PHRASES_GENERATED",
+  "seed_pair": {
+    "known": "The one who is walking towards the bus.",
+    "target": "朝公交车走去的那个人。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0381",
+      "known": "I didn't ask if he wanted to follow us.",
+      "target": "我没问他是否想跟着我们。"
+    },
+    {
+      "seed_id": "S0382",
+      "known": "Did you ask where he wanted to put it?",
+      "target": "你问他想把它放在哪儿了吗？"
+    },
+    {
+      "seed_id": "S0383",
+      "known": "Yes he said he wanted to put it in the garden.",
+      "target": "是的，他说他想把它放在花园里。"
+    },
+    {
+      "seed_id": "S0384",
+      "known": "I couldn't agree with what he said a moment ago.",
+      "target": "我不能同意他刚才说的话。"
+    },
+    {
+      "seed_id": "S0385",
+      "known": "Did you agree with her?",
+      "target": "你同意她吗？"
+    },
+    {
+      "seed_id": "S0386",
+      "known": "Yes I agreed with her.",
+      "target": "是的，我同意她。"
+    },
+    {
+      "seed_id": "S0387",
+      "known": "No I didn't think she was right.",
+      "target": "不，我认为她不对。"
+    },
+    {
+      "seed_id": "S0388",
+      "known": "That person you work with.",
+      "target": "和你一起工作的那个人。"
+    },
+    {
+      "seed_id": "S0389",
+      "known": "That person over there.",
+      "target": "那边那个人。"
+    },
+    {
+      "seed_id": "S0390",
+      "known": "The one who is standing near the entrance.",
+      "target": "站在入口附近的那个人。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0380L06",
+      "known": "include what",
+      "target": "包括什么",
+      "type": "M"
+    },
+    {
+      "id": "S0380L07",
+      "known": "want to include what",
+      "target": "想包括什么",
+      "type": "M"
+    },
+    {
+      "id": "S0381L01",
+      "known": "I didn't ask",
+      "target": "我没问",
+      "type": "M"
+    },
+    {
+      "id": "S0381L02",
+      "known": "if [he] wanted",
+      "target": "是否想",
+      "type": "M"
+    },
+    {
+      "id": "S0381L03",
+      "known": "wanted to follow us",
+      "target": "想跟着我们",
+      "type": "M"
+    },
+    {
+      "id": "S0381L04",
+      "known": "follow",
+      "target": "跟着",
+      "type": "A"
+    },
+    {
+      "id": "S0382L01",
+      "known": "did you ask [him]",
+      "target": "你问他",
+      "type": "M"
+    },
+    {
+      "id": "S0382L02",
+      "known": "wanted to put it in",
+      "target": "想把它放在",
+      "type": "M"
+    },
+    {
+      "id": "S0382L03",
+      "known": "where to put it",
+      "target": "把它放在哪儿",
+      "type": "M"
+    },
+    {
+      "id": "S0382L04",
+      "known": "put where",
+      "target": "放在哪儿",
+      "type": "M"
+    },
+    {
+      "id": "S0383L03",
+      "known": "he wanted to put it in",
+      "target": "他想把它放在",
+      "type": "M"
+    },
+    {
+      "id": "S0383L04",
+      "known": "put in the garden",
+      "target": "放在花园里",
+      "type": "M"
+    },
+    {
+      "id": "S0383L05",
+      "known": "in the garden",
+      "target": "花园里",
+      "type": "M"
+    },
+    {
+      "id": "S0384L01",
+      "known": "I couldn't agree",
+      "target": "我不能同意",
+      "type": "M"
+    },
+    {
+      "id": "S0384L02",
+      "known": "agree with him",
+      "target": "同意他",
+      "type": "M"
+    },
+    {
+      "id": "S0384L03",
+      "known": "what [he] said a moment ago",
+      "target": "刚才说的话",
+      "type": "M"
+    },
+    {
+      "id": "S0384L04",
+      "known": "a moment ago",
+      "target": "刚才",
+      "type": "A"
+    },
+    {
+      "id": "S0385L01",
+      "known": "you agree with her",
+      "target": "你同意她",
+      "type": "M"
+    },
+    {
+      "id": "S0385L02",
+      "known": "agree with her",
+      "target": "同意她",
+      "type": "M"
+    },
+    {
+      "id": "S0386L01",
+      "known": "I agreed with her",
+      "target": "我同意她",
+      "type": "M"
+    },
+    {
+      "id": "S0387L03",
+      "known": "she was not right",
+      "target": "她不对",
+      "type": "M"
+    },
+    {
+      "id": "S0387L04",
+      "known": "right",
+      "target": "对",
+      "type": "A"
+    },
+    {
+      "id": "S0388L01",
+      "known": "with you",
+      "target": "和你一起",
+      "type": "M"
+    },
+    {
+      "id": "S0388L03",
+      "known": "work together [relative clause]",
+      "target": "一起工作的",
+      "type": "M"
+    },
+    {
+      "id": "S0388L04",
+      "known": "that person",
+      "target": "那个人",
+      "type": "M"
+    },
+    {
+      "id": "S0389L01",
+      "known": "that person over there",
+      "target": "那边那个人",
+      "type": "M"
+    },
+    {
+      "id": "S0390L01",
+      "known": "standing at the entrance",
+      "target": "站在入口",
+      "type": "M"
+    },
+    {
+      "id": "S0390L02",
+      "known": "near the entrance",
+      "target": "入口附近",
+      "type": "M"
+    },
+    {
+      "id": "S0390L03",
+      "known": "near",
+      "target": "附近",
+      "type": "A"
+    },
+    {
+      "id": "S0390L04",
+      "known": "who is standing near the entrance",
+      "target": "站在入口附近的",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0391L01": {
+      "lego": [
+        "bus",
+        "公交车"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        {
+          "known": "The bus.",
+          "target": "公交车。"
+        },
+        {
+          "known": "Near the bus.",
+          "target": "公交车附近。"
+        },
+        {
+          "known": "I asked about the bus.",
+          "target": "我问了关于公交车的事。"
+        },
+        {
+          "known": "She wanted to take the bus.",
+          "target": "她想坐公交车。"
+        },
+        {
+          "known": "Did you ask where the bus was?",
+          "target": "你问公交车在哪儿了吗？"
+        },
+        {
+          "known": "I agreed that we should follow the bus.",
+          "target": "我同意我们应该跟着公交车。"
+        },
+        {
+          "known": "That person standing near the entrance is waiting for the bus.",
+          "target": "站在入口附近的那个人在等公交车。"
+        },
+        {
+          "known": "She said a moment ago that the bus would include the stop near the garden.",
+          "target": "她刚才说公交车会包括花园附近的那一站。"
+        },
+        {
+          "known": "I didn't ask if he wanted to put it near the bus or somewhere else.",
+          "target": "我没问他是否想把它放在公交车附近还是其他地方。"
+        },
+        {
+          "known": "The person you work with over there said the bus was right near the entrance.",
+          "target": "在那边和你一起工作的那个人说公交车就在入口附近。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0391L01",
+        "seed_context": {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        }
+      }
+    },
+    "S0391L02": {
+      "lego": [
+        "towards the bus",
+        "朝公交车"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0391L01",
+          "known": "bus",
+          "target": "公交车",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Towards the bus.",
+          "target": "朝公交车。"
+        },
+        {
+          "known": "Walking towards the bus.",
+          "target": "朝公交车走。"
+        },
+        {
+          "known": "I asked if she was going towards the bus.",
+          "target": "我问她是否朝公交车去。"
+        },
+        {
+          "known": "She wanted to walk towards the bus.",
+          "target": "她想朝公交车走去。"
+        },
+        {
+          "known": "Did you ask that person over there about going towards the bus?",
+          "target": "你问那边那个人关于朝公交车去的事了吗？"
+        },
+        {
+          "known": "I agreed with her that we should go towards the bus near the entrance.",
+          "target": "我同意她我们应该朝入口附近的公交车去。"
+        },
+        {
+          "known": "The person standing near the entrance a moment ago was walking towards the bus.",
+          "target": "刚才站在入口附近的那个人在朝公交车走去。"
+        },
+        {
+          "known": "She said she wanted to include the one who was walking towards the bus in the plan.",
+          "target": "她说她想把朝公交车走去的那个人包括在计划里。"
+        },
+        {
+          "known": "I didn't ask if the person you work with wanted to follow us towards the bus or not.",
+          "target": "我没问和你一起工作的那个人是否想跟着我们朝公交车去。"
+        },
+        {
+          "known": "That person over there near the garden said we should put it somewhere towards the bus instead.",
+          "target": "花园附近那边那个人说我们应该把它放在朝公交车方向的某个地方。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0391L02",
+        "seed_context": {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        }
+      },
+      "components": [
+        [
+          "朝",
+          "towards"
+        ],
+        [
+          "公交车",
+          "bus"
+        ]
+      ]
+    },
+    "S0391L03": {
+      "lego": [
+        "walk/go",
+        "走去"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0391L01",
+          "known": "bus",
+          "target": "公交车",
+          "type": "A"
+        },
+        {
+          "id": "S0391L02",
+          "known": "towards the bus",
+          "target": "朝公交车",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Go there.",
+          "target": "那边走去。"
+        },
+        {
+          "known": "I want to go.",
+          "target": "我想走去。"
+        },
+        {
+          "known": "She asked if I would go.",
+          "target": "她问我是否会走去。"
+        },
+        {
+          "known": "Did you go towards the entrance?",
+          "target": "你朝入口走去了吗？"
+        },
+        {
+          "known": "I agreed that we should go near the bus.",
+          "target": "我同意我们应该朝公交车附近走去。"
+        },
+        {
+          "known": "She wanted to go towards the bus a moment ago.",
+          "target": "她刚才想朝公交车走去。"
+        },
+        {
+          "known": "That person you work with said she would go towards the garden instead.",
+          "target": "和你一起工作的那个人说她会朝花园走去。"
+        },
+        {
+          "known": "I didn't ask if the person standing near the entrance wanted to go towards the bus.",
+          "target": "我没问站在入口附近的那个人是否想朝公交车走去。"
+        },
+        {
+          "known": "The one over there said she couldn't agree with what he said about where to go.",
+          "target": "那边那个人说她不能同意他关于去哪儿说的话。"
+        },
+        {
+          "known": "Yes I think the person near the entrance should follow us and go towards the bus together.",
+          "target": "是的，我认为入口附近那个人应该跟着我们一起朝公交车走去。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0391L03",
+        "seed_context": {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        }
+      }
+    },
+    "S0391L04": {
+      "lego": [
+        "walking towards the bus",
+        "朝公交车走去"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0391L01",
+          "known": "bus",
+          "target": "公交车",
+          "type": "A"
+        },
+        {
+          "id": "S0391L02",
+          "known": "towards the bus",
+          "target": "朝公交车",
+          "type": "M"
+        },
+        {
+          "id": "S0391L03",
+          "known": "walk/go",
+          "target": "走去",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "Walking towards the bus.",
+          "target": "朝公交车走去。"
+        },
+        {
+          "known": "I was walking towards the bus.",
+          "target": "我在朝公交车走去。"
+        },
+        {
+          "known": "She asked if I was walking towards the bus.",
+          "target": "她问我是否在朝公交车走去。"
+        },
+        {
+          "known": "That person over there is walking towards the bus.",
+          "target": "那边那个人在朝公交车走去。"
+        },
+        {
+          "known": "I agreed that we should be walking towards the bus now.",
+          "target": "我同意我们现在应该朝公交车走去。"
+        },
+        {
+          "known": "Did you ask the person near the entrance if she was walking towards the bus?",
+          "target": "你问入口附近那个人她是否在朝公交车走去了吗？"
+        },
+        {
+          "known": "The person you work with said a moment ago that she was walking towards the bus.",
+          "target": "和你一起工作的那个人刚才说她在朝公交车走去。"
+        },
+        {
+          "known": "I didn't ask if the one standing near the entrance wanted to follow us walking towards the bus.",
+          "target": "我没问站在入口附近的那个人是否想跟着我们朝公交车走去。"
+        },
+        {
+          "known": "She said she couldn't agree with what he said about not walking towards the bus near the garden.",
+          "target": "她说她不能同意他关于不朝花园附近的公交车走去说的话。"
+        },
+        {
+          "known": "Yes I think that person over there walking towards the bus is the right one to include in the plan.",
+          "target": "是的，我认为那边朝公交车走去的那个人是应该包括在计划里的对的那个。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0391L04",
+        "seed_context": {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        }
+      },
+      "components": [
+        [
+          "朝",
+          "towards"
+        ],
+        [
+          "公交车",
+          "bus"
+        ],
+        [
+          "走去",
+          "walking/go"
+        ]
+      ]
+    },
+    "S0391L05": {
+      "lego": [
+        "the one who",
+        "的那个人"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0391L01",
+          "known": "bus",
+          "target": "公交车",
+          "type": "A"
+        },
+        {
+          "id": "S0391L02",
+          "known": "towards the bus",
+          "target": "朝公交车",
+          "type": "M"
+        },
+        {
+          "id": "S0391L03",
+          "known": "walk/go",
+          "target": "走去",
+          "type": "A"
+        },
+        {
+          "id": "S0391L04",
+          "known": "walking towards the bus",
+          "target": "朝公交车走去",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "The one who asked.",
+          "target": "问的那个人。"
+        },
+        {
+          "known": "The one who was standing near.",
+          "target": "站在附近的那个人。"
+        },
+        {
+          "known": "I asked about the one who agreed.",
+          "target": "我问了同意的那个人。"
+        },
+        {
+          "known": "The one who wanted to go towards the bus.",
+          "target": "想朝公交车去的那个人。"
+        },
+        {
+          "known": "Did you agree with the one who was standing near the entrance?",
+          "target": "你同意站在入口附近的那个人吗？"
+        },
+        {
+          "known": "She said the one who was walking towards the bus was the right person.",
+          "target": "她说朝公交车走去的那个人是对的那个人。"
+        },
+        {
+          "known": "I couldn't agree with the one who said a moment ago that we should put it near the bus.",
+          "target": "我不能同意刚才说我们应该把它放在公交车附近的那个人。"
+        },
+        {
+          "known": "That person over there is the one who works with you and wanted to include the garden in the plan.",
+          "target": "那边那个人就是和你一起工作并且想把花园包括在计划里的那个人。"
+        },
+        {
+          "known": "I didn't ask if the one who was standing near the entrance wanted to follow us towards the bus or not.",
+          "target": "我没问站在入口附近的那个人是否想跟着我们朝公交车去。"
+        },
+        {
+          "known": "Yes the one who said a moment ago that we should go near the entrance was right about where to put it.",
+          "target": "是的，刚才说我们应该去入口附近的那个人关于把它放在哪儿是对的。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0391L05",
+        "seed_context": {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        }
+      },
+      "components": [
+        [
+          "的",
+          "who/that"
+        ],
+        [
+          "那个",
+          "that"
+        ],
+        [
+          "人",
+          "person/one"
+        ]
+      ]
+    },
+    "S0391L06": {
+      "lego": [
+        "the one who is walking",
+        "走去的那个人"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0391L01",
+          "known": "bus",
+          "target": "公交车",
+          "type": "A"
+        },
+        {
+          "id": "S0391L02",
+          "known": "towards the bus",
+          "target": "朝公交车",
+          "type": "M"
+        },
+        {
+          "id": "S0391L03",
+          "known": "walk/go",
+          "target": "走去",
+          "type": "A"
+        },
+        {
+          "id": "S0391L04",
+          "known": "walking towards the bus",
+          "target": "朝公交车走去",
+          "type": "M"
+        },
+        {
+          "id": "S0391L05",
+          "known": "the one who",
+          "target": "的那个人",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "The one who is walking.",
+          "target": "走去的那个人。"
+        },
+        {
+          "known": "I asked about the one who is walking.",
+          "target": "我问了走去的那个人。"
+        },
+        {
+          "known": "The one who is walking over there.",
+          "target": "朝那边走去的那个人。"
+        },
+        {
+          "known": "She wanted to include the one who is walking.",
+          "target": "她想包括走去的那个人。"
+        },
+        {
+          "known": "Did you agree with the one who is walking near the entrance?",
+          "target": "你同意朝入口附近走去的那个人吗？"
+        },
+        {
+          "known": "I think the one who is walking towards the bus is the right person.",
+          "target": "我认为朝公交车走去的那个人是对的那个人。"
+        },
+        {
+          "known": "The one who is walking near the garden said a moment ago that she wanted to follow us.",
+          "target": "朝花园附近走去的那个人刚才说她想跟着我们。"
+        },
+        {
+          "known": "I didn't ask if the one who is walking towards the bus was the person you work with.",
+          "target": "我没问朝公交车走去的那个人是否是和你一起工作的那个人。"
+        },
+        {
+          "known": "She couldn't agree with what the one who is walking over there near the entrance said about where to put it.",
+          "target": "她不能同意朝那边入口附近走去的那个人关于把它放在哪儿说的话。"
+        },
+        {
+          "known": "Yes I asked the one who is walking towards the bus if she wanted to include the entrance area in the plan or not.",
+          "target": "是的，我问朝公交车走去的那个人她是否想把入口区域包括在计划里。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0391L06",
+        "seed_context": {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        }
+      },
+      "components": [
+        [
+          "走去",
+          "walking"
+        ],
+        [
+          "的",
+          "who"
+        ],
+        [
+          "那个",
+          "the"
+        ],
+        [
+          "人",
+          "one"
+        ]
+      ]
+    },
+    "S0391L07": {
+      "lego": [
+        "the one who is walking towards the bus",
+        "朝公交车走去的那个人"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0391L01",
+          "known": "bus",
+          "target": "公交车",
+          "type": "A"
+        },
+        {
+          "id": "S0391L02",
+          "known": "towards the bus",
+          "target": "朝公交车",
+          "type": "M"
+        },
+        {
+          "id": "S0391L03",
+          "known": "walk/go",
+          "target": "走去",
+          "type": "A"
+        },
+        {
+          "id": "S0391L04",
+          "known": "walking towards the bus",
+          "target": "朝公交车走去",
+          "type": "M"
+        },
+        {
+          "id": "S0391L05",
+          "known": "the one who",
+          "target": "的那个人",
+          "type": "M"
+        },
+        {
+          "id": "S0391L06",
+          "known": "the one who is walking",
+          "target": "走去的那个人",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        },
+        {
+          "known": "I asked about the one who is walking towards the bus.",
+          "target": "我问了朝公交车走去的那个人。"
+        },
+        {
+          "known": "Did you agree with the one who is walking towards the bus?",
+          "target": "你同意朝公交车走去的那个人吗？"
+        },
+        {
+          "known": "She wanted to include the one who is walking towards the bus in the plan.",
+          "target": "她想把朝公交车走去的那个人包括在计划里。"
+        },
+        {
+          "known": "The one who is walking towards the bus is the person standing near the entrance.",
+          "target": "朝公交车走去的那个人就是站在入口附近的那个人。"
+        },
+        {
+          "known": "I didn't ask if the one who is walking towards the bus wanted to follow us or not.",
+          "target": "我没问朝公交车走去的那个人是否想跟着我们。"
+        },
+        {
+          "known": "Yes she said a moment ago that the one who is walking towards the bus is the person you work with.",
+          "target": "是的，她刚才说朝公交车走去的那个人就是和你一起工作的那个人。"
+        },
+        {
+          "known": "I couldn't agree with what the one who is walking towards the bus said about where to put it in the garden.",
+          "target": "我不能同意朝公交车走去的那个人关于把它放在花园哪儿说的话。"
+        },
+        {
+          "known": "Did you ask the one who is walking towards the bus over there near the entrance if she wanted to include the area or not?",
+          "target": "你问那边入口附近朝公交车走去的那个人她是否想包括那个区域了吗？"
+        },
+        {
+          "known": "That person over there is the one who is walking towards the bus and she said she agreed with what you wanted to put near the entrance.",
+          "target": "那边那个人就是朝公交车走去的那个人，她说她同意你想放在入口附近的东西。"
+        }
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0391L07",
+        "seed_context": {
+          "known": "The one who is walking towards the bus.",
+          "target": "朝公交车走去的那个人。"
+        }
+      },
+      "components": [
+        [
+          "朝",
+          "towards"
+        ],
+        [
+          "公交车",
+          "bus"
+        ],
+        [
+          "走去",
+          "walking"
+        ],
+        [
+          "的",
+          "who"
+        ],
+        [
+          "那个",
+          "the"
+        ],
+        [
+          "人",
+          "one"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0391.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 7,
+    "phrases_to_generate": 70,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

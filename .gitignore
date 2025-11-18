@@ -74,6 +74,9 @@ scripts/*_generator.cjs
 scripts/AGENT*_COMPLETION_REPORT.md
 scripts/generate_agent*.cjs
 scripts/generate_agent*.py
+scripts/patch*_*.cjs
+scripts/patch*_*.py
+scripts/generate_*.py
 
 # Patch-specific temporary files (Patch 5 and similar batch work)
 scripts/patch5_*.json
