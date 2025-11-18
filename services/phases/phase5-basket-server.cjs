@@ -733,7 +733,7 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 
 **CRITICAL: Each agent should:**
 - Read scaffolds ONLY for its assigned LEGO_IDs from \`${relativeDir}/phase5_scaffolds/\`
-- Generate baskets using Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+- Generate baskets using Phase 5 intelligence: https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
 - Save outputs to \`${relativeDir}/phase5_outputs/\`
 - Follow the EXACT same workflow as regular Phase 5
 
@@ -755,7 +755,7 @@ Use the Task tool ${agentCount} times in a single message to spawn all agents in
 
 Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${legosPerAgent} LEGOs each).
 
-**Worker prompt template:** Use \`docs/prompts/phase5_worker_prompt_v2_embedded.md\` (includes full Phase 5 intelligence guidance)
+**Worker prompt template:** Fetch from https://ssi-dashboard-v7.vercel.app/prompts/phase5_worker.md (includes full Phase 5 intelligence guidance)
 `;
   }
 
@@ -808,7 +808,7 @@ You are responsible for generating baskets for all LEGOs in seeds ${startSeed}-$
 - ❌ Merge files (saved to staging, reviewed separately)
 
 **Worker prompt template:**
-Use \`docs/prompts/phase5_worker_prompt_v2_embedded.md\` as the template for each sub-agent.
+Fetch from: https://ssi-dashboard-v7.vercel.app/prompts/phase5_worker.md
 
 ⛔ **CRITICAL**: This template includes the full Phase 5 intelligence guidance embedded directly.
 The template has a HUGE "NO SCRIPTS" warning at the top. Make sure sub-agents read and follow it!
@@ -1344,7 +1344,7 @@ Once scaffolds are ready:
 3. **Each sub-agent receives:**
    - Their specific LEGO IDs
    - Path to their scaffolds
-   - Standard Phase 5 intelligence prompt: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
+   - Standard Phase 5 intelligence prompt: https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
 
 **Sub-agent workflow (v10 - ngrok upload):**
 - Read v10 scaffold from \`phase5_scaffolds_v10/seed_sXXXX.json\`
