@@ -1,0 +1,479 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0156",
+  "generation_stage": "BASKETS_COMPLETED",
+  "seed_pair": {
+    "known": "Do you want to go to a restaurant tonight?",
+    "target": "你想今晚去餐厅吗？"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0146",
+      "known": "Nothing seems to be working since we tried to fix it.",
+      "target": "自从我们试图修理它以来，似乎什么都不工作了。"
+    },
+    {
+      "seed_id": "S0147",
+      "known": "She was very kind when she saw me feeling nervous.",
+      "target": "当她看到我感到紧张时，她非常友好。"
+    },
+    {
+      "seed_id": "S0148",
+      "known": "He wasn't very patient when I couldn't answer.",
+      "target": "当我不能回答时，他不是很耐心。"
+    },
+    {
+      "seed_id": "S0149",
+      "known": "This isn't very difficult, so I hope you'll finish soon.",
+      "target": "这不是很难，所以我希望你很快完成。"
+    },
+    {
+      "seed_id": "S0150",
+      "known": "Can you tell me what your name is?",
+      "target": "你能告诉我你的名字是什么吗？"
+    },
+    {
+      "seed_id": "S0151",
+      "known": "That wasn't what I was hoping would happen.",
+      "target": "那不是我希望会发生的事。"
+    },
+    {
+      "seed_id": "S0152",
+      "known": "I would have done it differently if I had known what you wanted.",
+      "target": "如果我知道你想要什么，我会做得不同。"
+    },
+    {
+      "seed_id": "S0153",
+      "known": "I wouldn't have said it in exactly the same way.",
+      "target": "我不会用完全相同的方式说它。"
+    },
+    {
+      "seed_id": "S0154",
+      "known": "Where do you want to meet on Saturday night?",
+      "target": "你想在星期六晚上在哪里见面？"
+    },
+    {
+      "seed_id": "S0155",
+      "known": "I don't mind waiting for a few minutes tomorrow morning.",
+      "target": "我不介意明天早上等几分钟。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0149L05",
+      "known": "soon",
+      "target": "很快",
+      "type": "A"
+    },
+    {
+      "id": "S0150L01",
+      "known": "can you tell me what your name is",
+      "target": "你能告诉我你的名字是什么吗",
+      "type": "M"
+    },
+    {
+      "id": "S0150L02",
+      "known": "can you tell me",
+      "target": "你能告诉我",
+      "type": "M"
+    },
+    {
+      "id": "S0150L03",
+      "known": "what your name is",
+      "target": "你的名字是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0151L01",
+      "known": "that wasn't",
+      "target": "那不是",
+      "type": "M"
+    },
+    {
+      "id": "S0151L02",
+      "known": "I was hoping",
+      "target": "我希望",
+      "type": "M"
+    },
+    {
+      "id": "S0151L03",
+      "known": "would happen",
+      "target": "会发生",
+      "type": "M"
+    },
+    {
+      "id": "S0151L04",
+      "known": "hoping would happen",
+      "target": "希望会发生",
+      "type": "M"
+    },
+    {
+      "id": "S0151L05",
+      "known": "what would happen",
+      "target": "会发生的事",
+      "type": "M"
+    },
+    {
+      "id": "S0151L06",
+      "known": "what I was hoping would happen",
+      "target": "我希望会发生的事",
+      "type": "M"
+    },
+    {
+      "id": "S0152L01",
+      "known": "if I had known",
+      "target": "如果我知道",
+      "type": "M"
+    },
+    {
+      "id": "S0152L02",
+      "known": "what you wanted",
+      "target": "你想要什么",
+      "type": "M"
+    },
+    {
+      "id": "S0152L03",
+      "known": "knew what you wanted",
+      "target": "知道你想要什么",
+      "type": "M"
+    },
+    {
+      "id": "S0152L04",
+      "known": "if I had known what you wanted",
+      "target": "如果我知道你想要什么",
+      "type": "M"
+    },
+    {
+      "id": "S0152L05",
+      "known": "I would have done it differently",
+      "target": "我会做得不同",
+      "type": "M"
+    },
+    {
+      "id": "S0152L06",
+      "known": "do differently",
+      "target": "做得不同",
+      "type": "M"
+    },
+    {
+      "id": "S0153L01",
+      "known": "I wouldn't have said it",
+      "target": "我不会说它",
+      "type": "M"
+    },
+    {
+      "id": "S0153L02",
+      "known": "say it",
+      "target": "说它",
+      "type": "M"
+    },
+    {
+      "id": "S0153L03",
+      "known": "exactly the same way",
+      "target": "完全相同的方式",
+      "type": "M"
+    },
+    {
+      "id": "S0153L04",
+      "known": "in exactly the same way",
+      "target": "用完全相同的方式",
+      "type": "M"
+    },
+    {
+      "id": "S0153L05",
+      "known": "say in exactly the same way",
+      "target": "用完全相同的方式说",
+      "type": "M"
+    },
+    {
+      "id": "S0154L02",
+      "known": "where",
+      "target": "在哪里",
+      "type": "M"
+    },
+    {
+      "id": "S0154L03",
+      "known": "meet",
+      "target": "见面",
+      "type": "A"
+    },
+    {
+      "id": "S0154L04",
+      "known": "where to meet",
+      "target": "在哪里见面",
+      "type": "M"
+    },
+    {
+      "id": "S0154L05",
+      "known": "Saturday night",
+      "target": "星期六晚上",
+      "type": "M"
+    },
+    {
+      "id": "S0154L06",
+      "known": "on Saturday night",
+      "target": "在星期六晚上",
+      "type": "M"
+    },
+    {
+      "id": "S0155L01",
+      "known": "I don't mind",
+      "target": "我不介意",
+      "type": "M"
+    },
+    {
+      "id": "S0155L02",
+      "known": "a few minutes",
+      "target": "几分钟",
+      "type": "M"
+    },
+    {
+      "id": "S0155L03",
+      "known": "wait for a few minutes",
+      "target": "等几分钟",
+      "type": "M"
+    },
+    {
+      "id": "S0155L04",
+      "known": "tomorrow morning",
+      "target": "明天早上",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0156L01": {
+      "lego": [
+        "do you want to go",
+        "你想去吗"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["Do you want to go", "你想去吗", null, 1],
+        ["Do you want to go tomorrow morning", "你想明天早上去吗", null, 2],
+        ["Do you want to go meet her", "你想去见面她吗", null, 3],
+        ["Do you want to go on Saturday night", "你想在星期六晚上去吗", null, 3],
+        ["Do you want to go see what would happen", "你想去看会发生什么吗", null, 4],
+        ["Do you want to go if I can wait", "如果我能等，你想去吗", null, 5],
+        ["Can you tell me if you want to go tomorrow", "你能告诉我你想明天去吗", null, 6],
+        ["Do you want to go meet on Saturday night or tomorrow morning", "你想在星期六晚上还是明天早上去见面吗", null, 7],
+        ["I hope you can tell me if you want to go", "我希望你能告诉我你想不想去", null, 7],
+        ["I don't mind if you don't want to go tomorrow morning", "如果你不想明天早上去，我不介意", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0156L01",
+        "seed_context": {
+          "known": "Do you want to go to a restaurant tonight?",
+          "target": "你想今晚去餐厅吗？"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "想",
+          "want"
+        ],
+        [
+          "去",
+          "to go"
+        ],
+        [
+          "吗",
+          "question particle"
+        ]
+      ]
+    },
+    "S0156L02": {
+      "lego": [
+        "go to a restaurant",
+        "去餐厅"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0156L01",
+          "known": "do you want to go",
+          "target": "你想去吗",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Go to a restaurant", "去餐厅", null, 1],
+        ["Do you want to go to a restaurant", "你想去餐厅吗", null, 2],
+        ["I hope you can go to a restaurant", "我希望你能去餐厅", null, 3],
+        ["She said she would go to a restaurant", "她说她会去餐厅", null, 3],
+        ["I don't mind if you go to a restaurant", "如果你去餐厅，我不介意", null, 4],
+        ["Can you tell me if you want to go to a restaurant", "你能告诉我你想不想去餐厅吗", null, 5],
+        ["Do you want to go to a restaurant tomorrow morning", "你想明天早上去餐厅吗", null, 6],
+        ["I hope you don't mind if I can't go to a restaurant", "我希望如果我不能去餐厅你不介意", null, 7],
+        ["She was very kind when she said she would go to a restaurant", "当她说她会去餐厅时，她非常友好", null, 7],
+        ["If I had known you wanted to go to a restaurant, I wouldn't have said it", "如果我知道你想去餐厅，我不会说它", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0156L02",
+        "seed_context": {
+          "known": "Do you want to go to a restaurant tonight?",
+          "target": "你想今晚去餐厅吗？"
+        }
+      },
+      "components": [
+        [
+          "去",
+          "go to"
+        ],
+        [
+          "餐厅",
+          "restaurant"
+        ]
+      ]
+    },
+    "S0156L03": {
+      "lego": [
+        "restaurant",
+        "餐厅"
+      ],
+      "type": "A",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0156L01",
+          "known": "do you want to go",
+          "target": "你想去吗",
+          "type": "M"
+        },
+        {
+          "id": "S0156L02",
+          "known": "go to a restaurant",
+          "target": "去餐厅",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Restaurant", "餐厅", null, 1],
+        ["That restaurant", "那个餐厅", null, 2],
+        ["The restaurant is very kind", "餐厅非常友好", null, 3],
+        ["I hope the restaurant isn't very difficult to find", "我希望餐厅不是很难找", null, 3],
+        ["Can you tell me what the restaurant name is", "你能告诉我餐厅的名字是什么吗", null, 4],
+        ["Do you want to go to that restaurant tomorrow morning", "你想明天早上去那个餐厅吗", null, 5],
+        ["I don't mind which restaurant you want to go to", "我不介意你想去哪个餐厅", null, 6],
+        ["She said the restaurant would finish soon on Saturday night", "她说餐厅星期六晚上会很快完成", null, 7],
+        ["I hope you can tell me if the restaurant is where you want to meet", "我希望你能告诉我餐厅是不是你想见面的地方", null, 8],
+        ["If I had known what restaurant you wanted, I would have done it differently", "如果我知道你想要什么餐厅，我会做得不同", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0156L03",
+        "seed_context": {
+          "known": "Do you want to go to a restaurant tonight?",
+          "target": "你想今晚去餐厅吗？"
+        }
+      }
+    },
+    "S0156L05": {
+      "lego": [
+        "go to a restaurant tonight",
+        "今晚去餐厅"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0156L01",
+          "known": "do you want to go",
+          "target": "你想去吗",
+          "type": "M"
+        },
+        {
+          "id": "S0156L02",
+          "known": "go to a restaurant",
+          "target": "去餐厅",
+          "type": "M"
+        },
+        {
+          "id": "S0156L03",
+          "known": "restaurant",
+          "target": "餐厅",
+          "type": "A"
+        }
+      ],
+      "practice_phrases": [
+        ["Tonight", "今晚", null, 1],
+        ["Go to a restaurant tonight", "今晚去餐厅", null, 2],
+        ["Do you want to go tonight", "你想今晚去吗", null, 3],
+        ["I hope you can go tonight", "我希望你今晚能去", null, 3],
+        ["I don't mind if you go to a restaurant tonight", "如果你今晚去餐厅，我不介意", null, 4],
+        ["Can you tell me if you want to go to a restaurant tonight", "你能告诉我你想不想今晚去餐厅吗", null, 5],
+        ["She said she would go to a restaurant tonight on Saturday night", "她说她今晚星期六晚上会去餐厅", null, 6],
+        ["I hope you don't mind waiting if we go to a restaurant tonight", "我希望如果我们今晚去餐厅你不介意等", null, 7],
+        ["If I had known you wanted to go to a restaurant tonight, I would have said it differently", "如果我知道你想今晚去餐厅，我会用不同的方式说", null, 8],
+        ["Do you want to go to a restaurant tonight", "你想今晚去餐厅吗", null, 4]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0156L05",
+        "seed_context": {
+          "known": "Do you want to go to a restaurant tonight?",
+          "target": "你想今晚去餐厅吗？"
+        }
+      },
+      "components": [
+        [
+          "今晚",
+          "tonight"
+        ],
+        [
+          "去",
+          "go to"
+        ],
+        [
+          "餐厅",
+          "restaurant"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0156_baskets.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_generated": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

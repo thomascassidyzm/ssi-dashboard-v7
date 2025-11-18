@@ -1,0 +1,485 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0155",
+  "generation_stage": "BASKETS_COMPLETED",
+  "seed_pair": {
+    "known": "I don't mind waiting for a few minutes tomorrow morning.",
+    "target": "我不介意明天早上等几分钟。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0145",
+      "known": "Why are you not happy any more?",
+      "target": "你为什么不再高兴了？"
+    },
+    {
+      "seed_id": "S0146",
+      "known": "Nothing seems to be working since we tried to fix it.",
+      "target": "自从我们试图修理它以来，似乎什么都不工作了。"
+    },
+    {
+      "seed_id": "S0147",
+      "known": "She was very kind when she saw me feeling nervous.",
+      "target": "当她看到我感到紧张时，她非常友好。"
+    },
+    {
+      "seed_id": "S0148",
+      "known": "He wasn't very patient when I couldn't answer.",
+      "target": "当我不能回答时，他不是很耐心。"
+    },
+    {
+      "seed_id": "S0149",
+      "known": "This isn't very difficult, so I hope you'll finish soon.",
+      "target": "这不是很难，所以我希望你很快完成。"
+    },
+    {
+      "seed_id": "S0150",
+      "known": "Can you tell me what your name is?",
+      "target": "你能告诉我你的名字是什么吗？"
+    },
+    {
+      "seed_id": "S0151",
+      "known": "That wasn't what I was hoping would happen.",
+      "target": "那不是我希望会发生的事。"
+    },
+    {
+      "seed_id": "S0152",
+      "known": "I would have done it differently if I had known what you wanted.",
+      "target": "如果我知道你想要什么，我会做得不同。"
+    },
+    {
+      "seed_id": "S0153",
+      "known": "I wouldn't have said it in exactly the same way.",
+      "target": "我不会用完全相同的方式说它。"
+    },
+    {
+      "seed_id": "S0154",
+      "known": "Where do you want to meet on Saturday night?",
+      "target": "你想在星期六晚上在哪里见面？"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0149L01",
+      "known": "this isn't very difficult",
+      "target": "这不是很难",
+      "type": "M"
+    },
+    {
+      "id": "S0149L02",
+      "known": "so I hope",
+      "target": "所以我希望",
+      "type": "M"
+    },
+    {
+      "id": "S0149L03",
+      "known": "I hope you'll finish soon",
+      "target": "我希望你很快完成",
+      "type": "M"
+    },
+    {
+      "id": "S0149L04",
+      "known": "you'll finish soon",
+      "target": "你很快完成",
+      "type": "M"
+    },
+    {
+      "id": "S0149L05",
+      "known": "soon",
+      "target": "很快",
+      "type": "A"
+    },
+    {
+      "id": "S0150L01",
+      "known": "can you tell me what your name is",
+      "target": "你能告诉我你的名字是什么吗",
+      "type": "M"
+    },
+    {
+      "id": "S0150L02",
+      "known": "can you tell me",
+      "target": "你能告诉我",
+      "type": "M"
+    },
+    {
+      "id": "S0150L03",
+      "known": "what your name is",
+      "target": "你的名字是什么",
+      "type": "M"
+    },
+    {
+      "id": "S0151L01",
+      "known": "that wasn't",
+      "target": "那不是",
+      "type": "M"
+    },
+    {
+      "id": "S0151L02",
+      "known": "I was hoping",
+      "target": "我希望",
+      "type": "M"
+    },
+    {
+      "id": "S0151L03",
+      "known": "would happen",
+      "target": "会发生",
+      "type": "M"
+    },
+    {
+      "id": "S0151L04",
+      "known": "hoping would happen",
+      "target": "希望会发生",
+      "type": "M"
+    },
+    {
+      "id": "S0151L05",
+      "known": "what would happen",
+      "target": "会发生的事",
+      "type": "M"
+    },
+    {
+      "id": "S0151L06",
+      "known": "what I was hoping would happen",
+      "target": "我希望会发生的事",
+      "type": "M"
+    },
+    {
+      "id": "S0152L01",
+      "known": "if I had known",
+      "target": "如果我知道",
+      "type": "M"
+    },
+    {
+      "id": "S0152L02",
+      "known": "what you wanted",
+      "target": "你想要什么",
+      "type": "M"
+    },
+    {
+      "id": "S0152L03",
+      "known": "knew what you wanted",
+      "target": "知道你想要什么",
+      "type": "M"
+    },
+    {
+      "id": "S0152L04",
+      "known": "if I had known what you wanted",
+      "target": "如果我知道你想要什么",
+      "type": "M"
+    },
+    {
+      "id": "S0152L05",
+      "known": "I would have done it differently",
+      "target": "我会做得不同",
+      "type": "M"
+    },
+    {
+      "id": "S0152L06",
+      "known": "do differently",
+      "target": "做得不同",
+      "type": "M"
+    },
+    {
+      "id": "S0153L01",
+      "known": "I wouldn't have said it",
+      "target": "我不会说它",
+      "type": "M"
+    },
+    {
+      "id": "S0153L02",
+      "known": "say it",
+      "target": "说它",
+      "type": "M"
+    },
+    {
+      "id": "S0153L03",
+      "known": "exactly the same way",
+      "target": "完全相同的方式",
+      "type": "M"
+    },
+    {
+      "id": "S0153L04",
+      "known": "in exactly the same way",
+      "target": "用完全相同的方式",
+      "type": "M"
+    },
+    {
+      "id": "S0153L05",
+      "known": "say in exactly the same way",
+      "target": "用完全相同的方式说",
+      "type": "M"
+    },
+    {
+      "id": "S0154L02",
+      "known": "where",
+      "target": "在哪里",
+      "type": "M"
+    },
+    {
+      "id": "S0154L03",
+      "known": "meet",
+      "target": "见面",
+      "type": "A"
+    },
+    {
+      "id": "S0154L04",
+      "known": "where to meet",
+      "target": "在哪里见面",
+      "type": "M"
+    },
+    {
+      "id": "S0154L05",
+      "known": "Saturday night",
+      "target": "星期六晚上",
+      "type": "M"
+    },
+    {
+      "id": "S0154L06",
+      "known": "on Saturday night",
+      "target": "在星期六晚上",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0155L01": {
+      "lego": [
+        "I don't mind",
+        "我不介意"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I don't mind", "我不介意", null, 1],
+        ["I don't mind it", "我不介意它", null, 2],
+        ["I don't mind what you want", "我不介意你想要什么", null, 3],
+        ["I don't mind what you tell me", "我不介意你告诉我什么", null, 3],
+        ["I don't mind where to meet", "我不介意在哪里见面", null, 4],
+        ["I don't mind what would happen", "我不介意会发生的事", null, 4],
+        ["You can tell me, I don't mind", "你能告诉我，我不介意", null, 5],
+        ["I don't mind what you wanted to say", "我不介意你想要说什么", null, 6],
+        ["I don't mind meeting on Saturday night", "我不介意在星期六晚上见面", null, 6],
+        ["If you can't finish soon, I don't mind", "如果你不能很快完成，我不介意", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0155L01",
+        "seed_context": {
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "不",
+          "don't"
+        ],
+        [
+          "介意",
+          "mind"
+        ]
+      ]
+    },
+    "S0155L02": {
+      "lego": [
+        "a few minutes",
+        "几分钟"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0155L01",
+          "known": "I don't mind",
+          "target": "我不介意",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["A few minutes", "几分钟", null, 1],
+        ["I don't mind a few minutes", "我不介意几分钟", null, 2],
+        ["You can finish in a few minutes", "你能在几分钟完成", null, 3],
+        ["She saw me a few minutes ago", "她几分钟前看到我", null, 3],
+        ["I hope you'll finish in a few minutes", "我希望你在几分钟完成", null, 4],
+        ["I don't mind what happens in a few minutes", "我不介意几分钟后会发生什么", null, 5],
+        ["You can tell me in a few minutes", "你能在几分钟告诉我", null, 5],
+        ["I don't mind if it takes a few minutes", "如果它需要几分钟，我不介意", null, 6],
+        ["She said she would finish in a few minutes", "她说她会在几分钟完成", null, 7],
+        ["I hope you can tell me what you want in a few minutes", "我希望你能在几分钟告诉我你想要什么", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0155L02",
+        "seed_context": {
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
+        }
+      },
+      "components": [
+        [
+          "几",
+          "a few"
+        ],
+        [
+          "分钟",
+          "minutes"
+        ]
+      ]
+    },
+    "S0155L03": {
+      "lego": [
+        "wait for a few minutes",
+        "等几分钟"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0155L01",
+          "known": "I don't mind",
+          "target": "我不介意",
+          "type": "M"
+        },
+        {
+          "id": "S0155L02",
+          "known": "a few minutes",
+          "target": "几分钟",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Wait for a few minutes", "等几分钟", null, 1],
+        ["I don't mind waiting for a few minutes", "我不介意等几分钟", null, 2],
+        ["You can wait for a few minutes", "你能等几分钟", null, 3],
+        ["I hope you can wait for a few minutes", "我希望你能等几分钟", null, 3],
+        ["She said she would wait for a few minutes", "她说她会等几分钟", null, 4],
+        ["I don't mind if you wait for a few minutes", "如果你等几分钟，我不介意", null, 5],
+        ["Can you tell me if you can wait for a few minutes", "你能告诉我你能不能等几分钟吗", null, 6],
+        ["I hope you don't mind waiting for a few minutes", "我希望你不介意等几分钟", null, 6],
+        ["She saw me waiting for a few minutes and she was very kind", "当她看到我等几分钟时，她非常友好", null, 7],
+        ["I don't mind waiting for a few minutes if you can't finish soon", "如果你不能很快完成，我不介意等几分钟", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0155L03",
+        "seed_context": {
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
+        }
+      },
+      "components": [
+        [
+          "等",
+          "wait"
+        ],
+        [
+          "几",
+          "a few"
+        ],
+        [
+          "分钟",
+          "minutes"
+        ]
+      ]
+    },
+    "S0155L04": {
+      "lego": [
+        "tomorrow morning",
+        "明天早上"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0155L01",
+          "known": "I don't mind",
+          "target": "我不介意",
+          "type": "M"
+        },
+        {
+          "id": "S0155L02",
+          "known": "a few minutes",
+          "target": "几分钟",
+          "type": "M"
+        },
+        {
+          "id": "S0155L03",
+          "known": "wait for a few minutes",
+          "target": "等几分钟",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Tomorrow morning", "明天早上", null, 1],
+        ["I don't mind tomorrow morning", "我不介意明天早上", null, 2],
+        ["Can you tell me tomorrow morning", "你能明天早上告诉我吗", null, 3],
+        ["I hope you can finish tomorrow morning", "我希望你明天早上能完成", null, 3],
+        ["We will meet tomorrow morning on Saturday", "我们明天早上星期六见面", null, 4],
+        ["I don't mind waiting tomorrow morning if you want", "如果你想，我不介意明天早上等", null, 5],
+        ["You can tell me what you want tomorrow morning", "你明天早上能告诉我你想要什么", null, 6],
+        ["I hope you don't mind if I can't meet tomorrow morning", "我希望如果我明天早上不能见面你不介意", null, 7],
+        ["She said she would wait for a few minutes tomorrow morning", "她说她明天早上会等几分钟", null, 7],
+        ["I don't mind waiting for a few minutes tomorrow morning", "我不介意明天早上等几分钟", null, 5]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0155L04",
+        "seed_context": {
+          "known": "I don't mind waiting for a few minutes tomorrow morning.",
+          "target": "我不介意明天早上等几分钟。"
+        }
+      },
+      "components": [
+        [
+          "明天",
+          "tomorrow"
+        ],
+        [
+          "早上",
+          "morning"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0155_baskets.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_generated": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

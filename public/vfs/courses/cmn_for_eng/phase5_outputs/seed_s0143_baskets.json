@@ -1,0 +1,711 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0143",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "It's the same thing as we were talking about earlier.",
+    "target": "这和我们之前谈论的是同一件事。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0133",
+      "known": "You get to know someone very well when you work together.",
+      "target": "当你们一起工作的时候你会非常了解一个人。"
+    },
+    {
+      "seed_id": "S0134",
+      "known": "It's not a problem when you work at something difficult with them.",
+      "target": "当你和他们一起做困难的事情时这不是问题。"
+    },
+    {
+      "seed_id": "S0135",
+      "known": "I don't know why you think that it's so good.",
+      "target": "我不知道为什么你认为它这么好。"
+    },
+    {
+      "seed_id": "S0136",
+      "known": "Of course you can ask her because she's my friend.",
+      "target": "当然你可以问她，因为她是我的朋友。"
+    },
+    {
+      "seed_id": "S0137",
+      "known": "It's more important to talk often than to be perfect.",
+      "target": "经常说话比完美更重要。"
+    },
+    {
+      "seed_id": "S0138",
+      "known": "This was where my friend wanted to meet us.",
+      "target": "这是我朋友想要和我们见面的地方。"
+    },
+    {
+      "seed_id": "S0139",
+      "known": "I'm sorry that I need to leave so early.",
+      "target": "对不起我需要这么早离开。"
+    },
+    {
+      "seed_id": "S0140",
+      "known": "I'm sorry that I can't see what you're trying to show me.",
+      "target": "对不起我看不到你试图给我看的东西。"
+    },
+    {
+      "seed_id": "S0141",
+      "known": "No problem. Everything is okay.",
+      "target": "没问题。一切都好。"
+    },
+    {
+      "seed_id": "S0142",
+      "known": "That's very kind of you and I'm grateful to you for helping.",
+      "target": "你真好，我很感激你帮助我。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0135L04",
+      "known": "it's so good",
+      "target": "它这么好",
+      "type": "M"
+    },
+    {
+      "id": "S0135L05",
+      "known": "so good",
+      "target": "这么好",
+      "type": "M"
+    },
+    {
+      "id": "S0136L01",
+      "known": "of course",
+      "target": "当然",
+      "type": "A"
+    },
+    {
+      "id": "S0136L02",
+      "known": "you can ask her",
+      "target": "你可以问她",
+      "type": "M"
+    },
+    {
+      "id": "S0136L03",
+      "known": "because she's my friend",
+      "target": "因为她是我的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0136L04",
+      "known": "she's my friend",
+      "target": "她是我的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0137L01",
+      "known": "talk often/to talk often",
+      "target": "经常说话",
+      "type": "M"
+    },
+    {
+      "id": "S0137L02",
+      "known": "talk/speak",
+      "target": "说话",
+      "type": "A"
+    },
+    {
+      "id": "S0137L03",
+      "known": "perfect/to be perfect",
+      "target": "完美",
+      "type": "A"
+    },
+    {
+      "id": "S0137L04",
+      "known": "more important than to be perfect",
+      "target": "比完美更重要",
+      "type": "M"
+    },
+    {
+      "id": "S0137L05",
+      "known": "more important",
+      "target": "更重要",
+      "type": "M"
+    },
+    {
+      "id": "S0138L01",
+      "known": "this was/this is",
+      "target": "这是",
+      "type": "A"
+    },
+    {
+      "id": "S0138L03",
+      "known": "meet us/meet with us",
+      "target": "和我们见面",
+      "type": "M"
+    },
+    {
+      "id": "S0138L04",
+      "known": "wanted to meet us",
+      "target": "想要和我们见面",
+      "type": "M"
+    },
+    {
+      "id": "S0138L05",
+      "known": "where my friend wanted to meet us",
+      "target": "我朋友想要和我们见面的地方",
+      "type": "M"
+    },
+    {
+      "id": "S0139L01",
+      "known": "I'm sorry",
+      "target": "对不起",
+      "type": "A"
+    },
+    {
+      "id": "S0139L02",
+      "known": "I need to/I need",
+      "target": "我需要",
+      "type": "M"
+    },
+    {
+      "id": "S0139L03",
+      "known": "so early",
+      "target": "这么早",
+      "type": "M"
+    },
+    {
+      "id": "S0139L04",
+      "known": "leave so early",
+      "target": "这么早离开",
+      "type": "M"
+    },
+    {
+      "id": "S0139L05",
+      "known": "need to leave so early",
+      "target": "需要这么早离开",
+      "type": "M"
+    },
+    {
+      "id": "S0140L02",
+      "known": "I can't see",
+      "target": "我看不到",
+      "type": "M"
+    },
+    {
+      "id": "S0140L03",
+      "known": "show me",
+      "target": "给我看",
+      "type": "M"
+    },
+    {
+      "id": "S0140L04",
+      "known": "trying to show me",
+      "target": "试图给我看",
+      "type": "M"
+    },
+    {
+      "id": "S0140L05",
+      "known": "what you're trying to show me",
+      "target": "你试图给我看的东西",
+      "type": "M"
+    },
+    {
+      "id": "S0141L01",
+      "known": "no problem",
+      "target": "没问题",
+      "type": "A"
+    },
+    {
+      "id": "S0141L02",
+      "known": "everything is okay",
+      "target": "一切都好",
+      "type": "M"
+    },
+    {
+      "id": "S0142L01",
+      "known": "that's very kind of you",
+      "target": "你真好",
+      "type": "M"
+    },
+    {
+      "id": "S0142L02",
+      "known": "I'm grateful to you for helping",
+      "target": "我很感激你帮助我",
+      "type": "M"
+    },
+    {
+      "id": "S0142L03",
+      "known": "grateful to you for helping",
+      "target": "感激你帮助我",
+      "type": "M"
+    },
+    {
+      "id": "S0142L04",
+      "known": "you helping me",
+      "target": "你帮助我",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0143L01": {
+      "lego": [
+        "it's the same thing as we were talking about earlier",
+        "这和我们之前谈论的是同一件事"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "这和我们之前谈论的是同一件事。",
+          "It's the same thing as we were talking about earlier.",
+          null,
+          1
+        ],
+        [
+          "这是同一件事。",
+          "It's the same thing.",
+          null,
+          2
+        ],
+        [
+          "我认为这是同一件事。",
+          "I think it's the same thing.",
+          null,
+          3
+        ],
+        [
+          "没问题，这是同一件事。",
+          "No problem, it's the same thing.",
+          null,
+          3
+        ],
+        [
+          "我不知道这是不是同一件事。",
+          "I don't know if it's the same thing.",
+          null,
+          4
+        ],
+        [
+          "她说这和我们之前谈论的是同一件事。",
+          "She said it's the same thing as we were talking about earlier.",
+          null,
+          4
+        ],
+        [
+          "当然，我的朋友说这和我们之前谈论的是同一件事。",
+          "Of course, my friend said it's the same thing as we were talking about earlier.",
+          null,
+          5
+        ],
+        [
+          "我不知道为什么你认为这和我们之前谈论的是同一件事，但没问题。",
+          "I don't know why you think it's the same thing as we were talking about earlier, but no problem.",
+          null,
+          6
+        ],
+        [
+          "这是我朋友想要和我们见面的地方，因为这和我们之前谈论的是同一件事。",
+          "This is where my friend wanted to meet us, because it's the same thing as we were talking about earlier.",
+          null,
+          6
+        ],
+        [
+          "当你和他们一起工作时你会知道这和我们之前谈论的是同一件事，一切都好。",
+          "When you work with them you will know it's the same thing as we were talking about earlier, everything is okay.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0143L01",
+        "seed_context": {
+          "known": "It's the same thing as we were talking about earlier.",
+          "target": "这和我们之前谈论的是同一件事。"
+        }
+      },
+      "components": [
+        [
+          "这",
+          "this"
+        ],
+        [
+          "和",
+          "and/with"
+        ],
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "之前",
+          "before/earlier"
+        ],
+        [
+          "谈论",
+          "talk about"
+        ],
+        [
+          "的",
+          "de (modifier)"
+        ],
+        [
+          "是",
+          "is"
+        ],
+        [
+          "同一",
+          "same"
+        ],
+        [
+          "件",
+          "classifier"
+        ],
+        [
+          "事",
+          "thing/matter"
+        ]
+      ]
+    },
+    "S0143L02": {
+      "lego": [
+        "the same thing",
+        "同一件事"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0143L01",
+          "known": "it's the same thing as we were talking about earlier",
+          "target": "这和我们之前谈论的是同一件事",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "同一件事。",
+          "The same thing.",
+          null,
+          1
+        ],
+        [
+          "这是同一件事。",
+          "This is the same thing.",
+          null,
+          2
+        ],
+        [
+          "我认为这是同一件事。",
+          "I think it's the same thing.",
+          null,
+          3
+        ],
+        [
+          "她说这是同一件事。",
+          "She said it's the same thing.",
+          null,
+          3
+        ],
+        [
+          "我不知道这是不是同一件事。",
+          "I don't know if this is the same thing.",
+          null,
+          4
+        ],
+        [
+          "没问题，我认为这是同一件事。",
+          "No problem, I think it's the same thing.",
+          null,
+          4
+        ],
+        [
+          "当然，我的朋友说这是同一件事。",
+          "Of course, my friend said it's the same thing.",
+          null,
+          5
+        ],
+        [
+          "我不知道为什么你认为这是同一件事，但一切都好。",
+          "I don't know why you think it's the same thing, but everything is okay.",
+          null,
+          6
+        ],
+        [
+          "这是我朋友想要和我们见面的地方，因为这是同一件事。",
+          "This is where my friend wanted to meet us, because it's the same thing.",
+          null,
+          6
+        ],
+        [
+          "当你和他们一起工作时你会知道这是同一件事，我很感激你帮助我。",
+          "When you work with them you will know it's the same thing, I'm grateful to you for helping.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0143L02",
+        "seed_context": {
+          "known": "It's the same thing as we were talking about earlier.",
+          "target": "这和我们之前谈论的是同一件事。"
+        }
+      },
+      "components": [
+        [
+          "同一",
+          "same"
+        ],
+        [
+          "件",
+          "classifier"
+        ],
+        [
+          "事",
+          "thing"
+        ]
+      ]
+    },
+    "S0143L03": {
+      "lego": [
+        "we were talking about earlier",
+        "我们之前谈论的"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0143L01",
+          "known": "it's the same thing as we were talking about earlier",
+          "target": "这和我们之前谈论的是同一件事",
+          "type": "M"
+        },
+        {
+          "id": "S0143L02",
+          "known": "the same thing",
+          "target": "同一件事",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "我们之前谈论的。",
+          "What we were talking about earlier.",
+          null,
+          1
+        ],
+        [
+          "这是我们之前谈论的。",
+          "This is what we were talking about earlier.",
+          null,
+          2
+        ],
+        [
+          "我不知道我们之前谈论的是什么。",
+          "I don't know what we were talking about earlier.",
+          null,
+          3
+        ],
+        [
+          "她知道我们之前谈论的是什么。",
+          "She knows what we were talking about earlier.",
+          null,
+          3
+        ],
+        [
+          "这和我们之前谈论的是同一件事。",
+          "This is the same thing as we were talking about earlier.",
+          null,
+          4
+        ],
+        [
+          "没问题，我知道我们之前谈论的是什么。",
+          "No problem, I know what we were talking about earlier.",
+          null,
+          4
+        ],
+        [
+          "当然，我的朋友知道我们之前谈论的是什么。",
+          "Of course, my friend knows what we were talking about earlier.",
+          null,
+          5
+        ],
+        [
+          "我不知道为什么你不知道我们之前谈论的是什么，但一切都好。",
+          "I don't know why you don't know what we were talking about earlier, but everything is okay.",
+          null,
+          6
+        ],
+        [
+          "这是我朋友想要和我们见面的地方，因为这和我们之前谈论的是同一件事。",
+          "This is where my friend wanted to meet us, because this is the same thing as we were talking about earlier.",
+          null,
+          6
+        ],
+        [
+          "当你和他们一起工作时你会知道我们之前谈论的是什么，我很感激你帮助我。",
+          "When you work with them you will know what we were talking about earlier, I'm grateful to you for helping.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0143L03",
+        "seed_context": {
+          "known": "It's the same thing as we were talking about earlier.",
+          "target": "这和我们之前谈论的是同一件事。"
+        }
+      },
+      "components": [
+        [
+          "我们",
+          "we"
+        ],
+        [
+          "之前",
+          "earlier/before"
+        ],
+        [
+          "谈论",
+          "talk about"
+        ],
+        [
+          "的",
+          "de (relative clause marker)"
+        ]
+      ]
+    },
+    "S0143L04": {
+      "lego": [
+        "earlier",
+        "之前"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0143L01",
+          "known": "it's the same thing as we were talking about earlier",
+          "target": "这和我们之前谈论的是同一件事",
+          "type": "M"
+        },
+        {
+          "id": "S0143L02",
+          "known": "the same thing",
+          "target": "同一件事",
+          "type": "M"
+        },
+        {
+          "id": "S0143L03",
+          "known": "we were talking about earlier",
+          "target": "我们之前谈论的",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "之前。",
+          "Earlier.",
+          null,
+          1
+        ],
+        [
+          "我之前说了。",
+          "I said earlier.",
+          null,
+          2
+        ],
+        [
+          "我之前需要离开。",
+          "I needed to leave earlier.",
+          null,
+          3
+        ],
+        [
+          "她之前想要和我们见面。",
+          "She wanted to meet us earlier.",
+          null,
+          3
+        ],
+        [
+          "我不知道你之前在哪里。",
+          "I don't know where you were earlier.",
+          null,
+          4
+        ],
+        [
+          "没问题，我之前说了同一件事。",
+          "No problem, I said the same thing earlier.",
+          null,
+          4
+        ],
+        [
+          "当然，我的朋友之前想要和我们见面。",
+          "Of course, my friend wanted to meet us earlier.",
+          null,
+          5
+        ],
+        [
+          "我不知道为什么你之前不高兴，但现在一切都好。",
+          "I don't know why you weren't happy earlier, but now everything is okay.",
+          null,
+          6
+        ],
+        [
+          "这是我朋友之前想要和我们见面的地方，我们之前谈论的是同一件事。",
+          "This is where my friend wanted to meet us earlier, we were talking about the same thing earlier.",
+          null,
+          6
+        ],
+        [
+          "对不起我需要这么早离开，因为我之前醒得比我想要的早，我很感激你帮助我。",
+          "I'm sorry I need to leave so early, because I woke earlier than I wanted to earlier, I'm grateful to you for helping.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0143L04",
+        "seed_context": {
+          "known": "It's the same thing as we were talking about earlier.",
+          "target": "这和我们之前谈论的是同一件事。"
+        }
+      }
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0143.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_generated": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

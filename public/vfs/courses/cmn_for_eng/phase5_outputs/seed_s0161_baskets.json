@@ -1,0 +1,146 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0161",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "Can you give me that book on Sunday morning?",
+    "target": "你能在星期天早上给我那本书吗？"
+  },
+  "legos": {
+    "S0161L01": {
+      "lego": [
+        "can you give me",
+        "你能给我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["你能给我", "can you give me", null, 1],
+        ["你能给我那个吗？", "can you give me that?", null, 2],
+        ["你能给我这个词吗？", "can you give me this word?", null, 3],
+        ["你能给我那本书吗？", "can you give me that book?", null, 3],
+        ["你能给我几分钟吗？", "can you give me a few minutes?", null, 4],
+        ["你能明天早上给我那个吗？", "can you give me that tomorrow morning?", null, 5],
+        ["你能在餐厅给我那个吗？", "can you give me that at the restaurant?", null, 5],
+        ["你能在星期六晚上给我那本书吗？", "can you give me that book on Saturday night?", null, 6],
+        ["你能在星期天早上给我那个词吗？", "can you give me that word on Sunday morning?", null, 6],
+        ["你能在那里给我用中文说这个词吗？", "can you give me this word in Chinese there?", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0161L02": {
+      "lego": [
+        "that book",
+        "那本书"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["那本书", "that book", null, 1],
+        ["你能给我那本书", "can you give me that book", null, 2],
+        ["我不介意等那本书", "I don't mind waiting for that book", null, 3],
+        ["我试图说那本书", "I'm trying to say that book", null, 3],
+        ["你怎么说那本书？", "how do you say that book?", null, 4],
+        ["我明天早上给你那本书", "I'll give you that book tomorrow morning", null, 5],
+        ["你想在餐厅谈那本书吗？", "do you want to talk about that book at the restaurant?", null, 6],
+        ["我不能在星期六晚上给你那本书", "I won't be able to give you that book on Saturday night", null, 7],
+        ["你能在星期天早上用中文说那本书吗？", "can you say that book in Chinese on Sunday morning?", null, 7],
+        ["如果我知道，我会给你那本书", "if I had known, I would have given you that book", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0161L03": {
+      "lego": [
+        "Sunday morning",
+        "星期天早上"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["星期天早上", "Sunday morning", null, 1],
+        ["在星期天早上", "on Sunday morning", null, 2],
+        ["我不介意在星期天早上", "I don't mind on Sunday morning", null, 3],
+        ["你想在星期天早上见面吗？", "do you want to meet on Sunday morning?", null, 4],
+        ["你能在星期天早上给我那个吗？", "can you give me that on Sunday morning?", null, 5],
+        ["我在星期天早上去餐厅", "I'll go to the restaurant on Sunday morning", null, 5],
+        ["你怎么在星期天早上说这个词？", "how do you say this word on Sunday morning?", null, 6],
+        ["你能在星期天早上用中文说那本书吗？", "can you say that book in Chinese on Sunday morning?", null, 7],
+        ["我不能在星期天早上在那里", "I won't be able to be there on Sunday morning", null, 6],
+        ["我们在星期天早上谈点别的吧", "let's talk about something else on Sunday morning", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0161L04": {
+      "lego": [
+        "on Sunday morning",
+        "在星期天早上"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["在星期天早上", "on Sunday morning", null, 1],
+        ["你在星期天早上在哪里？", "where are you on Sunday morning?", null, 2],
+        ["你能在星期天早上见面吗？", "can you meet on Sunday morning?", null, 3],
+        ["我在星期天早上去餐厅", "I'll go to the restaurant on Sunday morning", null, 4],
+        ["你能在星期天早上给我那本书吗？", "can you give me that book on Sunday morning?", null, 5],
+        ["我不介意在星期天早上等几分钟", "I don't mind waiting for a few minutes on Sunday morning", null, 6],
+        ["你怎么在星期天早上用中文说这个词？", "how do you say this word in Chinese on Sunday morning?", null, 7],
+        ["我不能在星期天早上在那里", "I won't be able to be there on Sunday morning", null, 6],
+        ["我们在星期天早上谈点别的吧", "let's talk about something else on Sunday morning", null, 6],
+        ["你想在星期天早上在哪里见面？", "where do you want to meet on Sunday morning?", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    },
+    "S0161L05": {
+      "lego": [
+        "[question particle]",
+        "吗"
+      ],
+      "type": "A",
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["你能给我吗？", "can you give me?", null, 1],
+        ["你想去餐厅吗？", "do you want to go to the restaurant?", null, 2],
+        ["你能在那里吗？", "can you be there?", null, 2],
+        ["你想在星期六晚上见面吗？", "do you want to meet on Saturday night?", null, 4],
+        ["你能给我那本书吗？", "can you give me that book?", null, 3],
+        ["你能在星期天早上给我那个吗？", "can you give me that on Sunday morning?", null, 5],
+        ["你能明天早上在餐厅等几分钟吗？", "can you wait for a few minutes at the restaurant tomorrow morning?", null, 6],
+        ["你能在星期天早上用中文说这个词吗？", "can you say this word in Chinese on Sunday morning?", null, 7],
+        ["你想在星期六晚上在哪里见面吗？", "where do you want to meet on Saturday night?", null, 6],
+        ["你能在星期天早上给我那本书吗？", "can you give me that book on Sunday morning?", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10
+    }
+  }
+}

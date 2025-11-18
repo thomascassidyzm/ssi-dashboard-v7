@@ -1,0 +1,599 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0134",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "It's not a problem when you work at something difficult with them.",
+    "target": "当你和他们一起做困难的事情时这不是问题。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0124",
+      "known": "I thought that was a good idea.",
+      "target": "我认为那是个好主意。"
+    },
+    {
+      "seed_id": "S0125",
+      "known": "I believe that your idea was very good.",
+      "target": "我相信你的主意非常好。"
+    },
+    {
+      "seed_id": "S0126",
+      "known": "This work is changing the shape of my brain.",
+      "target": "这个工作正在改变我大脑的形状。"
+    },
+    {
+      "seed_id": "S0127",
+      "known": "That isn't why I wanted to see you.",
+      "target": "那不是为什么我想见你。"
+    },
+    {
+      "seed_id": "S0128",
+      "known": "You're like someone I used to know.",
+      "target": "你像我以前认识的某个人。"
+    },
+    {
+      "seed_id": "S0129",
+      "known": "I'm so happy that you're doing so well.",
+      "target": "我很高兴你做得这么好。"
+    },
+    {
+      "seed_id": "S0130",
+      "known": "That was a surprise, because he's my friend.",
+      "target": "那是个惊喜，因为他是我的朋友。"
+    },
+    {
+      "seed_id": "S0131",
+      "known": "There are too many ideas going around in my head.",
+      "target": "有太多想法在我的脑海里转。"
+    },
+    {
+      "seed_id": "S0132",
+      "known": "That's less exciting than what she was saying.",
+      "target": "那比她正在说的不那么令人兴奋。"
+    },
+    {
+      "seed_id": "S0133",
+      "known": "You get to know someone very well when you work together.",
+      "target": "当你们一起工作的时候你会非常了解一个人。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0128L02",
+      "known": "someone",
+      "target": "某个人",
+      "type": "M"
+    },
+    {
+      "id": "S0128L03",
+      "known": "used to know",
+      "target": "以前认识",
+      "type": "M"
+    },
+    {
+      "id": "S0128L04",
+      "known": "I used to know",
+      "target": "我以前认识的",
+      "type": "M"
+    },
+    {
+      "id": "S0128L05",
+      "known": "someone I used to know",
+      "target": "我以前认识的某个人",
+      "type": "M"
+    },
+    {
+      "id": "S0129L01",
+      "known": "I'm so happy",
+      "target": "我很高兴",
+      "type": "M"
+    },
+    {
+      "id": "S0129L02",
+      "known": "so happy",
+      "target": "很高兴",
+      "type": "M"
+    },
+    {
+      "id": "S0129L03",
+      "known": "you're doing so well",
+      "target": "你做得这么好",
+      "type": "M"
+    },
+    {
+      "id": "S0129L04",
+      "known": "doing so well",
+      "target": "做得这么好",
+      "type": "M"
+    },
+    {
+      "id": "S0129L05",
+      "known": "so well",
+      "target": "这么好",
+      "type": "M"
+    },
+    {
+      "id": "S0130L01",
+      "known": "that was a surprise",
+      "target": "那是个惊喜",
+      "type": "M"
+    },
+    {
+      "id": "S0130L02",
+      "known": "was a surprise",
+      "target": "是个惊喜",
+      "type": "M"
+    },
+    {
+      "id": "S0130L03",
+      "known": "a surprise",
+      "target": "个惊喜",
+      "type": "M"
+    },
+    {
+      "id": "S0130L05",
+      "known": "he's my friend",
+      "target": "他是我的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0130L06",
+      "known": "is my friend",
+      "target": "是我的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0130L07",
+      "known": "my friend",
+      "target": "我的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0131L01",
+      "known": "there are",
+      "target": "有",
+      "type": "A"
+    },
+    {
+      "id": "S0131L02",
+      "known": "too many ideas",
+      "target": "太多想法",
+      "type": "M"
+    },
+    {
+      "id": "S0131L03",
+      "known": "there are too many ideas",
+      "target": "有太多想法",
+      "type": "M"
+    },
+    {
+      "id": "S0131L04",
+      "known": "in my head",
+      "target": "在我的脑海里",
+      "type": "M"
+    },
+    {
+      "id": "S0131L05",
+      "known": "going around in my head",
+      "target": "在我的脑海里转",
+      "type": "M"
+    },
+    {
+      "id": "S0132L01",
+      "known": "that",
+      "target": "那",
+      "type": "A"
+    },
+    {
+      "id": "S0132L02",
+      "known": "what she was saying",
+      "target": "她正在说的",
+      "type": "M"
+    },
+    {
+      "id": "S0132L03",
+      "known": "than what she was saying",
+      "target": "比她正在说的",
+      "type": "M"
+    },
+    {
+      "id": "S0132L04",
+      "known": "not so exciting/less exciting",
+      "target": "不那么令人兴奋",
+      "type": "M"
+    },
+    {
+      "id": "S0132L05",
+      "known": "exciting",
+      "target": "令人兴奋",
+      "type": "M"
+    },
+    {
+      "id": "S0133L01",
+      "known": "when you work together",
+      "target": "当你们一起工作的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0133L02",
+      "known": "work together",
+      "target": "一起工作",
+      "type": "M"
+    },
+    {
+      "id": "S0133L03",
+      "known": "you will/you get to",
+      "target": "你会",
+      "type": "A"
+    },
+    {
+      "id": "S0133L04",
+      "known": "know someone",
+      "target": "了解一个人",
+      "type": "M"
+    },
+    {
+      "id": "S0133L05",
+      "known": "know someone very well",
+      "target": "非常了解一个人",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0134L01": {
+      "lego": [
+        "it's not a problem/this is not a problem",
+        "这不是问题"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["This is not a problem", "这不是问题", null, 1],
+        ["That isn't a problem", "那不是问题", null, 2],
+        ["I think this is not a problem", "我认为这不是问题", null, 3],
+        ["I believe this is not a problem", "我相信这不是问题", null, 3],
+        ["I'm so happy this is not a problem", "我很高兴这不是问题", null, 4],
+        ["My friend said this is not a problem", "我的朋友说这不是问题", null, 5],
+        ["I think that your idea is good because this is not a problem", "我认为你的主意好因为这不是问题", null, 6],
+        ["I believe that when you work together this is not a problem", "我相信当你们一起工作的时候这不是问题", null, 7],
+        ["I'm so happy that this is not a problem for my friend", "我很高兴对我的朋友这不是问题", null, 7],
+        ["That was a surprise because I thought this is not a problem", "那是个惊喜因为我认为这不是问题", null, 8]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0134L01",
+        "seed_context": {
+          "known": "It's not a problem when you work at something difficult with them.",
+          "target": "当你和他们一起做困难的事情时这不是问题。"
+        }
+      },
+      "components": [
+        [
+          "这",
+          "this/it"
+        ],
+        [
+          "不是",
+          "is not"
+        ],
+        [
+          "问题",
+          "problem"
+        ]
+      ]
+    },
+    "S0134L02": {
+      "lego": [
+        "something difficult/difficult thing",
+        "困难的事情"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0134L01",
+          "known": "it's not a problem/this is not a problem",
+          "target": "这不是问题",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Something difficult", "困难的事情", null, 1],
+        ["That's something difficult", "那是困难的事情", null, 2],
+        ["I think that's something difficult", "我认为那是困难的事情", null, 3],
+        ["This is not a problem, that's something difficult", "这不是问题那是困难的事情", null, 4],
+        ["I believe that your idea is something difficult", "我相信你的主意是困难的事情", null, 5],
+        ["My friend said that this work is something difficult", "我的朋友说这个工作是困难的事情", null, 6],
+        ["I'm so happy that something difficult is not a problem for you", "我很高兴困难的事情对你不是问题", null, 7],
+        ["I think when you work together something difficult is not a problem", "我认为当你们一起工作的时候困难的事情不是问题", null, 8],
+        ["Your friend believes that this work is something difficult", "你的朋友相信这个工作是困难的事情", null, 7],
+        ["I wanted to see you because something difficult is not a problem", "我想见你因为困难的事情不是问题", null, 9]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0134L02",
+        "seed_context": {
+          "known": "It's not a problem when you work at something difficult with them.",
+          "target": "当你和他们一起做困难的事情时这不是问题。"
+        }
+      },
+      "components": [
+        [
+          "困难",
+          "difficult"
+        ],
+        [
+          "的",
+          "(de-modifier)"
+        ],
+        [
+          "事情",
+          "thing/matter"
+        ]
+      ]
+    },
+    "S0134L03": {
+      "lego": [
+        "work at something difficult/do difficult things",
+        "做困难的事情"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0134L01",
+          "known": "it's not a problem/this is not a problem",
+          "target": "这不是问题",
+          "type": "M"
+        },
+        {
+          "id": "S0134L02",
+          "known": "something difficult/difficult thing",
+          "target": "困难的事情",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Do difficult things", "做困难的事情", null, 1],
+        ["You do difficult things", "你做困难的事情", null, 2],
+        ["I think you do difficult things", "我认为你做困难的事情", null, 3],
+        ["This is not a problem when you do difficult things", "当你做困难的事情时这不是问题", null, 4],
+        ["I'm so happy that you do difficult things", "我很高兴你做困难的事情", null, 5],
+        ["I believe when you do difficult things this is not a problem", "我相信当你做困难的事情时这不是问题", null, 6],
+        ["My friend is so happy that you do difficult things so well", "我的朋友很高兴你做困难的事情这么好", null, 7],
+        ["I think when you work together and do difficult things this is not a problem", "我认为当你们一起工作做困难的事情时这不是问题", null, 8],
+        ["I wanted to see you do difficult things because you're doing so well", "我想见你做困难的事情因为你做得这么好", null, 8],
+        ["I believe that when you do difficult things you will know someone very well", "我相信当你做困难的事情时你会非常了解一个人", null, 9]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0134L03",
+        "seed_context": {
+          "known": "It's not a problem when you work at something difficult with them.",
+          "target": "当你和他们一起做困难的事情时这不是问题。"
+        }
+      },
+      "components": [
+        [
+          "做",
+          "do/work at"
+        ],
+        [
+          "困难",
+          "difficult"
+        ],
+        [
+          "的",
+          "(de)"
+        ],
+        [
+          "事情",
+          "thing"
+        ]
+      ]
+    },
+    "S0134L04": {
+      "lego": [
+        "with them/together with them",
+        "和他们一起"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0134L01",
+          "known": "it's not a problem/this is not a problem",
+          "target": "这不是问题",
+          "type": "M"
+        },
+        {
+          "id": "S0134L02",
+          "known": "something difficult/difficult thing",
+          "target": "困难的事情",
+          "type": "M"
+        },
+        {
+          "id": "S0134L03",
+          "known": "work at something difficult/do difficult things",
+          "target": "做困难的事情",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["With them", "和他们一起", null, 1],
+        ["Work together with them", "和他们一起工作", null, 2],
+        ["I work together with them", "我和他们一起工作", null, 3],
+        ["I think you work together with them", "我认为你和他们一起工作", null, 4],
+        ["I'm so happy when you work together with them", "当你和他们一起工作时我很高兴", null, 5],
+        ["I believe you do difficult things with them very well", "我相信你和他们一起做困难的事情非常好", null, 6],
+        ["This is not a problem when you work together with them", "当你和他们一起工作时这不是问题", null, 7],
+        ["My friend said you do difficult things with them so well", "我的朋友说你和他们一起做困难的事情这么好", null, 8],
+        ["I wanted to see you work together with them on something difficult", "我想见你和他们一起做困难的事情", null, 8],
+        ["I think when you do difficult things with them this is not a problem", "我认为当你和他们一起做困难的事情时这不是问题", null, 9]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0134L04",
+        "seed_context": {
+          "known": "It's not a problem when you work at something difficult with them.",
+          "target": "当你和他们一起做困难的事情时这不是问题。"
+        }
+      },
+      "components": [
+        [
+          "和",
+          "with/and"
+        ],
+        [
+          "他们",
+          "them"
+        ],
+        [
+          "一起",
+          "together"
+        ]
+      ]
+    },
+    "S0134L05": {
+      "lego": [
+        "when you work at something difficult with them",
+        "当你和他们一起做困难的事情时"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0134L01",
+          "known": "it's not a problem/this is not a problem",
+          "target": "这不是问题",
+          "type": "M"
+        },
+        {
+          "id": "S0134L02",
+          "known": "something difficult/difficult thing",
+          "target": "困难的事情",
+          "type": "M"
+        },
+        {
+          "id": "S0134L03",
+          "known": "work at something difficult/do difficult things",
+          "target": "做困难的事情",
+          "type": "M"
+        },
+        {
+          "id": "S0134L04",
+          "known": "with them/together with them",
+          "target": "和他们一起",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["When you work at something difficult with them", "当你和他们一起做困难的事情时", null, 1],
+        ["I think when you work at something difficult with them", "我认为当你和他们一起做困难的事情时", null, 2],
+        ["I'm happy when you work at something difficult with them", "当你和他们一起做困难的事情时我很高兴", null, 3],
+        ["This is not a problem when you work at something difficult with them", "当你和他们一起做困难的事情时这不是问题", null, 4],
+        ["I believe when you work at something difficult with them this is not a problem", "我相信当你和他们一起做困难的事情时这不是问题", null, 5],
+        ["I think when you work at something difficult with them you're doing so well", "我认为当你和他们一起做困难的事情时你做得这么好", null, 6],
+        ["My friend is so happy when you work at something difficult with them", "当你和他们一起做困难的事情时我的朋友很高兴", null, 7],
+        ["I believe that when you work at something difficult with them you will know someone very well", "我相信当你和他们一起做困难的事情时你会非常了解一个人", null, 8],
+        ["I'm so happy when you work at something difficult with them because this is not a problem", "我很高兴当你和他们一起做困难的事情时因为这不是问题", null, 9],
+        ["It's not a problem when you work at something difficult with them", "当你和他们一起做困难的事情时这不是问题", null, 10]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0134L05",
+        "seed_context": {
+          "known": "It's not a problem when you work at something difficult with them.",
+          "target": "当你和他们一起做困难的事情时这不是问题。"
+        }
+      },
+      "components": [
+        [
+          "当",
+          "when"
+        ],
+        [
+          "你",
+          "you"
+        ],
+        [
+          "和",
+          "with"
+        ],
+        [
+          "他们",
+          "them"
+        ],
+        [
+          "一起",
+          "together"
+        ],
+        [
+          "做",
+          "work at/do"
+        ],
+        [
+          "困难",
+          "difficult"
+        ],
+        [
+          "的",
+          "(de)"
+        ],
+        [
+          "事情",
+          "thing"
+        ],
+        [
+          "时",
+          "(time marker)"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0134_baskets.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

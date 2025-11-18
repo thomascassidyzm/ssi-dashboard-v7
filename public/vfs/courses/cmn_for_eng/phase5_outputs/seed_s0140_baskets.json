@@ -1,0 +1,713 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0140",
+  "generation_stage": "BASKETS_COMPLETE",
+  "seed_pair": {
+    "known": "I'm sorry that I can't see what you're trying to show me.",
+    "target": "对不起我看不到你试图给我看的东西。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0130",
+      "known": "That was a surprise, because he's my friend.",
+      "target": "那是个惊喜，因为他是我的朋友。"
+    },
+    {
+      "seed_id": "S0131",
+      "known": "There are too many ideas going around in my head.",
+      "target": "有太多想法在我的脑海里转。"
+    },
+    {
+      "seed_id": "S0132",
+      "known": "That's less exciting than what she was saying.",
+      "target": "那比她正在说的不那么令人兴奋。"
+    },
+    {
+      "seed_id": "S0133",
+      "known": "You get to know someone very well when you work together.",
+      "target": "当你们一起工作的时候你会非常了解一个人。"
+    },
+    {
+      "seed_id": "S0134",
+      "known": "It's not a problem when you work at something difficult with them.",
+      "target": "当你和他们一起做困难的事情时这不是问题。"
+    },
+    {
+      "seed_id": "S0135",
+      "known": "I don't know why you think that it's so good.",
+      "target": "我不知道为什么你认为它这么好。"
+    },
+    {
+      "seed_id": "S0136",
+      "known": "Of course you can ask her because she's my friend.",
+      "target": "当然你可以问她，因为她是我的朋友。"
+    },
+    {
+      "seed_id": "S0137",
+      "known": "It's more important to talk often than to be perfect.",
+      "target": "经常说话比完美更重要。"
+    },
+    {
+      "seed_id": "S0138",
+      "known": "This was where my friend wanted to meet us.",
+      "target": "这是我朋友想要和我们见面的地方。"
+    },
+    {
+      "seed_id": "S0139",
+      "known": "I'm sorry that I need to leave so early.",
+      "target": "对不起我需要这么早离开。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0133L04",
+      "known": "know someone",
+      "target": "了解一个人",
+      "type": "M"
+    },
+    {
+      "id": "S0133L05",
+      "known": "know someone very well",
+      "target": "非常了解一个人",
+      "type": "M"
+    },
+    {
+      "id": "S0134L01",
+      "known": "it's not a problem/this is not a problem",
+      "target": "这不是问题",
+      "type": "M"
+    },
+    {
+      "id": "S0134L02",
+      "known": "something difficult/difficult thing",
+      "target": "困难的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0134L03",
+      "known": "work at something difficult/do difficult things",
+      "target": "做困难的事情",
+      "type": "M"
+    },
+    {
+      "id": "S0134L04",
+      "known": "with them/together with them",
+      "target": "和他们一起",
+      "type": "M"
+    },
+    {
+      "id": "S0134L05",
+      "known": "when you work at something difficult with them",
+      "target": "当你和他们一起做困难的事情时",
+      "type": "M"
+    },
+    {
+      "id": "S0135L01",
+      "known": "I don't know",
+      "target": "我不知道",
+      "type": "M"
+    },
+    {
+      "id": "S0135L02",
+      "known": "you think",
+      "target": "你认为",
+      "type": "M"
+    },
+    {
+      "id": "S0135L03",
+      "known": "why you think",
+      "target": "为什么你认为",
+      "type": "M"
+    },
+    {
+      "id": "S0135L04",
+      "known": "it's so good",
+      "target": "它这么好",
+      "type": "M"
+    },
+    {
+      "id": "S0135L05",
+      "known": "so good",
+      "target": "这么好",
+      "type": "M"
+    },
+    {
+      "id": "S0136L01",
+      "known": "of course",
+      "target": "当然",
+      "type": "A"
+    },
+    {
+      "id": "S0136L02",
+      "known": "you can ask her",
+      "target": "你可以问她",
+      "type": "M"
+    },
+    {
+      "id": "S0136L03",
+      "known": "because she's my friend",
+      "target": "因为她是我的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0136L04",
+      "known": "she's my friend",
+      "target": "她是我的朋友",
+      "type": "M"
+    },
+    {
+      "id": "S0137L01",
+      "known": "talk often/to talk often",
+      "target": "经常说话",
+      "type": "M"
+    },
+    {
+      "id": "S0137L02",
+      "known": "talk/speak",
+      "target": "说话",
+      "type": "A"
+    },
+    {
+      "id": "S0137L03",
+      "known": "perfect/to be perfect",
+      "target": "完美",
+      "type": "A"
+    },
+    {
+      "id": "S0137L04",
+      "known": "more important than to be perfect",
+      "target": "比完美更重要",
+      "type": "M"
+    },
+    {
+      "id": "S0137L05",
+      "known": "more important",
+      "target": "更重要",
+      "type": "M"
+    },
+    {
+      "id": "S0138L01",
+      "known": "this was/this is",
+      "target": "这是",
+      "type": "A"
+    },
+    {
+      "id": "S0138L03",
+      "known": "meet us/meet with us",
+      "target": "和我们见面",
+      "type": "M"
+    },
+    {
+      "id": "S0138L04",
+      "known": "wanted to meet us",
+      "target": "想要和我们见面",
+      "type": "M"
+    },
+    {
+      "id": "S0138L05",
+      "known": "where my friend wanted to meet us",
+      "target": "我朋友想要和我们见面的地方",
+      "type": "M"
+    },
+    {
+      "id": "S0139L01",
+      "known": "I'm sorry",
+      "target": "对不起",
+      "type": "A"
+    },
+    {
+      "id": "S0139L02",
+      "known": "I need to/I need",
+      "target": "我需要",
+      "type": "M"
+    },
+    {
+      "id": "S0139L03",
+      "known": "so early",
+      "target": "这么早",
+      "type": "M"
+    },
+    {
+      "id": "S0139L04",
+      "known": "leave so early",
+      "target": "这么早离开",
+      "type": "M"
+    },
+    {
+      "id": "S0139L05",
+      "known": "need to leave so early",
+      "target": "需要这么早离开",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0140L02": {
+      "lego": [
+        "I can't see",
+        "我看不到"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "我看不到。",
+          "I can't see.",
+          null,
+          1
+        ],
+        [
+          "对不起，我看不到。",
+          "I'm sorry, I can't see.",
+          null,
+          2
+        ],
+        [
+          "我看不到她的朋友。",
+          "I can't see her friend.",
+          null,
+          3
+        ],
+        [
+          "这不是问题，我看不到。",
+          "This is not a problem, I can't see.",
+          null,
+          3
+        ],
+        [
+          "我不知道为什么我看不到。",
+          "I don't know why I can't see.",
+          null,
+          4
+        ],
+        [
+          "对不起我看不到你的朋友。",
+          "I'm sorry I can't see your friend.",
+          null,
+          4
+        ],
+        [
+          "当你和他们一起工作时我看不到。",
+          "When you work with them I can't see.",
+          null,
+          5
+        ],
+        [
+          "我很高兴这不是问题，因为我看不到。",
+          "I'm very happy this is not a problem, because I can't see.",
+          null,
+          6
+        ],
+        [
+          "当然你可以问她，因为我看不到她是我的朋友。",
+          "Of course you can ask her, because I can't see she's my friend.",
+          null,
+          6
+        ],
+        [
+          "我不知道为什么你认为我看不到这是这么好的东西。",
+          "I don't know why you think I can't see this is such a good thing.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0140L02",
+        "seed_context": {
+          "known": "I'm sorry that I can't see what you're trying to show me.",
+          "target": "对不起我看不到你试图给我看的东西。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "看",
+          "see"
+        ],
+        [
+          "不到",
+          "can't (reach by seeing)"
+        ]
+      ]
+    },
+    "S0140L03": {
+      "lego": [
+        "show me",
+        "给我看"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0140L02",
+          "known": "I can't see",
+          "target": "我看不到",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "给我看。",
+          "Show me.",
+          null,
+          1
+        ],
+        [
+          "她给我看东西。",
+          "She shows me things.",
+          null,
+          2
+        ],
+        [
+          "她想要给我看。",
+          "She wants to show me.",
+          null,
+          3
+        ],
+        [
+          "当然你可以给我看。",
+          "Of course you can show me.",
+          null,
+          3
+        ],
+        [
+          "我的朋友想要给我看。",
+          "My friend wants to show me.",
+          null,
+          4
+        ],
+        [
+          "对不起我看不到你给我看的。",
+          "I'm sorry I can't see what you show me.",
+          null,
+          4
+        ],
+        [
+          "我很高兴她想要给我看东西。",
+          "I'm very happy she wants to show me things.",
+          null,
+          5
+        ],
+        [
+          "这是我朋友想要给我看的地方。",
+          "This is the place my friend wants to show me.",
+          null,
+          6
+        ],
+        [
+          "当你们一起工作时她会给我看困难的事情。",
+          "When you work together she will show me difficult things.",
+          null,
+          6
+        ],
+        [
+          "我不知道为什么你认为她不想要给我看这么好的东西。",
+          "I don't know why you think she doesn't want to show me such good things.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0140L03",
+        "seed_context": {
+          "known": "I'm sorry that I can't see what you're trying to show me.",
+          "target": "对不起我看不到你试图给我看的东西。"
+        }
+      },
+      "components": [
+        [
+          "给",
+          "give/to"
+        ],
+        [
+          "我",
+          "me"
+        ],
+        [
+          "看",
+          "see/show"
+        ]
+      ]
+    },
+    "S0140L04": {
+      "lego": [
+        "trying to show me",
+        "试图给我看"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0140L02",
+          "known": "I can't see",
+          "target": "我看不到",
+          "type": "M"
+        },
+        {
+          "id": "S0140L03",
+          "known": "show me",
+          "target": "给我看",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "她试图给我看。",
+          "She's trying to show me.",
+          null,
+          1
+        ],
+        [
+          "你试图给我看东西。",
+          "You're trying to show me things.",
+          null,
+          2
+        ],
+        [
+          "我的朋友试图给我看。",
+          "My friend is trying to show me.",
+          null,
+          3
+        ],
+        [
+          "对不起她试图给我看。",
+          "I'm sorry she's trying to show me.",
+          null,
+          3
+        ],
+        [
+          "我看不到你试图给我看的。",
+          "I can't see what you're trying to show me.",
+          null,
+          4
+        ],
+        [
+          "这不是问题，她试图给我看。",
+          "This is not a problem, she's trying to show me.",
+          null,
+          4
+        ],
+        [
+          "我很高兴我的朋友试图给我看东西。",
+          "I'm very happy my friend is trying to show me things.",
+          null,
+          5
+        ],
+        [
+          "当然你可以问她为什么她试图给我看。",
+          "Of course you can ask her why she's trying to show me.",
+          null,
+          6
+        ],
+        [
+          "我不知道为什么她试图给我看这么好的东西。",
+          "I don't know why she's trying to show me such good things.",
+          null,
+          6
+        ],
+        [
+          "当你们一起工作时你会非常了解她为什么试图给我看困难的事情。",
+          "When you work together you will know very well why she's trying to show me difficult things.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0140L04",
+        "seed_context": {
+          "known": "I'm sorry that I can't see what you're trying to show me.",
+          "target": "对不起我看不到你试图给我看的东西。"
+        }
+      },
+      "components": [
+        [
+          "试图",
+          "trying to/attempt to"
+        ],
+        [
+          "给",
+          "give/to"
+        ],
+        [
+          "我",
+          "me"
+        ],
+        [
+          "看",
+          "see/show"
+        ]
+      ]
+    },
+    "S0140L05": {
+      "lego": [
+        "what you're trying to show me",
+        "你试图给我看的东西"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0140L02",
+          "known": "I can't see",
+          "target": "我看不到",
+          "type": "M"
+        },
+        {
+          "id": "S0140L03",
+          "known": "show me",
+          "target": "给我看",
+          "type": "M"
+        },
+        {
+          "id": "S0140L04",
+          "known": "trying to show me",
+          "target": "试图给我看",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "你试图给我看的东西。",
+          "What you're trying to show me.",
+          null,
+          1
+        ],
+        [
+          "我看不到你试图给我看的东西。",
+          "I can't see what you're trying to show me.",
+          null,
+          2
+        ],
+        [
+          "她说你试图给我看的东西。",
+          "She said what you're trying to show me.",
+          null,
+          3
+        ],
+        [
+          "这是你试图给我看的东西。",
+          "This is what you're trying to show me.",
+          null,
+          3
+        ],
+        [
+          "对不起我看不到你试图给我看的东西。",
+          "I'm sorry I can't see what you're trying to show me.",
+          null,
+          4
+        ],
+        [
+          "我不知道你试图给我看的东西。",
+          "I don't know what you're trying to show me.",
+          null,
+          4
+        ],
+        [
+          "我很高兴你试图给我看的东西这么好。",
+          "I'm very happy what you're trying to show me is so good.",
+          null,
+          5
+        ],
+        [
+          "这不是问题，因为我看不到你试图给我看的东西。",
+          "This is not a problem, because I can't see what you're trying to show me.",
+          null,
+          6
+        ],
+        [
+          "当然我的朋友想要了解你试图给我看的东西。",
+          "Of course my friend wants to know what you're trying to show me.",
+          null,
+          6
+        ],
+        [
+          "我不知道为什么你认为你试图给我看的东西比她正在说的更重要。",
+          "I don't know why you think what you're trying to show me is more important than what she was saying.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0140L05",
+        "seed_context": {
+          "known": "I'm sorry that I can't see what you're trying to show me.",
+          "target": "对不起我看不到你试图给我看的东西。"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "试图",
+          "trying to"
+        ],
+        [
+          "给",
+          "give"
+        ],
+        [
+          "我",
+          "me"
+        ],
+        [
+          "看",
+          "see/show"
+        ],
+        [
+          "的",
+          "(de-nominalizer)"
+        ],
+        [
+          "东西",
+          "thing/what"
+        ]
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases arrays using Phase 5 Intelligence v7.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 phrases per LEGO)",
+    "output": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0140_baskets.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_generated": 40,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

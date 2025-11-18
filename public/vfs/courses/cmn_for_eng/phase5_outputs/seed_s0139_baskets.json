@@ -1,0 +1,358 @@
+{
+  "legos": {
+    "S0139L03": {
+      "lego": [
+        "so early",
+        "这么早"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0139L01",
+          "known": "I'm sorry",
+          "target": "对不起",
+          "type": "A"
+        },
+        {
+          "id": "S0139L02",
+          "known": "I need to/I need",
+          "target": "我需要",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "这么早",
+          "So early",
+          null,
+          1
+        ],
+        [
+          "她这么早",
+          "She is so early",
+          null,
+          1
+        ],
+        [
+          "对不起这么早",
+          "I'm sorry it's so early",
+          null,
+          2
+        ],
+        [
+          "我这么早到",
+          "I arrive so early",
+          null,
+          2
+        ],
+        [
+          "她这么早开始工作",
+          "She starts working so early",
+          null,
+          3
+        ],
+        [
+          "我不知道这么早",
+          "I don't know it's so early",
+          null,
+          3
+        ],
+        [
+          "对不起我这么早来",
+          "I'm sorry I came so early",
+          null,
+          4
+        ],
+        [
+          "我很高兴你这么早到",
+          "I'm very happy you arrived so early",
+          null,
+          5
+        ],
+        [
+          "当然你可以这么早离开",
+          "Of course you can leave so early",
+          null,
+          5
+        ],
+        [
+          "我不知道为什么她这么早",
+          "I don't know why she's so early",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0139L03",
+        "seed_context": {
+          "known": "I'm sorry that I need to leave so early.",
+          "target": "对不起我需要这么早离开。"
+        }
+      },
+      "components": [
+        [
+          "这么",
+          "so/this"
+        ],
+        [
+          "早",
+          "early"
+        ]
+      ]
+    },
+    "S0139L04": {
+      "lego": [
+        "leave so early",
+        "这么早离开"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0139L01",
+          "known": "I'm sorry",
+          "target": "对不起",
+          "type": "A"
+        },
+        {
+          "id": "S0139L02",
+          "known": "I need to/I need",
+          "target": "我需要",
+          "type": "M"
+        },
+        {
+          "id": "S0139L03",
+          "known": "so early",
+          "target": "这么早",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "这么早离开",
+          "Leave so early",
+          null,
+          1
+        ],
+        [
+          "她这么早离开",
+          "She leaves so early",
+          null,
+          1
+        ],
+        [
+          "对不起这么早离开",
+          "I'm sorry to leave so early",
+          null,
+          2
+        ],
+        [
+          "我这么早离开了",
+          "I left so early",
+          null,
+          2
+        ],
+        [
+          "她说她这么早离开",
+          "She said she leaves so early",
+          null,
+          3
+        ],
+        [
+          "我不这么早离开",
+          "I don't leave so early",
+          null,
+          3
+        ],
+        [
+          "我很高兴你这么早离开",
+          "I'm very happy you leave so early",
+          null,
+          4
+        ],
+        [
+          "当然你可以这么早离开",
+          "Of course you can leave so early",
+          null,
+          5
+        ],
+        [
+          "我不知道她这么早离开",
+          "I don't know she leaves so early",
+          null,
+          5
+        ],
+        [
+          "我不知道为什么她这么早离开",
+          "I don't know why she leaves so early",
+          null,
+          6
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0139L04",
+        "seed_context": {
+          "known": "I'm sorry that I need to leave so early.",
+          "target": "对不起我需要这么早离开。"
+        }
+      },
+      "components": [
+        [
+          "这么",
+          "so"
+        ],
+        [
+          "早",
+          "early"
+        ],
+        [
+          "离开",
+          "leave"
+        ]
+      ]
+    },
+    "S0139L05": {
+      "lego": [
+        "need to leave so early",
+        "需要这么早离开"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0139L01",
+          "known": "I'm sorry",
+          "target": "对不起",
+          "type": "A"
+        },
+        {
+          "id": "S0139L02",
+          "known": "I need to/I need",
+          "target": "我需要",
+          "type": "M"
+        },
+        {
+          "id": "S0139L03",
+          "known": "so early",
+          "target": "这么早",
+          "type": "M"
+        },
+        {
+          "id": "S0139L04",
+          "known": "leave so early",
+          "target": "这么早离开",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "她需要这么早离开。",
+          "She needs to leave so early.",
+          null,
+          1
+        ],
+        [
+          "我不需要这么早离开。",
+          "I don't need to leave so early.",
+          null,
+          2
+        ],
+        [
+          "对不起我需要这么早离开。",
+          "I'm sorry I need to leave so early.",
+          null,
+          3
+        ],
+        [
+          "她说她需要这么早离开。",
+          "She said she needs to leave so early.",
+          null,
+          3
+        ],
+        [
+          "我不知道她需要这么早离开。",
+          "I don't know she needs to leave so early.",
+          null,
+          4
+        ],
+        [
+          "这不是问题，我需要这么早离开。",
+          "This is not a problem, I need to leave so early.",
+          null,
+          4
+        ],
+        [
+          "我很高兴你不需要这么早离开。",
+          "I'm very happy you don't need to leave so early.",
+          null,
+          5
+        ],
+        [
+          "对不起，因为我需要这么早离开，这不是问题。",
+          "I'm sorry, because I need to leave so early, this is not a problem.",
+          null,
+          6
+        ],
+        [
+          "当然，如果她需要这么早离开，这不是问题。",
+          "Of course, if she needs to leave so early, this is not a problem.",
+          null,
+          6
+        ],
+        [
+          "我不知道为什么你认为她需要这么早离开。",
+          "I don't know why you think she needs to leave so early.",
+          null,
+          7
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0139L05",
+        "seed_context": {
+          "known": "I'm sorry that I need to leave so early.",
+          "target": "对不起我需要这么早离开。"
+        }
+      },
+      "components": [
+        [
+          "需要",
+          "need to"
+        ],
+        [
+          "这么",
+          "so"
+        ],
+        [
+          "早",
+          "early"
+        ],
+        [
+          "离开",
+          "leave"
+        ]
+      ]
+    }
+  }
+}
