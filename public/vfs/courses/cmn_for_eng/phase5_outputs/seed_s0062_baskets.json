@@ -1,0 +1,156 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0062",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "我不确定我能不能同时帮你。",
+    "target": "I'm not sure if I can help you at the same time."
+  },
+  "recent_seed_pairs": {
+    "S0052": [["他上周想给他的朋友写封信。","He wanted to write a letter to his friend last week."],[["S0052L01","last week","上周"],["S0052L02","to his friend","给他的朋友"],["S0052L03","his friend","他的朋友"],["S0052L04","write a letter","写封信"]]],
+    "S0053": [["她想把他的信放进她的包里。","She wanted to put his letter in her bag."],[["S0053L01","put his letter in her bag","把他的信放进她的包里"],["S0053L02","his letter","他的信"],["S0053L03","in her bag","她的包里"],["S0053L04","her bag","她的包"]]],
+    "S0054": [["我们想多给你一点时间。","We wanted to give you a little more time."],[["S0054L01","we wanted","我们想"],["S0054L02","give you a little more time","多给你一点时间"],["S0054L03","give you a little time","给你一点时间"],["S0054L04","a little time","一点时间"]]],
+    "S0055": [["当我没睡好的时候我不喜欢醒来。","I don't enjoy waking up when I didn't sleep very well."],[["S0055L01","when I didn't sleep very well","当我没睡好的时候"],["S0055L02","didn't sleep well","没睡好"],["S0055L03","sleep well","睡好"],["S0055L04","don't enjoy","不喜欢"],["S0055L05","wake up","醒来"]]],
+    "S0056": [["这样我就能记住怎么说几个词。","So I can remember how to say a few words."],[["S0056L01","so I can","这样我就能"],["S0056L02","can remember","能记住"],["S0056L03","remember how to say","记住怎么说"],["S0056L04","how to say","怎么说"],["S0056L05","a few words","几个词"]]],
+    "S0057": [["我记不住怎么说我想说的话。","I can't remember how to say what I wanted to say."],[["S0057L01","can't remember","记不住"],["S0057L03","what I wanted to say","我想说的话"],["S0057L04","what to say / wanted to say","想说的话"]]],
+    "S0058": [["当你理解足够多的词的时候很有趣。","It's interesting when you understand enough words."],[["S0058L01","when you understand enough words","当你理解足够多的词的时候"],["S0058L02","understand enough words","理解足够多的词"],["S0058L03","enough words","足够多的词"],["S0058L04","interesting / very interesting","很有趣"]]],
+    "S0059": [["我知道下周我需要做什么。","I know how to do what I need to do next week."],[["S0059L01","I know","我知道"],["S0059L02","know","知道"],["S0059L03","next week","下周"],["S0059L04","what I need to do next week","下周我需要做什么"],["S0059L05","need to do what / what...need to do","需要做什么"],["S0059L06","do what","做什么"]]],
+    "S0060": [["我还不知道怎么说足够多不同的词。","I don't know how to say enough different words yet."],[["S0060L01","I don't know yet","我还不知道"],["S0060L02","don't know yet / still don't know","还不知道"],["S0060L03","don't know","不知道"],["S0060L05","enough different words","足够多不同的词"],["S0060L06","different words","不同的词"]]],
+    "S0061": [["你能再慢一点说一遍吗？","Could you say that again a little more slowly?"],[["S0061L01","Could you","你能"],["S0061L02","a little slower","慢一点"],["S0061L03","a little more slowly","再慢一点"],["S0061L04","say that again","说一遍"],["S0061L05","say that again?","说一遍吗"]]]
+  },
+  "legos": {
+    "S0062L02": {
+      "lego": ["can or not","能不能"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L02",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0062L03": {
+      "lego": ["if I can","我能不能"],
+      "type": "M",
+      "current_seed_legos_available": [["can or not","能不能"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L03",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0062L04": {
+      "lego": ["at the same time","同时"],
+      "type": "A",
+      "current_seed_legos_available": [["can or not","能不能"],["if I can","我能不能"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L04",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      }
+    },
+    "S0062L05": {
+      "lego": ["help you","帮你"],
+      "type": "M",
+      "current_seed_legos_available": [["can or not","能不能"],["if I can","我能不能"],["at the same time","同时"]],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0062L05",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0062L06": {
+      "lego": ["help you at the same time","同时帮你"],
+      "type": "M",
+      "current_seed_legos_available": [["can or not","能不能"],["if I can","我能不能"],["at the same time","同时"],["help you","帮你"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Help you at the same time.", "同时帮你。", null, 1],
+        ["I can help you at the same time.", "我能同时帮你。", null, 2],
+        ["I wanted to help you at the same time.", "我想同时帮你。", null, 3],
+        ["Could you help you at the same time?", "你能同时帮你吗？", null, 3],
+        ["I can't help you at the same time.", "我不能同时帮你。", null, 4],
+        ["I don't know if I can help you at the same time.", "我不知道我能不能同时帮你。", null, 5],
+        ["I wanted to help you remember how to say it at the same time.", "我想同时帮你记住怎么说。", null, 6],
+        ["I can help you do interesting things at the same time next week.", "我下周能同时帮你做有趣的事情。", null, 7],
+        ["When I didn't sleep well, I can't help you at the same time.", "当我没睡好的时候，我不能同时帮你。", null, 7],
+        ["I still don't know if I can help you remember enough different words at the same time.", "我还不知道我能不能同时帮你记住足够多不同的词。", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0062L06",
+        "seed_context": {
+          "known": "我不确定我能不能同时帮你。",
+          "target": "I'm not sure if I can help you at the same time."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0062.json",
+    "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
+    "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+    "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10,
+    "recent_legos_available": 45
+  }
+}

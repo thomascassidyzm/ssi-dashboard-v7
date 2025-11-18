@@ -1,0 +1,201 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0060",
+  "generation_stage": "BASKETS_GENERATED",
+  "seed_pair": {
+    "known": "我还不知道怎么说足够多不同的词。",
+    "target": "I don't know how to say enough different words yet."
+  },
+  "recent_seed_pairs": {
+    "S0050": [["我不是在试着尽快完成。","I'm not trying to finish as quickly as possible."],[["S0050L01","I'm not trying to","我不是在试着"],["S0050L02","not trying to","不是在试着"],["S0050L03","to finish as quickly as possible","尽快完成"],["S0050L04","as quickly as possible","尽快"]]],
+    "S0051": [["我喜欢和朋友做有趣的事情。","I enjoy doing interesting things with my friends."],[["S0051L01","I enjoy","我喜欢"],["S0051L02","with my friends","和朋友"],["S0051L03","doing with my friends","和朋友做"],["S0051L04","do interesting things","做有趣的事情"],["S0051L05","interesting things","有趣的事情"]]],
+    "S0052": [["他上周想给他的朋友写封信。","He wanted to write a letter to his friend last week."],[["S0052L01","last week","上周"],["S0052L02","to his friend","给他的朋友"],["S0052L03","his friend","他的朋友"],["S0052L04","write a letter","写封信"]]],
+    "S0053": [["她想把他的信放进她的包里。","She wanted to put his letter in her bag."],[["S0053L01","put his letter in her bag","把他的信放进她的包里"],["S0053L02","his letter","他的信"],["S0053L03","in her bag","她的包里"],["S0053L04","her bag","她的包"]]],
+    "S0054": [["我们想多给你一点时间。","We wanted to give you a little more time."],[["S0054L01","we wanted","我们想"],["S0054L02","give you a little more time","多给你一点时间"],["S0054L03","give you a little time","给你一点时间"],["S0054L04","a little time","一点时间"]]],
+    "S0055": [["当我没睡好的时候我不喜欢醒来。","I don't enjoy waking up when I didn't sleep very well."],[["S0055L01","when I didn't sleep very well","当我没睡好的时候"],["S0055L02","didn't sleep well","没睡好"],["S0055L03","sleep well","睡好"],["S0055L04","don't enjoy","不喜欢"],["S0055L05","wake up","醒来"]]],
+    "S0056": [["这样我就能记住怎么说几个词。","So I can remember how to say a few words."],[["S0056L01","so I can","这样我就能"],["S0056L02","can remember","能记住"],["S0056L03","remember how to say","记住怎么说"],["S0056L04","how to say","怎么说"],["S0056L05","a few words","几个词"]]],
+    "S0057": [["我记不住怎么说我想说的话。","I can't remember how to say what I wanted to say."],[["S0057L01","can't remember","记不住"],["S0057L03","what I wanted to say","我想说的话"],["S0057L04","what to say / wanted to say","想说的话"]]],
+    "S0058": [["当你理解足够多的词的时候很有趣。","It's interesting when you understand enough words."],[["S0058L01","when you understand enough words","当你理解足够多的词的时候"],["S0058L02","understand enough words","理解足够多的词"],["S0058L03","enough words","足够多的词"],["S0058L04","interesting / very interesting","很有趣"]]],
+    "S0059": [["我知道下周我需要做什么。","I know how to do what I need to do next week."],[["S0059L01","I know","我知道"],["S0059L02","know","知道"],["S0059L03","next week","下周"],["S0059L04","what I need to do next week","下周我需要做什么"],["S0059L05","need to do what / what...need to do","需要做什么"],["S0059L06","do what","做什么"]]]
+  },
+  "legos": {
+    "S0060L01": {
+      "lego": ["I don't know yet","我还不知道"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I don't know yet.","我还不知道。",null,1],
+        ["I don't know yet how to say it.","我还不知道怎么说。",null,2],
+        ["I don't know yet what to do.","我还不知道做什么。",null,3],
+        ["I don't know yet a few words.","我还不知道几个词。",null,3],
+        ["I don't know yet how to say a few words.","我还不知道怎么说几个词。",null,4],
+        ["I don't know yet what I need to do.","我还不知道我需要做什么。",null,4],
+        ["I don't know yet how to do interesting things with my friends.","我还不知道怎么和朋友做有趣的事情。",null,6],
+        ["I don't know yet what I wanted to say to my friends last week.","我还不知道上周我想对朋友说什么。",null,7],
+        ["Because I think I don't know yet, I'm not trying to finish quickly.","因为我认为我还不知道，我不是在试着快速完成。",null,8],
+        ["When I didn't sleep well, I don't know yet how to say enough words.","当我没睡好的时候，我还不知道怎么说足够多的词。",null,8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0060L01",
+        "seed_context": {
+          "known": "我还不知道怎么说足够多不同的词。",
+          "target": "I don't know how to say enough different words yet."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0060L02": {
+      "lego": ["don't know yet / still don't know","还不知道"],
+      "type": "M",
+      "current_seed_legos_available": [["I don't know yet","我还不知道"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I still don't know.", "我还不知道。", null, 1],
+        ["She still don't know.", "她还不知道。", null, 1],
+        ["I still don't know how to say.", "我还不知道怎么说。", null, 3],
+        ["He still don't know what to do.", "他还不知道做什么。", null, 3],
+        ["I still don't know what I need to do.", "我还不知道我需要做什么。", null, 4],
+        ["We still don't know how to say a few words.", "我们还不知道怎么说几个词。", null, 5],
+        ["I still don't know how to say what I wanted to say.", "我还不知道怎么说我想说的话。", null, 6],
+        ["She still don't know what she needs to do next week.", "她还不知道下周她需要做什么。", null, 6],
+        ["They still don't know how to remember enough words.", "他们还不知道怎么记住足够多的词。", null, 7],
+        ["I still don't know when I can remember how to say different words.", "我还不知道什么时候我能记住怎么说不同的词。", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0060L02",
+        "seed_context": {
+          "known": "我还不知道怎么说足够多不同的词。",
+          "target": "I don't know how to say enough different words yet."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0060L03": {
+      "lego": ["don't know","不知道"],
+      "type": "M",
+      "current_seed_legos_available": [["I don't know yet","我还不知道"],["don't know yet / still don't know","还不知道"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["I don't know.", "我不知道。", null, 1],
+        ["They don't know.", "他们不知道。", null, 1],
+        ["I don't know how to say.", "我不知道怎么说。", null, 3],
+        ["We don't know what to do.", "我们不知道做什么。", null, 3],
+        ["I don't know what I wanted to say.", "我不知道我想说的话。", null, 4],
+        ["She don't know how to write a letter.", "她不知道怎么写封信。", null, 5],
+        ["I don't know how to say enough words.", "我不知道怎么说足够多的词。", null, 6],
+        ["They don't know what they need to do next week.", "他们不知道下周他们需要做什么。", null, 6],
+        ["I don't know how to remember what I wanted to say.", "我不知道怎么记住我想说的话。", null, 7],
+        ["We don't know when we can understand enough different words.", "我们不知道什么时候我们能理解足够多不同的词。", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0060L03",
+        "seed_context": {
+          "known": "我还不知道怎么说足够多不同的词。",
+          "target": "I don't know how to say enough different words yet."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0060L05": {
+      "lego": ["enough different words","足够多不同的词"],
+      "type": "M",
+      "current_seed_legos_available": [["I don't know yet","我还不知道"],["don't know yet / still don't know","还不知道"],["don't know","不知道"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Enough different words.", "足够多不同的词。", null, 1],
+        ["I need enough different words.", "我需要足够多不同的词。", null, 2],
+        ["I can't remember enough different words.", "我记不住足够多不同的词。", null, 3],
+        ["I wanted to say enough different words.", "我想说足够多不同的词。", null, 3],
+        ["I don't know how to say enough different words.", "我不知道怎么说足够多不同的词。", null, 4],
+        ["I can't remember how to say enough different words.", "我记不住怎么说足够多不同的词。", null, 5],
+        ["I need to understand enough different words next week.", "我下周需要理解足够多不同的词。", null, 6],
+        ["When I can remember enough different words, it's very interesting.", "当我能记住足够多不同的词的时候，很有趣。", null, 7],
+        ["I still don't know how to remember enough different words.", "我还不知道怎么记住足够多不同的词。", null, 6],
+        ["I wanted to give you a little time to learn enough different words.", "我想给你一点时间学习足够多不同的词。", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0060L05",
+        "seed_context": {
+          "known": "我还不知道怎么说足够多不同的词。",
+          "target": "I don't know how to say enough different words yet."
+        }
+      },
+      "components": [[null,null],[null,null],[null,null]]
+    },
+    "S0060L06": {
+      "lego": ["different words","不同的词"],
+      "type": "M",
+      "current_seed_legos_available": [["I don't know yet","我还不知道"],["don't know yet / still don't know","还不知道"],["don't know","不知道"],["enough different words","足够多不同的词"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Different words.", "不同的词。", null, 1],
+        ["I need different words.", "我需要不同的词。", null, 2],
+        ["I can't remember different words.", "我记不住不同的词。", null, 3],
+        ["I wanted to say different words.", "我想说不同的词。", null, 3],
+        ["I don't know how to say different words.", "我不知道怎么说不同的词。", null, 4],
+        ["I need to understand a few different words.", "我需要理解几个不同的词。", null, 5],
+        ["I still don't know how to remember different words.", "我还不知道怎么记住不同的词。", null, 6],
+        ["When I understand different words, it's very interesting.", "当我理解不同的词的时候，很有趣。", null, 6],
+        ["I wanted to give her a little time to learn different words.", "我想给她一点时间学习不同的词。", null, 8],
+        ["I can't remember how to say what I need when I don't know different words.", "当我不知道不同的词的时候我记不住怎么说我需要的东西。", null, 9]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0060L06",
+        "seed_context": {
+          "known": "我还不知道怎么说足够多不同的词。",
+          "target": "I don't know how to say enough different words yet."
+        }
+      },
+      "components": [[null,null],[null,null]]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0060.json",
+    "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
+    "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+    "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "total_legos_in_seed": 6,
+    "phrases_to_generate": 60,
+    "recent_context_seeds": 10,
+    "recent_legos_available": 44
+  }
+}
