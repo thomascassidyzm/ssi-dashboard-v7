@@ -1,487 +1,140 @@
 {
-  "legos": {
-    "S0003L01": {
-      "type": "A",
-      "practice_phrases": [
-        [
-          "How?",
-          "怎么？",
-          null,
-          1
-        ],
-        [
-          "I want to learn how.",
-          "我想学习怎么。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how now.",
-          "我想现在学习怎么。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how.",
-          "我在试着学习怎么。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how with you.",
-          "我想和你学习怎么。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how now.",
-          "我现在在试着学习怎么。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how with you now.",
-          "我现在想和你学习怎么。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how with you.",
-          "我在试着和你学习怎么。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how in Chinese.",
-          "我想学习怎么中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how in Chinese with you now.",
-          "我现在在试着和你学习怎么中文。",
-          null,
-          1
-        ]
-      ],
-      "lego": [
+  "S0003L01": {
+    "lego": [
+      "how to",
+      "怎么"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
         "how to",
-        "怎么"
-      ]
-    },
-    "S0003L02": {
-      "type": "A",
-      "practice_phrases": [
-        [
-          "I want to speak.",
-          "我想说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak now.",
-          "我想现在说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak Chinese.",
-          "我在试着说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to speak with you.",
-          "我想和你说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak now.",
-          "我现在在试着说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese with you.",
-          "我想和你说中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak with you.",
-          "我在试着和你说。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how to speak.",
-          "我想学习怎么说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak Chinese with you.",
-          "我在试着和你说中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how to speak Chinese.",
-          "我在试着学习怎么说中文。",
-          null,
-          1
-        ]
+        "怎么",
+        null,
+        1
       ],
-      "lego": [
+      [
+        "how to learn",
+        "怎么学习",
+        null,
+        2
+      ],
+      [
+        "how to learn Chinese",
+        "怎么学习中文",
+        null,
+        3
+      ],
+      [
+        "how to learn now",
+        "现在怎么学习",
+        null,
+        3
+      ],
+      [
+        "how to learn with you",
+        "怎么和你学习",
+        null,
+        3
+      ],
+      [
+        "I want to learn how to learn",
+        "我想学习怎么学习",
+        null,
+        4
+      ],
+      [
+        "how to learn Chinese now",
+        "现在怎么学习中文",
+        null,
+        4
+      ],
+      [
+        "how to learn Chinese with you",
+        "怎么和你学习中文",
+        null,
+        4
+      ],
+      [
+        "I'm trying to learn how to learn",
+        "我在试着学习怎么学习",
+        null,
+        5
+      ],
+      [
+        "I want to learn how to learn Chinese",
+        "我想学习怎么学习中文",
+        null,
+        5
+      ]
+    ]
+  },
+  "S0003L02": {
+    "lego": [
+      "to speak",
+      "说"
+    ],
+    "type": "A",
+    "practice_phrases": [
+      [
         "to speak",
-        "说"
-      ]
-    },
-    "S0003L03": {
-      "type": "M",
-      "practice_phrases": [
-        [
-          "How to speak?",
-          "怎么说？",
-          null,
-          1
-        ],
-        [
-          "I want to learn how to speak.",
-          "我想学习怎么说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how to speak.",
-          "我在试着学习怎么说。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how to speak Chinese.",
-          "我想学习怎么说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how to speak now.",
-          "我想现在学习怎么说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how to speak Chinese.",
-          "我在试着学习怎么说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how to speak with you.",
-          "我想和你学习怎么说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how to speak now.",
-          "我现在在试着学习怎么说。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how to speak Chinese now.",
-          "我现在想学习怎么说中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how to speak Chinese with you now.",
-          "我现在在试着和你学习怎么说中文。",
-          null,
-          1
-        ]
+        "说",
+        null,
+        1
       ],
-      "lego": [
+      [
+        "to speak now",
+        "现在说",
+        null,
+        2
+      ],
+      [
+        "I want to speak",
+        "我想说",
+        null,
+        2
+      ],
+      [
         "how to speak",
-        "怎么说"
-      ]
-    },
-    "S0003L04": {
-      "type": "A",
-      "practice_phrases": [
-        [
-          "I want to speak often.",
-          "我想经常说。",
-          null,
-          1
-        ],
-        [
-          "I want to learn often.",
-          "我想经常学习。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak often.",
-          "我在试着经常说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese often.",
-          "我想经常说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to speak with you often.",
-          "我想经常和你说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn often.",
-          "我在试着经常学习。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese with you often.",
-          "我想经常和你说中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak Chinese often.",
-          "我在试着经常说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to learn how to speak often.",
-          "我想学习怎么经常说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how to speak Chinese often.",
-          "我在试着学习怎么经常说中文。",
-          null,
-          1
-        ]
+        "怎么说",
+        null,
+        2
       ],
-      "lego": [
-        "often",
-        "经常"
-      ]
-    },
-    "S0003L05": {
-      "type": "M",
-      "practice_phrases": [
-        [
-          "I want to speak as much as possible.",
-          "我想尽可能说。",
-          null,
-          1
-        ],
-        [
-          "I want to learn as much as possible.",
-          "我想尽可能学习。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak as much as possible.",
-          "我在试着尽可能说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese as much as possible.",
-          "我想尽可能说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to learn as much as possible now.",
-          "我现在想尽可能学习。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak Chinese as much as possible.",
-          "我在试着尽可能说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to speak with you as much as possible.",
-          "我想尽可能和你说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn as much as possible now.",
-          "我现在在试着尽可能学习。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese with you as much as possible.",
-          "我想尽可能和你说中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak Chinese with you as much as possible now.",
-          "我现在在试着尽可能和你说中文。",
-          null,
-          1
-        ]
+      [
+        "to speak Chinese",
+        "说中文",
+        null,
+        2
       ],
-      "lego": [
-        "as...as possible",
-        "尽可能"
-      ]
-    },
-    "S0003L06": {
-      "type": "M",
-      "practice_phrases": [
-        [
-          "I want to speak often.",
-          "我想经常地说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak often.",
-          "我在试着经常地说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese often.",
-          "我想经常地说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to speak with you often.",
-          "我想经常地和你说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak often now.",
-          "我现在想经常地说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak Chinese often.",
-          "我在试着经常地说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to learn to speak often.",
-          "我想学习经常地说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak with you often.",
-          "我在试着经常地和你说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese with you often.",
-          "我想经常地和你说中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to learn how to speak Chinese often.",
-          "我在试着学习怎么经常地说中文。",
-          null,
-          1
-        ]
+      [
+        "I'm trying to speak",
+        "我在试着说",
+        null,
+        3
       ],
-      "lego": [
-        "to speak often",
-        "经常地说"
-      ]
-    },
-    "S0003L07": {
-      "type": "M",
-      "practice_phrases": [
-        [
-          "I want to speak as often as possible.",
-          "我想尽可能经常地说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak as often as possible.",
-          "我在试着尽可能经常地说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese as often as possible.",
-          "我想尽可能经常地说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to speak as often as possible now.",
-          "我现在想尽可能经常地说。",
-          null,
-          1
-        ],
-        [
-          "I want to speak with you as often as possible.",
-          "我想尽可能经常地和你说。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak Chinese as often as possible.",
-          "我在试着尽可能经常地说中文。",
-          null,
-          1
-        ],
-        [
-          "I want to speak Chinese with you as often as possible.",
-          "我想尽可能经常地和你说中文。",
-          null,
-          1
-        ],
-        [
-          "I'm trying to speak as often as possible now.",
-          "我现在在试着尽可能经常地说。",
-          null,
-          1
-        ],
-        [
-          "I want to learn to speak as often as possible.",
-          "我想学习尽可能经常地说。",
-          null,
-          1
-        ],
-        [
-          "how to speak as often as possible.",
-          "怎么尽可能经常地说。",
-          null,
-          1
-        ]
+      [
+        "I want to speak Chinese",
+        "我想说中文",
+        null,
+        3
       ],
-      "lego": [
-        "to speak as often as possible",
-        "尽可能经常地说"
+      [
+        "how to speak Chinese",
+        "怎么说中文",
+        null,
+        3
+      ],
+      [
+        "I want to speak Chinese now",
+        "我现在想说中文",
+        null,
+        4
+      ],
+      [
+        "I'm trying to speak Chinese with you",
+        "我在试着和你说中文",
+        null,
+        5
       ]
-    }
+    ]
   }
 }

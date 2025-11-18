@@ -1108,13 +1108,13 @@ async function spawnClaudeCodeSession(prompt, windowTitle) {
   // Use Safari (supports AppleScript tab API properly)
   const browser = 'Safari';
   const appleScript = `
--- Open Claude Code on the Web
+-- Open Claude on the Web
 tell application "${browser}"
     activate
 
-    -- Open new tab with claude.ai/code
+    -- Open new tab with claude.ai
     tell window 1
-        set newTab to make new tab with properties {URL:"https://claude.ai/code"}
+        set newTab to make new tab with properties {URL:"https://claude.ai"}
         set current tab to newTab
     end tell
 
