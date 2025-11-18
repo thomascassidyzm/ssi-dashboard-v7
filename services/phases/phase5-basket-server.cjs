@@ -1051,16 +1051,26 @@ ${JSON.stringify(legoData, null, 2)}
 
 ## 🚀 HOW TO SPAWN WORKERS
 
-**1. Divide scaffolds by SEED (keep seeds together):**
+**CRITICAL: SEEDS ARE ATOMIC UNITS - NEVER SPLIT A SEED ACROSS WORKERS!**
 
-Seeds in your range: ${seeds.join(', ')}
+Each worker must receive COMPLETE seeds only. If a seed has 5 LEGOs, all 5 go to the same worker.
 
-Divide these ${seeds.length} seeds among ${workerCount} workers (~${seedsPerWorker} seeds per worker).
+**Your seeds:** ${seeds.join(', ')} (${seeds.length} seeds total)
+
+**Division strategy:**
+- Assign COMPLETE seeds to workers (never split a seed!)
+- ${seeds.length} seeds ÷ ${workerCount} workers = ~${Math.floor(seeds.length / workerCount)} seeds per worker
+- Some workers may get more seeds than others (that's OK!)
+- Some workers may get 0 seeds if you don't have enough (that's OK!)
 
 **Example division:**
-- Worker 1: Seeds ${seeds.slice(0, seedsPerWorker).join(', ')} (first ${seedsPerWorker} seeds)
-- Worker 2: Seeds ${seeds.slice(seedsPerWorker, seedsPerWorker * 2).join(', ')} (next ${seedsPerWorker} seeds)
-- ... etc for all ${workerCount} workers
+- Worker 1: ${seeds.slice(0, Math.ceil(seeds.length / workerCount)).join(', ')} (complete seeds)
+- Worker 2: ${seeds.slice(Math.ceil(seeds.length / workerCount), Math.ceil(seeds.length / workerCount) * 2).join(', ')} (complete seeds)
+- Worker 3: ${seeds.slice(Math.ceil(seeds.length / workerCount) * 2, Math.ceil(seeds.length / workerCount) * 3).join(', ')} (complete seeds)
+- ... continue until all ${seeds.length} seeds are assigned
+
+**WRONG:** "Worker 1 gets S0001L01-L03, Worker 2 gets S0001L04-L05" ❌ (split seed!)
+**RIGHT:** "Worker 1 gets S0001 (all LEGOs), Worker 2 gets S0002 (all LEGOs)" ✅ (complete seeds!)
 
 **2. Spawn all ${workerCount} workers in parallel:**
 
