@@ -74,14 +74,14 @@ async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
   const missingLegos = [];
 
   for (const seed of legoPairs.seeds || []) {
-    const seedNum = parseInt(seed.seed.replace('S', ''));
+    const seedNum = parseInt(seed.seed_id.replace('S', ''));
 
     if (seedNum >= startSeed && seedNum <= endSeed) {
       for (const lego of seed.legos || []) {
         if (lego.new && !existingBaskets[lego.id]) {
           missingLegos.push({
             legoId: lego.id,
-            seed: seed.seed,
+            seed: seed.seed_id,
             target: lego.target,
             known: lego.known,
             type: lego.type || 'M'
@@ -109,12 +109,13 @@ async function loadScaffoldData(baseCourseDir, missingLegos) {
   // Build seed lookup
   const seedMap = {};
   for (const seed of legoPairs.seeds || []) {
-    seedMap[seed.seed] = seed;
+    seedMap[seed.seed_id] = seed;
   }
 
   for (const lego of missingLegos) {
     const seedId = lego.seed;
-    const scaffoldPath = path.join(scaffoldDir, `seed_${seedId}_scaffold.json`);
+    // Scaffold files are named seed_s0001.json (lowercase, no '_scaffold' suffix)
+    const scaffoldPath = path.join(scaffoldDir, `seed_${seedId.toLowerCase()}.json`);
 
     // Try to load scaffold
     let scaffoldData = null;
@@ -142,7 +143,7 @@ async function loadScaffoldData(baseCourseDir, missingLegos) {
       is_final_lego: legoIndex === (seedInfo?.legos?.length - 1),
 
       // Fallback: basic context if no scaffold
-      seed_sentence: seedInfo?.sentence || [],
+      seed_sentence: seedInfo?.seed_pair || [],
       seed_legos: seedInfo?.legos?.map(l => ({
         id: l.id,
         target: l.target,
@@ -379,18 +380,13 @@ app.post('/start', async (req, res) => {
   activeJobs.set(courseCode, job);
 
   try {
-    // STEP 1: Prep Phase 5 scaffolds (mechanical work)
-    console.log(`\n[Phase 5] Running scaffold prep script...`);
-    const { preparePhase5Scaffolds } = require('../../scripts/phase5_prep_scaffolds.cjs');
-    const scaffoldResult = await preparePhase5Scaffolds(baseCourseDir);
+    // STEP 1: Scaffolds already exist in phase5_scaffolds/ directory
+    // No need to generate them - they're pre-existing data files
+    console.log(`\n[Phase 5] Using existing scaffolds from: ${path.join(baseCourseDir, 'phase5_scaffolds')}`);
 
     // Update milestone
     job.milestones.scaffoldsReady = true;
     job.milestones.scaffoldsReadyAt = new Date().toISOString();
-
-    console.log(`[Phase 5] ✅ Phase 5 scaffolds ready`);
-    console.log(`[Phase 5]    Total seeds: ${scaffoldResult.totalSeeds}`);
-    console.log(`[Phase 5]    Total LEGOs: ${scaffoldResult.totalNewLegos}`);
 
     // STEP 1.5: Identify missing LEGOs and load scaffold data for web agents
     console.log(`\n[Phase 5] Identifying missing LEGOs...`);
