@@ -779,7 +779,7 @@ You are responsible for generating baskets for all LEGOs in seeds ${startSeed}-$
 
 **Your workflow:**
 
-1. ✅ **Identify LEGOs** - Read seed_pairs.json and lego_pairs.json to find all LEGOs in your seed range
+1. ✅ **Identify LEGOs** - Read lego_pairs.json to find all LEGOs in your seed range
 2. ✅ **Spawn sub-agents** (${actualSeedsPerAgent} seeds per agent = ~${agentCount} agents)
 3. ✅ **Sub-agents upload via ngrok** (no git, no branches!)
 4. ✅ **Monitor completion** and report summary
