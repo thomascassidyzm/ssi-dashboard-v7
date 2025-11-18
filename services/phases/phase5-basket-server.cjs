@@ -820,22 +820,41 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, browserCou
         baseCourseDir
       );
     } else {
-      // Regular mode: seed range
-      const seedsInWindow = agentsPerWindow * seedsPerAgent;
-      const windowStartSeed = currentSeed;
-      const windowEndSeed = Math.min(currentSeed + seedsInWindow - 1, endSeed);
+      // Regular mode: divide LEGOs among windows
+      const targetLegos = params.targetLegos || [];
+      const legoData = params.legoData || {};
 
-      console.log(`[Phase 5]     Seed range: S${String(windowStartSeed).padStart(4, '0')}-S${String(windowEndSeed).padStart(4, '0')}`);
+      const legosPerWindow = Math.ceil(targetLegos.length / browserCount);
+      const windowStartIdx = (windowNum - 1) * legosPerWindow;
+      const windowEndIdx = Math.min(windowNum * legosPerWindow, targetLegos.length);
+      const windowTargetLegos = targetLegos.slice(windowStartIdx, windowEndIdx);
+
+      // Extract LEGO data for this window's LEGOs only
+      const windowLegoData = {};
+      for (const lego of windowTargetLegos) {
+        if (legoData[lego.legoId]) {
+          windowLegoData[lego.legoId] = legoData[lego.legoId];
+        }
+      }
+
+      console.log(`[Phase 5]     LEGOs: ${windowTargetLegos.length} LEGOs (${Math.round(JSON.stringify(windowLegoData).length / 1024)} KB)`);
       console.log(`[Phase 5]     Will spawn ${agentsPerWindow} Task agents`);
 
-      // Generate orchestrator prompt for this window
+      // Generate orchestrator prompt for this window with embedded LEGO data
       windowPrompt = generatePhase5OrchestratorPrompt(
         courseCode,
-        { target, known, startSeed: windowStartSeed, endSeed: windowEndSeed, agentsPerWindow, seedsPerAgent },
+        {
+          target,
+          known,
+          startSeed,
+          endSeed,
+          legoData: windowLegoData,
+          targetLegos: windowTargetLegos,
+          agentsPerWindow,
+          stagingOnly: params.stagingOnly
+        },
         baseCourseDir
       );
-
-      currentSeed = windowEndSeed + 1;
     }
 
     try {
