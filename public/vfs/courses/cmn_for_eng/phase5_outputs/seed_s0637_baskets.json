@@ -4,136 +4,46 @@
     {
       "lego_id": "S0637L02",
       "practice_phrases": [
-        {
-          "known": "在",
-          "target": "At/in"
-        },
-        {
-          "known": "她在这里",
-          "target": "She is here"
-        },
-        {
-          "known": "包在这里",
-          "target": "The bag is here"
-        },
-        {
-          "known": "她在学校",
-          "target": "She is at school"
-        },
-        {
-          "known": "我在家",
-          "target": "I am at home"
-        },
-        {
-          "known": "她的包在这里",
-          "target": "Her bag is here"
-        },
-        {
-          "known": "简在那里",
-          "target": "Jane is there"
-        },
-        {
-          "known": "她在哪里？她在家",
-          "target": "Where is she? She is at home"
-        },
-        {
-          "known": "您的包在哪里？在这里",
-          "target": "Where is your bag? It's here"
-        },
-        {
-          "known": "我认为简在学校。她的包在这里",
-          "target": "I think Jane is at school. Her bag is here"
-        }
+        ["At", "在", null, 1],
+        ["She is here", "她在这里", null, 1],
+        ["The bag is here", "包在这里", null, 2],
+        ["I am at home", "我在家", null, 2],
+        ["Her bag is here", "她的包在这里", null, 3],
+        ["Jane is here", "简在这里", null, 3],
+        ["Where is she? She is here", "她在哪里？她在这里", null, 4],
+        ["Where is the water? It is here", "水在哪里？在这里", null, 4],
+        ["I think Jane is here. Her bag is here", "我认为简在这里。她的包在这里", null, 5],
+        ["Where is that bag? That is here", "那个包在哪里？那在这里", null, 5]
       ]
     },
     {
       "lego_id": "S0637L03",
       "practice_phrases": [
-        {
-          "known": "在哪里？",
-          "target": "Where is it?"
-        },
-        {
-          "known": "你在哪里？",
-          "target": "Where are you?"
-        },
-        {
-          "known": "水在哪里？",
-          "target": "Where is the water?"
-        },
-        {
-          "known": "茶在哪里？",
-          "target": "Where is the tea?"
-        },
-        {
-          "known": "简的包在哪里？",
-          "target": "Where is Jane's bag?"
-        },
-        {
-          "known": "一杯水在哪里？",
-          "target": "Where is a glass of water?"
-        },
-        {
-          "known": "她在哪里？",
-          "target": "Where is she?"
-        },
-        {
-          "known": "我的茶在哪里？",
-          "target": "Where is my tea?"
-        },
-        {
-          "known": "您想要的在哪里？",
-          "target": "Where is what you want?"
-        },
-        {
-          "known": "一大杯水在哪里？",
-          "target": "Where is a large glass of water?"
-        }
+        ["Where is", "在哪里", null, 1],
+        ["Where are you", "你在哪里", null, 1],
+        ["Where is the water", "水在哪里", null, 2],
+        ["Where is the tea", "茶在哪里", null, 2],
+        ["Where is Jane's bag", "简的包在哪里", null, 3],
+        ["Where is the coffee", "咖啡在哪里", null, 3],
+        ["Where is a glass of water", "一杯水在哪里", null, 4],
+        ["Where is she? I think here", "她在哪里？我认为在这里", null, 4],
+        ["Where is what you would like", "您想要的在哪里", null, 5],
+        ["Where is a large glass of water", "一大杯水在哪里", null, 5]
       ]
     },
     {
       "lego_id": "S0637L05",
       "practice_phrases": [
-        {
-          "known": "包在哪里？",
-          "target": "Where is the bag?"
-        },
-        {
-          "known": "她的包在哪里？",
-          "target": "Where is her bag?"
-        },
-        {
-          "known": "我的包在哪里？",
-          "target": "Where is my bag?"
-        },
-        {
-          "known": "您的包在哪里？",
-          "target": "Where is your bag?"
-        },
-        {
-          "known": "简的包在哪里？",
-          "target": "Where is Jane's bag?"
-        },
-        {
-          "known": "那个包在哪里？",
-          "target": "Where is that bag?"
-        },
-        {
-          "known": "您想要的包在哪里？",
-          "target": "Where is the bag you want?"
-        },
-        {
-          "known": "我认为那是简的包在哪里。",
-          "target": "I think that is where Jane's bag is."
-        },
-        {
-          "known": "其中一个包在哪里？",
-          "target": "Where is one of those bags?"
-        },
-        {
-          "known": "您想要其中一个包在哪里？",
-          "target": "Where is one of those bags you want?"
-        }
+        ["Where is the bag", "包在哪里", null, 1],
+        ["Where is her bag", "她的包在哪里", null, 2],
+        ["Where is my bag", "我的包在哪里", null, 2],
+        ["Where is your bag", "你的包在哪里", null, 2],
+        ["Where is Jane's bag", "简的包在哪里", null, 3],
+        ["Where is that bag", "那个包在哪里", null, 3],
+        ["Where is the bag you would like", "您想要的包在哪里", null, 4],
+        ["Where is one of those bags", "其中一个包在哪里", null, 4],
+        ["I think that is where Jane's bag is", "我认为那是简的包在的地方", null, 5],
+        ["Where is the bag? I think that is Jane's bag", "包在哪里？我认为那是简的包", null, 6]
       ]
     }
   ]

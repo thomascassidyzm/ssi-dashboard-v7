@@ -4,136 +4,46 @@
     {
       "lego_id": "S0638L01",
       "practice_phrases": [
-        {
-          "known": "我想。",
-          "target": "I think."
-        },
-        {
-          "known": "你想。",
-          "target": "You think."
-        },
-        {
-          "known": "我在想。",
-          "target": "I'm thinking."
-        },
-        {
-          "known": "她在想。",
-          "target": "She's thinking."
-        },
-        {
-          "known": "我想要水。",
-          "target": "I want water."
-        },
-        {
-          "known": "您想要什么？",
-          "target": "What would you like?"
-        },
-        {
-          "known": "我想喝茶。",
-          "target": "I think I'll drink tea."
-        },
-        {
-          "known": "我认为她想。",
-          "target": "I think she thinks."
-        },
-        {
-          "known": "您想那是好吗？",
-          "target": "Do you think that's good?"
-        },
-        {
-          "known": "我想那是简的包。",
-          "target": "I think that is Jane's bag."
-        }
+        ["Think", "想", null, 1],
+        ["I think", "我想", null, 1],
+        ["I am thinking", "我在想", null, 2],
+        ["She is thinking", "她在想", null, 2],
+        ["I want water", "我想要水", null, 3],
+        ["I think that is good", "我想那是好", null, 3],
+        ["What would you like", "您想要什么", null, 4],
+        ["I think she is here", "我想她在这里", null, 4],
+        ["I think that is Jane's bag", "我想那是简的包", null, 5],
+        ["What are you thinking about", "你在想什么", null, 5]
       ]
     },
     {
       "lego_id": "S0638L02",
       "practice_phrases": [
-        {
-          "known": "我试着想。",
-          "target": "I'm trying to think."
-        },
-        {
-          "known": "她试着想。",
-          "target": "She's trying to think."
-        },
-        {
-          "known": "我在试着想。",
-          "target": "I am trying to think."
-        },
-        {
-          "known": "您试着想吗？",
-          "target": "Are you trying to think?"
-        },
-        {
-          "known": "我试着想在哪里。",
-          "target": "I'm trying to think where."
-        },
-        {
-          "known": "她试着想您想要什么。",
-          "target": "She's trying to think what you want."
-        },
-        {
-          "known": "我试着想那是什么。",
-          "target": "I'm trying to think what that is."
-        },
-        {
-          "known": "简试着想包在哪里。",
-          "target": "Jane is trying to think where the bag is."
-        },
-        {
-          "known": "我试着想那个好不好。",
-          "target": "I'm trying to think if that one is good."
-        },
-        {
-          "known": "她试着想您喜欢什么。",
-          "target": "She's trying to think what you like."
-        }
+        ["Trying to think", "试着想", null, 1],
+        ["I am trying to think", "我试着想", null, 1],
+        ["She is trying to think", "她试着想", null, 2],
+        ["Are you trying to think", "你试着想吗", null, 2],
+        ["I am trying to think where", "我试着想在哪里", null, 3],
+        ["She is trying to think what", "她试着想什么", null, 3],
+        ["I am trying to think what that is", "我试着想那是什么", null, 4],
+        ["Jane is trying to think where the bag is", "简试着想包在哪里", null, 4],
+        ["I am trying to think if that is good", "我试着想那个好不好", null, 5],
+        ["She is trying to think what you would like", "她试着想您想要什么", null, 5]
       ]
     },
     {
       "lego_id": "S0638L04",
       "practice_phrases": [
-        {
-          "known": "我在试着想。",
-          "target": "I am trying to think."
-        },
-        {
-          "known": "她在试着想。",
-          "target": "She is trying to think."
-        },
-        {
-          "known": "我在试着想什么。",
-          "target": "I am trying to think what."
-        },
-        {
-          "known": "您在试着想吗？",
-          "target": "Are you trying to think?"
-        },
-        {
-          "known": "我在试着想包在哪里。",
-          "target": "I am trying to think where the bag is."
-        },
-        {
-          "known": "她在试着想您想要什么。",
-          "target": "She is trying to think what you want."
-        },
-        {
-          "known": "我在试着想那是简的包。",
-          "target": "I am trying to think that is Jane's bag."
-        },
-        {
-          "known": "简在试着想那个是什么。",
-          "target": "Jane is trying to think what that is."
-        },
-        {
-          "known": "我在试着想一大杯水就好。",
-          "target": "I am trying to think a large glass of water would be fine."
-        },
-        {
-          "known": "她在试着想您喜欢加牛奶。",
-          "target": "She is trying to think you like it with milk."
-        }
+        ["Am trying to think", "在试着想", null, 1],
+        ["I am trying to think", "我在试着想", null, 1],
+        ["She is trying to think", "她在试着想", null, 2],
+        ["Are you trying to think", "你在试着想吗", null, 2],
+        ["I am trying to think what", "我在试着想什么", null, 3],
+        ["I am trying to think where the bag is", "我在试着想包在哪里", null, 3],
+        ["She is trying to think what you want", "她在试着想您想要什么", null, 4],
+        ["I am trying to think that is Jane's bag", "我在试着想那是简的包", null, 4],
+        ["Jane is trying to think what that is", "简在试着想那是什么", null, 5],
+        ["I am trying to think a large glass would be fine", "我在试着想一大杯就好", null, 5]
       ]
     }
   ]

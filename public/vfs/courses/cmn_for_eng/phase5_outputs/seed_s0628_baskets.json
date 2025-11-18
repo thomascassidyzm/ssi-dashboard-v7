@@ -1,140 +1,68 @@
 {
-  "seed_id": "S0628",
-  "baskets": [
-    {
-      "lego_id": "S0628L01",
+  "legos": {
+    "S0628L01": {
+      "lego": ["do you like", "你喜欢"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
       "practice_phrases": [
-        {
-          "known": "Do you like",
-          "target": "你喜欢"
-        },
-        {
-          "known": "Do you like tea",
-          "target": "你喜欢茶"
-        },
-        {
-          "known": "Do you like coffee",
-          "target": "你喜欢咖啡"
-        },
-        {
-          "known": "Do you like coffee or tea",
-          "target": "你喜欢咖啡还是茶"
-        },
-        {
-          "known": "I knew you like tea",
-          "target": "我知道你喜欢茶"
-        },
-        {
-          "known": "Do you like something to drink",
-          "target": "你喜欢喝点什么"
-        },
-        {
-          "known": "I knew you like coffee or tea",
-          "target": "我知道你喜欢咖啡还是茶"
-        },
-        {
-          "known": "Do you like tea? Your tea is ready",
-          "target": "你喜欢茶吗？你的茶好了"
-        },
-        {
-          "known": "Do you like coffee? A cup of coffee is ready",
-          "target": "你喜欢咖啡吗？一杯咖啡好了"
-        },
-        {
-          "known": "Do you want something to drink? Do you like tea",
-          "target": "你想喝点什么吗？你喜欢茶"
+        ["Do you like it?", "你喜欢吗？", null, 1],
+        ["Do you like tea?", "你喜欢茶吗？", null, 2],
+        ["Do you like milk?", "你喜欢牛奶吗？", null, 3],
+        ["Do you like coffee?", "你喜欢咖啡吗？", null, 3],
+        ["Do you like it with milk?", "你喜欢加牛奶吗？", null, 4],
+        ["Do you like coffee or tea?", "你喜欢咖啡还是茶？", null, 4],
+        ["Do you like something to drink?", "你喜欢喝点什么吗？", null, 5],
+        ["Do you like it? Your coffee is ready.", "你喜欢吗？你的咖啡好了。", null, 6],
+        ["Do you like tea with milk and sugar?", "你喜欢加牛奶和糖的茶吗？", null, 6],
+        ["Do you like coffee or tea? I like tea.", "你喜欢咖啡还是茶？我喜欢茶。", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0628L01",
+        "seed_context": {
+          "known": "你喜欢茶吗？",
+          "target": "Do you like tea?"
         }
-      ]
+      },
+      "components": [["你", "you"], ["喜欢", "like"]]
     },
-    {
-      "lego_id": "S0628L02",
+    "S0628L03": {
+      "lego": ["like tea", "喜欢茶"],
+      "type": "M",
+      "current_seed_legos_available": [["do you like", "你喜欢"], ["like", "喜欢"]],
+      "is_final_lego": true,
       "practice_phrases": [
-        {
-          "known": "Like",
-          "target": "喜欢"
-        },
-        {
-          "known": "I like",
-          "target": "我喜欢"
-        },
-        {
-          "known": "I like tea",
-          "target": "我喜欢茶"
-        },
-        {
-          "known": "I like coffee",
-          "target": "我喜欢咖啡"
-        },
-        {
-          "known": "Do you like tea",
-          "target": "你喜欢茶"
-        },
-        {
-          "known": "I like coffee or tea",
-          "target": "我喜欢咖啡还是茶"
-        },
-        {
-          "known": "I knew you like coffee",
-          "target": "我知道你喜欢咖啡"
-        },
-        {
-          "known": "I like something to drink",
-          "target": "我喜欢喝点什么"
-        },
-        {
-          "known": "Do you like tea? I like coffee",
-          "target": "你喜欢茶吗？我喜欢咖啡"
-        },
-        {
-          "known": "I knew you like coffee or tea",
-          "target": "我知道你喜欢咖啡还是茶"
+        ["Like tea.", "喜欢茶。", null, 1],
+        ["I like tea.", "我喜欢茶。", null, 2],
+        ["Do you like tea?", "你喜欢茶吗？", null, 3],
+        ["I like tea with milk.", "我喜欢加牛奶的茶。", null, 3],
+        ["I like tea without sugar.", "我喜欢不加糖的茶。", null, 4],
+        ["I knew you like tea.", "我知道你喜欢茶。", null, 4],
+        ["I like tea. Your tea is ready.", "我喜欢茶。你的茶好了。", null, 5],
+        ["I like tea with milk but without sugar.", "我喜欢加牛奶但不加糖的茶。", null, 6],
+        ["Do you like tea? I like tea very much.", "你喜欢茶吗？我非常喜欢茶。", null, 6],
+        ["I like tea. Can I have a cup of tea please?", "我喜欢茶。我可以喝杯茶吗？", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0628L03",
+        "seed_context": {
+          "known": "你喜欢茶吗？",
+          "target": "Do you like tea?"
         }
-      ]
-    },
-    {
-      "lego_id": "S0628L03",
-      "practice_phrases": [
-        {
-          "known": "Like tea",
-          "target": "喜欢茶"
-        },
-        {
-          "known": "I like tea",
-          "target": "我喜欢茶"
-        },
-        {
-          "known": "Do you like tea",
-          "target": "你喜欢茶"
-        },
-        {
-          "known": "I knew you like tea",
-          "target": "我知道你喜欢茶"
-        },
-        {
-          "known": "Your tea is ready. I like tea",
-          "target": "你的茶好了。我喜欢茶"
-        },
-        {
-          "known": "Do you want tea? I like tea",
-          "target": "你想要茶吗？我喜欢茶"
-        },
-        {
-          "known": "I like tea. Do you like tea",
-          "target": "我喜欢茶。你喜欢茶"
-        },
-        {
-          "known": "Do you want something to drink? I like tea",
-          "target": "你想喝点什么吗？我喜欢茶"
-        },
-        {
-          "known": "Your coffee or tea is ready. I like tea",
-          "target": "你的咖啡还是茶好了。我喜欢茶"
-        },
-        {
-          "known": "Do you like tea?",
-          "target": "你喜欢茶吗？"
-        }
-      ]
+      },
+      "components": [["喜欢", "like"], ["茶", "tea"]]
     }
-  ]
+  }
 }

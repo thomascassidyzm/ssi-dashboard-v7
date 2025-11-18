@@ -1,140 +1,98 @@
 {
-  "seed_id": "S0618",
-  "baskets": [
-    {
+  "S0618L01": {
+    "lego": ["doesn't feel like", "感觉不像"],
+    "type": "M",
+    "current_seed_legos_available": [],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["It doesn't feel like it.", "感觉不像。", null, 2],
+      ["That doesn't feel like work.", "那感觉不像工作。", null, 2],
+      ["It doesn't feel like a mistake.", "感觉不像是错误。", null, 3],
+      ["That doesn't feel like the sensible thing.", "那感觉不像明智的事。", null, 3],
+      ["It doesn't feel like a long time.", "感觉不像很长时间。", null, 4],
+      ["It doesn't feel like something we need.", "感觉不像我们需要的东西。", null, 4],
+      ["It doesn't feel like the sensible thing to do.", "感觉不像是明智的事去做。", null, 6],
+      ["It doesn't feel like we bought a house there.", "感觉不像我们在那里买了房子。", null, 6],
+      ["It doesn't feel like a long time since we saw each other.", "感觉不像自从我们见面已经很长时间了。", null, 8],
+      ["It doesn't feel like you were very brave to say that.", "感觉不像你说那个很勇敢。", null, 7]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
       "lego_id": "S0618L01",
-      "practice_phrases": [
-        {
-          "known": "doesn't feel like",
-          "target": "感觉不像"
-        },
-        {
-          "known": "it doesn't feel like",
-          "target": "它感觉不像"
-        },
-        {
-          "known": "doesn't feel like work",
-          "target": "感觉不像工作"
-        },
-        {
-          "known": "it doesn't feel like that",
-          "target": "它感觉不像那个"
-        },
-        {
-          "known": "doesn't feel like a mistake",
-          "target": "感觉不像个错误"
-        },
-        {
-          "known": "it doesn't feel like something",
-          "target": "它感觉不像一些东西"
-        },
-        {
-          "known": "this doesn't feel like a house",
-          "target": "这感觉不像房子"
-        },
-        {
-          "known": "it doesn't feel like you thought",
-          "target": "它感觉不像你认为"
-        },
-        {
-          "known": "it doesn't feel like the sensible thing",
-          "target": "它感觉不像明智的事"
-        },
-        {
-          "known": "it doesn't feel like where your family live",
-          "target": "它感觉不像你家人住的地方"
-        }
-      ]
+      "seed_context": {
+        "known": "It doesn't feel like a long time.",
+        "target": "感觉不像很长时间。"
+      }
     },
-    {
+    "components": [[null, null], [null, null], [null, null]]
+  },
+  "S0618L02": {
+    "lego": ["a long time", "很长时间"],
+    "type": "M",
+    "current_seed_legos_available": [["doesn't feel like", "感觉不像"]],
+    "is_final_lego": false,
+    "practice_phrases": [
+      ["A long time.", "很长时间。", null, 1],
+      ["It's a long time.", "是很长时间。", null, 2],
+      ["That was a long time.", "那是很长时间。", null, 3],
+      ["We need a long time.", "我们需要很长时间。", null, 3],
+      ["It's been a long time already.", "已经是很长时间了。", null, 4],
+      ["It doesn't feel like a long time.", "感觉不像很长时间。", null, 4],
+      ["It's a long time since we saw each other.", "自从我们见面已经很长时间了。", null, 6],
+      ["It's been a very long time since you said that.", "自从你说那个已经很长时间了。", null, 7],
+      ["It's a long time since we would have bought a house there.", "自从我们会在那里买房子已经很长时间了。", null, 8],
+      ["It doesn't feel like a long time since we last saw each other.", "感觉不像自从我们上次见面已经很长时间了。", null, 8]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
       "lego_id": "S0618L02",
-      "practice_phrases": [
-        {
-          "known": "a long time",
-          "target": "很长时间"
-        },
-        {
-          "known": "for a long time",
-          "target": "很长时间"
-        },
-        {
-          "known": "it's a long time",
-          "target": "它是很长时间"
-        },
-        {
-          "known": "doesn't feel like a long time",
-          "target": "感觉不像很长时间"
-        },
-        {
-          "known": "I need a long time",
-          "target": "我需要很长时间"
-        },
-        {
-          "known": "it would be a long time",
-          "target": "它会是很长时间"
-        },
-        {
-          "known": "it doesn't feel like a long time",
-          "target": "它感觉不像很长时间"
-        },
-        {
-          "known": "we would have bought for a long time",
-          "target": "我们会买很长时间"
-        },
-        {
-          "known": "it's been a long time since we saw each other",
-          "target": "自从我们见面已经很长时间了"
-        },
-        {
-          "known": "looking for work takes a long time",
-          "target": "找工作需要很长时间"
-        }
-      ]
+      "seed_context": {
+        "known": "It doesn't feel like a long time.",
+        "target": "感觉不像很长时间。"
+      }
     },
-    {
+    "components": [[null, null], [null, null], [null, null]]
+  },
+  "S0618L03": {
+    "lego": ["to feel", "感觉"],
+    "type": "A",
+    "current_seed_legos_available": [["doesn't feel like", "感觉不像"], ["a long time", "很长时间"]],
+    "is_final_lego": true,
+    "practice_phrases": [
+      ["Feel it.", "感觉它。", null, 1],
+      ["I feel that.", "我感觉那个。", null, 2],
+      ["We need to feel it.", "我们需要感觉它。", null, 3],
+      ["They want to feel brave.", "他们想感觉勇敢。", null, 3],
+      ["It doesn't feel like a mistake.", "感觉不像是错误。", null, 4],
+      ["You need to feel ready to say that.", "你需要感觉准备好说那个。", null, 5],
+      ["It doesn't feel like a long time since we met.", "感觉不像自从我们见面很长时间了。", null, 7],
+      ["I thought you would feel very brave to say you thought that.", "我认为你会感觉很勇敢说你认为那个。", null, 9],
+      ["It doesn't feel like the sensible thing would have been to buy something.", "感觉不像明智的事会是买一些东西。", null, 9],
+      ["We would have felt ready to look somewhere else if we needed to.", "如果我们需要，我们会感觉准备好去别的地方看看。", null, 9]
+    ],
+    "phrase_distribution": {
+      "really_short_1_2": 2,
+      "quite_short_3": 2,
+      "longer_4_5": 2,
+      "long_6_plus": 4
+    },
+    "_metadata": {
       "lego_id": "S0618L03",
-      "practice_phrases": [
-        {
-          "known": "to feel",
-          "target": "感觉"
-        },
-        {
-          "known": "I feel",
-          "target": "我感觉"
-        },
-        {
-          "known": "you feel that",
-          "target": "你感觉那个"
-        },
-        {
-          "known": "I feel it's near",
-          "target": "我感觉它靠近"
-        },
-        {
-          "known": "doesn't feel like something",
-          "target": "感觉不像一些东西"
-        },
-        {
-          "known": "I feel we would buy",
-          "target": "我感觉我们会买"
-        },
-        {
-          "known": "you feel it was a mistake",
-          "target": "你感觉它是个错误"
-        },
-        {
-          "known": "I feel that would have been brave",
-          "target": "我感觉那会是勇敢"
-        },
-        {
-          "known": "you feel it doesn't feel like a long time",
-          "target": "你感觉它感觉不像很长时间"
-        },
-        {
-          "known": "I feel it's near where your family live",
-          "target": "我感觉它靠近你家人住的地方"
-        }
-      ]
-    }
-  ]
+      "seed_context": {
+        "known": "It doesn't feel like a long time.",
+        "target": "感觉不像很长时间。"
+      }
+    },
+    "components": [[null, null], [null, null], [null, null]]
+  }
 }

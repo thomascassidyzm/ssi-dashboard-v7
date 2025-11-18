@@ -4,136 +4,46 @@
     {
       "lego_id": "S0639L01",
       "practice_phrases": [
-        {
-          "known": "先生。",
-          "target": "Sir."
-        },
-        {
-          "known": "您好，先生。",
-          "target": "Hello, sir."
-        },
-        {
-          "known": "那位先生。",
-          "target": "That gentleman."
-        },
-        {
-          "known": "这位先生。",
-          "target": "This gentleman."
-        },
-        {
-          "known": "先生在哪里？",
-          "target": "Where is the gentleman?"
-        },
-        {
-          "known": "先生想要什么？",
-          "target": "What would the gentleman like?"
-        },
-        {
-          "known": "我认为那位先生在试着想。",
-          "target": "I think that gentleman is trying to think."
-        },
-        {
-          "known": "先生的包在哪里？",
-          "target": "Where is the gentleman's bag?"
-        },
-        {
-          "known": "您想要一杯水吗，先生？",
-          "target": "Would you like a glass of water, sir?"
-        },
-        {
-          "known": "那位先生喜欢茶。",
-          "target": "That gentleman likes tea."
-        }
+        ["Sir", "先生", null, 1],
+        ["Hello sir", "您好先生", null, 1],
+        ["That gentleman", "那位先生", null, 2],
+        ["This gentleman", "这位先生", null, 2],
+        ["Where is the gentleman", "先生在哪里", null, 3],
+        ["What would you like sir", "您想要什么先生", null, 3],
+        ["I think that gentleman is here", "我认为那位先生在这里", null, 4],
+        ["Where is the gentleman's bag", "先生的包在哪里", null, 4],
+        ["Would you like a glass of water sir", "您想要一杯水吗先生", null, 5],
+        ["That gentleman is trying to think", "那位先生在试着想", null, 5]
       ]
     },
     {
       "lego_id": "S0639L02",
       "practice_phrases": [
-        {
-          "known": "您先生。",
-          "target": "You sir."
-        },
-        {
-          "known": "您先生好。",
-          "target": "How are you, sir."
-        },
-        {
-          "known": "您先生在哪里？",
-          "target": "Where are you, sir?"
-        },
-        {
-          "known": "您先生想要什么？",
-          "target": "What would you like, sir?"
-        },
-        {
-          "known": "您先生想要喝茶吗？",
-          "target": "Would you like to drink tea, sir?"
-        },
-        {
-          "known": "您先生认为那是好吗？",
-          "target": "Do you think that is good, sir?"
-        },
-        {
-          "known": "您先生的包在哪里？",
-          "target": "Where is your bag, sir?"
-        },
-        {
-          "known": "我认为您先生想要一杯水。",
-          "target": "I think you would like a glass of water, sir."
-        },
-        {
-          "known": "您先生喜欢加牛奶但不加糖吗？",
-          "target": "Do you like it with milk but without sugar, sir?"
-        },
-        {
-          "known": "您先生在试着想什么？",
-          "target": "What are you trying to think, sir?"
-        }
+        ["You, sir", "您，先生", null, 2],
+        ["Are you the sir?", "您是先生吗？", null, 2],
+        ["What do you want sir?", "您想要什么先生？", null, 3],
+        ["Where are you sir?", "您在哪里先生？", null, 3],
+        ["I think you are the gentleman sir.", "我认为您是那位先生。", null, 4],
+        ["Would you like water sir?", "您想要水吗先生？", null, 4],
+        ["What would you like to drink sir?", "您想要喝什么先生？", null, 5],
+        ["I'd like to know where you are sir.", "我想知道您在哪里先生。", null, 5],
+        ["I think you would like one of those sir.", "我认为您想要其中一个先生。", null, 5],
+        ["Would you like a large glass of water sir?", "您想要一大杯水吗先生？", null, 5]
       ]
     },
     {
       "lego_id": "S0639L03",
       "practice_phrases": [
-        {
-          "known": "和您先生。",
-          "target": "With you sir."
-        },
-        {
-          "known": "我和您先生。",
-          "target": "I'm with you sir."
-        },
-        {
-          "known": "我想和您先生。",
-          "target": "I want to be with you sir."
-        },
-        {
-          "known": "可以和您先生吗？",
-          "target": "May I be with you sir?"
-        },
-        {
-          "known": "我想要和您先生喝茶。",
-          "target": "I'd like to drink tea with you sir."
-        },
-        {
-          "known": "和您先生在哪里好？",
-          "target": "Where would be good to be with you sir?"
-        },
-        {
-          "known": "我可以和您先生一起吗？",
-          "target": "Can I be with you sir?"
-        },
-        {
-          "known": "我喜欢和您先生在一起。",
-          "target": "I like being with you sir."
-        },
-        {
-          "known": "我认为和您先生那就好。",
-          "target": "I think being with you sir would be fine."
-        },
-        {
-          "known": "和您先生喝一大杯水。",
-          "target": "Drinking a large glass of water with you sir."
-        }
+        ["With you sir", "和您先生", null, 2],
+        ["I'm with you sir.", "我和您先生。", null, 2],
+        ["I am with you sir.", "我和您在一起先生。", null, 3],
+        ["She is with you sir.", "她和您在一起先生。", null, 3],
+        ["I would like to be with you sir.", "我想和您在一起先生。", null, 4],
+        ["The bag is with you sir.", "包和您在一起先生。", null, 4],
+        ["I think the bag is with you sir.", "我认为包和您在一起先生。", null, 5],
+        ["I would like to stay with you sir.", "我想要和您待在一起先生。", null, 5],
+        ["I think I am with you on that sir.", "我认为我和您想法一致先生。", null, 5],
+        ["Where would you like me to be with you sir?", "您想要我在哪里和您在一起先生？", null, 5]
       ]
     }
   ]
