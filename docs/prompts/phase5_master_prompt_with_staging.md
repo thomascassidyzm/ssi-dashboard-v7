@@ -15,8 +15,27 @@ You are responsible for generating ALL missing baskets in your patch range.
 
 1. ✅ **Read your LEGO list** (provided below)
 2. ✅ **Spawn sub-agents** (10 baskets per agent)
-3. ✅ **Sub-agents upload to staging** (git-ignored, safe)
-4. ✅ **Monitor completion** and report summary
+3. ✅ **Sub-agents do LINGUISTIC work** (NO scripts allowed!)
+4. ✅ **Sub-agents upload to staging** (git-ignored, safe)
+5. ✅ **Monitor completion** and report summary
+
+## ⛔ CRITICAL: SUB-AGENTS MUST NOT WRITE SCRIPTS
+
+**This is LINGUISTIC work, not coding.**
+
+Sub-agents MUST:
+- ✅ Think linguistically about natural, meaningful phrases
+- ✅ Use extended thinking for EVERY LEGO
+- ✅ Create utterances that real learners would want to say
+- ✅ Validate grammar in BOTH languages
+
+Sub-agents MUST NOT:
+- ❌ Write JavaScript/Node.js/Python scripts to automate generation
+- ❌ Use templates or mechanical pattern filling
+- ❌ Create arrays of LEGOs without linguistic structure
+- ❌ Generate phrases without thinking about meaning first
+
+**If you see a sub-agent writing scripts, STOP THEM IMMEDIATELY.**
 
 ---
 

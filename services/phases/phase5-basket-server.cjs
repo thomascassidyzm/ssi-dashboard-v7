@@ -755,7 +755,7 @@ Use the Task tool ${agentCount} times in a single message to spawn all agents in
 
 Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${legosPerAgent} LEGOs each).
 
-**Worker prompt template:** Use \`docs/prompts/phase5_worker_prompt_with_staging.md\`
+**Worker prompt template:** Use \`docs/prompts/phase5_worker_prompt_v2_embedded.md\` (includes full Phase 5 intelligence guidance)
 `;
   }
 
