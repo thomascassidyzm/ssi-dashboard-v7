@@ -1,0 +1,132 @@
+{
+  "S0540L01": {
+    "lego": ["if you want", "如果你想"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [],
+    "practice_phrases": [
+      ["If you want", "如果你想", null, 1],
+      ["If you want to listen", "如果你想听", null, 2],
+      ["If you want to count them", "如果你想数它们", null, 3],
+      ["If you want to seem crazy", "如果你想显得疯狂", null, 3],
+      ["If you want to win the game", "如果你想赢得比赛", null, 3],
+      ["If you want to choose the wrong job", "如果你想选择错误的工作", null, 4],
+      ["If you want to seem as though you don't care", "如果你想显得好像你不在乎", null, 5],
+      ["If you want to go outside in this dreadful weather", "如果你想在这糟糕的天气出去", null, 5],
+      ["If you want, she won't listen to every word you say", "如果你想，她不会听你说的每一个字", null, 6],
+      ["If you want to, but it's getting late", "如果你想，但天晚了", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0540L01",
+      "seed_context": {
+        "known": "如果你想不开车离开，我不介意。",
+        "target": "I don't mind if you want to leave without the car."
+      }
+    },
+    "components": [
+      ["如果", "if"],
+      ["你", "you"],
+      ["想", "want"]
+    ]
+  },
+  "S0540L02": {
+    "lego": ["without the car", "不开车"],
+    "type": "M",
+    "is_final_lego": false,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0540L01",
+        "known": "if you want",
+        "target": "如果你想",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Without the car", "不开车", null, 1],
+      ["If you want without the car", "如果你想不开车", null, 2],
+      ["I don't want without the car", "我不想不开车", null, 3],
+      ["She doesn't want without the car", "她不想不开车", null, 3],
+      ["If you want to go without the car", "如果你想不开车去", null, 4],
+      ["Unless you want without the car", "除非你想不开车", null, 4],
+      ["If you want to go outside without the car", "如果你想不开车出去", null, 5],
+      ["I used to think you wanted without the car", "我以前认为你想不开车", null, 6],
+      ["Unless they're lucky, they want to go without the car", "除非他们运气好，他们想不开车去", null, 6],
+      ["But without the car, if you want", "但不开车，如果你想", null, 4]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0540L02",
+      "seed_context": {
+        "known": "如果你想不开车离开，我不介意。",
+        "target": "I don't mind if you want to leave without the car."
+      }
+    },
+    "components": [
+      ["不", "not/without"],
+      ["开车", "drive car"]
+    ]
+  },
+  "S0540L04": {
+    "lego": ["leave without the car", "不开车离开"],
+    "type": "M",
+    "is_final_lego": true,
+    "current_seed_earlier_legos": [
+      {
+        "id": "S0540L01",
+        "known": "if you want",
+        "target": "如果你想",
+        "type": "M"
+      },
+      {
+        "id": "S0540L02",
+        "known": "without the car",
+        "target": "不开车",
+        "type": "M"
+      }
+    ],
+    "practice_phrases": [
+      ["Leave without the car", "不开车离开", null, 1],
+      ["If you want to leave without the car", "如果你想不开车离开", null, 2],
+      ["I don't want to leave without the car", "我不想不开车离开", null, 3],
+      ["She doesn't want to leave without the car", "她不想不开车离开", null, 3],
+      ["They don't want to leave without the car", "他们不想不开车离开", null, 4],
+      ["Unless you want to leave without the car", "除非你想不开车离开", null, 4],
+      ["If you want to leave without the car, but it's getting late", "如果你想不开车离开，但天晚了", null, 5],
+      ["I used to think you wanted to leave without the car", "我以前认为你想不开车离开", null, 6],
+      ["She doesn't want to seem as though she wants to leave without the car", "她不想显得好像她想不开车离开", null, 6],
+      ["I don't mind if you want to leave without the car.", "如果你想不开车离开，我不介意。", null, 5]
+    ],
+    "phrase_distribution": {
+      "short_1_to_2_legos": 2,
+      "medium_3_legos": 2,
+      "longer_4_legos": 2,
+      "longest_5_legos": 4
+    },
+    "target_phrase_count": 10,
+    "_metadata": {
+      "lego_id": "S0540L04",
+      "seed_context": {
+        "known": "如果你想不开车离开，我不介意。",
+        "target": "I don't mind if you want to leave without the car."
+      }
+    },
+    "components": [
+      ["不", "not/without"],
+      ["开车", "drive car"],
+      ["离开", "leave"]
+    ]
+  }
+}
