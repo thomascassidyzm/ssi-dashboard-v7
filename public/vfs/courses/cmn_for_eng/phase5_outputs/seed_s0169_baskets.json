@@ -1,0 +1,221 @@
+{
+  "legos": {
+    "S0169L01": {
+      "lego": [
+        "you want me to",
+        "你想让我"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        [
+          "you want me to",
+          "你想让我",
+          null,
+          1
+        ],
+        [
+          "you want me to help",
+          "你想让我帮忙",
+          null,
+          2
+        ],
+        [
+          "you want me to come and help",
+          "你想让我来帮忙",
+          null,
+          3
+        ],
+        [
+          "you want me to tell you now",
+          "你想让我现在告诉你",
+          null,
+          3
+        ],
+        [
+          "you want me to help you find it",
+          "你想让我帮你找它",
+          null,
+          4
+        ],
+        [
+          "you want me to come tomorrow afternoon",
+          "你想让我明天下午来",
+          null,
+          4
+        ],
+        [
+          "you want me to tell you what I need",
+          "你想让我告诉你我需要什么",
+          null,
+          5
+        ],
+        [
+          "you want me to help you look for your keys",
+          "你想让我帮你找你的钥匙",
+          null,
+          5
+        ],
+        [
+          "you want me to go to the office with you",
+          "你想让我和你一起去办公室",
+          null,
+          5
+        ],
+        [
+          "you want me to read this interesting book",
+          "你想让我读这本有趣的书",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0169L01",
+        "seed_context": {
+          "known": "What do you want me to do?",
+          "target": "你想让我做什么？"
+        }
+      },
+      "components": [
+        [
+          "你",
+          "you"
+        ],
+        [
+          "想",
+          "want"
+        ],
+        [
+          "让",
+          "let/make"
+        ],
+        [
+          "我",
+          "me"
+        ]
+      ]
+    },
+    "S0169L02": {
+      "lego": [
+        "want me to do what",
+        "想让我做什么"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0169L01",
+          "known": "you want me to",
+          "target": "你想让我",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        [
+          "want me to do what",
+          "想让我做什么",
+          null,
+          1
+        ],
+        [
+          "you want me to do what",
+          "你想让我做什么",
+          null,
+          2
+        ],
+        [
+          "she wants me to do what tomorrow",
+          "她想让我明天做什么",
+          null,
+          3
+        ],
+        [
+          "he wants me to do what now",
+          "他想让我现在做什么",
+          null,
+          3
+        ],
+        [
+          "you want me to do what on Sunday morning",
+          "你想在星期天早上让我做什么",
+          null,
+          4
+        ],
+        [
+          "you want me to do what for her",
+          "你想让我为她做什么",
+          null,
+          4
+        ],
+        [
+          "my mother wants me to do what at the office",
+          "我妈妈想让我在办公室做什么",
+          null,
+          5
+        ],
+        [
+          "you want me to do what to help you",
+          "你想让我做什么来帮你",
+          null,
+          5
+        ],
+        [
+          "she wants me to do what next year",
+          "她想让我明年做什么",
+          null,
+          5
+        ],
+        [
+          "he wants me to do what although I'm busy",
+          "他想让我做什么虽然我很忙",
+          null,
+          5
+        ]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0169L02",
+        "seed_context": {
+          "known": "What do you want me to do?",
+          "target": "你想让我做什么？"
+        }
+      },
+      "components": [
+        [
+          "想",
+          "want"
+        ],
+        [
+          "让",
+          "let/make"
+        ],
+        [
+          "我",
+          "me"
+        ],
+        [
+          "做",
+          "do"
+        ],
+        [
+          "什么",
+          "what"
+        ]
+      ]
+    }
+  }
+}
