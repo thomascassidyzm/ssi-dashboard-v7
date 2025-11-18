@@ -1,0 +1,40 @@
+{
+  "legos": {
+    "S0334L07": {
+      "lego": ["kitten", "小猫"],
+      "type": "M",
+      "current_seed_legos_available": [
+        {"id": "S0334L01", "known": "He said", "target": "他说", "type": "M"},
+        {"id": "S0334L02", "known": "he can", "target": "他可以", "type": "M"},
+        {"id": "S0334L03", "known": "can let", "target": "可以让", "type": "M"},
+        {"id": "S0334L04", "known": "let you hold", "target": "让你抱", "type": "M"},
+        {"id": "S0334L05", "known": "hold", "target": "抱", "type": "A"},
+        {"id": "S0334L06", "known": "the kitten", "target": "那只小猫", "type": "M"}
+      ],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["kitten", "小猫", null, 1],
+        ["hold the kitten", "抱小猫", null, 2],
+        ["He can hold the kitten", "他可以抱小猫", null, 3],
+        ["The kitten is important", "小猫很重要", null, 3],
+        ["He said he can hold the kitten", "他说他可以抱小猫", null, 4],
+        ["She can't hold the kitten", "她不能抱小猫", null, 4],
+        ["He said he can let you hold the kitten", "他说他可以让你抱小猫", null, 5],
+        ["I think the kitten is very important", "我觉得小猫很重要", null, 5],
+        ["She can't spend much time with the kitten", "她不能和小猫花很多时间", null, 6],
+        ["I think he needs to build a new life for the kitten", "我觉得他需要为小猫建立新生活", null, 7]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "components": [
+        ["小", "small"],
+        ["猫", "cat"]
+      ]
+    }
+  }
+}
