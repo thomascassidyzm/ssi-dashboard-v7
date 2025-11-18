@@ -193,9 +193,12 @@ app.post('/start', async (req, res) => {
 
   console.log(`[Phase 5] ✅ Prerequisites found`);
 
-  // Check if Phase 5 already complete
+  // Check if Phase 5 already complete for FULL COURSE (not specific seed ranges)
+  // Skip this check if user is requesting a specific seed range for testing/regeneration
+  const isFullCourse = startSeed === 1 && endSeed >= 668;
   const basketsPath = path.join(baseCourseDir, 'lego_baskets.json');
-  if (await fs.pathExists(basketsPath)) {
+
+  if (isFullCourse && await fs.pathExists(basketsPath)) {
     try {
       const baskets = await fs.readJson(basketsPath);
       const basketCount = Object.keys(baskets.baskets || {}).length;
@@ -217,6 +220,8 @@ app.post('/start', async (req, res) => {
     } catch (err) {
       console.log(`[Phase 5] baskets file exists but invalid, will regenerate`);
     }
+  } else if (!isFullCourse) {
+    console.log(`[Phase 5] 🔬 Specific seed range requested (${startSeed}-${endSeed}) - proceeding with generation`);
   }
 
   // Initialize job state with enhanced tracking
