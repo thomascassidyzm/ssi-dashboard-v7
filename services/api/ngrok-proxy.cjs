@@ -59,28 +59,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// API proxy (Dashboard API - languages, courses, etc.)
-// Use a filter function to match /api/* without stripping the prefix
-app.use(createProxyMiddleware({
-  target: 'http://localhost:3456',
-  changeOrigin: true,
-  // Only proxy requests starting with /api/
-  filter: (pathname, req) => pathname.startsWith('/api/'),
-  logLevel: 'info',
-  onProxyReq: (proxyReq, req, res) => {
-    console.log(`[API Proxy] ${req.method} ${req.originalUrl} → http://localhost:3456${req.originalUrl}`);
-  },
-  onError: (err, req, res) => {
-    console.error(`[API Proxy Error] ${err.message}`);
-    res.status(500).json({
-      success: false,
-      error: 'API server unavailable',
-      details: err.message
-    });
-  }
-}));
-
-// Phase 3 proxy (LEGO Extraction)
+// Phase 3 proxy (LEGO Extraction) - BEFORE API proxy to avoid conflicts
 app.use('/phase3', createProxyMiddleware({
   target: 'http://localhost:3458',
   changeOrigin: true,
@@ -101,7 +80,7 @@ app.use('/phase3', createProxyMiddleware({
   }
 }));
 
-// Phase 5 proxy (Basket Generation)
+// Phase 5 proxy (Basket Generation) - BEFORE API proxy to avoid conflicts
 app.use('/phase5', createProxyMiddleware({
   target: 'http://localhost:3459',
   changeOrigin: true,
@@ -117,6 +96,27 @@ app.use('/phase5', createProxyMiddleware({
     res.status(500).json({
       success: false,
       error: 'Phase 5 server unavailable',
+      details: err.message
+    });
+  }
+}));
+
+// API proxy (Dashboard API - languages, courses, etc.) - AFTER phase proxies
+// Use a filter function to match /api/* without stripping the prefix
+app.use(createProxyMiddleware({
+  target: 'http://localhost:3456',
+  changeOrigin: true,
+  // Only proxy requests starting with /api/
+  filter: (pathname, req) => pathname.startsWith('/api/'),
+  logLevel: 'info',
+  onProxyReq: (proxyReq, req, res) => {
+    console.log(`[API Proxy] ${req.method} ${req.originalUrl} → http://localhost:3456${req.originalUrl}`);
+  },
+  onError: (err, req, res) => {
+    console.error(`[API Proxy Error] ${err.message}`);
+    res.status(500).json({
+      success: false,
+      error: 'API server unavailable',
       details: err.message
     });
   }
