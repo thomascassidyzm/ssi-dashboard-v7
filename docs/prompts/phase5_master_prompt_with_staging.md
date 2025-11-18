@@ -16,7 +16,7 @@ You are responsible for generating ALL missing baskets in your patch range.
 1. ✅ **Read your LEGO list** (provided below)
 2. ✅ **Spawn sub-agents** (10 baskets per agent)
 3. ✅ **Sub-agents do LINGUISTIC work** (NO scripts allowed!)
-4. ✅ **Sub-agents upload to staging** (git-ignored, safe)
+4. ✅ **Sub-agents upload to staging** (safe for review)
 5. ✅ **Monitor completion** and report summary
 
 ## ⛔ CRITICAL: SUB-AGENTS MUST NOT WRITE SCRIPTS
@@ -64,8 +64,8 @@ Sub-agents MUST NOT:
 
 **What you DON'T need to do:**
 - ❌ Create scaffolds (agents do this themselves)
-- ❌ Push to GitHub (no git involved!)
 - ❌ Merge files (server does this automatically)
+- ❌ Write code or scripts (this is linguistic work!)
 
 ---
 
@@ -86,11 +86,11 @@ Track completion and report:
 
 ## ⚠️ IMPORTANT NOTES
 
-### Staging Workflow (New!)
-- **Sub-agents upload via ngrok** → No git conflicts
+### Staging Workflow
+- **Sub-agents upload via ngrok** → Direct HTTP POST
 - **Baskets saved to staging first** → Safe recovery if something fails
 - **Server merges to canon** → Atomic operations
-- **Zero git risk** → Staging is git-ignored
+- **Safe and isolated** → Staging directory for review before merge
 
 ### Your Role as Master
 - **You orchestrate** - you don't generate content yourself
@@ -102,7 +102,7 @@ Track completion and report:
 - Read scaffolds (or create if missing)
 - Generate 10 practice phrases per basket (2-2-2-4 distribution)
 - Grammar self-check (critical!)
-- Upload via ngrok HTTP POST (not git)
+- Upload via ngrok HTTP POST
 
 ---
 
