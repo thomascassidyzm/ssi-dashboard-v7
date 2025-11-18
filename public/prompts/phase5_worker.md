@@ -47,15 +47,31 @@ This creates **linguistic building blocks** that learners can recombine infinite
 
 ---
 
+## ⚡ CRITICAL: SILENT OPERATION
+
+**DO NOT print verbose output to console!**
+
+- ❌ NO "Processing LEGO S0001L01..." messages
+- ❌ NO "Generated 10 phrases for..." logs
+- ❌ NO "Validating basket..." status updates
+- ❌ NO progress messages per LEGO
+- ✅ Work silently in background
+- ✅ POST results via HTTP (doesn't count as output!)
+- ✅ Only print brief final summary at end
+
+**Why:** Browser conversations have 32k token output limit. Verbose logging wastes tokens. Work silently and let HTTP uploads track progress.
+
+---
+
 ## 🎯 YOUR MISSION
 
 Generate practice baskets for YOUR assigned LEGOs:
 
 1. ✅ **Read your LEGO assignments** (below)
-2. ✅ **For each LEGO:** Read scaffold → Generate phrases → Validate
+2. ✅ **For each LEGO:** Read scaffold → Generate phrases → Validate (SILENTLY!)
 3. ✅ **Group by seed** (all LEGOs from same seed together)
 4. ✅ **Upload to staging** via ngrok HTTP POST
-5. ✅ **Report completion**
+5. ✅ **Report brief summary** (only at end)
 
 ---
 
@@ -445,21 +461,13 @@ S0045L01, S0045L02 → Upload together as seed S0045
 
 ## 🎯 STEP 5: Report Completion
 
-When all LEGOs uploaded, report summary:
+When all LEGOs uploaded, report brief summary (2-3 lines max):
 
 ```
-✅ {{AGENT_ID}} Complete
-
-Assigned LEGOs: {{LEGO_COUNT}}
-Seeds processed: {{SEED_COUNT}}
-Uploads successful: {{SUCCESS_COUNT}}
-Uploads failed: {{FAIL_COUNT}}
-
-Upload method: ngrok HTTP POST
-Saved to: staging (git-ignored)
-
-Status: ✅ Ready for quality review
+✅ {{AGENT_ID}} complete: {{LEGO_COUNT}} LEGOs uploaded
 ```
+
+**That's it!** No detailed logs, no per-LEGO status, just confirmation. The ngrok HTTP responses provide all tracking needed.
 
 ---
 

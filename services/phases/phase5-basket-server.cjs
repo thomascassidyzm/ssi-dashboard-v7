@@ -990,6 +990,21 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 
 ---
 
+## ⚡ CRITICAL: SILENT OPERATION
+
+**DO NOT print verbose output to console!**
+
+- ❌ NO "Processing LEGO S0001L01..." messages
+- ❌ NO "Generated 10 phrases for..." logs
+- ❌ NO progress bars or status updates
+- ✅ Work silently
+- ✅ POST results via HTTP
+- ✅ Only print brief final summary
+
+**Why:** Browser output has 32k token limit. Verbose logging wastes tokens and risks hitting limits.
+
+---
+
 ## 🎯 YOUR MISSION
 
 You are responsible for generating baskets for ${legoCount} LEGOs.
@@ -998,9 +1013,9 @@ You are responsible for generating baskets for ${legoCount} LEGOs.
 
 1. ✅ **LEGO data embedded** - All LEGO data provided below (NO file reads needed!)
 2. ✅ **Spawn ${agentCount} sub-agents** (~${legosPerAgent} LEGOs per agent)
-3. ✅ **Sub-agents generate baskets** using embedded data
+3. ✅ **Sub-agents work SILENTLY** - no verbose console output
 4. ✅ **Sub-agents upload via ngrok** (no git, no branches!)
-5. ✅ **Monitor completion** and report summary
+5. ✅ **Monitor completion** and report brief summary
 
 ---
 
@@ -1077,15 +1092,13 @@ The template has a HUGE "NO SCRIPTS" warning at the top. Make sure sub-agents re
 
 ## 📊 STEP 2: Monitor & Report
 
-Track completion and report:
+Track completion and report brief summary (2-3 lines):
 
 \`\`\`
-✅ Phase 5 Complete (Seeds ${startSeed}-${endSeed})
-   Seeds processed: ${totalSeeds}
-   Sub-agents spawned: ${agentCount}
-   Upload method: ngrok → staging
-   Status: All agents completed
+✅ Phase 5 complete: ${legoCount} LEGOs → ${agentCount} workers → staging
 \`\`\`
+
+**That's it!** No verbose logs. Let HTTP responses track progress.
 
 ---
 
@@ -1132,9 +1145,9 @@ async function spawnClaudeCodeSession(prompt, windowTitle) {
 tell application "${browser}"
     activate
 
-    -- Open new tab with claude.ai
+    -- Open new tab with claude.ai/new (fresh conversation)
     tell window 1
-        set newTab to make new tab with properties {URL:"https://claude.ai"}
+        set newTab to make new tab with properties {URL:"https://claude.ai/new"}
         set current tab to newTab
     end tell
 
