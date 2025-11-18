@@ -457,6 +457,136 @@ app.post('/stop/:courseCode', async (req, res) => {
 });
 
 /**
+ * POST /upload-translations - Receive translations directly from Claude Code agents
+ *
+ * Body: {
+ *   course: 'cmn_for_eng',
+ *   seedId: 'S0532',
+ *   agentId: 'agent-01',
+ *   translation: ['English sentence', '中文翻译']
+ * }
+ */
+app.post('/upload-translations', async (req, res) => {
+  try {
+    const { course, seedId, translation, agentId } = req.body;
+
+    if (!course || !seedId || !translation) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: course, seedId, translation'
+      });
+    }
+
+    if (!Array.isArray(translation) || translation.length !== 2) {
+      return res.status(400).json({
+        success: false,
+        error: 'translation must be an array of [known, target] strings'
+      });
+    }
+
+    console.log(`📥 Receiving translation: ${course} / ${seedId} (${translation[0]})${agentId ? ` from ${agentId}` : ''}`);
+
+    // Course directory
+    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    const phase1OutputsDir = path.join(courseDir, 'phase1_outputs');
+
+    // Ensure directories exist
+    await fs.ensureDir(phase1OutputsDir);
+
+    // Save individual translation file
+    const translationFilePath = path.join(phase1OutputsDir, `seed_${seedId}_translation.json`);
+    await fs.writeJson(translationFilePath, { seedId, translation, agentId, timestamp: new Date().toISOString() }, { spaces: 2 });
+    console.log(`   💾 Saved to ${translationFilePath}`);
+
+    // Load or create seed_pairs.json
+    let seedPairs = {
+      version: '7.7.1',
+      course,
+      target_language: course.split('_')[0], // e.g., 'cmn' from 'cmn_for_eng'
+      known_language: course.split('_')[2] || 'eng', // e.g., 'eng' from 'cmn_for_eng'
+      seed_range: { start: 1, end: 0 },
+      generated: new Date().toISOString(),
+      total_seeds: 0,
+      actual_seeds: 0,
+      translations: {},
+      metadata: {}
+    };
+
+    if (await fs.pathExists(seedPairsPath)) {
+      seedPairs = await fs.readJson(seedPairsPath);
+    }
+
+    // Add or update translation
+    const isNew = !seedPairs.translations[seedId];
+    seedPairs.translations[seedId] = translation;
+
+    // Update counts
+    const totalTranslations = Object.keys(seedPairs.translations).length;
+    seedPairs.total_seeds = totalTranslations;
+    seedPairs.actual_seeds = totalTranslations;
+
+    // Update seed range
+    const seedNumbers = Object.keys(seedPairs.translations)
+      .map(id => parseInt(id.replace('S', '')))
+      .filter(n => !isNaN(n));
+
+    if (seedNumbers.length > 0) {
+      seedPairs.seed_range.start = Math.min(...seedNumbers);
+      seedPairs.seed_range.end = Math.max(...seedNumbers);
+    }
+
+    // Update metadata with enhanced tracking
+    if (!seedPairs.metadata.uploads) {
+      seedPairs.metadata.uploads = [];
+    }
+
+    seedPairs.metadata = {
+      ...seedPairs.metadata,
+      last_upload: new Date().toISOString(),
+      last_seed: seedId,
+      last_agent: agentId || 'unknown',
+      total_translations: totalTranslations
+    };
+
+    // Record upload event (keep last 50)
+    seedPairs.metadata.uploads.push({
+      timestamp: new Date().toISOString(),
+      seedId,
+      agentId: agentId || 'unknown',
+      isNew,
+      totalAfter: totalTranslations
+    });
+
+    if (seedPairs.metadata.uploads.length > 50) {
+      seedPairs.metadata.uploads = seedPairs.metadata.uploads.slice(-50);
+    }
+
+    // Save merged file
+    await fs.writeJson(seedPairsPath, seedPairs, { spaces: 2 });
+
+    console.log(`   ✅ Merged into seed_pairs.json (${isNew ? 'new' : 'updated'})`);
+    console.log(`   📊 Total translations: ${totalTranslations}`);
+
+    res.json({
+      success: true,
+      seedId,
+      agentId: agentId || 'unknown',
+      timestamp: new Date().toISOString(),
+      isNew,
+      totalTranslations
+    });
+
+  } catch (error) {
+    console.error('❌ Upload translation error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
  * POST /phase-complete
  * Webhook for agents reporting completion
  */

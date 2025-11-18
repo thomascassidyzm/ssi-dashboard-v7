@@ -8,7 +8,7 @@ echo "════════════════════════�
 echo ""
 
 PROMPTS_DIR="$(dirname "$0")/phase5_master_prompts"
-CLAUDE_URL="https://claude.ai/chat"
+CLAUDE_CODE_CMD="claude"
 
 if [ ! -d "$PROMPTS_DIR" ]; then
   echo "❌ Prompts directory not found: $PROMPTS_DIR"
@@ -29,18 +29,24 @@ for i in {01..12}; do
 
   echo "📋 Patch $i: $(basename $PROMPT_FILE)"
 
-  # Open browser tab
-  open -a "Safari" "$CLAUDE_URL"
+  # Read the prompt content
+  PROMPT_CONTENT=$(cat $PROMPT_FILE)
 
-  # Wait for page to load
-  sleep 5
-
-  # Copy prompt to clipboard
-  cat $PROMPT_FILE | pbcopy
-
-  # Auto-paste
-  osascript -e 'tell application "Safari" to activate' \
-            -e 'tell application "System Events" to keystroke "v" using command down'
+  # Open Claude Code with the prompt and hit Enter
+  # Using echo to pipe the prompt, then Enter key
+  osascript <<EOF
+    tell application "iTerm"
+      create window with default profile
+      tell current session of current window
+        write text "$CLAUDE_CODE_CMD"
+        delay 1
+        write text "$(echo "$PROMPT_CONTENT" | sed 's/"/\\"/g' | sed "s/'/\\'/g")"
+        delay 0.5
+        -- Hit Enter to submit
+        keystroke return
+      end tell
+    end tell
+EOF
 
   # 5 second delay between tabs (critical for reliability)
   sleep 5

@@ -182,6 +182,11 @@ docs/sessions/
 recovered_phase5_seeds/
 phase3_s0201_s0668/
 
+# Phase 5 staging environment (agent outputs - safe landing zone)
+public/vfs/courses/*/phase5_baskets_staging/
+public/vfs/courses/*/phase5_baskets_normalized.json
+!public/vfs/courses/*/phase5_baskets_staging/.gitignore
+
 # PM2 process management
 .pm2/
 ecosystem.config.js

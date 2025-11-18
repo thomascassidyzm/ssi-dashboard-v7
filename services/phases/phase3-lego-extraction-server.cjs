@@ -1124,6 +1124,201 @@ app.post('/stop/:courseCode', async (req, res) => {
 });
 
 /**
+ * GET /progress/:course - Get Phase 3 progress for a course
+ * Similar to Phase 5's basket-status endpoint
+ */
+app.get('/progress/:course', async (req, res) => {
+  try {
+    const { course } = req.params;
+    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+
+    if (!await fs.pathExists(legoPairsPath)) {
+      return res.json({
+        success: true,
+        totalLegos: 0,
+        totalSeeds: 0,
+        complete: false,
+        progress: 0
+      });
+    }
+
+    const legoPairs = await fs.readJson(legoPairsPath);
+    const totalLegos = legoPairs.seeds.reduce((sum, seed) => sum + seed.legos.length, 0);
+    const totalSeeds = legoPairs.seeds.length;
+
+    // Check if we have seed_pairs to compare against
+    let expectedSeeds = totalSeeds;
+    if (await fs.pathExists(seedPairsPath)) {
+      const seedPairs = await fs.readJson(seedPairsPath);
+      expectedSeeds = seedPairs.seeds?.length || totalSeeds;
+    }
+
+    const complete = totalSeeds >= expectedSeeds;
+    const progress = expectedSeeds > 0 ? Math.round((totalSeeds / expectedSeeds) * 10000) / 100 : 0;
+
+    // Get metadata if available
+    const lastGenerated = legoPairs.metadata?.generated_at || legoPairs.metadata?.last_merged;
+
+    res.json({
+      success: true,
+      totalLegos,
+      totalSeeds,
+      expectedSeeds,
+      complete,
+      progress,
+      lastGenerated
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * POST /upload-legos - Receive LEGO extractions directly from Claude Code agents
+ *
+ * Body: {
+ *   course: 'cmn_for_eng',
+ *   seed: 'S0532',
+ *   agentId: 'agent-01',
+ *   seedData: {
+ *     seed_id: 'S0532',
+ *     seed_pair: ['English', '中文'],
+ *     legos: [
+ *       { id: 'S0532L01', type: 'A', target: '现在', known: 'now', new: true },
+ *       ...
+ *     ]
+ *   }
+ * }
+ */
+app.post('/upload-legos', async (req, res) => {
+  try {
+    const { course, seed, seedData, agentId } = req.body;
+
+    if (!course || !seed || !seedData) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: course, seed, seedData'
+      });
+    }
+
+    console.log(`📥 Receiving LEGO upload: ${course} / ${seed} (${seedData.legos?.length || 0} LEGOs)${agentId ? ` from ${agentId}` : ''}`);
+
+    // Course directory
+    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    const phase3OutputsDir = path.join(courseDir, 'phase3_outputs');
+
+    // Ensure directories exist
+    await fs.ensureDir(phase3OutputsDir);
+
+    // Save individual seed file
+    const seedFilePath = path.join(phase3OutputsDir, `seed_${seed}_legos.json`);
+    await fs.writeJson(seedFilePath, seedData, { spaces: 2 });
+    console.log(`   💾 Saved to ${seedFilePath}`);
+
+    // Load or create lego_pairs.json
+    let legoPairs = {
+      course_code: course,
+      total_seeds: 0,
+      seeds: [],
+      metadata: {}
+    };
+    if (await fs.pathExists(legoPairsPath)) {
+      legoPairs = await fs.readJson(legoPairsPath);
+    }
+
+    // Find if seed already exists
+    const existingIndex = legoPairs.seeds.findIndex(s => s.seed_id === seed);
+    let addedLegos = 0;
+    let updatedLegos = 0;
+
+    if (existingIndex >= 0) {
+      // Update existing seed
+      legoPairs.seeds[existingIndex] = seedData;
+      updatedLegos = seedData.legos?.length || 0;
+      console.log(`   🔄 Updated existing seed ${seed}`);
+    } else {
+      // Add new seed
+      legoPairs.seeds.push(seedData);
+      addedLegos = seedData.legos?.length || 0;
+      console.log(`   ✨ Added new seed ${seed}`);
+    }
+
+    // Sort seeds by seed_id
+    legoPairs.seeds.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
+
+    // Calculate totals
+    const totalSeeds = legoPairs.seeds.length;
+    const totalLegos = legoPairs.seeds.reduce((sum, s) => sum + (s.legos?.length || 0), 0);
+    const totalNewLegos = legoPairs.seeds.reduce((sum, s) =>
+      sum + (s.legos?.filter(l => l.new === true).length || 0), 0);
+
+    legoPairs.total_seeds = totalSeeds;
+
+    // Update metadata with enhanced tracking
+    if (!legoPairs.metadata.uploads) {
+      legoPairs.metadata.uploads = [];
+    }
+
+    legoPairs.metadata = {
+      ...legoPairs.metadata,
+      last_upload: new Date().toISOString(),
+      last_seed: seed,
+      last_agent: agentId || 'unknown',
+      total_seeds: totalSeeds,
+      total_legos: totalLegos,
+      total_new_legos: totalNewLegos
+    };
+
+    // Record upload event (keep last 50)
+    legoPairs.metadata.uploads.push({
+      timestamp: new Date().toISOString(),
+      seed,
+      agentId: agentId || 'unknown',
+      legosAdded: addedLegos,
+      legosUpdated: updatedLegos,
+      totalAfter: totalLegos
+    });
+
+    if (legoPairs.metadata.uploads.length > 50) {
+      legoPairs.metadata.uploads = legoPairs.metadata.uploads.slice(-50);
+    }
+
+    // Save merged file
+    await fs.writeJson(legoPairsPath, legoPairs, { spaces: 2 });
+
+    console.log(`   ✅ Merged into lego_pairs.json`);
+    console.log(`   📊 Total: ${totalSeeds} seeds, ${totalLegos} LEGOs (${totalNewLegos} new)`);
+
+    res.json({
+      success: true,
+      seed,
+      agentId: agentId || 'unknown',
+      timestamp: new Date().toISOString(),
+      legosReceived: seedData.legos?.length || 0,
+      addedLegos,
+      updatedLegos,
+      totalSeeds,
+      totalLegos,
+      totalNewLegos
+    });
+
+  } catch (error) {
+    console.error('❌ Upload LEGO error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
  * POST /phase-complete
  * Webhook for segments reporting completion
  */

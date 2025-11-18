@@ -1305,12 +1305,20 @@ Once scaffolds are ready:
    - Path to their scaffolds
    - Standard Phase 5 intelligence prompt: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5
 
-**Sub-agent workflow (standard Phase 5):**
-- Read scaffold
-- Generate 10 practice phrases (2-2-2-4 distribution)
-- Grammar self-check
-- Save to \`phase5_outputs/seed_SXXXX_baskets.json\`
-- Push to GitHub (in batches)
+**Sub-agent workflow (v10 - ngrok upload):**
+- Read v10 scaffold from \`phase5_scaffolds_v10/seed_sXXXX.json\`
+- Generate 10 practice phrases per LEGO (fill 2-2-2-4 slots in v10 structure)
+- Self-validate: grammar, FD/LUT rules, naturalness
+- **Strip metadata:** Extract ONLY \`lego\`, \`type\`, \`practice_phrases\` (remove _metadata, _instructions, _stats, etc.)
+- **Convert v10 to v7 format:** Transform practice_phrases from slot objects to simple arrays:
+  - v10: \`{"short_1_to_2_legos": {"slots": [{"phrase": {"english": "X", "mandarin": "Y"}}]}}\`
+  - v7: \`[["X", "Y", null, N], ...]\` (flat array of [known, target, notes, lego_count])
+- **Upload via ngrok:** POST to \`https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase5/upload-basket\`
+  - Format: \`{"course": "${courseCode}", "seed": "SXXXX", "baskets": {...}, "agentId": "your-id"}\`
+  - Each basket: \`{"lego": ["known", "target"], "type": "A|M", "practice_phrases": [[...], [...]]}\`
+  - Auto-merges into lego_baskets.json
+  - Returns confirmation with progress stats
+- Move to next LEGO (no GitHub pushes needed!)
 
 ---
 
@@ -1394,6 +1402,205 @@ Start with Step 1: Create scaffolds for your ${patch.lego_count} LEGOs.
 });
 
 /**
+ * POST /upload-basket - Receive baskets directly from Claude Code agents
+ *
+ * Body: {
+ *   course: 'cmn_for_eng',
+ *   seed: 'S0532',
+ *   baskets: { S0532L01: {...}, S0532L02: {...} }
+ * }
+ */
+app.post('/upload-basket', async (req, res) => {
+  try {
+    const { course, seed, baskets, agentId } = req.body;
+
+    if (!course || !seed || !baskets) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: course, seed, baskets'
+      });
+    }
+
+    console.log(`📥 Receiving basket upload: ${course} / ${seed} (${Object.keys(baskets).length} LEGOs)${agentId ? ` from ${agentId}` : ''}`);
+
+    // Course directory
+    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
+    const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
+    const phase5OutputsDir = path.join(courseDir, 'phase5_outputs');
+
+    // Ensure directories exist
+    await fs.ensureDir(phase5OutputsDir);
+
+    // Save individual basket file
+    const basketFilePath = path.join(phase5OutputsDir, `seed_${seed}_baskets.json`);
+    await fs.writeJson(basketFilePath, baskets, { spaces: 2 });
+    console.log(`   💾 Saved to ${basketFilePath}`);
+
+    // Load or create lego_baskets.json
+    let legoBaskets = { metadata: {}, baskets: {} };
+    if (await fs.pathExists(legoBasketsPath)) {
+      legoBaskets = await fs.readJson(legoBasketsPath);
+    }
+
+    // Merge baskets
+    let addedCount = 0;
+    let updatedCount = 0;
+    for (const [legoId, basket] of Object.entries(baskets)) {
+      if (legoBaskets.baskets[legoId]) {
+        updatedCount++;
+      } else {
+        addedCount++;
+      }
+      legoBaskets.baskets[legoId] = basket;
+    }
+
+    // Calculate progress metrics
+    const totalBaskets = Object.keys(legoBaskets.baskets).length;
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    let totalNeeded = 0;
+    let progress = 0;
+    let missing = 0;
+
+    if (await fs.pathExists(legoPairsPath)) {
+      const legoPairs = await fs.readJson(legoPairsPath);
+      legoPairs.seeds.forEach(s => {
+        s.legos.forEach(l => {
+          if (l.new === true) totalNeeded++;
+        });
+      });
+      missing = Math.max(0, totalNeeded - totalBaskets);
+      progress = totalNeeded > 0 ? Math.round((totalBaskets / totalNeeded) * 10000) / 100 : 0;
+    }
+
+    // Update metadata with enhanced tracking
+    if (!legoBaskets.metadata.uploads) {
+      legoBaskets.metadata.uploads = [];
+    }
+
+    legoBaskets.metadata = {
+      ...legoBaskets.metadata,
+      last_upload: new Date().toISOString(),
+      last_seed: seed,
+      last_agent: agentId || 'unknown',
+      total_baskets: totalBaskets,
+      total_needed: totalNeeded,
+      missing: missing,
+      progress: progress
+    };
+
+    // Record upload event (keep last 50)
+    legoBaskets.metadata.uploads.push({
+      timestamp: new Date().toISOString(),
+      seed,
+      agentId: agentId || 'unknown',
+      legosAdded: addedCount,
+      legosUpdated: updatedCount,
+      totalAfter: totalBaskets
+    });
+
+    if (legoBaskets.metadata.uploads.length > 50) {
+      legoBaskets.metadata.uploads = legoBaskets.metadata.uploads.slice(-50);
+    }
+
+    // Save merged file
+    await fs.writeJson(legoBasketsPath, legoBaskets, { spaces: 2 });
+
+    console.log(`   ✅ Merged into lego_baskets.json (${addedCount} added, ${updatedCount} updated)`);
+    console.log(`   📊 Total baskets: ${totalBaskets}/${totalNeeded} (${progress}%)`);
+
+    res.json({
+      success: true,
+      seed,
+      agentId: agentId || 'unknown',
+      timestamp: new Date().toISOString(),
+      legosReceived: Object.keys(baskets).length,
+      added: addedCount,
+      updated: updatedCount,
+      totalBaskets,
+      totalNeeded,
+      missing,
+      progress
+    });
+
+  } catch (error) {
+    console.error('❌ Upload basket error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
+ * GET /basket-status/:course - Get current basket counts
+ */
+app.get('/basket-status/:course', async (req, res) => {
+  try {
+    const { course } = req.params;
+    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
+    const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+
+    if (!await fs.pathExists(legoBasketsPath)) {
+      return res.json({
+        success: true,
+        totalBaskets: 0,
+        totalNeeded: 0,
+        missing: 0,
+        progress: 0
+      });
+    }
+
+    const legoBaskets = await fs.readJson(legoBasketsPath);
+    const totalBaskets = Object.keys(legoBaskets.baskets || {}).length;
+
+    let totalNeeded = 0;
+    if (await fs.pathExists(legoPairsPath)) {
+      const legoPairs = await fs.readJson(legoPairsPath);
+      legoPairs.seeds.forEach(seed => {
+        seed.legos.forEach(lego => {
+          if (lego.new === true) totalNeeded++;
+        });
+      });
+    }
+
+    const missing = Math.max(0, totalNeeded - totalBaskets);
+    const progress = totalNeeded > 0 ? Math.round((totalBaskets / totalNeeded) * 10000) / 100 : 0;
+
+    // Recent activity (last 10 uploads)
+    const recentUploads = (legoBaskets.metadata?.uploads || []).slice(-10).reverse();
+
+    // Active agents (agents who uploaded in last 5 minutes)
+    const fiveMinutesAgo = Date.now() - (5 * 60 * 1000);
+    const activeAgents = new Set();
+    (legoBaskets.metadata?.uploads || []).forEach(upload => {
+      if (new Date(upload.timestamp).getTime() > fiveMinutesAgo) {
+        activeAgents.add(upload.agentId);
+      }
+    });
+
+    res.json({
+      success: true,
+      totalBaskets,
+      totalNeeded,
+      missing,
+      progress,
+      lastUpload: legoBaskets.metadata?.last_upload,
+      lastSeed: legoBaskets.metadata?.last_seed,
+      lastAgent: legoBaskets.metadata?.last_agent,
+      activeAgents: Array.from(activeAgents),
+      recentUploads
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
  * Start server
  */
 app.listen(PORT, () => {
@@ -1401,6 +1608,9 @@ app.listen(PORT, () => {
   console.log(`✅ ${SERVICE_NAME} listening on port ${PORT}`);
   console.log(`   VFS Root: ${VFS_ROOT}`);
   console.log(`   Orchestrator: ${ORCHESTRATOR_URL}`);
+  console.log('');
+  console.log(`📡 Upload endpoint: http://localhost:${PORT}/upload-basket`);
+  console.log(`   Use ngrok to expose this endpoint for remote agents`);
   console.log('');
 });
 

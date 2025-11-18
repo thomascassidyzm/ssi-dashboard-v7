@@ -75,6 +75,18 @@ Express API for course data access and validation.
 
 #### `services/` - Background Services
 Orchestration, automation, and processing services.
+```
+services/
+├── orchestration/       # Multi-agent coordination
+├── phase7/             # Course manifest generation (Phase 7)
+└── web/                # Web services
+```
+
+**Phase 7 Service** (`services/phase7/`)
+- Transforms phase outputs into final APML manifests
+- Generates deterministic UUIDs (SSi legacy format)
+- Embeds language-specific encouragements
+- Separate from legacy `scripts/phase7-*` implementations
 
 #### `public/vfs/courses/` - Course Data
 Language course data organized by language pair (e.g., `spa_for_eng/`).

@@ -58,9 +58,25 @@ module.exports = {
       log_date_format: 'YYYY-MM-DD HH:mm:ss Z'
     },
     {
+      name: 'ngrok-proxy',
+      script: 'services/api/ngrok-proxy.cjs',
+      cwd: __dirname,
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '200M',
+      env: {
+        NODE_ENV: 'development',
+        PORT: 3463
+      },
+      error_file: 'logs/ngrok-proxy-error.log',
+      out_file: 'logs/ngrok-proxy-out.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z'
+    },
+    {
       name: 'ngrok-tunnel',
       script: 'ngrok',
-      args: 'http --domain=mirthlessly-nonanesthetized-marilyn.ngrok-free.dev 3456',
+      args: 'http --domain=mirthlessly-nonanesthetized-marilyn.ngrok-free.dev 3463 --log=stdout',
       cwd: __dirname,
       instances: 1,
       autorestart: true,
@@ -68,6 +84,23 @@ module.exports = {
       max_memory_restart: '200M',
       error_file: 'logs/ngrok-error.log',
       out_file: 'logs/ngrok-out.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z'
+    },
+    {
+      name: 'progress-api',
+      script: 'services/api/progress-tracker.cjs',
+      cwd: __dirname,
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '200M',
+      env: {
+        NODE_ENV: 'development',
+        PORT: 3462,
+        VFS_ROOT: require('path').join(__dirname, 'public/vfs/courses')
+      },
+      error_file: 'logs/progress-api-error.log',
+      out_file: 'logs/progress-api-out.log',
       log_date_format: 'YYYY-MM-DD HH:mm:ss Z'
     }
   ]
