@@ -249,7 +249,18 @@
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [],
-      "practice_phrases": [],
+      "practice_phrases": [
+        ["I'm going to ask for", "我会要", null, 1],
+        ["I'm going to ask for help", "我会要帮助", null, 2],
+        ["I'm going to ask for it", "我会要它", null, 2],
+        ["I'm going to ask for more time", "我会要更多时间", null, 3],
+        ["I'm going to ask for something yesterday", "我昨天会要一些事情", null, 3],
+        ["I'm going to ask for help before the weekend", "我会要在周末之前帮助", null, 4],
+        ["I'm going to ask for something from your brother", "我会要你弟弟一些事情", null, 5],
+        ["I'm going to ask for more time to tell you", "我会要更多时间告诉你", null, 5],
+        ["I'm going to ask for help from someone who knows your sister", "我会要认识你妹妹的人帮助", null, 6],
+        ["I'm going to ask for something my mother wanted to give her", "我会要我妈妈想给她的一些事情", null, 7]
+      ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
         "medium_3_legos": 2,
@@ -294,7 +305,18 @@
           "type": "M"
         }
       ],
-      "practice_phrases": [],
+      "practice_phrases": [
+        ["Going to ask for", "会要", null, 1],
+        ["I'm going to ask for", "我会要", null, 1],
+        ["She was going to ask for help", "她会要帮助", null, 2],
+        ["He was going to ask for more time", "他会要更多时间", null, 3],
+        ["My mother was going to ask for something", "我妈妈会要一些事情", null, 3],
+        ["I know someone who was going to ask for help", "我认识一个会要帮助的人", null, 4],
+        ["Your sister was going to ask for more time yesterday", "你妹妹昨天会要更多时间", null, 5],
+        ["He said she was going to ask for help before the weekend", "他说她会要在周末之前帮助", null, 6],
+        ["I met an old woman who was going to ask for something", "我遇到一个会要一些事情的老女人", null, 6],
+        ["My father wanted to tell you she was going to ask for more time", "我爸爸想告诉你她会要更多时间", null, 7]
+      ],
       "phrase_distribution": {
         "short_1_to_2_legos": 2,
         "medium_3_legos": 2,

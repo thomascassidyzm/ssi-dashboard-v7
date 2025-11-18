@@ -1,0 +1,126 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0241",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "seed_pair": {
+    "known": "I don't want to give it to him.",
+    "target": "我不想把它给他。"
+  },
+  "recent_seed_pairs": {
+    "S0231": [["I know an old man who wanted to ask for help.","我认识一个想寻求帮助的老男人。"],[["S0231L01","I know","我认识"],["S0231L02","an old man","一个老男人"],["S0231L04","ask for help","寻求帮助"]]],
+    "S0232": [["I know an old woman who can remember the answer.","我认识一个能记住答案的老女人。"],[["S0232L02","an old woman","一个老女人"]]],
+    "S0233": [["I know a young woman who knows your sister.","我认识一个认识你妹妹的年轻女人。"],[["S0233L02","a young woman","一个年轻女人"],["S0233L03","knows your sister","认识你妹妹"],["S0233L04","your sister","你妹妹"]]],
+    "S0234": [["I met someone last night who works with your brother.","我昨晚遇到一个和你弟弟一起工作的人。"],[["S0234L01","I met last night","我昨晚遇到"],["S0234L03","met someone","遇到一个人"],["S0234L04","works with your brother","和你弟弟一起工作"],["S0234L05","your brother","你弟弟"]]],
+    "S0235": [["I met someone who said that he wanted to tell you something.","我遇到一个说他想告诉你一些事情的人。"],[["S0235L01","I met","我遇到"],["S0235L03","said that he wanted","说他想"],["S0235L04","wanted to tell you","想告诉你"],["S0235L05","tell you something","告诉你一些事情"]]],
+    "S0236": [["I know someone who said that she was going to try to help.","我认识一个说她会努力帮助的人。"],[["S0236L02","know someone","认识一个人"],["S0236L03","said that she was going to","说她会"],["S0236L04","was going to try to help","会努力帮助"],["S0236L05","try to help","努力帮助"]]],
+    "S0237": [["He wanted me to tell you before the weekend.","他想让我在周末之前告诉你。"],[["S0237L01","he wanted me to","他想让我"],["S0237L02","wanted me to tell you","想让我告诉你"],["S0237L03","me to tell you","让我告诉你"],["S0237L04","before the weekend","在周末之前"]]],
+    "S0238": [["He wanted you to tell me yesterday.","他想让你昨天告诉我。"],[["S0238L01","he wanted you to","他想让你"],["S0238L02","wanted you to tell me","想让你告诉我"],["S0238L03","you to tell me","让你告诉我"]]],
+    "S0239": [["My mother likes to read.","我妈妈喜欢阅读。"],[["S0239L02","likes to read","喜欢阅读"]]],
+    "S0240": [["My father doesn't like to stop talking.","我爸爸不喜欢停止说话。"],[["S0240L01","my father","我爸爸"],["S0240L02","doesn't like","不喜欢"],["S0240L03","like to stop talking","喜欢停止说话"],["S0240L04","stop talking","停止说话"]]]
+  },
+  "legos": {
+    "S0241L02": {
+      "lego": ["don't want","不想"],
+      "type": "M",
+      "current_seed_legos_available": [],
+      "is_final_lego": false,
+      "practice_phrases": [],
+      "phrase_distribution": {
+        "really_short_1_2": 0,
+        "quite_short_3": 0,
+        "longer_4_5": 0,
+        "long_6_plus": 0
+      },
+      "_metadata": {
+        "lego_id": "S0241L02",
+        "seed_context": {
+          "known": "I don't want to give it to him.",
+          "target": "我不想把它给他。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    },
+    "S0241L03": {
+      "lego": ["give it to him","把它给他"],
+      "type": "M",
+      "current_seed_legos_available": [["don't want","不想"]],
+      "is_final_lego": false,
+      "practice_phrases": [
+        ["Give it to him", "把它给他", null, 1],
+        ["I don't want to give it to him", "我不想把它给他", null, 2],
+        ["I want to give it to him", "我想把它给他", null, 3],
+        ["She wanted to give it to him", "她想把它给他", null, 3],
+        ["I know someone who wanted to give it to him", "我认识一个想把它给他的人", null, 4],
+        ["My mother wanted to give it to him yesterday", "我妈妈昨天想把它给他", null, 5],
+        ["He wanted me to give it to him before the weekend", "他想让我在周末之前把它给他", null, 6],
+        ["I met someone who said he wanted to give it to him", "我遇到一个说他想把它给他的人", null, 6],
+        ["Your brother wanted me to tell you to give it to him", "你弟弟想让我告诉你把它给他", null, 7],
+        ["I know an old man who doesn't like to give it to him", "我认识一个不喜欢把它给他的老男人", null, 8]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0241L03",
+        "seed_context": {
+          "known": "I don't want to give it to him.",
+          "target": "我不想把它给他。"
+        }
+      },
+      "components": [[null,null],[null,null],[null,null],[null,null]]
+    },
+    "S0241L04": {
+      "lego": ["give him","给他"],
+      "type": "M",
+      "current_seed_legos_available": [["don't want","不想"],["give it to him","把它给他"]],
+      "is_final_lego": true,
+      "practice_phrases": [
+        ["Give him", "给他", null, 1],
+        ["I want to give him", "我想给他", null, 2],
+        ["She wanted to give him", "她想给他", null, 2],
+        ["I don't want to give him", "我不想给他", null, 3],
+        ["My mother wanted to give him", "我妈妈想给他", null, 3],
+        ["He wanted me to give him something", "他想让我给他一些事情", null, 5],
+        ["I know someone who wanted to give him help", "我认识一个想给他帮助的人", null, 5],
+        ["My father wanted you to tell me to give him", "我爸爸想让你告诉我给他", null, 6],
+        ["I met an old woman yesterday who wanted to give him", "我昨天遇到一个想给他的老女人", null, 7],
+        ["I don't want to give it to him.", "我不想把它给他。", null, 2]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      },
+      "_metadata": {
+        "lego_id": "S0241L04",
+        "seed_context": {
+          "known": "I don't want to give it to him.",
+          "target": "我不想把它给他。"
+        }
+      },
+      "components": [[null,null],[null,null]]
+    }
+  },
+  "_instructions": {
+    "task": "Generate 12-15 practice phrases per LEGO using recent seed_pairs as pattern inspiration",
+    "methodology": "Read: docs/phase_intelligence/phase_5_lego_baskets.md",
+    "output": "Write to: /home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs/seed_s0241.json",
+    "pattern_matching": "Use recent_seed_pairs sentences as natural language pattern examples",
+    "lego_coverage_requirement": "Practice phrases MUST use at least 60% of the LEGOs listed in recent_seed_pairs[seed_id][1]",
+    "vocabulary_source": "Prioritize LEGOs from recent_seed_pairs[seed_id][1] + current_seed_legos_available, then any words from sentences",
+    "overgeneration": "Generate 12-15 phrases knowing some may be filtered by GATE validation",
+    "quality": "Semantic meaning + syntactic correctness + pedagogical value",
+    "format": "Array format: [\"English phrase\", \"Spanish phrase\", null, lego_count]"
+  },
+  "_stats": {
+    "new_legos_in_seed": 3,
+    "total_legos_in_seed": 4,
+    "phrases_to_generate": 36,
+    "recent_context_seeds": 10,
+    "recent_legos_available": 31
+  }
+}
