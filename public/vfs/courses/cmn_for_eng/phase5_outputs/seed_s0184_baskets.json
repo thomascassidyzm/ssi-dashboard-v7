@@ -1,4 +1,11 @@
 {
+  "version": "curated_v7_spanish",
+  "seed_id": "S0184",
+  "generation_stage": "BASKETS_COMPLETED",
+  "seed_pair": {
+    "known": "Yes I saw them in the office a while ago.",
+    "target": "是的，我刚才在办公室看到它们了。"
+  },
   "legos": {
     "S0184L02": {
       "lego": [
@@ -186,6 +193,135 @@
           "office"
         ]
       ]
+    },
+    "S0184L04": {
+      "lego": [
+        "I saw",
+        "我看到"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0184L02",
+          "known": "a while ago",
+          "target": "刚才",
+          "type": "A"
+        },
+        {
+          "id": "S0184L03",
+          "known": "in the office",
+          "target": "在办公室",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["I saw", "我看到", null, 1],
+        ["I saw a while ago", "我刚才看到", null, 2],
+        ["I saw in the office", "我在办公室看到", null, 3],
+        ["I saw my keys", "我看到我的钥匙", null, 3],
+        ["I saw them in the office", "我在办公室看到它们", null, 4],
+        ["I saw my mother a while ago", "我刚才看到我妈妈", null, 4],
+        ["I saw them in the office a while ago", "我刚才在办公室看到它们", null, 5],
+        ["I saw my keys in the office", "我在办公室看到我的钥匙", null, 5],
+        ["I'm afraid I saw them a while ago", "恐怕我刚才看到它们", null, 5],
+        ["I saw my keys in the office a while ago", "我刚才在办公室看到我的钥匙", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0184L04",
+        "seed_context": {
+          "known": "Yes I saw them in the office a while ago.",
+          "target": "是的，我刚才在办公室看到它们了。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "看到",
+          "saw"
+        ]
+      ]
+    },
+    "S0184L05": {
+      "lego": [
+        "saw them",
+        "看到它们"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0184L02",
+          "known": "a while ago",
+          "target": "刚才",
+          "type": "A"
+        },
+        {
+          "id": "S0184L03",
+          "known": "in the office",
+          "target": "在办公室",
+          "type": "M"
+        },
+        {
+          "id": "S0184L04",
+          "known": "I saw",
+          "target": "我看到",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["Saw them", "看到它们", null, 1],
+        ["I saw them", "我看到它们", null, 2],
+        ["I saw them a while ago", "我刚才看到它们", null, 3],
+        ["I saw them in the office", "我在办公室看到它们", null, 3],
+        ["I'm afraid I saw them", "恐怕我看到它们", null, 4],
+        ["I haven't seen them a while ago", "我刚才没有看到它们", null, 4],
+        ["I'm afraid I saw them a while ago", "恐怕我刚才看到它们", null, 5],
+        ["I saw them in the office a while ago", "我刚才在办公室看到它们", null, 5],
+        ["I'm afraid I haven't seen them in the office", "恐怕我在办公室没有看到它们", null, 6],
+        ["Yes I saw them in the office a while ago", "是的，我刚才在办公室看到它们了", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0184L05",
+        "seed_context": {
+          "known": "Yes I saw them in the office a while ago.",
+          "target": "是的，我刚才在办公室看到它们了。"
+        }
+      },
+      "components": [
+        [
+          "看到",
+          "saw"
+        ],
+        [
+          "它们",
+          "them"
+        ]
+      ]
     }
+  },
+  "_metadata": {
+    "generated_by": "claude_agent_batch_2",
+    "generation_date": "2025-11-18",
+    "methodology": "Phase 5 Intelligence v7.0",
+    "total_phrases": 40,
+    "total_legos": 4
   }
 }

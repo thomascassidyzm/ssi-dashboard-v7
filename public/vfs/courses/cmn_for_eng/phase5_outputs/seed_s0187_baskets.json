@@ -1,0 +1,123 @@
+{
+  "version": "curated_v7_spanish",
+  "seed_id": "S0187",
+  "generation_stage": "BASKETS_COMPLETED",
+  "seed_pair": {
+    "known": "I'm happy so far.",
+    "target": "到目前为止我很高兴。"
+  },
+  "legos": {
+    "S0187L03": {
+      "lego": [
+        "I'm happy",
+        "我很高兴"
+      ],
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": [
+        ["I'm happy", "我很高兴", null, 1],
+        ["I'm happy now", "我现在很高兴", null, 2],
+        ["I'm happy at work", "我在工作的地方很高兴", null, 3],
+        ["I think I'm happy", "我想我很高兴", null, 3],
+        ["I'm happy at work now", "我现在在工作的地方很高兴", null, 4],
+        ["I'm happy to see them", "我很高兴看到它们", null, 4],
+        ["I'm happy to see my mother", "我很高兴看到我妈妈", null, 5],
+        ["I think I'm happy at work", "我想我在工作的地方很高兴", null, 5],
+        ["I'm happy to talk about this thing", "我很高兴谈这个事情", null, 5],
+        ["I'm happy to see them at work", "我很高兴在工作的地方看到它们", null, 6]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0187L03",
+        "seed_context": {
+          "known": "I'm happy so far.",
+          "target": "到目前为止我很高兴。"
+        }
+      },
+      "components": [
+        [
+          "我",
+          "I"
+        ],
+        [
+          "很",
+          "very"
+        ],
+        [
+          "高兴",
+          "happy"
+        ]
+      ]
+    },
+    "S0187L04": {
+      "lego": [
+        "so far",
+        "到目前为止"
+      ],
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0187L03",
+          "known": "I'm happy",
+          "target": "我很高兴",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": [
+        ["So far", "到目前为止", null, 1],
+        ["I'm happy so far", "到目前为止我很高兴", null, 2],
+        ["So far I think", "到目前为止我想", null, 3],
+        ["So far at work", "到目前为止在工作的地方", null, 3],
+        ["I'm happy so far at work", "到目前为止我在工作的地方很高兴", null, 4],
+        ["So far I haven't seen them", "到目前为止我没有看到它们", null, 4],
+        ["So far I think I'm happy", "到目前为止我想我很高兴", null, 5],
+        ["So far I'm happy to see them", "到目前为止我很高兴看到它们", null, 5],
+        ["So far I haven't seen them at work", "到目前为止我在工作的地方没有看到它们", null, 6],
+        ["I'm happy so far", "到目前为止我很高兴", null, 2]
+      ],
+      "phrase_distribution": {
+        "short_1_to_2_legos": 2,
+        "medium_3_legos": 2,
+        "longer_4_legos": 2,
+        "longest_5_legos": 4
+      },
+      "target_phrase_count": 10,
+      "_metadata": {
+        "lego_id": "S0187L04",
+        "seed_context": {
+          "known": "I'm happy so far.",
+          "target": "到目前为止我很高兴。"
+        }
+      },
+      "components": [
+        [
+          "到",
+          "to/until"
+        ],
+        [
+          "目前",
+          "present"
+        ],
+        [
+          "为止",
+          "up to"
+        ]
+      ]
+    }
+  },
+  "_metadata": {
+    "generated_by": "claude_agent_batch_2",
+    "generation_date": "2025-11-18",
+    "methodology": "Phase 5 Intelligence v7.0",
+    "total_phrases": 20,
+    "total_legos": 2
+  }
+}
