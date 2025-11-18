@@ -138,12 +138,34 @@
         "longer_4_5": 2,
         "long_6_plus": 4
       }
+    },
+    "S0071L07": {
+      "lego": ["the truth","真相"],
+      "type": "A",
+      "practice_phrases": [
+        ["The truth.", "真相。", null, 1],
+        ["Hear the truth.", "听到真相。", null, 2],
+        ["Tell me the truth.", "告诉我真相。", null, 3],
+        ["She didn't want to hear the truth.", "她不想听到真相。", null, 3],
+        ["We didn't want anyone to hear the truth.", "我们不想让任何人听到真相。", null, 4],
+        ["Are you sure you want to hear the truth?", "你确定你想听到真相吗？", null, 5],
+        ["I'm not sure if I can tell you the truth.", "我不确定我能不能告诉你真相。", null, 6],
+        ["It's important to take time to find the truth.", "花时间找到真相很重要。", null, 6],
+        ["Why do you want to know the truth?", "你为什么想知道真相？", null, 6],
+        ["He didn't want anyone to hear the truth either.", "他也不想让任何人听到真相。", null, 7]
+      ],
+      "phrase_distribution": {
+        "really_short_1_2": 2,
+        "quite_short_3": 2,
+        "longer_4_5": 2,
+        "long_6_plus": 4
+      }
     }
   },
   "_metadata": {
     "generated_date": "2025-11-18",
-    "legos_completed": ["S0071L01", "S0071L02", "S0071L03", "S0071L04", "S0071L05", "S0071L06"],
-    "total_phrases_generated": 60,
+    "legos_completed": ["S0071L01", "S0071L02", "S0071L03", "S0071L04", "S0071L05", "S0071L06", "S0071L07"],
+    "total_phrases_generated": 70,
     "generator": "claude-phase5-basket-generator"
   }
 }
