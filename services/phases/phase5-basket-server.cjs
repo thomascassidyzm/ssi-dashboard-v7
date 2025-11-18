@@ -1011,17 +1011,17 @@ You are responsible for generating baskets for ${legoCount} LEGOs.
 
 **Your workflow:**
 
-1. ✅ **LEGO data embedded** - All LEGO data provided below (NO file reads needed!)
-2. ✅ **Spawn ${agentCount} sub-agents** (~${legosPerAgent} LEGOs per agent)
-3. ✅ **Sub-agents work SILENTLY** - no verbose console output
-4. ✅ **Sub-agents upload via ngrok** (no git, no branches!)
-5. ✅ **Monitor completion** and report brief summary
+1. ✅ **Read LEGO data below** - All data embedded (NO file reads needed!)
+2. ✅ **Generate ${legoCount} baskets** - Use extended thinking for each LEGO
+3. ✅ **Work SILENTLY** - No verbose console output
+4. ✅ **Upload via HTTP** - POST to ngrok endpoint (details below)
+5. ✅ **Report brief summary** - Just final status
 
 ---
 
 ## 📋 COMPLETE LEGO DATA (${legoCount} LEGOs)
 
-**CRITICAL:** All LEGO and scaffold data is embedded below. Sub-agents do NOT need to read any local files.
+**CRITICAL:** All LEGO and scaffold data is embedded below. You do NOT need to read any local files.
 
 \`\`\`json
 ${JSON.stringify(legoData, null, 2)}
@@ -1037,86 +1037,104 @@ ${JSON.stringify(legoData, null, 2)}
 - \`seed_sentence\`: Full seed sentence (fallback context)
 - \`seed_legos\`: All LEGOs in this seed (fallback context)
 
-**YOU receive all ${legoCount} LEGOs (${((JSON.stringify(legoData).length) / 1024 / 1024).toFixed(2)} MB).** Divide this data evenly among your ${agentCount} sub-agents (~${legosPerAgent} LEGOs each = ~${((JSON.stringify(legoData).length / agentCount) / 1024).toFixed(0)} KB per agent).
+---
+
+## 🎨 HOW TO GENERATE BASKETS
+
+For each LEGO, you will:
+
+1. **Use Extended Thinking** - Deeply analyze linguistic patterns and construction
+2. **Generate 10 practice phrases** - Progressive difficulty (1-5 stars)
+3. **Follow GATE compliance** - Only use vocabulary from \`recent_context\`
+4. **Upload via HTTP** - POST to ngrok endpoint
+
+### Generation Process Per LEGO
+
+**Analyze the LEGO:**
+- Target language phrase (what learner will produce)
+- Known language meaning (what learner starts with)
+- Type (A/M/F/X) - complexity level
+- Recent context vocabulary (GATE: what words are available)
+- Seed context (pedagogical sequence)
+
+**Generate 10 practice phrases:**
+1. ⭐ Start simple (isolate the LEGO)
+2. ⭐⭐ Add one complexity layer
+3. ⭐⭐⭐ Combine with recent LEGOs
+4. ⭐⭐⭐⭐ Multi-layer recombination
+5. ⭐⭐⭐⭐⭐ Complex natural phrases
+
+**GATE Compliance:**
+- Target words MUST come from \`recent_context\` vocabulary
+- If needed, use \`current_seed_earlier_legos\` for same-seed recombination
+- Fallback: \`seed_legos\` for emergency context
+
+**Basket Format:**
+\`\`\`json
+{
+  "S0001L01": {
+    "lego": ["quiero", "I want"],
+    "type": "M",
+    "practice_phrases": [
+      ["I want", "quiero", null, 1],
+      ["I want now", "quiero ahora", null, 2],
+      ["I want to learn", "quiero aprender", null, 2],
+      ...
+    ]
+  }
+}
+\`\`\`
+
+Each practice phrase: \`[known, target, audio_filename, difficulty]\`
 
 ---
 
-## 🚀 STEP 1: Spawn Sub-Agents
+## 📤 UPLOAD INSTRUCTIONS
 
-**Critical**: Divide your ${legoCount} LEGOs among ${agentCount} sub-agents.
+**Upload URL:** \`${ngrokUrl}/phase5/upload-basket\`
 
-**Batching strategy:**
-- ~${legosPerAgent} LEGOs per sub-agent
-- This means ${agentCount} agents total
-- Spawn ALL agents in parallel (use Task tool ${agentCount} times in ONE message)
+**Request format:**
+\`\`\`bash
+curl -X POST ${ngrokUrl}/phase5/upload-basket \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "courseCode": "${courseCode}",
+    "seed": "S0001",
+    "baskets": { "S0001L01": {...}, "S0001L02": {...} },
+    "stagingOnly": ${params.stagingOnly || false}
+  }'
+\`\`\`
 
-**Each sub-agent receives (in their prompt):**
-- **ONLY their assigned LEGO subset** (do NOT send all ${legoCount} LEGOs to each worker!)
-- Example: worker-1 gets LEGOs 1-${legosPerAgent}, worker-2 gets LEGOs ${legosPerAgent + 1}-${legosPerAgent * 2}, etc.
-- Upload URL: \`${ngrokUrl}/phase5/upload-basket\`
-- Agent ID: \`worker-1\`, \`worker-2\`, etc.
-- Staging flag: \`stagingOnly: ${params.stagingOnly || false}\`
+**Upload strategy:**
+- Process LEGOs in order (seed by seed)
+- Upload each seed when complete (all LEGOs in that seed done)
+- Server will merge uploads (safe to upload same seed multiple times)
 
-**What you DON'T need to do:**
-- ❌ Read any local files (all data embedded above!)
-- ❌ Create scaffolds (already embedded!)
-- ❌ Push to GitHub (no git involved!)
-- ❌ Merge files (saved to staging, reviewed separately)
-
-**Worker prompt template:**
-Fetch from: https://ssi-dashboard-v7.vercel.app/prompts/phase5_worker.md
-
-⛔ **CRITICAL**: This template includes the full Phase 5 intelligence guidance embedded directly.
-The template has a HUGE "NO SCRIPTS" warning at the top. Make sure sub-agents read and follow it!
-
-**When spawning each worker agent:**
-1. Use the Task tool to create a new agent
-2. **CRITICAL**: Extract ONLY their assigned LEGOs from the full JSON above
-   - Don't send all ${legoCount} LEGOs to each worker!
-   - Extract their subset (e.g., LEGOs 1-${legosPerAgent} for worker-1)
-   - Include ONLY those LEGOs in their prompt as JSON
-3. Tell them their agent ID (worker-1, worker-2, etc.)
-4. Tell them the upload URL and staging flag
-5. Reference the worker prompt template URL
-
-**Example for worker-1:**
+**Response:**
 \`\`\`json
 {
-  "S0001L01": { lego: [...], type: "M", seed: "S0001", ... },
-  "S0001L02": { lego: [...], type: "M", seed: "S0001", ... },
-  ... (only ${legosPerAgent} LEGOs)
+  "success": true,
+  "seed": "S0001",
+  "legoCount": 8,
+  "savedTo": "staging"
 }
 \`\`\`
 
 ---
 
-## 📊 STEP 2: Monitor & Report
-
-Track completion and report brief summary (2-3 lines):
-
-\`\`\`
-✅ Phase 5 complete: ${legoCount} LEGOs → ${agentCount} workers → staging
-\`\`\`
-
-**That's it!** No verbose logs. Let HTTP responses track progress.
-
----
-
 ## ⚠️ IMPORTANT NOTES
 
-### Staging Workflow (New!)
-- **Sub-agents upload via ngrok** → No git conflicts
+### Staging Workflow
 - **Baskets saved to staging first** → Safe review before canon merge
-- **Manual merge when ready** → Use \`node tools/phase5/preview-merge.cjs ${courseCode}\`
+- **Manual merge when ready** → Use merge tool after review
 - **Zero git risk** → Staging is git-ignored
 
-### Your Role as Master
-- **You orchestrate** - you don't generate content yourself
-- **You spawn agents** - use Task tool to create sub-agents
-- **You monitor** - track when agents complete
-- **You report** - tell user when complete
+### Silent Operation
+- **No verbose logs** - Work quietly, only brief summary at end
+- **HTTP uploads track progress** - Server logs each upload
+- **Output limit: 32K tokens** - Silent operation keeps you safe
 
-**START NOW: Spawn all ${agentCount} agents in parallel!**
+**START NOW: Generate baskets for all ${legoCount} LEGOs!**
 `;
 }
 
