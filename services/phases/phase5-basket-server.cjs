@@ -260,9 +260,22 @@ app.post('/start', async (req, res) => {
     return res.status(400).json({ error: 'courseCode, startSeed, endSeed, target, known required' });
   }
 
-  // Check if already running
+  // Check if already running - auto-abort stale jobs
   if (activeJobs.has(courseCode)) {
-    return res.status(409).json({ error: `Phase 5 already running for ${courseCode}` });
+    const existingJob = activeJobs.get(courseCode);
+    const jobAge = Date.now() - new Date(existingJob.timing.startedAt).getTime();
+    const thirtyMinutes = 30 * 60 * 1000;
+
+    if (jobAge > thirtyMinutes) {
+      console.log(`[Phase 5] ⚠️  Auto-aborting stale job (${Math.round(jobAge / 60000)} minutes old)`);
+      activeJobs.delete(courseCode);
+    } else {
+      return res.status(409).json({
+        error: `Phase 5 already running for ${courseCode}`,
+        elapsedMinutes: Math.round(jobAge / 60000),
+        tip: 'Use /abort endpoint or wait for auto-timeout (30min)'
+      });
+    }
   }
 
   const totalSeeds = endSeed - startSeed + 1;
@@ -1569,6 +1582,24 @@ app.post('/launch-12-masters', async (req, res) => {
 
   if (!courseCode || !target || !known) {
     return res.status(400).json({ error: 'courseCode, target, known required' });
+  }
+
+  // Check if already running - auto-abort stale jobs
+  if (activeJobs.has(courseCode)) {
+    const existingJob = activeJobs.get(courseCode);
+    const jobAge = Date.now() - new Date(existingJob.timing.startedAt).getTime();
+    const thirtyMinutes = 30 * 60 * 1000;
+
+    if (jobAge > thirtyMinutes) {
+      console.log(`[Phase 5] ⚠️  Auto-aborting stale job (${Math.round(jobAge / 60000)} minutes old)`);
+      activeJobs.delete(courseCode);
+    } else {
+      return res.status(409).json({
+        error: `Phase 5 already running for ${courseCode}`,
+        elapsedMinutes: Math.round(jobAge / 60000),
+        tip: 'Use /abort endpoint or wait for auto-timeout (30min)'
+      });
+    }
   }
 
   console.log(`\n[Phase 5] ====================================`);
