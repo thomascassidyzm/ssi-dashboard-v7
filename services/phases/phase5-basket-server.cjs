@@ -1002,86 +1002,61 @@ Use Task tool ${workersToSpawn} times in a SINGLE message (parallel spawn).
   "description": "Phase 5 Worker N",
   "prompt": "You are Phase 5 Worker N. Generate practice baskets for seed SXXXX.
 
-## 📖 READ METHODOLOGY FIRST
+## STEP 1: READ THE METHODOLOGY
 
-**REQUIRED:** Read the complete Phase 5 methodology:
-**URL:** https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
+**MANDATORY:** Use WebFetch to fetch and READ the Phase 5 methodology document:
 
-This document contains:
-- Complete generation methodology
-- GATE compliance rules
-- Quality standards
-- Example phrases
-- Self-review checklist
+**WebFetch URL:** https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
+**WebFetch Prompt:** Extract the complete Phase 5 basket generation methodology, including all generation rules, quality criteria, GATE compliance requirements, and validation checklist.
 
-## YOUR ASSIGNMENT
+This document is your PRIMARY reference. All generation must follow this methodology exactly.
+
+## STEP 2: YOUR ASSIGNMENT
 
 **Seed:** SXXXX
 **LEGOs:** [list LEGO IDs here]
 
-## FETCH SCAFFOLDS
+## STEP 3: GENERATION WORKFLOW (FOR EACH LEGO)
 
-For each LEGO ID, fetch its scaffold via WebFetch:
+For each LEGO, follow this exact workflow:
 
-**URL:** ${ngrokUrl}/phase5/scaffold/${courseCode}/S0117L01
-**Prompt:** Extract the scaffold details
+### 3.1 Fetch Scaffold
+**WebFetch URL:** ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
+**WebFetch Prompt:** Extract the LEGO, available vocabulary, and generation context
 
-The scaffold contains:
-- LEGO (known → target)
-- Seed context
-- Available vocabulary (GATE compliant)
-- Is Final LEGO status
-- Generation requirements
-- Output format
+### 3.2 Generate 10 Practice Phrases
+Follow the methodology doc you just read. Each phrase must:
+- **CONTAIN THE COMPLETE LEGO** (not building toward it, building FROM it)
+- Use only vocabulary from the scaffold's available vocabulary
+- Be natural and grammatically correct in both languages
+- Follow progressive complexity (2-2-2-4 distribution)
 
-## GENERATION RULES
+### 3.3 VALIDATE EACH PHRASE
+**For each of the 10 phrases, check:**
 
-**CRITICAL: What are practice phrases?**
-Practice phrases are NOT random vocabulary lists. Each practice phrase MUST:
-1. ✅ **PHRASE 1 MUST ALREADY CONTAIN THE COMPLETE LEGO**
-2. ✅ Build-up by ADDING words to the LEGO (not building up TO the LEGO)
-3. ✅ Every phrase uses the LEGO in a natural, complete sentence
+1. ✅ **Does it contain the COMPLETE LEGO?**
+   - Phrase 1 must already have the full LEGO
+   - All other phrases must also contain the full LEGO
+   - NOT building up TO the LEGO (e.g., \\"we need\\" → \\"we don't need\\" → \\"we don't need to feel\\")
+   - YES building FROM the LEGO (e.g., \\"we don't need to feel\\" → \\"we don't need to feel bad\\")
 
-**Example - CORRECT (Build-up by ADDING to LEGO):**
-LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
-✅ Phrase 1: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (LEGO alone)
-✅ Phrase 2: \\"we don't need to feel bad\\" → \\"no necesitamos sentirnos mal\\" (LEGO + \\"bad\\")
-✅ Phrase 3: \\"we don't need to feel ready\\" → \\"no necesitamos sentirnos listos\\" (LEGO + \\"ready\\")
-✅ Phrase 4: \\"we don't need to feel ready now\\" → \\"no necesitamos sentirnos listos ahora\\" (LEGO + more)
-(All phrases CONTAIN the COMPLETE LEGO from phrase 1!)
+2. ✅ **GATE Compliance: Does it only use available vocabulary?**
+   - Check every word against the scaffold's available vocabulary list
+   - If ANY word is not in the list, the phrase FAILS
 
-**Example - WRONG (Building up TO the LEGO):**
-LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
-❌ Phrase 1: \\"we need\\" → \\"necesitamos\\" (missing the LEGO - building toward it!)
-❌ Phrase 2: \\"we don't need\\" → \\"no necesitamos\\" (missing the LEGO - building toward it!)
-❌ Phrase 3: \\"we need to feel\\" → \\"necesitamos sentirnos\\" (missing the LEGO - building toward it!)
-❌ Phrase 4: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (finally has LEGO, but too late!)
+3. ✅ **Is it grammatically correct in BOTH languages?**
+   - Check English grammar
+   - Check target language grammar (conjugations, gender, etc.)
 
-**Example - ALSO WRONG (Random vocabulary):**
-LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
-❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO at all!)
-❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO at all!)
-❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO at all!)
+### 3.4 REGENERATE FAILURES
+**If ANY phrase fails ANY check:**
+- DELETE that phrase
+- Generate a NEW phrase that passes all checks
+- Re-validate the new phrase
 
-**For each LEGO:**
-1. Fetch scaffold via WebFetch
-2. Read available vocabulary from scaffold
-3. Generate 10 practice phrases that ALL CONTAIN THE LEGO
-4. Follow progressive complexity:
-   - Phrases 1-2: SHORT (2-3 words, just the LEGO or LEGO + 1 word)
-   - Phrases 3-4: MEDIUM (LEGO + 2-3 words)
-   - Phrases 5-6: LONGER (LEGO + 4-6 words)
-   - Phrases 7-10: LONGEST (LEGO + 6+ words, aim for 7-10 word sentences)
-5. Each phrase must be natural and grammatically correct in both languages
-6. **EVERY PHRASE MUST USE THE LEGO**
+**Repeat until ALL 10 phrases pass ALL checks.**
 
-**CRITICAL GATE Compliance:**
-- ✅ ONLY use vocabulary from scaffold's 'Available Vocabulary' section
-- ✅ ALL 10 phrases must contain and use the LEGO being practiced
-- ❌ DO NOT create random vocabulary lists
-- ❌ DO NOT introduce words not in available vocabulary
-
-## OUTPUT FORMAT
+## STEP 4: OUTPUT FORMAT
 
 \`\`\`json
 {
@@ -1104,48 +1079,15 @@ LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
 }
 \`\`\`
 
-**Format rules:**
-- \`lego\` field: Object with \\"known\\" and \\"target\\" labels
-- \`practice_phrases\`: Array of objects with \\"known\\" and \\"target\\" labels
-- NO \\"difficulty\\" field
-- NO array format like [\\"Spanish\\", \\"English\\"]
-
-**Server auto-adds:**
-- \`is_final_lego\`: Boolean (if true, server adds complete seed sentence)
-- \`phrase_count\`: Count of phrases
-- \`type\`: LEGO type from lego_pairs.json
-
-## SELF-CHECK BEFORE UPLOAD
-
-**CRITICAL: Review EVERY basket before uploading:**
-
-For EACH LEGO, verify ALL 10 practice phrases:
-
-1. ✅ **Contains the COMPLETE LEGO**: EVERY phrase must include the COMPLETE LEGO from phrase 1
-   - Example: If LEGO is \\"we don't need to feel\\", phrase 1 must be \\"we don't need to feel\\" (not \\"we need\\")
-   - ✅ CORRECT: \\"we don't need to feel\\", \\"we don't need to feel bad\\", \\"we don't need to feel ready\\"
-   - ❌ REJECT phrases like \\"we need\\", \\"we don't need\\", \\"we need to feel\\" (building up TO the LEGO)
-   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO at all)
-
-2. ✅ **GATE Compliance**: Only uses vocabulary from scaffold's Available Vocabulary
-   - ❌ NO new words not in the available vocabulary list
-   - ❌ NO guessing at translations
-
-3. ✅ **Grammar**: Correct in BOTH languages
-   - Check English grammar
-   - Check Spanish grammar (verb conjugations, gender agreement, etc.)
-
-**If ANY phrase fails ANY check, DELETE IT and generate a new one.**
-
-## UPLOAD
+## STEP 5: UPLOAD
 
 **POST:** ${ngrokUrl}/phase5/upload-basket
 
-Upload the complete JSON payload above.
+Only upload when ALL baskets have passed validation.
 
 ## WORK SILENTLY
 
-Fetch scaffolds, generate baskets, upload, report brief summary only."
+No verbose logs. Brief summary only when complete."
 }
 \`\`\`
 
@@ -1791,85 +1733,60 @@ Use Task tool ${workerAssignments.length} times in a SINGLE message (parallel sp
   "description": "Phase 5 Worker N - Patch ${patch.patch_number}",
   "prompt": "You are Phase 5 Worker N for Patch ${patch.patch_number}. Generate practice baskets for your assigned LEGOs.
 
-## 📖 READ METHODOLOGY FIRST
+## STEP 1: READ THE METHODOLOGY
 
-**REQUIRED:** Read the complete Phase 5 methodology:
-**URL:** https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
+**MANDATORY:** Use WebFetch to fetch and READ the Phase 5 methodology document:
 
-This document contains:
-- Complete generation methodology
-- GATE compliance rules
-- Quality standards
-- Example phrases
-- Self-review checklist
+**WebFetch URL:** https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
+**WebFetch Prompt:** Extract the complete Phase 5 basket generation methodology, including all generation rules, quality criteria, GATE compliance requirements, and validation checklist.
 
-## YOUR ASSIGNMENT
+This document is your PRIMARY reference. All generation must follow this methodology exactly.
+
+## STEP 2: YOUR ASSIGNMENT
 
 **LEGOs:** [paste LEGO IDs from assignments above for this worker]
 
-## FETCH SCAFFOLDS
+## STEP 3: GENERATION WORKFLOW (FOR EACH LEGO)
 
-For each LEGO ID, fetch its scaffold via WebFetch:
+For each LEGO, follow this exact workflow:
 
-**URL Format:** ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
-**Example:** ${ngrokUrl}/phase5/scaffold/${courseCode}/S0117L01
-**WebFetch Prompt:** Extract the scaffold details
+### 3.1 Fetch Scaffold
+**WebFetch URL:** ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
+**WebFetch Prompt:** Extract the LEGO, available vocabulary, and generation context
 
-The scaffold contains:
-- LEGO (known → target)
-- Seed context
-- Available vocabulary (GATE compliant)
-- Is Final LEGO status
-- Generation requirements
+### 3.2 Generate 10 Practice Phrases
+Follow the methodology doc you just read. Each phrase must:
+- **CONTAIN THE COMPLETE LEGO** (not building toward it, building FROM it)
+- Use only vocabulary from the scaffold's available vocabulary
+- Be natural and grammatically correct in both languages
+- Follow progressive complexity (2-2-2-4 distribution)
 
-## GENERATION RULES
+### 3.3 VALIDATE EACH PHRASE
+**For each of the 10 phrases, check:**
 
-**CRITICAL: What are practice phrases?**
-Practice phrases are NOT random vocabulary lists. Each practice phrase MUST:
-1. ✅ **PHRASE 1 MUST ALREADY CONTAIN THE COMPLETE LEGO**
-2. ✅ Build-up by ADDING words to the LEGO (not building up TO the LEGO)
-3. ✅ Every phrase uses the LEGO in a natural, complete sentence
+1. ✅ **Does it contain the COMPLETE LEGO?**
+   - Phrase 1 must already have the full LEGO
+   - All other phrases must also contain the full LEGO
+   - NOT building up TO the LEGO (e.g., \\"we need\\" → \\"we don't need\\" → \\"we don't need to feel\\")
+   - YES building FROM the LEGO (e.g., \\"we don't need to feel\\" → \\"we don't need to feel bad\\")
 
-**Example - CORRECT (Build-up by ADDING to LEGO):**
-LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
-✅ Phrase 1: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (LEGO alone)
-✅ Phrase 2: \\"we don't need to feel bad\\" → \\"no necesitamos sentirnos mal\\" (LEGO + \\"bad\\")
-✅ Phrase 3: \\"we don't need to feel ready\\" → \\"no necesitamos sentirnos listos\\" (LEGO + \\"ready\\")
-✅ Phrase 4: \\"we don't need to feel ready now\\" → \\"no necesitamos sentirnos listos ahora\\" (LEGO + more)
-(All phrases CONTAIN the COMPLETE LEGO from phrase 1!)
+2. ✅ **GATE Compliance: Does it only use available vocabulary?**
+   - Check every word against the scaffold's available vocabulary list
+   - If ANY word is not in the list, the phrase FAILS
 
-**Example - WRONG (Building up TO the LEGO):**
-LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
-❌ Phrase 1: \\"we need\\" → \\"necesitamos\\" (missing the LEGO - building toward it!)
-❌ Phrase 2: \\"we don't need\\" → \\"no necesitamos\\" (missing the LEGO - building toward it!)
-❌ Phrase 3: \\"we need to feel\\" → \\"necesitamos sentirnos\\" (missing the LEGO - building toward it!)
-❌ Phrase 4: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (finally has LEGO, but too late!)
+3. ✅ **Is it grammatically correct in BOTH languages?**
+   - Check English grammar
+   - Check target language grammar (conjugations, gender, etc.)
 
-**Example - ALSO WRONG (Random vocabulary):**
-LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
-❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO at all!)
-❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO at all!)
-❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO at all!)
+### 3.4 REGENERATE FAILURES
+**If ANY phrase fails ANY check:**
+- DELETE that phrase
+- Generate a NEW phrase that passes all checks
+- Re-validate the new phrase
 
-**For each LEGO:**
-1. Fetch scaffold via WebFetch
-2. Read available vocabulary from scaffold
-3. Generate 10 practice phrases that ALL CONTAIN THE LEGO
-4. Follow progressive complexity:
-   - Phrases 1-2: SHORT (2-3 words, just the LEGO or LEGO + 1 word)
-   - Phrases 3-4: MEDIUM (LEGO + 2-3 words)
-   - Phrases 5-6: LONGER (LEGO + 4-6 words)
-   - Phrases 7-10: LONGEST (LEGO + 6+ words, aim for 7-10 word sentences)
-5. Each phrase must be natural and grammatically correct in both languages
-6. **EVERY PHRASE MUST USE THE LEGO**
+**Repeat until ALL 10 phrases pass ALL checks.**
 
-**CRITICAL GATE Compliance:**
-- ✅ ONLY use vocabulary from scaffold's 'Available Vocabulary' section
-- ✅ ALL 10 phrases must contain and use the LEGO being practiced
-- ❌ DO NOT create random vocabulary lists
-- ❌ DO NOT introduce words not in available vocabulary
-
-## OUTPUT FORMAT
+## STEP 4: OUTPUT FORMAT
 
 \`\`\`json
 {
@@ -1892,48 +1809,15 @@ LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
 }
 \`\`\`
 
-**Format rules:**
-- \`lego\` field: Object with \\"known\\" and \\"target\\" labels
-- \`practice_phrases\`: Array of objects with \\"known\\" and \\"target\\" labels
-- NO \\"difficulty\\" field
-- NO array format like [\\"Spanish\\", \\"English\\"]
-
-**Server auto-adds:**
-- \`is_final_lego\`: Boolean (if true, server adds complete seed sentence)
-- \`phrase_count\`: Count of phrases
-- \`type\`: LEGO type from lego_pairs.json
-
-## SELF-CHECK BEFORE UPLOAD
-
-**CRITICAL: Review EVERY basket before uploading:**
-
-For EACH LEGO, verify ALL 10 practice phrases:
-
-1. ✅ **Contains the COMPLETE LEGO**: EVERY phrase must include the COMPLETE LEGO from phrase 1
-   - Example: If LEGO is \\"we don't need to feel\\", phrase 1 must be \\"we don't need to feel\\" (not \\"we need\\")
-   - ✅ CORRECT: \\"we don't need to feel\\", \\"we don't need to feel bad\\", \\"we don't need to feel ready\\"
-   - ❌ REJECT phrases like \\"we need\\", \\"we don't need\\", \\"we need to feel\\" (building up TO the LEGO)
-   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO at all)
-
-2. ✅ **GATE Compliance**: Only uses vocabulary from scaffold's Available Vocabulary
-   - ❌ NO new words not in the available vocabulary list
-   - ❌ NO guessing at translations
-
-3. ✅ **Grammar**: Correct in BOTH languages
-   - Check English grammar
-   - Check Spanish grammar (verb conjugations, gender agreement, etc.)
-
-**If ANY phrase fails ANY check, DELETE IT and generate a new one.**
-
-## UPLOAD
+## STEP 5: UPLOAD
 
 **POST:** ${ngrokUrl}/phase5/upload-basket
 
-Upload the complete JSON payload above.
+Only upload when ALL baskets have passed validation.
 
 ## WORK SILENTLY
 
-Fetch scaffolds, generate baskets, upload, report brief summary only."
+No verbose logs. Brief summary only when complete."
 }
 \`\`\`
 
