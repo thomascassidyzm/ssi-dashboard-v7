@@ -348,34 +348,50 @@ When the server detects `is_final_lego: true` (by checking if this is the last L
 
 ## 📤 OUTPUT FORMAT
 
-**Simplified structure** - You provide only the essential fields:
+**Complete upload payload structure:**
 
 ```json
 {
-  "S0362L01": {
-    "lego": {"known": "No", "target": "No"},
-    "practice_phrases": [
-      {"known": "No", "target": "No"},
-      {"known": "No, now", "target": "No, ahora"}
-    ]
+  "courseCode": "spa_for_eng",
+  "seed": "S0362",
+  "baskets": {
+    "S0362L01": {
+      "lego": {"known": "No", "target": "No"},
+      "practice_phrases": [
+        {"known": "No", "target": "No"},
+        {"known": "No, now", "target": "No, ahora"}
+      ]
+    },
+    "S0362L02": {
+      "lego": {"known": "rather quiet", "target": "bastante callado"},
+      "practice_phrases": [
+        {"known": "Rather quiet", "target": "Bastante callado"},
+        {"known": "No, rather quiet", "target": "No, bastante callado"},
+        {"known": "He was rather quiet", "target": "Él estaba bastante callado"},
+        {"known": "No, he was rather quiet", "target": "No, él estaba bastante callado"},
+        {"known": "Your friend was rather quiet", "target": "Tu amigo estaba bastante callado"},
+        {"known": "No, your friend was rather quiet", "target": "No, tu amigo estaba bastante callado"},
+        {"known": "He said your friend was rather quiet", "target": "Él dijo que tu amigo estaba bastante callado"},
+        {"known": "No, she said he was rather quiet", "target": "No, ella dijo que él estaba bastante callado"},
+        {"known": "Your friend said he was rather quiet", "target": "Tu amigo dijo que él estaba bastante callado"},
+        {"known": "No, he was rather quiet after you left", "target": "No, él estaba bastante callado después de que te fuiste"}
+      ]
+    }
   },
-  "S0362L02": {
-    "lego": {"known": "rather quiet", "target": "bastante callado"},
-    "practice_phrases": [
-      {"known": "Rather quiet", "target": "Bastante callado"},
-      {"known": "No, rather quiet", "target": "No, bastante callado"},
-      {"known": "He was rather quiet", "target": "Él estaba bastante callado"},
-      {"known": "No, he was rather quiet", "target": "No, él estaba bastante callado"},
-      {"known": "Your friend was rather quiet", "target": "Tu amigo estaba bastante callado"},
-      {"known": "No, your friend was rather quiet", "target": "No, tu amigo estaba bastante callado"},
-      {"known": "He said your friend was rather quiet", "target": "Él dijo que tu amigo estaba bastante callado"},
-      {"known": "No, she said he was rather quiet", "target": "No, ella dijo que él estaba bastante callado"},
-      {"known": "Your friend said he was rather quiet", "target": "Tu amigo dijo que él estaba bastante callado"},
-      {"known": "No, he was rather quiet after you left", "target": "No, él estaba bastante callado después de que te fuiste"}
-    ]
-  }
+  "stagingOnly": true
 }
 ```
+
+**Wrapper fields:**
+- `courseCode`: The course identifier (e.g., "spa_for_eng", "cmn_for_eng")
+- `seed`: The seed ID for this batch (e.g., "S0362")
+- `baskets`: Object containing all baskets for LEGOs in this seed
+- `stagingOnly`: Boolean, typically `true` for initial generation
+
+**Basket structure (inside `baskets` object):**
+- Each key is a LEGO ID (e.g., "S0362L01")
+- `lego`: The LEGO being taught (labeled object with "known" and "target")
+- `practice_phrases`: Array of practice phrases (labeled objects, up to 10)
 
 **Format:** Labeled objects (consistent with seed_pairs.json and lego_pairs.json)
 - Each phrase: `{"known": "English phrase", "target": "Spanish phrase"}`
@@ -385,11 +401,12 @@ When the server detects `is_final_lego: true` (by checking if this is the last L
 - ✅ Consistent with entire pipeline (Phases 1, 3, 5)
 - ✅ Explicit language identification
 
-**Server adds automatically:**
+**Server adds automatically to each basket:**
 - `is_final_lego`: Boolean derived from LEGO ID (checks if this is the last LEGO in the seed)
   - **CRITICAL**: If TRUE, server adds the complete seed sentence as your highest practice phrase
   - This ensures learners can practice the full target sentence!
 - `phrase_count`: Actual count of phrases you provided
+- `type`: LEGO type from lego_pairs.json (e.g., "FD", "LUT", "M")
 
 ---
 
