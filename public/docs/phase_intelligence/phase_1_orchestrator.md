@@ -115,9 +115,9 @@ This document contains the complete v2.6 methodology. Pay special attention to:
    - Validate grammar
    - Document reasoning
 
-5. **Array Format (lines 884-889)** - [known, target] format REQUIRED
-   - English first, Spanish second
-   - Example: ["I want to speak", "Quiero hablar"]
+5. **Object Format (lines 884-889)** - {"known": "...", "target": "..."} format REQUIRED
+   - Labeled object format prevents mistakes
+   - Example: {"known": "I want to speak", "target": "Quiero hablar"}
 
 **INPUT:**
 Canonical seeds S0XXX-S0YYY:
@@ -128,8 +128,8 @@ Known language: {known_code}
 
 **OUTPUT FORMAT:**
 {
-  "S0001": ["Known language translation", "Target language translation"],
-  "S0002": ["Known language translation", "Target language translation"],
+  "S0001": {"known": "Known language translation", "target": "Target language translation"},
+  "S0002": {"known": "Known language translation", "target": "Target language translation"},
   ...
 }
 
@@ -161,9 +161,9 @@ For each translation, check:
 - ✓ Did agent check for cognate synonyms?
 - ✓ Is cognate used when available?
 
-**Array format:**
-- ✓ Format is [known, target] (English first, target language second)?
-- ✓ NOT [target, known] (old format)?
+**Object format:**
+- ✓ Format is {"known": "...", "target": "..."} (labeled object)?
+- ✓ Labels correct (known = English, target = Spanish)?
 
 **Consistency within your chunk:**
 - ✓ Same English word → same target translation?
@@ -183,8 +183,8 @@ Combine all 10 outputs into your chunk file:
   "chunk_number": 1,
   "total_seeds": 223,
   "translations": {
-    "S0001": ["I want to speak Spanish with you now.", "Quiero hablar español contigo ahora."],
-    "S0002": ["I'm trying to learn.", "Estoy intentando aprender."],
+    "S0001": {"known": "I want to speak Spanish with you now.", "target": "Quiero hablar español contigo ahora."},
+    "S0002": {"known": "I'm trying to learn.", "target": "Estoy intentando aprender."},
     ... all 223 seeds
   },
   "metadata": {
@@ -285,7 +285,7 @@ Only re-spawn for systematic issues (>5 errors, misunderstood rules, etc.)
 Before outputting chunk file, verify:
 
 - [ ] All seeds translated (no missing IDs)
-- [ ] Format correct: `{seed_id: [known, target]}` ← CRITICAL: Known first!
+- [ ] Format correct: `{seed_id: {"known": "...", "target": "..."}}` ← CRITICAL: Labeled objects!
 - [ ] Grammar correct in BOTH languages
 - [ ] Cognates used when available (seeds 1-100)
 - [ ] Same English word → same translation (within chunk)

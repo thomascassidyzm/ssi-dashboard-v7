@@ -291,43 +291,40 @@ Before submitting:
   "seeds": [
     {
       "seed_id": "S0051",
-      "seed_pair": [
-        "I enjoy doing interesting things with my friends",
-        "Disfruto hacer cosas interesantes con mis amigos"
-      ],
+      "seed_pair": {
+        "known": "I enjoy doing interesting things with my friends",
+        "target": "Disfruto hacer cosas interesantes con mis amigos"
+      },
       "legos": [
         {
           "id": "S0051L01",
           "type": "M",
-          "target": "disfruto hacer",
-          "known": "I enjoy doing",
           "new": true,
+          "lego": {"known": "I enjoy doing", "target": "disfruto hacer"},
           "components": [
-            ["disfruto", "I enjoy"],
-            ["hacer", "doing/to do"]
+            {"known": "I enjoy", "target": "disfruto"},
+            {"known": "doing/to do", "target": "hacer"}
           ]
         },
         {
           "id": "S0051L02",
           "type": "M",
-          "target": "cosas interesantes",
-          "known": "interesting things",
           "new": true,
+          "lego": {"known": "interesting things", "target": "cosas interesantes"},
           "components": [
-            ["cosas", "things"],
-            ["interesantes", "interesting"]
+            {"known": "things", "target": "cosas"},
+            {"known": "interesting", "target": "interesantes"}
           ]
         },
         {
           "id": "S0051L03",
           "type": "M",
-          "target": "con mis amigos",
-          "known": "with my friends",
           "new": true,
+          "lego": {"known": "with my friends", "target": "con mis amigos"},
           "components": [
-            ["con", "with"],
-            ["mis", "my"],
-            ["amigos", "friends"]
+            {"known": "with", "target": "con"},
+            {"known": "my", "target": "mis"},
+            {"known": "friends", "target": "amigos"}
           ]
         }
       ]

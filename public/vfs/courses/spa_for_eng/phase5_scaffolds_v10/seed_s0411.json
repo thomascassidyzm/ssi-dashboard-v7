@@ -1,0 +1,941 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0411",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "spanish",
+    "course": "spa_for_eng"
+  },
+  "seed_pair": {
+    "known": "We would like to reserve a table for four tonight.",
+    "target": "Nos gustaría reservar una mesa para cuatro esta noche."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0401"
+    },
+    {
+      "seed_id": "S0402"
+    },
+    {
+      "seed_id": "S0403"
+    },
+    {
+      "seed_id": "S0404"
+    },
+    {
+      "seed_id": "S0405"
+    },
+    {
+      "seed_id": "S0406"
+    },
+    {
+      "seed_id": "S0407"
+    },
+    {
+      "seed_id": "S0408"
+    },
+    {
+      "seed_id": "S0409"
+    },
+    {
+      "seed_id": "S0410"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0403L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0403L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0403L05",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0404L01",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0404L02",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0404L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0404L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0404L06",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0405L01",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0405L02",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0405L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0405L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0405L05",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0405L06",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0406L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0406L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0407L01",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0407L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0408L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0408L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0408L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0408L05",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0408L06",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0408L07",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0409L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0409L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0410L01",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0410L02",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0410L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0410L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0411L01": {
+      "lego_id": "S0411L01",
+      "lego": {
+        "english": "",
+        "spanish": ""
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0411L01",
+        "seed_context": {
+          "known": "We would like to reserve a table for four tonight.",
+          "target": "Nos gustaría reservar una mesa para cuatro esta noche."
+        }
+      },
+      "components": [
+        {
+          "known": "us",
+          "target": "nos"
+        },
+        {
+          "known": "would like",
+          "target": "gustaría"
+        }
+      ]
+    },
+    "S0411L02": {
+      "lego_id": "S0411L02",
+      "lego": {
+        "english": "",
+        "spanish": ""
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0411L01",
+          "english": "",
+          "spanish": "",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0411L02",
+        "seed_context": {
+          "known": "We would like to reserve a table for four tonight.",
+          "target": "Nos gustaría reservar una mesa para cuatro esta noche."
+        }
+      },
+      "components": [
+        {
+          "known": "us",
+          "target": "nos"
+        },
+        {
+          "known": "would like",
+          "target": "gustaría"
+        },
+        {
+          "known": "to reserve",
+          "target": "reservar"
+        }
+      ]
+    },
+    "S0411L03": {
+      "lego_id": "S0411L03",
+      "lego": {
+        "english": "",
+        "spanish": ""
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0411L01",
+          "english": "",
+          "spanish": "",
+          "type": "M"
+        },
+        {
+          "id": "S0411L02",
+          "english": "",
+          "spanish": "",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0411L03",
+        "seed_context": {
+          "known": "We would like to reserve a table for four tonight.",
+          "target": "Nos gustaría reservar una mesa para cuatro esta noche."
+        }
+      },
+      "components": [
+        {
+          "known": "to reserve",
+          "target": "reservar"
+        },
+        {
+          "known": "a",
+          "target": "una"
+        },
+        {
+          "known": "table",
+          "target": "mesa"
+        }
+      ]
+    },
+    "S0411L04": {
+      "lego_id": "S0411L04",
+      "lego": {
+        "english": "",
+        "spanish": ""
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0411L01",
+          "english": "",
+          "spanish": "",
+          "type": "M"
+        },
+        {
+          "id": "S0411L02",
+          "english": "",
+          "spanish": "",
+          "type": "M"
+        },
+        {
+          "id": "S0411L03",
+          "english": "",
+          "spanish": "",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0411L04",
+        "seed_context": {
+          "known": "We would like to reserve a table for four tonight.",
+          "target": "Nos gustaría reservar una mesa para cuatro esta noche."
+        }
+      },
+      "components": [
+        {
+          "known": "a",
+          "target": "una"
+        },
+        {
+          "known": "table",
+          "target": "mesa"
+        },
+        {
+          "known": "for",
+          "target": "para"
+        },
+        {
+          "known": "four",
+          "target": "cuatro"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", spanish: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/spa_for_eng/phase5_outputs_v10/seed_s0411.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 4,
+    "phrases_to_generate": 40,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

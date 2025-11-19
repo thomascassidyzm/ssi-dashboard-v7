@@ -263,30 +263,37 @@ Listed in `current_seed_earlier_legos` array - grows incrementally:
 
 **No shortcuts** - validate every single word.
 
-### Step 2.5: Build 2-2-2-4 Distribution (ALWAYS 10 Phrases)
+### Step 2.5: Build Progressive Phrase Length (ALWAYS 10 Phrases)
 
-**Standard distribution for EVERY LEGO:**
-- **2 phrases**: 1-2 LEGOs (simple)
-- **2 phrases**: 3 LEGOs (medium)
-- **2 phrases**: 4 LEGOs (longer)
-- **4 phrases**: 5+ LEGOs (longest, most complex)
+**IMPORTANT: We use WORD COUNT, not LEGO count for complexity progression.**
+
+**Progressive length (heuristic - flexible guidelines):**
+- **Phrases 1-2**: SHORT (2-3 words each)
+- **Phrases 3-4**: MEDIUM (3-4 words each)
+- **Phrases 5-6**: LONGER (4-6 words each)
+- **Phrases 7-10**: LONGEST (6+ words, aim for 7-10 words average)
+
+**Why word count instead of LEGO count?**
+- More natural progression for learners
+- Easier to evaluate phrase complexity
+- Flexible guidelines (not rigid rules)
 
 **Progressive complexity:**
-- Start with the bare LEGO or very simple combinations
-- Build up to more complex utterances
-- End with natural, communicative phrases
+- Start with very simple, short phrases
+- Build up to medium-length natural phrases
+- End with longer, complex communicative phrases
 
-**Example progression for "bastante callado":**
-1. "Rather quiet" - "bastante callado" (1 LEGO)
-2. "No, rather quiet" - "No, bastante callado" (2 LEGOs)
-3. "He was rather quiet" - "él estaba bastante callado" (3 LEGOs)
-4. "No, he was rather quiet" - "No, él estaba bastante callado" (4 LEGOs)
-5. "Your friend was rather quiet" - "tu amigo estaba bastante callado" (5 LEGOs)
-6. "No, your friend was rather quiet" - "No, tu amigo estaba bastante callado" (6 LEGOs)
-7. "He said your friend was rather quiet" - "él dijo que tu amigo estaba bastante callado" (7 LEGOs)
-8. "No, she said he was rather quiet" - "No, ella dijo que él estaba bastante callado" (7 LEGOs)
-9. "Your friend said he was rather quiet" - "tu amigo dijo que él estaba bastante callado" (7 LEGOs)
-10. "No, he was rather quiet after you left" - "No, él estaba bastante callado después de que te fuiste" (8 LEGOs)
+**Example progression for "bastante callado" (rather quiet):**
+1. "Rather quiet" - "Bastante callado" (2 words - SHORT)
+2. "No, rather quiet" - "No, bastante callado" (3 words - SHORT)
+3. "He was rather quiet" - "Él estaba bastante callado" (4 words - MEDIUM)
+4. "She was rather quiet too" - "Ella estaba bastante callada también" (5 words - MEDIUM)
+5. "Your friend was rather quiet tonight" - "Tu amigo estaba bastante callado esta noche" (7 words - LONGER)
+6. "No, your friend was rather quiet" - "No, tu amigo estaba bastante callado" (6 words - LONGER)
+7. "He said your friend was rather quiet after dinner" - "Dijo que tu amigo estaba bastante callado después de cenar" (10 words - LONGEST)
+8. "No, she said he was rather quiet all evening" - "No, ella dijo que él estaba bastante callado toda la noche" (11 words - LONGEST)
+9. "Your friend said he was feeling rather quiet today" - "Tu amigo dijo que se sentía bastante callado hoy" (9 words - LONGEST)
+10. "I noticed he was rather quiet after you left yesterday" - "Noté que él estaba bastante callado después de que te fuiste ayer" (12 words - LONGEST)
 
 ### Step 2.6: Final LEGO Special Rule
 
@@ -308,51 +315,52 @@ This ensures learners can practice the full target sentence!
 
 ```json
 "practice_phrases": [
-  ["I want to meet.", "我想认识。", null, 1],
-  ["I want to meet you.", "我想认识你。", null, 2],
-  ["I want to meet tomorrow.", "我想明天认识。", null, 2],
-  ["I want to meet him quickly.", "我想快点认识他。", null, 3],
-  ["I want to meet other people.", "我想认识其他人。", null, 3],
-  ["I want to meet her this evening.", "我想今天晚上认识她。", null, 4],
-  ["I want to meet people who speak very well.", "我想认识说得很好的人。", null, 5],
-  ["I want to meet everyone else at six o'clock.", "我想六点认识其他所有人。", null, 5],
-  ["I want to meet people who are learning together with me.", "我想认识和我一起学的人。", null, 6],
-  ["I want to meet other people because I am learning Chinese.", "我想认识其他人因为我在学中文。", null, 7]
+  { "known": "I want to meet.", "target": "我想认识。" },
+  { "known": "I want to meet you.", "target": "我想认识你。" },
+  { "known": "I want to meet tomorrow.", "target": "我想明天认识。" },
+  { "known": "I want to meet him quickly.", "target": "我想快点认识他。" },
+  { "known": "I want to meet other people.", "target": "我想认识其他人。" },
+  { "known": "I want to meet her this evening.", "target": "我想今天晚上认识她。" },
+  { "known": "I want to meet people who speak very well.", "target": "我想认识说得很好的人。" },
+  { "known": "I want to meet everyone else at six o'clock.", "target": "我想六点认识其他所有人。" },
+  { "known": "I want to meet people who are learning together with me.", "target": "我想认识和我一起学的人。" },
+  { "known": "I want to meet other people because I am learning Chinese.", "target": "我想认识其他人因为我在学中文。" }
 ]
 ```
 
 **Why this is excellent:**
-✅ Natural progression from simple (1 LEGO) to complex (7 LEGOs)
+✅ Natural progression from short (2-3 words) to long phrases (10+ words)
 ✅ All Chinese words available from previous seeds (GATE compliant)
 ✅ Rich variety in scenarios: you, tomorrow, him, people, this evening, six o'clock
 ✅ Both English and Chinese sound completely natural
 ✅ Grammatically perfect in BOTH languages
 ✅ Uses available vocabulary creatively (who speak, who are learning, other people, etc.)
-✅ 2-2-2-4 distribution maintained
+✅ Progressive length: SHORT → MEDIUM → LONGER → LONGEST
 ✅ Last phrase uses newest vocabulary "because" (因为) from current seed
+✅ Object format with clear "known"/"target" labels
 
 ---
 
-## ❌ TERRIBLE EXAMPLE: Script Automation
+## ❌ TERRIBLE EXAMPLE: Wrong Format & Bad Content
 
-```javascript
-// THIS IS WHAT AGENTS DID WRONG:
-s0107Scaffold.legos.S0107L01.practice_phrases = [
-  [["esperábamos", "we hoped"]],
-  [["esperábamos", "we hoped"]],  // ← IDENTICAL REPEAT!
-  [["esperábamos", "we hoped"], ["ver", "to see"], ["más", "more"]],  // ← NOT A SENTENCE!
-  [["esperábamos", "we hoped"], ["decir", "to say"], ["palabras", "words"]],  // ← WORD SALAD!
+```json
+"practice_phrases": [
+  ["we hoped", "esperábamos", null, 1],  // ← ARRAY FORMAT (REJECTED!)
+  ["we hoped", "esperábamos", null, 1],  // ← IDENTICAL REPEAT!
+  { "es": "esperábamos ver más", "en": "we hoped to see more" },  // ← LANGUAGE CODES (REJECTED!)
+  { "known": "we hoped words", "target": "esperábamos palabras" },  // ← NOT A SENTENCE!
+  { "known": "we hoped", "target": "esperábamos" },  // ← REPEATED AGAIN!
   ...
-];
+]
 ```
 
 **Why this is terrible:**
+❌ Uses array format `["English", "Spanish", null, 1]` (server will REJECT!)
+❌ Uses language code format `{ "es": "...", "en": "..." }` (server will REJECT!)
 ❌ Repeated identical phrases (no variety)
-❌ Arrays of LEGOs without linguistic structure
-❌ Not natural sentences in either language
-❌ No progressive complexity
-❌ Looks like automated script output
-❌ Generated by code instead of linguistic thinking
+❌ Not natural sentences in either language ("we hoped words"??)
+❌ No progressive word count (all same length)
+❌ Generated by script instead of linguistic thinking
 
 **NEVER DO THIS!**
 
@@ -363,13 +371,14 @@ s0107Scaffold.legos.S0107L01.practice_phrases = [
 Before uploading, CHECK EACH BASKET:
 
 **Validation checklist:**
-- ✓ Exactly 10 practice phrases (2-2-2-4 distribution)
+- ✓ Exactly 10 practice phrases (progressive length: 2 SHORT, 2 MEDIUM, 2 LONGER, 4 LONGEST)
 - ✓ All phrases grammatically correct in BOTH languages
 - ✓ Natural phrasing (would a native speaker say this?)
-- ✓ Progressive complexity (simple to complex)
+- ✓ Progressive complexity (2-3 words → 7-10 words)
 - ✓ Target LEGO appears in every phrase
 - ✓ GATE compliance (all words from available vocabulary)
 - ✓ NO repeated phrases (variety is critical)
+- ✓ Object format with "known"/"target" fields (not arrays!)
 
 **If validation fails:**
 - Fix the issues
@@ -425,11 +434,14 @@ Content-Type: application/json
   "seed": "S0123",
   "baskets": {
     "S0123L01": {
-      "lego": ["target phrase", "known phrase"],
+      "lego": {
+        "known": "known phrase",
+        "target": "target phrase"
+      },
       "type": "M",
       "practice_phrases": [
-        ["Known phrase", "target phrase", null, 1],
-        ["I know this phrase", "target version", null, 2],
+        { "known": "Known phrase", "target": "target phrase" },
+        { "known": "I know this phrase", "target": "target version" },
         ... (8 more)
       ]
     },
@@ -441,6 +453,14 @@ Content-Type: application/json
   "stagingOnly": {{STAGING_ONLY}}
 }
 ```
+
+**CRITICAL FORMAT RULES:**
+✅ CONSISTENT labeled objects: `{ "known": "English", "target": "Spanish" }`
+✅ "lego" field: object with labels (NEW - consistent format)
+✅ "practice_phrases": array of objects with labels
+✅ Known language FIRST, target language SECOND (everywhere)
+❌ NEVER use array format: `["English", "Spanish"]` or `["English", "Spanish", null, 1]`
+❌ NEVER use language codes: `{ "es": "...", "en": "..." }`
 
 **Note**: `stagingOnly` should be `true` for review-before-merge.
 
@@ -479,7 +499,8 @@ When all LEGOs uploaded, report brief summary (2-3 lines max):
 ## ⚠️ CRITICAL RULES
 
 ### DO:
-- ✅ Generate exactly 10 phrases per basket (2-2-2-4)
+- ✅ Generate exactly 10 phrases per basket (progressive word count)
+- ✅ Use object format: `{ "known": "English", "target": "Spanish" }`
 - ✅ Think linguistically about meaningful utterances
 - ✅ Use extended thinking for EVERY LEGO
 - ✅ Grammar self-check before upload
@@ -488,6 +509,8 @@ When all LEGOs uploaded, report brief summary (2-3 lines max):
 - ✅ Report failures immediately
 
 ### DON'T:
+- ❌ Use array format: `["English", "Spanish", null, 1]` (REJECTED by server!)
+- ❌ Use language codes: `{ "es": "...", "en": "..." }` (REJECTED!)
 - ❌ Write scripts to automate generation
 - ❌ Use templates or mechanical pattern filling
 - ❌ Push to GitHub (no git involved!)
@@ -504,13 +527,14 @@ When all LEGOs uploaded, report brief summary (2-3 lines max):
 Start with your first LEGO: `{{FIRST_LEGO_ID}}`
 
 **Remember:**
-1. Read the scaffold
+1. Read the scaffold (text format with vocabulary lists)
 2. Think about meaningful utterances
 3. Express in target language
 4. Validate GATE compliance
-5. Generate 10 phrases (2-2-2-4)
-6. Self-check grammar
-7. Upload to staging
+5. Generate 10 phrases (progressive word count: SHORT → MEDIUM → LONGER → LONGEST)
+6. Use object format: `{ "known": "...", "target": "..." }`
+7. Self-check grammar
+8. Upload to staging
 
 Work through your {{LEGO_COUNT}} LEGOs systematically.
 

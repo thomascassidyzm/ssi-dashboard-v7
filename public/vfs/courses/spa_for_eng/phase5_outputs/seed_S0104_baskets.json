@@ -1,347 +1,256 @@
 {
   "S0104L01": {
-    "lego": [
-      "necesitamos",
-      "we need"
-    ],
-    "type": "A",
+    "lego": {
+      "known": "we need",
+      "target": "necesitamos"
+    },
     "practice_phrases": [
-      [
-        "We need",
-        "Necesitamos",
-        null,
-        1
-      ],
-      [
-        "We need time",
-        "Necesitamos tiempo",
-        null,
-        2
-      ],
-      [
-        "We need more time",
-        "Necesitamos más tiempo",
-        null,
-        3
-      ],
-      [
-        "We need to talk",
-        "Necesitamos hablar",
-        null,
-        3
-      ],
-      [
-        "We need to understand this",
-        "Necesitamos entender esto",
-        null,
-        4
-      ],
-      [
-        "We need to work together",
-        "Necesitamos trabajar juntos",
-        null,
-        4
-      ],
-      [
-        "We need to think about what to do",
-        "Necesitamos pensar en qué hacer",
-        null,
-        5
-      ],
-      [
-        "We need to find a better solution",
-        "Necesitamos encontrar una mejor solución",
-        null,
-        5
-      ],
-      [
-        "We need to understand what's happening here",
-        "Necesitamos entender lo que está pasando aquí",
-        null,
-        6
-      ],
-      [
-        "We need to change the way we're working on this",
-        "Necesitamos cambiar la forma en que estamos trabajando en esto",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "words",
+        "target": "palabras"
+      },
+      {
+        "known": "we need",
+        "target": "necesitamos"
+      },
+      {
+        "known": "more words",
+        "target": "más palabras"
+      },
+      {
+        "known": "we're trying",
+        "target": "estamos intentando"
+      },
+      {
+        "known": "we need words",
+        "target": "necesitamos palabras"
+      },
+      {
+        "known": "I'm enjoying this language",
+        "target": "estoy disfrutando este lenguaje"
+      },
+      {
+        "known": "we need many more words",
+        "target": "necesitamos muchas más palabras"
+      },
+      {
+        "known": "you shouldn't worry about words",
+        "target": "no deberías preocuparte por palabras"
+      },
+      {
+        "known": "we're trying to hear many more words",
+        "target": "estamos intentando oír muchas más palabras"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0104L02": {
-    "lego": [
-      "necesitamos cambiar",
-      "we need to change"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "we need to change",
+      "target": "necesitamos cambiar"
+    },
     "practice_phrases": [
-      [
-        "We need to change",
-        "Necesitamos cambiar",
-        null,
-        1
-      ],
-      [
-        "We need to change this",
-        "Necesitamos cambiar esto",
-        null,
-        2
-      ],
-      [
-        "We need to change our plans",
-        "Necesitamos cambiar nuestros planes",
-        null,
-        3
-      ],
-      [
-        "We need to change something",
-        "Necesitamos cambiar algo",
-        null,
-        3
-      ],
-      [
-        "We need to change the way we think",
-        "Necesitamos cambiar nuestra forma de pensar",
-        null,
-        4
-      ],
-      [
-        "We need to change our approach",
-        "Necesitamos cambiar nuestro enfoque",
-        null,
-        4
-      ],
-      [
-        "We need to change what we're doing right now",
-        "Necesitamos cambiar lo que estamos haciendo ahora mismo",
-        null,
-        5
-      ],
-      [
-        "We need to change the way we're handling this situation",
-        "Necesitamos cambiar la manera en que estamos manejando esta situación",
-        null,
-        6
-      ],
-      [
-        "We need to change everything we've been doing up until now",
-        "Necesitamos cambiar todo lo que hemos estado haciendo hasta ahora",
-        null,
-        6
-      ],
-      [
-        "We need to change the way we're approaching this problem completely",
-        "Necesitamos cambiar completamente la forma en que estamos abordando este problema",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "words",
+        "target": "palabras"
+      },
+      {
+        "known": "we need",
+        "target": "necesitamos"
+      },
+      {
+        "known": "we're trying",
+        "target": "estamos intentando"
+      },
+      {
+        "known": "more words",
+        "target": "más palabras"
+      },
+      {
+        "known": "we need to change",
+        "target": "necesitamos cambiar"
+      },
+      {
+        "known": "we need more words",
+        "target": "necesitamos más palabras"
+      },
+      {
+        "known": "you shouldn't worry about words",
+        "target": "no deberías preocuparte por palabras"
+      },
+      {
+        "known": "we're trying to hear many more words",
+        "target": "estamos intentando oír muchas más palabras"
+      },
+      {
+        "known": "we need to change more words",
+        "target": "necesitamos cambiar más palabras"
+      },
+      {
+        "known": "you shouldn't worry about trying to say more words",
+        "target": "no deberías preocuparte por intentando decir más palabras"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0104L03": {
-    "lego": [
-      "cambiar lo que estamos haciendo",
-      "to change what we're doing"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "to change what we're doing",
+      "target": "cambiar lo que estamos haciendo"
+    },
     "practice_phrases": [
-      [
-        "To change what we're doing",
-        "Cambiar lo que estamos haciendo",
-        null,
-        1
-      ],
-      [
-        "To change what we're doing here",
-        "Cambiar lo que estamos haciendo aquí",
-        null,
-        2
-      ],
-      [
-        "To change what we're doing now",
-        "Cambiar lo que estamos haciendo ahora",
-        null,
-        3
-      ],
-      [
-        "To change what we're doing together",
-        "Cambiar lo que estamos haciendo juntos",
-        null,
-        3
-      ],
-      [
-        "We want to change what we're doing",
-        "Queremos cambiar lo que estamos haciendo",
-        null,
-        4
-      ],
-      [
-        "To change what we're doing in this project",
-        "Cambiar lo que estamos haciendo en este proyecto",
-        null,
-        4
-      ],
-      [
-        "We need to change what we're doing before it's too late",
-        "Necesitamos cambiar lo que estamos haciendo antes de que sea demasiado tarde",
-        null,
-        5
-      ],
-      [
-        "They're trying to change what we're doing without asking us",
-        "Están intentando cambiar lo que estamos haciendo sin preguntarnos",
-        null,
-        6
-      ],
-      [
-        "It's important to change what we're doing if we want better results",
-        "Es importante cambiar lo que estamos haciendo si queremos mejores resultados",
-        null,
-        6
-      ],
-      [
-        "We should seriously consider changing what we're doing because it's not working anymore",
-        "Deberíamos considerar seriamente cambiar lo que estamos haciendo porque ya no está funcionando",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "words",
+        "target": "palabras"
+      },
+      {
+        "known": "we need",
+        "target": "necesitamos"
+      },
+      {
+        "known": "we're trying",
+        "target": "estamos intentando"
+      },
+      {
+        "known": "more words",
+        "target": "más palabras"
+      },
+      {
+        "known": "we need to change",
+        "target": "necesitamos cambiar"
+      },
+      {
+        "known": "we need more words",
+        "target": "necesitamos más palabras"
+      },
+      {
+        "known": "we need to change words",
+        "target": "necesitamos cambiar palabras"
+      },
+      {
+        "known": "you shouldn't worry about doing something similar",
+        "target": "no deberías preocuparte por hacer algo similar"
+      },
+      {
+        "known": "we need to change what we're doing",
+        "target": "necesitamos cambiar lo que estamos haciendo"
+      },
+      {
+        "known": "you should ask yourself why we need to change",
+        "target": "deberías preguntarte por qué necesitamos cambiar"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0104L04": {
-    "lego": [
-      "lo que estamos haciendo",
-      "what we're doing"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "what we're doing",
+      "target": "lo que estamos haciendo"
+    },
     "practice_phrases": [
-      [
-        "What we're doing",
-        "Lo que estamos haciendo",
-        null,
-        1
-      ],
-      [
-        "What we're doing here",
-        "Lo que estamos haciendo aquí",
-        null,
-        2
-      ],
-      [
-        "I like what we're doing",
-        "Me gusta lo que estamos haciendo",
-        null,
-        3
-      ],
-      [
-        "What we're doing is good",
-        "Lo que estamos haciendo está bien",
-        null,
-        3
-      ],
-      [
-        "What we're doing isn't working",
-        "Lo que estamos haciendo no está funcionando",
-        null,
-        4
-      ],
-      [
-        "Do you understand what we're doing?",
-        "¿Entiendes lo que estamos haciendo?",
-        null,
-        4
-      ],
-      [
-        "I don't think what we're doing is the right approach",
-        "No creo que lo que estamos haciendo sea el enfoque correcto",
-        null,
-        5
-      ],
-      [
-        "What we're doing now is completely different from before",
-        "Lo que estamos haciendo ahora es completamente diferente de antes",
-        null,
-        5
-      ],
-      [
-        "Can you explain to me what we're doing and why it matters?",
-        "¿Puedes explicarme lo que estamos haciendo y por qué es importante?",
-        null,
-        6
-      ],
-      [
-        "What we're doing right now doesn't make sense if we want to achieve our goals",
-        "Lo que estamos haciendo ahora mismo no tiene sentido si queremos lograr nuestros objetivos",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "words",
+        "target": "palabras"
+      },
+      {
+        "known": "we need",
+        "target": "necesitamos"
+      },
+      {
+        "known": "we're trying",
+        "target": "estamos intentando"
+      },
+      {
+        "known": "what we're doing",
+        "target": "lo que estamos haciendo"
+      },
+      {
+        "known": "we need words",
+        "target": "necesitamos palabras"
+      },
+      {
+        "known": "we need to change",
+        "target": "necesitamos cambiar"
+      },
+      {
+        "known": "we need what we're doing",
+        "target": "necesitamos lo que estamos haciendo"
+      },
+      {
+        "known": "you should ask yourself what we're doing",
+        "target": "deberías preguntarte lo que estamos haciendo"
+      },
+      {
+        "known": "we need to change what we're doing",
+        "target": "necesitamos cambiar lo que estamos haciendo"
+      },
+      {
+        "known": "you shouldn't worry about what we're doing with words",
+        "target": "no deberías preocuparte por lo que estamos haciendo con palabras"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0104L05": {
-    "lego": [
-      "estamos haciendo",
-      "we're doing"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "we're doing",
+      "target": "estamos haciendo"
+    },
     "practice_phrases": [
-      [
-        "We're doing",
-        "Estamos haciendo",
-        null,
-        1
-      ],
-      [
-        "We're doing this",
-        "Estamos haciendo esto",
-        null,
-        2
-      ],
-      [
-        "We're doing it well",
-        "Lo estamos haciendo bien",
-        null,
-        3
-      ],
-      [
-        "We're doing our best",
-        "Estamos haciendo lo mejor",
-        null,
-        3
-      ],
-      [
-        "We're doing everything we can",
-        "Estamos haciendo todo lo que podemos",
-        null,
-        4
-      ],
-      [
-        "We're doing it the right way",
-        "Lo estamos haciendo de la manera correcta",
-        null,
-        4
-      ],
-      [
-        "We're doing exactly what they told us to do",
-        "Estamos haciendo exactamente lo que nos dijeron que hiciéramos",
-        null,
-        5
-      ],
-      [
-        "We're doing the same thing we did last time",
-        "Estamos haciendo lo mismo que hicimos la última vez",
-        null,
-        5
-      ],
-      [
-        "I think we're doing this much better than we were before",
-        "Creo que estamos haciendo esto mucho mejor que antes",
-        null,
-        6
-      ],
-      [
-        "We're doing all of this work without understanding why it's important",
-        "Estamos haciendo todo este trabajo sin entender por qué es importante",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "words",
+        "target": "palabras"
+      },
+      {
+        "known": "we need",
+        "target": "necesitamos"
+      },
+      {
+        "known": "we're doing",
+        "target": "estamos haciendo"
+      },
+      {
+        "known": "what we're doing",
+        "target": "lo que estamos haciendo"
+      },
+      {
+        "known": "we need words",
+        "target": "necesitamos palabras"
+      },
+      {
+        "known": "we need to change",
+        "target": "necesitamos cambiar"
+      },
+      {
+        "known": "we're doing something similar",
+        "target": "estamos haciendo algo similar"
+      },
+      {
+        "known": "you should ask yourself what we're doing",
+        "target": "deberías preguntarte lo que estamos haciendo"
+      },
+      {
+        "known": "we're not trying to hear what we're doing",
+        "target": "no estamos intentando oír lo que estamos haciendo"
+      },
+      {
+        "known": "We need to change what we're doing",
+        "target": "Necesitamos cambiar lo que estamos haciendo"
+      },
+      {
+        "known": "We need to change what we're doing.",
+        "target": "Necesitamos cambiar lo que estamos haciendo"
+      }
+    ],
+    "is_final_lego": true,
+    "phrase_count": 11
   }
 }

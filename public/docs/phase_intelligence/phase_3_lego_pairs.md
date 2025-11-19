@@ -57,21 +57,28 @@ Can learner generate 5+ meaningful practice phrases with "con" alone? No.
   "legos": [
     {
       "type": "M",
-      "target": "disfruto hacer",
-      "known": "I enjoy doing",
-      "components": [["disfruto", "I enjoy"], ["hacer", "doing/to do"]]
+      "lego": {"known": "I enjoy doing", "target": "disfruto hacer"},
+      "components": [
+        {"known": "I enjoy", "target": "disfruto"},
+        {"known": "doing/to do", "target": "hacer"}
+      ]
     },
     {
       "type": "M",
-      "target": "cosas interesantes",
-      "known": "interesting things",
-      "components": [["cosas", "things"], ["interesantes", "interesting"]]
+      "lego": {"known": "interesting things", "target": "cosas interesantes"},
+      "components": [
+        {"known": "things", "target": "cosas"},
+        {"known": "interesting", "target": "interesantes"}
+      ]
     },
     {
       "type": "M",
-      "target": "con mis amigos",
-      "known": "with my friends",
-      "components": [["con", "with"], ["mis", "my"], ["amigos", "friends"]]
+      "lego": {"known": "with my friends", "target": "con mis amigos"},
+      "components": [
+        {"known": "with", "target": "con"},
+        {"known": "my", "target": "mis"},
+        {"known": "friends", "target": "amigos"}
+      ]
     }
   ]
 }
@@ -107,45 +114,56 @@ KNOWN phrase          → Learner thinks... → FD passes?
   "legos": [
     {
       "type": "M",
-      "target": "las noticias tardaron",
-      "known": "the news took",
-      "components": [["las", "the"], ["noticias", "news"], ["tardaron", "took/delayed"]]
-    },
-    {
-      "type": "M",
-      "target": "tardaron varias horas",
-      "known": "took several hours",
-      "components": [["tardaron", "took"], ["varias", "several/various"], ["horas", "hours"]]
-    },
-    {
-      "type": "A",
-      "target": "varias horas",
-      "known": "several hours"
-    },
-    {
-      "type": "M",
-      "target": "varias horas en llegar a todos",
-      "known": "several hours to reach everyone",
+      "lego": {"known": "the news took", "target": "las noticias tardaron"},
       "components": [
-        ["varias", "several"],
-        ["horas", "hours"],
-        ["en", "in"],
-        ["llegar", "to arrive/reach"],
-        ["a", "to"],
-        ["todos", "everyone/all"]
+        {"known": "the", "target": "las"},
+        {"known": "news", "target": "noticias"},
+        {"known": "took/delayed", "target": "tardaron"}
       ]
     },
     {
       "type": "M",
-      "target": "en llegar a todos",
-      "known": "to reach everyone",
-      "components": [["en", "in"], ["llegar", "to arrive"], ["a", "to"], ["todos", "everyone"]]
+      "lego": {"known": "took several hours", "target": "tardaron varias horas"},
+      "components": [
+        {"known": "took", "target": "tardaron"},
+        {"known": "several/various", "target": "varias"},
+        {"known": "hours", "target": "horas"}
+      ]
+    },
+    {
+      "type": "A",
+      "lego": {"known": "several hours", "target": "varias horas"}
     },
     {
       "type": "M",
-      "target": "en la oficina",
-      "known": "in the office",
-      "components": [["en", "in"], ["la", "the"], ["oficina", "office"]]
+      "lego": {"known": "several hours to reach everyone", "target": "varias horas en llegar a todos"},
+      "components": [
+        {"known": "several", "target": "varias"},
+        {"known": "hours", "target": "horas"},
+        {"known": "in", "target": "en"},
+        {"known": "to arrive/reach", "target": "llegar"},
+        {"known": "to", "target": "a"},
+        {"known": "everyone/all", "target": "todos"}
+      ]
+    },
+    {
+      "type": "M",
+      "lego": {"known": "to reach everyone", "target": "en llegar a todos"},
+      "components": [
+        {"known": "in", "target": "en"},
+        {"known": "to arrive", "target": "llegar"},
+        {"known": "to", "target": "a"},
+        {"known": "everyone", "target": "todos"}
+      ]
+    },
+    {
+      "type": "M",
+      "lego": {"known": "in the office", "target": "en la oficina"},
+      "components": [
+        {"known": "in", "target": "en"},
+        {"known": "the", "target": "la"},
+        {"known": "office", "target": "oficina"}
+      ]
     }
   ]
 }
@@ -162,10 +180,10 @@ KNOWN phrase          → Learner thinks... → FD passes?
 ```json
 {
   "legos": [
-    {"target": "说什么", "known": "say something"},
-    {"target": "用中文说什么", "known": "say something in Chinese"},
-    {"target": "用中文说", "known": "say in Chinese"},
-    {"target": "怎么用中文说", "known": "how to say in Chinese"}
+    {"known": "say something", "target": "说什么"},
+    {"known": "say something in Chinese", "target": "用中文说什么"},
+    {"known": "say in Chinese", "target": "用中文说"},
+    {"known": "how to say in Chinese", "target": "怎么用中文说"}
   ]
 }
 ```
@@ -208,11 +226,11 @@ Reading right-to-left from "terminemos":
 ```json
 {
   "legos": [
-    {"target": "somos amigos", "known": "we're friends"},
-    {"target": "y", "known": "and"},
-    {"target": "después de que terminemos", "known": "after we finish"},
-    {"target": "me gustaría", "known": "I'd like"},
-    {"target": "relajarme", "known": "to relax"}
+    {"known": "we're friends", "target": "somos amigos"},
+    {"known": "and", "target": "y"},
+    {"known": "after we finish", "target": "después de que terminemos"},
+    {"known": "I'd like", "target": "me gustaría"},
+    {"known": "to relax", "target": "relajarme"}
   ]
 }
 ```
@@ -291,43 +309,40 @@ Before submitting:
   "seeds": [
     {
       "seed_id": "S0051",
-      "seed_pair": [
-        "I enjoy doing interesting things with my friends",
-        "Disfruto hacer cosas interesantes con mis amigos"
-      ],
+      "seed_pair": {
+        "known": "I enjoy doing interesting things with my friends",
+        "target": "Disfruto hacer cosas interesantes con mis amigos"
+      },
       "legos": [
         {
           "id": "S0051L01",
           "type": "M",
-          "target": "disfruto hacer",
-          "known": "I enjoy doing",
           "new": true,
+          "lego": {"known": "I enjoy doing", "target": "disfruto hacer"},
           "components": [
-            ["disfruto", "I enjoy"],
-            ["hacer", "doing/to do"]
+            {"known": "I enjoy", "target": "disfruto"},
+            {"known": "doing/to do", "target": "hacer"}
           ]
         },
         {
           "id": "S0051L02",
           "type": "M",
-          "target": "cosas interesantes",
-          "known": "interesting things",
           "new": true,
+          "lego": {"known": "interesting things", "target": "cosas interesantes"},
           "components": [
-            ["cosas", "things"],
-            ["interesantes", "interesting"]
+            {"known": "things", "target": "cosas"},
+            {"known": "interesting", "target": "interesantes"}
           ]
         },
         {
           "id": "S0051L03",
           "type": "M",
-          "target": "con mis amigos",
-          "known": "with my friends",
           "new": true,
+          "lego": {"known": "with my friends", "target": "con mis amigos"},
           "components": [
-            ["con", "with"],
-            ["mis", "my"],
-            ["amigos", "friends"]
+            {"known": "with", "target": "con"},
+            {"known": "my", "target": "mis"},
+            {"known": "friends", "target": "amigos"}
           ]
         }
       ]

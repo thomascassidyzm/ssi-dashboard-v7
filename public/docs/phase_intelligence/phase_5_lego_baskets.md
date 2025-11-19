@@ -112,37 +112,24 @@ Before you start, confirm you understand these critical principles:
   },
   "legos": {
     "S0362L01": {
-      "lego": ["No", "No"],
-      "type": "A",
-      "is_final_lego": false,
-      "current_seed_earlier_legos": [],  // First LEGO, none earlier
-      "practice_phrases": [],            // ← YOU FILL THIS
-      "phrase_distribution": {
-        "short_1_to_2_legos": 2,
-        "medium_3_legos": 2,
-        "longer_4_legos": 2,
-        "longest_5_legos": 4
-      },
-      "target_phrase_count": 10
+      "lego": {"known": "No", "target": "No"},
+      "practice_phrases": []             // ← YOU FILL THIS (up to 10 phrases)
     },
     "S0362L02": {
-      "lego": ["rather quiet", "bastante callado"],
-      "type": "M",
-      "is_final_lego": false,
-      "current_seed_earlier_legos": [    // L02 has L01 available
-        {
-          "id": "S0362L01",
-          "known": "No",
-          "target": "No",
-          "type": "A"
-        }
-      ],
-      "practice_phrases": [],            // ← YOU FILL THIS
-      "phrase_distribution": {...},
-      "target_phrase_count": 10
+      "lego": {"known": "rather quiet", "target": "bastante callado"},
+      "practice_phrases": []             // ← YOU FILL THIS (up to 10 phrases)
     }
   }
 }
+
+**What you provide:**
+- `lego`: The LEGO being taught (labeled object)
+- `practice_phrases`: Array of practice phrases (labeled objects, up to 10)
+
+**What server adds automatically:**
+- `is_final_lego`: Boolean (derived from LEGO ID - checks if last LEGO in seed)
+  - If TRUE: Server adds the complete seed sentence as the highest practice phrase
+- `phrase_count`: Actual count of phrases you provided
 ```
 
 ---
@@ -227,8 +214,7 @@ Listed in `current_seed_earlier_legos` array - grows incrementally:
   {
     "id": "S0362L01",
     "known": "No",
-    "target": "No",
-    "type": "A"
+    "target": "No"
   }
 ]
 ```
@@ -241,7 +227,7 @@ Available target language words: `No`
 
 **Example**:
 ```json
-"lego": ["rather quiet", "bastante callado"]
+"lego": {"known": "rather quiet", "target": "bastante callado"}
 ```
 
 Available target language words: `bastante, callado`
@@ -343,48 +329,67 @@ Available target language words: `bastante, callado`
 6. "No tu amigo dijo que estaba bastante callado" (6 LEGOs)
 7. ... (build to 10 total phrases)
 
+**Note:** If this is the final LEGO in the seed, the server will automatically ensure phrase #10 is the complete seed sentence.
+
 ### Step 6: Final LEGO Special Rule
 
-**If `is_final_lego: true`:**
-- The HIGHEST phrase number (#10) MUST be the complete seed sentence
+**Server automatically handles this - you don't need to do anything special!**
+
+When the server detects `is_final_lego: true` (by checking if this is the last LEGO in the seed):
+- Server adds the complete seed sentence as your 10th practice phrase automatically
 - Example: "No él estaba bastante callado después de que te fuiste."
 
-This ensures learners can practice the full target sentence!
+**What this means for you:**
+- Generate your normal 10 practice phrases (or 9 if you know it's the final LEGO)
+- Server will replace/append the seed sentence as the highest phrase
+- This ensures learners can practice the full target sentence!
 
 ---
 
 ## 📤 OUTPUT FORMAT
 
-Fill `practice_phrases` array with format:
+**Simplified structure** - You provide only the essential fields:
+
 ```json
-[
-  [known, target, null, lego_count],
-  [known, target, null, lego_count],
-  ...
-]
+{
+  "S0362L01": {
+    "lego": {"known": "No", "target": "No"},
+    "practice_phrases": [
+      {"known": "No", "target": "No"},
+      {"known": "No, now", "target": "No, ahora"}
+    ]
+  },
+  "S0362L02": {
+    "lego": {"known": "rather quiet", "target": "bastante callado"},
+    "practice_phrases": [
+      {"known": "Rather quiet", "target": "Bastante callado"},
+      {"known": "No, rather quiet", "target": "No, bastante callado"},
+      {"known": "He was rather quiet", "target": "Él estaba bastante callado"},
+      {"known": "No, he was rather quiet", "target": "No, él estaba bastante callado"},
+      {"known": "Your friend was rather quiet", "target": "Tu amigo estaba bastante callado"},
+      {"known": "No, your friend was rather quiet", "target": "No, tu amigo estaba bastante callado"},
+      {"known": "He said your friend was rather quiet", "target": "Él dijo que tu amigo estaba bastante callado"},
+      {"known": "No, she said he was rather quiet", "target": "No, ella dijo que él estaba bastante callado"},
+      {"known": "Your friend said he was rather quiet", "target": "Tu amigo dijo que él estaba bastante callado"},
+      {"known": "No, he was rather quiet after you left", "target": "No, él estaba bastante callado después de que te fuiste"}
+    ]
+  }
+}
 ```
 
-**Fields:**
-1. `known`: Known language phrase (natural, meaningful)
-2. `target`: Target language translation (GATE compliant)
-3. `null`: Reserved field (always null)
-4. `lego_count`: Approximate number of LEGOs used (rough count is fine)
+**Format:** Labeled objects (consistent with seed_pairs.json and lego_pairs.json)
+- Each phrase: `{"known": "English phrase", "target": "Spanish phrase"}`
 
-**Example:**
-```json
-"practice_phrases": [
-  ["Rather quiet", "bastante callado", null, 1],
-  ["No, rather quiet", "No bastante callado", null, 2],
-  ["He was rather quiet", "él estaba bastante callado", null, 3],
-  ["No, he was rather quiet", "No él estaba bastante callado", null, 4],
-  ["Your friend was rather quiet", "tu amigo estaba bastante callado", null, 5],
-  ["No, your friend was rather quiet", "No tu amigo estaba bastante callado", null, 6],
-  ["He said your friend was rather quiet", "él dijo que tu amigo estaba bastante callado", null, 7],
-  ["No, she said he was rather quiet", "No ella dijo que él estaba bastante callado", null, 7],
-  ["Your friend said he was rather quiet", "tu amigo dijo que él estaba bastante callado", null, 7],
-  ["No, he was rather quiet after you left", "No él estaba bastante callado después de que te fuiste", null, 8]
-]
-```
+**Why labeled objects?**
+- ✅ Prevents language swap mistakes
+- ✅ Consistent with entire pipeline (Phases 1, 3, 5)
+- ✅ Explicit language identification
+
+**Server adds automatically:**
+- `is_final_lego`: Boolean derived from LEGO ID (checks if this is the last LEGO in the seed)
+  - **CRITICAL**: If TRUE, server adds the complete seed sentence as your highest practice phrase
+  - This ensures learners can practice the full target sentence!
+- `phrase_count`: Actual count of phrases you provided
 
 ---
 
@@ -428,11 +433,14 @@ For **S0001-S0010** especially:
 
 **Available vocabulary**: NONE (this is the very first LEGO)
 
-**Valid baskets**:
+**Valid basket**:
 ```json
-"practice_phrases": [
-  ["Now", "现在", null, 1]
-]
+"S0001L01": {
+  "lego": {"known": "now", "target": "现在"},
+  "practice_phrases": [
+    {"known": "Now", "target": "现在"}
+  ]
+}
 ```
 
 Only 1 phrase is valid because learners literally know zero other words. Creating "Now now now" or "现在现在" would be nonsensical.
@@ -443,11 +451,14 @@ Only 1 phrase is valid because learners literally know zero other words. Creatin
 
 **Available**: "now" (现在), "I want to" (我想), "with you" (和你)
 
-**Valid baskets**:
+**Valid basket**:
 ```json
-"practice_phrases": [
-  ["Chinese", "中文", null, 1]
-]
+"S0001L04": {
+  "lego": {"known": "Chinese", "target": "中文"},
+  "practice_phrases": [
+    {"known": "Chinese", "target": "中文"}
+  ]
+}
 ```
 
 Only 1 phrase is natural. Combinations like "Chinese now" (中文现在) or "I want to Chinese" (我想中文) are ungrammatical in both languages.
@@ -472,18 +483,18 @@ By seed 10+, enough vocabulary exists to create 10 varied, natural phrases. Appl
 
 ```json
 "S0022L02": {
-  "lego": ["I want to meet", "我想认识"],
+  "lego": {"known": "I want to meet", "target": "我想认识"},
   "practice_phrases": [
-    ["I want to meet.", "我想认识。", null, 1],
-    ["I want to meet you.", "我想认识你。", null, 2],
-    ["I want to meet tomorrow.", "我想明天认识。", null, 2],
-    ["I want to meet him quickly.", "我想快点认识他。", null, 3],
-    ["I want to meet other people.", "我想认识其他人。", null, 3],
-    ["I want to meet her this evening.", "我想今天晚上认识她。", null, 4],
-    ["I want to meet people who speak very well.", "我想认识说得很好的人。", null, 5],
-    ["I want to meet everyone else at six o'clock.", "我想六点认识其他所有人。", null, 5],
-    ["I want to meet people who are learning together with me.", "我想认识和我一起学的人。", null, 6],
-    ["I want to meet other people because I am learning Chinese.", "我想认识其他人因为我在学中文。", null, 7]
+    {"known": "I want to meet.", "target": "我想认识。"},
+    {"known": "I want to meet you.", "target": "我想认识你。"},
+    {"known": "I want to meet tomorrow.", "target": "我想明天认识。"},
+    {"known": "I want to meet him quickly.", "target": "我想快点认识他。"},
+    {"known": "I want to meet other people.", "target": "我想认识其他人。"},
+    {"known": "I want to meet her this evening.", "target": "我想今天晚上认识她。"},
+    {"known": "I want to meet people who speak very well.", "target": "我想认识说得很好的人。"},
+    {"known": "I want to meet everyone else at six o'clock.", "target": "我想六点认识其他所有人。"},
+    {"known": "I want to meet people who are learning together with me.", "target": "我想认识和我一起学的人。"},
+    {"known": "I want to meet other people because I am learning Chinese.", "target": "我想认识其他人因为我在学中文。"}
   ]
 }
 ```
@@ -501,18 +512,21 @@ By seed 10+, enough vocabulary exists to create 10 varied, natural phrases. Appl
 ### Bad Example: Template Automation
 
 ```json
-"practice_phrases": [
-  ["I want", "quiero", null, 1],
-  ["I want", "quiero", null, 1],
-  ["I want", "quiero", null, 1],
-  ["I want to", "quiero a", null, 2],
-  ["voy a", "voy a", null, 1],
-  ["voy a", "voy a", null, 1],
-  ["voy a", "voy a", null, 1],
-  ["I want with someone else with you", "quiero con alguien más contigo", null, 4],
-  ["voy a", "voy a", null, 1],
-  ["voy a", "voy a", null, 1]
-]
+"S0001L01": {
+  "lego": {"known": "I want", "target": "quiero"},
+  "practice_phrases": [
+    {"known": "I want", "target": "quiero"},
+    {"known": "I want", "target": "quiero"},
+    {"known": "I want", "target": "quiero"},
+    {"known": "I want to", "target": "quiero a"},
+    {"known": "voy a", "target": "voy a"},
+    {"known": "voy a", "target": "voy a"},
+    {"known": "voy a", "target": "voy a"},
+    {"known": "I want with someone else with you", "target": "quiero con alguien más contigo"},
+    {"known": "voy a", "target": "voy a"},
+    {"known": "voy a", "target": "voy a"}
+  ]
+}
 ```
 
 **Why this is terrible:**

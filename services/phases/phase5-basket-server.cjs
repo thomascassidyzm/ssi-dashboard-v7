@@ -1611,103 +1611,188 @@ app.post('/launch-12-masters', async (req, res) => {
     const promptsDir = path.join(__dirname, '../../scripts/phase5_master_prompts');
     await fs.ensureDir(promptsDir);
 
+    // Get ngrok URL for scaffolds
+    const ngrokUrl = process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
+
     for (const patch of manifest.patches) {
+      // Calculate workers needed (1 worker per ~10 LEGOs)
+      const workersNeeded = Math.ceil(patch.lego_count / 10);
+
+      // Group LEGOs by seed for assignment
+      const legosBySeed = {};
+      patch.legos.forEach(legoId => {
+        const seedId = legoId.substring(0, 5); // S0117L01 → S0117
+        if (!legosBySeed[seedId]) legosBySeed[seedId] = [];
+        legosBySeed[seedId].push(legoId);
+      });
+
+      const seeds = Object.keys(legosBySeed).sort();
+
+      // Create worker assignments (~10 LEGOs per worker)
+      const workerAssignments = [];
+      let currentWorker = { workerNum: 1, seeds: [], legoIds: [], legoCount: 0 };
+
+      seeds.forEach(seedId => {
+        const seedLegos = legosBySeed[seedId];
+
+        // If adding this seed would exceed 10 LEGOs, start new worker
+        if (currentWorker.legoCount + seedLegos.length > 10 && currentWorker.legoCount > 0) {
+          workerAssignments.push(currentWorker);
+          currentWorker = {
+            workerNum: workerAssignments.length + 1,
+            seeds: [],
+            legoIds: [],
+            legoCount: 0
+          };
+        }
+
+        currentWorker.seeds.push(seedId);
+        currentWorker.legoIds.push(...seedLegos);
+        currentWorker.legoCount += seedLegos.length;
+      });
+
+      // Push final worker
+      if (currentWorker.legoCount > 0) {
+        workerAssignments.push(currentWorker);
+      }
+
       const promptContent = `# Phase 5 Master Orchestrator: Patch ${patch.patch_number}
 
 **Course:** \`${courseCode}\`
-**Your Patch:** Seeds \`${patch.seed_start}\` to \`${patch.seed_end}\` (56 seeds)
-**Missing LEGOs in your patch:** ${patch.lego_count}
+**Your Patch:** Seeds \`${patch.seed_start}\` to \`${patch.seed_end}\`
+**Missing LEGOs:** ${patch.lego_count} LEGOs
+**Workers to spawn:** ${workerAssignments.length} (via Task tool)
 
 ---
 
-## 🎯 YOUR MISSION
+## 🎯 YOUR MISSION: SPAWN ${workerAssignments.length} WORKERS
 
-You are responsible for generating ALL missing baskets in your patch range.
+You are a **Master Orchestrator**. You DON'T generate baskets yourself.
 
 **Your workflow:**
 
-1. ✅ **Read your LEGO list** (provided below)
-2. ✅ **Create scaffolds** for all LEGOs in your list
-3. ✅ **Spawn sub-agents** (10 baskets per agent, standard Phase 5 workflow)
-4. ✅ **Monitor completion** and report summary
+1. ✅ **Review worker assignments** below
+2. ✅ **Spawn ${workerAssignments.length} workers** - Use Task tool ${workerAssignments.length} times in ONE message (parallel!)
+3. ✅ **Work SILENTLY** - No verbose progress logs
+4. ✅ **Monitor completion** - Workers will upload via ngrok
+5. ✅ **Report brief summary** - "✅ Patch ${patch.patch_number} complete: ${workerAssignments.length} workers spawned"
 
 ---
 
-## 📋 YOUR LEGO LIST (${patch.lego_count} LEGOs)
+## 📋 WORKER ASSIGNMENTS
+
+${workerAssignments.map(w => `**Worker ${w.workerNum}:** Seeds ${w.seeds.join(', ')} - ${w.legoCount} LEGOs`).join('\n')}
+
+---
+
+## 🚀 SPAWN WORKERS
+
+Use Task tool ${workerAssignments.length} times in a SINGLE message (parallel spawn).
+
+**Worker prompt template:**
+
+\`\`\`
+{
+  "subagent_type": "general-purpose",
+  "description": "Phase 5 Worker N - Patch ${patch.patch_number}",
+  "prompt": "You are Phase 5 Worker N for Patch ${patch.patch_number}. Generate practice baskets for your assigned LEGOs.
+
+## YOUR ASSIGNMENT
+
+**LEGOs:** [paste LEGO IDs from assignments above for this worker]
+
+## FETCH SCAFFOLDS
+
+For each LEGO ID, fetch its scaffold via WebFetch:
+
+**URL Format:** ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
+**Example:** ${ngrokUrl}/phase5/scaffold/${courseCode}/S0117L01
+**WebFetch Prompt:** Extract the scaffold details
+
+The scaffold contains:
+- LEGO (known → target)
+- Seed context
+- Available vocabulary (GATE compliant)
+- Is Final LEGO status
+- Generation requirements
+
+## GENERATION RULES
+
+**For each LEGO:**
+1. Fetch scaffold via WebFetch
+2. Read available vocabulary from scaffold
+3. Generate 10 practice phrases using ONLY vocabulary from scaffold
+4. Follow progressive complexity:
+   - Phrases 1-2: SHORT (2-3 words)
+   - Phrases 3-4: MEDIUM (3-4 words)
+   - Phrases 5-6: LONGER (4-6 words)
+   - Phrases 7-10: LONGEST (6+ words, aim for 7-10)
+5. Each phrase must be natural and grammatically correct in both languages
+
+**CRITICAL GATE Compliance:**
+- ✅ ONLY use vocabulary from scaffold's 'Available Vocabulary' section
+- ❌ DO NOT introduce words not in available vocabulary
+- ✅ Verify each phrase uses only previously-learned LEGOs
+
+## OUTPUT FORMAT
 
 \`\`\`json
-${JSON.stringify(patch.legos, null, 2)}
+{
+  \\"courseCode\\": \\"${courseCode}\\",
+  \\"seed\\": \\"S0117\\",
+  \\"baskets\\": {
+    \\"S0117L01\\": {
+      \\"lego\\": {
+        \\"known\\": \\"definitely\\",
+        \\"target\\": \\"definitivamente\\"
+      },
+      \\"practice_phrases\\": [
+        { \\"known\\": \\"definitely\\", \\"target\\": \\"definitivamente\\" },
+        { \\"known\\": \\"definitely better\\", \\"target\\": \\"definitivamente mejor\\" },
+        ...
+      ]
+    }
+  },
+  \\"stagingOnly\\": true
+}
+\`\`\`
+
+**Format rules:**
+- \`lego\` field: Object with \\"known\\" and \\"target\\" labels
+- \`practice_phrases\`: Array of objects with \\"known\\" and \\"target\\" labels
+- NO \\"difficulty\\" field
+- NO array format like [\\"Spanish\\", \\"English\\"]
+
+**Server auto-adds:**
+- \`is_final_lego\`: Boolean (if true, server adds complete seed sentence)
+- \`phrase_count\`: Count of phrases
+- \`type\`: LEGO type from lego_pairs.json
+
+## UPLOAD
+
+**POST:** ${ngrokUrl}/phase5/upload-basket
+
+Upload the complete JSON payload above.
+
+## WORK SILENTLY
+
+Fetch scaffolds, generate baskets, upload, report brief summary only."
+}
 \`\`\`
 
 ---
 
-## 🔧 STEP 1: Create Scaffolds
+## 🎯 START NOW
 
-For each LEGO in your list, create a scaffold using the **standard Phase 5 scaffold generation logic**.
+**Spawn all ${workerAssignments.length} workers in parallel!**
 
-**Scaffold location:** \`public/vfs/courses/${courseCode}/phase5_scaffolds/\`
+Each worker:
+1. Gets its LEGO ID list from assignments above
+2. Fetches scaffolds via WebFetch
+3. Generates baskets
+4. Uploads via HTTP
 
-**Scaffold format:** Standard Phase 5 scaffold (includes recent_context, current_seed_legos_available, etc.)
-
-Use the existing scaffold generation tools/logic - nothing special needed.
-
----
-
-## 🚀 STEP 2: Spawn Sub-Agents
-
-Once scaffolds are ready:
-
-1. **Batch your LEGOs:** ~10 baskets per sub-agent
-2. **Spawn agents in parallel:** Use the Task tool multiple times in one message
-3. **Each sub-agent receives:**
-   - Their specific LEGO IDs
-   - Path to their scaffolds
-   - Standard Phase 5 intelligence prompt: https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
-
-**Sub-agent workflow (v10 - ngrok upload):**
-- Read v10 scaffold from \`phase5_scaffolds_v10/seed_sXXXX.json\`
-- Generate 10 practice phrases per LEGO (fill 2-2-2-4 slots in v10 structure)
-- Self-validate: grammar, FD/LUT rules, naturalness
-- **Strip metadata:** Extract ONLY \`lego\`, \`type\`, \`practice_phrases\` (remove _metadata, _instructions, _stats, etc.)
-- **Convert v10 to v7 format:** Transform practice_phrases from slot objects to simple arrays:
-  - v10: \`{"short_1_to_2_legos": {"slots": [{"phrase": {"english": "X", "mandarin": "Y"}}]}}\`
-  - v7: \`[["X", "Y", null, N], ...]\` (flat array of [known, target, notes, lego_count])
-- **Upload via ngrok:** POST to \`https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase5/upload-basket\`
-  - Format: \`{"course": "${courseCode}", "seed": "SXXXX", "baskets": {...}, "agentId": "your-id"}\`
-  - Each basket: \`{"lego": ["known", "target"], "type": "A|M", "practice_phrases": [[...], [...]]}\`
-  - Auto-merges into lego_baskets.json
-  - Returns confirmation with progress stats
-- Move to next LEGO (no GitHub pushes needed!)
-
----
-
-## 📊 STEP 3: Monitor & Report
-
-Track completion and report:
-
-\`\`\`
-✅ Patch ${patch.patch_number} Complete
-   Seeds: ${patch.seed_start}-${patch.seed_end}
-   LEGOs generated: ${patch.lego_count}
-   Sub-agents spawned: [calculated]
-   Status: All baskets saved to phase5_outputs/
-\`\`\`
-
----
-
-## ⚠️ IMPORTANT NOTES
-
-- **You own this patch** - no coordination needed with other masters
-- **Standard Phase 5 workflow** - nothing special about "regeneration"
-- **10 baskets per sub-agent** - this means ~100 phrases per agent (10 baskets × 10 phrases)
-- **Grammar check required** - sub-agents must self-review before saving
-- **Push in batches** - don't push 1000+ files at once
-
----
-
-## 🚀 BEGIN NOW
-
-Start with Step 1: Create scaffolds for your ${patch.lego_count} LEGOs.
+Report: "✅ Patch ${patch.patch_number} complete: ${workerAssignments.length} workers spawned for ${patch.lego_count} LEGOs"
 `;
 
       const promptPath = path.join(promptsDir, `${patch.patch_name}_${patch.seed_range}.md`);

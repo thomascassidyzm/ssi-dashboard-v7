@@ -1,347 +1,256 @@
 {
   "S0102L01": {
-    "lego": [
-      "estamos intentando",
-      "we're trying"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "we're trying",
+      "target": "estamos intentando"
+    },
     "practice_phrases": [
-      [
-        "we're trying",
-        "estamos intentando",
-        null,
-        1
-      ],
-      [
-        "we're trying to say",
-        "estamos intentando decir",
-        null,
-        2
-      ],
-      [
-        "we're trying to say something",
-        "estamos intentando decir algo",
-        null,
-        3
-      ],
-      [
-        "we're trying to explain this",
-        "estamos intentando explicar esto",
-        null,
-        3
-      ],
-      [
-        "we're trying to say it's not like that",
-        "estamos intentando decir que no es así",
-        null,
-        4
-      ],
-      [
-        "we're really trying to understand this",
-        "realmente estamos intentando entender esto",
-        null,
-        4
-      ],
-      [
-        "we're trying to say that it's not like that at all",
-        "estamos intentando decir que no es así en absoluto",
-        null,
-        5
-      ],
-      [
-        "we're trying to explain that it's not like that in our culture",
-        "estamos intentando explicar que no es así en nuestra cultura",
-        null,
-        6
-      ],
-      [
-        "we're really trying to say that it's not like that here",
-        "realmente estamos intentando decir que no es así aquí",
-        null,
-        6
-      ],
-      [
-        "we're trying our best to explain that it's not like that in this situation",
-        "estamos intentando lo mejor que podemos explicar que no es así en esta situación",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "yes, no",
+        "target": "sí, no"
+      },
+      {
+        "known": "I need something else",
+        "target": "necesito otra cosa"
+      },
+      {
+        "known": "I'm ready",
+        "target": "estoy preparado"
+      },
+      {
+        "known": "you should worry",
+        "target": "deberías preocuparte"
+      },
+      {
+        "known": "we're trying this language",
+        "target": "estamos intentando este lenguaje"
+      },
+      {
+        "known": "I should consider playing",
+        "target": "debería considerar jugar"
+      },
+      {
+        "known": "you shouldn't worry about doing something similar",
+        "target": "no deberías preocuparte por hacer algo similar"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "we're trying as soon as you want",
+        "target": "estamos intentando tan pronto como quieras"
+      },
+      {
+        "known": "you should ask yourself why it's not working",
+        "target": "deberías preguntarte por qué no está trabajando"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0102L02": {
-    "lego": [
-      "intentando decir",
-      "trying to say"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "trying to say",
+      "target": "intentando decir"
+    },
     "practice_phrases": [
-      [
-        "trying to say",
-        "intentando decir",
-        null,
-        1
-      ],
-      [
-        "trying to say something",
-        "intentando decir algo",
-        null,
-        2
-      ],
-      [
-        "I'm trying to say this",
-        "Estoy intentando decir esto",
-        null,
-        3
-      ],
-      [
-        "trying to say it correctly",
-        "intentando decirlo correctamente",
-        null,
-        3
-      ],
-      [
-        "we're trying to say it's not like that",
-        "estamos intentando decir que no es así",
-        null,
-        4
-      ],
-      [
-        "I'm trying to say something important",
-        "Estoy intentando decir algo importante",
-        null,
-        4
-      ],
-      [
-        "we're trying to say that it's not like that",
-        "estamos intentando decir que no es así",
-        null,
-        5
-      ],
-      [
-        "they're trying to say that it's not like that at all",
-        "están intentando decir que no es así en absoluto",
-        null,
-        6
-      ],
-      [
-        "I'm trying to say that it's not like that in this case",
-        "Estoy intentando decir que no es así en este caso",
-        null,
-        6
-      ],
-      [
-        "we're all trying to say that it's not like that in our experience",
-        "todos estamos intentando decir que no es así en nuestra experiencia",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "yes, I'm ready",
+        "target": "sí, estoy preparado"
+      },
+      {
+        "known": "trying to say no",
+        "target": "intentando decir no"
+      },
+      {
+        "known": "I need something else",
+        "target": "necesito otra cosa"
+      },
+      {
+        "known": "you should worry about this",
+        "target": "deberías preocuparte por esto"
+      },
+      {
+        "known": "I'm enjoying this language",
+        "target": "estoy disfrutando este lenguaje"
+      },
+      {
+        "known": "trying to say I'm ready to go",
+        "target": "intentando decir estoy preparado para ir"
+      },
+      {
+        "known": "you shouldn't worry about doing something similar",
+        "target": "no deberías preocuparte por hacer algo similar"
+      },
+      {
+        "known": "we're trying to say more about this language",
+        "target": "estamos intentando decir más sobre este lenguaje"
+      },
+      {
+        "known": "I should consider playing as soon as you want",
+        "target": "debería considerar jugar tan pronto como quieras"
+      },
+      {
+        "known": "you should ask yourself why you're trying to say something else",
+        "target": "deberías preguntarte por qué estás intentando decir otra cosa"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0102L04": {
-    "lego": [
-      "que no es así",
-      "that it's not like that"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "that it's not like that",
+      "target": "que no es así"
+    },
     "practice_phrases": [
-      [
-        "that it's not like that",
-        "que no es así",
-        null,
-        1
-      ],
-      [
-        "I think it's not like that",
-        "Creo que no es así",
-        null,
-        2
-      ],
-      [
-        "I'm saying that it's not like that",
-        "Estoy diciendo que no es así",
-        null,
-        3
-      ],
-      [
-        "they say that it's not like that",
-        "dicen que no es así",
-        null,
-        3
-      ],
-      [
-        "we're trying to say that it's not like that",
-        "estamos intentando decir que no es así",
-        null,
-        4
-      ],
-      [
-        "I want to explain that it's not like that",
-        "Quiero explicar que no es así",
-        null,
-        4
-      ],
-      [
-        "we're trying to say that it's not like that here",
-        "estamos intentando decir que no es así aquí",
-        null,
-        5
-      ],
-      [
-        "I'm really trying to explain that it's not like that at all",
-        "Realmente estoy intentando explicar que no es así en absoluto",
-        null,
-        6
-      ],
-      [
-        "they're trying to make clear that it's not like that in this situation",
-        "están intentando dejar claro que no es así en esta situación",
-        null,
-        6
-      ],
-      [
-        "we're all trying to help you understand that it's not like that in our culture",
-        "todos estamos intentando ayudarte a entender que no es así en nuestra cultura",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "yes, I'm ready",
+        "target": "sí, estoy preparado"
+      },
+      {
+        "known": "it's not like that",
+        "target": "no es así"
+      },
+      {
+        "known": "I need something else",
+        "target": "necesito otra cosa"
+      },
+      {
+        "known": "trying to say no",
+        "target": "intentando decir no"
+      },
+      {
+        "known": "we're trying this language",
+        "target": "estamos intentando este lenguaje"
+      },
+      {
+        "known": "you shouldn't worry about it",
+        "target": "no deberías preocuparte por ello"
+      },
+      {
+        "known": "trying to say that it's not like that",
+        "target": "intentando decir que no es así"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "we're trying to say that it's not like that",
+        "target": "estamos intentando decir que no es así"
+      },
+      {
+        "known": "you should ask yourself why it's not working like that",
+        "target": "deberías preguntarte por qué no está trabajando así"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0102L05": {
-    "lego": [
-      "no es así",
-      "it's not like that"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "it's not like that",
+      "target": "no es así"
+    },
     "practice_phrases": [
-      [
-        "it's not like that",
-        "no es así",
-        null,
-        1
-      ],
-      [
-        "no, it's not like that",
-        "no, no es así",
-        null,
-        2
-      ],
-      [
-        "it's not like that here",
-        "no es así aquí",
-        null,
-        3
-      ],
-      [
-        "I think it's not like that",
-        "Creo que no es así",
-        null,
-        3
-      ],
-      [
-        "it's not like that at all",
-        "no es así en absoluto",
-        null,
-        4
-      ],
-      [
-        "I'm saying it's not like that",
-        "Estoy diciendo que no es así",
-        null,
-        4
-      ],
-      [
-        "we're trying to say that it's not like that",
-        "estamos intentando decir que no es así",
-        null,
-        5
-      ],
-      [
-        "it's not like that in this case at all",
-        "no es así en este caso en absoluto",
-        null,
-        6
-      ],
-      [
-        "I really think it's not like that in our situation",
-        "Realmente creo que no es así en nuestra situación",
-        null,
-        6
-      ],
-      [
-        "they're trying to explain that it's not like that in their culture",
-        "están intentando explicar que no es así en su cultura",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "yes, no",
+        "target": "sí, no"
+      },
+      {
+        "known": "it's not like that",
+        "target": "no es así"
+      },
+      {
+        "known": "I need something else",
+        "target": "necesito otra cosa"
+      },
+      {
+        "known": "I'm ready to go",
+        "target": "estoy preparado para ir"
+      },
+      {
+        "known": "you should worry about this",
+        "target": "deberías preocuparte por esto"
+      },
+      {
+        "known": "I'm enjoying this language",
+        "target": "estoy disfrutando este lenguaje"
+      },
+      {
+        "known": "trying to say it's not like that",
+        "target": "intentando decir no es así"
+      },
+      {
+        "known": "you shouldn't worry about doing something similar like that",
+        "target": "no deberías preocuparte por hacer algo similar así"
+      },
+      {
+        "known": "we're trying to say it's not like that",
+        "target": "estamos intentando decir no es así"
+      },
+      {
+        "known": "I should ask yourself why it's not working like that",
+        "target": "debería preguntarte por qué no está trabajando así"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0102L06": {
-    "lego": [
-      "así",
-      "like that"
-    ],
-    "type": "A",
+    "lego": {
+      "known": "like that",
+      "target": "así"
+    },
     "practice_phrases": [
-      [
-        "like that",
-        "así",
-        null,
-        1
-      ],
-      [
-        "not like that",
-        "no así",
-        null,
-        2
-      ],
-      [
-        "it's like that",
-        "es así",
-        null,
-        3
-      ],
-      [
-        "do it like that",
-        "hazlo así",
-        null,
-        3
-      ],
-      [
-        "it's not like that here",
-        "no es así aquí",
-        null,
-        4
-      ],
-      [
-        "I don't think it's like that",
-        "No creo que sea así",
-        null,
-        4
-      ],
-      [
-        "we're saying it's not like that",
-        "estamos diciendo que no es así",
-        null,
-        5
-      ],
-      [
-        "I really don't think it's like that at all",
-        "Realmente no creo que sea así en absoluto",
-        null,
-        6
-      ],
-      [
-        "they're trying to explain that it's not like that",
-        "están intentando explicar que no es así",
-        null,
-        6
-      ],
-      [
-        "we're all trying to say that it's not like that in this situation",
-        "todos estamos intentando decir que no es así en esta situación",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "yes, no",
+        "target": "sí, no"
+      },
+      {
+        "known": "like that",
+        "target": "así"
+      },
+      {
+        "known": "I'm ready",
+        "target": "estoy preparado"
+      },
+      {
+        "known": "trying like that",
+        "target": "intentando así"
+      },
+      {
+        "known": "you should worry like that",
+        "target": "deberías preocuparte así"
+      },
+      {
+        "known": "I'm enjoying this language like that",
+        "target": "estoy disfrutando este lenguaje así"
+      },
+      {
+        "known": "it's not like that",
+        "target": "no es así"
+      },
+      {
+        "known": "you shouldn't worry about doing something similar like that",
+        "target": "no deberías preocuparte por hacer algo similar así"
+      },
+      {
+        "known": "we're trying to say it's not like that",
+        "target": "estamos intentando decir no es así"
+      },
+      {
+        "known": "I should ask yourself why it's not working like that",
+        "target": "debería preguntarte por qué no está trabajando así"
+      },
+      {
+        "known": "We're trying to say that it's not like that.",
+        "target": "Estamos intentando decir que no es así"
+      }
+    ],
+    "is_final_lego": true,
+    "phrase_count": 11
   }
 }

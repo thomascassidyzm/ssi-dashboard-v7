@@ -1,0 +1,424 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0189",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "spanish",
+    "course": "spa_for_eng"
+  },
+  "seed_pair": {
+    "known": "Yes that's a good idea.",
+    "target": "Sí, esa es una buena idea."
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0179"
+    },
+    {
+      "seed_id": "S0180"
+    },
+    {
+      "seed_id": "S0181"
+    },
+    {
+      "seed_id": "S0182"
+    },
+    {
+      "seed_id": "S0183"
+    },
+    {
+      "seed_id": "S0184"
+    },
+    {
+      "seed_id": "S0185"
+    },
+    {
+      "seed_id": "S0186"
+    },
+    {
+      "seed_id": "S0187"
+    },
+    {
+      "seed_id": "S0188"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0181L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0181L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0181L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0181L05",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0182L01",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0182L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0182L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0182L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0183L01",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0183L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0183L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0184L01",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0184L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0184L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0184L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0185L01",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0185L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0185L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0185L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0186L01",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    },
+    {
+      "id": "S0186L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0186L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0186L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0186L05",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0187L01",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0187L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0188L02",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0188L03",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0188L04",
+      "english": "",
+      "spanish": "",
+      "type": "M"
+    },
+    {
+      "id": "S0188L05",
+      "english": "",
+      "spanish": "",
+      "type": "A"
+    }
+  ],
+  "legos": {
+    "S0189L04": {
+      "lego_id": "S0189L04",
+      "lego": {
+        "english": "",
+        "spanish": ""
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "spanish": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0189L04",
+        "seed_context": {
+          "known": "Yes that's a good idea.",
+          "target": "Sí, esa es una buena idea."
+        }
+      },
+      "components": [
+        {
+          "known": "that",
+          "target": "esa"
+        },
+        {
+          "known": "is",
+          "target": "es"
+        },
+        {
+          "known": "a",
+          "target": "una"
+        },
+        {
+          "known": "good",
+          "target": "buena"
+        },
+        {
+          "known": "idea",
+          "target": "idea"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", spanish: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/spa_for_eng/phase5_outputs_v10/seed_s0189.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 1,
+    "phrases_to_generate": 10,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}

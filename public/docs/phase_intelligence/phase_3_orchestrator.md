@@ -107,19 +107,19 @@ M-types should have `components` field referencing their A-type building blocks 
   "seeds": [
     {
       "seed_id": "S0001",
-      "seed_pair": ["Target sentence", "Known sentence"],
+      "seed_pair": {"known": "Known sentence", "target": "Target sentence"},
       "legos": [
         {
           "id": "S0001L01",
-          "target": "target_word",
-          "known": "known_word",
-          "type": "A"
+          "type": "A",
+          "new": true,
+          "lego": {"known": "known_word", "target": "target_word"}
         },
         {
           "id": "S0001L02",
-          "target": "multi word phrase",
-          "known": "multi word phrase",
           "type": "M",
+          "new": true,
+          "lego": {"known": "multi word phrase", "target": "multi word phrase"},
           "components": [
             {"known": "multi", "target": "multi"},
             {"known": "word", "target": "word"}

@@ -1,416 +1,446 @@
 {
-  "S0101L01": {
-    "lego": [
-      "estoy disfrutando",
-      "I'm enjoying"
-    ],
-    "type": "M",
+  "0": {
+    "lego": {
+      "known": "I'm enjoying finding out more about this language",
+      "target": "estoy disfrutando descubrir más sobre este lenguaje"
+    },
     "practice_phrases": [
-      [
-        "I'm enjoying",
-        "Estoy disfrutando",
-        null,
-        1
-      ],
-      [
-        "I'm enjoying this",
-        "Estoy disfrutando esto",
-        null,
-        2
-      ],
-      [
-        "I'm enjoying this language",
-        "Estoy disfrutando este lenguaje",
-        null,
-        3
-      ],
-      [
-        "I'm really enjoying this",
-        "Realmente estoy disfrutando esto",
-        null,
-        3
-      ],
-      [
-        "I'm enjoying finding out more about this",
-        "Estoy disfrutando descubrir más sobre esto",
-        null,
-        4
-      ],
-      [
-        "I'm enjoying this language a lot",
-        "Estoy disfrutando mucho este lenguaje",
-        null,
-        4
-      ],
-      [
-        "I'm enjoying finding out more about this language",
-        "Estoy disfrutando descubrir más sobre este lenguaje",
-        null,
-        5
-      ],
-      [
-        "I'm really enjoying finding out more about this beautiful language",
-        "Realmente estoy disfrutando descubrir más sobre este hermoso lenguaje",
-        null,
-        6
-      ],
-      [
-        "I'm enjoying every moment finding out more about this language",
-        "Estoy disfrutando cada momento descubrir más sobre este lenguaje",
-        null,
-        6
-      ],
-      [
-        "I'm truly enjoying finding out more about this fascinating language and its culture",
-        "Verdaderamente estoy disfrutando descubrir más sobre este fascinante lenguaje y su cultura",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "1": {
+    "lego": {
+      "known": "I'm enjoying discovering more about this language",
+      "target": "estoy disfrutando descubriendo más sobre este lenguaje"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying discovering more about this language",
+        "target": "estoy disfrutando descubriendo más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "2": {
+    "lego": {
+      "known": "I'm enjoying learning more about this language",
+      "target": "estoy disfrutando aprendiendo más sobre este lenguaje"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying learning more about this language",
+        "target": "estoy disfrutando aprendiendo más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "3": {
+    "lego": {
+      "known": "I'm enjoying finding out about this language",
+      "target": "estoy disfrutando descubrir sobre este lenguaje"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying finding out about this language",
+        "target": "estoy disfrutando descubrir sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "4": {
+    "lego": {
+      "known": "I'm enjoying learning this language",
+      "target": "estoy disfrutando aprendiendo este lenguaje"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying learning this language",
+        "target": "estoy disfrutando aprendiendo este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "5": {
+    "lego": {
+      "known": "I enjoy finding out more about this language",
+      "target": "disfruto descubrir más sobre este lenguaje"
+    },
+    "practice_phrases": [
+      {
+        "known": "I enjoy finding out more about this language",
+        "target": "disfruto descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "6": {
+    "lego": {
+      "known": "I'm enjoying finding out about languages",
+      "target": "estoy disfrutando descubrir sobre lenguajes"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying finding out about languages",
+        "target": "estoy disfrutando descubrir sobre lenguajes"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "7": {
+    "lego": {
+      "known": "I'm enjoying this language",
+      "target": "estoy disfrutando este lenguaje"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying this language",
+        "target": "estoy disfrutando este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "8": {
+    "lego": {
+      "known": "Finding out more about this language is enjoyable",
+      "target": "descubrir más sobre este lenguaje es disfrutable"
+    },
+    "practice_phrases": [
+      {
+        "known": "Finding out more about this language is enjoyable",
+        "target": "descubrir más sobre este lenguaje es disfrutable"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "9": {
+    "lego": {
+      "known": "I'm enjoying learning about this language",
+      "target": "estoy disfrutando aprendiendo sobre este lenguaje"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying learning about this language",
+        "target": "estoy disfrutando aprendiendo sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 1
+  },
+  "S0101L01": {
+    "lego": {
+      "known": "I'm enjoying",
+      "target": "estoy disfrutando"
+    },
+    "practice_phrases": [
+      {
+        "known": "I'm enjoying",
+        "target": "estoy disfrutando"
+      },
+      {
+        "known": "I'm ready",
+        "target": "estoy preparado"
+      },
+      {
+        "known": "I'm enjoying this",
+        "target": "estoy disfrutando esto"
+      },
+      {
+        "known": "I'm enjoying more",
+        "target": "estoy disfrutando más"
+      },
+      {
+        "known": "I'm enjoying this language",
+        "target": "estoy disfrutando este lenguaje"
+      },
+      {
+        "known": "I'm ready for this language",
+        "target": "estoy preparado para este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out about this",
+        "target": "estoy disfrutando descubrir sobre esto"
+      },
+      {
+        "known": "I'm enjoying finding out more about this",
+        "target": "estoy disfrutando descubrir más sobre esto"
+      },
+      {
+        "known": "I'm enjoying finding out about this language",
+        "target": "estoy disfrutando descubrir sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0101L02": {
-    "lego": [
-      "disfrutando descubrir",
-      "enjoying finding out"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "enjoying finding out",
+      "target": "disfrutando descubrir"
+    },
     "practice_phrases": [
-      [
-        "enjoying finding out",
-        "disfrutando descubrir",
-        null,
-        1
-      ],
-      [
-        "enjoying finding out more",
-        "disfrutando descubrir más",
-        null,
-        2
-      ],
-      [
-        "I'm enjoying finding out about this",
-        "Estoy disfrutando descubrir sobre esto",
-        null,
-        3
-      ],
-      [
-        "enjoying finding out about this language",
-        "disfrutando descubrir sobre este lenguaje",
-        null,
-        3
-      ],
-      [
-        "I'm enjoying finding out more about this language",
-        "Estoy disfrutando descubrir más sobre este lenguaje",
-        null,
-        4
-      ],
-      [
-        "We're enjoying finding out more about this",
-        "Estamos disfrutando descubrir más sobre esto",
-        null,
-        4
-      ],
-      [
-        "I'm really enjoying finding out more about this beautiful language",
-        "Realmente estoy disfrutando descubrir más sobre este hermoso lenguaje",
-        null,
-        5
-      ],
-      [
-        "They're enjoying finding out more about this language and its history",
-        "Están disfrutando descubrir más sobre este lenguaje y su historia",
-        null,
-        6
-      ],
-      [
-        "We're all enjoying finding out more about this fascinating language",
-        "Todos estamos disfrutando descubrir más sobre este fascinante lenguaje",
-        null,
-        6
-      ],
-      [
-        "Everyone is enjoying finding out more about this wonderful language and its rich culture",
-        "Todos están disfrutando descubrir más sobre este maravilloso lenguaje y su rica cultura",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "enjoying this",
+        "target": "disfrutando esto"
+      },
+      {
+        "known": "enjoying more",
+        "target": "disfrutando más"
+      },
+      {
+        "known": "enjoying finding out",
+        "target": "disfrutando descubrir"
+      },
+      {
+        "known": "enjoying this language",
+        "target": "disfrutando este lenguaje"
+      },
+      {
+        "known": "enjoying finding out more",
+        "target": "disfrutando descubrir más"
+      },
+      {
+        "known": "enjoying finding out about this",
+        "target": "disfrutando descubrir sobre esto"
+      },
+      {
+        "known": "I'm enjoying finding out more today",
+        "target": "estoy disfrutando descubrir más hoy"
+      },
+      {
+        "known": "enjoying finding out more about this",
+        "target": "disfrutando descubrir más sobre esto"
+      },
+      {
+        "known": "I'm enjoying finding out about this language",
+        "target": "estoy disfrutando descubrir sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0101L03": {
-    "lego": [
-      "descubrir más",
-      "finding out more"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "finding out more",
+      "target": "descubrir más"
+    },
     "practice_phrases": [
-      [
-        "finding out more",
-        "descubrir más",
-        null,
-        1
-      ],
-      [
-        "finding out more about this",
-        "descubrir más sobre esto",
-        null,
-        2
-      ],
-      [
-        "finding out more about this language",
-        "descubrir más sobre este lenguaje",
-        null,
-        3
-      ],
-      [
-        "I'm finding out more every day",
-        "Estoy descubriendo más cada día",
-        null,
-        3
-      ],
-      [
-        "I'm enjoying finding out more about this",
-        "Estoy disfrutando descubrir más sobre esto",
-        null,
-        4
-      ],
-      [
-        "We're finding out more about this language",
-        "Estamos descubriendo más sobre este lenguaje",
-        null,
-        4
-      ],
-      [
-        "I'm enjoying finding out more about this beautiful language",
-        "Estoy disfrutando descubrir más sobre este hermoso lenguaje",
-        null,
-        5
-      ],
-      [
-        "We're really enjoying finding out more about this language every day",
-        "Realmente estamos disfrutando descubrir más sobre este lenguaje cada día",
-        null,
-        6
-      ],
-      [
-        "Everyone is finding out more about this fascinating language and culture",
-        "Todos están descubriendo más sobre este fascinante lenguaje y cultura",
-        null,
-        6
-      ],
-      [
-        "I'm truly enjoying finding out more about this wonderful language and its history",
-        "Verdaderamente estoy disfrutando descubrir más sobre este maravilloso lenguaje y su historia",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "finding out",
+        "target": "descubrir"
+      },
+      {
+        "known": "finding more",
+        "target": "descubrir más"
+      },
+      {
+        "known": "finding out more",
+        "target": "descubrir más"
+      },
+      {
+        "known": "finding out about this",
+        "target": "descubrir sobre esto"
+      },
+      {
+        "known": "finding out more today",
+        "target": "descubrir más hoy"
+      },
+      {
+        "known": "finding out more about this",
+        "target": "descubrir más sobre esto"
+      },
+      {
+        "known": "I'm enjoying finding out more today",
+        "target": "estoy disfrutando descubrir más hoy"
+      },
+      {
+        "known": "finding out more about this language",
+        "target": "descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out more about this",
+        "target": "estoy disfrutando descubrir más sobre esto"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0101L04": {
-    "lego": [
-      "más sobre este lenguaje",
-      "more about this language"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "more about this language",
+      "target": "más sobre este lenguaje"
+    },
     "practice_phrases": [
-      [
-        "more about this language",
-        "más sobre este lenguaje",
-        null,
-        1
-      ],
-      [
-        "tell me more about this language",
-        "cuéntame más sobre este lenguaje",
-        null,
-        2
-      ],
-      [
-        "I want to know more about this language",
-        "Quiero saber más sobre este lenguaje",
-        null,
-        3
-      ],
-      [
-        "finding out more about this language",
-        "descubrir más sobre este lenguaje",
-        null,
-        3
-      ],
-      [
-        "I'm enjoying finding out more about this language",
-        "Estoy disfrutando descubrir más sobre este lenguaje",
-        null,
-        4
-      ],
-      [
-        "We're learning more about this language every day",
-        "Estamos aprendiendo más sobre este lenguaje cada día",
-        null,
-        4
-      ],
-      [
-        "I'm really enjoying finding out more about this beautiful language",
-        "Realmente estoy disfrutando descubrir más sobre este hermoso lenguaje",
-        null,
-        5
-      ],
-      [
-        "They want to know more about this language and its fascinating history",
-        "Quieren saber más sobre este lenguaje y su fascinante historia",
-        null,
-        6
-      ],
-      [
-        "We're all enjoying finding out more about this wonderful language",
-        "Todos estamos disfrutando descubrir más sobre este maravilloso lenguaje",
-        null,
-        6
-      ],
-      [
-        "Everyone is eager to learn more about this language and its rich cultural heritage",
-        "Todos están ansiosos por aprender más sobre este lenguaje y su rico patrimonio cultural",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "about this",
+        "target": "sobre esto"
+      },
+      {
+        "known": "this language",
+        "target": "este lenguaje"
+      },
+      {
+        "known": "more about this",
+        "target": "más sobre esto"
+      },
+      {
+        "known": "about this language",
+        "target": "sobre este lenguaje"
+      },
+      {
+        "known": "more about this language",
+        "target": "más sobre este lenguaje"
+      },
+      {
+        "known": "finding out more about this",
+        "target": "descubrir más sobre esto"
+      },
+      {
+        "known": "finding out more about this language",
+        "target": "descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out more about this",
+        "target": "estoy disfrutando descubrir más sobre esto"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "I'm ready to find out more about this language",
+        "target": "estoy preparado para descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0101L05": {
-    "lego": [
-      "sobre este lenguaje",
-      "about this language"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "about this language",
+      "target": "sobre este lenguaje"
+    },
     "practice_phrases": [
-      [
-        "about this language",
-        "sobre este lenguaje",
-        null,
-        1
-      ],
-      [
-        "tell me about this language",
-        "cuéntame sobre este lenguaje",
-        null,
-        2
-      ],
-      [
-        "I want to know about this language",
-        "Quiero saber sobre este lenguaje",
-        null,
-        3
-      ],
-      [
-        "learning about this language is fun",
-        "aprender sobre este lenguaje es divertido",
-        null,
-        3
-      ],
-      [
-        "I'm finding out more about this language",
-        "Estoy descubriendo más sobre este lenguaje",
-        null,
-        4
-      ],
-      [
-        "Tell me more about this language please",
-        "Cuéntame más sobre este lenguaje por favor",
-        null,
-        4
-      ],
-      [
-        "I'm enjoying finding out more about this language",
-        "Estoy disfrutando descubrir más sobre este lenguaje",
-        null,
-        5
-      ],
-      [
-        "We're really interested in learning more about this language",
-        "Estamos realmente interesados en aprender más sobre este lenguaje",
-        null,
-        6
-      ],
-      [
-        "Everyone wants to know more about this language and its culture",
-        "Todos quieren saber más sobre este lenguaje y su cultura",
-        null,
-        6
-      ],
-      [
-        "They're fascinated by everything they're learning about this language and its history",
-        "Están fascinados por todo lo que están aprendiendo sobre este lenguaje y su historia",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "about this",
+        "target": "sobre esto"
+      },
+      {
+        "known": "this language",
+        "target": "este lenguaje"
+      },
+      {
+        "known": "about this language",
+        "target": "sobre este lenguaje"
+      },
+      {
+        "known": "more about this",
+        "target": "más sobre esto"
+      },
+      {
+        "known": "more about this language",
+        "target": "más sobre este lenguaje"
+      },
+      {
+        "known": "finding out about this language",
+        "target": "descubrir sobre este lenguaje"
+      },
+      {
+        "known": "finding out more about this language",
+        "target": "descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out about this language",
+        "target": "estoy disfrutando descubrir sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "you should find out more about this language",
+        "target": "deberías descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": false,
+    "phrase_count": 10
   },
   "S0101L06": {
-    "lego": [
-      "este lenguaje",
-      "this language"
-    ],
-    "type": "M",
+    "lego": {
+      "known": "this language",
+      "target": "este lenguaje"
+    },
     "practice_phrases": [
-      [
-        "this language",
-        "este lenguaje",
-        null,
-        1
-      ],
-      [
-        "I like this language",
-        "Me gusta este lenguaje",
-        null,
-        2
-      ],
-      [
-        "this language is beautiful",
-        "este lenguaje es hermoso",
-        null,
-        3
-      ],
-      [
-        "I'm learning this language",
-        "Estoy aprendiendo este lenguaje",
-        null,
-        3
-      ],
-      [
-        "I'm really enjoying this language",
-        "Realmente estoy disfrutando este lenguaje",
-        null,
-        4
-      ],
-      [
-        "this language is fascinating to learn",
-        "este lenguaje es fascinante de aprender",
-        null,
-        4
-      ],
-      [
-        "I'm enjoying finding out more about this language",
-        "Estoy disfrutando descubrir más sobre este lenguaje",
-        null,
-        5
-      ],
-      [
-        "This language has such a beautiful sound and rhythm",
-        "Este lenguaje tiene un sonido y ritmo tan hermosos",
-        null,
-        6
-      ],
-      [
-        "We're all finding this language incredibly interesting to study",
-        "Todos estamos encontrando este lenguaje increíblemente interesante de estudiar",
-        null,
-        6
-      ],
-      [
-        "This language opens up a whole new world of culture and communication",
-        "Este lenguaje abre todo un nuevo mundo de cultura y comunicación",
-        null,
-        7
-      ]
-    ]
+      {
+        "known": "this language",
+        "target": "este lenguaje"
+      },
+      {
+        "known": "about this",
+        "target": "sobre esto"
+      },
+      {
+        "known": "about this language",
+        "target": "sobre este lenguaje"
+      },
+      {
+        "known": "enjoying this language",
+        "target": "disfrutando este lenguaje"
+      },
+      {
+        "known": "more about this language",
+        "target": "más sobre este lenguaje"
+      },
+      {
+        "known": "finding out about this language",
+        "target": "descubrir sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying this language very much",
+        "target": "estoy disfrutando este lenguaje mucho"
+      },
+      {
+        "known": "finding out more about this language",
+        "target": "descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out about this language",
+        "target": "estoy disfrutando descubrir sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language",
+        "target": "estoy disfrutando descubrir más sobre este lenguaje"
+      },
+      {
+        "known": "I'm enjoying finding out more about this language.",
+        "target": "Estoy disfrutando descubrir más sobre este lenguaje"
+      }
+    ],
+    "is_final_lego": true,
+    "phrase_count": 11
   }
 }

@@ -1,0 +1,473 @@
+{
+  "timestamp": "2025-11-16T03:04:19.471Z",
+  "course_code": "spa_for_eng",
+  "reason": "COLLISION_RESOLUTION_VIA_REEXTRACTION",
+  "strategy": "FCFS + Collision-Aware Prompting",
+  "total_collisions": 61,
+  "seeds_to_reextract": 77,
+  "seeds": [
+    {
+      "seed_id": "S0068",
+      "known": "What are you looking for?",
+      "target": "¿Qué estás buscando?",
+      "collision_avoidance_instructions": "DO NOT extract \"what\" as standalone LEGO (S0068L01). Reason: Registry collision with S0012:S0012L03 (\"lo que\"). Solution: Chunk \"what\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0666",
+      "known": "What do you all think?",
+      "target": "¿Qué piensan todos ustedes?",
+      "collision_avoidance_instructions": "DO NOT extract \"what\" as standalone LEGO (S0666L01). Reason: Registry collision with S0012:S0012L03 (\"lo que\"). Solution: Chunk \"what\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"what do you think\" as standalone LEGO (S0666L04). Reason: Registry collision with S0162:S0162L01 (\"qué piensas\"). Solution: Chunk \"what do you think\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0240",
+      "known": "My father doesn't like to stop talking.",
+      "target": "A mi padre no le gusta dejar de hablar.",
+      "collision_avoidance_instructions": "DO NOT extract \"to stop talking\" as standalone LEGO (S0240L02). Reason: Registry collision with S0019:S0019L03 (\"parar de hablar\"). Solution: Chunk \"to stop talking\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0023",
+      "known": "I'm going to start talking more soon.",
+      "target": "Voy a comenzar a hablar más pronto.",
+      "collision_avoidance_instructions": "DO NOT extract \"to talk more\" as standalone LEGO (S0023L05). Reason: Registry collision with S0023:S0023L04 (\"a hablar más\"). Solution: Chunk \"to talk more\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0665",
+      "known": "Do you all want to go?",
+      "target": "¿Quieren todos ustedes ir?",
+      "collision_avoidance_instructions": "DO NOT extract \"to go\" as standalone LEGO (S0665L03). Reason: Registry collision with S0026:S0026L07 (\"para ir\"). Solution: Chunk \"to go\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0043",
+      "known": "I wasn't thinking about how to answer.",
+      "target": "No estaba pensando en cómo responder.",
+      "collision_avoidance_instructions": "DO NOT extract \"to answer\" as standalone LEGO (S0043L05). Reason: Registry collision with S0027:S0027L06 (\"para responder\"). Solution: Chunk \"to answer\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0549",
+      "known": "Because I have got to be quiet.",
+      "target": "Porque tengo que estar callado.",
+      "collision_avoidance_instructions": "DO NOT extract \"to be quiet\" as standalone LEGO (S0549L03). Reason: Registry collision with S0034:S0034L04 (\"estar silencioso\"). Solution: Chunk \"to be quiet\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0081",
+      "known": "When do you want to start?",
+      "target": "¿Cuándo quieres comenzar?",
+      "collision_avoidance_instructions": "DO NOT extract \"when\" as standalone LEGO (S0081L01). Reason: Registry collision with S0034:S0034L05 (\"cuando\"). Solution: Chunk \"when\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0597",
+      "known": "I suspect that he's heard a hundred stories about it.",
+      "target": "Sospecho que ha oído cien historias sobre ello.",
+      "collision_avoidance_instructions": "DO NOT extract \"about it\" as standalone LEGO (S0597L04). Reason: Registry collision with S0037:S0037L05 (\"sobre eso\"). Solution: Chunk \"about it\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0642",
+      "known": "how do you feel madam?",
+      "target": "¿Cómo se siente señora?",
+      "collision_avoidance_instructions": "DO NOT extract \"how do you feel\" as standalone LEGO (S0642L02). Reason: Registry collision with S0040:S0040L02 (\"cómo te sientes\"). Solution: Chunk \"how do you feel\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0657",
+      "known": "how do you all feel?",
+      "target": "¿cómo se sienten todos ustedes?",
+      "collision_avoidance_instructions": "DO NOT extract \"how do you feel\" as standalone LEGO (S0657L02). Reason: Registry collision with S0040:S0040L02 (\"cómo te sientes\"). Solution: Chunk \"how do you feel\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0123",
+      "known": "I think that's a good idea.",
+      "target": "Creo que eso es una buena idea.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0123L01). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0314",
+      "known": "I think that she could put it on the table.",
+      "target": "Creo que ella podría ponerlo en la mesa.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0314L01). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0315",
+      "known": "I think that he couldn't afford the car that he wanted.",
+      "target": "Creo que no podría permitirse el coche que quería.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0315L01). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0328",
+      "known": "Yes I think she ought to.",
+      "target": "Sí pienso que debería.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0328L02). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0339",
+      "known": "No I think he's hurt himself quite badly.",
+      "target": "No, pienso que se ha lastimado bastante mal.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0339L03). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0303",
+      "known": "I think that he wants to sit down.",
+      "target": "Creo que él quiere sentarse.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0303L01). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0304",
+      "known": "I think that she doesn't want to work from home.",
+      "target": "Creo que ella no quiere trabajar desde casa.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0304L01). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0335",
+      "known": "I think that he can add some valuable ideas.",
+      "target": "Creo que puede añadir algunas ideas valiosas.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that\" as standalone LEGO (S0335L01). Reason: Registry collision with S0047:S0047L02 (\"pienso que\"). Solution: Chunk \"i think that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"i think that he\" as standalone LEGO (S0335L02). Reason: Registry collision with S0303:S0303L02 (\"creo que él\"). Solution: Chunk \"i think that he\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0644",
+      "known": "Could you say that sir?",
+      "target": "¿Podría decir eso señor?",
+      "collision_avoidance_instructions": "DO NOT extract \"could you say\" as standalone LEGO (S0644L04). Reason: Registry collision with S0061:S0061L01 (\"podrías decir\"). Solution: Chunk \"could you say\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"to say that\" as standalone LEGO (S0644L05). Reason: Registry collision with S0061:S0061L02 (\"decir eso\"). Solution: Chunk \"to say that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0659",
+      "known": "Could you all say that",
+      "target": "¿Podrían todos ustedes decir eso?",
+      "collision_avoidance_instructions": "DO NOT extract \"to say that\" as standalone LEGO (S0659L03). Reason: Registry collision with S0061:S0061L02 (\"decir eso\"). Solution: Chunk \"to say that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"could you all\" as standalone LEGO (S0659L04). Reason: Registry collision with S0659:S0659L02 (\"podrían todos ustedes\"). Solution: Chunk \"could you all\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0615",
+      "known": "I thought you were very brave to say that.",
+      "target": "Pensé que fuiste muy valiente al decir eso.",
+      "collision_avoidance_instructions": "DO NOT extract \"to say that\" as standalone LEGO (S0615L06). Reason: Registry collision with S0061:S0061L02 (\"decir eso\"). Solution: Chunk \"to say that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"i thought that\" as standalone LEGO (S0615L02). Reason: Registry collision with S0124:S0124L01 (\"creí que\"). Solution: Chunk \"i thought that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0616",
+      "known": "You were very brave to say you thought that.",
+      "target": "Fuiste muy valiente al decir que pensabas eso.",
+      "collision_avoidance_instructions": "DO NOT extract \"to say that\" as standalone LEGO (S0616L05). Reason: Registry collision with S0061:S0061L02 (\"decir eso\"). Solution: Chunk \"to say that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0654",
+      "known": "I'm not sure if I can help you, sir.",
+      "target": "No estoy seguro de si puedo ayudarte, señor.",
+      "collision_avoidance_instructions": "DO NOT extract \"i'm not sure if\" as standalone LEGO (S0654L02). Reason: Registry collision with S0062:S0062L01 (\"no estoy seguro si\"). Solution: Chunk \"i'm not sure if\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0655",
+      "known": "I think that you're doing very well, madam.",
+      "target": "Creo que estás haciéndolo muy bien, señora.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that you're\" as standalone LEGO (S0655L02). Reason: Registry collision with S0072:S0072L01 (\"pienso que estás\"). Solution: Chunk \"i think that you're\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"you're doing very well\" as standalone LEGO (S0655L03). Reason: Registry collision with S0072:S0072L04 (\"estás haciendo muy bien\"). Solution: Chunk \"you're doing very well\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0245",
+      "known": "I'm happy with how much I've done in a short time",
+      "target": "Estoy contento con cuánto he hecho en poco tiempo.",
+      "collision_avoidance_instructions": "DO NOT extract \"in a short time\" as standalone LEGO (S0245L07). Reason: Registry collision with S0089:S0089L04 (\"en un breve tiempo\"). Solution: Chunk \"in a short time\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0180",
+      "known": "I'd like to read my book for a while.",
+      "target": "Me gustaría leer mi libro por un rato.",
+      "collision_avoidance_instructions": "DO NOT extract \"for a while\" as standalone LEGO (S0180L05). Reason: Registry collision with S0092:S0092L04 (\"por un tiempo\"). Solution: Chunk \"for a while\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0219",
+      "known": "It was nice to relax for a while.",
+      "target": "Fue agradable relajarse por un rato.",
+      "collision_avoidance_instructions": "DO NOT extract \"for a while\" as standalone LEGO (S0219L05). Reason: Registry collision with S0092:S0092L04 (\"por un tiempo\"). Solution: Chunk \"for a while\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0596",
+      "known": "And I need to close my eyes for a while.",
+      "target": "Y necesito cerrar los ojos por un rato.",
+      "collision_avoidance_instructions": "DO NOT extract \"for a while\" as standalone LEGO (S0596L05). Reason: Registry collision with S0092:S0092L04 (\"por un tiempo\"). Solution: Chunk \"for a while\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0649",
+      "known": "Are you ready sir?",
+      "target": "¿Está preparado señor?",
+      "collision_avoidance_instructions": "DO NOT extract \"are you ready\" as standalone LEGO (S0649L02). Reason: Registry collision with S0095:S0095L01 (\"estás preparado\"). Solution: Chunk \"are you ready\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0158",
+      "known": "Let's talk about something else.",
+      "target": "Hablemos de algo más.",
+      "collision_avoidance_instructions": "DO NOT extract \"something else\" as standalone LEGO (S0158L02). Reason: Registry collision with S0098:S0098L04 (\"otra cosa\"). Solution: Chunk \"something else\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0109",
+      "known": "We must work hard to learn a lot of new words.",
+      "target": "Debemos trabajar duro para aprender muchas palabras nuevas",
+      "collision_avoidance_instructions": "DO NOT extract \"to learn a lot of new words\" as standalone LEGO (S0109L05). Reason: Registry collision with S0109:S0109L04 (\"para aprender muchas palabras nuevas\"). Solution: Chunk \"to learn a lot of new words\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0248",
+      "known": "I thought the film was complete rubbish and I want my money back.",
+      "target": "Pensé que la película era basura completa y quiero mi dinero de vuelta.",
+      "collision_avoidance_instructions": "DO NOT extract \"i thought that\" as standalone LEGO (S0248L02). Reason: Registry collision with S0124:S0124L01 (\"creí que\"). Solution: Chunk \"i thought that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0135",
+      "known": "I don't know why you think that it's so good.",
+      "target": "No sé por qué piensas que es tan bueno.",
+      "collision_avoidance_instructions": "DO NOT extract \"i don't know why\" as standalone LEGO (S0135L02). Reason: Registry collision with S0135:S0135L01 (\"no sé por\"). Solution: Chunk \"i don't know why\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0154",
+      "known": "Where do you want to meet on Saturday night?",
+      "target": "¿Dónde quieres encontrarte el sábado por la noche?",
+      "collision_avoidance_instructions": "DO NOT extract \"where\" as standalone LEGO (S0154L01). Reason: Registry collision with S0138:S0138L03 (\"donde\"). Solution: Chunk \"where\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0255",
+      "known": "When do you think you'll be ready to leave?",
+      "target": "¿Cuándo crees que estarás preparado para salir?",
+      "collision_avoidance_instructions": "DO NOT extract \"to leave\" as standalone LEGO (S0255L05). Reason: Registry collision with S0139:S0139L08 (\"irme\"). Solution: Chunk \"to leave\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"be ready\" as standalone LEGO (S0255L04). Reason: Registry collision with S0253:S0253L03 (\"estar preparado\"). Solution: Chunk \"be ready\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0250",
+      "known": "Can you tell me something else before I answer?",
+      "target": "¿Puedes decirme algo más antes de que responda?",
+      "collision_avoidance_instructions": "DO NOT extract \"can you tell me\" as standalone LEGO (S0250L02). Reason: Registry collision with S0150:S0150L01 (\"¿puedes decirme\"). Solution: Chunk \"can you tell me\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0607",
+      "known": "If I'd known I'd have done things differently.",
+      "target": "Si hubiera sabido habría hecho las cosas de manera diferente.",
+      "collision_avoidance_instructions": "DO NOT extract \"differently\" as standalone LEGO (S0607L05). Reason: Registry collision with S0152:S0152L02 (\"diferentemente\"). Solution: Chunk \"differently\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0253",
+      "known": "I should be ready in a few minutes.",
+      "target": "Debo estar preparado en unos pocos minutos.",
+      "collision_avoidance_instructions": "DO NOT extract \"a few minutes\" as standalone LEGO (S0253L05). Reason: Registry collision with S0155:S0155L04 (\"unos minutos\"). Solution: Chunk \"a few minutes\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0613",
+      "known": "We probably would have bought a house there.",
+      "target": "Probablemente habríamos comprado una casa allí.",
+      "collision_avoidance_instructions": "DO NOT extract \"there\" as standalone LEGO (S0613L02). Reason: Registry collision with S0157:S0157L04 (\"ahí\"). Solution: Chunk \"there\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0298",
+      "known": "I've got nothing left to say.",
+      "target": "No me queda nada que decir.",
+      "collision_avoidance_instructions": "DO NOT extract \"to say\" as standalone LEGO (S0298L04). Reason: Registry collision with S0159:S0159L05 (\"decir\"). Solution: Chunk \"to say\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0651",
+      "known": "What do you think madam?",
+      "target": "¿Qué piensa señora?",
+      "collision_avoidance_instructions": "DO NOT extract \"what do you think\" as standalone LEGO (S0651L02). Reason: Registry collision with S0162:S0162L01 (\"qué piensas\"). Solution: Chunk \"what do you think\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0652",
+      "known": "What do you need sir?",
+      "target": "¿Qué necesita señor?",
+      "collision_avoidance_instructions": "DO NOT extract \"what do you need\" as standalone LEGO (S0652L02). Reason: Registry collision with S0167:S0167L01 (\"qué necesitas\"). Solution: Chunk \"what do you need\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0608",
+      "known": "It would have been the sensible thing to do.",
+      "target": "Habría sido lo sensato que hacer.",
+      "collision_avoidance_instructions": "DO NOT extract \"to do\" as standalone LEGO (S0608L04). Reason: Registry collision with S0167:S0167L03 (\"hacer\"). Solution: Chunk \"to do\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0416",
+      "known": "They want to lead the way next year.",
+      "target": "Quieren liderar el camino el próximo año.",
+      "collision_avoidance_instructions": "DO NOT extract \"next year\" as standalone LEGO (S0416L03). Reason: Registry collision with S0176:S0176L04 (\"el año próximo\"). Solution: Chunk \"next year\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0623",
+      "known": "Do you want a cup of coffee or tea?",
+      "target": "¿Quieres un café o un té?",
+      "collision_avoidance_instructions": "DO NOT extract \"do you want\" as standalone LEGO (S0623L01). Reason: Registry collision with S0186:S0186L01 (\"quieres\"). Solution: Chunk \"do you want\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0643",
+      "known": "Do you want sir",
+      "target": "¿Quiere usted señor?",
+      "collision_avoidance_instructions": "DO NOT extract \"do you want\" as standalone LEGO (S0643L02). Reason: Registry collision with S0186:S0186L01 (\"quieres\"). Solution: Chunk \"do you want\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0588",
+      "known": "So I wanted to grow up and leave home.",
+      "target": "Así que quería crecer y salir de casa.",
+      "collision_avoidance_instructions": "DO NOT extract \"so i\" as standalone LEGO (S0588L01). Reason: Registry collision with S0188:S0188L01 (\"así que no\"). Solution: Chunk \"so i\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0408",
+      "known": "Yes that's the best way to make a happy family.",
+      "target": "Sí esa es la mejor manera de hacer una familia feliz.",
+      "collision_avoidance_instructions": "DO NOT extract \"yes that's\" as standalone LEGO (S0408L02). Reason: Registry collision with S0189:S0189L02 (\"sí, esa es\"). Solution: Chunk \"yes that's\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0215",
+      "known": "I went out on Saturday night.",
+      "target": "Salí el sábado por la noche.",
+      "collision_avoidance_instructions": "DO NOT extract \"at night\" as standalone LEGO (S0215L03). Reason: Registry collision with S0192:S0192L04 (\"por la noche\"). Solution: Chunk \"at night\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0349",
+      "known": "Did he want to go out on Friday night?",
+      "target": "¿Quería él salir el viernes por la noche?",
+      "collision_avoidance_instructions": "DO NOT extract \"at night\" as standalone LEGO (S0349L03). Reason: Registry collision with S0192:S0192L04 (\"por la noche\"). Solution: Chunk \"at night\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0556",
+      "known": "They play music late at night.",
+      "target": "Tocan música tarde en la noche.",
+      "collision_avoidance_instructions": "DO NOT extract \"at night\" as standalone LEGO (S0556L03). Reason: Registry collision with S0192:S0192L04 (\"por la noche\"). Solution: Chunk \"at night\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0558",
+      "known": "It's so late at night.",
+      "target": "Es tan tarde en la noche.",
+      "collision_avoidance_instructions": "DO NOT extract \"at night\" as standalone LEGO (S0558L02). Reason: Registry collision with S0192:S0192L04 (\"por la noche\"). Solution: Chunk \"at night\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0246",
+      "known": "I wanted her to help you but she was too busy.",
+      "target": "Quería que ella te ayudara pero estaba demasiado ocupada.",
+      "collision_avoidance_instructions": "DO NOT extract \"too busy\" as standalone LEGO (S0246L06). Reason: Registry collision with S0193:S0193L04 (\"demasiado ocupado\"). Solution: Chunk \"too busy\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0206",
+      "known": "I enjoy the chance to practise speaking with you.",
+      "target": "Disfruto la oportunidad de practicar hablar contigo.",
+      "collision_avoidance_instructions": "DO NOT extract \"chance to practise speaking\" as standalone LEGO (S0206L04). Reason: Registry collision with S0206:S0206L03 (\"oportunidad de practicar hablar\"). Solution: Chunk \"chance to practise speaking\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0356",
+      "known": "Yes they had something important to discuss.",
+      "target": "Sí ellos tenían algo importante que discutir.",
+      "collision_avoidance_instructions": "DO NOT extract \"to discuss\" as standalone LEGO (S0356L06). Reason: Registry collision with S0210:S0210L04 (\"discutir\"). Solution: Chunk \"to discuss\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0287",
+      "known": "How many people do you know who like watching television?",
+      "target": "¿Cuántas personas conoces a las que les gusta ver la televisión?",
+      "collision_avoidance_instructions": "DO NOT extract \"television\" as standalone LEGO (S0287L05). Reason: Registry collision with S0220:S0220L06 (\"televisión\"). Solution: Chunk \"television\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0233",
+      "known": "I know a young woman who knows your sister.",
+      "target": "Conozco a una mujer joven que conoce a tu hermana.",
+      "collision_avoidance_instructions": "DO NOT extract \"woman who\" as standalone LEGO (S0233L02). Reason: Registry collision with S0232:S0232L02 (\"vieja que\"). Solution: Chunk \"woman who\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0309",
+      "known": "No I've never seen her before.",
+      "target": "No nunca la he visto antes.",
+      "collision_avoidance_instructions": "DO NOT extract \"before\" as standalone LEGO (S0309L05). Reason: Registry collision with S0249:S0249L06 (\"antes de que\"). Solution: Chunk \"before\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0256",
+      "known": "I think I'll be ready in less than an hour.",
+      "target": "Creo que estaré listo en menos de una hora.",
+      "collision_avoidance_instructions": "DO NOT extract \"be ready\" as standalone LEGO (S0256L04). Reason: Registry collision with S0253:S0253L03 (\"estar preparado\"). Solution: Chunk \"be ready\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0307",
+      "known": "I know that young man who's sitting over there.",
+      "target": "Conozco a ese hombre joven que está sentado allí.",
+      "collision_avoidance_instructions": "DO NOT extract \"over there\" as standalone LEGO (S0307L06). Reason: Registry collision with S0258:S0258L05 (\"de allí\"). Solution: Chunk \"over there\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words.\nDO NOT extract \"i know that\" as standalone LEGO (S0307L01). Reason: Registry collision with S0306:S0306L01 (\"conozco a esa\"). Solution: Chunk \"i know that\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0389",
+      "known": "That person over there.",
+      "target": "Esa persona allí.",
+      "collision_avoidance_instructions": "DO NOT extract \"over there\" as standalone LEGO (S0389L02). Reason: Registry collision with S0258:S0258L05 (\"de allí\"). Solution: Chunk \"over there\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0653",
+      "known": "Do you mind madam?",
+      "target": "¿Le importa señora?",
+      "collision_avoidance_instructions": "DO NOT extract \"do you mind\" as standalone LEGO (S0653L02). Reason: Registry collision with S0281:S0281L01 (\"te importa\"). Solution: Chunk \"do you mind\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0667",
+      "known": "Do you all mind?",
+      "target": "¿Les importa a todos ustedes?",
+      "collision_avoidance_instructions": "DO NOT extract \"do you mind\" as standalone LEGO (S0667L01). Reason: Registry collision with S0281:S0281L01 (\"te importa\"). Solution: Chunk \"do you mind\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0288",
+      "known": "Most people I know like watching television.",
+      "target": "A la mayoría de la gente que conozco le gusta ver la televisión.",
+      "collision_avoidance_instructions": "DO NOT extract \"people i know\" as standalone LEGO (S0288L03). Reason: Registry collision with S0288:S0288L02 (\"la gente que conozco\"). Solution: Chunk \"people i know\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0456",
+      "known": "He might be there but it's not very likely.",
+      "target": "Puede que esté allí pero no es muy probable.",
+      "collision_avoidance_instructions": "DO NOT extract \"be there\" as standalone LEGO (S0456L02). Reason: Registry collision with S0289:S0289L05 (\"estar allí\"). Solution: Chunk \"be there\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0325",
+      "known": "I think that he needs to consider ten possible problems.",
+      "target": "Creo que necesita considerar diez problemas posibles.",
+      "collision_avoidance_instructions": "DO NOT extract \"i think that he\" as standalone LEGO (S0325L01). Reason: Registry collision with S0303:S0303L02 (\"creo que él\"). Solution: Chunk \"i think that he\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0308",
+      "known": "Yes she's a friend of my mother.",
+      "target": "Sí ella es una amiga de mi madre.",
+      "collision_avoidance_instructions": "DO NOT extract \"she's a friend\" as standalone LEGO (S0308L04). Reason: Registry collision with S0308:S0308L03 (\"es una amiga\"). Solution: Chunk \"she's a friend\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0377",
+      "known": "Did you go anywhere in the world last year?",
+      "target": "¿Fuiste a alguna parte en el mundo el año pasado?",
+      "collision_avoidance_instructions": "DO NOT extract \"go anywhere\" as standalone LEGO (S0377L03). Reason: Registry collision with S0376:S0376L03 (\"fui a ninguna parte\"). Solution: Chunk \"go anywhere\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0379",
+      "known": "Yes I was lucky enough to travel to Africa.",
+      "target": "Sí tuve suficiente suerte para viajar a África.",
+      "collision_avoidance_instructions": "DO NOT extract \"to travel to africa\" as standalone LEGO (S0379L05). Reason: Registry collision with S0379:S0379L04 (\"para viajar a áfrica\"). Solution: Chunk \"to travel to africa\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0436",
+      "known": "No there's a minimum number they need.",
+      "target": "No hay un número mínimo que necesitan.",
+      "collision_avoidance_instructions": "DO NOT extract \"they need\" as standalone LEGO (S0436L05). Reason: Registry collision with S0423:S0423L01 (\"necesitan\"). Solution: Chunk \"they need\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0475",
+      "known": "There are many reasons to consider waiting.",
+      "target": "Hay muchas razones para considerar esperar.",
+      "collision_avoidance_instructions": "DO NOT extract \"to consider waiting\" as standalone LEGO (S0475L04). Reason: Registry collision with S0475:S0475L03 (\"para considerar esperar\"). Solution: Chunk \"to consider waiting\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0519",
+      "known": "I haven't seen their new baby yet.",
+      "target": "No he visto a su nuevo bebé todavía.",
+      "collision_avoidance_instructions": "DO NOT extract \"seen their new baby\" as standalone LEGO (S0519L05). Reason: Registry collision with S0519:S0519L03 (\"visto a su nuevo bebé\"). Solution: Chunk \"seen their new baby\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0600",
+      "known": "I'd have driven if you'd told me how tired you were.",
+      "target": "Habría conducido si me hubieras dicho lo cansado que estabas.",
+      "collision_avoidance_instructions": "DO NOT extract \"if you'd told me\" as standalone LEGO (S0600L03). Reason: Registry collision with S0599:S0599L04 (\"si me lo hubieras dicho\"). Solution: Chunk \"if you'd told me\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0603",
+      "known": "We didn't have anywhere to live at the time.",
+      "target": "No teníamos ningún lugar donde vivir en ese momento.",
+      "collision_avoidance_instructions": "DO NOT extract \"anywhere to live\" as standalone LEGO (S0603L03). Reason: Registry collision with S0603:S0603L02 (\"ningún lugar donde vivir\"). Solution: Chunk \"anywhere to live\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0630",
+      "known": "Can I have something to drink please?",
+      "target": "¿Puedo tener algo para beber por favor?",
+      "collision_avoidance_instructions": "DO NOT extract \"something to drink\" as standalone LEGO (S0630L03). Reason: Registry collision with S0625:S0625L03 (\"algo de beber\"). Solution: Chunk \"something to drink\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    },
+    {
+      "seed_id": "S0660",
+      "known": "I can help you all",
+      "target": "Puedo ayudar a todos ustedes",
+      "collision_avoidance_instructions": "DO NOT extract \"help you all\" as standalone LEGO (S0660L04). Reason: Registry collision with S0660:S0660L03 (\"ayudar a todos ustedes\"). Solution: Chunk \"help you all\" UP with adjacent words from this sentence to create a larger, unique LEGO. Use ONLY words from the source sentence - do not add new words."
+    }
+  ],
+  "master_instructions": "These seeds contain LEGOs that collide with earlier LEGO occurrences (FCFS rule).\nFor each seed, specific phrases are marked for COLLISION AVOIDANCE.\nWhen extracting LEGOs:\n  1. DO NOT extract the listed phrases as standalone LEGOs\n  2. Instead, CHUNK UP by including adjacent words from the sentence\n  3. Use ONLY words present in the source sentence\n  4. Expand boundaries until the phrase becomes unique (no collision)\n\nExample:\n  ❌ AVOID: \"you are correct\" (collides with S0042)\n  ✅ CHUNK UP: \"I think you are correct\" (unique, no collision)\n\nThe goal: Create LEGOs that preserve meaning while ensuring registry uniqueness."
+}

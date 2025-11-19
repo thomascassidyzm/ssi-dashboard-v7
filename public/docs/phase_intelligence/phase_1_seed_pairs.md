@@ -96,7 +96,7 @@ Known (English): Use canonical directly
 Decision: Target uses cognate, known uses natural canonical
 </thinking>
 
-Output: ["as often as possible", "lo más frecuentemente posible"]
+Output: {"known": "as often as possible", "target": "lo más frecuentemente posible"}
 ```
 
 **French for English (fra_for_eng):**
@@ -118,7 +118,7 @@ Known (English): Use canonical directly
 Decision: Target uses cognate, known uses natural canonical
 </thinking>
 
-Output: ["as often as possible", "aussi fréquemment que possible"]
+Output: {"known": "as often as possible", "target": "aussi fréquemment que possible"}
 ```
 
 **Mandarin for English (cmn_for_eng):**
@@ -140,7 +140,7 @@ Known (English): Use canonical directly
 Decision: No cognate available, use simple high-frequency pattern
 </thinking>
 
-Output: ["as often as possible", "尽可能经常"]
+Output: {"known": "as often as possible", "target": "尽可能经常"}
 ```
 
 ---
@@ -168,7 +168,7 @@ Known (English): Use canonical directly
 Decision: Semantic preservation > grammatical simplicity
 </thinking>
 
-Output: ["And I want you to speak Spanish with me tomorrow", "Y quiero que hables español conmigo mañana"]
+Output: {"known": "And I want you to speak Spanish with me tomorrow", "target": "Y quiero que hables español conmigo mañana"}
 ```
 
 **French for English:**
@@ -188,7 +188,7 @@ Known (English): Use canonical directly
 Decision: Semantic preservation > grammatical simplicity
 </thinking>
 
-Output: ["And I want you to speak French with me tomorrow", "Et je veux que tu parles français avec moi demain"]
+Output: {"known": "And I want you to speak French with me tomorrow", "target": "Et je veux que tu parles français avec moi demain"}
 ```
 
 **Mandarin for English:**
@@ -209,7 +209,7 @@ Known (English): Use canonical directly
 Decision: Simpler construction available (language difference)
 </thinking>
 
-Output: ["And I want you to speak English with me tomorrow", "而且我想要你明天和我说英语"]
+Output: {"known": "And I want you to speak English with me tomorrow", "target": "而且我想要你明天和我说英语"}
 ```
 
 ---
@@ -883,11 +883,16 @@ If your Extended Thinking identifies issues, regenerate that seed before continu
 
 ```json
 {
-  "S0001": ["I want to speak Spanish with you now.", "Quiero hablar español contigo ahora."],
-  "S0002": ["I'm trying to learn.", "Estoy intentando aprender."],
-  "S0003": ["How to speak Spanish as frequently as possible.", "Cómo hablar español lo más frecuentemente posible."]
+  "S0001": {"known": "I want to speak Spanish with you now.", "target": "Quiero hablar español contigo ahora."},
+  "S0002": {"known": "I'm trying to learn.", "target": "Estoy intentando aprender."},
+  "S0003": {"known": "How to speak Spanish as frequently as possible.", "target": "Cómo hablar español lo más frecuentemente posible."}
 }
 ```
+
+**Format notes:**
+- Use labeled object format: `{"known": "...", "target": "..."}`
+- Labels prevent mistakes: "known" = learner's language, "target" = language being learned
+- Consistent with lego_pairs.json format downstream
 
 ---
 
