@@ -989,6 +989,18 @@ Use Task tool ${workersToSpawn} times in a SINGLE message (parallel spawn).
   "description": "Phase 5 Worker N",
   "prompt": "You are Phase 5 Worker N. Generate practice baskets for seed SXXXX.
 
+## 📖 READ METHODOLOGY FIRST
+
+**REQUIRED:** Read the complete Phase 5 methodology:
+**URL:** https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
+
+This document contains:
+- Complete generation methodology
+- GATE compliance rules
+- Quality standards
+- Example phrases
+- Self-review checklist
+
 ## YOUR ASSIGNMENT
 
 **Seed:** SXXXX
@@ -1696,6 +1708,18 @@ Use Task tool ${workerAssignments.length} times in a SINGLE message (parallel sp
   "subagent_type": "general-purpose",
   "description": "Phase 5 Worker N - Patch ${patch.patch_number}",
   "prompt": "You are Phase 5 Worker N for Patch ${patch.patch_number}. Generate practice baskets for your assigned LEGOs.
+
+## 📖 READ METHODOLOGY FIRST
+
+**REQUIRED:** Read the complete Phase 5 methodology:
+**URL:** https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_5_lego_baskets.md
+
+This document contains:
+- Complete generation methodology
+- GATE compliance rules
+- Quality standards
+- Example phrases
+- Self-review checklist
 
 ## YOUR ASSIGNMENT
 
