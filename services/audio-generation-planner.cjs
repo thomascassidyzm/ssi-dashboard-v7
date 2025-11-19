@@ -53,9 +53,24 @@ const GENERATION_SPEED = {
 
 /**
  * Count total characters in text
+ * Applies model-specific multipliers (Flash and Turbo use 50% fewer characters)
  */
-function countCharacters(text) {
-  return text.length;
+function countCharacters(text, model = null) {
+  const baseChars = text.length;
+
+  // Flash and Turbo models use 50% fewer characters
+  const modelMultipliers = {
+    'eleven_flash_v2_5': 0.5,
+    'eleven_turbo_v2_5': 0.5,
+    'eleven_multilingual_v2': 1.0,
+    'eleven_v3': 1.0
+  };
+
+  const multiplier = model && modelMultipliers[model] !== undefined
+    ? modelMultipliers[model]
+    : 1.0;
+
+  return Math.ceil(baseChars * multiplier);
 }
 
 /**
@@ -120,27 +135,30 @@ function estimateElevenLabsCost(charCount, userTier = 'creator', currentUsage = 
 
 /**
  * Estimate generation time with parallel processing
+ * For ElevenLabs, uses actual tier rate limit when provided (dynamic workers)
  */
 function estimateGenerationTime(sampleCount, provider, rateLimit = null) {
   const config = GENERATION_SPEED[provider];
 
-  // Calculate time with parallel workers
-  const totalTime = sampleCount * config.secondsPerSample;
-  const parallelTime = totalTime / config.concurrentWorkers;
-
   if (provider === 'elevenlabs' && rateLimit) {
-    // Also check if rate limit is the bottleneck
+    // For ElevenLabs, use rate limit directly as concurrent workers
+    // This makes estimates adapt to your actual tier (Creator=3, Pro=5, Scale=8, etc.)
+    const totalTime = sampleCount * config.secondsPerSample;
+    const parallelTime = totalTime / rateLimit;  // Use rateLimit as workers
     const rateLimitTime = sampleCount / rateLimit;
     return Math.max(parallelTime, rateLimitTime);
   }
 
+  // Fallback: use configured concurrent workers
+  const totalTime = sampleCount * config.secondsPerSample;
+  const parallelTime = totalTime / config.concurrentWorkers;
   return parallelTime;
 }
 
 /**
  * Analyze generation requirements
  */
-async function analyzeGenerationRequirements(manifest, voiceAssignments) {
+async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRegistry) {
   const analysis = {
     byVoice: {},
     byRole: {},
@@ -228,7 +246,10 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments) {
       const lookupKey = `${normalizedText}|${variant.role}|${language}|${cadence}`;
       const existing = voiceIndexCache[voiceId]?.get(lookupKey) || null;
 
-      const charCount = countCharacters(text);
+      // Get voice info to determine model (for character multiplier)
+      const voiceInfo = voiceRegistry.voices[voiceId];
+      const model = voiceInfo?.model || null;
+      const charCount = countCharacters(text, model);
       const isNew = !existing;
 
       analysis.byVoice[voiceId].samples.push({
@@ -318,7 +339,7 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
   }
 
   // Analyze requirements
-  const analysis = await analyzeGenerationRequirements(manifest, voiceAssignments);
+  const analysis = await analyzeGenerationRequirements(manifest, voiceAssignments, voiceRegistry);
 
   // Build plan by provider
   const plan = {
