@@ -1038,22 +1038,30 @@ The scaffold contains:
 
 **CRITICAL: What are practice phrases?**
 Practice phrases are NOT random vocabulary lists. Each practice phrase MUST:
-1. ✅ **CONTAIN THE LEGO YOU'RE PRACTICING**
-2. ✅ Use the LEGO in a natural, complete sentence
-3. ✅ Build from simple to complex uses of that LEGO
+1. ✅ **PHRASE 1 MUST ALREADY CONTAIN THE COMPLETE LEGO**
+2. ✅ Build-up by ADDING words to the LEGO (not building up TO the LEGO)
+3. ✅ Every phrase uses the LEGO in a natural, complete sentence
 
-**Example - CORRECT:**
-LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
-✅ Phrase 1: \\"I don't know why\\" → \\"No sé por qué\\"
-✅ Phrase 2: \\"I don't know why that is\\" → \\"No sé por qué es eso\\"
-✅ Phrase 3: \\"I don't know why you think so\\" → \\"No sé por qué piensas así\\"
-(All phrases CONTAIN and USE the LEGO)
+**Example - CORRECT (Build-up by ADDING to LEGO):**
+LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
+✅ Phrase 1: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (LEGO alone)
+✅ Phrase 2: \\"we don't need to feel bad\\" → \\"no necesitamos sentirnos mal\\" (LEGO + \\"bad\\")
+✅ Phrase 3: \\"we don't need to feel ready\\" → \\"no necesitamos sentirnos listos\\" (LEGO + \\"ready\\")
+✅ Phrase 4: \\"we don't need to feel ready now\\" → \\"no necesitamos sentirnos listos ahora\\" (LEGO + more)
+(All phrases CONTAIN the COMPLETE LEGO from phrase 1!)
 
-**Example - WRONG:**
+**Example - WRONG (Building up TO the LEGO):**
+LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
+❌ Phrase 1: \\"we need\\" → \\"necesitamos\\" (missing the LEGO - building toward it!)
+❌ Phrase 2: \\"we don't need\\" → \\"no necesitamos\\" (missing the LEGO - building toward it!)
+❌ Phrase 3: \\"we need to feel\\" → \\"necesitamos sentirnos\\" (missing the LEGO - building toward it!)
+❌ Phrase 4: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (finally has LEGO, but too late!)
+
+**Example - ALSO WRONG (Random vocabulary):**
 LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
-❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO!)
-❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO!)
-❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO!)
+❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO at all!)
+❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO at all!)
+❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO at all!)
 
 **For each LEGO:**
 1. Fetch scaffold via WebFetch
@@ -1113,9 +1121,11 @@ LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
 
 For EACH LEGO, verify ALL 10 practice phrases:
 
-1. ✅ **Contains the LEGO**: Every phrase must include the LEGO you're practicing
-   - Example: If LEGO is \\"I don't know why\\", ALL phrases must contain \\"I don't know why\\"
-   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO)
+1. ✅ **Contains the COMPLETE LEGO**: EVERY phrase must include the COMPLETE LEGO from phrase 1
+   - Example: If LEGO is \\"we don't need to feel\\", phrase 1 must be \\"we don't need to feel\\" (not \\"we need\\")
+   - ✅ CORRECT: \\"we don't need to feel\\", \\"we don't need to feel bad\\", \\"we don't need to feel ready\\"
+   - ❌ REJECT phrases like \\"we need\\", \\"we don't need\\", \\"we need to feel\\" (building up TO the LEGO)
+   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO at all)
 
 2. ✅ **GATE Compliance**: Only uses vocabulary from scaffold's Available Vocabulary
    - ❌ NO new words not in the available vocabulary list
@@ -1816,22 +1826,30 @@ The scaffold contains:
 
 **CRITICAL: What are practice phrases?**
 Practice phrases are NOT random vocabulary lists. Each practice phrase MUST:
-1. ✅ **CONTAIN THE LEGO YOU'RE PRACTICING**
-2. ✅ Use the LEGO in a natural, complete sentence
-3. ✅ Build from simple to complex uses of that LEGO
+1. ✅ **PHRASE 1 MUST ALREADY CONTAIN THE COMPLETE LEGO**
+2. ✅ Build-up by ADDING words to the LEGO (not building up TO the LEGO)
+3. ✅ Every phrase uses the LEGO in a natural, complete sentence
 
-**Example - CORRECT:**
-LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
-✅ Phrase 1: \\"I don't know why\\" → \\"No sé por qué\\"
-✅ Phrase 2: \\"I don't know why that is\\" → \\"No sé por qué es eso\\"
-✅ Phrase 3: \\"I don't know why you think so\\" → \\"No sé por qué piensas así\\"
-(All phrases CONTAIN and USE the LEGO)
+**Example - CORRECT (Build-up by ADDING to LEGO):**
+LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
+✅ Phrase 1: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (LEGO alone)
+✅ Phrase 2: \\"we don't need to feel bad\\" → \\"no necesitamos sentirnos mal\\" (LEGO + \\"bad\\")
+✅ Phrase 3: \\"we don't need to feel ready\\" → \\"no necesitamos sentirnos listos\\" (LEGO + \\"ready\\")
+✅ Phrase 4: \\"we don't need to feel ready now\\" → \\"no necesitamos sentirnos listos ahora\\" (LEGO + more)
+(All phrases CONTAIN the COMPLETE LEGO from phrase 1!)
 
-**Example - WRONG:**
+**Example - WRONG (Building up TO the LEGO):**
+LEGO: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\"
+❌ Phrase 1: \\"we need\\" → \\"necesitamos\\" (missing the LEGO - building toward it!)
+❌ Phrase 2: \\"we don't need\\" → \\"no necesitamos\\" (missing the LEGO - building toward it!)
+❌ Phrase 3: \\"we need to feel\\" → \\"necesitamos sentirnos\\" (missing the LEGO - building toward it!)
+❌ Phrase 4: \\"we don't need to feel\\" → \\"no necesitamos sentirnos\\" (finally has LEGO, but too late!)
+
+**Example - ALSO WRONG (Random vocabulary):**
 LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
-❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO!)
-❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO!)
-❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO!)
+❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO at all!)
+❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO at all!)
+❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO at all!)
 
 **For each LEGO:**
 1. Fetch scaffold via WebFetch
@@ -1891,9 +1909,11 @@ LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
 
 For EACH LEGO, verify ALL 10 practice phrases:
 
-1. ✅ **Contains the LEGO**: Every phrase must include the LEGO you're practicing
-   - Example: If LEGO is \\"I don't know why\\", ALL phrases must contain \\"I don't know why\\"
-   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO)
+1. ✅ **Contains the COMPLETE LEGO**: EVERY phrase must include the COMPLETE LEGO from phrase 1
+   - Example: If LEGO is \\"we don't need to feel\\", phrase 1 must be \\"we don't need to feel\\" (not \\"we need\\")
+   - ✅ CORRECT: \\"we don't need to feel\\", \\"we don't need to feel bad\\", \\"we don't need to feel ready\\"
+   - ❌ REJECT phrases like \\"we need\\", \\"we don't need\\", \\"we need to feel\\" (building up TO the LEGO)
+   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO at all)
 
 2. ✅ **GATE Compliance**: Only uses vocabulary from scaffold's Available Vocabulary
    - ❌ NO new words not in the available vocabulary list
