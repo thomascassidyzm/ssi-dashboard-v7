@@ -1196,7 +1196,7 @@ app.get('/health', (req, res) => {
 
 /**
  * GET /phase5/scaffold/:courseCode/:legoId
- * Serve scaffold file for a specific LEGO
+ * Generate and serve text scaffold for a specific LEGO
  */
 app.get('/phase5/scaffold/:courseCode/:legoId', async (req, res) => {
   try {
@@ -1207,26 +1207,60 @@ app.get('/phase5/scaffold/:courseCode/:legoId', async (req, res) => {
       return res.status(400).json({ error: 'Invalid LEGO ID format. Expected: S0117L01' });
     }
 
-    const scaffoldPath = path.join(VFS_ROOT, 'public/vfs/courses', courseCode, 'phase5_scaffolds', `${legoId}.txt`);
+    // Extract seed from LEGO ID (e.g., S0117L01 → s0117)
+    const seedNum = legoId.substring(1, 5); // "0117"
+    const seedId = `seed_s${seedNum}.json`;
 
-    // Check if file exists
+    const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
+    const scaffoldPath = path.join(baseCourseDir, 'phase5_scaffolds', seedId);
+    const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
+
+    // Check if scaffold file exists
     if (!await fs.pathExists(scaffoldPath)) {
       return res.status(404).json({
         error: 'Scaffold not found',
         legoId,
+        seedId,
         path: scaffoldPath
       });
     }
 
-    // Read and return scaffold text
-    const scaffoldText = await fs.readFile(scaffoldPath, 'utf-8');
+    // Load scaffold JSON and lego_pairs
+    const seedScaffold = await fs.readJson(scaffoldPath);
+    const legoPairs = await fs.readJson(legoPairsPath);
 
-    res.type('text/plain').send(scaffoldText);
+    // Find this LEGO in the scaffold
+    const legoScaffold = seedScaffold.legos?.find(l => l.id === legoId);
+
+    if (!legoScaffold) {
+      return res.status(404).json({
+        error: 'LEGO not found in scaffold',
+        legoId,
+        availableLegos: seedScaffold.legos?.map(l => l.id) || []
+      });
+    }
+
+    // Generate text scaffold using the text scaffold generator
+    const { generateTextScaffold } = require('./generate-text-scaffold.cjs');
+
+    const textScaffold = generateTextScaffold(
+      {
+        legoId: legoScaffold.id,
+        seed: legoScaffold.seed,
+        known: legoScaffold.lego.known,
+        target: legoScaffold.lego.target,
+        type: legoScaffold.type
+      },
+      legoPairs,
+      seedScaffold
+    );
+
+    res.type('text/plain').send(textScaffold);
 
   } catch (error) {
     console.error('[Phase 5] Error serving scaffold:', error);
     res.status(500).json({
-      error: 'Failed to load scaffold',
+      error: 'Failed to generate scaffold',
       message: error.message
     });
   }
