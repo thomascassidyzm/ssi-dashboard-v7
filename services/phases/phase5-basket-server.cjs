@@ -1664,8 +1664,8 @@ app.post('/upload-basket', async (req, res) => {
 
     // Enrich baskets with server-added fields before validation
     try {
-      const legoPairsPath = path.join(VFS_ROOT, 'courses', course, 'lego_pairs.json');
-      const seedPairsPath = path.join(VFS_ROOT, 'courses', course, 'seed_pairs.json');
+      const legoPairsPath = path.join(VFS_ROOT, 'public/vfs/courses', course, 'lego_pairs.json');
+      const seedPairsPath = path.join(VFS_ROOT, 'public/vfs/courses', course, 'seed_pairs.json');
 
       const legoPairs = await fs.readJson(legoPairsPath);
       const seedPairs = await fs.readJson(seedPairsPath);
