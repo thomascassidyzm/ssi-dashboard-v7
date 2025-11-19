@@ -459,17 +459,28 @@
           </div>
 
           <!-- Generate Button -->
-          <button
-            @click="startGeneration"
-            :disabled="!courseSize || !startSeed || !endSeed || startSeed > endSeed"
-            class="bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
-          >
-            <span v-if="courseSize === 'test'">Generate Test Course (30 seeds)</span>
-            <span v-else-if="courseSize === 'medium'">Generate Medium Course (100 seeds)</span>
-            <span v-else-if="courseSize === 'full'">Generate Full Course (668 seeds)</span>
-            <span v-else-if="courseSize === 'custom'">Generate Custom Course ({{ seedCount }} seeds)</span>
-            <span v-else>Select Seed Range</span>
-          </button>
+          <div class="flex gap-4">
+            <button
+              @click="startGeneration"
+              :disabled="!courseSize || !startSeed || !endSeed || startSeed > endSeed"
+              class="flex-1 bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
+            >
+              <span v-if="courseSize === 'test'">Generate Test Course (30 seeds)</span>
+              <span v-else-if="courseSize === 'medium'">Generate Medium Course (100 seeds)</span>
+              <span v-else-if="courseSize === 'full'">Generate Full Course (668 seeds)</span>
+              <span v-else-if="courseSize === 'custom'">Generate Custom Course ({{ seedCount }} seeds)</span>
+              <span v-else>Select Seed Range</span>
+            </button>
+
+            <button
+              @click="clearJob"
+              :disabled="clearingJob"
+              class="bg-amber-500 hover:bg-amber-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
+              title="Clear any stuck Phase 5 jobs"
+            >
+              {{ clearingJob ? 'Clearing...' : 'Clear Job' }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -702,6 +713,7 @@ const courseCode = ref(null)
 const currentPhase = ref('initializing')
 const progress = ref(0)
 const errorMessage = ref('')
+const clearingJob = ref(false)
 
 // Enhanced tracking from phase servers
 const phaseDetails = ref(null)
@@ -875,6 +887,47 @@ const extendToFullCourse = async () => {
 
   // Start generation (backend will detect existing work and extend)
   await startGeneration()
+}
+
+const clearJob = async () => {
+  if (!targetLanguage.value || !knownLanguage.value) {
+    errorMessage.value = 'Please select languages first'
+    return
+  }
+
+  clearingJob.value = true
+  errorMessage.value = ''
+
+  try {
+    const courseCode = `${targetLanguage.value}_for_${knownLanguage.value}`
+
+    // Call Phase 5 abort endpoint
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/phase5/abort/${courseCode}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      console.log('✅ Job cleared:', data.message)
+      // Reset UI state
+      isGenerating.value = false
+      isCompleted.value = false
+      currentPhase.value = 'initializing'
+      progress.value = 0
+    } else {
+      errorMessage.value = data.message || 'Failed to clear job'
+    }
+  } catch (error) {
+    console.error('Failed to clear job:', error)
+    errorMessage.value = `Failed to clear job: ${error.message}`
+  } finally {
+    clearingJob.value = false
+  }
 }
 
 const startGeneration = async (force = false) => {
