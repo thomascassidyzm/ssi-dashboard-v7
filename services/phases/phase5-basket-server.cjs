@@ -419,50 +419,56 @@ app.post('/start', async (req, res) => {
     job.targetLegos = targetLegos;
     job.legoData = legoData;
 
-    // STEP 2: DIRECT AGENT CONFIGURATION
+    // STEP 2: MASTER/WORKER CONFIGURATION
     // Read config from automation.config.simple.json
     const config = loadConfig();
-    const agentCount = config.phase5_basket_generation.browsers || 5;
-    const seedsPerAgent = config.phase5_basket_generation.seeds_per_agent || 1;
+    const masterCount = config.phase5_basket_generation.browsers || 5;
+    const workersPerMaster = config.phase5_basket_generation.agents_per_browser || 4;
+    const seedsPerWorker = config.phase5_basket_generation.seeds_per_agent || 1;
 
-    const capacity = agentCount * seedsPerAgent;
+    const totalWorkers = masterCount * workersPerMaster;
+    const capacity = totalWorkers * seedsPerWorker;
 
-    console.log(`\n[Phase 5] Direct Agent Configuration:`);
-    console.log(`[Phase 5]    Agents: ${agentCount} browser tabs`);
-    console.log(`[Phase 5]    Seeds per agent: ${seedsPerAgent}`);
+    console.log(`\n[Phase 5] Master/Worker Configuration:`);
+    console.log(`[Phase 5]    Masters: ${masterCount} browser tabs`);
+    console.log(`[Phase 5]    Workers per Master: ${workersPerMaster} (via Task tool)`);
+    console.log(`[Phase 5]    Seeds per worker: ${seedsPerWorker}`);
+    console.log(`[Phase 5]    Total workers: ${totalWorkers}`);
     console.log(`[Phase 5]    Total capacity: ${capacity} seeds`);
     console.log(`[Phase 5]    Job size: ${totalSeeds} seeds`);
     console.log(`[Phase 5]    Target LEGOs: ${targetLegos.length} LEGOs`);
 
     if (capacity < totalSeeds) {
       console.warn(`[Phase 5] ⚠️  Warning: Capacity (${capacity}) < Total Seeds (${totalSeeds})`);
-      console.warn(`[Phase 5]    Increase browsers or seeds_per_agent in config!`);
+      console.warn(`[Phase 5]    Increase browsers or agents_per_browser in config!`);
     }
 
     job.config = {
-      agentCount,
-      seedsPerAgent,
+      masterCount,
+      workersPerMaster,
+      seedsPerWorker,
+      totalWorkers,
       capacity,
       // Legacy fields for backward compatibility
-      browsers: agentCount,
-      agents: 1,
-      totalAgents: agentCount
+      browsers: masterCount,
+      agents: workersPerMaster,
+      totalAgents: totalWorkers
     };
-    job.milestones.windowsTotal = agentCount;
+    job.milestones.windowsTotal = masterCount;
     job.milestones.branchesExpected = 0; // No git branches in ngrok architecture
-    job.status = 'spawning_agents';
+    job.status = 'spawning_masters';
 
-    // STEP 3: Spawn browser tabs with direct agents
-    // Each agent generates baskets directly, uploads via ngrok
+    // STEP 3: Spawn Master browser tabs
+    // Each Master spawns workers via Task tool, workers upload via ngrok
     await spawnBrowserWindows(courseCode, {
       target,
       known,
       startSeed,
       endSeed,
-      legoData,        // ← Scaffold data for agents
+      legoData,        // ← Scaffold data for Masters to pass to workers
       targetLegos,     // ← List of LEGOs to generate (missing or force regenerate)
       stagingOnly      // ← Pass through staging flag
-    }, baseCourseDir, agentCount, seedsPerAgent, job);
+    }, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job);
 
     res.json({
       success: true,
@@ -747,11 +753,12 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
  * @param {number} seedsPerWorker - Seeds per worker agent (5)
  * @param {object} job - Job tracking object
  */
-async function spawnBrowserWindows(courseCode, params, baseCourseDir, agentCount, seedsPerAgent, job = null) {
+async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job = null) {
   const { target, known, startSeed, endSeed, legoData, targetLegos } = params;
 
-  console.log(`\n[Phase 5] 🌐 Spawning ${agentCount} direct agent browser tabs...`);
-  console.log(`[Phase 5]    Each agent processes ~${seedsPerAgent} seeds`);
+  console.log(`\n[Phase 5] 🌐 Spawning ${masterCount} Master browser tabs...`);
+  console.log(`[Phase 5]    Each Master spawns ${workersPerMaster} workers via Task tool`);
+  console.log(`[Phase 5]    Each worker processes ~${seedsPerWorker} seeds`);
   console.log(`[Phase 5]    Total LEGOs: ${targetLegos.length}`);
 
   const config = loadConfig();
@@ -771,52 +778,54 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, agentCount
   const seeds = Object.keys(legosBySeed).sort();
   console.log(`[Phase 5]    Total seeds with LEGOs: ${seeds.length}`);
 
-  // Divide SEEDS among agents (each seed stays together - atomic unit)
-  const seedsPerAgentCalc = Math.ceil(seeds.length / agentCount);
+  // Divide SEEDS among Masters (each seed stays together - atomic unit)
+  const seedsPerMaster = Math.ceil(seeds.length / masterCount);
 
-  for (let agentNum = 1; agentNum <= agentCount; agentNum++) {
-    console.log(`\n[Phase 5]   Agent ${agentNum}/${agentCount}:`);
+  for (let masterNum = 1; masterNum <= masterCount; masterNum++) {
+    console.log(`\n[Phase 5]   Master ${masterNum}/${masterCount}:`);
 
-    // Calculate this agent's seed range
-    const agentStartIdx = (agentNum - 1) * seedsPerAgentCalc;
-    const agentEndIdx = Math.min(agentNum * seedsPerAgentCalc, seeds.length);
-    const agentSeeds = seeds.slice(agentStartIdx, agentEndIdx);
+    // Calculate this Master's seed range
+    const masterStartIdx = (masterNum - 1) * seedsPerMaster;
+    const masterEndIdx = Math.min(masterNum * seedsPerMaster, seeds.length);
+    const masterSeeds = seeds.slice(masterStartIdx, masterEndIdx);
 
-    // Collect all LEGOs from this agent's seeds
-    const agentTargetLegos = [];
-    for (const seedId of agentSeeds) {
-      agentTargetLegos.push(...legosBySeed[seedId]);
+    // Collect all LEGOs from this Master's seeds
+    const masterTargetLegos = [];
+    for (const seedId of masterSeeds) {
+      masterTargetLegos.push(...legosBySeed[seedId]);
     }
 
-    // Extract scaffold data for this agent's LEGOs
-    const agentLegoData = {};
-    for (const lego of agentTargetLegos) {
+    // Extract scaffold data for this Master's LEGOs
+    const masterLegoData = {};
+    for (const lego of masterTargetLegos) {
       if (legoData[lego.legoId]) {
-        agentLegoData[lego.legoId] = legoData[lego.legoId];
+        masterLegoData[lego.legoId] = legoData[lego.legoId];
       }
     }
 
-    const dataSize = Math.round(JSON.stringify(agentLegoData).length / 1024);
-    console.log(`[Phase 5]     Seeds: ${agentSeeds.slice(0, 5).join(', ')}${agentSeeds.length > 5 ? '...' : ''} (${agentSeeds.length} seeds)`);
-    console.log(`[Phase 5]     LEGOs: ${agentTargetLegos.length} LEGOs (${dataSize} KB scaffold data)`);
+    const dataSize = Math.round(JSON.stringify(masterLegoData).length / 1024);
+    console.log(`[Phase 5]     Seeds: ${masterSeeds.slice(0, 5).join(', ')}${masterSeeds.length > 5 ? '...' : ''} (${masterSeeds.length} seeds)`);
+    console.log(`[Phase 5]     LEGOs: ${masterTargetLegos.length} LEGOs (${dataSize} KB scaffold data)`);
+    console.log(`[Phase 5]     Will spawn ${workersPerMaster} workers via Task tool`);
 
-    // Generate direct agent prompt with text scaffolds
-    const agentPrompt = generatePhase5OrchestratorPrompt(
+    // Generate Master orchestrator prompt with text scaffolds
+    const masterPrompt = generatePhase5OrchestratorPrompt(
       courseCode,
       {
         target,
         known,
-        startSeed: parseInt(agentSeeds[0].replace('S', '')),
-        endSeed: parseInt(agentSeeds[agentSeeds.length - 1].replace('S', '')),
-        legoData: agentLegoData,
-        targetLegos: agentTargetLegos,
+        startSeed: parseInt(masterSeeds[0].replace('S', '')),
+        endSeed: parseInt(masterSeeds[masterSeeds.length - 1].replace('S', '')),
+        legoData: masterLegoData,
+        targetLegos: masterTargetLegos,
+        agentsPerWindow: workersPerMaster,  // Workers this Master should spawn
         stagingOnly: params.stagingOnly
       },
       baseCourseDir
     );
 
     try {
-      await spawnClaudeCodeSession(agentPrompt, `phase5-agent-${agentNum}`);
+      await spawnClaudeCodeSession(masterPrompt, `phase5-master-${masterNum}`);
 
       // Update milestones
       if (job) {
@@ -825,23 +834,24 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, agentCount
         job.milestones.lastWindowSpawnedAt = new Date().toISOString();
       }
 
-      // Stagger agent spawns (default 5000ms)
-      if (agentNum < agentCount) {
-        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next agent...`);
+      // Stagger Master spawns (default 5000ms)
+      if (masterNum < masterCount) {
+        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next Master...`);
         await new Promise(resolve => setTimeout(resolve, spawnDelay));
       }
     } catch (error) {
-      console.error(`[Phase 5]     ❌ Failed to spawn agent ${agentNum}:`, error.message);
+      console.error(`[Phase 5]     ❌ Failed to spawn Master ${masterNum}:`, error.message);
       if (job && !job.warnings) job.warnings = [];
-      if (job) job.warnings.push(`Failed to spawn agent ${agentNum}: ${error.message}`);
+      if (job) job.warnings.push(`Failed to spawn Master ${masterNum}: ${error.message}`);
     }
   }
 
-  console.log(`\n[Phase 5] ✅ Spawned ${agentCount} direct agent browser tabs`);
-  console.log(`[Phase 5]    Agents upload baskets via ngrok`);
+  console.log(`\n[Phase 5] ✅ Spawned ${masterCount} Master browser tabs`);
+  console.log(`[Phase 5]    Masters will spawn ${masterCount * workersPerMaster} workers total`);
+  console.log(`[Phase 5]    Workers upload baskets via ngrok`);
 
   if (job) {
-    job.status = 'agents_generating';
+    job.status = 'workers_generating';
   }
 }
 
@@ -906,11 +916,12 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 `;
   }
 
-  // DIRECT AGENT MODE: Single agent generates all baskets for its seed range
+  // MASTER MODE: Master spawns workers via Task tool
   const totalSeeds = endSeed - startSeed + 1;
   const legoData = params.legoData || {};
   const targetLegos = params.targetLegos || [];
   const legoCount = targetLegos.length;
+  const workersToSpawn = params.agentsPerWindow || 4;
 
   const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
@@ -925,25 +936,26 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   }
   const seeds = Object.keys(legosBySeed).sort();
 
-  return `# Phase 5 Basket Generation - Direct Agent
+  return `# Phase 5 Master Orchestrator
 
 **Course:** \`${courseCode}\`
 **Your Range:** Seeds \`S${String(startSeed).padStart(4, '0')}\` to \`S${String(endSeed).padStart(4, '0')}\` (${totalSeeds} seeds)
 **Target LEGOs:** ${legoCount} LEGOs across ${seeds.length} seeds
+**Workers to spawn:** ${workersToSpawn} (via Task tool)
 
 ---
 
-## 🎯 YOUR MISSION
+## 🎯 YOUR MISSION: SPAWN ${workersToSpawn} WORKERS
 
-Generate practice phrase baskets for each LEGO using the text scaffolds below.
+You are a **Master Orchestrator**. You DON'T generate baskets yourself.
 
 **Your workflow:**
 
-1. ✅ **Read each text scaffold** - Each scaffold contains LEGO details, seed context, available vocabulary, and output template
-2. ✅ **Generate 10 practice phrases per LEGO** - Use ONLY vocabulary from "Available Vocabulary" section
-3. ✅ **Follow progressive complexity** - 2-3 words → 7-10 words (see phrase distribution below)
-4. ✅ **Upload via HTTP** - POST to ngrok endpoint with structured JSON
-5. ✅ **Work efficiently** - Generate all ${legoCount} LEGOs in this session
+1. ✅ **Divide scaffolds below** - Split ${seeds.length} seeds among ${workersToSpawn} workers
+2. ✅ **Spawn ${workersToSpawn} workers** - Use Task tool ${workersToSpawn} times in ONE message (parallel!)
+3. ✅ **Work SILENTLY** - No verbose progress logs
+4. ✅ **Monitor completion** - Workers will upload via ngrok
+5. ✅ **Report brief summary** - "✅ Master complete: ${workersToSpawn} workers spawned"
 
 ---
 
@@ -962,79 +974,74 @@ ${Object.values(legoData).join('\n\n')}
 
 ---
 
-## 📐 PHRASE DISTRIBUTION (10 phrases per LEGO)
+## 🚀 HOW TO SPAWN WORKERS
 
-Generate phrases with progressive complexity:
+**SIMPLE: 1 WORKER PER SEED**
 
-1. **2 short phrases** (1-2 LEGOs / 2-3 words)
-   - Just the LEGO target, or with 1 recent LEGO
-   - Example: "Quiero" or "Quiero hablar"
+Each worker handles exactly 1 seed (all LEGOs from that seed). This ensures:
+- Seeds stay atomic (never split)
+- Clean division (no overlap)
+- Simple assignment (Worker 1 → Seed 1, Worker 2 → Seed 2, etc.)
 
-2. **2 medium phrases** (3 LEGOs / 3-5 words)
-   - Combine with 2-3 recent LEGOs
-   - Example: "Quiero hablar español"
+**Your seeds:** ${seeds.join(', ')} (${seeds.length} seeds total)
 
-3. **2 longer phrases** (4 LEGOs / 5-7 words)
-   - More complex combinations
-   - Example: "Quiero hablar español muy bien"
+**Assignment:**
+${seeds.map((seed, i) => `- Worker ${i + 1}: ${seed} (all LEGOs from this seed)`).join('\n')}
 
-4. **4 longest phrases** (5+ LEGOs / 7-10 words)
-   - Maximum complexity using available vocabulary
-   - Example: "Quiero hablar español muy bien cuando estoy con mis amigos"
+**Spawn all ${workersToSpawn} workers in parallel:**
 
-**CRITICAL GATE Compliance:**
-- ✅ ONLY use vocabulary from "Available Vocabulary" section of each scaffold
-- ❌ DO NOT introduce new words not listed in available vocabulary
-- ✅ Verify each phrase uses only previously-learned LEGOs
+Use Task tool ${workersToSpawn} times in a SINGLE message. Each worker receives:
 
----
-
-## 📤 UPLOAD ENDPOINT
-
-**POST:** \`${ngrokUrl}/phase5/upload-basket\`
-
-**Payload format:**
-\`\`\`json
+\`\`\`
+Task tool prompt for worker-1:
 {
-  "courseCode": "${courseCode}",
-  "seed": "S0101",
-  "baskets": {
-    "S0101L01": {
-      "lego": {"known": "I want", "target": "quiero"},
-      "practice_phrases": [
-        {"known": "I want", "target": "Quiero"},
-        {"known": "I want to speak", "target": "Quiero hablar"},
-        {"known": "I want to speak Spanish", "target": "Quiero hablar español"},
-        {"known": "I want to speak Spanish well", "target": "Quiero hablar español bien"},
-        {"known": "I want to speak Spanish very well", "target": "Quiero hablar español muy bien"},
-        {"known": "I want to speak Spanish very well today", "target": "Quiero hablar español muy bien hoy"},
-        {"known": "I want to speak Spanish very well when I'm with friends", "target": "Quiero hablar español muy bien cuando estoy con amigos"},
-        {"known": "I want to speak Spanish very well when I'm with my friends", "target": "Quiero hablar español muy bien cuando estoy con mis amigos"},
-        {"known": "I want to speak Spanish very well when I'm with my friends today", "target": "Quiero hablar español muy bien cuando estoy con mis amigos hoy"},
-        {"known": "I want to speak Spanish very well when I'm with my friends in the pub", "target": "Quiero hablar español muy bien cuando estoy con mis amigos en el pub"}
-      ]
-    },
-    "S0101L02": {
-      "lego": {"known": "to speak", "target": "hablar"},
-      "practice_phrases": [...]
-    }
-  },
-  "stagingOnly": ${params.stagingOnly || true}
+  "subagent_type": "general-purpose",
+  "description": "Phase 5 Worker 1",
+  "prompt": "You are Phase 5 Worker 1. Generate baskets for your assigned LEGOs using the text scaffolds below.
+
+## YOUR SCAFFOLDS (Human-Readable Text Format)
+
+<Embed worker 1's text scaffolds here - just concatenate the relevant text scaffolds from above>
+
+Each scaffold shows:
+- LEGO (known → target in correct order)
+- Seed context
+- Available vocabulary (GATE compliant)
+- Is Final LEGO status
+
+## YOUR TASK
+
+For each LEGO scaffold above:
+1. Read the available vocabulary
+2. Generate 10 practice phrases using ONLY vocabulary from available vocabulary section
+3. Follow phrase distribution: 2 short (1-2 LEGOs), 2 medium (3 LEGOs), 2 longer (4 LEGOs), 4 longest (5+ LEGOs)
+4. Output structured JSON matching the template
+
+## UPLOAD ENDPOINT
+POST ${ngrokUrl}/phase5/upload-basket
+
+## PAYLOAD FORMAT
+{
+  \\"courseCode\\": \\"${courseCode}\\",
+  \\"seed\\": \\"S0101\\",
+  \\"baskets\\": { \\"S0101L01\\": {...}, \\"S0101L02\\": {...}, ... },
+  \\"stagingOnly\\": ${params.stagingOnly || true}
+}
+
+## WORK SILENTLY
+Generate baskets quietly, upload via HTTP, report brief summary only."
 }
 \`\`\`
-
-**Server automatically adds (you don't need to include these):**
-- \`is_final_lego\`: Boolean (true if this is the last LEGO in the seed)
-- \`phrase_count\`: Count of phrases provided
-- **Final seed sentence**: If \`is_final_lego = true\`, server adds complete seed sentence as highest practice phrase
 
 ---
 
 ## 🎯 START NOW
 
-Generate all ${legoCount} baskets using the text scaffolds above.
+**Spawn all ${workersToSpawn} workers in parallel using Task tool!**
 
-Work efficiently through each LEGO, then upload the complete batch via HTTP.
+Divide the ${seeds.length} seeds evenly, embed each worker's scaffold subset, and let them work silently.
+
+Report: "✅ Master complete: ${workersToSpawn} workers spawned for ${legoCount} LEGOs"
 `;
 }
 
