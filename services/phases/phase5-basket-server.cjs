@@ -1023,21 +1023,42 @@ The scaffold contains:
 
 ## GENERATION RULES
 
+**CRITICAL: What are practice phrases?**
+Practice phrases are NOT random vocabulary lists. Each practice phrase MUST:
+1. ✅ **CONTAIN THE LEGO YOU'RE PRACTICING**
+2. ✅ Use the LEGO in a natural, complete sentence
+3. ✅ Build from simple to complex uses of that LEGO
+
+**Example - CORRECT:**
+LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
+✅ Phrase 1: \\"I don't know why\\" → \\"No sé por qué\\"
+✅ Phrase 2: \\"I don't know why that is\\" → \\"No sé por qué es eso\\"
+✅ Phrase 3: \\"I don't know why you think so\\" → \\"No sé por qué piensas así\\"
+(All phrases CONTAIN and USE the LEGO)
+
+**Example - WRONG:**
+LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
+❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO!)
+❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO!)
+❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO!)
+
 **For each LEGO:**
 1. Fetch scaffold via WebFetch
 2. Read available vocabulary from scaffold
-3. Generate 10 practice phrases using ONLY vocabulary from scaffold
+3. Generate 10 practice phrases that ALL CONTAIN THE LEGO
 4. Follow progressive complexity:
-   - Phrases 1-2: SHORT (2-3 words)
-   - Phrases 3-4: MEDIUM (3-4 words)
-   - Phrases 5-6: LONGER (4-6 words)
-   - Phrases 7-10: LONGEST (6+ words, aim for 7-10)
+   - Phrases 1-2: SHORT (2-3 words, just the LEGO or LEGO + 1 word)
+   - Phrases 3-4: MEDIUM (LEGO + 2-3 words)
+   - Phrases 5-6: LONGER (LEGO + 4-6 words)
+   - Phrases 7-10: LONGEST (LEGO + 6+ words, aim for 7-10 word sentences)
 5. Each phrase must be natural and grammatically correct in both languages
+6. **EVERY PHRASE MUST USE THE LEGO**
 
 **CRITICAL GATE Compliance:**
-- ✅ ONLY use vocabulary from scaffold's "Available Vocabulary" section
+- ✅ ONLY use vocabulary from scaffold's 'Available Vocabulary' section
+- ✅ ALL 10 phrases must contain and use the LEGO being practiced
+- ❌ DO NOT create random vocabulary lists
 - ❌ DO NOT introduce words not in available vocabulary
-- ✅ Verify each phrase uses only previously-learned LEGOs
 
 ## OUTPUT FORMAT
 
@@ -1742,21 +1763,42 @@ The scaffold contains:
 
 ## GENERATION RULES
 
+**CRITICAL: What are practice phrases?**
+Practice phrases are NOT random vocabulary lists. Each practice phrase MUST:
+1. ✅ **CONTAIN THE LEGO YOU'RE PRACTICING**
+2. ✅ Use the LEGO in a natural, complete sentence
+3. ✅ Build from simple to complex uses of that LEGO
+
+**Example - CORRECT:**
+LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
+✅ Phrase 1: \\"I don't know why\\" → \\"No sé por qué\\"
+✅ Phrase 2: \\"I don't know why that is\\" → \\"No sé por qué es eso\\"
+✅ Phrase 3: \\"I don't know why you think so\\" → \\"No sé por qué piensas así\\"
+(All phrases CONTAIN and USE the LEGO)
+
+**Example - WRONG:**
+LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
+❌ Phrase 1: \\"your idea\\" → \\"tu idea\\" (doesn't use the LEGO!)
+❌ Phrase 2: \\"that's easier\\" → \\"eso es más fácil\\" (doesn't use the LEGO!)
+❌ Phrase 3: \\"I believe that\\" → \\"creo que\\" (doesn't use the LEGO!)
+
 **For each LEGO:**
 1. Fetch scaffold via WebFetch
 2. Read available vocabulary from scaffold
-3. Generate 10 practice phrases using ONLY vocabulary from scaffold
+3. Generate 10 practice phrases that ALL CONTAIN THE LEGO
 4. Follow progressive complexity:
-   - Phrases 1-2: SHORT (2-3 words)
-   - Phrases 3-4: MEDIUM (3-4 words)
-   - Phrases 5-6: LONGER (4-6 words)
-   - Phrases 7-10: LONGEST (6+ words, aim for 7-10)
+   - Phrases 1-2: SHORT (2-3 words, just the LEGO or LEGO + 1 word)
+   - Phrases 3-4: MEDIUM (LEGO + 2-3 words)
+   - Phrases 5-6: LONGER (LEGO + 4-6 words)
+   - Phrases 7-10: LONGEST (LEGO + 6+ words, aim for 7-10 word sentences)
 5. Each phrase must be natural and grammatically correct in both languages
+6. **EVERY PHRASE MUST USE THE LEGO**
 
 **CRITICAL GATE Compliance:**
 - ✅ ONLY use vocabulary from scaffold's 'Available Vocabulary' section
+- ✅ ALL 10 phrases must contain and use the LEGO being practiced
+- ❌ DO NOT create random vocabulary lists
 - ❌ DO NOT introduce words not in available vocabulary
-- ✅ Verify each phrase uses only previously-learned LEGOs
 
 ## OUTPUT FORMAT
 
