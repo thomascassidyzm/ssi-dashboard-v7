@@ -1195,10 +1195,11 @@ app.get('/health', (req, res) => {
 });
 
 /**
- * GET /phase5/scaffold/:courseCode/:legoId
+ * GET /scaffold/:courseCode/:legoId
  * Generate and serve text scaffold for a specific LEGO
+ * Note: ngrok proxy strips /phase5 prefix before forwarding
  */
-app.get('/phase5/scaffold/:courseCode/:legoId', async (req, res) => {
+app.get('/scaffold/:courseCode/:legoId', async (req, res) => {
   try {
     const { courseCode, legoId } = req.params;
 
@@ -1229,26 +1230,29 @@ app.get('/phase5/scaffold/:courseCode/:legoId', async (req, res) => {
     const seedScaffold = await fs.readJson(scaffoldPath);
     const legoPairs = await fs.readJson(legoPairsPath);
 
-    // Find this LEGO in the scaffold
-    const legoScaffold = seedScaffold.legos?.find(l => l.id === legoId);
+    // Find this LEGO in the scaffold (legos is an object keyed by LEGO ID)
+    const legoScaffold = seedScaffold.legos?.[legoId];
 
     if (!legoScaffold) {
       return res.status(404).json({
         error: 'LEGO not found in scaffold',
         legoId,
-        availableLegos: seedScaffold.legos?.map(l => l.id) || []
+        availableLegos: Object.keys(seedScaffold.legos || {})
       });
     }
 
     // Generate text scaffold using the text scaffold generator
     const { generateTextScaffold } = require('./generate-text-scaffold.cjs');
 
+    // Scaffold stores lego as array [known, target]
+    const [known, target] = legoScaffold.lego;
+
     const textScaffold = generateTextScaffold(
       {
-        legoId: legoScaffold.id,
-        seed: legoScaffold.seed,
-        known: legoScaffold.lego.known,
-        target: legoScaffold.lego.target,
+        legoId,
+        seed: seedScaffold.seed_id,
+        known,
+        target,
         type: legoScaffold.type
       },
       legoPairs,
