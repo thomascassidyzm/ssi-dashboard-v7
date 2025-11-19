@@ -906,7 +906,7 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 `;
   }
 
-  // THREE-TIER MODE: Master spawns workers
+  // DIRECT AGENT MODE: Single agent generates all baskets for its seed range
   const totalSeeds = endSeed - startSeed + 1;
   const legoData = params.legoData || {};
   const targetLegos = params.targetLegos || [];
@@ -924,11 +924,6 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
     legosBySeed[seedId].push(lego);
   }
   const seeds = Object.keys(legosBySeed).sort();
-
-  // Dynamic worker count: 1 worker per seed (ensures atomic seed handling)
-  const workerCount = seeds.length;
-  const seedsPerWorker = 1; // Each worker gets exactly 1 seed
-  const legosPerWorker = Math.ceil(legoCount / workerCount);
 
   return `# Phase 5 Basket Generation - Direct Agent
 
