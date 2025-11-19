@@ -11,14 +11,12 @@
 
 const express = require('express');
 const path = require('path');
-const axios = require('axios');
 const { generateIntroductions } = require('../../scripts/phase6-generate-introductions.cjs');
 
 const app = express();
 const PORT = process.env.PORT || 3460;
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 6 (Introductions)';
 const VFS_ROOT = process.env.VFS_ROOT || path.join(__dirname, '../../public/vfs/courses');
-const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
 
 app.use(express.json());
 
@@ -56,45 +54,20 @@ app.post('/start', async (req, res) => {
 
   // Run generation asynchronously
   generateIntroductions(courseDir)
-    .then(async result => {
+    .then(result => {
       job.status = 'completed';
       job.completedAt = new Date().toISOString();
       job.result = result;
       console.log(`[Phase 6] ✅ Completed for ${courseCode}`);
 
-      // Notify orchestrator that Phase 6 is complete
-      try {
-        await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
-          phase: 6,
-          courseCode: courseCode,
-          status: 'completed',
-          result: result
-        });
-        console.log(`[Phase 6] Notified orchestrator of completion`);
-      } catch (error) {
-        console.error(`[Phase 6] Failed to notify orchestrator:`, error.message);
-      }
-
       // Clean up after 5 minutes
       setTimeout(() => activeJobs.delete(courseCode), 5 * 60 * 1000);
     })
-    .catch(async error => {
+    .catch(error => {
       job.status = 'failed';
       job.error = error.message;
       job.completedAt = new Date().toISOString();
       console.error(`[Phase 6] ❌ Failed for ${courseCode}:`, error.message);
-
-      // Notify orchestrator of failure
-      try {
-        await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
-          phase: 6,
-          courseCode: courseCode,
-          status: 'failed',
-          error: error.message
-        });
-      } catch (notifyError) {
-        console.error(`[Phase 6] Failed to notify orchestrator:`, notifyError.message);
-      }
 
       // Clean up after 5 minutes
       setTimeout(() => activeJobs.delete(courseCode), 5 * 60 * 1000);

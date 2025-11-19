@@ -129,15 +129,9 @@ const SERVICES = {
     name: 'Phase 6 (Introductions)',
     color: '\x1b[34m'    // Blue
   },
-  phase7: {
-    script: 'services/phases/phase7-manifest-server.cjs',
-    port: BASE_PORT + 5,  // 3461
-    name: 'Phase 7 (Manifest)',
-    color: '\x1b[35m'    // Magenta
-  },
   phase8: {
     script: 'services/phases/phase8-audio-server.cjs',
-    port: BASE_PORT + 6,  // 3462
+    port: BASE_PORT + 5,  // 3461
     name: 'Phase 8 (Audio)',
     color: '\x1b[36m'    // Cyan
   }
@@ -172,8 +166,7 @@ for (const [key, config] of Object.entries(SERVICES)) {
       PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,
       PHASE5_URL: `http://localhost:${BASE_PORT + 3}`,
       PHASE6_URL: `http://localhost:${BASE_PORT + 4}`,
-      PHASE7_URL: `http://localhost:${BASE_PORT + 5}`,
-      PHASE8_URL: `http://localhost:${BASE_PORT + 6}`,
+      PHASE8_URL: `http://localhost:${BASE_PORT + 5}`,
     },
     stdio: ['ignore', 'pipe', 'pipe']
   });
