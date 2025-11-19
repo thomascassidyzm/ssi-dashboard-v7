@@ -5,7 +5,7 @@
  *
  * Responsibilities:
  * - Serve dashboard read-only APIs (courses, VFS files, metrics)
- * - Trigger phase servers in sequence (1 → 3 → 5 → 6 → 8)
+ * - Trigger phase servers in sequence (1 → 3 → 5 → 6 → 7 → 8)
  * - Checkpoint management (manual/gated/full modes)
  * - Health monitoring of phase servers
  * - Course status tracking
@@ -33,7 +33,8 @@ const PHASE_SERVERS = {
   3: process.env.PHASE3_URL || 'http://localhost:3458',
   5: process.env.PHASE5_URL || 'http://localhost:3459',
   6: process.env.PHASE6_URL || 'http://localhost:3460',
-  8: process.env.PHASE8_URL || 'http://localhost:3461'
+  7: process.env.PHASE7_URL || 'http://localhost:3461',
+  8: process.env.PHASE8_URL || 'http://localhost:3462'
 };
 
 // Validate config
