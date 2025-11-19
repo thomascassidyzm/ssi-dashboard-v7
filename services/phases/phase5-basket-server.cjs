@@ -936,6 +936,18 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   }
   const seeds = Object.keys(legosBySeed).sort();
 
+  // Create LEGO assignments (1 worker per seed)
+  const workerAssignments = seeds.map((seedId, i) => {
+    const seedLegos = legosBySeed[seedId];
+    const legoIds = seedLegos.map(l => l.legoId);
+    return {
+      workerNum: i + 1,
+      seedId,
+      legoIds,
+      legoCount: legoIds.length
+    };
+  });
+
   return `# Phase 5 Master Orchestrator
 
 **Course:** \`${courseCode}\`
@@ -951,7 +963,7 @@ You are a **Master Orchestrator**. You DON'T generate baskets yourself.
 
 **Your workflow:**
 
-1. ✅ **Divide scaffolds below** - Split ${seeds.length} seeds among ${workersToSpawn} workers
+1. ✅ **Assign LEGOs to workers** - See assignments below (1 worker per seed)
 2. ✅ **Spawn ${workersToSpawn} workers** - Use Task tool ${workersToSpawn} times in ONE message (parallel!)
 3. ✅ **Work SILENTLY** - No verbose progress logs
 4. ✅ **Monitor completion** - Workers will upload via ngrok
@@ -959,77 +971,105 @@ You are a **Master Orchestrator**. You DON'T generate baskets yourself.
 
 ---
 
-## 📋 TEXT SCAFFOLDS (${legoCount} LEGOs)
+## 📋 WORKER ASSIGNMENTS
 
-Each scaffold shows:
-- **LEGO** (known → target in correct language order)
-- **Seed context** (full sentence pair showing the target usage)
-- **Is Final LEGO** (YES = server will add complete seed sentence automatically)
-- **Available vocabulary** (GATE-compliant: 10 recent seeds, 30 recent LEGOs, earlier LEGOs from current seed)
-- **Output template** with labeled object format
-
-**SCAFFOLDS:**
-
-${Object.values(legoData).join('\n\n')}
+${workerAssignments.map(w => `**Worker ${w.workerNum}:** Seed ${w.seedId} - LEGOs: ${w.legoIds.join(', ')} (${w.legoCount} LEGOs)`).join('\n')}
 
 ---
 
-## 🚀 HOW TO SPAWN WORKERS
+## 🚀 SPAWN WORKERS
 
-**SIMPLE: 1 WORKER PER SEED**
+Use Task tool ${workersToSpawn} times in a SINGLE message (parallel spawn).
 
-Each worker handles exactly 1 seed (all LEGOs from that seed). This ensures:
-- Seeds stay atomic (never split)
-- Clean division (no overlap)
-- Simple assignment (Worker 1 → Seed 1, Worker 2 → Seed 2, etc.)
-
-**Your seeds:** ${seeds.join(', ')} (${seeds.length} seeds total)
-
-**Assignment:**
-${seeds.map((seed, i) => `- Worker ${i + 1}: ${seed} (all LEGOs from this seed)`).join('\n')}
-
-**Spawn all ${workersToSpawn} workers in parallel:**
-
-Use Task tool ${workersToSpawn} times in a SINGLE message. Each worker receives:
+**Worker prompt template:**
 
 \`\`\`
-Task tool prompt for worker-1:
 {
   "subagent_type": "general-purpose",
-  "description": "Phase 5 Worker 1",
-  "prompt": "You are Phase 5 Worker 1. Generate baskets for your assigned LEGOs using the text scaffolds below.
+  "description": "Phase 5 Worker N",
+  "prompt": "You are Phase 5 Worker N. Generate practice baskets for seed SXXXX.
 
-## YOUR SCAFFOLDS (Human-Readable Text Format)
+## YOUR ASSIGNMENT
 
-<Embed worker 1's text scaffolds here - just concatenate the relevant text scaffolds from above>
+**Seed:** SXXXX
+**LEGOs:** [list LEGO IDs here]
 
-Each scaffold shows:
-- LEGO (known → target in correct order)
+## FETCH SCAFFOLDS
+
+For each LEGO ID, fetch its scaffold via WebFetch:
+
+**URL:** ${ngrokUrl}/phase5/scaffold/${courseCode}/S0117L01
+**Prompt:** Extract the scaffold details
+
+The scaffold contains:
+- LEGO (known → target)
 - Seed context
 - Available vocabulary (GATE compliant)
 - Is Final LEGO status
+- Generation requirements
+- Output format
 
-## YOUR TASK
+## GENERATION RULES
 
-For each LEGO scaffold above:
-1. Read the available vocabulary
-2. Generate 10 practice phrases using ONLY vocabulary from available vocabulary section
-3. Follow phrase distribution: 2 short (1-2 LEGOs), 2 medium (3 LEGOs), 2 longer (4 LEGOs), 4 longest (5+ LEGOs)
-4. Output structured JSON matching the template
+**For each LEGO:**
+1. Fetch scaffold via WebFetch
+2. Read available vocabulary from scaffold
+3. Generate 10 practice phrases using ONLY vocabulary from scaffold
+4. Follow progressive complexity:
+   - Phrases 1-2: SHORT (2-3 words)
+   - Phrases 3-4: MEDIUM (3-4 words)
+   - Phrases 5-6: LONGER (4-6 words)
+   - Phrases 7-10: LONGEST (6+ words, aim for 7-10)
+5. Each phrase must be natural and grammatically correct in both languages
 
-## UPLOAD ENDPOINT
-POST ${ngrokUrl}/phase5/upload-basket
+**CRITICAL GATE Compliance:**
+- ✅ ONLY use vocabulary from scaffold's "Available Vocabulary" section
+- ❌ DO NOT introduce words not in available vocabulary
+- ✅ Verify each phrase uses only previously-learned LEGOs
 
-## PAYLOAD FORMAT
+## OUTPUT FORMAT
+
+\`\`\`json
 {
   \\"courseCode\\": \\"${courseCode}\\",
-  \\"seed\\": \\"S0101\\",
-  \\"baskets\\": { \\"S0101L01\\": {...}, \\"S0101L02\\": {...}, ... },
+  \\"seed\\": \\"SXXXX\\",
+  \\"baskets\\": {
+    \\"S0117L01\\": {
+      \\"lego\\": {
+        \\"known\\": \\"definitely\\",
+        \\"target\\": \\"definitivamente\\"
+      },
+      \\"practice_phrases\\": [
+        { \\"known\\": \\"definitely\\", \\"target\\": \\"definitivamente\\" },
+        { \\"known\\": \\"definitely better\\", \\"target\\": \\"definitivamente mejor\\" },
+        ...
+      ]
+    }
+  },
   \\"stagingOnly\\": ${params.stagingOnly || true}
 }
+\`\`\`
+
+**Format rules:**
+- \`lego\` field: Object with \\"known\\" and \\"target\\" labels
+- \`practice_phrases\`: Array of objects with \\"known\\" and \\"target\\" labels
+- NO \\"difficulty\\" field
+- NO array format like [\\"Spanish\\", \\"English\\"]
+
+**Server auto-adds:**
+- \`is_final_lego\`: Boolean (if true, server adds complete seed sentence)
+- \`phrase_count\`: Count of phrases
+- \`type\`: LEGO type from lego_pairs.json
+
+## UPLOAD
+
+**POST:** ${ngrokUrl}/phase5/upload-basket
+
+Upload the complete JSON payload above.
 
 ## WORK SILENTLY
-Generate baskets quietly, upload via HTTP, report brief summary only."
+
+Fetch scaffolds, generate baskets, upload, report brief summary only."
 }
 \`\`\`
 
@@ -1037,9 +1077,13 @@ Generate baskets quietly, upload via HTTP, report brief summary only."
 
 ## 🎯 START NOW
 
-**Spawn all ${workersToSpawn} workers in parallel using Task tool!**
+**Spawn all ${workersToSpawn} workers in parallel!**
 
-Divide the ${seeds.length} seeds evenly, embed each worker's scaffold subset, and let them work silently.
+Each worker:
+1. Gets its LEGO ID list from assignments above
+2. Fetches scaffolds via WebFetch
+3. Generates baskets
+4. Uploads via HTTP
 
 Report: "✅ Master complete: ${workersToSpawn} workers spawned for ${legoCount} LEGOs"
 `;
@@ -1148,6 +1192,44 @@ app.get('/health', (req, res) => {
     activeJobs: activeJobs.size,
     watchers: watchers.size
   });
+});
+
+/**
+ * GET /phase5/scaffold/:courseCode/:legoId
+ * Serve scaffold file for a specific LEGO
+ */
+app.get('/phase5/scaffold/:courseCode/:legoId', async (req, res) => {
+  try {
+    const { courseCode, legoId } = req.params;
+
+    // Validate LEGO ID format
+    if (!/^S\d{4}L\d{2}$/.test(legoId)) {
+      return res.status(400).json({ error: 'Invalid LEGO ID format. Expected: S0117L01' });
+    }
+
+    const scaffoldPath = path.join(VFS_ROOT, 'public/vfs/courses', courseCode, 'phase5_scaffolds', `${legoId}.txt`);
+
+    // Check if file exists
+    if (!await fs.pathExists(scaffoldPath)) {
+      return res.status(404).json({
+        error: 'Scaffold not found',
+        legoId,
+        path: scaffoldPath
+      });
+    }
+
+    // Read and return scaffold text
+    const scaffoldText = await fs.readFile(scaffoldPath, 'utf-8');
+
+    res.type('text/plain').send(scaffoldText);
+
+  } catch (error) {
+    console.error('[Phase 5] Error serving scaffold:', error);
+    res.status(500).json({
+      error: 'Failed to load scaffold',
+      message: error.message
+    });
+  }
 });
 
 /**
