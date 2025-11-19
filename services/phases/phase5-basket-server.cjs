@@ -954,53 +954,36 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   const seedsPerWorker = 1; // Each worker gets exactly 1 seed
   const legosPerWorker = Math.ceil(legoCount / workerCount);
 
-  return `# Phase 5 Master Orchestrator - Three-Tier Architecture
+  return `# Phase 5 Basket Generation - Direct Agent
 
 **Course:** \`${courseCode}\`
 **Your Range:** Seeds \`S${String(startSeed).padStart(4, '0')}\` to \`S${String(endSeed).padStart(4, '0')}\` (${totalSeeds} seeds)
 **Target LEGOs:** ${legoCount} LEGOs across ${seeds.length} seeds
-**Workers to spawn:** ${workerCount} (via Task tool)
-**LEGOs per worker:** ~${legosPerWorker} LEGOs (~${seedsPerWorker} seeds each)
 
 ---
 
-## ⚡ CRITICAL: SILENT OPERATION
+## 🎯 YOUR MISSION
 
-**You AND your workers must work silently!**
-
-- ❌ NO verbose logging ("Processing LEGO...", "Generated phrases...")
-- ✅ Spawn workers silently (no progress logs)
-- ✅ Workers upload via HTTP (doesn't count as output)
-- ✅ Only brief final summary: "✅ Master complete: ${workerCount} workers spawned, ${legoCount} LEGOs generated"
-
-**Why:** Browser has 32K token output limit. Silent operation keeps you safe.
-
----
-
-## 🎯 YOUR MISSION: SPAWN ${workerCount} WORKERS
-
-You are a **Master Orchestrator**. You DON'T generate baskets yourself.
+Generate practice phrase baskets for each LEGO using the text scaffolds below.
 
 **Your workflow:**
 
-1. ✅ **Divide scaffolds below** - Each worker gets exactly 1 seed (${seeds.length} seeds total)
-2. ✅ **Spawn ${workerCount} workers** - Use Task tool ${workerCount} times in ONE message (parallel!)
-3. ✅ **Work SILENTLY** - No verbose progress logs
-4. ✅ **Monitor completion** - Workers will upload via ngrok
-5. ✅ **Report brief summary** - "✅ Master complete: ${workerCount} workers spawned"
+1. ✅ **Read each text scaffold** - Each scaffold contains LEGO details, seed context, available vocabulary, and output template
+2. ✅ **Generate 10 practice phrases per LEGO** - Use ONLY vocabulary from "Available Vocabulary" section
+3. ✅ **Follow progressive complexity** - 2-3 words → 7-10 words (see phrase distribution below)
+4. ✅ **Upload via HTTP** - POST to ngrok endpoint with structured JSON
+5. ✅ **Work efficiently** - Generate all ${legoCount} LEGOs in this session
 
 ---
 
-## 📋 COMPLETE SCAFFOLD DATA (${legoCount} LEGOs)
+## 📋 TEXT SCAFFOLDS (${legoCount} LEGOs)
 
-**CRITICAL:** All scaffold data is embedded below. Divide these scaffolds among your ${workerCount} workers.
-
-Each scaffold contains:
-- LEGO details (known → target, correct English → Spanish order)
-- Seed context (full sentence pair)
-- Available vocabulary (10 recent seeds, 30 recent LEGOs, earlier LEGOs from current seed)
-- Output template with placeholders
-- GATE compliance requirements
+Each scaffold shows:
+- **LEGO** (known → target in correct language order)
+- **Seed context** (full sentence pair showing the target usage)
+- **Is Final LEGO** (YES = server will add complete seed sentence automatically)
+- **Available vocabulary** (GATE-compliant: 10 recent seeds, 30 recent LEGOs, earlier LEGOs from current seed)
+- **Output template** with labeled object format
 
 **SCAFFOLDS:**
 
@@ -1008,122 +991,79 @@ ${Object.values(legoData).join('\n\n')}
 
 ---
 
-## 🚀 HOW TO SPAWN WORKERS
+## 📐 PHRASE DISTRIBUTION (10 phrases per LEGO)
 
-**SIMPLE: 1 WORKER PER SEED**
+Generate phrases with progressive complexity:
 
-Each worker handles exactly 1 seed (all LEGOs from that seed). This ensures:
-- Seeds stay atomic (never split)
-- Clean division (no overlap)
-- Simple assignment (Worker 1 → Seed 1, Worker 2 → Seed 2, etc.)
+1. **2 short phrases** (1-2 LEGOs / 2-3 words)
+   - Just the LEGO target, or with 1 recent LEGO
+   - Example: "Quiero" or "Quiero hablar"
 
-**Your seeds:** ${seeds.join(', ')} (${seeds.length} seeds total)
+2. **2 medium phrases** (3 LEGOs / 3-5 words)
+   - Combine with 2-3 recent LEGOs
+   - Example: "Quiero hablar español"
 
-**Assignment:**
-${seeds.map((seed, i) => `- Worker ${i + 1}: ${seed} (all LEGOs from this seed)`).join('\n')}
+3. **2 longer phrases** (4 LEGOs / 5-7 words)
+   - More complex combinations
+   - Example: "Quiero hablar español muy bien"
 
-**This eliminates complexity:**
-- ✅ No need to divide seeds among workers
-- ✅ No risk of splitting a seed
-- ✅ Each worker has clear, atomic scope
+4. **4 longest phrases** (5+ LEGOs / 7-10 words)
+   - Maximum complexity using available vocabulary
+   - Example: "Quiero hablar español muy bien cuando estoy con mis amigos"
 
-**2. Spawn all ${workerCount} workers in parallel:**
-
-Use Task tool ${workerCount} times in a SINGLE message. Each worker receives:
-
-\`\`\`
-Task tool prompt for worker-1:
-{
-  "subagent_type": "general-purpose",
-  "description": "Phase 5 Worker 1",
-  "prompt": "You are Phase 5 Worker 1. Generate baskets for your assigned LEGOs using the text scaffolds below.
-
-## YOUR SCAFFOLDS (Human-Readable Text Format)
-
-<Embed worker 1's text scaffolds here - just concatenate the relevant text scaffolds from above>
-
-Each scaffold shows:
-- LEGO (known → target in correct order)
-- Seed context
-- Available vocabulary (GATE compliant)
-- Output template with placeholders
-
-## YOUR TASK
-
-For each LEGO scaffold above:
-1. Read the available vocabulary (10 recent seeds, 30 recent LEGOs, earlier LEGOs from current seed)
-2. Generate 10 practice phrases using ONLY vocabulary from the available vocabulary section
-3. Follow the phrase distribution: 2 short (1-2 LEGOs), 2 medium (3 LEGOs), 2 longer (4 LEGOs), 4 longest (5+ LEGOs)
-4. Output structured JSON matching the template in each scaffold
-
-## UPLOAD ENDPOINT
-POST ${ngrokUrl}/phase5/upload-basket
-
-## PAYLOAD FORMAT
-{
-  \\"courseCode\\": \\"${courseCode}\\",
-  \\"seed\\": \\"S0001\\",
-  \\"baskets\\": { \\"S0001L01\\": {...}, \\"S0001L02\\": {...}, ... },
-  \\"stagingOnly\\": ${params.stagingOnly || true}
-}
-
-## WORK SILENTLY
-Generate baskets quietly, upload via HTTP, report brief summary only."
-}
-\`\`\`
-
-**3. Monitor silently:**
-
-Workers will upload their baskets via ngrok. No need to track - just spawn and let them work.
-
-**4. Report when all spawned:**
-
-\`\`\`
-✅ Master complete: ${workerCount} workers spawned for ${legoCount} LEGOs
-\`\`\`
+**CRITICAL GATE Compliance:**
+- ✅ ONLY use vocabulary from "Available Vocabulary" section of each scaffold
+- ❌ DO NOT introduce new words not listed in available vocabulary
+- ✅ Verify each phrase uses only previously-learned LEGOs
 
 ---
 
-## 📤 WORKER UPLOAD ENDPOINT
+## 📤 UPLOAD ENDPOINT
 
-Workers POST to: \`${ngrokUrl}/phase5/upload-basket\`
+**POST:** \`${ngrokUrl}/phase5/upload-basket\`
 
-**Payload format (Simplified):**
+**Payload format:**
 \`\`\`json
 {
   "courseCode": "${courseCode}",
-  "seed": "S0001",
+  "seed": "S0101",
   "baskets": {
-    "S0001L01": {
+    "S0101L01": {
       "lego": {"known": "I want", "target": "quiero"},
       "practice_phrases": [
         {"known": "I want", "target": "Quiero"},
         {"known": "I want to speak", "target": "Quiero hablar"},
-        {"known": "I want to speak Spanish", "target": "Quiero hablar español"}
+        {"known": "I want to speak Spanish", "target": "Quiero hablar español"},
+        {"known": "I want to speak Spanish well", "target": "Quiero hablar español bien"},
+        {"known": "I want to speak Spanish very well", "target": "Quiero hablar español muy bien"},
+        {"known": "I want to speak Spanish very well today", "target": "Quiero hablar español muy bien hoy"},
+        {"known": "I want to speak Spanish very well when I'm with friends", "target": "Quiero hablar español muy bien cuando estoy con amigos"},
+        {"known": "I want to speak Spanish very well when I'm with my friends", "target": "Quiero hablar español muy bien cuando estoy con mis amigos"},
+        {"known": "I want to speak Spanish very well when I'm with my friends today", "target": "Quiero hablar español muy bien cuando estoy con mis amigos hoy"},
+        {"known": "I want to speak Spanish very well when I'm with my friends in the pub", "target": "Quiero hablar español muy bien cuando estoy con mis amigos en el pub"}
       ]
+    },
+    "S0101L02": {
+      "lego": {"known": "to speak", "target": "hablar"},
+      "practice_phrases": [...]
     }
   },
   "stagingOnly": ${params.stagingOnly || true}
 }
 \`\`\`
 
-**Server automatically adds:**
-- \`is_final_lego\`: Boolean derived from LEGO ID (checks lego_pairs.json to see if this is the last LEGO in the seed)
-  - **CRITICAL**: If TRUE, server adds the complete seed sentence as the highest practice phrase
-  - This ensures learners can practice the full target sentence!
-- \`phrase_count\`: Actual count of phrases provided
-
-**Workers don't need to include these fields.**
+**Server automatically adds (you don't need to include these):**
+- \`is_final_lego\`: Boolean (true if this is the last LEGO in the seed)
+- \`phrase_count\`: Count of phrases provided
+- **Final seed sentence**: If \`is_final_lego = true\`, server adds complete seed sentence as highest practice phrase
 
 ---
 
 ## 🎯 START NOW
 
-**Spawn all ${workerCount} workers in parallel using Task tool!**
+Generate all ${legoCount} baskets using the text scaffolds above.
 
-Divide the ${seeds.length} seeds evenly, embed each worker's scaffold subset, and let them work silently.
-
-Report: "✅ Master complete: ${workerCount} workers spawned for ${legoCount} LEGOs"
+Work efficiently through each LEGO, then upload the complete batch via HTTP.
 `;
 }
 
