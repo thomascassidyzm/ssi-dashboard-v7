@@ -1094,6 +1094,26 @@ LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
 - \`phrase_count\`: Count of phrases
 - \`type\`: LEGO type from lego_pairs.json
 
+## SELF-CHECK BEFORE UPLOAD
+
+**CRITICAL: Review EVERY basket before uploading:**
+
+For EACH LEGO, verify ALL 10 practice phrases:
+
+1. ✅ **Contains the LEGO**: Every phrase must include the LEGO you're practicing
+   - Example: If LEGO is \\"I don't know why\\", ALL phrases must contain \\"I don't know why\\"
+   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO)
+
+2. ✅ **GATE Compliance**: Only uses vocabulary from scaffold's Available Vocabulary
+   - ❌ NO new words not in the available vocabulary list
+   - ❌ NO guessing at translations
+
+3. ✅ **Grammar**: Correct in BOTH languages
+   - Check English grammar
+   - Check Spanish grammar (verb conjugations, gender agreement, etc.)
+
+**If ANY phrase fails ANY check, DELETE IT and generate a new one.**
+
 ## UPLOAD
 
 **POST:** ${ngrokUrl}/phase5/upload-basket
@@ -1833,6 +1853,26 @@ LEGO: \\"I don't know why\\" → \\"No sé por qué\\"
 - \`is_final_lego\`: Boolean (if true, server adds complete seed sentence)
 - \`phrase_count\`: Count of phrases
 - \`type\`: LEGO type from lego_pairs.json
+
+## SELF-CHECK BEFORE UPLOAD
+
+**CRITICAL: Review EVERY basket before uploading:**
+
+For EACH LEGO, verify ALL 10 practice phrases:
+
+1. ✅ **Contains the LEGO**: Every phrase must include the LEGO you're practicing
+   - Example: If LEGO is \\"I don't know why\\", ALL phrases must contain \\"I don't know why\\"
+   - ❌ REJECT phrases like \\"your idea\\" or \\"that's easier\\" (don't use the LEGO)
+
+2. ✅ **GATE Compliance**: Only uses vocabulary from scaffold's Available Vocabulary
+   - ❌ NO new words not in the available vocabulary list
+   - ❌ NO guessing at translations
+
+3. ✅ **Grammar**: Correct in BOTH languages
+   - Check English grammar
+   - Check Spanish grammar (verb conjugations, gender agreement, etc.)
+
+**If ANY phrase fails ANY check, DELETE IT and generate a new one.**
 
 ## UPLOAD
 
