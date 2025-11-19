@@ -419,70 +419,50 @@ app.post('/start', async (req, res) => {
     job.targetLegos = targetLegos;
     job.legoData = legoData;
 
-    // STEP 2: THREE-TIER ARCHITECTURE CONFIGURATION (Dynamic Sizing)
-    // Choose configuration based on job size
-    let masterCount, workersPerMaster, seedsPerWorker, configType;
+    // STEP 2: DIRECT AGENT CONFIGURATION
+    // Read config from automation.config.simple.json
+    const config = loadConfig();
+    const agentCount = config.phase5_basket_generation.browsers || 5;
+    const seedsPerAgent = config.phase5_basket_generation.seeds_per_agent || 1;
 
-    if (totalSeeds <= 30) {
-      // SMALL TEST PATTERN (≤30 seeds)
-      // For testing quality AND processes
-      masterCount = 3;           // Browser tabs
-      workersPerMaster = 5;      // Workers per Master
-      seedsPerWorker = 2;        // Seeds per worker
-      configType = 'Small Test';
-    } else {
-      // FULL COURSE PATTERN (>30 seeds)
-      // For production runs
-      masterCount = 15;          // Browser tabs
-      workersPerMaster = 10;     // Workers per Master
-      seedsPerWorker = 5;        // Seeds per worker
-      configType = 'Full Course';
-    }
+    const capacity = agentCount * seedsPerAgent;
 
-    const totalWorkers = masterCount * workersPerMaster;
-    const capacity = totalWorkers * seedsPerWorker;
-
-    console.log(`\n[Phase 5] Three-Tier Architecture (${configType} Pattern):`);
-    console.log(`[Phase 5]    Tier 1 - Orchestrator: 1 (this server)`);
-    console.log(`[Phase 5]    Tier 2 - Masters: ${masterCount} browser tabs`);
-    console.log(`[Phase 5]    Tier 3 - Workers: ${workersPerMaster} per Master (${totalWorkers} total)`);
-    console.log(`[Phase 5]    Seeds per worker: ${seedsPerWorker}`);
+    console.log(`\n[Phase 5] Direct Agent Configuration:`);
+    console.log(`[Phase 5]    Agents: ${agentCount} browser tabs`);
+    console.log(`[Phase 5]    Seeds per agent: ${seedsPerAgent}`);
     console.log(`[Phase 5]    Total capacity: ${capacity} seeds`);
     console.log(`[Phase 5]    Job size: ${totalSeeds} seeds`);
     console.log(`[Phase 5]    Target LEGOs: ${targetLegos.length} LEGOs`);
 
     if (capacity < totalSeeds) {
       console.warn(`[Phase 5] ⚠️  Warning: Capacity (${capacity}) < Total Seeds (${totalSeeds})`);
-      console.warn(`[Phase 5]    Increase masterCount or seedsPerWorker!`);
+      console.warn(`[Phase 5]    Increase browsers or seeds_per_agent in config!`);
     }
 
     job.config = {
-      configType,
-      masterCount,
-      workersPerMaster,
-      seedsPerWorker,
-      totalWorkers,
+      agentCount,
+      seedsPerAgent,
       capacity,
       // Legacy fields for backward compatibility
-      browsers: masterCount,
-      agents: workersPerMaster,
-      totalAgents: totalWorkers
+      browsers: agentCount,
+      agents: 1,
+      totalAgents: agentCount
     };
-    job.milestones.windowsTotal = masterCount;
+    job.milestones.windowsTotal = agentCount;
     job.milestones.branchesExpected = 0; // No git branches in ngrok architecture
-    job.status = 'spawning_masters';
+    job.status = 'spawning_agents';
 
-    // STEP 3: Spawn Master browser tabs with embedded scaffold data
-    // No branch watcher needed - workers upload directly via ngrok
+    // STEP 3: Spawn browser tabs with direct agents
+    // Each agent generates baskets directly, uploads via ngrok
     await spawnBrowserWindows(courseCode, {
       target,
       known,
       startSeed,
       endSeed,
-      legoData,        // ← Embedded scaffold data for Masters
+      legoData,        // ← Scaffold data for agents
       targetLegos,     // ← List of LEGOs to generate (missing or force regenerate)
       stagingOnly      // ← Pass through staging flag
-    }, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job);
+    }, baseCourseDir, agentCount, seedsPerAgent, job);
 
     res.json({
       success: true,
@@ -767,12 +747,11 @@ async function startBranchWatcher(courseCode, expectedWindows, baseCourseDir, cu
  * @param {number} seedsPerWorker - Seeds per worker agent (5)
  * @param {object} job - Job tracking object
  */
-async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCount, workersPerMaster, seedsPerWorker, job = null) {
+async function spawnBrowserWindows(courseCode, params, baseCourseDir, agentCount, seedsPerAgent, job = null) {
   const { target, known, startSeed, endSeed, legoData, targetLegos } = params;
 
-  console.log(`\n[Phase 5] 🌐 Spawning ${masterCount} Master browser tabs...`);
-  console.log(`[Phase 5]    Each Master spawns ${workersPerMaster} workers via Task tool`);
-  console.log(`[Phase 5]    Each worker processes ~${seedsPerWorker} seeds`);
+  console.log(`\n[Phase 5] 🌐 Spawning ${agentCount} direct agent browser tabs...`);
+  console.log(`[Phase 5]    Each agent processes ~${seedsPerAgent} seeds`);
   console.log(`[Phase 5]    Total LEGOs: ${targetLegos.length}`);
 
   const config = loadConfig();
@@ -792,54 +771,52 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCoun
   const seeds = Object.keys(legosBySeed).sort();
   console.log(`[Phase 5]    Total seeds with LEGOs: ${seeds.length}`);
 
-  // Divide SEEDS among Masters (each seed stays together - atomic unit)
-  const seedsPerMaster = Math.ceil(seeds.length / masterCount);
+  // Divide SEEDS among agents (each seed stays together - atomic unit)
+  const seedsPerAgentCalc = Math.ceil(seeds.length / agentCount);
 
-  for (let masterNum = 1; masterNum <= masterCount; masterNum++) {
-    console.log(`\n[Phase 5]   Master ${masterNum}/${masterCount}:`);
+  for (let agentNum = 1; agentNum <= agentCount; agentNum++) {
+    console.log(`\n[Phase 5]   Agent ${agentNum}/${agentCount}:`);
 
-    // Calculate this Master's seed range
-    const masterStartIdx = (masterNum - 1) * seedsPerMaster;
-    const masterEndIdx = Math.min(masterNum * seedsPerMaster, seeds.length);
-    const masterSeeds = seeds.slice(masterStartIdx, masterEndIdx);
+    // Calculate this agent's seed range
+    const agentStartIdx = (agentNum - 1) * seedsPerAgentCalc;
+    const agentEndIdx = Math.min(agentNum * seedsPerAgentCalc, seeds.length);
+    const agentSeeds = seeds.slice(agentStartIdx, agentEndIdx);
 
-    // Collect all LEGOs from this Master's seeds
-    const masterTargetLegos = [];
-    for (const seedId of masterSeeds) {
-      masterTargetLegos.push(...legosBySeed[seedId]);
+    // Collect all LEGOs from this agent's seeds
+    const agentTargetLegos = [];
+    for (const seedId of agentSeeds) {
+      agentTargetLegos.push(...legosBySeed[seedId]);
     }
 
-    // Extract scaffold data for this Master's LEGOs
-    const masterLegoData = {};
-    for (const lego of masterTargetLegos) {
+    // Extract scaffold data for this agent's LEGOs
+    const agentLegoData = {};
+    for (const lego of agentTargetLegos) {
       if (legoData[lego.legoId]) {
-        masterLegoData[lego.legoId] = legoData[lego.legoId];
+        agentLegoData[lego.legoId] = legoData[lego.legoId];
       }
     }
 
-    const dataSize = Math.round(JSON.stringify(masterLegoData).length / 1024);
-    console.log(`[Phase 5]     Seeds: ${masterSeeds.slice(0, 5).join(', ')}${masterSeeds.length > 5 ? '...' : ''} (${masterSeeds.length} seeds)`);
-    console.log(`[Phase 5]     LEGOs: ${masterTargetLegos.length} LEGOs (${dataSize} KB scaffold data)`);
-    console.log(`[Phase 5]     Will spawn ${workersPerMaster} workers via Task tool`);
+    const dataSize = Math.round(JSON.stringify(agentLegoData).length / 1024);
+    console.log(`[Phase 5]     Seeds: ${agentSeeds.slice(0, 5).join(', ')}${agentSeeds.length > 5 ? '...' : ''} (${agentSeeds.length} seeds)`);
+    console.log(`[Phase 5]     LEGOs: ${agentTargetLegos.length} LEGOs (${dataSize} KB scaffold data)`);
 
-    // Generate Master orchestrator prompt with embedded scaffold data
-    const masterPrompt = generatePhase5OrchestratorPrompt(
+    // Generate direct agent prompt with text scaffolds
+    const agentPrompt = generatePhase5OrchestratorPrompt(
       courseCode,
       {
         target,
         known,
-        startSeed: parseInt(masterSeeds[0].replace('S', '')),
-        endSeed: parseInt(masterSeeds[masterSeeds.length - 1].replace('S', '')),
-        legoData: masterLegoData,
-        targetLegos: masterTargetLegos,
-        agentsPerWindow: workersPerMaster,  // Workers per Master
+        startSeed: parseInt(agentSeeds[0].replace('S', '')),
+        endSeed: parseInt(agentSeeds[agentSeeds.length - 1].replace('S', '')),
+        legoData: agentLegoData,
+        targetLegos: agentTargetLegos,
         stagingOnly: params.stagingOnly
       },
       baseCourseDir
     );
 
     try {
-      await spawnClaudeCodeSession(masterPrompt, `phase5-master-${masterNum}`);
+      await spawnClaudeCodeSession(agentPrompt, `phase5-agent-${agentNum}`);
 
       // Update milestones
       if (job) {
@@ -848,24 +825,23 @@ async function spawnBrowserWindows(courseCode, params, baseCourseDir, masterCoun
         job.milestones.lastWindowSpawnedAt = new Date().toISOString();
       }
 
-      // Stagger Master spawns (default 5000ms)
-      if (masterNum < masterCount) {
-        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next Master...`);
+      // Stagger agent spawns (default 5000ms)
+      if (agentNum < agentCount) {
+        console.log(`[Phase 5]     Waiting ${spawnDelay}ms before next agent...`);
         await new Promise(resolve => setTimeout(resolve, spawnDelay));
       }
     } catch (error) {
-      console.error(`[Phase 5]     ❌ Failed to spawn Master ${masterNum}:`, error.message);
+      console.error(`[Phase 5]     ❌ Failed to spawn agent ${agentNum}:`, error.message);
       if (job && !job.warnings) job.warnings = [];
-      if (job) job.warnings.push(`Failed to spawn Master ${masterNum}: ${error.message}`);
+      if (job) job.warnings.push(`Failed to spawn agent ${agentNum}: ${error.message}`);
     }
   }
 
-  console.log(`\n[Phase 5] ✅ Spawned ${masterCount} Master browser tabs`);
-  console.log(`[Phase 5]    Masters will spawn ${masterCount * workersPerMaster} workers total`);
-  console.log(`[Phase 5]    Workers upload baskets via ngrok`);
+  console.log(`\n[Phase 5] ✅ Spawned ${agentCount} direct agent browser tabs`);
+  console.log(`[Phase 5]    Agents upload baskets via ngrok`);
 
   if (job) {
-    job.status = 'workers_generating';
+    job.status = 'agents_generating';
   }
 }
 
