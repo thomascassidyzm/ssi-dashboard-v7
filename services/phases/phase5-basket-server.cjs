@@ -24,6 +24,7 @@ const bodyParser = require('body-parser');
 const { spawn } = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
+const { generateTextScaffold } = require('./generate-text-scaffold.cjs');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3459;
@@ -71,12 +72,12 @@ async function getAllLegosInRange(baseCourseDir, startSeed, endSeed) {
 
     if (seedNum >= startSeed && seedNum <= endSeed) {
       for (const lego of seed.legos || []) {
-        if (lego.new) {
+        if (lego.new && lego.lego) {
           allLegos.push({
             legoId: lego.id,
             seed: seed.seed_id,
-            target: lego.target,
-            known: lego.known,
+            target: lego.lego.target,
+            known: lego.lego.known,
             type: lego.type || 'M'
           });
         }
@@ -113,12 +114,12 @@ async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
 
     if (seedNum >= startSeed && seedNum <= endSeed) {
       for (const lego of seed.legos || []) {
-        if (lego.new && !existingBaskets[lego.id]) {
+        if (lego.new && lego.lego && !existingBaskets[lego.id]) {
           missingLegos.push({
             legoId: lego.id,
             seed: seed.seed_id,
-            target: lego.target,
-            known: lego.known,
+            target: lego.lego.target,
+            known: lego.lego.known,
             type: lego.type || 'M'
           });
         }
@@ -133,62 +134,23 @@ async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
  * Load scaffold data for LEGOs
  * Returns object with complete LEGO data ready to embed in prompt
  */
+/**
+ * Generate text scaffolds for LEGOs
+ * Returns object mapping legoId -> human-readable text scaffold
+ */
 async function loadScaffoldData(baseCourseDir, missingLegos) {
-  const legoData = {};
   const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
-  const scaffoldDir = path.join(baseCourseDir, 'phase5_scaffolds');
-
-  // Load full lego_pairs for context
   const legoPairs = await fs.readJson(legoPairsPath);
 
-  // Build seed lookup
-  const seedMap = {};
-  for (const seed of legoPairs.seeds || []) {
-    seedMap[seed.seed_id] = seed;
-  }
+  const textScaffolds = {};
 
   for (const lego of missingLegos) {
-    const seedId = lego.seed;
-    // Scaffold files are named seed_s0001.json (lowercase, no '_scaffold' suffix)
-    const scaffoldPath = path.join(scaffoldDir, `seed_${seedId.toLowerCase()}.json`);
-
-    // Try to load scaffold
-    let scaffoldData = null;
-    if (await fs.pathExists(scaffoldPath)) {
-      try {
-        const fullScaffold = await fs.readJson(scaffoldPath);
-        scaffoldData = fullScaffold.legos?.[lego.legoId];
-      } catch (err) {
-        console.warn(`[Phase 5] Could not load scaffold for ${lego.legoId}: ${err.message}`);
-      }
-    }
-
-    // Build LEGO data with or without scaffold
-    const seedInfo = seedMap[seedId];
-    const legoIndex = seedInfo?.legos?.findIndex(l => l.id === lego.legoId) || 0;
-
-    legoData[lego.legoId] = {
-      lego: [lego.target, lego.known],
-      type: lego.type,
-      seed: seedId,
-
-      // Scaffold data (if available)
-      recent_context: scaffoldData?.recent_context || {},
-      current_seed_earlier_legos: scaffoldData?.current_seed_earlier_legos || [],
-      is_final_lego: legoIndex === (seedInfo?.legos?.length - 1),
-
-      // Fallback: basic context if no scaffold
-      seed_sentence: seedInfo?.seed_pair || [],
-      seed_legos: seedInfo?.legos?.map(l => ({
-        id: l.id,
-        target: l.target,
-        known: l.known,
-        new: l.new
-      })) || []
-    };
+    // Generate text scaffold for this LEGO
+    const textScaffold = generateTextScaffold(lego, legoPairs, {});
+    textScaffolds[lego.legoId] = textScaffold;
   }
 
-  return legoData;
+  return textScaffolds;
 }
 
 // Branch watcher processes (courseCode -> child process)
@@ -974,10 +936,6 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   const targetLegos = params.targetLegos || [];
   const legoCount = targetLegos.length;
 
-  // Fixed: 10 workers per Master
-  const workerCount = 10;
-  const legosPerWorker = Math.ceil(legoCount / workerCount);
-
   const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
   // Group LEGOs by seed for clean division
@@ -990,7 +948,11 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
     legosBySeed[seedId].push(lego);
   }
   const seeds = Object.keys(legosBySeed).sort();
-  const seedsPerWorker = Math.ceil(seeds.length / workerCount);
+
+  // Dynamic worker count: 1 worker per seed (ensures atomic seed handling)
+  const workerCount = seeds.length;
+  const seedsPerWorker = 1; // Each worker gets exactly 1 seed
+  const legosPerWorker = Math.ceil(legoCount / workerCount);
 
   return `# Phase 5 Master Orchestrator - Three-Tier Architecture
 
@@ -1009,68 +971,61 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
 - ❌ NO verbose logging ("Processing LEGO...", "Generated phrases...")
 - ✅ Spawn workers silently (no progress logs)
 - ✅ Workers upload via HTTP (doesn't count as output)
-- ✅ Only brief final summary: "✅ Master complete: 10 workers spawned, ${legoCount} LEGOs generated"
+- ✅ Only brief final summary: "✅ Master complete: ${workerCount} workers spawned, ${legoCount} LEGOs generated"
 
 **Why:** Browser has 32K token output limit. Silent operation keeps you safe.
 
 ---
 
-## 🎯 YOUR MISSION: SPAWN 10 WORKERS
+## 🎯 YOUR MISSION: SPAWN ${workerCount} WORKERS
 
 You are a **Master Orchestrator**. You DON'T generate baskets yourself.
 
 **Your workflow:**
 
-1. ✅ **Divide scaffolds below** - Split ${seeds.length} seeds among ${workerCount} workers (~${seedsPerWorker} seeds each)
+1. ✅ **Divide scaffolds below** - Each worker gets exactly 1 seed (${seeds.length} seeds total)
 2. ✅ **Spawn ${workerCount} workers** - Use Task tool ${workerCount} times in ONE message (parallel!)
 3. ✅ **Work SILENTLY** - No verbose progress logs
 4. ✅ **Monitor completion** - Workers will upload via ngrok
-5. ✅ **Report brief summary** - "✅ Master complete: 10 workers spawned"
+5. ✅ **Report brief summary** - "✅ Master complete: ${workerCount} workers spawned"
 
 ---
 
 ## 📋 COMPLETE SCAFFOLD DATA (${legoCount} LEGOs)
 
-**CRITICAL:** All scaffold data is embedded below. Divide this among your ${workerCount} workers.
+**CRITICAL:** All scaffold data is embedded below. Divide these scaffolds among your ${workerCount} workers.
 
-\`\`\`json
-${JSON.stringify(legoData, null, 2)}
-\`\`\`
+Each scaffold contains:
+- LEGO details (known → target, correct English → Spanish order)
+- Seed context (full sentence pair)
+- Available vocabulary (10 recent seeds, 30 recent LEGOs, earlier LEGOs from current seed)
+- Output template with placeholders
+- GATE compliance requirements
 
-**Each LEGO scaffold includes:**
-- \`lego\`: [target, known] language pair
-- \`type\`: A/M/F/X (difficulty level)
-- \`seed\`: Seed ID this LEGO belongs to
-- \`recent_context\`: Vocabulary from recent seeds (GATE compliance)
-- \`current_seed_earlier_legos\`: LEGOs taught earlier in same seed
-- \`is_final_lego\`: Whether this is the last LEGO in the seed
-- \`seed_sentence\`: Full seed sentence (fallback context)
-- \`seed_legos\`: All LEGOs in this seed (fallback context)
+**SCAFFOLDS:**
+
+${Object.values(legoData).join('\n\n')}
 
 ---
 
 ## 🚀 HOW TO SPAWN WORKERS
 
-**CRITICAL: SEEDS ARE ATOMIC UNITS - NEVER SPLIT A SEED ACROSS WORKERS!**
+**SIMPLE: 1 WORKER PER SEED**
 
-Each worker must receive COMPLETE seeds only. If a seed has 5 LEGOs, all 5 go to the same worker.
+Each worker handles exactly 1 seed (all LEGOs from that seed). This ensures:
+- Seeds stay atomic (never split)
+- Clean division (no overlap)
+- Simple assignment (Worker 1 → Seed 1, Worker 2 → Seed 2, etc.)
 
 **Your seeds:** ${seeds.join(', ')} (${seeds.length} seeds total)
 
-**Division strategy:**
-- Assign COMPLETE seeds to workers (never split a seed!)
-- ${seeds.length} seeds ÷ ${workerCount} workers = ~${Math.floor(seeds.length / workerCount)} seeds per worker
-- Some workers may get more seeds than others (that's OK!)
-- Some workers may get 0 seeds if you don't have enough (that's OK!)
+**Assignment:**
+${seeds.map((seed, i) => `- Worker ${i + 1}: ${seed} (all LEGOs from this seed)`).join('\n')}
 
-**Example division:**
-- Worker 1: ${seeds.slice(0, Math.ceil(seeds.length / workerCount)).join(', ')} (complete seeds)
-- Worker 2: ${seeds.slice(Math.ceil(seeds.length / workerCount), Math.ceil(seeds.length / workerCount) * 2).join(', ')} (complete seeds)
-- Worker 3: ${seeds.slice(Math.ceil(seeds.length / workerCount) * 2, Math.ceil(seeds.length / workerCount) * 3).join(', ')} (complete seeds)
-- ... continue until all ${seeds.length} seeds are assigned
-
-**WRONG:** "Worker 1 gets S0001L01-L03, Worker 2 gets S0001L04-L05" ❌ (split seed!)
-**RIGHT:** "Worker 1 gets S0001 (all LEGOs), Worker 2 gets S0002 (all LEGOs)" ✅ (complete seeds!)
+**This eliminates complexity:**
+- ✅ No need to divide seeds among workers
+- ✅ No risk of splitting a seed
+- ✅ Each worker has clear, atomic scope
 
 **2. Spawn all ${workerCount} workers in parallel:**
 
@@ -1081,13 +1036,25 @@ Task tool prompt for worker-1:
 {
   "subagent_type": "general-purpose",
   "description": "Phase 5 Worker 1",
-  "prompt": "You are Phase 5 Worker 1. Generate baskets for the following LEGOs and upload via ngrok.
+  "prompt": "You are Phase 5 Worker 1. Generate baskets for your assigned LEGOs using the text scaffolds below.
 
-## SCAFFOLD DATA (Your subset)
-<Embed worker 1's scaffold subset here as JSON>
+## YOUR SCAFFOLDS (Human-Readable Text Format)
 
-## INSTRUCTIONS
-Fetch worker instructions from: https://ssi-dashboard-v7.vercel.app/prompts/phase5_worker.md
+<Embed worker 1's text scaffolds here - just concatenate the relevant text scaffolds from above>
+
+Each scaffold shows:
+- LEGO (known → target in correct order)
+- Seed context
+- Available vocabulary (GATE compliant)
+- Output template with placeholders
+
+## YOUR TASK
+
+For each LEGO scaffold above:
+1. Read the available vocabulary (10 recent seeds, 30 recent LEGOs, earlier LEGOs from current seed)
+2. Generate 10 practice phrases using ONLY vocabulary from the available vocabulary section
+3. Follow the phrase distribution: 2 short (1-2 LEGOs), 2 medium (3 LEGOs), 2 longer (4 LEGOs), 4 longest (5+ LEGOs)
+4. Output structured JSON matching the template in each scaffold
 
 ## UPLOAD ENDPOINT
 POST ${ngrokUrl}/phase5/upload-basket
@@ -1096,12 +1063,12 @@ POST ${ngrokUrl}/phase5/upload-basket
 {
   \\"courseCode\\": \\"${courseCode}\\",
   \\"seed\\": \\"S0001\\",
-  \\"baskets\\": { \\"S0001L01\\": {...}, ... },
+  \\"baskets\\": { \\"S0001L01\\": {...}, \\"S0001L02\\": {...}, ... },
   \\"stagingOnly\\": ${params.stagingOnly || true}
 }
 
 ## WORK SILENTLY
-Generate baskets silently, upload via HTTP, report brief summary only."
+Generate baskets quietly, upload via HTTP, report brief summary only."
 }
 \`\`\`
 
@@ -1121,24 +1088,32 @@ Workers will upload their baskets via ngrok. No need to track - just spawn and l
 
 Workers POST to: \`${ngrokUrl}/phase5/upload-basket\`
 
-**Payload format:**
+**Payload format (Simplified):**
 \`\`\`json
 {
   "courseCode": "${courseCode}",
   "seed": "S0001",
   "baskets": {
     "S0001L01": {
-      "lego": ["target", "known"],
-      "type": "M",
+      "lego": {"known": "I want", "target": "quiero"},
       "practice_phrases": [
-        ["known phrase", "target phrase", null, 1],
-        ...
+        {"known": "I want", "target": "Quiero"},
+        {"known": "I want to speak", "target": "Quiero hablar"},
+        {"known": "I want to speak Spanish", "target": "Quiero hablar español"}
       ]
     }
   },
   "stagingOnly": ${params.stagingOnly || true}
 }
 \`\`\`
+
+**Server automatically adds:**
+- \`is_final_lego\`: Boolean derived from LEGO ID (checks lego_pairs.json to see if this is the last LEGO in the seed)
+  - **CRITICAL**: If TRUE, server adds the complete seed sentence as the highest practice phrase
+  - This ensures learners can practice the full target sentence!
+- \`phrase_count\`: Actual count of phrases provided
+
+**Workers don't need to include these fields.**
 
 ---
 
@@ -1768,6 +1743,152 @@ app.post('/upload-basket', async (req, res) => {
     }
 
     console.log(`📥 Receiving basket upload: ${course} / ${seed} (${Object.keys(baskets).length} LEGOs)${agentId ? ` from ${agentId}` : ''}`);
+
+    // Enrich baskets with server-added fields before validation
+    try {
+      const legoPairsPath = path.join(VFS_ROOT, 'courses', course, 'lego_pairs.json');
+      const seedPairsPath = path.join(VFS_ROOT, 'courses', course, 'seed_pairs.json');
+
+      const legoPairs = await fs.readJson(legoPairsPath);
+      const seedPairs = await fs.readJson(seedPairsPath);
+
+      // Find the seed entry in lego_pairs
+      const seedEntry = legoPairs.seeds.find(s => s.seed_id === seed);
+      if (!seedEntry) {
+        return res.status(400).json({
+          success: false,
+          error: `Seed ${seed} not found in lego_pairs.json`
+        });
+      }
+
+      // Get the seed sentence from seed_pairs
+      const seedSentence = seedPairs.translations[seed];
+      if (!seedSentence) {
+        return res.status(400).json({
+          success: false,
+          error: `Seed ${seed} not found in seed_pairs.json`
+        });
+      }
+
+      // Determine which LEGO is final in this seed
+      const legosInSeed = seedEntry.legos || [];
+      const finalLegoId = legosInSeed.length > 0 ? legosInSeed[legosInSeed.length - 1].id : null;
+
+      // Enrich each basket
+      for (const [legoId, basket] of Object.entries(baskets)) {
+        // 1. Derive is_final_lego
+        basket.is_final_lego = (legoId === finalLegoId);
+
+        // 2. If final LEGO, append complete seed sentence (if not already present)
+        if (basket.is_final_lego && basket.practice_phrases) {
+          const hasSeedSentence = basket.practice_phrases.some(p =>
+            p.known === seedSentence.known && p.target === seedSentence.target
+          );
+
+          if (!hasSeedSentence) {
+            basket.practice_phrases.push({
+              known: seedSentence.known,
+              target: seedSentence.target
+            });
+          }
+        }
+
+        // 3. Add phrase_count
+        basket.phrase_count = basket.practice_phrases ? basket.practice_phrases.length : 0;
+      }
+
+      console.log(`✅ Enriched ${Object.keys(baskets).length} baskets (final LEGO: ${finalLegoId || 'none'})`);
+    } catch (enrichError) {
+      console.error(`⚠️  Enrichment failed:`, enrichError.message);
+      return res.status(500).json({
+        success: false,
+        error: `Failed to enrich baskets: ${enrichError.message}`
+      });
+    }
+
+    // Validate basket format
+    for (const [legoId, basket] of Object.entries(baskets)) {
+      // Check required fields - NEW: lego is object with labels
+      if (!basket.lego || typeof basket.lego !== 'object' || Array.isArray(basket.lego)) {
+        return res.status(400).json({
+          success: false,
+          error: `Invalid basket format for ${legoId}: "lego" must be object { "known": "...", "target": "..." }`,
+          received: basket.lego,
+          expectedFormat: '{ "known": "English phrase", "target": "Spanish phrase" }'
+        });
+      }
+
+      if (!basket.lego.known || !basket.lego.target) {
+        return res.status(400).json({
+          success: false,
+          error: `Invalid basket format for ${legoId}: "lego" must have "known" and "target" fields`,
+          received: basket.lego,
+          expectedFormat: '{ "known": "English phrase", "target": "Spanish phrase" }'
+        });
+      }
+
+      // Note: "type" field is optional in simplified format (server can derive from lego_pairs.json if needed)
+      // Legacy baskets may include it, but it's not required for new submissions
+
+      if (!basket.practice_phrases || !Array.isArray(basket.practice_phrases)) {
+        return res.status(400).json({
+          success: false,
+          error: `Invalid basket format for ${legoId}: "practice_phrases" must be array`,
+          received: basket.practice_phrases
+        });
+      }
+
+      // Validate each practice phrase
+      for (let i = 0; i < basket.practice_phrases.length; i++) {
+        const phrase = basket.practice_phrases[i];
+
+        // Reject old array format
+        if (Array.isArray(phrase)) {
+          return res.status(400).json({
+            success: false,
+            error: `Invalid phrase format for ${legoId} phrase ${i + 1}: array format no longer supported`,
+            received: phrase,
+            rejectedFormat: '["English phrase", "Spanish phrase", null, 1]',
+            expectedFormat: '{ "known": "English phrase", "target": "Spanish phrase" }'
+          });
+        }
+
+        // Reject language code format (es/en)
+        if (phrase.es || phrase.en) {
+          return res.status(400).json({
+            success: false,
+            error: `Invalid phrase format for ${legoId} phrase ${i + 1}: use "known"/"target" not language codes`,
+            received: phrase,
+            rejectedFormat: '{ "es": "...", "en": "..." }',
+            expectedFormat: '{ "known": "English phrase", "target": "Spanish phrase" }'
+          });
+        }
+
+        // Require object with known/target fields
+        if (typeof phrase !== 'object' || !phrase.known || !phrase.target) {
+          return res.status(400).json({
+            success: false,
+            error: `Invalid phrase format for ${legoId} phrase ${i + 1}: must have "known" and "target" fields`,
+            received: phrase,
+            expectedFormat: '{ "known": "English phrase", "target": "Spanish phrase" }'
+          });
+        }
+
+        // Validate types
+        if (typeof phrase.known !== 'string' || typeof phrase.target !== 'string') {
+          return res.status(400).json({
+            success: false,
+            error: `Invalid phrase format for ${legoId} phrase ${i + 1}: "known" and "target" must be strings`,
+            received: phrase
+          });
+        }
+      }
+
+      // Warn if wrong key name used
+      if (basket.phrases && !basket.practice_phrases) {
+        console.warn(`⚠️  Warning: ${legoId} uses "phrases" instead of "practice_phrases" - this will be rejected`);
+      }
+    }
 
     // Course directory
     const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
