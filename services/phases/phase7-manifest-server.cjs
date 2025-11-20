@@ -19,6 +19,7 @@ const bodyParser = require('body-parser');
 const { spawn } = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
+const axios = require('axios');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3464;
@@ -118,112 +119,68 @@ app.post('/start', async (req, res) => {
   };
   activeJobs.set(courseCode, job);
 
-  console.log(`\n[Phase 7] Spawning Claude Code agent for manifest compilation...`);
+  console.log(`\n[Phase 7] Running deterministic manifest compilation script...`);
 
-  // Spawn Claude Code agent with compilation task
-  const agentPrompt = `
-**Phase 7: Course Manifest Compilation for ${courseCode}**
-
-Your task is to compile the 4 phase outputs into the final course_manifest.json format required by the SSi mobile app.
-
-**ORCHESTRATOR URL**: ${ORCHESTRATOR_URL}
-
-**Step 1: Fetch Input Files**
-
-Fetch all 4 required phase outputs via REST API:
-
-\`\`\`bash
-curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/1/seed_pairs.json > /tmp/seed_pairs.json
-curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json > /tmp/lego_pairs.json
-curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/5/lego_baskets.json > /tmp/lego_baskets.json
-curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/6/introductions.json > /tmp/introductions.json
-\`\`\`
-
-**Step 2: Fetch Phase Intelligence Document**
-
-\`\`\`bash
-curl ${ORCHESTRATOR_URL}/api/phase-intelligence/7 > /tmp/phase_7_intelligence.md
-\`\`\`
-
-Read this document carefully - it contains all compilation rules, UUID generation algorithm, and validation requirements.
-
-**Step 3: Run Compilation Script**
-
-The compilation script is located at:
-\`/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/phase7-compile-manifest.cjs\`
-
-Run it with:
-\`\`\`bash
-node /Users/tomcassidy/SSi/ssi-dashboard-v7-clean/scripts/phase7-compile-manifest.cjs ${courseCode}
-\`\`\`
-
-This will generate \`course_manifest.json\` in the course directory.
-
-**Step 4: Submit Compiled Manifest**
-
-After compilation completes successfully, submit the manifest to the orchestrator:
-
-\`\`\`bash
-curl -X POST ${ORCHESTRATOR_URL}/api/phase7/${courseCode}/submit \\
-  -H "Content-Type: application/json" \\
-  -d @/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/${courseCode}/course_manifest.json
-\`\`\`
-
-**Expected Output Statistics**:
-- Single slice containing all seeds
-- ~800+ introduction items (LEGOs)
-- ~8000+ practice nodes
-- ~15,000+ unique phrases
-- ~20,000+ audio sample variants (target1, target2, source roles)
-
-**Validation**:
-- Verify all UUIDs are deterministic (same phrase = same UUID)
-- Verify top-level \`introduction\` field present
-- Verify all samples have \`duration: 0\` placeholder
-- Verify no missing LEGO presentations
-
-Report any errors immediately. When complete, confirm the manifest was successfully submitted.
-`;
-
-  const agentProcess = spawn('claude', [], {
+  // Run the compilation script directly (no agent needed - this is deterministic)
+  const scriptPath = path.join(__dirname, '../../scripts/phase7-compile-manifest.cjs');
+  const compilationProcess = spawn('node', [scriptPath, courseCode], {
     cwd: path.join(__dirname, '../..'),
     stdio: 'pipe',
     env: {
       ...process.env,
-      CLAUDE_PROJECT_ROOT: path.join(__dirname, '../..'),
       VFS_ROOT
     }
   });
 
-  // Send prompt to agent
-  agentProcess.stdin.write(agentPrompt);
-  agentProcess.stdin.end();
+  let compilationOutput = '';
+  let compilationError = '';
 
-  let agentOutput = '';
-  let agentError = '';
-
-  agentProcess.stdout.on('data', (data) => {
+  compilationProcess.stdout.on('data', (data) => {
     const output = data.toString();
-    agentOutput += output;
-    console.log(`[Phase 7 Agent] ${output.trim()}`);
+    compilationOutput += output;
+    console.log(`[Phase 7 Script] ${output.trim()}`);
   });
 
-  agentProcess.stderr.on('data', (data) => {
+  compilationProcess.stderr.on('data', (data) => {
     const error = data.toString();
-    agentError += error;
-    console.error(`[Phase 7 Agent Error] ${error.trim()}`);
+    compilationError += error;
+    console.error(`[Phase 7 Script Error] ${error.trim()}`);
   });
 
-  agentProcess.on('close', (code) => {
+  compilationProcess.on('close', async (code) => {
     if (code === 0) {
-      console.log(`[Phase 7] ✅ Agent completed manifest compilation`);
-      job.status = 'complete';
-      job.endTime = Date.now();
-      job.duration = job.endTime - job.startTime;
+      console.log(`[Phase 7] ✅ Compilation script completed successfully`);
+
+      // Submit manifest to orchestrator
+      try {
+        const manifestPath = path.join(baseCourseDir, 'course_manifest.json');
+        const manifest = await fs.readJson(manifestPath);
+
+        const submissionData = {
+          version: manifest.version || '8.2.0',
+          course: courseCode,
+          manifest
+        };
+
+        console.log(`[Phase 7] Submitting manifest to orchestrator...`);
+        const response = await axios.post(`${ORCHESTRATOR_URL}/api/phase7/${courseCode}/submit`, submissionData);
+
+        console.log(`[Phase 7] ✅ Manifest submitted successfully`);
+        console.log(`[Phase 7]    Phrases: ${response.data.phraseCount || 'N/A'}`);
+
+        job.status = 'complete';
+        job.endTime = Date.now();
+        job.duration = job.endTime - job.startTime;
+        job.phraseCount = response.data.phraseCount;
+      } catch (submitError) {
+        console.error(`[Phase 7] ❌ Failed to submit manifest:`, submitError.message);
+        job.status = 'failed';
+        job.error = `Compilation succeeded but submission failed: ${submitError.message}`;
+      }
     } else {
-      console.error(`[Phase 7] ❌ Agent exited with code ${code}`);
+      console.error(`[Phase 7] ❌ Compilation script exited with code ${code}`);
       job.status = 'failed';
-      job.error = agentError || `Agent exited with code ${code}`;
+      job.error = compilationError || `Script exited with code ${code}`;
     }
 
     // Clean up job after 5 minutes
