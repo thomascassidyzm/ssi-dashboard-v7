@@ -24,7 +24,7 @@
         <h2 class="text-xl font-semibold text-slate-100 mb-4">Select Phase</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           <button
-            v-for="phase in phases"
+            v-for="phase in activePhases"
             :key="phase.id"
             @click="selectPhase(phase.id)"
             :class="[
@@ -167,6 +167,10 @@ const phases = [
 
 const selectedPhase = ref('3')
 const intelligence = ref('')
+
+const activePhases = computed(() => {
+  return phases.filter(p => p.status !== 'inactive')
+})
 
 const currentPhase = computed(() => {
   return phases.find(p => p.id === selectedPhase.value)
