@@ -52,18 +52,32 @@
               <h3 class="text-lg font-semibold text-blue-300">ATOMIC (A-type)</h3>
             </div>
 
-            <p class="text-slate-300 text-sm mb-4">Simple, transparent chunks that don't need explanation.</p>
+            <p class="text-slate-300 text-sm mb-4">Cannot be split, even in principle. Like an atom - indivisible for pedagogical purposes.</p>
+
+            <div class="bg-blue-900/20 border border-blue-500/50 rounded p-3 mb-4">
+              <p class="text-blue-300 text-xs font-semibold mb-1">Key Rule:</p>
+              <p class="text-slate-300 text-xs">Must be 2+ words in at least one language (known or target). Cannot be broken down without losing consistent meaning.</p>
+            </div>
 
             <div class="bg-slate-900 p-4 rounded space-y-2">
               <p class="text-sm text-slate-400 mb-2"><strong>Examples:</strong></p>
-              <div class="space-y-1 text-sm">
-                <p class="text-slate-200">"quiero" = "I want"</p>
-                <p class="text-slate-200">"hablar" = "to speak"</p>
-                <p class="text-slate-200">"varias horas" = "several hours"</p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <p class="text-slate-200">"quiero" = "I want"</p>
+                  <p class="text-xs text-slate-500">Can't split "I want" → learner uncertainty</p>
+                </div>
+                <div>
+                  <p class="text-slate-200">"hablar" = "to speak"</p>
+                  <p class="text-xs text-slate-500">Can't split "to speak" → learner uncertainty</p>
+                </div>
+                <div>
+                  <p class="text-slate-200">"que hables" = "you to speak"</p>
+                  <p class="text-xs text-slate-500">Indivisible unit - breaking fails LUT</p>
+                </div>
               </div>
             </div>
 
-            <p class="text-xs text-slate-400 mt-3 italic">Learner sees it once, knows it forever. No breakdown needed.</p>
+            <p class="text-xs text-slate-400 mt-3 italic">No component breakdown - the LEGO is the minimum viable unit.</p>
           </div>
 
           <!-- MOLECULAR -->
@@ -73,9 +87,24 @@
               <h3 class="text-lg font-semibold text-emerald-300">MOLECULAR (M-type)</h3>
             </div>
 
-            <p class="text-slate-300 text-sm mb-4">Complex chunks with component arrays showing literal word-by-word breakdown.</p>
+            <p class="text-slate-300 text-sm mb-4">CAN be split into components. Each component shows literal word-by-word breakdown.</p>
+
+            <div class="bg-emerald-900/20 border border-emerald-500/50 rounded p-3 mb-4">
+              <p class="text-emerald-300 text-xs font-semibold mb-1">Key Rule:</p>
+              <p class="text-slate-300 text-xs">Components maintain 1:1 word mapping and each passes LUT independently.</p>
+            </div>
 
             <div class="bg-slate-900 p-4 rounded">
+              <p class="text-sm text-slate-400 mb-2"><strong>Example: "several hours"</strong></p>
+              <p class="text-slate-200 text-sm mb-2">Target: "varias horas"</p>
+              <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
+                <p>• "several" → "varias"</p>
+                <p>• "hours" → "horas"</p>
+              </div>
+              <p class="text-emerald-400 text-xs mt-3">→ Both components pass LUT independently!</p>
+            </div>
+
+            <div class="bg-slate-900 p-4 rounded mt-3">
               <p class="text-sm text-slate-400 mb-2"><strong>Example: "interesting things"</strong></p>
               <p class="text-slate-200 text-sm mb-2">Target: "cosas interesantes"</p>
               <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">

@@ -236,15 +236,16 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-blue-300 mb-3">A-type: ATOMIC</h3>
             <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-              <li>Simple, pedagogically-sound chunks</li>
-              <li>No component breakdown needed</li>
-              <li>Direct, transparent mapping</li>
+              <li>Cannot be split, even in principle</li>
+              <li>Like an atom - indivisible</li>
+              <li>Must be 2+ words in at least one language</li>
+              <li>No component breakdown possible</li>
             </ul>
             <div class="mt-4 bg-slate-900 p-3 rounded">
               <p class="text-sm text-slate-400 mb-1">Examples:</p>
-              <p class="text-slate-200 text-sm">"quiero" = "I want"</p>
-              <p class="text-slate-200 text-sm">"varias horas" = "several hours"</p>
-              <p class="text-slate-200 text-sm">"你好" = "hello"</p>
+              <p class="text-slate-200 text-sm">"quiero" = "I want" <span class="text-xs text-slate-500">(can't split "I want")</span></p>
+              <p class="text-slate-200 text-sm">"hablar" = "to speak" <span class="text-xs text-slate-500">(can't split "to speak")</span></p>
+              <p class="text-slate-200 text-sm">"que hables" = "you to speak" <span class="text-xs text-slate-500">(indivisible)</span></p>
             </div>
           </div>
 
@@ -252,17 +253,27 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-emerald-300 mb-3">M-type: MOLECULAR</h3>
             <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-              <li>Complex chunks with component arrays</li>
+              <li>CAN be split into components</li>
               <li>Shows literal word-by-word breakdown</li>
+              <li>Each component passes LUT independently</li>
               <li>Teaches how target language builds patterns</li>
             </ul>
-            <div class="mt-4 bg-slate-900 p-3 rounded">
-              <p class="text-sm text-slate-400 mb-1">Example: "interesting things"</p>
-              <p class="text-slate-200 text-sm mb-2"><strong>Target:</strong> "cosas interesantes"</p>
-              <p class="text-amber-400 text-xs mb-1">Components:</p>
-              <p class="text-slate-300 text-xs ml-2">• "things" → "cosas"</p>
-              <p class="text-slate-300 text-xs ml-2">• "interesting" → "interesantes"</p>
-              <p class="text-emerald-400 text-xs mt-2">Learner sees: Spanish reverses word order!</p>
+            <div class="mt-4 bg-slate-900 p-3 rounded space-y-3">
+              <div>
+                <p class="text-sm text-slate-400 mb-1">Example: "several hours"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "varias horas"</p>
+                <p class="text-amber-400 text-xs mb-1">Components:</p>
+                <p class="text-slate-300 text-xs ml-2">• "several" → "varias"</p>
+                <p class="text-slate-300 text-xs ml-2">• "hours" → "horas"</p>
+              </div>
+              <div>
+                <p class="text-sm text-slate-400 mb-1">Example: "interesting things"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "cosas interesantes"</p>
+                <p class="text-amber-400 text-xs mb-1">Components:</p>
+                <p class="text-slate-300 text-xs ml-2">• "things" → "cosas"</p>
+                <p class="text-slate-300 text-xs ml-2">• "interesting" → "interesantes"</p>
+                <p class="text-emerald-400 text-xs mt-2">→ Spanish reverses word order!</p>
+              </div>
             </div>
           </div>
         </div>
