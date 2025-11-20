@@ -179,14 +179,26 @@ export default {
         const legoPairsData = cachedData.legoPairs
         const baskets = cachedData.legoBaskets || []
 
-        // Convert v7.7 format translations object to array
+        // Convert translations object to array - handle both old array and new object formats
         const translationsObj = seedPairsData.translations || {}
-        const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
-          seed_id,
-          target_phrase,
-          known_phrase,
-          canonical_seed: null
-        }))
+        const translations = Object.entries(translationsObj).map(([seed_id, translation]) => {
+          // Handle both old array format and new object format (APML v8.2.0+)
+          let target_phrase, known_phrase
+          if (Array.isArray(translation)) {
+            // Old format: ["target", "known"]
+            [target_phrase, known_phrase] = translation
+          } else {
+            // New format: {target: "...", known: "..."}
+            target_phrase = translation.target
+            known_phrase = translation.known
+          }
+          return {
+            seed_id,
+            target_phrase,
+            known_phrase,
+            canonical_seed: null
+          }
+        })
         translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
         // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
