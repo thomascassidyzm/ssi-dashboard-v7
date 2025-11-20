@@ -97,6 +97,18 @@ scripts/batch*_SUMMARY*.md
 scripts/batch_*_grammar_check.md
 scripts/cmn_batch*_generation_report.md
 
+# Phase 5 worker scripts (agent-generated, experimental)
+scripts/generate_s*.cjs
+scripts/phase5_s*.cjs
+scripts/phase5_s*.json
+scripts/fix_s*.cjs
+scripts/merge_s*.cjs
+scripts/final_validate_s*.cjs
+scripts/S*_completion_report.md
+scripts/s*_report.txt
+scripts/check_structure.cjs
+scripts/validate_s*.cjs
+
 # Phase 5: Full outputs with metadata (local debugging only)
 public/vfs/courses/*/phase5_outputs/*_FULL.json
 
@@ -142,6 +154,8 @@ public/vfs/courses/archive/                   # Old versions
 # Additional intermediate/working files to ignore
 public/vfs/courses/*/*_provisional.json           # Agent working files
 public/vfs/courses/*/*_backup.json                # Backup files
+public/vfs/courses/*/*.pre-*-backup.json          # Pre-operation backup files
+public/vfs/courses/*/*.corrupted.json             # Corrupted files
 public/vfs/courses/*/*_deletion_report.json       # Deletion reports
 public/vfs/courses/*/*_gaps_report.json           # Gap analysis reports
 public/vfs/courses/*/*_reextraction_manifest.json # Re-extraction manifests
@@ -196,3 +210,5 @@ temp/
 extracted-welcomes/
 vfs/canonical/voices.json
 vfs/canonical/welcomes.json
+*.pre-*-backup.json
+*.corrupted.json
