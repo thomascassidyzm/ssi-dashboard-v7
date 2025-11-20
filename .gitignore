@@ -96,6 +96,12 @@ scripts/batch*_summary*.md
 scripts/batch*_SUMMARY*.md
 scripts/batch_*_grammar_check.md
 scripts/cmn_batch*_generation_report.md
+scripts/convert_*.cjs
+scripts/*_submission.json
+scripts/phase5_cmn_*.json
+scripts/s0*_new_baskets.json
+scripts/S0*_GENERATION_REPORT.md
+scripts/generate_s0*.cjs
 
 # Phase 5: Full outputs with metadata (local debugging only)
 public/vfs/courses/*/phase5_outputs/*_FULL.json
