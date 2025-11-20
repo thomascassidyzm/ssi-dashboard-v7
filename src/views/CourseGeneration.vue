@@ -697,8 +697,15 @@ const startGeneration = async (force = false) => {
     console.log('Course generation started:', response)
     courseCode.value = response.courseCode
 
-    // Redirect to dedicated progress page
-    router.push(`/courses/${response.courseCode}/progress`)
+    // Redirect to dedicated progress page (only for orchestrated pipelines)
+    // Phase 5 standalone runs in browser windows (web mode) - no redirect needed
+    if (phaseSelection.value === 'all' || phaseSelection.value === 'phase1') {
+      router.push(`/courses/${response.courseCode}/progress`)
+    } else {
+      // For single-phase jobs (3, 5, 7), show inline message
+      currentPhase.value = `Running ${phaseSelection.value}...`
+      // Don't redirect - user watches browser windows for Phase 5
+    }
   } catch (error) {
     console.error('Failed to start course generation:', error)
 
