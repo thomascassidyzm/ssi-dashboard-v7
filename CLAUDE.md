@@ -2,16 +2,23 @@
 
 > **Welcome, future agent!** This document contains everything you need to work effectively on the SSi Dashboard v7 project without creating chaos.
 
+**Last Updated:** 2025-11-20
+**Current Spec:** APML v8.2.0
+**Architecture:** REST API Microservices
+
+---
+
 ## 🎯 Project Overview
 
-**SSi Dashboard v7 Clean** is a language learning pipeline that generates and manages course content through multiple processing phases. You're working on a system that transforms seed phrases into complete language courses with LEGO-based recombination for maximum learning efficiency.
+**SSi Dashboard v7 Clean** is a language learning pipeline that transforms 668 canonical concepts into complete language courses through REST API microservices orchestration.
 
 ### Quick Facts
-- **Primary Language**: Spanish for English speakers (spa_for_eng)
-- **Pipeline**: Phase 1 → Phase 3 → Phase 5 → Phase 6 → Phase 7
-- **Data Format**: APML (Adaptive Pedagogy Markup Language)
-- **Scale**: 668 seeds per course, thousands of LEGO components
-- **Architecture**: Multi-agent orchestration with validation gates
+- **Canonical Input**: 668 pedagogically-ordered seeds (language-agnostic)
+- **Pipeline**: Phase 1 → 3 (includes 6) → 5 → 7 → 8
+- **Data Format**: APML v8.2.0 (Adaptive Pedagogy Markup Language)
+- **Architecture**: Layered microservices with REST APIs
+- **No Git Branching**: Agents submit via POST endpoints
+- **Current Spec**: `ssi-course-production.apml` v8.2.0
 
 ---
 
@@ -20,12 +27,13 @@
 ### **Root Directory - Keep It Clean!**
 ```
 /
-├── README.md              # Project overview
-├── SYSTEM.md              # System architecture
-├── CLAUDE.md              # ← You are here
-├── package.json           # Node dependencies
-├── vite.config.js         # Build config
-├── tailwind.config.js     # Styling config
+├── README.md                      # Project overview
+├── SYSTEM.md                      # System architecture
+├── CLAUDE.md                      # ← You are here
+├── ssi-course-production.apml     # APML v8.2.0 specification (SSoT)
+├── start-automation.cjs           # Start all microservices
+├── package.json                   # Node dependencies
+├── vite.config.js                 # Build config
 └── [essential configs only]
 ```
 
@@ -33,16 +41,55 @@
 
 ### **Core Directories**
 
-#### `tools/` - Shared Utilities (IN GIT)
-Essential scripts shared with collaborators (Kai). These are stable, documented tools.
+#### `services/` - Microservices (CURRENT ARCHITECTURE)
+Self-contained phase servers with REST APIs.
 ```
-tools/
-├── orchestrators/    # Multi-agent coordination
-├── validators/       # Quality gates & checks
-├── generators/       # Content generation
-├── mergers/          # Branch & data merging
-├── sync/             # S3 sync utilities
-└── phase-prep/       # Phase scaffolding
+services/
+├── orchestration/
+│   └── orchestrator.cjs                    # Main orchestrator (port 3456)
+├── phases/
+│   ├── phase1-translation/
+│   │   └── server.cjs                      # Translation (port 3457, includes Phase 2 LUT)
+│   ├── phase3-lego-extraction/
+│   │   ├── server.cjs                      # LEGO extraction (port 3458)
+│   │   └── generate-introductions.cjs      # Phase 6 integrated (<1s overhead)
+│   ├── phase5-basket-generation/
+│   │   ├── server.cjs                      # Baskets (port 3459)
+│   │   ├── prep-scaffolds.cjs
+│   │   └── generate-text-scaffold.cjs
+│   ├── phase5.5-grammar-validation-server.cjs  # Grammar check (DEPRECATED v8.2.1)
+│   ├── phase7-manifest-server.cjs          # Compilation (port 3464)
+│   └── phase8-audio-server.cjs             # TTS/Audio (port 3465, Kai's domain)
+└── shared/
+    ├── spawn-agent.cjs                     # Browser automation
+    └── config-loader.cjs                   # Configuration loading
+```
+
+#### `public/` - Static Assets & Course Data
+```
+public/
+├── vfs/
+│   ├── canonical/
+│   │   ├── canonical_seeds.json           # 668 language-agnostic seeds
+│   │   ├── eng_encouragements.json        # Pooled encouragements
+│   │   └── welcomes.json                  # Course intro template
+│   └── courses/
+│       ├── spa_for_eng/                   # Spanish for English speakers
+│       │   ├── seed_pairs.json            # Phase 1 output
+│       │   ├── lego_pairs.json            # Phase 3 output
+│       │   ├── lego_baskets.json          # Phase 5 output
+│       │   ├── introductions.json         # Phase 6 output (in Phase 3)
+│       │   └── course_manifest.json       # Phase 7 output
+│       └── cmn_for_eng/                   # Mandarin for English speakers
+└── docs/
+    └── phase_intelligence/                 # Phase methodology docs (SSoT)
+        ├── phase_1_translation.md
+        ├── phase_3_lego_extraction.md
+        ├── phase_5_basket_generation.md
+        ├── phase_6_introductions.md
+        ├── phase_7_compilation.md
+        ├── phase_8_audio.md
+        └── CANONICAL_CONTENT.md
 ```
 
 #### `scripts/` - Your Workspace (GITIGNORED)
@@ -55,59 +102,46 @@ scripts/
 └── deprecated/       # Old versions
 ```
 
-#### `docs/` - Documentation (ORGANIZED)
+#### `tools/` - Shared Utilities (IN GIT)
+Essential scripts shared with collaborators (Kai). These are stable, documented tools.
 ```
-docs/
-├── setup/            # Installation & configuration
-├── workflows/        # Process documentation
-├── architecture/     # Design documents
-├── validation/       # Validation specs
-├── configuration/    # Config references
-├── guides/           # How-to guides
-└── testing/          # QA documentation
+tools/
+├── validators/       # Quality gates & checks
+├── generators/       # Content generation
+├── sync/             # S3 sync utilities
+└── phase-prep/       # Phase scaffolding
 ```
 
-#### `src/` - Frontend Dashboard
-React/Vite dashboard for course visualization and management.
+**⚠️ ARCHIVED:** `tools/orchestrators/automation_server.cjs` - Replaced by layered microservices
+**Location:** `archive/automation-server-2025-11-20/`
 
-#### `api/` - Backend Services
-Express API for course data access and validation.
-
-#### `services/` - Background Services
-Orchestration, automation, and processing services.
+#### `src/` - Frontend Dashboard (Vue 3)
 ```
-services/
-├── orchestration/       # Multi-agent coordination
-├── phase7/             # Course manifest generation (Phase 7)
-└── web/                # Web services
+src/
+├── views/
+│   ├── ProcessOverview.vue            # Pipeline visualization
+│   ├── PhaseIntelligence.vue          # Phase methodology viewer
+│   └── CourseGeneration.vue           # Course creation UI
+└── services/
+    └── api.js                         # REST API client
 ```
-
-**Phase 7 Service** (`services/phase7/`)
-- Transforms phase outputs into final APML manifests
-- Generates deterministic UUIDs (SSi legacy format)
-- Embeds language-specific encouragements
-- Separate from legacy `scripts/phase7-*` implementations
-
-#### `public/vfs/courses/` - Course Data
-Language course data organized by language pair (e.g., `spa_for_eng/`).
 
 ---
 
 ## 🚫 CRITICAL: What NOT to Do
 
 ### **Never Create These in Root:**
-- ❌ Markdown files (use `docs/`)
+- ❌ Markdown files (use `docs/` or `public/docs/`)
 - ❌ Python scripts (use `scripts/` or `tools/`)
-- ❌ JavaScript files (except configs - use `scripts/` or `tools/`)
+- ❌ JavaScript files (except configs - use `scripts/` or `services/`)
 - ❌ JSON reports (use `archive/` or temp dirs)
 - ❌ Log files (already gitignored)
-- ❌ Test files (use `scripts/experiments/` or `tests/`)
+- ❌ Test files (use `scripts/experiments/`)
 
 ### **Never Commit These:**
 - ❌ `scripts/` contents (workspace is gitignored)
 - ❌ `.project/` (project management - local only)
 - ❌ `archive/` (historical data)
-- ❌ `docs/sessions/` (ephemeral agent communications)
 - ❌ Agent-generated batch processors
 - ❌ Large log files
 - ❌ Temporary analysis files
@@ -117,87 +151,121 @@ If you're generating files, verify they're in gitignored directories.
 
 ---
 
-## 🧬 APML Specification
+## 🧬 APML v8.2.0 Specification
 
-**Location**: `ssi-course-production.apml` (root) and `apml/` directory
+**Location**: `ssi-course-production.apml` (root - Single Source of Truth)
 
-APML is our custom format for language learning content. Key concepts:
+**Current Version**: 8.2.0 (2025-11-20)
+
+### **Major Changes in v8.2.0**
+- ✅ Phase 6 integrated into Phase 3 (<1s overhead)
+- ✅ Phase 4 deprecated (linear pipeline)
+- ✅ REST API architecture (no git branching)
+- ✅ Self-contained phase intelligence (embedded in dashboard)
+- ✅ Canonical content system (3-parameter input model)
 
 ### **Phase Outputs**
-- **Phase 1**: `seed_pairs.json` - Core translations (~500KB)
-- **Phase 3**: `lego_pairs.json` - Deconstructed components (~2MB)
-- **Phase 5**: `lego_baskets.json` - Practice baskets (~5MB)
-- **Phase 6**: `introductions.json` - Presentation content (~500KB)
+- **Phase 1 (v2.6)**: `seed_pairs.json` - Pedagogical translations
+- **Phase 3 (v7.1)**: `lego_pairs.json` + `introductions.json` (dual output)
+- **Phase 5 (v6.1)**: `lego_baskets.json` - Practice phrases
+- **Phase 6 (v2.1)**: Integrated into Phase 3 (no standalone file)
+- **Phase 7 (v1.1)**: `course_manifest.json` - Final manifest with placeholders
+- **Phase 8 (v1.1)**: Audio files + populated duration fields (Kai's domain)
 
-### **LEGO Components**
-Language is broken into reusable "LEGO" pieces:
-- **FD** (Fundamental Dependencies): Core building blocks
-- **LUT** (Look-Up Tables): Higher-order patterns
-- **Recombination**: LEGOs combine to form new phrases
+### **LEGO Terminology (v8.2.0)**
+- **ATOMIC LEGO**: Single indivisible unit (e.g., "I" → "我")
+- **MOLECULAR LEGO**: Composite unit with components (e.g., "with you" → "和你" = ["和", "你"])
+- **Type Codes**:
+  - `A` = Atomic (single unit)
+  - `M` = Molecular (has components)
 
 ### **Validation Gates**
 Every phase has quality gates:
-- Grammar validation
-- Infinitive form checks
-- FD/LUT collision detection
-- Coverage analysis
+- ~~Grammar validation (Phase 5.5)~~ DEPRECATED v8.2.1 - Human review used instead
+- Language detection (Spanish in Chinese courses rejected)
+- Structure validation (format consistency)
+- LUT collision detection (Phase 1 inline check)
 
-**📖 For deep dive**: See `docs/architecture/` and `apml/` directory.
+**📖 For deep dive**: See `public/docs/phase_intelligence/` and `ssi-course-production.apml`
 
 ---
 
-## 🔧 Essential Tools
+## 🔧 Current Architecture: REST API Microservices
 
-### **For Course Processing**
+### **Starting the System**
 
-**Orchestrators** (`tools/orchestrators/`)
 ```bash
-# Main automation server (coordinates multi-agent work)
-node tools/orchestrators/automation_server.cjs
+# Start all microservices (recommended)
+npm run automation
 
-# Workflow orchestration
-node tools/orchestrators/orchestrator-workflow.cjs
+# Or manually
+node start-automation.cjs
 ```
 
-**Validators** (`tools/validators/`)
-```bash
-# Validate entire course
-node tools/validators/course-validator.cjs spa_for_eng
+**This starts:**
+- Orchestrator (port 3456)
+- Phase 1 Server (port 3457)
+- Phase 3 Server (port 3458)
+- Phase 5 Server (port 3459)
+- ~~Phase 5.5 Server (port 3460)~~ DEPRECATED v8.2.1
+- Phase 7 Server (port 3464)
+- Phase 8 Server (port 3465)
 
-# Deep phase-specific validation
-node tools/validators/phase-deep-validator.cjs spa_for_eng phase5
+### **REST API Endpoints**
+
+**Orchestrator** (port 3456):
+```bash
+# Canonical content
+GET  /api/canonical-seeds                          # 668 canonical seeds
+GET  /api/phase-intelligence/:phase                # Phase methodology docs
+
+# Phase outputs
+GET  /api/courses/:courseCode/phase-outputs/:phase/:file
+
+# Agent submission endpoints
+POST /api/phase1/:courseCode/submit                # Submit seed_pairs.json
+POST /api/phase3/:courseCode/submit                # Submit lego_pairs.json + introductions.json
+POST /api/phase5/:courseCode/submit                # Submit lego_baskets.json
+POST /api/phase7/:courseCode/submit                # Submit course_manifest.json
 ```
 
-**Generators** (`tools/generators/`)
+**Phase 5 Server** (port 3459):
 ```bash
-# Generate course manifest
-node tools/generators/generate-course-manifest.js
+POST /upload-basket                                 # Submit baskets to staging
+  Body: { course, seed, baskets, agentId }
 
-# Merge phase5 outputs
-node tools/generators/phase5-merge-batches.cjs
+# Staging workflow:
+# 1. Agent POSTs to /upload-basket
+# 2. Server validates + saves to phase5_baskets_staging/
+# 3. Use extract-and-normalize.cjs to merge to production
 ```
 
-**Sync** (`tools/sync/`)
-```bash
-# Sync course to S3
-node tools/sync/sync-course-to-s3.cjs spa_for_eng
+### **How Agents Work (No Git Branching)**
 
-# Pull from S3
-node tools/sync/sync-course-from-s3.cjs spa_for_eng
+**OLD WAY (Deprecated):**
+- Agents work in git branches
+- automation_server merges branches
+- Complex coordination needed
+
+**NEW WAY (v8.2.0):**
+```bash
+# 1. Agent fetches data via GET
+curl http://localhost:3456/api/courses/spa_for_eng/phase-outputs/3/lego_pairs.json
+
+# 2. Agent generates content
+# ... Claude Code does the work ...
+
+# 3. Agent submits via POST
+curl -X POST http://localhost:3456/api/phase5/spa_for_eng/submit \
+  -H "Content-Type: application/json" \
+  -d '{"version": "8.2.0", "course": "spa_for_eng", "baskets": {...}}'
 ```
 
-### **For Development**
-
-**Frontend Dashboard**
-```bash
-npm run dev           # Start Vite dev server (port 5173)
-npm run build         # Build for production
-```
-
-**Backend API**
-```bash
-npm run api          # Start Express API (port 3000)
-```
+**Benefits:**
+- ✅ No git merge conflicts
+- ✅ Parallel execution without coordination
+- ✅ Immediate HTTP feedback
+- ✅ Simple, scalable architecture
 
 ---
 
@@ -210,64 +278,70 @@ generate_agent_04_phrases.py     # Agent-specific generator
 refine_phase5_cmn_s0521.cjs      # One-off refinement
 ```
 
-### **Stable Tools** (committed - goes in `tools/`)
+### **Stable Services** (committed - goes in `services/phases/`)
 ```
-course-validator.cjs             # Reusable validator
-phase5-merge-batches.cjs         # Standard merger
-automation_server.cjs            # Core orchestrator
+phase1-translation/server.cjs
+phase3-lego-extraction/server.cjs
+phase5-basket-generation/server.cjs
 ```
 
-### **Documentation** (goes in `docs/`)
+### **Documentation** (goes in `public/docs/phase_intelligence/`)
 ```
-docs/setup/AUTOMATION_SETUP.md   # Setup guide
-docs/workflows/PHASE5_WORKFLOW.md # Process doc
+phase_1_translation.md
+phase_3_lego_extraction.md
+phase_5_basket_generation.md
 ```
 
 ---
 
 ## 🔄 Common Workflows
 
-### **1. Processing a New Batch (Phase 5)**
+### **1. Generate a New Course (Full Pipeline)**
 
 ```bash
-# 1. Prepare scaffolds
-node tools/phase-prep/phase5_prep_scaffolds.cjs spa_for_eng S0121-S0130
+# Start all services
+npm run automation
 
-# 2. Generate baskets (agent does this in scripts/batch-temp/)
-python scripts/batch-temp/phase5_process_s0121_s0130.py
+# Trigger via dashboard or direct API
+curl -X POST http://localhost:3456/api/start-course-generation \
+  -H "Content-Type: application/json" \
+  -d '{
+    "targetLang": "spa",
+    "knownLang": "eng",
+    "phases": [1, 3, 5, 7]
+  }'
 
-# 3. Validate output
-node tools/validators/phase-deep-validator.cjs spa_for_eng phase5 S0121-S0130
-
-# 4. Merge if valid
-node tools/generators/phase5-merge-batches.cjs spa_for_eng S0121-S0130
+# Monitor progress
+curl http://localhost:3456/api/course-status/spa_for_eng
 ```
 
-### **2. Fixing Validation Errors**
+### **2. Run Single Phase**
 
 ```bash
-# 1. Run validator to identify issues
-node tools/validators/course-validator.cjs spa_for_eng > validation_report.json
-
-# 2. Create fix script in scripts/fixes/
-# e.g., scripts/fixes/fix_infinitive_s0121.cjs
-
-# 3. Run fix
-node scripts/fixes/fix_infinitive_s0121.cjs
-
-# 4. Re-validate
-node tools/validators/course-validator.cjs spa_for_eng
+# Example: Phase 5 only
+curl -X POST http://localhost:3459/start \
+  -H "Content-Type: application/json" \
+  -d '{
+    "courseCode": "spa_for_eng",
+    "startSeed": 1,
+    "endSeed": 10
+  }'
 ```
 
-### **3. Multi-Agent Orchestration**
+### **3. Fix Language Leakage (Spanish in Chinese Course)**
 
 ```bash
-# Start automation server
-node tools/orchestrators/automation_server.cjs
+# 1. Detect issues
+node scripts/check_language_leakage.js
 
-# Server watches for git pushes and coordinates agents
-# Agents work in isolated branches (agent-01, agent-02, etc.)
-# Server merges completed work automatically
+# 2. Review report
+cat language_leakage_report.json
+
+# 3. Fix (creates backup automatically)
+node scripts/fix_language_leakage.js
+
+# 4. Verify cleanup
+grep -c "Spanish text" public/vfs/courses/cmn_for_eng/lego_baskets.json
 ```
 
 ---
@@ -286,26 +360,26 @@ git log --oneline -10
 git log -5 --stat
 
 # Check what changed in a specific directory
-git log --oneline -- tools/
-git log --oneline -- docs/
+git log --oneline -- services/
+git log --oneline -- public/docs/
 
-# See full details of recent cleanup/reorganization
-git log --grep="cleanup\|cleanup\|reorganize" -5
+# See full details of APML v8.2.0 migration
+git log --grep="8.2.0" -5
 ```
 
 **Why this matters:**
-- Understand recent refactoring/cleanup work
+- Understand recent refactoring (automation_server → microservices)
 - See what directories were reorganized
 - Learn from commit messages what NOT to do
 - Discover new tools or conventions
 
-### **Common Recent Changes to Know About**
+### **Recent Major Changes (Last 24 Hours)**
 
-Check commits for patterns like:
-- "Major cleanup" - Repository reorganization
-- "Remove from git tracking" - Files moved to .gitignore
-- "Add tools/" - New shared utilities
-- "Archive" - Historical data management
+Check commits for these patterns:
+- **f94df2fc**: "APML v8.2.0" - Major spec update
+- **9adedf0a**: "REST API architecture" - No more git branching
+- **29dee48a**: "Modular architecture" - Self-contained phase servers
+- **bbe17e4d**: "Linear pipeline" - Phase 6 integrated into Phase 3
 
 ### **Before Creating Files:**
 
@@ -317,96 +391,154 @@ git log --all --full-history -- "**/filename*"
 git log --oneline -- .gitignore | head -5
 
 # Check recent activity in target directory
-git log --oneline -5 -- path/to/directory/
+git log --oneline -5 -- services/phases/
 ```
 
 ---
 
 ## 🤝 Working with Kai (Collaborator)
 
-Kai uses the `tools/` directory for stable utilities. When you create a reusable script:
+Kai owns **Phase 8 (Audio/TTS generation)**:
+- Port: 3465
+- Location: `services/phases/phase8-audio-server.cjs`
+- Responsibility: Generate ~110,000 audio files + populate duration fields
 
-1. **Test it thoroughly** in `scripts/experiments/`
-2. **Document it** with comments and usage examples
-3. **Move to `tools/`** in the appropriate subdirectory
-4. **Update `tools/README.md`** with usage instructions
-5. **Commit to git** so Kai can access it
+When creating tools Kai might use:
+1. **Test in `scripts/experiments/`**
+2. **Move to `tools/`** when stable
+3. **Document** with usage examples
+4. **Commit** so Kai can access
 
 ---
 
 ## 🏗️ Architecture Principles
 
-### **1. Idempotency**
-All phase processors must be idempotent - running twice produces the same result.
+### **1. REST API First**
+All agent communication via HTTP POST/GET. No git branching needed.
 
-### **2. Validation First**
-Never merge invalid data. Always run validators before merging.
+### **2. Self-Contained Services**
+Each phase server has all dependencies. Can run in isolation.
 
-### **3. Preserve Pipeline State**
-Keep phase outputs (seed_pairs.json, lego_pairs.json, etc.) - they're checkpoints.
+### **3. Validation at Boundaries**
+POST endpoints validate before accepting data.
 
-### **4. Branch Isolation**
-Agent work happens in branches. Main branch only gets validated, merged work.
+### **4. Staging Before Production**
+Phase 5 uses `phase5_baskets_staging/` → validate → merge to `lego_baskets.json`
 
-### **5. Metadata Stripping**
-Debug metadata stays local (gitignored). Only production data goes to git.
+### **5. Canonical Content System**
+668 language-agnostic seeds → substitute `{target}` → any language pair
+
+### **6. Idempotency**
+Running twice produces same result. Safe to retry.
 
 ---
 
 ## 🐛 Troubleshooting
 
-### **"Scripts not found"**
-- Check if script is in `tools/` (shared) or `scripts/` (local)
-- Run `npm install` to ensure dependencies are installed
+### **"Services won't start"**
+```bash
+# Check VFS_ROOT is set
+cat .env.automation
 
-### **"Validation failed"**
-- Check `logs/` directory for detailed error logs
-- Run phase-specific validator for detailed output
-- Common issues: infinitive forms, FD/LUT collisions, missing LEGO coverage
+# Verify services exist
+ls services/orchestration/orchestrator.cjs
+ls services/phases/phase1-translation/server.cjs
 
-### **"Git showing too many changes"**
-- You created files in wrong directories
-- Check `.gitignore` is up to date
-- Use `git status --ignored` to see what's being ignored
+# Check ports aren't in use
+lsof -i :3456
+lsof -i :3457
+```
 
-### **"Agent coordination issues"**
-- Check automation server logs: `logs/automation-server-*.log`
-- Verify branch naming: `agent-XX` format
-- Ensure clean merges - resolve conflicts locally first
+### **"Agent can't submit baskets"**
+```bash
+# Check Phase 5 server is running
+curl http://localhost:3459/health
+
+# Verify staging directory exists
+ls public/vfs/courses/spa_for_eng/phase5_baskets_staging/
+
+# Check permissions
+ls -la public/vfs/courses/spa_for_eng/
+```
+
+### **"Language leakage detected"**
+```bash
+# Spanish found in Chinese course
+# Run cleanup script (creates backup automatically)
+node scripts/fix_language_leakage.js
+
+# Verify backup exists
+ls public/vfs/courses/cmn_for_eng/*.pre-spanish-cleanup-backup.json
+```
+
+### **"Phase output missing"**
+```bash
+# Check phase completed successfully
+curl http://localhost:3456/api/course-status/spa_for_eng
+
+# Verify file exists
+ls public/vfs/courses/spa_for_eng/seed_pairs.json
+ls public/vfs/courses/spa_for_eng/lego_pairs.json
+```
 
 ---
 
 ## 📚 Key Documents to Read
 
+### **MUST READ (in order)**
 1. **SYSTEM.md** - High-level system architecture
-2. **README.md** - Project setup and overview
-3. **docs/workflows/** - Process documentation
-4. **ssi-course-production.apml** - APML format spec
-5. **tools/README.md** - Tool usage reference
+2. **ssi-course-production.apml** - APML v8.2.0 specification (SSoT)
+3. **CLAUDE.md** - This file (agent onboarding)
+4. **public/docs/phase_intelligence/** - Phase methodology docs
+
+### **Workflows**
+- `docs/workflows/REST_API_ARCHITECTURE.md`
+- `docs/workflows/COURSE_GENERATION_ARCHITECTURE.md`
+
+### **Canonical Content**
+- `public/docs/phase_intelligence/CANONICAL_CONTENT.md`
 
 ---
 
 ## 🎓 Learning the Codebase
 
-### **Day 1: Understand the Pipeline**
-- Read `SYSTEM.md`
-- Examine one course: `public/vfs/courses/spa_for_eng/`
+### **Day 1: Understand APML v8.2.0**
+- Read `ssi-course-production.apml` (lines 1-500)
+- Understand canonical content system
+- Review phase outputs format
+
+### **Day 2: Explore a Course**
+- Examine `public/vfs/courses/spa_for_eng/`
 - Look at phase outputs: `seed_pairs.json`, `lego_pairs.json`, `lego_baskets.json`
+- Check file sizes: `ls -lh public/vfs/courses/spa_for_eng/`
 
-### **Day 2: Run a Validation**
-- Run `node tools/validators/course-validator.cjs spa_for_eng`
-- Understand validation output
-- Explore validator code
+### **Day 3: Run the Services**
+```bash
+# Start all services
+npm run automation
 
-### **Day 3: Process a Small Batch**
-- Pick 10 seeds (e.g., S0001-S0010)
-- Generate phase 5 baskets
-- Validate and merge
+# Check health
+curl http://localhost:3456/health
+curl http://localhost:3457/health
+curl http://localhost:3459/health
 
-### **Week 1: Multi-Agent Coordination**
-- Understand orchestration patterns
-- Review `tools/orchestrators/automation_server.cjs`
-- Coordinate with other agents via branches
+# Explore APIs
+curl http://localhost:3456/api/canonical-seeds | jq '.seeds | length'
+curl http://localhost:3456/api/phase-intelligence/5
+```
+
+### **Week 1: Generate a Test Course**
+```bash
+# Small test (10 seeds)
+curl -X POST http://localhost:3456/api/start-course-generation \
+  -H "Content-Type: application/json" \
+  -d '{
+    "targetLang": "fra",
+    "knownLang": "eng",
+    "seedCount": 10,
+    "phases": [1, 3, 5]
+  }'
+```
 
 ---
 
@@ -414,28 +546,30 @@ Debug metadata stays local (gitignored). Only production data goes to git.
 
 Before starting work, verify:
 
-- [ ] I've read `CLAUDE.md`, `SYSTEM.md`, and `README.md`
+- [ ] I've read `CLAUDE.md`, `SYSTEM.md`, and `ssi-course-production.apml`
 - [ ] **I've checked recent commits** (`git log --oneline -10`)
-- [ ] **I understand what changed recently** (cleanup? new tools?)
-- [ ] I understand the phase pipeline (1 → 3 → 5 → 6 → 7)
+- [ ] **I understand APML v8.2.0** (not v7.7)
+- [ ] **I know automation_server is ARCHIVED** (use microservices)
+- [ ] I understand the REST API architecture (no git branching)
+- [ ] I understand the phase pipeline (1 → 3 (includes 6) → 5 → 7 → 8)
 - [ ] I know where to create files (NOT in root!)
 - [ ] I've checked `.gitignore` for file placement
-- [ ] I have access to `tools/` for shared utilities
-- [ ] I understand validation gates and quality standards
+- [ ] I understand staging workflow (Phase 5)
 - [ ] I won't commit experimental scripts to git
-- [ ] I'll document any new tools I create
 
 ---
 
 ## 🆘 When in Doubt
 
 1. **Check recent commits** (`git log --oneline -10`) - See what changed!
-2. **Check this file** (CLAUDE.md) - Your guide to the repo
-3. **Read the relevant docs** in `docs/` - Detailed specs
-4. **Look at existing examples** in `tools/` - Learn from working code
+2. **Read this file** (CLAUDE.md) - Your guide to the repo
+3. **Check APML spec** (ssi-course-production.apml) - SSoT for data formats
+4. **Read SYSTEM.md** - High-level architecture
 5. **Check .gitignore** - Before creating files
-6. **Ask before creating root files!** - Keep it clean
-7. **Validate before merging!** - Quality gates exist for a reason
+6. **Look at existing code** in `services/phases/` - Learn from working examples
+7. **Ask before creating root files!** - Keep it clean
+8. **Use REST APIs** - Not git branching
+9. **Validate before merging!** - Quality gates exist for a reason
 
 ---
 
@@ -444,8 +578,10 @@ Before starting work, verify:
 You're doing well if:
 
 ✅ Root directory stays clean (only essential configs)
-✅ Your scripts are in appropriate directories
-✅ You're using tools from `tools/` directory
+✅ Your scripts are in appropriate directories (`scripts/` or `services/`)
+✅ You're using REST APIs (not git branching)
+✅ You understand APML v8.2.0 (not outdated v7.7)
+✅ You know automation_server is archived
 ✅ Validation passes before merging
 ✅ Git only tracks essential files
 ✅ Kai can use your shared tools easily
@@ -454,4 +590,6 @@ You're doing well if:
 
 **Welcome to the team! Keep the mojo alive, keep the repo clean. 🚀**
 
-*Last updated: 2025-11-17*
+*Last updated: 2025-11-20*
+*APML Version: 8.2.0*
+*Architecture: REST API Microservices*

@@ -159,7 +159,7 @@ const phases = [
   { id: '3', name: 'LEGO Extraction (includes Phase 6)', status: 'active', version: '7.1', locked: true },
   { id: '4', name: 'Batch Preparation (DEPRECATED)', status: 'inactive', version: '1.0' },
   { id: '5', name: 'Baskets', status: 'active', version: '6.1', locked: true },
-  { id: '5.5', name: 'Deduplication (OBSOLETE)', status: 'inactive', version: '2.0' },
+  { id: '5.5', name: 'Grammar Validation (DEPRECATED v8.2.1)', status: 'inactive', version: '2.0' },
   { id: '6', name: 'Introductions (in Phase 3)', status: 'integrated', version: '2.1', locked: true },
   { id: '7', name: 'Compilation', status: 'active', version: '1.1', locked: true },
   { id: '8', name: 'Audio (Kai)', status: 'documented', version: '1.1' }

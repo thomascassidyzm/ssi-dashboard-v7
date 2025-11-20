@@ -121,7 +121,14 @@ POST /api/phase5/:courseCode/submit
 
 ---
 
-### **Phase 5.5: Grammar Validation**
+### **Phase 5.5: Grammar Validation (DEPRECATED v8.2.1)**
+
+> **⚠️ DEPRECATED as of 2025-11-20**
+>
+> Phase 5.5 has been removed from the pipeline. Replaced with human semi-manual review for first 100 seeds.
+> See APML v8.2.1 changelog for details.
+
+**Historical Documentation:**
 
 **Agent Needs:**
 - lego_baskets.json (from Phase 5)
@@ -130,7 +137,7 @@ POST /api/phase5/:courseCode/submit
 **Agent Produces:**
 - Validation report / corrections
 
-**Endpoints:**
+**Endpoints (NO LONGER ACTIVE):**
 ```javascript
 // GET previous phase output
 GET /api/courses/:courseCode/phase-outputs/5/lego_baskets.json

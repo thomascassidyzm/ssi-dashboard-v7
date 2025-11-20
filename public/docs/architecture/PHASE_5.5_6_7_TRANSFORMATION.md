@@ -1,5 +1,13 @@
 # Phase 5.5 → 6 → 7 Data Transformation
 
+> **⚠️ NOTE: Phase 5.5 DEPRECATED as of 2025-11-20 (APML v8.2.1)**
+>
+> This document describes the legacy pipeline. Current pipeline is:
+> **Phase 1 → 3 (includes 6) → 5 → 7 → 8**
+>
+> Phase 5.5 (deduplication/grammar validation) has been removed.
+> See APML v8.2.1 changelog for details.
+
 **Purpose**: How deduplicated LEGOs and introductions become app-ready course JSON
 
 ---

@@ -202,7 +202,8 @@ See: `docs/SMART_RESUME_API.md` for details
 
 ---
 
-**Version:** 7.8.3 (Smart Resume + Phase 3 v4.0.2)
+**Version:** 8.2.1 (Phase 5.5 Removal - Human Review Strategy)
 **Build:** Clean
-**Phase Intelligence**: Phase 1 v2.6, Phase 3 v4.0.2, Phase 5 v2.2 (batch-aware), Phase 5.5 v2.0, Phase 6 v2.0 (🔒 Locked SSoT)
-**Date:** 2025-10-29
+**Phase Intelligence**: Phase 1 v2.6, Phase 3 v7.1, Phase 5 v6.1, Phase 6 v2.1 (integrated), Phase 7 v1.1, Phase 8 v1.1 (🔒 Locked SSoT)
+**Date:** 2025-11-20
+**Note:** Phase 5.5 deprecated - replaced with human semi-manual review for first 100 seeds

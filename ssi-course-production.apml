@@ -1,6 +1,6 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "8.2.0"
+  version: "8.2.1"
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
@@ -10,6 +10,27 @@ app ssi_course_production:
 
   created: "2024-10-13"
   author: "Tom Cassidy / SSi Team"
+
+  changelog_v8_2_1: |
+    **Date:** 2025-11-20
+    **Summary:** Phase 5.5 Removal - Human Review Strategy
+
+    QUALITY STRATEGY CHANGE:
+    - Phase 5.5 (Grammar Validation) removed from automated pipeline
+    - Replaced with human semi-manual review for first 100 seeds
+    - Quality gates: Ship first course → iterate based on real usage
+    - Future: Incremental quality checks added as patterns emerge
+
+    RATIONALE:
+    - Manual review effective (proved with Seeds 1-100 quality audit)
+    - ~20,000 phrases manageable for human review (~200k-400k utterances with spaced repetition)
+    - Ship faster, iterate later approach
+    - Browse/review/flag UI for phrase deletion (future)
+
+    PIPELINE UPDATE:
+    - New flow: Phase 1 → 3 (includes 6) → 5 → 7 → 8
+    - Phase 5.5 service disabled in start-automation.cjs
+    - No automated grammar validation gates
 
   changelog_v8_2_0: |
     **Date:** 2025-11-20
@@ -2992,7 +3013,19 @@ PROMPT: |
   ✓ Pedagogical soundness through vocabulary constraints
   ✓ Optimal learning sequence with rich practice
 
-## Phase 5.5: Basket Deduplication
+## Phase 5.5: Basket Deduplication (DEPRECATED - See v8.2.1)
+
+**⚠️ DEPRECATED as of 2025-11-20 (APML v8.2.1)**
+
+**Reason:** Automated grammar validation and basket deduplication proved brittle and slow. Strategic pivot to human semi-manual review for first 100 seeds (~20,000 phrases) before publishing. Quality gates will be added incrementally based on real-world usage patterns.
+
+**Replacement Strategy:**
+- Human review of first 100 seeds (GOLDEN quality gate)
+- Ship first course → iterate based on learner feedback
+- Future: Browse/review/flag UI for phrase management
+- Future: Incremental quality checks as patterns emerge
+
+**Historical Documentation (Preserved for Reference):**
 
 NAME: "Basket Deduplication"
 PURPOSE: Remove duplicate LEGO baskets, keeping first occurrence with full provenance

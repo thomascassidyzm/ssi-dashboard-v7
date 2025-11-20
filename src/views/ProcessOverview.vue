@@ -53,11 +53,12 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">End-to-End Pipeline</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The SSi Course Production system uses APML v8.2.0 specification to generate complete language courses from canonical seed pairs through a streamlined microservices pipeline with integrated Phase 6 and self-contained documentation.</p>
+            <p>The SSi Course Production system uses APML v8.2.1 specification to generate complete language courses from canonical seed pairs through a streamlined microservices pipeline with integrated Phase 6, self-contained documentation, and human quality review strategy.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4">
               <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">7646bca3</span></p>
-              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v8.2.0</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v1.1, 8 v1.1 🔒</span></p>
+              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v8.2.1</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v1.1, 8 v1.1 🔒</span></p>
+              <p class="text-xs text-amber-400 mt-1">⚠️ Phase 5.5 deprecated - human review for first 100 seeds</p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Architecture Overview</h3>
@@ -119,8 +120,9 @@
               </router-link>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v8.2.0</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v8.2.1</h3>
             <ul class="space-y-2">
+              <li><strong>Phase 5.5 Deprecated (NEW in v8.2.1):</strong> Automated grammar validation removed. Human review strategy for first 100 seeds (~20k phrases). Ship faster, iterate based on real usage.</li>
               <li><strong>Phase 3 v7.1 Complete:</strong> Hierarchical lego_pairs.json (seed_pair → legos) with 668 seeds, 2,965 unique LEGOs, zero Pragmatic FD violations, includes integrated Phase 6 (<1s overhead)</li>
               <li><strong>Overlapping LEGOs:</strong> Chunks share components for maximum recombination power (e.g., "tardaron" in multiple LEGOs)</li>
               <li><strong>Two Heuristics Edition:</strong> Remove learner uncertainty + Maximize patterns with minimum vocab</li>
