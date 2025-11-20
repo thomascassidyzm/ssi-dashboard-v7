@@ -173,44 +173,44 @@
 
         <!-- 10 Phrases Structure -->
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
-          <h3 class="text-xl font-semibold text-emerald-300 mb-4">10 Phrases per Basket</h3>
+          <h3 class="text-xl font-semibold text-emerald-300 mb-4">Approximately 10 Phrases per Basket</h3>
 
-          <p class="text-slate-300 mb-4">Every basket contains <strong>exactly 10 practice phrases</strong> in progressive complexity.</p>
+          <p class="text-slate-300 mb-4">Every basket contains <strong>approximately 10 practice phrases</strong> in progressive complexity.</p>
 
           <div class="space-y-4">
-            <!-- Scaffolding Phrases -->
+            <!-- Shorter Phrases (First Introduction) -->
             <div class="bg-slate-900 p-4 rounded border-l-4 border-blue-500">
               <div class="flex items-start justify-between mb-2">
-                <h4 class="text-blue-300 font-semibold">Phrases 1-8: Scaffolding (Debut Practice)</h4>
-                <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">USED ONCE</span>
+                <h4 class="text-blue-300 font-semibold">Shorter Phrases (Up to 8 Shortest)</h4>
+                <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">FIRST TIME ONLY</span>
               </div>
-              <p class="text-slate-300 text-sm mb-3">Used ONLY during first introduction of this LEGO. Progressive complexity helps learner build confidence.</p>
+              <p class="text-slate-300 text-sm mb-3">Practiced ONLY during first introduction of this LEGO. Progressive complexity helps learner build confidence.</p>
               <div class="bg-slate-800 p-3 rounded">
-                <p class="text-xs text-slate-400 mb-2">Distribution: <strong>2-2-2-2</strong></p>
+                <p class="text-xs text-slate-400 mb-2">Characteristics:</p>
                 <ul class="text-xs text-slate-300 space-y-1">
-                  <li>• Phrases 1-2: <strong>Simple</strong> (1-2 LEGOs)</li>
-                  <li>• Phrases 3-4: <strong>Medium</strong> (3 LEGOs)</li>
-                  <li>• Phrases 5-6: <strong>Longer</strong> (4 LEGOs)</li>
-                  <li>• Phrases 7-8: <strong>Complex</strong> (5+ LEGOs)</li>
+                  <li>• Simpler, shorter practice phrases</li>
+                  <li>• Build gradually from simple to more complex</li>
+                  <li>• Help learner gain initial confidence</li>
+                  <li>• Discarded after first introduction</li>
                 </ul>
               </div>
               <p class="text-xs text-slate-400 mt-3 italic">Like training wheels—used during initial learning, then removed.</p>
             </div>
 
-            <!-- Eternal Phrases -->
+            <!-- Longer Phrases (Eternal Practice) -->
             <div class="bg-slate-900 p-4 rounded border-l-4 border-emerald-500">
               <div class="flex items-start justify-between mb-2">
-                <h4 class="text-emerald-300 font-semibold">Phrases 9-10: Eternal Practice</h4>
+                <h4 class="text-emerald-300 font-semibold">Longer Phrases (Spaced Repetition)</h4>
                 <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">USED FOREVER</span>
               </div>
-              <p class="text-slate-300 text-sm mb-3">Practiced <strong>hundreds of times</strong> throughout the entire course. Must be excellent, natural, conversational.</p>
+              <p class="text-slate-300 text-sm mb-3">Practiced <strong>every time this LEGO is revisited</strong> via the app's spaced repetition logic. Must be excellent, natural, conversational.</p>
               <div class="bg-slate-800 p-3 rounded">
                 <p class="text-xs text-slate-400 mb-2">Quality Requirements:</p>
                 <ul class="text-xs text-slate-300 space-y-1">
-                  <li>• <strong>Most complex</strong> (7-10 words typical)</li>
+                  <li>• <strong>Most complex</strong> and longest phrases in basket</li>
                   <li>• <strong>Natural</strong> in BOTH languages</li>
                   <li>• <strong>Perfect grammar</strong> (errors here = disaster)</li>
-                  <li>• Phrase #10 for final LEGO = complete seed sentence</li>
+                  <li>• Final LEGO in seed → longest phrase = complete seed sentence</li>
                 </ul>
               </div>
               <p class="text-xs text-slate-400 mt-3 italic">Like actual cycling—used forever after you've learned.</p>
@@ -219,51 +219,141 @@
 
           <div class="mt-4 bg-amber-900/20 border border-amber-600 p-4 rounded">
             <p class="text-amber-300 font-semibold text-sm mb-2">📱 How the App Uses Baskets</p>
-            <p class="text-slate-300 text-sm">
-              The app <strong>"pulls from both ends"</strong> during practice:
+            <p class="text-slate-300 text-sm mb-2">
+              The app uses different phrases from the basket depending on context:
             </p>
             <ul class="text-slate-300 text-sm mt-2 space-y-1">
-              <li>• <strong>Need easy practice?</strong> → Pull phrase #1 (simplest)</li>
-              <li>• <strong>Need hard practice?</strong> → Pull phrase #10 (most complex)</li>
-              <li>• <strong>Spaced repetition?</strong> → Eternal phrases (9-10) reused forever</li>
-              <li>• <strong>First time learning?</strong> → Work through phrases 1-10 progressively</li>
+              <li>• <strong>First time learning?</strong> → Practice the shorter phrases (up to 8 shortest)</li>
+              <li>• <strong>Spaced repetition?</strong> → Practice the longer phrases (revisited forever)</li>
+              <li>• <strong>Need easy practice?</strong> → Pull shorter phrases</li>
+              <li>• <strong>Need hard practice?</strong> → Pull longest phrases</li>
             </ul>
           </div>
         </div>
 
         <!-- Example Basket -->
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <h3 class="text-xl font-semibold text-emerald-300 mb-4">Example: Basket for "quiero" (I want)</h3>
+          <h3 class="text-xl font-semibold text-emerald-300 mb-4">Example: Basket for "decir algo" (to say something) - S0004L02</h3>
+
+          <p class="text-slate-400 text-sm mb-4">
+            This basket demonstrates the vocabulary constraint: all practice phrases use LEGOs the learner already knows from earlier seeds.
+          </p>
 
           <div class="bg-slate-900 p-4 rounded overflow-x-auto">
             <pre class="text-xs text-slate-300"><code>[
-  {"known": "I want", "target": "Quiero"},                                             <span class="text-blue-400">// 1: Bare LEGO (scaffolding)</span>
-  {"known": "I want to speak", "target": "Quiero hablar"},                             <span class="text-blue-400">// 2: 2 LEGOs (scaffolding)</span>
-  {"known": "I want to speak Spanish", "target": "Quiero hablar español"},             <span class="text-blue-400">// 3: 3 LEGOs (scaffolding)</span>
-  {"known": "I want to speak with you", "target": "Quiero hablar contigo"},            <span class="text-blue-400">// 4: 3 LEGOs (scaffolding)</span>
-  {"known": "I want to speak Spanish with you", "target": "Quiero hablar español contigo"},       <span class="text-blue-400">// 5: 4 LEGOs (scaffolding)</span>
-  {"known": "I want to speak Spanish with you now", "target": "Quiero hablar español contigo ahora"},  <span class="text-blue-400">// 6: 5 LEGOs (scaffolding)</span>
-  {"known": "I want to speak a lot", "target": "Quiero hablar mucho"},                 <span class="text-blue-400">// 7: Different combination (scaffolding)</span>
-  {"known": "I want to speak now and later", "target": "Quiero hablar ahora y más tarde"},  <span class="text-blue-400">// 8: More complex (scaffolding)</span>
-  {"known": "I want to speak Spanish with you now and tomorrow", "target": "Quiero hablar español contigo ahora y mañana"},  <span class="text-emerald-400">// 9: ETERNAL (most complex)</span>
-  {"known": "I want to speak Spanish with you now", "target": "Quiero hablar español contigo ahora"}   <span class="text-emerald-400">// 10: ETERNAL (complete seed)</span>
+  {"known": "to say something", "target": "decir algo"},                                              <span class="text-blue-400">// 1: Bare LEGO (shorter)</span>
+  {"known": "I want to say something", "target": "Quiero decir algo"},                                <span class="text-blue-400">// 2: 2 LEGOs (shorter)</span>
+  {"known": "I want to learn how to say something", "target": "Quiero aprender cómo decir algo"},     <span class="text-blue-400">// 3: 4 LEGOs (shorter)</span>
+  {"known": "I'm trying to say something", "target": "Estoy intentando decir algo"},                  <span class="text-blue-400">// 4: 3 LEGOs (shorter)</span>
+  {"known": "I'm trying to learn how to say something", "target": "Estoy intentando aprender cómo decir algo"},  <span class="text-blue-400">// 5: 5 LEGOs (shorter)</span>
+  {"known": "I want to say something now", "target": "Quiero decir algo ahora"},                      <span class="text-emerald-400">// 6: Longer phrase (eternal)</span>
+  {"known": "I want to learn how to say something now", "target": "Quiero aprender cómo decir algo ahora"}      <span class="text-emerald-400">// 7: Longest phrase (eternal)</span>
 ]</code></pre>
+          </div>
+
+          <div class="mt-4 bg-blue-900/20 border border-blue-500/50 rounded p-3">
+            <p class="text-blue-300 text-xs font-semibold mb-2">Notice:</p>
+            <ul class="text-slate-300 text-xs space-y-1">
+              <li>• All LEGOs used ("quiero", "aprender", "cómo", "estoy intentando", "ahora") were learned in earlier seeds</li>
+              <li>• Only "decir algo" is new - everything else is already mastered vocabulary</li>
+              <li>• Shorter phrases (1-5) used for first introduction only</li>
+              <li>• Longer phrases (6-7) practiced forever via spaced repetition</li>
+            </ul>
           </div>
         </div>
       </section>
 
       <!-- Section 3: The Vocabulary Constraint -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">The Vocabulary Constraint: The Iron Law</h2>
+        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">The Vocabulary Constraint & Learner Uncertainty Test</h2>
 
         <div class="bg-red-900/20 border border-red-600 rounded-lg p-6 mb-6">
-          <h3 class="text-red-300 font-semibold mb-3 text-lg">📜 The Iron Law</h3>
+          <h3 class="text-red-300 font-semibold mb-3 text-lg">📜 The Vocabulary Constraint</h3>
           <p class="text-slate-200 text-lg mb-4">
             A basket can <strong>ONLY</strong> use LEGOs the learner has <strong>ALREADY</strong> mastered.
           </p>
           <p class="text-slate-300 text-sm">
             Every practice phrase must contain ZERO unknowns except the LEGO being taught.
           </p>
+        </div>
+
+        <div class="bg-blue-900/20 border border-blue-600 rounded-lg p-6 mb-6">
+          <h3 class="text-blue-300 font-semibold mb-3 text-lg">🔬 The LUT (Learner Uncertainty Test)</h3>
+          <p class="text-slate-200 mb-4">
+            Also called "Functional Determinism" - the LUT is the guiding principle for LEGO extraction in Phase 3 and basket generation in Phase 5.
+          </p>
+          <div class="bg-slate-900 p-4 rounded">
+            <p class="text-emerald-400 font-semibold mb-2">The Test:</p>
+            <p class="text-slate-300 text-sm mb-3">
+              When a learner hears the KNOWN phrase, is there <strong>ZERO uncertainty</strong> about what to say in the TARGET language?
+            </p>
+            <div class="space-y-2 text-xs">
+              <div class="flex items-start gap-2">
+                <span class="text-emerald-400">✓</span>
+                <p class="text-slate-300"><strong>Passes LUT:</strong> "to say something" → "decir algo" (no ambiguity)</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-red-400">✗</span>
+                <p class="text-slate-300"><strong>Fails LUT:</strong> "say" → ¿"decir"? ¿"digo"? ¿"dice"? (learner uncertain which form)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-2 border-purple-500/50 rounded-lg p-6 mb-6">
+          <h3 class="text-xl font-semibold text-purple-300 mb-4">💎 Minimum Viable Unit of Consistent Meaning</h3>
+
+          <p class="text-slate-200 mb-4">
+            <strong>We do NOT break seed pairs down to individual words</strong> - that would fail the LUT.
+          </p>
+
+          <p class="text-slate-300 text-sm mb-4">
+            LEGOs are the <strong>minimum viable unit</strong> where meaning is consistent and learner uncertainty is ZERO.
+          </p>
+
+          <div class="bg-slate-900 p-5 rounded-lg">
+            <p class="text-emerald-400 font-semibold mb-3">Example Breakdown:</p>
+
+            <div class="space-y-4">
+              <div>
+                <p class="text-slate-400 text-sm mb-2">Seed Pair (English):</p>
+                <p class="text-white text-lg">"I want you to speak Spanish with me tomorrow"</p>
+              </div>
+
+              <div>
+                <p class="text-amber-400 text-sm mb-2">LEGO Breakdown (passing LUT):</p>
+                <div class="font-mono text-sm text-slate-200 space-y-1">
+                  <p><span class="text-blue-400">I want</span> | <span class="text-emerald-400">you to speak</span> | <span class="text-purple-400">Spanish</span> | <span class="text-pink-400">with me</span> | <span class="text-amber-400">tomorrow</span></p>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-amber-400 text-sm mb-2">Target (Spanish):</p>
+                <div class="font-mono text-sm text-slate-200 space-y-1">
+                  <p><span class="text-blue-400">quiero</span> | <span class="text-emerald-400">que hables</span> | <span class="text-purple-400">español</span> | <span class="text-pink-400">conmigo</span> | <span class="text-amber-400">mañana</span></p>
+                </div>
+              </div>
+
+              <div class="bg-emerald-900/30 border border-emerald-700 p-3 rounded mt-3">
+                <p class="text-emerald-300 text-sm font-semibold mb-2">Why This Works:</p>
+                <ul class="text-slate-200 text-xs space-y-1">
+                  <li>• <strong>"you to speak"</strong> is ATOMIC - breaking it down would fail LUT</li>
+                  <li>• Learner hears "you to speak" → knows instantly: "que hables"</li>
+                  <li>• Breaking to "you" | "to" | "speak" would create uncertainty (¿"tú hablas"? ¿"tú hablar"? ¿"que hables"?)</li>
+                  <li>• <strong>"with me"</strong> = one LEGO "conmigo" (not "con" + "mí")</li>
+                </ul>
+              </div>
+
+              <div class="bg-red-900/30 border border-red-700 p-3 rounded mt-3">
+                <p class="text-red-300 text-sm font-semibold mb-2">What Would Fail LUT:</p>
+                <ul class="text-slate-300 text-xs space-y-1">
+                  <li>❌ Breaking "you to speak" → "you" | "to" | "speak" (too much uncertainty)</li>
+                  <li>❌ Breaking "with me" → "with" | "me" (doesn't map to "con" + "mí", it's "conmigo")</li>
+                  <li>❌ Individual words lose grammatical context needed for correct translation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
