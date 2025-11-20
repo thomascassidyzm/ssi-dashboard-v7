@@ -8,63 +8,61 @@
     "course": "cmn_for_eng"
   },
   "seed_pair": {
-    "english": "I'm trying to learn.",
-    "mandarin": "我在试着学习。"
+    "known": "I'm trying to learn.",
+    "target": "我在试着学习。"
   },
   "recent_seed_pairs": [
     {
-      "seed_id": "S0001",
-      "english": "I want to speak Chinese with you now.",
-      "mandarin": "我现在想和你说中文。"
+      "seed_id": "S0001"
     }
   ],
   "recent_new_legos": [
     {
       "id": "S0001L01",
-      "english": "now",
-      "mandarin": "现在",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0001L02",
-      "english": "I want to",
-      "mandarin": "我想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L03",
-      "english": "with you",
-      "mandarin": "和你",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L04",
-      "english": "Chinese",
-      "mandarin": "中文",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0001L05",
-      "english": "to speak Chinese",
-      "mandarin": "说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L06",
-      "english": "to speak with you",
-      "mandarin": "和你说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L07",
-      "english": "to speak Chinese with you",
-      "mandarin": "和你说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L08",
-      "english": "want to speak Chinese with you",
-      "mandarin": "想和你说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     }
   ],
@@ -72,8 +70,8 @@
     "S0002L01": {
       "lego_id": "S0002L01",
       "lego": {
-        "english": "I'm trying to",
-        "mandarin": "我在试着"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
@@ -212,38 +210,38 @@
       "_metadata": {
         "lego_id": "S0002L01",
         "seed_context": {
-          "english": "I'm trying to learn.",
-          "mandarin": "我在试着学习。"
+          "known": "I'm trying to learn.",
+          "target": "我在试着学习。"
         }
       },
       "components": [
         {
-          "mandarin": "我",
-          "english": "I"
+          "known": "I",
+          "target": "我"
         },
         {
-          "mandarin": "在",
-          "english": "am (progressive)"
+          "known": "am (progressive)",
+          "target": "在"
         },
         {
-          "mandarin": "试着",
-          "english": "trying"
+          "known": "trying",
+          "target": "试着"
         }
       ]
     },
     "S0002L02": {
       "lego_id": "S0002L02",
       "lego": {
-        "english": "am trying to",
-        "mandarin": "在试着"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0002L01",
-          "english": "I'm trying to",
-          "mandarin": "我在试着",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -381,40 +379,40 @@
       "_metadata": {
         "lego_id": "S0002L02",
         "seed_context": {
-          "english": "I'm trying to learn.",
-          "mandarin": "我在试着学习。"
+          "known": "I'm trying to learn.",
+          "target": "我在试着学习。"
         }
       },
       "components": [
         {
-          "mandarin": "在",
-          "english": "am/is (progressive)"
+          "known": "am/is (progressive)",
+          "target": "在"
         },
         {
-          "mandarin": "试着",
-          "english": "trying"
+          "known": "trying",
+          "target": "试着"
         }
       ]
     },
     "S0002L03": {
       "lego_id": "S0002L03",
       "lego": {
-        "english": "to learn",
-        "mandarin": "学习"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0002L01",
-          "english": "I'm trying to",
-          "mandarin": "我在试着",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0002L02",
-          "english": "am trying to",
-          "mandarin": "在试着",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -552,46 +550,46 @@
       "_metadata": {
         "lego_id": "S0002L03",
         "seed_context": {
-          "english": "I'm trying to learn.",
-          "mandarin": "我在试着学习。"
+          "known": "I'm trying to learn.",
+          "target": "我在试着学习。"
         }
       },
       "components": [
         {
-          "mandarin": "学",
-          "english": "learn"
+          "known": "learn",
+          "target": "学"
         },
         {
-          "mandarin": "习",
-          "english": "practice"
+          "known": "practice",
+          "target": "习"
         }
       ]
     },
     "S0002L04": {
       "lego_id": "S0002L04",
       "lego": {
-        "english": "trying to learn",
-        "mandarin": "试着学习"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0002L01",
-          "english": "I'm trying to",
-          "mandarin": "我在试着",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0002L02",
-          "english": "am trying to",
-          "mandarin": "在试着",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0002L03",
-          "english": "to learn",
-          "mandarin": "学习",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -729,22 +727,22 @@
       "_metadata": {
         "lego_id": "S0002L04",
         "seed_context": {
-          "english": "I'm trying to learn.",
-          "mandarin": "我在试着学习。"
+          "known": "I'm trying to learn.",
+          "target": "我在试着学习。"
         }
       },
       "components": [
         {
-          "mandarin": "试着",
-          "english": "trying"
+          "known": "trying",
+          "target": "试着"
         },
         {
-          "mandarin": "学",
-          "english": "learn"
+          "known": "learn",
+          "target": "学"
         },
         {
-          "mandarin": "习",
-          "english": "practice"
+          "known": "practice",
+          "target": "习"
         }
       ]
     }

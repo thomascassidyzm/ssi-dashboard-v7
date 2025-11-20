@@ -8,8 +8,8 @@
     "course": "cmn_for_eng"
   },
   "seed_pair": {
-    "english": "I want to speak Chinese with you now.",
-    "mandarin": "我现在想和你说中文。"
+    "known": "I want to speak Chinese with you now.",
+    "target": "我现在想和你说中文。"
   },
   "recent_seed_pairs": [],
   "recent_new_legos": [],
@@ -17,8 +17,8 @@
     "S0001L01": {
       "lego_id": "S0001L01",
       "lego": {
-        "english": "now",
-        "mandarin": "现在"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
@@ -157,24 +157,24 @@
       "_metadata": {
         "lego_id": "S0001L01",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       }
     },
     "S0001L02": {
       "lego_id": "S0001L02",
       "lego": {
-        "english": "I want to",
-        "mandarin": "我想"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0001L01",
-          "english": "now",
-          "mandarin": "现在",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -312,40 +312,40 @@
       "_metadata": {
         "lego_id": "S0001L02",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       },
       "components": [
         {
-          "mandarin": "我",
-          "english": "I"
+          "known": "I",
+          "target": "我"
         },
         {
-          "mandarin": "想",
-          "english": "want"
+          "known": "want",
+          "target": "想"
         }
       ]
     },
     "S0001L03": {
       "lego_id": "S0001L03",
       "lego": {
-        "english": "with you",
-        "mandarin": "和你"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0001L01",
-          "english": "now",
-          "mandarin": "现在",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L02",
-          "english": "I want to",
-          "mandarin": "我想",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -483,46 +483,46 @@
       "_metadata": {
         "lego_id": "S0001L03",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       },
       "components": [
         {
-          "mandarin": "和",
-          "english": "with"
+          "known": "with",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "you"
+          "known": "you",
+          "target": "你"
         }
       ]
     },
     "S0001L04": {
       "lego_id": "S0001L04",
       "lego": {
-        "english": "Chinese",
-        "mandarin": "中文"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0001L01",
-          "english": "now",
-          "mandarin": "现在",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L02",
-          "english": "I want to",
-          "mandarin": "我想",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L03",
-          "english": "with you",
-          "mandarin": "和你",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -660,42 +660,42 @@
       "_metadata": {
         "lego_id": "S0001L04",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       }
     },
     "S0001L05": {
       "lego_id": "S0001L05",
       "lego": {
-        "english": "to speak Chinese",
-        "mandarin": "说中文"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0001L01",
-          "english": "now",
-          "mandarin": "现在",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L02",
-          "english": "I want to",
-          "mandarin": "我想",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L03",
-          "english": "with you",
-          "mandarin": "和你",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L04",
-          "english": "Chinese",
-          "mandarin": "中文",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -833,58 +833,58 @@
       "_metadata": {
         "lego_id": "S0001L05",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       },
       "components": [
         {
-          "mandarin": "说",
-          "english": "speak"
+          "known": "speak",
+          "target": "说"
         },
         {
-          "mandarin": "中文",
-          "english": "Chinese"
+          "known": "Chinese",
+          "target": "中文"
         }
       ]
     },
     "S0001L06": {
       "lego_id": "S0001L06",
       "lego": {
-        "english": "to speak with you",
-        "mandarin": "和你说"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0001L01",
-          "english": "now",
-          "mandarin": "现在",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L02",
-          "english": "I want to",
-          "mandarin": "我想",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L03",
-          "english": "with you",
-          "mandarin": "和你",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L04",
-          "english": "Chinese",
-          "mandarin": "中文",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L05",
-          "english": "to speak Chinese",
-          "mandarin": "说中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1022,68 +1022,68 @@
       "_metadata": {
         "lego_id": "S0001L06",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       },
       "components": [
         {
-          "mandarin": "和",
-          "english": "with"
+          "known": "with",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "you"
+          "known": "you",
+          "target": "你"
         },
         {
-          "mandarin": "说",
-          "english": "speak"
+          "known": "speak",
+          "target": "说"
         }
       ]
     },
     "S0001L07": {
       "lego_id": "S0001L07",
       "lego": {
-        "english": "to speak Chinese with you",
-        "mandarin": "和你说中文"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0001L01",
-          "english": "now",
-          "mandarin": "现在",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L02",
-          "english": "I want to",
-          "mandarin": "我想",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L03",
-          "english": "with you",
-          "mandarin": "和你",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L04",
-          "english": "Chinese",
-          "mandarin": "中文",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L05",
-          "english": "to speak Chinese",
-          "mandarin": "说中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L06",
-          "english": "to speak with you",
-          "mandarin": "和你说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1221,78 +1221,78 @@
       "_metadata": {
         "lego_id": "S0001L07",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       },
       "components": [
         {
-          "mandarin": "和",
-          "english": "with"
+          "known": "with",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "you"
+          "known": "you",
+          "target": "你"
         },
         {
-          "mandarin": "说",
-          "english": "speak"
+          "known": "speak",
+          "target": "说"
         },
         {
-          "mandarin": "中文",
-          "english": "Chinese"
+          "known": "Chinese",
+          "target": "中文"
         }
       ]
     },
     "S0001L08": {
       "lego_id": "S0001L08",
       "lego": {
-        "english": "want to speak Chinese with you",
-        "mandarin": "想和你说中文"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0001L01",
-          "english": "now",
-          "mandarin": "现在",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L02",
-          "english": "I want to",
-          "mandarin": "我想",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L03",
-          "english": "with you",
-          "mandarin": "和你",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L04",
-          "english": "Chinese",
-          "mandarin": "中文",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0001L05",
-          "english": "to speak Chinese",
-          "mandarin": "说中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L06",
-          "english": "to speak with you",
-          "mandarin": "和你说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0001L07",
-          "english": "to speak Chinese with you",
-          "mandarin": "和你说中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1430,30 +1430,30 @@
       "_metadata": {
         "lego_id": "S0001L08",
         "seed_context": {
-          "english": "I want to speak Chinese with you now.",
-          "mandarin": "我现在想和你说中文。"
+          "known": "I want to speak Chinese with you now.",
+          "target": "我现在想和你说中文。"
         }
       },
       "components": [
         {
-          "mandarin": "想",
-          "english": "want"
+          "known": "want",
+          "target": "想"
         },
         {
-          "mandarin": "和",
-          "english": "with"
+          "known": "with",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "you"
+          "known": "you",
+          "target": "你"
         },
         {
-          "mandarin": "说",
-          "english": "speak"
+          "known": "speak",
+          "target": "说"
         },
         {
-          "mandarin": "中文",
-          "english": "Chinese"
+          "known": "Chinese",
+          "target": "中文"
         }
       ]
     }

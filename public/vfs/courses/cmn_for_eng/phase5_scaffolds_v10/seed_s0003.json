@@ -8,92 +8,88 @@
     "course": "cmn_for_eng"
   },
   "seed_pair": {
-    "english": "how to speak as often as possible.",
-    "mandarin": "怎么尽可能经常地说。"
+    "known": "how to speak as often as possible.",
+    "target": "怎么尽可能经常地说。"
   },
   "recent_seed_pairs": [
     {
-      "seed_id": "S0001",
-      "english": "I want to speak Chinese with you now.",
-      "mandarin": "我现在想和你说中文。"
+      "seed_id": "S0001"
     },
     {
-      "seed_id": "S0002",
-      "english": "I'm trying to learn.",
-      "mandarin": "我在试着学习。"
+      "seed_id": "S0002"
     }
   ],
   "recent_new_legos": [
     {
       "id": "S0001L01",
-      "english": "now",
-      "mandarin": "现在",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0001L02",
-      "english": "I want to",
-      "mandarin": "我想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L03",
-      "english": "with you",
-      "mandarin": "和你",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L04",
-      "english": "Chinese",
-      "mandarin": "中文",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0001L05",
-      "english": "to speak Chinese",
-      "mandarin": "说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L06",
-      "english": "to speak with you",
-      "mandarin": "和你说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L07",
-      "english": "to speak Chinese with you",
-      "mandarin": "和你说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L08",
-      "english": "want to speak Chinese with you",
-      "mandarin": "想和你说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L01",
-      "english": "I'm trying to",
-      "mandarin": "我在试着",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L02",
-      "english": "am trying to",
-      "mandarin": "在试着",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L03",
-      "english": "to learn",
-      "mandarin": "学习",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L04",
-      "english": "trying to learn",
-      "mandarin": "试着学习",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     }
   ],
@@ -101,8 +97,8 @@
     "S0003L01": {
       "lego_id": "S0003L01",
       "lego": {
-        "english": "how to",
-        "mandarin": "怎么"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
@@ -241,24 +237,24 @@
       "_metadata": {
         "lego_id": "S0003L01",
         "seed_context": {
-          "english": "how to speak as often as possible.",
-          "mandarin": "怎么尽可能经常地说。"
+          "known": "how to speak as often as possible.",
+          "target": "怎么尽可能经常地说。"
         }
       }
     },
     "S0003L02": {
       "lego_id": "S0003L02",
       "lego": {
-        "english": "to speak",
-        "mandarin": "说"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0003L01",
-          "english": "how to",
-          "mandarin": "怎么",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -396,30 +392,30 @@
       "_metadata": {
         "lego_id": "S0003L02",
         "seed_context": {
-          "english": "how to speak as often as possible.",
-          "mandarin": "怎么尽可能经常地说。"
+          "known": "how to speak as often as possible.",
+          "target": "怎么尽可能经常地说。"
         }
       }
     },
     "S0003L03": {
       "lego_id": "S0003L03",
       "lego": {
-        "english": "how to speak",
-        "mandarin": "怎么说"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0003L01",
-          "english": "how to",
-          "mandarin": "怎么",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L02",
-          "english": "to speak",
-          "mandarin": "说",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -557,46 +553,46 @@
       "_metadata": {
         "lego_id": "S0003L03",
         "seed_context": {
-          "english": "how to speak as often as possible.",
-          "mandarin": "怎么尽可能经常地说。"
+          "known": "how to speak as often as possible.",
+          "target": "怎么尽可能经常地说。"
         }
       },
       "components": [
         {
-          "mandarin": "怎么",
-          "english": "how"
+          "known": "how",
+          "target": "怎么"
         },
         {
-          "mandarin": "说",
-          "english": "speak"
+          "known": "speak",
+          "target": "说"
         }
       ]
     },
     "S0003L04": {
       "lego_id": "S0003L04",
       "lego": {
-        "english": "often",
-        "mandarin": "经常"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0003L01",
-          "english": "how to",
-          "mandarin": "怎么",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L02",
-          "english": "to speak",
-          "mandarin": "说",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L03",
-          "english": "how to speak",
-          "mandarin": "怎么说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -734,42 +730,42 @@
       "_metadata": {
         "lego_id": "S0003L04",
         "seed_context": {
-          "english": "how to speak as often as possible.",
-          "mandarin": "怎么尽可能经常地说。"
+          "known": "how to speak as often as possible.",
+          "target": "怎么尽可能经常地说。"
         }
       }
     },
     "S0003L05": {
       "lego_id": "S0003L05",
       "lego": {
-        "english": "as...as possible",
-        "mandarin": "尽可能"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0003L01",
-          "english": "how to",
-          "mandarin": "怎么",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L02",
-          "english": "to speak",
-          "mandarin": "说",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L03",
-          "english": "how to speak",
-          "mandarin": "怎么说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0003L04",
-          "english": "often",
-          "mandarin": "经常",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -907,58 +903,58 @@
       "_metadata": {
         "lego_id": "S0003L05",
         "seed_context": {
-          "english": "how to speak as often as possible.",
-          "mandarin": "怎么尽可能经常地说。"
+          "known": "how to speak as often as possible.",
+          "target": "怎么尽可能经常地说。"
         }
       },
       "components": [
         {
-          "mandarin": "尽",
-          "english": "as...as/to the extent"
+          "known": "as...as/to the extent",
+          "target": "尽"
         },
         {
-          "mandarin": "可能",
-          "english": "possible"
+          "known": "possible",
+          "target": "可能"
         }
       ]
     },
     "S0003L06": {
       "lego_id": "S0003L06",
       "lego": {
-        "english": "to speak often",
-        "mandarin": "经常地说"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0003L01",
-          "english": "how to",
-          "mandarin": "怎么",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L02",
-          "english": "to speak",
-          "mandarin": "说",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L03",
-          "english": "how to speak",
-          "mandarin": "怎么说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0003L04",
-          "english": "often",
-          "mandarin": "经常",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L05",
-          "english": "as...as possible",
-          "mandarin": "尽可能",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1096,68 +1092,68 @@
       "_metadata": {
         "lego_id": "S0003L06",
         "seed_context": {
-          "english": "how to speak as often as possible.",
-          "mandarin": "怎么尽可能经常地说。"
+          "known": "how to speak as often as possible.",
+          "target": "怎么尽可能经常地说。"
         }
       },
       "components": [
         {
-          "mandarin": "经常",
-          "english": "often"
+          "known": "often",
+          "target": "经常"
         },
         {
-          "mandarin": "地",
-          "english": "(adverbial marker)"
+          "known": "(adverbial marker)",
+          "target": "地"
         },
         {
-          "mandarin": "说",
-          "english": "speak"
+          "known": "speak",
+          "target": "说"
         }
       ]
     },
     "S0003L07": {
       "lego_id": "S0003L07",
       "lego": {
-        "english": "to speak as often as possible",
-        "mandarin": "尽可能经常地说"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0003L01",
-          "english": "how to",
-          "mandarin": "怎么",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L02",
-          "english": "to speak",
-          "mandarin": "说",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L03",
-          "english": "how to speak",
-          "mandarin": "怎么说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0003L04",
-          "english": "often",
-          "mandarin": "经常",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0003L05",
-          "english": "as...as possible",
-          "mandarin": "尽可能",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0003L06",
-          "english": "to speak often",
-          "mandarin": "经常地说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1295,26 +1291,26 @@
       "_metadata": {
         "lego_id": "S0003L07",
         "seed_context": {
-          "english": "how to speak as often as possible.",
-          "mandarin": "怎么尽可能经常地说。"
+          "known": "how to speak as often as possible.",
+          "target": "怎么尽可能经常地说。"
         }
       },
       "components": [
         {
-          "mandarin": "尽可能",
-          "english": "as...as possible"
+          "known": "as...as possible",
+          "target": "尽可能"
         },
         {
-          "mandarin": "经常",
-          "english": "often"
+          "known": "often",
+          "target": "经常"
         },
         {
-          "mandarin": "地",
-          "english": "(adverbial marker)"
+          "known": "(adverbial marker)",
+          "target": "地"
         },
         {
-          "mandarin": "说",
-          "english": "speak"
+          "known": "speak",
+          "target": "说"
         }
       ]
     }
