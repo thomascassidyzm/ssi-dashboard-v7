@@ -1041,6 +1041,118 @@ app.get('/api/languages', (req, res) => {
 });
 
 /**
+ * GET /api/canonical-seeds
+ * Serve canonical seeds to agents via ngrok
+ * Query params: ?limit=N&start=M (defaults: limit=668, start=1)
+ */
+app.get('/api/canonical-seeds', async (req, res) => {
+  try {
+    const canonicalPath = path.join(__dirname, '../../public/vfs/canonical/canonical_seeds.json');
+    const seedsArray = await fs.readJSON(canonicalPath);
+
+    const limit = parseInt(req.query.limit) || 668;
+    const start = parseInt(req.query.start) || 1;
+
+    // Filter seeds by range (array is 0-indexed, but seed_id is 1-indexed)
+    const startIdx = start - 1;
+    const endIdx = Math.min(startIdx + limit, 668);
+    const filteredSeeds = seedsArray.slice(startIdx, endIdx);
+
+    res.json({
+      total_available: 668,
+      start,
+      limit,
+      count: filteredSeeds.length,
+      seeds: filteredSeeds
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error serving canonical seeds:', error);
+    res.status(500).json({ error: 'Failed to load canonical seeds', details: error.message });
+  }
+});
+
+/**
+ * GET /api/phase-intelligence/:phase
+ * Serve phase intelligence docs to agents via ngrok
+ * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
+ */
+app.get('/api/phase-intelligence/:phase', async (req, res) => {
+  try {
+    let { phase } = req.params;
+
+    // Normalize phase number (handle "phase1" or "1")
+    phase = phase.replace(/^phase/, '');
+
+    // Map phase numbers to intelligence files
+    const phaseFiles = {
+      '1': 'phase_1_seed_pairs.md',
+      '3': 'phase_3_lego_pairs.md',
+      '5': 'phase_5_lego_baskets.md',
+      '5.5': 'phase_5.5_grammar_review.md',
+      '6': 'phase_6_introductions.md',
+      '7': 'phase_7_compilation.md',
+      '8': 'phase_8_audio_generation.md'
+    };
+
+    const filename = phaseFiles[phase];
+    if (!filename) {
+      return res.status(404).json({ error: `No intelligence found for phase ${phase}` });
+    }
+
+    const intelligencePath = path.join(__dirname, '../../public/docs/phase_intelligence', filename);
+    const content = await fs.readFile(intelligencePath, 'utf8');
+
+    res.json({
+      phase,
+      filename,
+      content,
+      format: 'markdown'
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error serving phase intelligence:`, error);
+    res.status(500).json({ error: 'Failed to load phase intelligence', details: error.message });
+  }
+});
+
+/**
+ * POST /api/phase1/:courseCode/submit
+ * Accept completed seed_pairs.json from agents via ngrok
+ */
+app.post('/api/phase1/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const seedPairs = req.body;
+
+    // Validate basic structure
+    if (!seedPairs.course || !seedPairs.translations) {
+      return res.status(400).json({
+        error: 'Invalid seed_pairs format',
+        required: ['course', 'translations']
+      });
+    }
+
+    // Write to VFS
+    const outputPath = path.join(VFS_ROOT, courseCode, 'seed_pairs.json');
+    await fs.ensureDir(path.dirname(outputPath));
+    await fs.writeJSON(outputPath, seedPairs, { spaces: 2 });
+
+    console.log(`[Orchestrator] ✅ Received Phase 1 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    Seeds: ${Object.keys(seedPairs.translations).length}`);
+    console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    res.json({
+      success: true,
+      message: `Phase 1 submission received for ${courseCode}`,
+      seedCount: Object.keys(seedPairs.translations).length,
+      savedTo: outputPath
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 1 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 1 submission', details: error.message });
+  }
+});
+
+/**
  * GET /api/courses/validate/all
  * List all courses with their validation status
  */

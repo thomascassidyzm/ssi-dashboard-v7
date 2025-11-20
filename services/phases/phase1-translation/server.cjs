@@ -112,18 +112,18 @@ Translate all ${totalSeeds} canonical seeds into ${getLanguageName(target)} and 
 - Follow cognate preference rules consistently
 - Maintain consistent register (formal/informal) throughout
 
-**Phase Intelligence**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 1 - v2.6)
+**Phase Intelligence**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase-intelligence/1
 
-**Canonical Seeds**: https://ssi-dashboard-v7.vercel.app/api/seeds?limit=${endSeed}
+**Canonical Seeds**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/canonical-seeds?limit=${endSeed}
 
 ---
 
 ## Instructions
 
-1. **Fetch Phase 1 intelligence**: https://ssi-dashboard-v7.vercel.app/intelligence (Phase 1 - v2.6)
+1. **Fetch Phase 1 intelligence**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase-intelligence/1
    Read the complete methodology before starting
 
-2. **Fetch canonical seeds**: https://ssi-dashboard-v7.vercel.app/api/seeds?limit=${endSeed}
+2. **Fetch canonical seeds**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/canonical-seeds?limit=${endSeed}
    You need all ${totalSeeds} seeds for context
 
 3. **Translate sequentially** (seeds ${startSeed} through ${endSeed}):
@@ -189,8 +189,15 @@ Write to: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
 **IMPORTANT ORDERING**: Always put "known" before "target" in each translation object!
 
 **After completing all translations:**
-1. Write the seed_pairs.json file to \`public/vfs/courses/${courseCode}/seed_pairs.json\`
-2. Commit and push to your Claude Code session branch
+1. **Submit via API**: POST your completed seed_pairs.json to:
+   \`\`\`
+   ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase1/${courseCode}/submit
+   \`\`\`
+   Use the exact JSON structure shown above.
+
+2. **Backup locally**: Also write to \`public/vfs/courses/${courseCode}/seed_pairs.json\`
+
+3. **Commit and push**: Push to your Claude Code session branch for audit trail
 
 ---
 
