@@ -290,8 +290,8 @@ app.post('/start', async (req, res) => {
   // Detect segment range and get base course code
   const segmentMatch = courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/);
   const baseCourseCode = segmentMatch ? segmentMatch[1] : courseCode;
-  const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', baseCourseCode);
-  const courseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
+  const baseCourseDir = path.join(VFS_ROOT, baseCourseCode);
+  const courseDir = path.join(VFS_ROOT, courseCode);
 
   if (segmentMatch) {
     console.log(`[Phase 5] Segment range detected: ${courseCode}`);
