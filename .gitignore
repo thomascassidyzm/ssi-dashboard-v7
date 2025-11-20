@@ -80,6 +80,9 @@ scripts/generate_*.py
 
 # Patch-specific temporary files (Patch 5 and similar batch work)
 scripts/patch5_*.json
+scripts/baskets_*.json
+scripts/lego_pairs_*.json
+scripts/phase5_baskets_*.json
 scripts/verify_patch5_*.cjs
 scripts/create_patch5_*.cjs
 scripts/generate_cmn_batch*.py
