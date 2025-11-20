@@ -1,0 +1,712 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0028",
+  "generation_stage": "PHRASES_COMPLETED",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "It's useful to start talking as soon as you can.",
+    "mandarin": "尽快开始说话是有用的。"
+  },
+  "legos": {
+    "S0028L01": {
+      "lego_id": "S0028L01",
+      "lego": {
+        "english": "to start talking as soon as you can",
+        "mandarin": "尽快开始说话"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I want to start talking as soon as I can",
+                "mandarin": "我想尽快开始说话"
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "You want to start talking as soon as you can",
+                "mandarin": "你想尽快开始说话"
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I don't like to start talking as soon as I can",
+                "mandarin": "我不喜欢尽快开始说话"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "I have to start talking as soon as I can today",
+                "mandarin": "我今天必须尽快开始说话"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "Will you help me start talking as soon as I can before I have to go?",
+                "mandarin": "你会帮我在走之前尽快开始说话吗？"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "I don't like feeling like I have to start talking as soon as I can",
+                "mandarin": "我不喜欢感觉好像我必须尽快开始说话"
+              },
+              "lego_count_used": 3
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I don't like feeling as if I have to start talking as soon as I can before I go",
+                "mandarin": "我不喜欢感觉好像我必须在走之前尽快开始说话"
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I'm not going to be able to remember to start talking as soon as I can",
+                "mandarin": "我不会很容易就能记住尽快开始说话"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "I want to meet people who want to start talking as soon as they can",
+                "mandarin": "我想认识想尽快开始说话的人"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I like feeling as if I'm nearly ready to start talking as soon as I can",
+                "mandarin": "我喜欢感觉好像我快准备好尽快开始说话"
+              },
+              "lego_count_used": 4
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10
+    },
+    "S0028L02": {
+      "lego_id": "S0028L02",
+      "lego": {
+        "english": "to start as soon as possible",
+        "mandarin": "尽快开始"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I want to start as soon as possible",
+                "mandarin": "我想尽快开始"
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "We want to start as soon as possible",
+                "mandarin": "我们想尽快开始"
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I don't like to start as soon as possible",
+                "mandarin": "我不喜欢尽快开始"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "You want to start learning as soon as possible",
+                "mandarin": "你想尽快开始学"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I have to start as soon as possible before I go",
+                "mandarin": "我必须在走之前尽快开始"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "Will you help me start as soon as possible today?",
+                "mandarin": "你今天会帮我尽快开始吗？"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I don't like feeling as if I have to start as soon as possible",
+                "mandarin": "我不喜欢感觉好像我必须尽快开始"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I want to meet people who want to start as soon as possible",
+                "mandarin": "我想认识想尽快开始的人"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "I'm not going to be able to remember to start as soon as possible easily",
+                "mandarin": "我不会很容易能记住尽快开始"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I like feeling as if I'm nearly ready to start as soon as possible",
+                "mandarin": "我喜欢感觉好像我快准备好尽快开始"
+              },
+              "lego_count_used": 4
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10
+    },
+    "S0028L03": {
+      "lego_id": "S0028L03",
+      "lego": {
+        "english": "to start talking",
+        "mandarin": "开始说话"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I want to start talking",
+                "mandarin": "我想开始说话"
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "I don't want to start talking",
+                "mandarin": "我不想开始说话"
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I'm going to start talking soon",
+                "mandarin": "我很快就要开始说话"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "I don't like to start talking",
+                "mandarin": "我不喜欢开始说话"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I have to start talking before I go",
+                "mandarin": "我必须在走之前开始说话"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "Will you help me start talking today?",
+                "mandarin": "你今天会帮我开始说话吗？"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I don't like feeling as if I have to start talking before I go",
+                "mandarin": "我不喜欢感觉好像我必须在走之前开始说话"
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I want to meet people who speak Chinese and want to start talking",
+                "mandarin": "我想认识会说中文想开始说话的人"
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "I'm not going to be able to remember easily to start talking",
+                "mandarin": "我不会很容易就能记住开始说话"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I like feeling as if I'm nearly ready to start talking",
+                "mandarin": "我喜欢感觉好像我快准备好开始说话"
+              },
+              "lego_count_used": 4
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10
+    },
+    "S0028L04": {
+      "lego_id": "S0028L04",
+      "lego": {
+        "english": "to talk",
+        "mandarin": "说话"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I want to talk",
+                "mandarin": "我想说话"
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "I don't want to talk",
+                "mandarin": "我不想说话"
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I don't like to talk",
+                "mandarin": "我不喜欢说话"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "I don't want to stop talking",
+                "mandarin": "我不想停止说话"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I want to talk more soon",
+                "mandarin": "我很快想多说话"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "I have to talk before I go",
+                "mandarin": "我必须在走之前说话"
+              },
+              "lego_count_used": 3
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I don't like feeling as if I have to talk before I go",
+                "mandarin": "我不喜欢感觉好像我必须在走之前说话"
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I want to meet people who speak Chinese and like to talk",
+                "mandarin": "我想认识会说中文喜欢说话的人"
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "Will you help me learn to talk before I have to go?",
+                "mandarin": "你会在我必须走之前帮我学说话吗？"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I like feeling as if I'm nearly ready to talk",
+                "mandarin": "我喜欢感觉好像我快准备好说话"
+              },
+              "lego_count_used": 4
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10
+    },
+    "S0028L05": {
+      "lego_id": "S0028L05",
+      "lego": {
+        "english": "is useful",
+        "mandarin": "是有用的"
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "Talking is useful",
+                "mandarin": "说话是有用的"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "It is useful",
+                "mandarin": "是有用的"
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I like it because talking is useful",
+                "mandarin": "我喜欢因为说话是有用的"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "To start talking is useful",
+                "mandarin": "开始说话是有用的"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I feel like talking is useful",
+                "mandarin": "我感觉说话是有用的"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "To start as soon as possible is useful",
+                "mandarin": "尽快开始是有用的"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I like feeling as if meeting people who speak Chinese is useful",
+                "mandarin": "我喜欢感觉好像认识会说中文的人是有用的"
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I want to remember that talking is useful",
+                "mandarin": "我想记住说话是有用的"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "To start talking as soon as you can is useful",
+                "mandarin": "尽快开始说话是有用的"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I don't like taking too much time to remember that talking is useful",
+                "mandarin": "我不喜欢花太多时间记住说话是有用的"
+              },
+              "lego_count_used": 4
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10
+    },
+    "S0028L06": {
+      "lego_id": "S0028L06",
+      "lego": {
+        "english": "useful",
+        "mandarin": "有用"
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "It is useful",
+                "mandarin": "是有用"
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "Talking is useful",
+                "mandarin": "说话有用"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I like what is useful",
+                "mandarin": "我喜欢有用的"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "Learning to talk is useful",
+                "mandarin": "学说话有用"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I want to learn talking because it is useful",
+                "mandarin": "我想学说话因为有用"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "I feel like talking is useful",
+                "mandarin": "我感觉说话有用"
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I like feeling as if meeting people is useful",
+                "mandarin": "我喜欢感觉好像认识人是有用"
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I want to remember before I have to go that talking is useful",
+                "mandarin": "我想在我必须走之前记住说话有用"
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "To start talking as soon as you can is useful",
+                "mandarin": "尽快开始说话是有用"
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I don't like taking too much time to answer because talking is useful",
+                "mandarin": "我不喜欢花太多时间回答因为说话是有用"
+              },
+              "lego_count_used": 4
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10
+    }
+  }
+}
