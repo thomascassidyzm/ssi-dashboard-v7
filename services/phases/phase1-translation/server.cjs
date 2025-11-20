@@ -141,20 +141,52 @@ Translate all ${totalSeeds} canonical seeds into ${getLanguageName(target)} and 
 
 Write to: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
 
+**CRITICAL DATA STRUCTURE**: Use object format with "known" first, then "target":
+
 \`\`\`json
 {
-  "course_code": "${courseCode}",
-  "generated_at": "<ISO timestamp>",
-  "methodology": "Phase 1 v2.6 - Pedagogical Translation",
+  "version": "8.2.0",
+  "course": "${courseCode}",
   "target_language": "${target}",
   "known_language": "${known}",
+  "generated": "<ISO 8601 timestamp>",
   "total_seeds": ${totalSeeds},
   "translations": {
-    "S${String(startSeed).padStart(4, '0')}": ["${target} translation", "${known} translation"],
-    "S${String(startSeed + 1).padStart(4, '0')}": ["${target} translation", "${known} translation"]
+    "S${String(startSeed).padStart(4, '0')}": {
+      "known": "${getLanguageName(known)} translation here",
+      "target": "${getLanguageName(target)} translation here"
+    },
+    "S${String(startSeed + 1).padStart(4, '0')}": {
+      "known": "${getLanguageName(known)} translation here",
+      "target": "${getLanguageName(target)} translation here"
+    }
   }
 }
 \`\`\`
+
+**Example for Spanish:**
+\`\`\`json
+{
+  "version": "8.2.0",
+  "course": "spa_for_eng",
+  "target_language": "spa",
+  "known_language": "eng",
+  "generated": "2025-01-20T01:50:00.000Z",
+  "total_seeds": 10,
+  "translations": {
+    "S0001": {
+      "known": "I want to speak Spanish with you now.",
+      "target": "Quiero hablar español contigo ahora."
+    },
+    "S0002": {
+      "known": "I'm trying to learn.",
+      "target": "Estoy intentando aprender."
+    }
+  }
+}
+\`\`\`
+
+**IMPORTANT ORDERING**: Always put "known" before "target" in each translation object!
 
 **After completing all translations:**
 1. Write the seed_pairs.json file to \`public/vfs/courses/${courseCode}/seed_pairs.json\`
