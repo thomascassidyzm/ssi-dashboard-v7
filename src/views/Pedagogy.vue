@@ -87,34 +87,46 @@
               <h3 class="text-lg font-semibold text-emerald-300">MOLECULAR (M-type)</h3>
             </div>
 
-            <p class="text-slate-300 text-sm mb-4">CAN be split into components. Each component shows literal word-by-word breakdown.</p>
+            <p class="text-slate-300 text-sm mb-4">The MOLECULE is the UNIT that passes LUT. Components show the internal pattern, but learner needs the whole molecule.</p>
 
             <div class="bg-emerald-900/20 border border-emerald-500/50 rounded p-3 mb-4">
-              <p class="text-emerald-300 text-xs font-semibold mb-1">Key Rule:</p>
-              <p class="text-slate-300 text-xs">Components maintain 1:1 word mapping and each passes LUT independently.</p>
+              <p class="text-emerald-300 text-xs font-semibold mb-1">Key Principle:</p>
+              <p class="text-slate-300 text-xs">You chunk UP from atomic LEGOs to get consistent meaning. The molecule shows patterns through component breakdown, but the molecule AS A WHOLE passes LUT.</p>
             </div>
 
-            <div class="bg-slate-900 p-4 rounded">
-              <p class="text-sm text-slate-400 mb-2"><strong>Example: "several hours"</strong></p>
-              <p class="text-slate-200 text-sm mb-2">Target: "varias horas"</p>
-              <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
-                <p>• "several" → "varias"</p>
-                <p>• "hours" → "horas"</p>
+            <div class="bg-slate-900 p-4 rounded space-y-3">
+              <div>
+                <p class="text-sm text-slate-400 mb-2"><strong>Example: "you to speak"</strong></p>
+                <p class="text-slate-200 text-sm mb-2">Target: "que hables"</p>
+                <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
+                  <p>• "you" → "que"</p>
+                  <p>• "to speak" → "hables"</p>
+                </div>
+                <p class="text-emerald-400 text-xs mt-2">→ Different pattern! Molecule is the unit.</p>
               </div>
-              <p class="text-emerald-400 text-xs mt-3">→ Both components pass LUT independently!</p>
-            </div>
 
-            <div class="bg-slate-900 p-4 rounded mt-3">
-              <p class="text-sm text-slate-400 mb-2"><strong>Example: "interesting things"</strong></p>
-              <p class="text-slate-200 text-sm mb-2">Target: "cosas interesantes"</p>
-              <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
-                <p>• "things" → "cosas"</p>
-                <p>• "interesting" → "interesantes"</p>
+              <div>
+                <p class="text-sm text-slate-400 mb-2"><strong>Example: "ready to go"</strong></p>
+                <p class="text-slate-200 text-sm mb-2">Target: "preparado para ir"</p>
+                <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
+                  <p>• "ready" → "preparado"</p>
+                  <p>• "to go" → "para ir"</p>
+                </div>
+                <p class="text-emerald-400 text-xs mt-2">→ Components help see pattern, but molecule is the teaching unit.</p>
               </div>
-              <p class="text-emerald-400 text-xs mt-3">→ Learner discovers: Spanish reverses word order!</p>
+
+              <div>
+                <p class="text-sm text-slate-400 mb-2"><strong>Example: "I've been learning"</strong></p>
+                <p class="text-slate-200 text-sm mb-2">Target: "llevo aprendiendo"</p>
+                <div class="ml-3 space-y-1 text-xs text-slate-300 border-l-2 border-amber-500 pl-3">
+                  <p>• "I've been" → "llevo"</p>
+                  <p>• "learning" → "aprendiendo"</p>
+                </div>
+                <p class="text-emerald-400 text-xs mt-2">→ Idiom/pattern requires the whole molecule!</p>
+              </div>
             </div>
 
-            <p class="text-xs text-slate-400 mt-3 italic">Components teach HOW the target language builds patterns.</p>
+            <p class="text-xs text-slate-400 mt-3 italic">Components show HOW the pattern works, but the molecule is the unit that passes LUT.</p>
           </div>
         </div>
 

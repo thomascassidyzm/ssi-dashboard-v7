@@ -253,26 +253,35 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-emerald-300 mb-3">M-type: MOLECULAR</h3>
             <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-              <li>CAN be split into components</li>
-              <li>Shows literal word-by-word breakdown</li>
-              <li>Each component passes LUT independently</li>
-              <li>Teaches how target language builds patterns</li>
+              <li>The MOLECULE is the unit that passes LUT</li>
+              <li>Shows component breakdown for pedagogy</li>
+              <li>Components reveal patterns and word order</li>
+              <li>You chunk UP to get consistent meaning</li>
             </ul>
             <div class="mt-4 bg-slate-900 p-3 rounded space-y-3">
               <div>
-                <p class="text-sm text-slate-400 mb-1">Example: "several hours"</p>
-                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "varias horas"</p>
+                <p class="text-sm text-slate-400 mb-1">Example: "you to speak"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "que hables"</p>
                 <p class="text-amber-400 text-xs mb-1">Components:</p>
-                <p class="text-slate-300 text-xs ml-2">• "several" → "varias"</p>
-                <p class="text-slate-300 text-xs ml-2">• "hours" → "horas"</p>
+                <p class="text-slate-300 text-xs ml-2">• "you" → "que"</p>
+                <p class="text-slate-300 text-xs ml-2">• "to speak" → "hables"</p>
+                <p class="text-emerald-400 text-xs mt-2">→ Different pattern! Molecule is the unit.</p>
               </div>
               <div>
-                <p class="text-sm text-slate-400 mb-1">Example: "interesting things"</p>
-                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "cosas interesantes"</p>
+                <p class="text-sm text-slate-400 mb-1">Example: "ready to go"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "preparado para ir"</p>
                 <p class="text-amber-400 text-xs mb-1">Components:</p>
-                <p class="text-slate-300 text-xs ml-2">• "things" → "cosas"</p>
-                <p class="text-slate-300 text-xs ml-2">• "interesting" → "interesantes"</p>
-                <p class="text-emerald-400 text-xs mt-2">→ Spanish reverses word order!</p>
+                <p class="text-slate-300 text-xs ml-2">• "ready" → "preparado"</p>
+                <p class="text-slate-300 text-xs ml-2">• "to go" → "para ir"</p>
+                <p class="text-emerald-400 text-xs mt-2">→ Components show pattern, molecule is the teaching unit.</p>
+              </div>
+              <div>
+                <p class="text-sm text-slate-400 mb-1">Example: "I've been learning"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "llevo aprendiendo"</p>
+                <p class="text-amber-400 text-xs mb-1">Components:</p>
+                <p class="text-slate-300 text-xs ml-2">• "I've been" → "llevo"</p>
+                <p class="text-slate-300 text-xs ml-2">• "learning" → "aprendiendo"</p>
+                <p class="text-emerald-400 text-xs mt-2">→ Idiom/pattern needs the whole molecule!</p>
               </div>
             </div>
           </div>
