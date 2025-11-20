@@ -1249,12 +1249,12 @@ async function loadCourse() {
           // Transform to legoBreakdowns format for display
           legoBreakdowns.value = loadedLegoPairsData.seeds.map(seed => ({
             seed_id: seed.seed_id,
-            original_target: seed.seed_pair[0],
-            original_known: seed.seed_pair[1],
+            original_target: seed.seed_pair.target || seed.seed_pair[0],
+            original_known: seed.seed_pair.known || seed.seed_pair[1],
             lego_pairs: seed.legos.map(lego => ({
               lego_id: lego.id,
-              target_chunk: lego.target,
-              known_chunk: lego.known,
+              target_chunk: lego.lego?.target || lego.target,
+              known_chunk: lego.lego?.known || lego.known,
               lego_type: lego.type === 'M' ? 'COMPOSITE' : 'ATOMIC',
               componentization: lego.components ?
                 lego.components.map(c => `${c[0]} = ${c[1]}`).join(', ') :
@@ -1266,8 +1266,8 @@ async function loadCourse() {
           legos.value = loadedLegoPairsData.seeds.flatMap(seed =>
             seed.legos.map(lego => ({
               id: lego.id,
-              target: lego.target,
-              known: lego.known,
+              target: lego.lego?.target || lego.target,
+              known: lego.lego?.known || lego.known,
               type: lego.type,
               new: lego.new
             }))
