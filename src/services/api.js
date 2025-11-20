@@ -314,12 +314,24 @@ export default {
           const translations = []
           if (seedPairsData) {
             const translationsObj = seedPairsData.translations || {}
-            translations.push(...Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
-              seed_id,
-              target_phrase,
-              known_phrase,
-              canonical_seed: null
-            })))
+            translations.push(...Object.entries(translationsObj).map(([seed_id, translation]) => {
+              // Handle both old array format and new object format (APML v8.2.0+)
+              let target_phrase, known_phrase
+              if (Array.isArray(translation)) {
+                // Old format: ["target", "known"]
+                [target_phrase, known_phrase] = translation
+              } else {
+                // New format: {target: "...", known: "..."}
+                target_phrase = translation.target
+                known_phrase = translation.known
+              }
+              return {
+                seed_id,
+                target_phrase,
+                known_phrase,
+                canonical_seed: null
+              }
+            }))
             translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
           }
 
