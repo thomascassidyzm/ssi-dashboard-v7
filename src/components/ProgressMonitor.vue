@@ -71,12 +71,33 @@
             <div v-else class="text-slate-600">○</div>
             <span class="text-sm font-medium text-slate-300">Phase 5: Practice Baskets</span>
           </div>
-          <span v-if="phase5FileExists" class="text-xs text-green-400">baskets/ ✓</span>
+          <span v-if="phase5FileExists" class="text-xs text-green-400">lego_baskets.json ✓</span>
         </div>
         <div v-if="phase5Active || phase5Complete" class="text-xs text-slate-400 ml-10">
           Generating practice phrases for each LEGO
         </div>
-        <div v-if="phase5Active && subProgress && subProgress.phase === 'phase_5'" class="ml-10 mt-2">
+
+        <!-- Phase 5 Progress from API -->
+        <div v-if="phase5Progress" class="ml-10 mt-2 space-y-1">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-emerald-400 font-medium">
+              {{ phase5Progress.totalBaskets }}/{{ phase5Progress.totalNeeded }} baskets
+            </span>
+            <div class="flex-1 bg-slate-700 rounded-full h-1.5">
+              <div class="bg-emerald-500 h-1.5 rounded-full transition-all" :style="{ width: `${phase5Progress.progress}%` }"></div>
+            </div>
+            <span class="text-slate-500">{{ phase5Progress.progress.toFixed(1) }}%</span>
+          </div>
+          <div v-if="phase5Progress.missing > 0" class="text-xs text-yellow-400">
+            {{ phase5Progress.missing }} missing basket{{ phase5Progress.missing !== 1 ? 's' : '' }}
+          </div>
+          <div v-if="phase5Progress.activeAgents && phase5Progress.activeAgents.length > 0" class="text-xs text-blue-400">
+            {{ phase5Progress.activeAgents.length }} agent{{ phase5Progress.activeAgents.length !== 1 ? 's' : '' }} active
+          </div>
+        </div>
+
+        <!-- Legacy sub-progress (fallback) -->
+        <div v-else-if="phase5Active && subProgress && subProgress.phase === 'phase_5'" class="ml-10 mt-2">
           <div class="flex items-center gap-2 text-xs">
             <span class="text-emerald-400 font-medium">{{ subProgress.completed }}/{{ subProgress.total }} agents</span>
             <div class="flex-1 bg-slate-700 rounded-full h-1.5">
@@ -189,7 +210,7 @@ const props = defineProps({
   },
   pollInterval: {
     type: Number,
-    default: 30000 // 30 seconds
+    default: 5000 // 5 seconds
   }
 })
 
@@ -203,6 +224,7 @@ const phase3FileExists = ref(false)
 const introductionsFileExists = ref(false)
 const phase5FileExists = ref(false)
 const phase7FileExists = ref(false)
+const phase5Progress = ref(null)
 const events = ref([])
 const windows = ref([])
 
@@ -330,6 +352,19 @@ const checkProgress = async () => {
       subProgress.value = jobResponse.data.subProgress || null
       events.value = jobResponse.data.events || []
       windows.value = jobResponse.data.windows || []
+    }
+
+    // Get Phase 5 progress from progress-tracker API
+    try {
+      const phase5Response = await fetch(`http://localhost:3462/api/progress/${props.courseCode}/phase5`)
+      if (phase5Response.ok) {
+        const phase5Data = await phase5Response.json()
+        if (phase5Data.success) {
+          phase5Progress.value = phase5Data
+        }
+      }
+    } catch (err) {
+      console.warn('[ProgressMonitor] Could not fetch Phase 5 progress:', err.message)
     }
 
     // Check for output files (VFS-based detection)

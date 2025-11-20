@@ -21,6 +21,15 @@
               {{ formatStatus(course.status) }}
             </span>
             <button
+              @click="showProgressMonitor = !showProgressMonitor"
+              class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              {{ showProgressMonitor ? 'Hide' : 'Progress' }}
+            </button>
+            <button
               @click="showValidationPanel = !showValidationPanel"
               class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
             >
@@ -78,6 +87,13 @@
             <div class="text-xs text-slate-500 mt-1">Known-only priming</div>
           </div>
         </div>
+
+        <!-- Progress Monitor (shown when basket generation is active) -->
+        <ProgressMonitor
+          v-if="showProgressMonitor"
+          :course-code="courseCode"
+          :poll-interval="5000"
+        />
 
         <!-- Validation & Fix Panel -->
         <div v-if="showValidationPanel" class="bg-slate-800 border border-emerald-500/50 rounded-lg p-6">
@@ -1038,6 +1054,7 @@ import api from '../services/api'
 import { GITHUB_CONFIG } from '../config/github'
 import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
+import ProgressMonitor from '../components/ProgressMonitor.vue'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -1070,6 +1087,7 @@ const savingIntro = ref(false) // Saving state
 
 // Validation & Fix panel state
 const showValidationPanel = ref(false)
+const showProgressMonitor = ref(false)
 const lutCheckLoading = ref(false)
 const lutCheckResult = ref(null)
 const infinitiveCheckLoading = ref(false)
@@ -1302,6 +1320,7 @@ async function generateBaskets() {
   }
 
   generatingBaskets.value = true
+  showProgressMonitor.value = true // Show progress monitor
 
   try {
     const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/baskets/generate`, {
@@ -1321,13 +1340,15 @@ async function generateBaskets() {
 
     if (!response.ok) {
       throw new Error(data.error || 'Failed to start basket generation')
+      showProgressMonitor.value = false
     }
 
-    alert(`✅ Basket generation started!\n\nJob ID: ${data.jobId}\n\nA Claude Code agent has been spawned in iTerm2. Check the terminal window for progress.\n\nRefresh this page when complete to see the generated baskets.`)
+    // Success - monitor will show progress automatically
 
   } catch (err) {
     console.error('Failed to generate baskets:', err)
     alert(`❌ Failed to generate baskets:\n\n${err.message}`)
+    showProgressMonitor.value = false
   } finally {
     generatingBaskets.value = false
   }
