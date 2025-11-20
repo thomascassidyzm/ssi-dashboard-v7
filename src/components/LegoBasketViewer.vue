@@ -786,7 +786,14 @@ export default {
     },
     getPhraseLegoCount(phrase) {
       // Handle both old format [known, target, ?, count] and new format {known, target, lego_count}
-      return phrase.lego_count || phrase[3] || 1
+      if (phrase.lego_count !== undefined) return phrase.lego_count
+      if (phrase[3] !== undefined) return phrase[3]
+
+      // Fallback: Try to estimate from phrase complexity
+      // This is a rough estimate - count spaces + 1, capped at reasonable values
+      const knownPhrase = phrase.known || phrase[0] || ''
+      const wordCount = knownPhrase.trim().split(/\s+/).length
+      return Math.min(wordCount, 8) // Cap at 8 to avoid unrealistic counts
     },
     getPhraseTarget(phrase) {
       // Handle both old format [known, target] and new format {known, target}
