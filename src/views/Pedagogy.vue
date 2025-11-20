@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">SSi Pedagogical Model</h1>
         <p class="text-slate-400">What is SSi teaching, and how?</p>
-        <p class="text-sm text-slate-500 mt-2">Conceptual foundation for the SSi language learning system</p>
+        <p class="text-sm text-slate-500 mt-2">Conceptual foundation for the SSi language learning system | APML v8.2.0</p>
       </div>
 
       <!-- Core Concepts -->
