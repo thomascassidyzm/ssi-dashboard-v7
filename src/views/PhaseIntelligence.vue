@@ -169,7 +169,8 @@ const selectedPhase = ref('3')
 const intelligence = ref('')
 
 const activePhases = computed(() => {
-  return phases.filter(p => p.status !== 'inactive')
+  // Hide inactive phases AND Phase 6 (integrated into Phase 3)
+  return phases.filter(p => p.status !== 'inactive' && p.id !== '6')
 })
 
 const currentPhase = computed(() => {

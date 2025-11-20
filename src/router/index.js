@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
-import TrainingPhase from '../views/TrainingPhase.vue'
 import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
 import APMLSpec from '../views/APMLSpec.vue'
@@ -71,12 +70,6 @@ const routes = [
     name: 'AudioGeneration',
     component: AudioGeneration,
     meta: { title: 'Audio Generation' }
-  },
-  {
-    path: '/phase/:id',
-    name: 'TrainingPhase',
-    component: TrainingPhase,
-    props: true
   },
   {
     path: '/reference/overview',

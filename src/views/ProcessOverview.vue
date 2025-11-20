@@ -70,9 +70,9 @@
               <li><strong>Immutable Contract:</strong> Phase 7 transforms to fixed app manifest format</li>
             </ul>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Active Phase Flow (v8.1.1)</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Active Phase Flow</h3>
             <div class="space-y-4 mt-4">
-              <router-link to="/phase/1" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
+              <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
                     <h4 class="font-semibold text-emerald-300">Phase 1: Pedagogical Translation <span class="text-xs text-emerald-400">v2.6 🔒</span></h4>
@@ -81,49 +81,40 @@
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
-              <router-link to="/phase/3" class="block bg-slate-900/80 border border-emerald-500/50 hover:border-emerald-400 rounded p-4 transition group">
+              <router-link to="/intelligence" class="block bg-slate-900/80 border border-emerald-500/50 hover:border-emerald-400 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 3: LEGO Extraction <span class="text-xs text-emerald-400">v7.0 ✅</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: seed_pairs.json → Output: lego_pairs.json (hierarchical: seed_pair → legos, 668 seeds, 2,965 LEGOs)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 3: LEGO Extraction (includes Phase 6) <span class="text-xs text-emerald-400">v7.1 🔒</span></h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: seed_pairs.json → Output: lego_pairs.json + introductions.json (dual output, &lt;1s overhead)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
-              <router-link to="/phase/4" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
+              <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 4: Batch Preparation <span class="text-xs text-emerald-400">v1.0 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: lego_pairs.json → Output: batches/*.json (smart dedup, keeps ALL in context, marks first for generation)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 5: Basket Generation <span class="text-xs text-emerald-400">v6.1 🔒</span></h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: lego_pairs.json → Output: lego_baskets.json (practice phrase generation)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
-              <router-link to="/phase/5" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
+              <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-amber-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 5: Basket Generation <span class="text-xs text-emerald-400">v3.0 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: batches/*.json → Output: lego_baskets.json (reads Phase 4 batches, generates unique baskets only)</p>
-                  </div>
-                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
-                </div>
-              </router-link>
-              <router-link to="/phase/6" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 6: Introductions <span class="text-xs text-emerald-400">v2.0 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: lego_pairs_deduplicated.json → Output: introductions.json (BASE/COMPOSITE, "means" wording)</p>
-                  </div>
-                  <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
-                </div>
-              </router-link>
-              <router-link to="/phase/7" class="block bg-slate-900/80 border border-slate-400/20 hover:border-amber-500/50 rounded p-4 transition group">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h4 class="font-semibold text-amber-300">Phase 7: Compilation <span class="text-xs text-amber-400">v1.0 🔐</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: all phase outputs → Output: course_manifest.json (IMMUTABLE app format)</p>
+                    <h4 class="font-semibold text-amber-300">Phase 7: Compilation <span class="text-xs text-amber-400">v1.1 🔒</span></h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: all phase outputs → Output: course_manifest.json (with duration placeholders for Phase 8)</p>
                   </div>
                   <span class="text-amber-400 opacity-0 group-hover:opacity-100 transition">→</span>
+                </div>
+              </router-link>
+              <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-purple-500/50 rounded p-4 transition group">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h4 class="font-semibold text-purple-300">Phase 8: Audio Generation <span class="text-xs text-purple-400">v1.1 📋</span></h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: course_manifest.json → Output: audio/*.mp3 + duration population (assigned to Kai)</p>
+                  </div>
+                  <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
             </div>
