@@ -312,34 +312,16 @@ app.post('/start', async (req, res) => {
 
   console.log(`[Phase 5] ✅ Prerequisites found`);
 
-  // Check if Phase 5 already complete for FULL COURSE (not specific seed ranges)
-  // Skip this check if user is requesting a specific seed range for testing/regeneration
+  // NOTE: Removed early completion check (lines 315-342)
+  // This was checking basketCount >= expectedCount, but that's unreliable after deletions
+  // (e.g., 2954 baskets but 213 missing after Spanish cleanup deleted incorrect baskets)
+  // The correct check is done later by identifyMissingLegos() which checks WHICH baskets exist,
+  // not just the count. See lines 417-430 for intelligent resume logic.
+
   const isFullCourse = startSeed === 1 && endSeed >= 668;
   const basketsPath = path.join(baseCourseDir, 'lego_baskets.json');
 
-  if (isFullCourse && await fs.pathExists(basketsPath)) {
-    try {
-      const baskets = await fs.readJson(basketsPath);
-      const basketCount = Object.keys(baskets.baskets || {}).length;
-      const legoPairs = await fs.readJson(legoPairsPath);
-      const expectedBaskets = legoPairs.seeds.flatMap(s => s.legos.filter(l => l.new)).length;
-
-      if (basketCount >= expectedBaskets) {
-        console.log(`[Phase 5] ✅ Phase 5 already complete! Found ${basketCount}/${expectedBaskets} baskets`);
-        return res.json({
-          success: true,
-          alreadyComplete: true,
-          message: `Phase 5 already complete (${basketCount} baskets)`,
-          basketCount,
-          expectedBaskets
-        });
-      } else {
-        console.log(`[Phase 5] 🔄 Phase 5 needs extension! Existing: ${basketCount} baskets, expected: ${expectedBaskets}`);
-      }
-    } catch (err) {
-      console.log(`[Phase 5] baskets file exists but invalid, will regenerate`);
-    }
-  } else if (!isFullCourse) {
+  if (!isFullCourse) {
     console.log(`[Phase 5] 🔬 Specific seed range requested (${startSeed}-${endSeed}) - proceeding with generation`);
   }
 
