@@ -8,13 +8,13 @@
           <span>Back to Dashboard</span>
         </router-link>
         <h1 class="text-3xl font-bold text-emerald-400">
-          APML v8.1.0 Specification
+          APML v8.2.0 Specification
         </h1>
         <p class="mt-2 text-slate-400">
-          Swim-lane architecture with segmented orchestration and enhanced Phase 3/5 quality controls
+          Linear microservices architecture with integrated Phase 6 and self-contained documentation SSoT
         </p>
         <p class="mt-1 text-xs text-slate-500">
-          Build: 868d6aca | Nov 12, 2025
+          Build: f94df2fc | Nov 20, 2025
         </p>
       </div>
     </header>
@@ -26,10 +26,10 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">APML Architecture</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p><strong>APML (Autonomous Parallel Markup Language)</strong> v8.1.0 is the current architectural specification for the SSi Course Production system. It introduces swim-lane segmentation (7×100-seed segments with 10 sub-agents each), enhanced Phase 3 quality controls (S0010 tiling lesson, NO-SCRIPT enforcement, A-before-M ordering), and staged execution (verify segment 1 → parallel segments 2-7).</p>
+            <p><strong>APML (Adaptive Pedagogy Markup Language)</strong> v8.2.0 is the current architectural specification for the SSi Course Production system. It introduces a linear microservices pipeline (Phase 1 → 3 (includes 6) → 5 → 7 → 8) with Phase 6 integrated into Phase 3 (<1s overhead), manifest format v1.1 with duration placeholders, and self-contained documentation embedded in the dashboard.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-3 my-3">
-              <p class="text-xs text-slate-400">Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v6.3, 4 v1.0, 5 v6.1, 5.5 v2.0, 6 v2.0, 7 v1.0, 8 v1.0 🔐</span></p>
+              <p class="text-xs text-slate-400">Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v1.1, 8 v1.1 🔒</span></p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Core Principles</h3>
