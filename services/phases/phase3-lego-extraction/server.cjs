@@ -276,20 +276,35 @@ curl -X POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit \\
   -H "Content-Type: application/json" \\
   -d '{
     "lego_pairs": {
-      "S00XX": {
-        "seed_pair": ["target sentence", "known sentence"],
-        "legos": [
-          {
-            "id": "S00XXL01",
-            "type": "A",
-            "target": "word",
-            "known": "word",
-            "new": true
-          }
-        ]
-      }
+      "course": "${courseCode}",
+      "generated_at": "2025-11-20T12:00:00.000Z",
+      "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+      "phase": "3",
+      "seeds": [
+        {
+          "seed_id": "S00XX",
+          "seed_pair": {"known": "known sentence", "target": "target sentence"},
+          "legos": [
+            {
+              "id": "S00XXL01",
+              "type": "A",
+              "new": true,
+              "lego": {"known": "word", "target": "palabra"}
+            }
+          ]
+        }
+      ]
     },
-    "introductions": {}
+    "introductions": {
+      "version": "7.8.0",
+      "course": "${courseCode}",
+      "target": "${target}",
+      "known": "${known}",
+      "generated": "2025-11-20T12:00:00.000Z",
+      "presentations": {
+        "S00XXL01": "The ${getLanguageName(target)} for 'word', is: ... 'palabra' ... 'palabra'"
+      }
+    }
   }'
 \`\`\`
 
@@ -297,16 +312,32 @@ Or using fetch:
 \`\`\`javascript
 const submission = {
   lego_pairs: {
-    "S00XX": {
-      seed_pair: ["target sentence", "known sentence"],
-      legos: [
-        { id: "S00XXL01", type: "A", target: "word", known: "word", new: true },
-        { id: "S00XXL02", type: "M", target: "multi word", known: "multi word", new: true,
-          components: [["multi", "multi"], ["word", "word"]] }
-      ]
-    }
+    course: "${courseCode}",
+    generated_at: new Date().toISOString(),
+    methodology: "Phase 3 v7.0 - Two Heuristics Edition",
+    phase: "3",
+    seeds: [
+      {
+        seed_id: "S00XX",
+        seed_pair: {known: "known sentence", target: "target sentence"},
+        legos: [
+          { id: "S00XXL01", type: "A", new: true, lego: {known: "word", target: "palabra"} },
+          { id: "S00XXL02", type: "M", new: true, lego: {known: "multi word", target: "multi palabra"},
+            components: [["multi", "multi"], ["word", "palabra"]] }
+        ]
+      }
+    ]
   },
-  introductions: {}
+  introductions: {
+    version: "7.8.0",
+    course: "${courseCode}",
+    target: "${target}",
+    known: "${known}",
+    generated: new Date().toISOString(),
+    presentations: {
+      "S00XXL01": "The ${getLanguageName(target)} for 'word', is: ... 'palabra' ... 'palabra'"
+    }
+  }
 };
 
 fetch('${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit', {

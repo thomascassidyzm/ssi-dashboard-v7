@@ -52,6 +52,7 @@ if (!fs.existsSync(VFS_ROOT)) {
 // Smart defaults - everything derives from BASE_PORT
 const BASE_PORT = parseInt(process.env.BASE_PORT || '3456');
 const CHECKPOINT_MODE = process.env.CHECKPOINT_MODE || 'gated';
+const NGROK_URL = process.env.NGROK_URL || `http://localhost:${BASE_PORT}`;
 
 // Check if we're running legacy monolith or new layered services
 const LEGACY_MODE = process.env.LEGACY_MODE === 'true' || !fs.existsSync('services/orchestration/orchestrator.cjs');
@@ -165,8 +166,8 @@ for (const [key, config] of Object.entries(SERVICES)) {
       VFS_ROOT: VFS_ROOT,
       CHECKPOINT_MODE: CHECKPOINT_MODE,
       SERVICE_NAME: config.name,
-      // Phase servers need to know orchestrator port
-      ORCHESTRATOR_URL: `http://localhost:${BASE_PORT}`,
+      // Phase servers need to know orchestrator (use ngrok URL for external agents)
+      ORCHESTRATOR_URL: NGROK_URL,
       // Phase servers need to know each other (for service mesh)
       PHASE1_URL: `http://localhost:${BASE_PORT + 1}`,    // 3457 - Translation (includes Phase 2 LUT)
       PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,    // 3458 - LEGO Extraction (includes Phase 6 introductions)

@@ -1231,19 +1231,27 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
       });
     }
 
-    // Validate lego_pairs structure (must have version and legos array)
-    if (!lego_pairs.version || !Array.isArray(lego_pairs.legos)) {
+    // Validate lego_pairs structure (must have course and seeds array)
+    if (!lego_pairs.course || !Array.isArray(lego_pairs.seeds)) {
       return res.status(400).json({
         error: 'Invalid lego_pairs structure',
-        required: ['version', 'legos (array)']
+        required: ['course', 'seeds (array)'],
+        received: {
+          has_course: !!lego_pairs.course,
+          has_seeds: Array.isArray(lego_pairs.seeds)
+        }
       });
     }
 
-    // Validate introductions structure (must have version and intros array)
-    if (!introductions.version || !Array.isArray(introductions.intros)) {
+    // Validate introductions structure (must have version/course and presentations object)
+    if (!introductions.version || !introductions.presentations || typeof introductions.presentations !== 'object') {
       return res.status(400).json({
         error: 'Invalid introductions structure',
-        required: ['version', 'intros (array)']
+        required: ['version', 'presentations (object)'],
+        received: {
+          has_version: !!introductions.version,
+          has_presentations: !!introductions.presentations
+        }
       });
     }
 
@@ -1259,10 +1267,12 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
     const introductionsPath = path.join(courseDir, 'introductions.json');
     await fs.writeJSON(introductionsPath, introductions, { spaces: 2 });
 
-    const legoCount = lego_pairs.legos.length;
-    const introCount = introductions.intros.length;
+    // Count total LEGOs across all seeds
+    const legoCount = lego_pairs.seeds.reduce((count, seed) => count + (seed.legos?.length || 0), 0);
+    const introCount = Object.keys(introductions.presentations || {}).length;
 
     console.log(`[Orchestrator] ✅ Received Phase 3 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    Seeds: ${lego_pairs.seeds.length}`);
     console.log(`[Orchestrator]    LEGOs: ${legoCount}`);
     console.log(`[Orchestrator]    Introductions: ${introCount}`);
     console.log(`[Orchestrator]    Saved to: ${courseDir}`);
