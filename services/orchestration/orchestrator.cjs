@@ -34,8 +34,8 @@ const PHASE_SERVERS = {
   3: process.env.PHASE3_URL || 'http://localhost:3458',    // LEGO Extraction (includes Phase 6 introductions)
   5: process.env.PHASE5_URL || 'http://localhost:3459',    // Practice Baskets
   5.5: process.env.PHASE5_5_URL || 'http://localhost:3460', // Grammar Validation
-  7: process.env.PHASE7_URL || 'http://localhost:3462',    // Manifest Compilation
-  8: process.env.PHASE8_URL || 'http://localhost:3463'     // Audio/TTS
+  7: process.env.PHASE7_URL || 'http://localhost:3464',    // Manifest Compilation
+  8: process.env.PHASE8_URL || 'http://localhost:3465'     // Audio/TTS
 };
 
 // Validate config

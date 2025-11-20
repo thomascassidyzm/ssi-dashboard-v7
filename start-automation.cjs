@@ -106,19 +106,19 @@ const SERVICES = {
     color: '\x1b[36m'    // Cyan
   },
   phase1: {
-    script: 'services/phases/phase1-translation-server.cjs',
+    script: 'services/phases/phase1-translation/server.cjs',
     port: BASE_PORT + 1,  // 3457
     name: 'Phase 1 (Translation)',
     color: '\x1b[32m'    // Green
   },
   phase3: {
-    script: 'services/phases/phase3-lego-extraction-server.cjs',
+    script: 'services/phases/phase3-lego-extraction/server.cjs',
     port: BASE_PORT + 2,  // 3458
     name: 'Phase 3 (LEGO Extraction)',
     color: '\x1b[33m'    // Yellow
   },
   phase5: {
-    script: 'services/phases/phase5-basket-server.cjs',
+    script: 'services/phases/phase5-basket-generation/server.cjs',
     port: BASE_PORT + 3,  // 3459
     name: 'Phase 5 (Baskets)',
     color: '\x1b[35m'    // Magenta
@@ -131,13 +131,13 @@ const SERVICES = {
   },
   phase7: {
     script: 'services/phases/phase7-manifest-server.cjs',
-    port: BASE_PORT + 6,  // 3462
+    port: BASE_PORT + 8,  // 3464
     name: 'Phase 7 (Manifest)',
     color: '\x1b[34m'    // Blue
   },
   phase8: {
     script: 'services/phases/phase8-audio-server.cjs',
-    port: BASE_PORT + 7,  // 3463
+    port: BASE_PORT + 9,  // 3465
     name: 'Phase 8 (Audio)',
     color: '\x1b[36m'    // Cyan
   }
@@ -172,8 +172,8 @@ for (const [key, config] of Object.entries(SERVICES)) {
       PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,    // 3458 - LEGO Extraction (includes Phase 6 introductions)
       PHASE5_URL: `http://localhost:${BASE_PORT + 3}`,    // 3459 - Practice Baskets
       PHASE5_5_URL: `http://localhost:${BASE_PORT + 4}`,  // 3460 - Grammar Validation
-      PHASE7_URL: `http://localhost:${BASE_PORT + 6}`,    // 3462 - Manifest Compilation
-      PHASE8_URL: `http://localhost:${BASE_PORT + 7}`,    // 3463 - Audio/TTS
+      PHASE7_URL: `http://localhost:${BASE_PORT + 8}`,    // 3464 - Manifest Compilation
+      PHASE8_URL: `http://localhost:${BASE_PORT + 9}`,    // 3465 - Audio/TTS
     },
     stdio: ['ignore', 'pipe', 'pipe']
   });
