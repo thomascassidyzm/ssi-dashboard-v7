@@ -264,18 +264,25 @@ app.post('/start', async (req, res) => {
   // Check if already running - auto-abort stale jobs
   if (activeJobs.has(courseCode)) {
     const existingJob = activeJobs.get(courseCode);
-    const jobAge = Date.now() - new Date(existingJob.timing.startedAt).getTime();
-    const thirtyMinutes = 30 * 60 * 1000;
 
-    if (jobAge > thirtyMinutes) {
-      console.log(`[Phase 5] ⚠️  Auto-aborting stale job (${Math.round(jobAge / 60000)} minutes old)`);
+    // Handle jobs with missing timing field (legacy or corrupted state)
+    if (!existingJob.timing || !existingJob.timing.startedAt) {
+      console.log(`[Phase 5] ⚠️  Found job with missing timing data, auto-aborting`);
       activeJobs.delete(courseCode);
     } else {
-      return res.status(409).json({
-        error: `Phase 5 already running for ${courseCode}`,
-        elapsedMinutes: Math.round(jobAge / 60000),
-        tip: 'Use /abort endpoint or wait for auto-timeout (30min)'
-      });
+      const jobAge = Date.now() - new Date(existingJob.timing.startedAt).getTime();
+      const thirtyMinutes = 30 * 60 * 1000;
+
+      if (jobAge > thirtyMinutes) {
+        console.log(`[Phase 5] ⚠️  Auto-aborting stale job (${Math.round(jobAge / 60000)} minutes old)`);
+        activeJobs.delete(courseCode);
+      } else {
+        return res.status(409).json({
+          error: `Phase 5 already running for ${courseCode}`,
+          elapsedMinutes: Math.round(jobAge / 60000),
+          tip: 'Use /abort endpoint or wait for auto-timeout (30min)'
+        });
+      }
     }
   }
 
@@ -1668,18 +1675,25 @@ app.post('/launch-12-masters', async (req, res) => {
   // Check if already running - auto-abort stale jobs
   if (activeJobs.has(courseCode)) {
     const existingJob = activeJobs.get(courseCode);
-    const jobAge = Date.now() - new Date(existingJob.timing.startedAt).getTime();
-    const thirtyMinutes = 30 * 60 * 1000;
 
-    if (jobAge > thirtyMinutes) {
-      console.log(`[Phase 5] ⚠️  Auto-aborting stale job (${Math.round(jobAge / 60000)} minutes old)`);
+    // Handle jobs with missing timing field (legacy or corrupted state)
+    if (!existingJob.timing || !existingJob.timing.startedAt) {
+      console.log(`[Phase 5] ⚠️  Found job with missing timing data, auto-aborting`);
       activeJobs.delete(courseCode);
     } else {
-      return res.status(409).json({
-        error: `Phase 5 already running for ${courseCode}`,
-        elapsedMinutes: Math.round(jobAge / 60000),
-        tip: 'Use /abort endpoint or wait for auto-timeout (30min)'
-      });
+      const jobAge = Date.now() - new Date(existingJob.timing.startedAt).getTime();
+      const thirtyMinutes = 30 * 60 * 1000;
+
+      if (jobAge > thirtyMinutes) {
+        console.log(`[Phase 5] ⚠️  Auto-aborting stale job (${Math.round(jobAge / 60000)} minutes old)`);
+        activeJobs.delete(courseCode);
+      } else {
+        return res.status(409).json({
+          error: `Phase 5 already running for ${courseCode}`,
+          elapsedMinutes: Math.round(jobAge / 60000),
+          tip: 'Use /abort endpoint or wait for auto-timeout (30min)'
+        });
+      }
     }
   }
 
@@ -1789,7 +1803,18 @@ app.post('/launch-12-masters', async (req, res) => {
     // STEP 3: Calculate optimal LEGO-based distribution
     console.log(`\n[Phase 5] Step 3: Calculating optimal distribution...`);
 
-    const allMissingLegos = missingData.missing_baskets.map(b => b.legoId).sort();
+    // Sort LEGOs numerically by seed, then by LEGO number (ensures contiguous ranges)
+    const allMissingLegos = missingData.missing_baskets
+      .map(b => b.legoId)
+      .sort((a, b) => {
+        const seedA = parseInt(a.substring(1, 5)); // Extract seed number (e.g., "S0392L01" → 392)
+        const seedB = parseInt(b.substring(1, 5));
+        if (seedA !== seedB) return seedA - seedB;
+
+        const legoA = parseInt(a.substring(6)); // Extract LEGO number (e.g., "S0392L01" → 1)
+        const legoB = parseInt(b.substring(6));
+        return legoA - legoB;
+      });
 
     // Distribution parameters
     const legosPerWorker = 5; // Target <5 LEGOs per worker
