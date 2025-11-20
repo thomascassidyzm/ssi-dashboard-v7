@@ -196,3 +196,9 @@ temp/
 extracted-welcomes/
 vfs/canonical/voices.json
 vfs/canonical/welcomes.json
+
+# Agent-generated basket files and summaries
+scripts/*_baskets*.json
+scripts/*_payload.json
+scripts/*_generation_summary.md
+scripts/S[0-9]*_baskets*.json
