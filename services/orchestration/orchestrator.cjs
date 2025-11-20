@@ -722,45 +722,49 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       basketCount = Object.keys(basketData.baskets || {}).length;
     }
 
-    // Check for Phase 5 missing baskets (intelligent resume)
-    const phase5OutputsDir = path.join(courseDir, 'phase5_outputs');
+    // Check for Phase 5 missing baskets (ACCURATE)
+    // Compare lego_pairs.json (new:true LEGOs) against lego_baskets.json
+    // This is the ONLY accurate way - handles deletions, partial baskets, etc.
     let missingBasketsCount = 0;
     let missingBasketsSeeds = 0;
 
-    if (legoPairsExists && await fs.pathExists(phase5OutputsDir)) {
-      const legoData = await fs.readJSON(legoPairsPath);
-      const allLegos = [];
+    if (legoPairsExists && basketsExists) {
+      try {
+        const legoData = await fs.readJSON(legoPairsPath);
+        const basketData = await fs.readJSON(basketsPath);
 
-      // Collect all LEGOs that should have baskets
-      for (const seed of (legoData.seeds || [])) {
-        for (const lego of (seed.legos || [])) {
-          allLegos.push({ legoId: lego.lego_id, seedId: seed.seed_id });
-        }
-      }
-
-      // Count how many have basket files
-      const basketFiles = await fs.readdir(phase5OutputsDir);
-      const seedsWithBaskets = new Set();
-
-      for (const file of basketFiles) {
-        if (file.startsWith('seed_S') && file.endsWith('_baskets.json')) {
-          const seedMatch = file.match(/seed_S(\d+)_baskets\.json/);
-          if (seedMatch) {
-            seedsWithBaskets.add(`S${seedMatch[1].padStart(4, '0')}`);
+        // Step 1: Find all new:true LEGOs (first appearance, needs basket)
+        const newLegos = new Map(); // legoId → {seedId, known, target}
+        for (const seed of (legoData.seeds || [])) {
+          for (const lego of (seed.legos || [])) {
+            if (lego.new === true) {
+              newLegos.set(lego.id, { seedId: seed.seed_id });
+            }
           }
         }
-      }
 
-      // Count missing
-      const seedsNeedingBaskets = new Set();
-      for (const lego of allLegos) {
-        if (!seedsWithBaskets.has(lego.seedId)) {
-          seedsNeedingBaskets.add(lego.seedId);
+        // Step 2: Find which LEGOs have baskets in lego_baskets.json
+        const legosWithBaskets = new Set();
+        if (basketData.baskets) {
+          Object.keys(basketData.baskets).forEach(legoId => {
+            legosWithBaskets.add(legoId);
+          });
         }
-      }
 
-      missingBasketsCount = allLegos.length - (seedsWithBaskets.size * 3); // ~3 LEGOs per seed estimate
-      missingBasketsSeeds = seedsNeedingBaskets.size;
+        // Step 3: Count missing (new:true LEGOs NOT in lego_baskets.json)
+        const seedsAffected = new Set();
+        newLegos.forEach((legoInfo, legoId) => {
+          if (!legosWithBaskets.has(legoId)) {
+            missingBasketsCount++;
+            seedsAffected.add(legoInfo.seedId);
+          }
+        });
+
+        missingBasketsSeeds = seedsAffected.size;
+      } catch (error) {
+        console.error('[Orchestrator] Error detecting missing baskets:', error);
+        // Fail gracefully
+      }
     }
 
     // Generate intelligent recommendations
