@@ -448,9 +448,32 @@ app.post('/start', async (req, res) => {
     // STEP 2: MASTER/WORKER CONFIGURATION
     // Read config from automation.config.simple.json
     const config = loadConfig();
-    const masterCount = config.phase5_basket_generation.browsers || 5;
-    const workersPerMaster = config.phase5_basket_generation.agents_per_browser || 4;
+    let masterCount = config.phase5_basket_generation.browsers || 5;
+    let workersPerMaster = config.phase5_basket_generation.agents_per_browser || 4;
     const seedsPerWorker = config.phase5_basket_generation.seeds_per_agent || 1;
+
+    // SMART SCALING: Only spawn browsers/workers needed for actual workload
+    const uniqueSeeds = new Set(targetLegos.map(l => l.seedId));
+    const seedsToProcess = uniqueSeeds.size;
+    const workersNeeded = Math.ceil(seedsToProcess / seedsPerWorker);
+
+    // Calculate optimal browser/worker distribution
+    if (workersNeeded < (masterCount * workersPerMaster)) {
+      console.log(`\n[Phase 5] 🎯 Smart Scaling: Only ${seedsToProcess} seeds to process (${workersNeeded} workers needed)`);
+
+      // Option A: Minimize browsers, maximize workers per browser
+      if (workersNeeded <= workersPerMaster) {
+        // All work fits in 1 browser
+        masterCount = 1;
+        workersPerMaster = workersNeeded;
+      } else {
+        // Distribute evenly across browsers (prefer fewer browsers)
+        masterCount = Math.min(masterCount, Math.ceil(workersNeeded / 5)); // ~5 workers per browser
+        workersPerMaster = Math.ceil(workersNeeded / masterCount);
+      }
+
+      console.log(`[Phase 5]    Scaled down: ${masterCount} browsers × ${workersPerMaster} workers = ${masterCount * workersPerMaster} workers`);
+    }
 
     const totalWorkers = masterCount * workersPerMaster;
     const capacity = totalWorkers * seedsPerWorker;
@@ -461,7 +484,7 @@ app.post('/start', async (req, res) => {
     console.log(`[Phase 5]    Seeds per worker: ${seedsPerWorker}`);
     console.log(`[Phase 5]    Total workers: ${totalWorkers}`);
     console.log(`[Phase 5]    Total capacity: ${capacity} seeds`);
-    console.log(`[Phase 5]    Job size: ${totalSeeds} seeds`);
+    console.log(`[Phase 5]    Seeds to process: ${seedsToProcess} seeds`);
     console.log(`[Phase 5]    Target LEGOs: ${targetLegos.length} LEGOs`);
 
     if (capacity < totalSeeds) {
