@@ -5,7 +5,8 @@
  *
  * Responsibilities:
  * - Serve dashboard read-only APIs (courses, VFS files, metrics)
- * - Trigger phase servers in sequence (1 → 3 → 5 → 6 → 8)
+ * - Trigger phase servers in sequence (1 → 3 → 5 → 7 → 8)
+ * - Phase 6 (introductions) integrated into Phase 3 (< 1s overhead)
  * - Checkpoint management (manual/gated/full modes)
  * - Health monitoring of phase servers
  * - Course status tracking
@@ -29,11 +30,12 @@ const SERVICE_NAME = process.env.SERVICE_NAME || 'Orchestrator';
 
 // Phase server URLs (auto-configured by start-automation.js)
 const PHASE_SERVERS = {
-  1: process.env.PHASE1_URL || 'http://localhost:3457',
-  3: process.env.PHASE3_URL || 'http://localhost:3458',
-  5: process.env.PHASE5_URL || 'http://localhost:3459',
-  6: process.env.PHASE6_URL || 'http://localhost:3460',
-  8: process.env.PHASE8_URL || 'http://localhost:3461'
+  1: process.env.PHASE1_URL || 'http://localhost:3457',    // Translation (includes Phase 2 LUT)
+  3: process.env.PHASE3_URL || 'http://localhost:3458',    // LEGO Extraction (includes Phase 6 introductions)
+  5: process.env.PHASE5_URL || 'http://localhost:3459',    // Practice Baskets
+  5.5: process.env.PHASE5_5_URL || 'http://localhost:3460', // Grammar Validation
+  7: process.env.PHASE7_URL || 'http://localhost:3462',    // Manifest Compilation
+  8: process.env.PHASE8_URL || 'http://localhost:3463'     // Audio/TTS
 };
 
 // Validate config
@@ -56,6 +58,10 @@ app.use(bodyParser.json({ limit: '50mb' }));
 
 // Course state tracking (courseCode -> state)
 const courseStates = new Map();
+
+// Pipeline state tracking (linear flow: 1 → 3 → 5 → 7 → 8)
+// courseCode -> { phase1: {success, completedAt, stats}, phase3: {...}, phase5: {...}, phase7: {...}, phase8: {...} }
+const pipelineJobs = new Map();
 
 /**
  * GET /api/courses
@@ -622,10 +628,10 @@ app.post('/api/courses/:courseCode/start-phase', async (req, res) => {
     // Validate prerequisite phases are complete
     const prerequisites = {
       1: [],           // Phase 1 has no prerequisites
-      3: [1],          // Phase 3 requires Phase 1 (seed_pairs.json)
-      5: [1, 3],       // Phase 5 requires Phases 1 & 3 (lego_pairs.json)
-      6: [1, 3, 5],    // Phase 6 requires Phases 1, 3 & 5
-      8: [1, 3, 5, 6]  // Phase 8 requires all previous phases
+      3: [1],          // Phase 3 requires Phase 1 (seed_pairs.json) - includes Phase 6 introductions
+      5: [1, 3],       // Phase 5 requires Phases 1 & 3 (lego_pairs.json + introductions.json)
+      7: [1, 3, 5],    // Phase 7 requires Phases 1, 3 & 5 (manifest compilation)
+      8: [1, 3, 5, 7]  // Phase 8 requires all previous phases (TTS audio generation)
     };
 
     const requiredPhases = prerequisites[phase] || [];
@@ -710,19 +716,30 @@ app.post('/api/courses/:courseCode/start-phase', async (req, res) => {
 /**
  * POST /phase-complete
  * Callback from phase servers when they complete
+ * Triggers next phase in linear sequence: 1 → 3 → 5 → 7 → 8
  */
 app.post('/phase-complete', async (req, res) => {
-  const { phase, courseCode, status } = req.body;
+  const { phase, courseCode, status, success, stats } = req.body;
 
-  console.log(`\n✅ Phase ${phase} ${status} for ${courseCode}`);
+  console.log(`\n✅ Phase ${phase} ${status || (success ? 'complete' : 'failed')} for ${courseCode}`);
 
   const state = courseStates.get(courseCode);
   if (!state) {
     return res.json({ acknowledged: true });
   }
 
+  // Update pipeline state for parallel coordination
+  let pipelineJob = pipelineJobs.get(courseCode) || {};
+  const phaseKey = `phase${phase}`;
+  pipelineJob[phaseKey] = {
+    success: success !== undefined ? success : status === 'complete',
+    completedAt: new Date().toISOString(),
+    stats: stats || {}
+  };
+  pipelineJobs.set(courseCode, pipelineJob);
+
   // Update state
-  if (status === 'complete') {
+  if (status === 'complete' || success) {
     if (!state.phasesCompleted.includes(phase)) {
       state.phasesCompleted.push(phase);
     }
@@ -736,43 +753,64 @@ app.post('/phase-complete', async (req, res) => {
       state.status = 'validation_failed';
       state.currentPhase = null;
       console.log(`   ❌ Validation failed - manual intervention required`);
-      return;
+      return res.json({ acknowledged: true });
     }
 
-    // Validation PASSED - now check checkpoint mode for progression
+    // Validation PASSED - now handle orchestration based on phase
     if (CHECKPOINT_MODE === 'manual') {
       state.status = 'waiting_for_approval';
       state.waitingForApproval = true;
       console.log(`   ⏸️  Waiting for manual approval (checkpoint mode: manual)`);
-    } else if (CHECKPOINT_MODE === 'gated') {
-      // Auto-trigger next phase
-      const nextPhase = getNextPhase(phase);
-      if (nextPhase) {
-        console.log(`   ✓ Validation passed, auto-triggering Phase ${nextPhase}`);
-        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
-      } else {
-        state.status = 'complete';
-        console.log(`   🎉 All phases complete!`);
-      }
     } else {
-      // Full automation - trigger next phase
-      const nextPhase = getNextPhase(phase);
-      if (nextPhase) {
-        console.log(`   → Auto-triggering Phase ${nextPhase} (checkpoint mode: full)`);
-        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
-      } else {
-        state.status = 'complete';
-        console.log(`   🎉 All phases complete!`);
-      }
+      // Auto-trigger next phase(s) based on orchestration logic
+      await handlePhaseProgression(courseCode, phase, state, pipelineJob);
     }
   } else {
-    state.status = status;
+    state.status = status || 'error';
   }
 
   state.lastUpdated = new Date().toISOString();
 
   res.json({ acknowledged: true });
 });
+
+/**
+ * Handle phase progression (linear pipeline)
+ * Phase 1 → Phase 3 (includes Phase 6) → Phase 5 → Phase 7 → Phase 8
+ */
+async function handlePhaseProgression(courseCode, completedPhase, state, pipelineJob) {
+  if (completedPhase === 'phase1' || completedPhase === 1) {
+    // Phase 1 → Phase 3
+    console.log(`   → Phase 1 complete, triggering Phase 3`);
+    setTimeout(() => triggerPhase(courseCode, 3), 2000);
+  } else if (completedPhase === 'phase3' || completedPhase === 3) {
+    // Phase 3 (includes Phase 6 introductions) → Phase 5
+    console.log(`   → Phase 3 complete (introductions generated), triggering Phase 5`);
+    setTimeout(() => triggerPhase(courseCode, 5), 2000);
+  } else if (completedPhase === 'phase5' || completedPhase === 5) {
+    // Phase 5 → Phase 7
+    console.log(`   → Phase 5 complete, triggering Phase 7`);
+    setTimeout(() => triggerPhase(courseCode, 7), 2000);
+  } else if (completedPhase === 'phase7' || completedPhase === 7) {
+    // Phase 7 → Phase 8
+    console.log(`   → Phase 7 complete, triggering Phase 8`);
+    setTimeout(() => triggerPhase(courseCode, 8), 2000);
+  } else if (completedPhase === 'phase8' || completedPhase === 8) {
+    // Phase 8 → All complete!
+    state.status = 'complete';
+    console.log(`   🎉 All phases complete!`);
+  } else {
+    // Unknown phase - use linear fallback
+    const nextPhase = getNextPhase(completedPhase);
+    if (nextPhase) {
+      console.log(`   → Auto-triggering Phase ${nextPhase}`);
+      setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
+    } else {
+      state.status = 'complete';
+      console.log(`   🎉 All phases complete!`);
+    }
+  }
+}
 
 /**
  * POST /api/courses/generate
@@ -818,8 +856,10 @@ app.post('/api/courses/generate', async (req, res) => {
       phase = 3;
     } else if (phaseSelection === 'phase5') {
       phase = 5;
-    } else if (phaseSelection === 'phase6') {
-      phase = 6;
+    } else if (phaseSelection === 'phase7') {
+      phase = 7;
+    } else if (phaseSelection === 'phase8') {
+      phase = 8;
     } else if (phaseSelection === 'all') {
       // Start from Phase 1
       phase = 1;
@@ -1773,9 +1813,10 @@ function determineStatus(course) {
 
 /**
  * Helper: Get next phase in sequence
+ * Linear pipeline: 1 → 3 → 5 → 7 → 8
  */
 function getNextPhase(currentPhase) {
-  const sequence = [1, 3, 5, 6, 8];
+  const sequence = [1, 3, 5, 7, 8];
   const currentIndex = sequence.indexOf(currentPhase);
   return currentIndex >= 0 && currentIndex < sequence.length - 1
     ? sequence[currentIndex + 1]

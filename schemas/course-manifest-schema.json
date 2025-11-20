@@ -3,7 +3,7 @@
   "title": "SSi Course Manifest Schema",
   "description": "Final compiled course format for SSi mobile app (Phase 7 output) - v7.7.0",
   "type": "object",
-  "required": ["id", "version", "target", "known", "slices"],
+  "required": ["id", "version", "target", "known", "introduction", "slices"],
   "properties": {
     "id": {
       "type": "string",
@@ -79,39 +79,39 @@
             "description": "Seeds (base sentences) in this slice",
             "items": {
               "type": "object",
-              "required": ["id", "node", "seedSentence", "introductionItems"],
+              "required": ["id", "node", "seed_sentence", "introduction_items"],
               "properties": {
                 "id": {
                   "type": "string",
                   "format": "uuid"
                 },
-                "node": {
-                  "type": "object",
-                  "required": ["id", "target", "known"],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uuid"
-                    },
-                    "target": {
-                      "$ref": "#/definitions/languageNode"
-                    },
-                    "known": {
-                      "$ref": "#/definitions/languageNode"
-                    }
-                  }
-                },
-                "seedSentence": {
+                "seed_sentence": {
                   "type": "object",
                   "required": ["canonical"],
                   "properties": {
                     "canonical": {
                       "type": "string",
-                      "description": "Original canonical English concept"
+                      "description": "Original canonical known language sentence"
                     }
                   }
                 },
-                "introductionItems": {
+                "node": {
+                  "type": "object",
+                  "required": ["id", "known", "target"],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "known": {
+                      "$ref": "#/definitions/languageNode"
+                    },
+                    "target": {
+                      "$ref": "#/definitions/languageNode"
+                    }
+                  }
+                },
+                "introduction_items": {
                   "type": "array",
                   "description": "LEGOs that build up to the complete seed",
                   "items": {
@@ -162,7 +162,7 @@
               "type": "array",
               "items": {
                 "type": "object",
-                "required": ["id", "cadence", "role"],
+                "required": ["id", "cadence", "role", "duration"],
                 "properties": {
                   "id": {
                     "type": "string",
@@ -214,18 +214,18 @@
   "definitions": {
     "languageNode": {
       "type": "object",
-      "required": ["tokens", "text", "lemmas"],
+      "required": ["text", "tokens", "lemmas"],
       "properties": {
+        "text": {
+          "type": "string",
+          "description": "Complete phrase text"
+        },
         "tokens": {
           "type": "array",
           "items": {
             "type": "string"
           },
           "description": "Tokenized words"
-        },
-        "text": {
-          "type": "string",
-          "description": "Complete phrase text"
         },
         "lemmas": {
           "type": "array",

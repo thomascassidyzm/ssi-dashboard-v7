@@ -621,7 +621,8 @@ app.post('/phase-complete', async (req, res) => {
 });
 
 /**
- * Verify seed_pairs.json was created (sequential mode - agent writes directly)
+ * Verify seed_pairs.json was created and run Phase 2 collision check
+ * (LUT - Learner Uncertainty Test)
  */
 async function mergeTranslations(courseCode) {
   console.log(`\n✅ Verifying translations for ${courseCode}...`);
@@ -636,12 +637,48 @@ async function mergeTranslations(courseCode) {
       const data = await fs.readJson(seedPairsPath);
       const translationCount = Object.keys(data.translations || {}).length;
       console.log(`✅ Found seed_pairs.json with ${translationCount} translations`);
+
+      // Run Phase 2: Collision Check (LUT - Learner Uncertainty Test)
+      console.log(`\n🔍 Running Phase 2: LUT Collision Check...`);
+      await runPhase2CollisionCheck(courseDir, seedPairsPath);
+
     } catch (error) {
       console.error(`⚠️  Error reading seed_pairs.json:`, error.message);
     }
   } else {
     console.log(`⚠️  Warning: seed_pairs.json not found yet`);
   }
+}
+
+/**
+ * Run Phase 2: LUT Collision Check
+ * Checks if same KNOWN phrase maps to multiple TARGET translations
+ */
+async function runPhase2CollisionCheck(courseDir, seedPairsPath) {
+  const phase2Script = path.join(__dirname, '../../scripts/phase2_collision_check.cjs');
+
+  return new Promise((resolve, reject) => {
+    const child = spawn('node', [phase2Script, seedPairsPath], {
+      cwd: courseDir,
+      stdio: 'inherit' // Show output directly
+    });
+
+    child.on('close', (code) => {
+      if (code === 0) {
+        console.log(`✅ Phase 2: No FD violations detected\n`);
+        resolve();
+      } else {
+        console.warn(`⚠️  Phase 2: Found FD violations (see report above)\n`);
+        // Don't fail the whole phase - just warn
+        resolve();
+      }
+    });
+
+    child.on('error', (err) => {
+      console.error(`⚠️  Phase 2 check failed:`, err.message);
+      resolve(); // Continue anyway
+    });
+  });
 }
 
 /**

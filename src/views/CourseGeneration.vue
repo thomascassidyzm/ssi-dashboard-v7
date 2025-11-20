@@ -217,21 +217,6 @@
               <p class="text-xs text-slate-400">Practice baskets (lego_baskets.json)</p>
             </button>
 
-            <!-- Phase 6 Only -->
-            <button
-              @click="phaseSelection = 'phase6'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                phaseSelection === 'phase6'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">🎤</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 6 Only</h4>
-              <p class="text-xs text-slate-400">Presentations (introductions.json)</p>
-            </button>
-
             <!-- Phase 7 Only -->
             <button
               @click="phaseSelection = 'phase7'"
@@ -253,11 +238,10 @@
             <div class="flex items-start gap-2 text-xs text-amber-300">
               <span>⚠️</span>
               <div>
-                <strong>Phase {{ phaseSelection === 'phase1' ? '1' : phaseSelection === 'phase3' ? '3' : phaseSelection === 'phase5' ? '5' : phaseSelection === 'phase6' ? '6' : '7' }} requirements:</strong>
+                <strong>Phase {{ phaseSelection === 'phase1' ? '1' : phaseSelection === 'phase3' ? '3' : phaseSelection === 'phase5' ? '5' : '7' }} requirements:</strong>
                 <span v-if="phaseSelection === 'phase1'"> No prerequisites</span>
                 <span v-else-if="phaseSelection === 'phase3'"> Requires seed_pairs.json (Phase 1 complete)</span>
-                <span v-else-if="phaseSelection === 'phase5'"> Requires lego_pairs.json (Phase 3 complete)</span>
-                <span v-else-if="phaseSelection === 'phase6'"> Requires lego_pairs.json (Phase 3 complete)</span>
+                <span v-else-if="phaseSelection === 'phase5'"> Requires lego_pairs.json + introductions.json (Phase 3 complete)</span>
                 <span v-else-if="phaseSelection === 'phase7'"> Requires all previous phases complete</span>
               </div>
             </div>
@@ -729,10 +713,10 @@ let pollInterval = null
 // Phase names for UI (matches Phase Intelligence architecture)
 const phaseNames = [
   { id: 0, name: 'Phase 1: Pedagogical Translation' },
-  { id: 1, name: 'Phase 3: LEGO Extraction' },
-  { id: 2, name: 'Phase 5: Practice Baskets' },
-  { id: 3, name: 'Phase 6: Introductions' },
-  { id: 4, name: 'Phase 7: Course Manifest' }
+  { id: 1, name: 'Phase 3: LEGO Extraction + Introductions' },
+  { id: 2, name: 'Phase 5: Practice Baskets + Grammar' },
+  { id: 3, name: 'Phase 7: Course Manifest' },
+  { id: 4, name: 'Phase 8: Audio/TTS' }
 ]
 
 // Computed
@@ -746,8 +730,8 @@ const currentPhaseIndex = computed(() => {
   if (phase.includes('phase_1')) return 0
   if (phase.includes('phase_3')) return 1
   if (phase.includes('phase_5')) return 2
-  if (phase.includes('phase_6')) return 3
-  if (phase.includes('phase_7') || phase === 'compilation') return 4
+  if (phase.includes('phase_7') || phase === 'compilation') return 3
+  if (phase.includes('phase_8') || phase === 'audio') return 4
   if (phase === 'completed') return 5
   return -1
 })

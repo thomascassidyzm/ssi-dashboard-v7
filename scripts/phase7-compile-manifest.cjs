@@ -31,11 +31,8 @@ if (!courseCode) {
   process.exit(1);
 }
 
-const courseDir = path.join(__dirname, '..', 'vfs', 'courses', courseCode);
+const courseDir = path.join(__dirname, '..', 'public', 'vfs', 'courses', courseCode);
 const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
-// Use deduplicated files (output of Phase 5.5)
-const legoPairsPath = path.join(courseDir, 'lego_pairs_deduplicated.json');
-const legoBasketsPath = path.join(courseDir, 'lego_baskets_deduplicated.json');
 const introductionsPath = path.join(courseDir, 'introductions.json');
 const outputPath = path.join(courseDir, 'course_manifest.json');
 
@@ -76,11 +73,12 @@ function generateSampleUUID(text, language, role, cadence) {
   return uuid;
 }
 
-// Helper to create language node (tokens/lemmas empty per user request)
+// Helper to create language node (matching Italian format: text before tokens)
+// Note: tokens/lemmas are empty per user request (could be populated later)
 function createLanguageNode(text) {
   return {
-    tokens: [],
     text: text,
+    tokens: [],
     lemmas: []
   };
 }
@@ -93,7 +91,7 @@ function createLanguageNode(text) {
  * @returns {Object|null} - Encouragements object or null if not found
  */
 async function loadEncouragements(knownLanguageCode) {
-  const canonicalDir = path.join(__dirname, '..', 'vfs', 'canonical');
+  const canonicalDir = path.join(__dirname, '..', 'public', 'vfs', 'canonical');
   const encouragementPath = path.join(canonicalDir, `${knownLanguageCode}_encouragements.json`);
 
   if (!await fs.pathExists(encouragementPath)) {
@@ -193,11 +191,25 @@ async function compileManifest() {
   console.log(`\n📦 Phase 7: Compile Course Manifest`);
   console.log(`Course: ${courseCode}\n`);
 
+  // Detect lego_pairs file (deduplicated or regular)
+  const legoPairsDedup = path.join(courseDir, 'lego_pairs_deduplicated.json');
+  const legoPairsRegular = path.join(courseDir, 'lego_pairs.json');
+  const legoPairsPath = await fs.pathExists(legoPairsDedup) ? legoPairsDedup : legoPairsRegular;
+
+  // Detect lego_baskets file (deduplicated or regular)
+  const legoBasketsDedup = path.join(courseDir, 'lego_baskets_deduplicated.json');
+  const legoBasketsRegular = path.join(courseDir, 'lego_baskets.json');
+  const legoBasketsPath = await fs.pathExists(legoBasketsDedup) ? legoBasketsDedup : legoBasketsRegular;
+
+  console.log(`📁 Using files:`);
+  console.log(`   lego_pairs: ${path.basename(legoPairsPath)}`);
+  console.log(`   lego_baskets: ${path.basename(legoBasketsPath)}\n`);
+
   // Check all required inputs exist
   const requiredFiles = [
     { path: seedPairsPath, name: 'seed_pairs.json', phase: 'Phase 1' },
-    { path: legoPairsPath, name: 'lego_pairs.json', phase: 'Phase 3' },
-    { path: legoBasketsPath, name: 'lego_baskets.json', phase: 'Phase 4' },
+    { path: legoPairsPath, name: path.basename(legoPairsPath), phase: 'Phase 3' },
+    { path: legoBasketsPath, name: path.basename(legoBasketsPath), phase: 'Phase 4' },
     { path: introductionsPath, name: 'introductions.json', phase: 'Phase 6' }
   ];
 
@@ -214,12 +226,15 @@ async function compileManifest() {
   const seedPairs = await fs.readJson(seedPairsPath);
   const legoPairsData = await fs.readJson(legoPairsPath);
   const legoBasketsData = await fs.readJson(legoBasketsPath);
-  const introductions = await fs.readJson(introductionsPath);
+  const introductionsData = await fs.readJson(introductionsPath);
 
   // Handle both formats: array (from Phase 5.5) or object with seeds property
   const seeds = Array.isArray(legoPairsData) ? legoPairsData : legoPairsData.seeds;
   const baskets = legoBasketsData.baskets || legoBasketsData;
-  const version = legoPairsData.version || introductions.version || '7.8.0';
+  const version = legoPairsData.version || introductionsData.version || '7.8.0';
+
+  // Handle introductions format: .introductions (old) or .presentations (new)
+  const introductions = introductionsData.introductions || introductionsData.presentations;
 
   // Extract course metadata
   const [targetCode, , knownCode] = courseCode.split('_');
@@ -227,20 +242,58 @@ async function compileManifest() {
 
   console.log(`📊 Course ID: ${courseId}`);
   console.log(`📊 Seeds: ${seeds.length}`);
-  console.log(`📊 LEGOs: ${Object.keys(introductions.introductions).length}\n`);
+  console.log(`📊 LEGOs: ${Object.keys(introductions).length}\n`);
 
-  // Load canonical encouragements for source language
-  const encouragements = await loadEncouragements(knownCode);
+  // Load canonical encouragements for source language (optional)
+  let encouragements = null;
+  try {
+    encouragements = await loadEncouragements(knownCode);
+  } catch (error) {
+    console.warn(`⚠️  Encouragements not found for ${knownCode}, continuing without them...`);
+  }
 
-  // Load course welcome
-  const welcome = await loadWelcome(courseCode);
+  // Load course welcome (optional)
+  let welcome = null;
+  try {
+    welcome = await loadWelcome(courseCode);
+  } catch (error) {
+    console.warn(`⚠️  Welcome not found for ${courseCode}, continuing without it...`);
+  }
+
+  // Detect data format (array or object)
+  const isArrayFormat = Array.isArray(seeds[0]) && !seeds[0].seed_id;
 
   // Create LEGO lookup for quick access
   const legoLookup = {};
   for (const seed of seeds) {
-    const [seedId, [targetSeed, knownSeed], legos] = seed;
+    let seedId, targetSeed, knownSeed, legos;
+
+    if (isArrayFormat) {
+      // Old format: [seedId, [targetSeed, knownSeed], legos]
+      [seedId, [targetSeed, knownSeed], legos] = seed;
+    } else {
+      // New format: {seed_id, seed_pair: {known, target}, legos}
+      seedId = seed.seed_id;
+      knownSeed = seed.seed_pair.known;
+      targetSeed = seed.seed_pair.target;
+      legos = seed.legos;
+    }
+
     for (const lego of legos) {
-      const [legoId, type, targetLego, knownLego, components] = lego;
+      let legoId, type, targetLego, knownLego, components;
+
+      if (isArrayFormat) {
+        // Old format: [legoId, type, targetLego, knownLego, components]
+        [legoId, type, targetLego, knownLego, components] = lego;
+      } else {
+        // New format: {id, type, new, lego: {known, target}}
+        legoId = lego.id;
+        type = lego.type;
+        targetLego = lego.lego.target;
+        knownLego = lego.lego.known;
+        components = lego.components || [];
+      }
+
       legoLookup[legoId] = {
         seedId,
         type,
@@ -272,7 +325,8 @@ async function compileManifest() {
       samples[text].push({
         id: generateSampleUUID(text, language, role, cadence),
         cadence: cadence,
-        role: role
+        role: role,
+        duration: 0  // Placeholder - will be populated by Phase 8 (TTS)
       });
     }
   }
@@ -283,7 +337,18 @@ async function compileManifest() {
   let totalPracticeNodes = 0;
 
   for (const seed of seeds) {
-    const [seedId, [targetSeed, knownSeed], legos] = seed;
+    let seedId, targetSeed, knownSeed, legos;
+
+    if (isArrayFormat) {
+      // Old format: [seedId, [targetSeed, knownSeed], legos]
+      [seedId, [targetSeed, knownSeed], legos] = seed;
+    } else {
+      // New format: {seed_id, seed_pair: {known, target}, legos}
+      seedId = seed.seed_id;
+      knownSeed = seed.seed_pair.known;
+      targetSeed = seed.seed_pair.target;
+      legos = seed.legos;
+    }
 
     // Register seed sentence samples
     registerSample(targetSeed, targetCode, 'target1', 'natural');
@@ -294,10 +359,25 @@ async function compileManifest() {
     const introductionItems = [];
 
     for (const lego of legos) {
-      const [legoId, type, targetLego, knownLego, components] = lego;
+      let legoId, type, targetLego, knownLego, components;
+
+      if (isArrayFormat) {
+        // Old format: [legoId, type, targetLego, knownLego, components]
+        [legoId, type, targetLego, knownLego, components] = lego;
+      } else {
+        // New format: {id, type, new, lego: {known, target}}
+        // Skip old LEGOs (new=false)
+        if (!lego.new) continue;
+
+        legoId = lego.id;
+        type = lego.type;
+        targetLego = lego.lego.target;
+        knownLego = lego.lego.known;
+        components = lego.components || [];
+      }
 
       // Get presentation text from Phase 6
-      const presentation = introductions.introductions[legoId];
+      const presentation = introductions[legoId];
       if (!presentation) {
         console.warn(`⚠️  No presentation found for ${legoId}, skipping`);
         continue;
@@ -316,47 +396,67 @@ async function compileManifest() {
       const practiceNodes = [];
 
       if (basket) {
-        // Basket structure: [lego_pair, full_sentences, practice_windows]
-        // practice_windows is an array of 4 windows with expanding phrases
-        const practiceWindows = basket[2] || [];
+        // Detect basket format
+        if (Array.isArray(basket)) {
+          // Old format: [lego_pair, full_sentences, practice_windows]
+          const practiceWindows = basket[2] || [];
 
-        // Flatten all windows into a single list of practice phrases
-        for (const window of practiceWindows) {
-          if (Array.isArray(window)) {
-            for (const phrase of window) {
-              if (Array.isArray(phrase) && phrase.length === 2) {
-                const [targetPhrase, knownPhrase] = phrase;
+          // Flatten all windows into a single list of practice phrases
+          for (const window of practiceWindows) {
+            if (Array.isArray(window)) {
+              for (const phrase of window) {
+                if (Array.isArray(phrase) && phrase.length === 2) {
+                  const [targetPhrase, knownPhrase] = phrase;
 
-                // Register practice phrase samples
-                registerSample(targetPhrase, targetCode, 'target1', 'natural');
-                registerSample(targetPhrase, targetCode, 'target2', 'natural');
-                registerSample(knownPhrase, knownCode, 'source', 'natural');
+                  // Register practice phrase samples
+                  registerSample(targetPhrase, targetCode, 'target1', 'natural');
+                  registerSample(targetPhrase, targetCode, 'target2', 'natural');
+                  registerSample(knownPhrase, knownCode, 'source', 'natural');
 
-                practiceNodes.push({
-                  id: uuidv4(),
-                  target: createLanguageNode(targetPhrase),
-                  known: createLanguageNode(knownPhrase)
-                });
+                  practiceNodes.push({
+                    id: uuidv4(),
+                    known: createLanguageNode(knownPhrase),
+                    target: createLanguageNode(targetPhrase)
+                  });
+                }
               }
             }
+          }
+        } else if (basket.practice_phrases) {
+          // New format: {lego, practice_phrases: [{known, target}], phrase_count}
+          for (const phrase of basket.practice_phrases) {
+            const targetPhrase = phrase.target;
+            const knownPhrase = phrase.known;
+
+            // Register practice phrase samples
+            registerSample(targetPhrase, targetCode, 'target1', 'natural');
+            registerSample(targetPhrase, targetCode, 'target2', 'natural');
+            registerSample(knownPhrase, knownCode, 'source', 'natural');
+
+            practiceNodes.push({
+              id: uuidv4(),
+              known: createLanguageNode(knownPhrase),
+              target: createLanguageNode(targetPhrase)
+            });
           }
         }
 
         totalPracticeNodes += practiceNodes.length;
       }
 
-      // Build introduction item
+      // Build introduction item (matching Italian format: known before target)
       const introItem = {
         id: uuidv4(),
         node: {
           id: uuidv4(),
-          target: createLanguageNode(targetLego),
-          known: createLanguageNode(knownLego)
+          known: createLanguageNode(knownLego),
+          target: createLanguageNode(targetLego)
         },
+        nodes: [],
         presentation: presentation
       };
 
-      // Add nodes if we have practice phrases
+      // Set nodes to practice phrases (already initialized as empty array)
       if (practiceNodes.length > 0) {
         introItem.nodes = practiceNodes;
       }
@@ -365,16 +465,16 @@ async function compileManifest() {
       totalIntroductionItems++;
     }
 
-    // Build seed object
+    // Build seed object (using snake_case to match Italian format)
     const seedObj = {
       id: uuidv4(),
-      node: {
-        id: uuidv4(),
-        target: createLanguageNode(targetSeed),
-        known: createLanguageNode(knownSeed)
-      },
       seed_sentence: {
         canonical: knownSeed
+      },
+      node: {
+        id: uuidv4(),
+        known: createLanguageNode(knownSeed),
+        target: createLanguageNode(targetSeed)
       },
       introduction_items: introductionItems
     };
@@ -396,21 +496,26 @@ async function compileManifest() {
     samples: samples // Audio sample metadata (Phase 8 will generate actual audio files)
   }];
 
-  // Build final manifest
+  // Build final manifest (matching Italian format field order)
   const manifest = {
     id: courseId,
-    version: version,
-    target: targetCode,
     known: knownCode,
-    status: "alpha",
-    introduction: {
-      id: welcome.id || "",  // UUID of audio sample (empty if not generated yet)
-      cadence: "natural",
-      role: "presentation",
-      duration: welcome.duration || 0
-    },
-    slices: slices
+    target: targetCode,
+    version: version,
+    status: "alpha"
   };
+
+  // Add introduction (must come before slices to match Italian format)
+  // Use welcome data if available, otherwise use placeholders
+  manifest.introduction = {
+    id: (welcome && welcome.id) ? welcome.id : "",  // UUID placeholder - will be populated by Phase 8 (TTS)
+    cadence: "natural",
+    role: "presentation",
+    duration: (welcome && welcome.duration) ? welcome.duration : 0  // Duration placeholder - will be populated by Phase 8 (TTS)
+  };
+
+  // Add slices last
+  manifest.slices = slices;
 
   // Validate manifest against JSON Schema
   console.log('🔍 Validating manifest against schema...');
@@ -481,9 +586,9 @@ async function compileManifest() {
     const firstSeed = manifestSeeds[0];
     console.log(`📝 Sample structure:\n`);
     console.log(`Seed: "${firstSeed.node.known.text}"`);
-    console.log(`  → LEGOs: ${firstSeed.introductionItems.length}`);
-    if (firstSeed.introductionItems.length > 0) {
-      const firstLego = firstSeed.introductionItems[0];
+    console.log(`  → LEGOs: ${firstSeed.introduction_items.length}`);
+    if (firstSeed.introduction_items.length > 0) {
+      const firstLego = firstSeed.introduction_items[0];
       console.log(`  → First LEGO: "${firstLego.node.known.text}"`);
       console.log(`  → Presentation: "${firstLego.presentation}"`);
       if (firstLego.nodes) {

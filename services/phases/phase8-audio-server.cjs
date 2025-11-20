@@ -8,7 +8,7 @@
 
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3461;
+const PORT = process.env.PORT || 3463;
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 8 (Audio)';
 
 app.use(express.json());

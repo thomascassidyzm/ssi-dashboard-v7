@@ -34,19 +34,22 @@
         </div>
       </div>
 
-      <!-- Phase 3: LEGO Extraction -->
+      <!-- Phase 3: LEGO Extraction + Introductions -->
       <div class="bg-slate-900/50 rounded-lg p-4">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-3">
             <div v-if="phase3Complete" class="text-green-400">✓</div>
             <div v-else-if="phase3Active" class="text-yellow-400 animate-pulse">●</div>
             <div v-else class="text-slate-600">○</div>
-            <span class="text-sm font-medium text-slate-300">Phase 3: LEGO Extraction</span>
+            <span class="text-sm font-medium text-slate-300">Phase 3: LEGO Extraction + Introductions</span>
           </div>
-          <span v-if="phase3FileExists" class="text-xs text-green-400">lego_pairs.json ✓</span>
+          <div class="flex gap-2">
+            <span v-if="phase3FileExists" class="text-xs text-green-400">lego_pairs.json ✓</span>
+            <span v-if="introductionsFileExists" class="text-xs text-green-400">introductions.json ✓</span>
+          </div>
         </div>
         <div v-if="phase3Active || phase3Complete" class="text-xs text-slate-400 ml-10">
-          Extracting linguistic building blocks from seed pairs
+          Extracting building blocks + generating intro presentations (~1s overhead)
         </div>
         <div v-if="phase3Active && subProgress && subProgress.phase === 'phase_3'" class="ml-10 mt-2">
           <div class="flex items-center gap-2 text-xs">
@@ -81,22 +84,6 @@
             </div>
             <span class="text-slate-500">{{ subProgress.percentage }}%</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Phase 6: Introductions -->
-      <div class="bg-slate-900/50 rounded-lg p-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-3">
-            <div v-if="phase6Complete" class="text-green-400">✓</div>
-            <div v-else-if="phase6Active" class="text-yellow-400 animate-pulse">●</div>
-            <div v-else class="text-slate-600">○</div>
-            <span class="text-sm font-medium text-slate-300">Phase 6: Introductions</span>
-          </div>
-          <span v-if="phase6FileExists" class="text-xs text-green-400">introductions.json ✓</span>
-        </div>
-        <div v-if="phase6Active || phase6Complete" class="text-xs text-slate-400 ml-10">
-          Generating LEGO presentation text (~2 seconds)
         </div>
       </div>
 
@@ -213,8 +200,8 @@ const currentMessage = ref('')
 const subProgress = ref(null)
 const phase1FileExists = ref(false)
 const phase3FileExists = ref(false)
+const introductionsFileExists = ref(false)
 const phase5FileExists = ref(false)
-const phase6FileExists = ref(false)
 const phase7FileExists = ref(false)
 const events = ref([])
 const windows = ref([])
@@ -251,14 +238,6 @@ const phase5Active = computed(() => {
 
 const phase5Complete = computed(() => {
   return phase5FileExists.value || currentPhase.value.includes('phase_5_complete')
-})
-
-const phase6Active = computed(() => {
-  return currentPhase.value.includes('phase_6') && !phase6Complete.value
-})
-
-const phase6Complete = computed(() => {
-  return phase6FileExists.value || currentPhase.value.includes('phase_6_complete') || phase7Active.value || phase7Complete.value
 })
 
 const phase7Active = computed(() => {
@@ -381,9 +360,9 @@ const checkProgress = async () => {
 
     try {
       const introductionsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'introductions.json'), { method: 'HEAD' })
-      phase6FileExists.value = introductionsCheck.ok
+      introductionsFileExists.value = introductionsCheck.ok
     } catch (err) {
-      phase6FileExists.value = false
+      introductionsFileExists.value = false
     }
 
     try {

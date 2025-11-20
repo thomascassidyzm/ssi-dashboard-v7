@@ -123,15 +123,21 @@ const SERVICES = {
     name: 'Phase 5 (Baskets)',
     color: '\x1b[35m'    // Magenta
   },
-  phase6: {
-    script: 'services/phases/phase6-introduction-server.cjs',
+  phase5_5: {
+    script: 'services/phases/phase5.5-grammar-validation-server.cjs',
     port: BASE_PORT + 4,  // 3460
-    name: 'Phase 6 (Introductions)',
+    name: 'Phase 5.5 (Grammar)',
+    color: '\x1b[95m'    // Bright Magenta
+  },
+  phase7: {
+    script: 'services/phases/phase7-manifest-server.cjs',
+    port: BASE_PORT + 6,  // 3462
+    name: 'Phase 7 (Manifest)',
     color: '\x1b[34m'    // Blue
   },
   phase8: {
     script: 'services/phases/phase8-audio-server.cjs',
-    port: BASE_PORT + 5,  // 3461
+    port: BASE_PORT + 7,  // 3463
     name: 'Phase 8 (Audio)',
     color: '\x1b[36m'    // Cyan
   }
@@ -162,11 +168,12 @@ for (const [key, config] of Object.entries(SERVICES)) {
       // Phase servers need to know orchestrator port
       ORCHESTRATOR_URL: `http://localhost:${BASE_PORT}`,
       // Phase servers need to know each other (for service mesh)
-      PHASE1_URL: `http://localhost:${BASE_PORT + 1}`,
-      PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,
-      PHASE5_URL: `http://localhost:${BASE_PORT + 3}`,
-      PHASE6_URL: `http://localhost:${BASE_PORT + 4}`,
-      PHASE8_URL: `http://localhost:${BASE_PORT + 5}`,
+      PHASE1_URL: `http://localhost:${BASE_PORT + 1}`,    // 3457 - Translation (includes Phase 2 LUT)
+      PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,    // 3458 - LEGO Extraction (includes Phase 6 introductions)
+      PHASE5_URL: `http://localhost:${BASE_PORT + 3}`,    // 3459 - Practice Baskets
+      PHASE5_5_URL: `http://localhost:${BASE_PORT + 4}`,  // 3460 - Grammar Validation
+      PHASE7_URL: `http://localhost:${BASE_PORT + 6}`,    // 3462 - Manifest Compilation
+      PHASE8_URL: `http://localhost:${BASE_PORT + 7}`,    // 3463 - Audio/TTS
     },
     stdio: ['ignore', 'pipe', 'pipe']
   });
