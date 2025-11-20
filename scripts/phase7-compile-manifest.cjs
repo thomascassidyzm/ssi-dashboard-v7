@@ -422,9 +422,9 @@ async function compileManifest() {
               }
             }
           }
-        } else if (basket.phrases) {
-          // Current format: {lego, phrases: [{known, target}]}
-          for (const phrase of basket.phrases) {
+        } else if (basket.practice_phrases) {
+          // Current format: {lego, practice_phrases: [{known, target}]}
+          for (const phrase of basket.practice_phrases) {
             const targetPhrase = phrase.target;
             const knownPhrase = phrase.known;
 
