@@ -1,9 +1,10 @@
 # Phase 7: Course Manifest Compilation
 
-**Version**: 1.1
+**Version**: 1.2
 **Status**: ✅ Active
 **Last Updated**: 2025-11-20
 **Script**: `scripts/phase7-compile-manifest.cjs`
+**API**: REST endpoints for input/output (v1.2+)
 
 ---
 
@@ -160,13 +161,47 @@ Same inputs MUST produce same UUID across runs. Test by:
 
 ## Input Files
 
-### Required Files
-1. `seed_pairs.json` - Seed sentence translations
-2. `lego_pairs.json` - LEGO structure with components
-3. `lego_baskets.json` - Practice phrases (expanding windows)
-4. `introductions.json` - Presentation text for LEGOs
+### Fetching Phase Outputs via REST API
 
-All must be v7.7.0 format.
+**All phase outputs are fetched from the orchestrator via REST API endpoints.**
+
+#### Option 1: Get All Phase Outputs (Convenience Endpoint)
+```javascript
+// Fetch all required phase outputs in one call
+const response = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs`);
+const phaseOutputs = await response.json();
+
+// phaseOutputs contains:
+// - seed_pairs (Phase 1)
+// - lego_pairs (Phase 3)
+// - lego_baskets (Phase 5)
+// - introductions (Phase 6)
+```
+
+#### Option 2: Get Individual Phase Outputs
+```javascript
+// Fetch each phase output separately
+const seedPairs = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/1/seed_pairs.json`).then(r => r.json());
+const legoPairs = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json`).then(r => r.json());
+const legoBaskets = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/5/lego_baskets.json`).then(r => r.json());
+const introductions = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/6/introductions.json`).then(r => r.json());
+```
+
+### Phase Intelligence Document
+
+**Fetch this document for compilation guidance:**
+```javascript
+const intelligence = await fetch(`${ORCHESTRATOR_URL}/api/phase-intelligence/7`).then(r => r.text());
+// Returns this markdown document with all compilation rules
+```
+
+### Required Files
+1. `seed_pairs.json` - Seed sentence translations (Phase 1)
+2. `lego_pairs.json` - LEGO structure with components (Phase 3)
+3. `lego_baskets.json` - Practice phrases (Phase 5)
+4. `introductions.json` - Presentation text for LEGOs (Phase 6)
+
+All must be v7.7.0+ format.
 
 ---
 
@@ -261,6 +296,97 @@ All must be v7.7.0 format.
 
 ---
 
+## Submitting Compiled Manifest via REST API
+
+**After compiling the manifest, submit it to the orchestrator via POST request.**
+
+### Submission Endpoint
+
+```javascript
+POST ${ORCHESTRATOR_URL}/api/phase7/${courseCode}/submit
+```
+
+### Request Body Format
+
+```json
+{
+  "version": "8.2.0",
+  "course": "spa_for_eng",
+  "manifest": {
+    "id": "spa-eng",
+    "known": "eng",
+    "target": "spa",
+    "version": "8.2.0",
+    "status": "alpha",
+    "introduction": {
+      "id": "",
+      "cadence": "natural",
+      "role": "presentation",
+      "duration": 0
+    },
+    "slices": [
+      {
+        "id": "uuid",
+        "version": "8.2.0",
+        "seeds": [...],
+        "samples": {...}
+      }
+    ]
+  }
+}
+```
+
+### Example Submission
+
+```javascript
+// After compiling manifest
+const submission = {
+  version: "8.2.0",
+  course: courseCode,
+  manifest: compiledManifest
+};
+
+const response = await fetch(`${ORCHESTRATOR_URL}/api/phase7/${courseCode}/submit`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(submission)
+});
+
+const result = await response.json();
+```
+
+### Expected Response
+
+```json
+{
+  "success": true,
+  "phraseCount": 1141,
+  "savedTo": "public/vfs/courses/spa_for_eng/course_manifest.json",
+  "timestamp": "2025-11-20T12:34:56.789Z"
+}
+```
+
+### Response Fields
+
+- `success` - Boolean indicating submission success
+- `phraseCount` - Total number of unique phrases in the manifest
+- `savedTo` - File path where manifest was saved
+- `timestamp` - ISO timestamp of submission
+
+### Error Handling
+
+```javascript
+if (!response.ok) {
+  const error = await response.json();
+  console.error('Submission failed:', error.message);
+  // error.details may contain validation errors
+}
+```
+
+**Important**: The orchestrator will validate the manifest structure before saving. Ensure all validation rules are met before submission.
+
+---
+
 ## Implementation Rules
 
 ### 1. **Empty Tokens/Lemmas**
@@ -303,6 +429,7 @@ const courseId = `${targetCode}-${knownCode}`;
 
 ## Validation Checklist
 
+### Manifest Structure
 ✅ Single slice containing all seeds
 ✅ Top-level `introduction` field present with all required fields
 ✅ Introduction field positioned after status, before slices
@@ -316,6 +443,14 @@ const courseId = `${targetCode}-${knownCode}`;
 ✅ UUIDs follow role-specific segment format
 ✅ Empty tokens/lemmas arrays everywhere
 ✅ Samples object populated with all phrases
+
+### API Workflow
+✅ Phase outputs fetched via REST API endpoints
+✅ Phase intelligence document fetched via API
+✅ Compiled manifest submitted via POST endpoint
+✅ Submission includes version, course, and manifest fields
+✅ Response validated for success status
+✅ Error handling implemented for failed submissions
 
 ---
 
@@ -373,6 +508,13 @@ C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3  <- "Voglio" target1 natural
 ---
 
 ## Version History
+
+### v1.2 (2025-11-20)
+- **REST API workflow**: Replaced git-based input/output with REST API endpoints
+- **Input via API**: Added convenience endpoint for all phase outputs + individual file endpoints
+- **Output via API**: Added POST submission endpoint with validation and response format
+- **Phase intelligence access**: Added API endpoint to fetch this document
+- **Documentation**: Added complete examples for fetching inputs and submitting outputs
 
 ### v1.1 (2025-11-20)
 - **Top-level introduction field**: Added required `introduction` object with placeholder values

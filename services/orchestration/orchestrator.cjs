@@ -1072,6 +1072,64 @@ app.get('/api/canonical-seeds', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/phase-outputs/:phase/:file
+ * Retrieve phase output files from VFS
+ * Example: GET /api/courses/hun_for_eng/phase-outputs/1/seed_pairs.json
+ * Returns the contents of {VFS_ROOT}/{courseCode}/{file}
+ */
+app.get('/api/courses/:courseCode/phase-outputs/:phase/:file', async (req, res) => {
+  const { courseCode, phase, file } = req.params;
+
+  console.log(`[Orchestrator] Fetching phase ${phase} output: ${file} for ${courseCode}`);
+
+  try {
+    // Construct file path: {VFS_ROOT}/{courseCode}/{file}
+    const filePath = path.join(VFS_ROOT, courseCode, file);
+
+    // Check if file exists
+    if (!await fs.pathExists(filePath)) {
+      console.log(`[Orchestrator] File not found: ${filePath}`);
+      return res.status(404).json({
+        error: 'File not found',
+        courseCode,
+        phase,
+        file,
+        path: filePath
+      });
+    }
+
+    // Read and return the JSON file
+    const data = await fs.readJson(filePath);
+
+    console.log(`[Orchestrator] Successfully served ${file} for ${courseCode}`);
+
+    res.json(data);
+  } catch (error) {
+    console.error(`[Orchestrator] Error reading phase output file:`, error);
+
+    // Handle JSON parse errors specifically
+    if (error.name === 'SyntaxError' || error.message.includes('JSON')) {
+      return res.status(500).json({
+        error: 'Invalid JSON file',
+        courseCode,
+        phase,
+        file,
+        details: error.message
+      });
+    }
+
+    // Handle file read errors
+    res.status(500).json({
+      error: 'File read failed',
+      courseCode,
+      phase,
+      file,
+      details: error.message
+    });
+  }
+});
+
+/**
  * GET /api/phase-intelligence/:phase
  * Serve phase intelligence docs to agents via ngrok
  * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
@@ -1149,6 +1207,177 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
   } catch (error) {
     console.error(`[Orchestrator] Error accepting Phase 1 submission:`, error);
     res.status(500).json({ error: 'Failed to save Phase 1 submission', details: error.message });
+  }
+});
+
+/**
+ * POST /api/phase3/:courseCode/submit
+ * Accept completed lego_pairs.json and introductions.json from agents via ngrok
+ */
+app.post('/api/phase3/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const { lego_pairs, introductions } = req.body;
+
+    // Validate both objects exist
+    if (!lego_pairs || !introductions) {
+      return res.status(400).json({
+        error: 'Invalid Phase 3 submission format',
+        required: ['lego_pairs', 'introductions'],
+        received: {
+          has_lego_pairs: !!lego_pairs,
+          has_introductions: !!introductions
+        }
+      });
+    }
+
+    // Validate lego_pairs structure (must have version and legos array)
+    if (!lego_pairs.version || !Array.isArray(lego_pairs.legos)) {
+      return res.status(400).json({
+        error: 'Invalid lego_pairs structure',
+        required: ['version', 'legos (array)']
+      });
+    }
+
+    // Validate introductions structure (must have version and intros array)
+    if (!introductions.version || !Array.isArray(introductions.intros)) {
+      return res.status(400).json({
+        error: 'Invalid introductions structure',
+        required: ['version', 'intros (array)']
+      });
+    }
+
+    // Ensure course directory exists
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    await fs.ensureDir(courseDir);
+
+    // Save lego_pairs.json
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    await fs.writeJSON(legoPairsPath, lego_pairs, { spaces: 2 });
+
+    // Save introductions.json
+    const introductionsPath = path.join(courseDir, 'introductions.json');
+    await fs.writeJSON(introductionsPath, introductions, { spaces: 2 });
+
+    const legoCount = lego_pairs.legos.length;
+    const introCount = introductions.intros.length;
+
+    console.log(`[Orchestrator] ✅ Received Phase 3 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    LEGOs: ${legoCount}`);
+    console.log(`[Orchestrator]    Introductions: ${introCount}`);
+    console.log(`[Orchestrator]    Saved to: ${courseDir}`);
+
+    res.json({
+      success: true,
+      message: 'Phase 3 submission received',
+      legoCount,
+      introCount,
+      savedTo: {
+        lego_pairs: legoPairsPath,
+        introductions: introductionsPath
+      }
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 3 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 3 submission', details: error.message });
+  }
+});
+
+/**
+ * POST /api/phase5/:courseCode/submit
+ * Accept completed lego_baskets.json from agents via ngrok
+ */
+app.post('/api/phase5/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const basketData = req.body;
+
+    // Validate basic structure
+    if (!basketData.version || !basketData.course || !basketData.baskets) {
+      return res.status(400).json({
+        error: 'Invalid lego_baskets format',
+        required: ['version', 'course', 'baskets']
+      });
+    }
+
+    // Write to VFS
+    const outputPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+    await fs.ensureDir(path.dirname(outputPath));
+    await fs.writeJSON(outputPath, basketData, { spaces: 2 });
+
+    // Count baskets
+    const basketCount = Object.keys(basketData.baskets).length;
+
+    console.log(`[Orchestrator] ✅ Received Phase 5 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    Baskets: ${basketCount}`);
+    console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    res.json({
+      success: true,
+      message: `Phase 5 submission received for ${courseCode}`,
+      basketCount: basketCount,
+      savedTo: outputPath
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 5 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 5 submission', details: error.message });
+  }
+});
+
+/**
+ * POST /api/phase7/:courseCode/submit
+ * Accept completed course_manifest.json from agents via ngrok
+ */
+app.post('/api/phase7/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const manifestData = req.body;
+
+    // Validate basic structure
+    if (!manifestData.version || !manifestData.course) {
+      return res.status(400).json({
+        error: 'Invalid manifest format',
+        required: ['version', 'course']
+      });
+    }
+
+    // Validate course code matches
+    if (manifestData.course !== courseCode) {
+      return res.status(400).json({
+        error: 'Course code mismatch',
+        expected: courseCode,
+        received: manifestData.course
+      });
+    }
+
+    // Count phrases in manifest (from all lego_baskets)
+    let phraseCount = 0;
+    if (manifestData.manifest && manifestData.manifest.lego_baskets) {
+      phraseCount = Object.keys(manifestData.manifest.lego_baskets).reduce((count, basketId) => {
+        const basket = manifestData.manifest.lego_baskets[basketId];
+        return count + (basket.phrases ? basket.phrases.length : 0);
+      }, 0);
+    }
+
+    // Write to VFS
+    const outputPath = path.join(VFS_ROOT, courseCode, 'course_manifest.json');
+    await fs.ensureDir(path.dirname(outputPath));
+    await fs.writeJSON(outputPath, manifestData, { spaces: 2 });
+
+    console.log(`[Orchestrator] ✅ Received Phase 7 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    Version: ${manifestData.version}`);
+    console.log(`[Orchestrator]    Phrases: ${phraseCount}`);
+    console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    res.json({
+      success: true,
+      message: 'Phase 7 submission received',
+      phraseCount,
+      savedTo: outputPath
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 7 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 7 submission', details: error.message });
   }
 });
 

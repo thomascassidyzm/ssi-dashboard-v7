@@ -924,11 +924,13 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 ${legoIds.slice(0, 10).join(', ')}${legoIds.length > 10 ? ` ... and ${legoIds.length - 10} more` : ''}
 
 **OUTPUT WORKFLOW** (each agent must follow):
-1. Read lego_pairs.json to get LEGO details for assigned LEGO_IDs
-2. Generate practice baskets using Phase 5 intelligence
-3. Upload via ngrok: \`POST https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev/phase5/upload-basket\`
-4. Include \`stagingOnly: true\` in upload payload
-5. No git commits - all uploads go to staging for review
+1. Fetch LEGO details: \`GET ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json\`
+2. Fetch phase intelligence: \`GET ${ORCHESTRATOR_URL}/api/phase-intelligence/5\`
+3. Generate practice baskets using Phase 5 intelligence guidelines
+4. Submit baskets: \`POST ${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit\`
+   - Body: \`{ version: "8.2.0", course: "${courseCode}", baskets: {...} }\`
+   - Expected: \`{ success: true, basketCount: N, savedTo: "..." }\`
+5. No manual file operations - all submission via REST API
 
 ---
 
@@ -1056,16 +1058,30 @@ This explains WHY we generate baskets and the pedagogical principles behind LEGO
 
 For EACH LEGO, follow this exact process:
 
-### Step 1: Fetch the Scaffold
+### Step 1: Fetch Required Data
 
-**WebFetch URL:** ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
-**WebFetch Prompt:** Extract all scaffold details including LEGO, available vocabulary, and generation requirements
+**Get LEGO details from Phase 3 outputs:**
+- GET: \`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json\`
+- Look up your assigned LEGO IDs in the \`lego_pairs.json\` response
 
-The scaffold provides:
+**Get phase intelligence:**
+- GET: \`${ORCHESTRATOR_URL}/api/phase-intelligence/5\`
+- Review generation methodology and best practices
+
+**Example API calls:**
+\`\`\`bash
+# Get LEGO pairs
+curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json
+
+# Get phase intelligence
+curl ${ORCHESTRATOR_URL}/api/phase-intelligence/5
+\`\`\`
+
+The lego_pairs.json provides:
 - The LEGO you're teaching (known → target)
-- Complete available vocabulary (30 recent LEGOs + 10 recent seeds)
-- Output format template
-- GATE compliance requirements
+- Complete available vocabulary (from previous seeds and LEGOs)
+- LEGO type (M/FD/LUT)
+- Seed context
 
 ### Step 2: Think Linguistically
 
@@ -1121,26 +1137,47 @@ Build FROM the LEGO, not TO it:
 
 **Keep iterating until ALL 10 phrases pass ALL 3 checks.**
 
-### Step 6: Format & Upload
+### Step 6: Submit Your Work
 
-Follow the exact output format from the scaffold. Upload to:
+**POST submission to orchestrator:**
+- Endpoint: \`${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit\`
+- Method: POST
+- Content-Type: application/json
 
-**POST:** ${ngrokUrl}/phase5/upload-basket
-
+**Payload format:**
 \`\`\`json
 {
-  \\"courseCode\\": \\"${courseCode}\\",
-  \\"seed\\": \\"SXXXX\\",
-  \\"baskets\\": {
-    \\"[LEGO_ID]\\": {
-      \\"lego\\": { \\"known\\": \\"...\\", \\"target\\": \\"...\\" },
-      \\"practice_phrases\\": [
-        { \\"known\\": \\"...\\", \\"target\\": \\"...\\" }
+  "version": "8.2.0",
+  "course": "${courseCode}",
+  "baskets": {
+    "[LEGO_ID]": {
+      "lego": { "known": "...", "target": "..." },
+      "practice_phrases": [
+        { "known": "...", "target": "..." }
       ]
     }
-  },
-  \\"stagingOnly\\": ${params.stagingOnly || true}
+  }
 }
+\`\`\`
+
+**Expected response:**
+\`\`\`json
+{
+  "success": true,
+  "basketCount": 1,
+  "savedTo": "courses/${courseCode}/lego_baskets.json"
+}
+\`\`\`
+
+**Example API call:**
+\`\`\`bash
+curl -X POST ${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "version": "8.2.0",
+    "course": "${courseCode}",
+    "baskets": { "S0117L01": { ... } }
+  }'
 \`\`\`
 
 ---
@@ -1184,9 +1221,10 @@ Work silently. Report brief summary when complete."
 
 Each worker:
 1. Gets its LEGO ID list from assignments above
-2. Fetches scaffolds via WebFetch
-3. Generates baskets
-4. Uploads via HTTP
+2. Fetches LEGO data via REST API: \`GET ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json\`
+3. Fetches phase intelligence: \`GET ${ORCHESTRATOR_URL}/api/phase-intelligence/5\`
+4. Generates baskets for assigned LEGOs
+5. Submits via REST API: \`POST ${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit\`
 
 Report: "✅ Master complete: ${workersToSpawn} workers spawned for ${legoCount} LEGOs"
 `;
@@ -1867,7 +1905,7 @@ You are a **Browser Coordinator**. You DON'T generate baskets yourself.
 1. ✅ **Review worker assignments** below
 2. ✅ **Spawn ${browser.workers.length} workers** - Use Task tool ${browser.workers.length} times in ONE message (parallel!)
 3. ✅ **Work SILENTLY** - No verbose progress logs
-4. ✅ **Monitor completion** - Workers will upload via ngrok
+4. ✅ **Monitor completion** - Workers will submit via REST API
 5. ✅ **Report brief summary** - "✅ ${browser.name} complete: ${browser.workers.length} workers spawned for ${browser.totalLegos} LEGOs"
 
 ---
@@ -1934,16 +1972,30 @@ Replace [Worker N] with the actual worker number (1, 2, 3, etc.) and paste the L
 
 For EACH LEGO in your assignment, follow this exact process:
 
-### Step 1: Fetch the Scaffold
+### Step 1: Fetch Required Data
 
-**WebFetch URL:** ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
-**WebFetch Prompt:** Extract all scaffold details including LEGO, available vocabulary, and generation requirements
+**Get LEGO details from Phase 3 outputs:**
+- GET: \`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json\`
+- Look up your assigned LEGO IDs in the \`lego_pairs.json\` response
 
-The scaffold provides:
+**Get phase intelligence:**
+- GET: \`${ORCHESTRATOR_URL}/api/phase-intelligence/5\`
+- Review generation methodology and best practices
+
+**Example API calls:**
+\`\`\`bash
+# Get LEGO pairs
+curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json
+
+# Get phase intelligence
+curl ${ORCHESTRATOR_URL}/api/phase-intelligence/5
+\`\`\`
+
+The lego_pairs.json provides:
 - The LEGO you're teaching (known → target)
-- Complete available vocabulary (30 recent LEGOs + 10 recent seeds)
-- Output format template
-- GATE compliance requirements
+- Complete available vocabulary (from previous seeds and LEGOs)
+- LEGO type (M/FD/LUT)
+- Seed context
 
 ### Step 2: Think Linguistically
 
@@ -1999,26 +2051,47 @@ Build FROM the LEGO, not TO it:
 
 **Keep iterating until ALL 10 phrases pass ALL 3 checks.**
 
-### Step 6: Format & Upload
+### Step 6: Submit Your Work
 
-Follow the exact output format from the scaffold. Upload to:
+**POST submission to orchestrator:**
+- Endpoint: \`${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit\`
+- Method: POST
+- Content-Type: application/json
 
-**POST:** ${ngrokUrl}/phase5/upload-basket
-
+**Payload format:**
 \`\`\`json
 {
-  \\"courseCode\\": \\"${courseCode}\\",
-  \\"seed\\": \\"S0117\\",
-  \\"baskets\\": {
-    \\"[LEGO_ID]\\": {
-      \\"lego\\": { \\"known\\": \\"...\\", \\"target\\": \\"...\\" },
-      \\"practice_phrases\\": [
-        { \\"known\\": \\"...\\", \\"target\\": \\"...\\" }
+  "version": "8.2.0",
+  "course": "${courseCode}",
+  "baskets": {
+    "[LEGO_ID]": {
+      "lego": { "known": "...", "target": "..." },
+      "practice_phrases": [
+        { "known": "...", "target": "..." }
       ]
     }
-  },
-  \\"stagingOnly\\": true
+  }
 }
+\`\`\`
+
+**Expected response:**
+\`\`\`json
+{
+  "success": true,
+  "basketCount": 1,
+  "savedTo": "courses/${courseCode}/lego_baskets.json"
+}
+\`\`\`
+
+**Example API call:**
+\`\`\`bash
+curl -X POST ${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "version": "8.2.0",
+    "course": "${courseCode}",
+    "baskets": { "S0117L01": { ... } }
+  }'
 \`\`\`
 
 ---
@@ -2062,9 +2135,10 @@ Work silently. Report brief summary when complete."
 
 Each worker:
 1. Gets its LEGO ID list from assignments above
-2. Fetches scaffolds via WebFetch: ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
-3. Generates baskets for each LEGO
-4. Uploads via HTTP: ${ngrokUrl}/phase5/upload-basket
+2. Fetches LEGO data via REST API: \`GET ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json\`
+3. Fetches phase intelligence: \`GET ${ORCHESTRATOR_URL}/api/phase-intelligence/5\`
+4. Generates baskets for each LEGO
+5. Submits via REST API: \`POST ${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit\`
 
 Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned for ${browser.totalLegos} LEGOs"
 `;

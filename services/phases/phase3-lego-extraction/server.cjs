@@ -144,22 +144,28 @@ You are the **Master Orchestrator** for this segment. Your job is to:
 
 **CRITICAL**: Use ONE message with multiple Task tool calls to spawn all agents simultaneously.
 
-**OUTPUT METHOD**: Each sub-agent commits to segment-specific branch:
-- Calculate segment: Math.floor((startSeed - 1) / 100) + 1
-- Branch name: \`phase3-segment-${segmentNum}-${courseCode}\`
-- All agents push to SAME branch (git handles concurrent commits)
+**OUTPUT METHOD**: Each sub-agent POSTs directly to orchestrator API:
+- Endpoint: \`POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit\`
+- Body format: \`{ lego_pairs: {...}, introductions: {...} }\`
+- Server merges submissions automatically (no git workflow needed)
 
 ---
 
 ## 📚 PHASE 3 INTELLIGENCE (Single Source of Truth)
 
-**YOU AND YOUR SUB-AGENTS MUST READ**: https://ssi-dashboard-v7.vercel.app/api/intelligence/3
+**GET Phase Intelligence from REST API**:
+\`\`\`bash
+curl ${ORCHESTRATOR_URL}/api/phase-intelligence/3
+\`\`\`
 
-(Raw markdown for Phase 3 v7.0 - Two Heuristics Edition)
+Or using fetch in browser:
+\`\`\`javascript
+fetch('${ORCHESTRATOR_URL}/api/phase-intelligence/3')
+  .then(res => res.text())
+  .then(markdown => console.log(markdown));
+\`\`\`
 
-Or if local files are available: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
-
-This is the **ONLY authoritative source** for Phase 3 extraction methodology.
+This is the **ONLY authoritative source** for Phase 3 extraction methodology (v7.0 - Two Heuristics Edition).
 
 **This file contains the complete v7.0 methodology including**:
 - **Two Core Heuristics**: (1) Remove learner uncertainty, (2) Maximize patterns with minimum vocab
@@ -203,9 +209,12 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 ## 📚 STEP 1: READ PHASE INTELLIGENCE
 
-**Read this document NOW** (430 lines - v7.0):
-- https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs_v7.md
-- Or local: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
+**GET Phase Intelligence from REST API**:
+\`\`\`bash
+curl ${ORCHESTRATOR_URL}/api/phase-intelligence/3
+\`\`\`
+
+(430 lines - v7.0: Two Heuristics Edition)
 
 ---
 
@@ -231,9 +240,17 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 **Extract LEGOs from**: Seeds S00XX through S00YY (${seedsPerAgent} seeds)
 
-**Get seed_pairs.json from**:
-- **Local**: \`public/vfs/courses/${courseCode}/seed_pairs.json\` (try this first - you're running in the repo!)
-- **Fallback**: https://ssi-dashboard-v7.vercel.app/vfs/courses/${courseCode}/seed_pairs.json (if local not available)
+**GET seed_pairs.json from REST API**:
+\`\`\`bash
+curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/1/seed_pairs.json
+\`\`\`
+
+Or using fetch:
+\`\`\`javascript
+fetch('${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/1/seed_pairs.json')
+  .then(res => res.json())
+  .then(data => console.log(data));
+\`\`\`
 
 ---
 
@@ -250,44 +267,70 @@ For EACH of your ${seedsPerAgent} seeds:
 
 ---
 
-## 📤 STEP 5: OUTPUT
+## 📤 STEP 5: OUTPUT - POST TO REST API
 
-**File**: \`public/vfs/courses/${courseCode}/segments/segment_${segmentNum}/agent_XX_output.json\`
+**Submit your extraction via REST API**:
 
-**Format**:
-\`\`\`json
-{
-  "agent_id": "agent_0Y",
-  "seed_range": "S00XX-S00YY",
-  "extracted_at": "<ISO timestamp>",
-  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
-  "seeds": [
-    {
-      "seed_id": "S00XX",
-      "seed_pair": ["target sentence", "known sentence"],
-      "legos": [
-        {
-          "id": "S00XXL01",
-          "type": "A",
-          "target": "word",
-          "known": "word",
-          "new": true
-        },
-        {
-          "id": "S00XXL02",
-          "type": "M",
-          "target": "multi word",
-          "known": "multi word",
-          "new": true,
-          "components": [["multi", "multi"], ["word", "word"]]
-        }
-      ]
-    }
-  ]
-}
+\`\`\`bash
+curl -X POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "lego_pairs": {
+      "S00XX": {
+        "seed_pair": ["target sentence", "known sentence"],
+        "legos": [
+          {
+            "id": "S00XXL01",
+            "type": "A",
+            "target": "word",
+            "known": "word",
+            "new": true
+          }
+        ]
+      }
+    },
+    "introductions": {}
+  }'
 \`\`\`
 
-**IMPORTANT**: Save the file using the Write tool, then commit and push to your session branch (Claude Code on Web handles git automatically).
+Or using fetch:
+\`\`\`javascript
+const submission = {
+  lego_pairs: {
+    "S00XX": {
+      seed_pair: ["target sentence", "known sentence"],
+      legos: [
+        { id: "S00XXL01", type: "A", target: "word", known: "word", new: true },
+        { id: "S00XXL02", type: "M", target: "multi word", known: "multi word", new: true,
+          components: [["multi", "multi"], ["word", "word"]] }
+      ]
+    }
+  },
+  introductions: {}
+};
+
+fetch('${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(submission)
+})
+.then(res => res.json())
+.then(result => console.log(result));
+// Expected response: { success: true, legoCount: N, introCount: M, savedTo: {...} }
+\`\`\`
+
+**Response format**:
+\`\`\`json
+{
+  "success": true,
+  "legoCount": 15,
+  "introCount": 0,
+  "savedTo": {
+    "lego_pairs": "public/vfs/courses/${courseCode}/phase_3/lego_pairs.json",
+    "introductions": "public/vfs/courses/${courseCode}/phase_6/introductions.json"
+  }
+}
+\`\`\`
 \`\`\`
 
 ---
@@ -311,18 +354,23 @@ Watch for all ${agentCount} sub-agents to report successful API POST.
 
 Each will show:
 \`\`\`
-✅ Successfully POSTed 10 seeds to API
-   Total seeds in lego_pairs.json: XX
+✅ Successfully POSTed to API
+   Response: { success: true, legoCount: 10, savedTo: {...} }
 \`\`\`
 
 ### Step 3: Verify
 
-Once all complete, verify results at:
+Once all complete, verify results via API:
+\`\`\`bash
+curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json
+\`\`\`
+
+Or check dashboard:
 https://ssi-dashboard-v7.vercel.app/courses/${courseCode}
 
 ### Step 4: Done!
 
-All agents will commit to their session branches. The master orchestrator will merge them automatically.
+All agents POST directly to the orchestrator API. No git branches needed - data is merged automatically on the server side.
 
 ---
 
@@ -1503,9 +1551,12 @@ ${instructions}
 
 ## 📚 STEP 1: READ PHASE INTELLIGENCE
 
-**Read this document NOW** (430 lines - v7.0):
-- https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_pairs_v7.md
-- Or local: \`public/docs/phase_intelligence/phase_3_lego_pairs_v7.md\`
+**GET Phase Intelligence from REST API**:
+\`\`\`bash
+curl ${ORCHESTRATOR_URL}/api/phase-intelligence/3
+\`\`\`
+
+(430 lines - v7.0: Two Heuristics Edition)
 
 ---
 ${collisionContext}
@@ -1520,35 +1571,57 @@ ${collisionContext}
 1. Extract LEGOs from this seed following Phase 3 v7.0 methodology
 2. Apply the TWO CORE HEURISTICS (from intelligence doc)
 3. **CRITICAL**: Apply collision-fixing chunking instructions above
-4. Save output to: \`public/vfs/courses/${courseCode}/reextraction/${seedId}_legos.json\`
-
-**Output Format:**
-\`\`\`json
-{
-  "seed_id": "${seedId}",
-  "seed_pair": ["${knownSentence}", "${targetSentence}"],
-  "reextracted_at": "<ISO timestamp>",
-  "collision_fixes_applied": ${collisionInstructions.length},
-  "legos": [
-    {
-      "id": "${seedId}L01",
-      "type": "A" or "M",
-      "target": "word",
-      "known": "word",
-      "new": true,
-      "components": [["word", "word"]]  // For M-types only
-    }
-  ]
-}
-\`\`\`
+4. POST your results to the orchestrator API
 
 ## 🎬 EXECUTE NOW
 
-1. Read the Phase Intelligence doc
+1. Read the Phase Intelligence doc via API
 2. Extract LEGOs with collision-aware chunking
-3. Save the JSON file
-4. Commit and push (Claude Code on Web handles git automatically)
-5. Branch name: \`claude/phase3-reextract-${seedId}-${courseCode}\`
+3. POST to API:
+
+\`\`\`bash
+curl -X POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "lego_pairs": {
+      "${seedId}": {
+        "seed_pair": ["${knownSentence}", "${targetSentence}"],
+        "legos": [
+          {
+            "id": "${seedId}L01",
+            "type": "A",
+            "target": "word",
+            "known": "word",
+            "new": true
+          }
+        ]
+      }
+    },
+    "introductions": {}
+  }'
+\`\`\`
+
+Or using fetch:
+\`\`\`javascript
+fetch('${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    lego_pairs: {
+      "${seedId}": {
+        seed_pair: ["${knownSentence}", "${targetSentence}"],
+        legos: [
+          { id: "${seedId}L01", type: "A", target: "word", known: "word", new: true }
+        ]
+      }
+    },
+    introductions: {}
+  })
+})
+.then(res => res.json())
+.then(result => console.log(result));
+// Expected: { success: true, legoCount: N, savedTo: {...} }
+\`\`\`
 `;
 }
 
