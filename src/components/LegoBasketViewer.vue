@@ -73,6 +73,14 @@
               💾 Save All Changes ({{ Object.keys(hasUnsavedChanges).length }})
             </button>
             <button
+              @click="recompilePhase7"
+              :disabled="recompilingPhase7"
+              class="px-3 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Recompile course manifest with latest basket changes"
+            >
+              {{ recompilingPhase7 ? '⏳ Recompiling...' : '🔄 Recompile Phase 7' }}
+            </button>
+            <button
               @click="previousBatch"
               :disabled="currentBatchStart <= 1"
               class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -478,7 +486,8 @@ export default {
       editedPhrases: {}, // Track edited phrase text {seedId_legoKey_idx: {known: '', target: ''}}
       flaggedPhrases: {}, // Track flagged phrases {seedId_legoKey_idx: true}
       deletedPhrases: {}, // Track deleted phrases {seedId_legoKey_idx: true}
-      hasUnsavedChanges: {} // Track which seeds have unsaved changes {seedId: true}
+      hasUnsavedChanges: {}, // Track which seeds have unsaved changes {seedId: true}
+      recompilingPhase7: false // Track if Phase 7 recompilation is in progress
     }
   },
   computed: {
@@ -923,6 +932,45 @@ export default {
     async saveAllChanges() {
       for (const seedId of Object.keys(this.hasUnsavedChanges)) {
         await this.saveSeedChanges(seedId)
+      }
+    },
+    async recompilePhase7() {
+      if (!this.selectedCourseCode) {
+        alert('No course selected')
+        return
+      }
+
+      if (!confirm('Recompile Phase 7 (Course Manifest) with the latest basket changes?\n\nThis will update the course_manifest.json file.')) {
+        return
+      }
+
+      this.recompilingPhase7 = true
+
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${this.selectedCourseCode}/regenerate/phase7`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true'
+          }
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to trigger Phase 7 recompilation')
+        }
+
+        alert(`✅ Phase 7 recompilation started!\n\nJob ID: ${data.jobId || 'N/A'}\n\nThe course_manifest.json will be updated when complete.\n\nCheck the Progress monitor for status.`)
+
+        // Emit event to parent to show progress monitor
+        this.$emit('phase7-started', data)
+
+      } catch (err) {
+        console.error('Failed to trigger Phase 7 recompilation:', err)
+        alert(`❌ Failed to trigger Phase 7 recompilation:\n\n${err.message}`)
+      } finally {
+        this.recompilingPhase7 = false
       }
     }
   }

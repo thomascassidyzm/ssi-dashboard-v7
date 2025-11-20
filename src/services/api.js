@@ -696,6 +696,14 @@ export default {
       return response.data
     },
 
+    // Regenerate Phase 7 (Course Manifest)
+    async regeneratePhase7(courseCode) {
+      const response = await api.post(`/api/courses/${courseCode}/regenerate/phase7`, {})
+      // Clear cache since manifest will be regenerated
+      await clearCourseCache(courseCode)
+      return response.data
+    },
+
     // Remove SEED from corpus
     async removeSeed(courseCode, seedId) {
       const response = await api.delete(`/api/courses/${courseCode}/seeds/${seedId}`)
