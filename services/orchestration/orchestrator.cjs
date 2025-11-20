@@ -63,6 +63,69 @@ const courseStates = new Map();
 // courseCode -> { phase1: {success, completedAt, stats}, phase3: {...}, phase5: {...}, phase7: {...}, phase8: {...} }
 const pipelineJobs = new Map();
 
+// Active course progress tracking (for real-time monitoring)
+// courseCode -> { currentPhase, overallStatus, phases: {...}, recentLogs: [] }
+const courseProgress = new Map();
+
+/**
+ * Initialize progress tracking for a course
+ */
+function initializeCourseProgress(courseCode, startPhase, totalSeeds) {
+  courseProgress.set(courseCode, {
+    courseCode,
+    currentPhase: startPhase,
+    overallStatus: 'running',
+    startTime: new Date().toISOString(),
+    phases: {
+      1: { status: 'pending', seedsTotal: totalSeeds },
+      3: { status: 'pending' },
+      5: { status: 'pending' },
+      7: { status: 'pending' },
+      8: { status: 'pending' }
+    },
+    recentLogs: []
+  });
+  return courseProgress.get(courseCode);
+}
+
+/**
+ * Update phase progress
+ */
+function updatePhaseProgress(courseCode, phase, updates) {
+  const progress = courseProgress.get(courseCode);
+  if (!progress) return;
+
+  if (!progress.phases[phase]) {
+    progress.phases[phase] = {};
+  }
+
+  Object.assign(progress.phases[phase], updates);
+
+  // Add log entry
+  if (updates.status) {
+    addProgressLog(courseCode, `Phase ${phase}: ${updates.status}`);
+  }
+}
+
+/**
+ * Add log entry to progress
+ */
+function addProgressLog(courseCode, message, level = 'info') {
+  const progress = courseProgress.get(courseCode);
+  if (!progress) return;
+
+  progress.recentLogs.unshift({
+    time: new Date().toISOString(),
+    level,
+    message
+  });
+
+  // Keep only last 50 logs
+  if (progress.recentLogs.length > 50) {
+    progress.recentLogs = progress.recentLogs.slice(0, 50);
+  }
+}
+
 /**
  * GET /api/courses
  * List all available courses
@@ -611,6 +674,37 @@ app.get('/api/courses/:courseCode/status', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/progress
+ * Real-time progress tracking for dashboard polling
+ */
+app.get('/api/courses/:courseCode/progress', async (req, res) => {
+  const { courseCode } = req.params;
+  const progress = courseProgress.get(courseCode);
+
+  if (!progress) {
+    // Check if course exists but has no active progress
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const courseExists = await fs.pathExists(courseDir);
+
+    if (courseExists) {
+      // Course exists but not currently running
+      return res.json({
+        courseCode,
+        overallStatus: 'idle',
+        message: 'Course exists but no active pipeline running'
+      });
+    } else {
+      return res.status(404).json({
+        error: 'Course not found',
+        courseCode
+      });
+    }
+  }
+
+  res.json(progress);
+});
+
+/**
  * POST /api/courses/:courseCode/start-phase
  * Trigger the next phase for a course
  */
@@ -874,6 +968,11 @@ app.post('/api/courses/generate', async (req, res) => {
     }
 
     console.log(`   → Delegating to Phase ${phase} server: ${phaseServer}`);
+
+    // Initialize progress tracking
+    const progress = initializeCourseProgress(courseCode, phase, totalSeeds);
+    updatePhaseProgress(courseCode, phase, { status: 'running', startTime: new Date().toISOString() });
+    addProgressLog(courseCode, `Starting Phase ${phase} for ${totalSeeds} seeds`);
 
     const response = await axios.post(`${phaseServer}/start`, {
       courseCode,
@@ -1241,9 +1340,32 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
     console.log(`[Orchestrator]    Seeds: ${seedCount}`);
     console.log(`[Orchestrator]    Saved to: ${outputPath}`);
 
+    // Update progress tracking
+    updatePhaseProgress(courseCode, 1, {
+      status: 'validating',
+      seedsComplete: seedCount,
+      seedsTotal: seedCount
+    });
+    addProgressLog(courseCode, `Phase 1: Received ${seedCount} translations`);
+
     // Run inline validation (LUT - Learner Uncertainty Test)
     console.log(`[Orchestrator] 🔍 Running LUT collision check...`);
+    addProgressLog(courseCode, 'Running LUT collision check...');
     const validationResult = await runPhase1ValidationCheck(outputPath);
+
+    // Mark Phase 1 as complete
+    updatePhaseProgress(courseCode, 1, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      validation: validationResult
+    });
+    addProgressLog(courseCode, `Phase 1: Complete ${validationResult.passed ? '✅' : '⚠️'}`, validationResult.passed ? 'info' : 'warning');
+
+    // Update current phase to next
+    const progress = courseProgress.get(courseCode);
+    if (progress) {
+      progress.currentPhase = 3;
+    }
 
     res.json({
       success: true,
@@ -1325,6 +1447,22 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
     console.log(`[Orchestrator]    Introductions: ${introCount}`);
     console.log(`[Orchestrator]    Saved to: ${courseDir}`);
 
+    // Update progress tracking
+    updatePhaseProgress(courseCode, 3, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      seedsComplete: lego_pairs.seeds.length,
+      legoCount,
+      introCount
+    });
+    addProgressLog(courseCode, `Phase 3: Complete - ${legoCount} LEGOs, ${introCount} introductions`);
+
+    // Update current phase to next
+    const progress = courseProgress.get(courseCode);
+    if (progress) {
+      progress.currentPhase = 5;
+    }
+
     res.json({
       success: true,
       message: 'Phase 3 submission received',
@@ -1369,6 +1507,20 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
     console.log(`[Orchestrator] ✅ Received Phase 5 submission for ${courseCode}`);
     console.log(`[Orchestrator]    Baskets: ${basketCount}`);
     console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    // Update progress tracking
+    updatePhaseProgress(courseCode, 5, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      basketCount
+    });
+    addProgressLog(courseCode, `Phase 5: Complete - ${basketCount} practice baskets`);
+
+    // Update current phase to next
+    const progress = courseProgress.get(courseCode);
+    if (progress) {
+      progress.currentPhase = 7;
+    }
 
     res.json({
       success: true,
@@ -1426,6 +1578,21 @@ app.post('/api/phase7/:courseCode/submit', async (req, res) => {
     console.log(`[Orchestrator]    Version: ${manifestData.version}`);
     console.log(`[Orchestrator]    Phrases: ${phraseCount}`);
     console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    // Update progress tracking
+    updatePhaseProgress(courseCode, 7, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      phraseCount
+    });
+    addProgressLog(courseCode, `Phase 7: Complete - ${phraseCount} phrases compiled`);
+
+    // Update current phase to next
+    const progress = courseProgress.get(courseCode);
+    if (progress) {
+      progress.currentPhase = 8;
+      progress.overallStatus = 'complete'; // Manifest is the final deliverable
+    }
 
     res.json({
       success: true,
