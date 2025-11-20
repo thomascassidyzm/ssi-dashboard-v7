@@ -673,9 +673,12 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import api, { apiClient } from '../services/api'
 import ExecutionModeSelector from '../components/ExecutionModeSelector.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
+
+const router = useRouter()
 
 // State
 const knownLanguage = ref('eng')
@@ -933,8 +936,8 @@ const startGeneration = async (force = false) => {
     console.log('Course generation started:', response)
     courseCode.value = response.courseCode
 
-    // Start polling for status
-    startPolling(response.courseCode)
+    // Redirect to dedicated progress page
+    router.push(`/courses/${response.courseCode}/progress`)
   } catch (error) {
     console.error('Failed to start course generation:', error)
 
