@@ -639,6 +639,12 @@ export default {
         }
 
         this.loadedSeeds = await Promise.all(promises)
+        console.log('[BasketViewer] Loaded seeds:', this.loadedSeeds.map(s => ({
+          seedId: s.seedId,
+          hasBasket: !!s.basket,
+          legoCount: this.getLegoCount(s.basket),
+          phraseCount: this.getTotalPhrases(s.basket)
+        })))
       } catch (err) {
         this.error = `Failed to load batch: ${err.message}`
       } finally {
@@ -689,10 +695,14 @@ export default {
       return this.expandedMolecularLegos[key] || false
     },
     getLegoBaskets(basket) {
-      if (!basket) return {}
+      if (!basket) {
+        console.log('[BasketViewer] getLegoBaskets: basket is null/undefined')
+        return {}
+      }
 
       // v6.2+ format: LEGOs nested under 'legos' property
       if (basket.legos && typeof basket.legos === 'object') {
+        console.log('[BasketViewer] getLegoBaskets: Using v6.2+ format, found', Object.keys(basket.legos).length, 'baskets')
         return basket.legos
       }
 
@@ -703,6 +713,7 @@ export default {
           baskets[key] = basket[key]
         }
       }
+      console.log('[BasketViewer] getLegoBaskets: Using legacy format, found', Object.keys(baskets).length, 'baskets')
       return baskets
     },
     getLegoCount(basket) {
