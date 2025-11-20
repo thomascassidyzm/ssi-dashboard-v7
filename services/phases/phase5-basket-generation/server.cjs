@@ -118,7 +118,7 @@ async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
         if (lego.new === true && !existingBaskets[lego.id]) {
           missingLegos.push({
             legoId: lego.id,
-            seedId: seed.seed_id,
+            seed: seed.seed_id,    // Keep as 'seed' for compatibility with generateTextScaffold()
             target: lego.target,
             known: lego.known,
             type: lego.type || 'M'
@@ -436,7 +436,7 @@ app.post('/start', async (req, res) => {
     const seedsPerWorker = config.phase5_basket_generation.seeds_per_agent || 1;
 
     // SMART SCALING: Only spawn browsers/workers needed for actual workload
-    const uniqueSeeds = new Set(targetLegos.map(l => l.seedId));
+    const uniqueSeeds = new Set(targetLegos.map(l => l.seed));
     const seedsToProcess = uniqueSeeds.size;
     const workersNeeded = Math.ceil(seedsToProcess / seedsPerWorker);
 
