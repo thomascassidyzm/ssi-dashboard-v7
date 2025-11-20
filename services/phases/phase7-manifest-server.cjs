@@ -185,7 +185,7 @@ curl -X POST ${ORCHESTRATOR_URL}/api/phase7/${courseCode}/submit \\
 Report any errors immediately. When complete, confirm the manifest was successfully submitted.
 `;
 
-  const agentProcess = spawn('claude', ['--dangerously-skip-update-check'], {
+  const agentProcess = spawn('claude', [], {
     cwd: path.join(__dirname, '../..'),
     stdio: 'pipe',
     env: {
