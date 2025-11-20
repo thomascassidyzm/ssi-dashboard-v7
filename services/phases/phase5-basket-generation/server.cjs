@@ -114,12 +114,13 @@ async function identifyMissingLegos(baseCourseDir, startSeed, endSeed) {
 
     if (seedNum >= startSeed && seedNum <= endSeed) {
       for (const lego of seed.legos || []) {
-        if (lego.new && lego.lego && !existingBaskets[lego.id]) {
+        // Only check new:true LEGOs (first appearance needs basket)
+        if (lego.new === true && !existingBaskets[lego.id]) {
           missingLegos.push({
             legoId: lego.id,
-            seed: seed.seed_id,
-            target: lego.lego.target,
-            known: lego.lego.known,
+            seedId: seed.seed_id,
+            target: lego.target,
+            known: lego.known,
             type: lego.type || 'M'
           });
         }
