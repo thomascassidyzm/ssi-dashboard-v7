@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
         <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2025-10-14 | Status: User-confirmed definitions</p>
+        <p class="text-sm text-slate-500 mt-2">Date: 2025-11-20 | APML v8.2.0 | Status: Current definitions</p>
       </div>
 
       <!-- Core Concepts Section -->
@@ -57,7 +57,7 @@
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/translations/</span>
+              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/seed_pairs.json</span>
             </div>
           </div>
         </div>
@@ -120,11 +120,11 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (LEGO Decomposition)</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (LEGO Extraction)</span>
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/legos_deduplicated/</span>
+              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/lego_pairs.json</span>
             </div>
           </div>
 
@@ -231,7 +231,7 @@
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/baskets/</span>
+              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/lego_baskets.json</span>
             </div>
           </div>
         </div>
@@ -461,12 +461,15 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 6 (Introductions)</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (includes Phase 6)</span>
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/introductions/</span>
+              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/introductions.json</span>
             </div>
+          </div>
+          <div class="mt-3 bg-teal-900/20 border border-teal-500/50 rounded p-3">
+            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v8.2.0, introduction generation is integrated into Phase 3 and runs automatically after LEGO extraction (<1s overhead).</p>
           </div>
         </div>
       </section>

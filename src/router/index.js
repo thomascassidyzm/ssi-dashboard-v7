@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
+import CanonicalContent from '../views/CanonicalContent.vue'
 import APMLSpec from '../views/APMLSpec.vue'
 import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
@@ -80,6 +81,12 @@ const routes = [
     path: '/reference/seeds',
     name: 'CanonicalSeeds',
     component: CanonicalSeeds
+  },
+  {
+    path: '/reference/canonical',
+    name: 'CanonicalContent',
+    component: CanonicalContent,
+    meta: { title: 'Canonical Content' }
   },
   {
     path: '/reference/apml',

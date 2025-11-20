@@ -189,21 +189,21 @@
               </div>
             </router-link>
 
-            <!-- Canonical Seeds -->
-            <router-link to="/reference/seeds" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
+            <!-- Canonical Content -->
+            <router-link to="/reference/canonical" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">🌱</div>
               <div>
-                <h3 class="font-semibold text-slate-100">Canonical Seeds</h3>
-                <p class="text-sm text-slate-400">All 668 canonical seeds (16 years empirical optimization)</p>
+                <h3 class="font-semibold text-slate-100">Canonical Content</h3>
+                <p class="text-sm text-slate-400">All 668 canonical seeds (16 years empirical optimization) + welcomes + encouragements</p>
               </div>
             </router-link>
 
-            <!-- APML v8.0.0 Specification -->
+            <!-- APML v8.2.0 Specification -->
             <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>
               <div>
-                <h3 class="font-semibold text-slate-100">APML v8.0.0 Specification</h3>
-                <p class="text-sm text-slate-400">Complete architectural specification with streamlined 5-phase pipeline</p>
+                <h3 class="font-semibold text-slate-100">APML v8.2.0 Specification</h3>
+                <p class="text-sm text-slate-400">Complete architectural specification with linear microservices pipeline (Phase 1 → 3 → 5 → 7 → 8)</p>
               </div>
             </router-link>
 
@@ -230,8 +230,8 @@
 
       <!-- Footer Note -->
       <div class="mt-12 text-center text-slate-400 text-sm">
-        <p>SSi Course Production Dashboard v8.1.0 • Linear Pipeline Architecture</p>
-        <p class="mt-1">Phase 1 → Phase 3 (+ Intros) → Phase 5 → Phase 7 → Phase 8</p>
+        <p>SSi Course Production Dashboard v8.2.0 • Linear Microservices Pipeline</p>
+        <p class="mt-1">Phase 1 → Phase 3 (includes Phase 6) → Phase 5 → Phase 7 → Phase 8</p>
       </div>
     </main>
   </div>
