@@ -12,7 +12,7 @@
               Swim-Lane Architecture + API Output Endpoints + Phase Selection Controls
             </p>
             <p class="mt-1 text-xs text-slate-500">
-              Build: b7338b24 | APML v8.1.0 | Phases: 1 v2.6, 3 v6.3, 4 v1.0, 5 v6.1, 5.5 v2.0, 6 v2.0, 7 v1.0, 8 v1.0
+              Build: b7338b24 | APML v8.1.0 | Phases: 1 v2.6, 3 v6.3 (+Intros), 5 v6.1, 5.5 v2.0, 7 v1.0, 8 v1.0
             </p>
           </div>
           <EnvironmentSwitcher />
@@ -33,7 +33,7 @@
               <div>
                 <h3 class="text-2xl font-bold text-white mb-2">🚀 Generate New Course</h3>
                 <p class="text-emerald-100 text-sm">
-                  Start the complete 8-phase pipeline to generate a new language course
+                  Start the linear pipeline to generate a new language course (Phase 1 → 3 → 5 → 7 → 8)
                 </p>
               </div>
               <div class="text-white">
@@ -121,20 +121,9 @@
 
               <!-- Phase 3 -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-28 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
+                <div class="w-32 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
                   <div class="text-purple-400 font-bold text-2xl">3</div>
-                  <div class="text-purple-300 text-xs mt-1 px-2 text-center">LEGO Extraction</div>
-                </div>
-                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-
-              <!-- Phase 4 -->
-              <div class="flex items-center flex-shrink-0">
-                <div class="w-28 h-28 rounded-lg border-2 border-indigo-500 bg-indigo-500/10 flex flex-col items-center justify-center">
-                  <div class="text-indigo-400 font-bold text-2xl">4</div>
-                  <div class="text-indigo-300 text-xs mt-1 px-2 text-center">Deduplication</div>
+                  <div class="text-purple-300 text-xs mt-1 px-2 text-center">LEGO Extraction + Intros</div>
                 </div>
                 <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -146,17 +135,6 @@
                 <div class="w-28 h-28 rounded-lg border-2 border-pink-500 bg-pink-500/10 flex flex-col items-center justify-center">
                   <div class="text-pink-400 font-bold text-2xl">5</div>
                   <div class="text-pink-300 text-xs mt-1 px-2 text-center">Baskets</div>
-                </div>
-                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-
-              <!-- Phase 6 -->
-              <div class="flex items-center flex-shrink-0">
-                <div class="w-28 h-28 rounded-lg border-2 border-orange-500 bg-orange-500/10 flex flex-col items-center justify-center">
-                  <div class="text-orange-400 font-bold text-2xl">6</div>
-                  <div class="text-orange-300 text-xs mt-1 px-2 text-center">Introductions</div>
                 </div>
                 <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -186,7 +164,7 @@
             <!-- Stats -->
             <div class="grid grid-cols-3 gap-4 text-center">
               <div class="bg-slate-900/50 rounded-lg p-4">
-                <div class="text-3xl font-bold text-emerald-400">8</div>
+                <div class="text-3xl font-bold text-emerald-400">5</div>
                 <div class="text-sm text-slate-400 mt-1">Pipeline Phases</div>
               </div>
               <div class="bg-slate-900/50 rounded-lg p-4">
@@ -268,8 +246,8 @@
 
       <!-- Footer Note -->
       <div class="mt-12 text-center text-slate-400 text-sm">
-        <p>SSi Course Production Dashboard v8.0.0 • Complete 8-Phase Pipeline</p>
-        <p class="mt-1">Translation → LEGOs → Baskets → Introductions → Compilation → Audio → Deploy</p>
+        <p>SSi Course Production Dashboard v8.1.0 • Linear Pipeline Architecture</p>
+        <p class="mt-1">Phase 1 → Phase 3 (+ Intros) → Phase 5 → Phase 7 → Phase 8</p>
       </div>
     </main>
   </div>
