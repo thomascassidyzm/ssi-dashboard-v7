@@ -56,7 +56,7 @@
             <p>The SSi Course Production system uses APML v8.2.1 specification to generate complete language courses from canonical seed pairs through a streamlined microservices pipeline with integrated Phase 6, self-contained documentation, and human quality review strategy.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4">
-              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">7646bca3</span></p>
+              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">c883040b</span></p>
               <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v8.2.1</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v1.1, 8 v1.1 🔒</span></p>
               <p class="text-xs text-amber-400 mt-1">⚠️ Phase 5.5 deprecated - human review for first 100 seeds</p>
             </div>
