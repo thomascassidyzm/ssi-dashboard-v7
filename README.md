@@ -1,10 +1,12 @@
-# SSi Course Production Dashboard v7.8.3
+# SSi Course Production Dashboard v8.2.1
 
-**Production-ready with locked phase intelligence + smart resume**
+**APML v8.2.1: Phase 5.5 Removed - Human Review Strategy**
 
 ## Overview
 
-Clean, minimal dashboard for SSi Course Production with locked phase intelligence (v7.8.3).
+Clean, minimal dashboard for SSi Course Production with locked phase intelligence (v8.2.1).
+
+**New in v8.2.1:** Phase 5.5 (automated grammar validation) deprecated. Using human semi-manual review for first 100 seeds (~20k phrases).
 
 ### Features
 
