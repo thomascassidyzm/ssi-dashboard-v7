@@ -81,12 +81,13 @@
             <div class="text-xs text-slate-400 mb-2">Phases Completed</div>
             <div class="flex gap-1">
               <span
-                v-for="phase in ['1', '3', '4', '5', '6', '7', '8']"
+                v-for="phase in ['1', '3', '5', '7', '8']"
                 :key="phase"
                 class="w-8 h-8 flex items-center justify-center rounded text-xs font-medium"
                 :class="course.phases_completed?.includes(phase)
                   ? 'bg-emerald-600 text-white'
                   : 'bg-slate-700 text-slate-500'"
+                :title="getPhaseTitle(phase)"
               >
                 {{ phase }}
               </span>
@@ -163,6 +164,17 @@ function getStatusClass(status) {
   } else {
     return 'bg-slate-600 text-slate-300'
   }
+}
+
+function getPhaseTitle(phase) {
+  const titles = {
+    '1': 'Phase 1: Translation',
+    '3': 'Phase 3: LEGO Extraction + Introductions',
+    '5': 'Phase 5: Basket Generation',
+    '7': 'Phase 7: Course Compilation',
+    '8': 'Phase 8: Audio Generation'
+  }
+  return titles[phase] || `Phase ${phase}`
 }
 
 function showDetails(course) {
