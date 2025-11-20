@@ -1704,19 +1704,66 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
     await fs.ensureDir(path.dirname(outputPath));
 
     // Check if file already exists - if so, MERGE instead of overwrite
+    // Always sort baskets for consistent ordering
     let finalBasketData = basketData;
+
+    // Sort new baskets
+    if (basketData.baskets) {
+      const sortedBaskets = {};
+      const keys = Object.keys(basketData.baskets).sort((a, b) => {
+        const matchA = a.match(/S(\d+)L(\d+)/);
+        const matchB = b.match(/S(\d+)L(\d+)/);
+        if (matchA && matchB) {
+          const seedDiff = parseInt(matchA[1]) - parseInt(matchB[1]);
+          if (seedDiff !== 0) return seedDiff;
+          return parseInt(matchA[2]) - parseInt(matchB[2]);
+        }
+        return a.localeCompare(b);
+      });
+      keys.forEach(key => {
+        sortedBaskets[key] = basketData.baskets[key];
+      });
+      finalBasketData = {
+        ...basketData,
+        baskets: sortedBaskets
+      };
+    }
+
     if (await fs.pathExists(outputPath)) {
       console.log(`[Orchestrator] 📦 Merging with existing lego_baskets.json`);
       const existingData = await fs.readJSON(outputPath);
 
       // Merge baskets object (new baskets overwrite existing ones with same ID)
+      const mergedBaskets = {
+        ...existingData.baskets,
+        ...basketData.baskets
+      };
+
+      // Sort baskets by key (SXXXXLXX format) for consistent ordering
+      const sortedBaskets = {};
+      const keys = Object.keys(mergedBaskets).sort((a, b) => {
+        // Extract seed number and lego number for proper numeric sorting
+        const matchA = a.match(/S(\d+)L(\d+)/);
+        const matchB = b.match(/S(\d+)L(\d+)/);
+
+        if (matchA && matchB) {
+          const seedDiff = parseInt(matchA[1]) - parseInt(matchB[1]);
+          if (seedDiff !== 0) return seedDiff;
+          return parseInt(matchA[2]) - parseInt(matchB[2]);
+        }
+
+        // Fallback to string comparison
+        return a.localeCompare(b);
+      });
+
+      keys.forEach(key => {
+        sortedBaskets[key] = mergedBaskets[key];
+      });
+
       finalBasketData = {
         ...existingData,
         ...basketData,
-        baskets: {
-          ...existingData.baskets,
-          ...basketData.baskets
-        }
+        baskets: sortedBaskets
       };
 
       const existingCount = Object.keys(existingData.baskets).length;
@@ -1724,7 +1771,7 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
       const mergedCount = Object.keys(finalBasketData.baskets).length;
       console.log(`[Orchestrator]    Existing: ${existingCount} baskets`);
       console.log(`[Orchestrator]    New: ${newCount} baskets`);
-      console.log(`[Orchestrator]    Merged total: ${mergedCount} baskets`);
+      console.log(`[Orchestrator]    Merged total: ${mergedCount} baskets (sorted)`);
     }
 
     await fs.writeJSON(outputPath, finalBasketData, { spaces: 2 });
@@ -2587,6 +2634,65 @@ app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
     res.json(phase5Response.data);
   } catch (error) {
     console.error('   ❌ Basket regeneration proxy error:', error.message);
+
+    const status = error.response?.status || 500;
+    const errorData = error.response?.data || { error: error.message };
+
+    res.status(status).json(errorData);
+  }
+});
+
+/**
+ * POST /api/courses/:courseCode/regenerate/phase7
+ * Trigger Phase 7 (Course Manifest) recompilation
+ */
+app.post('/api/courses/:courseCode/regenerate/phase7', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`\n🔄 Triggering Phase 7 recompilation for ${courseCode}...`);
+
+  try {
+    // Get course info from manifest
+    const coursesManifest = await fs.readJson(path.join(VFS_ROOT, 'courses-manifest.json'));
+    const course = coursesManifest.courses.find(c => c.course_code === courseCode);
+
+    if (!course) {
+      return res.status(404).json({ error: `Course ${courseCode} not found` });
+    }
+
+    // Verify required files exist
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const requiredFiles = ['seed_pairs.json', 'lego_pairs.json', 'lego_baskets.json', 'introductions.json'];
+
+    for (const file of requiredFiles) {
+      if (!await fs.pathExists(path.join(courseDir, file))) {
+        return res.status(400).json({
+          error: `Missing required file: ${file}`,
+          message: 'Complete previous phases before compiling manifest'
+        });
+      }
+    }
+
+    // Trigger Phase 7 server
+    const phase7Response = await axios.post(`${PHASE_SERVERS[7]}/start`, {
+      courseCode,
+      target: course.target_language,
+      known: course.source_language
+    }, {
+      timeout: 30000 // 30s timeout for initial request
+    });
+
+    console.log(`   ✅ Phase 7 server accepted compilation request`);
+
+    res.json({
+      success: true,
+      jobId: phase7Response.data.jobId || `phase7-${courseCode}-${Date.now()}`,
+      message: 'Phase 7 compilation started',
+      courseCode
+    });
+
+  } catch (error) {
+    console.error('   ❌ Phase 7 recompilation error:', error.message);
 
     const status = error.response?.status || 500;
     const errorData = error.response?.data || { error: error.message };
