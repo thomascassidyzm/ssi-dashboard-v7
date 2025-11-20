@@ -1,428 +1,1180 @@
 {
+  "version": "v10.0_explicit_slot_categories",
   "seed_id": "S0548",
-  "seed_pair": [
-    "I am feeling sad at the moment.",
-    "我此刻感到悲伤。"
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "english": "I am feeling sad at the moment.",
+    "mandarin": "我此刻感到悲伤。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0538",
+      "english": "I don't want to seem as though I don't care.",
+      "mandarin": "我不想显得好像我不在乎。"
+    },
+    {
+      "seed_id": "S0539",
+      "english": "But it's getting late.",
+      "mandarin": "但天晚了。"
+    },
+    {
+      "seed_id": "S0540",
+      "english": "I don't mind if you want to leave without the car.",
+      "mandarin": "如果你想不开车离开，我不介意。"
+    },
+    {
+      "seed_id": "S0541",
+      "english": "It's a good idea to try and breathe slowly.",
+      "mandarin": "试着慢慢呼吸是个好主意。"
+    },
+    {
+      "seed_id": "S0542",
+      "english": "Whenever you feel angry.",
+      "mandarin": "每当你感到生气的时候。"
+    },
+    {
+      "seed_id": "S0543",
+      "english": "She was right.",
+      "mandarin": "她是对的。"
+    },
+    {
+      "seed_id": "S0544",
+      "english": "Whoever said it would be difficult was absolutely right.",
+      "mandarin": "无论谁说这会很难，都是完全正确的。"
+    },
+    {
+      "seed_id": "S0545",
+      "english": "It's your turn to take the clean clothes upstairs.",
+      "mandarin": "轮到你把干净的衣服拿上楼了。"
+    },
+    {
+      "seed_id": "S0546",
+      "english": "The dog is dirty and wet.",
+      "mandarin": "狗又脏又湿。"
+    },
+    {
+      "seed_id": "S0547",
+      "english": "Because he has been playing in the mud.",
+      "mandarin": "因为他一直在泥里玩。"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0541L06",
+      "english": "it's a good idea to try and breathe slowly",
+      "mandarin": "试着慢慢呼吸是个好主意",
+      "type": "M"
+    },
+    {
+      "id": "S0542L02",
+      "english": "feel angry",
+      "mandarin": "感到生气",
+      "type": "M"
+    },
+    {
+      "id": "S0542L03",
+      "english": "you feel angry",
+      "mandarin": "你感到生气",
+      "type": "M"
+    },
+    {
+      "id": "S0542L04",
+      "english": "when you feel angry",
+      "mandarin": "你感到生气的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0542L05",
+      "english": "whenever you feel angry",
+      "mandarin": "每当你感到生气的时候",
+      "type": "M"
+    },
+    {
+      "id": "S0543L02",
+      "english": "is right",
+      "mandarin": "是对的",
+      "type": "M"
+    },
+    {
+      "id": "S0543L03",
+      "english": "she was right",
+      "mandarin": "她是对的",
+      "type": "M"
+    },
+    {
+      "id": "S0544L01",
+      "english": "very difficult",
+      "mandarin": "很难",
+      "type": "M"
+    },
+    {
+      "id": "S0544L02",
+      "english": "it would be difficult",
+      "mandarin": "这会很难",
+      "type": "M"
+    },
+    {
+      "id": "S0544L03",
+      "english": "whoever",
+      "mandarin": "无论谁",
+      "type": "M"
+    },
+    {
+      "id": "S0544L04",
+      "english": "whoever said it would be difficult",
+      "mandarin": "无论谁说这会很难",
+      "type": "M"
+    },
+    {
+      "id": "S0544L05",
+      "english": "absolutely right",
+      "mandarin": "完全正确",
+      "type": "M"
+    },
+    {
+      "id": "S0544L06",
+      "english": "was absolutely right",
+      "mandarin": "都是完全正确的",
+      "type": "M"
+    },
+    {
+      "id": "S0545L01",
+      "english": "it's your turn",
+      "mandarin": "轮到你",
+      "type": "M"
+    },
+    {
+      "id": "S0545L02",
+      "english": "clean",
+      "mandarin": "干净",
+      "type": "A"
+    },
+    {
+      "id": "S0545L03",
+      "english": "clothes",
+      "mandarin": "衣服",
+      "type": "A"
+    },
+    {
+      "id": "S0545L04",
+      "english": "clean clothes",
+      "mandarin": "干净的衣服",
+      "type": "M"
+    },
+    {
+      "id": "S0545L05",
+      "english": "upstairs",
+      "mandarin": "上楼",
+      "type": "M"
+    },
+    {
+      "id": "S0545L06",
+      "english": "take upstairs",
+      "mandarin": "拿上楼",
+      "type": "M"
+    },
+    {
+      "id": "S0545L07",
+      "english": "take the clean clothes upstairs",
+      "mandarin": "把干净的衣服拿上楼",
+      "type": "M"
+    },
+    {
+      "id": "S0546L01",
+      "english": "dog",
+      "mandarin": "狗",
+      "type": "A"
+    },
+    {
+      "id": "S0546L02",
+      "english": "dirty",
+      "mandarin": "脏",
+      "type": "A"
+    },
+    {
+      "id": "S0546L03",
+      "english": "wet",
+      "mandarin": "湿",
+      "type": "A"
+    },
+    {
+      "id": "S0546L04",
+      "english": "dirty and wet",
+      "mandarin": "又脏又湿",
+      "type": "M"
+    },
+    {
+      "id": "S0546L05",
+      "english": "the dog is dirty and wet",
+      "mandarin": "狗又脏又湿",
+      "type": "M"
+    },
+    {
+      "id": "S0547L02",
+      "english": "mud",
+      "mandarin": "泥",
+      "type": "A"
+    },
+    {
+      "id": "S0547L04",
+      "english": "in the mud",
+      "mandarin": "在泥里",
+      "type": "M"
+    },
+    {
+      "id": "S0547L05",
+      "english": "play in the mud",
+      "mandarin": "在泥里玩",
+      "type": "M"
+    },
+    {
+      "id": "S0547L06",
+      "english": "has been playing in the mud",
+      "mandarin": "一直在泥里玩",
+      "type": "M"
+    },
+    {
+      "id": "S0547L07",
+      "english": "because he has been playing in the mud",
+      "mandarin": "因为他一直在泥里玩",
+      "type": "M"
+    }
   ],
   "legos": {
     "S0548L01": {
-      "lego": [
-        "at the moment",
-        "此刻"
-      ],
+      "lego_id": "S0548L01",
+      "lego": {
+        "english": "at the moment",
+        "mandarin": "此刻"
+      },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [],
-      "practice_phrases": [
-        [
-          "At the moment",
-          "此刻",
-          null,
-          1
-        ],
-        [
-          "I am here at the moment",
-          "我此刻在这里",
-          null,
-          2
-        ],
-        [
-          "She is right at the moment",
-          "她此刻是对的",
-          null,
-          2
-        ],
-        [
-          "The dog is dirty at the moment",
-          "狗此刻很脏",
-          null,
-          2
-        ],
-        [
-          "I want to leave at the moment",
-          "我此刻想离开",
-          null,
-          2
-        ],
-        [
-          "The dog is wet at the moment",
-          "狗此刻湿",
-          null,
-          2
-        ],
-        [
-          "At the moment the dog is playing in the mud",
-          "此刻狗在泥里玩",
-          null,
-          3
-        ],
-        [
-          "I don't mind at the moment",
-          "我此刻不介意",
-          null,
-          2
-        ],
-        [
-          "At the moment it's your turn",
-          "此刻轮到你",
-          null,
-          2
-        ],
-        [
-          "The clothes are upstairs at the moment",
-          "衣服此刻在上楼",
-          null,
-          2
-        ]
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I am here at the moment",
+                "mandarin": "我此刻在这里",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "She is right at the moment",
+                "mandarin": "她此刻是对的",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "The dog is dirty at the moment",
+                "mandarin": "狗此刻很脏",
+                "lego_count_used": 3
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "I want to leave at the moment",
+                "mandarin": "我此刻想离开",
+                "lego_count_used": 3
+              },
+              "lego_count_used": 3
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "At the moment the dog is playing in the mud",
+                "mandarin": "此刻狗在泥里玩",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "I don't want to seem angry at the moment",
+                "mandarin": "我此刻不想显得生气",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "At the moment it's your turn to take the clothes upstairs",
+                "mandarin": "此刻轮到你把衣服拿上楼",
+                "lego_count_used": 5
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I don't mind if you want to leave at the moment",
+                "mandarin": "如果你此刻想离开我不介意",
+                "lego_count_used": 5
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "It's a good idea to try and breathe slowly at the moment",
+                "mandarin": "此刻试着慢慢呼吸是个好主意",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "At the moment the dog is dirty and wet because he has been playing in the mud",
+                "mandarin": "此刻狗又脏又湿因为他一直在泥里玩",
+                "lego_count_used": 7
+              },
+              "lego_count_used": 7
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0548L01",
+        "seed_context": {
+          "english": "I am feeling sad at the moment.",
+          "mandarin": "我此刻感到悲伤。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "此",
+          "english": "this"
+        },
+        {
+          "mandarin": "刻",
+          "english": "moment"
+        }
       ]
     },
     "S0548L02": {
-      "lego": [
-        "sad",
-        "悲伤"
-      ],
+      "lego_id": "S0548L02",
+      "lego": {
+        "english": "sad",
+        "mandarin": "悲伤"
+      },
       "type": "A",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0548L01",
-          "known": "at the moment",
-          "target": "此刻",
+          "english": "at the moment",
+          "mandarin": "此刻",
           "type": "M"
         }
       ],
-      "practice_phrases": [
-        [
-          "Sad",
-          "悲伤",
-          null,
-          1
-        ],
-        [
-          "I am sad",
-          "我悲伤",
-          null,
-          2
-        ],
-        [
-          "She is sad",
-          "她悲伤",
-          null,
-          2
-        ],
-        [
-          "He is sad",
-          "他悲伤",
-          null,
-          2
-        ],
-        [
-          "The dog is sad",
-          "狗悲伤",
-          null,
-          2
-        ],
-        [
-          "I am sad at the moment",
-          "我此刻悲伤",
-          null,
-          2
-        ],
-        [
-          "She is sad at the moment",
-          "她此刻悲伤",
-          null,
-          2
-        ],
-        [
-          "I am sad because the dog is dirty",
-          "我悲伤因为狗脏",
-          null,
-          3
-        ],
-        [
-          "He is sad because she was right",
-          "他悲伤因为她是对的",
-          null,
-          3
-        ],
-        [
-          "At the moment I am sad",
-          "此刻我悲伤",
-          null,
-          2
-        ]
-      ]
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I am sad",
+                "mandarin": "我很悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "She is sad",
+                "mandarin": "她很悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I am sad at the moment",
+                "mandarin": "我此刻很悲伤",
+                "lego_count_used": 3
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "She was sad",
+                "mandarin": "她很悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I am sad because it's getting late",
+                "mandarin": "我很悲伤因为天晚了",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "She is sad at the moment",
+                "mandarin": "她此刻很悲伤",
+                "lego_count_used": 3
+              },
+              "lego_count_used": 3
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I am sad because the dog is dirty and wet",
+                "mandarin": "我很悲伤因为狗又脏又湿",
+                "lego_count_used": 5
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "She is sad at the moment because he has been playing in the mud",
+                "mandarin": "她此刻很悲伤因为他一直在泥里玩",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "I don't want to seem as though I am sad",
+                "mandarin": "我不想显得好像我很悲伤",
+                "lego_count_used": 5
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "Whoever said it would be difficult was right but I am sad",
+                "mandarin": "无论谁说这会很难都是对的但我很悲伤",
+                "lego_count_used": 7
+              },
+              "lego_count_used": 7
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0548L02",
+        "seed_context": {
+          "english": "I am feeling sad at the moment.",
+          "mandarin": "我此刻感到悲伤。"
+        }
+      }
     },
     "S0548L03": {
-      "lego": [
-        "feel sad",
-        "感到悲伤"
-      ],
+      "lego_id": "S0548L03",
+      "lego": {
+        "english": "feel sad",
+        "mandarin": "感到悲伤"
+      },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0548L01",
-          "known": "at the moment",
-          "target": "此刻",
+          "english": "at the moment",
+          "mandarin": "此刻",
           "type": "M"
         },
         {
           "id": "S0548L02",
-          "known": "sad",
-          "target": "悲伤",
+          "english": "sad",
+          "mandarin": "悲伤",
           "type": "A"
         }
       ],
-      "practice_phrases": [
-        [
-          "Feel sad",
-          "感到悲伤",
-          null,
-          1
-        ],
-        [
-          "I feel sad",
-          "我感到悲伤",
-          null,
-          2
-        ],
-        [
-          "She feels sad",
-          "她感到悲伤",
-          null,
-          2
-        ],
-        [
-          "He feels sad",
-          "他感到悲伤",
-          null,
-          2
-        ],
-        [
-          "I feel sad at the moment",
-          "我此刻感到悲伤",
-          null,
-          2
-        ],
-        [
-          "Do you feel sad",
-          "你感到悲伤吗",
-          null,
-          2
-        ],
-        [
-          "She feels sad at the moment",
-          "她此刻感到悲伤",
-          null,
-          2
-        ],
-        [
-          "I feel sad because the dog is dirty",
-          "我感到悲伤因为狗脏",
-          null,
-          3
-        ],
-        [
-          "Whenever you feel sad",
-          "每当你感到悲伤",
-          null,
-          2
-        ],
-        [
-          "I don't mind if you feel sad",
-          "我不介意你感到悲伤",
-          null,
-          3
-        ]
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I feel sad",
+                "mandarin": "我感到悲伤",
+                "lego_count_used": 1
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "She feels sad",
+                "mandarin": "她感到悲伤",
+                "lego_count_used": 1
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I feel sad at the moment",
+                "mandarin": "我此刻感到悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "Do you feel sad?",
+                "mandarin": "你感到悲伤吗？",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "She feels sad at the moment",
+                "mandarin": "她此刻感到悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "Whenever you feel sad",
+                "mandarin": "每当你感到悲伤的时候",
+                "lego_count_used": 3
+              },
+              "lego_count_used": 3
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I feel sad because the dog is dirty",
+                "mandarin": "我感到悲伤因为狗很脏",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I don't mind if you feel sad",
+                "mandarin": "如果你感到悲伤我不介意",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "Whenever you feel sad it's a good idea to try and breathe slowly",
+                "mandarin": "每当你感到悲伤的时候试着慢慢呼吸是个好主意",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I feel sad at the moment because the dog has been playing in the mud",
+                "mandarin": "我此刻感到悲伤因为狗一直在泥里玩",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0548L03",
+        "seed_context": {
+          "english": "I am feeling sad at the moment.",
+          "mandarin": "我此刻感到悲伤。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "感到",
+          "english": "feel"
+        },
+        {
+          "mandarin": "悲伤",
+          "english": "sad"
+        }
       ]
     },
     "S0548L04": {
-      "lego": [
-        "I feel sad",
-        "我感到悲伤"
-      ],
+      "lego_id": "S0548L04",
+      "lego": {
+        "english": "I feel sad",
+        "mandarin": "我感到悲伤"
+      },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0548L01",
-          "known": "at the moment",
-          "target": "此刻",
+          "english": "at the moment",
+          "mandarin": "此刻",
           "type": "M"
         },
         {
           "id": "S0548L02",
-          "known": "sad",
-          "target": "悲伤",
+          "english": "sad",
+          "mandarin": "悲伤",
           "type": "A"
         },
         {
           "id": "S0548L03",
-          "known": "feel sad",
-          "target": "感到悲伤",
+          "english": "feel sad",
+          "mandarin": "感到悲伤",
           "type": "M"
         }
       ],
-      "practice_phrases": [
-        [
-          "I feel sad",
-          "我感到悲伤",
-          null,
-          1
-        ],
-        [
-          "I feel sad now",
-          "我现在感到悲伤",
-          null,
-          2
-        ],
-        [
-          "I feel sad at the moment",
-          "我此刻感到悲伤",
-          null,
-          1
-        ],
-        [
-          "I feel sad because",
-          "我感到悲伤因为",
-          null,
-          2
-        ],
-        [
-          "I feel sad because the dog is dirty",
-          "我感到悲伤因为狗脏",
-          null,
-          3
-        ],
-        [
-          "I feel sad because she was right",
-          "我感到悲伤因为她是对的",
-          null,
-          3
-        ],
-        [
-          "I feel sad whenever you leave",
-          "每当你离开我感到悲伤",
-          null,
-          3
-        ],
-        [
-          "At the moment I feel sad",
-          "此刻我感到悲伤",
-          null,
-          1
-        ],
-        [
-          "I feel sad because the dog has been playing in the mud",
-          "我感到悲伤因为狗一直在泥里玩",
-          null,
-          3
-        ],
-        [
-          "I don't mind if I feel sad",
-          "我不介意我感到悲伤",
-          null,
-          3
-        ]
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I feel sad",
+                "mandarin": "我感到悲伤",
+                "lego_count_used": 1
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "I feel sad now",
+                "mandarin": "我现在感到悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "I feel sad at the moment",
+                "mandarin": "我此刻感到悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "At the moment I feel sad",
+                "mandarin": "此刻我感到悲伤",
+                "lego_count_used": 2
+              },
+              "lego_count_used": 2
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I feel sad because she was right",
+                "mandarin": "我感到悲伤因为她是对的",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "I feel sad whenever you leave",
+                "mandarin": "每当你离开的时候我感到悲伤",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I feel sad because the dog is dirty and wet",
+                "mandarin": "我感到悲伤因为狗又脏又湿",
+                "lego_count_used": 5
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "I don't mind if I feel sad",
+                "mandarin": "我不介意我感到悲伤",
+                "lego_count_used": 3
+              },
+              "lego_count_used": 3
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "I feel sad at the moment because the dog has been playing in the mud",
+                "mandarin": "我此刻感到悲伤因为狗一直在泥里玩",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I don't want to seem as though I feel sad but it's getting late",
+                "mandarin": "我不想显得好像我感到悲伤但天晚了",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0548L04",
+        "seed_context": {
+          "english": "I am feeling sad at the moment.",
+          "mandarin": "我此刻感到悲伤。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "我",
+          "english": "I"
+        },
+        {
+          "mandarin": "感到",
+          "english": "feel"
+        },
+        {
+          "mandarin": "悲伤",
+          "english": "sad"
+        }
       ]
     },
     "S0548L05": {
-      "lego": [
-        "I am feeling sad at the moment",
-        "我此刻感到悲伤"
-      ],
+      "lego_id": "S0548L05",
+      "lego": {
+        "english": "I am feeling sad at the moment",
+        "mandarin": "我此刻感到悲伤"
+      },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0548L01",
-          "known": "at the moment",
-          "target": "此刻",
+          "english": "at the moment",
+          "mandarin": "此刻",
           "type": "M"
         },
         {
           "id": "S0548L02",
-          "known": "sad",
-          "target": "悲伤",
+          "english": "sad",
+          "mandarin": "悲伤",
           "type": "A"
         },
         {
           "id": "S0548L03",
-          "known": "feel sad",
-          "target": "感到悲伤",
+          "english": "feel sad",
+          "mandarin": "感到悲伤",
           "type": "M"
         },
         {
           "id": "S0548L04",
-          "known": "I feel sad",
-          "target": "我感到悲伤",
+          "english": "I feel sad",
+          "mandarin": "我感到悲伤",
           "type": "M"
         }
       ],
-      "practice_phrases": [
-        [
-          "I am feeling sad at the moment",
-          "我此刻感到悲伤",
-          null,
-          1
-        ],
-        [
-          "She is feeling sad at the moment",
-          "她此刻感到悲伤",
-          null,
-          1
-        ],
-        [
-          "He is feeling sad at the moment",
-          "他此刻感到悲伤",
-          null,
-          1
-        ],
-        [
-          "You are feeling sad at the moment",
-          "你此刻感到悲伤",
-          null,
-          1
-        ],
-        [
-          "I am feeling sad at the moment because the dog is dirty",
-          "我此刻感到悲伤因为狗脏",
-          null,
-          2
-        ],
-        [
-          "She is feeling sad at the moment because he left",
-          "她此刻感到悲伤因为他离开了",
-          null,
-          2
-        ],
-        [
-          "I am feeling sad at the moment because the dog has been playing in the mud",
-          "我此刻感到悲伤因为狗一直在泥里玩",
-          null,
-          2
-        ],
-        [
-          "At the moment I am feeling sad",
-          "此刻我感到悲伤",
-          null,
-          1
-        ],
-        [
-          "Whenever I am feeling sad at the moment I breathe slowly",
-          "每当我此刻感到悲伤我慢慢呼吸",
-          null,
-          3
-        ],
-        [
-          "I don't mind if you are feeling sad at the moment",
-          "我不介意你此刻感到悲伤",
-          null,
-          2
-        ]
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "I am feeling sad at the moment",
+                "mandarin": "我此刻感到悲伤",
+                "lego_count_used": 1
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "She is feeling sad at the moment",
+                "mandarin": "她此刻感到悲伤",
+                "lego_count_used": 1
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "You are feeling sad at the moment",
+                "mandarin": "你此刻感到悲伤",
+                "lego_count_used": 1
+              },
+              "lego_count_used": 1
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "He is feeling sad at the moment",
+                "mandarin": "他此刻感到悲伤",
+                "lego_count_used": 1
+              },
+              "lego_count_used": 1
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "I am feeling sad at the moment because it's getting late",
+                "mandarin": "我此刻感到悲伤因为天晚了",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "I am feeling sad at the moment because she was right",
+                "mandarin": "我此刻感到悲伤因为她是对的",
+                "lego_count_used": 4
+              },
+              "lego_count_used": 4
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "I am feeling sad at the moment because the dog is dirty",
+                "mandarin": "我此刻感到悲伤因为狗很脏",
+                "lego_count_used": 5
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "She is feeling sad at the moment because he left without the car",
+                "mandarin": "她此刻感到悲伤因为他不开车离开了",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "I don't mind if you are feeling sad at the moment",
+                "mandarin": "如果你此刻感到悲伤我不介意",
+                "lego_count_used": 5
+              },
+              "lego_count_used": 5
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "I am feeling sad at the moment because the dog has been playing in the mud",
+                "mandarin": "我此刻感到悲伤因为狗一直在泥里玩",
+                "lego_count_used": 6
+              },
+              "lego_count_used": 6
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0548L05",
+        "seed_context": {
+          "english": "I am feeling sad at the moment.",
+          "mandarin": "我此刻感到悲伤。"
+        }
+      },
+      "components": [
+        {
+          "mandarin": "我",
+          "english": "I"
+        },
+        {
+          "mandarin": "此刻",
+          "english": "at the moment"
+        },
+        {
+          "mandarin": "感到",
+          "english": "feel"
+        },
+        {
+          "mandarin": "悲伤",
+          "english": "sad"
+        }
       ]
     }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0548.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
   }
 }
