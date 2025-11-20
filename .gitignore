@@ -98,6 +98,7 @@ scripts/batch_*_grammar_check.md
 scripts/cmn_batch*_generation_report.md
 
 # Phase 5: Full outputs with metadata (local debugging only)
+scripts/*_baskets.json
 public/vfs/courses/*/phase5_outputs/*_FULL.json
 
 # Keep stripped basket files (these ARE pushed to branches)
