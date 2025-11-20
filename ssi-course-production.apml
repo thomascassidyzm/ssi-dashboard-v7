@@ -1,15 +1,69 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "7.8.2"
+  version: "8.2.0"
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
     This system transforms 668 canonical concepts (expressed in English as a reference language)
-    into pedagogically optimized language learning courses through a 7-phase pipeline
-    orchestrated by Claude Code agents.
+    into pedagogically optimized language learning courses through a 5-phase pipeline
+    orchestrated by Claude Code agents and microservices.
 
   created: "2024-10-13"
   author: "Tom Cassidy / SSi Team"
+
+  changelog_v8_2_0: |
+    **Date:** 2025-11-20
+    **Summary:** Architectural Consolidation & Self-Contained SSoT
+
+    ARCHITECTURAL CHANGES:
+    - Phase 6 integration: Introduction generation now runs inside Phase 3 server (<1s overhead)
+    - Phase 4 deprecated: Batch preparation obsolete with new orchestration
+    - Linear pipeline: Phase 1 → 3 (includes 6) → 5 → 7 → 8
+    - Self-contained dashboard: All phase intelligence embedded (no external dependencies)
+    - Removed TrainingPhase.vue: Consolidated to PhaseIntelligence.vue with embedded markdown
+
+    PHASE VERSION UPDATES:
+    ✅ Phase 1: v2.6 🔒 - Pedagogical Translation (TWO ABSOLUTE RULES, synonym flexibility)
+    ✅ Phase 3: v7.1 🔒 - LEGO Extraction + Introductions (dual output in single phase)
+    ✅ Phase 5: v6.1 🔒 - Basket Generation (practice phrase generation)
+    ✅ Phase 6: v2.1 🔗 - INTEGRATED into Phase 3 (no standalone service)
+    ✅ Phase 7: v1.1 🔒 - Compilation (manifest format v1.1 with placeholders)
+    ✅ Phase 8: v1.1 📋 - Audio Generation (TTS + duration population, assigned to Kai)
+
+    MANIFEST FORMAT v1.1 (Phase 7 output):
+    - Top-level introduction field: {id: "", cadence: "natural", role: "presentation", duration: 0}
+    - Duration field required: First field in all audio samples (placeholder: 0)
+    - Phase 8 responsibility: Populate id and duration fields after TTS generation
+
+    PHASE OUTPUTS:
+    - Phase 1: seed_pairs.json (pedagogical translations)
+    - Phase 3: lego_pairs.json + introductions.json (dual output, <1s overhead)
+    - Phase 5: lego_baskets.json (practice phrases)
+    - Phase 7: course_manifest.json (with duration/introduction placeholders)
+    - Phase 8: audio/*.mp3 + populated duration fields
+
+    MICROSERVICES ARCHITECTURE:
+    - Phase 1 server: Port 3457 (includes Phase 2 LUT check)
+    - Phase 3 server: Port 3458 (includes Phase 6 introduction generation)
+    - Phase 5 server: Port 3459
+    - Phase 7 server: Port 3462
+    - Phase 8 server: Port 3463
+
+    DOCUMENTATION UPDATES:
+    - Updated all phase intelligence docs with current versions
+    - Created CANONICAL_CONTENT.md (3-parameter input model)
+    - Updated COURSE_GENERATION_ARCHITECTURE.md
+    - Created SYSTEM.md with pipeline architecture
+    - ProcessOverview.vue reflects current state
+    - PhaseIntelligence.vue filters inactive phases
+
+    BREAKING CHANGES:
+    - Phase 4 removed from active pipeline
+    - Phase 6 no longer standalone (integrated into Phase 3)
+    - TrainingPhase.vue removed (consolidated to PhaseIntelligence.vue)
+    - Dashboard now self-contained SSoT (no automation_server.cjs dependency for docs)
+
+    See: public/docs/phase_intelligence/ for complete methodology modules
 
   changelog_v7_7_0: |
     **Date:** 2025-10-23
