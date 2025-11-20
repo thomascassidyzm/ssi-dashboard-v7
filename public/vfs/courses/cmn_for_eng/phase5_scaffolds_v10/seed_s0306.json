@@ -8,240 +8,220 @@
     "course": "cmn_for_eng"
   },
   "seed_pair": {
-    "english": "我认识那个正在和你朋友说话的年轻女人。",
-    "mandarin": "I know that young woman who's talking to your friend."
+    "known": "I know that young woman who's talking to your friend.",
+    "target": "我认识那个正在和你朋友说话的年轻女人。"
   },
   "recent_seed_pairs": [
     {
-      "seed_id": "S0296",
-      "english": "我说我需要多一点时间。",
-      "mandarin": "I said that I needed a little more time."
+      "seed_id": "S0296"
     },
     {
-      "seed_id": "S0297",
-      "english": "我不认识很多说普通话的人。",
-      "mandarin": "I don't know many people who speak Chinese."
+      "seed_id": "S0297"
     },
     {
-      "seed_id": "S0298",
-      "english": "我没有什么可说的了。",
-      "mandarin": "I've got nothing left to say."
+      "seed_id": "S0298"
     },
     {
-      "seed_id": "S0299",
-      "english": "他想付一半。",
-      "mandarin": "He wants to pay half."
+      "seed_id": "S0299"
     },
     {
-      "seed_id": "S0300",
-      "english": "她不想显得不友好。",
-      "mandarin": "She doesn't want to seem unfriendly."
+      "seed_id": "S0300"
     },
     {
-      "seed_id": "S0301",
-      "english": "他说他想给你看点东西。",
-      "mandarin": "He said that he wants to show you something."
+      "seed_id": "S0301"
     },
     {
-      "seed_id": "S0302",
-      "english": "她说她不想住在城市里。",
-      "mandarin": "She said that she doesn't want to live in a city."
+      "seed_id": "S0302"
     },
     {
-      "seed_id": "S0303",
-      "english": "我觉得他想坐下。",
-      "mandarin": "I think that he wants to sit down."
+      "seed_id": "S0303"
     },
     {
-      "seed_id": "S0304",
-      "english": "我觉得她不想在家工作。",
-      "mandarin": "I think that she doesn't want to work from home."
+      "seed_id": "S0304"
     },
     {
-      "seed_id": "S0305",
-      "english": "女人。",
-      "mandarin": "Woman."
+      "seed_id": "S0305"
     }
   ],
   "recent_new_legos": [
     {
       "id": "S0299L02",
-      "english": "wants to pay",
-      "mandarin": "想付",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0299L03",
-      "english": "pay",
-      "mandarin": "付",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0299L04",
-      "english": "half",
-      "mandarin": "一半",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0300L01",
-      "english": "she doesn't want",
-      "mandarin": "她不想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0300L02",
-      "english": "doesn't want to seem",
-      "mandarin": "不想显得",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0300L03",
-      "english": "seem",
-      "mandarin": "显得",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0300L04",
-      "english": "unfriendly",
-      "mandarin": "不友好",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0301L01",
-      "english": "he said",
-      "mandarin": "他说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0301L02",
-      "english": "he said that he wants",
-      "mandarin": "他说他想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0301L04",
-      "english": "he wants to show you",
-      "mandarin": "他想给你看",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0301L05",
-      "english": "show you",
-      "mandarin": "给你看",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0301L06",
-      "english": "show you something",
-      "mandarin": "给你看点东西",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0301L07",
-      "english": "something",
-      "mandarin": "点东西",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0302L01",
-      "english": "she said",
-      "mandarin": "她说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0302L02",
-      "english": "she said that she doesn't want",
-      "mandarin": "她说她不想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0302L03",
-      "english": "don't want / doesn't want",
-      "mandarin": "不想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0302L05",
-      "english": "doesn't want to live in a city",
-      "mandarin": "不想住在城市里",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0302L06",
-      "english": "live in a city",
-      "mandarin": "住在城市里",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0302L07",
-      "english": "in a city",
-      "mandarin": "在城市里",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0302L08",
-      "english": "city",
-      "mandarin": "城市",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0303L01",
-      "english": "I think",
-      "mandarin": "我觉得",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0303L02",
-      "english": "I think that he wants",
-      "mandarin": "我觉得他想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0303L04",
-      "english": "he wants to sit down",
-      "mandarin": "他想坐下",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0303L05",
-      "english": "want to sit down / wants to sit down",
-      "mandarin": "想坐下",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0303L06",
-      "english": "sit down",
-      "mandarin": "坐下",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0304L02",
-      "english": "I think that she doesn't want",
-      "mandarin": "我觉得她不想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0304L05",
-      "english": "doesn't want to work from home",
-      "mandarin": "不想在家工作",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0304L06",
-      "english": "work from home",
-      "mandarin": "在家工作",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0304L07",
-      "english": "at home / from home",
-      "mandarin": "在家",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0305L01",
-      "english": "woman",
-      "mandarin": "女人",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     }
   ],
@@ -249,8 +229,8 @@
     "S0306L02": {
       "lego_id": "S0306L02",
       "lego": {
-        "english": "that young woman",
-        "mandarin": "那个年轻女人"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
@@ -389,38 +369,38 @@
       "_metadata": {
         "lego_id": "S0306L02",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "那个",
-          "english": "that"
+          "known": "that",
+          "target": "那个"
         },
         {
-          "mandarin": "年轻",
-          "english": "young"
+          "known": "young",
+          "target": "年轻"
         },
         {
-          "mandarin": "女人",
-          "english": "woman"
+          "known": "woman",
+          "target": "女人"
         }
       ]
     },
     "S0306L03": {
       "lego_id": "S0306L03",
       "lego": {
-        "english": "young woman",
-        "mandarin": "年轻女人"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0306L02",
-          "english": "that young woman",
-          "mandarin": "那个年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -558,40 +538,40 @@
       "_metadata": {
         "lego_id": "S0306L03",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "年轻",
-          "english": "young"
+          "known": "young",
+          "target": "年轻"
         },
         {
-          "mandarin": "女人",
-          "english": "woman"
+          "known": "woman",
+          "target": "女人"
         }
       ]
     },
     "S0306L07": {
       "lego_id": "S0306L07",
       "lego": {
-        "english": "talk / speak",
-        "mandarin": "说话"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0306L02",
-          "english": "that young woman",
-          "mandarin": "那个年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L03",
-          "english": "young woman",
-          "mandarin": "年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -729,46 +709,46 @@
       "_metadata": {
         "lego_id": "S0306L07",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "说",
-          "english": "say/speak"
+          "known": "say/speak",
+          "target": "说"
         },
         {
-          "mandarin": "话",
-          "english": "words/speech"
+          "known": "words/speech",
+          "target": "话"
         }
       ]
     },
     "S0306L08": {
       "lego_id": "S0306L08",
       "lego": {
-        "english": "with your friend / to your friend",
-        "mandarin": "和你朋友"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0306L02",
-          "english": "that young woman",
-          "mandarin": "那个年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L03",
-          "english": "young woman",
-          "mandarin": "年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L07",
-          "english": "talk / speak",
-          "mandarin": "说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -906,56 +886,56 @@
       "_metadata": {
         "lego_id": "S0306L08",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "和",
-          "english": "with/and"
+          "known": "with/and",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "your"
+          "known": "your",
+          "target": "你"
         },
         {
-          "mandarin": "朋友",
-          "english": "friend"
+          "known": "friend",
+          "target": "朋友"
         }
       ]
     },
     "S0306L09": {
       "lego_id": "S0306L09",
       "lego": {
-        "english": "talk to your friend",
-        "mandarin": "和你朋友说话"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0306L02",
-          "english": "that young woman",
-          "mandarin": "那个年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L03",
-          "english": "young woman",
-          "mandarin": "年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L07",
-          "english": "talk / speak",
-          "mandarin": "说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L08",
-          "english": "with your friend / to your friend",
-          "mandarin": "和你朋友",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1093,66 +1073,66 @@
       "_metadata": {
         "lego_id": "S0306L09",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "和",
-          "english": "with/to"
+          "known": "with/to",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "your"
+          "known": "your",
+          "target": "你"
         },
         {
-          "mandarin": "朋友",
-          "english": "friend"
+          "known": "friend",
+          "target": "朋友"
         },
         {
-          "mandarin": "说话",
-          "english": "talk"
+          "known": "talk",
+          "target": "说话"
         }
       ]
     },
     "S0306L10": {
       "lego_id": "S0306L10",
       "lego": {
-        "english": "is talking / are talking",
-        "mandarin": "正在说话"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0306L02",
-          "english": "that young woman",
-          "mandarin": "那个年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L03",
-          "english": "young woman",
-          "mandarin": "年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L07",
-          "english": "talk / speak",
-          "mandarin": "说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L08",
-          "english": "with your friend / to your friend",
-          "mandarin": "和你朋友",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L09",
-          "english": "talk to your friend",
-          "mandarin": "和你朋友说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1290,64 +1270,64 @@
       "_metadata": {
         "lego_id": "S0306L10",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "正在",
-          "english": "currently/in the process of"
+          "known": "currently/in the process of",
+          "target": "正在"
         },
         {
-          "mandarin": "说话",
-          "english": "talk"
+          "known": "talk",
+          "target": "说话"
         }
       ]
     },
     "S0306L11": {
       "lego_id": "S0306L11",
       "lego": {
-        "english": "is talking to your friend",
-        "mandarin": "正在和你朋友说话"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0306L02",
-          "english": "that young woman",
-          "mandarin": "那个年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L03",
-          "english": "young woman",
-          "mandarin": "年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L07",
-          "english": "talk / speak",
-          "mandarin": "说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L08",
-          "english": "with your friend / to your friend",
-          "mandarin": "和你朋友",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L09",
-          "english": "talk to your friend",
-          "mandarin": "和你朋友说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L10",
-          "english": "is talking / are talking",
-          "mandarin": "正在说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1485,82 +1465,82 @@
       "_metadata": {
         "lego_id": "S0306L11",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "正在",
-          "english": "is/are"
+          "known": "is/are",
+          "target": "正在"
         },
         {
-          "mandarin": "和",
-          "english": "to/with"
+          "known": "to/with",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "your"
+          "known": "your",
+          "target": "你"
         },
         {
-          "mandarin": "朋友",
-          "english": "friend"
+          "known": "friend",
+          "target": "朋友"
         },
         {
-          "mandarin": "说话",
-          "english": "talking"
+          "known": "talking",
+          "target": "说话"
         }
       ]
     },
     "S0306L12": {
       "lego_id": "S0306L12",
       "lego": {
-        "english": "young woman who's talking to your friend",
-        "mandarin": "正在和你朋友说话的年轻女人"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0306L02",
-          "english": "that young woman",
-          "mandarin": "那个年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L03",
-          "english": "young woman",
-          "mandarin": "年轻女人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L07",
-          "english": "talk / speak",
-          "mandarin": "说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L08",
-          "english": "with your friend / to your friend",
-          "mandarin": "和你朋友",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L09",
-          "english": "talk to your friend",
-          "mandarin": "和你朋友说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L10",
-          "english": "is talking / are talking",
-          "mandarin": "正在说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0306L11",
-          "english": "is talking to your friend",
-          "mandarin": "正在和你朋友说话",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1698,42 +1678,42 @@
       "_metadata": {
         "lego_id": "S0306L12",
         "seed_context": {
-          "english": "我认识那个正在和你朋友说话的年轻女人。",
-          "mandarin": "I know that young woman who's talking to your friend."
+          "known": "I know that young woman who's talking to your friend.",
+          "target": "我认识那个正在和你朋友说话的年轻女人。"
         }
       },
       "components": [
         {
-          "mandarin": "正在",
-          "english": "who's"
+          "known": "who's",
+          "target": "正在"
         },
         {
-          "mandarin": "和",
-          "english": "to"
+          "known": "to",
+          "target": "和"
         },
         {
-          "mandarin": "你",
-          "english": "your"
+          "known": "your",
+          "target": "你"
         },
         {
-          "mandarin": "朋友",
-          "english": "friend"
+          "known": "friend",
+          "target": "朋友"
         },
         {
-          "mandarin": "说话",
-          "english": "talking"
+          "known": "talking",
+          "target": "说话"
         },
         {
-          "mandarin": "的",
-          "english": "(relative clause marker)"
+          "known": "(relative clause marker)",
+          "target": "的"
         },
         {
-          "mandarin": "年轻",
-          "english": "young"
+          "known": "young",
+          "target": "年轻"
         },
         {
-          "mandarin": "女人",
-          "english": "woman"
+          "known": "woman",
+          "target": "女人"
         }
       ]
     }
@@ -1752,7 +1732,7 @@
     },
     "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
     "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
-    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0306.json"
+    "output_file": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0306.json"
   },
   "_stats": {
     "new_legos_in_seed": 8,

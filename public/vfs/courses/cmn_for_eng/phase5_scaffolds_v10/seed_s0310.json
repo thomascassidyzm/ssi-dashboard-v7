@@ -8,240 +8,220 @@
     "course": "cmn_for_eng"
   },
   "seed_pair": {
-    "english": "她可以写一个关于那个男人的故事。",
-    "mandarin": "She could write a story about that man."
+    "known": "She could write a story about that man.",
+    "target": "她可以写一个关于那个男人的故事。"
   },
   "recent_seed_pairs": [
     {
-      "seed_id": "S0300",
-      "english": "她不想显得不友好。",
-      "mandarin": "She doesn't want to seem unfriendly."
+      "seed_id": "S0300"
     },
     {
-      "seed_id": "S0301",
-      "english": "他说他想给你看点东西。",
-      "mandarin": "He said that he wants to show you something."
+      "seed_id": "S0301"
     },
     {
-      "seed_id": "S0302",
-      "english": "她说她不想住在城市里。",
-      "mandarin": "She said that she doesn't want to live in a city."
+      "seed_id": "S0302"
     },
     {
-      "seed_id": "S0303",
-      "english": "我觉得他想坐下。",
-      "mandarin": "I think that he wants to sit down."
+      "seed_id": "S0303"
     },
     {
-      "seed_id": "S0304",
-      "english": "我觉得她不想在家工作。",
-      "mandarin": "I think that she doesn't want to work from home."
+      "seed_id": "S0304"
     },
     {
-      "seed_id": "S0305",
-      "english": "女人。",
-      "mandarin": "Woman."
+      "seed_id": "S0305"
     },
     {
-      "seed_id": "S0306",
-      "english": "我认识那个正在和你朋友说话的年轻女人。",
-      "mandarin": "I know that young woman who's talking to your friend."
+      "seed_id": "S0306"
     },
     {
-      "seed_id": "S0307",
-      "english": "我认识那个坐在那边的年轻男人。",
-      "mandarin": "I know that young man who's sitting over there."
+      "seed_id": "S0307"
     },
     {
-      "seed_id": "S0308",
-      "english": "是的，她是我妈妈的朋友。",
-      "mandarin": "Yes she's a friend of my mother."
+      "seed_id": "S0308"
     },
     {
-      "seed_id": "S0309",
-      "english": "不，我以前从未见过她。",
-      "mandarin": "No I've never seen her before."
+      "seed_id": "S0309"
     }
   ],
   "recent_new_legos": [
     {
       "id": "S0304L05",
-      "english": "doesn't want to work from home",
-      "mandarin": "不想在家工作",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0304L06",
-      "english": "work from home",
-      "mandarin": "在家工作",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0304L07",
-      "english": "at home / from home",
-      "mandarin": "在家",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0305L01",
-      "english": "woman",
-      "mandarin": "女人",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0306L02",
-      "english": "that young woman",
-      "mandarin": "那个年轻女人",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0306L03",
-      "english": "young woman",
-      "mandarin": "年轻女人",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0306L07",
-      "english": "talk / speak",
-      "mandarin": "说话",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0306L08",
-      "english": "with your friend / to your friend",
-      "mandarin": "和你朋友",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0306L09",
-      "english": "talk to your friend",
-      "mandarin": "和你朋友说话",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0306L10",
-      "english": "is talking / are talking",
-      "mandarin": "正在说话",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0306L11",
-      "english": "is talking to your friend",
-      "mandarin": "正在和你朋友说话",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0306L12",
-      "english": "young woman who's talking to your friend",
-      "mandarin": "正在和你朋友说话的年轻女人",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0307L02",
-      "english": "that young man",
-      "mandarin": "那个年轻男人",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0307L03",
-      "english": "young man",
-      "mandarin": "年轻男人",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0307L05",
-      "english": "over there",
-      "mandarin": "在那边",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0307L06",
-      "english": "there / over there",
-      "mandarin": "那边",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0307L07",
-      "english": "sit over there / sitting over there",
-      "mandarin": "坐在那边",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0307L08",
-      "english": "young man who's sitting over there",
-      "mandarin": "坐在那边的年轻男人",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0308L02",
-      "english": "she is / she's",
-      "mandarin": "她是",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0308L04",
-      "english": "mother / mom",
-      "mandarin": "妈妈",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0308L05",
-      "english": "my mother's / of my mother",
-      "mandarin": "我妈妈的",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0308L06",
-      "english": "my mother's friend / a friend of my mother",
-      "mandarin": "我妈妈的朋友",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L02",
-      "english": "before",
-      "mandarin": "以前",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L03",
-      "english": "never",
-      "mandarin": "从未",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L04",
-      "english": "have seen / seen",
-      "mandarin": "见过",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L05",
-      "english": "seen her / have seen her",
-      "mandarin": "见过她",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L06",
-      "english": "have never seen",
-      "mandarin": "从未见过",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L07",
-      "english": "have never seen her",
-      "mandarin": "从未见过她",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L08",
-      "english": "I've never seen her",
-      "mandarin": "我从未见过她",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0309L09",
-      "english": "I've never seen her before",
-      "mandarin": "我以前从未见过她",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     }
   ],
@@ -249,8 +229,8 @@
     "S0310L01": {
       "lego_id": "S0310L01",
       "lego": {
-        "english": "can / could",
-        "mandarin": "可以"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
@@ -389,34 +369,34 @@
       "_metadata": {
         "lego_id": "S0310L01",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       },
       "components": [
         {
-          "mandarin": "可",
-          "english": "can/may"
+          "known": "can/may",
+          "target": "可"
         },
         {
-          "mandarin": "以",
-          "english": "with/by"
+          "known": "with/by",
+          "target": "以"
         }
       ]
     },
     "S0310L02": {
       "lego_id": "S0310L02",
       "lego": {
-        "english": "can write / could write",
-        "mandarin": "可以写"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -554,40 +534,40 @@
       "_metadata": {
         "lego_id": "S0310L02",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       },
       "components": [
         {
-          "mandarin": "可以",
-          "english": "can/could"
+          "known": "can/could",
+          "target": "可以"
         },
         {
-          "mandarin": "写",
-          "english": "write"
+          "known": "write",
+          "target": "写"
         }
       ]
     },
     "S0310L03": {
       "lego_id": "S0310L03",
       "lego": {
-        "english": "she could write",
-        "mandarin": "她可以写"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L02",
-          "english": "can write / could write",
-          "mandarin": "可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -725,50 +705,50 @@
       "_metadata": {
         "lego_id": "S0310L03",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       },
       "components": [
         {
-          "mandarin": "她",
-          "english": "she"
+          "known": "she",
+          "target": "她"
         },
         {
-          "mandarin": "可以",
-          "english": "could"
+          "known": "could",
+          "target": "可以"
         },
         {
-          "mandarin": "写",
-          "english": "write"
+          "known": "write",
+          "target": "写"
         }
       ]
     },
     "S0310L04": {
       "lego_id": "S0310L04",
       "lego": {
-        "english": "write",
-        "mandarin": "写"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L02",
-          "english": "can write / could write",
-          "mandarin": "可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L03",
-          "english": "she could write",
-          "mandarin": "她可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -906,42 +886,42 @@
       "_metadata": {
         "lego_id": "S0310L04",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       }
     },
     "S0310L05": {
       "lego_id": "S0310L05",
       "lego": {
-        "english": "a story",
-        "mandarin": "一个故事"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L02",
-          "english": "can write / could write",
-          "mandarin": "可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L03",
-          "english": "she could write",
-          "mandarin": "她可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L04",
-          "english": "write",
-          "mandarin": "写",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -1079,62 +1059,62 @@
       "_metadata": {
         "lego_id": "S0310L05",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       },
       "components": [
         {
-          "mandarin": "一",
-          "english": "one/a"
+          "known": "one/a",
+          "target": "一"
         },
         {
-          "mandarin": "个",
-          "english": "(measure word)"
+          "known": "(measure word)",
+          "target": "个"
         },
         {
-          "mandarin": "故事",
-          "english": "story"
+          "known": "story",
+          "target": "故事"
         }
       ]
     },
     "S0310L06": {
       "lego_id": "S0310L06",
       "lego": {
-        "english": "story",
-        "mandarin": "故事"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L02",
-          "english": "can write / could write",
-          "mandarin": "可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L03",
-          "english": "she could write",
-          "mandarin": "她可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L04",
-          "english": "write",
-          "mandarin": "写",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0310L05",
-          "english": "a story",
-          "mandarin": "一个故事",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1272,54 +1252,54 @@
       "_metadata": {
         "lego_id": "S0310L06",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       }
     },
     "S0310L09": {
       "lego_id": "S0310L09",
       "lego": {
-        "english": "about",
-        "mandarin": "关于"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L02",
-          "english": "can write / could write",
-          "mandarin": "可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L03",
-          "english": "she could write",
-          "mandarin": "她可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L04",
-          "english": "write",
-          "mandarin": "写",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0310L05",
-          "english": "a story",
-          "mandarin": "一个故事",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L06",
-          "english": "story",
-          "mandarin": "故事",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -1457,70 +1437,70 @@
       "_metadata": {
         "lego_id": "S0310L09",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       },
       "components": [
         {
-          "mandarin": "关",
-          "english": "concerning"
+          "known": "concerning",
+          "target": "关"
         },
         {
-          "mandarin": "于",
-          "english": "at/in"
+          "known": "at/in",
+          "target": "于"
         }
       ]
     },
     "S0310L10": {
       "lego_id": "S0310L10",
       "lego": {
-        "english": "about that man",
-        "mandarin": "关于那个男人"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L02",
-          "english": "can write / could write",
-          "mandarin": "可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L03",
-          "english": "she could write",
-          "mandarin": "她可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L04",
-          "english": "write",
-          "mandarin": "写",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0310L05",
-          "english": "a story",
-          "mandarin": "一个故事",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L06",
-          "english": "story",
-          "mandarin": "故事",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0310L09",
-          "english": "about",
-          "mandarin": "关于",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1658,80 +1638,80 @@
       "_metadata": {
         "lego_id": "S0310L10",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       },
       "components": [
         {
-          "mandarin": "关于",
-          "english": "about"
+          "known": "about",
+          "target": "关于"
         },
         {
-          "mandarin": "那个",
-          "english": "that"
+          "known": "that",
+          "target": "那个"
         },
         {
-          "mandarin": "男人",
-          "english": "man"
+          "known": "man",
+          "target": "男人"
         }
       ]
     },
     "S0310L11": {
       "lego_id": "S0310L11",
       "lego": {
-        "english": "a story about that man",
-        "mandarin": "一个关于那个男人的故事"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0310L01",
-          "english": "can / could",
-          "mandarin": "可以",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L02",
-          "english": "can write / could write",
-          "mandarin": "可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L03",
-          "english": "she could write",
-          "mandarin": "她可以写",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L04",
-          "english": "write",
-          "mandarin": "写",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0310L05",
-          "english": "a story",
-          "mandarin": "一个故事",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L06",
-          "english": "story",
-          "mandarin": "故事",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0310L09",
-          "english": "about",
-          "mandarin": "关于",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0310L10",
-          "english": "about that man",
-          "mandarin": "关于那个男人",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1869,38 +1849,38 @@
       "_metadata": {
         "lego_id": "S0310L11",
         "seed_context": {
-          "english": "她可以写一个关于那个男人的故事。",
-          "mandarin": "She could write a story about that man."
+          "known": "She could write a story about that man.",
+          "target": "她可以写一个关于那个男人的故事。"
         }
       },
       "components": [
         {
-          "mandarin": "一",
-          "english": "a"
+          "known": "a",
+          "target": "一"
         },
         {
-          "mandarin": "个",
-          "english": "(measure word)"
+          "known": "(measure word)",
+          "target": "个"
         },
         {
-          "mandarin": "关于",
-          "english": "about"
+          "known": "about",
+          "target": "关于"
         },
         {
-          "mandarin": "那个",
-          "english": "that"
+          "known": "that",
+          "target": "那个"
         },
         {
-          "mandarin": "男人",
-          "english": "man"
+          "known": "man",
+          "target": "男人"
         },
         {
-          "mandarin": "的",
-          "english": "(modifier marker)"
+          "known": "(modifier marker)",
+          "target": "的"
         },
         {
-          "mandarin": "故事",
-          "english": "story"
+          "known": "story",
+          "target": "故事"
         }
       ]
     }
@@ -1919,7 +1899,7 @@
     },
     "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
     "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
-    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0310.json"
+    "output_file": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0310.json"
   },
   "_stats": {
     "new_legos_in_seed": 9,

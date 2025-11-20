@@ -8,240 +8,220 @@
     "course": "cmn_for_eng"
   },
   "seed_pair": {
-    "english": "你想让我帮你找它吗？",
-    "mandarin": "Do you want me to help you look for it?"
+    "known": "Do you want me to help you look for it?",
+    "target": "你想让我帮你找它吗？"
   },
   "recent_seed_pairs": [
     {
-      "seed_id": "S0161",
-      "english": "你能在星期天早上给我那本书吗？",
-      "mandarin": "Can you give me that book on Sunday morning?"
+      "seed_id": "S0161"
     },
     {
-      "seed_id": "S0162",
-      "english": "你对那个怎么想？",
-      "mandarin": "What do you think about that?"
+      "seed_id": "S0162"
     },
     {
-      "seed_id": "S0163",
-      "english": "我认为它很有趣。",
-      "mandarin": "I think that it's interesting."
+      "seed_id": "S0163"
     },
     {
-      "seed_id": "S0164",
-      "english": "一本有趣的书",
-      "mandarin": "An interesting book"
+      "seed_id": "S0164"
     },
     {
-      "seed_id": "S0165",
-      "english": "但是我不确定它是不是真的。",
-      "mandarin": "But I'm not sure if it's true."
+      "seed_id": "S0165"
     },
     {
-      "seed_id": "S0166",
-      "english": "我的名字不是很不寻常。",
-      "mandarin": "My name is not very unusual."
+      "seed_id": "S0166"
     },
     {
-      "seed_id": "S0167",
-      "english": "你明天下午需要做什么？",
-      "mandarin": "What do you need to do tomorrow afternoon?"
+      "seed_id": "S0167"
     },
     {
-      "seed_id": "S0168",
-      "english": "然后我就能来帮忙了。",
-      "mandarin": "And then I'll be able to come and help later on."
+      "seed_id": "S0168"
     },
     {
-      "seed_id": "S0169",
-      "english": "你想让我做什么？",
-      "mandarin": "What do you want me to do?"
+      "seed_id": "S0169"
     },
     {
-      "seed_id": "S0170",
-      "english": "我想让你告诉我你需要什么。",
-      "mandarin": "I'd like you to tell me what you need."
+      "seed_id": "S0170"
     }
   ],
   "recent_new_legos": [
     {
       "id": "S0161L04",
-      "english": "on Sunday morning",
-      "mandarin": "在星期天早上",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0161L05",
-      "english": "[question particle]",
-      "mandarin": "吗",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0162L01",
-      "english": "what do you think about that",
-      "mandarin": "你对那个怎么想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0162L02",
-      "english": "think about that",
-      "mandarin": "对那个怎么想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0162L03",
-      "english": "that",
-      "mandarin": "那个",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0163L02",
-      "english": "it",
-      "mandarin": "它",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0163L04",
-      "english": "it's very interesting",
-      "mandarin": "它很有趣",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0164L01",
-      "english": "a book",
-      "mandarin": "一本书",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0164L02",
-      "english": "interesting book",
-      "mandarin": "有趣的书",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0164L03",
-      "english": "an interesting book",
-      "mandarin": "一本有趣的书",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0165L01",
-      "english": "but",
-      "mandarin": "但是",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0165L03",
-      "english": "if it's true",
-      "mandarin": "是不是真的",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0165L04",
-      "english": "if it's true",
-      "mandarin": "它是不是真的",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0166L01",
-      "english": "my name",
-      "mandarin": "我的名字",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0166L02",
-      "english": "not very",
-      "mandarin": "不是很",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0166L03",
-      "english": "unusual",
-      "mandarin": "不寻常",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0166L04",
-      "english": "very unusual",
-      "mandarin": "很不寻常",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0167L01",
-      "english": "what do you need to do",
-      "mandarin": "你需要做什么",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0167L02",
-      "english": "what (someone) needs to do",
-      "mandarin": "需要做什么",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0167L03",
-      "english": "tomorrow afternoon",
-      "mandarin": "明天下午",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0168L01",
-      "english": "and then",
-      "mandarin": "然后",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0168L02",
-      "english": "I'll be able to",
-      "mandarin": "我就能",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0168L03",
-      "english": "be able to come and help",
-      "mandarin": "能来帮忙",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0168L04",
-      "english": "help",
-      "mandarin": "帮忙",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0168L05",
-      "english": "[completion particle]",
-      "mandarin": "了",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0169L01",
-      "english": "you want me to",
-      "mandarin": "你想让我",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0169L02",
-      "english": "want me to do what",
-      "mandarin": "想让我做什么",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0170L01",
-      "english": "I'd like you to",
-      "mandarin": "我想让你",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0170L02",
-      "english": "want you to tell me",
-      "mandarin": "想让你告诉我",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0170L04",
-      "english": "what you need",
-      "mandarin": "你需要什么",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     }
   ],
@@ -249,8 +229,8 @@
     "S0171L01": {
       "lego_id": "S0171L01",
       "lego": {
-        "english": "Do you want me to help you",
-        "mandarin": "你想让我帮你"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
@@ -389,50 +369,50 @@
       "_metadata": {
         "lego_id": "S0171L01",
         "seed_context": {
-          "english": "你想让我帮你找它吗？",
-          "mandarin": "Do you want me to help you look for it?"
+          "known": "Do you want me to help you look for it?",
+          "target": "你想让我帮你找它吗？"
         }
       },
       "components": [
         {
-          "mandarin": "你",
-          "english": "you"
+          "known": "you",
+          "target": "你"
         },
         {
-          "mandarin": "想",
-          "english": "want"
+          "known": "want",
+          "target": "想"
         },
         {
-          "mandarin": "让",
-          "english": "to let/make"
+          "known": "to let/make",
+          "target": "让"
         },
         {
-          "mandarin": "我",
-          "english": "me"
+          "known": "me",
+          "target": "我"
         },
         {
-          "mandarin": "帮",
-          "english": "help"
+          "known": "help",
+          "target": "帮"
         },
         {
-          "mandarin": "你",
-          "english": "you"
+          "known": "you",
+          "target": "你"
         }
       ]
     },
     "S0171L02": {
       "lego_id": "S0171L02",
       "lego": {
-        "english": "help you look for it",
-        "mandarin": "帮你找它"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0171L01",
-          "english": "Do you want me to help you",
-          "mandarin": "你想让我帮你",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -570,48 +550,48 @@
       "_metadata": {
         "lego_id": "S0171L02",
         "seed_context": {
-          "english": "你想让我帮你找它吗？",
-          "mandarin": "Do you want me to help you look for it?"
+          "known": "Do you want me to help you look for it?",
+          "target": "你想让我帮你找它吗？"
         }
       },
       "components": [
         {
-          "mandarin": "帮",
-          "english": "help"
+          "known": "help",
+          "target": "帮"
         },
         {
-          "mandarin": "你",
-          "english": "you"
+          "known": "you",
+          "target": "你"
         },
         {
-          "mandarin": "找",
-          "english": "look for"
+          "known": "look for",
+          "target": "找"
         },
         {
-          "mandarin": "它",
-          "english": "it"
+          "known": "it",
+          "target": "它"
         }
       ]
     },
     "S0171L03": {
       "lego_id": "S0171L03",
       "lego": {
-        "english": "look for it?",
-        "mandarin": "找它吗"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0171L01",
-          "english": "Do you want me to help you",
-          "mandarin": "你想让我帮你",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0171L02",
-          "english": "help you look for it",
-          "mandarin": "帮你找它",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -749,22 +729,22 @@
       "_metadata": {
         "lego_id": "S0171L03",
         "seed_context": {
-          "english": "你想让我帮你找它吗？",
-          "mandarin": "Do you want me to help you look for it?"
+          "known": "Do you want me to help you look for it?",
+          "target": "你想让我帮你找它吗？"
         }
       },
       "components": [
         {
-          "mandarin": "找",
-          "english": "look for"
+          "known": "look for",
+          "target": "找"
         },
         {
-          "mandarin": "它",
-          "english": "it"
+          "known": "it",
+          "target": "它"
         },
         {
-          "mandarin": "吗",
-          "english": "?"
+          "known": "?",
+          "target": "吗"
         }
       ]
     }
@@ -783,7 +763,7 @@
     },
     "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
     "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
-    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0171.json"
+    "output_file": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0171.json"
   },
   "_stats": {
     "new_legos_in_seed": 3,

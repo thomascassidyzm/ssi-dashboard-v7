@@ -8,139 +8,133 @@
     "course": "cmn_for_eng"
   },
   "seed_pair": {
-    "english": "how to say something in Chinese",
-    "mandarin": "怎么用中文说一些东西"
+    "known": "how to say something in Chinese",
+    "target": "怎么用中文说一些东西"
   },
   "recent_seed_pairs": [
     {
-      "seed_id": "S0001",
-      "english": "I want to speak Chinese with you now.",
-      "mandarin": "我现在想和你说中文。"
+      "seed_id": "S0001"
     },
     {
-      "seed_id": "S0002",
-      "english": "I'm trying to learn.",
-      "mandarin": "我在试着学习。"
+      "seed_id": "S0002"
     },
     {
-      "seed_id": "S0003",
-      "english": "how to speak as often as possible.",
-      "mandarin": "怎么尽可能经常地说。"
+      "seed_id": "S0003"
     }
   ],
   "recent_new_legos": [
     {
       "id": "S0001L01",
-      "english": "now",
-      "mandarin": "现在",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0001L02",
-      "english": "I want to",
-      "mandarin": "我想",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L03",
-      "english": "with you",
-      "mandarin": "和你",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L04",
-      "english": "Chinese",
-      "mandarin": "中文",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0001L05",
-      "english": "to speak Chinese",
-      "mandarin": "说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L06",
-      "english": "to speak with you",
-      "mandarin": "和你说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L07",
-      "english": "to speak Chinese with you",
-      "mandarin": "和你说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0001L08",
-      "english": "want to speak Chinese with you",
-      "mandarin": "想和你说中文",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L01",
-      "english": "I'm trying to",
-      "mandarin": "我在试着",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L02",
-      "english": "am trying to",
-      "mandarin": "在试着",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L03",
-      "english": "to learn",
-      "mandarin": "学习",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0002L04",
-      "english": "trying to learn",
-      "mandarin": "试着学习",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0003L01",
-      "english": "how to",
-      "mandarin": "怎么",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0003L02",
-      "english": "to speak",
-      "mandarin": "说",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0003L03",
-      "english": "how to speak",
-      "mandarin": "怎么说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0003L04",
-      "english": "often",
-      "mandarin": "经常",
+      "english": "",
+      "mandarin": "",
       "type": "A"
     },
     {
       "id": "S0003L05",
-      "english": "as...as possible",
-      "mandarin": "尽可能",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0003L06",
-      "english": "to speak often",
-      "mandarin": "经常地说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     },
     {
       "id": "S0003L07",
-      "english": "to speak as often as possible",
-      "mandarin": "尽可能经常地说",
+      "english": "",
+      "mandarin": "",
       "type": "M"
     }
   ],
@@ -148,8 +142,8 @@
     "S0004L01": {
       "lego_id": "S0004L01",
       "lego": {
-        "english": "some",
-        "mandarin": "一些"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
@@ -288,34 +282,34 @@
       "_metadata": {
         "lego_id": "S0004L01",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       },
       "components": [
         {
-          "mandarin": "一",
-          "english": "one/a"
+          "known": "one/a",
+          "target": "一"
         },
         {
-          "mandarin": "些",
-          "english": "some"
+          "known": "some",
+          "target": "些"
         }
       ]
     },
     "S0004L02": {
       "lego_id": "S0004L02",
       "lego": {
-        "english": "things",
-        "mandarin": "东西"
+        "english": "",
+        "mandarin": ""
       },
       "type": "A",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0004L01",
-          "english": "some",
-          "mandarin": "一些",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -453,30 +447,30 @@
       "_metadata": {
         "lego_id": "S0004L02",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       }
     },
     "S0004L03": {
       "lego_id": "S0004L03",
       "lego": {
-        "english": "something",
-        "mandarin": "一些东西"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0004L01",
-          "english": "some",
-          "mandarin": "一些",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L02",
-          "english": "things",
-          "mandarin": "东西",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         }
       ],
@@ -614,46 +608,46 @@
       "_metadata": {
         "lego_id": "S0004L03",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       },
       "components": [
         {
-          "mandarin": "一些",
-          "english": "some"
+          "known": "some",
+          "target": "一些"
         },
         {
-          "mandarin": "东西",
-          "english": "things"
+          "known": "things",
+          "target": "东西"
         }
       ]
     },
     "S0004L04": {
       "lego_id": "S0004L04",
       "lego": {
-        "english": "in Chinese",
-        "mandarin": "用中文"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0004L01",
-          "english": "some",
-          "mandarin": "一些",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L02",
-          "english": "things",
-          "mandarin": "东西",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0004L03",
-          "english": "something",
-          "mandarin": "一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -791,52 +785,52 @@
       "_metadata": {
         "lego_id": "S0004L04",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       },
       "components": [
         {
-          "mandarin": "用",
-          "english": "using/in"
+          "known": "using/in",
+          "target": "用"
         },
         {
-          "mandarin": "中文",
-          "english": "Chinese"
+          "known": "Chinese",
+          "target": "中文"
         }
       ]
     },
     "S0004L05": {
       "lego_id": "S0004L05",
       "lego": {
-        "english": "to say in Chinese",
-        "mandarin": "用中文说"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0004L01",
-          "english": "some",
-          "mandarin": "一些",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L02",
-          "english": "things",
-          "mandarin": "东西",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0004L03",
-          "english": "something",
-          "mandarin": "一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L04",
-          "english": "in Chinese",
-          "mandarin": "用中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -974,62 +968,62 @@
       "_metadata": {
         "lego_id": "S0004L05",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       },
       "components": [
         {
-          "mandarin": "用",
-          "english": "using/in"
+          "known": "using/in",
+          "target": "用"
         },
         {
-          "mandarin": "中文",
-          "english": "Chinese"
+          "known": "Chinese",
+          "target": "中文"
         },
         {
-          "mandarin": "说",
-          "english": "say"
+          "known": "say",
+          "target": "说"
         }
       ]
     },
     "S0004L06": {
       "lego_id": "S0004L06",
       "lego": {
-        "english": "to say something",
-        "mandarin": "说一些东西"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0004L01",
-          "english": "some",
-          "mandarin": "一些",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L02",
-          "english": "things",
-          "mandarin": "东西",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0004L03",
-          "english": "something",
-          "mandarin": "一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L04",
-          "english": "in Chinese",
-          "mandarin": "用中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L05",
-          "english": "to say in Chinese",
-          "mandarin": "用中文说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1167,64 +1161,64 @@
       "_metadata": {
         "lego_id": "S0004L06",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       },
       "components": [
         {
-          "mandarin": "说",
-          "english": "say"
+          "known": "say",
+          "target": "说"
         },
         {
-          "mandarin": "一些东西",
-          "english": "something"
+          "known": "something",
+          "target": "一些东西"
         }
       ]
     },
     "S0004L07": {
       "lego_id": "S0004L07",
       "lego": {
-        "english": "to say something in Chinese",
-        "mandarin": "用中文说一些东西"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": false,
       "current_seed_earlier_legos": [
         {
           "id": "S0004L01",
-          "english": "some",
-          "mandarin": "一些",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L02",
-          "english": "things",
-          "mandarin": "东西",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0004L03",
-          "english": "something",
-          "mandarin": "一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L04",
-          "english": "in Chinese",
-          "mandarin": "用中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L05",
-          "english": "to say in Chinese",
-          "mandarin": "用中文说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L06",
-          "english": "to say something",
-          "mandarin": "说一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1362,78 +1356,78 @@
       "_metadata": {
         "lego_id": "S0004L07",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       },
       "components": [
         {
-          "mandarin": "用",
-          "english": "using/in"
+          "known": "using/in",
+          "target": "用"
         },
         {
-          "mandarin": "中文",
-          "english": "Chinese"
+          "known": "Chinese",
+          "target": "中文"
         },
         {
-          "mandarin": "说",
-          "english": "say"
+          "known": "say",
+          "target": "说"
         },
         {
-          "mandarin": "一些东西",
-          "english": "something"
+          "known": "something",
+          "target": "一些东西"
         }
       ]
     },
     "S0004L08": {
       "lego_id": "S0004L08",
       "lego": {
-        "english": "how to say in Chinese",
-        "mandarin": "怎么用中文说"
+        "english": "",
+        "mandarin": ""
       },
       "type": "M",
       "is_final_lego": true,
       "current_seed_earlier_legos": [
         {
           "id": "S0004L01",
-          "english": "some",
-          "mandarin": "一些",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L02",
-          "english": "things",
-          "mandarin": "东西",
+          "english": "",
+          "mandarin": "",
           "type": "A"
         },
         {
           "id": "S0004L03",
-          "english": "something",
-          "mandarin": "一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L04",
-          "english": "in Chinese",
-          "mandarin": "用中文",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L05",
-          "english": "to say in Chinese",
-          "mandarin": "用中文说",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L06",
-          "english": "to say something",
-          "mandarin": "说一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         },
         {
           "id": "S0004L07",
-          "english": "to say something in Chinese",
-          "mandarin": "用中文说一些东西",
+          "english": "",
+          "mandarin": "",
           "type": "M"
         }
       ],
@@ -1571,26 +1565,26 @@
       "_metadata": {
         "lego_id": "S0004L08",
         "seed_context": {
-          "english": "how to say something in Chinese",
-          "mandarin": "怎么用中文说一些东西"
+          "known": "how to say something in Chinese",
+          "target": "怎么用中文说一些东西"
         }
       },
       "components": [
         {
-          "mandarin": "怎么",
-          "english": "how"
+          "known": "how",
+          "target": "怎么"
         },
         {
-          "mandarin": "用",
-          "english": "using/in"
+          "known": "using/in",
+          "target": "用"
         },
         {
-          "mandarin": "中文",
-          "english": "Chinese"
+          "known": "Chinese",
+          "target": "中文"
         },
         {
-          "mandarin": "说",
-          "english": "say"
+          "known": "say",
+          "target": "说"
         }
       ]
     }
@@ -1609,7 +1603,7 @@
     },
     "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
     "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
-    "output_file": "public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0004.json"
+    "output_file": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0004.json"
   },
   "_stats": {
     "new_legos_in_seed": 8,
