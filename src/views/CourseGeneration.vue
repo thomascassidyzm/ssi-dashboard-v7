@@ -174,7 +174,7 @@
                 <h3 class="text-lg font-medium text-slate-300 mb-1">Seed Range</h3>
                 <p class="text-sm text-slate-400 mb-3">Specify start and end seeds (or use Smart Recommendations above)</p>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 mb-3">
                   <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1">Start Seed</label>
                     <input
@@ -197,7 +197,27 @@
                   </div>
                 </div>
 
-                <div v-if="startSeed && endSeed" class="mt-3 text-xs text-emerald-400">
+                <!-- Phase Selection Dropdown -->
+                <div class="mb-3">
+                  <label class="block text-xs font-medium text-slate-400 mb-1">Phases to Run</label>
+                  <select
+                    v-model="phaseSelection"
+                    class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  >
+                    <option value="all">All Phases (1 → 3 → 5 → 7 → 8)</option>
+                    <option value="phase1">Phase 1 Only (Translation)</option>
+                    <option value="phase3">Phase 3 Only (LEGO Extraction)</option>
+                    <option value="phase5">Phase 5 Only (Practice Baskets)</option>
+                    <option value="phase7">Phase 7 Only (Course Compilation)</option>
+                  </select>
+                  <p class="text-xs text-slate-500 mt-1">
+                    <span v-if="phaseSelection === 'phase3'">⚠️ Requires seed_pairs.json from Phase 1</span>
+                    <span v-else-if="phaseSelection === 'phase5'">⚠️ Requires lego_pairs.json from Phase 3</span>
+                    <span v-else-if="phaseSelection === 'phase7'">⚠️ Requires all previous phases complete</span>
+                  </p>
+                </div>
+
+                <div v-if="startSeed && endSeed" class="text-xs text-emerald-400">
                   ✓ Selected range: {{ seedCount }} seeds (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
                 </div>
               </div>
@@ -445,6 +465,7 @@ const targetLanguage = ref('gle')
 const startSeed = ref(1)
 const endSeed = ref(668)
 const executionMode = ref('web') // 'local', 'api', or 'web'
+const phaseSelection = ref('all') // 'all', 'phase1', 'phase3', 'phase5', 'phase7'
 
 const targetLanguages = ref([])
 const knownLanguages = ref([])
@@ -669,6 +690,7 @@ const startGeneration = async (force = false) => {
       startSeed: startSeed.value,
       endSeed: endSeed.value,
       executionMode: executionMode.value,
+      phaseSelection: phaseSelection.value,
       force: force
     })
 
