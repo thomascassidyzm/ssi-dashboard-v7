@@ -20,7 +20,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
-const { execSync } = require('child_process');
+const { execSync, spawn } = require('child_process');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3456;
@@ -1173,6 +1173,47 @@ app.get('/api/phase-intelligence/:phase', async (req, res) => {
 });
 
 /**
+ * Run Phase 1 Validation: LUT Collision Check
+ * Checks if same KNOWN phrase maps to multiple TARGET translations
+ * This is inline validation, not a separate phase
+ */
+async function runPhase1ValidationCheck(seedPairsPath) {
+  const validationScript = path.join(__dirname, '../../scripts/phase2_collision_check.cjs');
+
+  return new Promise((resolve) => {
+    const child = spawn('node', [validationScript, seedPairsPath], {
+      stdio: 'pipe' // Capture output
+    });
+
+    let output = '';
+    child.stdout.on('data', (data) => {
+      const text = data.toString();
+      output += text;
+      console.log(`[Phase 1 Validation] ${text.trim()}`);
+    });
+
+    child.stderr.on('data', (data) => {
+      console.error(`[Phase 1 Validation] ${data.toString().trim()}`);
+    });
+
+    child.on('close', (code) => {
+      if (code === 0) {
+        console.log(`[Orchestrator] ✅ Phase 1 Validation: No FD violations detected`);
+        resolve({ passed: true, violations: 0 });
+      } else {
+        console.warn(`[Orchestrator] ⚠️  Phase 1 Validation: Found FD violations`);
+        resolve({ passed: false, violations: 'see logs' });
+      }
+    });
+
+    child.on('error', (err) => {
+      console.error(`[Orchestrator] ⚠️  Phase 1 validation check failed:`, err.message);
+      resolve({ passed: false, error: err.message });
+    });
+  });
+}
+
+/**
  * POST /api/phase1/:courseCode/submit
  * Accept completed seed_pairs.json from agents via ngrok
  */
@@ -1194,15 +1235,22 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
     await fs.ensureDir(path.dirname(outputPath));
     await fs.writeJSON(outputPath, seedPairs, { spaces: 2 });
 
+    const seedCount = Object.keys(seedPairs.translations).length;
+
     console.log(`[Orchestrator] ✅ Received Phase 1 submission for ${courseCode}`);
-    console.log(`[Orchestrator]    Seeds: ${Object.keys(seedPairs.translations).length}`);
+    console.log(`[Orchestrator]    Seeds: ${seedCount}`);
     console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    // Run inline validation (LUT - Learner Uncertainty Test)
+    console.log(`[Orchestrator] 🔍 Running LUT collision check...`);
+    const validationResult = await runPhase1ValidationCheck(outputPath);
 
     res.json({
       success: true,
       message: `Phase 1 submission received for ${courseCode}`,
-      seedCount: Object.keys(seedPairs.translations).length,
-      savedTo: outputPath
+      seedCount,
+      savedTo: outputPath,
+      validation: validationResult
     });
   } catch (error) {
     console.error(`[Orchestrator] Error accepting Phase 1 submission:`, error);
