@@ -1228,6 +1228,7 @@ app.get('/api/languages', (req, res) => {
     { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
     { code: 'bul', name: 'Bulgarian', native: 'Български' },
     { code: 'cat', name: 'Catalan', native: 'Català' },
+    { code: 'cmn', name: 'Chinese (Mandarin)', native: '中文 (普通话)' },
     { code: 'zho', name: 'Chinese', native: '中文' },
     { code: 'cor', name: 'Cornish', native: 'Kernewek' },
     { code: 'ces', name: 'Czech', native: 'Čeština' },
@@ -1637,13 +1638,38 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
       });
     }
 
-    // Write to VFS
+    // Write to VFS (with merge support)
     const outputPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
     await fs.ensureDir(path.dirname(outputPath));
-    await fs.writeJSON(outputPath, basketData, { spaces: 2 });
+
+    // Check if file already exists - if so, MERGE instead of overwrite
+    let finalBasketData = basketData;
+    if (await fs.pathExists(outputPath)) {
+      console.log(`[Orchestrator] 📦 Merging with existing lego_baskets.json`);
+      const existingData = await fs.readJSON(outputPath);
+
+      // Merge baskets object (new baskets overwrite existing ones with same ID)
+      finalBasketData = {
+        ...existingData,
+        ...basketData,
+        baskets: {
+          ...existingData.baskets,
+          ...basketData.baskets
+        }
+      };
+
+      const existingCount = Object.keys(existingData.baskets).length;
+      const newCount = Object.keys(basketData.baskets).length;
+      const mergedCount = Object.keys(finalBasketData.baskets).length;
+      console.log(`[Orchestrator]    Existing: ${existingCount} baskets`);
+      console.log(`[Orchestrator]    New: ${newCount} baskets`);
+      console.log(`[Orchestrator]    Merged total: ${mergedCount} baskets`);
+    }
+
+    await fs.writeJSON(outputPath, finalBasketData, { spaces: 2 });
 
     // Count baskets
-    const basketCount = Object.keys(basketData.baskets).length;
+    const basketCount = Object.keys(finalBasketData.baskets).length;
 
     console.log(`[Orchestrator] ✅ Received Phase 5 submission for ${courseCode}`);
     console.log(`[Orchestrator]    Baskets: ${basketCount}`);
