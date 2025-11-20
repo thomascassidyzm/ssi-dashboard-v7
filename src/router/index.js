@@ -14,6 +14,7 @@ import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import CourseValidator from '../views/CourseValidator.vue'
+import CourseProgress from '../views/CourseProgress.vue'
 // DEPRECATED: Skills.vue - unused feature
 // import Skills from '../views/Skills.vue'
 
@@ -58,6 +59,13 @@ const routes = [
     name: 'CourseEditor',
     component: CourseEditor,
     props: true
+  },
+  {
+    path: '/courses/:code/progress',
+    name: 'CourseProgress',
+    component: CourseProgress,
+    props: true,
+    meta: { title: 'Course Progress' }
   },
   {
     path: '/courses/:courseCode/compile',
