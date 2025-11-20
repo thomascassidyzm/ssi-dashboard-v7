@@ -270,6 +270,44 @@ node tools/orchestrators/automation_server.cjs
 # Server merges completed work automatically
 ```
 
+### **4. Phase 8: Audio Generation (TTS)**
+
+⚠️ **IMPORTANT**: Phase 8 requires special workflow attention. See `docs/workflows/PHASE8_CLAUDE_CODE_WORKFLOW.md` for complete details.
+
+**Critical Rules:**
+1. **ALWAYS sync S3 first**: `aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/`
+2. **Show plan and WAIT for user approval** before executing
+3. **DO NOT auto-launch `--execute`** in background
+4. **Review QC checkpoint** before continuing processing
+
+**Basic Workflow:**
+
+```bash
+# 1. Sync canonical resources (voices, welcomes, encouragements)
+aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/
+
+# 2. Show plan (DO NOT proceed without user approval!)
+node scripts/phase8-audio-generation.cjs <course_code> --plan
+
+# 3. After user approves, execute
+node scripts/phase8-audio-generation.cjs <course_code> --execute
+
+# 4. At QC checkpoint, review flagged samples:
+#    - Read: vfs/courses/<course_code>/qc_report_raw.json
+#    - Listen: vfs/courses/<course_code>/qc_review/<role>/*.mp3
+
+# 5a. If regeneration needed:
+node scripts/phase8-audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
+
+# 5b. If approved, continue processing:
+node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-processing
+```
+
+**Common Issues:**
+- **Multiple background processes**: Always check for running Phase 8 processes before starting
+- **Missing QC reports**: Verify files exist before presenting to user
+- **Auto-execution**: Phase 8 should NEVER run `--execute` without explicit user confirmation
+
 ---
 
 ## 🔀 Git Workflow & Recent Changes

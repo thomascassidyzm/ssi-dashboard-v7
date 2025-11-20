@@ -9,6 +9,7 @@ require('dotenv').config();
 
 const fs = require('fs-extra');
 const path = require('path');
+const { spawn } = require('child_process');
 const azureTTS = require('../services/azure-tts-service.cjs');
 const elevenlabsService = require('../services/elevenlabs-service.cjs');
 const audioProcessor = require('../services/audio-processor.cjs');
@@ -484,6 +485,112 @@ async function generateMissingAudio(toGenerate) {
   }
 
   return results;
+}
+
+/**
+ * Generate all missing audio files using parallel provider workers
+ * Spawns separate processes for Azure and ElevenLabs to run in parallel
+ * ~50% faster than sequential generation
+ */
+async function generateMissingAudioParallel(toGenerate) {
+  console.log('\n=== Parallel Provider Generation ===\n');
+
+  await fs.ensureDir(AUDIO_TEMP_DIR);
+
+  // Split samples by provider
+  const byProvider = { azure: [], elevenlabs: [] };
+
+  for (const sample of toGenerate) {
+    const provider = sample.voiceId.split('_')[0];
+    if (byProvider[provider]) {
+      byProvider[provider].push(sample);
+    } else {
+      console.warn(`Unknown provider: ${provider}, skipping sample`);
+    }
+  }
+
+  console.log(`Azure samples: ${byProvider.azure.length}`);
+  console.log(`ElevenLabs samples: ${byProvider.elevenlabs.length}\n`);
+
+  // Prepare input files for workers
+  const workerInputDir = path.join(AUDIO_TEMP_DIR, 'worker-input');
+  const workerOutputDir = path.join(AUDIO_TEMP_DIR, 'worker-output');
+  await fs.ensureDir(workerInputDir);
+  await fs.ensureDir(workerOutputDir);
+
+  const workers = [];
+
+  // Spawn Azure worker if needed
+  if (byProvider.azure.length > 0) {
+    const azureInputFile = path.join(workerInputDir, 'azure-samples.json');
+    const azureOutputFile = path.join(workerOutputDir, 'azure-results.json');
+
+    await fs.writeJson(azureInputFile, byProvider.azure, { spaces: 2 });
+
+    workers.push({
+      name: 'Azure TTS',
+      process: spawn('node', [
+        path.join(__dirname, 'phase8-worker-azure.cjs'),
+        azureInputFile,
+        azureOutputFile,
+        AUDIO_TEMP_DIR
+      ], { stdio: 'inherit' }),
+      outputFile: azureOutputFile
+    });
+  }
+
+  // Spawn ElevenLabs worker if needed
+  if (byProvider.elevenlabs.length > 0) {
+    const elevenLabsInputFile = path.join(workerInputDir, 'elevenlabs-samples.json');
+    const elevenLabsOutputFile = path.join(workerOutputDir, 'elevenlabs-results.json');
+
+    await fs.writeJson(elevenLabsInputFile, byProvider.elevenlabs, { spaces: 2 });
+
+    workers.push({
+      name: 'ElevenLabs',
+      process: spawn('node', [
+        path.join(__dirname, 'phase8-worker-elevenlabs.cjs'),
+        elevenLabsInputFile,
+        elevenLabsOutputFile,
+        AUDIO_TEMP_DIR
+      ], { stdio: 'inherit' }),
+      outputFile: elevenLabsOutputFile
+    });
+  }
+
+  console.log(`Spawned ${workers.length} parallel workers\n`);
+
+  // Wait for all workers to complete
+  const workerResults = await Promise.all(
+    workers.map(worker =>
+      new Promise((resolve, reject) => {
+        worker.process.on('close', async (code) => {
+          if (code === 0) {
+            console.log(`\n[${worker.name}] Worker completed successfully`);
+            try {
+              const results = await fs.readJson(worker.outputFile);
+              resolve(results);
+            } catch (err) {
+              reject(new Error(`Failed to read ${worker.name} results: ${err.message}`));
+            }
+          } else {
+            reject(new Error(`${worker.name} worker failed with code ${code}`));
+          }
+        });
+
+        worker.process.on('error', (err) => {
+          reject(new Error(`${worker.name} worker error: ${err.message}`));
+        });
+      })
+    )
+  );
+
+  // Merge results from all workers
+  const allResults = workerResults.flat();
+
+  console.log(`\n✅ Parallel generation complete: ${allResults.filter(r => r.success).length}/${allResults.length} samples\n`);
+
+  return allResults;
 }
 
 /**
@@ -1362,8 +1469,11 @@ async function executePhaseA(phaseASamples, courseCode, options) {
     return { success: true, generated: 0, skipped: true };
   }
 
-  // 1. Generate audio
-  const generationResults = await generateMissingAudio(phaseASamples);
+  // 1. Generate audio (parallel by default)
+  const useParallel = !options.sequential; // Default to parallel unless --sequential flag
+  const generationResults = useParallel
+    ? await generateMissingAudioParallel(phaseASamples)
+    : await generateMissingAudio(phaseASamples);
   const successCount = generationResults.filter(r => r.success).length;
   console.log(`\nGenerated: ${successCount}/${phaseASamples.length} files`);
 
@@ -1532,6 +1642,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
     uploadBucket = s3Service.STAGE_BUCKET,
     cleanupTemp = true,
     skipQC = false,
+    sequential = false, // Use sequential instead of parallel provider generation
     phase = 'auto' // 'targets', 'presentations', or 'auto'
   } = options;
 
@@ -1599,7 +1710,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
 
     // 6. Execute Phase A (targets + source)
     if (phase === 'auto' || phase === 'targets') {
-      const resultA = await executePhaseA(phaseA, courseCode, { skipUpload, uploadBucket, skipQC });
+      const resultA = await executePhaseA(phaseA, courseCode, { skipUpload, uploadBucket, skipQC, sequential });
       totalGenerated += resultA.generated;
       totalQCFlagged += resultA.qcFlagged;
       allDurations = { ...allDurations, ...resultA.durations };
@@ -1892,7 +2003,8 @@ Features:
       skipUpload: args.includes('--skip-upload'),
       uploadBucket: args.includes('--prod') ? s3Service.PROD_BUCKET : s3Service.STAGE_BUCKET,
       cleanupTemp: !args.includes('--keep-temp'),
-      skipQC: args.includes('--skip-qc')
+      skipQC: args.includes('--skip-qc'),
+      sequential: args.includes('--sequential') // Use sequential generation instead of parallel
     };
 
     let result;
