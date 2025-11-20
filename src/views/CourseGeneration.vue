@@ -122,8 +122,14 @@
                     {{ analysis.lego_pairs.exists ? `✓ ${analysis.lego_pairs.count} LEGOs` : '✗ Missing' }}
                   </span>
                 </div>
+                <div v-if="analysis.baskets">
+                  <span class="text-slate-400">Phase 5 (Baskets):</span>
+                  <span class="ml-2 font-semibold" :class="analysis.baskets.missing_seeds === 0 ? 'text-green-400' : 'text-amber-400'">
+                    {{ analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠️  ${analysis.baskets.missing_seeds} seeds missing` }}
+                  </span>
+                </div>
               </div>
-              <div v-if="analysis.lego_pairs.missing.length > 0" class="mt-3 text-sm text-amber-400">
+              <div v-if="analysis.lego_pairs.missing && analysis.lego_pairs.missing.length > 0" class="mt-3 text-sm text-amber-400">
                 ⚠️  {{ analysis.lego_pairs.missing.length }} seeds missing LEGOs
               </div>
             </div>
@@ -140,6 +146,7 @@
                   <div class="flex-1">
                     <div class="flex items-center gap-2 mb-1">
                       <span v-if="rec.type === 'test'" class="text-xl">✨</span>
+                      <span v-else-if="rec.type === 'resume-baskets'" class="text-xl">📦</span>
                       <span v-else-if="rec.type === 'resume'" class="text-xl">📝</span>
                       <span v-else-if="rec.type === 'full'" class="text-xl">🚀</span>
                       <span v-else class="text-xl">➡️</span>
@@ -148,7 +155,10 @@
                       </span>
                     </div>
                     <p class="text-sm text-slate-400 ml-7">{{ rec.description }}</p>
-                    <p class="text-xs text-slate-500 ml-7 mt-1">
+                    <p v-if="rec.action.phases" class="text-xs text-emerald-500 ml-7 mt-1">
+                      Phase {{ rec.phase }} only (intelligent resume - missing baskets)
+                    </p>
+                    <p v-else class="text-xs text-slate-500 ml-7 mt-1">
                       Seeds {{ rec.action.startSeed }}-{{ rec.action.endSeed }}
                       ({{ rec.action.endSeed - rec.action.startSeed + 1 }} seeds)
                     </p>
@@ -601,6 +611,13 @@ const selectRecommendation = (rec) => {
     endSeed.value = rec.action.startSeed + rec.action.count - 1
   } else {
     endSeed.value = rec.action.endSeed
+  }
+
+  // Handle phase-specific recommendations (e.g., Phase 5 only)
+  if (rec.action.phases && rec.action.phases.includes('phase5')) {
+    phaseSelection.value = 'phase5'
+  } else {
+    phaseSelection.value = 'all'
   }
 
   // Pass force flag from recommendation

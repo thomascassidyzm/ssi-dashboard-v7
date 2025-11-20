@@ -722,6 +722,47 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       basketCount = Object.keys(basketData.baskets || {}).length;
     }
 
+    // Check for Phase 5 missing baskets (intelligent resume)
+    const phase5OutputsDir = path.join(courseDir, 'phase5_outputs');
+    let missingBasketsCount = 0;
+    let missingBasketsSeeds = 0;
+
+    if (legoPairsExists && await fs.pathExists(phase5OutputsDir)) {
+      const legoData = await fs.readJSON(legoPairsPath);
+      const allLegos = [];
+
+      // Collect all LEGOs that should have baskets
+      for (const seed of (legoData.seeds || [])) {
+        for (const lego of (seed.legos || [])) {
+          allLegos.push({ legoId: lego.lego_id, seedId: seed.seed_id });
+        }
+      }
+
+      // Count how many have basket files
+      const basketFiles = await fs.readdir(phase5OutputsDir);
+      const seedsWithBaskets = new Set();
+
+      for (const file of basketFiles) {
+        if (file.startsWith('seed_S') && file.endsWith('_baskets.json')) {
+          const seedMatch = file.match(/seed_S(\d+)_baskets\.json/);
+          if (seedMatch) {
+            seedsWithBaskets.add(`S${seedMatch[1].padStart(4, '0')}`);
+          }
+        }
+      }
+
+      // Count missing
+      const seedsNeedingBaskets = new Set();
+      for (const lego of allLegos) {
+        if (!seedsWithBaskets.has(lego.seedId)) {
+          seedsNeedingBaskets.add(lego.seedId);
+        }
+      }
+
+      missingBasketsCount = allLegos.length - (seedsWithBaskets.size * 3); // ~3 LEGOs per seed estimate
+      missingBasketsSeeds = seedsNeedingBaskets.size;
+    }
+
     // Generate intelligent recommendations
     const recommendations = [];
 
@@ -780,6 +821,17 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
         });
       }
 
+      // Option 4.5: Resume Phase 5 missing baskets (intelligent resume)
+      if (missingBasketsSeeds > 0 && legoPairsExists) {
+        recommendations.push({
+          type: 'resume-baskets',
+          phase: 5,
+          title: `📦 Resume Missing Baskets (${missingBasketsSeeds} seeds)`,
+          description: `Generate practice phrases for seeds missing Phase 5`,
+          action: { startSeed: 1, endSeed: 668, phases: ['phase5'], force: false }
+        });
+      }
+
       // Option 5: Extend to full course
       if (seedCount > 0 && seedCount < 668) {
         recommendations.push({
@@ -805,7 +857,12 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       seed_pairs: { exists: seedPairsExists, count: seedCount },
       lego_pairs: { exists: legoPairsExists, count: legoCount, missing: missingLegoSeeds },
       introductions: { exists: introsExists },
-      baskets: { exists: basketsExists, count: basketCount },
+      baskets: {
+        exists: basketsExists,
+        count: basketCount,
+        missing_seeds: missingBasketsSeeds,
+        estimated_missing_legos: missingBasketsCount
+      },
       recommendations
     });
   } catch (error) {
