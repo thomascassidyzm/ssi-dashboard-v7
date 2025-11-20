@@ -72,35 +72,35 @@
             <!-- Architecture Description -->
             <div class="bg-slate-900/50 rounded-lg p-6">
               <p class="text-slate-300 mb-4">
-                The SSI Course Production Pipeline uses a streamlined orchestrator-based architecture with inline prompts for each phase.
+                Linear microservice architecture with sequential phase progression and integrated post-processing.
               </p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div class="space-y-2">
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Phase orchestrators with embedded methodology</span>
+                    <span class="text-slate-300">Linear phase progression (1 → 3 → 5 → 7 → 8)</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Claude Code agents - no sub-agent spawning</span>
+                    <span class="text-slate-300">Phase 3 includes inline intro generation</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Phase Intelligence as single source of truth</span>
+                    <span class="text-slate-300">VFS-based atomic file operations</span>
                   </div>
                 </div>
                 <div class="space-y-2">
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Atomic VFS operations for reliability</span>
+                    <span class="text-slate-300">Orchestrator coordinates microservices</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Progressive compilation with validation</span>
+                    <span class="text-slate-300">Sequential validation gates</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Real-time dashboard editing & preview</span>
+                    <span class="text-slate-300">Real-time dashboard monitoring</span>
                   </div>
                 </div>
               </div>
