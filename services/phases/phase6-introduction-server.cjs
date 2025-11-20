@@ -11,6 +11,7 @@
 
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const axios = require('axios');
 const { generateIntroductions } = require('../../scripts/phase6-generate-introductions.cjs');
 
@@ -125,6 +126,87 @@ app.get('/health', (req, res) => {
     status: 'healthy',
     port: PORT,
     activeJobs: activeJobs.size
+  });
+});
+
+// Grammar validation worker endpoints
+app.post('/delete-phrase', (req, res) => {
+  const { courseCode, legoId, phraseIndex } = req.body;
+
+  if (!courseCode || !legoId || phraseIndex === undefined) {
+    return res.status(400).json({
+      error: 'courseCode, legoId, and phraseIndex are required'
+    });
+  }
+
+  try {
+    const basketsPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+
+    if (!fs.existsSync(basketsPath)) {
+      return res.status(404).json({
+        error: `Course data not found: ${courseCode}`
+      });
+    }
+
+    const data = JSON.parse(fs.readFileSync(basketsPath, 'utf8'));
+
+    if (!data.baskets[legoId]) {
+      return res.status(404).json({
+        error: `LEGO not found: ${legoId}`
+      });
+    }
+
+    const lego = data.baskets[legoId];
+    if (!lego.practice_phrases || phraseIndex >= lego.practice_phrases.length) {
+      return res.status(404).json({
+        error: `Phrase index out of range: ${phraseIndex}`
+      });
+    }
+
+    // Remove the phrase
+    lego.practice_phrases.splice(phraseIndex, 1);
+    lego.phrase_count = lego.practice_phrases.length;
+
+    // Save updated data
+    fs.writeFileSync(basketsPath, JSON.stringify(data, null, 2));
+
+    console.log(`[Grammar Worker] Deleted phrase ${phraseIndex} from ${legoId} in ${courseCode}`);
+
+    res.json({
+      success: true,
+      message: `Phrase deleted from ${legoId}`,
+      courseCode,
+      legoId,
+      phraseIndex,
+      remainingPhrases: lego.practice_phrases.length
+    });
+  } catch (error) {
+    console.error(`[Grammar Worker] Error deleting phrase:`, error);
+    res.status(500).json({
+      error: 'Failed to delete phrase',
+      details: error.message
+    });
+  }
+});
+
+app.post('/worker-complete', (req, res) => {
+  const { courseCode, workerId, stats } = req.body;
+
+  if (!courseCode || !workerId || !stats) {
+    return res.status(400).json({
+      error: 'courseCode, workerId, and stats are required'
+    });
+  }
+
+  console.log(`[Grammar Worker] ${workerId} completed for ${courseCode}`);
+  console.log(`[Grammar Worker] Statistics:`, stats);
+
+  res.json({
+    success: true,
+    message: `Worker ${workerId} completion recorded`,
+    courseCode,
+    workerId,
+    stats
   });
 });
 
