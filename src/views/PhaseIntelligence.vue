@@ -42,6 +42,7 @@
                   :class="[
                     'text-xs px-2 py-1 rounded',
                     phase.status === 'active' ? 'bg-green-500/20 text-green-400' :
+                    phase.status === 'integrated' ? 'bg-teal-500/20 text-teal-400' :
                     phase.status === 'inactive' ? 'bg-gray-500/20 text-gray-400' :
                     phase.status === 'todo' ? 'bg-yellow-500/20 text-yellow-400' :
                     phase.status === 'complete' ? 'bg-blue-500/20 text-blue-400' :
@@ -80,6 +81,9 @@
                 <p class="text-sm text-slate-400 mt-1">
                   <span v-if="currentPhase.status === 'active'" class="text-green-400">
                     ✅ Active module
+                  </span>
+                  <span v-else-if="currentPhase.status === 'integrated'" class="text-teal-400">
+                    🔗 Integrated into another phase
                   </span>
                   <span v-else-if="currentPhase.status === 'inactive'" class="text-gray-400">
                     ❌ Deprecated
@@ -152,13 +156,13 @@ const phaseContent = {
 
 const phases = [
   { id: '1', name: 'Translation', status: 'active', version: '2.6', locked: true },
-  { id: '3', name: 'LEGO Extraction', status: 'active', version: '6.3', locked: true },
+  { id: '3', name: 'LEGO Extraction (includes Phase 6)', status: 'active', version: '7.1', locked: true },
   { id: '4', name: 'Batch Preparation', status: 'active', version: '1.0', locked: true },
   { id: '5', name: 'Baskets', status: 'active', version: '6.1', locked: true },
   { id: '5.5', name: 'Deduplication (OBSOLETE)', status: 'inactive', version: '2.0' },
-  { id: '6', name: 'Introductions', status: 'active', version: '2.0', locked: true },
-  { id: '7', name: 'Compilation', status: 'complete', version: '1.0' },
-  { id: '8', name: 'Audio (Kai)', status: 'documented', version: '1.0' }
+  { id: '6', name: 'Introductions (in Phase 3)', status: 'integrated', version: '2.1', locked: true },
+  { id: '7', name: 'Compilation', status: 'active', version: '1.1', locked: true },
+  { id: '8', name: 'Audio (Kai)', status: 'documented', version: '1.1' }
 ]
 
 const selectedPhase = ref('3')

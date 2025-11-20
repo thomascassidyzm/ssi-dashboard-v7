@@ -1,0 +1,14 @@
+{
+  "welcomes": {
+    "_comment": "Course-specific welcome messages. Each course (language pair) has its own welcome.",
+    "_structure": {
+      "course_code": {
+        "text": "Welcome message text in source language",
+        "id": "UUID for audio sample (null if not generated yet)",
+        "generated_date": "ISO timestamp when text was created",
+        "voice": "Voice ID used for audio generation (null if not generated)",
+        "duration": "Audio duration in seconds (0 if not generated)"
+      }
+    }
+  }
+}

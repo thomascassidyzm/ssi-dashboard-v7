@@ -1,15 +1,21 @@
 # Phase 7: Course Manifest Compilation
 
-**Version**: 1.0
+**Version**: 1.1
 **Status**: ✅ Active
-**Last Updated**: 2025-10-23
+**Last Updated**: 2025-11-20
 **Script**: `scripts/phase7-compile-manifest.cjs`
 
 ---
 
 ## Purpose
 
-Compile v7.7 format files (seed_pairs, lego_pairs, lego_baskets, introductions) into the legacy course manifest format required by the SSi mobile app. This transformation enables backwards compatibility while allowing the course generation pipeline to work with the modern, compact v7.7 format.
+Compile v7.7 format files (seed_pairs, lego_pairs, lego_baskets, introductions) into the final course manifest format required by the SSi mobile app. This transformation enables backwards compatibility while allowing the course generation pipeline to work with the modern, compact v7.7 format.
+
+**Key Updates (v1.1)**:
+- Top-level `introduction` field (welcome audio placeholder)
+- `duration` field in all audio samples (TTS duration placeholder)
+- Field ordering matches reference Italian course format
+- Placeholders (empty strings, zeros) populated by Phase 8
 
 ---
 
@@ -37,6 +43,75 @@ Register audio samples for ALL spoken text:
 - LEGO pairs (target + source)
 - Practice phrases (target + source)
 - Presentation text (source language)
+
+### 5. **Placeholder Fields for Phase 8**
+Phase 7 creates placeholders that Phase 8 will populate:
+- `introduction.id` - Empty string (Phase 8 generates welcome audio UUID)
+- `introduction.duration` - Zero (Phase 8 measures TTS audio length)
+- `samples[].duration` - Zero (Phase 8 measures TTS audio length)
+
+**Why placeholders?**
+- Manifest structure must be complete before audio generation
+- Phase 8 reads manifest, generates audio, measures durations
+- Phase 8 can optionally update manifest with actual values
+
+---
+
+## Manifest Format Requirements (v1.1)
+
+### Top-Level Introduction Field
+
+**REQUIRED**: Every manifest must include a top-level `introduction` object:
+
+```json
+{
+  "id": "spa-eng",
+  "known": "eng",
+  "target": "spa",
+  "version": "8.1.1",
+  "status": "alpha",
+  "introduction": {
+    "id": "",
+    "cadence": "natural",
+    "role": "presentation",
+    "duration": 0
+  },
+  "slices": [...]
+}
+```
+
+**Field details**:
+- `id` - Empty string (placeholder for Phase 8 welcome audio UUID)
+- `cadence` - Always "natural" for welcome
+- `role` - Always "presentation" (spoken in source/known language)
+- `duration` - Zero (placeholder for Phase 8 TTS audio duration in seconds)
+
+**Field ordering**: Must come AFTER status, BEFORE slices (matches Italian course reference)
+
+### Sample Duration Field
+
+**REQUIRED**: Every audio sample must include a `duration` field:
+
+```json
+{
+  "samples": {
+    "Quiero hablar español contigo ahora.": [
+      {
+        "duration": 0,
+        "id": "4255246C-6044-AC07-8F4E-B5638FB60105",
+        "cadence": "natural",
+        "role": "target1"
+      }
+    ]
+  }
+}
+```
+
+**Field details**:
+- `duration` - Float (seconds), placeholder value: 0
+- **Field ordering**: FIRST field (before id, cadence, role)
+
+**Why first?** Matches Italian course reference format for consistency across all courses.
 
 ---
 
@@ -159,11 +234,13 @@ All must be v7.7.0 format.
 {
   "Voglio": [
     {
+      "duration": 0,
       "id": "C6A82DE8-6044-AC07-8F4E-412F54FEF5F7",
       "cadence": "natural",
       "role": "target1"
     },
     {
+      "duration": 0,
       "id": "4114E479-6044-E115-8F4E-8B1C4F02C6C8",
       "cadence": "natural",
       "role": "target2"
@@ -171,6 +248,7 @@ All must be v7.7.0 format.
   ],
   "I want": [
     {
+      "duration": 0,
       "id": "489C5783-6044-36CD-31D4-4CB55EF258B5",
       "cadence": "natural",
       "role": "source"
@@ -178,6 +256,8 @@ All must be v7.7.0 format.
   ]
 }
 ```
+
+**Note**: `duration: 0` is a placeholder. Phase 8 will populate with actual TTS audio duration in seconds.
 
 ---
 
@@ -224,10 +304,14 @@ const courseId = `${targetCode}-${knownCode}`;
 ## Validation Checklist
 
 ✅ Single slice containing all seeds
+✅ Top-level `introduction` field present with all required fields
+✅ Introduction field positioned after status, before slices
 ✅ Each seed has introductionItems array
 ✅ Each introductionItem has presentation text
 ✅ Practice nodes properly flattened from windows
 ✅ All text has corresponding sample entries
+✅ Every sample has `duration` field (value: 0)
+✅ Sample field ordering: duration, id, cadence, role
 ✅ UUIDs are deterministic (verify across runs)
 ✅ UUIDs follow role-specific segment format
 ✅ Empty tokens/lemmas arrays everywhere
@@ -290,6 +374,15 @@ C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3  <- "Voglio" target1 natural
 
 ## Version History
 
+### v1.1 (2025-11-20)
+- **Top-level introduction field**: Added required `introduction` object with placeholder values
+- **Duration field in samples**: All audio samples now include `duration: 0` placeholder
+- **Field ordering**: Updated to match Italian course reference format
+  - Top-level: introduction positioned after status, before slices
+  - Samples: duration field comes first (before id, cadence, role)
+- **Placeholder documentation**: Clarified which fields Phase 8 will populate
+- **Schema updates**: Updated JSON schema to require introduction and duration fields
+
 ### v1.0 (2025-10-23)
 - Initial implementation
 - Single slice architecture
@@ -303,10 +396,9 @@ C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3  <- "Voglio" target1 natural
 ## Related Phases
 
 - **Phase 1**: Provides seed_pairs.json
-- **Phase 3**: Provides lego_pairs.json
-- **Phase 4**: Provides lego_baskets.json
-- **Phase 6**: Provides introductions.json
-- **Phase 8**: Will generate audio files using sample UUIDs
+- **Phase 3**: Provides lego_pairs.json AND introductions.json (Phase 6 integrated)
+- **Phase 5**: Provides lego_baskets.json
+- **Phase 8**: Generates audio files using sample UUIDs, populates duration fields
 
 ---
 
