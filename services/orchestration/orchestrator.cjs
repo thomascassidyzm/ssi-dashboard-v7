@@ -674,6 +674,147 @@ app.get('/api/courses/:courseCode/status', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/analyze
+ * Analyze course state and return intelligent recommendations
+ */
+app.get('/api/courses/:courseCode/analyze', async (req, res) => {
+  const { courseCode } = req.params;
+  const courseDir = path.join(VFS_ROOT, courseCode);
+
+  try {
+    // Check what phase outputs exist
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    const introsPath = path.join(courseDir, 'introductions.json');
+    const basketsPath = path.join(courseDir, 'lego_baskets.json');
+
+    const seedPairsExists = await fs.pathExists(seedPairsPath);
+    const legoPairsExists = await fs.pathExists(legoPairsPath);
+    const introsExists = await fs.pathExists(introsPath);
+    const basketsExists = await fs.pathExists(basketsPath);
+
+    // Count what we have
+    let seedCount = 0;
+    let legoCount = 0;
+    let basketCount = 0;
+    let missingLegoSeeds = [];
+
+    if (seedPairsExists) {
+      const seedData = await fs.readJSON(seedPairsPath);
+      seedCount = Object.keys(seedData.translations || {}).length;
+    }
+
+    if (legoPairsExists) {
+      const legoData = await fs.readJSON(legoPairsPath);
+      legoCount = (legoData.seeds || []).length;
+
+      // Find seeds that have translations but no LEGOs
+      if (seedPairsExists) {
+        const seedData = await fs.readJSON(seedPairsPath);
+        const allSeeds = Object.keys(seedData.translations || {});
+        const legoSeeds = (legoData.seeds || []).map(s => s.seed_id);
+        missingLegoSeeds = allSeeds.filter(s => !legoSeeds.includes(s));
+      }
+    }
+
+    if (basketsExists) {
+      const basketData = await fs.readJSON(basketsPath);
+      basketCount = Object.keys(basketData.baskets || {}).length;
+    }
+
+    // Generate intelligent recommendations
+    const recommendations = [];
+
+    if (!seedPairsExists) {
+      // No course data - suggest starting fresh
+      recommendations.push({
+        type: 'test',
+        title: '✨ Quick Test (10 seeds)',
+        description: 'Test the pipeline with 10 random seeds (~5 min)',
+        action: { startSeed: Math.floor(Math.random() * 659) + 1, endSeed: null, count: 10, force: false }
+      });
+      recommendations.push({
+        type: 'full',
+        title: '🚀 Full Course (668 seeds)',
+        description: 'Generate complete course (~2-3 hours)',
+        action: { startSeed: 1, endSeed: 668, force: false }
+      });
+    } else {
+      // Course exists - analyze what's missing
+
+      // Option 1: Quick test with 10 seeds
+      recommendations.push({
+        type: 'test',
+        title: '✨ Quick Test (10 seeds)',
+        description: 'Test pipeline changes with 10 random seeds',
+        action: { startSeed: Math.floor(Math.random() * 659) + 1, endSeed: null, count: 10, force: false }
+      });
+
+      // Option 2: Resume from where we left off
+      if (seedCount < 668) {
+        recommendations.push({
+          type: 'resume',
+          title: `📝 Resume from S${String(seedCount + 1).padStart(4, '0')}`,
+          description: `Continue generating (${668 - seedCount} seeds remaining)`,
+          action: { startSeed: seedCount + 1, endSeed: 668, force: false }
+        });
+      }
+
+      // Option 3: Regenerate specific phases (force overwrite)
+      if (legoPairsExists && legoCount > 0) {
+        recommendations.push({
+          type: 'regenerate',
+          title: `🔄 Regenerate LEGOs (S0001-S${String(legoCount).padStart(4, '0')})`,
+          description: 'Force re-extract LEGOs (use if quality is poor)',
+          action: { startSeed: 1, endSeed: legoCount, force: true }
+        });
+      }
+
+      // Option 4: Fill in missing LEGOs
+      if (missingLegoSeeds.length > 0 && missingLegoSeeds.length < seedCount) {
+        recommendations.push({
+          type: 'fill',
+          title: `➡️  Complete Phase 3 (${missingLegoSeeds.length} seeds)`,
+          description: `Generate LEGOs for seeds missing Phase 3`,
+          action: { startSeed: 1, endSeed: seedCount, force: false }
+        });
+      }
+
+      // Option 5: Extend to full course
+      if (seedCount > 0 && seedCount < 668) {
+        recommendations.push({
+          type: 'extend',
+          title: '🚀 Extend to Full Course (668 seeds)',
+          description: `Keeps existing ${seedCount} seeds, adds ${668 - seedCount} more`,
+          action: { startSeed: 1, endSeed: 668, force: false }
+        });
+      }
+
+      // Option 6: Complete regeneration
+      recommendations.push({
+        type: 'regenerate-all',
+        title: '🔄 Regenerate Everything',
+        description: 'Force regenerate all phases (nuclear option)',
+        action: { startSeed: 1, endSeed: 668, force: true }
+      });
+    }
+
+    res.json({
+      courseCode,
+      exists: seedPairsExists,
+      seed_pairs: { exists: seedPairsExists, count: seedCount },
+      lego_pairs: { exists: legoPairsExists, count: legoCount, missing: missingLegoSeeds },
+      introductions: { exists: introsExists },
+      baskets: { exists: basketsExists, count: basketCount },
+      recommendations
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error analyzing ${courseCode}:`, error);
+    res.status(500).json({ error: 'Failed to analyze course', details: error.message });
+  }
+});
+
+/**
  * GET /api/courses/:courseCode/progress
  * Real-time progress tracking for dashboard polling
  */
