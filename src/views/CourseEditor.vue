@@ -2115,7 +2115,42 @@ async function startAudioGeneration() {
     return
   }
 
-  if (!confirm('Start Phase 8 audio generation?\n\nThis will generate TTS audio for all course samples using Azure TTS and ElevenLabs.\n\nNote: This is a long-running process and requires voice configurations.')) {
+  // Calculate estimates
+  const seeds = course.value?.total_seeds || 668
+  const phaseASamples = seeds * 3  // target1, target2, source per seed
+  const phaseBSamples = actualLegoCount * 3  // 3 presentations per LEGO
+  const totalSamples = phaseASamples + phaseBSamples + 74 + 3  // + encouragements + welcomes
+
+  const confirmMessage = `Start Phase 8 Audio Generation?
+
+━━━ PIPELINE ━━━
+
+1️⃣  Pre-flight Checks
+    → Voice config, API keys, S3 access
+
+2️⃣  Phase A: Core Vocabulary (~${phaseASamples.toLocaleString()} samples)
+    → target1 (native voice 1)
+    → target2 (native voice 2)
+    → source (${course.value.source_language})
+    ⏸️  QC Checkpoint (manual review)
+
+3️⃣  Phase B: Presentations (~${phaseBSamples.toLocaleString()} samples)
+    → 3 presentation variants per LEGO
+    ⏸️  QC Checkpoint (manual review)
+
+4️⃣  Encouragements + Welcomes (77 samples)
+
+5️⃣  S3 Upload + MAR Update
+
+━━━ TOTAL: ~${totalSamples.toLocaleString()} audio files ━━━
+
+⚠️  This uses Azure TTS + ElevenLabs
+⚠️  Process pauses at QC checkpoints
+⚠️  Requires voice configurations
+
+Continue?`
+
+  if (!confirm(confirmMessage)) {
     return
   }
 
