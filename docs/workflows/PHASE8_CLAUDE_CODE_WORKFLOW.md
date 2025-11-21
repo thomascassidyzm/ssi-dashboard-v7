@@ -26,7 +26,42 @@ This ensures:
 - `welcomes.json` is available
 - Encouragement audio files exist
 
-### Step 2: Show Plan and Wait for Approval
+### Step 2: Manifest Hygiene (Critical)
+
+**Before generating audio, validate and clean the course manifest:**
+
+```bash
+# Run hygiene script to validate and fix manifest samples
+node scripts/validate-and-fix-samples.cjs public/vfs/courses/<course_code>/course_manifest.json
+```
+
+**What it does:**
+- Validates all required samples are in the manifest (source, target1, target2, presentation)
+- Identifies missing samples (referenced in course but not in samples section)
+- Identifies orphaned samples (exist in samples but not referenced in course)
+- Automatically adds missing samples with default metadata
+- Automatically removes orphaned samples to prevent unnecessary audio generation
+
+**Why this matters:**
+- **Prevents missing audio**: Ensures every phrase in the course has corresponding sample entries
+- **Saves costs**: Removes orphaned samples so you don't generate audio for unused phrases
+- **Catches data errors**: Identifies structural issues in the manifest before expensive API calls
+- **Clean manifest**: Ensures manifest structure is valid before Phase 8 processing
+
+**Expected output:**
+```
+✨ Manifest is perfect! No changes needed.
+```
+
+Or if issues found:
+```
+❌ Missing 12 samples
+⚠️  Orphaned 5 samples
+✅ Added missing samples: target1: 6, target2: 6
+✅ Removed orphaned samples: source: 3, presentation: 2
+```
+
+### Step 3: Show Plan and Wait for Approval
 
 **Show the plan WITHOUT executing:**
 
@@ -51,7 +86,7 @@ node scripts/phase8-audio-generation.cjs <course_code> --plan
 - Proceed without user confirmation
 - Run multiple execution attempts simultaneously
 
-### Step 3: Execute Audio Generation (User Approved)
+### Step 4: Execute Audio Generation (User Approved)
 
 **After user approves, run execution:**
 
@@ -82,7 +117,7 @@ node scripts/phase8-audio-generation.cjs <course_code> --execute 2>&1 | tee /tmp
 7. Upload to S3
 8. Update course manifest with sample metadata
 
-### Step 4: QC Review (Critical Checkpoint)
+### Step 5: QC Review (Critical Checkpoint)
 
 **When execution pauses for QC:**
 
@@ -147,7 +182,7 @@ qc_review/
    node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-processing
    ```
 
-### Step 5: Continue Processing (After QC Approval)
+### Step 6: Continue Processing (After QC Approval)
 
 **After QC review, continue with:**
 
@@ -338,7 +373,8 @@ skill: "phase8 --course spa_for_eng_TEST --mode plan"
 
 Before starting Phase 8:
 - [ ] Sync S3 canonical resources
-- [ ] Verify `voices.json` has course voice assignments
+- [ ] Run manifest hygiene script (validate-and-fix-samples.cjs)
+- [ ] Verify manifest is clean (no missing/orphaned samples)
 - [ ] Run `--plan` and show to user
 - [ ] **WAIT for explicit user approval**
 - [ ] Run `--execute` with appropriate flags

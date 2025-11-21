@@ -8,9 +8,25 @@
  * Output: JSON file with generation results
  */
 
+// Load environment variables
+require('dotenv').config();
+
 const fs = require('fs-extra');
 const path = require('path');
 const azureTTS = require('../services/azure-tts-service.cjs');
+
+// Catch unhandled rejections and exceptions
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('[Azure Worker] ✗ UNHANDLED REJECTION:', reason);
+  console.error('[Azure Worker] Promise:', promise);
+  process.exit(1);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error('[Azure Worker] ✗ UNCAUGHT EXCEPTION:', error);
+  console.error('[Azure Worker] Stack:', error.stack);
+  process.exit(1);
+});
 
 // Parse command line arguments
 const [,, samplesFile, outputFile, tempDir] = process.argv;
@@ -62,48 +78,63 @@ async function generateAzureSamples() {
     for (let i = 0; i < voiceSamples.length; i += MAX_CONCURRENT) {
       const batch = voiceSamples.slice(i, i + MAX_CONCURRENT);
 
-      const batchResults = await Promise.all(
-        batch.map(async (sample) => {
-          const outputPath = path.join(tempDir, `${sample.uuid}.mp3`);
+      try {
+        const batchResults = await Promise.all(
+          batch.map(async (sample) => {
+            const outputPath = path.join(tempDir, `${sample.uuid}.mp3`);
 
-          console.log(`[Azure Worker] Generating [${sample.role}/${sample.cadence}] ${voiceDetails.voiceId}: "${sample.text}..."`);
+            console.log(`[Azure Worker] Generating [${sample.role}/${sample.cadence}] ${voiceDetails.voiceId}: "${sample.text}..."`);
 
-          try {
-            const audioBuffer = await azureTTS.generateSpeech(
-              sample.text,
-              voiceDetails.voiceId,
-              sample.language,
-              {
-                rate: sample.azureSpeed || 1.0,
-                outputFormat: 'audio-48khz-192kbitrate-mono-mp3'
-              }
-            );
+            try {
+              const audioBuffer = await azureTTS.generateSpeech(
+                sample.text,
+                voiceDetails.voiceId,
+                sample.language,
+                {
+                  rate: sample.azureSpeed || 1.0,
+                  outputFormat: 'audio-48khz-192kbitrate-mono-mp3'
+                }
+              );
 
-            await fs.writeFile(outputPath, audioBuffer);
+              await fs.writeFile(outputPath, audioBuffer);
 
-            return {
-              ...sample,
-              success: true,
-              outputPath,
-              provider: 'azure'
-            };
-          } catch (error) {
-            console.error(`[Azure Worker] ✗ Failed: ${sample.text} - ${error.message}`);
-            return {
-              ...sample,
-              success: false,
-              error: error.message,
-              provider: 'azure'
-            };
-          }
-        })
-      );
+              return {
+                ...sample,
+                success: true,
+                outputPath,
+                provider: 'azure'
+              };
+            } catch (error) {
+              console.error(`[Azure Worker] ✗ Failed: ${sample.text} - ${error.message}`);
+              return {
+                ...sample,
+                success: false,
+                error: error.message,
+                provider: 'azure'
+              };
+            }
+          })
+        );
 
-      results.push(...batchResults);
-      completed += batch.length;
+        results.push(...batchResults);
+        completed += batch.length;
 
-      if (completed < total) {
-        console.log(`[Azure Worker] Progress: ${completed}/${total} samples (${Math.round(completed/total*100)}%)`);
+        if (completed < total) {
+          console.log(`[Azure Worker] Progress: ${completed}/${total} samples (${Math.round(completed/total*100)}%)`);
+        }
+      } catch (batchError) {
+        console.error(`[Azure Worker] ✗ Batch failed at ${i}-${i + batch.length}: ${batchError.message}`);
+        console.error(`[Azure Worker] Stack trace:`, batchError.stack);
+        // Add failed results for this batch
+        for (const sample of batch) {
+          results.push({
+            ...sample,
+            success: false,
+            error: `Batch processing error: ${batchError.message}`,
+            provider: 'azure'
+          });
+        }
+        completed += batch.length;
       }
     }
 
@@ -116,6 +147,13 @@ async function generateAzureSamples() {
   const successCount = results.filter(r => r.success).length;
   console.log(`[Azure Worker] ✅ Complete: ${successCount}/${results.length} samples generated`);
   console.log(`[Azure Worker] Results saved to: ${outputFile}\n`);
+
+  // Exit with failure if we didn't process all input samples
+  const expectedCount = samples.length;
+  if (results.length < expectedCount) {
+    console.error(`[Azure Worker] ❌ Only processed ${results.length}/${expectedCount} samples - exiting with error`);
+    process.exit(1);
+  }
 
   process.exit(successCount > 0 ? 0 : 1);
 }

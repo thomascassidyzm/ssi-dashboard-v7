@@ -98,14 +98,16 @@ function estimateAzureCost(charCount) {
 /**
  * Estimate ElevenLabs cost and check quota
  */
-function estimateElevenLabsCost(charCount, userTier = 'creator', currentUsage = 0) {
+function estimateElevenLabsCost(charCount, userTier = 'creator', currentUsage = 0, actualQuota = null) {
   const tierInfo = PRICING.elevenlabs.tiers[userTier];
 
   if (!tierInfo) {
     throw new Error(`Unknown ElevenLabs tier: ${userTier}`);
   }
 
-  const remaining = tierInfo.chars - currentUsage;
+  // Use actual quota from API if provided, otherwise fall back to hardcoded
+  const monthlyQuota = actualQuota !== null ? actualQuota : tierInfo.chars;
+  const remaining = monthlyQuota - currentUsage;
   const exceedsQuota = charCount > remaining;
   const shortfall = exceedsQuota ? charCount - remaining : 0;
 
@@ -120,7 +122,7 @@ function estimateElevenLabsCost(charCount, userTier = 'creator', currentUsage = 
   return {
     tier: userTier,
     monthlyCost: tierInfo.cost,
-    monthlyQuota: tierInfo.chars,
+    monthlyQuota,
     currentUsage,
     remaining,
     needed: charCount,
@@ -199,12 +201,39 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
   }
   console.log('');
 
-  // Group samples by voice
+  // Group samples by voice and deduplicate by normalized text + role + cadence
   // Samples are in the slice, not at top level
   const samples = manifest.slices?.[0]?.samples || {};
 
+  // First pass: deduplicate variants with the same normalized form
+  const uniqueSamples = new Map(); // key: normalized|role|cadence, value: { text, variant, uuids }
+
   for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
+      const normalized = marService.normalizeText(text);
+      const cadence = variant.cadence || 'natural';
+      const dedupeKey = `${normalized}|${variant.role}|${cadence}`;
+
+      if (!uniqueSamples.has(dedupeKey)) {
+        uniqueSamples.set(dedupeKey, {
+          text,
+          normalized,
+          variant,
+          uuids: []
+        });
+      }
+
+      // Track all UUIDs that map to this normalized form
+      uniqueSamples.get(dedupeKey).uuids.push(variant.uuid);
+    }
+  }
+
+  console.log(`Deduplication: ${Object.keys(samples).flatMap(k => samples[k]).length} variants → ${uniqueSamples.size} unique samples\n`);
+
+  // Second pass: analyze only unique samples
+  for (const [dedupeKey, { text, normalized, variant, uuids }] of uniqueSamples) {
+    const variantData = variant; // Rename for clarity
+    for (const variant of [variantData]) { // Keep the loop structure for minimal code changes
       const voiceId = voiceAssignments[variant.role];
 
       if (!voiceId) {
@@ -240,10 +269,9 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
       }
 
       // Check if exists in MAR (use indexed lookup for O(1) performance)
-      // Normalize text for case-insensitive, punctuation-agnostic matching
+      // Use already-normalized text from deduplication
       const language = variant.role.startsWith('target') ? manifest.target : manifest.known;
-      const normalizedText = marService.normalizeText(text);
-      const lookupKey = `${normalizedText}|${variant.role}|${language}|${cadence}`;
+      const lookupKey = `${normalized}|${variant.role}|${language}|${cadence}`;
       const existing = voiceIndexCache[voiceId]?.get(lookupKey) || null;
 
       // Get voice info to determine model (for character multiplier)
@@ -306,37 +334,219 @@ async function analyzeGenerationRequirements(manifest, voiceAssignments, voiceRe
 }
 
 /**
+ * Convert 3-letter language codes to 2-letter codes for voice registry lookup
+ */
+function normalizeLanguageCode(code) {
+  const mapping = {
+    'eng': 'en',
+    'spa': 'es',
+    'ita': 'it',
+    'fra': 'fr',
+    'deu': 'de',
+    'por': 'pt',
+    'rus': 'ru',
+    'jpn': 'ja',
+    'kor': 'ko',
+    'cmn': 'zh'
+  };
+  return mapping[code] || code;
+}
+
+/**
+ * Analyze voice precedent for given language codes
+ */
+function analyzeVoicePrecedent(knownCode, targetCode, voiceRegistry) {
+  const analysis = {
+    targetLanguage: {
+      code: targetCode,
+      target1: new Set(),
+      target2: new Set()
+    },
+    knownLanguage: {
+      code: knownCode,
+      source: new Set(),
+      presentation: new Set()
+    },
+    availableVoices: {
+      target: [],
+      known: []
+    }
+  };
+
+  // Check language pair assignments for precedent
+  for (const [pair, assignments] of Object.entries(voiceRegistry.language_pair_assignments || {})) {
+    const [knownLang, targetLang] = pair.split('-');
+
+    if (targetLang === targetCode) {
+      if (assignments.target1) analysis.targetLanguage.target1.add(assignments.target1);
+      if (assignments.target2) analysis.targetLanguage.target2.add(assignments.target2);
+    }
+
+    if (knownLang === knownCode) {
+      if (assignments.source) analysis.knownLanguage.source.add(assignments.source);
+      if (assignments.presentation) analysis.knownLanguage.presentation.add(assignments.presentation);
+    }
+  }
+
+  // Find available voices for each language
+  for (const [voiceId, voiceData] of Object.entries(voiceRegistry.voices || {})) {
+    if (voiceData.language === targetCode) {
+      analysis.availableVoices.target.push({ id: voiceId, ...voiceData });
+    }
+    if (voiceData.language === knownCode) {
+      analysis.availableVoices.known.push({ id: voiceId, ...voiceData });
+    }
+  }
+
+  return analysis;
+}
+
+/**
+ * Build guidance message for Claude Code agent to select voices
+ */
+function buildVoiceSelectionGuidance(courseCode, languagePair, precedentAnalysis, voiceRegistry) {
+  const lines = [];
+
+  lines.push(`\n${'='.repeat(80)}`);
+  lines.push(`VOICE ASSIGNMENT REQUIRED`);
+  lines.push(`${'='.repeat(80)}\n`);
+  lines.push(`No voice assignments found for: ${courseCode} (language pair: ${languagePair})\n`);
+  lines.push(`INSTRUCTIONS FOR CLAUDE CODE AGENT:\n`);
+  lines.push(`1. Analyze precedent below to see which voices were used for these languages`);
+  lines.push(`2. Review available voices for each language`);
+  lines.push(`3. Select appropriate voices based on precedent (prefer consistency)`);
+  lines.push(`4. Update public/vfs/canonical/voices.json with your selection\n`);
+
+  lines.push(`${'─'.repeat(80)}`);
+  lines.push(`PRECEDENT ANALYSIS\n`);
+
+  // Target language precedent
+  const targetPrecedent = precedentAnalysis.targetLanguage;
+  lines.push(`Target Language (${targetPrecedent.code}):`);
+  if (targetPrecedent.target1.size > 0) {
+    lines.push(`  ✓ target1: ${Array.from(targetPrecedent.target1).join(', ')} (used in other courses)`);
+  } else {
+    lines.push(`  ✗ target1: No precedent - select from available voices below`);
+  }
+  if (targetPrecedent.target2.size > 0) {
+    lines.push(`  ✓ target2: ${Array.from(targetPrecedent.target2).join(', ')} (used in other courses)`);
+  } else {
+    lines.push(`  ✗ target2: No precedent - select from available voices below`);
+  }
+
+  // Known language precedent
+  const knownPrecedent = precedentAnalysis.knownLanguage;
+  lines.push(`\nKnown Language (${knownPrecedent.code}):`);
+  if (knownPrecedent.source.size > 0) {
+    lines.push(`  ✓ source: ${Array.from(knownPrecedent.source).join(', ')} (used in other courses)`);
+  } else {
+    lines.push(`  ✗ source: No precedent - select from available voices below`);
+  }
+  if (knownPrecedent.presentation.size > 0) {
+    lines.push(`  ✓ presentation: ${Array.from(knownPrecedent.presentation).join(', ')} (used in other courses)`);
+  } else {
+    lines.push(`  ✗ presentation: No precedent - select from available voices below`);
+  }
+
+  lines.push(`\n${'─'.repeat(80)}`);
+  lines.push(`AVAILABLE VOICES\n`);
+
+  // Available target voices
+  lines.push(`Target Language (${targetPrecedent.code}):`);
+  if (precedentAnalysis.availableVoices.target.length > 0) {
+    precedentAnalysis.availableVoices.target.forEach(v => {
+      lines.push(`  - ${v.id} (${v.display_name}) [${v.provider}]`);
+    });
+  } else {
+    lines.push(`  ⚠️  No voices configured for ${targetPrecedent.code}`);
+  }
+
+  // Available known voices
+  lines.push(`\nKnown Language (${knownPrecedent.code}):`);
+  if (precedentAnalysis.availableVoices.known.length > 0) {
+    precedentAnalysis.availableVoices.known.forEach(v => {
+      lines.push(`  - ${v.id} (${v.display_name}) [${v.provider}]`);
+    });
+  } else {
+    lines.push(`  ⚠️  No voices configured for ${knownPrecedent.code}`);
+  }
+
+  lines.push(`\n${'─'.repeat(80)}`);
+  lines.push(`SELECTION GUIDELINES\n`);
+  lines.push(`- If precedent exists: PREFER using the same voices for consistency`);
+  lines.push(`- If no precedent: Choose voices with appropriate gender diversity (female/male)`);
+  lines.push(`- target1: Typically female voice for target language`);
+  lines.push(`- target2: Typically male voice for target language (different from target1)`);
+  lines.push(`- source: Voice for known language (usually matches presentation)`);
+  lines.push(`- presentation: Voice for known language presentations\n`);
+
+  lines.push(`${'─'.repeat(80)}`);
+  lines.push(`HOW TO UPDATE voices.json\n`);
+  lines.push(`Add to "language_pair_assignments" section (preferred for reusability):`);
+  lines.push(`\n"${languagePair}": {`);
+  lines.push(`  "target1": "voice_id_here",`);
+  lines.push(`  "target2": "voice_id_here",`);
+  lines.push(`  "source": "voice_id_here",`);
+  lines.push(`  "presentation": "voice_id_here"`);
+  lines.push(`}\n`);
+  lines.push(`OR add to "course_assignments" section (course-specific override):`);
+  lines.push(`\n"${courseCode}": {`);
+  lines.push(`  "target1": "voice_id_here",`);
+  lines.push(`  "target2": "voice_id_here",`);
+  lines.push(`  "source": "voice_id_here",`);
+  lines.push(`  "presentation": "voice_id_here"`);
+  lines.push(`}`);
+  lines.push(`\n${'='.repeat(80)}\n`);
+
+  return lines.join('\n');
+}
+
+/**
  * Generate execution plan
  */
 async function generateExecutionPlan(courseCode, manifest, voiceRegistry, options = {}) {
   const {
     elevenLabsTier = 'creator',
-    elevenLabsUsage = 0
+    elevenLabsUsage = 0,
+    elevenLabsQuota = null
   } = options;
 
-  // Extract language pair from manifest (known-target format, e.g., "en-es")
-  const languagePair = `${manifest.known}-${manifest.target}`;
-  const reversePair = `${manifest.target}-${manifest.known}`;
+  // Extract language codes from manifest and normalize to 2-letter codes
+  const knownCode = normalizeLanguageCode(manifest.known);
+  const targetCode = normalizeLanguageCode(manifest.target);
 
-  // 1. Try language pair assignments first (new preferred method)
-  let voiceAssignments = voiceRegistry.language_pair_assignments?.[languagePair];
+  // Build language pairs (known-target format, e.g., "en-es")
+  const languagePair = `${knownCode}-${targetCode}`;
+  const reversePair = `${targetCode}-${knownCode}`;
 
-  // 2. Fall back to reverse pair if needed
+  // Priority order for voice assignments:
+  // 1. Course-specific assignments (highest priority - allows per-course customization)
+  let voiceAssignments = voiceRegistry.course_assignments?.[courseCode];
+  let assignmentSource = 'course-specific';
+
+  // 2. Language pair assignments (fallback for standard language pairs)
+  if (!voiceAssignments) {
+    voiceAssignments = voiceRegistry.language_pair_assignments?.[languagePair];
+    assignmentSource = 'language-pair';
+  }
+
+  // 3. Try reverse pair if needed
   if (!voiceAssignments) {
     voiceAssignments = voiceRegistry.language_pair_assignments?.[reversePair];
     if (voiceAssignments) {
+      assignmentSource = 'language-pair-reversed';
       console.log(`Note: Using reverse pair ${reversePair} for ${languagePair}`);
     }
   }
 
-  // 3. Fall back to course-specific assignments (legacy)
+  // 4. If no assignments found, throw error with guidance for Claude Code agent
   if (!voiceAssignments) {
-    voiceAssignments = voiceRegistry.course_assignments?.[courseCode];
+    const precedentAnalysis = analyzeVoicePrecedent(knownCode, targetCode, voiceRegistry);
+    const errorMessage = buildVoiceSelectionGuidance(courseCode, languagePair, precedentAnalysis, voiceRegistry);
+    throw new Error(errorMessage);
   }
 
-  if (!voiceAssignments) {
-    throw new Error(`No voice assignments found for course: ${courseCode} (language pair: ${languagePair})`);
-  }
+  console.log(`Using ${assignmentSource} voice assignments for ${courseCode}`);
 
   // Analyze requirements
   const analysis = await analyzeGenerationRequirements(manifest, voiceAssignments, voiceRegistry);
@@ -391,7 +601,7 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
       };
 
     } else if (voiceInfo.provider === 'elevenlabs') {
-      const costInfo = estimateElevenLabsCost(newSamplesChars, elevenLabsTier, elevenLabsUsage);
+      const costInfo = estimateElevenLabsCost(newSamplesChars, elevenLabsTier, elevenLabsUsage, elevenLabsQuota);
       plan.costs[voiceId] = costInfo;
       plan.timing[voiceId] = {
         estimatedSeconds: Math.ceil(estimateGenerationTime(voiceData.newSamples, 'elevenlabs', costInfo.rateLimit)),

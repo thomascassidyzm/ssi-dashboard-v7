@@ -2,6 +2,26 @@
 
 > **Welcome, future agent!** This document contains everything you need to work effectively on the SSi Dashboard v7 project without creating chaos.
 
+## ⚠️ CRITICAL RULES
+
+### **NEVER Delete Generated Assets Without Permission**
+
+**❌ NEVER run cleanup commands on:**
+- `temp/audio/` - Generated audio files (costly TTS API calls)
+- `temp/video/` - Generated video files
+- Any directory with generated MP3s, MP4s, or media files
+- MAR databases with sample data
+
+**✅ ALWAYS:**
+- Ask user first: "Should I clean up temp/audio/? This will delete X files."
+- Check file counts before any `rm -rf` command
+- When debugging, work WITH existing files, don't delete them
+- Assume generated assets are expensive and time-consuming to recreate
+
+**Why:** Generated audio/video represents significant API costs (Azure TTS, ElevenLabs) and generation time. Deleting 1000+ files without permission wastes hours of work and money.
+
+---
+
 ## 🎯 Project Overview
 
 **SSi Dashboard v7 Clean** is a language learning pipeline that generates and manages course content through multiple processing phases. You're working on a system that transforms seed phrases into complete language courses with LEGO-based recombination for maximum learning efficiency.
@@ -276,9 +296,10 @@ node tools/orchestrators/automation_server.cjs
 
 **Critical Rules:**
 1. **ALWAYS sync S3 first**: `aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/`
-2. **Show plan and WAIT for user approval** before executing
-3. **DO NOT auto-launch `--execute`** in background
-4. **Review QC checkpoint** before continuing processing
+2. **Run manifest hygiene**: Validate and clean course manifest samples (prevents wasted generation)
+3. **Show plan and WAIT for user approval** before executing
+4. **DO NOT auto-launch `--execute`** in background
+5. **Review QC checkpoint** before continuing processing
 
 **Basic Workflow:**
 
@@ -286,20 +307,23 @@ node tools/orchestrators/automation_server.cjs
 # 1. Sync canonical resources (voices, welcomes, encouragements)
 aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/
 
-# 2. Show plan (DO NOT proceed without user approval!)
+# 2. Run manifest hygiene (validate and clean course samples)
+node scripts/validate-and-fix-samples.cjs public/vfs/courses/<course_code>/course_manifest.json
+
+# 3. Show plan (DO NOT proceed without user approval!)
 node scripts/phase8-audio-generation.cjs <course_code> --plan
 
-# 3. After user approves, execute
+# 4. After user approves, execute
 node scripts/phase8-audio-generation.cjs <course_code> --execute
 
-# 4. At QC checkpoint, review flagged samples:
+# 5. At QC checkpoint, review flagged samples:
 #    - Read: vfs/courses/<course_code>/qc_report_raw.json
 #    - Listen: vfs/courses/<course_code>/qc_review/<role>/*.mp3
 
-# 5a. If regeneration needed:
+# 6a. If regeneration needed:
 node scripts/phase8-audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
 
-# 5b. If approved, continue processing:
+# 6b. If approved, continue processing:
 node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-processing
 ```
 

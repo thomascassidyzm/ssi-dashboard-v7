@@ -17,6 +17,104 @@ const AZURE_SPEECH_REGION = process.env.AZURE_SPEECH_REGION || 'westeurope';
 let lastRequestTime = 0;
 const MIN_REQUEST_INTERVAL = 7; // 7ms between requests = ~143 req/s (Azure allows 200 req/s, using 71%)
 
+// Synthesizer Connection Pool (reuse connections to avoid exhaustion)
+// Microsoft recommends reusing synthesizers to avoid connection overhead
+const synthesizerPool = {
+  available: [],
+  inUse: 0,
+  MIN_POOL_SIZE: 2,   // Pre-warm minimum connections
+  MAX_POOL_SIZE: 8,   // Maximum concurrent connections
+  created: 0
+};
+
+/**
+ * Create a new synthesizer instance
+ * @returns {object} Azure SpeechSynthesizer instance
+ */
+function createSynthesizer() {
+  const speechConfig = initSpeechConfig();
+  const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
+  synthesizerPool.created++;
+  return synthesizer;
+}
+
+/**
+ * Get a synthesizer from the pool (or create new if pool empty)
+ * @returns {object} Azure SpeechSynthesizer instance
+ */
+function borrowSynthesizer() {
+  if (synthesizerPool.available.length > 0) {
+    const synthesizer = synthesizerPool.available.pop();
+    synthesizerPool.inUse++;
+    return synthesizer;
+  }
+
+  // Create new if under max pool size
+  if (synthesizerPool.created < synthesizerPool.MAX_POOL_SIZE) {
+    synthesizerPool.inUse++;
+    return createSynthesizer();
+  }
+
+  // Pool exhausted - return null (caller should retry)
+  return null;
+}
+
+/**
+ * Return a synthesizer to the pool for reuse
+ * @param {object} synthesizer - Azure SpeechSynthesizer instance
+ */
+function returnSynthesizer(synthesizer) {
+  synthesizerPool.inUse--;
+
+  if (synthesizerPool.available.length < synthesizerPool.MAX_POOL_SIZE) {
+    // Return to pool for reuse
+    synthesizerPool.available.push(synthesizer);
+  } else {
+    // Pool full - close this instance
+    synthesizer.close();
+    synthesizerPool.created--;
+  }
+}
+
+/**
+ * Pre-warm the connection pool
+ */
+function prewarmPool() {
+  if (synthesizerPool.available.length === 0 && synthesizerPool.created === 0) {
+    console.log(`[Azure TTS] Pre-warming connection pool (${synthesizerPool.MIN_POOL_SIZE} connections)...`);
+    for (let i = 0; i < synthesizerPool.MIN_POOL_SIZE; i++) {
+      synthesizerPool.available.push(createSynthesizer());
+    }
+  }
+}
+
+/**
+ * Clean up all pooled connections (call on shutdown)
+ */
+function closePool() {
+  console.log(`[Azure TTS] Closing connection pool (${synthesizerPool.created} total connections)...`);
+  for (const synthesizer of synthesizerPool.available) {
+    synthesizer.close();
+  }
+  synthesizerPool.available = [];
+  synthesizerPool.created = 0;
+  synthesizerPool.inUse = 0;
+}
+
+// Pre-warm pool on module load
+prewarmPool();
+
+// Clean up pool on process exit
+process.on('exit', closePool);
+process.on('SIGINT', () => {
+  closePool();
+  process.exit(0);
+});
+process.on('SIGTERM', () => {
+  closePool();
+  process.exit(0);
+});
+
 /**
  * Initialize Azure Speech SDK config
  */
@@ -79,7 +177,11 @@ function escapeXML(text) {
 }
 
 /**
- * Generate audio using Azure Speech Services
+ * Generate audio using Azure Speech Services (writes to file)
+ *
+ * Note: This function does NOT use the connection pool because Azure SDK
+ * requires a dedicated AudioConfig for file output. For bulk generation,
+ * use generateSpeech() which uses the pool and returns buffers.
  *
  * @param {string} text - Text to synthesize
  * @param {string} voiceName - Azure voice name (e.g., 'it-IT-ElsaNeural')
@@ -121,6 +223,78 @@ async function generateAudio(text, voiceName, outputPath, speed = 1.0) {
       reject(error);
     }
   });
+}
+
+/**
+ * Generate speech and return audio buffer (no file writing)
+ * Used by parallel workers
+ *
+ * Uses connection pool to reuse synthesizer instances and avoid exhausting
+ * Azure's concurrent connection limits.
+ *
+ * @param {string} text - Text to synthesize
+ * @param {string} voiceName - Azure voice name
+ * @param {string} language - Language code (unused, for API compatibility)
+ * @param {object} options - Generation options
+ * @param {number} options.rate - Speed multiplier (default: 1.0)
+ * @returns {Promise<Buffer>} Audio buffer
+ */
+async function generateSpeech(text, voiceName, language, options = {}) {
+  const speed = options.rate || 1.0;
+
+  await rateLimitRequest();
+
+  // Retry logic for pool exhaustion
+  const MAX_POOL_RETRIES = 10;
+  const POOL_RETRY_DELAY = 100; // ms
+
+  for (let attempt = 0; attempt < MAX_POOL_RETRIES; attempt++) {
+    const synthesizer = borrowSynthesizer();
+
+    if (!synthesizer) {
+      // Pool exhausted - wait and retry
+      if (attempt < MAX_POOL_RETRIES - 1) {
+        await new Promise(resolve => setTimeout(resolve, POOL_RETRY_DELAY));
+        continue;
+      } else {
+        throw new Error('Azure TTS connection pool exhausted after retries');
+      }
+    }
+
+    // Got a synthesizer from pool
+    try {
+      const ssml = buildSSML(text, voiceName, speed);
+
+      const audioBuffer = await new Promise((resolve, reject) => {
+        synthesizer.speakSsmlAsync(
+          ssml,
+          result => {
+            if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
+              // Return the audio data as a buffer
+              resolve(Buffer.from(result.audioData));
+            } else if (result.reason === sdk.ResultReason.Canceled) {
+              const cancellation = sdk.CancellationDetails.fromResult(result);
+              reject(new Error(`Azure TTS canceled: ${cancellation.reason} - ${cancellation.errorDetails}`));
+            } else {
+              reject(new Error(`Azure TTS failed with reason: ${result.reason}`));
+            }
+          },
+          error => {
+            reject(new Error(`Azure TTS error: ${error}`));
+          }
+        );
+      });
+
+      // Success - return synthesizer to pool and return audio
+      returnSynthesizer(synthesizer);
+      return audioBuffer;
+
+    } catch (error) {
+      // Error - return synthesizer to pool and rethrow
+      returnSynthesizer(synthesizer);
+      throw error;
+    }
+  }
 }
 
 /**
@@ -241,11 +415,28 @@ async function testVoice(voiceName, text = "Hello, this is a test.", speed = 1.0
   return tempFile;
 }
 
+/**
+ * Get connection pool statistics
+ * @returns {object} Pool stats
+ */
+function getPoolStats() {
+  return {
+    available: synthesizerPool.available.length,
+    inUse: synthesizerPool.inUse,
+    total: synthesizerPool.created,
+    maxSize: synthesizerPool.MAX_POOL_SIZE
+  };
+}
+
 module.exports = {
   generateAudio,
   generateAudioWithRetry,
+  generateSpeech,
   listVoices,
   getAzureLocale,
   testVoice,
-  buildSSML
+  buildSSML,
+  getPoolStats,
+  closePool,
+  prewarmPool
 };

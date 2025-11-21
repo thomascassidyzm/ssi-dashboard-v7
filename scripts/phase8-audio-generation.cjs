@@ -32,13 +32,6 @@ const AUDIO_TEMP_DIR = path.join(__dirname, '../temp/audio');
 const VOICES_REGISTRY = path.join(__dirname, '../vfs/canonical/voices.json');
 
 /**
- * Normalize text for matching (strip punctuation, lowercase)
- */
-function normalizeText(text) {
-  return text.replace(/[^\w\s'-]/g, '').toLowerCase().trim();
-}
-
-/**
  * Extract language codes from course code
  * Format: <target>_for_<source>_<seeds>
  * Example: deu_for_eng_30seeds → { target: 'deu', source: 'eng' }
@@ -242,8 +235,106 @@ function collectSampleVariants(manifest) {
 }
 
 /**
+ * Re-assign UUIDs from MAR to all manifest samples
+ * This ensures both "Hablar" and "hablar" get the same UUID from the MAR
+ *
+ * @param {Object} manifest - Course manifest
+ * @param {Object} voiceAssignments - Voice assignments by role
+ * @param {Array} roles - Roles to re-assign (default: Phase A roles)
+ * @returns {Promise<Object>} Assignment stats
+ */
+async function reassignUUIDsFromMAR(manifest, voiceAssignments, roles = ['target1', 'target2', 'source']) {
+  const samples = manifest.slices?.[0]?.samples || {};
+  const targetLang = manifest.target;
+  const knownLang = manifest.known;
+
+  let assigned = 0;
+  let missing = 0;
+
+  for (const [text, variantList] of Object.entries(samples)) {
+    for (const variant of variantList) {
+      // Only process specified roles
+      if (!roles.includes(variant.role)) {
+        continue;
+      }
+
+      const voiceId = voiceAssignments[variant.role];
+      if (!voiceId) {
+        console.warn(`No voice assigned for role: ${variant.role}`);
+        continue;
+      }
+
+      // Determine language for this role
+      const language = ['target1', 'target2'].includes(variant.role) ? targetLang : knownLang;
+
+      // Check both permanent and temp MAR (uses normalized text matching)
+      const existing = await marService.findExistingSampleInBothMARs(
+        voiceId,
+        text,
+        variant.role,
+        language,
+        variant.cadence
+      );
+
+      if (existing) {
+        variant.id = existing.uuid;
+        variant.duration = existing.duration;
+        assigned++;
+      } else {
+        missing++;
+        console.warn(`Missing sample in MAR: [${variant.role}/${variant.cadence}] "${text.substring(0, 60)}..."`);
+      }
+    }
+  }
+
+  return { assigned, missing };
+}
+
+/**
+ * Deduplicate Phase A samples (target1/target2/source) based on normalized text
+ * Presentations are always unique, so they are not deduplicated
+ *
+ * Uses same normalization as MAR: lowercase + remove trailing periods
+ * This prevents generating "Hablar" and "hablar" as separate samples
+ *
+ * @param {Array} samples - Samples to generate
+ * @returns {Array} Deduplicated samples
+ */
+function deduplicatePhaseASamples(samples) {
+  const PHASE_A_ROLES = ['target1', 'target2', 'source'];
+  const seen = new Set();
+  const deduplicated = [];
+
+  for (const sample of samples) {
+    // Skip deduplication for presentations (always unique)
+    if (!PHASE_A_ROLES.includes(sample.role)) {
+      deduplicated.push(sample);
+      continue;
+    }
+
+    // Normalize text same way as MAR (from mar-service.cjs)
+    const normalizedText = sample.text
+      .toLowerCase()
+      .trim()
+      .replace(/\.+$/, ''); // Remove only trailing periods (keep !, ?, etc.)
+
+    // Create unique key: normalized_text|role|cadence
+    const key = `${normalizedText}|${sample.role}|${sample.cadence}`;
+
+    if (!seen.has(key)) {
+      seen.add(key);
+      deduplicated.push(sample);
+    }
+    // else: duplicate detected, skip it
+  }
+
+  return deduplicated;
+}
+
+/**
  * Match samples against MAR and identify missing ones
  * Includes encouragements in the analysis
+ * Now checks both permanent and temporary MARs
  */
 async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments) {
   const variants = collectSampleVariants(manifest);
@@ -266,12 +357,9 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
     // Determine language for this role
     const language = ['target1', 'target2'].includes(variant.role) ? targetLang : knownLang;
 
-    // Load voice-specific MAR
-    const voiceSamples = await marService.loadVoiceSamples(voiceId);
-
-    // Try to find existing sample
-    const existing = marService.findExistingSample(
-      voiceSamples,
+    // Check both permanent and temp MAR
+    const existing = await marService.findExistingSampleInBothMARs(
+      voiceId,
       variant.text,
       variant.role,
       language,
@@ -327,12 +415,22 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
     }
   }
 
+  // Deduplicate toGenerate for Phase A roles (target1/target2/source)
+  // Presentations are always unique, so skip deduplication for them
+  // This prevents generating "Hablar" and "hablar" as separate samples
+  const deduplicatedToGenerate = deduplicatePhaseASamples(toGenerate);
+
+  if (deduplicatedToGenerate.length < toGenerate.length) {
+    const duplicatesRemoved = toGenerate.length - deduplicatedToGenerate.length;
+    console.log(`Removed ${duplicatesRemoved} duplicate samples (capitalization/punctuation variants)`);
+  }
+
   // Note: Encouragements are NOT checked here
   // They are checked/generated at the very end (after Phase A + B)
   // This keeps the flow simpler and allows them to be added to manifest
   // right before the final S3 check
 
-  return { toGenerate, matched };
+  return { toGenerate: deduplicatedToGenerate, matched };
 }
 
 /**
@@ -488,9 +586,75 @@ async function generateMissingAudio(toGenerate) {
 }
 
 /**
+ * Recover partial results from failed worker
+ * Scans temp directory for generated MP3s that aren't in MAR yet and imports them
+ *
+ * This handles the Azure SDK per-process limit (~104 samples) by:
+ * 1. Finding all MP3 files in temp directory
+ * 2. Checking which ones aren't in MAR yet
+ * 3. Importing them so next run will skip them
+ */
+async function recoverPartialResults(inputSamples, tempDir) {
+  console.log('\n⚠️  Worker completed without results file - recovering partial results...\n');
+
+  // Get list of all MP3 files in temp directory
+  const files = await fs.readdir(tempDir);
+  const mp3Files = files.filter(f => f.endsWith('.mp3'));
+
+  console.log(`Found ${mp3Files.length} total MP3 files in temp directory`);
+
+  const recovered = [];
+
+  // For each MP3 file, check if it matches any of our input samples
+  for (const filename of mp3Files) {
+    const uuid = filename.replace('.mp3', '');
+    const filePath = path.join(tempDir, filename);
+
+    // Find the matching sample from input
+    const sample = inputSamples.find(s => s.uuid === uuid);
+
+    if (sample) {
+      // Check if already in MAR
+      const existsInMAR = await marService.getSample(sample.voiceId, uuid);
+
+      if (!existsInMAR) {
+        // New file that needs to be imported to temp MAR
+        try {
+          const duration = await audioProcessor.getAudioDuration(filePath);
+          await marService.saveSampleToTempMAR(sample.voiceId, uuid, {
+            text: sample.text,
+            language: sample.language,
+            role: sample.role,
+            cadence: sample.cadence,
+            duration,
+            filename: `${uuid}.mp3`
+          });
+
+          recovered.push({
+            ...sample,
+            success: true,
+            outputPath: filePath,
+            provider: sample.voiceId.split('_')[0]
+          });
+
+          console.log(`✓ Imported to temp MAR: ${sample.voiceId} / ${sample.text.substring(0, 40)}... (${duration.toFixed(2)}s)`);
+        } catch (error) {
+          console.error(`✗ Failed to import ${uuid}: ${error.message}`);
+        }
+      }
+    }
+  }
+
+  console.log(`\n✅ Recovered and imported ${recovered.length} new samples to MAR\n`);
+
+  return recovered;
+}
+
+/**
  * Generate all missing audio files using parallel provider workers
  * Spawns separate processes for Azure and ElevenLabs to run in parallel
  * ~50% faster than sequential generation
+ * Auto-retries if workers fail partway through (common with Azure SDK)
  */
 async function generateMissingAudioParallel(toGenerate) {
   console.log('\n=== Parallel Provider Generation ===\n');
@@ -571,10 +735,46 @@ async function generateMissingAudioParallel(toGenerate) {
               const results = await fs.readJson(worker.outputFile);
               resolve(results);
             } catch (err) {
-              reject(new Error(`Failed to read ${worker.name} results: ${err.message}`));
+              // Worker exited successfully but didn't write results file
+              // This happens with Azure SDK when it hits per-process limits (~104 samples)
+              // Recover partial results and import to MAR
+              console.warn(`\n⚠️  ${worker.name}: ${err.message}`);
+
+              const inputFile = worker.outputFile.replace('results.json', 'samples.json')
+                .replace('worker-output', 'worker-input');
+
+              try {
+                const inputSamples = await fs.readJson(inputFile);
+                const recovered = await recoverPartialResults(inputSamples, AUDIO_TEMP_DIR);
+                console.log(`✅ Recovered ${recovered.length} samples from ${worker.name}\n`);
+                resolve(recovered);
+              } catch (recoveryErr) {
+                reject(new Error(`Failed to recover ${worker.name} partial results: ${recoveryErr.message}`));
+              }
             }
           } else {
-            reject(new Error(`${worker.name} worker failed with code ${code}`));
+            // Worker failed - try to recover partial results
+            console.warn(`\n⚠️  ${worker.name} exited with code ${code} - attempting to recover partial results\n`);
+
+            const inputFile = worker.outputFile.replace('results.json', 'samples.json')
+              .replace('worker-output', 'worker-input');
+
+            try {
+              // Try to read whatever results were written
+              const partialResults = await fs.readJson(worker.outputFile);
+              console.log(`✅ Recovered ${partialResults.length} samples from ${worker.name} results file\n`);
+              resolve(partialResults);
+            } catch (resultsErr) {
+              // No results file - scan temp directory
+              try {
+                const inputSamples = await fs.readJson(inputFile);
+                const recovered = await recoverPartialResults(inputSamples, AUDIO_TEMP_DIR);
+                console.log(`✅ Recovered ${recovered.length} samples from ${worker.name} temp directory\n`);
+                resolve(recovered);
+              } catch (recoveryErr) {
+                reject(new Error(`${worker.name} worker failed and recovery failed: ${recoveryErr.message}`));
+              }
+            }
           }
         });
 
@@ -675,22 +875,25 @@ async function extractDurations(processResults) {
  */
 async function runQCCheckpoint(generationResults, courseCode, uploadBucket) {
   console.log('\n=== Quality Control Checkpoint ===\n');
+  console.log('[DEBUG] runQCCheckpoint called with:');
+  console.log(`  - generationResults.length: ${generationResults.length}`);
+  console.log(`  - courseCode: ${courseCode}`);
+  console.log(`  - uploadBucket: ${uploadBucket}`);
 
-  // Extract durations from raw generated files (before processing)
+  // Skip duration extraction - durations calculated later in pipeline
+  // Set all durations to 0 for now (will be calculated when needed)
   const durations = {};
   for (const result of generationResults) {
     if (!result.success) continue;
-
-    try {
-      const duration = await audioProcessor.getAudioDuration(result.outputPath);
-      durations[result.sample.uuid] = duration;
-    } catch (error) {
-      console.warn(`Failed to extract duration for ${result.sample.uuid}: ${error.message}`);
-    }
+    durations[result.uuid] = 0; // Placeholder - calculated later
   }
+
+  console.log(`[DEBUG] Set placeholder durations for ${Object.keys(durations).length} samples`);
 
   // Flag samples for review
   const flaggedSamples = qcService.flagSamplesForReview(generationResults, durations);
+
+  console.log(`[DEBUG] flagSamplesForReview returned ${flaggedSamples.length} flagged samples`);
 
   if (flaggedSamples.length === 0) {
     console.log('✓ No quality issues detected\n');
@@ -701,7 +904,15 @@ async function runQCCheckpoint(generationResults, courseCode, uploadBucket) {
 
   // Generate QC report
   const qcReportPath = path.join(VFS_BASE, 'courses', courseCode, 'qc_report_raw.json');
-  const { jsonPath, mdPath } = qcService.generateQCReport(flaggedSamples, qcReportPath, uploadBucket);
+  console.log(`[DEBUG] QC report path: ${qcReportPath}`);
+  console.log(`[DEBUG] Directory exists: ${fs.existsSync(path.dirname(qcReportPath))}`);
+
+  const reportResult = qcService.generateQCReport(flaggedSamples, qcReportPath, uploadBucket);
+  console.log(`[DEBUG] generateQCReport returned:`, reportResult);
+  console.log(`[DEBUG] JSON file exists after generation: ${fs.existsSync(reportResult.jsonPath)}`);
+  console.log(`[DEBUG] MD file exists after generation: ${fs.existsSync(reportResult.mdPath)}`);
+
+  const { jsonPath, mdPath } = reportResult;
 
   // Create QC review directory with audio samples ready to listen to
   try {
@@ -1416,10 +1627,11 @@ async function uploadToS3(processResults, bucket = s3Service.STAGE_BUCKET) {
 }
 
 /**
- * Update MAR with newly generated samples
+ * Update temporary MAR with newly generated samples
+ * Samples stay in temp MAR until QC passes and S3 upload is verified
  */
 async function updateMAR(generationResults, durations) {
-  console.log('\n=== Updating MAR ===\n');
+  console.log('\n=== Updating Temporary MAR ===\n');
 
   for (const result of generationResults) {
     if (!result.success) continue;
@@ -1433,7 +1645,7 @@ async function updateMAR(generationResults, durations) {
     }
 
     try {
-      await marService.saveSample(sample.voiceId, sample.uuid, {
+      await marService.saveSampleToTempMAR(sample.voiceId, sample.uuid, {
         text: sample.text,
         language: sample.language,
         role: sample.role,
@@ -1442,9 +1654,9 @@ async function updateMAR(generationResults, durations) {
         filename: `${sample.uuid}.mp3`
       });
 
-      console.log(`MAR updated: ${sample.voiceId} / ${sample.uuid}`);
+      console.log(`Temp MAR updated: ${sample.voiceId} / ${sample.uuid}`);
     } catch (error) {
-      console.error(`Failed to update MAR for ${sample.uuid}: ${error.message}`);
+      console.error(`Failed to update temp MAR for ${sample.uuid}: ${error.message}`);
     }
   }
 }
@@ -1469,17 +1681,77 @@ async function executePhaseA(phaseASamples, courseCode, options) {
     return { success: true, generated: 0, skipped: true };
   }
 
-  // 1. Generate audio (parallel by default)
-  const useParallel = !options.sequential; // Default to parallel unless --sequential flag
-  const generationResults = useParallel
-    ? await generateMissingAudioParallel(phaseASamples)
-    : await generateMissingAudio(phaseASamples);
-  const successCount = generationResults.filter(r => r.success).length;
-  console.log(`\nGenerated: ${successCount}/${phaseASamples.length} files`);
+  // 1. Generate audio with automatic retry (for Azure SDK per-process limits)
+  // Retries indefinitely until all samples are generated, but stops if no progress is made
+  const useParallel = !options.sequential;
+  let allGenerationResults = [];
+  let remainingSamples = [...phaseASamples];
+  let retryCount = 0;
+  let consecutiveZeroProgress = 0;
+  const MAX_ZERO_PROGRESS = 3; // Stop if 3 attempts in a row produce nothing
+
+  while (remainingSamples.length > 0) {
+    console.log(`\n${retryCount > 0 ? '🔄 Retry attempt ' + retryCount + ' - ' : ''}Generating ${remainingSamples.length} samples...\n`);
+
+    const generationResults = useParallel
+      ? await generateMissingAudioParallel(remainingSamples)
+      : await generateMissingAudio(remainingSamples);
+
+    // Only add VALID results with UUIDs
+    const validResults = generationResults.filter(r => r && r.uuid);
+    allGenerationResults.push(...validResults);
+
+    // Check if all remaining samples were generated
+    const successfulUUIDs = new Set(
+      validResults.filter(r => r.success).map(r => r.uuid)
+    );
+
+    const previousRemaining = remainingSamples.length;
+    remainingSamples = remainingSamples.filter(s => !successfulUUIDs.has(s.uuid));
+
+    if (remainingSamples.length > 0) {
+      const successThisRound = validResults.filter(r => r.success).length;
+      console.log(`\n⚠️  Generated ${successThisRound} samples, ${remainingSamples.length} still remaining - will retry automatically\n`);
+      retryCount++;
+
+      // Track consecutive zero-progress attempts
+      if (successThisRound === 0) {
+        consecutiveZeroProgress++;
+        console.warn(`⚠️  No progress in this attempt (${consecutiveZeroProgress}/${MAX_ZERO_PROGRESS})`);
+
+        if (consecutiveZeroProgress >= MAX_ZERO_PROGRESS) {
+          console.error(`\n❌ No progress made in ${MAX_ZERO_PROGRESS} consecutive attempts - stopping retry loop\n`);
+          console.error(`Samples that failed to generate:`);
+          remainingSamples.slice(0, 5).forEach(s => {
+            console.error(`  - ${s.voiceId}: "${s.text.substring(0, 50)}..."`);
+          });
+          if (remainingSamples.length > 5) {
+            console.error(`  ... and ${remainingSamples.length - 5} more`);
+          }
+          break;
+        }
+      } else {
+        // Reset counter on any progress
+        consecutiveZeroProgress = 0;
+      }
+    } else {
+      console.log(`\n✅ All samples generated successfully${retryCount > 0 ? ' after ' + retryCount + ' retries' : ''}!\n`);
+    }
+  }
+
+  if (remainingSamples.length > 0) {
+    console.warn(`\n⚠️  Warning: ${remainingSamples.length} samples could not be generated after ${retryCount} attempts\n`);
+    console.warn(`This may indicate API issues, invalid text, or voice problems.\n`);
+  }
+
+  const successCount = allGenerationResults.filter(r => r.success).length;
+  console.log(`\nTotal Generated: ${successCount}/${phaseASamples.length} files`);
 
   if (successCount === 0) {
     throw new Error('No audio files were successfully generated in Phase A');
   }
+
+  const generationResults = allGenerationResults;
 
   // 2. QC Checkpoint - BEFORE processing and upload
   const { flagged, durations } = await runQCCheckpoint(
@@ -1668,21 +1940,25 @@ async function generateAudioForCourse(courseCode, options = {}) {
 
     console.log('✅ All pre-flight checks passed. Proceeding with audio generation...\n');
 
-    // 1. Load course manifest
+    // 1. Initialize temporary MAR (crash-safe staging area)
+    console.log('Initializing temporary MAR...');
+    await marService.initTempMAR();
+
+    // 2. Load course manifest
     console.log('Loading course manifest...');
     const manifest = await loadCourseManifest(courseCode);
     const sampleCount = Object.keys(manifest.slices?.[0]?.samples || {}).length;
     console.log(`Loaded: ${sampleCount} unique phrases\n`);
 
-    // 2. Normalize cadences based on roles
+    // 3. Normalize cadences based on roles
     normalizeCadences(manifest);
 
-    // 3. Get voice assignments
+    // 4. Get voice assignments
     console.log('Loading voice assignments...');
     const voiceAssignments = await getVoiceAssignments(courseCode);
     console.log('Voice assignments:', voiceAssignments, '\n');
 
-    // 4. Analyze what needs to be generated
+    // 5. Analyze what needs to be generated (checks both permanent and temp MAR)
     console.log('Analyzing required generation...');
     const { toGenerate, matched } = await analyzeRequiredGeneration(
       manifest,
@@ -1699,7 +1975,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
       return { success: true, generated: 0, matched: matched.length };
     }
 
-    // 5. Split samples by phase
+    // 6. Split samples by phase
     const { phaseA, phaseB } = splitSamplesByPhase(toGenerate);
     console.log(`Phase A (targets + source): ${phaseA.length} samples`);
     console.log(`Phase B (presentations): ${phaseB.length} samples\n`);
@@ -1708,7 +1984,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
     let totalQCFlagged = 0;
     let allDurations = {};
 
-    // 6. Execute Phase A (targets + source)
+    // 7. Execute Phase A (targets + source)
     if (phase === 'auto' || phase === 'targets') {
       const resultA = await executePhaseA(phaseA, courseCode, { skipUpload, uploadBucket, skipQC, sequential });
       totalGenerated += resultA.generated;
@@ -1726,9 +2002,25 @@ async function generateAudioForCourse(courseCode, options = {}) {
           pausedPhase: 'A'
         };
       }
+
+      // Re-assign UUIDs from MAR to all manifest samples
+      // This ensures variants like "Hablar" and "hablar" both get the same UUID
+      console.log('\nRe-assigning UUIDs from MAR to manifest...');
+      const reassignStats = await reassignUUIDsFromMAR(manifest, voiceAssignments);
+      console.log(`✓ Assigned ${reassignStats.assigned} UUIDs from MAR`);
+
+      if (reassignStats.missing > 0) {
+        console.error(`\n❌ ERROR: ${reassignStats.missing} Phase A samples are missing UUIDs!`);
+        console.error(`This should not happen - all Phase A samples should be in MAR after generation.`);
+        throw new Error(`Missing ${reassignStats.missing} Phase A samples in MAR`);
+      }
+
+      // Save manifest with updated UUIDs
+      await saveCourseManifest(courseCode, manifest);
+      console.log('✓ Manifest updated with Phase A UUIDs\n');
     }
 
-    // 7. Execute Phase B (presentations)
+    // 8. Execute Phase B (presentations)
     if (phase === 'auto' || phase === 'presentations') {
       const resultB = await executePhaseB(phaseB, manifest, courseCode, { skipUpload, uploadBucket, skipQC });
       totalGenerated += resultB.generated;
@@ -1748,7 +2040,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
       }
     }
 
-    // 8. Handle encouragements (after Phase A + B complete)
+    // 9. Handle encouragements (after Phase A + B complete)
     // Check if they exist, generate if needed, add to MAR + manifest
     // This happens AFTER all regular samples so they can be added right before S3 check
     let encouragementData = null;
@@ -1773,7 +2065,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
       }
     }
 
-    // 8b. Handle welcome (after Phase A + B complete, before S3 check)
+    // 9b. Handle welcome (after Phase A + B complete, before S3 check)
     // Check if it exists, generate if needed, update manifest
     let welcomeData = null;
     if (phase === 'auto' || phase === 'presentations') {
@@ -1795,7 +2087,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
       }
     }
 
-    // 9. Extract durations from S3 for ALL samples (new + existing + encouragements + welcome)
+    // 10. Extract durations from S3 for ALL samples (new + existing + encouragements + welcome)
     // This ensures consistency and verifies existing files
     const allSampleIds = collectAllSampleIds(manifest);
 
@@ -1807,7 +2099,31 @@ async function generateAudioForCourse(courseCode, options = {}) {
     const s3Durations = await extractDurationsFromS3(allSampleIds, uploadBucket);
     allDurations = { ...allDurations, ...s3Durations };
 
-    // 10. Update manifest with S3-verified durations
+    // 10. Merge temp MAR to permanent MAR (after QC passed and S3 verified)
+    console.log('\n=== Merging Temporary MAR to Permanent ===\n');
+    console.log('All samples passed QC and verified on S3. Committing to permanent MAR...\n');
+
+    const mergeStats = await marService.mergeTempMARToPermanent();
+    console.log(`\n✓ Merge complete:`);
+    console.log(`  Voices updated: ${mergeStats.voicesMerged}`);
+    console.log(`  Samples committed: ${mergeStats.samplesMerged}`);
+
+    if (mergeStats.errors.length > 0) {
+      console.warn(`\n⚠️  ${mergeStats.errors.length} errors during merge:`);
+      mergeStats.errors.slice(0, 5).forEach(err => {
+        console.warn(`  - ${err.voiceId}: ${err.error}`);
+      });
+      if (mergeStats.errors.length > 5) {
+        console.warn(`  ... and ${mergeStats.errors.length - 5} more`);
+      }
+    }
+
+    // Clear temp MAR after successful merge
+    console.log('\nClearing temporary MAR...');
+    await marService.clearTempMAR();
+    console.log('✓ Temporary MAR cleared\n');
+
+    // 11. Update manifest with S3-verified durations
     updateManifestDurations(manifest, allDurations);
 
     // Also update introduction duration if present
@@ -1815,10 +2131,10 @@ async function generateAudioForCourse(courseCode, options = {}) {
       manifest.introduction.duration = allDurations[manifest.introduction.id];
     }
 
-    // 10a. Normalize roles (no-op: encouragements already added with role='presentation')
+    // 12. Normalize roles (no-op: encouragements already added with role='presentation')
     normalizeManifestRoles(manifest);
 
-    // 10b. Version management - SKIPPED (see note below)
+    // 13. Version management - SKIPPED (see note below)
     // NOTE: Version management is complex and handled separately.
     // New courses stay at 1.0.0 until published and tested.
     // Course updates/fixes require careful version strategy (separate project).
@@ -1827,7 +2143,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
     await saveCourseManifest(courseCode, manifest);
     console.log('\nManifest updated with S3-verified durations');
 
-    // 11. Cleanup temp files (optional)
+    // 14. Cleanup temp files (optional)
     if (cleanupTemp) {
       console.log('\nCleaning up temp files...');
       await fs.remove(AUDIO_TEMP_DIR);
@@ -1985,9 +2301,31 @@ Features:
 
   if (isPlanMode) {
     // Planning mode - analyze and show estimates
+
+    // Check actual ElevenLabs tier from API (unless overridden by command line)
+    let elevenLabsTier = getArgValue('--elevenlabs-tier');
+    let elevenLabsUsage = parseInt(getArgValue('--elevenlabs-usage')) || 0;
+    let elevenLabsQuota = null;
+
+    if (!elevenLabsTier) {
+      try {
+        console.log('Checking ElevenLabs subscription tier...');
+        const userInfo = await elevenlabsService.getUserInfo();
+        elevenLabsTier = userInfo.tier;
+        elevenLabsUsage = userInfo.characterCount;
+        elevenLabsQuota = userInfo.characterLimit;
+        console.log(`✓ Detected: ${userInfo.tier} tier (${userInfo.characterCount.toLocaleString()}/${userInfo.characterLimit.toLocaleString()} chars used)\n`);
+      } catch (error) {
+        console.warn(`⚠️  Could not fetch ElevenLabs tier: ${error.message}`);
+        console.warn(`Defaulting to 'creator' tier. Use --elevenlabs-tier to override.\n`);
+        elevenLabsTier = 'creator';
+      }
+    }
+
     const planOptions = {
-      elevenLabsTier: getArgValue('--elevenlabs-tier') || 'creator',
-      elevenLabsUsage: parseInt(getArgValue('--elevenlabs-usage')) || 0,
+      elevenLabsTier,
+      elevenLabsUsage,
+      elevenLabsQuota,
       savePlan: args.includes('--save')
     };
 
@@ -1995,6 +2333,21 @@ Features:
     process.exit(0);
 
   } else if (isExecuteMode) {
+    // Check ElevenLabs usage before starting generation
+    try {
+      console.log('Checking ElevenLabs subscription status...');
+      const userInfo = await elevenlabsService.getUserInfo();
+      const percentUsed = ((userInfo.characterCount / userInfo.characterLimit) * 100).toFixed(1);
+      console.log(`✓ ${userInfo.tier} tier: ${userInfo.characterCount.toLocaleString()}/${userInfo.characterLimit.toLocaleString()} chars used (${percentUsed}%)\n`);
+
+      if (userInfo.characterCount > userInfo.characterLimit * 0.9) {
+        console.warn(`⚠️  WARNING: You've used ${percentUsed}% of your monthly quota. Generation may exceed limit.\n`);
+      }
+    } catch (error) {
+      console.warn(`⚠️  Could not fetch ElevenLabs usage: ${error.message}`);
+      console.warn(`Proceeding anyway...\n`);
+    }
+
     // Check for special execution modes
     const continueProcessing = args.includes('--continue-processing');
     const regenerateArg = getArgValue('--regenerate');

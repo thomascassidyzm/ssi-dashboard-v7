@@ -8,6 +8,9 @@
  * Output: JSON file with generation results
  */
 
+// Load environment variables
+require('dotenv').config();
+
 const fs = require('fs-extra');
 const path = require('path');
 const elevenLabs = require('../services/elevenlabs-service.cjs');

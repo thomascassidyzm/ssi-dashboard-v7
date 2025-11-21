@@ -170,7 +170,7 @@ node -e "require('dotenv').config(); require('./services/preflight-check-service
 - One male voice (target2 role)
 
 **Once voices chosen:**
-1. Add voice definitions to `samples_database/voices.json`
+1. Add voice definitions to `public/vfs/canonical/voices.json`
 2. Add course assignment for `spa_for_eng_10seeds`
 3. Run Phase 8: `node scripts/phase8-audio-generation.cjs spa_for_eng_10seeds --execute`
 

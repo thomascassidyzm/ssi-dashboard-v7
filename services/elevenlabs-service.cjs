@@ -282,6 +282,71 @@ async function testVoice(voiceId, text = "Hello, this is a test.", options = {})
 }
 
 /**
+ * Generate speech and return audio buffer (no file writing)
+ * Used by parallel workers
+ *
+ * @param {string} text - Text to synthesize
+ * @param {string} voiceId - ElevenLabs voice ID
+ * @param {object} options - Generation options
+ * @returns {Promise<Buffer>} Audio buffer
+ */
+async function generateSpeech(text, voiceId, options = {}) {
+  if (!ELEVENLABS_API_KEY) {
+    throw new Error('ElevenLabs API key not found. Set ELEVENLABS_API_KEY in .env');
+  }
+
+  const {
+    model = MODELS.FLASH_V2_5,
+    stability = 0.5,
+    similarity_boost = 0.75,
+    style = 0,
+    use_speaker_boost = true,
+    language = null,
+    enablePriming = false
+  } = options;
+
+  await rateLimitRequest();
+
+  // Apply priming if enabled and language provided
+  const finalText = (enablePriming && language) ? buildPriming(text, language) : text;
+
+  const url = `${ELEVENLABS_API_URL}/text-to-speech/${voiceId}`;
+
+  const body = {
+    text: finalText,
+    model_id: model,
+    voice_settings: {
+      stability,
+      similarity_boost,
+      style,
+      use_speaker_boost
+    }
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'audio/mpeg',
+        'Content-Type': 'application/json',
+        'xi-api-key': ELEVENLABS_API_KEY
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`ElevenLabs API error (${response.status}): ${errorText}`);
+    }
+
+    // Return audio buffer (no file writing)
+    return await response.buffer();
+  } catch (error) {
+    throw new Error(`Failed to generate speech: ${error.message}`);
+  }
+}
+
+/**
  * Get user info (quota, character usage)
  *
  * @returns {Promise<object>} User info
@@ -317,6 +382,7 @@ async function getUserInfo() {
 module.exports = {
   generateAudio,
   generateAudioWithRetry,
+  generateSpeech,
   listVoices,
   getVoiceDetails,
   testVoice,

@@ -9,10 +9,12 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const MAR_BASE = path.join(__dirname, '..', 'samples_database');
+const TEMP_MAR_BASE = path.join(__dirname, '..', 'temp', 'mar');
 
 /**
- * Normalize text for matching (case-insensitive, ignore trailing punctuation)
- * Audio is the same regardless of capitalization or trailing punctuation
+ * Normalize text for duplicate detection
+ * Removes case differences and trailing periods only.
+ * Keeps question marks and exclamation marks as they affect TTS pronunciation.
  *
  * @param {string} text - Text to normalize
  * @returns {string} Normalized text
@@ -21,7 +23,7 @@ function normalizeText(text) {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[.,!?;:]+$/, ''); // Remove trailing punctuation
+    .replace(/\.+$/, ''); // Remove only trailing periods (keep !, ?, etc.)
 }
 
 /**
@@ -411,6 +413,184 @@ async function addEncouragementSample(language, voiceId, uuid, sampleData) {
   await saveEncouragementSamples(language, samplesData);
 }
 
+// ============================================================================
+// Temporary MAR Functions (Phase 8 crash-safe generation)
+// ============================================================================
+
+/**
+ * Initialize temporary MAR directory structure
+ * Temp MAR persists in temp/mar/ until explicitly merged or cleared
+ * This ensures crash-safety - generated samples are not lost if process crashes
+ */
+async function initTempMAR() {
+  await fs.ensureDir(TEMP_MAR_BASE);
+  await fs.ensureDir(path.join(TEMP_MAR_BASE, 'voices'));
+
+  // Create voices.json if it doesn't exist
+  const voicesPath = path.join(TEMP_MAR_BASE, 'voices.json');
+  if (!await fs.pathExists(voicesPath)) {
+    await fs.writeJson(voicesPath, {
+      version: '1.0.0',
+      last_updated: new Date().toISOString(),
+      voices: {}
+    }, { spaces: 2 });
+  }
+
+  console.log('✓ Temporary MAR initialized at:', TEMP_MAR_BASE);
+}
+
+/**
+ * Get sample checking BOTH permanent MAR and temp MAR
+ * Used during Phase 8 generation to avoid regenerating samples from this run
+ *
+ * @param {string} voiceId - Voice ID
+ * @param {string} uuid - Sample UUID
+ * @returns {Promise<object|null>} Sample data or null
+ */
+async function getSampleFromBothMARs(voiceId, uuid) {
+  // Check permanent MAR first
+  let sample = await getSample(voiceId, uuid);
+  if (sample) return { ...sample, source: 'permanent' };
+
+  // Check temp MAR
+  const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
+  if (await fs.pathExists(tempSamplesPath)) {
+    const tempSamples = await fs.readJson(tempSamplesPath);
+    if (tempSamples.samples && tempSamples.samples[uuid]) {
+      return { ...tempSamples.samples[uuid], source: 'temp' };
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Find existing sample in BOTH permanent and temp MAR
+ * Searches by text/role/language/cadence to find matching sample
+ * Used during analysis phase to check if sample needs generation
+ *
+ * @param {string} voiceId - Voice ID
+ * @param {string} text - The phrase/text
+ * @param {string} role - Sample role
+ * @param {string} language - Language code
+ * @param {string} cadence - Speech cadence (default: 'natural')
+ * @returns {Promise<object|null>} Sample with UUID if exists, null otherwise
+ */
+async function findExistingSampleInBothMARs(voiceId, text, role, language, cadence = 'natural') {
+  // Check permanent MAR first
+  const permanentSamples = await loadVoiceSamples(voiceId);
+  const inPermanent = findExistingSample(permanentSamples, text, role, language, cadence);
+  if (inPermanent) {
+    return { ...inPermanent, source: 'permanent' };
+  }
+
+  // Check temp MAR
+  const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
+  if (await fs.pathExists(tempSamplesPath)) {
+    const tempSamples = await fs.readJson(tempSamplesPath);
+    const inTemp = findExistingSample(tempSamples, text, role, language, cadence);
+    if (inTemp) {
+      return { ...inTemp, source: 'temp' };
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Save sample to temporary MAR only
+ * Used during Phase 8 generation before QC/upload verification
+ *
+ * @param {string} voiceId - Voice ID
+ * @param {string} uuid - Sample UUID
+ * @param {object} sample - Sample metadata
+ */
+async function saveSampleToTempMAR(voiceId, uuid, sample) {
+  const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
+  await fs.ensureDir(path.dirname(tempSamplesPath));
+
+  let tempSamples;
+  if (await fs.pathExists(tempSamplesPath)) {
+    tempSamples = await fs.readJson(tempSamplesPath);
+  } else {
+    tempSamples = {
+      voice_id: voiceId,
+      version: '1.0.0',
+      last_updated: new Date().toISOString(),
+      sample_count: 0,
+      samples: {}
+    };
+  }
+
+  tempSamples.samples[uuid] = sample;
+  tempSamples.sample_count = Object.keys(tempSamples.samples).length;
+  tempSamples.last_updated = new Date().toISOString();
+
+  await fs.writeJson(tempSamplesPath, tempSamples, { spaces: 2 });
+}
+
+/**
+ * Merge temporary MAR into permanent MAR
+ * Called after successful QC and S3 upload verification
+ *
+ * @returns {Promise<object>} Merge statistics
+ */
+async function mergeTempMARToPermanent() {
+  const stats = {
+    voicesMerged: 0,
+    samplesMerged: 0,
+    errors: []
+  };
+
+  const tempVoicesDir = path.join(TEMP_MAR_BASE, 'voices');
+  if (!await fs.pathExists(tempVoicesDir)) {
+    console.log('✓ No temporary MAR to merge');
+    return stats;
+  }
+
+  const voiceDirs = await fs.readdir(tempVoicesDir);
+
+  for (const voiceId of voiceDirs) {
+    const tempSamplesPath = path.join(tempVoicesDir, voiceId, 'samples.json');
+    if (!await fs.pathExists(tempSamplesPath)) continue;
+
+    try {
+      const tempSamples = await fs.readJson(tempSamplesPath);
+      const permanentSamples = await loadVoiceSamples(voiceId);
+
+      // Merge samples
+      for (const [uuid, sample] of Object.entries(tempSamples.samples)) {
+        if (!permanentSamples.samples[uuid]) {
+          permanentSamples.samples[uuid] = sample;
+          stats.samplesMerged++;
+        }
+      }
+
+      permanentSamples.sample_count = Object.keys(permanentSamples.samples).length;
+      await saveVoiceSamples(voiceId, permanentSamples);
+
+      stats.voicesMerged++;
+      console.log(`✓ Merged ${voiceId}: ${Object.keys(tempSamples.samples).length} samples`);
+    } catch (error) {
+      stats.errors.push({ voiceId, error: error.message });
+      console.error(`✗ Failed to merge ${voiceId}:`, error.message);
+    }
+  }
+
+  return stats;
+}
+
+/**
+ * Clear temporary MAR after successful merge
+ * Optional - temp MAR can also be left as a backup until next run
+ */
+async function clearTempMAR() {
+  if (await fs.pathExists(TEMP_MAR_BASE)) {
+    await fs.remove(TEMP_MAR_BASE);
+    console.log('✓ Temporary MAR cleared');
+  }
+}
+
 module.exports = {
   normalizeText,
   loadVoiceRegistry,
@@ -431,5 +611,13 @@ module.exports = {
   loadEncouragementSamples,
   saveEncouragementSamples,
   findEncouragementSampleByText,
-  addEncouragementSample
+  addEncouragementSample,
+  // Temporary MAR functions
+  initTempMAR,
+  getSampleFromBothMARs,
+  findExistingSampleInBothMARs,
+  saveSampleToTempMAR,
+  mergeTempMARToPermanent,
+  clearTempMAR,
+  TEMP_MAR_BASE
 };

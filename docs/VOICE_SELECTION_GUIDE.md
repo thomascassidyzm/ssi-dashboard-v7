@@ -7,7 +7,7 @@ This guide explains how to discover and select voices for new language courses.
 When you encounter an error that says "No voice assignments found", you need to:
 1. Discover available voices for your target language
 2. Choose the best voices based on selection criteria
-3. Add your choices to the voice registry (`samples_database/voices.json`)
+3. Add your choices to the voice registry (`public/vfs/canonical/voices.json`)
 
 Claude Code can help you with this process.
 
@@ -131,7 +131,7 @@ The score helps narrow down options, but your ears make the final decision.
 
 ## Configuration Format
 
-Claude Code will update `samples_database/voices.json` with this structure:
+Claude Code will update `public/vfs/canonical/voices.json` with this structure:
 
 ### Course Assignment
 

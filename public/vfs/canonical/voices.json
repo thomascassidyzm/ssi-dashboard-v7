@@ -1,0 +1,207 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-11-20T16:58:58.040Z",
+  "voices": {
+    "azure_it-IT-ElsaNeural": {
+      "provider": "azure",
+      "provider_id": "it-IT-ElsaNeural",
+      "language": "ita",
+      "display_name": "Elsa (Italian Female)",
+      "gender": "female",
+      "typical_roles": [
+        "target1"
+      ],
+      "sample_count": 0,
+      "created_at": "2025-01-23T00:00:00Z",
+      "notes": "Primary Italian voice for target1 role",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "azure_speed": 0.7,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "azure_speed": 1,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
+    },
+    "azure_it-IT-DiegoNeural": {
+      "provider": "azure",
+      "provider_id": "it-IT-DiegoNeural",
+      "language": "ita",
+      "display_name": "Diego (Italian Male)",
+      "gender": "male",
+      "typical_roles": [
+        "target2"
+      ],
+      "sample_count": 0,
+      "created_at": "2025-01-23T00:00:00Z",
+      "notes": "Alternate Italian voice for target2 role",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "azure_speed": 0.7,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "azure_speed": 1,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
+    },
+    "elevenlabs_FVdzAUsp8apoOdc0907A": {
+      "provider": "elevenlabs",
+      "provider_id": "FVdzAUsp8apoOdc0907A",
+      "language": "eng",
+      "display_name": "English Narrator (Aran Clone)",
+      "gender": "male",
+      "typical_roles": [
+        "source",
+        "presentation"
+      ],
+      "model": "eleven_flash_v2_5",
+      "stability": 0.5,
+      "similarity_boost": 0.75,
+      "priming": "disabled",
+      "sample_count": 263,
+      "created_at": "2025-11-13T00:00:00Z",
+      "notes": "Primary English voice for source and presentation roles (Aran's cloned voice)",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "time_stretch": 1.43,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
+    },
+    "azure_es-ES-TrianaNeural": {
+      "provider": "azure",
+      "provider_id": "es-ES-TrianaNeural",
+      "language": "spa",
+      "display_name": "Triana (Spanish Female)",
+      "gender": "female",
+      "typical_roles": [
+        "target1"
+      ],
+      "sample_count": 301,
+      "created_at": "2025-11-12T00:00:00Z",
+      "notes": "Primary Spanish voice for target1 role - Castilian Spanish",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "azure_speed": 0.7,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "azure_speed": 1,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
+    },
+    "azure_es-ES-AlvaroNeural": {
+      "provider": "azure",
+      "provider_id": "es-ES-AlvaroNeural",
+      "language": "spa",
+      "display_name": "Álvaro (Spanish Male)",
+      "gender": "male",
+      "typical_roles": [
+        "target2"
+      ],
+      "sample_count": 216,
+      "created_at": "2025-11-12T00:00:00Z",
+      "notes": "Alternate Spanish voice for target2 role - Castilian Spanish",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "azure_speed": 0.7,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "azure_speed": 1,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
+    }
+  },
+  "language_pair_assignments": {
+    "en-it": {
+      "target1": "azure_it-IT-ElsaNeural",
+      "target2": "azure_it-IT-DiegoNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+    },
+    "en-es": {
+      "target1": "azure_es-ES-TrianaNeural",
+      "target2": "azure_es-ES-AlvaroNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+    }
+  },
+  "course_assignments": {
+    "ita_for_eng_10seeds": {
+      "target1": "azure_it-IT-ElsaNeural",
+      "target2": "azure_it-IT-DiegoNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+    },
+    "ita_for_eng_668seeds": {
+      "target1": "azure_it-IT-ElsaNeural",
+      "target2": "azure_it-IT-DiegoNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+    },
+    "spa_for_eng_10seeds": {
+      "target1": "azure_es-ES-TrianaNeural",
+      "target2": "azure_es-ES-AlvaroNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+    },
+    "spa_for_eng_TEST": {
+      "target1": "azure_es-ES-TrianaNeural",
+      "target2": "azure_es-ES-AlvaroNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+    }
+  },
+  "encouragement_index": {
+    "eng": {
+      "voice": "elevenlabs_aran",
+      "count": 4,
+      "uuids": [
+        "62833c2e-30a6-5149-a8b4-9a4c4a3d398e",
+        "291a9cb7-18a4-5565-865d-ec6adb1ddcfc",
+        "1f3a726a-fb14-572f-8598-5d829dca14bb",
+        "fdea57ad-950f-5662-bf81-0156ef08b726"
+      ],
+      "last_updated": "2025-10-27T14:26:16.973Z"
+    }
+  }
+}

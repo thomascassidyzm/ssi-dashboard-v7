@@ -310,7 +310,7 @@ You need to configure voices before running audio generation.
 
 **Solution:**
 1. Follow voice discovery process above
-2. Add voice definitions to `samples_database/voices.json`:
+2. Add voice definitions to `public/vfs/canonical/voices.json`:
 
 ```json
 {

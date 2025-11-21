@@ -73,7 +73,6 @@ function flagSamplesForReview(generationResults, durations) {
   const flagged = [];
 
   for (const result of generationResults) {
-    const { sample } = result;
     const flags = [];
 
     // Flag 1: Failed generations
@@ -87,8 +86,8 @@ function flagSamplesForReview(generationResults, durations) {
 
     // Flag 2: Single-word phrases (TTS issues common with isolated words)
     if (result.success) {
-      const isCJK = isCJKLanguage(sample.language);
-      const text = sample.text.trim();
+      const isCJK = isCJKLanguage(result.language);
+      const text = result.text.trim();
       const wordCount = text.split(/\s+/).length;
       const charCount = text.length;
 
@@ -115,17 +114,17 @@ function flagSamplesForReview(generationResults, durations) {
 
     // If any flags were raised, add to flagged list
     if (flags.length > 0) {
-      const duration = durations[sample.uuid];
-      const text = sample.text.trim();
+      const duration = durations[result.uuid];
+      const text = result.text.trim();
       const wordCount = text.split(/\s+/).length;
       const charCount = text.length;
 
       flagged.push({
-        uuid: sample.uuid,
-        text: sample.text,
-        role: sample.role,
-        cadence: sample.cadence,
-        language: sample.language,
+        uuid: result.uuid,
+        text: result.text,
+        role: result.role,
+        cadence: result.cadence,
+        language: result.language,
         duration,
         wordCount,
         charCount,
