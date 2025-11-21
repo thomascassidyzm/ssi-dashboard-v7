@@ -34,7 +34,8 @@
       <!-- Error State -->
       <div v-else-if="error" class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
         <h3 class="text-xl font-semibold text-red-400 mb-2">Error Loading Progress</h3>
-        <p class="text-red-300">{{ error }}</p>
+        <p class="text-red-300 mb-2">{{ error }}</p>
+        <p class="text-xs text-red-400/60">Trying to reach: {{ apiUrl }}</p>
         <button @click="fetchProgress" class="mt-4 px-4 py-2 bg-red-600 hover:bg-red-500 rounded text-white">
           Retry
         </button>
@@ -168,9 +169,20 @@ const apiUrl = computed(() => {
 // Fetch progress
 async function fetchProgress() {
   try {
-    const response = await fetch(`${apiUrl.value}/api/courses/${courseCode.value}/progress`)
+    const response = await fetch(`${apiUrl.value}/api/courses/${courseCode.value}/progress`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
 
     if (!response.ok) {
+      // Handle 404 - course not found or not running
+      if (response.status === 404) {
+        const data = await response.json().catch(() => ({}))
+        error.value = data.error || 'Course not found or not currently running on this server'
+        loading.value = false
+        return
+      }
       throw new Error(`HTTP ${response.status}: ${response.statusText}`)
     }
 
@@ -180,7 +192,12 @@ async function fetchProgress() {
     loading.value = false
   } catch (err) {
     console.error('Error fetching progress:', err)
-    error.value = err.message
+    // Better error messages for common issues
+    if (err.message.includes('Failed to fetch') || err.message.includes('Load failed')) {
+      error.value = `Cannot connect to ${apiUrl.value}. Make sure the orchestrator is running and accessible from your device.`
+    } else {
+      error.value = err.message
+    }
     loading.value = false
   }
 }
