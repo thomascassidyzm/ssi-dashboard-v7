@@ -1834,6 +1834,44 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
       });
     }
 
+    // Validate component format (must be array of objects with known/target, not array of strings)
+    const invalidComponents = [];
+    lego_pairs.seeds.forEach(seed => {
+      seed.legos?.forEach(lego => {
+        if (lego.components && Array.isArray(lego.components) && lego.components.length > 0) {
+          const firstComponent = lego.components[0];
+          // Check if it's a string (invalid) instead of object with known/target (valid)
+          if (typeof firstComponent === 'string') {
+            invalidComponents.push({
+              seed_id: seed.seed_id,
+              lego_id: lego.id,
+              invalid_format: lego.components
+            });
+          } else if (typeof firstComponent === 'object' && (!firstComponent.hasOwnProperty('known') || !firstComponent.hasOwnProperty('target'))) {
+            invalidComponents.push({
+              seed_id: seed.seed_id,
+              lego_id: lego.id,
+              invalid_format: 'Object missing known/target properties',
+              received: firstComponent
+            });
+          }
+        }
+      });
+    });
+
+    if (invalidComponents.length > 0) {
+      return res.status(400).json({
+        error: 'Invalid component format detected',
+        message: 'Components must be array of objects with {known, target} properties, not array of strings',
+        invalid_legos: invalidComponents,
+        example_correct: [
+          { known: "I", target: "je" },
+          { known: "like", target: "aime" }
+        ],
+        example_incorrect: ["je", "aime"]
+      });
+    }
+
     // Ensure course directory exists
     const courseDir = path.join(VFS_ROOT, courseCode);
     await fs.ensureDir(courseDir);
