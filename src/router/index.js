@@ -217,8 +217,8 @@ const router = createRouter({
 // Set page title based on route meta
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
-    ? `${to.meta.title} - SSi Dashboard`
-    : 'SSi Course Production Dashboard v8.0.0'
+    ? `${to.meta.title} - Popty`
+    : 'Popty v8.2.2 - SSi Course Production Dashboard'
   next()
 })
 

@@ -20,7 +20,7 @@
           Generate New Course
         </h1>
         <p class="mt-2 text-slate-400">
-          SSi Course Production Dashboard v8.1.0 - Swim-lane architecture with phase selection
+          Popty v8.2.2 - SSi Course Production Dashboard
         </p>
       </div>
     </header>

@@ -6,13 +6,13 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-3xl font-bold text-emerald-400">
-              SSI Course Production Dashboard v8.2.0
+              Popty v8.2.2
             </h1>
             <p class="mt-2 text-slate-400">
-              Linear Microservices Architecture + Self-Contained SSoT + Manifest Format v1.1
+              SSi Course Production Dashboard
             </p>
             <p class="mt-1 text-xs text-slate-500">
-              Build: f94df2fc | APML v8.2.0 | Phases: 1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v1.1, 8 v1.1
+              APML v8.2.3 | Phases: 1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v2.0, 8 v1.1
             </p>
           </div>
           <EnvironmentSwitcher />
