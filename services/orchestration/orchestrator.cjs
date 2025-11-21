@@ -1653,8 +1653,7 @@ app.post('/api/phase8/start', async (req, res) => {
 
     console.log(`[Orchestrator] 🎵 Proxying Phase 8 audio generation request for ${courseCode}`);
 
-    const axios = require('axios');
-    const phase8Url = PHASE_SERVICES[8]; // http://localhost:3465
+    const phase8Url = PHASE_SERVERS[8]; // http://localhost:3465
 
     const response = await axios.post(`${phase8Url}/start`, {
       courseCode,
