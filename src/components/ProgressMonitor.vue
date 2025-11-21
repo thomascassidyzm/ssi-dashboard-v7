@@ -16,6 +16,47 @@
       </span>
     </div>
 
+    <!-- Live Progress (from new API) -->
+    <div v-if="liveProgress && liveProgress.overallStatus === 'running'" class="mb-6 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/30 rounded-lg p-4">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-3">
+          <div class="text-emerald-400 animate-pulse text-xl">●</div>
+          <div>
+            <div class="text-lg font-semibold text-emerald-400">{{ getPhaseTitle(liveProgress.currentPhase) }}</div>
+            <div class="text-xs text-slate-400">Started {{ formatRelativeTime(liveProgress.startTime) }}</div>
+          </div>
+        </div>
+        <div v-if="currentPhaseData && currentPhaseData.eta" class="text-right">
+          <div class="text-xs text-slate-400">ETA</div>
+          <div class="text-sm font-medium text-emerald-400">{{ currentPhaseData.etaHuman }}</div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div v-if="currentPhaseData && currentPhaseData.seedsTotal" class="mb-3">
+        <div class="flex items-center justify-between text-xs mb-1">
+          <span class="text-slate-300">{{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds</span>
+          <span class="text-emerald-400 font-medium">{{ ((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100).toFixed(1) }}%</span>
+        </div>
+        <div class="w-full bg-slate-700 rounded-full h-2.5">
+          <div
+            class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500"
+            :style="{ width: `${((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100)}%` }"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div v-if="liveProgress.recentLogs && liveProgress.recentLogs.length > 0" class="bg-slate-900/50 rounded p-2 max-h-32 overflow-y-auto">
+        <div class="text-xs font-medium text-slate-400 mb-1.5">Recent Activity</div>
+        <div v-for="(log, i) in liveProgress.recentLogs.slice(0, 5)" :key="i" class="text-xs text-slate-300 py-0.5">
+          <span class="text-slate-500">{{ formatTime(log.time) }}</span>
+          <span class="mx-1">•</span>
+          <span>{{ log.message }}</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Phase Progress -->
     <div class="space-y-4">
       <!-- Phase 1: Translation -->
@@ -31,6 +72,17 @@
         </div>
         <div v-if="phase1Active || phase1Complete" class="text-xs text-slate-400 ml-10">
           Translating {{ seedCount }} canonical sentences to {{ courseCode }}
+        </div>
+        <!-- Phase 1 detailed progress -->
+        <div v-if="phase1Data && phase1Data.seedsTotal" class="ml-10 mt-2">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-emerald-400 font-medium">{{ phase1Data.seedsCompleted || 0 }}/{{ phase1Data.seedsTotal }} seeds</span>
+            <div class="flex-1 bg-slate-700 rounded-full h-1.5">
+              <div class="bg-emerald-500 h-1.5 rounded-full transition-all" :style="{ width: `${((phase1Data.seedsCompleted || 0) / phase1Data.seedsTotal * 100)}%` }"></div>
+            </div>
+            <span class="text-slate-500">{{ ((phase1Data.seedsCompleted || 0) / phase1Data.seedsTotal * 100).toFixed(0) }}%</span>
+          </div>
+          <div v-if="phase1Data.etaHuman" class="text-xs text-slate-500 mt-1">ETA: {{ phase1Data.etaHuman }}</div>
         </div>
       </div>
 
@@ -228,7 +280,18 @@ const phase5Progress = ref(null)
 const events = ref([])
 const windows = ref([])
 
+// New live progress state
+const liveProgress = ref(null)
+const phase1Data = ref(null)
+const phase3Data = ref(null)
+
 let pollTimer = null
+
+// Computed for current phase data
+const currentPhaseData = computed(() => {
+  if (!liveProgress.value || !liveProgress.value.phases) return null
+  return liveProgress.value.phases[liveProgress.value.currentPhase]
+})
 
 // Computed
 const executionModeName = computed(() => {
@@ -340,10 +403,49 @@ const formatEvent = (event) => {
   }
 }
 
+// Helper methods
+const getPhaseTitle = (phase) => {
+  const titles = {
+    1: 'Phase 1: Pedagogical Translation',
+    3: 'Phase 3: LEGO Extraction + Introductions',
+    5: 'Phase 5: Practice Basket Generation',
+    7: 'Phase 7: Course Manifest Compilation',
+    8: 'Phase 8: Audio Generation'
+  }
+  return titles[phase] || `Phase ${phase}`
+}
+
+const formatRelativeTime = (timestamp) => {
+  if (!timestamp) return ''
+  const now = new Date()
+  const then = new Date(timestamp)
+  const diffMs = now - then
+  const diffMins = Math.floor(diffMs / 60000)
+  if (diffMins < 1) return 'just now'
+  if (diffMins < 60) return `${diffMins}m ago`
+  const diffHours = Math.floor(diffMins / 60)
+  return `${diffHours}h ${diffMins % 60}m ago`
+}
+
 // Methods
 const checkProgress = async () => {
   try {
-    // Get job status
+    // Get NEW live progress API (real-time updates with ETA)
+    try {
+      const progressResponse = await apiClient.get(`/api/courses/${props.courseCode}/progress`)
+      if (progressResponse.data) {
+        liveProgress.value = progressResponse.data
+        // Extract phase-specific data
+        if (progressResponse.data.phases) {
+          phase1Data.value = progressResponse.data.phases[1]
+          phase3Data.value = progressResponse.data.phases[3]
+        }
+      }
+    } catch (err) {
+      console.warn('[ProgressMonitor] Could not fetch live progress:', err.message)
+    }
+
+    // Get job status (legacy - for compatibility)
     const jobResponse = await apiClient.get(`/api/courses/${props.courseCode}/status`)
     if (jobResponse.data) {
       status.value = jobResponse.data.status

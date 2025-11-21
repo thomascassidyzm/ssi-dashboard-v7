@@ -1,6 +1,6 @@
 app ssi_course_production:
   title: "SSi Language Course Production System"
-  version: "8.2.1"
+  version: "8.2.3"
   apml_version: "1.1.0"
   description: |
     Complete specification for SSi (Say Something In) language course production system.
@@ -10,6 +10,110 @@ app ssi_course_production:
 
   created: "2024-10-13"
   author: "Tom Cassidy / SSi Team"
+
+  changelog_v8_2_3: |
+    **Date:** 2025-11-21
+    **Summary:** Live Progress Monitoring & Real-Time Dashboard Updates
+
+    PROGRESS MONITORING SYSTEM:
+    - New orchestrator endpoint: POST /api/courses/:courseCode/progress
+    - Phase servers report progress in real-time (no polling filesystem needed)
+    - Dashboard GET /api/courses/:courseCode/progress for live updates
+    - Auto-calculated ETA based on seeds/second rate
+    - Activity log with last 50 events timestamped
+
+    PHASE 1 PROGRESS REPORTING:
+    - Agents instructed to POST progress every 10 seeds completed
+    - Reports: seedsCompleted, seedsTotal, currentSeed, startTime
+    - Prompt updated with progress reporting instructions
+    - Format: { phase: 1, updates: {...}, logMessage: "..." }
+
+    PHASE 3 PROGRESS REPORTING:
+    - Each sub-agent reports after completing their seed batch
+    - Reports: agentId, seedsCompleted, seedsTotal, currentSeed
+    - Master orchestrator can track individual agent progress
+    - Format: { phase: 3, updates: {...}, logMessage: "Agent N: Completed S00XX-S00YY" }
+
+    DASHBOARD ENHANCEMENTS:
+    - ProgressMonitor.vue updated with live progress card
+    - Polls orchestrator every 5 seconds (configurable via pollInterval prop)
+    - Shows: current phase, seeds completed/total, progress bar, ETA
+    - Recent activity log displays last 5 events with timestamps
+    - Phase-by-phase breakdown with individual progress indicators
+    - Graceful degradation when backend unavailable
+
+    ETA CALCULATION:
+    - Orchestrator calculates: elapsed time / seeds completed = rate
+    - ETA = (remaining seeds / rate) formatted as human-readable (e.g., "2m 30s")
+    - Updates automatically with each progress report
+    - Stored in progress object: eta (ISO timestamp), etaHuman (formatted string)
+
+    USE CASE:
+    - Perfect for remote demos via ngrok tunnel
+    - Co-founder can watch progress without seeing Claude Code windows
+    - Real-time visibility into pipeline execution
+    - Shows exactly what's happening at each moment
+
+    BENEFITS:
+    - No more "checking filesystem" every 5 seconds
+    - Phases push updates (more efficient than polling)
+    - Accurate ETA based on actual execution rate
+    - Activity log provides audit trail of pipeline events
+
+    API ENDPOINTS:
+    - POST /api/courses/:courseCode/progress - Phases report progress
+    - GET /api/courses/:courseCode/progress - Dashboard polls for updates
+
+    See: services/orchestration/orchestrator.cjs:933-969 for implementation
+
+  changelog_v8_2_2: |
+    **Date:** 2025-11-21
+    **Summary:** Phase 7 Compiler Rebuild & Manifest Optimization
+
+    PHASE 7 REBUILD:
+    - New standalone compiler: scripts/phase7-compile-manifest-v2.cjs
+    - Replaces old Phase 7 server architecture
+    - Direct compilation from 4 input files (seed_pairs, lego_pairs, lego_baskets, introductions)
+    - Deterministic UUID generation (content-based hashing)
+    - Simple tokenization/lemmatization (space-split, lowercase)
+
+    MANIFEST FORMAT UPDATES:
+    - Empty tokens/lemmas arrays: Fields exist but contain [] to save space (~50% reduction)
+    - Ordered encouragements: Now includes all 48 ordered encouragements from eng_encouragements.json
+    - Pooled encouragements: Maintains 26 pooled encouragements
+    - Naming convention: {Target}_for_{Known}_speakers_COURSE_{YYYYMMDD_HHMMSS}.json
+    - Example: Chinese_for_English_speakers_COURSE_20251121_003247.json
+
+    MANIFEST OPTIMIZATION:
+    - 1-space indentation (compact but readable)
+    - 21.95 MB for cmn_for_eng (668 seeds, 2,895 LEGOs, 27,684 phrases, 56,156 samples)
+    - More efficient than Italian reference (0.033 MB/seed vs 0.055 MB/seed)
+    - Matches Italian format exactly (verified structure validation)
+
+    ENCOURAGEMENTS SYSTEM:
+    - Pooled: 26 short encouragements for random display
+    - Ordered: 48 long progressive encouragements displayed in sequence
+    - Source: public/vfs/canonical/eng_encouragements.json
+    - Both arrays included in slice object
+
+    UI ENHANCEMENTS (commits 07c76dbd, 0c2e03e6, aea4b256):
+    - Introductions editor added to dashboard
+    - Basket viewer updated for APML v8.2.0 format
+    - Backend endpoint for Phase 7 recompilation
+    - Phase 7 recompilation integrated into basket editor workflow
+
+    DATA QUALITY (commits e77c2fb8, 0ca2bc5a):
+    - Fixed all basket format issues (2,895/2,895 baskets correct)
+    - Completed Phase 5 with server-side enrichment
+    - Added is_final_lego flag and phrase_count fields
+    - Removed Spanish language leakage from Chinese baskets
+
+    BREAKING CHANGES:
+    - Phase 7 server deprecated (no longer on port 3462)
+    - Manifest compilation now via standalone script
+    - Old course_manifest.json naming replaced with timestamped convention
+
+    See: scripts/phase7-compile-manifest-v2.cjs for implementation
 
   changelog_v8_2_1: |
     **Date:** 2025-11-20
@@ -48,7 +152,7 @@ app ssi_course_production:
     ✅ Phase 3: v7.1 🔒 - LEGO Extraction + Introductions (dual output in single phase)
     ✅ Phase 5: v6.1 🔒 - Basket Generation (practice phrase generation)
     ✅ Phase 6: v2.1 🔗 - INTEGRATED into Phase 3 (no standalone service)
-    ✅ Phase 7: v1.1 🔒 - Compilation (manifest format v1.1 with placeholders)
+    ✅ Phase 7: v2.0 🔒 - Compilation (standalone script, Italian format match, empty tokens/lemmas)
     ✅ Phase 8: v1.1 📋 - Audio Generation (TTS + duration population, assigned to Kai)
 
     MANIFEST FORMAT v1.1 (Phase 7 output):
@@ -60,14 +164,14 @@ app ssi_course_production:
     - Phase 1: seed_pairs.json (pedagogical translations)
     - Phase 3: lego_pairs.json + introductions.json (dual output, <1s overhead)
     - Phase 5: lego_baskets.json (practice phrases)
-    - Phase 7: course_manifest.json (with duration/introduction placeholders)
+    - Phase 7: {Target}_for_{Known}_speakers_COURSE_{timestamp}.json (Italian format, empty tokens/lemmas)
     - Phase 8: audio/*.mp3 + populated duration fields
 
     MICROSERVICES ARCHITECTURE:
     - Phase 1 server: Port 3457 (includes Phase 2 LUT check)
     - Phase 3 server: Port 3458 (includes Phase 6 introduction generation)
     - Phase 5 server: Port 3459
-    - Phase 7 server: Port 3462
+    - Phase 7: Standalone script (scripts/phase7-compile-manifest-v2.cjs)
     - Phase 8 server: Port 3463
 
     DOCUMENTATION UPDATES:

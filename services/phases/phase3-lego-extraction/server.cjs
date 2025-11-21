@@ -267,7 +267,50 @@ For EACH of your ${seedsPerAgent} seeds:
 
 ---
 
-## 📤 STEP 5: OUTPUT - POST TO REST API
+## 📊 STEP 5: REPORT PROGRESS
+
+**After completing your seeds**, report progress to orchestrator:
+
+\`\`\`bash
+curl -X POST ${ORCHESTRATOR_URL}/api/courses/${courseCode}/progress \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "phase": 3,
+    "updates": {
+      "status": "running",
+      "seedsCompleted": <your_end_seed>,
+      "seedsTotal": ${endSeed},
+      "agentId": "<your_agent_number>",
+      "currentSeed": "S00YY"
+    },
+    "logMessage": "Agent <N>: Completed S00XX-S00YY (${seedsPerAgent} seeds extracted)"
+  }'
+\`\`\`
+
+Or using fetch:
+\`\`\`javascript
+fetch('${ORCHESTRATOR_URL}/api/courses/${courseCode}/progress', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    phase: 3,
+    updates: {
+      status: 'running',
+      seedsCompleted: <your_end_seed>,
+      seedsTotal: ${endSeed},
+      agentId: '<your_agent_number>',
+      currentSeed: 'S00YY'
+    },
+    logMessage: 'Agent <N>: Completed S00XX-S00YY (${seedsPerAgent} seeds extracted)'
+  })
+})
+.then(res => res.json())
+.then(result => console.log('Progress reported:', result));
+\`\`\`
+
+---
+
+## 📤 STEP 6: OUTPUT - POST TO REST API
 
 **Submit your extraction via REST API**:
 

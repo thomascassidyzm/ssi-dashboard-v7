@@ -96,53 +96,85 @@ function generatePhase1MasterPrompt(courseCode, params, courseDir) {
   return `# Phase 1: Pedagogical Translation (Sequential)
 
 **Course**: ${courseCode}
-**Target Language**: ${target} (${getLanguageName(target)})
-**Known Language**: ${known} (${getLanguageName(known)})
-**Total Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
-**Processing Mode**: Sequential (single agent for consistency)
+**Target**: ${getLanguageName(target)} (${target})
+**Known**: ${getLanguageName(known)} (${known})
+**Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
 
 ---
 
-## Your Mission
+## 📚 STEP 1: READ METHODOLOGY (CRITICAL)
 
-Translate all ${totalSeeds} canonical seeds into ${getLanguageName(target)} and ${getLanguageName(known)}.
+**Fetch Phase 1 Intelligence**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase-intelligence/1
 
-**CRITICAL**: You must maintain translation consistency across ALL seeds:
-- Use the SAME translation for repeated concepts
-- Follow cognate preference rules consistently
-- Maintain consistent register (formal/informal) throughout
+This document contains:
+- Two absolute rules (NEVER violate)
+- Zero-variation principle (first word wins)
+- Cognate preference for seeds 1-100
+- Extended thinking protocol
+- Complete examples (Spanish, French, German, Mandarin)
+- Grammatical simplicity guidelines
 
-**Phase Intelligence**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase-intelligence/1
-
-**Canonical Seeds**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/canonical-seeds?limit=${endSeed}
+**Read this BEFORE translating** - it's the complete methodology.
 
 ---
 
-## Instructions
+## 📥 STEP 2: FETCH CANONICAL SEEDS
 
-1. **Fetch Phase 1 intelligence**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/phase-intelligence/1
-   Read the complete methodology before starting
+**GET**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/canonical-seeds?limit=${endSeed}
 
-2. **Fetch canonical seeds**: ${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/canonical-seeds?limit=${endSeed}
-   You need all ${totalSeeds} seeds for context
+Returns all ${totalSeeds} seeds. You need the full context for consistency.
 
-3. **Translate sequentially** (seeds ${startSeed} through ${endSeed}):
-   - Replace {target} placeholder with "${getLanguageName(target)}"
-   - Translate to ${getLanguageName(target)} (target language)
-   - Translate to ${getLanguageName(known)} (known language)
-   - **Maintain a glossary** as you work - if you translate "work" as "trabajar" once, use "trabajar" every time
-   - Follow Phase 1 intelligence rules strictly
+---
 
-## CRITICAL: {target} Placeholder
-- Canonical: "I want to speak {target}"
-- Replace with: "I want to speak ${getLanguageName(target)}"
+## ✍️ STEP 3: TRANSLATE (Seeds ${startSeed}-${endSeed})
 
-## Output Format
+**CRITICAL - DO NOT CREATE SCRIPTS:**
+- ❌ Do NOT write Python/Node/bash automation
+- ❌ Do NOT create translation tools
+- ✅ Translate directly, seed by seed
+- ✅ Build up translations object as you work
+- **Why?** Translation requires human judgment (cognates, register, consistency)
+
+**Process:**
+1. Replace \`{target}\` placeholder with "${getLanguageName(target)}"
+2. Translate to ${getLanguageName(target)} (apply Phase 1 methodology)
+3. Translate to ${getLanguageName(known)} (or use canonical if English)
+4. Maintain glossary (same concept = same word)
+5. Use extended thinking for each seed
+
+---
+
+## 📊 STEP 4: REPORT PROGRESS (Every 10 Seeds)
+
+**POST**: \`${process.env.ORCHESTRATOR_URL || 'http://localhost:3456'}/api/courses/${courseCode}/progress\`
+
+**After every 10 seeds** (S0010, S0020, S0030, etc.), POST:
+\`\`\`json
+{
+  "phase": 1,
+  "updates": {
+    "status": "running",
+    "seedsCompleted": 20,
+    "seedsTotal": ${totalSeeds},
+    "currentSeed": "S0020",
+    "startTime": "2025-11-21T10:30:00.000Z"
+  },
+  "logMessage": "Completed S0020 - ${totalSeeds - 20} remaining"
+}
+\`\`\`
+
+**When to report:**
+- After every 10 seeds
+- When you finish all seeds
+- Store startTime when you begin (for ETA)
+
+---
+
+## 📝 STEP 5: OUTPUT FORMAT
 
 Write to: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
 
-**CRITICAL DATA STRUCTURE**: Use object format with "known" first, then "target":
-
+**Structure:**
 \`\`\`json
 {
   "version": "8.2.0",
@@ -153,40 +185,18 @@ Write to: \`public/vfs/courses/${courseCode}/seed_pairs.json\`
   "total_seeds": ${totalSeeds},
   "translations": {
     "S${String(startSeed).padStart(4, '0')}": {
-      "known": "${getLanguageName(known)} translation here",
-      "target": "${getLanguageName(target)} translation here"
-    },
-    "S${String(startSeed + 1).padStart(4, '0')}": {
-      "known": "${getLanguageName(known)} translation here",
-      "target": "${getLanguageName(target)} translation here"
+      "known": "...",
+      "target": "..."
     }
   }
 }
 \`\`\`
 
-**Example for Spanish:**
-\`\`\`json
-{
-  "version": "8.2.0",
-  "course": "spa_for_eng",
-  "target_language": "spa",
-  "known_language": "eng",
-  "generated": "2025-01-20T01:50:00.000Z",
-  "total_seeds": 10,
-  "translations": {
-    "S0001": {
-      "known": "I want to speak Spanish with you now.",
-      "target": "Quiero hablar español contigo ahora."
-    },
-    "S0002": {
-      "known": "I'm trying to learn.",
-      "target": "Estoy intentando aprender."
-    }
-  }
-}
-\`\`\`
-
-**IMPORTANT ORDERING**: Always put "known" before "target" in each translation object!
+**CRITICAL:**
+- Use object format: \`{"known": "...", "target": "..."}\`
+- "known" comes FIRST, then "target"
+- If known OR target is English → use canonical English directly
+- See Phase 1 intelligence doc for full examples across languages
 
 **After completing all translations:**
 1. **Submit via API**: POST your completed seed_pairs.json to:

@@ -127,6 +127,17 @@ function addProgressLog(courseCode, message, level = 'info') {
 }
 
 /**
+ * Format duration in seconds to human-readable string
+ */
+function formatDuration(seconds) {
+  if (seconds < 60) return `${Math.round(seconds)}s`;
+  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ${Math.round(seconds % 60)}s`;
+  const hours = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  return `${hours}h ${mins}m`;
+}
+
+/**
  * GET /api/courses
  * List all available courses
  */
@@ -928,6 +939,44 @@ app.get('/api/courses/:courseCode/progress', async (req, res) => {
   }
 
   res.json(progress);
+});
+
+/**
+ * POST /api/courses/:courseCode/progress
+ * Phase servers report progress updates
+ */
+app.post('/api/courses/:courseCode/progress', async (req, res) => {
+  const { courseCode } = req.params;
+  const { phase, updates, logMessage } = req.body;
+
+  if (!phase) {
+    return res.status(400).json({ error: 'phase number required' });
+  }
+
+  // Initialize progress if not exists
+  if (!courseProgress.has(courseCode)) {
+    initializeCourseProgress(courseCode, phase, updates.seedsTotal || 668);
+  }
+
+  // Update phase progress
+  updatePhaseProgress(courseCode, phase, updates);
+
+  // Add log if provided
+  if (logMessage) {
+    addProgressLog(courseCode, logMessage, updates.level || 'info');
+  }
+
+  // Calculate ETA if seeds info provided
+  if (updates.seedsCompleted && updates.seedsTotal && updates.startTime) {
+    const elapsed = Date.now() - new Date(updates.startTime).getTime();
+    const rate = updates.seedsCompleted / (elapsed / 1000); // seeds per second
+    const remaining = updates.seedsTotal - updates.seedsCompleted;
+    const etaSeconds = remaining / rate;
+    updates.eta = new Date(Date.now() + etaSeconds * 1000).toISOString();
+    updates.etaHuman = formatDuration(etaSeconds);
+  }
+
+  res.json({ success: true, progress: courseProgress.get(courseCode) });
 });
 
 /**

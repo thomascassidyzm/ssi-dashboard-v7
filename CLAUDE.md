@@ -2,9 +2,9 @@
 
 > **Welcome, future agent!** This document contains everything you need to work effectively on the SSi Dashboard v7 project without creating chaos.
 
-**Last Updated:** 2025-11-20
-**Current Spec:** APML v8.2.0
-**Architecture:** REST API Microservices
+**Last Updated:** 2025-11-21
+**Current Spec:** APML v8.2.3
+**Architecture:** REST API Microservices + Standalone Scripts + Live Progress Monitoring
 
 ---
 
@@ -15,10 +15,10 @@
 ### Quick Facts
 - **Canonical Input**: 668 pedagogically-ordered seeds (language-agnostic)
 - **Pipeline**: Phase 1 → 3 (includes 6) → 5 → 7 → 8
-- **Data Format**: APML v8.2.0 (Adaptive Pedagogy Markup Language)
-- **Architecture**: Layered microservices with REST APIs
+- **Data Format**: APML v8.2.2 (Adaptive Pedagogy Markup Language)
+- **Architecture**: Microservices + standalone compilation scripts
 - **No Git Branching**: Agents submit via POST endpoints
-- **Current Spec**: `ssi-course-production.apml` v8.2.0
+- **Current Spec**: `ssi-course-production.apml` v8.2.2
 
 ---
 
@@ -30,7 +30,7 @@
 ├── README.md                      # Project overview
 ├── SYSTEM.md                      # System architecture
 ├── CLAUDE.md                      # ← You are here
-├── ssi-course-production.apml     # APML v8.2.0 specification (SSoT)
+├── ssi-course-production.apml     # APML v8.2.2 specification (SSoT)
 ├── start-automation.cjs           # Start all microservices
 ├── package.json                   # Node dependencies
 ├── vite.config.js                 # Build config
@@ -57,8 +57,7 @@ services/
 │   │   ├── server.cjs                      # Baskets (port 3459)
 │   │   ├── prep-scaffolds.cjs
 │   │   └── generate-text-scaffold.cjs
-│   ├── phase5.5-grammar-validation-server.cjs  # Grammar check (DEPRECATED v8.2.1)
-│   ├── phase7-manifest-server.cjs          # Compilation (port 3464)
+│   ├── phase5.5-grammar-validation-server.cjs  # DEPRECATED v8.2.1 (grammar check)
 │   └── phase8-audio-server.cjs             # TTS/Audio (port 3465, Kai's domain)
 └── shared/
     ├── spawn-agent.cjs                     # Browser automation
@@ -75,11 +74,11 @@ public/
 │   │   └── welcomes.json                  # Course intro template
 │   └── courses/
 │       ├── spa_for_eng/                   # Spanish for English speakers
-│       │   ├── seed_pairs.json            # Phase 1 output
-│       │   ├── lego_pairs.json            # Phase 3 output
-│       │   ├── lego_baskets.json          # Phase 5 output
-│       │   ├── introductions.json         # Phase 6 output (in Phase 3)
-│       │   └── course_manifest.json       # Phase 7 output
+│       │   ├── seed_pairs.json                                    # Phase 1 output
+│       │   ├── lego_pairs.json                                    # Phase 3 output
+│       │   ├── lego_baskets.json                                  # Phase 5 output
+│       │   ├── introductions.json                                 # Phase 6 output (in Phase 3)
+│       │   └── Spanish_for_English_speakers_COURSE_YYYYMMDD.json  # Phase 7 output
 │       └── cmn_for_eng/                   # Mandarin for English speakers
 └── docs/
     └── phase_intelligence/                 # Phase methodology docs (SSoT)
@@ -92,14 +91,15 @@ public/
         └── CANONICAL_CONTENT.md
 ```
 
-#### `scripts/` - Your Workspace (GITIGNORED)
-Your experimental scripts, agent-generated code, one-off fixes.
+#### `scripts/` - Production Scripts & Workspace
+Production compilation scripts and experimental workspace.
 ```
 scripts/
-├── batch-temp/       # Agent-generated batch processors
-├── experiments/      # Testing & prototyping
-├── fixes/            # One-off fixes
-└── deprecated/       # Old versions
+├── phase7-compile-manifest-v2.cjs  # Phase 7 v2.0 compiler (ACTIVE)
+├── batch-temp/                     # Agent-generated batch processors (gitignored)
+├── experiments/                    # Testing & prototyping (gitignored)
+├── fixes/                          # One-off fixes (gitignored)
+└── deprecated/                     # Old versions (gitignored)
 ```
 
 #### `tools/` - Shared Utilities (IN GIT)
@@ -112,8 +112,9 @@ tools/
 └── phase-prep/       # Phase scaffolding
 ```
 
-**⚠️ ARCHIVED:** `tools/orchestrators/automation_server.cjs` - Replaced by layered microservices
-**Location:** `archive/automation-server-2025-11-20/`
+**⚠️ ARCHIVED:**
+- `tools/orchestrators/automation_server.cjs` → `archive/automation-server-2025-11-20/`
+- Phase 7 servers (v1.0-v1.1) → `archive/phase7-deprecated-2025-11-21/`
 
 #### `src/` - Frontend Dashboard (Vue 3)
 ```
@@ -151,25 +152,32 @@ If you're generating files, verify they're in gitignored directories.
 
 ---
 
-## 🧬 APML v8.2.0 Specification
+## 🧬 APML v8.2.3 Specification
 
 **Location**: `ssi-course-production.apml` (root - Single Source of Truth)
 
-**Current Version**: 8.2.0 (2025-11-20)
+**Current Version**: 8.2.3 (2025-11-21)
 
-### **Major Changes in v8.2.0**
-- ✅ Phase 6 integrated into Phase 3 (<1s overhead)
-- ✅ Phase 4 deprecated (linear pipeline)
-- ✅ REST API architecture (no git branching)
-- ✅ Self-contained phase intelligence (embedded in dashboard)
-- ✅ Canonical content system (3-parameter input model)
+### **Major Changes in v8.2.3**
+- ✅ Live progress monitoring system with real-time ETA calculation
+- ✅ Phase 1 agents report progress every 10 seeds
+- ✅ Phase 3 agents report progress after completing their batch
+- ✅ Dashboard polls orchestrator every 5s for live updates
+- ✅ Activity log with last 50 timestamped events
+
+### **Major Changes in v8.2.2**
+- ✅ Phase 7 rebuilt as standalone script (v2.0)
+- ✅ Manifest format exactly matches Italian reference
+- ✅ Empty tokens/lemmas arrays (50% size reduction)
+- ✅ Ordered encouragements system (48 progressive + 26 pooled)
+- ✅ Timestamped manifest naming convention
 
 ### **Phase Outputs**
 - **Phase 1 (v2.6)**: `seed_pairs.json` - Pedagogical translations
 - **Phase 3 (v7.1)**: `lego_pairs.json` + `introductions.json` (dual output)
 - **Phase 5 (v6.1)**: `lego_baskets.json` - Practice phrases
 - **Phase 6 (v2.1)**: Integrated into Phase 3 (no standalone file)
-- **Phase 7 (v1.1)**: `course_manifest.json` - Final manifest with placeholders
+- **Phase 7 (v2.0)**: `{Target}_for_{Known}_speakers_COURSE_{timestamp}.json` - Italian format
 - **Phase 8 (v1.1)**: Audio files + populated duration fields (Kai's domain)
 
 ### **LEGO Terminology (v8.2.0)**
@@ -208,7 +216,7 @@ node start-automation.cjs
 - Phase 3 Server (port 3458)
 - Phase 5 Server (port 3459)
 - ~~Phase 5.5 Server (port 3460)~~ DEPRECATED v8.2.1
-- Phase 7 Server (port 3464)
+- ~~Phase 7 Server (port 3464)~~ DEPRECATED v8.2.2 - Use `scripts/phase7-compile-manifest-v2.cjs`
 - Phase 8 Server (port 3465)
 
 ### **REST API Endpoints**
@@ -266,6 +274,137 @@ curl -X POST http://localhost:3456/api/phase5/spa_for_eng/submit \
 - ✅ Parallel execution without coordination
 - ✅ Immediate HTTP feedback
 - ✅ Simple, scalable architecture
+
+---
+
+## 📊 Live Progress Monitoring (v8.2.3)
+
+**NEW in v8.2.3**: Real-time progress tracking with ETA calculation and activity logs.
+
+### **How It Works**
+
+**Phase servers PUSH progress** → **Orchestrator calculates ETA** → **Dashboard POLLS for updates**
+
+### **Progress Reporting (Phase Servers)**
+
+**Phase 1 - Every 10 seeds:**
+```bash
+curl -X POST http://localhost:3456/api/courses/spa_for_eng/progress \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phase": 1,
+    "updates": {
+      "status": "running",
+      "seedsCompleted": 20,
+      "seedsTotal": 668,
+      "currentSeed": "S0020",
+      "startTime": "2025-11-21T10:30:00.000Z"
+    },
+    "logMessage": "Completed S0020 - 648 remaining"
+  }'
+```
+
+**Phase 3 - After each agent completes:**
+```bash
+curl -X POST http://localhost:3456/api/courses/spa_for_eng/progress \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phase": 3,
+    "updates": {
+      "status": "running",
+      "seedsCompleted": 50,
+      "seedsTotal": 668,
+      "agentId": "agent-2",
+      "currentSeed": "S0050"
+    },
+    "logMessage": "Agent 2: Completed S0041-S0050 (10 seeds extracted)"
+  }'
+```
+
+### **ETA Calculation (Automatic)**
+
+Orchestrator calculates ETA when progress is reported:
+```javascript
+// Elapsed time since start
+elapsed = now - startTime
+
+// Seeds per second rate
+rate = seedsCompleted / (elapsed / 1000)
+
+// Remaining time
+eta = (seedsTotal - seedsCompleted) / rate
+
+// Human-readable: "2m 30s" or "1h 15m"
+```
+
+### **Dashboard Polling**
+
+**GET endpoint:**
+```bash
+curl http://localhost:3456/api/courses/spa_for_eng/progress
+```
+
+**Response:**
+```json
+{
+  "courseCode": "spa_for_eng",
+  "currentPhase": 1,
+  "overallStatus": "running",
+  "startTime": "2025-11-21T10:30:00.000Z",
+  "phases": {
+    "1": {
+      "status": "running",
+      "seedsCompleted": 20,
+      "seedsTotal": 668,
+      "currentSeed": "S0020",
+      "eta": "2025-11-21T10:42:30.000Z",
+      "etaHuman": "12m 30s"
+    }
+  },
+  "recentLogs": [
+    {
+      "time": "2025-11-21T10:32:00.000Z",
+      "level": "info",
+      "message": "Completed S0020 - 648 remaining"
+    }
+  ]
+}
+```
+
+### **Dashboard Component**
+
+Uses `ProgressMonitor.vue` with:
+- **Poll interval**: 5 seconds (configurable via `pollInterval` prop)
+- **Live progress bar**: Shows seeds completed / total with percentage
+- **ETA display**: Human-readable time remaining (e.g., "8m 45s")
+- **Activity log**: Last 5 recent events with timestamps
+- **Phase breakdown**: Individual progress for each phase
+
+**Usage:**
+```vue
+<ProgressMonitor
+  course-code="spa_for_eng"
+  :poll-interval="5000"
+  :seed-count="668"
+/>
+```
+
+### **Benefits**
+
+- ✅ **Real-time visibility** - No more "is it working?" uncertainty
+- ✅ **Accurate ETAs** - Based on actual execution rate, not estimates
+- ✅ **Remote demos** - Perfect for ngrok tunnel presentations
+- ✅ **Audit trail** - Activity log shows what happened and when
+- ✅ **Efficient** - Phases push updates (no filesystem polling)
+
+### **Use Case: Remote Demo**
+
+Perfect for showing progress to co-founders via tunnel:
+1. Start course generation on local machine
+2. Share ngrok URL with co-founder
+3. They watch live progress in dashboard
+4. No need to see Claude Code windows
+5. See exactly what's happening in real-time
 
 ---
 

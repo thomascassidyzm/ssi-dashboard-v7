@@ -3,9 +3,18 @@
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <router-link to="/courses" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
-          ← Back to Course Library
-        </router-link>
+        <div class="flex items-center gap-4 mb-4">
+          <router-link to="/" class="text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Home
+          </router-link>
+          <span class="text-slate-600">•</span>
+          <router-link to="/courses" class="text-emerald-400 hover:text-emerald-300">
+            Course Library
+          </router-link>
+        </div>
         <div v-if="course" class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">
@@ -20,33 +29,16 @@
             >
               {{ formatStatus(course.status) }}
             </span>
-            <button
-              @click="showProgressMonitor = !showProgressMonitor"
-              class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-              {{ showProgressMonitor ? 'Hide' : 'Progress' }}
-            </button>
-            <button
-              @click="showValidationPanel = !showValidationPanel"
+            <a
+              href="https://ssi-dashboard-v7.vercel.app/generate"
+              target="_blank"
               class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
-              {{ showValidationPanel ? 'Hide' : 'Validate & Fix' }}
-            </button>
-            <router-link
-              :to="`/courses/${course.course_code}/compile`"
-              class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
-              </svg>
-              Compile & Generate Audio
-            </router-link>
+              Course Generator
+            </a>
           </div>
         </div>
       </div>

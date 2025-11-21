@@ -1,8 +1,9 @@
 # SSi Dashboard v7 - System Documentation
 
-**Last Updated:** 2025-11-20
+**Last Updated:** 2025-11-21
 **Status:** Working ✅
-**Architecture:** Microservices + Canonical Content
+**Architecture:** Microservices + Standalone Scripts + Canonical Content + Live Progress Monitoring
+**APML Version:** v8.2.3
 
 ---
 
@@ -306,6 +307,22 @@ Returns: { course, translations, legos, lego_breakdowns, baskets }
 ```
 GET /api/courses/{courseCode}/baskets/{seedId}
 Returns: basket JSON
+```
+
+### Progress Monitoring (v8.2.3)
+```
+GET /api/courses/{courseCode}/progress
+Returns: {
+  courseCode, currentPhase, overallStatus, startTime,
+  phases: { 1: {...}, 3: {...}, ... },
+  recentLogs: [...]
+}
+Dashboard polls this every 5s for live updates
+
+POST /api/courses/{courseCode}/progress
+Body: { phase, updates: {...}, logMessage }
+Phase servers report progress here (e.g., every 10 seeds)
+Orchestrator calculates ETA automatically
 ```
 
 ---
