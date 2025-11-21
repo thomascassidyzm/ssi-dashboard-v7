@@ -51,8 +51,8 @@ async function uploadAudio(uuid, audioBuffer, bucket = STAGE_BUCKET) {
     Bucket: bucket,
     Key: key,
     Body: audioBuffer,
-    ContentType: 'audio/mpeg',
-    ACL: 'public-read'
+    ContentType: 'audio/mpeg'
+    // Note: ACL removed - bucket uses bucket policy for public access
   }).promise();
 
   return {
@@ -228,8 +228,8 @@ async function copyAudio(uuid, sourceBucket, destBucket) {
   await s3.copyObject({
     Bucket: destBucket,
     CopySource: `${sourceBucket}/${key}`,
-    Key: key,
-    ACL: 'public-read'
+    Key: key
+    // Note: ACL removed - bucket uses bucket policy for public access
   }).promise();
 }
 

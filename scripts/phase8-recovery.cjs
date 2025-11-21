@@ -88,6 +88,30 @@ async function recoverGeneratedSamples() {
     console.log(`Loaded metadata from worker output files: ${Object.keys(sampleMetadata).length} samples\n`);
   }
 
+  // Also load metadata from temp MAR for samples already imported there
+  const tempMarVoicesDir = path.join(__dirname, '..', 'temp', 'mar', 'voices');
+  if (await fs.pathExists(tempMarVoicesDir)) {
+    const voiceDirs = await fs.readdir(tempMarVoicesDir);
+    for (const voiceDir of voiceDirs) {
+      const samplesPath = path.join(tempMarVoicesDir, voiceDir, 'samples.json');
+      if (await fs.pathExists(samplesPath)) {
+        const voiceSamples = await fs.readJson(samplesPath);
+        for (const [uuid, sample] of Object.entries(voiceSamples.samples || {})) {
+          if (!sampleMetadata[uuid]) {
+            sampleMetadata[uuid] = {
+              text: sample.text,
+              role: sample.role,
+              cadence: sample.cadence,
+              voiceId: voiceDir,
+              language: sample.language
+            };
+          }
+        }
+      }
+    }
+    console.log(`After loading from temp MAR: ${Object.keys(sampleMetadata).length} samples\n`);
+  }
+
   // Fall back to manifest if worker files don't exist
   if (Object.keys(sampleMetadata).length === 0) {
     const manifestPath = path.join(VFS_BASE, 'courses', courseCode, 'course_manifest.json');
@@ -241,6 +265,7 @@ async function recoverGeneratedSamples() {
   console.log(`\n✅ Imported: ${imported}/${processedCount} samples to temp MAR\n`);
 
   // Upload to S3
+  let uploaded = 0;
   if (!skipUpload) {
     console.log('='.repeat(60));
     console.log('Uploading to S3');
@@ -257,12 +282,9 @@ async function recoverGeneratedSamples() {
           sample: config.sample
         };
       });
-
-    let uploaded = 0;
     for (const config of uploadConfigs) {
       try {
-        const s3Key = `samples/${config.uuid}.mp3`;
-        await s3Service.uploadFile(config.localPath, s3Key, uploadBucket);
+        await s3Service.uploadAudioFile(config.uuid, config.localPath, uploadBucket);
         uploaded++;
         console.log(`✓ ${config.sample.voiceId} / ${config.sample.text.substring(0, 40)}...`);
       } catch (error) {
