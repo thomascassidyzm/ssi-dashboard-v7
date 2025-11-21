@@ -199,13 +199,6 @@ function showDetails(course) {
 }
 
 async function regenerateManifest() {
-  // Check if user is pointing at localhost (API Server environment)
-  const apiBaseUrl = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-  if (!apiBaseUrl.includes('localhost') && !apiBaseUrl.includes('127.0.0.1')) {
-    toast.warning('⚠️ Manifest regeneration only works on localhost. Switch to "API Server" in environment selector.')
-    return
-  }
-
   regenerating.value = true
   try {
     const response = await api.regenerateManifest()
@@ -215,8 +208,10 @@ async function regenerateManifest() {
     await loadCourses()
   } catch (err) {
     console.error('Failed to regenerate manifest:', err)
-    if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
-      toast.error('❌ Cannot reach orchestrator. Make sure it\'s running on localhost:3456')
+    if (err.response?.status === 404) {
+      toast.error('❌ Orchestrator doesn\'t support manifest regeneration. Make sure it\'s running and up to date.')
+    } else if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
+      toast.error('❌ Cannot reach orchestrator.')
     } else {
       toast.error('❌ Failed to regenerate manifest')
     }
