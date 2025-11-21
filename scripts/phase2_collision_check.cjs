@@ -37,12 +37,16 @@ if (Array.isArray(data)) {
     known: pair[1]
   }));
 } else if (data.translations) {
-  // Object format: {translations: {S0001: [target, known], ...}}
-  seedPairs = Object.entries(data.translations).map(([seed_id, pair]) => ({
-    seed_id,
-    target: pair[0],
-    known: pair[1]
-  }));
+  // Object format: {translations: {S0001: [target, known] OR {known, target}, ...}}
+  seedPairs = Object.entries(data.translations).map(([seed_id, pair]) => {
+    if (Array.isArray(pair)) {
+      // Array format (v7.x): [target, known]
+      return { seed_id, target: pair[0], known: pair[1] };
+    } else {
+      // Object format (v8.2.0): {known, target}
+      return { seed_id, target: pair.target, known: pair.known };
+    }
+  });
 } else {
   console.error('❌ Error: Unrecognized seed pairs format');
   process.exit(1);
