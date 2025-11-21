@@ -160,8 +160,12 @@ async function autoPublishCourseData(courseCode, phase, message) {
       return { success: true, skipped: true };
     }
 
-    // Stage course files
-    execSync(`git add ${courseRelativePath}`, {
+    // Regenerate manifest to include this course
+    console.log(`[Auto-Publish] Regenerating manifest to include ${courseCode}...`);
+    await regenerateCourseManifest();
+
+    // Stage course files AND manifest
+    execSync(`git add ${courseRelativePath} public/vfs/courses-manifest.json`, {
       cwd: repoRoot,
       stdio: 'inherit'
     });
