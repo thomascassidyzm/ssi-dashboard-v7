@@ -882,5 +882,25 @@ export default {
   async regenerateManifest() {
     const response = await api.post('/api/regenerate-manifest')
     return response.data
+  },
+
+  // Phase 8: Audio Generation
+  async startPhase8Audio(courseCode, options = {}) {
+    // Phase 8 server runs on port 3465
+    const phase8Url = 'http://localhost:3465'
+    const response = await axios.post(`${phase8Url}/start`, {
+      courseCode,
+      options: {
+        phase: options.phase || 'auto',  // 'auto', 'targets', or 'presentations'
+        skipUpload: options.skipUpload || false,
+        skipQC: options.skipQC || false,
+        uploadBucket: options.uploadBucket || 'stage'
+      }
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
   }
 }

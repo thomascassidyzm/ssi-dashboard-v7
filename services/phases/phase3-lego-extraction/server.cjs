@@ -86,88 +86,89 @@ function getLanguageName(code) {
  * - LARGE: >100 seeds → 10 seeds/agent (67 agents for 668 seeds)
  */
 function calculateSegmentation(totalSeeds) {
-  let segmentSize, seedsPerAgent;
+  // 3-tier parallelization: BROWSERS × AGENTS × SEEDS
+  // Two modes only:
+  // - Test mode (≤30 seeds): 6 browsers × 5 agents × 1 seed = 30
+  // - Production mode (>30 seeds): 15 browsers × 15 agents × 3 seeds = 675
 
-  // Determine segment size and seeds per agent based on course size
+  let browsers, agentsPerBrowser, seedsPerAgent;
+
   if (totalSeeds <= 30) {
-    // SMALL TEST COURSES (≤30 seeds) - High parallelization
-    segmentSize = totalSeeds; // No segmentation
-    seedsPerAgent = 5; // 5-6 seeds per agent (e.g., 30÷5 = 6 agents)
-  } else if (totalSeeds <= 100) {
-    // MEDIUM COURSES (31-100 seeds) - Moderate parallelization
-    segmentSize = totalSeeds; // No segmentation
-    seedsPerAgent = 5; // 5 seeds per agent
+    // TEST MODE: 6/5/1
+    browsers = 6;
+    agentsPerBrowser = 5;
+    seedsPerAgent = 1;
   } else {
-    // LARGE COURSES (>100 seeds) - Segmented parallelization
-    segmentSize = 100;
-    seedsPerAgent = 10; // 10 seeds per agent per segment
+    // PRODUCTION MODE: 15/15/3
+    browsers = 15;
+    agentsPerBrowser = 15;
+    seedsPerAgent = 3;
   }
 
-  // Calculate segments
+  // Calculate segments (each browser gets a segment)
   const segments = [];
-  for (let i = 0; i < totalSeeds; i += segmentSize) {
+  const seedsPerBrowser = agentsPerBrowser * seedsPerAgent;
+
+  for (let i = 0; i < totalSeeds; i += seedsPerBrowser) {
     const segmentStart = i + 1;
-    const segmentEnd = Math.min(i + segmentSize, totalSeeds);
+    const segmentEnd = Math.min(i + seedsPerBrowser, totalSeeds);
     const segmentSeeds = segmentEnd - segmentStart + 1;
-    const agentsNeeded = Math.ceil(segmentSeeds / seedsPerAgent);
+    const agentsInThisBrowser = Math.ceil(segmentSeeds / seedsPerAgent);
 
     segments.push({
       segmentNumber: segments.length + 1,
       startSeed: segmentStart,
       endSeed: segmentEnd,
       seedCount: segmentSeeds,
-      agentCount: agentsNeeded,
-      seedsPerAgent: Math.ceil(segmentSeeds / agentsNeeded)
+      browserNumber: segments.length + 1,
+      agentCount: agentsInThisBrowser,
+      seedsPerAgent: seedsPerAgent
     });
   }
 
   const totalAgents = segments.reduce((sum, seg) => sum + seg.agentCount, 0);
+  const capacity = browsers * agentsPerBrowser * seedsPerAgent;
 
   return {
     totalSeeds,
-    segmentSize,
+    browsers,
+    agentsPerBrowser,
     seedsPerAgent,
     segmentCount: segments.length,
     totalAgents,
+    capacity,
     segments,
-    strategy: totalSeeds <= 20 ? 'SMALL_TEST' :
-              totalSeeds <= 100 ? 'MEDIUM_SINGLE' :
-              'LARGE_MULTI'
+    strategy: totalSeeds <= 30 ? 'TEST_6_5_1' : 'PRODUCTION_15_15_3'
   };
 }
 
 /**
  * Generate Phase 3 Master Prompt
  */
-function generatePhase3MasterPrompt(courseCode, params) {
-  const { target, known, startSeed, endSeed } = params;
+function generatePhase3MasterPrompt(courseCode, params, segmentation) {
+  const { target, known, startSeed, endSeed, browserNumber } = params;
   const totalSeeds = endSeed - startSeed + 1;
 
-  // Quick Test mode: 10 seeds = 5 agents × 2 seeds each
-  // Normal mode: 10 seeds per agent
-  const seedsPerAgent = totalSeeds === 10 ? 2 : 10;
-  const agentCount = Math.ceil(totalSeeds / seedsPerAgent);
+  const agentsInThisBrowser = segmentation.agentsPerBrowser;
+  const seedsPerAgent = segmentation.seedsPerAgent;
 
-  // Calculate segment number from startSeed
-  const segmentNum = Math.floor((startSeed - 1) / 100) + 1;
-
-  return `# Phase 3 Master Orchestrator: LEGO Extraction (Segment-Based)
+  return `# Phase 3 Master Orchestrator: LEGO Extraction
 
 **Course**: ${courseCode}
-**Segment Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
-**Sub-Agents**: ${agentCount} parallel agents
-**Seeds per agent**: ${seedsPerAgent}
+**Browser**: ${browserNumber}/${segmentation.browsers}
+**Seeds**: ${totalSeeds} (S${String(startSeed).padStart(4, '0')}-S${String(endSeed).padStart(4, '0')})
+**Parallelization**: ${agentsInThisBrowser} agents × ${seedsPerAgent} seed(s) each
 
 ---
 
 ## 🎯 YOUR MISSION
 
-You are the **Master Orchestrator** for this segment. Your job is to:
+You are the **Master Orchestrator** for browser ${browserNumber}. Your job is to:
 
 1. **Read Phase 3 intelligence** (v7.0 - Two Heuristics Edition)
-2. **Spawn ${agentCount} sub-agents in parallel** (ONE message with ${agentCount} Task tool calls)
-3. **Each sub-agent extracts ${seedsPerAgent} seeds** with IDENTICAL prompt (only seed range differs)
-4. **Wait for all ${agentCount} to complete**
+2. **Spawn ${agentsInThisBrowser} sub-agents in parallel** (ONE message with ${agentsInThisBrowser} Task tool calls)
+3. **Each sub-agent extracts ${seedsPerAgent} seed(s)** with IDENTICAL prompt (only seed range differs)
+4. **Wait for all ${agentsInThisBrowser} to complete**
 5. **Verify all sub-agents successfully POSTed** to API
 6. **Done** - Vercel auto-deploys results
 
@@ -527,12 +528,13 @@ app.post('/start', async (req, res) => {
   console.log(`   Total seeds: ${totalSeeds}`);
   console.log(`   Strategy: ${strategy}`);
 
-  // Calculate segmentation
+  // Calculate segmentation (3-tier: browsers × agents × seeds)
   const segmentation = calculateSegmentation(totalSeeds);
 
   console.log(`   Segmentation: ${segmentation.strategy}`);
-  console.log(`   Segments: ${segmentation.segmentCount}`);
-  console.log(`   Total agents: ${segmentation.totalAgents}`);
+  console.log(`   Parallelization: ${segmentation.browsers} browsers × ${segmentation.agentsPerBrowser} agents × ${segmentation.seedsPerAgent} seed(s)`);
+  console.log(`   Total capacity: ${segmentation.capacity} seeds (${segmentation.totalAgents} agents)`);
+  console.log(`   Browsers to spawn: ${segmentation.browsers}`);
 
   // Initialize job state with enhanced tracking
   const job = {
@@ -1077,17 +1079,18 @@ async function spawnSegmentOrchestrators(courseCode, params, segmentation) {
     const segmentStart = startSeed + segment.startSeed - 1;
     const segmentEnd = startSeed + segment.endSeed - 1;
 
-    console.log(`\n  Segment ${segment.segmentNumber}/${segments.length}:`);
+    console.log(`\n  Browser ${segment.browserNumber}/${segments.length}:`);
     console.log(`    Seed range: S${String(segmentStart).padStart(4, '0')}-S${String(segmentEnd).padStart(4, '0')}`);
-    console.log(`    Agents: ${segment.agentCount}`);
+    console.log(`    Agents: ${segment.agentCount} × ${segment.seedsPerAgent} seed(s)`);
 
-    // Generate master prompt for this segment
+    // Generate master prompt for this browser
     const prompt = generatePhase3MasterPrompt(courseCode, {
       target,
       known,
       startSeed: segmentStart,
-      endSeed: segmentEnd
-    });
+      endSeed: segmentEnd,
+      browserNumber: segment.browserNumber
+    }, segmentation);
 
     // Spawn browser window
     if (spawnClaudeWebAgent) {

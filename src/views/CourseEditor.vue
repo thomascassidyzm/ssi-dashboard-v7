@@ -2108,95 +2108,12 @@ function cancelRegeneration() {
   regenerationResult.value = null
 }
 
-// Phase 8: Audio Generation
-async function startAudioGeneration() {
-  if (!course.value?.phases_completed?.includes('7')) {
-    alert('Phase 7 (Course Manifest) must be completed before audio generation')
-    return
-  }
-
-  // Calculate estimates
-  const seeds = course.value?.total_seeds || 668
-  const phaseASamples = seeds * 3  // target1, target2, source per seed
-  const phaseBSamples = actualLegoCount * 3  // 3 presentations per LEGO
-  const totalSamples = phaseASamples + phaseBSamples + 74 + 3  // + encouragements + welcomes
-
-  const confirmMessage = `Start Phase 8 Audio Generation?
-
-━━━ PIPELINE ━━━
-
-1️⃣  Pre-flight Checks
-    → Voice config, API keys, S3 access
-
-2️⃣  Phase A: Core Vocabulary (~${phaseASamples.toLocaleString()} samples)
-    → target1 (native voice 1)
-    → target2 (native voice 2)
-    → source (${course.value.source_language})
-    ⏸️  QC Checkpoint (manual review)
-
-3️⃣  Phase B: Presentations (~${phaseBSamples.toLocaleString()} samples)
-    → 3 presentation variants per LEGO
-    ⏸️  QC Checkpoint (manual review)
-
-4️⃣  Encouragements + Welcomes (77 samples)
-
-5️⃣  S3 Upload + MAR Update
-
-━━━ TOTAL: ~${totalSamples.toLocaleString()} audio files ━━━
-
-⚠️  This uses Azure TTS + ElevenLabs
-⚠️  Process pauses at QC checkpoints
-⚠️  Requires voice configurations
-
-Continue?`
-
-  if (!confirm(confirmMessage)) {
-    return
-  }
-
-  audioGenerationLoading.value = true
-  audioGenerationResult.value = null
-
-  const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-
-  try {
-    const response = await fetch(`${apiBase}/api/phase8/start`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        courseCode: courseCode,
-        options: {
-          phase: 'auto',  // Run both Phase A and Phase B
-          skipUpload: false,
-          skipQC: false
-        }
-      })
-    })
-
-    if (!response.ok) {
-      const text = await response.text()
-      throw new Error(`HTTP ${response.status}: ${text}`)
-    }
-
-    const result = await response.json()
-    audioGenerationResult.value = {
-      success: true,
-      jobId: result.jobId,
-      phase: result.phase
-    }
-
-    // Show toast notification
-    alert(`✅ Audio generation started!\n\nJob ID: ${result.jobId}\n\nYou can monitor progress in the server logs.`)
-  } catch (err) {
-    console.error('Audio generation error:', err)
-    audioGenerationResult.value = {
-      success: false,
-      error: err.message
-    }
-    alert(`❌ Failed to start audio generation: ${err.message}`)
-  } finally {
-    audioGenerationLoading.value = false
-  }
+// Phase 8: Audio Generation - Navigate to pipeline view
+function startAudioGeneration() {
+  router.push({
+    name: 'AudioPipelineView',
+    params: { courseCode: courseCode }
+  })
 }
 
 // Cleanup on component unmount
