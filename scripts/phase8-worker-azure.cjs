@@ -49,7 +49,7 @@ async function generateAzureSamples() {
   await fs.ensureDir(tempDir);
 
   const results = [];
-  const MAX_CONCURRENT = 8;
+  const MAX_CONCURRENT = 1; // Sequential processing to avoid Azure backend throttling
 
   // Group by voice
   const byVoice = {};

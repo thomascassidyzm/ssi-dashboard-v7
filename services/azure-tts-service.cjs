@@ -15,7 +15,7 @@ const AZURE_SPEECH_REGION = process.env.AZURE_SPEECH_REGION || 'westeurope';
 
 // Rate limiting
 let lastRequestTime = 0;
-const MIN_REQUEST_INTERVAL = 7; // 7ms between requests = ~143 req/s (Azure allows 200 req/s, using 71%)
+const MIN_REQUEST_INTERVAL = 5; // 5ms between requests = 200 req/s (Azure's 200 TPS limit, sequential processing)
 
 // Synthesizer Connection Pool (reuse connections to avoid exhaustion)
 // Microsoft recommends reusing synthesizers to avoid connection overhead

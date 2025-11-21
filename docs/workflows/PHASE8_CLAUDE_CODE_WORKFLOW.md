@@ -268,6 +268,100 @@ pkill -f "phase8-audio-generation.cjs"
 ps aux | grep phase8-audio-generation
 ```
 
+## Recovery Procedure (If Generation Fails)
+
+**When to use**: Phase 8 crashed/stopped during processing or upload, leaving unprocessed MP3s in `temp/audio/`
+
+### What the Recovery Script Does
+
+1. ✅ **Finds unprocessed samples** - Scans `temp/audio/` for MP3s not yet in temp MAR
+2. ✅ **Processes audio** - Applies normalization + time-stretch (voice-specific settings)
+3. ✅ **Imports to temp MAR** - Adds samples to temporary Master Audio Registry
+4. ✅ **Uploads to S3** - Publishes processed samples to S3 bucket
+
+### Usage
+
+```bash
+# Basic recovery (processes + imports + uploads to default bucket)
+node scripts/phase8-recovery.cjs <course_code>
+
+# Example
+node scripts/phase8-recovery.cjs spa_for_eng_TEST
+
+# Custom S3 bucket
+node scripts/phase8-recovery.cjs spa_for_eng_TEST --bucket ssi-audio-stage
+
+# Skip S3 upload (only process + import to MAR)
+node scripts/phase8-recovery.cjs spa_for_eng_TEST --skip-upload
+```
+
+### When You Need Recovery
+
+**Scenario 1: Script crashed during processing**
+```
+✅ Generated: 428 Azure + 200 ElevenLabs samples
+❌ Script crashed before processing
+📁 Result: 628 raw MP3s in temp/audio/, not processed
+```
+
+**Solution**: Run recovery script → processes all → imports to MAR → uploads to S3
+
+**Scenario 2: S3 upload failed**
+```
+✅ Generated: 628 samples
+✅ Processed: 628 samples
+❌ S3 upload failed (network/credentials issue)
+📁 Result: Processed files in temp/audio/processed/, not uploaded
+```
+
+**Solution**: Run recovery script → imports to MAR → uploads to S3
+
+**Scenario 3: Worker killed mid-generation**
+```
+✅ Generated: 243 ElevenLabs samples
+❌ Azure worker killed (rate limit/timeout)
+📁 Result: 243 MP3s in temp/audio/, not processed
+```
+
+**Solution**: Run recovery script → processes existing → then continue Phase 8
+
+### Standard Recovery Workflow
+
+1. **Check what's in temp/audio/**
+   ```bash
+   ls temp/audio/*.mp3 | wc -l   # Count raw MP3s
+   ```
+
+2. **Run recovery**
+   ```bash
+   node scripts/phase8-recovery.cjs spa_for_eng_TEST
+   ```
+
+3. **Continue Phase 8**
+   ```bash
+   # Recovery imports to temp MAR, so Phase 8 will skip those samples
+   node scripts/phase8-audio-generation.cjs spa_for_eng_TEST --execute
+   ```
+
+### What Gets Protected
+
+- ✅ **Existing temp MAR entries** - Recovery skips samples already imported
+- ✅ **Course manifest metadata** - Recovery reads sample details from manifest
+- ✅ **Voice-specific settings** - Processing uses correct normalization/stretch per voice
+- ✅ **Expensive TTS samples** - Never regenerate, always process existing files
+
+### Important Notes
+
+**DO NOT delete `temp/audio/` before recovery!**
+- Raw MP3s = expensive API calls (Azure TTS, ElevenLabs)
+- Recovery script processes existing files without regeneration
+- Only delete after confirming all samples imported to MAR
+
+**Recovery is idempotent**
+- Safe to run multiple times
+- Skips samples already in temp MAR
+- Won't double-upload to S3 (S3 overwrites duplicates)
+
 ## Parallel Provider Generation (New!)
 
 **Status**: ✅ Implemented (2025-11-20)
@@ -389,13 +483,21 @@ Before starting Phase 8:
 - [ ] Run multiple executions simultaneously
 - [ ] Skip QC review checkpoints
 - [ ] Proceed if QC reports are missing
+- [ ] Delete `temp/audio/` without running recovery first
+
+**If generation fails mid-process:**
+- [ ] Check for unprocessed MP3s: `ls temp/audio/*.mp3 | wc -l`
+- [ ] Run recovery script: `node scripts/phase8-recovery.cjs <course_code>`
+- [ ] Then continue Phase 8 normally
 
 ## See Also
 
 - `scripts/phase8-audio-generation.cjs` - Main script
+- `scripts/phase8-recovery.cjs` - **Recovery tool for failed generation**
 - `services/quality-control-service.cjs` - QC logic
 - `scripts/create-qc-review.cjs` - QC review directory generator
 - `docs/REGENERATION_STRATEGY.md` - Detailed regeneration strategies
+- `docs/PHASE8_CONNECTION_POOL.md` - Azure TTS connection pool implementation
 - `CLAUDE.md` - General agent guidelines
 
 ---
