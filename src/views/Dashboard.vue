@@ -61,26 +61,6 @@
             </div>
           </router-link>
         </div>
-
-        <!-- Editing Tools -->
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Edit Introductions -->
-          <router-link to="/edit/introductions" class="block bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 border border-blue-500/30 rounded-lg p-6 transition hover:-translate-y-1 shadow-lg hover:shadow-blue-500/20">
-            <div class="flex items-center justify-between">
-              <div>
-                <h3 class="text-xl font-bold text-blue-100 mb-1">✏️ Edit Introductions</h3>
-                <p class="text-blue-200 text-sm">
-                  Refine LEGO introduction presentations → Phase 7 recompile
-                </p>
-              </div>
-              <div class="text-blue-300">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                </svg>
-              </div>
-            </div>
-          </router-link>
-        </div>
       </section>
 
       <!-- Pipeline Architecture -->
