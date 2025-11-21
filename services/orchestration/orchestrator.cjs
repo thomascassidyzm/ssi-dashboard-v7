@@ -138,6 +138,63 @@ function formatDuration(seconds) {
 }
 
 /**
+ * Auto-publish course data to GitHub
+ * Commits and pushes course output files after each phase completion
+ * This allows the deployed dashboard to show live progress
+ */
+async function autoPublishCourseData(courseCode, phase, message) {
+  try {
+    console.log(`[Auto-Publish] Publishing ${courseCode} Phase ${phase} to GitHub...`);
+
+    const repoRoot = path.join(__dirname, '../..');
+    const courseRelativePath = `public/vfs/courses/${courseCode}/`;
+
+    // Check if there are changes to commit
+    const status = execSync('git status --porcelain', {
+      cwd: repoRoot,
+      encoding: 'utf-8'
+    });
+
+    if (!status.trim()) {
+      console.log(`[Auto-Publish] No changes to publish for ${courseCode}`);
+      return { success: true, skipped: true };
+    }
+
+    // Stage course files
+    execSync(`git add ${courseRelativePath}`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Create commit with formatted message
+    const commitMsg = message || `Phase ${phase}: Auto-publish ${courseCode} output`;
+    const fullCommitMsg = `${commitMsg}
+
+🤖 Auto-published via orchestrator
+
+Co-Authored-By: Claude <noreply@anthropic.com>`;
+
+    execSync(`git commit -m "${fullCommitMsg.replace(/"/g, '\\"')}"`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Push to GitHub
+    execSync('git push', {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    console.log(`[Auto-Publish] ✅ Published ${courseCode} to GitHub`);
+    return { success: true, published: true };
+  } catch (error) {
+    console.error(`[Auto-Publish] ⚠️  Failed to publish:`, error.message);
+    // Don't fail the phase if git push fails - just log it
+    return { success: false, error: error.message };
+  }
+}
+
+/**
  * GET /api/courses
  * List all available courses
  */
@@ -1790,6 +1847,13 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
       progress.currentPhase = 3;
     }
 
+    // Auto-publish to GitHub for live dashboard visibility
+    autoPublishCourseData(
+      courseCode,
+      1,
+      `Phase 1: ${seedCount} pedagogical translations`
+    ).catch(err => console.error('[Phase 1] Auto-publish failed:', err));
+
     res.json({
       success: true,
       message: `Phase 1 submission received for ${courseCode}`,
@@ -2033,6 +2097,13 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
       if (progress) {
         progress.currentPhase = 5;
       }
+
+      // Auto-publish to GitHub for live dashboard visibility
+      autoPublishCourseData(
+        courseCode,
+        3,
+        `Phase 3: ${legoCount} LEGOs + ${introCount} introductions across ${seedCount} seeds`
+      ).catch(err => console.error('[Phase 3] Auto-publish failed:', err));
     } else {
       // More agents still working - keep running
       updatePhaseProgress(courseCode, 3, {
@@ -2210,6 +2281,13 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
       progress.currentPhase = 7;
     }
 
+    // Auto-publish to GitHub for live dashboard visibility
+    autoPublishCourseData(
+      courseCode,
+      5,
+      `Phase 5: ${basketCount} LEGOs with ${phraseCount.toLocaleString()} practice phrases`
+    ).catch(err => console.error('[Phase 5] Auto-publish failed:', err));
+
     res.json({
       success: true,
       message: `Phase 5 submission received for ${courseCode}`,
@@ -2281,6 +2359,13 @@ app.post('/api/phase7/:courseCode/submit', async (req, res) => {
       progress.currentPhase = 8;
       progress.overallStatus = 'complete'; // Manifest is the final deliverable
     }
+
+    // Auto-publish to GitHub for live dashboard visibility
+    autoPublishCourseData(
+      courseCode,
+      7,
+      `Phase 7: Course manifest with ${phraseCount.toLocaleString()} phrases`
+    ).catch(err => console.error('[Phase 7] Auto-publish failed:', err));
 
     res.json({
       success: true,
