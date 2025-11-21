@@ -466,6 +466,56 @@
       </div>
 
     </main>
+
+    <!-- Push to GitHub Confirmation Modal -->
+    <div
+      v-if="showPushModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      @click.self="showPushModal = false"
+    >
+      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-lg w-full shadow-2xl">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-400 mb-4">📤 Push to GitHub?</h3>
+
+          <div class="mb-6 space-y-3">
+            <p class="text-slate-300">
+              Push <strong class="text-emerald-400">{{ courseCode }}</strong> course data to GitHub.
+            </p>
+
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <p class="text-sm font-medium text-slate-400 mb-2">What happens next:</p>
+              <ul class="text-sm text-slate-300 space-y-1">
+                <li>✓ Commits <code class="text-emerald-400">{{ courseCode }}/</code> changes</li>
+                <li>✓ Pushes to <code class="text-emerald-400">main</code> branch</li>
+                <li>✓ Triggers Vercel deployment (~30s)</li>
+                <li>✓ Dashboard shows latest data</li>
+              </ul>
+            </div>
+
+            <p class="text-xs text-slate-500">
+              Note: If no changes exist, this will skip the commit.
+            </p>
+          </div>
+
+          <div class="flex gap-3 justify-end">
+            <button
+              @click="showPushModal = false"
+              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              @click="confirmPush"
+              :disabled="pushing"
+              class="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg transition-colors font-medium"
+            >
+              <span v-if="pushing">Pushing...</span>
+              <span v-else>Push to GitHub</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -500,6 +550,7 @@ const progress = ref(0)
 const errorMessage = ref('')
 const clearingJob = ref(false)
 const pushing = ref(false)
+const showPushModal = ref(false)
 
 // Enhanced tracking from phase servers
 const phaseDetails = ref(null)
@@ -904,12 +955,15 @@ const clearStuckJob = async () => {
   }
 }
 
-const pushToGitHub = async () => {
+const pushToGitHub = () => {
   if (!courseCode.value) {
     toast.error('❌ No course selected')
     return
   }
+  showPushModal.value = true
+}
 
+const confirmPush = async () => {
   pushing.value = true
   try {
     const response = await api.pushToGitHub(courseCode.value)
@@ -919,6 +973,8 @@ const pushToGitHub = async () => {
     } else {
       toast.success('✅ Course data pushed to GitHub! Vercel will deploy automatically.')
     }
+
+    showPushModal.value = false
   } catch (err) {
     console.error('Failed to push to GitHub:', err)
     if (err.response?.status === 404) {

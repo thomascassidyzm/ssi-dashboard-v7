@@ -1,10 +1,31 @@
 {
-  "generated_at": "2025-11-21T05:02:32.792Z",
+  "generated_at": "2025-11-21T11:09:04.788Z",
   "courses": [
     {
       "course_code": "archive",
       "source_language": "UNK",
       "target_language": "UNK",
+      "total_seeds": 0,
+      "actual_seed_count": 0,
+      "lego_count": 0,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "unknown",
+      "phase": "empty",
+      "phases_completed": [],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": false,
+        "lego_pairs": false,
+        "baskets": false,
+        "introductions": false
+      }
+    },
+    {
+      "course_code": "ces_for_eng",
+      "source_language": "ENG",
+      "target_language": "CES",
       "total_seeds": 0,
       "actual_seed_count": 0,
       "lego_count": 0,
@@ -123,6 +144,29 @@
       "course_code": "ita_for_fra",
       "source_language": "FRA",
       "target_language": "ITA",
+      "total_seeds": 10,
+      "actual_seed_count": 10,
+      "lego_count": 0,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "unknown",
+      "phase": "phase_1",
+      "phases_completed": [
+        "1"
+      ],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": false,
+        "baskets": false,
+        "introductions": false
+      }
+    },
+    {
+      "course_code": "nld_for_eng",
+      "source_language": "ENG",
+      "target_language": "NLD",
       "total_seeds": 10,
       "actual_seed_count": 10,
       "lego_count": 0,

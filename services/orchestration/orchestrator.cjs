@@ -1684,17 +1684,71 @@ app.get('/api/phase-intelligence/:phase', async (req, res) => {
  * POST /api/regenerate-manifest
  * Trigger manual manifest regeneration (local dev only)
  * Scans public/vfs/courses/ and updates courses-manifest.json
+ * Returns comparison showing what changed
  */
 app.post('/api/regenerate-manifest', async (req, res) => {
   try {
     console.log('[Orchestrator] 📋 Manual manifest regeneration requested');
 
+    // Load old manifest first
+    const manifestPath = path.join(__dirname, '../../public/vfs/courses-manifest.json');
+    let oldManifest = null;
+    try {
+      oldManifest = await fs.readJson(manifestPath);
+    } catch (err) {
+      console.log('[Orchestrator] No existing manifest found');
+    }
+
+    // Regenerate manifest
     await regenerateCourseManifest();
+
+    // Load new manifest
+    const newManifest = await fs.readJson(manifestPath);
+
+    // Compare old vs new
+    const comparison = {
+      added: [],
+      updated: [],
+      removed: []
+    };
+
+    if (oldManifest) {
+      const oldCodes = new Set(oldManifest.courses.map(c => c.course_code));
+      const newCodes = new Set(newManifest.courses.map(c => c.course_code));
+
+      // Find added courses
+      for (const course of newManifest.courses) {
+        if (!oldCodes.has(course.course_code)) {
+          comparison.added.push(course.course_code);
+        }
+      }
+
+      // Find removed courses
+      for (const course of oldManifest.courses) {
+        if (!newCodes.has(course.course_code)) {
+          comparison.removed.push(course.course_code);
+        }
+      }
+
+      // Find updated courses (phase changed)
+      for (const newCourse of newManifest.courses) {
+        const oldCourse = oldManifest.courses.find(c => c.course_code === newCourse.course_code);
+        if (oldCourse && oldCourse.phase !== newCourse.phase) {
+          comparison.updated.push({
+            course_code: newCourse.course_code,
+            old_phase: oldCourse.phase,
+            new_phase: newCourse.phase
+          });
+        }
+      }
+    }
 
     res.json({
       success: true,
       message: 'Manifest regenerated successfully. Remember to commit and push changes to GitHub.',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      comparison,
+      total_courses: newManifest.courses.length
     });
   } catch (error) {
     console.error('[Orchestrator] ❌ Failed to regenerate manifest:', error);

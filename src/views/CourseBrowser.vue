@@ -77,13 +77,26 @@
         <div
           v-for="course in filteredCourses"
           :key="course.course_code"
-          class="bg-slate-800 border border-slate-700 rounded-lg p-6 hover:border-emerald-500/50 transition-all hover:-translate-y-0.5"
+          :class="[
+            'bg-slate-800 rounded-lg p-6 transition-all hover:-translate-y-0.5',
+            highlightedCourses.has(course.course_code)
+              ? 'border-2 border-emerald-500 shadow-lg shadow-emerald-500/20'
+              : 'border border-slate-700 hover:border-emerald-500/50'
+          ]"
         >
           <div class="flex items-start justify-between mb-4">
             <div>
-              <h3 class="text-xl font-semibold text-emerald-400 mb-1">
-                {{ formatCourseCode(course.course_code) }}
-              </h3>
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="text-xl font-semibold text-emerald-400">
+                  {{ formatCourseCode(course.course_code) }}
+                </h3>
+                <span
+                  v-if="highlightedCourses.has(course.course_code)"
+                  class="px-2 py-0.5 bg-emerald-500 text-white text-xs font-bold rounded-full animate-pulse"
+                >
+                  NEW
+                </span>
+              </div>
               <p class="text-xs text-slate-500 mb-1">
                 {{ getFullCourseName(course.course_code) }}
               </p>
@@ -155,6 +168,56 @@
         </div>
       </div>
     </div>
+
+    <!-- Push to GitHub Confirmation Modal -->
+    <div
+      v-if="showPushModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      @click.self="showPushModal = false"
+    >
+      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-lg w-full shadow-2xl">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-400 mb-4">📤 Push to GitHub?</h3>
+
+          <div class="mb-6 space-y-3">
+            <p class="text-slate-300">
+              This will commit and push all course data changes to GitHub.
+            </p>
+
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <p class="text-sm font-medium text-slate-400 mb-2">What happens next:</p>
+              <ul class="text-sm text-slate-300 space-y-1">
+                <li>✓ Commits changes to <code class="text-emerald-400">public/vfs/courses/</code></li>
+                <li>✓ Pushes to <code class="text-emerald-400">main</code> branch</li>
+                <li>✓ Triggers Vercel deployment (~30s)</li>
+                <li>✓ Dashboard shows latest data</li>
+              </ul>
+            </div>
+
+            <p class="text-xs text-slate-500">
+              Note: If no changes exist, this will skip the commit.
+            </p>
+          </div>
+
+          <div class="flex gap-3 justify-end">
+            <button
+              @click="showPushModal = false"
+              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              @click="confirmPush"
+              :disabled="pushing"
+              class="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg transition-colors font-medium"
+            >
+              <span v-if="pushing">Pushing...</span>
+              <span v-else>Push to GitHub</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -190,6 +253,8 @@ const error = ref(null)
 const regenerating = ref(false)
 const pushing = ref(false)
 const searchQuery = ref('')
+const showPushModal = ref(false)
+const highlightedCourses = ref(new Set()) // Courses to highlight as new/updated
 
 // Computed: Filtered courses based on search query
 const filteredCourses = computed(() => {
@@ -285,10 +350,57 @@ async function regenerateManifest() {
   regenerating.value = true
   try {
     const response = await api.regenerateManifest()
-    toast.success('✅ Manifest regenerated! Remember to commit and push to GitHub.')
+
+    // Build summary message
+    const { comparison, total_courses } = response
+    const parts = []
+
+    if (comparison.added.length > 0) {
+      parts.push(`${comparison.added.length} new course${comparison.added.length > 1 ? 's' : ''}`)
+    }
+    if (comparison.updated.length > 0) {
+      parts.push(`${comparison.updated.length} updated`)
+    }
+    if (comparison.removed.length > 0) {
+      parts.push(`${comparison.removed.length} removed`)
+    }
+
+    const summary = parts.length > 0
+      ? parts.join(', ')
+      : 'No changes detected'
+
+    // Show toast with summary
+    if (parts.length > 0) {
+      toast.success(`✅ Manifest regenerated! ${summary}. Total: ${total_courses} courses.`, {
+        timeout: 5000
+      })
+
+      // Highlight new and updated courses
+      highlightedCourses.value = new Set([
+        ...comparison.added,
+        ...comparison.updated.map(u => u.course_code)
+      ])
+
+      // Clear highlights after 10 seconds
+      setTimeout(() => {
+        highlightedCourses.value.clear()
+      }, 10000)
+    } else {
+      toast.info(`ℹ️ Manifest regenerated. ${summary}.`)
+    }
 
     // Reload courses to show updated manifest
     await loadCourses()
+
+    // Scroll to first new course if any
+    if (comparison.added.length > 0) {
+      setTimeout(() => {
+        const firstNew = document.querySelector('.border-emerald-500')
+        if (firstNew) {
+          firstNew.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 100)
+    }
   } catch (err) {
     console.error('Failed to regenerate manifest:', err)
     if (err.response?.status === 404) {
@@ -303,7 +415,11 @@ async function regenerateManifest() {
   }
 }
 
-async function pushToGitHub() {
+function pushToGitHub() {
+  showPushModal.value = true
+}
+
+async function confirmPush() {
   pushing.value = true
   try {
     const response = await api.pushAllCourses()
@@ -313,6 +429,8 @@ async function pushToGitHub() {
     } else {
       toast.success('✅ All course data pushed to GitHub! Vercel will deploy automatically.')
     }
+
+    showPushModal.value = false
   } catch (err) {
     console.error('Failed to push to GitHub:', err)
     if (err.response?.status === 404) {
