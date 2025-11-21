@@ -576,6 +576,30 @@ async function runPhaseValidation(courseCode, phase) {
 }
 
 /**
+ * Regenerate course manifest after phase completion
+ * Updates courses-manifest.json with latest course state
+ */
+async function regenerateCourseManifest() {
+  try {
+    console.log(`\n📋 Regenerating course manifest...`);
+
+    const manifestGenerator = path.join(__dirname, '../../tools/generators/generate-course-manifest.js');
+
+    // Use dynamic import for ES module
+    const { execSync } = require('child_process');
+    execSync(`node "${manifestGenerator}"`, {
+      stdio: 'inherit'
+    });
+
+    console.log(`   ✅ Course manifest updated`);
+    return true;
+  } catch (error) {
+    console.error(`   ⚠️  Failed to regenerate manifest (non-fatal):`, error.message);
+    return false;
+  }
+}
+
+/**
  * Programmatically trigger a phase (used by auto-progression)
  * @param {string} courseCode - Course identifier
  * @param {number} phase - Phase number to trigger
@@ -1075,6 +1099,9 @@ app.post('/phase-complete', async (req, res) => {
  * Phase 1 → Phase 3 (includes Phase 6) → Phase 5 → Phase 7 → Phase 8
  */
 async function handlePhaseProgression(courseCode, completedPhase, state, pipelineJob) {
+  // Regenerate course manifest to reflect the newly completed phase
+  await regenerateCourseManifest();
+
   if (completedPhase === 'phase1' || completedPhase === 1) {
     // Phase 1 → Phase 3
     console.log(`   → Phase 1 complete, triggering Phase 3`);
