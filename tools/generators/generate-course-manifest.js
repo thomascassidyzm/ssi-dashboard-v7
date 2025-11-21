@@ -15,8 +15,10 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const COURSES_DIR = path.join(__dirname, 'public/vfs/courses')
-const MANIFEST_PATH = path.join(__dirname, 'public/vfs/courses-manifest.json')
+// Navigate to project root from tools/generators/
+const PROJECT_ROOT = path.join(__dirname, '../../')
+const COURSES_DIR = path.join(PROJECT_ROOT, 'public/vfs/courses')
+const MANIFEST_PATH = path.join(PROJECT_ROOT, 'public/vfs/courses-manifest.json')
 
 console.log('🔍 Scanning for courses...')
 console.log('Directory:', COURSES_DIR)
@@ -55,12 +57,22 @@ for (const entry of entries) {
   const hasBaskets = fs.existsSync(basketsPath) || fs.existsSync(basketsAlt) || fs.existsSync(basketsAlt2)
   const hasIntroductions = fs.existsSync(introductionsPath)
 
+  // Check for Phase 7 course manifest - both old and new formats
+  // New format (APML v8.2.2): {Target}_for_{Known}_speakers_COURSE_20251121_003247.json
+  // Old format: spa_for_eng_668seedsV4.json
+  const courseManifestFiles = fs.readdirSync(coursePath).filter(f =>
+    f.match(/_COURSE_\d{8}_\d{6}\.json$/) || // New format
+    f.match(/\d+seedsV\d+\.json$/)            // Old format
+  )
+  const hasCourseManifest = courseManifestFiles.length > 0
+
   // Get the actual path that exists
   const actualSeedPairsPath = fs.existsSync(seedPairsPath) ? seedPairsPath : seedPairsAlt
   const actualLegoPairsPath = fs.existsSync(legoPairsPath) ? legoPairsPath : legoPairsAlt
   const actualBasketsPath = fs.existsSync(basketsPath) ? basketsPath : (fs.existsSync(basketsAlt) ? basketsAlt : basketsAlt2)
 
-  // Determine completion phase (always create an entry even if empty)
+  // Determine completion phase using APML v8.2.0 numbering (1, 3, 5, 7, 8)
+  // Pipeline: Phase 1 → 3 (includes 6) → 5 → 7 → 8
   let phase = 'empty'
   let phasesCompleted = []
   if (hasSeedPairs) {
@@ -72,8 +84,12 @@ for (const entry of entries) {
     phasesCompleted.push('3')
   }
   if (hasBaskets) {
-    phase = 'phase_4'
-    phasesCompleted.push('4')
+    phase = 'phase_5'
+    phasesCompleted.push('5')
+  }
+  if (hasCourseManifest) {
+    phase = 'phase_7'
+    phasesCompleted.push('7')
   }
 
   // Note: We create an entry for EVERY folder, even if empty!
@@ -169,13 +185,14 @@ for (const entry of entries) {
   const phaseEmoji = phase === 'empty' ? '📂' :
                      phase === 'phase_1' ? '🌱' :
                      phase === 'phase_3' ? '🧱' :
-                     phase === 'phase_4' ? '✅' : '❓'
+                     phase === 'phase_5' ? '🗂️' :
+                     phase === 'phase_7' ? '✅' : '❓'
 
   console.log(`${phaseEmoji} ${courseCode}`)
   console.log(`  ${courseInfo.target_language} for ${courseInfo.source_language}`)
-  console.log(`  Phase: ${phase} | Files: seed_pairs=${hasSeedPairs ? '✓' : '✗'} lego_pairs=${hasLegoPairs ? '✓' : '✗'} baskets=${hasBaskets ? '✓' : '✗'}`)
+  console.log(`  Phase: ${phase} | Files: seed_pairs=${hasSeedPairs ? '✓' : '✗'} lego_pairs=${hasLegoPairs ? '✓' : '✗'} baskets=${hasBaskets ? '✓' : '✗'} manifest=${hasCourseManifest ? '✓' : '✗'}`)
   if (seedCount > 0 || legoCount > 0) {
-    console.log(`  Seeds: ${seedCount}, LEGOs: ${legoCount}, Format: ${format}`)
+    console.log(`  Seeds: ${seedCount}, LEGOs: ${legoCount}, Baskets: ${basketCount}, Format: ${format}`)
   }
 
   // Every folder becomes a course entry
@@ -195,12 +212,13 @@ console.log('='.repeat(80))
 
 // Print summary
 console.log()
-console.log('Course Summary by Phase:')
+console.log('Course Summary by Phase (APML v8.2.0):')
 const byPhase = {
   'empty': [],
   'phase_1': [],
   'phase_3': [],
-  'phase_4': []
+  'phase_5': [],
+  'phase_7': []
 }
 
 manifest.courses.forEach(course => {
@@ -213,19 +231,24 @@ if (byPhase.empty.length > 0) {
 }
 
 if (byPhase.phase_1.length > 0) {
-  console.log('\n🌱 Phase 1 Complete (translations only):')
+  console.log('\n🌱 Phase 1 Complete (translations):')
   byPhase.phase_1.forEach(c => console.log(`   ${c.course_code} (${c.actual_seed_count} seeds)`))
 }
 
 if (byPhase.phase_3.length > 0) {
-  console.log('\n🧱 Phase 3 Complete (LEGOs extracted):')
+  console.log('\n🧱 Phase 3 Complete (LEGO extraction + introductions):')
   byPhase.phase_3.forEach(c => {
     const formatBadge = c.format === 'v5.0.1' ? '🆕' : c.format === 'v7.7' ? '📦' : '❓'
     console.log(`   ${formatBadge} ${c.course_code} (${c.actual_seed_count} seeds, ${c.lego_count} LEGOs, ${c.format})`)
   })
 }
 
-if (byPhase.phase_4.length > 0) {
-  console.log('\n✅ Phase 4 Complete (baskets generated):')
-  byPhase.phase_4.forEach(c => console.log(`   ${c.course_code} (${c.actual_seed_count} seeds, ${c.lego_count} LEGOs, baskets)`))
+if (byPhase.phase_5.length > 0) {
+  console.log('\n🗂️  Phase 5 Complete (practice baskets):')
+  byPhase.phase_5.forEach(c => console.log(`   ${c.course_code} (${c.actual_seed_count} seeds, ${c.lego_count} LEGOs, ${c.basket_count} baskets)`))
+}
+
+if (byPhase.phase_7.length > 0) {
+  console.log('\n✅ Phase 7 Complete (course manifest compiled):')
+  byPhase.phase_7.forEach(c => console.log(`   ${c.course_code} (${c.actual_seed_count} seeds, ${c.lego_count} LEGOs, ${c.basket_count} baskets)`))
 }
