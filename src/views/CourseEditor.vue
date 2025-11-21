@@ -1333,7 +1333,7 @@ async function loadCourse() {
               known_chunk: lego.lego?.known || lego.known,
               lego_type: lego.type === 'M' ? 'COMPOSITE' : 'ATOMIC',
               componentization: lego.components ?
-                lego.components.map(c => `${c[0]} = ${c[1]}`).join(', ') :
+                lego.components.map(c => `${c.known} = ${c.target}`).join(', ') :
                 null
             }))
           }))
