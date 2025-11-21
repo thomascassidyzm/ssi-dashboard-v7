@@ -23,12 +23,6 @@
             <p class="text-slate-400">{{ course.total_seeds }} seeds • Version {{ course.version }}</p>
           </div>
           <div class="flex items-center gap-3">
-            <span
-              class="px-4 py-2 rounded-lg text-sm font-medium"
-              :class="getStatusClass(course.status)"
-            >
-              {{ formatStatus(course.status) }}
-            </span>
             <a
               href="https://ssi-dashboard-v7.vercel.app/generate"
               target="_blank"
