@@ -282,9 +282,9 @@
                   <div class="flex-1">
                     <div class="text-xs text-slate-400">{{ legoKey }}</div>
                     <div class="text-lg font-bold">
-                      <span class="text-slate-300">{{ legoData.lego.known || legoData.lego[0] }}</span>
+                      <span class="text-slate-300">{{ Array.isArray(legoData.lego) ? legoData.lego[0] : legoData.lego.known }}</span>
                       <span class="mx-2 text-slate-600">→</span>
-                      <span class="text-emerald-400">{{ legoData.lego.target || legoData.lego[1] }}</span>
+                      <span class="text-emerald-400">{{ Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target }}</span>
                     </div>
                   </div>
                   <div class="text-right text-xs space-y-1">
@@ -324,9 +324,9 @@
                       class="flex items-center gap-2 py-1 px-2 bg-slate-800/50 rounded text-xs"
                     >
                       <span class="text-blue-300">{{ idx + 1 }}.</span>
-                      <span class="text-slate-200">{{ component.known || component[0] }}</span>
+                      <span class="text-slate-200">{{ Array.isArray(component) ? component[0] : component.known }}</span>
                       <span class="text-slate-600">→</span>
-                      <span class="text-emerald-400">{{ component.target || component[1] }}</span>
+                      <span class="text-emerald-400">{{ Array.isArray(component) ? component[1] : component.target }}</span>
                     </div>
                   </div>
                 </div>
