@@ -864,5 +864,11 @@ export default {
       const response = await api.get(`/api/audio/generation-status/${jobId}`)
       return response.data
     }
+  },
+
+  // Manifest management
+  async regenerateManifest() {
+    const response = await api.post('/api/regenerate-manifest')
+    return response.data
   }
 }

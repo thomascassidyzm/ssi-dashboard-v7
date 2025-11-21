@@ -6,8 +6,22 @@
         <router-link to="/" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
           ← Back to Dashboard
         </router-link>
-        <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Library</h1>
-        <p class="text-slate-400">Browse and edit existing courses</p>
+        <div class="flex items-start justify-between">
+          <div>
+            <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Library</h1>
+            <p class="text-slate-400">Browse and edit existing courses</p>
+          </div>
+          <button
+            @click="regenerateManifest"
+            :disabled="regenerating"
+            class="bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-slate-300 px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
+            title="Regenerate course manifest from local files (requires orchestrator running)"
+          >
+            <span v-if="regenerating">⏳</span>
+            <span v-else>🔄</span>
+            Regenerate Manifest
+          </button>
+        </div>
       </div>
 
       <!-- Loading State -->
@@ -118,12 +132,15 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
 import api from '../services/api'
 
 const router = useRouter()
+const toast = useToast()
 const courses = ref([])
 const loading = ref(true)
 const error = ref(null)
+const regenerating = ref(false)
 
 onMounted(async () => {
   await loadCourses()
@@ -179,5 +196,25 @@ function getPhaseTitle(phase) {
 
 function showDetails(course) {
   router.push(`/courses/${course.course_code}`)
+}
+
+async function regenerateManifest() {
+  regenerating.value = true
+  try {
+    const response = await api.regenerateManifest()
+    toast.success('✅ Manifest regenerated! Remember to commit and push to GitHub.')
+
+    // Reload courses to show updated manifest
+    await loadCourses()
+  } catch (err) {
+    console.error('Failed to regenerate manifest:', err)
+    if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
+      toast.error('❌ Cannot reach orchestrator. Make sure it\'s running on localhost:3456')
+    } else {
+      toast.error('❌ Failed to regenerate manifest')
+    }
+  } finally {
+    regenerating.value = false
+  }
 }
 </script>
