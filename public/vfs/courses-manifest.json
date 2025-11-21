@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-21T11:48:36.092Z",
+  "generated_at": "2025-11-21T11:59:04.212Z",
   "courses": [
     {
       "course_code": "archive",
@@ -29,20 +29,21 @@
       "total_seeds": 10,
       "actual_seed_count": 10,
       "lego_count": 53,
-      "basket_count": 0,
+      "basket_count": 12,
       "introductions_count": 53,
       "format": "7.0",
-      "phase": "phase_3",
+      "phase": "phase_5",
       "phases_completed": [
         "1",
-        "3"
+        "3",
+        "5"
       ],
-      "has_baskets": false,
+      "has_baskets": true,
       "has_introductions": true,
       "files": {
         "seed_pairs": true,
         "lego_pairs": true,
-        "baskets": false,
+        "baskets": true,
         "introductions": true
       }
     },
