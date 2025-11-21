@@ -232,6 +232,74 @@
           </div>
         </div>
 
+        <!-- Pipeline Actions (Phase 7 & 8) -->
+        <div class="bg-slate-800 border border-purple-500/50 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-purple-400 mb-6">🎵 Audio Generation (Phase 8)</h3>
+
+          <div class="grid grid-cols-2 gap-6">
+            <!-- Phase 7 Status -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-400 mb-2">Phase 7 Status</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Course manifest must be compiled before audio generation
+              </p>
+              <div class="p-3 rounded-lg border" :class="{
+                'bg-emerald-900/20 border-emerald-500/50': course.phases_completed?.includes('7'),
+                'bg-slate-900/20 border-slate-500/50': !course.phases_completed?.includes('7')
+              }">
+                <div class="flex items-center gap-2">
+                  <span v-if="course.phases_completed?.includes('7')" class="text-emerald-400 text-lg">✓</span>
+                  <span v-else class="text-slate-500 text-lg">○</span>
+                  <span class="font-semibold" :class="{
+                    'text-emerald-400': course.phases_completed?.includes('7'),
+                    'text-slate-400': !course.phases_completed?.includes('7')
+                  }">
+                    {{ course.phases_completed?.includes('7') ? 'Ready for Audio' : 'Manifest Not Compiled' }}
+                  </span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">
+                  Phases completed: {{ course.phases_completed?.join(', ') || 'None' }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Phase 8 Audio Generation -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-purple-400 mb-2">Generate Audio (TTS)</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Generate audio files for all course samples
+              </p>
+              <button
+                @click="startAudioGeneration"
+                :disabled="audioGenerationLoading || !course.phases_completed?.includes('7')"
+                class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+              >
+                <span v-if="audioGenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                <span v-else>🎵</span>
+                {{ audioGenerationLoading ? 'Starting...' : 'Generate Audio' }}
+              </button>
+
+              <!-- Audio Generation Status -->
+              <div v-if="audioGenerationResult" class="mt-4 p-3 rounded-lg border" :class="{
+                'bg-purple-900/20 border-purple-500/50': audioGenerationResult.success,
+                'bg-red-900/20 border-red-500/50': audioGenerationResult.error
+              }">
+                <div class="text-sm">
+                  <div v-if="audioGenerationResult.success" class="text-purple-300">
+                    <div>✓ Job started: {{ audioGenerationResult.jobId }}</div>
+                    <div class="text-xs text-slate-400 mt-1">
+                      Phase: {{ audioGenerationResult.phase }}
+                    </div>
+                  </div>
+                  <div v-else class="text-red-300">
+                    {{ audioGenerationResult.error }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Tabs -->
         <div class="bg-slate-800 border border-slate-700 rounded-lg">
           <div class="flex border-b border-slate-700">
@@ -1082,6 +1150,8 @@ const gapAnalysisLoading = ref(false)
 const gapAnalysisResult = ref(null)
 const regenerationLoading = ref(false)
 const regenerationResult = ref(null)
+const audioGenerationLoading = ref(false)
+const audioGenerationResult = ref(null)
 
 // Edit modal state
 const editModal = ref({
@@ -2036,6 +2106,62 @@ async function confirmRegeneration() {
 
 function cancelRegeneration() {
   regenerationResult.value = null
+}
+
+// Phase 8: Audio Generation
+async function startAudioGeneration() {
+  if (!course.value?.phases_completed?.includes('7')) {
+    alert('Phase 7 (Course Manifest) must be completed before audio generation')
+    return
+  }
+
+  if (!confirm('Start Phase 8 audio generation?\n\nThis will generate TTS audio for all course samples using Azure TTS and ElevenLabs.\n\nNote: This is a long-running process and requires voice configurations.')) {
+    return
+  }
+
+  audioGenerationLoading.value = true
+  audioGenerationResult.value = null
+
+  const apiBase = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+
+  try {
+    const response = await fetch(`${apiBase}/api/phase8/start`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        courseCode: courseCode,
+        options: {
+          phase: 'auto',  // Run both Phase A and Phase B
+          skipUpload: false,
+          skipQC: false
+        }
+      })
+    })
+
+    if (!response.ok) {
+      const text = await response.text()
+      throw new Error(`HTTP ${response.status}: ${text}`)
+    }
+
+    const result = await response.json()
+    audioGenerationResult.value = {
+      success: true,
+      jobId: result.jobId,
+      phase: result.phase
+    }
+
+    // Show toast notification
+    alert(`✅ Audio generation started!\n\nJob ID: ${result.jobId}\n\nYou can monitor progress in the server logs.`)
+  } catch (err) {
+    console.error('Audio generation error:', err)
+    audioGenerationResult.value = {
+      success: false,
+      error: err.message
+    }
+    alert(`❌ Failed to start audio generation: ${err.message}`)
+  } finally {
+    audioGenerationLoading.value = false
+  }
 }
 
 // Cleanup on component unmount
