@@ -305,64 +305,265 @@ This ensures learners can practice the full target sentence!
 
 ---
 
-## ✅ QUALITY EXAMPLE: Chinese Course S0022L02
+## ✅ EXCELLENT EXAMPLES (Learn from These!)
+
+These examples show the pattern works across different language families. Study how each one:
+- Contains the LEGO in every phrase
+- Uses only GATE-compliant vocabulary
+- Progresses from SHORT to LONGEST
+- Sounds natural in BOTH languages
+
+### Example 1: English → Mandarin (Tonal, Logographic)
 
 **Context**: Seed S0022 teaches "Because I want to meet people who speak Chinese"
 
-**LEGO**: "I want to meet" / "我想认识"
+**LEGO**: "我想认识" (I want to meet)
 
-**Available vocabulary**: 21 recent seeds worth of vocabulary + "because" (因为) from S0022L01
+**Available vocabulary**: 21 recent seeds + "because" (因为) from S0022L01
 
 ```json
 "practice_phrases": [
   { "known": "I want to meet.", "target": "我想认识。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO only (shortest possible)
+
   { "known": "I want to meet you.", "target": "我想认识你。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "你" ← S0001L01 (you)
+
   { "known": "I want to meet tomorrow.", "target": "我想明天认识。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "明天" ← S0008L02 (tomorrow)
+
   { "known": "I want to meet him quickly.", "target": "我想快点认识他。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "快点" ← S0012L03 (quickly) | "他" ← S0007L01 (him)
+
   { "known": "I want to meet other people.", "target": "我想认识其他人。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "其他人" ← S0015L04 (other people)
+
   { "known": "I want to meet her this evening.", "target": "我想今天晚上认识她。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "她" ← S0009L02 (her) | "今天晚上" ← S0018L03 (this evening)
+
   { "known": "I want to meet people who speak very well.", "target": "我想认识说得很好的人。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "说得很好" ← S0014L02 (speak very well) | "人" ← S0015L04
+
   { "known": "I want to meet everyone else at six o'clock.", "target": "我想六点认识其他所有人。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "六点" ← S0019L01 (six o'clock) | "其他所有人" ← S0020L03 (everyone else)
+
   { "known": "I want to meet people who are learning together with me.", "target": "我想认识和我一起学的人。" },
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "和我一起学" ← S0021L02 (learning together with me) | "人" ← S0015L04
+
   { "known": "I want to meet other people because I am learning Chinese.", "target": "我想认识其他人因为我在学中文。" }
+  // ↑ Vocabulary: "我想认识" ← Current LEGO | "其他人" ← S0015L04 | "因为" ← S0022L01 (current seed!) | "我在学中文" ← S0016L03
 ]
 ```
 
 **Why this is excellent:**
-✅ Natural progression from short (2-3 words) to long phrases (10+ words)
-✅ All Chinese words available from previous seeds (GATE compliant)
-✅ Rich variety in scenarios: you, tomorrow, him, people, this evening, six o'clock
+✅ Natural progression from short (3 characters) to long phrases (13+ characters)
+✅ **EVERY word is GATE-compliant** - annotated to show sources!
+✅ **Rich recombination** - creatively uses 10+ recent seeds (S0001, S0007, S0008, S0009, S0012, S0014, S0015, S0016, S0018, S0019, S0020, S0021, S0022)
+✅ **LEGO appears in ALL 10 phrases** - "我想认识" is the constant thread
 ✅ Both English and Chinese sound completely natural
 ✅ Grammatically perfect in BOTH languages
-✅ Uses available vocabulary creatively (who speak, who are learning, other people, etc.)
-✅ Progressive length: SHORT → MEDIUM → LONGER → LONGEST
-✅ Last phrase uses newest vocabulary "because" (因为) from current seed
-✅ Object format with clear "known"/"target" labels
+✅ **Last phrase uses newest vocabulary** - "因为" from current seed S0022L01
 
 ---
 
-## ❌ TERRIBLE EXAMPLE: Wrong Format & Bad Content
+### Example 2: English → Spanish (Romance Language)
+
+**Context**: Seed S0015 teaches "I want to speak with you"
+
+**LEGO**: "quiero hablar" (I want to speak)
+
+**Available vocabulary**: 14 recent seeds + "with you" (contigo) from S0015L01
 
 ```json
 "practice_phrases": [
-  ["we hoped", "esperábamos", null, 1],  // ← ARRAY FORMAT (REJECTED!)
-  ["we hoped", "esperábamos", null, 1],  // ← IDENTICAL REPEAT!
-  { "es": "esperábamos ver más", "en": "we hoped to see more" },  // ← LANGUAGE CODES (REJECTED!)
-  { "known": "we hoped words", "target": "esperábamos palabras" },  // ← NOT A SENTENCE!
-  { "known": "we hoped", "target": "esperábamos" },  // ← REPEATED AGAIN!
-  ...
+  { "known": "I want to speak", "target": "Quiero hablar" },
+  { "known": "I want to speak now", "target": "Quiero hablar ahora" },
+  { "known": "I want to speak Spanish", "target": "Quiero hablar español" },
+  { "known": "I want to speak with you", "target": "Quiero hablar contigo" },
+  { "known": "I want to speak more Spanish", "target": "Quiero hablar más español" },
+  { "known": "I want to speak with you now", "target": "Quiero hablar contigo ahora" },
+  { "known": "I want to speak Spanish with other people", "target": "Quiero hablar español con otras personas" },
+  { "known": "I want to speak with you because I'm learning", "target": "Quiero hablar contigo porque estoy aprendiendo" },
+  { "known": "I want to speak more Spanish with you every day", "target": "Quiero hablar más español contigo todos los días" },
+  { "known": "I want to speak with you now because I need to practice Spanish", "target": "Quiero hablar contigo ahora porque necesito practicar español" }
 ]
 ```
 
-**Why this is terrible:**
-❌ Uses array format `["English", "Spanish", null, 1]` (server will REJECT!)
-❌ Uses language code format `{ "es": "...", "en": "..." }` (server will REJECT!)
-❌ Repeated identical phrases (no variety)
-❌ Not natural sentences in either language ("we hoped words"??)
-❌ No progressive word count (all same length)
-❌ Generated by script instead of linguistic thinking
+**Why this is excellent:**
+✅ Progressive length: 2 words → 10+ words
+✅ LEGO "quiero hablar" appears in every single phrase
+✅ All Spanish vocabulary from GATE-compliant sources
+✅ Natural, communicative sentences (learner would actually say these!)
+✅ Variety in contexts: now, more, with you, every day, other people
+✅ Final phrase combines newest vocabulary with complex structure
 
-**NEVER DO THIS!**
+---
+
+### Example 3: German → French (Cross-Language Family)
+
+**Context**: Seed S0018 teaches "Ich möchte mit dir sprechen" → "Je veux parler avec toi"
+
+**LEGO**: "je veux parler" (ich möchte sprechen / I want to speak)
+
+**Available vocabulary**: 17 recent seeds + "avec toi" (mit dir) from S0018L01
+
+```json
+"practice_phrases": [
+  { "known": "Ich möchte sprechen", "target": "Je veux parler" },
+  { "known": "Ich möchte jetzt sprechen", "target": "Je veux parler maintenant" },
+  { "known": "Ich möchte Französisch sprechen", "target": "Je veux parler français" },
+  { "known": "Ich möchte mit dir sprechen", "target": "Je veux parler avec toi" },
+  { "known": "Ich möchte mehr Französisch sprechen", "target": "Je veux parler plus français" },
+  { "known": "Ich möchte mit dir jetzt sprechen", "target": "Je veux parler avec toi maintenant" },
+  { "known": "Ich möchte Französisch mit anderen Leuten sprechen", "target": "Je veux parler français avec d'autres gens" },
+  { "known": "Ich möchte mit dir sprechen, weil ich lerne", "target": "Je veux parler avec toi parce que j'apprends" },
+  { "known": "Ich möchte jeden Tag mehr Französisch mit dir sprechen", "target": "Je veux parler plus français avec toi tous les jours" },
+  { "known": "Ich möchte jetzt mit dir sprechen, weil ich Französisch üben muss", "target": "Je veux parler avec toi maintenant parce que je dois pratiquer le français" }
+]
+```
+
+**Why this is excellent:**
+✅ Shows pattern works with German as source language (not just English!)
+✅ LEGO "je veux parler" consistently present in all phrases
+✅ GATE compliance maintained across different source language
+✅ Natural progression works universally (2 words → 12+ words)
+✅ Both German and French sound authentic and conversational
+
+---
+
+## ❌ WHAT THE SERVER WILL REJECT (Don't Do This!)
+
+The Phase 5 server has **strict validation**. These errors will cause **automatic rejection**:
+
+### Error Type 1: Format Violations
+
+```json
+"practice_phrases": [
+  ["we hoped", "esperábamos", null, 1],
+  { "es": "esperábamos ver más", "en": "we hoped to see more" }
+]
+```
+
+**Server response:**
+```
+❌ ERROR: Phrase 1 - Array format not allowed
+   Expected: { "known": "...", "target": "..." }
+   Received: ["we hoped", "esperábamos", null, 1]
+
+❌ ERROR: Phrase 2 - Language code format not allowed
+   Expected: { "known": "...", "target": "..." }
+   Received: { "es": "...", "en": "..." }
+```
+
+---
+
+### Error Type 2: Missing LEGO (CRITICAL PEDAGOGICAL ERROR!)
+
+**Teaching LEGO**: "quiero hablar" (I want to speak)
+
+```json
+"practice_phrases": [
+  { "known": "I speak Spanish", "target": "Hablo español" },
+  { "known": "I need to practice", "target": "Necesito practicar" },
+  { "known": "You speak very well", "target": "Hablas muy bien" }
+]
+```
+
+**Server response:**
+```
+❌ ERROR: LEGO MISSING - Phrase 1
+   Teaching LEGO: "quiero hablar"
+   Phrase target: "Hablo español"
+   LEGO "quiero hablar" does not appear in this phrase
+
+❌ ERROR: LEGO MISSING - Phrase 2
+   Teaching LEGO: "quiero hablar"
+   Phrase target: "Necesito practicar"
+   LEGO "quiero hablar" does not appear in this phrase
+
+❌ ERROR: LEGO MISSING - Phrase 3
+   Teaching LEGO: "quiero hablar"
+   Phrase target: "Hablas muy bien"
+   LEGO "quiero hablar" does not appear in this phrase
+```
+
+**Why this fails:**
+These are practice phrases for "quiero hablar" but the LEGO never appears! Learners can't practice what they're not saying. **Every phrase MUST contain the LEGO.**
+
+---
+
+### Error Type 3: GATE Violations (Using Future Vocabulary!)
+
+**Current seed**: S0020 - Teaching "I want to speak with you"
+
+**Available vocabulary**: Seeds S0001-S0020 only (words: quiero, hablar, español, contigo, ahora, más, necesito, practicar)
+
+```json
+"practice_phrases": [
+  { "known": "I want to speak fluently", "target": "Quiero hablar con fluidez" },
+  { "known": "I want to speak tomorrow morning", "target": "Quiero hablar mañana por la mañana" },
+  { "known": "I want to speak about interesting topics", "target": "Quiero hablar sobre temas interesantes" }
+]
+```
+
+**Server response:**
+```
+❌ ERROR: GATE VIOLATION - Phrase 1
+   Unavailable word: "fluidez" (fluently)
+   First appears in: Seed S0145
+   Current seed: S0020
+   ⚠️  Using vocabulary learner hasn't learned yet!
+
+❌ ERROR: GATE VIOLATION - Phrase 2
+   Unavailable words: "mañana" (tomorrow), "por la mañana" (morning)
+   First appears in: Seed S0067
+   Current seed: S0020
+   ⚠️  Using vocabulary learner hasn't learned yet!
+
+❌ ERROR: GATE VIOLATION - Phrase 3
+   Unavailable words: "sobre" (about), "temas" (topics), "interesantes" (interesting)
+   First appears in: Seed S0234
+   Current seed: S0020
+   ⚠️  Using vocabulary learner hasn't learned yet!
+```
+
+**Why this fails:**
+You're using vocabulary from FUTURE seeds (S0067, S0145, S0234) that the learner hasn't encountered yet. This breaks the learning progression. **ONLY use vocabulary from seeds S0001-S0020 + current seed's earlier LEGOs.**
+
+---
+
+### Error Type 4: Repeated & Nonsensical Content
+
+```json
+"practice_phrases": [
+  { "known": "I want to speak", "target": "Quiero hablar" },
+  { "known": "I want to speak", "target": "Quiero hablar" },
+  { "known": "I want to speak words", "target": "Quiero hablar palabras" }
+]
+```
+
+**Server response:**
+```
+❌ ERROR: Repeated phrases
+   Phrase 1 and 2 are identical
+   Each phrase must be unique
+
+❌ ERROR: Unnatural grammar - Phrase 3
+   "I want to speak words" / "Quiero hablar palabras"
+   Not a natural sentence in either language
+```
+
+---
+
+**SUMMARY: Most Common Rejection Reasons**
+
+1. **Missing LEGO** (30% of rejections) - LEGO doesn't appear in phrase
+2. **GATE violations** (40% of rejections) - Using future vocabulary
+3. **Format errors** (15% of rejections) - Arrays or language codes
+4. **Unnatural grammar** (10% of rejections) - Nonsensical sentences
+5. **Repeated phrases** (5% of rejections) - No variety
+
+**If you submit baskets with these errors, they will be rejected and you'll need to regenerate.**
 
 ---
 

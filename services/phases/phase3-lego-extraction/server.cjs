@@ -80,27 +80,27 @@ function getLanguageName(code) {
 /**
  * Calculate segmentation strategy based on course size
  *
- * Strategies:
- * - SMALL_TEST: ≤20 seeds → 2 segments, 2 agents/segment, ~3 seeds/agent
- * - MEDIUM_SINGLE: 21-100 seeds → 1 segment, 5-10 agents, 10 seeds/agent
- * - LARGE_MULTI: >100 seeds → 100 seeds/segment, 10 agents/segment, 10 seeds/agent
+ * Strategies (matching Phase 5's parallelization):
+ * - SMALL_TEST: ≤30 seeds → 5-6 seeds/agent (6 agents for 30 seeds)
+ * - MEDIUM: 31-100 seeds → 5-6 seeds/agent
+ * - LARGE: >100 seeds → 10 seeds/agent (67 agents for 668 seeds)
  */
 function calculateSegmentation(totalSeeds) {
   let segmentSize, seedsPerAgent;
 
   // Determine segment size and seeds per agent based on course size
-  if (totalSeeds <= 20) {
-    // SMALL TEST COURSES (≤20 seeds)
-    segmentSize = Math.ceil(totalSeeds / 2); // 2 segments
-    seedsPerAgent = Math.ceil(segmentSize / 2); // ~2-3 seeds/agent
-  } else if (totalSeeds <= 100) {
-    // MEDIUM COURSES (21-100 seeds)
+  if (totalSeeds <= 30) {
+    // SMALL TEST COURSES (≤30 seeds) - High parallelization
     segmentSize = totalSeeds; // No segmentation
-    seedsPerAgent = 10; // 10 seeds per agent
+    seedsPerAgent = 5; // 5-6 seeds per agent (e.g., 30÷5 = 6 agents)
+  } else if (totalSeeds <= 100) {
+    // MEDIUM COURSES (31-100 seeds) - Moderate parallelization
+    segmentSize = totalSeeds; // No segmentation
+    seedsPerAgent = 5; // 5 seeds per agent
   } else {
-    // LARGE COURSES (>100 seeds)
+    // LARGE COURSES (>100 seeds) - Segmented parallelization
     segmentSize = 100;
-    seedsPerAgent = 10;
+    seedsPerAgent = 10; // 10 seeds per agent per segment
   }
 
   // Calculate segments

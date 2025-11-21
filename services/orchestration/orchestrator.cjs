@@ -1610,6 +1610,32 @@ app.get('/api/phase-intelligence/:phase', async (req, res) => {
 });
 
 /**
+ * POST /api/regenerate-manifest
+ * Trigger manual manifest regeneration (local dev only)
+ * Scans public/vfs/courses/ and updates courses-manifest.json
+ */
+app.post('/api/regenerate-manifest', async (req, res) => {
+  try {
+    console.log('[Orchestrator] 📋 Manual manifest regeneration requested');
+
+    await regenerateCourseManifest();
+
+    res.json({
+      success: true,
+      message: 'Manifest regenerated successfully. Remember to commit and push changes to GitHub.',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Failed to regenerate manifest:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to regenerate manifest'
+    });
+  }
+});
+
+/**
  * Run Phase 1 Validation: LUT Collision Check
  * Checks if same KNOWN phrase maps to multiple TARGET translations
  * This is inline validation, not a separate phase

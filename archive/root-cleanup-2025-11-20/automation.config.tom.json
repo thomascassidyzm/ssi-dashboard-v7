@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "description": "Tom's 24GB machine - full course in one shot",
+
+  "phase5_basket_generation": {
+    "browsers": 15,
+    "agents_per_browser": 10,
+    "seeds_per_agent": 5,
+    "browser_spawn_delay_ms": 5000,
+    "headless": false,
+    "target_phrases_per_lego": 10,
+    "comment": "Tom's config: 15 tabs × 10 agents × 5 seeds = 750 capacity (3× Kai's proven ratio)"
+  },
+
+  "orchestrator": {
+    "checkpoint_mode": "gated"
+  },
+
+  "performance": {
+    "max_retries": 3,
+    "retry_backoff_ms": 5000,
+    "browser_timeout_ms": 300000
+  },
+
+  "validation_thresholds": {
+    "phase5_gate_violations": 0.02,
+    "phase5_quality_score": 0.95
+  }
+}
