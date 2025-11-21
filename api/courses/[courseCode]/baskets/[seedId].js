@@ -2,11 +2,12 @@
  * PUT /api/courses/:courseCode/baskets/:seedId
  *
  * Updates a basket in lego_baskets.json
- * Writes directly to VFS (public/vfs/courses/{courseCode}/lego_baskets.json)
+ * Writes to local VFS and commits to GitHub for persistence
  */
 
 import fs from 'fs/promises';
 import path from 'path';
+import { commitToGitHub, isGitHubConfigured } from '../../lib/github.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -67,21 +68,43 @@ export default async function handler(req, res) {
       }
     }
 
-    console.log(`[API] ✅ Updated baskets for ${seedId}`);
+    console.log(`[API] Updated baskets for ${seedId}`);
 
     // Update metadata
     data.updated = new Date().toISOString();
     data.updated_by = 'manual_edit';
 
     // Write back to file
-    await fs.writeFile(basketsPath, JSON.stringify(data, null, 2), 'utf-8');
+    const jsonContent = JSON.stringify(data, null, 2);
+    await fs.writeFile(basketsPath, jsonContent, 'utf-8');
 
-    console.log(`[API] ✅ Saved lego_baskets.json for ${courseCode}`);
+    console.log(`[API] Saved lego_baskets.json locally for ${courseCode}`);
+
+    // Commit to GitHub for persistence
+    let githubCommit = null;
+    if (isGitHubConfigured()) {
+      try {
+        const result = await commitToGitHub({
+          path: `public/vfs/courses/${courseCode}/lego_baskets.json`,
+          content: jsonContent,
+          message: `Update basket ${seedId}`
+        });
+        githubCommit = result.commit;
+        console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
+      } catch (err) {
+        console.error(`[API] GitHub commit failed (local save succeeded):`, err.message);
+      }
+    } else {
+      console.log(`[API] GitHub not configured - local save only`);
+    }
 
     res.status(200).json({
       success: true,
-      message: 'Basket updated successfully',
-      seedId
+      message: githubCommit
+        ? 'Basket updated and committed to GitHub'
+        : 'Basket updated locally (GitHub not configured)',
+      seedId,
+      github: githubCommit
     });
 
   } catch (error) {
