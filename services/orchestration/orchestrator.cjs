@@ -1636,6 +1636,52 @@ app.post('/api/regenerate-manifest', async (req, res) => {
 });
 
 /**
+ * POST /api/phase8/start
+ * Proxy to Phase 8 audio server (port 3465)
+ * Allows remote access through ngrok tunnel
+ */
+app.post('/api/phase8/start', async (req, res) => {
+  try {
+    const { courseCode, options = {} } = req.body;
+
+    if (!courseCode) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required field: courseCode'
+      });
+    }
+
+    console.log(`[Orchestrator] 🎵 Proxying Phase 8 audio generation request for ${courseCode}`);
+
+    const axios = require('axios');
+    const phase8Url = PHASE_SERVICES[8]; // http://localhost:3465
+
+    const response = await axios.post(`${phase8Url}/start`, {
+      courseCode,
+      options
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Phase 8 proxy error:', error.message);
+
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({
+        success: false,
+        error: 'Phase 8 server is not running',
+        message: 'Please start the Phase 8 audio server (port 3465)'
+      });
+    }
+
+    res.status(error.response?.status || 500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to start Phase 8 audio generation'
+    });
+  }
+});
+
+/**
  * Run Phase 1 Validation: LUT Collision Check
  * Checks if same KNOWN phrase maps to multiple TARGET translations
  * This is inline validation, not a separate phase

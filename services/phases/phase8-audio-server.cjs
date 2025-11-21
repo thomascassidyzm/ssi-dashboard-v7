@@ -17,6 +17,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs-extra');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3465;
@@ -24,6 +25,9 @@ const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 8 (Audio)';
 
 // Import Kai's audio generation orchestrator
 const audioOrchestrator = require('../../scripts/phase8-audio-generation.cjs');
+
+// Enable CORS for all origins (adjust as needed)
+app.use(cors());
 
 app.use(express.json());
 
