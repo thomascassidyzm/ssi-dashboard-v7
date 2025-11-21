@@ -1103,7 +1103,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import api from '../services/api'
 import { GITHUB_CONFIG } from '../config/github'
 import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
@@ -1111,6 +1111,7 @@ import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
 
 const route = useRoute()
+const router = useRouter()
 const courseCode = route.params.courseCode
 
 const course = ref(null)
