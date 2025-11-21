@@ -199,6 +199,13 @@ function showDetails(course) {
 }
 
 async function regenerateManifest() {
+  // Check if user is pointing at localhost
+  const apiBaseUrl = localStorage.getItem('api_base_url') || import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+  if (!apiBaseUrl.includes('localhost') && !apiBaseUrl.includes('127.0.0.1')) {
+    toast.warning('⚠️ Manifest regeneration only works on localhost. Switch to Local in environment selector.')
+    return
+  }
+
   regenerating.value = true
   try {
     const response = await api.regenerateManifest()

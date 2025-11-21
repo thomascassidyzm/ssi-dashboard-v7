@@ -202,7 +202,7 @@ export default {
         translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
         // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
-        const seedsArray = legoPairsData.seeds || []
+        const seedsArray = legoPairsData?.seeds || []
         const legos = []
 
         // Detect format by checking first seed structure
