@@ -49,6 +49,35 @@ const activeJobs = new Map();
 const watchers = new Map();
 
 /**
+ * Language code to full name mapping
+ */
+function getLanguageName(code) {
+  const names = {
+    'eng': 'English',
+    'ita': 'Italian',
+    'spa': 'Spanish',
+    'fra': 'French',
+    'gle': 'Irish',
+    'cym': 'Welsh',
+    'cmn': 'Mandarin Chinese',
+    'mkd': 'Macedonian',
+    'deu': 'German',
+    'por': 'Portuguese',
+    'nld': 'Dutch',
+    'swe': 'Swedish',
+    'nor': 'Norwegian',
+    'dan': 'Danish',
+    'fin': 'Finnish',
+    'jpn': 'Japanese',
+    'kor': 'Korean',
+    'rus': 'Russian',
+    'ara': 'Arabic',
+    'hin': 'Hindi'
+  };
+  return names[code.toLowerCase()] || code.toUpperCase();
+}
+
+/**
  * Calculate segmentation strategy based on course size
  *
  * Strategies:
