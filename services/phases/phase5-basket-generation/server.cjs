@@ -962,7 +962,7 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   const legoData = params.legoData || {};
   const targetLegos = params.targetLegos || [];
   const legoCount = targetLegos.length;
-  const workersToSpawn = params.agentsPerWindow || 4;
+  const requestedWorkers = params.agentsPerWindow || 4;
 
   const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
@@ -977,17 +977,33 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   }
   const seeds = Object.keys(legosBySeed).sort();
 
-  // Create LEGO assignments (1 worker per seed)
-  const workerAssignments = seeds.map((seedId, i) => {
-    const seedLegos = legosBySeed[seedId];
-    const legoIds = seedLegos.map(l => l.legoId);
-    return {
-      workerNum: i + 1,
-      seedId,
-      legoIds,
-      legoCount: legoIds.length
-    };
-  });
+  // Determine actual workers needed (1 worker per seed, but don't exceed requested)
+  // If 24 seeds but only 8 workers requested, distribute seeds among 8 workers
+  // If 3 seeds but 8 workers requested, only spawn 3 workers (1 per seed)
+  const workersToSpawn = Math.min(requestedWorkers, seeds.length);
+  const seedsPerWorker = Math.ceil(seeds.length / workersToSpawn);
+
+  // Create LEGO assignments (distribute seeds evenly among workers)
+  const workerAssignments = [];
+  for (let workerNum = 1; workerNum <= workersToSpawn; workerNum++) {
+    const workerStartIdx = (workerNum - 1) * seedsPerWorker;
+    const workerEndIdx = Math.min(workerNum * seedsPerWorker, seeds.length);
+    const workerSeeds = seeds.slice(workerStartIdx, workerEndIdx);
+
+    // Collect all LEGOs from this worker's seeds
+    const workerLegoIds = [];
+    workerSeeds.forEach(seedId => {
+      const seedLegos = legosBySeed[seedId];
+      seedLegos.forEach(lego => workerLegoIds.push(lego.legoId));
+    });
+
+    workerAssignments.push({
+      workerNum,
+      seedIds: workerSeeds,
+      legoIds: workerLegoIds,
+      legoCount: workerLegoIds.length
+    });
+  }
 
   return `# Phase 5 Master Orchestrator
 
@@ -1014,7 +1030,15 @@ You are a **Master Orchestrator**. You DON'T generate baskets yourself.
 
 ## 📋 WORKER ASSIGNMENTS
 
-${workerAssignments.map(w => `**Worker ${w.workerNum}:** Seed ${w.seedId} - LEGOs: ${w.legoIds.join(', ')} (${w.legoCount} LEGOs)`).join('\n')}
+${workerAssignments.map(w => {
+  const seedDisplay = w.seedIds.length === 1
+    ? `Seed ${w.seedIds[0]}`
+    : `Seeds ${w.seedIds[0]}-${w.seedIds[w.seedIds.length - 1]} (${w.seedIds.length} seeds)`;
+  const legoDisplay = w.legoIds.length <= 10
+    ? w.legoIds.join(', ')
+    : `${w.legoIds.slice(0, 10).join(', ')}... and ${w.legoIds.length - 10} more`;
+  return `**Worker ${w.workerNum}:** ${seedDisplay} - LEGOs: ${legoDisplay} (${w.legoCount} LEGOs)`;
+}).join('\n')}
 
 ---
 
@@ -1033,7 +1057,7 @@ Use Task tool ${workersToSpawn} times in a SINGLE message (parallel spawn).
 You are a **world-leading creator of practice phrases** in the target language that help learners internalize language patterns naturally and quickly.
 
 Your phrases must:
-- ✅ Sound **natural in BOTH languages** (English and Spanish)
+- ✅ Sound **natural in BOTH languages** (${known} and ${target})
 - ✅ Use **realistic communication scenarios** learners would encounter
 - ✅ Follow **vocabulary constraints** (GATE compliance - only use available vocabulary)
 - ✅ Help learners **internalize target language grammar patterns** through practice
@@ -1104,7 +1128,7 @@ The lego_pairs.json provides:
 - What realistic scenarios would include this LEGO?
 - What relates to the seed theme?
 
-**Start with English thoughts**, then express in Spanish using only available vocabulary.
+**Start with ${known} thoughts**, then express in ${target} using only available vocabulary.
 
 ### Step 3: Generate 10 Practice Phrases
 
@@ -1131,21 +1155,21 @@ Build FROM the LEGO, not TO it:
    - The COMPLETE LEGO must be present
 
 2. ✅ **GATE Compliant?**
-   - Every Spanish word must exist in the scaffold's vocabulary list
+   - Every ${target} word must exist in the scaffold's vocabulary list
    - Check EVERY word - if ANY word is missing, the phrase FAILS
    - No guessing or introducing new vocabulary
 
 3. ✅ **Grammatically correct in BOTH languages?**
-   - Natural English grammar
-   - Natural Spanish grammar (verb conjugations, gender agreement, word order)
+   - Natural ${known} grammar
+   - Natural ${target} grammar (verb conjugations, gender agreement, word order)
    - Would a native speaker understand this naturally?
 
 ### Step 5: Fix Failures
 
 **If ANY phrase fails ANY check:**
 - DELETE that phrase immediately
-- Think of a NEW English thought that uses the LEGO
-- Express it in Spanish using only available vocabulary
+- Think of a NEW ${known} thought that uses the LEGO
+- Express it in ${target} using only available vocabulary
 - Re-validate the new phrase
 
 **Keep iterating until ALL 10 phrases pass ALL 3 checks.**
@@ -1215,7 +1239,7 @@ curl -X POST ${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit \\
 
 Your work is successful when:
 - All 10 phrases contain the COMPLETE LEGO
-- 100% GATE compliance (every Spanish word from scaffold vocabulary)
+- 100% GATE compliance (every ${target} word from scaffold vocabulary)
 - Natural, grammatically correct in both languages
 - Progressive complexity from simple to rich contexts
 - Quality over speed - better 8 perfect than 10 with failures
@@ -1331,6 +1355,21 @@ async function notifyOrchestrator(courseCode, status) {
     console.log(`[Phase 5] ✅ Notified orchestrator: Phase 5 ${status} for ${courseCode}`);
   } catch (error) {
     console.error(`[Phase 5] ⚠️  Failed to notify orchestrator:`, error.message);
+  }
+}
+
+/**
+ * Report progress to orchestrator (for live progress monitoring)
+ */
+async function reportProgressToOrchestrator(courseCode, progressData) {
+  try {
+    const axios = require('axios');
+    await axios.post(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/progress`, progressData, {
+      headers: { 'Content-Type': 'application/json' }
+    });
+  } catch (error) {
+    // Silent fail - don't block basket uploads if orchestrator is unreachable
+    console.error(`[Phase 5] ⚠️  Progress report failed:`, error.message);
   }
 }
 
@@ -1964,7 +2003,7 @@ For each worker, use this exact format with the LEGO IDs from assignments above:
 You are a **world-leading creator of practice phrases** in the target language that help learners internalize language patterns naturally and quickly.
 
 Your phrases must:
-- ✅ Sound **natural in BOTH languages** (English and Spanish)
+- ✅ Sound **natural in BOTH languages** (${known} and ${target})
 - ✅ Use **realistic communication scenarios** learners would encounter
 - ✅ Follow **vocabulary constraints** (GATE compliance - only use available vocabulary)
 - ✅ Help learners **internalize target language grammar patterns** through practice
@@ -2036,7 +2075,7 @@ The lego_pairs.json provides:
 - What realistic scenarios would include this LEGO?
 - What relates to the seed theme?
 
-**Start with English thoughts**, then express in Spanish using only available vocabulary.
+**Start with ${known} thoughts**, then express in ${target} using only available vocabulary.
 
 ### Step 3: Generate 10 Practice Phrases
 
@@ -2063,21 +2102,21 @@ Build FROM the LEGO, not TO it:
    - The COMPLETE LEGO must be present
 
 2. ✅ **GATE Compliant?**
-   - Every Spanish word must exist in the scaffold's vocabulary list
+   - Every ${target} word must exist in the scaffold's vocabulary list
    - Check EVERY word - if ANY word is missing, the phrase FAILS
    - No guessing or introducing new vocabulary
 
 3. ✅ **Grammatically correct in BOTH languages?**
-   - Natural English grammar
-   - Natural Spanish grammar (verb conjugations, gender agreement, word order)
+   - Natural ${known} grammar
+   - Natural ${target} grammar (verb conjugations, gender agreement, word order)
    - Would a native speaker understand this naturally?
 
 ### Step 5: Fix Failures
 
 **If ANY phrase fails ANY check:**
 - DELETE that phrase immediately
-- Think of a NEW English thought that uses the LEGO
-- Express it in Spanish using only available vocabulary
+- Think of a NEW ${known} thought that uses the LEGO
+- Express it in ${target} using only available vocabulary
 - Re-validate the new phrase
 
 **Keep iterating until ALL 10 phrases pass ALL 3 checks.**
@@ -2147,7 +2186,7 @@ curl -X POST ${ORCHESTRATOR_URL}/api/phase5/${courseCode}/submit \\
 
 Your work is successful when:
 - All 10 phrases contain the COMPLETE LEGO
-- 100% GATE compliance (every Spanish word from scaffold vocabulary)
+- 100% GATE compliance (every ${target} word from scaffold vocabulary)
 - Natural, grammatically correct in both languages
 - Progressive complexity from simple to rich contexts
 - Quality over speed - better 8 perfect than 10 with failures
@@ -2440,11 +2479,43 @@ app.post('/upload-basket', async (req, res) => {
       const progress = `${job.uploads.legosReceived}/${job.uploads.expectedLegos} LEGOs`;
       console.log(`   📊 Progress: ${progress} (${job.uploads.seedsUploaded.size}/${job.uploads.expectedSeeds} seeds)`);
 
+      // Report progress to orchestrator
+      reportProgressToOrchestrator(course, {
+        phase: 5,
+        updates: {
+          status: 'running',
+          legosCompleted: job.uploads.legosReceived,
+          legosTotal: job.uploads.expectedLegos,
+          seedsCompleted: job.uploads.seedsUploaded.size,
+          seedsTotal: job.uploads.expectedSeeds,
+          currentSeed: seed,
+          startTime: job.startedAt
+        },
+        logMessage: `Received ${seed}: ${Object.keys(baskets).length} LEGOs (${job.uploads.legosReceived}/${job.uploads.expectedLegos} total)`
+      }).catch(err => {
+        console.error(`⚠️  Failed to report progress:`, err.message);
+      });
+
       // Check if all uploads complete
       if (!job.uploads.complete && job.uploads.legosReceived >= job.uploads.expectedLegos) {
         job.uploads.complete = true;
         job.status = 'uploads_complete';
         console.log(`\n🎉 ALL UPLOADS COMPLETE! Received ${job.uploads.legosReceived} LEGOs from ${job.uploads.seedsUploaded.size} seeds`);
+
+        // Report completion to orchestrator
+        reportProgressToOrchestrator(course, {
+          phase: 5,
+          updates: {
+            status: 'complete',
+            legosCompleted: job.uploads.legosReceived,
+            legosTotal: job.uploads.expectedLegos,
+            seedsCompleted: job.uploads.seedsUploaded.size,
+            seedsTotal: job.uploads.expectedSeeds
+          },
+          logMessage: `✅ Phase 5 complete: ${job.uploads.legosReceived} LEGOs across ${job.uploads.seedsUploaded.size} seeds`
+        }).catch(err => {
+          console.error(`⚠️  Failed to report completion:`, err.message);
+        });
 
         // Trigger Phase 5 completion workflow
         triggerPhase5Completion(course, job).catch(err => {

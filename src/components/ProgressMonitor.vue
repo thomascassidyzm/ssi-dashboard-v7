@@ -33,19 +33,35 @@
       </div>
 
       <!-- Progress Bar -->
-      <div v-if="currentPhaseData && currentPhaseData.seedsTotal" class="mb-3">
+      <div v-if="currentPhaseData && (currentPhaseData.seedsTotal || currentPhaseData.legosTotal)" class="mb-3">
         <div class="flex items-center justify-between text-xs mb-1">
-          <!-- Show agent breakdown if available, otherwise show seeds -->
-          <span v-if="currentPhaseData.agentCount" class="text-slate-300">
+          <!-- Phase 5: Show LEGOs and seeds -->
+          <span v-if="liveProgress.currentPhase === 5 && currentPhaseData.legosTotal" class="text-slate-300">
+            {{ currentPhaseData.legosCompleted || 0 }} / {{ currentPhaseData.legosTotal }} LEGOs
+            <span class="text-slate-500 ml-2">({{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds)</span>
+          </span>
+          <!-- Other phases: Show agent breakdown or seeds -->
+          <span v-else-if="currentPhaseData.agentCount" class="text-slate-300">
             {{ currentPhaseData.agentCount }} agents × {{ currentPhaseData.seedsPerAgent }} seeds/agent
           </span>
           <span v-else class="text-slate-300">{{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds</span>
-          <span class="text-emerald-400 font-medium">{{ ((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100).toFixed(1) }}%</span>
+
+          <!-- Percentage: Use LEGOs for Phase 5, seeds for others -->
+          <span class="text-emerald-400 font-medium">
+            {{ liveProgress.currentPhase === 5 && currentPhaseData.legosTotal
+              ? ((currentPhaseData.legosCompleted || 0) / currentPhaseData.legosTotal * 100).toFixed(1)
+              : ((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100).toFixed(1)
+            }}%
+          </span>
         </div>
         <div class="w-full bg-slate-700 rounded-full h-2.5">
           <div
             class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500"
-            :style="{ width: `${((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100)}%` }"
+            :style="{ width: `${
+              liveProgress.currentPhase === 5 && currentPhaseData.legosTotal
+                ? ((currentPhaseData.legosCompleted || 0) / currentPhaseData.legosTotal * 100)
+                : ((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100)
+            }%` }"
           ></div>
         </div>
       </div>

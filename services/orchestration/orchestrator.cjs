@@ -966,14 +966,28 @@ app.post('/api/courses/:courseCode/progress', async (req, res) => {
     addProgressLog(courseCode, logMessage, updates.level || 'info');
   }
 
-  // Calculate ETA if seeds info provided
-  if (updates.seedsCompleted && updates.seedsTotal && updates.startTime) {
-    const elapsed = Date.now() - new Date(updates.startTime).getTime();
-    const rate = updates.seedsCompleted / (elapsed / 1000); // seeds per second
-    const remaining = updates.seedsTotal - updates.seedsCompleted;
-    const etaSeconds = remaining / rate;
-    updates.eta = new Date(Date.now() + etaSeconds * 1000).toISOString();
-    updates.etaHuman = formatDuration(etaSeconds);
+  // Calculate ETA if progress info provided
+  // Phase 5 uses LEGOs, other phases use seeds
+  if (updates.startTime) {
+    let completed, total;
+    if (phase === 5 && updates.legosCompleted && updates.legosTotal) {
+      // Phase 5: Track LEGOs
+      completed = updates.legosCompleted;
+      total = updates.legosTotal;
+    } else if (updates.seedsCompleted && updates.seedsTotal) {
+      // Other phases: Track seeds
+      completed = updates.seedsCompleted;
+      total = updates.seedsTotal;
+    }
+
+    if (completed && total) {
+      const elapsed = Date.now() - new Date(updates.startTime).getTime();
+      const rate = completed / (elapsed / 1000); // items per second
+      const remaining = total - completed;
+      const etaSeconds = remaining / rate;
+      updates.eta = new Date(Date.now() + etaSeconds * 1000).toISOString();
+      updates.etaHuman = formatDuration(etaSeconds);
+    }
   }
 
   res.json({ success: true, progress: courseProgress.get(courseCode) });
@@ -2154,20 +2168,44 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
     // Count baskets
     const basketCount = Object.keys(finalBasketData.baskets).length;
 
+    // Count phrases
+    let phraseCount = 0;
+    Object.values(finalBasketData.baskets).forEach(basket => {
+      phraseCount += basket.practice_phrases?.length || 0;
+    });
+
     console.log(`[Orchestrator] ✅ Received Phase 5 submission for ${courseCode}`);
     console.log(`[Orchestrator]    Baskets: ${basketCount}`);
+    console.log(`[Orchestrator]    Phrases: ${phraseCount}`);
     console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    // Get progress data for context
+    const progress = courseProgress.get(courseCode);
+    const phase5Data = progress?.phases?.[5];
 
     // Update progress tracking
     updatePhaseProgress(courseCode, 5, {
       status: 'complete',
       endTime: new Date().toISOString(),
-      basketCount
+      basketCount,
+      phraseCount,
+      legosCompleted: basketCount,
+      legosTotal: phase5Data?.legosTotal || basketCount
     });
-    addProgressLog(courseCode, `Phase 5: Complete - ${basketCount} practice baskets`);
+
+    // Create informative log message
+    let logMsg = `✅ Phase 5 complete: ${basketCount} LEGOs`;
+    if (phase5Data?.legosTotal && phase5Data.legosTotal !== basketCount) {
+      logMsg += ` of ${phase5Data.legosTotal} expected`;
+    }
+    if (phase5Data?.seedsTotal) {
+      logMsg += ` across ${phase5Data.seedsCompleted || phase5Data.seedsTotal} seeds`;
+    }
+    logMsg += ` (${phraseCount.toLocaleString()} practice phrases)`;
+
+    addProgressLog(courseCode, logMsg);
 
     // Update current phase to next
-    const progress = courseProgress.get(courseCode);
     if (progress) {
       progress.currentPhase = 7;
     }
