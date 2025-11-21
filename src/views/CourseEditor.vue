@@ -69,8 +69,8 @@
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Known-only priming</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ actualLegoCount }}</div>
+            <div class="text-xs text-slate-500 mt-1">Known-only priming (1 per LEGO)</div>
           </div>
         </div>
 
@@ -1116,15 +1116,16 @@ const tabs = [
   { id: 'introductions', label: 'INTRODUCTIONS' }
 ]
 
-// Count actual LEGOs from lego_pairs.json structure
+// Count actual LEGOs (only new: true) from lego_pairs.json structure
 const actualLegoCount = computed(() => {
   if (!legoPairsData.value?.seeds) return 0
 
-  // Count all LEGOs across all seeds
+  // Count only NEW LEGOs (new: true) - these are the actual teaching units
+  // LEGOs with new: false are just references to earlier LEGOs
   let count = 0
   for (const seed of legoPairsData.value.seeds) {
     if (seed.legos) {
-      count += seed.legos.length
+      count += seed.legos.filter(lego => lego.new === true).length
     }
   }
   return count
