@@ -92,12 +92,12 @@ const SERVICES = {
   //   name: 'Phase 5.5 (Grammar)',
   //   color: '\x1b[95m'    // Bright Magenta
   // },
-  // phase7: {
-  //   script: 'services/phases/phase7-manifest-server.cjs',  // DEPRECATED - use scripts/phase7-compile-manifest-v2.cjs
-  //   port: BASE_PORT + 8,  // 3464
-  //   name: 'Phase 7 (Manifest)',
-  //   color: '\x1b[34m'    // Blue
-  // },
+  phase7: {
+    script: 'services/phases/phase7-manifest-compilation/server.cjs',
+    port: BASE_PORT + 8,  // 3464
+    name: 'Phase 7 (Manifest)',
+    color: '\x1b[34m'    // Blue
+  },
   phase8: {
     script: 'services/phases/phase8-audio-server.cjs',
     port: BASE_PORT + 9,  // 3465

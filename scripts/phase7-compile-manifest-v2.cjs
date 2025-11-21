@@ -10,10 +10,22 @@ const crypto = require('crypto');
 // Output: course_manifest.json (EXACT Italian format)
 // ============================================================================
 
-const COURSE_DIR = '/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/courses/cmn_for_eng';
-const CANONICAL_DIR = '/Users/tomcassidy/SSi/ssi-dashboard-v7-clean/public/vfs/canonical';
+// Accept courseCode as command-line argument
+const courseCode = process.argv[2];
+if (!courseCode) {
+  console.error('❌ Error: Course code required');
+  console.error('Usage: node phase7-compile-manifest-v2.cjs <courseCode>');
+  console.error('Example: node phase7-compile-manifest-v2.cjs cmn_for_eng');
+  process.exit(1);
+}
+
+const VFS_ROOT = process.env.VFS_ROOT || path.join(__dirname, '../public/vfs/courses');
+const COURSE_DIR = path.join(VFS_ROOT, courseCode);
+const CANONICAL_DIR = path.join(__dirname, '../public/vfs/canonical');
 
 console.log('📦 Phase 7 Manifest Compiler V2\n');
+console.log(`Course: ${courseCode}`);
+console.log(`Course Dir: ${COURSE_DIR}`);
 console.log('Loading input files...');
 
 // Load input files
@@ -24,7 +36,11 @@ const introductions = JSON.parse(fs.readFileSync(path.join(COURSE_DIR, 'introduc
 const welcomes = JSON.parse(fs.readFileSync(path.join(CANONICAL_DIR, 'welcomes.json')));
 const encouragements = JSON.parse(fs.readFileSync(path.join(CANONICAL_DIR, 'eng_encouragements.json')));
 
-const courseCode = seedPairs.course;
+// Verify courseCode matches
+if (seedPairs.course && seedPairs.course !== courseCode) {
+  console.warn(`⚠️  Warning: seed_pairs.course (${seedPairs.course}) doesn't match provided courseCode (${courseCode})`);
+}
+
 const knownLang = seedPairs.known_language;
 const targetLang = seedPairs.target_language;
 const welcome = welcomes.welcomes[courseCode];
@@ -41,7 +57,13 @@ const langNames = {
   'rus': 'Russian',
   'ara': 'Arabic',
   'jpn': 'Japanese',
-  'kor': 'Korean'
+  'kor': 'Korean',
+  'bre': 'Breton',
+  'cym': 'Welsh',
+  'gle': 'Irish',
+  'nld': 'Dutch',
+  'tur': 'Turkish',
+  'ces': 'Czech'
 };
 
 const targetName = langNames[targetLang] || targetLang;
