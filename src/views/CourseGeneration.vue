@@ -432,6 +432,15 @@
               Generate Another Course
             </button>
             <button
+              @click="pushToGitHub"
+              :disabled="pushing"
+              class="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+              title="Push course data to GitHub (Vercel will auto-deploy)"
+            >
+              <span v-if="pushing">Pushing...</span>
+              <span v-else>📤 Push to GitHub</span>
+            </button>
+            <button
               @click="viewCourse"
               class="bg-slate-600 hover:bg-slate-700 text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
             >
@@ -463,11 +472,13 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
 import api, { apiClient } from '../services/api'
 import ExecutionModeSelector from '../components/ExecutionModeSelector.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
 
 const router = useRouter()
+const toast = useToast()
 
 // State
 const knownLanguage = ref('eng')
@@ -488,6 +499,7 @@ const currentPhase = ref('initializing')
 const progress = ref(0)
 const errorMessage = ref('')
 const clearingJob = ref(false)
+const pushing = ref(false)
 
 // Enhanced tracking from phase servers
 const phaseDetails = ref(null)
@@ -889,6 +901,35 @@ const clearStuckJob = async () => {
   } catch (error) {
     console.error('Failed to clear job:', error)
     errorMessage.value = 'Failed to clear job: ' + (error.response?.data?.error || error.message)
+  }
+}
+
+const pushToGitHub = async () => {
+  if (!courseCode.value) {
+    toast.error('❌ No course selected')
+    return
+  }
+
+  pushing.value = true
+  try {
+    const response = await api.pushToGitHub(courseCode.value)
+
+    if (response.skipped) {
+      toast.info('ℹ️ No changes to push')
+    } else {
+      toast.success('✅ Course data pushed to GitHub! Vercel will deploy automatically.')
+    }
+  } catch (err) {
+    console.error('Failed to push to GitHub:', err)
+    if (err.response?.status === 404) {
+      toast.error('❌ Orchestrator doesn\'t support GitHub push. Make sure it\'s running and up to date.')
+    } else if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
+      toast.error('❌ Cannot reach orchestrator.')
+    } else {
+      toast.error('❌ Failed to push to GitHub')
+    }
+  } finally {
+    pushing.value = false
   }
 }
 

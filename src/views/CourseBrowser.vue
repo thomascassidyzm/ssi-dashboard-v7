@@ -11,16 +11,28 @@
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">Course Library</h1>
             <p class="text-slate-400">Browse and edit existing courses</p>
           </div>
-          <button
-            @click="regenerateManifest"
-            :disabled="regenerating"
-            class="bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-slate-300 px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
-            title="Regenerate course manifest from local files (requires orchestrator running)"
-          >
-            <span v-if="regenerating">⏳</span>
-            <span v-else>🔄</span>
-            Regenerate Manifest
-          </button>
+          <div class="flex gap-3">
+            <button
+              @click="regenerateManifest"
+              :disabled="regenerating"
+              class="bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-slate-300 px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
+              title="Regenerate course manifest from local files (requires orchestrator running)"
+            >
+              <span v-if="regenerating">⏳</span>
+              <span v-else>🔄</span>
+              Regenerate Manifest
+            </button>
+            <button
+              @click="pushToGitHub"
+              :disabled="pushing"
+              class="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-800 disabled:text-slate-500 text-white px-4 py-2 rounded transition-colors text-sm font-medium flex items-center gap-2"
+              title="Push all course data to GitHub (Vercel will auto-deploy)"
+            >
+              <span v-if="pushing">⏳</span>
+              <span v-else>📤</span>
+              Push to GitHub
+            </button>
+          </div>
         </div>
       </div>
 
@@ -141,6 +153,7 @@ const courses = ref([])
 const loading = ref(true)
 const error = ref(null)
 const regenerating = ref(false)
+const pushing = ref(false)
 
 onMounted(async () => {
   await loadCourses()
@@ -217,6 +230,30 @@ async function regenerateManifest() {
     }
   } finally {
     regenerating.value = false
+  }
+}
+
+async function pushToGitHub() {
+  pushing.value = true
+  try {
+    const response = await api.pushAllCourses()
+
+    if (response.skipped) {
+      toast.info('ℹ️ No changes to push')
+    } else {
+      toast.success('✅ All course data pushed to GitHub! Vercel will deploy automatically.')
+    }
+  } catch (err) {
+    console.error('Failed to push to GitHub:', err)
+    if (err.response?.status === 404) {
+      toast.error('❌ Orchestrator doesn\'t support GitHub push. Make sure it\'s running and up to date.')
+    } else if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
+      toast.error('❌ Cannot reach orchestrator.')
+    } else {
+      toast.error('❌ Failed to push to GitHub')
+    }
+  } finally {
+    pushing.value = false
   }
 }
 </script>

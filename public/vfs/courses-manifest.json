@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-21T04:01:47.913Z",
+  "generated_at": "2025-11-21T04:54:03.837Z",
   "courses": [
     {
       "course_code": "archive",
@@ -55,20 +55,21 @@
       "total_seeds": 30,
       "actual_seed_count": 30,
       "lego_count": 148,
-      "basket_count": 0,
+      "basket_count": 148,
       "introductions_count": 156,
       "format": "7.0",
-      "phase": "phase_3",
+      "phase": "phase_5",
       "phases_completed": [
         "1",
-        "3"
+        "3",
+        "5"
       ],
-      "has_baskets": false,
+      "has_baskets": true,
       "has_introductions": true,
       "files": {
         "seed_pairs": true,
         "lego_pairs": true,
-        "baskets": false,
+        "baskets": true,
         "introductions": true
       }
     },
@@ -165,6 +166,29 @@
         "lego_pairs": true,
         "baskets": true,
         "introductions": true
+      }
+    },
+    {
+      "course_code": "tur_for_eng",
+      "source_language": "ENG",
+      "target_language": "TUR",
+      "total_seeds": 10,
+      "actual_seed_count": 10,
+      "lego_count": 0,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "unknown",
+      "phase": "phase_1",
+      "phases_completed": [
+        "1"
+      ],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": false,
+        "baskets": false,
+        "introductions": false
       }
     }
   ]

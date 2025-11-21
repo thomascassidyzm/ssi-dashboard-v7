@@ -884,6 +884,20 @@ export default {
     return response.data
   },
 
+  // GitHub publishing
+  async pushToGitHub(courseCode, message = null) {
+    const response = await api.post('/api/push-to-github', {
+      courseCode,
+      message
+    })
+    return response.data
+  },
+
+  async pushAllCourses() {
+    const response = await api.post('/api/push-all-courses')
+    return response.data
+  },
+
   // Phase 8: Audio Generation
   async startPhase8Audio(courseCode, options = {}) {
     // Call through orchestrator proxy (works from Vercel via ngrok)

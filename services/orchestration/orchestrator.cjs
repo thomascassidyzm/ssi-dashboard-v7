@@ -149,8 +149,8 @@ async function autoPublishCourseData(courseCode, phase, message) {
     const repoRoot = path.join(__dirname, '../..');
     const courseRelativePath = `public/vfs/courses/${courseCode}/`;
 
-    // Check if there are changes to commit
-    const status = execSync('git status --porcelain', {
+    // Check if there are changes specifically in the course directory
+    const status = execSync(`git status --porcelain ${courseRelativePath}`, {
       cwd: repoRoot,
       encoding: 'utf-8'
     });
@@ -1702,6 +1702,127 @@ app.post('/api/regenerate-manifest', async (req, res) => {
       success: false,
       error: error.message,
       message: 'Failed to regenerate manifest'
+    });
+  }
+});
+
+/**
+ * POST /api/push-to-github
+ * Manual git push for course data (like Regenerate Manifest button)
+ */
+app.post('/api/push-to-github', async (req, res) => {
+  try {
+    const { courseCode, message } = req.body;
+
+    if (!courseCode) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required field: courseCode'
+      });
+    }
+
+    console.log(`[Orchestrator] 📤 Manual GitHub push requested for ${courseCode}`);
+
+    // Use the same auto-publish function that phases use
+    const result = await autoPublishCourseData(
+      courseCode,
+      'manual',
+      message || `Manual update: ${courseCode} course data`
+    );
+
+    if (result.skipped) {
+      return res.json({
+        success: true,
+        skipped: true,
+        message: 'No changes to push'
+      });
+    }
+
+    if (result.success) {
+      res.json({
+        success: true,
+        message: '✅ Course data pushed to GitHub! Vercel will deploy automatically.',
+        timestamp: new Date().toISOString()
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        error: result.error,
+        message: 'Failed to push to GitHub'
+      });
+    }
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Failed to push to GitHub:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to push to GitHub'
+    });
+  }
+});
+
+/**
+ * POST /api/push-all-courses
+ * Push all course data to GitHub (used from Course Library page)
+ */
+app.post('/api/push-all-courses', async (req, res) => {
+  try {
+    console.log('[Orchestrator] 📤 Manual GitHub push requested for ALL courses');
+
+    const repoRoot = path.join(__dirname, '../..');
+    const coursesPath = 'public/vfs/courses/';
+
+    // Check if there are changes in courses directory
+    const status = execSync(`git status --porcelain ${coursesPath}`, {
+      cwd: repoRoot,
+      encoding: 'utf-8'
+    });
+
+    if (!status.trim()) {
+      return res.json({
+        success: true,
+        skipped: true,
+        message: 'No changes to push'
+      });
+    }
+
+    // Stage all course files
+    execSync(`git add ${coursesPath}`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Create commit
+    const commitMsg = `Update course data
+
+🤖 Auto-published via orchestrator
+
+Co-Authored-By: Claude <noreply@anthropic.com>`;
+
+    execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Push to GitHub
+    execSync('git push', {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    console.log('[Auto-Publish] ✅ All course data pushed to GitHub');
+
+    res.json({
+      success: true,
+      message: '✅ All course data pushed to GitHub! Vercel will deploy automatically.',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Failed to push to GitHub:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to push to GitHub'
     });
   }
 });
