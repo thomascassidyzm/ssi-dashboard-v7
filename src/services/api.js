@@ -251,11 +251,17 @@ export default {
         const match = matchStandard || matchBasic
 
         // Determine which phases are complete based on data availability
-        const phasesCompleted = []
-        if (translations.length > 0) phasesCompleted.push('1')
-        if (legos.length > 0) phasesCompleted.push('3')
-        if (baskets.length > 0) phasesCompleted.push('5')
-        // Note: Phase 7 (manifest) not checked here since cached data doesn't include it
+        // Get phases_completed from manifest (which already has Phase 7 detection)
+        const manifestData = await this.list()
+        const courseFromManifest = manifestData.courses.find(c => c.course_code === courseCode)
+        const phasesCompleted = courseFromManifest?.phases_completed || []
+
+        // Fallback: if manifest doesn't have phases, detect from loaded data
+        if (phasesCompleted.length === 0) {
+          if (translations.length > 0) phasesCompleted.push('1')
+          if (legos.length > 0) phasesCompleted.push('3')
+          if (baskets.length > 0) phasesCompleted.push('5')
+        }
 
         const course = {
           course_code: courseCode,
@@ -417,11 +423,17 @@ export default {
           })
 
           // Determine which phases are complete based on data availability
-          const phasesCompleted = []
-          if (translations.length > 0) phasesCompleted.push('1')
-          if (legos.length > 0) phasesCompleted.push('3')
-          if (basketCount > 0) phasesCompleted.push('5')
-          // Phase 7 check would require checking for course manifest file
+          // Get phases_completed from manifest (which already has Phase 7 detection)
+          const manifestData = await this.list()
+          const courseFromManifest = manifestData.courses.find(c => c.course_code === courseCode)
+          const phasesCompleted = courseFromManifest?.phases_completed || []
+
+          // Fallback: if manifest doesn't have phases, detect from loaded data
+          if (phasesCompleted.length === 0) {
+            if (translations.length > 0) phasesCompleted.push('1')
+            if (legos.length > 0) phasesCompleted.push('3')
+            if (basketCount > 0) phasesCompleted.push('5')
+          }
 
           const course = {
             course_code: courseCode,
