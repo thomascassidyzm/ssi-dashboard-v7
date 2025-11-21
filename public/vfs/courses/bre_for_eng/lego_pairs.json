@@ -1,7 +1,7 @@
 {
   "course": "bre_for_eng",
   "generated_at": "2025-11-21T19:00:00.000Z",
-  "methodology": "Phase 3 v7.1 - Two Heuristics Edition",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "phase": "3",
   "seeds": [
     {
@@ -727,9 +727,422 @@
           }
         }
       ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "I'm going to try to explain what I mean.",
+        "target": "Mont a ran da glask displegañ ar pezh a dalvez din."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to try",
+            "target": "Mont a ran da glask"
+          },
+          "components": [
+            {
+              "known": "go/to go",
+              "target": "Mont"
+            },
+            {
+              "known": "I do",
+              "target": "a ran"
+            },
+            {
+              "known": "to",
+              "target": "da"
+            },
+            {
+              "known": "try",
+              "target": "glask"
+            }
+          ]
+        },
+        {
+          "id": "S0008L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to try to explain",
+            "target": "da glask displegañ"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "da"
+            },
+            {
+              "known": "try",
+              "target": "glask"
+            },
+            {
+              "known": "explain/to explain",
+              "target": "displegañ"
+            }
+          ]
+        },
+        {
+          "id": "S0008L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to explain",
+            "target": "displegañ"
+          }
+        },
+        {
+          "id": "S0008L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "ar pezh a dalvez din"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "ar"
+            },
+            {
+              "known": "thing/what",
+              "target": "pezh"
+            },
+            {
+              "known": "that",
+              "target": "a"
+            },
+            {
+              "known": "means",
+              "target": "dalvez"
+            },
+            {
+              "known": "to me",
+              "target": "din"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "I speak a little Breton now.",
+        "target": "Komz a ran un nebeud brezhoneg bremañ."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak",
+            "target": "Komz a ran"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "Komz"
+            },
+            {
+              "known": "I",
+              "target": "a ran"
+            }
+          ]
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak a little",
+            "target": "Komz a ran un nebeud"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "Komz"
+            },
+            {
+              "known": "I",
+              "target": "a ran"
+            },
+            {
+              "known": "a little",
+              "target": "un nebeud"
+            }
+          ]
+        },
+        {
+          "id": "S0009L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak a little Breton",
+            "target": "Komz a ran un nebeud brezhoneg"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "Komz"
+            },
+            {
+              "known": "I",
+              "target": "a ran"
+            },
+            {
+              "known": "a little",
+              "target": "un nebeud"
+            },
+            {
+              "known": "Breton",
+              "target": "brezhoneg"
+            }
+          ]
+        },
+        {
+          "id": "S0009L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a little",
+            "target": "un nebeud"
+          }
+        },
+        {
+          "id": "S0009L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little Breton",
+            "target": "un nebeud brezhoneg"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un nebeud"
+            },
+            {
+              "known": "Breton",
+              "target": "brezhoneg"
+            }
+          ]
+        },
+        {
+          "id": "S0009L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Breton",
+            "target": "brezhoneg"
+          }
+        },
+        {
+          "id": "S0009L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "bremañ"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "target": "N'on ket sur ma c'hellan derc'hel soñj eus ar frazenn a-bezh."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "N'on ket sur"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "on"
+            },
+            {
+              "known": "not",
+              "target": "n'...ket"
+            },
+            {
+              "known": "sure",
+              "target": "sur"
+            }
+          ]
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "ma c'hellan"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "ma"
+            },
+            {
+              "known": "I can",
+              "target": "c'hellan"
+            }
+          ]
+        },
+        {
+          "id": "S0010L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "remember",
+            "target": "derc'hel soñj eus"
+          },
+          "components": [
+            {
+              "known": "hold",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            },
+            {
+              "known": "of/from",
+              "target": "eus"
+            }
+          ]
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the whole sentence",
+            "target": "ar frazenn a-bezh"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "ar"
+            },
+            {
+              "known": "sentence",
+              "target": "frazenn"
+            },
+            {
+              "known": "whole/entire",
+              "target": "a-bezh"
+            }
+          ]
+        },
+        {
+          "id": "S0010L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure if I can",
+            "target": "N'on ket sur ma c'hellan"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "on"
+            },
+            {
+              "known": "not",
+              "target": "n'...ket"
+            },
+            {
+              "known": "sure",
+              "target": "sur"
+            },
+            {
+              "known": "if",
+              "target": "ma"
+            },
+            {
+              "known": "I can",
+              "target": "c'hellan"
+            }
+          ]
+        },
+        {
+          "id": "S0010L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can remember",
+            "target": "ma c'hellan derc'hel soñj"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "ma"
+            },
+            {
+              "known": "I can",
+              "target": "c'hellan"
+            },
+            {
+              "known": "hold",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            }
+          ]
+        },
+        {
+          "id": "S0010L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "remember the whole sentence",
+            "target": "derc'hel soñj eus ar frazenn a-bezh"
+          },
+          "components": [
+            {
+              "known": "hold",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            },
+            {
+              "known": "of/from",
+              "target": "eus"
+            },
+            {
+              "known": "the",
+              "target": "ar"
+            },
+            {
+              "known": "sentence",
+              "target": "frazenn"
+            },
+            {
+              "known": "whole",
+              "target": "a-bezh"
+            }
+          ]
+        }
+      ]
     }
   ],
-  "version": "7.1",
+  "version": "7.0",
   "target": "bre",
   "known": "eng",
   "generated": "2025-11-21T18:52:00.000Z"
