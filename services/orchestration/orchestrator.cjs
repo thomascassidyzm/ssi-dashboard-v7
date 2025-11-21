@@ -1793,45 +1793,176 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
     const courseDir = path.join(VFS_ROOT, courseCode);
     await fs.ensureDir(courseDir);
 
-    // Save lego_pairs.json
+    // Save lego_pairs.json with merge support
     const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
-    await fs.writeJSON(legoPairsPath, lego_pairs, { spaces: 2 });
+    let finalLegoPairs = lego_pairs;
 
-    // Save introductions.json
+    if (await fs.pathExists(legoPairsPath)) {
+      console.log(`[Orchestrator] 📦 Merging with existing lego_pairs.json`);
+      const existingLegoPairs = await fs.readJSON(legoPairsPath);
+
+      // Merge seeds arrays (dedupe by seed_id, new data overwrites)
+      const seedMap = new Map();
+
+      // Add existing seeds first
+      if (existingLegoPairs.seeds) {
+        existingLegoPairs.seeds.forEach(seed => {
+          seedMap.set(seed.seed_id, seed);
+        });
+      }
+
+      // Overwrite with new seeds
+      if (lego_pairs.seeds) {
+        lego_pairs.seeds.forEach(seed => {
+          seedMap.set(seed.seed_id, seed);
+        });
+      }
+
+      // Sort by seed_id (S0001, S0002, ...)
+      const sortedSeeds = Array.from(seedMap.values()).sort((a, b) => {
+        const numA = parseInt(a.seed_id.substring(1));
+        const numB = parseInt(b.seed_id.substring(1));
+        return numA - numB;
+      });
+
+      finalLegoPairs = {
+        ...existingLegoPairs,
+        ...lego_pairs,
+        seeds: sortedSeeds
+      };
+
+      const existingCount = existingLegoPairs.seeds?.length || 0;
+      const newCount = lego_pairs.seeds?.length || 0;
+      const mergedCount = finalLegoPairs.seeds.length;
+      console.log(`[Orchestrator]    Existing: ${existingCount} seeds`);
+      console.log(`[Orchestrator]    New: ${newCount} seeds`);
+      console.log(`[Orchestrator]    Merged total: ${mergedCount} seeds (sorted)`);
+    }
+
+    await fs.writeJSON(legoPairsPath, finalLegoPairs, { spaces: 2 });
+
+    // Save introductions.json with merge support
     const introductionsPath = path.join(courseDir, 'introductions.json');
-    await fs.writeJSON(introductionsPath, introductions, { spaces: 2 });
+    let finalIntroductions = introductions;
 
-    // Count total LEGOs across all seeds
-    const legoCount = lego_pairs.seeds.reduce((count, seed) => count + (seed.legos?.length || 0), 0);
-    const introCount = Object.keys(introductions.presentations || {}).length;
+    if (await fs.pathExists(introductionsPath)) {
+      console.log(`[Orchestrator] 📦 Merging with existing introductions.json`);
+      const existingIntroductions = await fs.readJSON(introductionsPath);
+
+      // Merge presentations objects (new overwrites existing)
+      const mergedPresentations = {
+        ...existingIntroductions.presentations,
+        ...introductions.presentations
+      };
+
+      // Sort by key (S0001L01, S0001L02, ...)
+      const sortedPresentations = {};
+      const keys = Object.keys(mergedPresentations).sort((a, b) => {
+        const matchA = a.match(/S(\d+)L(\d+)/);
+        const matchB = b.match(/S(\d+)L(\d+)/);
+        if (matchA && matchB) {
+          const seedDiff = parseInt(matchA[1]) - parseInt(matchB[1]);
+          if (seedDiff !== 0) return seedDiff;
+          return parseInt(matchA[2]) - parseInt(matchB[2]);
+        }
+        return a.localeCompare(b);
+      });
+
+      keys.forEach(key => {
+        sortedPresentations[key] = mergedPresentations[key];
+      });
+
+      finalIntroductions = {
+        ...existingIntroductions,
+        ...introductions,
+        presentations: sortedPresentations
+      };
+
+      const existingCount = Object.keys(existingIntroductions.presentations || {}).length;
+      const newCount = Object.keys(introductions.presentations || {}).length;
+      const mergedCount = Object.keys(finalIntroductions.presentations).length;
+      console.log(`[Orchestrator]    Existing: ${existingCount} presentations`);
+      console.log(`[Orchestrator]    New: ${newCount} presentations`);
+      console.log(`[Orchestrator]    Merged total: ${mergedCount} presentations (sorted)`);
+    }
+
+    await fs.writeJSON(introductionsPath, finalIntroductions, { spaces: 2 });
+
+    // Count this submission's contribution (for activity log)
+    const submittedSeedCount = lego_pairs.seeds.length;
+    const submittedLegoCount = lego_pairs.seeds.reduce((count, seed) => count + (seed.legos?.length || 0), 0);
+    const submittedIntroCount = Object.keys(introductions.presentations || {}).length;
+
+    // Get seed range from this submission
+    let seedRange = '';
+    if (lego_pairs.seeds.length > 0) {
+      const seedIds = lego_pairs.seeds.map(s => s.seed_id).sort();
+      const firstSeed = seedIds[0];
+      const lastSeed = seedIds[seedIds.length - 1];
+      seedRange = submittedSeedCount === 1 ? firstSeed : `${firstSeed}-${lastSeed}`;
+    }
+
+    // Count total LEGOs across all seeds in merged result
+    const seedCount = finalLegoPairs.seeds.length;
+    const legoCount = finalLegoPairs.seeds.reduce((count, seed) => count + (seed.legos?.length || 0), 0);
+    const introCount = Object.keys(finalIntroductions.presentations || {}).length;
 
     console.log(`[Orchestrator] ✅ Received Phase 3 submission for ${courseCode}`);
-    console.log(`[Orchestrator]    Seeds: ${lego_pairs.seeds.length}`);
-    console.log(`[Orchestrator]    LEGOs: ${legoCount}`);
-    console.log(`[Orchestrator]    Introductions: ${introCount}`);
+    console.log(`[Orchestrator]    This submission: ${seedRange} (${submittedLegoCount} LEGOs)`);
+    console.log(`[Orchestrator]    Merged total: ${seedCount} seeds, ${legoCount} LEGOs, ${introCount} introductions`);
     console.log(`[Orchestrator]    Saved to: ${courseDir}`);
 
-    // Update progress tracking
-    updatePhaseProgress(courseCode, 3, {
-      status: 'complete',
-      endTime: new Date().toISOString(),
-      seedsComplete: lego_pairs.seeds.length,
-      legoCount,
-      introCount
-    });
-    addProgressLog(courseCode, `Phase 3: Complete - ${legoCount} LEGOs, ${introCount} introductions`);
+    // Log agent submission to activity log
+    addProgressLog(courseCode, `Agent submitted ${seedRange} (${submittedLegoCount} LEGOs, ${submittedIntroCount} intros)`);
 
-    // Update current phase to next
+    // Check if Phase 3 is complete (all seeds extracted)
     const progress = courseProgress.get(courseCode);
-    if (progress) {
-      progress.currentPhase = 5;
+    const expectedSeeds = progress?.phases?.[3]?.seedsTotal;
+    const isComplete = expectedSeeds && seedCount >= expectedSeeds;
+
+    if (isComplete) {
+      // All agents have submitted - mark complete
+      updatePhaseProgress(courseCode, 3, {
+        status: 'complete',
+        endTime: new Date().toISOString(),
+        seedsCompleted: seedCount,
+        seedsTotal: expectedSeeds,
+        legoCount,
+        introCount
+      });
+      addProgressLog(courseCode, `Phase 3: Complete - ${seedCount}/${expectedSeeds} seeds, ${legoCount} LEGOs`);
+
+      // Advance to next phase
+      if (progress) {
+        progress.currentPhase = 5;
+      }
+    } else {
+      // More agents still working - keep running
+      updatePhaseProgress(courseCode, 3, {
+        status: 'running',
+        seedsCompleted: seedCount,
+        seedsTotal: expectedSeeds || seedCount,
+        legoCount,
+        introCount
+      });
     }
 
     res.json({
       success: true,
-      message: 'Phase 3 submission received',
-      legoCount,
-      introCount,
+      message: isComplete ? 'Phase 3 complete - all seeds extracted' : 'Phase 3 submission received and merged',
+      submission: {
+        seedRange,
+        seedCount: submittedSeedCount,
+        legoCount: submittedLegoCount,
+        introCount: submittedIntroCount
+      },
+      merged: {
+        seedCount,
+        legoCount,
+        introCount,
+        isComplete,
+        progress: expectedSeeds ? `${seedCount}/${expectedSeeds}` : `${seedCount} seeds`
+      },
       savedTo: {
         lego_pairs: legoPairsPath,
         introductions: introductionsPath
