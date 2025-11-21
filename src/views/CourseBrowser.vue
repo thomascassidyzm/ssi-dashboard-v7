@@ -36,6 +36,16 @@
         </div>
       </div>
 
+      <!-- Search Bar -->
+      <div class="mb-6">
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Phase 5')..."
+          class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+        />
+      </div>
+
       <!-- Loading State -->
       <div v-if="loading" class="text-center py-12">
         <div class="text-slate-400">Loading courses...</div>
@@ -48,9 +58,13 @@
       </div>
 
       <!-- Empty State -->
-      <div v-else-if="courses.length === 0" class="text-center py-12">
-        <div class="text-slate-400 mb-4">No courses found</div>
+      <div v-else-if="filteredCourses.length === 0" class="text-center py-12">
+        <div v-if="searchQuery" class="text-slate-400 mb-4">
+          No courses matching "{{ searchQuery }}"
+        </div>
+        <div v-else class="text-slate-400 mb-4">No courses found</div>
         <router-link
+          v-if="!searchQuery"
           to="/generate"
           class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-lg transition-colors"
         >
@@ -61,7 +75,7 @@
       <!-- Courses Grid -->
       <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-          v-for="course in courses"
+          v-for="course in filteredCourses"
           :key="course.course_code"
           class="bg-slate-800 border border-slate-700 rounded-lg p-6 hover:border-emerald-500/50 transition-all hover:-translate-y-0.5"
         >
@@ -70,6 +84,9 @@
               <h3 class="text-xl font-semibold text-emerald-400 mb-1">
                 {{ formatCourseCode(course.course_code) }}
               </h3>
+              <p class="text-xs text-slate-500 mb-1">
+                {{ getFullCourseName(course.course_code) }}
+              </p>
               <p class="text-sm text-slate-400">
                 {{ course.total_seeds }} seeds
               </p>
@@ -142,18 +159,64 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import api from '../services/api'
 
 const router = useRouter()
 const toast = useToast()
+
+// Language name mapping for search
+const languageNames = {
+  'eng': 'English',
+  'spa': 'Spanish',
+  'fra': 'French',
+  'cmn': 'Chinese',
+  'gle': 'Irish',
+  'cym': 'Welsh',
+  'ita': 'Italian',
+  'deu': 'German',
+  'por': 'Portuguese',
+  'jpn': 'Japanese',
+  'kor': 'Korean',
+  'ara': 'Arabic',
+  'rus': 'Russian',
+  'tur': 'Turkish'
+}
 const courses = ref([])
 const loading = ref(true)
 const error = ref(null)
 const regenerating = ref(false)
 const pushing = ref(false)
+const searchQuery = ref('')
+
+// Computed: Filtered courses based on search query
+const filteredCourses = computed(() => {
+  if (!searchQuery.value) return courses.value
+
+  const query = searchQuery.value.toLowerCase()
+
+  return courses.value.filter(course => {
+    // Search by course code (e.g., "fra_for_eng")
+    if (course.course_code.toLowerCase().includes(query)) return true
+
+    // Search by full language names (e.g., "French for English")
+    const [target, , known] = course.course_code.split('_')
+    const targetName = languageNames[target] || target
+    const knownName = languageNames[known] || known
+    const fullName = `${targetName} for ${knownName} speakers`.toLowerCase()
+    if (fullName.includes(query)) return true
+
+    // Search by phase (e.g., "Phase 5")
+    if (course.phase && course.phase.toLowerCase().includes(query)) return true
+
+    // Search by format version
+    if (course.format && course.format.toLowerCase().includes(query)) return true
+
+    return false
+  })
+})
 
 onMounted(async () => {
   await loadCourses()
@@ -180,6 +243,13 @@ function formatCourseCode(code) {
   // Just return the course code as-is (e.g., "spa_for_eng")
   // This is a builder's tool, so showing the actual code is clearest
   return code
+}
+
+function getFullCourseName(courseCode) {
+  const [target, , known] = courseCode.split('_')
+  const targetName = languageNames[target] || target.toUpperCase()
+  const knownName = languageNames[known] || known.toUpperCase()
+  return `${targetName} for ${knownName} speakers`
 }
 
 function formatStatus(status) {
