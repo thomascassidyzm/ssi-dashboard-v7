@@ -147,14 +147,14 @@ export default {
               total_seeds: course.total_seeds,
               version: course.format,
               created_at: new Date().toISOString(),
-              status: course.lego_count > 0 ? 'phase_3_complete' : 'phase_1_complete',
+              status: course.phase || 'unknown',
               seed_pairs: course.actual_seed_count,
               lego_pairs: course.lego_count,
               lego_baskets: course.basket_count || 0,
               amino_acids: {
                 introductions: course.introductions_count || 0
               },
-              phases_completed: course.lego_count > 0 ? ['1', '3'] : ['1']
+              phases_completed: course.phases_completed || []
             }))
 
           return { courses }
@@ -250,6 +250,13 @@ export default {
         const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
         const match = matchStandard || matchBasic
 
+        // Determine which phases are complete based on data availability
+        const phasesCompleted = []
+        if (translations.length > 0) phasesCompleted.push('1')
+        if (legos.length > 0) phasesCompleted.push('3')
+        if (baskets.length > 0) phasesCompleted.push('5')
+        // Note: Phase 7 (manifest) not checked here since cached data doesn't include it
+
         const course = {
           course_code: courseCode,
           source_language: match ? match[2].toUpperCase() : 'UNK',
@@ -257,11 +264,11 @@ export default {
           total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
           version: cachedData.version,
           created_at: new Date(cachedData.cachedAt).toISOString(),
-          status: 'phase_3_complete',
+          status: phasesCompleted[phasesCompleted.length - 1] ? `phase_${phasesCompleted[phasesCompleted.length - 1]}` : 'unknown',
           seed_pairs: translations.length,
           lego_pairs: legos.length,
           lego_baskets: baskets.length,
-          phases_completed: ['1', '3'],
+          phases_completed: phasesCompleted,
           target_language_name: match ? match[1] : 'unknown',
           known_language_name: match ? match[2] : 'unknown'
         }
@@ -409,6 +416,13 @@ export default {
             hasIntroData: !!introductionsData
           })
 
+          // Determine which phases are complete based on data availability
+          const phasesCompleted = []
+          if (translations.length > 0) phasesCompleted.push('1')
+          if (legos.length > 0) phasesCompleted.push('3')
+          if (basketCount > 0) phasesCompleted.push('5')
+          // Phase 7 check would require checking for course manifest file
+
           const course = {
             course_code: courseCode,
             source_language: match ? match[2].toUpperCase() : 'UNK',
@@ -416,14 +430,14 @@ export default {
             total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
             version: '1.0',
             created_at: new Date().toISOString(),
-            status: 'phase_3_complete',
+            status: phasesCompleted[phasesCompleted.length - 1] ? `phase_${phasesCompleted[phasesCompleted.length - 1]}` : 'unknown',
             seed_pairs: translations.length,
             lego_pairs: legos.length,
             lego_baskets: basketCount,
             amino_acids: {
               introductions: introductionsCount
             },
-            phases_completed: ['1', '3'],
+            phases_completed: phasesCompleted,
             target_language_name: match ? match[1] : 'unknown',
             known_language_name: match ? match[2] : 'unknown'
           }
