@@ -1,0 +1,137 @@
+{
+  "course": "bre_for_eng",
+  "generated_at": "2025-11-21T18:55:00.000Z",
+  "methodology": "Phase 3 v7.1 - Two Heuristics Edition",
+  "phase": "3",
+  "seeds": [
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "I'm trying to learn.",
+        "target": "Klask a ran deskiñ."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "Klask a ran"
+          },
+          "components": [
+            {
+              "known": "try",
+              "target": "Klask"
+            },
+            {
+              "known": "[particle]",
+              "target": "a"
+            },
+            {
+              "known": "I do",
+              "target": "ran"
+            }
+          ]
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "deskiñ"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "how to speak as often as possible.",
+        "target": "penaos komz kerkent ha posupl."
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to speak",
+            "target": "penaos komz"
+          },
+          "components": [
+            {
+              "known": "how/how to",
+              "target": "penaos"
+            },
+            {
+              "known": "speak",
+              "target": "komz"
+            }
+          ]
+        },
+        {
+          "id": "S0003L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "komz"
+          }
+        },
+        {
+          "id": "S0003L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as often as possible",
+            "target": "kerkent ha posupl"
+          },
+          "components": [
+            {
+              "known": "as often",
+              "target": "kerkent"
+            },
+            {
+              "known": "as",
+              "target": "ha"
+            },
+            {
+              "known": "possible",
+              "target": "posupl"
+            }
+          ]
+        },
+        {
+          "id": "S0003L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "speak as often as possible",
+            "target": "komz kerkent ha posupl"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "komz"
+            },
+            {
+              "known": "as often",
+              "target": "kerkent"
+            },
+            {
+              "known": "as",
+              "target": "ha"
+            },
+            {
+              "known": "possible",
+              "target": "posupl"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "7.1"
+}

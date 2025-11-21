@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-21T11:09:04.788Z",
+  "generated_at": "2025-11-21T11:46:32.654Z",
   "courses": [
     {
       "course_code": "archive",
@@ -20,6 +20,30 @@
         "lego_pairs": false,
         "baskets": false,
         "introductions": false
+      }
+    },
+    {
+      "course_code": "bre_for_eng",
+      "source_language": "ENG",
+      "target_language": "BRE",
+      "total_seeds": 10,
+      "actual_seed_count": 10,
+      "lego_count": 6,
+      "basket_count": 0,
+      "introductions_count": 6,
+      "format": "7.1",
+      "phase": "phase_3",
+      "phases_completed": [
+        "1",
+        "3"
+      ],
+      "has_baskets": false,
+      "has_introductions": true,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false,
+        "introductions": true
       }
     },
     {
