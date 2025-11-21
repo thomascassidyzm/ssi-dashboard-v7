@@ -217,10 +217,10 @@ This is the **ONLY authoritative source** for Phase 3 extraction methodology (v7
 
 ## 🚀 SUB-AGENT SPAWNING
 
-You will spawn ${agentCount} sub-agents, each handling ${seedsPerAgent} seeds.
+You will spawn ${agentsInThisBrowser} sub-agents, each handling ${seedsPerAgent} seed(s).
 
 **Seed distribution**:
-${Array.from({length: agentCount}, (_, i) => {
+${Array.from({length: agentsInThisBrowser}, (_, i) => {
   const agentStart = startSeed + (i * seedsPerAgent);
   const agentEnd = Math.min(startSeed + ((i + 1) * seedsPerAgent) - 1, endSeed);
   return `- Agent ${i + 1}: S${String(agentStart).padStart(4, '0')}-S${String(agentEnd).padStart(4, '0')}`;
@@ -232,7 +232,7 @@ ${Array.from({length: agentCount}, (_, i) => {
 
 ## 📋 SUB-AGENT PROMPT TEMPLATE
 
-**CRITICAL**: Give IDENTICAL prompts to all ${agentCount} agents - only the seed range changes!
+**CRITICAL**: Give IDENTICAL prompts to all ${agentsInThisBrowser} agents - only the seed range changes!
 
 \`\`\`markdown
 # Phase 3 Sub-Agent: Extract S00XX-S00YY
@@ -441,9 +441,9 @@ fetch('${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit', {
 
 ## 🎬 EXECUTE NOW
 
-### Step 1: Spawn All ${agentCount} Sub-Agents in Parallel
+### Step 1: Spawn All ${agentsInThisBrowser} Sub-Agents in Parallel
 
-**CRITICAL**: Use ONE message with ${agentCount} Task tool calls.
+**CRITICAL**: Use ONE message with ${agentsInThisBrowser} Task tool calls.
 
 For each agent, use this exact prompt structure (changing only the seed range):
 
@@ -454,7 +454,7 @@ For each agent, use this exact prompt structure (changing only the seed range):
 
 ### Step 2: Monitor Completion
 
-Watch for all ${agentCount} sub-agents to report successful API POST.
+Watch for all ${agentsInThisBrowser} sub-agents to report successful API POST.
 
 Each will show:
 \`\`\`
