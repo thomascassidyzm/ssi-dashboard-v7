@@ -24,6 +24,9 @@ import SeedQualityReview from '../components/quality/SeedQualityReview.vue'
 import PromptEvolutionView from '../components/quality/PromptEvolutionView.vue'
 import CourseHealthReport from '../components/quality/CourseHealthReport.vue'
 
+// Editing Components
+import IntroductionsViewer from '../components/IntroductionsViewer.vue'
+
 
 const routes = [
   {
@@ -66,6 +69,12 @@ const routes = [
     component: CourseProgress,
     props: true,
     meta: { title: 'Course Progress' }
+  },
+  {
+    path: '/edit/introductions',
+    name: 'IntroductionsEditor',
+    component: IntroductionsViewer,
+    meta: { title: 'Edit Introductions' }
   },
   {
     path: '/courses/:courseCode/compile',

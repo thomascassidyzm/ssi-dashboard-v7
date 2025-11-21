@@ -585,9 +585,19 @@ export default {
             const seedPairsData = await seedPairsRes.json()
             const translation = seedPairsData.translations?.[seedId]
             if (translation) {
-              seedPair = {
-                target: translation[0],
-                known: translation[1]
+              // Handle both old array format and new object format (APML v8.2.0+)
+              if (Array.isArray(translation)) {
+                // Old format: ["known", "target"]
+                seedPair = {
+                  target: translation[1],
+                  known: translation[0]
+                }
+              } else {
+                // New format: {target: "...", known: "..."}
+                seedPair = {
+                  target: translation.target,
+                  known: translation.known
+                }
               }
             }
           }
@@ -700,6 +710,20 @@ export default {
     async regeneratePhase7(courseCode) {
       const response = await api.post(`/api/courses/${courseCode}/regenerate/phase7`, {})
       // Clear cache since manifest will be regenerated
+      await clearCourseCache(courseCode)
+      return response.data
+    },
+
+    // Get a specific phase output file
+    async getPhaseOutput(courseCode, phase, filename) {
+      const response = await api.get(`/api/courses/${courseCode}/phase-outputs/${phase}/${filename}`)
+      return response.data
+    },
+
+    // Save a specific phase output file
+    async savePhaseOutput(courseCode, phase, filename, data) {
+      const response = await api.put(`/api/courses/${courseCode}/phase-outputs/${phase}/${filename}`, data)
+      // Clear cache since phase output was modified
       await clearCourseCache(courseCode)
       return response.data
     },

@@ -1432,6 +1432,65 @@ app.get('/api/courses/:courseCode/phase-outputs/:phase/:file', async (req, res) 
 });
 
 /**
+ * PUT /api/courses/:courseCode/phase-outputs/:phase/:file
+ * Save/update phase output files in VFS
+ * Example: PUT /api/courses/hun_for_eng/phase-outputs/3/introductions.json
+ * Writes to {VFS_ROOT}/{courseCode}/{file}
+ */
+app.put('/api/courses/:courseCode/phase-outputs/:phase/:file', async (req, res) => {
+  const { courseCode, phase, file } = req.params;
+  const data = req.body;
+
+  console.log(`[Orchestrator] Saving phase ${phase} output: ${file} for ${courseCode}`);
+
+  try {
+    // Validate course exists
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    if (!await fs.pathExists(courseDir)) {
+      console.log(`[Orchestrator] Course directory not found: ${courseDir}`);
+      return res.status(404).json({
+        error: 'Course not found',
+        courseCode
+      });
+    }
+
+    // Construct file path: {VFS_ROOT}/{courseCode}/{file}
+    const filePath = path.join(VFS_ROOT, courseCode, file);
+
+    // Create backup if file exists
+    if (await fs.pathExists(filePath)) {
+      const backupPath = `${filePath}.backup-${Date.now()}`;
+      await fs.copy(filePath, backupPath);
+      console.log(`[Orchestrator] Created backup: ${backupPath}`);
+    }
+
+    // Write the data to file
+    await fs.writeJson(filePath, data, { spaces: 2 });
+
+    console.log(`[Orchestrator] Successfully saved ${file} for ${courseCode}`);
+
+    res.json({
+      success: true,
+      courseCode,
+      phase,
+      file,
+      path: filePath,
+      message: 'Phase output saved successfully'
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error saving phase output file:`, error);
+
+    res.status(500).json({
+      error: 'File save failed',
+      courseCode,
+      phase,
+      file,
+      details: error.message
+    });
+  }
+});
+
+/**
  * GET /api/phase-intelligence/:phase
  * Serve phase intelligence docs to agents via ngrok
  * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
