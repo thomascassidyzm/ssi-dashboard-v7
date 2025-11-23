@@ -1,6 +1,6 @@
 {
   "course": "ita_for_eng",
-  "generated_at": "2025-11-23T12:00:00.000Z",
+  "generated_at": "2025-11-23T12:30:00Z",
   "methodology": "Phase 3 v7.1",
   "phase": "3",
   "seeds": [
@@ -327,6 +327,78 @@
             {
               "known": "Italian",
               "target": "italiano"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": {
+        "known": "Do you speak Italian all day?",
+        "target": "Parli italiano tutto il giorno?"
+      },
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Do you speak",
+            "target": "Parli"
+          }
+        },
+        {
+          "id": "S0014L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          },
+          "components": [
+            {
+              "known": "Italian",
+              "target": "italiano"
+            }
+          ]
+        },
+        {
+          "id": "S0014L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "all day",
+            "target": "tutto il giorno"
+          }
+        },
+        {
+          "id": "S0014L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "day",
+            "target": "giorno"
+          },
+          "components": [
+            {
+              "known": "day",
+              "target": "giorno"
+            }
+          ]
+        },
+        {
+          "id": "S0014L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you speak",
+            "target": "parli"
+          },
+          "components": [
+            {
+              "known": "you speak",
+              "target": "parli"
             }
           ]
         }
