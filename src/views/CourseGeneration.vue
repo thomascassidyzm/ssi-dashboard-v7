@@ -124,8 +124,8 @@
                 </div>
                 <div v-if="analysis.baskets">
                   <span class="text-slate-400">Phase 5 (Baskets):</span>
-                  <span class="ml-2 font-semibold" :class="analysis.baskets.missing_seeds === 0 ? 'text-green-400' : 'text-amber-400'">
-                    {{ analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠️  ${analysis.baskets.missing_seeds} seeds missing` }}
+                  <span class="ml-2 font-semibold" :class="analysis.lego_pairs.exists && analysis.baskets.missing_seeds === 0 ? 'text-green-400' : 'text-amber-400'">
+                    {{ !analysis.lego_pairs.exists ? '⚠️ Requires Phase 3' : (analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠️ ${analysis.baskets.missing_seeds} seeds missing`) }}
                   </span>
                 </div>
               </div>
