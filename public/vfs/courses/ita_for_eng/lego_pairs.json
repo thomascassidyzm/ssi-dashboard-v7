@@ -116,6 +116,126 @@
       ]
     },
     {
+      "seed_id": "S0012",
+      "seed_pair": {
+        "known": "I would not like to guess what is going to happen tomorrow.",
+        "target": "Non vorrei indovinare cosa succederà domani."
+      },
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I would not like",
+            "target": "Non vorrei"
+          },
+          "components": [
+            {
+              "known": "I would not like",
+              "target": "Non vorrei"
+            }
+          ]
+        },
+        {
+          "id": "S0012L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to guess",
+            "target": "indovinare"
+          },
+          "components": [
+            {
+              "known": "to guess",
+              "target": "indovinare"
+            }
+          ]
+        },
+        {
+          "id": "S0012L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what is going to happen",
+            "target": "cosa succederà"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "cosa"
+            },
+            {
+              "known": "is going to happen",
+              "target": "succederà"
+            }
+          ]
+        },
+        {
+          "id": "S0012L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "domani"
+          },
+          "components": [
+            {
+              "known": "tomorrow",
+              "target": "domani"
+            }
+          ]
+        },
+        {
+          "id": "S0012L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I would not like to guess",
+            "target": "Non vorrei indovinare"
+          },
+          "components": [
+            {
+              "known": "I would not like",
+              "target": "Non vorrei"
+            },
+            {
+              "known": "to guess",
+              "target": "indovinare"
+            }
+          ]
+        },
+        {
+          "id": "S0012L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to guess what is going to happen",
+            "target": "indovinare cosa succederà"
+          },
+          "components": [
+            {
+              "known": "to guess",
+              "target": "indovinare"
+            },
+            {
+              "known": "what is going to happen",
+              "target": "cosa succederà"
+            }
+          ]
+        },
+        {
+          "id": "S0012L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I would not like to [verb]",
+            "target": "Non vorrei [infinitive]"
+          }
+        }
+      ]
+    },
+    {
       "seed_id": "S0013",
       "seed_pair": {
         "known": "You speak Italian very well.",
