@@ -3317,6 +3317,58 @@ async function fetchPhaseServerStatus(courseCode, phase) {
 }
 
 /**
+ * Stop/Abort proxy endpoints for dashboard Reset Jobs button
+ * Phase 1 & 3 use /stop, Phase 5 uses /abort
+ */
+app.post('/phase1/stop/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  try {
+    const response = await axios.post(`${PHASE_SERVERS[1]}/stop/${courseCode}`, {}, { timeout: 5000 });
+    console.log(`[Orchestrator] Phase 1 stop for ${courseCode}: ${response.status}`);
+    res.json(response.data);
+  } catch (error) {
+    if (error.response?.status === 404) {
+      res.status(404).json({ error: 'No active job found' });
+    } else {
+      console.error(`[Orchestrator] Phase 1 stop failed: ${error.message}`);
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+app.post('/phase3/stop/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  try {
+    const response = await axios.post(`${PHASE_SERVERS[3]}/stop/${courseCode}`, {}, { timeout: 5000 });
+    console.log(`[Orchestrator] Phase 3 stop for ${courseCode}: ${response.status}`);
+    res.json(response.data);
+  } catch (error) {
+    if (error.response?.status === 404) {
+      res.status(404).json({ error: 'No active job found' });
+    } else {
+      console.error(`[Orchestrator] Phase 3 stop failed: ${error.message}`);
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+app.post('/phase5/abort/:courseCode', async (req, res) => {
+  const { courseCode } = req.params;
+  try {
+    const response = await axios.post(`${PHASE_SERVERS[5]}/abort/${courseCode}`, {}, { timeout: 5000 });
+    console.log(`[Orchestrator] Phase 5 abort for ${courseCode}: ${response.status}`);
+    res.json(response.data);
+  } catch (error) {
+    if (error.response?.status === 404) {
+      res.status(404).json({ error: 'No active job found' });
+    } else {
+      console.error(`[Orchestrator] Phase 5 abort failed: ${error.message}`);
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+/**
  * Start server
  */
 app.listen(PORT, () => {

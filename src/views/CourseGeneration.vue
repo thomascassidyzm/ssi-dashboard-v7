@@ -656,10 +656,10 @@ const clearJob = async () => {
     }
 
     // Clear jobs from all phases (1, 3, 5)
-    // Phase 1 uses /stop, Phase 3 & 5 use /abort
+    // Phase 1 & 3 use /stop, Phase 5 uses /abort
     const clearPromises = [
       fetch(`${baseUrl}/phase1/stop/${code}`, { method: 'POST', headers }).catch(() => null),
-      fetch(`${baseUrl}/phase3/abort/${code}`, { method: 'POST', headers }).catch(() => null),
+      fetch(`${baseUrl}/phase3/stop/${code}`, { method: 'POST', headers }).catch(() => null),
       fetch(`${baseUrl}/phase5/abort/${code}`, { method: 'POST', headers }).catch(() => null)
     ]
 
