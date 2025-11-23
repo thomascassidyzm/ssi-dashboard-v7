@@ -1870,6 +1870,14 @@ async function saveTranslation() {
       }
     )
 
+    // Update local state immediately (optimistic update)
+    const uuid = editModal.value.translation.uuid
+    const idx = translations.value.findIndex(t => t.uuid === uuid)
+    if (idx !== -1) {
+      translations.value[idx].source = editModal.value.editedSource
+      translations.value[idx].target = editModal.value.editedTarget
+    }
+
     // Check if backend returned regeneration job info
     if (response.regeneration && response.regeneration.jobId) {
       // Initialize regeneration tracking
