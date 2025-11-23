@@ -44,21 +44,48 @@
       <!-- Progress Content -->
       <div v-else-if="progress" class="space-y-6">
 
-        <!-- Overall Status Card -->
-        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-6">
-          <div class="flex items-center justify-between">
-            <div>
-              <h2 class="text-xl font-semibold text-slate-100 mb-1">Pipeline Status</h2>
-              <p class="text-sm text-slate-400">Started: {{ formatTime(progress.startTime) }}</p>
+        <!-- Friendly Pipeline Progress (shown while running) -->
+        <PipelineProgress
+          v-if="progress.overallStatus === 'running'"
+          :course-code="courseCode"
+          :current-phase="currentPhaseNumber"
+          :seeds-processed="seedsProcessed"
+          :total-seeds="totalSeeds"
+          :started-at="progress.startTime"
+        />
+
+        <!-- Completion Card (shown when complete) -->
+        <div v-if="progress.overallStatus === 'complete'" class="bg-slate-800/50 rounded-lg border border-emerald-500/30 p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+              <svg class="w-6 h-6 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
             </div>
-            <div class="text-right">
-              <div :class="statusBadgeClass" class="inline-block px-4 py-2 rounded-full text-sm font-semibold">
-                {{ progress.overallStatus.toUpperCase() }}
-              </div>
-              <p class="text-xs text-slate-400 mt-1">Current Phase: {{ progress.currentPhase }}</p>
+            <div>
+              <h2 class="text-2xl font-semibold text-emerald-400">Course Ready!</h2>
+              <p class="text-slate-400">{{ courseCode }} generated successfully</p>
             </div>
           </div>
+          <router-link
+            :to="`/courses/${courseCode}/edit`"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-lg text-white transition-colors"
+          >
+            <span>View Course</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </router-link>
         </div>
+
+        <!-- Technical Details (collapsible) -->
+        <details class="group" open>
+          <summary class="cursor-pointer text-slate-400 hover:text-slate-300 text-sm mb-4 flex items-center gap-2">
+            <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+            Technical Details
+          </summary>
 
         <!-- Phase Progress Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -118,6 +145,7 @@
             </div>
           </div>
         </div>
+        </details>
 
       </div>
 
@@ -129,6 +157,7 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import EnvironmentSwitcher from '../components/EnvironmentSwitcher.vue'
+import PipelineProgress from '../components/PipelineProgress.vue'
 
 const route = useRoute()
 const courseCode = ref(route.params.code)
@@ -159,6 +188,26 @@ const statusBadgeClass = computed(() => {
     'error': 'bg-red-600 text-white',
     'idle': 'bg-slate-600 text-white'
   }[status] || 'bg-slate-600 text-white'
+})
+
+// For PipelineProgress component
+const currentPhaseNumber = computed(() => {
+  if (!progress.value) return 1
+  return progress.value.currentPhase || 1
+})
+
+const seedsProcessed = computed(() => {
+  if (!progress.value?.phases) return 0
+  const phase1 = progress.value.phases[1]
+  if (phase1?.seedsComplete) return phase1.seedsComplete
+  return 0
+})
+
+const totalSeeds = computed(() => {
+  if (!progress.value?.phases) return 30
+  const phase1 = progress.value.phases[1]
+  if (phase1?.seedsTotal) return phase1.seedsTotal
+  return 30
 })
 
 // API config
