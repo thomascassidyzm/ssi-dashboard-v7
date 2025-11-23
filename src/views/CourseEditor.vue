@@ -23,16 +23,15 @@
             <p class="text-slate-400">{{ course.total_seeds }} seeds • Version {{ course.version }}</p>
           </div>
           <div class="flex items-center gap-3">
-            <a
-              href="https://ssi-dashboard-v7.vercel.app/generate"
-              target="_blank"
+            <router-link
+              :to="generatorLink"
               class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
               Course Generator
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -1116,6 +1115,18 @@ const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 const courseCode = route.params.courseCode
+
+// Parse course code for generator link (e.g., ita_for_eng → target=ita, known=eng)
+const generatorLink = computed(() => {
+  const parts = courseCode.split('_for_')
+  if (parts.length === 2) {
+    return {
+      path: '/generate',
+      query: { target: parts[0], known: parts[1] }
+    }
+  }
+  return '/generate'
+})
 
 const course = ref(null)
 const translations = ref([])

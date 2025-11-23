@@ -411,7 +411,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import api, { apiClient } from '../services/api'
 import ExecutionModeSelector from '../components/ExecutionModeSelector.vue'
@@ -419,11 +419,12 @@ import ProgressMonitor from '../components/ProgressMonitor.vue'
 import PipelineProgress from '../components/PipelineProgress.vue'
 
 const router = useRouter()
+const route = useRoute()
 const toast = useToast()
 
-// State
-const knownLanguage = ref('eng')
-const targetLanguage = ref('gle')
+// State - initialize from query params if provided (from Course Editor link)
+const knownLanguage = ref(route.query.known || 'eng')
+const targetLanguage = ref(route.query.target || 'gle')
 const startSeed = ref(1)
 const endSeed = ref(668)
 const executionMode = ref('web') // 'local', 'api', or 'web'
