@@ -511,9 +511,11 @@ export default {
             known_phrase: translationPair[1]
           }
 
-          // Find LEGO breakdown in v7.7 format
+          // Find LEGO breakdown - handle both array-of-arrays and array-of-objects formats
           const seedsArray = legoPairsData.seeds || []
-          const legoBreakdown = seedsArray.find(([seed_id]) => seed_id === seedId)
+          const legoBreakdown = seedsArray.find(item =>
+            Array.isArray(item) ? item[0] === seedId : item.seed_id === seedId
+          )
 
           return {
             seed: translation,
