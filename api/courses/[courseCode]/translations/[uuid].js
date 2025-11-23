@@ -5,9 +5,7 @@
  * Writes to local VFS and commits to GitHub for persistence
  */
 
-import fs from 'fs/promises';
-import path from 'path';
-import { commitToGitHub, isGitHubConfigured } from '../../lib/github.js';
+import { readFromGitHub, commitToGitHub, isGitHubConfigured } from '../../lib/github.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -37,12 +35,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Path to seed_pairs.json
-    const vfsPath = path.join(process.cwd(), 'public', 'vfs', 'courses', courseCode);
-    const seedPairsPath = path.join(vfsPath, 'seed_pairs.json');
-
-    // Read existing file
-    const content = await fs.readFile(seedPairsPath, 'utf-8');
+    // Read from GitHub
+    const githubPath = `public/vfs/courses/${courseCode}/seed_pairs.json`;
+    const { content } = await readFromGitHub(githubPath);
     const data = JSON.parse(content);
 
     // Find and update the translation
@@ -69,38 +64,21 @@ export default async function handler(req, res) {
 
     // Update metadata
     data.updated = new Date().toISOString();
-    data.updated_by = 'manual_edit';
+    data.updated_by = 'dashboard_edit';
 
-    // Write back to file
+    // Commit to GitHub
     const jsonContent = JSON.stringify(data, null, 2);
-    await fs.writeFile(seedPairsPath, jsonContent, 'utf-8');
-
-    console.log(`[API] Saved seed_pairs.json locally for ${courseCode}`);
-
-    // Commit to GitHub for persistence
-    let githubCommit = null;
-    if (isGitHubConfigured()) {
-      try {
-        const result = await commitToGitHub({
-          path: `public/vfs/courses/${courseCode}/seed_pairs.json`,
-          content: jsonContent,
-          message: `Update translation ${uuid}: "${target.substring(0, 30)}..."`
-        });
-        githubCommit = result.commit;
-        console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
-      } catch (err) {
-        console.error(`[API] GitHub commit failed (local save succeeded):`, err.message);
-        // Don't fail the request - local save worked
-      }
-    } else {
-      console.log(`[API] GitHub not configured - local save only`);
-    }
+    const result = await commitToGitHub({
+      path: githubPath,
+      content: jsonContent,
+      message: `Update translation ${uuid}: "${target.substring(0, 30)}..."`
+    });
+    const githubCommit = result.commit;
+    console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
 
     res.status(200).json({
       success: true,
-      message: githubCommit
-        ? 'Translation updated and committed to GitHub'
-        : 'Translation updated locally (GitHub not configured)',
+      message: 'Translation updated and committed to GitHub',
       updated: {
         uuid,
         source,

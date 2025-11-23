@@ -2,12 +2,10 @@
  * PUT /api/courses/:courseCode/introductions/:legoId
  *
  * Updates an introduction/presentation in introductions.json
- * Writes to local VFS and commits to GitHub for persistence
+ * Reads from GitHub and commits back to GitHub
  */
 
-import fs from 'fs/promises';
-import path from 'path';
-import { commitToGitHub, isGitHubConfigured } from '../../lib/github.js';
+import { readFromGitHub, commitToGitHub } from '../../lib/github.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -37,12 +35,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Path to introductions.json
-    const vfsPath = path.join(process.cwd(), 'public', 'vfs', 'courses', courseCode);
-    const introsPath = path.join(vfsPath, 'introductions.json');
-
-    // Read existing file
-    const content = await fs.readFile(introsPath, 'utf-8');
+    // Read from GitHub
+    const githubPath = `public/vfs/courses/${courseCode}/introductions.json`;
+    const { content } = await readFromGitHub(githubPath);
     const data = JSON.parse(content);
 
     // Update the presentation
@@ -60,37 +55,21 @@ export default async function handler(req, res) {
 
     // Update metadata
     data.updated = new Date().toISOString();
-    data.updated_by = 'manual_edit';
+    data.updated_by = 'dashboard_edit';
 
-    // Write back to file
+    // Commit to GitHub
     const jsonContent = JSON.stringify(data, null, 2);
-    await fs.writeFile(introsPath, jsonContent, 'utf-8');
-
-    console.log(`[API] Saved introductions.json locally for ${courseCode}`);
-
-    // Commit to GitHub for persistence
-    let githubCommit = null;
-    if (isGitHubConfigured()) {
-      try {
-        const result = await commitToGitHub({
-          path: `public/vfs/courses/${courseCode}/introductions.json`,
-          content: jsonContent,
-          message: `Update introduction ${legoId}`
-        });
-        githubCommit = result.commit;
-        console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
-      } catch (err) {
-        console.error(`[API] GitHub commit failed (local save succeeded):`, err.message);
-      }
-    } else {
-      console.log(`[API] GitHub not configured - local save only`);
-    }
+    const result = await commitToGitHub({
+      path: githubPath,
+      content: jsonContent,
+      message: `Update introduction ${legoId}`
+    });
+    const githubCommit = result.commit;
+    console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
 
     res.status(200).json({
       success: true,
-      message: githubCommit
-        ? 'Introduction updated and committed to GitHub'
-        : 'Introduction updated locally (GitHub not configured)',
+      message: 'Introduction updated and committed to GitHub',
       updated: {
         legoId,
         text

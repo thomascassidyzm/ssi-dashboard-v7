@@ -2,12 +2,10 @@
  * PUT /api/courses/:courseCode/baskets/:seedId
  *
  * Updates a basket in lego_baskets.json
- * Writes to local VFS and commits to GitHub for persistence
+ * Reads from GitHub and commits back to GitHub
  */
 
-import fs from 'fs/promises';
-import path from 'path';
-import { commitToGitHub, isGitHubConfigured } from '../../lib/github.js';
+import { readFromGitHub, commitToGitHub } from '../../lib/github.js';
 
 export default async function handler(req, res) {
   // CORS headers
@@ -37,12 +35,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Path to lego_baskets.json
-    const vfsPath = path.join(process.cwd(), 'public', 'vfs', 'courses', courseCode);
-    const basketsPath = path.join(vfsPath, 'lego_baskets.json');
-
-    // Read existing file
-    const content = await fs.readFile(basketsPath, 'utf-8');
+    // Read from GitHub
+    const githubPath = `public/vfs/courses/${courseCode}/lego_baskets.json`;
+    const { content } = await readFromGitHub(githubPath);
     const data = JSON.parse(content);
 
     // Update baskets for this seed
@@ -52,8 +47,6 @@ export default async function handler(req, res) {
 
     // Handle v6.2+ format where basketData has nested legos
     if (basketData.legos && typeof basketData.legos === 'object') {
-      // basketData = { seed_pair: {...}, legos: { S0001L01: {...}, S0001L02: {...} } }
-      // Merge all legos for this seed into the main baskets object
       for (const [legoKey, legoData] of Object.entries(basketData.legos)) {
         if (legoKey.startsWith(seedId)) {
           data.baskets[legoKey] = legoData;
@@ -72,37 +65,21 @@ export default async function handler(req, res) {
 
     // Update metadata
     data.updated = new Date().toISOString();
-    data.updated_by = 'manual_edit';
+    data.updated_by = 'dashboard_edit';
 
-    // Write back to file
+    // Commit to GitHub
     const jsonContent = JSON.stringify(data, null, 2);
-    await fs.writeFile(basketsPath, jsonContent, 'utf-8');
-
-    console.log(`[API] Saved lego_baskets.json locally for ${courseCode}`);
-
-    // Commit to GitHub for persistence
-    let githubCommit = null;
-    if (isGitHubConfigured()) {
-      try {
-        const result = await commitToGitHub({
-          path: `public/vfs/courses/${courseCode}/lego_baskets.json`,
-          content: jsonContent,
-          message: `Update basket ${seedId}`
-        });
-        githubCommit = result.commit;
-        console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
-      } catch (err) {
-        console.error(`[API] GitHub commit failed (local save succeeded):`, err.message);
-      }
-    } else {
-      console.log(`[API] GitHub not configured - local save only`);
-    }
+    const result = await commitToGitHub({
+      path: githubPath,
+      content: jsonContent,
+      message: `Update basket ${seedId}`
+    });
+    const githubCommit = result.commit;
+    console.log(`[API] Committed to GitHub: ${githubCommit.sha.substring(0, 7)}`);
 
     res.status(200).json({
       success: true,
-      message: githubCommit
-        ? 'Basket updated and committed to GitHub'
-        : 'Basket updated locally (GitHub not configured)',
+      message: 'Basket updated and committed to GitHub',
       seedId,
       github: githubCommit
     });

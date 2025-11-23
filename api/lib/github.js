@@ -37,6 +37,27 @@ function getOctokit() {
  * @param {string} options.message - Commit message
  * @returns {Promise<Object>} - GitHub API response with commit details
  */
+/**
+ * Read a file from GitHub
+ *
+ * @param {string} filePath - File path relative to repo root
+ * @returns {Promise<{content: string, sha: string}>}
+ */
+export async function readFromGitHub(filePath) {
+  const client = getOctokit();
+
+  const { data } = await client.repos.getContent({
+    owner: GITHUB_CONFIG.owner,
+    repo: GITHUB_CONFIG.repo,
+    path: filePath,
+    ref: GITHUB_CONFIG.branch
+  });
+
+  // Decode base64 content
+  const content = Buffer.from(data.content, 'base64').toString('utf-8');
+  return { content, sha: data.sha };
+}
+
 export async function commitToGitHub({ path, content, message }) {
   const client = getOctokit();
 
@@ -107,6 +128,7 @@ export function getGitHubConfig() {
 }
 
 export default {
+  readFromGitHub,
   commitToGitHub,
   isGitHubConfigured,
   getGitHubConfig
