@@ -247,11 +247,11 @@
 
             <button
               @click="clearJob"
-              :disabled="clearingJob"
+              :disabled="clearingJob || !targetLanguage || !knownLanguage"
               class="bg-amber-500 hover:bg-amber-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
-              title="Clear any stuck Phase 5 jobs"
+              title="Clear stuck jobs for this course (all phases)"
             >
-              {{ clearingJob ? 'Clearing...' : 'Clear Job' }}
+              {{ clearingJob ? 'Clearing...' : '🔄 Reset Jobs' }}
             </button>
           </div>
         </div>
@@ -648,29 +648,46 @@ const clearJob = async () => {
   errorMessage.value = ''
 
   try {
-    const courseCode = `${targetLanguage.value}_for_${knownLanguage.value}`
-
-    // Call Phase 5 abort endpoint
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/phase5/abort/${courseCode}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
-
-    const data = await response.json()
-
-    if (data.success) {
-      console.log('✅ Job cleared:', data.message)
-      // Reset UI state
-      isGenerating.value = false
-      isCompleted.value = false
-      currentPhase.value = 'initializing'
-      progress.value = 0
-    } else {
-      errorMessage.value = data.message || 'Failed to clear job'
+    const code = `${targetLanguage.value}_for_${knownLanguage.value}`
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const headers = {
+      'Content-Type': 'application/json',
+      'ngrok-skip-browser-warning': 'true'
     }
+
+    // Clear jobs from all phases (1, 3, 5)
+    // Phase 1 uses /stop, Phase 3 & 5 use /abort
+    const clearPromises = [
+      fetch(`${baseUrl}/phase1/stop/${code}`, { method: 'POST', headers }).catch(() => null),
+      fetch(`${baseUrl}/phase3/abort/${code}`, { method: 'POST', headers }).catch(() => null),
+      fetch(`${baseUrl}/phase5/abort/${code}`, { method: 'POST', headers }).catch(() => null)
+    ]
+
+    const results = await Promise.all(clearPromises)
+    const cleared = []
+
+    for (let i = 0; i < results.length; i++) {
+      if (results[i] && results[i].ok) {
+        const data = await results[i].json()
+        if (data.success) cleared.push(`Phase ${[1, 3, 5][i]}`)
+      }
+    }
+
+    if (cleared.length > 0) {
+      console.log('✅ Jobs cleared:', cleared.join(', '))
+      toast.success(`✅ Cleared jobs: ${cleared.join(', ')}`)
+    } else {
+      console.log('ℹ️ No active jobs found to clear')
+      toast.info('No active jobs found')
+    }
+
+    // Reset UI state
+    isGenerating.value = false
+    isCompleted.value = false
+    currentPhase.value = 'initializing'
+    progress.value = 0
+    generationStartedAt.value = null
+
   } catch (error) {
     console.error('Failed to clear job:', error)
     errorMessage.value = `Failed to clear job: ${error.message}`
