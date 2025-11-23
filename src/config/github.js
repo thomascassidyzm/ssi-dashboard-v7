@@ -9,7 +9,7 @@ export const GITHUB_CONFIG = {
   // GitHub repository info
   owner: 'thomascassidyzm',
   repo: 'ssi-dashboard-v7',
-  branch: 'main',
+  branch: 'test-dashboard-editing',
 
   // Base URL for raw content
   get rawBaseUrl() {
