@@ -483,61 +483,52 @@ export default {
     },
 
     async traceProvenance(courseCode, seedId) {
-      try {
-        // Try API server first
-        const response = await api.get(`/api/courses/${courseCode}/provenance/${seedId}`)
-        return response.data
-      } catch (err) {
-        // Fallback to static files if API unavailable
-        console.log(`[API] Server unavailable, using static files for provenance ${courseCode}/${seedId}`)
+      // Use static files directly (provenance endpoint not available on Vercel)
+      const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
+      const legoPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
 
-        // Use the courseCode as-is for static file paths
-        const seedPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'seed_pairs.json'))
-        const legoPairsRes = await fetch(GITHUB_CONFIG.getCourseFileUrl(courseCode, 'lego_pairs.json'))
+      if (!seedPairsRes.ok || !legoPairsRes.ok) {
+        throw new Error(`Failed to load course data for ${courseCode}`)
+      }
 
-        if (seedPairsRes.ok && legoPairsRes.ok) {
-          const seedPairsData = await seedPairsRes.json()
-          const legoPairsData = await legoPairsRes.json()
+      const seedPairsData = await seedPairsRes.json()
+      const legoPairsData = await legoPairsRes.json()
 
-          const translationsObj = seedPairsData.translations || {}
-          const translationPair = translationsObj[seedId]
-          if (!translationPair) {
-            throw new Error(`Seed ${seedId} not found`)
+      const translationsObj = seedPairsData.translations || {}
+      const translationPair = translationsObj[seedId]
+      if (!translationPair) {
+        throw new Error(`Seed ${seedId} not found`)
+      }
+
+      const translation = {
+        seed_id: seedId,
+        target_phrase: translationPair[0],
+        known_phrase: translationPair[1]
+      }
+
+      // Find LEGO breakdown - handle both array-of-arrays and array-of-objects formats
+      const seedsArray = legoPairsData.seeds || []
+      const legoBreakdown = seedsArray.find(item =>
+        Array.isArray(item) ? item[0] === seedId : item.seed_id === seedId
+      )
+
+      return {
+        seed: translation,
+        lego_breakdown: legoBreakdown || null,
+        phase_history: [
+          {
+            phase: '1',
+            name: 'Translation',
+            completed: true,
+            output: translation
+          },
+          {
+            phase: '3',
+            name: 'LEGO Extraction',
+            completed: !!legoBreakdown,
+            output: legoBreakdown
           }
-
-          const translation = {
-            seed_id: seedId,
-            target_phrase: translationPair[0],
-            known_phrase: translationPair[1]
-          }
-
-          // Find LEGO breakdown - handle both array-of-arrays and array-of-objects formats
-          const seedsArray = legoPairsData.seeds || []
-          const legoBreakdown = seedsArray.find(item =>
-            Array.isArray(item) ? item[0] === seedId : item.seed_id === seedId
-          )
-
-          return {
-            seed: translation,
-            lego_breakdown: legoBreakdown || null,
-            phase_history: [
-              {
-                phase: '1',
-                name: 'Translation',
-                completed: true,
-                output: translation
-              },
-              {
-                phase: '3',
-                name: 'LEGO Extraction',
-                completed: !!legoBreakdown,
-                output: legoBreakdown
-              }
-            ]
-          }
-        }
-
-        throw err
+        ]
       }
     },
 
