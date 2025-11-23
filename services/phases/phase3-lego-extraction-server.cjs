@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 3458;
 const VFS_ROOT = process.env.VFS_ROOT;
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (LEGO Extraction)';
-const AGENT_SPAWN_DELAY = process.env.AGENT_SPAWN_DELAY || 3000;
+const AGENT_SPAWN_DELAY = process.env.AGENT_SPAWN_DELAY || 6000; // 6s to avoid clipboard race
 
 // Validate config
 if (!VFS_ROOT) {
