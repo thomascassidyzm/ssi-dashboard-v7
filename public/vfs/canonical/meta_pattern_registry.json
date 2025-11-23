@@ -1,0 +1,439 @@
+{
+  "version": "1.0.0",
+  "description": "Language-agnostic meta-patterns extracted from 668 canonical seeds for LUT-compliant translations",
+  "extraction_date": "2025-11-23",
+  "total_seeds_analyzed": 668,
+  "methodology": "Patterns extracted for chunk-aware translation where known->target mapping must be unambiguous",
+
+  "forced_pairs": {
+    "_description": "Word sequences with >90% predictability - critical for LUT optimization",
+    "infinitive_triggers": [
+      { "trigger": "want", "follows": "to", "probability": 0.99, "seeds": ["S0001", "S0005", "S0015-S0020", "S0030-S0032", "S0398-S0400"] },
+      { "trigger": "need", "follows": "to", "probability": 0.99, "seeds": ["S0044-S0045", "S0104", "S0319-S0320", "S0395-S0397", "S0595-S0596"] },
+      { "trigger": "have", "follows": "to", "probability": 0.95, "seeds": ["S0127", "S0181", "S0274", "S0450", "S0455", "S0593-S0594"] },
+      { "trigger": "going", "follows": "to", "probability": 0.99, "seeds": ["S0005", "S0008", "S0023-S0024", "S0147", "S0223", "S0504"] },
+      { "trigger": "trying", "follows": "to", "probability": 0.99, "seeds": ["S0002", "S0006", "S0102-S0103", "S0107-S0111", "S0159", "S0638"] },
+      { "trigger": "able", "follows": "to", "probability": 0.99, "seeds": ["S0011", "S0024", "S0073", "S0157", "S0176", "S0445-S0448", "S0563-S0564", "S0668"] },
+      { "trigger": "used", "follows": "to", "probability": 0.99, "seeds": ["S0128", "S0199", "S0506", "S0536", "S0587"] },
+      { "trigger": "supposed", "follows": "to", "probability": 0.99, "seeds": ["S0528"] },
+      { "trigger": "willing", "follows": "to", "probability": 0.99, "seeds": ["S0569", "S0570"] },
+      { "trigger": "'d like", "follows": "to", "probability": 0.99, "seeds": ["S0011", "S0092", "S0110", "S0170", "S0180", "S0271", "S0581", "S0634"] },
+      { "trigger": "ought", "follows": "to", "probability": 0.99, "seeds": ["S0328"] },
+      { "trigger": "hoped", "follows": "to", "probability": 0.99, "seeds": ["S0107-S0108", "S0149"] },
+      { "trigger": "started", "follows": "to", "probability": 0.95, "seeds": ["S0037", "S0079", "S0224", "S0228"] },
+      { "trigger": "offered", "follows": "to", "probability": 0.99, "seeds": ["S0604"] },
+      { "trigger": "dared", "follows": "to", "probability": 0.99, "seeds": ["S0621"] }
+    ],
+    "perfect_triggers": [
+      { "trigger": "would have", "follows": "past_participle", "probability": 0.99, "seeds": ["S0152-S0153", "S0563-S0564", "S0599-S0600", "S0608-S0613", "S0621"] },
+      { "trigger": "could have", "follows": "past_participle", "probability": 0.99, "seeds": ["S0520"] },
+      { "trigger": "might have", "follows": "past_participle", "probability": 0.99, "seeds": ["S0520"] },
+      { "trigger": "haven't/hasn't", "follows": "past_participle", "probability": 0.99, "seeds": ["S0183", "S0519"] },
+      { "trigger": "'ve been", "follows": "gerund/adjective", "probability": 0.95, "seeds": ["S0038", "S0254", "S0547", "S0575-S0577", "S0579-S0580"] },
+      { "trigger": "'d have", "follows": "past_participle", "probability": 0.99, "seeds": ["S0565-S0566", "S0599-S0600"] }
+    ],
+    "phrasal_completions": [
+      { "trigger": "looking forward", "follows": "to", "probability": 0.99, "seeds": ["S0029"] },
+      { "trigger": "each other", "follows": null, "probability": 0.99, "seeds": ["S0117-S0118", "S0410", "S0426", "S0516-S0517", "S0619-S0620"] },
+      { "trigger": "as soon", "follows": "as", "probability": 0.99, "seeds": ["S0028-S0029", "S0097"] },
+      { "trigger": "as much", "follows": "as", "probability": 0.99, "seeds": ["S0437"] },
+      { "trigger": "as often", "follows": "as", "probability": 0.99, "seeds": ["S0003"] },
+      { "trigger": "as hard", "follows": "as", "probability": 0.99, "seeds": ["S0007"] },
+      { "trigger": "as quickly", "follows": "as", "probability": 0.99, "seeds": ["S0050"] },
+      { "trigger": "no point", "follows": "gerund", "probability": 0.99, "seeds": ["S0508"] },
+      { "trigger": "a long time", "follows": "since/ago", "probability": 0.95, "seeds": ["S0619-S0620"] },
+      { "trigger": "at the moment", "follows": null, "probability": 0.99, "seeds": ["S0040", "S0548"] },
+      { "trigger": "on my own", "follows": null, "probability": 0.99, "seeds": ["S0173", "S0351", "S0516"] }
+    ],
+    "preposition_locks": [
+      { "trigger": "agree", "follows": "with", "probability": 0.95, "seeds": ["S0083-S0084", "S0384-S0386", "S0522"] },
+      { "trigger": "wait", "follows": "for/until", "probability": 0.95, "seeds": ["S0082", "S0155", "S0269", "S0396", "S0476", "S0577"] },
+      { "trigger": "ask", "follows": "if/what/who/where/about", "probability": 0.90, "seeds": ["S0030", "S0119", "S0190", "S0360", "S0380-S0382", "S0405"] },
+      { "trigger": "think", "follows": "that/about", "probability": 0.85, "seeds": ["S0037", "S0047", "S0072", "S0089", "S0123-S0125", "S0163"] },
+      { "trigger": "part of", "follows": "the", "probability": 0.95, "seeds": ["S0457", "S0472", "S0583"] },
+      { "trigger": "look", "follows": "for/after", "probability": 0.90, "seeds": ["S0068", "S0069", "S0171", "S0194-S0195", "S0510", "S0610-S0611"] }
+    ]
+  },
+
+  "modal_patterns": {
+    "_description": "Core auxiliary verb patterns - fundamental structures for language pair adaptation",
+    "want_family": {
+      "affirmative": "[SUBJ] + want/wants + to + [VERB]",
+      "negative": "[SUBJ] + don't/doesn't + want + to + [VERB]",
+      "past_aff": "[SUBJ] + wanted + to + [VERB]",
+      "past_neg": "[SUBJ] + didn't + want + to + [VERB]",
+      "question": "Do/Does + [SUBJ] + want + to + [VERB]?",
+      "seed_examples": {
+        "I_want": ["S0001", "S0007", "S0241-S0242", "S0249", "S0460", "S0562", "S0586"],
+        "you_want": ["S0015", "S0020", "S0031", "S0081", "S0169", "S0175"],
+        "he_she_want": ["S0016-S0017", "S0034-S0035", "S0299-S0304"],
+        "we_want": ["S0018", "S0036", "S0201", "S0398-S0400"],
+        "they_want": ["S0200", "S0209", "S0416-S0417", "S0437-S0440", "S0451-S0452"]
+      }
+    },
+    "need_family": {
+      "affirmative": "[SUBJ] + need/needs + to + [VERB]",
+      "negative": "[SUBJ] + don't/doesn't + need + to + [VERB]",
+      "question": "Do/Does + [SUBJ] + need + to + [VERB]?",
+      "seed_examples": {
+        "I_need": ["S0044-S0045", "S0595-S0596"],
+        "we_need": ["S0104", "S0106", "S0395-S0397"],
+        "he_she_need": ["S0319-S0320", "S0322-S0327", "S0610"],
+        "they_need": ["S0418-S0425"]
+      }
+    },
+    "going_to_family": {
+      "affirmative": "[SUBJ] + 'm/'re/'s + going + to + [VERB]",
+      "negative": "[SUBJ] + 'm not/'re not/'s not + going + to + [VERB]",
+      "question": "What + are/is + [SUBJ] + going + to + [VERB]?",
+      "seed_examples": ["S0005", "S0008", "S0023-S0024", "S0082", "S0179", "S0223", "S0227", "S0243", "S0504", "S0508-S0509"]
+    },
+    "trying_family": {
+      "affirmative": "[SUBJ] + 'm/'re/'s + trying + to + [VERB]",
+      "negative": "[SUBJ] + 'm not/'re not/'s not + trying + to + [VERB]",
+      "seed_examples": ["S0002", "S0006", "S0050", "S0102-S0103", "S0140", "S0159", "S0195", "S0205", "S0213", "S0222", "S0226", "S0638"]
+    },
+    "would_like_family": {
+      "affirmative": "[SUBJ] + would like/wouldn't like + to + [VERB]",
+      "question": "Would + [SUBJ] + like + to + [VERB]?",
+      "contraction": "'d like to",
+      "seed_examples": ["S0011-S0012", "S0092", "S0110", "S0170", "S0180", "S0271", "S0411", "S0426-S0430", "S0581", "S0634"]
+    },
+    "able_to_family": {
+      "present": "[SUBJ] + 'm/'re/'s + able + to + [VERB]",
+      "past": "[SUBJ] + was/were + able + to + [VERB]",
+      "future": "[SUBJ] + will/won't + be able + to + [VERB]",
+      "conditional": "[SUBJ] + would/wouldn't + be able + to + [VERB]",
+      "question": "Will + [SUBJ] + be able + to + [VERB]?",
+      "seed_examples": ["S0011", "S0024", "S0073", "S0157", "S0168", "S0176", "S0291-S0292", "S0352", "S0445-S0448", "S0525", "S0563-S0564", "S0668"]
+    },
+    "used_to_family": {
+      "affirmative": "[SUBJ] + used + to + [VERB]",
+      "seed_examples": ["S0128", "S0199", "S0506", "S0536", "S0587"]
+    },
+    "have_to_family": {
+      "affirmative": "[SUBJ] + have/has/had + to + [VERB]",
+      "question": "Do/Did + [SUBJ] + have + to + [VERB]?",
+      "seed_examples": ["S0025", "S0127", "S0181", "S0274", "S0278-S0280", "S0450", "S0455", "S0593-S0594"]
+    },
+    "should_family": {
+      "affirmative": "[SUBJ] + should + [VERB]",
+      "negative": "[SUBJ] + shouldn't + [VERB]",
+      "question": "Should + [SUBJ] + [VERB]?",
+      "seed_examples": ["S0098-S0100", "S0253", "S0403-S0409", "S0438", "S0499"]
+    },
+    "could_family": {
+      "affirmative": "[SUBJ] + could + [VERB]",
+      "negative": "[SUBJ] + couldn't + [VERB]",
+      "question": "Could + [SUBJ] + [VERB]?",
+      "seed_examples": ["S0061", "S0116", "S0225", "S0229", "S0310-S0318", "S0358-S0359", "S0412-S0415", "S0432-S0436", "S0479", "S0518"]
+    },
+    "can_family": {
+      "affirmative": "[SUBJ] + can + [VERB]",
+      "negative": "[SUBJ] + can't + [VERB]",
+      "question": "Can + [SUBJ] + [VERB]?",
+      "seed_examples": ["S0056-S0057", "S0090", "S0119", "S0136", "S0150", "S0161", "S0174", "S0250", "S0331-S0337", "S0512", "S0529-S0530", "S0585", "S0630", "S0645", "S0660"]
+    },
+    "might_family": {
+      "affirmative": "[SUBJ] + might + [VERB]",
+      "perfect": "[SUBJ] + might have + [PP]",
+      "seed_examples": ["S0261", "S0456", "S0520"]
+    }
+  },
+
+  "tense_patterns": {
+    "_description": "Time-based conjugation patterns across tenses",
+    "present_simple": {
+      "pattern": "[SUBJ] + [VERB]",
+      "negative": "[SUBJ] + don't/doesn't + [VERB]",
+      "question": "Do/Does + [SUBJ] + [VERB]?",
+      "seeds": ["S0013-S0014", "S0085", "S0197-S0198", "S0239-S0240", "S0283-S0288", "S0628-S0629"]
+    },
+    "present_progressive": {
+      "pattern": "[SUBJ] + 'm/'re/'s + [VERB-ing]",
+      "seeds": ["S0068", "S0145", "S0187", "S0192-S0193", "S0476", "S0498", "S0548"]
+    },
+    "present_perfect": {
+      "pattern": "[SUBJ] + 've/'s + [PAST_PARTICIPLE]",
+      "seeds": ["S0076", "S0182-S0184", "S0196", "S0205", "S0244-S0245", "S0267-S0268", "S0519", "S0559", "S0569", "S0572"]
+    },
+    "present_perfect_progressive": {
+      "pattern": "[SUBJ] + 've/'s + been + [VERB-ing]",
+      "seeds": ["S0033", "S0038", "S0547", "S0575-S0577", "S0579-S0580"]
+    },
+    "past_simple": {
+      "pattern": "[SUBJ] + [VERB-ed/irregular]",
+      "negative": "[SUBJ] + didn't + [VERB]",
+      "question": "Did + [SUBJ] + [VERB]?",
+      "seeds": ["S0030-S0032", "S0052-S0054", "S0069-S0071", "S0124-S0125", "S0144", "S0147-S0148", "S0176-S0178", "S0215-S0221", "S0234-S0238", "S0246-S0248", "S0262-S0266", "S0278-S0280", "S0340-S0351", "S0353-S0368", "S0369-S0387", "S0454-S0455", "S0462", "S0464", "S0506-S0507", "S0589-S0592", "S0601-S0605", "S0615-S0622"]
+    },
+    "past_perfect_conditional": {
+      "pattern": "If + [SUBJ] + had + [PP], [SUBJ] + would have + [PP]",
+      "seeds": ["S0152", "S0563-S0566", "S0599-S0600", "S0606-S0613", "S0621"]
+    },
+    "future_simple": {
+      "pattern": "[SUBJ] + will + [VERB]",
+      "negative": "[SUBJ] + won't + [VERB]",
+      "question": "Will + [SUBJ] + [VERB]?",
+      "seeds": ["S0157", "S0168", "S0176-S0177", "S0252", "S0255-S0256", "S0445-S0447", "S0465", "S0490", "S0524", "S0533", "S0668"]
+    }
+  },
+
+  "question_patterns": {
+    "_description": "Interrogative structures",
+    "wh_questions": {
+      "what": {
+        "pattern": "What + aux + [SUBJ] + [VERB]?",
+        "seeds": ["S0068", "S0162", "S0167", "S0169", "S0175", "S0179", "S0194", "S0258", "S0493-S0494", "S0582-S0584", "S0631", "S0651-S0652", "S0666"]
+      },
+      "where": {
+        "pattern": "Where + aux + [SUBJ] + [VERB]?",
+        "seeds": ["S0070", "S0154", "S0177", "S0382", "S0637"]
+      },
+      "when": {
+        "pattern": "When + aux + [SUBJ] + [VERB]?",
+        "seeds": ["S0079", "S0081", "S0252", "S0255", "S0495"]
+      },
+      "why": {
+        "pattern": "Why + aux + [SUBJ] + [VERB]?",
+        "seeds": ["S0021", "S0067", "S0082", "S0113", "S0135", "S0145", "S0269", "S0500"]
+      },
+      "how": {
+        "pattern": "How + [adj/adv] + aux + [SUBJ] + [VERB]?",
+        "seeds": ["S0003-S0004", "S0033", "S0040", "S0056-S0057", "S0059-S0060", "S0160", "S0202", "S0287", "S0470", "S0569-S0570", "S0601-S0602", "S0642", "S0657"]
+      },
+      "which": {
+        "pattern": "Which + [NOUN] + aux + [SUBJ] + [VERB]?",
+        "seeds": ["S0283", "S0492"]
+      },
+      "who": {
+        "pattern": "Who + [VERB]?",
+        "seeds": ["S0262-S0263", "S0343-S0345", "S0453", "S0527"]
+      }
+    },
+    "yes_no_questions": {
+      "do_does_did": {
+        "pattern": "Do/Does/Did + [SUBJ] + [VERB]?",
+        "seeds": ["S0014", "S0032", "S0156", "S0171", "S0186", "S0214", "S0220", "S0274", "S0278", "S0349", "S0355", "S0360", "S0366", "S0372", "S0377", "S0382", "S0385", "S0417", "S0423", "S0442", "S0453", "S0471", "S0623", "S0625", "S0628", "S0653", "S0667"]
+      },
+      "can_could": {
+        "pattern": "Can/Could + [SUBJ] + [VERB]?",
+        "seeds": ["S0119", "S0136", "S0150", "S0161", "S0174", "S0250", "S0316", "S0337", "S0414", "S0434", "S0512", "S0529-S0530", "S0630", "S0644", "S0659"]
+      },
+      "will_would": {
+        "pattern": "Will/Would + [SUBJ] + [VERB]?",
+        "seeds": ["S0252", "S0255", "S0271", "S0428", "S0447"]
+      },
+      "have_has": {
+        "pattern": "Have/Has + [SUBJ] + [PP]?",
+        "seeds": ["S0075", "S0182", "S0196", "S0267", "S0559", "S0569", "S0572"]
+      },
+      "are_is": {
+        "pattern": "Are/Is + [SUBJ] + [ADJ/VERB-ing]?",
+        "seeds": ["S0025", "S0063", "S0095", "S0397", "S0649", "S0664"]
+      }
+    }
+  },
+
+  "response_patterns": {
+    "_description": "Common answer structures for dialogic pairs",
+    "affirmative_responses": [
+      { "pattern": "Yes, [elaboration]", "seeds": ["S0097", "S0172", "S0184", "S0189", "S0191", "S0268", "S0272", "S0277", "S0279", "S0317", "S0328", "S0340", "S0350", "S0356", "S0363", "S0368", "S0374", "S0379", "S0383", "S0386", "S0408", "S0425", "S0429", "S0435", "S0444", "S0448", "S0624"] },
+      { "pattern": "That would be [ADJ]", "seeds": ["S0172", "S0401-S0402", "S0429", "S0624", "S0633"] },
+      { "pattern": "I think [clause]", "seeds": ["S0072", "S0089", "S0123-S0125", "S0163", "S0185", "S0247-S0248", "S0261", "S0303-S0304", "S0314-S0315", "S0325-S0326", "S0335-S0336", "S0486", "S0553", "S0571", "S0636", "S0641", "S0655"] }
+    ],
+    "negative_responses": [
+      { "pattern": "No, [reason/alternative]", "seeds": ["S0096", "S0173", "S0183", "S0273", "S0276", "S0280", "S0282", "S0309", "S0318", "S0330", "S0339", "S0351", "S0357", "S0362", "S0367", "S0375", "S0378", "S0387", "S0401", "S0406", "S0409", "S0424", "S0430", "S0436", "S0443", "S0450", "S0626"] },
+      { "pattern": "I don't think [clause]", "seeds": ["S0304", "S0318", "S0326", "S0336", "S0387"] },
+      { "pattern": "I'm not sure if [clause]", "seeds": ["S0010", "S0062", "S0080", "S0165", "S0654"] }
+    ]
+  },
+
+  "connector_patterns": {
+    "_description": "Clause linking patterns",
+    "causal": [
+      { "pattern": "because + [CLAUSE]", "seeds": ["S0022", "S0047", "S0130", "S0136", "S0270", "S0279", "S0421", "S0455", "S0502", "S0547", "S0549", "S0605", "S0622"] },
+      { "pattern": "so that + [CLAUSE]", "seeds": ["S0200", "S0505", "S0530"] }
+    ],
+    "conditional": [
+      { "pattern": "if + [CLAUSE]", "seeds": ["S0044", "S0049", "S0090", "S0176", "S0190", "S0203", "S0225", "S0229", "S0317", "S0352", "S0381", "S0405", "S0419", "S0435", "S0489-S0490", "S0501", "S0540", "S0561", "S0599-S0600", "S0606-S0607"] },
+      { "pattern": "unless + [CLAUSE]", "seeds": ["S0532"] },
+      { "pattern": "if only + [CLAUSE]", "seeds": ["S0501"] },
+      { "pattern": "even if + [CLAUSE]", "seeds": ["S0352"] }
+    ],
+    "concessive": [
+      { "pattern": "but + [CLAUSE]", "seeds": ["S0019", "S0039", "S0073", "S0165", "S0246", "S0469", "S0503", "S0537", "S0539"] },
+      { "pattern": "however much + [CLAUSE]", "seeds": ["S0593"] },
+      { "pattern": "whoever/whatever + [CLAUSE]", "seeds": ["S0480", "S0544"] },
+      { "pattern": "although + [CLAUSE]", "seeds": ["S0178"] }
+    ],
+    "temporal": [
+      { "pattern": "when + [CLAUSE]", "seeds": ["S0055", "S0058", "S0111", "S0118", "S0133", "S0147", "S0495-S0496", "S0513"] },
+      { "pattern": "while + [CLAUSE]", "seeds": ["S0092", "S0180", "S0219", "S0440", "S0512", "S0596"] },
+      { "pattern": "until + [CLAUSE]", "seeds": ["S0251", "S0396"] },
+      { "pattern": "since + [TIME/EVENT]", "seeds": ["S0146", "S0254", "S0477", "S0619-S0620"] },
+      { "pattern": "before/after + [CLAUSE/NOUN]", "seeds": ["S0011", "S0025", "S0119", "S0237", "S0249-S0251", "S0281", "S0494", "S0506"] },
+      { "pattern": "whenever + [CLAUSE]", "seeds": ["S0542"] }
+    ],
+    "alternative": [
+      { "pattern": "instead of + [GERUND/NOUN]", "seeds": ["S0502", "S0523"] },
+      { "pattern": "or + [CLAUSE]", "seeds": ["S0044", "S0217", "S0524", "S0623"] }
+    ]
+  },
+
+  "gerund_patterns": {
+    "_description": "Patterns requiring -ing form",
+    "verbs_with_gerund": [
+      { "verb": "enjoy", "pattern": "enjoy + [VERB-ing]", "seeds": ["S0051", "S0055", "S0101", "S0206"] },
+      { "verb": "mind", "pattern": "mind + [VERB-ing]", "seeds": ["S0063", "S0155", "S0190", "S0281", "S0540", "S0653", "S0667"] },
+      { "verb": "hate", "pattern": "hate + [VERB-ing]", "seeds": ["S0503"] },
+      { "verb": "keep", "pattern": "keep + [VERB-ing]", "seeds": ["S0092", "S0443", "S0528", "S0563"] },
+      { "verb": "imagine", "pattern": "imagine + [VERB-ing]", "seeds": ["S0518"] },
+      { "verb": "like", "pattern": "like + [VERB-ing]", "seeds": ["S0026-S0027", "S0120-S0121", "S0286-S0288"] }
+    ],
+    "prepositions_with_gerund": [
+      { "prep": "without", "pattern": "without + [VERB-ing]", "seeds": ["S0501", "S0540"] },
+      { "prep": "instead of", "pattern": "instead of + [VERB-ing]", "seeds": ["S0523"] },
+      { "prep": "about", "pattern": "about + [VERB-ing]", "seeds": ["S0046", "S0048", "S0100", "S0122"] }
+    ],
+    "special_constructions": [
+      { "pattern": "There's no point + [VERB-ing]", "seeds": ["S0508"] },
+      { "pattern": "It's + [ADJ] + [VERB-ing]", "seeds": ["S0567", "S0575-S0576"] },
+      { "pattern": "I'm finding it hard + [VERB-ing]", "seeds": ["S0526"] }
+    ]
+  },
+
+  "existential_patterns": {
+    "_description": "There is/are and It is constructions",
+    "there_constructions": [
+      { "pattern": "There is/are + [NP]", "seeds": ["S0131", "S0436", "S0475"] },
+      { "pattern": "There's no + [NOUN]", "seeds": ["S0508"] }
+    ],
+    "it_constructions": [
+      { "pattern": "It's + [ADJ] + to + [VERB]", "seeds": ["S0028", "S0065-S0066", "S0091", "S0134", "S0137", "S0483-S0484", "S0541", "S0573"] },
+      { "pattern": "It's + [TIME] + since + [CLAUSE]", "seeds": ["S0619-S0620"] },
+      { "pattern": "It's + [POSS] + turn + to", "seeds": ["S0545"] },
+      { "pattern": "It's the + [SUPERLATIVE]", "seeds": ["S0143", "S0479", "S0481", "S0573"] },
+      { "pattern": "It would have been + [ADJ]", "seeds": ["S0608-S0609"] },
+      { "pattern": "It doesn't matter + [what/if]", "seeds": ["S0409"] },
+      { "pattern": "It's + [ADJ] + that + [CLAUSE]", "seeds": ["S0058", "S0120-S0122", "S0149"] }
+    ]
+  },
+
+  "comparison_patterns": {
+    "_description": "Comparative and superlative structures",
+    "comparative": [
+      { "pattern": "[ADJ]-er + than", "seeds": ["S0114", "S0117-S0118", "S0132", "S0144", "S0578"] },
+      { "pattern": "more + [ADJ] + than", "seeds": ["S0137"] },
+      { "pattern": "as + [ADJ] + as", "seeds": ["S0003", "S0007", "S0050", "S0114-S0115"] }
+    ],
+    "superlative": [
+      { "pattern": "the most + [ADJ]", "seeds": ["S0280", "S0311", "S0492"] },
+      { "pattern": "the least", "seeds": ["S0479"] }
+    ],
+    "special_comparatives": [
+      { "pattern": "Nothing would make me happier than", "seeds": ["S0485"] },
+      { "pattern": "as + [ADV] + as possible", "seeds": ["S0003", "S0007", "S0050", "S0403", "S0437"] }
+    ]
+  },
+
+  "relative_patterns": {
+    "_description": "Relative clause structures",
+    "defining": [
+      { "pattern": "[NOUN] + who/that + [VERB]", "seeds": ["S0022", "S0087-S0088", "S0230-S0236", "S0286", "S0297", "S0306-S0307", "S0343-S0345", "S0355", "S0388-S0391", "S0544"] },
+      { "pattern": "[NOUN] + where + [CLAUSE]", "seeds": ["S0138", "S0461", "S0506", "S0614"] },
+      { "pattern": "[NOUN] + that + [CLAUSE]", "seeds": ["S0535", "S0573"] }
+    ],
+    "descriptive_phrases": [
+      { "pattern": "the one who is + [VERB-ing]", "seeds": ["S0390-S0391"] },
+      { "pattern": "the [NOUN] with the [ADJ] [NOUN]", "seeds": ["S0392-S0394"] }
+    ]
+  },
+
+  "politeness_patterns": {
+    "_description": "Formal address and courtesy patterns",
+    "formal_address": [
+      { "pattern": "[STATEMENT] + sir/madam", "seeds": ["S0639", "S0643-S0655"] },
+      { "pattern": "[QUESTION] + sir/madam?", "seeds": ["S0642-S0653"] }
+    ],
+    "plural_address": [
+      { "pattern": "you all + [VERB]", "seeds": ["S0656-S0668"] },
+      { "pattern": "[QUESTION] + you all + [VERB]?", "seeds": ["S0657-S0667"] }
+    ],
+    "polite_requests": [
+      { "pattern": "Could you + [VERB]?", "seeds": ["S0061", "S0644", "S0659"] },
+      { "pattern": "Can I have + [NOUN]?", "seeds": ["S0630"] },
+      { "pattern": "Let me + [VERB]", "seeds": ["S0466"] },
+      { "pattern": "Let's + [VERB]", "seeds": ["S0158", "S0522", "S0534"] }
+    ]
+  },
+
+  "semantic_categories": {
+    "_description": "Seeds grouped by semantic function - 6-layer framework alignment",
+    "layer_1_learning_conversation_management": {
+      "description": "Meta-language about learning process",
+      "seed_range": "S0001-S0100",
+      "key_patterns": ["want to speak {target}", "trying to learn", "practise speaking", "how to say", "remember a word", "looking forward to speaking"],
+      "sample_seeds": ["S0001", "S0002", "S0003", "S0004", "S0005", "S0006", "S0029", "S0033", "S0038", "S0064"]
+    },
+    "layer_2_immediate_needs": {
+      "description": "Basic transactional language",
+      "seed_ranges": ["S0460-S0475", "S0623-S0633"],
+      "key_patterns": ["want to find", "can I have", "something to drink", "next to", "near the hotel"],
+      "sample_seeds": ["S0460", "S0461", "S0467", "S0623", "S0625", "S0630"]
+    },
+    "layer_3_current_context": {
+      "description": "Describing present situations and surroundings",
+      "seed_ranges": ["S0388-S0394", "S0487-S0498", "S0546-S0560"],
+      "key_patterns": ["that person", "over there", "next to", "at the moment", "the one who is"],
+      "sample_seeds": ["S0388", "S0389", "S0390", "S0487", "S0498", "S0548"]
+    },
+    "layer_4_personal_experience": {
+      "description": "Past events and memories",
+      "seed_ranges": ["S0176-S0300", "S0506-S0520", "S0586-S0620"],
+      "key_patterns": ["used to", "I remember", "it happened", "a long time since", "when we were"],
+      "sample_seeds": ["S0199", "S0215", "S0234", "S0506", "S0589", "S0601", "S0619"]
+    },
+    "layer_5_opinions_and_feelings": {
+      "description": "Expressing views and emotions",
+      "seed_ranges": ["S0083-S0084", "S0123-S0125", "S0384-S0387", "S0483-S0486", "S0538-S0549"],
+      "key_patterns": ["I think", "I believe", "agree with", "feeling sad", "I wish", "I don't agree"],
+      "sample_seeds": ["S0083", "S0123", "S0384", "S0486", "S0538", "S0548", "S0557"]
+    },
+    "layer_6_hypotheticals": {
+      "description": "Conditionals and counterfactuals",
+      "seed_ranges": ["S0152-S0153", "S0225", "S0489-S0490", "S0501", "S0563-S0566", "S0599-S0613"],
+      "key_patterns": ["if I'd known", "would have been", "if only", "would have done", "I'd have thought"],
+      "sample_seeds": ["S0152", "S0225", "S0489", "S0501", "S0563", "S0599", "S0606"]
+    }
+  },
+
+  "chunk_size_guidance": {
+    "_description": "Guidance on optimal chunk boundaries for LUT compliance",
+    "atomic_chunks": [
+      "pronouns: I, you, he, she, it, we, they",
+      "articles: the, a, an",
+      "basic prepositions: in, on, at, to, from, with, for",
+      "conjunctions: and, but, or"
+    ],
+    "forced_chunk_pairs": [
+      "want to", "need to", "have to", "going to", "trying to",
+      "able to", "used to", "supposed to", "willing to",
+      "would like to", "looking forward to", "ought to",
+      "each other", "as soon as", "as much as", "as often as",
+      "a long time", "at the moment", "on my own"
+    ],
+    "chunk_up_triggers": [
+      "When standalone verb creates ambiguity, chunk with preceding auxiliary",
+      "When preposition choice is predictable, merge with governing verb",
+      "When time expression is formulaic, keep as unit",
+      "When modal + infinitive is fixed, keep as chunk (e.g., 'going to' not 'going' + 'to')"
+    ],
+    "lut_validation_rules": [
+      "Every KNOWN chunk must map unambiguously to exactly one TARGET chunk",
+      "Context from surrounding chunks provides disambiguation when needed",
+      "Chunk upward until ambiguity is resolved",
+      "Test: Can a native speaker of KNOWN language produce the exact TARGET output?"
+    ]
+  }
+}
