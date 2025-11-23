@@ -5,7 +5,7 @@
  * Writes to local VFS and commits to GitHub for persistence
  */
 
-import { readFromGitHub, commitToGitHub, isGitHubConfigured } from '../../lib/github.js';
+import { readFromGitHub, commitToGitHub, isGitHubConfigured } from '../../../lib/github.js';
 
 export default async function handler(req, res) {
   // CORS headers

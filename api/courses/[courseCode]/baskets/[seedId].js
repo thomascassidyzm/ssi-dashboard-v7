@@ -5,7 +5,7 @@
  * Reads from GitHub and commits back to GitHub
  */
 
-import { readFromGitHub, commitToGitHub } from '../../lib/github.js';
+import { readFromGitHub, commitToGitHub } from '../../../lib/github.js';
 
 export default async function handler(req, res) {
   // CORS headers
