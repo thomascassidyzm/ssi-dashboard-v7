@@ -904,5 +904,35 @@ export default {
       }
     })
     return response.data
+  },
+
+  // Phase 8: Get job status
+  async getPhase8Status(courseCode) {
+    const response = await api.get(`/api/phase8/status/${courseCode}`)
+    return response.data
+  },
+
+  // Phase 8: Continue processing after QC approval
+  async continuePhase8Processing(courseCode, options = {}) {
+    const response = await api.post('/api/phase8/continue', {
+      courseCode,
+      options
+    })
+    return response.data
+  },
+
+  // Phase 8: Regenerate specific samples
+  async regeneratePhase8Samples(courseCode, uuids) {
+    const response = await api.post('/api/phase8/regenerate', {
+      courseCode,
+      uuids
+    })
+    return response.data
+  },
+
+  // Phase 8: Get QC report
+  async getPhase8QCReport(courseCode) {
+    const response = await api.get(`/api/phase8/qc-report/${courseCode}`)
+    return response.data
   }
 }

@@ -1808,6 +1808,86 @@ app.post('/api/phase8/start', async (req, res) => {
 });
 
 /**
+ * GET /api/phase8/status/:courseCode
+ * Get Phase 8 job status
+ */
+app.get('/api/phase8/status/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const phase8Url = PHASE_SERVERS[8];
+
+    const response = await axios.get(`${phase8Url}/status/${courseCode}`);
+    res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ success: false, error: 'Phase 8 server not running' });
+    }
+    if (error.response?.status === 404) {
+      return res.status(404).json({ success: false, error: 'No job found for this course' });
+    }
+    res.status(error.response?.status || 500).json({ success: false, error: error.message });
+  }
+});
+
+/**
+ * POST /api/phase8/continue
+ * Continue Phase 8 processing after QC approval
+ */
+app.post('/api/phase8/continue', async (req, res) => {
+  try {
+    const { courseCode, options = {} } = req.body;
+    const phase8Url = PHASE_SERVERS[8];
+
+    const response = await axios.post(`${phase8Url}/continue-phase-a`, { courseCode, options });
+    res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ success: false, error: 'Phase 8 server not running' });
+    }
+    res.status(error.response?.status || 500).json({ success: false, error: error.message });
+  }
+});
+
+/**
+ * POST /api/phase8/regenerate
+ * Regenerate specific audio samples
+ */
+app.post('/api/phase8/regenerate', async (req, res) => {
+  try {
+    const { courseCode, uuids } = req.body;
+    const phase8Url = PHASE_SERVERS[8];
+
+    const response = await axios.post(`${phase8Url}/regenerate`, { courseCode, uuids });
+    res.json(response.data);
+  } catch (error) {
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ success: false, error: 'Phase 8 server not running' });
+    }
+    res.status(error.response?.status || 500).json({ success: false, error: error.message });
+  }
+});
+
+/**
+ * GET /api/phase8/qc-report/:courseCode
+ * Get QC report for Phase 8 audio generation
+ */
+app.get('/api/phase8/qc-report/:courseCode', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const qcReportPath = path.join(VFS_ROOT, 'courses', courseCode, 'qc_report_raw.json');
+
+    if (!await fs.pathExists(qcReportPath)) {
+      return res.status(404).json({ success: false, error: 'QC report not found' });
+    }
+
+    const report = await fs.readJson(qcReportPath);
+    res.json({ success: true, report });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+/**
  * Run Phase 1 Validation: LUT Collision Check
  * Checks if same KNOWN phrase maps to multiple TARGET translations
  * This is inline validation, not a separate phase
