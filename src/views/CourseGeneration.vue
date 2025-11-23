@@ -483,11 +483,12 @@ const currentPhaseIndex = computed(() => {
 
 // For PipelineProgress component
 const currentPhaseNumber = computed(() => {
-  const phase = currentPhase.value
-  if (phase.includes('phase_1')) return 1
-  if (phase.includes('phase_3')) return 3
-  if (phase.includes('phase_5')) return 5
-  if (phase.includes('phase_7') || phase === 'compilation') return 7
+  const phase = currentPhase.value.toLowerCase()
+  // Handle both "Phase 3" and "phase_3" formats
+  if (phase.includes('phase 1') || phase.includes('phase_1') || phase === '1') return 1
+  if (phase.includes('phase 3') || phase.includes('phase_3') || phase === '3') return 3
+  if (phase.includes('phase 5') || phase.includes('phase_5') || phase === '5') return 5
+  if (phase.includes('phase 7') || phase.includes('phase_7') || phase === '7' || phase === 'compilation') return 7
   return 1 // default to phase 1
 })
 
