@@ -11,7 +11,7 @@ import { Octokit } from '@octokit/rest';
 const GITHUB_CONFIG = {
   owner: process.env.GITHUB_OWNER || 'thomascassidyzm',
   repo: process.env.GITHUB_REPO || 'ssi-dashboard-v7',
-  branch: process.env.GITHUB_BRANCH || 'main'
+  branch: process.env.GITHUB_BRANCH || 'test-dashboard-editing'
 };
 
 // Create Octokit instance (lazy initialization)
