@@ -1,6 +1,6 @@
 {
   "course": "ita_for_eng",
-  "generated_at": "2025-11-23T12:30:00Z",
+  "generated_at": "2025-11-23T12:15:00Z",
   "methodology": "Phase 3 v7.1",
   "phase": "3",
   "seeds": [
@@ -399,6 +399,135 @@
             {
               "known": "you speak",
               "target": "parli"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": {
+        "known": "And I want you to speak Italian with me tomorrow.",
+        "target": "E voglio che tu parli italiano con me domani."
+      },
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "and I want",
+            "target": "e voglio"
+          },
+          "components": [
+            {
+              "known": "and",
+              "target": "e"
+            },
+            {
+              "known": "I want",
+              "target": "voglio"
+            }
+          ]
+        },
+        {
+          "id": "S0015L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0015L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want you to speak",
+            "target": "voglio che tu parli"
+          },
+          "components": [
+            {
+              "known": "I want that",
+              "target": "voglio che"
+            },
+            {
+              "known": "you",
+              "target": "tu"
+            },
+            {
+              "known": "speak",
+              "target": "parli"
+            }
+          ]
+        },
+        {
+          "id": "S0015L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0015L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0015L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with me",
+            "target": "con me"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "con"
+            },
+            {
+              "known": "me",
+              "target": "me"
+            }
+          ]
+        },
+        {
+          "id": "S0015L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "domani"
+          }
+        },
+        {
+          "id": "S0015L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to speak Italian with me",
+            "target": "parlare italiano con me"
+          },
+          "components": [
+            {
+              "known": "to speak",
+              "target": "parlare"
+            },
+            {
+              "known": "Italian",
+              "target": "italiano"
+            },
+            {
+              "known": "with me",
+              "target": "con me"
             }
           ]
         }
