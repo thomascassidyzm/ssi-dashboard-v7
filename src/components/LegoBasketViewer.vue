@@ -459,6 +459,9 @@
 <script>
 import api from '@/services/api'
 import { isMolecularLego, getLegoComponents } from '@/services/legoFormatAdapter'
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
 
 export default {
   name: 'LegoBasketViewer',
@@ -924,9 +927,25 @@ export default {
         this.$forceUpdate()
         console.log('✓ Saved changes for', seedId)
 
+        // Show GitHub commit confirmation
+        if (response && response.github && response.github.sha) {
+          const shortSha = response.github.sha.substring(0, 7)
+          toast.success(`✅ Saved to GitHub! Commit: ${shortSha}`, {
+            timeout: 4000
+          })
+        } else {
+          // This shouldn't happen - all saves go to GitHub
+          toast.warning(`⚠️ Saved but GitHub commit unconfirmed`, {
+            timeout: 4000
+          })
+        }
+
       } catch (err) {
         console.error('Failed to save changes:', err)
         this.error = `Failed to save changes: ${err.message}`
+        toast.error(`❌ Save failed: ${err.message}`, {
+          timeout: 5000
+        })
       }
     },
     async saveAllChanges() {

@@ -259,148 +259,39 @@
 
       <!-- Progress Monitor -->
       <div v-if="isGenerating || isCompleted" class="space-y-6">
-        <!-- Real-time Progress Monitor -->
+        <!-- Friendly Pipeline Progress -->
+        <PipelineProgress
+          v-if="courseCode && !isCompleted"
+          :course-code="courseCode"
+          :current-phase="currentPhaseNumber"
+          :seeds-processed="seedsProcessed"
+          :total-seeds="seedCount"
+          :started-at="generationStartedAt"
+        />
+
+        <!-- Completion Card -->
+        <div v-if="isCompleted" class="bg-slate-800/50 rounded-lg border border-emerald-500/30 p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+              <svg class="w-6 h-6 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold text-emerald-400">Course Ready!</h2>
+              <p class="text-slate-400">{{ courseCode }} • {{ seedCount }} seeds</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Legacy ProgressMonitor (hidden, keeps polling working) -->
         <ProgressMonitor
           v-if="courseCode"
           :courseCode="courseCode"
           :executionMode="executionMode"
           :seedCount="seedCount"
+          class="hidden"
         />
-
-        <!-- Traditional Progress Display -->
-        <div class="bg-slate-800/50 rounded-lg border border-slate-400/20 p-8">
-          <div class="flex items-center justify-between mb-6">
-            <h2 class="text-2xl font-semibold text-slate-100">
-              {{ courseCode || 'Generating...' }}
-            </h2>
-          <span v-if="isCompleted" class="flex items-center text-green-400 font-semibold">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-            Completed!
-          </span>
-          <span v-else class="flex items-center text-yellow-400 font-semibold">
-            <svg class="animate-spin w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Generating...
-          </span>
-        </div>
-
-        <!-- Current Phase -->
-        <div class="mb-6">
-          <div class="flex justify-between items-center mb-2">
-            <span class="text-sm font-medium text-slate-300">{{ currentPhase }}</span>
-            <span class="text-sm font-medium text-slate-300">{{ progress }}%</span>
-          </div>
-          <div class="w-full bg-slate-700 rounded-full h-3">
-            <div
-              class="bg-emerald-500 h-3 rounded-full transition-all duration-300"
-              :style="{ width: `${progress}%` }"
-            ></div>
-          </div>
-        </div>
-
-        <!-- Enhanced Progress Details (NEW!) -->
-        <div v-if="phaseDetails" class="mb-6 p-4 bg-slate-700/50 rounded-lg border border-slate-600">
-          <div class="space-y-3">
-            <!-- Status & Sub-status -->
-            <div class="flex items-center justify-between">
-              <div>
-                <div class="text-sm font-medium text-emerald-400">{{ phaseDetails.status }}</div>
-                <div v-if="phaseDetails.subStatus" class="text-xs text-slate-400">{{ phaseDetails.subStatus }}</div>
-              </div>
-
-              <!-- Estimated Completion -->
-              <div v-if="estimatedCompletion" class="text-right">
-                <div class="text-xs text-slate-400">ETA</div>
-                <div class="text-sm font-medium text-emerald-400">{{ formatETA(estimatedCompletion) }}</div>
-              </div>
-            </div>
-
-            <!-- Branch Progress (for Phase 3 & 5) -->
-            <div v-if="phaseDetails.milestones && phaseDetails.milestones.branchesExpected" class="space-y-2">
-              <div class="flex items-center justify-between text-sm">
-                <span class="text-slate-300">Branches Detected</span>
-                <span class="font-medium text-white">
-                  {{ phaseDetails.milestones.branchesDetected }} / {{ phaseDetails.milestones.branchesExpected }}
-                </span>
-              </div>
-
-              <!-- Progress bar for branches -->
-              <div class="w-full bg-slate-800 rounded-full h-2">
-                <div
-                  class="bg-emerald-500 h-2 rounded-full transition-all duration-300"
-                  :style="{ width: `${(phaseDetails.milestones.branchesDetected / phaseDetails.milestones.branchesExpected) * 100}%` }"
-                ></div>
-              </div>
-
-              <!-- Velocity Info -->
-              <div v-if="phaseDetails.timing && phaseDetails.timing.velocity" class="flex items-center justify-between text-xs text-slate-400">
-                <span>Avg: {{ Math.floor(phaseDetails.timing.velocity.avgSecondsPerBranch / 60) }}m per branch</span>
-                <span>Remaining: {{ formatSeconds(phaseDetails.timing.velocity.estimatedSecondsRemaining) }}</span>
-              </div>
-            </div>
-
-            <!-- Coverage Info (Phase 3 & 5) -->
-            <div v-if="phaseDetails.coverage" class="text-xs text-slate-400">
-              <span v-if="phaseDetails.coverage.strategy">Strategy: {{ phaseDetails.coverage.strategy }}</span>
-              <span v-if="phaseDetails.coverage.totalAgents"> • {{ phaseDetails.coverage.totalAgents }} agents</span>
-              <span v-if="phaseDetails.coverage.coveragePercent"> • {{ phaseDetails.coverage.coveragePercent }}% coverage</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Branch Timeline (NEW!) -->
-        <div v-if="phaseDetails && phaseDetails.branches && phaseDetails.branches.length > 0" class="mb-6 p-4 bg-slate-700/30 rounded-lg border border-slate-600">
-          <div class="text-sm font-medium text-slate-300 mb-3">Branch Timeline</div>
-          <div class="space-y-2 max-h-60 overflow-y-auto">
-            <div
-              v-for="(branch, idx) in phaseDetails.branches"
-              :key="branch.branchName"
-              class="flex items-center gap-3 text-sm"
-            >
-              <div class="flex-shrink-0">
-                <span v-if="branch.merged" class="text-green-400">✅</span>
-                <span v-else class="text-yellow-400">⏳</span>
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="text-slate-300 truncate">
-                  {{ branch.seedRange || `Branch ${idx + 1}` }}
-                </div>
-                <div class="text-xs text-slate-500">
-                  {{ formatTimestamp(branch.detectedAt) }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phase List -->
-        <div class="space-y-3">
-          <div v-for="phase in phaseNames" :key="phase.id" class="flex items-center gap-3">
-            <div v-if="phase.id < currentPhaseIndex" class="w-5 h-5 text-green-400">
-              <svg fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <div v-else-if="phase.id === currentPhaseIndex" class="w-5 h-5 text-yellow-400">
-              <svg class="animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            </div>
-            <div v-else class="w-5 h-5 text-slate-500">
-              <svg fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <span :class="phase.id <= currentPhaseIndex ? 'text-white' : 'text-slate-500'">
-              {{ phase.name }}
-            </span>
-          </div>
-        </div>
 
         <!-- Actions -->
         <div v-if="isCompleted" class="mt-8 space-y-4">
@@ -461,7 +352,6 @@
               Clear Stuck Job
             </button>
           </div>
-        </div>
         </div>
       </div>
 
@@ -526,6 +416,7 @@ import { useToast } from 'vue-toastification'
 import api, { apiClient } from '../services/api'
 import ExecutionModeSelector from '../components/ExecutionModeSelector.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
+import PipelineProgress from '../components/PipelineProgress.vue'
 
 const router = useRouter()
 const toast = useToast()
@@ -588,6 +479,34 @@ const currentPhaseIndex = computed(() => {
   if (phase === 'completed') return 5
   return -1
 })
+
+// For PipelineProgress component
+const currentPhaseNumber = computed(() => {
+  const phase = currentPhase.value
+  if (phase.includes('phase_1')) return 1
+  if (phase.includes('phase_3')) return 3
+  if (phase.includes('phase_5')) return 5
+  if (phase.includes('phase_7') || phase === 'compilation') return 7
+  return 1 // default to phase 1
+})
+
+const seedsProcessed = computed(() => {
+  // Extract from phaseDetails if available
+  if (phaseDetails.value?.milestones?.branchesDetected) {
+    // Rough estimate: assume ~20 seeds per branch
+    return phaseDetails.value.milestones.branchesDetected * 20
+  }
+  if (phaseDetails.value?.seedsCompleted) {
+    return phaseDetails.value.seedsCompleted
+  }
+  // If phase is complete, show all seeds
+  if (currentPhaseIndex.value > 0) {
+    return seedCount.value
+  }
+  return 0
+})
+
+const generationStartedAt = ref(null)
 
 const canExtendCourse = computed(() => {
   // Show extend button if:
@@ -710,6 +629,7 @@ const extendToFullCourse = async () => {
   // Reset state and restart generation
   isCompleted.value = false
   isGenerating.value = true
+  generationStartedAt.value = new Date().toISOString()
   currentPhase.value = 'initializing'
   progress.value = 0
   errorMessage.value = ''
@@ -763,6 +683,7 @@ const startGeneration = async (force = false) => {
   try {
     errorMessage.value = ''
     isGenerating.value = true
+    generationStartedAt.value = new Date().toISOString()
 
     const response = await api.course.generate({
       target: targetLanguage.value,

@@ -1104,14 +1104,17 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
 import api from '../services/api'
 import { GITHUB_CONFIG } from '../config/github'
+
 import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
 
 const route = useRoute()
 const router = useRouter()
+const toast = useToast()
 const courseCode = route.params.courseCode
 
 const course = ref(null)
@@ -1826,7 +1829,7 @@ async function saveIntro(legoId) {
 
   savingIntro.value = true
   try {
-    await api.course.updateIntroduction(courseCode, legoId, {
+    const response = await api.course.updateIntroduction(courseCode, legoId, {
       text: editedIntroText.value.trim(),
       edited: true
     })
@@ -1846,10 +1849,17 @@ async function saveIntro(legoId) {
     editingIntro.value = null
     editedIntroText.value = ''
 
-    console.log(`✅ Updated introduction for ${legoId}`)
+    // Show GitHub commit confirmation
+    if (response && response.github && response.github.sha) {
+      const shortSha = response.github.sha.substring(0, 7)
+      toast.success(`✅ Saved to GitHub! Commit: ${shortSha}`, { timeout: 4000 })
+    } else {
+      // This shouldn't happen - all saves go to GitHub
+      toast.warning(`⚠️ Saved but GitHub commit unconfirmed`, { timeout: 4000 })
+    }
   } catch (error) {
     console.error('Failed to save introduction:', error)
-    alert('Failed to save introduction. Please try again.')
+    toast.error(`❌ Save failed: ${error.message}`, { timeout: 5000 })
   } finally {
     savingIntro.value = false
   }
@@ -1898,13 +1908,17 @@ async function saveTranslation() {
 
     closeEditModal()
 
-    // Show success message
-    if (response.regeneration && response.regeneration.jobId) {
-      console.log('Translation saved. Regeneration started with job ID:', response.regeneration.jobId)
+    // Show GitHub commit confirmation
+    if (response.github && response.github.sha) {
+      const shortSha = response.github.sha.substring(0, 7)
+      toast.success(`✅ Saved to GitHub! Commit: ${shortSha}`, { timeout: 4000 })
+    } else {
+      // This shouldn't happen - all saves go to GitHub
+      toast.warning(`⚠️ Saved but GitHub commit unconfirmed`, { timeout: 4000 })
     }
   } catch (err) {
     console.error('Failed to save translation:', err)
-    alert('Failed to save: ' + err.message)
+    toast.error(`❌ Save failed: ${err.message}`, { timeout: 5000 })
   } finally {
     editModal.value.saving = false
   }
