@@ -1,6 +1,6 @@
 {
   "course": "ita_for_eng",
-  "generated_at": "2025-11-23T12:00:00.000Z",
+  "generated_at": "2025-11-23T12:30:00Z",
   "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "phase": "3",
   "seeds": [
@@ -900,6 +900,108 @@
             {
               "known": "to speak",
               "target": "parlare"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "I wanted to ask you something yesterday.",
+        "target": "Volevo chiederti qualcosa ieri."
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I wanted",
+            "target": "Volevo"
+          }
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to ask",
+            "target": "chiedere"
+          }
+        },
+        {
+          "id": "S0030L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to ask you",
+            "target": "chiederti"
+          },
+          "components": [
+            {
+              "known": "to ask",
+              "target": "chiedere"
+            },
+            {
+              "known": "you",
+              "target": "-ti"
+            }
+          ]
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        },
+        {
+          "id": "S0030L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yesterday",
+            "target": "ieri"
+          }
+        },
+        {
+          "id": "S0030L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wanted to ask you",
+            "target": "Volevo chiederti"
+          },
+          "components": [
+            {
+              "known": "I wanted",
+              "target": "Volevo"
+            },
+            {
+              "known": "to ask you",
+              "target": "chiederti"
+            }
+          ]
+        },
+        {
+          "id": "S0030L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to ask you something",
+            "target": "chiederti qualcosa"
+          },
+          "components": [
+            {
+              "known": "to ask you",
+              "target": "chiederti"
+            },
+            {
+              "known": "something",
+              "target": "qualcosa"
             }
           ]
         }
