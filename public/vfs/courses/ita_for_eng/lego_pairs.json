@@ -663,6 +663,108 @@
       ]
     },
     {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "It's useful to start talking as soon as you can.",
+        "target": "È utile iniziare a parlare appena puoi."
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "It's useful",
+            "target": "È utile"
+          },
+          "components": [
+            {
+              "known": "It's",
+              "target": "È"
+            },
+            {
+              "known": "useful",
+              "target": "utile"
+            }
+          ]
+        },
+        {
+          "id": "S0028L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start talking",
+            "target": "iniziare a parlare"
+          },
+          "components": [
+            {
+              "known": "to start",
+              "target": "iniziare a"
+            },
+            {
+              "known": "talking",
+              "target": "parlare"
+            }
+          ]
+        },
+        {
+          "id": "S0028L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as soon as you can",
+            "target": "appena puoi"
+          },
+          "components": [
+            {
+              "known": "as soon as",
+              "target": "appena"
+            },
+            {
+              "known": "you can",
+              "target": "puoi"
+            }
+          ]
+        },
+        {
+          "id": "S0028L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "useful",
+            "target": "utile"
+          }
+        },
+        {
+          "id": "S0028L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to talk",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0028L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you can",
+            "target": "puoi"
+          }
+        },
+        {
+          "id": "S0028L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "appena"
+          }
+        }
+      ]
+    },
+    {
       "seed_id": "S0029",
       "seed_pair": {
         "known": "I'm looking forward to speaking better as soon as I can.",
