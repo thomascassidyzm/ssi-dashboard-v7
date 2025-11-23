@@ -1,6 +1,6 @@
 {
   "course": "ita_for_eng",
-  "generated_at": "2025-11-23T12:30:00Z",
+  "generated_at": "2025-11-23T12:00:00.000Z",
   "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "phase": "3",
   "seeds": [
@@ -40,62 +40,6 @@
         },
         {
           "id": "S0011L04",
-          "type": "A",
-          "new": true,
-          "lego": {
-            "known": "after",
-            "target": "dopo che"
-          }
-        },
-        {
-          "id": "S0011L05",
-          "type": "A",
-          "new": true,
-          "lego": {
-            "known": "you finish",
-            "target": "finisci"
-          }
-        },
-        {
-          "id": "S0011L06",
-          "type": "M",
-          "new": true,
-          "lego": {
-            "known": "I'd like to be able",
-            "target": "Vorrei poter"
-          },
-          "components": [
-            {
-              "known": "I'd like",
-              "target": "Vorrei"
-            },
-            {
-              "known": "to be able",
-              "target": "poter"
-            }
-          ]
-        },
-        {
-          "id": "S0011L07",
-          "type": "M",
-          "new": true,
-          "lego": {
-            "known": "to be able to speak",
-            "target": "poter parlare"
-          },
-          "components": [
-            {
-              "known": "to be able",
-              "target": "poter"
-            },
-            {
-              "known": "to speak",
-              "target": "parlare"
-            }
-          ]
-        },
-        {
-          "id": "S0011L08",
           "type": "M",
           "new": true,
           "lego": {
