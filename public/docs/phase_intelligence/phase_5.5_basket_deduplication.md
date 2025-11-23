@@ -1,7 +1,23 @@
 # Phase 5.5: LEGO Basket Deduplication
 
+> **⚠️ DEPRECATED as of 2025-11-20 (APML v8.2.1)**
+>
+> **This phase has been removed from the automated pipeline.**
+>
+> **Reason:** Automated grammar validation and deduplication proved brittle and slow. Strategic pivot to human semi-manual review for first 100 seeds (~20,000 phrases) before publishing.
+>
+> **Replacement Strategy:**
+> - Human review of first 100 seeds (GOLDEN quality gate)
+> - Ship first course → iterate based on learner feedback
+> - Future: Browse/review/flag UI for phrase management
+> - Future: Incremental quality checks as patterns emerge
+>
+> **Historical documentation preserved below for reference.**
+
+---
+
 **Version**: 2.0 🔒 (Updated 2025-10-28)
-**Status**: Locked
+**Status**: ⚠️ DEPRECATED (v8.2.1)
 **Input**: `lego_pairs.json`, `lego_baskets.json`
 **Output**: `lego_pairs_deduplicated.json`, `lego_baskets_deduplicated.json`
 

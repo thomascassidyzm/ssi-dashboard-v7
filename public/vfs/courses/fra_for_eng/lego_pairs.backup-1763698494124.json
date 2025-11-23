@@ -1,0 +1,2961 @@
+{
+  "course": "fra_for_eng",
+  "generated_at": "2025-11-21T03:40:42.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "phase": "3",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "I want to speak French with you now.",
+        "target": "Je veux parler français avec toi maintenant."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "Je veux"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Je"
+            },
+            {
+              "known": "want",
+              "target": "veux"
+            }
+          ]
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parler"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want to speak",
+            "target": "Je veux parler"
+          },
+          "components": [
+            {
+              "known": "I want",
+              "target": "Je veux"
+            },
+            {
+              "known": "to speak",
+              "target": "parler"
+            }
+          ]
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "French",
+            "target": "français"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "speak French",
+            "target": "parler français"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "parler"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        },
+        {
+          "id": "S0001L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want to speak French",
+            "target": "Je veux parler français"
+          },
+          "components": [
+            {
+              "known": "I want",
+              "target": "Je veux"
+            },
+            {
+              "known": "to speak",
+              "target": "parler"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        },
+        {
+          "id": "S0001L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with you",
+            "target": "avec toi"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "avec"
+            },
+            {
+              "known": "you",
+              "target": "toi"
+            }
+          ]
+        },
+        {
+          "id": "S0001L08",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "maintenant"
+          }
+        },
+        {
+          "id": "S0001L09",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with you now",
+            "target": "avec toi maintenant"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "avec"
+            },
+            {
+              "known": "you",
+              "target": "toi"
+            },
+            {
+              "known": "now",
+              "target": "maintenant"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "I'm trying to learn.",
+        "target": "J'essaie d'apprendre."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "J'essaie"
+          }
+        },
+        {
+          "id": "S0002L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying to learn",
+            "target": "J'essaie d'apprendre"
+          },
+          "components": [
+            {
+              "known": "I'm trying",
+              "target": "J'essaie"
+            },
+            {
+              "known": "to",
+              "target": "de"
+            },
+            {
+              "known": "learn",
+              "target": "apprendre"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "how to speak as often as possible.",
+        "target": "comment parler le plus fréquemment possible."
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to speak",
+            "target": "comment parler"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "comment"
+            },
+            {
+              "known": "to speak",
+              "target": "parler"
+            }
+          ]
+        },
+        {
+          "id": "S0003L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parler"
+          }
+        },
+        {
+          "id": "S0003L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "speak as often as possible",
+            "target": "parler le plus fréquemment possible"
+          },
+          "components": [
+            {
+              "known": "speak/to speak",
+              "target": "parler"
+            },
+            {
+              "known": "the",
+              "target": "le"
+            },
+            {
+              "known": "most",
+              "target": "plus"
+            },
+            {
+              "known": "frequently/often",
+              "target": "fréquemment"
+            },
+            {
+              "known": "possible",
+              "target": "possible"
+            }
+          ]
+        },
+        {
+          "id": "S0003L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as often as possible",
+            "target": "le plus fréquemment possible"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "le"
+            },
+            {
+              "known": "most",
+              "target": "plus"
+            },
+            {
+              "known": "frequently/often",
+              "target": "fréquemment"
+            },
+            {
+              "known": "possible",
+              "target": "possible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "how to say something in French",
+        "target": "comment dire quelque chose en français"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to say",
+            "target": "dire"
+          }
+        },
+        {
+          "id": "S0004L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "quelque chose"
+          },
+          "components": [
+            {
+              "known": "some/a certain",
+              "target": "quelque"
+            },
+            {
+              "known": "thing",
+              "target": "chose"
+            }
+          ]
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "in French",
+            "target": "en français"
+          },
+          "components": [
+            {
+              "known": "in",
+              "target": "en"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        },
+        {
+          "id": "S0004L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "comment dire"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "comment"
+            },
+            {
+              "known": "to say",
+              "target": "dire"
+            }
+          ]
+        },
+        {
+          "id": "S0004L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "say something",
+            "target": "dire quelque chose"
+          },
+          "components": [
+            {
+              "known": "to say",
+              "target": "dire"
+            },
+            {
+              "known": "something",
+              "target": "quelque chose"
+            }
+          ]
+        },
+        {
+          "id": "S0004L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "say in French",
+            "target": "dire en français"
+          },
+          "components": [
+            {
+              "known": "to say",
+              "target": "dire"
+            },
+            {
+              "known": "in",
+              "target": "en"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        },
+        {
+          "id": "S0004L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "say something in French",
+            "target": "dire quelque chose en français"
+          },
+          "components": [
+            {
+              "known": "to say",
+              "target": "dire"
+            },
+            {
+              "known": "something",
+              "target": "quelque chose"
+            },
+            {
+              "known": "in",
+              "target": "en"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        },
+        {
+          "id": "S0004L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say in French",
+            "target": "comment dire en français"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "comment"
+            },
+            {
+              "known": "to say",
+              "target": "dire"
+            },
+            {
+              "known": "in",
+              "target": "en"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        },
+        {
+          "id": "S0004L09",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say something in French",
+            "target": "comment dire quelque chose en français"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "comment"
+            },
+            {
+              "known": "to say",
+              "target": "dire"
+            },
+            {
+              "known": "something",
+              "target": "quelque chose"
+            },
+            {
+              "known": "in",
+              "target": "en"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "I'm going to practise speaking with someone else.",
+        "target": "Je vais pratiquer à parler avec quelqu'un d'autre."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "je vais"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "je"
+            },
+            {
+              "known": "am going",
+              "target": "vais"
+            }
+          ]
+        },
+        {
+          "id": "S0005L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to practise",
+            "target": "je vais pratiquer"
+          },
+          "components": [
+            {
+              "known": "I'm going",
+              "target": "je vais"
+            },
+            {
+              "known": "to practise",
+              "target": "pratiquer"
+            }
+          ]
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to practise",
+            "target": "pratiquer"
+          }
+        },
+        {
+          "id": "S0005L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "practise speaking",
+            "target": "pratiquer à parler"
+          },
+          "components": [
+            {
+              "known": "practise",
+              "target": "pratiquer"
+            },
+            {
+              "known": "to speak/speaking",
+              "target": "à parler"
+            }
+          ]
+        },
+        {
+          "id": "S0005L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parler"
+          }
+        },
+        {
+          "id": "S0005L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "someone",
+            "target": "quelqu'un"
+          }
+        },
+        {
+          "id": "S0005L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "someone else",
+            "target": "quelqu'un d'autre"
+          },
+          "components": [
+            {
+              "known": "someone",
+              "target": "quelqu'un"
+            },
+            {
+              "known": "else/other",
+              "target": "d'autre"
+            }
+          ]
+        },
+        {
+          "id": "S0005L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with someone",
+            "target": "avec quelqu'un"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "avec"
+            },
+            {
+              "known": "someone",
+              "target": "quelqu'un"
+            }
+          ]
+        },
+        {
+          "id": "S0005L09",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with someone else",
+            "target": "avec quelqu'un d'autre"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "avec"
+            },
+            {
+              "known": "someone",
+              "target": "quelqu'un"
+            },
+            {
+              "known": "else/other",
+              "target": "d'autre"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "I'm trying to remember a word",
+        "target": "J'essaie de me rappeler un mot"
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "se rappeler"
+          },
+          "components": [
+            [
+              "to",
+              "se"
+            ],
+            [
+              "remember",
+              "rappeler"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a word",
+            "target": "un mot"
+          },
+          "components": [
+            [
+              "a",
+              "un"
+            ],
+            [
+              "word",
+              "mot"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "word",
+            "target": "mot"
+          }
+        },
+        {
+          "id": "S0006L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying to remember",
+            "target": "J'essaie de me rappeler"
+          },
+          "components": [
+            [
+              "I'm trying",
+              "J'essaie"
+            ],
+            [
+              "to",
+              "de"
+            ],
+            [
+              "me",
+              "me"
+            ],
+            [
+              "remember",
+              "rappeler"
+            ]
+          ]
+        },
+        {
+          "id": "S0006L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember a word",
+            "target": "se rappeler un mot"
+          },
+          "components": [
+            [
+              "to remember",
+              "se rappeler"
+            ],
+            [
+              "a word",
+              "un mot"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "I want to try as hard as I can today",
+        "target": "Je veux essayer aussi fort que je peux aujourd'hui"
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to try",
+            "target": "essayer"
+          }
+        },
+        {
+          "id": "S0007L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as hard as I can",
+            "target": "aussi fort que je peux"
+          },
+          "components": [
+            [
+              "as hard as",
+              "aussi fort que"
+            ],
+            [
+              "I can",
+              "je peux"
+            ]
+          ]
+        },
+        {
+          "id": "S0007L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I can",
+            "target": "je peux"
+          },
+          "components": [
+            [
+              "I",
+              "je"
+            ],
+            [
+              "can",
+              "peux"
+            ]
+          ]
+        },
+        {
+          "id": "S0007L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "today",
+            "target": "aujourd'hui"
+          }
+        },
+        {
+          "id": "S0007L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want to try",
+            "target": "Je veux essayer"
+          },
+          "components": [
+            [
+              "I want",
+              "Je veux"
+            ],
+            [
+              "to try",
+              "essayer"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "I'm going to try to explain what I mean",
+        "target": "Je vais essayer d'expliquer ce que je veux dire"
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to explain",
+            "target": "expliquer"
+          }
+        },
+        {
+          "id": "S0008L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "ce que"
+          },
+          "components": [
+            [
+              "what",
+              "ce que"
+            ]
+          ]
+        },
+        {
+          "id": "S0008L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I mean",
+            "target": "je veux dire"
+          },
+          "components": [
+            [
+              "I",
+              "je"
+            ],
+            [
+              "mean",
+              "veux dire"
+            ]
+          ]
+        },
+        {
+          "id": "S0008L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "ce que je veux dire"
+          },
+          "components": [
+            [
+              "what",
+              "ce que"
+            ],
+            [
+              "I mean",
+              "je veux dire"
+            ]
+          ]
+        },
+        {
+          "id": "S0008L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to try",
+            "target": "Je vais essayer"
+          },
+          "components": [
+            [
+              "I'm going",
+              "Je vais"
+            ],
+            [
+              "to try",
+              "essayer"
+            ]
+          ]
+        },
+        {
+          "id": "S0008L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to try to explain",
+            "target": "essayer d'expliquer"
+          },
+          "components": [
+            [
+              "to try",
+              "essayer"
+            ],
+            [
+              "to",
+              "d'"
+            ],
+            [
+              "explain",
+              "expliquer"
+            ]
+          ]
+        },
+        {
+          "id": "S0008L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to explain what I mean",
+            "target": "expliquer ce que je veux dire"
+          },
+          "components": [
+            [
+              "to explain",
+              "expliquer"
+            ],
+            [
+              "what I mean",
+              "ce que je veux dire"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "I speak a little French now",
+        "target": "Je parle un peu français maintenant"
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak",
+            "target": "Je parle"
+          },
+          "components": [
+            [
+              "I",
+              "Je"
+            ],
+            [
+              "speak",
+              "parle"
+            ]
+          ]
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little",
+            "target": "un peu"
+          },
+          "components": [
+            [
+              "a",
+              "un"
+            ],
+            [
+              "little",
+              "peu"
+            ]
+          ]
+        },
+        {
+          "id": "S0009L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak a little",
+            "target": "Je parle un peu"
+          },
+          "components": [
+            [
+              "I speak",
+              "Je parle"
+            ],
+            [
+              "a little",
+              "un peu"
+            ]
+          ]
+        },
+        {
+          "id": "S0009L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little French",
+            "target": "un peu français"
+          },
+          "components": [
+            [
+              "a little",
+              "un peu"
+            ],
+            [
+              "French",
+              "français"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "I'm not sure if I can remember the whole sentence",
+        "target": "Je ne suis pas sûr de pouvoir me rappeler toute la phrase"
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "Je ne suis pas sûr"
+          },
+          "components": [
+            [
+              "I",
+              "Je"
+            ],
+            [
+              "not",
+              "ne"
+            ],
+            [
+              "am",
+              "suis"
+            ],
+            [
+              "not",
+              "pas"
+            ],
+            [
+              "sure",
+              "sûr"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "de pouvoir"
+          },
+          "components": [
+            [
+              "if",
+              "de"
+            ],
+            [
+              "I can",
+              "pouvoir"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "can remember",
+            "target": "pouvoir me rappeler"
+          },
+          "components": [
+            [
+              "can",
+              "pouvoir"
+            ],
+            [
+              "me",
+              "me"
+            ],
+            [
+              "remember",
+              "rappeler"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the whole sentence",
+            "target": "toute la phrase"
+          },
+          "components": [
+            [
+              "the whole",
+              "toute la"
+            ],
+            [
+              "sentence",
+              "phrase"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "sentence",
+            "target": "phrase"
+          }
+        },
+        {
+          "id": "S0010L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure if I can",
+            "target": "Je ne suis pas sûr de pouvoir"
+          },
+          "components": [
+            [
+              "I'm not sure",
+              "Je ne suis pas sûr"
+            ],
+            [
+              "if I can",
+              "de pouvoir"
+            ]
+          ]
+        },
+        {
+          "id": "S0010L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can remember",
+            "target": "de pouvoir me rappeler"
+          },
+          "components": [
+            [
+              "if I can",
+              "de pouvoir"
+            ],
+            [
+              "remember",
+              "me rappeler"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": {
+        "known": "She wants to find out what the answer is.",
+        "target": "Elle veut découvrir quelle est la réponse."
+      },
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "She wants",
+            "target": "Elle veut"
+          },
+          "components": [
+            {
+              "known": "She",
+              "target": "Elle"
+            },
+            {
+              "known": "wants",
+              "target": "veut"
+            }
+          ]
+        },
+        {
+          "id": "S0017L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "wants to find out",
+            "target": "veut découvrir"
+          },
+          "components": [
+            {
+              "known": "wants",
+              "target": "veut"
+            },
+            {
+              "known": "to find out",
+              "target": "découvrir"
+            }
+          ]
+        },
+        {
+          "id": "S0017L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "She wants to find out",
+            "target": "Elle veut découvrir"
+          },
+          "components": [
+            {
+              "known": "She",
+              "target": "Elle"
+            },
+            {
+              "known": "wants",
+              "target": "veut"
+            },
+            {
+              "known": "to find out",
+              "target": "découvrir"
+            }
+          ]
+        },
+        {
+          "id": "S0017L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what the answer is",
+            "target": "quelle est la réponse"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "quelle"
+            },
+            {
+              "known": "is",
+              "target": "est"
+            },
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "answer",
+              "target": "réponse"
+            }
+          ]
+        },
+        {
+          "id": "S0017L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the answer",
+            "target": "la réponse"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "answer",
+              "target": "réponse"
+            }
+          ]
+        },
+        {
+          "id": "S0017L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to find out what the answer is",
+            "target": "découvrir quelle est la réponse"
+          },
+          "components": [
+            {
+              "known": "to find out",
+              "target": "découvrir"
+            },
+            {
+              "known": "what",
+              "target": "quelle"
+            },
+            {
+              "known": "is",
+              "target": "est"
+            },
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "answer",
+              "target": "réponse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": {
+        "known": "We want to meet at six o'clock this evening.",
+        "target": "Nous voulons nous rencontrer à six heures ce soir."
+      },
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "we want",
+            "target": "nous voulons"
+          },
+          "components": [
+            {
+              "known": "we",
+              "target": "nous"
+            },
+            {
+              "known": "want",
+              "target": "voulons"
+            }
+          ]
+        },
+        {
+          "id": "S0018L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "we want to meet",
+            "target": "nous voulons nous rencontrer"
+          },
+          "components": [
+            {
+              "known": "we",
+              "target": "nous"
+            },
+            {
+              "known": "want",
+              "target": "voulons"
+            },
+            {
+              "known": "to meet (each other)",
+              "target": "nous rencontrer"
+            }
+          ]
+        },
+        {
+          "id": "S0018L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at six o'clock",
+            "target": "à six heures"
+          },
+          "components": [
+            {
+              "known": "at",
+              "target": "à"
+            },
+            {
+              "known": "six",
+              "target": "six"
+            },
+            {
+              "known": "o'clock",
+              "target": "heures"
+            }
+          ]
+        },
+        {
+          "id": "S0018L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "this evening",
+            "target": "ce soir"
+          },
+          "components": [
+            {
+              "known": "this",
+              "target": "ce"
+            },
+            {
+              "known": "evening",
+              "target": "soir"
+            }
+          ]
+        },
+        {
+          "id": "S0018L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at six o'clock this evening",
+            "target": "à six heures ce soir"
+          },
+          "components": [
+            {
+              "known": "at",
+              "target": "à"
+            },
+            {
+              "known": "six",
+              "target": "six"
+            },
+            {
+              "known": "o'clock",
+              "target": "heures"
+            },
+            {
+              "known": "this",
+              "target": "ce"
+            },
+            {
+              "known": "evening",
+              "target": "soir"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "seed_pair": {
+        "known": "But I don't want to stop talking.",
+        "target": "Mais je ne veux pas arrêter de parler."
+      },
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "mais"
+          }
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "je veux"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "je"
+            },
+            {
+              "known": "want",
+              "target": "veux"
+            }
+          ]
+        },
+        {
+          "id": "S0019L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't want",
+            "target": "je ne veux pas"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "je"
+            },
+            {
+              "known": "not",
+              "target": "ne"
+            },
+            {
+              "known": "want",
+              "target": "veux"
+            },
+            {
+              "known": "not",
+              "target": "pas"
+            }
+          ]
+        },
+        {
+          "id": "S0019L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't want to stop",
+            "target": "je ne veux pas arrêter"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "je"
+            },
+            {
+              "known": "not",
+              "target": "ne"
+            },
+            {
+              "known": "want",
+              "target": "veux"
+            },
+            {
+              "known": "not",
+              "target": "pas"
+            },
+            {
+              "known": "to stop",
+              "target": "arrêter"
+            }
+          ]
+        },
+        {
+          "id": "S0019L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to stop",
+            "target": "arrêter"
+          }
+        },
+        {
+          "id": "S0019L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "stop talking",
+            "target": "arrêter de parler"
+          },
+          "components": [
+            {
+              "known": "to stop",
+              "target": "arrêter"
+            },
+            {
+              "known": "of/to",
+              "target": "de"
+            },
+            {
+              "known": "to talk",
+              "target": "parler"
+            }
+          ]
+        },
+        {
+          "id": "S0019L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to talk",
+            "target": "parler"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": {
+        "known": "You want to learn his name quickly.",
+        "target": "Tu veux apprendre son nom rapidement."
+      },
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "You want to learn",
+            "target": "Tu veux apprendre"
+          },
+          "components": [
+            {
+              "known": "You want",
+              "target": "Tu veux"
+            },
+            {
+              "known": "to learn",
+              "target": "apprendre"
+            }
+          ]
+        },
+        {
+          "id": "S0020L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to learn his name",
+            "target": "apprendre son nom"
+          },
+          "components": [
+            {
+              "known": "to learn",
+              "target": "apprendre"
+            },
+            {
+              "known": "his name",
+              "target": "son nom"
+            }
+          ]
+        },
+        {
+          "id": "S0020L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "You want to learn his name",
+            "target": "Tu veux apprendre son nom"
+          },
+          "components": [
+            {
+              "known": "You want",
+              "target": "Tu veux"
+            },
+            {
+              "known": "to learn",
+              "target": "apprendre"
+            },
+            {
+              "known": "his name",
+              "target": "son nom"
+            }
+          ]
+        },
+        {
+          "id": "S0020L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "his name",
+            "target": "son nom"
+          },
+          "components": [
+            {
+              "known": "his",
+              "target": "son"
+            },
+            {
+              "known": "name",
+              "target": "nom"
+            }
+          ]
+        },
+        {
+          "id": "S0020L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to learn his name quickly",
+            "target": "apprendre son nom rapidement"
+          },
+          "components": [
+            {
+              "known": "to learn",
+              "target": "apprendre"
+            },
+            {
+              "known": "his",
+              "target": "son"
+            },
+            {
+              "known": "name",
+              "target": "nom"
+            },
+            {
+              "known": "quickly",
+              "target": "rapidement"
+            }
+          ]
+        },
+        {
+          "id": "S0020L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "quickly",
+            "target": "rapidement"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": {
+        "known": "Why are you learning her name?",
+        "target": "Pourquoi tu apprends son nom ?"
+      },
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Why",
+            "target": "Pourquoi"
+          }
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you are learning",
+            "target": "tu apprends"
+          },
+          "components": [
+            "tu",
+            "apprends"
+          ]
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "her name",
+            "target": "son nom"
+          },
+          "components": [
+            "son",
+            "nom"
+          ]
+        },
+        {
+          "id": "S0021L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Why are you learning",
+            "target": "Pourquoi tu apprends"
+          },
+          "components": [
+            "Pourquoi",
+            "tu",
+            "apprends"
+          ]
+        },
+        {
+          "id": "S0021L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "are learning her name",
+            "target": "apprends son nom"
+          },
+          "components": [
+            "apprends",
+            "son",
+            "nom"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "seed_pair": {
+        "known": "Because I want to meet people who speak French.",
+        "target": "Parce que je veux rencontrer des gens qui parlent français."
+      },
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "because I want",
+            "target": "parce que je veux"
+          },
+          "components": [
+            {
+              "known": "because",
+              "target": "parce que"
+            },
+            {
+              "known": "I",
+              "target": "je"
+            },
+            {
+              "known": "want",
+              "target": "veux"
+            }
+          ]
+        },
+        {
+          "id": "S0022L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want to meet",
+            "target": "je veux rencontrer"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "je"
+            },
+            {
+              "known": "want",
+              "target": "veux"
+            },
+            {
+              "known": "to meet",
+              "target": "rencontrer"
+            }
+          ]
+        },
+        {
+          "id": "S0022L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to meet people",
+            "target": "rencontrer des gens"
+          },
+          "components": [
+            {
+              "known": "to meet",
+              "target": "rencontrer"
+            },
+            {
+              "known": "some",
+              "target": "des"
+            },
+            {
+              "known": "people",
+              "target": "gens"
+            }
+          ]
+        },
+        {
+          "id": "S0022L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "people who speak French",
+            "target": "des gens qui parlent français"
+          },
+          "components": [
+            {
+              "known": "some",
+              "target": "des"
+            },
+            {
+              "known": "people",
+              "target": "gens"
+            },
+            {
+              "known": "who",
+              "target": "qui"
+            },
+            {
+              "known": "speak",
+              "target": "parlent"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        },
+        {
+          "id": "S0022L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "who speak French",
+            "target": "qui parlent français"
+          },
+          "components": [
+            {
+              "known": "who",
+              "target": "qui"
+            },
+            {
+              "known": "speak",
+              "target": "parlent"
+            },
+            {
+              "known": "French",
+              "target": "français"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": {
+        "known": "I'm going to start talking more soon.",
+        "target": "Je vais commencer à parler plus bientôt."
+      },
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "Je vais"
+          },
+          "components": [
+            {
+              "known": "I / I'm",
+              "target": "Je"
+            },
+            {
+              "known": "am going to / going",
+              "target": "vais"
+            }
+          ]
+        },
+        {
+          "id": "S0023L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to start",
+            "target": "Je vais commencer"
+          },
+          "components": [
+            {
+              "known": "I'm going to",
+              "target": "Je vais"
+            },
+            {
+              "known": "start / to start",
+              "target": "commencer"
+            }
+          ]
+        },
+        {
+          "id": "S0023L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "start talking",
+            "target": "commencer à parler"
+          },
+          "components": [
+            {
+              "known": "start",
+              "target": "commencer"
+            },
+            {
+              "known": "to",
+              "target": "à"
+            },
+            {
+              "known": "talk / talking",
+              "target": "parler"
+            }
+          ]
+        },
+        {
+          "id": "S0023L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "start talking more",
+            "target": "commencer à parler plus"
+          },
+          "components": [
+            {
+              "known": "start",
+              "target": "commencer"
+            },
+            {
+              "known": "to",
+              "target": "à"
+            },
+            {
+              "known": "talk / talking",
+              "target": "parler"
+            },
+            {
+              "known": "more",
+              "target": "plus"
+            }
+          ]
+        },
+        {
+          "id": "S0023L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to start talking",
+            "target": "Je vais commencer à parler"
+          },
+          "components": [
+            {
+              "known": "I'm going to",
+              "target": "Je vais"
+            },
+            {
+              "known": "start",
+              "target": "commencer"
+            },
+            {
+              "known": "to",
+              "target": "à"
+            },
+            {
+              "known": "talk / talking",
+              "target": "parler"
+            }
+          ]
+        },
+        {
+          "id": "S0023L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "talking more",
+            "target": "parler plus"
+          },
+          "components": [
+            {
+              "known": "talking / talk",
+              "target": "parler"
+            },
+            {
+              "known": "more",
+              "target": "plus"
+            }
+          ]
+        },
+        {
+          "id": "S0023L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "soon",
+            "target": "bientôt"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": {
+        "known": "I'm not going to be able to remember easily.",
+        "target": "Je ne vais pas pouvoir me rappeler facilement."
+      },
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not going to",
+            "target": "Je ne vais pas"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Je"
+            },
+            {
+              "known": "not",
+              "target": "ne...pas"
+            },
+            {
+              "known": "going to/future",
+              "target": "vais"
+            }
+          ]
+        },
+        {
+          "id": "S0024L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not going to be able to",
+            "target": "Je ne vais pas pouvoir"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Je"
+            },
+            {
+              "known": "not",
+              "target": "ne...pas"
+            },
+            {
+              "known": "going to",
+              "target": "vais"
+            },
+            {
+              "known": "be able to",
+              "target": "pouvoir"
+            }
+          ]
+        },
+        {
+          "id": "S0024L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "be able to remember",
+            "target": "pouvoir me rappeler"
+          },
+          "components": [
+            {
+              "known": "be able to",
+              "target": "pouvoir"
+            },
+            {
+              "known": "myself (reflexive)",
+              "target": "me"
+            },
+            {
+              "known": "to recall/remember",
+              "target": "rappeler"
+            }
+          ]
+        },
+        {
+          "id": "S0024L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "me rappeler"
+          },
+          "components": [
+            {
+              "known": "myself (reflexive)",
+              "target": "me"
+            },
+            {
+              "known": "to recall/remember",
+              "target": "rappeler"
+            }
+          ]
+        },
+        {
+          "id": "S0024L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember easily",
+            "target": "me rappeler facilement"
+          },
+          "components": [
+            {
+              "known": "myself",
+              "target": "me"
+            },
+            {
+              "known": "to remember",
+              "target": "rappeler"
+            },
+            {
+              "known": "easily",
+              "target": "facilement"
+            }
+          ]
+        },
+        {
+          "id": "S0024L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easily",
+            "target": "facilement"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "seed_pair": {
+        "known": "Are you going to help me before I have to go?",
+        "target": "Tu vas m'aider avant que je doive partir ?"
+      },
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "are you going to",
+            "target": "tu vas"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "tu"
+            },
+            {
+              "known": "are going to/go",
+              "target": "vas"
+            }
+          ]
+        },
+        {
+          "id": "S0025L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "help me",
+            "target": "m'aider"
+          },
+          "components": [
+            {
+              "known": "me",
+              "target": "m'"
+            },
+            {
+              "known": "help/to help",
+              "target": "aider"
+            }
+          ]
+        },
+        {
+          "id": "S0025L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "are you going to help me",
+            "target": "tu vas m'aider"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "tu"
+            },
+            {
+              "known": "are going to",
+              "target": "vas"
+            },
+            {
+              "known": "me",
+              "target": "m'"
+            },
+            {
+              "known": "help",
+              "target": "aider"
+            }
+          ]
+        },
+        {
+          "id": "S0025L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "before I have to go",
+            "target": "avant que je doive partir"
+          },
+          "components": [
+            {
+              "known": "before",
+              "target": "avant que"
+            },
+            {
+              "known": "I",
+              "target": "je"
+            },
+            {
+              "known": "have to/must",
+              "target": "doive"
+            },
+            {
+              "known": "go/leave",
+              "target": "partir"
+            }
+          ]
+        },
+        {
+          "id": "S0025L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "leave/to leave",
+            "target": "partir"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": {
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "target": "J'aime avoir l'impression que je suis presque prêt à partir."
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I like",
+            "target": "J'aime"
+          },
+          "components": [
+            "je",
+            "aime"
+          ]
+        },
+        {
+          "id": "S0026L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "feeling as if",
+            "target": "avoir l'impression que"
+          },
+          "components": [
+            "avoir",
+            "l'impression",
+            "que"
+          ]
+        },
+        {
+          "id": "S0026L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm",
+            "target": "je suis"
+          },
+          "components": [
+            "je",
+            "suis"
+          ]
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "nearly",
+            "target": "presque"
+          }
+        },
+        {
+          "id": "S0026L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "nearly ready",
+            "target": "presque prêt"
+          },
+          "components": [
+            "presque",
+            "prêt"
+          ]
+        },
+        {
+          "id": "S0026L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "ready",
+            "target": "prêt"
+          }
+        },
+        {
+          "id": "S0026L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "ready to go",
+            "target": "prêt à partir"
+          },
+          "components": [
+            "prêt",
+            "à",
+            "partir"
+          ]
+        },
+        {
+          "id": "S0026L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to go",
+            "target": "à partir"
+          },
+          "components": [
+            "à",
+            "partir"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": {
+        "known": "I don't like taking too much time to answer.",
+        "target": "Je n'aime pas prendre trop de temps pour répondre."
+      },
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't like",
+            "target": "Je n'aime pas"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Je"
+            },
+            {
+              "known": "not",
+              "target": "n'"
+            },
+            {
+              "known": "like",
+              "target": "aime"
+            },
+            {
+              "known": "not",
+              "target": "pas"
+            }
+          ]
+        },
+        {
+          "id": "S0027L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't like taking",
+            "target": "Je n'aime pas prendre"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Je"
+            },
+            {
+              "known": "not",
+              "target": "n'"
+            },
+            {
+              "known": "like",
+              "target": "aime"
+            },
+            {
+              "known": "not",
+              "target": "pas"
+            },
+            {
+              "known": "taking/to take",
+              "target": "prendre"
+            }
+          ]
+        },
+        {
+          "id": "S0027L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "taking too much time",
+            "target": "prendre trop de temps"
+          },
+          "components": [
+            {
+              "known": "taking/to take",
+              "target": "prendre"
+            },
+            {
+              "known": "too much",
+              "target": "trop"
+            },
+            {
+              "known": "of",
+              "target": "de"
+            },
+            {
+              "known": "time",
+              "target": "temps"
+            }
+          ]
+        },
+        {
+          "id": "S0027L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "too much time",
+            "target": "trop de temps"
+          },
+          "components": [
+            {
+              "known": "too much",
+              "target": "trop"
+            },
+            {
+              "known": "of",
+              "target": "de"
+            },
+            {
+              "known": "time",
+              "target": "temps"
+            }
+          ]
+        },
+        {
+          "id": "S0027L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "too much time to answer",
+            "target": "trop de temps pour répondre"
+          },
+          "components": [
+            {
+              "known": "too much",
+              "target": "trop"
+            },
+            {
+              "known": "of",
+              "target": "de"
+            },
+            {
+              "known": "time",
+              "target": "temps"
+            },
+            {
+              "known": "to/in order to",
+              "target": "pour"
+            },
+            {
+              "known": "answer",
+              "target": "répondre"
+            }
+          ]
+        },
+        {
+          "id": "S0027L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "pour répondre"
+          },
+          "components": [
+            {
+              "known": "to/in order to",
+              "target": "pour"
+            },
+            {
+              "known": "answer",
+              "target": "répondre"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "It's useful to start talking as soon as you can.",
+        "target": "C'est utile de commencer à parler dès que tu peux."
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "It's useful",
+            "target": "C'est utile"
+          },
+          "components": [
+            "C'est",
+            "utile"
+          ]
+        },
+        {
+          "id": "S0028L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "useful",
+            "target": "utile"
+          }
+        },
+        {
+          "id": "S0028L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to start",
+            "target": "commencer"
+          }
+        },
+        {
+          "id": "S0028L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start",
+            "target": "de commencer"
+          },
+          "components": [
+            "de",
+            "commencer"
+          ]
+        },
+        {
+          "id": "S0028L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to talk",
+            "target": "parler"
+          }
+        },
+        {
+          "id": "S0028L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to talk",
+            "target": "à parler"
+          },
+          "components": [
+            "à",
+            "parler"
+          ]
+        },
+        {
+          "id": "S0028L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start talking",
+            "target": "de commencer à parler"
+          },
+          "components": [
+            "de",
+            "commencer",
+            "à",
+            "parler"
+          ]
+        },
+        {
+          "id": "S0028L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "dès que"
+          },
+          "components": [
+            "dès",
+            "que"
+          ]
+        },
+        {
+          "id": "S0028L09",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you can",
+            "target": "tu peux"
+          },
+          "components": [
+            "tu",
+            "peux"
+          ]
+        },
+        {
+          "id": "S0028L10",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as soon as you can",
+            "target": "dès que tu peux"
+          },
+          "components": [
+            "dès",
+            "que",
+            "tu",
+            "peux"
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "I'm looking forward to speaking better as soon as...",
+        "target": "J'ai hâte de parler mieux dès que..."
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm looking forward to",
+            "target": "J'ai hâte de"
+          },
+          "components": [
+            {
+              "known": "I have",
+              "target": "J'ai"
+            },
+            {
+              "known": "eagerness",
+              "target": "hâte"
+            },
+            {
+              "known": "to",
+              "target": "de"
+            }
+          ]
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speaking",
+            "target": "parler"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "better",
+            "target": "mieux"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "dès que"
+          },
+          "components": [
+            {
+              "known": "as soon",
+              "target": "dès"
+            },
+            {
+              "known": "as",
+              "target": "que"
+            }
+          ]
+        },
+        {
+          "id": "S0029L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "speaking better",
+            "target": "parler mieux"
+          },
+          "components": [
+            {
+              "known": "speaking",
+              "target": "parler"
+            },
+            {
+              "known": "better",
+              "target": "mieux"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "I wanted to ask you something yesterday.",
+        "target": "Je voulais te demander quelque chose hier."
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wanted",
+            "target": "Je voulais"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Je"
+            },
+            {
+              "known": "wanted",
+              "target": "voulais"
+            }
+          ]
+        },
+        {
+          "id": "S0030L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to ask you",
+            "target": "te demander"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "te"
+            },
+            {
+              "known": "to ask",
+              "target": "demander"
+            }
+          ]
+        },
+        {
+          "id": "S0030L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "quelque chose"
+          },
+          "components": [
+            {
+              "known": "some",
+              "target": "quelque"
+            },
+            {
+              "known": "thing",
+              "target": "chose"
+            }
+          ]
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yesterday",
+            "target": "hier"
+          }
+        },
+        {
+          "id": "S0030L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wanted to ask you",
+            "target": "Je voulais te demander"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Je"
+            },
+            {
+              "known": "wanted",
+              "target": "voulais"
+            },
+            {
+              "known": "you",
+              "target": "te"
+            },
+            {
+              "known": "to ask",
+              "target": "demander"
+            }
+          ]
+        },
+        {
+          "id": "S0030L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to ask you something",
+            "target": "te demander quelque chose"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "te"
+            },
+            {
+              "known": "to ask",
+              "target": "demander"
+            },
+            {
+              "known": "something",
+              "target": "quelque chose"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "7.0",
+  "target": "fra",
+  "known": "eng"
+}

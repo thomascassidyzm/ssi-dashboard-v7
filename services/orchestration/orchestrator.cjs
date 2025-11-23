@@ -5,7 +5,8 @@
  *
  * Responsibilities:
  * - Serve dashboard read-only APIs (courses, VFS files, metrics)
- * - Trigger phase servers in sequence (1 → 3 → 5 → 6 → 7 → 8)
+ * - Trigger phase servers in sequence (1 → 3 → 5 → 7 → 8)
+ * - Phase 6 (introductions) integrated into Phase 3 (< 1s overhead)
  * - Checkpoint management (manual/gated/full modes)
  * - Health monitoring of phase servers
  * - Course status tracking
@@ -19,7 +20,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
-const { execSync } = require('child_process');
+const { execSync, spawn } = require('child_process');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3456;
@@ -29,12 +30,12 @@ const SERVICE_NAME = process.env.SERVICE_NAME || 'Orchestrator';
 
 // Phase server URLs (auto-configured by start-automation.js)
 const PHASE_SERVERS = {
-  1: process.env.PHASE1_URL || 'http://localhost:3457',
-  3: process.env.PHASE3_URL || 'http://localhost:3458',
-  5: process.env.PHASE5_URL || 'http://localhost:3459',
-  6: process.env.PHASE6_URL || 'http://localhost:3460',
-  7: process.env.PHASE7_URL || 'http://localhost:3461',
-  8: process.env.PHASE8_URL || 'http://localhost:3462'
+  1: process.env.PHASE1_URL || 'http://localhost:3457',    // Translation (includes Phase 2 LUT)
+  3: process.env.PHASE3_URL || 'http://localhost:3458',    // LEGO Extraction (includes Phase 6 introductions)
+  5: process.env.PHASE5_URL || 'http://localhost:3459',    // Practice Baskets
+  5.5: process.env.PHASE5_5_URL || 'http://localhost:3460', // Grammar Validation
+  7: process.env.PHASE7_URL || 'http://localhost:3464',    // Manifest Compilation
+  8: process.env.PHASE8_URL || 'http://localhost:3465'     // Audio/TTS
 };
 
 // Validate config
@@ -57,6 +58,145 @@ app.use(bodyParser.json({ limit: '50mb' }));
 
 // Course state tracking (courseCode -> state)
 const courseStates = new Map();
+
+// Pipeline state tracking (linear flow: 1 → 3 → 5 → 7 → 8)
+// courseCode -> { phase1: {success, completedAt, stats}, phase3: {...}, phase5: {...}, phase7: {...}, phase8: {...} }
+const pipelineJobs = new Map();
+
+// Active course progress tracking (for real-time monitoring)
+// courseCode -> { currentPhase, overallStatus, phases: {...}, recentLogs: [] }
+const courseProgress = new Map();
+
+/**
+ * Initialize progress tracking for a course
+ */
+function initializeCourseProgress(courseCode, startPhase, totalSeeds) {
+  courseProgress.set(courseCode, {
+    courseCode,
+    currentPhase: startPhase,
+    overallStatus: 'running',
+    startTime: new Date().toISOString(),
+    phases: {
+      1: { status: 'pending', seedsTotal: totalSeeds },
+      3: { status: 'pending' },
+      5: { status: 'pending' },
+      7: { status: 'pending' },
+      8: { status: 'pending' }
+    },
+    recentLogs: []
+  });
+  return courseProgress.get(courseCode);
+}
+
+/**
+ * Update phase progress
+ */
+function updatePhaseProgress(courseCode, phase, updates) {
+  const progress = courseProgress.get(courseCode);
+  if (!progress) return;
+
+  if (!progress.phases[phase]) {
+    progress.phases[phase] = {};
+  }
+
+  Object.assign(progress.phases[phase], updates);
+
+  // Add log entry
+  if (updates.status) {
+    addProgressLog(courseCode, `Phase ${phase}: ${updates.status}`);
+  }
+}
+
+/**
+ * Add log entry to progress
+ */
+function addProgressLog(courseCode, message, level = 'info') {
+  const progress = courseProgress.get(courseCode);
+  if (!progress) return;
+
+  progress.recentLogs.unshift({
+    time: new Date().toISOString(),
+    level,
+    message
+  });
+
+  // Keep only last 50 logs
+  if (progress.recentLogs.length > 50) {
+    progress.recentLogs = progress.recentLogs.slice(0, 50);
+  }
+}
+
+/**
+ * Format duration in seconds to human-readable string
+ */
+function formatDuration(seconds) {
+  if (seconds < 60) return `${Math.round(seconds)}s`;
+  if (seconds < 3600) return `${Math.floor(seconds / 60)}m ${Math.round(seconds % 60)}s`;
+  const hours = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  return `${hours}h ${mins}m`;
+}
+
+/**
+ * Auto-publish course data to GitHub
+ * Commits and pushes course output files after each phase completion
+ * This allows the deployed dashboard to show live progress
+ */
+async function autoPublishCourseData(courseCode, phase, message) {
+  try {
+    console.log(`[Auto-Publish] Publishing ${courseCode} Phase ${phase} to GitHub...`);
+
+    const repoRoot = path.join(__dirname, '../..');
+    const courseRelativePath = `public/vfs/courses/${courseCode}/`;
+
+    // Check if there are changes specifically in the course directory
+    const status = execSync(`git status --porcelain ${courseRelativePath}`, {
+      cwd: repoRoot,
+      encoding: 'utf-8'
+    });
+
+    if (!status.trim()) {
+      console.log(`[Auto-Publish] No changes to publish for ${courseCode}`);
+      return { success: true, skipped: true };
+    }
+
+    // Regenerate manifest to include this course
+    console.log(`[Auto-Publish] Regenerating manifest to include ${courseCode}...`);
+    await regenerateCourseManifest();
+
+    // Stage course files AND manifest
+    execSync(`git add ${courseRelativePath} public/vfs/courses-manifest.json`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Create commit with formatted message
+    const commitMsg = message || `Phase ${phase}: Auto-publish ${courseCode} output`;
+    const fullCommitMsg = `${commitMsg}
+
+🤖 Auto-published via orchestrator
+
+Co-Authored-By: Claude <noreply@anthropic.com>`;
+
+    execSync(`git commit -m "${fullCommitMsg.replace(/"/g, '\\"')}"`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Push to GitHub
+    execSync('git push', {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    console.log(`[Auto-Publish] ✅ Published ${courseCode} to GitHub`);
+    return { success: true, published: true };
+  } catch (error) {
+    console.error(`[Auto-Publish] ⚠️  Failed to publish:`, error.message);
+    // Don't fail the phase if git push fails - just log it
+    return { success: false, error: error.message };
+  }
+}
 
 /**
  * GET /api/courses
@@ -508,6 +648,30 @@ async function runPhaseValidation(courseCode, phase) {
 }
 
 /**
+ * Regenerate course manifest after phase completion
+ * Updates courses-manifest.json with latest course state
+ */
+async function regenerateCourseManifest() {
+  try {
+    console.log(`\n📋 Regenerating course manifest...`);
+
+    const manifestGenerator = path.join(__dirname, '../../tools/generators/generate-course-manifest.js');
+
+    // Use dynamic import for ES module
+    const { execSync } = require('child_process');
+    execSync(`node "${manifestGenerator}"`, {
+      stdio: 'inherit'
+    });
+
+    console.log(`   ✅ Course manifest updated`);
+    return true;
+  } catch (error) {
+    console.error(`   ⚠️  Failed to regenerate manifest (non-fatal):`, error.message);
+    return false;
+  }
+}
+
+/**
  * Programmatically trigger a phase (used by auto-progression)
  * @param {string} courseCode - Course identifier
  * @param {number} phase - Phase number to trigger
@@ -606,6 +770,291 @@ app.get('/api/courses/:courseCode/status', async (req, res) => {
 });
 
 /**
+ * GET /api/courses/:courseCode/analyze
+ * Analyze course state and return intelligent recommendations
+ */
+app.get('/api/courses/:courseCode/analyze', async (req, res) => {
+  const { courseCode } = req.params;
+  const courseDir = path.join(VFS_ROOT, courseCode);
+
+  try {
+    // Check what phase outputs exist
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    const introsPath = path.join(courseDir, 'introductions.json');
+    const basketsPath = path.join(courseDir, 'lego_baskets.json');
+
+    const seedPairsExists = await fs.pathExists(seedPairsPath);
+    const legoPairsExists = await fs.pathExists(legoPairsPath);
+    const introsExists = await fs.pathExists(introsPath);
+    const basketsExists = await fs.pathExists(basketsPath);
+
+    // Count what we have
+    let seedCount = 0;
+    let legoCount = 0;
+    let basketCount = 0;
+    let missingLegoSeeds = [];
+
+    if (seedPairsExists) {
+      const seedData = await fs.readJSON(seedPairsPath);
+      seedCount = Object.keys(seedData.translations || {}).length;
+    }
+
+    if (legoPairsExists) {
+      const legoData = await fs.readJSON(legoPairsPath);
+      legoCount = (legoData.seeds || []).length;
+
+      // Find seeds that have translations but no LEGOs
+      if (seedPairsExists) {
+        const seedData = await fs.readJSON(seedPairsPath);
+        const allSeeds = Object.keys(seedData.translations || {});
+        const legoSeeds = (legoData.seeds || []).map(s => s.seed_id);
+        missingLegoSeeds = allSeeds.filter(s => !legoSeeds.includes(s));
+      }
+    }
+
+    if (basketsExists) {
+      const basketData = await fs.readJSON(basketsPath);
+      basketCount = Object.keys(basketData.baskets || {}).length;
+    }
+
+    // Check for Phase 5 missing baskets (ACCURATE)
+    // Compare lego_pairs.json (new:true LEGOs) against lego_baskets.json
+    // This is the ONLY accurate way - handles deletions, partial baskets, etc.
+    let missingBasketsCount = 0;
+    let missingBasketsSeeds = 0;
+
+    if (legoPairsExists && basketsExists) {
+      try {
+        const legoData = await fs.readJSON(legoPairsPath);
+        const basketData = await fs.readJSON(basketsPath);
+
+        // Step 1: Find all new:true LEGOs (first appearance, needs basket)
+        const newLegos = new Map(); // legoId → {seedId, known, target}
+        for (const seed of (legoData.seeds || [])) {
+          for (const lego of (seed.legos || [])) {
+            if (lego.new === true) {
+              newLegos.set(lego.id, { seedId: seed.seed_id });
+            }
+          }
+        }
+
+        // Step 2: Find which LEGOs have baskets in lego_baskets.json
+        const legosWithBaskets = new Set();
+        if (basketData.baskets) {
+          Object.keys(basketData.baskets).forEach(legoId => {
+            legosWithBaskets.add(legoId);
+          });
+        }
+
+        // Step 3: Count missing (new:true LEGOs NOT in lego_baskets.json)
+        const seedsAffected = new Set();
+        newLegos.forEach((legoInfo, legoId) => {
+          if (!legosWithBaskets.has(legoId)) {
+            missingBasketsCount++;
+            seedsAffected.add(legoInfo.seedId);
+          }
+        });
+
+        missingBasketsSeeds = seedsAffected.size;
+      } catch (error) {
+        console.error('[Orchestrator] Error detecting missing baskets:', error);
+        // Fail gracefully
+      }
+    }
+
+    // Generate intelligent recommendations
+    const recommendations = [];
+
+    if (!seedPairsExists) {
+      // No course data - suggest starting fresh
+      recommendations.push({
+        type: 'test',
+        title: '✨ Quick Test (10 seeds)',
+        description: 'Test the pipeline with 10 random seeds (~5 min)',
+        action: { startSeed: Math.floor(Math.random() * 659) + 1, endSeed: null, count: 10, force: false }
+      });
+      recommendations.push({
+        type: 'full',
+        title: '🚀 Full Course (668 seeds)',
+        description: 'Generate complete course (~2-3 hours)',
+        action: { startSeed: 1, endSeed: 668, force: false }
+      });
+    } else {
+      // Course exists - analyze what's missing
+
+      // Option 1: Quick test with 10 seeds
+      recommendations.push({
+        type: 'test',
+        title: '✨ Quick Test (10 seeds)',
+        description: 'Test pipeline changes with 10 random seeds',
+        action: { startSeed: Math.floor(Math.random() * 659) + 1, endSeed: null, count: 10, force: false }
+      });
+
+      // Option 2: Resume from where we left off
+      if (seedCount < 668) {
+        recommendations.push({
+          type: 'resume',
+          title: `📝 Resume from S${String(seedCount + 1).padStart(4, '0')}`,
+          description: `Continue generating (${668 - seedCount} seeds remaining)`,
+          action: { startSeed: seedCount + 1, endSeed: 668, force: false }
+        });
+      }
+
+      // Option 3: Regenerate specific phases (force overwrite)
+      if (legoPairsExists && legoCount > 0) {
+        recommendations.push({
+          type: 'regenerate',
+          title: `🔄 Regenerate LEGOs (S0001-S${String(legoCount).padStart(4, '0')})`,
+          description: 'Force re-extract LEGOs (use if quality is poor)',
+          action: { startSeed: 1, endSeed: legoCount, force: true }
+        });
+      }
+
+      // Option 4: Fill in missing LEGOs
+      if (missingLegoSeeds.length > 0 && missingLegoSeeds.length < seedCount) {
+        recommendations.push({
+          type: 'fill',
+          title: `➡️  Complete Phase 3 (${missingLegoSeeds.length} seeds)`,
+          description: `Generate LEGOs for seeds missing Phase 3`,
+          action: { startSeed: 1, endSeed: seedCount, force: false }
+        });
+      }
+
+      // Option 4.5: Resume Phase 5 missing baskets (intelligent resume)
+      if (missingBasketsSeeds > 0 && legoPairsExists) {
+        recommendations.push({
+          type: 'resume-baskets',
+          phase: 5,
+          title: `📦 Resume Missing Baskets (${missingBasketsSeeds} seeds)`,
+          description: `Generate practice phrases for seeds missing Phase 5`,
+          action: { startSeed: 1, endSeed: 668, phases: ['phase5'], force: false }
+        });
+      }
+
+      // Option 5: Extend to full course
+      if (seedCount > 0 && seedCount < 668) {
+        recommendations.push({
+          type: 'extend',
+          title: '🚀 Extend to Full Course (668 seeds)',
+          description: `Keeps existing ${seedCount} seeds, adds ${668 - seedCount} more`,
+          action: { startSeed: 1, endSeed: 668, force: false }
+        });
+      }
+
+      // Option 6: Complete regeneration
+      recommendations.push({
+        type: 'regenerate-all',
+        title: '🔄 Regenerate Everything',
+        description: 'Force regenerate all phases (nuclear option)',
+        action: { startSeed: 1, endSeed: 668, force: true }
+      });
+    }
+
+    res.json({
+      courseCode,
+      exists: seedPairsExists,
+      seed_pairs: { exists: seedPairsExists, count: seedCount },
+      lego_pairs: { exists: legoPairsExists, count: legoCount, missing: missingLegoSeeds },
+      introductions: { exists: introsExists },
+      baskets: {
+        exists: basketsExists,
+        count: basketCount,
+        missing_seeds: missingBasketsSeeds,
+        estimated_missing_legos: missingBasketsCount
+      },
+      recommendations
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error analyzing ${courseCode}:`, error);
+    res.status(500).json({ error: 'Failed to analyze course', details: error.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/progress
+ * Real-time progress tracking for dashboard polling
+ */
+app.get('/api/courses/:courseCode/progress', async (req, res) => {
+  const { courseCode } = req.params;
+  const progress = courseProgress.get(courseCode);
+
+  if (!progress) {
+    // Check if course exists but has no active progress
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const courseExists = await fs.pathExists(courseDir);
+
+    if (courseExists) {
+      // Course exists but not currently running
+      return res.json({
+        courseCode,
+        overallStatus: 'idle',
+        message: 'Course exists but no active pipeline running'
+      });
+    } else {
+      return res.status(404).json({
+        error: 'Course not found',
+        courseCode
+      });
+    }
+  }
+
+  res.json(progress);
+});
+
+/**
+ * POST /api/courses/:courseCode/progress
+ * Phase servers report progress updates
+ */
+app.post('/api/courses/:courseCode/progress', async (req, res) => {
+  const { courseCode } = req.params;
+  const { phase, updates, logMessage } = req.body;
+
+  if (!phase) {
+    return res.status(400).json({ error: 'phase number required' });
+  }
+
+  // Initialize progress if not exists
+  if (!courseProgress.has(courseCode)) {
+    initializeCourseProgress(courseCode, phase, updates.seedsTotal || 668);
+  }
+
+  // Update phase progress
+  updatePhaseProgress(courseCode, phase, updates);
+
+  // Add log if provided
+  if (logMessage) {
+    addProgressLog(courseCode, logMessage, updates.level || 'info');
+  }
+
+  // Calculate ETA if progress info provided
+  // Phase 5 uses LEGOs, other phases use seeds
+  if (updates.startTime) {
+    let completed, total;
+    if (phase === 5 && updates.legosCompleted && updates.legosTotal) {
+      // Phase 5: Track LEGOs
+      completed = updates.legosCompleted;
+      total = updates.legosTotal;
+    } else if (updates.seedsCompleted && updates.seedsTotal) {
+      // Other phases: Track seeds
+      completed = updates.seedsCompleted;
+      total = updates.seedsTotal;
+    }
+
+    if (completed && total) {
+      const elapsed = Date.now() - new Date(updates.startTime).getTime();
+      const rate = completed / (elapsed / 1000); // items per second
+      const remaining = total - completed;
+      const etaSeconds = remaining / rate;
+      updates.eta = new Date(Date.now() + etaSeconds * 1000).toISOString();
+      updates.etaHuman = formatDuration(etaSeconds);
+    }
+  }
+
+  res.json({ success: true, progress: courseProgress.get(courseCode) });
+});
+
+/**
  * POST /api/courses/:courseCode/start-phase
  * Trigger the next phase for a course
  */
@@ -623,10 +1072,10 @@ app.post('/api/courses/:courseCode/start-phase', async (req, res) => {
     // Validate prerequisite phases are complete
     const prerequisites = {
       1: [],           // Phase 1 has no prerequisites
-      3: [1],          // Phase 3 requires Phase 1 (seed_pairs.json)
-      5: [1, 3],       // Phase 5 requires Phases 1 & 3 (lego_pairs.json)
-      6: [1, 3, 5],    // Phase 6 requires Phases 1, 3 & 5
-      8: [1, 3, 5, 6]  // Phase 8 requires all previous phases
+      3: [1],          // Phase 3 requires Phase 1 (seed_pairs.json) - includes Phase 6 introductions
+      5: [1, 3],       // Phase 5 requires Phases 1 & 3 (lego_pairs.json + introductions.json)
+      7: [1, 3, 5],    // Phase 7 requires Phases 1, 3 & 5 (manifest compilation)
+      8: [1, 3, 5, 7]  // Phase 8 requires all previous phases (TTS audio generation)
     };
 
     const requiredPhases = prerequisites[phase] || [];
@@ -711,19 +1160,30 @@ app.post('/api/courses/:courseCode/start-phase', async (req, res) => {
 /**
  * POST /phase-complete
  * Callback from phase servers when they complete
+ * Triggers next phase in linear sequence: 1 → 3 → 5 → 7 → 8
  */
 app.post('/phase-complete', async (req, res) => {
-  const { phase, courseCode, status } = req.body;
+  const { phase, courseCode, status, success, stats } = req.body;
 
-  console.log(`\n✅ Phase ${phase} ${status} for ${courseCode}`);
+  console.log(`\n✅ Phase ${phase} ${status || (success ? 'complete' : 'failed')} for ${courseCode}`);
 
   const state = courseStates.get(courseCode);
   if (!state) {
     return res.json({ acknowledged: true });
   }
 
+  // Update pipeline state for parallel coordination
+  let pipelineJob = pipelineJobs.get(courseCode) || {};
+  const phaseKey = `phase${phase}`;
+  pipelineJob[phaseKey] = {
+    success: success !== undefined ? success : status === 'complete',
+    completedAt: new Date().toISOString(),
+    stats: stats || {}
+  };
+  pipelineJobs.set(courseCode, pipelineJob);
+
   // Update state
-  if (status === 'complete') {
+  if (status === 'complete' || success) {
     if (!state.phasesCompleted.includes(phase)) {
       state.phasesCompleted.push(phase);
     }
@@ -737,43 +1197,67 @@ app.post('/phase-complete', async (req, res) => {
       state.status = 'validation_failed';
       state.currentPhase = null;
       console.log(`   ❌ Validation failed - manual intervention required`);
-      return;
+      return res.json({ acknowledged: true });
     }
 
-    // Validation PASSED - now check checkpoint mode for progression
+    // Validation PASSED - now handle orchestration based on phase
     if (CHECKPOINT_MODE === 'manual') {
       state.status = 'waiting_for_approval';
       state.waitingForApproval = true;
       console.log(`   ⏸️  Waiting for manual approval (checkpoint mode: manual)`);
-    } else if (CHECKPOINT_MODE === 'gated') {
-      // Auto-trigger next phase
-      const nextPhase = getNextPhase(phase);
-      if (nextPhase) {
-        console.log(`   ✓ Validation passed, auto-triggering Phase ${nextPhase}`);
-        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
-      } else {
-        state.status = 'complete';
-        console.log(`   🎉 All phases complete!`);
-      }
     } else {
-      // Full automation - trigger next phase
-      const nextPhase = getNextPhase(phase);
-      if (nextPhase) {
-        console.log(`   → Auto-triggering Phase ${nextPhase} (checkpoint mode: full)`);
-        setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
-      } else {
-        state.status = 'complete';
-        console.log(`   🎉 All phases complete!`);
-      }
+      // Auto-trigger next phase(s) based on orchestration logic
+      await handlePhaseProgression(courseCode, phase, state, pipelineJob);
     }
   } else {
-    state.status = status;
+    state.status = status || 'error';
   }
 
   state.lastUpdated = new Date().toISOString();
 
   res.json({ acknowledged: true });
 });
+
+/**
+ * Handle phase progression (linear pipeline)
+ * Phase 1 → Phase 3 (includes Phase 6) → Phase 5 → Phase 7 → Phase 8
+ */
+async function handlePhaseProgression(courseCode, completedPhase, state, pipelineJob) {
+  // Regenerate course manifest to reflect the newly completed phase
+  await regenerateCourseManifest();
+
+  if (completedPhase === 'phase1' || completedPhase === 1) {
+    // Phase 1 → Phase 3
+    console.log(`   → Phase 1 complete, triggering Phase 3`);
+    setTimeout(() => triggerPhase(courseCode, 3), 2000);
+  } else if (completedPhase === 'phase3' || completedPhase === 3) {
+    // Phase 3 (includes Phase 6 introductions) → Phase 5
+    console.log(`   → Phase 3 complete (introductions generated), triggering Phase 5`);
+    setTimeout(() => triggerPhase(courseCode, 5), 2000);
+  } else if (completedPhase === 'phase5' || completedPhase === 5) {
+    // Phase 5 → Phase 7
+    console.log(`   → Phase 5 complete, triggering Phase 7`);
+    setTimeout(() => triggerPhase(courseCode, 7), 2000);
+  } else if (completedPhase === 'phase7' || completedPhase === 7) {
+    // Phase 7 → Phase 8
+    console.log(`   → Phase 7 complete, triggering Phase 8`);
+    setTimeout(() => triggerPhase(courseCode, 8), 2000);
+  } else if (completedPhase === 'phase8' || completedPhase === 8) {
+    // Phase 8 → All complete!
+    state.status = 'complete';
+    console.log(`   🎉 All phases complete!`);
+  } else {
+    // Unknown phase - use linear fallback
+    const nextPhase = getNextPhase(completedPhase);
+    if (nextPhase) {
+      console.log(`   → Auto-triggering Phase ${nextPhase}`);
+      setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
+    } else {
+      state.status = 'complete';
+      console.log(`   🎉 All phases complete!`);
+    }
+  }
+}
 
 /**
  * POST /api/courses/generate
@@ -819,8 +1303,10 @@ app.post('/api/courses/generate', async (req, res) => {
       phase = 3;
     } else if (phaseSelection === 'phase5') {
       phase = 5;
-    } else if (phaseSelection === 'phase6') {
-      phase = 6;
+    } else if (phaseSelection === 'phase7') {
+      phase = 7;
+    } else if (phaseSelection === 'phase8') {
+      phase = 8;
     } else if (phaseSelection === 'all') {
       // Start from Phase 1
       phase = 1;
@@ -835,6 +1321,11 @@ app.post('/api/courses/generate', async (req, res) => {
     }
 
     console.log(`   → Delegating to Phase ${phase} server: ${phaseServer}`);
+
+    // Initialize progress tracking
+    const progress = initializeCourseProgress(courseCode, phase, totalSeeds);
+    updatePhaseProgress(courseCode, phase, { status: 'running', startTime: new Date().toISOString() });
+    addProgressLog(courseCode, `Starting Phase ${phase} for ${totalSeeds} seeds`);
 
     const response = await axios.post(`${phaseServer}/start`, {
       courseCode,
@@ -949,6 +1440,7 @@ app.get('/api/languages', (req, res) => {
     { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
     { code: 'bul', name: 'Bulgarian', native: 'Български' },
     { code: 'cat', name: 'Catalan', native: 'Català' },
+    { code: 'cmn', name: 'Chinese (Mandarin)', native: '中文 (普通话)' },
     { code: 'zho', name: 'Chinese', native: '中文' },
     { code: 'cor', name: 'Cornish', native: 'Kernewek' },
     { code: 'ces', name: 'Czech', native: 'Čeština' },
@@ -999,6 +1491,1071 @@ app.get('/api/languages', (req, res) => {
   languages.sort((a, b) => a.name.localeCompare(b.name));
 
   res.json(languages);
+});
+
+/**
+ * GET /api/canonical-seeds
+ * Serve canonical seeds to agents via ngrok
+ * Query params: ?limit=N&start=M (defaults: limit=668, start=1)
+ */
+app.get('/api/canonical-seeds', async (req, res) => {
+  try {
+    const canonicalPath = path.join(__dirname, '../../public/vfs/canonical/canonical_seeds.json');
+    const seedsArray = await fs.readJSON(canonicalPath);
+
+    const limit = parseInt(req.query.limit) || 668;
+    const start = parseInt(req.query.start) || 1;
+
+    // Filter seeds by range (array is 0-indexed, but seed_id is 1-indexed)
+    const startIdx = start - 1;
+    const endIdx = Math.min(startIdx + limit, 668);
+    const filteredSeeds = seedsArray.slice(startIdx, endIdx);
+
+    res.json({
+      total_available: 668,
+      start,
+      limit,
+      count: filteredSeeds.length,
+      seeds: filteredSeeds
+    });
+  } catch (error) {
+    console.error('[Orchestrator] Error serving canonical seeds:', error);
+    res.status(500).json({ error: 'Failed to load canonical seeds', details: error.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/phase-outputs/:phase/:file
+ * Retrieve phase output files from VFS
+ * Example: GET /api/courses/hun_for_eng/phase-outputs/1/seed_pairs.json
+ * Returns the contents of {VFS_ROOT}/{courseCode}/{file}
+ */
+app.get('/api/courses/:courseCode/phase-outputs/:phase/:file', async (req, res) => {
+  const { courseCode, phase, file } = req.params;
+
+  console.log(`[Orchestrator] Fetching phase ${phase} output: ${file} for ${courseCode}`);
+
+  try {
+    // Construct file path: {VFS_ROOT}/{courseCode}/{file}
+    const filePath = path.join(VFS_ROOT, courseCode, file);
+
+    // Check if file exists
+    if (!await fs.pathExists(filePath)) {
+      console.log(`[Orchestrator] File not found: ${filePath}`);
+      return res.status(404).json({
+        error: 'File not found',
+        courseCode,
+        phase,
+        file,
+        path: filePath
+      });
+    }
+
+    // Read and return the JSON file
+    const data = await fs.readJson(filePath);
+
+    console.log(`[Orchestrator] Successfully served ${file} for ${courseCode}`);
+
+    res.json(data);
+  } catch (error) {
+    console.error(`[Orchestrator] Error reading phase output file:`, error);
+
+    // Handle JSON parse errors specifically
+    if (error.name === 'SyntaxError' || error.message.includes('JSON')) {
+      return res.status(500).json({
+        error: 'Invalid JSON file',
+        courseCode,
+        phase,
+        file,
+        details: error.message
+      });
+    }
+
+    // Handle file read errors
+    res.status(500).json({
+      error: 'File read failed',
+      courseCode,
+      phase,
+      file,
+      details: error.message
+    });
+  }
+});
+
+/**
+ * PUT /api/courses/:courseCode/phase-outputs/:phase/:file
+ * Save/update phase output files in VFS
+ * Example: PUT /api/courses/hun_for_eng/phase-outputs/3/introductions.json
+ * Writes to {VFS_ROOT}/{courseCode}/{file}
+ */
+app.put('/api/courses/:courseCode/phase-outputs/:phase/:file', async (req, res) => {
+  const { courseCode, phase, file } = req.params;
+  const data = req.body;
+
+  console.log(`[Orchestrator] Saving phase ${phase} output: ${file} for ${courseCode}`);
+
+  try {
+    // Validate course exists
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    if (!await fs.pathExists(courseDir)) {
+      console.log(`[Orchestrator] Course directory not found: ${courseDir}`);
+      return res.status(404).json({
+        error: 'Course not found',
+        courseCode
+      });
+    }
+
+    // Construct file path: {VFS_ROOT}/{courseCode}/{file}
+    const filePath = path.join(VFS_ROOT, courseCode, file);
+
+    // Create backup if file exists
+    if (await fs.pathExists(filePath)) {
+      const backupPath = `${filePath}.backup-${Date.now()}`;
+      await fs.copy(filePath, backupPath);
+      console.log(`[Orchestrator] Created backup: ${backupPath}`);
+    }
+
+    // Write the data to file
+    await fs.writeJson(filePath, data, { spaces: 2 });
+
+    console.log(`[Orchestrator] Successfully saved ${file} for ${courseCode}`);
+
+    res.json({
+      success: true,
+      courseCode,
+      phase,
+      file,
+      path: filePath,
+      message: 'Phase output saved successfully'
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error saving phase output file:`, error);
+
+    res.status(500).json({
+      error: 'File save failed',
+      courseCode,
+      phase,
+      file,
+      details: error.message
+    });
+  }
+});
+
+/**
+ * GET /api/phase-intelligence/:phase
+ * Serve phase intelligence docs to agents via ngrok
+ * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
+ */
+app.get('/api/phase-intelligence/:phase', async (req, res) => {
+  try {
+    let { phase } = req.params;
+
+    // Normalize phase number (handle "phase1" or "1")
+    phase = phase.replace(/^phase/, '');
+
+    // Map phase numbers to intelligence files
+    const phaseFiles = {
+      '1': 'phase_1_seed_pairs.md',
+      '3': 'phase_3_lego_pairs.md',
+      '5': 'phase_5_lego_baskets.md',
+      '5.5': 'phase_5.5_grammar_review.md',
+      '6': 'phase_6_introductions.md',
+      '7': 'phase_7_compilation.md',
+      '8': 'phase_8_audio_generation.md'
+    };
+
+    const filename = phaseFiles[phase];
+    if (!filename) {
+      return res.status(404).json({ error: `No intelligence found for phase ${phase}` });
+    }
+
+    const intelligencePath = path.join(__dirname, '../../public/docs/phase_intelligence', filename);
+    const content = await fs.readFile(intelligencePath, 'utf8');
+
+    res.json({
+      phase,
+      filename,
+      content,
+      format: 'markdown'
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error serving phase intelligence:`, error);
+    res.status(500).json({ error: 'Failed to load phase intelligence', details: error.message });
+  }
+});
+
+/**
+ * POST /api/regenerate-manifest
+ * Trigger manual manifest regeneration (local dev only)
+ * Scans public/vfs/courses/ and updates courses-manifest.json
+ * Returns comparison showing what changed
+ */
+app.post('/api/regenerate-manifest', async (req, res) => {
+  try {
+    console.log('[Orchestrator] 📋 Manual manifest regeneration requested');
+
+    // Load old manifest first
+    const manifestPath = path.join(__dirname, '../../public/vfs/courses-manifest.json');
+    let oldManifest = null;
+    try {
+      oldManifest = await fs.readJson(manifestPath);
+    } catch (err) {
+      console.log('[Orchestrator] No existing manifest found');
+    }
+
+    // Regenerate manifest
+    await regenerateCourseManifest();
+
+    // Load new manifest
+    const newManifest = await fs.readJson(manifestPath);
+
+    // Compare old vs new
+    const comparison = {
+      added: [],
+      updated: [],
+      removed: []
+    };
+
+    if (oldManifest) {
+      const oldCodes = new Set(oldManifest.courses.map(c => c.course_code));
+      const newCodes = new Set(newManifest.courses.map(c => c.course_code));
+
+      // Find added courses
+      for (const course of newManifest.courses) {
+        if (!oldCodes.has(course.course_code)) {
+          comparison.added.push(course.course_code);
+        }
+      }
+
+      // Find removed courses
+      for (const course of oldManifest.courses) {
+        if (!newCodes.has(course.course_code)) {
+          comparison.removed.push(course.course_code);
+        }
+      }
+
+      // Find updated courses (phase changed)
+      for (const newCourse of newManifest.courses) {
+        const oldCourse = oldManifest.courses.find(c => c.course_code === newCourse.course_code);
+        if (oldCourse && oldCourse.phase !== newCourse.phase) {
+          comparison.updated.push({
+            course_code: newCourse.course_code,
+            old_phase: oldCourse.phase,
+            new_phase: newCourse.phase
+          });
+        }
+      }
+    }
+
+    res.json({
+      success: true,
+      message: 'Manifest regenerated successfully. Remember to commit and push changes to GitHub.',
+      timestamp: new Date().toISOString(),
+      comparison,
+      total_courses: newManifest.courses.length
+    });
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Failed to regenerate manifest:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to regenerate manifest'
+    });
+  }
+});
+
+/**
+ * POST /api/push-to-github
+ * Manual git push for course data (like Regenerate Manifest button)
+ */
+app.post('/api/push-to-github', async (req, res) => {
+  try {
+    const { courseCode, message } = req.body;
+
+    if (!courseCode) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required field: courseCode'
+      });
+    }
+
+    console.log(`[Orchestrator] 📤 Manual GitHub push requested for ${courseCode}`);
+
+    // Use the same auto-publish function that phases use
+    const result = await autoPublishCourseData(
+      courseCode,
+      'manual',
+      message || `Manual update: ${courseCode} course data`
+    );
+
+    if (result.skipped) {
+      return res.json({
+        success: true,
+        skipped: true,
+        message: 'No changes to push'
+      });
+    }
+
+    if (result.success) {
+      res.json({
+        success: true,
+        message: '✅ Course data pushed to GitHub! Vercel will deploy automatically.',
+        timestamp: new Date().toISOString()
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        error: result.error,
+        message: 'Failed to push to GitHub'
+      });
+    }
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Failed to push to GitHub:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to push to GitHub'
+    });
+  }
+});
+
+/**
+ * POST /api/push-all-courses
+ * Push all course data to GitHub (used from Course Library page)
+ */
+app.post('/api/push-all-courses', async (req, res) => {
+  try {
+    console.log('[Orchestrator] 📤 Manual GitHub push requested for ALL courses');
+
+    const repoRoot = path.join(__dirname, '../..');
+    const coursesPath = 'public/vfs/courses/';
+
+    // Check if there are changes in courses directory
+    const status = execSync(`git status --porcelain ${coursesPath}`, {
+      cwd: repoRoot,
+      encoding: 'utf-8'
+    });
+
+    if (!status.trim()) {
+      return res.json({
+        success: true,
+        skipped: true,
+        message: 'No changes to push'
+      });
+    }
+
+    // Stage all course files
+    execSync(`git add ${coursesPath}`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Create commit
+    const commitMsg = `Update course data
+
+🤖 Auto-published via orchestrator
+
+Co-Authored-By: Claude <noreply@anthropic.com>`;
+
+    execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    // Push to GitHub
+    execSync('git push', {
+      cwd: repoRoot,
+      stdio: 'inherit'
+    });
+
+    console.log('[Auto-Publish] ✅ All course data pushed to GitHub');
+
+    res.json({
+      success: true,
+      message: '✅ All course data pushed to GitHub! Vercel will deploy automatically.',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Failed to push to GitHub:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to push to GitHub'
+    });
+  }
+});
+
+/**
+ * POST /api/phase8/start
+ * Proxy to Phase 8 audio server (port 3465)
+ * Allows remote access through ngrok tunnel
+ */
+app.post('/api/phase8/start', async (req, res) => {
+  try {
+    const { courseCode, options = {} } = req.body;
+
+    if (!courseCode) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required field: courseCode'
+      });
+    }
+
+    console.log(`[Orchestrator] 🎵 Proxying Phase 8 audio generation request for ${courseCode}`);
+
+    const phase8Url = PHASE_SERVERS[8]; // http://localhost:3465
+
+    const response = await axios.post(`${phase8Url}/start`, {
+      courseCode,
+      options
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Phase 8 proxy error:', error.message);
+
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({
+        success: false,
+        error: 'Phase 8 server is not running',
+        message: 'Please start the Phase 8 audio server (port 3465)'
+      });
+    }
+
+    res.status(error.response?.status || 500).json({
+      success: false,
+      error: error.message,
+      message: 'Failed to start Phase 8 audio generation'
+    });
+  }
+});
+
+/**
+ * Run Phase 1 Validation: LUT Collision Check
+ * Checks if same KNOWN phrase maps to multiple TARGET translations
+ * This is inline validation, not a separate phase
+ */
+async function runPhase1ValidationCheck(seedPairsPath) {
+  const validationScript = path.join(__dirname, '../../scripts/phase2_collision_check.cjs');
+
+  return new Promise((resolve) => {
+    const child = spawn('node', [validationScript, seedPairsPath], {
+      stdio: 'pipe' // Capture output
+    });
+
+    let output = '';
+    child.stdout.on('data', (data) => {
+      const text = data.toString();
+      output += text;
+      console.log(`[Phase 1 Validation] ${text.trim()}`);
+    });
+
+    child.stderr.on('data', (data) => {
+      console.error(`[Phase 1 Validation] ${data.toString().trim()}`);
+    });
+
+    child.on('close', (code) => {
+      if (code === 0) {
+        console.log(`[Orchestrator] ✅ Phase 1 Validation: No FD violations detected`);
+        resolve({ passed: true, violations: 0 });
+      } else {
+        console.warn(`[Orchestrator] ⚠️  Phase 1 Validation: Found FD violations`);
+        resolve({ passed: false, violations: 'see logs' });
+      }
+    });
+
+    child.on('error', (err) => {
+      console.error(`[Orchestrator] ⚠️  Phase 1 validation check failed:`, err.message);
+      resolve({ passed: false, error: err.message });
+    });
+  });
+}
+
+/**
+ * POST /api/phase1/:courseCode/submit
+ * Accept completed seed_pairs.json from agents via ngrok
+ */
+app.post('/api/phase1/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const seedPairs = req.body;
+
+    // Validate basic structure
+    if (!seedPairs.course || !seedPairs.translations) {
+      return res.status(400).json({
+        error: 'Invalid seed_pairs format',
+        required: ['course', 'translations']
+      });
+    }
+
+    // Write to VFS
+    const outputPath = path.join(VFS_ROOT, courseCode, 'seed_pairs.json');
+    await fs.ensureDir(path.dirname(outputPath));
+    await fs.writeJSON(outputPath, seedPairs, { spaces: 2 });
+
+    const seedCount = Object.keys(seedPairs.translations).length;
+
+    console.log(`[Orchestrator] ✅ Received Phase 1 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    Seeds: ${seedCount}`);
+    console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    // Update progress tracking
+    updatePhaseProgress(courseCode, 1, {
+      status: 'validating',
+      seedsComplete: seedCount,
+      seedsTotal: seedCount
+    });
+    addProgressLog(courseCode, `Phase 1: Received ${seedCount} translations`);
+
+    // Run inline validation (LUT - Learner Uncertainty Test)
+    console.log(`[Orchestrator] 🔍 Running LUT collision check...`);
+    addProgressLog(courseCode, 'Running LUT collision check...');
+    const validationResult = await runPhase1ValidationCheck(outputPath);
+
+    // Mark Phase 1 as complete
+    updatePhaseProgress(courseCode, 1, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      validation: validationResult
+    });
+    addProgressLog(courseCode, `Phase 1: Complete ${validationResult.passed ? '✅' : '⚠️'}`, validationResult.passed ? 'info' : 'warning');
+
+    // Update current phase to next
+    const progress = courseProgress.get(courseCode);
+    if (progress) {
+      progress.currentPhase = 3;
+    }
+
+    // Auto-publish to GitHub for live dashboard visibility
+    autoPublishCourseData(
+      courseCode,
+      1,
+      `Phase 1: ${seedCount} pedagogical translations`
+    ).catch(err => console.error('[Phase 1] Auto-publish failed:', err));
+
+    res.json({
+      success: true,
+      message: `Phase 1 submission received for ${courseCode}`,
+      seedCount,
+      savedTo: outputPath,
+      validation: validationResult
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 1 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 1 submission', details: error.message });
+  }
+});
+
+/**
+ * POST /api/phase3/:courseCode/submit
+ * Accept completed lego_pairs.json and introductions.json from agents via ngrok
+ */
+app.post('/api/phase3/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const { lego_pairs, introductions } = req.body;
+
+    // Validate both objects exist
+    if (!lego_pairs || !introductions) {
+      return res.status(400).json({
+        error: 'Invalid Phase 3 submission format',
+        required: ['lego_pairs', 'introductions'],
+        received: {
+          has_lego_pairs: !!lego_pairs,
+          has_introductions: !!introductions
+        }
+      });
+    }
+
+    // Validate lego_pairs structure (must have course and seeds array)
+    if (!lego_pairs.course || !Array.isArray(lego_pairs.seeds)) {
+      return res.status(400).json({
+        error: 'Invalid lego_pairs structure',
+        required: ['course', 'seeds (array)'],
+        received: {
+          has_course: !!lego_pairs.course,
+          has_seeds: Array.isArray(lego_pairs.seeds)
+        }
+      });
+    }
+
+    // Validate introductions structure (must have version/course and presentations object)
+    if (!introductions.version || !introductions.presentations || typeof introductions.presentations !== 'object') {
+      return res.status(400).json({
+        error: 'Invalid introductions structure',
+        required: ['version', 'presentations (object)'],
+        received: {
+          has_version: !!introductions.version,
+          has_presentations: !!introductions.presentations
+        }
+      });
+    }
+
+    // Validate component format (must be array of objects with known/target, not array of strings)
+    const invalidComponents = [];
+    lego_pairs.seeds.forEach(seed => {
+      seed.legos?.forEach(lego => {
+        if (lego.components && Array.isArray(lego.components) && lego.components.length > 0) {
+          const firstComponent = lego.components[0];
+          // Check if it's a string (invalid) instead of object with known/target (valid)
+          if (typeof firstComponent === 'string') {
+            invalidComponents.push({
+              seed_id: seed.seed_id,
+              lego_id: lego.id,
+              invalid_format: lego.components
+            });
+          } else if (typeof firstComponent === 'object' && (!firstComponent.hasOwnProperty('known') || !firstComponent.hasOwnProperty('target'))) {
+            invalidComponents.push({
+              seed_id: seed.seed_id,
+              lego_id: lego.id,
+              invalid_format: 'Object missing known/target properties',
+              received: firstComponent
+            });
+          }
+        }
+      });
+    });
+
+    if (invalidComponents.length > 0) {
+      return res.status(400).json({
+        error: 'Invalid component format detected',
+        message: 'Components must be array of objects with {known, target} properties, not array of strings',
+        invalid_legos: invalidComponents,
+        example_correct: [
+          { known: "I", target: "je" },
+          { known: "like", target: "aime" }
+        ],
+        example_incorrect: ["je", "aime"]
+      });
+    }
+
+    // Ensure course directory exists
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    await fs.ensureDir(courseDir);
+
+    // Save lego_pairs.json with merge support
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    let finalLegoPairs = lego_pairs;
+
+    if (await fs.pathExists(legoPairsPath)) {
+      console.log(`[Orchestrator] 📦 Merging with existing lego_pairs.json`);
+      const existingLegoPairs = await fs.readJSON(legoPairsPath);
+
+      // Merge seeds arrays (dedupe by seed_id, new data overwrites)
+      const seedMap = new Map();
+
+      // Add existing seeds first
+      if (existingLegoPairs.seeds) {
+        existingLegoPairs.seeds.forEach(seed => {
+          seedMap.set(seed.seed_id, seed);
+        });
+      }
+
+      // Overwrite with new seeds
+      if (lego_pairs.seeds) {
+        lego_pairs.seeds.forEach(seed => {
+          seedMap.set(seed.seed_id, seed);
+        });
+      }
+
+      // Sort by seed_id (S0001, S0002, ...)
+      const sortedSeeds = Array.from(seedMap.values()).sort((a, b) => {
+        const numA = parseInt(a.seed_id.substring(1));
+        const numB = parseInt(b.seed_id.substring(1));
+        return numA - numB;
+      });
+
+      finalLegoPairs = {
+        ...existingLegoPairs,
+        ...lego_pairs,
+        seeds: sortedSeeds
+      };
+
+      const existingCount = existingLegoPairs.seeds?.length || 0;
+      const newCount = lego_pairs.seeds?.length || 0;
+      const mergedCount = finalLegoPairs.seeds.length;
+      console.log(`[Orchestrator]    Existing: ${existingCount} seeds`);
+      console.log(`[Orchestrator]    New: ${newCount} seeds`);
+      console.log(`[Orchestrator]    Merged total: ${mergedCount} seeds (sorted)`);
+    }
+
+    await fs.writeJSON(legoPairsPath, finalLegoPairs, { spaces: 2 });
+
+    // Save introductions.json with merge support
+    const introductionsPath = path.join(courseDir, 'introductions.json');
+    let finalIntroductions = introductions;
+
+    if (await fs.pathExists(introductionsPath)) {
+      console.log(`[Orchestrator] 📦 Merging with existing introductions.json`);
+      const existingIntroductions = await fs.readJSON(introductionsPath);
+
+      // Merge presentations objects (new overwrites existing)
+      const mergedPresentations = {
+        ...existingIntroductions.presentations,
+        ...introductions.presentations
+      };
+
+      // Sort by key (S0001L01, S0001L02, ...)
+      const sortedPresentations = {};
+      const keys = Object.keys(mergedPresentations).sort((a, b) => {
+        const matchA = a.match(/S(\d+)L(\d+)/);
+        const matchB = b.match(/S(\d+)L(\d+)/);
+        if (matchA && matchB) {
+          const seedDiff = parseInt(matchA[1]) - parseInt(matchB[1]);
+          if (seedDiff !== 0) return seedDiff;
+          return parseInt(matchA[2]) - parseInt(matchB[2]);
+        }
+        return a.localeCompare(b);
+      });
+
+      keys.forEach(key => {
+        sortedPresentations[key] = mergedPresentations[key];
+      });
+
+      finalIntroductions = {
+        ...existingIntroductions,
+        ...introductions,
+        presentations: sortedPresentations
+      };
+
+      const existingCount = Object.keys(existingIntroductions.presentations || {}).length;
+      const newCount = Object.keys(introductions.presentations || {}).length;
+      const mergedCount = Object.keys(finalIntroductions.presentations).length;
+      console.log(`[Orchestrator]    Existing: ${existingCount} presentations`);
+      console.log(`[Orchestrator]    New: ${newCount} presentations`);
+      console.log(`[Orchestrator]    Merged total: ${mergedCount} presentations (sorted)`);
+    }
+
+    await fs.writeJSON(introductionsPath, finalIntroductions, { spaces: 2 });
+
+    // Count this submission's contribution (for activity log)
+    const submittedSeedCount = lego_pairs.seeds.length;
+    const submittedLegoCount = lego_pairs.seeds.reduce((count, seed) => count + (seed.legos?.length || 0), 0);
+    const submittedIntroCount = Object.keys(introductions.presentations || {}).length;
+
+    // Get seed range from this submission
+    let seedRange = '';
+    if (lego_pairs.seeds.length > 0) {
+      const seedIds = lego_pairs.seeds.map(s => s.seed_id).sort();
+      const firstSeed = seedIds[0];
+      const lastSeed = seedIds[seedIds.length - 1];
+      seedRange = submittedSeedCount === 1 ? firstSeed : `${firstSeed}-${lastSeed}`;
+    }
+
+    // Count total LEGOs across all seeds in merged result
+    const seedCount = finalLegoPairs.seeds.length;
+    const legoCount = finalLegoPairs.seeds.reduce((count, seed) => count + (seed.legos?.length || 0), 0);
+    const introCount = Object.keys(finalIntroductions.presentations || {}).length;
+
+    console.log(`[Orchestrator] ✅ Received Phase 3 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    This submission: ${seedRange} (${submittedLegoCount} LEGOs)`);
+    console.log(`[Orchestrator]    Merged total: ${seedCount} seeds, ${legoCount} LEGOs, ${introCount} introductions`);
+    console.log(`[Orchestrator]    Saved to: ${courseDir}`);
+
+    // Log agent submission to activity log
+    addProgressLog(courseCode, `Agent submitted ${seedRange} (${submittedLegoCount} LEGOs, ${submittedIntroCount} intros)`);
+
+    // Check if Phase 3 is complete (all seeds extracted)
+    const progress = courseProgress.get(courseCode);
+    const expectedSeeds = progress?.phases?.[3]?.seedsTotal;
+    const isComplete = expectedSeeds && seedCount >= expectedSeeds;
+
+    if (isComplete) {
+      // All agents have submitted - mark complete
+      updatePhaseProgress(courseCode, 3, {
+        status: 'complete',
+        endTime: new Date().toISOString(),
+        seedsCompleted: seedCount,
+        seedsTotal: expectedSeeds,
+        legoCount,
+        introCount
+      });
+      addProgressLog(courseCode, `Phase 3: Complete - ${seedCount}/${expectedSeeds} seeds, ${legoCount} LEGOs`);
+
+      // Advance to next phase
+      if (progress) {
+        progress.currentPhase = 5;
+      }
+
+      // Auto-publish to GitHub for live dashboard visibility
+      autoPublishCourseData(
+        courseCode,
+        3,
+        `Phase 3: ${legoCount} LEGOs + ${introCount} introductions across ${seedCount} seeds`
+      ).catch(err => console.error('[Phase 3] Auto-publish failed:', err));
+    } else {
+      // More agents still working - keep running
+      updatePhaseProgress(courseCode, 3, {
+        status: 'running',
+        seedsCompleted: seedCount,
+        seedsTotal: expectedSeeds || seedCount,
+        legoCount,
+        introCount
+      });
+    }
+
+    res.json({
+      success: true,
+      message: isComplete ? 'Phase 3 complete - all seeds extracted' : 'Phase 3 submission received and merged',
+      submission: {
+        seedRange,
+        seedCount: submittedSeedCount,
+        legoCount: submittedLegoCount,
+        introCount: submittedIntroCount
+      },
+      merged: {
+        seedCount,
+        legoCount,
+        introCount,
+        isComplete,
+        progress: expectedSeeds ? `${seedCount}/${expectedSeeds}` : `${seedCount} seeds`
+      },
+      savedTo: {
+        lego_pairs: legoPairsPath,
+        introductions: introductionsPath
+      }
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 3 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 3 submission', details: error.message });
+  }
+});
+
+/**
+ * POST /api/phase5/:courseCode/submit
+ * Accept completed lego_baskets.json from agents via ngrok
+ */
+app.post('/api/phase5/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const basketData = req.body;
+
+    // Validate basic structure
+    if (!basketData.version || !basketData.course || !basketData.baskets) {
+      return res.status(400).json({
+        error: 'Invalid lego_baskets format',
+        required: ['version', 'course', 'baskets']
+      });
+    }
+
+    // Write to VFS (with merge support)
+    const outputPath = path.join(VFS_ROOT, courseCode, 'lego_baskets.json');
+    await fs.ensureDir(path.dirname(outputPath));
+
+    // Check if file already exists - if so, MERGE instead of overwrite
+    // Always sort baskets for consistent ordering
+    let finalBasketData = basketData;
+
+    // Sort new baskets
+    if (basketData.baskets) {
+      const sortedBaskets = {};
+      const keys = Object.keys(basketData.baskets).sort((a, b) => {
+        const matchA = a.match(/S(\d+)L(\d+)/);
+        const matchB = b.match(/S(\d+)L(\d+)/);
+        if (matchA && matchB) {
+          const seedDiff = parseInt(matchA[1]) - parseInt(matchB[1]);
+          if (seedDiff !== 0) return seedDiff;
+          return parseInt(matchA[2]) - parseInt(matchB[2]);
+        }
+        return a.localeCompare(b);
+      });
+      keys.forEach(key => {
+        sortedBaskets[key] = basketData.baskets[key];
+      });
+      finalBasketData = {
+        ...basketData,
+        baskets: sortedBaskets
+      };
+    }
+
+    if (await fs.pathExists(outputPath)) {
+      console.log(`[Orchestrator] 📦 Merging with existing lego_baskets.json`);
+      const existingData = await fs.readJSON(outputPath);
+
+      // Merge baskets object (new baskets overwrite existing ones with same ID)
+      const mergedBaskets = {
+        ...existingData.baskets,
+        ...basketData.baskets
+      };
+
+      // Sort baskets by key (SXXXXLXX format) for consistent ordering
+      const sortedBaskets = {};
+      const keys = Object.keys(mergedBaskets).sort((a, b) => {
+        // Extract seed number and lego number for proper numeric sorting
+        const matchA = a.match(/S(\d+)L(\d+)/);
+        const matchB = b.match(/S(\d+)L(\d+)/);
+
+        if (matchA && matchB) {
+          const seedDiff = parseInt(matchA[1]) - parseInt(matchB[1]);
+          if (seedDiff !== 0) return seedDiff;
+          return parseInt(matchA[2]) - parseInt(matchB[2]);
+        }
+
+        // Fallback to string comparison
+        return a.localeCompare(b);
+      });
+
+      keys.forEach(key => {
+        sortedBaskets[key] = mergedBaskets[key];
+      });
+
+      finalBasketData = {
+        ...existingData,
+        ...basketData,
+        baskets: sortedBaskets
+      };
+
+      const existingCount = Object.keys(existingData.baskets).length;
+      const newCount = Object.keys(basketData.baskets).length;
+      const mergedCount = Object.keys(finalBasketData.baskets).length;
+      console.log(`[Orchestrator]    Existing: ${existingCount} baskets`);
+      console.log(`[Orchestrator]    New: ${newCount} baskets`);
+      console.log(`[Orchestrator]    Merged total: ${mergedCount} baskets (sorted)`);
+    }
+
+    await fs.writeJSON(outputPath, finalBasketData, { spaces: 2 });
+
+    // Count baskets
+    const basketCount = Object.keys(finalBasketData.baskets).length;
+
+    // Count phrases
+    let phraseCount = 0;
+    Object.values(finalBasketData.baskets).forEach(basket => {
+      phraseCount += basket.practice_phrases?.length || 0;
+    });
+
+    console.log(`[Orchestrator] ✅ Received Phase 5 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    Baskets: ${basketCount}`);
+    console.log(`[Orchestrator]    Phrases: ${phraseCount}`);
+    console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    // Get progress data for context
+    const progress = courseProgress.get(courseCode);
+    const phase5Data = progress?.phases?.[5];
+
+    // Update progress tracking
+    updatePhaseProgress(courseCode, 5, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      basketCount,
+      phraseCount,
+      legosCompleted: basketCount,
+      legosTotal: phase5Data?.legosTotal || basketCount
+    });
+
+    // Create informative log message
+    let logMsg = `✅ Phase 5 complete: ${basketCount} LEGOs`;
+    if (phase5Data?.legosTotal && phase5Data.legosTotal !== basketCount) {
+      logMsg += ` of ${phase5Data.legosTotal} expected`;
+    }
+    if (phase5Data?.seedsTotal) {
+      logMsg += ` across ${phase5Data.seedsCompleted || phase5Data.seedsTotal} seeds`;
+    }
+    logMsg += ` (${phraseCount.toLocaleString()} practice phrases)`;
+
+    addProgressLog(courseCode, logMsg);
+
+    // Update current phase to next
+    if (progress) {
+      progress.currentPhase = 7;
+    }
+
+    // Auto-publish to GitHub for live dashboard visibility
+    autoPublishCourseData(
+      courseCode,
+      5,
+      `Phase 5: ${basketCount} LEGOs with ${phraseCount.toLocaleString()} practice phrases`
+    ).catch(err => console.error('[Phase 5] Auto-publish failed:', err));
+
+    res.json({
+      success: true,
+      message: `Phase 5 submission received for ${courseCode}`,
+      basketCount: basketCount,
+      savedTo: outputPath
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 5 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 5 submission', details: error.message });
+  }
+});
+
+/**
+ * POST /api/phase7/:courseCode/submit
+ * Accept completed course_manifest.json from agents via ngrok
+ */
+app.post('/api/phase7/:courseCode/submit', async (req, res) => {
+  try {
+    const { courseCode } = req.params;
+    const manifestData = req.body;
+
+    // Validate basic structure
+    if (!manifestData.version || !manifestData.course) {
+      return res.status(400).json({
+        error: 'Invalid manifest format',
+        required: ['version', 'course']
+      });
+    }
+
+    // Validate course code matches
+    if (manifestData.course !== courseCode) {
+      return res.status(400).json({
+        error: 'Course code mismatch',
+        expected: courseCode,
+        received: manifestData.course
+      });
+    }
+
+    // Count phrases in manifest (from all lego_baskets)
+    let phraseCount = 0;
+    if (manifestData.manifest && manifestData.manifest.lego_baskets) {
+      phraseCount = Object.keys(manifestData.manifest.lego_baskets).reduce((count, basketId) => {
+        const basket = manifestData.manifest.lego_baskets[basketId];
+        return count + (basket.phrases ? basket.phrases.length : 0);
+      }, 0);
+    }
+
+    // Write to VFS
+    const outputPath = path.join(VFS_ROOT, courseCode, 'course_manifest.json');
+    await fs.ensureDir(path.dirname(outputPath));
+    await fs.writeJSON(outputPath, manifestData, { spaces: 2 });
+
+    console.log(`[Orchestrator] ✅ Received Phase 7 submission for ${courseCode}`);
+    console.log(`[Orchestrator]    Version: ${manifestData.version}`);
+    console.log(`[Orchestrator]    Phrases: ${phraseCount}`);
+    console.log(`[Orchestrator]    Saved to: ${outputPath}`);
+
+    // Update progress tracking
+    updatePhaseProgress(courseCode, 7, {
+      status: 'complete',
+      endTime: new Date().toISOString(),
+      phraseCount
+    });
+    addProgressLog(courseCode, `Phase 7: Complete - ${phraseCount} phrases compiled`);
+
+    // Update current phase to next
+    const progress = courseProgress.get(courseCode);
+    if (progress) {
+      progress.currentPhase = 8;
+      progress.overallStatus = 'complete'; // Manifest is the final deliverable
+    }
+
+    // Auto-publish to GitHub for live dashboard visibility
+    autoPublishCourseData(
+      courseCode,
+      7,
+      `Phase 7: Course manifest with ${phraseCount.toLocaleString()} phrases`
+    ).catch(err => console.error('[Phase 7] Auto-publish failed:', err));
+
+    res.json({
+      success: true,
+      message: 'Phase 7 submission received',
+      phraseCount,
+      savedTo: outputPath
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error accepting Phase 7 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 7 submission', details: error.message });
+  }
 });
 
 /**
@@ -1763,6 +3320,65 @@ app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
 });
 
 /**
+ * POST /api/courses/:courseCode/regenerate/phase7
+ * Trigger Phase 7 (Course Manifest) recompilation
+ */
+app.post('/api/courses/:courseCode/regenerate/phase7', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`\n🔄 Triggering Phase 7 recompilation for ${courseCode}...`);
+
+  try {
+    // Get course info from manifest
+    const coursesManifest = await fs.readJson(path.join(VFS_ROOT, 'courses-manifest.json'));
+    const course = coursesManifest.courses.find(c => c.course_code === courseCode);
+
+    if (!course) {
+      return res.status(404).json({ error: `Course ${courseCode} not found` });
+    }
+
+    // Verify required files exist
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const requiredFiles = ['seed_pairs.json', 'lego_pairs.json', 'lego_baskets.json', 'introductions.json'];
+
+    for (const file of requiredFiles) {
+      if (!await fs.pathExists(path.join(courseDir, file))) {
+        return res.status(400).json({
+          error: `Missing required file: ${file}`,
+          message: 'Complete previous phases before compiling manifest'
+        });
+      }
+    }
+
+    // Trigger Phase 7 server
+    const phase7Response = await axios.post(`${PHASE_SERVERS[7]}/start`, {
+      courseCode,
+      target: course.target_language,
+      known: course.source_language
+    }, {
+      timeout: 30000 // 30s timeout for initial request
+    });
+
+    console.log(`   ✅ Phase 7 server accepted compilation request`);
+
+    res.json({
+      success: true,
+      jobId: phase7Response.data.jobId || `phase7-${courseCode}-${Date.now()}`,
+      message: 'Phase 7 compilation started',
+      courseCode
+    });
+
+  } catch (error) {
+    console.error('   ❌ Phase 7 recompilation error:', error.message);
+
+    const status = error.response?.status || 500;
+    const errorData = error.response?.data || { error: error.message };
+
+    res.status(status).json(errorData);
+  }
+});
+
+/**
  * Helper: Determine course status from manifest data
  */
 function determineStatus(course) {
@@ -1774,9 +3390,10 @@ function determineStatus(course) {
 
 /**
  * Helper: Get next phase in sequence
+ * Linear pipeline: 1 → 3 → 5 → 7 → 8
  */
 function getNextPhase(currentPhase) {
-  const sequence = [1, 3, 5, 6, 8];
+  const sequence = [1, 3, 5, 7, 8];
   const currentIndex = sequence.indexOf(currentPhase);
   return currentIndex >= 0 && currentIndex < sequence.length - 1
     ? sequence[currentIndex + 1]

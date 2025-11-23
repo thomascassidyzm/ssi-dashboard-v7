@@ -1,19 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
-import TrainingPhase from '../views/TrainingPhase.vue'
 import ProcessOverview from '../views/ProcessOverview.vue'
 import CanonicalSeeds from '../views/CanonicalSeeds.vue'
+import CanonicalContent from '../views/CanonicalContent.vue'
 import APMLSpec from '../views/APMLSpec.vue'
 import CourseGeneration from '../views/CourseGeneration.vue'
 import CourseBrowser from '../views/CourseBrowser.vue'
 import CourseEditor from '../views/CourseEditor.vue'
 import CourseCompilation from '../views/CourseCompilation.vue'
 import AudioGeneration from '../views/AudioGeneration.vue'
+import AudioPipelineView from '../views/AudioPipelineView.vue'
 import TerminologyGlossary from '../views/TerminologyGlossary.vue'
 import Pedagogy from '../views/Pedagogy.vue'
 import RecursiveUpregulation from '../views/RecursiveUpregulation.vue'
 import PhaseIntelligence from '../views/PhaseIntelligence.vue'
 import CourseValidator from '../views/CourseValidator.vue'
+import CourseProgress from '../views/CourseProgress.vue'
 // DEPRECATED: Skills.vue - unused feature
 // import Skills from '../views/Skills.vue'
 
@@ -22,6 +24,9 @@ import QualityDashboard from '../components/quality/QualityDashboard.vue'
 import SeedQualityReview from '../components/quality/SeedQualityReview.vue'
 import PromptEvolutionView from '../components/quality/PromptEvolutionView.vue'
 import CourseHealthReport from '../components/quality/CourseHealthReport.vue'
+
+// Editing Components
+import IntroductionsViewer from '../components/IntroductionsViewer.vue'
 
 
 const routes = [
@@ -60,6 +65,19 @@ const routes = [
     props: true
   },
   {
+    path: '/courses/:code/progress',
+    name: 'CourseProgress',
+    component: CourseProgress,
+    props: true,
+    meta: { title: 'Course Progress' }
+  },
+  {
+    path: '/edit/introductions',
+    name: 'IntroductionsEditor',
+    component: IntroductionsViewer,
+    meta: { title: 'Edit Introductions' }
+  },
+  {
     path: '/courses/:courseCode/compile',
     name: 'CourseCompilation',
     component: CourseCompilation,
@@ -73,10 +91,11 @@ const routes = [
     meta: { title: 'Audio Generation' }
   },
   {
-    path: '/phase/:id',
-    name: 'TrainingPhase',
-    component: TrainingPhase,
-    props: true
+    path: '/courses/:courseCode/audio-pipeline',
+    name: 'AudioPipelineView',
+    component: AudioPipelineView,
+    props: true,
+    meta: { title: 'Audio Pipeline' }
   },
   {
     path: '/reference/overview',
@@ -87,6 +106,12 @@ const routes = [
     path: '/reference/seeds',
     name: 'CanonicalSeeds',
     component: CanonicalSeeds
+  },
+  {
+    path: '/reference/canonical',
+    name: 'CanonicalContent',
+    component: CanonicalContent,
+    meta: { title: 'Canonical Content' }
   },
   {
     path: '/reference/apml',
@@ -192,8 +217,8 @@ const router = createRouter({
 // Set page title based on route meta
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title
-    ? `${to.meta.title} - SSi Dashboard`
-    : 'SSi Course Production Dashboard v8.0.0'
+    ? `${to.meta.title} - Popty`
+    : 'Popty v8.2.2 - SSi Course Production Dashboard'
   next()
 })
 

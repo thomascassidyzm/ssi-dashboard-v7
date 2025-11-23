@@ -73,6 +73,14 @@
               💾 Save All Changes ({{ Object.keys(hasUnsavedChanges).length }})
             </button>
             <button
+              @click="recompilePhase7"
+              :disabled="recompilingPhase7"
+              class="px-3 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Recompile course manifest with latest basket changes"
+            >
+              {{ recompilingPhase7 ? '⏳ Recompiling...' : '🔄 Recompile Phase 7' }}
+            </button>
+            <button
               @click="previousBatch"
               :disabled="currentBatchStart <= 1"
               class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -274,9 +282,9 @@
                   <div class="flex-1">
                     <div class="text-xs text-slate-400">{{ legoKey }}</div>
                     <div class="text-lg font-bold">
-                      <span class="text-slate-300">{{ legoData.lego[0] }}</span>
+                      <span class="text-slate-300">{{ Array.isArray(legoData.lego) ? legoData.lego[0] : legoData.lego.known }}</span>
                       <span class="mx-2 text-slate-600">→</span>
-                      <span class="text-emerald-400">{{ legoData.lego[1] }}</span>
+                      <span class="text-emerald-400">{{ Array.isArray(legoData.lego) ? legoData.lego[1] : legoData.lego.target }}</span>
                     </div>
                   </div>
                   <div class="text-right text-xs space-y-1">
@@ -316,9 +324,9 @@
                       class="flex items-center gap-2 py-1 px-2 bg-slate-800/50 rounded text-xs"
                     >
                       <span class="text-blue-300">{{ idx + 1 }}.</span>
-                      <span class="text-slate-200">{{ component[0] }}</span>
+                      <span class="text-slate-200">{{ Array.isArray(component) ? component[0] : component.known }}</span>
                       <span class="text-slate-600">→</span>
-                      <span class="text-emerald-400">{{ component[1] }}</span>
+                      <span class="text-emerald-400">{{ Array.isArray(component) ? component[1] : component.target }}</span>
                     </div>
                   </div>
                 </div>
@@ -332,7 +340,7 @@
                   v-show="!isDeleted(seedData.seedId, legoKey, idx)"
                   :class="[
                     'p-2 rounded text-sm transition-all',
-                    phrase[3] >= 5 ? 'bg-emerald-900/20 border border-emerald-700/30' : 'bg-slate-800/50',
+                    getPhraseLegoCount(phrase) >= 5 ? 'bg-emerald-900/20 border border-emerald-700/30' : 'bg-slate-800/50',
                     isFlagged(seedData.seedId, legoKey, idx) ? 'border-2 border-red-500' : '',
                     editMode[seedData.seedId] ? 'hover:bg-slate-700/50' : ''
                   ]"
@@ -389,17 +397,17 @@
                         🗑️
                       </button>
                       <!-- Quality Indicators -->
-                      <span v-if="phrase[3] >= 5" class="text-emerald-500 text-xs" title="Conversational">💬</span>
-                      <span v-if="hasConjunction(phrase[1])" class="text-blue-400 text-xs" title="Conjunction">⚡</span>
+                      <span v-if="getPhraseLegoCount(phrase) >= 5" class="text-emerald-500 text-xs" title="Conversational">💬</span>
+                      <span v-if="hasConjunction(getPhraseTarget(phrase))" class="text-blue-400 text-xs" title="Conjunction">⚡</span>
                       <span
                         :class="[
                           'px-2 py-0.5 rounded text-xs font-bold whitespace-nowrap',
-                          phrase[3] <= 2 ? 'bg-green-900/40 text-green-300' :
-                          phrase[3] <= 4 ? 'bg-yellow-900/40 text-yellow-300' :
+                          getPhraseLegoCount(phrase) <= 2 ? 'bg-green-900/40 text-green-300' :
+                          getPhraseLegoCount(phrase) <= 4 ? 'bg-yellow-900/40 text-yellow-300' :
                           'bg-emerald-900/60 text-emerald-300'
                         ]"
                       >
-                        {{ phrase[3] }}
+                        {{ getPhraseLegoCount(phrase) }}
                       </span>
                     </div>
                   </div>
@@ -432,8 +440,8 @@
               <!-- Summary -->
               <div class="mt-3 pt-3 border-t border-slate-600 text-xs text-slate-400">
                 <span class="mr-3">{{ legoData.practice_phrases.length }} phrases</span>
-                <span class="mr-3">Min: <span class="text-green-300">{{ Math.min(...legoData.practice_phrases.map(p => p[3])) }}</span></span>
-                <span>Max: <span class="text-orange-300">{{ Math.max(...legoData.practice_phrases.map(p => p[3])) }}</span></span>
+                <span class="mr-3">Min: <span class="text-green-300">{{ Math.min(...legoData.practice_phrases.map(p => getPhraseLegoCount(p))) }}</span></span>
+                <span>Max: <span class="text-orange-300">{{ Math.max(...legoData.practice_phrases.map(p => getPhraseLegoCount(p))) }}</span></span>
               </div>
             </div>
           </div>
@@ -478,7 +486,8 @@ export default {
       editedPhrases: {}, // Track edited phrase text {seedId_legoKey_idx: {known: '', target: ''}}
       flaggedPhrases: {}, // Track flagged phrases {seedId_legoKey_idx: true}
       deletedPhrases: {}, // Track deleted phrases {seedId_legoKey_idx: true}
-      hasUnsavedChanges: {} // Track which seeds have unsaved changes {seedId: true}
+      hasUnsavedChanges: {}, // Track which seeds have unsaved changes {seedId: true}
+      recompilingPhase7: false // Track if Phase 7 recompilation is in progress
     }
   },
   computed: {
@@ -639,6 +648,12 @@ export default {
         }
 
         this.loadedSeeds = await Promise.all(promises)
+        console.log('[BasketViewer] Loaded seeds:', this.loadedSeeds.map(s => ({
+          seedId: s.seedId,
+          hasBasket: !!s.basket,
+          legoCount: this.getLegoCount(s.basket),
+          phraseCount: this.getTotalPhrases(s.basket)
+        })))
       } catch (err) {
         this.error = `Failed to load batch: ${err.message}`
       } finally {
@@ -689,10 +704,14 @@ export default {
       return this.expandedMolecularLegos[key] || false
     },
     getLegoBaskets(basket) {
-      if (!basket) return {}
+      if (!basket) {
+        console.log('[BasketViewer] getLegoBaskets: basket is null/undefined')
+        return {}
+      }
 
       // v6.2+ format: LEGOs nested under 'legos' property
       if (basket.legos && typeof basket.legos === 'object') {
+        console.log('[BasketViewer] getLegoBaskets: Using v6.2+ format, found', Object.keys(basket.legos).length, 'baskets')
         return basket.legos
       }
 
@@ -703,6 +722,7 @@ export default {
           baskets[key] = basket[key]
         }
       }
+      console.log('[BasketViewer] getLegoBaskets: Using legacy format, found', Object.keys(baskets).length, 'baskets')
       return baskets
     },
     getLegoCount(basket) {
@@ -732,11 +752,11 @@ export default {
         totalPhrases += phrases.length
 
         phrases.forEach(phrase => {
-          const legoCount = phrase[3] || 1
+          const legoCount = this.getPhraseLegoCount(phrase)
           totalLegos += legoCount
 
           if (legoCount >= 5) conversationalCount++
-          if (this.hasConjunction(phrase[1])) conjunctionCount++
+          if (this.hasConjunction(this.getPhraseTarget(phrase))) conjunctionCount++
         })
       }
 
@@ -778,11 +798,30 @@ export default {
       // Initialize edited phrase if not already set
       if (!this.editedPhrases[key]) {
         this.editedPhrases[key] = {
-          known: phrase[0],
-          target: phrase[1]
+          known: phrase.known || phrase[0],
+          target: phrase.target || phrase[1]
         }
       }
       this.$forceUpdate()
+    },
+    getPhraseLegoCount(phrase) {
+      // Handle both old format [known, target, ?, count] and new format {known, target, lego_count}
+      if (phrase.lego_count !== undefined) return phrase.lego_count
+      if (phrase[3] !== undefined) return phrase[3]
+
+      // Fallback: Try to estimate from phrase complexity
+      // This is a rough estimate - count spaces + 1, capped at reasonable values
+      const knownPhrase = phrase.known || phrase[0] || ''
+      const wordCount = knownPhrase.trim().split(/\s+/).length
+      return Math.min(wordCount, 8) // Cap at 8 to avoid unrealistic counts
+    },
+    getPhraseTarget(phrase) {
+      // Handle both old format [known, target] and new format {known, target}
+      return phrase.target || phrase[1] || ''
+    },
+    getPhraseKnown(phrase) {
+      // Handle both old format [known, target] and new format {known, target}
+      return phrase.known || phrase[0] || ''
     },
     savePhrase(seedId, legoKey, idx) {
       const key = this.getPhraseKey(seedId, legoKey, idx)
@@ -799,7 +838,12 @@ export default {
       if (this.editedPhrases[key]) {
         return langIdx === 0 ? this.editedPhrases[key].known : this.editedPhrases[key].target
       }
-      return phrase[langIdx]
+      // Handle both old format [known, target] and new format {known, target}
+      if (langIdx === 0) {
+        return phrase.known || phrase[0] || ''
+      } else {
+        return phrase.target || phrase[1] || ''
+      }
     },
     toggleFlag(seedId, legoKey, idx) {
       const key = this.getPhraseKey(seedId, legoKey, idx)
@@ -840,8 +884,14 @@ export default {
 
             // Apply edited text
             if (this.editedPhrases[key]) {
-              phrases[idx][0] = this.editedPhrases[key].known
-              phrases[idx][1] = this.editedPhrases[key].target
+              // Handle both old format [known, target, ...] and new format {known, target, ...}
+              if (Array.isArray(phrases[idx])) {
+                phrases[idx][0] = this.editedPhrases[key].known
+                phrases[idx][1] = this.editedPhrases[key].target
+              } else {
+                phrases[idx].known = this.editedPhrases[key].known
+                phrases[idx].target = this.editedPhrases[key].target
+              }
             }
 
             newPhrases.push(phrases[idx])
@@ -882,6 +932,45 @@ export default {
     async saveAllChanges() {
       for (const seedId of Object.keys(this.hasUnsavedChanges)) {
         await this.saveSeedChanges(seedId)
+      }
+    },
+    async recompilePhase7() {
+      if (!this.selectedCourseCode) {
+        alert('No course selected')
+        return
+      }
+
+      if (!confirm('Recompile Phase 7 (Course Manifest) with the latest basket changes?\n\nThis will update the course_manifest.json file.')) {
+        return
+      }
+
+      this.recompilingPhase7 = true
+
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${this.selectedCourseCode}/regenerate/phase7`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true'
+          }
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to trigger Phase 7 recompilation')
+        }
+
+        alert(`✅ Phase 7 recompilation started!\n\nJob ID: ${data.jobId || 'N/A'}\n\nThe course_manifest.json will be updated when complete.\n\nCheck the Progress monitor for status.`)
+
+        // Emit event to parent to show progress monitor
+        this.$emit('phase7-started', data)
+
+      } catch (err) {
+        console.error('Failed to trigger Phase 7 recompilation:', err)
+        alert(`❌ Failed to trigger Phase 7 recompilation:\n\n${err.message}`)
+      } finally {
+        this.recompilingPhase7 = false
       }
     }
   }

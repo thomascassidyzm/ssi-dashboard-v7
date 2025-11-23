@@ -1,6 +1,24 @@
 # Phase 5.5: Grammar Review (Seeds 1-100 Only)
 
+> **⚠️ DEPRECATED as of 2025-11-20 (APML v8.2.1)**
+>
+> **This phase has been removed from the automated pipeline.**
+>
+> **Reason:** Automated grammar validation proved brittle and slow. Strategic pivot to human semi-manual review for first 100 seeds (~20,000 phrases) before publishing.
+>
+> **Replacement Strategy:**
+> - Human review of first 100 seeds (GOLDEN quality gate)
+> - Manual deletion of problematic phrases via dashboard
+> - Ship first course → iterate based on learner feedback
+> - Future: Browse/review/flag UI for phrase management
+> - Future: Incremental quality checks as patterns emerge
+>
+> **Historical documentation preserved below for reference.**
+
+---
+
 **Version**: v1.0 (2025-11-11)
+**Status**: ⚠️ DEPRECATED (v8.2.1)
 **Purpose**: Remove grammatically incorrect phrases from foundation seeds
 **Applies to**: Seeds 1-100 ONLY (foundation learning material)
 

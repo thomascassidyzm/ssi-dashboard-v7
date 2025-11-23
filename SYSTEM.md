@@ -1,7 +1,9 @@
 # SSi Dashboard v7 - System Documentation
 
-**Last Updated:** 2025-11-06
+**Last Updated:** 2025-11-21
 **Status:** Working ✅
+**Architecture:** Microservices + Standalone Scripts + Canonical Content + Live Progress Monitoring
+**APML Version:** v8.2.3
 
 ---
 
@@ -153,6 +155,79 @@ The system automatically discovers courses by scanning `public/vfs/courses/` and
 
 ---
 
+## Pipeline Architecture
+
+### Active Workflow: Phase 1 → 3 (includes 6) → 5 → 7 → 8
+
+```
+Canonical Content (3 inputs)
+    ├── canonical_seeds.json (668 seeds)
+    ├── eng_encouragements.json
+    └── welcomes.json
+         ↓
+Phase 1: Translation (Port 3457)
+    ├── Substitutes {target} placeholders
+    ├── Translates 668 seeds to target language
+    └── Outputs: seed_pairs.json
+         ↓
+Phase 3: LEGO Extraction + Introductions (Port 3458)
+    ├── Extracts LEGO components
+    ├── Generates introduction presentations
+    └── Outputs: lego_pairs.json + introductions.json
+         ↓
+Phase 5: Basket Generation (Port 3459)
+    ├── Generates practice phrases
+    └── Outputs: lego_baskets.json
+         ↓
+Phase 7: Manifest Compilation (Port 3462)
+    ├── Compiles all phase outputs
+    ├── Generates deterministic UUIDs
+    ├── Creates placeholders for Phase 8
+    └── Outputs: course_manifest.json
+         ↓
+Phase 8: Audio/TTS Generation (Port 3463)
+    ├── Reads manifest samples object
+    ├── Generates ~110,000 audio files
+    ├── Uploads to S3
+    └── Optionally populates duration fields
+```
+
+### Phase Server Ports
+
+| Phase | Server | Port | Status |
+|-------|--------|------|--------|
+| 1 | Translation (includes Phase 2 LUT) | 3457 | ✅ Active |
+| 3 | LEGO Extraction (includes Phase 6) | 3458 | ✅ Active |
+| 5 | Basket Generation | 3459 | ✅ Active |
+| 7 | Manifest Compilation | 3462 | ✅ Active |
+| 8 | Audio/TTS Generation | 3463 | 🔧 In Development (Kai) |
+
+**Note**: Phase 6 (introductions) is integrated into Phase 3 server and runs automatically after LEGO extraction (<1s overhead).
+
+### Canonical Content System
+
+**Location**: `public/vfs/canonical/`
+
+**3-Parameter Input Model**:
+1. **Target language code** (e.g., "spa", "fra", "cmn")
+2. **Known language code** (e.g., "eng")
+3. **Canonical content** (seeds, encouragements, welcomes)
+
+**Benefits**:
+- Single source of truth for curriculum (668 seeds)
+- Language-agnostic pedagogy
+- Easy to improve: Update 668 seeds once → regenerate all courses
+- Consistent learning progression across all languages
+
+**Files**:
+- `canonical_seeds.json` - 668 pedagogically-ordered seeds with `{target}` placeholders
+- `eng_encouragements.json` - 26 pooled encouragements (English)
+- `welcomes.json` - Course introduction template
+
+**See**: `public/docs/phase_intelligence/CANONICAL_CONTENT.md` for details.
+
+---
+
 ## System Architecture
 
 ### Course Discovery Flow
@@ -232,6 +307,22 @@ Returns: { course, translations, legos, lego_breakdowns, baskets }
 ```
 GET /api/courses/{courseCode}/baskets/{seedId}
 Returns: basket JSON
+```
+
+### Progress Monitoring (v8.2.3)
+```
+GET /api/courses/{courseCode}/progress
+Returns: {
+  courseCode, currentPhase, overallStatus, startTime,
+  phases: { 1: {...}, 3: {...}, ... },
+  recentLogs: [...]
+}
+Dashboard polls this every 5s for live updates
+
+POST /api/courses/{courseCode}/progress
+Body: { phase, updates: {...}, logMessage }
+Phase servers report progress here (e.g., every 10 seeds)
+Orchestrator calculates ETA automatically
 ```
 
 ---

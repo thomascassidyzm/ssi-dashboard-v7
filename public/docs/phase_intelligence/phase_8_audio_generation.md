@@ -1,10 +1,12 @@
 # Phase 8: Audio Generation
 
-**Version**: 1.0
+**Version**: 1.1
 **Status**: 🔧 Assigned to Kai (separate branch)
-**Last Updated**: 2025-10-23
+**Last Updated**: 2025-11-20
 **Branch**: `feature/phase8-audio-generation`
-**Output**: MP3 audio files (uploaded to S3)
+**Outputs**:
+- MP3 audio files (uploaded to S3)
+- Duration field population in course manifest (optional)
 
 ---
 
@@ -35,6 +37,35 @@ Phase 7 already created the complete manifest with all UUIDs. Phase 8 only gener
 - **target2**: Alternate target language voice (e.g., Italian voice 2)
 - **source**: Known language voice (e.g., English voice)
 
+### 5. **Duration Field Population (v1.1)**
+Phase 7 creates placeholder `duration: 0` fields for all audio samples and the top-level introduction. Phase 8:
+- Generates TTS audio and measures actual duration (in seconds)
+- **Optionally** updates manifest with actual durations
+- This is NOT required for app functionality (app can measure playback time)
+- Useful for analytics and course metadata
+
+**Placeholder structure from Phase 7:**
+```json
+{
+  "introduction": {
+    "id": "",
+    "cadence": "natural",
+    "role": "presentation",
+    "duration": 0  // ← Phase 8 can populate
+  },
+  "slices": [{
+    "samples": {
+      "Voglio": [{
+        "duration": 0,  // ← Phase 8 can populate
+        "id": "C6A82DE8-6044-AC07-8F4E-412F54FEF5F7",
+        "cadence": "natural",
+        "role": "target1"
+      }]
+    }
+  }]
+}
+```
+
 ---
 
 ## Input Format
@@ -49,11 +80,13 @@ Phase 7 already created the complete manifest with all UUIDs. Phase 8 only gener
       "samples": {
         "Voglio": [
           {
+            "duration": 0,
             "id": "C6A82DE8-6044-AC07-8F4E-412F54FEF5F7",
             "cadence": "natural",
             "role": "target1"
           },
           {
+            "duration": 0,
             "id": "4114E479-6044-E115-8F4E-8B1C4F02C6C8",
             "cadence": "natural",
             "role": "target2"
@@ -61,6 +94,7 @@ Phase 7 already created the complete manifest with all UUIDs. Phase 8 only gener
         ],
         "I want": [
           {
+            "duration": 0,
             "id": "489C5783-6044-36CD-31D4-4CB55EF258B5",
             "cadence": "natural",
             "role": "source"
@@ -68,6 +102,7 @@ Phase 7 already created the complete manifest with all UUIDs. Phase 8 only gener
         ],
         "Now, the Italian for \"I want\" as in...": [
           {
+            "duration": 0,
             "id": "...",
             "cadence": "natural",
             "role": "source"
@@ -78,6 +113,8 @@ Phase 7 already created the complete manifest with all UUIDs. Phase 8 only gener
   ]
 }
 ```
+
+**Note**: `duration: 0` is a placeholder from Phase 7. Phase 8 can optionally update these with actual audio durations after TTS generation.
 
 ---
 
@@ -144,6 +181,72 @@ for (const [text, variants] of Object.entries(samples)) {
     console.log(`✅ ${id}.mp3 - "${text}" (${role})`);
   }
 }
+```
+
+### 4. Measure Duration (Optional)
+```javascript
+// After generating audio, optionally measure duration
+const audioDuration = await getAudioDuration(`audio/${id}.mp3`);
+
+// Update variant object with actual duration
+variant.duration = audioDuration;
+```
+
+### 5. Update Manifest (Optional)
+```javascript
+// After all audio generation completes, optionally save updated manifest
+await fs.writeJson(
+  `vfs/courses/${courseCode}/course_manifest.json`,
+  manifest,
+  { spaces: 2 }
+);
+
+console.log(`✅ Updated manifest with ${totalSamples} audio durations`);
+```
+
+**Note**: Duration update is optional. The app doesn't require pre-populated durations - it can measure playback time dynamically.
+
+---
+
+## Top-Level Introduction (Welcome Audio)
+
+**New in v1.1**: Phase 7 creates a top-level `introduction` field for the course welcome message.
+
+### Structure from Phase 7
+```json
+{
+  "introduction": {
+    "id": "",           // Empty placeholder
+    "cadence": "natural",
+    "role": "presentation",
+    "duration": 0       // Zero placeholder
+  }
+}
+```
+
+### Phase 8 Responsibilities
+If welcome audio exists (from canonical `welcomes.json`):
+1. Generate welcome audio using source language voice
+2. Create deterministic UUID for welcome audio
+3. Save audio file: `{uuid}.mp3`
+4. Upload to S3: `courses/{course_code}/audio/{uuid}.mp3`
+5. Optionally populate `introduction.id` with UUID
+6. Optionally populate `introduction.duration` with measured length
+
+**Example**:
+```javascript
+// Generate welcome audio
+const welcomeText = "Welcome to this Spanish course for English speakers...";
+const welcomeAudio = await generateTTS(welcomeText, voiceConfig.source, 'natural');
+const welcomeUUID = generateSampleUUID(welcomeText, knownLang, 'presentation', 'natural');
+
+// Save and upload
+await fs.writeFile(`audio/${welcomeUUID}.mp3`, welcomeAudio);
+await uploadToS3(`courses/${courseCode}/audio/${welcomeUUID}.mp3`, welcomeAudio);
+
+// Optionally update manifest
+manifest.introduction.id = welcomeUUID;
+manifest.introduction.duration = await getAudioDuration(`audio/${welcomeUUID}.mp3`);
 ```
 
 ---
@@ -248,6 +351,8 @@ await fs.writeJson('failed_samples.json', failedSamples, { spaces: 2 });
 ✅ Progress tracking implemented for long-running generation
 ✅ Error handling with retry logic
 ✅ Failed samples logged for retry
+✅ Duration fields measured if updating manifest (optional)
+✅ Manifest structure preserved (no new fields added)
 
 ---
 
@@ -261,9 +366,11 @@ Good: Reading samples object from course_manifest.json
 Bad: Creating your own UUIDs for filenames
 Good: Using exact UUID from manifest
 
-❌ **Don't modify the manifest**
-Bad: Adding duration or other metadata to manifest
-Good: Only generate audio files, leave manifest alone
+❌ **Don't modify the manifest structure**
+Bad: Adding new fields or regenerating UUIDs
+Good: Only populate duration fields (optional), leave structure intact
+
+**Note (v1.1)**: Phase 8 CAN optionally populate duration fields created by Phase 7, but should NOT add new fields or modify structure
 
 ❌ **Don't use text as filename**
 Bad: `Voglio.mp3` or `I_want.mp3`
@@ -383,6 +490,14 @@ afplay audio/C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3
 
 ## Version History
 
+### v1.1 (2025-11-20)
+- **Duration field population**: Added optional duration measurement and manifest update
+- **Updated sample structure**: All examples now include `duration` field from Phase 7 v1.1
+- **Clarified manifest modification**: Phase 8 CAN populate duration fields (optional)
+- **New implementation steps**: Added steps 4-5 for measuring and updating durations
+- **Updated validation checklist**: Added duration-related checks
+- **Aligned with Phase 7 v1.1**: Matches new manifest format requirements
+
 ### v1.0 (2025-10-23)
 - Initial implementation guidelines
 - Manifest-driven approach (no individual file reading)
@@ -395,10 +510,14 @@ afplay audio/C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3
 
 ## Related Phases
 
-- **Phase 7**: Provides course_manifest.json with all sample UUIDs
-- **Phase 6**: Generated presentation text (included in samples)
+- **Phase 7 (v1.1)**: Provides course_manifest.json with all sample UUIDs and duration placeholders
+  - Top-level `introduction` field with placeholder values
+  - All samples include `duration: 0` placeholder
+  - Field ordering: `{duration, id, cadence, role}`
+- **Phase 6**: Generated presentation text (included in samples) - now integrated into Phase 3
+- **Phase 3**: Runs LEGO extraction + introduction generation (includes Phase 6)
 - **App**: Expects audio files at S3 paths matching UUIDs in manifest
 
 ---
 
-**Remember**: Phase 8 is purely audio generation. The manifest is complete from Phase 7 - don't modify it, just generate the audio files it references!
+**Remember**: Phase 8 generates audio files and can optionally measure/populate duration fields. The manifest structure is complete from Phase 7 - don't add new fields or regenerate UUIDs!

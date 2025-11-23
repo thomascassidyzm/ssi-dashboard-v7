@@ -1,9 +1,36 @@
 # Phase 6: Introduction Generation
 
-**Version**: 2.0 🔒 **LOCKED**
-**Status**: ✅ Active
-**Last Updated**: 2025-10-28
+**Version**: 2.1 🔒 **LOCKED**
+**Status**: 🔗 **INTEGRATED INTO PHASE 3** (not a separate service)
+**Last Updated**: 2025-11-20
 **Script**: `scripts/phase6-generate-introductions.cjs`
+**Execution**: Runs automatically after Phase 3 LEGO extraction completes (<1 second overhead)
+**Server**: Built into `services/phases/phase3-lego-extraction-server.cjs` (port 3458)
+
+---
+
+## ⚠️ IMPORTANT: Execution Model Change
+
+**Phase 6 is no longer a standalone microservice.** As of 2025-11-20, introduction generation is integrated directly into the Phase 3 server and runs automatically after LEGO extraction completes.
+
+**Previous Model** (deprecated):
+- Phase 3 → outputs `lego_pairs.json`
+- Phase 6 → separate service, reads `lego_pairs.json`, outputs `introductions.json`
+
+**Current Model** (active):
+- Phase 3 → outputs `lego_pairs.json` AND `introductions.json` (single phase completion)
+- Introduction generation runs immediately after LEGO extraction (<1s overhead)
+- No separate Phase 6 service or API endpoint
+
+**Why the change?**
+- Introduction generation is fast (<1s) and deterministic
+- No benefit to separate service and parallel coordination overhead
+- Simpler pipeline: 1 → 3 (includes 6) → 5 → 7 → 8
+
+**For Developers:**
+- The methodology below is still used (built into Phase 3 server)
+- The script `phase6-generate-introductions.cjs` is still called by Phase 3
+- Output file `introductions.json` is still created (same format)
 
 ---
 
@@ -168,6 +195,13 @@ const LANGUAGE_NAMES = {
 
 ## Version History
 
+### v2.1 (2025-11-20) 🔒 **LOCKED**
+- **Execution model change**: Integrated into Phase 3 server (no longer separate service)
+- **Automatic execution**: Runs immediately after LEGO extraction (<1s overhead)
+- **Output unchanged**: Still generates `introductions.json` in same format
+- **Pipeline simplification**: Removes need for parallel coordination with Phase 5
+- **Methodology preserved**: All generation rules remain identical
+
 ### v2.0 (2025-10-28) 🔒 **LOCKED**
 - **Simplified to two types**: BASE and COMPOSITE (ATOMIC and MOLECULAR)
 - **Component wording**: Changed "is" to "means" for clarity
@@ -189,10 +223,39 @@ const LANGUAGE_NAMES = {
 
 ## Related Phases
 
-- **Phase 3**: Creates LEGO structure that Phase 6 reads
-- **Phase 7**: Uses introduction presentations in final manifest
-- **Phase 8**: Will generate audio for presentation text
+- **Phase 3**: **NOW INCLUDES PHASE 6** - Runs introduction generation automatically after LEGO extraction
+- **Phase 5**: Runs after Phase 3 completes (reads both `lego_pairs.json` and `introductions.json`)
+- **Phase 7**: Uses introduction presentations in final manifest compilation
+- **Phase 8**: Generates audio for presentation text
 
 ---
 
-**Remember**: Phase 6 reads component DATA from Phase 3 and generates natural language EXPLANATIONS. It never modifies the underlying LEGO structure.
+## Integration Details
+
+**How Phase 3 calls Phase 6:**
+
+In `services/phases/phase3-lego-extraction-server.cjs`, after LEGO extraction completes:
+
+```javascript
+async function notifyOrchestrator(courseCode, status) {
+  if (status === 'complete') {
+    // Run Phase 6 introduction generation
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const result = await generateIntroductions(courseDir);
+    console.log(`[Phase 3→6] ✅ Generated ${result.totalIntroductions} introductions`);
+  }
+
+  // Notify orchestrator of Phase 3 completion
+  await fetch(`${ORCHESTRATOR_URL}/phase-complete`, {
+    phase: 3, courseCode, status
+  });
+}
+```
+
+**Execution time**: Typically <1 second for 668-seed courses
+
+**Error handling**: If introduction generation fails, Phase 3 logs a warning but still completes successfully (orchestrator can proceed to Phase 5)
+
+---
+
+**Remember**: Phase 6 reads component DATA from Phase 3 and generates natural language EXPLANATIONS. It never modifies the underlying LEGO structure. The methodology below is still used internally by the Phase 3 server.

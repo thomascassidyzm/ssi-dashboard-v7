@@ -52,50 +52,10 @@ if (!fs.existsSync(VFS_ROOT)) {
 // Smart defaults - everything derives from BASE_PORT
 const BASE_PORT = parseInt(process.env.BASE_PORT || '3456');
 const CHECKPOINT_MODE = process.env.CHECKPOINT_MODE || 'gated';
+const NGROK_URL = process.env.NGROK_URL || `http://localhost:${BASE_PORT}`;
 
-// Check if we're running legacy monolith or new layered services
-const LEGACY_MODE = process.env.LEGACY_MODE === 'true' || !fs.existsSync('services/orchestration/orchestrator.cjs');
-
-if (LEGACY_MODE) {
-  // Legacy mode - run old monolith
-  console.log('');
-  console.log('⚠️  Running in LEGACY MODE');
-  console.log('   (New layered services not yet available)');
-  console.log('');
-  console.log('🚀 Starting automation_server.cjs (monolith)...');
-  console.log('');
-  console.log(`📁 VFS Root: ${VFS_ROOT}`);
-  console.log(`🔌 Port: ${BASE_PORT}`);
-  console.log('');
-
-  const proc = spawn('node', ['automation_server.cjs'], {
-    env: {
-      ...process.env,
-      PORT: BASE_PORT,
-      VFS_ROOT: VFS_ROOT,
-      CHECKPOINT_MODE: CHECKPOINT_MODE,
-    },
-    stdio: 'inherit'
-  });
-
-  proc.on('error', (err) => {
-    console.error('❌ Failed to start automation server:', err);
-    process.exit(1);
-  });
-
-  // Graceful shutdown
-  process.on('SIGINT', () => {
-    console.log('\n🛑 Shutting down automation server...\n');
-    proc.kill('SIGTERM');
-    process.exit(0);
-  });
-
-  // Keep process alive
-  process.stdin.resume();
-} else {
-  // New layered services mode
-  startLayeredServices();
-}
+// Start layered services (microservices architecture)
+startLayeredServices();
 
 function startLayeredServices() {
 const SERVICES = {
@@ -106,38 +66,41 @@ const SERVICES = {
     color: '\x1b[36m'    // Cyan
   },
   phase1: {
-    script: 'services/phases/phase1-translation-server.cjs',
+    script: 'services/phases/phase1-translation/server.cjs',
     port: BASE_PORT + 1,  // 3457
     name: 'Phase 1 (Translation)',
     color: '\x1b[32m'    // Green
   },
   phase3: {
-    script: 'services/phases/phase3-lego-extraction-server.cjs',
+    script: 'services/phases/phase3-lego-extraction/server.cjs',
     port: BASE_PORT + 2,  // 3458
     name: 'Phase 3 (LEGO Extraction)',
     color: '\x1b[33m'    // Yellow
   },
   phase5: {
-    script: 'services/phases/phase5-basket-server.cjs',
+    script: 'services/phases/phase5-basket-generation/server.cjs',
     port: BASE_PORT + 3,  // 3459
     name: 'Phase 5 (Baskets)',
     color: '\x1b[35m'    // Magenta
   },
-  phase6: {
-    script: 'services/phases/phase6-introduction-server.cjs',
-    port: BASE_PORT + 4,  // 3460
-    name: 'Phase 6 (Introductions)',
-    color: '\x1b[34m'    // Blue
-  },
+  // Phase 5.5 (Grammar Validation) - DISABLED
+  // Using human semi-manual review for first 100 seeds instead
+  // Quality gates can be added incrementally later
+  // phase5_5: {
+  //   script: 'services/phases/phase5.5-grammar-validation-server.cjs',
+  //   port: BASE_PORT + 4,  // 3460
+  //   name: 'Phase 5.5 (Grammar)',
+  //   color: '\x1b[95m'    // Bright Magenta
+  // },
   phase7: {
-    script: 'services/phases/phase7-manifest-server.cjs',
-    port: BASE_PORT + 5,  // 3461
+    script: 'services/phases/phase7-manifest-compilation/server.cjs',
+    port: BASE_PORT + 8,  // 3464
     name: 'Phase 7 (Manifest)',
-    color: '\x1b[35m'    // Magenta
+    color: '\x1b[34m'    // Blue
   },
   phase8: {
     script: 'services/phases/phase8-audio-server.cjs',
-    port: BASE_PORT + 6,  // 3462
+    port: BASE_PORT + 9,  // 3465
     name: 'Phase 8 (Audio)',
     color: '\x1b[36m'    // Cyan
   }
@@ -165,15 +128,15 @@ for (const [key, config] of Object.entries(SERVICES)) {
       VFS_ROOT: VFS_ROOT,
       CHECKPOINT_MODE: CHECKPOINT_MODE,
       SERVICE_NAME: config.name,
-      // Phase servers need to know orchestrator port
-      ORCHESTRATOR_URL: `http://localhost:${BASE_PORT}`,
+      // Phase servers need to know orchestrator (use ngrok URL for external agents)
+      ORCHESTRATOR_URL: NGROK_URL,
       // Phase servers need to know each other (for service mesh)
-      PHASE1_URL: `http://localhost:${BASE_PORT + 1}`,
-      PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,
-      PHASE5_URL: `http://localhost:${BASE_PORT + 3}`,
-      PHASE6_URL: `http://localhost:${BASE_PORT + 4}`,
-      PHASE7_URL: `http://localhost:${BASE_PORT + 5}`,
-      PHASE8_URL: `http://localhost:${BASE_PORT + 6}`,
+      PHASE1_URL: `http://localhost:${BASE_PORT + 1}`,    // 3457 - Translation (includes Phase 2 LUT)
+      PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,    // 3458 - LEGO Extraction (includes Phase 6 introductions)
+      PHASE5_URL: `http://localhost:${BASE_PORT + 3}`,    // 3459 - Practice Baskets
+      // PHASE5_5_URL: `http://localhost:${BASE_PORT + 4}`,  // 3460 - Grammar Validation (DISABLED)
+      PHASE7_URL: `http://localhost:${BASE_PORT + 8}`,    // 3464 - Manifest Compilation
+      PHASE8_URL: `http://localhost:${BASE_PORT + 9}`,    // 3465 - Audio/TTS
     },
     stdio: ['ignore', 'pipe', 'pipe']
   });

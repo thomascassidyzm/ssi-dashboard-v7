@@ -1,15 +1,22 @@
 # Phase 7: Course Manifest Compilation
 
-**Version**: 1.0
+**Version**: 1.2
 **Status**: ✅ Active
-**Last Updated**: 2025-10-23
+**Last Updated**: 2025-11-20
 **Script**: `scripts/phase7-compile-manifest.cjs`
+**API**: REST endpoints for input/output (v1.2+)
 
 ---
 
 ## Purpose
 
-Compile v7.7 format files (seed_pairs, lego_pairs, lego_baskets, introductions) into the legacy course manifest format required by the SSi mobile app. This transformation enables backwards compatibility while allowing the course generation pipeline to work with the modern, compact v7.7 format.
+Compile v7.7 format files (seed_pairs, lego_pairs, lego_baskets, introductions) into the final course manifest format required by the SSi mobile app. This transformation enables backwards compatibility while allowing the course generation pipeline to work with the modern, compact v7.7 format.
+
+**Key Updates (v1.1)**:
+- Top-level `introduction` field (welcome audio placeholder)
+- `duration` field in all audio samples (TTS duration placeholder)
+- Field ordering matches reference Italian course format
+- Placeholders (empty strings, zeros) populated by Phase 8
 
 ---
 
@@ -37,6 +44,75 @@ Register audio samples for ALL spoken text:
 - LEGO pairs (target + source)
 - Practice phrases (target + source)
 - Presentation text (source language)
+
+### 5. **Placeholder Fields for Phase 8**
+Phase 7 creates placeholders that Phase 8 will populate:
+- `introduction.id` - Empty string (Phase 8 generates welcome audio UUID)
+- `introduction.duration` - Zero (Phase 8 measures TTS audio length)
+- `samples[].duration` - Zero (Phase 8 measures TTS audio length)
+
+**Why placeholders?**
+- Manifest structure must be complete before audio generation
+- Phase 8 reads manifest, generates audio, measures durations
+- Phase 8 can optionally update manifest with actual values
+
+---
+
+## Manifest Format Requirements (v1.1)
+
+### Top-Level Introduction Field
+
+**REQUIRED**: Every manifest must include a top-level `introduction` object:
+
+```json
+{
+  "id": "spa-eng",
+  "known": "eng",
+  "target": "spa",
+  "version": "8.1.1",
+  "status": "alpha",
+  "introduction": {
+    "id": "",
+    "cadence": "natural",
+    "role": "presentation",
+    "duration": 0
+  },
+  "slices": [...]
+}
+```
+
+**Field details**:
+- `id` - Empty string (placeholder for Phase 8 welcome audio UUID)
+- `cadence` - Always "natural" for welcome
+- `role` - Always "presentation" (spoken in source/known language)
+- `duration` - Zero (placeholder for Phase 8 TTS audio duration in seconds)
+
+**Field ordering**: Must come AFTER status, BEFORE slices (matches Italian course reference)
+
+### Sample Duration Field
+
+**REQUIRED**: Every audio sample must include a `duration` field:
+
+```json
+{
+  "samples": {
+    "Quiero hablar español contigo ahora.": [
+      {
+        "duration": 0,
+        "id": "4255246C-6044-AC07-8F4E-B5638FB60105",
+        "cadence": "natural",
+        "role": "target1"
+      }
+    ]
+  }
+}
+```
+
+**Field details**:
+- `duration` - Float (seconds), placeholder value: 0
+- **Field ordering**: FIRST field (before id, cadence, role)
+
+**Why first?** Matches Italian course reference format for consistency across all courses.
 
 ---
 
@@ -85,13 +161,47 @@ Same inputs MUST produce same UUID across runs. Test by:
 
 ## Input Files
 
-### Required Files
-1. `seed_pairs.json` - Seed sentence translations
-2. `lego_pairs.json` - LEGO structure with components
-3. `lego_baskets.json` - Practice phrases (expanding windows)
-4. `introductions.json` - Presentation text for LEGOs
+### Fetching Phase Outputs via REST API
 
-All must be v7.7.0 format.
+**All phase outputs are fetched from the orchestrator via REST API endpoints.**
+
+#### Option 1: Get All Phase Outputs (Convenience Endpoint)
+```javascript
+// Fetch all required phase outputs in one call
+const response = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs`);
+const phaseOutputs = await response.json();
+
+// phaseOutputs contains:
+// - seed_pairs (Phase 1)
+// - lego_pairs (Phase 3)
+// - lego_baskets (Phase 5)
+// - introductions (Phase 6)
+```
+
+#### Option 2: Get Individual Phase Outputs
+```javascript
+// Fetch each phase output separately
+const seedPairs = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/1/seed_pairs.json`).then(r => r.json());
+const legoPairs = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/3/lego_pairs.json`).then(r => r.json());
+const legoBaskets = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/5/lego_baskets.json`).then(r => r.json());
+const introductions = await fetch(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/6/introductions.json`).then(r => r.json());
+```
+
+### Phase Intelligence Document
+
+**Fetch this document for compilation guidance:**
+```javascript
+const intelligence = await fetch(`${ORCHESTRATOR_URL}/api/phase-intelligence/7`).then(r => r.text());
+// Returns this markdown document with all compilation rules
+```
+
+### Required Files
+1. `seed_pairs.json` - Seed sentence translations (Phase 1)
+2. `lego_pairs.json` - LEGO structure with components (Phase 3)
+3. `lego_baskets.json` - Practice phrases (Phase 5)
+4. `introductions.json` - Presentation text for LEGOs (Phase 6)
+
+All must be v7.7.0+ format.
 
 ---
 
@@ -159,11 +269,13 @@ All must be v7.7.0 format.
 {
   "Voglio": [
     {
+      "duration": 0,
       "id": "C6A82DE8-6044-AC07-8F4E-412F54FEF5F7",
       "cadence": "natural",
       "role": "target1"
     },
     {
+      "duration": 0,
       "id": "4114E479-6044-E115-8F4E-8B1C4F02C6C8",
       "cadence": "natural",
       "role": "target2"
@@ -171,6 +283,7 @@ All must be v7.7.0 format.
   ],
   "I want": [
     {
+      "duration": 0,
       "id": "489C5783-6044-36CD-31D4-4CB55EF258B5",
       "cadence": "natural",
       "role": "source"
@@ -178,6 +291,99 @@ All must be v7.7.0 format.
   ]
 }
 ```
+
+**Note**: `duration: 0` is a placeholder. Phase 8 will populate with actual TTS audio duration in seconds.
+
+---
+
+## Submitting Compiled Manifest via REST API
+
+**After compiling the manifest, submit it to the orchestrator via POST request.**
+
+### Submission Endpoint
+
+```javascript
+POST ${ORCHESTRATOR_URL}/api/phase7/${courseCode}/submit
+```
+
+### Request Body Format
+
+```json
+{
+  "version": "8.2.0",
+  "course": "spa_for_eng",
+  "manifest": {
+    "id": "spa-eng",
+    "known": "eng",
+    "target": "spa",
+    "version": "8.2.0",
+    "status": "alpha",
+    "introduction": {
+      "id": "",
+      "cadence": "natural",
+      "role": "presentation",
+      "duration": 0
+    },
+    "slices": [
+      {
+        "id": "uuid",
+        "version": "8.2.0",
+        "seeds": [...],
+        "samples": {...}
+      }
+    ]
+  }
+}
+```
+
+### Example Submission
+
+```javascript
+// After compiling manifest
+const submission = {
+  version: "8.2.0",
+  course: courseCode,
+  manifest: compiledManifest
+};
+
+const response = await fetch(`${ORCHESTRATOR_URL}/api/phase7/${courseCode}/submit`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(submission)
+});
+
+const result = await response.json();
+```
+
+### Expected Response
+
+```json
+{
+  "success": true,
+  "phraseCount": 1141,
+  "savedTo": "public/vfs/courses/spa_for_eng/course_manifest.json",
+  "timestamp": "2025-11-20T12:34:56.789Z"
+}
+```
+
+### Response Fields
+
+- `success` - Boolean indicating submission success
+- `phraseCount` - Total number of unique phrases in the manifest
+- `savedTo` - File path where manifest was saved
+- `timestamp` - ISO timestamp of submission
+
+### Error Handling
+
+```javascript
+if (!response.ok) {
+  const error = await response.json();
+  console.error('Submission failed:', error.message);
+  // error.details may contain validation errors
+}
+```
+
+**Important**: The orchestrator will validate the manifest structure before saving. Ensure all validation rules are met before submission.
 
 ---
 
@@ -223,15 +429,28 @@ const courseId = `${targetCode}-${knownCode}`;
 
 ## Validation Checklist
 
+### Manifest Structure
 ✅ Single slice containing all seeds
+✅ Top-level `introduction` field present with all required fields
+✅ Introduction field positioned after status, before slices
 ✅ Each seed has introductionItems array
 ✅ Each introductionItem has presentation text
 ✅ Practice nodes properly flattened from windows
 ✅ All text has corresponding sample entries
+✅ Every sample has `duration` field (value: 0)
+✅ Sample field ordering: duration, id, cadence, role
 ✅ UUIDs are deterministic (verify across runs)
 ✅ UUIDs follow role-specific segment format
 ✅ Empty tokens/lemmas arrays everywhere
 ✅ Samples object populated with all phrases
+
+### API Workflow
+✅ Phase outputs fetched via REST API endpoints
+✅ Phase intelligence document fetched via API
+✅ Compiled manifest submitted via POST endpoint
+✅ Submission includes version, course, and manifest fields
+✅ Response validated for success status
+✅ Error handling implemented for failed submissions
 
 ---
 
@@ -290,6 +509,22 @@ C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3  <- "Voglio" target1 natural
 
 ## Version History
 
+### v1.2 (2025-11-20)
+- **REST API workflow**: Replaced git-based input/output with REST API endpoints
+- **Input via API**: Added convenience endpoint for all phase outputs + individual file endpoints
+- **Output via API**: Added POST submission endpoint with validation and response format
+- **Phase intelligence access**: Added API endpoint to fetch this document
+- **Documentation**: Added complete examples for fetching inputs and submitting outputs
+
+### v1.1 (2025-11-20)
+- **Top-level introduction field**: Added required `introduction` object with placeholder values
+- **Duration field in samples**: All audio samples now include `duration: 0` placeholder
+- **Field ordering**: Updated to match Italian course reference format
+  - Top-level: introduction positioned after status, before slices
+  - Samples: duration field comes first (before id, cadence, role)
+- **Placeholder documentation**: Clarified which fields Phase 8 will populate
+- **Schema updates**: Updated JSON schema to require introduction and duration fields
+
 ### v1.0 (2025-10-23)
 - Initial implementation
 - Single slice architecture
@@ -303,10 +538,9 @@ C6A82DE8-6044-AC07-8F4E-412F54FEF5F7.mp3  <- "Voglio" target1 natural
 ## Related Phases
 
 - **Phase 1**: Provides seed_pairs.json
-- **Phase 3**: Provides lego_pairs.json
-- **Phase 4**: Provides lego_baskets.json
-- **Phase 6**: Provides introductions.json
-- **Phase 8**: Will generate audio files using sample UUIDs
+- **Phase 3**: Provides lego_pairs.json AND introductions.json (Phase 6 integrated)
+- **Phase 5**: Provides lego_baskets.json
+- **Phase 8**: Generates audio files using sample UUIDs, populates duration fields
 
 ---
 

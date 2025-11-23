@@ -3,9 +3,18 @@
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <router-link to="/courses" class="text-emerald-400 hover:text-emerald-300 mb-4 inline-block">
-          ← Back to Course Library
-        </router-link>
+        <div class="flex items-center gap-4 mb-4">
+          <router-link to="/" class="text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Home
+          </router-link>
+          <span class="text-slate-600">•</span>
+          <router-link to="/courses" class="text-emerald-400 hover:text-emerald-300">
+            Course Library
+          </router-link>
+        </div>
         <div v-if="course" class="flex items-start justify-between">
           <div>
             <h1 class="text-4xl font-bold text-emerald-400 mb-2">
@@ -14,30 +23,16 @@
             <p class="text-slate-400">{{ course.total_seeds }} seeds • Version {{ course.version }}</p>
           </div>
           <div class="flex items-center gap-3">
-            <span
-              class="px-4 py-2 rounded-lg text-sm font-medium"
-              :class="getStatusClass(course.status)"
-            >
-              {{ formatStatus(course.status) }}
-            </span>
-            <button
-              @click="showValidationPanel = !showValidationPanel"
+            <a
+              href="https://ssi-dashboard-v7.vercel.app/generate"
+              target="_blank"
               class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
               </svg>
-              {{ showValidationPanel ? 'Hide' : 'Validate & Fix' }}
-            </button>
-            <router-link
-              :to="`/courses/${course.course_code}/compile`"
-              class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg transition-colors font-semibold flex items-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
-              </svg>
-              Compile & Generate Audio
-            </router-link>
+              Course Generator
+            </a>
           </div>
         </div>
       </div>
@@ -74,10 +69,17 @@
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
-            <div class="text-3xl font-bold text-emerald-400">{{ introductionsData?.presentations ? Object.keys(introductionsData.presentations).length : 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Known-only priming</div>
+            <div class="text-3xl font-bold text-emerald-400">{{ actualLegoCount }}</div>
+            <div class="text-xs text-slate-500 mt-1">Known-only priming (1 per LEGO)</div>
           </div>
         </div>
+
+        <!-- Progress Monitor (shown when basket generation is active) -->
+        <ProgressMonitor
+          v-if="showProgressMonitor"
+          :course-code="courseCode"
+          :poll-interval="5000"
+        />
 
         <!-- Validation & Fix Panel -->
         <div v-if="showValidationPanel" class="bg-slate-800 border border-emerald-500/50 rounded-lg p-6">
@@ -224,6 +226,74 @@
                 <div class="text-sm text-slate-300">
                   <div>✓ Cleanup: {{ regenerationResult.cleanup?.deletedOldBaskets || 0 }} deleted</div>
                   <div>⏳ Generating {{ regenerationResult.segmentation?.totalBaskets || 0 }} baskets...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pipeline Actions (Phase 7 & 8) -->
+        <div class="bg-slate-800 border border-purple-500/50 rounded-lg p-6">
+          <h3 class="text-xl font-semibold text-purple-400 mb-6">🎵 Audio Generation (Phase 8)</h3>
+
+          <div class="grid grid-cols-2 gap-6">
+            <!-- Phase 7 Status -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-400 mb-2">Phase 7 Status</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Course manifest must be compiled before audio generation
+              </p>
+              <div class="p-3 rounded-lg border" :class="{
+                'bg-emerald-900/20 border-emerald-500/50': course.phases_completed?.includes('7'),
+                'bg-slate-900/20 border-slate-500/50': !course.phases_completed?.includes('7')
+              }">
+                <div class="flex items-center gap-2">
+                  <span v-if="course.phases_completed?.includes('7')" class="text-emerald-400 text-lg">✓</span>
+                  <span v-else class="text-slate-500 text-lg">○</span>
+                  <span class="font-semibold" :class="{
+                    'text-emerald-400': course.phases_completed?.includes('7'),
+                    'text-slate-400': !course.phases_completed?.includes('7')
+                  }">
+                    {{ course.phases_completed?.includes('7') ? 'Ready for Audio' : 'Manifest Not Compiled' }}
+                  </span>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">
+                  Phases completed: {{ course.phases_completed?.join(', ') || 'None' }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Phase 8 Audio Generation -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="font-semibold text-purple-400 mb-2">Generate Audio (TTS)</h4>
+              <p class="text-sm text-slate-400 mb-4">
+                Generate audio files for all course samples
+              </p>
+              <button
+                @click="startAudioGeneration"
+                :disabled="audioGenerationLoading || !course.phases_completed?.includes('7')"
+                class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
+              >
+                <span v-if="audioGenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                <span v-else>🎵</span>
+                {{ audioGenerationLoading ? 'Starting...' : 'Generate Audio' }}
+              </button>
+
+              <!-- Audio Generation Status -->
+              <div v-if="audioGenerationResult" class="mt-4 p-3 rounded-lg border" :class="{
+                'bg-purple-900/20 border-purple-500/50': audioGenerationResult.success,
+                'bg-red-900/20 border-red-500/50': audioGenerationResult.error
+              }">
+                <div class="text-sm">
+                  <div v-if="audioGenerationResult.success" class="text-purple-300">
+                    <div>✓ Job started: {{ audioGenerationResult.jobId }}</div>
+                    <div class="text-xs text-slate-400 mt-1">
+                      Phase: {{ audioGenerationResult.phase }}
+                    </div>
+                  </div>
+                  <div v-else class="text-red-300">
+                    {{ audioGenerationResult.error }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -1033,13 +1103,15 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import api from '../services/api'
 import { GITHUB_CONFIG } from '../config/github'
 import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
+import ProgressMonitor from '../components/ProgressMonitor.vue'
 
 const route = useRoute()
+const router = useRouter()
 const courseCode = route.params.courseCode
 
 const course = ref(null)
@@ -1070,6 +1142,7 @@ const savingIntro = ref(false) // Saving state
 
 // Validation & Fix panel state
 const showValidationPanel = ref(false)
+const showProgressMonitor = ref(false)
 const lutCheckLoading = ref(false)
 const lutCheckResult = ref(null)
 const infinitiveCheckLoading = ref(false)
@@ -1078,6 +1151,8 @@ const gapAnalysisLoading = ref(false)
 const gapAnalysisResult = ref(null)
 const regenerationLoading = ref(false)
 const regenerationResult = ref(null)
+const audioGenerationLoading = ref(false)
+const audioGenerationResult = ref(null)
 
 // Edit modal state
 const editModal = ref({
@@ -1112,15 +1187,16 @@ const tabs = [
   { id: 'introductions', label: 'INTRODUCTIONS' }
 ]
 
-// Count actual LEGOs from lego_pairs.json structure
+// Count actual LEGOs (only new: true) from lego_pairs.json structure
 const actualLegoCount = computed(() => {
   if (!legoPairsData.value?.seeds) return 0
 
-  // Count all LEGOs across all seeds
+  // Count only NEW LEGOs (new: true) - these are the actual teaching units
+  // LEGOs with new: false are just references to earlier LEGOs
   let count = 0
   for (const seed of legoPairsData.value.seeds) {
     if (seed.legos) {
-      count += seed.legos.length
+      count += seed.legos.filter(lego => lego.new === true).length
     }
   }
   return count
@@ -1249,15 +1325,15 @@ async function loadCourse() {
           // Transform to legoBreakdowns format for display
           legoBreakdowns.value = loadedLegoPairsData.seeds.map(seed => ({
             seed_id: seed.seed_id,
-            original_target: seed.seed_pair[0],
-            original_known: seed.seed_pair[1],
+            original_target: seed.seed_pair.target || seed.seed_pair[0],
+            original_known: seed.seed_pair.known || seed.seed_pair[1],
             lego_pairs: seed.legos.map(lego => ({
               lego_id: lego.id,
-              target_chunk: lego.target,
-              known_chunk: lego.known,
+              target_chunk: lego.lego?.target || lego.target,
+              known_chunk: lego.lego?.known || lego.known,
               lego_type: lego.type === 'M' ? 'COMPOSITE' : 'ATOMIC',
               componentization: lego.components ?
-                lego.components.map(c => `${c[0]} = ${c[1]}`).join(', ') :
+                lego.components.map(c => `${c.known} = ${c.target}`).join(', ') :
                 null
             }))
           }))
@@ -1266,8 +1342,8 @@ async function loadCourse() {
           legos.value = loadedLegoPairsData.seeds.flatMap(seed =>
             seed.legos.map(lego => ({
               id: lego.id,
-              target: lego.target,
-              known: lego.known,
+              target: lego.lego?.target || lego.target,
+              known: lego.lego?.known || lego.known,
               type: lego.type,
               new: lego.new
             }))
@@ -1302,6 +1378,7 @@ async function generateBaskets() {
   }
 
   generatingBaskets.value = true
+  showProgressMonitor.value = true // Show progress monitor
 
   try {
     const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/baskets/generate`, {
@@ -1321,13 +1398,15 @@ async function generateBaskets() {
 
     if (!response.ok) {
       throw new Error(data.error || 'Failed to start basket generation')
+      showProgressMonitor.value = false
     }
 
-    alert(`✅ Basket generation started!\n\nJob ID: ${data.jobId}\n\nA Claude Code agent has been spawned in iTerm2. Check the terminal window for progress.\n\nRefresh this page when complete to see the generated baskets.`)
+    // Success - monitor will show progress automatically
 
   } catch (err) {
     console.error('Failed to generate baskets:', err)
     alert(`❌ Failed to generate baskets:\n\n${err.message}`)
+    showProgressMonitor.value = false
   } finally {
     generatingBaskets.value = false
   }
@@ -2028,6 +2107,14 @@ async function confirmRegeneration() {
 
 function cancelRegeneration() {
   regenerationResult.value = null
+}
+
+// Phase 8: Audio Generation - Navigate to pipeline view
+function startAudioGeneration() {
+  router.push({
+    name: 'AudioPipelineView',
+    params: { courseCode: courseCode }
+  })
 }
 
 // Cleanup on component unmount

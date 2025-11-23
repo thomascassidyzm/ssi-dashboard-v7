@@ -1,0 +1,1149 @@
+{
+  "course": "bre_for_eng",
+  "generated_at": "2025-11-21T19:00:00.000Z",
+  "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
+  "phase": "3",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "I want to speak Breton with you now.",
+        "target": "C'hoant am eus komz brezhoneg ganeoc'h bremañ."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "C'hoant am eus"
+          },
+          "components": [
+            {
+              "known": "desire",
+              "target": "C'hoant"
+            },
+            {
+              "known": "my",
+              "target": "am"
+            },
+            {
+              "known": "have",
+              "target": "eus"
+            }
+          ]
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speak",
+            "target": "komz"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Breton",
+            "target": "brezhoneg"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "speak Breton",
+            "target": "komz brezhoneg"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "komz"
+            },
+            {
+              "known": "Breton",
+              "target": "brezhoneg"
+            }
+          ]
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with you",
+            "target": "ganeoc'h"
+          }
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "bremañ"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "I'm trying to learn.",
+        "target": "Klask a ran deskiñ."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "Klask a ran"
+          },
+          "components": [
+            {
+              "known": "try",
+              "target": "Klask"
+            },
+            {
+              "known": "[particle]",
+              "target": "a"
+            },
+            {
+              "known": "I do",
+              "target": "ran"
+            }
+          ]
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "deskiñ"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "how to speak as often as possible.",
+        "target": "penaos komz kerkent ha posupl."
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to speak",
+            "target": "penaos komz"
+          },
+          "components": [
+            {
+              "known": "how/how to",
+              "target": "penaos"
+            },
+            {
+              "known": "speak",
+              "target": "komz"
+            }
+          ]
+        },
+        {
+          "id": "S0003L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "komz"
+          }
+        },
+        {
+          "id": "S0003L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as often as possible",
+            "target": "kerkent ha posupl"
+          },
+          "components": [
+            {
+              "known": "as often",
+              "target": "kerkent"
+            },
+            {
+              "known": "as",
+              "target": "ha"
+            },
+            {
+              "known": "possible",
+              "target": "posupl"
+            }
+          ]
+        },
+        {
+          "id": "S0003L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "speak as often as possible",
+            "target": "komz kerkent ha posupl"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "komz"
+            },
+            {
+              "known": "as often",
+              "target": "kerkent"
+            },
+            {
+              "known": "as",
+              "target": "ha"
+            },
+            {
+              "known": "possible",
+              "target": "posupl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "how to say something in Breton",
+        "target": "penaos lâret un dra bennak e brezhoneg"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "penaos lâret"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "penaos"
+            },
+            {
+              "known": "to say",
+              "target": "lâret"
+            }
+          ]
+        },
+        {
+          "id": "S0004L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "un dra bennak"
+          },
+          "components": [
+            {
+              "known": "a/one",
+              "target": "un"
+            },
+            {
+              "known": "thing",
+              "target": "dra"
+            },
+            {
+              "known": "some/any",
+              "target": "bennak"
+            }
+          ]
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "in Breton",
+            "target": "e brezhoneg"
+          },
+          "components": [
+            {
+              "known": "in",
+              "target": "e"
+            },
+            {
+              "known": "Breton",
+              "target": "brezhoneg"
+            }
+          ]
+        },
+        {
+          "id": "S0004L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say something",
+            "target": "penaos lâret un dra bennak"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "penaos"
+            },
+            {
+              "known": "to say",
+              "target": "lâret"
+            },
+            {
+              "known": "a",
+              "target": "un"
+            },
+            {
+              "known": "thing",
+              "target": "dra"
+            },
+            {
+              "known": "some",
+              "target": "bennak"
+            }
+          ]
+        },
+        {
+          "id": "S0004L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to say something",
+            "target": "lâret un dra bennak"
+          },
+          "components": [
+            {
+              "known": "to say",
+              "target": "lâret"
+            },
+            {
+              "known": "a",
+              "target": "un"
+            },
+            {
+              "known": "thing",
+              "target": "dra"
+            },
+            {
+              "known": "some",
+              "target": "bennak"
+            }
+          ]
+        },
+        {
+          "id": "S0004L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "something in Breton",
+            "target": "un dra bennak e brezhoneg"
+          },
+          "components": [
+            {
+              "known": "a",
+              "target": "un"
+            },
+            {
+              "known": "thing",
+              "target": "dra"
+            },
+            {
+              "known": "some",
+              "target": "bennak"
+            },
+            {
+              "known": "in",
+              "target": "e"
+            },
+            {
+              "known": "Breton",
+              "target": "brezhoneg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "I'm going to practise speaking with someone else.",
+        "target": "Mont a ran da amprouiñ komz gant unan bennak all."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "Mont a ran da"
+          },
+          "components": [
+            {
+              "known": "going",
+              "target": "Mont"
+            },
+            {
+              "known": "I do",
+              "target": "a ran"
+            },
+            {
+              "known": "to",
+              "target": "da"
+            }
+          ]
+        },
+        {
+          "id": "S0005L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to practise",
+            "target": "Mont a ran da amprouiñ"
+          },
+          "components": [
+            {
+              "known": "I'm going to",
+              "target": "Mont a ran da"
+            },
+            {
+              "known": "practise",
+              "target": "amprouiñ"
+            }
+          ]
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "practise",
+            "target": "amprouiñ"
+          }
+        },
+        {
+          "id": "S0005L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "practise speaking",
+            "target": "amprouiñ komz"
+          },
+          "components": [
+            {
+              "known": "practise",
+              "target": "amprouiñ"
+            },
+            {
+              "known": "speak",
+              "target": "komz"
+            }
+          ]
+        },
+        {
+          "id": "S0005L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speaking",
+            "target": "komz"
+          }
+        },
+        {
+          "id": "S0005L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "someone",
+            "target": "unan bennak"
+          },
+          "components": [
+            {
+              "known": "one",
+              "target": "unan"
+            },
+            {
+              "known": "some",
+              "target": "bennak"
+            }
+          ]
+        },
+        {
+          "id": "S0005L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "someone else",
+            "target": "unan bennak all"
+          },
+          "components": [
+            {
+              "known": "someone",
+              "target": "unan bennak"
+            },
+            {
+              "known": "else",
+              "target": "all"
+            }
+          ]
+        },
+        {
+          "id": "S0005L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with someone else",
+            "target": "gant unan bennak all"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "gant"
+            },
+            {
+              "known": "someone",
+              "target": "unan bennak"
+            },
+            {
+              "known": "else",
+              "target": "all"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "I'm trying to remember a word.",
+        "target": "Klask a ran derc'hel soñj eus ur ger."
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "Klask a ran"
+          },
+          "components": [
+            {
+              "known": "try/seek",
+              "target": "Klask"
+            },
+            {
+              "known": "[particle]",
+              "target": "a"
+            },
+            {
+              "known": "I do",
+              "target": "ran"
+            }
+          ]
+        },
+        {
+          "id": "S0006L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "derc'hel soñj eus"
+          },
+          "components": [
+            {
+              "known": "to hold/keep",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            },
+            {
+              "known": "of",
+              "target": "eus"
+            }
+          ]
+        },
+        {
+          "id": "S0006L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember a word",
+            "target": "derc'hel soñj eus ur ger"
+          },
+          "components": [
+            {
+              "known": "to hold/keep",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            },
+            {
+              "known": "of",
+              "target": "eus"
+            },
+            {
+              "known": "a",
+              "target": "ur"
+            },
+            {
+              "known": "word",
+              "target": "ger"
+            }
+          ]
+        },
+        {
+          "id": "S0006L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a word",
+            "target": "ur ger"
+          },
+          "components": [
+            {
+              "known": "a",
+              "target": "ur"
+            },
+            {
+              "known": "word",
+              "target": "ger"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "I want to try as hard as I can today.",
+        "target": "C'hoant am eus klask kerkoulz hag a c'hellan hiziv."
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "C'hoant am eus"
+          },
+          "components": [
+            {
+              "known": "desire/want",
+              "target": "C'hoant"
+            },
+            {
+              "known": "at-me/I have",
+              "target": "am eus"
+            }
+          ]
+        },
+        {
+          "id": "S0007L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want to try",
+            "target": "C'hoant am eus klask"
+          },
+          "components": [
+            {
+              "known": "desire/want",
+              "target": "C'hoant"
+            },
+            {
+              "known": "at-me/I have",
+              "target": "am eus"
+            },
+            {
+              "known": "to try",
+              "target": "klask"
+            }
+          ]
+        },
+        {
+          "id": "S0007L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to try",
+            "target": "klask"
+          }
+        },
+        {
+          "id": "S0007L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as hard as I can",
+            "target": "kerkoulz hag a c'hellan"
+          },
+          "components": [
+            {
+              "known": "as much/as hard",
+              "target": "kerkoulz"
+            },
+            {
+              "known": "as/that",
+              "target": "hag"
+            },
+            {
+              "known": "that (particle)",
+              "target": "a"
+            },
+            {
+              "known": "I can",
+              "target": "c'hellan"
+            }
+          ]
+        },
+        {
+          "id": "S0007L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "today",
+            "target": "hiziv"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "I'm going to try to explain what I mean.",
+        "target": "Mont a ran da glask displegañ ar pezh a dalvez din."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to try",
+            "target": "Mont a ran da glask"
+          },
+          "components": [
+            {
+              "known": "go/to go",
+              "target": "Mont"
+            },
+            {
+              "known": "I do",
+              "target": "a ran"
+            },
+            {
+              "known": "to",
+              "target": "da"
+            },
+            {
+              "known": "try",
+              "target": "glask"
+            }
+          ]
+        },
+        {
+          "id": "S0008L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to try to explain",
+            "target": "da glask displegañ"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "da"
+            },
+            {
+              "known": "try",
+              "target": "glask"
+            },
+            {
+              "known": "explain/to explain",
+              "target": "displegañ"
+            }
+          ]
+        },
+        {
+          "id": "S0008L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to explain",
+            "target": "displegañ"
+          }
+        },
+        {
+          "id": "S0008L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "ar pezh a dalvez din"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "ar"
+            },
+            {
+              "known": "thing/what",
+              "target": "pezh"
+            },
+            {
+              "known": "that",
+              "target": "a"
+            },
+            {
+              "known": "means",
+              "target": "dalvez"
+            },
+            {
+              "known": "to me",
+              "target": "din"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "I speak a little Breton now.",
+        "target": "Komz a ran un nebeud brezhoneg bremañ."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak",
+            "target": "Komz a ran"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "Komz"
+            },
+            {
+              "known": "I",
+              "target": "a ran"
+            }
+          ]
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak a little",
+            "target": "Komz a ran un nebeud"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "Komz"
+            },
+            {
+              "known": "I",
+              "target": "a ran"
+            },
+            {
+              "known": "a little",
+              "target": "un nebeud"
+            }
+          ]
+        },
+        {
+          "id": "S0009L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I speak a little Breton",
+            "target": "Komz a ran un nebeud brezhoneg"
+          },
+          "components": [
+            {
+              "known": "speak",
+              "target": "Komz"
+            },
+            {
+              "known": "I",
+              "target": "a ran"
+            },
+            {
+              "known": "a little",
+              "target": "un nebeud"
+            },
+            {
+              "known": "Breton",
+              "target": "brezhoneg"
+            }
+          ]
+        },
+        {
+          "id": "S0009L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a little",
+            "target": "un nebeud"
+          }
+        },
+        {
+          "id": "S0009L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little Breton",
+            "target": "un nebeud brezhoneg"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un nebeud"
+            },
+            {
+              "known": "Breton",
+              "target": "brezhoneg"
+            }
+          ]
+        },
+        {
+          "id": "S0009L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Breton",
+            "target": "brezhoneg"
+          }
+        },
+        {
+          "id": "S0009L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "bremañ"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "target": "N'on ket sur ma c'hellan derc'hel soñj eus ar frazenn a-bezh."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "N'on ket sur"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "on"
+            },
+            {
+              "known": "not",
+              "target": "n'...ket"
+            },
+            {
+              "known": "sure",
+              "target": "sur"
+            }
+          ]
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "ma c'hellan"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "ma"
+            },
+            {
+              "known": "I can",
+              "target": "c'hellan"
+            }
+          ]
+        },
+        {
+          "id": "S0010L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "remember",
+            "target": "derc'hel soñj eus"
+          },
+          "components": [
+            {
+              "known": "hold",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            },
+            {
+              "known": "of/from",
+              "target": "eus"
+            }
+          ]
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the whole sentence",
+            "target": "ar frazenn a-bezh"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "ar"
+            },
+            {
+              "known": "sentence",
+              "target": "frazenn"
+            },
+            {
+              "known": "whole/entire",
+              "target": "a-bezh"
+            }
+          ]
+        },
+        {
+          "id": "S0010L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure if I can",
+            "target": "N'on ket sur ma c'hellan"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "on"
+            },
+            {
+              "known": "not",
+              "target": "n'...ket"
+            },
+            {
+              "known": "sure",
+              "target": "sur"
+            },
+            {
+              "known": "if",
+              "target": "ma"
+            },
+            {
+              "known": "I can",
+              "target": "c'hellan"
+            }
+          ]
+        },
+        {
+          "id": "S0010L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can remember",
+            "target": "ma c'hellan derc'hel soñj"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "ma"
+            },
+            {
+              "known": "I can",
+              "target": "c'hellan"
+            },
+            {
+              "known": "hold",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            }
+          ]
+        },
+        {
+          "id": "S0010L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "remember the whole sentence",
+            "target": "derc'hel soñj eus ar frazenn a-bezh"
+          },
+          "components": [
+            {
+              "known": "hold",
+              "target": "derc'hel"
+            },
+            {
+              "known": "memory",
+              "target": "soñj"
+            },
+            {
+              "known": "of/from",
+              "target": "eus"
+            },
+            {
+              "known": "the",
+              "target": "ar"
+            },
+            {
+              "known": "sentence",
+              "target": "frazenn"
+            },
+            {
+              "known": "whole",
+              "target": "a-bezh"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": "7.0",
+  "target": "bre",
+  "known": "eng",
+  "generated": "2025-11-21T18:52:00.000Z"
+}

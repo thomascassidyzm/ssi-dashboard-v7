@@ -8,12 +8,43 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
         <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2025-10-14 | Status: User-confirmed definitions</p>
+        <p class="text-sm text-slate-500 mt-2">Date: 2025-11-20 | APML v8.2.0 | Status: Current definitions</p>
+      </div>
+
+      <!-- Quick Reference -->
+      <div class="bg-emerald-900/20 border border-emerald-500/50 rounded-lg p-6 mb-12">
+        <h2 class="text-xl font-semibold text-emerald-300 mb-4">🎯 Quick Reference</h2>
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+          <div>
+            <p class="text-emerald-400 font-semibold mb-2">The 3 Core Concepts</p>
+            <ul class="text-slate-300 space-y-1">
+              <li>• SEED_PAIRS (668 per course)</li>
+              <li>• LEGO_PAIRS (~3000 per course)</li>
+              <li>• LEGO_BASKETS (one per new LEGO)</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-amber-400 font-semibold mb-2">LEGO Types</p>
+            <ul class="text-slate-300 space-y-1">
+              <li>• <strong>A-type:</strong> ATOMIC (simple chunks)</li>
+              <li>• <strong>M-type:</strong> MOLECULAR (with components)</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-blue-400 font-semibold mb-2">Storage Format</p>
+            <ul class="text-slate-300 space-y-1">
+              <li>• seed_pairs.json</li>
+              <li>• lego_pairs.json</li>
+              <li>• lego_baskets.json</li>
+              <li>• introductions.json</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!-- Core Concepts Section -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">The 3 Core User-Facing Concepts</h2>
+        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">The 3 Core Concepts</h2>
 
         <!-- SEED_PAIRS -->
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
@@ -25,28 +56,25 @@
           </div>
 
           <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">Example:</span>
+            <div class="bg-slate-900 p-4 rounded mt-2">
+              <p class="text-slate-300 text-sm mb-2"><strong>Canonical:</strong> "I want to speak {target} with you now."</p>
+              <p class="text-slate-300 text-sm mb-2"><strong>Known (English):</strong> "I want to speak Spanish with you now."</p>
+              <p class="text-slate-300 text-sm"><strong>Target (Spanish):</strong> "Quiero hablar español contigo ahora."</p>
+            </div>
+          </div>
+
+          <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Reference Format:</span>
             <p class="text-slate-200 mt-1">S0001 to S0668 (S + 4-digit number)</p>
           </div>
 
           <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Structure:</span>
-            <pre class="bg-slate-900 p-4 rounded mt-2 text-sm overflow-x-auto"><code>{
-  "seed_id": "S0041",
-  "canonical_english": "I want to speak",
-  "target_language": "Voglio parlare",
-  "known_language": "Je veux parler",
-  "metadata": { ... }
-}</code></pre>
-          </div>
-
-          <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Key Properties:</span>
             <ul class="list-disc list-inside text-slate-200 mt-2 space-y-1">
-              <li>Total: 668 per course</li>
-              <li>Language-direction specific (ita_for_fra has different SEED_PAIRS than ita_for_eng)</li>
-              <li>Must be "lego_complete" - decomposes into LEGO_PAIRS that tile back perfectly</li>
-              <li><strong>User can view/edit:</strong> See all known-target pairs</li>
+              <li>Total: 668 per course (pedagogically ordered)</li>
+              <li>Language-pair specific (spa_for_eng ≠ spa_for_fra)</li>
+              <li>Must be "LEGO complete" - decomposes into LEGOs that tile back perfectly</li>
             </ul>
           </div>
 
@@ -57,7 +85,7 @@
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/translations/</span>
+              <span class="text-slate-300 ml-2 font-mono text-xs">vfs/courses/{course_code}/seed_pairs.json</span>
             </div>
           </div>
         </div>
@@ -68,69 +96,67 @@
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Definition:</span>
-            <p class="text-slate-200 mt-1">Forward-deterministic teaching unit extracted from SEED_PAIRS. A LEGO cannot exist unless it has BOTH target and known languages mapped.</p>
+            <p class="text-slate-200 mt-1">Teaching units extracted from SEED_PAIRS. A LEGO is a pedagogically-sound chunk that removes learner uncertainty.</p>
+          </div>
+
+          <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">The Two Heuristics:</span>
+            <div class="bg-slate-900 p-4 rounded mt-2 space-y-3">
+              <div>
+                <p class="text-emerald-400 font-semibold text-sm">1. Remove Learner Uncertainty</p>
+                <p class="text-slate-300 text-xs">When learner hears KNOWN phrase → ZERO uncertainty about TARGET phrase</p>
+              </div>
+              <div>
+                <p class="text-amber-400 font-semibold text-sm">2. Maximize Patterns with Minimum Vocab</p>
+                <p class="text-slate-300 text-xs">Create overlapping chunks → each LEGO generates multiple sentence patterns</p>
+              </div>
+            </div>
           </div>
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Reference Format:</span>
-            <p class="text-slate-200 mt-1">S0041L02 (seed reference + L + position)</p>
-          </div>
-
-          <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Structure (BASE LEGO example):</span>
-            <pre class="bg-slate-900 p-4 rounded mt-2 text-sm overflow-x-auto"><code>{
-  "provenance": "S0041L01",
-  "target_text": "Voglio",
-  "known_text": "Je veux",
-  "type": "BASE",
-  "metadata": { ... }
-}</code></pre>
+            <p class="text-slate-200 mt-1">S0001L01, S0001L02... (seed + L + position)</p>
           </div>
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Example Breakdown:</span>
             <div class="bg-slate-900 p-4 rounded mt-2 text-sm">
-              <p class="text-slate-300 mb-2">SEED_PAIR S0041: "I want to speak"</p>
-              <p class="text-slate-400 mb-3">Decomposes into 2 LEGO_PAIRS:</p>
-              <ul class="space-y-2 text-slate-300">
-                <li>• <strong>S0041L01:</strong> "Voglio" = "Je veux" (I want) - BASE LEGO</li>
-                <li>• <strong>S0041L02:</strong> "parlare" = "parler" (to speak) - BASE LEGO</li>
+              <p class="text-slate-300 mb-2"><strong>SEED_PAIR S0001:</strong></p>
+              <p class="text-slate-400 mb-1">Known: "I want to speak Spanish with you now."</p>
+              <p class="text-slate-400 mb-3">Target: "Quiero hablar español contigo ahora."</p>
+
+              <p class="text-emerald-400 mb-2">Decomposes into 5 LEGO_PAIRS:</p>
+              <ul class="space-y-1 text-slate-300 ml-4">
+                <li>• <strong>S0001L01:</strong> "quiero" = "I want" <span class="text-xs text-blue-400">(A-type: ATOMIC)</span></li>
+                <li>• <strong>S0001L02:</strong> "hablar" = "to speak" <span class="text-xs text-blue-400">(A-type: ATOMIC)</span></li>
+                <li>• <strong>S0001L03:</strong> "español" = "Spanish" <span class="text-xs text-blue-400">(A-type: ATOMIC)</span></li>
+                <li>• <strong>S0001L04:</strong> "contigo" = "with you" <span class="text-xs text-blue-400">(A-type: ATOMIC)</span></li>
+                <li>• <strong>S0001L05:</strong> "ahora" = "now" <span class="text-xs text-blue-400">(A-type: ATOMIC)</span></li>
               </ul>
-              <p class="text-emerald-400 mt-3 text-xs">✓ These 2 LEGOs tile perfectly to reconstruct the SEED_PAIR (lego_complete)</p>
+
+              <p class="text-emerald-400 mt-3 text-xs">✓ These 5 LEGOs tile perfectly to reconstruct the SEED_PAIR (LEGO complete)</p>
             </div>
           </div>
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Key Properties:</span>
             <ul class="list-disc list-inside text-slate-200 mt-2 space-y-1">
-              <li>Course-specific AND language-direction specific</li>
-              <li>Must pass FD_LOOP test (target → known → target = IDENTICAL)</li>
-              <li>Two types:
-                <ul class="list-disc list-inside ml-6 mt-1">
-                  <li><strong>BASE LEGO:</strong> Atomic, cannot be decomposed further</li>
-                  <li><strong>COMPOSITE LEGO:</strong> Contains BASE LEGOs + glue words, needs componentization</li>
-                </ul>
-              </li>
-              <li><strong>User can view/edit:</strong> See all SEED_PAIR to LEGO_PAIRS breakdowns with provenance</li>
-              <li><strong>Editing:</strong> Movable dividers to try different decompositions</li>
-              <li>Count: ~2000-3000 per course</li>
+              <li>Course-specific AND language-pair specific</li>
+              <li>Two types: A-type (ATOMIC) and M-type (MOLECULAR)</li>
+              <li>Count: ~2500-3500 per course (depends on language complexity)</li>
+              <li>Overlapping allowed - maximizes recombination power</li>
             </ul>
           </div>
 
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (LEGO Decomposition)</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (LEGO Extraction)</span>
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/legos_deduplicated/</span>
+              <span class="text-slate-300 ml-2 font-mono text-xs">vfs/courses/{course_code}/lego_pairs.json</span>
             </div>
-          </div>
-
-          <div class="mt-4 bg-slate-900 p-4 rounded">
-            <p class="text-sm text-slate-400 mb-2"><strong>Critical Concept: "lego_complete"</strong></p>
-            <p class="text-slate-300 text-sm">LEGO_PAIRS must tile to re-form the SEED_PAIR precisely. No gaps, no overlaps, perfect reconstruction.</p>
           </div>
         </div>
 
@@ -140,87 +166,51 @@
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Definition:</span>
-            <p class="text-slate-200 mt-1">Complete set of practice phrases associated with ONE LEGO_PAIR, showing how the new LEGO plugs into previously learned LEGOs.</p>
+            <p class="text-slate-200 mt-1">10 practice phrases for ONE LEGO, showing how it plugs into previously-learned LEGOs</p>
           </div>
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Structure:</span>
-            <pre class="bg-slate-900 p-4 rounded mt-2 text-sm overflow-x-auto"><code>{
-  "lego_pair_id": "S0041L02",
-  "debut_phrases": [ ... ],    // Up to 8 d-phrases
-  "eternal_phrases": [ ... ],  // Up to 5 e-phrases
-  "metadata": { ... }
-}</code></pre>
+            <div class="bg-slate-900 p-4 rounded mt-2 text-sm">
+              <p class="text-slate-300 mb-3"><strong>10 practice phrases in progressive complexity:</strong></p>
+              <div class="space-y-2">
+                <div class="bg-slate-800 p-3 rounded border-l-4 border-blue-500">
+                  <p class="text-blue-300 font-semibold mb-1">Phrases 1-8: Scaffolding (Debut Practice)</p>
+                  <p class="text-slate-300 text-xs mb-2">Used ONCE during first introduction of this LEGO</p>
+                  <p class="text-slate-400 text-xs">Progressive complexity: 2 short → 2 medium → 2 longer → 2 more complex</p>
+                </div>
+                <div class="bg-slate-800 p-3 rounded border-l-4 border-emerald-500">
+                  <p class="text-emerald-300 font-semibold mb-1">Phrases 9-10: Eternal Practice</p>
+                  <p class="text-slate-300 text-xs mb-2">Used FOREVER - practiced hundreds of times throughout course</p>
+                  <p class="text-slate-400 text-xs">Most complex, natural, conversational phrases (7-10 words)</p>
+                </div>
+              </div>
+              <p class="text-amber-400 text-xs mt-3">App "pulls from both ends" - phrase #1 for simplest, phrase #10 for most complex</p>
+            </div>
           </div>
 
           <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Contains TWO types of practice phrases with fundamentally different purposes:</span>
-            <div class="space-y-3 mt-2">
-              <div class="bg-slate-900 p-3 rounded border-l-4 border-emerald-500">
-                <p class="text-emerald-300 font-medium mb-2">ETERNAL_PHRASES (e-phrases): Permanent Practice Material</p>
-                <div class="mb-2 bg-slate-800 p-2 rounded">
-                  <p class="text-xs font-semibold text-emerald-400 mb-1">⏰ WHEN USED:</p>
-                  <p class="text-slate-300 text-xs">At ANY point in the course AFTER this LEGO's introduction - reusable FOREVER</p>
-                </div>
-                <div class="mb-2 bg-slate-800 p-2 rounded">
-                  <p class="text-xs font-semibold text-amber-400 mb-1">🔁 FREQUENCY:</p>
-                  <p class="text-slate-300 text-xs">Permanent practice material - practiced hundreds of times throughout entire course</p>
-                </div>
-                <div class="mb-2 bg-slate-800 p-2 rounded">
-                  <p class="text-xs font-semibold text-blue-400 mb-1">🎯 PURPOSE:</p>
-                  <p class="text-slate-300 text-xs">Long-term practice for this LEGO (e.g., learner at lesson #50 practicing LEGO #10 uses these)</p>
-                </div>
-                <div class="bg-red-900/30 p-2 rounded border border-red-700">
-                  <p class="text-xs font-semibold text-red-300 mb-1">✅ QUALITY REQUIREMENT:</p>
-                  <ul class="list-disc list-inside text-slate-300 text-xs space-y-1">
-                    <li>MUST be excellent, natural, conversational (7-10 words)</li>
-                    <li>Perfect grammar in BOTH languages</li>
-                    <li>Quality over quantity (3 excellent > 5 forced)</li>
-                    <li><strong class="text-red-400">UNFORGIVEABLE to have grammar errors</strong> - these are practiced forever!</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="bg-slate-900 p-3 rounded border-l-4 border-blue-500">
-                <p class="text-blue-300 font-medium mb-2">DEBUT_PHRASES (d-phrases): Temporary Scaffolding</p>
-                <div class="mb-2 bg-slate-800 p-2 rounded">
-                  <p class="text-xs font-semibold text-emerald-400 mb-1">⏰ WHEN USED:</p>
-                  <p class="text-slate-300 text-xs">ONLY during this LEGO's FIRST introduction - used ONCE, never repeated</p>
-                </div>
-                <div class="mb-2 bg-slate-800 p-2 rounded">
-                  <p class="text-xs font-semibold text-amber-400 mb-1">🔁 FREQUENCY:</p>
-                  <p class="text-slate-300 text-xs">Temporary scaffolding - shown once during debut, then discarded forever</p>
-                </div>
-                <div class="mb-2 bg-slate-800 p-2 rounded">
-                  <p class="text-xs font-semibold text-blue-400 mb-1">🎯 PURPOSE:</p>
-                  <p class="text-slate-300 text-xs">Help learner build up to full sentences progressively (2-LEGO → 3-LEGO → 4-LEGO → 5-LEGO)</p>
-                </div>
-                <div class="bg-blue-900/30 p-2 rounded border border-blue-700">
-                  <p class="text-xs font-semibold text-blue-300 mb-1">✅ QUALITY REQUIREMENT:</p>
-                  <ul class="list-disc list-inside text-slate-300 text-xs space-y-1">
-                    <li>Syntactically correct, but CAN be awkward fragments</li>
-                    <li>Expanding window fragments (progressive vocabulary only)</li>
-                    <li>Focus on demonstrating progressive complexity, not naturalness</li>
-                    <li>Temporary learning aids - quality less critical since used once</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="bg-amber-900/20 p-3 rounded border border-amber-700 mt-3">
-                <p class="text-xs font-semibold text-amber-300 mb-2">🏍️ ANALOGY: Training Wheels</p>
-                <p class="text-slate-300 text-xs mb-2"><strong>E-phrases</strong> = Actual cycling (used forever after you learn)</p>
-                <p class="text-slate-300 text-xs"><strong>D-phrases</strong> = Training wheels (used once during initial learning, then removed)</p>
-              </div>
-            </div>
+            <span class="text-sm font-medium text-slate-400">Example for "quiero" (I want):</span>
+            <pre class="bg-slate-900 p-4 rounded mt-2 text-xs overflow-x-auto"><code>[
+  {"known": "I want", "target": "Quiero"},                                    // Phrase 1: bare LEGO
+  {"known": "I want to speak", "target": "Quiero hablar"},                    // Phrase 2: 2 LEGOs
+  {"known": "I want to speak Spanish", "target": "Quiero hablar español"},    // Phrase 3: 3 LEGOs
+  {"known": "I want to speak with you", "target": "Quiero hablar contigo"},   // Phrase 4: 3 LEGOs
+  {"known": "I want to speak Spanish with you", "target": "Quiero hablar español contigo"},  // Phrase 5: 4 LEGOs
+  ...                                                                          // Phrases 6-8: continue building
+  {"known": "I want to speak Spanish with you now and tomorrow", "target": "Quiero hablar español contigo ahora y mañana"},  // Phrase 9: ETERNAL
+  {"known": "I want to speak Spanish with you now", "target": "Quiero hablar español contigo ahora"}  // Phrase 10: ETERNAL (complete seed)
+]</code></pre>
           </div>
 
           <div class="mb-4">
             <span class="text-sm font-medium text-slate-400">Key Properties:</span>
             <ul class="list-disc list-inside text-slate-200 mt-2 space-y-1">
-              <li><strong>One basket per LEGO_PAIR (1:1 relationship)</strong></li>
-              <li>Shows how new LEGO combines with existing LEGOs</li>
-              <li>Progressive vocabulary constraint (only use previously learned LEGOs)</li>
-              <li>Count: Matches LEGO_PAIRS count (if 2341 LEGO_PAIRS → 2341 LEGO_BASKETS)</li>
+              <li><strong>One basket per new LEGO</strong> (1:1 relationship)</li>
+              <li>Exactly 10 phrases per basket (2-2-2-4 distribution: 2 simple, 2 medium, 2 longer, 4 longest)</li>
+              <li><strong>Vocabulary constraint:</strong> Can ONLY use LEGOs learner already knows</li>
+              <li>Final LEGO in seed → phrase #10 = complete seed sentence</li>
+              <li>Count: Matches new LEGO count (~2500-3500 baskets per course)</li>
             </ul>
           </div>
 
@@ -231,7 +221,7 @@
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/baskets/</span>
+              <span class="text-slate-300 ml-2 font-mono text-xs">vfs/courses/{course_code}/lego_baskets.json</span>
             </div>
           </div>
         </div>
@@ -239,76 +229,72 @@
 
       <!-- LEGO Types Section -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">LEGO Types (Critical Distinction)</h2>
-
-        <!-- Alternative Terminology -->
-        <div class="bg-blue-900/20 border border-blue-500/50 rounded-lg p-4 mb-6">
-          <p class="text-sm text-blue-300 mb-2"><strong>📚 Alternative Terminology (Chemistry Metaphor):</strong></p>
-          <ul class="text-slate-200 text-sm space-y-1">
-            <li><strong>ATOMIC</strong> = BASE LEGO (fundamental, cannot be decomposed)</li>
-            <li><strong>MOLECULAR</strong> = COMPOSITE LEGO (made from atoms + bonds)</li>
-          </ul>
-          <p class="text-xs text-slate-400 mt-2">Both terms are valid - use whichever is clearer in context</p>
-        </div>
+        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">LEGO Types (ATOMIC vs MOLECULAR)</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- BASE LEGO -->
+          <!-- ATOMIC -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-emerald-300 mb-3">BASE LEGO (Atomic)</h3>
-            <ul class="list-disc list-inside text-slate-200 space-y-2">
-              <li>Fundamental FD unit</li>
-              <li>Cannot be decomposed further</li>
-              <li>Single, atomic unit</li>
+            <h3 class="text-lg font-semibold text-blue-300 mb-3">A-type: ATOMIC</h3>
+            <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
+              <li>Cannot be split, even in principle</li>
+              <li>Like an atom - indivisible</li>
+              <li>Must be 2+ words in at least one language</li>
+              <li>No component breakdown possible</li>
             </ul>
             <div class="mt-4 bg-slate-900 p-3 rounded">
               <p class="text-sm text-slate-400 mb-1">Examples:</p>
-              <p class="text-slate-200 text-sm">"Voglio" = "I want"</p>
-              <p class="text-slate-200 text-sm">"voy" = "I'm going"</p>
+              <p class="text-slate-200 text-sm">"quiero" = "I want" <span class="text-xs text-slate-500">(can't split "I want")</span></p>
+              <p class="text-slate-200 text-sm">"hablar" = "to speak" <span class="text-xs text-slate-500">(can't split "to speak")</span></p>
+              <p class="text-slate-200 text-sm">"que hables" = "you to speak" <span class="text-xs text-slate-500">(indivisible)</span></p>
             </div>
           </div>
 
-          <!-- COMPOSITE LEGO -->
+          <!-- MOLECULAR -->
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-emerald-300 mb-3">COMPOSITE LEGO (Molecular)</h3>
-            <ul class="list-disc list-inside text-slate-200 space-y-2">
-              <li>FD unit comprising BASE LEGOs + glue words</li>
-              <li>BASE LEGOs within DO NOT TILE (can't concatenate cleanly)</li>
-              <li>Needs componentization explanation</li>
+            <h3 class="text-lg font-semibold text-emerald-300 mb-3">M-type: MOLECULAR</h3>
+            <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
+              <li>The MOLECULE is the unit that passes LUT</li>
+              <li>Components show LITERAL translations</li>
+              <li>Literal translations reveal how Spanish patterns work</li>
+              <li>You chunk UP to get consistent meaning</li>
             </ul>
-            <div class="mt-4 bg-slate-900 p-3 rounded">
-              <p class="text-sm text-slate-400 mb-1">Examples:</p>
-              <p class="text-slate-200 text-sm">"voy a decir" = "I'm going to say" (glue: "a")</p>
-              <p class="text-slate-200 text-sm">"sto per esercitarmi" = "I'm going to practice" (glue: "per")</p>
+            <div class="mt-4 bg-slate-900 p-3 rounded space-y-3">
+              <div>
+                <p class="text-sm text-slate-400 mb-1">Example: "you to speak"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "que hables"</p>
+                <p class="text-amber-400 text-xs mb-1">Literal translations:</p>
+                <p class="text-slate-300 text-xs ml-2">• "que" = "that"</p>
+                <p class="text-slate-300 text-xs ml-2">• "hables" = "speak" (subjunctive)</p>
+                <p class="text-emerald-400 text-xs mt-2">→ Learner discovers: Spanish uses "that you speak" pattern!</p>
+              </div>
+              <div>
+                <p class="text-sm text-slate-400 mb-1">Example: "ready to go"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "preparado para ir"</p>
+                <p class="text-amber-400 text-xs mb-1">Literal translations:</p>
+                <p class="text-slate-300 text-xs ml-2">• "preparado" = "ready/prepared"</p>
+                <p class="text-slate-300 text-xs ml-2">• "para" = "for"</p>
+                <p class="text-slate-300 text-xs ml-2">• "ir" = "to go"</p>
+                <p class="text-emerald-400 text-xs mt-2">→ Learner sees: Spanish says "ready for to go"!</p>
+              </div>
+              <div>
+                <p class="text-sm text-slate-400 mb-1">Example: "I've been learning"</p>
+                <p class="text-slate-200 text-sm mb-1"><strong>Target:</strong> "llevo aprendiendo"</p>
+                <p class="text-amber-400 text-xs mb-1">Literal translations:</p>
+                <p class="text-slate-300 text-xs ml-2">• "llevo" = "I carry"</p>
+                <p class="text-slate-300 text-xs ml-2">• "aprendiendo" = "learning"</p>
+                <p class="text-emerald-400 text-xs mt-2">→ Learner discovers: Spanish uses "I carry learning" for ongoing action!</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- FEEDERS -->
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mt-6">
-          <h3 class="text-lg font-semibold text-emerald-300 mb-3">FEEDERS</h3>
-          <p class="text-slate-200 mb-3">BASE LEGOs that participate in a COMPOSITE</p>
-          <ul class="list-disc list-inside text-slate-200 space-y-2">
-            <li>Have dual existence:
-              <ol class="list-decimal list-inside ml-6 mt-1 text-slate-300">
-                <li>As independent BASE LEGOs (with their own baskets)</li>
-                <li>As components within COMPOSITE LEGO</li>
-              </ol>
-            </li>
-            <li>Referenced with F## suffix in COMPOSITE context (e.g., S0041F01)</li>
-          </ul>
-        </div>
-      </section>
+        <!-- Componentization -->
+        <div class="bg-gradient-to-r from-emerald-900/30 to-blue-900/30 border-2 border-emerald-500/50 rounded-lg p-6 mt-6">
+          <h3 class="text-xl font-semibold text-emerald-300 mb-4">🔬 Componentization: The Pedagogical Superpower</h3>
 
-      <!-- Componentization Section (CRITICAL PEDAGOGY) -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Componentization: The Core Pedagogical Insight 🎓</h2>
+          <p class="text-slate-200 mb-4">M-type LEGOs show <strong>literal translations</strong> component-by-component. Learners discover grammar patterns through transparent literal meanings.</p>
 
-        <div class="bg-gradient-to-r from-emerald-900/30 to-blue-900/30 border-2 border-emerald-500/50 rounded-lg p-6 mb-6">
-          <h3 class="text-xl font-semibold text-emerald-300 mb-4">🔬 Why Literal Translations Matter</h3>
-
-          <p class="text-slate-200 mb-4"><strong>Core Principle:</strong> Components are explained in their <strong>LITERAL meanings</strong> so learners can SEE HOW the target language builds patterns from parts.</p>
-
-          <div class="bg-slate-900 p-4 rounded-lg mb-4">
+          <div class="bg-slate-900 p-4 rounded-lg">
             <p class="text-emerald-400 font-semibold mb-3">Example: "as often as possible"</p>
 
             <div class="space-y-3">
@@ -318,85 +304,74 @@
               </div>
 
               <div>
-                <p class="text-amber-300 text-sm font-medium">Literal Breakdown (MOLECULAR/COMPOSITE):</p>
-                <div class="ml-4 space-y-1 text-slate-200">
-                  <p><span class="text-emerald-400">lo más</span> = <span class="text-slate-300">the most</span> <span class="text-xs text-slate-500">(ATOMIC component)</span></p>
-                  <p><span class="text-emerald-400">frecuentemente</span> = <span class="text-slate-300">often</span> <span class="text-xs text-slate-500">(ATOMIC component)</span></p>
-                  <p><span class="text-emerald-400">posible</span> = <span class="text-slate-300">possible</span> <span class="text-xs text-slate-500">(ATOMIC component)</span></p>
+                <p class="text-amber-300 text-sm font-medium">Literal Component Breakdown:</p>
+                <div class="ml-4 space-y-1 text-slate-200 text-sm">
+                  <p><span class="text-emerald-400">lo más</span> = <span class="text-slate-300">the most</span></p>
+                  <p><span class="text-emerald-400">frecuentemente</span> = <span class="text-slate-300">often</span></p>
+                  <p><span class="text-emerald-400">posible</span> = <span class="text-slate-300">possible</span></p>
                 </div>
               </div>
 
               <div class="bg-emerald-900/30 border border-emerald-700 p-3 rounded mt-3">
-                <p class="text-emerald-300 text-sm font-semibold mb-2">✨ The Magic: Learners Discover Grammar Patterns</p>
-                <ul class="text-slate-200 text-sm space-y-2">
-                  <li>📍 Because they know: <strong>"lo más"</strong> = "the most"</li>
-                  <li>📍 And they know: <strong>"posible"</strong> = "possible"</li>
-                  <li>🎯 <strong>They can now use</strong>: <strong>"lo más posible"</strong> = "the most possible"</li>
-                  <li>🎯 <strong>They understand</strong>: Spanish uses "the most" + adjective/adverb pattern</li>
+                <p class="text-emerald-300 text-sm font-semibold mb-2">✨ The Magic: Pattern Discovery</p>
+                <ul class="text-slate-200 text-sm space-y-1">
+                  <li>📍 Learner knows: <strong>"lo más"</strong> = "the most"</li>
+                  <li>📍 Learner knows: <strong>"posible"</strong> = "possible"</li>
+                  <li>🎯 <strong>Learner can now say</strong>: <strong>"lo más posible"</strong> = "the most possible"</li>
+                  <li>🎯 <strong>Learner understands</strong>: Spanish uses "the most" + adjective pattern</li>
                 </ul>
                 <p class="text-amber-200 text-xs mt-3 italic">↑ No grammar rules explained! They SEE the pattern through literal meanings.</p>
               </div>
             </div>
           </div>
-
-          <div class="bg-slate-800 border border-slate-600 p-4 rounded-lg">
-            <h4 class="text-emerald-300 font-semibold mb-3">Why This Works (No Grammar Explanations Needed)</h4>
-
-            <div class="space-y-3 text-slate-200 text-sm">
-              <div>
-                <p class="text-blue-300 font-medium mb-1">Traditional Approach:</p>
-                <p class="text-slate-400 italic">"In Spanish, superlative constructions use 'lo más' + adverb/adjective + 'posible' to express 'as [X] as possible'..."</p>
-                <p class="text-red-400 text-xs mt-1">❌ Requires metalinguistic explanation, explicit rule learning</p>
-              </div>
-
-              <div>
-                <p class="text-emerald-300 font-medium mb-1">SSI LEGO Approach:</p>
-                <p class="text-slate-200">Learner sees: "lo más" = "the most", "posible" = "possible"</p>
-                <p class="text-slate-200">Learner thinks: <em>"Oh! They literally say 'the most possible' - I can use that!"</em></p>
-                <p class="text-emerald-400 text-xs mt-1">✅ Grammar pattern acquired through transparent literal meanings</p>
-              </div>
-            </div>
-          </div>
         </div>
+      </section>
 
-        <!-- Additional Examples -->
+      <!-- Supporting Concepts -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Supporting Concepts</h2>
+
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <h3 class="text-lg font-semibold text-emerald-300 mb-4">More Examples of Literal-Driven Learning</h3>
+          <h3 class="text-lg font-semibold text-emerald-300 mb-3">LEGO_INTRODUCTIONS</h3>
 
-          <div class="space-y-4">
-            <div class="bg-slate-900 p-4 rounded">
-              <p class="text-slate-300 font-medium mb-2">Italian: "sto per esercitarmi"</p>
-              <div class="ml-4 space-y-1 text-sm">
-                <p><span class="text-blue-300">Literal:</span> <span class="text-slate-200">"sto" = I am, "per" = for/to, "esercitarmi" = practice myself</span></p>
-                <p><span class="text-emerald-300">Pattern Learned:</span> <span class="text-slate-200">Italian uses "I am for [verb]" to mean "I'm about to [verb]"</span></p>
-                <p><span class="text-amber-300">Generative:</span> <span class="text-slate-200">Learner can now say "sto per mangiare" (I'm about to eat)</span></p>
-              </div>
-            </div>
+          <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">Definition:</span>
+            <p class="text-slate-200 mt-1">Natural language presentations explaining LEGOs in the known language</p>
+          </div>
 
-            <div class="bg-slate-900 p-4 rounded">
-              <p class="text-slate-300 font-medium mb-2">Spanish: "voy a decir"</p>
-              <div class="ml-4 space-y-1 text-sm">
-                <p><span class="text-blue-300">Literal:</span> <span class="text-slate-200">"voy" = I go, "a" = to, "decir" = say</span></p>
-                <p><span class="text-emerald-300">Pattern Learned:</span> <span class="text-slate-200">Spanish uses "I go to [verb]" for immediate future</span></p>
-                <p><span class="text-amber-300">Generative:</span> <span class="text-slate-200">Learner can now say "voy a comer" (I'm going to eat)</span></p>
-              </div>
+          <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">Example:</span>
+            <div class="bg-slate-900 p-4 rounded mt-2 text-sm">
+              <p class="text-slate-300 italic">"The Spanish for 'I want', as in 'I want to speak Spanish with you now', is: ... 'quiero' ... 'quiero'"</p>
             </div>
           </div>
 
-          <div class="bg-blue-900/20 border border-blue-600 p-3 rounded mt-4">
-            <p class="text-blue-300 text-sm font-semibold mb-1">🧠 Cognitive Principle</p>
-            <p class="text-slate-300 text-xs">When learners know the literal meaning of each component, they can:</p>
-            <ul class="text-slate-300 text-xs mt-2 space-y-1 ml-4">
-              <li>✓ Recombine components creatively</li>
-              <li>✓ Understand how the target language "thinks"</li>
-              <li>✓ Acquire grammar patterns implicitly (without rules)</li>
-              <li>✓ Generate novel correct sentences they've never seen</li>
+          <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">Key Properties:</span>
+            <ul class="list-disc list-inside text-slate-200 mt-2 space-y-1">
+              <li>Spoken in known language (source language)</li>
+              <li>Provides context for where LEGO appears</li>
+              <li>Generated automatically by Phase 3 (<1s overhead)</li>
             </ul>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span class="text-slate-400">Phase:</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (includes Phase 6)</span>
+            </div>
+            <div>
+              <span class="text-slate-400">Storage:</span>
+              <span class="text-slate-300 ml-2 font-mono text-xs">vfs/courses/{course_code}/introductions.json</span>
+            </div>
+          </div>
+          <div class="mt-3 bg-teal-900/20 border border-teal-500/50 rounded p-3">
+            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v8.2.0, introduction generation is integrated into Phase 3 and runs automatically after LEGO extraction (<1s overhead).</p>
           </div>
         </div>
       </section>
 
-      <!-- Reference Formats Section -->
+      <!-- Reference Formats -->
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Reference Formats</h2>
 
@@ -413,76 +388,26 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-emerald-300 mb-3">LEGO References</h3>
             <ul class="text-slate-200 space-y-2">
-              <li><strong>Format:</strong> S{"{seed}"}L{"{position}"}</li>
-              <li><strong>Example:</strong> <code class="bg-slate-900 px-2 py-1 rounded">S0041L02</code> (Seed 41, LEGO position 2)</li>
-              <li><strong>Feeder Format:</strong> S{"{seed}"}F{"{position}"}</li>
-              <li><strong>Example:</strong> <code class="bg-slate-900 px-2 py-1 rounded">S0041F01</code> (Seed 41, FEEDER position 1)</li>
+              <li><strong>Format:</strong> S{seed}L{position}</li>
+              <li><strong>Example:</strong> <code class="bg-slate-900 px-2 py-1 rounded">S0041L02</code></li>
+              <li class="text-slate-400 text-sm">(Seed 41, LEGO position 2)</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- Supporting Concepts Section -->
+      <!-- Terminology to Avoid -->
       <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Supporting Concepts</h2>
-
-        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
-          <h3 class="text-lg font-semibold text-emerald-300 mb-3">LEGO_INTRODUCTIONS</h3>
-
-          <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Definition:</span>
-            <p class="text-slate-200 mt-1">Intelligence about LEGO type (BASE vs COMPOSITE) and componentization details</p>
-          </div>
-
-          <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Structure:</span>
-            <pre class="bg-slate-900 p-4 rounded mt-2 text-sm overflow-x-auto"><code>{
-  "lego_pair_id": "S0041L02",
-  "type": "COMPOSITE",
-  "feeders": [
-    { "id": "F01", "target": "voy", "known": "I'm going" },
-    { "id": "F02", "target": "a decir", "known": "to say" }
-  ],
-  "componentization": {
-    "explanation": "You already know 'voy' and 'decir', just add 'a' to connect them"
-  }
-}</code></pre>
-          </div>
-
-          <div class="mb-4">
-            <span class="text-sm font-medium text-slate-400">Key Properties:</span>
-            <ul class="list-disc list-inside text-slate-200 mt-2 space-y-1">
-              <li>Explains BASE vs COMPOSITE distinction</li>
-              <li>For COMPOSITE LEGOs: shows how they break down into FEEDERs</li>
-              <li>Helps learner understand "you already know the parts"</li>
-            </ul>
-          </div>
-
-          <div class="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 6 (Introductions)</span>
-            </div>
-            <div>
-              <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2">vfs/courses/{course_code}/amino_acids/introductions/</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Terminology to Avoid Section -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-semibold text-red-400 mb-6">Terminology to Avoid (Confusing/Ambiguous)</h2>
+        <h2 class="text-2xl font-semibold text-red-400 mb-6">Deprecated Terminology (Don't Use)</h2>
 
         <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
           <ul class="space-y-2 text-slate-200">
+            <li>❌ <strong>"BASE" and "COMPOSITE"</strong> → Use <span class="text-emerald-400">ATOMIC (A-type)</span> and <span class="text-emerald-400">MOLECULAR (M-type)</span></li>
+            <li>❌ <strong>"FEEDER"</strong> → No longer exists (componentization replaced this)</li>
+            <li>❌ <strong>"D-phrases" and "E-phrases"</strong> → Use <span class="text-emerald-400">scaffolding phrases (1-8)</span> and <span class="text-emerald-400">eternal phrases (9-10)</span></li>
+            <li>❌ <strong>"Amino acids"</strong> → Never use (old metaphor)</li>
             <li>❌ <strong>"Translations"</strong> → Use <span class="text-emerald-400">SEED_PAIRS</span></li>
-            <li>❌ <strong>"LEGOs"</strong> (alone) → Use <span class="text-emerald-400">LEGO_PAIRS</span> (clearer that both languages required)</li>
-            <li>❌ <strong>"Baskets"</strong> (alone) → Use <span class="text-emerald-400">LEGO_BASKETS</span> (clearer what's in them)</li>
-            <li>❌ <strong>"Amino acids"</strong> → Remove (was metaphor for LEGO_PAIRS, Claude got carried away)</li>
-            <li>❌ <strong>"Teaching units"</strong> → Use <span class="text-emerald-400">LEGO_PAIRS</span> (specific term)</li>
-            <li>❌ <strong>"Lessons"</strong> → Use <span class="text-emerald-400">LEGO_BASKETS</span> (clearer structure)</li>
+            <li>❌ <strong>"Lessons"</strong> → Use <span class="text-emerald-400">LEGO_BASKETS</span></li>
           </ul>
         </div>
       </section>
@@ -492,5 +417,5 @@
 </template>
 
 <script setup>
-// No script needed for static content display
+// Pure presentation component - no logic needed
 </script>

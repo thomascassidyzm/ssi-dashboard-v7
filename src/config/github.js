@@ -32,8 +32,10 @@ export const GITHUB_CONFIG = {
   }
 }
 
-// For local development, you can override to use localhost
-if (import.meta.env.DEV && import.meta.env.VITE_USE_LOCAL_VFS) {
+// For local development, always use localhost for immediate feedback
+// This lets you see manifest changes immediately after regeneration
+if (import.meta.env.DEV) {
   GITHUB_CONFIG.rawBaseUrl = 'http://localhost:5173'
   GITHUB_CONFIG.coursesPath = '/vfs/courses'
+  console.log('[GitHub Config] DEV mode: Using local VFS at http://localhost:5173/vfs')
 }

@@ -22,6 +22,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const { promisify } = require('util');
 const execAsync = promisify(require('child_process').exec);
+const { generateIntroductions } = require('../../scripts/phase6-generate-introductions.cjs');
 
 // Load environment (set by start-automation.js)
 const PORT = process.env.PORT || 3458;
@@ -1363,8 +1364,23 @@ app.post('/phase-complete', async (req, res) => {
 
 /**
  * Notify orchestrator of phase completion
+ * Includes Phase 6 (introduction generation) as part of Phase 3
  */
 async function notifyOrchestrator(courseCode, status) {
+  // If Phase 3 completed successfully, run Phase 6 (introductions) before notifying
+  if (status === 'complete') {
+    try {
+      console.log(`\n[Phase 3→6] Generating introductions for ${courseCode}...`);
+      const courseDir = path.join(VFS_ROOT, courseCode);
+      const result = await generateIntroductions(courseDir);
+      console.log(`[Phase 3→6] ✅ Generated ${result.totalIntroductions} introductions`);
+    } catch (error) {
+      console.error(`[Phase 3→6] ❌ Introduction generation failed:`, error.message);
+      // Don't fail Phase 3 if introductions fail - just warn
+      console.warn(`[Phase 3→6] ⚠️  Continuing without introductions...`);
+    }
+  }
+
   try {
     const axios = require('axios');
     await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {

@@ -356,6 +356,16 @@ app.post('/start', async (req, res) => {
     status: 'preparing_scaffolds',
     startedAt: new Date().toISOString(),
 
+    // Upload tracking (NEW for HTTP-based workflow)
+    uploads: {
+      seedsUploaded: new Set(),      // Track which seeds have been uploaded
+      legosReceived: 0,               // Total LEGOs uploaded
+      expectedSeeds: totalSeeds,       // Seeds we're waiting for
+      expectedLegos: null,             // Will be set after reading lego_pairs.json
+      lastUploadAt: null,
+      complete: false
+    },
+
     // Milestone tracking
     milestones: {
       scaffoldsReady: false,
@@ -431,6 +441,9 @@ app.post('/start', async (req, res) => {
     // Store in job for tracking
     job.targetLegos = targetLegos;
     job.legoData = legoData;
+
+    // Set expected LEGOs for upload tracking
+    job.uploads.expectedLegos = targetLegos.length;
 
     // STEP 2: MASTER/WORKER CONFIGURATION
     // Read config from automation.config.simple.json
@@ -1627,7 +1640,7 @@ app.post('/launch-12-masters', async (req, res) => {
   }
 
   console.log(`\n[Phase 5] ====================================`);
-  console.log(`[Phase 5] 12-MASTER LAUNCH`);
+  console.log(`[Phase 5] SMART LEGO-BASED GENERATION`);
   console.log(`[Phase 5] ====================================`);
   console.log(`[Phase 5] Course: ${courseCode}`);
   console.log(`[Phase 5] Target: ${target}, Known: ${known}`);
@@ -1665,144 +1678,218 @@ app.post('/launch-12-masters', async (req, res) => {
       });
     }
 
-    // STEP 2: Generate patch manifest
-    console.log(`\n[Phase 5] Step 2: Generating patch manifest...`);
+    // STEP 2: Read existing baskets to get complete picture
+    console.log(`\n[Phase 5] Step 2: Analyzing course state...`);
 
-    const legos = missingData.missing_baskets.map(b => b.legoId);
-    const patches = [
-      { name: 'patch_01', range: 'S0001_S0056', start: 1, end: 56 },
-      { name: 'patch_02', range: 'S0057_S0112', start: 57, end: 112 },
-      { name: 'patch_03', range: 'S0113_S0168', start: 113, end: 168 },
-      { name: 'patch_04', range: 'S0169_S0224', start: 169, end: 224 },
-      { name: 'patch_05', range: 'S0225_S0280', start: 225, end: 280 },
-      { name: 'patch_06', range: 'S0281_S0336', start: 281, end: 336 },
-      { name: 'patch_07', range: 'S0337_S0392', start: 337, end: 392 },
-      { name: 'patch_08', range: 'S0393_S0448', start: 393, end: 448 },
-      { name: 'patch_09', range: 'S0449_S0504', start: 449, end: 504 },
-      { name: 'patch_10', range: 'S0505_S0560', start: 505, end: 560 },
-      { name: 'patch_11', range: 'S0561_S0616', start: 561, end: 616 },
-      { name: 'patch_12', range: 'S0617_S0668', start: 617, end: 668 }
-    ];
+    const legoBasketsPath = path.join(baseCourseDir, 'lego_baskets.json');
+    const introductionsPath = path.join(baseCourseDir, 'introductions.json');
 
+    let existingBaskets = {};
+    let totalIntroductions = 0;
+
+    if (await fs.pathExists(legoBasketsPath)) {
+      const basketsData = await fs.readJson(legoBasketsPath);
+      existingBaskets = basketsData.baskets || {};
+    }
+
+    if (await fs.pathExists(introductionsPath)) {
+      const introsData = await fs.readJson(introductionsPath);
+      totalIntroductions = Object.keys(introsData.presentations || {}).length;
+    }
+
+    // Calculate seed-level statistics
+    const seedStats = {};
+    for (let i = 1; i <= 668; i++) {
+      const seedId = `S${String(i).padStart(4, '0')}`;
+      seedStats[seedId] = { total: 0, complete: 0, missing: 0 };
+    }
+
+    // Count introductions per seed
+    if (await fs.pathExists(introductionsPath)) {
+      const introsData = await fs.readJson(introductionsPath);
+      Object.keys(introsData.presentations || {}).forEach(legoId => {
+        const seedId = legoId.substring(0, 5);
+        if (seedStats[seedId]) {
+          seedStats[seedId].total++;
+          if (existingBaskets[legoId]) {
+            seedStats[seedId].complete++;
+          } else {
+            seedStats[seedId].missing++;
+          }
+        }
+      });
+    }
+
+    // Identify complete and incomplete seeds
+    const completeSeeds = [];
+    const incompleteSeeds = [];
+    const emptySeeds = [];
+
+    Object.keys(seedStats).forEach(seedId => {
+      const stats = seedStats[seedId];
+      if (stats.total === 0) {
+        emptySeeds.push(seedId);
+      } else if (stats.missing === 0) {
+        completeSeeds.push(seedId);
+      } else {
+        incompleteSeeds.push(seedId);
+      }
+    });
+
+    console.log(`[Phase 5]   Total introductions: ${totalIntroductions}`);
+    console.log(`[Phase 5]   Existing baskets: ${Object.keys(existingBaskets).length}`);
+    console.log(`[Phase 5]   Complete seeds: ${completeSeeds.length}/668`);
+    console.log(`[Phase 5]   Incomplete seeds: ${incompleteSeeds.length}`);
+    console.log(`[Phase 5]   Empty seeds: ${emptySeeds.length}`);
+
+    // STEP 3: Calculate optimal LEGO-based distribution
+    console.log(`\n[Phase 5] Step 3: Calculating optimal distribution...`);
+
+    const allMissingLegos = missingData.missing_baskets.map(b => b.legoId).sort();
+
+    // Distribution parameters
+    const legosPerWorker = 5; // Target <5 LEGOs per worker
+    const workersPerBrowser = 15; // Mid-range of 10-20
+    const legosPerBrowser = legosPerWorker * workersPerBrowser; // 75 LEGOs per browser
+
+    const browsersNeeded = Math.ceil(totalMissing / legosPerBrowser);
+    const actualBrowsers = Math.min(browsersNeeded, 15); // Cap at 15
+
+    console.log(`[Phase 5]   Total missing LEGOs: ${totalMissing}`);
+    console.log(`[Phase 5]   Distribution: ${actualBrowsers} browsers × ~${workersPerBrowser} workers × ~${legosPerWorker} LEGOs`);
+    console.log(`[Phase 5]   Expected workers: ${Math.ceil(totalMissing / legosPerWorker)}`);
+
+    // STEP 4: Distribute LEGOs across browsers
+    console.log(`\n[Phase 5] Step 4: Distributing LEGOs across ${actualBrowsers} browsers...`);
+
+    const browsers = [];
+    const legosPerActualBrowser = Math.ceil(totalMissing / actualBrowsers);
+
+    for (let i = 0; i < actualBrowsers; i++) {
+      const startIdx = i * legosPerActualBrowser;
+      const endIdx = Math.min(startIdx + legosPerActualBrowser, totalMissing);
+      const browserLegos = allMissingLegos.slice(startIdx, endIdx);
+
+      // Distribute LEGOs across workers within this browser
+      const workers = [];
+      const workersInBrowser = Math.ceil(browserLegos.length / legosPerWorker);
+
+      for (let w = 0; w < workersInBrowser; w++) {
+        const workerStartIdx = w * legosPerWorker;
+        const workerEndIdx = Math.min(workerStartIdx + legosPerWorker, browserLegos.length);
+        const workerLegos = browserLegos.slice(workerStartIdx, workerEndIdx);
+
+        workers.push({
+          workerNum: w + 1,
+          legoIds: workerLegos,
+          legoCount: workerLegos.length
+        });
+      }
+
+      browsers.push({
+        browserNum: i + 1,
+        name: `browser_${String(i + 1).padStart(2, '0')}`,
+        workers,
+        totalLegos: browserLegos.length,
+        legoIds: browserLegos
+      });
+
+      console.log(`[Phase 5]   Browser ${i + 1}: ${browserLegos.length} LEGOs → ${workers.length} workers`);
+    }
+
+    // Save manifest with complete course state
     const manifest = {
       course: courseCode,
       generated: new Date().toISOString(),
-      total_missing: totalMissing,
-      patches: []
+      course_state: {
+        total_introductions: totalIntroductions,
+        total_baskets: Object.keys(existingBaskets).length,
+        total_missing: totalMissing,
+        completion_percentage: totalIntroductions > 0 ? Math.round((Object.keys(existingBaskets).length / totalIntroductions) * 100) : 0,
+        seeds: {
+          total: 668,
+          complete: completeSeeds.length,
+          incomplete: incompleteSeeds.length,
+          empty: emptySeeds.length
+        }
+      },
+      distribution: {
+        browsers: actualBrowsers,
+        workers_per_browser: workersPerBrowser,
+        legos_per_worker: legosPerWorker
+      },
+      browsers: browsers.map(b => ({
+        name: b.name,
+        workers: b.workers.length,
+        legos: b.totalLegos,
+        lego_ids: b.legoIds
+      })),
+      seed_details: {
+        complete_seeds: completeSeeds,
+        incomplete_seeds: incompleteSeeds.map(seedId => ({
+          seed: seedId,
+          total: seedStats[seedId].total,
+          complete: seedStats[seedId].complete,
+          missing: seedStats[seedId].missing
+        }))
+      }
     };
 
-    patches.forEach(patch => {
-      const patchLegos = legos.filter(legoId => {
-        const seedNum = parseInt(legoId.substring(1, 5));
-        return seedNum >= patch.start && seedNum <= patch.end;
-      });
-
-      manifest.patches.push({
-        patch_number: parseInt(patch.name.split('_')[1]),
-        patch_name: patch.name,
-        seed_range: patch.range,
-        seed_start: `S${String(patch.start).padStart(4, '0')}`,
-        seed_end: `S${String(patch.end).padStart(4, '0')}`,
-        lego_count: patchLegos.length,
-        legos: patchLegos.sort()
-      });
-    });
-
-    // Save manifest
-    const manifestPath = path.join(baseCourseDir, 'phase5_patch_manifest.json');
+    const manifestPath = path.join(baseCourseDir, 'phase5_lego_distribution_manifest.json');
     await fs.writeJson(manifestPath, manifest, { spaces: 2 });
-    console.log(`[Phase 5] ✅ Manifest saved: ${totalMissing} LEGOs across 12 patches`);
+    console.log(`[Phase 5] ✅ Manifest saved: ${totalMissing} LEGOs across ${actualBrowsers} browsers`);
+    console.log(`[Phase 5]   Course completion: ${manifest.course_state.completion_percentage}% (${completeSeeds.length}/668 seeds complete)`);
 
-    // STEP 3: Generate 12 master prompts
-    console.log(`\n[Phase 5] Step 3: Generating 12 master prompts...`);
+    // STEP 5: Generate browser prompts
+    console.log(`\n[Phase 5] Step 5: Generating ${actualBrowsers} browser prompts...`);
 
-    const promptsDir = path.join(__dirname, '../../scripts/phase5_master_prompts');
+    const promptsDir = path.join(__dirname, '../../scripts/phase5_browser_prompts');
     await fs.ensureDir(promptsDir);
 
     // Get ngrok URL for scaffolds
     const ngrokUrl = process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
-    for (const patch of manifest.patches) {
-      // Calculate workers needed (1 worker per ~10 LEGOs)
-      const workersNeeded = Math.ceil(patch.lego_count / 10);
-
-      // Group LEGOs by seed for assignment
-      const legosBySeed = {};
-      patch.legos.forEach(legoId => {
-        const seedId = legoId.substring(0, 5); // S0117L01 → S0117
-        if (!legosBySeed[seedId]) legosBySeed[seedId] = [];
-        legosBySeed[seedId].push(legoId);
-      });
-
-      const seeds = Object.keys(legosBySeed).sort();
-
-      // Create worker assignments (~10 LEGOs per worker)
-      const workerAssignments = [];
-      let currentWorker = { workerNum: 1, seeds: [], legoIds: [], legoCount: 0 };
-
-      seeds.forEach(seedId => {
-        const seedLegos = legosBySeed[seedId];
-
-        // If adding this seed would exceed 10 LEGOs, start new worker
-        if (currentWorker.legoCount + seedLegos.length > 10 && currentWorker.legoCount > 0) {
-          workerAssignments.push(currentWorker);
-          currentWorker = {
-            workerNum: workerAssignments.length + 1,
-            seeds: [],
-            legoIds: [],
-            legoCount: 0
-          };
-        }
-
-        currentWorker.seeds.push(seedId);
-        currentWorker.legoIds.push(...seedLegos);
-        currentWorker.legoCount += seedLegos.length;
-      });
-
-      // Push final worker
-      if (currentWorker.legoCount > 0) {
-        workerAssignments.push(currentWorker);
-      }
-
-      const promptContent = `# Phase 5 Master Orchestrator: Patch ${patch.patch_number}
+    for (const browser of browsers) {
+      const promptContent = `# Phase 5 Browser Coordinator: ${browser.name}
 
 **Course:** \`${courseCode}\`
-**Your Patch:** Seeds \`${patch.seed_start}\` to \`${patch.seed_end}\`
-**Missing LEGOs:** ${patch.lego_count} LEGOs
-**Workers to spawn:** ${workerAssignments.length} (via Task tool)
+**Your LEGOs:** ${browser.totalLegos} LEGOs
+**Workers to spawn:** ${browser.workers.length} (via Task tool)
 
 ---
 
-## 🎯 YOUR MISSION: SPAWN ${workerAssignments.length} WORKERS
+## 🎯 YOUR MISSION: SPAWN ${browser.workers.length} LANGUAGE EXPERT WORKERS
 
-You are a **Master Orchestrator**. You DON'T generate baskets yourself.
+You are a **Browser Coordinator**. You DON'T generate baskets yourself.
 
 **Your workflow:**
 
 1. ✅ **Review worker assignments** below
-2. ✅ **Spawn ${workerAssignments.length} workers** - Use Task tool ${workerAssignments.length} times in ONE message (parallel!)
+2. ✅ **Spawn ${browser.workers.length} workers** - Use Task tool ${browser.workers.length} times in ONE message (parallel!)
 3. ✅ **Work SILENTLY** - No verbose progress logs
 4. ✅ **Monitor completion** - Workers will upload via ngrok
-5. ✅ **Report brief summary** - "✅ Patch ${patch.patch_number} complete: ${workerAssignments.length} workers spawned"
+5. ✅ **Report brief summary** - "✅ ${browser.name} complete: ${browser.workers.length} workers spawned for ${browser.totalLegos} LEGOs"
 
 ---
 
 ## 📋 WORKER ASSIGNMENTS
 
-${workerAssignments.map(w => `**Worker ${w.workerNum}:** Seeds ${w.seeds.join(', ')} - ${w.legoCount} LEGOs`).join('\n')}
+${browser.workers.map(w => `**Worker ${w.workerNum}:** ${w.legoCount} LEGOs (${w.legoIds.join(', ')})`).join('\n')}
 
 ---
 
 ## 🚀 SPAWN WORKERS
 
-Use Task tool ${workerAssignments.length} times in a SINGLE message (parallel spawn).
+Use Task tool ${browser.workers.length} times in a SINGLE message (parallel spawn).
 
 **Worker prompt template:**
 
-\`\`\`
+For each worker, use this exact format with the LEGO IDs from assignments above:
+
+\`\`\`json
 {
   "subagent_type": "general-purpose",
-  "description": "Phase 5 Worker N - Patch ${patch.patch_number}",
+  "description": "Phase 5 Worker [N] - ${browser.name}",
   "prompt": "# 🎭 YOUR ROLE
 
 You are a **world-leading creator of practice phrases** in the target language that help learners internalize language patterns naturally and quickly.
@@ -1835,15 +1922,17 @@ This explains WHY we generate baskets and the pedagogical principles behind LEGO
 
 ---
 
-## 🎯 YOUR ASSIGNMENT (Patch ${patch.patch_number})
+## 🎯 YOUR ASSIGNMENT
 
-**LEGOs to generate:** [paste LEGO IDs from assignments above for this worker]
+**LEGOs to generate:** [Worker will receive specific LEGO ID list from assignment above]
+
+Replace [Worker N] with the actual worker number (1, 2, 3, etc.) and paste the LEGO IDs from the worker assignments above.
 
 ---
 
 ## 🔧 GENERATION WORKFLOW
 
-For EACH LEGO, follow this exact process:
+For EACH LEGO in your assignment, follow this exact process:
 
 ### Step 1: Fetch the Scaffold
 
@@ -1969,60 +2058,66 @@ Work silently. Report brief summary when complete."
 
 ## 🎯 START NOW
 
-**Spawn all ${workerAssignments.length} workers in parallel!**
+**Spawn all ${browser.workers.length} workers in parallel!**
 
 Each worker:
 1. Gets its LEGO ID list from assignments above
-2. Fetches scaffolds via WebFetch
-3. Generates baskets
-4. Uploads via HTTP
+2. Fetches scaffolds via WebFetch: ${ngrokUrl}/phase5/scaffold/${courseCode}/[LEGO_ID]
+3. Generates baskets for each LEGO
+4. Uploads via HTTP: ${ngrokUrl}/phase5/upload-basket
 
-Report: "✅ Patch ${patch.patch_number} complete: ${workerAssignments.length} workers spawned for ${patch.lego_count} LEGOs"
+Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned for ${browser.totalLegos} LEGOs"
 `;
 
-      const promptPath = path.join(promptsDir, `${patch.patch_name}_${patch.seed_range}.md`);
+      const promptPath = path.join(promptsDir, `${browser.name}.md`);
       await fs.writeFile(promptPath, promptContent);
     }
 
-    console.log(`[Phase 5] ✅ Generated 12 master prompts in scripts/phase5_master_prompts/`);
+    console.log(`[Phase 5] ✅ Generated ${actualBrowsers} browser prompts in scripts/phase5_browser_prompts/`);
 
-    // STEP 4: Launch 12 Safari windows
-    console.log(`\n[Phase 5] Step 4: Launching 12 Safari windows...`);
+    // STEP 6: Launch browser windows
+    console.log(`\n[Phase 5] Step 6: Launching ${actualBrowsers} browser windows...`);
 
-    for (let i = 0; i < 12; i++) {
-      const patch = manifest.patches[i];
-      const promptPath = path.join(promptsDir, `${patch.patch_name}_${patch.seed_range}.md`);
+    for (let i = 0; i < actualBrowsers; i++) {
+      const browser = browsers[i];
+      const promptPath = path.join(promptsDir, `${browser.name}.md`);
       const promptContent = await fs.readFile(promptPath, 'utf8');
 
-      console.log(`[Phase 5]   Launching Patch ${patch.patch_number}: ${patch.lego_count} LEGOs...`);
+      console.log(`[Phase 5]   Launching ${browser.name}: ${browser.totalLegos} LEGOs → ${browser.workers.length} workers...`);
 
       try {
-        await spawnClaudeCodeSession(promptContent, `Patch ${patch.patch_number}`);
+        await spawnClaudeCodeSession(promptContent, browser.name);
       } catch (error) {
-        console.error(`[Phase 5]   ⚠️  Failed to launch Patch ${patch.patch_number}:`, error.message);
+        console.error(`[Phase 5]   ⚠️  Failed to launch ${browser.name}:`, error.message);
       }
 
       // 5 second delay between launches (critical for reliability)
-      if (i < 11) {
+      if (i < actualBrowsers - 1) {
         await new Promise(resolve => setTimeout(resolve, 5000));
       }
     }
 
-    console.log(`\n[Phase 5] ✅ Launched 12 master orchestrators`);
-    console.log(`[Phase 5] Monitor progress in Safari tabs`);
+    console.log(`\n[Phase 5] ✅ Launched ${actualBrowsers} browsers (${Math.ceil(totalMissing / legosPerWorker)} total workers)`);
+    console.log(`[Phase 5] Monitor progress in browser tabs`);
 
     res.json({
       success: true,
-      message: `Launched 12 masters for ${totalMissing} missing baskets`,
+      message: `Launched ${actualBrowsers} browsers for ${totalMissing} missing baskets`,
       totalMissing,
-      patches: manifest.patches.map(p => ({
-        patch: p.patch_number,
-        legos: p.lego_count
+      distribution: {
+        browsers: actualBrowsers,
+        total_workers: Math.ceil(totalMissing / legosPerWorker),
+        legos_per_worker: legosPerWorker
+      },
+      browsers: browsers.map(b => ({
+        name: b.name,
+        workers: b.workers.length,
+        legos: b.totalLegos
       }))
     });
 
   } catch (error) {
-    console.error(`[Phase 5] ❌ 12-master launch failed:`, error);
+    console.error(`[Phase 5] ❌ LEGO-based launch failed:`, error);
     res.status(500).json({
       error: error.message,
       stack: error.stack
@@ -2230,13 +2325,36 @@ app.post('/upload-basket', async (req, res) => {
     await fs.writeJson(stagingFilePath, mergedBaskets, { spaces: 2 });
     console.log(`   📦 Staged to ${stagingFilePath} (${Object.keys(mergedBaskets).length} LEGOs total)`);
 
-    // STAGING WORKFLOW: Never auto-merge to canon
-    // Use tools/phase5/extract-and-normalize.cjs to review and merge when ready
-    console.log(`   ✅ Staging complete - use extract-and-normalize.cjs to review and merge`);
+    // Track upload in job state (if job exists)
+    const job = activeJobs.get(course);
+    if (job && job.uploads) {
+      job.uploads.seedsUploaded.add(seed);
+      job.uploads.legosReceived += Object.keys(baskets).length;
+      job.uploads.lastUploadAt = new Date().toISOString();
+
+      const progress = `${job.uploads.legosReceived}/${job.uploads.expectedLegos} LEGOs`;
+      console.log(`   📊 Progress: ${progress} (${job.uploads.seedsUploaded.size}/${job.uploads.expectedSeeds} seeds)`);
+
+      // Check if all uploads complete
+      if (!job.uploads.complete && job.uploads.legosReceived >= job.uploads.expectedLegos) {
+        job.uploads.complete = true;
+        job.status = 'uploads_complete';
+        console.log(`\n🎉 ALL UPLOADS COMPLETE! Received ${job.uploads.legosReceived} LEGOs from ${job.uploads.seedsUploaded.size} seeds`);
+
+        // Trigger Phase 5 completion workflow
+        triggerPhase5Completion(course, job).catch(err => {
+          console.error(`❌ Phase 5 completion workflow failed:`, err);
+          job.error = err.message;
+          job.status = 'completion_failed';
+        });
+      }
+    }
 
     return res.json({
       success: true,
-      message: 'Baskets saved to staging (use extract-and-normalize.cjs to merge)',
+      message: job && job.uploads?.complete
+        ? '✅ All baskets received! Phase 5 completion workflow started.'
+        : 'Baskets saved to staging',
       stagingPath: stagingFilePath,
       basketCount: Object.keys(baskets).length,
       reviewCommand: `node tools/phase5/preview-merge.cjs ${course}`,
@@ -2407,6 +2525,191 @@ app.get('/basket-status/:course', async (req, res) => {
     });
   }
 });
+
+/**
+ * Trigger Phase 5 completion workflow
+ * Runs after all uploads complete
+ */
+async function triggerPhase5Completion(courseCode, job) {
+  console.log(`\n${'='.repeat(60)}`);
+  console.log(`PHASE 5 COMPLETION WORKFLOW`);
+  console.log('='.repeat(60));
+  console.log(`Course: ${courseCode}`);
+  console.log(`LEGOs received: ${job.uploads.legosReceived}`);
+  console.log(`Seeds received: ${job.uploads.seedsUploaded.size}\n`);
+
+  const courseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
+
+  try {
+    // Step 1: Merge staging baskets
+    console.log('📦 Step 1: Merging staging baskets...');
+    job.status = 'merging_baskets';
+    await execScript(path.join(__dirname, '../../scripts/merge-phase5-staging.cjs'), courseCode);
+    console.log('✅ Merge complete\n');
+
+    // Step 2: Clean GATE violations
+    console.log('🧹 Step 2: Cleaning GATE violations...');
+    job.status = 'cleaning_gate';
+    await execScript(path.join(__dirname, '../../scripts/clean-baskets-gate.cjs'), courseCode);
+    console.log('✅ GATE cleaning complete\n');
+
+    // Step 3: Ensure minimum phrase
+    console.log('🛡️  Step 3: Ensuring minimum phrase...');
+    job.status = 'ensuring_minimum';
+    await execScript(path.join(__dirname, '../../scripts/ensure-minimum-phrase.cjs'), courseCode);
+    console.log('✅ Minimum phrase ensured\n');
+
+    // Step 4: Trigger Phase 5.5 (Grammar Validation)
+    console.log('📝 Step 4: Triggering grammar validation (Phase 5.5)...');
+    job.status = 'triggering_grammar';
+
+    const phase55Response = await fetch('http://localhost:3460/start', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ courseCode })
+    });
+
+    if (!phase55Response.ok) {
+      throw new Error(`Phase 5.5 start failed: ${phase55Response.statusText}`);
+    }
+
+    const phase55Result = await phase55Response.json();
+    console.log('✅ Grammar validation started\n');
+
+    // Step 5: Wait for Phase 5.5 completion
+    console.log('⏳ Step 5: Waiting for grammar validation to complete...');
+    job.status = 'waiting_grammar';
+    await waitForPhase55(courseCode);
+    console.log('✅ Grammar validation complete\n');
+
+    // Mark Phase 5 complete
+    job.status = 'phase5_complete';
+    job.completedAt = new Date().toISOString();
+
+    console.log('='.repeat(60));
+    console.log('✅ PHASE 5 COMPLETE!');
+    console.log('='.repeat(60));
+    console.log(`\nNext: Phase 6 (Introductions) ready to start`);
+    console.log(`Run: POST http://localhost:3461/start {"courseCode": "${courseCode}"}\n`);
+
+    // Notify orchestrator
+    if (ORCHESTRATOR_URL) {
+      try {
+        await fetch(`${ORCHESTRATOR_URL}/phase-complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            phase: 'phase5',
+            courseCode,
+            success: true,
+            stats: {
+              legosGenerated: job.uploads.legosReceived,
+              seedsProcessed: job.uploads.seedsUploaded.size
+            }
+          })
+        });
+      } catch (err) {
+        console.error('⚠️  Failed to notify orchestrator:', err.message);
+      }
+    }
+
+  } catch (error) {
+    console.error(`\n❌ Phase 5 completion failed:`, error.message);
+    job.status = 'completion_failed';
+    job.error = error.message;
+    throw error;
+  }
+}
+
+/**
+ * Execute a script and wait for completion
+ */
+function execScript(scriptPath, ...args) {
+  return new Promise((resolve, reject) => {
+    const proc = spawn('node', [scriptPath, ...args], {
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+
+    let stdout = '';
+    let stderr = '';
+
+    proc.stdout.on('data', data => {
+      const output = data.toString();
+      stdout += output;
+      process.stdout.write(output);
+    });
+
+    proc.stderr.on('data', data => {
+      const output = data.toString();
+      stderr += output;
+      process.stderr.write(output);
+    });
+
+    proc.on('close', code => {
+      if (code === 0) {
+        resolve({ stdout, stderr });
+      } else {
+        reject(new Error(`Script failed with code ${code}: ${stderr}`));
+      }
+    });
+
+    proc.on('error', err => {
+      reject(err);
+    });
+  });
+}
+
+/**
+ * Wait for Phase 5.5 to complete
+ */
+async function waitForPhase55(courseCode) {
+  const maxWaitTime = 30 * 60 * 1000; // 30 minutes
+  const pollInterval = 5000; // 5 seconds
+  const startTime = Date.now();
+
+  while (Date.now() - startTime < maxWaitTime) {
+    try {
+      const response = await fetch(`http://localhost:3460/status/${courseCode}`);
+      if (!response.ok) {
+        throw new Error(`Phase 5.5 status check failed: ${response.statusText}`);
+      }
+
+      const status = await response.json();
+
+      if (status.status === 'completed') {
+        const deletionRate = status.stats.phrasesDeleted / (status.stats.phrasesDeleted + status.stats.phrasesKept);
+
+        console.log(`   Grammar validation results:`);
+        console.log(`     Phrases deleted: ${status.stats.phrasesDeleted}`);
+        console.log(`     Phrases kept: ${status.stats.phrasesKept}`);
+        console.log(`     Deletion rate: ${(deletionRate * 100).toFixed(2)}%`);
+
+        if (deletionRate > 0.20) {
+          throw new Error(`Grammar validation failed: ${(deletionRate * 100).toFixed(1)}% deletion rate (>20% threshold)`);
+        }
+
+        return status;
+      }
+
+      if (status.status === 'failed') {
+        throw new Error(`Phase 5.5 failed: ${status.error}`);
+      }
+
+      // Still running, wait and poll again
+      await new Promise(resolve => setTimeout(resolve, pollInterval));
+
+    } catch (error) {
+      if (error.message.includes('No job found')) {
+        // Phase 5.5 might not have started yet, wait a bit
+        await new Promise(resolve => setTimeout(resolve, pollInterval));
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  throw new Error('Phase 5.5 timeout: Grammar validation took longer than 30 minutes');
+}
 
 /**
  * Start server

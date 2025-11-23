@@ -147,14 +147,14 @@ export default {
               total_seeds: course.total_seeds,
               version: course.format,
               created_at: new Date().toISOString(),
-              status: course.lego_count > 0 ? 'phase_3_complete' : 'phase_1_complete',
+              status: course.phase || 'unknown',
               seed_pairs: course.actual_seed_count,
               lego_pairs: course.lego_count,
               lego_baskets: course.basket_count || 0,
               amino_acids: {
                 introductions: course.introductions_count || 0
               },
-              phases_completed: course.lego_count > 0 ? ['1', '3'] : ['1']
+              phases_completed: course.phases_completed || []
             }))
 
           return { courses }
@@ -179,18 +179,30 @@ export default {
         const legoPairsData = cachedData.legoPairs
         const baskets = cachedData.legoBaskets || []
 
-        // Convert v7.7 format translations object to array
+        // Convert translations object to array - handle both old array and new object formats
         const translationsObj = seedPairsData.translations || {}
-        const translations = Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
-          seed_id,
-          target_phrase,
-          known_phrase,
-          canonical_seed: null
-        }))
+        const translations = Object.entries(translationsObj).map(([seed_id, translation]) => {
+          // Handle both old array format and new object format (APML v8.2.0+)
+          let target_phrase, known_phrase
+          if (Array.isArray(translation)) {
+            // Old format: ["target", "known"]
+            [target_phrase, known_phrase] = translation
+          } else {
+            // New format: {target: "...", known: "..."}
+            target_phrase = translation.target
+            known_phrase = translation.known
+          }
+          return {
+            seed_id,
+            target_phrase,
+            known_phrase,
+            canonical_seed: null
+          }
+        })
         translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
         // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
-        const seedsArray = legoPairsData.seeds || []
+        const seedsArray = legoPairsData?.seeds || []
         const legos = []
 
         // Detect format by checking first seed structure
@@ -238,6 +250,19 @@ export default {
         const matchBasic = courseCode.match(/^([a-z]{3})_for_([a-z]{3})/)
         const match = matchStandard || matchBasic
 
+        // Determine which phases are complete based on data availability
+        // Get phases_completed from manifest (which already has Phase 7 detection)
+        const manifestData = await this.list()
+        const courseFromManifest = manifestData.courses.find(c => c.course_code === courseCode)
+        const phasesCompleted = courseFromManifest?.phases_completed || []
+
+        // Fallback: if manifest doesn't have phases, detect from loaded data
+        if (phasesCompleted.length === 0) {
+          if (translations.length > 0) phasesCompleted.push('1')
+          if (legos.length > 0) phasesCompleted.push('3')
+          if (baskets.length > 0) phasesCompleted.push('5')
+        }
+
         const course = {
           course_code: courseCode,
           source_language: match ? match[2].toUpperCase() : 'UNK',
@@ -245,11 +270,11 @@ export default {
           total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
           version: cachedData.version,
           created_at: new Date(cachedData.cachedAt).toISOString(),
-          status: 'phase_3_complete',
+          status: phasesCompleted[phasesCompleted.length - 1] ? `phase_${phasesCompleted[phasesCompleted.length - 1]}` : 'unknown',
           seed_pairs: translations.length,
           lego_pairs: legos.length,
           lego_baskets: baskets.length,
-          phases_completed: ['1', '3'],
+          phases_completed: phasesCompleted,
           target_language_name: match ? match[1] : 'unknown',
           known_language_name: match ? match[2] : 'unknown'
         }
@@ -314,12 +339,24 @@ export default {
           const translations = []
           if (seedPairsData) {
             const translationsObj = seedPairsData.translations || {}
-            translations.push(...Object.entries(translationsObj).map(([seed_id, [target_phrase, known_phrase]]) => ({
-              seed_id,
-              target_phrase,
-              known_phrase,
-              canonical_seed: null
-            })))
+            translations.push(...Object.entries(translationsObj).map(([seed_id, translation]) => {
+              // Handle both old array format and new object format (APML v8.2.0+)
+              let target_phrase, known_phrase
+              if (Array.isArray(translation)) {
+                // Old format: ["target", "known"]
+                [target_phrase, known_phrase] = translation
+              } else {
+                // New format: {target: "...", known: "..."}
+                target_phrase = translation.target
+                known_phrase = translation.known
+              }
+              return {
+                seed_id,
+                target_phrase,
+                known_phrase,
+                canonical_seed: null
+              }
+            }))
             translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
           }
 
@@ -385,6 +422,19 @@ export default {
             hasIntroData: !!introductionsData
           })
 
+          // Determine which phases are complete based on data availability
+          // Get phases_completed from manifest (which already has Phase 7 detection)
+          const manifestData = await this.list()
+          const courseFromManifest = manifestData.courses.find(c => c.course_code === courseCode)
+          const phasesCompleted = courseFromManifest?.phases_completed || []
+
+          // Fallback: if manifest doesn't have phases, detect from loaded data
+          if (phasesCompleted.length === 0) {
+            if (translations.length > 0) phasesCompleted.push('1')
+            if (legos.length > 0) phasesCompleted.push('3')
+            if (basketCount > 0) phasesCompleted.push('5')
+          }
+
           const course = {
             course_code: courseCode,
             source_language: match ? match[2].toUpperCase() : 'UNK',
@@ -392,14 +442,14 @@ export default {
             total_seeds: matchStandard?.[3] ? parseInt(matchStandard[3]) : translations.length,
             version: '1.0',
             created_at: new Date().toISOString(),
-            status: 'phase_3_complete',
+            status: phasesCompleted[phasesCompleted.length - 1] ? `phase_${phasesCompleted[phasesCompleted.length - 1]}` : 'unknown',
             seed_pairs: translations.length,
             lego_pairs: legos.length,
             lego_baskets: basketCount,
             amino_acids: {
               introductions: introductionsCount
             },
-            phases_completed: ['1', '3'],
+            phases_completed: phasesCompleted,
             target_language_name: match ? match[1] : 'unknown',
             known_language_name: match ? match[2] : 'unknown'
           }
@@ -561,9 +611,19 @@ export default {
             const seedPairsData = await seedPairsRes.json()
             const translation = seedPairsData.translations?.[seedId]
             if (translation) {
-              seedPair = {
-                target: translation[0],
-                known: translation[1]
+              // Handle both old array format and new object format (APML v8.2.0+)
+              if (Array.isArray(translation)) {
+                // Old format: ["known", "target"]
+                seedPair = {
+                  target: translation[1],
+                  known: translation[0]
+                }
+              } else {
+                // New format: {target: "...", known: "..."}
+                seedPair = {
+                  target: translation.target,
+                  known: translation.known
+                }
               }
             }
           }
@@ -668,6 +728,28 @@ export default {
         seedIds
       })
       // Clear cache since LEGO data changed
+      await clearCourseCache(courseCode)
+      return response.data
+    },
+
+    // Regenerate Phase 7 (Course Manifest)
+    async regeneratePhase7(courseCode) {
+      const response = await api.post(`/api/courses/${courseCode}/regenerate/phase7`, {})
+      // Clear cache since manifest will be regenerated
+      await clearCourseCache(courseCode)
+      return response.data
+    },
+
+    // Get a specific phase output file
+    async getPhaseOutput(courseCode, phase, filename) {
+      const response = await api.get(`/api/courses/${courseCode}/phase-outputs/${phase}/${filename}`)
+      return response.data
+    },
+
+    // Save a specific phase output file
+    async savePhaseOutput(courseCode, phase, filename, data) {
+      const response = await api.put(`/api/courses/${courseCode}/phase-outputs/${phase}/${filename}`, data)
+      // Clear cache since phase output was modified
       await clearCourseCache(courseCode)
       return response.data
     },
@@ -794,5 +876,40 @@ export default {
       const response = await api.get(`/api/audio/generation-status/${jobId}`)
       return response.data
     }
+  },
+
+  // Manifest management
+  async regenerateManifest() {
+    const response = await api.post('/api/regenerate-manifest')
+    return response.data
+  },
+
+  // GitHub publishing
+  async pushToGitHub(courseCode, message = null) {
+    const response = await api.post('/api/push-to-github', {
+      courseCode,
+      message
+    })
+    return response.data
+  },
+
+  async pushAllCourses() {
+    const response = await api.post('/api/push-all-courses')
+    return response.data
+  },
+
+  // Phase 8: Audio Generation
+  async startPhase8Audio(courseCode, options = {}) {
+    // Call through orchestrator proxy (works from Vercel via ngrok)
+    const response = await api.post('/api/phase8/start', {
+      courseCode,
+      options: {
+        phase: options.phase || 'auto',  // 'auto', 'targets', or 'presentations'
+        skipUpload: options.skipUpload || false,
+        skipQC: options.skipQC || false,
+        uploadBucket: options.uploadBucket || 'stage'
+      }
+    })
+    return response.data
   }
 }

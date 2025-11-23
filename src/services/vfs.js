@@ -146,7 +146,7 @@ export async function readAllPhaseFiles(courseCode) {
     'lego_pairs.json',                    // Phase 3
     'lego_graph.json',                    // Phase 3.5
     'lego_baskets.json',                  // Phase 5
-    'lego_baskets_deduplicated.json',    // Phase 5.5
+    // 'lego_baskets_deduplicated.json', // Phase 5.5 - DEPRECATED (v8.2.1)
     'introductions.json',                 // Phase 6
     'course_manifest.json'                // Phase 7
   ]

@@ -20,7 +20,7 @@
           Generate New Course
         </h1>
         <p class="mt-2 text-slate-400">
-          SSi Course Production Dashboard v8.1.0 - Swim-lane architecture with phase selection
+          Popty v8.2.2 - SSi Course Production Dashboard
         </p>
       </div>
     </header>
@@ -76,6 +76,17 @@
           </div>
         </div>
 
+        <!-- Analyze Course Button -->
+        <div v-if="!analysis && knownLanguage && targetLanguage" class="mb-8">
+          <button
+            @click="analyzeCourse"
+            :disabled="analyzing"
+            class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition hover:-translate-y-0.5"
+          >
+            <span v-if="analyzing">Analyzing Course...</span>
+            <span v-else>Analyze Course & Get Smart Recommendations</span>
+          </button>
+        </div>
 
         <!-- Analysis Loading -->
         <div v-if="analyzing" class="mb-8 text-center py-8">
@@ -111,8 +122,14 @@
                     {{ analysis.lego_pairs.exists ? `✓ ${analysis.lego_pairs.count} LEGOs` : '✗ Missing' }}
                   </span>
                 </div>
+                <div v-if="analysis.baskets">
+                  <span class="text-slate-400">Phase 5 (Baskets):</span>
+                  <span class="ml-2 font-semibold" :class="analysis.baskets.missing_seeds === 0 ? 'text-green-400' : 'text-amber-400'">
+                    {{ analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠️  ${analysis.baskets.missing_seeds} seeds missing` }}
+                  </span>
+                </div>
               </div>
-              <div v-if="analysis.lego_pairs.missing.length > 0" class="mt-3 text-sm text-amber-400">
+              <div v-if="analysis.lego_pairs.missing && analysis.lego_pairs.missing.length > 0" class="mt-3 text-sm text-amber-400">
                 ⚠️  {{ analysis.lego_pairs.missing.length }} seeds missing LEGOs
               </div>
             </div>
@@ -129,6 +146,7 @@
                   <div class="flex-1">
                     <div class="flex items-center gap-2 mb-1">
                       <span v-if="rec.type === 'test'" class="text-xl">✨</span>
+                      <span v-else-if="rec.type === 'resume-baskets'" class="text-xl">📦</span>
                       <span v-else-if="rec.type === 'resume'" class="text-xl">📝</span>
                       <span v-else-if="rec.type === 'full'" class="text-xl">🚀</span>
                       <span v-else class="text-xl">➡️</span>
@@ -137,7 +155,10 @@
                       </span>
                     </div>
                     <p class="text-sm text-slate-400 ml-7">{{ rec.description }}</p>
-                    <p class="text-xs text-slate-500 ml-7 mt-1">
+                    <p v-if="rec.action.phases" class="text-xs text-emerald-500 ml-7 mt-1">
+                      Phase {{ rec.phase }} only (intelligent resume - missing baskets)
+                    </p>
+                    <p v-else class="text-xs text-slate-500 ml-7 mt-1">
                       Seeds {{ rec.action.startSeed }}-{{ rec.action.endSeed }}
                       ({{ rec.action.endSeed - rec.action.startSeed + 1 }} seeds)
                     </p>
@@ -152,266 +173,18 @@
         <!-- Execution Mode Selection -->
         <ExecutionModeSelector v-model="executionMode" />
 
-        <!-- Phase Selection -->
-        <div class="mb-8">
-          <h3 class="text-lg font-medium text-slate-300 mb-4">Select Phases to Run</h3>
-
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            <!-- All Phases -->
-            <button
-              @click="phaseSelection = 'all'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                phaseSelection === 'all'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">🎯</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">All Phases</h4>
-              <p class="text-xs text-slate-400">Complete pipeline (1→3→5→6→7)</p>
-            </button>
-
-            <!-- Phase 1 Only -->
-            <button
-              @click="phaseSelection = 'phase1'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                phaseSelection === 'phase1'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">🌍</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 1 Only</h4>
-              <p class="text-xs text-slate-400">Translation (seed_pairs.json)</p>
-            </button>
-
-            <!-- Phase 3 Only -->
-            <button
-              @click="phaseSelection = 'phase3'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                phaseSelection === 'phase3'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">🧱</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 3 Only</h4>
-              <p class="text-xs text-slate-400">LEGO extraction (lego_pairs.json)</p>
-            </button>
-
-            <!-- Phase 5 Only -->
-            <button
-              @click="phaseSelection = 'phase5'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                phaseSelection === 'phase5'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">🧺</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 5 Only</h4>
-              <p class="text-xs text-slate-400">Practice baskets (lego_baskets.json)</p>
-            </button>
-
-            <!-- Phase 6 Only -->
-            <button
-              @click="phaseSelection = 'phase6'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                phaseSelection === 'phase6'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">🎤</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 6 Only</h4>
-              <p class="text-xs text-slate-400">Presentations (introductions.json)</p>
-            </button>
-
-            <!-- Phase 7 Only -->
-            <button
-              @click="phaseSelection = 'phase7'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                phaseSelection === 'phase7'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">📦</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Phase 7 Only</h4>
-              <p class="text-xs text-slate-400">Compilation (course.json)</p>
-            </button>
-          </div>
-
-          <!-- Phase Requirements Info -->
-          <div v-if="phaseSelection !== 'all'" class="mt-3 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
-            <div class="flex items-start gap-2 text-xs text-amber-300">
-              <span>⚠️</span>
-              <div>
-                <strong>Phase {{ phaseSelection === 'phase1' ? '1' : phaseSelection === 'phase3' ? '3' : phaseSelection === 'phase5' ? '5' : phaseSelection === 'phase6' ? '6' : '7' }} requirements:</strong>
-                <span v-if="phaseSelection === 'phase1'"> No prerequisites</span>
-                <span v-else-if="phaseSelection === 'phase3'"> Requires seed_pairs.json (Phase 1 complete)</span>
-                <span v-else-if="phaseSelection === 'phase5'"> Requires lego_pairs.json (Phase 3 complete)</span>
-                <span v-else-if="phaseSelection === 'phase6'"> Requires lego_pairs.json (Phase 3 complete)</span>
-                <span v-else-if="phaseSelection === 'phase7'"> Requires all previous phases complete</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Segment Mode (for Phase 3/5) -->
-        <div v-if="phaseSelection === 'phase3' || phaseSelection === 'phase5'" class="mb-8">
-          <h3 class="text-lg font-medium text-slate-300 mb-4">Execution Strategy</h3>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <!-- Single Pass -->
-            <button
-              @click="segmentMode = 'single'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                segmentMode === 'single'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">⚡</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Single Pass</h4>
-              <p class="text-xs text-slate-400 mb-2">Process all seeds in one execution</p>
-              <p class="text-xs text-slate-500">Best for: &lt;100 seeds, testing</p>
-            </button>
-
-            <!-- Staged Segments (Swim-Lanes) -->
-            <button
-              @click="segmentMode = 'staged'"
-              :class="[
-                'p-4 rounded-lg border-2 transition text-left',
-                segmentMode === 'staged'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="text-2xl mb-2">🏊</div>
-              <h4 class="text-sm font-semibold text-slate-100 mb-1">Staged Segments</h4>
-              <p class="text-xs text-slate-400 mb-2">100-seed swim-lanes with quality gates</p>
-              <p class="text-xs text-slate-500">Best for: Full courses (668 seeds)</p>
-            </button>
-          </div>
-
-          <!-- Staged Mode Explanation -->
-          <div v-if="segmentMode === 'staged'" class="mt-3 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-            <div class="flex items-start gap-3">
-              <div class="text-blue-400 text-xl">📋</div>
-              <div class="text-xs text-slate-300">
-                <p class="font-medium mb-2">Staged Execution (APML 8.1.0 Swim-Lane Architecture):</p>
-                <ul class="list-disc list-inside space-y-1 text-slate-400">
-                  <li><strong>Stage 1:</strong> Process S0001-S0100 (foundation seeds) → Review quality</li>
-                  <li><strong>Stage 2:</strong> After approval, process remaining segments in parallel</li>
-                  <li>Each 100-seed segment uses 10 parallel sub-agents (10 seeds each)</li>
-                  <li>Quality gate between stages ensures high-quality foundation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Seed Range Selection -->
+        <!-- Custom Range / Manual Input -->
         <div v-if="!analysis" class="mb-8">
-          <h3 class="text-lg font-medium text-slate-300 mb-4">Select Seed Range</h3>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <!-- Quick Test (10 seeds) -->
-            <button
-              @click="quickTest"
-              :class="[
-                'p-6 rounded-lg border-2 transition text-left',
-                courseSize === 'test'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="flex items-start justify-between mb-2">
-                <div class="text-2xl">⚡</div>
-                <div
-                  v-if="courseSize === 'test'"
-                  class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"
-                >
-                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-lg font-semibold text-slate-100 mb-1">Quick Test (10 seeds)</h4>
-              <p class="text-sm text-slate-400 mb-2">Random 10 seeds (5 parallel agents)</p>
-              <p class="text-xs text-slate-500">Test with current phase selection ~5 min</p>
-            </button>
-
-            <!-- Medium Course (100 seeds) -->
-            <button
-              @click="selectCourseSize('medium', 1, 100)"
-              :class="[
-                'p-6 rounded-lg border-2 transition text-left',
-                courseSize === 'medium'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="flex items-start justify-between mb-2">
-                <div class="text-2xl">🔬</div>
-                <div
-                  v-if="courseSize === 'medium'"
-                  class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"
-                >
-                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-lg font-semibold text-slate-100 mb-1">Medium (100 seeds)</h4>
-              <p class="text-sm text-slate-400 mb-2">Seeds 1-100</p>
-              <p class="text-xs text-slate-500">LEGO patterns & quality check ~20-30 min</p>
-            </button>
-
-            <!-- Full Course (668 seeds) -->
-            <button
-              @click="selectCourseSize('full', 1, 668)"
-              :class="[
-                'p-6 rounded-lg border-2 transition text-left',
-                courseSize === 'full'
-                  ? 'border-emerald-500 bg-emerald-500/10'
-                  : 'border-slate-600 hover:border-emerald-500/50 bg-slate-800/50'
-              ]"
-            >
-              <div class="flex items-start justify-between mb-2">
-                <div class="text-2xl">🚀</div>
-                <div
-                  v-if="courseSize === 'full'"
-                  class="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center"
-                >
-                  <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-lg font-semibold text-slate-100 mb-1">Full (668 seeds)</h4>
-              <p class="text-sm text-slate-400 mb-2">Seeds 1-668</p>
-              <p class="text-xs text-slate-500">Production course + automation test ~2-3 hrs</p>
-            </button>
-          </div>
 
           <!-- Custom Range -->
           <div class="mb-6 p-4 bg-slate-800/50 rounded-lg border border-slate-600">
             <div class="flex items-start gap-3 mb-3">
               <div class="text-blue-400 text-xl">⚙️</div>
               <div class="flex-1">
-                <p class="font-medium text-slate-300 mb-1">Custom Seed Range</p>
-                <p class="text-sm text-slate-400 mb-3">Specify your own start and end seeds</p>
+                <h3 class="text-lg font-medium text-slate-300 mb-1">Seed Range</h3>
+                <p class="text-sm text-slate-400 mb-3">Specify start and end seeds (or use Smart Recommendations above)</p>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-4 mb-3">
                   <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1">Start Seed</label>
                     <input
@@ -419,7 +192,6 @@
                       type="number"
                       min="1"
                       max="668"
-                      @input="courseSize = 'custom'"
                       class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                     />
                   </div>
@@ -430,30 +202,34 @@
                       type="number"
                       min="1"
                       max="668"
-                      @input="courseSize = 'custom'"
                       class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                     />
                   </div>
                 </div>
 
-                <div v-if="courseSize === 'custom' && startSeed && endSeed" class="mt-3 text-xs text-emerald-400">
-                  ✓ Custom range: {{ seedCount }} seeds (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
+                <!-- Phase Selection Dropdown -->
+                <div class="mb-3">
+                  <label class="block text-xs font-medium text-slate-400 mb-1">Phases to Run</label>
+                  <select
+                    v-model="phaseSelection"
+                    class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                  >
+                    <option value="all">All Phases (1 → 3 → 5 → 7 → 8)</option>
+                    <option value="phase1">Phase 1 Only (Translation)</option>
+                    <option value="phase3">Phase 3 Only (LEGO Extraction)</option>
+                    <option value="phase5">Phase 5 Only (Practice Baskets)</option>
+                    <option value="phase7">Phase 7 Only (Course Compilation)</option>
+                  </select>
+                  <p class="text-xs text-slate-500 mt-1">
+                    <span v-if="phaseSelection === 'phase3'">⚠️ Requires seed_pairs.json from Phase 1</span>
+                    <span v-else-if="phaseSelection === 'phase5'">⚠️ Requires lego_pairs.json from Phase 3</span>
+                    <span v-else-if="phaseSelection === 'phase7'">⚠️ Requires all previous phases complete</span>
+                  </p>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Info Box -->
-          <div class="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-            <div class="flex items-start gap-3">
-              <div class="text-blue-400 text-xl">ℹ️</div>
-              <div class="text-sm text-slate-300">
-                <p class="font-medium mb-1">Different ranges test different things:</p>
-                <ul class="list-disc list-inside space-y-1 text-slate-400 text-xs">
-                  <li><strong>30 seeds:</strong> Tests course structure, phase logic, file creation</li>
-                  <li><strong>100 seeds:</strong> Tests LEGO diversity, basket quality, pattern recognition</li>
-                  <li><strong>668 seeds:</strong> Tests automation robustness, resource management, parallel processing</li>
-                </ul>
+                <div v-if="startSeed && endSeed" class="text-xs text-emerald-400">
+                  ✓ Selected range: {{ seedCount }} seeds (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
+                </div>
               </div>
             </div>
           </div>
@@ -462,14 +238,11 @@
           <div class="flex gap-4">
             <button
               @click="startGeneration"
-              :disabled="!courseSize || !startSeed || !endSeed || startSeed > endSeed"
+              :disabled="!startSeed || !endSeed || startSeed > endSeed"
               class="flex-1 bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
             >
-              <span v-if="courseSize === 'test'">Generate Test Course (30 seeds)</span>
-              <span v-else-if="courseSize === 'medium'">Generate Medium Course (100 seeds)</span>
-              <span v-else-if="courseSize === 'full'">Generate Full Course (668 seeds)</span>
-              <span v-else-if="courseSize === 'custom'">Generate Custom Course ({{ seedCount }} seeds)</span>
-              <span v-else>Select Seed Range</span>
+              <span v-if="startSeed && endSeed">Generate Course ({{ seedCount }} seeds: {{ startSeed }}-{{ endSeed }})</span>
+              <span v-else>Enter Seed Range</span>
             </button>
 
             <button
@@ -659,6 +432,15 @@
               Generate Another Course
             </button>
             <button
+              @click="pushToGitHub"
+              :disabled="pushing"
+              class="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
+              title="Push course data to GitHub (Vercel will auto-deploy)"
+            >
+              <span v-if="pushing">Pushing...</span>
+              <span v-else>📤 Push to GitHub</span>
+            </button>
+            <button
               @click="viewCourse"
               class="bg-slate-600 hover:bg-slate-700 text-white font-semibold px-6 py-3 rounded-lg transition hover:-translate-y-0.5"
             >
@@ -684,24 +466,77 @@
       </div>
 
     </main>
+
+    <!-- Push to GitHub Confirmation Modal -->
+    <div
+      v-if="showPushModal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      @click.self="showPushModal = false"
+    >
+      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-lg w-full shadow-2xl">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-emerald-400 mb-4">📤 Push to GitHub?</h3>
+
+          <div class="mb-6 space-y-3">
+            <p class="text-slate-300">
+              Push <strong class="text-emerald-400">{{ courseCode }}</strong> course data to GitHub.
+            </p>
+
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <p class="text-sm font-medium text-slate-400 mb-2">What happens next:</p>
+              <ul class="text-sm text-slate-300 space-y-1">
+                <li>✓ Commits <code class="text-emerald-400">{{ courseCode }}/</code> changes</li>
+                <li>✓ Pushes to <code class="text-emerald-400">main</code> branch</li>
+                <li>✓ Triggers Vercel deployment (~30s)</li>
+                <li>✓ Dashboard shows latest data</li>
+              </ul>
+            </div>
+
+            <p class="text-xs text-slate-500">
+              Note: If no changes exist, this will skip the commit.
+            </p>
+          </div>
+
+          <div class="flex gap-3 justify-end">
+            <button
+              @click="showPushModal = false"
+              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              @click="confirmPush"
+              :disabled="pushing"
+              class="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg transition-colors font-medium"
+            >
+              <span v-if="pushing">Pushing...</span>
+              <span v-else>Push to GitHub</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
 import api, { apiClient } from '../services/api'
 import ExecutionModeSelector from '../components/ExecutionModeSelector.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
+
+const router = useRouter()
+const toast = useToast()
 
 // State
 const knownLanguage = ref('eng')
 const targetLanguage = ref('gle')
 const startSeed = ref(1)
 const endSeed = ref(668)
-const courseSize = ref(null) // 'test' or 'full'
 const executionMode = ref('web') // 'local', 'api', or 'web'
-const phaseSelection = ref('all') // 'all', 'phase1', 'phase3', 'phase5'
-const segmentMode = ref('single') // 'single', 'staged'
+const phaseSelection = ref('all') // 'all', 'phase1', 'phase3', 'phase5', 'phase7'
 
 const targetLanguages = ref([])
 const knownLanguages = ref([])
@@ -714,6 +549,8 @@ const currentPhase = ref('initializing')
 const progress = ref(0)
 const errorMessage = ref('')
 const clearingJob = ref(false)
+const pushing = ref(false)
+const showPushModal = ref(false)
 
 // Enhanced tracking from phase servers
 const phaseDetails = ref(null)
@@ -729,10 +566,10 @@ let pollInterval = null
 // Phase names for UI (matches Phase Intelligence architecture)
 const phaseNames = [
   { id: 0, name: 'Phase 1: Pedagogical Translation' },
-  { id: 1, name: 'Phase 3: LEGO Extraction' },
-  { id: 2, name: 'Phase 5: Practice Baskets' },
-  { id: 3, name: 'Phase 6: Introductions' },
-  { id: 4, name: 'Phase 7: Course Manifest' }
+  { id: 1, name: 'Phase 3: LEGO Extraction + Introductions' },
+  { id: 2, name: 'Phase 5: Practice Baskets + Grammar' },
+  { id: 3, name: 'Phase 7: Course Manifest' },
+  { id: 4, name: 'Phase 8: Audio/TTS' }
 ]
 
 // Computed
@@ -746,8 +583,8 @@ const currentPhaseIndex = computed(() => {
   if (phase.includes('phase_1')) return 0
   if (phase.includes('phase_3')) return 1
   if (phase.includes('phase_5')) return 2
-  if (phase.includes('phase_6')) return 3
-  if (phase.includes('phase_7') || phase === 'compilation') return 4
+  if (phase.includes('phase_7') || phase === 'compilation') return 3
+  if (phase.includes('phase_8') || phase === 'audio') return 4
   if (phase === 'completed') return 5
   return -1
 })
@@ -832,30 +669,23 @@ const analyzeCourse = async () => {
 
 const selectRecommendation = (rec) => {
   startSeed.value = rec.action.startSeed
-  endSeed.value = rec.action.endSeed
-  startGeneration()
-}
+  if (rec.action.count) {
+    // Quick test with random seeds
+    endSeed.value = rec.action.startSeed + rec.action.count - 1
+  } else {
+    endSeed.value = rec.action.endSeed
+  }
 
-const selectCourseSize = (size, start, end) => {
-  courseSize.value = size
-  startSeed.value = start
-  endSeed.value = end
-}
+  // Handle phase-specific recommendations (e.g., Phase 5 only)
+  if (rec.action.phases && rec.action.phases.includes('phase5')) {
+    phaseSelection.value = 'phase5'
+  } else {
+    phaseSelection.value = 'all'
+  }
 
-const quickTest = () => {
-  // Set test configuration (uses current phase selection)
-  segmentMode.value = 'single'
-  courseSize.value = 'test'
-
-  // Random 10 seeds from full course (1-668)
-  const randomStart = Math.floor(Math.random() * (668 - 10 + 1)) + 1
-  startSeed.value = randomStart
-  endSeed.value = randomStart + 9
-
-  console.log(`[Quick Test] Random seeds: S${String(randomStart).padStart(4, '0')}-S${String(randomStart + 9).padStart(4, '0')}`)
-
-  // Auto-start generation with current phase
-  startGeneration()
+  // Pass force flag from recommendation
+  const force = rec.action.force || false
+  startGeneration(force)
 }
 
 const extendToFullCourse = async () => {
@@ -876,7 +706,6 @@ const extendToFullCourse = async () => {
   // Update seed range to full course
   startSeed.value = 1
   endSeed.value = 668
-  courseSize.value = 'full'
 
   // Reset state and restart generation
   isCompleted.value = false
@@ -942,15 +771,21 @@ const startGeneration = async (force = false) => {
       endSeed: endSeed.value,
       executionMode: executionMode.value,
       phaseSelection: phaseSelection.value,
-      segmentMode: segmentMode.value,
       force: force
     })
 
     console.log('Course generation started:', response)
     courseCode.value = response.courseCode
 
-    // Start polling for status
-    startPolling(response.courseCode)
+    // Redirect to dedicated progress page (only for orchestrated pipelines)
+    // Phase 5 standalone runs in browser windows (web mode) - no redirect needed
+    if (phaseSelection.value === 'all' || phaseSelection.value === 'phase1') {
+      router.push(`/courses/${response.courseCode}/progress`)
+    } else {
+      // For single-phase jobs (3, 5, 7), show inline message
+      currentPhase.value = `Running ${phaseSelection.value}...`
+      // Don't redirect - user watches browser windows for Phase 5
+    }
   } catch (error) {
     console.error('Failed to start course generation:', error)
 
@@ -1117,6 +952,40 @@ const clearStuckJob = async () => {
   } catch (error) {
     console.error('Failed to clear job:', error)
     errorMessage.value = 'Failed to clear job: ' + (error.response?.data?.error || error.message)
+  }
+}
+
+const pushToGitHub = () => {
+  if (!courseCode.value) {
+    toast.error('❌ No course selected')
+    return
+  }
+  showPushModal.value = true
+}
+
+const confirmPush = async () => {
+  pushing.value = true
+  try {
+    const response = await api.pushToGitHub(courseCode.value)
+
+    if (response.skipped) {
+      toast.info('ℹ️ No changes to push')
+    } else {
+      toast.success('✅ Course data pushed to GitHub! Vercel will deploy automatically.')
+    }
+
+    showPushModal.value = false
+  } catch (err) {
+    console.error('Failed to push to GitHub:', err)
+    if (err.response?.status === 404) {
+      toast.error('❌ Orchestrator doesn\'t support GitHub push. Make sure it\'s running and up to date.')
+    } else if (err.message?.includes('Network Error') || err.code === 'ERR_NETWORK') {
+      toast.error('❌ Cannot reach orchestrator.')
+    } else {
+      toast.error('❌ Failed to push to GitHub')
+    }
+  } finally {
+    pushing.value = false
   }
 }
 

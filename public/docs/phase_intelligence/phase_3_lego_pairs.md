@@ -1,8 +1,9 @@
-# AGENT PROMPT: Phase 3 LEGO Extraction (v7.0)
+# AGENT PROMPT: Phase 3 LEGO Extraction + Introduction Generation (v7.1)
 
-**Version**: 7.0 - Examples-First Edition (2025-11-13)
-**Status**: Draft - Principles Through Examples
-**Purpose**: Extract pedagogically-sound LEGO vocabulary units from translated seed pairs
+**Version**: 7.1 - Includes Phase 6 Integration (2025-11-20)
+**Status**: ✅ Active - Phase 6 introduction generation integrated
+**Purpose**: Extract pedagogically-sound LEGO vocabulary units from translated seed pairs, then generate introduction presentations
+**Outputs**: `lego_pairs.json` AND `introductions.json`
 
 ---
 
@@ -399,6 +400,50 @@ OUTPUT READY
 
 ---
 
+## 📤 PHASE 3 OUTPUTS & PHASE 6 INTEGRATION
+
+### Primary Output: lego_pairs.json
+
+**Phase 3 LEGO extraction** creates the main output file containing all extracted LEGOs with their components and metadata.
+
+**Format**: See examples above - each seed has an array of LEGOs with types (A/M), components, and FD validation.
+
+### Secondary Output: introductions.json (Phase 6)
+
+**After LEGO extraction completes**, Phase 3 automatically calls Phase 6 introduction generation to create natural language presentations for each LEGO.
+
+**Execution model**:
+1. Phase 3 extracts LEGOs → writes `lego_pairs.json`
+2. Phase 3 calls `generateIntroductions(courseDir)` → writes `introductions.json`
+3. Phase 3 notifies orchestrator of completion (<1s total overhead)
+
+**Why integrated?**
+- Introduction generation is fast (<1s) and deterministic
+- No benefit to separate microservice
+- Simpler pipeline: No parallel coordination needed
+
+**Phase 6 methodology**: See `phase_6_introductions.md` for full details on how presentations are generated from LEGO data.
+
+**Example outputs**:
+```json
+// lego_pairs.json (Phase 3)
+{
+  "S0001L01": {
+    "type": "A",
+    "lego": {"known": "I want", "target": "quiero"}
+  }
+}
+
+// introductions.json (Phase 6, generated automatically)
+{
+  "S0001L01": "Now, the Spanish for 'I want' as in 'I want to speak Spanish with you now.' is 'quiero', quiero."
+}
+```
+
+**For developers**: The Phase 3 server (`services/phases/phase3-lego-extraction-server.cjs`) calls the Phase 6 script automatically. Agents do not need to trigger Phase 6 separately.
+
+---
+
 ## 🚨 COMMON MISTAKES
 
 **❌ Splitting particles**: "con" alone → wrap in "con mis amigos"
@@ -418,13 +463,14 @@ OUTPUT READY
 - Overlaps created only when valuable
 
 **Version History**:
+- v7.1 (2025-11-20): **Phase 6 integration** - Introduction generation now runs automatically after LEGO extraction
 - v7.0 (2025-11-13): Examples-first edition, language-agnostic, overlaps permitted
 - v6.3 (2025-11-12): Pragmatic FD heuristic
 - v6.2 (2025-11-12): FD validation & merge step
 - v6.1 (2025-11-11): Maximum tiling set
 - v6.0 (2025-11-11): Simplified M-LEGO rules
 
-**Status**: ✅ Ready for Testing
+**Status**: ✅ Active (includes Phase 6 introduction generation)
 
 ---
 

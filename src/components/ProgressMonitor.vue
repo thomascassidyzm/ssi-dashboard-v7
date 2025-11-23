@@ -16,406 +16,157 @@
       </span>
     </div>
 
-    <!-- Phase Progress -->
-    <div class="space-y-4">
-      <!-- Phase 1: Translation -->
-      <div class="bg-slate-900/50 rounded-lg p-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-3">
-            <div v-if="phase1Complete" class="text-green-400">✓</div>
-            <div v-else-if="phase1Active" class="text-yellow-400 animate-pulse">●</div>
-            <div v-else class="text-slate-600">○</div>
-            <span class="text-sm font-medium text-slate-300">Phase 1: Pedagogical Translation</span>
+    <!-- Live Progress (from new API) -->
+    <div v-if="liveProgress && liveProgress.overallStatus === 'running'" class="mb-6 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/30 rounded-lg p-4">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-3">
+          <div class="text-emerald-400 animate-pulse text-xl">●</div>
+          <div>
+            <div class="text-lg font-semibold text-emerald-400">{{ getPhaseTitle(liveProgress.currentPhase) }}</div>
+            <div class="text-xs text-slate-400">Started {{ formatRelativeTime(liveProgress.startTime) }}</div>
           </div>
-          <span v-if="phase1FileExists" class="text-xs text-green-400">seed_pairs.json ✓</span>
         </div>
-        <div v-if="phase1Active || phase1Complete" class="text-xs text-slate-400 ml-10">
-          Translating {{ seedCount }} canonical sentences to {{ courseCode }}
+        <div v-if="currentPhaseData && currentPhaseData.eta" class="text-right">
+          <div class="text-xs text-slate-400">ETA</div>
+          <div class="text-sm font-medium text-emerald-400">{{ currentPhaseData.etaHuman }}</div>
         </div>
       </div>
 
-      <!-- Phase 3: LEGO Extraction -->
-      <div class="bg-slate-900/50 rounded-lg p-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-3">
-            <div v-if="phase3Complete" class="text-green-400">✓</div>
-            <div v-else-if="phase3Active" class="text-yellow-400 animate-pulse">●</div>
-            <div v-else class="text-slate-600">○</div>
-            <span class="text-sm font-medium text-slate-300">Phase 3: LEGO Extraction</span>
-          </div>
-          <span v-if="phase3FileExists" class="text-xs text-green-400">lego_pairs.json ✓</span>
+      <!-- Progress Bar -->
+      <div v-if="currentPhaseData && (currentPhaseData.seedsTotal || currentPhaseData.legosTotal)" class="mb-3">
+        <div class="flex items-center justify-between text-xs mb-1">
+          <!-- Phase 5: Show LEGOs and seeds -->
+          <span v-if="liveProgress.currentPhase === 5 && currentPhaseData.legosTotal" class="text-slate-300">
+            {{ currentPhaseData.legosCompleted || 0 }} / {{ currentPhaseData.legosTotal }} LEGOs
+            <span class="text-slate-500 ml-2">({{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds)</span>
+          </span>
+          <!-- Other phases: Show agent breakdown or seeds -->
+          <span v-else-if="currentPhaseData.agentCount" class="text-slate-300">
+            {{ currentPhaseData.agentCount }} agents × {{ currentPhaseData.seedsPerAgent }} seeds/agent
+          </span>
+          <span v-else class="text-slate-300">{{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds</span>
+
+          <!-- Percentage: Use LEGOs for Phase 5, seeds for others -->
+          <span class="text-emerald-400 font-medium">
+            {{ liveProgress.currentPhase === 5 && currentPhaseData.legosTotal
+              ? ((currentPhaseData.legosCompleted || 0) / currentPhaseData.legosTotal * 100).toFixed(1)
+              : ((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100).toFixed(1)
+            }}%
+          </span>
         </div>
-        <div v-if="phase3Active || phase3Complete" class="text-xs text-slate-400 ml-10">
-          Extracting linguistic building blocks from seed pairs
-        </div>
-        <div v-if="phase3Active && subProgress && subProgress.phase === 'phase_3'" class="ml-10 mt-2">
-          <div class="flex items-center gap-2 text-xs">
-            <span class="text-emerald-400 font-medium">{{ subProgress.completed }}/{{ subProgress.total }} agents</span>
-            <div class="flex-1 bg-slate-700 rounded-full h-1.5">
-              <div class="bg-emerald-500 h-1.5 rounded-full transition-all" :style="{ width: `${subProgress.percentage}%` }"></div>
-            </div>
-            <span class="text-slate-500">{{ subProgress.percentage }}%</span>
-          </div>
+        <div class="w-full bg-slate-700 rounded-full h-2.5">
+          <div
+            class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500"
+            :style="{ width: `${
+              liveProgress.currentPhase === 5 && currentPhaseData.legosTotal
+                ? ((currentPhaseData.legosCompleted || 0) / currentPhaseData.legosTotal * 100)
+                : ((currentPhaseData.seedsCompleted || 0) / currentPhaseData.seedsTotal * 100)
+            }%` }"
+          ></div>
         </div>
       </div>
 
-      <!-- Phase 5: Practice Baskets -->
-      <div class="bg-slate-900/50 rounded-lg p-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-3">
-            <div v-if="phase5Complete" class="text-green-400">✓</div>
-            <div v-else-if="phase5Active" class="text-yellow-400 animate-pulse">●</div>
-            <div v-else class="text-slate-600">○</div>
-            <span class="text-sm font-medium text-slate-300">Phase 5: Practice Baskets</span>
-          </div>
-          <span v-if="phase5FileExists" class="text-xs text-green-400">baskets/ ✓</span>
-        </div>
-        <div v-if="phase5Active || phase5Complete" class="text-xs text-slate-400 ml-10">
-          Generating practice phrases for each LEGO
-        </div>
-        <div v-if="phase5Active && subProgress && subProgress.phase === 'phase_5'" class="ml-10 mt-2">
-          <div class="flex items-center gap-2 text-xs">
-            <span class="text-emerald-400 font-medium">{{ subProgress.completed }}/{{ subProgress.total }} agents</span>
-            <div class="flex-1 bg-slate-700 rounded-full h-1.5">
-              <div class="bg-emerald-500 h-1.5 rounded-full transition-all" :style="{ width: `${subProgress.percentage}%` }"></div>
-            </div>
-            <span class="text-slate-500">{{ subProgress.percentage }}%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Phase 6: Introductions -->
-      <div class="bg-slate-900/50 rounded-lg p-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-3">
-            <div v-if="phase6Complete" class="text-green-400">✓</div>
-            <div v-else-if="phase6Active" class="text-yellow-400 animate-pulse">●</div>
-            <div v-else class="text-slate-600">○</div>
-            <span class="text-sm font-medium text-slate-300">Phase 6: Introductions</span>
-          </div>
-          <span v-if="phase6FileExists" class="text-xs text-green-400">introductions.json ✓</span>
-        </div>
-        <div v-if="phase6Active || phase6Complete" class="text-xs text-slate-400 ml-10">
-          Generating LEGO presentation text (~2 seconds)
-        </div>
-      </div>
-
-      <!-- Phase 7: Course Manifest -->
-      <div class="bg-slate-900/50 rounded-lg p-4">
-        <div class="flex items-center justify-between mb-2">
-          <div class="flex items-center gap-3">
-            <div v-if="phase7Complete" class="text-green-400">✓</div>
-            <div v-else-if="phase7Active" class="text-yellow-400 animate-pulse">●</div>
-            <div v-else class="text-slate-600">○</div>
-            <span class="text-sm font-medium text-slate-300">Phase 7: Course Manifest</span>
-          </div>
-          <span v-if="phase7FileExists" class="text-xs text-green-400">course_manifest.json ✓</span>
-        </div>
-        <div v-if="phase7Active || phase7Complete" class="text-xs text-slate-400 ml-10">
-          Compiling final manifest for app deployment (~5 seconds)
+      <!-- Recent Activity -->
+      <div v-if="liveProgress.recentLogs && liveProgress.recentLogs.length > 0" class="bg-slate-900/50 rounded p-2 max-h-32 overflow-y-auto">
+        <div class="text-xs font-medium text-slate-400 mb-1.5">Recent Activity</div>
+        <div v-for="(log, i) in liveProgress.recentLogs.slice(0, 5)" :key="i" class="text-xs text-slate-300 py-0.5">
+          <span class="text-slate-500">{{ formatTime(log.time) }}</span>
+          <span class="mx-1">•</span>
+          <span>{{ log.message }}</span>
         </div>
       </div>
     </div>
 
-    <!-- Event Timeline -->
-    <div v-if="events.length > 0" class="mt-6 bg-slate-800/50 rounded-lg p-4">
-      <h4 class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
-        📋 Activity Timeline
-        <span class="text-xs text-slate-500">({{ events.length }} events)</span>
-      </h4>
-
-      <div class="space-y-2 max-h-64 overflow-y-auto">
-        <div
-          v-for="(event, i) in reversedEvents"
-          :key="i"
-          class="flex items-start gap-3 text-xs bg-slate-900/50 rounded p-2"
-        >
-          <span class="text-slate-500">{{ formatTime(event.timestamp) }}</span>
-          <span :class="eventIconClass(event.type)">{{ getEventIcon(event.type) }}</span>
-          <span class="text-slate-300 flex-1">{{ formatEvent(event) }}</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Git Activity -->
-    <div v-if="gitStats.branchesDetected > 0" class="mt-4 bg-slate-800/50 rounded-lg p-4">
-      <h4 class="text-sm font-semibold text-slate-300 mb-3">
-        🌿 Git Activity
-      </h4>
-
-      <div class="space-y-2 text-xs">
-        <div v-if="gitStats.branchesDetected > 0" class="flex items-center gap-2">
-          <span class="text-blue-400">📤</span>
-          <span class="text-slate-300">{{ gitStats.branchesDetected }} branch(es) detected</span>
-        </div>
-        <div v-if="gitStats.branchesMerged > 0" class="flex items-center gap-2">
-          <span class="text-green-400">✓</span>
-          <span class="text-slate-300">{{ gitStats.branchesMerged }} branch(es) merged</span>
-        </div>
-        <div v-if="gitStats.pushesToMain > 0" class="flex items-center gap-2">
-          <span class="text-emerald-400">🚀</span>
-          <span class="text-slate-300">{{ gitStats.pushesToMain }} push(es) to main</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Web Mode Instructions -->
-    <div v-if="executionMode === 'web' && status === 'web_mode_waiting'" class="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-      <div class="flex items-start gap-3">
-        <div class="text-blue-400 text-xl">✨</div>
-        <div class="text-sm">
-          <p class="font-medium text-blue-400 mb-2">Prompts Auto-Pasted!</p>
-          <ol class="list-decimal list-inside space-y-1 text-slate-300">
-            <li>Browser tabs opened automatically</li>
-            <li>Prompts pasted into each tab via osascript</li>
-            <li><strong>Just hit Enter in each tab to execute!</strong></li>
-            <li>Outputs will appear in VFS when complete</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-
-    <!-- Auto-refresh notice -->
-    <div class="mt-4 text-xs text-slate-500 text-center">
-      Checking for updates every {{ pollInterval / 1000 }}s
+    <!-- Simple status message when not running -->
+    <div v-else class="text-center py-8 text-slate-400">
+      <div class="text-sm">No active pipeline running</div>
+      <div class="text-xs mt-2">Start a course generation to see live progress</div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { apiClient } from '../services/api'
-import { GITHUB_CONFIG } from '../config/github'
+import axios from 'axios'
 
 const props = defineProps({
   courseCode: {
     type: String,
     required: true
   },
-  executionMode: {
-    type: String,
-    default: 'local'
+  pollInterval: {
+    type: Number,
+    default: 5000
   },
   seedCount: {
     type: Number,
-    default: 0
-  },
-  pollInterval: {
-    type: Number,
-    default: 30000 // 30 seconds
+    default: null
   }
 })
 
-// State
-const status = ref('initializing')
-const currentPhase = ref('')
-const currentMessage = ref('')
-const subProgress = ref(null)
-const phase1FileExists = ref(false)
-const phase3FileExists = ref(false)
-const phase5FileExists = ref(false)
-const phase6FileExists = ref(false)
-const phase7FileExists = ref(false)
-const events = ref([])
-const windows = ref([])
+const liveProgress = ref(null)
+const executionMode = ref('web')
 
-let pollTimer = null
-
-// Computed
 const executionModeName = computed(() => {
-  if (props.executionMode === 'web') return '🌐 Web Mode'
-  if (props.executionMode === 'local') return '💻 Local Mode'
-  if (props.executionMode === 'api') return '⚡ API Mode'
-  return 'Unknown'
+  if (executionMode.value === 'web') return '● Web Mode'
+  if (executionMode.value === 'local') return '● Local Mode'
+  return '● Hybrid Mode'
 })
 
-const phase1Active = computed(() => {
-  return currentPhase.value.includes('phase_1') && !phase1Complete.value
+const currentPhaseData = computed(() => {
+  if (!liveProgress.value || !liveProgress.value.currentPhase) return null
+  return liveProgress.value.phases[liveProgress.value.currentPhase]
 })
 
-const phase1Complete = computed(() => {
-  return phase1FileExists.value || currentPhase.value.includes('phase_1_complete')
-})
-
-const phase3Active = computed(() => {
-  return currentPhase.value.includes('phase_3') && !phase3Complete.value
-})
-
-const phase3Complete = computed(() => {
-  return phase3FileExists.value || currentPhase.value.includes('phase_3_complete')
-})
-
-const phase5Active = computed(() => {
-  return currentPhase.value.includes('phase_5') && !phase5Complete.value
-})
-
-const phase5Complete = computed(() => {
-  return phase5FileExists.value || currentPhase.value.includes('phase_5_complete')
-})
-
-const phase6Active = computed(() => {
-  return currentPhase.value.includes('phase_6') && !phase6Complete.value
-})
-
-const phase6Complete = computed(() => {
-  return phase6FileExists.value || currentPhase.value.includes('phase_6_complete') || phase7Active.value || phase7Complete.value
-})
-
-const phase7Active = computed(() => {
-  return currentPhase.value.includes('phase_7') && !phase7Complete.value
-})
-
-const phase7Complete = computed(() => {
-  return phase7FileExists.value || status.value === 'completed'
-})
-
-const reversedEvents = computed(() => {
-  return [...events.value].reverse()
-})
-
-const gitStats = computed(() => {
-  return {
-    branchesDetected: events.value.filter(e => e.type === 'branch_detected').length,
-    branchesMerged: events.value.filter(e => e.type === 'branch_merged').length,
-    pushesToMain: events.value.filter(e => e.type === 'push_complete').length
+function getPhaseTitle(phaseNum) {
+  const titles = {
+    1: 'Phase 1: Pedagogical Translation',
+    3: 'Phase 3: LEGO Extraction + Introductions',
+    5: 'Phase 5: Practice Baskets',
+    7: 'Phase 7: Course Manifest',
+    8: 'Phase 8: Audio/TTS Generation'
   }
-})
+  return titles[phaseNum] || `Phase ${phaseNum}`
+}
 
-// Methods
-const formatTime = (timestamp) => {
+function formatTime(timestamp) {
   if (!timestamp) return ''
   const date = new Date(timestamp)
-  return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+  return date.toLocaleTimeString('en-US', { hour12: false })
 }
 
-const getEventIcon = (type) => {
-  const icons = {
-    window_opening: '🪟',
-    window_ready: '✓',
-    branch_detected: '📤',
-    branch_merging: '⚙️',
-    branch_merged: '✓',
-    push_complete: '🚀',
-    phase_started: '▶️',
-    phase_complete: '✅'
-  }
-  return icons[type] || '•'
+function formatRelativeTime(timestamp) {
+  if (!timestamp) return ''
+  const now = Date.now()
+  const then = new Date(timestamp).getTime()
+  const diff = Math.floor((now - then) / 1000) // seconds
+
+  if (diff < 60) return `${diff}s ago`
+  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`
+  return `${Math.floor(diff / 3600)}h ago`
 }
 
-const eventIconClass = (type) => {
-  const classes = {
-    window_opening: 'text-blue-400',
-    window_ready: 'text-green-400',
-    branch_detected: 'text-cyan-400',
-    branch_merging: 'text-yellow-400',
-    branch_merged: 'text-green-400',
-    push_complete: 'text-emerald-400',
-    phase_started: 'text-purple-400',
-    phase_complete: 'text-green-500'
-  }
-  return classes[type] || 'text-slate-400'
-}
-
-const formatEvent = (event) => {
-  switch (event.type) {
-    case 'window_opening':
-      return `Opening window ${event.window} in ${event.browser}`
-    case 'window_ready':
-      return `Window ${event.window} ready - ${event.message}`
-    case 'branch_detected':
-      return `Detected new branch: ${event.branch}`
-    case 'branch_merging':
-      return `Merging ${event.branch}...`
-    case 'branch_merged':
-      return `Merged ${event.branch} → ${event.target}`
-    case 'push_complete':
-      return `Pushed ${event.branch} to ${event.remote}`
-    case 'phase_started':
-      return `Phase ${event.phase} started`
-    case 'phase_complete':
-      return `Phase ${event.phase} complete`
-    default:
-      return event.type
-  }
-}
-
-// Methods
-const checkProgress = async () => {
+async function fetchProgress() {
   try {
-    // Get job status
-    const jobResponse = await apiClient.get(`/api/courses/${props.courseCode}/status`)
-    if (jobResponse.data) {
-      status.value = jobResponse.data.status
-      currentPhase.value = jobResponse.data.phase || ''
-      currentMessage.value = jobResponse.data.message || ''
-      subProgress.value = jobResponse.data.subProgress || null
-      events.value = jobResponse.data.events || []
-      windows.value = jobResponse.data.windows || []
-    }
-
-    // Check for output files (VFS-based detection)
-    // For segment ranges, check base course directory for seed_pairs.json and lego_pairs.json
-    const segmentMatch = props.courseCode.match(/^([a-z]{3}_for_[a-z]{3})_s\d{4}-\d{4}$/)
-    const baseCourseCode = segmentMatch ? segmentMatch[1] : props.courseCode
-
-    try {
-      const seedPairsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'seed_pairs.json'), { method: 'HEAD' })
-      phase1FileExists.value = seedPairsCheck.ok
-    } catch (err) {
-      phase1FileExists.value = false
-    }
-
-    try {
-      const legoPairsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'lego_pairs.json'), { method: 'HEAD' })
-      phase3FileExists.value = legoPairsCheck.ok
-    } catch (err) {
-      phase3FileExists.value = false
-    }
-
-    try {
-      const basketsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'lego_baskets.json'), { method: 'HEAD' })
-      phase5FileExists.value = basketsCheck.ok
-    } catch (err) {
-      phase5FileExists.value = false
-    }
-
-    try {
-      const introductionsCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'introductions.json'), { method: 'HEAD' })
-      phase6FileExists.value = introductionsCheck.ok
-    } catch (err) {
-      phase6FileExists.value = false
-    }
-
-    try {
-      const manifestCheck = await fetch(GITHUB_CONFIG.getCourseFileUrl(baseCourseCode, 'course_manifest.json'), { method: 'HEAD' })
-      phase7FileExists.value = manifestCheck.ok
-    } catch (err) {
-      phase7FileExists.value = false
-    }
-
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    const response = await axios.get(`${apiBaseUrl}/api/courses/${props.courseCode}/progress`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
+    liveProgress.value = response.data
   } catch (error) {
-    console.error('[ProgressMonitor] Failed to check progress:', error)
+    // Silently fail - progress endpoint might not exist yet
+    console.log('[ProgressMonitor] Progress not available:', error.message)
   }
 }
 
-const startPolling = () => {
-  checkProgress() // Initial check
-  pollTimer = setInterval(checkProgress, props.pollInterval)
-}
+let interval = null
 
-const stopPolling = () => {
-  if (pollTimer) {
-    clearInterval(pollTimer)
-    pollTimer = null
-  }
-}
-
-// Lifecycle
 onMounted(() => {
-  startPolling()
+  fetchProgress()
+  interval = setInterval(fetchProgress, props.pollInterval)
 })
 
 onUnmounted(() => {
-  stopPolling()
+  if (interval) clearInterval(interval)
 })
 </script>

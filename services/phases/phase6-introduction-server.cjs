@@ -11,11 +11,10 @@
 
 const express = require('express');
 const path = require('path');
-const axios = require('axios');
 const { generateIntroductions } = require('../../scripts/phase6-generate-introductions.cjs');
 
 const app = express();
-const PORT = process.env.PORT || 3460;
+const PORT = process.env.PORT || 3461;
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 6 (Introductions)';
 const VFS_ROOT = process.env.VFS_ROOT || path.join(__dirname, '../../public/vfs/courses');
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
@@ -62,17 +61,30 @@ app.post('/start', async (req, res) => {
       job.result = result;
       console.log(`[Phase 6] ✅ Completed for ${courseCode}`);
 
-      // Notify orchestrator that Phase 6 is complete
+      // Notify orchestrator
       try {
-        await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
-          phase: 6,
-          courseCode: courseCode,
-          status: 'completed',
-          result: result
+        const response = await fetch(`${ORCHESTRATOR_URL}/phase-complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            phase: 'phase6',
+            courseCode,
+            success: true,
+            status: 'complete',
+            stats: {
+              introductionsGenerated: result.count || 0,
+              completedAt: new Date().toISOString()
+            }
+          })
         });
-        console.log(`[Phase 6] Notified orchestrator of completion`);
-      } catch (error) {
-        console.error(`[Phase 6] Failed to notify orchestrator:`, error.message);
+
+        if (response.ok) {
+          console.log(`[Phase 6] Notified orchestrator of completion`);
+        } else {
+          console.error(`[Phase 6] Failed to notify orchestrator: ${response.status}`);
+        }
+      } catch (err) {
+        console.error(`[Phase 6] Error notifying orchestrator:`, err.message);
       }
 
       // Clean up after 5 minutes
@@ -86,14 +98,19 @@ app.post('/start', async (req, res) => {
 
       // Notify orchestrator of failure
       try {
-        await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
-          phase: 6,
-          courseCode: courseCode,
-          status: 'failed',
-          error: error.message
+        await fetch(`${ORCHESTRATOR_URL}/phase-complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            phase: 'phase6',
+            courseCode,
+            success: false,
+            status: 'failed',
+            error: error.message
+          })
         });
-      } catch (notifyError) {
-        console.error(`[Phase 6] Failed to notify orchestrator:`, notifyError.message);
+      } catch (err) {
+        console.error(`[Phase 6] Error notifying orchestrator of failure:`, err.message);
       }
 
       // Clean up after 5 minutes
