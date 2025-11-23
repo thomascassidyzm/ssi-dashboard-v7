@@ -534,6 +534,135 @@
       ]
     },
     {
+      "seed_id": "S0027",
+      "seed_pair": {
+        "known": "I don't like taking too much time to answer.",
+        "target": "Non mi piace prendere troppo tempo per rispondere."
+      },
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't like",
+            "target": "Non mi piace"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "mi"
+            },
+            {
+              "known": "don't",
+              "target": "Non"
+            },
+            {
+              "known": "like",
+              "target": "piace"
+            }
+          ]
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "taking",
+            "target": "prendere"
+          }
+        },
+        {
+          "id": "S0027L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "too much time",
+            "target": "troppo tempo"
+          },
+          "components": [
+            {
+              "known": "too much",
+              "target": "troppo"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            }
+          ]
+        },
+        {
+          "id": "S0027L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "per rispondere"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "per"
+            },
+            {
+              "known": "answer",
+              "target": "rispondere"
+            }
+          ]
+        },
+        {
+          "id": "S0027L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "taking too much time",
+            "target": "prendere troppo tempo"
+          },
+          "components": [
+            {
+              "known": "taking",
+              "target": "prendere"
+            },
+            {
+              "known": "too much",
+              "target": "troppo"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            }
+          ]
+        },
+        {
+          "id": "S0027L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "too much time to answer",
+            "target": "troppo tempo per rispondere"
+          },
+          "components": [
+            {
+              "known": "too much",
+              "target": "troppo"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            },
+            {
+              "known": "to",
+              "target": "per"
+            },
+            {
+              "known": "answer",
+              "target": "rispondere"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "seed_id": "S0029",
       "seed_pair": {
         "known": "I'm looking forward to speaking better as soon as I can.",
