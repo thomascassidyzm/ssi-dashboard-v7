@@ -1,6 +1,6 @@
 {
   "course": "ita_for_eng",
-  "generated_at": "2025-11-23T23:48:16.000Z",
+  "generated_at": "2025-11-23T12:00:00.000Z",
   "methodology": "Phase 3 v7.0 - Two Heuristics Edition",
   "phase": "3",
   "seeds": [
@@ -528,6 +528,147 @@
             {
               "known": "with me",
               "target": "con me"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "target": "Non vedo l'ora di parlare meglio appena posso."
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm looking forward to",
+            "target": "Non vedo l'ora di"
+          },
+          "components": [
+            {
+              "known": "Not",
+              "target": "Non"
+            },
+            {
+              "known": "I see",
+              "target": "vedo"
+            },
+            {
+              "known": "the hour",
+              "target": "l'ora"
+            },
+            {
+              "known": "of",
+              "target": "di"
+            }
+          ]
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "better",
+            "target": "meglio"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to speak better",
+            "target": "parlare meglio"
+          },
+          "components": [
+            {
+              "known": "to speak",
+              "target": "parlare"
+            },
+            {
+              "known": "better",
+              "target": "meglio"
+            }
+          ]
+        },
+        {
+          "id": "S0029L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "appena"
+          }
+        },
+        {
+          "id": "S0029L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I can",
+            "target": "posso"
+          }
+        },
+        {
+          "id": "S0029L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as soon as I can",
+            "target": "appena posso"
+          },
+          "components": [
+            {
+              "known": "as soon as",
+              "target": "appena"
+            },
+            {
+              "known": "I can",
+              "target": "posso"
+            }
+          ]
+        },
+        {
+          "id": "S0029L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm looking forward to speaking",
+            "target": "Non vedo l'ora di parlare"
+          },
+          "components": [
+            {
+              "known": "Not",
+              "target": "Non"
+            },
+            {
+              "known": "I see",
+              "target": "vedo"
+            },
+            {
+              "known": "the hour",
+              "target": "l'ora"
+            },
+            {
+              "known": "of",
+              "target": "di"
+            },
+            {
+              "known": "to speak",
+              "target": "parlare"
             }
           ]
         }
