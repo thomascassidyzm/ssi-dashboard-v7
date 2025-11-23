@@ -3,7 +3,9 @@
 /**
  * Phase 8 Worker: Azure Speech Generation
  *
- * Standalone worker that generates Azure TTS samples in parallel with other providers
+ * Standalone worker that generates Azure TTS samples sequentially.
+ * Uses a single persistent synthesizer connection (like the old Python script).
+ *
  * Input: JSON file with samples to generate
  * Output: JSON file with generation results
  */
@@ -13,20 +15,15 @@ require('dotenv').config();
 
 const fs = require('fs-extra');
 const path = require('path');
-const azureTTS = require('../services/azure-tts-service.cjs');
+const sdk = require('microsoft-cognitiveservices-speech-sdk');
 
-// Catch unhandled rejections and exceptions
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('[Azure Worker] ✗ UNHANDLED REJECTION:', reason);
-  console.error('[Azure Worker] Promise:', promise);
-  process.exit(1);
-});
+// Configuration from environment
+const AZURE_SPEECH_KEY = process.env.AZURE_SPEECH_KEY;
+const AZURE_SPEECH_REGION = process.env.AZURE_SPEECH_REGION || 'westeurope';
 
-process.on('uncaughtException', (error) => {
-  console.error('[Azure Worker] ✗ UNCAUGHT EXCEPTION:', error);
-  console.error('[Azure Worker] Stack:', error.stack);
-  process.exit(1);
-});
+// Rate limiting - 5ms between requests = 200 req/s (Azure's limit)
+const MIN_REQUEST_INTERVAL = 5;
+let lastRequestTime = 0;
 
 // Parse command line arguments
 const [,, samplesFile, outputFile, tempDir] = process.argv;
@@ -36,11 +33,86 @@ if (!samplesFile || !outputFile || !tempDir) {
   process.exit(1);
 }
 
+/**
+ * Build SSML with speed control
+ */
+function buildSSML(text, voiceName, speed = 1.0) {
+  const speedPercent = Math.round((speed - 1.0) * 100);
+  const speedStr = speedPercent === 0 ? '0%' : `${speedPercent > 0 ? '+' : ''}${speedPercent}%`;
+
+  return `<speak version='1.0' xml:lang='en-US' xmlns='http://www.w3.org/2001/10/synthesis'>
+    <voice name='${voiceName}'>
+        <prosody rate='${speedStr}'>${escapeXML(text)}</prosody>
+    </voice>
+</speak>`;
+}
+
+/**
+ * Escape XML special characters
+ */
+function escapeXML(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+/**
+ * Rate limit requests
+ */
+async function rateLimitRequest() {
+  const now = Date.now();
+  const timeSinceLastRequest = now - lastRequestTime;
+
+  if (timeSinceLastRequest < MIN_REQUEST_INTERVAL) {
+    const delay = MIN_REQUEST_INTERVAL - timeSinceLastRequest;
+    await new Promise(resolve => setTimeout(resolve, delay));
+  }
+
+  lastRequestTime = Date.now();
+}
+
+/**
+ * Generate speech using persistent synthesizer
+ */
+async function generateWithSynthesizer(synthesizer, text, voiceName, speed) {
+  await rateLimitRequest();
+
+  const ssml = buildSSML(text, voiceName, speed);
+
+  return new Promise((resolve, reject) => {
+    synthesizer.speakSsmlAsync(
+      ssml,
+      result => {
+        if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
+          resolve(Buffer.from(result.audioData));
+        } else if (result.reason === sdk.ResultReason.Canceled) {
+          const cancellation = sdk.CancellationDetails.fromResult(result);
+          reject(new Error(`Azure TTS canceled: ${cancellation.reason} - ${cancellation.errorDetails}`));
+        } else {
+          reject(new Error(`Azure TTS failed with reason: ${result.reason}`));
+        }
+      },
+      error => {
+        reject(new Error(`Azure TTS error: ${error}`));
+      }
+    );
+  });
+}
+
 async function generateAzureSamples() {
-  console.log('[Azure Worker] Starting Azure TTS generation...');
+  console.log('[Azure Worker] Starting Azure TTS generation (single connection mode)...');
   console.log(`[Azure Worker] Input: ${samplesFile}`);
   console.log(`[Azure Worker] Output: ${outputFile}`);
   console.log(`[Azure Worker] Temp: ${tempDir}\n`);
+
+  // Validate credentials
+  if (!AZURE_SPEECH_KEY || !AZURE_SPEECH_REGION) {
+    console.error('[Azure Worker] ✗ Missing AZURE_SPEECH_KEY or AZURE_SPEECH_REGION');
+    process.exit(1);
+  }
 
   // Read samples to generate
   const samples = await fs.readJson(samplesFile);
@@ -48,8 +120,14 @@ async function generateAzureSamples() {
 
   await fs.ensureDir(tempDir);
 
+  // Create single persistent synthesizer (like Python script)
+  console.log('[Azure Worker] Creating persistent synthesizer connection...');
+  const speechConfig = sdk.SpeechConfig.fromSubscription(AZURE_SPEECH_KEY, AZURE_SPEECH_REGION);
+  speechConfig.speechSynthesisOutputFormat = sdk.SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3;
+  const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
+  console.log('[Azure Worker] ✓ Synthesizer ready\n');
+
   const results = [];
-  const MAX_CONCURRENT = 1; // Sequential processing to avoid Azure backend throttling
 
   // Group by voice
   const byVoice = {};
@@ -60,85 +138,62 @@ async function generateAzureSamples() {
     byVoice[sample.voiceId].push(sample);
   }
 
-  // Generate by voice
-  for (const [voiceId, voiceSamples] of Object.entries(byVoice)) {
-    console.log(`[Azure Worker] === Generating ${voiceSamples.length} samples with ${voiceId} ===\n`);
+  try {
+    // Generate by voice (sequentially)
+    for (const [voiceId, voiceSamples] of Object.entries(byVoice)) {
+      console.log(`[Azure Worker] === Generating ${voiceSamples.length} samples with ${voiceId} ===\n`);
 
-    let completed = 0;
-    const total = voiceSamples.length;
+      let completed = 0;
+      const total = voiceSamples.length;
 
-    // Get voice details
-    const voiceDetails = {
-      provider: voiceId.split('_')[0], // 'azure'
-      voiceId: voiceId.split('_').slice(1).join('_'), // 'it-IT-ElsaNeural'
-      displayName: voiceId
-    };
+      // Extract Azure voice name from voiceId (e.g., 'azure_es-ES-TrianaNeural' -> 'es-ES-TrianaNeural')
+      const azureVoiceName = voiceId.split('_').slice(1).join('_');
 
-    // Process in batches
-    for (let i = 0; i < voiceSamples.length; i += MAX_CONCURRENT) {
-      const batch = voiceSamples.slice(i, i + MAX_CONCURRENT);
+      // Process one at a time (sequential)
+      for (const sample of voiceSamples) {
+        const outputPath = path.join(tempDir, `${sample.uuid}.mp3`);
 
-      try {
-        const batchResults = await Promise.all(
-          batch.map(async (sample) => {
-            const outputPath = path.join(tempDir, `${sample.uuid}.mp3`);
+        console.log(`[Azure Worker] Generating [${sample.role}/${sample.cadence}] ${azureVoiceName}: "${sample.text.substring(0, 50)}..."`);
 
-            console.log(`[Azure Worker] Generating [${sample.role}/${sample.cadence}] ${voiceDetails.voiceId}: "${sample.text}..."`);
+        try {
+          const audioBuffer = await generateWithSynthesizer(
+            synthesizer,
+            sample.text,
+            azureVoiceName,
+            sample.azureSpeed || 1.0
+          );
 
-            try {
-              const audioBuffer = await azureTTS.generateSpeech(
-                sample.text,
-                voiceDetails.voiceId,
-                sample.language,
-                {
-                  rate: sample.azureSpeed || 1.0,
-                  outputFormat: 'audio-48khz-192kbitrate-mono-mp3'
-                }
-              );
+          await fs.writeFile(outputPath, audioBuffer);
 
-              await fs.writeFile(outputPath, audioBuffer);
+          results.push({
+            ...sample,
+            success: true,
+            outputPath,
+            provider: 'azure'
+          });
 
-              return {
-                ...sample,
-                success: true,
-                outputPath,
-                provider: 'azure'
-              };
-            } catch (error) {
-              console.error(`[Azure Worker] ✗ Failed: ${sample.text} - ${error.message}`);
-              return {
-                ...sample,
-                success: false,
-                error: error.message,
-                provider: 'azure'
-              };
-            }
-          })
-        );
-
-        results.push(...batchResults);
-        completed += batch.length;
-
-        if (completed < total) {
-          console.log(`[Azure Worker] Progress: ${completed}/${total} samples (${Math.round(completed/total*100)}%)`);
-        }
-      } catch (batchError) {
-        console.error(`[Azure Worker] ✗ Batch failed at ${i}-${i + batch.length}: ${batchError.message}`);
-        console.error(`[Azure Worker] Stack trace:`, batchError.stack);
-        // Add failed results for this batch
-        for (const sample of batch) {
+          completed++;
+          if (completed % 50 === 0 || completed === total) {
+            console.log(`[Azure Worker] Progress: ${completed}/${total} samples (${Math.round(completed/total*100)}%)`);
+          }
+        } catch (error) {
+          console.error(`[Azure Worker] ✗ Failed: ${sample.text.substring(0, 30)}... - ${error.message}`);
           results.push({
             ...sample,
             success: false,
-            error: `Batch processing error: ${batchError.message}`,
+            error: error.message,
             provider: 'azure'
           });
+          completed++;
         }
-        completed += batch.length;
       }
-    }
 
-    console.log(`[Azure Worker] Progress: ${completed}/${total} samples (100%)\n`);
+      console.log(`[Azure Worker] Voice ${voiceId} complete: ${completed}/${total}\n`);
+    }
+  } finally {
+    // Always close the synthesizer
+    console.log('[Azure Worker] Closing synthesizer connection...');
+    synthesizer.close();
   }
 
   // Write results
