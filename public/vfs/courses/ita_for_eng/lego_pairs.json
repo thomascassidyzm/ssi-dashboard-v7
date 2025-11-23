@@ -478,6 +478,145 @@
       ]
     },
     {
+      "seed_id": "S0026",
+      "seed_pair": {
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "target": "Mi piace sentirmi come se fossi quasi pronto per andare."
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I like",
+            "target": "Mi piace"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Mi"
+            },
+            {
+              "known": "like",
+              "target": "piace"
+            }
+          ]
+        },
+        {
+          "id": "S0026L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I like feeling",
+            "target": "Mi piace sentirmi"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "Mi"
+            },
+            {
+              "known": "like",
+              "target": "piace"
+            },
+            {
+              "known": "feeling",
+              "target": "sentirmi"
+            }
+          ]
+        },
+        {
+          "id": "S0026L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as if I were",
+            "target": "come se fossi"
+          },
+          "components": [
+            {
+              "known": "as if",
+              "target": "come se"
+            },
+            {
+              "known": "I were",
+              "target": "fossi"
+            }
+          ]
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "nearly",
+            "target": "quasi"
+          }
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "ready",
+            "target": "pronto"
+          }
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "nearly ready",
+            "target": "quasi pronto"
+          },
+          "components": [
+            {
+              "known": "nearly",
+              "target": "quasi"
+            },
+            {
+              "known": "ready",
+              "target": "pronto"
+            }
+          ]
+        },
+        {
+          "id": "S0026L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "ready to go",
+            "target": "pronto per andare"
+          },
+          "components": [
+            {
+              "known": "ready",
+              "target": "pronto"
+            },
+            {
+              "known": "to",
+              "target": "per"
+            },
+            {
+              "known": "go",
+              "target": "andare"
+            }
+          ]
+        },
+        {
+          "id": "S0026L08",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to go",
+            "target": "andare"
+          }
+        }
+      ]
+    },
+    {
       "seed_id": "S0027",
       "seed_pair": {
         "known": "I don't like taking too much time to answer.",
