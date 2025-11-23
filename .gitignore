@@ -197,3 +197,8 @@ extracted-welcomes/
 vfs/canonical/voices.json
 vfs/canonical/welcomes.json
 public/vfs/courses/*/backups/
+
+# Course manifests (compiled artifacts - deploy to S3, not GitHub)
+public/vfs/courses/*/course_manifest.json
+public/vfs/courses/*/*.json.bak
+public/vfs/courses/*/*_COURSE_*.json
