@@ -1983,6 +1983,15 @@ app.post('/api/phase1/:courseCode/submit', async (req, res) => {
       progress.currentPhase = 3;
     }
 
+    // Trigger Phase 3 automatically (with 2s delay for GitHub sync)
+    console.log(`[Orchestrator] → Phase 1 complete, triggering Phase 3 in 2s...`);
+    addProgressLog(courseCode, 'Phase 1: complete');
+    setTimeout(() => {
+      console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
+      addProgressLog(courseCode, 'Starting Phase 3 for 10 seeds');
+      triggerPhase(courseCode, 3);
+    }, 2000);
+
     // Auto-publish to GitHub for live dashboard visibility
     autoPublishCourseData(
       courseCode,
@@ -2234,6 +2243,14 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
         progress.currentPhase = 5;
       }
 
+      // Trigger Phase 5 automatically (with 2s delay for GitHub sync)
+      console.log(`[Orchestrator] → Phase 3 complete, triggering Phase 5 in 2s...`);
+      setTimeout(() => {
+        console.log(`[Orchestrator] 🚀 Auto-triggering Phase 5 for ${courseCode}`);
+        addProgressLog(courseCode, 'Starting Phase 5 (basket generation)');
+        triggerPhase(courseCode, 5);
+      }, 2000);
+
       // Auto-publish to GitHub for live dashboard visibility
       autoPublishCourseData(
         courseCode,
@@ -2416,6 +2433,14 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
     if (progress) {
       progress.currentPhase = 7;
     }
+
+    // Trigger Phase 7 automatically (with 2s delay for GitHub sync)
+    console.log(`[Orchestrator] → Phase 5 complete, triggering Phase 7 in 2s...`);
+    setTimeout(() => {
+      console.log(`[Orchestrator] 🚀 Auto-triggering Phase 7 for ${courseCode}`);
+      addProgressLog(courseCode, 'Starting Phase 7 (manifest compilation)');
+      triggerPhase(courseCode, 7);
+    }, 2000);
 
     // Auto-publish to GitHub for live dashboard visibility
     autoPublishCourseData(
