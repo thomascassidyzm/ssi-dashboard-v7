@@ -587,6 +587,202 @@ app.post('/upload-translations', async (req, res) => {
 });
 
 /**
+ * POST /upload-batch - Receive unified Phase 1+3 batch (translations + LEGOs)
+ *
+ * Used by swarm parallelization: many agents, few seeds per agent
+ * Each agent POSTs their batch of seeds with both translation and LEGOs
+ *
+ * Body: {
+ *   course: 'spa_for_eng',
+ *   browserId: 1,
+ *   agentId: '1.3',
+ *   seedRange: 'S0007-S0009',
+ *   seeds: [
+ *     {
+ *       seed_id: 'S0007',
+ *       seed_pair: { known: '...', target: '...' },
+ *       legos: [ { id, type, new, lego: {known, target}, components?, teaches? } ]
+ *     }
+ *   ]
+ * }
+ */
+app.post('/upload-batch', async (req, res) => {
+  try {
+    const { course, browserId, agentId, seedRange, seeds } = req.body;
+
+    if (!course || !seeds || !Array.isArray(seeds)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields: course, seeds (array)'
+      });
+    }
+
+    console.log(`\n📦 [Upload-Batch] Receiving from Browser ${browserId || '?'}, Agent ${agentId || '?'}`);
+    console.log(`   Course: ${course}`);
+    console.log(`   Range: ${seedRange || 'unknown'}`);
+    console.log(`   Seeds: ${seeds.length}`);
+
+    // Course directory
+    const courseDir = path.join(VFS_ROOT || path.join(process.cwd(), 'public/vfs/courses'), course);
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    const batchOutputsDir = path.join(courseDir, 'batch_outputs');
+
+    // Ensure directories exist
+    await fs.ensureDir(batchOutputsDir);
+    await fs.ensureDir(courseDir);
+
+    // Save raw batch file for debugging
+    const batchFilePath = path.join(batchOutputsDir, `batch_${agentId || 'unknown'}_${Date.now()}.json`);
+    await fs.writeJson(batchFilePath, { browserId, agentId, seedRange, seeds, receivedAt: new Date().toISOString() }, { spaces: 2 });
+    console.log(`   💾 Raw batch saved: ${batchFilePath}`);
+
+    // ===== Update seed_pairs.json =====
+    let seedPairs = {
+      version: '8.3.0',
+      course,
+      target_language: course.split('_')[0],
+      known_language: course.split('_')[2] || 'eng',
+      seed_range: { start: 1, end: 0 },
+      generated: new Date().toISOString(),
+      total_seeds: 0,
+      translations: {},
+      metadata: { batch_uploads: [] }
+    };
+
+    if (await fs.pathExists(seedPairsPath)) {
+      seedPairs = await fs.readJson(seedPairsPath);
+      if (!seedPairs.metadata) seedPairs.metadata = {};
+      if (!seedPairs.metadata.batch_uploads) seedPairs.metadata.batch_uploads = [];
+    }
+
+    // ===== Update lego_pairs.json =====
+    let legoPairs = {
+      version: '8.3.0',
+      course_code: course,
+      methodology: 'Phase 1+3 v3.0 Unified - Swarm Parallelization',
+      total_seeds: 0,
+      seeds: [],
+      metadata: { batch_uploads: [] }
+    };
+
+    if (await fs.pathExists(legoPairsPath)) {
+      legoPairs = await fs.readJson(legoPairsPath);
+      if (!legoPairs.metadata) legoPairs.metadata = {};
+      if (!legoPairs.metadata.batch_uploads) legoPairs.metadata.batch_uploads = [];
+    }
+
+    // Process each seed in the batch
+    let translationsAdded = 0;
+    let legosAdded = 0;
+
+    for (const seed of seeds) {
+      const { seed_id, seed_pair, legos } = seed;
+
+      if (!seed_id || !seed_pair) {
+        console.warn(`   ⚠️  Skipping invalid seed: missing seed_id or seed_pair`);
+        continue;
+      }
+
+      // Add translation
+      const isNewTranslation = !seedPairs.translations[seed_id];
+      seedPairs.translations[seed_id] = [seed_pair.target, seed_pair.known];
+      if (isNewTranslation) translationsAdded++;
+
+      // Add/update LEGOs
+      const existingIndex = legoPairs.seeds.findIndex(s => s.seed_id === seed_id);
+      const legoEntry = {
+        seed_id,
+        seed_pair: [seed_pair.target, seed_pair.known],
+        legos: legos || []
+      };
+
+      if (existingIndex >= 0) {
+        legoPairs.seeds[existingIndex] = legoEntry;
+      } else {
+        legoPairs.seeds.push(legoEntry);
+        legosAdded++;
+      }
+    }
+
+    // Sort seeds by ID
+    legoPairs.seeds.sort((a, b) => a.seed_id.localeCompare(b.seed_id));
+
+    // Update counts
+    const totalTranslations = Object.keys(seedPairs.translations).length;
+    seedPairs.total_seeds = totalTranslations;
+
+    const seedNumbers = Object.keys(seedPairs.translations)
+      .map(id => parseInt(id.replace('S', '')))
+      .filter(n => !isNaN(n));
+    if (seedNumbers.length > 0) {
+      seedPairs.seed_range.start = Math.min(...seedNumbers);
+      seedPairs.seed_range.end = Math.max(...seedNumbers);
+    }
+
+    legoPairs.total_seeds = legoPairs.seeds.length;
+
+    // Record batch upload metadata
+    const batchRecord = {
+      timestamp: new Date().toISOString(),
+      browserId: browserId || null,
+      agentId: agentId || 'unknown',
+      seedRange: seedRange || null,
+      seedsReceived: seeds.length,
+      translationsAdded,
+      legosAdded,
+      totalTranslationsAfter: totalTranslations,
+      totalSeedsAfter: legoPairs.total_seeds
+    };
+
+    seedPairs.metadata.batch_uploads.push(batchRecord);
+    legoPairs.metadata.batch_uploads.push(batchRecord);
+
+    // Keep only last 100 batch records
+    if (seedPairs.metadata.batch_uploads.length > 100) {
+      seedPairs.metadata.batch_uploads = seedPairs.metadata.batch_uploads.slice(-100);
+    }
+    if (legoPairs.metadata.batch_uploads.length > 100) {
+      legoPairs.metadata.batch_uploads = legoPairs.metadata.batch_uploads.slice(-100);
+    }
+
+    seedPairs.metadata.last_batch = batchRecord;
+    legoPairs.metadata.last_batch = batchRecord;
+
+    // Save both files
+    await fs.writeJson(seedPairsPath, seedPairs, { spaces: 2 });
+    await fs.writeJson(legoPairsPath, legoPairs, { spaces: 2 });
+
+    // Calculate total LEGOs
+    const totalLegos = legoPairs.seeds.reduce((sum, s) => sum + (s.legos?.length || 0), 0);
+
+    console.log(`   ✅ Merged into seed_pairs.json and lego_pairs.json`);
+    console.log(`   📊 Translations: ${totalTranslations} | Seeds: ${legoPairs.total_seeds} | LEGOs: ${totalLegos}`);
+
+    res.json({
+      success: true,
+      browserId: browserId || null,
+      agentId: agentId || 'unknown',
+      seedRange: seedRange || null,
+      seedsReceived: seeds.length,
+      translationsAdded,
+      legosAdded,
+      totalTranslations,
+      totalSeeds: legoPairs.total_seeds,
+      totalLegos,
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('❌ [Upload-Batch] Error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+/**
  * POST /phase-complete
  * Webhook for agents reporting completion
  */
