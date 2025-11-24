@@ -10,6 +10,7 @@
     "generate-manifest": "node generate-course-manifest.js",
     "preview": "vite preview",
     "server": "node automation_server.cjs",
+    "pipeline": "node services/pipeline/pipeline-server.cjs",
     "automation": "node start-automation.js",
     "automation:legacy": "LEGACY_MODE=true node start-automation.js",
     "test": "vitest",

@@ -133,22 +133,21 @@ Filter seeds {START_NUM} to {END_NUM}. Replace {target} with "${TARGET_LANG_NAME
 }
 \\\`\\\`\\\`
 
-## POST Results
-After all 3 seeds, POST using Bash:
+## POST EACH SEED (for real-time progress)
+After processing EACH seed, POST it immediately:
 
 \\\`\\\`\\\`bash
-curl -X POST ${API_URL}/upload-batch \\\\
+curl -X POST ${API_URL}/upload-seed \\\\
   -H "Content-Type: application/json" \\\\
   -d '{
     "course": "${COURSE_CODE}",
-    "browserId": ${browserId},
     "agentId": "{AGENT_ID}",
-    "seedRange": "S{START}-S{END}",
-    "seeds": [/* your 3 seed objects */]
+    "seed": { /* single seed object */ }
   }'
 \\\`\\\`\\\`
 
-Report: "Agent {AGENT_ID} complete: Posted 3 seeds"
+POST after EACH seed (3 total POSTs). This enables real-time dashboard progress.
+Report after each: "Agent {AGENT_ID}: Posted S00XX (1/3)" etc.
 \`\`\`
 
 ## EXECUTE NOW - EXACTLY 5 TASK CALLS
