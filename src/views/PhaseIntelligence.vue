@@ -136,41 +136,33 @@ import { ref, computed } from 'vue'
 
 // Import phase intelligence files directly
 import phase1Raw from '../../public/docs/phase_intelligence/phase_1_seed_pairs.md?raw'
-import phase3Raw from '../../public/docs/phase_intelligence/phase_3_lego_pairs.md?raw'
-import phase5Raw from '../../public/docs/phase_intelligence/phase_5_lego_baskets.md?raw'
-import phase5_5Raw from '../../public/docs/phase_intelligence/phase_5.5_basket_deduplication.md?raw'
-import phase6Raw from '../../public/docs/phase_intelligence/phase_6_introductions.md?raw'
-import phase7Raw from '../../public/docs/phase_intelligence/phase_7_compilation.md?raw'
-import phase8Raw from '../../public/docs/phase_intelligence/phase_8_audio_generation.md?raw'
+import phase2Raw from '../../public/docs/phase_intelligence/phase_2_conflict_resolution.md?raw'
+import phase3Raw from '../../public/docs/phase_intelligence/phase_3_lego_baskets.md?raw'
+import manifestRaw from '../../public/docs/phase_intelligence/manifest_compilation.md?raw'
+import audioRaw from '../../public/docs/phase_intelligence/audio_generation.md?raw'
 
 const phaseContent = {
-  '1': phase1Raw,
-  '3': phase3Raw,
-  '4': `# Phase 4: Batch Preparation\n\n**Version**: 1.0\n**Status**: Active\n\n## Overview\n\nPhase 4 prepares batches of seeds for parallel processing in Phase 3.\n\n## Responsibilities\n\n- Split seed ranges into manageable batches\n- Generate batch-specific prompts\n- Coordinate parallel LEGO extraction\n- Merge batch results into consolidated lego_pairs.json\n\n## Implementation\n\nHandled by automation_server.cjs orchestration logic.\n\nSee APML specification for full details.`,
-  '5': phase5Raw,
-  '5.5': phase5_5Raw,
-  '6': phase6Raw,
-  '7': phase7Raw,
-  '8': phase8Raw
+  '1': phase1Raw || `# Phase 1: Translation + LEGO Extraction\n\n**Version**: 9.0.0\n**Status**: Active\n\n## Overview\n\nPhase 1 translates canonical seeds and extracts LEGOs in a single pass.\n\n## Output\n\n- draft_lego_pairs.json (may contain conflicts)\n\n## Key Concepts\n\n- Seed pairs embedded in lego_pairs.json (no separate seed_pairs.json)\n- A-type LEGOs: Atomic, single word either side\n- M-type LEGOs: Molecular, 2+ words both sides, teaches pattern\n\nSee APML v9.0 specification for full details.`,
+  '2': phase2Raw || `# Phase 2: Conflict Resolution\n\n**Version**: 9.0.0\n**Status**: Active\n\n## Overview\n\nPhase 2 resolves KNOWN->TARGET conflicts through upchunking.\n\n## Input\n\n- draft_lego_pairs.json (from Phase 1)\n\n## Output\n\n- lego_pairs.json (SINGLE SOURCE OF TRUTH - conflict-free)\n- upchunk_resolutions.json (record of conflict resolutions)\n\n## Key Concepts\n\n- Upchunking: Creating M-types to resolve KNOWN->TARGET conflicts\n- All conflicts must be resolved before Phase 3\n\nSee APML v9.0 specification for full details.`,
+  '3': phase3Raw || `# Phase 3: Basket Generation\n\n**Version**: 9.0.0\n**Status**: Active\n\n## Overview\n\nPhase 3 generates practice baskets from conflict-free LEGOs.\n\n## Input\n\n- lego_pairs.json (from Phase 2)\n\n## Output\n\n- lego_baskets.json\n\n## Key Properties\n\n- One basket per new LEGO\n- 10 phrases per basket (progressive complexity)\n- Only uses previously-learned LEGOs\n\nSee APML v9.0 specification for full details.`,
+  'manifest': manifestRaw || `# Manifest: Course Compilation\n\n**Version**: 9.0.0\n**Status**: Script\n\n## Overview\n\nCompiles phase outputs into final course manifest for audio generation.\n\n## Input\n\n- lego_pairs.json\n- lego_baskets.json\n- introductions.json\n\n## Output\n\n- course_manifest.json\n\nSee APML v9.0 specification for full details.`,
+  'audio': audioRaw || `# Audio: TTS Generation\n\n**Version**: 9.0.0\n**Status**: Separate\n\n## Overview\n\nGenerates audio files from course manifest using TTS services.\n\n## Input\n\n- course_manifest.json\n\n## Output\n\n- audio/*.mp3 files\n\n## Notes\n\n- Handled by Kai (separate process)\n- Uses Azure TTS / ElevenLabs\n\nSee APML v9.0 specification for full details.`
 }
 
 const phases = [
-  { id: '1', name: 'Translation', status: 'active', version: '2.6', locked: true },
-  { id: '3', name: 'LEGO Extraction (includes Phase 6)', status: 'active', version: '7.1', locked: true },
-  { id: '4', name: 'Batch Preparation (DEPRECATED)', status: 'inactive', version: '1.0' },
-  { id: '5', name: 'Baskets', status: 'active', version: '6.1', locked: true },
-  { id: '5.5', name: 'Grammar Validation (DEPRECATED v8.2.1)', status: 'inactive', version: '2.0' },
-  { id: '6', name: 'Introductions (in Phase 3)', status: 'integrated', version: '2.1', locked: true },
-  { id: '7', name: 'Compilation', status: 'active', version: '1.1', locked: true },
-  { id: '8', name: 'Audio (Kai)', status: 'documented', version: '1.1' }
+  { id: '1', name: 'Translation + LEGO Extraction', status: 'active', version: '9.0.0', locked: true },
+  { id: '2', name: 'Conflict Resolution', status: 'active', version: '9.0.0', locked: true },
+  { id: '3', name: 'Basket Generation', status: 'active', version: '9.0.0', locked: true },
+  { id: 'manifest', name: 'Course Compilation', status: 'active', version: '9.0.0', locked: true },
+  { id: 'audio', name: 'TTS Generation', status: 'documented', version: '9.0.0' }
 ]
 
-const selectedPhase = ref('3')
+const selectedPhase = ref('1')
 const intelligence = ref('')
 
 const activePhases = computed(() => {
-  // Hide inactive phases AND Phase 6 (integrated into Phase 3)
-  return phases.filter(p => p.status !== 'inactive' && p.id !== '6')
+  // Show all phases (no deprecated phases in v9.0)
+  return phases
 })
 
 const currentPhase = computed(() => {
@@ -182,6 +174,6 @@ function selectPhase(phase) {
   intelligence.value = phaseContent[phase] || `# Phase ${phase}\n\nIntelligence file not yet created.`
 }
 
-// Load Phase 3 by default
-selectPhase('3')
+// Load Phase 1 by default
+selectPhase('1')
 </script>

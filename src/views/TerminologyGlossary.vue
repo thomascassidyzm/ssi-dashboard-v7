@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">Terminology Glossary</h1>
         <p class="text-slate-400">Single source of truth for all SSi Course Production terminology</p>
-        <p class="text-sm text-slate-500 mt-2">Date: 2025-11-20 | APML v8.2.0 | Status: Current definitions</p>
+        <p class="text-sm text-slate-500 mt-2">Date: 2025-11-24 | APML v9.0.0 | Status: Current definitions</p>
       </div>
 
       <!-- Quick Reference -->
@@ -31,12 +31,12 @@
             </ul>
           </div>
           <div>
-            <p class="text-blue-400 font-semibold mb-2">Storage Format</p>
+            <p class="text-blue-400 font-semibold mb-2">Storage Format (v9.0)</p>
             <ul class="text-slate-300 space-y-1">
-              <li>• seed_pairs.json</li>
-              <li>• lego_pairs.json</li>
+              <li>• draft_lego_pairs.json (Phase 1)</li>
+              <li>• lego_pairs.json (Phase 2 - SSoT)</li>
+              <li>• upchunk_resolutions.json</li>
               <li>• lego_baskets.json</li>
-              <li>• introductions.json</li>
             </ul>
           </div>
         </div>
@@ -81,12 +81,15 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 1 (Pedagogical Translation)</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 1 (Translation + LEGO Extraction)</span>
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
-              <span class="text-slate-300 ml-2 font-mono text-xs">vfs/courses/{course_code}/seed_pairs.json</span>
+              <span class="text-slate-300 ml-2 font-mono text-xs">Embedded in lego_pairs.json (no separate file)</span>
             </div>
+          </div>
+          <div class="mt-3 bg-amber-900/20 border border-amber-500/50 rounded p-3">
+            <p class="text-xs text-amber-300"><strong>v9.0 Change:</strong> seed_pairs.json is now embedded in lego_pairs.json. Seeds are stored alongside their extracted LEGOs.</p>
           </div>
         </div>
 
@@ -151,12 +154,15 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (LEGO Extraction)</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 1 (draft) / Phase 2 (final)</span>
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
               <span class="text-slate-300 ml-2 font-mono text-xs">vfs/courses/{course_code}/lego_pairs.json</span>
             </div>
+          </div>
+          <div class="mt-3 bg-teal-900/20 border border-teal-500/50 rounded p-3">
+            <p class="text-xs text-teal-300"><strong>v9.0 Pipeline:</strong> Phase 1 outputs draft_lego_pairs.json (may have conflicts). Phase 2 resolves conflicts via upchunking, producing lego_pairs.json (SINGLE SOURCE OF TRUTH).</p>
           </div>
         </div>
 
@@ -217,7 +223,7 @@
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 5 (Basket Generation)</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (Basket Generation)</span>
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
@@ -236,16 +242,16 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-blue-300 mb-3">A-type: ATOMIC</h3>
             <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-              <li>Cannot be split, even in principle</li>
-              <li>Like an atom - indivisible</li>
-              <li>Must be 2+ words in at least one language</li>
-              <li>No component breakdown possible</li>
+              <li><strong>Single word on either side</strong> (or both)</li>
+              <li>Indivisible teaching unit</li>
+              <li>The simplest form of LEGO</li>
+              <li>No component breakdown needed</li>
             </ul>
             <div class="mt-4 bg-slate-900 p-3 rounded">
               <p class="text-sm text-slate-400 mb-1">Examples:</p>
-              <p class="text-slate-200 text-sm">"quiero" = "I want" <span class="text-xs text-slate-500">(can't split "I want")</span></p>
-              <p class="text-slate-200 text-sm">"hablar" = "to speak" <span class="text-xs text-slate-500">(can't split "to speak")</span></p>
-              <p class="text-slate-200 text-sm">"que hables" = "you to speak" <span class="text-xs text-slate-500">(indivisible)</span></p>
+              <p class="text-slate-200 text-sm">"quiero" = "I want" <span class="text-xs text-slate-500">(single Spanish word)</span></p>
+              <p class="text-slate-200 text-sm">"hablar" = "to speak" <span class="text-xs text-slate-500">(single Spanish word)</span></p>
+              <p class="text-slate-200 text-sm">"now" = "ahora" <span class="text-xs text-slate-500">(single words both sides)</span></p>
             </div>
           </div>
 
@@ -253,10 +259,10 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <h3 class="text-lg font-semibold text-emerald-300 mb-3">M-type: MOLECULAR</h3>
             <ul class="list-disc list-inside text-slate-200 space-y-2 text-sm">
-              <li>The MOLECULE is the unit that passes LUT</li>
-              <li>Components show LITERAL translations</li>
-              <li>Literal translations reveal how Spanish patterns work</li>
-              <li>You chunk UP to get consistent meaning</li>
+              <li><strong>2+ words on BOTH sides</strong></li>
+              <li>Teaches a PATTERN, not just vocabulary</li>
+              <li>Components show literal translations</li>
+              <li>Created via upchunking to resolve conflicts</li>
             </ul>
             <div class="mt-4 bg-slate-900 p-3 rounded space-y-3">
               <div>
@@ -331,6 +337,40 @@
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-emerald-400 mb-6">Supporting Concepts</h2>
 
+        <!-- Upchunking -->
+        <div class="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-6">
+          <h3 class="text-lg font-semibold text-amber-300 mb-3">UPCHUNKING (v9.0)</h3>
+
+          <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">Definition:</span>
+            <p class="text-slate-200 mt-1">Creating M-type LEGOs to resolve KNOWN->TARGET conflicts where the same KNOWN phrase maps to different TARGET phrases in different contexts.</p>
+          </div>
+
+          <div class="mb-4">
+            <span class="text-sm font-medium text-slate-400">Example:</span>
+            <div class="bg-slate-900 p-4 rounded mt-2 text-sm">
+              <p class="text-red-300 mb-2"><strong>Conflict:</strong> "to go" can map to both "ir" and "irse"</p>
+              <p class="text-emerald-300 mb-2"><strong>Resolution:</strong> Create M-type LEGOs with more context:</p>
+              <ul class="space-y-1 text-slate-300 ml-4">
+                <li>* "to go there" = "ir alli" (M-type)</li>
+                <li>* "to go away" = "irse" (M-type)</li>
+              </ul>
+              <p class="text-amber-300 mt-3 text-xs">The larger chunk removes ambiguity - learner knows exactly which form to use.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span class="text-slate-400">Phase:</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 2 (Conflict Resolution)</span>
+            </div>
+            <div>
+              <span class="text-slate-400">Storage:</span>
+              <span class="text-slate-300 ml-2 font-mono text-xs">vfs/courses/{course_code}/upchunk_resolutions.json</span>
+            </div>
+          </div>
+        </div>
+
         <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
           <h3 class="text-lg font-semibold text-emerald-300 mb-3">LEGO_INTRODUCTIONS</h3>
 
@@ -351,14 +391,14 @@
             <ul class="list-disc list-inside text-slate-200 mt-2 space-y-1">
               <li>Spoken in known language (source language)</li>
               <li>Provides context for where LEGO appears</li>
-              <li>Generated automatically by Phase 3 (<1s overhead)</li>
+              <li>Generated automatically during Phase 1</li>
             </ul>
           </div>
 
           <div class="grid grid-cols-2 gap-4 text-sm">
             <div>
               <span class="text-slate-400">Phase:</span>
-              <span class="text-emerald-400 ml-2 font-medium">Phase 3 (includes Phase 6)</span>
+              <span class="text-emerald-400 ml-2 font-medium">Phase 1 (Translation + LEGO Extraction)</span>
             </div>
             <div>
               <span class="text-slate-400">Storage:</span>
@@ -366,7 +406,7 @@
             </div>
           </div>
           <div class="mt-3 bg-teal-900/20 border border-teal-500/50 rounded p-3">
-            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v8.2.0, introduction generation is integrated into Phase 3 and runs automatically after LEGO extraction (<1s overhead).</p>
+            <p class="text-xs text-teal-300"><strong>Note:</strong> As of APML v9.0.0, introduction generation is integrated into Phase 1 and runs automatically during LEGO extraction.</p>
           </div>
         </div>
       </section>
@@ -401,13 +441,29 @@
         <h2 class="text-2xl font-semibold text-red-400 mb-6">Deprecated Terminology (Don't Use)</h2>
 
         <div class="bg-red-900/20 border border-red-500/50 rounded-lg p-6">
-          <ul class="space-y-2 text-slate-200">
+          <p class="text-sm text-red-300 mb-4 font-semibold">Terminology</p>
+          <ul class="space-y-2 text-slate-200 mb-6">
             <li>❌ <strong>"BASE" and "COMPOSITE"</strong> → Use <span class="text-emerald-400">ATOMIC (A-type)</span> and <span class="text-emerald-400">MOLECULAR (M-type)</span></li>
             <li>❌ <strong>"FEEDER"</strong> → No longer exists (componentization replaced this)</li>
             <li>❌ <strong>"D-phrases" and "E-phrases"</strong> → Use <span class="text-emerald-400">scaffolding phrases (1-8)</span> and <span class="text-emerald-400">eternal phrases (9-10)</span></li>
             <li>❌ <strong>"Amino acids"</strong> → Never use (old metaphor)</li>
             <li>❌ <strong>"Translations"</strong> → Use <span class="text-emerald-400">SEED_PAIRS</span></li>
             <li>❌ <strong>"Lessons"</strong> → Use <span class="text-emerald-400">LEGO_BASKETS</span></li>
+          </ul>
+
+          <p class="text-sm text-red-300 mb-4 font-semibold">Files (v9.0 Changes)</p>
+          <ul class="space-y-2 text-slate-200 mb-6">
+            <li>❌ <strong>seed_pairs.json</strong> → Now embedded in <span class="text-emerald-400">lego_pairs.json</span></li>
+          </ul>
+
+          <p class="text-sm text-red-300 mb-4 font-semibold">Phase Numbers (v9.0 Renumbering)</p>
+          <ul class="space-y-2 text-slate-200">
+            <li>❌ <strong>Phase 3 (LEGO Extraction)</strong> → Now <span class="text-emerald-400">Phase 1</span></li>
+            <li>❌ <strong>Phase 5 (Baskets)</strong> → Now <span class="text-emerald-400">Phase 3</span></li>
+            <li>❌ <strong>Phase 5.5 (Grammar Validation)</strong> → <span class="text-amber-400">Removed</span></li>
+            <li>❌ <strong>Phase 6 (Introductions)</strong> → Integrated into <span class="text-emerald-400">Phase 1</span></li>
+            <li>❌ <strong>Phase 7 (Compilation)</strong> → Now <span class="text-emerald-400">Manifest</span> (script)</li>
+            <li>❌ <strong>Phase 8 (Audio)</strong> → Now <span class="text-emerald-400">Audio</span> (separate)</li>
           </ul>
         </div>
       </section>

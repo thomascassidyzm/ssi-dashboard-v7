@@ -8,7 +8,7 @@
         </router-link>
         <div class="flex items-start justify-between">
           <div>
-            <h1 class="text-4xl font-bold text-emerald-400 mb-2">Phase 8: Audio Generation</h1>
+            <h1 class="text-4xl font-bold text-emerald-400 mb-2">Audio Generation</h1>
             <p class="text-slate-400">Generate TTS audio for all course content with customizable parameters</p>
           </div>
         </div>

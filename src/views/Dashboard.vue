@@ -6,13 +6,13 @@
         <div class="flex items-start justify-between">
           <div>
             <h1 class="text-3xl font-bold text-emerald-400">
-              Popty v8.2.2
+              Popty v9.0.0
             </h1>
             <p class="mt-2 text-slate-400">
               SSi Course Production Dashboard
             </p>
             <p class="mt-1 text-xs text-slate-500">
-              APML v8.2.3 | Phases: 1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v2.0, 8 v1.1
+              APML v9.0.0 | Phase 1 → Phase 2 → Phase 3 → Manifest → Audio
             </p>
           </div>
           <EnvironmentSwitcher />
@@ -33,7 +33,7 @@
               <div>
                 <h3 class="text-2xl font-bold text-white mb-2">🚀 Generate New Course</h3>
                 <p class="text-emerald-100 text-sm">
-                  Start the linear pipeline to generate a new language course (Phase 1 → 3 → 5 → 7 → 8)
+                  Start the linear pipeline to generate a new language course (Phase 1 → 2 → 3 → Manifest → Audio)
                 </p>
               </div>
               <div class="text-white">
@@ -78,11 +78,11 @@
                 <div class="space-y-2">
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Linear phase progression (1 → 3 → 5 → 7 → 8)</span>
+                    <span class="text-slate-300">Linear phase progression (1 → 2 → 3 → Manifest → Audio)</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                    <span class="text-slate-300">Phase 3 includes inline intro generation</span>
+                    <span class="text-slate-300">A phase triggers agents. Scripts run instantly.</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
@@ -110,9 +110,20 @@
             <div class="flex items-center justify-center gap-2 overflow-x-auto pb-4">
               <!-- Phase 1 -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-28 h-28 rounded-lg border-2 border-blue-500 bg-blue-500/10 flex flex-col items-center justify-center">
+                <div class="w-32 h-28 rounded-lg border-2 border-blue-500 bg-blue-500/10 flex flex-col items-center justify-center">
                   <div class="text-blue-400 font-bold text-2xl">1</div>
-                  <div class="text-blue-300 text-xs mt-1 px-2 text-center">Translation</div>
+                  <div class="text-blue-300 text-xs mt-1 px-2 text-center">Translation + LEGO Extraction (Swarm)</div>
+                </div>
+                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <!-- Phase 2 -->
+              <div class="flex items-center flex-shrink-0">
+                <div class="w-32 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
+                  <div class="text-purple-400 font-bold text-2xl">2</div>
+                  <div class="text-purple-300 text-xs mt-1 px-2 text-center">Conflict Resolution (Upchunking)</div>
                 </div>
                 <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -121,42 +132,31 @@
 
               <!-- Phase 3 -->
               <div class="flex items-center flex-shrink-0">
-                <div class="w-32 h-28 rounded-lg border-2 border-purple-500 bg-purple-500/10 flex flex-col items-center justify-center">
-                  <div class="text-purple-400 font-bold text-2xl">3</div>
-                  <div class="text-purple-300 text-xs mt-1 px-2 text-center">LEGO Extraction + Intros</div>
-                </div>
-                <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-
-              <!-- Phase 5 -->
-              <div class="flex items-center flex-shrink-0">
                 <div class="w-28 h-28 rounded-lg border-2 border-pink-500 bg-pink-500/10 flex flex-col items-center justify-center">
-                  <div class="text-pink-400 font-bold text-2xl">5</div>
-                  <div class="text-pink-300 text-xs mt-1 px-2 text-center">Baskets</div>
+                  <div class="text-pink-400 font-bold text-2xl">3</div>
+                  <div class="text-pink-300 text-xs mt-1 px-2 text-center">Basket Generation</div>
                 </div>
                 <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
 
-              <!-- Phase 7 -->
+              <!-- Manifest -->
               <div class="flex items-center flex-shrink-0">
                 <div class="w-28 h-28 rounded-lg border-2 border-teal-500 bg-teal-500/10 flex flex-col items-center justify-center">
-                  <div class="text-teal-400 font-bold text-2xl">7</div>
-                  <div class="text-teal-300 text-xs mt-1 px-2 text-center">Compilation</div>
+                  <div class="text-teal-400 font-bold text-lg">Manifest</div>
+                  <div class="text-teal-300 text-xs mt-1 px-2 text-center">Course Compilation (Script)</div>
                 </div>
                 <svg class="w-6 h-6 mx-1" viewBox="0 0 24 24" fill="none">
                   <path d="M5 12h14m-6-6l6 6-6 6" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
 
-              <!-- Phase 8 -->
+              <!-- Audio -->
               <div class="flex items-center flex-shrink-0">
                 <div class="w-28 h-28 rounded-lg border-2 border-emerald-500 bg-emerald-500/10 flex flex-col items-center justify-center">
-                  <div class="text-emerald-400 font-bold text-2xl">8</div>
-                  <div class="text-emerald-300 text-xs mt-1 px-2 text-center">Audio</div>
+                  <div class="text-emerald-400 font-bold text-lg">Audio</div>
+                  <div class="text-emerald-300 text-xs mt-1 px-2 text-center">TTS Generation</div>
                 </div>
               </div>
             </div>
@@ -198,12 +198,12 @@
               </div>
             </router-link>
 
-            <!-- APML v8.2.0 Specification -->
+            <!-- APML v9.0.0 Specification -->
             <router-link to="/reference/apml" class="flex items-center gap-4 p-4 bg-slate-900/80 border border-slate-400/20 rounded-lg hover:border-emerald-500/50 transition hover:-translate-y-0.5 cursor-pointer">
               <div class="text-3xl">📋</div>
               <div>
-                <h3 class="font-semibold text-slate-100">APML v8.2.0 Specification</h3>
-                <p class="text-sm text-slate-400">Complete architectural specification with linear microservices pipeline (Phase 1 → 3 → 5 → 7 → 8)</p>
+                <h3 class="font-semibold text-slate-100">APML v9.0.0 Specification</h3>
+                <p class="text-sm text-slate-400">Complete architectural specification with linear pipeline (Phase 1 → 2 → 3 → Manifest → Audio)</p>
               </div>
             </router-link>
 
@@ -230,8 +230,8 @@
 
       <!-- Footer Note -->
       <div class="mt-12 text-center text-slate-400 text-sm">
-        <p>SSi Course Production Dashboard v8.2.0 • Linear Microservices Pipeline</p>
-        <p class="mt-1">Phase 1 → Phase 3 (includes Phase 6) → Phase 5 → Phase 7 → Phase 8</p>
+        <p>SSi Course Production Dashboard v9.0.0 • lego_pairs.json is the SINGLE SOURCE OF TRUTH</p>
+        <p class="mt-1">Phase 1 → Phase 2 → Phase 3 → Manifest → Audio</p>
       </div>
     </main>
   </div>

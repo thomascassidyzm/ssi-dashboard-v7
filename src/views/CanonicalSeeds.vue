@@ -152,8 +152,8 @@
               <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Role in Pipeline</h3>
               <p>Canonical seeds are the <strong>universal foundation</strong> for all courses:</p>
               <ul class="space-y-1">
-                <li><strong>Phase 1:</strong> Translated into target + known languages using 6 pedagogical heuristics</li>
-                <li><strong>Phase 3:</strong> Extracted into LEGOs with S{seed}L{position} provenance</li>
+                <li><strong>Phase 1:</strong> Translated into target + known languages with LEGOs (outputs draft_lego_pairs.json)</li>
+                <li><strong>Phase 3:</strong> Basket Generation - creates practice phrases from LEGOs</li>
                 <li><strong>Edit Propagation:</strong> Changes to seeds automatically propagate through all language directions</li>
               </ul>
             </div>

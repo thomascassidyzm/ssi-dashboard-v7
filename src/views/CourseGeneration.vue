@@ -20,7 +20,7 @@
           Generate New Course
         </h1>
         <p class="mt-2 text-slate-400">
-          Popty v8.2.2 - SSi Course Production Dashboard
+          Popty v9.0.0 - SSi Course Production Dashboard
         </p>
       </div>
     </header>
@@ -111,21 +111,21 @@
             <div class="mb-6 p-4 bg-slate-800/50 rounded-lg">
               <div class="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span class="text-slate-400">Phase 1 (Seeds):</span>
+                  <span class="text-slate-400">Phase 1 (Draft LEGOs):</span>
                   <span class="ml-2 font-semibold" :class="analysis.seed_pairs.exists ? 'text-green-400' : 'text-red-400'">
                     {{ analysis.seed_pairs.exists ? `✓ ${analysis.seed_pairs.count} seeds` : '✗ Missing' }}
                   </span>
                 </div>
                 <div>
-                  <span class="text-slate-400">Phase 3 (LEGOs):</span>
+                  <span class="text-slate-400">Phase 2 (lego_pairs.json):</span>
                   <span class="ml-2 font-semibold" :class="analysis.lego_pairs.exists ? 'text-green-400' : 'text-red-400'">
                     {{ analysis.lego_pairs.exists ? `✓ ${analysis.lego_pairs.count} LEGOs` : '✗ Missing' }}
                   </span>
                 </div>
                 <div v-if="analysis.baskets">
-                  <span class="text-slate-400">Phase 5 (Baskets):</span>
+                  <span class="text-slate-400">Phase 3 (Baskets):</span>
                   <span class="ml-2 font-semibold" :class="analysis.lego_pairs.exists && analysis.baskets.missing_seeds === 0 ? 'text-green-400' : 'text-amber-400'">
-                    {{ !analysis.lego_pairs.exists ? '⚠️ Requires Phase 3' : (analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠️ ${analysis.baskets.missing_seeds} seeds missing`) }}
+                    {{ !analysis.lego_pairs.exists ? '⚠️ Requires Phase 2' : (analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠️ ${analysis.baskets.missing_seeds} seeds missing`) }}
                   </span>
                 </div>
               </div>
@@ -214,16 +214,16 @@
                     v-model="phaseSelection"
                     class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                   >
-                    <option value="all">All Phases (1 → 3 → 5 → 7 → 8)</option>
-                    <option value="phase1">Phase 1 Only (Translation)</option>
-                    <option value="phase3">Phase 3 Only (LEGO Extraction)</option>
-                    <option value="phase5">Phase 5 Only (Practice Baskets)</option>
-                    <option value="phase7">Phase 7 Only (Course Compilation)</option>
+                    <option value="all">All Phases (1 → 2 → 3 → Manifest → Audio)</option>
+                    <option value="phase1">Phase 1 Only (Translation + LEGO Extraction)</option>
+                    <option value="phase2">Phase 2 Only (Conflict Resolution)</option>
+                    <option value="phase3">Phase 3 Only (Basket Generation)</option>
+                    <option value="manifest">Manifest Only (Course Compilation)</option>
                   </select>
                   <p class="text-xs text-slate-500 mt-1">
-                    <span v-if="phaseSelection === 'phase3'">⚠️ Requires seed_pairs.json from Phase 1</span>
-                    <span v-else-if="phaseSelection === 'phase5'">⚠️ Requires lego_pairs.json from Phase 3</span>
-                    <span v-else-if="phaseSelection === 'phase7'">⚠️ Requires all previous phases complete</span>
+                    <span v-if="phaseSelection === 'phase2'">⚠️ Requires draft_lego_pairs.json from Phase 1</span>
+                    <span v-else-if="phaseSelection === 'phase3'">⚠️ Requires lego_pairs.json from Phase 2</span>
+                    <span v-else-if="phaseSelection === 'manifest'">⚠️ Requires all previous phases complete</span>
                   </p>
                 </div>
 
@@ -455,13 +455,13 @@ const showManualInput = ref(false)
 
 let pollInterval = null
 
-// Phase names for UI (matches Phase Intelligence architecture)
+// Phase names for UI (APML v9.0)
 const phaseNames = [
-  { id: 0, name: 'Phase 1: Pedagogical Translation' },
-  { id: 1, name: 'Phase 3: LEGO Extraction + Introductions' },
-  { id: 2, name: 'Phase 5: Practice Baskets + Grammar' },
-  { id: 3, name: 'Phase 7: Course Manifest' },
-  { id: 4, name: 'Phase 8: Audio/TTS' }
+  { id: 0, name: 'Phase 1: Translation + LEGO Extraction (Swarm)' },
+  { id: 1, name: 'Phase 2: Conflict Resolution (Upchunking)' },
+  { id: 2, name: 'Phase 3: Basket Generation' },
+  { id: 3, name: 'Manifest: Course Compilation (Script)' },
+  { id: 4, name: 'Audio: TTS Generation' }
 ]
 
 // Computed
@@ -473,10 +473,10 @@ const currentPhaseIndex = computed(() => {
   const phase = currentPhase.value
   if (phase === 'initializing') return -1
   if (phase.includes('phase_1')) return 0
-  if (phase.includes('phase_3')) return 1
-  if (phase.includes('phase_5')) return 2
-  if (phase.includes('phase_7') || phase === 'compilation') return 3
-  if (phase.includes('phase_8') || phase === 'audio') return 4
+  if (phase.includes('phase_2')) return 1
+  if (phase.includes('phase_3')) return 2
+  if (phase.includes('manifest') || phase === 'compilation') return 3
+  if (phase.includes('audio') || phase === 'tts') return 4
   if (phase === 'completed') return 5
   return -1
 })
@@ -484,11 +484,12 @@ const currentPhaseIndex = computed(() => {
 // For PipelineProgress component
 const currentPhaseNumber = computed(() => {
   const phase = currentPhase.value.toLowerCase()
-  // Handle both "Phase 3" and "phase_3" formats
+  // Handle both "Phase 2" and "phase_2" formats
   if (phase.includes('phase 1') || phase.includes('phase_1') || phase === '1') return 1
+  if (phase.includes('phase 2') || phase.includes('phase_2') || phase === '2') return 2
   if (phase.includes('phase 3') || phase.includes('phase_3') || phase === '3') return 3
-  if (phase.includes('phase 5') || phase.includes('phase_5') || phase === '5') return 5
-  if (phase.includes('phase 7') || phase.includes('phase_7') || phase === '7' || phase === 'compilation') return 7
+  if (phase.includes('manifest') || phase === 'compilation') return 'manifest'
+  if (phase.includes('audio') || phase === 'tts') return 'audio'
   return 1 // default to phase 1
 })
 

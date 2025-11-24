@@ -33,7 +33,7 @@
           </ol>
           <p>
             This architecture means we maintain a single source of truth for curriculum and motivational content,
-            which is then transformed by Phase 1 (Translation) into language-specific courses.
+            which is then transformed by Phase 1 (Translation with LEGOs) into language-specific courses.
           </p>
         </div>
       </div>

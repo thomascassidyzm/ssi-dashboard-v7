@@ -12,7 +12,7 @@
           </svg>
           Back to Course Editor
         </button>
-        <h1 class="text-3xl font-bold text-emerald-400">Phase 8: Audio Generation Pipeline</h1>
+        <h1 class="text-3xl font-bold text-emerald-400">Audio Generation Pipeline</h1>
         <p class="mt-2 text-slate-400">{{ courseCode }}</p>
       </div>
     </header>
@@ -365,7 +365,7 @@ async function loadQCReport() {
 
 async function startGeneration() {
   if (!course.value.phases_completed?.includes('7')) {
-    toast.error('Phase 7 must be complete before generating audio')
+    toast.error('Manifest must be complete before generating audio')
     return
   }
 

@@ -8,7 +8,7 @@
         </router-link>
         <h1 class="text-4xl font-bold text-emerald-400 mb-2">SSi Pedagogical Model</h1>
         <p class="text-slate-400">The "why" behind the SSi teaching system</p>
-        <p class="text-sm text-slate-500 mt-2">APML v8.2.0 | Conceptual foundation for language learning through LEGO recombination</p>
+        <p class="text-sm text-slate-500 mt-2">APML v9.0.0 | Conceptual foundation for language learning through LEGO recombination</p>
       </div>
 
       <!-- Core Philosophy -->
@@ -325,7 +325,7 @@
         <div class="bg-blue-900/20 border border-blue-600 rounded-lg p-6 mb-6">
           <h3 class="text-blue-300 font-semibold mb-3 text-lg">🔬 The LUT (Learner Uncertainty Test)</h3>
           <p class="text-slate-200 mb-4">
-            Also called "Functional Determinism" - the LUT is the guiding principle for LEGO extraction in Phase 3 and basket generation in Phase 5.
+            Also called "Functional Determinism" - the LUT is the guiding principle for LEGO extraction in Phase 1 and basket generation in Phase 3.
           </p>
           <div class="bg-slate-900 p-4 rounded">
             <p class="text-emerald-400 font-semibold mb-2">The Test:</p>

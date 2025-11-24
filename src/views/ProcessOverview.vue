@@ -53,22 +53,22 @@
         <section class="mb-8">
           <h2 class="text-2xl font-semibold text-emerald-400 mb-4">End-to-End Pipeline</h2>
           <div class="prose prose-invert prose-emerald max-w-none text-slate-300">
-            <p>The SSi Course Production system uses APML v8.2.1 specification to generate complete language courses from canonical seed pairs through a streamlined microservices pipeline with integrated Phase 6, self-contained documentation, and human quality review strategy.</p>
+            <p>The SSi Course Production system uses APML v9.0.0 specification to generate complete language courses from canonical seed pairs through a streamlined pipeline. A phase triggers agents. Scripts run instantly.</p>
 
             <div class="bg-slate-900/50 border border-emerald-500/30 rounded p-4 my-4">
-              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">c883040b</span></p>
-              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v8.2.1</span> | Phase Intelligence: <span class="text-emerald-400">1 v2.6, 3 v7.1 (includes 6 v2.1), 5 v6.1, 7 v1.1, 8 v1.1 🔒</span></p>
-              <p class="text-xs text-amber-400 mt-1">⚠️ Phase 5.5 deprecated - human review for first 100 seeds</p>
+              <p class="text-xs text-slate-400 mb-1">Build: <span class="text-emerald-400 font-mono">v9.0.0</span></p>
+              <p class="text-xs text-slate-400">APML: <span class="text-emerald-400">v9.0.0</span> | Pipeline: <span class="text-emerald-400">Phase 1 → Phase 2 → Phase 3 → Manifest → Audio</span></p>
+              <p class="text-xs text-emerald-400 mt-1">lego_pairs.json embeds seed_pairs (no separate file)</p>
             </div>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Architecture Overview</h3>
             <ul class="space-y-2">
               <li><strong>Dashboard → ngrok → automation_server.cjs → osascript → Claude Code agents</strong></li>
-              <li><strong>v7.7+ Format:</strong> Compact JSON files (seed_pairs.json, lego_pairs.json, lego_baskets.json)</li>
+              <li><strong>v9.0 Format:</strong> Compact JSON files (lego_pairs.json embeds seed_pairs, lego_baskets.json)</li>
               <li><strong>Batch-Aware Generation:</strong> Each batch reads validator output and self-corrects</li>
               <li><strong>Pattern Coverage:</strong> Validators measure LEGO combination diversity, feed next batch</li>
-              <li><strong>VFS Structure:</strong> vfs/courses/{course_code}/ with v7.7 format files</li>
-              <li><strong>Immutable Contract:</strong> Phase 7 transforms to fixed app manifest format</li>
+              <li><strong>VFS Structure:</strong> vfs/courses/{course_code}/ with v9.0 format files</li>
+              <li><strong>Manifest Script:</strong> Transforms phase outputs to fixed app manifest format (not a phase)</li>
             </ul>
 
             <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Active Phase Flow</h3>
@@ -76,8 +76,8 @@
               <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 1: Pedagogical Translation <span class="text-xs text-emerald-400">v2.6 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: canonical_seeds.json → Output: seed_pairs.json (TWO ABSOLUTE RULES, synonym flexibility)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 1: Translation + LEGO Extraction</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: canonical_seeds.json → Output: draft_lego_pairs.json</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -85,8 +85,8 @@
               <router-link to="/intelligence" class="block bg-slate-900/80 border border-emerald-500/50 hover:border-emerald-400 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 3: LEGO Extraction (includes Phase 6) <span class="text-xs text-emerald-400">v7.1 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: seed_pairs.json → Output: lego_pairs.json + introductions.json (dual output, &lt;1s overhead)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 2: Conflict Resolution</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: draft_lego_pairs.json → Output: lego_pairs.json (intros auto-scripted at end)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -94,8 +94,8 @@
               <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-emerald-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-emerald-300">Phase 5: Basket Generation <span class="text-xs text-emerald-400">v6.1 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: lego_pairs.json → Output: lego_baskets.json (practice phrase generation)</p>
+                    <h4 class="font-semibold text-emerald-300">Phase 3: Basket Generation</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: lego_pairs.json → Output: lego_baskets.json (DO NOT MODIFY - works perfectly)</p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -103,8 +103,8 @@
               <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-amber-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-amber-300">Phase 7: Compilation <span class="text-xs text-amber-400">v1.1 🔒</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: all phase outputs → Output: course_manifest.json (with duration placeholders for Phase 8)</p>
+                    <h4 class="font-semibold text-amber-300">Manifest (Script)</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: all phase outputs → Output: course_manifest.json (runs instantly)</p>
                   </div>
                   <span class="text-amber-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
@@ -112,27 +112,27 @@
               <router-link to="/intelligence" class="block bg-slate-900/80 border border-slate-400/20 hover:border-purple-500/50 rounded p-4 transition group">
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold text-purple-300">Phase 8: Audio Generation <span class="text-xs text-purple-400">v1.1 📋</span></h4>
-                    <p class="text-sm text-slate-400 mt-1">Input: course_manifest.json → Output: audio/*.mp3 + duration population (assigned to Kai)</p>
+                    <h4 class="font-semibold text-purple-300">Audio (Separate Process)</h4>
+                    <p class="text-sm text-slate-400 mt-1">Input: course_manifest.json → Output: audio/*.mp3</p>
                   </div>
                   <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition">→</span>
                 </div>
               </router-link>
             </div>
 
-            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v8.2.1</h3>
+            <h3 class="text-xl font-semibold text-emerald-400 mt-6 mb-3">Key Features in v9.0.0</h3>
             <ul class="space-y-2">
-              <li><strong>Phase 5.5 Deprecated (NEW in v8.2.1):</strong> Automated grammar validation removed. Human review strategy for first 100 seeds (~20k phrases). Ship faster, iterate based on real usage.</li>
-              <li><strong>Phase 3 v7.1 Complete:</strong> Hierarchical lego_pairs.json (seed_pair → legos) with 668 seeds, 2,965 unique LEGOs, zero Pragmatic FD violations, includes integrated Phase 6 (<1s overhead)</li>
+              <li><strong>Simplified Pipeline:</strong> Phase 1 → Phase 2 → Phase 3 → Manifest → Audio. A phase triggers agents. Scripts run instantly.</li>
+              <li><strong>Embedded Seed Pairs:</strong> lego_pairs.json embeds seed_pairs (no separate file needed)</li>
+              <li><strong>Phase 2 Conflict Resolution:</strong> Resolves LEGO conflicts from draft output, auto-scripts intros at end</li>
+              <li><strong>Phase 3 Basket Generation:</strong> DO NOT MODIFY - works perfectly</li>
               <li><strong>Overlapping LEGOs:</strong> Chunks share components for maximum recombination power (e.g., "tardaron" in multiple LEGOs)</li>
               <li><strong>Two Heuristics Edition:</strong> Remove learner uncertainty + Maximize patterns with minimum vocab</li>
-              <li><strong>Batch-Aware Generation:</strong> Phase 5 reads validator output from previous batches, targets pattern gaps</li>
+              <li><strong>Batch-Aware Generation:</strong> Phase 3 reads validator output from previous batches, targets pattern gaps</li>
               <li><strong>Self-Healing Pattern Coverage:</strong> Each batch improves on previous weaknesses (missing edges, underused LEGOs)</li>
               <li><strong>Course Validators:</strong> 3 validators measure vocabulary, patterns, completeness (0-100% score)</li>
-              <li><strong>Literal Componentization:</strong> M-type LEGOs show word-by-word mappings with compact component arrays</li>
-              <li><strong>Synonym Flexibility:</strong> Canonical known uses natural wording, target uses cognates, Phase 6 reveals synonyms</li>
-              <li><strong>Manifest Format v1.1:</strong> Phase 7 creates duration placeholders (0) and introduction field for Phase 8 population</li>
-              <li><strong>Architectural Boundary:</strong> Phases 1-5 evolvable 🔒, Phase 6 integrated into Phase 3 🔗, Phase 7+ immutable contract 🔐</li>
+              <li><strong>Manifest Script:</strong> Not a phase - transforms outputs to fixed app manifest format instantly</li>
+              <li><strong>Audio Process:</strong> Separate from pipeline phases, generates audio/*.mp3 from course_manifest.json</li>
             </ul>
           </div>
         </section>
