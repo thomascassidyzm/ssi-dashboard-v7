@@ -1306,68 +1306,111 @@ app.get('/api/health', (req, res) => {
 });
 
 /**
- * GET /api/languages
- * Return ISO 639-3 language codes for dashboard
+ * Cache for ISO 639-3 languages (fetched on startup, refreshed daily)
  */
-app.get('/api/languages', (req, res) => {
-  const languages = [
-    { code: 'afr', name: 'Afrikaans', native: 'Afrikaans' },
-    { code: 'ara', name: 'Arabic', native: 'العربية' },
-    { code: 'ben', name: 'Bengali', native: 'বাংলা' },
-    { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
-    { code: 'bul', name: 'Bulgarian', native: 'Български' },
-    { code: 'cat', name: 'Catalan', native: 'Català' },
-    { code: 'cmn', name: 'Chinese (Mandarin)', native: '中文 (普通话)' },
-    { code: 'zho', name: 'Chinese', native: '中文' },
-    { code: 'cor', name: 'Cornish', native: 'Kernewek' },
-    { code: 'ces', name: 'Czech', native: 'Čeština' },
-    { code: 'cym', name: 'Welsh', native: 'Cymraeg' },
-    { code: 'dan', name: 'Danish', native: 'Dansk' },
-    { code: 'deu', name: 'German', native: 'Deutsch' },
-    { code: 'ell', name: 'Greek', native: 'Ελληνικά' },
-    { code: 'eng', name: 'English', native: 'English' },
-    { code: 'eus', name: 'Basque', native: 'Euskara' },
-    { code: 'fas', name: 'Persian', native: 'فارسی' },
-    { code: 'fra', name: 'French', native: 'Français' },
-    { code: 'gla', name: 'Scottish Gaelic', native: 'Gàidhlig' },
-    { code: 'gle', name: 'Irish', native: 'Gaeilge' },
-    { code: 'glv', name: 'Manx', native: 'Gaelg' },
-    { code: 'heb', name: 'Hebrew', native: 'עברית' },
-    { code: 'hin', name: 'Hindi', native: 'हिन्दी' },
-    { code: 'hrv', name: 'Croatian', native: 'Hrvatski' },
-    { code: 'hun', name: 'Hungarian', native: 'Magyar' },
-    { code: 'ind', name: 'Indonesian', native: 'Bahasa Indonesia' },
-    { code: 'isl', name: 'Icelandic', native: 'Íslenska' },
-    { code: 'ita', name: 'Italian', native: 'Italiano' },
-    { code: 'jpn', name: 'Japanese', native: '日本語' },
-    { code: 'kor', name: 'Korean', native: '한국어' },
-    { code: 'mkd', name: 'Macedonian', native: 'Македонски' },
-    { code: 'msa', name: 'Malay', native: 'Bahasa Melayu' },
-    { code: 'nld', name: 'Dutch', native: 'Nederlands' },
-    { code: 'nor', name: 'Norwegian', native: 'Norsk' },
-    { code: 'pol', name: 'Polish', native: 'Polski' },
-    { code: 'por', name: 'Portuguese', native: 'Português' },
-    { code: 'ron', name: 'Romanian', native: 'Română' },
-    { code: 'rus', name: 'Russian', native: 'Русский' },
-    { code: 'slk', name: 'Slovak', native: 'Slovenčina' },
-    { code: 'slv', name: 'Slovenian', native: 'Slovenščina' },
-    { code: 'spa', name: 'Spanish', native: 'Español' },
-    { code: 'srp', name: 'Serbian', native: 'Српски' },
-    { code: 'swa', name: 'Swahili', native: 'Kiswahili' },
-    { code: 'swe', name: 'Swedish', native: 'Svenska' },
-    { code: 'tgl', name: 'Tagalog', native: 'Tagalog' },
-    { code: 'tha', name: 'Thai', native: 'ไทย' },
-    { code: 'tur', name: 'Turkish', native: 'Türkçe' },
-    { code: 'ukr', name: 'Ukrainian', native: 'Українська' },
-    { code: 'urd', name: 'Urdu', native: 'اردو' },
-    { code: 'vie', name: 'Vietnamese', native: 'Tiếng Việt' },
-    { code: 'yue', name: 'Cantonese', native: '粵語' }
-  ];
+let iso639LanguagesCache = null;
+let iso639CacheTimestamp = null;
+const ISO639_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
-  // Sort by English name
-  languages.sort((a, b) => a.name.localeCompare(b.name));
+/**
+ * Fetch and parse ISO 639-3 language data from SIL International
+ * Returns: Array of { code, name, native } objects
+ */
+async function fetchISO639Languages() {
+  // Return cached data if fresh
+  if (iso639LanguagesCache && iso639CacheTimestamp && (Date.now() - iso639CacheTimestamp < ISO639_CACHE_TTL)) {
+    return iso639LanguagesCache;
+  }
 
-  res.json(languages);
+  try {
+    console.log('[Orchestrator] Fetching ISO 639-3 language data from SIL...');
+
+    // Fetch the official ISO 639-3 tab-delimited file from SIL International
+    const response = await axios.get('https://iso639-3.sil.org/sites/iso639-3/files/downloads/iso-639-3.tab', {
+      timeout: 10000,
+      responseType: 'text'
+    });
+
+    const lines = response.data.split('\n');
+    const languages = [];
+
+    // Skip header line, parse data
+    // Format: Id	Part2B	Part2T	Part1	Scope	Language_Type	Ref_Name	Comment
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+
+      const fields = line.split('\t');
+      if (fields.length < 7) continue;
+
+      const [id, part2B, part2T, part1, scope, languageType, refName] = fields;
+
+      // Only include living languages (L) and some constructed languages (C)
+      if (languageType !== 'L' && languageType !== 'C') continue;
+
+      // Prefer the 3-letter ISO 639-3 code (id)
+      const code = id.toLowerCase();
+      const name = refName.trim();
+
+      // For native name, we'll use the English name as fallback
+      // (Native names would require a separate dataset)
+      const native = name;
+
+      languages.push({ code, name, native });
+    }
+
+    // Cache the result
+    iso639LanguagesCache = languages;
+    iso639CacheTimestamp = Date.now();
+
+    console.log(`[Orchestrator] ✅ Loaded ${languages.length} languages from ISO 639-3`);
+    return languages;
+
+  } catch (error) {
+    console.error('[Orchestrator] ❌ Failed to fetch ISO 639-3 data:', error.message);
+
+    // Fallback to basic list if fetch fails
+    const fallback = [
+      { code: 'afr', name: 'Afrikaans', native: 'Afrikaans' },
+      { code: 'ara', name: 'Arabic', native: 'العربية' },
+      { code: 'bre', name: 'Breton', native: 'Brezhoneg' },
+      { code: 'cmn', name: 'Chinese (Mandarin)', native: '中文 (普通话)' },
+      { code: 'cym', name: 'Welsh', native: 'Cymraeg' },
+      { code: 'deu', name: 'German', native: 'Deutsch' },
+      { code: 'eng', name: 'English', native: 'English' },
+      { code: 'eus', name: 'Basque', native: 'Euskara' },
+      { code: 'fra', name: 'French', native: 'Français' },
+      { code: 'gla', name: 'Scottish Gaelic', native: 'Gàidhlig' },
+      { code: 'gle', name: 'Irish', native: 'Gaeilge' },
+      { code: 'glv', name: 'Manx', native: 'Gaelg' },
+      { code: 'ita', name: 'Italian', native: 'Italiano' },
+      { code: 'jpn', name: 'Japanese', native: '日本語' },
+      { code: 'kor', name: 'Korean', native: '한국어' },
+      { code: 'por', name: 'Portuguese', native: 'Português' },
+      { code: 'rus', name: 'Russian', native: 'Русский' },
+      { code: 'spa', name: 'Spanish', native: 'Español' }
+    ];
+
+    return fallback;
+  }
+}
+
+/**
+ * GET /api/languages
+ * Return ISO 639-3 language codes for dashboard (fetched from SIL registry)
+ */
+app.get('/api/languages', async (req, res) => {
+  try {
+    const languages = await fetchISO639Languages();
+
+    // Sort by English name
+    languages.sort((a, b) => a.name.localeCompare(b.name));
+
+    res.json(languages);
+  } catch (error) {
+    console.error('[Orchestrator] Error serving languages:', error);
+    res.status(500).json({ error: 'Failed to load languages', details: error.message });
+  }
 });
 
 /**
