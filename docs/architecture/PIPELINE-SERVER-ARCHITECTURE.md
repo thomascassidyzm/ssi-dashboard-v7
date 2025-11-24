@@ -1,59 +1,52 @@
 # SSi Course Pipeline Server Architecture
 
 > Design document for the unified course generation pipeline server.
+> Updated: 2025-11-24 (APML v9.0)
 
 ## Overview
 
-A single Express server orchestrating the complete course generation pipeline, from raw seeds to playable audio.
+A single Express server orchestrating the complete course generation pipeline, from raw seeds to conflict-free LEGOs.
 
-## Phase Numbering (NEW)
+## Phase Architecture (APML v9.0)
 
-| Phase | Name | Input | Output | Method |
-|-------|------|-------|--------|--------|
+| Phase | Name | Input | Output | Trigger |
+|-------|------|-------|--------|---------|
 | **1** | Translation + LEGO Extraction | canonical_seeds.json | draft_lego_pairs.json | Swarm (25 agents) |
 | **2** | Conflict Resolution | draft_lego_pairs.json | lego_pairs.json | Agent + Script |
-| **3** | Basket Generation | lego_pairs.json | lego_baskets.json | Local/Agent |
-| **4** | Introductions | lego_baskets.json | introductions.json | Agent |
-| **5** | Course Manifest | All above | course_manifest.json | Script |
-| **6** | Audio Generation | course_manifest.json | audio/*.mp3 | TTS API |
+| **3** | Basket Generation | lego_pairs.json | lego_baskets.json | Existing server |
+| - | Manifest | All above | course_manifest.json | Script |
+| - | Audio | course_manifest.json | audio/*.mp3 | TTS API |
+
+**Key Principle:** A phase triggers agents. Scripts run instantly.
 
 ## Server Architecture
 
-### Single Server Design
+### Endpoints (Port 3457)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    PIPELINE SERVER (port 3457)                   │
+│                    PIPELINE SERVER                               │
 ├─────────────────────────────────────────────────────────────────┤
-│  /health              - Server health + active jobs             │
-│  /courses             - List all courses with status            │
-│  /course/:code        - Detailed course status                  │
+│  STATUS & PIPELINE:                                              │
+│    GET  /health              - Server status                     │
+│    GET  /courses             - List all courses                  │
+│    GET  /course/:code/status - Real-time progress                │
+│    GET  /pipeline/:code      - Full pipeline with handoffs       │
 ├─────────────────────────────────────────────────────────────────┤
-│  PHASE 1: Translation + LEGO Extraction                         │
-│  POST /phase1/upload-batch     - Receive swarm batch            │
-│  POST /phase1/merge            - Merge batches → draft_lego     │
-│  GET  /phase1/status/:code     - Batch collection status        │
+│  PHASE 1 → draft_lego_pairs.json:                                │
+│    POST /upload-seed         - Single seed from agent            │
+│    POST /phase1/merge        - Merge all seeds                   │
 ├─────────────────────────────────────────────────────────────────┤
-│  PHASE 2: Conflict Resolution                                   │
-│  POST /phase2/detect           - Generate conflict report       │
-│  POST /phase2/apply            - Apply resolutions → lego_pairs │
-│  GET  /phase2/conflicts/:code  - Get conflict report            │
+│  PHASE 2 → lego_pairs.json:                                      │
+│    POST /phase2/detect       - Analyze conflicts                 │
+│    POST /phase2/apply        - Apply resolutions                 │
 ├─────────────────────────────────────────────────────────────────┤
-│  PHASE 3: Basket Generation                                     │
-│  POST /phase3/generate         - Generate baskets               │
-│  GET  /phase3/status/:code     - Generation progress            │
+│  PHASE 3 → lego_baskets.json:                                    │
+│    POST /upload-basket       - Single basket from agent          │
 ├─────────────────────────────────────────────────────────────────┤
-│  PHASE 4: Introductions                                         │
-│  POST /phase4/generate         - Generate introductions         │
-├─────────────────────────────────────────────────────────────────┤
-│  PHASE 5: Course Manifest                                       │
-│  POST /phase5/generate         - Generate manifest              │
-│  POST /phase5/validate         - Validate manifest              │
-├─────────────────────────────────────────────────────────────────┤
-│  PHASE 6: Audio Generation                                      │
-│  POST /phase6/generate         - Start audio generation         │
-│  GET  /phase6/progress/:code   - Audio generation progress      │
-│  POST /phase6/qc-approve       - Approve QC samples             │
+│  UTILITIES:                                                      │
+│    POST /reset-course        - Clear state for re-run            │
+│    POST /set-expected-seeds  - Configure seed count              │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -61,233 +54,196 @@ A single Express server orchestrating the complete course generation pipeline, f
 
 ```
 public/vfs/courses/<course_code>/
-├── batch_outputs/              # Phase 1 swarm results
-│   ├── batch_1.1_*.json
-│   ├── batch_1.2_*.json
+├── seeds/                      # Phase 1 per-seed outputs
+│   ├── S0001.json
 │   └── ...
 ├── draft_lego_pairs.json       # Phase 1 output (may have conflicts)
 ├── conflict_report.json        # Phase 2a analysis
-├── upchunk_resolutions.json    # Phase 2b resolutions
-├── lego_pairs.json             # Phase 2 output (conflict-free)
+├── upchunk_resolutions.json    # Phase 2b agent output
+├── lego_pairs.json             # Phase 2 output (SINGLE SOURCE OF TRUTH)
 ├── lego_baskets.json           # Phase 3 output
-├── introductions.json          # Phase 4 output
-├── course_manifest.json        # Phase 5 output
-└── audio/                      # Phase 6 output
-    ├── samples/
-    └── full/
+├── introductions.json          # Auto-generated
+├── course_manifest.json        # Compiled manifest
+└── audio/                      # Generated audio
 ```
 
-## API Design
+## Data Flow
 
-### Standard Response Format
+### Phase 1: Translation + LEGO Extraction
 
+```
+canonical_seeds.json
+        │
+        ▼
+   ┌─────────┐
+   │  SWARM  │  25 agents (5 browsers × 5 agents)
+   │ 75 seeds │  POST /upload-seed for each
+   └─────────┘
+        │
+        ▼
+   POST /phase1/merge
+        │
+        ▼
+draft_lego_pairs.json
+```
+
+### Phase 2: Conflict Resolution
+
+```
+draft_lego_pairs.json
+        │
+        ▼
+   POST /phase2/detect
+        │
+        ▼
+conflict_report.json
+        │
+        ▼
+   ┌─────────────┐
+   │ UPCHUNKING  │  Agent resolves conflicts
+   │    AGENT    │  Creates upchunk_resolutions.json
+   └─────────────┘
+        │
+        ▼
+   POST /phase2/apply
+        │
+        ▼
+lego_pairs.json (SINGLE SOURCE OF TRUTH)
+```
+
+### Phase 3: Basket Generation
+
+```
+lego_pairs.json
+        │
+        ▼
+   ┌───────────┐
+   │  BASKET   │  Existing server
+   │  SERVER   │  DO NOT MODIFY
+   └───────────┘
+        │
+        ▼
+lego_baskets.json
+```
+
+## API Reference
+
+### GET /pipeline/:code
+
+Returns full pipeline status with inputs, outputs, and recommendations.
+
+**Response:**
 ```json
 {
   "success": true,
-  "data": { ... },
-  "meta": {
+  "data": {
     "course": "spa_for_eng",
-    "phase": 1,
-    "timestamp": "2025-11-24T15:00:00Z"
+    "pipeline": {
+      "phase1": {
+        "name": "Translation + LEGO Extraction",
+        "status": "complete",
+        "input": {"file": "canonical_seeds.json", "ready": true},
+        "output": {"file": "draft_lego_pairs.json", "exists": true}
+      },
+      "phase2": {...},
+      "phase3": {...}
+    },
+    "recommendation": {
+      "phase": 3,
+      "action": "Run existing Phase 3 basket generation"
+    }
   }
 }
 ```
 
-### Error Response Format
+### POST /upload-seed
 
+Receives single seed from swarm agents. Enables real-time progress tracking.
+
+**Request:**
 ```json
-{
-  "success": false,
-  "error": {
-    "code": "CONFLICT_DETECTED",
-    "message": "18 conflicts found in draft_lego_pairs.json",
-    "details": { ... }
-  }
-}
-```
-
-### Key Endpoints
-
-#### POST /phase1/upload-batch
-Receives batch results from swarm agents.
-
-```json
-// Request
 {
   "course": "spa_for_eng",
-  "browserId": 1,
   "agentId": "1.3",
-  "seedRange": "S0007-S0009",
-  "seeds": [{ seed_id, seed_pair, legos }]
-}
-
-// Response
-{
-  "success": true,
-  "data": {
-    "batchId": "batch_1.3_1763995799.json",
-    "seedsReceived": 3,
-    "totalBatches": 12,
-    "expectedBatches": 25
+  "seed": {
+    "seed_id": "S0007",
+    "seed_pair": {"known": "...", "target": "..."},
+    "legos": [...]
   }
 }
 ```
 
-#### POST /phase1/merge
-Merges all batch outputs into draft_lego_pairs.json.
-
+**Response:**
 ```json
-// Request
-{ "course": "spa_for_eng" }
-
-// Response
 {
   "success": true,
   "data": {
-    "totalSeeds": 75,
-    "totalLegos": 317,
-    "outputFile": "draft_lego_pairs.json",
-    "conflicts": 18
+    "seedId": "S0007",
+    "completed": 47,
+    "expected": 75,
+    "progress": "62.7%"
   }
 }
 ```
 
-#### POST /phase2/detect
-Analyzes draft_lego_pairs.json for conflicts.
+### POST /phase1/merge
 
-```json
-// Request
-{ "course": "spa_for_eng" }
+Merges all received seeds into draft_lego_pairs.json.
 
-// Response
-{
-  "success": true,
-  "data": {
-    "totalConflicts": 18,
-    "byType": {
-      "capitalization": 3,
-      "preposition": 2,
-      "semantic": 13
-    },
-    "reportFile": "conflict_report.json"
-  }
-}
-```
+### POST /phase2/detect
 
-#### POST /phase2/apply
+Analyzes draft_lego_pairs.json for KNOWN→TARGET conflicts.
+
+### POST /phase2/apply
+
 Applies upchunk_resolutions.json to create final lego_pairs.json.
-
-```json
-// Request
-{ "course": "spa_for_eng" }
-
-// Response
-{
-  "success": true,
-  "data": {
-    "capitalNormalized": 11,
-    "canonicalApplied": 7,
-    "mTypesAdded": 7,
-    "remainingConflicts": 0,
-    "outputFile": "lego_pairs.json"
-  }
-}
-```
-
-## Implementation Plan
-
-### Phase 1: Core Infrastructure (Day 1)
-1. Create unified server skeleton
-2. Migrate /upload-batch from existing phase1-translation-server
-3. Add /phase1/merge endpoint
-4. Test with existing batch_outputs
-
-### Phase 2: Conflict Resolution (Day 1)
-1. Add /phase2/detect endpoint (wraps reconcile-lego-conflicts.cjs)
-2. Add /phase2/apply endpoint (wraps phase4-upchunk-pipeline.cjs)
-3. Test end-to-end with ita_for_eng_test
-
-### Phase 3: Remaining Phases (Day 2)
-1. Integrate existing phase5-basket-server logic
-2. Integrate phase6-introduction-server logic
-3. Add manifest generation
-4. Add audio generation endpoints
-
-### Phase 4: Polish (Day 2-3)
-1. Add comprehensive logging
-2. Add progress tracking
-3. Add WebSocket for real-time updates (optional)
-4. Documentation
 
 ## Configuration
 
 ```javascript
-// config/pipeline.config.js
-module.exports = {
-  port: process.env.PORT || 3457,
-  vfsRoot: process.env.VFS_ROOT || './public/vfs/courses',
+// Environment variables
+PORT=3457
+VFS_ROOT=./public/vfs/courses
 
-  swarm: {
-    expectedBatches: 25,    // 5 browsers × 5 agents
-    seedsPerAgent: 3,
-    timeoutMs: 300000       // 5 minutes per batch
-  },
-
-  phase2: {
-    autoCapitalization: true,
-    requireResolutions: true
-  },
-
-  phase6: {
-    ttsProvider: 'azure',   // or 'google', 'elevenlabs'
-    qcSampleCount: 10
-  }
-};
+// Swarm configuration (in spawn script)
+BROWSERS=5
+AGENTS_PER_BROWSER=5
+SEEDS_PER_AGENT=3
+TOTAL_SEEDS=75
 ```
 
 ## Error Handling
 
-### Recoverable Errors
-- Network timeout → Retry with exponential backoff
-- Partial batch → Mark incomplete, allow manual retry
-- TTS rate limit → Queue and retry
+### Validation Errors (400)
+- Missing required fields
+- Invalid course code
+- Missing prerequisite files
 
-### Fatal Errors
-- Invalid course code → 404
-- Missing prerequisites → 400 with clear message
-- Validation failure → 400 with detailed report
+### Not Found (404)
+- Course directory doesn't exist
 
-## Security Considerations (Future)
+### Server Errors (500)
+- File system errors
+- JSON parse errors
 
-- [ ] API key authentication for production
-- [ ] Rate limiting per course
-- [ ] Input validation/sanitization
-- [ ] Audit logging
+## Running the Server
 
-## Monitoring
+```bash
+# Start pipeline server
+npm run pipeline
 
-### Health Check Response
-```json
-{
-  "status": "healthy",
-  "uptime": 3600,
-  "activeJobs": 2,
-  "memory": { "used": "150MB", "total": "512MB" },
-  "courses": {
-    "spa_for_eng": { "phase": 3, "progress": "45%" }
-  }
-}
+# Or directly
+node services/pipeline/pipeline-server.cjs
 ```
 
-## Migration Notes
+## Integration with Dashboard
 
-### From Old Architecture
-1. phase1-translation-server.cjs → /phase1/* endpoints
-2. phase3-lego-extraction-server.cjs → Deprecated (merged into Phase 1)
-3. phase5-basket-server.cjs → /phase3/* endpoints
-4. phase6-introduction-server.cjs → /phase4/* endpoints
-5. phase8-audio-server.cjs → /phase6/* endpoints
+The dashboard uses:
+1. `GET /pipeline/:code` for pipeline status visualization
+2. `GET /course/:code/status` for real-time progress during swarm runs
+3. Direct VFS access for content editing
 
-### Backward Compatibility
-- Keep /upload-batch working (alias to /phase1/upload-batch)
-- Keep /health working
+## See Also
+
+- [APML v9.0 Pipeline Architecture](../../public/docs/APML_v9.0_PIPELINE_ARCHITECTURE.md) - Full specification
+- [CLAUDE.md](../../CLAUDE.md) - Agent onboarding guide

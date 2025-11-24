@@ -28,10 +28,11 @@
 
 ### Quick Facts
 - **Primary Language**: Spanish for English speakers (spa_for_eng)
-- **Pipeline**: Phase 1 → Phase 3 → Phase 5 → Phase 6 → Phase 7
+- **Pipeline**: Phase 1 → Phase 2 → Phase 3 → Manifest → Audio (APML v9.0)
 - **Data Format**: APML (Adaptive Pedagogy Markup Language)
 - **Scale**: 668 seeds per course, thousands of LEGO components
 - **Architecture**: Multi-agent orchestration with validation gates
+- **Pipeline Server**: Port 3457 (`npm run pipeline`)
 
 ---
 
@@ -143,11 +144,12 @@ If you're generating files, verify they're in gitignored directories.
 
 APML is our custom format for language learning content. Key concepts:
 
-### **Phase Outputs**
-- **Phase 1**: `seed_pairs.json` - Core translations (~500KB)
-- **Phase 3**: `lego_pairs.json` - Deconstructed components (~2MB)
-- **Phase 5**: `lego_baskets.json` - Practice baskets (~5MB)
-- **Phase 6**: `introductions.json` - Presentation content (~500KB)
+### **Phase Outputs (APML v9.0)**
+- **Phase 1**: `draft_lego_pairs.json` - Translated seeds with LEGOs (may have conflicts)
+- **Phase 2**: `lego_pairs.json` - Conflict-free LEGOs (SINGLE SOURCE OF TRUTH)
+- **Phase 3**: `lego_baskets.json` - Organized practice baskets
+- **Manifest**: `course_manifest.json` - Compiled for audio generation
+- **Audio**: `audio/*.mp3` - TTS generated files
 
 ### **LEGO Components**
 Language is broken into reusable "LEGO" pieces:

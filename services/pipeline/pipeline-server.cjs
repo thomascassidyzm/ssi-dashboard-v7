@@ -23,6 +23,138 @@ const app = express();
 const PORT = process.env.PORT || 3457;
 const VFS_ROOT = process.env.VFS_ROOT || path.join(__dirname, '../../public/vfs/courses');
 
+// ============================================================================
+// PHASE CONTRACTS: Define inputs, outputs, and handoffs
+// ============================================================================
+
+const PHASES = {
+  1: {
+    name: 'Translation + LEGO Extraction',
+    input: {
+      file: 'canonical_seeds.json',
+      path: '../../public/vfs/canonical/canonical_seeds.json',
+      description: 'Canonical seed sentences from master list'
+    },
+    output: {
+      file: 'draft_lego_pairs.json',
+      description: 'Translated seeds with extracted LEGOs (may have conflicts)'
+    },
+    trigger: 'Swarm: 25 agents process seeds in parallel',
+    handoff: {
+      next: 2,
+      action: 'POST /phase2/detect',
+      message: 'Run conflict detection to identify KNOWN→TARGET collisions'
+    }
+  },
+  2: {
+    name: 'Conflict Resolution',
+    input: {
+      file: 'draft_lego_pairs.json',
+      description: 'Phase 1 output with potential conflicts'
+    },
+    output: {
+      file: 'lego_pairs.json',
+      description: 'Conflict-free LEGOs with upchunked M-types'
+    },
+    trigger: 'Agent: Upchunking agent resolves conflicts',
+    steps: [
+      { action: 'POST /phase2/detect', description: 'Analyze conflicts → conflict_report.json' },
+      { action: 'Run upchunking agent', description: 'Creates upchunk_resolutions.json' },
+      { action: 'POST /phase2/apply', description: 'Apply resolutions → lego_pairs.json' }
+    ],
+    handoff: {
+      next: 3,
+      action: 'Run Phase 3 basket generation',
+      message: 'LEGOs are conflict-free and ready for basket organization'
+    }
+  },
+  3: {
+    name: 'Basket Generation',
+    input: {
+      file: 'lego_pairs.json',
+      description: 'Conflict-free LEGOs from Phase 2'
+    },
+    output: {
+      file: 'lego_baskets.json',
+      description: 'Organized learning baskets with LEGO sequences'
+    },
+    trigger: 'Existing basket server (DON\'T TOUCH - works perfectly)',
+    handoff: {
+      next: 'manifest',
+      action: 'Run manifest generation script',
+      message: 'Baskets ready for course manifest compilation'
+    }
+  }
+};
+
+/**
+ * Check if a phase input is ready
+ */
+async function checkPhaseInput(courseCode, phase) {
+  const phaseConfig = PHASES[phase];
+  if (!phaseConfig) return { ready: false, error: `Unknown phase: ${phase}` };
+
+  const inputFile = phaseConfig.input.file;
+  let inputPath;
+
+  // Phase 1 uses canonical seeds from a different location
+  if (phase === 1) {
+    inputPath = path.join(__dirname, phaseConfig.input.path);
+  } else {
+    inputPath = path.join(VFS_ROOT, courseCode, inputFile);
+  }
+
+  const exists = await fs.pathExists(inputPath);
+
+  if (!exists) {
+    return {
+      ready: false,
+      error: `Missing input: ${inputFile}`,
+      hint: phase > 1 ? `Complete Phase ${phase - 1} first` : 'Canonical seeds not found'
+    };
+  }
+
+  // Additional validation
+  try {
+    const data = await fs.readJson(inputPath);
+    const seeds = data.seeds || data;
+    return {
+      ready: true,
+      file: inputFile,
+      records: Array.isArray(seeds) ? seeds.length : Object.keys(seeds).length
+    };
+  } catch (err) {
+    return { ready: false, error: `Invalid JSON in ${inputFile}: ${err.message}` };
+  }
+}
+
+/**
+ * Check if a phase output exists
+ */
+async function checkPhaseOutput(courseCode, phase) {
+  const phaseConfig = PHASES[phase];
+  if (!phaseConfig) return { exists: false };
+
+  const outputPath = path.join(VFS_ROOT, courseCode, phaseConfig.output.file);
+  const exists = await fs.pathExists(outputPath);
+
+  if (!exists) return { exists: false };
+
+  try {
+    const stat = await fs.stat(outputPath);
+    const data = await fs.readJson(outputPath);
+    return {
+      exists: true,
+      file: phaseConfig.output.file,
+      size: stat.size,
+      modified: stat.mtime,
+      records: data.seeds?.length || data.baskets?.length || 0
+    };
+  } catch (err) {
+    return { exists: true, error: err.message };
+  }
+}
+
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
@@ -144,6 +276,133 @@ app.get('/course/:code/status', (req, res) => {
       }
     }
   });
+});
+
+/**
+ * GET /pipeline/:code
+ * Full pipeline status with inputs, outputs, and what's ready next
+ */
+app.get('/pipeline/:code', async (req, res) => {
+  try {
+    const { code } = req.params;
+    const courseDir = path.join(VFS_ROOT, code);
+
+    // Check if course exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({
+        success: false,
+        error: `Course not found: ${code}`,
+        hint: `Create directory: public/vfs/courses/${code}/`
+      });
+    }
+
+    // Check each phase
+    const pipeline = {};
+    let currentPhase = null;
+    let nextAction = null;
+
+    for (const [phaseNum, phaseConfig] of Object.entries(PHASES)) {
+      const num = parseInt(phaseNum);
+      const input = await checkPhaseInput(code, num);
+      const output = await checkPhaseOutput(code, num);
+
+      let status = 'pending';
+      if (output.exists) {
+        status = 'complete';
+      } else if (input.ready) {
+        status = 'ready';
+        if (!currentPhase) {
+          currentPhase = num;
+          nextAction = phaseConfig.handoff;
+        }
+      } else {
+        status = 'blocked';
+      }
+
+      pipeline[`phase${num}`] = {
+        name: phaseConfig.name,
+        status,
+        input: {
+          file: phaseConfig.input.file,
+          description: phaseConfig.input.description,
+          ...input
+        },
+        output: {
+          file: phaseConfig.output.file,
+          description: phaseConfig.output.description,
+          ...output
+        },
+        trigger: phaseConfig.trigger,
+        steps: phaseConfig.steps || null
+      };
+    }
+
+    // Check for additional files
+    const files = await fs.readdir(courseDir);
+    const additionalFiles = {
+      conflict_report: files.includes('conflict_report.json'),
+      upchunk_resolutions: files.includes('upchunk_resolutions.json'),
+      course_manifest: files.includes('course_manifest.json'),
+      introductions: files.includes('introductions.json')
+    };
+
+    // Determine what to do next
+    let recommendation = null;
+    if (pipeline.phase1.status === 'ready' && !pipeline.phase1.output.exists) {
+      recommendation = {
+        phase: 1,
+        action: 'Run swarm: node tools/orchestrators/spawn-swarm-5x5x3.cjs ' + code,
+        then: 'POST /phase1/merge'
+      };
+    } else if (pipeline.phase1.output.exists && !pipeline.phase2.output.exists) {
+      if (!additionalFiles.conflict_report) {
+        recommendation = {
+          phase: 2,
+          action: 'POST /phase2/detect',
+          description: 'Analyze for conflicts'
+        };
+      } else if (!additionalFiles.upchunk_resolutions) {
+        recommendation = {
+          phase: 2,
+          action: 'Run upchunking agent on conflict_report.json',
+          description: 'Creates upchunk_resolutions.json'
+        };
+      } else {
+        recommendation = {
+          phase: 2,
+          action: 'POST /phase2/apply',
+          description: 'Apply resolutions → lego_pairs.json'
+        };
+      }
+    } else if (pipeline.phase2.output.exists && !pipeline.phase3.output.exists) {
+      recommendation = {
+        phase: 3,
+        action: 'Run existing Phase 3 basket generation',
+        description: 'Creates lego_baskets.json'
+      };
+    } else if (pipeline.phase3.output.exists) {
+      recommendation = {
+        phase: 'manifest',
+        action: 'Run manifest generation script',
+        description: 'Compile course_manifest.json for audio generation'
+      };
+    }
+
+    res.json({
+      success: true,
+      data: {
+        course: code,
+        pipeline,
+        files: additionalFiles,
+        recommendation,
+        phases: PHASES  // Include full phase definitions for reference
+      }
+    });
+
+  } catch (err) {
+    console.error('[Pipeline Status] Error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // ============================================================================
@@ -674,24 +933,24 @@ app.listen(PORT, () => {
 ║  Port:     ${String(PORT).padEnd(49)}║
 ║  VFS:      ${VFS_ROOT.slice(-48).padEnd(49)}║
 ║                                                                ║
-║  Endpoints:                                                    ║
+║  STATUS & PIPELINE:                                            ║
 ║    GET  /health              - Server status                   ║
-║    GET  /courses             - List courses                    ║
-║    GET  /course/:code/status - Course progress                 ║
+║    GET  /courses             - List all courses                ║
+║    GET  /course/:code/status - Real-time progress              ║
+║    GET  /pipeline/:code      - Full pipeline with handoffs     ║
 ║                                                                ║
-║  Phase 1 (Swarm):                                              ║
+║  PHASE 1 → draft_lego_pairs.json (Swarm):                      ║
 ║    POST /upload-seed         - Single seed from agent          ║
-║    POST /upload-batch        - Batch (backward compat)         ║
-║    POST /phase1/merge        - Merge → draft_lego_pairs        ║
+║    POST /phase1/merge        - Merge all seeds                 ║
 ║                                                                ║
-║  Phase 2 (Conflicts):                                          ║
+║  PHASE 2 → lego_pairs.json (Conflicts):                        ║
 ║    POST /phase2/detect       - Analyze conflicts               ║
 ║    POST /phase2/apply        - Apply resolutions               ║
 ║                                                                ║
-║  Phase 3 (Baskets):                                            ║
+║  PHASE 3 → lego_baskets.json (Baskets):                        ║
 ║    POST /upload-basket       - Single basket from agent        ║
 ║                                                                ║
-║  Utilities:                                                    ║
+║  UTILITIES:                                                    ║
 ║    POST /reset-course        - Clear state for re-run          ║
 ║    POST /set-expected-seeds  - Configure seed count            ║
 ╚════════════════════════════════════════════════════════════════╝
