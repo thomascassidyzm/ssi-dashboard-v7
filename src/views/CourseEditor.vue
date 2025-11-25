@@ -458,17 +458,21 @@
                           <div
                             v-for="(pair, index) in breakdown.lego_pairs"
                             :key="pair.lego_id"
-                            class="px-4 py-3 rounded-lg border-2 transition-all"
-                            :class="pair.lego_type === 'COMPOSITE'
-                              ? 'bg-purple-900/30 border-purple-500 hover:bg-purple-900/50'
-                              : 'bg-blue-900/30 border-blue-600 hover:bg-blue-900/50'"
+                            class="px-4 py-3 rounded-lg transition-all"
+                            :class="[
+                              pair.is_new ? 'border-2' : 'border border-dashed opacity-60',
+                              pair.lego_type === 'COMPOSITE'
+                                ? (pair.is_new ? 'bg-purple-900/30 border-purple-500 hover:bg-purple-900/50' : 'bg-purple-900/20 border-purple-600/50')
+                                : (pair.is_new ? 'bg-blue-900/30 border-blue-600 hover:bg-blue-900/50' : 'bg-slate-800/50 border-slate-500/50')
+                            ]"
                           >
-                            <div class="text-blue-100 font-medium text-center mb-1">
+                            <div :class="pair.is_new ? 'text-blue-100' : 'text-slate-400'" class="font-medium text-center mb-1">
                               {{ pair.target_chunk }}
                             </div>
-                            <div class="text-xs text-blue-400 text-center font-mono">
+                            <div class="text-xs text-center font-mono" :class="pair.is_new ? 'text-blue-400' : 'text-slate-500'">
                               {{ pair.lego_id }}
                               <span v-if="pair.lego_type === 'COMPOSITE'" class="ml-1 text-purple-400">⚡</span>
+                              <span v-if="!pair.is_new" class="ml-1 text-slate-500" title="Previously introduced">↺</span>
                             </div>
                           </div>
                         </div>
@@ -485,12 +489,15 @@
                           <div
                             v-for="(pair, index) in breakdown.lego_pairs"
                             :key="'known-' + pair.lego_id"
-                            class="px-4 py-3 rounded-lg border-2 transition-all"
-                            :class="pair.lego_type === 'COMPOSITE'
-                              ? 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/30'
-                              : 'bg-slate-700/50 border-slate-600 hover:bg-slate-700'"
+                            class="px-4 py-3 rounded-lg transition-all"
+                            :class="[
+                              pair.is_new ? 'border-2' : 'border border-dashed opacity-60',
+                              pair.lego_type === 'COMPOSITE'
+                                ? (pair.is_new ? 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/30' : 'bg-purple-900/10 border-purple-700/30')
+                                : (pair.is_new ? 'bg-slate-700/50 border-slate-600 hover:bg-slate-700' : 'bg-slate-800/30 border-slate-600/30')
+                            ]"
                           >
-                            <div class="text-slate-100 font-medium text-center">
+                            <div :class="pair.is_new ? 'text-slate-100' : 'text-slate-400'" class="font-medium text-center">
                               {{ pair.known_chunk }}
                             </div>
                           </div>
@@ -1352,6 +1359,7 @@ async function loadCourse() {
               target_chunk: lego.lego?.target || lego.target,
               known_chunk: lego.lego?.known || lego.known,
               lego_type: lego.type === 'M' ? 'COMPOSITE' : 'ATOMIC',
+              is_new: lego.new !== false, // true if new or undefined (for backward compat)
               componentization: lego.components ?
                 lego.components.map(c => `${c.known} = ${c.target}`).join(', ') :
                 null
