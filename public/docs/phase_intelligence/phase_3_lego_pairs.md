@@ -297,8 +297,8 @@ Before submitting:
 - ✅ Each LEGO passes learner uncertainty test
 - ✅ All M-types have components array
 - ✅ Both sweeps completed (forward in KNOWN, backward in TARGET)
-- ✅ All words accounted for
-- ✅ Valid JSON, all LEGOs marked `new: true`
+- ✅ All words accounted for (complete breakdown)
+- ✅ Valid JSON, all LEGOs marked `new: true` (Phase 2 handles deduplication)
 
 ---
 
@@ -357,7 +357,7 @@ Before submitting:
 - `type`: "A" or "M"
 - `target`: Target language phrase
 - `known`: Known language phrase
-- `new`: true (deduplication happens in Phase 3.5)
+- `new`: true (Phase 2 handles reuse tracking after all extractions complete)
 - `components`: [[target, known], ...] for M-types only (literal translations)
 
 ---

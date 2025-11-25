@@ -327,10 +327,10 @@ Note: S0001 has NO M-types because all combinations are predictable concatenatio
 
 ## Tracking Across Seeds
 
-- `"new": true` - First occurrence of this LEGO
-- `"new": false` - Reuse from earlier seed
+- `"new": true` - Mark all LEGOs as new during Phase 1-3 extraction
+- Phase 2 (after all extractions complete) handles reuse detection and marks subsequent occurrences as `"new": false`
 
-Track LEGO reuse to show learners building vocabulary progressively.
+**Note**: Each agent processes a small batch (e.g., 3 seeds) without visibility into other batches. Reuse tracking happens in Phase 2 when the full dataset is available.
 
 ---
 
