@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "server": "node automation_server.cjs",
     "pipeline": "node services/pipeline/pipeline-server.cjs",
-    "automation": "node start-automation.js",
+    "automation": "node start-automation.cjs",
     "automation:legacy": "LEGACY_MODE=true node start-automation.js",
     "test": "vitest",
     "test:ui": "vitest --ui",
