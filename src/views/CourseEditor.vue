@@ -64,7 +64,7 @@
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">LEGO_BASKETS</div>
             <div class="text-3xl font-bold text-emerald-400">{{ basketsData?.baskets ? Object.keys(basketsData.baskets).length : 0 }}</div>
-            <div class="text-xs text-slate-500 mt-1">Phase 5 lesson groupings</div>
+            <div class="text-xs text-slate-500 mt-1">Phase 3 lesson groupings</div>
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-lg p-6">
             <div class="text-sm text-slate-400 mb-1">INTRODUCTIONS</div>
@@ -231,29 +231,29 @@
           </div>
         </div>
 
-        <!-- Pipeline Actions (Phase 7 & 8) -->
+        <!-- Pipeline Actions (Manifest & Audio) -->
         <div class="bg-slate-800 border border-purple-500/50 rounded-lg p-6">
-          <h3 class="text-xl font-semibold text-purple-400 mb-6">🎵 Audio Generation (Phase 8)</h3>
+          <h3 class="text-xl font-semibold text-purple-400 mb-6">🎵 Audio Generation</h3>
 
           <div class="grid grid-cols-2 gap-6">
-            <!-- Phase 7 Status -->
+            <!-- Manifest Status -->
             <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-              <h4 class="font-semibold text-emerald-400 mb-2">Phase 7 Status</h4>
+              <h4 class="font-semibold text-emerald-400 mb-2">Manifest Status</h4>
               <p class="text-sm text-slate-400 mb-4">
                 Course manifest must be compiled before audio generation
               </p>
               <div class="p-3 rounded-lg border" :class="{
-                'bg-emerald-900/20 border-emerald-500/50': course.phases_completed?.includes('7'),
-                'bg-slate-900/20 border-slate-500/50': !course.phases_completed?.includes('7')
+                'bg-emerald-900/20 border-emerald-500/50': isManifestComplete,
+                'bg-slate-900/20 border-slate-500/50': !isManifestComplete
               }">
                 <div class="flex items-center gap-2">
-                  <span v-if="course.phases_completed?.includes('7')" class="text-emerald-400 text-lg">✓</span>
+                  <span v-if="isManifestComplete" class="text-emerald-400 text-lg">✓</span>
                   <span v-else class="text-slate-500 text-lg">○</span>
                   <span class="font-semibold" :class="{
-                    'text-emerald-400': course.phases_completed?.includes('7'),
-                    'text-slate-400': !course.phases_completed?.includes('7')
+                    'text-emerald-400': isManifestComplete,
+                    'text-slate-400': !isManifestComplete
                   }">
-                    {{ course.phases_completed?.includes('7') ? 'Ready for Audio' : 'Manifest Not Compiled' }}
+                    {{ isManifestComplete ? 'Ready for Audio' : 'Manifest Not Compiled' }}
                   </span>
                 </div>
                 <p class="text-xs text-slate-500 mt-2">
@@ -262,7 +262,7 @@
               </div>
             </div>
 
-            <!-- Phase 8 Audio Generation -->
+            <!-- Audio Generation -->
             <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
               <h4 class="font-semibold text-purple-400 mb-2">Generate Audio (TTS)</h4>
               <p class="text-sm text-slate-400 mb-4">
@@ -270,7 +270,7 @@
               </p>
               <button
                 @click="startAudioGeneration"
-                :disabled="audioGenerationLoading || !course.phases_completed?.includes('7')"
+                :disabled="audioGenerationLoading || !isManifestComplete"
                 class="w-full px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:text-slate-500 rounded-lg transition text-white flex items-center justify-center gap-2"
               >
                 <span v-if="audioGenerationLoading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
@@ -1214,6 +1214,12 @@ const actualLegoCount = computed(() => {
     }
   }
   return count
+})
+
+// Check if manifest is complete (supports both new and legacy phase identifiers)
+const isManifestComplete = computed(() => {
+  const phases = course.value?.phases_completed || []
+  return phases.includes('manifest') || phases.includes('7')
 })
 
 const filteredTranslations = computed(() => {

@@ -58,6 +58,12 @@ const NGROK_URL = process.env.NGROK_URL || `http://localhost:${BASE_PORT}`;
 startLayeredServices();
 
 function startLayeredServices() {
+// APML v9.0 Service Configuration
+// Phase 1 = Translation + LEGO Extraction (two services, one phase)
+// Phase 2 = Conflict Resolution (handled in Phase 1 LEGO service)
+// Phase 3 = Basket Generation
+// Manifest = Course Compilation (no phase number)
+// Audio = TTS Generation (no phase number)
 const SERVICES = {
   orchestrator: {
     script: 'services/orchestration/orchestrator.cjs',
@@ -65,43 +71,34 @@ const SERVICES = {
     name: 'Orchestrator',
     color: '\x1b[36m'    // Cyan
   },
-  phase1: {
+  phase1_translation: {
     script: 'services/phases/phase1-translation/server.cjs',
     port: BASE_PORT + 1,  // 3457
     name: 'Phase 1 (Translation)',
     color: '\x1b[32m'    // Green
   },
-  phase3: {
-    script: 'services/phases/phase3-lego-extraction/server.cjs',
+  phase1_lego: {
+    script: 'services/phases/phase1-lego-extraction/server.cjs',
     port: BASE_PORT + 2,  // 3458
-    name: 'Phase 3 (LEGO Extraction)',
+    name: 'Phase 1 (LEGO Extraction)',
     color: '\x1b[33m'    // Yellow
   },
-  phase5: {
-    script: 'services/phases/phase5-basket-generation/server.cjs',
+  phase3: {
+    script: 'services/phases/phase3-basket-generation/server.cjs',
     port: BASE_PORT + 3,  // 3459
-    name: 'Phase 5 (Baskets)',
+    name: 'Phase 3 (Baskets)',
     color: '\x1b[35m'    // Magenta
   },
-  // Phase 5.5 (Grammar Validation) - DISABLED
-  // Using human semi-manual review for first 100 seeds instead
-  // Quality gates can be added incrementally later
-  // phase5_5: {
-  //   script: 'services/phases/phase5.5-grammar-validation-server.cjs',
-  //   port: BASE_PORT + 4,  // 3460
-  //   name: 'Phase 5.5 (Grammar)',
-  //   color: '\x1b[95m'    // Bright Magenta
-  // },
-  phase7: {
-    script: 'services/phases/phase7-manifest-compilation/server.cjs',
+  manifest: {
+    script: 'services/phases/manifest-compilation/server.cjs',
     port: BASE_PORT + 8,  // 3464
-    name: 'Phase 7 (Manifest)',
+    name: 'Manifest Compilation',
     color: '\x1b[34m'    // Blue
   },
-  phase8: {
-    script: 'services/phases/phase8-audio-server.cjs',
+  audio: {
+    script: 'services/phases/audio-server.cjs',
     port: BASE_PORT + 9,  // 3465
-    name: 'Phase 8 (Audio)',
+    name: 'Audio Generation',
     color: '\x1b[36m'    // Cyan
   }
 };
@@ -130,13 +127,12 @@ for (const [key, config] of Object.entries(SERVICES)) {
       SERVICE_NAME: config.name,
       // Phase servers need to know orchestrator (use ngrok URL for external agents)
       ORCHESTRATOR_URL: NGROK_URL,
-      // Phase servers need to know each other (for service mesh)
-      PHASE1_URL: `http://localhost:${BASE_PORT + 1}`,    // 3457 - Translation (includes Phase 2 LUT)
-      PHASE3_URL: `http://localhost:${BASE_PORT + 2}`,    // 3458 - LEGO Extraction (includes Phase 6 introductions)
-      PHASE5_URL: `http://localhost:${BASE_PORT + 3}`,    // 3459 - Practice Baskets
-      // PHASE5_5_URL: `http://localhost:${BASE_PORT + 4}`,  // 3460 - Grammar Validation (DISABLED)
-      PHASE7_URL: `http://localhost:${BASE_PORT + 8}`,    // 3464 - Manifest Compilation
-      PHASE8_URL: `http://localhost:${BASE_PORT + 9}`,    // 3465 - Audio/TTS
+      // APML v9.0 Service Mesh URLs
+      PHASE1_TRANSLATION_URL: `http://localhost:${BASE_PORT + 1}`,  // 3457 - Translation
+      PHASE1_LEGO_URL: `http://localhost:${BASE_PORT + 2}`,         // 3458 - LEGO Extraction (+ conflict resolution)
+      PHASE3_URL: `http://localhost:${BASE_PORT + 3}`,              // 3459 - Basket Generation
+      MANIFEST_URL: `http://localhost:${BASE_PORT + 8}`,            // 3464 - Course Manifest Compilation
+      AUDIO_URL: `http://localhost:${BASE_PORT + 9}`,               // 3465 - TTS Audio Generation
     },
     stdio: ['ignore', 'pipe', 'pipe']
   });

@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * SSi Course Production - Main Orchestrator
+ * SSi Course Production - Main Orchestrator (APML v9.0)
  *
  * Responsibilities:
  * - Serve dashboard read-only APIs (courses, VFS files, metrics)
- * - Trigger phase servers in sequence (1 → 3 → 5 → 7 → 8)
- * - Phase 6 (introductions) integrated into Phase 3 (< 1s overhead)
+ * - Trigger phase servers in sequence: Phase 1 → Phase 3 → Manifest → Audio
+ * - Phase 1 includes Translation + LEGO Extraction (two services, one conceptual phase)
+ * - Phase 2 (Conflict Resolution) handled within Phase 1 LEGO service
  * - Checkpoint management (manual/gated/full modes)
  * - Health monitoring of phase servers
  * - Course status tracking
@@ -28,14 +29,25 @@ const VFS_ROOT = process.env.VFS_ROOT;
 const CHECKPOINT_MODE = process.env.CHECKPOINT_MODE || 'gated';
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Orchestrator';
 
-// Phase server URLs (auto-configured by start-automation.js)
+// APML v9.0 Phase server URLs (auto-configured by start-automation.js)
 const PHASE_SERVERS = {
-  1: process.env.PHASE1_URL || 'http://localhost:3457',    // Translation (includes Phase 2 LUT)
-  3: process.env.PHASE3_URL || 'http://localhost:3458',    // LEGO Extraction (includes Phase 6 introductions)
-  5: process.env.PHASE5_URL || 'http://localhost:3459',    // Practice Baskets
-  5.5: process.env.PHASE5_5_URL || 'http://localhost:3460', // Grammar Validation
-  7: process.env.PHASE7_URL || 'http://localhost:3464',    // Manifest Compilation
-  8: process.env.PHASE8_URL || 'http://localhost:3465'     // Audio/TTS
+  // Phase 1: Translation + LEGO Extraction (two services, one conceptual phase)
+  '1_translation': process.env.PHASE1_TRANSLATION_URL || 'http://localhost:3457',
+  '1_lego': process.env.PHASE1_LEGO_URL || 'http://localhost:3458',
+  // Phase 3: Basket Generation (was Phase 5 in old numbering)
+  3: process.env.PHASE3_URL || 'http://localhost:3459',
+  // Manifest: Course Compilation (was Phase 7)
+  'manifest': process.env.MANIFEST_URL || 'http://localhost:3464',
+  // Audio: TTS Generation (was Phase 8)
+  'audio': process.env.AUDIO_URL || 'http://localhost:3465'
+};
+
+// Legacy aliases for backward compatibility during migration
+const LEGACY_PHASE_ALIASES = {
+  1: PHASE_SERVERS['1_translation'],
+  5: PHASE_SERVERS[3],       // Phase 5 → Phase 3
+  7: PHASE_SERVERS['manifest'],
+  8: PHASE_SERVERS['audio']
 };
 
 // Validate config
@@ -59,8 +71,8 @@ app.use(bodyParser.json({ limit: '50mb' }));
 // Course state tracking (courseCode -> state)
 const courseStates = new Map();
 
-// Pipeline state tracking (linear flow: 1 → 3 → 5 → 7 → 8)
-// courseCode -> { phase1: {success, completedAt, stats}, phase3: {...}, phase5: {...}, phase7: {...}, phase8: {...} }
+// Pipeline state tracking (APML v9.0 linear flow: Phase 1 → Phase 3 → Manifest → Audio)
+// courseCode -> { phase1: {success, completedAt, stats}, phase3: {...}, manifest: {...}, audio: {...} }
 const pipelineJobs = new Map();
 
 // Active course progress tracking (for real-time monitoring)
@@ -76,12 +88,12 @@ function initializeCourseProgress(courseCode, startPhase, totalSeeds) {
     currentPhase: startPhase,
     overallStatus: 'running',
     startTime: new Date().toISOString(),
+    // APML v9.0 phases: 1 (Translation + LEGO), 3 (Baskets), manifest, audio
     phases: {
       1: { status: 'pending', seedsTotal: totalSeeds },
       3: { status: 'pending' },
-      5: { status: 'pending' },
-      7: { status: 'pending' },
-      8: { status: 'pending' }
+      manifest: { status: 'pending' },
+      audio: { status: 'pending' }
     },
     recentLogs: []
   });
@@ -1096,44 +1108,60 @@ app.post('/phase-complete', async (req, res) => {
 });
 
 /**
- * Handle phase progression (linear pipeline)
- * Phase 1 → Phase 3 (includes Phase 6) → Phase 5 → Phase 7 → Phase 8
+ * Handle phase progression (APML v9.0 linear pipeline)
+ * Phase 1 (Translation + LEGO) → Phase 3 (Baskets) → Manifest → Audio
  */
 async function handlePhaseProgression(courseCode, completedPhase, state, pipelineJob) {
   // Regenerate course manifest to reflect the newly completed phase
   await regenerateCourseManifest();
 
-  if (completedPhase === 'phase1' || completedPhase === 1) {
-    // Phase 1 → Phase 3
-    console.log(`   → Phase 1 complete, triggering Phase 3`);
+  // Normalize phase identifiers (support both old and new naming)
+  const normalizedPhase = normalizePhaseIdentifier(completedPhase);
+
+  if (normalizedPhase === 'phase1') {
+    // Phase 1 complete → Phase 3 (Baskets)
+    console.log(`   → Phase 1 complete, triggering Phase 3 (Baskets)`);
     setTimeout(() => triggerPhase(courseCode, 3), 2000);
-  } else if (completedPhase === 'phase3' || completedPhase === 3) {
-    // Phase 3 (includes Phase 6 introductions) → Phase 5
-    console.log(`   → Phase 3 complete (introductions generated), triggering Phase 5`);
-    setTimeout(() => triggerPhase(courseCode, 5), 2000);
-  } else if (completedPhase === 'phase5' || completedPhase === 5) {
-    // Phase 5 → Phase 7
-    console.log(`   → Phase 5 complete, triggering Phase 7`);
-    setTimeout(() => triggerPhase(courseCode, 7), 2000);
-  } else if (completedPhase === 'phase7' || completedPhase === 7) {
-    // Phase 7 → Phase 8
-    console.log(`   → Phase 7 complete, triggering Phase 8`);
-    setTimeout(() => triggerPhase(courseCode, 8), 2000);
-  } else if (completedPhase === 'phase8' || completedPhase === 8) {
-    // Phase 8 → All complete!
+  } else if (normalizedPhase === 'phase3') {
+    // Phase 3 (Baskets) → Manifest
+    console.log(`   → Phase 3 complete, triggering Manifest compilation`);
+    setTimeout(() => triggerPhase(courseCode, 'manifest'), 2000);
+  } else if (normalizedPhase === 'manifest') {
+    // Manifest → Audio
+    console.log(`   → Manifest complete, triggering Audio generation`);
+    setTimeout(() => triggerPhase(courseCode, 'audio'), 2000);
+  } else if (normalizedPhase === 'audio') {
+    // Audio → All complete!
     state.status = 'complete';
     console.log(`   🎉 All phases complete!`);
   } else {
     // Unknown phase - use linear fallback
     const nextPhase = getNextPhase(completedPhase);
     if (nextPhase) {
-      console.log(`   → Auto-triggering Phase ${nextPhase}`);
+      console.log(`   → Auto-triggering ${nextPhase}`);
       setTimeout(() => triggerPhase(courseCode, nextPhase), 2000);
     } else {
       state.status = 'complete';
       console.log(`   🎉 All phases complete!`);
     }
   }
+}
+
+/**
+ * Normalize phase identifiers for backward compatibility
+ * Maps old phase numbers to APML v9.0 naming
+ */
+function normalizePhaseIdentifier(phase) {
+  const mapping = {
+    1: 'phase1', 'phase1': 'phase1',
+    3: 'phase3', 'phase3': 'phase3',
+    5: 'phase3', 'phase5': 'phase3',  // Old Phase 5 → New Phase 3
+    7: 'manifest', 'phase7': 'manifest',
+    8: 'audio', 'phase8': 'audio',
+    'manifest': 'manifest',
+    'audio': 'audio'
+  };
+  return mapping[phase] || phase;
 }
 
 /**
@@ -1172,37 +1200,42 @@ app.post('/api/courses/generate', async (req, res) => {
   console.log(`   Strategy: ${strategy}`);
 
   try {
-    // Determine which phase to trigger
+    // APML v9.0 Phase Selection
+    // Maps user selection to internal phase identifier
     let phase;
-    if (phaseSelection === 'phase1') {
-      phase = 1;
+    let phaseName;
+    if (phaseSelection === 'phase1' || phaseSelection === 'all') {
+      phase = '1_translation';  // Start with translation
+      phaseName = 'Phase 1';
     } else if (phaseSelection === 'phase3') {
       phase = 3;
+      phaseName = 'Phase 3 (Baskets)';
     } else if (phaseSelection === 'phase5') {
-      phase = 5;
-    } else if (phaseSelection === 'phase7') {
-      phase = 7;
-    } else if (phaseSelection === 'phase8') {
-      phase = 8;
-    } else if (phaseSelection === 'all') {
-      // Start from Phase 1
-      phase = 1;
+      // Legacy: Phase 5 → Phase 3 in APML v9.0
+      phase = 3;
+      phaseName = 'Phase 3 (Baskets)';
+    } else if (phaseSelection === 'phase7' || phaseSelection === 'manifest') {
+      phase = 'manifest';
+      phaseName = 'Manifest';
+    } else if (phaseSelection === 'phase8' || phaseSelection === 'audio') {
+      phase = 'audio';
+      phaseName = 'Audio';
     } else {
       throw new Error(`Unknown phase selection: ${phaseSelection}`);
     }
 
     // Delegate to phase server
-    const phaseServer = PHASE_SERVERS[phase];
+    const phaseServer = PHASE_SERVERS[phase] || LEGACY_PHASE_ALIASES[phase];
     if (!phaseServer) {
       throw new Error(`Phase ${phase} server not available`);
     }
 
-    console.log(`   → Delegating to Phase ${phase} server: ${phaseServer}`);
+    console.log(`   → Delegating to ${phaseName} server: ${phaseServer}`);
 
     // Initialize progress tracking
     const progress = initializeCourseProgress(courseCode, phase, totalSeeds);
     updatePhaseProgress(courseCode, phase, { status: 'running', startTime: new Date().toISOString() });
-    addProgressLog(courseCode, `Starting Phase ${phase} for ${totalSeeds} seeds`);
+    addProgressLog(courseCode, `Starting ${phaseName} for ${totalSeeds} seeds`);
 
     const response = await axios.post(`${phaseServer}/start`, {
       courseCode,
@@ -1805,12 +1838,16 @@ Co-Authored-By: Claude <noreply@anthropic.com>`;
   }
 });
 
+// =============================================================================
+// AUDIO GENERATION ENDPOINTS (APML v9.0)
+// Legacy /api/phase8/* routes maintained for backward compatibility
+// =============================================================================
+
 /**
- * POST /api/phase8/start
- * Proxy to Phase 8 audio server (port 3465)
- * Allows remote access through ngrok tunnel
+ * POST /api/audio/start (APML v9.0) and /api/phase8/start (legacy)
+ * Proxy to Audio server (port 3465)
  */
-app.post('/api/phase8/start', async (req, res) => {
+async function handleAudioStart(req, res) {
   try {
     const { courseCode, options = {} } = req.body;
 
@@ -1821,100 +1858,104 @@ app.post('/api/phase8/start', async (req, res) => {
       });
     }
 
-    console.log(`[Orchestrator] 🎵 Proxying Phase 8 audio generation request for ${courseCode}`);
+    console.log(`[Orchestrator] 🎵 Proxying Audio generation request for ${courseCode}`);
 
-    const phase8Url = PHASE_SERVERS[8]; // http://localhost:3465
+    const audioUrl = PHASE_SERVERS['audio'];
 
-    const response = await axios.post(`${phase8Url}/start`, {
+    const response = await axios.post(`${audioUrl}/start`, {
       courseCode,
       options
     });
 
     res.json(response.data);
   } catch (error) {
-    console.error('[Orchestrator] ❌ Phase 8 proxy error:', error.message);
+    console.error('[Orchestrator] ❌ Audio proxy error:', error.message);
 
     if (error.code === 'ECONNREFUSED') {
       return res.status(503).json({
         success: false,
-        error: 'Phase 8 server is not running',
-        message: 'Please start the Phase 8 audio server (port 3465)'
+        error: 'Audio server is not running',
+        message: 'Please start the Audio server (port 3465)'
       });
     }
 
     res.status(error.response?.status || 500).json({
       success: false,
       error: error.message,
-      message: 'Failed to start Phase 8 audio generation'
+      message: 'Failed to start Audio generation'
     });
   }
-});
+}
+app.post('/api/audio/start', handleAudioStart);
+app.post('/api/phase8/start', handleAudioStart);  // Legacy
 
 /**
- * GET /api/phase8/status/:courseCode
- * Get Phase 8 job status
+ * GET /api/audio/status/:courseCode (APML v9.0) and /api/phase8/status/:courseCode (legacy)
  */
-app.get('/api/phase8/status/:courseCode', async (req, res) => {
+async function handleAudioStatus(req, res) {
   try {
     const { courseCode } = req.params;
-    const phase8Url = PHASE_SERVERS[8];
+    const audioUrl = PHASE_SERVERS['audio'];
 
-    const response = await axios.get(`${phase8Url}/status/${courseCode}`);
+    const response = await axios.get(`${audioUrl}/status/${courseCode}`);
     res.json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ success: false, error: 'Phase 8 server not running' });
+      return res.status(503).json({ success: false, error: 'Audio server not running' });
     }
     if (error.response?.status === 404) {
       return res.status(404).json({ success: false, error: 'No job found for this course' });
     }
     res.status(error.response?.status || 500).json({ success: false, error: error.message });
   }
-});
+}
+app.get('/api/audio/status/:courseCode', handleAudioStatus);
+app.get('/api/phase8/status/:courseCode', handleAudioStatus);  // Legacy
 
 /**
- * POST /api/phase8/continue
- * Continue Phase 8 processing after QC approval
+ * POST /api/audio/continue (APML v9.0) and /api/phase8/continue (legacy)
  */
-app.post('/api/phase8/continue', async (req, res) => {
+async function handleAudioContinue(req, res) {
   try {
     const { courseCode, options = {} } = req.body;
-    const phase8Url = PHASE_SERVERS[8];
+    const audioUrl = PHASE_SERVERS['audio'];
 
-    const response = await axios.post(`${phase8Url}/continue-phase-a`, { courseCode, options });
+    const response = await axios.post(`${audioUrl}/continue-phase-a`, { courseCode, options });
     res.json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ success: false, error: 'Phase 8 server not running' });
+      return res.status(503).json({ success: false, error: 'Audio server not running' });
     }
     res.status(error.response?.status || 500).json({ success: false, error: error.message });
   }
-});
+}
+app.post('/api/audio/continue', handleAudioContinue);
+app.post('/api/phase8/continue', handleAudioContinue);  // Legacy
 
 /**
- * POST /api/phase8/regenerate
- * Regenerate specific audio samples
+ * POST /api/audio/regenerate (APML v9.0) and /api/phase8/regenerate (legacy)
  */
-app.post('/api/phase8/regenerate', async (req, res) => {
+async function handleAudioRegenerate(req, res) {
   try {
     const { courseCode, uuids } = req.body;
-    const phase8Url = PHASE_SERVERS[8];
+    const audioUrl = PHASE_SERVERS['audio'];
 
-    const response = await axios.post(`${phase8Url}/regenerate`, { courseCode, uuids });
+    const response = await axios.post(`${audioUrl}/regenerate`, { courseCode, uuids });
     res.json(response.data);
   } catch (error) {
     if (error.code === 'ECONNREFUSED') {
-      return res.status(503).json({ success: false, error: 'Phase 8 server not running' });
+      return res.status(503).json({ success: false, error: 'Audio server not running' });
     }
     res.status(error.response?.status || 500).json({ success: false, error: error.message });
   }
-});
+}
+app.post('/api/audio/regenerate', handleAudioRegenerate);
+app.post('/api/phase8/regenerate', handleAudioRegenerate);  // Legacy
 
 /**
- * GET /api/phase8/qc-report/:courseCode
- * Get QC report for Phase 8 audio generation
+ * GET /api/audio/qc-report/:courseCode (APML v9.0) and /api/phase8/qc-report/:courseCode (legacy)
  */
-app.get('/api/phase8/qc-report/:courseCode', async (req, res) => {
+async function handleAudioQCReport(req, res) {
   try {
     const { courseCode } = req.params;
     const qcReportPath = path.join(VFS_ROOT, 'courses', courseCode, 'qc_report_raw.json');
@@ -1928,7 +1969,9 @@ app.get('/api/phase8/qc-report/:courseCode', async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
-});
+}
+app.get('/api/audio/qc-report/:courseCode', handleAudioQCReport);
+app.get('/api/phase8/qc-report/:courseCode', handleAudioQCReport);  // Legacy
 
 /**
  * Run Phase 1 Validation: LUT Collision Check
@@ -2338,11 +2381,16 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
   }
 });
 
+// =============================================================================
+// PHASE 3 BASKET GENERATION ENDPOINTS (APML v9.0)
+// Legacy /api/phase5/* routes maintained for backward compatibility
+// =============================================================================
+
 /**
- * POST /api/phase5/:courseCode/submit
+ * POST /api/phase3/:courseCode/submit (APML v9.0) and /api/phase5/:courseCode/submit (legacy)
  * Accept completed lego_baskets.json from agents via ngrok
  */
-app.post('/api/phase5/:courseCode/submit', async (req, res) => {
+async function handlePhase3Submit(req, res) {
   try {
     const { courseCode } = req.params;
     const basketData = req.body;
@@ -2441,74 +2489,81 @@ app.post('/api/phase5/:courseCode/submit', async (req, res) => {
       phraseCount += basket.practice_phrases?.length || 0;
     });
 
-    console.log(`[Orchestrator] ✅ Received Phase 5 submission for ${courseCode}`);
+    console.log(`[Orchestrator] ✅ Received Phase 3 (Baskets) submission for ${courseCode}`);
     console.log(`[Orchestrator]    Baskets: ${basketCount}`);
     console.log(`[Orchestrator]    Phrases: ${phraseCount}`);
     console.log(`[Orchestrator]    Saved to: ${outputPath}`);
 
     // Get progress data for context
     const progress = courseProgress.get(courseCode);
-    const phase5Data = progress?.phases?.[5];
+    const phase3Data = progress?.phases?.[3];
 
-    // Update progress tracking
-    updatePhaseProgress(courseCode, 5, {
+    // Update progress tracking (use phase 3 in v9.0)
+    updatePhaseProgress(courseCode, 3, {
       status: 'complete',
       endTime: new Date().toISOString(),
       basketCount,
       phraseCount,
       legosCompleted: basketCount,
-      legosTotal: phase5Data?.legosTotal || basketCount
+      legosTotal: phase3Data?.legosTotal || basketCount
     });
 
     // Create informative log message
-    let logMsg = `✅ Phase 5 complete: ${basketCount} LEGOs`;
-    if (phase5Data?.legosTotal && phase5Data.legosTotal !== basketCount) {
-      logMsg += ` of ${phase5Data.legosTotal} expected`;
+    let logMsg = `✅ Phase 3 complete: ${basketCount} LEGOs`;
+    if (phase3Data?.legosTotal && phase3Data.legosTotal !== basketCount) {
+      logMsg += ` of ${phase3Data.legosTotal} expected`;
     }
-    if (phase5Data?.seedsTotal) {
-      logMsg += ` across ${phase5Data.seedsCompleted || phase5Data.seedsTotal} seeds`;
+    if (phase3Data?.seedsTotal) {
+      logMsg += ` across ${phase3Data.seedsCompleted || phase3Data.seedsTotal} seeds`;
     }
     logMsg += ` (${phraseCount.toLocaleString()} practice phrases)`;
 
     addProgressLog(courseCode, logMsg);
 
-    // Update current phase to next
+    // Update current phase to next (Manifest in v9.0)
     if (progress) {
-      progress.currentPhase = 7;
+      progress.currentPhase = 'manifest';
     }
 
-    // Trigger Phase 7 automatically (with 2s delay for GitHub sync)
-    console.log(`[Orchestrator] → Phase 5 complete, triggering Phase 7 in 2s...`);
+    // Trigger Manifest compilation automatically (with 2s delay for GitHub sync)
+    console.log(`[Orchestrator] → Phase 3 complete, triggering Manifest compilation in 2s...`);
     setTimeout(() => {
-      console.log(`[Orchestrator] 🚀 Auto-triggering Phase 7 for ${courseCode}`);
-      addProgressLog(courseCode, 'Starting Phase 7 (manifest compilation)');
-      triggerPhase(courseCode, 7);
+      console.log(`[Orchestrator] 🚀 Auto-triggering Manifest compilation for ${courseCode}`);
+      addProgressLog(courseCode, 'Starting Manifest compilation');
+      triggerPhase(courseCode, 'manifest');
     }, 2000);
 
     // Auto-publish to GitHub for live dashboard visibility
     autoPublishCourseData(
       courseCode,
-      5,
-      `Phase 5: ${basketCount} LEGOs with ${phraseCount.toLocaleString()} practice phrases`
-    ).catch(err => console.error('[Phase 5] Auto-publish failed:', err));
+      3,
+      `Phase 3: ${basketCount} LEGOs with ${phraseCount.toLocaleString()} practice phrases`
+    ).catch(err => console.error('[Phase 3] Auto-publish failed:', err));
 
     res.json({
       success: true,
-      message: `Phase 5 submission received for ${courseCode}`,
+      message: `Phase 3 (Baskets) submission received for ${courseCode}`,
       basketCount: basketCount,
       savedTo: outputPath
     });
   } catch (error) {
-    console.error(`[Orchestrator] Error accepting Phase 5 submission:`, error);
-    res.status(500).json({ error: 'Failed to save Phase 5 submission', details: error.message });
+    console.error(`[Orchestrator] Error accepting Phase 3 submission:`, error);
+    res.status(500).json({ error: 'Failed to save Phase 3 submission', details: error.message });
   }
-});
+}
+app.post('/api/phase3/:courseCode/submit', handlePhase3Submit);
+app.post('/api/phase5/:courseCode/submit', handlePhase3Submit);  // Legacy
+
+// =============================================================================
+// MANIFEST COMPILATION ENDPOINTS (APML v9.0)
+// Legacy /api/phase7/* routes maintained for backward compatibility
+// =============================================================================
 
 /**
- * POST /api/phase7/:courseCode/submit
+ * POST /api/manifest/:courseCode/submit (APML v9.0) and /api/phase7/:courseCode/submit (legacy)
  * Accept completed course_manifest.json from agents via ngrok
  */
-app.post('/api/phase7/:courseCode/submit', async (req, res) => {
+async function handleManifestSubmit(req, res) {
   try {
     const { courseCode } = req.params;
     const manifestData = req.body;
@@ -2544,44 +2599,46 @@ app.post('/api/phase7/:courseCode/submit', async (req, res) => {
     await fs.ensureDir(path.dirname(outputPath));
     await fs.writeJSON(outputPath, manifestData, { spaces: 2 });
 
-    console.log(`[Orchestrator] ✅ Received Phase 7 submission for ${courseCode}`);
+    console.log(`[Orchestrator] ✅ Received Manifest submission for ${courseCode}`);
     console.log(`[Orchestrator]    Version: ${manifestData.version}`);
     console.log(`[Orchestrator]    Phrases: ${phraseCount}`);
     console.log(`[Orchestrator]    Saved to: ${outputPath}`);
 
     // Update progress tracking
-    updatePhaseProgress(courseCode, 7, {
+    updatePhaseProgress(courseCode, 'manifest', {
       status: 'complete',
       endTime: new Date().toISOString(),
       phraseCount
     });
-    addProgressLog(courseCode, `Phase 7: Complete - ${phraseCount} phrases compiled`);
+    addProgressLog(courseCode, `Manifest: Complete - ${phraseCount} phrases compiled`);
 
-    // Update current phase to next
+    // Update current phase to Audio
     const progress = courseProgress.get(courseCode);
     if (progress) {
-      progress.currentPhase = 8;
-      progress.overallStatus = 'complete'; // Manifest is the final deliverable
+      progress.currentPhase = 'audio';
+      progress.overallStatus = 'manifest_complete'; // Ready for audio generation
     }
 
     // Auto-publish to GitHub for live dashboard visibility
     autoPublishCourseData(
       courseCode,
-      7,
-      `Phase 7: Course manifest with ${phraseCount.toLocaleString()} phrases`
-    ).catch(err => console.error('[Phase 7] Auto-publish failed:', err));
+      'manifest',
+      `Manifest: Course manifest with ${phraseCount.toLocaleString()} phrases`
+    ).catch(err => console.error('[Manifest] Auto-publish failed:', err));
 
     res.json({
       success: true,
-      message: 'Phase 7 submission received',
+      message: 'Manifest submission received',
       phraseCount,
       savedTo: outputPath
     });
   } catch (error) {
-    console.error(`[Orchestrator] Error accepting Phase 7 submission:`, error);
-    res.status(500).json({ error: 'Failed to save Phase 7 submission', details: error.message });
+    console.error(`[Orchestrator] Error accepting Manifest submission:`, error);
+    res.status(500).json({ error: 'Failed to save Manifest submission', details: error.message });
   }
-});
+}
+app.post('/api/manifest/:courseCode/submit', handleManifestSubmit);
+app.post('/api/phase7/:courseCode/submit', handleManifestSubmit);  // Legacy
 
 /**
  * GET /api/courses/validate/all
@@ -3298,13 +3355,13 @@ Automated basket cleanup after LEGO re-extraction.
 
 /**
  * POST /api/courses/:courseCode/baskets/regenerate
- * Proxy to Phase 5 server's /regenerate endpoint
+ * Proxy to Phase 3 (Basket Generation) server's /regenerate endpoint
  */
 app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
   const { courseCode } = req.params;
   const { legoIds, target, known } = req.body;
 
-  console.log(`\n🔄 Proxying basket regeneration request to Phase 5 server for ${courseCode}...`);
+  console.log(`\n🔄 Proxying basket regeneration request to Phase 3 server for ${courseCode}...`);
   console.log(`   LEGO_IDs: ${legoIds?.length || 0}`);
 
   if (!legoIds || !Array.isArray(legoIds) || legoIds.length === 0) {
@@ -3320,9 +3377,9 @@ app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
   }
 
   try {
-    // Proxy to Phase 5 server
+    // Proxy to Phase 3 (Basket Generation) server
     const axios = require('axios');
-    const phase5Response = await axios.post(`${PHASE_SERVERS[5]}/regenerate`, {
+    const phase3Response = await axios.post(`${PHASE_SERVERS[3]}/regenerate`, {
       courseCode,
       legoIds,
       target,
@@ -3331,9 +3388,9 @@ app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
       timeout: 30000 // 30s timeout for initial request
     });
 
-    console.log(`   ✅ Phase 5 server accepted regeneration request`);
+    console.log(`   ✅ Phase 3 server accepted regeneration request`);
 
-    res.json(phase5Response.data);
+    res.json(phase3Response.data);
   } catch (error) {
     console.error('   ❌ Basket regeneration proxy error:', error.message);
 
@@ -3345,13 +3402,14 @@ app.post('/api/courses/:courseCode/baskets/regenerate', async (req, res) => {
 });
 
 /**
- * POST /api/courses/:courseCode/regenerate/phase7
- * Trigger Phase 7 (Course Manifest) recompilation
+ * POST /api/courses/:courseCode/regenerate/manifest (APML v9.0)
+ * POST /api/courses/:courseCode/regenerate/phase7 (legacy)
+ * Trigger Manifest recompilation
  */
-app.post('/api/courses/:courseCode/regenerate/phase7', async (req, res) => {
+async function handleManifestRegenerate(req, res) {
   const { courseCode } = req.params;
 
-  console.log(`\n🔄 Triggering Phase 7 recompilation for ${courseCode}...`);
+  console.log(`\n🔄 Triggering Manifest recompilation for ${courseCode}...`);
 
   try {
     // Get course info from manifest
@@ -3375,8 +3433,8 @@ app.post('/api/courses/:courseCode/regenerate/phase7', async (req, res) => {
       }
     }
 
-    // Trigger Phase 7 server
-    const phase7Response = await axios.post(`${PHASE_SERVERS[7]}/start`, {
+    // Trigger Manifest server
+    const manifestResponse = await axios.post(`${PHASE_SERVERS['manifest']}/start`, {
       courseCode,
       target: course.target_language,
       known: course.source_language
@@ -3384,42 +3442,58 @@ app.post('/api/courses/:courseCode/regenerate/phase7', async (req, res) => {
       timeout: 30000 // 30s timeout for initial request
     });
 
-    console.log(`   ✅ Phase 7 server accepted compilation request`);
+    console.log(`   ✅ Manifest server accepted compilation request`);
 
     res.json({
       success: true,
-      jobId: phase7Response.data.jobId || `phase7-${courseCode}-${Date.now()}`,
-      message: 'Phase 7 compilation started',
+      jobId: manifestResponse.data.jobId || `manifest-${courseCode}-${Date.now()}`,
+      message: 'Manifest compilation started',
       courseCode
     });
 
   } catch (error) {
-    console.error('   ❌ Phase 7 recompilation error:', error.message);
+    console.error('   ❌ Manifest recompilation error:', error.message);
 
     const status = error.response?.status || 500;
     const errorData = error.response?.data || { error: error.message };
 
     res.status(status).json(errorData);
   }
-});
+}
+app.post('/api/courses/:courseCode/regenerate/manifest', handleManifestRegenerate);
+app.post('/api/courses/:courseCode/regenerate/phase7', handleManifestRegenerate);  // Legacy
 
 /**
- * Helper: Determine course status from manifest data
+ * Helper: Determine course status from manifest data (APML v9.0)
  */
 function determineStatus(course) {
-  if (course.basket_count > 0) return 'phase_5_complete';
-  if (course.lego_count > 0) return 'phase_3_complete';
-  if (course.actual_seed_count > 0) return 'phase_1_complete';
+  if (course.has_audio) return 'audio_complete';
+  if (course.has_manifest) return 'manifest_complete';
+  if (course.basket_count > 0) return 'phase_3_complete';
+  if (course.lego_count > 0) return 'phase_1_complete';
+  if (course.actual_seed_count > 0) return 'phase_1_partial';
   return 'empty';
 }
 
 /**
- * Helper: Get next phase in sequence
- * Linear pipeline: 1 → 3 → 5 → 7 → 8
+ * Helper: Get next phase in sequence (APML v9.0)
+ * Linear pipeline: Phase 1 → Phase 3 → Manifest → Audio
  */
 function getNextPhase(currentPhase) {
-  const sequence = [1, 3, 5, 7, 8];
-  const currentIndex = sequence.indexOf(currentPhase);
+  const sequence = [1, 3, 'manifest', 'audio'];
+  const normalizedCurrent = normalizePhaseIdentifier(currentPhase);
+
+  // Map normalized phase to sequence value
+  const phaseMapping = {
+    'phase1': 1,
+    'phase3': 3,
+    'manifest': 'manifest',
+    'audio': 'audio'
+  };
+
+  const currentValue = phaseMapping[normalizedCurrent] || currentPhase;
+  const currentIndex = sequence.indexOf(currentValue);
+
   return currentIndex >= 0 && currentIndex < sequence.length - 1
     ? sequence[currentIndex + 1]
     : null;

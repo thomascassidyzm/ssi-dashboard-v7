@@ -119,12 +119,16 @@ const currentPhaseData = computed(() => {
 })
 
 function getPhaseTitle(phaseNum) {
+  // APML v9.0 phase naming
   const titles = {
-    1: 'Phase 1: Pedagogical Translation',
-    3: 'Phase 3: LEGO Extraction + Introductions',
-    5: 'Phase 5: Practice Baskets',
-    7: 'Phase 7: Course Manifest',
-    8: 'Phase 8: Audio/TTS Generation'
+    1: 'Phase 1: Translation + LEGO Extraction',
+    3: 'Phase 3: Practice Baskets',
+    'manifest': 'Manifest Compilation',
+    'audio': 'Audio Generation',
+    // Legacy mappings for backward compatibility
+    5: 'Phase 3: Practice Baskets',  // Old Phase 5 → New Phase 3
+    7: 'Manifest Compilation',        // Old Phase 7 → Manifest
+    8: 'Audio Generation'             // Old Phase 8 → Audio
   }
   return titles[phaseNum] || `Phase ${phaseNum}`
 }

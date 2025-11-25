@@ -73,12 +73,12 @@
               💾 Save All Changes ({{ Object.keys(hasUnsavedChanges).length }})
             </button>
             <button
-              @click="recompilePhase7"
-              :disabled="recompilingPhase7"
+              @click="recompileManifest"
+              :disabled="recompilingManifest"
               class="px-3 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               title="Recompile course manifest with latest basket changes"
             >
-              {{ recompilingPhase7 ? '⏳ Recompiling...' : '🔄 Recompile Phase 7' }}
+              {{ recompilingManifest ? '⏳ Recompiling...' : '🔄 Recompile Manifest' }}
             </button>
             <button
               @click="previousBatch"
@@ -490,7 +490,7 @@ export default {
       flaggedPhrases: {}, // Track flagged phrases {seedId_legoKey_idx: true}
       deletedPhrases: {}, // Track deleted phrases {seedId_legoKey_idx: true}
       hasUnsavedChanges: {}, // Track which seeds have unsaved changes {seedId: true}
-      recompilingPhase7: false // Track if Phase 7 recompilation is in progress
+      recompilingManifest: false // Track if Manifest recompilation is in progress
     }
   },
   computed: {
@@ -953,20 +953,20 @@ export default {
         await this.saveSeedChanges(seedId)
       }
     },
-    async recompilePhase7() {
+    async recompileManifest() {
       if (!this.selectedCourseCode) {
         alert('No course selected')
         return
       }
 
-      if (!confirm('Recompile Phase 7 (Course Manifest) with the latest basket changes?\n\nThis will update the course_manifest.json file.')) {
+      if (!confirm('Recompile the Course Manifest with the latest basket changes?\n\nThis will update the course_manifest.json file.')) {
         return
       }
 
-      this.recompilingPhase7 = true
+      this.recompilingManifest = true
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${this.selectedCourseCode}/regenerate/phase7`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${this.selectedCourseCode}/regenerate/manifest`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -977,19 +977,19 @@ export default {
         const data = await response.json()
 
         if (!response.ok) {
-          throw new Error(data.error || 'Failed to trigger Phase 7 recompilation')
+          throw new Error(data.error || 'Failed to trigger Manifest recompilation')
         }
 
-        alert(`✅ Phase 7 recompilation started!\n\nJob ID: ${data.jobId || 'N/A'}\n\nThe course_manifest.json will be updated when complete.\n\nCheck the Progress monitor for status.`)
+        alert(`✅ Manifest recompilation started!\n\nJob ID: ${data.jobId || 'N/A'}\n\nThe course_manifest.json will be updated when complete.\n\nCheck the Progress monitor for status.`)
 
         // Emit event to parent to show progress monitor
-        this.$emit('phase7-started', data)
+        this.$emit('manifest-started', data)
 
       } catch (err) {
-        console.error('Failed to trigger Phase 7 recompilation:', err)
-        alert(`❌ Failed to trigger Phase 7 recompilation:\n\n${err.message}`)
+        console.error('Failed to trigger Manifest recompilation:', err)
+        alert(`❌ Failed to trigger Manifest recompilation:\n\n${err.message}`)
       } finally {
-        this.recompilingPhase7 = false
+        this.recompilingManifest = false
       }
     }
   }

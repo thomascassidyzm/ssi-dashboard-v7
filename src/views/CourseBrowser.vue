@@ -41,7 +41,7 @@
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Phase 5')..."
+          placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Phase 3')..."
           class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
         />
       </div>
@@ -132,15 +132,15 @@
             </div>
           </div>
 
-          <!-- Phases Completed -->
+          <!-- Phases Completed (APML v9.0) -->
           <div class="mb-4">
             <div class="text-xs text-slate-400 mb-2">Phases Completed</div>
             <div class="flex gap-1">
               <span
-                v-for="phase in ['1', '3', '5', '7', '8']"
+                v-for="phase in ['1', '3', 'M', 'A']"
                 :key="phase"
                 class="w-8 h-8 flex items-center justify-center rounded text-xs font-medium"
-                :class="course.phases_completed?.includes(phase)
+                :class="isPhaseComplete(course, phase)
                   ? 'bg-emerald-600 text-white'
                   : 'bg-slate-700 text-slate-500'"
                 :title="getPhaseTitle(phase)"
@@ -332,14 +332,28 @@ function getStatusClass(status) {
 }
 
 function getPhaseTitle(phase) {
+  // APML v9.0 phase naming
   const titles = {
-    '1': 'Phase 1: Translation',
-    '3': 'Phase 3: LEGO Extraction + Introductions',
-    '5': 'Phase 5: Basket Generation',
-    '7': 'Phase 7: Course Compilation',
-    '8': 'Phase 8: Audio Generation'
+    '1': 'Phase 1: Translation + LEGOs',
+    '3': 'Phase 3: Basket Generation',
+    'M': 'Manifest Compilation',
+    'A': 'Audio Generation',
+    // Legacy mappings
+    '5': 'Phase 3: Baskets',
+    '7': 'Manifest',
+    '8': 'Audio'
   }
   return titles[phase] || `Phase ${phase}`
+}
+
+function isPhaseComplete(course, phase) {
+  // Check both new and legacy phase identifiers
+  const phases = course.phases_completed || []
+  if (phase === '1') return phases.includes('1')
+  if (phase === '3') return phases.includes('3') || phases.includes('5')
+  if (phase === 'M') return phases.includes('manifest') || phases.includes('7')
+  if (phase === 'A') return phases.includes('audio') || phases.includes('8')
+  return phases.includes(phase)
 }
 
 function showDetails(course) {

@@ -87,45 +87,37 @@
             Technical Details
           </summary>
 
-        <!-- Phase Progress Cards -->
+        <!-- Phase Progress Cards (APML v9.0) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Phase 1 -->
+          <!-- Phase 1: Translation + LEGO Extraction -->
           <PhaseCard
             :phase="1"
-            title="Translation"
-            :data="progress.phases[1]"
+            title="Translation + LEGOs"
+            :data="progress.phases[1] || progress.phases['1']"
             color="blue"
           />
 
-          <!-- Phase 3 -->
+          <!-- Phase 3: Basket Generation (was Phase 5) -->
           <PhaseCard
             :phase="3"
-            title="LEGO Extraction"
-            :data="progress.phases[3]"
-            color="purple"
-          />
-
-          <!-- Phase 5 -->
-          <PhaseCard
-            :phase="5"
             title="Basket Generation"
-            :data="progress.phases[5]"
+            :data="progress.phases[3] || progress.phases['3'] || progress.phases[5]"
             color="pink"
           />
 
-          <!-- Phase 7 -->
+          <!-- Manifest Compilation (was Phase 7) -->
           <PhaseCard
-            :phase="7"
+            phase="M"
             title="Manifest Compilation"
-            :data="progress.phases[7]"
+            :data="progress.phases['manifest'] || progress.phases[7]"
             color="teal"
           />
 
-          <!-- Phase 8 -->
+          <!-- Audio Generation (was Phase 8) -->
           <PhaseCard
-            :phase="8"
+            phase="A"
             title="Audio Generation"
-            :data="progress.phases[8]"
+            :data="progress.phases['audio'] || progress.phases[8]"
             color="emerald"
           />
         </div>

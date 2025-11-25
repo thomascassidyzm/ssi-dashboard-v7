@@ -172,14 +172,14 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div
               class="bg-slate-900/50 rounded-lg p-4 border transition"
-              :class="course.phases_completed?.includes('7')
+              :class="isManifestComplete
                 ? 'border-emerald-500/50 shadow-emerald-500/10'
                 : 'border-red-500/50'"
             >
               <div class="flex items-center gap-2 mb-2">
-                <span v-if="course.phases_completed?.includes('7')" class="text-emerald-400">✓</span>
+                <span v-if="isManifestComplete" class="text-emerald-400">✓</span>
                 <span v-else class="text-red-400">✗</span>
-                <span class="font-semibold text-slate-100">Phase 7 Complete</span>
+                <span class="font-semibold text-slate-100">Manifest Complete</span>
               </div>
               <p class="text-sm text-slate-400">Course manifest compiled</p>
             </div>
@@ -236,7 +236,7 @@
           </button>
           <button
             @click="startGeneration"
-            :disabled="!course.phases_completed?.includes('7') || generating"
+            :disabled="!isManifestComplete || generating"
             class="px-8 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 disabled:from-slate-700 disabled:to-slate-600 disabled:cursor-not-allowed disabled:border-slate-700 border border-emerald-500/50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-emerald-500/20 flex items-center gap-2 text-white"
           >
             <span v-if="generating">⏳</span>
@@ -287,6 +287,12 @@ let pollInterval = null
 const phaseASamples = computed(() => (course.value.actual_seed_count || 0) * 3)
 const phaseBSamples = computed(() => (course.value.lego_count || 0) * 3)
 const totalSamples = computed(() => phaseASamples.value + phaseBSamples.value + 77)
+
+// Check if manifest is complete (supports both new and legacy phase identifiers)
+const isManifestComplete = computed(() => {
+  const phases = course.value.phases_completed || []
+  return phases.includes('manifest') || phases.includes('7')
+})
 
 // Status labels
 const statusLabel = computed(() => {
@@ -364,7 +370,7 @@ async function loadQCReport() {
 }
 
 async function startGeneration() {
-  if (!course.value.phases_completed?.includes('7')) {
+  if (!isManifestComplete.value) {
     toast.error('Manifest must be complete before generating audio')
     return
   }

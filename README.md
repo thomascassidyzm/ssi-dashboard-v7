@@ -1,12 +1,12 @@
-# SSi Course Production Dashboard v8.2.1
+# SSi Course Production Dashboard v9.0.0
 
-**APML v8.2.1: Phase 5.5 Removed - Human Review Strategy**
+**APML v9.0.0: Simplified Phase Structure**
 
 ## Overview
 
-Clean, minimal dashboard for SSi Course Production with locked phase intelligence (v8.2.1).
+Clean, minimal dashboard for SSi Course Production with locked phase intelligence (APML v9.0).
 
-**New in v8.2.1:** Phase 5.5 (automated grammar validation) deprecated. Using human semi-manual review for first 100 seeds (~20k phrases).
+**New in v9.0:** Simplified phase structure - Phase 1 (Translation + LEGOs), Phase 3 (Baskets), Manifest (Compilation), Audio (TTS Generation).
 
 ### Features
 
@@ -27,25 +27,23 @@ Clean, minimal dashboard for SSi Course Production with locked phase intelligenc
 - Tailwind CSS 4
 - No router (single page for now)
 
-### Phase Coverage (Locked Intelligence)
+### Phase Coverage (APML v9.0 - Locked Intelligence)
 
-**Active Workflow**: Phase 1 → 3 → 5 → 5.5 → 6 → 7
+**Active Workflow**: Phase 1 → Phase 3 → Manifest → Audio
 
-**Architectural Boundary**:
-- **Phases 1-6**: Evolvable intelligence (can iterate, refactor, improve internal processing)
-- **Phase 7**: Immutable contract (fixed JSON manifest format for mobile app - cannot change without app update)
+**APML v9.0 Simplified Structure**:
+- **Phase 1**: Translation + LEGO Extraction + Introductions (single integrated phase)
+- **Phase 3**: Basket Generation (practice phrases)
+- **Manifest**: Course Compilation (formerly Phase 7)
+- **Audio**: TTS Generation (formerly Phase 8)
 
 | Phase | Name | Version | Status | Description |
 |-------|------|---------|--------|-------------|
-| 1 | Pedagogical Translation | v2.6 🔒 | ACTIVE | TWO ABSOLUTE RULES, examples over precepts, synonym flexibility |
-| 2 | Corpus Intelligence | v1.0 | Inactive | FCFS mapping + utility (not in current workflow) |
-| 3 | LEGO Extraction | v4.0.2 🔒 | ACTIVE | ONE RULE: Known → Target 1:1 (zero uncertainty), 3-step protocol (TILE/TEST/FIX) |
-| 3.5 | Graph Construction | v1.0 | Inactive | LEGO adjacency edges (not in current workflow) |
-| 5 | Basket Generation | v2.2 🔒 | ACTIVE | Eternal/debut phrases, batch-aware edge targeting |
-| 5.5 | Deduplication | v2.0 🔒 | ACTIVE | Character-identical matching, first occurrence wins |
-| 6 | Introductions | v2.0 🔒 | ACTIVE | BASE/COMPOSITE presentations, "means" wording, literal reading |
-| 7 | Compilation | v1.0 🔐 | IMMUTABLE | Fixed app manifest format (API contract) |
-| 8 | Audio | v1.0 | Documented | TTS + S3 upload (Kai) |
+| 1 | Translation + LEGOs | v2.6 🔒 | ACTIVE | Translations, LEGO extraction, introductions (integrated) |
+| 2 | Conflict Resolution | v1.0 | Optional | LEGO conflict resolution (human-assisted) |
+| 3 | Basket Generation | v3.0 🔒 | ACTIVE | Eternal/debut phrases, GATE constraint |
+| M | Manifest Compilation | v1.1 🔐 | IMMUTABLE | Fixed app manifest format (API contract) |
+| A | Audio Generation | v1.1 | Documented | TTS + S3 upload |
 
 🔒 = Locked, production-ready SSoT (evolvable)
 🔐 = Immutable contract (cannot change without external system update)
@@ -204,8 +202,8 @@ See: `docs/SMART_RESUME_API.md` for details
 
 ---
 
-**Version:** 8.2.1 (Phase 5.5 Removal - Human Review Strategy)
+**Version:** 9.0.0 (APML v9.0 - Simplified Phase Structure)
 **Build:** Clean
-**Phase Intelligence**: Phase 1 v2.6, Phase 3 v7.1, Phase 5 v6.1, Phase 6 v2.1 (integrated), Phase 7 v1.1, Phase 8 v1.1 (🔒 Locked SSoT)
-**Date:** 2025-11-20
-**Note:** Phase 5.5 deprecated - replaced with human semi-manual review for first 100 seeds
+**Phase Intelligence**: Phase 1 v2.6 (Translation+LEGOs), Phase 3 v3.0 (Baskets), Manifest v1.1, Audio v1.1 (🔒 Locked SSoT)
+**Date:** 2025-11-25
+**Note:** APML v9.0 migration complete - simplified phase structure

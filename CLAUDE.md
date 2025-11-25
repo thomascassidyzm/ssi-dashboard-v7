@@ -99,11 +99,11 @@ Orchestration, automation, and processing services.
 ```
 services/
 ├── orchestration/       # Multi-agent coordination
-├── phase7/             # Course manifest generation (Phase 7)
+├── phases/             # Phase servers (APML v9.0: Phase 1, Phase 3, Manifest, Audio)
 └── web/                # Web services
 ```
 
-**Phase 7 Service** (`services/phase7/`)
+**Manifest Compilation Service** (`services/phases/manifest-compilation/`)
 - Transforms phase outputs into final APML manifests
 - Generates deterministic UUIDs (SSi legacy format)
 - Embeds language-specific encouragements
@@ -249,7 +249,7 @@ docs/workflows/PHASE5_WORKFLOW.md # Process doc
 
 ## 🔄 Common Workflows
 
-### **1. Processing a New Batch (Phase 5)**
+### **1. Processing a New Batch (Phase 3 - Baskets)**
 
 ```bash
 # 1. Prepare scaffolds
@@ -292,9 +292,9 @@ node tools/orchestrators/automation_server.cjs
 # Server merges completed work automatically
 ```
 
-### **4. Phase 8: Audio Generation (TTS)**
+### **4. Audio Generation (TTS)**
 
-⚠️ **IMPORTANT**: Phase 8 requires special workflow attention. See `docs/workflows/PHASE8_CLAUDE_CODE_WORKFLOW.md` for complete details.
+⚠️ **IMPORTANT**: Audio generation requires special workflow attention. See `docs/workflows/PHASE8_CLAUDE_CODE_WORKFLOW.md` for complete details.
 
 **Critical Rules:**
 1. **ALWAYS sync S3 first**: `aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/`
@@ -330,9 +330,9 @@ node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-proc
 ```
 
 **Common Issues:**
-- **Multiple background processes**: Always check for running Phase 8 processes before starting
+- **Multiple background processes**: Always check for running Audio generation processes before starting
 - **Missing QC reports**: Verify files exist before presenting to user
-- **Auto-execution**: Phase 8 should NEVER run `--execute` without explicit user confirmation
+- **Auto-execution**: Audio generation should NEVER run `--execute` without explicit user confirmation
 
 ---
 
@@ -464,7 +464,7 @@ Debug metadata stays local (gitignored). Only production data goes to git.
 
 ### **Day 3: Process a Small Batch**
 - Pick 10 seeds (e.g., S0001-S0010)
-- Generate phase 5 baskets
+- Generate Phase 3 baskets
 - Validate and merge
 
 ### **Week 1: Multi-Agent Coordination**

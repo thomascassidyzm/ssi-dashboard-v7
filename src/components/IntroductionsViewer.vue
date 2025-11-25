@@ -9,11 +9,11 @@
         </div>
         <div class="flex gap-3">
           <button
-            @click="recompilePhase7"
-            :disabled="!selectedCourseCode || recompilingPhase7"
+            @click="recompileManifest"
+            :disabled="!selectedCourseCode || recompilingManifest"
             class="bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg transition-colors font-medium"
           >
-            {{ recompilingPhase7 ? 'Recompiling...' : 'Recompile Phase 7' }}
+            {{ recompilingManifest ? 'Recompiling...' : 'Recompile Manifest' }}
           </button>
         </div>
       </div>
@@ -185,7 +185,7 @@ const searchQuery = ref('')
 const editingId = ref(null)
 const editText = ref('')
 const saving = ref(false)
-const recompilingPhase7 = ref(false)
+const recompilingManifest = ref(false)
 const originalData = ref({})
 
 async function loadIntroductions() {
@@ -306,7 +306,7 @@ async function saveAllChanges() {
       intro.modified = false
     })
 
-    alert(`✅ Successfully saved ${modifiedCount.value} introduction changes!\n\nRecommendation: Click "Recompile Phase 7" to update the course manifest.`)
+    alert(`✅ Successfully saved ${modifiedCount.value} introduction changes!\n\nRecommendation: Click "Recompile Manifest" to update the course manifest.`)
   } catch (err) {
     console.error('Failed to save introductions:', err)
     alert(`❌ Failed to save introductions:\n\n${err.message}`)
@@ -329,31 +329,31 @@ function discardChanges() {
   cancelEdit()
 }
 
-async function recompilePhase7() {
+async function recompileManifest() {
   if (!selectedCourseCode.value) {
     alert('No course selected')
     return
   }
 
   if (modifiedCount.value > 0) {
-    alert('⚠️ You have unsaved changes!\n\nPlease save your changes first, then recompile Phase 7.')
+    alert('⚠️ You have unsaved changes!\n\nPlease save your changes first, then recompile the Manifest.')
     return
   }
 
-  if (!confirm('Recompile Phase 7 (Course Manifest) with the latest introduction changes?\n\nThis will update the course_manifest.json file.')) {
+  if (!confirm('Recompile the Course Manifest with the latest introduction changes?\n\nThis will update the course_manifest.json file.')) {
     return
   }
 
-  recompilingPhase7.value = true
+  recompilingManifest.value = true
 
   try {
-    const response = await api.course.regeneratePhase7(selectedCourseCode.value)
-    alert(`✅ Phase 7 recompilation started!\n\nJob ID: ${response.jobId || 'N/A'}\n\nThe course_manifest.json will be updated when complete.`)
+    const response = await api.course.regenerateManifest(selectedCourseCode.value)
+    alert(`✅ Manifest recompilation started!\n\nJob ID: ${response.jobId || 'N/A'}\n\nThe course_manifest.json will be updated when complete.`)
   } catch (err) {
-    console.error('Failed to trigger Phase 7 recompilation:', err)
-    alert(`❌ Failed to trigger Phase 7 recompilation:\n\n${err.message}`)
+    console.error('Failed to trigger Manifest recompilation:', err)
+    alert(`❌ Failed to trigger Manifest recompilation:\n\n${err.message}`)
   } finally {
-    recompilingPhase7.value = false
+    recompilingManifest.value = false
   }
 }
 </script>

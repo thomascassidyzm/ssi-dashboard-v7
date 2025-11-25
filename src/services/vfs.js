@@ -140,15 +140,18 @@ export async function readCourseFiles(courseCode, fileNames) {
  * @returns {Promise<Object>} Map of phase -> content
  */
 export async function readAllPhaseFiles(courseCode) {
+  // APML v9.0 file mapping:
+  // Phase 1: Translation + LEGO Extraction (seed_pairs, corpus_intelligence, lego_pairs, introductions)
+  // Phase 3: Basket Generation (lego_baskets)
+  // Manifest: Course Compilation (course_manifest)
   const phaseFiles = [
-    'seed_pairs.json',                    // Phase 1
-    'corpus_intelligence.json',           // Phase 2
-    'lego_pairs.json',                    // Phase 3
-    'lego_graph.json',                    // Phase 3.5
-    'lego_baskets.json',                  // Phase 5
-    // 'lego_baskets_deduplicated.json', // Phase 5.5 - DEPRECATED (v8.2.1)
-    'introductions.json',                 // Phase 6
-    'course_manifest.json'                // Phase 7
+    'seed_pairs.json',                    // Phase 1 (Translation)
+    'corpus_intelligence.json',           // Phase 1 (Intelligence)
+    'lego_pairs.json',                    // Phase 1 (LEGO Extraction)
+    'lego_graph.json',                    // Phase 1 (LEGO Graph - optional)
+    'lego_baskets.json',                  // Phase 3 (Basket Generation)
+    'introductions.json',                 // Phase 1 (Introductions - integrated)
+    'course_manifest.json'                // Manifest (Course Compilation)
   ]
 
   return await readCourseFiles(courseCode, phaseFiles)

@@ -83,10 +83,10 @@
               </div>
             </div>
 
-            <!-- Phase Status -->
+            <!-- Phase Status (APML v9.0) -->
             <div class="space-y-1 text-sm">
               <div
-                v-for="phase in ['phase_1', 'phase_3', 'phase_5', 'phase_6', 'phase_7']"
+                v-for="phase in ['phase_1', 'phase_3', 'manifest']"
                 :key="phase"
                 class="flex items-center gap-2"
               >
@@ -526,12 +526,16 @@ const availableCourses = computed(() => {
   return Object.keys(allValidation.value.courses).sort()
 })
 
+// APML v9.0 phase labels
 const PHASE_LABELS = {
-  phase_1: 'Phase 1: Seeds',
-  phase_3: 'Phase 3: LEGOs',
-  phase_5: 'Phase 5: Baskets',
-  phase_6: 'Phase 6: Introductions',
-  phase_7: 'Phase 7: Scaffolds'
+  phase_1: 'Phase 1: Translation + LEGOs',
+  phase_3: 'Phase 3: Practice Baskets',
+  manifest: 'Manifest Compilation',
+  audio: 'Audio Generation',
+  // Legacy mappings
+  phase_5: 'Phase 3: Baskets',
+  phase_6: 'Introductions (in Phase 1)',
+  phase_7: 'Manifest'
 }
 
 function getPhaseLabel(phase) {

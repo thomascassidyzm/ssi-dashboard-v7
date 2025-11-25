@@ -61,13 +61,14 @@ export default {
     _basketsCache: {},
 
     async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false, stagingOnly = false }) {
-      // Route Phase 5 requests to the new Phase 5 basket server (layered architecture)
-      if (phaseSelection === 'phase5') {
+      // APML v9.0: Route Phase 3 (Basket) requests to the basket server
+      // Note: 'phase5' selection is maintained for backward compatibility
+      if (phaseSelection === 'phase3' || phaseSelection === 'phase5') {
         const courseCode = `${target}_for_${known}`
 
         // Use 12-master launch for staged segments (full course with 668 seeds)
         if (segmentMode === 'staged' && endSeed === 668) {
-          const response = await api.post('/phase5/launch-12-masters', {
+          const response = await api.post('/phase3/launch-12-masters', {
             courseCode,
             target: target.charAt(0).toUpperCase() + target.slice(1), // Capitalize for display
             known: known.charAt(0).toUpperCase() + known.slice(1),
@@ -80,7 +81,7 @@ export default {
         }
 
         // Use regular single-orchestrator launch for single-pass mode
-        const response = await api.post('/phase5/start', {
+        const response = await api.post('/phase3/start', {
           courseCode,
           startSeed,
           endSeed,
@@ -725,12 +726,17 @@ export default {
       return response.data
     },
 
-    // Regenerate Phase 7 (Course Manifest)
-    async regeneratePhase7(courseCode) {
-      const response = await api.post(`/api/courses/${courseCode}/regenerate/phase7`, {})
+    // APML v9.0: Regenerate Manifest (was Phase 7)
+    async regenerateManifest(courseCode) {
+      const response = await api.post(`/api/courses/${courseCode}/regenerate/manifest`, {})
       // Clear cache since manifest will be regenerated
       await clearCourseCache(courseCode)
       return response.data
+    },
+
+    // Legacy alias for backward compatibility
+    async regeneratePhase7(courseCode) {
+      return this.regenerateManifest(courseCode)
     },
 
     // Get a specific phase output file
@@ -891,10 +897,14 @@ export default {
     return response.data
   },
 
-  // Phase 8: Audio Generation
-  async startPhase8Audio(courseCode, options = {}) {
+  // =============================================================================
+  // APML v9.0: Audio Generation (was Phase 8)
+  // =============================================================================
+
+  // Start Audio generation
+  async startAudioGeneration(courseCode, options = {}) {
     // Call through orchestrator proxy (works from Vercel via ngrok)
-    const response = await api.post('/api/phase8/start', {
+    const response = await api.post('/api/audio/start', {
       courseCode,
       options: {
         phase: options.phase || 'auto',  // 'auto', 'targets', or 'presentations'
@@ -906,33 +916,52 @@ export default {
     return response.data
   },
 
-  // Phase 8: Get job status
-  async getPhase8Status(courseCode) {
-    const response = await api.get(`/api/phase8/status/${courseCode}`)
+  // Get Audio job status
+  async getAudioStatus(courseCode) {
+    const response = await api.get(`/api/audio/status/${courseCode}`)
     return response.data
   },
 
-  // Phase 8: Continue processing after QC approval
-  async continuePhase8Processing(courseCode, options = {}) {
-    const response = await api.post('/api/phase8/continue', {
+  // Continue Audio processing after QC approval
+  async continueAudioProcessing(courseCode, options = {}) {
+    const response = await api.post('/api/audio/continue', {
       courseCode,
       options
     })
     return response.data
   },
 
-  // Phase 8: Regenerate specific samples
-  async regeneratePhase8Samples(courseCode, uuids) {
-    const response = await api.post('/api/phase8/regenerate', {
+  // Regenerate specific Audio samples
+  async regenerateAudioSamples(courseCode, uuids) {
+    const response = await api.post('/api/audio/regenerate', {
       courseCode,
       uuids
     })
     return response.data
   },
 
-  // Phase 8: Get QC report
-  async getPhase8QCReport(courseCode) {
-    const response = await api.get(`/api/phase8/qc-report/${courseCode}`)
+  // Get Audio QC report
+  async getAudioQCReport(courseCode) {
+    const response = await api.get(`/api/audio/qc-report/${courseCode}`)
     return response.data
+  },
+
+  // =============================================================================
+  // Legacy aliases for backward compatibility
+  // =============================================================================
+  async startPhase8Audio(courseCode, options = {}) {
+    return this.startAudioGeneration(courseCode, options)
+  },
+  async getPhase8Status(courseCode) {
+    return this.getAudioStatus(courseCode)
+  },
+  async continuePhase8Processing(courseCode, options = {}) {
+    return this.continueAudioProcessing(courseCode, options)
+  },
+  async regeneratePhase8Samples(courseCode, uuids) {
+    return this.regenerateAudioSamples(courseCode, uuids)
+  },
+  async getPhase8QCReport(courseCode) {
+    return this.getAudioQCReport(courseCode)
   }
 }

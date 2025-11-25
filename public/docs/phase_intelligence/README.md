@@ -10,14 +10,15 @@
 
 ---
 
-## Naming Convention
+## Naming Convention (APML v9.0)
 
-**Pattern**: `phase_[N]_[OUTPUT_FILE_NAME].md`
+**Pattern**: `phase_[N]_[OUTPUT_FILE_NAME].md` or `[stage]_[OUTPUT_FILE_NAME].md`
 
 Each module is named after the **output file** it teaches agents to generate:
-- Phase 1 → `phase_1_seed_pairs.md` (teaches seed_pairs.json generation)
-- Phase 3 → `phase_3_lego_pairs.md` (teaches lego_pairs.json generation)
-- Phase 5 → `phase_5_lego_baskets.md` (teaches lego_baskets.json generation)
+- Phase 1 → `phase_1_seed_pairs.md` (teaches seed_pairs.json + lego_pairs.json + introductions.json)
+- Phase 3 → `phase_3_lego_baskets.md` (teaches lego_baskets.json generation)
+- Manifest → `manifest_compilation.md` (teaches course_manifest.json generation)
+- Audio → `audio_generation.md` (teaches audio file generation)
 
 **Benefits**:
 - ✅ Instant clarity: module name = output name
@@ -324,16 +325,16 @@ For a complete overview of the course generation pipeline and canonical content 
 
 ## Locked Intelligence Status
 
-**Active Workflow (Web Orchestrator)**: Phase 1 → 3 (includes 6) → 5 → 7 → 8
+**Active Workflow (APML v9.0)**: Phase 1 → Phase 3 → Manifest → Audio
 
 **Output Pipeline**:
-- Phase 1: `seed_pairs.json` (pedagogical translations)
-- Phase 3: `lego_pairs.json` + `introductions.json` (LEGO extraction + introduction generation)
-- Phase 5: `baskets/lego_baskets_s*.json` (practice phrases)
-- Phase 7: `course_manifest.json` (legacy format with placeholders)
-- Phase 8: `audio/*.mp3` + duration population (TTS generation)
+- Phase 1: `seed_pairs.json` + `lego_pairs.json` + `introductions.json` (Translation, LEGO extraction, intro generation)
+- Phase 2: `lego_pairs.json` (conflict resolution - optional human-assisted step)
+- Phase 3: `lego_baskets.json` (practice phrases - baskets)
+- Manifest: `course_manifest.json` (compiled course for app)
+- Audio: `audio/*.mp3` + duration population (TTS generation)
 
-**Note**: Phase 6 (introduction generation) is integrated into Phase 3 and runs automatically after LEGO extraction (<1s overhead).
+**Note**: Phase 1 is now an integrated phase that includes what was previously Phases 1 (Translation), 3 (LEGO Extraction), and 6 (Introductions). This simplifies the pipeline significantly.
 
 | Phase | Status | File | Version | Locked | Notes |
 |-------|--------|------|---------|--------|-------|
