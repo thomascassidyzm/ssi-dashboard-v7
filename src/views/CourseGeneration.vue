@@ -173,65 +173,146 @@
         <!-- Execution Mode Selection -->
         <ExecutionModeSelector v-model="executionMode" />
 
-        <!-- Custom Range / Manual Input -->
+        <!-- Course Size Selection -->
         <div v-if="!analysis" class="mb-8">
 
-          <!-- Custom Range -->
-          <div class="mb-6 p-4 bg-slate-800/50 rounded-lg border border-slate-600">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="text-blue-400 text-xl">⚙️</div>
-              <div class="flex-1">
-                <h3 class="text-lg font-medium text-slate-300 mb-1">Seed Range</h3>
-                <p class="text-sm text-slate-400 mb-3">Specify start and end seeds (or use Smart Recommendations above)</p>
-
-                <div class="grid grid-cols-2 gap-4 mb-3">
-                  <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1">Start Seed</label>
-                    <input
-                      v-model.number="startSeed"
-                      type="number"
-                      min="1"
-                      max="668"
-                      class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1">End Seed</label>
-                    <input
-                      v-model.number="endSeed"
-                      type="number"
-                      min="1"
-                      max="668"
-                      class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    />
-                  </div>
+          <!-- Quick Presets -->
+          <div class="mb-6">
+            <h3 class="text-lg font-medium text-slate-300 mb-3">Course Size</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- 30 Seeds Test -->
+              <button
+                @click="selectPreset('test')"
+                :class="[
+                  'p-4 rounded-lg border-2 text-left transition-all',
+                  selectedPreset === 'test'
+                    ? 'bg-emerald-500/20 border-emerald-500 ring-2 ring-emerald-500/50'
+                    : 'bg-slate-800/50 border-slate-600 hover:border-slate-500'
+                ]"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-2xl">🧪</span>
+                  <span class="font-semibold text-slate-100">30 Seeds (Test)</span>
                 </div>
-
-                <!-- Phase Selection Dropdown -->
-                <div class="mb-3">
-                  <label class="block text-xs font-medium text-slate-400 mb-1">Phases to Run</label>
-                  <select
-                    v-model="phaseSelection"
-                    class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                  >
-                    <option value="all">All Phases (1 → 2 → 3 → Manifest → Audio)</option>
-                    <option value="phase1">Phase 1 Only (Translation + LEGO Extraction)</option>
-                    <option value="phase2">Phase 2 Only (Conflict Resolution)</option>
-                    <option value="phase3">Phase 3 Only (Basket Generation)</option>
-                    <option value="manifest">Manifest Only (Course Compilation)</option>
-                  </select>
-                  <p class="text-xs text-slate-500 mt-1">
-                    <span v-if="phaseSelection === 'phase2'">⚠️ Requires draft_lego_pairs.json from Phase 1</span>
-                    <span v-else-if="phaseSelection === 'phase3'">⚠️ Requires lego_pairs.json from Phase 2</span>
-                    <span v-else-if="phaseSelection === 'manifest'">⚠️ Requires all previous phases complete</span>
-                  </p>
+                <div class="text-sm text-slate-400">
+                  <div>6 tabs × 5 workers × 1 seed</div>
+                  <div class="text-emerald-400">~10-15 minutes</div>
                 </div>
+              </button>
 
-                <div v-if="startSeed && endSeed" class="text-xs text-emerald-400">
-                  ✓ Selected range: {{ seedCount }} seeds (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
+              <!-- 668 Seeds Full -->
+              <button
+                @click="selectPreset('full')"
+                :class="[
+                  'p-4 rounded-lg border-2 text-left transition-all',
+                  selectedPreset === 'full'
+                    ? 'bg-emerald-500/20 border-emerald-500 ring-2 ring-emerald-500/50'
+                    : 'bg-slate-800/50 border-slate-600 hover:border-slate-500'
+                ]"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-2xl">🚀</span>
+                  <span class="font-semibold text-slate-100">668 Seeds (Full)</span>
                 </div>
+                <div class="text-sm text-slate-400">
+                  <div>15 tabs × 15 workers × 3 seeds</div>
+                  <div class="text-blue-400">~2-3 hours</div>
+                </div>
+              </button>
+
+              <!-- Custom -->
+              <button
+                @click="selectPreset('custom')"
+                :class="[
+                  'p-4 rounded-lg border-2 text-left transition-all',
+                  selectedPreset === 'custom'
+                    ? 'bg-emerald-500/20 border-emerald-500 ring-2 ring-emerald-500/50'
+                    : 'bg-slate-800/50 border-slate-600 hover:border-slate-500'
+                ]"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-2xl">⚙️</span>
+                  <span class="font-semibold text-slate-100">Custom Range</span>
+                </div>
+                <div class="text-sm text-slate-400">
+                  <div>Specify seed range</div>
+                  <div class="text-slate-500">Advanced users</div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Custom Range Input (only when custom selected) -->
+          <div v-if="selectedPreset === 'custom'" class="mb-6 p-4 bg-slate-800/50 rounded-lg border border-slate-600">
+            <div class="grid grid-cols-2 gap-4 mb-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1">Start Seed</label>
+                <input
+                  v-model.number="startSeed"
+                  type="number"
+                  min="1"
+                  max="668"
+                  class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-400 mb-1">End Seed</label>
+                <input
+                  v-model.number="endSeed"
+                  type="number"
+                  min="1"
+                  max="668"
+                  class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                />
               </div>
             </div>
+            <div v-if="startSeed && endSeed" class="text-xs text-emerald-400">
+              ✓ {{ seedCount }} seeds (S{{ String(startSeed).padStart(4, '0') }}-S{{ String(endSeed).padStart(4, '0') }})
+            </div>
+          </div>
+
+          <!-- Execution Plan -->
+          <div class="mb-6 p-4 bg-blue-900/20 rounded-lg border border-blue-500/30">
+            <h4 class="font-medium text-blue-300 mb-3">📋 Execution Plan</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400">Phase 1:</span>
+                <span class="text-slate-300">{{ parallelConfig.tabs }} Safari tabs × {{ parallelConfig.workers }} Claude agents ({{ seedCount }} seeds total)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400">Phase 2:</span>
+                <span class="text-slate-300">Collision resolution + LEGO reuse tracking (automatic)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-amber-400">Checkpoint:</span>
+                <span class="text-slate-300">Review validation before Phase 3</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-blue-400">Phase 3:</span>
+                <span class="text-slate-300">Basket generation</span>
+              </div>
+            </div>
+            <div class="mt-3 p-2 bg-amber-900/20 rounded border border-amber-500/30 text-xs text-amber-300">
+              ⚠️ Make sure Safari is open and logged into Claude Pro with Max mode enabled
+            </div>
+          </div>
+
+          <!-- Phase Selection (advanced) -->
+          <div class="mb-6">
+            <label class="block text-xs font-medium text-slate-400 mb-1">Phases to Run</label>
+            <select
+              v-model="phaseSelection"
+              class="w-full bg-slate-700 border border-slate-500 rounded px-3 py-2 text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            >
+              <option value="all">All Phases (1 → 2 → 3)</option>
+              <option value="phase1">Phase 1 Only (Translation + LEGO Extraction)</option>
+              <option value="phase2">Phase 2 Only (Conflict Resolution)</option>
+              <option value="phase3">Phase 3 Only (Basket Generation)</option>
+            </select>
+            <p class="text-xs text-slate-500 mt-1">
+              <span v-if="phaseSelection === 'phase2'">⚠️ Requires draft_lego_pairs.json from Phase 1</span>
+              <span v-else-if="phaseSelection === 'phase3'">⚠️ Requires lego_pairs.json from Phase 2</span>
+            </p>
           </div>
 
           <!-- Generate Button -->
@@ -357,6 +438,109 @@
 
     </main>
 
+    <!-- Phase 2 Checkpoint Modal -->
+    <div
+      v-if="showPhase2Checkpoint"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-slate-800 border border-emerald-500/30 rounded-lg max-w-lg w-full shadow-2xl">
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+              <span class="text-xl">✅</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-emerald-400">Phase 2 Complete</h3>
+              <p class="text-sm text-slate-400">Review validation before Phase 3</p>
+            </div>
+          </div>
+
+          <div class="space-y-4 mb-6">
+            <!-- Collision Resolution -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="text-sm font-medium text-slate-300 mb-2">Collision Resolution</h4>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div>
+                  <span class="text-slate-400">Collisions detected:</span>
+                  <span class="ml-2 font-semibold text-amber-400">{{ phase2ValidationStats.collisions.detected }}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400">Upchunks created:</span>
+                  <span class="ml-2 font-semibold text-emerald-400">{{ phase2ValidationStats.collisions.resolved }}</span>
+                </div>
+              </div>
+              <div v-if="phase2ValidationStats.collisions.detected === phase2ValidationStats.collisions.resolved" class="mt-2 text-xs text-emerald-400">
+                ✓ All collisions resolved
+              </div>
+            </div>
+
+            <!-- LEGO Reuse Tracking -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="text-sm font-medium text-slate-300 mb-2">LEGO Reuse Tracking</h4>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div>
+                  <span class="text-slate-400">Total LEGOs:</span>
+                  <span class="ml-2 font-semibold text-slate-100">{{ phase2ValidationStats.reuseTracking.totalLegos }}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400">Unique (new: true):</span>
+                  <span class="ml-2 font-semibold text-emerald-400">{{ phase2ValidationStats.reuseTracking.uniqueLegos }}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400">Reused (new: false):</span>
+                  <span class="ml-2 font-semibold text-blue-400">{{ phase2ValidationStats.reuseTracking.reusedLegos }}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400">Reuse rate:</span>
+                  <span class="ml-2 font-semibold text-purple-400">{{ phase2ValidationStats.reuseTracking.reuseRate }}%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Validation -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
+              <h4 class="text-sm font-medium text-slate-300 mb-2">Validation</h4>
+              <div class="space-y-1 text-sm">
+                <div class="flex items-center gap-2">
+                  <span :class="phase2ValidationStats.validation.completeBreakdowns ? 'text-emerald-400' : 'text-red-400'">
+                    {{ phase2ValidationStats.validation.completeBreakdowns ? '✓' : '✗' }}
+                  </span>
+                  <span class="text-slate-300">All seeds have complete breakdowns</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span :class="phase2ValidationStats.validation.allTilesValidate ? 'text-emerald-400' : 'text-red-400'">
+                    {{ phase2ValidationStats.validation.allTilesValidate ? '✓' : '✗' }}
+                  </span>
+                  <span class="text-slate-300">All tiling validates</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span :class="phase2ValidationStats.validation.noFdViolations ? 'text-emerald-400' : 'text-red-400'">
+                    {{ phase2ValidationStats.validation.noFdViolations ? '✓' : '✗' }}
+                  </span>
+                  <span class="text-slate-300">No FD violations</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-3 justify-end">
+            <button
+              @click="viewLegoPairs"
+              class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg transition-colors"
+            >
+              View lego_pairs.json
+            </button>
+            <button
+              @click="continueToPhase3"
+              class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors font-medium"
+            >
+              Continue to Phase 3 →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Push to GitHub Confirmation Modal -->
     <div
       v-if="showPushModal"
@@ -426,9 +610,39 @@ const toast = useToast()
 const knownLanguage = ref(route.query.known || 'eng')
 const targetLanguage = ref(route.query.target || 'gle')
 const startSeed = ref(1)
-const endSeed = ref(668)
+const endSeed = ref(30)
 const executionMode = ref('web') // 'local', 'api', or 'web'
-const phaseSelection = ref('all') // 'all', 'phase1', 'phase3', 'phase5', 'phase7'
+const phaseSelection = ref('all') // 'all', 'phase1', 'phase2', 'phase3', 'manifest'
+
+// Parallelization config
+const selectedPreset = ref('test') // 'test', 'full', 'custom'
+const parallelConfig = ref({
+  tabs: 6,
+  workers: 5,
+  seedsPerWorker: 1
+})
+
+// Presets
+const presets = {
+  test: {
+    label: '30 Seeds (Test)',
+    icon: '🧪',
+    seeds: 30,
+    tabs: 6,
+    workers: 5,
+    seedsPerWorker: 1,
+    estimate: '~10-15 minutes'
+  },
+  full: {
+    label: '668 Seeds (Full)',
+    icon: '🚀',
+    seeds: 668,
+    tabs: 15,
+    workers: 15,
+    seedsPerWorker: 3,
+    estimate: '~2-3 hours'
+  }
+}
 
 const targetLanguages = ref([])
 const knownLanguages = ref([])
@@ -443,6 +657,14 @@ const errorMessage = ref('')
 const clearingJob = ref(false)
 const pushing = ref(false)
 const showPushModal = ref(false)
+
+// Phase 2 Checkpoint
+const showPhase2Checkpoint = ref(false)
+const phase2ValidationStats = ref({
+  collisions: { detected: 0, resolved: 0 },
+  reuseTracking: { totalLegos: 0, uniqueLegos: 0, reusedLegos: 0, reuseRate: 0 },
+  validation: { completeBreakdowns: true, allTilesValidate: true, noFdViolations: true }
+})
 
 // Enhanced tracking from phase servers
 const phaseDetails = ref(null)
@@ -542,6 +764,22 @@ const loadLanguages = async () => {
     knownLanguages.value = fallback
   } finally {
     languagesLoading.value = false
+  }
+}
+
+const selectPreset = (presetKey) => {
+  selectedPreset.value = presetKey
+  if (presetKey === 'custom') {
+    // Keep current values for custom
+    return
+  }
+  const preset = presets[presetKey]
+  startSeed.value = 1
+  endSeed.value = preset.seeds
+  parallelConfig.value = {
+    tabs: preset.tabs,
+    workers: preset.workers,
+    seedsPerWorker: preset.seedsPerWorker
   }
 }
 
@@ -893,6 +1131,34 @@ const clearStuckJob = async () => {
   } catch (error) {
     console.error('Failed to clear job:', error)
     errorMessage.value = 'Failed to clear job: ' + (error.response?.data?.error || error.message)
+  }
+}
+
+// Phase 2 Checkpoint methods
+const viewLegoPairs = () => {
+  // Navigate to course editor to view lego_pairs
+  if (courseCode.value) {
+    router.push(`/courses/${courseCode.value}/edit`)
+  }
+}
+
+const continueToPhase3 = async () => {
+  showPhase2Checkpoint.value = false
+  try {
+    // Trigger Phase 3 continuation
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
+    await fetch(`${baseUrl}/api/courses/${courseCode.value}/continue-phase3`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+    currentPhase.value = 'Phase 3'
+    toast.success('Starting Phase 3...')
+  } catch (error) {
+    console.error('Failed to continue to Phase 3:', error)
+    toast.error('Failed to start Phase 3')
   }
 }
 
