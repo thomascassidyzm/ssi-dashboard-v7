@@ -54,10 +54,46 @@ app.get('/health', (req, res) => {
       '/api/*': 'http://localhost:3456',
       '/phase1/*': 'http://localhost:3457',
       '/phase3/*': 'http://localhost:3458',
-      '/phase5/*': 'http://localhost:3459'
+      '/phase5/*': 'http://localhost:3459',
+      backward_compat: {
+        '/upload-translations': 'http://localhost:3457',
+        '/upload-legos': 'http://localhost:3458',
+        '/upload-basket': 'http://localhost:3459'
+      }
     }
   });
 });
+
+// ===== BACKWARD COMPATIBILITY ROUTES =====
+// Legacy agents POST to unprefixed paths - proxy them to phase servers
+// These MUST come before /phase* routes to match first
+
+app.post('/upload-translations', createProxyMiddleware({
+  target: 'http://localhost:3457',
+  changeOrigin: true,
+  logLevel: 'info',
+  onProxyReq: (proxyReq, req, res) => {
+    console.log(`[Legacy Phase 1] ${req.method} /upload-translations → http://localhost:3457/upload-translations`);
+  }
+}));
+
+app.post('/upload-legos', createProxyMiddleware({
+  target: 'http://localhost:3458',
+  changeOrigin: true,
+  logLevel: 'info',
+  onProxyReq: (proxyReq, req, res) => {
+    console.log(`[Legacy Phase 3] ${req.method} /upload-legos → http://localhost:3458/upload-legos`);
+  }
+}));
+
+app.post('/upload-basket', createProxyMiddleware({
+  target: 'http://localhost:3459',
+  changeOrigin: true,
+  logLevel: 'info',
+  onProxyReq: (proxyReq, req, res) => {
+    console.log(`[Legacy Phase 5] ${req.method} /upload-basket → http://localhost:3459/upload-basket`);
+  }
+}));
 
 // Phase 3 proxy (LEGO Extraction) - BEFORE API proxy to avoid conflicts
 app.use('/phase3', createProxyMiddleware({
