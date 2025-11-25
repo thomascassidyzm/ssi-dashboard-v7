@@ -1,0 +1,194 @@
+{
+  "browserId": 3,
+  "agentId": "3.1",
+  "seedRange": "S0031-S0033",
+  "seeds": [
+    {
+      "seed_id": "S0031",
+      "seed_pair": {
+        "known": "You wanted to speak with me tonight.",
+        "target": "你今晚想跟我说话。"
+      },
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tonight",
+            "target": "今晚"
+          }
+        },
+        {
+          "id": "S0031L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wanted to",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0031L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "说话"
+          }
+        },
+        {
+          "id": "S0031L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to speak with me",
+            "target": "跟我说话"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "跟"
+            },
+            {
+              "known": "me",
+              "target": "我"
+            },
+            {
+              "known": "to speak",
+              "target": "说话"
+            }
+          ],
+          "teaches": "In Mandarin, with-phrase (跟我) precedes the verb, not follows it"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0032",
+      "seed_pair": {
+        "known": "Did you want to show me something?",
+        "target": "你想给我看点什么吗？"
+      },
+      "legos": [
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "什么"
+          }
+        },
+        {
+          "id": "S0032L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to show me",
+            "target": "给我看"
+          },
+          "components": [
+            {
+              "known": "to give",
+              "target": "给"
+            },
+            {
+              "known": "me",
+              "target": "我"
+            },
+            {
+              "known": "to look/see",
+              "target": "看"
+            }
+          ],
+          "teaches": "To show someone uses 给+person+看 structure (literally give-person-look)"
+        },
+        {
+          "id": "S0032L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Did you want to...?",
+            "target": "你想...吗？"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "to want",
+              "target": "想"
+            },
+            {
+              "known": "?",
+              "target": "吗"
+            }
+          ],
+          "teaches": "Yes/no questions formed by adding 吗 particle at sentence end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0033",
+      "seed_pair": {
+        "known": "How long have you been learning Mandarin Chinese?",
+        "target": "你学中文多长时间了？"
+      },
+      "legos": [
+        {
+          "id": "S0033L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Mandarin Chinese",
+            "target": "中文"
+          }
+        },
+        {
+          "id": "S0033L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "学"
+          }
+        },
+        {
+          "id": "S0033L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how long",
+            "target": "多长时间"
+          },
+          "components": [
+            {
+              "known": "how much",
+              "target": "多"
+            },
+            {
+              "known": "long",
+              "target": "长"
+            },
+            {
+              "known": "time",
+              "target": "时间"
+            }
+          ],
+          "teaches": "Duration questions use 多长时间 (how-much + long + time)"
+        },
+        {
+          "id": "S0033L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "have been (doing)",
+            "target": "了"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:24.906Z"
+}

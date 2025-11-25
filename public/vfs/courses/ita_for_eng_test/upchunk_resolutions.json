@@ -1,0 +1,284 @@
+{
+  "version": "1.0.0",
+  "course": "ita_for_eng_test",
+  "generated": "2025-11-24T16:00:00.000Z",
+  "total_conflicts_resolved": 9,
+  "resolutions": [
+    {
+      "conflict_id": 1,
+      "conflict": "I want",
+      "resolution_type": "standardize",
+      "rationale": "Capitalization difference only (Voglio vs voglio). Both are correct - capital at sentence start, lowercase mid-sentence. Standardize to lowercase for the A-type LEGO.",
+      "canonical": {
+        "known": "I want",
+        "target": "voglio",
+        "type": "A"
+      },
+      "upchunks": [],
+      "seeds_affected": ["S0001", "S0007", "S0015", "S0022"],
+      "action_required": "Update S0001 LEGO target from 'Voglio' to 'voglio'. Sentence capitalization is applied at rendering time."
+    },
+    {
+      "conflict_id": 2,
+      "conflict": "Italian",
+      "resolution_type": "upchunk",
+      "rationale": "In Italian, when 'italiano' is the direct object of certain verbs (especially imparare/learning as gerund subject), the definite article l' is required. When it follows verbs like parlare, dire, or appears after prepositions, no article is needed.",
+      "canonical": {
+        "known": "Italian",
+        "target": "italiano",
+        "type": "A"
+      },
+      "upchunks": [
+        {
+          "known": "learning Italian",
+          "target": "imparare l'italiano",
+          "type": "M",
+          "components": [
+            {
+              "known": "to learn",
+              "target": "imparare"
+            },
+            {
+              "known": "Italian",
+              "target": "italiano"
+            }
+          ],
+          "teaches": "When 'imparare' takes a language as direct object (as gerund subject of sentence), Italian requires the definite article: l'italiano"
+        }
+      ],
+      "seeds_affected": ["S0001", "S0013", "S0014", "S0015", "S0022", "S0033", "S0064"],
+      "action_required": "Keep 'italiano' as canonical A-type. Create M-type 'learning Italian' -> 'imparare l'italiano' for S0064 context where gerund is subject of sentence."
+    },
+    {
+      "conflict_id": 3,
+      "conflict": "to learn",
+      "resolution_type": "upchunk",
+      "rationale": "After 'cercare' (to try), Italian requires 'di' before the infinitive. In other contexts (direct infinitive, after volere), no preposition is needed.",
+      "canonical": {
+        "known": "to learn",
+        "target": "imparare",
+        "type": "A"
+      },
+      "upchunks": [
+        {
+          "known": "trying to learn",
+          "target": "cercando di imparare",
+          "type": "M",
+          "components": [
+            {
+              "known": "trying",
+              "target": "cercando"
+            },
+            {
+              "known": "to learn",
+              "target": "imparare"
+            }
+          ],
+          "teaches": "After cercare, Italian requires 'di' before the infinitive: cercare di + infinitive"
+        }
+      ],
+      "seeds_affected": ["S0002", "S0020", "S0064"],
+      "action_required": "Keep 'imparare' as canonical A-type. S0002 already has proper M-type 'to learn' -> 'di imparare' within the 'I'm trying' construction. Verify M-type covers the 'di' linkage."
+    },
+    {
+      "conflict_id": 4,
+      "conflict": "to remember",
+      "resolution_type": "upchunk",
+      "rationale": "After 'riuscire' (to manage/be able), Italian requires 'a' before the infinitive. In other contexts (after cercare di, potere, etc.), 'ricordare' is used directly.",
+      "canonical": {
+        "known": "to remember",
+        "target": "ricordare",
+        "type": "A"
+      },
+      "upchunks": [
+        {
+          "known": "to be able to remember",
+          "target": "riuscire a ricordare",
+          "type": "M",
+          "components": [
+            {
+              "known": "to be able",
+              "target": "riuscire"
+            },
+            {
+              "known": "to remember",
+              "target": "ricordare"
+            }
+          ],
+          "teaches": "After riuscire (to manage/succeed), Italian requires 'a' before the infinitive: riuscire a + infinitive"
+        }
+      ],
+      "seeds_affected": ["S0006", "S0010", "S0024", "S0056", "S0057"],
+      "action_required": "Keep 'ricordare' as canonical A-type. Create M-type for S0024 context where 'riuscire a' governs the infinitive. S0057 already uses 'non riesco a' as M-type chunk."
+    },
+    {
+      "conflict_id": 5,
+      "conflict": "I'm not sure",
+      "resolution_type": "standardize",
+      "rationale": "Capitalization difference only (Non sono sicuro vs non sono sicuro). Capital at sentence start, lowercase mid-sentence. Standardize to lowercase for the A-type LEGO.",
+      "canonical": {
+        "known": "I'm not sure",
+        "target": "non sono sicuro",
+        "type": "A"
+      },
+      "upchunks": [],
+      "seeds_affected": ["S0010", "S0062"],
+      "action_required": "Update S0010 LEGO target from 'Non sono sicuro' to 'non sono sicuro'. Both occurrences are M-types with components; ensure consistency. Sentence capitalization applied at rendering."
+    },
+    {
+      "conflict_id": 6,
+      "conflict": "if I can",
+      "resolution_type": "upchunk",
+      "rationale": "Two different Italian verbs express 'can': 'potere' (general ability/permission) and 'riuscire' (ability to manage/succeed at something). These are semantic variants requiring different upchunked forms.",
+      "canonical": {
+        "known": "if I can",
+        "target": "se posso",
+        "type": "A"
+      },
+      "upchunks": [
+        {
+          "known": "if I can manage to",
+          "target": "se riesco a",
+          "type": "M",
+          "components": [
+            {
+              "known": "if",
+              "target": "se"
+            },
+            {
+              "known": "I manage",
+              "target": "riesco"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "Riuscire expresses 'managing to' or 'succeeding at' something, requiring 'a' before infinitive. Posso is general ability."
+        }
+      ],
+      "seeds_affected": ["S0010", "S0062"],
+      "action_required": "Use 'se posso' as canonical A-type for general ability. Create M-type 'if I can manage to' -> 'se riesco a' for S0010 context where the meaning is 'succeed at remembering'."
+    },
+    {
+      "conflict_id": 7,
+      "conflict": "to meet",
+      "resolution_type": "upchunk",
+      "rationale": "In Italian, reflexive verbs like 'incontrarsi' (to meet each other) include the reflexive pronoun attached to the infinitive. 'Incontrare' is used when meeting others (transitive), 'incontrarci' when 'we meet (each other)'.",
+      "canonical": {
+        "known": "to meet",
+        "target": "incontrare",
+        "type": "A"
+      },
+      "upchunks": [
+        {
+          "known": "to meet (each other)",
+          "target": "incontrarci",
+          "type": "M",
+          "components": [
+            {
+              "known": "to meet",
+              "target": "incontrare"
+            },
+            {
+              "known": "each other (we)",
+              "target": "-ci"
+            }
+          ],
+          "teaches": "When 'we' is the subject and 'meeting each other' is implied, the reflexive pronoun '-ci' attaches to the infinitive: incontrarci"
+        }
+      ],
+      "seeds_affected": ["S0018", "S0022"],
+      "action_required": "Keep 'incontrare' as canonical A-type for transitive 'to meet (someone)'. Create M-type 'to meet (each other)' for S0018 where subject is 'we' and meaning is reciprocal."
+    },
+    {
+      "conflict_id": 8,
+      "conflict": "time",
+      "resolution_type": "upchunk",
+      "rationale": "In Italian, abstract nouns like 'tempo' sometimes require the definite article 'il' when used with certain verbs (prendersi il tempo = to take THE time). In quantity expressions (troppo tempo = too much time), no article is used.",
+      "canonical": {
+        "known": "time",
+        "target": "tempo",
+        "type": "A"
+      },
+      "upchunks": [
+        {
+          "known": "to take time",
+          "target": "prendersi il tempo",
+          "type": "M",
+          "components": [
+            {
+              "known": "to take (for oneself)",
+              "target": "prendersi"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            }
+          ],
+          "teaches": "The expression 'prendersi il tempo' (to take time) requires the definite article 'il' before 'tempo'"
+        }
+      ],
+      "seeds_affected": ["S0027", "S0054", "S0065"],
+      "action_required": "Keep 'tempo' as canonical A-type. S0065 already has M-type 'to take time' -> 'prendersi il tempo' which correctly includes the article."
+    },
+    {
+      "conflict_id": 9,
+      "conflict": "what",
+      "resolution_type": "upchunk",
+      "rationale": "Italian has two translations for 'what': 'cosa' for direct questions and simple relative clauses, and 'quello che' for relative clauses meaning 'that which/the thing that'. Context determines which form is appropriate.",
+      "canonical": {
+        "known": "what",
+        "target": "cosa",
+        "type": "A"
+      },
+      "upchunks": [
+        {
+          "known": "what (the thing that)",
+          "target": "quello che",
+          "type": "M",
+          "components": [
+            {
+              "known": "that",
+              "target": "quello"
+            },
+            {
+              "known": "which",
+              "target": "che"
+            }
+          ],
+          "teaches": "'Quello che' is used for relative clauses meaning 'that which' or 'the thing that'. 'Cosa' is used in direct questions and simple constructions."
+        }
+      ],
+      "seeds_affected": ["S0057", "S0068"],
+      "action_required": "Keep 'cosa' as canonical A-type for direct questions (S0068: 'Cosa cerchi?'). S0057 already correctly uses M-type 'what' -> 'quello che' in relative clause context."
+    }
+  ],
+  "summary": {
+    "total_conflicts": 9,
+    "resolution_breakdown": {
+      "standardize": 2,
+      "upchunk": 7
+    },
+    "standardize_conflicts": [
+      "I want (capitalization only)",
+      "I'm not sure (capitalization only)"
+    ],
+    "upchunk_conflicts": [
+      "Italian (article requirement with imparare as gerund subject)",
+      "to learn (di after cercare)",
+      "to remember (a after riuscire)",
+      "if I can (posso vs riesco a - semantic difference)",
+      "to meet (reflexive -ci attachment)",
+      "time (article with prendersi)",
+      "what (cosa vs quello che - relative clause)"
+    ],
+    "italian_grammar_patterns_identified": [
+      "Verb + preposition requirements: cercare di, riuscire a, cominciare a",
+      "Definite article with abstract nouns in certain expressions",
+      "Reflexive pronoun attachment to infinitives (-ci, -si, -ti, etc.)",
+      "Cosa vs quello che for 'what' based on clause type",
+      "Sentence-level capitalization vs LEGO-level lowercase standardization"
+    ]
+  }
+}

@@ -1,0 +1,549 @@
+{
+  "course": "eng_for_cmn_test",
+  "generated": "2025-11-24T14:55:59.521Z",
+  "totalConflicts": 18,
+  "conflicts": [
+    {
+      "known": "我想",
+      "targets": [
+        "I want",
+        "I want to"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0001",
+          "knownSentence": "我现在想和你说英语。",
+          "targetSentence": "I want to speak English with you now.",
+          "legoTarget": "I want"
+        },
+        {
+          "seedId": "S0007",
+          "knownSentence": "我想今天尽我所能地尝试。",
+          "targetSentence": "I want to try as hard as I can today.",
+          "legoTarget": "I want to"
+        },
+        {
+          "seedId": "S0022",
+          "knownSentence": "因为我想认识会说英语的人。",
+          "targetSentence": "Because I want to meet people who speak English.",
+          "legoTarget": "I want"
+        }
+      ]
+    },
+    {
+      "known": "说",
+      "targets": [
+        "to speak",
+        "speaking",
+        "say"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0001",
+          "knownSentence": "我现在想和你说英语。",
+          "targetSentence": "I want to speak English with you now.",
+          "legoTarget": "to speak"
+        },
+        {
+          "seedId": "S0022",
+          "knownSentence": "因为我想认识会说英语的人。",
+          "targetSentence": "Because I want to meet people who speak English.",
+          "legoTarget": "to speak"
+        },
+        {
+          "seedId": "S0029",
+          "knownSentence": "我期待尽快能说得更好。",
+          "targetSentence": "I'm looking forward to speaking better as soon as I can.",
+          "legoTarget": "speaking"
+        },
+        {
+          "seedId": "S0060",
+          "knownSentence": "我还不知道怎么说足够多的不同的单词。",
+          "targetSentence": "I don't know how to say enough different words yet.",
+          "legoTarget": "say"
+        },
+        {
+          "seedId": "S0061",
+          "knownSentence": "你能再说一遍慢一点吗？",
+          "targetSentence": "Could you say that again a little more slowly?",
+          "legoTarget": "say"
+        }
+      ]
+    },
+    {
+      "known": "现在",
+      "targets": [
+        "now",
+        "at the moment"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0001",
+          "knownSentence": "我现在想和你说英语。",
+          "targetSentence": "I want to speak English with you now.",
+          "legoTarget": "now"
+        },
+        {
+          "seedId": "S0009",
+          "knownSentence": "我现在会说一点英语了。",
+          "targetSentence": "I speak a little English now.",
+          "legoTarget": "now"
+        },
+        {
+          "seedId": "S0040",
+          "knownSentence": "你现在感觉怎么样？",
+          "targetSentence": "How do you feel at the moment?",
+          "legoTarget": "at the moment"
+        }
+      ]
+    },
+    {
+      "known": "我",
+      "targets": [
+        "I",
+        "me"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0002",
+          "knownSentence": "我正在努力学习。",
+          "targetSentence": "I'm trying to learn.",
+          "legoTarget": "I"
+        },
+        {
+          "seedId": "S0043",
+          "knownSentence": "我没有在想怎么回答。",
+          "targetSentence": "I was not thinking about how to answer.",
+          "legoTarget": "I"
+        },
+        {
+          "seedId": "S0063",
+          "knownSentence": "你确定你不介意帮我吗？",
+          "targetSentence": "Are you sure you don't mind helping me?",
+          "legoTarget": "me"
+        },
+        {
+          "seedId": "S0070",
+          "knownSentence": "她不想告诉我它在哪里。",
+          "targetSentence": "She didn't want to tell me where it was.",
+          "legoTarget": "me"
+        },
+        {
+          "seedId": "S0072",
+          "knownSentence": "我觉得你做得很好。",
+          "targetSentence": "I think that you're doing very well.",
+          "legoTarget": "I"
+        }
+      ]
+    },
+    {
+      "known": "学习",
+      "targets": [
+        "learn",
+        "learning"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0002",
+          "knownSentence": "我正在努力学习。",
+          "targetSentence": "I'm trying to learn.",
+          "legoTarget": "learn"
+        },
+        {
+          "seedId": "S0038",
+          "knownSentence": "我学习大约一个星期了。",
+          "targetSentence": "I've been learning for about a week.",
+          "legoTarget": "learning"
+        },
+        {
+          "seedId": "S0064",
+          "knownSentence": "学英语不容易，但是很有趣。",
+          "targetSentence": "Learning English isn't easy but it is fun.",
+          "legoTarget": "learning"
+        }
+      ]
+    },
+    {
+      "known": "怎么说",
+      "targets": [
+        "how to speak",
+        "how to say"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0003",
+          "knownSentence": "尽可能经常地说。",
+          "targetSentence": "how to speak as often as possible.",
+          "legoTarget": "how to speak"
+        },
+        {
+          "seedId": "S0004",
+          "knownSentence": "用英语怎么说",
+          "targetSentence": "how to say something in English",
+          "legoTarget": "how to say"
+        },
+        {
+          "seedId": "S0056",
+          "knownSentence": "这样我就能记住怎么说几个词。",
+          "targetSentence": "So I can remember how to say a few words.",
+          "legoTarget": "how to say"
+        },
+        {
+          "seedId": "S0057",
+          "knownSentence": "我记不住我想说什么怎么说。",
+          "targetSentence": "I can't remember how to say what I wanted to say.",
+          "legoTarget": "how to say"
+        },
+        {
+          "seedId": "S0060",
+          "knownSentence": "我还不知道怎么说足够多的不同的单词。",
+          "targetSentence": "I don't know how to say enough different words yet.",
+          "legoTarget": "how to say"
+        }
+      ]
+    },
+    {
+      "known": "说话",
+      "targets": [
+        "speaking",
+        "speak",
+        "talking",
+        "to talk",
+        "to speak"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0005",
+          "knownSentence": "我要和别人练习说话。",
+          "targetSentence": "I'm going to practise speaking with someone else.",
+          "legoTarget": "speaking"
+        },
+        {
+          "seedId": "S0011",
+          "knownSentence": "我想在你说完之后能够说话。",
+          "targetSentence": "I'd like to be able to speak after you finish.",
+          "legoTarget": "speak"
+        },
+        {
+          "seedId": "S0019",
+          "knownSentence": "但是我不想停止说话。",
+          "targetSentence": "But I do not want to stop talking.",
+          "legoTarget": "talking"
+        },
+        {
+          "seedId": "S0023",
+          "knownSentence": "我很快就要开始多说话了。",
+          "targetSentence": "I'm going to start talking more soon.",
+          "legoTarget": "to talk"
+        },
+        {
+          "seedId": "S0028",
+          "knownSentence": "尽快开始说话是很有用的。",
+          "targetSentence": "It's useful to start talking as soon as you can.",
+          "legoTarget": "talking"
+        },
+        {
+          "seedId": "S0031",
+          "knownSentence": "你今晚想和我说话。",
+          "targetSentence": "You wanted to speak with me tonight.",
+          "legoTarget": "to speak"
+        }
+      ]
+    },
+    {
+      "known": "记住",
+      "targets": [
+        "remember",
+        "to remember"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0010",
+          "knownSentence": "我不确定我能不能记住整个句子。",
+          "targetSentence": "I'm not sure if I can remember the whole sentence.",
+          "legoTarget": "remember"
+        },
+        {
+          "seedId": "S0024",
+          "knownSentence": "我不会轻易记住的。",
+          "targetSentence": "I'm not going to be able to remember easily.",
+          "legoTarget": "to remember"
+        },
+        {
+          "seedId": "S0056",
+          "knownSentence": "这样我就能记住怎么说几个词。",
+          "targetSentence": "So I can remember how to say a few words.",
+          "legoTarget": "remember"
+        },
+        {
+          "seedId": "S0057",
+          "knownSentence": "我记不住我想说什么怎么说。",
+          "targetSentence": "I can't remember how to say what I wanted to say.",
+          "legoTarget": "remember"
+        }
+      ]
+    },
+    {
+      "known": "知道",
+      "targets": [
+        "to find out",
+        "to know",
+        "know"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0017",
+          "knownSentence": "她想知道答案是什么。",
+          "targetSentence": "She wants to find out what the answer is.",
+          "legoTarget": "to find out"
+        },
+        {
+          "seedId": "S0045",
+          "knownSentence": "我不需要知道一切。",
+          "targetSentence": "I do not need to know everything.",
+          "legoTarget": "to know"
+        },
+        {
+          "seedId": "S0059",
+          "knownSentence": "我知道下周我需要做的事情怎么做。",
+          "targetSentence": "I know how to do what I need to do next week.",
+          "legoTarget": "know"
+        }
+      ]
+    },
+    {
+      "known": "想",
+      "targets": [
+        "want to",
+        "wanted",
+        "to think",
+        "wanted to"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0020",
+          "knownSentence": "你想很快学会他的名字。",
+          "targetSentence": "You want to learn his name quickly.",
+          "legoTarget": "want to"
+        },
+        {
+          "seedId": "S0030",
+          "knownSentence": "我昨天想问你一件事。",
+          "targetSentence": "I wanted to ask you something yesterday.",
+          "legoTarget": "wanted"
+        },
+        {
+          "seedId": "S0043",
+          "knownSentence": "我没有在想怎么回答。",
+          "targetSentence": "I was not thinking about how to answer.",
+          "legoTarget": "to think"
+        },
+        {
+          "seedId": "S0052",
+          "knownSentence": "他上周想给朋友写一封信。",
+          "targetSentence": "He wanted to write a letter to his friend last week.",
+          "legoTarget": "wanted to"
+        },
+        {
+          "seedId": "S0067",
+          "knownSentence": "你为什么想停下来？",
+          "targetSentence": "Why do you want to stop?",
+          "legoTarget": "want to"
+        }
+      ]
+    },
+    {
+      "known": "很快",
+      "targets": [
+        "quickly",
+        "soon"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0020",
+          "knownSentence": "你想很快学会他的名字。",
+          "targetSentence": "You want to learn his name quickly.",
+          "legoTarget": "quickly"
+        },
+        {
+          "seedId": "S0023",
+          "knownSentence": "我很快就要开始多说话了。",
+          "targetSentence": "I'm going to start talking more soon.",
+          "legoTarget": "soon"
+        }
+      ]
+    },
+    {
+      "known": "帮",
+      "targets": [
+        "to help",
+        "help"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0025",
+          "knownSentence": "你会在我必须走之前帮我吗？",
+          "targetSentence": "Are you going to help me before I have to go?",
+          "legoTarget": "to help"
+        },
+        {
+          "seedId": "S0062",
+          "knownSentence": "我不确定我能不能同时帮你。",
+          "targetSentence": "I'm not sure if I can help you at the same time.",
+          "legoTarget": "help"
+        }
+      ]
+    },
+    {
+      "known": "喜欢",
+      "targets": [
+        "to like",
+        "enjoy"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0026",
+          "knownSentence": "我喜欢感觉好像我快准备好要走了。",
+          "targetSentence": "I like feeling as if I am nearly ready to go.",
+          "legoTarget": "to like"
+        },
+        {
+          "seedId": "S0055",
+          "knownSentence": "当我睡得不好的时候，我不喜欢起床。",
+          "targetSentence": "I don't enjoy waking up when I didn't sleep very well.",
+          "legoTarget": "enjoy"
+        }
+      ]
+    },
+    {
+      "known": "我不喜欢",
+      "targets": [
+        "I do not like",
+        "I don't enjoy"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0027",
+          "knownSentence": "我不喜欢花太多时间来回答。",
+          "targetSentence": "I do not like taking too much time to answer.",
+          "legoTarget": "I do not like"
+        },
+        {
+          "seedId": "S0055",
+          "knownSentence": "当我睡得不好的时候，我不喜欢起床。",
+          "targetSentence": "I don't enjoy waking up when I didn't sleep very well.",
+          "legoTarget": "I don't enjoy"
+        }
+      ]
+    },
+    {
+      "known": "不想",
+      "targets": [
+        "doesn't want to",
+        "don't want to",
+        "didn't want to"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0034",
+          "knownSentence": "当别人在这里的时候，他不想安静。",
+          "targetSentence": "He doesn't want to be quiet when other people are here.",
+          "legoTarget": "doesn't want to"
+        },
+        {
+          "seedId": "S0035",
+          "knownSentence": "她今天下午不想读任何东西。",
+          "targetSentence": "She doesn't want to read anything this afternoon.",
+          "legoTarget": "doesn't want to"
+        },
+        {
+          "seedId": "S0036",
+          "knownSentence": "我们不想打断这个故事。",
+          "targetSentence": "We don't want to interrupt the story.",
+          "legoTarget": "don't want to"
+        },
+        {
+          "seedId": "S0069",
+          "knownSentence": "他不想整个下午照顾那只小狗。",
+          "targetSentence": "He didn't want to look after the young dog all afternoon.",
+          "legoTarget": "didn't want to"
+        },
+        {
+          "seedId": "S0070",
+          "knownSentence": "她不想告诉我它在哪里。",
+          "targetSentence": "She didn't want to tell me where it was.",
+          "legoTarget": "didn't want to"
+        },
+        {
+          "seedId": "S0071",
+          "knownSentence": "我们不想让任何人听到真相。",
+          "targetSentence": "We didn't want to let anyone hear the truth.",
+          "legoTarget": "didn't want to"
+        }
+      ]
+    },
+    {
+      "known": "这样",
+      "targets": [
+        "like this",
+        "so"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0049",
+          "knownSentence": "就是这样，如果你明白我的意思的话。",
+          "targetSentence": "It's like this, if you know what I mean.",
+          "legoTarget": "like this"
+        },
+        {
+          "seedId": "S0056",
+          "knownSentence": "这样我就能记住怎么说几个词。",
+          "targetSentence": "So I can remember how to say a few words.",
+          "legoTarget": "so"
+        }
+      ]
+    },
+    {
+      "known": "朋友",
+      "targets": [
+        "friends",
+        "friend"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0051",
+          "knownSentence": "我喜欢和朋友一起做有趣的事情。",
+          "targetSentence": "I enjoy doing interesting things with my friends.",
+          "legoTarget": "friends"
+        },
+        {
+          "seedId": "S0052",
+          "knownSentence": "他上周想给朋友写一封信。",
+          "targetSentence": "He wanted to write a letter to his friend last week.",
+          "legoTarget": "friend"
+        }
+      ]
+    },
+    {
+      "known": "有趣",
+      "targets": [
+        "interesting",
+        "fun"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0058",
+          "knownSentence": "当你理解足够多的词汇时，这很有趣。",
+          "targetSentence": "It's interesting when you understand enough words.",
+          "legoTarget": "interesting"
+        },
+        {
+          "seedId": "S0064",
+          "knownSentence": "学英语不容易，但是很有趣。",
+          "targetSentence": "Learning English isn't easy but it is fun.",
+          "legoTarget": "fun"
+        }
+      ]
+    }
+  ]
+}

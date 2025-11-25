@@ -1,0 +1,5121 @@
+{
+  "course": "spa_for_eng_test",
+  "generated": "2025-11-24T15:34:31.602Z",
+  "phase": "final",
+  "totalSeeds": 75,
+  "totalLegos": 319,
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "I want to speak Spanish with you now.",
+        "target": "Quiero hablar español contigo ahora."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "quiero"
+          }
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "hablar"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Spanish",
+            "target": "español"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with you",
+            "target": "contigo"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "ahora"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:03.747Z",
+      "agentId": "1.1"
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "I'm trying to learn.",
+        "target": "Estoy intentando aprender."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "estoy intentando"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "estoy"
+            },
+            {
+              "known": "trying",
+              "target": "intentando"
+            }
+          ],
+          "teaches": "Spanish progressive tense uses estar + gerund (-ando/-iendo)"
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "aprender"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:15.781Z",
+      "agentId": "1.1"
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "how to speak as often as possible",
+        "target": "cómo hablar lo más a menudo posible"
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to speak",
+            "target": "cómo hablar"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "cómo"
+            },
+            {
+              "known": "to speak",
+              "target": "hablar"
+            }
+          ],
+          "teaches": "Spanish uses cómo + infinitive for how to do something"
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as often as possible",
+            "target": "lo más a menudo posible"
+          },
+          "components": [
+            {
+              "known": "the most",
+              "target": "lo más"
+            },
+            {
+              "known": "often",
+              "target": "a menudo"
+            },
+            {
+              "known": "possible",
+              "target": "posible"
+            }
+          ],
+          "teaches": "Spanish superlative construction with lo más + adverb + posible"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:29.691Z",
+      "agentId": "1.1"
+    },
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "how to say something in Spanish",
+        "target": "cómo decir algo en español"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "cómo decir"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "cómo"
+            },
+            {
+              "known": "to say",
+              "target": "decir"
+            }
+          ],
+          "teaches": "how to + verb uses cómo + infinitive in Spanish"
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "algo"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "in",
+            "target": "en"
+          }
+        },
+        {
+          "id": "S0004L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Spanish",
+            "target": "español"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:29.521Z",
+      "agentId": "1.2"
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "I'm going to practise speaking with someone else.",
+        "target": "Voy a practicar hablar con otra persona."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "voy a"
+          },
+          "components": [
+            {
+              "known": "I go",
+              "target": "Voy"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "ir + a + infinitive construction for future intent"
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to practise",
+            "target": "practicar"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speaking",
+            "target": "hablar"
+          }
+        },
+        {
+          "id": "S0005L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with",
+            "target": "con"
+          }
+        },
+        {
+          "id": "S0005L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "someone else",
+            "target": "otra persona"
+          },
+          "components": [
+            {
+              "known": "other",
+              "target": "otra"
+            },
+            {
+              "known": "person",
+              "target": "persona"
+            }
+          ],
+          "teaches": "someone else expressed as another person in Spanish"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:46.490Z",
+      "agentId": "1.2"
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "I'm trying to remember a word.",
+        "target": "Estoy intentando recordar una palabra."
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "estoy intentando"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "Estoy"
+            },
+            {
+              "known": "trying",
+              "target": "intentando"
+            }
+          ],
+          "teaches": "present progressive with estar + -ando gerund form"
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "recordar"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a word",
+            "target": "una palabra"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:58.238Z",
+      "agentId": "1.2"
+    },
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "I want to try as hard as I can today.",
+        "target": "Quiero intentar lo más que pueda hoy."
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "quiero"
+          }
+        },
+        {
+          "id": "S0007L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to try",
+            "target": "intentar"
+          }
+        },
+        {
+          "id": "S0007L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as hard as I can",
+            "target": "lo más que pueda"
+          },
+          "components": [
+            {
+              "known": "the most",
+              "target": "lo más"
+            },
+            {
+              "known": "that I can",
+              "target": "que pueda"
+            }
+          ],
+          "teaches": "Comparative maximum structure with subjunctive pueda (can/be able)"
+        },
+        {
+          "id": "S0007L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "today",
+            "target": "hoy"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:11.973Z",
+      "agentId": "1.3"
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "I'm going to try to explain what I mean.",
+        "target": "Voy a intentar explicar lo que quiero decir."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "voy a"
+          },
+          "components": [
+            {
+              "known": "I go",
+              "target": "Voy"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "Ir + a + infinitive structure for near future tense"
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to try",
+            "target": "intentar"
+          }
+        },
+        {
+          "id": "S0008L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to explain",
+            "target": "explicar"
+          }
+        },
+        {
+          "id": "S0008L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "lo que quiero decir"
+          },
+          "components": [
+            {
+              "known": "what/that which",
+              "target": "lo que"
+            },
+            {
+              "known": "I want to say",
+              "target": "quiero decir"
+            }
+          ],
+          "teaches": "Relative clause with lo que plus idiomatic querer decir meaning to mean"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:42.362Z",
+      "agentId": "1.3"
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "I speak a little Spanish now.",
+        "target": "Hablo un poco de español ahora."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I speak",
+            "target": "hablo"
+          }
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little",
+            "target": "un poco"
+          },
+          "components": [
+            {
+              "known": "a little/a bit",
+              "target": "un poco"
+            },
+            {
+              "known": "of",
+              "target": "de"
+            }
+          ],
+          "teaches": "Partitive structure un poco de required before nouns unlike English a little"
+        },
+        {
+          "id": "S0009L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Spanish",
+            "target": "español"
+          }
+        },
+        {
+          "id": "S0009L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "ahora"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:53.324Z",
+      "agentId": "1.3"
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "target": "No estoy seguro de si puedo recordar toda la oración."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "no estoy seguro"
+          },
+          "components": [
+            {
+              "known": "I'm",
+              "target": "estoy"
+            },
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "sure",
+              "target": "seguro"
+            }
+          ],
+          "teaches": "Negation placement (no before verb) with estar + adjective"
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "si puedo"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "si"
+            },
+            {
+              "known": "I can",
+              "target": "puedo"
+            }
+          ],
+          "teaches": "Conditional si + conjugated verb (subject pronoun dropped)"
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "remember",
+            "target": "recordar"
+          }
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the whole sentence",
+            "target": "toda la oración"
+          },
+          "components": [
+            {
+              "known": "whole",
+              "target": "toda"
+            },
+            {
+              "known": "the sentence",
+              "target": "la oración"
+            }
+          ],
+          "teaches": "Word order: toda (whole) precedes the article+noun"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:16.679Z",
+      "agentId": "1.4"
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": {
+        "known": "I'd like to be able to speak after you finish.",
+        "target": "Me gustaría poder hablar después de que termines."
+      },
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'd like",
+            "target": "me gustaría"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "me"
+            },
+            {
+              "known": "would like",
+              "target": "gustaría"
+            }
+          ],
+          "teaches": "Gustar construction in conditional - indirect object pronoun + conditional verb"
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to be able to",
+            "target": "poder"
+          }
+        },
+        {
+          "id": "S0011L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speak",
+            "target": "hablar"
+          }
+        },
+        {
+          "id": "S0011L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "after you finish",
+            "target": "después de que termines"
+          },
+          "components": [
+            {
+              "known": "after",
+              "target": "después de que"
+            },
+            {
+              "known": "you finish",
+              "target": "termines"
+            }
+          ],
+          "teaches": "Después de que triggers subjunctive mood (termines not terminas)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:31.529Z",
+      "agentId": "1.4"
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": {
+        "known": "I wouldn't like to guess what's going to happen tomorrow.",
+        "target": "No me gustaría adivinar qué va a pasar mañana."
+      },
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wouldn't like",
+            "target": "no me gustaría"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "me"
+            },
+            {
+              "known": "wouldn't like",
+              "target": "no gustaría"
+            }
+          ],
+          "teaches": "Negated gustar construction - no precedes the indirect object pronoun"
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to guess",
+            "target": "adivinar"
+          }
+        },
+        {
+          "id": "S0012L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what's going to happen",
+            "target": "qué va a pasar"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "qué"
+            },
+            {
+              "known": "is going to",
+              "target": "va a"
+            },
+            {
+              "known": "happen",
+              "target": "pasar"
+            }
+          ],
+          "teaches": "Ir a + infinitive for near future; qué as interrogative pronoun"
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "mañana"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:45.186Z",
+      "agentId": "1.4"
+    },
+    {
+      "seed_id": "S0013",
+      "seed_pair": {
+        "known": "You speak Spanish very well.",
+        "target": "Hablas español muy bien."
+      },
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you speak",
+            "target": "hablas"
+          }
+        },
+        {
+          "id": "S0013L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Spanish",
+            "target": "español"
+          }
+        },
+        {
+          "id": "S0013L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very",
+            "target": "muy"
+          }
+        },
+        {
+          "id": "S0013L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "well",
+            "target": "bien"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:28.666Z",
+      "agentId": "1.5"
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": {
+        "known": "Do you speak Spanish all day?",
+        "target": "¿Hablas español todo el día?"
+      },
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "do you speak",
+            "target": "hablas"
+          }
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Spanish",
+            "target": "español"
+          }
+        },
+        {
+          "id": "S0014L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "all day",
+            "target": "todo el día"
+          },
+          "components": [
+            {
+              "known": "all",
+              "target": "todo"
+            },
+            {
+              "known": "day",
+              "target": "día"
+            }
+          ],
+          "teaches": "Spanish requires article el - literally all the day"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:48.508Z",
+      "agentId": "1.5"
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": {
+        "known": "And I want you to speak Spanish with me tomorrow.",
+        "target": "Y quiero que hables español conmigo mañana."
+      },
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "and",
+            "target": "y"
+          }
+        },
+        {
+          "id": "S0015L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want you to speak",
+            "target": "quiero que hables"
+          },
+          "components": [
+            {
+              "known": "I want",
+              "target": "quiero"
+            },
+            {
+              "known": "you speak",
+              "target": "hables"
+            }
+          ],
+          "teaches": "want someone to X requires que + subjunctive"
+        },
+        {
+          "id": "S0015L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Spanish",
+            "target": "español"
+          }
+        },
+        {
+          "id": "S0015L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with me",
+            "target": "conmigo"
+          }
+        },
+        {
+          "id": "S0015L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "mañana"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:00.713Z",
+      "agentId": "1.5"
+    },
+    {
+      "seed_id": "S0016",
+      "seed_pair": {
+        "known": "He wants to come back with everyone else later on.",
+        "target": "Él quiere volver con todos los demás más tarde."
+      },
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "él"
+          }
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wants",
+            "target": "quiere"
+          }
+        },
+        {
+          "id": "S0016L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to come back",
+            "target": "volver"
+          }
+        },
+        {
+          "id": "S0016L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with",
+            "target": "con"
+          }
+        },
+        {
+          "id": "S0016L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "everyone else",
+            "target": "todos los demás"
+          },
+          "components": [
+            {
+              "known": "everyone/all",
+              "target": "todos"
+            },
+            {
+              "known": "else/the rest",
+              "target": "los demás"
+            }
+          ],
+          "teaches": "everyone else becomes all the others (todos los demás)"
+        },
+        {
+          "id": "S0016L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "later on",
+            "target": "más tarde"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "más"
+            },
+            {
+              "known": "late",
+              "target": "tarde"
+            }
+          ],
+          "teaches": "later uses comparative structure más tarde (more late)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:27.461Z",
+      "agentId": "2.1"
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": {
+        "known": "She wants to find out what the answer is.",
+        "target": "Ella quiere saber cuál es la respuesta."
+      },
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "ella"
+          }
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wants",
+            "target": "quiere"
+          }
+        },
+        {
+          "id": "S0017L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find out",
+            "target": "saber"
+          }
+        },
+        {
+          "id": "S0017L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "answer",
+            "target": "respuesta"
+          }
+        },
+        {
+          "id": "S0017L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what the answer is",
+            "target": "cuál es la respuesta"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "cuál"
+            },
+            {
+              "known": "is",
+              "target": "es"
+            },
+            {
+              "known": "the answer",
+              "target": "la respuesta"
+            }
+          ],
+          "teaches": "embedded questions keep interrogative word order (cuál es not es cuál)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:38.500Z",
+      "agentId": "2.1"
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": {
+        "known": "We want to meet at six o clock this evening.",
+        "target": "Queremos reunirnos a las seis esta tarde."
+      },
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we want",
+            "target": "queremos"
+          }
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "reunirnos"
+          }
+        },
+        {
+          "id": "S0018L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this",
+            "target": "esta"
+          }
+        },
+        {
+          "id": "S0018L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "evening",
+            "target": "tarde"
+          }
+        },
+        {
+          "id": "S0018L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at six o clock",
+            "target": "a las seis"
+          },
+          "components": [
+            {
+              "known": "at",
+              "target": "a"
+            },
+            {
+              "known": "six",
+              "target": "seis"
+            }
+          ],
+          "teaches": "time uses a las + number (feminine article las for implied horas)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:34:00.856Z",
+      "agentId": "2.1"
+    },
+    {
+      "seed_id": "S0019",
+      "seed_pair": {
+        "known": "But I don't want to stop talking.",
+        "target": "Pero no quiero dejar de hablar."
+      },
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "pero"
+          }
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't want",
+            "target": "no quiero"
+          },
+          "components": [
+            {
+              "known": "I want",
+              "target": "quiero"
+            },
+            {
+              "known": "don't",
+              "target": "no"
+            }
+          ],
+          "teaches": "negation no precedes conjugated verb"
+        },
+        {
+          "id": "S0019L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to stop",
+            "target": "parar"
+          }
+        },
+        {
+          "id": "S0019L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "talking",
+            "target": "hablar"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:31.914Z",
+      "agentId": "2.2"
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": {
+        "known": "You want to learn his name quickly.",
+        "target": "Quieres aprender su nombre rápidamente."
+      },
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you want",
+            "target": "quieres"
+          }
+        },
+        {
+          "id": "S0020L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "aprender"
+          }
+        },
+        {
+          "id": "S0020L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "his",
+            "target": "su"
+          }
+        },
+        {
+          "id": "S0020L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "name",
+            "target": "nombre"
+          }
+        },
+        {
+          "id": "S0020L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "quickly",
+            "target": "rápidamente"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:44.453Z",
+      "agentId": "2.2"
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": {
+        "known": "Why are you learning her name?",
+        "target": "¿Por qué estás aprendiendo su nombre?"
+      },
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "why",
+            "target": "por qué"
+          }
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "are you learning",
+            "target": "estás aprendiendo"
+          },
+          "components": [
+            {
+              "known": "you are",
+              "target": "estás"
+            },
+            {
+              "known": "learning",
+              "target": "aprendiendo"
+            }
+          ],
+          "teaches": "present progressive with estar + gerund"
+        },
+        {
+          "id": "S0021L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "her",
+            "target": "su"
+          }
+        },
+        {
+          "id": "S0021L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "name",
+            "target": "nombre"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:56.079Z",
+      "agentId": "2.2"
+    },
+    {
+      "seed_id": "S0022",
+      "seed_pair": {
+        "known": "Because I want to meet people who speak Spanish.",
+        "target": "Porque quiero conocer a personas que hablan español."
+      },
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "porque"
+          }
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "quiero"
+          }
+        },
+        {
+          "id": "S0022L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to meet people",
+            "target": "conocer a personas"
+          },
+          "components": [
+            {
+              "known": "to meet",
+              "target": "conocer"
+            },
+            {
+              "known": "people",
+              "target": "personas"
+            }
+          ],
+          "teaches": "Personal a required before people as direct object"
+        },
+        {
+          "id": "S0022L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "who speak Spanish",
+            "target": "que hablan español"
+          },
+          "components": [
+            {
+              "known": "who",
+              "target": "que"
+            },
+            {
+              "known": "they speak",
+              "target": "hablan"
+            },
+            {
+              "known": "Spanish",
+              "target": "español"
+            }
+          ],
+          "teaches": "Relative pronoun que for who in relative clauses"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:13.416Z",
+      "agentId": "2.3"
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": {
+        "known": "I'm going to start talking more soon.",
+        "target": "Voy a empezar a hablar más pronto."
+      },
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "voy a"
+          }
+        },
+        {
+          "id": "S0023L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start talking",
+            "target": "empezar a hablar"
+          },
+          "components": [
+            {
+              "known": "to start",
+              "target": "empezar"
+            },
+            {
+              "known": "to talk",
+              "target": "hablar"
+            }
+          ],
+          "teaches": "Empezar requires a before following infinitive"
+        },
+        {
+          "id": "S0023L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "more",
+            "target": "más"
+          }
+        },
+        {
+          "id": "S0023L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "soon",
+            "target": "pronto"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:27.356Z",
+      "agentId": "2.3"
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": {
+        "known": "I'm not going to be able to remember easily.",
+        "target": "No voy a poder recordar fácilmente."
+      },
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not going to",
+            "target": "no voy a"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "I'm going to",
+              "target": "voy a"
+            }
+          ],
+          "teaches": "Negation no placed before conjugated verb"
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to be able to",
+            "target": "poder"
+          }
+        },
+        {
+          "id": "S0024L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "recordar"
+          }
+        },
+        {
+          "id": "S0024L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easily",
+            "target": "fácilmente"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:42.219Z",
+      "agentId": "2.3"
+    },
+    {
+      "seed_id": "S0025",
+      "seed_pair": {
+        "known": "Are you going to help me before I have to go?",
+        "target": "¿Vas a ayudarme antes de que tenga que irme?"
+      },
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Are you going to",
+            "target": "vas a"
+          },
+          "components": [
+            {
+              "known": "you go",
+              "target": "vas"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "Future intention using ir + a + infinitive"
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "help me",
+            "target": "ayudarme"
+          }
+        },
+        {
+          "id": "S0025L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "before",
+            "target": "antes de que"
+          }
+        },
+        {
+          "id": "S0025L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I have to",
+            "target": "tenga que"
+          },
+          "components": [
+            {
+              "known": "I have",
+              "target": "tenga"
+            },
+            {
+              "known": "to",
+              "target": "que"
+            }
+          ],
+          "teaches": "Obligation with tener que; subjunctive after antes de que"
+        },
+        {
+          "id": "S0025L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "go/leave",
+            "target": "irme"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:24.566Z",
+      "agentId": "2.4"
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": {
+        "known": "I like feeling as if I'm nearly ready to go.",
+        "target": "Me gusta sentirme como si estuviera casi listo para irme."
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I like",
+            "target": "me gusta"
+          },
+          "components": [
+            {
+              "known": "to me",
+              "target": "me"
+            },
+            {
+              "known": "it pleases",
+              "target": "gusta"
+            }
+          ],
+          "teaches": "Gustar construction with indirect object pronoun"
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "feeling",
+            "target": "sentirme"
+          }
+        },
+        {
+          "id": "S0026L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as if",
+            "target": "como si"
+          }
+        },
+        {
+          "id": "S0026L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm ready",
+            "target": "estuviera listo"
+          },
+          "components": [
+            {
+              "known": "I was/were",
+              "target": "estuviera"
+            },
+            {
+              "known": "ready",
+              "target": "listo"
+            }
+          ],
+          "teaches": "Imperfect subjunctive required after como si"
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "nearly",
+            "target": "casi"
+          }
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to go",
+            "target": "para irme"
+          },
+          "components": [
+            {
+              "known": "for/in order to",
+              "target": "para"
+            },
+            {
+              "known": "go/leave",
+              "target": "irme"
+            }
+          ],
+          "teaches": "Purpose expressed with para + infinitive"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:37.004Z",
+      "agentId": "2.4"
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": {
+        "known": "I don't like taking too much time to answer.",
+        "target": "No me gusta tomar demasiado tiempo para responder."
+      },
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't like",
+            "target": "no me gusta"
+          },
+          "components": [
+            {
+              "known": "no/not",
+              "target": "no"
+            },
+            {
+              "known": "to me",
+              "target": "me"
+            },
+            {
+              "known": "it pleases",
+              "target": "gusta"
+            }
+          ],
+          "teaches": "Negation with gustar: no precedes the indirect object pronoun"
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "taking",
+            "target": "tomar"
+          }
+        },
+        {
+          "id": "S0027L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "too much",
+            "target": "demasiado"
+          }
+        },
+        {
+          "id": "S0027L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "tiempo"
+          }
+        },
+        {
+          "id": "S0027L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "para responder"
+          },
+          "components": [
+            {
+              "known": "for/in order to",
+              "target": "para"
+            },
+            {
+              "known": "answer",
+              "target": "responder"
+            }
+          ],
+          "teaches": "Purpose clause with para + infinitive"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:50.080Z",
+      "agentId": "2.4"
+    },
+    {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "It's useful to start talking as soon as you can.",
+        "target": "Es útil empezar a hablar tan pronto como puedas."
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "useful",
+            "target": "útil"
+          }
+        },
+        {
+          "id": "S0028L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start talking",
+            "target": "empezar a hablar"
+          },
+          "components": [
+            {
+              "known": "to start",
+              "target": "empezar"
+            },
+            {
+              "known": "to talk",
+              "target": "hablar"
+            }
+          ],
+          "teaches": "linking 'a' between consecutive infinitives"
+        },
+        {
+          "id": "S0028L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as soon as you can",
+            "target": "tan pronto como puedas"
+          },
+          "components": [
+            {
+              "known": "as soon as",
+              "target": "tan pronto como"
+            },
+            {
+              "known": "you can",
+              "target": "puedas"
+            }
+          ],
+          "teaches": "subjunctive 'puedas' after 'tan pronto como'"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:50.135Z",
+      "agentId": "2.5"
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "target": "Tengo ganas de hablar mejor tan pronto como pueda."
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm looking forward to",
+            "target": "tengo ganas de"
+          },
+          "components": [
+            {
+              "known": "to have",
+              "target": "tener"
+            },
+            {
+              "known": "desire/urge",
+              "target": "ganas"
+            }
+          ],
+          "teaches": "idiomatic 'tener ganas de' for 'looking forward to'"
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "hablar"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "better",
+            "target": "mejor"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as soon as I can",
+            "target": "tan pronto como pueda"
+          },
+          "components": [
+            {
+              "known": "as soon as",
+              "target": "tan pronto como"
+            },
+            {
+              "known": "I can",
+              "target": "pueda"
+            }
+          ],
+          "teaches": "subjunctive 'pueda' after 'tan pronto como'"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:06.691Z",
+      "agentId": "2.5"
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "I wanted to ask you something yesterday.",
+        "target": "Quería preguntarte algo ayer."
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I wanted",
+            "target": "quería"
+          }
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to ask you",
+            "target": "preguntarte"
+          }
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "algo"
+          }
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yesterday",
+            "target": "ayer"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:19.759Z",
+      "agentId": "2.5"
+    },
+    {
+      "seed_id": "S0031",
+      "seed_pair": {
+        "known": "You wanted to speak with me tonight.",
+        "target": "Querías hablar conmigo esta noche."
+      },
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you wanted",
+            "target": "querías"
+          }
+        },
+        {
+          "id": "S0031L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "hablar"
+          }
+        },
+        {
+          "id": "S0031L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with me",
+            "target": "conmigo"
+          }
+        },
+        {
+          "id": "S0031L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tonight",
+            "target": "esta noche"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:27.904Z",
+      "agentId": "3.1"
+    },
+    {
+      "seed_id": "S0032",
+      "seed_pair": {
+        "known": "Did you want to show me something?",
+        "target": "¿Querías mostrarme algo?"
+      },
+      "legos": [
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "did you want",
+            "target": "querías"
+          }
+        },
+        {
+          "id": "S0032L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to show me",
+            "target": "mostrarme"
+          }
+        },
+        {
+          "id": "S0032L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "algo"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:38.362Z",
+      "agentId": "3.1"
+    },
+    {
+      "seed_id": "S0033",
+      "seed_pair": {
+        "known": "How long have you been learning Spanish?",
+        "target": "¿Cuánto tiempo llevas aprendiendo español?"
+      },
+      "legos": [
+        {
+          "id": "S0033L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how long",
+            "target": "cuánto tiempo"
+          },
+          "components": [
+            {
+              "known": "how much",
+              "target": "cuánto"
+            },
+            {
+              "known": "time",
+              "target": "tiempo"
+            }
+          ],
+          "teaches": "Spanish expresses duration as how much time"
+        },
+        {
+          "id": "S0033L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "have you been learning",
+            "target": "llevas aprendiendo"
+          },
+          "components": [
+            {
+              "known": "you carry/have been at",
+              "target": "llevas"
+            },
+            {
+              "known": "learning",
+              "target": "aprendiendo"
+            }
+          ],
+          "teaches": "llevar + gerund expresses ongoing duration (how long you have been doing something)"
+        },
+        {
+          "id": "S0033L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Spanish",
+            "target": "español"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:50.941Z",
+      "agentId": "3.1"
+    },
+    {
+      "seed_id": "S0034",
+      "seed_pair": {
+        "known": "He doesn't want to be quiet when other people are here.",
+        "target": "Él no quiere estar callado cuando otras personas están aquí."
+      },
+      "legos": [
+        {
+          "id": "S0034L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he doesn't want",
+            "target": "él no quiere"
+          }
+        },
+        {
+          "id": "S0034L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to be quiet",
+            "target": "estar callado"
+          }
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "cuando"
+          }
+        },
+        {
+          "id": "S0034L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "other people",
+            "target": "otras personas"
+          }
+        },
+        {
+          "id": "S0034L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are here",
+            "target": "están aquí"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:11.385Z",
+      "agentId": "3.2"
+    },
+    {
+      "seed_id": "S0035",
+      "seed_pair": {
+        "known": "She doesn't want to read anything this afternoon.",
+        "target": "Ella no quiere leer nada esta tarde."
+      },
+      "legos": [
+        {
+          "id": "S0035L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she doesn't want",
+            "target": "ella no quiere"
+          }
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to read",
+            "target": "leer"
+          }
+        },
+        {
+          "id": "S0035L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anything",
+            "target": "nada"
+          }
+        },
+        {
+          "id": "S0035L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this afternoon",
+            "target": "esta tarde"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:22.009Z",
+      "agentId": "3.2"
+    },
+    {
+      "seed_id": "S0036",
+      "seed_pair": {
+        "known": "We don't want to interrupt the story.",
+        "target": "No queremos interrumpir la historia."
+      },
+      "legos": [
+        {
+          "id": "S0036L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we don't want",
+            "target": "no queremos"
+          }
+        },
+        {
+          "id": "S0036L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to interrupt",
+            "target": "interrumpir"
+          }
+        },
+        {
+          "id": "S0036L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the story",
+            "target": "la historia"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:32.521Z",
+      "agentId": "3.2"
+    },
+    {
+      "seed_id": "S0037",
+      "seed_pair": {
+        "known": "I started to think about it carefully last month.",
+        "target": "Empecé a pensar en ello cuidadosamente el mes pasado."
+      },
+      "legos": [
+        {
+          "id": "S0037L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I started",
+            "target": "empecé"
+          }
+        },
+        {
+          "id": "S0037L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to think",
+            "target": "pensar"
+          }
+        },
+        {
+          "id": "S0037L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I started to think",
+            "target": "empecé a pensar"
+          },
+          "components": [
+            {
+              "known": "I started",
+              "target": "Empecé"
+            },
+            {
+              "known": "to think",
+              "target": "pensar"
+            }
+          ],
+          "teaches": "empezar + a + infinitive pattern (linking a required before infinitive)"
+        },
+        {
+          "id": "S0037L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "about it",
+            "target": "en ello"
+          }
+        },
+        {
+          "id": "S0037L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "carefully",
+            "target": "cuidadosamente"
+          }
+        },
+        {
+          "id": "S0037L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "last month",
+            "target": "el mes pasado"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:46.977Z",
+      "agentId": "3.3"
+    },
+    {
+      "seed_id": "S0038",
+      "seed_pair": {
+        "known": "I've been learning for about a week.",
+        "target": "He estado aprendiendo durante aproximadamente una semana."
+      },
+      "legos": [
+        {
+          "id": "S0038L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "learning",
+            "target": "aprendiendo"
+          }
+        },
+        {
+          "id": "S0038L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I've been learning",
+            "target": "he estado aprendiendo"
+          },
+          "components": [
+            {
+              "known": "learning",
+              "target": "aprendiendo"
+            }
+          ],
+          "teaches": "present perfect continuous using haber + estado + gerund"
+        },
+        {
+          "id": "S0038L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "for",
+            "target": "durante"
+          }
+        },
+        {
+          "id": "S0038L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "about",
+            "target": "de"
+          }
+        },
+        {
+          "id": "S0038L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a week",
+            "target": "una semana"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:57.599Z",
+      "agentId": "3.3"
+    },
+    {
+      "seed_id": "S0039",
+      "seed_pair": {
+        "known": "But I'm a little tired this morning.",
+        "target": "Pero estoy un poco cansado esta mañana."
+      },
+      "legos": [
+        {
+          "id": "S0039L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "pero"
+          }
+        },
+        {
+          "id": "S0039L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm",
+            "target": "estoy"
+          }
+        },
+        {
+          "id": "S0039L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a little",
+            "target": "un poco"
+          }
+        },
+        {
+          "id": "S0039L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tired",
+            "target": "cansado"
+          }
+        },
+        {
+          "id": "S0039L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this morning",
+            "target": "esta mañana"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:07.344Z",
+      "agentId": "3.3"
+    },
+    {
+      "seed_id": "S0040",
+      "seed_pair": {
+        "known": "How do you feel at the moment?",
+        "target": "¿Cómo te sientes en este momento?"
+      },
+      "legos": [
+        {
+          "id": "S0040L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how",
+            "target": "cómo"
+          }
+        },
+        {
+          "id": "S0040L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "do you feel",
+            "target": "te sientes"
+          },
+          "components": [
+            {
+              "known": "you (reflexive)",
+              "target": "te"
+            },
+            {
+              "known": "feel",
+              "target": "sientes"
+            }
+          ],
+          "teaches": "reflexive verb: Spanish uses sentirse (reflexive) for to feel with pronoun before verb"
+        },
+        {
+          "id": "S0040L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at the moment",
+            "target": "en este momento"
+          },
+          "components": [
+            {
+              "known": "in",
+              "target": "en"
+            },
+            {
+              "known": "this moment",
+              "target": "este momento"
+            }
+          ],
+          "teaches": "idiomatic: at the moment becomes in this moment in Spanish"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:29.407Z",
+      "agentId": "3.4"
+    },
+    {
+      "seed_id": "S0041",
+      "seed_pair": {
+        "known": "I feel okay, but I'm starting to feel tired.",
+        "target": "Me siento bien, pero estoy empezando a sentirme cansado."
+      },
+      "legos": [
+        {
+          "id": "S0041L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I feel",
+            "target": "me siento"
+          },
+          "components": [
+            {
+              "known": "myself",
+              "target": "me"
+            },
+            {
+              "known": "feel (I)",
+              "target": "siento"
+            }
+          ],
+          "teaches": "reflexive verb: sentirse uses reflexive pronoun me before conjugated verb"
+        },
+        {
+          "id": "S0041L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "okay",
+            "target": "bien"
+          }
+        },
+        {
+          "id": "S0041L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "pero"
+          }
+        },
+        {
+          "id": "S0041L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm starting to",
+            "target": "estoy empezando a"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "estoy"
+            },
+            {
+              "known": "starting",
+              "target": "empezando"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "progressive: estar + gerund (-ando) for ongoing action, a links to infinitive"
+        },
+        {
+          "id": "S0041L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to feel tired",
+            "target": "sentirme cansado"
+          },
+          "components": [
+            {
+              "known": "to feel (myself)",
+              "target": "sentirme"
+            },
+            {
+              "known": "tired",
+              "target": "cansado"
+            }
+          ],
+          "teaches": "reflexive infinitive: pronoun me attaches to end of infinitive sentir"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:41.833Z",
+      "agentId": "3.4"
+    },
+    {
+      "seed_id": "S0042",
+      "seed_pair": {
+        "known": "I was starting to feel better than last night.",
+        "target": "Estaba empezando a sentirme mejor que anoche."
+      },
+      "legos": [
+        {
+          "id": "S0042L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I was starting to",
+            "target": "estaba empezando a"
+          },
+          "components": [
+            {
+              "known": "I was",
+              "target": "estaba"
+            },
+            {
+              "known": "starting",
+              "target": "empezando"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "imperfect progressive: estar in imperfect (estaba) + gerund for ongoing past action"
+        },
+        {
+          "id": "S0042L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to feel",
+            "target": "sentirme"
+          },
+          "components": [
+            {
+              "known": "to feel",
+              "target": "sentir"
+            },
+            {
+              "known": "myself",
+              "target": "me"
+            }
+          ],
+          "teaches": "reflexive infinitive: reflexive pronoun me attaches to end of infinitive"
+        },
+        {
+          "id": "S0042L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "better",
+            "target": "mejor"
+          }
+        },
+        {
+          "id": "S0042L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "than",
+            "target": "que"
+          }
+        },
+        {
+          "id": "S0042L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "last night",
+            "target": "anoche"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:59.434Z",
+      "agentId": "3.4"
+    },
+    {
+      "seed_id": "S0043",
+      "seed_pair": {
+        "known": "I was not thinking about how to answer.",
+        "target": "No estaba pensando en cómo responder."
+      },
+      "legos": [
+        {
+          "id": "S0043L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I was not thinking",
+            "target": "no estaba pensando"
+          },
+          "components": [
+            {
+              "known": "I was",
+              "target": "estaba"
+            },
+            {
+              "known": "thinking",
+              "target": "pensando"
+            }
+          ],
+          "teaches": "Negation placement (no before verb) + past progressive with estar + gerund"
+        },
+        {
+          "id": "S0043L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "about",
+            "target": "de"
+          }
+        },
+        {
+          "id": "S0043L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to answer",
+            "target": "cómo responder"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "cómo"
+            },
+            {
+              "known": "to answer",
+              "target": "responder"
+            }
+          ],
+          "teaches": "Question word cómo + infinitive structure (no preposition needed)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:07.331Z",
+      "agentId": "3.5"
+    },
+    {
+      "seed_id": "S0044",
+      "seed_pair": {
+        "known": "Or if I need to improve.",
+        "target": "O si necesito mejorar."
+      },
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "or",
+            "target": "o"
+          }
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if",
+            "target": "si"
+          }
+        },
+        {
+          "id": "S0044L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I need to improve",
+            "target": "necesito mejorar"
+          },
+          "components": [
+            {
+              "known": "I need",
+              "target": "necesito"
+            },
+            {
+              "known": "to improve",
+              "target": "mejorar"
+            }
+          ],
+          "teaches": "Need + infinitive structure with subject pronoun dropped; necesitar takes direct infinitive"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:17.498Z",
+      "agentId": "3.5"
+    },
+    {
+      "seed_id": "S0045",
+      "seed_pair": {
+        "known": "I do not need to know everything.",
+        "target": "No necesito saber todo."
+      },
+      "legos": [
+        {
+          "id": "S0045L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I do not need to know",
+            "target": "no necesito saber"
+          },
+          "components": [
+            {
+              "known": "I need",
+              "target": "necesito"
+            },
+            {
+              "known": "to know",
+              "target": "saber"
+            }
+          ],
+          "teaches": "Negation with no before verb + need + infinitive chain; do-support not used in Spanish"
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "everything",
+            "target": "todo"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:28.903Z",
+      "agentId": "3.5"
+    },
+    {
+      "seed_id": "S0046",
+      "seed_pair": {
+        "known": "But I don't worry about making mistakes.",
+        "target": "Pero no me preocupo por cometer errores."
+      },
+      "legos": [
+        {
+          "id": "S0046L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "pero"
+          }
+        },
+        {
+          "id": "S0046L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't worry",
+            "target": "no me preocupo"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "yo"
+            },
+            {
+              "known": "don't",
+              "target": "no"
+            },
+            {
+              "known": "worry",
+              "target": "preocuparse"
+            }
+          ],
+          "teaches": "reflexive verb with pronoun me placed before conjugated verb"
+        },
+        {
+          "id": "S0046L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "about",
+            "target": "de"
+          }
+        },
+        {
+          "id": "S0046L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "making mistakes",
+            "target": "cometer errores"
+          },
+          "components": [
+            {
+              "known": "to make",
+              "target": "cometer"
+            },
+            {
+              "known": "mistakes",
+              "target": "errores"
+            }
+          ],
+          "teaches": "Spanish uses infinitive where English uses gerund (-ing)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:02.731Z",
+      "agentId": "agent-4.1"
+    },
+    {
+      "seed_id": "S0047",
+      "seed_pair": {
+        "known": "Because I think that it's a good thing to make mistakes.",
+        "target": "Porque creo que es algo bueno cometer errores."
+      },
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "porque"
+          }
+        },
+        {
+          "id": "S0047L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I think that",
+            "target": "creo que"
+          },
+          "components": [
+            {
+              "known": "I think",
+              "target": "creo"
+            },
+            {
+              "known": "that",
+              "target": "que"
+            }
+          ],
+          "teaches": "verb + conjunction que pattern for dependent clauses"
+        },
+        {
+          "id": "S0047L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it's a good thing",
+            "target": "es algo bueno"
+          },
+          "components": [
+            {
+              "known": "it is",
+              "target": "es"
+            },
+            {
+              "known": "a good thing",
+              "target": "algo bueno"
+            }
+          ],
+          "teaches": "word order - adjective bueno follows noun algo"
+        },
+        {
+          "id": "S0047L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to make mistakes",
+            "target": "cometer errores"
+          },
+          "components": [
+            {
+              "known": "to make",
+              "target": "cometer"
+            },
+            {
+              "known": "mistakes",
+              "target": "errores"
+            }
+          ],
+          "teaches": "infinitive verb phrase as subject/object"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:15.049Z",
+      "agentId": "agent-4.1"
+    },
+    {
+      "seed_id": "S0048",
+      "seed_pair": {
+        "known": "I don't care about making mistakes.",
+        "target": "No me importa cometer errores."
+      },
+      "legos": [
+        {
+          "id": "S0048L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't care",
+            "target": "no me importa"
+          },
+          "components": [
+            {
+              "known": "don't",
+              "target": "no"
+            },
+            {
+              "known": "to me",
+              "target": "me"
+            },
+            {
+              "known": "it matters",
+              "target": "importa"
+            }
+          ],
+          "teaches": "Spanish uses impersonal construction - literally 'it doesn't matter to me' instead of 'I don't care'"
+        },
+        {
+          "id": "S0048L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "about making mistakes",
+            "target": "cometer errores"
+          },
+          "components": [
+            {
+              "known": "to make",
+              "target": "cometer"
+            },
+            {
+              "known": "mistakes",
+              "target": "errores"
+            }
+          ],
+          "teaches": "preposition 'about' is absorbed - Spanish infinitive directly follows verb"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:36.302Z",
+      "agentId": "agent-4.1"
+    },
+    {
+      "seed_id": "S0049",
+      "seed_pair": {
+        "known": "It's like this, if you know what I mean.",
+        "target": "Es así, si sabes lo que quiero decir."
+      },
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it is",
+            "target": "es"
+          }
+        },
+        {
+          "id": "S0049L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "like this",
+            "target": "así"
+          }
+        },
+        {
+          "id": "S0049L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if",
+            "target": "si"
+          }
+        },
+        {
+          "id": "S0049L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you know",
+            "target": "sabes"
+          }
+        },
+        {
+          "id": "S0049L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "lo que quiero decir"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "lo que"
+            },
+            {
+              "known": "I mean",
+              "target": "quiero decir"
+            }
+          ],
+          "teaches": "lo que for what (that which); mean expressed as want to say"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:23.000Z",
+      "agentId": "agent-4.2"
+    },
+    {
+      "seed_id": "S0050",
+      "seed_pair": {
+        "known": "I'm not trying to finish as quickly as possible.",
+        "target": "No estoy intentando terminar lo más rápido posible."
+      },
+      "legos": [
+        {
+          "id": "S0050L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not trying",
+            "target": "no estoy intentando"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "I'm",
+              "target": "estoy"
+            },
+            {
+              "known": "trying",
+              "target": "intentando"
+            }
+          ],
+          "teaches": "no placement before verb; estar + gerund for present continuous"
+        },
+        {
+          "id": "S0050L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to finish",
+            "target": "terminar"
+          }
+        },
+        {
+          "id": "S0050L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as quickly as possible",
+            "target": "lo más rápido posible"
+          },
+          "components": [
+            {
+              "known": "quickly",
+              "target": "rápido"
+            },
+            {
+              "known": "possible",
+              "target": "posible"
+            }
+          ],
+          "teaches": "lo más [adj] posible construction for as [adj] as possible"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:34.835Z",
+      "agentId": "agent-4.2"
+    },
+    {
+      "seed_id": "S0051",
+      "seed_pair": {
+        "known": "I enjoy doing interesting things with my friends.",
+        "target": "Disfruto haciendo cosas interesantes con mis amigos."
+      },
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I enjoy",
+            "target": "disfruto"
+          }
+        },
+        {
+          "id": "S0051L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "doing",
+            "target": "haciendo"
+          }
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "interesting things",
+            "target": "cosas interesantes"
+          },
+          "components": [
+            {
+              "known": "things",
+              "target": "cosas"
+            },
+            {
+              "known": "interesting",
+              "target": "interesantes"
+            }
+          ],
+          "teaches": "adjective placement after noun in Spanish"
+        },
+        {
+          "id": "S0051L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with",
+            "target": "con"
+          }
+        },
+        {
+          "id": "S0051L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "my",
+            "target": "mi"
+          }
+        },
+        {
+          "id": "S0051L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "friends",
+            "target": "amigos"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:45.202Z",
+      "agentId": "agent-4.2"
+    },
+    {
+      "seed_id": "S0052",
+      "seed_pair": {
+        "known": "He wanted to write a letter to his friend last week.",
+        "target": "Él quería escribir una carta a su amigo la semana pasada."
+      },
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wanted",
+            "target": "quería"
+          }
+        },
+        {
+          "id": "S0052L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to write",
+            "target": "escribir"
+          }
+        },
+        {
+          "id": "S0052L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "letter",
+            "target": "carta"
+          }
+        },
+        {
+          "id": "S0052L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "friend",
+            "target": "amigo"
+          }
+        },
+        {
+          "id": "S0052L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to his friend",
+            "target": "a su amigo"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "a"
+            },
+            {
+              "known": "his",
+              "target": "su"
+            },
+            {
+              "known": "friend",
+              "target": "amigo"
+            }
+          ],
+          "teaches": "a introduces recipient/indirect object"
+        },
+        {
+          "id": "S0052L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last week",
+            "target": "la semana pasada"
+          },
+          "components": [
+            {
+              "known": "week",
+              "target": "semana"
+            },
+            {
+              "known": "last",
+              "target": "pasada"
+            }
+          ],
+          "teaches": "adjective follows noun (the week past)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:27.965Z",
+      "agentId": "agent-4.3"
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": {
+        "known": "She wanted to put his letter in her bag.",
+        "target": "Ella quería poner su carta en su bolsa."
+      },
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "ella"
+          }
+        },
+        {
+          "id": "S0053L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to put",
+            "target": "poner"
+          }
+        },
+        {
+          "id": "S0053L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "bag",
+            "target": "bolsa"
+          }
+        },
+        {
+          "id": "S0053L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "his letter",
+            "target": "su carta"
+          },
+          "components": [
+            {
+              "known": "his",
+              "target": "su"
+            },
+            {
+              "known": "letter",
+              "target": "carta"
+            }
+          ],
+          "teaches": "su means his/her/your (context determines)"
+        },
+        {
+          "id": "S0053L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "in her bag",
+            "target": "en su bolsa"
+          },
+          "components": [
+            {
+              "known": "in",
+              "target": "en"
+            },
+            {
+              "known": "her",
+              "target": "su"
+            },
+            {
+              "known": "bag",
+              "target": "bolsa"
+            }
+          ],
+          "teaches": "en for in/inside, su for her (same as his)"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:40.548Z",
+      "agentId": "agent-4.3"
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": {
+        "known": "We wanted to give you a little more time.",
+        "target": "Queríamos darte un poco más de tiempo."
+      },
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we wanted",
+            "target": "queríamos"
+          }
+        },
+        {
+          "id": "S0054L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "tiempo"
+          }
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to give you",
+            "target": "darte"
+          },
+          "components": [
+            {
+              "known": "to give",
+              "target": "dar"
+            },
+            {
+              "known": "you",
+              "target": "te"
+            }
+          ],
+          "teaches": "object pronoun attaches to infinitive"
+        },
+        {
+          "id": "S0054L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little more",
+            "target": "un poco más"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un poco"
+            },
+            {
+              "known": "more",
+              "target": "más"
+            }
+          ],
+          "teaches": "quantity expression word order"
+        },
+        {
+          "id": "S0054L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "more time",
+            "target": "más de tiempo"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "más"
+            },
+            {
+              "known": "time",
+              "target": "tiempo"
+            }
+          ],
+          "teaches": "de required after más before nouns"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:52.729Z",
+      "agentId": "agent-4.3"
+    },
+    {
+      "seed_id": "S0055",
+      "seed_pair": {
+        "known": "I do not enjoy waking up when I did not sleep very well.",
+        "target": "No disfruto despertarme cuando no dormí muy bien."
+      },
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I enjoy",
+            "target": "disfruto"
+          }
+        },
+        {
+          "id": "S0055L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "waking up",
+            "target": "despertarme"
+          }
+        },
+        {
+          "id": "S0055L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "cuando"
+          }
+        },
+        {
+          "id": "S0055L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I slept",
+            "target": "dormí"
+          }
+        },
+        {
+          "id": "S0055L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very",
+            "target": "muy"
+          }
+        },
+        {
+          "id": "S0055L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "well",
+            "target": "bien"
+          }
+        },
+        {
+          "id": "S0055L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I do not enjoy",
+            "target": "no disfruto"
+          },
+          "components": [
+            {
+              "known": "do not",
+              "target": "no"
+            },
+            {
+              "known": "I enjoy",
+              "target": "disfruto"
+            }
+          ],
+          "teaches": "Spanish negation no precedes the conjugated verb"
+        },
+        {
+          "id": "S0055L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I did not sleep",
+            "target": "no dormí"
+          },
+          "components": [
+            {
+              "known": "did not",
+              "target": "no"
+            },
+            {
+              "known": "I slept",
+              "target": "dormí"
+            }
+          ],
+          "teaches": "Past tense negation uses no before the preterite verb"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:41.169Z",
+      "agentId": "agent-4.4"
+    },
+    {
+      "seed_id": "S0056",
+      "seed_pair": {
+        "known": "So I can remember how to say a few words.",
+        "target": "Para poder recordar cómo decir algunas palabras."
+      },
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "remember",
+            "target": "recordar"
+          }
+        },
+        {
+          "id": "S0056L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to say",
+            "target": "decir"
+          }
+        },
+        {
+          "id": "S0056L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "words",
+            "target": "palabras"
+          }
+        },
+        {
+          "id": "S0056L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a few",
+            "target": "algunas"
+          }
+        },
+        {
+          "id": "S0056L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "so I can",
+            "target": "para poder"
+          },
+          "components": [
+            {
+              "known": "so",
+              "target": "para"
+            },
+            {
+              "known": "can",
+              "target": "poder"
+            }
+          ],
+          "teaches": "Purpose expression: so I can uses para + infinitive poder"
+        },
+        {
+          "id": "S0056L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "cómo decir"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "cómo"
+            },
+            {
+              "known": "to say",
+              "target": "decir"
+            }
+          ],
+          "teaches": "Question word + infinitive pattern for how to verb"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:05.855Z",
+      "agentId": "agent-4.4"
+    },
+    {
+      "seed_id": "S0057",
+      "seed_pair": {
+        "known": "I cannot remember how to say what I wanted to say.",
+        "target": "No puedo recordar cómo decir lo que quería decir."
+      },
+      "legos": [
+        {
+          "id": "S0057L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I can",
+            "target": "puedo"
+          }
+        },
+        {
+          "id": "S0057L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "remember",
+            "target": "recordar"
+          }
+        },
+        {
+          "id": "S0057L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "que"
+          }
+        },
+        {
+          "id": "S0057L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I wanted",
+            "target": "quería"
+          }
+        },
+        {
+          "id": "S0057L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to say",
+            "target": "decir"
+          }
+        },
+        {
+          "id": "S0057L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I cannot remember",
+            "target": "no puedo recordar"
+          },
+          "components": [
+            {
+              "known": "cannot",
+              "target": "no puedo"
+            },
+            {
+              "known": "remember",
+              "target": "recordar"
+            }
+          ],
+          "teaches": "Modal negation: cannot becomes no + conjugated poder"
+        },
+        {
+          "id": "S0057L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "cómo decir"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "cómo"
+            },
+            {
+              "known": "to say",
+              "target": "decir"
+            }
+          ],
+          "teaches": "Question word + infinitive pattern"
+        },
+        {
+          "id": "S0057L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I wanted to say",
+            "target": "lo que quería decir"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "lo que"
+            },
+            {
+              "known": "I wanted",
+              "target": "quería"
+            },
+            {
+              "known": "to say",
+              "target": "decir"
+            }
+          ],
+          "teaches": "Relative clause: what as relative pronoun uses lo que"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:18.531Z",
+      "agentId": "agent-4.4"
+    },
+    {
+      "seed_id": "S0058",
+      "seed_pair": {
+        "known": "It's interesting when you understand enough words.",
+        "target": "Es interesante cuando entiendes suficientes palabras."
+      },
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "interesting",
+            "target": "interesante"
+          }
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "cuando"
+          }
+        },
+        {
+          "id": "S0058L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you understand",
+            "target": "entiendes"
+          }
+        },
+        {
+          "id": "S0058L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "enough",
+            "target": "suficientes"
+          }
+        },
+        {
+          "id": "S0058L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "words",
+            "target": "palabras"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:09.590Z",
+      "agentId": "agent-4.5"
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": {
+        "known": "I know how to do what I need to do next week.",
+        "target": "Sé cómo hacer lo que necesito hacer la próxima semana."
+      },
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I know",
+            "target": "sé"
+          }
+        },
+        {
+          "id": "S0059L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to do",
+            "target": "cómo hacer"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "cómo"
+            },
+            {
+              "known": "to do",
+              "target": "hacer"
+            }
+          ],
+          "teaches": "how to + verb uses cómo + infinitive"
+        },
+        {
+          "id": "S0059L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I need",
+            "target": "lo que necesito"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "lo que"
+            },
+            {
+              "known": "I need",
+              "target": "necesito"
+            }
+          ],
+          "teaches": "what I [verb] uses lo que + conjugated verb"
+        },
+        {
+          "id": "S0059L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "next week",
+            "target": "la próxima semana"
+          },
+          "components": [
+            {
+              "known": "next",
+              "target": "próxima"
+            },
+            {
+              "known": "week",
+              "target": "semana"
+            }
+          ],
+          "teaches": "time expressions use definite article la"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:22.006Z",
+      "agentId": "agent-4.5"
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": {
+        "known": "I don't know how to say enough different words yet.",
+        "target": "Todavía no sé cómo decir suficientes palabras diferentes."
+      },
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't know",
+            "target": "no sé"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "I know",
+              "target": "sé"
+            }
+          ],
+          "teaches": "negation places no before the verb"
+        },
+        {
+          "id": "S0060L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "cómo decir"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "cómo"
+            },
+            {
+              "known": "to say",
+              "target": "decir"
+            }
+          ],
+          "teaches": "how to + verb uses cómo + infinitive"
+        },
+        {
+          "id": "S0060L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "different",
+            "target": "diferente"
+          }
+        },
+        {
+          "id": "S0060L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yet",
+            "target": "todavía"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:33.560Z",
+      "agentId": "agent-4.5"
+    },
+    {
+      "seed_id": "S0061",
+      "seed_pair": {
+        "known": "Could you say that again a little more slowly?",
+        "target": "¿Podrías decir eso otra vez un poco más despacio?"
+      },
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "could you",
+            "target": "podrías"
+          }
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "say",
+            "target": "decir"
+          }
+        },
+        {
+          "id": "S0061L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "that",
+            "target": "que"
+          }
+        },
+        {
+          "id": "S0061L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "again",
+            "target": "otra vez"
+          }
+        },
+        {
+          "id": "S0061L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little more slowly",
+            "target": "un poco más despacio"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un poco"
+            },
+            {
+              "known": "more",
+              "target": "más"
+            },
+            {
+              "known": "slowly",
+              "target": "despacio"
+            }
+          ],
+          "teaches": "Spanish adverb intensification order: quantity + más + adverb"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:20.234Z",
+      "agentId": "5.1"
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": {
+        "known": "I'm not sure if I can help you at the same time.",
+        "target": "No estoy seguro si puedo ayudarte al mismo tiempo."
+      },
+      "legos": [
+        {
+          "id": "S0062L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "no estoy seguro"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "estoy"
+            },
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "sure",
+              "target": "seguro"
+            }
+          ],
+          "teaches": "Spanish negation precedes the verb: no + verb + adjective"
+        },
+        {
+          "id": "S0062L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if",
+            "target": "si"
+          }
+        },
+        {
+          "id": "S0062L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I can",
+            "target": "puedo"
+          }
+        },
+        {
+          "id": "S0062L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "help you",
+            "target": "ayudarte"
+          }
+        },
+        {
+          "id": "S0062L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at the same time",
+            "target": "al mismo tiempo"
+          },
+          "components": [
+            {
+              "known": "at the",
+              "target": "al"
+            },
+            {
+              "known": "same",
+              "target": "mismo"
+            },
+            {
+              "known": "time",
+              "target": "tiempo"
+            }
+          ],
+          "teaches": "Contraction a + el = al before masculine nouns"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:34.686Z",
+      "agentId": "5.1"
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": {
+        "known": "Are you sure you don't mind helping me?",
+        "target": "¿Estás seguro de que no te importa ayudarme?"
+      },
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are you sure",
+            "target": "estás seguro"
+          }
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you don't mind",
+            "target": "no te importa"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "to you",
+              "target": "te"
+            },
+            {
+              "known": "it matters",
+              "target": "importa"
+            }
+          ],
+          "teaches": "Spanish uses indirect object + importar construction: no te importa (it doesn't matter to you)"
+        },
+        {
+          "id": "S0063L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "helping me",
+            "target": "ayudarme"
+          }
+        },
+        {
+          "id": "S0063L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "sure that",
+            "target": "seguro de que"
+          },
+          "components": [
+            {
+              "known": "sure",
+              "target": "seguro"
+            },
+            {
+              "known": "of/that",
+              "target": "de que"
+            }
+          ],
+          "teaches": "Spanish requires de que after seguro when followed by a clause"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:48.546Z",
+      "agentId": "5.1"
+    },
+    {
+      "seed_id": "S0064",
+      "seed_pair": {
+        "known": "Learning Spanish isn't easy but it is fun.",
+        "target": "Aprender español no es fácil pero es divertido."
+      },
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Learning Spanish",
+            "target": "aprender español"
+          },
+          "components": [
+            {
+              "known": "learning",
+              "target": "aprender"
+            },
+            {
+              "known": "Spanish",
+              "target": "español"
+            }
+          ],
+          "teaches": "infinitive form used as subject noun (Spanish uses infinitive where English uses -ing form)"
+        },
+        {
+          "id": "S0064L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "isn't",
+            "target": "no es"
+          }
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easy",
+            "target": "fácil"
+          }
+        },
+        {
+          "id": "S0064L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "pero"
+          }
+        },
+        {
+          "id": "S0064L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it is",
+            "target": "es"
+          }
+        },
+        {
+          "id": "S0064L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "fun",
+            "target": "divertido"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:16.481Z",
+      "agentId": "5.2"
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": {
+        "known": "It's important to take time to test yourself.",
+        "target": "Es importante tomar tiempo para ponerte a prueba."
+      },
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "It's important",
+            "target": "es importante"
+          },
+          "components": [
+            {
+              "known": "important",
+              "target": "importante"
+            }
+          ],
+          "teaches": "subject it omitted in Spanish impersonal constructions"
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to take",
+            "target": "tomar"
+          }
+        },
+        {
+          "id": "S0065L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "tiempo"
+          }
+        },
+        {
+          "id": "S0065L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to test yourself",
+            "target": "para ponerte a prueba"
+          },
+          "components": [
+            {
+              "known": "yourself",
+              "target": "te"
+            }
+          ],
+          "teaches": "para + reflexive verb for purpose clause; idiomatic ponerse a prueba for testing oneself"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:28.668Z",
+      "agentId": "5.2"
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": {
+        "known": "It's not difficult to find the answer.",
+        "target": "No es difícil encontrar la respuesta."
+      },
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "It's not difficult",
+            "target": "no es difícil"
+          },
+          "components": [
+            {
+              "known": "difficult",
+              "target": "difícil"
+            }
+          ],
+          "teaches": "negation pattern no es + adjective; subject it is omitted"
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find",
+            "target": "encontrar"
+          }
+        },
+        {
+          "id": "S0066L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the",
+            "target": "la"
+          }
+        },
+        {
+          "id": "S0066L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "answer",
+            "target": "respuesta"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:39.304Z",
+      "agentId": "5.2"
+    },
+    {
+      "seed_id": "S0067",
+      "seed_pair": {
+        "known": "Why do you want to stop?",
+        "target": "¿Por qué quieres parar?"
+      },
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "why",
+            "target": "por qué"
+          }
+        },
+        {
+          "id": "S0067L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you want",
+            "target": "quieres"
+          }
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to stop",
+            "target": "parar"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:44.122Z",
+      "agentId": "5.3"
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": {
+        "known": "What are you looking for?",
+        "target": "¿Qué buscas?"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "que"
+          }
+        },
+        {
+          "id": "S0068L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to look for",
+            "target": "buscar"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:55.029Z",
+      "agentId": "5.3"
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": {
+        "known": "He didn't want to look after the young dog all afternoon.",
+        "target": "Él no quería cuidar del perro joven toda la tarde."
+      },
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "él"
+          }
+        },
+        {
+          "id": "S0069L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "didn't want",
+            "target": "no quería"
+          },
+          "components": [
+            {
+              "known": "didn't",
+              "target": "no"
+            },
+            {
+              "known": "wanted",
+              "target": "quería"
+            }
+          ],
+          "teaches": "Spanish negation places no before the conjugated verb"
+        },
+        {
+          "id": "S0069L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to look after",
+            "target": "cuidar"
+          }
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the young dog",
+            "target": "el perro joven"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "el"
+            },
+            {
+              "known": "dog",
+              "target": "perro"
+            },
+            {
+              "known": "young",
+              "target": "joven"
+            }
+          ],
+          "teaches": "Spanish adjectives typically follow the noun"
+        },
+        {
+          "id": "S0069L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "all afternoon",
+            "target": "toda la tarde"
+          },
+          "components": [
+            {
+              "known": "all",
+              "target": "toda"
+            },
+            {
+              "known": "afternoon",
+              "target": "la tarde"
+            }
+          ],
+          "teaches": "All agrees with noun gender - toda for feminine tarde"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:33:22.288Z",
+      "agentId": "5.3"
+    },
+    {
+      "seed_id": "S0070",
+      "seed_pair": {
+        "known": "She didn't want to tell me where it was.",
+        "target": "Ella no quería decirme dónde estaba."
+      },
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "ella"
+          }
+        },
+        {
+          "id": "S0070L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "didn't want",
+            "target": "no quería"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "wanted",
+              "target": "quería"
+            }
+          ],
+          "teaches": "negation placement before imperfect tense verb"
+        },
+        {
+          "id": "S0070L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to tell me",
+            "target": "decirme"
+          }
+        },
+        {
+          "id": "S0070L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "where",
+            "target": "dónde"
+          }
+        },
+        {
+          "id": "S0070L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it was",
+            "target": "estaba"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:32.254Z",
+      "agentId": "5.4"
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": {
+        "known": "We didn't want to let anyone hear the truth.",
+        "target": "No queríamos dejar que nadie oyera la verdad."
+      },
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "we didn't want",
+            "target": "no queríamos"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "no"
+            },
+            {
+              "known": "we wanted",
+              "target": "queríamos"
+            }
+          ],
+          "teaches": "negation placement with first person plural imperfect"
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to let",
+            "target": "dejar que"
+          },
+          "components": [
+            {
+              "known": "to let",
+              "target": "dejar"
+            },
+            {
+              "known": "that",
+              "target": "que"
+            }
+          ],
+          "teaches": "let someone do requires dejar que + subjunctive"
+        },
+        {
+          "id": "S0071L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anyone",
+            "target": "nadie"
+          }
+        },
+        {
+          "id": "S0071L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "hear",
+            "target": "oyera"
+          }
+        },
+        {
+          "id": "S0071L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the truth",
+            "target": "la verdad"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "truth",
+              "target": "verdad"
+            }
+          ],
+          "teaches": "definite article required with abstract nouns in Spanish"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:47.525Z",
+      "agentId": "5.4"
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": {
+        "known": "I think that you're doing very well.",
+        "target": "Creo que lo estás haciendo muy bien."
+      },
+      "legos": [
+        {
+          "id": "S0072L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I think",
+            "target": "creo"
+          }
+        },
+        {
+          "id": "S0072L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "that",
+            "target": "que"
+          }
+        },
+        {
+          "id": "S0072L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you're doing it",
+            "target": "lo estás haciendo"
+          },
+          "components": [
+            {
+              "known": "it",
+              "target": "lo"
+            },
+            {
+              "known": "you are",
+              "target": "estás"
+            },
+            {
+              "known": "doing",
+              "target": "haciendo"
+            }
+          ],
+          "teaches": "present progressive with estar + gerund and object pronoun placement before auxiliary"
+        },
+        {
+          "id": "S0072L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very",
+            "target": "muy"
+          }
+        },
+        {
+          "id": "S0072L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "well",
+            "target": "bien"
+          }
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:58.654Z",
+      "agentId": "5.4"
+    },
+    {
+      "seed_id": "S0073",
+      "seed_pair": {
+        "known": "Thank you very much, but I've got more to learn.",
+        "target": "Muchas gracias, pero tengo más que aprender."
+      },
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "muchas gracias"
+          }
+        },
+        {
+          "id": "S0073L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "pero"
+          }
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I've got more to learn",
+            "target": "tengo más que aprender"
+          },
+          "components": [
+            {
+              "known": "I've got",
+              "target": "tengo"
+            },
+            {
+              "known": "more",
+              "target": "más"
+            },
+            {
+              "known": "to learn",
+              "target": "aprender"
+            }
+          ],
+          "teaches": "más que + infinitive pattern for expressing more to verb"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:26.990Z",
+      "agentId": "5.5"
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": {
+        "known": "Thank you very much for helping me to understand.",
+        "target": "Muchas gracias por ayudarme a entender."
+      },
+      "legos": [
+        {
+          "id": "S0074L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "muchas gracias"
+          }
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "for helping me to understand",
+            "target": "por ayudarme a entender"
+          },
+          "components": [
+            {
+              "known": "for",
+              "target": "por"
+            },
+            {
+              "known": "to help me",
+              "target": "ayudarme"
+            },
+            {
+              "known": "to understand",
+              "target": "entender"
+            }
+          ],
+          "teaches": "por + infinitive for 'for doing'; pronoun attachment to infinitive (ayudar+me); 'a' before entender"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:37.110Z",
+      "agentId": "5.5"
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": {
+        "known": "Have you got more to learn?",
+        "target": "¿Tienes más que aprender?"
+      },
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "have you got",
+            "target": "tienes"
+          }
+        },
+        {
+          "id": "S0075L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "more to learn",
+            "target": "más que aprender"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "más"
+            },
+            {
+              "known": "to learn",
+              "target": "aprender"
+            }
+          ],
+          "teaches": "más que + infinitive pattern for 'more to verb'"
+        }
+      ],
+      "receivedAt": "2025-11-24T15:32:47.591Z",
+      "agentId": "5.5"
+    }
+  ],
+  "phase2Applied": "2025-11-24T15:36:16.734Z",
+  "upchunked_mtypes": [
+    {
+      "id": "UP0001",
+      "type": "M",
+      "lego": {
+        "known": "i'm not sure (feminine speaker)",
+        "target": "no estoy segura"
+      },
+      "components": [
+        "no",
+        "estoy",
+        "segura"
+      ],
+      "teaches": "Gender agreement: feminine speaker uses 'segura' instead of 'seguro' for adjectives describing self",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0002",
+      "type": "M",
+      "lego": {
+        "known": "a little (before noun)",
+        "target": "un poco de"
+      },
+      "components": [
+        "un",
+        "poco",
+        "de"
+      ],
+      "teaches": "Partitive construction: 'un poco de' is used before nouns (un poco de agua), while 'un poco' stands alone or modifies verbs/adjectives",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0003",
+      "type": "M",
+      "lego": {
+        "known": "to stop (doing something)",
+        "target": "dejar de"
+      },
+      "components": [
+        "dejar",
+        "de"
+      ],
+      "teaches": "Verbal periphrasis: 'dejar de + infinitive' means to stop doing an action (dejar de fumar = stop smoking), while 'parar' means to stop moving or halt",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0004",
+      "type": "M",
+      "lego": {
+        "known": "about (approximately)",
+        "target": "aproximadamente"
+      },
+      "components": [
+        "aproximadamente"
+      ],
+      "teaches": "Numerical approximation: 'aproximadamente' is used for approximate quantities (aproximadamente diez = about ten)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0005",
+      "type": "M",
+      "lego": {
+        "known": "about (concerning a topic)",
+        "target": "sobre"
+      },
+      "components": [
+        "sobre"
+      ],
+      "teaches": "Topic/subject: 'sobre' means about/regarding when discussing a topic (un libro sobre historia = a book about history)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0006",
+      "type": "M",
+      "lego": {
+        "known": "about (location/area)",
+        "target": "por"
+      },
+      "components": [
+        "por"
+      ],
+      "teaches": "Location/vicinity: 'por' can mean about/around when referring to location (por aqui = around here)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0007",
+      "type": "M",
+      "lego": {
+        "known": "about (in phrases like 'think about')",
+        "target": "en"
+      },
+      "components": [
+        "en"
+      ],
+      "teaches": "Verb complement: 'en' follows certain verbs like 'pensar' (pensar en = to think about)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0008",
+      "type": "M",
+      "lego": {
+        "known": "what (interrogative)",
+        "target": "que"
+      },
+      "components": [
+        "que"
+      ],
+      "teaches": "Direct question: 'que' with accent is used in direct and indirect questions (Que quieres? = What do you want?)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0009",
+      "type": "M",
+      "lego": {
+        "known": "what (relative pronoun, 'the thing that')",
+        "target": "lo que"
+      },
+      "components": [
+        "lo",
+        "que"
+      ],
+      "teaches": "Relative clause: 'lo que' means 'what/that which' in statements referring to something unspecified (Lo que quiero = What I want / The thing that I want)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0010",
+      "type": "M",
+      "lego": {
+        "known": "that (conjunction, introduces clause)",
+        "target": "que"
+      },
+      "components": [
+        "que"
+      ],
+      "teaches": "Conjunction: 'que' connects clauses (Creo que si = I think that yes)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0011",
+      "type": "M",
+      "lego": {
+        "known": "that (demonstrative, pointing to something)",
+        "target": "eso"
+      },
+      "components": [
+        "eso"
+      ],
+      "teaches": "Demonstrative pronoun: 'eso' points to something specific (Eso es bueno = That is good). Neuter form for abstract or unspecified referents.",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0012",
+      "type": "M",
+      "lego": {
+        "known": "that (demonstrative, masculine noun)",
+        "target": "ese"
+      },
+      "components": [
+        "ese"
+      ],
+      "teaches": "Demonstrative adjective/pronoun: 'ese' refers to masculine nouns (ese libro = that book)",
+      "source": "phase2_upchunk"
+    },
+    {
+      "id": "UP0013",
+      "type": "M",
+      "lego": {
+        "known": "that (demonstrative, feminine noun)",
+        "target": "esa"
+      },
+      "components": [
+        "esa"
+      ],
+      "teaches": "Demonstrative adjective/pronoun: 'esa' refers to feminine nouns (esa casa = that house)",
+      "source": "phase2_upchunk"
+    }
+  ]
+}

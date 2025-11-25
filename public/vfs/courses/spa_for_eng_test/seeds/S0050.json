@@ -1,0 +1,64 @@
+{
+  "seed_id": "S0050",
+  "seed_pair": {
+    "known": "I'm not trying to finish as quickly as possible.",
+    "target": "No estoy intentando terminar lo más rápido posible."
+  },
+  "legos": [
+    {
+      "id": "S0050L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm not trying",
+        "target": "No estoy intentando"
+      },
+      "components": [
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "I'm",
+          "target": "estoy"
+        },
+        {
+          "known": "trying",
+          "target": "intentando"
+        }
+      ],
+      "teaches": "no placement before verb; estar + gerund for present continuous"
+    },
+    {
+      "id": "S0050L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to finish",
+        "target": "terminar"
+      }
+    },
+    {
+      "id": "S0050L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "as quickly as possible",
+        "target": "lo más rápido posible"
+      },
+      "components": [
+        {
+          "known": "quickly",
+          "target": "rápido"
+        },
+        {
+          "known": "possible",
+          "target": "posible"
+        }
+      ],
+      "teaches": "lo más [adj] posible construction for as [adj] as possible"
+    }
+  ],
+  "agentId": "agent-4.2",
+  "receivedAt": "2025-11-24T15:32:34.836Z"
+}

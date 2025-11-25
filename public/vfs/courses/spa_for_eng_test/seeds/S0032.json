@@ -1,0 +1,38 @@
+{
+  "seed_id": "S0032",
+  "seed_pair": {
+    "known": "Did you want to show me something?",
+    "target": "¿Querías mostrarme algo?"
+  },
+  "legos": [
+    {
+      "id": "S0032L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "did you want",
+        "target": "querías"
+      }
+    },
+    {
+      "id": "S0032L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to show me",
+        "target": "mostrarme"
+      }
+    },
+    {
+      "id": "S0032L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "something",
+        "target": "algo"
+      }
+    }
+  ],
+  "agentId": "3.1",
+  "receivedAt": "2025-11-24T15:32:38.363Z"
+}

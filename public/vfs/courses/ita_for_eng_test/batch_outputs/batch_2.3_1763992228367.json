@@ -1,0 +1,196 @@
+{
+  "browserId": 2,
+  "agentId": "2.3",
+  "seedRange": "S0022-S0024",
+  "seeds": [
+    {
+      "seed_id": "S0022",
+      "seed_pair": {
+        "known": "Because I want to meet people who speak Italian.",
+        "target": "Perché voglio incontrare persone che parlano italiano."
+      },
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0022L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "incontrare"
+          }
+        },
+        {
+          "id": "S0022L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "people",
+            "target": "persone"
+          }
+        },
+        {
+          "id": "S0022L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "who speak",
+            "target": "che parlano"
+          },
+          "components": [
+            {
+              "known": "who",
+              "target": "che"
+            },
+            {
+              "known": "speak",
+              "target": "parlano"
+            }
+          ],
+          "teaches": "relative who in clauses is che not chi"
+        },
+        {
+          "id": "S0022L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": {
+        "known": "I'm going to start talking more soon.",
+        "target": "Presto comincerò a parlare di più."
+      },
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "soon",
+            "target": "presto"
+          }
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm going to start",
+            "target": "comincerò"
+          }
+        },
+        {
+          "id": "S0023L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to talk",
+            "target": "a parlare"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "a"
+            },
+            {
+              "known": "talk",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "cominciare takes a before infinitive"
+        },
+        {
+          "id": "S0023L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "more",
+            "target": "di più"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": {
+        "known": "I'm not going to be able to remember easily.",
+        "target": "Non riuscirò a ricordare facilmente."
+      },
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not going to be able",
+            "target": "non riuscirò"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I'm going to be able",
+              "target": "riuscirò"
+            }
+          ],
+          "teaches": "negation non precedes verb and be able uses riuscire"
+        },
+        {
+          "id": "S0024L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "a ricordare"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "a"
+            },
+            {
+              "known": "remember",
+              "target": "ricordare"
+            }
+          ],
+          "teaches": "riuscire requires a before infinitive"
+        },
+        {
+          "id": "S0024L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easily",
+            "target": "facilmente"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:28.367Z"
+}

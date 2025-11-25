@@ -1,0 +1,183 @@
+{
+  "browserId": 4,
+  "agentId": "4.1",
+  "seedRange": "S0046-S0048",
+  "seeds": [
+    {
+      "seed_id": "S0046",
+      "seed_pair": {
+        "known": "But I don't worry about making mistakes.",
+        "target": "Ma non mi preoccupo di fare errori."
+      },
+      "legos": [
+        {
+          "id": "S0046L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0046L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't worry about",
+            "target": "non mi preoccupo di"
+          },
+          "components": [
+            {
+              "known": "I worry",
+              "target": "mi preoccupo"
+            },
+            {
+              "known": "about",
+              "target": "di"
+            }
+          ],
+          "teaches": "reflexive verb preoccuparsi with negation + preposition di"
+        },
+        {
+          "id": "S0046L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to make mistakes",
+            "target": "fare errori"
+          }
+        },
+        {
+          "id": "S0046L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "mistakes",
+            "target": "errori"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0047",
+      "seed_pair": {
+        "known": "Because I think that it's a good thing to make mistakes.",
+        "target": "Perché penso che sia una buona cosa fare errori."
+      },
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0047L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I think that",
+            "target": "penso che"
+          },
+          "components": [
+            {
+              "known": "I think",
+              "target": "penso"
+            }
+          ],
+          "teaches": "verb + che introducing subordinate clause (triggers subjunctive)"
+        },
+        {
+          "id": "S0047L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it's a good thing",
+            "target": "è una buona cosa"
+          },
+          "components": [
+            {
+              "known": "it is",
+              "target": "è"
+            },
+            {
+              "known": "a good thing",
+              "target": "una buona cosa"
+            }
+          ],
+          "teaches": "impersonal it is + noun phrase construction"
+        },
+        {
+          "id": "S0047L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a good thing",
+            "target": "una buona cosa"
+          }
+        },
+        {
+          "id": "S0047L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to make mistakes",
+            "target": "fare errori"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0048",
+      "seed_pair": {
+        "known": "I don't care about making mistakes.",
+        "target": "Non mi importa di fare errori."
+      },
+      "legos": [
+        {
+          "id": "S0048L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't care about",
+            "target": "non mi importa di"
+          },
+          "components": [
+            {
+              "known": "I care",
+              "target": "mi importa"
+            },
+            {
+              "known": "about",
+              "target": "di"
+            }
+          ],
+          "teaches": "impersonal verb importare with dative (literally: it doesn't matter to me)"
+        },
+        {
+          "id": "S0048L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to make mistakes",
+            "target": "fare errori"
+          }
+        },
+        {
+          "id": "S0048L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "mistakes",
+            "target": "errori"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:47.718Z"
+}

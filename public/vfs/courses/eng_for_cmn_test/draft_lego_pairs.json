@@ -1,0 +1,4818 @@
+{
+  "course": "eng_for_cmn_test",
+  "generated": "2025-11-24T14:52:43.502Z",
+  "totalSeeds": 75,
+  "totalLegos": 317,
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "我现在想和你说英语。",
+        "target": "I want to speak English with you now."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I want"
+          }
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "to speak"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "和你",
+            "target": "with you"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "now"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "我正在努力学习。",
+        "target": "I'm trying to learn."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0002L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "正在努力",
+            "target": "am trying to"
+          },
+          "components": [
+            {
+              "known": "正在",
+              "target": "am -ing"
+            },
+            {
+              "known": "努力",
+              "target": "trying"
+            }
+          ],
+          "teaches": "Progressive aspect with effort verb - English uses am + verb-ing structure"
+        },
+        {
+          "id": "S0002L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学习",
+            "target": "learn"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "尽可能经常地说。",
+        "target": "how to speak as often as possible."
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to speak"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how to"
+            },
+            {
+              "known": "说",
+              "target": "speak"
+            }
+          ],
+          "teaches": "Question word + infinitive structure - English uses how to + verb"
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽可能经常",
+            "target": "as often as possible"
+          },
+          "components": [
+            {
+              "known": "尽可能",
+              "target": "as...as possible"
+            },
+            {
+              "known": "经常",
+              "target": "often"
+            }
+          ],
+          "teaches": "Comparative frequency structure - English wraps adjective in as...as possible"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "用英语怎么说",
+        "target": "how to say something in English"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how"
+            },
+            {
+              "known": "说",
+              "target": "to say"
+            }
+          ],
+          "teaches": "question word order - Chinese puts 怎么 before verb, English uses how to + infinitive"
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "某事",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "用英语",
+            "target": "in English"
+          },
+          "components": [
+            {
+              "known": "用",
+              "target": "in"
+            },
+            {
+              "known": "英语",
+              "target": "English"
+            }
+          ],
+          "teaches": "preposition difference - Chinese uses 用 (use), English uses in"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我要",
+            "target": "I'm going to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "要",
+              "target": "am going to"
+            }
+          ],
+          "teaches": "future intention - Chinese 要 becomes English progressive going to structure"
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "练习",
+            "target": "practise"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "speaking"
+          }
+        },
+        {
+          "id": "S0005L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和别人",
+            "target": "with someone else"
+          },
+          "components": [
+            {
+              "known": "和",
+              "target": "with"
+            },
+            {
+              "known": "别人",
+              "target": "someone else"
+            }
+          ],
+          "teaches": "preposition + pronoun phrase order is same but 别人 maps to two-word someone else"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "我在努力想起一个词。",
+        "target": "I'm trying to remember a word."
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我在努力",
+            "target": "I'm trying to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "在努力",
+              "target": "am trying to"
+            }
+          ],
+          "teaches": "progressive aspect - Chinese 在 + verb becomes English be + verb-ing + to"
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想起",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "一个词",
+            "target": "a word"
+          },
+          "components": [
+            {
+              "known": "一",
+              "target": "a"
+            },
+            {
+              "known": "个",
+              "target": ""
+            },
+            {
+              "known": "词",
+              "target": "word"
+            }
+          ],
+          "teaches": "classifier omission - Chinese requires measure word 个, English article a has no classifier"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "我想今天尽我所能地尝试。",
+        "target": "I want to try as hard as I can today."
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I want to"
+          }
+        },
+        {
+          "id": "S0007L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "尝试",
+            "target": "to try"
+          }
+        },
+        {
+          "id": "S0007L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽我所能",
+            "target": "as hard as I can"
+          },
+          "components": [
+            {
+              "known": "尽",
+              "target": "as"
+            },
+            {
+              "known": "我所能",
+              "target": "I can"
+            }
+          ],
+          "teaches": "Idiomatic expression for maximum effort - as X as I can structure"
+        },
+        {
+          "id": "S0007L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "今天",
+            "target": "today"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "我要试着解释我的意思。",
+        "target": "I'm going to try to explain what I mean."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我要",
+            "target": "I'm going to"
+          }
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "试着",
+            "target": "try to"
+          }
+        },
+        {
+          "id": "S0008L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "解释",
+            "target": "to explain"
+          }
+        },
+        {
+          "id": "S0008L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我的意思",
+            "target": "what I mean"
+          },
+          "components": [
+            {
+              "known": "我的",
+              "target": "my"
+            },
+            {
+              "known": "意思",
+              "target": "meaning"
+            }
+          ],
+          "teaches": "Indirect question structure - what I mean uses possessive form in Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "我现在会说一点英语了。",
+        "target": "I speak a little English now."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我会说",
+            "target": "I speak"
+          }
+        },
+        {
+          "id": "S0009L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一点",
+            "target": "a little"
+          }
+        },
+        {
+          "id": "S0009L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0009L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "now"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "我不确定我能不能记住整个句子。",
+        "target": "I'm not sure if I can remember the whole sentence."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "确定",
+            "target": "sure"
+          }
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "句子",
+            "target": "sentence"
+          }
+        },
+        {
+          "id": "S0010L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "整个",
+            "target": "whole"
+          }
+        },
+        {
+          "id": "S0010L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不确定我能不能",
+            "target": "I'm not sure if I can"
+          },
+          "components": [
+            {
+              "known": "确定",
+              "target": "sure"
+            }
+          ],
+          "teaches": "embedded uncertainty with 能不能 pattern for possibility"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": {
+        "known": "我想在你说完之后能够说话。",
+        "target": "I'd like to be able to speak after you finish."
+      },
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "完成",
+            "target": "finish"
+          }
+        },
+        {
+          "id": "S0011L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你说完之后",
+            "target": "after you finish"
+          },
+          "components": [
+            {
+              "known": "完成",
+              "target": "finish"
+            }
+          ],
+          "teaches": "time sequence with 之后 for after-action"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": {
+        "known": "我不想猜测明天会发生什么。",
+        "target": "I wouldn't like to guess what's going to happen tomorrow."
+      },
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "猜测",
+            "target": "guess"
+          }
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "明天",
+            "target": "tomorrow"
+          }
+        },
+        {
+          "id": "S0012L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "发生",
+            "target": "happen"
+          }
+        },
+        {
+          "id": "S0012L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "会发生什么",
+            "target": "what's going to happen"
+          },
+          "components": [
+            {
+              "known": "发生",
+              "target": "happen"
+            }
+          ],
+          "teaches": "embedded question with future marker 会 and interrogative 什么"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0013",
+      "seed_pair": {
+        "known": "你英语说得很好。",
+        "target": "You speak English very well."
+      },
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0013L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "很好",
+            "target": "very well"
+          }
+        },
+        {
+          "id": "S0013L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "说得很好",
+            "target": "speak very well"
+          },
+          "components": [
+            {
+              "known": "说",
+              "target": "speak"
+            },
+            {
+              "known": "很好",
+              "target": "very well"
+            }
+          ],
+          "teaches": "Chinese result complement structure with 得 (de) linking verb to degree/manner"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": {
+        "known": "你整天都说英语吗？",
+        "target": "Do you speak English all day?"
+      },
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "整天",
+            "target": "all day"
+          }
+        },
+        {
+          "id": "S0014L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你...吗？",
+            "target": "Do you...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "吗",
+              "target": "?"
+            }
+          ],
+          "teaches": "Chinese yes/no question formation by adding 吗 at sentence end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": {
+        "known": "而且我想让你明天跟我说英语。",
+        "target": "And I want you to speak English with me tomorrow."
+      },
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "而且",
+            "target": "and"
+          }
+        },
+        {
+          "id": "S0015L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "明天",
+            "target": "tomorrow"
+          }
+        },
+        {
+          "id": "S0015L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "跟我",
+            "target": "with me"
+          }
+        },
+        {
+          "id": "S0015L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想让你...",
+            "target": "I want you to..."
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            },
+            {
+              "known": "让",
+              "target": "to have/make"
+            },
+            {
+              "known": "你",
+              "target": "you"
+            }
+          ],
+          "teaches": "Chinese causative construction with 让 - expressing wanting someone to do something"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0016",
+      "seed_pair": {
+        "known": "他想之后和其他人一起回来。",
+        "target": "He wants to come back with everyone else later on."
+      },
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他想",
+            "target": "He wants"
+          }
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "回来",
+            "target": "to come back"
+          }
+        },
+        {
+          "id": "S0016L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和其他人一起",
+            "target": "with everyone else"
+          },
+          "components": [
+            {
+              "known": "其他人",
+              "target": "everyone else"
+            }
+          ],
+          "teaches": "和...一起 structure for with"
+        },
+        {
+          "id": "S0016L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "之后",
+            "target": "later on"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": {
+        "known": "她想知道答案是什么。",
+        "target": "She wants to find out what the answer is."
+      },
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她想",
+            "target": "She wants"
+          }
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "知道",
+            "target": "to find out"
+          }
+        },
+        {
+          "id": "S0017L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "答案是什么",
+            "target": "what the answer is"
+          },
+          "components": [
+            {
+              "known": "答案",
+              "target": "the answer"
+            },
+            {
+              "known": "什么",
+              "target": "what"
+            }
+          ],
+          "teaches": "question word placement at end in Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": {
+        "known": "我们想今天晚上六点见面。",
+        "target": "We want to meet at six o'clock this evening."
+      },
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们想",
+            "target": "We want"
+          }
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "见面",
+            "target": "to meet"
+          }
+        },
+        {
+          "id": "S0018L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "六点",
+            "target": "six o'clock"
+          }
+        },
+        {
+          "id": "S0018L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "今天晚上",
+            "target": "this evening"
+          },
+          "components": [
+            {
+              "known": "今天",
+              "target": "today"
+            },
+            {
+              "known": "晚上",
+              "target": "evening"
+            }
+          ],
+          "teaches": "Chinese uses today+evening not this evening"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "seed_pair": {
+        "known": "但是我不想停止说话。",
+        "target": "But I do not want to stop talking."
+      },
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不想",
+            "target": "I do not want to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不想",
+              "target": "do not want"
+            }
+          ],
+          "teaches": "to before verb is not expressed in Chinese"
+        },
+        {
+          "id": "S0019L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "停止",
+            "target": "to stop"
+          }
+        },
+        {
+          "id": "S0019L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "talking"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": {
+        "known": "你想很快学会他的名字。",
+        "target": "You want to learn his name quickly."
+      },
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0020L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "want to"
+          }
+        },
+        {
+          "id": "S0020L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "很快",
+            "target": "quickly"
+          }
+        },
+        {
+          "id": "S0020L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学会",
+            "target": "to learn"
+          }
+        },
+        {
+          "id": "S0020L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "他的名字",
+            "target": "his name"
+          },
+          "components": [
+            {
+              "known": "他的",
+              "target": "his"
+            },
+            {
+              "known": "名字",
+              "target": "name"
+            }
+          ],
+          "teaches": "possessive structure with 的 particle"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": {
+        "known": "你为什么在学她的名字？",
+        "target": "Why are you learning her name?"
+      },
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "为什么",
+            "target": "why"
+          }
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你在学",
+            "target": "are you learning"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "在学",
+              "target": "are learning"
+            }
+          ],
+          "teaches": "progressive aspect using 在 before verb"
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "她的名字",
+            "target": "her name"
+          },
+          "components": [
+            {
+              "known": "她的",
+              "target": "her"
+            },
+            {
+              "known": "名字",
+              "target": "name"
+            }
+          ],
+          "teaches": "possessive structure with 的 particle"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "seed_pair": {
+        "known": "因为我想认识会说英语的人。",
+        "target": "Because I want to meet people who speak English."
+      },
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "因为",
+            "target": "because"
+          }
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I want"
+          }
+        },
+        {
+          "id": "S0022L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "认识",
+            "target": "to meet"
+          }
+        },
+        {
+          "id": "S0022L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "人",
+            "target": "people"
+          }
+        },
+        {
+          "id": "S0022L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0022L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "to speak"
+          }
+        },
+        {
+          "id": "S0022L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "会说英语的人",
+            "target": "people who speak English"
+          },
+          "components": [
+            {
+              "known": "人",
+              "target": "people"
+            },
+            {
+              "known": "说",
+              "target": "to speak"
+            },
+            {
+              "known": "英语",
+              "target": "English"
+            }
+          ],
+          "teaches": "Relative clause structure: Chinese uses 的 before noun (verb+object+的+noun) vs English who/that after noun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": {
+        "known": "我很快就要开始多说话了。",
+        "target": "I'm going to start talking more soon."
+      },
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "很快",
+            "target": "soon"
+          }
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "开始",
+            "target": "to start"
+          }
+        },
+        {
+          "id": "S0023L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "to talk"
+          }
+        },
+        {
+          "id": "S0023L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "多",
+            "target": "more"
+          }
+        },
+        {
+          "id": "S0023L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我就要...了",
+            "target": "I'm going to..."
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "要",
+              "target": "going to"
+            }
+          ],
+          "teaches": "Near future tense: Chinese uses 就要...了 pattern wrapping the verb vs English uses be going to before verb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": {
+        "known": "我不会轻易记住的。",
+        "target": "I'm not going to be able to remember easily."
+      },
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "轻易",
+            "target": "easily"
+          }
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "to remember"
+          }
+        },
+        {
+          "id": "S0024L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不会",
+            "target": "not going to be able to"
+          }
+        },
+        {
+          "id": "S0024L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不会...的",
+            "target": "I'm not going to be able to..."
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不会",
+              "target": "not going to be able to"
+            }
+          ],
+          "teaches": "Negative future capability: Chinese uses 不会...的 pattern vs English stacks auxiliary verbs (not going to be able to)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "seed_pair": {
+        "known": "你会在我必须走之前帮我吗？",
+        "target": "Are you going to help me before I have to go?"
+      },
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "帮",
+            "target": "to help"
+          }
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "之前",
+            "target": "before"
+          }
+        },
+        {
+          "id": "S0025L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "走",
+            "target": "to go"
+          }
+        },
+        {
+          "id": "S0025L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我必须走",
+            "target": "I have to go"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "必须",
+              "target": "have to"
+            },
+            {
+              "known": "走",
+              "target": "go"
+            }
+          ],
+          "teaches": "have to expressed as 必须 placed before the verb"
+        },
+        {
+          "id": "S0025L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你会...吗？",
+            "target": "Are you going to...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "会",
+              "target": "will/going to"
+            },
+            {
+              "known": "吗",
+              "target": "question marker"
+            }
+          ],
+          "teaches": "future question pattern with 会 and sentence-final 吗"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": {
+        "known": "我喜欢感觉好像我快准备好要走了。",
+        "target": "I like feeling as if I am nearly ready to go."
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "喜欢",
+            "target": "to like"
+          }
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "感觉",
+            "target": "feeling"
+          }
+        },
+        {
+          "id": "S0026L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "好像",
+            "target": "as if"
+          }
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "准备好",
+            "target": "ready"
+          }
+        },
+        {
+          "id": "S0026L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我快准备好了",
+            "target": "I am nearly ready"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "快",
+              "target": "nearly"
+            },
+            {
+              "known": "准备好",
+              "target": "ready"
+            },
+            {
+              "known": "了",
+              "target": "aspect marker"
+            }
+          ],
+          "teaches": "快 means nearly/almost and comes before the verb/adjective"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": {
+        "known": "我不喜欢花太多时间来回答。",
+        "target": "I do not like taking too much time to answer."
+      },
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "太多",
+            "target": "too much"
+          }
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "时间",
+            "target": "time"
+          }
+        },
+        {
+          "id": "S0027L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "回答",
+            "target": "to answer"
+          }
+        },
+        {
+          "id": "S0027L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "花时间",
+            "target": "taking time"
+          },
+          "components": [
+            {
+              "known": "花",
+              "target": "to spend"
+            },
+            {
+              "known": "时间",
+              "target": "time"
+            }
+          ],
+          "teaches": "花 means to spend when used with time"
+        },
+        {
+          "id": "S0027L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不喜欢",
+            "target": "I do not like"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "喜欢",
+              "target": "like"
+            }
+          ],
+          "teaches": "negation with 不 placed directly before the verb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "尽快开始说话是很有用的。",
+        "target": "It's useful to start talking as soon as you can."
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有用",
+            "target": "useful"
+          }
+        },
+        {
+          "id": "S0028L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "开始",
+            "target": "to start"
+          }
+        },
+        {
+          "id": "S0028L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "talking"
+          }
+        },
+        {
+          "id": "S0028L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "尽快",
+            "target": "as soon as you can"
+          }
+        },
+        {
+          "id": "S0028L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "开始说话",
+            "target": "to start talking"
+          },
+          "components": [
+            {
+              "known": "开始",
+              "target": "to start"
+            },
+            {
+              "known": "说话",
+              "target": "talking"
+            }
+          ],
+          "teaches": "verb + gerund pattern after start"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "我期待尽快能说得更好。",
+        "target": "I'm looking forward to speaking better as soon as I can."
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "期待",
+            "target": "looking forward to"
+          }
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speaking"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "更好",
+            "target": "better"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我期待",
+            "target": "I'm looking forward to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "期待",
+              "target": "looking forward to"
+            }
+          ],
+          "teaches": "progressive tense and gerund after to"
+        },
+        {
+          "id": "S0029L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "说得更好",
+            "target": "speaking better"
+          },
+          "components": [
+            {
+              "known": "说",
+              "target": "speaking"
+            },
+            {
+              "known": "更好",
+              "target": "better"
+            }
+          ],
+          "teaches": "adverb placement after verb in English"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "我昨天想问你一件事。",
+        "target": "I wanted to ask you something yesterday."
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "wanted"
+          }
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "问",
+            "target": "to ask"
+          }
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一件事",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0030L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "昨天",
+            "target": "yesterday"
+          }
+        },
+        {
+          "id": "S0030L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "想问你",
+            "target": "wanted to ask you"
+          },
+          "components": [
+            {
+              "known": "想",
+              "target": "wanted"
+            },
+            {
+              "known": "问",
+              "target": "to ask"
+            },
+            {
+              "known": "你",
+              "target": "you"
+            }
+          ],
+          "teaches": "to + infinitive pattern and past tense -ed"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0031",
+      "seed_pair": {
+        "known": "你今晚想和我说话。",
+        "target": "You wanted to speak with me tonight."
+      },
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "今晚",
+            "target": "tonight"
+          }
+        },
+        {
+          "id": "S0031L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "to speak"
+          }
+        },
+        {
+          "id": "S0031L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "和我",
+            "target": "with me"
+          }
+        },
+        {
+          "id": "S0031L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "想和我说话",
+            "target": "wanted to speak with me"
+          },
+          "components": [
+            {
+              "known": "和我",
+              "target": "with me"
+            },
+            {
+              "known": "说话",
+              "target": "to speak"
+            }
+          ],
+          "teaches": "Chinese places 和 (with) before the verb, linking with me + speak as 和我说话"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0032",
+      "seed_pair": {
+        "known": "你想给我看什么东西吗？",
+        "target": "Did you want to show me something?"
+      },
+      "legos": [
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "什么东西",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0032L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "给我看",
+            "target": "show me"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "me"
+            },
+            {
+              "known": "看",
+              "target": "to look"
+            }
+          ],
+          "teaches": "Chinese show me uses 给我看 (give-me-look) construction"
+        },
+        {
+          "id": "S0032L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你想...吗？",
+            "target": "Did you want to...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            }
+          ],
+          "teaches": "Yes/no question formation using 吗 particle at sentence end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0033",
+      "seed_pair": {
+        "known": "你学英语学了多久了？",
+        "target": "How long have you been learning English?"
+      },
+      "legos": [
+        {
+          "id": "S0033L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0033L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "多久",
+            "target": "how long"
+          }
+        },
+        {
+          "id": "S0033L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学",
+            "target": "to learn"
+          }
+        },
+        {
+          "id": "S0033L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "学了多久了",
+            "target": "have been learning for how long"
+          },
+          "components": [
+            {
+              "known": "学",
+              "target": "to learn"
+            },
+            {
+              "known": "多久",
+              "target": "how long"
+            }
+          ],
+          "teaches": "Duration aspect uses verb+了...了 pattern to express ongoing action duration"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0034",
+      "seed_pair": {
+        "known": "当别人在这里的时候，他不想安静。",
+        "target": "He doesn't want to be quiet when other people are here."
+      },
+      "legos": [
+        {
+          "id": "S0034L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他",
+            "target": "he"
+          }
+        },
+        {
+          "id": "S0034L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "doesn't want to"
+          }
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "安静",
+            "target": "quiet"
+          }
+        },
+        {
+          "id": "S0034L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "当别人在这里的时候",
+            "target": "when other people are here"
+          },
+          "components": [
+            {
+              "known": "别人",
+              "target": "other people"
+            },
+            {
+              "known": "在这里",
+              "target": "here"
+            }
+          ],
+          "teaches": "time subordinate clause with 当...的时候 pattern and clause-initial placement"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0035",
+      "seed_pair": {
+        "known": "她今天下午不想读任何东西。",
+        "target": "She doesn't want to read anything this afternoon."
+      },
+      "legos": [
+        {
+          "id": "S0035L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她",
+            "target": "she"
+          }
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "doesn't want to"
+          }
+        },
+        {
+          "id": "S0035L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "读",
+            "target": "read"
+          }
+        },
+        {
+          "id": "S0035L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "任何东西",
+            "target": "anything"
+          }
+        },
+        {
+          "id": "S0035L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "今天下午",
+            "target": "this afternoon"
+          },
+          "components": [
+            {
+              "known": "今天",
+              "target": "today"
+            },
+            {
+              "known": "下午",
+              "target": "afternoon"
+            }
+          ],
+          "teaches": "Chinese time expressions use day+period order; this is implicit in 今天下午"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0036",
+      "seed_pair": {
+        "known": "我们不想打断这个故事。",
+        "target": "We don't want to interrupt the story."
+      },
+      "legos": [
+        {
+          "id": "S0036L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们",
+            "target": "we"
+          }
+        },
+        {
+          "id": "S0036L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "don't want to"
+          }
+        },
+        {
+          "id": "S0036L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "打断",
+            "target": "interrupt"
+          }
+        },
+        {
+          "id": "S0036L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "这个故事",
+            "target": "the story"
+          },
+          "components": [
+            {
+              "known": "这个",
+              "target": "the"
+            },
+            {
+              "known": "故事",
+              "target": "story"
+            }
+          ],
+          "teaches": "Chinese uses demonstrative 这个 where English uses definite article the"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0037",
+      "seed_pair": {
+        "known": "上个月我开始仔细地考虑这件事。",
+        "target": "I started to think about it carefully last month."
+      },
+      "legos": [
+        {
+          "id": "S0037L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "上个月",
+            "target": "last month"
+          }
+        },
+        {
+          "id": "S0037L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "仔细地",
+            "target": "carefully"
+          }
+        },
+        {
+          "id": "S0037L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我开始考虑",
+            "target": "I started to think about"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "开始",
+              "target": "started to"
+            },
+            {
+              "known": "考虑",
+              "target": "think about"
+            }
+          ],
+          "teaches": "started to + verb structure using 开始"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0038",
+      "seed_pair": {
+        "known": "我学习大约一个星期了。",
+        "target": "I've been learning for about a week."
+      },
+      "legos": [
+        {
+          "id": "S0038L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学习",
+            "target": "learning"
+          }
+        },
+        {
+          "id": "S0038L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "大约",
+            "target": "about"
+          }
+        },
+        {
+          "id": "S0038L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "一个星期",
+            "target": "a week"
+          },
+          "components": [
+            {
+              "known": "一",
+              "target": "one"
+            },
+            {
+              "known": "个",
+              "target": "(classifier)"
+            },
+            {
+              "known": "星期",
+              "target": "week"
+            }
+          ],
+          "teaches": "number + classifier 个 + time noun structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0039",
+      "seed_pair": {
+        "known": "但是今天早上我有点累。",
+        "target": "But I'm a little tired this morning."
+      },
+      "legos": [
+        {
+          "id": "S0039L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0039L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "今天早上",
+            "target": "this morning"
+          },
+          "components": [
+            {
+              "known": "今天",
+              "target": "today"
+            },
+            {
+              "known": "早上",
+              "target": "morning"
+            }
+          ],
+          "teaches": "today + morning = this morning in Chinese"
+        },
+        {
+          "id": "S0039L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "有点累",
+            "target": "a little tired"
+          },
+          "components": [
+            {
+              "known": "有点",
+              "target": "a little"
+            },
+            {
+              "known": "累",
+              "target": "tired"
+            }
+          ],
+          "teaches": "有点 + adjective for expressing slight degree"
+        },
+        {
+          "id": "S0039L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "累",
+            "target": "tired"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0040",
+      "seed_pair": {
+        "known": "你现在感觉怎么样？",
+        "target": "How do you feel at the moment?"
+      },
+      "legos": [
+        {
+          "id": "S0040L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "at the moment"
+          }
+        },
+        {
+          "id": "S0040L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你感觉怎么样",
+            "target": "how do you feel"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "感觉",
+              "target": "feel"
+            },
+            {
+              "known": "怎么样",
+              "target": "how"
+            }
+          ],
+          "teaches": "question formation with 怎么样 at end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0041",
+      "seed_pair": {
+        "known": "我感觉还好，但是我开始感到累了。",
+        "target": "I feel okay, but I'm starting to feel tired."
+      },
+      "legos": [
+        {
+          "id": "S0041L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我感觉还好",
+            "target": "I feel okay"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "感觉",
+              "target": "feel"
+            },
+            {
+              "known": "还好",
+              "target": "okay"
+            }
+          ],
+          "teaches": "还好 means okay/not bad"
+        },
+        {
+          "id": "S0041L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0041L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我开始感到累",
+            "target": "I'm starting to feel tired"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "开始",
+              "target": "starting to"
+            },
+            {
+              "known": "感到",
+              "target": "feel"
+            },
+            {
+              "known": "累",
+              "target": "tired"
+            }
+          ],
+          "teaches": "开始 + verb for starting to"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0042",
+      "seed_pair": {
+        "known": "我开始感觉比昨晚好一点了。",
+        "target": "I was starting to feel better than last night."
+      },
+      "legos": [
+        {
+          "id": "S0042L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我开始感觉",
+            "target": "I was starting to feel"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "开始",
+              "target": "was starting to"
+            },
+            {
+              "known": "感觉",
+              "target": "feel"
+            }
+          ],
+          "teaches": "past progressive using 开始"
+        },
+        {
+          "id": "S0042L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "比昨晚好",
+            "target": "better than last night"
+          },
+          "components": [
+            {
+              "known": "比",
+              "target": "than"
+            },
+            {
+              "known": "昨晚",
+              "target": "last night"
+            },
+            {
+              "known": "好",
+              "target": "better"
+            }
+          ],
+          "teaches": "比 comparison: 比 + noun + adjective"
+        },
+        {
+          "id": "S0042L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "昨晚",
+            "target": "last night"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0043",
+      "seed_pair": {
+        "known": "我没有在想怎么回答。",
+        "target": "I was not thinking about how to answer."
+      },
+      "legos": [
+        {
+          "id": "S0043L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0043L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "to think"
+          }
+        },
+        {
+          "id": "S0043L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "回答",
+            "target": "to answer"
+          }
+        },
+        {
+          "id": "S0043L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么回答",
+            "target": "how to answer"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how to"
+            },
+            {
+              "known": "回答",
+              "target": "answer"
+            }
+          ],
+          "teaches": "怎么 + verb pattern for expressing how to do something"
+        },
+        {
+          "id": "S0043L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "没有在想",
+            "target": "was not thinking"
+          },
+          "components": [
+            {
+              "known": "没有",
+              "target": "was not"
+            },
+            {
+              "known": "在",
+              "target": "[progressive marker]"
+            },
+            {
+              "known": "想",
+              "target": "thinking"
+            }
+          ],
+          "teaches": "没有在 + verb for past continuous negation"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0044",
+      "seed_pair": {
+        "known": "或者如果我需要改进。",
+        "target": "Or if I need to improve."
+      },
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "或者",
+            "target": "or"
+          }
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "如果",
+            "target": "if"
+          }
+        },
+        {
+          "id": "S0044L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "改进",
+            "target": "to improve"
+          }
+        },
+        {
+          "id": "S0044L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我需要改进",
+            "target": "I need to improve"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "需要",
+              "target": "need to"
+            },
+            {
+              "known": "改进",
+              "target": "improve"
+            }
+          ],
+          "teaches": "需要 + verb pattern for expressing necessity"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0045",
+      "seed_pair": {
+        "known": "我不需要知道一切。",
+        "target": "I do not need to know everything."
+      },
+      "legos": [
+        {
+          "id": "S0045L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "知道",
+            "target": "to know"
+          }
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一切",
+            "target": "everything"
+          }
+        },
+        {
+          "id": "S0045L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不需要",
+            "target": "do not need"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "需要",
+              "target": "need"
+            }
+          ],
+          "teaches": "不 + verb pattern for negation"
+        },
+        {
+          "id": "S0045L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不需要知道",
+            "target": "do not need to know"
+          },
+          "components": [
+            {
+              "known": "不需要",
+              "target": "do not need"
+            },
+            {
+              "known": "知道",
+              "target": "to know"
+            }
+          ],
+          "teaches": "Chaining negated auxiliary with main verb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0046",
+      "seed_pair": {
+        "known": "但是我不担心犯错。",
+        "target": "But I don't worry about making mistakes."
+      },
+      "legos": [
+        {
+          "id": "S0046L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0046L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "担心",
+            "target": "to worry about"
+          }
+        },
+        {
+          "id": "S0046L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "犯错",
+            "target": "to make mistakes"
+          }
+        },
+        {
+          "id": "S0046L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不担心...",
+            "target": "I don't worry about..."
+          },
+          "components": [
+            {
+              "known": "担心",
+              "target": "to worry about"
+            }
+          ],
+          "teaches": "Negation with 不 before verb; English uses don't auxiliary"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0047",
+      "seed_pair": {
+        "known": "因为我认为犯错是一件好事。",
+        "target": "Because I think that it's a good thing to make mistakes."
+      },
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "因为",
+            "target": "because"
+          }
+        },
+        {
+          "id": "S0047L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "认为",
+            "target": "to think"
+          }
+        },
+        {
+          "id": "S0047L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "好事",
+            "target": "a good thing"
+          }
+        },
+        {
+          "id": "S0047L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我认为...",
+            "target": "I think that..."
+          },
+          "components": [
+            {
+              "known": "认为",
+              "target": "to think"
+            }
+          ],
+          "teaches": "English adds that as subordinator; Chinese directly follows with clause"
+        },
+        {
+          "id": "S0047L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "...是一件好事",
+            "target": "it's a good thing to..."
+          },
+          "components": [
+            {
+              "known": "好事",
+              "target": "a good thing"
+            }
+          ],
+          "teaches": "English uses dummy it subject with infinitive; Chinese uses topic-comment structure with 是"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0048",
+      "seed_pair": {
+        "known": "我不在乎犯错。",
+        "target": "I don't care about making mistakes."
+      },
+      "legos": [
+        {
+          "id": "S0048L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "在乎",
+            "target": "to care about"
+          }
+        },
+        {
+          "id": "S0048L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不在乎...",
+            "target": "I don't care about..."
+          },
+          "components": [
+            {
+              "known": "在乎",
+              "target": "to care about"
+            }
+          ],
+          "teaches": "Negation with 不; English requires don't + about preposition"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0049",
+      "seed_pair": {
+        "known": "就是这样，如果你明白我的意思的话。",
+        "target": "It's like this, if you know what I mean."
+      },
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "就是这样",
+            "target": "It's like this"
+          },
+          "components": [
+            {
+              "known": "就是",
+              "target": "it's"
+            },
+            {
+              "known": "这样",
+              "target": "like this"
+            }
+          ],
+          "teaches": "it's + complement structure"
+        },
+        {
+          "id": "S0049L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "如果你明白我的意思的话",
+            "target": "if you know what I mean"
+          },
+          "components": [
+            {
+              "known": "如果",
+              "target": "if"
+            },
+            {
+              "known": "你明白",
+              "target": "you know"
+            },
+            {
+              "known": "我的意思",
+              "target": "what I mean"
+            }
+          ],
+          "teaches": "conditional clause with embedded question"
+        },
+        {
+          "id": "S0049L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "这样",
+            "target": "like this"
+          }
+        },
+        {
+          "id": "S0049L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "如果",
+            "target": "if"
+          }
+        },
+        {
+          "id": "S0049L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我的意思",
+            "target": "what I mean"
+          },
+          "components": [
+            {
+              "known": "我的",
+              "target": "my/what I"
+            },
+            {
+              "known": "意思",
+              "target": "mean/meaning"
+            }
+          ],
+          "teaches": "indirect question structure with what"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0050",
+      "seed_pair": {
+        "known": "我不是在尽可能快地完成。",
+        "target": "I'm not trying to finish as quickly as possible."
+      },
+      "legos": [
+        {
+          "id": "S0050L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不是在",
+            "target": "I'm not trying to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不是在",
+              "target": "am not trying to"
+            }
+          ],
+          "teaches": "negative progressive with intent"
+        },
+        {
+          "id": "S0050L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "完成",
+            "target": "finish"
+          }
+        },
+        {
+          "id": "S0050L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽可能快地",
+            "target": "as quickly as possible"
+          },
+          "components": [
+            {
+              "known": "尽可能",
+              "target": "as...as possible"
+            },
+            {
+              "known": "快地",
+              "target": "quickly"
+            }
+          ],
+          "teaches": "as + adverb + as possible structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0051",
+      "seed_pair": {
+        "known": "我喜欢和朋友一起做有趣的事情。",
+        "target": "I enjoy doing interesting things with my friends."
+      },
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我喜欢做",
+            "target": "I enjoy doing"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "喜欢",
+              "target": "enjoy"
+            },
+            {
+              "known": "做",
+              "target": "doing"
+            }
+          ],
+          "teaches": "gerund (-ing) after enjoy"
+        },
+        {
+          "id": "S0051L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "有趣的事情",
+            "target": "interesting things"
+          },
+          "components": [
+            {
+              "known": "有趣的",
+              "target": "interesting"
+            },
+            {
+              "known": "事情",
+              "target": "things"
+            }
+          ],
+          "teaches": "adjective before noun in English"
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和朋友一起",
+            "target": "with my friends"
+          },
+          "components": [
+            {
+              "known": "和",
+              "target": "with"
+            },
+            {
+              "known": "朋友",
+              "target": "friends"
+            }
+          ],
+          "teaches": "with + noun phrase for accompaniment"
+        },
+        {
+          "id": "S0051L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有趣的",
+            "target": "interesting"
+          }
+        },
+        {
+          "id": "S0051L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "朋友",
+            "target": "friends"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0052",
+      "seed_pair": {
+        "known": "他上周想给朋友写一封信。",
+        "target": "He wanted to write a letter to his friend last week."
+      },
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他",
+            "target": "he"
+          }
+        },
+        {
+          "id": "S0052L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "wanted to"
+          }
+        },
+        {
+          "id": "S0052L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "写",
+            "target": "write"
+          }
+        },
+        {
+          "id": "S0052L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一封信",
+            "target": "a letter"
+          }
+        },
+        {
+          "id": "S0052L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "朋友",
+            "target": "friend"
+          }
+        },
+        {
+          "id": "S0052L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "上周",
+            "target": "last week"
+          }
+        },
+        {
+          "id": "S0052L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "给朋友写信",
+            "target": "write a letter to a friend"
+          },
+          "components": [
+            {
+              "known": "给",
+              "target": "to"
+            },
+            {
+              "known": "写信",
+              "target": "write a letter"
+            }
+          ],
+          "teaches": "Chinese uses 给 before the recipient, English uses to after the action"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": {
+        "known": "她想把他的信放进她的包里。",
+        "target": "She wanted to put his letter in her bag."
+      },
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她",
+            "target": "she"
+          }
+        },
+        {
+          "id": "S0053L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "放",
+            "target": "put"
+          }
+        },
+        {
+          "id": "S0053L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他的信",
+            "target": "his letter"
+          }
+        },
+        {
+          "id": "S0053L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她的包",
+            "target": "her bag"
+          }
+        },
+        {
+          "id": "S0053L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "放进包里",
+            "target": "put in the bag"
+          },
+          "components": [
+            {
+              "known": "放",
+              "target": "put"
+            },
+            {
+              "known": "进...里",
+              "target": "in"
+            }
+          ],
+          "teaches": "Chinese uses 进...里 structure for into/in, English uses preposition in"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": {
+        "known": "我们想多给你一点时间。",
+        "target": "We wanted to give you a little more time."
+      },
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们",
+            "target": "we"
+          }
+        },
+        {
+          "id": "S0054L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "给",
+            "target": "give"
+          }
+        },
+        {
+          "id": "S0054L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0054L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "时间",
+            "target": "time"
+          }
+        },
+        {
+          "id": "S0054L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一点",
+            "target": "a little"
+          }
+        },
+        {
+          "id": "S0054L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "多给你一点",
+            "target": "give you a little more"
+          },
+          "components": [
+            {
+              "known": "多",
+              "target": "more"
+            },
+            {
+              "known": "给你",
+              "target": "give you"
+            },
+            {
+              "known": "一点",
+              "target": "a little"
+            }
+          ],
+          "teaches": "Chinese places 多 before the verb, English places more after the object"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0055",
+      "seed_pair": {
+        "known": "当我睡得不好的时候，我不喜欢起床。",
+        "target": "I don't enjoy waking up when I didn't sleep very well."
+      },
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "喜欢",
+            "target": "enjoy"
+          }
+        },
+        {
+          "id": "S0055L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "起床",
+            "target": "waking up"
+          }
+        },
+        {
+          "id": "S0055L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "……的时候",
+            "target": "when"
+          }
+        },
+        {
+          "id": "S0055L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "睡",
+            "target": "sleep"
+          }
+        },
+        {
+          "id": "S0055L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不喜欢",
+            "target": "I don't enjoy"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不",
+              "target": "don't"
+            },
+            {
+              "known": "喜欢",
+              "target": "enjoy"
+            }
+          ],
+          "teaches": "Negation pattern: subject + don't + verb"
+        },
+        {
+          "id": "S0055L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "睡得不好",
+            "target": "didn't sleep very well"
+          },
+          "components": [
+            {
+              "known": "睡",
+              "target": "sleep"
+            },
+            {
+              "known": "得",
+              "target": "(complement marker)"
+            },
+            {
+              "known": "不好",
+              "target": "not well"
+            }
+          ],
+          "teaches": "Past negative with 'didn't' + verb + adverb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0056",
+      "seed_pair": {
+        "known": "这样我就能记住怎么说几个词。",
+        "target": "So I can remember how to say a few words."
+      },
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "这样",
+            "target": "so"
+          }
+        },
+        {
+          "id": "S0056L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0056L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          }
+        },
+        {
+          "id": "S0056L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "几个",
+            "target": "a few"
+          }
+        },
+        {
+          "id": "S0056L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "词",
+            "target": "words"
+          }
+        },
+        {
+          "id": "S0056L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我能记住",
+            "target": "I can remember"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "能",
+              "target": "can"
+            },
+            {
+              "known": "记住",
+              "target": "remember"
+            }
+          ],
+          "teaches": "Modal 'can' + verb for ability"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0057",
+      "seed_pair": {
+        "known": "我记不住我想说什么怎么说。",
+        "target": "I can't remember how to say what I wanted to say."
+      },
+      "legos": [
+        {
+          "id": "S0057L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0057L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我记不住",
+            "target": "I can't remember"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "记不住",
+              "target": "can't remember"
+            }
+          ],
+          "teaches": "Negative modal 'can't' + verb for inability"
+        },
+        {
+          "id": "S0057L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          }
+        },
+        {
+          "id": "S0057L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想说的",
+            "target": "what I wanted to say"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "想",
+              "target": "wanted"
+            },
+            {
+              "known": "说",
+              "target": "say"
+            },
+            {
+              "known": "的",
+              "target": "what"
+            }
+          ],
+          "teaches": "Embedded question with 'what' as object of verb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0058",
+      "seed_pair": {
+        "known": "当你理解足够多的词汇时，这很有趣。",
+        "target": "It's interesting when you understand enough words."
+      },
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有趣",
+            "target": "interesting"
+          }
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "当……时",
+            "target": "when"
+          }
+        },
+        {
+          "id": "S0058L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "理解",
+            "target": "understand"
+          }
+        },
+        {
+          "id": "S0058L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "足够",
+            "target": "enough"
+          }
+        },
+        {
+          "id": "S0058L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "词汇",
+            "target": "words"
+          }
+        },
+        {
+          "id": "S0058L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "这很有趣",
+            "target": "it's interesting"
+          },
+          "components": [
+            {
+              "known": "这",
+              "target": "it"
+            },
+            {
+              "known": "有趣",
+              "target": "interesting"
+            }
+          ],
+          "teaches": "English uses it + is + adjective structure with dummy subject"
+        },
+        {
+          "id": "S0058L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "足够多的词汇",
+            "target": "enough words"
+          },
+          "components": [
+            {
+              "known": "足够",
+              "target": "enough"
+            },
+            {
+              "known": "词汇",
+              "target": "words"
+            }
+          ],
+          "teaches": "enough comes before the noun in English, not after"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": {
+        "known": "我知道下周我需要做的事情怎么做。",
+        "target": "I know how to do what I need to do next week."
+      },
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "知道",
+            "target": "know"
+          }
+        },
+        {
+          "id": "S0059L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "怎么",
+            "target": "how to"
+          }
+        },
+        {
+          "id": "S0059L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "做",
+            "target": "do"
+          }
+        },
+        {
+          "id": "S0059L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "需要",
+            "target": "need"
+          }
+        },
+        {
+          "id": "S0059L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "下周",
+            "target": "next week"
+          }
+        },
+        {
+          "id": "S0059L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我知道怎么做",
+            "target": "I know how to do"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "知道",
+              "target": "know"
+            },
+            {
+              "known": "怎么",
+              "target": "how to"
+            },
+            {
+              "known": "做",
+              "target": "do"
+            }
+          ],
+          "teaches": "how to follows know directly in English, verb infinitive after how to"
+        },
+        {
+          "id": "S0059L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我需要做的事情",
+            "target": "what I need to do"
+          },
+          "components": [
+            {
+              "known": "什么",
+              "target": "what"
+            },
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "需要",
+              "target": "need"
+            },
+            {
+              "known": "做",
+              "target": "do"
+            }
+          ],
+          "teaches": "what introduces embedded clause, need + to + verb structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": {
+        "known": "我还不知道怎么说足够多的不同的单词。",
+        "target": "I don't know how to say enough different words yet."
+      },
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "say"
+          }
+        },
+        {
+          "id": "S0060L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不同的",
+            "target": "different"
+          }
+        },
+        {
+          "id": "S0060L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "单词",
+            "target": "words"
+          }
+        },
+        {
+          "id": "S0060L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "还",
+            "target": "yet"
+          }
+        },
+        {
+          "id": "S0060L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不知道",
+            "target": "I don't know"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不",
+              "target": "don't"
+            },
+            {
+              "known": "知道",
+              "target": "know"
+            }
+          ],
+          "teaches": "English negation uses do + not before the verb"
+        },
+        {
+          "id": "S0060L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how to"
+            },
+            {
+              "known": "说",
+              "target": "say"
+            }
+          ],
+          "teaches": "how to + verb infinitive structure"
+        },
+        {
+          "id": "S0060L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "足够多的不同的单词",
+            "target": "enough different words"
+          },
+          "components": [
+            {
+              "known": "足够",
+              "target": "enough"
+            },
+            {
+              "known": "不同的",
+              "target": "different"
+            },
+            {
+              "known": "单词",
+              "target": "words"
+            }
+          ],
+          "teaches": "adjective order: enough before other adjectives, both before noun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0061",
+      "seed_pair": {
+        "known": "你能再说一遍慢一点吗？",
+        "target": "Could you say that again a little more slowly?"
+      },
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "say"
+          }
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "再",
+            "target": "again"
+          }
+        },
+        {
+          "id": "S0061L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "慢",
+            "target": "slowly"
+          }
+        },
+        {
+          "id": "S0061L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你能...吗？",
+            "target": "Could you...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "能",
+              "target": "can/could"
+            }
+          ],
+          "teaches": "Polite request pattern with 能"
+        },
+        {
+          "id": "S0061L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "...一点",
+            "target": "a little more..."
+          },
+          "components": [
+            {
+              "known": "一点",
+              "target": "a little"
+            }
+          ],
+          "teaches": "Degree modifier: adjective + 一点"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": {
+        "known": "我不确定我能不能同时帮你。",
+        "target": "I'm not sure if I can help you at the same time."
+      },
+      "legos": [
+        {
+          "id": "S0062L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "帮",
+            "target": "help"
+          }
+        },
+        {
+          "id": "S0062L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "同时",
+            "target": "at the same time"
+          }
+        },
+        {
+          "id": "S0062L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不确定",
+            "target": "I'm not sure"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "确定",
+              "target": "sure"
+            }
+          ],
+          "teaches": "Negation with 不 before adjective"
+        },
+        {
+          "id": "S0062L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "能不能",
+            "target": "if I can / whether I can"
+          },
+          "components": [
+            {
+              "known": "能",
+              "target": "can"
+            }
+          ],
+          "teaches": "Verb-not-verb pattern for whether/if questions"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": {
+        "known": "你确定你不介意帮我吗？",
+        "target": "Are you sure you don't mind helping me?"
+      },
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "me"
+          }
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你确定...吗？",
+            "target": "Are you sure...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "确定",
+              "target": "sure"
+            },
+            {
+              "known": "吗",
+              "target": "?"
+            }
+          ],
+          "teaches": "Yes/no question pattern with 吗"
+        },
+        {
+          "id": "S0063L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不介意",
+            "target": "don't mind"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "don't"
+            },
+            {
+              "known": "介意",
+              "target": "mind"
+            }
+          ],
+          "teaches": "Negation pattern; no -ing form needed after 介意"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0064",
+      "seed_pair": {
+        "known": "学英语不容易，但是很有趣。",
+        "target": "Learning English isn't easy but it is fun."
+      },
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学习",
+            "target": "learning"
+          }
+        },
+        {
+          "id": "S0064L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "容易",
+            "target": "easy"
+          }
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0064L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有趣",
+            "target": "fun"
+          }
+        },
+        {
+          "id": "S0064L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不容易",
+            "target": "isn't easy"
+          },
+          "components": [
+            {
+              "known": "容易",
+              "target": "easy"
+            }
+          ],
+          "teaches": "English contraction isn't for negation"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": {
+        "known": "花时间测试自己很重要。",
+        "target": "It's important to take time to test yourself."
+      },
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "重要",
+            "target": "important"
+          }
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "时间",
+            "target": "time"
+          }
+        },
+        {
+          "id": "S0065L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你自己",
+            "target": "yourself"
+          }
+        },
+        {
+          "id": "S0065L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "测试自己",
+            "target": "to test yourself"
+          },
+          "components": [
+            {
+              "known": "你自己",
+              "target": "yourself"
+            }
+          ],
+          "teaches": "Reflexive pronoun placement after verb in English"
+        },
+        {
+          "id": "S0065L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "...很重要",
+            "target": "It's important to..."
+          },
+          "components": [
+            {
+              "known": "重要",
+              "target": "important"
+            }
+          ],
+          "teaches": "It's adjective to structure for expressing importance"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": {
+        "known": "找到答案不难。",
+        "target": "It's not difficult to find the answer."
+      },
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "难",
+            "target": "difficult"
+          }
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "答案",
+            "target": "answer"
+          }
+        },
+        {
+          "id": "S0066L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "找到",
+            "target": "to find"
+          }
+        },
+        {
+          "id": "S0066L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "...不难",
+            "target": "It's not difficult to..."
+          },
+          "components": [
+            {
+              "known": "难",
+              "target": "difficult"
+            }
+          ],
+          "teaches": "It's not adjective to structure for expressing ease"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0067",
+      "seed_pair": {
+        "known": "你为什么想停下来？",
+        "target": "Why do you want to stop?"
+      },
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "为什么",
+            "target": "why"
+          }
+        },
+        {
+          "id": "S0067L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "want to"
+          }
+        },
+        {
+          "id": "S0067L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "停",
+            "target": "stop"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": {
+        "known": "你在找什么？",
+        "target": "What are you looking for?"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "什么",
+            "target": "what"
+          }
+        },
+        {
+          "id": "S0068L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0068L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "找",
+            "target": "look for"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": {
+        "known": "他不想整个下午照顾那只小狗。",
+        "target": "He didn't want to look after the young dog all afternoon."
+      },
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他",
+            "target": "he"
+          }
+        },
+        {
+          "id": "S0069L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "didn't want to"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            }
+          ],
+          "teaches": "English past negative uses didn't + base verb; infinitive marker to required"
+        },
+        {
+          "id": "S0069L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "照顾",
+            "target": "look after"
+          }
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "那只小狗",
+            "target": "the young dog"
+          },
+          "components": [
+            {
+              "known": "小",
+              "target": "young"
+            },
+            {
+              "known": "狗",
+              "target": "dog"
+            }
+          ],
+          "teaches": "English uses article the for specific nouns; Chinese uses demonstrative+classifier 那只"
+        },
+        {
+          "id": "S0069L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "下午",
+            "target": "afternoon"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0070",
+      "seed_pair": {
+        "known": "她不想告诉我它在哪里。",
+        "target": "She didn't want to tell me where it was."
+      },
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她",
+            "target": "she"
+          }
+        },
+        {
+          "id": "S0070L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "didn't want to"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "想",
+              "target": "want to"
+            }
+          ],
+          "teaches": "Negation with 不 before verb; to is implied"
+        },
+        {
+          "id": "S0070L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "告诉",
+            "target": "to tell"
+          }
+        },
+        {
+          "id": "S0070L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "me"
+          }
+        },
+        {
+          "id": "S0070L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "它在哪里",
+            "target": "where it was"
+          },
+          "components": [
+            {
+              "known": "它",
+              "target": "it"
+            },
+            {
+              "known": "在",
+              "target": "was"
+            },
+            {
+              "known": "哪里",
+              "target": "where"
+            }
+          ],
+          "teaches": "Chinese uses it-at-where structure for English where it was"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": {
+        "known": "我们不想让任何人听到真相。",
+        "target": "We didn't want to let anyone hear the truth."
+      },
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们",
+            "target": "we"
+          }
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "didn't want to"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "想",
+              "target": "want to"
+            }
+          ],
+          "teaches": "Negation with 不 before verb"
+        },
+        {
+          "id": "S0071L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "让",
+            "target": "to let"
+          }
+        },
+        {
+          "id": "S0071L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "任何人",
+            "target": "anyone"
+          },
+          "components": [
+            {
+              "known": "任何",
+              "target": "any"
+            },
+            {
+              "known": "人",
+              "target": "person"
+            }
+          ],
+          "teaches": "任何 + noun pattern for anyone/anything"
+        },
+        {
+          "id": "S0071L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "听到",
+            "target": "hear"
+          },
+          "components": [
+            {
+              "known": "听",
+              "target": "listen"
+            },
+            {
+              "known": "到",
+              "target": "[result achieved]"
+            }
+          ],
+          "teaches": "Resultative complement 到 indicates successful completion"
+        },
+        {
+          "id": "S0071L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "真相",
+            "target": "the truth"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": {
+        "known": "我觉得你做得很好。",
+        "target": "I think that you're doing very well."
+      },
+      "legos": [
+        {
+          "id": "S0072L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0072L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "觉得",
+            "target": "think that"
+          }
+        },
+        {
+          "id": "S0072L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0072L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "做得很好",
+            "target": "are doing very well"
+          },
+          "components": [
+            {
+              "known": "做",
+              "target": "doing"
+            },
+            {
+              "known": "得",
+              "target": "[manner marker]"
+            },
+            {
+              "known": "很",
+              "target": "very"
+            },
+            {
+              "known": "好",
+              "target": "well"
+            }
+          ],
+          "teaches": "得 particle introduces manner complement; structure is verb + 得 + description"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0073",
+      "seed_pair": {
+        "known": "非常感谢，但是我还有更多要学的。",
+        "target": "Thank you very much, but I've got more to learn."
+      },
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "非常感谢",
+            "target": "thank you very much"
+          }
+        },
+        {
+          "id": "S0073L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我还有更多要学的",
+            "target": "I've got more to learn"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "有",
+              "target": "have got"
+            },
+            {
+              "known": "更多",
+              "target": "more"
+            },
+            {
+              "known": "学",
+              "target": "to learn"
+            }
+          ],
+          "teaches": "I've got... to [verb] structure for expressing having something to do"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": {
+        "known": "非常感谢你帮助我理解。",
+        "target": "Thank you very much for helping me to understand."
+      },
+      "legos": [
+        {
+          "id": "S0074L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "非常感谢",
+            "target": "thank you very much"
+          }
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "帮助我理解",
+            "target": "for helping me to understand"
+          },
+          "components": [
+            {
+              "known": "为了",
+              "target": "for"
+            },
+            {
+              "known": "帮助",
+              "target": "helping"
+            },
+            {
+              "known": "我",
+              "target": "me"
+            },
+            {
+              "known": "理解",
+              "target": "to understand"
+            }
+          ],
+          "teaches": "for [verb-ing] me to [verb] structure showing purpose with gerund"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": {
+        "known": "你还有更多要学的吗？",
+        "target": "Have you got more to learn?"
+      },
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你有...吗",
+            "target": "have you got"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "有",
+              "target": "have got"
+            }
+          ],
+          "teaches": "Question inversion with have got - auxiliary moves before subject"
+        },
+        {
+          "id": "S0075L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "更多要学的",
+            "target": "more to learn"
+          },
+          "components": [
+            {
+              "known": "更多",
+              "target": "more"
+            },
+            {
+              "known": "学",
+              "target": "to learn"
+            }
+          ],
+          "teaches": "more to [verb] pattern for expressing additional actions needed"
+        }
+      ]
+    }
+  ]
+}

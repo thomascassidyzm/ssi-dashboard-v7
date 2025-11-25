@@ -1,0 +1,242 @@
+{
+  "browserId": 4,
+  "agentId": "4.3",
+  "seedRange": "S0052-S0054",
+  "seeds": [
+    {
+      "seed_id": "S0052",
+      "seed_pair": {
+        "known": "He wanted to write a letter to his friend last week.",
+        "target": "Voleva scrivere una lettera al suo amico la settimana scorsa."
+      },
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he wanted",
+            "target": "voleva"
+          }
+        },
+        {
+          "id": "S0052L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to write",
+            "target": "scrivere"
+          }
+        },
+        {
+          "id": "S0052L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a letter",
+            "target": "una lettera"
+          }
+        },
+        {
+          "id": "S0052L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to his friend",
+            "target": "al suo amico"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "a"
+            },
+            {
+              "known": "his",
+              "target": "suo"
+            },
+            {
+              "known": "friend",
+              "target": "amico"
+            }
+          ],
+          "teaches": "a + il contracts to al before masculine nouns"
+        },
+        {
+          "id": "S0052L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last week",
+            "target": "la settimana scorsa"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "week",
+              "target": "settimana"
+            },
+            {
+              "known": "last",
+              "target": "scorsa"
+            }
+          ],
+          "teaches": "adjective scorsa comes after the noun in Italian"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": {
+        "known": "She wanted to put his letter in her bag.",
+        "target": "Voleva mettere la sua lettera nella sua borsa."
+      },
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she wanted",
+            "target": "voleva"
+          }
+        },
+        {
+          "id": "S0053L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to put",
+            "target": "mettere"
+          }
+        },
+        {
+          "id": "S0053L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "his letter",
+            "target": "la sua lettera"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "his",
+              "target": "sua"
+            },
+            {
+              "known": "letter",
+              "target": "lettera"
+            }
+          ],
+          "teaches": "possessive sua agrees with feminine lettera, not the male owner"
+        },
+        {
+          "id": "S0053L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "in her bag",
+            "target": "nella sua borsa"
+          },
+          "components": [
+            {
+              "known": "in",
+              "target": "in"
+            },
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "her",
+              "target": "sua"
+            },
+            {
+              "known": "bag",
+              "target": "borsa"
+            }
+          ],
+          "teaches": "in + la contracts to nella"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": {
+        "known": "We wanted to give you a little more time.",
+        "target": "Volevamo darti un po' più di tempo."
+      },
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we wanted",
+            "target": "volevamo"
+          }
+        },
+        {
+          "id": "S0054L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to give you",
+            "target": "darti"
+          },
+          "components": [
+            {
+              "known": "to give",
+              "target": "dare"
+            },
+            {
+              "known": "you",
+              "target": "ti"
+            }
+          ],
+          "teaches": "object pronoun ti attaches to infinitive dare, forming darti"
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little more",
+            "target": "un po' più di"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un po'"
+            },
+            {
+              "known": "more",
+              "target": "più"
+            },
+            {
+              "known": "of",
+              "target": "di"
+            }
+          ],
+          "teaches": "un po' più di is the idiomatic way to say a little more of"
+        },
+        {
+          "id": "S0054L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "tempo"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:52:36.067Z"
+}

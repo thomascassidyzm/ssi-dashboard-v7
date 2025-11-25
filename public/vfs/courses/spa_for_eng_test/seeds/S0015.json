@@ -1,0 +1,67 @@
+{
+  "seed_id": "S0015",
+  "seed_pair": {
+    "known": "And I want you to speak Spanish with me tomorrow.",
+    "target": "Y quiero que hables español conmigo mañana."
+  },
+  "legos": [
+    {
+      "id": "S0015L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "and",
+        "target": "y"
+      }
+    },
+    {
+      "id": "S0015L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I want you to speak",
+        "target": "quiero que hables"
+      },
+      "components": [
+        {
+          "known": "I want",
+          "target": "quiero"
+        },
+        {
+          "known": "you speak",
+          "target": "hables"
+        }
+      ],
+      "teaches": "want someone to X requires que + subjunctive"
+    },
+    {
+      "id": "S0015L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "Spanish",
+        "target": "español"
+      }
+    },
+    {
+      "id": "S0015L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "with me",
+        "target": "conmigo"
+      }
+    },
+    {
+      "id": "S0015L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "tomorrow",
+        "target": "mañana"
+      }
+    }
+  ],
+  "agentId": "1.5",
+  "receivedAt": "2025-11-24T15:33:00.713Z"
+}

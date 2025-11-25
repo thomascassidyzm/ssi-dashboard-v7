@@ -1,0 +1,47 @@
+{
+  "seed_id": "S0013",
+  "seed_pair": {
+    "known": "You speak Spanish very well.",
+    "target": "Hablas español muy bien."
+  },
+  "legos": [
+    {
+      "id": "S0013L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "you speak",
+        "target": "hablas"
+      }
+    },
+    {
+      "id": "S0013L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "Spanish",
+        "target": "español"
+      }
+    },
+    {
+      "id": "S0013L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "very",
+        "target": "muy"
+      }
+    },
+    {
+      "id": "S0013L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "well",
+        "target": "bien"
+      }
+    }
+  ],
+  "agentId": "1.5",
+  "receivedAt": "2025-11-24T15:32:28.666Z"
+}

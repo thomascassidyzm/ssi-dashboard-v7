@@ -1,0 +1,185 @@
+{
+  "browserId": 3,
+  "agentId": "3.2",
+  "seedRange": "S0034-S0036",
+  "seeds": [
+    {
+      "seed_id": "S0034",
+      "seed_pair": {
+        "known": "当别人在这里的时候，他不想安静。",
+        "target": "He doesn't want to be quiet when other people are here."
+      },
+      "legos": [
+        {
+          "id": "S0034L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他",
+            "target": "he"
+          }
+        },
+        {
+          "id": "S0034L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "doesn't want to"
+          }
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "安静",
+            "target": "quiet"
+          }
+        },
+        {
+          "id": "S0034L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "当别人在这里的时候",
+            "target": "when other people are here"
+          },
+          "components": [
+            {
+              "known": "别人",
+              "target": "other people"
+            },
+            {
+              "known": "在这里",
+              "target": "here"
+            }
+          ],
+          "teaches": "time subordinate clause with 当...的时候 pattern and clause-initial placement"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0035",
+      "seed_pair": {
+        "known": "她今天下午不想读任何东西。",
+        "target": "She doesn't want to read anything this afternoon."
+      },
+      "legos": [
+        {
+          "id": "S0035L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她",
+            "target": "she"
+          }
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "doesn't want to"
+          }
+        },
+        {
+          "id": "S0035L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "读",
+            "target": "read"
+          }
+        },
+        {
+          "id": "S0035L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "任何东西",
+            "target": "anything"
+          }
+        },
+        {
+          "id": "S0035L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "今天下午",
+            "target": "this afternoon"
+          },
+          "components": [
+            {
+              "known": "今天",
+              "target": "today"
+            },
+            {
+              "known": "下午",
+              "target": "afternoon"
+            }
+          ],
+          "teaches": "Chinese time expressions use day+period order; this is implicit in 今天下午"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0036",
+      "seed_pair": {
+        "known": "我们不想打断这个故事。",
+        "target": "We don't want to interrupt the story."
+      },
+      "legos": [
+        {
+          "id": "S0036L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们",
+            "target": "we"
+          }
+        },
+        {
+          "id": "S0036L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "don't want to"
+          }
+        },
+        {
+          "id": "S0036L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "打断",
+            "target": "interrupt"
+          }
+        },
+        {
+          "id": "S0036L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "这个故事",
+            "target": "the story"
+          },
+          "components": [
+            {
+              "known": "这个",
+              "target": "the"
+            },
+            {
+              "known": "故事",
+              "target": "story"
+            }
+          ],
+          "teaches": "Chinese uses demonstrative 这个 where English uses definite article the"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:52:01.226Z"
+}

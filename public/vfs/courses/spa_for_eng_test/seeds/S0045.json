@@ -1,0 +1,40 @@
+{
+  "seed_id": "S0045",
+  "seed_pair": {
+    "known": "I do not need to know everything.",
+    "target": "No necesito saber todo."
+  },
+  "legos": [
+    {
+      "id": "S0045L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I do not need to know",
+        "target": "No necesito saber"
+      },
+      "components": [
+        {
+          "known": "I need",
+          "target": "necesito"
+        },
+        {
+          "known": "to know",
+          "target": "saber"
+        }
+      ],
+      "teaches": "Negation with no before verb + need + infinitive chain; do-support not used in Spanish"
+    },
+    {
+      "id": "S0045L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "everything",
+        "target": "todo"
+      }
+    }
+  ],
+  "agentId": "3.5",
+  "receivedAt": "2025-11-24T15:32:28.906Z"
+}

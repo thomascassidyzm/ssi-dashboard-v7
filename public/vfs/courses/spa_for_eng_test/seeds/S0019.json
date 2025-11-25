@@ -1,0 +1,58 @@
+{
+  "seed_id": "S0019",
+  "seed_pair": {
+    "known": "But I don't want to stop talking.",
+    "target": "Pero no quiero dejar de hablar."
+  },
+  "legos": [
+    {
+      "id": "S0019L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "but",
+        "target": "pero"
+      }
+    },
+    {
+      "id": "S0019L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I don't want",
+        "target": "no quiero"
+      },
+      "components": [
+        {
+          "known": "I want",
+          "target": "quiero"
+        },
+        {
+          "known": "don't",
+          "target": "no"
+        }
+      ],
+      "teaches": "negation no precedes conjugated verb"
+    },
+    {
+      "id": "S0019L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to stop",
+        "target": "dejar de"
+      }
+    },
+    {
+      "id": "S0019L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "talking",
+        "target": "hablar"
+      }
+    }
+  ],
+  "agentId": "2.2",
+  "receivedAt": "2025-11-24T15:32:31.914Z"
+}

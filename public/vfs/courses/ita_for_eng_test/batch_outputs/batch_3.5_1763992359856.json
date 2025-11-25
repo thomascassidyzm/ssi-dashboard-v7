@@ -1,0 +1,198 @@
+{
+  "browserId": 3,
+  "agentId": "3.5",
+  "seedRange": "S0043-S0045",
+  "seeds": [
+    {
+      "seed_id": "S0043",
+      "seed_pair": {
+        "known": "I wasn't thinking about how to answer.",
+        "target": "Non stavo pensando a come rispondere."
+      },
+      "legos": [
+        {
+          "id": "S0043L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "thinking",
+            "target": "pensando"
+          }
+        },
+        {
+          "id": "S0043L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "rispondere"
+          }
+        },
+        {
+          "id": "S0043L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to answer",
+            "target": "come rispondere"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "to answer",
+              "target": "rispondere"
+            }
+          ],
+          "teaches": "Italian uses come + infinitive for how to [verb]"
+        },
+        {
+          "id": "S0043L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wasn't thinking",
+            "target": "Non stavo pensando"
+          },
+          "components": [
+            {
+              "known": "I was",
+              "target": "stavo"
+            },
+            {
+              "known": "thinking",
+              "target": "pensando"
+            }
+          ],
+          "teaches": "Negated past progressive: non + stare (imperfect) + gerund"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0044",
+      "seed_pair": {
+        "known": "Or if I need to improve.",
+        "target": "O se devo migliorare."
+      },
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "or",
+            "target": "o"
+          }
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if",
+            "target": "se"
+          }
+        },
+        {
+          "id": "S0044L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to improve",
+            "target": "migliorare"
+          }
+        },
+        {
+          "id": "S0044L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I need to improve",
+            "target": "devo migliorare"
+          },
+          "components": [
+            {
+              "known": "I need to",
+              "target": "devo"
+            },
+            {
+              "known": "to improve",
+              "target": "migliorare"
+            }
+          ],
+          "teaches": "need to expressed with dovere + infinitive"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0045",
+      "seed_pair": {
+        "known": "I don't need to know everything.",
+        "target": "Non ho bisogno di sapere tutto."
+      },
+      "legos": [
+        {
+          "id": "S0045L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "everything",
+            "target": "tutto"
+          }
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to know",
+            "target": "sapere"
+          }
+        },
+        {
+          "id": "S0045L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I need to",
+            "target": "ho bisogno di"
+          },
+          "components": [
+            {
+              "known": "I have",
+              "target": "ho"
+            },
+            {
+              "known": "need",
+              "target": "bisogno"
+            },
+            {
+              "known": "to",
+              "target": "di"
+            }
+          ],
+          "teaches": "need to as avere bisogno di (have need of) construction"
+        },
+        {
+          "id": "S0045L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't need to",
+            "target": "non ho bisogno di"
+          },
+          "components": [
+            {
+              "known": "I need to",
+              "target": "ho bisogno di"
+            }
+          ],
+          "teaches": "Negation with non before avere bisogno di"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:52:39.856Z"
+}

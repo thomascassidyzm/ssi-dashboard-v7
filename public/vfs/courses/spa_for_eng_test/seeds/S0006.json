@@ -1,0 +1,49 @@
+{
+  "seed_id": "S0006",
+  "seed_pair": {
+    "known": "I'm trying to remember a word.",
+    "target": "Estoy intentando recordar una palabra."
+  },
+  "legos": [
+    {
+      "id": "S0006L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm trying",
+        "target": "Estoy intentando"
+      },
+      "components": [
+        {
+          "known": "I am",
+          "target": "Estoy"
+        },
+        {
+          "known": "trying",
+          "target": "intentando"
+        }
+      ],
+      "teaches": "present progressive with estar + -ando gerund form"
+    },
+    {
+      "id": "S0006L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to remember",
+        "target": "recordar"
+      }
+    },
+    {
+      "id": "S0006L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "a word",
+        "target": "una palabra"
+      }
+    }
+  ],
+  "agentId": "1.2",
+  "receivedAt": "2025-11-24T15:32:58.238Z"
+}

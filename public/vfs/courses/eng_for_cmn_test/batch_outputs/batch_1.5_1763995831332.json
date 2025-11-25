@@ -1,0 +1,257 @@
+{
+  "browserId": 1,
+  "agentId": "1.5",
+  "seedRange": "S0013-S0015",
+  "seeds": [
+    {
+      "seed_id": "S0013",
+      "seed_pair": {
+        "known": "你英语说得很好。",
+        "target": "You speak English very well."
+      },
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0013L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0013L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0013L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "很好",
+            "target": "very well"
+          }
+        },
+        {
+          "id": "S0013L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "英语说得很好",
+            "target": "speak English very well"
+          },
+          "components": [
+            {
+              "known": "英语",
+              "target": "English"
+            },
+            {
+              "known": "说",
+              "target": "speak"
+            },
+            {
+              "known": "很好",
+              "target": "very well"
+            }
+          ],
+          "teaches": "word order - object before verb in Chinese (英语说) vs verb before object in English (speak English)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": {
+        "known": "你整天说英语吗？",
+        "target": "Do you speak English all day?"
+      },
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0014L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0014L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "整天",
+            "target": "all day"
+          }
+        },
+        {
+          "id": "S0014L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你说英语吗？",
+            "target": "Do you speak English?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "说",
+              "target": "speak"
+            },
+            {
+              "known": "英语",
+              "target": "English"
+            }
+          ],
+          "teaches": "question formation - Chinese uses 吗 at end vs English uses auxiliary Do at beginning"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": {
+        "known": "而且我想让你明天和我说英语。",
+        "target": "And I want you to speak English with me tomorrow."
+      },
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "而且",
+            "target": "and"
+          }
+        },
+        {
+          "id": "S0015L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0015L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0015L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0015L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0015L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "明天",
+            "target": "tomorrow"
+          }
+        },
+        {
+          "id": "S0015L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和我",
+            "target": "with me"
+          },
+          "components": [
+            {
+              "known": "和",
+              "target": "with"
+            },
+            {
+              "known": "我",
+              "target": "me"
+            }
+          ],
+          "teaches": "和 used as preposition with for accompaniment"
+        },
+        {
+          "id": "S0015L08",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想让你",
+            "target": "I want you to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            },
+            {
+              "known": "让",
+              "target": "to make/let"
+            },
+            {
+              "known": "你",
+              "target": "you"
+            }
+          ],
+          "teaches": "causative construction - 让 introduces the person you want to do something"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:31.332Z"
+}

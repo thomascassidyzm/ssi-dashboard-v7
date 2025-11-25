@@ -1,0 +1,61 @@
+{
+  "seed_id": "S0065",
+  "seed_pair": {
+    "known": "It's important to take time to test yourself.",
+    "target": "Es importante tomar tiempo para ponerte a prueba."
+  },
+  "legos": [
+    {
+      "id": "S0065L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "It's important",
+        "target": "Es importante"
+      },
+      "components": [
+        {
+          "known": "important",
+          "target": "importante"
+        }
+      ],
+      "teaches": "subject it omitted in Spanish impersonal constructions"
+    },
+    {
+      "id": "S0065L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to take",
+        "target": "tomar"
+      }
+    },
+    {
+      "id": "S0065L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "time",
+        "target": "tiempo"
+      }
+    },
+    {
+      "id": "S0065L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to test yourself",
+        "target": "para ponerte a prueba"
+      },
+      "components": [
+        {
+          "known": "yourself",
+          "target": "te"
+        }
+      ],
+      "teaches": "para + reflexive verb for purpose clause; idiomatic ponerse a prueba for testing oneself"
+    }
+  ],
+  "agentId": "5.2",
+  "receivedAt": "2025-11-24T15:33:28.668Z"
+}

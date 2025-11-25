@@ -1,0 +1,58 @@
+{
+  "seed_id": "S0004",
+  "seed_pair": {
+    "known": "how to say something in Spanish",
+    "target": "cómo decir algo en español"
+  },
+  "legos": [
+    {
+      "id": "S0004L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how to say",
+        "target": "cómo decir"
+      },
+      "components": [
+        {
+          "known": "how",
+          "target": "cómo"
+        },
+        {
+          "known": "to say",
+          "target": "decir"
+        }
+      ],
+      "teaches": "how to + verb uses cómo + infinitive in Spanish"
+    },
+    {
+      "id": "S0004L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "something",
+        "target": "algo"
+      }
+    },
+    {
+      "id": "S0004L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "in",
+        "target": "en"
+      }
+    },
+    {
+      "id": "S0004L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "Spanish",
+        "target": "español"
+      }
+    }
+  ],
+  "agentId": "1.2",
+  "receivedAt": "2025-11-24T15:32:29.521Z"
+}

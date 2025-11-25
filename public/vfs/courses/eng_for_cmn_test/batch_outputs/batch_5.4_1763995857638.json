@@ -1,0 +1,248 @@
+{
+  "browserId": 5,
+  "agentId": "5.4",
+  "seedRange": "S0070-S0072",
+  "seeds": [
+    {
+      "seed_id": "S0070",
+      "seed_pair": {
+        "known": "她不想告诉我它在哪里。",
+        "target": "She didn't want to tell me where it was."
+      },
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她",
+            "target": "she"
+          }
+        },
+        {
+          "id": "S0070L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "didn't want to"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "想",
+              "target": "want to"
+            }
+          ],
+          "teaches": "Negation with 不 before verb; to is implied"
+        },
+        {
+          "id": "S0070L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "告诉",
+            "target": "to tell"
+          }
+        },
+        {
+          "id": "S0070L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "me"
+          }
+        },
+        {
+          "id": "S0070L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "它在哪里",
+            "target": "where it was"
+          },
+          "components": [
+            {
+              "known": "它",
+              "target": "it"
+            },
+            {
+              "known": "在",
+              "target": "was"
+            },
+            {
+              "known": "哪里",
+              "target": "where"
+            }
+          ],
+          "teaches": "Chinese uses it-at-where structure for English where it was"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": {
+        "known": "我们不想让任何人听到真相。",
+        "target": "We didn't want to let anyone hear the truth."
+      },
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们",
+            "target": "we"
+          }
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "didn't want to"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "想",
+              "target": "want to"
+            }
+          ],
+          "teaches": "Negation with 不 before verb"
+        },
+        {
+          "id": "S0071L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "让",
+            "target": "to let"
+          }
+        },
+        {
+          "id": "S0071L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "任何人",
+            "target": "anyone"
+          },
+          "components": [
+            {
+              "known": "任何",
+              "target": "any"
+            },
+            {
+              "known": "人",
+              "target": "person"
+            }
+          ],
+          "teaches": "任何 + noun pattern for anyone/anything"
+        },
+        {
+          "id": "S0071L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "听到",
+            "target": "hear"
+          },
+          "components": [
+            {
+              "known": "听",
+              "target": "listen"
+            },
+            {
+              "known": "到",
+              "target": "[result achieved]"
+            }
+          ],
+          "teaches": "Resultative complement 到 indicates successful completion"
+        },
+        {
+          "id": "S0071L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "真相",
+            "target": "the truth"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": {
+        "known": "我觉得你做得很好。",
+        "target": "I think that you're doing very well."
+      },
+      "legos": [
+        {
+          "id": "S0072L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0072L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "觉得",
+            "target": "think that"
+          }
+        },
+        {
+          "id": "S0072L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0072L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "做得很好",
+            "target": "are doing very well"
+          },
+          "components": [
+            {
+              "known": "做",
+              "target": "doing"
+            },
+            {
+              "known": "得",
+              "target": "[manner marker]"
+            },
+            {
+              "known": "很",
+              "target": "very"
+            },
+            {
+              "known": "好",
+              "target": "well"
+            }
+          ],
+          "teaches": "得 particle introduces manner complement; structure is verb + 得 + description"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:57.638Z"
+}

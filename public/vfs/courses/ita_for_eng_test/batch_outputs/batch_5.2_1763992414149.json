@@ -1,0 +1,228 @@
+{
+  "browserId": 5,
+  "agentId": "5.2",
+  "seedRange": "S0064-S0066",
+  "seeds": [
+    {
+      "seed_id": "S0064",
+      "seed_pair": {
+        "known": "Learning Italian is not easy but it is fun.",
+        "target": "Imparare l'italiano non è facile ma è divertente."
+      },
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "imparare"
+          }
+        },
+        {
+          "id": "S0064L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "l'italiano"
+          }
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easy",
+            "target": "facile"
+          }
+        },
+        {
+          "id": "S0064L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0064L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "fun",
+            "target": "divertente"
+          }
+        },
+        {
+          "id": "S0064L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is not easy",
+            "target": "non è facile"
+          },
+          "components": [
+            {
+              "known": "easy",
+              "target": "facile"
+            }
+          ],
+          "teaches": "Negation with 'non è' before adjective"
+        },
+        {
+          "id": "S0064L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is fun",
+            "target": "è divertente"
+          },
+          "components": [
+            {
+              "known": "fun",
+              "target": "divertente"
+            }
+          ],
+          "teaches": "Impersonal 'è' + adjective construction"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": {
+        "known": "It is important to take time to test yourself.",
+        "target": "È importante prendersi il tempo per mettersi alla prova."
+      },
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "important",
+            "target": "importante"
+          }
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "il tempo"
+          }
+        },
+        {
+          "id": "S0065L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is important",
+            "target": "è importante"
+          },
+          "components": [
+            {
+              "known": "important",
+              "target": "importante"
+            }
+          ],
+          "teaches": "Impersonal 'è' + adjective for general statements"
+        },
+        {
+          "id": "S0065L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to take time",
+            "target": "prendersi il tempo"
+          },
+          "components": [
+            {
+              "known": "time",
+              "target": "il tempo"
+            }
+          ],
+          "teaches": "Reflexive verb 'prendersi' with definite article"
+        },
+        {
+          "id": "S0065L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to test yourself",
+            "target": "mettersi alla prova"
+          },
+          "components": [
+            {
+              "known": "the test",
+              "target": "la prova"
+            }
+          ],
+          "teaches": "Idiomatic reflexive expression for self-testing"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": {
+        "known": "It is not difficult to find the answer.",
+        "target": "Non è difficile trovare la risposta."
+      },
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "difficult",
+            "target": "difficile"
+          }
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find",
+            "target": "trovare"
+          }
+        },
+        {
+          "id": "S0066L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the answer",
+            "target": "la risposta"
+          },
+          "components": [
+            {
+              "known": "answer",
+              "target": "risposta"
+            }
+          ],
+          "teaches": "Feminine article 'la' with feminine noun"
+        },
+        {
+          "id": "S0066L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is not difficult",
+            "target": "non è difficile"
+          },
+          "components": [
+            {
+              "known": "difficult",
+              "target": "difficile"
+            }
+          ],
+          "teaches": "Negation pattern 'non è' + adjective for impersonal statements"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:34.149Z"
+}

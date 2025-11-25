@@ -1,0 +1,213 @@
+{
+  "browserId": 1,
+  "agentId": "1.4",
+  "seedRange": "S0010-S0012",
+  "seeds": [
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "I'm not sure if I can remember the whole sentence.",
+        "target": "Non sono sicuro se posso ricordare tutta la frase."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "Non sono sicuro"
+          },
+          "components": [
+            {
+              "known": "sure",
+              "target": "sicuro"
+            },
+            {
+              "known": "I'm",
+              "target": "sono"
+            },
+            {
+              "known": "not",
+              "target": "non"
+            }
+          ],
+          "teaches": "Word order: non precedes the verb in Italian negation"
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "se posso"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "se"
+            },
+            {
+              "known": "I can",
+              "target": "posso"
+            }
+          ],
+          "teaches": "se introduces conditional/uncertain clauses"
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "ricordare"
+          }
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the whole sentence",
+            "target": "tutta la frase"
+          },
+          "components": [
+            {
+              "known": "whole",
+              "target": "tutta"
+            },
+            {
+              "known": "the sentence",
+              "target": "la frase"
+            }
+          ],
+          "teaches": "tutto/a comes before the article in Italian"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": {
+        "known": "I'd like to be able to speak after you finish.",
+        "target": "Mi piacerebbe poter parlare dopo che finisci."
+      },
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'd like",
+            "target": "Mi piacerebbe"
+          }
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to be able to",
+            "target": "poter"
+          }
+        },
+        {
+          "id": "S0011L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0011L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "after you finish",
+            "target": "dopo che finisci"
+          },
+          "components": [
+            {
+              "known": "after",
+              "target": "dopo che"
+            },
+            {
+              "known": "you finish",
+              "target": "finisci"
+            }
+          ],
+          "teaches": "Italian uses dopo che (after that) as temporal conjunction"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": {
+        "known": "I wouldn't like to guess what's going to happen tomorrow.",
+        "target": "Non mi piacerebbe indovinare cosa succederà domani."
+      },
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wouldn't like",
+            "target": "Non mi piacerebbe"
+          },
+          "components": [
+            {
+              "known": "I'd like",
+              "target": "mi piacerebbe"
+            },
+            {
+              "known": "not",
+              "target": "non"
+            }
+          ],
+          "teaches": "non comes before the reflexive pronoun mi"
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to guess",
+            "target": "indovinare"
+          }
+        },
+        {
+          "id": "S0012L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what's going to happen",
+            "target": "cosa succederà"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "cosa"
+            },
+            {
+              "known": "is going to happen",
+              "target": "succederà"
+            }
+          ],
+          "teaches": "Italian uses simple future tense for going to"
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "domani"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:49:46.178Z"
+}

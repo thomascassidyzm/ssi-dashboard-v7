@@ -1,0 +1,195 @@
+{
+  "browserId": 1,
+  "agentId": "1.2",
+  "seedRange": "S0004-S0006",
+  "seeds": [
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "用英语怎么说",
+        "target": "how to say something in English"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how"
+            },
+            {
+              "known": "说",
+              "target": "to say"
+            }
+          ],
+          "teaches": "question word order - Chinese puts 怎么 before verb, English uses how to + infinitive"
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "某事",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "用英语",
+            "target": "in English"
+          },
+          "components": [
+            {
+              "known": "用",
+              "target": "in"
+            },
+            {
+              "known": "英语",
+              "target": "English"
+            }
+          ],
+          "teaches": "preposition difference - Chinese uses 用 (use), English uses in"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "我要和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我要",
+            "target": "I'm going to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "要",
+              "target": "am going to"
+            }
+          ],
+          "teaches": "future intention - Chinese 要 becomes English progressive going to structure"
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "练习",
+            "target": "practise"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "speaking"
+          }
+        },
+        {
+          "id": "S0005L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和别人",
+            "target": "with someone else"
+          },
+          "components": [
+            {
+              "known": "和",
+              "target": "with"
+            },
+            {
+              "known": "别人",
+              "target": "someone else"
+            }
+          ],
+          "teaches": "preposition + pronoun phrase order is same but 别人 maps to two-word someone else"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "我在努力想起一个词。",
+        "target": "I'm trying to remember a word."
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我在努力",
+            "target": "I'm trying to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "在努力",
+              "target": "am trying to"
+            }
+          ],
+          "teaches": "progressive aspect - Chinese 在 + verb becomes English be + verb-ing + to"
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想起",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "一个词",
+            "target": "a word"
+          },
+          "components": [
+            {
+              "known": "一",
+              "target": "a"
+            },
+            {
+              "known": "个",
+              "target": ""
+            },
+            {
+              "known": "词",
+              "target": "word"
+            }
+          ],
+          "teaches": "classifier omission - Chinese requires measure word 个, English article a has no classifier"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:49:40.606Z"
+}

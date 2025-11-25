@@ -1,0 +1,157 @@
+{
+  "browserId": 1,
+  "agentId": "1.5",
+  "seedRange": "S0013-S0015",
+  "seeds": [
+    {
+      "seed_id": "S0013",
+      "seed_pair": {
+        "known": "你英语说得很好。",
+        "target": "You speak English very well."
+      },
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0013L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "很好",
+            "target": "very well"
+          }
+        },
+        {
+          "id": "S0013L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "说得很好",
+            "target": "speak very well"
+          },
+          "components": [
+            {
+              "known": "说",
+              "target": "speak"
+            },
+            {
+              "known": "很好",
+              "target": "very well"
+            }
+          ],
+          "teaches": "Chinese result complement structure with 得 (de) linking verb to degree/manner"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": {
+        "known": "你整天都说英语吗？",
+        "target": "Do you speak English all day?"
+      },
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "整天",
+            "target": "all day"
+          }
+        },
+        {
+          "id": "S0014L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你...吗？",
+            "target": "Do you...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "吗",
+              "target": "?"
+            }
+          ],
+          "teaches": "Chinese yes/no question formation by adding 吗 at sentence end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": {
+        "known": "而且我想让你明天跟我说英语。",
+        "target": "And I want you to speak English with me tomorrow."
+      },
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "而且",
+            "target": "and"
+          }
+        },
+        {
+          "id": "S0015L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "明天",
+            "target": "tomorrow"
+          }
+        },
+        {
+          "id": "S0015L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "跟我",
+            "target": "with me"
+          }
+        },
+        {
+          "id": "S0015L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想让你...",
+            "target": "I want you to..."
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            },
+            {
+              "known": "让",
+              "target": "to have/make"
+            },
+            {
+              "known": "你",
+              "target": "you"
+            }
+          ],
+          "teaches": "Chinese causative construction with 让 - expressing wanting someone to do something"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:49:59.409Z"
+}

@@ -1,0 +1,196 @@
+{
+  "browserId": 4,
+  "agentId": "4.1",
+  "seedRange": "S0046-S0048",
+  "seeds": [
+    {
+      "seed_id": "S0046",
+      "seed_pair": {
+        "known": "But I don't worry about making mistakes.",
+        "target": "Ma non mi preoccupo di fare errori."
+      },
+      "legos": [
+        {
+          "id": "S0046L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0046L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't worry",
+            "target": "non mi preoccupo"
+          },
+          "components": [
+            {
+              "known": "I worry",
+              "target": "mi preoccupo"
+            },
+            {
+              "known": "not",
+              "target": "non"
+            }
+          ],
+          "teaches": "negation non precedes reflexive pronoun in negative reflexive verbs"
+        },
+        {
+          "id": "S0046L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "about making mistakes",
+            "target": "di fare errori"
+          },
+          "components": [
+            {
+              "known": "about",
+              "target": "di"
+            },
+            {
+              "known": "to make",
+              "target": "fare"
+            },
+            {
+              "known": "mistakes",
+              "target": "errori"
+            }
+          ],
+          "teaches": "about doing something becomes di + infinitive in Italian"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0047",
+      "seed_pair": {
+        "known": "Because I think that it's a good thing to make mistakes.",
+        "target": "Perché penso che sia una buona cosa fare errori."
+      },
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0047L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I think",
+            "target": "penso"
+          }
+        },
+        {
+          "id": "S0047L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "that it's a good thing",
+            "target": "che sia una buona cosa"
+          },
+          "components": [
+            {
+              "known": "that",
+              "target": "che"
+            },
+            {
+              "known": "it is",
+              "target": "sia"
+            },
+            {
+              "known": "a good thing",
+              "target": "una buona cosa"
+            }
+          ],
+          "teaches": "subjunctive sia used after che with expressions of opinion/thought"
+        },
+        {
+          "id": "S0047L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to make",
+            "target": "fare"
+          }
+        },
+        {
+          "id": "S0047L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "mistakes",
+            "target": "errori"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0048",
+      "seed_pair": {
+        "known": "I don't care about making mistakes.",
+        "target": "Non mi importa di fare errori."
+      },
+      "legos": [
+        {
+          "id": "S0048L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't care",
+            "target": "non mi importa"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "to me",
+              "target": "mi"
+            },
+            {
+              "known": "it matters",
+              "target": "importa"
+            }
+          ],
+          "teaches": "I don't care uses impersonal importare with dative pronoun mi"
+        },
+        {
+          "id": "S0048L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "about making mistakes",
+            "target": "di fare errori"
+          },
+          "components": [
+            {
+              "known": "about",
+              "target": "di"
+            },
+            {
+              "known": "to make",
+              "target": "fare"
+            },
+            {
+              "known": "mistakes",
+              "target": "errori"
+            }
+          ],
+          "teaches": "about doing something becomes di + infinitive in Italian"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:02.372Z"
+}

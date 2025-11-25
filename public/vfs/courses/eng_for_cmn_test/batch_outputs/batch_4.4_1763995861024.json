@@ -1,0 +1,207 @@
+{
+  "browserId": 4,
+  "agentId": "4.4",
+  "seedRange": "S0055-S0057",
+  "seeds": [
+    {
+      "seed_id": "S0055",
+      "seed_pair": {
+        "known": "我不喜欢在睡不好的时候醒来。",
+        "target": "I don't enjoy waking up when I didn't sleep very well."
+      },
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我不喜欢",
+            "target": "I don't enjoy"
+          }
+        },
+        {
+          "id": "S0055L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "醒来",
+            "target": "waking up"
+          }
+        },
+        {
+          "id": "S0055L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "在我睡得不好的时候",
+            "target": "when I didn't sleep very well"
+          },
+          "components": [
+            {
+              "known": "当…的时候",
+              "target": "when"
+            },
+            {
+              "known": "我没睡好",
+              "target": "I didn't sleep well"
+            },
+            {
+              "known": "很",
+              "target": "very"
+            }
+          ],
+          "teaches": "subordinate clause with when + past negative didn't + adverb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0056",
+      "seed_pair": {
+        "known": "这样我就能记住怎么说几个词。",
+        "target": "So I can remember how to say a few words."
+      },
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "这样我就能",
+            "target": "so I can"
+          },
+          "components": [
+            {
+              "known": "这样",
+              "target": "so"
+            },
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "能",
+              "target": "can"
+            }
+          ],
+          "teaches": "result clause structure with so + subject + can"
+        },
+        {
+          "id": "S0056L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0056L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how"
+            },
+            {
+              "known": "说",
+              "target": "to say"
+            }
+          ],
+          "teaches": "how to + verb infinitive pattern"
+        },
+        {
+          "id": "S0056L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "几个词",
+            "target": "a few words"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0057",
+      "seed_pair": {
+        "known": "我记不住怎么说我想说的话。",
+        "target": "I can't remember how to say what I wanted to say."
+      },
+      "legos": [
+        {
+          "id": "S0057L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我记不住",
+            "target": "I can't remember"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不能",
+              "target": "can't"
+            },
+            {
+              "known": "记住",
+              "target": "remember"
+            }
+          ],
+          "teaches": "negative modal can't + verb pattern"
+        },
+        {
+          "id": "S0057L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how"
+            },
+            {
+              "known": "说",
+              "target": "to say"
+            }
+          ],
+          "teaches": "how to + verb infinitive pattern"
+        },
+        {
+          "id": "S0057L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想说的话",
+            "target": "what I wanted to say"
+          },
+          "components": [
+            {
+              "known": "什么",
+              "target": "what"
+            },
+            {
+              "known": "我想",
+              "target": "I wanted"
+            },
+            {
+              "known": "说",
+              "target": "to say"
+            }
+          ],
+          "teaches": "relative clause with what + past tense wanted + infinitive"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:01.024Z"
+}

@@ -1,0 +1,86 @@
+{
+  "seed_id": "S0062",
+  "seed_pair": {
+    "known": "I'm not sure if I can help you at the same time.",
+    "target": "No estoy seguro si puedo ayudarte al mismo tiempo."
+  },
+  "legos": [
+    {
+      "id": "S0062L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm not sure",
+        "target": "no estoy seguro"
+      },
+      "components": [
+        {
+          "known": "I am",
+          "target": "estoy"
+        },
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "sure",
+          "target": "seguro"
+        }
+      ],
+      "teaches": "Spanish negation precedes the verb: no + verb + adjective"
+    },
+    {
+      "id": "S0062L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "if",
+        "target": "si"
+      }
+    },
+    {
+      "id": "S0062L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I can",
+        "target": "puedo"
+      }
+    },
+    {
+      "id": "S0062L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "help you",
+        "target": "ayudarte"
+      }
+    },
+    {
+      "id": "S0062L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "at the same time",
+        "target": "al mismo tiempo"
+      },
+      "components": [
+        {
+          "known": "at the",
+          "target": "al"
+        },
+        {
+          "known": "same",
+          "target": "mismo"
+        },
+        {
+          "known": "time",
+          "target": "tiempo"
+        }
+      ],
+      "teaches": "Contraction a + el = al before masculine nouns"
+    }
+  ],
+  "agentId": "5.1",
+  "receivedAt": "2025-11-24T15:32:34.686Z"
+}

@@ -1,0 +1,178 @@
+{
+  "browserId": 3,
+  "agentId": "3.1",
+  "seedRange": "S0031-S0033",
+  "seeds": [
+    {
+      "seed_id": "S0031",
+      "seed_pair": {
+        "known": "你今晚想和我说话。",
+        "target": "You wanted to speak with me tonight."
+      },
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "今晚",
+            "target": "tonight"
+          }
+        },
+        {
+          "id": "S0031L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "to speak"
+          }
+        },
+        {
+          "id": "S0031L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "和我",
+            "target": "with me"
+          }
+        },
+        {
+          "id": "S0031L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "想和我说话",
+            "target": "wanted to speak with me"
+          },
+          "components": [
+            {
+              "known": "和我",
+              "target": "with me"
+            },
+            {
+              "known": "说话",
+              "target": "to speak"
+            }
+          ],
+          "teaches": "Chinese places 和 (with) before the verb, linking with me + speak as 和我说话"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0032",
+      "seed_pair": {
+        "known": "你想给我看什么东西吗？",
+        "target": "Did you want to show me something?"
+      },
+      "legos": [
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "什么东西",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0032L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "给我看",
+            "target": "show me"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "me"
+            },
+            {
+              "known": "看",
+              "target": "to look"
+            }
+          ],
+          "teaches": "Chinese show me uses 给我看 (give-me-look) construction"
+        },
+        {
+          "id": "S0032L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你想...吗？",
+            "target": "Did you want to...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            }
+          ],
+          "teaches": "Yes/no question formation using 吗 particle at sentence end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0033",
+      "seed_pair": {
+        "known": "你学英语学了多久了？",
+        "target": "How long have you been learning English?"
+      },
+      "legos": [
+        {
+          "id": "S0033L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0033L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "多久",
+            "target": "how long"
+          }
+        },
+        {
+          "id": "S0033L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学",
+            "target": "to learn"
+          }
+        },
+        {
+          "id": "S0033L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "学了多久了",
+            "target": "have been learning for how long"
+          },
+          "components": [
+            {
+              "known": "学",
+              "target": "to learn"
+            },
+            {
+              "known": "多久",
+              "target": "how long"
+            }
+          ],
+          "teaches": "Duration aspect uses verb+了...了 pattern to express ongoing action duration"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:48.753Z"
+}

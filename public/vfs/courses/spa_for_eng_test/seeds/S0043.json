@@ -1,0 +1,60 @@
+{
+  "seed_id": "S0043",
+  "seed_pair": {
+    "known": "I was not thinking about how to answer.",
+    "target": "No estaba pensando en cómo responder."
+  },
+  "legos": [
+    {
+      "id": "S0043L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I was not thinking",
+        "target": "No estaba pensando"
+      },
+      "components": [
+        {
+          "known": "I was",
+          "target": "estaba"
+        },
+        {
+          "known": "thinking",
+          "target": "pensando"
+        }
+      ],
+      "teaches": "Negation placement (no before verb) + past progressive with estar + gerund"
+    },
+    {
+      "id": "S0043L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "about",
+        "target": "en"
+      }
+    },
+    {
+      "id": "S0043L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how to answer",
+        "target": "cómo responder"
+      },
+      "components": [
+        {
+          "known": "how",
+          "target": "cómo"
+        },
+        {
+          "known": "to answer",
+          "target": "responder"
+        }
+      ],
+      "teaches": "Question word cómo + infinitive structure (no preposition needed)"
+    }
+  ],
+  "agentId": "3.5",
+  "receivedAt": "2025-11-24T15:32:07.331Z"
+}

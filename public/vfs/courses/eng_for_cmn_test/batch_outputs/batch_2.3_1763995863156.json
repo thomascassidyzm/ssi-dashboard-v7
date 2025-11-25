@@ -1,0 +1,188 @@
+{
+  "browserId": 2,
+  "agentId": "2.3",
+  "seedRange": "S0022-S0024",
+  "seeds": [
+    {
+      "seed_id": "S0022",
+      "seed_pair": {
+        "known": "因为我想认识会说英语的人。",
+        "target": "Because I want to meet people who speak English."
+      },
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "因为",
+            "target": "because"
+          }
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I want to"
+          }
+        },
+        {
+          "id": "S0022L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "认识",
+            "target": "to meet"
+          }
+        },
+        {
+          "id": "S0022L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "会说英语的人",
+            "target": "people who speak English"
+          },
+          "components": [
+            {
+              "known": "会",
+              "target": "can"
+            },
+            {
+              "known": "说",
+              "target": "speak"
+            },
+            {
+              "known": "英语",
+              "target": "English"
+            },
+            {
+              "known": "人",
+              "target": "people"
+            }
+          ],
+          "teaches": "Relative clause structure with 的 - modifier comes before 的 + noun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": {
+        "known": "我很快就要开始多说话了。",
+        "target": "I'm going to start talking more soon."
+      },
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "很快",
+            "target": "soon"
+          }
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "开始",
+            "target": "to start"
+          }
+        },
+        {
+          "id": "S0023L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "to talk"
+          }
+        },
+        {
+          "id": "S0023L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "多",
+            "target": "more"
+          }
+        },
+        {
+          "id": "S0023L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我就要...了",
+            "target": "I'm going to..."
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "就要",
+              "target": "about to"
+            },
+            {
+              "known": "了",
+              "target": "(completion marker)"
+            }
+          ],
+          "teaches": "Imminent future structure 就要...了 for actions about to happen"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": {
+        "known": "我没办法轻易记住。",
+        "target": "I'm not going to be able to remember easily."
+      },
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "没办法",
+            "target": "not able to"
+          },
+          "components": [
+            {
+              "known": "没",
+              "target": "not"
+            },
+            {
+              "known": "办法",
+              "target": "way/method"
+            }
+          ],
+          "teaches": "没办法 expresses inability - literally no way/method to do something"
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "轻易",
+            "target": "easily"
+          }
+        },
+        {
+          "id": "S0024L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "to remember"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:03.156Z"
+}

@@ -1,0 +1,73 @@
+{
+  "seed_id": "S0046",
+  "seed_pair": {
+    "known": "But I don't worry about making mistakes.",
+    "target": "Pero no me preocupo por cometer errores."
+  },
+  "legos": [
+    {
+      "id": "S0046L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "but",
+        "target": "pero"
+      }
+    },
+    {
+      "id": "S0046L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I don't worry",
+        "target": "no me preocupo"
+      },
+      "components": [
+        {
+          "known": "I",
+          "target": "yo"
+        },
+        {
+          "known": "don't",
+          "target": "no"
+        },
+        {
+          "known": "worry",
+          "target": "preocuparse"
+        }
+      ],
+      "teaches": "reflexive verb with pronoun me placed before conjugated verb"
+    },
+    {
+      "id": "S0046L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "about",
+        "target": "por"
+      }
+    },
+    {
+      "id": "S0046L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "making mistakes",
+        "target": "cometer errores"
+      },
+      "components": [
+        {
+          "known": "to make",
+          "target": "cometer"
+        },
+        {
+          "known": "mistakes",
+          "target": "errores"
+        }
+      ],
+      "teaches": "Spanish uses infinitive where English uses gerund (-ing)"
+    }
+  ],
+  "agentId": "agent-4.1",
+  "receivedAt": "2025-11-24T15:32:02.732Z"
+}

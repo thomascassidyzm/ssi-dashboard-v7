@@ -1,0 +1,82 @@
+{
+  "seed_id": "S0027",
+  "seed_pair": {
+    "known": "I don't like taking too much time to answer.",
+    "target": "No me gusta tomar demasiado tiempo para responder."
+  },
+  "legos": [
+    {
+      "id": "S0027L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I don't like",
+        "target": "No me gusta"
+      },
+      "components": [
+        {
+          "known": "no/not",
+          "target": "no"
+        },
+        {
+          "known": "to me",
+          "target": "me"
+        },
+        {
+          "known": "it pleases",
+          "target": "gusta"
+        }
+      ],
+      "teaches": "Negation with gustar: no precedes the indirect object pronoun"
+    },
+    {
+      "id": "S0027L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "taking",
+        "target": "tomar"
+      }
+    },
+    {
+      "id": "S0027L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "too much",
+        "target": "demasiado"
+      }
+    },
+    {
+      "id": "S0027L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "time",
+        "target": "tiempo"
+      }
+    },
+    {
+      "id": "S0027L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to answer",
+        "target": "para responder"
+      },
+      "components": [
+        {
+          "known": "for/in order to",
+          "target": "para"
+        },
+        {
+          "known": "answer",
+          "target": "responder"
+        }
+      ],
+      "teaches": "Purpose clause with para + infinitive"
+    }
+  ],
+  "agentId": "2.4",
+  "receivedAt": "2025-11-24T15:32:50.080Z"
+}

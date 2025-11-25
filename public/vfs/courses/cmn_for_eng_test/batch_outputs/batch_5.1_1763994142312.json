@@ -1,0 +1,220 @@
+{
+  "browserId": 5,
+  "agentId": "5.1",
+  "seedRange": "S0061-S0063",
+  "seeds": [
+    {
+      "seed_id": "S0061",
+      "seed_pair": {
+        "known": "Could you say that again a little more slowly?",
+        "target": "你能再说慢一点吗？"
+      },
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "say",
+            "target": "说"
+          }
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "again",
+            "target": "再"
+          }
+        },
+        {
+          "id": "S0061L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little more slowly",
+            "target": "慢一点"
+          },
+          "components": [
+            {
+              "known": "slow",
+              "target": "慢"
+            },
+            {
+              "known": "a little",
+              "target": "一点"
+            }
+          ],
+          "teaches": "一点 follows adjective as degree modifier meaning 'a little more'"
+        },
+        {
+          "id": "S0061L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "could you...?",
+            "target": "你能...吗？"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "can/able to",
+              "target": "能"
+            },
+            {
+              "known": "question particle",
+              "target": "吗"
+            }
+          ],
+          "teaches": "Polite request pattern: 你能 + verb + 吗？"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": {
+        "known": "I'm not sure if I can help you at the same time.",
+        "target": "我不确定我能不能同时帮你。"
+      },
+      "legos": [
+        {
+          "id": "S0062L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I/me",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0062L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "not sure",
+            "target": "不确定"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "不"
+            },
+            {
+              "known": "sure/certain",
+              "target": "确定"
+            }
+          ],
+          "teaches": "不 precedes verbs/adjectives for negation"
+        },
+        {
+          "id": "S0062L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can / whether I can",
+            "target": "能不能"
+          },
+          "components": [
+            {
+              "known": "can",
+              "target": "能"
+            },
+            {
+              "known": "not",
+              "target": "不"
+            }
+          ],
+          "teaches": "A-not-A pattern (能不能) embeds 'whether/if' meaning in statements"
+        },
+        {
+          "id": "S0062L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "at the same time",
+            "target": "同时"
+          }
+        },
+        {
+          "id": "S0062L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "help",
+            "target": "帮"
+          }
+        },
+        {
+          "id": "S0062L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": {
+        "known": "Are you sure you don't mind helping me?",
+        "target": "你确定你不介意帮我吗？"
+      },
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "sure/certain",
+            "target": "确定"
+          }
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "don't mind",
+            "target": "不介意"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "不"
+            },
+            {
+              "known": "mind",
+              "target": "介意"
+            }
+          ],
+          "teaches": "不 + verb for negative statements"
+        },
+        {
+          "id": "S0063L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "help",
+            "target": "帮"
+          }
+        },
+        {
+          "id": "S0063L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "question particle",
+            "target": "吗"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:22:22.312Z"
+}

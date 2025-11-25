@@ -1,0 +1,186 @@
+{
+  "browserId": 3,
+  "agentId": "3.4",
+  "seedRange": "S0040-S0042",
+  "seeds": [
+    {
+      "seed_id": "S0040",
+      "seed_pair": {
+        "known": "你现在感觉怎么样？",
+        "target": "How do you feel at the moment?"
+      },
+      "legos": [
+        {
+          "id": "S0040L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "at the moment"
+          }
+        },
+        {
+          "id": "S0040L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你感觉怎么样",
+            "target": "how do you feel"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "感觉",
+              "target": "feel"
+            },
+            {
+              "known": "怎么样",
+              "target": "how"
+            }
+          ],
+          "teaches": "question formation with 怎么样 at end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0041",
+      "seed_pair": {
+        "known": "我感觉还好，但是我开始感到累了。",
+        "target": "I feel okay, but I'm starting to feel tired."
+      },
+      "legos": [
+        {
+          "id": "S0041L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我感觉还好",
+            "target": "I feel okay"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "感觉",
+              "target": "feel"
+            },
+            {
+              "known": "还好",
+              "target": "okay"
+            }
+          ],
+          "teaches": "还好 means okay/not bad"
+        },
+        {
+          "id": "S0041L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0041L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我开始感到累",
+            "target": "I'm starting to feel tired"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "开始",
+              "target": "starting to"
+            },
+            {
+              "known": "感到",
+              "target": "feel"
+            },
+            {
+              "known": "累",
+              "target": "tired"
+            }
+          ],
+          "teaches": "开始 + verb for starting to"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0042",
+      "seed_pair": {
+        "known": "我开始感觉比昨晚好一点了。",
+        "target": "I was starting to feel better than last night."
+      },
+      "legos": [
+        {
+          "id": "S0042L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我开始感觉",
+            "target": "I was starting to feel"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "开始",
+              "target": "was starting to"
+            },
+            {
+              "known": "感觉",
+              "target": "feel"
+            }
+          ],
+          "teaches": "past progressive using 开始"
+        },
+        {
+          "id": "S0042L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "比昨晚好",
+            "target": "better than last night"
+          },
+          "components": [
+            {
+              "known": "比",
+              "target": "than"
+            },
+            {
+              "known": "昨晚",
+              "target": "last night"
+            },
+            {
+              "known": "好",
+              "target": "better"
+            }
+          ],
+          "teaches": "比 comparison: 比 + noun + adjective"
+        },
+        {
+          "id": "S0042L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "昨晚",
+            "target": "last night"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:50.639Z"
+}

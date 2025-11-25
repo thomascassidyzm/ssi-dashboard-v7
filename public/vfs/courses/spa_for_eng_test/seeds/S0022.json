@@ -1,0 +1,73 @@
+{
+  "seed_id": "S0022",
+  "seed_pair": {
+    "known": "Because I want to meet people who speak Spanish.",
+    "target": "Porque quiero conocer a personas que hablan español."
+  },
+  "legos": [
+    {
+      "id": "S0022L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "because",
+        "target": "porque"
+      }
+    },
+    {
+      "id": "S0022L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I want",
+        "target": "quiero"
+      }
+    },
+    {
+      "id": "S0022L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to meet people",
+        "target": "conocer a personas"
+      },
+      "components": [
+        {
+          "known": "to meet",
+          "target": "conocer"
+        },
+        {
+          "known": "people",
+          "target": "personas"
+        }
+      ],
+      "teaches": "Personal a required before people as direct object"
+    },
+    {
+      "id": "S0022L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "who speak Spanish",
+        "target": "que hablan español"
+      },
+      "components": [
+        {
+          "known": "who",
+          "target": "que"
+        },
+        {
+          "known": "they speak",
+          "target": "hablan"
+        },
+        {
+          "known": "Spanish",
+          "target": "español"
+        }
+      ],
+      "teaches": "Relative pronoun que for who in relative clauses"
+    }
+  ],
+  "agentId": "2.3",
+  "receivedAt": "2025-11-24T15:32:13.417Z"
+}

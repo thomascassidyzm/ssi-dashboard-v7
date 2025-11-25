@@ -1,0 +1,185 @@
+{
+  "browserId": 3,
+  "agentId": "3.2",
+  "seedRange": "S0034-S0036",
+  "seeds": [
+    {
+      "seed_id": "S0034",
+      "seed_pair": {
+        "known": "He doesn't want to be quiet when other people are here.",
+        "target": "别人在这里的时候，他不想保持安静。"
+      },
+      "legos": [
+        {
+          "id": "S0034L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "他"
+          }
+        },
+        {
+          "id": "S0034L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "doesn't want to",
+            "target": "不想"
+          }
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to be quiet",
+            "target": "保持安静"
+          }
+        },
+        {
+          "id": "S0034L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "other people",
+            "target": "别人"
+          }
+        },
+        {
+          "id": "S0034L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "here",
+            "target": "这里"
+          }
+        },
+        {
+          "id": "S0034L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "when other people are here",
+            "target": "别人在这里的时候"
+          },
+          "components": [
+            {
+              "known": "other people",
+              "target": "别人"
+            },
+            {
+              "known": "are here",
+              "target": "在这里"
+            },
+            {
+              "known": "when",
+              "target": "的时候"
+            }
+          ],
+          "teaches": "的时候 pattern for temporal when clauses; subject + 在 + location + 的时候 structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0035",
+      "seed_pair": {
+        "known": "She doesn't want to read anything this afternoon.",
+        "target": "她今天下午不想读任何东西。"
+      },
+      "legos": [
+        {
+          "id": "S0035L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "她"
+          }
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "doesn't want to",
+            "target": "不想"
+          }
+        },
+        {
+          "id": "S0035L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to read",
+            "target": "读"
+          }
+        },
+        {
+          "id": "S0035L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anything",
+            "target": "任何东西"
+          }
+        },
+        {
+          "id": "S0035L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this afternoon",
+            "target": "今天下午"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0036",
+      "seed_pair": {
+        "known": "We don't want to interrupt the story.",
+        "target": "我们不想打断故事。"
+      },
+      "legos": [
+        {
+          "id": "S0036L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we",
+            "target": "我们"
+          }
+        },
+        {
+          "id": "S0036L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "don't want to",
+            "target": "不想"
+          }
+        },
+        {
+          "id": "S0036L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to interrupt",
+            "target": "打断"
+          }
+        },
+        {
+          "id": "S0036L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the story",
+            "target": "故事"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:34.687Z"
+}

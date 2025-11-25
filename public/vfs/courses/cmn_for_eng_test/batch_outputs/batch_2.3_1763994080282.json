@@ -1,0 +1,224 @@
+{
+  "browserId": 2,
+  "agentId": "2.3",
+  "seedRange": "S0022-S0024",
+  "seeds": [
+    {
+      "seed_id": "S0022",
+      "seed_pair": {
+        "known": "Because I want to meet people who speak Mandarin Chinese.",
+        "target": "因为我想认识会说中文的人。"
+      },
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "因为"
+          }
+        },
+        {
+          "id": "S0022L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "我想"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "want",
+              "target": "想"
+            }
+          ],
+          "teaches": "subject directly precedes 想 with no linking word"
+        },
+        {
+          "id": "S0022L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "认识"
+          }
+        },
+        {
+          "id": "S0022L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "people who speak Mandarin Chinese",
+            "target": "会说中文的人"
+          },
+          "components": [
+            {
+              "known": "can/know how to",
+              "target": "会"
+            },
+            {
+              "known": "speak",
+              "target": "说"
+            },
+            {
+              "known": "Mandarin Chinese",
+              "target": "中文"
+            },
+            {
+              "known": "(modifier marker)",
+              "target": "的"
+            },
+            {
+              "known": "people",
+              "target": "人"
+            }
+          ],
+          "teaches": "relative clauses with 的 come BEFORE the noun they modify"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": {
+        "known": "I am going to start talking more soon.",
+        "target": "我很快就要开始多说话了。"
+      },
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "soon",
+            "target": "很快"
+          }
+        },
+        {
+          "id": "S0023L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I am going to... (imminent)",
+            "target": "我就要...了"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "then/soon",
+              "target": "就"
+            },
+            {
+              "known": "will/want",
+              "target": "要"
+            },
+            {
+              "known": "(change of state)",
+              "target": "了"
+            }
+          ],
+          "teaches": "就要...了 expresses imminent future action"
+        },
+        {
+          "id": "S0023L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to start",
+            "target": "开始"
+          }
+        },
+        {
+          "id": "S0023L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "talk more",
+            "target": "多说话"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "多"
+            },
+            {
+              "known": "to talk",
+              "target": "说话"
+            }
+          ],
+          "teaches": "多 (more) goes BEFORE the verb in Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": {
+        "known": "I am not going to be able to remember easily.",
+        "target": "我不会轻易记住的。"
+      },
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I am not going to be able to",
+            "target": "我不会"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "not",
+              "target": "不"
+            },
+            {
+              "known": "will/can",
+              "target": "会"
+            }
+          ],
+          "teaches": "不会 combines negation with future ability/possibility"
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easily",
+            "target": "轻易"
+          }
+        },
+        {
+          "id": "S0024L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember (successfully)",
+            "target": "记住"
+          },
+          "components": [
+            {
+              "known": "to remember/record",
+              "target": "记"
+            },
+            {
+              "known": "(firmly/successfully)",
+              "target": "住"
+            }
+          ],
+          "teaches": "住 as resultative complement indicates successful completion of action"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:20.282Z"
+}

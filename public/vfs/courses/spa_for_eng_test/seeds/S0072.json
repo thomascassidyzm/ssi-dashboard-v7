@@ -1,0 +1,71 @@
+{
+  "seed_id": "S0072",
+  "seed_pair": {
+    "known": "I think that you're doing very well.",
+    "target": "Creo que lo estás haciendo muy bien."
+  },
+  "legos": [
+    {
+      "id": "S0072L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I think",
+        "target": "creo"
+      }
+    },
+    {
+      "id": "S0072L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "that",
+        "target": "que"
+      }
+    },
+    {
+      "id": "S0072L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "you're doing it",
+        "target": "lo estás haciendo"
+      },
+      "components": [
+        {
+          "known": "it",
+          "target": "lo"
+        },
+        {
+          "known": "you are",
+          "target": "estás"
+        },
+        {
+          "known": "doing",
+          "target": "haciendo"
+        }
+      ],
+      "teaches": "present progressive with estar + gerund and object pronoun placement before auxiliary"
+    },
+    {
+      "id": "S0072L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "very",
+        "target": "muy"
+      }
+    },
+    {
+      "id": "S0072L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "well",
+        "target": "bien"
+      }
+    }
+  ],
+  "agentId": "5.4",
+  "receivedAt": "2025-11-24T15:32:58.654Z"
+}

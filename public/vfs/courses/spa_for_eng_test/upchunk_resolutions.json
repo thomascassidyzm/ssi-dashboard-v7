@@ -1,0 +1,237 @@
+{
+  "course": "spa_for_eng_test",
+  "generated": "2025-11-24T16:00:00.000Z",
+  "resolutions": [
+    {
+      "conflict": "i want",
+      "canonical": {
+        "known": "i want",
+        "target": "quiero"
+      },
+      "upchunks": [],
+      "notes": "Case-only conflict. Lowercase 'quiero' chosen as canonical for mid-sentence use. No upchunks needed - capitalization is handled by sentence position rules."
+    },
+    {
+      "conflict": "i'm trying",
+      "canonical": {
+        "known": "i'm trying",
+        "target": "estoy intentando"
+      },
+      "upchunks": [],
+      "notes": "Case-only conflict. Lowercase 'estoy intentando' chosen as canonical for mid-sentence use. No upchunks needed - capitalization is handled by sentence position rules."
+    },
+    {
+      "conflict": "i'm going to",
+      "canonical": {
+        "known": "i'm going to",
+        "target": "voy a"
+      },
+      "upchunks": [],
+      "notes": "Case-only conflict. Lowercase 'voy a' chosen as canonical for mid-sentence use. No upchunks needed - capitalization is handled by sentence position rules."
+    },
+    {
+      "conflict": "i'm not sure",
+      "canonical": {
+        "known": "i'm not sure",
+        "target": "no estoy seguro"
+      },
+      "upchunks": [
+        {
+          "id": "UP0001",
+          "type": "M",
+          "lego": {
+            "known": "i'm not sure (feminine speaker)",
+            "target": "no estoy segura"
+          },
+          "components": ["no", "estoy", "segura"],
+          "teaches": "Gender agreement: feminine speaker uses 'segura' instead of 'seguro' for adjectives describing self"
+        }
+      ],
+      "notes": "Lowercase chosen as canonical. Added feminine form upchunk for gender agreement pattern."
+    },
+    {
+      "conflict": "a little",
+      "canonical": {
+        "known": "a little",
+        "target": "un poco"
+      },
+      "upchunks": [
+        {
+          "id": "UP0002",
+          "type": "M",
+          "lego": {
+            "known": "a little (before noun)",
+            "target": "un poco de"
+          },
+          "components": ["un", "poco", "de"],
+          "teaches": "Partitive construction: 'un poco de' is used before nouns (un poco de agua), while 'un poco' stands alone or modifies verbs/adjectives"
+        }
+      ],
+      "notes": "'un poco' is more context-neutral (works with verbs, adjectives). 'un poco de' specifically precedes nouns."
+    },
+    {
+      "conflict": "to stop",
+      "canonical": {
+        "known": "to stop",
+        "target": "parar"
+      },
+      "upchunks": [
+        {
+          "id": "UP0003",
+          "type": "M",
+          "lego": {
+            "known": "to stop (doing something)",
+            "target": "dejar de"
+          },
+          "components": ["dejar", "de"],
+          "teaches": "Verbal periphrasis: 'dejar de + infinitive' means to stop doing an action (dejar de fumar = stop smoking), while 'parar' means to stop moving or halt"
+        }
+      ],
+      "notes": "'parar' is physical stopping. 'dejar de' is cessation of an ongoing activity and requires a following infinitive."
+    },
+    {
+      "conflict": "about",
+      "canonical": {
+        "known": "about",
+        "target": "de"
+      },
+      "upchunks": [
+        {
+          "id": "UP0004",
+          "type": "M",
+          "lego": {
+            "known": "about (approximately)",
+            "target": "aproximadamente"
+          },
+          "components": ["aproximadamente"],
+          "teaches": "Numerical approximation: 'aproximadamente' is used for approximate quantities (aproximadamente diez = about ten)"
+        },
+        {
+          "id": "UP0005",
+          "type": "M",
+          "lego": {
+            "known": "about (concerning a topic)",
+            "target": "sobre"
+          },
+          "components": ["sobre"],
+          "teaches": "Topic/subject: 'sobre' means about/regarding when discussing a topic (un libro sobre historia = a book about history)"
+        },
+        {
+          "id": "UP0006",
+          "type": "M",
+          "lego": {
+            "known": "about (location/area)",
+            "target": "por"
+          },
+          "components": ["por"],
+          "teaches": "Location/vicinity: 'por' can mean about/around when referring to location (por aqui = around here)"
+        },
+        {
+          "id": "UP0007",
+          "type": "M",
+          "lego": {
+            "known": "about (in phrases like 'think about')",
+            "target": "en"
+          },
+          "components": ["en"],
+          "teaches": "Verb complement: 'en' follows certain verbs like 'pensar' (pensar en = to think about)"
+        }
+      ],
+      "notes": "Highly polysemous word. Added generic 'de' as canonical (most common), with upchunks for specific semantic contexts. Original conflict had 'aproximadamente', 'en', 'por' - expanded to include 'sobre' for completeness."
+    },
+    {
+      "conflict": "what",
+      "canonical": {
+        "known": "what",
+        "target": "que"
+      },
+      "upchunks": [
+        {
+          "id": "UP0008",
+          "type": "M",
+          "lego": {
+            "known": "what (interrogative)",
+            "target": "que"
+          },
+          "components": ["que"],
+          "teaches": "Direct question: 'que' with accent is used in direct and indirect questions (Que quieres? = What do you want?)"
+        },
+        {
+          "id": "UP0009",
+          "type": "M",
+          "lego": {
+            "known": "what (relative pronoun, 'the thing that')",
+            "target": "lo que"
+          },
+          "components": ["lo", "que"],
+          "teaches": "Relative clause: 'lo que' means 'what/that which' in statements referring to something unspecified (Lo que quiero = What I want / The thing that I want)"
+        }
+      ],
+      "notes": "'que' is the more basic/frequent form. 'lo que' is specifically for relative clauses meaning 'that which' or 'the thing that'."
+    },
+    {
+      "conflict": "that",
+      "canonical": {
+        "known": "that",
+        "target": "que"
+      },
+      "upchunks": [
+        {
+          "id": "UP0010",
+          "type": "M",
+          "lego": {
+            "known": "that (conjunction, introduces clause)",
+            "target": "que"
+          },
+          "components": ["que"],
+          "teaches": "Conjunction: 'que' connects clauses (Creo que si = I think that yes)"
+        },
+        {
+          "id": "UP0011",
+          "type": "M",
+          "lego": {
+            "known": "that (demonstrative, pointing to something)",
+            "target": "eso"
+          },
+          "components": ["eso"],
+          "teaches": "Demonstrative pronoun: 'eso' points to something specific (Eso es bueno = That is good). Neuter form for abstract or unspecified referents."
+        },
+        {
+          "id": "UP0012",
+          "type": "M",
+          "lego": {
+            "known": "that (demonstrative, masculine noun)",
+            "target": "ese"
+          },
+          "components": ["ese"],
+          "teaches": "Demonstrative adjective/pronoun: 'ese' refers to masculine nouns (ese libro = that book)"
+        },
+        {
+          "id": "UP0013",
+          "type": "M",
+          "lego": {
+            "known": "that (demonstrative, feminine noun)",
+            "target": "esa"
+          },
+          "components": ["esa"],
+          "teaches": "Demonstrative adjective/pronoun: 'esa' refers to feminine nouns (esa casa = that house)"
+        }
+      ],
+      "notes": "'que' as conjunction is the most frequent use. 'eso' is the demonstrative from the conflict. Added 'ese/esa' for completeness in gender agreement patterns."
+    }
+  ],
+  "summary": {
+    "totalConflicts": 9,
+    "caseOnlyConflicts": 4,
+    "semanticConflicts": 5,
+    "totalUpchunks": 13,
+    "linguisticPatterns": [
+      "Gender agreement (seguro/segura, ese/esa)",
+      "Partitive construction (un poco de)",
+      "Verbal periphrasis (dejar de + infinitive)",
+      "Preposition selection by semantic context (sobre, por, en, de)",
+      "Interrogative vs relative pronouns (que vs lo que)",
+      "Conjunction vs demonstrative (que vs eso)"
+    ]
+  }
+}

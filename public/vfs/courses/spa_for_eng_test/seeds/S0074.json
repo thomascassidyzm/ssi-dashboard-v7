@@ -1,0 +1,44 @@
+{
+  "seed_id": "S0074",
+  "seed_pair": {
+    "known": "Thank you very much for helping me to understand.",
+    "target": "Muchas gracias por ayudarme a entender."
+  },
+  "legos": [
+    {
+      "id": "S0074L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "thank you very much",
+        "target": "muchas gracias"
+      }
+    },
+    {
+      "id": "S0074L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "for helping me to understand",
+        "target": "por ayudarme a entender"
+      },
+      "components": [
+        {
+          "known": "for",
+          "target": "por"
+        },
+        {
+          "known": "to help me",
+          "target": "ayudarme"
+        },
+        {
+          "known": "to understand",
+          "target": "entender"
+        }
+      ],
+      "teaches": "por + infinitive for 'for doing'; pronoun attachment to infinitive (ayudar+me); 'a' before entender"
+    }
+  ],
+  "agentId": "5.5",
+  "receivedAt": "2025-11-24T15:32:37.110Z"
+}

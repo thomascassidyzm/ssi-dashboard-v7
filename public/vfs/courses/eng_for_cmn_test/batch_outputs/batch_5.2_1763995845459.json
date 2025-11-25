@@ -1,0 +1,189 @@
+{
+  "browserId": 5,
+  "agentId": "5.2",
+  "seedRange": "S0064-S0066",
+  "seeds": [
+    {
+      "seed_id": "S0064",
+      "seed_pair": {
+        "known": "学英语不容易，但是很有趣。",
+        "target": "Learning English isn't easy but it is fun."
+      },
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学习",
+            "target": "learning"
+          }
+        },
+        {
+          "id": "S0064L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "容易",
+            "target": "easy"
+          }
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0064L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有趣",
+            "target": "fun"
+          }
+        },
+        {
+          "id": "S0064L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不容易",
+            "target": "isn't easy"
+          },
+          "components": [
+            {
+              "known": "容易",
+              "target": "easy"
+            }
+          ],
+          "teaches": "English contraction isn't for negation"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": {
+        "known": "花时间测试自己很重要。",
+        "target": "It's important to take time to test yourself."
+      },
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "重要",
+            "target": "important"
+          }
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "时间",
+            "target": "time"
+          }
+        },
+        {
+          "id": "S0065L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你自己",
+            "target": "yourself"
+          }
+        },
+        {
+          "id": "S0065L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "测试自己",
+            "target": "to test yourself"
+          },
+          "components": [
+            {
+              "known": "你自己",
+              "target": "yourself"
+            }
+          ],
+          "teaches": "Reflexive pronoun placement after verb in English"
+        },
+        {
+          "id": "S0065L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "...很重要",
+            "target": "It's important to..."
+          },
+          "components": [
+            {
+              "known": "重要",
+              "target": "important"
+            }
+          ],
+          "teaches": "It's adjective to structure for expressing importance"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": {
+        "known": "找到答案不难。",
+        "target": "It's not difficult to find the answer."
+      },
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "难",
+            "target": "difficult"
+          }
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "答案",
+            "target": "answer"
+          }
+        },
+        {
+          "id": "S0066L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "找到",
+            "target": "to find"
+          }
+        },
+        {
+          "id": "S0066L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "...不难",
+            "target": "It's not difficult to..."
+          },
+          "components": [
+            {
+              "known": "难",
+              "target": "difficult"
+            }
+          ],
+          "teaches": "It's not adjective to structure for expressing ease"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:45.459Z"
+}

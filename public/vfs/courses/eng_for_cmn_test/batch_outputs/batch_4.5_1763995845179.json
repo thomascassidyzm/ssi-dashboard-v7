@@ -1,0 +1,258 @@
+{
+  "browserId": 4,
+  "agentId": "4.5",
+  "seedRange": "S0058-S0060",
+  "seeds": [
+    {
+      "seed_id": "S0058",
+      "seed_pair": {
+        "known": "当你理解足够多的词时，会很有趣。",
+        "target": "It's interesting when you understand enough words."
+      },
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有趣的",
+            "target": "interesting"
+          }
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "理解",
+            "target": "understand"
+          }
+        },
+        {
+          "id": "S0058L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "足够的",
+            "target": "enough"
+          }
+        },
+        {
+          "id": "S0058L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "词",
+            "target": "word"
+          }
+        },
+        {
+          "id": "S0058L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "这很有趣",
+            "target": "It's interesting"
+          },
+          "components": [
+            {
+              "known": "有趣的",
+              "target": "interesting"
+            }
+          ],
+          "teaches": "It's + adjective pattern for descriptions"
+        },
+        {
+          "id": "S0058L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "当你理解的时候",
+            "target": "when you understand"
+          },
+          "components": [
+            {
+              "known": "理解",
+              "target": "understand"
+            }
+          ],
+          "teaches": "subordinate clause with when (no 的时候 needed)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": {
+        "known": "我知道下周我需要做什么。",
+        "target": "I know how to do what I need to do next week."
+      },
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "知道",
+            "target": "know"
+          }
+        },
+        {
+          "id": "S0059L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "需要",
+            "target": "need"
+          }
+        },
+        {
+          "id": "S0059L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "做",
+            "target": "do"
+          }
+        },
+        {
+          "id": "S0059L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "下周",
+            "target": "next week"
+          }
+        },
+        {
+          "id": "S0059L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我知道怎么",
+            "target": "I know how to"
+          },
+          "components": [
+            {
+              "known": "知道",
+              "target": "know"
+            }
+          ],
+          "teaches": "know how to pattern (verb + how to + verb)"
+        },
+        {
+          "id": "S0059L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我需要做的事",
+            "target": "what I need to do"
+          },
+          "components": [
+            {
+              "known": "需要",
+              "target": "need"
+            },
+            {
+              "known": "做",
+              "target": "do"
+            }
+          ],
+          "teaches": "what-clause as object (no 的事 needed in English)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": {
+        "known": "我还不知道怎么说足够多的不同的词。",
+        "target": "I don't know how to say enough different words yet."
+      },
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "say"
+          }
+        },
+        {
+          "id": "S0060L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不同的",
+            "target": "different"
+          }
+        },
+        {
+          "id": "S0060L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "还",
+            "target": "yet"
+          }
+        },
+        {
+          "id": "S0060L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不知道",
+            "target": "I don't know"
+          },
+          "components": [
+            {
+              "known": "知道",
+              "target": "know"
+            }
+          ],
+          "teaches": "don't + verb negation pattern"
+        },
+        {
+          "id": "S0060L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          },
+          "components": [
+            {
+              "known": "说",
+              "target": "say"
+            }
+          ],
+          "teaches": "how to + verb infinitive pattern"
+        },
+        {
+          "id": "S0060L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "足够多不同的词",
+            "target": "enough different words"
+          },
+          "components": [
+            {
+              "known": "足够的",
+              "target": "enough"
+            },
+            {
+              "known": "不同的",
+              "target": "different"
+            },
+            {
+              "known": "词",
+              "target": "word"
+            }
+          ],
+          "teaches": "enough + adjective + noun order"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:45.179Z"
+}

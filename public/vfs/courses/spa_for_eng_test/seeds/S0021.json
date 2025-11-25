@@ -1,0 +1,58 @@
+{
+  "seed_id": "S0021",
+  "seed_pair": {
+    "known": "Why are you learning her name?",
+    "target": "¿Por qué estás aprendiendo su nombre?"
+  },
+  "legos": [
+    {
+      "id": "S0021L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "why",
+        "target": "por qué"
+      }
+    },
+    {
+      "id": "S0021L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "are you learning",
+        "target": "estás aprendiendo"
+      },
+      "components": [
+        {
+          "known": "you are",
+          "target": "estás"
+        },
+        {
+          "known": "learning",
+          "target": "aprendiendo"
+        }
+      ],
+      "teaches": "present progressive with estar + gerund"
+    },
+    {
+      "id": "S0021L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "her",
+        "target": "su"
+      }
+    },
+    {
+      "id": "S0021L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "name",
+        "target": "nombre"
+      }
+    }
+  ],
+  "agentId": "2.2",
+  "receivedAt": "2025-11-24T15:32:56.079Z"
+}

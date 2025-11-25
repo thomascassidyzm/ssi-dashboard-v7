@@ -1,0 +1,93 @@
+{
+  "seed_id": "S0069",
+  "seed_pair": {
+    "known": "He didn't want to look after the young dog all afternoon.",
+    "target": "Él no quería cuidar del perro joven toda la tarde."
+  },
+  "legos": [
+    {
+      "id": "S0069L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "he",
+        "target": "él"
+      }
+    },
+    {
+      "id": "S0069L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "didn't want",
+        "target": "no quería"
+      },
+      "components": [
+        {
+          "known": "didn't",
+          "target": "no"
+        },
+        {
+          "known": "wanted",
+          "target": "quería"
+        }
+      ],
+      "teaches": "Spanish negation places no before the conjugated verb"
+    },
+    {
+      "id": "S0069L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to look after",
+        "target": "cuidar"
+      }
+    },
+    {
+      "id": "S0069L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "the young dog",
+        "target": "el perro joven"
+      },
+      "components": [
+        {
+          "known": "the",
+          "target": "el"
+        },
+        {
+          "known": "dog",
+          "target": "perro"
+        },
+        {
+          "known": "young",
+          "target": "joven"
+        }
+      ],
+      "teaches": "Spanish adjectives typically follow the noun"
+    },
+    {
+      "id": "S0069L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "all afternoon",
+        "target": "toda la tarde"
+      },
+      "components": [
+        {
+          "known": "all",
+          "target": "toda"
+        },
+        {
+          "known": "afternoon",
+          "target": "la tarde"
+        }
+      ],
+      "teaches": "All agrees with noun gender - toda for feminine tarde"
+    }
+  ],
+  "agentId": "5.3",
+  "receivedAt": "2025-11-24T15:33:22.289Z"
+}

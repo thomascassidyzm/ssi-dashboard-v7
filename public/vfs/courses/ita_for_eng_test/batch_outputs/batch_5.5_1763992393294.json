@@ -1,0 +1,161 @@
+{
+  "browserId": 5,
+  "agentId": "5.5",
+  "seedRange": "S0073-S0075",
+  "seeds": [
+    {
+      "seed_id": "S0073",
+      "seed_pair": {
+        "known": "Thank you very much, but I've got more to learn.",
+        "target": "Grazie mille, ma ho ancora da imparare."
+      },
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "grazie mille"
+          },
+          "components": [
+            {
+              "known": "thank you",
+              "target": "grazie"
+            },
+            {
+              "known": "very much",
+              "target": "mille"
+            }
+          ],
+          "teaches": "Italian uses mille (thousand) for emphasis instead of molto"
+        },
+        {
+          "id": "S0073L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I've got more to learn",
+            "target": "ho ancora da imparare"
+          },
+          "components": [
+            {
+              "known": "I've got",
+              "target": "ho"
+            },
+            {
+              "known": "more/still",
+              "target": "ancora"
+            },
+            {
+              "known": "to learn",
+              "target": "da imparare"
+            }
+          ],
+          "teaches": "avere + da + infinitive for obligation; ancora placement before da"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": {
+        "known": "Thank you very much for helping me to understand.",
+        "target": "Grazie mille per aiutarmi a capire."
+      },
+      "legos": [
+        {
+          "id": "S0074L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "grazie mille"
+          },
+          "components": [
+            {
+              "known": "thank you",
+              "target": "grazie"
+            },
+            {
+              "known": "very much",
+              "target": "mille"
+            }
+          ],
+          "teaches": "Italian uses mille (thousand) for emphasis"
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "for helping me to understand",
+            "target": "per aiutarmi a capire"
+          },
+          "components": [
+            {
+              "known": "for",
+              "target": "per"
+            },
+            {
+              "known": "helping me",
+              "target": "aiutarmi"
+            },
+            {
+              "known": "to understand",
+              "target": "a capire"
+            }
+          ],
+          "teaches": "per + infinitive with attached pronoun (-mi); a + infinitive for purpose clauses"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": {
+        "known": "Have you got more to learn?",
+        "target": "Hai ancora da imparare?"
+      },
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "have you got",
+            "target": "hai"
+          }
+        },
+        {
+          "id": "S0075L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "more to learn",
+            "target": "ancora da imparare"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "ancora"
+            },
+            {
+              "known": "to learn",
+              "target": "da imparare"
+            }
+          ],
+          "teaches": "da + infinitive for things remaining to be done; ancora for more/still"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:13.294Z"
+}

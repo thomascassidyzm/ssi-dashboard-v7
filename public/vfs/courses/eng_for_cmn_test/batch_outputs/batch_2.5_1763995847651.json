@@ -1,0 +1,196 @@
+{
+  "browserId": 2,
+  "agentId": "2.5",
+  "seedRange": "S0028-S0030",
+  "seeds": [
+    {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "尽快开始说话是很有用的。",
+        "target": "It's useful to start talking as soon as you can."
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有用的",
+            "target": "useful"
+          }
+        },
+        {
+          "id": "S0028L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "开始",
+            "target": "to start"
+          }
+        },
+        {
+          "id": "S0028L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "talking"
+          }
+        },
+        {
+          "id": "S0028L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽快",
+            "target": "as soon as you can"
+          },
+          "components": [
+            {
+              "known": "尽",
+              "target": "as soon as"
+            },
+            {
+              "known": "快",
+              "target": "you can"
+            }
+          ],
+          "teaches": "as soon as + clause construction"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "我期待着尽快说得更好。",
+        "target": "I'm looking forward to speaking better as soon as I can."
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我期待着",
+            "target": "I'm looking forward to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I'm"
+            },
+            {
+              "known": "期待",
+              "target": "looking forward to"
+            }
+          ],
+          "teaches": "looking forward to + gerund structure"
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speaking"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "更好",
+            "target": "better"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽快",
+            "target": "as soon as I can"
+          },
+          "components": [
+            {
+              "known": "尽",
+              "target": "as soon as"
+            },
+            {
+              "known": "快",
+              "target": "I can"
+            }
+          ],
+          "teaches": "as soon as + subject + can"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "我昨天想问你一件事。",
+        "target": "I wanted to ask you something yesterday."
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I wanted"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "想",
+              "target": "wanted"
+            }
+          ],
+          "teaches": "past tense -ed ending"
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "问",
+            "target": "to ask"
+          }
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一件事",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0030L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "昨天",
+            "target": "yesterday"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:47.651Z"
+}

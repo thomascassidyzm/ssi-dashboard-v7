@@ -1,0 +1,5031 @@
+{
+  "version": "8.3.0",
+  "course_code": "ita_for_eng_test",
+  "methodology": "Phase 1+3 v3.0 Unified - Swarm Parallelization",
+  "total_seeds": 75,
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": [
+        "Voglio parlare italiano con te adesso.",
+        "I want to speak Italian with you now."
+      ],
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "Voglio"
+          }
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with you",
+            "target": "con te"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "adesso"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": [
+        "Sto cercando di imparare.",
+        "I'm trying to learn."
+      ],
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "Sto cercando"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "Sto"
+            },
+            {
+              "known": "trying",
+              "target": "cercando"
+            }
+          ],
+          "teaches": "Italian uses stare + gerund for present continuous (-ing form)"
+        },
+        {
+          "id": "S0002L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "di imparare"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "di"
+            },
+            {
+              "known": "learn",
+              "target": "imparare"
+            }
+          ],
+          "teaches": "After cercare, Italian requires di before the infinitive"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": [
+        "come parlare il più spesso possibile",
+        "how to speak as often as possible"
+      ],
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how to speak",
+            "target": "come parlare"
+          }
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as often as possible",
+            "target": "il più spesso possibile"
+          },
+          "components": [
+            {
+              "known": "often",
+              "target": "spesso"
+            },
+            {
+              "known": "possible",
+              "target": "possibile"
+            }
+          ],
+          "teaches": "Italian as...as possible pattern: il più + adjective/adverb + possibile"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0004",
+      "seed_pair": [
+        "come dire qualcosa in italiano",
+        "how to say something in Italian"
+      ],
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "come dire"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "to say",
+              "target": "dire"
+            }
+          ],
+          "teaches": "how to + verb = come + infinitive"
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "in Italian",
+            "target": "in italiano"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": [
+        "Vado ad esercitarmi a parlare con qualcun altro.",
+        "I'm going to practise speaking with someone else."
+      ],
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to practise",
+            "target": "Vado ad esercitarmi"
+          },
+          "components": [
+            {
+              "known": "I'm going to",
+              "target": "Vado a"
+            },
+            {
+              "known": "practise",
+              "target": "esercitarmi"
+            }
+          ],
+          "teaches": "andare a + infinitive for going to; reflexive verb esercitarsi"
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speaking",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with someone else",
+            "target": "con qualcun altro"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "con"
+            },
+            {
+              "known": "someone else",
+              "target": "qualcun altro"
+            }
+          ],
+          "teaches": "qualcun altro = someone else (qualcuno + altro)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": [
+        "Sto cercando di ricordare una parola.",
+        "I'm trying to remember a word."
+      ],
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying to",
+            "target": "Sto cercando di"
+          },
+          "components": [
+            {
+              "known": "I'm",
+              "target": "Sto"
+            },
+            {
+              "known": "trying to",
+              "target": "cercando di"
+            }
+          ],
+          "teaches": "stare + gerund for progressive; cercare di = to try to"
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "ricordare"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a word",
+            "target": "una parola"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0007",
+      "seed_pair": [
+        "Voglio provare più che posso oggi.",
+        "I want to try as hard as I can today."
+      ],
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0007L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to try",
+            "target": "provare"
+          }
+        },
+        {
+          "id": "S0007L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as hard as I can",
+            "target": "più che posso"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "più"
+            },
+            {
+              "known": "that",
+              "target": "che"
+            },
+            {
+              "known": "I can",
+              "target": "posso"
+            }
+          ],
+          "teaches": "più che + conjugated verb for as much as one can"
+        },
+        {
+          "id": "S0007L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "today",
+            "target": "oggi"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": [
+        "Proverò a spiegare cosa intendo.",
+        "I'm going to try to explain what I mean."
+      ],
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm going to try",
+            "target": "proverò"
+          }
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to explain",
+            "target": "spiegare"
+          }
+        },
+        {
+          "id": "S0008L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "cosa intendo"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "cosa"
+            },
+            {
+              "known": "I mean",
+              "target": "intendo"
+            }
+          ],
+          "teaches": "cosa + conjugated verb for what clauses"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": [
+        "Parlo un po' d'italiano adesso.",
+        "I speak a little Italian now."
+      ],
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I speak",
+            "target": "parlo"
+          }
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little Italian",
+            "target": "un po' d'italiano"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un po'"
+            },
+            {
+              "known": "Italian",
+              "target": "italiano"
+            }
+          ],
+          "teaches": "un po' di + noun with elision before vowels"
+        },
+        {
+          "id": "S0009L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "adesso"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0010",
+      "seed_pair": [
+        "Non sono sicuro se riesco a ricordare tutta la frase.",
+        "I'm not sure if I can remember the whole sentence."
+      ],
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "Non sono sicuro"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I am",
+              "target": "sono"
+            },
+            {
+              "known": "sure",
+              "target": "sicuro"
+            }
+          ],
+          "teaches": "Negation with non before verb; adjective agrees with subject"
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "se riesco a"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "se"
+            },
+            {
+              "known": "I manage/can",
+              "target": "riesco"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "riuscire a + infinitive pattern for ability"
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "ricordare"
+          }
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the whole sentence",
+            "target": "tutta la frase"
+          },
+          "components": [
+            {
+              "known": "whole/all",
+              "target": "tutta"
+            },
+            {
+              "known": "the",
+              "target": "la"
+            },
+            {
+              "known": "sentence",
+              "target": "frase"
+            }
+          ],
+          "teaches": "tutto/a precedes article; agrees with feminine noun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": [
+        "Mi piacerebbe poter parlare dopo che finisci.",
+        "I'd like to be able to speak after you finish."
+      ],
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'd like",
+            "target": "Mi piacerebbe"
+          }
+        },
+        {
+          "id": "S0011L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to be able to speak",
+            "target": "poter parlare"
+          },
+          "components": [
+            {
+              "known": "to be able",
+              "target": "poter"
+            },
+            {
+              "known": "to speak",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "Modal potere + infinitive; potere truncates to poter before infinitive"
+        },
+        {
+          "id": "S0011L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "after you finish",
+            "target": "dopo che finisci"
+          },
+          "components": [
+            {
+              "known": "after",
+              "target": "dopo che"
+            },
+            {
+              "known": "you finish",
+              "target": "finisci"
+            }
+          ],
+          "teaches": "dopo che requires conjugated verb, not infinitive"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": [
+        "Non mi piacerebbe indovinare cosa succederà domani.",
+        "I wouldn't like to guess what's going to happen tomorrow."
+      ],
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wouldn't like",
+            "target": "Non mi piacerebbe"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I'd like",
+              "target": "mi piacerebbe"
+            }
+          ],
+          "teaches": "Negation with non before reflexive pronoun"
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to guess",
+            "target": "indovinare"
+          }
+        },
+        {
+          "id": "S0012L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what's going to happen",
+            "target": "cosa succederà"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "cosa"
+            },
+            {
+              "known": "will happen",
+              "target": "succederà"
+            }
+          ],
+          "teaches": "Future tense with -à ending; going to = simple future in Italian"
+        },
+        {
+          "id": "S0012L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "domani"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0013",
+      "seed_pair": [
+        "Parli italiano molto bene.",
+        "You speak Italian very well."
+      ],
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you speak",
+            "target": "parli"
+          }
+        },
+        {
+          "id": "S0013L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0013L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very well",
+            "target": "molto bene"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": [
+        "Parli italiano tutto il giorno?",
+        "Do you speak Italian all day?"
+      ],
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "do you speak",
+            "target": "parli"
+          }
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0014L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "all day",
+            "target": "tutto il giorno"
+          },
+          "components": [
+            {
+              "known": "all",
+              "target": "tutto"
+            },
+            {
+              "known": "day",
+              "target": "giorno"
+            }
+          ],
+          "teaches": "Italian inserts definite article (il) with time expressions"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": [
+        "E voglio che tu parli italiano con me domani.",
+        "And I want you to speak Italian with me tomorrow."
+      ],
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "and",
+            "target": "e"
+          }
+        },
+        {
+          "id": "S0015L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0015L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you to speak",
+            "target": "che tu parli"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "tu"
+            },
+            {
+              "known": "to speak",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "Italian uses subjunctive (che + subject + verb) after verbs of wanting"
+        },
+        {
+          "id": "S0015L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0015L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with me",
+            "target": "con me"
+          }
+        },
+        {
+          "id": "S0015L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "domani"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0016",
+      "seed_pair": [
+        "Lui vuole tornare con tutti gli altri più tardi.",
+        "He wants to come back with everyone else later on."
+      ],
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "lui"
+          }
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wants",
+            "target": "vuole"
+          }
+        },
+        {
+          "id": "S0016L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to come back",
+            "target": "tornare"
+          }
+        },
+        {
+          "id": "S0016L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with",
+            "target": "con"
+          }
+        },
+        {
+          "id": "S0016L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "everyone else",
+            "target": "tutti gli altri"
+          },
+          "components": [
+            {
+              "known": "everyone",
+              "target": "tutti"
+            },
+            {
+              "known": "else",
+              "target": "altri"
+            }
+          ],
+          "teaches": "definite article gli inserted between components"
+        },
+        {
+          "id": "S0016L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "later on",
+            "target": "più tardi"
+          },
+          "components": [
+            {
+              "known": "later",
+              "target": "tardi"
+            }
+          ],
+          "teaches": "più intensifies tardi for emphasis"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": [
+        "Lei vuole scoprire qual è la risposta.",
+        "She wants to find out what the answer is."
+      ],
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "lei"
+          }
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wants",
+            "target": "vuole"
+          }
+        },
+        {
+          "id": "S0017L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find out",
+            "target": "scoprire"
+          }
+        },
+        {
+          "id": "S0017L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what the answer is",
+            "target": "qual è la risposta"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "qual"
+            },
+            {
+              "known": "is",
+              "target": "è"
+            },
+            {
+              "known": "the answer",
+              "target": "la risposta"
+            }
+          ],
+          "teaches": "embedded questions use direct question word order in Italian"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": [
+        "Vogliamo incontrarci alle sei di questa sera.",
+        "We want to meet at six o clock this evening."
+      ],
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we want",
+            "target": "vogliamo"
+          }
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "incontrarci"
+          }
+        },
+        {
+          "id": "S0018L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at six o clock",
+            "target": "alle sei"
+          },
+          "components": [
+            {
+              "known": "at",
+              "target": "a"
+            },
+            {
+              "known": "six",
+              "target": "sei"
+            }
+          ],
+          "teaches": "a + le contracts to alle before feminine plural hours; o clock dropped"
+        },
+        {
+          "id": "S0018L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this",
+            "target": "questa"
+          }
+        },
+        {
+          "id": "S0018L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "evening",
+            "target": "sera"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0019",
+      "seed_pair": [
+        "Ma non voglio smettere di parlare.",
+        "But I don't want to stop talking."
+      ],
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't want",
+            "target": "non voglio"
+          },
+          "components": [
+            {
+              "known": "I want",
+              "target": "voglio"
+            }
+          ],
+          "teaches": "negation with non before verb"
+        },
+        {
+          "id": "S0019L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to stop talking",
+            "target": "smettere di parlare"
+          },
+          "components": [
+            {
+              "known": "to stop",
+              "target": "smettere"
+            },
+            {
+              "known": "to talk",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "di linking between verbs"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": [
+        "Vuoi imparare il suo nome velocemente.",
+        "You want to learn his name quickly."
+      ],
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you want",
+            "target": "vuoi"
+          }
+        },
+        {
+          "id": "S0020L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "imparare"
+          }
+        },
+        {
+          "id": "S0020L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "his name",
+            "target": "il suo nome"
+          },
+          "components": [
+            {
+              "known": "his",
+              "target": "suo"
+            },
+            {
+              "known": "name",
+              "target": "nome"
+            }
+          ],
+          "teaches": "possessive with article il, agrees with noun gender"
+        },
+        {
+          "id": "S0020L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "quickly",
+            "target": "velocemente"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": [
+        "Perché stai imparando il suo nome?",
+        "Why are you learning her name?"
+      ],
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "why",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "are you learning",
+            "target": "stai imparando"
+          },
+          "components": [
+            {
+              "known": "you are",
+              "target": "stai"
+            },
+            {
+              "known": "learning",
+              "target": "imparando"
+            }
+          ],
+          "teaches": "progressive tense with stare + gerund"
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "her name",
+            "target": "il suo nome"
+          },
+          "components": [
+            {
+              "known": "her",
+              "target": "suo"
+            },
+            {
+              "known": "name",
+              "target": "nome"
+            }
+          ],
+          "teaches": "Italian suo does not distinguish possessor gender, only noun gender"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0022",
+      "seed_pair": [
+        "Perché voglio incontrare persone che parlano italiano.",
+        "Because I want to meet people who speak Italian."
+      ],
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0022L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "incontrare"
+          }
+        },
+        {
+          "id": "S0022L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "people",
+            "target": "persone"
+          }
+        },
+        {
+          "id": "S0022L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "who speak",
+            "target": "che parlano"
+          },
+          "components": [
+            {
+              "known": "who",
+              "target": "che"
+            },
+            {
+              "known": "speak",
+              "target": "parlano"
+            }
+          ],
+          "teaches": "relative who in clauses is che not chi"
+        },
+        {
+          "id": "S0022L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": [
+        "Presto comincerò a parlare di più.",
+        "I'm going to start talking more soon."
+      ],
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "soon",
+            "target": "presto"
+          }
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm going to start",
+            "target": "comincerò"
+          }
+        },
+        {
+          "id": "S0023L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to talk",
+            "target": "a parlare"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "a"
+            },
+            {
+              "known": "talk",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "cominciare takes a before infinitive"
+        },
+        {
+          "id": "S0023L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "more",
+            "target": "di più"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": [
+        "Non riuscirò a ricordare facilmente.",
+        "I'm not going to be able to remember easily."
+      ],
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not going to be able",
+            "target": "non riuscirò"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I'm going to be able",
+              "target": "riuscirò"
+            }
+          ],
+          "teaches": "negation non precedes verb and be able uses riuscire"
+        },
+        {
+          "id": "S0024L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "a ricordare"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "a"
+            },
+            {
+              "known": "remember",
+              "target": "ricordare"
+            }
+          ],
+          "teaches": "riuscire requires a before infinitive"
+        },
+        {
+          "id": "S0024L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easily",
+            "target": "facilmente"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0025",
+      "seed_pair": [
+        "Mi aiuterai prima che io debba andare?",
+        "Are you going to help me before I have to go?"
+      ],
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to help",
+            "target": "aiutare"
+          }
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "me",
+            "target": "mi"
+          }
+        },
+        {
+          "id": "S0025L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "before",
+            "target": "prima"
+          }
+        },
+        {
+          "id": "S0025L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I have to",
+            "target": "devo"
+          }
+        },
+        {
+          "id": "S0025L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to go",
+            "target": "andare"
+          }
+        },
+        {
+          "id": "S0025L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "before I have to go",
+            "target": "prima che io debba andare"
+          },
+          "components": [
+            {
+              "known": "before",
+              "target": "prima"
+            },
+            {
+              "known": "I have to",
+              "target": "devo"
+            },
+            {
+              "known": "to go",
+              "target": "andare"
+            }
+          ],
+          "teaches": "prima che triggers subjunctive mood (debba instead of devo)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": [
+        "Mi piace sentirmi come se fossi quasi pronto ad andare.",
+        "I like feeling as if I am nearly ready to go."
+      ],
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I like",
+            "target": "mi piace"
+          },
+          "components": [
+            {
+              "known": "me",
+              "target": "mi"
+            },
+            {
+              "known": "it pleases",
+              "target": "piace"
+            }
+          ],
+          "teaches": "Italian uses indirect object + piacere (to me it pleases)"
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to feel",
+            "target": "sentire"
+          }
+        },
+        {
+          "id": "S0026L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as if",
+            "target": "come se"
+          }
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "nearly",
+            "target": "quasi"
+          }
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "ready",
+            "target": "pronto"
+          }
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as if I am ready",
+            "target": "come se fossi pronto"
+          },
+          "components": [
+            {
+              "known": "as if",
+              "target": "come se"
+            },
+            {
+              "known": "I am",
+              "target": "sono"
+            },
+            {
+              "known": "ready",
+              "target": "pronto"
+            }
+          ],
+          "teaches": "come se triggers imperfect subjunctive (fossi instead of sono)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": [
+        "Non mi piace impiegare troppo tempo per rispondere.",
+        "I do not like taking too much time to answer."
+      ],
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I do not like",
+            "target": "non mi piace"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I like",
+              "target": "mi piace"
+            }
+          ],
+          "teaches": "negation non precedes the indirect object + verb phrase"
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to take (time)",
+            "target": "impiegare"
+          }
+        },
+        {
+          "id": "S0027L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "too much",
+            "target": "troppo"
+          }
+        },
+        {
+          "id": "S0027L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "tempo"
+          }
+        },
+        {
+          "id": "S0027L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "rispondere"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0028",
+      "seed_pair": [
+        "È utile cominciare a parlare appena puoi.",
+        "It's useful to start talking as soon as you can."
+      ],
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it's useful",
+            "target": "è utile"
+          }
+        },
+        {
+          "id": "S0028L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start talking",
+            "target": "cominciare a parlare"
+          },
+          "components": [
+            {
+              "known": "to start",
+              "target": "cominciare"
+            },
+            {
+              "known": "talking",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "Italian uses 'a' between cominciare and following infinitive"
+        },
+        {
+          "id": "S0028L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "appena"
+          }
+        },
+        {
+          "id": "S0028L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you can",
+            "target": "puoi"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": [
+        "Non vedo l'ora di parlare meglio appena posso.",
+        "I'm looking forward to speaking better as soon as I can."
+      ],
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm looking forward to",
+            "target": "non vedo l'ora di"
+          },
+          "components": [
+            {
+              "known": "I don't see",
+              "target": "non vedo"
+            },
+            {
+              "known": "the hour of",
+              "target": "l'ora di"
+            }
+          ],
+          "teaches": "Idiomatic - literally 'I don't see the hour of'"
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "better",
+            "target": "meglio"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "appena"
+          }
+        },
+        {
+          "id": "S0029L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I can",
+            "target": "posso"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": [
+        "Volevo chiederti qualcosa ieri.",
+        "I wanted to ask you something yesterday."
+      ],
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I wanted",
+            "target": "volevo"
+          }
+        },
+        {
+          "id": "S0030L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to ask you",
+            "target": "chiederti"
+          },
+          "components": [
+            {
+              "known": "to ask",
+              "target": "chiedere"
+            },
+            {
+              "known": "you (object)",
+              "target": "ti"
+            }
+          ],
+          "teaches": "Object pronouns attach to end of infinitives"
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yesterday",
+            "target": "ieri"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0031",
+      "seed_pair": [
+        "Volevi parlare con me stasera.",
+        "You wanted to speak with me tonight."
+      ],
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you wanted",
+            "target": "volevi"
+          }
+        },
+        {
+          "id": "S0031L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0031L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with me",
+            "target": "con me"
+          }
+        },
+        {
+          "id": "S0031L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tonight",
+            "target": "stasera"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0032",
+      "seed_pair": [
+        "Volevi mostrarmi qualcosa?",
+        "Did you want to show me something?"
+      ],
+      "legos": [
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "did you want",
+            "target": "volevi"
+          }
+        },
+        {
+          "id": "S0032L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to show me",
+            "target": "mostrarmi"
+          }
+        },
+        {
+          "id": "S0032L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0033",
+      "seed_pair": [
+        "Da quanto tempo studi italiano?",
+        "How long have you been learning Italian?"
+      ],
+      "legos": [
+        {
+          "id": "S0033L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how long",
+            "target": "da quanto tempo"
+          },
+          "components": [
+            {
+              "known": "from",
+              "target": "da"
+            },
+            {
+              "known": "how much",
+              "target": "quanto"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            }
+          ],
+          "teaches": "Italian duration questions use da + quanto + tempo (from how much time)"
+        },
+        {
+          "id": "S0033L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "have you been learning",
+            "target": "studi"
+          }
+        },
+        {
+          "id": "S0033L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0034",
+      "seed_pair": [
+        "Non vuole stare zitto quando altre persone sono qui.",
+        "He doesn't want to be quiet when other people are here."
+      ],
+      "legos": [
+        {
+          "id": "S0034L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "he doesn't want",
+            "target": "non vuole"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "he wants",
+              "target": "vuole"
+            }
+          ],
+          "teaches": "Italian negation places non directly before the conjugated verb"
+        },
+        {
+          "id": "S0034L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to be quiet",
+            "target": "stare zitto"
+          },
+          "components": [
+            {
+              "known": "to stay",
+              "target": "stare"
+            },
+            {
+              "known": "quiet",
+              "target": "zitto"
+            }
+          ],
+          "teaches": "Italian uses stare (to stay) + adjective for temporary behavioral states"
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "quando"
+          }
+        },
+        {
+          "id": "S0034L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "other people",
+            "target": "altre persone"
+          }
+        },
+        {
+          "id": "S0034L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are here",
+            "target": "sono qui"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0035",
+      "seed_pair": [
+        "Non vuole leggere niente questo pomeriggio.",
+        "She doesn't want to read anything this afternoon."
+      ],
+      "legos": [
+        {
+          "id": "S0035L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "she doesn't want",
+            "target": "non vuole"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "she wants",
+              "target": "vuole"
+            }
+          ],
+          "teaches": "Italian negation with non before verb; third person singular volere"
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to read",
+            "target": "leggere"
+          }
+        },
+        {
+          "id": "S0035L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anything",
+            "target": "niente"
+          }
+        },
+        {
+          "id": "S0035L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this afternoon",
+            "target": "questo pomeriggio"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0036",
+      "seed_pair": [
+        "Non vogliamo interrompere la storia.",
+        "We don't want to interrupt the story."
+      ],
+      "legos": [
+        {
+          "id": "S0036L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "we don't want",
+            "target": "non vogliamo"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "we want",
+              "target": "vogliamo"
+            }
+          ],
+          "teaches": "Italian negation with non; first person plural volere conjugation"
+        },
+        {
+          "id": "S0036L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to interrupt",
+            "target": "interrompere"
+          }
+        },
+        {
+          "id": "S0036L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the story",
+            "target": "la storia"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0037",
+      "seed_pair": [
+        "Ho cominciato a pensarci attentamente il mese scorso.",
+        "I started to think about it carefully last month."
+      ],
+      "legos": [
+        {
+          "id": "S0037L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I started",
+            "target": "Ho cominciato"
+          }
+        },
+        {
+          "id": "S0037L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to think about it",
+            "target": "a pensarci"
+          },
+          "components": [
+            {
+              "known": "to think",
+              "target": "pensare"
+            },
+            {
+              "known": "about it",
+              "target": "ci"
+            }
+          ],
+          "teaches": "linking 'a' before infinitive + clitic pronoun -ci attached for 'about it'"
+        },
+        {
+          "id": "S0037L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "carefully",
+            "target": "attentamente"
+          }
+        },
+        {
+          "id": "S0037L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last month",
+            "target": "il mese scorso"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "il"
+            },
+            {
+              "known": "month",
+              "target": "mese"
+            },
+            {
+              "known": "last",
+              "target": "scorso"
+            }
+          ],
+          "teaches": "word order: article + noun + scorso (not 'scorso mese')"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0038",
+      "seed_pair": [
+        "Sto imparando da circa una settimana.",
+        "I have been learning for about a week."
+      ],
+      "legos": [
+        {
+          "id": "S0038L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I have been learning",
+            "target": "Sto imparando"
+          },
+          "components": [
+            {
+              "known": "I am (stare)",
+              "target": "sto"
+            },
+            {
+              "known": "learning",
+              "target": "imparando"
+            }
+          ],
+          "teaches": "progressive formed with stare + gerund (not avere + participle)"
+        },
+        {
+          "id": "S0038L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "for (duration)",
+            "target": "da"
+          }
+        },
+        {
+          "id": "S0038L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "about",
+            "target": "circa"
+          }
+        },
+        {
+          "id": "S0038L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a week",
+            "target": "una settimana"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0039",
+      "seed_pair": [
+        "Ma sono un po' stanco stamattina.",
+        "But I am a little tired this morning."
+      ],
+      "legos": [
+        {
+          "id": "S0039L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "But",
+            "target": "Ma"
+          }
+        },
+        {
+          "id": "S0039L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I am",
+            "target": "sono"
+          }
+        },
+        {
+          "id": "S0039L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a little",
+            "target": "un po'"
+          }
+        },
+        {
+          "id": "S0039L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tired",
+            "target": "stanco"
+          }
+        },
+        {
+          "id": "S0039L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this morning",
+            "target": "stamattina"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0040",
+      "seed_pair": [
+        "Come ti senti in questo momento?",
+        "How do you feel at the moment?"
+      ],
+      "legos": [
+        {
+          "id": "S0040L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how",
+            "target": "come"
+          }
+        },
+        {
+          "id": "S0040L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "do you feel",
+            "target": "ti senti"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "ti"
+            },
+            {
+              "known": "feel",
+              "target": "senti"
+            }
+          ],
+          "teaches": "reflexive verb sentirsi for expressing how one feels"
+        },
+        {
+          "id": "S0040L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at the moment",
+            "target": "in questo momento"
+          },
+          "components": [
+            {
+              "known": "at",
+              "target": "in"
+            },
+            {
+              "known": "this",
+              "target": "questo"
+            },
+            {
+              "known": "moment",
+              "target": "momento"
+            }
+          ],
+          "teaches": "Italian uses in this moment instead of at the moment"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0041",
+      "seed_pair": [
+        "Mi sento bene, ma sto cominciando a sentirmi stanco.",
+        "I feel okay, but I am starting to feel tired."
+      ],
+      "legos": [
+        {
+          "id": "S0041L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I feel",
+            "target": "mi sento"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "mi"
+            },
+            {
+              "known": "feel",
+              "target": "sento"
+            }
+          ],
+          "teaches": "reflexive construction for sentirsi"
+        },
+        {
+          "id": "S0041L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "okay",
+            "target": "bene"
+          }
+        },
+        {
+          "id": "S0041L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0041L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I am starting to",
+            "target": "sto cominciando a"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "sto"
+            },
+            {
+              "known": "starting",
+              "target": "cominciando"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "stare plus gerund plus a for progressive action about to happen"
+        },
+        {
+          "id": "S0041L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "feel tired",
+            "target": "sentirmi stanco"
+          },
+          "components": [
+            {
+              "known": "feel",
+              "target": "sentirmi"
+            },
+            {
+              "known": "tired",
+              "target": "stanco"
+            }
+          ],
+          "teaches": "reflexive infinitive with adjective"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0042",
+      "seed_pair": [
+        "Stavo cominciando a sentirmi meglio di ieri sera.",
+        "I was starting to feel better than last night."
+      ],
+      "legos": [
+        {
+          "id": "S0042L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I was starting to",
+            "target": "stavo cominciando a"
+          },
+          "components": [
+            {
+              "known": "I was",
+              "target": "stavo"
+            },
+            {
+              "known": "starting",
+              "target": "cominciando"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "imperfect progressive with stare in imperfect tense"
+        },
+        {
+          "id": "S0042L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "feel better",
+            "target": "sentirmi meglio"
+          },
+          "components": [
+            {
+              "known": "feel",
+              "target": "sentirmi"
+            },
+            {
+              "known": "better",
+              "target": "meglio"
+            }
+          ],
+          "teaches": "reflexive infinitive with comparative adverb"
+        },
+        {
+          "id": "S0042L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "than",
+            "target": "di"
+          }
+        },
+        {
+          "id": "S0042L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last night",
+            "target": "ieri sera"
+          },
+          "components": [
+            {
+              "known": "last",
+              "target": "ieri"
+            },
+            {
+              "known": "night",
+              "target": "sera"
+            }
+          ],
+          "teaches": "Italian uses yesterday evening for last night"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0043",
+      "seed_pair": [
+        "Non stavo pensando a come rispondere.",
+        "I wasn't thinking about how to answer."
+      ],
+      "legos": [
+        {
+          "id": "S0043L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "thinking",
+            "target": "pensando"
+          }
+        },
+        {
+          "id": "S0043L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "rispondere"
+          }
+        },
+        {
+          "id": "S0043L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to answer",
+            "target": "come rispondere"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "to answer",
+              "target": "rispondere"
+            }
+          ],
+          "teaches": "Italian uses come + infinitive for how to [verb]"
+        },
+        {
+          "id": "S0043L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wasn't thinking",
+            "target": "Non stavo pensando"
+          },
+          "components": [
+            {
+              "known": "I was",
+              "target": "stavo"
+            },
+            {
+              "known": "thinking",
+              "target": "pensando"
+            }
+          ],
+          "teaches": "Negated past progressive: non + stare (imperfect) + gerund"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0044",
+      "seed_pair": [
+        "O se devo migliorare.",
+        "Or if I need to improve."
+      ],
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "or",
+            "target": "o"
+          }
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if",
+            "target": "se"
+          }
+        },
+        {
+          "id": "S0044L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to improve",
+            "target": "migliorare"
+          }
+        },
+        {
+          "id": "S0044L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I need to improve",
+            "target": "devo migliorare"
+          },
+          "components": [
+            {
+              "known": "I need to",
+              "target": "devo"
+            },
+            {
+              "known": "to improve",
+              "target": "migliorare"
+            }
+          ],
+          "teaches": "need to expressed with dovere + infinitive"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0045",
+      "seed_pair": [
+        "Non ho bisogno di sapere tutto.",
+        "I don't need to know everything."
+      ],
+      "legos": [
+        {
+          "id": "S0045L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "everything",
+            "target": "tutto"
+          }
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to know",
+            "target": "sapere"
+          }
+        },
+        {
+          "id": "S0045L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I need to",
+            "target": "ho bisogno di"
+          },
+          "components": [
+            {
+              "known": "I have",
+              "target": "ho"
+            },
+            {
+              "known": "need",
+              "target": "bisogno"
+            },
+            {
+              "known": "to",
+              "target": "di"
+            }
+          ],
+          "teaches": "need to as avere bisogno di (have need of) construction"
+        },
+        {
+          "id": "S0045L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't need to",
+            "target": "non ho bisogno di"
+          },
+          "components": [
+            {
+              "known": "I need to",
+              "target": "ho bisogno di"
+            }
+          ],
+          "teaches": "Negation with non before avere bisogno di"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0046",
+      "seed_pair": [
+        "Ma non mi preoccupo di fare errori.",
+        "But I don't worry about making mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0046L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0046L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't worry about",
+            "target": "non mi preoccupo di"
+          },
+          "components": [
+            {
+              "known": "I worry",
+              "target": "mi preoccupo"
+            },
+            {
+              "known": "about",
+              "target": "di"
+            }
+          ],
+          "teaches": "reflexive verb preoccuparsi with negation + preposition di"
+        },
+        {
+          "id": "S0046L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to make mistakes",
+            "target": "fare errori"
+          }
+        },
+        {
+          "id": "S0046L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "mistakes",
+            "target": "errori"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0047",
+      "seed_pair": [
+        "Perché penso che sia una buona cosa fare errori.",
+        "Because I think that it's a good thing to make mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0047L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I think that",
+            "target": "penso che"
+          },
+          "components": [
+            {
+              "known": "I think",
+              "target": "penso"
+            }
+          ],
+          "teaches": "verb + che introducing subordinate clause (triggers subjunctive)"
+        },
+        {
+          "id": "S0047L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it's a good thing",
+            "target": "è una buona cosa"
+          },
+          "components": [
+            {
+              "known": "it is",
+              "target": "è"
+            },
+            {
+              "known": "a good thing",
+              "target": "una buona cosa"
+            }
+          ],
+          "teaches": "impersonal it is + noun phrase construction"
+        },
+        {
+          "id": "S0047L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a good thing",
+            "target": "una buona cosa"
+          }
+        },
+        {
+          "id": "S0047L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to make mistakes",
+            "target": "fare errori"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0048",
+      "seed_pair": [
+        "Non mi importa di fare errori.",
+        "I don't care about making mistakes."
+      ],
+      "legos": [
+        {
+          "id": "S0048L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't care about",
+            "target": "non mi importa di"
+          },
+          "components": [
+            {
+              "known": "I care",
+              "target": "mi importa"
+            },
+            {
+              "known": "about",
+              "target": "di"
+            }
+          ],
+          "teaches": "impersonal verb importare with dative (literally: it doesn't matter to me)"
+        },
+        {
+          "id": "S0048L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to make mistakes",
+            "target": "fare errori"
+          }
+        },
+        {
+          "id": "S0048L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "mistakes",
+            "target": "errori"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0049",
+      "seed_pair": [
+        "È così, se capisci cosa intendo.",
+        "It's like this, if you know what I mean."
+      ],
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it's like this",
+            "target": "è così"
+          }
+        },
+        {
+          "id": "S0049L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if you know what I mean",
+            "target": "se capisci cosa intendo"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "se"
+            },
+            {
+              "known": "you understand",
+              "target": "capisci"
+            },
+            {
+              "known": "what I mean",
+              "target": "cosa intendo"
+            }
+          ],
+          "teaches": "Italian indirect question structure with cosa + verb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0050",
+      "seed_pair": [
+        "Non sto cercando di finire il più velocemente possibile.",
+        "I'm not trying to finish as quickly as possible."
+      ],
+      "legos": [
+        {
+          "id": "S0050L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not trying",
+            "target": "non sto cercando"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I'm trying",
+              "target": "sto cercando"
+            }
+          ],
+          "teaches": "negation placement before progressive construction"
+        },
+        {
+          "id": "S0050L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to finish",
+            "target": "di finire"
+          }
+        },
+        {
+          "id": "S0050L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as quickly as possible",
+            "target": "il più velocemente possibile"
+          },
+          "components": [
+            {
+              "known": "the most",
+              "target": "il più"
+            },
+            {
+              "known": "quickly",
+              "target": "velocemente"
+            },
+            {
+              "known": "possible",
+              "target": "possibile"
+            }
+          ],
+          "teaches": "Italian superlative with il più + adverb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0051",
+      "seed_pair": [
+        "Mi piace fare cose interessanti con i miei amici.",
+        "I enjoy doing interesting things with my friends."
+      ],
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I enjoy",
+            "target": "mi piace"
+          },
+          "components": [
+            {
+              "known": "to me",
+              "target": "mi"
+            },
+            {
+              "known": "it pleases",
+              "target": "piace"
+            }
+          ],
+          "teaches": "reflexive construction for expressing enjoyment"
+        },
+        {
+          "id": "S0051L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "doing interesting things",
+            "target": "fare cose interessanti"
+          },
+          "components": [
+            {
+              "known": "doing",
+              "target": "fare"
+            },
+            {
+              "known": "interesting things",
+              "target": "cose interessanti"
+            }
+          ],
+          "teaches": "adjective placement after noun in Italian"
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with my friends",
+            "target": "con i miei amici"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "con"
+            },
+            {
+              "known": "my friends",
+              "target": "i miei amici"
+            }
+          ],
+          "teaches": "definite article required before possessive with family/friends"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0052",
+      "seed_pair": [
+        "Voleva scrivere una lettera al suo amico la settimana scorsa.",
+        "He wanted to write a letter to his friend last week."
+      ],
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he wanted",
+            "target": "voleva"
+          }
+        },
+        {
+          "id": "S0052L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to write",
+            "target": "scrivere"
+          }
+        },
+        {
+          "id": "S0052L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a letter",
+            "target": "una lettera"
+          }
+        },
+        {
+          "id": "S0052L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to his friend",
+            "target": "al suo amico"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "a"
+            },
+            {
+              "known": "his friend",
+              "target": "il suo amico"
+            }
+          ],
+          "teaches": "a + il contracts to al"
+        },
+        {
+          "id": "S0052L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last week",
+            "target": "la settimana scorsa"
+          },
+          "components": [
+            {
+              "known": "last",
+              "target": "scorsa"
+            },
+            {
+              "known": "week",
+              "target": "la settimana"
+            }
+          ],
+          "teaches": "adjective scorsa follows the noun in Italian"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": [
+        "Voleva mettere la sua lettera nella sua borsa.",
+        "She wanted to put his letter in her bag."
+      ],
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she wanted",
+            "target": "voleva"
+          }
+        },
+        {
+          "id": "S0053L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to put",
+            "target": "mettere"
+          }
+        },
+        {
+          "id": "S0053L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "his letter",
+            "target": "la sua lettera"
+          },
+          "components": [
+            {
+              "known": "his",
+              "target": "sua"
+            },
+            {
+              "known": "letter",
+              "target": "la lettera"
+            }
+          ],
+          "teaches": "possessive sua agrees with noun gender (lettera is feminine), not possessor"
+        },
+        {
+          "id": "S0053L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "in her bag",
+            "target": "nella sua borsa"
+          },
+          "components": [
+            {
+              "known": "in",
+              "target": "in"
+            },
+            {
+              "known": "her bag",
+              "target": "la sua borsa"
+            }
+          ],
+          "teaches": "in + la contracts to nella"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": [
+        "Volevamo darti un po' più di tempo.",
+        "We wanted to give you a little more time."
+      ],
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we wanted",
+            "target": "volevamo"
+          }
+        },
+        {
+          "id": "S0054L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to give you",
+            "target": "darti"
+          },
+          "components": [
+            {
+              "known": "to give",
+              "target": "dare"
+            },
+            {
+              "known": "you",
+              "target": "ti"
+            }
+          ],
+          "teaches": "object pronoun ti attaches to end of infinitive"
+        },
+        {
+          "id": "S0054L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little more",
+            "target": "un po' più di"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un po' di"
+            },
+            {
+              "known": "more",
+              "target": "più"
+            }
+          ],
+          "teaches": "un po' più di is the idiomatic construction for a little more"
+        },
+        {
+          "id": "S0054L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "tempo"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0055",
+      "seed_pair": [
+        "Non mi piace svegliarmi quando non ho dormito molto bene.",
+        "I don't enjoy waking up when I didn't sleep very well."
+      ],
+      "legos": [
+        {
+          "id": "S0055L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I enjoy",
+            "target": "mi piace"
+          },
+          "components": [
+            {
+              "known": "to please",
+              "target": "piacere"
+            }
+          ],
+          "teaches": "Italian uses dative construction (it pleases me)"
+        },
+        {
+          "id": "S0055L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "waking up",
+            "target": "svegliarmi"
+          }
+        },
+        {
+          "id": "S0055L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "quando"
+          }
+        },
+        {
+          "id": "S0055L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I slept",
+            "target": "ho dormito"
+          },
+          "components": [
+            {
+              "known": "to sleep",
+              "target": "dormire"
+            }
+          ],
+          "teaches": "passato prossimo uses avere + past participle"
+        },
+        {
+          "id": "S0055L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very",
+            "target": "molto"
+          }
+        },
+        {
+          "id": "S0055L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "well",
+            "target": "bene"
+          }
+        },
+        {
+          "id": "S0055L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "not",
+            "target": "non"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0056",
+      "seed_pair": [
+        "Così posso ricordare come dire alcune parole.",
+        "So I can remember how to say a few words."
+      ],
+      "legos": [
+        {
+          "id": "S0056L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "so",
+            "target": "così"
+          }
+        },
+        {
+          "id": "S0056L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I can",
+            "target": "posso"
+          }
+        },
+        {
+          "id": "S0056L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "ricordare"
+          }
+        },
+        {
+          "id": "S0056L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how",
+            "target": "come"
+          }
+        },
+        {
+          "id": "S0056L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to say",
+            "target": "dire"
+          }
+        },
+        {
+          "id": "S0056L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a few",
+            "target": "alcune"
+          }
+        },
+        {
+          "id": "S0056L07",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "words",
+            "target": "parole"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0057",
+      "seed_pair": [
+        "Non riesco a ricordare come dire quello che volevo dire.",
+        "I can't remember how to say what I wanted to say."
+      ],
+      "legos": [
+        {
+          "id": "S0057L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I can't",
+            "target": "non riesco a"
+          },
+          "components": [
+            {
+              "known": "to manage",
+              "target": "riuscire"
+            }
+          ],
+          "teaches": "riuscire a + infinitive expresses inability"
+        },
+        {
+          "id": "S0057L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "ricordare"
+          }
+        },
+        {
+          "id": "S0057L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how",
+            "target": "come"
+          }
+        },
+        {
+          "id": "S0057L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to say",
+            "target": "dire"
+          }
+        },
+        {
+          "id": "S0057L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "quello che"
+          },
+          "components": [
+            {
+              "known": "that",
+              "target": "quello"
+            },
+            {
+              "known": "which",
+              "target": "che"
+            }
+          ],
+          "teaches": "relative what uses quello che (that which)"
+        },
+        {
+          "id": "S0057L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I wanted",
+            "target": "volevo"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0058",
+      "seed_pair": [
+        "È interessante quando capisci abbastanza parole.",
+        "It's interesting when you understand enough words."
+      ],
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it's interesting",
+            "target": "è interessante"
+          },
+          "components": [
+            {
+              "known": "it's",
+              "target": "è"
+            },
+            {
+              "known": "interesting",
+              "target": "interessante"
+            }
+          ],
+          "teaches": "Italian drops subject pronoun for impersonal expressions"
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "quando"
+          }
+        },
+        {
+          "id": "S0058L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you understand",
+            "target": "capisci"
+          }
+        },
+        {
+          "id": "S0058L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "enough",
+            "target": "abbastanza"
+          }
+        },
+        {
+          "id": "S0058L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "words",
+            "target": "parole"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": [
+        "So come fare quello che devo fare la prossima settimana.",
+        "I know how to do what I need to do next week."
+      ],
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I know",
+            "target": "so"
+          }
+        },
+        {
+          "id": "S0059L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to do",
+            "target": "come fare"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "do",
+              "target": "fare"
+            }
+          ],
+          "teaches": "Italian uses come + infinitive for how to + verb"
+        },
+        {
+          "id": "S0059L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I need to do",
+            "target": "quello che devo fare"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "quello che"
+            },
+            {
+              "known": "I need",
+              "target": "devo"
+            },
+            {
+              "known": "to do",
+              "target": "fare"
+            }
+          ],
+          "teaches": "Relative clause with quello che (that which)"
+        },
+        {
+          "id": "S0059L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "next week",
+            "target": "la prossima settimana"
+          },
+          "components": [
+            {
+              "known": "next",
+              "target": "prossima"
+            },
+            {
+              "known": "week",
+              "target": "settimana"
+            }
+          ],
+          "teaches": "Italian uses definite article la and places adjective before noun for time expressions"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": [
+        "Non so ancora come dire abbastanza parole diverse.",
+        "I don't know how to say enough different words yet."
+      ],
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't know",
+            "target": "non so"
+          },
+          "components": [
+            {
+              "known": "don't",
+              "target": "non"
+            },
+            {
+              "known": "I know",
+              "target": "so"
+            }
+          ],
+          "teaches": "Negation with non before verb, subject pronoun dropped"
+        },
+        {
+          "id": "S0060L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "come dire"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "say",
+              "target": "dire"
+            }
+          ],
+          "teaches": "Italian uses come + infinitive for how to + verb"
+        },
+        {
+          "id": "S0060L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "enough",
+            "target": "abbastanza"
+          }
+        },
+        {
+          "id": "S0060L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "different words",
+            "target": "parole diverse"
+          },
+          "components": [
+            {
+              "known": "different",
+              "target": "diverse"
+            },
+            {
+              "known": "words",
+              "target": "parole"
+            }
+          ],
+          "teaches": "Adjective follows noun in Italian"
+        },
+        {
+          "id": "S0060L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yet",
+            "target": "ancora"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0061",
+      "seed_pair": [
+        "Potrebbe ripetere un po' più lentamente?",
+        "Could you say that again a little more slowly?"
+      ],
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "could you",
+            "target": "potrebbe"
+          }
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "repeat",
+            "target": "ripetere"
+          }
+        },
+        {
+          "id": "S0061L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little more slowly",
+            "target": "un po' più lentamente"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un po'"
+            },
+            {
+              "known": "more",
+              "target": "più"
+            },
+            {
+              "known": "slowly",
+              "target": "lentamente"
+            }
+          ],
+          "teaches": "Italian intensifier stacking: un po' + più + adverb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": [
+        "Non sono sicuro se posso aiutarti allo stesso tempo.",
+        "I'm not sure if I can help you at the same time."
+      ],
+      "legos": [
+        {
+          "id": "S0062L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "non sono sicuro"
+          },
+          "components": [
+            {
+              "known": "I'm",
+              "target": "sono"
+            },
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "sure",
+              "target": "sicuro"
+            }
+          ],
+          "teaches": "negation placement: non precedes verb"
+        },
+        {
+          "id": "S0062L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "se posso"
+          }
+        },
+        {
+          "id": "S0062L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "help you",
+            "target": "aiutarti"
+          }
+        },
+        {
+          "id": "S0062L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at the same time",
+            "target": "allo stesso tempo"
+          },
+          "components": [
+            {
+              "known": "at the",
+              "target": "allo"
+            },
+            {
+              "known": "same",
+              "target": "stesso"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            }
+          ],
+          "teaches": "contraction a+lo=allo before masculine noun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": [
+        "Sei sicuro che non ti dispiace aiutarmi?",
+        "Are you sure you don't mind helping me?"
+      ],
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are you sure",
+            "target": "sei sicuro"
+          }
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you don't mind",
+            "target": "non ti dispiace"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "ti"
+            },
+            {
+              "known": "don't",
+              "target": "non"
+            },
+            {
+              "known": "mind",
+              "target": "dispiace"
+            }
+          ],
+          "teaches": "dispiacere uses indirect object pronoun (ti dispiace = it displeases you)"
+        },
+        {
+          "id": "S0063L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "helping me",
+            "target": "aiutarmi"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0064",
+      "seed_pair": [
+        "Imparare l'italiano non è facile ma è divertente.",
+        "Learning Italian is not easy but it is fun."
+      ],
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "imparare"
+          }
+        },
+        {
+          "id": "S0064L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "l'italiano"
+          }
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easy",
+            "target": "facile"
+          }
+        },
+        {
+          "id": "S0064L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0064L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "fun",
+            "target": "divertente"
+          }
+        },
+        {
+          "id": "S0064L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is not easy",
+            "target": "non è facile"
+          },
+          "components": [
+            {
+              "known": "easy",
+              "target": "facile"
+            }
+          ],
+          "teaches": "Negation with 'non è' before adjective"
+        },
+        {
+          "id": "S0064L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is fun",
+            "target": "è divertente"
+          },
+          "components": [
+            {
+              "known": "fun",
+              "target": "divertente"
+            }
+          ],
+          "teaches": "Impersonal 'è' + adjective construction"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": [
+        "È importante prendersi il tempo per mettersi alla prova.",
+        "It is important to take time to test yourself."
+      ],
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "important",
+            "target": "importante"
+          }
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "il tempo"
+          }
+        },
+        {
+          "id": "S0065L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is important",
+            "target": "è importante"
+          },
+          "components": [
+            {
+              "known": "important",
+              "target": "importante"
+            }
+          ],
+          "teaches": "Impersonal 'è' + adjective for general statements"
+        },
+        {
+          "id": "S0065L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to take time",
+            "target": "prendersi il tempo"
+          },
+          "components": [
+            {
+              "known": "time",
+              "target": "il tempo"
+            }
+          ],
+          "teaches": "Reflexive verb 'prendersi' with definite article"
+        },
+        {
+          "id": "S0065L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to test yourself",
+            "target": "mettersi alla prova"
+          },
+          "components": [
+            {
+              "known": "the test",
+              "target": "la prova"
+            }
+          ],
+          "teaches": "Idiomatic reflexive expression for self-testing"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": [
+        "Non è difficile trovare la risposta.",
+        "It is not difficult to find the answer."
+      ],
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "difficult",
+            "target": "difficile"
+          }
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find",
+            "target": "trovare"
+          }
+        },
+        {
+          "id": "S0066L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the answer",
+            "target": "la risposta"
+          },
+          "components": [
+            {
+              "known": "answer",
+              "target": "risposta"
+            }
+          ],
+          "teaches": "Feminine article 'la' with feminine noun"
+        },
+        {
+          "id": "S0066L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it is not difficult",
+            "target": "non è difficile"
+          },
+          "components": [
+            {
+              "known": "difficult",
+              "target": "difficile"
+            }
+          ],
+          "teaches": "Negation pattern 'non è' + adjective for impersonal statements"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0067",
+      "seed_pair": [
+        "Perché vuoi fermarti?",
+        "Why do you want to stop?"
+      ],
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "why",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0067L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you want",
+            "target": "vuoi"
+          }
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to stop",
+            "target": "fermarti"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": [
+        "Cosa cerchi?",
+        "What are you looking for?"
+      ],
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "cosa"
+          }
+        },
+        {
+          "id": "S0068L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are you looking for",
+            "target": "cerchi"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": [
+        "Non voleva badare al cane giovane tutto il pomeriggio.",
+        "He didn't want to look after the young dog all afternoon."
+      ],
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "he didn't want",
+            "target": "non voleva"
+          },
+          "components": [
+            {
+              "known": "he wanted",
+              "target": "voleva"
+            },
+            {
+              "known": "not",
+              "target": "non"
+            }
+          ],
+          "teaches": "negation non precedes verb; subject pronoun omitted (implied in verb conjugation)"
+        },
+        {
+          "id": "S0069L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to look after",
+            "target": "badare a"
+          }
+        },
+        {
+          "id": "S0069L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the young dog",
+            "target": "il cane giovane"
+          },
+          "components": [
+            {
+              "known": "the dog",
+              "target": "il cane"
+            },
+            {
+              "known": "young",
+              "target": "giovane"
+            }
+          ],
+          "teaches": "adjectives typically follow nouns in Italian"
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "all afternoon",
+            "target": "tutto il pomeriggio"
+          },
+          "components": [
+            {
+              "known": "all",
+              "target": "tutto"
+            },
+            {
+              "known": "the afternoon",
+              "target": "il pomeriggio"
+            }
+          ],
+          "teaches": "time expressions use definite article in Italian"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0070",
+      "seed_pair": [
+        "Non voleva dirmi dov'era.",
+        "She didn't want to tell me where it was."
+      ],
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she didn't want",
+            "target": "non voleva"
+          }
+        },
+        {
+          "id": "S0070L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to tell me",
+            "target": "dirmi"
+          }
+        },
+        {
+          "id": "S0070L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "where it was",
+            "target": "dov'era"
+          },
+          "components": [
+            {
+              "known": "where",
+              "target": "dove"
+            },
+            {
+              "known": "it was",
+              "target": "era"
+            }
+          ],
+          "teaches": "dove + era contracts to dov'era"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": [
+        "Non volevamo far sentire la verità a nessuno.",
+        "We didn't want to let anyone hear the truth."
+      ],
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we didn't want",
+            "target": "non volevamo"
+          }
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to let hear",
+            "target": "far sentire"
+          },
+          "components": [
+            {
+              "known": "to make/let",
+              "target": "far"
+            },
+            {
+              "known": "to hear",
+              "target": "sentire"
+            }
+          ],
+          "teaches": "causative construction with far + infinitive"
+        },
+        {
+          "id": "S0071L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anyone",
+            "target": "nessuno"
+          }
+        },
+        {
+          "id": "S0071L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the truth",
+            "target": "la verità"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": [
+        "Penso che tu stia andando molto bene.",
+        "I think that you're doing very well."
+      ],
+      "legos": [
+        {
+          "id": "S0072L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I think that",
+            "target": "penso che"
+          },
+          "components": [
+            {
+              "known": "I think",
+              "target": "penso"
+            },
+            {
+              "known": "that",
+              "target": "che"
+            }
+          ],
+          "teaches": "penso che triggers subjunctive mood"
+        },
+        {
+          "id": "S0072L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you're doing",
+            "target": "stia andando"
+          },
+          "components": [
+            {
+              "known": "you are (subjunctive)",
+              "target": "stia"
+            },
+            {
+              "known": "going/doing",
+              "target": "andando"
+            }
+          ],
+          "teaches": "subjunctive progressive with stare + gerund"
+        },
+        {
+          "id": "S0072L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very well",
+            "target": "molto bene"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0073",
+      "seed_pair": [
+        "Grazie mille, ma ho ancora da imparare.",
+        "Thank you very much, but I've got more to learn."
+      ],
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "grazie mille"
+          },
+          "components": [
+            {
+              "known": "thank you",
+              "target": "grazie"
+            },
+            {
+              "known": "very much",
+              "target": "mille"
+            }
+          ],
+          "teaches": "Italian uses mille (thousand) for emphasis instead of molto"
+        },
+        {
+          "id": "S0073L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I've got more to learn",
+            "target": "ho ancora da imparare"
+          },
+          "components": [
+            {
+              "known": "I've got",
+              "target": "ho"
+            },
+            {
+              "known": "more/still",
+              "target": "ancora"
+            },
+            {
+              "known": "to learn",
+              "target": "da imparare"
+            }
+          ],
+          "teaches": "avere + da + infinitive for obligation; ancora placement before da"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": [
+        "Grazie mille per aiutarmi a capire.",
+        "Thank you very much for helping me to understand."
+      ],
+      "legos": [
+        {
+          "id": "S0074L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "grazie mille"
+          },
+          "components": [
+            {
+              "known": "thank you",
+              "target": "grazie"
+            },
+            {
+              "known": "very much",
+              "target": "mille"
+            }
+          ],
+          "teaches": "Italian uses mille (thousand) for emphasis"
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "for helping me to understand",
+            "target": "per aiutarmi a capire"
+          },
+          "components": [
+            {
+              "known": "for",
+              "target": "per"
+            },
+            {
+              "known": "helping me",
+              "target": "aiutarmi"
+            },
+            {
+              "known": "to understand",
+              "target": "a capire"
+            }
+          ],
+          "teaches": "per + infinitive with attached pronoun (-mi); a + infinitive for purpose clauses"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": [
+        "Hai ancora da imparare?",
+        "Have you got more to learn?"
+      ],
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "have you got",
+            "target": "hai"
+          }
+        },
+        {
+          "id": "S0075L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "more to learn",
+            "target": "ancora da imparare"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "ancora"
+            },
+            {
+              "known": "to learn",
+              "target": "da imparare"
+            }
+          ],
+          "teaches": "da + infinitive for things remaining to be done; ancora for more/still"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "batch_uploads": [
+      {
+        "timestamp": "2025-11-24T13:07:56.480Z",
+        "browserId": 5,
+        "agentId": "5.4",
+        "seedRange": "S0070-S0072",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 3,
+        "totalSeedsAfter": 3
+      },
+      {
+        "timestamp": "2025-11-24T13:48:13.529Z",
+        "browserId": null,
+        "agentId": "test",
+        "seedRange": "TEST",
+        "seedsReceived": 0,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 3,
+        "totalSeedsAfter": 3
+      },
+      {
+        "timestamp": "2025-11-24T13:48:53.677Z",
+        "browserId": 1,
+        "agentId": "test",
+        "seedRange": "test",
+        "seedsReceived": 0,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 3,
+        "totalSeedsAfter": 3
+      },
+      {
+        "timestamp": "2025-11-24T13:49:46.180Z",
+        "browserId": 1,
+        "agentId": "1.4",
+        "seedRange": "S0010-S0012",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 6,
+        "totalSeedsAfter": 6
+      },
+      {
+        "timestamp": "2025-11-24T13:49:49.298Z",
+        "browserId": 2,
+        "agentId": "2.2",
+        "seedRange": "S0019-S0021",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 9,
+        "totalSeedsAfter": 9
+      },
+      {
+        "timestamp": "2025-11-24T13:49:50.014Z",
+        "browserId": 1,
+        "agentId": "1.5",
+        "seedRange": "S0013-S0015",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 12,
+        "totalSeedsAfter": 12
+      },
+      {
+        "timestamp": "2025-11-24T13:50:04.197Z",
+        "browserId": 1,
+        "agentId": "1.1",
+        "seedRange": "S0001-S0003",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 15,
+        "totalSeedsAfter": 15
+      },
+      {
+        "timestamp": "2025-11-24T13:50:04.607Z",
+        "browserId": 1,
+        "agentId": "1.5",
+        "seedRange": "S0013-S0015",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 15,
+        "totalSeedsAfter": 15
+      },
+      {
+        "timestamp": "2025-11-24T13:50:08.701Z",
+        "browserId": 1,
+        "agentId": "1.4",
+        "seedRange": "S0010-S0012",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 15,
+        "totalSeedsAfter": 15
+      },
+      {
+        "timestamp": "2025-11-24T13:50:08.781Z",
+        "browserId": 2,
+        "agentId": "2.4",
+        "seedRange": "S0025-S0027",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 18,
+        "totalSeedsAfter": 18
+      },
+      {
+        "timestamp": "2025-11-24T13:50:09.381Z",
+        "browserId": 1,
+        "agentId": "1.2",
+        "seedRange": "S0004-S0006",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 21,
+        "totalSeedsAfter": 21
+      },
+      {
+        "timestamp": "2025-11-24T13:50:10.752Z",
+        "browserId": 1,
+        "agentId": "1.2",
+        "seedRange": "S0004-S0006",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 21,
+        "totalSeedsAfter": 21
+      },
+      {
+        "timestamp": "2025-11-24T13:50:15.462Z",
+        "browserId": 1,
+        "agentId": "1.1",
+        "seedRange": "S0001-S0003",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 21,
+        "totalSeedsAfter": 21
+      },
+      {
+        "timestamp": "2025-11-24T13:50:19.967Z",
+        "browserId": 1,
+        "agentId": "1.3",
+        "seedRange": "S0007-S0009",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 24,
+        "totalSeedsAfter": 24
+      },
+      {
+        "timestamp": "2025-11-24T13:50:24.780Z",
+        "browserId": 1,
+        "agentId": "1.3",
+        "seedRange": "S0007-S0009",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 24,
+        "totalSeedsAfter": 24
+      },
+      {
+        "timestamp": "2025-11-24T13:50:28.368Z",
+        "browserId": 2,
+        "agentId": "2.3",
+        "seedRange": "S0022-S0024",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 27,
+        "totalSeedsAfter": 27
+      },
+      {
+        "timestamp": "2025-11-24T13:50:39.986Z",
+        "browserId": 2,
+        "agentId": "2.1",
+        "seedRange": "S0016-S0018",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 30,
+        "totalSeedsAfter": 30
+      },
+      {
+        "timestamp": "2025-11-24T13:51:08.106Z",
+        "browserId": 2,
+        "agentId": "2.5",
+        "seedRange": "S0028-S0030",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 33,
+        "totalSeedsAfter": 33
+      },
+      {
+        "timestamp": "2025-11-24T13:52:36.069Z",
+        "browserId": 4,
+        "agentId": "4.3",
+        "seedRange": "S0052-S0054",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 36,
+        "totalSeedsAfter": 36
+      },
+      {
+        "timestamp": "2025-11-24T13:52:37.159Z",
+        "browserId": 3,
+        "agentId": "3.1",
+        "seedRange": "S0031-S0033",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 39,
+        "totalSeedsAfter": 39
+      },
+      {
+        "timestamp": "2025-11-24T13:52:39.858Z",
+        "browserId": 3,
+        "agentId": "3.5",
+        "seedRange": "S0043-S0045",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 42,
+        "totalSeedsAfter": 42
+      },
+      {
+        "timestamp": "2025-11-24T13:53:02.376Z",
+        "browserId": 4,
+        "agentId": "4.1",
+        "seedRange": "S0046-S0048",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 45,
+        "totalSeedsAfter": 45
+      },
+      {
+        "timestamp": "2025-11-24T13:53:02.423Z",
+        "browserId": 4,
+        "agentId": "4.3",
+        "seedRange": "S0052-S0054",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 45,
+        "totalSeedsAfter": 45
+      },
+      {
+        "timestamp": "2025-11-24T13:53:03.910Z",
+        "browserId": 3,
+        "agentId": "3.2",
+        "seedRange": "S0034-S0036",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 48,
+        "totalSeedsAfter": 48
+      },
+      {
+        "timestamp": "2025-11-24T13:53:05.549Z",
+        "browserId": 5,
+        "agentId": "5.1",
+        "seedRange": "S0061-S0063",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 51,
+        "totalSeedsAfter": 51
+      },
+      {
+        "timestamp": "2025-11-24T13:53:08.371Z",
+        "browserId": 4,
+        "agentId": "4.2",
+        "seedRange": "S0049-S0051",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 54,
+        "totalSeedsAfter": 54
+      },
+      {
+        "timestamp": "2025-11-24T13:53:09.423Z",
+        "browserId": 4,
+        "agentId": "4.5",
+        "seedRange": "S0058-S0060",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 57,
+        "totalSeedsAfter": 57
+      },
+      {
+        "timestamp": "2025-11-24T13:53:10.532Z",
+        "browserId": 4,
+        "agentId": "4.2",
+        "seedRange": "S0049-S0051",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 57,
+        "totalSeedsAfter": 57
+      },
+      {
+        "timestamp": "2025-11-24T13:53:13.295Z",
+        "browserId": 5,
+        "agentId": "5.5",
+        "seedRange": "S0073-S0075",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 60,
+        "totalSeedsAfter": 60
+      },
+      {
+        "timestamp": "2025-11-24T13:53:29.923Z",
+        "browserId": 5,
+        "agentId": "5.4",
+        "seedRange": "S0070-S0072",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 60,
+        "totalSeedsAfter": 60
+      },
+      {
+        "timestamp": "2025-11-24T13:53:32.355Z",
+        "browserId": 4,
+        "agentId": "4.5",
+        "seedRange": "S0058-S0060",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 60,
+        "totalSeedsAfter": 60
+      },
+      {
+        "timestamp": "2025-11-24T13:53:34.153Z",
+        "browserId": 5,
+        "agentId": "5.2",
+        "seedRange": "S0064-S0066",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 63,
+        "totalSeedsAfter": 63
+      },
+      {
+        "timestamp": "2025-11-24T13:53:35.848Z",
+        "browserId": 3,
+        "agentId": "3.4",
+        "seedRange": "S0040-S0042",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 66,
+        "totalSeedsAfter": 66
+      },
+      {
+        "timestamp": "2025-11-24T13:53:37.807Z",
+        "browserId": 3,
+        "agentId": "3.3",
+        "seedRange": "S0037-S0039",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 69,
+        "totalSeedsAfter": 69
+      },
+      {
+        "timestamp": "2025-11-24T13:53:38.282Z",
+        "browserId": 4,
+        "agentId": "4.4",
+        "seedRange": "S0055-S0057",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 72,
+        "totalSeedsAfter": 72
+      },
+      {
+        "timestamp": "2025-11-24T13:53:45.822Z",
+        "browserId": 5,
+        "agentId": "5.3",
+        "seedRange": "S0067-S0069",
+        "seedsReceived": 3,
+        "translationsAdded": 3,
+        "legosAdded": 3,
+        "totalTranslationsAfter": 75,
+        "totalSeedsAfter": 75
+      },
+      {
+        "timestamp": "2025-11-24T13:53:47.719Z",
+        "browserId": 4,
+        "agentId": "4.1",
+        "seedRange": "S0046-S0048",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 75,
+        "totalSeedsAfter": 75
+      },
+      {
+        "timestamp": "2025-11-24T13:54:21.924Z",
+        "browserId": 4,
+        "agentId": "4.4",
+        "seedRange": "S0055-S0057",
+        "seedsReceived": 3,
+        "translationsAdded": 0,
+        "legosAdded": 0,
+        "totalTranslationsAfter": 75,
+        "totalSeedsAfter": 75
+      }
+    ],
+    "last_batch": {
+      "timestamp": "2025-11-24T13:54:21.924Z",
+      "browserId": 4,
+      "agentId": "4.4",
+      "seedRange": "S0055-S0057",
+      "seedsReceived": 3,
+      "translationsAdded": 0,
+      "legosAdded": 0,
+      "totalTranslationsAfter": 75,
+      "totalSeedsAfter": 75
+    }
+  }
+}

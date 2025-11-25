@@ -1,0 +1,189 @@
+{
+  "browserId": 2,
+  "agentId": "2.2",
+  "seedRange": "S0019-S0021",
+  "seeds": [
+    {
+      "seed_id": "S0019",
+      "seed_pair": {
+        "known": "但是我不想停止说话。",
+        "target": "But I don't want to stop talking."
+      },
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不想",
+            "target": "I don't want to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "想",
+              "target": "want to"
+            }
+          ],
+          "teaches": "negation with 不 placed before verb 想"
+        },
+        {
+          "id": "S0019L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "停止说话",
+            "target": "stop talking"
+          },
+          "components": [
+            {
+              "known": "停止",
+              "target": "stop"
+            },
+            {
+              "known": "说话",
+              "target": "talking"
+            }
+          ],
+          "teaches": "serial verb construction"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": {
+        "known": "你想快速地学他的名字。",
+        "target": "You want to learn his name quickly."
+      },
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0020L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "want to"
+          }
+        },
+        {
+          "id": "S0020L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "快速地",
+            "target": "quickly"
+          }
+        },
+        {
+          "id": "S0020L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学",
+            "target": "learn"
+          }
+        },
+        {
+          "id": "S0020L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "他的名字",
+            "target": "his name"
+          },
+          "components": [
+            {
+              "known": "他",
+              "target": "he"
+            },
+            {
+              "known": "名字",
+              "target": "name"
+            }
+          ],
+          "teaches": "possessive particle 的 between pronoun and noun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": {
+        "known": "你为什么在学她的名字？",
+        "target": "Why are you learning her name?"
+      },
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "为什么",
+            "target": "why"
+          }
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你在学",
+            "target": "are you learning"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "学",
+              "target": "learn"
+            }
+          ],
+          "teaches": "progressive aspect with 在 before verb, and subject-verb inversion for questions in English"
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "她的名字",
+            "target": "her name"
+          },
+          "components": [
+            {
+              "known": "她",
+              "target": "she"
+            },
+            {
+              "known": "名字",
+              "target": "name"
+            }
+          ],
+          "teaches": "possessive particle 的 between pronoun and noun"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:52.111Z"
+}

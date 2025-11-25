@@ -1,0 +1,56 @@
+{
+  "seed_id": "S0001",
+  "seed_pair": {
+    "known": "I want to speak Spanish with you now.",
+    "target": "Quiero hablar español contigo ahora."
+  },
+  "legos": [
+    {
+      "id": "S0001L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I want",
+        "target": "quiero"
+      }
+    },
+    {
+      "id": "S0001L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to speak",
+        "target": "hablar"
+      }
+    },
+    {
+      "id": "S0001L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "Spanish",
+        "target": "español"
+      }
+    },
+    {
+      "id": "S0001L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "with you",
+        "target": "contigo"
+      }
+    },
+    {
+      "id": "S0001L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "now",
+        "target": "ahora"
+      }
+    }
+  ],
+  "agentId": "1.1",
+  "receivedAt": "2025-11-24T15:32:03.748Z"
+}

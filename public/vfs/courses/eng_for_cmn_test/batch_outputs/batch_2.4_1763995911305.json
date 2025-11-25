@@ -1,0 +1,205 @@
+{
+  "browserId": 2,
+  "agentId": "2.4",
+  "seedRange": "S0025-S0027",
+  "seeds": [
+    {
+      "seed_id": "S0025",
+      "seed_pair": {
+        "known": "你要在我必须走之前帮我吗？",
+        "target": "Are you going to help me before I have to go?"
+      },
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "帮",
+            "target": "to help"
+          }
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "走",
+            "target": "to go"
+          }
+        },
+        {
+          "id": "S0025L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "在...之前",
+            "target": "before"
+          }
+        },
+        {
+          "id": "S0025L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "必须",
+            "target": "have to"
+          }
+        },
+        {
+          "id": "S0025L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你要...吗？",
+            "target": "Are you going to...?"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "要",
+              "target": "going to"
+            }
+          ],
+          "teaches": "English future intention question uses Are you going to at sentence start"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": {
+        "known": "我喜欢感觉好像我快准备好要走了。",
+        "target": "I like feeling as if I am nearly ready to go."
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "喜欢",
+            "target": "to like"
+          }
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "感觉",
+            "target": "feeling"
+          }
+        },
+        {
+          "id": "S0026L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "好像",
+            "target": "as if"
+          }
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "快",
+            "target": "nearly"
+          }
+        },
+        {
+          "id": "S0026L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "准备好要...",
+            "target": "ready to..."
+          },
+          "components": [
+            {
+              "known": "准备好",
+              "target": "ready"
+            },
+            {
+              "known": "要",
+              "target": "to"
+            }
+          ],
+          "teaches": "English uses ready to plus verb for expressing preparedness"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": {
+        "known": "我不喜欢花太多时间来回答。",
+        "target": "I do not like taking too much time to answer."
+      },
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不喜欢",
+            "target": "do not like"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "do not"
+            },
+            {
+              "known": "喜欢",
+              "target": "like"
+            }
+          ],
+          "teaches": "English negation places do not before the main verb"
+        },
+        {
+          "id": "S0027L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "花时间",
+            "target": "taking time"
+          },
+          "components": [
+            {
+              "known": "花",
+              "target": "taking"
+            },
+            {
+              "known": "时间",
+              "target": "time"
+            }
+          ],
+          "teaches": "English uses take time idiom where Chinese uses hua shijian"
+        },
+        {
+          "id": "S0027L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "太多",
+            "target": "too much"
+          }
+        },
+        {
+          "id": "S0027L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "回答",
+            "target": "to answer"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:51.305Z"
+}

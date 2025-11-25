@@ -1,0 +1,40 @@
+{
+  "seed_id": "S0075",
+  "seed_pair": {
+    "known": "Have you got more to learn?",
+    "target": "¿Tienes más que aprender?"
+  },
+  "legos": [
+    {
+      "id": "S0075L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "have you got",
+        "target": "tienes"
+      }
+    },
+    {
+      "id": "S0075L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "more to learn",
+        "target": "más que aprender"
+      },
+      "components": [
+        {
+          "known": "more",
+          "target": "más"
+        },
+        {
+          "known": "to learn",
+          "target": "aprender"
+        }
+      ],
+      "teaches": "más que + infinitive pattern for 'more to verb'"
+    }
+  ],
+  "agentId": "5.5",
+  "receivedAt": "2025-11-24T15:32:47.591Z"
+}

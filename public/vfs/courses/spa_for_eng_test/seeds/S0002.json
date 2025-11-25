@@ -1,0 +1,40 @@
+{
+  "seed_id": "S0002",
+  "seed_pair": {
+    "known": "I'm trying to learn.",
+    "target": "Estoy intentando aprender."
+  },
+  "legos": [
+    {
+      "id": "S0002L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm trying",
+        "target": "estoy intentando"
+      },
+      "components": [
+        {
+          "known": "I am",
+          "target": "estoy"
+        },
+        {
+          "known": "trying",
+          "target": "intentando"
+        }
+      ],
+      "teaches": "Spanish progressive tense uses estar + gerund (-ando/-iendo)"
+    },
+    {
+      "id": "S0002L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to learn",
+        "target": "aprender"
+      }
+    }
+  ],
+  "agentId": "1.1",
+  "receivedAt": "2025-11-24T15:32:15.781Z"
+}

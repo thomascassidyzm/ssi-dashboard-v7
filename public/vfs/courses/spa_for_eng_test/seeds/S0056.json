@@ -1,0 +1,87 @@
+{
+  "seed_id": "S0056",
+  "seed_pair": {
+    "known": "So I can remember how to say a few words.",
+    "target": "Para poder recordar cómo decir algunas palabras."
+  },
+  "legos": [
+    {
+      "id": "S0056L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "remember",
+        "target": "recordar"
+      }
+    },
+    {
+      "id": "S0056L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to say",
+        "target": "decir"
+      }
+    },
+    {
+      "id": "S0056L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "words",
+        "target": "palabras"
+      }
+    },
+    {
+      "id": "S0056L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "a few",
+        "target": "algunas"
+      }
+    },
+    {
+      "id": "S0056L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "so I can",
+        "target": "para poder"
+      },
+      "components": [
+        {
+          "known": "so",
+          "target": "para"
+        },
+        {
+          "known": "can",
+          "target": "poder"
+        }
+      ],
+      "teaches": "Purpose expression: so I can uses para + infinitive poder"
+    },
+    {
+      "id": "S0056L06",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how to say",
+        "target": "cómo decir"
+      },
+      "components": [
+        {
+          "known": "how",
+          "target": "cómo"
+        },
+        {
+          "known": "to say",
+          "target": "decir"
+        }
+      ],
+      "teaches": "Question word + infinitive pattern for how to verb"
+    }
+  ],
+  "agentId": "agent-4.4",
+  "receivedAt": "2025-11-24T15:33:05.855Z"
+}

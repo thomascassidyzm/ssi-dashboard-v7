@@ -1,0 +1,171 @@
+{
+  "browserId": 1,
+  "agentId": "1.1",
+  "seedRange": "S0001-S0003",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "我现在想和你说英语。",
+        "target": "I want to speak English with you now."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I want to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            }
+          ],
+          "teaches": "English requires infinitive marker \"to\" after \"want\""
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "和",
+            "target": "with"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "now"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "我在努力学习。",
+        "target": "I'm trying to learn."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我在努力",
+            "target": "I'm trying to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "在",
+              "target": "am"
+            },
+            {
+              "known": "努力",
+              "target": "trying"
+            }
+          ],
+          "teaches": "English uses contraction \"I'm\", progressive \"-ing\" form, and infinitive \"to\" before next verb"
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学习",
+            "target": "learn"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "怎样尽可能经常地说",
+        "target": "how to speak as often as possible"
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "怎样",
+            "target": "how to"
+          }
+        },
+        {
+          "id": "S0003L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0003L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽可能经常",
+            "target": "as often as possible"
+          },
+          "components": [
+            {
+              "known": "尽可能",
+              "target": "as...as possible"
+            },
+            {
+              "known": "经常",
+              "target": "often"
+            }
+          ],
+          "teaches": "English \"as [X] as possible\" structure surrounds the adverb; Chinese places 尽可能 before"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:34.858Z"
+}

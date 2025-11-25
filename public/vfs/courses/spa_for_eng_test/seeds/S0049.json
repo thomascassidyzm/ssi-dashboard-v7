@@ -1,0 +1,67 @@
+{
+  "seed_id": "S0049",
+  "seed_pair": {
+    "known": "It's like this, if you know what I mean.",
+    "target": "Es así, si sabes lo que quiero decir."
+  },
+  "legos": [
+    {
+      "id": "S0049L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "it is",
+        "target": "es"
+      }
+    },
+    {
+      "id": "S0049L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "like this",
+        "target": "así"
+      }
+    },
+    {
+      "id": "S0049L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "if",
+        "target": "si"
+      }
+    },
+    {
+      "id": "S0049L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "you know",
+        "target": "sabes"
+      }
+    },
+    {
+      "id": "S0049L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "what I mean",
+        "target": "lo que quiero decir"
+      },
+      "components": [
+        {
+          "known": "what",
+          "target": "lo que"
+        },
+        {
+          "known": "I mean",
+          "target": "quiero decir"
+        }
+      ],
+      "teaches": "lo que for what (that which); mean expressed as want to say"
+    }
+  ],
+  "agentId": "agent-4.2",
+  "receivedAt": "2025-11-24T15:32:23.000Z"
+}

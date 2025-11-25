@@ -1,0 +1,325 @@
+{
+  "browserId": 4,
+  "agentId": "4.5",
+  "seedRange": "S0058-S0060",
+  "seeds": [
+    {
+      "seed_id": "S0058",
+      "seed_pair": {
+        "known": "当你理解足够多的词汇时，这很有趣。",
+        "target": "It's interesting when you understand enough words."
+      },
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有趣",
+            "target": "interesting"
+          }
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "当……时",
+            "target": "when"
+          }
+        },
+        {
+          "id": "S0058L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "理解",
+            "target": "understand"
+          }
+        },
+        {
+          "id": "S0058L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "足够",
+            "target": "enough"
+          }
+        },
+        {
+          "id": "S0058L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "词汇",
+            "target": "words"
+          }
+        },
+        {
+          "id": "S0058L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "这很有趣",
+            "target": "it's interesting"
+          },
+          "components": [
+            {
+              "known": "这",
+              "target": "it"
+            },
+            {
+              "known": "有趣",
+              "target": "interesting"
+            }
+          ],
+          "teaches": "English uses it + is + adjective structure with dummy subject"
+        },
+        {
+          "id": "S0058L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "足够多的词汇",
+            "target": "enough words"
+          },
+          "components": [
+            {
+              "known": "足够",
+              "target": "enough"
+            },
+            {
+              "known": "词汇",
+              "target": "words"
+            }
+          ],
+          "teaches": "enough comes before the noun in English, not after"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": {
+        "known": "我知道下周我需要做的事情怎么做。",
+        "target": "I know how to do what I need to do next week."
+      },
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "知道",
+            "target": "know"
+          }
+        },
+        {
+          "id": "S0059L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "怎么",
+            "target": "how to"
+          }
+        },
+        {
+          "id": "S0059L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "做",
+            "target": "do"
+          }
+        },
+        {
+          "id": "S0059L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "需要",
+            "target": "need"
+          }
+        },
+        {
+          "id": "S0059L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "下周",
+            "target": "next week"
+          }
+        },
+        {
+          "id": "S0059L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我知道怎么做",
+            "target": "I know how to do"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "知道",
+              "target": "know"
+            },
+            {
+              "known": "怎么",
+              "target": "how to"
+            },
+            {
+              "known": "做",
+              "target": "do"
+            }
+          ],
+          "teaches": "how to follows know directly in English, verb infinitive after how to"
+        },
+        {
+          "id": "S0059L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我需要做的事情",
+            "target": "what I need to do"
+          },
+          "components": [
+            {
+              "known": "什么",
+              "target": "what"
+            },
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "需要",
+              "target": "need"
+            },
+            {
+              "known": "做",
+              "target": "do"
+            }
+          ],
+          "teaches": "what introduces embedded clause, need + to + verb structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": {
+        "known": "我还不知道怎么说足够多的不同的单词。",
+        "target": "I don't know how to say enough different words yet."
+      },
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "say"
+          }
+        },
+        {
+          "id": "S0060L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "不同的",
+            "target": "different"
+          }
+        },
+        {
+          "id": "S0060L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "单词",
+            "target": "words"
+          }
+        },
+        {
+          "id": "S0060L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "还",
+            "target": "yet"
+          }
+        },
+        {
+          "id": "S0060L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不知道",
+            "target": "I don't know"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不",
+              "target": "don't"
+            },
+            {
+              "known": "知道",
+              "target": "know"
+            }
+          ],
+          "teaches": "English negation uses do + not before the verb"
+        },
+        {
+          "id": "S0060L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how to"
+            },
+            {
+              "known": "说",
+              "target": "say"
+            }
+          ],
+          "teaches": "how to + verb infinitive structure"
+        },
+        {
+          "id": "S0060L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "足够多的不同的单词",
+            "target": "enough different words"
+          },
+          "components": [
+            {
+              "known": "足够",
+              "target": "enough"
+            },
+            {
+              "known": "不同的",
+              "target": "different"
+            },
+            {
+              "known": "单词",
+              "target": "words"
+            }
+          ],
+          "teaches": "adjective order: enough before other adjectives, both before noun"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:07.168Z"
+}

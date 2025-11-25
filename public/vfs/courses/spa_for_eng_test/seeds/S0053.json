@@ -1,0 +1,82 @@
+{
+  "seed_id": "S0053",
+  "seed_pair": {
+    "known": "She wanted to put his letter in her bag.",
+    "target": "Ella quería poner su carta en su bolsa."
+  },
+  "legos": [
+    {
+      "id": "S0053L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "she",
+        "target": "ella"
+      }
+    },
+    {
+      "id": "S0053L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to put",
+        "target": "poner"
+      }
+    },
+    {
+      "id": "S0053L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "bag",
+        "target": "bolsa"
+      }
+    },
+    {
+      "id": "S0053L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "his letter",
+        "target": "su carta"
+      },
+      "components": [
+        {
+          "known": "his",
+          "target": "su"
+        },
+        {
+          "known": "letter",
+          "target": "carta"
+        }
+      ],
+      "teaches": "su means his/her/your (context determines)"
+    },
+    {
+      "id": "S0053L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "in her bag",
+        "target": "en su bolsa"
+      },
+      "components": [
+        {
+          "known": "in",
+          "target": "en"
+        },
+        {
+          "known": "her",
+          "target": "su"
+        },
+        {
+          "known": "bag",
+          "target": "bolsa"
+        }
+      ],
+      "teaches": "en for in/inside, su for her (same as his)"
+    }
+  ],
+  "agentId": "agent-4.3",
+  "receivedAt": "2025-11-24T15:32:40.548Z"
+}

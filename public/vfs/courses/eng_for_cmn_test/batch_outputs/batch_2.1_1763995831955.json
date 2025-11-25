@@ -1,0 +1,163 @@
+{
+  "browserId": 2,
+  "agentId": "2.1",
+  "seedRange": "S0016-S0018",
+  "seeds": [
+    {
+      "seed_id": "S0016",
+      "seed_pair": {
+        "known": "他想之后和其他人一起回来。",
+        "target": "He wants to come back with everyone else later on."
+      },
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他想",
+            "target": "He wants"
+          }
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "回来",
+            "target": "to come back"
+          }
+        },
+        {
+          "id": "S0016L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和其他人一起",
+            "target": "with everyone else"
+          },
+          "components": [
+            {
+              "known": "其他人",
+              "target": "everyone else"
+            }
+          ],
+          "teaches": "和...一起 structure for with"
+        },
+        {
+          "id": "S0016L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "之后",
+            "target": "later on"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": {
+        "known": "她想知道答案是什么。",
+        "target": "She wants to find out what the answer is."
+      },
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她想",
+            "target": "She wants"
+          }
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "知道",
+            "target": "to find out"
+          }
+        },
+        {
+          "id": "S0017L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "答案是什么",
+            "target": "what the answer is"
+          },
+          "components": [
+            {
+              "known": "答案",
+              "target": "the answer"
+            },
+            {
+              "known": "什么",
+              "target": "what"
+            }
+          ],
+          "teaches": "question word placement at end in Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": {
+        "known": "我们想今天晚上六点见面。",
+        "target": "We want to meet at six o'clock this evening."
+      },
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们想",
+            "target": "We want"
+          }
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "见面",
+            "target": "to meet"
+          }
+        },
+        {
+          "id": "S0018L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "六点",
+            "target": "six o'clock"
+          }
+        },
+        {
+          "id": "S0018L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "今天晚上",
+            "target": "this evening"
+          },
+          "components": [
+            {
+              "known": "今天",
+              "target": "today"
+            },
+            {
+              "known": "晚上",
+              "target": "evening"
+            }
+          ],
+          "teaches": "Chinese uses today+evening not this evening"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:31.955Z"
+}

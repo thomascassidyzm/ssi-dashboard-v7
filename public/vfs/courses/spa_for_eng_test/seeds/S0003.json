@@ -1,0 +1,55 @@
+{
+  "seed_id": "S0003",
+  "seed_pair": {
+    "known": "how to speak as often as possible",
+    "target": "cómo hablar lo más a menudo posible"
+  },
+  "legos": [
+    {
+      "id": "S0003L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how to speak",
+        "target": "cómo hablar"
+      },
+      "components": [
+        {
+          "known": "how",
+          "target": "cómo"
+        },
+        {
+          "known": "to speak",
+          "target": "hablar"
+        }
+      ],
+      "teaches": "Spanish uses cómo + infinitive for how to do something"
+    },
+    {
+      "id": "S0003L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "as often as possible",
+        "target": "lo más a menudo posible"
+      },
+      "components": [
+        {
+          "known": "the most",
+          "target": "lo más"
+        },
+        {
+          "known": "often",
+          "target": "a menudo"
+        },
+        {
+          "known": "possible",
+          "target": "posible"
+        }
+      ],
+      "teaches": "Spanish superlative construction with lo más + adverb + posible"
+    }
+  ],
+  "agentId": "1.1",
+  "receivedAt": "2025-11-24T15:32:29.691Z"
+}

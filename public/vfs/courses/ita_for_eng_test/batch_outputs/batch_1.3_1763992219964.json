@@ -1,0 +1,158 @@
+{
+  "browserId": 1,
+  "agentId": "1.3",
+  "seedRange": "S0007-S0009",
+  "seeds": [
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "I want to try as hard as I can today.",
+        "target": "Voglio provare il più possibile oggi."
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0007L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to try",
+            "target": "provare"
+          }
+        },
+        {
+          "id": "S0007L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as hard as I can",
+            "target": "il più possibile"
+          },
+          "components": [
+            {
+              "known": "the most",
+              "target": "il più"
+            },
+            {
+              "known": "possible",
+              "target": "possibile"
+            }
+          ],
+          "teaches": "Italian uses 'the most possible' pattern for 'as much as one can'"
+        },
+        {
+          "id": "S0007L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "today",
+            "target": "oggi"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "I'm going to try to explain what I mean.",
+        "target": "Proverò a spiegare cosa intendo."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm going to try",
+            "target": "proverò"
+          }
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to explain",
+            "target": "spiegare"
+          }
+        },
+        {
+          "id": "S0008L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "cosa intendo"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "cosa"
+            },
+            {
+              "known": "I mean",
+              "target": "intendo"
+            }
+          ],
+          "teaches": "Italian uses 'cosa' directly before verb without relative pronoun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "I speak a little Italian now.",
+        "target": "Parlo un po' di italiano adesso."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I speak",
+            "target": "parlo"
+          }
+        },
+        {
+          "id": "S0009L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little Italian",
+            "target": "un po' di italiano"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un po'"
+            },
+            {
+              "known": "Italian",
+              "target": "italiano"
+            }
+          ],
+          "teaches": "Partitive 'di' required between quantity expression and noun"
+        },
+        {
+          "id": "S0009L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "adesso"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:19.964Z"
+}

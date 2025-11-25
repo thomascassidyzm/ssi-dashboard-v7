@@ -1,0 +1,82 @@
+{
+  "seed_id": "S0042",
+  "seed_pair": {
+    "known": "I was starting to feel better than last night.",
+    "target": "Estaba empezando a sentirme mejor que anoche."
+  },
+  "legos": [
+    {
+      "id": "S0042L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I was starting to",
+        "target": "estaba empezando a"
+      },
+      "components": [
+        {
+          "known": "I was",
+          "target": "estaba"
+        },
+        {
+          "known": "starting",
+          "target": "empezando"
+        },
+        {
+          "known": "to",
+          "target": "a"
+        }
+      ],
+      "teaches": "imperfect progressive: estar in imperfect (estaba) + gerund for ongoing past action"
+    },
+    {
+      "id": "S0042L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to feel",
+        "target": "sentirme"
+      },
+      "components": [
+        {
+          "known": "to feel",
+          "target": "sentir"
+        },
+        {
+          "known": "myself",
+          "target": "me"
+        }
+      ],
+      "teaches": "reflexive infinitive: reflexive pronoun me attaches to end of infinitive"
+    },
+    {
+      "id": "S0042L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "better",
+        "target": "mejor"
+      }
+    },
+    {
+      "id": "S0042L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "than",
+        "target": "que"
+      }
+    },
+    {
+      "id": "S0042L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "last night",
+        "target": "anoche"
+      }
+    }
+  ],
+  "agentId": "3.4",
+  "receivedAt": "2025-11-24T15:32:59.434Z"
+}

@@ -1,0 +1,196 @@
+{
+  "browserId": 1,
+  "agentId": "1.1",
+  "seedRange": "S0001-S0003",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "我现在想和你说英语。",
+        "target": "I want to speak English with you now."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "want"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "to speak"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0001L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "now"
+          }
+        },
+        {
+          "id": "S0001L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和你",
+            "target": "with you"
+          },
+          "components": [
+            {
+              "known": "和",
+              "target": "with"
+            },
+            {
+              "known": "你",
+              "target": "you"
+            }
+          ],
+          "teaches": "Chinese uses 和 (hé) as preposition for 'with' before the person"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "我正在努力学习。",
+        "target": "I'm trying to learn."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我正在",
+            "target": "I'm"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "正在",
+              "target": "am (progressive)"
+            }
+          ],
+          "teaches": "Chinese uses 正在 to indicate ongoing action (progressive aspect)"
+        },
+        {
+          "id": "S0002L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "努力",
+            "target": "trying"
+          }
+        },
+        {
+          "id": "S0002L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学习",
+            "target": "to learn"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "怎样尽量多说",
+        "target": "how to speak as often as possible."
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎样",
+            "target": "how to"
+          },
+          "components": [
+            {
+              "known": "怎",
+              "target": "how"
+            },
+            {
+              "known": "样",
+              "target": "manner/way"
+            }
+          ],
+          "teaches": "怎样 combines question word with manner marker for 'how to'"
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽量多",
+            "target": "as often as possible"
+          },
+          "components": [
+            {
+              "known": "尽量",
+              "target": "as much as possible"
+            },
+            {
+              "known": "多",
+              "target": "often/much"
+            }
+          ],
+          "teaches": "Chinese uses 尽量 + adjective pattern for 'as X as possible'"
+        },
+        {
+          "id": "S0003L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speak"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:08.821Z"
+}

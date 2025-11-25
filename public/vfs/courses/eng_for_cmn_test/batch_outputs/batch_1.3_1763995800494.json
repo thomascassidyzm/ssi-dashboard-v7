@@ -1,0 +1,147 @@
+{
+  "browserId": 1,
+  "agentId": "1.3",
+  "seedRange": "S0007-S0009",
+  "seeds": [
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "我想今天尽我所能地尝试。",
+        "target": "I want to try as hard as I can today."
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我想尝试",
+            "target": "I want to try"
+          },
+          "components": [
+            {
+              "known": "我想",
+              "target": "I want"
+            },
+            {
+              "known": "尝试",
+              "target": "to try"
+            }
+          ],
+          "teaches": "infinitive 'to try' follows 'want' in English"
+        },
+        {
+          "id": "S0007L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "尽我所能",
+            "target": "as hard as I can"
+          }
+        },
+        {
+          "id": "S0007L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "今天",
+            "target": "today"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "我打算尝试解释我的意思。",
+        "target": "I'm going to try to explain what I mean."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我打算尝试",
+            "target": "I'm going to try"
+          },
+          "components": [
+            {
+              "known": "我打算",
+              "target": "I'm going to"
+            },
+            {
+              "known": "尝试",
+              "target": "to try"
+            }
+          ],
+          "teaches": "'going to' + base verb for future intention, then infinitive"
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "解释",
+            "target": "to explain"
+          }
+        },
+        {
+          "id": "S0008L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我的意思",
+            "target": "what I mean"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "我现在会说一点英语。",
+        "target": "I speak a little English now."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我会说",
+            "target": "I speak"
+          }
+        },
+        {
+          "id": "S0009L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一点",
+            "target": "a little"
+          }
+        },
+        {
+          "id": "S0009L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0009L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "now"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:00.494Z"
+}

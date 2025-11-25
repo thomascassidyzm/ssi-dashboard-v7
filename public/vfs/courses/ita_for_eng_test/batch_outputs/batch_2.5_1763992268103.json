@@ -1,0 +1,185 @@
+{
+  "browserId": 2,
+  "agentId": "2.5",
+  "seedRange": "S0028-S0030",
+  "seeds": [
+    {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "It's useful to start talking as soon as you can.",
+        "target": "È utile cominciare a parlare appena puoi."
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it's useful",
+            "target": "è utile"
+          }
+        },
+        {
+          "id": "S0028L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start talking",
+            "target": "cominciare a parlare"
+          },
+          "components": [
+            {
+              "known": "to start",
+              "target": "cominciare"
+            },
+            {
+              "known": "talking",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "Italian uses 'a' between cominciare and following infinitive"
+        },
+        {
+          "id": "S0028L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "appena"
+          }
+        },
+        {
+          "id": "S0028L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you can",
+            "target": "puoi"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "target": "Non vedo l'ora di parlare meglio appena posso."
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm looking forward to",
+            "target": "non vedo l'ora di"
+          },
+          "components": [
+            {
+              "known": "I don't see",
+              "target": "non vedo"
+            },
+            {
+              "known": "the hour of",
+              "target": "l'ora di"
+            }
+          ],
+          "teaches": "Idiomatic - literally 'I don't see the hour of'"
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "better",
+            "target": "meglio"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as soon as",
+            "target": "appena"
+          }
+        },
+        {
+          "id": "S0029L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I can",
+            "target": "posso"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "I wanted to ask you something yesterday.",
+        "target": "Volevo chiederti qualcosa ieri."
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I wanted",
+            "target": "volevo"
+          }
+        },
+        {
+          "id": "S0030L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to ask you",
+            "target": "chiederti"
+          },
+          "components": [
+            {
+              "known": "to ask",
+              "target": "chiedere"
+            },
+            {
+              "known": "you (object)",
+              "target": "ti"
+            }
+          ],
+          "teaches": "Object pronouns attach to end of infinitives"
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yesterday",
+            "target": "ieri"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:51:08.103Z"
+}

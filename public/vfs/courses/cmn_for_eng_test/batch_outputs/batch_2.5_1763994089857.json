@@ -1,0 +1,216 @@
+{
+  "browserId": 2,
+  "agentId": "2.5",
+  "seedRange": "S0028-S0030",
+  "seeds": [
+    {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "It's useful to start talking as soon as you can.",
+        "target": "尽快开始说话是有用的。"
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "useful",
+            "target": "有用"
+          }
+        },
+        {
+          "id": "S0028L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to start",
+            "target": "开始"
+          }
+        },
+        {
+          "id": "S0028L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to talk",
+            "target": "说话"
+          }
+        },
+        {
+          "id": "S0028L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as soon as possible",
+            "target": "尽快"
+          }
+        },
+        {
+          "id": "S0028L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to start talking",
+            "target": "开始说话"
+          },
+          "components": [
+            {
+              "known": "to start",
+              "target": "开始"
+            },
+            {
+              "known": "to talk",
+              "target": "说话"
+            }
+          ],
+          "teaches": "verb serialization - V1+V2 connect directly without linking words"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "I'm looking forward to speaking better as soon as I can.",
+        "target": "我期待尽快能说得更好。"
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to look forward to",
+            "target": "期待"
+          }
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "说"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "better",
+            "target": "更好"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to be able to",
+            "target": "能"
+          }
+        },
+        {
+          "id": "S0029L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to speak better",
+            "target": "说得更好"
+          },
+          "components": [
+            {
+              "known": "to speak",
+              "target": "说"
+            },
+            {
+              "known": "better",
+              "target": "更好"
+            }
+          ],
+          "teaches": "得 (de) particle links verb to degree/manner complement"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "I wanted to ask you something yesterday.",
+        "target": "昨天我想问你一件事。"
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yesterday",
+            "target": "昨天"
+          }
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to ask",
+            "target": "问"
+          }
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0030L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "一件事"
+          }
+        },
+        {
+          "id": "S0030L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I wanted to ask you",
+            "target": "我想问你"
+          },
+          "components": [
+            {
+              "known": "to want",
+              "target": "想"
+            },
+            {
+              "known": "to ask",
+              "target": "问"
+            },
+            {
+              "known": "you",
+              "target": "你"
+            }
+          ],
+          "teaches": "S+想+V+O structure - 想 expresses past desire without tense markers, time word (昨天) at sentence start"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:29.857Z"
+}

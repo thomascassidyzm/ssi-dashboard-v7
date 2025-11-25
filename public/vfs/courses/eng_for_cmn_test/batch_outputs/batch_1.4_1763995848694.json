@@ -1,0 +1,184 @@
+{
+  "browserId": 1,
+  "agentId": "1.4",
+  "seedRange": "S0010-S0012",
+  "seeds": [
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "我不确定我是否能记住整个句子。",
+        "target": "I'm not sure if I can remember the whole sentence."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我不确定",
+            "target": "I'm not sure"
+          }
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "整个句子",
+            "target": "the whole sentence"
+          }
+        },
+        {
+          "id": "S0010L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我是否能",
+            "target": "if I can"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "能",
+              "target": "can"
+            }
+          ],
+          "teaches": "Embedding questions with 是否 (whether/if) structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": {
+        "known": "你说完之后，我想能够说话。",
+        "target": "I'd like to be able to speak after you finish."
+      },
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I'd like"
+          }
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "能够",
+            "target": "to be able to"
+          }
+        },
+        {
+          "id": "S0011L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0011L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你说完之后",
+            "target": "after you finish"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "说完",
+              "target": "finish speaking"
+            },
+            {
+              "known": "之后",
+              "target": "after"
+            }
+          ],
+          "teaches": "Time clause structure: Chinese puts time clause first with 之后 (after)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": {
+        "known": "我不想猜测明天会发生什么。",
+        "target": "I wouldn't like to guess what's going to happen tomorrow."
+      },
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我不想",
+            "target": "I wouldn't like"
+          }
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "猜测",
+            "target": "to guess"
+          }
+        },
+        {
+          "id": "S0012L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "明天",
+            "target": "tomorrow"
+          }
+        },
+        {
+          "id": "S0012L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "会发生什么",
+            "target": "what's going to happen"
+          },
+          "components": [
+            {
+              "known": "会",
+              "target": "going to"
+            },
+            {
+              "known": "发生",
+              "target": "happen"
+            },
+            {
+              "known": "什么",
+              "target": "what"
+            }
+          ],
+          "teaches": "Embedded question: Chinese uses statement order with 什么 at end vs English fronts what"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:48.694Z"
+}

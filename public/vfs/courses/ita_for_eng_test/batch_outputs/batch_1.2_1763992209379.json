@@ -1,0 +1,187 @@
+{
+  "browserId": 1,
+  "agentId": "1.2",
+  "seedRange": "S0004-S0006",
+  "seeds": [
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "how to say something in Italian",
+        "target": "come dire qualcosa in italiano"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "come dire"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "come"
+            },
+            {
+              "known": "to say",
+              "target": "dire"
+            }
+          ],
+          "teaches": "Italian uses infinitive directly after come (how)"
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "I'm going to practise speaking with someone else.",
+        "target": "Vado a esercitarmi a parlare con qualcun altro."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "vado a"
+          },
+          "components": [
+            {
+              "known": "I go",
+              "target": "vado"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "andare a + infinitive expresses future intention"
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to practise",
+            "target": "esercitarmi"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speaking",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0005L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with",
+            "target": "con"
+          }
+        },
+        {
+          "id": "S0005L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "someone else",
+            "target": "qualcun altro"
+          },
+          "components": [
+            {
+              "known": "someone",
+              "target": "qualcun"
+            },
+            {
+              "known": "else",
+              "target": "altro"
+            }
+          ],
+          "teaches": "qualcun is truncated form of qualcuno before altro"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "I'm trying to remember a word.",
+        "target": "Sto cercando di ricordare una parola."
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying to",
+            "target": "sto cercando di"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "sto"
+            },
+            {
+              "known": "trying to",
+              "target": "cercando di"
+            }
+          ],
+          "teaches": "stare + gerund for progressive; cercare di means to try to"
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "ricordare"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a (feminine)",
+            "target": "una"
+          }
+        },
+        {
+          "id": "S0006L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "word",
+            "target": "parola"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:09.379Z"
+}

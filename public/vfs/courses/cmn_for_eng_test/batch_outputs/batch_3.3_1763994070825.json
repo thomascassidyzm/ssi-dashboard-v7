@@ -1,0 +1,240 @@
+{
+  "browserId": 3,
+  "agentId": "3.3",
+  "seedRange": "S0037-S0039",
+  "seeds": [
+    {
+      "seed_id": "S0037",
+      "seed_pair": {
+        "known": "I started to think about it carefully last month.",
+        "target": "上个月我开始仔细考虑这件事。"
+      },
+      "legos": [
+        {
+          "id": "S0037L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last month",
+            "target": "上个月"
+          },
+          "components": [
+            {
+              "known": "previous",
+              "target": "上"
+            },
+            {
+              "known": "month",
+              "target": "个月"
+            }
+          ],
+          "teaches": "Time expressions use 上 (previous) + measure word + time unit"
+        },
+        {
+          "id": "S0037L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I started to",
+            "target": "我开始"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "start",
+              "target": "开始"
+            }
+          ],
+          "teaches": "Subject directly precedes verb in Chinese"
+        },
+        {
+          "id": "S0037L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "carefully",
+            "target": "仔细"
+          }
+        },
+        {
+          "id": "S0037L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "think about; consider",
+            "target": "考虑"
+          }
+        },
+        {
+          "id": "S0037L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it; this matter",
+            "target": "这件事"
+          },
+          "components": [
+            {
+              "known": "this",
+              "target": "这"
+            },
+            {
+              "known": "matter",
+              "target": "件事"
+            }
+          ],
+          "teaches": "Demonstrative + measure word 件 + noun for abstract things"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0038",
+      "seed_pair": {
+        "known": "I have been learning for about a week.",
+        "target": "我已经学了大约一个星期。"
+      },
+      "legos": [
+        {
+          "id": "S0038L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I have already; I have been",
+            "target": "我已经"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "already",
+              "target": "已经"
+            }
+          ],
+          "teaches": "已经 marks completed or ongoing action up to now"
+        },
+        {
+          "id": "S0038L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "have learned; been learning",
+            "target": "学了"
+          },
+          "components": [
+            {
+              "known": "learn",
+              "target": "学"
+            },
+            {
+              "known": "(completed aspect)",
+              "target": "了"
+            }
+          ],
+          "teaches": "了 after verb indicates completed action or change of state"
+        },
+        {
+          "id": "S0038L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "about; approximately",
+            "target": "大约"
+          }
+        },
+        {
+          "id": "S0038L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a week; one week",
+            "target": "一个星期"
+          },
+          "components": [
+            {
+              "known": "one",
+              "target": "一"
+            },
+            {
+              "known": "week",
+              "target": "个星期"
+            }
+          ],
+          "teaches": "Duration uses number + measure word 个 + time unit"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0039",
+      "seed_pair": {
+        "known": "But I am a little tired this morning.",
+        "target": "但是今天早上我有点累。"
+      },
+      "legos": [
+        {
+          "id": "S0039L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "但是"
+          }
+        },
+        {
+          "id": "S0039L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "this morning",
+            "target": "今天早上"
+          },
+          "components": [
+            {
+              "known": "today",
+              "target": "今天"
+            },
+            {
+              "known": "morning",
+              "target": "早上"
+            }
+          ],
+          "teaches": "Time expressions: larger unit (day) precedes smaller unit (part of day)"
+        },
+        {
+          "id": "S0039L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I am a little",
+            "target": "我有点"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "a little; somewhat",
+              "target": "有点"
+            }
+          ],
+          "teaches": "有点 before adjective expresses slight degree, often with negative connotation"
+        },
+        {
+          "id": "S0039L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tired",
+            "target": "累"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:10.825Z"
+}

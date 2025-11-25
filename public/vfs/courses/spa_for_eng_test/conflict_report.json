@@ -1,0 +1,221 @@
+{
+  "course": "spa_for_eng_test",
+  "generated": "2025-11-24T15:36:22.995Z",
+  "stats": {
+    "totalSeeds": 75,
+    "totalLegos": 319,
+    "uniqueKnown": 248,
+    "conflicts": 9,
+    "conflictRate": "3.6%"
+  },
+  "conflicts": [
+    {
+      "known": "i want",
+      "targets": [
+        "quiero",
+        "Quiero"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0001",
+          "knownSentence": "I want to speak Spanish with you now.",
+          "targetSentence": "Quiero hablar español contigo ahora.",
+          "legoTarget": "quiero"
+        },
+        {
+          "seedId": "S0007",
+          "knownSentence": "I want to try as hard as I can today.",
+          "targetSentence": "Quiero intentar lo más que pueda hoy.",
+          "legoTarget": "Quiero"
+        },
+        {
+          "seedId": "S0022",
+          "knownSentence": "Because I want to meet people who speak Spanish.",
+          "targetSentence": "Porque quiero conocer a personas que hablan español.",
+          "legoTarget": "quiero"
+        }
+      ]
+    },
+    {
+      "known": "i'm trying",
+      "targets": [
+        "estoy intentando",
+        "Estoy intentando"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0002",
+          "knownSentence": "I'm trying to learn.",
+          "targetSentence": "Estoy intentando aprender.",
+          "legoTarget": "estoy intentando"
+        },
+        {
+          "seedId": "S0006",
+          "knownSentence": "I'm trying to remember a word.",
+          "targetSentence": "Estoy intentando recordar una palabra.",
+          "legoTarget": "Estoy intentando"
+        }
+      ]
+    },
+    {
+      "known": "i'm going to",
+      "targets": [
+        "Voy a",
+        "voy a"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0005",
+          "knownSentence": "I'm going to practise speaking with someone else.",
+          "targetSentence": "Voy a practicar hablar con otra persona.",
+          "legoTarget": "Voy a"
+        },
+        {
+          "seedId": "S0008",
+          "knownSentence": "I'm going to try to explain what I mean.",
+          "targetSentence": "Voy a intentar explicar lo que quiero decir.",
+          "legoTarget": "Voy a"
+        },
+        {
+          "seedId": "S0023",
+          "knownSentence": "I'm going to start talking more soon.",
+          "targetSentence": "Voy a empezar a hablar más pronto.",
+          "legoTarget": "voy a"
+        }
+      ]
+    },
+    {
+      "known": "a little",
+      "targets": [
+        "un poco de",
+        "un poco"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0009",
+          "knownSentence": "I speak a little Spanish now.",
+          "targetSentence": "Hablo un poco de español ahora.",
+          "legoTarget": "un poco de"
+        },
+        {
+          "seedId": "S0039",
+          "knownSentence": "But I'm a little tired this morning.",
+          "targetSentence": "Pero estoy un poco cansado esta mañana.",
+          "legoTarget": "un poco"
+        }
+      ]
+    },
+    {
+      "known": "i'm not sure",
+      "targets": [
+        "No estoy seguro",
+        "no estoy seguro"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0010",
+          "knownSentence": "I'm not sure if I can remember the whole sentence.",
+          "targetSentence": "No estoy seguro de si puedo recordar toda la oración.",
+          "legoTarget": "No estoy seguro"
+        },
+        {
+          "seedId": "S0062",
+          "knownSentence": "I'm not sure if I can help you at the same time.",
+          "targetSentence": "No estoy seguro si puedo ayudarte al mismo tiempo.",
+          "legoTarget": "no estoy seguro"
+        }
+      ]
+    },
+    {
+      "known": "to stop",
+      "targets": [
+        "dejar de",
+        "parar"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0019",
+          "knownSentence": "But I don't want to stop talking.",
+          "targetSentence": "Pero no quiero dejar de hablar.",
+          "legoTarget": "dejar de"
+        },
+        {
+          "seedId": "S0067",
+          "knownSentence": "Why do you want to stop?",
+          "targetSentence": "¿Por qué quieres parar?",
+          "legoTarget": "parar"
+        }
+      ]
+    },
+    {
+      "known": "about",
+      "targets": [
+        "aproximadamente",
+        "en",
+        "por"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0038",
+          "knownSentence": "I've been learning for about a week.",
+          "targetSentence": "He estado aprendiendo durante aproximadamente una semana.",
+          "legoTarget": "aproximadamente"
+        },
+        {
+          "seedId": "S0043",
+          "knownSentence": "I was not thinking about how to answer.",
+          "targetSentence": "No estaba pensando en cómo responder.",
+          "legoTarget": "en"
+        },
+        {
+          "seedId": "S0046",
+          "knownSentence": "But I don't worry about making mistakes.",
+          "targetSentence": "Pero no me preocupo por cometer errores.",
+          "legoTarget": "por"
+        }
+      ]
+    },
+    {
+      "known": "what",
+      "targets": [
+        "lo que",
+        "qué"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0057",
+          "knownSentence": "I cannot remember how to say what I wanted to say.",
+          "targetSentence": "No puedo recordar cómo decir lo que quería decir.",
+          "legoTarget": "lo que"
+        },
+        {
+          "seedId": "S0068",
+          "knownSentence": "What are you looking for?",
+          "targetSentence": "¿Qué buscas?",
+          "legoTarget": "qué"
+        }
+      ]
+    },
+    {
+      "known": "that",
+      "targets": [
+        "eso",
+        "que"
+      ],
+      "occurrences": [
+        {
+          "seedId": "S0061",
+          "knownSentence": "Could you say that again a little more slowly?",
+          "targetSentence": "¿Podrías decir eso otra vez un poco más despacio?",
+          "legoTarget": "eso"
+        },
+        {
+          "seedId": "S0072",
+          "knownSentence": "I think that you're doing very well.",
+          "targetSentence": "Creo que lo estás haciendo muy bien.",
+          "legoTarget": "que"
+        }
+      ]
+    }
+  ]
+}

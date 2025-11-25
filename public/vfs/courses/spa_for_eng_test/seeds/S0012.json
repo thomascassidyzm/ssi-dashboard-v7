@@ -1,0 +1,73 @@
+{
+  "seed_id": "S0012",
+  "seed_pair": {
+    "known": "I wouldn't like to guess what's going to happen tomorrow.",
+    "target": "No me gustaría adivinar qué va a pasar mañana."
+  },
+  "legos": [
+    {
+      "id": "S0012L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I wouldn't like",
+        "target": "No me gustaría"
+      },
+      "components": [
+        {
+          "known": "I",
+          "target": "me"
+        },
+        {
+          "known": "wouldn't like",
+          "target": "no gustaría"
+        }
+      ],
+      "teaches": "Negated gustar construction - no precedes the indirect object pronoun"
+    },
+    {
+      "id": "S0012L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to guess",
+        "target": "adivinar"
+      }
+    },
+    {
+      "id": "S0012L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "what's going to happen",
+        "target": "qué va a pasar"
+      },
+      "components": [
+        {
+          "known": "what",
+          "target": "qué"
+        },
+        {
+          "known": "is going to",
+          "target": "va a"
+        },
+        {
+          "known": "happen",
+          "target": "pasar"
+        }
+      ],
+      "teaches": "Ir a + infinitive for near future; qué as interrogative pronoun"
+    },
+    {
+      "id": "S0012L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "tomorrow",
+        "target": "mañana"
+      }
+    }
+  ],
+  "agentId": "1.4",
+  "receivedAt": "2025-11-24T15:32:45.186Z"
+}

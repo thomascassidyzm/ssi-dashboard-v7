@@ -1,0 +1,215 @@
+{
+  "browserId": 3,
+  "agentId": "3.5",
+  "seedRange": "S0043-S0045",
+  "seeds": [
+    {
+      "seed_id": "S0043",
+      "seed_pair": {
+        "known": "我没有在想怎么回答。",
+        "target": "I was not thinking about how to answer."
+      },
+      "legos": [
+        {
+          "id": "S0043L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0043L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "to think"
+          }
+        },
+        {
+          "id": "S0043L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "回答",
+            "target": "to answer"
+          }
+        },
+        {
+          "id": "S0043L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "怎么回答",
+            "target": "how to answer"
+          },
+          "components": [
+            {
+              "known": "怎么",
+              "target": "how to"
+            },
+            {
+              "known": "回答",
+              "target": "answer"
+            }
+          ],
+          "teaches": "怎么 + verb pattern for expressing how to do something"
+        },
+        {
+          "id": "S0043L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "没有在想",
+            "target": "was not thinking"
+          },
+          "components": [
+            {
+              "known": "没有",
+              "target": "was not"
+            },
+            {
+              "known": "在",
+              "target": "[progressive marker]"
+            },
+            {
+              "known": "想",
+              "target": "thinking"
+            }
+          ],
+          "teaches": "没有在 + verb for past continuous negation"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0044",
+      "seed_pair": {
+        "known": "或者如果我需要改进。",
+        "target": "Or if I need to improve."
+      },
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "或者",
+            "target": "or"
+          }
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "如果",
+            "target": "if"
+          }
+        },
+        {
+          "id": "S0044L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "改进",
+            "target": "to improve"
+          }
+        },
+        {
+          "id": "S0044L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我需要改进",
+            "target": "I need to improve"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "需要",
+              "target": "need to"
+            },
+            {
+              "known": "改进",
+              "target": "improve"
+            }
+          ],
+          "teaches": "需要 + verb pattern for expressing necessity"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0045",
+      "seed_pair": {
+        "known": "我不需要知道一切。",
+        "target": "I do not need to know everything."
+      },
+      "legos": [
+        {
+          "id": "S0045L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "知道",
+            "target": "to know"
+          }
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一切",
+            "target": "everything"
+          }
+        },
+        {
+          "id": "S0045L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不需要",
+            "target": "do not need"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "需要",
+              "target": "need"
+            }
+          ],
+          "teaches": "不 + verb pattern for negation"
+        },
+        {
+          "id": "S0045L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不需要知道",
+            "target": "do not need to know"
+          },
+          "components": [
+            {
+              "known": "不需要",
+              "target": "do not need"
+            },
+            {
+              "known": "知道",
+              "target": "to know"
+            }
+          ],
+          "teaches": "Chaining negated auxiliary with main verb"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:48.769Z"
+}

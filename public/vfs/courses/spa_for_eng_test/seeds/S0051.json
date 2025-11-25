@@ -1,0 +1,76 @@
+{
+  "seed_id": "S0051",
+  "seed_pair": {
+    "known": "I enjoy doing interesting things with my friends.",
+    "target": "Disfruto haciendo cosas interesantes con mis amigos."
+  },
+  "legos": [
+    {
+      "id": "S0051L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I enjoy",
+        "target": "disfruto"
+      }
+    },
+    {
+      "id": "S0051L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "doing",
+        "target": "haciendo"
+      }
+    },
+    {
+      "id": "S0051L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "interesting things",
+        "target": "cosas interesantes"
+      },
+      "components": [
+        {
+          "known": "things",
+          "target": "cosas"
+        },
+        {
+          "known": "interesting",
+          "target": "interesantes"
+        }
+      ],
+      "teaches": "adjective placement after noun in Spanish"
+    },
+    {
+      "id": "S0051L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "with",
+        "target": "con"
+      }
+    },
+    {
+      "id": "S0051L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "my",
+        "target": "mi"
+      }
+    },
+    {
+      "id": "S0051L06",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "friends",
+        "target": "amigos"
+      }
+    }
+  ],
+  "agentId": "agent-4.2",
+  "receivedAt": "2025-11-24T15:32:45.203Z"
+}

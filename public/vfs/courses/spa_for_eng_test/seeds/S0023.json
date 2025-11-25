@@ -1,0 +1,58 @@
+{
+  "seed_id": "S0023",
+  "seed_pair": {
+    "known": "I'm going to start talking more soon.",
+    "target": "Voy a empezar a hablar más pronto."
+  },
+  "legos": [
+    {
+      "id": "S0023L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I'm going to",
+        "target": "voy a"
+      }
+    },
+    {
+      "id": "S0023L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to start talking",
+        "target": "empezar a hablar"
+      },
+      "components": [
+        {
+          "known": "to start",
+          "target": "empezar"
+        },
+        {
+          "known": "to talk",
+          "target": "hablar"
+        }
+      ],
+      "teaches": "Empezar requires a before following infinitive"
+    },
+    {
+      "id": "S0023L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "more",
+        "target": "más"
+      }
+    },
+    {
+      "id": "S0023L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "soon",
+        "target": "pronto"
+      }
+    }
+  ],
+  "agentId": "2.3",
+  "receivedAt": "2025-11-24T15:32:27.356Z"
+}

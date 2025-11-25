@@ -1,0 +1,248 @@
+{
+  "browserId": 4,
+  "agentId": "4.2",
+  "seedRange": "S0049-S0051",
+  "seeds": [
+    {
+      "seed_id": "S0049",
+      "seed_pair": {
+        "known": "就是这样，如果你明白我的意思的话。",
+        "target": "It's like this, if you know what I mean."
+      },
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "就是这样",
+            "target": "It's like this"
+          },
+          "components": [
+            {
+              "known": "就是",
+              "target": "it's"
+            },
+            {
+              "known": "这样",
+              "target": "like this"
+            }
+          ],
+          "teaches": "it's + complement structure"
+        },
+        {
+          "id": "S0049L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "如果你明白我的意思的话",
+            "target": "if you know what I mean"
+          },
+          "components": [
+            {
+              "known": "如果",
+              "target": "if"
+            },
+            {
+              "known": "你明白",
+              "target": "you know"
+            },
+            {
+              "known": "我的意思",
+              "target": "what I mean"
+            }
+          ],
+          "teaches": "conditional clause with embedded question"
+        },
+        {
+          "id": "S0049L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "这样",
+            "target": "like this"
+          }
+        },
+        {
+          "id": "S0049L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "如果",
+            "target": "if"
+          }
+        },
+        {
+          "id": "S0049L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我的意思",
+            "target": "what I mean"
+          },
+          "components": [
+            {
+              "known": "我的",
+              "target": "my/what I"
+            },
+            {
+              "known": "意思",
+              "target": "mean/meaning"
+            }
+          ],
+          "teaches": "indirect question structure with what"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0050",
+      "seed_pair": {
+        "known": "我不是在尽可能快地完成。",
+        "target": "I'm not trying to finish as quickly as possible."
+      },
+      "legos": [
+        {
+          "id": "S0050L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不是在",
+            "target": "I'm not trying to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不是在",
+              "target": "am not trying to"
+            }
+          ],
+          "teaches": "negative progressive with intent"
+        },
+        {
+          "id": "S0050L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "完成",
+            "target": "finish"
+          }
+        },
+        {
+          "id": "S0050L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽可能快地",
+            "target": "as quickly as possible"
+          },
+          "components": [
+            {
+              "known": "尽可能",
+              "target": "as...as possible"
+            },
+            {
+              "known": "快地",
+              "target": "quickly"
+            }
+          ],
+          "teaches": "as + adverb + as possible structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0051",
+      "seed_pair": {
+        "known": "我喜欢和朋友一起做有趣的事情。",
+        "target": "I enjoy doing interesting things with my friends."
+      },
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我喜欢做",
+            "target": "I enjoy doing"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "喜欢",
+              "target": "enjoy"
+            },
+            {
+              "known": "做",
+              "target": "doing"
+            }
+          ],
+          "teaches": "gerund (-ing) after enjoy"
+        },
+        {
+          "id": "S0051L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "有趣的事情",
+            "target": "interesting things"
+          },
+          "components": [
+            {
+              "known": "有趣的",
+              "target": "interesting"
+            },
+            {
+              "known": "事情",
+              "target": "things"
+            }
+          ],
+          "teaches": "adjective before noun in English"
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "和朋友一起",
+            "target": "with my friends"
+          },
+          "components": [
+            {
+              "known": "和",
+              "target": "with"
+            },
+            {
+              "known": "朋友",
+              "target": "friends"
+            }
+          ],
+          "teaches": "with + noun phrase for accompaniment"
+        },
+        {
+          "id": "S0051L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有趣的",
+            "target": "interesting"
+          }
+        },
+        {
+          "id": "S0051L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "朋友",
+            "target": "friends"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:49:57.832Z"
+}

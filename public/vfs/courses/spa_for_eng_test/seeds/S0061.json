@@ -1,0 +1,71 @@
+{
+  "seed_id": "S0061",
+  "seed_pair": {
+    "known": "Could you say that again a little more slowly?",
+    "target": "¿Podrías decir eso otra vez un poco más despacio?"
+  },
+  "legos": [
+    {
+      "id": "S0061L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "could you",
+        "target": "podrías"
+      }
+    },
+    {
+      "id": "S0061L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "say",
+        "target": "decir"
+      }
+    },
+    {
+      "id": "S0061L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "that",
+        "target": "eso"
+      }
+    },
+    {
+      "id": "S0061L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "again",
+        "target": "otra vez"
+      }
+    },
+    {
+      "id": "S0061L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "a little more slowly",
+        "target": "un poco más despacio"
+      },
+      "components": [
+        {
+          "known": "a little",
+          "target": "un poco"
+        },
+        {
+          "known": "more",
+          "target": "más"
+        },
+        {
+          "known": "slowly",
+          "target": "despacio"
+        }
+      ],
+      "teaches": "Spanish adverb intensification order: quantity + más + adverb"
+    }
+  ],
+  "agentId": "5.1",
+  "receivedAt": "2025-11-24T15:32:20.235Z"
+}

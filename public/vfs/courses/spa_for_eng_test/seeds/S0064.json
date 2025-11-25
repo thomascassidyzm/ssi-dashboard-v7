@@ -1,0 +1,76 @@
+{
+  "seed_id": "S0064",
+  "seed_pair": {
+    "known": "Learning Spanish isn't easy but it is fun.",
+    "target": "Aprender español no es fácil pero es divertido."
+  },
+  "legos": [
+    {
+      "id": "S0064L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "Learning Spanish",
+        "target": "Aprender español"
+      },
+      "components": [
+        {
+          "known": "learning",
+          "target": "aprender"
+        },
+        {
+          "known": "Spanish",
+          "target": "español"
+        }
+      ],
+      "teaches": "infinitive form used as subject noun (Spanish uses infinitive where English uses -ing form)"
+    },
+    {
+      "id": "S0064L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "isn't",
+        "target": "no es"
+      }
+    },
+    {
+      "id": "S0064L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "easy",
+        "target": "fácil"
+      }
+    },
+    {
+      "id": "S0064L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "but",
+        "target": "pero"
+      }
+    },
+    {
+      "id": "S0064L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "it is",
+        "target": "es"
+      }
+    },
+    {
+      "id": "S0064L06",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "fun",
+        "target": "divertido"
+      }
+    }
+  ],
+  "agentId": "5.2",
+  "receivedAt": "2025-11-24T15:33:16.482Z"
+}

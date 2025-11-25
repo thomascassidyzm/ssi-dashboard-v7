@@ -1,0 +1,69 @@
+{
+  "seed_id": "S0008",
+  "seed_pair": {
+    "known": "I'm going to try to explain what I mean.",
+    "target": "Voy a intentar explicar lo que quiero decir."
+  },
+  "legos": [
+    {
+      "id": "S0008L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm going to",
+        "target": "Voy a"
+      },
+      "components": [
+        {
+          "known": "I go",
+          "target": "Voy"
+        },
+        {
+          "known": "to",
+          "target": "a"
+        }
+      ],
+      "teaches": "Ir + a + infinitive structure for near future tense"
+    },
+    {
+      "id": "S0008L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to try",
+        "target": "intentar"
+      }
+    },
+    {
+      "id": "S0008L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to explain",
+        "target": "explicar"
+      }
+    },
+    {
+      "id": "S0008L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "what I mean",
+        "target": "lo que quiero decir"
+      },
+      "components": [
+        {
+          "known": "what/that which",
+          "target": "lo que"
+        },
+        {
+          "known": "I want to say",
+          "target": "quiero decir"
+        }
+      ],
+      "teaches": "Relative clause with lo que plus idiomatic querer decir meaning to mean"
+    }
+  ],
+  "agentId": "1.3",
+  "receivedAt": "2025-11-24T15:32:42.363Z"
+}

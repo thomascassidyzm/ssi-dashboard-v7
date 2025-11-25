@@ -1,0 +1,187 @@
+{
+  "browserId": 2,
+  "agentId": "2.2",
+  "seedRange": "S0019-S0021",
+  "seeds": [
+    {
+      "seed_id": "S0019",
+      "seed_pair": {
+        "known": "但是我不想停止说话。",
+        "target": "But I do not want to stop talking."
+      },
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不想",
+            "target": "I do not want to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "不想",
+              "target": "do not want"
+            }
+          ],
+          "teaches": "to before verb is not expressed in Chinese"
+        },
+        {
+          "id": "S0019L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "停止",
+            "target": "to stop"
+          }
+        },
+        {
+          "id": "S0019L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "talking"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": {
+        "known": "你想很快学会他的名字。",
+        "target": "You want to learn his name quickly."
+      },
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0020L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "want to"
+          }
+        },
+        {
+          "id": "S0020L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "很快",
+            "target": "quickly"
+          }
+        },
+        {
+          "id": "S0020L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学会",
+            "target": "to learn"
+          }
+        },
+        {
+          "id": "S0020L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "他的名字",
+            "target": "his name"
+          },
+          "components": [
+            {
+              "known": "他的",
+              "target": "his"
+            },
+            {
+              "known": "名字",
+              "target": "name"
+            }
+          ],
+          "teaches": "possessive structure with 的 particle"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": {
+        "known": "你为什么在学她的名字？",
+        "target": "Why are you learning her name?"
+      },
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "为什么",
+            "target": "why"
+          }
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你在学",
+            "target": "are you learning"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "在学",
+              "target": "are learning"
+            }
+          ],
+          "teaches": "progressive aspect using 在 before verb"
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "她的名字",
+            "target": "her name"
+          },
+          "components": [
+            {
+              "known": "她的",
+              "target": "her"
+            },
+            {
+              "known": "名字",
+              "target": "name"
+            }
+          ],
+          "teaches": "possessive structure with 的 particle"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:33.731Z"
+}

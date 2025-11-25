@@ -1,0 +1,58 @@
+{
+  "seed_id": "S0007",
+  "seed_pair": {
+    "known": "I want to try as hard as I can today.",
+    "target": "Quiero intentar lo más que pueda hoy."
+  },
+  "legos": [
+    {
+      "id": "S0007L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I want",
+        "target": "Quiero"
+      }
+    },
+    {
+      "id": "S0007L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to try",
+        "target": "intentar"
+      }
+    },
+    {
+      "id": "S0007L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "as hard as I can",
+        "target": "lo más que pueda"
+      },
+      "components": [
+        {
+          "known": "the most",
+          "target": "lo más"
+        },
+        {
+          "known": "that I can",
+          "target": "que pueda"
+        }
+      ],
+      "teaches": "Comparative maximum structure with subjunctive pueda (can/be able)"
+    },
+    {
+      "id": "S0007L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "today",
+        "target": "hoy"
+      }
+    }
+  ],
+  "agentId": "1.3",
+  "receivedAt": "2025-11-24T15:32:11.974Z"
+}

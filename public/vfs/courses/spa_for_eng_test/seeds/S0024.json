@@ -1,0 +1,58 @@
+{
+  "seed_id": "S0024",
+  "seed_pair": {
+    "known": "I'm not going to be able to remember easily.",
+    "target": "No voy a poder recordar fácilmente."
+  },
+  "legos": [
+    {
+      "id": "S0024L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm not going to",
+        "target": "no voy a"
+      },
+      "components": [
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "I'm going to",
+          "target": "voy a"
+        }
+      ],
+      "teaches": "Negation no placed before conjugated verb"
+    },
+    {
+      "id": "S0024L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to be able to",
+        "target": "poder"
+      }
+    },
+    {
+      "id": "S0024L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to remember",
+        "target": "recordar"
+      }
+    },
+    {
+      "id": "S0024L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "easily",
+        "target": "fácilmente"
+      }
+    }
+  ],
+  "agentId": "2.3",
+  "receivedAt": "2025-11-24T15:32:42.219Z"
+}

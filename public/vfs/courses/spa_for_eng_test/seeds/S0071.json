@@ -1,0 +1,89 @@
+{
+  "seed_id": "S0071",
+  "seed_pair": {
+    "known": "We didn't want to let anyone hear the truth.",
+    "target": "No queríamos dejar que nadie oyera la verdad."
+  },
+  "legos": [
+    {
+      "id": "S0071L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "we didn't want",
+        "target": "no queríamos"
+      },
+      "components": [
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "we wanted",
+          "target": "queríamos"
+        }
+      ],
+      "teaches": "negation placement with first person plural imperfect"
+    },
+    {
+      "id": "S0071L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to let",
+        "target": "dejar que"
+      },
+      "components": [
+        {
+          "known": "to let",
+          "target": "dejar"
+        },
+        {
+          "known": "that",
+          "target": "que"
+        }
+      ],
+      "teaches": "let someone do requires dejar que + subjunctive"
+    },
+    {
+      "id": "S0071L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "anyone",
+        "target": "nadie"
+      }
+    },
+    {
+      "id": "S0071L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "hear",
+        "target": "oyera"
+      }
+    },
+    {
+      "id": "S0071L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "the truth",
+        "target": "la verdad"
+      },
+      "components": [
+        {
+          "known": "the",
+          "target": "la"
+        },
+        {
+          "known": "truth",
+          "target": "verdad"
+        }
+      ],
+      "teaches": "definite article required with abstract nouns in Spanish"
+    }
+  ],
+  "agentId": "5.4",
+  "receivedAt": "2025-11-24T15:32:47.525Z"
+}

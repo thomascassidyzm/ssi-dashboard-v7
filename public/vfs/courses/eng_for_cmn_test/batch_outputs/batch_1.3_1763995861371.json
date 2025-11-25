@@ -1,0 +1,167 @@
+{
+  "browserId": 1,
+  "agentId": "1.3",
+  "seedRange": "S0007-S0009",
+  "seeds": [
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "我今天想尽全力去尝试。",
+        "target": "I want to try as hard as I can today."
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I want"
+          }
+        },
+        {
+          "id": "S0007L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "尝试",
+            "target": "to try"
+          }
+        },
+        {
+          "id": "S0007L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "今天",
+            "target": "today"
+          }
+        },
+        {
+          "id": "S0007L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽全力",
+            "target": "as hard as I can"
+          },
+          "components": [
+            {
+              "known": "全力",
+              "target": "full effort"
+            }
+          ],
+          "teaches": "Idiomatic phrase for maximum effort - 尽 means to exhaust/use up"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "我会尝试解释我的意思。",
+        "target": "I am going to try to explain what I mean."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我会",
+            "target": "I am going to"
+          }
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "解释",
+            "target": "to explain"
+          }
+        },
+        {
+          "id": "S0008L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我的意思",
+            "target": "what I mean"
+          },
+          "components": [
+            {
+              "known": "我的",
+              "target": "my"
+            },
+            {
+              "known": "意思",
+              "target": "meaning"
+            }
+          ],
+          "teaches": "Chinese uses my meaning for what I mean"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "我现在会说一点英语了。",
+        "target": "I speak a little English now."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我会说",
+            "target": "I speak"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "会",
+              "target": "can"
+            },
+            {
+              "known": "说",
+              "target": "speak"
+            }
+          ],
+          "teaches": "Chinese uses I can speak for habitual I speak"
+        },
+        {
+          "id": "S0009L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一点",
+            "target": "a little"
+          }
+        },
+        {
+          "id": "S0009L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0009L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "now"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:01.371Z"
+}

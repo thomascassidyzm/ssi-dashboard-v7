@@ -1,0 +1,78 @@
+{
+  "seed_id": "S0005",
+  "seed_pair": {
+    "known": "I'm going to practise speaking with someone else.",
+    "target": "Voy a practicar hablar con otra persona."
+  },
+  "legos": [
+    {
+      "id": "S0005L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm going to",
+        "target": "Voy a"
+      },
+      "components": [
+        {
+          "known": "I go",
+          "target": "Voy"
+        },
+        {
+          "known": "to",
+          "target": "a"
+        }
+      ],
+      "teaches": "ir + a + infinitive construction for future intent"
+    },
+    {
+      "id": "S0005L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to practise",
+        "target": "practicar"
+      }
+    },
+    {
+      "id": "S0005L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "speaking",
+        "target": "hablar"
+      }
+    },
+    {
+      "id": "S0005L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "with",
+        "target": "con"
+      }
+    },
+    {
+      "id": "S0005L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "someone else",
+        "target": "otra persona"
+      },
+      "components": [
+        {
+          "known": "other",
+          "target": "otra"
+        },
+        {
+          "known": "person",
+          "target": "persona"
+        }
+      ],
+      "teaches": "someone else expressed as another person in Spanish"
+    }
+  ],
+  "agentId": "1.2",
+  "receivedAt": "2025-11-24T15:32:46.491Z"
+}

@@ -1,0 +1,87 @@
+{
+  "seed_id": "S0016",
+  "seed_pair": {
+    "known": "He wants to come back with everyone else later on.",
+    "target": "Él quiere volver con todos los demás más tarde."
+  },
+  "legos": [
+    {
+      "id": "S0016L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "he",
+        "target": "él"
+      }
+    },
+    {
+      "id": "S0016L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "wants",
+        "target": "quiere"
+      }
+    },
+    {
+      "id": "S0016L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to come back",
+        "target": "volver"
+      }
+    },
+    {
+      "id": "S0016L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "with",
+        "target": "con"
+      }
+    },
+    {
+      "id": "S0016L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "everyone else",
+        "target": "todos los demás"
+      },
+      "components": [
+        {
+          "known": "everyone/all",
+          "target": "todos"
+        },
+        {
+          "known": "else/the rest",
+          "target": "los demás"
+        }
+      ],
+      "teaches": "everyone else becomes all the others (todos los demás)"
+    },
+    {
+      "id": "S0016L06",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "later on",
+        "target": "más tarde"
+      },
+      "components": [
+        {
+          "known": "more",
+          "target": "más"
+        },
+        {
+          "known": "late",
+          "target": "tarde"
+        }
+      ],
+      "teaches": "later uses comparative structure más tarde (more late)"
+    }
+  ],
+  "agentId": "2.1",
+  "receivedAt": "2025-11-24T15:33:27.462Z"
+}

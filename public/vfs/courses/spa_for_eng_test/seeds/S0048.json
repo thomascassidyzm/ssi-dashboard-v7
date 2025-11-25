@@ -1,0 +1,55 @@
+{
+  "seed_id": "S0048",
+  "seed_pair": {
+    "known": "I don't care about making mistakes.",
+    "target": "No me importa cometer errores."
+  },
+  "legos": [
+    {
+      "id": "S0048L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I don't care",
+        "target": "no me importa"
+      },
+      "components": [
+        {
+          "known": "don't",
+          "target": "no"
+        },
+        {
+          "known": "to me",
+          "target": "me"
+        },
+        {
+          "known": "it matters",
+          "target": "importa"
+        }
+      ],
+      "teaches": "Spanish uses impersonal construction - literally 'it doesn't matter to me' instead of 'I don't care'"
+    },
+    {
+      "id": "S0048L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "about making mistakes",
+        "target": "cometer errores"
+      },
+      "components": [
+        {
+          "known": "to make",
+          "target": "cometer"
+        },
+        {
+          "known": "mistakes",
+          "target": "errores"
+        }
+      ],
+      "teaches": "preposition 'about' is absorbed - Spanish infinitive directly follows verb"
+    }
+  ],
+  "agentId": "agent-4.1",
+  "receivedAt": "2025-11-24T15:32:36.302Z"
+}

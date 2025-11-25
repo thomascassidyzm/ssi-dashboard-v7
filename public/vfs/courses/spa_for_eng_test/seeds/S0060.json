@@ -1,0 +1,69 @@
+{
+  "seed_id": "S0060",
+  "seed_pair": {
+    "known": "I don't know how to say enough different words yet.",
+    "target": "Todavía no sé cómo decir suficientes palabras diferentes."
+  },
+  "legos": [
+    {
+      "id": "S0060L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I don't know",
+        "target": "no sé"
+      },
+      "components": [
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "I know",
+          "target": "sé"
+        }
+      ],
+      "teaches": "negation places no before the verb"
+    },
+    {
+      "id": "S0060L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how to say",
+        "target": "cómo decir"
+      },
+      "components": [
+        {
+          "known": "how",
+          "target": "cómo"
+        },
+        {
+          "known": "to say",
+          "target": "decir"
+        }
+      ],
+      "teaches": "how to + verb uses cómo + infinitive"
+    },
+    {
+      "id": "S0060L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "different",
+        "target": "diferente"
+      }
+    },
+    {
+      "id": "S0060L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "yet",
+        "target": "todavía"
+      }
+    }
+  ],
+  "agentId": "agent-4.5",
+  "receivedAt": "2025-11-24T15:32:33.561Z"
+}

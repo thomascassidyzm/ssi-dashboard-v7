@@ -1,0 +1,60 @@
+{
+  "seed_id": "S0028",
+  "seed_pair": {
+    "known": "It's useful to start talking as soon as you can.",
+    "target": "Es útil empezar a hablar tan pronto como puedas."
+  },
+  "legos": [
+    {
+      "id": "S0028L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "useful",
+        "target": "útil"
+      }
+    },
+    {
+      "id": "S0028L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to start talking",
+        "target": "empezar a hablar"
+      },
+      "components": [
+        {
+          "known": "to start",
+          "target": "empezar"
+        },
+        {
+          "known": "to talk",
+          "target": "hablar"
+        }
+      ],
+      "teaches": "linking 'a' between consecutive infinitives"
+    },
+    {
+      "id": "S0028L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "as soon as you can",
+        "target": "tan pronto como puedas"
+      },
+      "components": [
+        {
+          "known": "as soon as",
+          "target": "tan pronto como"
+        },
+        {
+          "known": "you can",
+          "target": "puedas"
+        }
+      ],
+      "teaches": "subjunctive 'puedas' after 'tan pronto como'"
+    }
+  ],
+  "agentId": "2.5",
+  "receivedAt": "2025-11-24T15:32:50.135Z"
+}

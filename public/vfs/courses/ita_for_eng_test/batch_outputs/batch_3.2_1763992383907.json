@@ -1,0 +1,187 @@
+{
+  "browserId": 3,
+  "agentId": "3.2",
+  "seedRange": "S0034-S0036",
+  "seeds": [
+    {
+      "seed_id": "S0034",
+      "seed_pair": {
+        "known": "He doesn't want to be quiet when other people are here.",
+        "target": "Non vuole stare zitto quando altre persone sono qui."
+      },
+      "legos": [
+        {
+          "id": "S0034L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "he doesn't want",
+            "target": "non vuole"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "he wants",
+              "target": "vuole"
+            }
+          ],
+          "teaches": "Italian negation places non directly before the conjugated verb"
+        },
+        {
+          "id": "S0034L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to be quiet",
+            "target": "stare zitto"
+          },
+          "components": [
+            {
+              "known": "to stay",
+              "target": "stare"
+            },
+            {
+              "known": "quiet",
+              "target": "zitto"
+            }
+          ],
+          "teaches": "Italian uses stare (to stay) + adjective for temporary behavioral states"
+        },
+        {
+          "id": "S0034L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "quando"
+          }
+        },
+        {
+          "id": "S0034L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "other people",
+            "target": "altre persone"
+          }
+        },
+        {
+          "id": "S0034L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are here",
+            "target": "sono qui"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0035",
+      "seed_pair": {
+        "known": "She doesn't want to read anything this afternoon.",
+        "target": "Non vuole leggere niente questo pomeriggio."
+      },
+      "legos": [
+        {
+          "id": "S0035L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "she doesn't want",
+            "target": "non vuole"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "she wants",
+              "target": "vuole"
+            }
+          ],
+          "teaches": "Italian negation with non before verb; third person singular volere"
+        },
+        {
+          "id": "S0035L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to read",
+            "target": "leggere"
+          }
+        },
+        {
+          "id": "S0035L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anything",
+            "target": "niente"
+          }
+        },
+        {
+          "id": "S0035L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this afternoon",
+            "target": "questo pomeriggio"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0036",
+      "seed_pair": {
+        "known": "We don't want to interrupt the story.",
+        "target": "Non vogliamo interrompere la storia."
+      },
+      "legos": [
+        {
+          "id": "S0036L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "we don't want",
+            "target": "non vogliamo"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "we want",
+              "target": "vogliamo"
+            }
+          ],
+          "teaches": "Italian negation with non; first person plural volere conjugation"
+        },
+        {
+          "id": "S0036L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to interrupt",
+            "target": "interrompere"
+          }
+        },
+        {
+          "id": "S0036L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the story",
+            "target": "la storia"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:03.907Z"
+}

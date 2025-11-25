@@ -1,0 +1,91 @@
+{
+  "seed_id": "S0052",
+  "seed_pair": {
+    "known": "He wanted to write a letter to his friend last week.",
+    "target": "Él quería escribir una carta a su amigo la semana pasada."
+  },
+  "legos": [
+    {
+      "id": "S0052L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "wanted",
+        "target": "quería"
+      }
+    },
+    {
+      "id": "S0052L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to write",
+        "target": "escribir"
+      }
+    },
+    {
+      "id": "S0052L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "letter",
+        "target": "carta"
+      }
+    },
+    {
+      "id": "S0052L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "friend",
+        "target": "amigo"
+      }
+    },
+    {
+      "id": "S0052L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to his friend",
+        "target": "a su amigo"
+      },
+      "components": [
+        {
+          "known": "to",
+          "target": "a"
+        },
+        {
+          "known": "his",
+          "target": "su"
+        },
+        {
+          "known": "friend",
+          "target": "amigo"
+        }
+      ],
+      "teaches": "a introduces recipient/indirect object"
+    },
+    {
+      "id": "S0052L06",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "last week",
+        "target": "la semana pasada"
+      },
+      "components": [
+        {
+          "known": "week",
+          "target": "semana"
+        },
+        {
+          "known": "last",
+          "target": "pasada"
+        }
+      ],
+      "teaches": "adjective follows noun (the week past)"
+    }
+  ],
+  "agentId": "agent-4.3",
+  "receivedAt": "2025-11-24T15:32:27.965Z"
+}

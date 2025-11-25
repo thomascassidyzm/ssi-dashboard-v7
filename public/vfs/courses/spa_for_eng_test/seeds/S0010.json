@@ -1,0 +1,84 @@
+{
+  "seed_id": "S0010",
+  "seed_pair": {
+    "known": "I'm not sure if I can remember the whole sentence.",
+    "target": "No estoy seguro de si puedo recordar toda la oración."
+  },
+  "legos": [
+    {
+      "id": "S0010L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm not sure",
+        "target": "No estoy seguro"
+      },
+      "components": [
+        {
+          "known": "I'm",
+          "target": "estoy"
+        },
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "sure",
+          "target": "seguro"
+        }
+      ],
+      "teaches": "Negation placement (no before verb) with estar + adjective"
+    },
+    {
+      "id": "S0010L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "if I can",
+        "target": "si puedo"
+      },
+      "components": [
+        {
+          "known": "if",
+          "target": "si"
+        },
+        {
+          "known": "I can",
+          "target": "puedo"
+        }
+      ],
+      "teaches": "Conditional si + conjugated verb (subject pronoun dropped)"
+    },
+    {
+      "id": "S0010L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "remember",
+        "target": "recordar"
+      }
+    },
+    {
+      "id": "S0010L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "the whole sentence",
+        "target": "toda la oración"
+      },
+      "components": [
+        {
+          "known": "whole",
+          "target": "toda"
+        },
+        {
+          "known": "the sentence",
+          "target": "la oración"
+        }
+      ],
+      "teaches": "Word order: toda (whole) precedes the article+noun"
+    }
+  ],
+  "agentId": "1.4",
+  "receivedAt": "2025-11-24T15:32:16.679Z"
+}

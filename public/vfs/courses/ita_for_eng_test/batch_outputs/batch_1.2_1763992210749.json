@@ -1,0 +1,160 @@
+{
+  "browserId": 1,
+  "agentId": "1.2",
+  "seedRange": "S0004-S0006",
+  "seeds": [
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "how to say something in Italian",
+        "target": "come dire qualcosa in italiano"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "come dire"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "to say",
+              "target": "dire"
+            }
+          ],
+          "teaches": "how to + verb = come + infinitive"
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "in Italian",
+            "target": "in italiano"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "I'm going to practise speaking with someone else.",
+        "target": "Vado ad esercitarmi a parlare con qualcun altro."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm going to practise",
+            "target": "Vado ad esercitarmi"
+          },
+          "components": [
+            {
+              "known": "I'm going to",
+              "target": "Vado a"
+            },
+            {
+              "known": "practise",
+              "target": "esercitarmi"
+            }
+          ],
+          "teaches": "andare a + infinitive for going to; reflexive verb esercitarsi"
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "speaking",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with someone else",
+            "target": "con qualcun altro"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "con"
+            },
+            {
+              "known": "someone else",
+              "target": "qualcun altro"
+            }
+          ],
+          "teaches": "qualcun altro = someone else (qualcuno + altro)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "I'm trying to remember a word.",
+        "target": "Sto cercando di ricordare una parola."
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying to",
+            "target": "Sto cercando di"
+          },
+          "components": [
+            {
+              "known": "I'm",
+              "target": "Sto"
+            },
+            {
+              "known": "trying to",
+              "target": "cercando di"
+            }
+          ],
+          "teaches": "stare + gerund for progressive; cercare di = to try to"
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "ricordare"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a word",
+            "target": "una parola"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:10.749Z"
+}

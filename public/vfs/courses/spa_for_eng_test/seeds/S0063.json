@@ -1,0 +1,73 @@
+{
+  "seed_id": "S0063",
+  "seed_pair": {
+    "known": "Are you sure you don't mind helping me?",
+    "target": "¿Estás seguro de que no te importa ayudarme?"
+  },
+  "legos": [
+    {
+      "id": "S0063L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "are you sure",
+        "target": "estás seguro"
+      }
+    },
+    {
+      "id": "S0063L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "you don't mind",
+        "target": "no te importa"
+      },
+      "components": [
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "to you",
+          "target": "te"
+        },
+        {
+          "known": "it matters",
+          "target": "importa"
+        }
+      ],
+      "teaches": "Spanish uses indirect object + importar construction: no te importa (it doesn't matter to you)"
+    },
+    {
+      "id": "S0063L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "helping me",
+        "target": "ayudarme"
+      }
+    },
+    {
+      "id": "S0063L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "sure that",
+        "target": "seguro de que"
+      },
+      "components": [
+        {
+          "known": "sure",
+          "target": "seguro"
+        },
+        {
+          "known": "of/that",
+          "target": "de que"
+        }
+      ],
+      "teaches": "Spanish requires de que after seguro when followed by a clause"
+    }
+  ],
+  "agentId": "5.1",
+  "receivedAt": "2025-11-24T15:32:48.546Z"
+}

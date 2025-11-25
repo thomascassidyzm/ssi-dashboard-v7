@@ -1,0 +1,47 @@
+{
+  "seed_id": "S0035",
+  "seed_pair": {
+    "known": "She doesn't want to read anything this afternoon.",
+    "target": "Ella no quiere leer nada esta tarde."
+  },
+  "legos": [
+    {
+      "id": "S0035L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "she doesn't want",
+        "target": "ella no quiere"
+      }
+    },
+    {
+      "id": "S0035L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to read",
+        "target": "leer"
+      }
+    },
+    {
+      "id": "S0035L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "anything",
+        "target": "nada"
+      }
+    },
+    {
+      "id": "S0035L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "this afternoon",
+        "target": "esta tarde"
+      }
+    }
+  ],
+  "agentId": "3.2",
+  "receivedAt": "2025-11-24T15:32:22.009Z"
+}

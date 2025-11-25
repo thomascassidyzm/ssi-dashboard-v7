@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-24T00:19:52.897Z",
+  "generated_at": "2025-11-25T01:27:26.316Z",
   "courses": [
     {
       "course_code": "archive",
@@ -94,21 +94,71 @@
       }
     },
     {
-      "course_code": "eng_for_zho",
-      "source_language": "ZHO",
+      "course_code": "cmn_for_eng_test",
+      "source_language": "ENG",
+      "target_language": "CMN",
+      "total_seeds": 45,
+      "actual_seed_count": 45,
+      "lego_count": 207,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "8.3.0",
+      "phase": "phase_3",
+      "phases_completed": [
+        "1",
+        "3"
+      ],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false,
+        "introductions": false
+      }
+    },
+    {
+      "course_code": "eng_for_cmn_test",
+      "source_language": "CMN",
       "target_language": "ENG",
       "total_seeds": 0,
       "actual_seed_count": 0,
+      "lego_count": 317,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "v5.0.1",
+      "phase": "phase_3",
+      "phases_completed": [
+        "1",
+        "3"
+      ],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false,
+        "introductions": false
+      }
+    },
+    {
+      "course_code": "eng_for_zho",
+      "source_language": "ZHO",
+      "target_language": "ENG",
+      "total_seeds": 668,
+      "actual_seed_count": 668,
       "lego_count": 0,
       "basket_count": 0,
       "introductions_count": 0,
       "format": "unknown",
-      "phase": "empty",
-      "phases_completed": [],
+      "phase": "phase_1",
+      "phases_completed": [
+        "1"
+      ],
       "has_baskets": false,
       "has_introductions": false,
       "files": {
-        "seed_pairs": false,
+        "seed_pairs": true,
         "lego_pairs": false,
         "baskets": false,
         "introductions": false
@@ -137,6 +187,27 @@
         "lego_pairs": true,
         "baskets": true,
         "introductions": true
+      }
+    },
+    {
+      "course_code": "fra_for_eng_test",
+      "source_language": "ENG",
+      "target_language": "FRA",
+      "total_seeds": 0,
+      "actual_seed_count": 0,
+      "lego_count": 0,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "unknown",
+      "phase": "empty",
+      "phases_completed": [],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": false,
+        "lego_pairs": false,
+        "baskets": false,
+        "introductions": false
       }
     },
     {
@@ -184,6 +255,30 @@
         "lego_pairs": true,
         "baskets": false,
         "introductions": true
+      }
+    },
+    {
+      "course_code": "ita_for_eng_test",
+      "source_language": "ENG",
+      "target_language": "ITA",
+      "total_seeds": 75,
+      "actual_seed_count": 75,
+      "lego_count": 297,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "8.3.0",
+      "phase": "phase_3",
+      "phases_completed": [
+        "1",
+        "3"
+      ],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": true,
+        "lego_pairs": true,
+        "baskets": false,
+        "introductions": false
       }
     },
     {
@@ -256,6 +351,50 @@
         "lego_pairs": true,
         "baskets": true,
         "introductions": true
+      }
+    },
+    {
+      "course_code": "spa_for_eng_test",
+      "source_language": "ENG",
+      "target_language": "SPA",
+      "total_seeds": 0,
+      "actual_seed_count": 0,
+      "lego_count": 319,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "v5.0.1",
+      "phase": "phase_3",
+      "phases_completed": [
+        "3"
+      ],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": false,
+        "lego_pairs": true,
+        "baskets": false,
+        "introductions": false
+      }
+    },
+    {
+      "course_code": "test_course",
+      "source_language": "UNK",
+      "target_language": "UNK",
+      "total_seeds": 0,
+      "actual_seed_count": 0,
+      "lego_count": 0,
+      "basket_count": 0,
+      "introductions_count": 0,
+      "format": "unknown",
+      "phase": "empty",
+      "phases_completed": [],
+      "has_baskets": false,
+      "has_introductions": false,
+      "files": {
+        "seed_pairs": false,
+        "lego_pairs": false,
+        "baskets": false,
+        "introductions": false
       }
     },
     {

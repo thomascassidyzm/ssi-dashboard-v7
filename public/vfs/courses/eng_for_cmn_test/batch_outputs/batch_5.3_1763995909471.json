@@ -1,0 +1,165 @@
+{
+  "browserId": 5,
+  "agentId": "5.3",
+  "seedRange": "S0067-S0069",
+  "seeds": [
+    {
+      "seed_id": "S0067",
+      "seed_pair": {
+        "known": "你为什么想停下来？",
+        "target": "Why do you want to stop?"
+      },
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "为什么",
+            "target": "why"
+          }
+        },
+        {
+          "id": "S0067L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "want to"
+          }
+        },
+        {
+          "id": "S0067L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "停",
+            "target": "stop"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": {
+        "known": "你在找什么？",
+        "target": "What are you looking for?"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "什么",
+            "target": "what"
+          }
+        },
+        {
+          "id": "S0068L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0068L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "找",
+            "target": "look for"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": {
+        "known": "他不想整个下午照顾那只小狗。",
+        "target": "He didn't want to look after the young dog all afternoon."
+      },
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他",
+            "target": "he"
+          }
+        },
+        {
+          "id": "S0069L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "不想",
+            "target": "didn't want to"
+          },
+          "components": [
+            {
+              "known": "不",
+              "target": "not"
+            },
+            {
+              "known": "想",
+              "target": "want"
+            }
+          ],
+          "teaches": "English past negative uses didn't + base verb; infinitive marker to required"
+        },
+        {
+          "id": "S0069L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "照顾",
+            "target": "look after"
+          }
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "那只小狗",
+            "target": "the young dog"
+          },
+          "components": [
+            {
+              "known": "小",
+              "target": "young"
+            },
+            {
+              "known": "狗",
+              "target": "dog"
+            }
+          ],
+          "teaches": "English uses article the for specific nouns; Chinese uses demonstrative+classifier 那只"
+        },
+        {
+          "id": "S0069L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "下午",
+            "target": "afternoon"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:49.471Z"
+}

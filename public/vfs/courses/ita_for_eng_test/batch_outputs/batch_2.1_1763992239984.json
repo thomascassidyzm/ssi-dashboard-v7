@@ -1,0 +1,214 @@
+{
+  "browserId": 2,
+  "agentId": "2.1",
+  "seedRange": "S0016-S0018",
+  "seeds": [
+    {
+      "seed_id": "S0016",
+      "seed_pair": {
+        "known": "He wants to come back with everyone else later on.",
+        "target": "Lui vuole tornare con tutti gli altri più tardi."
+      },
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "lui"
+          }
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wants",
+            "target": "vuole"
+          }
+        },
+        {
+          "id": "S0016L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to come back",
+            "target": "tornare"
+          }
+        },
+        {
+          "id": "S0016L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with",
+            "target": "con"
+          }
+        },
+        {
+          "id": "S0016L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "everyone else",
+            "target": "tutti gli altri"
+          },
+          "components": [
+            {
+              "known": "everyone",
+              "target": "tutti"
+            },
+            {
+              "known": "else",
+              "target": "altri"
+            }
+          ],
+          "teaches": "definite article gli inserted between components"
+        },
+        {
+          "id": "S0016L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "later on",
+            "target": "più tardi"
+          },
+          "components": [
+            {
+              "known": "later",
+              "target": "tardi"
+            }
+          ],
+          "teaches": "più intensifies tardi for emphasis"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": {
+        "known": "She wants to find out what the answer is.",
+        "target": "Lei vuole scoprire qual è la risposta."
+      },
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "lei"
+          }
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wants",
+            "target": "vuole"
+          }
+        },
+        {
+          "id": "S0017L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find out",
+            "target": "scoprire"
+          }
+        },
+        {
+          "id": "S0017L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what the answer is",
+            "target": "qual è la risposta"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "qual"
+            },
+            {
+              "known": "is",
+              "target": "è"
+            },
+            {
+              "known": "the answer",
+              "target": "la risposta"
+            }
+          ],
+          "teaches": "embedded questions use direct question word order in Italian"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": {
+        "known": "We want to meet at six o clock this evening.",
+        "target": "Vogliamo incontrarci alle sei di questa sera."
+      },
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we want",
+            "target": "vogliamo"
+          }
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "incontrarci"
+          }
+        },
+        {
+          "id": "S0018L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at six o clock",
+            "target": "alle sei"
+          },
+          "components": [
+            {
+              "known": "at",
+              "target": "a"
+            },
+            {
+              "known": "six",
+              "target": "sei"
+            }
+          ],
+          "teaches": "a + le contracts to alle before feminine plural hours; o clock dropped"
+        },
+        {
+          "id": "S0018L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this",
+            "target": "questa"
+          }
+        },
+        {
+          "id": "S0018L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "evening",
+            "target": "sera"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:39.984Z"
+}

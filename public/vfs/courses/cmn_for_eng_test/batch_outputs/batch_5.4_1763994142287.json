@@ -1,0 +1,202 @@
+{
+  "browserId": 5,
+  "agentId": "5.4",
+  "seedRange": "S0070-S0072",
+  "seeds": [
+    {
+      "seed_id": "S0070",
+      "seed_pair": {
+        "known": "She didn't want to tell me where it was.",
+        "target": "她不想告诉我它在哪里。"
+      },
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "她"
+          }
+        },
+        {
+          "id": "S0070L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "didn't want to",
+            "target": "不想"
+          }
+        },
+        {
+          "id": "S0070L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "tell me",
+            "target": "告诉我"
+          },
+          "components": [
+            {
+              "known": "tell",
+              "target": "告诉"
+            },
+            {
+              "known": "me",
+              "target": "我"
+            }
+          ],
+          "teaches": "verb + direct object order (告诉 + 我)"
+        },
+        {
+          "id": "S0070L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "where it was",
+            "target": "它在哪里"
+          },
+          "components": [
+            {
+              "known": "it",
+              "target": "它"
+            },
+            {
+              "known": "is located",
+              "target": "在"
+            },
+            {
+              "known": "where",
+              "target": "哪里"
+            }
+          ],
+          "teaches": "Mandarin Chinese uses subject + 在 + question word structure for location questions"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": {
+        "known": "We didn't want to let anyone hear the truth.",
+        "target": "我们不想让任何人听到真相。"
+      },
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we",
+            "target": "我们"
+          }
+        },
+        {
+          "id": "S0071L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "didn't want to",
+            "target": "不想"
+          }
+        },
+        {
+          "id": "S0071L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "let someone hear",
+            "target": "让...听到"
+          },
+          "components": [
+            {
+              "known": "let",
+              "target": "让"
+            },
+            {
+              "known": "hear",
+              "target": "听到"
+            }
+          ],
+          "teaches": "causative 让 structure with resultative complement 到 indicating successful perception"
+        },
+        {
+          "id": "S0071L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anyone",
+            "target": "任何人"
+          }
+        },
+        {
+          "id": "S0071L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the truth",
+            "target": "真相"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": {
+        "known": "I think that you're doing very well.",
+        "target": "我觉得你做得很好。"
+      },
+      "legos": [
+        {
+          "id": "S0072L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I think that",
+            "target": "我觉得"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "think/feel",
+              "target": "觉得"
+            }
+          ],
+          "teaches": "觉得 introduces embedded clauses directly without needing a conjunction like that"
+        },
+        {
+          "id": "S0072L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0072L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "doing very well",
+            "target": "做得很好"
+          },
+          "components": [
+            {
+              "known": "do",
+              "target": "做"
+            },
+            {
+              "known": "very well",
+              "target": "很好"
+            }
+          ],
+          "teaches": "得 (de) complement structure describes how an action is performed (verb + 得 + degree)"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:22:22.287Z"
+}

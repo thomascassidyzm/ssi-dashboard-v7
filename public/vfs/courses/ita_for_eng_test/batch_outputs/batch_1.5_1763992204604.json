@@ -1,0 +1,165 @@
+{
+  "browserId": 1,
+  "agentId": "1.5",
+  "seedRange": "S0013-S0015",
+  "seeds": [
+    {
+      "seed_id": "S0013",
+      "seed_pair": {
+        "known": "You speak Italian very well.",
+        "target": "Parli italiano molto bene."
+      },
+      "legos": [
+        {
+          "id": "S0013L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you speak",
+            "target": "parli"
+          }
+        },
+        {
+          "id": "S0013L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0013L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very well",
+            "target": "molto bene"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0014",
+      "seed_pair": {
+        "known": "Do you speak Italian all day?",
+        "target": "Parli italiano tutto il giorno?"
+      },
+      "legos": [
+        {
+          "id": "S0014L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "do you speak",
+            "target": "parli"
+          }
+        },
+        {
+          "id": "S0014L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0014L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "all day",
+            "target": "tutto il giorno"
+          },
+          "components": [
+            {
+              "known": "all",
+              "target": "tutto"
+            },
+            {
+              "known": "day",
+              "target": "giorno"
+            }
+          ],
+          "teaches": "Italian inserts definite article (il) with time expressions"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0015",
+      "seed_pair": {
+        "known": "And I want you to speak Italian with me tomorrow.",
+        "target": "E voglio che tu parli italiano con me domani."
+      },
+      "legos": [
+        {
+          "id": "S0015L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "and",
+            "target": "e"
+          }
+        },
+        {
+          "id": "S0015L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0015L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you to speak",
+            "target": "che tu parli"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "tu"
+            },
+            {
+              "known": "to speak",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "Italian uses subjunctive (che + subject + verb) after verbs of wanting"
+        },
+        {
+          "id": "S0015L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0015L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with me",
+            "target": "con me"
+          }
+        },
+        {
+          "id": "S0015L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tomorrow",
+            "target": "domani"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:04.604Z"
+}

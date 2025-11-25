@@ -1,0 +1,176 @@
+{
+  "browserId": 2,
+  "agentId": "2.2",
+  "seedRange": "S0019-S0021",
+  "seeds": [
+    {
+      "seed_id": "S0019",
+      "seed_pair": {
+        "known": "But I don't want to stop talking.",
+        "target": "Ma non voglio smettere di parlare."
+      },
+      "legos": [
+        {
+          "id": "S0019L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0019L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't want",
+            "target": "non voglio"
+          },
+          "components": [
+            {
+              "known": "I want",
+              "target": "voglio"
+            }
+          ],
+          "teaches": "negation with non before verb"
+        },
+        {
+          "id": "S0019L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to stop talking",
+            "target": "smettere di parlare"
+          },
+          "components": [
+            {
+              "known": "to stop",
+              "target": "smettere"
+            },
+            {
+              "known": "to talk",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "di linking between verbs"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0020",
+      "seed_pair": {
+        "known": "You want to learn his name quickly.",
+        "target": "Vuoi imparare il suo nome velocemente."
+      },
+      "legos": [
+        {
+          "id": "S0020L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you want",
+            "target": "vuoi"
+          }
+        },
+        {
+          "id": "S0020L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "imparare"
+          }
+        },
+        {
+          "id": "S0020L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "his name",
+            "target": "il suo nome"
+          },
+          "components": [
+            {
+              "known": "his",
+              "target": "suo"
+            },
+            {
+              "known": "name",
+              "target": "nome"
+            }
+          ],
+          "teaches": "possessive with article il, agrees with noun gender"
+        },
+        {
+          "id": "S0020L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "quickly",
+            "target": "velocemente"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0021",
+      "seed_pair": {
+        "known": "Why are you learning her name?",
+        "target": "Perché stai imparando il suo nome?"
+      },
+      "legos": [
+        {
+          "id": "S0021L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "why",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0021L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "are you learning",
+            "target": "stai imparando"
+          },
+          "components": [
+            {
+              "known": "you are",
+              "target": "stai"
+            },
+            {
+              "known": "learning",
+              "target": "imparando"
+            }
+          ],
+          "teaches": "progressive tense with stare + gerund"
+        },
+        {
+          "id": "S0021L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "her name",
+            "target": "il suo nome"
+          },
+          "components": [
+            {
+              "known": "her",
+              "target": "suo"
+            },
+            {
+              "known": "name",
+              "target": "nome"
+            }
+          ],
+          "teaches": "Italian suo does not distinguish possessor gender, only noun gender"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:49:49.297Z"
+}

@@ -1,0 +1,206 @@
+{
+  "browserId": 3,
+  "agentId": "3.4",
+  "seedRange": "S0040-S0042",
+  "seeds": [
+    {
+      "seed_id": "S0040",
+      "seed_pair": {
+        "known": "How do you feel at the moment?",
+        "target": "你现在感觉怎么样？"
+      },
+      "legos": [
+        {
+          "id": "S0040L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0040L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "at the moment",
+            "target": "现在"
+          }
+        },
+        {
+          "id": "S0040L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to feel",
+            "target": "感觉"
+          }
+        },
+        {
+          "id": "S0040L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how",
+            "target": "怎么样"
+          }
+        },
+        {
+          "id": "S0040L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "How do you feel?",
+            "target": "你感觉怎么样？"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "to feel",
+              "target": "感觉"
+            },
+            {
+              "known": "how",
+              "target": "怎么样"
+            }
+          ],
+          "teaches": "Chinese question structure: subject + verb + question word (opposite of English)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0041",
+      "seed_pair": {
+        "known": "I feel okay, but I am starting to feel tired.",
+        "target": "我感觉还好，但是我开始感觉累了。"
+      },
+      "legos": [
+        {
+          "id": "S0041L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0041L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "okay",
+            "target": "还好"
+          }
+        },
+        {
+          "id": "S0041L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "但是"
+          }
+        },
+        {
+          "id": "S0041L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to start",
+            "target": "开始"
+          }
+        },
+        {
+          "id": "S0041L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tired",
+            "target": "累"
+          }
+        },
+        {
+          "id": "S0041L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I am starting to feel tired",
+            "target": "我开始感觉累了"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "to start",
+              "target": "开始"
+            },
+            {
+              "known": "to feel",
+              "target": "感觉"
+            },
+            {
+              "known": "tired",
+              "target": "累"
+            }
+          ],
+          "teaches": "Sentence-final 了 indicates change of state (becoming tired)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0042",
+      "seed_pair": {
+        "known": "I was starting to feel better than last night.",
+        "target": "我开始感觉比昨晚好了。"
+      },
+      "legos": [
+        {
+          "id": "S0042L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "last night",
+            "target": "昨晚"
+          }
+        },
+        {
+          "id": "S0042L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "good",
+            "target": "好"
+          }
+        },
+        {
+          "id": "S0042L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "better than last night",
+            "target": "比昨晚好"
+          },
+          "components": [
+            {
+              "known": "last night",
+              "target": "昨晚"
+            },
+            {
+              "known": "good",
+              "target": "好"
+            }
+          ],
+          "teaches": "Comparative structure: 比 + comparison object + adjective (not more good than)"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:29.803Z"
+}

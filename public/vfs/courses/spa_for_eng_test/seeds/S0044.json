@@ -1,0 +1,49 @@
+{
+  "seed_id": "S0044",
+  "seed_pair": {
+    "known": "Or if I need to improve.",
+    "target": "O si necesito mejorar."
+  },
+  "legos": [
+    {
+      "id": "S0044L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "or",
+        "target": "o"
+      }
+    },
+    {
+      "id": "S0044L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "if",
+        "target": "si"
+      }
+    },
+    {
+      "id": "S0044L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I need to improve",
+        "target": "necesito mejorar"
+      },
+      "components": [
+        {
+          "known": "I need",
+          "target": "necesito"
+        },
+        {
+          "known": "to improve",
+          "target": "mejorar"
+        }
+      ],
+      "teaches": "Need + infinitive structure with subject pronoun dropped; necesitar takes direct infinitive"
+    }
+  ],
+  "agentId": "3.5",
+  "receivedAt": "2025-11-24T15:32:17.498Z"
+}

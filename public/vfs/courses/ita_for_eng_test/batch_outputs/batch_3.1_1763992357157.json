@@ -1,0 +1,140 @@
+{
+  "browserId": 3,
+  "agentId": "3.1",
+  "seedRange": "S0031-S0033",
+  "seeds": [
+    {
+      "seed_id": "S0031",
+      "seed_pair": {
+        "known": "You wanted to speak with me tonight.",
+        "target": "Volevi parlare con me stasera."
+      },
+      "legos": [
+        {
+          "id": "S0031L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you wanted",
+            "target": "volevi"
+          }
+        },
+        {
+          "id": "S0031L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0031L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with me",
+            "target": "con me"
+          }
+        },
+        {
+          "id": "S0031L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tonight",
+            "target": "stasera"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0032",
+      "seed_pair": {
+        "known": "Did you want to show me something?",
+        "target": "Volevi mostrarmi qualcosa?"
+      },
+      "legos": [
+        {
+          "id": "S0032L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "did you want",
+            "target": "volevi"
+          }
+        },
+        {
+          "id": "S0032L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to show me",
+            "target": "mostrarmi"
+          }
+        },
+        {
+          "id": "S0032L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "something",
+            "target": "qualcosa"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0033",
+      "seed_pair": {
+        "known": "How long have you been learning Italian?",
+        "target": "Da quanto tempo studi italiano?"
+      },
+      "legos": [
+        {
+          "id": "S0033L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how long",
+            "target": "da quanto tempo"
+          },
+          "components": [
+            {
+              "known": "from",
+              "target": "da"
+            },
+            {
+              "known": "how much",
+              "target": "quanto"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            }
+          ],
+          "teaches": "Italian duration questions use da + quanto + tempo (from how much time)"
+        },
+        {
+          "id": "S0033L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "have you been learning",
+            "target": "studi"
+          }
+        },
+        {
+          "id": "S0033L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:52:37.157Z"
+}

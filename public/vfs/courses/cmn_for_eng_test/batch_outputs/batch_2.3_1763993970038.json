@@ -1,0 +1,171 @@
+{
+  "browserId": 2,
+  "agentId": "2.3",
+  "seedRange": "S0022-S0024",
+  "seeds": [
+    {
+      "seed_id": "S0022",
+      "seed_pair": {
+        "known": "Because I want to meet people who speak Mandarin Chinese.",
+        "target": "因为我想认识会说中文的人。"
+      },
+      "legos": [
+        {
+          "id": "S0022L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "because",
+            "target": "因为"
+          }
+        },
+        {
+          "id": "S0022L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want to",
+            "target": "我想"
+          }
+        },
+        {
+          "id": "S0022L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "认识"
+          }
+        },
+        {
+          "id": "S0022L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "people who speak Mandarin Chinese",
+            "target": "会说中文的人"
+          },
+          "components": [
+            {
+              "known": "to speak",
+              "target": "说"
+            },
+            {
+              "known": "Mandarin Chinese",
+              "target": "中文"
+            },
+            {
+              "known": "people",
+              "target": "人"
+            }
+          ],
+          "teaches": "Relative clause with 的: subject-verb phrase + 的 + noun (people who do X = 会X的人)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0023",
+      "seed_pair": {
+        "known": "I'm going to start talking more soon.",
+        "target": "我很快就要开始多说话了。"
+      },
+      "legos": [
+        {
+          "id": "S0023L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "soon",
+            "target": "很快"
+          }
+        },
+        {
+          "id": "S0023L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I'm going to",
+            "target": "我要"
+          }
+        },
+        {
+          "id": "S0023L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to start",
+            "target": "开始"
+          }
+        },
+        {
+          "id": "S0023L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to talk more",
+            "target": "多说话"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "多"
+            },
+            {
+              "known": "to talk",
+              "target": "说话"
+            }
+          ],
+          "teaches": "Adverb placement: 多 (more) precedes the verb in Chinese, not after"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0024",
+      "seed_pair": {
+        "known": "I'm not going to be able to remember easily.",
+        "target": "我不会轻易记住。"
+      },
+      "legos": [
+        {
+          "id": "S0024L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not going to be able to",
+            "target": "我不会"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "won't be able to",
+              "target": "不会"
+            }
+          ],
+          "teaches": "不会 negates ability/future possibility (won't/can't)"
+        },
+        {
+          "id": "S0024L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "easily",
+            "target": "轻易"
+          }
+        },
+        {
+          "id": "S0024L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to remember",
+            "target": "记住"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:19:30.038Z"
+}

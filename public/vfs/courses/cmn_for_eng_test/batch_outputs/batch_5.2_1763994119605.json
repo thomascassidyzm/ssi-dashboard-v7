@@ -1,0 +1,227 @@
+{
+  "browserId": 5,
+  "agentId": "5.2",
+  "seedRange": "S0064-S0066",
+  "seeds": [
+    {
+      "seed_id": "S0064",
+      "seed_pair": {
+        "known": "Learning Mandarin Chinese isn't easy but it is fun.",
+        "target": "学中文不容易，但是很有趣。"
+      },
+      "legos": [
+        {
+          "id": "S0064L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "学"
+          }
+        },
+        {
+          "id": "S0064L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Chinese",
+            "target": "中文"
+          }
+        },
+        {
+          "id": "S0064L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "not easy",
+            "target": "不容易"
+          }
+        },
+        {
+          "id": "S0064L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "但是"
+          }
+        },
+        {
+          "id": "S0064L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "fun / interesting",
+            "target": "有趣"
+          }
+        },
+        {
+          "id": "S0064L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Learning Chinese isn't easy but it is fun.",
+            "target": "学中文不容易，但是很有趣。"
+          },
+          "components": [
+            {
+              "known": "to learn",
+              "target": "学"
+            },
+            {
+              "known": "Chinese",
+              "target": "中文"
+            },
+            {
+              "known": "not easy",
+              "target": "不容易"
+            },
+            {
+              "known": "but",
+              "target": "但是"
+            },
+            {
+              "known": "fun",
+              "target": "有趣"
+            }
+          ],
+          "teaches": "Topic-comment structure: verb+object first, then adjective predicate; 很 intensifier before 有趣"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0065",
+      "seed_pair": {
+        "known": "It's important to take time to test yourself.",
+        "target": "花时间测试自己很重要。"
+      },
+      "legos": [
+        {
+          "id": "S0065L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to take time / to spend time",
+            "target": "花时间"
+          }
+        },
+        {
+          "id": "S0065L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to test",
+            "target": "测试"
+          }
+        },
+        {
+          "id": "S0065L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yourself / oneself",
+            "target": "自己"
+          }
+        },
+        {
+          "id": "S0065L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "important",
+            "target": "重要"
+          }
+        },
+        {
+          "id": "S0065L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "It's important to take time to test yourself.",
+            "target": "花时间测试自己很重要。"
+          },
+          "components": [
+            {
+              "known": "to spend time",
+              "target": "花时间"
+            },
+            {
+              "known": "to test",
+              "target": "测试"
+            },
+            {
+              "known": "oneself",
+              "target": "自己"
+            },
+            {
+              "known": "important",
+              "target": "重要"
+            }
+          ],
+          "teaches": "Subject clause comes first (花时间测试自己), then predicate (很重要); no it placeholder in Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0066",
+      "seed_pair": {
+        "known": "It's not difficult to find the answer.",
+        "target": "找到答案不难。"
+      },
+      "legos": [
+        {
+          "id": "S0066L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find",
+            "target": "找到"
+          }
+        },
+        {
+          "id": "S0066L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "answer",
+            "target": "答案"
+          }
+        },
+        {
+          "id": "S0066L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "not difficult",
+            "target": "不难"
+          }
+        },
+        {
+          "id": "S0066L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "It's not difficult to find the answer.",
+            "target": "找到答案不难。"
+          },
+          "components": [
+            {
+              "known": "to find",
+              "target": "找到"
+            },
+            {
+              "known": "answer",
+              "target": "答案"
+            },
+            {
+              "known": "not difficult",
+              "target": "不难"
+            }
+          ],
+          "teaches": "Infinitive clause (找到答案) precedes the predicate adjective (不难); no dummy subject it needed"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:59.606Z"
+}

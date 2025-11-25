@@ -1,0 +1,448 @@
+{
+  "course": "eng_for_cmn_test",
+  "generated": "2025-11-24T15:30:00.000Z",
+  "totalResolutions": 18,
+  "resolutions": [
+    {
+      "conflict": "我想",
+      "resolution_type": "standardize",
+      "canonical": {"known": "我想", "target": "I want to", "type": "A"},
+      "upchunks": [],
+      "notes": "Minor variation - 'I want to' is more complete and works in all contexts. 'I want' alone is incomplete without an object.",
+      "seeds_affected": ["S0001", "S0007", "S0022"]
+    },
+    {
+      "conflict": "说",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "说", "target": "to speak", "type": "A"},
+      "upchunks": [
+        {
+          "known": "期待说",
+          "target": "looking forward to speaking",
+          "type": "M",
+          "components": [
+            {"known": "期待", "target": "to look forward to"},
+            {"known": "说", "target": "to speak"}
+          ],
+          "teaches": "期待 (look forward to) triggers gerund form in English"
+        },
+        {
+          "known": "怎么说",
+          "target": "how to say",
+          "type": "M",
+          "components": [
+            {"known": "怎么", "target": "how"},
+            {"known": "说", "target": "to speak"}
+          ],
+          "teaches": "'say' is used for specific words/phrases; 'speak' is for the act of speaking"
+        }
+      ],
+      "notes": "Base form is 'to speak'. Context determines: 'say' for specific utterances, 'speaking' after gerund-triggering verbs.",
+      "seeds_affected": ["S0001", "S0022", "S0029", "S0060", "S0061"]
+    },
+    {
+      "conflict": "现在",
+      "resolution_type": "standardize",
+      "canonical": {"known": "现在", "target": "now", "type": "A"},
+      "upchunks": [],
+      "notes": "Both 'now' and 'at the moment' are valid translations. Standardize to 'now' as it's more common and versatile. 'At the moment' is a stylistic choice, not linguistically triggered.",
+      "seeds_affected": ["S0001", "S0009", "S0040"]
+    },
+    {
+      "conflict": "我",
+      "resolution_type": "sentence_grammar",
+      "canonical": {"known": "我", "target": "I", "type": "A"},
+      "upchunks": [],
+      "notes": "No upchunking needed. The English case (I/me) is determined by grammatical position in the English sentence, not by Chinese context. Subject position = 'I', object position = 'me'. This is taught at the sentence level, not the LEGO level.",
+      "seeds_affected": ["S0002", "S0043", "S0063", "S0070", "S0072"]
+    },
+    {
+      "conflict": "学习",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "学习", "target": "to learn", "type": "A"},
+      "upchunks": [
+        {
+          "known": "一直学习",
+          "target": "been learning",
+          "type": "M",
+          "components": [
+            {"known": "一直", "target": "continuously"},
+            {"known": "学习", "target": "to learn"}
+          ],
+          "teaches": "Progressive/continuous aspect in English uses -ing form with 'been'"
+        },
+        {
+          "known": "学习英语",
+          "target": "learning English",
+          "type": "M",
+          "components": [
+            {"known": "学习", "target": "to learn"},
+            {"known": "英语", "target": "English"}
+          ],
+          "teaches": "When 'learning' is the subject of a sentence, use gerund form"
+        }
+      ],
+      "notes": "Base infinitive 'to learn'. Gerund 'learning' used as subject or after certain verbs.",
+      "seeds_affected": ["S0002", "S0038", "S0064"]
+    },
+    {
+      "conflict": "怎么说",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "怎么说", "target": "how to say", "type": "A"},
+      "upchunks": [
+        {
+          "known": "经常怎么说",
+          "target": "how to speak often",
+          "type": "M",
+          "components": [
+            {"known": "经常", "target": "often"},
+            {"known": "怎么说", "target": "how to say"}
+          ],
+          "teaches": "'speak' is used for the general ability/activity; 'say' is for specific words"
+        }
+      ],
+      "notes": "'How to say' is the default for asking about specific words/phrases. 'How to speak' is less common and refers to the manner of speaking.",
+      "seeds_affected": ["S0003", "S0004", "S0056", "S0057", "S0060"]
+    },
+    {
+      "conflict": "说话",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "说话", "target": "to speak", "type": "A"},
+      "upchunks": [
+        {
+          "known": "练习说话",
+          "target": "practise speaking",
+          "type": "M",
+          "components": [
+            {"known": "练习", "target": "to practise"},
+            {"known": "说话", "target": "to speak"}
+          ],
+          "teaches": "练习 (practise) triggers gerund form in English"
+        },
+        {
+          "known": "停止说话",
+          "target": "stop talking",
+          "type": "M",
+          "components": [
+            {"known": "停止", "target": "to stop"},
+            {"known": "说话", "target": "to speak"}
+          ],
+          "teaches": "停止 (stop) triggers gerund form; 'talking' often used for informal/casual speech"
+        },
+        {
+          "known": "开始说话",
+          "target": "start talking",
+          "type": "M",
+          "components": [
+            {"known": "开始", "target": "to start"},
+            {"known": "说话", "target": "to speak"}
+          ],
+          "teaches": "开始 (start) can trigger either infinitive or gerund; 'talking' for casual speech"
+        },
+        {
+          "known": "能够说话",
+          "target": "be able to speak",
+          "type": "M",
+          "components": [
+            {"known": "能够", "target": "to be able"},
+            {"known": "说话", "target": "to speak"}
+          ],
+          "teaches": "能够 (be able) triggers infinitive form"
+        },
+        {
+          "known": "想说话",
+          "target": "want to speak",
+          "type": "M",
+          "components": [
+            {"known": "想", "target": "to want"},
+            {"known": "说话", "target": "to speak"}
+          ],
+          "teaches": "想 (want) triggers infinitive form"
+        }
+      ],
+      "notes": "This is the most complex conflict. Base form 'to speak'. Gerund triggers: 练习, 停止, 开始. Infinitive triggers: 能够, 想. 'Talking' is often used interchangeably with 'speaking' for casual conversation.",
+      "seeds_affected": ["S0005", "S0011", "S0019", "S0023", "S0028", "S0031"]
+    },
+    {
+      "conflict": "记住",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "记住", "target": "to remember", "type": "A"},
+      "upchunks": [
+        {
+          "known": "能记住",
+          "target": "can remember",
+          "type": "M",
+          "components": [
+            {"known": "能", "target": "can"},
+            {"known": "记住", "target": "to remember"}
+          ],
+          "teaches": "After modal verbs (can, will, should), use bare infinitive without 'to'"
+        }
+      ],
+      "notes": "Base form 'to remember'. After modals like 'can', drop the 'to' (bare infinitive).",
+      "seeds_affected": ["S0010", "S0024", "S0056", "S0057"]
+    },
+    {
+      "conflict": "知道",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "知道", "target": "to know", "type": "A"},
+      "upchunks": [
+        {
+          "known": "想知道",
+          "target": "want to find out",
+          "type": "M",
+          "components": [
+            {"known": "想", "target": "to want"},
+            {"known": "知道", "target": "to know"}
+          ],
+          "teaches": "'Find out' implies discovering new information; 'know' implies existing knowledge"
+        }
+      ],
+      "notes": "'To know' is the base meaning. 'To find out' is used when the focus is on discovering/learning something new (often with questions like 'what the answer is').",
+      "seeds_affected": ["S0017", "S0045", "S0059"]
+    },
+    {
+      "conflict": "想",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "想", "target": "to want", "type": "A"},
+      "upchunks": [
+        {
+          "known": "昨天想",
+          "target": "wanted",
+          "type": "M",
+          "components": [
+            {"known": "昨天", "target": "yesterday"},
+            {"known": "想", "target": "to want"}
+          ],
+          "teaches": "Past time markers (昨天, 上周) trigger past tense in English"
+        },
+        {
+          "known": "上周想",
+          "target": "wanted to",
+          "type": "M",
+          "components": [
+            {"known": "上周", "target": "last week"},
+            {"known": "想", "target": "to want"}
+          ],
+          "teaches": "Past time markers trigger past tense in English"
+        },
+        {
+          "known": "在想",
+          "target": "thinking",
+          "type": "M",
+          "components": [
+            {"known": "在", "target": "currently"},
+            {"known": "想", "target": "to want"}
+          ],
+          "teaches": "想 has dual meaning: 'want' and 'think'. 在想 = 'thinking' (progressive aspect)"
+        }
+      ],
+      "notes": "想 has two meanings: 'to want' and 'to think'. Context determines which. Past time markers (昨天, 上周) trigger past tense. Progressive marker 在 + 想 = 'thinking'.",
+      "seeds_affected": ["S0020", "S0030", "S0043", "S0052", "S0067"]
+    },
+    {
+      "conflict": "很快",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "很快", "target": "soon", "type": "A"},
+      "upchunks": [
+        {
+          "known": "很快地",
+          "target": "quickly",
+          "type": "M",
+          "components": [
+            {"known": "很快", "target": "soon"},
+            {"known": "地", "target": "(adverb marker)"}
+          ],
+          "teaches": "With manner adverb marker 地, 很快 = 'quickly' (manner). Without it, 很快 = 'soon' (time)."
+        }
+      ],
+      "notes": "'Soon' refers to time (when something will happen). 'Quickly' refers to manner/speed (how something is done). Context and sentence structure determine which meaning.",
+      "seeds_affected": ["S0020", "S0023"]
+    },
+    {
+      "conflict": "帮",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "帮", "target": "to help", "type": "A"},
+      "upchunks": [
+        {
+          "known": "能帮",
+          "target": "can help",
+          "type": "M",
+          "components": [
+            {"known": "能", "target": "can"},
+            {"known": "帮", "target": "to help"}
+          ],
+          "teaches": "After modal verbs, use bare infinitive (drop 'to')"
+        }
+      ],
+      "notes": "Base form 'to help'. After modals, use bare infinitive 'help'.",
+      "seeds_affected": ["S0025", "S0062"]
+    },
+    {
+      "conflict": "喜欢",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "喜欢", "target": "to like", "type": "A"},
+      "upchunks": [
+        {
+          "known": "不喜欢起床",
+          "target": "don't enjoy waking up",
+          "type": "M",
+          "components": [
+            {"known": "不喜欢", "target": "don't like"},
+            {"known": "起床", "target": "to wake up"}
+          ],
+          "teaches": "'Enjoy' emphasizes pleasure/displeasure in the activity itself; 'like' is more general preference"
+        }
+      ],
+      "notes": "'Like' is general preference. 'Enjoy' emphasizes the experience/pleasure of doing something. In negative contexts with activities, 'don't enjoy' often sounds more natural.",
+      "seeds_affected": ["S0026", "S0055"]
+    },
+    {
+      "conflict": "我不喜欢",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "我不喜欢", "target": "I do not like", "type": "A"},
+      "upchunks": [
+        {
+          "known": "我不喜欢起床",
+          "target": "I don't enjoy waking up",
+          "type": "M",
+          "components": [
+            {"known": "我不喜欢", "target": "I do not like"},
+            {"known": "起床", "target": "to wake up"}
+          ],
+          "teaches": "'Don't enjoy' + gerund is natural for expressing displeasure with activities"
+        }
+      ],
+      "notes": "Related to 喜欢 conflict. 'Don't like' vs 'don't enjoy' - both valid, 'enjoy' emphasizes the experiential aspect.",
+      "seeds_affected": ["S0027", "S0055"]
+    },
+    {
+      "conflict": "不想",
+      "resolution_type": "sentence_grammar",
+      "canonical": {"known": "不想", "target": "don't want to", "type": "A"},
+      "upchunks": [
+        {
+          "known": "他不想",
+          "target": "he doesn't want to",
+          "type": "M",
+          "components": [
+            {"known": "他", "target": "he"},
+            {"known": "不想", "target": "don't want to"}
+          ],
+          "teaches": "Third person singular (他/她) requires 'doesn't' instead of 'don't'"
+        },
+        {
+          "known": "她不想",
+          "target": "she doesn't want to",
+          "type": "M",
+          "components": [
+            {"known": "她", "target": "she"},
+            {"known": "不想", "target": "don't want to"}
+          ],
+          "teaches": "Third person singular (他/她) requires 'doesn't' instead of 'don't'"
+        },
+        {
+          "known": "过去不想",
+          "target": "didn't want to",
+          "type": "M",
+          "components": [
+            {"known": "过去", "target": "in the past"},
+            {"known": "不想", "target": "don't want to"}
+          ],
+          "teaches": "Past context triggers 'didn't' for all persons"
+        }
+      ],
+      "notes": "Subject determines don't/doesn't (1st/2nd person vs 3rd person singular). Past context triggers 'didn't' for all subjects.",
+      "seeds_affected": ["S0034", "S0035", "S0036", "S0069", "S0070", "S0071"]
+    },
+    {
+      "conflict": "这样",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "这样", "target": "like this", "type": "A"},
+      "upchunks": [
+        {
+          "known": "这样我",
+          "target": "so I",
+          "type": "M",
+          "components": [
+            {"known": "这样", "target": "like this"},
+            {"known": "我", "target": "I"}
+          ],
+          "teaches": "At sentence start followed by a result clause, 这样 = 'so' (therefore/in order that)"
+        }
+      ],
+      "notes": "'Like this' = demonstrative (showing manner). 'So' = consequential (therefore, in order that). Position in sentence helps determine meaning.",
+      "seeds_affected": ["S0049", "S0056"]
+    },
+    {
+      "conflict": "朋友",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "朋友", "target": "friend", "type": "A"},
+      "upchunks": [
+        {
+          "known": "和朋友",
+          "target": "with friends",
+          "type": "M",
+          "components": [
+            {"known": "和", "target": "with"},
+            {"known": "朋友", "target": "friend"}
+          ],
+          "teaches": "Generic/habitual context often implies plural in English"
+        },
+        {
+          "known": "和朋友一起",
+          "target": "with my friends",
+          "type": "M",
+          "components": [
+            {"known": "和", "target": "with"},
+            {"known": "朋友", "target": "friend"},
+            {"known": "一起", "target": "together"}
+          ],
+          "teaches": "一起 (together) often implies plural friends"
+        }
+      ],
+      "notes": "Chinese doesn't mark plurality. Context determines: 'give a friend' (specific single), 'with friends' (general/habitual).",
+      "seeds_affected": ["S0051", "S0052"]
+    },
+    {
+      "conflict": "有趣",
+      "resolution_type": "upchunk",
+      "canonical": {"known": "有趣", "target": "interesting", "type": "A"},
+      "upchunks": [
+        {
+          "known": "很有趣",
+          "target": "fun",
+          "type": "M",
+          "components": [
+            {"known": "很", "target": "very"},
+            {"known": "有趣", "target": "interesting"}
+          ],
+          "teaches": "'Fun' emphasizes enjoyment/entertainment; 'interesting' emphasizes intellectual engagement"
+        }
+      ],
+      "notes": "'Interesting' = intellectually engaging. 'Fun' = enjoyable/entertaining. Context determines which nuance is appropriate. Activities are often 'fun', ideas/topics are often 'interesting'.",
+      "seeds_affected": ["S0058", "S0064"]
+    }
+  ],
+  "summary": {
+    "total_conflicts": 18,
+    "resolution_types": {
+      "standardize": 2,
+      "upchunk": 13,
+      "sentence_grammar": 3
+    },
+    "linguistically_interesting": [
+      "说话 - Most complex with 5 variants, teaches gerund/infinitive triggers",
+      "想 - Dual meaning (want/think) plus tense variation",
+      "不想 - Subject agreement (don't/doesn't) and tense (didn't)",
+      "说 - speak/speaking/say distinctions"
+    ],
+    "simple_standardizations": [
+      "现在 - 'now' vs 'at the moment' (just synonyms)",
+      "我想 - 'I want' vs 'I want to' (minor variation)"
+    ],
+    "grammar_determined": [
+      "我 - I/me determined by English sentence position, not Chinese context"
+    ]
+  }
+}

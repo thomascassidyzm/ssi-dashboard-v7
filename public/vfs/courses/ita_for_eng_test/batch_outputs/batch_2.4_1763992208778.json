@@ -1,0 +1,240 @@
+{
+  "browserId": 2,
+  "agentId": "2.4",
+  "seedRange": "S0025-S0027",
+  "seeds": [
+    {
+      "seed_id": "S0025",
+      "seed_pair": {
+        "known": "Are you going to help me before I have to go?",
+        "target": "Mi aiuterai prima che io debba andare?"
+      },
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to help",
+            "target": "aiutare"
+          }
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "me",
+            "target": "mi"
+          }
+        },
+        {
+          "id": "S0025L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "before",
+            "target": "prima"
+          }
+        },
+        {
+          "id": "S0025L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I have to",
+            "target": "devo"
+          }
+        },
+        {
+          "id": "S0025L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to go",
+            "target": "andare"
+          }
+        },
+        {
+          "id": "S0025L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "before I have to go",
+            "target": "prima che io debba andare"
+          },
+          "components": [
+            {
+              "known": "before",
+              "target": "prima"
+            },
+            {
+              "known": "I have to",
+              "target": "devo"
+            },
+            {
+              "known": "to go",
+              "target": "andare"
+            }
+          ],
+          "teaches": "prima che triggers subjunctive mood (debba instead of devo)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": {
+        "known": "I like feeling as if I am nearly ready to go.",
+        "target": "Mi piace sentirmi come se fossi quasi pronto ad andare."
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I like",
+            "target": "mi piace"
+          },
+          "components": [
+            {
+              "known": "me",
+              "target": "mi"
+            },
+            {
+              "known": "it pleases",
+              "target": "piace"
+            }
+          ],
+          "teaches": "Italian uses indirect object + piacere (to me it pleases)"
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to feel",
+            "target": "sentire"
+          }
+        },
+        {
+          "id": "S0026L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as if",
+            "target": "come se"
+          }
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "nearly",
+            "target": "quasi"
+          }
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "ready",
+            "target": "pronto"
+          }
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as if I am ready",
+            "target": "come se fossi pronto"
+          },
+          "components": [
+            {
+              "known": "as if",
+              "target": "come se"
+            },
+            {
+              "known": "I am",
+              "target": "sono"
+            },
+            {
+              "known": "ready",
+              "target": "pronto"
+            }
+          ],
+          "teaches": "come se triggers imperfect subjunctive (fossi instead of sono)"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": {
+        "known": "I do not like taking too much time to answer.",
+        "target": "Non mi piace impiegare troppo tempo per rispondere."
+      },
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I do not like",
+            "target": "non mi piace"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I like",
+              "target": "mi piace"
+            }
+          ],
+          "teaches": "negation non precedes the indirect object + verb phrase"
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to take (time)",
+            "target": "impiegare"
+          }
+        },
+        {
+          "id": "S0027L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "too much",
+            "target": "troppo"
+          }
+        },
+        {
+          "id": "S0027L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "tempo"
+          }
+        },
+        {
+          "id": "S0027L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "rispondere"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:08.778Z"
+}

@@ -1,0 +1,149 @@
+{
+  "browserId": 5,
+  "agentId": "5.3",
+  "seedRange": "S0067-S0069",
+  "seeds": [
+    {
+      "seed_id": "S0067",
+      "seed_pair": {
+        "known": "Why do you want to stop?",
+        "target": "Perché vuoi fermarti?"
+      },
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "why",
+            "target": "perché"
+          }
+        },
+        {
+          "id": "S0067L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you want",
+            "target": "vuoi"
+          }
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to stop",
+            "target": "fermarti"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": {
+        "known": "What are you looking for?",
+        "target": "Cosa cerchi?"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "cosa"
+          }
+        },
+        {
+          "id": "S0068L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are you looking for",
+            "target": "cerchi"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": {
+        "known": "He didn't want to look after the young dog all afternoon.",
+        "target": "Non voleva badare al cane giovane tutto il pomeriggio."
+      },
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "he didn't want",
+            "target": "non voleva"
+          },
+          "components": [
+            {
+              "known": "he wanted",
+              "target": "voleva"
+            },
+            {
+              "known": "not",
+              "target": "non"
+            }
+          ],
+          "teaches": "negation non precedes verb; subject pronoun omitted (implied in verb conjugation)"
+        },
+        {
+          "id": "S0069L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to look after",
+            "target": "badare a"
+          }
+        },
+        {
+          "id": "S0069L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "the young dog",
+            "target": "il cane giovane"
+          },
+          "components": [
+            {
+              "known": "the dog",
+              "target": "il cane"
+            },
+            {
+              "known": "young",
+              "target": "giovane"
+            }
+          ],
+          "teaches": "adjectives typically follow nouns in Italian"
+        },
+        {
+          "id": "S0069L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "all afternoon",
+            "target": "tutto il pomeriggio"
+          },
+          "components": [
+            {
+              "known": "all",
+              "target": "tutto"
+            },
+            {
+              "known": "the afternoon",
+              "target": "il pomeriggio"
+            }
+          ],
+          "teaches": "time expressions use definite article in Italian"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:45.818Z"
+}

@@ -1,0 +1,225 @@
+{
+  "browserId": 1,
+  "agentId": "1.1",
+  "seedRange": "S0001-S0003",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "I want to speak Italian with you now.",
+        "target": "Voglio parlare italiano con te adesso."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "voglio"
+          }
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with you",
+            "target": "con te"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "adesso"
+          }
+        },
+        {
+          "id": "S0001L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I want to speak",
+            "target": "voglio parlare"
+          },
+          "components": [
+            {
+              "known": "I want",
+              "target": "voglio"
+            },
+            {
+              "known": "to speak",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "Italian infinitive follows directly after volere - no word for to"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "I'm trying to learn.",
+        "target": "Sto provando a imparare."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "imparare"
+          }
+        },
+        {
+          "id": "S0002L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "sto provando"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "sto"
+            },
+            {
+              "known": "trying",
+              "target": "provando"
+            }
+          ],
+          "teaches": "Italian progressive uses stare + gerund (-ando/-endo)"
+        },
+        {
+          "id": "S0002L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "trying to learn",
+            "target": "provando a imparare"
+          },
+          "components": [
+            {
+              "known": "trying",
+              "target": "provando"
+            },
+            {
+              "known": "to learn",
+              "target": "imparare"
+            }
+          ],
+          "teaches": "provare requires linking word a before infinitive"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "how to speak as often as possible",
+        "target": "come parlare il più spesso possibile"
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how",
+            "target": "come"
+          }
+        },
+        {
+          "id": "S0003L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0003L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "often",
+            "target": "spesso"
+          }
+        },
+        {
+          "id": "S0003L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "possible",
+            "target": "possibile"
+          }
+        },
+        {
+          "id": "S0003L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to speak",
+            "target": "come parlare"
+          },
+          "components": [
+            {
+              "known": "how",
+              "target": "come"
+            },
+            {
+              "known": "to speak",
+              "target": "parlare"
+            }
+          ],
+          "teaches": "Italian uses come + infinitive directly (no word for to)"
+        },
+        {
+          "id": "S0003L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as often as possible",
+            "target": "il più spesso possibile"
+          },
+          "components": [
+            {
+              "known": "often",
+              "target": "spesso"
+            },
+            {
+              "known": "possible",
+              "target": "possibile"
+            }
+          ],
+          "teaches": "as X as possible becomes il più X possibile in Italian"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:04.195Z"
+}

@@ -1,0 +1,69 @@
+{
+  "seed_id": "S0011",
+  "seed_pair": {
+    "known": "I'd like to be able to speak after you finish.",
+    "target": "Me gustaría poder hablar después de que termines."
+  },
+  "legos": [
+    {
+      "id": "S0011L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'd like",
+        "target": "Me gustaría"
+      },
+      "components": [
+        {
+          "known": "I",
+          "target": "me"
+        },
+        {
+          "known": "would like",
+          "target": "gustaría"
+        }
+      ],
+      "teaches": "Gustar construction in conditional - indirect object pronoun + conditional verb"
+    },
+    {
+      "id": "S0011L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to be able to",
+        "target": "poder"
+      }
+    },
+    {
+      "id": "S0011L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "speak",
+        "target": "hablar"
+      }
+    },
+    {
+      "id": "S0011L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "after you finish",
+        "target": "después de que termines"
+      },
+      "components": [
+        {
+          "known": "after",
+          "target": "después de que"
+        },
+        {
+          "known": "you finish",
+          "target": "termines"
+        }
+      ],
+      "teaches": "Después de que triggers subjunctive mood (termines not terminas)"
+    }
+  ],
+  "agentId": "1.4",
+  "receivedAt": "2025-11-24T15:32:31.530Z"
+}

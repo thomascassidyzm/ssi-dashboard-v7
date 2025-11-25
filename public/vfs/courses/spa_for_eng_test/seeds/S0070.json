@@ -1,0 +1,67 @@
+{
+  "seed_id": "S0070",
+  "seed_pair": {
+    "known": "She didn't want to tell me where it was.",
+    "target": "Ella no quería decirme dónde estaba."
+  },
+  "legos": [
+    {
+      "id": "S0070L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "she",
+        "target": "ella"
+      }
+    },
+    {
+      "id": "S0070L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "didn't want",
+        "target": "no quería"
+      },
+      "components": [
+        {
+          "known": "not",
+          "target": "no"
+        },
+        {
+          "known": "wanted",
+          "target": "quería"
+        }
+      ],
+      "teaches": "negation placement before imperfect tense verb"
+    },
+    {
+      "id": "S0070L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to tell me",
+        "target": "decirme"
+      }
+    },
+    {
+      "id": "S0070L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "where",
+        "target": "dónde"
+      }
+    },
+    {
+      "id": "S0070L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "it was",
+        "target": "estaba"
+      }
+    }
+  ],
+  "agentId": "5.4",
+  "receivedAt": "2025-11-24T15:32:32.255Z"
+}

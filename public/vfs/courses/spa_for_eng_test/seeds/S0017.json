@@ -1,0 +1,71 @@
+{
+  "seed_id": "S0017",
+  "seed_pair": {
+    "known": "She wants to find out what the answer is.",
+    "target": "Ella quiere saber cuál es la respuesta."
+  },
+  "legos": [
+    {
+      "id": "S0017L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "she",
+        "target": "ella"
+      }
+    },
+    {
+      "id": "S0017L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "wants",
+        "target": "quiere"
+      }
+    },
+    {
+      "id": "S0017L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to find out",
+        "target": "saber"
+      }
+    },
+    {
+      "id": "S0017L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "answer",
+        "target": "respuesta"
+      }
+    },
+    {
+      "id": "S0017L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "what the answer is",
+        "target": "cuál es la respuesta"
+      },
+      "components": [
+        {
+          "known": "what",
+          "target": "cuál"
+        },
+        {
+          "known": "is",
+          "target": "es"
+        },
+        {
+          "known": "the answer",
+          "target": "la respuesta"
+        }
+      ],
+      "teaches": "embedded questions keep interrogative word order (cuál es not es cuál)"
+    }
+  ],
+  "agentId": "2.1",
+  "receivedAt": "2025-11-24T15:33:38.501Z"
+}

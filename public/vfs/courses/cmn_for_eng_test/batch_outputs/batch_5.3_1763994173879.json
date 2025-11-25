@@ -1,0 +1,209 @@
+{
+  "browserId": 5,
+  "agentId": "5.3",
+  "seedRange": "S0067-S0069",
+  "seeds": [
+    {
+      "seed_id": "S0067",
+      "seed_pair": {
+        "known": "Why do you want to stop?",
+        "target": "你为什么想停下来？"
+      },
+      "legos": [
+        {
+          "id": "S0067L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "why",
+            "target": "为什么"
+          }
+        },
+        {
+          "id": "S0067L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0067L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to stop",
+            "target": "停下来"
+          }
+        },
+        {
+          "id": "S0067L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "why do you want",
+            "target": "你为什么想"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "why",
+              "target": "为什么"
+            },
+            {
+              "known": "to want",
+              "target": "想"
+            }
+          ],
+          "teaches": "question word 为什么 comes after subject in Chinese, not at start"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0068",
+      "seed_pair": {
+        "known": "What are you looking for?",
+        "target": "你在找什么？"
+      },
+      "legos": [
+        {
+          "id": "S0068L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "what",
+            "target": "什么"
+          }
+        },
+        {
+          "id": "S0068L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to look for",
+            "target": "找"
+          }
+        },
+        {
+          "id": "S0068L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "looking for what",
+            "target": "找什么"
+          },
+          "components": [
+            {
+              "known": "to look for",
+              "target": "找"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ],
+          "teaches": "question word comes at end of clause in Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0069",
+      "seed_pair": {
+        "known": "He didn't want to look after the young dog all afternoon.",
+        "target": "他不想整个下午照顾那只小狗。"
+      },
+      "legos": [
+        {
+          "id": "S0069L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "他"
+          }
+        },
+        {
+          "id": "S0069L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "afternoon",
+            "target": "下午"
+          }
+        },
+        {
+          "id": "S0069L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to look after",
+            "target": "照顾"
+          }
+        },
+        {
+          "id": "S0069L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "dog",
+            "target": "狗"
+          }
+        },
+        {
+          "id": "S0069L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "young",
+            "target": "小"
+          }
+        },
+        {
+          "id": "S0069L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "didn't want to",
+            "target": "不想"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "不"
+            },
+            {
+              "known": "to want",
+              "target": "想"
+            }
+          ],
+          "teaches": "negation 不 placed directly before verb"
+        },
+        {
+          "id": "S0069L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "all afternoon",
+            "target": "整个下午"
+          },
+          "components": [
+            {
+              "known": "whole/entire",
+              "target": "整个"
+            },
+            {
+              "known": "afternoon",
+              "target": "下午"
+            }
+          ],
+          "teaches": "整个 (entire) + time word for duration expressions"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:22:53.879Z"
+}

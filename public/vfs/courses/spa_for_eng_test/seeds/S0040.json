@@ -1,0 +1,60 @@
+{
+  "seed_id": "S0040",
+  "seed_pair": {
+    "known": "How do you feel at the moment?",
+    "target": "¿Cómo te sientes en este momento?"
+  },
+  "legos": [
+    {
+      "id": "S0040L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "how",
+        "target": "cómo"
+      }
+    },
+    {
+      "id": "S0040L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "do you feel",
+        "target": "te sientes"
+      },
+      "components": [
+        {
+          "known": "you (reflexive)",
+          "target": "te"
+        },
+        {
+          "known": "feel",
+          "target": "sientes"
+        }
+      ],
+      "teaches": "reflexive verb: Spanish uses sentirse (reflexive) for to feel with pronoun before verb"
+    },
+    {
+      "id": "S0040L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "at the moment",
+        "target": "en este momento"
+      },
+      "components": [
+        {
+          "known": "in",
+          "target": "en"
+        },
+        {
+          "known": "this moment",
+          "target": "este momento"
+        }
+      ],
+      "teaches": "idiomatic: at the moment becomes in this moment in Spanish"
+    }
+  ],
+  "agentId": "3.4",
+  "receivedAt": "2025-11-24T15:32:29.407Z"
+}

@@ -1,0 +1,47 @@
+{
+  "seed_id": "S0030",
+  "seed_pair": {
+    "known": "I wanted to ask you something yesterday.",
+    "target": "Quería preguntarte algo ayer."
+  },
+  "legos": [
+    {
+      "id": "S0030L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I wanted",
+        "target": "quería"
+      }
+    },
+    {
+      "id": "S0030L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to ask you",
+        "target": "preguntarte"
+      }
+    },
+    {
+      "id": "S0030L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "something",
+        "target": "algo"
+      }
+    },
+    {
+      "id": "S0030L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "yesterday",
+        "target": "ayer"
+      }
+    }
+  ],
+  "agentId": "2.5",
+  "receivedAt": "2025-11-24T15:33:19.760Z"
+}

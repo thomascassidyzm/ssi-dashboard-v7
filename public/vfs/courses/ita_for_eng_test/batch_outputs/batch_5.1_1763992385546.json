@@ -1,0 +1,185 @@
+{
+  "browserId": 5,
+  "agentId": "5.1",
+  "seedRange": "S0061-S0063",
+  "seeds": [
+    {
+      "seed_id": "S0061",
+      "seed_pair": {
+        "known": "Could you say that again a little more slowly?",
+        "target": "Potrebbe ripetere un po' più lentamente?"
+      },
+      "legos": [
+        {
+          "id": "S0061L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "could you",
+            "target": "potrebbe"
+          }
+        },
+        {
+          "id": "S0061L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "repeat",
+            "target": "ripetere"
+          }
+        },
+        {
+          "id": "S0061L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "a little more slowly",
+            "target": "un po' più lentamente"
+          },
+          "components": [
+            {
+              "known": "a little",
+              "target": "un po'"
+            },
+            {
+              "known": "more",
+              "target": "più"
+            },
+            {
+              "known": "slowly",
+              "target": "lentamente"
+            }
+          ],
+          "teaches": "Italian intensifier stacking: un po' + più + adverb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0062",
+      "seed_pair": {
+        "known": "I'm not sure if I can help you at the same time.",
+        "target": "Non sono sicuro se posso aiutarti allo stesso tempo."
+      },
+      "legos": [
+        {
+          "id": "S0062L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not sure",
+            "target": "non sono sicuro"
+          },
+          "components": [
+            {
+              "known": "I'm",
+              "target": "sono"
+            },
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "sure",
+              "target": "sicuro"
+            }
+          ],
+          "teaches": "negation placement: non precedes verb"
+        },
+        {
+          "id": "S0062L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if I can",
+            "target": "se posso"
+          }
+        },
+        {
+          "id": "S0062L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "help you",
+            "target": "aiutarti"
+          }
+        },
+        {
+          "id": "S0062L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at the same time",
+            "target": "allo stesso tempo"
+          },
+          "components": [
+            {
+              "known": "at the",
+              "target": "allo"
+            },
+            {
+              "known": "same",
+              "target": "stesso"
+            },
+            {
+              "known": "time",
+              "target": "tempo"
+            }
+          ],
+          "teaches": "contraction a+lo=allo before masculine noun"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0063",
+      "seed_pair": {
+        "known": "Are you sure you don't mind helping me?",
+        "target": "Sei sicuro che non ti dispiace aiutarmi?"
+      },
+      "legos": [
+        {
+          "id": "S0063L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "are you sure",
+            "target": "sei sicuro"
+          }
+        },
+        {
+          "id": "S0063L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you don't mind",
+            "target": "non ti dispiace"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "ti"
+            },
+            {
+              "known": "don't",
+              "target": "non"
+            },
+            {
+              "known": "mind",
+              "target": "dispiace"
+            }
+          ],
+          "teaches": "dispiacere uses indirect object pronoun (ti dispiace = it displeases you)"
+        },
+        {
+          "id": "S0063L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "helping me",
+            "target": "aiutarmi"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:05.546Z"
+}

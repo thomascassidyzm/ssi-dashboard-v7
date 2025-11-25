@@ -1,0 +1,89 @@
+{
+  "seed_id": "S0054",
+  "seed_pair": {
+    "known": "We wanted to give you a little more time.",
+    "target": "Queríamos darte un poco más de tiempo."
+  },
+  "legos": [
+    {
+      "id": "S0054L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "we wanted",
+        "target": "queríamos"
+      }
+    },
+    {
+      "id": "S0054L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "time",
+        "target": "tiempo"
+      }
+    },
+    {
+      "id": "S0054L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to give you",
+        "target": "darte"
+      },
+      "components": [
+        {
+          "known": "to give",
+          "target": "dar"
+        },
+        {
+          "known": "you",
+          "target": "te"
+        }
+      ],
+      "teaches": "object pronoun attaches to infinitive"
+    },
+    {
+      "id": "S0054L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "a little more",
+        "target": "un poco más"
+      },
+      "components": [
+        {
+          "known": "a little",
+          "target": "un poco"
+        },
+        {
+          "known": "more",
+          "target": "más"
+        }
+      ],
+      "teaches": "quantity expression word order"
+    },
+    {
+      "id": "S0054L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "more time",
+        "target": "más de tiempo"
+      },
+      "components": [
+        {
+          "known": "more",
+          "target": "más"
+        },
+        {
+          "known": "time",
+          "target": "tiempo"
+        }
+      ],
+      "teaches": "de required after más before nouns"
+    }
+  ],
+  "agentId": "agent-4.3",
+  "receivedAt": "2025-11-24T15:32:52.730Z"
+}

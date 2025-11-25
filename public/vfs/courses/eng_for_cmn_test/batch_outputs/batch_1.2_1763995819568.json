@@ -1,0 +1,207 @@
+{
+  "browserId": 1,
+  "agentId": "1.2",
+  "seedRange": "S0004-S0006",
+  "seeds": [
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "用英语怎么说某个东西",
+        "target": "how to say something in English"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "怎么",
+            "target": "how"
+          }
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "say"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "东西",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0004L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0004L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "用英语",
+            "target": "in English"
+          },
+          "components": [
+            {
+              "known": "英语",
+              "target": "English"
+            }
+          ],
+          "teaches": "用 + language = in [language]"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "我要跟别人练习说话",
+        "target": "I'm going to practise speaking with someone else"
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "要",
+            "target": "going to"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "练习",
+            "target": "practise"
+          }
+        },
+        {
+          "id": "S0005L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "speaking"
+          }
+        },
+        {
+          "id": "S0005L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "别人",
+            "target": "someone else"
+          }
+        },
+        {
+          "id": "S0005L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "跟别人",
+            "target": "with someone else"
+          },
+          "components": [
+            {
+              "known": "别人",
+              "target": "someone else"
+            }
+          ],
+          "teaches": "跟 + person = with [person]"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "我在努力记住一个词",
+        "target": "I'm trying to remember a word"
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我",
+            "target": "I"
+          }
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "词",
+            "target": "word"
+          }
+        },
+        {
+          "id": "S0006L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "在努力",
+            "target": "trying to"
+          },
+          "components": [
+            {
+              "known": "努力",
+              "target": "try hard"
+            }
+          ],
+          "teaches": "在 + verb = progressive trying to"
+        },
+        {
+          "id": "S0006L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "一个词",
+            "target": "a word"
+          },
+          "components": [
+            {
+              "known": "词",
+              "target": "word"
+            }
+          ],
+          "teaches": "一 + classifier 个 + noun = a [noun]"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:19.568Z"
+}

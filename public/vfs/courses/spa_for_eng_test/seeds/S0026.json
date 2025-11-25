@@ -1,0 +1,98 @@
+{
+  "seed_id": "S0026",
+  "seed_pair": {
+    "known": "I like feeling as if I'm nearly ready to go.",
+    "target": "Me gusta sentirme como si estuviera casi listo para irme."
+  },
+  "legos": [
+    {
+      "id": "S0026L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I like",
+        "target": "Me gusta"
+      },
+      "components": [
+        {
+          "known": "to me",
+          "target": "me"
+        },
+        {
+          "known": "it pleases",
+          "target": "gusta"
+        }
+      ],
+      "teaches": "Gustar construction with indirect object pronoun"
+    },
+    {
+      "id": "S0026L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "feeling",
+        "target": "sentirme"
+      }
+    },
+    {
+      "id": "S0026L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "as if",
+        "target": "como si"
+      }
+    },
+    {
+      "id": "S0026L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm ready",
+        "target": "estuviera listo"
+      },
+      "components": [
+        {
+          "known": "I was/were",
+          "target": "estuviera"
+        },
+        {
+          "known": "ready",
+          "target": "listo"
+        }
+      ],
+      "teaches": "Imperfect subjunctive required after como si"
+    },
+    {
+      "id": "S0026L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "nearly",
+        "target": "casi"
+      }
+    },
+    {
+      "id": "S0026L06",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to go",
+        "target": "para irme"
+      },
+      "components": [
+        {
+          "known": "for/in order to",
+          "target": "para"
+        },
+        {
+          "known": "go/leave",
+          "target": "irme"
+        }
+      ],
+      "teaches": "Purpose expressed with para + infinitive"
+    }
+  ],
+  "agentId": "2.4",
+  "receivedAt": "2025-11-24T15:32:37.004Z"
+}

@@ -1,0 +1,78 @@
+{
+  "seed_id": "S0025",
+  "seed_pair": {
+    "known": "Are you going to help me before I have to go?",
+    "target": "¿Vas a ayudarme antes de que tenga que irme?"
+  },
+  "legos": [
+    {
+      "id": "S0025L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "Are you going to",
+        "target": "Vas a"
+      },
+      "components": [
+        {
+          "known": "you go",
+          "target": "vas"
+        },
+        {
+          "known": "to",
+          "target": "a"
+        }
+      ],
+      "teaches": "Future intention using ir + a + infinitive"
+    },
+    {
+      "id": "S0025L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "help me",
+        "target": "ayudarme"
+      }
+    },
+    {
+      "id": "S0025L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "before",
+        "target": "antes de que"
+      }
+    },
+    {
+      "id": "S0025L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I have to",
+        "target": "tenga que"
+      },
+      "components": [
+        {
+          "known": "I have",
+          "target": "tenga"
+        },
+        {
+          "known": "to",
+          "target": "que"
+        }
+      ],
+      "teaches": "Obligation with tener que; subjunctive after antes de que"
+    },
+    {
+      "id": "S0025L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "go/leave",
+        "target": "irme"
+      }
+    }
+  ],
+  "agentId": "2.4",
+  "receivedAt": "2025-11-24T15:32:24.567Z"
+}

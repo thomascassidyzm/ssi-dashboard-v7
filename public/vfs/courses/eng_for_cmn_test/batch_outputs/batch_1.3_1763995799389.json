@@ -1,0 +1,165 @@
+{
+  "browserId": 1,
+  "agentId": "1.3",
+  "seedRange": "S0007-S0009",
+  "seeds": [
+    {
+      "seed_id": "S0007",
+      "seed_pair": {
+        "known": "我想今天尽我所能地尝试。",
+        "target": "I want to try as hard as I can today."
+      },
+      "legos": [
+        {
+          "id": "S0007L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I want to"
+          }
+        },
+        {
+          "id": "S0007L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "尝试",
+            "target": "to try"
+          }
+        },
+        {
+          "id": "S0007L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "尽我所能",
+            "target": "as hard as I can"
+          },
+          "components": [
+            {
+              "known": "尽",
+              "target": "as"
+            },
+            {
+              "known": "我所能",
+              "target": "I can"
+            }
+          ],
+          "teaches": "Idiomatic expression for maximum effort - as X as I can structure"
+        },
+        {
+          "id": "S0007L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "今天",
+            "target": "today"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0008",
+      "seed_pair": {
+        "known": "我要试着解释我的意思。",
+        "target": "I'm going to try to explain what I mean."
+      },
+      "legos": [
+        {
+          "id": "S0008L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我要",
+            "target": "I'm going to"
+          }
+        },
+        {
+          "id": "S0008L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "试着",
+            "target": "try to"
+          }
+        },
+        {
+          "id": "S0008L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "解释",
+            "target": "to explain"
+          }
+        },
+        {
+          "id": "S0008L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我的意思",
+            "target": "what I mean"
+          },
+          "components": [
+            {
+              "known": "我的",
+              "target": "my"
+            },
+            {
+              "known": "意思",
+              "target": "meaning"
+            }
+          ],
+          "teaches": "Indirect question structure - what I mean uses possessive form in Chinese"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0009",
+      "seed_pair": {
+        "known": "我现在会说一点英语了。",
+        "target": "I speak a little English now."
+      },
+      "legos": [
+        {
+          "id": "S0009L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我会说",
+            "target": "I speak"
+          }
+        },
+        {
+          "id": "S0009L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一点",
+            "target": "a little"
+          }
+        },
+        {
+          "id": "S0009L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "英语",
+            "target": "English"
+          }
+        },
+        {
+          "id": "S0009L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "现在",
+            "target": "now"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:49:59.389Z"
+}

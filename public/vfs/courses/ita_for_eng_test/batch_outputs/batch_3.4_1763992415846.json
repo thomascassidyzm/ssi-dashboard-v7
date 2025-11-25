@@ -1,0 +1,243 @@
+{
+  "browserId": 3,
+  "agentId": "3.4",
+  "seedRange": "S0040-S0042",
+  "seeds": [
+    {
+      "seed_id": "S0040",
+      "seed_pair": {
+        "known": "How do you feel at the moment?",
+        "target": "Come ti senti in questo momento?"
+      },
+      "legos": [
+        {
+          "id": "S0040L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how",
+            "target": "come"
+          }
+        },
+        {
+          "id": "S0040L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "do you feel",
+            "target": "ti senti"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "ti"
+            },
+            {
+              "known": "feel",
+              "target": "senti"
+            }
+          ],
+          "teaches": "reflexive verb sentirsi for expressing how one feels"
+        },
+        {
+          "id": "S0040L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "at the moment",
+            "target": "in questo momento"
+          },
+          "components": [
+            {
+              "known": "at",
+              "target": "in"
+            },
+            {
+              "known": "this",
+              "target": "questo"
+            },
+            {
+              "known": "moment",
+              "target": "momento"
+            }
+          ],
+          "teaches": "Italian uses in this moment instead of at the moment"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0041",
+      "seed_pair": {
+        "known": "I feel okay, but I am starting to feel tired.",
+        "target": "Mi sento bene, ma sto cominciando a sentirmi stanco."
+      },
+      "legos": [
+        {
+          "id": "S0041L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I feel",
+            "target": "mi sento"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "mi"
+            },
+            {
+              "known": "feel",
+              "target": "sento"
+            }
+          ],
+          "teaches": "reflexive construction for sentirsi"
+        },
+        {
+          "id": "S0041L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "okay",
+            "target": "bene"
+          }
+        },
+        {
+          "id": "S0041L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "ma"
+          }
+        },
+        {
+          "id": "S0041L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I am starting to",
+            "target": "sto cominciando a"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "sto"
+            },
+            {
+              "known": "starting",
+              "target": "cominciando"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "stare plus gerund plus a for progressive action about to happen"
+        },
+        {
+          "id": "S0041L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "feel tired",
+            "target": "sentirmi stanco"
+          },
+          "components": [
+            {
+              "known": "feel",
+              "target": "sentirmi"
+            },
+            {
+              "known": "tired",
+              "target": "stanco"
+            }
+          ],
+          "teaches": "reflexive infinitive with adjective"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0042",
+      "seed_pair": {
+        "known": "I was starting to feel better than last night.",
+        "target": "Stavo cominciando a sentirmi meglio di ieri sera."
+      },
+      "legos": [
+        {
+          "id": "S0042L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I was starting to",
+            "target": "stavo cominciando a"
+          },
+          "components": [
+            {
+              "known": "I was",
+              "target": "stavo"
+            },
+            {
+              "known": "starting",
+              "target": "cominciando"
+            },
+            {
+              "known": "to",
+              "target": "a"
+            }
+          ],
+          "teaches": "imperfect progressive with stare in imperfect tense"
+        },
+        {
+          "id": "S0042L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "feel better",
+            "target": "sentirmi meglio"
+          },
+          "components": [
+            {
+              "known": "feel",
+              "target": "sentirmi"
+            },
+            {
+              "known": "better",
+              "target": "meglio"
+            }
+          ],
+          "teaches": "reflexive infinitive with comparative adverb"
+        },
+        {
+          "id": "S0042L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "than",
+            "target": "di"
+          }
+        },
+        {
+          "id": "S0042L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last night",
+            "target": "ieri sera"
+          },
+          "components": [
+            {
+              "known": "last",
+              "target": "ieri"
+            },
+            {
+              "known": "night",
+              "target": "sera"
+            }
+          ],
+          "teaches": "Italian uses yesterday evening for last night"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:35.846Z"
+}

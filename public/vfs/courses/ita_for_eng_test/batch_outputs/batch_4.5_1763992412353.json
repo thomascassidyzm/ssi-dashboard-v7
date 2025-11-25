@@ -1,0 +1,242 @@
+{
+  "browserId": 4,
+  "agentId": "4.5",
+  "seedRange": "S0058-S0060",
+  "seeds": [
+    {
+      "seed_id": "S0058",
+      "seed_pair": {
+        "known": "It's interesting when you understand enough words.",
+        "target": "È interessante quando capisci abbastanza parole."
+      },
+      "legos": [
+        {
+          "id": "S0058L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "it's interesting",
+            "target": "è interessante"
+          },
+          "components": [
+            {
+              "known": "it's",
+              "target": "è"
+            },
+            {
+              "known": "interesting",
+              "target": "interessante"
+            }
+          ],
+          "teaches": "Italian drops subject pronoun for impersonal expressions"
+        },
+        {
+          "id": "S0058L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "when",
+            "target": "quando"
+          }
+        },
+        {
+          "id": "S0058L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you understand",
+            "target": "capisci"
+          }
+        },
+        {
+          "id": "S0058L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "enough",
+            "target": "abbastanza"
+          }
+        },
+        {
+          "id": "S0058L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "words",
+            "target": "parole"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0059",
+      "seed_pair": {
+        "known": "I know how to do what I need to do next week.",
+        "target": "So come fare quello che devo fare la prossima settimana."
+      },
+      "legos": [
+        {
+          "id": "S0059L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I know",
+            "target": "so"
+          }
+        },
+        {
+          "id": "S0059L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to do",
+            "target": "come fare"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "do",
+              "target": "fare"
+            }
+          ],
+          "teaches": "Italian uses come + infinitive for how to + verb"
+        },
+        {
+          "id": "S0059L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I need to do",
+            "target": "quello che devo fare"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "quello che"
+            },
+            {
+              "known": "I need",
+              "target": "devo"
+            },
+            {
+              "known": "to do",
+              "target": "fare"
+            }
+          ],
+          "teaches": "Relative clause with quello che (that which)"
+        },
+        {
+          "id": "S0059L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "next week",
+            "target": "la prossima settimana"
+          },
+          "components": [
+            {
+              "known": "next",
+              "target": "prossima"
+            },
+            {
+              "known": "week",
+              "target": "settimana"
+            }
+          ],
+          "teaches": "Italian uses definite article la and places adjective before noun for time expressions"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0060",
+      "seed_pair": {
+        "known": "I don't know how to say enough different words yet.",
+        "target": "Non so ancora come dire abbastanza parole diverse."
+      },
+      "legos": [
+        {
+          "id": "S0060L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I don't know",
+            "target": "non so"
+          },
+          "components": [
+            {
+              "known": "don't",
+              "target": "non"
+            },
+            {
+              "known": "I know",
+              "target": "so"
+            }
+          ],
+          "teaches": "Negation with non before verb, subject pronoun dropped"
+        },
+        {
+          "id": "S0060L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "how to say",
+            "target": "come dire"
+          },
+          "components": [
+            {
+              "known": "how to",
+              "target": "come"
+            },
+            {
+              "known": "say",
+              "target": "dire"
+            }
+          ],
+          "teaches": "Italian uses come + infinitive for how to + verb"
+        },
+        {
+          "id": "S0060L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "enough",
+            "target": "abbastanza"
+          }
+        },
+        {
+          "id": "S0060L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "different words",
+            "target": "parole diverse"
+          },
+          "components": [
+            {
+              "known": "different",
+              "target": "diverse"
+            },
+            {
+              "known": "words",
+              "target": "parole"
+            }
+          ],
+          "teaches": "Adjective follows noun in Italian"
+        },
+        {
+          "id": "S0060L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "yet",
+            "target": "ancora"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:32.353Z"
+}

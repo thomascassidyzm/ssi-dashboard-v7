@@ -1,0 +1,180 @@
+{
+  "browserId": 5,
+  "agentId": "5.4",
+  "seedRange": "S0070-S0072",
+  "seeds": [
+    {
+      "seed_id": "S0070",
+      "seed_pair": {
+        "known": "She didn't want to tell me where it was.",
+        "target": "Non voleva dirmi dov'era."
+      },
+      "legos": [
+        {
+          "id": "S0070L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "she didn't want",
+            "target": "non voleva"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "she wanted",
+              "target": "voleva"
+            }
+          ],
+          "teaches": "Negation 'non' precedes the imperfetto verb form"
+        },
+        {
+          "id": "S0070L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to tell me",
+            "target": "dirmi"
+          }
+        },
+        {
+          "id": "S0070L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "where it was",
+            "target": "dov'era"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0071",
+      "seed_pair": {
+        "known": "We didn't want to let anyone hear the truth.",
+        "target": "Non volevamo far sentire la verità a nessuno."
+      },
+      "legos": [
+        {
+          "id": "S0071L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "we didn't want",
+            "target": "non volevamo"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "we wanted",
+              "target": "volevamo"
+            }
+          ],
+          "teaches": "Negation with first person plural imperfetto"
+        },
+        {
+          "id": "S0071L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to let (someone) hear",
+            "target": "far sentire"
+          },
+          "components": [
+            {
+              "known": "to make/let",
+              "target": "far"
+            },
+            {
+              "known": "to hear",
+              "target": "sentire"
+            }
+          ],
+          "teaches": "Causative construction: fare + infinitive for 'let/make someone do'"
+        },
+        {
+          "id": "S0071L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "anyone",
+            "target": "nessuno"
+          }
+        },
+        {
+          "id": "S0071L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "the truth",
+            "target": "la verità"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0072",
+      "seed_pair": {
+        "known": "I think that you're doing very well.",
+        "target": "Penso che tu stia andando molto bene."
+      },
+      "legos": [
+        {
+          "id": "S0072L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I think that",
+            "target": "penso che"
+          },
+          "components": [
+            {
+              "known": "I think",
+              "target": "penso"
+            },
+            {
+              "known": "that",
+              "target": "che"
+            }
+          ],
+          "teaches": "'Penso che' triggers the subjunctive mood in the following clause"
+        },
+        {
+          "id": "S0072L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "you're doing",
+            "target": "tu stia andando"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "tu"
+            },
+            {
+              "known": "(that you) are going",
+              "target": "stia andando"
+            }
+          ],
+          "teaches": "Present subjunctive of stare + gerund for ongoing action after che"
+        },
+        {
+          "id": "S0072L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "very well",
+            "target": "molto bene"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:07:56.458Z"
+}

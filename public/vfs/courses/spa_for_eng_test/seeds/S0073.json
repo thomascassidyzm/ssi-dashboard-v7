@@ -1,0 +1,53 @@
+{
+  "seed_id": "S0073",
+  "seed_pair": {
+    "known": "Thank you very much, but I've got more to learn.",
+    "target": "Muchas gracias, pero tengo más que aprender."
+  },
+  "legos": [
+    {
+      "id": "S0073L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "thank you very much",
+        "target": "muchas gracias"
+      }
+    },
+    {
+      "id": "S0073L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "but",
+        "target": "pero"
+      }
+    },
+    {
+      "id": "S0073L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I've got more to learn",
+        "target": "tengo más que aprender"
+      },
+      "components": [
+        {
+          "known": "I've got",
+          "target": "tengo"
+        },
+        {
+          "known": "more",
+          "target": "más"
+        },
+        {
+          "known": "to learn",
+          "target": "aprender"
+        }
+      ],
+      "teaches": "más que + infinitive pattern for expressing more to verb"
+    }
+  ],
+  "agentId": "5.5",
+  "receivedAt": "2025-11-24T15:32:26.990Z"
+}

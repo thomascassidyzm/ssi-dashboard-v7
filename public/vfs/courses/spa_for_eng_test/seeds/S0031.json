@@ -1,0 +1,47 @@
+{
+  "seed_id": "S0031",
+  "seed_pair": {
+    "known": "You wanted to speak with me tonight.",
+    "target": "Querías hablar conmigo esta noche."
+  },
+  "legos": [
+    {
+      "id": "S0031L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "you wanted",
+        "target": "querías"
+      }
+    },
+    {
+      "id": "S0031L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to speak",
+        "target": "hablar"
+      }
+    },
+    {
+      "id": "S0031L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "with me",
+        "target": "conmigo"
+      }
+    },
+    {
+      "id": "S0031L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "tonight",
+        "target": "esta noche"
+      }
+    }
+  ],
+  "agentId": "3.1",
+  "receivedAt": "2025-11-24T15:32:27.904Z"
+}

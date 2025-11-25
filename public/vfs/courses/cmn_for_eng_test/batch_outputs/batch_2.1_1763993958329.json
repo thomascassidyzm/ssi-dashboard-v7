@@ -1,0 +1,213 @@
+{
+  "browserId": 2,
+  "agentId": "2.1",
+  "seedRange": "S0016-S0018",
+  "seeds": [
+    {
+      "seed_id": "S0016",
+      "seed_pair": {
+        "known": "He wants to come back with everyone else later on.",
+        "target": "他想以后和大家一起回来。"
+      },
+      "legos": [
+        {
+          "id": "S0016L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "he",
+            "target": "他"
+          }
+        },
+        {
+          "id": "S0016L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wants",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0016L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to come back",
+            "target": "回来"
+          }
+        },
+        {
+          "id": "S0016L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "later on",
+            "target": "以后"
+          }
+        },
+        {
+          "id": "S0016L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with everyone else",
+            "target": "和大家一起"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "和"
+            },
+            {
+              "known": "everyone",
+              "target": "大家"
+            },
+            {
+              "known": "together",
+              "target": "一起"
+            }
+          ],
+          "teaches": "和...一起 pattern for doing something together with someone"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0017",
+      "seed_pair": {
+        "known": "She wants to find out what the answer is.",
+        "target": "她想知道答案是什么。"
+      },
+      "legos": [
+        {
+          "id": "S0017L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "she",
+            "target": "她"
+          }
+        },
+        {
+          "id": "S0017L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to find out",
+            "target": "知道"
+          }
+        },
+        {
+          "id": "S0017L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "answer",
+            "target": "答案"
+          }
+        },
+        {
+          "id": "S0017L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what the answer is",
+            "target": "答案是什么"
+          },
+          "components": [
+            {
+              "known": "answer",
+              "target": "答案"
+            },
+            {
+              "known": "is",
+              "target": "是"
+            },
+            {
+              "known": "what",
+              "target": "什么"
+            }
+          ],
+          "teaches": "Chinese question word order - question word 什么 comes at end, not beginning"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0018",
+      "seed_pair": {
+        "known": "We want to meet at six o'clock this evening.",
+        "target": "我们想今天晚上六点见面。"
+      },
+      "legos": [
+        {
+          "id": "S0018L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "we",
+            "target": "我们"
+          }
+        },
+        {
+          "id": "S0018L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "want",
+            "target": "想"
+          }
+        },
+        {
+          "id": "S0018L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to meet",
+            "target": "见面"
+          }
+        },
+        {
+          "id": "S0018L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "six o'clock",
+            "target": "六点"
+          },
+          "components": [
+            {
+              "known": "six",
+              "target": "六"
+            },
+            {
+              "known": "o'clock",
+              "target": "点"
+            }
+          ],
+          "teaches": "Time expression: number + 点 for hours"
+        },
+        {
+          "id": "S0018L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "this evening",
+            "target": "今天晚上"
+          },
+          "components": [
+            {
+              "known": "today",
+              "target": "今天"
+            },
+            {
+              "known": "evening",
+              "target": "晚上"
+            }
+          ],
+          "teaches": "Time expressions go before the verb in Chinese, larger units first (today + evening)"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:19:18.329Z"
+}

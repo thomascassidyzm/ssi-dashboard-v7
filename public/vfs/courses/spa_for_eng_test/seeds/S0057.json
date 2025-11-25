@@ -1,0 +1,120 @@
+{
+  "seed_id": "S0057",
+  "seed_pair": {
+    "known": "I cannot remember how to say what I wanted to say.",
+    "target": "No puedo recordar cómo decir lo que quería decir."
+  },
+  "legos": [
+    {
+      "id": "S0057L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I can",
+        "target": "puedo"
+      }
+    },
+    {
+      "id": "S0057L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "remember",
+        "target": "recordar"
+      }
+    },
+    {
+      "id": "S0057L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "what",
+        "target": "lo que"
+      }
+    },
+    {
+      "id": "S0057L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I wanted",
+        "target": "quería"
+      }
+    },
+    {
+      "id": "S0057L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to say",
+        "target": "decir"
+      }
+    },
+    {
+      "id": "S0057L06",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I cannot remember",
+        "target": "No puedo recordar"
+      },
+      "components": [
+        {
+          "known": "cannot",
+          "target": "no puedo"
+        },
+        {
+          "known": "remember",
+          "target": "recordar"
+        }
+      ],
+      "teaches": "Modal negation: cannot becomes no + conjugated poder"
+    },
+    {
+      "id": "S0057L07",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how to say",
+        "target": "cómo decir"
+      },
+      "components": [
+        {
+          "known": "how",
+          "target": "cómo"
+        },
+        {
+          "known": "to say",
+          "target": "decir"
+        }
+      ],
+      "teaches": "Question word + infinitive pattern"
+    },
+    {
+      "id": "S0057L08",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "what I wanted to say",
+        "target": "lo que quería decir"
+      },
+      "components": [
+        {
+          "known": "what",
+          "target": "lo que"
+        },
+        {
+          "known": "I wanted",
+          "target": "quería"
+        },
+        {
+          "known": "to say",
+          "target": "decir"
+        }
+      ],
+      "teaches": "Relative clause: what as relative pronoun uses lo que"
+    }
+  ],
+  "agentId": "agent-4.4",
+  "receivedAt": "2025-11-24T15:33:18.531Z"
+}

@@ -1,0 +1,76 @@
+{
+  "seed_id": "S0037",
+  "seed_pair": {
+    "known": "I started to think about it carefully last month.",
+    "target": "Empecé a pensar en ello cuidadosamente el mes pasado."
+  },
+  "legos": [
+    {
+      "id": "S0037L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I started",
+        "target": "Empecé"
+      }
+    },
+    {
+      "id": "S0037L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to think",
+        "target": "pensar"
+      }
+    },
+    {
+      "id": "S0037L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I started to think",
+        "target": "Empecé a pensar"
+      },
+      "components": [
+        {
+          "known": "I started",
+          "target": "Empecé"
+        },
+        {
+          "known": "to think",
+          "target": "pensar"
+        }
+      ],
+      "teaches": "empezar + a + infinitive pattern (linking a required before infinitive)"
+    },
+    {
+      "id": "S0037L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "about it",
+        "target": "en ello"
+      }
+    },
+    {
+      "id": "S0037L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "carefully",
+        "target": "cuidadosamente"
+      }
+    },
+    {
+      "id": "S0037L06",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "last month",
+        "target": "el mes pasado"
+      }
+    }
+  ],
+  "agentId": "3.3",
+  "receivedAt": "2025-11-24T15:32:46.977Z"
+}

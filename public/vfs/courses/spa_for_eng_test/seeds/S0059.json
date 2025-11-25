@@ -1,0 +1,80 @@
+{
+  "seed_id": "S0059",
+  "seed_pair": {
+    "known": "I know how to do what I need to do next week.",
+    "target": "Sé cómo hacer lo que necesito hacer la próxima semana."
+  },
+  "legos": [
+    {
+      "id": "S0059L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I know",
+        "target": "sé"
+      }
+    },
+    {
+      "id": "S0059L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how to do",
+        "target": "cómo hacer"
+      },
+      "components": [
+        {
+          "known": "how",
+          "target": "cómo"
+        },
+        {
+          "known": "to do",
+          "target": "hacer"
+        }
+      ],
+      "teaches": "how to + verb uses cómo + infinitive"
+    },
+    {
+      "id": "S0059L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "what I need",
+        "target": "lo que necesito"
+      },
+      "components": [
+        {
+          "known": "what",
+          "target": "lo que"
+        },
+        {
+          "known": "I need",
+          "target": "necesito"
+        }
+      ],
+      "teaches": "what I [verb] uses lo que + conjugated verb"
+    },
+    {
+      "id": "S0059L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "next week",
+        "target": "la próxima semana"
+      },
+      "components": [
+        {
+          "known": "next",
+          "target": "próxima"
+        },
+        {
+          "known": "week",
+          "target": "semana"
+        }
+      ],
+      "teaches": "time expressions use definite article la"
+    }
+  ],
+  "agentId": "agent-4.5",
+  "receivedAt": "2025-11-24T15:32:22.009Z"
+}

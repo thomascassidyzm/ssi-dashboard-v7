@@ -1,0 +1,233 @@
+{
+  "browserId": 4,
+  "agentId": "4.2",
+  "seedRange": "S0049-S0051",
+  "seeds": [
+    {
+      "seed_id": "S0049",
+      "seed_pair": {
+        "known": "It's like this, if you know what I mean.",
+        "target": "È così, se capisci cosa intendo."
+      },
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it is",
+            "target": "è"
+          }
+        },
+        {
+          "id": "S0049L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "like this",
+            "target": "così"
+          }
+        },
+        {
+          "id": "S0049L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if",
+            "target": "se"
+          }
+        },
+        {
+          "id": "S0049L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you understand",
+            "target": "capisci"
+          }
+        },
+        {
+          "id": "S0049L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "what I mean",
+            "target": "cosa intendo"
+          },
+          "components": [
+            {
+              "known": "what",
+              "target": "cosa"
+            },
+            {
+              "known": "I mean",
+              "target": "intendo"
+            }
+          ],
+          "teaches": "Italian places interrogative cosa before the verb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0050",
+      "seed_pair": {
+        "known": "I'm not trying to finish as quickly as possible.",
+        "target": "Non sto cercando di finire il più velocemente possibile."
+      },
+      "legos": [
+        {
+          "id": "S0050L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "not",
+            "target": "non"
+          }
+        },
+        {
+          "id": "S0050L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "sto cercando"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "sto"
+            },
+            {
+              "known": "trying",
+              "target": "cercando"
+            }
+          ],
+          "teaches": "Italian progressive uses stare + gerund"
+        },
+        {
+          "id": "S0050L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to finish",
+            "target": "di finire"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "di"
+            },
+            {
+              "known": "finish",
+              "target": "finire"
+            }
+          ],
+          "teaches": "Italian uses di before infinitives after cercare"
+        },
+        {
+          "id": "S0050L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as quickly as possible",
+            "target": "il più velocemente possibile"
+          },
+          "components": [
+            {
+              "known": "quickly",
+              "target": "velocemente"
+            },
+            {
+              "known": "possible",
+              "target": "possibile"
+            }
+          ],
+          "teaches": "Italian superlative adverbs use il più + adverb + possibile"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0051",
+      "seed_pair": {
+        "known": "I enjoy doing interesting things with my friends.",
+        "target": "Mi piace fare cose interessanti con i miei amici."
+      },
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I enjoy",
+            "target": "mi piace"
+          },
+          "components": [
+            {
+              "known": "to me",
+              "target": "mi"
+            },
+            {
+              "known": "it pleases",
+              "target": "piace"
+            }
+          ],
+          "teaches": "Italian uses indirect object + piacere construction"
+        },
+        {
+          "id": "S0051L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "doing",
+            "target": "fare"
+          }
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "interesting things",
+            "target": "cose interessanti"
+          },
+          "components": [
+            {
+              "known": "things",
+              "target": "cose"
+            },
+            {
+              "known": "interesting",
+              "target": "interessanti"
+            }
+          ],
+          "teaches": "Italian adjectives follow the noun"
+        },
+        {
+          "id": "S0051L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with my friends",
+            "target": "con i miei amici"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "con"
+            },
+            {
+              "known": "my",
+              "target": "i miei"
+            },
+            {
+              "known": "friends",
+              "target": "amici"
+            }
+          ],
+          "teaches": "Italian uses definite article before possessives"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:08.368Z"
+}

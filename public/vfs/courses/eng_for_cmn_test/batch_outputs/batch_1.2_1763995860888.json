@@ -1,0 +1,116 @@
+{
+  "browserId": 1,
+  "agentId": "1.2",
+  "seedRange": "S0004-S0006",
+  "seeds": [
+    {
+      "seed_id": "S0004",
+      "seed_pair": {
+        "known": "怎么用英语说某件事",
+        "target": "how to say something in English"
+      },
+      "legos": [
+        {
+          "id": "S0004L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "怎么说",
+            "target": "how to say"
+          }
+        },
+        {
+          "id": "S0004L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "某件事",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0004L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "用英语",
+            "target": "in English"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0005",
+      "seed_pair": {
+        "known": "我打算和别人练习说话。",
+        "target": "I'm going to practise speaking with someone else."
+      },
+      "legos": [
+        {
+          "id": "S0005L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我打算",
+            "target": "I'm going to"
+          }
+        },
+        {
+          "id": "S0005L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "练习说话",
+            "target": "practise speaking"
+          }
+        },
+        {
+          "id": "S0005L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "和别人",
+            "target": "with someone else"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0006",
+      "seed_pair": {
+        "known": "我正在试着记住一个词。",
+        "target": "I'm trying to remember a word."
+      },
+      "legos": [
+        {
+          "id": "S0006L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我正在试着",
+            "target": "I'm trying to"
+          }
+        },
+        {
+          "id": "S0006L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0006L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一个词",
+            "target": "a word"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:51:00.888Z"
+}

@@ -1,0 +1,181 @@
+{
+  "browserId": 4,
+  "agentId": "4.2",
+  "seedRange": "S0049-S0051",
+  "seeds": [
+    {
+      "seed_id": "S0049",
+      "seed_pair": {
+        "known": "It's like this, if you know what I mean.",
+        "target": "È così, se capisci cosa intendo."
+      },
+      "legos": [
+        {
+          "id": "S0049L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "it's like this",
+            "target": "è così"
+          }
+        },
+        {
+          "id": "S0049L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "if you know what I mean",
+            "target": "se capisci cosa intendo"
+          },
+          "components": [
+            {
+              "known": "if",
+              "target": "se"
+            },
+            {
+              "known": "you understand",
+              "target": "capisci"
+            },
+            {
+              "known": "what I mean",
+              "target": "cosa intendo"
+            }
+          ],
+          "teaches": "Italian indirect question structure with cosa + verb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0050",
+      "seed_pair": {
+        "known": "I'm not trying to finish as quickly as possible.",
+        "target": "Non sto cercando di finire il più velocemente possibile."
+      },
+      "legos": [
+        {
+          "id": "S0050L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm not trying",
+            "target": "non sto cercando"
+          },
+          "components": [
+            {
+              "known": "not",
+              "target": "non"
+            },
+            {
+              "known": "I'm trying",
+              "target": "sto cercando"
+            }
+          ],
+          "teaches": "negation placement before progressive construction"
+        },
+        {
+          "id": "S0050L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to finish",
+            "target": "di finire"
+          }
+        },
+        {
+          "id": "S0050L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as quickly as possible",
+            "target": "il più velocemente possibile"
+          },
+          "components": [
+            {
+              "known": "the most",
+              "target": "il più"
+            },
+            {
+              "known": "quickly",
+              "target": "velocemente"
+            },
+            {
+              "known": "possible",
+              "target": "possibile"
+            }
+          ],
+          "teaches": "Italian superlative with il più + adverb"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0051",
+      "seed_pair": {
+        "known": "I enjoy doing interesting things with my friends.",
+        "target": "Mi piace fare cose interessanti con i miei amici."
+      },
+      "legos": [
+        {
+          "id": "S0051L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I enjoy",
+            "target": "mi piace"
+          },
+          "components": [
+            {
+              "known": "to me",
+              "target": "mi"
+            },
+            {
+              "known": "it pleases",
+              "target": "piace"
+            }
+          ],
+          "teaches": "reflexive construction for expressing enjoyment"
+        },
+        {
+          "id": "S0051L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "doing interesting things",
+            "target": "fare cose interessanti"
+          },
+          "components": [
+            {
+              "known": "doing",
+              "target": "fare"
+            },
+            {
+              "known": "interesting things",
+              "target": "cose interessanti"
+            }
+          ],
+          "teaches": "adjective placement after noun in Italian"
+        },
+        {
+          "id": "S0051L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "with my friends",
+            "target": "con i miei amici"
+          },
+          "components": [
+            {
+              "known": "with",
+              "target": "con"
+            },
+            {
+              "known": "my friends",
+              "target": "i miei amici"
+            }
+          ],
+          "teaches": "definite article required before possessive with family/friends"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:10.529Z"
+}

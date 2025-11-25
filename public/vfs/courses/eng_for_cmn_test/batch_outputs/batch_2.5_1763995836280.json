@@ -1,0 +1,227 @@
+{
+  "browserId": 2,
+  "agentId": "2.5",
+  "seedRange": "S0028-S0030",
+  "seeds": [
+    {
+      "seed_id": "S0028",
+      "seed_pair": {
+        "known": "尽快开始说话是很有用的。",
+        "target": "It's useful to start talking as soon as you can."
+      },
+      "legos": [
+        {
+          "id": "S0028L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "有用",
+            "target": "useful"
+          }
+        },
+        {
+          "id": "S0028L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "开始",
+            "target": "to start"
+          }
+        },
+        {
+          "id": "S0028L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "talking"
+          }
+        },
+        {
+          "id": "S0028L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "尽快",
+            "target": "as soon as you can"
+          }
+        },
+        {
+          "id": "S0028L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "开始说话",
+            "target": "to start talking"
+          },
+          "components": [
+            {
+              "known": "开始",
+              "target": "to start"
+            },
+            {
+              "known": "说话",
+              "target": "talking"
+            }
+          ],
+          "teaches": "verb + gerund pattern after start"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0029",
+      "seed_pair": {
+        "known": "我期待尽快能说得更好。",
+        "target": "I'm looking forward to speaking better as soon as I can."
+      },
+      "legos": [
+        {
+          "id": "S0029L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "期待",
+            "target": "looking forward to"
+          }
+        },
+        {
+          "id": "S0029L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说",
+            "target": "speaking"
+          }
+        },
+        {
+          "id": "S0029L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "更好",
+            "target": "better"
+          }
+        },
+        {
+          "id": "S0029L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我期待",
+            "target": "I'm looking forward to"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "期待",
+              "target": "looking forward to"
+            }
+          ],
+          "teaches": "progressive tense and gerund after to"
+        },
+        {
+          "id": "S0029L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "说得更好",
+            "target": "speaking better"
+          },
+          "components": [
+            {
+              "known": "说",
+              "target": "speaking"
+            },
+            {
+              "known": "更好",
+              "target": "better"
+            }
+          ],
+          "teaches": "adverb placement after verb in English"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0030",
+      "seed_pair": {
+        "known": "我昨天想问你一件事。",
+        "target": "I wanted to ask you something yesterday."
+      },
+      "legos": [
+        {
+          "id": "S0030L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "wanted"
+          }
+        },
+        {
+          "id": "S0030L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "问",
+            "target": "to ask"
+          }
+        },
+        {
+          "id": "S0030L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0030L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一件事",
+            "target": "something"
+          }
+        },
+        {
+          "id": "S0030L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "昨天",
+            "target": "yesterday"
+          }
+        },
+        {
+          "id": "S0030L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "想问你",
+            "target": "wanted to ask you"
+          },
+          "components": [
+            {
+              "known": "想",
+              "target": "wanted"
+            },
+            {
+              "known": "问",
+              "target": "to ask"
+            },
+            {
+              "known": "你",
+              "target": "you"
+            }
+          ],
+          "teaches": "to + infinitive pattern and past tense -ed"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:36.280Z"
+}

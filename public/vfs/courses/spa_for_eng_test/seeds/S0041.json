@@ -1,0 +1,93 @@
+{
+  "seed_id": "S0041",
+  "seed_pair": {
+    "known": "I feel okay, but I'm starting to feel tired.",
+    "target": "Me siento bien, pero estoy empezando a sentirme cansado."
+  },
+  "legos": [
+    {
+      "id": "S0041L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I feel",
+        "target": "me siento"
+      },
+      "components": [
+        {
+          "known": "myself",
+          "target": "me"
+        },
+        {
+          "known": "feel (I)",
+          "target": "siento"
+        }
+      ],
+      "teaches": "reflexive verb: sentirse uses reflexive pronoun me before conjugated verb"
+    },
+    {
+      "id": "S0041L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "okay",
+        "target": "bien"
+      }
+    },
+    {
+      "id": "S0041L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "but",
+        "target": "pero"
+      }
+    },
+    {
+      "id": "S0041L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm starting to",
+        "target": "estoy empezando a"
+      },
+      "components": [
+        {
+          "known": "I am",
+          "target": "estoy"
+        },
+        {
+          "known": "starting",
+          "target": "empezando"
+        },
+        {
+          "known": "to",
+          "target": "a"
+        }
+      ],
+      "teaches": "progressive: estar + gerund (-ando) for ongoing action, a links to infinitive"
+    },
+    {
+      "id": "S0041L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to feel tired",
+        "target": "sentirme cansado"
+      },
+      "components": [
+        {
+          "known": "to feel (myself)",
+          "target": "sentirme"
+        },
+        {
+          "known": "tired",
+          "target": "cansado"
+        }
+      ],
+      "teaches": "reflexive infinitive: pronoun me attaches to end of infinitive sentir"
+    }
+  ],
+  "agentId": "3.4",
+  "receivedAt": "2025-11-24T15:32:41.833Z"
+}

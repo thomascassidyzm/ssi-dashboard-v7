@@ -1,0 +1,158 @@
+{
+  "browserId": 5,
+  "agentId": "5.5",
+  "seedRange": "S0073-S0075",
+  "seeds": [
+    {
+      "seed_id": "S0073",
+      "seed_pair": {
+        "known": "非常感谢，但是我还有更多要学的。",
+        "target": "Thank you very much, but I've got more to learn."
+      },
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "非常感谢",
+            "target": "thank you very much"
+          }
+        },
+        {
+          "id": "S0073L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我还有更多要学的",
+            "target": "I've got more to learn"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "有",
+              "target": "have got"
+            },
+            {
+              "known": "更多",
+              "target": "more"
+            },
+            {
+              "known": "学",
+              "target": "to learn"
+            }
+          ],
+          "teaches": "I've got... to [verb] structure for expressing having something to do"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": {
+        "known": "非常感谢你帮助我理解。",
+        "target": "Thank you very much for helping me to understand."
+      },
+      "legos": [
+        {
+          "id": "S0074L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "非常感谢",
+            "target": "thank you very much"
+          }
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "帮助我理解",
+            "target": "for helping me to understand"
+          },
+          "components": [
+            {
+              "known": "为了",
+              "target": "for"
+            },
+            {
+              "known": "帮助",
+              "target": "helping"
+            },
+            {
+              "known": "我",
+              "target": "me"
+            },
+            {
+              "known": "理解",
+              "target": "to understand"
+            }
+          ],
+          "teaches": "for [verb-ing] me to [verb] structure showing purpose with gerund"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": {
+        "known": "你还有更多要学的吗？",
+        "target": "Have you got more to learn?"
+      },
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你有...吗",
+            "target": "have you got"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "有",
+              "target": "have got"
+            }
+          ],
+          "teaches": "Question inversion with have got - auxiliary moves before subject"
+        },
+        {
+          "id": "S0075L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "更多要学的",
+            "target": "more to learn"
+          },
+          "components": [
+            {
+              "known": "更多",
+              "target": "more"
+            },
+            {
+              "known": "学",
+              "target": "to learn"
+            }
+          ],
+          "teaches": "more to [verb] pattern for expressing additional actions needed"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:36.659Z"
+}

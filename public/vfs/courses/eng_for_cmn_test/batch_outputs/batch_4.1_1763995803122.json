@@ -1,0 +1,162 @@
+{
+  "browserId": 4,
+  "agentId": "4.1",
+  "seedRange": "S0046-S0048",
+  "seeds": [
+    {
+      "seed_id": "S0046",
+      "seed_pair": {
+        "known": "但是我不担心犯错。",
+        "target": "But I don't worry about making mistakes."
+      },
+      "legos": [
+        {
+          "id": "S0046L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0046L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "担心",
+            "target": "to worry about"
+          }
+        },
+        {
+          "id": "S0046L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "犯错",
+            "target": "to make mistakes"
+          }
+        },
+        {
+          "id": "S0046L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不担心...",
+            "target": "I don't worry about..."
+          },
+          "components": [
+            {
+              "known": "担心",
+              "target": "to worry about"
+            }
+          ],
+          "teaches": "Negation with 不 before verb; English uses don't auxiliary"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0047",
+      "seed_pair": {
+        "known": "因为我认为犯错是一件好事。",
+        "target": "Because I think that it's a good thing to make mistakes."
+      },
+      "legos": [
+        {
+          "id": "S0047L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "因为",
+            "target": "because"
+          }
+        },
+        {
+          "id": "S0047L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "认为",
+            "target": "to think"
+          }
+        },
+        {
+          "id": "S0047L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "好事",
+            "target": "a good thing"
+          }
+        },
+        {
+          "id": "S0047L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我认为...",
+            "target": "I think that..."
+          },
+          "components": [
+            {
+              "known": "认为",
+              "target": "to think"
+            }
+          ],
+          "teaches": "English adds that as subordinator; Chinese directly follows with clause"
+        },
+        {
+          "id": "S0047L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "...是一件好事",
+            "target": "it's a good thing to..."
+          },
+          "components": [
+            {
+              "known": "好事",
+              "target": "a good thing"
+            }
+          ],
+          "teaches": "English uses dummy it subject with infinitive; Chinese uses topic-comment structure with 是"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0048",
+      "seed_pair": {
+        "known": "我不在乎犯错。",
+        "target": "I don't care about making mistakes."
+      },
+      "legos": [
+        {
+          "id": "S0048L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "在乎",
+            "target": "to care about"
+          }
+        },
+        {
+          "id": "S0048L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不在乎...",
+            "target": "I don't care about..."
+          },
+          "components": [
+            {
+              "known": "在乎",
+              "target": "to care about"
+            }
+          ],
+          "teaches": "Negation with 不; English requires don't + about preposition"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:03.122Z"
+}

@@ -1,0 +1,60 @@
+{
+  "seed_id": "S0033",
+  "seed_pair": {
+    "known": "How long have you been learning Spanish?",
+    "target": "¿Cuánto tiempo llevas aprendiendo español?"
+  },
+  "legos": [
+    {
+      "id": "S0033L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "how long",
+        "target": "cuánto tiempo"
+      },
+      "components": [
+        {
+          "known": "how much",
+          "target": "cuánto"
+        },
+        {
+          "known": "time",
+          "target": "tiempo"
+        }
+      ],
+      "teaches": "Spanish expresses duration as how much time"
+    },
+    {
+      "id": "S0033L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "have you been learning",
+        "target": "llevas aprendiendo"
+      },
+      "components": [
+        {
+          "known": "you carry/have been at",
+          "target": "llevas"
+        },
+        {
+          "known": "learning",
+          "target": "aprendiendo"
+        }
+      ],
+      "teaches": "llevar + gerund expresses ongoing duration (how long you have been doing something)"
+    },
+    {
+      "id": "S0033L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "Spanish",
+        "target": "español"
+      }
+    }
+  ],
+  "agentId": "3.1",
+  "receivedAt": "2025-11-24T15:32:50.941Z"
+}

@@ -1,0 +1,164 @@
+{
+  "browserId": 1,
+  "agentId": "1.4",
+  "seedRange": "S0010-S0012",
+  "seeds": [
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "我不确定我能不能记住整个句子。",
+        "target": "I'm not sure if I can remember the whole sentence."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "确定",
+            "target": "sure"
+          }
+        },
+        {
+          "id": "S0010L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "记住",
+            "target": "remember"
+          }
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "句子",
+            "target": "sentence"
+          }
+        },
+        {
+          "id": "S0010L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "整个",
+            "target": "whole"
+          }
+        },
+        {
+          "id": "S0010L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我不确定我能不能",
+            "target": "I'm not sure if I can"
+          },
+          "components": [
+            {
+              "known": "确定",
+              "target": "sure"
+            }
+          ],
+          "teaches": "embedded uncertainty with 能不能 pattern for possibility"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": {
+        "known": "我想在你说完之后能够说话。",
+        "target": "I'd like to be able to speak after you finish."
+      },
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "完成",
+            "target": "finish"
+          }
+        },
+        {
+          "id": "S0011L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "你说完之后",
+            "target": "after you finish"
+          },
+          "components": [
+            {
+              "known": "完成",
+              "target": "finish"
+            }
+          ],
+          "teaches": "time sequence with 之后 for after-action"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": {
+        "known": "我不想猜测明天会发生什么。",
+        "target": "I wouldn't like to guess what's going to happen tomorrow."
+      },
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "猜测",
+            "target": "guess"
+          }
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "明天",
+            "target": "tomorrow"
+          }
+        },
+        {
+          "id": "S0012L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "发生",
+            "target": "happen"
+          }
+        },
+        {
+          "id": "S0012L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "会发生什么",
+            "target": "what's going to happen"
+          },
+          "components": [
+            {
+              "known": "发生",
+              "target": "happen"
+            }
+          ],
+          "teaches": "embedded question with future marker 会 and interrogative 什么"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:49:54.051Z"
+}

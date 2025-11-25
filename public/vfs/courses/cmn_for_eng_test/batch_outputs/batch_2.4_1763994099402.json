@@ -1,0 +1,301 @@
+{
+  "browserId": 2,
+  "agentId": "2.4",
+  "seedRange": "S0025-S0027",
+  "seeds": [
+    {
+      "seed_id": "S0025",
+      "seed_pair": {
+        "known": "Are you going to help me before I have to go?",
+        "target": "你要在我必须走之前帮我吗？"
+      },
+      "legos": [
+        {
+          "id": "S0025L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "you",
+            "target": "你"
+          }
+        },
+        {
+          "id": "S0025L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "me",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0025L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to go",
+            "target": "走"
+          }
+        },
+        {
+          "id": "S0025L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to help",
+            "target": "帮"
+          }
+        },
+        {
+          "id": "S0025L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to have to",
+            "target": "必须"
+          }
+        },
+        {
+          "id": "S0025L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "before I have to go",
+            "target": "在我必须走之前"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "to have to",
+              "target": "必须"
+            },
+            {
+              "known": "to go",
+              "target": "走"
+            }
+          ],
+          "teaches": "在...之前 structure for 'before' with clause inside"
+        },
+        {
+          "id": "S0025L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "Are you going to help me?",
+            "target": "你要帮我吗？"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "to help",
+              "target": "帮"
+            },
+            {
+              "known": "me",
+              "target": "我"
+            }
+          ],
+          "teaches": "要 for future intention + 吗 question particle"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0026",
+      "seed_pair": {
+        "known": "I like feeling as if I am nearly ready to go.",
+        "target": "我喜欢感觉好像我快准备好走了。"
+      },
+      "legos": [
+        {
+          "id": "S0026L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0026L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to like",
+            "target": "喜欢"
+          }
+        },
+        {
+          "id": "S0026L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to feel",
+            "target": "感觉"
+          }
+        },
+        {
+          "id": "S0026L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "as if",
+            "target": "好像"
+          }
+        },
+        {
+          "id": "S0026L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "ready",
+            "target": "准备好"
+          }
+        },
+        {
+          "id": "S0026L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I like feeling",
+            "target": "我喜欢感觉"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "to like",
+              "target": "喜欢"
+            },
+            {
+              "known": "to feel",
+              "target": "感觉"
+            }
+          ],
+          "teaches": "verb stacking: subject + verb1 + verb2"
+        },
+        {
+          "id": "S0026L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I am nearly ready to go",
+            "target": "我快准备好走了"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "ready",
+              "target": "准备好"
+            },
+            {
+              "known": "to go",
+              "target": "走"
+            }
+          ],
+          "teaches": "快...了 structure for 'nearly/about to'"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0027",
+      "seed_pair": {
+        "known": "I do not like taking too much time to answer.",
+        "target": "我不喜欢花太多时间回答。"
+      },
+      "legos": [
+        {
+          "id": "S0027L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "回答"
+          }
+        },
+        {
+          "id": "S0027L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "time",
+            "target": "时间"
+          }
+        },
+        {
+          "id": "S0027L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "too much",
+            "target": "太多"
+          }
+        },
+        {
+          "id": "S0027L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to take (spend)",
+            "target": "花"
+          }
+        },
+        {
+          "id": "S0027L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I do not like",
+            "target": "我不喜欢"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "to like",
+              "target": "喜欢"
+            }
+          ],
+          "teaches": "不 negation before verb"
+        },
+        {
+          "id": "S0027L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "taking too much time",
+            "target": "花太多时间"
+          },
+          "components": [
+            {
+              "known": "to take (spend)",
+              "target": "花"
+            },
+            {
+              "known": "too much",
+              "target": "太多"
+            },
+            {
+              "known": "time",
+              "target": "时间"
+            }
+          ],
+          "teaches": "花 + amount + 时间 for spending time"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:21:39.402Z"
+}

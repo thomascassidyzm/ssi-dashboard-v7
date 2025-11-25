@@ -1,0 +1,80 @@
+{
+  "seed_id": "S0047",
+  "seed_pair": {
+    "known": "Because I think that it's a good thing to make mistakes.",
+    "target": "Porque creo que es algo bueno cometer errores."
+  },
+  "legos": [
+    {
+      "id": "S0047L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "because",
+        "target": "porque"
+      }
+    },
+    {
+      "id": "S0047L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I think that",
+        "target": "creo que"
+      },
+      "components": [
+        {
+          "known": "I think",
+          "target": "creo"
+        },
+        {
+          "known": "that",
+          "target": "que"
+        }
+      ],
+      "teaches": "verb + conjunction que pattern for dependent clauses"
+    },
+    {
+      "id": "S0047L03",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "it's a good thing",
+        "target": "es algo bueno"
+      },
+      "components": [
+        {
+          "known": "it is",
+          "target": "es"
+        },
+        {
+          "known": "a good thing",
+          "target": "algo bueno"
+        }
+      ],
+      "teaches": "word order - adjective bueno follows noun algo"
+    },
+    {
+      "id": "S0047L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "to make mistakes",
+        "target": "cometer errores"
+      },
+      "components": [
+        {
+          "known": "to make",
+          "target": "cometer"
+        },
+        {
+          "known": "mistakes",
+          "target": "errores"
+        }
+      ],
+      "teaches": "infinitive verb phrase as subject/object"
+    }
+  ],
+  "agentId": "agent-4.1",
+  "receivedAt": "2025-11-24T15:32:15.049Z"
+}

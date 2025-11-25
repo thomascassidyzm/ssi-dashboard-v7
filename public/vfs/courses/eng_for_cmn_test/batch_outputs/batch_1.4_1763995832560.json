@@ -1,0 +1,162 @@
+{
+  "browserId": 1,
+  "agentId": "1.4",
+  "seedRange": "S0010-S0012",
+  "seeds": [
+    {
+      "seed_id": "S0010",
+      "seed_pair": {
+        "known": "我不确定我能不能记住整个句子。",
+        "target": "I'm not sure if I can remember the whole sentence."
+      },
+      "legos": [
+        {
+          "id": "S0010L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我不确定",
+            "target": "I'm not sure"
+          }
+        },
+        {
+          "id": "S0010L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我能不能记住",
+            "target": "if I can remember"
+          },
+          "components": [
+            {
+              "known": "能",
+              "target": "can"
+            },
+            {
+              "known": "记住",
+              "target": "remember"
+            }
+          ],
+          "teaches": "Chinese uses 能不能 (can-not-can) pattern for uncertainty; English uses 'if I can'"
+        },
+        {
+          "id": "S0010L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "整个句子",
+            "target": "the whole sentence"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0011",
+      "seed_pair": {
+        "known": "我想在你说完之后能够说话。",
+        "target": "I'd like to be able to speak after you finish."
+      },
+      "legos": [
+        {
+          "id": "S0011L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我想",
+            "target": "I'd like"
+          }
+        },
+        {
+          "id": "S0011L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "能够",
+            "target": "to be able to"
+          }
+        },
+        {
+          "id": "S0011L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "说话",
+            "target": "speak"
+          }
+        },
+        {
+          "id": "S0011L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "在你说完之后",
+            "target": "after you finish"
+          },
+          "components": [
+            {
+              "known": "你",
+              "target": "you"
+            },
+            {
+              "known": "说完",
+              "target": "finish"
+            }
+          ],
+          "teaches": "Chinese uses 在...之后 structure before main verb; English puts 'after' clause at end"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0012",
+      "seed_pair": {
+        "known": "我不想猜测明天会发生什么。",
+        "target": "I wouldn't like to guess what's going to happen tomorrow."
+      },
+      "legos": [
+        {
+          "id": "S0012L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我不想",
+            "target": "I wouldn't like"
+          }
+        },
+        {
+          "id": "S0012L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "猜测",
+            "target": "to guess"
+          }
+        },
+        {
+          "id": "S0012L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "明天会发生什么",
+            "target": "what's going to happen tomorrow"
+          },
+          "components": [
+            {
+              "known": "明天",
+              "target": "tomorrow"
+            },
+            {
+              "known": "会发生",
+              "target": "is going to happen"
+            },
+            {
+              "known": "什么",
+              "target": "what"
+            }
+          ],
+          "teaches": "Chinese puts time before verb and question word at end; English puts 'what' at front and 'tomorrow' at end"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:50:32.560Z"
+}

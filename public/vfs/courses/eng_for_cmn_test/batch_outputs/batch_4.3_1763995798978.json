@@ -1,0 +1,234 @@
+{
+  "browserId": 4,
+  "agentId": "4.3",
+  "seedRange": "S0052-S0054",
+  "seeds": [
+    {
+      "seed_id": "S0052",
+      "seed_pair": {
+        "known": "他上周想给朋友写一封信。",
+        "target": "He wanted to write a letter to his friend last week."
+      },
+      "legos": [
+        {
+          "id": "S0052L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他",
+            "target": "he"
+          }
+        },
+        {
+          "id": "S0052L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "想",
+            "target": "wanted to"
+          }
+        },
+        {
+          "id": "S0052L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "写",
+            "target": "write"
+          }
+        },
+        {
+          "id": "S0052L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一封信",
+            "target": "a letter"
+          }
+        },
+        {
+          "id": "S0052L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "朋友",
+            "target": "friend"
+          }
+        },
+        {
+          "id": "S0052L06",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "上周",
+            "target": "last week"
+          }
+        },
+        {
+          "id": "S0052L07",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "给朋友写信",
+            "target": "write a letter to a friend"
+          },
+          "components": [
+            {
+              "known": "给",
+              "target": "to"
+            },
+            {
+              "known": "写信",
+              "target": "write a letter"
+            }
+          ],
+          "teaches": "Chinese uses 给 before the recipient, English uses to after the action"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0053",
+      "seed_pair": {
+        "known": "她想把他的信放进她的包里。",
+        "target": "She wanted to put his letter in her bag."
+      },
+      "legos": [
+        {
+          "id": "S0053L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她",
+            "target": "she"
+          }
+        },
+        {
+          "id": "S0053L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "放",
+            "target": "put"
+          }
+        },
+        {
+          "id": "S0053L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "他的信",
+            "target": "his letter"
+          }
+        },
+        {
+          "id": "S0053L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "她的包",
+            "target": "her bag"
+          }
+        },
+        {
+          "id": "S0053L05",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "放进包里",
+            "target": "put in the bag"
+          },
+          "components": [
+            {
+              "known": "放",
+              "target": "put"
+            },
+            {
+              "known": "进...里",
+              "target": "in"
+            }
+          ],
+          "teaches": "Chinese uses 进...里 structure for into/in, English uses preposition in"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0054",
+      "seed_pair": {
+        "known": "我们想多给你一点时间。",
+        "target": "We wanted to give you a little more time."
+      },
+      "legos": [
+        {
+          "id": "S0054L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "我们",
+            "target": "we"
+          }
+        },
+        {
+          "id": "S0054L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "给",
+            "target": "give"
+          }
+        },
+        {
+          "id": "S0054L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "你",
+            "target": "you"
+          }
+        },
+        {
+          "id": "S0054L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "时间",
+            "target": "time"
+          }
+        },
+        {
+          "id": "S0054L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "一点",
+            "target": "a little"
+          }
+        },
+        {
+          "id": "S0054L06",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "多给你一点",
+            "target": "give you a little more"
+          },
+          "components": [
+            {
+              "known": "多",
+              "target": "more"
+            },
+            {
+              "known": "给你",
+              "target": "give you"
+            },
+            {
+              "known": "一点",
+              "target": "a little"
+            }
+          ],
+          "teaches": "Chinese places 多 before the verb, English places more after the object"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:49:58.978Z"
+}

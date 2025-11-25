@@ -1,0 +1,69 @@
+{
+  "seed_id": "S0029",
+  "seed_pair": {
+    "known": "I'm looking forward to speaking better as soon as I can.",
+    "target": "Tengo ganas de hablar mejor tan pronto como pueda."
+  },
+  "legos": [
+    {
+      "id": "S0029L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "I'm looking forward to",
+        "target": "tengo ganas de"
+      },
+      "components": [
+        {
+          "known": "to have",
+          "target": "tener"
+        },
+        {
+          "known": "desire/urge",
+          "target": "ganas"
+        }
+      ],
+      "teaches": "idiomatic 'tener ganas de' for 'looking forward to'"
+    },
+    {
+      "id": "S0029L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to speak",
+        "target": "hablar"
+      }
+    },
+    {
+      "id": "S0029L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "better",
+        "target": "mejor"
+      }
+    },
+    {
+      "id": "S0029L04",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "as soon as I can",
+        "target": "tan pronto como pueda"
+      },
+      "components": [
+        {
+          "known": "as soon as",
+          "target": "tan pronto como"
+        },
+        {
+          "known": "I can",
+          "target": "pueda"
+        }
+      ],
+      "teaches": "subjunctive 'pueda' after 'tan pronto como'"
+    }
+  ],
+  "agentId": "2.5",
+  "receivedAt": "2025-11-24T15:33:06.691Z"
+}

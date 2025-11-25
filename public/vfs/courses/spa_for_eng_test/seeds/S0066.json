@@ -1,0 +1,54 @@
+{
+  "seed_id": "S0066",
+  "seed_pair": {
+    "known": "It's not difficult to find the answer.",
+    "target": "No es difícil encontrar la respuesta."
+  },
+  "legos": [
+    {
+      "id": "S0066L01",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "It's not difficult",
+        "target": "No es difícil"
+      },
+      "components": [
+        {
+          "known": "difficult",
+          "target": "difícil"
+        }
+      ],
+      "teaches": "negation pattern no es + adjective; subject it is omitted"
+    },
+    {
+      "id": "S0066L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to find",
+        "target": "encontrar"
+      }
+    },
+    {
+      "id": "S0066L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "the",
+        "target": "la"
+      }
+    },
+    {
+      "id": "S0066L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "answer",
+        "target": "respuesta"
+      }
+    }
+  ],
+  "agentId": "5.2",
+  "receivedAt": "2025-11-24T15:33:39.304Z"
+}

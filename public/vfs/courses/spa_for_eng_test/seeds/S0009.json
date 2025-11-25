@@ -1,0 +1,58 @@
+{
+  "seed_id": "S0009",
+  "seed_pair": {
+    "known": "I speak a little Spanish now.",
+    "target": "Hablo un poco de español ahora."
+  },
+  "legos": [
+    {
+      "id": "S0009L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "I speak",
+        "target": "Hablo"
+      }
+    },
+    {
+      "id": "S0009L02",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "a little",
+        "target": "un poco de"
+      },
+      "components": [
+        {
+          "known": "a little/a bit",
+          "target": "un poco"
+        },
+        {
+          "known": "of",
+          "target": "de"
+        }
+      ],
+      "teaches": "Partitive structure un poco de required before nouns unlike English a little"
+    },
+    {
+      "id": "S0009L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "Spanish",
+        "target": "español"
+      }
+    },
+    {
+      "id": "S0009L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "now",
+        "target": "ahora"
+      }
+    }
+  ],
+  "agentId": "1.3",
+  "receivedAt": "2025-11-24T15:32:53.324Z"
+}

@@ -1,0 +1,67 @@
+{
+  "seed_id": "S0018",
+  "seed_pair": {
+    "known": "We want to meet at six o clock this evening.",
+    "target": "Queremos reunirnos a las seis esta tarde."
+  },
+  "legos": [
+    {
+      "id": "S0018L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "we want",
+        "target": "queremos"
+      }
+    },
+    {
+      "id": "S0018L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to meet",
+        "target": "reunirnos"
+      }
+    },
+    {
+      "id": "S0018L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "this",
+        "target": "esta"
+      }
+    },
+    {
+      "id": "S0018L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "evening",
+        "target": "tarde"
+      }
+    },
+    {
+      "id": "S0018L05",
+      "type": "M",
+      "new": true,
+      "lego": {
+        "known": "at six o clock",
+        "target": "a las seis"
+      },
+      "components": [
+        {
+          "known": "at",
+          "target": "a"
+        },
+        {
+          "known": "six",
+          "target": "seis"
+        }
+      ],
+      "teaches": "time uses a las + number (feminine article las for implied horas)"
+    }
+  ],
+  "agentId": "2.1",
+  "receivedAt": "2025-11-24T15:34:00.856Z"
+}

@@ -1,0 +1,189 @@
+{
+  "browserId": 3,
+  "agentId": "3.3",
+  "seedRange": "S0037-S0039",
+  "seeds": [
+    {
+      "seed_id": "S0037",
+      "seed_pair": {
+        "known": "I started to think about it carefully last month.",
+        "target": "Ho cominciato a pensarci attentamente il mese scorso."
+      },
+      "legos": [
+        {
+          "id": "S0037L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I started",
+            "target": "Ho cominciato"
+          }
+        },
+        {
+          "id": "S0037L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to think about it",
+            "target": "a pensarci"
+          },
+          "components": [
+            {
+              "known": "to think",
+              "target": "pensare"
+            },
+            {
+              "known": "about it",
+              "target": "ci"
+            }
+          ],
+          "teaches": "linking 'a' before infinitive + clitic pronoun -ci attached for 'about it'"
+        },
+        {
+          "id": "S0037L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "carefully",
+            "target": "attentamente"
+          }
+        },
+        {
+          "id": "S0037L04",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "last month",
+            "target": "il mese scorso"
+          },
+          "components": [
+            {
+              "known": "the",
+              "target": "il"
+            },
+            {
+              "known": "month",
+              "target": "mese"
+            },
+            {
+              "known": "last",
+              "target": "scorso"
+            }
+          ],
+          "teaches": "word order: article + noun + scorso (not 'scorso mese')"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0038",
+      "seed_pair": {
+        "known": "I have been learning for about a week.",
+        "target": "Sto imparando da circa una settimana."
+      },
+      "legos": [
+        {
+          "id": "S0038L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I have been learning",
+            "target": "Sto imparando"
+          },
+          "components": [
+            {
+              "known": "I am (stare)",
+              "target": "sto"
+            },
+            {
+              "known": "learning",
+              "target": "imparando"
+            }
+          ],
+          "teaches": "progressive formed with stare + gerund (not avere + participle)"
+        },
+        {
+          "id": "S0038L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "for (duration)",
+            "target": "da"
+          }
+        },
+        {
+          "id": "S0038L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "about",
+            "target": "circa"
+          }
+        },
+        {
+          "id": "S0038L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a week",
+            "target": "una settimana"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0039",
+      "seed_pair": {
+        "known": "But I am a little tired this morning.",
+        "target": "Ma sono un po' stanco stamattina."
+      },
+      "legos": [
+        {
+          "id": "S0039L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "But",
+            "target": "Ma"
+          }
+        },
+        {
+          "id": "S0039L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I am",
+            "target": "sono"
+          }
+        },
+        {
+          "id": "S0039L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "a little",
+            "target": "un po'"
+          }
+        },
+        {
+          "id": "S0039L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "tired",
+            "target": "stanco"
+          }
+        },
+        {
+          "id": "S0039L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "this morning",
+            "target": "stamattina"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:53:37.804Z"
+}

@@ -1,0 +1,149 @@
+{
+  "browserId": 1,
+  "agentId": "1.1",
+  "seedRange": "S0001-S0003",
+  "seeds": [
+    {
+      "seed_id": "S0001",
+      "seed_pair": {
+        "known": "I want to speak Italian with you now.",
+        "target": "Voglio parlare italiano con te adesso."
+      },
+      "legos": [
+        {
+          "id": "S0001L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I want",
+            "target": "Voglio"
+          }
+        },
+        {
+          "id": "S0001L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to speak",
+            "target": "parlare"
+          }
+        },
+        {
+          "id": "S0001L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "Italian",
+            "target": "italiano"
+          }
+        },
+        {
+          "id": "S0001L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "with you",
+            "target": "con te"
+          }
+        },
+        {
+          "id": "S0001L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "now",
+            "target": "adesso"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0002",
+      "seed_pair": {
+        "known": "I'm trying to learn.",
+        "target": "Sto cercando di imparare."
+      },
+      "legos": [
+        {
+          "id": "S0002L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I'm trying",
+            "target": "Sto cercando"
+          },
+          "components": [
+            {
+              "known": "I am",
+              "target": "Sto"
+            },
+            {
+              "known": "trying",
+              "target": "cercando"
+            }
+          ],
+          "teaches": "Italian uses stare + gerund for present continuous (-ing form)"
+        },
+        {
+          "id": "S0002L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "to learn",
+            "target": "di imparare"
+          },
+          "components": [
+            {
+              "known": "to",
+              "target": "di"
+            },
+            {
+              "known": "learn",
+              "target": "imparare"
+            }
+          ],
+          "teaches": "After cercare, Italian requires di before the infinitive"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0003",
+      "seed_pair": {
+        "known": "how to speak as often as possible",
+        "target": "come parlare il più spesso possibile"
+      },
+      "legos": [
+        {
+          "id": "S0003L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how to speak",
+            "target": "come parlare"
+          }
+        },
+        {
+          "id": "S0003L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "as often as possible",
+            "target": "il più spesso possibile"
+          },
+          "components": [
+            {
+              "known": "often",
+              "target": "spesso"
+            },
+            {
+              "known": "possible",
+              "target": "possibile"
+            }
+          ],
+          "teaches": "Italian as...as possible pattern: il più + adjective/adverb + possibile"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T13:50:15.459Z"
+}

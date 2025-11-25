@@ -1,0 +1,194 @@
+{
+  "browserId": 5,
+  "agentId": "5.5",
+  "seedRange": "S0073-S0075",
+  "seeds": [
+    {
+      "seed_id": "S0073",
+      "seed_pair": {
+        "known": "Thank you very much, but I've got more to learn.",
+        "target": "非常感谢，但是我还有更多要学的。"
+      },
+      "legos": [
+        {
+          "id": "S0073L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "非常感谢"
+          },
+          "components": [
+            {
+              "known": "very",
+              "target": "非常"
+            },
+            {
+              "known": "thank you",
+              "target": "感谢"
+            }
+          ],
+          "teaches": "Intensifier 非常 precedes the verb it modifies"
+        },
+        {
+          "id": "S0073L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "but",
+            "target": "但是"
+          }
+        },
+        {
+          "id": "S0073L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "I've got more to learn",
+            "target": "我还有更多要学的"
+          },
+          "components": [
+            {
+              "known": "I",
+              "target": "我"
+            },
+            {
+              "known": "still have",
+              "target": "还有"
+            },
+            {
+              "known": "more",
+              "target": "更多"
+            },
+            {
+              "known": "to learn",
+              "target": "要学的"
+            }
+          ],
+          "teaches": "Chinese uses 还有 (still have) + 要学的 (that needs learning) structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0074",
+      "seed_pair": {
+        "known": "Thank you very much for helping me to understand.",
+        "target": "非常感谢你帮助我理解。"
+      },
+      "legos": [
+        {
+          "id": "S0074L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "thank you very much",
+            "target": "非常感谢"
+          },
+          "components": [
+            {
+              "known": "very",
+              "target": "非常"
+            },
+            {
+              "known": "thank you",
+              "target": "感谢"
+            }
+          ],
+          "teaches": "Intensifier 非常 precedes the verb it modifies"
+        },
+        {
+          "id": "S0074L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "for helping me",
+            "target": "帮助我"
+          },
+          "components": [
+            {
+              "known": "to help",
+              "target": "帮助"
+            },
+            {
+              "known": "me",
+              "target": "我"
+            }
+          ],
+          "teaches": "No preposition needed; verb directly takes object"
+        },
+        {
+          "id": "S0074L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to understand",
+            "target": "理解"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0075",
+      "seed_pair": {
+        "known": "Have you got more to learn?",
+        "target": "你还有更多要学的吗？"
+      },
+      "legos": [
+        {
+          "id": "S0075L01",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "do you have",
+            "target": "你有...吗"
+          },
+          "components": [
+            {
+              "known": "you",
+              "target": "你"
+            },
+            {
+              "known": "have",
+              "target": "有"
+            },
+            {
+              "known": "question particle",
+              "target": "吗"
+            }
+          ],
+          "teaches": "Yes/no questions use 吗 particle at end; no word order change"
+        },
+        {
+          "id": "S0075L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "still",
+            "target": "还"
+          }
+        },
+        {
+          "id": "S0075L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "more to learn",
+            "target": "更多要学的"
+          },
+          "components": [
+            {
+              "known": "more",
+              "target": "更多"
+            },
+            {
+              "known": "to learn",
+              "target": "要学的"
+            }
+          ],
+          "teaches": "的 nominalizes the verb phrase (thing that needs learning)"
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:22:21.769Z"
+}

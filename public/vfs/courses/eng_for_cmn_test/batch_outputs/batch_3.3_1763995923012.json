@@ -1,0 +1,177 @@
+{
+  "browserId": 3,
+  "agentId": "3.3",
+  "seedRange": "S0037-S0039",
+  "seeds": [
+    {
+      "seed_id": "S0037",
+      "seed_pair": {
+        "known": "上个月我开始仔细地考虑这件事。",
+        "target": "I started to think about it carefully last month."
+      },
+      "legos": [
+        {
+          "id": "S0037L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "上个月",
+            "target": "last month"
+          }
+        },
+        {
+          "id": "S0037L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "仔细地",
+            "target": "carefully"
+          }
+        },
+        {
+          "id": "S0037L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "我开始考虑",
+            "target": "I started to think about"
+          },
+          "components": [
+            {
+              "known": "我",
+              "target": "I"
+            },
+            {
+              "known": "开始",
+              "target": "started to"
+            },
+            {
+              "known": "考虑",
+              "target": "think about"
+            }
+          ],
+          "teaches": "started to + verb structure using 开始"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0038",
+      "seed_pair": {
+        "known": "我学习大约一个星期了。",
+        "target": "I've been learning for about a week."
+      },
+      "legos": [
+        {
+          "id": "S0038L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "学习",
+            "target": "learning"
+          }
+        },
+        {
+          "id": "S0038L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "大约",
+            "target": "about"
+          }
+        },
+        {
+          "id": "S0038L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "一个星期",
+            "target": "a week"
+          },
+          "components": [
+            {
+              "known": "一",
+              "target": "one"
+            },
+            {
+              "known": "个",
+              "target": "(classifier)"
+            },
+            {
+              "known": "星期",
+              "target": "week"
+            }
+          ],
+          "teaches": "number + classifier 个 + time noun structure"
+        }
+      ]
+    },
+    {
+      "seed_id": "S0039",
+      "seed_pair": {
+        "known": "但是今天早上我有点累。",
+        "target": "But I'm a little tired this morning."
+      },
+      "legos": [
+        {
+          "id": "S0039L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "但是",
+            "target": "but"
+          }
+        },
+        {
+          "id": "S0039L02",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "今天早上",
+            "target": "this morning"
+          },
+          "components": [
+            {
+              "known": "今天",
+              "target": "today"
+            },
+            {
+              "known": "早上",
+              "target": "morning"
+            }
+          ],
+          "teaches": "today + morning = this morning in Chinese"
+        },
+        {
+          "id": "S0039L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "有点累",
+            "target": "a little tired"
+          },
+          "components": [
+            {
+              "known": "有点",
+              "target": "a little"
+            },
+            {
+              "known": "累",
+              "target": "tired"
+            }
+          ],
+          "teaches": "有点 + adjective for expressing slight degree"
+        },
+        {
+          "id": "S0039L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "累",
+            "target": "tired"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:52:03.012Z"
+}

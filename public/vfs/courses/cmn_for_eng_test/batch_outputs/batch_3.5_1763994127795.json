@@ -1,0 +1,181 @@
+{
+  "browserId": 3,
+  "agentId": "3.5",
+  "seedRange": "S0043-S0045",
+  "seeds": [
+    {
+      "seed_id": "S0043",
+      "seed_pair": {
+        "known": "I wasn't thinking about how to answer.",
+        "target": "我没有在想怎么回答。"
+      },
+      "legos": [
+        {
+          "id": "S0043L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0043L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "wasn't",
+            "target": "没有"
+          }
+        },
+        {
+          "id": "S0043L03",
+          "type": "M",
+          "new": true,
+          "lego": {
+            "known": "thinking about",
+            "target": "在想"
+          },
+          "components": [
+            {
+              "known": "currently",
+              "target": "在"
+            },
+            {
+              "known": "to think",
+              "target": "想"
+            }
+          ],
+          "teaches": "Progressive aspect marker 在 placed before verb"
+        },
+        {
+          "id": "S0043L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "how to",
+            "target": "怎么"
+          }
+        },
+        {
+          "id": "S0043L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to answer",
+            "target": "回答"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0044",
+      "seed_pair": {
+        "known": "Or if I need to improve.",
+        "target": "或者如果我需要改进。"
+      },
+      "legos": [
+        {
+          "id": "S0044L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "or",
+            "target": "或者"
+          }
+        },
+        {
+          "id": "S0044L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "if",
+            "target": "如果"
+          }
+        },
+        {
+          "id": "S0044L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0044L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "need to",
+            "target": "需要"
+          }
+        },
+        {
+          "id": "S0044L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to improve",
+            "target": "改进"
+          }
+        }
+      ]
+    },
+    {
+      "seed_id": "S0045",
+      "seed_pair": {
+        "known": "I don't need to know everything.",
+        "target": "我不需要知道一切。"
+      },
+      "legos": [
+        {
+          "id": "S0045L01",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "I",
+            "target": "我"
+          }
+        },
+        {
+          "id": "S0045L02",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "don't",
+            "target": "不"
+          }
+        },
+        {
+          "id": "S0045L03",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "need to",
+            "target": "需要"
+          }
+        },
+        {
+          "id": "S0045L04",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "to know",
+            "target": "知道"
+          }
+        },
+        {
+          "id": "S0045L05",
+          "type": "A",
+          "new": true,
+          "lego": {
+            "known": "everything",
+            "target": "一切"
+          }
+        }
+      ]
+    }
+  ],
+  "receivedAt": "2025-11-24T14:22:07.795Z"
+}

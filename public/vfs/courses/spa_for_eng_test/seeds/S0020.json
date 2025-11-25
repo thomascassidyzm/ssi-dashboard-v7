@@ -1,0 +1,56 @@
+{
+  "seed_id": "S0020",
+  "seed_pair": {
+    "known": "You want to learn his name quickly.",
+    "target": "Quieres aprender su nombre rápidamente."
+  },
+  "legos": [
+    {
+      "id": "S0020L01",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "you want",
+        "target": "quieres"
+      }
+    },
+    {
+      "id": "S0020L02",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "to learn",
+        "target": "aprender"
+      }
+    },
+    {
+      "id": "S0020L03",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "his",
+        "target": "su"
+      }
+    },
+    {
+      "id": "S0020L04",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "name",
+        "target": "nombre"
+      }
+    },
+    {
+      "id": "S0020L05",
+      "type": "A",
+      "new": true,
+      "lego": {
+        "known": "quickly",
+        "target": "rápidamente"
+      }
+    }
+  ],
+  "agentId": "2.2",
+  "receivedAt": "2025-11-24T15:32:44.453Z"
+}
