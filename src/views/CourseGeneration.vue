@@ -271,6 +271,41 @@
             </div>
           </div>
 
+          <!-- Model Selection for Benchmarking -->
+          <div class="mb-6">
+            <h3 class="text-lg font-medium text-slate-300 mb-3">Model Selection</h3>
+            <div class="grid grid-cols-3 gap-3">
+              <button
+                v-for="model in modelOptions"
+                :key="model.value"
+                @click="selectedModel = model.value"
+                :class="[
+                  'p-3 rounded-lg border-2 text-left transition-all',
+                  selectedModel === model.value
+                    ? 'bg-purple-500/20 border-purple-500 ring-2 ring-purple-500/50'
+                    : 'bg-slate-800/50 border-slate-600 hover:border-slate-500'
+                ]"
+              >
+                <div class="font-semibold text-slate-100 text-sm">{{ model.label }}</div>
+                <div class="text-xs text-slate-400 mt-1">
+                  <span class="text-purple-400">{{ model.speed }}</span> · {{ model.quality }}
+                </div>
+              </button>
+            </div>
+            <div class="mt-3 p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+              <div class="flex items-start gap-2">
+                <span class="text-purple-400">⚡</span>
+                <div class="text-sm">
+                  <p class="text-purple-300 font-medium">Before starting, set your model in Claude Code on Web:</p>
+                  <p class="text-slate-400 text-xs mt-1">Settings → Model → Select <strong class="text-purple-300">{{ modelOptions.find(m => m.value === selectedModel)?.label }}</strong></p>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">
+              Course will be saved as: <code class="text-purple-400">{{ targetLanguage }}_for_{{ knownLanguage }}_{{ selectedModel }}_test</code>
+            </p>
+          </div>
+
           <!-- Execution Plan -->
           <div class="mb-6 p-4 bg-blue-900/20 rounded-lg border border-blue-500/30">
             <h4 class="font-medium text-blue-300 mb-3">📋 Execution Plan</h4>
@@ -614,6 +649,14 @@ const endSeed = ref(30)
 const executionMode = ref('web') // 'local', 'api', or 'web'
 const phaseSelection = ref('all') // 'all', 'phase1', 'phase2', 'phase3', 'manifest'
 
+// Model selection for benchmarking
+const selectedModel = ref('sonnet') // 'haiku', 'sonnet', 'opus'
+const modelOptions = [
+  { value: 'haiku', label: 'Haiku 3.5', suffix: 'haiku', speed: 'Fastest', quality: 'Good' },
+  { value: 'sonnet', label: 'Sonnet 4', suffix: 'sonnet', speed: 'Fast', quality: 'Great' },
+  { value: 'opus', label: 'Opus 4', suffix: 'opus', speed: 'Slower', quality: 'Best' }
+]
+
 // Parallelization config
 const selectedPreset = ref('test') // 'test', 'full', 'custom'
 const parallelConfig = ref({
@@ -950,7 +993,8 @@ const startGeneration = async (force = false) => {
       endSeed: endSeed.value,
       executionMode: executionMode.value,
       phaseSelection: phaseSelection.value,
-      force: force
+      force: force,
+      modelSuffix: `${selectedModel.value}_test`  // Append model name for benchmarking
     })
 
     console.log('Course generation started:', response)

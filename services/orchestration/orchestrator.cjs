@@ -1276,7 +1276,8 @@ app.post('/api/courses/generate', async (req, res) => {
     phaseSelection = 'all',
     executionMode,
     strategy = 'balanced',
-    courseCode: providedCourseCode
+    courseCode: providedCourseCode,
+    modelSuffix  // Optional suffix for benchmarking (e.g., 'sonnet_test', 'opus_test')
   } = req.body;
 
   // Generate or use provided course code
@@ -1285,6 +1286,10 @@ app.post('/api/courses/generate', async (req, res) => {
     courseCode = providedCourseCode;
   } else if (target && known) {
     courseCode = `${target.toLowerCase()}_for_${known.toLowerCase()}`;
+    // Append model suffix if provided (for benchmarking different models)
+    if (modelSuffix) {
+      courseCode = `${courseCode}_${modelSuffix}`;
+    }
   } else {
     return res.status(400).json({ error: 'Either courseCode or both target and known are required' });
   }
