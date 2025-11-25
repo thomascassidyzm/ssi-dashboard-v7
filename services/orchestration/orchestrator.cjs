@@ -3677,6 +3677,41 @@ app.post('/phase3/stop/:courseCode', async (req, res) => {
   }
 });
 
+/**
+ * POST /phase3/start
+ * Proxy to Phase 3 basket server - used by dashboard for basket regeneration
+ */
+app.post('/phase3/start', async (req, res) => {
+  const { courseCode, startSeed, endSeed, target, known, stagingOnly } = req.body;
+
+  if (!courseCode) {
+    return res.status(400).json({ error: 'courseCode required' });
+  }
+
+  console.log(`[Orchestrator] Phase 3 start request for ${courseCode}`);
+
+  try {
+    const response = await axios.post(`${PHASE_SERVERS[3]}/start`, {
+      courseCode,
+      startSeed: startSeed || 1,
+      endSeed: endSeed || 668,
+      target: target || courseCode.split('_for_')[0],
+      known: known || courseCode.split('_for_')[1],
+      stagingOnly
+    }, { timeout: 30000 });
+
+    console.log(`[Orchestrator] Phase 3 started for ${courseCode}`);
+    res.json(response.data);
+  } catch (error) {
+    console.error(`[Orchestrator] Phase 3 start failed: ${error.message}`);
+    if (error.response) {
+      res.status(error.response.status).json(error.response.data);
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
 app.post('/phase5/abort/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   try {
