@@ -181,7 +181,8 @@ export default {
         const baskets = cachedData.legoBaskets || []
 
         // Convert translations object to array - handle both old array and new object formats
-        const translationsObj = seedPairsData.translations || {}
+        // Handle missing seed_pairs data gracefully (some test courses only have lego_pairs)
+        const translationsObj = seedPairsData?.translations || {}
         const translations = Object.entries(translationsObj).map(([seed_id, translation]) => {
           // Handle both old array format and new object format (APML v8.2.0+)
           let target_phrase, known_phrase
