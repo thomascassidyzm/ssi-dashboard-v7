@@ -180,27 +180,41 @@ export default {
         const legoPairsData = cachedData.legoPairs
         const baskets = cachedData.legoBaskets || []
 
-        // Convert translations object to array - handle both old array and new object formats
-        // Handle missing seed_pairs data gracefully (some test courses only have lego_pairs)
-        const translationsObj = seedPairsData?.translations || {}
-        const translations = Object.entries(translationsObj).map(([seed_id, translation]) => {
-          // Handle both old array format and new object format (APML v8.2.0+)
-          let target_phrase, known_phrase
-          if (Array.isArray(translation)) {
-            // Old format: ["target", "known"]
-            [target_phrase, known_phrase] = translation
-          } else {
-            // New format: {target: "...", known: "..."}
-            target_phrase = translation.target
-            known_phrase = translation.known
-          }
-          return {
-            seed_id,
-            target_phrase,
-            known_phrase,
+        // Convert translations to array - try seed_pairs.json first, then derive from lego_pairs.json
+        let translations = []
+
+        if (seedPairsData?.translations) {
+          // Primary source: seed_pairs.json
+          const translationsObj = seedPairsData.translations
+          translations = Object.entries(translationsObj).map(([seed_id, translation]) => {
+            // Handle both old array format and new object format (APML v8.2.0+)
+            let target_phrase, known_phrase
+            if (Array.isArray(translation)) {
+              // Old format: ["target", "known"]
+              [target_phrase, known_phrase] = translation
+            } else {
+              // New format: {target: "...", known: "..."}
+              target_phrase = translation.target
+              known_phrase = translation.known
+            }
+            return {
+              seed_id,
+              target_phrase,
+              known_phrase,
+              canonical_seed: null
+            }
+          })
+        } else if (legoPairsData?.seeds) {
+          // Fallback: derive from lego_pairs.json (each seed has seed_pair embedded)
+          console.log(`[API] Deriving translations from lego_pairs.json for ${courseCode}`)
+          translations = legoPairsData.seeds.map(seed => ({
+            seed_id: seed.seed_id,
+            target_phrase: seed.seed_pair?.target || seed.seed_pair?.[0] || '',
+            known_phrase: seed.seed_pair?.known || seed.seed_pair?.[1] || '',
             canonical_seed: null
-          }
-        })
+          }))
+        }
+
         translations.sort((a, b) => a.seed_id.localeCompare(b.seed_id))
 
         // Convert lego_pairs to flat array - handle both v7.7 and v5.0.1 formats
