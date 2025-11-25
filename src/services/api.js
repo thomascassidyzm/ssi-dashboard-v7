@@ -120,6 +120,11 @@ export default {
       return response.data
     },
 
+    async getPhase2Stats(courseCode) {
+      const response = await api.get(`/api/courses/${courseCode}/phase2-stats`)
+      return response.data
+    },
+
     async list() {
       // ALWAYS use static manifest (GitHub is single source of truth)
       // This ensures everyone (Tom, Kai, anyone) sees the same courses

@@ -1004,12 +1004,30 @@ const startGeneration = async (force = false) => {
   }
 }
 
+// Track previous phase to detect transitions
+const previousPhase = ref(null)
+
 const startPolling = (code) => {
   // Poll every 5 seconds for real-time updates
   pollInterval = setInterval(async () => {
     try {
       const status = await api.course.getStatus(code)
-      currentPhase.value = status.currentPhase ? `Phase ${status.currentPhase}` : 'initializing'
+      const newPhase = status.currentPhase ? `Phase ${status.currentPhase}` : 'initializing'
+
+      // Detect Phase 2 → Phase 3 transition (checkpoint moment)
+      const wasPhase2 = previousPhase.value?.includes('2')
+      const isPhase3OrLater = newPhase.includes('3') || newPhase.includes('manifest') || newPhase.includes('audio')
+
+      if (wasPhase2 && isPhase3OrLater && !showPhase2Checkpoint.value) {
+        // Phase 2 just completed - show checkpoint before continuing
+        console.log('[CourseGeneration] Phase 2 completed - showing checkpoint')
+        await fetchPhase2Stats()
+        stopPolling()
+        return
+      }
+
+      previousPhase.value = newPhase
+      currentPhase.value = newPhase
       progress.value = status.progress || 0
 
       // Capture enhanced tracking
@@ -1135,6 +1153,29 @@ const clearStuckJob = async () => {
 }
 
 // Phase 2 Checkpoint methods
+const fetchPhase2Stats = async () => {
+  if (!courseCode.value) return
+
+  try {
+    const stats = await api.course.getPhase2Stats(courseCode.value)
+    phase2ValidationStats.value = {
+      collisions: stats.collisions,
+      reuseTracking: stats.reuseTracking,
+      validation: {
+        completeBreakdowns: stats.validation.completeBreakdowns,
+        allTilesValidate: stats.validation.allTilesValidate,
+        noFdViolations: stats.validation.noFdViolations
+      }
+    }
+    showPhase2Checkpoint.value = true
+  } catch (error) {
+    console.error('Failed to fetch Phase 2 stats:', error)
+    // If fetch fails, show modal with placeholder data
+    showPhase2Checkpoint.value = true
+    toast.warning('Could not fetch Phase 2 stats - using placeholder data')
+  }
+}
+
 const viewLegoPairs = () => {
   // Navigate to course editor to view lego_pairs
   if (courseCode.value) {
@@ -1145,17 +1186,29 @@ const viewLegoPairs = () => {
 const continueToPhase3 = async () => {
   showPhase2Checkpoint.value = false
   try {
-    // Trigger Phase 3 continuation
+    // Trigger Phase 3 continuation via orchestrator
     const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'
-    await fetch(`${baseUrl}/api/courses/${courseCode.value}/continue-phase3`, {
+    const response = await fetch(`${baseUrl}/api/courses/${courseCode.value}/start-phase`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true'
-      }
+      },
+      body: JSON.stringify({ phase: 3, totalSeeds: seedCount.value })
     })
+
+    if (!response.ok) {
+      throw new Error(`Failed to start Phase 3: ${response.statusText}`)
+    }
+
     currentPhase.value = 'Phase 3'
+    previousPhase.value = 'Phase 3'
     toast.success('Starting Phase 3...')
+
+    // Resume polling for Phase 3 progress
+    if (courseCode.value) {
+      startPolling(courseCode.value)
+    }
   } catch (error) {
     console.error('Failed to continue to Phase 3:', error)
     toast.error('Failed to start Phase 3')
