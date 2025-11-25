@@ -1,0 +1,1116 @@
+{
+  "version": "v10.0_explicit_slot_categories",
+  "seed_id": "S0094",
+  "generation_stage": "SCAFFOLD_READY_FOR_PHRASE_GENERATION",
+  "languages": {
+    "source": "english",
+    "target": "mandarin",
+    "course": "cmn_for_eng"
+  },
+  "seed_pair": {
+    "known": "This is the only way it will work.",
+    "target": "这是唯一的方法让它起作用。"
+  },
+  "recent_seed_pairs": [
+    {
+      "seed_id": "S0084"
+    },
+    {
+      "seed_id": "S0085"
+    },
+    {
+      "seed_id": "S0086"
+    },
+    {
+      "seed_id": "S0087"
+    },
+    {
+      "seed_id": "S0088"
+    },
+    {
+      "seed_id": "S0089"
+    },
+    {
+      "seed_id": "S0090"
+    },
+    {
+      "seed_id": "S0091"
+    },
+    {
+      "seed_id": "S0092"
+    },
+    {
+      "seed_id": "S0093"
+    }
+  ],
+  "recent_new_legos": [
+    {
+      "id": "S0088L06",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0088L08",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0089L01",
+      "english": "",
+      "mandarin": "",
+      "type": "A"
+    },
+    {
+      "id": "S0089L02",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0089L03",
+      "english": "",
+      "mandarin": "",
+      "type": "A"
+    },
+    {
+      "id": "S0089L04",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0089L05",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0089L06",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0089L07",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0089L08",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0089L09",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0090L01",
+      "english": "",
+      "mandarin": "",
+      "type": "A"
+    },
+    {
+      "id": "S0090L03",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0090L04",
+      "english": "",
+      "mandarin": "",
+      "type": "A"
+    },
+    {
+      "id": "S0090L05",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0090L06",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0090L07",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0090L08",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0090L09",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0090L10",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0091L01",
+      "english": "",
+      "mandarin": "",
+      "type": "A"
+    },
+    {
+      "id": "S0091L02",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0091L03",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0091L04",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0091L05",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0092L02",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0092L03",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0092L04",
+      "english": "",
+      "mandarin": "",
+      "type": "A"
+    },
+    {
+      "id": "S0092L05",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    },
+    {
+      "id": "S0093L02",
+      "english": "",
+      "mandarin": "",
+      "type": "M"
+    }
+  ],
+  "legos": {
+    "S0094L01": {
+      "lego_id": "S0094L01",
+      "lego": {
+        "english": "",
+        "mandarin": ""
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0094L01",
+        "seed_context": {
+          "known": "This is the only way it will work.",
+          "target": "这是唯一的方法让它起作用。"
+        }
+      },
+      "components": [
+        {
+          "known": "this",
+          "target": "这"
+        },
+        {
+          "known": "is",
+          "target": "是"
+        }
+      ]
+    },
+    "S0094L02": {
+      "lego_id": "S0094L02",
+      "lego": {
+        "english": "",
+        "mandarin": ""
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0094L01",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0094L02",
+        "seed_context": {
+          "known": "This is the only way it will work.",
+          "target": "这是唯一的方法让它起作用。"
+        }
+      },
+      "components": [
+        {
+          "known": "only",
+          "target": "唯一"
+        },
+        {
+          "known": "[particle]",
+          "target": "的"
+        },
+        {
+          "known": "way/method",
+          "target": "方法"
+        }
+      ]
+    },
+    "S0094L03": {
+      "lego_id": "S0094L03",
+      "lego": {
+        "english": "",
+        "mandarin": ""
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0094L01",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        },
+        {
+          "id": "S0094L02",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0094L03",
+        "seed_context": {
+          "known": "This is the only way it will work.",
+          "target": "这是唯一的方法让它起作用。"
+        }
+      },
+      "components": [
+        {
+          "known": "let/make",
+          "target": "让"
+        },
+        {
+          "known": "it",
+          "target": "它"
+        },
+        {
+          "known": "work",
+          "target": "起作用"
+        }
+      ]
+    },
+    "S0094L04": {
+      "lego_id": "S0094L04",
+      "lego": {
+        "english": "",
+        "mandarin": ""
+      },
+      "type": "M",
+      "is_final_lego": false,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0094L01",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        },
+        {
+          "id": "S0094L02",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        },
+        {
+          "id": "S0094L03",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0094L04",
+        "seed_context": {
+          "known": "This is the only way it will work.",
+          "target": "这是唯一的方法让它起作用。"
+        }
+      },
+      "components": [
+        {
+          "known": "it",
+          "target": "它"
+        },
+        {
+          "known": "work",
+          "target": "起作用"
+        }
+      ]
+    },
+    "S0094L05": {
+      "lego_id": "S0094L05",
+      "lego": {
+        "english": "",
+        "mandarin": ""
+      },
+      "type": "M",
+      "is_final_lego": true,
+      "current_seed_earlier_legos": [
+        {
+          "id": "S0094L01",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        },
+        {
+          "id": "S0094L02",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        },
+        {
+          "id": "S0094L03",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        },
+        {
+          "id": "S0094L04",
+          "english": "",
+          "mandarin": "",
+          "type": "M"
+        }
+      ],
+      "practice_phrases": {
+        "short_1_to_2_legos": {
+          "description": "Short phrases using 1-2 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "short_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "short_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "medium_3_legos": {
+          "description": "Medium phrases using exactly 3 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "medium_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "medium_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longer_4_legos": {
+          "description": "Longer phrases using exactly 4 LEGOs (fill 2 slots)",
+          "target_count": 2,
+          "slots": [
+            {
+              "slot_id": "longer_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longer_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "longest_5_legos": {
+          "description": "Longest phrases using 5+ LEGOs (fill 4 slots)",
+          "target_count": 4,
+          "slots": [
+            {
+              "slot_id": "longest_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_3",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "longest_4",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        },
+        "bonus_optional": {
+          "description": "OPTIONAL bonus phrases for extra practice or refinement (0-2 slots)",
+          "target_count": 0,
+          "max_count": 2,
+          "slots": [
+            {
+              "slot_id": "bonus_1",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            },
+            {
+              "slot_id": "bonus_2",
+              "phrase": {
+                "english": "",
+                "mandarin": ""
+              },
+              "lego_count_used": null
+            }
+          ]
+        }
+      },
+      "total_required_phrases": 10,
+      "total_optional_phrases": 2,
+      "_metadata": {
+        "lego_id": "S0094L05",
+        "seed_context": {
+          "known": "This is the only way it will work.",
+          "target": "这是唯一的方法让它起作用。"
+        }
+      },
+      "components": [
+        {
+          "known": "start/arise",
+          "target": "起"
+        },
+        {
+          "known": "effect/function",
+          "target": "作用"
+        }
+      ]
+    }
+  },
+  "_instructions": {
+    "task": "Fill practice_phrases using Phase 5 Intelligence v10.0",
+    "methodology": "Read: https://ssi-dashboard-v7.vercel.app/phase-intelligence/5 OR docs/phase_intelligence/phase_5_lego_baskets.md",
+    "vocabulary_sources": "10 recent seed pairs + 30 recent NEW LEGOs + current seed's earlier LEGOs + current LEGO",
+    "distribution": "ALWAYS 2-2-2-4 (10 required phrases) + 0-2 optional bonus phrases",
+    "slot_categories": {
+      "short_1_to_2_legos": "2 slots using 1-2 LEGOs each",
+      "medium_3_legos": "2 slots using exactly 3 LEGOs each",
+      "longer_4_legos": "2 slots using exactly 4 LEGOs each",
+      "longest_5_legos": "4 slots using 5+ LEGOs each",
+      "bonus_optional": "0-2 optional bonus slots (only if exceptional phrases)"
+    },
+    "phrase_format": "phrase: {english: \"...\", mandarin: \"...\"}, lego_count_used: N",
+    "output_upload": "POST to ngrok endpoint: /phase5/upload-basket",
+    "output_file": "/home/user/ssi-dashboard-v7/public/vfs/courses/cmn_for_eng/phase5_outputs_v10/seed_s0094.json"
+  },
+  "_stats": {
+    "new_legos_in_seed": 5,
+    "phrases_to_generate": 50,
+    "required_phrases_per_lego": 10,
+    "optional_phrases_per_lego": 2,
+    "recent_seed_pairs_count": 10,
+    "recent_new_legos_count": 30
+  }
+}
