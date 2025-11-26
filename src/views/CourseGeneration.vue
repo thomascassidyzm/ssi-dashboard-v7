@@ -107,30 +107,51 @@
               </button>
             </div>
 
-            <!-- Course Status -->
+            <!-- Course Status (APML v9.0) -->
             <div class="mb-6 p-4 bg-slate-800/50 rounded-lg">
               <div class="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span class="text-slate-400">Phase 1 (Draft LEGOs):</span>
-                  <span class="ml-2 font-semibold" :class="analysis.seed_pairs.exists ? 'text-green-400' : 'text-red-400'">
-                    {{ analysis.seed_pairs.exists ? `✓ ${analysis.seed_pairs.count} seeds` : '✗ Missing' }}
+                  <span class="text-slate-400">Phase 1 (draft_lego_pairs):</span>
+                  <span class="ml-2 font-semibold" :class="analysis.draft_lego_pairs?.exists || analysis.seed_pairs?.exists ? 'text-green-400' : 'text-red-400'">
+                    {{ (analysis.draft_lego_pairs?.exists || analysis.seed_pairs?.exists) ? `✓ ${analysis.draft_lego_pairs?.count || analysis.seed_pairs?.count} seeds` : '✗ Missing' }}
                   </span>
                 </div>
                 <div>
-                  <span class="text-slate-400">Phase 2 (lego_pairs.json):</span>
-                  <span class="ml-2 font-semibold" :class="analysis.lego_pairs.exists ? 'text-green-400' : 'text-red-400'">
-                    {{ analysis.lego_pairs.exists ? `✓ ${analysis.lego_pairs.count} LEGOs` : '✗ Missing' }}
+                  <span class="text-slate-400">Phase 2 (lego_pairs):</span>
+                  <span class="ml-2 font-semibold" :class="analysis.lego_pairs?.exists ? 'text-green-400' : 'text-red-400'">
+                    {{ analysis.lego_pairs?.exists ? `✓ ${analysis.lego_pairs?.count} seeds, ${analysis.lego_pairs?.legos || 0} LEGOs` : '✗ Missing' }}
                   </span>
                 </div>
                 <div v-if="analysis.baskets">
                   <span class="text-slate-400">Phase 3 (Baskets):</span>
-                  <span class="ml-2 font-semibold" :class="analysis.lego_pairs.exists && analysis.baskets.missing_seeds === 0 ? 'text-green-400' : 'text-amber-400'">
-                    {{ !analysis.lego_pairs.exists ? '⚠️ Requires Phase 2' : (analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠️ ${analysis.baskets.missing_seeds} seeds missing`) }}
+                  <span class="ml-2 font-semibold" :class="analysis.lego_pairs?.exists && analysis.baskets.missing_seeds === 0 ? 'text-green-400' : 'text-amber-400'">
+                    {{ !analysis.lego_pairs?.exists ? '⚠ Requires Phase 2' : (analysis.baskets.missing_seeds === 0 ? '✓ Complete' : `⚠ ${analysis.baskets.missing_seeds} seeds missing`) }}
+                  </span>
+                </div>
+                <div v-if="analysis.flags">
+                  <span class="text-slate-400">QC Flags:</span>
+                  <span class="ml-2 font-semibold" :class="analysis.flags.unresolved > 0 ? 'text-amber-400' : 'text-green-400'">
+                    {{ analysis.flags.unresolved > 0 ? `🚩 ${analysis.flags.unresolved} unresolved` : '✓ None' }}
                   </span>
                 </div>
               </div>
-              <div v-if="analysis.lego_pairs.missing && analysis.lego_pairs.missing.length > 0" class="mt-3 text-sm text-amber-400">
-                ⚠️  {{ analysis.lego_pairs.missing.length }} seeds missing LEGOs
+              <div v-if="analysis.lego_pairs?.missing && analysis.lego_pairs.missing.length > 0" class="mt-3 text-sm text-amber-400">
+                ⚠ {{ analysis.lego_pairs.missing.length }} seeds missing LEGOs
+              </div>
+              <!-- Flags detail -->
+              <div v-if="analysis.flags?.unresolved > 0" class="mt-3 p-3 bg-amber-900/20 border border-amber-500/30 rounded-lg">
+                <div class="text-sm text-amber-300 font-medium mb-2">🚩 Unresolved Flags:</div>
+                <div class="space-y-1 text-xs">
+                  <div v-for="flag in analysis.flags.items.slice(0, 5)" :key="flag.id" class="text-slate-300">
+                    <span class="text-cyan-400">{{ flag.seedId }}</span>
+                    <span v-if="flag.legoId" class="text-blue-400">/{{ flag.legoId }}</span>
+                    <span class="text-slate-500"> - {{ flag.issueType }}</span>
+                    <span v-if="flag.suggestedCorrection" class="text-emerald-400"> → {{ flag.suggestedCorrection }}</span>
+                  </div>
+                  <div v-if="analysis.flags.items.length > 5" class="text-slate-500">
+                    ... and {{ analysis.flags.items.length - 5 }} more
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -145,7 +166,8 @@
                 <div class="flex items-start justify-between">
                   <div class="flex-1">
                     <div class="flex items-center gap-2 mb-1">
-                      <span v-if="rec.type === 'test'" class="text-xl">✨</span>
+                      <span v-if="rec.type === 'regenerate-flagged'" class="text-xl">🚩</span>
+                      <span v-else-if="rec.type === 'test'" class="text-xl">✨</span>
                       <span v-else-if="rec.type === 'resume-baskets'" class="text-xl">📦</span>
                       <span v-else-if="rec.type === 'resume'" class="text-xl">📝</span>
                       <span v-else-if="rec.type === 'full'" class="text-xl">🚀</span>
@@ -155,12 +177,18 @@
                       </span>
                     </div>
                     <p class="text-sm text-slate-400 ml-7">{{ rec.description }}</p>
-                    <p v-if="rec.action.phases" class="text-xs text-emerald-500 ml-7 mt-1">
+                    <p v-if="rec.type === 'regenerate-flagged'" class="text-xs text-amber-400 ml-7 mt-1">
+                      Seeds: {{ rec.action.seeds?.join(', ') }}
+                    </p>
+                    <p v-else-if="rec.action.phases" class="text-xs text-emerald-500 ml-7 mt-1">
                       Phase {{ rec.phase }} only (intelligent resume - missing baskets)
                     </p>
-                    <p v-else class="text-xs text-slate-500 ml-7 mt-1">
+                    <p v-else-if="rec.action.startSeed && rec.action.endSeed" class="text-xs text-slate-500 ml-7 mt-1">
                       Seeds {{ rec.action.startSeed }}-{{ rec.action.endSeed }}
                       ({{ rec.action.endSeed - rec.action.startSeed + 1 }} seeds)
+                    </p>
+                    <p v-else-if="rec.action.count" class="text-xs text-slate-500 ml-7 mt-1">
+                      {{ rec.action.count }} random seeds
                     </p>
                   </div>
                   <span class="text-emerald-400 opacity-0 group-hover:opacity-100 transition">→</span>

@@ -660,45 +660,66 @@ app.get('/api/courses/:courseCode/status', async (req, res) => {
 
 /**
  * GET /api/courses/:courseCode/analyze
- * Analyze course state and return intelligent recommendations
+ * Analyze course state and return intelligent recommendations (APML v9.0)
  */
 app.get('/api/courses/:courseCode/analyze', async (req, res) => {
   const { courseCode } = req.params;
   const courseDir = path.join(VFS_ROOT, courseCode);
 
   try {
-    // Check what phase outputs exist
-    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
-    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    // Check what phase outputs exist (APML v9.0 structure)
+    const draftLegoPairsPath = path.join(courseDir, 'draft_lego_pairs.json'); // Phase 1
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json'); // Phase 2
     const introsPath = path.join(courseDir, 'introductions.json');
-    const basketsPath = path.join(courseDir, 'lego_baskets.json');
+    const basketsPath = path.join(courseDir, 'lego_baskets.json'); // Phase 3
+    const flagsPath = path.join(courseDir, 'flags.json'); // QC Flags
 
-    const seedPairsExists = await fs.pathExists(seedPairsPath);
+    const draftLegoPairsExists = await fs.pathExists(draftLegoPairsPath);
     const legoPairsExists = await fs.pathExists(legoPairsPath);
     const introsExists = await fs.pathExists(introsPath);
     const basketsExists = await fs.pathExists(basketsPath);
+    const flagsExists = await fs.pathExists(flagsPath);
 
     // Count what we have
-    let seedCount = 0;
+    let phase1SeedCount = 0;
+    let phase2SeedCount = 0;
     let legoCount = 0;
     let basketCount = 0;
     let missingLegoSeeds = [];
 
-    if (seedPairsExists) {
-      const seedData = await fs.readJSON(seedPairsPath);
-      seedCount = Object.keys(seedData.translations || {}).length;
+    // Load flags
+    let flags = [];
+    let unresolvedFlags = [];
+    if (flagsExists) {
+      const flagsData = await fs.readJSON(flagsPath);
+      flags = flagsData.flags || [];
+      unresolvedFlags = flags.filter(f => !f.resolved);
     }
 
+    // Phase 1: draft_lego_pairs.json
+    if (draftLegoPairsExists) {
+      const draftData = await fs.readJSON(draftLegoPairsPath);
+      phase1SeedCount = (draftData.seeds || []).length;
+    }
+
+    // Phase 2: lego_pairs.json (conflict-resolved)
     if (legoPairsExists) {
       const legoData = await fs.readJSON(legoPairsPath);
-      legoCount = (legoData.seeds || []).length;
+      phase2SeedCount = (legoData.seeds || []).length;
 
-      // Find seeds that have translations but no LEGOs
-      if (seedPairsExists) {
-        const seedData = await fs.readJSON(seedPairsPath);
-        const allSeeds = Object.keys(seedData.translations || {});
+      // Count unique LEGOs (new: true)
+      let uniqueLegoCount = 0;
+      for (const seed of (legoData.seeds || [])) {
+        uniqueLegoCount += (seed.legos || []).filter(l => l.new === true).length;
+      }
+      legoCount = uniqueLegoCount;
+
+      // Find seeds in Phase 1 but not Phase 2
+      if (draftLegoPairsExists) {
+        const draftData = await fs.readJSON(draftLegoPairsPath);
+        const draftSeeds = (draftData.seeds || []).map(s => s.seed_id);
         const legoSeeds = (legoData.seeds || []).map(s => s.seed_id);
-        missingLegoSeeds = allSeeds.filter(s => !legoSeeds.includes(s));
+        missingLegoSeeds = draftSeeds.filter(s => !legoSeeds.includes(s));
       }
     }
 
@@ -755,7 +776,10 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
     // Generate intelligent recommendations
     const recommendations = [];
 
-    if (!seedPairsExists) {
+    // Use phase2SeedCount as the main indicator (or phase1 if phase2 doesn't exist)
+    const seedCount = phase2SeedCount || phase1SeedCount;
+
+    if (!draftLegoPairsExists && !legoPairsExists) {
       // No course data - suggest starting fresh
       recommendations.push({
         type: 'test',
@@ -771,6 +795,18 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       });
     } else {
       // Course exists - analyze what's missing
+
+      // Priority: Flagged items regeneration
+      if (unresolvedFlags.length > 0) {
+        const flaggedSeeds = [...new Set(unresolvedFlags.map(f => f.seedId))];
+        recommendations.push({
+          type: 'regenerate-flagged',
+          title: `🚩 Regenerate Flagged Items (${unresolvedFlags.length} flags, ${flaggedSeeds.length} seeds)`,
+          description: 'Regenerate Phase 1 for seeds with QC flags',
+          action: { seeds: flaggedSeeds, phases: ['phase1'], force: true },
+          flags: unresolvedFlags
+        });
+      }
 
       // Option 1: Quick test with 10 seeds
       recommendations.push({
@@ -842,15 +878,24 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
 
     res.json({
       courseCode,
-      exists: seedPairsExists,
-      seed_pairs: { exists: seedPairsExists, count: seedCount },
-      lego_pairs: { exists: legoPairsExists, count: legoCount, missing: missingLegoSeeds },
+      exists: draftLegoPairsExists || legoPairsExists,
+      // APML v9.0 phase structure
+      draft_lego_pairs: { exists: draftLegoPairsExists, count: phase1SeedCount }, // Phase 1
+      lego_pairs: { exists: legoPairsExists, count: phase2SeedCount, legos: legoCount, missing: missingLegoSeeds }, // Phase 2
+      // Legacy alias for backward compatibility
+      seed_pairs: { exists: draftLegoPairsExists, count: phase1SeedCount },
       introductions: { exists: introsExists },
       baskets: {
         exists: basketsExists,
         count: basketCount,
         missing_seeds: missingBasketsSeeds,
         estimated_missing_legos: missingBasketsCount
+      },
+      // QC Flags
+      flags: {
+        total: flags.length,
+        unresolved: unresolvedFlags.length,
+        items: unresolvedFlags
       },
       recommendations
     });
