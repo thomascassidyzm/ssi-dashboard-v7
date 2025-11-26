@@ -389,7 +389,7 @@
           <!-- Generate Button -->
           <div class="flex gap-4">
             <button
-              @click="startGeneration"
+              @click="startGeneration(pendingForce)"
               :disabled="!startSeed || !endSeed || startSeed > endSeed"
               class="flex-1 bg-emerald-500 hover:bg-emerald-600 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition hover:-translate-y-0.5"
             >
@@ -906,6 +906,9 @@ const analyzeCourse = async () => {
   }
 }
 
+// Store pending force flag from recommendation
+const pendingForce = ref(false)
+
 const selectRecommendation = (rec) => {
   // Handle seeds array format (from generate-baskets recommendation)
   if (rec.action.seeds && Array.isArray(rec.action.seeds)) {
@@ -931,9 +934,11 @@ const selectRecommendation = (rec) => {
     phaseSelection.value = 'all'
   }
 
-  // Pass force flag from recommendation
-  const force = rec.action.force || false
-  startGeneration(force)
+  // Store force flag for when user clicks Generate
+  pendingForce.value = rec.action.force || false
+
+  // Clear analysis panel - user now uses the main form
+  analysis.value = null
 }
 
 const extendToFullCourse = async () => {
