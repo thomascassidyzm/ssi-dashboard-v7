@@ -1698,6 +1698,50 @@ app.put('/api/courses/:courseCode/phase-outputs/:phase/:file', async (req, res) 
 });
 
 /**
+ * PUT /api/courses/:courseCode/translations/:seedId
+ * Update a seed translation in seed_pairs.json
+ */
+app.put('/api/courses/:courseCode/translations/:seedId', async (req, res) => {
+  const { courseCode, seedId } = req.params;
+  const { source, target } = req.body;
+
+  console.log(`[Orchestrator] Updating translation ${seedId} in ${courseCode}`);
+  console.log(`[Orchestrator] New values - source: "${source}", target: "${target}"`);
+
+  try {
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json');
+
+    if (!await fs.pathExists(seedPairsPath)) {
+      return res.status(404).json({ error: 'seed_pairs.json not found' });
+    }
+
+    const seedPairs = await fs.readJson(seedPairsPath);
+
+    if (!seedPairs.translations || !seedPairs.translations[seedId]) {
+      return res.status(404).json({ error: `Seed ${seedId} not found` });
+    }
+
+    // Update translation (format: [target, source])
+    seedPairs.translations[seedId] = [target, source];
+    seedPairs.updated = new Date().toISOString();
+    seedPairs.updated_by = 'dashboard_edit';
+
+    await fs.writeJson(seedPairsPath, seedPairs, { spaces: 2 });
+    console.log(`[Orchestrator] Successfully updated ${seedId} in seed_pairs.json`);
+
+    res.json({
+      success: true,
+      message: `Translation ${seedId} updated`,
+      updated: { seedId, source, target }
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error updating translation:`, error);
+    res.status(500).json({ error: 'Failed to update translation', details: error.message });
+  }
+});
+
+/**
  * GET /api/phase-intelligence/:phase
  * Serve phase intelligence docs to agents via ngrok
  * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
