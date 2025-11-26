@@ -660,232 +660,167 @@ app.get('/api/courses/:courseCode/status', async (req, res) => {
 
 /**
  * GET /api/courses/:courseCode/analyze
- * Analyze course state and return intelligent recommendations (APML v9.0)
+ * Analyze course state - source of truth is lego_pairs.json
+ *
+ * Phase 1: Translation + LEGO extraction (flagged seeds need regeneration)
+ * Phase 2: Conflict resolution (implied complete if lego_pairs exists)
+ * Phase 3: Baskets (check which seeds are missing baskets)
  */
 app.get('/api/courses/:courseCode/analyze', async (req, res) => {
   const { courseCode } = req.params;
   const courseDir = path.join(VFS_ROOT, courseCode);
 
   try {
-    // Check what phase outputs exist
-    const draftLegoPairsPath = path.join(courseDir, 'draft_lego_pairs.json'); // Phase 1 (in-progress)
-    const legoPairsPath = path.join(courseDir, 'lego_pairs.json'); // Phase 2 (implies Phase 1 complete)
-    const introsPath = path.join(courseDir, 'introductions.json');
-    const basketsPath = path.join(courseDir, 'lego_baskets.json'); // Phase 3
-    const flagsPath = path.join(courseDir, 'flags.json'); // QC Flags
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
+    const basketsPath = path.join(courseDir, 'lego_baskets.json');
+    const flagsPath = path.join(courseDir, 'flags.json');
 
-    const draftLegoPairsExists = await fs.pathExists(draftLegoPairsPath);
     const legoPairsExists = await fs.pathExists(legoPairsPath);
-    const introsExists = await fs.pathExists(introsPath);
     const basketsExists = await fs.pathExists(basketsPath);
     const flagsExists = await fs.pathExists(flagsPath);
 
-    // If Phase 2 exists, Phase 1 is implicitly complete (can't have Phase 2 without Phase 1)
-    const phase1Exists = legoPairsExists || draftLegoPairsExists;
+    // No course data
+    if (!legoPairsExists) {
+      return res.json({
+        courseCode,
+        exists: false,
+        seeds: { total: 0 },
+        phase1: { status: 'missing', flaggedSeeds: [] },
+        phase2: { status: 'missing' },
+        phase3: { status: 'missing', seedsMissingBaskets: [] },
+        flags: { total: 0, unresolved: 0, items: [] },
+        recommendations: [
+          {
+            type: 'test',
+            title: '✨ Quick Test (10 seeds)',
+            description: 'Test the pipeline with 10 random seeds (~5 min)',
+            action: { startSeed: Math.floor(Math.random() * 659) + 1, count: 10 }
+          },
+          {
+            type: 'full',
+            title: '🚀 Full Course (668 seeds)',
+            description: 'Generate complete course (~2-3 hours)',
+            action: { startSeed: 1, endSeed: 668 }
+          }
+        ]
+      });
+    }
 
-    // Count what we have
-    let phase1SeedCount = 0;
-    let phase2SeedCount = 0;
-    let legoCount = 0;
-    let basketCount = 0;
-    let missingLegoSeeds = [];
+    // Load lego_pairs.json - source of truth for what seeds exist
+    const legoData = await fs.readJSON(legoPairsPath);
+    const seeds = legoData.seeds || [];
+    const seedIds = seeds.map(s => s.seed_id);
+    const totalSeeds = seeds.length;
+
+    // Count unique LEGOs
+    let totalLegos = 0;
+    for (const seed of seeds) {
+      totalLegos += (seed.legos || []).filter(l => l.new === true).length;
+    }
 
     // Load flags
     let flags = [];
     let unresolvedFlags = [];
+    let flaggedSeedIds = [];
     if (flagsExists) {
       const flagsData = await fs.readJSON(flagsPath);
       flags = flagsData.flags || [];
       unresolvedFlags = flags.filter(f => !f.resolved);
+      flaggedSeedIds = [...new Set(unresolvedFlags.map(f => f.seedId))];
     }
 
-    // Phase 2: lego_pairs.json (if exists, Phase 1 is implicitly complete)
-    if (legoPairsExists) {
-      const legoData = await fs.readJSON(legoPairsPath);
-      phase2SeedCount = (legoData.seeds || []).length;
-      phase1SeedCount = phase2SeedCount; // Phase 1 implicitly complete
-
-      // Count unique LEGOs (new: true)
-      let uniqueLegoCount = 0;
-      for (const seed of (legoData.seeds || [])) {
-        uniqueLegoCount += (seed.legos || []).filter(l => l.new === true).length;
-      }
-      legoCount = uniqueLegoCount;
-    } else if (draftLegoPairsExists) {
-      // Phase 1 in progress, Phase 2 not done yet
-      const draftData = await fs.readJSON(draftLegoPairsPath);
-      phase1SeedCount = (draftData.seeds || []).length;
-    }
-
+    // Check Phase 3: which seeds are missing baskets
+    let seedsMissingBaskets = [];
     if (basketsExists) {
       const basketData = await fs.readJSON(basketsPath);
-      basketCount = Object.keys(basketData.baskets || {}).length;
-    }
+      const basketKeys = Object.keys(basketData.baskets || {});
 
-    // Check for Phase 5 missing baskets (ACCURATE)
-    // Compare lego_pairs.json (new:true LEGOs) against lego_baskets.json
-    // This is the ONLY accurate way - handles deletions, partial baskets, etc.
-    let missingBasketsCount = 0;
-    let missingBasketsSeeds = 0;
-
-    if (legoPairsExists && basketsExists) {
-      try {
-        const legoData = await fs.readJSON(legoPairsPath);
-        const basketData = await fs.readJSON(basketsPath);
-
-        // Step 1: Find all new:true LEGOs (first appearance, needs basket)
-        const newLegos = new Map(); // legoId → {seedId, known, target}
-        for (const seed of (legoData.seeds || [])) {
-          for (const lego of (seed.legos || [])) {
-            if (lego.new === true) {
-              newLegos.set(lego.id, { seedId: seed.seed_id });
-            }
-          }
+      // Find seeds that have LEGOs but no baskets for those LEGOs
+      for (const seed of seeds) {
+        const seedLegos = (seed.legos || []).filter(l => l.new === true);
+        const hasAllBaskets = seedLegos.every(lego => basketKeys.includes(lego.id));
+        if (!hasAllBaskets && seedLegos.length > 0) {
+          seedsMissingBaskets.push(seed.seed_id);
         }
-
-        // Step 2: Find which LEGOs have baskets in lego_baskets.json
-        const legosWithBaskets = new Set();
-        if (basketData.baskets) {
-          Object.keys(basketData.baskets).forEach(legoId => {
-            legosWithBaskets.add(legoId);
-          });
-        }
-
-        // Step 3: Count missing (new:true LEGOs NOT in lego_baskets.json)
-        const seedsAffected = new Set();
-        newLegos.forEach((legoInfo, legoId) => {
-          if (!legosWithBaskets.has(legoId)) {
-            missingBasketsCount++;
-            seedsAffected.add(legoInfo.seedId);
-          }
-        });
-
-        missingBasketsSeeds = seedsAffected.size;
-      } catch (error) {
-        console.error('[Orchestrator] Error detecting missing baskets:', error);
-        // Fail gracefully
       }
+    } else {
+      // No baskets file - all seeds missing baskets
+      seedsMissingBaskets = [...seedIds];
     }
 
-    // Generate intelligent recommendations
+    // Determine phase statuses
+    const phase1Status = flaggedSeedIds.length > 0 ? 'flagged' : 'complete';
+    const phase2Status = 'complete'; // Implied by lego_pairs existing
+    const phase3Status = seedsMissingBaskets.length > 0 ? 'incomplete' : 'complete';
+
+    // Generate recommendations
     const recommendations = [];
 
-    // Use phase2SeedCount as the main indicator (or phase1 if phase2 doesn't exist)
-    const seedCount = phase2SeedCount || phase1SeedCount;
-
-    if (!phase1Exists && !legoPairsExists) {
-      // No course data - suggest starting fresh
+    // Priority 1: Flagged seeds need Phase 1 regeneration
+    if (flaggedSeedIds.length > 0) {
       recommendations.push({
-        type: 'test',
-        title: '✨ Quick Test (10 seeds)',
-        description: 'Test the pipeline with 10 random seeds (~5 min)',
-        action: { startSeed: Math.floor(Math.random() * 659) + 1, endSeed: null, count: 10, force: false }
-      });
-      recommendations.push({
-        type: 'full',
-        title: '🚀 Full Course (668 seeds)',
-        description: 'Generate complete course (~2-3 hours)',
-        action: { startSeed: 1, endSeed: 668, force: false }
-      });
-    } else {
-      // Course exists - analyze what's missing
-
-      // Priority: Flagged items regeneration
-      if (unresolvedFlags.length > 0) {
-        const flaggedSeeds = [...new Set(unresolvedFlags.map(f => f.seedId))];
-        recommendations.push({
-          type: 'regenerate-flagged',
-          title: `🚩 Regenerate Flagged Items (${unresolvedFlags.length} flags, ${flaggedSeeds.length} seeds)`,
-          description: 'Regenerate Phase 1 for seeds with QC flags',
-          action: { seeds: flaggedSeeds, phases: ['phase1'], force: true },
-          flags: unresolvedFlags
-        });
-      }
-
-      // Option 1: Quick test with 10 seeds
-      recommendations.push({
-        type: 'test',
-        title: '✨ Quick Test (10 seeds)',
-        description: 'Test pipeline changes with 10 random seeds',
-        action: { startSeed: Math.floor(Math.random() * 659) + 1, endSeed: null, count: 10, force: false }
-      });
-
-      // Option 2: Resume from where we left off
-      if (seedCount < 668) {
-        recommendations.push({
-          type: 'resume',
-          title: `📝 Resume from S${String(seedCount + 1).padStart(4, '0')}`,
-          description: `Continue generating (${668 - seedCount} seeds remaining)`,
-          action: { startSeed: seedCount + 1, endSeed: 668, force: false }
-        });
-      }
-
-      // Option 3: Regenerate specific phases (force overwrite)
-      if (legoPairsExists && legoCount > 0) {
-        recommendations.push({
-          type: 'regenerate',
-          title: `🔄 Regenerate LEGOs (S0001-S${String(legoCount).padStart(4, '0')})`,
-          description: 'Force re-extract LEGOs (use if quality is poor)',
-          action: { startSeed: 1, endSeed: legoCount, force: true }
-        });
-      }
-
-      // Option 4: Fill in missing LEGOs
-      if (missingLegoSeeds.length > 0 && missingLegoSeeds.length < seedCount) {
-        recommendations.push({
-          type: 'fill',
-          title: `➡️  Complete Phase 3 (${missingLegoSeeds.length} seeds)`,
-          description: `Generate LEGOs for seeds missing Phase 3`,
-          action: { startSeed: 1, endSeed: seedCount, force: false }
-        });
-      }
-
-      // Option 4.5: Resume Phase 5 missing baskets (intelligent resume)
-      if (missingBasketsSeeds > 0 && legoPairsExists) {
-        recommendations.push({
-          type: 'resume-baskets',
-          phase: 5,
-          title: `📦 Resume Missing Baskets (${missingBasketsSeeds} seeds)`,
-          description: `Generate practice phrases for seeds missing Phase 5`,
-          action: { startSeed: 1, endSeed: 668, phases: ['phase5'], force: false }
-        });
-      }
-
-      // Option 5: Extend to full course
-      if (seedCount > 0 && seedCount < 668) {
-        recommendations.push({
-          type: 'extend',
-          title: '🚀 Extend to Full Course (668 seeds)',
-          description: `Keeps existing ${seedCount} seeds, adds ${668 - seedCount} more`,
-          action: { startSeed: 1, endSeed: 668, force: false }
-        });
-      }
-
-      // Option 6: Complete regeneration
-      recommendations.push({
-        type: 'regenerate-all',
-        title: '🔄 Regenerate Everything',
-        description: 'Force regenerate all phases (nuclear option)',
-        action: { startSeed: 1, endSeed: 668, force: true }
+        type: 'regenerate-flagged',
+        title: `🚩 Regenerate Flagged Seeds (${flaggedSeedIds.length})`,
+        description: 'Re-run Phase 1 for seeds with QC flags',
+        action: { seeds: flaggedSeedIds, phases: ['phase1'], force: true },
+        flags: unresolvedFlags
       });
     }
+
+    // Priority 2: Missing baskets need Phase 3
+    if (seedsMissingBaskets.length > 0) {
+      recommendations.push({
+        type: 'generate-baskets',
+        title: `📦 Generate Missing Baskets (${seedsMissingBaskets.length} seeds)`,
+        description: 'Run Phase 3 for seeds without baskets',
+        action: { seeds: seedsMissingBaskets, phases: ['phase3'] }
+      });
+    }
+
+    // Extend course if not full
+    if (totalSeeds < 668) {
+      recommendations.push({
+        type: 'extend',
+        title: `🚀 Extend to Full Course`,
+        description: `Add ${668 - totalSeeds} more seeds (currently ${totalSeeds})`,
+        action: { startSeed: totalSeeds + 1, endSeed: 668 }
+      });
+    }
+
+    // Quick test option
+    recommendations.push({
+      type: 'test',
+      title: '✨ Quick Test (10 seeds)',
+      description: 'Test pipeline with 10 random seeds',
+      action: { startSeed: Math.floor(Math.random() * 659) + 1, count: 10 }
+    });
+
+    // Nuclear option
+    recommendations.push({
+      type: 'regenerate-all',
+      title: '🔄 Regenerate Everything',
+      description: 'Force regenerate all phases (nuclear option)',
+      action: { startSeed: 1, endSeed: 668, force: true }
+    });
 
     res.json({
       courseCode,
-      exists: phase1Exists || legoPairsExists,
-      // APML v9.0 phase structure (with legacy support)
-      draft_lego_pairs: { exists: phase1Exists, count: phase1SeedCount }, // Phase 1 (either format)
-      lego_pairs: { exists: legoPairsExists, count: phase2SeedCount, legos: legoCount, missing: missingLegoSeeds }, // Phase 2
-      // Legacy alias for backward compatibility
-      seed_pairs: { exists: phase1Exists, count: phase1SeedCount },
-      introductions: { exists: introsExists },
-      baskets: {
-        exists: basketsExists,
-        count: basketCount,
-        missing_seeds: missingBasketsSeeds,
-        estimated_missing_legos: missingBasketsCount
+      exists: true,
+      seeds: { total: totalSeeds, legos: totalLegos },
+      phase1: {
+        status: phase1Status,
+        flaggedSeeds: flaggedSeedIds,
+        message: phase1Status === 'flagged' ? `${flaggedSeedIds.length} seeds need regeneration` : `${totalSeeds} seeds complete`
       },
-      // QC Flags
+      phase2: {
+        status: phase2Status,
+        message: `${totalSeeds} seeds, ${totalLegos} LEGOs`
+      },
+      phase3: {
+        status: phase3Status,
+        seedsMissingBaskets,
+        message: phase3Status === 'incomplete' ? `${seedsMissingBaskets.length} seeds missing baskets` : 'Complete'
+      },
       flags: {
         total: flags.length,
         unresolved: unresolvedFlags.length,
