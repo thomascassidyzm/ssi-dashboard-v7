@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-11-20T16:58:58.040Z",
+  "last_updated": "2025-10-27T14:26:16.973Z",
   "voices": {
     "azure_it-IT-ElsaNeural": {
       "provider": "azure",
@@ -64,19 +64,49 @@
       "provider": "elevenlabs",
       "provider_id": "FVdzAUsp8apoOdc0907A",
       "language": "eng",
-      "display_name": "English Narrator (Aran Clone)",
+      "display_name": "English Narrator (Aran Practice Phrase Clone)",
       "gender": "male",
       "typical_roles": [
-        "source",
+        "source"
+      ],
+      "model": "eleven_flash_v2_5",
+      "stability": 0.5,
+      "similarity_boost": 0.75,
+      "priming": "disabled",
+      "sample_count": 0,
+      "created_at": "2025-11-13T00:00:00Z",
+      "notes": "English voice for source role - trained on practice phrases",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "time_stretch": 1.43,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
+    },
+    "elevenlabs_FOIN928B9X0jwgJ95cLt": {
+      "provider": "elevenlabs",
+      "provider_id": "FOIN928B9X0jwgJ95cLt",
+      "language": "eng",
+      "display_name": "English Presentation Narrator (Aran Natural Clone)",
+      "gender": "male",
+      "typical_roles": [
         "presentation"
       ],
       "model": "eleven_flash_v2_5",
       "stability": 0.5,
       "similarity_boost": 0.75,
       "priming": "disabled",
-      "sample_count": 263,
-      "created_at": "2025-11-13T00:00:00Z",
-      "notes": "Primary English voice for source and presentation roles (Aran's cloned voice)",
+      "sample_count": 0,
+      "created_at": "2025-11-24T00:00:00Z",
+      "notes": "English voice for presentation role - trained on encouragements, more natural speaking style",
       "processing": {
         "cadences": {
           "slow": {
@@ -101,7 +131,7 @@
       "typical_roles": [
         "target1"
       ],
-      "sample_count": 301,
+      "sample_count": 0,
       "created_at": "2025-11-12T00:00:00Z",
       "notes": "Primary Spanish voice for target1 role - Castilian Spanish",
       "processing": {
@@ -130,7 +160,7 @@
       "typical_roles": [
         "target2"
       ],
-      "sample_count": 216,
+      "sample_count": 0,
       "created_at": "2025-11-12T00:00:00Z",
       "notes": "Alternate Spanish voice for target2 role - Castilian Spanish",
       "processing": {
@@ -149,6 +179,64 @@
           }
         }
       }
+    },
+    "azure_zh-CN-XiaohanNeural": {
+      "provider": "azure",
+      "provider_id": "zh-CN-XiaohanNeural",
+      "language": "cmn",
+      "display_name": "Xiaohan (Mandarin Female)",
+      "gender": "female",
+      "typical_roles": [
+        "target1"
+      ],
+      "sample_count": 0,
+      "created_at": "2025-11-24T00:00:00Z",
+      "notes": "Primary Mandarin Chinese voice for target1 - Expressive, good for teaching",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "azure_speed": 0.7,
+            "time_stretch": 1.1,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "azure_speed": 1,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
+    },
+    "azure_zh-CN-YunhaoNeural": {
+      "provider": "azure",
+      "provider_id": "zh-CN-YunhaoNeural",
+      "language": "cmn",
+      "display_name": "Yunhao (Mandarin Male)",
+      "gender": "male",
+      "typical_roles": [
+        "target2"
+      ],
+      "sample_count": 0,
+      "created_at": "2025-11-24T00:00:00Z",
+      "notes": "Alternate Mandarin Chinese voice for target2 - Friendly, approachable",
+      "processing": {
+        "cadences": {
+          "slow": {
+            "azure_speed": 0.7,
+            "time_stretch": 1.1,
+            "normalize": true,
+            "target_lufs": -16
+          },
+          "natural": {
+            "azure_speed": 1,
+            "time_stretch": 1,
+            "normalize": true,
+            "target_lufs": -16
+          }
+        }
+      }
     }
   },
   "language_pair_assignments": {
@@ -156,13 +244,25 @@
       "target1": "azure_it-IT-ElsaNeural",
       "target2": "azure_it-IT-DiegoNeural",
       "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
-      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+      "presentation": "elevenlabs_FOIN928B9X0jwgJ95cLt"
     },
     "en-es": {
       "target1": "azure_es-ES-TrianaNeural",
       "target2": "azure_es-ES-AlvaroNeural",
       "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
-      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+      "presentation": "elevenlabs_FOIN928B9X0jwgJ95cLt"
+    },
+    "en-zh": {
+      "target1": "azure_zh-CN-XiaohanNeural",
+      "target2": "azure_zh-CN-YunhaoNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FOIN928B9X0jwgJ95cLt"
+    },
+    "eng-spa": {
+      "target1": "azure_es-ES-TrianaNeural",
+      "target2": "azure_es-ES-AlvaroNeural",
+      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
+      "presentation": "elevenlabs_FOIN928B9X0jwgJ95cLt"
     }
   },
   "course_assignments": {
@@ -170,25 +270,19 @@
       "target1": "azure_it-IT-ElsaNeural",
       "target2": "azure_it-IT-DiegoNeural",
       "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
-      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+      "presentation": "elevenlabs_FOIN928B9X0jwgJ95cLt"
     },
     "ita_for_eng_668seeds": {
       "target1": "azure_it-IT-ElsaNeural",
       "target2": "azure_it-IT-DiegoNeural",
       "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
-      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+      "presentation": "elevenlabs_FOIN928B9X0jwgJ95cLt"
     },
     "spa_for_eng_10seeds": {
       "target1": "azure_es-ES-TrianaNeural",
       "target2": "azure_es-ES-AlvaroNeural",
       "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
-      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
-    },
-    "spa_for_eng_TEST": {
-      "target1": "azure_es-ES-TrianaNeural",
-      "target2": "azure_es-ES-AlvaroNeural",
-      "source": "elevenlabs_FVdzAUsp8apoOdc0907A",
-      "presentation": "elevenlabs_FVdzAUsp8apoOdc0907A"
+      "presentation": "elevenlabs_FOIN928B9X0jwgJ95cLt"
     }
   },
   "encouragement_index": {

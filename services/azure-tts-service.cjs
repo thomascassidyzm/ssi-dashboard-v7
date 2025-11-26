@@ -101,8 +101,8 @@ function closePool() {
   synthesizerPool.inUse = 0;
 }
 
-// Pre-warm pool on module load
-prewarmPool();
+// Pre-warm pool only when needed (not on module load)
+// prewarmPool(); // Disabled - worker uses single persistent synthesizer
 
 // Clean up pool on process exit
 process.on('exit', closePool);

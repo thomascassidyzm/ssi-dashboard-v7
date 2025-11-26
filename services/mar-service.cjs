@@ -13,17 +13,21 @@ const TEMP_MAR_BASE = path.join(__dirname, '..', 'temp', 'mar');
 
 /**
  * Normalize text for duplicate detection
- * Removes case differences and trailing periods only.
- * Keeps question marks and exclamation marks as they affect TTS pronunciation.
+ * Removes case differences, trailing/leading punctuation, and normalizes whitespace.
+ * This ensures "means I'm," and "means I'm" are treated as the same phrase.
  *
  * @param {string} text - Text to normalize
  * @returns {string} Normalized text
  */
 function normalizeText(text) {
+  if (!text || typeof text !== 'string') {
+    return '';
+  }
   return text
     .toLowerCase()
     .trim()
-    .replace(/\.+$/, ''); // Remove only trailing periods (keep !, ?, etc.)
+    .replace(/^[,.\s]+|[,.\s]+$/g, '') // Remove leading/trailing commas, periods, spaces
+    .replace(/\s+/g, ' ');              // Normalize internal whitespace to single space
 }
 
 /**
@@ -591,6 +595,189 @@ async function clearTempMAR() {
   }
 }
 
+// ============================================================================
+// MAR Index Functions (Performance Optimization)
+// ============================================================================
+
+/**
+ * Load all MAR data and build an in-memory index for fast lookups
+ * This is similar to Python's create_sample_index approach
+ *
+ * Loads data from BOTH permanent and temp MAR, building a composite index
+ * with keys: (normalized_text, role, cadence)
+ *
+ * @param {Array<string>} voiceIds - Array of voice IDs to index
+ * @returns {Promise<object>} Index by voiceId -> key -> {uuid, sample, source}
+ */
+async function loadMARIndex(voiceIds) {
+  console.log(`  Building MAR index for ${voiceIds.length} voices...`);
+  const startTime = Date.now();
+
+  const index = {};
+
+  for (const voiceId of voiceIds) {
+    index[voiceId] = {};
+
+    // Load permanent MAR samples
+    const permanentSamples = await loadVoiceSamples(voiceId);
+    for (const [uuid, sample] of Object.entries(permanentSamples.samples)) {
+      const key = buildIndexKey(sample.text, sample.role, sample.cadence);
+      index[voiceId][key] = {
+        uuid,
+        sample,
+        source: 'permanent'
+      };
+    }
+
+    // Load temp MAR samples
+    const tempSamplesPath = path.join(TEMP_MAR_BASE, 'voices', voiceId, 'samples.json');
+    if (await fs.pathExists(tempSamplesPath)) {
+      const tempSamples = await fs.readJson(tempSamplesPath);
+      for (const [uuid, sample] of Object.entries(tempSamples.samples || {})) {
+        const key = buildIndexKey(sample.text, sample.role, sample.cadence);
+        // Temp samples override permanent (shouldn't happen, but just in case)
+        index[voiceId][key] = {
+          uuid,
+          sample,
+          source: 'temp'
+        };
+      }
+    }
+  }
+
+  const elapsed = Date.now() - startTime;
+  const totalSamples = Object.values(index).reduce((sum, voiceIndex) =>
+    sum + Object.keys(voiceIndex).length, 0);
+
+  console.log(`  ✓ MAR index built: ${totalSamples} samples in ${elapsed}ms`);
+
+  return index;
+}
+
+/**
+ * Build composite index key from sample attributes
+ *
+ * @param {string} text - Sample text
+ * @param {string} role - Sample role
+ * @param {string} cadence - Speech cadence
+ * @returns {string} Composite key
+ */
+function buildIndexKey(text, role, cadence) {
+  const normalizedText = normalizeText(text);
+  return `${normalizedText}|${role}|${cadence}`;
+}
+
+/**
+ * Find existing sample using pre-built index (O(1) lookup)
+ *
+ * @param {object} index - Pre-built MAR index from loadMARIndex()
+ * @param {string} voiceId - Voice ID
+ * @param {string} text - Sample text
+ * @param {string} role - Sample role
+ * @param {string} language - Language code (not used in index, but kept for compatibility)
+ * @param {string} cadence - Speech cadence
+ * @returns {object|null} {uuid, sample, source} or null if not found
+ */
+function findSampleInIndex(index, voiceId, text, role, language, cadence = 'natural') {
+  if (!index[voiceId]) {
+    return null;
+  }
+
+  const key = buildIndexKey(text, role, cadence);
+  return index[voiceId][key] || null;
+}
+
+/**
+ * Sync samples from manifest to MAR
+ *
+ * The manifest is the source of truth for sample UUIDs.
+ * This function syncs all samples from manifest to their respective voice MAR files.
+ * Duration is NOT stored - it's always verified from S3 before publishing.
+ *
+ * @param {object} manifest - Course manifest
+ * @param {object} voiceAssignments - Map of role to voice ID
+ * @param {string} targetLanguage - Target language code (e.g., 'spa')
+ * @param {string} sourceLanguage - Source language code (e.g., 'eng')
+ * @returns {Promise<object>} Sync stats { added, existing, byVoice }
+ */
+async function syncManifestToMAR(manifest, voiceAssignments, targetLanguage, sourceLanguage) {
+  console.log('\n=== Syncing Manifest to MAR ===\n');
+
+  const stats = {
+    added: 0,
+    existing: 0,
+    byVoice: {}
+  };
+
+  // Group samples by voice
+  const samplesByVoice = {};
+  const samples = manifest.slices?.[0]?.samples || {};
+
+  for (const [text, variants] of Object.entries(samples)) {
+    for (const variant of variants) {
+      const uuid = variant.id || variant.uuid;
+      if (!uuid) continue;
+
+      const role = variant.role;
+      const voiceId = voiceAssignments[role];
+      if (!voiceId) continue;
+
+      if (!samplesByVoice[voiceId]) {
+        samplesByVoice[voiceId] = {};
+      }
+
+      // Determine language based on role
+      const language = (role === 'source' || role === 'presentation') ? sourceLanguage : targetLanguage;
+
+      samplesByVoice[voiceId][uuid] = {
+        text: text,
+        language: language,
+        role: role,
+        cadence: variant.cadence || 'natural',
+        generated_at: new Date().toISOString()
+      };
+    }
+  }
+
+  // Sync each voice
+  for (const [voiceId, newSamples] of Object.entries(samplesByVoice)) {
+    const voiceSamples = await loadVoiceSamples(voiceId);
+    const existingCount = Object.keys(voiceSamples.samples).length;
+
+    let addedForVoice = 0;
+    let existingForVoice = 0;
+
+    for (const [uuid, sample] of Object.entries(newSamples)) {
+      if (voiceSamples.samples[uuid]) {
+        existingForVoice++;
+      } else {
+        voiceSamples.samples[uuid] = sample;
+        addedForVoice++;
+      }
+    }
+
+    if (addedForVoice > 0) {
+      voiceSamples.sample_count = Object.keys(voiceSamples.samples).length;
+      voiceSamples.last_updated = new Date().toISOString();
+      await saveVoiceSamples(voiceId, voiceSamples);
+    }
+
+    stats.added += addedForVoice;
+    stats.existing += existingForVoice;
+    stats.byVoice[voiceId] = {
+      added: addedForVoice,
+      existing: existingForVoice,
+      total: Object.keys(voiceSamples.samples).length
+    };
+
+    console.log(`  ${voiceId}: +${addedForVoice} new (${existingForVoice} existing, ${Object.keys(voiceSamples.samples).length} total)`);
+  }
+
+  console.log(`\n✓ MAR sync complete: ${stats.added} added, ${stats.existing} existing\n`);
+
+  return stats;
+}
+
 module.exports = {
   normalizeText,
   loadVoiceRegistry,
@@ -612,12 +799,18 @@ module.exports = {
   saveEncouragementSamples,
   findEncouragementSampleByText,
   addEncouragementSample,
-  // Temporary MAR functions
+  // Temporary MAR functions (legacy - prefer syncManifestToMAR)
   initTempMAR,
   getSampleFromBothMARs,
   findExistingSampleInBothMARs,
   saveSampleToTempMAR,
   mergeTempMARToPermanent,
   clearTempMAR,
-  TEMP_MAR_BASE
+  TEMP_MAR_BASE,
+  // MAR Index functions (performance optimization)
+  loadMARIndex,
+  buildIndexKey,
+  findSampleInIndex,
+  // Manifest-based MAR sync (preferred method)
+  syncManifestToMAR
 };

@@ -242,6 +242,136 @@ async function processBatch(files, maxConcurrent = 4, onProgress = null) {
 }
 
 /**
+ * Concatenate multiple audio files with optional pauses between segments
+ * Each segment is individually normalized before concatenation
+ *
+ * @param {Array<string>} audioPaths - Array of audio file paths to concatenate
+ * @param {string} outputPath - Output file path
+ * @param {object} options - Concatenation options
+ * @param {number} options.pauseDuration - Pause duration in milliseconds between segments (default: 1000)
+ * @param {boolean} options.normalize - Normalize each segment individually (default: true)
+ * @param {number} options.targetDBFS - Target dBFS level for normalization (default: -18.0)
+ * @param {number} options.headroom - Headroom for normalization in dB (default: 0.1)
+ * @returns {Promise<void>}
+ */
+async function concatenateAudio(audioPaths, outputPath, options = {}) {
+  const {
+    pauseDuration = 1000,
+    normalize = true,
+    targetDBFS = -18.0,
+    headroom = 0.1
+  } = options;
+
+  console.log(`    [CONCAT DEBUG] Concatenating ${audioPaths.length} files`);
+  console.log(`    [CONCAT DEBUG] Output: ${outputPath}`);
+
+  if (audioPaths.length === 0) {
+    throw new Error('No audio files provided for concatenation');
+  }
+
+  if (audioPaths.length === 1) {
+    console.log(`    [CONCAT DEBUG] Single file, ${normalize ? 'normalizing' : 'copying'}`);
+    // Single file, just copy (with optional normalization)
+    if (normalize) {
+      await normalizeAudio(audioPaths[0], outputPath);
+    } else {
+      await fs.copyFile(audioPaths[0], outputPath);
+    }
+    return;
+  }
+
+  const tempDir = await fs.mkdtemp(path.join(require('os').tmpdir(), 'audio-concat-'));
+  console.log(`    [CONCAT DEBUG] Temp directory: ${tempDir}`);
+
+  try {
+    // Step 1: Normalize each segment individually if requested
+    const normalizedPaths = [];
+
+    if (normalize) {
+      console.log(`    [CONCAT DEBUG] Normalizing ${audioPaths.length} segments...`);
+      for (let i = 0; i < audioPaths.length; i++) {
+        console.log(`    [CONCAT DEBUG]   Normalizing segment ${i + 1}: ${audioPaths[i]}`);
+        const normalizedPath = path.join(tempDir, `normalized_${i}.mp3`);
+
+        // Check if input file exists
+        if (!await fs.pathExists(audioPaths[i])) {
+          throw new Error(`Input file does not exist: ${audioPaths[i]}`);
+        }
+
+        // Normalize with volume adjustment to target dBFS
+        // Using loudnorm for initial normalization, then adjusting to target dBFS
+        await execAsync(
+          `ffmpeg -y -i "${audioPaths[i]}" ` +
+          `-filter:a "loudnorm=I=-16:LRA=11:TP=-1.5" ` +
+          `-q:a 2 "${normalizedPath}"`
+        );
+
+        console.log(`    [CONCAT DEBUG]   Normalized to: ${normalizedPath}`);
+        normalizedPaths.push(normalizedPath);
+      }
+    } else {
+      normalizedPaths.push(...audioPaths);
+    }
+
+    // Step 2: Create silence segment if pause is needed
+    let silencePath = null;
+    if (pauseDuration > 0) {
+      silencePath = path.join(tempDir, 'silence.mp3');
+      const pauseDurationSec = pauseDuration / 1000;
+      await execAsync(
+        `ffmpeg -y -f lavfi -i anullsrc=r=44100:cl=stereo -t ${pauseDurationSec} ` +
+        `-q:a 2 "${silencePath}"`
+      );
+    }
+
+    // Step 3: Create concat file list
+    const concatListPath = path.join(tempDir, 'concat_list.txt');
+    const concatList = [];
+
+    for (let i = 0; i < normalizedPaths.length; i++) {
+      concatList.push(`file '${normalizedPaths[i]}'`);
+
+      // Add silence between segments (but not after the last one)
+      if (silencePath && i < normalizedPaths.length - 1) {
+        concatList.push(`file '${silencePath}'`);
+      }
+    }
+
+    await fs.writeFile(concatListPath, concatList.join('\n'));
+
+    // Step 4: Concatenate all files with RE-ENCODING (not stream copy)
+    // This properly handles different sample rates/codecs (like pydub does)
+    const tempOutput = path.join(tempDir, 'concatenated.mp3');
+    console.log(`    [CONCAT DEBUG] Concatenating with re-encoding`);
+    console.log(`    [CONCAT DEBUG] Temp output: ${tempOutput}`);
+
+    // Use concat demuxer but with re-encoding instead of -c copy
+    // This matches pydub's behavior: load -> process -> export
+    await execAsync(
+      `ffmpeg -y -f concat -safe 0 -i "${concatListPath}" -ar 44100 -ac 2 -b:a 192k "${tempOutput}"`
+    );
+
+    console.log(`    [CONCAT DEBUG] Concatenation complete, checking file...`);
+    const stats = await fs.stat(tempOutput);
+    console.log(`    [CONCAT DEBUG] Concatenated file size: ${stats.size} bytes`);
+
+    // Step 5: Final normalization of the combined audio
+    if (normalize) {
+      console.log(`    [CONCAT DEBUG] Final normalization...`);
+      await normalizeAudio(tempOutput, outputPath);
+    } else {
+      await fs.move(tempOutput, outputPath, { overwrite: true });
+    }
+
+    console.log(`    [CONCAT DEBUG] Final file written to: ${outputPath}`);
+
+  } finally {
+    // Cleanup temp directory
+    await fs.remove(tempDir);
+  }
+}
+
+/**
  * Extract audio metadata
  *
  * @param {string} audioPath - Path to audio file
@@ -277,5 +407,6 @@ module.exports = {
   normalizeAudio,
   processAudio,
   processBatch,
+  concatenateAudio,
   getAudioMetadata
 };

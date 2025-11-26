@@ -69,20 +69,8 @@ function validateCourse(manifest) {
 
   console.log(`Found ${actualSamples.size} actual samples in manifest`);
 
-  // Process encouragements (ignoring as per user request)
-  // But still track them
-  for (const encouragement of slice.pooledEncouragements || []) {
-    if (encouragement.text) {
-      expectedSamples.add(`${encouragement.text}|presentation_encouragement`);
-      expectedSamples.add(`${encouragement.text}|presentation`);
-    }
-  }
-  for (const encouragement of slice.orderedEncouragements || []) {
-    if (encouragement.text) {
-      expectedSamples.add(`${encouragement.text}|presentation_encouragement`);
-      expectedSamples.add(`${encouragement.text}|presentation`);
-    }
-  }
+  // Skip encouragements - they will be added later in Phase 8 before S3 check
+  // This prevents generating TTS for them during audio generation
 
   // Process seeds
   let seedCount = 0;
@@ -220,9 +208,11 @@ function addMissingSamples(manifest, missingSamples) {
     // Check if already exists (shouldn't, but safety check)
     const exists = slice.samples[text].some(s => s.role === role);
     if (!exists) {
+      // Use "slow" cadence for target1 and target2, "natural" for others
+      const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
       slice.samples[text].push({
         id: '',
-        cadence: 'natural',
+        cadence: cadence,
         role: role,
         duration: 0
       });
@@ -231,6 +221,303 @@ function addMissingSamples(manifest, missingSamples) {
   }
 
   return added;
+}
+
+/**
+ * Normalize text for deduplication (match MAR normalization)
+ */
+function normalizeText(text) {
+  return text.toLowerCase().trim().replace(/\.+$/, '');
+}
+
+/**
+ * Deduplicate samples by normalized text
+ * Groups "Hablo" and "hablo" together, keeps only normalized version
+ */
+function deduplicateSamples(manifest) {
+  const slice = manifest.slices[0];
+  const samples = slice.samples || {};
+
+  // Track what we're deduplicating
+  const deduplicated = {
+    removed: 0,
+    groups: 0
+  };
+
+  // Group samples by normalized text
+  const groups = {};
+  for (const [text, sampleList] of Object.entries(samples)) {
+    const normalized = normalizeText(text);
+
+    if (!groups[normalized]) {
+      groups[normalized] = [];
+    }
+    groups[normalized].push({ originalText: text, samples: sampleList });
+  }
+
+  // For each group, keep only the normalized version
+  const newSamples = {};
+  for (const [normalized, variants] of Object.entries(groups)) {
+    if (variants.length > 1) {
+      deduplicated.groups++;
+      deduplicated.removed += variants.length - 1;
+    }
+
+    // Merge all samples from variants into normalized key
+    const mergedSamples = [];
+    const seenRoles = new Set();
+
+    for (const { originalText, samples: sampleList } of variants) {
+      for (const sample of sampleList) {
+        const roleKey = `${sample.role}|${sample.cadence || 'natural'}`;
+        if (!seenRoles.has(roleKey)) {
+          mergedSamples.push(sample);
+          seenRoles.add(roleKey);
+        }
+      }
+    }
+
+    newSamples[normalized] = mergedSamples;
+  }
+
+  // Replace samples with deduplicated version
+  slice.samples = newSamples;
+
+  return { deduplicated };
+}
+
+/**
+ * Check for duplicate seeds (by canonical or known/target text)
+ */
+function findDuplicateSeeds(manifest) {
+  const slice = manifest.slices[0];
+  const seeds = slice.seeds || [];
+
+  const duplicates = [];
+  const seedsByCanonical = {};
+  const seedsByText = {};
+
+  for (let i = 0; i < seeds.length; i++) {
+    const seed = seeds[i];
+    const canonical = seed.seed_sentence?.canonical;
+    const knownText = seed.node?.known?.text;
+    const targetText = seed.node?.target?.text;
+
+    // Check canonical duplicates
+    if (canonical) {
+      if (seedsByCanonical[canonical]) {
+        duplicates.push({
+          type: 'canonical',
+          original: seedsByCanonical[canonical],
+          duplicate: seed,
+          text: canonical
+        });
+      } else {
+        seedsByCanonical[canonical] = seed;
+      }
+    }
+
+    // Check known/target duplicates
+    if (knownText && targetText) {
+      const textKey = `${knownText}|${targetText}`;
+      if (seedsByText[textKey]) {
+        // Only report if not already reported as canonical duplicate
+        const alreadyReported = duplicates.some(d =>
+          d.original.id === seedsByText[textKey].id && d.duplicate.id === seed.id
+        );
+        if (!alreadyReported) {
+          duplicates.push({
+            type: 'text',
+            original: seedsByText[textKey],
+            duplicate: seed,
+            text: `${knownText} / ${targetText}`
+          });
+        }
+      } else {
+        seedsByText[textKey] = seed;
+      }
+    }
+  }
+
+  return duplicates;
+}
+
+/**
+ * Check for duplicate introduction items
+ */
+function findDuplicateIntroItems(manifest) {
+  const slice = manifest.slices[0];
+  const seeds = slice.seeds || [];
+
+  const duplicates = [];
+  const introsByText = {};
+
+  for (const seed of seeds) {
+    for (const introItem of seed.introduction_items || []) {
+      const knownText = introItem.node?.known?.text;
+      const targetText = introItem.node?.target?.text;
+
+      if (knownText && targetText) {
+        const textKey = `${knownText}|${targetText}`;
+        if (introsByText[textKey]) {
+          duplicates.push({
+            original: introsByText[textKey],
+            duplicate: introItem,
+            text: `${knownText} / ${targetText}`,
+            seedId: seed.id
+          });
+        } else {
+          introsByText[textKey] = introItem;
+        }
+      }
+    }
+  }
+
+  return duplicates;
+}
+
+/**
+ * Check for duplicate nodes within intro items
+ */
+function findDuplicateNodes(manifest) {
+  const slice = manifest.slices[0];
+  const seeds = slice.seeds || [];
+
+  const duplicates = [];
+  const seedNodes = {};
+  const introNodes = {};
+  const allNodesSeenInIntros = {};
+
+  // First pass: collect all seed nodes and intro item nodes
+  for (const seed of seeds) {
+    if (seed.node) {
+      const key = `${seed.node.known?.text}|${seed.node.target?.text}`;
+      seedNodes[key] = seed.node;
+    }
+
+    for (const introItem of seed.introduction_items || []) {
+      if (introItem.node) {
+        const key = `${introItem.node.known?.text}|${introItem.node.target?.text}`;
+        introNodes[key] = introItem.node;
+      }
+    }
+  }
+
+  // Second pass: check nodes within intro items
+  for (const seed of seeds) {
+    for (const introItem of seed.introduction_items || []) {
+      for (const node of introItem.nodes || []) {
+        const key = `${node.known?.text}|${node.target?.text}`;
+
+        // Check if node duplicates a seed node
+        if (seedNodes[key]) {
+          duplicates.push({
+            type: 'seed_node',
+            original: seedNodes[key],
+            duplicate: node,
+            text: `${node.known?.text} / ${node.target?.text}`,
+            introItemId: introItem.id
+          });
+        }
+        // Check if node duplicates an intro item node
+        else if (introNodes[key]) {
+          duplicates.push({
+            type: 'intro_node',
+            original: introNodes[key],
+            duplicate: node,
+            text: `${node.known?.text} / ${node.target?.text}`,
+            introItemId: introItem.id
+          });
+        }
+        // Check if node duplicates earlier node
+        else if (allNodesSeenInIntros[key]) {
+          duplicates.push({
+            type: 'earlier_node',
+            original: allNodesSeenInIntros[key],
+            duplicate: node,
+            text: `${node.known?.text} / ${node.target?.text}`,
+            introItemId: introItem.id
+          });
+        } else {
+          allNodesSeenInIntros[key] = node;
+        }
+      }
+    }
+  }
+
+  return duplicates;
+}
+
+/**
+ * Remove duplicate seeds from manifest
+ */
+function removeDuplicateSeeds(manifest, duplicateSeeds) {
+  const slice = manifest.slices[0];
+  const seedsToRemove = new Set();
+
+  // Collect IDs of seeds to remove (the duplicates, not originals)
+  for (const dup of duplicateSeeds) {
+    seedsToRemove.add(dup.duplicate.id);
+  }
+
+  // Remove duplicate seeds
+  slice.seeds = slice.seeds.filter(seed => !seedsToRemove.has(seed.id));
+
+  return seedsToRemove.size;
+}
+
+/**
+ * Remove duplicate introduction items from manifest
+ */
+function removeDuplicateIntroItems(manifest, duplicateIntros) {
+  const slice = manifest.slices[0];
+  const introsToRemove = new Set();
+
+  // Collect IDs of intro items to remove
+  for (const dup of duplicateIntros) {
+    introsToRemove.add(dup.duplicate.id);
+  }
+
+  // Remove duplicate intro items
+  for (const seed of slice.seeds) {
+    seed.introduction_items = seed.introduction_items.filter(
+      item => !introsToRemove.has(item.id)
+    );
+  }
+
+  return introsToRemove.size;
+}
+
+/**
+ * Remove duplicate nodes from intro items
+ */
+function removeDuplicateNodes(manifest, duplicateNodes) {
+  const slice = manifest.slices[0];
+  const nodesToRemove = new Set();
+
+  // Collect node keys to remove
+  for (const dup of duplicateNodes) {
+    const key = `${dup.duplicate.known?.text}|${dup.duplicate.target?.text}`;
+    nodesToRemove.add(key);
+  }
+
+  let removedCount = 0;
+
+  // Remove duplicate nodes from intro items
+  for (const seed of slice.seeds) {
+    for (const introItem of seed.introduction_items || []) {
+      if (introItem.nodes && introItem.nodes.length > 0) {
+        const originalLength = introItem.nodes.length;
+        introItem.nodes = introItem.nodes.filter(node => {
+          const key = `${node.known?.text}|${node.target?.text}`;
+          return !nodesToRemove.has(key);
+        });
+        removedCount += originalLength - introItem.nodes.length;
+      }
+    }
+  }
+
+  return removedCount;
 }
 
 /**
@@ -270,6 +557,87 @@ async function main() {
   console.log(`📖 Reading: ${manifestPath}\n`);
 
   const manifest = await fs.readJson(manifestPath);
+
+  // Check for duplicates first
+  console.log('🔍 Checking for duplicates...\n');
+
+  const duplicateSeeds = findDuplicateSeeds(manifest);
+  const duplicateIntros = findDuplicateIntroItems(manifest);
+  const duplicateNodes = findDuplicateNodes(manifest);
+
+  if (duplicateSeeds.length > 0) {
+    console.log(`\n⚠️  Found ${duplicateSeeds.length} duplicate seeds:\n`);
+    for (const dup of duplicateSeeds.slice(0, 5)) {
+      console.log(`  ${dup.type === 'canonical' ? 'Canonical' : 'Text'}: "${dup.text}"`);
+      console.log(`    Original: ${dup.original.id}`);
+      console.log(`    Duplicate: ${dup.duplicate.id}`);
+    }
+    if (duplicateSeeds.length > 5) {
+      console.log(`  ... and ${duplicateSeeds.length - 5} more`);
+    }
+  }
+
+  if (duplicateIntros.length > 0) {
+    console.log(`\n⚠️  Found ${duplicateIntros.length} duplicate introduction items:\n`);
+    for (const dup of duplicateIntros.slice(0, 5)) {
+      console.log(`  Text: "${dup.text}"`);
+      console.log(`    Original: ${dup.original.id}`);
+      console.log(`    Duplicate: ${dup.duplicate.id} (in seed ${dup.seedId})`);
+    }
+    if (duplicateIntros.length > 5) {
+      console.log(`  ... and ${duplicateIntros.length - 5} more`);
+    }
+  }
+
+  if (duplicateNodes.length > 0) {
+    console.log(`\n⚠️  Found ${duplicateNodes.length} duplicate nodes in intro items:\n`);
+    for (const dup of duplicateNodes.slice(0, 5)) {
+      console.log(`  Text: "${dup.text}" (intro ${dup.introItemId})`);
+      console.log(`    Duplicates a ${dup.type.replace('_', ' ')}`);
+    }
+    if (duplicateNodes.length > 5) {
+      console.log(`  ... and ${duplicateNodes.length - 5} more`);
+    }
+  }
+
+  if (duplicateSeeds.length === 0 && duplicateIntros.length === 0 && duplicateNodes.length === 0) {
+    console.log('✅ No duplicates found!');
+  } else {
+    // Create backup before deduplication
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').split('T')[0] + '_' + new Date().toTimeString().split(' ')[0].replace(/:/g, '');
+    const backupPath = manifestPath.replace('.json', `_backup_${timestamp}.json`);
+
+    console.log(`\n📦 Creating backup: ${backupPath}`);
+    await fs.copy(manifestPath, backupPath);
+
+    // Auto-remove duplicates
+    console.log('\n🔧 Auto-removing duplicates...\n');
+    let modified = false;
+
+    if (duplicateSeeds.length > 0) {
+      const removed = removeDuplicateSeeds(manifest, duplicateSeeds);
+      console.log(`✅ Removed ${removed} duplicate seeds`);
+      modified = true;
+    }
+
+    if (duplicateIntros.length > 0) {
+      const removed = removeDuplicateIntroItems(manifest, duplicateIntros);
+      console.log(`✅ Removed ${removed} duplicate introduction items`);
+      modified = true;
+    }
+
+    if (duplicateNodes.length > 0) {
+      const removed = removeDuplicateNodes(manifest, duplicateNodes);
+      console.log(`✅ Removed ${removed} duplicate nodes`);
+      modified = true;
+    }
+
+    if (modified) {
+      // Save deduplicated manifest
+      await fs.writeJson(manifestPath, manifest, { spaces: 2 });
+      console.log(`\n💾 Saved deduplicated manifest`);
+    }
+  }
 
   // Validate
   const validation = validateCourse(manifest);
@@ -356,6 +724,16 @@ async function main() {
     }
 
     if (modified) {
+      // Deduplicate samples before saving
+      console.log('\n🔄 Deduplicating samples...');
+      const { deduplicated } = deduplicateSamples(manifest);
+
+      if (deduplicated.groups > 0) {
+        console.log(`✅ Deduplicated ${deduplicated.groups} groups (removed ${deduplicated.removed} duplicate entries)`);
+      } else {
+        console.log('✅ No duplicates found');
+      }
+
       console.log(`\n💾 Writing: ${manifestPath}`);
       await fs.writeJson(manifestPath, manifest, { spaces: 2 });
 

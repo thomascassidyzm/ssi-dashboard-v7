@@ -300,6 +300,64 @@ async function checkSoxAvailability() {
 }
 
 /**
+ * Check if there's sufficient disk space for audio generation
+ * Minimum 5GB recommended:
+ * - ~2GB for raw audio files (48K samples @ ~40KB each)
+ * - ~2GB for mastered audio (temporary duplication during processing)
+ * - ~1GB safety margin for logs, temp files, etc.
+ */
+async function checkDiskSpace(options = {}) {
+  const { execSync } = require('child_process');
+  const minFreeGB = options.minFreeGB || 5;
+  const minFreeBytes = minFreeGB * 1024 * 1024 * 1024;
+
+  try {
+    // Get available space on the filesystem containing the project
+    const projectDir = path.resolve(__dirname, '..');
+    const dfOutput = execSync(`df -k "${projectDir}" | tail -1`, { encoding: 'utf8' });
+    const parts = dfOutput.trim().split(/\s+/);
+
+    // df -k outputs: Filesystem, 1K-blocks, Used, Available, Capacity, Mounted
+    const availableKB = parseInt(parts[3], 10);
+    const availableGB = availableKB / 1024 / 1024;
+    const capacityPercent = parts[4];
+
+    if (availableKB * 1024 < minFreeBytes) {
+      return {
+        success: false,
+        service: 'Disk Space',
+        error: `Only ${availableGB.toFixed(1)}GB free (${capacityPercent} used). Minimum ${minFreeGB}GB recommended.`,
+        fix: 'Free up disk space or run generation on a different machine.',
+        warning: 'Audio generation creates ~2GB of files, with temporary duplication during mastering.',
+        details: {
+          availableGB: availableGB.toFixed(1),
+          requiredGB: minFreeGB,
+          capacityUsed: capacityPercent
+        }
+      };
+    }
+
+    return {
+      success: true,
+      service: 'Disk Space',
+      message: `${availableGB.toFixed(1)}GB available (${capacityPercent} used)`,
+      details: {
+        availableGB: availableGB.toFixed(1),
+        requiredGB: minFreeGB,
+        capacityUsed: capacityPercent
+      }
+    };
+  } catch (error) {
+    return {
+      success: false,
+      service: 'Disk Space',
+      error: `Could not check disk space: ${error.message}`,
+      warning: 'Manual verification recommended before large generation runs'
+    };
+  }
+}
+
+/**
  * Run all pre-flight checks
  */
 async function runPreflightChecks(options = {}) {
@@ -329,6 +387,9 @@ async function runPreflightChecks(options = {}) {
 
   if (verbose) console.log('Checking SoX audio processor...');
   results.push(await checkSoxAvailability());
+
+  if (verbose) console.log('Checking disk space...');
+  results.push(await checkDiskSpace());
 
   // Summary
   const passed = results.filter(r => r.success);
@@ -389,5 +450,6 @@ module.exports = {
   checkElevenLabsConnection,
   checkS3Configuration,
   checkDependencies,
-  checkSoxAvailability
+  checkSoxAvailability,
+  checkDiskSpace
 };

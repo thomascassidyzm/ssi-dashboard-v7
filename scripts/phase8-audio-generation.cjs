@@ -24,6 +24,7 @@ const errorHandler = require('../services/error-handler-service.cjs');
 const encouragementService = require('../services/encouragement-service.cjs');
 const welcomeService = require('../services/welcome-service.cjs');
 const preflightCheck = require('../services/preflight-check-service.cjs');
+const presentationService = require('../services/presentation-service.cjs');
 const { createQCReviewDirectory } = require('./create-qc-review.cjs');
 
 // Configuration
@@ -85,6 +86,34 @@ async function loadVoiceRegistry() {
  */
 async function saveVoiceRegistry(registry) {
   await fs.writeJson(VOICES_REGISTRY, registry, { spaces: 2 });
+}
+
+/**
+ * Clean stale worker files from previous runs
+ * These are JSON metadata files (not audio!) that can become stale if
+ * manifest UUIDs change between runs. Only deletes JSON files, never audio.
+ */
+async function cleanStaleWorkerFiles() {
+  const workerInputDir = path.join(AUDIO_TEMP_DIR, 'worker-input');
+  const workerOutputDir = path.join(AUDIO_TEMP_DIR, 'worker-output');
+
+  let cleaned = 0;
+
+  for (const dir of [workerInputDir, workerOutputDir]) {
+    if (await fs.pathExists(dir)) {
+      const files = await fs.readdir(dir);
+      for (const file of files) {
+        if (file.endsWith('.json')) {
+          await fs.remove(path.join(dir, file));
+          cleaned++;
+        }
+      }
+    }
+  }
+
+  if (cleaned > 0) {
+    console.log(`Cleaned ${cleaned} stale worker metadata files`);
+  }
 }
 
 /**
@@ -335,6 +364,7 @@ function deduplicatePhaseASamples(samples) {
  * Match samples against MAR and identify missing ones
  * Includes encouragements in the analysis
  * Now checks both permanent and temporary MARs
+ * OPTIMIZED: Uses in-memory MAR index for O(1) lookups
  */
 async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments) {
   const variants = collectSampleVariants(manifest);
@@ -344,6 +374,11 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
   // Get course language info (v2.0.0 format has target/known at top level)
   const targetLang = manifest.target;
   const knownLang = manifest.known;
+
+  // PERFORMANCE OPTIMIZATION: Build MAR index once before loop
+  console.log(`\nAnalyzing required generation for ${variants.length} samples...`);
+  const uniqueVoiceIds = [...new Set(Object.values(voiceAssignments))];
+  const marIndex = await marService.loadMARIndex(uniqueVoiceIds);
 
   // Check regular samples
   for (const variant of variants) {
@@ -357,8 +392,9 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
     // Determine language for this role
     const language = ['target1', 'target2'].includes(variant.role) ? targetLang : knownLang;
 
-    // Check both permanent and temp MAR
-    const existing = await marService.findExistingSampleInBothMARs(
+    // Check MAR index (O(1) lookup instead of file I/O)
+    const existing = marService.findSampleInIndex(
+      marIndex,
       voiceId,
       variant.text,
       variant.role,
@@ -373,7 +409,7 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
         role: variant.role,
         cadence: variant.cadence,
         uuid: existing.uuid,
-        duration: existing.duration,
+        duration: existing.sample.duration,
         voiceId
       });
 
@@ -384,33 +420,40 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
       );
       if (variantInManifest) {
         variantInManifest.id = existing.uuid;
-        variantInManifest.duration = existing.duration;
+        variantInManifest.duration = existing.sample.duration;
       }
     } else {
       // Need to generate
-      const newUUID = uuidService.generateSampleUUID(
-        variant.text,
-        language,
-        variant.role,
-        variant.cadence
-      );
+      // For presentations: use existing manifest ID if available (text may have changed after ID was assigned)
+      // For other roles: generate deterministic UUID from current text
+      let sampleUUID;
+      if (variant.role === 'presentation' && variant.id) {
+        sampleUUID = variant.id;
+      } else {
+        sampleUUID = uuidService.generateSampleUUID(
+          variant.text,
+          language,
+          variant.role,
+          variant.cadence
+        );
+      }
 
       toGenerate.push({
         text: variant.text,
         role: variant.role,
         cadence: variant.cadence,
-        uuid: newUUID,
+        uuid: sampleUUID,
         voiceId,
         language
       });
 
-      // Update manifest with new UUID (duration will be set after generation)
+      // Update manifest with UUID (duration will be set after generation)
       const samples = manifest.slices?.[0]?.samples || {};
       const variantInManifest = samples[variant.text]?.find(
         v => v.role === variant.role && v.cadence === variant.cadence
       );
       if (variantInManifest) {
-        variantInManifest.id = newUUID;
+        variantInManifest.id = sampleUUID;
       }
     }
   }
@@ -439,6 +482,15 @@ async function analyzeRequiredGeneration(manifest, courseCode, voiceAssignments)
 async function generateAudioFile(sample, voiceDetails, outputPath) {
   const { text, role, voiceId, cadence } = sample;
   const { provider, provider_id, processing } = voiceDetails;
+
+  // Check if TTS is blocked at runtime (safety net)
+  if (global.BLOCK_TTS) {
+    console.error(`\n❌ BLOCKED: TTS generation attempted with --block-tts flag!`);
+    console.error(`   Sample: [${role}] "${text.substring(0, 60)}..."`);
+    console.error(`   Provider: ${provider}/${provider_id}`);
+    console.error(`\nThis indicates unexpected TTS usage. Exiting immediately.`);
+    process.exit(1);
+  }
 
   // Get cadence-specific settings
   const cadenceSettings = processing?.cadences?.[cadence] ||
@@ -1038,6 +1090,367 @@ function normalizeManifestRoles(manifest) {
 }
 
 /**
+ * Sync canonical resources from S3/LFS
+ * Ensures we have the latest encouragements and welcomes before checking
+ */
+async function syncCanonicalFromS3() {
+  console.log('\n=== Syncing Canonical Resources from S3 ===\n');
+
+  const canonicalDir = path.join(__dirname, '../public/vfs/canonical');
+  const s3Path = 's3://popty-bach-lfs/canonical/';
+
+  try {
+    const { execSync } = require('child_process');
+    execSync(`aws s3 sync ${s3Path} ${canonicalDir} --quiet`, {
+      stdio: 'pipe',
+      timeout: 60000 // 1 minute timeout
+    });
+    console.log('✓ Synced canonical resources from S3\n');
+    return true;
+  } catch (error) {
+    console.warn(`⚠️  Warning: Could not sync canonical from S3: ${error.message}`);
+    console.warn('   Continuing with local canonical resources...\n');
+    return false;
+  }
+}
+
+/**
+ * Find duplicate seeds (by canonical or known/target text)
+ * Copied from validate-and-fix-samples.cjs for final validation
+ */
+function findDuplicateSeeds(manifest) {
+  const slice = manifest.slices[0];
+  const seeds = slice.seeds || [];
+
+  const duplicates = [];
+  const seedsByCanonical = {};
+  const seedsByText = {};
+
+  for (let i = 0; i < seeds.length; i++) {
+    const seed = seeds[i];
+    const canonical = seed.seed_sentence?.canonical;
+    const knownText = seed.node?.known?.text;
+    const targetText = seed.node?.target?.text;
+
+    // Check canonical duplicates
+    if (canonical) {
+      if (seedsByCanonical[canonical]) {
+        duplicates.push({
+          type: 'canonical',
+          original: seedsByCanonical[canonical],
+          duplicate: seed,
+          text: canonical
+        });
+      } else {
+        seedsByCanonical[canonical] = seed;
+      }
+    }
+
+    // Check known/target duplicates
+    if (knownText && targetText) {
+      const textKey = `${knownText}|${targetText}`;
+      if (seedsByText[textKey]) {
+        const alreadyReported = duplicates.some(d =>
+          d.original.id === seedsByText[textKey].id && d.duplicate.id === seed.id
+        );
+        if (!alreadyReported) {
+          duplicates.push({
+            type: 'text',
+            original: seedsByText[textKey],
+            duplicate: seed,
+            text: `${knownText} / ${targetText}`
+          });
+        }
+      } else {
+        seedsByText[textKey] = seed;
+      }
+    }
+  }
+
+  return duplicates;
+}
+
+/**
+ * Find duplicate introduction items
+ * Copied from validate-and-fix-samples.cjs for final validation
+ */
+function findDuplicateIntroItems(manifest) {
+  const slice = manifest.slices[0];
+  const seeds = slice.seeds || [];
+
+  const duplicates = [];
+  const introsByText = {};
+
+  for (const seed of seeds) {
+    for (const introItem of seed.introduction_items || []) {
+      const knownText = introItem.node?.known?.text;
+      const targetText = introItem.node?.target?.text;
+
+      if (knownText && targetText) {
+        const textKey = `${knownText}|${targetText}`;
+        if (introsByText[textKey]) {
+          duplicates.push({
+            original: introsByText[textKey],
+            duplicate: introItem,
+            text: `${knownText} / ${targetText}`,
+            seedId: seed.id
+          });
+        } else {
+          introsByText[textKey] = introItem;
+        }
+      }
+    }
+  }
+
+  return duplicates;
+}
+
+/**
+ * Find empty seeds (seeds with no introduction_items)
+ */
+function findEmptySeeds(manifest) {
+  const slice = manifest.slices[0];
+  const seeds = slice.seeds || [];
+
+  const emptySeeds = [];
+
+  for (const seed of seeds) {
+    if (!seed.introduction_items || seed.introduction_items.length === 0) {
+      emptySeeds.push({
+        id: seed.id,
+        canonical: seed.seed_sentence?.canonical,
+        known: seed.node?.known?.text,
+        target: seed.node?.target?.text
+      });
+    }
+  }
+
+  return emptySeeds;
+}
+
+/**
+ * Collect all required sample IDs from manifest structure
+ * This traverses seeds and intro items to find what SHOULD exist
+ */
+function collectRequiredSamples(manifest) {
+  const required = new Set();
+  const slice = manifest.slices[0];
+  const samples = slice.samples || {};
+
+  // Build a lookup from text+role to sample entry
+  const sampleLookup = {};
+  for (const [text, variants] of Object.entries(samples)) {
+    for (const variant of variants) {
+      const key = `${text}|${variant.role}`;
+      sampleLookup[key] = variant;
+    }
+  }
+
+  // Traverse seeds to find required samples
+  for (const seed of slice.seeds || []) {
+    // Seed node
+    if (seed.node) {
+      const knownText = seed.node.known?.text;
+      const targetText = seed.node.target?.text;
+
+      if (knownText) {
+        const sourceKey = `${knownText}|source`;
+        if (sampleLookup[sourceKey]?.id) {
+          required.add(sampleLookup[sourceKey].id);
+        }
+      }
+      if (targetText) {
+        const t1Key = `${targetText}|target1`;
+        const t2Key = `${targetText}|target2`;
+        if (sampleLookup[t1Key]?.id) required.add(sampleLookup[t1Key].id);
+        if (sampleLookup[t2Key]?.id) required.add(sampleLookup[t2Key].id);
+      }
+    }
+
+    // Introduction items
+    for (const introItem of seed.introduction_items || []) {
+      // Intro item node
+      if (introItem.node) {
+        const knownText = introItem.node.known?.text;
+        const targetText = introItem.node.target?.text;
+
+        if (knownText) {
+          const sourceKey = `${knownText}|source`;
+          if (sampleLookup[sourceKey]?.id) required.add(sampleLookup[sourceKey].id);
+        }
+        if (targetText) {
+          const t1Key = `${targetText}|target1`;
+          const t2Key = `${targetText}|target2`;
+          if (sampleLookup[t1Key]?.id) required.add(sampleLookup[t1Key].id);
+          if (sampleLookup[t2Key]?.id) required.add(sampleLookup[t2Key].id);
+        }
+      }
+
+      // Presentation
+      if (introItem.presentation) {
+        const presKey = `${introItem.presentation}|presentation`;
+        if (sampleLookup[presKey]?.id) required.add(sampleLookup[presKey].id);
+      }
+
+      // Nodes in intro item
+      for (const node of introItem.nodes || []) {
+        const knownText = node.known?.text;
+        const targetText = node.target?.text;
+
+        if (knownText) {
+          const sourceKey = `${knownText}|source`;
+          if (sampleLookup[sourceKey]?.id) required.add(sampleLookup[sourceKey].id);
+        }
+        if (targetText) {
+          const t1Key = `${targetText}|target1`;
+          const t2Key = `${targetText}|target2`;
+          if (sampleLookup[t1Key]?.id) required.add(sampleLookup[t1Key].id);
+          if (sampleLookup[t2Key]?.id) required.add(sampleLookup[t2Key].id);
+        }
+      }
+    }
+  }
+
+  return required;
+}
+
+/**
+ * Run final validation checks before completing Phase 8
+ * Returns object with validation results
+ */
+function runFinalValidationChecks(manifest) {
+  console.log('\n=== Running Final Validation Checks ===\n');
+
+  const results = {
+    passed: true,
+    duplicateSeeds: [],
+    duplicateIntroItems: [],
+    emptySeeds: [],
+    errors: []
+  };
+
+  // Check for duplicate seeds
+  results.duplicateSeeds = findDuplicateSeeds(manifest);
+  if (results.duplicateSeeds.length > 0) {
+    console.error(`❌ Found ${results.duplicateSeeds.length} duplicate seeds:`);
+    for (const dup of results.duplicateSeeds.slice(0, 3)) {
+      console.error(`   - ${dup.type}: "${dup.text}"`);
+    }
+    if (results.duplicateSeeds.length > 3) {
+      console.error(`   ... and ${results.duplicateSeeds.length - 3} more`);
+    }
+    results.passed = false;
+    results.errors.push(`${results.duplicateSeeds.length} duplicate seeds found`);
+  } else {
+    console.log('✓ No duplicate seeds');
+  }
+
+  // Check for duplicate intro items
+  results.duplicateIntroItems = findDuplicateIntroItems(manifest);
+  if (results.duplicateIntroItems.length > 0) {
+    console.error(`❌ Found ${results.duplicateIntroItems.length} duplicate introduction items:`);
+    for (const dup of results.duplicateIntroItems.slice(0, 3)) {
+      console.error(`   - "${dup.text}" in seed ${dup.seedId}`);
+    }
+    if (results.duplicateIntroItems.length > 3) {
+      console.error(`   ... and ${results.duplicateIntroItems.length - 3} more`);
+    }
+    results.passed = false;
+    results.errors.push(`${results.duplicateIntroItems.length} duplicate intro items found`);
+  } else {
+    console.log('✓ No duplicate introduction items');
+  }
+
+  // Check for empty seeds
+  results.emptySeeds = findEmptySeeds(manifest);
+  if (results.emptySeeds.length > 0) {
+    console.error(`❌ Found ${results.emptySeeds.length} empty seeds (no introduction_items):`);
+    for (const seed of results.emptySeeds.slice(0, 3)) {
+      console.error(`   - ${seed.id}: "${seed.canonical || seed.target}"`);
+    }
+    if (results.emptySeeds.length > 3) {
+      console.error(`   ... and ${results.emptySeeds.length - 3} more`);
+    }
+    results.passed = false;
+    results.errors.push(`${results.emptySeeds.length} empty seeds found`);
+  } else {
+    console.log('✓ No empty seeds');
+  }
+
+  console.log('');
+  return results;
+}
+
+/**
+ * Verify all required samples exist in S3
+ * Returns object with verification results
+ */
+async function verifyAllSamplesInS3(manifest, s3Durations, bucket) {
+  console.log('\n=== Verifying All Required Samples in S3 ===\n');
+
+  const results = {
+    passed: true,
+    totalRequired: 0,
+    verified: 0,
+    missing: [],
+    missingFromManifest: []
+  };
+
+  // Get all sample IDs from manifest
+  const allSampleIds = collectAllSampleIds(manifest);
+
+  // Add welcome if exists
+  if (manifest.introduction && manifest.introduction.id) {
+    allSampleIds.push(manifest.introduction.id);
+  }
+
+  results.totalRequired = allSampleIds.length;
+
+  // Check which samples have durations (meaning they were found in S3)
+  for (const uuid of allSampleIds) {
+    if (s3Durations[uuid] && s3Durations[uuid] > 0) {
+      results.verified++;
+    } else {
+      results.missing.push(uuid);
+    }
+  }
+
+  // Also check for samples that are required by structure but missing from samples list
+  const requiredByStructure = collectRequiredSamples(manifest);
+  const allSampleIdsSet = new Set(allSampleIds);
+
+  for (const uuid of requiredByStructure) {
+    if (!allSampleIdsSet.has(uuid)) {
+      results.missingFromManifest.push(uuid);
+    }
+  }
+
+  // Report results
+  if (results.missing.length > 0) {
+    console.error(`❌ ${results.missing.length} samples missing from S3:`);
+    for (const uuid of results.missing.slice(0, 5)) {
+      console.error(`   - ${uuid}`);
+    }
+    if (results.missing.length > 5) {
+      console.error(`   ... and ${results.missing.length - 5} more`);
+    }
+    results.passed = false;
+  }
+
+  if (results.missingFromManifest.length > 0) {
+    console.error(`❌ ${results.missingFromManifest.length} required samples not in manifest samples list`);
+    results.passed = false;
+  }
+
+  if (results.passed) {
+    console.log(`✓ All ${results.verified} samples verified in S3`);
+  }
+
+  console.log('');
+  return results;
+}
+
+/**
  * Update manifest with durations
  */
 function updateManifestDurations(manifest, durations) {
@@ -1070,6 +1483,136 @@ function collectAllSampleIds(manifest) {
 }
 
 /**
+ * Simple tokenization for known/target text
+ * For now: just split by spaces (English) or characters (CJK)
+ */
+function tokenizeText(text, language) {
+  if (!text) return [];
+
+  // CJK languages: character-level tokens
+  if (language === 'cmn' || language === 'jpn' || language === 'kor') {
+    // Remove spaces and punctuation, split into characters
+    return text.replace(/\s+/g, '').split('').filter(c => /\p{L}/u.test(c));
+  }
+
+  // Other languages: word-level tokens (split by spaces)
+  return text.toLowerCase()
+    .replace(/[^\p{L}\s]/gu, '') // Remove punctuation
+    .split(/\s+/)
+    .filter(token => token.length > 0);
+}
+
+/**
+ * Populate tokens and lemmas for all nodes in manifest
+ */
+function populateTokensAndLemmas(manifest) {
+  console.log('\n=== Populating Tokens and Lemmas ===\n');
+
+  const targetLang = manifest.target || 'unk';
+  const knownLang = manifest.known || 'eng';
+  let populated = 0;
+
+  for (const slice of manifest.slices || []) {
+    for (const seed of slice.seeds || []) {
+      // Populate seed node
+      if (seed.node) {
+        if (seed.node.known && !seed.node.known.tokens?.length) {
+          seed.node.known.tokens = tokenizeText(seed.node.known.text, knownLang);
+          seed.node.known.lemmas = [...seed.node.known.tokens]; // For now, lemmas = tokens
+          populated++;
+        }
+        if (seed.node.target && !seed.node.target.tokens?.length) {
+          seed.node.target.tokens = tokenizeText(seed.node.target.text, targetLang);
+          seed.node.target.lemmas = [...seed.node.target.tokens];
+          populated++;
+        }
+      }
+
+      // Populate intro items
+      for (const introItem of seed.introduction_items || []) {
+        if (introItem.node) {
+          if (introItem.node.known && !introItem.node.known.tokens?.length) {
+            introItem.node.known.tokens = tokenizeText(introItem.node.known.text, knownLang);
+            introItem.node.known.lemmas = [...introItem.node.known.tokens];
+            populated++;
+          }
+          if (introItem.node.target && !introItem.node.target.tokens?.length) {
+            introItem.node.target.tokens = tokenizeText(introItem.node.target.text, targetLang);
+            introItem.node.target.lemmas = [...introItem.node.target.tokens];
+            populated++;
+          }
+        }
+
+        // Populate nodes within intro items
+        for (const node of introItem.nodes || []) {
+          if (node.known && !node.known.tokens?.length) {
+            node.known.tokens = tokenizeText(node.known.text, knownLang);
+            node.known.lemmas = [...node.known.tokens];
+            populated++;
+          }
+          if (node.target && !node.target.tokens?.length) {
+            node.target.tokens = tokenizeText(node.target.text, targetLang);
+            node.target.lemmas = [...node.target.tokens];
+            populated++;
+          }
+        }
+      }
+    }
+  }
+
+  console.log(`✓ Populated ${populated} token/lemma arrays`);
+}
+
+/**
+ * Re-expand deduplicated samples to include all original variants
+ * This happens AFTER generation but BEFORE S3 check
+ *
+ * Simply runs validate-and-fix-samples again, which will:
+ * 1. Find missing variants like "Hablo" (when only "hablo" exists in samples)
+ * 2. Add encouragements back
+ * 3. Add them with empty IDs
+ *
+ * Then reassignUUIDsFromMAR will match them to the correct audio via MAR normalization.
+ */
+async function reExpandSamples(manifest, courseCode) {
+  const { execSync } = require('child_process');
+  const path = require('path');
+
+  console.log('\n=== Re-expanding Deduplicated Samples ===\n');
+
+  const manifestPath = path.join(__dirname, `../public/vfs/courses/${courseCode}/course_manifest.json`);
+  const validatorScript = path.join(__dirname, 'validate-and-fix-samples.cjs');
+
+  // Save current manifest first
+  await saveCourseManifest(courseCode, manifest);
+
+  // Run validator to add missing variants and encouragements
+  console.log('Running validate-and-fix-samples to restore missing variants...');
+  try {
+    execSync(`node "${validatorScript}" "${manifestPath}"`, {
+      stdio: 'inherit',
+      encoding: 'utf-8'
+    });
+  } catch (error) {
+    console.warn(`Warning: Validator exited with code ${error.status}`);
+  }
+
+  // Reload manifest with expanded samples
+  const expandedManifest = await loadCourseManifest(courseCode);
+
+  // Copy expanded samples back to our manifest
+  if (expandedManifest.slices?.[0]?.samples) {
+    manifest.slices[0].samples = expandedManifest.slices[0].samples;
+  }
+
+  // Populate tokens and lemmas for all nodes
+  populateTokensAndLemmas(manifest);
+
+  console.log('✓ Re-expansion complete');
+  return 0;
+}
+
+/**
  * Extract durations from S3 for ALL samples (both new and existing)
  * This ensures consistency and verifies existing files haven't changed
  */
@@ -1093,6 +1636,12 @@ async function extractDurationsFromS3(sampleIds, bucket) {
 
         // Extract duration using sox (matches original workflow)
         const duration = await audioProcessor.getAudioDuration(tempFile);
+
+        // Check for corrupted files (0 duration)
+        if (duration <= 0) {
+          throw new Error(`Invalid duration: ${duration}s (file may be corrupted)`);
+        }
+
         durations[uuid] = duration;
 
         successCount++;
@@ -1143,15 +1692,101 @@ async function continuePhaseAProcessing(courseCode, options = {}) {
     throw new Error('No raw audio files found. Run Phase A generation first.');
   }
 
-  // Create mock results for processing
-  const results = mp3Files.map(filename => ({
-    success: true,
-    outputPath: path.join(rawDir, filename),
-    sample: {
-      uuid: path.basename(filename, '.mp3'),
-      voiceId: 'unknown' // Will be loaded from manifest if needed
+  // Load voice assignments for the course
+  const voiceAssignments = await getVoiceAssignments(courseCode);
+  console.log(`Voice assignments: ${JSON.stringify(voiceAssignments)}`);
+
+  // Build UUID→role map from manifest for fallback lookup
+  const manifest = await loadCourseManifest(courseCode);
+  const uuidToRole = {};
+  if (manifest.slices) {
+    for (const slice of manifest.slices) {
+      if (slice.samples) {
+        for (const samples of Object.values(slice.samples)) {
+          for (const sample of samples) {
+            if (sample.id && sample.role) {
+              uuidToRole[sample.id] = sample.role;
+            }
+          }
+        }
+      }
     }
-  }));
+  }
+  console.log(`Loaded ${Object.keys(uuidToRole).length} UUID→role mappings from manifest`);
+
+  // Strategy: Use worker results first, then manifest lookup for role→voice
+  const workerOutputDir = path.join(AUDIO_TEMP_DIR, 'worker-output');
+  const elevenlabsUUIDs = new Set();
+  const azureUUIDs = new Set();
+  const uuidToVoiceId = {};
+
+  try {
+    const elevenlabsResultsPath = path.join(workerOutputDir, 'elevenlabs-results.json');
+    if (await fs.pathExists(elevenlabsResultsPath)) {
+      const elevenlabsResults = await fs.readJson(elevenlabsResultsPath);
+      for (const r of elevenlabsResults) {
+        if (r.uuid && r.voiceId) {
+          elevenlabsUUIDs.add(r.uuid);
+          uuidToVoiceId[r.uuid] = r.voiceId;
+        }
+      }
+      console.log(`Loaded ${elevenlabsResults.length} ElevenLabs voice mappings`);
+    }
+
+    const azureResultsPath = path.join(workerOutputDir, 'azure-results.json');
+    if (await fs.pathExists(azureResultsPath)) {
+      const azureResults = await fs.readJson(azureResultsPath);
+      for (const r of azureResults) {
+        if (r.uuid && r.voiceId) {
+          azureUUIDs.add(r.uuid);
+          uuidToVoiceId[r.uuid] = r.voiceId;
+        }
+      }
+      console.log(`Loaded ${azureResults.length} Azure voice mappings`);
+    }
+  } catch (error) {
+    console.warn(`Warning: Could not load worker results: ${error.message}`);
+  }
+
+  // Default voice for unmapped files (last resort)
+  const defaultAzureVoice = voiceAssignments.target1 || 'azure_es-ES-TrianaNeural';
+  console.log(`Total known mappings from worker results: ${Object.keys(uuidToVoiceId).length}`);
+
+  // Create results with voiceId from worker outputs, or manifest lookup
+  let fromWorkerResults = 0;
+  let fromManifest = 0;
+  let fromDefault = 0;
+
+  const results = mp3Files.map(filename => {
+    const uuid = path.basename(filename, '.mp3');
+    let voiceId = uuidToVoiceId[uuid];
+
+    if (voiceId) {
+      fromWorkerResults++;
+    } else {
+      // Look up role from manifest and get voiceId
+      const role = uuidToRole[uuid];
+      if (role && voiceAssignments[role]) {
+        voiceId = voiceAssignments[role];
+        fromManifest++;
+      } else {
+        // Last resort: default to target1 Azure voice
+        voiceId = defaultAzureVoice;
+        fromDefault++;
+      }
+    }
+
+    return {
+      success: true,
+      outputPath: path.join(rawDir, filename),
+      sample: {
+        uuid,
+        voiceId
+      }
+    };
+  });
+
+  console.log(`Voice mapping: ${fromWorkerResults} from worker results, ${fromManifest} from manifest, ${fromDefault} defaulted\n`);
 
   // Process audio
   const processResults = await processGeneratedAudio(results);
@@ -1207,12 +1842,14 @@ async function regenerateSamples(courseCode, uuids, options = {}) {
   const samplesToRegenerate = [];
   const samples = manifest.slices?.[0]?.samples || {};
 
-  // Find samples by UUID
+  // Find samples by UUID (check both .id and .uuid for compatibility)
   for (const uuid of uuids) {
+    const normalizedUUID = uuid.toUpperCase(); // Normalize to uppercase for comparison
     let found = false;
     for (const [text, variants] of Object.entries(samples)) {
       for (const variant of variants) {
-        if (variant.uuid === uuid) {
+        const variantID = (variant.id || variant.uuid || '').toUpperCase();
+        if (variantID === normalizedUUID) {
           // Reconstruct sample object for generation
           const voiceKey = {
             'target1': voiceAssignments.target1,
@@ -1222,11 +1859,11 @@ async function regenerateSamples(courseCode, uuids, options = {}) {
           }[variant.role];
 
           samplesToRegenerate.push({
-            uuid,
+            uuid: variant.id || variant.uuid || uuid, // Use original format from manifest
             text,
             role: variant.role,
             cadence: variant.cadence,
-            language: variant.language,
+            language: variant.language || (variant.role === 'source' || variant.role === 'presentation' ? manifest.known : manifest.target),
             voiceId: voiceKey
           });
           found = true;
@@ -1262,10 +1899,39 @@ async function regenerateSamples(courseCode, uuids, options = {}) {
 
   console.log(`QC Results: ${flagged.length} samples flagged\n`);
 
+  // If QC issues found, pause for review
+  if (flagged.length > 0) {
+    console.log(`⚠️  ${flagged.length} samples flagged. Review QC report before continuing.\n`);
+    return {
+      success: true,
+      regenerated: successCount,
+      qcFlagged: flagged.length,
+      results: generationResults,
+      durations,
+      pausedForQC: true
+    };
+  }
+
+  // No QC issues - process and upload
+  console.log('✓ No QC issues detected. Processing and uploading...\n');
+
+  // Process audio (normalize + stretch)
+  const processResults = await processGeneratedAudio(generationResults);
+  const processedCount = processResults.filter(r => r.success).length;
+  console.log(`Processed: ${processedCount}/${successCount} files`);
+
+  // Upload to S3
+  const uploadBucket = options.uploadBucket || s3Service.STAGE_BUCKET;
+  const uploadResults = await uploadToS3(processResults, uploadBucket);
+  const uploadedCount = uploadResults.filter(r => r.success).length;
+  console.log(`Uploaded: ${uploadedCount}/${processedCount} files to S3 (${uploadBucket})\n`);
+
   return {
     success: true,
     regenerated: successCount,
     qcFlagged: flagged.length,
+    processed: processedCount,
+    uploaded: uploadedCount,
     results: generationResults,
     durations
   };
@@ -1286,11 +1952,13 @@ async function handleEncouragements(sourceLanguage, voiceAssignments, manifest, 
   console.log(`Encouragement Check: ${sourceLanguage}`);
   console.log(`${'='.repeat(60)}\n`);
 
-  // Get encouragement messages from manifest
-  const phrases = encouragementService.getEncouragementPhrases(manifest);
+  // Load canonical encouragements from {language}_encouragements.json
+  // These define WHAT encouragements should be in the course
+  const canonicalEncouragements = await encouragementService.loadCanonicalEncouragements(sourceLanguage);
 
-  if (phrases.length === 0) {
-    console.log('No encouragements found in manifest - skipping\n');
+  if (canonicalEncouragements.length === 0) {
+    console.log(`No canonical encouragements found for ${sourceLanguage} - skipping\n`);
+    console.log('To add encouragements, create: public/vfs/canonical/{language}_encouragements.json\n');
     return {
       encouragements: [],
       durations: {},
@@ -1298,20 +1966,38 @@ async function handleEncouragements(sourceLanguage, voiceAssignments, manifest, 
     };
   }
 
-  console.log(`Found ${phrases.length} encouragement messages in manifest\n`);
+  console.log(`Found ${canonicalEncouragements.length} canonical encouragements for ${sourceLanguage}\n`);
 
   // Get encouragement voice
   const encouragementVoice = encouragementService.getEncouragementVoice(sourceLanguage, voiceAssignments);
   console.log(`Encouragement voice: ${encouragementVoice}\n`);
 
-  // Check which encouragements already exist in MAR
-  const { existing, missing } = await encouragementService.checkExistingEncouragements(
-    sourceLanguage,
-    encouragementVoice,
-    phrases
-  );
+  // Check which encouragements have existing audio samples (by TEXT match)
+  // Samples are stored in samples_database/encouragement_samples/{lang}_samples.json
+  const existing = [];
+  const missing = [];
 
-  console.log(`Existing in MAR: ${existing.length}/${phrases.length}`);
+  for (const canonicalEnc of canonicalEncouragements) {
+    const sample = await marService.findEncouragementSampleByText(sourceLanguage, canonicalEnc.text);
+
+    if (sample) {
+      existing.push({
+        text: canonicalEnc.text,
+        canonicalId: canonicalEnc.id,  // The encouragement item ID
+        uuid: sample.uuid,              // The audio sample UUID
+        duration: sample.duration,
+        exists: true
+      });
+    } else {
+      missing.push({
+        text: canonicalEnc.text,
+        canonicalId: canonicalEnc.id,
+        exists: false
+      });
+    }
+  }
+
+  console.log(`Existing samples: ${existing.length}/${canonicalEncouragements.length}`);
   console.log(`Need to generate: ${missing.length}\n`);
 
   let generatedResults = [];
@@ -1319,16 +2005,24 @@ async function handleEncouragements(sourceLanguage, voiceAssignments, manifest, 
 
   // Add existing durations
   for (const enc of existing) {
-    allDurations[enc.uuid] = enc.duration;
+    if (enc.uuid && enc.duration) {
+      allDurations[enc.uuid] = enc.duration;
+    }
   }
 
   // Generate missing encouragements
-  if (missing.length > 0) {
+  if (missing.length > 0 && !options.skipGeneration) {
     const tempDir = path.join(AUDIO_TEMP_DIR, 'encouragements');
+
+    // Generate new UUIDs for missing samples (these are SAMPLE UUIDs, not encouragement item IDs)
+    const missingWithUUIDs = missing.map(m => ({
+      ...m,
+      uuid: uuidService.generateDeterministicUUID(`encouragement_sample_${sourceLanguage}_${m.text}`)
+    }));
 
     // Generate
     const genResults = await encouragementService.generateEncouragements(
-      missing,
+      missingWithUUIDs,
       encouragementVoice,
       sourceLanguage,
       tempDir
@@ -1337,7 +2031,7 @@ async function handleEncouragements(sourceLanguage, voiceAssignments, manifest, 
     // Process
     const processResults = await encouragementService.processEncouragements(genResults);
 
-    // Upload and register in MAR
+    // Upload and register in encouragement samples storage
     const uploadDurations = await encouragementService.uploadAndRegisterEncouragements(
       processResults,
       encouragementVoice,
@@ -1349,25 +2043,30 @@ async function handleEncouragements(sourceLanguage, voiceAssignments, manifest, 
     allDurations = { ...allDurations, ...uploadDurations };
 
     generatedResults = genResults;
+
+    // Add newly generated to existing list
+    for (const result of generatedResults.filter(r => r.success)) {
+      existing.push({
+        text: result.encouragement.text,
+        canonicalId: result.encouragement.canonicalId,
+        uuid: result.encouragement.uuid,
+        duration: allDurations[result.encouragement.uuid],
+        exists: true
+      });
+    }
   }
 
-  console.log(`✓ All encouragements ready (${existing.length + generatedResults.filter(r => r.success).length}/${phrases.length})\n`);
+  const successCount = existing.length;
+  console.log(`✓ Encouragements ready: ${successCount}/${canonicalEncouragements.length}\n`);
 
-  // Return encouragement data for later manifest integration
-  const allEncouragements = [
-    ...existing.map(e => ({
-      text: e.text,
-      uuid: e.uuid,
-      duration: e.duration,
-      language: sourceLanguage
-    })),
-    ...generatedResults.filter(r => r.success).map(r => ({
-      text: r.encouragement.text,
-      uuid: r.encouragement.uuid,
-      duration: allDurations[r.encouragement.uuid],
-      language: sourceLanguage
-    }))
-  ];
+  // Return ALL encouragements that have samples (for manifest integration)
+  // The manifest needs the SAMPLE UUID (for audio playback), not the canonical item ID
+  const allEncouragements = existing.map(e => ({
+    text: e.text,
+    uuid: e.uuid,           // Audio sample UUID
+    duration: e.duration,
+    language: sourceLanguage
+  }));
 
   return {
     encouragements: allEncouragements,
@@ -1809,6 +2508,146 @@ async function executePhaseA(phaseASamples, courseCode, options) {
 }
 
 /**
+ * Generate presentation samples using concatenation
+ * Presentations combine TTS narration with pre-recorded target audio from S3
+ *
+ * @param {Array} samples - Presentation samples to generate
+ * @param {Object} manifest - Course manifest
+ * @param {Object} voiceAssignments - Voice assignments by role
+ * @param {Object} options - Generation options
+ * @returns {Promise<Array>} Generation results
+ */
+async function generatePresentationSamples(samples, manifest, voiceAssignments, options = {}) {
+  const { uploadBucket = s3Service.STAGE_BUCKET } = options;
+
+  console.log(`\n=== Generating ${samples.length} Presentation Samples ===\n`);
+
+  // Step 1: Extract and deduplicate all unique narration segments
+  const { uniqueSegments, segmentMap } = presentationService.extractAllUniqueSegments(samples);
+
+  console.log(`Deduplication analysis:`);
+  console.log(`  Total text segments: ${Array.from(segmentMap.values()).reduce((a, b) => a + b, 0)}`);
+  console.log(`  Unique segments: ${uniqueSegments.size}`);
+  console.log(`  Duplicates eliminated: ${Array.from(segmentMap.values()).reduce((a, b) => a + b, 0) - uniqueSegments.size}\n`);
+
+  // Show top duplicates
+  const sortedByCount = Array.from(segmentMap.entries())
+    .filter(([_, count]) => count > 1)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
+
+  if (sortedByCount.length > 0) {
+    console.log(`Top duplicate segments:`);
+    for (const [text, count] of sortedByCount) {
+      console.log(`  ${count}x: "${text.substring(0, 60)}${text.length > 60 ? '...' : ''}"`);
+    }
+    console.log();
+  }
+
+  // Step 2: Generate all unique segments in batch
+  const presentationVoiceId = voiceAssignments.presentation;
+  const segmentCacheDir = path.join(AUDIO_TEMP_DIR, 'segment_cache');
+  const segmentCache = await presentationService.generateSegmentBatch(
+    uniqueSegments,
+    presentationVoiceId,
+    segmentCacheDir,
+    { sourceLanguage: manifest.known }
+  );
+
+  // Step 3: Filter out samples that already exist locally
+  const existingFiles = new Set(
+    (await fs.readdir(AUDIO_TEMP_DIR))
+      .filter(f => f.endsWith('.mp3'))
+      .map(f => f.replace('.mp3', ''))
+  );
+
+  // Note: samples from manifest have 'id' field, but analyzeRequiredGeneration adds 'uuid' field
+  // Support both for compatibility
+  const samplesToGenerate = samples.filter(s => !existingFiles.has(s.uuid || s.id));
+  const skippedCount = samples.length - samplesToGenerate.length;
+
+  if (skippedCount > 0) {
+    console.log(`\n✓ Skipping ${skippedCount} presentations that already exist locally`);
+    console.log(`  Generating ${samplesToGenerate.length} missing presentations\n`);
+  }
+
+  if (samplesToGenerate.length === 0) {
+    console.log('\n✓ All presentations already exist locally!\n');
+    return samples.map(s => ({ success: true, uuid: s.uuid || s.id, skipped: true }));
+  }
+
+  // Step 4: Generate presentations using the cached segments
+  const results = [];
+  const MAX_CONCURRENT = 4; // Presentations are complex, use fewer concurrent
+
+  for (let i = 0; i < samplesToGenerate.length; i += MAX_CONCURRENT) {
+    const batch = samplesToGenerate.slice(i, i + MAX_CONCURRENT);
+
+    // Process batch in parallel
+    const batchResults = await Promise.all(
+      batch.map(async (sample) => {
+        console.log(`[${i + 1}/${samplesToGenerate.length}] Generating presentation: "${sample.text.substring(0, 60)}..."`);
+
+        try {
+          const result = await presentationService.generatePresentationAudio(
+            sample,
+            manifest,
+            voiceAssignments,
+            {
+              tempDir: AUDIO_TEMP_DIR,
+              bucket: uploadBucket,
+              sourceLanguage: manifest.known,
+              targetLanguage: manifest.target,
+              segmentCache // Pass the pre-generated segment cache
+            }
+          );
+
+          if (result.success) {
+            console.log(`  ✓ Generated: ${result.uuid}`);
+          } else {
+            console.error(`  ✗ Failed: ${result.error}`);
+          }
+
+          return result;
+
+        } catch (error) {
+          console.error(`  ✗ Exception: ${error.message}`);
+          return {
+            success: false,
+            sample,
+            error: error.message
+          };
+        }
+      })
+    );
+
+    results.push(...batchResults);
+
+    // Progress update
+    const completed = Math.min(i + MAX_CONCURRENT, samplesToGenerate.length);
+    const pct = Math.round((completed / samplesToGenerate.length) * 100);
+    console.log(`\nProgress: ${completed}/${samplesToGenerate.length} presentations (${pct}%)\n`);
+  }
+
+  // Step 5: Keep segment cache directory for potential re-runs
+  // await fs.remove(segmentCacheDir);  // Commented out to allow resuming with cached segments
+  console.log(`\n✓ Segment cache preserved at: ${segmentCacheDir}`);
+
+  const successCount = results.filter(r => r.success).length;
+  const failCount = results.filter(r => !r.success).length;
+
+  console.log(`\n✓ Generated ${successCount}/${samplesToGenerate.length} presentations`);
+  if (skippedCount > 0) {
+    console.log(`✓ Skipped ${skippedCount} existing presentations`);
+  }
+  if (failCount > 0) {
+    console.log(`✗ Failed: ${failCount} presentations\n`);
+  }
+
+  return results;
+}
+
+/**
  * Execute Phase B: Generate presentation samples
  *
  * @param {Array} phaseBSamples - Samples to generate for Phase B
@@ -1821,7 +2660,7 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
   console.log(`\n${'='.repeat(60)}`);
   console.log(`Phase B: Presentation Generation`);
   console.log(`Roles: presentation`);
-  console.log(`Samples to generate: ${phaseBSamples.length}`);
+  console.log(`Total presentations in manifest: ${phaseBSamples.length}`);
   console.log(`${'='.repeat(60)}\n`);
 
   if (phaseBSamples.length === 0) {
@@ -1829,22 +2668,96 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
     return { success: true, generated: 0, skipped: true };
   }
 
-  // 1. Download required target files from S3
-  const { downloaded, missing } = await downloadTargetFilesFromS3(manifest, options.uploadBucket);
+  // 0. FIRST: Check which presentations already exist locally (skip before target download)
+  console.log('Checking for existing presentation files...');
+  const existingFiles = new Set(
+    fs.readdirSync(AUDIO_TEMP_DIR)
+      .filter(f => f.endsWith('.mp3'))
+      .map(f => f.replace('.mp3', ''))
+  );
 
-  if (missing.length > 0) {
+  // Filter to only samples that need generation (using manifest ID)
+  const samplesToGenerate = phaseBSamples.filter(s => !existingFiles.has(s.uuid || s.id));
+  const skippedCount = phaseBSamples.length - samplesToGenerate.length;
+
+  if (skippedCount > 0) {
+    console.log(`✓ Skipping ${skippedCount} presentations that already exist locally`);
+    console.log(`  Need to generate: ${samplesToGenerate.length} presentations\n`);
+  }
+
+  if (samplesToGenerate.length === 0) {
+    console.log('\n✓ All presentations already exist locally!\n');
+    return {
+      success: true,
+      generated: 0,
+      skipped: phaseBSamples.length,
+      results: phaseBSamples.map(s => ({ success: true, uuid: s.uuid || s.id, skipped: true }))
+    };
+  }
+
+  // 1. Collect required target UUIDs only for samples that need generation
+  console.log('\n=== Downloading Target Files from S3 ===\n');
+  console.log('Phase B (presentations) requires target1 and target2 samples...\n');
+
+  const { requiredTargets, missingTargets } = presentationService.collectRequiredTargets(samplesToGenerate, manifest);
+
+  // Fail fast if any required targets are missing from manifest
+  if (missingTargets.length > 0) {
+    console.error(`\n❌ ERROR: ${missingTargets.length} required target samples are missing from the manifest:\n`);
+
+    // Group by target text to avoid duplicates
+    const grouped = {};
+    for (const missing of missingTargets) {
+      const key = `${missing.targetText}|${missing.role}`;
+      if (!grouped[key]) {
+        grouped[key] = { ...missing, count: 0, presentations: [] };
+      }
+      grouped[key].count++;
+      grouped[key].presentations.push(missing.presentationId);
+    }
+
+    for (const [key, info] of Object.entries(grouped)) {
+      console.error(`  Target text: "${info.targetText}" (${info.role})`);
+      console.error(`  Needed by: ${info.count} presentation(s)`);
+      console.error(`  Example presentation: ${info.presentationText}`);
+      console.error(`  Presentation IDs: ${info.presentations.slice(0, 3).join(', ')}${info.presentations.length > 3 ? '...' : ''}`);
+      console.error('');
+    }
+
     throw new Error(
-      `Cannot proceed with Phase B: ${missing.length} required target files missing from S3. ` +
-      `Run Phase A first and ensure all samples are uploaded.`
+      `Cannot proceed with Phase B: ${missingTargets.length} required target samples are missing from the manifest. ` +
+      `These target samples need to be generated in Phase A first, or the manifest data may have incorrect roles. ` +
+      `Fix the manifest and regenerate the missing target samples, then retry Phase B.`
     );
   }
 
-  console.log(`✓ All ${downloaded.length} required target files available\n`);
+  console.log(`Identified ${requiredTargets.size} unique target files needed\n`);
 
-  // 2. Generate presentation audio
-  const generationResults = await generateMissingAudio(phaseBSamples);
+  const targetCacheDir = path.join(AUDIO_TEMP_DIR, 'targets');
+  const { downloaded, skipped, failed } = await presentationService.bulkDownloadTargets(
+    requiredTargets,
+    targetCacheDir,
+    options.uploadBucket,
+    10 // Concurrency: 10 parallel downloads
+  );
+
+  if (failed > 0 && !options.ignoreDownloadErrors) {
+    throw new Error(
+      `Cannot proceed with Phase B: ${failed} required target files failed to download from S3. ` +
+      `Check S3 bucket and ensure Phase A samples were uploaded successfully. ` +
+      `Use --ignore-download-errors to proceed anyway (may cause failures during generation).`
+    );
+  } else if (failed > 0) {
+    console.warn(`⚠️  ${failed} target files failed to download - proceeding anyway due to --ignore-download-errors`);
+  }
+
+  console.log(`✓ All ${requiredTargets.size} required target files available (${downloaded} downloaded, ${skipped} cached)\n`);
+
+  // 2. Generate presentation audio with concatenation (only for samples that need generation)
+  const voiceAssignments = await getVoiceAssignments(courseCode);
+  const generationResults = await generatePresentationSamples(samplesToGenerate, manifest, voiceAssignments, options);
   const successCount = generationResults.filter(r => r.success).length;
-  console.log(`\nGenerated: ${successCount}/${phaseBSamples.length} files`);
+  console.log(`\nGenerated: ${successCount}/${samplesToGenerate.length} files (${skippedCount} skipped)`);
 
   if (successCount === 0) {
     throw new Error('No audio files were successfully generated in Phase B');
@@ -1915,7 +2828,9 @@ async function generateAudioForCourse(courseCode, options = {}) {
     cleanupTemp = true,
     skipQC = false,
     sequential = false, // Use sequential instead of parallel provider generation
-    phase = 'auto' // 'targets', 'presentations', or 'auto'
+    phase = 'auto', // 'targets', 'presentations', or 'auto'
+    blockTTS = false, // Block all TTS generation - fail if any would be required
+    ignoreDownloadErrors = false // Continue even if target downloads fail
   } = options;
 
   console.log(`\n${'='.repeat(60)}`);
@@ -1939,6 +2854,9 @@ async function generateAudioForCourse(courseCode, options = {}) {
     }
 
     console.log('✅ All pre-flight checks passed. Proceeding with audio generation...\n');
+
+    // 0. Clean stale worker metadata files from previous runs (JSON only, never audio)
+    await cleanStaleWorkerFiles();
 
     // 1. Initialize temporary MAR (crash-safe staging area)
     console.log('Initializing temporary MAR...');
@@ -1979,6 +2897,12 @@ async function generateAudioForCourse(courseCode, options = {}) {
     const { phaseA, phaseB } = splitSamplesByPhase(toGenerate);
     console.log(`Phase A (targets + source): ${phaseA.length} samples`);
     console.log(`Phase B (presentations): ${phaseB.length} samples\n`);
+
+    // Set global TTS block flag - will be checked at actual TTS call time
+    if (blockTTS) {
+      global.BLOCK_TTS = true;
+      console.log('⚠️  --block-tts flag is set. TTS calls will be blocked at runtime.\n');
+    }
 
     let totalGenerated = 0;
     let totalQCFlagged = 0;
@@ -2022,7 +2946,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
 
     // 8. Execute Phase B (presentations)
     if (phase === 'auto' || phase === 'presentations') {
-      const resultB = await executePhaseB(phaseB, manifest, courseCode, { skipUpload, uploadBucket, skipQC });
+      const resultB = await executePhaseB(phaseB, manifest, courseCode, { skipUpload, uploadBucket, skipQC, ignoreDownloadErrors });
       totalGenerated += resultB.generated;
       totalQCFlagged += resultB.qcFlagged;
       allDurations = { ...allDurations, ...resultB.durations };
@@ -2040,12 +2964,25 @@ async function generateAudioForCourse(courseCode, options = {}) {
       }
     }
 
-    // 9. Handle encouragements (after Phase A + B complete)
+    // 9. Sync manifest samples to MAR
+    // The manifest is the source of truth - sync all samples with UUIDs to their voice MAR files
+    // This replaces the old temp MAR merge approach which was fragile
+    const languages = getLanguagesFromCourseCode(courseCode);
+    const marSyncStats = await marService.syncManifestToMAR(
+      manifest,
+      voiceAssignments,
+      languages.target,
+      languages.source
+    );
+
+    // 10. Sync canonical resources from S3 before checking encouragements/welcome
+    // This ensures we have the latest encouragements.json and welcomes.json
+    await syncCanonicalFromS3();
+
+    // 11. Handle encouragements (after Phase A + B complete, after MAR sync)
     // Check if they exist, generate if needed, add to MAR + manifest
-    // This happens AFTER all regular samples so they can be added right before S3 check
     let encouragementData = null;
     if (phase === 'auto' || phase === 'presentations') {
-      const languages = getLanguagesFromCourseCode(courseCode);
       encouragementData = await handleEncouragements(
         languages.source,
         voiceAssignments,
@@ -2059,17 +2996,16 @@ async function generateAudioForCourse(courseCode, options = {}) {
 
       allDurations = { ...allDurations, ...encouragementData.durations };
 
-      // Add encouragements to manifest right away (before S3 check)
+      // Add encouragements to manifest right away
       if (encouragementData.encouragements.length > 0) {
         encouragementService.addEncouragementsToManifest(manifest, encouragementData.encouragements);
       }
     }
 
-    // 9b. Handle welcome (after Phase A + B complete, before S3 check)
+    // 12. Handle welcome (after encouragements, uses synced welcomes.json)
     // Check if it exists, generate if needed, update manifest
     let welcomeData = null;
     if (phase === 'auto' || phase === 'presentations') {
-      const languages = getLanguagesFromCourseCode(courseCode);
       welcomeData = await handleWelcome(
         courseCode,
         languages.source,
@@ -2087,7 +3023,25 @@ async function generateAudioForCourse(courseCode, options = {}) {
       }
     }
 
-    // 10. Extract durations from S3 for ALL samples (new + existing + encouragements + welcome)
+    // 13. Re-expand deduplicated samples (restore original variants)
+    // Now MAR is merged, so re-expansion can find all UUIDs
+    await reExpandSamples(manifest, courseCode);
+
+    // 14. Reassign UUIDs from MAR for expanded samples
+    // The expanded samples (like "Hablo") have empty IDs, so we look them up in MAR
+    // MAR will normalize "Hablo" -> "hablo" and assign the correct UUID
+    console.log('\nReassigning UUIDs for expanded samples from MAR...');
+    const expandReassignStats = await reassignUUIDsFromMAR(manifest, voiceAssignments, ['target1', 'target2', 'source', 'presentation']);
+    console.log(`✓ Assigned ${expandReassignStats.assigned} UUIDs from MAR to expanded samples`);
+
+    if (expandReassignStats.missing > 0) {
+      console.warn(`⚠️  Warning: ${expandReassignStats.missing} expanded samples could not be matched in MAR`);
+    }
+
+    // Save manifest with expanded samples and assigned UUIDs
+    await saveCourseManifest(courseCode, manifest);
+
+    // 15. Extract durations from S3 for ALL samples (new + existing + encouragements + welcome)
     // This ensures consistency and verifies existing files
     const allSampleIds = collectAllSampleIds(manifest);
 
@@ -2099,31 +3053,25 @@ async function generateAudioForCourse(courseCode, options = {}) {
     const s3Durations = await extractDurationsFromS3(allSampleIds, uploadBucket);
     allDurations = { ...allDurations, ...s3Durations };
 
-    // 10. Merge temp MAR to permanent MAR (after QC passed and S3 verified)
-    console.log('\n=== Merging Temporary MAR to Permanent ===\n');
-    console.log('All samples passed QC and verified on S3. Committing to permanent MAR...\n');
-
-    const mergeStats = await marService.mergeTempMARToPermanent();
-    console.log(`\n✓ Merge complete:`);
-    console.log(`  Voices updated: ${mergeStats.voicesMerged}`);
-    console.log(`  Samples committed: ${mergeStats.samplesMerged}`);
-
-    if (mergeStats.errors.length > 0) {
-      console.warn(`\n⚠️  ${mergeStats.errors.length} errors during merge:`);
-      mergeStats.errors.slice(0, 5).forEach(err => {
-        console.warn(`  - ${err.voiceId}: ${err.error}`);
-      });
-      if (mergeStats.errors.length > 5) {
-        console.warn(`  ... and ${mergeStats.errors.length - 5} more`);
-      }
+    // 16. Verify all required samples exist in S3
+    const s3Verification = await verifyAllSamplesInS3(manifest, s3Durations, uploadBucket);
+    if (!s3Verification.passed) {
+      console.error('\n❌ S3 verification failed! Some samples are missing from S3.');
+      console.error('This is a serious issue - the course cannot be published without all samples.');
+      console.error(`Missing: ${s3Verification.missing.length} samples\n`);
+      // Don't fail completely - user may want to investigate
     }
 
-    // Clear temp MAR after successful merge
-    console.log('\nClearing temporary MAR...');
-    await marService.clearTempMAR();
-    console.log('✓ Temporary MAR cleared\n');
+    // 17. Run final validation checks (duplicates, empty seeds)
+    const validationResults = runFinalValidationChecks(manifest);
+    if (!validationResults.passed) {
+      console.error('\n❌ Final validation failed! Issues found in course structure.');
+      console.error('These should have been fixed earlier in the pipeline.');
+      console.error('Please review and fix before publishing to testers.\n');
+      // Don't fail completely - user may want to investigate
+    }
 
-    // 11. Update manifest with S3-verified durations
+    // 18. Update manifest with S3-verified durations
     updateManifestDurations(manifest, allDurations);
 
     // Also update introduction duration if present
@@ -2131,19 +3079,23 @@ async function generateAudioForCourse(courseCode, options = {}) {
       manifest.introduction.duration = allDurations[manifest.introduction.id];
     }
 
-    // 12. Normalize roles (no-op: encouragements already added with role='presentation')
+    // 19. Normalize roles (no-op: encouragements already added with role='presentation')
     normalizeManifestRoles(manifest);
 
-    // 13. Version management - SKIPPED (see note below)
-    // NOTE: Version management is complex and handled separately.
-    // New courses stay at 1.0.0 until published and tested.
-    // Course updates/fixes require careful version strategy (separate project).
-    // Auto-increment disabled - manual version control for now.
+    // 20. Version management
+    // AGENT INSTRUCTION: Ask user for version number before completing Phase 8.
+    // - For NEW language pairs (first time SSi has done this language): use 1.0.0
+    // - For existing language pairs: user will know the appropriate version
+    // The version is stored in manifest.course_version
+    // Current version: ${manifest.course_version || 'not set'}
+    console.log('\n=== Version Check ===');
+    console.log(`Current manifest version: ${manifest.course_version || 'not set'}`);
+    console.log('NOTE: Claude Code should ask user what version to set before saving.\n');
 
     await saveCourseManifest(courseCode, manifest);
     console.log('\nManifest updated with S3-verified durations');
 
-    // 14. Cleanup temp files (optional)
+    // 21. Cleanup temp files (optional)
     if (cleanupTemp) {
       console.log('\nCleaning up temp files...');
       await fs.remove(AUDIO_TEMP_DIR);
@@ -2151,11 +3103,23 @@ async function generateAudioForCourse(courseCode, options = {}) {
       console.log(`\nTemp files preserved in: ${AUDIO_TEMP_DIR}`);
     }
 
+    // Final summary
     console.log(`\n${'='.repeat(60)}`);
     console.log(`Phase 8 Complete`);
+    console.log(`${'='.repeat(60)}`);
     console.log(`Generated: ${totalGenerated} | Matched: ${matched.length}`);
     if (totalQCFlagged > 0) {
       console.log(`⚠️  QC Flagged: ${totalQCFlagged} samples (review reports)`);
+    }
+    if (!s3Verification.passed) {
+      console.log(`❌ S3 Verification: ${s3Verification.missing.length} samples missing`);
+    } else {
+      console.log(`✓ S3 Verification: All ${s3Verification.verified} samples verified`);
+    }
+    if (!validationResults.passed) {
+      console.log(`❌ Validation: ${validationResults.errors.join(', ')}`);
+    } else {
+      console.log(`✓ Validation: No duplicates or empty seeds`);
     }
     console.log(`${'='.repeat(60)}\n`);
 
@@ -2163,7 +3127,9 @@ async function generateAudioForCourse(courseCode, options = {}) {
       success: true,
       generated: totalGenerated,
       matched: matched.length,
-      qcFlagged: totalQCFlagged
+      qcFlagged: totalQCFlagged,
+      s3Verification,
+      validationResults
     };
 
   } catch (error) {
@@ -2245,8 +3211,10 @@ Execution Options:
   --regenerate=<uuids>   Regenerate specific samples (comma-separated UUIDs)
   --skip-qc              Skip QC pause (auto-approve and continue)
   --skip-upload          Skip S3 upload (for testing)
+  --ignore-download-errors  Continue even if target downloads fail from S3
   --prod                 Upload to production bucket instead of stage
   --keep-temp            Don't delete temp files after completion
+  --block-tts            Block all TTS generation (fail if TTS would be required)
 
 Voice Selection (for new courses):
   If no voices are configured, the script will error and instruct you to
@@ -2357,7 +3325,9 @@ Features:
       uploadBucket: args.includes('--prod') ? s3Service.PROD_BUCKET : s3Service.STAGE_BUCKET,
       cleanupTemp: !args.includes('--keep-temp'),
       skipQC: args.includes('--skip-qc'),
-      sequential: args.includes('--sequential') // Use sequential generation instead of parallel
+      sequential: args.includes('--sequential'), // Use sequential generation instead of parallel
+      blockTTS: args.includes('--block-tts'), // Block all TTS generation - fail if any would be required
+      ignoreDownloadErrors: args.includes('--ignore-download-errors') // Continue even if target downloads fail
     };
 
     let result;

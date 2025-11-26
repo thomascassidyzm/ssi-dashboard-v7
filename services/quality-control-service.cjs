@@ -85,7 +85,7 @@ function flagSamplesForReview(generationResults, durations) {
     }
 
     // Flag 2: Single-word phrases (TTS issues common with isolated words)
-    if (result.success) {
+    if (result.success && result.text) {
       const isCJK = isCJKLanguage(result.language);
       const text = result.text.trim();
       const wordCount = text.split(/\s+/).length;

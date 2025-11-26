@@ -7,14 +7,19 @@
 
 const marService = require('./mar-service.cjs');
 const cadenceService = require('./cadence-service.cjs');
+const fs = require('fs-extra');
+const path = require('path');
+const crypto = require('crypto');
 
 /**
  * API pricing and limits
  */
 const PRICING = {
   azure: {
-    free_tier_chars: 500000,
-    cost_per_million: 1.0,
+    tiers: {
+      f0: { name: 'Free (F0)', free_chars: 500000, cost_per_million: 0 },
+      s0: { name: 'Standard (S0)', free_chars: 0, cost_per_million: 4.0 }  // $4 per 1M neural chars
+    },
     rate_limit_ms: 100, // 100ms between requests
   },
   elevenlabs: {
@@ -75,23 +80,41 @@ function countCharacters(text, model = null) {
 
 /**
  * Estimate Azure cost
+ * @param {number} charCount - Number of characters to generate
+ * @param {string} azureTier - Azure tier: 'f0' (free) or 's0' (standard/pay-as-you-go)
  */
-function estimateAzureCost(charCount) {
-  if (charCount <= PRICING.azure.free_tier_chars) {
+function estimateAzureCost(charCount, azureTier = 'f0') {
+  const tierInfo = PRICING.azure.tiers[azureTier] || PRICING.azure.tiers.f0;
+
+  if (azureTier === 's0') {
+    // S0: All characters are billable at $4/million
+    const cost = (charCount / 1000000) * tierInfo.cost_per_million;
     return {
-      cost: 0,
-      tier: 'free',
-      remaining: PRICING.azure.free_tier_chars - charCount
+      cost,
+      tier: 's0',
+      tierName: tierInfo.name,
+      remaining: null  // No free quota on S0
     };
   }
 
-  const billableChars = charCount - PRICING.azure.free_tier_chars;
-  const cost = (billableChars / 1000000) * PRICING.azure.cost_per_million;
+  // F0: Free tier with 500K limit
+  if (charCount <= tierInfo.free_chars) {
+    return {
+      cost: 0,
+      tier: 'f0',
+      tierName: tierInfo.name,
+      remaining: tierInfo.free_chars - charCount
+    };
+  }
 
+  // F0 quota exceeded - show what would happen
   return {
-    cost,
-    tier: 'paid',
-    remaining: 0
+    cost: 0,
+    tier: 'f0',
+    tierName: tierInfo.name,
+    remaining: 0,
+    exceeds: charCount - tierInfo.free_chars,
+    warning: `Exceeds F0 quota by ${(charCount - tierInfo.free_chars).toLocaleString()} chars - upgrade to S0 required`
   };
 }
 
@@ -155,6 +178,228 @@ function estimateGenerationTime(sampleCount, provider, rateLimit = null) {
   const totalTime = sampleCount * config.secondsPerSample;
   const parallelTime = totalTime / config.concurrentWorkers;
   return parallelTime;
+}
+
+/**
+ * Get segment hash for presentation narration (same logic as presentation-service.cjs)
+ */
+function getSegmentHash(text) {
+  return crypto.createHash('md5').update(text).digest('hex').substring(0, 16);
+}
+
+/**
+ * Parse presentation text into main and optional explanation parts
+ * (Simplified version from presentation-service.cjs)
+ */
+function parsePresentation(phrase) {
+  const presentationPattern = /^(.*?\.\.\. '[^']+' \.\.\. '[^']+')(.*)$/;
+  const match = phrase.match(presentationPattern);
+
+  if (!match) {
+    return { mainPresentation: phrase, explanation: null };
+  }
+
+  const mainPresentation = match[1].trim();
+  const remainder = match[2].trim();
+
+  let explanation = null;
+  if (remainder.startsWith('-')) {
+    explanation = remainder.substring(1).trim();
+  } else if (remainder.length > 0) {
+    explanation = remainder;
+  }
+
+  return { mainPresentation, explanation };
+}
+
+/**
+ * Parse main presentation to extract source narration
+ */
+function parseMainPresentation(mainPresentation) {
+  const parts = mainPresentation.split(": ... '");
+  if (parts.length !== 2) {
+    return { sourcePart: mainPresentation };
+  }
+  return { sourcePart: parts[0].trim() };
+}
+
+/**
+ * Extract text segments from explanation
+ */
+function parseExplanationSegments(explanation) {
+  const segments = [];
+  const pattern = /\{(target1|target2)\}\s*(["'])(.*?)\2(?=[\s,.;:!?)]|$)/g;
+
+  let lastPosition = 0;
+  let match;
+
+  while ((match = pattern.exec(explanation)) !== null) {
+    // Add text segment before this target (if any)
+    if (match.index > lastPosition) {
+      const textSegment = explanation.substring(lastPosition, match.index);
+      const textContent = textSegment.replace(/[^\w\s]/g, '').trim();
+      if (textContent) {
+        segments.push({ type: 'text', content: textSegment });
+      }
+    }
+
+    // Target segment (we skip this for cost calculation)
+    lastPosition = match.index + match[0].length;
+  }
+
+  // Add final text segment (if any)
+  if (lastPosition < explanation.length) {
+    const textSegment = explanation.substring(lastPosition);
+    const textContent = textSegment.replace(/[^\w\s]/g, '').trim();
+    if (textContent) {
+      segments.push({ type: 'text', content: textSegment });
+    }
+  }
+
+  return segments;
+}
+
+/**
+ * Extract all unique text segments from presentation samples
+ * Returns segments that will require TTS generation (excludes target samples)
+ */
+function extractAllUniqueSegments(presentationSamples) {
+  const uniqueSegments = new Set();
+  const segmentMap = new Map(); // text -> count
+
+  for (const sample of presentationSamples) {
+    try {
+      const { mainPresentation, explanation } = parsePresentation(sample.text);
+
+      // Extract main presentation source part
+      const { sourcePart } = parseMainPresentation(mainPresentation);
+      uniqueSegments.add(sourcePart);
+      segmentMap.set(sourcePart, (segmentMap.get(sourcePart) || 0) + 1);
+
+      // Extract explanation text segments if present
+      if (explanation) {
+        const segments = parseExplanationSegments(explanation);
+        for (const segment of segments) {
+          if (segment.type === 'text') {
+            uniqueSegments.add(segment.content);
+            segmentMap.set(segment.content, (segmentMap.get(segment.content) || 0) + 1);
+          }
+        }
+      }
+    } catch (error) {
+      // Skip unparseable presentations
+    }
+  }
+
+  return { uniqueSegments, segmentMap };
+}
+
+/**
+ * Check which segments exist in cache
+ */
+async function checkSegmentCache(uniqueSegments, cacheDir) {
+  const cached = new Set();
+  const missing = new Set();
+  let cachedChars = 0;
+  let missingChars = 0;
+
+  if (!await fs.pathExists(cacheDir)) {
+    // No cache directory exists yet
+    for (const text of uniqueSegments) {
+      missing.add(text);
+      missingChars += text.length;
+    }
+    return { cached, missing, cachedChars, missingChars };
+  }
+
+  for (const text of uniqueSegments) {
+    const hash = getSegmentHash(text);
+    const segmentPath = path.join(cacheDir, `seg_${hash}.mp3`);
+
+    if (await fs.pathExists(segmentPath)) {
+      cached.add(text);
+      cachedChars += text.length;
+    } else {
+      missing.add(text);
+      missingChars += text.length;
+    }
+  }
+
+  return { cached, missing, cachedChars, missingChars };
+}
+
+/**
+ * Analyze presentation segment requirements with cache awareness
+ * Returns REAL costs accounting for segment deduplication and caching
+ */
+async function analyzePresentationSegments(manifest, cacheDir) {
+  const samples = manifest.slices?.[0]?.samples || {};
+
+  // Extract presentation samples
+  const presentationSamples = [];
+  for (const [text, variants] of Object.entries(samples)) {
+    for (const variant of variants) {
+      if (variant.role === 'presentation') {
+        presentationSamples.push({
+          text,
+          uuid: variant.id || variant.uuid, // Use id or uuid (some samples use different property names)
+          id: variant.id,
+          role: variant.role
+        });
+      }
+    }
+  }
+
+  if (presentationSamples.length === 0) {
+    return {
+      totalPresentations: 0,
+      uniqueSegments: 0,
+      cachedSegments: 0,
+      newSegments: 0,
+      cachedChars: 0,
+      newChars: 0,
+      totalSegmentChars: 0,
+      naiveEnglishChars: 0,
+      segmentMap: new Map()
+    };
+  }
+
+  // Extract all unique segments
+  const { uniqueSegments, segmentMap } = extractAllUniqueSegments(presentationSamples);
+
+  // Check segment cache
+  const { cached, missing, cachedChars, missingChars } = await checkSegmentCache(uniqueSegments, cacheDir);
+
+  const totalSegmentChars = cachedChars + missingChars;
+
+  // Calculate naive English-only char count (for accurate comparison)
+  // This excludes Chinese characters and {target} tags that won't be generated
+  // Count raw characters first
+  let naiveEnglishRawChars = 0;
+  for (const sample of presentationSamples) {
+    let englishText = sample.text;
+    // Remove target Chinese: ... '中文' ... '中文'
+    englishText = englishText.replace(/\.\.\. '[^']+' \.\.\. '[^']+'/g, '');
+    // Remove {target1}'中文' and {target2}'中文' tags
+    englishText = englishText.replace(/\{target[12]\}'[^']+'/g, '');
+    naiveEnglishRawChars += englishText.length;
+  }
+
+  // NOTE: Don't apply Flash multiplier here - let the comparison use raw chars
+  // The actual cost will be calculated with Flash multiplier in the voice costs
+  const naiveEnglishChars = naiveEnglishRawChars;
+
+  return {
+    totalPresentations: presentationSamples.length,
+    uniqueSegments: uniqueSegments.size,
+    cachedSegments: cached.size,
+    newSegments: missing.size,
+    cachedChars,
+    newChars: missingChars,
+    totalSegmentChars,
+    naiveEnglishChars, // Add this for correct comparison
+    segmentMap
+  };
 }
 
 /**
@@ -508,7 +753,8 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
   const {
     elevenLabsTier = 'creator',
     elevenLabsUsage = 0,
-    elevenLabsQuota = null
+    elevenLabsQuota = null,
+    azureTier = 's0'  // Default to S0 (pay-as-you-go) - use 'f0' for free tier
   } = options;
 
   // Extract language codes from manifest and normalize to 2-letter codes
@@ -551,6 +797,14 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
   // Analyze requirements
   const analysis = await analyzeGenerationRequirements(manifest, voiceAssignments, voiceRegistry);
 
+  // Analyze presentation segments (for accurate cost calculation)
+  const segmentCacheDir = path.join(__dirname, '../temp/audio/segment_cache');
+  console.log(`\nAnalyzing presentation segments (cache: ${segmentCacheDir})...`);
+  const presentationAnalysis = await analyzePresentationSegments(manifest, segmentCacheDir);
+  console.log(`Found ${presentationAnalysis.totalPresentations} presentations, ${presentationAnalysis.uniqueSegments} unique segments`);
+  console.log(`  Cached: ${presentationAnalysis.cachedSegments} (${presentationAnalysis.cachedChars} chars)`);
+  console.log(`  New: ${presentationAnalysis.newSegments} (${presentationAnalysis.newChars} chars)\n`);
+
   // Build plan by provider
   const plan = {
     course: courseCode,
@@ -562,6 +816,7 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
       totalCharsToGenerate: analysis.totals.totalChars
     },
     contentTypes: analysis.byContentType,
+    presentationSegments: presentationAnalysis,
     voices: {},
     costs: {},
     timing: {},
@@ -577,9 +832,44 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
       continue;
     }
 
-    const newSamplesChars = voiceData.samples
-      .filter(s => s.isNew)
-      .reduce((sum, s) => sum + s.chars, 0);
+    // Check if this is the presentation voice
+    const isPresentationVoice = voiceId === voiceAssignments.presentation;
+
+    let newSamplesChars;
+    if (isPresentationVoice && presentationAnalysis.totalPresentations > 0) {
+      // Use REAL presentation segment costs (deduplication + cache aware)
+      // Apply model multiplier (Flash v2.5 uses 0.5x)
+      const rawSegmentChars = presentationAnalysis.newChars;
+      const model = voiceInfo?.model || null;
+
+      // Apply Flash/Turbo multiplier
+      const modelMultipliers = {
+        'eleven_flash_v2_5': 0.5,
+        'eleven_turbo_v2_5': 0.5,
+        'eleven_multilingual_v2': 1.0,
+        'eleven_v3': 1.0
+      };
+      const multiplier = model && modelMultipliers[model] !== undefined ? modelMultipliers[model] : 1.0;
+      newSamplesChars = Math.ceil(rawSegmentChars * multiplier);
+    } else {
+      // Use standard character count for non-presentation samples
+      newSamplesChars = voiceData.samples
+        .filter(s => s.isNew)
+        .reduce((sum, s) => sum + s.chars, 0);
+    }
+
+    // Calculate breakdown by role for this voice
+    const roleBreakdown = {};
+    for (const sample of voiceData.samples) {
+      if (!roleBreakdown[sample.role]) {
+        roleBreakdown[sample.role] = { count: 0, newCount: 0, chars: 0 };
+      }
+      roleBreakdown[sample.role].count++;
+      if (sample.isNew) {
+        roleBreakdown[sample.role].newCount++;
+        roleBreakdown[sample.role].chars += sample.chars;
+      }
+    }
 
     plan.voices[voiceId] = {
       provider: voiceInfo.provider,
@@ -588,12 +878,14 @@ async function generateExecutionPlan(courseCode, manifest, voiceRegistry, option
       totalSamples: voiceData.samples.length,
       newSamples: voiceData.newSamples,
       existingSamples: voiceData.existingSamples,
-      totalChars: newSamplesChars
+      totalChars: newSamplesChars,
+      byRole: roleBreakdown,
+      isPresentationVoice
     };
 
     // Cost estimation
     if (voiceInfo.provider === 'azure') {
-      const costInfo = estimateAzureCost(newSamplesChars);
+      const costInfo = estimateAzureCost(newSamplesChars, azureTier);
       plan.costs[voiceId] = costInfo;
       plan.timing[voiceId] = {
         estimatedSeconds: Math.ceil(estimateGenerationTime(voiceData.newSamples, 'azure')),
@@ -675,20 +967,82 @@ function formatPlan(plan) {
   lines.push(`Encouragements: ${plan.contentTypes.encouragements.count} samples, ${plan.contentTypes.encouragements.chars.toLocaleString()} chars`);
   lines.push('');
 
+  // Add presentation segment analysis if available
+  if (plan.presentationSegments && plan.presentationSegments.totalPresentations > 0) {
+    const seg = plan.presentationSegments;
+    lines.push('PRESENTATION SEGMENTS (Optimized Cost Calculation)');
+    lines.push('-'.repeat(51));
+    lines.push(`Total presentations: ${seg.totalPresentations.toLocaleString()}`);
+    lines.push(`Unique narration segments: ${seg.uniqueSegments.toLocaleString()}`);
+    lines.push(`  └─ Already cached: ${seg.cachedSegments.toLocaleString()} segments (${seg.cachedChars.toLocaleString()} chars) ✓`);
+    lines.push(`  └─ Need to generate: ${seg.newSegments.toLocaleString()} segments (${seg.newChars.toLocaleString()} chars)`);
+
+    // Use correct naive comparison (English-only, not full text with Chinese)
+    const naiveChars = seg.naiveEnglishChars || plan.contentTypes.presentations.chars;
+    const savingsPercent = Math.round((1 - seg.newChars / naiveChars) * 100);
+
+    lines.push(`\n💡 Optimization savings: ${savingsPercent}% reduction (${naiveChars.toLocaleString()} → ${seg.newChars.toLocaleString()} raw chars)`);
+    lines.push(`   • Segment deduplication: reusing narration across ${seg.totalPresentations.toLocaleString()} presentations`);
+    lines.push(`   • Segment cache: ${seg.cachedSegments.toLocaleString()} pre-generated segments`);
+    lines.push(`   • Target samples: FREE (already generated in Phase A, downloaded from S3)`);
+
+    // Show Flash multiplier savings if applicable
+    const presentationVoiceId = Object.keys(plan.voices).find(id => plan.voices[id].isPresentationVoice);
+    if (presentationVoiceId) {
+      const actualCharged = plan.voices[presentationVoiceId].totalChars;
+      const flashMultiplier = actualCharged / seg.newChars;
+      if (flashMultiplier < 1) {
+        const naiveCharged = Math.ceil(naiveChars * flashMultiplier);
+        const totalSavings = Math.round((1 - actualCharged / naiveCharged) * 100);
+        lines.push(`   • Flash v2.5 multiplier (0.5x): ${seg.newChars.toLocaleString()} → ${actualCharged.toLocaleString()} chars billed`);
+        lines.push(`   • TOTAL savings: ${totalSavings}% (${naiveCharged.toLocaleString()} → ${actualCharged.toLocaleString()} chars billed)`);
+      }
+    }
+
+    lines.push('');
+  }
+
   lines.push('GENERATION BREAKDOWN');
   lines.push('-'.repeat(20));
   for (const [voiceId, voiceInfo] of Object.entries(plan.voices)) {
-    lines.push(`\n${voiceInfo.displayName} (${voiceInfo.provider}):`);
-    lines.push(`  New samples: ${voiceInfo.newSamples}`);
-    lines.push(`  Existing (reuse): ${voiceInfo.existingSamples}`);
-    lines.push(`  Characters to generate: ${voiceInfo.totalChars.toLocaleString()}`);
+    const presentationNote = voiceInfo.isPresentationVoice ? ' [OPTIMIZED - see above]' : '';
+    lines.push(`\n${voiceInfo.displayName} (${voiceInfo.provider})${presentationNote}:`);
+
+    // Show breakdown by role if voice is used for multiple roles
+    const roles = Object.keys(voiceInfo.byRole || {});
+    if (roles.length > 1) {
+      for (const role of roles.sort()) {
+        const roleData = voiceInfo.byRole[role];
+        lines.push(`  ${role}: ${roleData.newCount.toLocaleString()} samples, ${roleData.chars.toLocaleString()} chars`);
+      }
+      lines.push(`  ─────────────────────────`);
+      lines.push(`  Total: ${voiceInfo.newSamples.toLocaleString()} samples, ${voiceInfo.totalChars.toLocaleString()} chars`);
+      if (voiceInfo.isPresentationVoice) {
+        lines.push(`  (Using optimized segment-based cost calculation)`);
+      }
+    } else {
+      lines.push(`  New samples: ${voiceInfo.newSamples}`);
+      lines.push(`  Existing (reuse): ${voiceInfo.existingSamples}`);
+      lines.push(`  Characters to generate: ${voiceInfo.totalChars.toLocaleString()}`);
+      if (voiceInfo.isPresentationVoice) {
+        lines.push(`  (Optimized: only unique narration segments, excludes cached & target samples)`);
+      }
+    }
     lines.push(`  Estimated time: ~${plan.timing[voiceId].estimatedMinutes} minutes`);
 
     const cost = plan.costs[voiceId];
     if (voiceInfo.provider === 'azure') {
-      lines.push(`  Cost: ${cost.tier === 'free' ? 'FREE' : '$' + cost.cost.toFixed(2)}`);
-      if (cost.remaining > 0) {
-        lines.push(`  Remaining free tier: ${cost.remaining.toLocaleString()} chars`);
+      lines.push(`  Tier: ${cost.tierName}`);
+      if (cost.tier === 's0') {
+        lines.push(`  Cost: $${cost.cost.toFixed(2)} ($4/million chars)`);
+      } else {
+        // F0 free tier
+        if (cost.warning) {
+          lines.push(`  ⚠️  ${cost.warning}`);
+        } else {
+          lines.push(`  Cost: FREE`);
+          lines.push(`  Remaining quota: ${cost.remaining.toLocaleString()} chars`);
+        }
       }
     } else if (voiceInfo.provider === 'elevenlabs') {
       lines.push(`  Plan: ${cost.tier} (${cost.monthlyQuota.toLocaleString()} chars/month - $${cost.monthlyCost})`);
@@ -699,12 +1053,11 @@ function formatPlan(plan) {
         lines.push(`  ⚠️  Exceeds quota by ${cost.shortfall.toLocaleString()} chars`);
         if (cost.overageRate) {
           lines.push(`  Overage cost: $${cost.overageCost.toFixed(2)} (@ $${cost.overageRate}/1k chars)`);
-          lines.push(`  TOTAL COST THIS MONTH: $${cost.totalCost.toFixed(2)}`);
         } else {
           lines.push(`  ⚠️  Free tier has no overage - must upgrade!`);
         }
       } else {
-        lines.push(`  Cost: $${cost.monthlyCost} (within quota)`);
+        lines.push(`  Cost: Within quota (no overage)`);
       }
     }
   }

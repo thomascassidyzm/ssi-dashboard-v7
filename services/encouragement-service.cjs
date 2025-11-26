@@ -25,8 +25,38 @@ const { v5: uuidv5 } = require('uuid');
 // UUID namespace for encouragements
 const ENCOURAGEMENT_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
 
-// Encouragements are defined in the course manifest
-// No need for hardcoded standard encouragements - they already exist
+// Path to canonical encouragements file (synced from S3)
+const CANONICAL_ENCOURAGEMENTS_PATH = path.join(__dirname, '../public/vfs/canonical');
+
+/**
+ * Load canonical encouragements from file
+ * Returns objects with text and pre-assigned UUIDs
+ *
+ * @param {string} language - Language code (e.g., 'eng')
+ * @returns {Promise<Array<{text: string, id: string}>>} Encouragements with UUIDs
+ */
+async function loadCanonicalEncouragements(language) {
+  const filePath = path.join(CANONICAL_ENCOURAGEMENTS_PATH, `${language}_encouragements.json`);
+
+  if (!await fs.pathExists(filePath)) {
+    console.log(`No canonical encouragements found at ${filePath}`);
+    return [];
+  }
+
+  try {
+    const data = await fs.readJson(filePath);
+    const pooled = data.pooledEncouragements || [];
+    const ordered = data.orderedEncouragements || [];
+
+    // Combine both arrays, preserving original UUIDs
+    const all = [...pooled, ...ordered];
+    console.log(`Loaded ${all.length} canonical encouragements from ${filePath}`);
+    return all;
+  } catch (err) {
+    console.error(`Error loading canonical encouragements: ${err.message}`);
+    return [];
+  }
+}
 
 /**
  * Default encouragement voice by language
@@ -58,7 +88,8 @@ function getEncouragementPhrases(courseManifest) {
   // Extract from samples where is_encouragement=true or role='presentation_encouragement'
   const encouragementTexts = [];
 
-  for (const [text, variants] of Object.entries(courseManifest.samples || {})) {
+  const samples = courseManifest.slices?.[0]?.samples || {};
+  for (const [text, variants] of Object.entries(samples)) {
     for (const variant of variants) {
       if (variant.is_encouragement === true || variant.role === 'presentation_encouragement') {
         if (!encouragementTexts.includes(text)) {
@@ -347,19 +378,30 @@ async function uploadAndRegisterEncouragements(processResults, voiceId, language
 function addEncouragementsToManifest(manifest, encouragements) {
   console.log('\n=== Adding Encouragements to Manifest ===\n');
 
+  // Ensure slices structure exists
+  if (!manifest.slices || !manifest.slices[0]) {
+    throw new Error('Manifest must have slices[0] structure');
+  }
+
+  if (!manifest.slices[0].samples) {
+    manifest.slices[0].samples = {};
+  }
+
+  const samples = manifest.slices[0].samples;
+
   // Add encouragements to samples
   for (const enc of encouragements) {
-    if (!manifest.samples[enc.text]) {
-      manifest.samples[enc.text] = [];
+    if (!samples[enc.text]) {
+      samples[enc.text] = [];
     }
 
     // Check if already exists
-    const existing = manifest.samples[enc.text].find(
+    const existing = samples[enc.text].find(
       v => v.role === 'presentation' && v.uuid === enc.uuid
     );
 
     if (!existing) {
-      manifest.samples[enc.text].push({
+      samples[enc.text].push({
         role: 'presentation',
         cadence: 'natural',
         language: enc.language,
@@ -377,11 +419,62 @@ function addEncouragementsToManifest(manifest, encouragements) {
   return manifest;
 }
 
+/**
+ * Check canonical encouragements against S3 bucket
+ * Uses the pre-assigned UUIDs from the canonical file
+ *
+ * @param {string} language - Language code (e.g., 'eng')
+ * @param {string} bucket - S3 bucket to check
+ * @returns {Promise<Object>} { existing: [...], missing: [...], all: [...] }
+ */
+async function checkCanonicalEncouragements(language, bucket) {
+  const canonicalEncouragements = await loadCanonicalEncouragements(language);
+
+  if (canonicalEncouragements.length === 0) {
+    return { existing: [], missing: [], all: [] };
+  }
+
+  const existing = [];
+  const missing = [];
+
+  console.log(`Checking ${canonicalEncouragements.length} canonical encouragements against S3...`);
+
+  for (const enc of canonicalEncouragements) {
+    const uuid = enc.id;
+    const exists = await s3Service.audioExists(uuid, bucket);
+
+    if (exists) {
+      existing.push({
+        text: enc.text,
+        uuid: uuid,
+        exists: true
+      });
+    } else {
+      missing.push({
+        text: enc.text,
+        uuid: uuid,
+        exists: false
+      });
+    }
+  }
+
+  console.log(`  Existing in S3: ${existing.length}`);
+  console.log(`  Missing from S3: ${missing.length}`);
+
+  return {
+    existing,
+    missing,
+    all: canonicalEncouragements.map(e => ({ text: e.text, uuid: e.id }))
+  };
+}
+
 module.exports = {
   getEncouragementPhrases,
   getEncouragementVoice,
   generateEncouragementUUID,
   checkExistingEncouragements,
+  checkCanonicalEncouragements,
+  loadCanonicalEncouragements,
   generateEncouragements,
   processEncouragements,
   uploadAndRegisterEncouragements,
