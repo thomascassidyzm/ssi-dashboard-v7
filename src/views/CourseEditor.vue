@@ -912,7 +912,7 @@
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-slate-700">
           <div>
-            <h2 class="text-2xl font-bold text-emerald-400">Edit Translation</h2>
+            <h2 class="text-2xl font-bold text-amber-400">Flag for Review</h2>
             <p class="text-sm text-slate-400 mt-1">{{ editModal.translation?.seed_id }}</p>
           </div>
           <button
@@ -925,65 +925,37 @@
 
         <!-- Modal Body -->
         <div class="p-6 space-y-6">
-          <!-- Impact Analysis -->
-          <div v-if="editModal.impact" class="bg-yellow-900/20 border border-yellow-500/50 rounded-lg p-4">
-            <div class="text-yellow-400 font-semibold mb-2">⚠️ Edit Impact</div>
-            <div class="text-sm text-slate-300">
-              Editing this translation will regenerate:
+          <!-- Read-only Translation Display -->
+          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 space-y-3">
+            <div>
+              <div class="text-xs text-slate-400 mb-1">Known (Source)</div>
+              <div class="text-slate-200 font-mono">{{ editModal.translation?.source }}</div>
             </div>
-            <div class="grid grid-cols-3 gap-4 mt-3">
-              <div>
-                <div class="text-xs text-slate-400">LEGOs</div>
-                <div class="text-xl font-bold text-yellow-400">{{ editModal.impact.legos }}</div>
-              </div>
-              <div>
-                <div class="text-xs text-slate-400">Deduplicated</div>
-                <div class="text-xl font-bold text-yellow-400">{{ editModal.impact.deduplicated }}</div>
-              </div>
-              <div>
-                <div class="text-xs text-slate-400">Baskets Affected</div>
-                <div class="text-xl font-bold text-yellow-400">{{ editModal.impact.baskets }}</div>
-              </div>
+            <div>
+              <div class="text-xs text-slate-400 mb-1">Target</div>
+              <div class="text-slate-200 font-mono text-lg">{{ editModal.translation?.target }}</div>
             </div>
           </div>
 
-          <!-- Edit Form -->
+          <!-- Flag Details Form -->
           <div class="space-y-4">
             <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
-                Known Language (Source)
-              </label>
-              <textarea
-                v-model="editModal.editedSource"
-                class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
-                rows="3"
-              ></textarea>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Issue Type</label>
+              <select v-model="editModal.issueType" class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-2 text-slate-100">
+                <option value="translation">Translation incorrect</option>
+                <option value="lego_breakdown">LEGO breakdown issue</option>
+                <option value="unnatural">Sounds unnatural</option>
+                <option value="other">Other</option>
+              </select>
             </div>
-
             <div>
-              <label class="block text-sm font-medium text-slate-300 mb-2">
-                Target Language
-              </label>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Notes / Suggestion</label>
               <textarea
-                v-model="editModal.editedTarget"
-                class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
-                rows="3"
+                v-model="editModal.notes"
+                placeholder="Describe the issue or suggest a correction..."
+                class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-100 focus:outline-none focus:border-amber-500"
+                rows="4"
               ></textarea>
-            </div>
-          </div>
-
-          <!-- Original Values -->
-          <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4">
-            <div class="text-xs text-slate-400 mb-2">Original Values</div>
-            <div class="space-y-2 text-sm">
-              <div>
-                <span class="text-slate-500">Source:</span>
-                <span class="text-slate-300 ml-2">{{ editModal.translation?.source }}</span>
-              </div>
-              <div>
-                <span class="text-slate-500">Target:</span>
-                <span class="text-slate-300 ml-2">{{ editModal.translation?.target }}</span>
-              </div>
             </div>
           </div>
         </div>
@@ -997,11 +969,11 @@
             Cancel
           </button>
           <button
-            @click="saveTranslation"
+            @click="submitFlag"
             :disabled="editModal.saving"
-            class="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
+            class="px-6 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:text-slate-500 text-white rounded transition-colors"
           >
-            {{ editModal.saving ? 'Saving...' : 'Save & Regenerate' }}
+            {{ editModal.saving ? 'Submitting...' : 'Submit Flag' }}
           </button>
         </div>
       </div>
@@ -1182,7 +1154,9 @@ const editModal = ref({
   editedSource: '',
   editedTarget: '',
   impact: null,
-  saving: false
+  saving: false,
+  issueType: 'translation',
+  notes: ''
 })
 
 // Regeneration state - Enhanced for real-time tracking
@@ -1890,60 +1864,25 @@ async function saveIntro(legoId) {
   }
 }
 
-async function saveTranslation() {
+async function submitFlag() {
   if (!editModal.value.translation) return
 
   editModal.value.saving = true
   try {
-    // Save the edited translation - backend will automatically trigger regeneration
-    const response = await api.course.updateTranslation(
-      courseCode,
-      editModal.value.translation.uuid,
-      {
-        source: editModal.value.editedSource,
-        target: editModal.value.editedTarget
-      }
-    )
-
-    // Update local state immediately (optimistic update)
-    const uuid = editModal.value.translation.uuid
-    const idx = translations.value.findIndex(t => t.uuid === uuid)
-    if (idx !== -1) {
-      translations.value[idx].source = editModal.value.editedSource
-      translations.value[idx].target = editModal.value.editedTarget
-    }
-
-    // Check if backend returned regeneration job info
-    if (response.regeneration && response.regeneration.jobId) {
-      // Initialize regeneration tracking
-      regenerationState.value = {
-        active: true,
-        jobId: response.regeneration.jobId,
-        status: response.regeneration.status || 'running',
-        currentPhase: 3,
-        progress: 0,
-        startTime: Date.now(),
-        completionTime: null,
-        error: null
-      }
-
-      // Start polling for status updates
-      startRegenerationPolling()
-    }
+    // Submit the flag with issue type and notes
+    await api.course.createFlag(courseCode, {
+      seedId: editModal.value.translation.seed_id,
+      issueType: editModal.value.issueType,
+      notes: editModal.value.notes
+    })
 
     closeEditModal()
 
-    // Show GitHub commit confirmation
-    if (response.github && response.github.sha) {
-      const shortSha = response.github.sha.substring(0, 7)
-      toast.success(`✅ Saved to GitHub! Commit: ${shortSha}`, { timeout: 4000 })
-    } else {
-      // This shouldn't happen - all saves go to GitHub
-      toast.warning(`⚠️ Saved but GitHub commit unconfirmed`, { timeout: 4000 })
-    }
+    // Show success message
+    toast.success('Flag submitted successfully for review', { timeout: 4000 })
   } catch (err) {
-    console.error('Failed to save translation:', err)
-    toast.error(`❌ Save failed: ${err.message}`, { timeout: 5000 })
+    console.error('Failed to submit flag:', err)
+    toast.error(`Failed to submit flag: ${err.message}`, { timeout: 5000 })
   } finally {
     editModal.value.saving = false
   }

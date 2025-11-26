@@ -667,6 +667,36 @@ export default {
     async updateIntroduction(courseCode, legoId, introData) {
       const response = await api.put(`/api/courses/${courseCode}/introductions/${legoId}`, introData)
       return response.data
+    },
+
+    async createFlag(courseCode, data) {
+      try {
+        const response = await api.post(`/api/courses/${courseCode}/flags`, data)
+        return response.data
+      } catch (error) {
+        console.error(`[API] Failed to create flag for ${courseCode}:`, error)
+        throw error
+      }
+    },
+
+    async getFlags(courseCode) {
+      try {
+        const response = await api.get(`/api/courses/${courseCode}/flags`)
+        return response.data
+      } catch (error) {
+        console.error(`[API] Failed to get flags for ${courseCode}:`, error)
+        throw error
+      }
+    },
+
+    async deleteFlag(courseCode, flagId) {
+      try {
+        const response = await api.delete(`/api/courses/${courseCode}/flags/${flagId}`)
+        return response.data
+      } catch (error) {
+        console.error(`[API] Failed to delete flag ${flagId} for ${courseCode}:`, error)
+        throw error
+      }
     }
   },
 

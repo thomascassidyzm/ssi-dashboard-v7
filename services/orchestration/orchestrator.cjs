@@ -1742,6 +1742,123 @@ app.put('/api/courses/:courseCode/translations/:seedId', async (req, res) => {
 });
 
 /**
+ * POST /api/courses/:courseCode/flags
+ * Create a new flag for a seed or lego issue
+ * Body: { seedId, legoId (optional), issueType: "translation"|"lego_breakdown"|"other", notes: string }
+ */
+app.post('/api/courses/:courseCode/flags', async (req, res) => {
+  const { courseCode } = req.params;
+  const { seedId, legoId, issueType, notes } = req.body;
+
+  console.log(`[Orchestrator] Creating flag for ${courseCode} - seedId: ${seedId}, issueType: ${issueType}`);
+
+  try {
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const flagsPath = path.join(courseDir, 'flags.json');
+
+    // Ensure course directory exists
+    if (!await fs.pathExists(courseDir)) {
+      return res.status(404).json({ error: `Course ${courseCode} not found` });
+    }
+
+    // Load existing flags or create new array
+    let flagsData = { flags: [] };
+    if (await fs.pathExists(flagsPath)) {
+      flagsData = await fs.readJson(flagsPath);
+    }
+
+    // Create new flag with unique ID
+    const newFlag = {
+      id: Date.now(),
+      seedId,
+      legoId: legoId || null,
+      issueType,
+      notes,
+      created: new Date().toISOString(),
+      resolved: false
+    };
+
+    flagsData.flags.push(newFlag);
+
+    // Write back to file
+    await fs.writeJson(flagsPath, flagsData, { spaces: 2 });
+    console.log(`[Orchestrator] Successfully created flag ${newFlag.id} in ${courseCode}`);
+
+    res.json({
+      success: true,
+      flag: newFlag
+    });
+  } catch (error) {
+    console.error(`[Orchestrator] Error creating flag:`, error);
+    res.status(500).json({ error: 'Failed to create flag', details: error.message });
+  }
+});
+
+/**
+ * GET /api/courses/:courseCode/flags
+ * Get all flags for a course
+ */
+app.get('/api/courses/:courseCode/flags', async (req, res) => {
+  const { courseCode } = req.params;
+
+  console.log(`[Orchestrator] Getting flags for ${courseCode}`);
+
+  try {
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const flagsPath = path.join(courseDir, 'flags.json');
+
+    // Return empty array if flags file doesn't exist
+    if (!await fs.pathExists(flagsPath)) {
+      return res.json({ flags: [] });
+    }
+
+    const flagsData = await fs.readJson(flagsPath);
+    res.json({ flags: flagsData.flags || [] });
+  } catch (error) {
+    console.error(`[Orchestrator] Error reading flags:`, error);
+    res.status(500).json({ error: 'Failed to read flags', details: error.message });
+  }
+});
+
+/**
+ * DELETE /api/courses/:courseCode/flags/:flagId
+ * Delete a flag by ID
+ */
+app.delete('/api/courses/:courseCode/flags/:flagId', async (req, res) => {
+  const { courseCode, flagId } = req.params;
+
+  console.log(`[Orchestrator] Deleting flag ${flagId} from ${courseCode}`);
+
+  try {
+    const courseDir = path.join(VFS_ROOT, courseCode);
+    const flagsPath = path.join(courseDir, 'flags.json');
+
+    if (!await fs.pathExists(flagsPath)) {
+      return res.status(404).json({ error: 'No flags file found' });
+    }
+
+    const flagsData = await fs.readJson(flagsPath);
+    const initialLength = flagsData.flags.length;
+
+    // Filter out the flag with matching ID
+    flagsData.flags = flagsData.flags.filter(flag => flag.id !== parseInt(flagId));
+
+    if (flagsData.flags.length === initialLength) {
+      return res.status(404).json({ error: `Flag ${flagId} not found` });
+    }
+
+    // Write back to file
+    await fs.writeJson(flagsPath, flagsData, { spaces: 2 });
+    console.log(`[Orchestrator] Successfully deleted flag ${flagId} from ${courseCode}`);
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error(`[Orchestrator] Error deleting flag:`, error);
+    res.status(500).json({ error: 'Failed to delete flag', details: error.message });
+  }
+});
+
+/**
  * GET /api/phase-intelligence/:phase
  * Serve phase intelligence docs to agents via ngrok
  * Example: /api/phase-intelligence/1 or /api/phase-intelligence/phase1
