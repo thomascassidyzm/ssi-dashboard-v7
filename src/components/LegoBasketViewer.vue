@@ -341,7 +341,6 @@
                   :class="[
                     'p-2 rounded text-sm transition-all',
                     getPhraseLegoCount(phrase) >= 5 ? 'bg-emerald-900/20 border border-emerald-700/30' : 'bg-slate-800/50',
-                    isFlagged(seedData.seedId, legoKey, idx) ? 'border-2 border-red-500' : '',
                     editMode[seedData.seedId] ? 'hover:bg-slate-700/50' : ''
                   ]"
                 >
@@ -376,18 +375,7 @@
                       </div>
                     </div>
                     <div class="flex items-center gap-2">
-                      <!-- Edit Mode Actions -->
-                      <button
-                        v-if="editMode[seedData.seedId]"
-                        @click="toggleFlag(seedData.seedId, legoKey, idx)"
-                        :class="[
-                          'text-sm hover:scale-110 transition-transform',
-                          isFlagged(seedData.seedId, legoKey, idx) ? 'text-red-500' : 'text-slate-600'
-                        ]"
-                        :title="isFlagged(seedData.seedId, legoKey, idx) ? 'Unflag' : 'Flag for review'"
-                      >
-                        🚩
-                      </button>
+                      <!-- Delete button in edit mode -->
                       <button
                         v-if="editMode[seedData.seedId]"
                         @click="deletePhrase(seedData.seedId, legoKey, idx)"
@@ -487,7 +475,6 @@ export default {
       editMode: {}, // Track which seeds are in edit mode {seedId: true/false}
       editingPhrases: {}, // Track which phrases are being edited {seedId_legoKey_idx: true}
       editedPhrases: {}, // Track edited phrase text {seedId_legoKey_idx: {known: '', target: ''}}
-      flaggedPhrases: {}, // Track flagged phrases {seedId_legoKey_idx: true}
       deletedPhrases: {}, // Track deleted phrases {seedId_legoKey_idx: true}
       hasUnsavedChanges: {}, // Track which seeds have unsaved changes {seedId: true}
       recompilingManifest: false // Track if Manifest recompilation is in progress
@@ -790,10 +777,6 @@ export default {
       const key = this.getPhraseKey(seedId, legoKey, idx)
       return this.deletedPhrases[key] || false
     },
-    isFlagged(seedId, legoKey, idx) {
-      const key = this.getPhraseKey(seedId, legoKey, idx)
-      return this.flaggedPhrases[key] || false
-    },
     startEditing(seedId, legoKey, idx, phrase) {
       const key = this.getPhraseKey(seedId, legoKey, idx)
       this.editingPhrases[key] = true
@@ -847,12 +830,6 @@ export default {
       } else {
         return phrase.target || phrase[1] || ''
       }
-    },
-    toggleFlag(seedId, legoKey, idx) {
-      const key = this.getPhraseKey(seedId, legoKey, idx)
-      this.flaggedPhrases[key] = !this.flaggedPhrases[key]
-      this.hasUnsavedChanges[seedId] = true
-      this.$forceUpdate()
     },
     deletePhrase(seedId, legoKey, idx) {
       const key = this.getPhraseKey(seedId, legoKey, idx)
@@ -919,9 +896,6 @@ export default {
         })
         Object.keys(this.deletedPhrases).forEach(key => {
           if (key.startsWith(seedId)) delete this.deletedPhrases[key]
-        })
-        Object.keys(this.flaggedPhrases).forEach(key => {
-          if (key.startsWith(seedId)) delete this.flaggedPhrases[key]
         })
 
         this.$forceUpdate()
