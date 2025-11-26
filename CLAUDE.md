@@ -99,15 +99,15 @@ Orchestration, automation, and processing services.
 ```
 services/
 ├── orchestration/       # Multi-agent coordination
-├── phases/             # Phase servers (APML v9.0: Phase 1, Phase 3, Manifest, Audio)
+├── phases/             # Phase servers (APML v9.0: Phase 1, Phase 2, Phase 3, Manifest, Audio)
 └── web/                # Web services
 ```
 
 **Manifest Compilation Service** (`services/phases/manifest-compilation/`)
-- Transforms phase outputs into final APML manifests
+- Transforms Phase 3 outputs into final APML manifests
 - Generates deterministic UUIDs (SSi legacy format)
 - Embeds language-specific encouragements
-- Separate from legacy `scripts/phase7-*` implementations
+- Separate from legacy manifest generation implementations
 
 #### `public/vfs/courses/` - Course Data
 Language course data organized by language pair (e.g., `spa_for_eng/`).
@@ -145,11 +145,11 @@ If you're generating files, verify they're in gitignored directories.
 APML is our custom format for language learning content. Key concepts:
 
 ### **Phase Outputs (APML v9.0)**
-- **Phase 1**: `draft_lego_pairs.json` - Translated seeds with LEGOs (may have conflicts)
-- **Phase 2**: `lego_pairs.json` - Conflict-free LEGOs (SINGLE SOURCE OF TRUTH)
-- **Phase 3**: `lego_baskets.json` - Organized practice baskets
-- **Manifest**: `course_manifest.json` - Compiled for audio generation
-- **Audio**: `audio/*.mp3` - TTS generated files
+- **Phase 1 (Translation + LEGO Extraction)**: `draft_lego_pairs.json` - Translated seeds with LEGOs (may have conflicts)
+- **Phase 2 (Conflict Resolution)**: `lego_pairs.json` - Conflict-free LEGOs (SINGLE SOURCE OF TRUTH)
+- **Phase 3 (Basket Generation)**: `lego_baskets.json` - Organized practice baskets
+- **Manifest (Course Compilation)**: `course_manifest.json` - Compiled for audio generation
+- **Audio (TTS Generation)**: `audio/*.mp3` - Generated audio files
 
 ### **LEGO Components**
 Language is broken into reusable "LEGO" pieces:
@@ -187,7 +187,7 @@ node tools/orchestrators/orchestrator-workflow.cjs
 node tools/validators/course-validator.cjs spa_for_eng
 
 # Deep phase-specific validation
-node tools/validators/phase-deep-validator.cjs spa_for_eng phase5
+node tools/validators/phase-deep-validator.cjs spa_for_eng phase3
 ```
 
 **Generators** (`tools/generators/`)
@@ -195,8 +195,8 @@ node tools/validators/phase-deep-validator.cjs spa_for_eng phase5
 # Generate course manifest
 node tools/generators/generate-course-manifest.js
 
-# Merge phase5 outputs
-node tools/generators/phase5-merge-batches.cjs
+# Merge phase3 outputs
+node tools/generators/phase3-merge-batches.cjs
 ```
 
 **Sync** (`tools/sync/`)
@@ -227,42 +227,42 @@ npm run api          # Start Express API (port 3000)
 
 ### **Phase-Specific Scripts** (gitignored - goes in `scripts/batch-temp/`)
 ```
-phase5_process_s0121_s0130.py    # Batch-specific processor
+phase3_process_s0121_s0130.py    # Batch-specific processor
 generate_agent_04_phrases.py     # Agent-specific generator
-refine_phase5_cmn_s0521.cjs      # One-off refinement
+refine_phase3_cmn_s0521.cjs      # One-off refinement
 ```
 
 ### **Stable Tools** (committed - goes in `tools/`)
 ```
 course-validator.cjs             # Reusable validator
-phase5-merge-batches.cjs         # Standard merger
+phase3-merge-batches.cjs         # Standard merger
 automation_server.cjs            # Core orchestrator
 ```
 
 ### **Documentation** (goes in `docs/`)
 ```
 docs/setup/AUTOMATION_SETUP.md   # Setup guide
-docs/workflows/PHASE5_WORKFLOW.md # Process doc
+docs/workflows/PHASE3_WORKFLOW.md # Process doc
 ```
 
 ---
 
 ## 🔄 Common Workflows
 
-### **1. Processing a New Batch (Phase 3 - Baskets)**
+### **1. Processing a New Batch (Phase 3 - Basket Generation)**
 
 ```bash
 # 1. Prepare scaffolds
-node tools/phase-prep/phase5_prep_scaffolds.cjs spa_for_eng S0121-S0130
+node tools/phase-prep/phase3_prep_scaffolds.cjs spa_for_eng S0121-S0130
 
 # 2. Generate baskets (agent does this in scripts/batch-temp/)
-python scripts/batch-temp/phase5_process_s0121_s0130.py
+python scripts/batch-temp/phase3_process_s0121_s0130.py
 
 # 3. Validate output
-node tools/validators/phase-deep-validator.cjs spa_for_eng phase5 S0121-S0130
+node tools/validators/phase-deep-validator.cjs spa_for_eng phase3 S0121-S0130
 
 # 4. Merge if valid
-node tools/generators/phase5-merge-batches.cjs spa_for_eng S0121-S0130
+node tools/generators/phase3-merge-batches.cjs spa_for_eng S0121-S0130
 ```
 
 ### **2. Fixing Validation Errors**
@@ -294,7 +294,7 @@ node tools/orchestrators/automation_server.cjs
 
 ### **4. Audio Generation (TTS)**
 
-⚠️ **IMPORTANT**: Audio generation requires special workflow attention. See `docs/workflows/PHASE8_CLAUDE_CODE_WORKFLOW.md` for complete details.
+⚠️ **IMPORTANT**: Audio generation requires special workflow attention. See `docs/workflows/AUDIO_GENERATION_WORKFLOW.md` for complete details.
 
 **Critical Rules:**
 1. **ALWAYS sync S3 first**: `aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/`
@@ -313,20 +313,20 @@ aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/
 node scripts/validate-and-fix-samples.cjs public/vfs/courses/<course_code>/course_manifest.json
 
 # 3. Show plan (DO NOT proceed without user approval!)
-node scripts/phase8-audio-generation.cjs <course_code> --plan
+node scripts/audio-generation.cjs <course_code> --plan
 
 # 4. After user approves, execute
-node scripts/phase8-audio-generation.cjs <course_code> --execute
+node scripts/audio-generation.cjs <course_code> --execute
 
 # 5. At QC checkpoint, review flagged samples:
 #    - Read: vfs/courses/<course_code>/qc_report_raw.json
 #    - Listen: vfs/courses/<course_code>/qc_review/<role>/*.mp3
 
 # 6a. If regeneration needed:
-node scripts/phase8-audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
+node scripts/audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
 
 # 6b. If approved, continue processing:
-node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-processing
+node scripts/audio-generation.cjs <course_code> --execute --continue-processing
 ```
 
 **Common Issues:**
@@ -407,7 +407,7 @@ All phase processors must be idempotent - running twice produces the same result
 Never merge invalid data. Always run validators before merging.
 
 ### **3. Preserve Pipeline State**
-Keep phase outputs (seed_pairs.json, lego_pairs.json, etc.) - they're checkpoints.
+Keep phase outputs (draft_lego_pairs.json, lego_pairs.json, lego_baskets.json, course_manifest.json) - they're checkpoints.
 
 ### **4. Branch Isolation**
 Agent work happens in branches. Main branch only gets validated, merged work.
@@ -455,7 +455,7 @@ Debug metadata stays local (gitignored). Only production data goes to git.
 ### **Day 1: Understand the Pipeline**
 - Read `SYSTEM.md`
 - Examine one course: `public/vfs/courses/spa_for_eng/`
-- Look at phase outputs: `seed_pairs.json`, `lego_pairs.json`, `lego_baskets.json`
+- Look at phase outputs: `draft_lego_pairs.json` (Phase 1), `lego_pairs.json` (Phase 2), `lego_baskets.json` (Phase 3)
 
 ### **Day 2: Run a Validation**
 - Run `node tools/validators/course-validator.cjs spa_for_eng`
@@ -464,7 +464,7 @@ Debug metadata stays local (gitignored). Only production data goes to git.
 
 ### **Day 3: Process a Small Batch**
 - Pick 10 seeds (e.g., S0001-S0010)
-- Generate Phase 3 baskets
+- Generate Phase 3 baskets (lego_baskets.json)
 - Validate and merge
 
 ### **Week 1: Multi-Agent Coordination**
@@ -481,7 +481,7 @@ Before starting work, verify:
 - [ ] I've read `CLAUDE.md`, `SYSTEM.md`, and `README.md`
 - [ ] **I've checked recent commits** (`git log --oneline -10`)
 - [ ] **I understand what changed recently** (cleanup? new tools?)
-- [ ] I understand the phase pipeline (1 → 3 → 5 → 6 → 7)
+- [ ] I understand the APML v9.0 pipeline (Phase 1 → Phase 2 → Phase 3 → Manifest → Audio)
 - [ ] I know where to create files (NOT in root!)
 - [ ] I've checked `.gitignore` for file placement
 - [ ] I have access to `tools/` for shared utilities
@@ -518,4 +518,4 @@ You're doing well if:
 
 **Welcome to the team! Keep the mojo alive, keep the repo clean. 🚀**
 
-*Last updated: 2025-11-17*
+*Last updated: 2025-11-26*

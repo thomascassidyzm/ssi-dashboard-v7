@@ -185,9 +185,9 @@
 import { ref } from 'vue'
 
 const phases = ref([
-  { id: '1', name: 'Translation', skill: 'translation-skill' },
-  { id: '3', name: 'LEGO Extraction', skill: 'lego-extraction-skill' },
-  { id: '5', name: 'Baskets', skill: 'basket-generation-skill' },
-  { id: '6', name: 'Introductions', skill: 'introductions-skill' }
+  { id: '1', name: 'Translation + LEGOs', skill: 'translation-lego-skill' },
+  { id: '2', name: 'Conflict Resolution', skill: 'upchunking-skill' },
+  { id: '3', name: 'Basket Generation', skill: 'basket-generation-skill' },
+  { id: 'M', name: 'Manifest', skill: null }
 ])
 </script>

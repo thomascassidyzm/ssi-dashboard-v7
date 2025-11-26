@@ -35,7 +35,7 @@
       <!-- Progress Bar -->
       <div v-if="currentPhaseData && (currentPhaseData.seedsTotal || currentPhaseData.legosTotal)" class="mb-3">
         <div class="flex items-center justify-between text-xs mb-1">
-          <!-- Phase 5: Show LEGOs and seeds -->
+          <!-- Legacy Phase 5 (now Phase 3): Show LEGOs and seeds -->
           <span v-if="liveProgress.currentPhase === 5 && currentPhaseData.legosTotal" class="text-slate-300">
             {{ currentPhaseData.legosCompleted || 0 }} / {{ currentPhaseData.legosTotal }} LEGOs
             <span class="text-slate-500 ml-2">({{ currentPhaseData.seedsCompleted || 0 }} / {{ currentPhaseData.seedsTotal }} seeds)</span>
@@ -122,13 +122,13 @@ function getPhaseTitle(phaseNum) {
   // APML v9.0 phase naming
   const titles = {
     1: 'Phase 1: Translation + LEGO Extraction',
-    3: 'Phase 3: Practice Baskets',
+    3: 'Phase 3: Basket Generation',
     'manifest': 'Manifest Compilation',
     'audio': 'Audio Generation',
     // Legacy mappings for backward compatibility
-    5: 'Phase 3: Practice Baskets',  // Old Phase 5 → New Phase 3
-    7: 'Manifest Compilation',        // Old Phase 7 → Manifest
-    8: 'Audio Generation'             // Old Phase 8 → Audio
+    5: 'Phase 3: Basket Generation',  // Legacy Phase 5 → New Phase 3
+    7: 'Manifest Compilation',        // Legacy Phase 7 → Manifest
+    8: 'Audio Generation'             // Legacy Phase 8 → Audio
   }
   return titles[phaseNum] || `Phase ${phaseNum}`
 }

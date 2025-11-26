@@ -1,55 +1,45 @@
-# DEPRECATED: Phase 5 Master Orchestrator (Use phase3_master.md instead)
-
-> **DEPRECATION NOTICE (APML v9.0):**
-> - "Phase 5" has been renamed to "Phase 3" (basket generation)
-> - This file is kept for backward compatibility only
-> - New implementations should use: `phase3_master.md`
-> - Terminology updates: "Phase 5 Worker" → "Phase 3 Worker"
-
----
-
-# Phase 5 Master Orchestrator: {{PATCH_NAME}}
+# Phase 3 Master Orchestrator: {{PATCH_NAME}}
 
 **Course:** `{{COURSE_CODE}}`
 **Your Patch:** Seeds `{{START_SEED}}` to `{{END_SEED}}` ({{SEED_COUNT}} seeds)
 **Missing LEGOs in your patch:** {{MISSING_LEGO_COUNT}}
-**Upload mode:** Staging + ngrok ✅
+**Upload mode:** Staging + ngrok
 
 ---
 
-## 🎯 YOUR MISSION
+## YOUR MISSION
 
 You are responsible for generating ALL missing baskets in your patch range.
 
 **Your workflow:**
 
-1. ✅ **Read your LEGO list** (provided below)
-2. ✅ **Spawn sub-agents** (10 baskets per agent)
-3. ✅ **Sub-agents do LINGUISTIC work** (NO scripts allowed!)
-4. ✅ **Sub-agents upload to staging** (safe for review)
-5. ✅ **Monitor completion** and report summary
+1. **Read your LEGO list** (provided below)
+2. **Spawn sub-agents** (10 baskets per agent)
+3. **Sub-agents do LINGUISTIC work** (NO scripts allowed!)
+4. **Sub-agents upload to staging** (safe for review)
+5. **Monitor completion** and report summary
 
-## ⛔ CRITICAL: SUB-AGENTS MUST NOT WRITE SCRIPTS
+## CRITICAL: SUB-AGENTS MUST NOT WRITE SCRIPTS
 
 **This is LINGUISTIC work, not coding.**
 
 Sub-agents MUST:
-- ✅ Think linguistically about natural, meaningful phrases
-- ✅ Use extended thinking for EVERY LEGO
-- ✅ Create utterances that real learners would want to say
-- ✅ Validate grammar in BOTH languages
+- Think linguistically about natural, meaningful phrases
+- Use extended thinking for EVERY LEGO
+- Create utterances that real learners would want to say
+- Validate grammar in BOTH languages
 
 Sub-agents MUST NOT:
-- ❌ Write JavaScript/Node.js/Python scripts to automate generation
-- ❌ Use templates or mechanical pattern filling
-- ❌ Create arrays of LEGOs without linguistic structure
-- ❌ Generate phrases without thinking about meaning first
+- Write JavaScript/Node.js/Python scripts to automate generation
+- Use templates or mechanical pattern filling
+- Create arrays of LEGOs without linguistic structure
+- Generate phrases without thinking about meaning first
 
 **If you see a sub-agent writing scripts, STOP THEM IMMEDIATELY.**
 
 ---
 
-## 📋 YOUR LEGO LIST ({{MISSING_LEGO_COUNT}} LEGOs)
+## YOUR LEGO LIST ({{MISSING_LEGO_COUNT}} LEGOs)
 
 ```json
 {{LEGO_LIST}}
@@ -57,7 +47,7 @@ Sub-agents MUST NOT:
 
 ---
 
-## 🚀 STEP 1: Spawn Sub-Agents
+## STEP 1: Spawn Sub-Agents
 
 **Critical**: Divide your {{MISSING_LEGO_COUNT}} LEGOs among sub-agents.
 
@@ -69,22 +59,22 @@ Sub-agents MUST NOT:
 **Each sub-agent receives:**
 - Their specific LEGO IDs (list of 10)
 - Path to course: `public/vfs/courses/{{COURSE_CODE}}`
-- Upload URL: `{{NGROK_URL}}/phase5/upload-basket`
+- Upload URL: `{{NGROK_URL}}/phase3/upload-basket`
 - Agent ID: `{{PATCH_ID}}-agent-{{AGENT_NUM}}`
 
 **What you DON'T need to do:**
-- ❌ Create scaffolds (agents do this themselves)
-- ❌ Merge files (server does this automatically)
-- ❌ Write code or scripts (this is linguistic work!)
+- Create scaffolds (agents do this themselves)
+- Merge files (server does this automatically)
+- Write code or scripts (this is linguistic work!)
 
 ---
 
-## 📊 STEP 2: Monitor & Report
+## STEP 2: Monitor & Report
 
 Track completion and report:
 
 ```
-✅ {{PATCH_NAME}} Complete
+{{PATCH_NAME}} Complete
    Seeds: {{START_SEED}}-{{END_SEED}}
    LEGOs assigned: {{MISSING_LEGO_COUNT}}
    Sub-agents spawned: {{SUB_AGENT_COUNT}}
@@ -94,7 +84,7 @@ Track completion and report:
 
 ---
 
-## ⚠️ IMPORTANT NOTES
+## IMPORTANT NOTES
 
 ### Staging Workflow
 - **Sub-agents upload via ngrok** → Direct HTTP POST
@@ -116,7 +106,7 @@ Track completion and report:
 
 ---
 
-## 🚀 BEGIN NOW
+## BEGIN NOW
 
 Spawn {{SUB_AGENT_COUNT}} sub-agents immediately.
 

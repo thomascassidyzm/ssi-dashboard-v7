@@ -61,8 +61,8 @@ export default {
     _basketsCache: {},
 
     async generate({ target, known, seeds, startSeed, endSeed, executionMode = 'web', phaseSelection = 'all', segmentMode = 'single', force = false, stagingOnly = false }) {
-      // APML v9.0: Route Phase 3 (Basket) requests to the basket server
-      // Note: 'phase5' selection is maintained for backward compatibility
+      // APML v9.0: Route Phase 3 (Basket Generation) requests to the basket server
+      // Legacy: 'phase5' selection maintained for backward compatibility (old Phase 5 → new Phase 3)
       if (phaseSelection === 'phase3' || phaseSelection === 'phase5') {
         const courseCode = `${target}_for_${known}`
 
@@ -776,7 +776,7 @@ export default {
       return response.data
     },
 
-    // APML v9.0: Regenerate Manifest (was Phase 7)
+    // APML v9.0: Regenerate Manifest (was Phase 7 in legacy versions)
     async regenerateManifest(courseCode) {
       const response = await api.post(`/api/courses/${courseCode}/regenerate/manifest`, {})
       // Clear cache since manifest will be regenerated
@@ -784,7 +784,7 @@ export default {
       return response.data
     },
 
-    // Legacy alias for backward compatibility
+    // Legacy alias for backward compatibility (Phase 7 → Manifest)
     async regeneratePhase7(courseCode) {
       return this.regenerateManifest(courseCode)
     },
@@ -948,7 +948,7 @@ export default {
   },
 
   // =============================================================================
-  // APML v9.0: Audio Generation (was Phase 8)
+  // APML v9.0: Audio Generation (was Phase 8 in legacy versions)
   // =============================================================================
 
   // Start Audio generation
@@ -997,7 +997,7 @@ export default {
   },
 
   // =============================================================================
-  // Legacy aliases for backward compatibility
+  // Legacy aliases for backward compatibility (Phase 8 → Audio)
   // =============================================================================
   async startPhase8Audio(courseCode, options = {}) {
     return this.startAudioGeneration(courseCode, options)

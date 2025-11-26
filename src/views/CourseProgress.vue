@@ -105,7 +105,7 @@
             color="pink"
           />
 
-          <!-- Manifest Compilation (was Phase 7) -->
+          <!-- Manifest Compilation (was Phase 7 in legacy versions) -->
           <PhaseCard
             phase="M"
             title="Manifest Compilation"
@@ -113,7 +113,7 @@
             color="teal"
           />
 
-          <!-- Audio Generation (was Phase 8) -->
+          <!-- Audio Generation (was Phase 8 in legacy versions) -->
           <PhaseCard
             phase="A"
             title="Audio Generation"

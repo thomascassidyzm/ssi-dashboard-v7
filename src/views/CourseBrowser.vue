@@ -41,7 +41,7 @@
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Phase 3')..."
+          placeholder="Search courses (e.g., 'Spanish', 'fra_for_eng', 'Basket Generation')..."
           class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
         />
       </div>
@@ -338,10 +338,10 @@ function getPhaseTitle(phase) {
     '3': 'Phase 3: Basket Generation',
     'M': 'Manifest Compilation',
     'A': 'Audio Generation',
-    // Legacy mappings
-    '5': 'Phase 3: Baskets',
-    '7': 'Manifest',
-    '8': 'Audio'
+    // Legacy mappings (for backward compatibility)
+    '5': 'Phase 3: Basket Generation (legacy)',
+    '7': 'Manifest Compilation (legacy)',
+    '8': 'Audio Generation (legacy)'
   }
   return titles[phase] || `Phase ${phase}`
 }
@@ -350,9 +350,9 @@ function isPhaseComplete(course, phase) {
   // Check both new and legacy phase identifiers
   const phases = course.phases_completed || []
   if (phase === '1') return phases.includes('1')
-  if (phase === '3') return phases.includes('3') || phases.includes('5')
-  if (phase === 'M') return phases.includes('manifest') || phases.includes('7')
-  if (phase === 'A') return phases.includes('audio') || phases.includes('8')
+  if (phase === '3') return phases.includes('3') || phases.includes('5')  // Phase 3 or legacy Phase 5
+  if (phase === 'M') return phases.includes('manifest') || phases.includes('7')  // Manifest or legacy Phase 7
+  if (phase === 'A') return phases.includes('audio') || phases.includes('8')  // Audio or legacy Phase 8
   return phases.includes(phase)
 }
 

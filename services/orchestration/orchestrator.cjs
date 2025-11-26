@@ -34,18 +34,18 @@ const PHASE_SERVERS = {
   // Phase 1: Translation + LEGO Extraction (two services, one conceptual phase)
   '1_translation': process.env.PHASE1_TRANSLATION_URL || 'http://localhost:3457',
   '1_lego': process.env.PHASE1_LEGO_URL || 'http://localhost:3458',
-  // Phase 3: Basket Generation (was Phase 5 in old numbering)
+  // Phase 3: Basket Generation (APML v9.0 terminology)
   3: process.env.PHASE3_URL || 'http://localhost:3459',
-  // Manifest: Course Compilation (was Phase 7)
+  // Manifest: Course Compilation (APML v9.0 terminology)
   'manifest': process.env.MANIFEST_URL || 'http://localhost:3464',
-  // Audio: TTS Generation (was Phase 8)
+  // Audio: TTS Generation (APML v9.0 terminology)
   'audio': process.env.AUDIO_URL || 'http://localhost:3465'
 };
 
 // Legacy aliases for backward compatibility during migration
 const LEGACY_PHASE_ALIASES = {
   1: PHASE_SERVERS['1_translation'],
-  5: PHASE_SERVERS[3],       // Phase 5 → Phase 3
+  5: PHASE_SERVERS[3],       // Legacy Phase 5 → Phase 3 (APML v9.0)
   7: PHASE_SERVERS['manifest'],
   8: PHASE_SERVERS['audio']
 };
@@ -283,7 +283,7 @@ app.get('/api/courses/:courseCode', async (req, res) => {
       basket_count: basketCount,
       has_phase1: !!seedPairs,
       has_phase3: !!legoPairs,
-      has_phase5: !!baskets
+      has_baskets: !!baskets
     });
   } catch (error) {
     console.error(`Failed to load course ${courseCode}:`, error);
@@ -453,7 +453,7 @@ async function generateReextractionTaskList(courseCode) {
         seed_count: affectedSeeds.size,
         reextraction_manifest: fdReport.reextraction_manifest
       },
-      phase_5_basket_cleanup: gapReport ? {
+      phase_3_basket_cleanup: gapReport ? {
         baskets_to_delete: gapReport.baskets_to_delete,
         baskets_to_generate: gapReport.baskets_missing,
         baskets_to_keep: gapReport.baskets_to_keep
@@ -488,7 +488,7 @@ async function generateReextractionTaskList(courseCode) {
           step: 4,
           action: 'Generate new baskets',
           description: gapReport
-            ? `Generate ${gapReport.baskets_missing.length} new baskets for Phase 5`
+            ? `Generate ${gapReport.baskets_missing.length} new baskets for Phase 3`
             : 'No new baskets needed',
           automated: false,
           status: 'pending'
@@ -527,8 +527,8 @@ async function runPhaseValidation(courseCode, phase) {
   // Phases handle their own validation internally with retry logic:
   // - Phase 1: Translation quality checks
   // - Phase 3: LUT validation with automatic re-extraction on violations
-  // - Phase 5: Basket generation with internal checks
-  // - Phase 7: Manifest compilation validation
+  // - Phase 3: Basket generation with internal checks
+  // - Manifest: Course compilation validation
   //
   // If a phase reports 'complete', it has already passed its internal validation.
   // External validation was removed to enable autonomous pipeline execution.
@@ -989,11 +989,11 @@ app.post('/api/courses/:courseCode/progress', async (req, res) => {
   }
 
   // Calculate ETA if progress info provided
-  // Phase 5 uses LEGOs, other phases use seeds
+  // Phase 3 uses LEGOs, other phases use seeds
   if (updates.startTime) {
     let completed, total;
     if (phase === 5 && updates.legosCompleted && updates.legosTotal) {
-      // Phase 5: Track LEGOs
+      // Phase 3: Track LEGOs
       completed = updates.legosCompleted;
       total = updates.legosTotal;
     } else if (updates.seedsCompleted && updates.seedsTotal) {
@@ -1034,9 +1034,9 @@ app.post('/api/courses/:courseCode/start-phase', async (req, res) => {
     const prerequisites = {
       1: [],           // Phase 1 has no prerequisites
       3: [1],          // Phase 3 requires Phase 1 (seed_pairs.json) - includes Phase 6 introductions
-      5: [1, 3],       // Phase 5 requires Phases 1 & 3 (lego_pairs.json + introductions.json)
-      7: [1, 3, 5],    // Phase 7 requires Phases 1, 3 & 5 (manifest compilation)
-      8: [1, 3, 5, 7]  // Phase 8 requires all previous phases (TTS audio generation)
+      5: [1, 3],       // Phase 3 requires Phases 1 & 2 (lego_pairs.json + introductions.json)
+      7: [1, 3, 5],    // Manifest requires Phases 1, 2 & 3 (course compilation)
+      8: [1, 3, 5, 7]  // Audio requires all previous phases (TTS generation)
     };
 
     const requiredPhases = prerequisites[phase] || [];
@@ -1227,7 +1227,7 @@ function normalizePhaseIdentifier(phase) {
   const mapping = {
     1: 'phase1', 'phase1': 'phase1',
     3: 'phase3', 'phase3': 'phase3',
-    5: 'phase3', 'phase5': 'phase3',  // Old Phase 5 → New Phase 3
+    5: 'phase3', 'phase5': 'phase3',  // Legacy Phase 5 → Phase 3 (APML v9.0)
     7: 'manifest', 'phase7': 'manifest',
     8: 'audio', 'phase8': 'audio',
     'manifest': 'manifest',
@@ -1934,15 +1934,15 @@ app.get('/api/phase-intelligence/:phase', async (req, res) => {
     // Normalize phase number (handle "phase1" or "1")
     phase = phase.replace(/^phase/, '');
 
-    // Map phase numbers to intelligence files
+    // Map phase numbers to intelligence files (APML v9.0 terminology)
     const phaseFiles = {
       '1': 'phase_1_seed_pairs.md',
-      '3': 'phase_3_lego_pairs.md',
-      '5': 'phase_5_lego_baskets.md',
+      '3': 'phase_3_lego_baskets.md',  // Phase 3: Basket Generation
+      '5': 'phase_3_lego_baskets.md',  // Legacy: Phase 5 → Phase 3
       '5.5': 'phase_5.5_grammar_review.md',
       '6': 'phase_6_introductions.md',
-      '7': 'phase_7_compilation.md',
-      '8': 'phase_8_audio_generation.md'
+      '7': 'manifest_compilation.md',  // Manifest: Course Compilation
+      '8': 'audio_generation.md'  // Audio: TTS Generation
     };
 
     const filename = phaseFiles[phase];
@@ -2657,11 +2657,11 @@ app.post('/api/phase3/:courseCode/submit', async (req, res) => {
         progress.currentPhase = 5;
       }
 
-      // Trigger Phase 5 automatically (with 2s delay for GitHub sync)
-      console.log(`[Orchestrator] → Phase 3 complete, triggering Phase 5 in 2s...`);
+      // Trigger Phase 3 automatically (with 2s delay for GitHub sync)
+      console.log(`[Orchestrator] → Phase 2 complete, triggering Phase 3 in 2s...`);
       setTimeout(() => {
-        console.log(`[Orchestrator] 🚀 Auto-triggering Phase 5 for ${courseCode}`);
-        addProgressLog(courseCode, 'Starting Phase 5 (basket generation)');
+        console.log(`[Orchestrator] 🚀 Auto-triggering Phase 3 for ${courseCode}`);
+        addProgressLog(courseCode, 'Starting Phase 3 (basket generation)');
         triggerPhase(courseCode, 5);
       }, 2000);
 
@@ -3868,7 +3868,7 @@ async function fetchPhaseServerStatus(courseCode, phase) {
 
 /**
  * Stop/Abort proxy endpoints for dashboard Reset Jobs button
- * Phase 1 & 3 use /stop, Phase 5 uses /abort
+ * Phase 1 & 2 use /stop, Phase 3 uses /abort
  */
 app.post('/phase1/stop/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
@@ -3941,13 +3941,13 @@ app.post('/phase5/abort/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   try {
     const response = await axios.post(`${PHASE_SERVERS[5]}/abort/${courseCode}`, {}, { timeout: 5000 });
-    console.log(`[Orchestrator] Phase 5 abort for ${courseCode}: ${response.status}`);
+    console.log(`[Orchestrator] Phase 3 abort for ${courseCode}: ${response.status}`);
     res.json(response.data);
   } catch (error) {
     if (error.response?.status === 404) {
       res.status(404).json({ error: 'No active job found' });
     } else {
-      console.error(`[Orchestrator] Phase 5 abort failed: ${error.message}`);
+      console.error(`[Orchestrator] Phase 3 abort failed: ${error.message}`);
       res.status(500).json({ error: error.message });
     }
   }

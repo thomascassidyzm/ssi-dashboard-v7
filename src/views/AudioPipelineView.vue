@@ -384,7 +384,7 @@ async function startGeneration() {
   } catch (err) {
     console.error('Failed to start audio generation:', err)
     if (err.response?.status === 404 || err.response?.status === 503) {
-      toast.error('❌ Phase 8 server is not available. Start it with: node services/phases/phase8-audio-server.cjs')
+      toast.error('❌ Audio generation server is not available. Start it with: node services/phases/audio-server.cjs')
     } else if (err.response?.status === 409) {
       toast.error('⚠️ Audio generation already in progress.')
       await checkJobStatus()
