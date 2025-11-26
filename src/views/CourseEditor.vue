@@ -73,6 +73,68 @@
           </div>
         </div>
 
+        <!-- QC Flags Panel -->
+        <div v-if="unresolvedFlags.length > 0" class="bg-slate-800 border border-amber-500/50 rounded-lg p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold text-amber-400 flex items-center gap-2">
+              🚩 QC Flags
+              <span class="bg-amber-600 text-white text-sm px-2 py-0.5 rounded-full">
+                {{ unresolvedFlags.length }}
+              </span>
+            </h3>
+            <button
+              @click="showFlagsExpanded = !showFlagsExpanded"
+              class="text-slate-400 hover:text-slate-300 text-sm"
+            >
+              {{ showFlagsExpanded ? 'Collapse' : 'Expand' }}
+            </button>
+          </div>
+
+          <div v-if="showFlagsExpanded" class="space-y-3">
+            <div
+              v-for="flag in unresolvedFlags"
+              :key="flag.id"
+              class="bg-slate-900/50 border border-slate-700 rounded-lg p-4"
+            >
+              <div class="flex items-start justify-between">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-sm font-mono text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded">
+                      {{ flag.seedId }}
+                    </span>
+                    <span v-if="flag.legoId" class="text-sm font-mono text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded">
+                      {{ flag.legoId }}
+                    </span>
+                    <span class="text-xs text-slate-500 bg-slate-700 px-2 py-0.5 rounded">
+                      {{ flag.issueType }}
+                    </span>
+                  </div>
+                  <div v-if="flag.suggestedCorrection" class="text-sm text-emerald-400 mb-1">
+                    💡 {{ flag.suggestedCorrection }}
+                  </div>
+                  <div v-if="flag.notes" class="text-sm text-slate-400">
+                    {{ flag.notes }}
+                  </div>
+                  <div class="text-xs text-slate-600 mt-2">
+                    {{ new Date(flag.created).toLocaleDateString() }}
+                  </div>
+                </div>
+                <button
+                  @click="resolveFlag(flag.id)"
+                  class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-sm rounded transition-colors"
+                  title="Mark as resolved"
+                >
+                  ✓ Resolve
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div v-else class="text-sm text-slate-400">
+            {{ unresolvedFlags.length }} flag{{ unresolvedFlags.length !== 1 ? 's' : '' }} pending review
+          </div>
+        </div>
+
         <!-- Progress Monitor (shown when basket generation is active) -->
         <ProgressMonitor
           v-if="showProgressMonitor"
@@ -1000,6 +1062,10 @@ const pollingInterval = ref(null)
 // Basket generation state
 const generatingBaskets = ref(false)
 
+// QC Flags state
+const flags = ref([])
+const showFlagsExpanded = ref(true)
+
 const tabs = [
   { id: 'legos', label: 'LEGO_PAIRS' },
   { id: 'baskets', label: 'LEGO_BASKETS' },
@@ -1025,6 +1091,11 @@ const actualLegoCount = computed(() => {
 const isManifestComplete = computed(() => {
   const phases = course.value?.phases_completed || []
   return phases.includes('manifest') || phases.includes('7')
+})
+
+// Filter unresolved flags
+const unresolvedFlags = computed(() => {
+  return flags.value.filter(f => !f.resolved)
 })
 
 const filteredTranslations = computed(() => {
@@ -1188,11 +1259,37 @@ async function loadCourse() {
       console.error('❌ ERROR loading lego_pairs.json:', err)
       console.error('Stack:', err.stack)
     }
+
+    // Load QC flags
+    await loadFlags()
   } catch (err) {
     error.value = err.message || 'Failed to load course'
     console.error('Failed to load course:', err)
   } finally {
     loading.value = false
+  }
+}
+
+async function loadFlags() {
+  try {
+    const response = await api.course.getFlags(courseCode)
+    flags.value = response.flags || []
+    console.log(`📋 Loaded ${flags.value.length} flags (${unresolvedFlags.value.length} unresolved)`)
+  } catch (err) {
+    console.log('Could not load flags:', err.message)
+    flags.value = []
+  }
+}
+
+async function resolveFlag(flagId) {
+  try {
+    await api.course.deleteFlag(courseCode, flagId)
+    // Reload flags after deletion
+    await loadFlags()
+    toast.success('Flag resolved')
+  } catch (err) {
+    console.error('Failed to resolve flag:', err)
+    toast.error('Failed to resolve flag: ' + err.message)
   }
 }
 

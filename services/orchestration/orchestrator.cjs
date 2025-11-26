@@ -1743,12 +1743,12 @@ app.put('/api/courses/:courseCode/translations/:seedId', async (req, res) => {
 
 /**
  * POST /api/courses/:courseCode/flags
- * Create a new flag for a seed or lego issue
- * Body: { seedId, legoId (optional), issueType: "translation"|"lego_breakdown"|"other", notes: string }
+ * Create a new flag for a seed or lego issue (commits to GitHub)
+ * Body: { seedId, legoId (optional), issueType, notes, suggestedCorrection }
  */
 app.post('/api/courses/:courseCode/flags', async (req, res) => {
   const { courseCode } = req.params;
-  const { seedId, legoId, issueType, notes } = req.body;
+  const { seedId, legoId, issueType, notes, suggestedCorrection } = req.body;
 
   console.log(`[Orchestrator] Creating flag for ${courseCode} - seedId: ${seedId}, issueType: ${issueType}`);
 
@@ -1762,31 +1762,77 @@ app.post('/api/courses/:courseCode/flags', async (req, res) => {
     }
 
     // Load existing flags or create new array
-    let flagsData = { flags: [] };
+    let flagsData = { flags: [], version: '1.0' };
     if (await fs.pathExists(flagsPath)) {
       flagsData = await fs.readJson(flagsPath);
     }
 
     // Create new flag with unique ID
     const newFlag = {
-      id: Date.now(),
+      id: `FLAG_${Date.now()}`,
       seedId,
       legoId: legoId || null,
       issueType,
-      notes,
+      suggestedCorrection: suggestedCorrection || null,
+      notes: notes || null,
       created: new Date().toISOString(),
-      resolved: false
+      resolved: false,
+      resolvedAt: null,
+      resolvedBy: null
     };
 
     flagsData.flags.push(newFlag);
+    flagsData.updated = new Date().toISOString();
 
     // Write back to file
     await fs.writeJson(flagsPath, flagsData, { spaces: 2 });
     console.log(`[Orchestrator] Successfully created flag ${newFlag.id} in ${courseCode}`);
 
+    // Commit to GitHub (SSoT)
+    let gitResult = null;
+    try {
+      const repoRoot = path.join(__dirname, '../..');
+      const flagsRelativePath = `public/vfs/courses/${courseCode}/flags.json`;
+
+      execSync(`git add ${flagsRelativePath}`, {
+        cwd: repoRoot,
+        stdio: 'pipe'
+      });
+
+      const commitMsg = `flag(${courseCode}): ${seedId}${legoId ? '/' + legoId : ''} - ${issueType}
+
+🚩 QC flag submitted for review
+
+🤖 Generated with Claude Code
+
+Co-Authored-By: Claude <noreply@anthropic.com>`;
+
+      execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
+        cwd: repoRoot,
+        stdio: 'pipe'
+      });
+
+      const sha = execSync('git rev-parse HEAD', {
+        cwd: repoRoot,
+        encoding: 'utf-8'
+      }).trim();
+
+      execSync('git push', {
+        cwd: repoRoot,
+        stdio: 'pipe'
+      });
+
+      gitResult = { sha, pushed: true };
+      console.log(`[Orchestrator] ✅ Flag committed to GitHub: ${sha.substring(0, 7)}`);
+    } catch (gitError) {
+      console.error(`[Orchestrator] Git commit failed (flag still saved locally):`, gitError.message);
+      gitResult = { error: gitError.message };
+    }
+
     res.json({
       success: true,
-      flag: newFlag
+      flag: newFlag,
+      github: gitResult
     });
   } catch (error) {
     console.error(`[Orchestrator] Error creating flag:`, error);
@@ -1822,12 +1868,12 @@ app.get('/api/courses/:courseCode/flags', async (req, res) => {
 
 /**
  * DELETE /api/courses/:courseCode/flags/:flagId
- * Delete a flag by ID
+ * Mark a flag as resolved (commits to GitHub)
  */
 app.delete('/api/courses/:courseCode/flags/:flagId', async (req, res) => {
   const { courseCode, flagId } = req.params;
 
-  console.log(`[Orchestrator] Deleting flag ${flagId} from ${courseCode}`);
+  console.log(`[Orchestrator] Resolving flag ${flagId} from ${courseCode}`);
 
   try {
     const courseDir = path.join(VFS_ROOT, courseCode);
@@ -1838,23 +1884,67 @@ app.delete('/api/courses/:courseCode/flags/:flagId', async (req, res) => {
     }
 
     const flagsData = await fs.readJson(flagsPath);
-    const initialLength = flagsData.flags.length;
 
-    // Filter out the flag with matching ID
-    flagsData.flags = flagsData.flags.filter(flag => flag.id !== parseInt(flagId));
-
-    if (flagsData.flags.length === initialLength) {
+    // Find and mark the flag as resolved
+    const flag = flagsData.flags.find(f => f.id === flagId || f.id === parseInt(flagId));
+    if (!flag) {
       return res.status(404).json({ error: `Flag ${flagId} not found` });
     }
 
+    flag.resolved = true;
+    flag.resolvedAt = new Date().toISOString();
+    flag.resolvedBy = 'dashboard';
+    flagsData.updated = new Date().toISOString();
+
     // Write back to file
     await fs.writeJson(flagsPath, flagsData, { spaces: 2 });
-    console.log(`[Orchestrator] Successfully deleted flag ${flagId} from ${courseCode}`);
+    console.log(`[Orchestrator] Successfully resolved flag ${flagId} in ${courseCode}`);
 
-    res.json({ success: true });
+    // Commit to GitHub
+    let gitResult = null;
+    try {
+      const repoRoot = path.join(__dirname, '../..');
+      const flagsRelativePath = `public/vfs/courses/${courseCode}/flags.json`;
+
+      execSync(`git add ${flagsRelativePath}`, {
+        cwd: repoRoot,
+        stdio: 'pipe'
+      });
+
+      const commitMsg = `flag(${courseCode}): resolved ${flag.seedId}${flag.legoId ? '/' + flag.legoId : ''}
+
+✅ QC flag marked as resolved
+
+🤖 Generated with Claude Code
+
+Co-Authored-By: Claude <noreply@anthropic.com>`;
+
+      execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
+        cwd: repoRoot,
+        stdio: 'pipe'
+      });
+
+      const sha = execSync('git rev-parse HEAD', {
+        cwd: repoRoot,
+        encoding: 'utf-8'
+      }).trim();
+
+      execSync('git push', {
+        cwd: repoRoot,
+        stdio: 'pipe'
+      });
+
+      gitResult = { sha, pushed: true };
+      console.log(`[Orchestrator] ✅ Flag resolution committed to GitHub: ${sha.substring(0, 7)}`);
+    } catch (gitError) {
+      console.error(`[Orchestrator] Git commit failed:`, gitError.message);
+      gitResult = { error: gitError.message };
+    }
+
+    res.json({ success: true, github: gitResult });
   } catch (error) {
-    console.error(`[Orchestrator] Error deleting flag:`, error);
-    res.status(500).json({ error: 'Failed to delete flag', details: error.message });
+    console.error(`[Orchestrator] Error resolving flag:`, error);
+    res.status(500).json({ error: 'Failed to resolve flag', details: error.message });
   }
 });
 
