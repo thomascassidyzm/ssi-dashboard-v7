@@ -907,16 +907,25 @@ const analyzeCourse = async () => {
 }
 
 const selectRecommendation = (rec) => {
-  startSeed.value = rec.action.startSeed
-  if (rec.action.count) {
+  // Handle seeds array format (from generate-baskets recommendation)
+  if (rec.action.seeds && Array.isArray(rec.action.seeds)) {
+    // Extract seed numbers from IDs like "S0001" -> 1
+    const seedNums = rec.action.seeds.map(s => parseInt(s.replace('S', ''), 10))
+    startSeed.value = Math.min(...seedNums)
+    endSeed.value = Math.max(...seedNums)
+  } else if (rec.action.count) {
     // Quick test with random seeds
+    startSeed.value = rec.action.startSeed
     endSeed.value = rec.action.startSeed + rec.action.count - 1
   } else {
+    startSeed.value = rec.action.startSeed
     endSeed.value = rec.action.endSeed
   }
 
-  // Handle phase-specific recommendations (e.g., Phase 5 only)
-  if (rec.action.phases && rec.action.phases.includes('phase5')) {
+  // Handle phase-specific recommendations
+  if (rec.action.phases && rec.action.phases.includes('phase3')) {
+    phaseSelection.value = 'phase3'
+  } else if (rec.action.phases && rec.action.phases.includes('phase5')) {
     phaseSelection.value = 'phase5'
   } else {
     phaseSelection.value = 'all'
