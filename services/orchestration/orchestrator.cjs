@@ -667,23 +667,21 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
   const courseDir = path.join(VFS_ROOT, courseCode);
 
   try {
-    // Check what phase outputs exist (APML v9.0 + legacy support)
-    const draftLegoPairsPath = path.join(courseDir, 'draft_lego_pairs.json'); // Phase 1 (APML v9.0)
-    const seedPairsPath = path.join(courseDir, 'seed_pairs.json'); // Phase 1 (legacy)
-    const legoPairsPath = path.join(courseDir, 'lego_pairs.json'); // Phase 2
+    // Check what phase outputs exist
+    const draftLegoPairsPath = path.join(courseDir, 'draft_lego_pairs.json'); // Phase 1 (in-progress)
+    const legoPairsPath = path.join(courseDir, 'lego_pairs.json'); // Phase 2 (implies Phase 1 complete)
     const introsPath = path.join(courseDir, 'introductions.json');
     const basketsPath = path.join(courseDir, 'lego_baskets.json'); // Phase 3
     const flagsPath = path.join(courseDir, 'flags.json'); // QC Flags
 
     const draftLegoPairsExists = await fs.pathExists(draftLegoPairsPath);
-    const seedPairsExists = await fs.pathExists(seedPairsPath);
     const legoPairsExists = await fs.pathExists(legoPairsPath);
     const introsExists = await fs.pathExists(introsPath);
     const basketsExists = await fs.pathExists(basketsPath);
     const flagsExists = await fs.pathExists(flagsPath);
 
-    // Phase 1 exists if either format exists
-    const phase1Exists = draftLegoPairsExists || seedPairsExists;
+    // If Phase 2 exists, Phase 1 is implicitly complete (can't have Phase 2 without Phase 1)
+    const phase1Exists = legoPairsExists || draftLegoPairsExists;
 
     // Count what we have
     let phase1SeedCount = 0;
@@ -701,20 +699,11 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       unresolvedFlags = flags.filter(f => !f.resolved);
     }
 
-    // Phase 1: draft_lego_pairs.json (APML v9.0) or seed_pairs.json (legacy)
-    if (draftLegoPairsExists) {
-      const draftData = await fs.readJSON(draftLegoPairsPath);
-      phase1SeedCount = (draftData.seeds || []).length;
-    } else if (seedPairsExists) {
-      const seedData = await fs.readJSON(seedPairsPath);
-      // Legacy format uses translations object with seed IDs as keys
-      phase1SeedCount = Object.keys(seedData.translations || {}).length;
-    }
-
-    // Phase 2: lego_pairs.json (conflict-resolved)
+    // Phase 2: lego_pairs.json (if exists, Phase 1 is implicitly complete)
     if (legoPairsExists) {
       const legoData = await fs.readJSON(legoPairsPath);
       phase2SeedCount = (legoData.seeds || []).length;
+      phase1SeedCount = phase2SeedCount; // Phase 1 implicitly complete
 
       // Count unique LEGOs (new: true)
       let uniqueLegoCount = 0;
@@ -722,14 +711,10 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
         uniqueLegoCount += (seed.legos || []).filter(l => l.new === true).length;
       }
       legoCount = uniqueLegoCount;
-
-      // Find seeds in Phase 1 but not Phase 2
-      if (draftLegoPairsExists) {
-        const draftData = await fs.readJSON(draftLegoPairsPath);
-        const draftSeeds = (draftData.seeds || []).map(s => s.seed_id);
-        const legoSeeds = (legoData.seeds || []).map(s => s.seed_id);
-        missingLegoSeeds = draftSeeds.filter(s => !legoSeeds.includes(s));
-      }
+    } else if (draftLegoPairsExists) {
+      // Phase 1 in progress, Phase 2 not done yet
+      const draftData = await fs.readJSON(draftLegoPairsPath);
+      phase1SeedCount = (draftData.seeds || []).length;
     }
 
     if (basketsExists) {
