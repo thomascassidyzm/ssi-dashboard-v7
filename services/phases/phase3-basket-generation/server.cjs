@@ -2716,7 +2716,7 @@ async function triggerPhase3Completion(courseCode, job) {
 
   const courseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
 
-  try:
+  try {
     // Step 1: Merge staging baskets
     console.log('📦 Step 1: Merging staging baskets...');
     job.status = 'merging_baskets';
