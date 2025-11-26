@@ -667,18 +667,23 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
   const courseDir = path.join(VFS_ROOT, courseCode);
 
   try {
-    // Check what phase outputs exist (APML v9.0 structure)
-    const draftLegoPairsPath = path.join(courseDir, 'draft_lego_pairs.json'); // Phase 1
+    // Check what phase outputs exist (APML v9.0 + legacy support)
+    const draftLegoPairsPath = path.join(courseDir, 'draft_lego_pairs.json'); // Phase 1 (APML v9.0)
+    const seedPairsPath = path.join(courseDir, 'seed_pairs.json'); // Phase 1 (legacy)
     const legoPairsPath = path.join(courseDir, 'lego_pairs.json'); // Phase 2
     const introsPath = path.join(courseDir, 'introductions.json');
     const basketsPath = path.join(courseDir, 'lego_baskets.json'); // Phase 3
     const flagsPath = path.join(courseDir, 'flags.json'); // QC Flags
 
     const draftLegoPairsExists = await fs.pathExists(draftLegoPairsPath);
+    const seedPairsExists = await fs.pathExists(seedPairsPath);
     const legoPairsExists = await fs.pathExists(legoPairsPath);
     const introsExists = await fs.pathExists(introsPath);
     const basketsExists = await fs.pathExists(basketsPath);
     const flagsExists = await fs.pathExists(flagsPath);
+
+    // Phase 1 exists if either format exists
+    const phase1Exists = draftLegoPairsExists || seedPairsExists;
 
     // Count what we have
     let phase1SeedCount = 0;
@@ -696,10 +701,14 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
       unresolvedFlags = flags.filter(f => !f.resolved);
     }
 
-    // Phase 1: draft_lego_pairs.json
+    // Phase 1: draft_lego_pairs.json (APML v9.0) or seed_pairs.json (legacy)
     if (draftLegoPairsExists) {
       const draftData = await fs.readJSON(draftLegoPairsPath);
       phase1SeedCount = (draftData.seeds || []).length;
+    } else if (seedPairsExists) {
+      const seedData = await fs.readJSON(seedPairsPath);
+      // Legacy format uses translations object with seed IDs as keys
+      phase1SeedCount = Object.keys(seedData.translations || {}).length;
     }
 
     // Phase 2: lego_pairs.json (conflict-resolved)
@@ -779,7 +788,7 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
     // Use phase2SeedCount as the main indicator (or phase1 if phase2 doesn't exist)
     const seedCount = phase2SeedCount || phase1SeedCount;
 
-    if (!draftLegoPairsExists && !legoPairsExists) {
+    if (!phase1Exists && !legoPairsExists) {
       // No course data - suggest starting fresh
       recommendations.push({
         type: 'test',
@@ -878,12 +887,12 @@ app.get('/api/courses/:courseCode/analyze', async (req, res) => {
 
     res.json({
       courseCode,
-      exists: draftLegoPairsExists || legoPairsExists,
-      // APML v9.0 phase structure
-      draft_lego_pairs: { exists: draftLegoPairsExists, count: phase1SeedCount }, // Phase 1
+      exists: phase1Exists || legoPairsExists,
+      // APML v9.0 phase structure (with legacy support)
+      draft_lego_pairs: { exists: phase1Exists, count: phase1SeedCount }, // Phase 1 (either format)
       lego_pairs: { exists: legoPairsExists, count: phase2SeedCount, legos: legoCount, missing: missingLegoSeeds }, // Phase 2
       // Legacy alias for backward compatibility
-      seed_pairs: { exists: draftLegoPairsExists, count: phase1SeedCount },
+      seed_pairs: { exists: phase1Exists, count: phase1SeedCount },
       introductions: { exists: introsExists },
       baskets: {
         exists: basketsExists,
