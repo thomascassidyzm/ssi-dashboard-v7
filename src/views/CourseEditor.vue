@@ -316,48 +316,6 @@
           </div>
 
           <div class="p-6">
-            <!-- Translations Tab -->
-            <div v-if="activeTab === 'translations'">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-emerald-400">SEED_PAIRS (Phase 1)</h3>
-                <input
-                  v-model="searchQuery"
-                  type="text"
-                  placeholder="Search translations..."
-                  class="bg-slate-900 border border-slate-700 rounded px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-
-              <div v-if="filteredTranslations.length === 0" class="text-center py-8 text-slate-400">
-                No translations found
-              </div>
-
-              <div v-else class="space-y-3">
-                <div
-                  v-for="translation in filteredTranslations"
-                  :key="translation.seed_id || translation.uuid"
-                  class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 hover:border-emerald-500/50 transition-colors"
-                >
-                  <div class="flex items-start justify-between mb-2">
-                    <div class="flex-1">
-                      <div class="text-emerald-400 font-medium mb-1">{{ translation.source }}</div>
-                      <div class="text-slate-300 text-sm">{{ translation.target }}</div>
-                    </div>
-                    <button
-                      @click="editTranslation(translation)"
-                      class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded text-sm ml-4"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <div class="flex gap-4 text-xs text-slate-500 mt-3">
-                    <span>Seed: {{ translation.seed_id }}</span>
-                    <span v-if="translation.uuid">UUID: {{ translation.uuid.substring(0, 8) }}...</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- LEGOs Tab -->
             <div v-if="activeTab === 'legos'">
               <div class="flex items-center justify-between mb-4">
@@ -408,6 +366,13 @@
                         ⚡ Contains composites
                       </span>
                     </div>
+                    <button
+                      @click="flagSeed(breakdown)"
+                      class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-sm rounded transition-colors flex items-center gap-1.5"
+                      title="Flag this seed for review"
+                    >
+                      🚩 Flag
+                    </button>
                   </div>
 
                   <!-- Breakdown Content -->
@@ -970,7 +935,7 @@ const expandedBaskets = ref({}) // Track which baskets are expanded
 const loading = ref(true)
 const error = ref(null)
 
-const activeTab = ref('translations')
+const activeTab = ref('legos')
 const searchQuery = ref('')
 const legoSearchQuery = ref('') // Search for LEGO breakdowns
 const selectedSeed = ref('')
@@ -1036,7 +1001,6 @@ const pollingInterval = ref(null)
 const generatingBaskets = ref(false)
 
 const tabs = [
-  { id: 'translations', label: 'SEED_PAIRS' },
   { id: 'legos', label: 'LEGO_PAIRS' },
   { id: 'baskets', label: 'LEGO_BASKETS' },
   { id: 'introductions', label: 'INTRODUCTIONS' }
@@ -1351,6 +1315,18 @@ function openFlagModal(seedId, legoPair) {
   flagModal.value.suggestedCorrection = ''
   flagModal.value.notes = ''
   flagModal.value.saving = false
+}
+
+// Flag entire seed (opens modal for general seed/translation issues)
+function flagSeed(breakdown) {
+  editModal.value.translation = {
+    seed_id: breakdown.seed_id,
+    source: breakdown.original_known,
+    target: breakdown.original_target
+  }
+  editModal.value.issueType = 'translation'
+  editModal.value.notes = ''
+  editModal.value.open = true
 }
 
 function closeFlagModal() {
