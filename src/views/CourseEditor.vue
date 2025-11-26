@@ -392,16 +392,11 @@
                   class="bg-slate-800 border rounded-lg overflow-hidden"
                   :class="{
                     'border-emerald-500': breakdown.lego_pairs?.length > 0,
-                    'border-yellow-500': !breakdown.lego_pairs || breakdown.lego_pairs.length === 0,
-                    'border-blue-500 ring-2 ring-blue-500/50': editingBreakdown === breakdown.seed_id
+                    'border-yellow-500': !breakdown.lego_pairs || breakdown.lego_pairs.length === 0
                   }"
                 >
                   <!-- Breakdown Header -->
-                  <div class="px-6 py-4 border-b bg-slate-800/50 flex items-center justify-between"
-                       :class="{
-                         'border-slate-700': editingBreakdown !== breakdown.seed_id,
-                         'border-blue-500': editingBreakdown === breakdown.seed_id
-                       }">
+                  <div class="px-6 py-4 border-b bg-slate-800/50 flex items-center justify-between border-slate-700">
                     <div class="flex items-center gap-4">
                       <span class="text-sm font-mono text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded">
                         {{ breakdown.seed_id }}
@@ -412,28 +407,6 @@
                       <span v-if="breakdown.lego_pairs?.some(lp => lp.lego_type === 'COMPOSITE')" class="text-xs text-purple-400">
                         ⚡ Contains composites
                       </span>
-                    </div>
-
-                    <button
-                      v-if="editingBreakdown !== breakdown.seed_id"
-                      @click="startEditingBreakdown(breakdown)"
-                      class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition"
-                    >
-                      Edit LEGOs
-                    </button>
-                    <div v-else class="flex gap-2">
-                      <button
-                        @click="saveBreakdown(breakdown)"
-                        class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm rounded transition"
-                      >
-                        Save Changes
-                      </button>
-                      <button
-                        @click="cancelEditingBreakdown"
-                        class="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white text-sm rounded transition"
-                      >
-                        Cancel
-                      </button>
                     </div>
                   </div>
 
@@ -449,8 +422,8 @@
                       </div>
                     </div>
 
-                    <!-- View Mode: 3-Level Hierarchy Display -->
-                    <div v-if="editingBreakdown !== breakdown.seed_id">
+                    <!-- LEGO Breakdown Display -->
+                    <div>
                       <div v-if="breakdown.lego_pairs && breakdown.lego_pairs.length > 0" class="space-y-6">
 
                         <!-- LEGO Containers (Target Language) -->
@@ -458,13 +431,15 @@
                           <div
                             v-for="(pair, index) in breakdown.lego_pairs"
                             :key="pair.lego_id"
-                            class="px-4 py-3 rounded-lg transition-all"
+                            @click="openFlagModal(breakdown.seed_id, pair)"
+                            class="px-4 py-3 rounded-lg transition-all cursor-pointer"
                             :class="[
                               pair.is_new ? 'border-2' : 'border border-dashed opacity-60',
                               pair.lego_type === 'COMPOSITE'
-                                ? (pair.is_new ? 'bg-purple-900/30 border-purple-500 hover:bg-purple-900/50' : 'bg-purple-900/20 border-purple-600/50')
-                                : (pair.is_new ? 'bg-blue-900/30 border-blue-600 hover:bg-blue-900/50' : 'bg-slate-800/50 border-slate-500/50')
+                                ? (pair.is_new ? 'bg-purple-900/30 border-purple-500 hover:bg-purple-900/50' : 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/40')
+                                : (pair.is_new ? 'bg-blue-900/30 border-blue-600 hover:bg-blue-900/50' : 'bg-slate-800/50 border-slate-500/50 hover:bg-slate-800/70')
                             ]"
+                            title="Click to flag this LEGO for review"
                           >
                             <div :class="pair.is_new ? 'text-blue-100' : 'text-slate-400'" class="font-medium text-center mb-1">
                               {{ pair.target_chunk }}
@@ -489,13 +464,15 @@
                           <div
                             v-for="(pair, index) in breakdown.lego_pairs"
                             :key="'known-' + pair.lego_id"
-                            class="px-4 py-3 rounded-lg transition-all"
+                            @click="openFlagModal(breakdown.seed_id, pair)"
+                            class="px-4 py-3 rounded-lg transition-all cursor-pointer"
                             :class="[
                               pair.is_new ? 'border-2' : 'border border-dashed opacity-60',
                               pair.lego_type === 'COMPOSITE'
-                                ? (pair.is_new ? 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/30' : 'bg-purple-900/10 border-purple-700/30')
-                                : (pair.is_new ? 'bg-slate-700/50 border-slate-600 hover:bg-slate-700' : 'bg-slate-800/30 border-slate-600/30')
+                                ? (pair.is_new ? 'bg-purple-900/20 border-purple-600/50 hover:bg-purple-900/30' : 'bg-purple-900/10 border-purple-700/30 hover:bg-purple-900/20')
+                                : (pair.is_new ? 'bg-slate-700/50 border-slate-600 hover:bg-slate-700' : 'bg-slate-800/30 border-slate-600/30 hover:bg-slate-800/50')
                             ]"
+                            title="Click to flag this LEGO for review"
                           >
                             <div :class="pair.is_new ? 'text-slate-100' : 'text-slate-400'" class="font-medium text-center">
                               {{ pair.known_chunk }}
@@ -536,210 +513,6 @@
 
                       <div v-else class="text-center py-8 text-slate-400">
                         No LEGO_PAIRS extracted yet
-                      </div>
-                    </div>
-
-                    <!-- Edit Mode: Word Divider Editor (New) or Container Editor (Classic) -->
-                    <div v-else class="space-y-6">
-                      <!-- Editor Mode Toggle -->
-                      <div class="flex items-center justify-between mb-4">
-                        <div class="text-sm text-slate-400">
-                          Editing: {{ breakdown.seed_id }}
-                        </div>
-                        <button
-                          @click="useNewEditor = !useNewEditor"
-                          class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm rounded transition flex items-center gap-2"
-                        >
-                          <span>{{ useNewEditor ? '📊 Classic Editor' : '✨ New Interactive Editor' }}</span>
-                        </button>
-                      </div>
-
-                      <!-- New Word Divider Editor -->
-                      <div v-if="useNewEditor">
-                        <WordDividerEditor
-                          :breakdown="breakdown"
-                          @update-legos="handleLegoUpdate"
-                        />
-                      </div>
-
-                      <!-- Classic Container-Based Editor -->
-                      <div v-else>
-                        <!-- Instructions -->
-                        <div class="p-4 bg-blue-900/20 border border-blue-700/50 rounded">
-                          <div class="text-sm text-blue-200">
-                            <div class="font-semibold mb-2">✏️ Classic Editing Mode</div>
-                            <p class="text-xs text-blue-300">
-                              Edit LEGO containers, merge/split them, toggle BASE/COMPOSITE, edit componentization, and create FEEDERs. LEGOs must tile perfectly to cover the entire sentence.
-                            </p>
-                          </div>
-                        </div>
-
-                      <!-- Editable LEGO Containers -->
-                      <div class="space-y-4">
-                        <div class="text-sm font-semibold text-emerald-300 mb-2">LEGO Containers</div>
-                        <div
-                          v-for="(lego, index) in getEditableLegos(breakdown)"
-                          :key="index"
-                          class="border rounded-lg p-4"
-                          :class="lego.lego_type === 'COMPOSITE' ? 'border-purple-500 bg-purple-900/10' : 'border-blue-600 bg-blue-900/10'"
-                        >
-                          <!-- LEGO Header -->
-                          <div class="flex items-center justify-between mb-3">
-                            <div class="flex items-center gap-3">
-                              <span class="text-xs font-mono text-slate-400">{{ index + 1 }}</span>
-                              <input
-                                v-model="lego.lego_id"
-                                class="text-xs font-mono bg-slate-900 border border-slate-700 rounded px-2 py-1 text-cyan-400 w-24"
-                                placeholder="S0001L01"
-                              />
-                              <select
-                                v-model="lego.lego_type"
-                                class="text-xs bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-300"
-                              >
-                                <option value="BASE">BASE</option>
-                                <option value="COMPOSITE">COMPOSITE ⚡</option>
-                              </select>
-                            </div>
-                            <div class="flex items-center gap-2">
-                              <button
-                                v-if="index > 0"
-                                @click="mergeLego(breakdown, index)"
-                                class="text-xs px-2 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded"
-                                title="Merge with previous LEGO"
-                              >
-                                ⬅️ Merge
-                              </button>
-                              <button
-                                @click="splitLego(breakdown, index)"
-                                class="text-xs px-2 py-1 bg-blue-700 hover:bg-blue-600 text-white rounded"
-                                title="Split this LEGO"
-                              >
-                                ✂️ Split
-                              </button>
-                              <button
-                                v-if="getEditableLegos(breakdown).length > 1"
-                                @click="deleteLego(breakdown, index)"
-                                class="text-xs px-2 py-1 bg-red-700 hover:bg-red-600 text-white rounded"
-                                title="Delete this LEGO"
-                              >
-                                🗑️
-                              </button>
-                            </div>
-                          </div>
-
-                          <!-- Target Language Input -->
-                          <div class="mb-3">
-                            <label class="text-xs text-blue-400 mb-1 block">Target Language</label>
-                            <input
-                              v-model="lego.target_chunk"
-                              class="w-full bg-blue-900/30 border border-blue-700 rounded px-3 py-2 text-blue-100 focus:outline-none focus:border-blue-500"
-                              placeholder="Target chunk..."
-                            />
-                          </div>
-
-                          <!-- Known Language Input -->
-                          <div class="mb-3">
-                            <label class="text-xs text-slate-400 mb-1 block">Known Language</label>
-                            <input
-                              v-model="lego.known_chunk"
-                              class="w-full bg-slate-700/50 border border-slate-600 rounded px-3 py-2 text-slate-100 focus:outline-none focus:border-slate-500"
-                              placeholder="Known chunk..."
-                            />
-                          </div>
-
-                          <!-- FD Validation Toggle -->
-                          <div class="mb-3 flex items-center gap-2">
-                            <input
-                              type="checkbox"
-                              v-model="lego.fd_validated"
-                              class="rounded border-slate-600"
-                            />
-                            <label class="text-xs text-slate-400">FD Validated</label>
-                          </div>
-
-                          <!-- DEBUG: Show lego type for verification -->
-                          <div class="text-xs text-slate-500 mb-2">
-                            Type: {{ lego.lego_type }} | Has componentization: {{ !!lego.componentization }}
-                          </div>
-
-                          <!-- COMPONENTIZATION Editor (for COMPOSITE LEGOs) -->
-                          <div v-if="lego.lego_type === 'COMPOSITE'" class="mt-3 pt-3 border-t border-purple-700/50 space-y-3">
-                            <div>
-                              <label class="text-xs text-purple-400 mb-1 block">Componentization (Target ⟷ Known pairs, one per line)</label>
-                              <textarea
-                                v-model="lego.componentization"
-                                class="w-full bg-purple-900/20 border border-purple-700 rounded px-3 py-2 text-purple-100 focus:outline-none focus:border-purple-500 font-mono text-sm"
-                                rows="4"
-                                placeholder="lo más ⟷ as&#10;frecuentemente ⟷ often&#10;posible ⟷ possible"
-                              ></textarea>
-                              <div class="text-xs text-purple-400/60 mt-1">Format: target ⟷ known (one pair per line, or use commas/JSON)</div>
-                            </div>
-
-                            <!-- FEEDERs for this COMPOSITE LEGO -->
-                            <div class="space-y-2">
-                              <div class="flex items-center justify-between">
-                                <label class="text-xs text-emerald-400 font-semibold">Associated FEEDERs</label>
-                                <button
-                                  @click="addFeederToLego(breakdown, lego.lego_id)"
-                                  class="text-xs px-2 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded"
-                                >
-                                  + Add FEEDER
-                                </button>
-                              </div>
-
-                              <div
-                                v-for="(feeder, fIndex) in getFeedersForLegoInEdit(breakdown, lego.lego_id)"
-                                :key="fIndex"
-                                class="border border-emerald-700/30 bg-emerald-900/10 rounded p-2"
-                              >
-                                <div class="flex items-center justify-between mb-2">
-                                  <input
-                                    v-model="feeder.feeder_id"
-                                    class="text-xs font-mono bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-24"
-                                    placeholder="S0001F01"
-                                  />
-                                  <button
-                                    @click="deleteFeederFromLego(breakdown, lego.lego_id, fIndex)"
-                                    class="text-xs px-2 py-1 bg-red-700 hover:bg-red-600 text-white rounded"
-                                  >
-                                    🗑️
-                                  </button>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                  <div>
-                                    <label class="text-xs text-blue-400 mb-1 block">Target</label>
-                                    <input
-                                      v-model="feeder.target_chunk"
-                                      class="w-full bg-blue-900/30 border border-blue-700 rounded px-2 py-1 text-blue-100 text-xs"
-                                      placeholder="target..."
-                                    />
-                                  </div>
-                                  <div>
-                                    <label class="text-xs text-slate-400 mb-1 block">Known</label>
-                                    <input
-                                      v-model="feeder.known_chunk"
-                                      class="w-full bg-slate-700/50 border border-slate-600 rounded px-2 py-1 text-slate-100 text-xs"
-                                      placeholder="known..."
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div v-if="getFeedersForLegoInEdit(breakdown, lego.lego_id).length === 0" class="text-center py-2 text-slate-500 text-xs">
-                                No FEEDERs yet
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Add New LEGO Button -->
-                        <button
-                          @click="addNewLego(breakdown)"
-                          class="w-full py-2 border-2 border-dashed border-slate-600 hover:border-emerald-500 text-slate-400 hover:text-emerald-400 rounded-lg transition-colors"
-                        >
-                          + Add New LEGO Container
-                        </button>
-                      </div>
                       </div>
                     </div>
                   </div>
@@ -1076,6 +849,86 @@
         </button>
       </div>
     </div>
+
+    <!-- LEGO Flag Modal -->
+    <div
+      v-if="flagModal.open"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+      @click.self="closeFlagModal"
+    >
+      <div class="bg-slate-800 border border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <!-- Header -->
+        <div class="px-6 py-4 border-b border-slate-700 flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-emerald-400">Flag {{ flagModal.legoId }}</h3>
+          <button
+            @click="closeFlagModal"
+            class="text-slate-400 hover:text-slate-300 text-2xl leading-none"
+          >
+            &times;
+          </button>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6 space-y-4">
+          <!-- Target Phrase -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-300 mb-2">Target Phrase</label>
+            <div class="bg-slate-900/50 border border-slate-700 rounded px-4 py-3 text-slate-300">
+              {{ flagModal.targetPhrase }}
+            </div>
+          </div>
+
+          <!-- Known Translation -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-300 mb-2">Current Known Translation</label>
+            <div class="bg-slate-900/50 border border-slate-700 rounded px-4 py-3 text-slate-300">
+              {{ flagModal.knownPhrase }}
+            </div>
+          </div>
+
+          <!-- Suggested Correction -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-300 mb-2">Suggested Correction</label>
+            <input
+              v-model="flagModal.suggestedCorrection"
+              type="text"
+              placeholder="Enter your suggested correction (optional)"
+              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-300 focus:outline-none focus:border-emerald-500"
+            />
+          </div>
+
+          <!-- Notes -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-300 mb-2">Notes (optional)</label>
+            <textarea
+              v-model="flagModal.notes"
+              rows="4"
+              placeholder="Explain the issue or provide additional context..."
+              class="w-full bg-slate-900 border border-slate-700 rounded px-4 py-3 text-slate-300 focus:outline-none focus:border-emerald-500 resize-none"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="px-6 py-4 border-t border-slate-700 flex gap-3 justify-end">
+          <button
+            @click="closeFlagModal"
+            :disabled="flagModal.saving"
+            class="px-6 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:text-slate-500 text-white rounded transition"
+          >
+            Cancel
+          </button>
+          <button
+            @click="submitLegoFlag"
+            :disabled="flagModal.saving"
+            class="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 disabled:text-slate-400 text-white rounded transition flex items-center gap-2"
+          >
+            <span v-if="flagModal.saving" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+            <span>{{ flagModal.saving ? 'Submitting...' : 'Submit Flag' }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -1086,7 +939,6 @@ import { useToast } from 'vue-toastification'
 import api from '../services/api'
 import { GITHUB_CONFIG } from '../config/github'
 
-import WordDividerEditor from '../components/lego-editor/WordDividerEditor.vue'
 import LegoBasketViewer from '../components/LegoBasketViewer.vue'
 import ProgressMonitor from '../components/ProgressMonitor.vue'
 
@@ -1117,10 +969,6 @@ const legoPairsData = ref(null) // LEGO_PAIRS data structure from lego_pairs.jso
 const expandedBaskets = ref({}) // Track which baskets are expanded
 const loading = ref(true)
 const error = ref(null)
-const editingBreakdown = ref(null) // Track which seed breakdown is being edited
-const editDividers = ref({}) // Track divider positions for editing
-const useNewEditor = ref(true) // Toggle between new word-divider editor and old container-based editor
-const updatedLegos = ref({}) // Store LEGO updates from WordDividerEditor
 
 const activeTab = ref('translations')
 const searchQuery = ref('')
@@ -1157,6 +1005,18 @@ const editModal = ref({
   saving: false,
   issueType: 'translation',
   notes: ''
+})
+
+// LEGO flag modal state
+const flagModal = ref({
+  open: false,
+  seedId: null,
+  legoId: null,
+  targetPhrase: '',
+  knownPhrase: '',
+  suggestedCorrection: '',
+  notes: '',
+  saving: false
 })
 
 // Regeneration state - Enhanced for real-time tracking
@@ -1447,338 +1307,10 @@ function getWords(text) {
   return text.split(/\s+/).filter(w => w.length > 0)
 }
 
-function startEditingBreakdown(breakdown) {
-  editingBreakdown.value = breakdown.seed_id
-
-  console.log(`[CourseEditor] Starting edit for ${breakdown.seed_id}`)
-  console.log('[CourseEditor] Original lego_pairs:', breakdown.lego_pairs)
-
-  // Initialize editable copies of LEGOs and FEEDERs
-  editDividers.value[breakdown.seed_id] = {
-    lego_pairs: JSON.parse(JSON.stringify(breakdown.lego_pairs || [])),
-    feeder_pairs: JSON.parse(JSON.stringify(breakdown.feeder_pairs || []))
-  }
-
-  console.log('[CourseEditor] Copied lego_pairs:', editDividers.value[breakdown.seed_id].lego_pairs)
-
-  // Verify componentization is preserved
-  const composites = editDividers.value[breakdown.seed_id].lego_pairs.filter(l => l.lego_type === 'COMPOSITE')
-  if (composites.length > 0) {
-    console.log(`[CourseEditor] Found ${composites.length} COMPOSITE LEGOs:`)
-    composites.forEach(c => {
-      console.log(`  ${c.lego_id}: componentization =`, c.componentization ? 'PRESENT' : 'MISSING')
-      if (c.componentization) {
-        console.log(`    Value:`, c.componentization)
-      }
-    })
-  }
-}
-
-function getEditableLegos(breakdown) {
-  if (!editDividers.value[breakdown.seed_id]) return breakdown.lego_pairs || []
-  return editDividers.value[breakdown.seed_id].lego_pairs || []
-}
-
-function getEditableFeeders(breakdown) {
-  if (!editDividers.value[breakdown.seed_id]) return breakdown.feeder_pairs || []
-  return editDividers.value[breakdown.seed_id].feeder_pairs || []
-}
-
 // Get feeders for a specific LEGO (view mode)
 function getFeedersForLego(breakdown, legoId) {
   if (!breakdown.feeder_pairs) return []
   return breakdown.feeder_pairs.filter(f => f.parent_lego_id === legoId)
-}
-
-// Get feeders for a specific LEGO (edit mode)
-function getFeedersForLegoInEdit(breakdown, legoId) {
-  const feeders = getEditableFeeders(breakdown)
-  return feeders.filter(f => f.parent_lego_id === legoId)
-}
-
-function mergeLego(breakdown, index) {
-  const legos = getEditableLegos(breakdown)
-  if (index === 0 || index >= legos.length) return
-
-  const current = legos[index]
-  const previous = legos[index - 1]
-
-  // Helper: Smart concatenate with overlap detection
-  function smartConcat(prev, curr) {
-    const prevTrimmed = prev.trim()
-    const currTrimmed = curr.trim()
-
-    // Check for elision (no space needed)
-    if (prevTrimmed.endsWith("'")) {
-      return prevTrimmed + currTrimmed
-    }
-
-    // Check for overlapping words at boundary (e.g., "try to" + "to explain" → "try to explain")
-    const prevWords = prevTrimmed.split(/\s+/)
-    const currWords = currTrimmed.split(/\s+/)
-
-    // Look for overlap (check if last word(s) of prev match first word(s) of curr)
-    for (let overlapLen = Math.min(prevWords.length, currWords.length); overlapLen > 0; overlapLen--) {
-      const prevEnd = prevWords.slice(-overlapLen).join(' ').toLowerCase()
-      const currStart = currWords.slice(0, overlapLen).join(' ').toLowerCase()
-
-      if (prevEnd === currStart) {
-        // Found overlap - remove duplicate
-        const resultWords = [...prevWords, ...currWords.slice(overlapLen)]
-        return resultWords.join(' ')
-      }
-    }
-
-    // No overlap, simple concatenation with space
-    return prevTrimmed + ' ' + currTrimmed
-  }
-
-  previous.target_chunk = smartConcat(previous.target_chunk, current.target_chunk)
-  previous.known_chunk = smartConcat(previous.known_chunk, current.known_chunk)
-
-  // If merging creates COMPOSITE, update type and initialize componentization
-  if (previous.lego_type === 'BASE' && current.lego_type === 'BASE') {
-    previous.lego_type = 'COMPOSITE'
-    // Initialize empty componentization for user to fill in
-    if (!previous.componentization) {
-      previous.componentization = ''
-    }
-  }
-
-  // Remove current LEGO
-  legos.splice(index, 1)
-}
-
-function splitLego(breakdown, index) {
-  const legos = getEditableLegos(breakdown)
-  if (index >= legos.length) return
-
-  const lego = legos[index]
-  const targetWords = lego.target_chunk.split(/\s+/)
-  const knownWords = lego.known_chunk.split(/\s+/)
-
-  if (targetWords.length < 2 || knownWords.length < 2) {
-    alert('Cannot split LEGO with only one word')
-    return
-  }
-
-  // Split roughly in half
-  const targetMid = Math.ceil(targetWords.length / 2)
-  const knownMid = Math.ceil(knownWords.length / 2)
-
-  // Create new LEGO for second half
-  const newLego = {
-    lego_id: lego.lego_id.replace(/L(\d+)/, (match, num) => 'L' + (parseInt(num) + 1).toString().padStart(2, '0')),
-    lego_type: 'BASE',
-    target_chunk: targetWords.slice(targetMid).join(' '),
-    known_chunk: knownWords.slice(knownMid).join(' '),
-    fd_validated: false
-  }
-
-  // Update current LEGO with first half
-  lego.target_chunk = targetWords.slice(0, targetMid).join(' ')
-  lego.known_chunk = knownWords.slice(0, knownMid).join(' ')
-  lego.fd_validated = false
-
-  // Insert new LEGO
-  legos.splice(index + 1, 0, newLego)
-}
-
-function deleteLego(breakdown, index) {
-  const legos = getEditableLegos(breakdown)
-  if (legos.length === 1) {
-    alert('Cannot delete the last LEGO')
-    return
-  }
-  legos.splice(index, 1)
-}
-
-function addNewLego(breakdown) {
-  const legos = getEditableLegos(breakdown)
-  const lastIndex = legos.length
-  const newLego = {
-    lego_id: `${breakdown.seed_id}L${String(lastIndex + 1).padStart(2, '0')}`,
-    lego_type: 'BASE',
-    target_chunk: '',
-    known_chunk: '',
-    fd_validated: false
-  }
-  legos.push(newLego)
-}
-
-function addFeederToLego(breakdown, legoId) {
-  const feeders = getEditableFeeders(breakdown)
-  const existingFeedersForLego = feeders.filter(f => f.parent_lego_id === legoId)
-  const nextIndex = existingFeedersForLego.length + 1
-
-  const newFeeder = {
-    feeder_id: `${breakdown.seed_id}F${String(feeders.length + 1).padStart(2, '0')}`,
-    parent_lego_id: legoId,
-    target_chunk: '',
-    known_chunk: ''
-  }
-  feeders.push(newFeeder)
-}
-
-function deleteFeederFromLego(breakdown, legoId, feederIndex) {
-  const feeders = getEditableFeeders(breakdown)
-  const feedersForLego = feeders.filter(f => f.parent_lego_id === legoId)
-  const feederToDelete = feedersForLego[feederIndex]
-
-  const globalIndex = feeders.findIndex(f => f.feeder_id === feederToDelete.feeder_id)
-  if (globalIndex !== -1) {
-    feeders.splice(globalIndex, 1)
-  }
-}
-
-function validateTiling(breakdown) {
-  const legos = getEditableLegos(breakdown)
-  if (!legos || legos.length === 0) return false
-
-  // Concatenate all target chunks
-  const reconstructedTarget = legos.map(l => l.target_chunk).join(' ').trim()
-  const reconstructedKnown = legos.map(l => l.known_chunk).join(' ').trim()
-
-  // Normalize whitespace for comparison
-  const normalizeWS = (str) => str.replace(/\s+/g, ' ').trim()
-
-  return (
-    normalizeWS(reconstructedTarget) === normalizeWS(breakdown.original_target) &&
-    normalizeWS(reconstructedKnown) === normalizeWS(breakdown.original_known)
-  )
-}
-
-function cancelEditingBreakdown() {
-  if (editingBreakdown.value) {
-    delete editDividers.value[editingBreakdown.value]
-    delete updatedLegos.value[editingBreakdown.value]
-  }
-  editingBreakdown.value = null
-}
-
-function toggleDivider(breakdown, wordIndex) {
-  const dividers = editDividers.value[breakdown.seed_id]
-  if (!dividers) return
-
-  dividers[wordIndex] = !dividers[wordIndex]
-}
-
-function isDividerActive(breakdown, wordIndex) {
-  const dividers = editDividers.value[breakdown.seed_id]
-  if (!dividers) return false
-  return dividers[wordIndex] || false
-}
-
-function getPreviewLegoCount(breakdown) {
-  const dividers = editDividers.value[breakdown.seed_id]
-  if (!dividers) return 0
-
-  const splits = dividers.filter(d => d).length
-  return splits + 1
-}
-
-function getPreviewLegoPairs(breakdown) {
-  const dividers = editDividers.value[breakdown.seed_id]
-  if (!dividers) return []
-
-  const knownWords = getWords(breakdown.original_known)
-  const targetWords = getWords(breakdown.original_target)
-
-  const pairs = []
-  let knownStart = 0
-  let targetStart = 0
-
-  for (let i = 0; i < dividers.length; i++) {
-    if (dividers[i] || i === dividers.length - 1) {
-      const knownEnd = i + 1
-      const targetEnd = i + 1
-
-      const knownChunk = knownWords.slice(knownStart, knownEnd).join(' ')
-      const targetChunk = targetWords.slice(targetStart, targetEnd).join(' ')
-
-      if (knownChunk) {
-        pairs.push({
-          known: knownChunk,
-          target: targetChunk
-        })
-      }
-
-      knownStart = knownEnd
-      targetStart = targetEnd
-    }
-  }
-
-  // Add final LEGO if there are remaining words
-  if (knownStart < knownWords.length) {
-    pairs.push({
-      known: knownWords.slice(knownStart).join(' '),
-      target: targetWords.slice(targetStart).join(' ')
-    })
-  }
-
-  return pairs
-}
-
-function handleLegoUpdate(update) {
-  // Store the updated LEGOs from WordDividerEditor
-  updatedLegos.value[update.seed_id] = {
-    lego_pairs: update.lego_pairs,
-    is_valid_tiling: update.is_valid_tiling
-  }
-
-  // Update the breakdown in editDividers for consistency
-  if (editDividers.value[update.seed_id]) {
-    editDividers.value[update.seed_id].lego_pairs = update.lego_pairs
-  }
-}
-
-async function saveBreakdown(breakdown) {
-  try {
-    // Use LEGOs from WordDividerEditor if available, otherwise fall back to classic editor
-    let editedLegos
-    let editedFeeders
-
-    if (useNewEditor.value && updatedLegos.value[breakdown.seed_id]) {
-      editedLegos = updatedLegos.value[breakdown.seed_id].lego_pairs
-      editedFeeders = getEditableFeeders(breakdown) // Feeders still from classic editor
-    } else {
-      editedLegos = getEditableLegos(breakdown)
-      editedFeeders = getEditableFeeders(breakdown)
-    }
-
-    console.log(`[CourseEditor] Saving breakdown for ${breakdown.seed_id}`)
-    console.log('LEGOs:', editedLegos)
-    console.log('FEEDERs:', editedFeeders)
-
-    // Send to API
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3456'}/api/courses/${courseCode}/breakdowns/${breakdown.seed_id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
-      },
-      body: JSON.stringify({
-        lego_pairs: editedLegos,
-        feeder_pairs: editedFeeders
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`)
-    }
-
-    // Reload course data
-    await loadCourse()
-
-    // Clear edit state
-    cancelEditingBreakdown()
-
-    alert('✓ Breakdown saved successfully!')
-
-  } catch (err) {
-    console.error('Failed to save breakdown:', err)
-    alert('Failed to save breakdown: ' + err.message)
-  }
 }
 
 // Basket Management Functions
@@ -1807,6 +1339,52 @@ function closeEditModal() {
   editModal.value.editedSource = ''
   editModal.value.editedTarget = ''
   editModal.value.impact = null
+}
+
+// LEGO Flag Modal Handlers
+function openFlagModal(seedId, legoPair) {
+  flagModal.value.open = true
+  flagModal.value.seedId = seedId
+  flagModal.value.legoId = legoPair.lego_id
+  flagModal.value.targetPhrase = legoPair.target_chunk
+  flagModal.value.knownPhrase = legoPair.known_chunk
+  flagModal.value.suggestedCorrection = ''
+  flagModal.value.notes = ''
+  flagModal.value.saving = false
+}
+
+function closeFlagModal() {
+  flagModal.value.open = false
+  flagModal.value.seedId = null
+  flagModal.value.legoId = null
+  flagModal.value.targetPhrase = ''
+  flagModal.value.knownPhrase = ''
+  flagModal.value.suggestedCorrection = ''
+  flagModal.value.notes = ''
+  flagModal.value.saving = false
+}
+
+async function submitLegoFlag() {
+  if (!flagModal.value.seedId || !flagModal.value.legoId) return
+
+  flagModal.value.saving = true
+  try {
+    await api.course.createFlag(courseCode, {
+      seedId: flagModal.value.seedId,
+      legoId: flagModal.value.legoId,
+      issueType: 'translation',
+      suggestedCorrection: flagModal.value.suggestedCorrection || undefined,
+      notes: flagModal.value.notes || undefined
+    })
+
+    toast.success(`Flag submitted for ${flagModal.value.legoId}`)
+    closeFlagModal()
+  } catch (err) {
+    console.error('Failed to submit flag:', err)
+    toast.error('Failed to submit flag: ' + err.message)
+  } finally {
+    flagModal.value.saving = false
+  }
 }
 
 // Introduction edit handlers
