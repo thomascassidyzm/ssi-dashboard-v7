@@ -174,25 +174,26 @@ Build FROM the LEGO, not TO it:
 
 **Keep iterating until ALL 10 phrases pass ALL 3 checks.**
 
-### Step 6: Submit Your Work
+### Step 6: Submit Your Work (Per-Seed Upload)
 
-**POST submission to orchestrator:**
-- Endpoint: `{{ORCHESTRATOR_URL}}/api/phase3/{{COURSE_CODE}}/submit`
+**POST each seed's baskets individually:**
+- Endpoint: `{{ORCHESTRATOR_URL}}/upload-basket`
 - Method: POST
 - Content-Type: application/json
 
-**Payload format:**
+**Payload format (submit one seed at a time):**
 ```json
 {
-  "version": "8.2.0",
   "course": "{{COURSE_CODE}}",
+  "seed": "S0047",
   "baskets": {
-    "[LEGO_ID]": {
+    "S0047L01": {
       "lego": { "known": "...", "target": "..." },
       "practice_phrases": [
         { "known": "...", "target": "..." }
       ]
-    }
+    },
+    "S0047L02": { ... }
   }
 }
 ```
@@ -201,19 +202,19 @@ Build FROM the LEGO, not TO it:
 ```json
 {
   "success": true,
-  "basketCount": 1,
-  "savedTo": "courses/{{COURSE_CODE}}/lego_baskets.json"
+  "message": "Baskets saved",
+  "basketCount": 5
 }
 ```
 
 **Example API call:**
 ```bash
-curl -X POST {{ORCHESTRATOR_URL}}/api/phase3/{{COURSE_CODE}}/submit \
-  -H \"Content-Type: application/json\" \
+curl -X POST {{ORCHESTRATOR_URL}}/upload-basket \
+  -H "Content-Type: application/json" \
   -d '{
-    \"version\": \"8.2.0\",
-    \"course\": \"{{COURSE_CODE}}\",
-    \"baskets\": { \"S0117L01\": { ... } }
+    "course": "{{COURSE_CODE}}",
+    "seed": "S0047",
+    "baskets": { "S0047L01": { ... }, "S0047L02": { ... } }
   }'
 ```
 
@@ -262,6 +263,6 @@ Each worker:
 2. Fetches LEGO data via REST API: `GET {{ORCHESTRATOR_URL}}/api/courses/{{COURSE_CODE}}/phase-outputs/2/lego_pairs.json`
 3. Fetches phase intelligence: `GET {{ORCHESTRATOR_URL}}/api/phase-intelligence/3`
 4. Generates baskets for assigned LEGOs
-5. Submits via REST API: `POST {{ORCHESTRATOR_URL}}/api/phase3/{{COURSE_CODE}}/submit`
+5. Submits via REST API: `POST {{ORCHESTRATOR_URL}}/upload-basket`
 
 Report: "Master complete: {{WORKERS_TO_SPAWN}} workers spawned for {{LEGO_COUNT}} LEGOs"
