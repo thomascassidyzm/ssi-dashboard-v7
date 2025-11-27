@@ -385,11 +385,15 @@ app.post('/start', async (req, res) => {
   // The correct check is done later by identifyMissingLegos() which checks WHICH baskets exist,
   // not just the count. See lines 417-430 for intelligent resume logic.
 
-  const isFullCourse = startSeed === 1 && endSeed >= 668;
+  // ALWAYS use intelligent resume (only missing LEGOs) unless forceRegenerate is explicitly true
+  const forceRegenerate = req.body.forceRegenerate === true;
+  const isFullCourse = !forceRegenerate;
   const basketsPath = path.join(baseCourseDir, 'lego_baskets.json');
 
-  if (!isFullCourse) {
-    console.log(`[Phase 3] 🔬 Specific seed range requested (${startSeed}-${endSeed}) - proceeding with generation`);
+  if (forceRegenerate) {
+    console.log(`[Phase 3] ⚠️ Force regenerate mode - will regenerate ALL LEGOs in range ${startSeed}-${endSeed}`);
+  } else {
+    console.log(`[Phase 3] 🔄 Intelligent resume mode - will only process MISSING LEGOs in range ${startSeed}-${endSeed}`);
   }
 
   // Initialize job state with enhanced tracking
