@@ -79,8 +79,11 @@ Example:
   let copiedCount = 0;
   const copiedByRole = {};
 
+  // Determine base temp directory (for hierarchical structure)
+  const tempBase = path.resolve(audioSourceDir, '..');
+
   for (const sample of flaggedSamples) {
-    const { uuid, text, role, highest_severity } = sample;
+    const { uuid, text, role, cadence, highest_severity } = sample;
 
     // Sanitize text for filename (remove special chars, spaces)
     const sanitizedText = text
@@ -98,16 +101,28 @@ Example:
 
     // Build filename
     const filename = `${highest_severity}_${sanitizedText}_${uuid}.mp3`;
-    const sourceFile = path.join(audioSourceDir, `${uuid}.mp3`);
     const destFile = path.join(reviewDir, role, filename);
 
+    // Try hierarchical path first: temp/{courseCode}/{role}/{cadence}/{uuid}.mp3
+    const hierarchicalPath = path.join(tempBase, courseCode, role, cadence || 'natural', `${uuid}.mp3`);
+    // Fall back to legacy flat path: temp/audio/{uuid}.mp3
+    const legacyPath = path.join(audioSourceDir, `${uuid}.mp3`);
+
+    // Find the source file
+    let sourceFile = null;
+    if (await fs.pathExists(hierarchicalPath)) {
+      sourceFile = hierarchicalPath;
+    } else if (await fs.pathExists(legacyPath)) {
+      sourceFile = legacyPath;
+    }
+
     // Copy file
-    if (await fs.pathExists(sourceFile)) {
+    if (sourceFile) {
       await fs.copy(sourceFile, destFile);
       copiedCount++;
       copiedByRole[role] = (copiedByRole[role] || 0) + 1;
     } else {
-      console.warn(`⚠️  Source file not found: ${sourceFile}`);
+      console.warn(`⚠️  Source file not found: ${uuid}.mp3 (tried hierarchical and legacy paths)`);
     }
   }
 

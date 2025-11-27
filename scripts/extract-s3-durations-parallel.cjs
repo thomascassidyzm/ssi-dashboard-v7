@@ -34,10 +34,18 @@ function collectSampleIds(manifest) {
     ids.add(manifest.introduction.id);
   }
 
-  // Encouragements
+  // Encouragements - check CORRECT locations in slices[0]
+  const orderedEnc = manifest.slices?.[0]?.orderedEncouragements || [];
+  const pooledEnc = manifest.slices?.[0]?.pooledEncouragements || [];
+  for (const enc of [...orderedEnc, ...pooledEnc]) {
+    if (enc.id) ids.add(enc.id);  // Use .id not .uuid
+  }
+
+  // Also check legacy top-level encouragements (for backwards compatibility)
   if (manifest.encouragements) {
     for (const enc of manifest.encouragements) {
       if (enc.uuid) ids.add(enc.uuid);
+      if (enc.id) ids.add(enc.id);
     }
   }
 
@@ -54,6 +62,7 @@ function collectSampleIds(manifest) {
 
 /**
  * Download file from S3 to local path
+ * Returns: { success: boolean, actualKey?: string, caseMismatch?: boolean }
  */
 async function downloadFromS3(uuid, localPath) {
   const key = `${S3_PREFIX}${uuid}.mp3`;
@@ -72,10 +81,36 @@ async function downloadFromS3(uuid, localPath) {
     }
 
     await fs.writeFile(localPath, Buffer.concat(chunks));
-    return true;
+    return { success: true, actualKey: key, caseMismatch: false };
   } catch (error) {
     if (error.name === 'NoSuchKey') {
-      return false; // File doesn't exist
+      // Try lowercase version if different
+      const lowerUuid = uuid.toLowerCase();
+      if (lowerUuid !== uuid) {
+        const lowerKey = `${S3_PREFIX}${lowerUuid}.mp3`;
+        try {
+          const lowerCommand = new GetObjectCommand({
+            Bucket: S3_BUCKET,
+            Key: lowerKey
+          });
+
+          const lowerResponse = await s3Client.send(lowerCommand);
+          const chunks = [];
+
+          for await (const chunk of lowerResponse.Body) {
+            chunks.push(chunk);
+          }
+
+          await fs.writeFile(localPath, Buffer.concat(chunks));
+          return { success: true, actualKey: lowerKey, caseMismatch: true };
+        } catch (lowerError) {
+          if (lowerError.name === 'NoSuchKey') {
+            return { success: false }; // Neither case exists
+          }
+          throw lowerError;
+        }
+      }
+      return { success: false }; // File doesn't exist
     }
     throw error;
   }
@@ -104,9 +139,9 @@ async function processSample(uuid, tempDir) {
   const localPath = path.join(tempDir, `${uuid}.mp3`);
 
   try {
-    const downloaded = await downloadFromS3(uuid, localPath);
-    if (!downloaded) {
-      return { uuid, duration: null, error: 'not_found' };
+    const downloadResult = await downloadFromS3(uuid, localPath);
+    if (!downloadResult.success) {
+      return { uuid, duration: null, error: 'not_found', caseMismatch: false };
     }
 
     const duration = getAudioDuration(localPath);
@@ -115,13 +150,19 @@ async function processSample(uuid, tempDir) {
     await fs.remove(localPath).catch(() => {});
 
     if (duration && duration > 0) {
-      return { uuid, duration, error: null };
+      return {
+        uuid,
+        duration,
+        error: null,
+        caseMismatch: downloadResult.caseMismatch,
+        actualKey: downloadResult.actualKey
+      };
     } else {
-      return { uuid, duration: null, error: 'invalid_duration' };
+      return { uuid, duration: null, error: 'invalid_duration', caseMismatch: downloadResult.caseMismatch };
     }
   } catch (error) {
     await fs.remove(localPath).catch(() => {});
-    return { uuid, duration: null, error: error.message };
+    return { uuid, duration: null, error: error.message, caseMismatch: false };
   }
 }
 
@@ -130,10 +171,12 @@ async function processSample(uuid, tempDir) {
  */
 async function processInParallel(sampleIds, numWorkers, tempDir) {
   const results = {};
+  const caseMismatches = [];  // Track IDs with wrong case in S3
   let completed = 0;
   let found = 0;
   let notFound = 0;
   let errors = 0;
+  let caseMismatchCount = 0;
   const total = sampleIds.length;
   const startTime = Date.now();
 
@@ -149,7 +192,7 @@ async function processInParallel(sampleIds, numWorkers, tempDir) {
     const etaMin = Math.floor(eta / 60);
     const etaSec = Math.floor(eta % 60);
 
-    process.stdout.write(`\r[${completed}/${total}] Found: ${found} | Missing: ${notFound} | Errors: ${errors} | Rate: ${rate.toFixed(1)}/s | ETA: ${etaMin}m ${etaSec}s    `);
+    process.stdout.write(`\r[${completed}/${total}] Found: ${found} | Missing: ${notFound} | Case Mismatch: ${caseMismatchCount} | Errors: ${errors} | Rate: ${rate.toFixed(1)}/s | ETA: ${etaMin}m ${etaSec}s    `);
   };
 
   // Worker function
@@ -164,6 +207,13 @@ async function processInParallel(sampleIds, numWorkers, tempDir) {
       if (result.duration) {
         results[result.uuid] = result.duration;
         found++;
+        if (result.caseMismatch) {
+          caseMismatchCount++;
+          caseMismatches.push({
+            manifestId: result.uuid,
+            s3Key: result.actualKey
+          });
+        }
       } else if (result.error === 'not_found') {
         notFound++;
       } else {
@@ -191,7 +241,7 @@ async function processInParallel(sampleIds, numWorkers, tempDir) {
   updateProgress();
   console.log('\n');
 
-  return { results, found, notFound, errors };
+  return { results, found, notFound, errors, caseMismatches, caseMismatchCount };
 }
 
 /**
@@ -286,7 +336,7 @@ Example:
 
   try {
     // Process in parallel
-    const { results, found, notFound, errors } = await processInParallel(sampleIds, numWorkers, tempDir);
+    const { results, found, notFound, errors, caseMismatches, caseMismatchCount } = await processInParallel(sampleIds, numWorkers, tempDir);
 
     console.log('='.repeat(60));
     console.log('Summary');
@@ -294,7 +344,26 @@ Example:
     console.log(`Total processed: ${sampleIds.length}`);
     console.log(`Found with duration: ${found}`);
     console.log(`Not found in S3: ${notFound}`);
+    console.log(`Case mismatches (found as lowercase): ${caseMismatchCount}`);
     console.log(`Errors: ${errors}`);
+
+    // Report case mismatches prominently
+    if (caseMismatchCount > 0) {
+      console.log('\n' + '!'.repeat(60));
+      console.log(`WARNING: ${caseMismatchCount} files have CASE MISMATCH in S3!`);
+      console.log('These files exist in S3 with lowercase names but manifest has UPPERCASE.');
+      console.log('S3 is case-sensitive - this WILL cause issues!');
+      console.log('!'.repeat(60));
+      console.log('\nCase mismatches:');
+      for (const cm of caseMismatches.slice(0, 20)) {
+        console.log(`  Manifest: ${cm.manifestId}`);
+        console.log(`  S3:       ${cm.s3Key}`);
+        console.log('');
+      }
+      if (caseMismatches.length > 20) {
+        console.log(`  ... and ${caseMismatches.length - 20} more`);
+      }
+    }
 
     if (found > 0 && !dryRun) {
       // Update manifest
@@ -315,6 +384,8 @@ Example:
       total_samples: sampleIds.length,
       found: found,
       not_found: notFound,
+      case_mismatches: caseMismatchCount,
+      case_mismatch_ids: caseMismatches,
       errors: errors,
       durations: results
     }, { spaces: 2 });

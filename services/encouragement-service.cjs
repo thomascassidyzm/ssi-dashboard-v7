@@ -30,17 +30,18 @@ const CANONICAL_ENCOURAGEMENTS_PATH = path.join(__dirname, '../public/vfs/canoni
 
 /**
  * Load canonical encouragements from file
- * Returns objects with text and pre-assigned UUIDs
+ * Returns objects with text and pre-assigned UUIDs, separated by type
  *
  * @param {string} language - Language code (e.g., 'eng')
- * @returns {Promise<Array<{text: string, id: string}>>} Encouragements with UUIDs
+ * @param {boolean} [combined=true] - If true, return combined array (legacy). If false, return { pooled, ordered }
+ * @returns {Promise<Array|Object>} Encouragements with UUIDs
  */
-async function loadCanonicalEncouragements(language) {
+async function loadCanonicalEncouragements(language, combined = true) {
   const filePath = path.join(CANONICAL_ENCOURAGEMENTS_PATH, `${language}_encouragements.json`);
 
   if (!await fs.pathExists(filePath)) {
     console.log(`No canonical encouragements found at ${filePath}`);
-    return [];
+    return combined ? [] : { pooled: [], ordered: [] };
   }
 
   try {
@@ -48,13 +49,18 @@ async function loadCanonicalEncouragements(language) {
     const pooled = data.pooledEncouragements || [];
     const ordered = data.orderedEncouragements || [];
 
-    // Combine both arrays, preserving original UUIDs
-    const all = [...pooled, ...ordered];
-    console.log(`Loaded ${all.length} canonical encouragements from ${filePath}`);
-    return all;
+    console.log(`Loaded ${pooled.length + ordered.length} canonical encouragements (${ordered.length} ordered, ${pooled.length} pooled) from ${filePath}`);
+
+    if (combined) {
+      // Legacy: return combined array
+      return [...pooled, ...ordered];
+    } else {
+      // New: return separated
+      return { pooled, ordered };
+    }
   } catch (err) {
     console.error(`Error loading canonical encouragements: ${err.message}`);
-    return [];
+    return combined ? [] : { pooled: [], ordered: [] };
   }
 }
 
@@ -369,13 +375,15 @@ async function uploadAndRegisterEncouragements(processResults, voiceId, language
 
 /**
  * Add encouragements to course manifest
- * Called at the end of audio generation for duration checking
+ * Populates slices[0].orderedEncouragements and slices[0].pooledEncouragements
+ * Also adds encouragement samples to the samples object
  *
  * @param {Object} manifest - Course manifest
- * @param {Array} encouragements - Encouragement data with UUIDs
- * @returns {Object} Modified manifest
+ * @param {Object|Array} encouragements - Either { pooled, ordered } or legacy array
+ * @param {string} language - Language code for loading canonical if needed
+ * @returns {Promise<Object>} Modified manifest
  */
-function addEncouragementsToManifest(manifest, encouragements) {
+async function addEncouragementsToManifest(manifest, encouragements, language = 'eng') {
   console.log('\n=== Adding Encouragements to Manifest ===\n');
 
   // Ensure slices structure exists
@@ -387,34 +395,73 @@ function addEncouragementsToManifest(manifest, encouragements) {
     manifest.slices[0].samples = {};
   }
 
-  const samples = manifest.slices[0].samples;
+  const slice = manifest.slices[0];
+  const samples = slice.samples;
 
-  // Add encouragements to samples
-  for (const enc of encouragements) {
-    if (!samples[enc.text]) {
-      samples[enc.text] = [];
+  // Determine pooled and ordered arrays
+  let pooled, ordered;
+
+  if (Array.isArray(encouragements)) {
+    // Legacy: array passed in, need to load canonical to categorize
+    const canonical = await loadCanonicalEncouragements(language, false);
+    const pooledIds = new Set(canonical.pooled.map(e => e.id));
+    const orderedIds = new Set(canonical.ordered.map(e => e.id));
+
+    pooled = encouragements.filter(e => pooledIds.has(e.uuid || e.id));
+    ordered = encouragements.filter(e => orderedIds.has(e.uuid || e.id));
+  } else {
+    // New format: { pooled, ordered }
+    pooled = encouragements.pooled || [];
+    ordered = encouragements.ordered || [];
+  }
+
+  // Populate slices[0].orderedEncouragements and pooledEncouragements
+  // Format: { text, id }
+  slice.orderedEncouragements = ordered.map(enc => ({
+    text: enc.text,
+    id: enc.uuid || enc.id
+  }));
+
+  slice.pooledEncouragements = pooled.map(enc => ({
+    text: enc.text,
+    id: enc.uuid || enc.id
+  }));
+
+  console.log(`Set orderedEncouragements: ${slice.orderedEncouragements.length}`);
+  console.log(`Set pooledEncouragements: ${slice.pooledEncouragements.length}`);
+
+  // Also add to samples (for duration tracking)
+  const allEncouragements = [...pooled, ...ordered];
+  for (const enc of allEncouragements) {
+    const text = enc.text;
+    const uuid = enc.uuid || enc.id;
+
+    if (!samples[text]) {
+      samples[text] = [];
     }
 
     // Check if already exists
-    const existing = samples[enc.text].find(
-      v => v.role === 'presentation' && v.uuid === enc.uuid
+    const existing = samples[text].find(
+      v => v.role === 'presentation' && (v.uuid === uuid || v.id === uuid)
     );
 
     if (!existing) {
-      samples[enc.text].push({
+      samples[text].push({
         role: 'presentation',
         cadence: 'natural',
-        language: enc.language,
-        uuid: enc.uuid,
-        duration: enc.duration || 0,
-        is_encouragement: true
+        id: uuid,
+        duration: enc.duration || 0
       });
-
-      console.log(`Added: "${enc.text}" (${enc.uuid})`);
     }
   }
 
-  console.log(`\nAdded ${encouragements.length} encouragements to manifest\n`);
+  // Remove top-level encouragements if it exists (wrong location)
+  if (manifest.encouragements) {
+    console.log('Removing top-level encouragements array (moved to slice)');
+    delete manifest.encouragements;
+  }
+
+  console.log(`\nAdded ${allEncouragements.length} encouragements to manifest\n`);
 
   return manifest;
 }

@@ -151,7 +151,11 @@ async function generateAzureSamples() {
 
       // Process one at a time (sequential)
       for (const sample of voiceSamples) {
-        const outputPath = path.join(tempDir, `${sample.uuid}.mp3`);
+        // Use sample.outputPath if set (hierarchical), otherwise fall back to legacy flat structure
+        const outputPath = sample.outputPath || path.join(tempDir, `${sample.uuid}.mp3`);
+
+        // Ensure output directory exists (for hierarchical structure)
+        await fs.ensureDir(path.dirname(outputPath));
 
         console.log(`[Azure Worker] Generating [${sample.role}/${sample.cadence}] ${azureVoiceName}: "${sample.text.substring(0, 50)}..."`);
 

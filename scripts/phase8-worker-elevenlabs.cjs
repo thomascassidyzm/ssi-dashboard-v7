@@ -63,7 +63,11 @@ async function generateElevenLabsSamples() {
 
       const batchResults = await Promise.all(
         batch.map(async (sample) => {
-          const outputPath = path.join(tempDir, `${sample.uuid}.mp3`);
+          // Use sample.outputPath if set (hierarchical), otherwise fall back to legacy flat structure
+          const outputPath = sample.outputPath || path.join(tempDir, `${sample.uuid}.mp3`);
+
+          // Ensure output directory exists (for hierarchical structure)
+          await fs.ensureDir(path.dirname(outputPath));
 
           console.log(`[ElevenLabs Worker] Generating [${sample.role}/${sample.cadence}] ${providerId}: "${sample.text}..."`);
 

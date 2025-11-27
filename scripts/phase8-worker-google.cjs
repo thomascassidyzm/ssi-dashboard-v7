@@ -84,7 +84,11 @@ async function generateGoogleSamples() {
       try {
         const batchResults = await Promise.all(
           batch.map(async (sample) => {
-            const outputPath = path.join(tempDir, `${sample.uuid}.mp3`);
+            // Use sample.outputPath if set (hierarchical), otherwise fall back to legacy flat structure
+            const outputPath = sample.outputPath || path.join(tempDir, `${sample.uuid}.mp3`);
+
+            // Ensure output directory exists (for hierarchical structure)
+            await fs.ensureDir(path.dirname(outputPath));
 
             // Get speed from sample (googleSpeed or default based on cadence)
             const speed = sample.googleSpeed || (sample.cadence === 'slow' ? 0.85 : 1.0);

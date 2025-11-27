@@ -183,6 +183,7 @@ function validateCourse(manifest) {
 
 /**
  * Add missing samples to manifest
+ * Simply adds placeholder samples with empty IDs - does not modify existing samples
  */
 function addMissingSamples(manifest, missingSamples) {
   const slice = manifest.slices[0];
@@ -210,6 +211,8 @@ function addMissingSamples(manifest, missingSamples) {
     if (!exists) {
       // Use "slow" cadence for target1 and target2, "natural" for others
       const cadence = (role === 'target1' || role === 'target2') ? 'slow' : 'natural';
+
+      // Add placeholder - audio generation will fill in the ID
       slice.samples[text].push({
         id: '',
         cadence: cadence,
@@ -233,6 +236,7 @@ function normalizeText(text) {
 /**
  * Deduplicate samples by normalized text
  * Groups "Hablo" and "hablo" together, keeps only normalized version
+ * IMPORTANT: When merging, prefer samples that have IDs (preserves existing audio refs)
  */
 function deduplicateSamples(manifest) {
   const slice = manifest.slices[0];
@@ -264,20 +268,22 @@ function deduplicateSamples(manifest) {
     }
 
     // Merge all samples from variants into normalized key
-    const mergedSamples = [];
-    const seenRoles = new Set();
+    // IMPORTANT: Prefer samples with IDs to preserve existing audio references
+    const mergedSamples = {};  // keyed by role|cadence
 
     for (const { originalText, samples: sampleList } of variants) {
       for (const sample of sampleList) {
         const roleKey = `${sample.role}|${sample.cadence || 'natural'}`;
-        if (!seenRoles.has(roleKey)) {
-          mergedSamples.push(sample);
-          seenRoles.add(roleKey);
+
+        // If we haven't seen this role yet, or this sample has an ID and existing doesn't
+        if (!mergedSamples[roleKey] ||
+            (sample.id && !mergedSamples[roleKey].id)) {
+          mergedSamples[roleKey] = sample;
         }
       }
     }
 
-    newSamples[normalized] = mergedSamples;
+    newSamples[normalized] = Object.values(mergedSamples);
   }
 
   // Replace samples with deduplicated version
@@ -521,6 +527,39 @@ function removeDuplicateNodes(manifest, duplicateNodes) {
 }
 
 /**
+ * Remove encouragements from manifest
+ * They will be added later in Phase 8 before S3 check
+ * This prevents generating TTS for them during audio generation
+ */
+function removeEncouragements(manifest) {
+  const slice = manifest.slices[0];
+  const removed = {
+    pooled: 0,
+    ordered: 0,
+    sampleTexts: []
+  };
+
+  // Collect encouragement text for orphan marking
+  if (slice.pooledEncouragements) {
+    for (const enc of slice.pooledEncouragements) {
+      if (enc.text) removed.sampleTexts.push(enc.text);
+    }
+    removed.pooled = slice.pooledEncouragements.length;
+    delete slice.pooledEncouragements;
+  }
+
+  if (slice.orderedEncouragements) {
+    for (const enc of slice.orderedEncouragements) {
+      if (enc.text) removed.sampleTexts.push(enc.text);
+    }
+    removed.ordered = slice.orderedEncouragements.length;
+    delete slice.orderedEncouragements;
+  }
+
+  return removed;
+}
+
+/**
  * Remove orphaned samples
  */
 function removeOrphanedSamples(manifest, orphanedSamples) {
@@ -557,6 +596,18 @@ async function main() {
   console.log(`📖 Reading: ${manifestPath}\n`);
 
   const manifest = await fs.readJson(manifestPath);
+
+  // Remove encouragements first - they'll be added later in Phase 8
+  console.log('🧹 Checking for encouragements to remove...\n');
+  const encRemoved = removeEncouragements(manifest);
+  if (encRemoved.pooled > 0 || encRemoved.ordered > 0) {
+    console.log(`✅ Removed encouragements:`);
+    if (encRemoved.pooled > 0) console.log(`   pooledEncouragements: ${encRemoved.pooled}`);
+    if (encRemoved.ordered > 0) console.log(`   orderedEncouragements: ${encRemoved.ordered}`);
+    console.log('   (samples will be marked as orphaned)\n');
+  } else {
+    console.log('✅ No encouragements found\n');
+  }
 
   // Check for duplicates first
   console.log('🔍 Checking for duplicates...\n');

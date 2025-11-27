@@ -26,11 +26,112 @@ const welcomeService = require('../services/welcome-service.cjs');
 const preflightCheck = require('../services/preflight-check-service.cjs');
 const presentationService = require('../services/presentation-service.cjs');
 const { createQCReviewDirectory } = require('./create-qc-review.cjs');
+const structureValidator = require('../tools/validators/manifest-structure-validator.cjs');
 
 // Configuration
 const VFS_BASE = path.join(__dirname, '../vfs');
-const AUDIO_TEMP_DIR = path.join(__dirname, '../temp/audio');
+const TEMP_BASE = path.join(__dirname, '../temp');
+const AUDIO_TEMP_DIR = path.join(__dirname, '../temp/audio'); // Legacy: shared worker dirs
 const VOICES_REGISTRY = path.join(__dirname, '../vfs/canonical/voices.json');
+
+/**
+ * Get the directory for audio files based on course/role/cadence
+ * New hierarchical structure: temp/{course}/{role}/{cadence}/
+ *
+ * @param {string} courseCode - Course identifier (e.g., 'cmn_for_eng')
+ * @param {string} role - Sample role (e.g., 'source', 'target1', 'presentation')
+ * @param {string} cadence - Audio cadence (e.g., 'natural', 'slow')
+ * @returns {string} Full path to the directory
+ */
+function getSampleDir(courseCode, role, cadence = 'natural') {
+  return path.join(TEMP_BASE, courseCode, role, cadence);
+}
+
+/**
+ * Get all existing sample UUIDs for a course by scanning its hierarchical directories
+ *
+ * @param {string} courseCode - Course identifier
+ * @returns {Promise<Set<string>>} Set of existing UUIDs
+ */
+async function getExistingSampleUUIDs(courseCode) {
+  const existingUUIDs = new Set();
+  const courseDir = path.join(TEMP_BASE, courseCode);
+
+  if (!await fs.pathExists(courseDir)) {
+    return existingUUIDs;
+  }
+
+  // Scan all role/cadence subdirectories
+  const roles = await fs.readdir(courseDir);
+  for (const role of roles) {
+    const roleDir = path.join(courseDir, role);
+    const stat = await fs.stat(roleDir);
+    if (!stat.isDirectory()) continue;
+
+    const cadences = await fs.readdir(roleDir);
+    for (const cadence of cadences) {
+      const cadenceDir = path.join(roleDir, cadence);
+      const cadenceStat = await fs.stat(cadenceDir);
+      if (!cadenceStat.isDirectory()) continue;
+
+      const files = await fs.readdir(cadenceDir);
+      for (const file of files) {
+        if (file.endsWith('.mp3')) {
+          existingUUIDs.add(file.replace('.mp3', ''));
+        }
+      }
+    }
+  }
+
+  return existingUUIDs;
+}
+
+/**
+ * Get the output path for a sample file
+ *
+ * @param {string} courseCode - Course identifier
+ * @param {Object} sample - Sample object with role, cadence, uuid
+ * @returns {string} Full path to the output file
+ */
+function getSampleOutputPath(courseCode, sample) {
+  const cadence = sample.cadence || 'natural';
+  return path.join(getSampleDir(courseCode, sample.role, cadence), `${sample.uuid}.mp3`);
+}
+
+/**
+ * Get all existing sample UUIDs by scanning both hierarchical and legacy structures
+ * This provides backward compatibility during migration
+ *
+ * @returns {Promise<Set<string>>} Set of existing UUIDs
+ */
+async function getAllExistingSampleUUIDs() {
+  const existingUUIDs = new Set();
+  const COURSES = ['cmn_for_eng', 'spa_for_eng'];
+
+  // Scan hierarchical structure for all courses
+  for (const course of COURSES) {
+    const courseUUIDs = await getExistingSampleUUIDs(course);
+    for (const uuid of courseUUIDs) {
+      existingUUIDs.add(uuid);
+    }
+  }
+
+  // Also check legacy flat structure (temp/audio/)
+  if (await fs.pathExists(AUDIO_TEMP_DIR)) {
+    try {
+      const files = await fs.readdir(AUDIO_TEMP_DIR);
+      for (const f of files) {
+        if (f.endsWith('.mp3') && /^[0-9A-F]/.test(f)) {
+          existingUUIDs.add(f.replace('.mp3', ''));
+        }
+      }
+    } catch (err) {
+      // Ignore errors reading legacy directory
+    }
+  }
+
+  return existingUUIDs;
+}
 
 /**
  * Extract language codes from course code
@@ -553,8 +654,11 @@ function splitSamplesByPhase(samples) {
 
 /**
  * Generate all missing audio files
+ *
+ * @param {Array} toGenerate - Samples to generate
+ * @param {string} courseCode - Course identifier for hierarchical paths
  */
-async function generateMissingAudio(toGenerate) {
+async function generateMissingAudio(toGenerate, courseCode) {
   await fs.ensureDir(AUDIO_TEMP_DIR);
 
   const results = [];
@@ -585,7 +689,13 @@ async function generateMissingAudio(toGenerate) {
       // Process batch in parallel
       const batchResults = await Promise.all(
         batch.map(async (sample) => {
-          const outputPath = path.join(AUDIO_TEMP_DIR, `${sample.uuid}.mp3`);
+          // Use hierarchical path if courseCode provided, otherwise legacy flat structure
+          const outputPath = courseCode
+            ? getSampleOutputPath(courseCode, sample)
+            : path.join(AUDIO_TEMP_DIR, `${sample.uuid}.mp3`);
+
+          // Ensure output directory exists
+          await fs.ensureDir(path.dirname(outputPath));
 
           // Use error handler for comprehensive error handling
           const result = await errorHandler.executeWithErrorHandling(
@@ -707,16 +817,25 @@ async function recoverPartialResults(inputSamples, tempDir) {
  * Spawns separate processes for Azure and ElevenLabs to run in parallel
  * ~50% faster than sequential generation
  * Auto-retries if workers fail partway through (common with Azure SDK)
+ *
+ * @param {Array} toGenerate - Samples to generate
+ * @param {string} courseCode - Course identifier for hierarchical paths
  */
-async function generateMissingAudioParallel(toGenerate) {
+async function generateMissingAudioParallel(toGenerate, courseCode) {
   console.log('\n=== Parallel Provider Generation ===\n');
 
   await fs.ensureDir(AUDIO_TEMP_DIR);
 
+  // Add outputPath to each sample for hierarchical directory structure
+  const samplesWithPaths = toGenerate.map(sample => ({
+    ...sample,
+    outputPath: getSampleOutputPath(courseCode, sample)
+  }));
+
   // Split samples by provider
   const byProvider = { azure: [], elevenlabs: [] };
 
-  for (const sample of toGenerate) {
+  for (const sample of samplesWithPaths) {
     const provider = sample.voiceId.split('_')[0];
     if (byProvider[provider]) {
       byProvider[provider].push(sample);
@@ -1885,7 +2004,7 @@ async function regenerateSamples(courseCode, uuids, options = {}) {
   console.log(`Found ${samplesToRegenerate.length} samples to regenerate\n`);
 
   // Generate audio
-  const generationResults = await generateMissingAudio(samplesToRegenerate);
+  const generationResults = await generateMissingAudio(samplesToRegenerate, courseCode);
   const successCount = generationResults.filter(r => r.success).length;
 
   console.log(`\nRegenerated: ${successCount}/${samplesToRegenerate.length} samples\n`);
@@ -2291,36 +2410,62 @@ async function downloadTargetFilesFromS3(manifest, bucket) {
   return { downloaded, missing, targetDir };
 }
 
-async function uploadToS3(processResults, bucket = s3Service.STAGE_BUCKET) {
-  console.log(`\n=== Uploading to S3 (${bucket}) ===\n`);
+/**
+ * Upload processed files to S3 with parallel uploads
+ * Concurrency of 15 provides ~5-10x speedup over sequential
+ */
+async function uploadToS3(processResults, bucket = s3Service.STAGE_BUCKET, concurrency = 15) {
+  console.log(`\n=== Uploading to S3 (${bucket}) - ${concurrency} parallel ===\n`);
 
+  const successResults = processResults.filter(r => r.success);
   const uploadResults = [];
+  let completed = 0;
+  let failed = 0;
+  const total = successResults.length;
+  const startTime = Date.now();
 
-  for (const result of processResults) {
-    if (!result.success) continue;
+  // Process in batches with concurrency limit
+  for (let i = 0; i < successResults.length; i += concurrency) {
+    const batch = successResults.slice(i, i + concurrency);
 
-    const uuid = path.basename(result.output, '.mp3');
+    const batchPromises = batch.map(async (result) => {
+      const uuid = path.basename(result.output, '.mp3');
 
-    try {
-      const s3Result = await s3Service.uploadAudioFile(uuid, result.output, bucket);
+      try {
+        const s3Result = await s3Service.uploadAudioFile(uuid, result.output, bucket);
+        completed++;
 
-      console.log(`Uploaded: ${s3Result.url}`);
+        // Progress update every 100 uploads
+        if (completed % 100 === 0) {
+          const elapsed = (Date.now() - startTime) / 1000;
+          const rate = completed / elapsed;
+          const remaining = (total - completed) / rate;
+          console.log(`Uploaded ${completed}/${total} (${rate.toFixed(1)}/s, ~${Math.ceil(remaining)}s remaining)`);
+        }
 
-      uploadResults.push({
-        success: true,
-        uuid,
-        url: s3Result.url
-      });
-    } catch (error) {
-      console.error(`Failed to upload ${uuid}: ${error.message}`);
+        return {
+          success: true,
+          uuid,
+          url: s3Result.url
+        };
+      } catch (error) {
+        failed++;
+        console.error(`Failed to upload ${uuid}: ${error.message}`);
 
-      uploadResults.push({
-        success: false,
-        uuid,
-        error: error.message
-      });
-    }
+        return {
+          success: false,
+          uuid,
+          error: error.message
+        };
+      }
+    });
+
+    const batchResults = await Promise.all(batchPromises);
+    uploadResults.push(...batchResults);
   }
+
+  const elapsed = (Date.now() - startTime) / 1000;
+  console.log(`\n✓ Upload complete: ${completed} succeeded, ${failed} failed in ${elapsed.toFixed(1)}s (${(completed/elapsed).toFixed(1)}/s)`);
 
   return uploadResults;
 }
@@ -2328,9 +2473,15 @@ async function uploadToS3(processResults, bucket = s3Service.STAGE_BUCKET) {
 /**
  * Update temporary MAR with newly generated samples
  * Samples stay in temp MAR until QC passes and S3 upload is verified
+ *
+ * Uses batched writing for performance (500 samples per disk write)
  */
 async function updateMAR(generationResults, durations) {
-  console.log('\n=== Updating Temporary MAR ===\n');
+  console.log('\n=== Updating Temporary MAR (Batched) ===\n');
+
+  const batchedWriter = marService.getBatchedTempMARWriter(500);
+  let added = 0;
+  let skipped = 0;
 
   for (const result of generationResults) {
     if (!result.success) continue;
@@ -2339,12 +2490,12 @@ async function updateMAR(generationResults, durations) {
     const duration = durations[sample.uuid];
 
     if (!duration) {
-      console.warn(`No duration found for ${sample.uuid}, skipping MAR update`);
+      skipped++;
       continue;
     }
 
     try {
-      await marService.saveSampleToTempMAR(sample.voiceId, sample.uuid, {
+      await batchedWriter.addSample(sample.voiceId, sample.uuid, {
         text: sample.text,
         language: sample.language,
         role: sample.role,
@@ -2352,12 +2503,16 @@ async function updateMAR(generationResults, durations) {
         duration,
         filename: `${sample.uuid}.mp3`
       });
-
-      console.log(`Temp MAR updated: ${sample.voiceId} / ${sample.uuid}`);
+      added++;
     } catch (error) {
-      console.error(`Failed to update temp MAR for ${sample.uuid}: ${error.message}`);
+      console.error(`Failed to add sample ${sample.uuid}: ${error.message}`);
     }
   }
+
+  // Flush any remaining samples
+  await batchedWriter.flush();
+
+  console.log(`✓ MAR update complete: ${added} samples added, ${skipped} skipped (no duration)`);
 }
 
 /**
@@ -2393,8 +2548,8 @@ async function executePhaseA(phaseASamples, courseCode, options) {
     console.log(`\n${retryCount > 0 ? '🔄 Retry attempt ' + retryCount + ' - ' : ''}Generating ${remainingSamples.length} samples...\n`);
 
     const generationResults = useParallel
-      ? await generateMissingAudioParallel(remainingSamples)
-      : await generateMissingAudio(remainingSamples);
+      ? await generateMissingAudioParallel(remainingSamples, courseCode)
+      : await generateMissingAudio(remainingSamples, courseCode);
 
     // Only add VALID results with UUIDs
     const validResults = generationResults.filter(r => r && r.uuid);
@@ -2554,12 +2709,8 @@ async function generatePresentationSamples(samples, manifest, voiceAssignments, 
     { sourceLanguage: manifest.known }
   );
 
-  // Step 3: Filter out samples that already exist locally
-  const existingFiles = new Set(
-    (await fs.readdir(AUDIO_TEMP_DIR))
-      .filter(f => f.endsWith('.mp3'))
-      .map(f => f.replace('.mp3', ''))
-  );
+  // Step 3: Filter out samples that already exist locally (scan hierarchical + legacy dirs)
+  const existingFiles = await getAllExistingSampleUUIDs();
 
   // Note: samples from manifest have 'id' field, but analyzeRequiredGeneration adds 'uuid' field
   // Support both for compatibility
@@ -2669,12 +2820,8 @@ async function executePhaseB(phaseBSamples, manifest, courseCode, options) {
   }
 
   // 0. FIRST: Check which presentations already exist locally (skip before target download)
-  console.log('Checking for existing presentation files...');
-  const existingFiles = new Set(
-    fs.readdirSync(AUDIO_TEMP_DIR)
-      .filter(f => f.endsWith('.mp3'))
-      .map(f => f.replace('.mp3', ''))
-  );
+  console.log('Checking for existing presentation files (hierarchical + legacy)...');
+  const existingFiles = await getAllExistingSampleUUIDs();
 
   // Filter to only samples that need generation (using manifest ID)
   const samplesToGenerate = phaseBSamples.filter(s => !existingFiles.has(s.uuid || s.id));
@@ -2909,8 +3056,40 @@ async function generateAudioForCourse(courseCode, options = {}) {
     let allDurations = {};
 
     // 7. Execute Phase A (targets + source)
-    if (phase === 'auto' || phase === 'targets') {
-      const resultA = await executePhaseA(phaseA, courseCode, { skipUpload, uploadBucket, skipQC, sequential });
+    if (phase === 'auto' || phase === 'targets' || phase === 'source') {
+      // Filter phaseA samples based on mode
+      let phaseASamples = phaseA;
+      if (phase === 'targets') {
+        // For --phase=targets, ONLY generate target1/target2 (Azure voices)
+        // Exclude 'source' role (ElevenLabs) to avoid charges while AFK
+        const beforeCount = phaseA.length;
+        phaseASamples = phaseA.filter(s => s.role === 'target1' || s.role === 'target2');
+        const sourceCount = beforeCount - phaseASamples.length;
+
+        if (sourceCount > 0) {
+          console.log(`\n🔒 --phase=targets mode: Excluding ${sourceCount} 'source' samples (run separately with ElevenLabs)`);
+          console.log(`   Generating ONLY target1/target2 (Azure voices)\n`);
+        }
+
+        // Safety check: Block ElevenLabs generation
+        global.BLOCK_ELEVENLABS = true;
+      } else if (phase === 'source') {
+        // For --phase=source, ONLY generate source role (ElevenLabs)
+        // Exclude target1/target2 (Azure) - they should already be generated
+        const beforeCount = phaseA.length;
+        phaseASamples = phaseA.filter(s => s.role === 'source');
+        const targetCount = beforeCount - phaseASamples.length;
+
+        if (targetCount > 0) {
+          console.log(`\n🔒 --phase=source mode: Excluding ${targetCount} target samples (should already exist)`);
+          console.log(`   Generating ONLY source (ElevenLabs voices)\n`);
+        }
+
+        // Safety check: Block Azure generation
+        global.BLOCK_AZURE = true;
+      }
+
+      const resultA = await executePhaseA(phaseASamples, courseCode, { skipUpload, uploadBucket, skipQC, sequential });
       totalGenerated += resultA.generated;
       totalQCFlagged += resultA.qcFlagged;
       allDurations = { ...allDurations, ...resultA.durations };
@@ -2998,7 +3177,7 @@ async function generateAudioForCourse(courseCode, options = {}) {
 
       // Add encouragements to manifest right away
       if (encouragementData.encouragements.length > 0) {
-        encouragementService.addEncouragementsToManifest(manifest, encouragementData.encouragements);
+        await encouragementService.addEncouragementsToManifest(manifest, encouragementData.encouragements, languages.source);
       }
     }
 
@@ -3342,15 +3521,28 @@ Features:
     } else {
       // Normal generation workflow
       const phaseArg = getArgValue('--phase') || 'auto';
-      const validPhases = ['targets', 'presentations', 'auto'];
+      const validPhases = ['targets', 'source', 'presentations', 'auto'];
 
       if (!validPhases.includes(phaseArg)) {
-        console.error(`\n⚠️  ERROR: Invalid phase '${phaseArg}'. Must be: targets, presentations, or auto\n`);
+        console.error(`\n⚠️  ERROR: Invalid phase '${phaseArg}'. Must be: targets, source, presentations, or auto\n`);
         process.exit(1);
       }
 
       execOptions.phase = phaseArg;
       result = await generateAudioForCourse(courseCode, execOptions);
+    }
+
+    // Validate manifest structure after successful execution
+    if (result.success) {
+      console.log('\n--- Manifest Structure Validation ---');
+      const structureResult = structureValidator.validateCourse(courseCode);
+      if (!structureResult.valid) {
+        console.log('⚠️  MANIFEST STRUCTURE ISSUES:');
+        structureResult.issues.forEach(i => console.log(`  - ${i}`));
+        console.log('\nRun: node tools/validators/manifest-structure-validator.cjs ' + courseCode);
+      } else {
+        console.log('✓ Manifest structure validated');
+      }
     }
 
     process.exit(result.success ? 0 : 1);
