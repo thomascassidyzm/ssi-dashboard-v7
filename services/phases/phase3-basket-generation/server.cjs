@@ -501,42 +501,59 @@ app.post('/start', async (req, res) => {
     // Set expected LEGOs for upload tracking
     job.uploads.expectedLegos = targetLegos.length;
 
-    // STEP 2: MASTER/WORKER CONFIGURATION
-    // Read config from automation.config.simple.json
+    // STEP 2: MASTER/WORKER CONFIGURATION - DYNAMIC SCALING
+    // Scale from 1×1 (tiny runs) up to 15×15×3 (full course)
     const config = loadConfig();
-    const configBrowsers = config.phase3_basket_generation.browsers || 5;
-    const configWorkersPerBrowser = config.phase3_basket_generation.agents_per_browser || 5;
-
-    // MINIMUM THRESHOLDS (never go below these)
-    const MIN_BROWSERS = 5;
-    const MIN_WORKERS_PER_BROWSER = 5;
+    const SEEDS_PER_WORKER = config.phase3_basket_generation.seeds_per_agent || 3;
+    const MAX_BROWSERS = 15;
+    const MAX_WORKERS_PER_BROWSER = 15;
 
     // Count unique seeds to process
     const uniqueSeeds = new Set(targetLegos.map(l => l.seed));
     const seedsToProcess = uniqueSeeds.size;
 
-    // Calculate browser/worker distribution with minimums enforced
+    // Calculate browser/worker distribution dynamically based on workload
     let masterCount, workersPerMaster;
 
     if (seedsToProcess === 0) {
-      // Edge case: no work to do
       masterCount = 0;
       workersPerMaster = 0;
     } else {
-      // Start with config values, but enforce minimums (ALWAYS at least 5x5)
-      masterCount = Math.max(MIN_BROWSERS, configBrowsers);
-      workersPerMaster = Math.max(MIN_WORKERS_PER_BROWSER, configWorkersPerBrowser);
+      // Calculate total workers needed (target SEEDS_PER_WORKER seeds each)
+      const workersNeeded = Math.ceil(seedsToProcess / SEEDS_PER_WORKER);
 
-      // If we have fewer seeds than minimum capacity, still use minimums
-      // Seeds will be distributed across workers (some may have fewer)
-      const totalWorkerCapacity = masterCount * workersPerMaster;
-
-      if (seedsToProcess < totalWorkerCapacity) {
-        console.log(`\n[Phase 3] 📊 Capacity Allocation:`);
-        console.log(`[Phase 3]    Seeds to process: ${seedsToProcess}`);
-        console.log(`[Phase 3]    Total workers: ${totalWorkerCapacity} (${masterCount} browsers × ${workersPerMaster} workers)`);
-        console.log(`[Phase 3]    Seeds will be distributed across workers`);
+      // Distribute workers across browsers
+      // Strategy: prefer fewer browsers with more workers (reduces browser spawn overhead)
+      if (workersNeeded <= 5) {
+        // Tiny run: 1 browser
+        masterCount = 1;
+        workersPerMaster = Math.max(1, workersNeeded);
+      } else if (workersNeeded <= 15) {
+        // Small run: 1-3 browsers
+        masterCount = Math.ceil(workersNeeded / 5);
+        workersPerMaster = Math.ceil(workersNeeded / masterCount);
+      } else if (workersNeeded <= 50) {
+        // Medium run: 3-5 browsers
+        masterCount = Math.min(5, Math.ceil(workersNeeded / 10));
+        workersPerMaster = Math.ceil(workersNeeded / masterCount);
+      } else if (workersNeeded <= 150) {
+        // Large run: 5-10 browsers
+        masterCount = Math.min(10, Math.ceil(workersNeeded / 15));
+        workersPerMaster = Math.ceil(workersNeeded / masterCount);
+      } else {
+        // Full course: up to 15×15
+        masterCount = Math.min(MAX_BROWSERS, Math.ceil(workersNeeded / MAX_WORKERS_PER_BROWSER));
+        workersPerMaster = Math.min(MAX_WORKERS_PER_BROWSER, Math.ceil(workersNeeded / masterCount));
       }
+
+      // Cap at maximums
+      masterCount = Math.min(masterCount, MAX_BROWSERS);
+      workersPerMaster = Math.min(workersPerMaster, MAX_WORKERS_PER_BROWSER);
+
+      console.log(`\n[Phase 3] 📊 Dynamic Scaling:`);
+      console.log(`[Phase 3]    Seeds to process: ${seedsToProcess}`);
+      console.log(`[Phase 3]    Workers needed: ${workersNeeded} (at ${SEEDS_PER_WORKER} seeds/worker)`);
+      console.log(`[Phase 3]    Scaled to: ${masterCount} browsers × ${workersPerMaster} workers = ${masterCount * workersPerMaster} workers`);
     }
 
     const totalWorkers = masterCount * workersPerMaster;
