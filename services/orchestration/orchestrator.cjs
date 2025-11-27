@@ -3937,6 +3937,51 @@ app.post('/phase3/start', async (req, res) => {
   }
 });
 
+/**
+ * POST /phase3/upload-basket
+ * Proxy basket uploads to Phase 3 server - agents submit one LEGO at a time
+ */
+app.post('/phase3/upload-basket', async (req, res) => {
+  console.log(`[Orchestrator] Basket upload received`);
+
+  try {
+    const response = await axios.post(`${PHASE_SERVERS[3]}/upload-basket`, req.body, {
+      timeout: 30000,
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    console.log(`[Orchestrator] Basket uploaded: ${response.data.legoId || 'unknown'}`);
+    res.json(response.data);
+  } catch (error) {
+    console.error(`[Orchestrator] Basket upload failed: ${error.message}`);
+    if (error.response) {
+      res.status(error.response.status).json(error.response.data);
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+/**
+ * POST /upload-basket (direct alias for convenience)
+ * Same as /phase3/upload-basket
+ */
+app.post('/upload-basket', async (req, res) => {
+  try {
+    const response = await axios.post(`${PHASE_SERVERS[3]}/upload-basket`, req.body, {
+      timeout: 30000,
+      headers: { 'Content-Type': 'application/json' }
+    });
+    res.json(response.data);
+  } catch (error) {
+    if (error.response) {
+      res.status(error.response.status).json(error.response.data);
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
 app.post('/phase5/abort/:courseCode', async (req, res) => {
   const { courseCode } = req.params;
   try {
