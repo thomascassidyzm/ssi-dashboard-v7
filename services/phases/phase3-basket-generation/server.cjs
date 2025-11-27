@@ -1109,7 +1109,7 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
     WORKER_ASSIGNMENTS: workerAssignmentsText,
     KNOWN_LANGUAGE: known,
     TARGET_LANGUAGE: target,
-    ORCHESTRATOR_URL: ORCHESTRATOR_URL
+    ORCHESTRATOR_URL: process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev'
   });
 }
 
