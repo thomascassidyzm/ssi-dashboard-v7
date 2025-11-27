@@ -2,6 +2,1556 @@
   "version": "8.2.0",
   "course": "eng_for_cmn",
   "baskets": {
+    "S0022L01": {
+      "basket_id": "S0022L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "因为",
+        "target": "because"
+      },
+      "practice_phrases": [
+        {
+          "known": "因为我想",
+          "target": "because I want to"
+        },
+        {
+          "known": "因为你想",
+          "target": "because you want to"
+        },
+        {
+          "known": "因为我说英语",
+          "target": "because I speak English"
+        },
+        {
+          "known": "因为我想学",
+          "target": "because I want to learn"
+        },
+        {
+          "known": "因为我今天想说话",
+          "target": "because I want to speak today"
+        },
+        {
+          "known": "因为我想认识你",
+          "target": "because I want to meet you"
+        },
+        {
+          "known": "因为我正在尝试学英语",
+          "target": "because I'm trying to learn English"
+        },
+        {
+          "known": "因为我想认识会说英语的人",
+          "target": "because I want to meet people who speak English"
+        },
+        {
+          "known": "因为我不确定我是否能记住",
+          "target": "because I'm not sure if I can remember"
+        },
+        {
+          "known": "因为我正在尝试尽可能经常地说话",
+          "target": "because I'm trying to speak as often as possible"
+        }
+      ]
+    },
+    "S0022L02": {
+      "basket_id": "S0022L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我想",
+        "target": "I want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "我想说话",
+          "target": "I want to speak"
+        },
+        {
+          "known": "我想学",
+          "target": "I want to learn"
+        },
+        {
+          "known": "我想记住",
+          "target": "I want to remember"
+        },
+        {
+          "known": "我想认识你",
+          "target": "I want to meet you"
+        },
+        {
+          "known": "我今天想说话",
+          "target": "I want to speak today"
+        },
+        {
+          "known": "我想学英语",
+          "target": "I want to learn English"
+        },
+        {
+          "known": "我想和你说话",
+          "target": "I want to speak with you"
+        },
+        {
+          "known": "我想认识会说英语的人",
+          "target": "I want to meet people who speak English"
+        },
+        {
+          "known": "我想今天和你说话",
+          "target": "I want to speak with you today"
+        },
+        {
+          "known": "我想尽可能经常地说话",
+          "target": "I want to speak as often as possible"
+        }
+      ]
+    },
+    "S0022L03": {
+      "basket_id": "S0022L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "认识",
+        "target": "to meet"
+      },
+      "practice_phrases": [
+        {
+          "known": "认识你",
+          "target": "to meet you"
+        },
+        {
+          "known": "认识人",
+          "target": "to meet people"
+        },
+        {
+          "known": "我想认识你",
+          "target": "I want to meet you"
+        },
+        {
+          "known": "认识会说英语的人",
+          "target": "to meet people who speak English"
+        },
+        {
+          "known": "我想今天认识你",
+          "target": "I want to meet you today"
+        },
+        {
+          "known": "我想认识会说英语的人",
+          "target": "I want to meet people who speak English"
+        },
+        {
+          "known": "我正在尝试认识会说英语的人",
+          "target": "I'm trying to meet people who speak English"
+        },
+        {
+          "known": "因为我想认识会说英语的人",
+          "target": "because I want to meet people who speak English"
+        },
+        {
+          "known": "我想今天认识会说英语的人",
+          "target": "I want to meet people who speak English today"
+        },
+        {
+          "known": "我想明天认识会说英语的人",
+          "target": "I want to meet people who speak English tomorrow"
+        }
+      ]
+    },
+    "S0022L04": {
+      "basket_id": "S0022L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "人",
+        "target": "people"
+      },
+      "practice_phrases": [
+        {
+          "known": "人",
+          "target": "people"
+        },
+        {
+          "known": "会说英语的人",
+          "target": "people who speak English"
+        },
+        {
+          "known": "我想认识人",
+          "target": "I want to meet people"
+        },
+        {
+          "known": "和人说话",
+          "target": "to speak with people"
+        },
+        {
+          "known": "我想和人说话",
+          "target": "I want to speak with people"
+        },
+        {
+          "known": "我想认识会说英语的人",
+          "target": "I want to meet people who speak English"
+        },
+        {
+          "known": "我正在尝试和人说话",
+          "target": "I'm trying to speak with people"
+        },
+        {
+          "known": "因为我想认识会说英语的人",
+          "target": "because I want to meet people who speak English"
+        },
+        {
+          "known": "我想今天和会说英语的人说话",
+          "target": "I want to speak with people who speak English today"
+        },
+        {
+          "known": "我正在尝试尽可能经常地和人说话",
+          "target": "I'm trying to speak with people as often as possible"
+        }
+      ]
+    },
+    "S0022L05": {
+      "basket_id": "S0022L05",
+      "version": "8.2.0",
+      "lego": {
+        "known": "英语",
+        "target": "English"
+      },
+      "practice_phrases": [
+        {
+          "known": "英语",
+          "target": "English"
+        },
+        {
+          "known": "说英语",
+          "target": "speak English"
+        },
+        {
+          "known": "我说英语",
+          "target": "I speak English"
+        },
+        {
+          "known": "学英语",
+          "target": "learn English"
+        },
+        {
+          "known": "我想学英语",
+          "target": "I want to learn English"
+        },
+        {
+          "known": "我正在学英语",
+          "target": "I'm learning English"
+        },
+        {
+          "known": "我正在尝试说英语",
+          "target": "I'm trying to speak English"
+        },
+        {
+          "known": "我想认识会说英语的人",
+          "target": "I want to meet people who speak English"
+        },
+        {
+          "known": "因为我正在尝试学英语",
+          "target": "because I'm trying to learn English"
+        },
+        {
+          "known": "我正在尝试尽可能经常地说英语",
+          "target": "I'm trying to speak English as often as possible"
+        }
+      ]
+    },
+    "S0022L06": {
+      "basket_id": "S0022L06",
+      "version": "8.2.0",
+      "lego": {
+        "known": "说",
+        "target": "to speak"
+      },
+      "practice_phrases": [
+        {
+          "known": "说",
+          "target": "to speak"
+        },
+        {
+          "known": "说英语",
+          "target": "to speak English"
+        },
+        {
+          "known": "我说",
+          "target": "I speak"
+        },
+        {
+          "known": "我想说",
+          "target": "I want to speak"
+        },
+        {
+          "known": "我想说英语",
+          "target": "I want to speak English"
+        },
+        {
+          "known": "我正在尝试说",
+          "target": "I'm trying to speak"
+        },
+        {
+          "known": "我想和你说英语",
+          "target": "I want to speak English with you"
+        },
+        {
+          "known": "我正在尝试说英语",
+          "target": "I'm trying to speak English"
+        },
+        {
+          "known": "因为我想说英语",
+          "target": "because I want to speak English"
+        },
+        {
+          "known": "我正在尝试尽可能经常地说英语",
+          "target": "I'm trying to speak English as often as possible"
+        }
+      ]
+    },
+    "S0022L07": {
+      "basket_id": "S0022L07",
+      "version": "8.2.0",
+      "lego": {
+        "known": "会说英语的人",
+        "target": "people who speak English"
+      },
+      "practice_phrases": [
+        {
+          "known": "会说英语的人",
+          "target": "people who speak English"
+        },
+        {
+          "known": "我想认识会说英语的人",
+          "target": "I want to meet people who speak English"
+        },
+        {
+          "known": "认识会说英语的人",
+          "target": "to meet people who speak English"
+        },
+        {
+          "known": "和会说英语的人说话",
+          "target": "to speak with people who speak English"
+        },
+        {
+          "known": "我正在尝试认识会说英语的人",
+          "target": "I'm trying to meet people who speak English"
+        },
+        {
+          "known": "我想和会说英语的人说话",
+          "target": "I want to speak with people who speak English"
+        },
+        {
+          "known": "因为我想认识会说英语的人",
+          "target": "because I want to meet people who speak English"
+        },
+        {
+          "known": "我想今天认识会说英语的人",
+          "target": "I want to meet people who speak English today"
+        },
+        {
+          "known": "我正在尝试和会说英语的人说话",
+          "target": "I'm trying to speak with people who speak English"
+        },
+        {
+          "known": "我想尽可能经常地和会说英语的人说话",
+          "target": "I want to speak with people who speak English as often as possible"
+        }
+      ]
+    },
+    "S0023L01": {
+      "basket_id": "S0023L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "很快",
+        "target": "soon"
+      },
+      "practice_phrases": [
+        {
+          "known": "很快",
+          "target": "soon"
+        },
+        {
+          "known": "我很快就要说话",
+          "target": "I'm going to speak soon"
+        },
+        {
+          "known": "很快就要学",
+          "target": "to learn soon"
+        },
+        {
+          "known": "我很快就要学",
+          "target": "I'm going to learn soon"
+        },
+        {
+          "known": "我很快就要开始",
+          "target": "I'm going to start soon"
+        },
+        {
+          "known": "我很快就要说英语",
+          "target": "I'm going to speak English soon"
+        },
+        {
+          "known": "我很快就要开始学英语",
+          "target": "I'm going to start learning English soon"
+        },
+        {
+          "known": "我很快就要开始说话",
+          "target": "I'm going to start speaking soon"
+        },
+        {
+          "known": "我很快就要和你说话",
+          "target": "I'm going to speak with you soon"
+        },
+        {
+          "known": "我很快就要开始多说话了",
+          "target": "I'm going to start talking more soon"
+        }
+      ]
+    },
+    "S0023L02": {
+      "basket_id": "S0023L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "开始",
+        "target": "to start"
+      },
+      "practice_phrases": [
+        {
+          "known": "开始",
+          "target": "to start"
+        },
+        {
+          "known": "我开始",
+          "target": "I start"
+        },
+        {
+          "known": "我想开始",
+          "target": "I want to start"
+        },
+        {
+          "known": "开始说话",
+          "target": "to start speaking"
+        },
+        {
+          "known": "我想开始说话",
+          "target": "I want to start speaking"
+        },
+        {
+          "known": "我很快就要开始",
+          "target": "I'm going to start soon"
+        },
+        {
+          "known": "我想开始学英语",
+          "target": "I want to start learning English"
+        },
+        {
+          "known": "我很快就要开始说话",
+          "target": "I'm going to start speaking soon"
+        },
+        {
+          "known": "因为我想开始说话",
+          "target": "because I want to start speaking"
+        },
+        {
+          "known": "我很快就要开始多说话了",
+          "target": "I'm going to start talking more soon"
+        }
+      ]
+    },
+    "S0023L03": {
+      "basket_id": "S0023L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "说话",
+        "target": "to speak"
+      },
+      "practice_phrases": [
+        {
+          "known": "说话",
+          "target": "to speak"
+        },
+        {
+          "known": "我说话",
+          "target": "I speak"
+        },
+        {
+          "known": "我想说话",
+          "target": "I want to speak"
+        },
+        {
+          "known": "多说话",
+          "target": "to speak more"
+        },
+        {
+          "known": "我想多说话",
+          "target": "I want to speak more"
+        },
+        {
+          "known": "开始说话",
+          "target": "to start speaking"
+        },
+        {
+          "known": "我想开始说话",
+          "target": "I want to start speaking"
+        },
+        {
+          "known": "我很快就要开始说话",
+          "target": "I'm going to start speaking soon"
+        },
+        {
+          "known": "因为我想说话",
+          "target": "because I want to speak"
+        },
+        {
+          "known": "我很快就要开始多说话了",
+          "target": "I'm going to start talking more soon"
+        }
+      ]
+    },
+    "S0023L04": {
+      "basket_id": "S0023L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "多",
+        "target": "more"
+      },
+      "practice_phrases": [
+        {
+          "known": "多",
+          "target": "more"
+        },
+        {
+          "known": "多说话",
+          "target": "more speaking"
+        },
+        {
+          "known": "我想多说话",
+          "target": "I want to speak more"
+        },
+        {
+          "known": "说多一点",
+          "target": "to speak more"
+        },
+        {
+          "known": "我想多学",
+          "target": "I want to learn more"
+        },
+        {
+          "known": "我想多说英语",
+          "target": "I want to speak English more"
+        },
+        {
+          "known": "我正在尝试多说话",
+          "target": "I'm trying to speak more"
+        },
+        {
+          "known": "我很快就要多说话",
+          "target": "I'm going to speak more soon"
+        },
+        {
+          "known": "我想开始多说话",
+          "target": "I want to start speaking more"
+        },
+        {
+          "known": "我很快就要开始多说话了",
+          "target": "I'm going to start talking more soon"
+        }
+      ]
+    },
+    "S0023L05": {
+      "basket_id": "S0023L05",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我就要...了",
+        "target": "I'm going to..."
+      },
+      "practice_phrases": [
+        {
+          "known": "我就要说话了",
+          "target": "I'm going to speak"
+        },
+        {
+          "known": "我就要学了",
+          "target": "I'm going to learn"
+        },
+        {
+          "known": "我就要开始了",
+          "target": "I'm going to start"
+        },
+        {
+          "known": "我就要说英语了",
+          "target": "I'm going to speak English"
+        },
+        {
+          "known": "我很快就要学了",
+          "target": "I'm going to learn soon"
+        },
+        {
+          "known": "我很快就要开始了",
+          "target": "I'm going to start soon"
+        },
+        {
+          "known": "我就要开始说话了",
+          "target": "I'm going to start speaking"
+        },
+        {
+          "known": "我很快就要说英语了",
+          "target": "I'm going to speak English soon"
+        },
+        {
+          "known": "我就要多说话了",
+          "target": "I'm going to speak more"
+        },
+        {
+          "known": "我很快就要开始多说话了",
+          "target": "I'm going to start talking more soon"
+        }
+      ]
+    },
+    "S0024L01": {
+      "basket_id": "S0024L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "轻易",
+        "target": "easily"
+      },
+      "practice_phrases": [
+        {
+          "known": "轻易",
+          "target": "easily"
+        },
+        {
+          "known": "轻易记住",
+          "target": "remember easily"
+        },
+        {
+          "known": "我轻易记住",
+          "target": "I remember easily"
+        },
+        {
+          "known": "轻易学",
+          "target": "learn easily"
+        },
+        {
+          "known": "我想轻易记住",
+          "target": "I want to remember easily"
+        },
+        {
+          "known": "我不会轻易学",
+          "target": "I'm not going to learn easily"
+        },
+        {
+          "known": "我不会轻易记住",
+          "target": "I'm not going to remember easily"
+        },
+        {
+          "known": "我不会轻易记住的",
+          "target": "I'm not going to be able to remember easily"
+        },
+        {
+          "known": "因为我不会轻易记住",
+          "target": "because I'm not going to remember easily"
+        },
+        {
+          "known": "我不确定我能不能轻易记住",
+          "target": "I'm not sure if I can remember easily"
+        }
+      ]
+    },
+    "S0024L02": {
+      "basket_id": "S0024L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "记住",
+        "target": "to remember"
+      },
+      "practice_phrases": [
+        {
+          "known": "记住",
+          "target": "to remember"
+        },
+        {
+          "known": "我记住",
+          "target": "I remember"
+        },
+        {
+          "known": "我想记住",
+          "target": "I want to remember"
+        },
+        {
+          "known": "轻易记住",
+          "target": "to remember easily"
+        },
+        {
+          "known": "我不能记住",
+          "target": "I cannot remember"
+        },
+        {
+          "known": "我想要记住",
+          "target": "I want to remember"
+        },
+        {
+          "known": "我正在尝试记住",
+          "target": "I'm trying to remember"
+        },
+        {
+          "known": "我不会轻易记住",
+          "target": "I'm not going to remember easily"
+        },
+        {
+          "known": "因为我想记住",
+          "target": "because I want to remember"
+        },
+        {
+          "known": "我不会轻易记住的",
+          "target": "I'm not going to be able to remember easily"
+        }
+      ]
+    },
+    "S0024L03": {
+      "basket_id": "S0024L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "不会",
+        "target": "not going to be able to"
+      },
+      "practice_phrases": [
+        {
+          "known": "我不会",
+          "target": "I'm not going to be able to"
+        },
+        {
+          "known": "我不会说",
+          "target": "I'm not going to be able to speak"
+        },
+        {
+          "known": "我不会记住",
+          "target": "I'm not going to be able to remember"
+        },
+        {
+          "known": "我不会学",
+          "target": "I'm not going to be able to learn"
+        },
+        {
+          "known": "我不会轻易记住",
+          "target": "I'm not going to be able to remember easily"
+        },
+        {
+          "known": "我不会说英语",
+          "target": "I'm not going to be able to speak English"
+        },
+        {
+          "known": "我不会轻易学会",
+          "target": "I'm not going to be able to learn easily"
+        },
+        {
+          "known": "我不会轻易记住的",
+          "target": "I'm not going to be able to remember easily"
+        },
+        {
+          "known": "因为我不会记住",
+          "target": "because I'm not going to be able to remember"
+        },
+        {
+          "known": "我不确定我会不会记住",
+          "target": "I'm not sure if I'm going to be able to remember"
+        }
+      ]
+    },
+    "S0024L04": {
+      "basket_id": "S0024L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我不会...的",
+        "target": "I'm not going to be able to..."
+      },
+      "practice_phrases": [
+        {
+          "known": "我不会说的",
+          "target": "I'm not going to be able to speak"
+        },
+        {
+          "known": "我不会学的",
+          "target": "I'm not going to be able to learn"
+        },
+        {
+          "known": "我不会记住的",
+          "target": "I'm not going to be able to remember"
+        },
+        {
+          "known": "我不会开始的",
+          "target": "I'm not going to be able to start"
+        },
+        {
+          "known": "我不会轻易记住的",
+          "target": "I'm not going to be able to remember easily"
+        },
+        {
+          "known": "我不会说英语的",
+          "target": "I'm not going to be able to speak English"
+        },
+        {
+          "known": "我不会轻易学的",
+          "target": "I'm not going to be able to learn easily"
+        },
+        {
+          "known": "我今天不会说的",
+          "target": "I'm not going to be able to speak today"
+        },
+        {
+          "known": "因为我不会记住的",
+          "target": "because I'm not going to be able to remember"
+        },
+        {
+          "known": "我不确定我会不会记住的",
+          "target": "I'm not sure if I'm going to be able to remember"
+        }
+      ]
+    },
+    "S0025L01": {
+      "basket_id": "S0025L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "帮",
+        "target": "to help"
+      },
+      "practice_phrases": [
+        {
+          "known": "帮我",
+          "target": "to help me"
+        },
+        {
+          "known": "帮你",
+          "target": "to help you"
+        },
+        {
+          "known": "我想帮",
+          "target": "I want to help"
+        },
+        {
+          "known": "帮我说英语",
+          "target": "to help me speak English"
+        },
+        {
+          "known": "你会帮我吗？",
+          "target": "Are you going to help me?"
+        },
+        {
+          "known": "我不能帮你",
+          "target": "I can not help you"
+        },
+        {
+          "known": "她想帮我学习",
+          "target": "she wants to help me learn"
+        },
+        {
+          "known": "我会帮你，但我现在必须走",
+          "target": "I am going to help you, but I have to go now"
+        },
+        {
+          "known": "你能在明天之前帮我吗？",
+          "target": "can you help me before tomorrow?"
+        },
+        {
+          "known": "我想帮他学习英语，因为我喜欢帮别人",
+          "target": "I want to help him learn English, because I like to help people"
+        }
+      ]
+    },
+    "S0025L02": {
+      "basket_id": "S0025L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "之前",
+        "target": "before"
+      },
+      "practice_phrases": [
+        {
+          "known": "之前",
+          "target": "before"
+        },
+        {
+          "known": "这之前",
+          "target": "before this"
+        },
+        {
+          "known": "明天之前",
+          "target": "before tomorrow"
+        },
+        {
+          "known": "六点之前",
+          "target": "before six o'clock"
+        },
+        {
+          "known": "我走之前",
+          "target": "before I go"
+        },
+        {
+          "known": "你能在今天之前回答吗？",
+          "target": "can you answer before today?"
+        },
+        {
+          "known": "我想在晚上之前完成",
+          "target": "I want to finish before evening"
+        },
+        {
+          "known": "你必须在我走之前说",
+          "target": "you have to say before I go"
+        },
+        {
+          "known": "我想在开始学习英语之前回家",
+          "target": "I want to go back before I start learning English"
+        },
+        {
+          "known": "她会在我准备好之前帮我，因为她喜欢帮我",
+          "target": "she is going to help me before I am ready, because she likes to help me"
+        }
+      ]
+    },
+    "S0025L03": {
+      "basket_id": "S0025L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "走",
+        "target": "to go"
+      },
+      "practice_phrases": [
+        {
+          "known": "走",
+          "target": "to go"
+        },
+        {
+          "known": "我走",
+          "target": "I go"
+        },
+        {
+          "known": "我要走了",
+          "target": "I am going to go"
+        },
+        {
+          "known": "我现在想走",
+          "target": "I want to go now"
+        },
+        {
+          "known": "我很快要走了",
+          "target": "I am going to go soon"
+        },
+        {
+          "known": "你会在今天走吗？",
+          "target": "are you going to go today?"
+        },
+        {
+          "known": "我不想在晚上之前走",
+          "target": "I do not want to go before evening"
+        },
+        {
+          "known": "她必须走，但我想帮她",
+          "target": "she has to go, but I want to help her"
+        },
+        {
+          "known": "我猜我会在六点之前走",
+          "target": "I guess I am going to go before six o'clock"
+        },
+        {
+          "known": "我不喜欢走，因为我喜欢和你说英语",
+          "target": "I do not like to go, because I like to speak English with you"
+        }
+      ]
+    },
+    "S0025L04": {
+      "basket_id": "S0025L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我必须走",
+        "target": "I have to go"
+      },
+      "practice_phrases": [
+        {
+          "known": "我必须走",
+          "target": "I have to go"
+        },
+        {
+          "known": "我必须走了",
+          "target": "I have to go now"
+        },
+        {
+          "known": "我必须走，但是",
+          "target": "I have to go, but"
+        },
+        {
+          "known": "我猜我必须走",
+          "target": "I guess I have to go"
+        },
+        {
+          "known": "我知道我必须走",
+          "target": "I know I have to go"
+        },
+        {
+          "known": "我必须走，因为现在六点了",
+          "target": "I have to go, because it is six o'clock now"
+        },
+        {
+          "known": "我很快必须走，我很抱歉",
+          "target": "I have to go soon, I am sorry"
+        },
+        {
+          "known": "我必须走，但我不想走",
+          "target": "I have to go, but I do not want to go"
+        },
+        {
+          "known": "我很抱歉，我必须走，因为我想在晚上之前回家",
+          "target": "I am sorry, I have to go, because I want to go back before evening"
+        },
+        {
+          "known": "我知道我必须走，但我想在我走之前帮你学习英语",
+          "target": "I know I have to go, but I want to help you learn English before I go"
+        }
+      ]
+    },
+    "S0025L05": {
+      "basket_id": "S0025L05",
+      "version": "8.2.0",
+      "lego": {
+        "known": "你会...吗？",
+        "target": "Are you going to...?"
+      },
+      "practice_phrases": [
+        {
+          "known": "你会去吗？",
+          "target": "Are you going to go?"
+        },
+        {
+          "known": "你会帮我吗？",
+          "target": "Are you going to help me?"
+        },
+        {
+          "known": "你会说英语吗？",
+          "target": "Are you going to speak English?"
+        },
+        {
+          "known": "你会回答吗？",
+          "target": "Are you going to answer?"
+        },
+        {
+          "known": "你会今天来吗？",
+          "target": "Are you going to come today?"
+        },
+        {
+          "known": "你会和我学习吗？",
+          "target": "Are you going to learn with me?"
+        },
+        {
+          "known": "你会在晚上之前完成吗？",
+          "target": "Are you going to finish before evening?"
+        },
+        {
+          "known": "你会在明天帮我学习吗？",
+          "target": "Are you going to help me learn tomorrow?"
+        },
+        {
+          "known": "你会很快准备好，还是你会花很多时间？",
+          "target": "Are you going to be ready soon, or are you going to take much time?"
+        },
+        {
+          "known": "你会在我必须走之前帮我说这个英语句子吗？",
+          "target": "Are you going to help me say this English sentence before I have to go?"
+        }
+      ]
+    },
+    "S0026L01": {
+      "basket_id": "S0026L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "喜欢",
+        "target": "to like"
+      },
+      "practice_phrases": [
+        {
+          "known": "喜欢",
+          "target": "to like"
+        },
+        {
+          "known": "我喜欢",
+          "target": "I like"
+        },
+        {
+          "known": "我喜欢学习",
+          "target": "I like learning"
+        },
+        {
+          "known": "我喜欢说英语",
+          "target": "I like to speak English"
+        },
+        {
+          "known": "她喜欢帮我",
+          "target": "she likes to help me"
+        },
+        {
+          "known": "我喜欢和你练习",
+          "target": "I like to practise with you"
+        },
+        {
+          "known": "我很喜欢学习英语",
+          "target": "I like learning English very much"
+        },
+        {
+          "known": "我喜欢帮别人学习英语",
+          "target": "I like to help people learn English"
+        },
+        {
+          "known": "我知道你喜欢学习，因为你每天都练习",
+          "target": "I know you like learning, because you practise all day"
+        },
+        {
+          "known": "我很喜欢感觉好像我能轻松说英语",
+          "target": "I like feeling as if I can speak English easily"
+        }
+      ]
+    },
+    "S0026L02": {
+      "basket_id": "S0026L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "感觉",
+        "target": "feeling"
+      },
+      "practice_phrases": [
+        {
+          "known": "感觉",
+          "target": "feeling"
+        },
+        {
+          "known": "这个感觉",
+          "target": "this feeling"
+        },
+        {
+          "known": "我喜欢感觉",
+          "target": "I like feeling"
+        },
+        {
+          "known": "我有这个感觉",
+          "target": "I have this feeling"
+        },
+        {
+          "known": "感觉很好",
+          "target": "feeling very well"
+        },
+        {
+          "known": "我喜欢这个感觉",
+          "target": "I like this feeling"
+        },
+        {
+          "known": "我喜欢感觉准备好了",
+          "target": "I like feeling ready"
+        },
+        {
+          "known": "我喜欢感觉好像我能说英语",
+          "target": "I like feeling as if I can speak English"
+        },
+        {
+          "known": "我很喜欢感觉好像我快准备好要学习了",
+          "target": "I like feeling as if I am nearly ready to learn"
+        },
+        {
+          "known": "我不喜欢感觉好像我不能轻松回答，因为我想说得很好",
+          "target": "I do not like feeling as if I can not answer easily, because I want to say it well"
+        }
+      ]
+    },
+    "S0026L03": {
+      "basket_id": "S0026L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "好像",
+        "target": "as if"
+      },
+      "practice_phrases": [
+        {
+          "known": "好像",
+          "target": "as if"
+        },
+        {
+          "known": "感觉好像",
+          "target": "feeling as if"
+        },
+        {
+          "known": "好像我知道",
+          "target": "as if I know"
+        },
+        {
+          "known": "好像我准备好了",
+          "target": "as if I am ready"
+        },
+        {
+          "known": "感觉好像我能说",
+          "target": "feeling as if I can say"
+        },
+        {
+          "known": "我喜欢感觉好像我会说英语",
+          "target": "I like feeling as if I am going to speak English"
+        },
+        {
+          "known": "好像我很快就准备好了",
+          "target": "as if I am ready soon"
+        },
+        {
+          "known": "我想感觉好像我知道怎么说",
+          "target": "I want to feel as if I know how to say"
+        },
+        {
+          "known": "我喜欢感觉好像我快准备好要学习英语了",
+          "target": "I like feeling as if I am nearly ready to learn English"
+        },
+        {
+          "known": "她感觉好像她不能回答，但我猜她能轻松说",
+          "target": "she feels as if she can not answer, but I guess she can say it easily"
+        }
+      ]
+    },
+    "S0026L04": {
+      "basket_id": "S0026L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "准备好",
+        "target": "ready"
+      },
+      "practice_phrases": [
+        {
+          "known": "准备好",
+          "target": "ready"
+        },
+        {
+          "known": "我准备好了",
+          "target": "I am ready"
+        },
+        {
+          "known": "你准备好了吗？",
+          "target": "are you ready?"
+        },
+        {
+          "known": "我快准备好了",
+          "target": "I am nearly ready"
+        },
+        {
+          "known": "我不准备好",
+          "target": "I am not ready"
+        },
+        {
+          "known": "我想准备好要走了",
+          "target": "I want to be ready to go"
+        },
+        {
+          "known": "我会很快准备好的",
+          "target": "I am going to be ready soon"
+        },
+        {
+          "known": "她准备好说英语了吗？",
+          "target": "is she ready to speak English?"
+        },
+        {
+          "known": "我猜我很快就准备好要开始学习了",
+          "target": "I guess I am going to be ready to start learning soon"
+        },
+        {
+          "known": "我喜欢感觉好像我准备好了，因为我想很好地说英语",
+          "target": "I like feeling as if I am ready, because I want to speak English well"
+        }
+      ]
+    },
+    "S0026L05": {
+      "basket_id": "S0026L05",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我快准备好了",
+        "target": "I am nearly ready"
+      },
+      "practice_phrases": [
+        {
+          "known": "我快准备好了",
+          "target": "I am nearly ready"
+        },
+        {
+          "known": "我快准备好要走了",
+          "target": "I am nearly ready to go"
+        },
+        {
+          "known": "我猜我快准备好了",
+          "target": "I guess I am nearly ready"
+        },
+        {
+          "known": "我快准备好要学习了",
+          "target": "I am nearly ready to learn"
+        },
+        {
+          "known": "我快准备好要说了",
+          "target": "I am nearly ready to say"
+        },
+        {
+          "known": "我快准备好要开始了",
+          "target": "I am nearly ready to start"
+        },
+        {
+          "known": "我快准备好要回答你的问题了",
+          "target": "I am nearly ready to answer"
+        },
+        {
+          "known": "我感觉好像我快准备好要说英语了",
+          "target": "I feel as if I am nearly ready to speak English"
+        },
+        {
+          "known": "我快准备好了，但我想在我走之前练习说话",
+          "target": "I am nearly ready, but I want to practise speaking before I go"
+        },
+        {
+          "known": "我很喜欢感觉好像我快准备好要帮别人学习英语了",
+          "target": "I like feeling as if I am nearly ready to help people learn English"
+        }
+      ]
+    },
+    "S0027L01": {
+      "basket_id": "S0027L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "太多",
+        "target": "too much"
+      },
+      "practice_phrases": [
+        {
+          "known": "太多",
+          "target": "too much"
+        },
+        {
+          "known": "太多时间",
+          "target": "too much time"
+        },
+        {
+          "known": "这太多了",
+          "target": "this is too much"
+        },
+        {
+          "known": "花太多时间",
+          "target": "taking too much time"
+        },
+        {
+          "known": "说太多",
+          "target": "to say too much"
+        },
+        {
+          "known": "我不想花太多时间",
+          "target": "I do not want to take too much time"
+        },
+        {
+          "known": "这太多了，我不能完成",
+          "target": "this is too much, I can not finish"
+        },
+        {
+          "known": "你花太多时间来回答",
+          "target": "you are taking too much time to answer"
+        },
+        {
+          "known": "我不喜欢花太多时间，因为我想很快完成",
+          "target": "I do not like taking too much time, because I want to finish soon"
+        },
+        {
+          "known": "我猜我花太多时间来学习这个，但我想说得很好",
+          "target": "I guess I am taking too much time to learn this, but I want to say it well"
+        }
+      ]
+    },
+    "S0027L02": {
+      "basket_id": "S0027L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "时间",
+        "target": "time"
+      },
+      "practice_phrases": [
+        {
+          "known": "时间",
+          "target": "time"
+        },
+        {
+          "known": "很多时间",
+          "target": "much time"
+        },
+        {
+          "known": "我有时间",
+          "target": "I have time"
+        },
+        {
+          "known": "花时间",
+          "target": "taking time"
+        },
+        {
+          "known": "我没有时间",
+          "target": "I do not have time"
+        },
+        {
+          "known": "我想要更多时间",
+          "target": "I want more time"
+        },
+        {
+          "known": "我喜欢花时间学习",
+          "target": "I like taking time to learn"
+        },
+        {
+          "known": "我猜我没有太多时间",
+          "target": "I guess I do not have too much time"
+        },
+        {
+          "known": "你有时间在明天之前帮我练习吗？",
+          "target": "do you have time to help me practise before tomorrow?"
+        },
+        {
+          "known": "我不喜欢花太多时间来回答，因为我想很快完成",
+          "target": "I do not like taking too much time to answer, because I want to finish soon"
+        }
+      ]
+    },
+    "S0027L03": {
+      "basket_id": "S0027L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "回答",
+        "target": "to answer"
+      },
+      "practice_phrases": [
+        {
+          "known": "回答",
+          "target": "to answer"
+        },
+        {
+          "known": "我回答",
+          "target": "I answer"
+        },
+        {
+          "known": "回答我",
+          "target": "to answer me"
+        },
+        {
+          "known": "我想回答",
+          "target": "I want to answer"
+        },
+        {
+          "known": "我能回答吗？",
+          "target": "can I answer?"
+        },
+        {
+          "known": "我不能很好地回答",
+          "target": "I can not answer well"
+        },
+        {
+          "known": "你会回答我的问题吗？",
+          "target": "are you going to answer me?"
+        },
+        {
+          "known": "我想很快回答，但我不知道",
+          "target": "I want to answer soon, but I do not know"
+        },
+        {
+          "known": "我猜我不能轻松回答，因为我正在努力学习",
+          "target": "I guess I can not answer easily, because I am trying to learn"
+        },
+        {
+          "known": "我不喜欢花太多时间来回答，因为我想说得很好",
+          "target": "I do not like taking too much time to answer, because I want to say it well"
+        }
+      ]
+    },
+    "S0027L04": {
+      "basket_id": "S0027L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "花时间",
+        "target": "taking time"
+      },
+      "practice_phrases": [
+        {
+          "known": "花时间",
+          "target": "taking time"
+        },
+        {
+          "known": "我花时间",
+          "target": "I am taking time"
+        },
+        {
+          "known": "花时间学习",
+          "target": "taking time to learn"
+        },
+        {
+          "known": "我喜欢花时间",
+          "target": "I like taking time"
+        },
+        {
+          "known": "花很多时间",
+          "target": "taking much time"
+        },
+        {
+          "known": "我正在花时间练习",
+          "target": "I am taking time to practise"
+        },
+        {
+          "known": "我不想花太多时间",
+          "target": "I do not want to take too much time"
+        },
+        {
+          "known": "我喜欢花时间来学习英语",
+          "target": "I like taking time to learn English"
+        },
+        {
+          "known": "你花时间说这个句子，因为你想说得很好",
+          "target": "you are taking time to say this sentence, because you want to say it well"
+        },
+        {
+          "known": "我不喜欢花太多时间来回答，但我想准备好",
+          "target": "I do not like taking too much time to answer, but I want to be ready"
+        }
+      ]
+    },
+    "S0027L05": {
+      "basket_id": "S0027L05",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我不喜欢",
+        "target": "I do not like"
+      },
+      "practice_phrases": [
+        {
+          "known": "我不喜欢",
+          "target": "I do not like"
+        },
+        {
+          "known": "我不喜欢这个",
+          "target": "I do not like this"
+        },
+        {
+          "known": "我不喜欢学习",
+          "target": "I do not like learning"
+        },
+        {
+          "known": "我不喜欢说",
+          "target": "I do not like to say"
+        },
+        {
+          "known": "我不喜欢花时间",
+          "target": "I do not like taking time"
+        },
+        {
+          "known": "我不喜欢这个感觉",
+          "target": "I do not like this feeling"
+        },
+        {
+          "known": "我不喜欢花太多时间",
+          "target": "I do not like taking too much time"
+        },
+        {
+          "known": "我不喜欢感觉好像我不能说",
+          "target": "I do not like feeling as if I can not say"
+        },
+        {
+          "known": "我不喜欢回答，因为我不准备好",
+          "target": "I do not like to answer, because I am not ready"
+        },
+        {
+          "known": "我不喜欢花太多时间来回答，因为我想很快完成",
+          "target": "I do not like taking too much time to answer, because I want to finish soon"
+        }
+      ]
+    },
     "S0028L01": {
       "lego": {
         "known": "有用",
@@ -767,6 +2317,1706 @@
         {
           "known": "我昨天想问你一件事",
           "target": "I wanted to ask you something yesterday"
+        }
+      ]
+    },
+    "S0031L01": {
+      "basket_id": "S0031L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "今晚",
+        "target": "tonight"
+      },
+      "practice_phrases": [
+        {
+          "known": "今晚。",
+          "target": "Tonight."
+        },
+        {
+          "known": "今晚？",
+          "target": "Tonight?"
+        },
+        {
+          "known": "今晚我想去。",
+          "target": "Tonight I want to go."
+        },
+        {
+          "known": "我想今晚去。",
+          "target": "I wanted to go tonight."
+        },
+        {
+          "known": "你今晚会帮我吗？",
+          "target": "Are you going to help me tonight?"
+        },
+        {
+          "known": "我今晚想问你。",
+          "target": "I wanted to ask you tonight."
+        },
+        {
+          "known": "我想今晚认识人。",
+          "target": "I wanted to meet people tonight."
+        },
+        {
+          "known": "我今晚想开始。",
+          "target": "I wanted to start tonight."
+        },
+        {
+          "known": "你今晚会来吗？",
+          "target": "Are you going to come tonight?"
+        },
+        {
+          "known": "我今晚想问你一件事。",
+          "target": "I wanted to ask you something tonight."
+        }
+      ]
+    },
+    "S0031L02": {
+      "basket_id": "S0031L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "说话",
+        "target": "to speak"
+      },
+      "practice_phrases": [
+        {
+          "known": "说话。",
+          "target": "To speak."
+        },
+        {
+          "known": "我想说话。",
+          "target": "I want to speak."
+        },
+        {
+          "known": "今晚说话。",
+          "target": "To speak tonight."
+        },
+        {
+          "known": "我想今晚说话。",
+          "target": "I wanted to speak tonight."
+        },
+        {
+          "known": "你会说话吗？",
+          "target": "Are you going to speak?"
+        },
+        {
+          "known": "我想很快说话。",
+          "target": "I wanted to speak soon."
+        },
+        {
+          "known": "我想开始说话。",
+          "target": "I wanted to start to speak."
+        },
+        {
+          "known": "你今晚会说话吗？",
+          "target": "Are you going to speak tonight?"
+        },
+        {
+          "known": "我不喜欢说话。",
+          "target": "I do not like to speak."
+        },
+        {
+          "known": "我想今晚和你说话。",
+          "target": "I wanted to speak with you tonight."
+        }
+      ]
+    },
+    "S0031L03": {
+      "basket_id": "S0031L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "和我",
+        "target": "with me"
+      },
+      "practice_phrases": [
+        {
+          "known": "和我。",
+          "target": "With me."
+        },
+        {
+          "known": "和我？",
+          "target": "With me?"
+        },
+        {
+          "known": "和我说话。",
+          "target": "To speak with me."
+        },
+        {
+          "known": "今晚和我。",
+          "target": "With me tonight."
+        },
+        {
+          "known": "今晚和我说话。",
+          "target": "To speak with me tonight."
+        },
+        {
+          "known": "你和我在一起吗？",
+          "target": "Are you with me?"
+        },
+        {
+          "known": "今晚和我来。",
+          "target": "Come with me tonight."
+        },
+        {
+          "known": "你会和我说话吗？",
+          "target": "Are you going to speak with me?"
+        },
+        {
+          "known": "你今晚会和我说话吗？",
+          "target": "Are you going to speak with me tonight?"
+        },
+        {
+          "known": "我想你今晚和我说话。",
+          "target": "I wanted you to speak with me tonight."
+        }
+      ]
+    },
+    "S0031L04": {
+      "basket_id": "S0031L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "想和我说话",
+        "target": "wanted to speak with me"
+      },
+      "practice_phrases": [
+        {
+          "known": "想和我说话。",
+          "target": "Wanted to speak with me."
+        },
+        {
+          "known": "你想和我说话。",
+          "target": "You wanted to speak with me."
+        },
+        {
+          "known": "今晚想和我说话。",
+          "target": "Wanted to speak with me tonight."
+        },
+        {
+          "known": "他想和我说话。",
+          "target": "He wanted to speak with me."
+        },
+        {
+          "known": "你今晚想和我说话。",
+          "target": "You wanted to speak with me tonight."
+        },
+        {
+          "known": "她想和我说话。",
+          "target": "She wanted to speak with me."
+        },
+        {
+          "known": "你想和我说话吗？",
+          "target": "Did you want to speak with me?"
+        },
+        {
+          "known": "他今晚想和我说话。",
+          "target": "He wanted to speak with me tonight."
+        },
+        {
+          "known": "你昨天想和我说话。",
+          "target": "You wanted to speak with me yesterday."
+        },
+        {
+          "known": "你今晚想和我说话。",
+          "target": "You wanted to speak with me tonight."
+        }
+      ]
+    },
+    "S0032L01": {
+      "basket_id": "S0032L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "什么东西",
+        "target": "something"
+      },
+      "practice_phrases": [
+        {
+          "known": "什么东西。",
+          "target": "Something."
+        },
+        {
+          "known": "什么东西？",
+          "target": "Something?"
+        },
+        {
+          "known": "我想要什么东西。",
+          "target": "I want something."
+        },
+        {
+          "known": "我想问什么东西。",
+          "target": "I wanted to ask something."
+        },
+        {
+          "known": "今晚什么东西。",
+          "target": "Something tonight."
+        },
+        {
+          "known": "我想今晚问什么东西。",
+          "target": "I wanted to ask something tonight."
+        },
+        {
+          "known": "你想要什么东西吗？",
+          "target": "Did you want something?"
+        },
+        {
+          "known": "我昨天想问你什么东西。",
+          "target": "I wanted to ask you something yesterday."
+        },
+        {
+          "known": "你今晚想要什么东西吗？",
+          "target": "Did you want something tonight?"
+        },
+        {
+          "known": "我今晚想问你什么东西。",
+          "target": "I wanted to ask you something tonight."
+        }
+      ]
+    },
+    "S0032L02": {
+      "basket_id": "S0032L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "给我看",
+        "target": "show me"
+      },
+      "practice_phrases": [
+        {
+          "known": "给我看。",
+          "target": "Show me."
+        },
+        {
+          "known": "给我看？",
+          "target": "Show me?"
+        },
+        {
+          "known": "给我看什么东西。",
+          "target": "Show me something."
+        },
+        {
+          "known": "你给我看。",
+          "target": "You show me."
+        },
+        {
+          "known": "今晚给我看。",
+          "target": "Show me tonight."
+        },
+        {
+          "known": "你想给我看什么东西。",
+          "target": "You wanted to show me something."
+        },
+        {
+          "known": "今晚给我看什么东西。",
+          "target": "Show me something tonight."
+        },
+        {
+          "known": "你今晚想给我看吗？",
+          "target": "Did you want to show me tonight?"
+        },
+        {
+          "known": "你想今晚给我看什么东西吗？",
+          "target": "Did you want to show me something tonight?"
+        },
+        {
+          "known": "你昨天想给我看什么东西。",
+          "target": "You wanted to show me something yesterday."
+        }
+      ]
+    },
+    "S0032L03": {
+      "basket_id": "S0032L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "你想...吗？",
+        "target": "Did you want to...?"
+      },
+      "practice_phrases": [
+        {
+          "known": "你想去吗？",
+          "target": "Did you want to go?"
+        },
+        {
+          "known": "你想说话吗？",
+          "target": "Did you want to speak?"
+        },
+        {
+          "known": "你想和我说话吗？",
+          "target": "Did you want to speak with me?"
+        },
+        {
+          "known": "你想给我看吗？",
+          "target": "Did you want to show me?"
+        },
+        {
+          "known": "你想今晚去吗？",
+          "target": "Did you want to go tonight?"
+        },
+        {
+          "known": "你想给我看什么东西吗？",
+          "target": "Did you want to show me something?"
+        },
+        {
+          "known": "你想今晚说话吗？",
+          "target": "Did you want to speak tonight?"
+        },
+        {
+          "known": "你想今晚和我说话吗？",
+          "target": "Did you want to speak with me tonight?"
+        },
+        {
+          "known": "你想今晚给我看什么东西吗？",
+          "target": "Did you want to show me something tonight?"
+        },
+        {
+          "known": "你想给我看什么东西吗？",
+          "target": "Did you want to show me something?"
+        }
+      ]
+    },
+    "S0033L01": {
+      "basket_id": "S0033L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "英语",
+        "target": "English"
+      },
+      "practice_phrases": [
+        {
+          "known": "英语。",
+          "target": "English."
+        },
+        {
+          "known": "英语？",
+          "target": "English?"
+        },
+        {
+          "known": "我想要英语。",
+          "target": "I want English."
+        },
+        {
+          "known": "我在学英语。",
+          "target": "I am learning English."
+        },
+        {
+          "known": "说英语。",
+          "target": "To speak English."
+        },
+        {
+          "known": "我想说英语。",
+          "target": "I want to speak English."
+        },
+        {
+          "known": "你在学英语吗？",
+          "target": "Are you learning English?"
+        },
+        {
+          "known": "我想认识说英语的人。",
+          "target": "I want to meet people who speak English."
+        },
+        {
+          "known": "我想今晚说英语。",
+          "target": "I wanted to speak English tonight."
+        },
+        {
+          "known": "因为我想认识会说英语的人。",
+          "target": "Because I want to meet people who speak English."
+        }
+      ]
+    },
+    "S0033L02": {
+      "basket_id": "S0033L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "多久",
+        "target": "how long"
+      },
+      "practice_phrases": [
+        {
+          "known": "多久？",
+          "target": "How long?"
+        },
+        {
+          "known": "多久了？",
+          "target": "How long?"
+        },
+        {
+          "known": "学多久？",
+          "target": "How long to learn?"
+        },
+        {
+          "known": "你学多久了？",
+          "target": "How long are you learning?"
+        },
+        {
+          "known": "你学了多久？",
+          "target": "How long did you learn?"
+        },
+        {
+          "known": "你想学多久？",
+          "target": "How long did you want to learn?"
+        },
+        {
+          "known": "你学英语多久了？",
+          "target": "How long are you learning English?"
+        },
+        {
+          "known": "你今晚学多久？",
+          "target": "How long are you learning tonight?"
+        },
+        {
+          "known": "你和我学多久了？",
+          "target": "How long are you learning with me?"
+        },
+        {
+          "known": "你学英语学了多久了？",
+          "target": "How long have you been learning English?"
+        }
+      ]
+    },
+    "S0033L03": {
+      "basket_id": "S0033L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "学",
+        "target": "to learn"
+      },
+      "practice_phrases": [
+        {
+          "known": "学。",
+          "target": "To learn."
+        },
+        {
+          "known": "我想学。",
+          "target": "I want to learn."
+        },
+        {
+          "known": "学英语。",
+          "target": "To learn English."
+        },
+        {
+          "known": "我在学。",
+          "target": "I am learning."
+        },
+        {
+          "known": "我在学英语。",
+          "target": "I am learning English."
+        },
+        {
+          "known": "你在学吗？",
+          "target": "Are you learning?"
+        },
+        {
+          "known": "你在学英语吗？",
+          "target": "Are you learning English?"
+        },
+        {
+          "known": "我想开始学。",
+          "target": "I wanted to start to learn."
+        },
+        {
+          "known": "你学了多久？",
+          "target": "How long did you learn?"
+        },
+        {
+          "known": "你学英语学了多久了？",
+          "target": "How long have you been learning English?"
+        }
+      ]
+    },
+    "S0033L04": {
+      "basket_id": "S0033L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "学了多久了",
+        "target": "have been learning for how long"
+      },
+      "practice_phrases": [
+        {
+          "known": "学了多久了？",
+          "target": "Been learning how long?"
+        },
+        {
+          "known": "你学了多久了？",
+          "target": "How long have you been learning?"
+        },
+        {
+          "known": "学英语学了多久了？",
+          "target": "Been learning English how long?"
+        },
+        {
+          "known": "你学英语学了多久了？",
+          "target": "How long have you been learning English?"
+        },
+        {
+          "known": "你学了多久英语了？",
+          "target": "How long have you been learning English?"
+        },
+        {
+          "known": "你和我学了多久了？",
+          "target": "How long have you been learning with me?"
+        },
+        {
+          "known": "我学了多久了？",
+          "target": "How long have I been learning?"
+        },
+        {
+          "known": "我学英语学了多久了？",
+          "target": "How long have I been learning English?"
+        },
+        {
+          "known": "你和我学英语学了多久了？",
+          "target": "How long have you been learning English with me?"
+        },
+        {
+          "known": "你学英语学了多久了？",
+          "target": "How long have you been learning English?"
+        }
+      ]
+    },
+    "S0034L01": {
+      "basket_id": "S0034L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "他",
+        "target": "he"
+      },
+      "practice_phrases": [
+        {
+          "known": "他",
+          "target": "He"
+        },
+        {
+          "known": "他想",
+          "target": "He wanted"
+        },
+        {
+          "known": "他想帮",
+          "target": "He wanted to help"
+        },
+        {
+          "known": "他想走",
+          "target": "He wanted to go"
+        },
+        {
+          "known": "他想问你",
+          "target": "He wanted to ask you"
+        },
+        {
+          "known": "他昨天想帮",
+          "target": "He wanted to help yesterday"
+        },
+        {
+          "known": "他想和我说话",
+          "target": "He wanted to speak with me"
+        },
+        {
+          "known": "他想问你什么东西",
+          "target": "He wanted to ask you something"
+        },
+        {
+          "known": "他想在我必须走之前帮",
+          "target": "He wanted to help before I have to go"
+        },
+        {
+          "known": "他期待说得更好",
+          "target": "He is looking forward to speaking better"
+        }
+      ]
+    },
+    "S0034L02": {
+      "basket_id": "S0034L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "不想",
+        "target": "don't want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "不想",
+          "target": "Don't want to"
+        },
+        {
+          "known": "不想走",
+          "target": "Don't want to go"
+        },
+        {
+          "known": "他不想",
+          "target": "He doesn't want to"
+        },
+        {
+          "known": "不想说话",
+          "target": "Don't want to speak"
+        },
+        {
+          "known": "他不想帮",
+          "target": "He doesn't want to help"
+        },
+        {
+          "known": "不想问你",
+          "target": "Don't want to ask you"
+        },
+        {
+          "known": "他今晚不想走",
+          "target": "He doesn't want to go tonight"
+        },
+        {
+          "known": "不想和我说话",
+          "target": "Don't want to speak with me"
+        },
+        {
+          "known": "他不想问你什么东西",
+          "target": "He doesn't want to ask you something"
+        },
+        {
+          "known": "他不想在我必须走之前帮",
+          "target": "He doesn't want to help before I have to go"
+        }
+      ]
+    },
+    "S0034L03": {
+      "basket_id": "S0034L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "安静",
+        "target": "quiet"
+      },
+      "practice_phrases": [
+        {
+          "known": "安静",
+          "target": "Quiet"
+        },
+        {
+          "known": "安静",
+          "target": "Be quiet"
+        },
+        {
+          "known": "想安静",
+          "target": "Want to be quiet"
+        },
+        {
+          "known": "他想安静",
+          "target": "He wanted to be quiet"
+        },
+        {
+          "known": "不想安静",
+          "target": "Don't want to be quiet"
+        },
+        {
+          "known": "他不想安静",
+          "target": "He doesn't want to be quiet"
+        },
+        {
+          "known": "昨天想安静",
+          "target": "Wanted to be quiet yesterday"
+        },
+        {
+          "known": "他昨天想安静",
+          "target": "He wanted to be quiet yesterday"
+        },
+        {
+          "known": "他今晚不想安静",
+          "target": "He doesn't want to be quiet tonight"
+        },
+        {
+          "known": "不想在我走之前安静",
+          "target": "Don't want to be quiet before I go"
+        }
+      ]
+    },
+    "S0034L04": {
+      "basket_id": "S0034L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "当别人在这里的时候",
+        "target": "when other people are here"
+      },
+      "practice_phrases": [
+        {
+          "known": "当别人在这里的时候",
+          "target": "When other people are here"
+        },
+        {
+          "known": "当别人在这里的时候想帮",
+          "target": "Want to help when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候想走",
+          "target": "Want to go when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候想说话",
+          "target": "Want to speak when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候他想帮",
+          "target": "He wanted to help when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候不想说话",
+          "target": "Don't want to speak when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候他想说话",
+          "target": "He wanted to speak when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候他不想帮",
+          "target": "He doesn't want to help when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候他不想说话",
+          "target": "He doesn't want to speak when other people are here"
+        },
+        {
+          "known": "当别人在这里的时候，他不想安静。",
+          "target": "He doesn't want to be quiet when other people are here."
+        }
+      ]
+    },
+    "S0035L01": {
+      "basket_id": "S0035L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "她",
+        "target": "she"
+      },
+      "practice_phrases": [
+        {
+          "known": "她",
+          "target": "She"
+        },
+        {
+          "known": "她想",
+          "target": "She wanted"
+        },
+        {
+          "known": "她想帮",
+          "target": "She wanted to help"
+        },
+        {
+          "known": "她想走",
+          "target": "She wanted to go"
+        },
+        {
+          "known": "她想问你",
+          "target": "She wanted to ask you"
+        },
+        {
+          "known": "她昨天想帮",
+          "target": "She wanted to help yesterday"
+        },
+        {
+          "known": "她想和我说话",
+          "target": "She wanted to speak with me"
+        },
+        {
+          "known": "她想问你什么东西",
+          "target": "She wanted to ask you something"
+        },
+        {
+          "known": "她期待说得更好",
+          "target": "She is looking forward to speaking better"
+        },
+        {
+          "known": "她想在我必须走之前帮",
+          "target": "She wanted to help before I have to go"
+        }
+      ]
+    },
+    "S0035L02": {
+      "basket_id": "S0035L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "不想",
+        "target": "don't want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "不想",
+          "target": "Don't want to"
+        },
+        {
+          "known": "不想走",
+          "target": "Don't want to go"
+        },
+        {
+          "known": "她不想",
+          "target": "She doesn't want to"
+        },
+        {
+          "known": "不想说话",
+          "target": "Don't want to speak"
+        },
+        {
+          "known": "她不想帮",
+          "target": "She doesn't want to help"
+        },
+        {
+          "known": "不想问你",
+          "target": "Don't want to ask you"
+        },
+        {
+          "known": "她今晚不想走",
+          "target": "She doesn't want to go tonight"
+        },
+        {
+          "known": "不想和我说话",
+          "target": "Don't want to speak with me"
+        },
+        {
+          "known": "她不想问你什么东西",
+          "target": "She doesn't want to ask you something"
+        },
+        {
+          "known": "她不想在我必须走之前帮",
+          "target": "She doesn't want to help before I have to go"
+        }
+      ]
+    },
+    "S0035L03": {
+      "basket_id": "S0035L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "读",
+        "target": "read"
+      },
+      "practice_phrases": [
+        {
+          "known": "读",
+          "target": "Read"
+        },
+        {
+          "known": "想读",
+          "target": "Want to read"
+        },
+        {
+          "known": "她想读",
+          "target": "She wanted to read"
+        },
+        {
+          "known": "不想读",
+          "target": "Don't want to read"
+        },
+        {
+          "known": "她不想读",
+          "target": "She doesn't want to read"
+        },
+        {
+          "known": "昨天想读",
+          "target": "Wanted to read yesterday"
+        },
+        {
+          "known": "她昨天想读",
+          "target": "She wanted to read yesterday"
+        },
+        {
+          "known": "她今晚不想读",
+          "target": "She doesn't want to read tonight"
+        },
+        {
+          "known": "她不想读什么东西",
+          "target": "She doesn't want to read something"
+        },
+        {
+          "known": "她想在我必须走之前读",
+          "target": "She wanted to read before I have to go"
+        }
+      ]
+    },
+    "S0035L04": {
+      "basket_id": "S0035L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "任何东西",
+        "target": "anything"
+      },
+      "practice_phrases": [
+        {
+          "known": "任何东西",
+          "target": "Anything"
+        },
+        {
+          "known": "读任何东西",
+          "target": "Read anything"
+        },
+        {
+          "known": "想读任何东西",
+          "target": "Want to read anything"
+        },
+        {
+          "known": "她想读任何东西",
+          "target": "She wanted to read anything"
+        },
+        {
+          "known": "不想读任何东西",
+          "target": "Don't want to read anything"
+        },
+        {
+          "known": "她不想读任何东西",
+          "target": "She doesn't want to read anything"
+        },
+        {
+          "known": "昨天想读任何东西",
+          "target": "Wanted to read anything yesterday"
+        },
+        {
+          "known": "她昨天想读任何东西",
+          "target": "She wanted to read anything yesterday"
+        },
+        {
+          "known": "她今晚不想读任何东西",
+          "target": "She doesn't want to read anything tonight"
+        },
+        {
+          "known": "她不想问你任何东西",
+          "target": "She doesn't want to ask you anything"
+        }
+      ]
+    },
+    "S0035L05": {
+      "basket_id": "S0035L05",
+      "version": "8.2.0",
+      "lego": {
+        "known": "今天下午",
+        "target": "this afternoon"
+      },
+      "practice_phrases": [
+        {
+          "known": "今天下午",
+          "target": "This afternoon"
+        },
+        {
+          "known": "今天下午想读",
+          "target": "Want to read this afternoon"
+        },
+        {
+          "known": "她今天下午想读",
+          "target": "She wanted to read this afternoon"
+        },
+        {
+          "known": "今天下午不想读",
+          "target": "Don't want to read this afternoon"
+        },
+        {
+          "known": "她今天下午不想读",
+          "target": "She doesn't want to read this afternoon"
+        },
+        {
+          "known": "今天下午想走",
+          "target": "Want to go this afternoon"
+        },
+        {
+          "known": "她今天下午不想走",
+          "target": "She doesn't want to go this afternoon"
+        },
+        {
+          "known": "她今天下午想读任何东西",
+          "target": "She wanted to read anything this afternoon"
+        },
+        {
+          "known": "今天下午不想读任何东西",
+          "target": "Don't want to read anything this afternoon"
+        },
+        {
+          "known": "她今天下午不想读任何东西。",
+          "target": "She doesn't want to read anything this afternoon."
+        }
+      ]
+    },
+    "S0036L01": {
+      "basket_id": "S0036L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我们",
+        "target": "we"
+      },
+      "practice_phrases": [
+        {
+          "known": "我们",
+          "target": "We"
+        },
+        {
+          "known": "我们想",
+          "target": "We wanted"
+        },
+        {
+          "known": "我们想帮",
+          "target": "We wanted to help"
+        },
+        {
+          "known": "我们想走",
+          "target": "We wanted to go"
+        },
+        {
+          "known": "我们想问你",
+          "target": "We wanted to ask you"
+        },
+        {
+          "known": "我们昨天想帮",
+          "target": "We wanted to help yesterday"
+        },
+        {
+          "known": "我们今晚想说话",
+          "target": "We wanted to speak tonight"
+        },
+        {
+          "known": "我们想问你什么东西",
+          "target": "We wanted to ask you something"
+        },
+        {
+          "known": "我们期待说得更好",
+          "target": "We are looking forward to speaking better"
+        },
+        {
+          "known": "我们想在你必须走之前帮",
+          "target": "We wanted to help before you have to go"
+        }
+      ]
+    },
+    "S0036L02": {
+      "basket_id": "S0036L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "不想",
+        "target": "don't want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "不想",
+          "target": "Don't want to"
+        },
+        {
+          "known": "不想走",
+          "target": "Don't want to go"
+        },
+        {
+          "known": "我们不想",
+          "target": "We don't want to"
+        },
+        {
+          "known": "不想说话",
+          "target": "Don't want to speak"
+        },
+        {
+          "known": "我们不想帮",
+          "target": "We don't want to help"
+        },
+        {
+          "known": "不想问你",
+          "target": "Don't want to ask you"
+        },
+        {
+          "known": "我们今晚不想走",
+          "target": "We don't want to go tonight"
+        },
+        {
+          "known": "今晚不想说话",
+          "target": "Don't want to speak tonight"
+        },
+        {
+          "known": "我们不想问你什么东西",
+          "target": "We don't want to ask you something"
+        },
+        {
+          "known": "我们不想在你必须走之前帮",
+          "target": "We don't want to help before you have to go"
+        }
+      ]
+    },
+    "S0036L03": {
+      "basket_id": "S0036L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "打断",
+        "target": "interrupt"
+      },
+      "practice_phrases": [
+        {
+          "known": "打断",
+          "target": "Interrupt"
+        },
+        {
+          "known": "想打断",
+          "target": "Want to interrupt"
+        },
+        {
+          "known": "我们想打断",
+          "target": "We wanted to interrupt"
+        },
+        {
+          "known": "不想打断",
+          "target": "Don't want to interrupt"
+        },
+        {
+          "known": "我们不想打断",
+          "target": "We don't want to interrupt"
+        },
+        {
+          "known": "昨天想打断",
+          "target": "Wanted to interrupt yesterday"
+        },
+        {
+          "known": "我们昨天想打断",
+          "target": "We wanted to interrupt yesterday"
+        },
+        {
+          "known": "我们今晚不想打断",
+          "target": "We don't want to interrupt tonight"
+        },
+        {
+          "known": "我们想打断什么东西",
+          "target": "We wanted to interrupt something"
+        },
+        {
+          "known": "我们想在你必须走之前打断",
+          "target": "We wanted to interrupt before you have to go"
+        }
+      ]
+    },
+    "S0036L04": {
+      "basket_id": "S0036L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "这个故事",
+        "target": "the story"
+      },
+      "practice_phrases": [
+        {
+          "known": "这个故事",
+          "target": "The story"
+        },
+        {
+          "known": "读这个故事",
+          "target": "Read the story"
+        },
+        {
+          "known": "想读这个故事",
+          "target": "Want to read the story"
+        },
+        {
+          "known": "我们想读这个故事",
+          "target": "We wanted to read the story"
+        },
+        {
+          "known": "不想读这个故事",
+          "target": "Don't want to read the story"
+        },
+        {
+          "known": "想打断这个故事",
+          "target": "Want to interrupt the story"
+        },
+        {
+          "known": "我们不想读这个故事",
+          "target": "We don't want to read the story"
+        },
+        {
+          "known": "我们想打断这个故事",
+          "target": "We wanted to interrupt the story"
+        },
+        {
+          "known": "不想打断这个故事",
+          "target": "Don't want to interrupt the story"
+        },
+        {
+          "known": "我们不想打断这个故事。",
+          "target": "We don't want to interrupt the story."
+        }
+      ]
+    },
+    "S0037L01": {
+      "basket_id": "S0037L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "上个月",
+        "target": "last month"
+      },
+      "practice_phrases": [
+        {
+          "known": "上个月",
+          "target": "last month"
+        },
+        {
+          "known": "我想上个月说",
+          "target": "I wanted to speak last month"
+        },
+        {
+          "known": "他想上个月见面",
+          "target": "he wanted to meet last month"
+        },
+        {
+          "known": "我开始上个月学习",
+          "target": "I started to learn last month"
+        },
+        {
+          "known": "我努力上个月和你说",
+          "target": "I was trying to speak with you last month"
+        },
+        {
+          "known": "我开始上个月读这个故事",
+          "target": "I started to read the story last month"
+        },
+        {
+          "known": "我不确定我上个月是否准备好了",
+          "target": "I was not sure if I was ready last month"
+        },
+        {
+          "known": "我想上个月和别人说英语",
+          "target": "I wanted to speak English with everyone else last month"
+        },
+        {
+          "known": "我期待比上个月说得更好",
+          "target": "I am looking forward to speaking better than I was last month"
+        },
+        {
+          "known": "我开始考虑上个月如何说英语",
+          "target": "I started to think about how to speak English last month"
+        }
+      ]
+    },
+    "S0037L02": {
+      "basket_id": "S0037L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "仔细地",
+        "target": "carefully"
+      },
+      "practice_phrases": [
+        {
+          "known": "仔细地",
+          "target": "carefully"
+        },
+        {
+          "known": "我仔细地说",
+          "target": "I speak carefully"
+        },
+        {
+          "known": "我试着仔细地说",
+          "target": "I try to speak carefully"
+        },
+        {
+          "known": "我想仔细地读",
+          "target": "I want to read carefully"
+        },
+        {
+          "known": "我现在努力仔细地说",
+          "target": "I am trying to speak carefully now"
+        },
+        {
+          "known": "我想让你仔细地读这个故事",
+          "target": "I want you to read the story carefully"
+        },
+        {
+          "known": "我开始今天仔细地考虑一些事",
+          "target": "I started to think about something carefully today"
+        },
+        {
+          "known": "我想今天早上仔细地记住你说的话",
+          "target": "I want to remember what you said carefully this morning"
+        },
+        {
+          "known": "我努力仔细地说因为我不确定该说什么",
+          "target": "I am trying to speak carefully because I am not sure what to say"
+        },
+        {
+          "known": "我想仔细地向你解释一些事但我还没准备好",
+          "target": "I wanted to explain something to you carefully but I was not ready"
+        }
+      ]
+    },
+    "S0037L03": {
+      "basket_id": "S0037L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "我开始考虑",
+        "target": "I started to think about"
+      },
+      "practice_phrases": [
+        {
+          "known": "我开始考虑一些事",
+          "target": "I started to think about something"
+        },
+        {
+          "known": "我开始考虑这件事",
+          "target": "I started to think about it"
+        },
+        {
+          "known": "我今天早上开始考虑",
+          "target": "I started to think about this morning"
+        },
+        {
+          "known": "我昨天开始考虑这件事",
+          "target": "I started to think about it yesterday"
+        },
+        {
+          "known": "我开始考虑我想说什么",
+          "target": "I started to think about what I wanted to say"
+        },
+        {
+          "known": "我开始考虑上个月说英语",
+          "target": "I started to think about speaking English last month"
+        },
+        {
+          "known": "我今天早上开始考虑如何说得更好",
+          "target": "I started to think about how to speak better this morning"
+        },
+        {
+          "known": "我开始仔细考虑我想对你说什么",
+          "target": "I started to think about what I wanted to say to you carefully"
+        },
+        {
+          "known": "我今天早上开始考虑这件事因为我不确定答案是什么",
+          "target": "I started to think about it this morning because I was not sure what the answer was"
+        },
+        {
+          "known": "我开始考虑一完成就如何与他人说话",
+          "target": "I started to think about how to speak with other people as soon as I finish"
+        }
+      ]
+    },
+    "S0038L01": {
+      "basket_id": "S0038L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "学习",
+        "target": "to learn"
+      },
+      "practice_phrases": [
+        {
+          "known": "学习",
+          "target": "to learn"
+        },
+        {
+          "known": "我想学习",
+          "target": "I want to learn"
+        },
+        {
+          "known": "我现在努力学习",
+          "target": "I am trying to learn now"
+        },
+        {
+          "known": "我昨天开始学习",
+          "target": "I started to learn yesterday"
+        },
+        {
+          "known": "我期待和你一起学习",
+          "target": "I am looking forward to learning with you"
+        },
+        {
+          "known": "我今天早上想学习一些有用的东西",
+          "target": "I wanted to learn something useful this morning"
+        },
+        {
+          "known": "我开始学习因为我想说",
+          "target": "I started to learn because I want to speak"
+        },
+        {
+          "known": "我努力学习如何尽可能好地说",
+          "target": "I am trying to learn how to speak as well as I can"
+        },
+        {
+          "known": "我想学习说英语因为我想和你说话",
+          "target": "I wanted to learn to speak English because I want to speak with you"
+        },
+        {
+          "known": "我期待学习如何仔细地说因为我想说得很好",
+          "target": "I am looking forward to learning how to speak carefully because I want to speak very well"
+        }
+      ]
+    },
+    "S0038L02": {
+      "basket_id": "S0038L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "大约",
+        "target": "about"
+      },
+      "practice_phrases": [
+        {
+          "known": "大约",
+          "target": "about"
+        },
+        {
+          "known": "大约一些事",
+          "target": "about something"
+        },
+        {
+          "known": "大约六点",
+          "target": "about six o'clock"
+        },
+        {
+          "known": "我想说大约一些事",
+          "target": "I wanted to speak about something"
+        },
+        {
+          "known": "我今天早上开始考虑这件事",
+          "target": "I started to think about it this morning"
+        },
+        {
+          "known": "我想和你说大约发生了什么",
+          "target": "I want to speak with you about what happened"
+        },
+        {
+          "known": "我不确定我想对你说什么",
+          "target": "I am not sure about what I wanted to say to you"
+        },
+        {
+          "known": "我想问你大约一些事但我还没准备好",
+          "target": "I wanted to ask you about something but I was not ready"
+        },
+        {
+          "known": "我昨天开始仔细考虑如何说英语",
+          "target": "I started to think carefully about how to speak English yesterday"
+        },
+        {
+          "known": "我今天早上想和你说大约你想对我说什么",
+          "target": "I wanted to speak with you about what you wanted to say to me this morning"
+        }
+      ]
+    },
+    "S0038L03": {
+      "basket_id": "S0038L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "一个星期",
+        "target": "a week"
+      },
+      "practice_phrases": [
+        {
+          "known": "一个星期",
+          "target": "a week"
+        },
+        {
+          "known": "大约一个星期",
+          "target": "about a week"
+        },
+        {
+          "known": "我学习了一个星期",
+          "target": "I was learning for a week"
+        },
+        {
+          "known": "我学习了大约一个星期",
+          "target": "I have been learning for about a week"
+        },
+        {
+          "known": "我想说大约一个星期了",
+          "target": "I wanted to speak for about a week now"
+        },
+        {
+          "known": "我努力学习了一个星期了",
+          "target": "I was trying to learn for a week now"
+        },
+        {
+          "known": "我努力说英语一个星期了",
+          "target": "I have been trying to speak English for a week"
+        },
+        {
+          "known": "我想和你说话大约一个星期了",
+          "target": "I wanted to speak with you for about a week now"
+        },
+        {
+          "known": "我学习如何仔细地说大约一个星期了",
+          "target": "I have been learning how to speak carefully for about a week"
+        },
+        {
+          "known": "我期待和你说话大约一个星期了",
+          "target": "I have been looking forward to speaking with you for about a week now"
+        }
+      ]
+    },
+    "S0039L01": {
+      "basket_id": "S0039L01",
+      "version": "8.2.0",
+      "lego": {
+        "known": "但是",
+        "target": "but"
+      },
+      "practice_phrases": [
+        {
+          "known": "但是",
+          "target": "but"
+        },
+        {
+          "known": "但是我想",
+          "target": "but I want to"
+        },
+        {
+          "known": "我想但是我不确定",
+          "target": "I want to but I am not sure"
+        },
+        {
+          "known": "但是我努力学习",
+          "target": "but I am trying to learn"
+        },
+        {
+          "known": "我想说但是我累了",
+          "target": "I wanted to speak but I was tired"
+        },
+        {
+          "known": "我想帮助你但是我还没准备好",
+          "target": "I want to help you but I am not ready"
+        },
+        {
+          "known": "我想回来但是我太累了",
+          "target": "I wanted to come back but I was too tired"
+        },
+        {
+          "known": "我想和你说话但是我还没准备好",
+          "target": "I wanted to speak with you but I was not ready"
+        },
+        {
+          "known": "我努力学习但是我不确定我能说得很好",
+          "target": "I am trying to learn but I am not sure if I can speak very well"
+        },
+        {
+          "known": "我今天早上想向你解释一些事但是我有点累",
+          "target": "I wanted to explain something to you this morning but I was a little tired"
+        }
+      ]
+    },
+    "S0039L02": {
+      "basket_id": "S0039L02",
+      "version": "8.2.0",
+      "lego": {
+        "known": "今天早上",
+        "target": "this morning"
+      },
+      "practice_phrases": [
+        {
+          "known": "今天早上",
+          "target": "this morning"
+        },
+        {
+          "known": "我今天早上说了",
+          "target": "I spoke this morning"
+        },
+        {
+          "known": "我今天早上想说",
+          "target": "I wanted to speak this morning"
+        },
+        {
+          "known": "我今天早上努力学习",
+          "target": "I was trying to learn this morning"
+        },
+        {
+          "known": "我今天早上想和你说话",
+          "target": "I wanted to speak with you this morning"
+        },
+        {
+          "known": "我今天早上开始考虑一些事",
+          "target": "I started to think about something this morning"
+        },
+        {
+          "known": "我期待今天早上和你说话",
+          "target": "I was looking forward to speaking with you this morning"
+        },
+        {
+          "known": "我今天早上想和你说话但是我累了",
+          "target": "I wanted to speak with you this morning but I was tired"
+        },
+        {
+          "known": "我今天早上开始仔细考虑如何说英语",
+          "target": "I started to think about how to speak English carefully this morning"
+        },
+        {
+          "known": "我今天早上想向你解释我在想什么但是我累了",
+          "target": "I wanted to explain what I was thinking about to you this morning but I was tired"
+        }
+      ]
+    },
+    "S0039L03": {
+      "basket_id": "S0039L03",
+      "version": "8.2.0",
+      "lego": {
+        "known": "有点累",
+        "target": "a little tired"
+      },
+      "practice_phrases": [
+        {
+          "known": "有点累",
+          "target": "a little tired"
+        },
+        {
+          "known": "我有点累",
+          "target": "I am a little tired"
+        },
+        {
+          "known": "我昨天有点累",
+          "target": "I was a little tired yesterday"
+        },
+        {
+          "known": "我今天早上有点累",
+          "target": "I am a little tired this morning"
+        },
+        {
+          "known": "我完成后有点累",
+          "target": "I was a little tired after I finished"
+        },
+        {
+          "known": "我有点累因为我在学习",
+          "target": "I am a little tired because I was learning"
+        },
+        {
+          "known": "我有点累但是我想和你说话",
+          "target": "I am a little tired but I want to speak with you"
+        },
+        {
+          "known": "我今天早上有点累但是我现在准备好了",
+          "target": "I was a little tired this morning but I am ready now"
+        },
+        {
+          "known": "我有点累因为我努力学习一些有用的东西",
+          "target": "I am a little tired because I was trying to learn something useful"
+        },
+        {
+          "known": "我想和你说话但是我完成后有点累",
+          "target": "I wanted to speak with you but I was a little tired after I finished"
+        }
+      ]
+    },
+    "S0039L04": {
+      "basket_id": "S0039L04",
+      "version": "8.2.0",
+      "lego": {
+        "known": "累",
+        "target": "tired"
+      },
+      "practice_phrases": [
+        {
+          "known": "累",
+          "target": "tired"
+        },
+        {
+          "known": "我累了",
+          "target": "I am tired"
+        },
+        {
+          "known": "我昨天很累",
+          "target": "I was very tired yesterday"
+        },
+        {
+          "known": "我今天早上累了",
+          "target": "I am tired this morning"
+        },
+        {
+          "known": "我完成学习后累了",
+          "target": "I was tired after I finished learning"
+        },
+        {
+          "known": "我累了因为我努力说",
+          "target": "I am tired because I was trying to speak"
+        },
+        {
+          "known": "我昨天累了但是我现在准备好了",
+          "target": "I was tired yesterday but I am ready now"
+        },
+        {
+          "known": "我想说但是我太累了无法解释",
+          "target": "I wanted to speak but I was too tired to explain"
+        },
+        {
+          "known": "我累了因为我整天都在学习如何说",
+          "target": "I am tired because I was learning how to speak all day"
+        },
+        {
+          "known": "我今天早上想和你说话但是我太累了记不住",
+          "target": "I wanted to speak with you this morning but I was too tired to remember"
         }
       ]
     },
@@ -1775,6 +5025,2852 @@
         {
           "known": "我不需要知道一切",
           "target": "I do not need to know everything"
+        }
+      ]
+    },
+    "S0061L01": {
+      "lego": {
+        "known": "说",
+        "target": "to speak"
+      },
+      "practice_phrases": [
+        {
+          "known": "说",
+          "target": "to speak"
+        },
+        {
+          "known": "我说",
+          "target": "I speak"
+        },
+        {
+          "known": "说英语",
+          "target": "to speak English"
+        },
+        {
+          "known": "我想说",
+          "target": "I want to speak"
+        },
+        {
+          "known": "说得很好",
+          "target": "to speak very well"
+        },
+        {
+          "known": "我想学说英语",
+          "target": "I want to learn to speak English"
+        },
+        {
+          "known": "我需要学说英语",
+          "target": "I need to learn to speak English"
+        },
+        {
+          "known": "我正在学说英语",
+          "target": "I am learning to speak English"
+        },
+        {
+          "known": "我想跟说英语的人说话",
+          "target": "I want to speak with people who speak English"
+        },
+        {
+          "known": "我需要学会说得更好",
+          "target": "I need to learn to speak better"
+        }
+      ]
+    },
+    "S0061L02": {
+      "lego": {
+        "known": "再",
+        "target": "again"
+      },
+      "practice_phrases": [
+        {
+          "known": "再",
+          "target": "again"
+        },
+        {
+          "known": "再试",
+          "target": "to try again"
+        },
+        {
+          "known": "再说一次",
+          "target": "to speak again"
+        },
+        {
+          "known": "再想一次",
+          "target": "to think again"
+        },
+        {
+          "known": "我想再试试",
+          "target": "I want to try again"
+        },
+        {
+          "known": "我需要再想想",
+          "target": "I need to think again"
+        },
+        {
+          "known": "你能再说一次吗",
+          "target": "can you speak again"
+        },
+        {
+          "known": "我不想再想这个了",
+          "target": "I don't want to think about this again"
+        },
+        {
+          "known": "我明天再跟你说",
+          "target": "I will speak with you again tomorrow"
+        },
+        {
+          "known": "我需要再学一次",
+          "target": "I need to learn again"
+        }
+      ]
+    },
+    "S0061L03": {
+      "lego": {
+        "known": "慢",
+        "target": "slowly"
+      },
+      "practice_phrases": [
+        {
+          "known": "慢",
+          "target": "slowly"
+        },
+        {
+          "known": "慢慢",
+          "target": "slowly"
+        },
+        {
+          "known": "说慢一点",
+          "target": "to speak slowly"
+        },
+        {
+          "known": "慢慢来",
+          "target": "slowly"
+        },
+        {
+          "known": "我说得很慢",
+          "target": "I speak slowly"
+        },
+        {
+          "known": "请说慢一点",
+          "target": "speak slowly"
+        },
+        {
+          "known": "我需要慢慢学",
+          "target": "I need to learn slowly"
+        },
+        {
+          "known": "我想慢慢学英语",
+          "target": "I want to learn English slowly"
+        },
+        {
+          "known": "我正在慢慢学会说英语",
+          "target": "I am slowly learning to speak English"
+        },
+        {
+          "known": "我需要慢慢学会说得更好",
+          "target": "I need to slowly learn to speak better"
+        }
+      ]
+    },
+    "S0061L04": {
+      "lego": {
+        "known": "你能...吗？",
+        "target": "Could you...?"
+      },
+      "practice_phrases": [
+        {
+          "known": "你能来吗",
+          "target": "Could you come"
+        },
+        {
+          "known": "你能帮我吗",
+          "target": "Could you help me"
+        },
+        {
+          "known": "你能说慢一点吗",
+          "target": "Could you speak slowly"
+        },
+        {
+          "known": "你能再说一次吗",
+          "target": "Could you speak again"
+        },
+        {
+          "known": "你能告诉我吗",
+          "target": "Could you show me"
+        },
+        {
+          "known": "你能明天来吗",
+          "target": "Could you come tomorrow"
+        },
+        {
+          "known": "你能今晚帮我吗",
+          "target": "Could you help me tonight"
+        },
+        {
+          "known": "你能跟我一起去吗",
+          "target": "Could you go with me"
+        },
+        {
+          "known": "你能慢慢说给我听吗",
+          "target": "Could you speak slowly to me"
+        },
+        {
+          "known": "你能再说一次慢一点吗",
+          "target": "Could you speak again slowly"
+        }
+      ]
+    },
+    "S0061L05": {
+      "lego": {
+        "known": "...一点",
+        "target": "a little more..."
+      },
+      "practice_phrases": [
+        {
+          "known": "快一点",
+          "target": "a little more quickly"
+        },
+        {
+          "known": "慢一点",
+          "target": "a little more slowly"
+        },
+        {
+          "known": "好一点",
+          "target": "a little better"
+        },
+        {
+          "known": "多一点",
+          "target": "a little more"
+        },
+        {
+          "known": "给我一点时间",
+          "target": "give me a little more time"
+        },
+        {
+          "known": "说慢一点",
+          "target": "speak a little more slowly"
+        },
+        {
+          "known": "我想学多一点",
+          "target": "I want to learn a little more"
+        },
+        {
+          "known": "我需要睡多一点",
+          "target": "I need to sleep a little more"
+        },
+        {
+          "known": "我想说得好一点",
+          "target": "I want to speak a little better"
+        },
+        {
+          "known": "你能说慢一点吗",
+          "target": "could you speak a little more slowly"
+        }
+      ]
+    },
+    "S0062L01": {
+      "lego": {
+        "known": "帮",
+        "target": "to help"
+      },
+      "practice_phrases": [
+        {
+          "known": "帮",
+          "target": "to help"
+        },
+        {
+          "known": "帮我",
+          "target": "to help me"
+        },
+        {
+          "known": "帮你",
+          "target": "to help you"
+        },
+        {
+          "known": "我想帮",
+          "target": "I want to help"
+        },
+        {
+          "known": "我能帮你",
+          "target": "I can help you"
+        },
+        {
+          "known": "我想帮你",
+          "target": "I want to help you"
+        },
+        {
+          "known": "你能帮我吗",
+          "target": "could you help me"
+        },
+        {
+          "known": "我想帮你学英语",
+          "target": "I want to help you learn English"
+        },
+        {
+          "known": "我不确定我能不能帮你",
+          "target": "I'm not sure if I can help you"
+        },
+        {
+          "known": "我明天能帮你",
+          "target": "I can help you tomorrow"
+        }
+      ]
+    },
+    "S0062L02": {
+      "lego": {
+        "known": "同时",
+        "target": "at the same time"
+      },
+      "practice_phrases": [
+        {
+          "known": "同时",
+          "target": "at the same time"
+        },
+        {
+          "known": "同时来",
+          "target": "to come at the same time"
+        },
+        {
+          "known": "同时学",
+          "target": "to learn at the same time"
+        },
+        {
+          "known": "我们同时去",
+          "target": "we go at the same time"
+        },
+        {
+          "known": "我想同时学",
+          "target": "I want to learn at the same time"
+        },
+        {
+          "known": "我不能同时做",
+          "target": "I can't do at the same time"
+        },
+        {
+          "known": "我们同时开始学",
+          "target": "we started to learn at the same time"
+        },
+        {
+          "known": "我想同时学英语",
+          "target": "I want to learn English at the same time"
+        },
+        {
+          "known": "我不能同时帮你们",
+          "target": "I can't help you at the same time"
+        },
+        {
+          "known": "我们能同时来吗",
+          "target": "can we come at the same time"
+        }
+      ]
+    },
+    "S0062L03": {
+      "lego": {
+        "known": "我不确定",
+        "target": "I'm not sure"
+      },
+      "practice_phrases": [
+        {
+          "known": "我不确定",
+          "target": "I'm not sure"
+        },
+        {
+          "known": "我不太确定",
+          "target": "I'm not sure"
+        },
+        {
+          "known": "我不确定了",
+          "target": "I'm not sure"
+        },
+        {
+          "known": "我不确定能不能",
+          "target": "I'm not sure if I can"
+        },
+        {
+          "known": "我不确定怎么说",
+          "target": "I'm not sure how to say"
+        },
+        {
+          "known": "我不确定答案",
+          "target": "I'm not sure what the answer is"
+        },
+        {
+          "known": "我不确定我能不能帮你",
+          "target": "I'm not sure if I can help you"
+        },
+        {
+          "known": "我不确定我能不能来",
+          "target": "I'm not sure if I can come"
+        },
+        {
+          "known": "我不确定明天能不能去",
+          "target": "I'm not sure if I can go tomorrow"
+        },
+        {
+          "known": "我不确定我想不想学",
+          "target": "I'm not sure if I want to learn"
+        }
+      ]
+    },
+    "S0062L04": {
+      "lego": {
+        "known": "能不能",
+        "target": "if I can / whether I can"
+      },
+      "practice_phrases": [
+        {
+          "known": "能不能",
+          "target": "if I can"
+        },
+        {
+          "known": "能不能来",
+          "target": "if I can come"
+        },
+        {
+          "known": "你能不能帮我",
+          "target": "if you can help me"
+        },
+        {
+          "known": "我能不能去",
+          "target": "if I can go"
+        },
+        {
+          "known": "你能不能来",
+          "target": "if you can come"
+        },
+        {
+          "known": "我不知道能不能",
+          "target": "I don't know if I can"
+        },
+        {
+          "known": "我不确定能不能来",
+          "target": "I'm not sure if I can come"
+        },
+        {
+          "known": "我不知道明天能不能帮你",
+          "target": "I don't know if I can help you tomorrow"
+        },
+        {
+          "known": "你确定你能不能来吗",
+          "target": "are you sure if you can come"
+        },
+        {
+          "known": "我想知道能不能同时学",
+          "target": "I want to know if I can learn at the same time"
+        }
+      ]
+    },
+    "S0063L01": {
+      "lego": {
+        "known": "我",
+        "target": "I"
+      },
+      "practice_phrases": [
+        {
+          "known": "我",
+          "target": "I"
+        },
+        {
+          "known": "我想",
+          "target": "I want"
+        },
+        {
+          "known": "我去",
+          "target": "I go"
+        },
+        {
+          "known": "我知道",
+          "target": "I know"
+        },
+        {
+          "known": "我不知道",
+          "target": "I don't know"
+        },
+        {
+          "known": "我想学英语",
+          "target": "I want to learn English"
+        },
+        {
+          "known": "我不确定",
+          "target": "I'm not sure"
+        },
+        {
+          "known": "我正在学说英语",
+          "target": "I am learning to speak English"
+        },
+        {
+          "known": "我需要慢慢学",
+          "target": "I need to learn slowly"
+        },
+        {
+          "known": "我想知道能不能帮你",
+          "target": "I want to know if I can help you"
+        }
+      ]
+    },
+    "S0063L02": {
+      "lego": {
+        "known": "你确定...吗？",
+        "target": "Are you sure...?"
+      },
+      "practice_phrases": [
+        {
+          "known": "你确定吗",
+          "target": "Are you sure"
+        },
+        {
+          "known": "你确定能来吗",
+          "target": "Are you sure you can come"
+        },
+        {
+          "known": "你确定想去吗",
+          "target": "Are you sure you want to go"
+        },
+        {
+          "known": "你确定不介意吗",
+          "target": "Are you sure you don't mind"
+        },
+        {
+          "known": "你确定能帮我吗",
+          "target": "Are you sure you can help me"
+        },
+        {
+          "known": "你确定想学吗",
+          "target": "Are you sure you want to learn"
+        },
+        {
+          "known": "你确定明天能来吗",
+          "target": "Are you sure you can come tomorrow"
+        },
+        {
+          "known": "你确定你不介意帮我吗",
+          "target": "Are you sure you don't mind helping me"
+        },
+        {
+          "known": "你确定你知道怎么说吗",
+          "target": "Are you sure you know how to say"
+        },
+        {
+          "known": "你确定你想同时学吗",
+          "target": "Are you sure you want to learn at the same time"
+        }
+      ]
+    },
+    "S0063L03": {
+      "lego": {
+        "known": "不介意",
+        "target": "don't mind"
+      },
+      "practice_phrases": [
+        {
+          "known": "不介意",
+          "target": "don't mind"
+        },
+        {
+          "known": "我不介意",
+          "target": "I don't mind"
+        },
+        {
+          "known": "你不介意",
+          "target": "you don't mind"
+        },
+        {
+          "known": "我不介意帮忙",
+          "target": "I don't mind helping"
+        },
+        {
+          "known": "我不介意帮你",
+          "target": "I don't mind helping you"
+        },
+        {
+          "known": "你不介意吗",
+          "target": "you don't mind"
+        },
+        {
+          "known": "我不介意慢慢学",
+          "target": "I don't mind learning slowly"
+        },
+        {
+          "known": "你不介意帮我吗",
+          "target": "you don't mind helping me"
+        },
+        {
+          "known": "我不介意明天再来",
+          "target": "I don't mind coming again tomorrow"
+        },
+        {
+          "known": "你确定你不介意帮我吗",
+          "target": "are you sure you don't mind helping me"
+        }
+      ]
+    },
+    "S0064L01": {
+      "lego": {
+        "known": "学习",
+        "target": "to learn"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "学习",
+          "target": "to learn"
+        },
+        {
+          "known": "我想学习",
+          "target": "I want to learn"
+        },
+        {
+          "known": "我需要学习",
+          "target": "I need to learn"
+        },
+        {
+          "known": "我喜欢学习",
+          "target": "I like to learn"
+        },
+        {
+          "known": "我试着学习",
+          "target": "I try to learn"
+        },
+        {
+          "known": "学习很重要",
+          "target": "to learn is important"
+        },
+        {
+          "known": "学习不容易",
+          "target": "to learn isn't easy"
+        },
+        {
+          "known": "我想今天学习更多",
+          "target": "I want to learn more today"
+        },
+        {
+          "known": "我需要学习但我很累",
+          "target": "I need to learn but I'm tired"
+        },
+        {
+          "known": "我想学习但这不总是容易",
+          "target": "I want to learn but it isn't easy"
+        }
+      ]
+    },
+    "S0064L02": {
+      "lego": {
+        "known": "容易",
+        "target": "easy"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "容易",
+          "target": "easy"
+        },
+        {
+          "known": "很容易",
+          "target": "very easy"
+        },
+        {
+          "known": "这很容易",
+          "target": "this is easy"
+        },
+        {
+          "known": "那不容易",
+          "target": "that isn't easy"
+        },
+        {
+          "known": "这对我来说容易",
+          "target": "this is easy for me"
+        },
+        {
+          "known": "学习不是很容易",
+          "target": "to learn isn't very easy"
+        },
+        {
+          "known": "我觉得这不太容易",
+          "target": "I don't think this is very easy"
+        },
+        {
+          "known": "说话不是容易的",
+          "target": "to speak isn't easy"
+        },
+        {
+          "known": "你觉得容易吗? 我不确定",
+          "target": "do you think it's easy? I'm not sure"
+        },
+        {
+          "known": "如果你慢慢来,会更容易",
+          "target": "if you go slowly it is more easy"
+        }
+      ]
+    },
+    "S0064L03": {
+      "lego": {
+        "known": "但是",
+        "target": "but"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "但是",
+          "target": "but"
+        },
+        {
+          "known": "但是我不知道",
+          "target": "but I don't know"
+        },
+        {
+          "known": "我想去,但是我累了",
+          "target": "I want to go but I'm tired"
+        },
+        {
+          "known": "她很好,但是很安静",
+          "target": "she is good but very quiet"
+        },
+        {
+          "known": "我喜欢,但是太难了",
+          "target": "I like it but it's too hard"
+        },
+        {
+          "known": "我试过了,但是没有帮助",
+          "target": "I try but it doesn't help"
+        },
+        {
+          "known": "我能理解,但是我不能说",
+          "target": "I can understand but I can't speak"
+        },
+        {
+          "known": "我想帮忙,但是我不知道怎么做",
+          "target": "I want to help but I don't know how"
+        },
+        {
+          "known": "这很有趣,但是我需要更多时间",
+          "target": "this is interesting but I need more time"
+        },
+        {
+          "known": "我昨天想来,但是我太累了",
+          "target": "I wanted to come yesterday but I was too tired"
+        }
+      ]
+    },
+    "S0064L04": {
+      "lego": {
+        "known": "有趣",
+        "target": "interesting"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "有趣",
+          "target": "interesting"
+        },
+        {
+          "known": "很有趣",
+          "target": "very interesting"
+        },
+        {
+          "known": "这很有趣",
+          "target": "this is interesting"
+        },
+        {
+          "known": "那个故事很有趣",
+          "target": "that story is interesting"
+        },
+        {
+          "known": "我觉得这很有趣",
+          "target": "I think this is interesting"
+        },
+        {
+          "known": "他说了有趣的事情",
+          "target": "he say something interesting"
+        },
+        {
+          "known": "这个故事很有趣",
+          "target": "this story is interesting"
+        },
+        {
+          "known": "我昨晚读了一个有趣的故事",
+          "target": "I read a interesting story last night"
+        },
+        {
+          "known": "学习很有趣但不容易",
+          "target": "to learn is interesting but not easy"
+        },
+        {
+          "known": "我想学习因为很有趣",
+          "target": "I want to learn because it is interesting"
+        }
+      ]
+    },
+    "S0064L05": {
+      "lego": {
+        "known": "不容易",
+        "target": "isn't easy"
+      },
+      "type": "M",
+      "practice_phrases": [
+        {
+          "known": "不容易",
+          "target": "isn't easy"
+        },
+        {
+          "known": "这不容易",
+          "target": "this isn't easy"
+        },
+        {
+          "known": "说话不容易",
+          "target": "speaking isn't easy"
+        },
+        {
+          "known": "学习不容易,但很有趣",
+          "target": "to learn isn't easy but interesting"
+        },
+        {
+          "known": "我知道这不容易",
+          "target": "I know this isn't easy"
+        },
+        {
+          "known": "理解这个不容易,对吧?",
+          "target": "to understand this isn't easy is it"
+        },
+        {
+          "known": "记住这个不容易",
+          "target": "to remember this isn't easy"
+        },
+        {
+          "known": "说话不容易但很重要",
+          "target": "to speak isn't easy but important"
+        },
+        {
+          "known": "我知道学习不容易,但你做得很好",
+          "target": "I know to learn isn't easy but you are doing well"
+        },
+        {
+          "known": "学英语不容易,但是很有趣",
+          "target": "Learning English isn't easy but it is fun"
+        }
+      ]
+    },
+    "S0065L01": {
+      "lego": {
+        "known": "重要",
+        "target": "important"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "重要",
+          "target": "important"
+        },
+        {
+          "known": "很重要",
+          "target": "very important"
+        },
+        {
+          "known": "这很重要",
+          "target": "this is important"
+        },
+        {
+          "known": "那不重要",
+          "target": "that isn't important"
+        },
+        {
+          "known": "学习很重要",
+          "target": "to learn is important"
+        },
+        {
+          "known": "我认为这很重要",
+          "target": "I think this is important"
+        },
+        {
+          "known": "练习说话很重要",
+          "target": "to practise speaking is important"
+        },
+        {
+          "known": "记住这个很重要,你明白吗?",
+          "target": "to remember this is important do you understand"
+        },
+        {
+          "known": "慢慢来很重要,不要着急",
+          "target": "to go slowly is important don't worry"
+        },
+        {
+          "known": "学习很重要,但休息也很重要",
+          "target": "to learn is important but sleep is important too"
+        }
+      ]
+    },
+    "S0065L02": {
+      "lego": {
+        "known": "时间",
+        "target": "time"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "时间",
+          "target": "time"
+        },
+        {
+          "known": "更多时间",
+          "target": "more time"
+        },
+        {
+          "known": "我需要时间",
+          "target": "I need time"
+        },
+        {
+          "known": "我没有时间",
+          "target": "I don't have time"
+        },
+        {
+          "known": "花点时间",
+          "target": "take time"
+        },
+        {
+          "known": "我需要更多时间练习",
+          "target": "I need more time to practise"
+        },
+        {
+          "known": "你有时间帮我吗?",
+          "target": "do you have time to help me"
+        },
+        {
+          "known": "我今天没有很多时间",
+          "target": "I don't have much time today"
+        },
+        {
+          "known": "花时间学习很重要",
+          "target": "taking time to learn is important"
+        },
+        {
+          "known": "如果你花时间慢慢来,会更好",
+          "target": "if you take time and go slowly it is better"
+        }
+      ]
+    },
+    "S0065L03": {
+      "lego": {
+        "known": "你自己",
+        "target": "yourself"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "你自己",
+          "target": "yourself"
+        },
+        {
+          "known": "你自己试试",
+          "target": "try it yourself"
+        },
+        {
+          "known": "你自己知道吗?",
+          "target": "do you know yourself"
+        },
+        {
+          "known": "你自己做得很好",
+          "target": "you do well yourself"
+        },
+        {
+          "known": "你自己能做到吗?",
+          "target": "can you do it yourself"
+        },
+        {
+          "known": "你自己慢慢来",
+          "target": "go slowly yourself"
+        },
+        {
+          "known": "你自己试试,我觉得你能做到",
+          "target": "try it yourself I think you can do it"
+        },
+        {
+          "known": "你自己需要更多练习,对吧?",
+          "target": "you need more practise yourself don't you"
+        },
+        {
+          "known": "你自己花点时间想想",
+          "target": "take time to think about it yourself"
+        },
+        {
+          "known": "你自己说得很好了",
+          "target": "you are speaking well yourself"
+        }
+      ]
+    },
+    "S0065L04": {
+      "lego": {
+        "known": "测试自己",
+        "target": "to test yourself"
+      },
+      "type": "M",
+      "practice_phrases": [
+        {
+          "known": "测试自己",
+          "target": "to test yourself"
+        },
+        {
+          "known": "我想测试自己",
+          "target": "I want to test yourself"
+        },
+        {
+          "known": "你需要测试自己",
+          "target": "you need to test yourself"
+        },
+        {
+          "known": "我喜欢测试自己",
+          "target": "I like to test yourself"
+        },
+        {
+          "known": "测试自己很重要",
+          "target": "to test yourself is important"
+        },
+        {
+          "known": "你能测试自己吗?",
+          "target": "can you to test yourself"
+        },
+        {
+          "known": "你需要花时间测试自己",
+          "target": "you need to take time to test yourself"
+        },
+        {
+          "known": "我认为测试自己很好",
+          "target": "I think to test yourself is good"
+        },
+        {
+          "known": "如果你想进步,测试自己很重要",
+          "target": "if you want to improve to test yourself is important"
+        },
+        {
+          "known": "花时间测试自己很重要",
+          "target": "It's important to take time to test yourself"
+        }
+      ]
+    },
+    "S0065L05": {
+      "lego": {
+        "known": "...很重要",
+        "target": "It's important to..."
+      },
+      "type": "M",
+      "practice_phrases": [
+        {
+          "known": "练习很重要",
+          "target": "It's important to practise"
+        },
+        {
+          "known": "学习很重要",
+          "target": "It's important to learn"
+        },
+        {
+          "known": "慢慢来很重要",
+          "target": "It's important to go slowly"
+        },
+        {
+          "known": "花时间很重要",
+          "target": "It's important to take time"
+        },
+        {
+          "known": "说话很重要",
+          "target": "It's important to speak"
+        },
+        {
+          "known": "测试自己很重要",
+          "target": "It's important to test yourself"
+        },
+        {
+          "known": "我认为记住这个很重要",
+          "target": "I think it's important to remember this"
+        },
+        {
+          "known": "学习的时候慢慢来很重要",
+          "target": "It's important to go slowly when you learn"
+        },
+        {
+          "known": "理解你的错误很重要",
+          "target": "It's important to understand mistakes"
+        },
+        {
+          "known": "花时间测试自己很重要",
+          "target": "It's important to take time to test yourself"
+        }
+      ]
+    },
+    "S0066L01": {
+      "lego": {
+        "known": "难",
+        "target": "difficult"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "难",
+          "target": "difficult"
+        },
+        {
+          "known": "很难",
+          "target": "very difficult"
+        },
+        {
+          "known": "这很难",
+          "target": "this is difficult"
+        },
+        {
+          "known": "那不难",
+          "target": "that isn't difficult"
+        },
+        {
+          "known": "说话很难",
+          "target": "speaking is difficult"
+        },
+        {
+          "known": "我觉得这太难了",
+          "target": "I think this is too difficult"
+        },
+        {
+          "known": "理解这个不难,对吧?",
+          "target": "to understand this isn't difficult is it"
+        },
+        {
+          "known": "学习很难但很有趣",
+          "target": "to learn is difficult but interesting"
+        },
+        {
+          "known": "我知道这很难,但你做得很好",
+          "target": "I know this is difficult but you are doing well"
+        },
+        {
+          "known": "慢慢来,如果你觉得太难了",
+          "target": "go slowly if you think it's too difficult"
+        }
+      ]
+    },
+    "S0066L02": {
+      "lego": {
+        "known": "答案",
+        "target": "answer"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "答案",
+          "target": "answer"
+        },
+        {
+          "known": "这个答案",
+          "target": "this answer"
+        },
+        {
+          "known": "我知道答案",
+          "target": "I know the answer"
+        },
+        {
+          "known": "你知道答案吗?",
+          "target": "do you know the answer"
+        },
+        {
+          "known": "答案不难",
+          "target": "the answer isn't difficult"
+        },
+        {
+          "known": "我不确定这个答案",
+          "target": "I'm not sure this answer is good"
+        },
+        {
+          "known": "你能帮我找到答案吗?",
+          "target": "can you help me to find the answer"
+        },
+        {
+          "known": "我昨天知道答案了",
+          "target": "I know the answer yesterday"
+        },
+        {
+          "known": "如果你花点时间,答案不难",
+          "target": "if you take time the answer isn't difficult"
+        },
+        {
+          "known": "她说她知道答案,但我不确定",
+          "target": "she say she know the answer but I'm not sure"
+        }
+      ]
+    },
+    "S0066L03": {
+      "lego": {
+        "known": "找到",
+        "target": "to find"
+      },
+      "type": "A",
+      "practice_phrases": [
+        {
+          "known": "找到",
+          "target": "to find"
+        },
+        {
+          "known": "我想找到",
+          "target": "I want to find"
+        },
+        {
+          "known": "我需要找到",
+          "target": "I need to find"
+        },
+        {
+          "known": "找到答案很重要",
+          "target": "to find the answer is important"
+        },
+        {
+          "known": "我需要找到我的朋友",
+          "target": "I need to find my friend"
+        },
+        {
+          "known": "你能帮我找到吗?",
+          "target": "can you help me to find it"
+        },
+        {
+          "known": "我昨天试着找到",
+          "target": "I try to find it yesterday"
+        },
+        {
+          "known": "找到不难",
+          "target": "to find isn't difficult"
+        },
+        {
+          "known": "找到好的东西很重要",
+          "target": "to find good things is important"
+        },
+        {
+          "known": "她说她能找到答案",
+          "target": "she say she can to find the answer"
+        }
+      ]
+    },
+    "S0066L04": {
+      "lego": {
+        "known": "...不难",
+        "target": "It's not difficult to..."
+      },
+      "type": "M",
+      "practice_phrases": [
+        {
+          "known": "理解不难",
+          "target": "It's not difficult to understand"
+        },
+        {
+          "known": "学习不难",
+          "target": "It's not difficult to learn"
+        },
+        {
+          "known": "找到不难",
+          "target": "It's not difficult to find"
+        },
+        {
+          "known": "说话不难",
+          "target": "It's not difficult to speak"
+        },
+        {
+          "known": "记住不难",
+          "target": "It's not difficult to remember"
+        },
+        {
+          "known": "找到答案不难",
+          "target": "It's not difficult to find the answer"
+        },
+        {
+          "known": "我认为理解这个不难",
+          "target": "I think it's not difficult to understand this"
+        },
+        {
+          "known": "如果你慢慢来,学习不难",
+          "target": "If you go slowly it's not difficult to learn"
+        },
+        {
+          "known": "花点时间的话,说话不难",
+          "target": "If you take time it's not difficult to speak"
+        },
+        {
+          "known": "找到答案不难",
+          "target": "It's not difficult to find the answer"
+        }
+      ]
+    },
+    "S0067L01": {
+      "lego": {
+        "known": "为什么",
+        "target": "why"
+      },
+      "practice_phrases": [
+        {
+          "known": "为什么",
+          "target": "why"
+        },
+        {
+          "known": "为什么不",
+          "target": "why not"
+        },
+        {
+          "known": "为什么这样",
+          "target": "why this"
+        },
+        {
+          "known": "为什么是我",
+          "target": "why me"
+        },
+        {
+          "known": "为什么你在这里",
+          "target": "why are you here"
+        },
+        {
+          "known": "为什么他不来",
+          "target": "why isn't he here"
+        },
+        {
+          "known": "为什么她不想去",
+          "target": "why didn't she want to go"
+        },
+        {
+          "known": "为什么你今天不能来",
+          "target": "why can't you come today"
+        },
+        {
+          "known": "为什么你不想和我在一起",
+          "target": "why don't you want to be with me"
+        },
+        {
+          "known": "为什么你昨天不能来帮助我",
+          "target": "why couldn't you come to help me yesterday"
+        }
+      ]
+    },
+    "S0067L02": {
+      "lego": {
+        "known": "你",
+        "target": "you"
+      },
+      "practice_phrases": [
+        {
+          "known": "你",
+          "target": "you"
+        },
+        {
+          "known": "你在这里",
+          "target": "you are here"
+        },
+        {
+          "known": "你好吗",
+          "target": "how are you"
+        },
+        {
+          "known": "你想要什么",
+          "target": "what do you want"
+        },
+        {
+          "known": "你今天感觉怎么样",
+          "target": "how are you feeling today"
+        },
+        {
+          "known": "你昨天去了吗",
+          "target": "did you go yesterday"
+        },
+        {
+          "known": "你明天能来帮我吗",
+          "target": "can you help me tomorrow"
+        },
+        {
+          "known": "你知道她为什么不来吗",
+          "target": "do you know why she isn't here"
+        },
+        {
+          "known": "你能说你的名字吗",
+          "target": "can you say how you are"
+        },
+        {
+          "known": "你昨晚为什么不想和我们一起去",
+          "target": "why didn't you want to go with me last night"
+        }
+      ]
+    },
+    "S0067L03": {
+      "lego": {
+        "known": "想",
+        "target": "to want"
+      },
+      "practice_phrases": [
+        {
+          "known": "想",
+          "target": "to want"
+        },
+        {
+          "known": "想要",
+          "target": "to want to"
+        },
+        {
+          "known": "开始想",
+          "target": "start to want"
+        },
+        {
+          "known": "不想",
+          "target": "not to want"
+        },
+        {
+          "known": "我开始想",
+          "target": "I start to want"
+        },
+        {
+          "known": "你开始想",
+          "target": "you start to want"
+        },
+        {
+          "known": "能够想要",
+          "target": "able to want to"
+        },
+        {
+          "known": "我开始想要去这里",
+          "target": "I start to want to go here"
+        },
+        {
+          "known": "她开始想要帮助我",
+          "target": "she started to want to help me"
+        },
+        {
+          "known": "你不需要开始想要停止",
+          "target": "you don't need to start to want to stop"
+        }
+      ]
+    },
+    "S0067L04": {
+      "lego": {
+        "known": "停",
+        "target": "stop"
+      },
+      "practice_phrases": [
+        {
+          "known": "停",
+          "target": "stop"
+        },
+        {
+          "known": "停下来",
+          "target": "stop here"
+        },
+        {
+          "known": "不要停",
+          "target": "don't stop"
+        },
+        {
+          "known": "现在停",
+          "target": "stop now"
+        },
+        {
+          "known": "他想停下来",
+          "target": "he wants to stop"
+        },
+        {
+          "known": "你为什么要停",
+          "target": "why do you want to stop"
+        },
+        {
+          "known": "我不想现在停下来",
+          "target": "I don't want to stop now"
+        },
+        {
+          "known": "她昨天想停止学习",
+          "target": "she wanted to stop learning yesterday"
+        },
+        {
+          "known": "你能停止说话吗",
+          "target": "can you stop talking"
+        },
+        {
+          "known": "我不想停止练习英语",
+          "target": "I don't want to stop trying english"
+        }
+      ]
+    },
+    "S0068L01": {
+      "lego": {
+        "known": "什么",
+        "target": "what"
+      },
+      "practice_phrases": [
+        {
+          "known": "什么",
+          "target": "what"
+        },
+        {
+          "known": "什么时候",
+          "target": "what time"
+        },
+        {
+          "known": "为了什么",
+          "target": "for what"
+        },
+        {
+          "known": "这是什么",
+          "target": "what is this"
+        },
+        {
+          "known": "你想要什么",
+          "target": "what do you want"
+        },
+        {
+          "known": "什么时候开始",
+          "target": "what time to start"
+        },
+        {
+          "known": "你在找什么",
+          "target": "what are you looking for"
+        },
+        {
+          "known": "你昨天说了什么",
+          "target": "what did you say yesterday"
+        },
+        {
+          "known": "你能说这是什么吗",
+          "target": "can you say what this is"
+        },
+        {
+          "known": "她想知道你明天想做什么",
+          "target": "she wants to know what you want to do tomorrow"
+        }
+      ]
+    },
+    "S0068L02": {
+      "lego": {
+        "known": "你",
+        "target": "you"
+      },
+      "practice_phrases": [
+        {
+          "known": "你",
+          "target": "you"
+        },
+        {
+          "known": "你好",
+          "target": "good you"
+        },
+        {
+          "known": "你在这",
+          "target": "you are here"
+        },
+        {
+          "known": "这是你",
+          "target": "this is you"
+        },
+        {
+          "known": "你在找什么",
+          "target": "what are you looking for"
+        },
+        {
+          "known": "你今天怎么样",
+          "target": "how are you today"
+        },
+        {
+          "known": "你能帮助我吗",
+          "target": "can you help me"
+        },
+        {
+          "known": "你知道他在这里吗",
+          "target": "do you know he is here"
+        },
+        {
+          "known": "你明天想和我一起去吗",
+          "target": "do you want to go with me tomorrow"
+        },
+        {
+          "known": "你能说你在找什么吗",
+          "target": "can you say what you are looking for"
+        }
+      ]
+    },
+    "S0068L03": {
+      "lego": {
+        "known": "找",
+        "target": "look for"
+      },
+      "practice_phrases": [
+        {
+          "known": "找",
+          "target": "look for"
+        },
+        {
+          "known": "找东西",
+          "target": "look for something"
+        },
+        {
+          "known": "我找",
+          "target": "I look for"
+        },
+        {
+          "known": "你找",
+          "target": "you look for"
+        },
+        {
+          "known": "找我的朋友",
+          "target": "look for my friend"
+        },
+        {
+          "known": "我找我的包",
+          "target": "I look for my bag"
+        },
+        {
+          "known": "她能找她的朋友",
+          "target": "she can look for her friend"
+        },
+        {
+          "known": "你能帮我找我的东西吗",
+          "target": "can you help me look for my things"
+        },
+        {
+          "known": "他昨天在找他的朋友",
+          "target": "he wanted to look for his friend yesterday"
+        },
+        {
+          "known": "我整个上午都在找我的包",
+          "target": "I wanted to look for my bag all morning"
+        }
+      ]
+    },
+    "S0069L01": {
+      "lego": {
+        "known": "他",
+        "target": "he"
+      },
+      "practice_phrases": [
+        {
+          "known": "他",
+          "target": "he"
+        },
+        {
+          "known": "他在这",
+          "target": "he is here"
+        },
+        {
+          "known": "他不知道",
+          "target": "he doesn't know"
+        },
+        {
+          "known": "他想去",
+          "target": "he wants to go"
+        },
+        {
+          "known": "他昨天在这",
+          "target": "he was here yesterday"
+        },
+        {
+          "known": "他不想说",
+          "target": "he doesn't want to say"
+        },
+        {
+          "known": "他明天不能来",
+          "target": "he can't come tomorrow"
+        },
+        {
+          "known": "他在找他的朋友",
+          "target": "he is looking for his friend"
+        },
+        {
+          "known": "他说他不想今晚去",
+          "target": "he can say he doesn't want to go tonight"
+        },
+        {
+          "known": "他昨天整个下午都在这里",
+          "target": "he was here all afternoon yesterday"
+        }
+      ]
+    },
+    "S0069L02": {
+      "lego": {
+        "known": "不想",
+        "target": "don't want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "不想",
+          "target": "don't want to"
+        },
+        {
+          "known": "我不想",
+          "target": "I don't want to"
+        },
+        {
+          "known": "不想去",
+          "target": "don't want to go"
+        },
+        {
+          "known": "我们不想",
+          "target": "we don't want to"
+        },
+        {
+          "known": "不想说",
+          "target": "don't want to say"
+        },
+        {
+          "known": "我不想今天去",
+          "target": "I don't want to go today"
+        },
+        {
+          "known": "我们不想和她说",
+          "target": "we don't want to say with her"
+        },
+        {
+          "known": "我不想明天来这里",
+          "target": "I don't want to come here tomorrow"
+        },
+        {
+          "known": "我不想整晚都在这里",
+          "target": "I don't want to be here all night"
+        },
+        {
+          "known": "你不想照顾那只小狗",
+          "target": "you don't want to look after the young dog"
+        }
+      ]
+    },
+    "S0069L03": {
+      "lego": {
+        "known": "照顾",
+        "target": "look after"
+      },
+      "practice_phrases": [
+        {
+          "known": "照顾",
+          "target": "look after"
+        },
+        {
+          "known": "照顾他",
+          "target": "look after he"
+        },
+        {
+          "known": "照顾小狗",
+          "target": "look after the dog"
+        },
+        {
+          "known": "我照顾",
+          "target": "I look after"
+        },
+        {
+          "known": "照顾我的朋友",
+          "target": "look after my friend"
+        },
+        {
+          "known": "她能照顾那只狗",
+          "target": "she can look after the dog"
+        },
+        {
+          "known": "你能照顾我的包吗",
+          "target": "can you look after my bag"
+        },
+        {
+          "known": "我明天要照顾我的朋友",
+          "target": "I need to look after my friend tomorrow"
+        },
+        {
+          "known": "他不想照顾那只小狗",
+          "target": "he doesn't want to look after the young dog"
+        },
+        {
+          "known": "她整个下午都要照顾她的朋友",
+          "target": "she can look after her friend all afternoon"
+        }
+      ]
+    },
+    "S0069L04": {
+      "lego": {
+        "known": "那只小狗",
+        "target": "the young dog"
+      },
+      "practice_phrases": [
+        {
+          "known": "那只小狗",
+          "target": "the young dog"
+        },
+        {
+          "known": "那只小狗在这",
+          "target": "the young dog is here"
+        },
+        {
+          "known": "看那只小狗",
+          "target": "look at the young dog"
+        },
+        {
+          "known": "那只小狗很好",
+          "target": "the young dog is good"
+        },
+        {
+          "known": "我喜欢那只小狗",
+          "target": "I like the young dog"
+        },
+        {
+          "known": "那只小狗在这里吗",
+          "target": "is the young dog here"
+        },
+        {
+          "known": "照顾那只小狗",
+          "target": "look after the young dog"
+        },
+        {
+          "known": "那只小狗昨天在这里",
+          "target": "the young dog was here yesterday"
+        },
+        {
+          "known": "我想和那只小狗一起",
+          "target": "I want to be with the young dog"
+        },
+        {
+          "known": "他不想照顾那只小狗",
+          "target": "he doesn't want to look after the young dog"
+        }
+      ]
+    },
+    "S0069L05": {
+      "lego": {
+        "known": "下午",
+        "target": "afternoon"
+      },
+      "practice_phrases": [
+        {
+          "known": "下午",
+          "target": "afternoon"
+        },
+        {
+          "known": "今天下午",
+          "target": "this afternoon"
+        },
+        {
+          "known": "下午好",
+          "target": "good afternoon"
+        },
+        {
+          "known": "整个下午",
+          "target": "all afternoon"
+        },
+        {
+          "known": "明天下午",
+          "target": "tomorrow afternoon"
+        },
+        {
+          "known": "昨天下午",
+          "target": "yesterday afternoon"
+        },
+        {
+          "known": "下午我在这里",
+          "target": "I am here in the afternoon"
+        },
+        {
+          "known": "他下午不想来",
+          "target": "he doesn't want to come in the afternoon"
+        },
+        {
+          "known": "我整个下午都在学习",
+          "target": "I was learning all afternoon"
+        },
+        {
+          "known": "她昨天下午照顾那只小狗",
+          "target": "she can look after the young dog in the afternoon yesterday"
+        }
+      ]
+    },
+    "S0070L01": {
+      "lego": {
+        "known": "她",
+        "target": "she"
+      },
+      "practice_phrases": [
+        {
+          "known": "她",
+          "target": "She"
+        },
+        {
+          "known": "她在这里",
+          "target": "She is here"
+        },
+        {
+          "known": "她不知道",
+          "target": "She doesn't know"
+        },
+        {
+          "known": "她想帮忙",
+          "target": "She wants to help"
+        },
+        {
+          "known": "她能说英语",
+          "target": "She can speak English"
+        },
+        {
+          "known": "她昨天开始了",
+          "target": "She started yesterday"
+        },
+        {
+          "known": "她想要去",
+          "target": "She wants to go"
+        },
+        {
+          "known": "她想要更多的时间学习",
+          "target": "She wants more time to learn"
+        },
+        {
+          "known": "她不能今天晚上来因为她很累",
+          "target": "She can't come tonight because she is tired"
+        },
+        {
+          "known": "她说英语比我好",
+          "target": "She can speak English better than I can"
+        }
+      ]
+    },
+    "S0070L02": {
+      "lego": {
+        "known": "不想",
+        "target": "don't want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "我不想",
+          "target": "I don't want to"
+        },
+        {
+          "known": "我不想去",
+          "target": "I don't want to go"
+        },
+        {
+          "known": "我不想说",
+          "target": "I don't want to speak"
+        },
+        {
+          "known": "我不想现在睡觉",
+          "target": "I don't want to sleep now"
+        },
+        {
+          "known": "我们不想打扰你",
+          "target": "We don't want to interrupt you"
+        },
+        {
+          "known": "我不想停止学习",
+          "target": "I don't want to stop learning"
+        },
+        {
+          "known": "我不想今天回答这个",
+          "target": "I don't want to answer this today"
+        },
+        {
+          "known": "我不想让任何人知道真相",
+          "target": "I don't want to let anyone know the truth"
+        },
+        {
+          "known": "我不想做这个因为它太难了",
+          "target": "I don't want to do this because it is too difficult"
+        },
+        {
+          "known": "我不想告诉你我觉得什么",
+          "target": "I don't want to tell you what I think that"
+        }
+      ]
+    },
+    "S0070L03": {
+      "lego": {
+        "known": "告诉",
+        "target": "to tell"
+      },
+      "practice_phrases": [
+        {
+          "known": "告诉",
+          "target": "To tell"
+        },
+        {
+          "known": "我想告诉",
+          "target": "I want to tell"
+        },
+        {
+          "known": "我想告诉你",
+          "target": "I want to tell you"
+        },
+        {
+          "known": "我需要告诉你",
+          "target": "I need to tell you"
+        },
+        {
+          "known": "我想要告诉你真相",
+          "target": "I want to tell you the truth"
+        },
+        {
+          "known": "她想告诉我什么",
+          "target": "She wants to tell me something"
+        },
+        {
+          "known": "她不想告诉任何人",
+          "target": "She doesn't want to tell anyone"
+        },
+        {
+          "known": "你能帮我告诉她吗",
+          "target": "Can you help me to tell her"
+        },
+        {
+          "known": "我猜他想告诉我们怎么做",
+          "target": "I guess he wants to tell we how to do it"
+        },
+        {
+          "known": "她昨天想告诉我但是我太忙了",
+          "target": "She wanted to tell me yesterday but I was too tired"
+        }
+      ]
+    },
+    "S0070L04": {
+      "lego": {
+        "known": "我",
+        "target": "I"
+      },
+      "practice_phrases": [
+        {
+          "known": "我",
+          "target": "I"
+        },
+        {
+          "known": "我知道",
+          "target": "I know"
+        },
+        {
+          "known": "我在这里",
+          "target": "I am here"
+        },
+        {
+          "known": "我不确定",
+          "target": "I am not sure"
+        },
+        {
+          "known": "我想学英语",
+          "target": "I want to learn English"
+        },
+        {
+          "known": "我觉得这很好",
+          "target": "I think that this is good"
+        },
+        {
+          "known": "我昨天看到了他",
+          "target": "I was looking at he yesterday"
+        },
+        {
+          "known": "我不能明天来因为我很累",
+          "target": "I can't come tomorrow because I am tired"
+        },
+        {
+          "known": "我开始学习已经六个月了",
+          "target": "I started learning six time back"
+        },
+        {
+          "known": "我不知道怎么向你解释这个",
+          "target": "I don't know how to explain this to you"
+        }
+      ]
+    },
+    "S0070L05": {
+      "lego": {
+        "known": "它在哪里",
+        "target": "where it was"
+      },
+      "practice_phrases": [
+        {
+          "known": "它在哪里",
+          "target": "Where it was"
+        },
+        {
+          "known": "我知道它在哪里",
+          "target": "I know where it was"
+        },
+        {
+          "known": "告诉我它在哪里",
+          "target": "To tell me where it was"
+        },
+        {
+          "known": "他不记得它在哪里",
+          "target": "He doesn't remember where it was"
+        },
+        {
+          "known": "我想知道它在哪里",
+          "target": "I want to know where it was"
+        },
+        {
+          "known": "你能告诉我它在哪里吗",
+          "target": "Can you to tell me where it was"
+        },
+        {
+          "known": "她昨天说了它在哪里",
+          "target": "She was speaking yesterday where it was"
+        },
+        {
+          "known": "我猜他不想说它在哪里",
+          "target": "I guess he doesn't want to say where it was"
+        },
+        {
+          "known": "我想知道是否你知道它在哪里",
+          "target": "I want to know whether you know where it was"
+        },
+        {
+          "known": "我不能告诉你它在哪里因为我不记得了",
+          "target": "I can't to tell you where it was because I don't remember"
+        }
+      ]
+    },
+    "S0071L01": {
+      "lego": {
+        "known": "我们",
+        "target": "we"
+      },
+      "practice_phrases": [
+        {
+          "known": "我们",
+          "target": "We"
+        },
+        {
+          "known": "我们在这里",
+          "target": "We are here"
+        },
+        {
+          "known": "我们不知道",
+          "target": "We don't know"
+        },
+        {
+          "known": "我们想要帮忙",
+          "target": "We want to help"
+        },
+        {
+          "known": "我们能说英语",
+          "target": "We can speak English"
+        },
+        {
+          "known": "我们昨天开始学习",
+          "target": "We started learning yesterday"
+        },
+        {
+          "known": "我们觉得这很有趣",
+          "target": "We think that this is interesting"
+        },
+        {
+          "known": "我们想要更多的时间练习",
+          "target": "We want more time to practise"
+        },
+        {
+          "known": "我们不能今天晚上来因为我们很累",
+          "target": "We can't come tonight because we are tired"
+        },
+        {
+          "known": "我们不知道怎么向你解释这个",
+          "target": "We don't know how to explain this to you"
+        }
+      ]
+    },
+    "S0071L02": {
+      "lego": {
+        "known": "不想",
+        "target": "don't want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "我不想",
+          "target": "I don't want to"
+        },
+        {
+          "known": "我不想读",
+          "target": "I don't want to read"
+        },
+        {
+          "known": "我不想写",
+          "target": "I don't want to write"
+        },
+        {
+          "known": "我不想现在开始",
+          "target": "I don't want to start now"
+        },
+        {
+          "known": "我们不想停止这个",
+          "target": "We don't want to stop this"
+        },
+        {
+          "known": "我不想让你担心",
+          "target": "I don't want to make you worry"
+        },
+        {
+          "known": "我不想今天早上开始",
+          "target": "I don't want to start this morning"
+        },
+        {
+          "known": "我不想让任何人听到这个",
+          "target": "I don't want to let anyone hear this"
+        },
+        {
+          "known": "我不想说英语因为它很难",
+          "target": "I don't want to speak English because it is difficult"
+        },
+        {
+          "known": "我不想告诉她真相",
+          "target": "I don't want to tell her the truth"
+        }
+      ]
+    },
+    "S0071L03": {
+      "lego": {
+        "known": "让",
+        "target": "to let"
+      },
+      "practice_phrases": [
+        {
+          "known": "让",
+          "target": "To let"
+        },
+        {
+          "known": "我想让",
+          "target": "I want to let"
+        },
+        {
+          "known": "我想让你知道",
+          "target": "I want to let you know"
+        },
+        {
+          "known": "请让我帮忙",
+          "target": "Want to let me help"
+        },
+        {
+          "known": "我想让她说话",
+          "target": "I want to let her speak"
+        },
+        {
+          "known": "我们想让你看看",
+          "target": "We want to let you look"
+        },
+        {
+          "known": "我不想让你担心这个",
+          "target": "I don't want to let you worry about this"
+        },
+        {
+          "known": "我想让任何人学习英语",
+          "target": "I want to let anyone learn English"
+        },
+        {
+          "known": "我不想让她知道我在这里",
+          "target": "I don't want to let her know I am here"
+        },
+        {
+          "known": "我们不想让任何人听到真相",
+          "target": "We don't want to let anyone hear the truth"
+        }
+      ]
+    },
+    "S0071L04": {
+      "lego": {
+        "known": "任何人",
+        "target": "anyone"
+      },
+      "practice_phrases": [
+        {
+          "known": "任何人",
+          "target": "Anyone"
+        },
+        {
+          "known": "任何人都可以",
+          "target": "Anyone can"
+        },
+        {
+          "known": "任何人都能学",
+          "target": "Anyone can learn"
+        },
+        {
+          "known": "我不想告诉任何人",
+          "target": "I don't want to tell anyone"
+        },
+        {
+          "known": "任何人都能说英语",
+          "target": "Anyone can speak English"
+        },
+        {
+          "known": "我不想让任何人知道",
+          "target": "I don't want to let anyone know"
+        },
+        {
+          "known": "任何人都能学习如果他们想要",
+          "target": "Anyone can learn if you want to"
+        },
+        {
+          "known": "我不想让任何人听到这个",
+          "target": "I don't want to let anyone hear this"
+        },
+        {
+          "known": "任何人都能帮我如果他们有时间",
+          "target": "Anyone can help me if you have time"
+        },
+        {
+          "known": "我们不想让任何人听到真相",
+          "target": "We don't want to let anyone hear the truth"
+        }
+      ]
+    },
+    "S0071L05": {
+      "lego": {
+        "known": "听到",
+        "target": "hear"
+      },
+      "practice_phrases": [
+        {
+          "known": "听到",
+          "target": "Hear"
+        },
+        {
+          "known": "我能听到",
+          "target": "I can hear"
+        },
+        {
+          "known": "我听到了",
+          "target": "I hear"
+        },
+        {
+          "known": "你能听到吗",
+          "target": "Can you hear"
+        },
+        {
+          "known": "我想听到真相",
+          "target": "I want to hear the truth"
+        },
+        {
+          "known": "我不能听到你说话",
+          "target": "I can't hear you speak"
+        },
+        {
+          "known": "我昨天听到了她说的话",
+          "target": "I hear her speaking yesterday"
+        },
+        {
+          "known": "我不想让任何人听到这个",
+          "target": "I don't want to let anyone hear this"
+        },
+        {
+          "known": "我们不想让任何人听到真相",
+          "target": "We don't want to let anyone hear the truth"
+        },
+        {
+          "known": "我猜你能听到我现在说的话",
+          "target": "I guess you can hear me speaking now"
+        }
+      ]
+    },
+    "S0072L01": {
+      "lego": {
+        "known": "我",
+        "target": "I"
+      },
+      "practice_phrases": [
+        {
+          "known": "我",
+          "target": "I"
+        },
+        {
+          "known": "我想",
+          "target": "I want"
+        },
+        {
+          "known": "我可以",
+          "target": "I can"
+        },
+        {
+          "known": "我觉得",
+          "target": "I think that"
+        },
+        {
+          "known": "我很累了",
+          "target": "I am tired"
+        },
+        {
+          "known": "我想学更多",
+          "target": "I want to learn more"
+        },
+        {
+          "known": "我昨天在家里",
+          "target": "I was at here yesterday"
+        },
+        {
+          "known": "我觉得你做得很好",
+          "target": "I think that you are doing very well"
+        },
+        {
+          "known": "我不知道为什么这很重要",
+          "target": "I don't know why this is important"
+        },
+        {
+          "known": "我想告诉你我觉得你说英语说得很好",
+          "target": "I want to tell you I think that you speak English very well"
+        }
+      ]
+    },
+    "S0072L02": {
+      "lego": {
+        "known": "觉得",
+        "target": "think that"
+      },
+      "practice_phrases": [
+        {
+          "known": "我觉得",
+          "target": "I think that"
+        },
+        {
+          "known": "我觉得这个",
+          "target": "I think that this"
+        },
+        {
+          "known": "我觉得这很好",
+          "target": "I think that this is good"
+        },
+        {
+          "known": "我觉得她知道",
+          "target": "I think that she know"
+        },
+        {
+          "known": "我觉得你做得好",
+          "target": "I think that you do well"
+        },
+        {
+          "known": "我不觉得这很难",
+          "target": "I don't think that this is difficult"
+        },
+        {
+          "known": "我觉得你能学英语很快",
+          "target": "I think that you can learn English quickly"
+        },
+        {
+          "known": "我觉得你做得很好",
+          "target": "I think that you are doing very well"
+        },
+        {
+          "known": "我觉得她不想告诉我真相",
+          "target": "I think that she doesn't want to tell me the truth"
+        },
+        {
+          "known": "我觉得任何人都能学英语如果他们练习",
+          "target": "I think that anyone can learn English if you practise"
+        }
+      ]
+    },
+    "S0072L03": {
+      "lego": {
+        "known": "你",
+        "target": "you"
+      },
+      "practice_phrases": [
+        {
+          "known": "你",
+          "target": "You"
+        },
+        {
+          "known": "你知道",
+          "target": "You know"
+        },
+        {
+          "known": "你在这里",
+          "target": "You are here"
+        },
+        {
+          "known": "你能帮我吗",
+          "target": "Can you help me"
+        },
+        {
+          "known": "你想学什么",
+          "target": "What do you want to learn"
+        },
+        {
+          "known": "你说英语很好",
+          "target": "You speak English well"
+        },
+        {
+          "known": "你昨天告诉我的话",
+          "target": "What you wanted to tell me yesterday"
+        },
+        {
+          "known": "你能告诉我怎么做吗",
+          "target": "Can you tell me how to do it"
+        },
+        {
+          "known": "我觉得你做得很好",
+          "target": "I think that you are doing very well"
+        },
+        {
+          "known": "你不需要担心因为你学得很快",
+          "target": "You don't need to worry because you are learning quickly"
+        }
+      ]
+    },
+    "S0072L04": {
+      "lego": {
+        "known": "做得很好",
+        "target": "are doing very well"
+      },
+      "practice_phrases": [
+        {
+          "known": "你做得很好",
+          "target": "You are doing very well"
+        },
+        {
+          "known": "你做得很好了",
+          "target": "You are doing very well now"
+        },
+        {
+          "known": "你真的做得很好",
+          "target": "You are doing very well here"
+        },
+        {
+          "known": "我们做得很好",
+          "target": "We are doing very well"
+        },
+        {
+          "known": "我觉得你做得很好",
+          "target": "I think that you are doing very well"
+        },
+        {
+          "known": "你在学习上做得很好",
+          "target": "You are doing very well in learning"
+        },
+        {
+          "known": "你在说英语做得很好",
+          "target": "You are doing very well in speaking English"
+        },
+        {
+          "known": "你说英语做得很好",
+          "target": "You are doing very well speaking English"
+        },
+        {
+          "known": "我猜你在练习上做得很好",
+          "target": "I guess you are doing very well in practise"
+        },
+        {
+          "known": "她告诉我你做得很好",
+          "target": "She wanted to tell me you are doing very well"
+        }
+      ]
+    },
+    "S0073L01": {
+      "lego": {
+        "known": "非常感谢",
+        "target": "thank you very much"
+      },
+      "practice_phrases": [
+        {
+          "known": "非常感谢",
+          "target": "thank you very much"
+        },
+        {
+          "known": "非常感谢你",
+          "target": "thank you very much"
+        },
+        {
+          "known": "非常感谢你的帮助",
+          "target": "thank you very much for the help"
+        },
+        {
+          "known": "非常感谢你的时间",
+          "target": "thank you very much for the time"
+        },
+        {
+          "known": "我想说非常感谢",
+          "target": "I want to say thank you very much"
+        },
+        {
+          "known": "我要说非常感谢你",
+          "target": "I want to say thank you very much"
+        },
+        {
+          "known": "我想非常感谢你昨天的帮助",
+          "target": "I want to thank you very much for helping me yesterday"
+        },
+        {
+          "known": "我想非常感谢你今天早上的帮助",
+          "target": "I want to thank you very much for helping me this morning"
+        },
+        {
+          "known": "我想非常感谢你帮助我理解这个",
+          "target": "I want to thank you very much for helping me understand this"
+        },
+        {
+          "known": "我真的想非常感谢你帮助我学习英语",
+          "target": "I want to thank you very much for helping me learn english"
+        }
+      ]
+    },
+    "S0073L02": {
+      "lego": {
+        "known": "但是",
+        "target": "but"
+      },
+      "practice_phrases": [
+        {
+          "known": "但是",
+          "target": "but"
+        },
+        {
+          "known": "但是不",
+          "target": "but not"
+        },
+        {
+          "known": "好，但是难",
+          "target": "good but hard"
+        },
+        {
+          "known": "我想，但是很难",
+          "target": "I want to but it's hard"
+        },
+        {
+          "known": "我想去，但是太累了",
+          "target": "I want to go but I'm too tired"
+        },
+        {
+          "known": "我想帮忙，但是我不知道怎么做",
+          "target": "I want to help but I don't know how"
+        },
+        {
+          "known": "我想理解，但是我需要更多时间",
+          "target": "I want to understand but I need more time"
+        },
+        {
+          "known": "这很有趣，但是我不确定我理解",
+          "target": "this is interesting but I'm not sure I understand"
+        },
+        {
+          "known": "我想今晚开始，但是我有其他事情要做",
+          "target": "I want to start tonight but I have other things to do"
+        },
+        {
+          "known": "我昨天想练习，但是我太累了",
+          "target": "I wanted to practise yesterday but I was too tired"
+        }
+      ]
+    },
+    "S0073L03": {
+      "lego": {
+        "known": "我还有更多要学的",
+        "target": "I've got more to learn"
+      },
+      "practice_phrases": [
+        {
+          "known": "我还有更多要学的",
+          "target": "I've got more to learn"
+        },
+        {
+          "known": "我还有更多要学的",
+          "target": "I've got more to learn"
+        },
+        {
+          "known": "我想我还有更多要学的",
+          "target": "I think I've got more to learn"
+        },
+        {
+          "known": "我知道我还有更多要学的",
+          "target": "I know I've got more to learn"
+        },
+        {
+          "known": "我知道我还有更多要学的关于这个",
+          "target": "I know I've got more to learn about this"
+        },
+        {
+          "known": "我感觉我还有更多要学的",
+          "target": "I feel I've got more to learn"
+        },
+        {
+          "known": "我想我还有更多要学的关于英语",
+          "target": "I think I've got more to learn about english"
+        },
+        {
+          "known": "我还有更多要学的，但是我会练习",
+          "target": "I've got more to learn but I'm going to practise"
+        },
+        {
+          "known": "我知道我还有更多要学的，我会明天更认真练习",
+          "target": "I know I've got more to learn and I'm going to practise more carefully tomorrow"
+        },
+        {
+          "known": "非常感谢你，但是我还有更多要学的",
+          "target": "thank you very much but I've got more to learn"
+        }
+      ]
+    },
+    "S0074L01": {
+      "lego": {
+        "known": "非常感谢",
+        "target": "thank you very much"
+      },
+      "practice_phrases": [
+        {
+          "known": "非常感谢",
+          "target": "thank you very much"
+        },
+        {
+          "known": "好的，非常感谢",
+          "target": "okay thank you very much"
+        },
+        {
+          "known": "好的，非常感谢你",
+          "target": "okay thank you very much"
+        },
+        {
+          "known": "非常感谢你今天",
+          "target": "thank you very much today"
+        },
+        {
+          "known": "非常感谢你昨天晚上",
+          "target": "thank you very much last night"
+        },
+        {
+          "known": "我想再次非常感谢你",
+          "target": "I want to thank you very much again"
+        },
+        {
+          "known": "非常感谢你今天的练习",
+          "target": "thank you very much for the practise today"
+        },
+        {
+          "known": "非常感谢你帮助我昨天",
+          "target": "thank you very much for helping me yesterday"
+        },
+        {
+          "known": "非常感谢你解释那个给我",
+          "target": "thank you very much for explaining that to me"
+        },
+        {
+          "known": "我想非常感谢你告诉我关于这个",
+          "target": "I want to thank you very much for telling me about this"
+        }
+      ]
+    },
+    "S0074L02": {
+      "lego": {
+        "known": "帮助我理解",
+        "target": "for helping me to understand"
+      },
+      "practice_phrases": [
+        {
+          "known": "帮助我理解",
+          "target": "for helping me to understand"
+        },
+        {
+          "known": "非常感谢帮助我理解",
+          "target": "thank you for helping me to understand"
+        },
+        {
+          "known": "谢谢你帮助我理解",
+          "target": "thank you for helping me to understand"
+        },
+        {
+          "known": "谢谢你帮助我理解这个",
+          "target": "thank you for helping me to understand this"
+        },
+        {
+          "known": "非常感谢帮助我理解那个",
+          "target": "thank you for helping me to understand that"
+        },
+        {
+          "known": "谢谢你帮助我理解这个词",
+          "target": "thank you for helping me to understand this word"
+        },
+        {
+          "known": "非常感谢你昨天帮助我理解",
+          "target": "thank you very much for helping me to understand yesterday"
+        },
+        {
+          "known": "谢谢你今天帮助我理解那个句子",
+          "target": "thank you for helping me to understand that sentence today"
+        },
+        {
+          "known": "非常感谢你帮助我理解那个困难的事情",
+          "target": "thank you very much for helping me to understand that difficult thing"
+        },
+        {
+          "known": "我想感谢你帮助我理解为什么这很重要",
+          "target": "I want to thank you for helping me to understand why this is important"
+        }
+      ]
+    },
+    "S0075L01": {
+      "lego": {
+        "known": "你有...吗",
+        "target": "have you got"
+      },
+      "practice_phrases": [
+        {
+          "known": "你有吗",
+          "target": "have you got"
+        },
+        {
+          "known": "你有时间吗",
+          "target": "have you got time"
+        },
+        {
+          "known": "你有狗吗",
+          "target": "have you got a dog"
+        },
+        {
+          "known": "你有问题吗",
+          "target": "have you got a question"
+        },
+        {
+          "known": "你有更多问题吗",
+          "target": "have you got more questions"
+        },
+        {
+          "known": "你有什么要告诉我的吗",
+          "target": "have you got something to tell me"
+        },
+        {
+          "known": "你有更多要学的吗",
+          "target": "have you got more to learn"
+        },
+        {
+          "known": "你今天有更多要做的吗",
+          "target": "have you got more to do today"
+        },
+        {
+          "known": "你明天有什么重要的事情要做吗",
+          "target": "have you got something important to do tomorrow"
+        },
+        {
+          "known": "你今晚有时间帮助我理解这个吗",
+          "target": "have you got time to help me understand this tonight"
+        }
+      ]
+    },
+    "S0075L02": {
+      "lego": {
+        "known": "更多要学的",
+        "target": "more to learn"
+      },
+      "practice_phrases": [
+        {
+          "known": "更多要学的",
+          "target": "more to learn"
+        },
+        {
+          "known": "还有更多要学的",
+          "target": "more to learn"
+        },
+        {
+          "known": "我有更多要学的",
+          "target": "I have more to learn"
+        },
+        {
+          "known": "我还有更多要学的",
+          "target": "I have got more to learn"
+        },
+        {
+          "known": "你有更多要学的",
+          "target": "you have more to learn"
+        },
+        {
+          "known": "我们有更多要学的",
+          "target": "we have more to learn"
+        },
+        {
+          "known": "你有更多要学的关于这个",
+          "target": "you have more to learn about this"
+        },
+        {
+          "known": "我们都有更多要学的",
+          "target": "we all have more to learn"
+        },
+        {
+          "known": "我想我有更多要学的关于英语",
+          "target": "I think I have more to learn about english"
+        },
+        {
+          "known": "我知道你有更多要学的，但是你做得很好",
+          "target": "I know you have more to learn but you're doing well"
         }
       ]
     }

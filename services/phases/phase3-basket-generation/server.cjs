@@ -35,6 +35,37 @@ const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (Baskets)';
 // Load configuration
 const { loadConfig } = require('../../shared/config-loader.cjs');
 
+/**
+ * Load a prompt template and substitute placeholders
+ * @param {string} templateName - Template filename (e.g., 'phase3_master.md')
+ * @param {Object} placeholders - Key-value pairs for {{PLACEHOLDER}} substitution
+ * @returns {string} Substituted prompt
+ */
+function loadPromptTemplate(templateName, placeholders) {
+  const templatePath = path.join(__dirname, '../../../public/prompts', templateName);
+
+  if (!fs.existsSync(templatePath)) {
+    console.error(`❌ Template not found: ${templatePath}`);
+    throw new Error(`Prompt template not found: ${templateName}`);
+  }
+
+  let template = fs.readFileSync(templatePath, 'utf8');
+
+  // Substitute all {{PLACEHOLDER}} values
+  for (const [key, value] of Object.entries(placeholders)) {
+    const placeholder = `{{${key}}}`;
+    template = template.split(placeholder).join(String(value));
+  }
+
+  // Warn about any unsubstituted placeholders
+  const remaining = template.match(/\{\{[A-Z_]+\}\}/g);
+  if (remaining) {
+    console.warn(`⚠️  Unsubstituted placeholders in ${templateName}:`, remaining);
+  }
+
+  return template;
+}
+
 // Validate config
 if (!VFS_ROOT) {
   console.error('❌ Error: VFS_ROOT not set');
@@ -261,6 +292,35 @@ app.post('/start', async (req, res) => {
     return res.status(400).json({ error: 'courseCode, startSeed, endSeed, target, known required' });
   }
 
+  // PRE-FLIGHT CHECK: Verify orchestrator is online before spawning browsers
+  try {
+    console.log(`[Phase 3] Pre-flight check: verifying orchestrator at ${ORCHESTRATOR_URL}...`);
+    const healthCheck = await fetch(`${ORCHESTRATOR_URL}/health`, {
+      method: 'GET',
+      signal: AbortSignal.timeout(5000) // 5 second timeout
+    });
+
+    if (!healthCheck.ok) {
+      console.error(`[Phase 3] ❌ Pre-flight failed: orchestrator returned ${healthCheck.status}`);
+      return res.status(503).json({
+        error: 'Orchestrator is not healthy',
+        orchestratorUrl: ORCHESTRATOR_URL,
+        status: healthCheck.status,
+        tip: 'Start the orchestrator first: npm run pipeline'
+      });
+    }
+    console.log(`[Phase 3] ✅ Pre-flight passed: orchestrator is online`);
+  } catch (error) {
+    console.error(`[Phase 3] ❌ Pre-flight failed: cannot reach orchestrator`);
+    console.error(`[Phase 3]    Error: ${error.message}`);
+    return res.status(503).json({
+      error: 'Cannot reach orchestrator - is it running?',
+      orchestratorUrl: ORCHESTRATOR_URL,
+      errorMessage: error.message,
+      tip: 'Start the orchestrator first: npm run pipeline'
+    });
+  }
+
   // Check if already running - auto-abort stale jobs
   if (activeJobs.has(courseCode)) {
     const existingJob = activeJobs.get(courseCode);
@@ -438,35 +498,45 @@ app.post('/start', async (req, res) => {
     // STEP 2: MASTER/WORKER CONFIGURATION
     // Read config from automation.config.simple.json
     const config = loadConfig();
-    let masterCount = config.phase3_basket_generation.browsers || 5;
-    let workersPerMaster = config.phase3_basket_generation.agents_per_browser || 4;
-    const seedsPerWorker = config.phase3_basket_generation.seeds_per_agent || 1;
+    const configBrowsers = config.phase3_basket_generation.browsers || 5;
+    const configWorkersPerBrowser = config.phase3_basket_generation.agents_per_browser || 5;
 
-    // SMART SCALING: Only spawn browsers/workers needed for actual workload
+    // MINIMUM THRESHOLDS (never go below these)
+    const MIN_BROWSERS = 5;
+    const MIN_WORKERS_PER_BROWSER = 5;
+
+    // Count unique seeds to process
     const uniqueSeeds = new Set(targetLegos.map(l => l.seed));
     const seedsToProcess = uniqueSeeds.size;
-    const workersNeeded = Math.ceil(seedsToProcess / seedsPerWorker);
 
-    // Calculate optimal browser/worker distribution
-    if (workersNeeded < (masterCount * workersPerMaster)) {
-      console.log(`\n[Phase 3] 🎯 Smart Scaling: Only ${seedsToProcess} seeds to process (${workersNeeded} workers needed)`);
+    // Calculate browser/worker distribution with minimums enforced
+    let masterCount, workersPerMaster;
 
-      // Option A: Minimize browsers, maximize workers per browser
-      if (workersNeeded <= workersPerMaster) {
-        // All work fits in 1 browser
-        masterCount = 1;
-        workersPerMaster = workersNeeded;
-      } else {
-        // Distribute evenly across browsers (prefer fewer browsers)
-        masterCount = Math.min(masterCount, Math.ceil(workersNeeded / 5)); // ~5 workers per browser
-        workersPerMaster = Math.ceil(workersNeeded / masterCount);
+    if (seedsToProcess === 0) {
+      // Edge case: no work to do
+      masterCount = 0;
+      workersPerMaster = 0;
+    } else {
+      // Start with config values, but enforce minimums (ALWAYS at least 5x5)
+      masterCount = Math.max(MIN_BROWSERS, configBrowsers);
+      workersPerMaster = Math.max(MIN_WORKERS_PER_BROWSER, configWorkersPerBrowser);
+
+      // If we have fewer seeds than minimum capacity, still use minimums
+      // Seeds will be distributed across workers (some may have fewer)
+      const totalWorkerCapacity = masterCount * workersPerMaster;
+
+      if (seedsToProcess < totalWorkerCapacity) {
+        console.log(`\n[Phase 3] 📊 Capacity Allocation:`);
+        console.log(`[Phase 3]    Seeds to process: ${seedsToProcess}`);
+        console.log(`[Phase 3]    Total workers: ${totalWorkerCapacity} (${masterCount} browsers × ${workersPerMaster} workers)`);
+        console.log(`[Phase 3]    Seeds will be distributed across workers`);
       }
-
-      console.log(`[Phase 3]    Scaled down: ${masterCount} browsers × ${workersPerMaster} workers = ${masterCount * workersPerMaster} workers`);
     }
 
     const totalWorkers = masterCount * workersPerMaster;
-    const capacity = totalWorkers * seedsPerWorker;
+    // Calculate seeds per worker dynamically based on actual workload
+    const seedsPerWorker = totalWorkers > 0 ? Math.max(1, Math.ceil(seedsToProcess / totalWorkers)) : 0;
+    const capacity = seedsToProcess; // Actual capacity is the seeds we're processing
 
     console.log(`\n[Phase 3] Master/Worker Configuration:`);
     console.log(`[Phase 3]    Masters: ${masterCount} browser tabs`);
@@ -977,18 +1047,22 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   }
   const seeds = Object.keys(legosBySeed).sort();
 
-  // Determine actual workers needed (1 worker per seed, but don't exceed requested)
-  // If 24 seeds but only 8 workers requested, distribute seeds among 8 workers
-  // If 3 seeds but 8 workers requested, only spawn 3 workers (1 per seed)
-  const workersToSpawn = Math.min(requestedWorkers, seeds.length);
-  const seedsPerWorker = Math.ceil(seeds.length / workersToSpawn);
+  // ALWAYS spawn the requested number of workers (minimum 5)
+  // Seeds are distributed evenly - some workers may have fewer if seeds < workers
+  const MIN_WORKERS = 5;
+  const workersToSpawn = Math.max(MIN_WORKERS, Math.min(requestedWorkers, seeds.length));
+  const seedsPerWorker = workersToSpawn > 0 ? Math.ceil(seeds.length / workersToSpawn) : 0;
 
   // Create LEGO assignments (distribute seeds evenly among workers)
+  // Only create assignments for workers that have actual work
   const workerAssignments = [];
   for (let workerNum = 1; workerNum <= workersToSpawn; workerNum++) {
     const workerStartIdx = (workerNum - 1) * seedsPerWorker;
     const workerEndIdx = Math.min(workerNum * seedsPerWorker, seeds.length);
     const workerSeeds = seeds.slice(workerStartIdx, workerEndIdx);
+
+    // Skip workers that have no seeds assigned
+    if (workerSeeds.length === 0) continue;
 
     // Collect all LEGOs from this worker's seeds
     const workerLegoIds = [];
@@ -1005,267 +1079,36 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
     });
   }
 
-  return `# Phase 3 Master Orchestrator
+  // Adjust actual workers to spawn based on assignments (don't spawn empty workers)
+  const actualWorkersToSpawn = workerAssignments.length;
 
-**Course:** \`${courseCode}\`
-**Your Range:** Seeds \`S${String(startSeed).padStart(4, '0')}\` to \`S${String(endSeed).padStart(4, '0')}\` (${totalSeeds} seeds)
-**Target LEGOs:** ${legoCount} LEGOs across ${seeds.length} seeds
-**Workers to spawn:** ${workersToSpawn} (via Task tool)
+  // Format worker assignments for template
+  const workerAssignmentsText = workerAssignments.map(w => {
+    const seedDisplay = w.seedIds.length === 1
+      ? `Seed ${w.seedIds[0]}`
+      : `Seeds ${w.seedIds[0]}-${w.seedIds[w.seedIds.length - 1]} (${w.seedIds.length} seeds)`;
+    const legoDisplay = w.legoIds.length <= 10
+      ? w.legoIds.join(', ')
+      : `${w.legoIds.slice(0, 10).join(', ')}... and ${w.legoIds.length - 10} more`;
+    return `**Worker ${w.workerNum}:** ${seedDisplay} - LEGOs: ${legoDisplay} (${w.legoCount} LEGOs)`;
+  }).join('\n');
 
----
-
-## 🎯 YOUR MISSION: SPAWN ${workersToSpawn} WORKERS
-
-You are a **Master Orchestrator**. You DON'T generate baskets yourself.
-
-**Your workflow:**
-
-1. ✅ **Assign LEGOs to workers** - See assignments below (1 worker per seed)
-2. ✅ **Spawn ${workersToSpawn} workers** - Use Task tool ${workersToSpawn} times in ONE message (parallel!)
-3. ✅ **Work SILENTLY** - No verbose progress logs
-4. ✅ **Monitor completion** - Workers will upload via ngrok
-5. ✅ **Report brief summary** - "✅ Master complete: ${workersToSpawn} workers spawned"
-
----
-
-## 📋 WORKER ASSIGNMENTS
-
-${workerAssignments.map(w => {
-  const seedDisplay = w.seedIds.length === 1
-    ? `Seed ${w.seedIds[0]}`
-    : `Seeds ${w.seedIds[0]}-${w.seedIds[w.seedIds.length - 1]} (${w.seedIds.length} seeds)`;
-  const legoDisplay = w.legoIds.length <= 10
-    ? w.legoIds.join(', ')
-    : `${w.legoIds.slice(0, 10).join(', ')}... and ${w.legoIds.length - 10} more`;
-  return `**Worker ${w.workerNum}:** ${seedDisplay} - LEGOs: ${legoDisplay} (${w.legoCount} LEGOs)`;
-}).join('\n')}
-
----
-
-## 🚀 SPAWN WORKERS
-
-Use Task tool ${workersToSpawn} times in a SINGLE message (parallel spawn).
-
-**Worker prompt template:**
-
-\`\`\`
-{
-  "subagent_type": "general-purpose",
-  "description": "Phase 3 Worker N",
-  "prompt": "# 🎭 YOUR ROLE
-
-You are a **world-leading creator of practice phrases** in the target language that help learners internalize language patterns naturally and quickly.
-
-Your phrases must:
-- ✅ Sound **natural in BOTH languages** (${known} and ${target})
-- ✅ Use **realistic communication scenarios** learners would encounter
-- ✅ Follow **vocabulary constraints** (GATE compliance - only use available vocabulary)
-- ✅ Help learners **internalize target language grammar patterns** through practice
-- ✅ **EVERY phrase MUST contain the complete LEGO** - this is practice, not random conversation
-
-**CRITICAL PRINCIPLE**: Practice phrases are opportunities for learners to **PRACTICE SAYING THE LEGO**.
-
-Not random vocabulary. Not building up TO the lego. Building FROM the lego by adding context.
-
----
-
-## 📖 UNDERSTAND THE METHODOLOGY
-
-**Read for context**: https://ssi-dashboard-v7.vercel.app/docs/phase_intelligence/phase_3_lego_baskets.md
-
-This explains WHY we generate baskets and the pedagogical principles behind LEGO-based learning.
-
-**Key takeaways:**
-- LEGOs are linguistic building blocks for recombination
-- GATE compliance ensures learners only practice known vocabulary
-- Quality over quantity (better 8 perfect phrases than 10 with 2 bad ones)
-- Grammar must ALWAYS be correct in both languages
-- Extended linguistic thinking required (not mechanical templates)
-
----
-
-## 🎯 YOUR ASSIGNMENT
-
-**Seed:** SXXXX
-**LEGOs to generate:** [list LEGO IDs here]
-
----
-
-## 🔧 GENERATION WORKFLOW
-
-For EACH LEGO, follow this exact process:
-
-### Step 1: Fetch Required Data
-
-**Get LEGO details from Phase 2 outputs:**
-- GET: \`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
-- Look up your assigned LEGO IDs in the \`lego_pairs.json\` response
-
-**Get phase intelligence:**
-- GET: \`${ORCHESTRATOR_URL}/api/phase-intelligence/3\`
-- Review generation methodology and best practices
-
-**Example API calls:**
-\`\`\`bash
-# Get LEGO pairs
-curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json
-
-# Get phase intelligence
-curl ${ORCHESTRATOR_URL}/api/phase-intelligence/3
-\`\`\`
-
-The lego_pairs.json provides:
-- The LEGO you're teaching (known → target)
-- Complete available vocabulary (from previous seeds and LEGOs)
-- LEGO type (M/FD/LUT)
-- Seed context
-
-### Step 2: Think Linguistically
-
-**Extended thinking required** - Ask yourself:
-- What is this LEGO? (verb/noun/phrase/etc.)
-- How would learners naturally use it?
-- What realistic scenarios would include this LEGO?
-- What relates to the seed theme?
-
-**Start with ${known} thoughts**, then express in ${target} using only available vocabulary.
-
-### Step 3: Generate 10 Practice Phrases
-
-**CRITICAL RULE**: Phrase 1 must ALREADY contain the COMPLETE LEGO.
-
-Build FROM the LEGO, not TO it:
-- ✅ CORRECT: \\"I don't know why\\" → \\"I don't know why that is\\" → \\"I don't know why you think so\\"
-- ❌ WRONG: \\"I don't know\\" → \\"I don't\\" → \\"I don't know why\\" (building TO it!)
-
-**Progressive complexity** (2-2-2-4 distribution):
-- Phrases 1-2: SHORT (LEGO alone or +1 word)
-- Phrases 3-4: MEDIUM (LEGO +2-3 words)
-- Phrases 5-6: LONGER (LEGO +4-6 words)
-- Phrases 7-10: LONGEST (LEGO +6+ words, aim for natural sentences)
-
-### Step 4: Validate EVERY Phrase
-
-**For EACH phrase, check all 3:**
-
-1. ✅ **Contains COMPLETE LEGO?**
-   - If LEGO is \\"it's unusual that\\", the phrase must contain \\"it's unusual that\\"
-   - NOT \\"it's unusual\\" (incomplete)
-   - NOT \\"unusual that\\" (incomplete)
-   - The COMPLETE LEGO must be present
-
-2. ✅ **GATE Compliant?**
-   - Every ${target} word must exist in the scaffold's vocabulary list
-   - Check EVERY word - if ANY word is missing, the phrase FAILS
-   - No guessing or introducing new vocabulary
-
-3. ✅ **Grammatically correct in BOTH languages?**
-   - Natural ${known} grammar
-   - Natural ${target} grammar (verb conjugations, gender agreement, word order)
-   - Would a native speaker understand this naturally?
-
-### Step 5: Fix Failures
-
-**If ANY phrase fails ANY check:**
-- DELETE that phrase immediately
-- Think of a NEW ${known} thought that uses the LEGO
-- Express it in ${target} using only available vocabulary
-- Re-validate the new phrase
-
-**Keep iterating until ALL 10 phrases pass ALL 3 checks.**
-
-### Step 6: Submit Your Work
-
-**POST submission to orchestrator:**
-- Endpoint: \`${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit\`
-- Method: POST
-- Content-Type: application/json
-
-**Payload format:**
-\`\`\`json
-{
-  "version": "8.2.0",
-  "course": "${courseCode}",
-  "baskets": {
-    "[LEGO_ID]": {
-      "lego": { "known": "...", "target": "..." },
-      "practice_phrases": [
-        { "known": "...", "target": "..." }
-      ]
-    }
-  }
+  // Use template with placeholders
+  return loadPromptTemplate('phase3_master.md', {
+    COURSE_CODE: courseCode,
+    START_SEED: `S${String(startSeed).padStart(4, '0')}`,
+    END_SEED: `S${String(endSeed).padStart(4, '0')}`,
+    TOTAL_SEEDS: totalSeeds,
+    LEGO_COUNT: legoCount,
+    SEEDS_COUNT: seeds.length,
+    WORKERS_TO_SPAWN: actualWorkersToSpawn,
+    WORKER_ASSIGNMENTS: workerAssignmentsText,
+    KNOWN_LANGUAGE: known,
+    TARGET_LANGUAGE: target,
+    ORCHESTRATOR_URL: ORCHESTRATOR_URL
+  });
 }
-\`\`\`
 
-**Expected response:**
-\`\`\`json
-{
-  "success": true,
-  "basketCount": 1,
-  "savedTo": "courses/${courseCode}/lego_baskets.json"
-}
-\`\`\`
-
-**Example API call:**
-\`\`\`bash
-curl -X POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "version": "8.2.0",
-    "course": "${courseCode}",
-    "baskets": { "S0117L01": { ... } }
-  }'
-\`\`\`
-
----
-
-## ⚠️ COMMON MISTAKES TO AVOID
-
-❌ Building up TO the LEGO instead of FROM it
-❌ Using vocabulary not in the scaffold's available list
-❌ Mechanical/template generation without thinking
-❌ Unnatural grammar in either language
-❌ Uploading without validating every phrase
-
-✅ Natural, meaningful utterances
-✅ Every phrase contains the complete LEGO
-✅ Strict GATE compliance
-✅ Grammatically perfect in both languages
-✅ Evidence of linguistic thinking
-
----
-
-## 🎯 SUCCESS CRITERIA
-
-Your work is successful when:
-- All 10 phrases contain the COMPLETE LEGO
-- 100% GATE compliance (every ${target} word from scaffold vocabulary)
-- Natural, grammatically correct in both languages
-- Progressive complexity from simple to rich contexts
-- Quality over speed - better 8 perfect than 10 with failures
-
-**Remember**: You're a linguistic expert creating learning materials, not a mechanical processor. Think, create, validate.
-
-Work silently. Report brief summary when complete."
-}
-\`\`\`
-
----
-
-## 🎯 START NOW
-
-**Spawn all ${workersToSpawn} workers in parallel!**
-
-Each worker:
-1. Gets its LEGO ID list from assignments above
-2. Fetches LEGO data via REST API: \`GET ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
-3. Fetches phase intelligence: \`GET ${ORCHESTRATOR_URL}/api/phase-intelligence/3\`
-4. Generates baskets for assigned LEGOs
-5. Submits via REST API: \`POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit\`
-
-Report: "✅ Master complete: ${workersToSpawn} workers spawned for ${legoCount} LEGOs"
-`;
-}
 
 /**
  * Spawn Claude Code session via osascript
