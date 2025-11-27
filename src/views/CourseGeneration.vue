@@ -688,9 +688,9 @@ const phaseSelection = ref('all') // 'all', 'phase1', 'phase2', 'phase3', 'manif
 // Model selection for benchmarking
 const selectedModel = ref('sonnet') // 'haiku', 'sonnet', 'opus'
 const modelOptions = [
-  { value: 'haiku', label: 'Haiku 3.5', suffix: 'haiku', speed: 'Fastest', quality: 'Good' },
-  { value: 'sonnet', label: 'Sonnet 4', suffix: 'sonnet', speed: 'Fast', quality: 'Great' },
-  { value: 'opus', label: 'Opus 4', suffix: 'opus', speed: 'Slower', quality: 'Best' }
+  { value: 'haiku', label: 'Haiku 4.5', suffix: 'haiku', speed: 'Fastest', quality: 'Good' },
+  { value: 'sonnet', label: 'Sonnet 4.5', suffix: 'sonnet', speed: 'Fast', quality: 'Great' },
+  { value: 'opus', label: 'Opus 4.5', suffix: 'opus', speed: 'Slower', quality: 'Best' }
 ]
 
 // Parallelization config
