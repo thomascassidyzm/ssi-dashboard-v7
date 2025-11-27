@@ -14,6 +14,16 @@
     }
   },
 
+  "phase3_basket_generation": {
+    "browsers": 15,
+    "agents_per_browser": 15,
+    "seeds_per_agent": 3,
+    "browser_spawn_delay_ms": 5000,
+    "headless": false,
+    "target_phrases_per_lego": 10,
+    "disable_github_push": true
+  },
+
   "phase5_basket_generation": {
     "browsers": 15,
     "agents_per_browser": 15,
