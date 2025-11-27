@@ -75,6 +75,20 @@ function getDefaultConfig() {
         block_on_collision: true
       }
     },
+    phase3_basket_generation: {
+      browsers: 5,
+      agents_per_browser: 4,
+      seeds_per_agent: 3,
+      browser_spawn_delay_ms: 5000,
+      parallelization: {
+        small_course_threshold: 50,
+        medium_course_threshold: 200,
+        small_course_strategy: { agents: 2 },
+        medium_course_strategy: { agents: 5 },
+        large_course_strategy: { agents: 10 }
+      }
+    },
+    // Legacy alias
     phase5_basket_generation: {
       parallelization: {
         small_course_threshold: 50,
