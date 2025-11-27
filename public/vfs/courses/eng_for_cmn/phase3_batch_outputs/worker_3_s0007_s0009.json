@@ -1,0 +1,619 @@
+{
+  "course": "eng_for_cmn",
+  "version": "1.0.0",
+  "phase": "3",
+  "seeds_processed": [
+    "S0007",
+    "S0008",
+    "S0009"
+  ],
+  "total_baskets": 12,
+  "methodology": "Phase 3 Basket Generation",
+  "metadata": {
+    "worker_id": 3,
+    "generated_at": "2025-11-27T10:26:27.183040Z",
+    "total_phrases": 120
+  },
+  "baskets": {
+    "S0007L01": {
+      "lego": {
+        "known": "我想",
+        "target": "I want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "我想说。",
+          "target": "I want to speak."
+        },
+        {
+          "known": "我想试。",
+          "target": "I want to try."
+        },
+        {
+          "known": "我想和你说。",
+          "target": "I want to speak with you."
+        },
+        {
+          "known": "我想学英语。",
+          "target": "I want to learn English."
+        },
+        {
+          "known": "我想今天说英语。",
+          "target": "I want to speak English today."
+        },
+        {
+          "known": "我想尽可能地说。",
+          "target": "I want to speak as often as I can."
+        },
+        {
+          "known": "我想和你说一点英语。",
+          "target": "I want to speak a little English with you."
+        },
+        {
+          "known": "我想今天试着说英语。",
+          "target": "I want to try to speak English today."
+        },
+        {
+          "known": "我想今天尽可能地学习。",
+          "target": "I want to learn as hard as I can today."
+        },
+        {
+          "known": "我想说英语,你也想吗?",
+          "target": "I want to speak English, what I mean?"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0007L02": {
+      "lego": {
+        "known": "尝试",
+        "target": "to try"
+      },
+      "practice_phrases": [
+        {
+          "known": "我要尝试。",
+          "target": "I am going to try."
+        },
+        {
+          "known": "今天尝试。",
+          "target": "To try today."
+        },
+        {
+          "known": "我想尝试说。",
+          "target": "I want to try to speak."
+        },
+        {
+          "known": "尝试说英语。",
+          "target": "To try to speak English."
+        },
+        {
+          "known": "我今天想尝试说英语。",
+          "target": "I want to try to speak English today."
+        },
+        {
+          "known": "尝试和你说英语。",
+          "target": "To try to speak English with you."
+        },
+        {
+          "known": "我要尝试尽我所能地说。",
+          "target": "I am going to try as hard as I can to speak."
+        },
+        {
+          "known": "我想今天尝试说一点英语。",
+          "target": "I want to try to speak a little English today."
+        },
+        {
+          "known": "尝试今天和你说英语。",
+          "target": "To try to speak English with you today."
+        },
+        {
+          "known": "我要尝试记住你说的话。",
+          "target": "I am going to try to remember what you say."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0007L03": {
+      "lego": {
+        "known": "尽我所能",
+        "target": "as hard as I can"
+      },
+      "practice_phrases": [
+        {
+          "known": "尽我所能。",
+          "target": "As hard as I can."
+        },
+        {
+          "known": "我尽我所能。",
+          "target": "I try as hard as I can."
+        },
+        {
+          "known": "我尽我所能地学。",
+          "target": "I learn as hard as I can."
+        },
+        {
+          "known": "尽我所能地说。",
+          "target": "To speak as hard as I can."
+        },
+        {
+          "known": "我今天尽我所能地学。",
+          "target": "I learn as hard as I can today."
+        },
+        {
+          "known": "我要尽我所能地说英语。",
+          "target": "I am going to speak English as hard as I can."
+        },
+        {
+          "known": "我想今天尽我所能地学英语。",
+          "target": "I want to learn English as hard as I can today."
+        },
+        {
+          "known": "我要尽我所能地和你说。",
+          "target": "I am going to speak with you as hard as I can."
+        },
+        {
+          "known": "我今天要尽我所能地试。",
+          "target": "I am going to try as hard as I can today."
+        },
+        {
+          "known": "尽我所能地记住你的话。",
+          "target": "To remember what you say as hard as I can."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0007L04": {
+      "lego": {
+        "known": "今天",
+        "target": "today"
+      },
+      "practice_phrases": [
+        {
+          "known": "今天说。",
+          "target": "To speak today."
+        },
+        {
+          "known": "我今天学。",
+          "target": "I learn today."
+        },
+        {
+          "known": "今天说英语。",
+          "target": "To speak English today."
+        },
+        {
+          "known": "我今天想学。",
+          "target": "I want to learn today."
+        },
+        {
+          "known": "我今天想说英语。",
+          "target": "I want to speak English today."
+        },
+        {
+          "known": "今天和你说英语。",
+          "target": "To speak English with you today."
+        },
+        {
+          "known": "我今天要尽我所能地学。",
+          "target": "I am going to learn as hard as I can today."
+        },
+        {
+          "known": "今天我想试着说一点英语。",
+          "target": "I want to try to speak a little English today."
+        },
+        {
+          "known": "我今天要和你说英语。",
+          "target": "I am going to speak English with you today."
+        },
+        {
+          "known": "今天我想记住你说的话。",
+          "target": "I want to remember what you say today."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0008L01": {
+      "lego": {
+        "known": "我要",
+        "target": "I'm going to"
+      },
+      "practice_phrases": [
+        {
+          "known": "我要说。",
+          "target": "I'm going to speak."
+        },
+        {
+          "known": "我要试。",
+          "target": "I'm going to try."
+        },
+        {
+          "known": "我要说英语。",
+          "target": "I'm going to speak English."
+        },
+        {
+          "known": "我要今天学。",
+          "target": "I'm going to learn today."
+        },
+        {
+          "known": "我要和你说英语。",
+          "target": "I'm going to speak English with you."
+        },
+        {
+          "known": "我要今天试一试。",
+          "target": "I'm going to try today."
+        },
+        {
+          "known": "我要今天尽我所能地学英语。",
+          "target": "I'm going to learn English as hard as I can today."
+        },
+        {
+          "known": "我要试着和你说一点英语。",
+          "target": "I'm going to try to speak a little English with you."
+        },
+        {
+          "known": "我要今天解释我的意思。",
+          "target": "I'm going to explain what I mean today."
+        },
+        {
+          "known": "我要尽我所能地记住。",
+          "target": "I'm going to remember as hard as I can."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0008L02": {
+      "lego": {
+        "known": "试着",
+        "target": "try to"
+      },
+      "practice_phrases": [
+        {
+          "known": "试着说。",
+          "target": "Try to speak."
+        },
+        {
+          "known": "我试着学。",
+          "target": "I try to learn."
+        },
+        {
+          "known": "试着说英语。",
+          "target": "Try to speak English."
+        },
+        {
+          "known": "我试着记住。",
+          "target": "I try to remember."
+        },
+        {
+          "known": "我试着今天说英语。",
+          "target": "I try to speak English today."
+        },
+        {
+          "known": "试着和你说英语。",
+          "target": "Try to speak English with you."
+        },
+        {
+          "known": "我要试着今天尽我所能地学。",
+          "target": "I am going to try to learn as hard as I can today."
+        },
+        {
+          "known": "我试着说一点英语给你。",
+          "target": "I try to speak a little English to you."
+        },
+        {
+          "known": "试着今天记住你说的话。",
+          "target": "Try to remember what you say today."
+        },
+        {
+          "known": "我想试着解释我的意思。",
+          "target": "I want to try to explain what I mean."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0008L03": {
+      "lego": {
+        "known": "解释",
+        "target": "to explain"
+      },
+      "practice_phrases": [
+        {
+          "known": "解释一下。",
+          "target": "To explain."
+        },
+        {
+          "known": "我解释。",
+          "target": "I explain."
+        },
+        {
+          "known": "我想解释。",
+          "target": "I want to explain."
+        },
+        {
+          "known": "解释我的意思。",
+          "target": "To explain what I mean."
+        },
+        {
+          "known": "我要试着解释。",
+          "target": "I am going to try to explain."
+        },
+        {
+          "known": "今天我想解释给你。",
+          "target": "I want to explain to you today."
+        },
+        {
+          "known": "我要试着解释我的意思。",
+          "target": "I am going to try to explain what I mean."
+        },
+        {
+          "known": "我想今天解释我说的话。",
+          "target": "I want to explain what I say today."
+        },
+        {
+          "known": "我试着用英语解释。",
+          "target": "I try to explain in English."
+        },
+        {
+          "known": "我要尽我所能地解释给你。",
+          "target": "I am going to explain to you as hard as I can."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0008L04": {
+      "lego": {
+        "known": "我的意思",
+        "target": "what I mean"
+      },
+      "practice_phrases": [
+        {
+          "known": "我的意思是。",
+          "target": "What I mean."
+        },
+        {
+          "known": "这是我的意思。",
+          "target": "What I mean."
+        },
+        {
+          "known": "解释我的意思。",
+          "target": "To explain what I mean."
+        },
+        {
+          "known": "你懂我的意思吗?",
+          "target": "What I mean?"
+        },
+        {
+          "known": "我想解释我的意思。",
+          "target": "I want to explain what I mean."
+        },
+        {
+          "known": "我试着说我的意思。",
+          "target": "I try to say what I mean."
+        },
+        {
+          "known": "我要试着解释我的意思给你。",
+          "target": "I am going to try to explain what I mean to you."
+        },
+        {
+          "known": "我的意思是今天我想学英语。",
+          "target": "What I mean - I want to learn English today."
+        },
+        {
+          "known": "我今天要说我的意思。",
+          "target": "I am going to say what I mean today."
+        },
+        {
+          "known": "你能记住我的意思吗?",
+          "target": "Can you remember what I mean?"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0009L01": {
+      "lego": {
+        "known": "我会说",
+        "target": "I speak"
+      },
+      "practice_phrases": [
+        {
+          "known": "我会说。",
+          "target": "I speak."
+        },
+        {
+          "known": "我会说英语。",
+          "target": "I speak English."
+        },
+        {
+          "known": "我会说一点。",
+          "target": "I speak a little."
+        },
+        {
+          "known": "现在我会说。",
+          "target": "I speak now."
+        },
+        {
+          "known": "我会说一点英语。",
+          "target": "I speak a little English."
+        },
+        {
+          "known": "我现在会说英语了。",
+          "target": "I speak English now."
+        },
+        {
+          "known": "今天我会说英语给你听。",
+          "target": "I speak English to you today."
+        },
+        {
+          "known": "我会说,我也想学更多。",
+          "target": "I speak, I want to learn."
+        },
+        {
+          "known": "我现在会说一点英语了。",
+          "target": "I speak a little English now."
+        },
+        {
+          "known": "我会说英语,你会说吗?",
+          "target": "I speak English, you speak?"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0009L02": {
+      "lego": {
+        "known": "一点",
+        "target": "a little"
+      },
+      "practice_phrases": [
+        {
+          "known": "一点。",
+          "target": "A little."
+        },
+        {
+          "known": "说一点。",
+          "target": "Speak a little."
+        },
+        {
+          "known": "一点英语。",
+          "target": "A little English."
+        },
+        {
+          "known": "我说一点。",
+          "target": "I speak a little."
+        },
+        {
+          "known": "我会说一点英语。",
+          "target": "I speak a little English."
+        },
+        {
+          "known": "今天学一点。",
+          "target": "Learn a little today."
+        },
+        {
+          "known": "我今天想学一点英语。",
+          "target": "I want to learn a little English today."
+        },
+        {
+          "known": "我要和你说一点英语。",
+          "target": "I am going to speak a little English with you."
+        },
+        {
+          "known": "我试着说一点给你听。",
+          "target": "I try to speak a little to you."
+        },
+        {
+          "known": "我现在会说一点了。",
+          "target": "I speak a little now."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0009L03": {
+      "lego": {
+        "known": "英语",
+        "target": "English"
+      },
+      "practice_phrases": [
+        {
+          "known": "英语。",
+          "target": "English."
+        },
+        {
+          "known": "说英语。",
+          "target": "Speak English."
+        },
+        {
+          "known": "学英语。",
+          "target": "Learn English."
+        },
+        {
+          "known": "我说英语。",
+          "target": "I speak English."
+        },
+        {
+          "known": "我想学英语。",
+          "target": "I want to learn English."
+        },
+        {
+          "known": "今天说英语。",
+          "target": "Speak English today."
+        },
+        {
+          "known": "我今天要说英语给你听。",
+          "target": "I am going to speak English to you today."
+        },
+        {
+          "known": "我会说一点英语了。",
+          "target": "I speak a little English now."
+        },
+        {
+          "known": "我想尽我所能地学英语。",
+          "target": "I want to learn English as hard as I can."
+        },
+        {
+          "known": "用英语解释我的意思。",
+          "target": "To explain what I mean in English."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0009L04": {
+      "lego": {
+        "known": "现在",
+        "target": "now"
+      },
+      "practice_phrases": [
+        {
+          "known": "现在。",
+          "target": "Now."
+        },
+        {
+          "known": "现在说。",
+          "target": "Speak now."
+        },
+        {
+          "known": "我现在学。",
+          "target": "I learn now."
+        },
+        {
+          "known": "现在说英语。",
+          "target": "Speak English now."
+        },
+        {
+          "known": "我现在会说英语。",
+          "target": "I speak English now."
+        },
+        {
+          "known": "现在和你说。",
+          "target": "Speak with you now."
+        },
+        {
+          "known": "我现在想和你说英语。",
+          "target": "I want to speak English with you now."
+        },
+        {
+          "known": "我现在要试着学英语。",
+          "target": "I am going to try to learn English now."
+        },
+        {
+          "known": "现在我会说一点了。",
+          "target": "I speak a little now."
+        },
+        {
+          "known": "我现在要解释我的意思。",
+          "target": "I am going to explain what I mean now."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    }
+  }
+}

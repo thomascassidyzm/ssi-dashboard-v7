@@ -1,0 +1,585 @@
+{
+  "version": "8.2.0",
+  "course": "eng_for_cmn",
+  "worker": "Worker 4",
+  "seedRange": "S0010-S0012",
+  "generatedAt": "2025-11-27T10:30:00.000Z",
+  "baskets": {
+    "S0010L01": {
+      "lego": {
+        "known": "确定",
+        "target": "sure"
+      },
+      "practice_phrases": [
+        {
+          "known": "确定",
+          "target": "Sure"
+        },
+        {
+          "known": "你确定吗",
+          "target": "Are you sure"
+        },
+        {
+          "known": "我想确定",
+          "target": "I want to be sure"
+        },
+        {
+          "known": "我现在想确定",
+          "target": "I want to be sure now"
+        },
+        {
+          "known": "我要确定我能记住",
+          "target": "I'm going to be sure I can remember"
+        },
+        {
+          "known": "你今天确定吗",
+          "target": "Are you sure today"
+        },
+        {
+          "known": "我想和你确定我的意思",
+          "target": "I want to be sure with you what I mean"
+        },
+        {
+          "known": "我现在要确定我能说英语",
+          "target": "I'm going to be sure now I can speak English"
+        },
+        {
+          "known": "我想尽可能确定",
+          "target": "I want to be as sure as possible"
+        },
+        {
+          "known": "我不确定我能不能记住整个句子",
+          "target": "I'm not sure if I can remember the whole sentence"
+        }
+      ]
+    },
+    "S0010L02": {
+      "lego": {
+        "known": "记住",
+        "target": "to remember"
+      },
+      "practice_phrases": [
+        {
+          "known": "记住",
+          "target": "Remember"
+        },
+        {
+          "known": "我想记住",
+          "target": "I want to remember"
+        },
+        {
+          "known": "我在努力记住",
+          "target": "I'm trying to remember"
+        },
+        {
+          "known": "我现在能记住",
+          "target": "I can remember now"
+        },
+        {
+          "known": "我想今天记住",
+          "target": "I want to remember today"
+        },
+        {
+          "known": "我要试着记住一个词",
+          "target": "I'm going to try to remember a word"
+        },
+        {
+          "known": "我想记住怎么说",
+          "target": "I want to remember how to say"
+        },
+        {
+          "known": "我要尽可能经常记住",
+          "target": "I'm going to remember as often as possible"
+        },
+        {
+          "known": "我在努力记住用英语怎么说",
+          "target": "I'm trying to remember how to say something in English"
+        },
+        {
+          "known": "我不确定我能不能记住整个句子",
+          "target": "I'm not sure if I can remember the whole sentence"
+        }
+      ]
+    },
+    "S0010L03": {
+      "lego": {
+        "known": "句子",
+        "target": "sentence"
+      },
+      "practice_phrases": [
+        {
+          "known": "句子",
+          "target": "Sentence"
+        },
+        {
+          "known": "一个句子",
+          "target": "A sentence"
+        },
+        {
+          "known": "我要说一个句子",
+          "target": "I'm going to speak a sentence"
+        },
+        {
+          "known": "我想记住这个句子",
+          "target": "I want to remember the sentence"
+        },
+        {
+          "known": "我在努力学习一个句子",
+          "target": "I'm trying to learn a sentence"
+        },
+        {
+          "known": "我想今天练习一个句子",
+          "target": "I want to practise a sentence today"
+        },
+        {
+          "known": "我要试着解释这个句子",
+          "target": "I'm going to try to explain the sentence"
+        },
+        {
+          "known": "我想和你说一个英语句子",
+          "target": "I want to speak an English sentence with you"
+        },
+        {
+          "known": "我在努力记住怎么说这个句子",
+          "target": "I'm trying to remember how to say the sentence"
+        },
+        {
+          "known": "我不确定我能不能记住整个句子",
+          "target": "I'm not sure if I can remember the whole sentence"
+        }
+      ]
+    },
+    "S0010L04": {
+      "lego": {
+        "known": "整个",
+        "target": "whole"
+      },
+      "practice_phrases": [
+        {
+          "known": "整个",
+          "target": "Whole"
+        },
+        {
+          "known": "整个句子",
+          "target": "The whole sentence"
+        },
+        {
+          "known": "我想说整个句子",
+          "target": "I want to say the whole sentence"
+        },
+        {
+          "known": "我要记住整个句子",
+          "target": "I'm going to remember the whole sentence"
+        },
+        {
+          "known": "我在努力学习整个句子",
+          "target": "I'm trying to learn the whole sentence"
+        },
+        {
+          "known": "我今天想练习整个句子",
+          "target": "I want to practise the whole sentence today"
+        },
+        {
+          "known": "我想和你说整个句子",
+          "target": "I want to speak the whole sentence with you"
+        },
+        {
+          "known": "我在努力记住整个句子",
+          "target": "I'm trying to remember the whole sentence"
+        },
+        {
+          "known": "我要尽可能经常说整个句子",
+          "target": "I'm going to speak the whole sentence as often as possible"
+        },
+        {
+          "known": "我不确定我能不能记住整个句子",
+          "target": "I'm not sure if I can remember the whole sentence"
+        }
+      ]
+    },
+    "S0010L05": {
+      "lego": {
+        "known": "我不确定我能不能",
+        "target": "I'm not sure if I can"
+      },
+      "practice_phrases": [
+        {
+          "known": "我不确定我能不能",
+          "target": "I'm not sure if I can"
+        },
+        {
+          "known": "我不确定我能不能说",
+          "target": "I'm not sure if I can speak"
+        },
+        {
+          "known": "我不确定我能不能学习",
+          "target": "I'm not sure if I can learn"
+        },
+        {
+          "known": "我不确定我能不能今天",
+          "target": "I'm not sure if I can today"
+        },
+        {
+          "known": "我不确定我能不能记住",
+          "target": "I'm not sure if I can remember"
+        },
+        {
+          "known": "我不确定我能不能和你说",
+          "target": "I'm not sure if I can speak with you"
+        },
+        {
+          "known": "我不确定我能不能说英语",
+          "target": "I'm not sure if I can speak English"
+        },
+        {
+          "known": "我不确定我能不能记住一个词",
+          "target": "I'm not sure if I can remember a word"
+        },
+        {
+          "known": "我不确定我能不能解释我的意思",
+          "target": "I'm not sure if I can explain what I mean"
+        },
+        {
+          "known": "我不确定我能不能记住整个句子",
+          "target": "I'm not sure if I can remember the whole sentence"
+        }
+      ]
+    },
+    "S0011L01": {
+      "lego": {
+        "known": "说话",
+        "target": "to speak"
+      },
+      "practice_phrases": [
+        {
+          "known": "说话",
+          "target": "Speak"
+        },
+        {
+          "known": "我想说话",
+          "target": "I want to speak"
+        },
+        {
+          "known": "我在努力说话",
+          "target": "I'm trying to speak"
+        },
+        {
+          "known": "我现在能说话",
+          "target": "I can speak now"
+        },
+        {
+          "known": "我想今天说话",
+          "target": "I want to speak today"
+        },
+        {
+          "known": "我要和你说话",
+          "target": "I'm going to speak with you"
+        },
+        {
+          "known": "我想用英语说话",
+          "target": "I want to speak in English"
+        },
+        {
+          "known": "我不确定我能不能说话",
+          "target": "I'm not sure if I can speak"
+        },
+        {
+          "known": "我想和别人练习说话",
+          "target": "I want to practise speaking with someone else"
+        },
+        {
+          "known": "我想在你说完之后能够说话",
+          "target": "I'd like to be able to speak after you finish"
+        }
+      ]
+    },
+    "S0011L02": {
+      "lego": {
+        "known": "完成",
+        "target": "finish"
+      },
+      "practice_phrases": [
+        {
+          "known": "完成",
+          "target": "Finish"
+        },
+        {
+          "known": "我想完成",
+          "target": "I want to finish"
+        },
+        {
+          "known": "我在努力完成",
+          "target": "I'm trying to finish"
+        },
+        {
+          "known": "我今天能完成",
+          "target": "I can finish today"
+        },
+        {
+          "known": "我要完成这个句子",
+          "target": "I'm going to finish the sentence"
+        },
+        {
+          "known": "我想尽可能完成",
+          "target": "I want to finish as possible"
+        },
+        {
+          "known": "我不确定我能不能完成",
+          "target": "I'm not sure if I can finish"
+        },
+        {
+          "known": "我想在今天完成学习",
+          "target": "I want to finish learning today"
+        },
+        {
+          "known": "我在努力完成整个句子",
+          "target": "I'm trying to finish the whole sentence"
+        },
+        {
+          "known": "我想在你说完之后能够说话",
+          "target": "I'd like to be able to speak after you finish"
+        }
+      ]
+    },
+    "S0011L03": {
+      "lego": {
+        "known": "你说完之后",
+        "target": "after you finish"
+      },
+      "practice_phrases": [
+        {
+          "known": "你说完之后",
+          "target": "After you finish"
+        },
+        {
+          "known": "在你说完之后",
+          "target": "After you finish speaking"
+        },
+        {
+          "known": "我想在你说完之后",
+          "target": "I want after you finish"
+        },
+        {
+          "known": "你说完之后我要说话",
+          "target": "I'm going to speak after you finish"
+        },
+        {
+          "known": "我想在你说完之后学习",
+          "target": "I want to learn after you finish"
+        },
+        {
+          "known": "你说完之后我能记住",
+          "target": "I can remember after you finish"
+        },
+        {
+          "known": "我想在你说完之后练习",
+          "target": "I want to practise after you finish"
+        },
+        {
+          "known": "你说完之后我要试着解释",
+          "target": "I'm going to try to explain after you finish"
+        },
+        {
+          "known": "我不确定在你说完之后我能不能说话",
+          "target": "I'm not sure if I can speak after you finish"
+        },
+        {
+          "known": "我想在你说完之后能够说话",
+          "target": "I'd like to be able to speak after you finish"
+        }
+      ]
+    },
+    "S0012L01": {
+      "lego": {
+        "known": "猜测",
+        "target": "guess"
+      },
+      "practice_phrases": [
+        {
+          "known": "猜测",
+          "target": "Guess"
+        },
+        {
+          "known": "我想猜测",
+          "target": "I want to guess"
+        },
+        {
+          "known": "我在努力猜测",
+          "target": "I'm trying to guess"
+        },
+        {
+          "known": "我能猜测",
+          "target": "I can guess"
+        },
+        {
+          "known": "我今天要猜测",
+          "target": "I'm going to guess today"
+        },
+        {
+          "known": "我想和你猜测",
+          "target": "I want to guess with you"
+        },
+        {
+          "known": "我不确定我能不能猜测",
+          "target": "I'm not sure if I can guess"
+        },
+        {
+          "known": "我在努力猜测这个词",
+          "target": "I'm trying to guess the word"
+        },
+        {
+          "known": "我想猜测你的意思",
+          "target": "I want to guess what you mean"
+        },
+        {
+          "known": "我不想猜测明天会发生什么",
+          "target": "I wouldn't like to guess what's going to happen tomorrow"
+        }
+      ]
+    },
+    "S0012L02": {
+      "lego": {
+        "known": "明天",
+        "target": "tomorrow"
+      },
+      "practice_phrases": [
+        {
+          "known": "明天",
+          "target": "Tomorrow"
+        },
+        {
+          "known": "我明天想",
+          "target": "I want tomorrow"
+        },
+        {
+          "known": "我明天要说话",
+          "target": "I'm going to speak tomorrow"
+        },
+        {
+          "known": "我想明天学习",
+          "target": "I want to learn tomorrow"
+        },
+        {
+          "known": "我明天能记住",
+          "target": "I can remember tomorrow"
+        },
+        {
+          "known": "我明天要和你练习",
+          "target": "I'm going to practise with you tomorrow"
+        },
+        {
+          "known": "我想明天说整个句子",
+          "target": "I want to speak the whole sentence tomorrow"
+        },
+        {
+          "known": "我不确定明天我能不能",
+          "target": "I'm not sure if I can tomorrow"
+        },
+        {
+          "known": "我明天要试着解释我的意思",
+          "target": "I'm going to try to explain what I mean tomorrow"
+        },
+        {
+          "known": "我不想猜测明天会发生什么",
+          "target": "I wouldn't like to guess what's going to happen tomorrow"
+        }
+      ]
+    },
+    "S0012L03": {
+      "lego": {
+        "known": "发生",
+        "target": "happen"
+      },
+      "practice_phrases": [
+        {
+          "known": "发生",
+          "target": "Happen"
+        },
+        {
+          "known": "会发生",
+          "target": "Will happen"
+        },
+        {
+          "known": "我想发生",
+          "target": "I want to happen"
+        },
+        {
+          "known": "今天会发生",
+          "target": "Will happen today"
+        },
+        {
+          "known": "明天会发生",
+          "target": "Will happen tomorrow"
+        },
+        {
+          "known": "我想知道会发生什么",
+          "target": "I want to know what will happen"
+        },
+        {
+          "known": "我在努力记住会发生什么",
+          "target": "I'm trying to remember what will happen"
+        },
+        {
+          "known": "我不确定明天会发生什么",
+          "target": "I'm not sure what will happen tomorrow"
+        },
+        {
+          "known": "我想解释会发生什么",
+          "target": "I want to explain what will happen"
+        },
+        {
+          "known": "我不想猜测明天会发生什么",
+          "target": "I wouldn't like to guess what's going to happen tomorrow"
+        }
+      ]
+    },
+    "S0012L04": {
+      "lego": {
+        "known": "会发生什么",
+        "target": "what's going to happen"
+      },
+      "practice_phrases": [
+        {
+          "known": "会发生什么",
+          "target": "What's going to happen"
+        },
+        {
+          "known": "明天会发生什么",
+          "target": "What's going to happen tomorrow"
+        },
+        {
+          "known": "我想知道会发生什么",
+          "target": "I want to know what's going to happen"
+        },
+        {
+          "known": "今天会发生什么",
+          "target": "What's going to happen today"
+        },
+        {
+          "known": "我能说会发生什么",
+          "target": "I can say what's going to happen"
+        },
+        {
+          "known": "我想解释会发生什么",
+          "target": "I want to explain what's going to happen"
+        },
+        {
+          "known": "我不确定会发生什么",
+          "target": "I'm not sure what's going to happen"
+        },
+        {
+          "known": "我在努力记住会发生什么",
+          "target": "I'm trying to remember what's going to happen"
+        },
+        {
+          "known": "我想和你说会发生什么",
+          "target": "I want to speak with you what's going to happen"
+        },
+        {
+          "known": "我不想猜测明天会发生什么",
+          "target": "I wouldn't like to guess what's going to happen tomorrow"
+        }
+      ]
+    }
+  }
+}
