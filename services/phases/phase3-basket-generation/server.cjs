@@ -31,6 +31,8 @@ const PORT = process.env.PORT || 3459;
 const VFS_ROOT = process.env.VFS_ROOT;
 const ORCHESTRATOR_URL = process.env.ORCHESTRATOR_URL || 'http://localhost:3456';
 const SERVICE_NAME = process.env.SERVICE_NAME || 'Phase 3 (Baskets)';
+// ngrok URL for prompts sent to remote Claude browsers (they can't reach localhost)
+const ngrokUrl = process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
 // Load configuration
 const { loadConfig } = require('../../shared/config-loader.cjs');
@@ -294,8 +296,8 @@ app.post('/start', async (req, res) => {
 
   // PRE-FLIGHT CHECK: Verify orchestrator is online before spawning browsers
   try {
-    console.log(`[Phase 3] Pre-flight check: verifying orchestrator at ${ORCHESTRATOR_URL}...`);
-    const healthCheck = await fetch(`${ORCHESTRATOR_URL}/health`, {
+    console.log(`[Phase 3] Pre-flight check: verifying orchestrator at ${ngrokUrl}...`);
+    const healthCheck = await fetch(`${ngrokUrl}/health`, {
       method: 'GET',
       signal: AbortSignal.timeout(5000) // 5 second timeout
     });
@@ -1011,12 +1013,12 @@ You are the orchestrator. **DO NOT** read files or generate content yourself.
 ${legoIds.slice(0, 10).join(', ')}${legoIds.length > 10 ? ` ... and ${legoIds.length - 10} more` : ''}
 
 **OUTPUT WORKFLOW** (each agent must follow):
-1. Fetch LEGO details: \`GET ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
-2. Fetch phase intelligence: \`GET ${ORCHESTRATOR_URL}/api/phase-intelligence/3\`
+1. Fetch LEGO details: \`GET ${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
+2. Fetch phase intelligence: \`GET ${ngrokUrl}/api/phase-intelligence/3\`
 3. Generate practice baskets using Phase 3 intelligence guidelines
-4. Submit baskets: \`POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit\`
-   - Body: \`{ version: "8.2.0", course: "${courseCode}", baskets: {...} }\`
-   - Expected: \`{ success: true, basketCount: N, savedTo: "..." }\`
+4. Submit baskets: \`POST ${ngrokUrl}/upload-basket\`
+   - Body: \`{ course: "${courseCode}", seed: "S0XXX", baskets: {...} }\`
+   - Expected: \`{ success: true, message: "Baskets saved", basketCount: N }\`
 5. No manual file operations - all submission via REST API
 
 ---
@@ -1038,7 +1040,6 @@ Divide the ${legoIds.length} LEGO_IDs evenly among the ${agentCount} agents (~${
   const legoCount = targetLegos.length;
   const requestedWorkers = params.agentsPerWindow || 4;
 
-  const ngrokUrl = 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
   // Group LEGOs by seed for clean division
   const legosBySeed = {};
@@ -1193,7 +1194,7 @@ return "success"
 async function notifyOrchestrator(courseCode, status) {
   try {
     const axios = require('axios');
-    await axios.post(`${ORCHESTRATOR_URL}/phase-complete`, {
+    await axios.post(`${ngrokUrl}/phase-complete`, {
       phase: 3,
       courseCode,
       status,
@@ -1211,7 +1212,7 @@ async function notifyOrchestrator(courseCode, status) {
 async function reportProgressToOrchestrator(courseCode, progressData) {
   try {
     const axios = require('axios');
-    await axios.post(`${ORCHESTRATOR_URL}/api/courses/${courseCode}/progress`, progressData, {
+    await axios.post(`${ngrokUrl}/api/courses/${courseCode}/progress`, progressData, {
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {
@@ -1252,7 +1253,7 @@ app.get('/scaffold/:courseCode/:legoId', async (req, res) => {
     const seedNum = legoId.substring(1, 5); // "0117"
     const seedId = `seed_s${seedNum}.json`;
 
-    const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
+    const baseCourseDir = path.join(VFS_ROOT, courseCode);
     const scaffoldPath = path.join(baseCourseDir, 'phase3_scaffolds', seedId);
     const legoPairsPath = path.join(baseCourseDir, 'lego_pairs.json');
 
@@ -1351,7 +1352,7 @@ app.post('/regenerate', async (req, res) => {
   console.log(`[Phase 3] LEGO_IDs to regenerate: ${legoIds.length}`);
   console.log(`[Phase 3] Target: ${target}, Known: ${known}`);
 
-  const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
+  const baseCourseDir = path.join(VFS_ROOT, courseCode);
 
   // Check prerequisites
   const seedPairsPath = path.join(baseCourseDir, 'seed_pairs.json');
@@ -1589,7 +1590,7 @@ app.post('/launch-12-masters', async (req, res) => {
   console.log(`[Phase 3] Course: ${courseCode}`);
   console.log(`[Phase 3] Target: ${target}, Known: ${known}`);
 
-  const baseCourseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
+  const baseCourseDir = path.join(VFS_ROOT, courseCode);
 
   try {
     // STEP 1: Run detection to find missing baskets
@@ -1802,7 +1803,6 @@ app.post('/launch-12-masters', async (req, res) => {
     await fs.ensureDir(promptsDir);
 
     // Get ngrok URL for scaffolds
-    const ngrokUrl = process.env.NGROK_URL || 'https://mirthlessly-nonanesthetized-marilyn.ngrok-free.dev';
 
     for (const browser of browsers) {
       const promptContent = `# Phase 3 Browser Coordinator: ${browser.name}
@@ -1892,20 +1892,20 @@ For EACH LEGO in your assignment, follow this exact process:
 ### Step 1: Fetch Required Data
 
 **Get LEGO details from Phase 2 outputs:**
-- GET: \`${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
+- GET: \`${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
 - Look up your assigned LEGO IDs in the \`lego_pairs.json\` response
 
 **Get phase intelligence:**
-- GET: \`${ORCHESTRATOR_URL}/api/phase-intelligence/3\`
+- GET: \`${ngrokUrl}/api/phase-intelligence/3\`
 - Review generation methodology and best practices
 
 **Example API calls:**
 \`\`\`bash
 # Get LEGO pairs
-curl ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json
+curl ${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json
 
 # Get phase intelligence
-curl ${ORCHESTRATOR_URL}/api/phase-intelligence/3
+curl ${ngrokUrl}/api/phase-intelligence/3
 \`\`\`
 
 The lego_pairs.json provides:
@@ -1971,22 +1971,23 @@ Build FROM the LEGO, not TO it:
 ### Step 6: Submit Your Work
 
 **POST submission to orchestrator:**
-- Endpoint: \`${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit\`
+- Endpoint: \`${ngrokUrl}/upload-basket\`
 - Method: POST
 - Content-Type: application/json
 
-**Payload format:**
+**Payload format (submit one seed at a time):**
 \`\`\`json
 {
-  "version": "8.2.0",
   "course": "${courseCode}",
+  "seed": "S0047",
   "baskets": {
-    "[LEGO_ID]": {
+    "S0047L01": {
       "lego": { "known": "...", "target": "..." },
       "practice_phrases": [
         { "known": "...", "target": "..." }
       ]
-    }
+    },
+    "S0047L02": { ... }
   }
 }
 \`\`\`
@@ -1995,19 +1996,19 @@ Build FROM the LEGO, not TO it:
 \`\`\`json
 {
   "success": true,
-  "basketCount": 1,
-  "savedTo": "courses/${courseCode}/lego_baskets.json"
+  "message": "Baskets saved",
+  "basketCount": 5
 }
 \`\`\`
 
 **Example API call:**
 \`\`\`bash
-curl -X POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit \\
+curl -X POST ${ngrokUrl}/upload-basket \\
   -H "Content-Type: application/json" \\
   -d '{
-    "version": "8.2.0",
     "course": "${courseCode}",
-    "baskets": { "S0117L01": { ... } }
+    "seed": "S0047",
+    "baskets": { "S0047L01": { ... }, "S0047L02": { ... } }
   }'
 \`\`\`
 
@@ -2052,10 +2053,10 @@ Work silently. Report brief summary when complete."
 
 Each worker:
 1. Gets its LEGO ID list from assignments above
-2. Fetches LEGO data via REST API: \`GET ${ORCHESTRATOR_URL}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
-3. Fetches phase intelligence: \`GET ${ORCHESTRATOR_URL}/api/phase-intelligence/3\`
+2. Fetches LEGO data via REST API: \`GET ${ngrokUrl}/api/courses/${courseCode}/phase-outputs/2/lego_pairs.json\`
+3. Fetches phase intelligence: \`GET ${ngrokUrl}/api/phase-intelligence/3\`
 4. Generates baskets for each LEGO
-5. Submits via REST API: \`POST ${ORCHESTRATOR_URL}/api/phase3/${courseCode}/submit\`
+5. Submits via REST API: \`POST ${ngrokUrl}/upload-basket\`
 
 Report: "✅ ${browser.name} complete: ${browser.workers.length} workers spawned for ${browser.totalLegos} LEGOs"
 `;
@@ -2486,7 +2487,7 @@ app.post('/upload-basket', async (req, res) => {
 app.get('/basket-status/:course', async (req, res) => {
   try {
     const { course } = req.params;
-    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
+    const courseDir = path.join(VFS_ROOT, course);
     const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
     const legoPairsPath = path.join(courseDir, 'lego_pairs.json');
 
@@ -2561,7 +2562,7 @@ async function triggerPhase3Completion(courseCode, job) {
   console.log(`LEGOs received: ${job.uploads.legosReceived}`);
   console.log(`Seeds received: ${job.uploads.seedsUploaded.size}\n`);
 
-  const courseDir = path.join(VFS_ROOT, 'public/vfs/courses', courseCode);
+  const courseDir = path.join(VFS_ROOT, courseCode);
 
   try {
     // Step 1: Merge staging baskets
@@ -2618,7 +2619,7 @@ async function triggerPhase3Completion(courseCode, job) {
     // Notify orchestrator
     if (ORCHESTRATOR_URL) {
       try {
-        await fetch(`${ORCHESTRATOR_URL}/phase-complete`, {
+        await fetch(`${ngrokUrl}/phase-complete`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -2741,7 +2742,7 @@ app.listen(PORT, () => {
   console.log('');
   console.log(`✅ ${SERVICE_NAME} listening on port ${PORT}`);
   console.log(`   VFS Root: ${VFS_ROOT}`);
-  console.log(`   Orchestrator: ${ORCHESTRATOR_URL}`);
+  console.log(`   Orchestrator: ${ngrokUrl}`);
   console.log('');
   console.log(`📡 Upload endpoint: http://localhost:${PORT}/upload-basket`);
   console.log(`   Use ngrok to expose this endpoint for remote agents`);
