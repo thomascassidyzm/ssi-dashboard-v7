@@ -8,9 +8,10 @@
 const fs = require('fs');
 const path = require('path');
 
-// Try simplified config first, fall back to complex config
-const SIMPLE_CONFIG_PATH = path.join(__dirname, '../automation.config.simple.json');
-const COMPLEX_CONFIG_PATH = path.join(__dirname, '../automation.config.json');
+// Try simplified config first, fall back to complex config (in project root)
+const PROJECT_ROOT = path.join(__dirname, '../..');
+const SIMPLE_CONFIG_PATH = path.join(PROJECT_ROOT, 'automation.config.simple.json');
+const COMPLEX_CONFIG_PATH = path.join(PROJECT_ROOT, 'automation.config.json');
 const CONFIG_PATH = fs.existsSync(SIMPLE_CONFIG_PATH) ? SIMPLE_CONFIG_PATH : COMPLEX_CONFIG_PATH;
 
 let cachedConfig = null;

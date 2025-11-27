@@ -49,6 +49,13 @@
     }
   },
 
+  "phase3_basket_generation": {
+    "browsers": 5,
+    "agents_per_browser": 5,
+    "seeds_per_agent": 3,
+    "browser_spawn_delay_ms": 8000
+  },
+
   "phase5_basket_generation": {
     "parallelization": {
       "small_course_threshold": 50,

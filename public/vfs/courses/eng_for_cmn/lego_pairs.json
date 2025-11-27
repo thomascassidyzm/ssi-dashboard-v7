@@ -1,8 +1,8 @@
 {
-  "course": "eng_for_cmn_test",
-  "generated": "2025-11-24T14:52:43.502Z",
-  "totalSeeds": 75,
-  "totalLegos": 317,
+  "course": "eng_for_cmn",
+  "generated": "2025-11-27T00:00:00.000Z",
+  "totalSeeds": 1,
+  "totalLegos": 3,
   "seeds": [
     {
       "seed_id": "S0001",
@@ -109,51 +109,104 @@
     },
     {
       "seed_id": "S0003",
-      "seed_pair": {
-        "known": "尽可能经常地说。",
-        "target": "how to speak as often as possible."
-      },
       "legos": [
         {
-          "id": "S0003L01",
-          "type": "M",
-          "new": true,
+          "lego_id": "S0003L01",
           "lego": {
             "known": "怎么说",
             "target": "how to say"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "怎么",
-              "target": "how to"
+              "known": "怎么说",
+              "target": "how to say"
             },
             {
-              "known": "说",
-              "target": "speak"
+              "known": "我想学怎么说",
+              "target": "I want to learn how to say"
+            },
+            {
+              "known": "我正在学怎么说",
+              "target": "I am learning how to say"
+            },
+            {
+              "known": "我现在想学怎么说",
+              "target": "I want to learn how to say now"
+            },
+            {
+              "known": "我想和你学怎么说",
+              "target": "I want to learn how to say with you"
+            },
+            {
+              "known": "我正在努力学怎么说",
+              "target": "I am trying to learn how to say"
+            },
+            {
+              "known": "我现在正在学怎么说",
+              "target": "I am learning how to say now"
+            },
+            {
+              "known": "我正在努力和你学怎么说",
+              "target": "I am trying to learn how to say with you"
+            },
+            {
+              "known": "我现在正在努力学怎么说",
+              "target": "I am trying to learn how to say now"
+            },
+            {
+              "known": "我现在想和你学怎么说",
+              "target": "I want to learn how to say with you now"
             }
-          ],
-          "teaches": "Question word + infinitive structure - English uses how to + verb",
-          "normalized": true
+          ]
         },
         {
-          "id": "S0003L02",
-          "type": "M",
-          "new": true,
+          "lego_id": "S0003L02",
           "lego": {
             "known": "尽可能经常",
             "target": "as often as possible"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "尽可能",
-              "target": "as...as possible"
+              "known": "尽可能经常",
+              "target": "as often as possible"
             },
             {
-              "known": "经常",
-              "target": "often"
+              "known": "我想尽可能经常学",
+              "target": "I want to learn as often as possible"
+            },
+            {
+              "known": "我想尽可能经常说",
+              "target": "I want to speak as often as possible"
+            },
+            {
+              "known": "我想和你尽可能经常说",
+              "target": "I want to speak with you as often as possible"
+            },
+            {
+              "known": "我正在努力尽可能经常学",
+              "target": "I am trying to learn as often as possible"
+            },
+            {
+              "known": "我想尽可能经常学怎么说",
+              "target": "I want to learn how to say as often as possible"
+            },
+            {
+              "known": "我想尽可能经常和你说英语",
+              "target": "I want to speak English with you as often as possible"
+            },
+            {
+              "known": "我想现在尽可能经常和你说",
+              "target": "I want to speak with you as often as possible now"
+            },
+            {
+              "known": "我想尽可能经常学说英语",
+              "target": "I want to learn to speak English as often as possible"
+            },
+            {
+              "known": "我现在想尽可能经常和你说英语",
+              "target": "I want to speak English with you as often as possible now"
             }
-          ],
-          "teaches": "Comparative frequency structure - English wraps adjective in as...as possible"
+          ]
         }
       ]
     },
@@ -811,15 +864,9 @@
     },
     {
       "seed_id": "S0016",
-      "seed_pair": {
-        "known": "他想之后和其他人一起回来。",
-        "target": "He wants to come back with everyone else later on."
-      },
       "legos": [
         {
           "id": "S0016L01",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "他想",
             "target": "He wants"
@@ -827,8 +874,6 @@
         },
         {
           "id": "S0016L02",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "回来",
             "target": "to come back"
@@ -836,24 +881,13 @@
         },
         {
           "id": "S0016L03",
-          "type": "M",
-          "new": true,
           "lego": {
             "known": "和其他人一起",
             "target": "with everyone else"
-          },
-          "components": [
-            {
-              "known": "其他人",
-              "target": "everyone else"
-            }
-          ],
-          "teaches": "和...一起 structure for with"
+          }
         },
         {
           "id": "S0016L04",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "之后",
             "target": "later on"
@@ -2783,187 +2817,601 @@
       "legos": [
         {
           "id": "S0047L01",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "因为",
             "target": "because"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "因为",
+              "target": "Because"
+            },
+            {
+              "known": "因为我想",
+              "target": "Because I want to"
+            },
+            {
+              "known": "因为我会说英语",
+              "target": "Because I speak English"
+            },
+            {
+              "known": "因为我要尝试",
+              "target": "Because I'm going to try"
+            },
+            {
+              "known": "因为我在努力学习",
+              "target": "Because I'm trying to learn"
+            },
+            {
+              "known": "因为我需要改进",
+              "target": "Because I need to improve"
+            },
+            {
+              "known": "因为我不想停止",
+              "target": "Because I don't want to stop"
+            },
+            {
+              "known": "因为我在努力想起",
+              "target": "Because I'm trying to remember"
+            },
+            {
+              "known": "因为我不担心",
+              "target": "Because I don't worry about it"
+            },
+            {
+              "known": "因为我不担心犯错",
+              "target": "Because I don't worry about making mistakes"
+            }
+          ]
         },
         {
           "id": "S0047L02",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "认为",
             "target": "to think"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "认为",
+              "target": "To think"
+            },
+            {
+              "known": "我认为",
+              "target": "I think"
+            },
+            {
+              "known": "你认为",
+              "target": "You think"
+            },
+            {
+              "known": "他认为",
+              "target": "He thinks"
+            },
+            {
+              "known": "她认为",
+              "target": "She thinks"
+            },
+            {
+              "known": "我们认为",
+              "target": "We think"
+            },
+            {
+              "known": "我现在认为",
+              "target": "I think now"
+            },
+            {
+              "known": "因为我认为",
+              "target": "Because I think"
+            },
+            {
+              "known": "我认为我需要学习",
+              "target": "I think I need to learn"
+            },
+            {
+              "known": "我认为我需要改进",
+              "target": "I think I need to improve"
+            }
+          ]
         },
         {
           "id": "S0047L03",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "好事",
             "target": "a good thing"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "好事",
+              "target": "A good thing"
+            },
+            {
+              "known": "一件好事",
+              "target": "A good thing"
+            },
+            {
+              "known": "这是好事",
+              "target": "This is a good thing"
+            },
+            {
+              "known": "那是好事",
+              "target": "That's a good thing"
+            },
+            {
+              "known": "这是一件好事",
+              "target": "This is a good thing"
+            },
+            {
+              "known": "学习是好事",
+              "target": "Learning is a good thing"
+            },
+            {
+              "known": "尝试是好事",
+              "target": "Trying is a good thing"
+            },
+            {
+              "known": "犯错是好事",
+              "target": "Making mistakes is a good thing"
+            },
+            {
+              "known": "我认为犯错是好事",
+              "target": "I think making mistakes is a good thing"
+            },
+            {
+              "known": "因为我认为犯错是好事",
+              "target": "Because I think making mistakes is a good thing"
+            }
+          ]
         },
         {
           "id": "S0047L04",
-          "type": "M",
-          "new": true,
           "lego": {
             "known": "我认为...",
             "target": "I think that..."
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "认为",
-              "target": "to think"
+              "known": "我认为",
+              "target": "I think that"
+            },
+            {
+              "known": "我认为我想",
+              "target": "I think that I want to"
+            },
+            {
+              "known": "我认为我需要",
+              "target": "I think that I need to"
+            },
+            {
+              "known": "我认为你会说",
+              "target": "I think that you speak"
+            },
+            {
+              "known": "我认为我需要学习",
+              "target": "I think that I need to learn"
+            },
+            {
+              "known": "我认为我需要改进",
+              "target": "I think that I need to improve"
+            },
+            {
+              "known": "我认为学习是好事",
+              "target": "I think that learning is a good thing"
+            },
+            {
+              "known": "我认为尝试是好事",
+              "target": "I think that trying is a good thing"
+            },
+            {
+              "known": "我认为犯错是好事",
+              "target": "I think that making mistakes is a good thing"
+            },
+            {
+              "known": "因为我认为犯错是好事",
+              "target": "Because I think that making mistakes is a good thing"
             }
-          ],
-          "teaches": "English adds that as subordinator; Chinese directly follows with clause"
+          ]
         },
         {
           "id": "S0047L05",
-          "type": "M",
-          "new": true,
           "lego": {
             "known": "...是一件好事",
             "target": "it's a good thing to..."
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "好事",
-              "target": "a good thing"
+              "known": "是一件好事",
+              "target": "It's a good thing"
+            },
+            {
+              "known": "学习是一件好事",
+              "target": "It's a good thing to learn"
+            },
+            {
+              "known": "尝试是一件好事",
+              "target": "It's a good thing to try"
+            },
+            {
+              "known": "说话是一件好事",
+              "target": "It's a good thing to speak"
+            },
+            {
+              "known": "犯错是一件好事",
+              "target": "It's a good thing to make mistakes"
+            },
+            {
+              "known": "改进是一件好事",
+              "target": "It's a good thing to improve"
+            },
+            {
+              "known": "我认为犯错是一件好事",
+              "target": "I think it's a good thing to make mistakes"
+            },
+            {
+              "known": "我认为学习是一件好事",
+              "target": "I think it's a good thing to learn"
+            },
+            {
+              "known": "因为我认为犯错是一件好事",
+              "target": "Because I think it's a good thing to make mistakes"
+            },
+            {
+              "known": "因为我认为犯错是一件好事。",
+              "target": "Because I think that it's a good thing to make mistakes."
             }
-          ],
-          "teaches": "English uses dummy it subject with infinitive; Chinese uses topic-comment structure with 是"
+          ]
         }
       ]
     },
     {
       "seed_id": "S0048",
-      "seed_pair": {
-        "known": "我不在乎犯错。",
-        "target": "I don't care about making mistakes."
-      },
       "legos": [
         {
           "id": "S0048L01",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "在乎",
             "target": "to care about"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "在乎",
+              "target": "to care about"
+            },
+            {
+              "known": "我在乎",
+              "target": "I care about"
+            },
+            {
+              "known": "你在乎",
+              "target": "you care about"
+            },
+            {
+              "known": "我不在乎",
+              "target": "I don't care about"
+            },
+            {
+              "known": "我在乎学习",
+              "target": "I care about learning"
+            },
+            {
+              "known": "你在乎这个吗？",
+              "target": "Do you care about this?"
+            },
+            {
+              "known": "我在乎说英语",
+              "target": "I care about speaking English"
+            },
+            {
+              "known": "我不在乎犯错",
+              "target": "I don't care about making mistakes"
+            },
+            {
+              "known": "我在乎学习英语",
+              "target": "I care about learning English"
+            },
+            {
+              "known": "因为我在乎学习",
+              "target": "Because I care about learning"
+            }
+          ]
         },
         {
           "id": "S0048L02",
-          "type": "M",
-          "new": true,
           "lego": {
             "known": "我不在乎...",
             "target": "I don't care about..."
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "在乎",
-              "target": "to care about"
+              "known": "我不在乎",
+              "target": "I don't care"
+            },
+            {
+              "known": "我不在乎你",
+              "target": "I don't care about you"
+            },
+            {
+              "known": "我不在乎这个",
+              "target": "I don't care about this"
+            },
+            {
+              "known": "我不在乎犯错",
+              "target": "I don't care about making mistakes"
+            },
+            {
+              "known": "我不在乎别人",
+              "target": "I don't care about other people"
+            },
+            {
+              "known": "我不在乎怎么说",
+              "target": "I don't care about how to say it"
+            },
+            {
+              "known": "我不在乎你怎么想",
+              "target": "I don't care about what you think"
+            },
+            {
+              "known": "我不在乎别人怎么想",
+              "target": "I don't care about what other people think"
+            },
+            {
+              "known": "因为我不在乎犯错",
+              "target": "Because I don't care about making mistakes"
+            },
+            {
+              "known": "我不在乎犯错。",
+              "target": "I don't care about making mistakes."
             }
-          ],
-          "teaches": "Negation with 不; English requires don't + about preposition"
+          ]
         }
       ]
     },
     {
       "seed_id": "S0049",
-      "seed_pair": {
-        "known": "就是这样，如果你明白我的意思的话。",
-        "target": "It's like this, if you know what I mean."
-      },
       "legos": [
         {
           "id": "S0049L01",
-          "type": "M",
-          "new": true,
           "lego": {
             "known": "就是这样",
             "target": "It's like this"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "就是",
-              "target": "it's"
+              "known": "就是这样。",
+              "target": "It's like this."
             },
             {
-              "known": "这样",
-              "target": "like this"
+              "known": "就是这样，现在。",
+              "target": "It's like this now."
+            },
+            {
+              "known": "我认为就是这样。",
+              "target": "I think that it's like this."
+            },
+            {
+              "known": "今天就是这样。",
+              "target": "It's like this today."
+            },
+            {
+              "known": "就是这样，我认为。",
+              "target": "It's like this, I think."
+            },
+            {
+              "known": "在你完成之前，就是这样。",
+              "target": "It's like this before you finish."
+            },
+            {
+              "known": "如果你问，就是这样。",
+              "target": "If you ask, it's like this."
+            },
+            {
+              "known": "当别人在这里时，就是这样。",
+              "target": "It's like this when other people are here."
+            },
+            {
+              "known": "我认为和其他人一起就是这样。",
+              "target": "I think that it's like this with everyone else."
+            },
+            {
+              "known": "就是这样，如果你明白我的意思的话。",
+              "target": "It's like this, if you know what I mean."
             }
-          ],
-          "teaches": "it's + complement structure"
+          ]
         },
         {
           "id": "S0049L02",
-          "type": "M",
-          "new": true,
           "lego": {
             "known": "如果你明白我的意思的话",
             "target": "if you know what I mean"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "如果",
-              "target": "if"
+              "known": "如果你明白我的意思的话。",
+              "target": "If you know what I mean."
             },
             {
-              "known": "你明白",
-              "target": "you know"
+              "known": "如果你明白我的意思的话，我认为。",
+              "target": "If you know what I mean, I think."
             },
             {
-              "known": "我的意思",
-              "target": "what I mean"
+              "known": "我想说话，如果你明白我的意思的话。",
+              "target": "I want to speak, if you know what I mean."
+            },
+            {
+              "known": "就是这样，如果你明白我的意思的话。",
+              "target": "It's like this, if you know what I mean."
+            },
+            {
+              "known": "我在努力，如果你明白我的意思的话。",
+              "target": "I'm trying, if you know what I mean."
+            },
+            {
+              "known": "我在努力解释，如果你明白我的意思的话。",
+              "target": "I'm trying to explain, if you know what I mean."
+            },
+            {
+              "known": "我不想犯错，如果你明白我的意思的话。",
+              "target": "I don't want to make mistakes, if you know what I mean."
+            },
+            {
+              "known": "我需要多练习说话，如果你明白我的意思的话。",
+              "target": "I need to practise speaking more, if you know what I mean."
+            },
+            {
+              "known": "这是一件好事，如果你明白我的意思的话。",
+              "target": "It's a good thing, if you know what I mean."
+            },
+            {
+              "known": "我想让你记住，如果你明白我的意思的话。",
+              "target": "I want you to remember, if you know what I mean."
             }
-          ],
-          "teaches": "conditional clause with embedded question"
+          ]
         },
         {
           "id": "S0049L03",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "这样",
             "target": "like this"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "这样。",
+              "target": "Like this."
+            },
+            {
+              "known": "这样，现在。",
+              "target": "Like this now."
+            },
+            {
+              "known": "我想这样说。",
+              "target": "I want to speak like this."
+            },
+            {
+              "known": "我这样说。",
+              "target": "I speak like this."
+            },
+            {
+              "known": "你这样说。",
+              "target": "You speak like this."
+            },
+            {
+              "known": "你要这样说吗？",
+              "target": "Are you going to speak like this?"
+            },
+            {
+              "known": "我不想这样学习。",
+              "target": "I don't want to learn like this."
+            },
+            {
+              "known": "尽可能经常地这样练习。",
+              "target": "Practise like this as often as possible."
+            },
+            {
+              "known": "我开始这样思考说话。",
+              "target": "I started to think about speaking like this."
+            },
+            {
+              "known": "当你这样说时，我感觉很好。",
+              "target": "I feel okay when you speak like this."
+            }
+          ]
         },
         {
           "id": "S0049L04",
-          "type": "A",
-          "new": true,
           "lego": {
             "known": "如果",
             "target": "if"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "如果你想。",
+              "target": "If you want."
+            },
+            {
+              "known": "如果你问我。",
+              "target": "If you ask me."
+            },
+            {
+              "known": "如果我能帮你。",
+              "target": "If I can help you."
+            },
+            {
+              "known": "如果你知道。",
+              "target": "If you know."
+            },
+            {
+              "known": "如果我开始感到累。",
+              "target": "If I start to feel tired."
+            },
+            {
+              "known": "如果你想，我就停止。",
+              "target": "If you want, I'm going to stop."
+            },
+            {
+              "known": "我不确定我能不能记住。",
+              "target": "I'm not sure if I can remember."
+            },
+            {
+              "known": "如果你想和我说话，我准备好了。",
+              "target": "If you want to speak with me, I am nearly ready."
+            },
+            {
+              "known": "如果我需要改进，给我看。",
+              "target": "If I need to improve, show me."
+            },
+            {
+              "known": "如果你想，我期待和你说话。",
+              "target": "I'm looking forward to speaking with you if you want."
+            }
+          ]
         },
         {
           "id": "S0049L05",
-          "type": "M",
-          "new": true,
           "lego": {
             "known": "我的意思",
             "target": "what I mean"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "我的",
-              "target": "my/what I"
+              "known": "我的意思。",
+              "target": "What I mean."
             },
             {
-              "known": "意思",
-              "target": "mean/meaning"
+              "known": "你知道我的意思。",
+              "target": "You know what I mean."
+            },
+            {
+              "known": "我想解释我的意思。",
+              "target": "I want to explain what I mean."
+            },
+            {
+              "known": "我的意思就是这样。",
+              "target": "What I mean is like this."
+            },
+            {
+              "known": "你知道我的意思吗？",
+              "target": "Do you know what I mean?"
+            },
+            {
+              "known": "我不确定我的意思是什么。",
+              "target": "I'm not sure what I mean."
+            },
+            {
+              "known": "我开始记起我的意思了。",
+              "target": "I'm starting to remember what I mean."
+            },
+            {
+              "known": "我需要时间想想我的意思。",
+              "target": "I need time to think about what I mean."
+            },
+            {
+              "known": "我想让你知道我的意思。",
+              "target": "I want you to know what I mean."
+            },
+            {
+              "known": "我在努力用英语说我的意思。",
+              "target": "I'm trying to say what I mean in English."
             }
-          ],
-          "teaches": "indirect question structure with what"
+          ]
         }
       ]
     },
@@ -2981,18 +3429,7 @@
           "lego": {
             "known": "我不是在",
             "target": "I'm not trying to"
-          },
-          "components": [
-            {
-              "known": "我",
-              "target": "I"
-            },
-            {
-              "known": "不是在",
-              "target": "am not trying to"
-            }
-          ],
-          "teaches": "negative progressive with intent"
+          }
         },
         {
           "id": "S0050L02",
@@ -3010,194 +3447,605 @@
           "lego": {
             "known": "尽可能快地",
             "target": "as quickly as possible"
-          },
-          "components": [
-            {
-              "known": "尽可能",
-              "target": "as...as possible"
-            },
-            {
-              "known": "快地",
-              "target": "quickly"
-            }
-          ],
-          "teaches": "as + adverb + as possible structure"
+          }
         }
       ]
     },
     {
       "seed_id": "S0051",
-      "seed_pair": {
-        "known": "我喜欢和朋友一起做有趣的事情。",
-        "target": "I enjoy doing interesting things with my friends."
-      },
       "legos": [
         {
-          "id": "S0051L01",
-          "type": "M",
-          "new": true,
+          "lego_id": "S0051L01",
           "lego": {
             "known": "我喜欢做",
             "target": "I enjoy doing"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "我",
-              "target": "I"
+              "known": "我喜欢做这个。",
+              "target": "I enjoy doing this."
             },
             {
-              "known": "喜欢",
-              "target": "enjoy"
+              "known": "我喜欢做事情。",
+              "target": "I enjoy doing things."
             },
             {
-              "known": "做",
-              "target": "doing"
+              "known": "我喜欢做有趣的事情。",
+              "target": "I enjoy doing interesting things."
+            },
+            {
+              "known": "我喜欢做好事。",
+              "target": "I enjoy doing good things."
+            },
+            {
+              "known": "我喜欢做有趣的事情和朋友一起。",
+              "target": "I enjoy doing interesting things with friends."
+            },
+            {
+              "known": "我喜欢做我想做的事情。",
+              "target": "I enjoy doing things I want."
+            },
+            {
+              "known": "我喜欢做有趣的事情和我的朋友一起在今天。",
+              "target": "I enjoy doing interesting things with my friends today."
+            },
+            {
+              "known": "我喜欢做事情当我有时间的时候。",
+              "target": "I enjoy doing things when I have time."
+            },
+            {
+              "known": "我喜欢做更多事情现在。",
+              "target": "I enjoy doing more things now."
+            },
+            {
+              "known": "我喜欢做我能记住的事情。",
+              "target": "I enjoy doing things I can remember."
             }
-          ],
-          "teaches": "gerund (-ing) after enjoy"
+          ]
         },
         {
-          "id": "S0051L02",
-          "type": "M",
-          "new": true,
+          "lego_id": "S0051L02",
           "lego": {
             "known": "有趣的事情",
             "target": "interesting things"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "有趣的",
-              "target": "interesting"
+              "known": "有趣的事情。",
+              "target": "Interesting things."
             },
             {
-              "known": "事情",
-              "target": "things"
+              "known": "很多有趣的事情。",
+              "target": "Very interesting things."
+            },
+            {
+              "known": "我想知道有趣的事情。",
+              "target": "I want to know interesting things."
+            },
+            {
+              "known": "我学习有趣的事情。",
+              "target": "I learn interesting things."
+            },
+            {
+              "known": "我想学习有趣的事情今天。",
+              "target": "I want to learn interesting things today."
+            },
+            {
+              "known": "我喜欢有趣的事情和朋友一起。",
+              "target": "I like interesting things with friends."
+            },
+            {
+              "known": "我想知道有趣的事情关于你。",
+              "target": "I want to know interesting things about you."
+            },
+            {
+              "known": "我在学习很多有趣的事情。",
+              "target": "I am learning very interesting things."
+            },
+            {
+              "known": "有趣的事情帮我记住。",
+              "target": "Interesting things help me remember."
+            },
+            {
+              "known": "我想做有趣的事情明天。",
+              "target": "I want to do interesting things tomorrow."
             }
-          ],
-          "teaches": "adjective before noun in English"
+          ]
         },
         {
-          "id": "S0051L03",
-          "type": "M",
-          "new": true,
+          "lego_id": "S0051L03",
           "lego": {
             "known": "和朋友一起",
             "target": "with my friends"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "和",
-              "target": "with"
+              "known": "和朋友一起。",
+              "target": "With my friends."
             },
             {
-              "known": "朋友",
-              "target": "friends"
+              "known": "和朋友一起说话。",
+              "target": "Speaking with my friends."
+            },
+            {
+              "known": "我想去和朋友一起。",
+              "target": "I want to go with my friends."
+            },
+            {
+              "known": "我说话和朋友一起。",
+              "target": "I speak with my friends."
+            },
+            {
+              "known": "我想说话和朋友一起今天。",
+              "target": "I want to speak with my friends today."
+            },
+            {
+              "known": "我学习和朋友一起。",
+              "target": "I learn with my friends."
+            },
+            {
+              "known": "我想练习说话和朋友一起明天。",
+              "target": "I want to practise speaking with my friends tomorrow."
+            },
+            {
+              "known": "我喜欢学习和朋友一起。",
+              "target": "I like learning with my friends."
+            },
+            {
+              "known": "我想见面和朋友一起今天晚上。",
+              "target": "I want to meet with my friends this evening."
+            },
+            {
+              "known": "我在努力学习和朋友一起。",
+              "target": "I am trying to learn with my friends."
             }
-          ],
-          "teaches": "with + noun phrase for accompaniment"
+          ]
         },
         {
-          "id": "S0051L04",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0051L04",
           "lego": {
             "known": "有趣的",
             "target": "interesting"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "有趣的。",
+              "target": "Interesting."
+            },
+            {
+              "known": "很有趣的。",
+              "target": "Very interesting."
+            },
+            {
+              "known": "这个很有趣的。",
+              "target": "This is interesting."
+            },
+            {
+              "known": "这个很有趣的对我。",
+              "target": "This is interesting to me."
+            },
+            {
+              "known": "我觉得这个很有趣的。",
+              "target": "I think this is interesting."
+            },
+            {
+              "known": "学习英语很有趣的。",
+              "target": "Learning English is interesting."
+            },
+            {
+              "known": "我觉得这个故事很有趣的。",
+              "target": "I think the story is interesting."
+            },
+            {
+              "known": "说话和朋友很有趣的。",
+              "target": "Speaking with friends is interesting."
+            },
+            {
+              "known": "我觉得学习很有趣的今天。",
+              "target": "I think learning is interesting today."
+            },
+            {
+              "known": "这个词很有趣的对我。",
+              "target": "This word is interesting to me."
+            }
+          ]
         },
         {
-          "id": "S0051L05",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0051L05",
           "lego": {
             "known": "朋友",
             "target": "friend"
           },
-          "normalized": true
+          "practice_phrases": [
+            {
+              "known": "朋友。",
+              "target": "Friend."
+            },
+            {
+              "known": "我的朋友。",
+              "target": "My friend."
+            },
+            {
+              "known": "我的朋友能说英语。",
+              "target": "My friend can speak English."
+            },
+            {
+              "known": "我想见朋友。",
+              "target": "I want to meet a friend."
+            },
+            {
+              "known": "我的朋友在学习英语现在。",
+              "target": "My friend is learning English now."
+            },
+            {
+              "known": "我想帮我的朋友今天。",
+              "target": "I want to help my friend today."
+            },
+            {
+              "known": "我的朋友想学习英语和我一起。",
+              "target": "My friend wants to learn English with me."
+            },
+            {
+              "known": "我想和我的朋友说话。",
+              "target": "I want to speak to my friend."
+            },
+            {
+              "known": "我的朋友在努力学习英语。",
+              "target": "My friend is trying to learn English."
+            },
+            {
+              "known": "我不确定我的朋友能说英语。",
+              "target": "I am not sure my friend can speak English."
+            }
+          ]
         }
       ]
     },
     {
       "seed_id": "S0052",
-      "seed_pair": {
-        "known": "他上周想给朋友写一封信。",
-        "target": "He wanted to write a letter to his friend last week."
-      },
       "legos": [
         {
-          "id": "S0052L01",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0052L01",
           "lego": {
             "known": "他",
             "target": "he"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "他想",
+              "target": "he can want"
+            },
+            {
+              "known": "他在这里",
+              "target": "he is here"
+            },
+            {
+              "known": "他想学习",
+              "target": "he can want to learn"
+            },
+            {
+              "known": "他能帮我",
+              "target": "he can help me"
+            },
+            {
+              "known": "他会说英语",
+              "target": "he can speak English"
+            },
+            {
+              "known": "他上周在这里",
+              "target": "he was here last week"
+            },
+            {
+              "known": "他想和我说话",
+              "target": "he can want to speak with me"
+            },
+            {
+              "known": "他今天早上很累",
+              "target": "he is very tired this morning"
+            },
+            {
+              "known": "他不想停止学习",
+              "target": "he doesn't want to stop learning"
+            },
+            {
+              "known": "他觉得学习很有趣",
+              "target": "he can think that learning is fun"
+            }
+          ]
         },
         {
-          "id": "S0052L02",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0052L02",
           "lego": {
             "known": "想",
             "target": "to want"
           },
-          "normalized": true
+          "practice_phrases": [
+            {
+              "known": "想",
+              "target": "to want"
+            },
+            {
+              "known": "开始想",
+              "target": "start to want"
+            },
+            {
+              "known": "我开始想学习",
+              "target": "I start to want to learn"
+            },
+            {
+              "known": "他开始想帮我",
+              "target": "he can start to want to help me"
+            },
+            {
+              "known": "你开始想说英语",
+              "target": "you start to want to speak English"
+            },
+            {
+              "known": "我需要想",
+              "target": "I need to want to think"
+            },
+            {
+              "known": "你开始想和我说话吗",
+              "target": "do you start to want to speak with me"
+            },
+            {
+              "known": "他不开始想停止学习",
+              "target": "he doesn't start to want to stop learning"
+            },
+            {
+              "known": "我能够开始想尽快完成",
+              "target": "I am able to start to want to finish soon"
+            },
+            {
+              "known": "她需要想知道答案",
+              "target": "she can need to want to find out the answer"
+            }
+          ]
         },
         {
-          "id": "S0052L03",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0052L03",
           "lego": {
             "known": "写",
             "target": "write"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "我写",
+              "target": "I write"
+            },
+            {
+              "known": "你写",
+              "target": "you write"
+            },
+            {
+              "known": "我想写",
+              "target": "I want to write"
+            },
+            {
+              "known": "他能写",
+              "target": "he can write"
+            },
+            {
+              "known": "她会写",
+              "target": "she can write"
+            },
+            {
+              "known": "我上周写了",
+              "target": "I did write last week"
+            },
+            {
+              "known": "你想写什么东西",
+              "target": "do you want to write something"
+            },
+            {
+              "known": "我不想今天写",
+              "target": "I don't want to write today"
+            },
+            {
+              "known": "他觉得写东西很有趣",
+              "target": "he can think to write is fun"
+            },
+            {
+              "known": "我想学习怎么写",
+              "target": "I want to learn how to write"
+            }
+          ]
         },
         {
-          "id": "S0052L04",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0052L04",
           "lego": {
             "known": "一封信",
             "target": "a letter"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "一封信",
+              "target": "a letter"
+            },
+            {
+              "known": "写一封信",
+              "target": "write a letter"
+            },
+            {
+              "known": "我想写一封信",
+              "target": "I want to write a letter"
+            },
+            {
+              "known": "他会写一封信",
+              "target": "he can write a letter"
+            },
+            {
+              "known": "这是一封信",
+              "target": "this is a letter"
+            },
+            {
+              "known": "我上周写了一封信",
+              "target": "I did write a letter last week"
+            },
+            {
+              "known": "你想写一封信吗",
+              "target": "do you want to write a letter"
+            },
+            {
+              "known": "我不想今天写一封信",
+              "target": "I don't want to write a letter today"
+            },
+            {
+              "known": "他觉得写一封信很有趣",
+              "target": "he can think to write a letter is fun"
+            },
+            {
+              "known": "我想学习怎么写一封信",
+              "target": "I want to learn how to write a letter"
+            }
+          ]
         },
         {
-          "id": "S0052L05",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0052L05",
           "lego": {
             "known": "朋友",
             "target": "friend"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "我的朋友",
+              "target": "my friend"
+            },
+            {
+              "known": "他的朋友",
+              "target": "his friend"
+            },
+            {
+              "known": "我想认识朋友",
+              "target": "I want to meet a friend"
+            },
+            {
+              "known": "他是我的朋友",
+              "target": "he is my friend"
+            },
+            {
+              "known": "和朋友一起",
+              "target": "with a friend"
+            },
+            {
+              "known": "我和朋友说英语",
+              "target": "I speak English with my friend"
+            },
+            {
+              "known": "我想和朋友说话",
+              "target": "I want to speak with my friend"
+            },
+            {
+              "known": "他上周见了朋友",
+              "target": "he did meet his friend last week"
+            },
+            {
+              "known": "我喜欢和朋友做有趣的事",
+              "target": "I enjoy to do interesting things with a friend"
+            },
+            {
+              "known": "他想认识会说英语的朋友",
+              "target": "he can want to meet a friend who can speak English"
+            }
+          ]
         },
         {
-          "id": "S0052L06",
-          "type": "A",
-          "new": true,
+          "lego_id": "S0052L06",
           "lego": {
             "known": "上周",
             "target": "last week"
-          }
+          },
+          "practice_phrases": [
+            {
+              "known": "上周",
+              "target": "last week"
+            },
+            {
+              "known": "我上周",
+              "target": "I last week"
+            },
+            {
+              "known": "我上周学习了",
+              "target": "I was learning last week"
+            },
+            {
+              "known": "他上周在这里",
+              "target": "he was here last week"
+            },
+            {
+              "known": "上周很有趣",
+              "target": "last week was interesting"
+            },
+            {
+              "known": "我上周想学习",
+              "target": "I did want to learn last week"
+            },
+            {
+              "known": "我上周和朋友说话了",
+              "target": "I was speaking with my friend last week"
+            },
+            {
+              "known": "他上周不想停止学习",
+              "target": "he didn't want to stop learning last week"
+            },
+            {
+              "known": "我上周开始仔细地考虑这件事",
+              "target": "I did start to think about it carefully last week"
+            },
+            {
+              "known": "上周我想问你一件事",
+              "target": "I did want to ask you something last week"
+            }
+          ]
         },
         {
-          "id": "S0052L07",
-          "type": "M",
-          "new": true,
+          "lego_id": "S0052L07",
           "lego": {
             "known": "给朋友写信",
             "target": "write a letter to a friend"
           },
-          "components": [
+          "practice_phrases": [
             {
-              "known": "给",
-              "target": "to"
+              "known": "给朋友写信",
+              "target": "write a letter to a friend"
             },
             {
-              "known": "写信",
-              "target": "write a letter"
+              "known": "我想给朋友写信",
+              "target": "I want to write a letter to a friend"
+            },
+            {
+              "known": "他会给朋友写信",
+              "target": "he can write a letter to a friend"
+            },
+            {
+              "known": "我能给朋友写信",
+              "target": "I can write a letter to a friend"
+            },
+            {
+              "known": "你想给朋友写信吗",
+              "target": "do you want to write a letter to a friend"
+            },
+            {
+              "known": "我上周给朋友写信了",
+              "target": "I did write a letter to a friend last week"
+            },
+            {
+              "known": "我不想今天给朋友写信",
+              "target": "I don't want to write a letter to a friend today"
+            },
+            {
+              "known": "他想尽快给朋友写信",
+              "target": "he can want to write a letter to a friend soon"
+            },
+            {
+              "known": "我喜欢给朋友写信",
+              "target": "I enjoy to write a letter to a friend"
+            },
+            {
+              "known": "我想学习怎么给朋友写信",
+              "target": "I want to learn how to write a letter to a friend"
             }
-          ],
-          "teaches": "Chinese uses 给 before the recipient, English uses to after the action"
+          ]
         }
       ]
     },
@@ -5333,5 +6181,6 @@
     "normalizedLegos": 39,
     "addedMTypes": 26,
     "resolutionsApplied": 18
-  }
+  },
+  "version": "8.2.0"
 }
