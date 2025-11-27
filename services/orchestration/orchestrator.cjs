@@ -63,7 +63,9 @@ app.use(cors({
     'http://localhost:5173',
     'http://localhost:3000',
     'https://ssi-dashboard-v7.vercel.app',
-    /\.vercel\.app$/
+    'https://popty.app',
+    /\.vercel\.app$/,
+    /\.popty\.app$/
   ]
 }));
 app.use(bodyParser.json({ limit: '50mb' }));
