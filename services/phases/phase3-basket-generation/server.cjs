@@ -2284,8 +2284,8 @@ app.post('/upload-basket', async (req, res) => {
       }
     }
 
-    // Course directory
-    const courseDir = path.join(VFS_ROOT || process.cwd(), 'public/vfs/courses', course);
+    // Course directory (VFS_ROOT already points to public/vfs/courses)
+    const courseDir = path.join(VFS_ROOT, course);
     const legoBasketsPath = path.join(courseDir, 'lego_baskets.json');
     const phase3OutputsDir = path.join(courseDir, 'phase3_outputs');
     const phase3StagingDir = path.join(courseDir, 'phase3_baskets_staging');
