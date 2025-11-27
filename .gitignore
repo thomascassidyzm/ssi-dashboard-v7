@@ -202,3 +202,18 @@ public/vfs/courses/*/backups/
 public/vfs/courses/*/course_manifest.json
 public/vfs/courses/*/*.json.bak
 public/vfs/courses/*/*_COURSE_*.json
+
+# Phase 3 worker temp files
+practice_phrases_*.json
+scripts/*_baskets.json
+scripts/*_submission*.json
+scripts/extract_*.py
+scripts/fix_*.py
+scripts/generate_s*.cjs
+scripts/merge_*.cjs
+scripts/validate_*.py
+scripts/phase3_*.json
+scripts/basket-temp/
+
+# Backup files
+*.backup_*
