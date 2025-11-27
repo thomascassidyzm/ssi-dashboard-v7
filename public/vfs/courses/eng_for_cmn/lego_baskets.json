@@ -2,6 +2,260 @@
   "version": "8.2.0",
   "course": "eng_for_cmn",
   "baskets": {
+    "S0001L01": {
+      "lego": {
+        "known": "我想",
+        "target": "I want to"
+      },
+      "practice_phrases": [
+        {
+          "known": "我想",
+          "target": "I want to"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 1
+    },
+    "S0001L02": {
+      "lego": {
+        "known": "说",
+        "target": "to speak"
+      },
+      "practice_phrases": [
+        {
+          "known": "说",
+          "target": "to speak"
+        },
+        {
+          "known": "想说",
+          "target": "want to speak"
+        },
+        {
+          "known": "我想说",
+          "target": "I want to speak"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 3
+    },
+    "S0001L03": {
+      "lego": {
+        "known": "英语",
+        "target": "English"
+      },
+      "practice_phrases": [
+        {
+          "known": "英语",
+          "target": "English"
+        },
+        {
+          "known": "说英语",
+          "target": "to speak English"
+        },
+        {
+          "known": "想说英语",
+          "target": "want to speak English"
+        },
+        {
+          "known": "我想说英语",
+          "target": "I want to speak English"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 4
+    },
+    "S0001L04": {
+      "lego": {
+        "known": "和你",
+        "target": "with you"
+      },
+      "practice_phrases": [
+        {
+          "known": "和你",
+          "target": "with you"
+        },
+        {
+          "known": "和你说",
+          "target": "to speak with you"
+        },
+        {
+          "known": "和你说英语",
+          "target": "to speak English with you"
+        },
+        {
+          "known": "想和你说",
+          "target": "want to speak with you"
+        },
+        {
+          "known": "我想和你说",
+          "target": "I want to speak with you"
+        },
+        {
+          "known": "想和你说英语",
+          "target": "want to speak English with you"
+        },
+        {
+          "known": "我想和你说英语",
+          "target": "I want to speak English with you"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 7
+    },
+    "S0001L05": {
+      "lego": {
+        "known": "现在",
+        "target": "now"
+      },
+      "practice_phrases": [
+        {
+          "known": "现在",
+          "target": "now"
+        },
+        {
+          "known": "现在说",
+          "target": "to speak now"
+        },
+        {
+          "known": "现在和你",
+          "target": "with you now"
+        },
+        {
+          "known": "现在说英语",
+          "target": "to speak English now"
+        },
+        {
+          "known": "现在和你说",
+          "target": "to speak with you now"
+        },
+        {
+          "known": "想现在说",
+          "target": "want to speak now"
+        },
+        {
+          "known": "我现在想说",
+          "target": "I want to speak now"
+        },
+        {
+          "known": "现在和你说英语",
+          "target": "to speak English with you now"
+        },
+        {
+          "known": "我现在想和你说",
+          "target": "I want to speak with you now"
+        },
+        {
+          "known": "我现在想和你说英语",
+          "target": "I want to speak English with you now"
+        },
+        {
+          "known": "我现在想和你说英语。",
+          "target": "I want to speak English with you now."
+        }
+      ],
+      "is_final_lego": true,
+      "phrase_count": 11
+    },
+    "S0003L01": {
+      "lego": {
+        "known": "怎么说",
+        "target": "how to say"
+      },
+      "practice_phrases": [
+        {
+          "known": "怎么说",
+          "target": "how to say"
+        },
+        {
+          "known": "我想学怎么说",
+          "target": "I want to learn how to say"
+        },
+        {
+          "known": "我正在学怎么说",
+          "target": "I am learning how to say"
+        },
+        {
+          "known": "我现在想学怎么说",
+          "target": "I want to learn how to say now"
+        },
+        {
+          "known": "我想和你学怎么说",
+          "target": "I want to learn how to say with you"
+        },
+        {
+          "known": "我正在努力学怎么说",
+          "target": "I am trying to learn how to say"
+        },
+        {
+          "known": "我现在正在学怎么说",
+          "target": "I am learning how to say now"
+        },
+        {
+          "known": "我正在努力和你学怎么说",
+          "target": "I am trying to learn how to say with you"
+        },
+        {
+          "known": "我现在正在努力学怎么说",
+          "target": "I am trying to learn how to say now"
+        },
+        {
+          "known": "我现在想和你学怎么说",
+          "target": "I want to learn how to say with you now"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0003L02": {
+      "lego": {
+        "known": "尽可能经常",
+        "target": "as often as possible"
+      },
+      "practice_phrases": [
+        {
+          "known": "尽可能经常",
+          "target": "as often as possible"
+        },
+        {
+          "known": "我想尽可能经常学",
+          "target": "I want to learn as often as possible"
+        },
+        {
+          "known": "我想尽可能经常说",
+          "target": "I want to speak as often as possible"
+        },
+        {
+          "known": "我想和你尽可能经常说",
+          "target": "I want to speak with you as often as possible"
+        },
+        {
+          "known": "我正在努力尽可能经常学",
+          "target": "I am trying to learn as often as possible"
+        },
+        {
+          "known": "我想尽可能经常学怎么说",
+          "target": "I want to learn how to say as often as possible"
+        },
+        {
+          "known": "我想尽可能经常和你说英语",
+          "target": "I want to speak English with you as often as possible"
+        },
+        {
+          "known": "我想现在尽可能经常和你说",
+          "target": "I want to speak with you as often as possible now"
+        },
+        {
+          "known": "我想尽可能经常学说英语",
+          "target": "I want to learn to speak English as often as possible"
+        },
+        {
+          "known": "我现在想尽可能经常和你说英语",
+          "target": "I want to speak English with you as often as possible now"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
     "S0004L01": {
       "lego": {
         "known": "怎么说",
@@ -2103,6 +2357,354 @@
         {
           "known": "我想让你明天跟我说英语",
           "target": "I want you to speak English with me tomorrow"
+        }
+      ]
+    },
+    "S0018L01": {
+      "lego": {
+        "known": "我们想",
+        "target": "We want"
+      },
+      "practice_phrases": [
+        {
+          "known": "我们想",
+          "target": "We want"
+        },
+        {
+          "known": "我们想说",
+          "target": "We want to speak"
+        },
+        {
+          "known": "我们想学英语",
+          "target": "We want to learn English"
+        },
+        {
+          "known": "我们想和你说",
+          "target": "We want to speak with you"
+        },
+        {
+          "known": "我们想明天学",
+          "target": "We want to learn tomorrow"
+        },
+        {
+          "known": "我们想现在说英语",
+          "target": "We want to speak English now"
+        },
+        {
+          "known": "我们想知道答案是什么",
+          "target": "We want to know what the answer is"
+        },
+        {
+          "known": "我们想尽可能经常练习",
+          "target": "We want to practise as often as possible"
+        },
+        {
+          "known": "我们想明天和你说英语",
+          "target": "We want to speak English with you tomorrow"
+        },
+        {
+          "known": "我们想今天努力学说英语",
+          "target": "We want to try to learn to speak English today"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0018L02": {
+      "lego": {
+        "known": "见面",
+        "target": "to meet"
+      },
+      "practice_phrases": [
+        {
+          "known": "见面",
+          "target": "to meet"
+        },
+        {
+          "known": "我们想见面",
+          "target": "We want to meet"
+        },
+        {
+          "known": "明天见面",
+          "target": "to meet tomorrow"
+        },
+        {
+          "known": "我们想明天见面",
+          "target": "We want to meet tomorrow"
+        },
+        {
+          "known": "和你见面",
+          "target": "to meet you"
+        },
+        {
+          "known": "我们想和你见面",
+          "target": "We want to meet you"
+        },
+        {
+          "known": "我们想今天见面",
+          "target": "We want to meet today"
+        },
+        {
+          "known": "你想明天和我见面吗",
+          "target": "Do you want to meet me tomorrow"
+        },
+        {
+          "known": "我们想今天和别人见面",
+          "target": "We want to meet someone else today"
+        },
+        {
+          "known": "我们想尽可能经常和你见面",
+          "target": "We want to meet you as often as possible"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0018L03": {
+      "lego": {
+        "known": "六点",
+        "target": "six o'clock"
+      },
+      "practice_phrases": [
+        {
+          "known": "六点",
+          "target": "six o'clock"
+        },
+        {
+          "known": "今天六点",
+          "target": "six o'clock today"
+        },
+        {
+          "known": "明天六点",
+          "target": "six o'clock tomorrow"
+        },
+        {
+          "known": "我们想六点见面",
+          "target": "We want to meet at six o'clock"
+        },
+        {
+          "known": "六点和你见面",
+          "target": "to meet you at six o'clock"
+        },
+        {
+          "known": "我们想明天六点见面",
+          "target": "We want to meet tomorrow at six o'clock"
+        },
+        {
+          "known": "你想今天六点见面吗",
+          "target": "Do you want to meet today at six o'clock"
+        },
+        {
+          "known": "我们想今天六点和你说话",
+          "target": "We want to speak with you today at six o'clock"
+        },
+        {
+          "known": "他想明天六点和我见面",
+          "target": "He wants to meet me tomorrow at six o'clock"
+        },
+        {
+          "known": "我们想明天六点和别人见面",
+          "target": "We want to meet someone else tomorrow at six o'clock"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0018L04": {
+      "lego": {
+        "known": "今天晚上",
+        "target": "this evening"
+      },
+      "practice_phrases": [
+        {
+          "known": "今天晚上",
+          "target": "this evening"
+        },
+        {
+          "known": "今天晚上见面",
+          "target": "to meet this evening"
+        },
+        {
+          "known": "我们想今天晚上见面",
+          "target": "We want to meet this evening"
+        },
+        {
+          "known": "今天晚上六点",
+          "target": "six o'clock this evening"
+        },
+        {
+          "known": "今天晚上和你见面",
+          "target": "to meet you this evening"
+        },
+        {
+          "known": "我们想今天晚上和你见面",
+          "target": "We want to meet you this evening"
+        },
+        {
+          "known": "你想今天晚上见面吗",
+          "target": "Do you want to meet this evening"
+        },
+        {
+          "known": "我们想今天晚上六点说英语",
+          "target": "We want to speak English at six o'clock this evening"
+        },
+        {
+          "known": "他想今天晚上和我们见面",
+          "target": "He wants to meet us this evening"
+        },
+        {
+          "known": "我们想今天晚上六点见面",
+          "target": "We want to meet at six o'clock this evening"
+        },
+        {
+          "known": "我们想今天晚上六点见面。",
+          "target": "We want to meet at six o'clock this evening."
+        }
+      ],
+      "is_final_lego": true,
+      "phrase_count": 11
+    },
+    "S0021L01": {
+      "lego": {
+        "known": "为什么",
+        "target": "why"
+      },
+      "practice_phrases": [
+        {
+          "known": "为什么",
+          "target": "why"
+        },
+        {
+          "known": "为什么现在",
+          "target": "why now"
+        },
+        {
+          "known": "你为什么想学",
+          "target": "why do you want to learn"
+        },
+        {
+          "known": "你为什么在说英语",
+          "target": "why are you speaking English"
+        },
+        {
+          "known": "你为什么想和我练习",
+          "target": "why do you want to practise with me"
+        },
+        {
+          "known": "你为什么想明天见面",
+          "target": "why do you want to meet tomorrow"
+        },
+        {
+          "known": "你为什么今天在努力学",
+          "target": "why are you trying to learn today"
+        },
+        {
+          "known": "你为什么想和别人说英语",
+          "target": "why do you want to speak English with someone else"
+        },
+        {
+          "known": "你为什么在努力记住用英语怎么说",
+          "target": "why are you trying to remember how to say in English"
+        },
+        {
+          "known": "你为什么今天想尽可能经常和我说英语",
+          "target": "why do you want to speak English with me as often as possible today"
+        }
+      ]
+    },
+    "S0021L02": {
+      "lego": {
+        "known": "你在学",
+        "target": "are you learning"
+      },
+      "practice_phrases": [
+        {
+          "known": "你在学",
+          "target": "are you learning"
+        },
+        {
+          "known": "你在学吗",
+          "target": "are you learning"
+        },
+        {
+          "known": "你在学英语",
+          "target": "are you learning English"
+        },
+        {
+          "known": "你为什么在学",
+          "target": "why are you learning"
+        },
+        {
+          "known": "你在学怎么说吗",
+          "target": "are you learning how to say"
+        },
+        {
+          "known": "你现在在学英语吗",
+          "target": "are you learning English now"
+        },
+        {
+          "known": "你为什么在学用英语说",
+          "target": "why are you learning to speak in English"
+        },
+        {
+          "known": "你在努力尽可能经常学吗",
+          "target": "are you trying to learn as often as possible"
+        },
+        {
+          "known": "你为什么在学和别人说话",
+          "target": "why are you learning to speak with someone else"
+        },
+        {
+          "known": "你今天在学怎么用英语解释我的意思吗",
+          "target": "are you learning how to explain what I mean in English today"
+        }
+      ]
+    },
+    "S0021L03": {
+      "lego": {
+        "known": "她的名字",
+        "target": "her name"
+      },
+      "practice_phrases": [
+        {
+          "known": "她的名字",
+          "target": "her name"
+        },
+        {
+          "known": "我想知道她的名字",
+          "target": "I want to know her name"
+        },
+        {
+          "known": "你知道她的名字吗",
+          "target": "do you know her name"
+        },
+        {
+          "known": "我在努力记住她的名字",
+          "target": "I am trying to remember her name"
+        },
+        {
+          "known": "我想学会她的名字",
+          "target": "I want to learn her name"
+        },
+        {
+          "known": "你在学她的名字吗",
+          "target": "are you learning her name"
+        },
+        {
+          "known": "我今天想学会她的名字",
+          "target": "I want to learn her name today"
+        },
+        {
+          "known": "你为什么想知道她的名字",
+          "target": "why do you want to know her name"
+        },
+        {
+          "known": "我现在在努力记住她的名字",
+          "target": "I am trying to remember her name now"
+        },
+        {
+          "known": "你为什么在学她的名字",
+          "target": "Why are you learning her name"
         }
       ]
     },
@@ -7131,6 +7733,356 @@
           "target": "I do not need to know everything"
         }
       ]
+    },
+    "S0058L01": {
+      "lego": {
+        "known": "有趣",
+        "target": "interesting"
+      },
+      "practice_phrases": [
+        {
+          "known": "有趣。",
+          "target": "Interesting."
+        },
+        {
+          "known": "很有趣。",
+          "target": "Very interesting."
+        },
+        {
+          "known": "那很有趣。",
+          "target": "That's interesting."
+        },
+        {
+          "known": "这很有趣。",
+          "target": "It's very interesting."
+        },
+        {
+          "known": "英语很有趣。",
+          "target": "English is interesting."
+        },
+        {
+          "known": "一些很有趣的事情。",
+          "target": "Something very interesting."
+        },
+        {
+          "known": "学英语很有趣。",
+          "target": "Learning English is interesting."
+        },
+        {
+          "known": "我觉得这很有趣。",
+          "target": "I think it's very interesting."
+        },
+        {
+          "known": "说英语很有趣。",
+          "target": "Speaking English is interesting."
+        },
+        {
+          "known": "和你说英语很有趣。",
+          "target": "Speaking English with you is interesting."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0058L02": {
+      "lego": {
+        "known": "当……时",
+        "target": "when"
+      },
+      "practice_phrases": [
+        {
+          "known": "当……时",
+          "target": "When"
+        },
+        {
+          "known": "当我说话时",
+          "target": "When I speak"
+        },
+        {
+          "known": "当你想要时",
+          "target": "When you want to"
+        },
+        {
+          "known": "当我想学习时",
+          "target": "When I want to learn"
+        },
+        {
+          "known": "当我和你说话时",
+          "target": "When I speak with you"
+        },
+        {
+          "known": "当你回来时",
+          "target": "When you come back"
+        },
+        {
+          "known": "当我开始说英语时",
+          "target": "When I start speaking English"
+        },
+        {
+          "known": "当我试着记住时",
+          "target": "When I try to remember"
+        },
+        {
+          "known": "当我不能记住一个词时",
+          "target": "When I can't remember a word"
+        },
+        {
+          "known": "当我睡得不好时",
+          "target": "When I didn't sleep very well"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0058L03": {
+      "lego": {
+        "known": "理解",
+        "target": "understand"
+      },
+      "practice_phrases": [
+        {
+          "known": "理解",
+          "target": "Understand"
+        },
+        {
+          "known": "我理解。",
+          "target": "I understand."
+        },
+        {
+          "known": "你理解吗？",
+          "target": "Do you understand?"
+        },
+        {
+          "known": "我不理解。",
+          "target": "I don't understand."
+        },
+        {
+          "known": "我理解你。",
+          "target": "I understand you."
+        },
+        {
+          "known": "我想理解。",
+          "target": "I want to understand."
+        },
+        {
+          "known": "我开始理解了。",
+          "target": "I'm starting to understand."
+        },
+        {
+          "known": "我能理解你说的。",
+          "target": "I can understand what you say."
+        },
+        {
+          "known": "我不能理解那个。",
+          "target": "I can't understand that."
+        },
+        {
+          "known": "当你说得很好时我能理解。",
+          "target": "I can understand when you speak very well."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0058L04": {
+      "lego": {
+        "known": "足够",
+        "target": "enough"
+      },
+      "practice_phrases": [
+        {
+          "known": "足够",
+          "target": "Enough"
+        },
+        {
+          "known": "不够",
+          "target": "Not enough"
+        },
+        {
+          "known": "足够好",
+          "target": "Good enough"
+        },
+        {
+          "known": "这不够。",
+          "target": "It's not enough."
+        },
+        {
+          "known": "这足够好。",
+          "target": "That's good enough."
+        },
+        {
+          "known": "足够的时间",
+          "target": "Enough time"
+        },
+        {
+          "known": "我有足够的时间。",
+          "target": "I have enough time."
+        },
+        {
+          "known": "我没有足够的时间。",
+          "target": "I don't have enough time."
+        },
+        {
+          "known": "你有足够的时间吗？",
+          "target": "Do you have enough time?"
+        },
+        {
+          "known": "我想给你足够的时间。",
+          "target": "I want to give you enough time."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0058L05": {
+      "lego": {
+        "known": "词汇",
+        "target": "words"
+      },
+      "practice_phrases": [
+        {
+          "known": "词汇",
+          "target": "Words"
+        },
+        {
+          "known": "几个词",
+          "target": "A few words"
+        },
+        {
+          "known": "很多词",
+          "target": "A lot of words"
+        },
+        {
+          "known": "这些词",
+          "target": "These words"
+        },
+        {
+          "known": "那些词",
+          "target": "Those words"
+        },
+        {
+          "known": "不同的词",
+          "target": "Different words"
+        },
+        {
+          "known": "我记住一些词。",
+          "target": "I remember some words."
+        },
+        {
+          "known": "我想记住这些词。",
+          "target": "I want to remember these words."
+        },
+        {
+          "known": "我不能记住所有的词。",
+          "target": "I can't remember all the words."
+        },
+        {
+          "known": "我怎么说这些词？",
+          "target": "How do I say these words?"
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0058L06": {
+      "lego": {
+        "known": "这很有趣",
+        "target": "it's interesting"
+      },
+      "practice_phrases": [
+        {
+          "known": "这很有趣。",
+          "target": "It's interesting."
+        },
+        {
+          "known": "这很有趣吗？",
+          "target": "Is it interesting?"
+        },
+        {
+          "known": "我觉得这很有趣。",
+          "target": "I think it's interesting."
+        },
+        {
+          "known": "这不有趣。",
+          "target": "It's not interesting."
+        },
+        {
+          "known": "这很有趣，但是难。",
+          "target": "It's interesting, but it's difficult."
+        },
+        {
+          "known": "当我学习时，这很有趣。",
+          "target": "It's interesting when I learn."
+        },
+        {
+          "known": "说英语这很有趣。",
+          "target": "It's interesting to speak English."
+        },
+        {
+          "known": "我觉得学英语这很有趣。",
+          "target": "I think it's interesting to learn English."
+        },
+        {
+          "known": "和你说话这很有趣。",
+          "target": "It's interesting to speak with you."
+        },
+        {
+          "known": "当你说得很好时，这很有趣。",
+          "target": "It's interesting when you speak very well."
+        }
+      ],
+      "is_final_lego": false,
+      "phrase_count": 10
+    },
+    "S0058L07": {
+      "lego": {
+        "known": "足够多的词汇",
+        "target": "enough words"
+      },
+      "practice_phrases": [
+        {
+          "known": "足够多的词汇",
+          "target": "Enough words"
+        },
+        {
+          "known": "不够多的词汇",
+          "target": "Not enough words"
+        },
+        {
+          "known": "我有足够多的词汇。",
+          "target": "I have enough words."
+        },
+        {
+          "known": "你有足够多的词汇吗？",
+          "target": "Do you have enough words?"
+        },
+        {
+          "known": "我没有足够多的词汇。",
+          "target": "I don't have enough words."
+        },
+        {
+          "known": "我想学足够多的词汇。",
+          "target": "I want to learn enough words."
+        },
+        {
+          "known": "我记住足够多的词汇。",
+          "target": "I remember enough words."
+        },
+        {
+          "known": "我不能记住足够多的词汇。",
+          "target": "I can't remember enough words."
+        },
+        {
+          "known": "当我有足够多的词汇时，我能说话。",
+          "target": "When I have enough words, I can speak."
+        },
+        {
+          "known": "当你理解足够多的词汇时，这很有趣。",
+          "target": "It's interesting when you understand enough words."
+        }
+      ],
+      "is_final_lego": true,
+      "phrase_count": 10
     },
     "S0061L01": {
       "lego": {
