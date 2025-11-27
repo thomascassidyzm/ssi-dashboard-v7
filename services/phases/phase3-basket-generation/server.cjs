@@ -2334,6 +2334,21 @@ app.post('/upload-basket', async (req, res) => {
     await fs.writeJson(stagingFilePath, mergedBaskets, { spaces: 2 });
     console.log(`   📦 Staged to ${stagingFilePath} (${Object.keys(mergedBaskets).length} LEGOs total)`);
 
+    // AUTO-MERGE into lego_baskets.json
+    let legoBaskets = {};
+    if (await fs.pathExists(legoBasketsPath)) {
+      legoBaskets = await fs.readJson(legoBasketsPath);
+    }
+    let mergedCount = 0;
+    for (const [legoId, basket] of Object.entries(baskets)) {
+      if (!legoBaskets[legoId]) {
+        legoBaskets[legoId] = basket;
+        mergedCount++;
+      }
+    }
+    await fs.writeJson(legoBasketsPath, legoBaskets, { spaces: 2 });
+    console.log(`   ✅ Auto-merged ${mergedCount} new LEGOs into lego_baskets.json (total: ${Object.keys(legoBaskets).length})`);
+
     // Track upload in job state (if job exists)
     const job = activeJobs.get(course);
     if (job && job.uploads) {
