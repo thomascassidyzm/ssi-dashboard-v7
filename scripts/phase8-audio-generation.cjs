@@ -2214,7 +2214,11 @@ async function handleWelcome(courseCode, sourceLanguage, voiceAssignments, manif
   const welcome = await welcomeService.getWelcomeForCourse(courseCode);
 
   if (!welcome || !welcome.text) {
-    console.log('⚠️  No welcome found in registry - skipping\n');
+    console.log('ℹ️  No welcome configured for this course.');
+    console.log('   To add a welcome message:');
+    console.log('   1. Edit: public/vfs/canonical/welcomes.json');
+    console.log(`   2. Add: "${courseCode}": { "text": "Welcome to..." }`);
+    console.log('   3. Re-run audio generation\n');
     return {
       uuid: null,
       duration: 0,
@@ -2988,16 +2992,38 @@ async function generateAudioForCourse(courseCode, options = {}) {
   console.log(`${'='.repeat(60)}\n`);
 
   try {
-    // Run pre-flight checks
-    const preflightResults = await preflightCheck.runPreflightChecks({ verbose: true });
+    // Run pre-flight checks (including course-specific manifest checks with auto-fix)
+    const preflightResults = await preflightCheck.runPreflightChecks({
+      verbose: true,
+      courseCode: courseCode,
+      autoFix: true
+    });
 
     if (!preflightResults.allPassed) {
       console.error('\n❌ Pre-flight checks failed. Please fix the issues above before continuing.\n');
+
+      // Show agent actions if any
+      if (preflightResults.agentActions && preflightResults.agentActions.length > 0) {
+        console.error('Agent actions required:');
+        for (const action of preflightResults.agentActions) {
+          console.error(`  ${action.service}: ${action.action}`);
+        }
+      }
+
       return {
         success: false,
         error: 'Pre-flight checks failed',
         details: preflightResults
       };
+    }
+
+    // Report auto-fixes applied
+    if (preflightResults.fixed && preflightResults.fixed.length > 0) {
+      console.log('🔧 Auto-fixes applied during preflight:');
+      for (const fix of preflightResults.fixed) {
+        console.log(`  ${fix.service}: ${fix.message}`);
+      }
+      console.log();
     }
 
     console.log('✅ All pre-flight checks passed. Proceeding with audio generation...\n');

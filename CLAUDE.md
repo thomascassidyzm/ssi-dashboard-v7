@@ -298,7 +298,7 @@ node tools/orchestrators/automation_server.cjs
 
 **Critical Rules:**
 1. **ALWAYS sync S3 first**: `aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/`
-2. **Run manifest hygiene**: Validate and clean course manifest samples (prevents wasted generation)
+2. **Run manifest deduplication**: Clean and deduplicate samples before generation
 3. **Show plan and WAIT for user approval** before executing
 4. **DO NOT auto-launch `--execute`** in background
 5. **Review QC checkpoint** before continuing processing
@@ -309,30 +309,35 @@ node tools/orchestrators/automation_server.cjs
 # 1. Sync canonical resources (voices, welcomes, encouragements)
 aws s3 sync s3://popty-bach-lfs/canonical/ public/vfs/canonical/
 
-# 2. Run manifest hygiene (validate and clean course samples)
-node scripts/validate-and-fix-samples.cjs public/vfs/courses/<course_code>/course_manifest.json
+# 2. Run manifest deduplication (pre-generation cleanup)
+node scripts/manifest-deduplication.cjs <course_code>
 
 # 3. Show plan (DO NOT proceed without user approval!)
-node scripts/audio-generation.cjs <course_code> --plan
+node scripts/phase8-audio-generation.cjs <course_code> --plan
 
-# 4. After user approves, execute
-node scripts/audio-generation.cjs <course_code> --execute
+# 4. After user approves, execute (preflight checks run automatically with auto-fix)
+node scripts/phase8-audio-generation.cjs <course_code> --execute
 
 # 5. At QC checkpoint, review flagged samples:
 #    - Read: vfs/courses/<course_code>/qc_report_raw.json
 #    - Listen: vfs/courses/<course_code>/qc_review/<role>/*.mp3
 
 # 6a. If regeneration needed:
-node scripts/audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
+node scripts/phase8-audio-generation.cjs <course_code> --execute --regenerate UUID1,UUID2
 
 # 6b. If approved, continue processing:
-node scripts/audio-generation.cjs <course_code> --execute --continue-processing
+node scripts/phase8-audio-generation.cjs <course_code> --execute --continue-processing
+
+# 7. Post-generation: restore variants and verify
+node scripts/manifest-repopulation.cjs <course_code>
+node scripts/extract-s3-durations-parallel.cjs <course_code>
 ```
 
 **Common Issues:**
 - **Multiple background processes**: Always check for running Audio generation processes before starting
 - **Missing QC reports**: Verify files exist before presenting to user
 - **Auto-execution**: Audio generation should NEVER run `--execute` without explicit user confirmation
+- **Preflight failures**: Check the agent action instructions if preflight checks fail
 
 ---
 
